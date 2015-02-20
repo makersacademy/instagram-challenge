@@ -1,8 +1,20 @@
 <% if @posts.all.any? %>
   <% @posts.all.each do |post| %>
     <h2><%= post.description %></h2>
+    <% if post.comments.any? %>
+      <ul>
+        <% post.comments.each do |comment| %>
+          <li>
+            <%= comment.thoughts %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments</p>
+    <% end %>
     <h3><%= link_to 'Edit post', edit_post_path(post) %></h3>
     <h3><%= link_to 'Delete post', post_path(post), method: :delete %></h3>
+    <h3><%= link_to 'Write a comment', new_post_comment_path(post) %></h3>
   <% end %>
 <% else %>
   <h1>There are no posts yet</h1>
