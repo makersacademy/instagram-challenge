@@ -31,12 +31,36 @@ feature 'posts' do
 			visit '/posts'
 			click_link 'Add a post'
 			fill_in 'Name', with: 'Pic'
-			fill_in 'Description', with: 'Nice Pic'
 			click_button 'Create Post'
 			expect(page).to have_content 'Pic'
 			expect(current_path).to eq '/posts'
 		end
 
+	end
+
+	context 'viewing posts' do
+		let!(:pic){Post.create(name: 'Pic')}
+
+		scenario 'lets a user view a post' do
+			visit '/posts'
+			click_link 'Pic'
+			expect(page).to have_content 'Pic'
+			expect(current_path).to eq "/posts/#{pic.id}"
+		end
+
+	end
+
+	context 'editing posts' do
+		before {Post.create name: 'Pic'}
+
+		scenario 'let a user edit a post' do
+			visit '/posts'
+			click_link 'Edit post'
+			fill_in 'Name', with: 'Picture'
+			click_button 'Update Post'
+			expect(page).to have_content "Picture"
+			expect(current_path).to eq "/posts"
+		end
 	end
 
 end
