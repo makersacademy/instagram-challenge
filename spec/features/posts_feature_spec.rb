@@ -13,9 +13,7 @@ feature 'posts' do
   end
 
   context 'posts have been added' do
-    before do
-      Post.create(description: 'Awesome latte')
-    end
+    before { Post.create description: 'Awesome latte' }
 
     scenario 'display posts' do
       visit '/posts'
@@ -32,6 +30,20 @@ feature 'posts' do
       fill_in 'Description', with: 'Awesome latte'
       click_button 'Post'
       expect(page).to have_content 'Awesome latte'
+      expect(current_path).to eq '/posts'
+    end
+
+  end
+
+  context 'editing posts' do
+    before { Post.create description: 'Awesome latte' }
+
+    scenario 'lets a user edit a post description' do
+      visit '/posts'
+      click_link 'Edit post'
+      fill_in 'Description', with: 'Super latte'
+      click_button 'Update Post'
+      expect(page).to have_content 'Super latte'
       expect(current_path).to eq '/posts'
     end
 
