@@ -49,3 +49,17 @@ Processing by PicturesController#index as HTML
   Rendered pictures/index.html.haml within layouts/application (2.0ms)
 Completed 200 OK in 93ms (Views: 84.1ms | ActiveRecord: 0.0ms)
   [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (114.1ms)[0m  [1mDROP DATABASE IF EXISTS "instagram-challenge_test"[0m
+  [1m[35m (259.1ms)[0m  CREATE DATABASE "instagram-challenge_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.5ms)[0m  CREATE TABLE "pictures" ("id" serial primary key, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (2.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.6ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150220195002')
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/pictures" for 127.0.0.1 at 2015-02-20 20:00:18 +0000
+Processing by PicturesController#index as HTML
+Completed 500 Internal Server Error in 73ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
