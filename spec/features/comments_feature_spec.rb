@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'endorsements' do
+feature 'comments' do
   before { Post.create description: 'Awesome latte' }
 
   scenario 'allows user to leave a comment' do

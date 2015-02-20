@@ -5,11 +5,12 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def create
     Post.create(post_params)
-    redirect_to '/posts'
+    redirect_to posts_path
   end
 
   def edit
@@ -19,14 +20,14 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to '/posts'
+    redirect_to posts_path
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = 'Post deleted successfully'
-    redirect_to '/posts'
+    redirect_to posts_path
   end
 
   private
