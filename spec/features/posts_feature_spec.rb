@@ -25,4 +25,16 @@ feature 'posts' do
 
   end
 
+  context 'creating posts' do
+    scenario 'prompts user to add content, then displays the new post' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Description', with: 'Awesome latte'
+      click_button 'Post'
+      expect(page).to have_content 'Awesome latte'
+      expect(current_path).to eq '/posts'
+    end
+
+  end
+
 end
