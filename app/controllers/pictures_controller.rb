@@ -1,7 +1,12 @@
 class PicturesController < ApplicationController
+  
   def index
     @pictures = Picture.all  
   end  
+
+  def show
+    @picture = Picture.find(params[:id])
+  end
 
   def new
     @picture = Picture.new
@@ -12,12 +17,9 @@ class PicturesController < ApplicationController
     redirect_to '/pictures'
   end 
 
-  def show
-    @picture = Restaurant.find(post_params)
-  end
 
   def post_params
-    params.require(:picture).permit(:content, :image)
+    params.require(:image).permit(:content, :image)
   end 
 
 end
