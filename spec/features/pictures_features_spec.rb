@@ -1,13 +1,7 @@
 require 'rails_helper'
+require_relative '../helpers/pictures_helper.rb'
 
 feature 'pictures' do
-
-  def add_picture
-    visit '/pictures'
-    click_link 'Add a picture'
-    attach_file('Image', "#{Rails.root}/spec/support/uploads/derp.png")
-    click_button 'Create Picture'
-  end 
 
   context 'no pictures to begin' do
 
