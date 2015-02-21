@@ -4,10 +4,24 @@
   </section>
 </header>
 
+<header class="instagram-logo">
+  <img src="/assets/Instagram.svg">
+</header>
+
 <section id="Main-Page-Photos">
-  No pictures
+  <% if @pictures.any? %>
+    <% @pictures.each do |picture| %>
+    <section id="Photo-Section">
+      <h2><%= image_tag picture.image.url(:thumb) %></h2>
+      <h2><%= link_to picture.name, picture_path(picture) %></h2>
+      <h5><%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %></h5>
+      </section>
+    <% end %>
+  <% else %>
+    <h1>No pictures yet</h1>
+  <% end %>
 </section>
 
 <section id="link-for-new-pics">
-  <a href="#">Add a picture</a>
+  <%= link_to "Add a picture", new_picture_path %>
 </section>
