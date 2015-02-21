@@ -1,5 +1,14 @@
 require 'rails_helper'
 
+def sign_up(email)
+	visit '/posts'
+	click_link('Sign up')
+  fill_in('Email', with: email)
+  fill_in('Password', with: 'testtest')
+  fill_in('Password confirmation', with: 'testtest')
+  click_button('Sign up')
+end
+
 feature 'posts' do
 	
 	context 'no posts have been added' do
@@ -28,7 +37,7 @@ feature 'posts' do
 	context 'creating posts' do
 
 		scenario 'prompts user to fill a form, then displays post' do
-			visit '/posts'
+			sign_up("a@a.com")
 			click_link 'Add a post'
 			fill_in 'Name', with: 'Pic'
 			click_button 'Create Post'
@@ -54,7 +63,7 @@ feature 'posts' do
 		before {Post.create name: 'Pic'}
 
 		scenario 'let a user edit a post' do
-			visit '/posts'
+			sign_up("a@a.com")
 			click_link 'Edit post'
 			fill_in 'Name', with: 'Picture'
 			click_button 'Update Post'
@@ -67,7 +76,7 @@ feature 'posts' do
 		before {Post.create name: 'Pic'}
 
 		scenario 'let a user delete a post' do
-			visit '/posts'
+			sign_up("a@a.com")
 			click_link 'Delete Pic'
 			expect(page).not_to have_content "Pic"
 			expect(page).to have_content "Post deleted successfully"
