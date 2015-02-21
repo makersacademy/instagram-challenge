@@ -46,4 +46,14 @@ feature 'posts' do
     end
   end
 
+  context 'deleting posts' do
+    scenario 'removes a post when a user clicks a delete link' do
+      create_post
+      click_link 'Picture'
+      click_link 'Delete'
+      expect(page).not_to have_content 'Cute kitten'
+      expect(page).to have_content 'Post deleted successfully'
+    end
+  end
+
 end
