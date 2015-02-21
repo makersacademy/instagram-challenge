@@ -7432,3 +7432,1417 @@ Processing by PostsController#index as HTML
   Rendered posts/index.html.erb within layouts/application (0.9ms)
 Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.4ms)
   [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:54:45.134317"], ["updated_at", "2015-02-21 11:54:45.134317"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.5ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 175]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 175]]
+  Rendered posts/index.html.erb within layouts/application (40.5ms)
+Completed 200 OK in 92ms (Views: 79.1ms | ActiveRecord: 4.1ms)
+Started GET "/posts/175/comments/new" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"175"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 175]]
+  Rendered comments/new.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 31ms (Views: 21.2ms | ActiveRecord: 1.1ms)
+Started POST "/posts/175/comments" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"thoughts"=>"Great picture"}, "commit"=>"Comment", "post_id"=>"175"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 175]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "comments" ("thoughts", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["thoughts", "Great picture"], ["post_id", 175], ["created_at", "2015-02-21 11:54:45.295887"], ["updated_at", "2015-02-21 11:54:45.295887"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 9ms (ActiveRecord: 1.5ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 175]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 175]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 175]]
+  Rendered posts/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 1.6ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:54:45.313132"], ["updated_at", "2015-02-21 11:54:45.313132"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 176]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 176]]
+  Rendered posts/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 1.2ms)
+Started POST "/posts/176/likes" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"post_id"=>"176"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 176]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "likes" ("post_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["post_id", 176], ["created_at", "2015-02-21 11:54:45.332395"], ["updated_at", "2015-02-21 11:54:45.332395"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 2.1ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 176]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 176]]
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 1.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:54:45.352036"], ["updated_at", "2015-02-21 11:54:45.352036"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 177]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 177]]
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 1.1ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.8ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Awesome latte"}, "commit"=>"Create Post"}
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:54:45.381053"], ["updated_at", "2015-02-21 11:54:45.381053"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 178]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 178]]
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:54:45.393785"], ["updated_at", "2015-02-21 11:54:45.393785"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.4ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 179]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 179]]
+  Rendered posts/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 1.3ms)
+Started GET "/posts/179/edit" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"179"}
+  [1m[35mPost Load (0.5ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 179]]
+  Rendered posts/edit.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.5ms)
+Started PATCH "/posts/179" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Super latte"}, "commit"=>"Update Post", "id"=>"179"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 179]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "posts" SET "description" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["description", "Super latte"], ["updated_at", "2015-02-21 11:54:45.413729"], ["id", 179]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 1.7ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 179]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 179]]
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.1ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:54:45.429447"], ["updated_at", "2015-02-21 11:54:45.429447"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 180]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 180]]
+  Rendered posts/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 1.0ms)
+Started DELETE "/posts/180" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"180"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 180]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 180]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 180]]
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 180]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 5ms (ActiveRecord: 2.1ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:54:45 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:58:00.902140"], ["updated_at", "2015-02-21 11:58:00.902140"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:00 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.5ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 181]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 181]]
+  Rendered posts/index.html.erb within layouts/application (30.9ms)
+Completed 200 OK in 58ms (Views: 46.0ms | ActiveRecord: 3.8ms)
+Started GET "/posts/181/comments/new" for 127.0.0.1 at 2015-02-21 11:58:00 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"181"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 181]]
+  Rendered comments/new.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 22ms (Views: 13.9ms | ActiveRecord: 1.1ms)
+Started POST "/posts/181/comments" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"thoughts"=>"Great picture"}, "commit"=>"Comment", "post_id"=>"181"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 181]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "comments" ("thoughts", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["thoughts", "Great picture"], ["post_id", 181], ["created_at", "2015-02-21 11:58:01.016605"], ["updated_at", "2015-02-21 11:58:01.016605"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 1.4ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 181]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 181]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 181]]
+  Rendered posts/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 1.6ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:58:01.032642"], ["updated_at", "2015-02-21 11:58:01.032642"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 182]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 182]]
+  Rendered posts/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 1.3ms)
+Started POST "/posts/182/likes" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"post_id"=>"182"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 182]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "likes" ("post_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["post_id", 182], ["created_at", "2015-02-21 11:58:01.051421"], ["updated_at", "2015-02-21 11:58:01.051421"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 2.0ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 182]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 182]]
+  Rendered posts/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 1.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:58:01.071002"], ["updated_at", "2015-02-21 11:58:01.071002"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (1.1ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 183]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 183]]
+  Rendered posts/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 2.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Awesome latte"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:58:01.097009"], ["updated_at", "2015-02-21 11:58:01.097009"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 184]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 184]]
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.5ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>" "}, "commit"=>"Create Post"}
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", " "], ["created_at", "2015-02-21 11:58:01.119940"], ["updated_at", "2015-02-21 11:58:01.119940"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 185]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 185]]
+  Rendered posts/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 1.7ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:58:01.135025"], ["updated_at", "2015-02-21 11:58:01.135025"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 186]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 186]]
+  Rendered posts/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 1.0ms)
+Started GET "/posts/186/edit" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"186"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 186]]
+  Rendered posts/edit.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms)
+Started PATCH "/posts/186" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Super latte"}, "commit"=>"Update Post", "id"=>"186"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 186]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "posts" SET "description" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["description", "Super latte"], ["updated_at", "2015-02-21 11:58:01.152450"], ["id", 186]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 186]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 186]]
+  Rendered posts/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:58:01.164508"], ["updated_at", "2015-02-21 11:58:01.164508"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.3ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 187]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 187]]
+  Rendered posts/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.2ms)
+Started DELETE "/posts/187" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"187"}
+  [1m[35mPost Load (0.8ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 187]]
+  [1m[36m (0.8ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 187]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 187]]
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 187]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 3.3ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:58:01 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:59:07.620554"], ["updated_at", "2015-02-21 11:59:07.620554"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.5ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 188]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 188]]
+  Rendered posts/index.html.erb within layouts/application (33.3ms)
+Completed 200 OK in 62ms (Views: 50.2ms | ActiveRecord: 3.9ms)
+Started GET "/posts/188/comments/new" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"188"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 188]]
+  Rendered comments/new.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 24ms (Views: 16.7ms | ActiveRecord: 1.0ms)
+Started POST "/posts/188/comments" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"thoughts"=>"Great picture"}, "commit"=>"Comment", "post_id"=>"188"}
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 188]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "comments" ("thoughts", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["thoughts", "Great picture"], ["post_id", 188], ["created_at", "2015-02-21 11:59:07.740530"], ["updated_at", "2015-02-21 11:59:07.740530"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 1.5ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 188]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 188]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 188]]
+  Rendered posts/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:59:07.756490"], ["updated_at", "2015-02-21 11:59:07.756490"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 189]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 189]]
+  Rendered posts/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 1.2ms)
+Started POST "/posts/189/likes" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"post_id"=>"189"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 189]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "likes" ("post_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["post_id", 189], ["created_at", "2015-02-21 11:59:07.775288"], ["updated_at", "2015-02-21 11:59:07.775288"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 2.1ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 189]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 189]]
+  Rendered posts/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:59:07.795036"], ["updated_at", "2015-02-21 11:59:07.795036"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (1.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 190]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 190]]
+  Rendered posts/index.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 7ms (Views: 4.1ms | ActiveRecord: 1.9ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Awesome latte"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:59:07.821966"], ["updated_at", "2015-02-21 11:59:07.821966"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 191]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 191]]
+  Rendered posts/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.6ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>""}, "commit"=>"Create Post"}
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", ""], ["created_at", "2015-02-21 11:59:07.844766"], ["updated_at", "2015-02-21 11:59:07.844766"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 192]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 192]]
+  Rendered posts/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 1.8ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:59:07.860501"], ["updated_at", "2015-02-21 11:59:07.860501"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 193]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 193]]
+  Rendered posts/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 1.0ms)
+Started GET "/posts/193/edit" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"193"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 193]]
+  Rendered posts/edit.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms)
+Started PATCH "/posts/193" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Super latte"}, "commit"=>"Update Post", "id"=>"193"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 193]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "posts" SET "description" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["description", "Super latte"], ["updated_at", "2015-02-21 11:59:07.877678"], ["id", 193]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 5ms (ActiveRecord: 1.1ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 193]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 193]]
+  Rendered posts/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 1.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:59:07.891563"], ["updated_at", "2015-02-21 11:59:07.891563"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 194]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 194]]
+  Rendered posts/index.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 1.3ms)
+Started DELETE "/posts/194" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"194"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 194]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 194]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 194]]
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 194]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 5ms (ActiveRecord: 2.2ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:07 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:59:46.197750"], ["updated_at", "2015-02-21 11:59:46.197750"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.5ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 195]]
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 195]]
+  Rendered posts/index.html.erb within layouts/application (33.6ms)
+Completed 200 OK in 62ms (Views: 49.4ms | ActiveRecord: 4.0ms)
+Started GET "/posts/195/comments/new" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"195"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 195]]
+  Rendered comments/new.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 22ms (Views: 14.0ms | ActiveRecord: 1.1ms)
+Started POST "/posts/195/comments" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"thoughts"=>"Great picture"}, "commit"=>"Comment", "post_id"=>"195"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 195]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "comments" ("thoughts", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["thoughts", "Great picture"], ["post_id", 195], ["created_at", "2015-02-21 11:59:46.314680"], ["updated_at", "2015-02-21 11:59:46.314680"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 1.4ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 195]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 195]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 195]]
+  Rendered posts/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:59:46.330484"], ["updated_at", "2015-02-21 11:59:46.330484"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 196]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 196]]
+  Rendered posts/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.3ms)
+Started POST "/posts/196/likes" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"post_id"=>"196"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 196]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "likes" ("post_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["post_id", 196], ["created_at", "2015-02-21 11:59:46.349113"], ["updated_at", "2015-02-21 11:59:46.349113"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 2.0ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 196]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 196]]
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 1.1ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:59:46.368702"], ["updated_at", "2015-02-21 11:59:46.368702"]]
+  [1m[35m (0.5ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 197]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 197]]
+  Rendered posts/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.3ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Awesome latte"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:59:46.396222"], ["updated_at", "2015-02-21 11:59:46.396222"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 198]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 198]]
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.5ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"A"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "A"], ["created_at", "2015-02-21 11:59:46.418551"], ["updated_at", "2015-02-21 11:59:46.418551"]]
+  [1m[35m (0.5ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 6ms (ActiveRecord: 1.8ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 199]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 199]]
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 1.1ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:59:46.434441"], ["updated_at", "2015-02-21 11:59:46.434441"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 200]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 200]]
+  Rendered posts/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 1.1ms)
+Started GET "/posts/200/edit" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"200"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 200]]
+  Rendered posts/edit.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms)
+Started PATCH "/posts/200" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Super latte"}, "commit"=>"Update Post", "id"=>"200"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 200]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "posts" SET "description" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["description", "Super latte"], ["updated_at", "2015-02-21 11:59:46.452130"], ["id", 200]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 5ms (ActiveRecord: 1.2ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 200]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 200]]
+  Rendered posts/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 1.1ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 11:59:46.465200"], ["updated_at", "2015-02-21 11:59:46.465200"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.5ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 201]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 201]]
+  Rendered posts/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 2.4ms)
+Started DELETE "/posts/201" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"201"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 201]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 201]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 201]]
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 201]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 5ms (ActiveRecord: 2.1ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 11:59:46 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:00:05.070283"], ["updated_at", "2015-02-21 12:00:05.070283"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.5ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 202]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 202]]
+  Rendered posts/index.html.erb within layouts/application (31.8ms)
+Completed 200 OK in 62ms (Views: 49.5ms | ActiveRecord: 3.9ms)
+Started GET "/posts/202/comments/new" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"202"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 202]]
+  Rendered comments/new.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 22ms (Views: 13.8ms | ActiveRecord: 1.1ms)
+Started POST "/posts/202/comments" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"thoughts"=>"Great picture"}, "commit"=>"Comment", "post_id"=>"202"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 202]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "comments" ("thoughts", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["thoughts", "Great picture"], ["post_id", 202], ["created_at", "2015-02-21 12:00:05.185749"], ["updated_at", "2015-02-21 12:00:05.185749"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 1.4ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 202]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 202]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 202]]
+  Rendered posts/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 1.6ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:00:05.201877"], ["updated_at", "2015-02-21 12:00:05.201877"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 203]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 203]]
+  Rendered posts/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 1.3ms)
+Started POST "/posts/203/likes" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"post_id"=>"203"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 203]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "likes" ("post_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["post_id", 203], ["created_at", "2015-02-21 12:00:05.221262"], ["updated_at", "2015-02-21 12:00:05.221262"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 2.0ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 203]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 203]]
+  Rendered posts/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:00:05.241093"], ["updated_at", "2015-02-21 12:00:05.241093"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 204]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 204]]
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 1.1ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Awesome latte"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:00:05.269843"], ["updated_at", "2015-02-21 12:00:05.269843"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 205]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 205]]
+  Rendered posts/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"X"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "X"], ["created_at", "2015-02-21 12:00:05.292837"], ["updated_at", "2015-02-21 12:00:05.292837"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 206]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 206]]
+  Rendered posts/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.9ms)
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:00:05.308003"], ["updated_at", "2015-02-21 12:00:05.308003"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 207]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 207]]
+  Rendered posts/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 1.0ms)
+Started GET "/posts/207/edit" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"207"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 207]]
+  Rendered posts/edit.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms)
+Started PATCH "/posts/207" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Super latte"}, "commit"=>"Update Post", "id"=>"207"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 207]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "posts" SET "description" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["description", "Super latte"], ["updated_at", "2015-02-21 12:00:05.325843"], ["id", 207]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 5ms (ActiveRecord: 1.2ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 207]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 207]]
+  Rendered posts/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:00:05.338108"], ["updated_at", "2015-02-21 12:00:05.338108"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 208]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 208]]
+  Rendered posts/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 1.2ms)
+Started DELETE "/posts/208" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"208"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 208]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 208]]
+  [1m[36mLike Load (0.7ms)[0m  [1mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 208]]
+  [1m[35mSQL (1.8ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 208]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 9ms (ActiveRecord: 3.5ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:00:05 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:05:06.615367"], ["updated_at", "2015-02-21 12:05:06.615367"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.5ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 209]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 209]]
+  Rendered posts/index.html.erb within layouts/application (32.5ms)
+Completed 200 OK in 60ms (Views: 47.6ms | ActiveRecord: 4.8ms)
+Started GET "/posts/209/comments/new" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"209"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 209]]
+  Rendered comments/new.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 22ms (Views: 15.0ms | ActiveRecord: 1.0ms)
+Started POST "/posts/209/comments" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"thoughts"=>"Great picture"}, "commit"=>"Comment", "post_id"=>"209"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 209]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "comments" ("thoughts", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["thoughts", "Great picture"], ["post_id", 209], ["created_at", "2015-02-21 12:05:06.730296"], ["updated_at", "2015-02-21 12:05:06.730296"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 1.4ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 209]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 209]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 209]]
+  Rendered posts/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:05:06.746430"], ["updated_at", "2015-02-21 12:05:06.746430"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 210]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 210]]
+  Rendered posts/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 1.3ms)
+Started POST "/posts/210/likes" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"post_id"=>"210"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 210]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "likes" ("post_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["post_id", 210], ["created_at", "2015-02-21 12:05:06.765383"], ["updated_at", "2015-02-21 12:05:06.765383"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 2.0ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 210]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 210]]
+  Rendered posts/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:05:06.785207"], ["updated_at", "2015-02-21 12:05:06.785207"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 211]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 211]]
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Awesome latte"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:05:06.814187"], ["updated_at", "2015-02-21 12:05:06.814187"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 3ms (ActiveRecord: 0.8ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 212]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 212]]
+  Rendered posts/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 1.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.4ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"X"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.7ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 3ms (ActiveRecord: 0.9ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:05:06.850149"], ["updated_at", "2015-02-21 12:05:06.850149"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 213]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 213]]
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 1.0ms)
+Started GET "/posts/213/edit" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"213"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 213]]
+  Rendered posts/edit.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms)
+Started PATCH "/posts/213" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Super latte"}, "commit"=>"Update Post", "id"=>"213"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 213]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "posts" SET "description" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["description", "Super latte"], ["updated_at", "2015-02-21 12:05:06.867659"], ["id", 213]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 5ms (ActiveRecord: 1.1ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 213]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 213]]
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:05:06.880228"], ["updated_at", "2015-02-21 12:05:06.880228"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 214]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 214]]
+  Rendered posts/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.2ms)
+Started DELETE "/posts/214" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"214"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 214]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 214]]
+  [1m[36mLike Load (0.3ms)[0m  [1mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 214]]
+  [1m[35mSQL (2.0ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 214]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 3.3ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:05:06 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:09:21.431828"], ["updated_at", "2015-02-21 12:09:21.431828"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.5ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 215]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 215]]
+  Rendered posts/index.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 64ms (Views: 51.8ms | ActiveRecord: 3.8ms)
+Started GET "/posts/215/comments/new" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"215"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 215]]
+  Rendered comments/new.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 22ms (Views: 13.9ms | ActiveRecord: 1.0ms)
+Started POST "/posts/215/comments" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"thoughts"=>"Great picture"}, "commit"=>"Comment", "post_id"=>"215"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 215]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "comments" ("thoughts", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["thoughts", "Great picture"], ["post_id", 215], ["created_at", "2015-02-21 12:09:21.550797"], ["updated_at", "2015-02-21 12:09:21.550797"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 1.4ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 215]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 215]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 215]]
+  Rendered posts/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:09:21.566646"], ["updated_at", "2015-02-21 12:09:21.566646"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 216]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 216]]
+  Rendered posts/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.4ms)
+Started POST "/posts/216/likes" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"post_id"=>"216"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 216]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "likes" ("post_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["post_id", 216], ["created_at", "2015-02-21 12:09:21.585332"], ["updated_at", "2015-02-21 12:09:21.585332"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 2.1ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 216]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 216]]
+  Rendered posts/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 1.3ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:09:21.605652"], ["updated_at", "2015-02-21 12:09:21.605652"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 217]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 217]]
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 1.1ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Awesome latte"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:09:21.632787"], ["updated_at", "2015-02-21 12:09:21.632787"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 218]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 218]]
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 1.1ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"X"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendered posts/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.8ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:09:21.668488"], ["updated_at", "2015-02-21 12:09:21.668488"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 219]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 219]]
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 1.0ms)
+Started GET "/posts/219/edit" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"219"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 219]]
+  Rendered posts/edit.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.4ms)
+Started PATCH "/posts/219" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"description"=>"Super latte"}, "commit"=>"Update Post", "id"=>"219"}
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 219]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "posts" SET "description" = $1, "updated_at" = $2 WHERE "posts"."id" = $3  [["description", "Super latte"], ["updated_at", "2015-02-21 12:09:21.686283"], ["id", 219]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1  [["post_id", 219]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 219]]
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Awesome latte"], ["created_at", "2015-02-21 12:09:21.698894"], ["updated_at", "2015-02-21 12:09:21.698894"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT 1[0m  [["post_id", 220]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 220]]
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 1.0ms)
+Started DELETE "/posts/220" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"220"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 220]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 220]]
+  [1m[35mLike Load (0.3ms)[0m  SELECT "likes".* FROM "likes" WHERE "likes"."post_id" = $1  [["post_id", 220]]
+  [1m[36mSQL (1.1ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 220]]
+  [1m[35m (0.5ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 7ms (ActiveRecord: 2.7ms)
+Started GET "/posts" for 127.0.0.1 at 2015-02-21 12:09:21 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK

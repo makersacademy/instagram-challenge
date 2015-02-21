@@ -33,6 +33,15 @@ feature 'posts' do
       expect(current_path).to eq '/posts'
     end
 
+    scenario 'an invalid post description' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Description', with: 'X'
+      click_button 'Post'
+      expect(page).not_to have_css 'h2', text: 'X'
+      expect(page).to have_content 'error'
+    end
+
   end
 
   context 'editing posts' do
