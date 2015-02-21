@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   #   resources :products
   resources :posts do
     resources :comments
+    resources :likes
   end
 
   # Example resource route with options:
