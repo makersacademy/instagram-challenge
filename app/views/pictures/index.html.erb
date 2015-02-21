@@ -9,9 +9,13 @@
 </header>
 
 <section id="Main-Page-Photos">
-  <% if Picture.all.any? %>
-    <% Picture.all.each do |picture| %>
-      <h2><%= picture.name %></h2>
+  <% if @pictures.any? %>
+    <% @pictures.each do |picture| %>
+    <section id="Photo-Section">
+      <h2><%= image_tag picture.image.url(:thumb) %></h2>
+      <h2><%= link_to picture.name, picture_path(picture) %></h2>
+      <h5><%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %></h5>
+      </section>
     <% end %>
   <% else %>
     <h1>No pictures yet</h1>

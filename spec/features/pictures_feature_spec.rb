@@ -25,14 +25,19 @@ feature 'pictures' do
     
     scenario 'prompts user to fill out a form, then displays the new picture' do
       visit '/'
-      click_link 'Add a picture'
-      fill_in 'Name', with: 'Sunny'
-      click_button 'Create Picture'
+      Picture.create name: 'Sunny'
       expect(page).to have_content 'Sunny'
       expect(current_path).to eq '/'
     end
 
-end
+  before {Picture.create name: 'Sunny'}
 
+    scenario 'can delete a photo once up' do
+      visit '/'
+      click_link 'Delete Sunny'
+      expect(page).not_to have_content 'Sunny'
+    end
+
+  end
 
 end
