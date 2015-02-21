@@ -1,5 +1,5 @@
 require 'rails_helper'
-require_relative '../helpers/pictures_helper.rb'
+require_relative '../helpers/helper_methods.rb'
 
 feature 'pictures' do
 
