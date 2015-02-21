@@ -15800,3 +15800,1003 @@ Started GET "/assets/Instagram.svg" for 127.0.0.1 at 2015-02-20 23:22:07 +0000
 
 
 Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-20 23:22:07 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreatePictures (20150221000332)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (31.0ms)[0m  [1mCREATE TABLE "pictures" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150221000332"]]
+  [1m[36m (6.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'pictures'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserIdToPictures (20150221000813)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.0ms)[0m  [1mALTER TABLE "pictures" ADD "User_id" integer[0m
+  [1m[35m (1.2ms)[0m  CREATE  INDEX  "index_pictures_on_User_id" ON "pictures"  ("User_id")
+  [1m[36m (1.8ms)[0m  [1mALTER TABLE "pictures" ADD CONSTRAINT "fk_rails_c0ac807ba2"
+FOREIGN KEY ("User_id")
+  REFERENCES "Users" ("id")
+[0m
+PG::UndefinedTable: ERROR:  relation "Users" does not exist
+: ALTER TABLE "pictures" ADD CONSTRAINT "fk_rails_c0ac807ba2"
+FOREIGN KEY ("User_id")
+  REFERENCES "Users" ("id")
+
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserIdToPictures (20150221000938)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "pictures" ADD "user_id" integer[0m
+  [1m[35m (1.6ms)[0m  CREATE  INDEX  "index_pictures_on_user_id" ON "pictures"  ("user_id")
+  [1m[36m (6.5ms)[0m  [1mALTER TABLE "pictures" ADD CONSTRAINT "fk_rails_f0270fbc63"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150221000938"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.9ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'pictures'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.3ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-21 00:12:20 +0000
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3dUnqzuPhX/rkOYKIdjGV2fQkyepfS8l4XHESE0VGWanVzhtTP+AWrgEqEzsqaroRq0UduxCEinLFeIseGMYKQ==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "test@test.com"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["last_sign_in_at", "2015-02-20 23:15:22.258392"], ["current_sign_in_at", "2015-02-21 00:12:20.528731"], ["sign_in_count", 5], ["updated_at", "2015-02-21 00:12:20.529874"], ["id", 1]]
+  [1m[35m (0.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 82ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-21 00:12:20 +0000
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PicturesController#index as HTML
+  Rendered pictures/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 70ms (Views: 69.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:12:20 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:12:20 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:12:20 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:12:20 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:12:20 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:12:20 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:12:20 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:12:20 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:12:20 +0000
+
+
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 00:12:24 +0000
+Processing by PicturesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 42ms (Views: 40.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:12:24 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:12:24 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:12:24 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:12:24 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:12:24 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:12:24 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:12:24 +0000
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 00:12:26 +0000
+
+AbstractController::ActionNotFound (The action 'new' could not be found for PicturesController):
+  actionpack (4.2.0) lib/abstract_controller/base.rb:132:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:18:in `middleware_call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /opt/rubies/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /opt/rubies/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /opt/rubies/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/unknown_action.html.erb within rescues/layout (0.5ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 00:15:48 +0000
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered pictures/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 62ms (Views: 52.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:15:48 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:15:48 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:15:48 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:15:48 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:15:48 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:15:48 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:15:48 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:15:48 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:15:48 +0000
+
+
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 00:18:43 +0000
+Processing by PicturesController#index as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (4.1ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::Pictures):
+     5: </header>
+     6: 
+     7: <section id="Main-Page-Photos">
+     8:   <% if Pictures.all.any? %>
+     9:     <% Pictures.all.each do |picture| %>
+    10:       <h2><%= picture.name %></h2>
+    11:     <% end %>
+  app/views/pictures/index.html.erb:8:in `_app_views_pictures_index_html_erb___612393819928479566_70307430862200'
+
+
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (5.4ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (1.1ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (29.4ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 00:18:52 +0000
+Processing by PicturesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 46ms (Views: 42.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:18:52 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:18:52 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:18:52 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:18:52 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:18:52 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:18:52 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:18:52 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:18:52 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:18:52 +0000
+
+
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 00:20:16 +0000
+Processing by PicturesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 50ms (Views: 48.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:20:16 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:20:16 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:20:16 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:20:16 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:20:16 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:20:16 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:20:16 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:20:16 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:20:16 +0000
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 00:20:17 +0000
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered pictures/new.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 44ms (Views: 42.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:20:17 +0000
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 00:24:00 +0000
+Processing by PicturesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered pictures/new.html.erb within layouts/application (3.6ms)
+Completed 500 Internal Server Error in 8ms
+
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::Restaurant):
+    1: <%= form_for Restaurant.new do |f| %>
+    2:   <%= f.label :name %>
+    3:   <%= f.text_field :name %>
+    4:   <%= f.submit %>
+  app/views/pictures/new.html.erb:1:in `_app_views_pictures_new_html_erb___2797992307591524914_70307479314260'
+
+
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (4.6ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.7ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (18.4ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 00:24:43 +0000
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered pictures/new.html.erb within layouts/application (3.2ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::Restaurant):
+    1: <%= form_for Restaurant.new do |f| %>
+    2:   <%= f.label :name %>
+    3: 
+    4:   <%= f.submit %>
+  app/views/pictures/new.html.erb:1:in `_app_views_pictures_new_html_erb___2797992307591524914_70307426248740'
+
+
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (6.2ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.7ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (21.5ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 00:24:55 +0000
+Processing by PicturesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered pictures/new.html.erb within layouts/application (3.4ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::Restaurants):
+    1: <%= form_for Restaurants.new do |f| %>
+    2:   <%= f.label :name %>
+    3:   <%= f.text_field :name %>
+    4:   <%= f.submit %>
+  app/views/pictures/new.html.erb:1:in `_app_views_pictures_new_html_erb___2797992307591524914_70307438458940'
+
+
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_source.erb (6.6ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_trace.html.erb (10.9ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/_web_console.html.erb (0.9ms)
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/template_error.html.erb within rescues/layout (33.4ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 00:29:24 +0000
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered pictures/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 47ms (Views: 44.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:29:25 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:29:25 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:29:25 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:29:25 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:29:25 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:29:25 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:29:25 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:29:25 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:29:25 +0000
+
+
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 00:29:33 +0000
+
+AbstractController::ActionNotFound (The action 'create' could not be found for PicturesController):
+  actionpack (4.2.0) lib/abstract_controller/base.rb:132:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.0) lib/rack/etag.rb:24:in `call'
+  rack (1.6.0) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.0) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.0) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:18:in `middleware_call'
+  web-console (2.0.0) lib/action_dispatch/debug_exceptions.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.0) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.0) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.0) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.0) lib/rack/lock.rb:17:in `call'
+  rack (1.6.0) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.0) lib/rack/handler/webrick.rb:89:in `service'
+  /opt/rubies/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /opt/rubies/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /opt/rubies/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /opt/rubies/2.1.3/lib/ruby/gems/2.1.0/gems/web-console-2.0.0/lib/action_dispatch/templates/rescues/unknown_action.html.erb within rescues/layout (0.5ms)
+
+
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 00:32:58 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y99K3XbxSxt1gYqfaJKM73le6zRQA1WFsm9OTHUYkSc+lwQ1S/46BU1NIa3DoEbxBUB0g01/3CNPslolNMiNAA==", "picture"=>{"name"=>"Sunny"}, "commit"=>"Create Picture"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "pictures" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Sunny"], ["created_at", "2015-02-21 00:32:58.349429"], ["updated_at", "2015-02-21 00:32:58.349429"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 20ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-21 00:32:58 +0000
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.1ms)[0m  SELECT "pictures".* FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 42ms (Views: 41.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:32:58 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:32:58 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:32:58 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:32:58 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:32:58 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:32:58 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:32:58 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:32:58 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:32:58 +0000
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 00:33:00 +0000
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered pictures/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 44ms (Views: 42.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:33:00 +0000
+
+
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 00:33:03 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GGuq8QNnXxKRYxiDRpy0k0TxGdhuGRN+PUqdtD/AXyntI+QZPmguDKmvs7Htrn6NOO+Gb3NlmtjAl4ndfhBDDg==", "picture"=>{"name"=>"Rainy"}, "commit"=>"Create Picture"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "pictures" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Rainy"], ["created_at", "2015-02-21 00:33:03.551307"], ["updated_at", "2015-02-21 00:33:03.551307"]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 10ms (ActiveRecord: 6.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-21 00:33:03 +0000
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 87ms (Views: 86.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:33:03 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:33:03 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:33:03 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:03 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:03 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:03 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:03 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:03 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:33:03 +0000
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 00:33:07 +0000
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered pictures/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 45ms (Views: 43.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:33:07 +0000
+
+
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 00:33:13 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4MNaAWWvesrWlr+ZCOkhIFWd3oCNHWA2LzgwuQjOW2EVixTpWKAL1O5aFKuj2+s+KYNBN5Bh6ZDS5STQSR5HRg==", "picture"=>{"name"=>"Stormy"}, "commit"=>"Create Picture"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "pictures" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "Stormy"], ["created_at", "2015-02-21 00:33:13.175108"], ["updated_at", "2015-02-21 00:33:13.175108"]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 9ms (ActiveRecord: 6.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-21 00:33:13 +0000
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 50ms (Views: 48.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:33:13 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:33:13 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:13 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:13 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:33:13 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:13 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:13 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:13 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:33:13 +0000
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 00:33:15 +0000
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered pictures/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 47ms (Views: 45.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:33:16 +0000
+
+
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 00:33:17 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MPheRXgaH8aTHzDV8jrXetmJAXj9X1T9u///nNJEu6vFsBCtRRVu2KvTm+dZCB1kpZeez+Aj3VtGIuv1k5SnjA==", "picture"=>{"name"=>""}, "commit"=>"Create Picture"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "pictures" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", ""], ["created_at", "2015-02-21 00:33:17.124780"], ["updated_at", "2015-02-21 00:33:17.124780"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-21 00:33:17 +0000
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.1ms)[0m  SELECT "pictures".* FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 41ms (Views: 40.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:33:17 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:33:17 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:33:17 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:17 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:17 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:17 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:17 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:33:17 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:33:17 +0000
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-21 00:34:06 +0000
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.1ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 48ms (Views: 47.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:34:06 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:34:06 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:34:06 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:34:06 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:34:06 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:34:06 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:34:06 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:34:06 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:34:06 +0000
+
+
+Started GET "/assets/Instagram.svg" for 127.0.0.1 at 2015-02-21 00:34:06 +0000
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2015-02-21 00:34:19 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"QuqWOAO2+QSJvxqX1QdLj77jKensBnT8EWIun6tGy763otjQPrmIGrFzsaV+NYGRwv22XvF6/Vrsvzr26pbXmQ=="}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-21 00:34:19 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 46ms (Views: 45.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:34:19 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:34:19 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:34:19 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:34:19 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:34:19 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:34:19 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:34:19 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:34:19 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:34:19 +0000
+
+
+Started GET "/assets/Instagram.svg" for 127.0.0.1 at 2015-02-21 00:34:19 +0000
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-02-21 00:36:12 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cUIYoj3S/24712/wb7DQxXR0PGf43ZsOnasT4VTa6kHgya3mSdbx6fXdZZyAZjpsbRQOcWUZ51G2Jx/sqGuxoA==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "test@test.com"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["last_sign_in_at", "2015-02-21 00:12:20.528731"], ["current_sign_in_at", "2015-02-21 00:36:12.955603"], ["sign_in_count", 6], ["updated_at", "2015-02-21 00:36:12.956702"], ["id", 1]]
+  [1m[35m (0.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 74ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-21 00:36:12 +0000
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PicturesController#index as HTML
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.1ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 50ms (Views: 48.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:36:13 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:36:13 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:36:13 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:36:13 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:36:13 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:36:13 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:36:13 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:36:13 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:36:13 +0000
+
+
+Started GET "/assets/Instagram.svg" for 127.0.0.1 at 2015-02-21 00:36:13 +0000
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 00:36:15 +0000
+Processing by PicturesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered pictures/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 42ms (Views: 40.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:36:15 +0000
+
+
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 00:36:18 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CVyhKpLbauj9rX6eCY6ABKGAe8qy14gNOxpMsJbiWxizk6YhC8OFKQV1tyBoI1Tp1t8ZhcuFwmqfS0MVrgCuBA==", "picture"=>{"name"=>"Filthy"}, "commit"=>"Create Picture"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "pictures" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Filthy"], ["created_at", "2015-02-21 00:36:18.683279"], ["updated_at", "2015-02-21 00:36:18.683279"]]
+  [1m[35m (5.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 19ms (ActiveRecord: 6.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-21 00:36:18 +0000
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.1ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 53ms (Views: 52.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:36:18 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:36:18 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:36:18 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:36:18 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:36:18 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:36:18 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:36:18 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:36:18 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:36:18 +0000
+
+
+Started GET "/assets/Instagram.svg" for 127.0.0.1 at 2015-02-21 00:36:18 +0000
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 00:37:24 +0000
+Processing by PicturesController#new as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered pictures/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 58ms (Views: 48.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:37:24 +0000
+
+
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 00:37:29 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CvPBPU7xwpPNj9bArqMxnEUx8GZYA7ggRwNthrhoWfiwPMY21+ktUjVXH37PDuVxMm6SKSFR8kfjUmIjgIqs5A==", "picture"=>{"name"=>"Bunny"}, "commit"=>"Create Picture"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "pictures" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Bunny"], ["created_at", "2015-02-21 00:37:29.616415"], ["updated_at", "2015-02-21 00:37:29.616415"]]
+  [1m[35m (6.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "pictures" SET "user_id" = $1, "updated_at" = $2 WHERE "pictures"."id" = $3  [["user_id", 1], ["updated_at", "2015-02-21 00:37:29.625484"], ["id", 6]]
+  [1m[36m (6.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 19ms (ActiveRecord: 13.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-02-21 00:37:29 +0000
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.1ms)[0m  SELECT "pictures".* FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 46ms (Views: 45.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/my_style-b2c9eafc381773f6faa36bc90b1d491e.css?body=1" for 127.0.0.1 at 2015-02-21 00:37:29 +0000
+
+
+Started GET "/assets/pictures-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for 127.0.0.1 at 2015-02-21 00:37:29 +0000
+
+
+Started GET "/assets/application-3a358b7f51559ba76e310fb10d1378e6.css?body=1" for 127.0.0.1 at 2015-02-21 00:37:29 +0000
+
+
+Started GET "/assets/pictures-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for 127.0.0.1 at 2015-02-21 00:37:29 +0000
+
+
+Started GET "/assets/jquery_ujs-e27bd20a10d28155845a22d71ef94f2f.js?body=1" for 127.0.0.1 at 2015-02-21 00:37:29 +0000
+
+
+Started GET "/assets/jquery-87424c3c19e96d4fb033c10ebe21ec40.js?body=1" for 127.0.0.1 at 2015-02-21 00:37:29 +0000
+
+
+Started GET "/assets/turbolinks-f87b3583ca50adb0488b031297f5580d.js?body=1" for 127.0.0.1 at 2015-02-21 00:37:29 +0000
+
+
+Started GET "/assets/application-001948a807d6467a657420955d9f0c1c.js?body=1" for 127.0.0.1 at 2015-02-21 00:37:29 +0000
+
+
+Started GET "/assets/application.js" for 127.0.0.1 at 2015-02-21 00:37:29 +0000
+
+
+Started GET "/assets/Instagram.svg" for 127.0.0.1 at 2015-02-21 00:37:29 +0000
