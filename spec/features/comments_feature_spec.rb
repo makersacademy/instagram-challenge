@@ -12,4 +12,13 @@ feature 'comments' do
     expect(current_path).to eq '/posts'
   end
 
+  scenario 'an invalid comment' do
+    visit '/posts'
+    click_link 'Write a comment'
+    fill_in 'Thoughts', with: 'XY'
+    click_button 'Comment'
+    expect(page).not_to have_css 'li', text: 'XY'
+    expect(page).to have_content 'error'
+  end
+
 end
