@@ -11,6 +11,7 @@ context 'user not signed in and on the homepage' do
     visit '/'
     expect(page).not_to have_content 'Sign out'
   end
+
 end
 
 context 'user signed in on the homepage' do
