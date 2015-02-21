@@ -7288,3 +7288,606 @@ Processing by PicturesController#index as HTML
   Rendered pictures/index.html.haml within layouts/application (1.1ms)
 Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.3ms)
   [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (122.6ms)[0m  [1mDROP DATABASE IF EXISTS "instagram-challenge_test"[0m
+  [1m[35m (426.0ms)[0m  CREATE DATABASE "instagram-challenge_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.8ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.6ms)[0m  CREATE TABLE "comments" ("id" serial primary key, "comments" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "picture_id" integer) 
+  [1m[36m (1.2ms)[0m  [1mCREATE  INDEX  "index_comments_on_picture_id" ON "comments" USING btree ("picture_id")[0m
+  [1m[35m (5.3ms)[0m  CREATE TABLE "pictures" ("id" serial primary key, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (7.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (2.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (16.7ms)[0m  ALTER TABLE "comments" ADD CONSTRAINT "fk_rails_627f689f29"
+FOREIGN KEY ("picture_id")
+  REFERENCES "pictures" ("id")
+
+  [1m[36m (8.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (3.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (2.6ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (3.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150221190354')
+  [1m[36m (0.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150220195002')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150221155859')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150221160605')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:20:54 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.haml within layouts/application (8.9ms)
+Completed 200 OK in 137ms (Views: 116.0ms | ActiveRecord: 3.4ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 19:20:54 +0000
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.haml within layouts/application (30.0ms)
+Completed 200 OK in 41ms (Views: 32.6ms | ActiveRecord: 3.3ms)
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 19:20:54 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fbeba8e1dd8 @tempfile=#<Tempfile:/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/RackMultipart20150221-8685-b1u05j.png>, @original_filename="derp.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"derp.png\"\r\nContent-Type: image/png\r\nContent-Length: 63473\r\n">}, "commit"=>"Create Picture"}
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-11ipbfn.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep0.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep0.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep0.png[0]' -auto-orient -resize "64x64" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep020150221-8685-24ic9g'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep020150221-8685-24ic9g'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep0.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep0.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep0.png[0]' -auto-orient -resize "100x100" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep020150221-8685-1tkachw'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep020150221-8685-1tkachw'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep0.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep0.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep0.png[0]' -auto-orient -resize "200x200" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep020150221-8685-dc7idh'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-s53ep020150221-8685-dc7idh'
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-ju92wl.png'
+  [1m[35mSQL (3.4ms)[0m  INSERT INTO "pictures" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["image_file_name", "derp.png"], ["image_content_type", "image/png"], ["image_file_size", 63473], ["image_updated_at", "2015-02-21 19:20:54.907231"], ["created_at", "2015-02-21 19:20:55.282364"], ["updated_at", "2015-02-21 19:20:55.282364"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 416ms (ActiveRecord: 4.0ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:20:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.6ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.5ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 1]]
+  Rendered pictures/index.html.haml within layouts/application (118.1ms)
+Completed 200 OK in 120ms (Views: 116.8ms | ActiveRecord: 2.7ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:20:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 1]]
+  Rendered pictures/index.html.haml within layouts/application (5.3ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 1.0ms)
+Started GET "/pictures/1/comments/new" for 127.0.0.1 at 2015-02-21 19:20:55 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"1"}
+  [1m[35mPicture Load (0.3ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered comments/new.html.haml within layouts/application (5.0ms)
+Completed 200 OK in 27ms (Views: 12.7ms | ActiveRecord: 1.2ms)
+  [1m[36m (0.9ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:20:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:20:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 19:20:55 +0000
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.haml within layouts/application (1.5ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 19:20:55 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fbeba955738 @tempfile=#<Tempfile:/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/RackMultipart20150221-8685-1m8qisz.png>, @original_filename="derp.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"derp.png\"\r\nContent-Type: image/png\r\nContent-Length: 63473\r\n">}, "commit"=>"Create Picture"}
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-172ef1x.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij.png[0]' -auto-orient -resize "64x64" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij20150221-8685-1oqp7yc'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij20150221-8685-1oqp7yc'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij.png[0]' -auto-orient -resize "100x100" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij20150221-8685-cplo0q'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij20150221-8685-cplo0q'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij.png[0]' -auto-orient -resize "200x200" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij20150221-8685-1p478c7'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-q8tuij20150221-8685-1p478c7'
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-1ftsu4l.png'
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "pictures" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["image_file_name", "derp.png"], ["image_content_type", "image/png"], ["image_file_size", 63473], ["image_updated_at", "2015-02-21 19:20:55.514238"], ["created_at", "2015-02-21 19:20:55.741445"], ["updated_at", "2015-02-21 19:20:55.741445"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 334ms (ActiveRecord: 1.0ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:20:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.3ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 2]]
+  Rendered pictures/index.html.haml within layouts/application (4.9ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.9ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:20:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.4ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 19:20:55 +0000
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 19:20:55 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fbeba0fb0b0 @tempfile=#<Tempfile:/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/RackMultipart20150221-8685-1xi8dgz.png>, @original_filename="derp.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"derp.png\"\r\nContent-Type: image/png\r\nContent-Length: 63473\r\n">}, "commit"=>"Create Picture"}
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-6fwqpi.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv7.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv7.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv7.png[0]' -auto-orient -resize "64x64" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv720150221-8685-fkqju4'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv720150221-8685-fkqju4'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv7.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv7.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv7.png[0]' -auto-orient -resize "100x100" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv720150221-8685-xncm7t'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv720150221-8685-xncm7t'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv7.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv7.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv7.png[0]' -auto-orient -resize "200x200" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv720150221-8685-116msez'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-a0asv720150221-8685-116msez'
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8685-14jhh6p.png'
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "pictures" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image_file_name", "derp.png"], ["image_content_type", "image/png"], ["image_file_size", 63473], ["image_updated_at", "2015-02-21 19:20:55.876761"], ["created_at", "2015-02-21 19:20:56.087264"], ["updated_at", "2015-02-21 19:20:56.087264"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 322ms (ActiveRecord: 0.8ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:20:56 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.haml within layouts/application (4.8ms)
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 0.9ms)
+Started DELETE "/pictures/3" for 127.0.0.1 at 2015-02-21 19:20:56 +0000
+Processing by PicturesController#destroy as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mPicture Load (0.4ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 3]]
+  [1m[36mSQL (1.2ms)[0m  [1mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 13ms (ActiveRecord: 2.1ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:20:56 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:25:37 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (6.7ms)
+Completed 200 OK in 110ms (Views: 94.4ms | ActiveRecord: 2.3ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 19:25:37 +0000
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.haml within layouts/application (12.6ms)
+Completed 200 OK in 23ms (Views: 14.6ms | ActiveRecord: 2.8ms)
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 19:25:37 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fe02e5e3b00 @tempfile=#<Tempfile:/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/RackMultipart20150221-8792-171g580.png>, @original_filename="derp.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"derp.png\"\r\nContent-Type: image/png\r\nContent-Length: 63473\r\n">}, "commit"=>"Create Picture"}
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-1na673t.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw.png[0]' -auto-orient -resize "64x64" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw20150221-8792-1rjiyok'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw20150221-8792-1rjiyok'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw.png[0]' -auto-orient -resize "100x100" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw20150221-8792-1mwf9x4'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw20150221-8792-1mwf9x4'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw.png[0]' -auto-orient -resize "200x200" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw20150221-8792-1gcdrum'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-ku8ozw20150221-8792-1gcdrum'
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-12nk1i9.png'
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "pictures" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image_file_name", "derp.png"], ["image_content_type", "image/png"], ["image_file_size", 63473], ["image_updated_at", "2015-02-21 19:25:37.845814"], ["created_at", "2015-02-21 19:25:38.138000"], ["updated_at", "2015-02-21 19:25:38.138000"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 330ms (ActiveRecord: 1.2ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:25:38 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 4]]
+  Rendered pictures/index.html.haml within layouts/application (114.5ms)
+Completed 200 OK in 117ms (Views: 114.1ms | ActiveRecord: 2.3ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:25:38 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.3ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 4]]
+  Rendered pictures/index.html.haml within layouts/application (5.2ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 1.0ms)
+Started GET "/pictures/4/comments/new" for 127.0.0.1 at 2015-02-21 19:25:38 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"4"}
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered comments/new.html.haml within layouts/application (3.2ms)
+Completed 200 OK in 18ms (Views: 9.1ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:25:38 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:25:38 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.4ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 19:25:38 +0000
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 19:25:38 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fe02fa9d398 @tempfile=#<Tempfile:/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/RackMultipart20150221-8792-had209.png>, @original_filename="derp.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"derp.png\"\r\nContent-Type: image/png\r\nContent-Length: 63473\r\n">}, "commit"=>"Create Picture"}
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-1btxl2n.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn.png[0]' -auto-orient -resize "64x64" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn20150221-8792-16065jy'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn20150221-8792-16065jy'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn.png[0]' -auto-orient -resize "100x100" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn20150221-8792-axu1eb'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn20150221-8792-axu1eb'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn.png[0]' -auto-orient -resize "200x200" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn20150221-8792-1ghbfpz'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-41fshn20150221-8792-1ghbfpz'
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-mqd9se.png'
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "pictures" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image_file_name", "derp.png"], ["image_content_type", "image/png"], ["image_file_size", 63473], ["image_updated_at", "2015-02-21 19:25:38.354225"], ["created_at", "2015-02-21 19:25:38.566026"], ["updated_at", "2015-02-21 19:25:38.566026"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 335ms (ActiveRecord: 0.8ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:25:38 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 5]]
+  Rendered pictures/index.html.haml within layouts/application (6.2ms)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:25:38 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.3ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 19:25:38 +0000
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 19:25:38 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fe02fb02388 @tempfile=#<Tempfile:/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/RackMultipart20150221-8792-mxqelp.png>, @original_filename="derp.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"derp.png\"\r\nContent-Type: image/png\r\nContent-Length: 63473\r\n">}, "commit"=>"Create Picture"}
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-g27wkl.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q.png[0]' -auto-orient -resize "64x64" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q20150221-8792-1boy46y'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q20150221-8792-1boy46y'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q.png[0]' -auto-orient -resize "100x100" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q20150221-8792-ynvf17'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q20150221-8792-ynvf17'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q.png[0]' -auto-orient -resize "200x200" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q20150221-8792-1a6oh0j'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-pjfr7q20150221-8792-1a6oh0j'
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8792-dsvvua.png'
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "pictures" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["image_file_name", "derp.png"], ["image_content_type", "image/png"], ["image_file_size", 63473], ["image_updated_at", "2015-02-21 19:25:38.720024"], ["created_at", "2015-02-21 19:25:38.936105"], ["updated_at", "2015-02-21 19:25:38.936105"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 327ms (ActiveRecord: 0.8ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:25:39 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.3ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 6]]
+  Rendered pictures/index.html.haml within layouts/application (5.3ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.9ms)
+Started DELETE "/pictures/6" for 127.0.0.1 at 2015-02-21 19:25:39 +0000
+Processing by PicturesController#destroy as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPicture Load (0.4ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 6]]
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM "pictures" WHERE "pictures"."id" = $1  [["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 10ms (ActiveRecord: 1.5ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:25:39 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-02-21 19:25:39 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-02-21 19:25:39 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-02-21 19:25:39 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-02-21 19:25:39 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:27:39 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (6.3ms)
+Completed 200 OK in 109ms (Views: 93.7ms | ActiveRecord: 1.8ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 19:27:39 +0000
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.haml within layouts/application (12.9ms)
+Completed 200 OK in 24ms (Views: 15.7ms | ActiveRecord: 2.9ms)
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 19:27:39 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007ff92989fba0 @tempfile=#<Tempfile:/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/RackMultipart20150221-8863-1mcoip6.png>, @original_filename="derp.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"derp.png\"\r\nContent-Type: image/png\r\nContent-Length: 63473\r\n">}, "commit"=>"Create Picture"}
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-c0vewp.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n43.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n43.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n43.png[0]' -auto-orient -resize "64x64" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n4320150221-8863-cck70u'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n4320150221-8863-cck70u'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n43.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n43.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n43.png[0]' -auto-orient -resize "100x100" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n4320150221-8863-3bn8lc'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n4320150221-8863-3bn8lc'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n43.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n43.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n43.png[0]' -auto-orient -resize "200x200" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n4320150221-8863-gu2fgs'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1ci3n4320150221-8863-gu2fgs'
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-moojur.png'
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "pictures" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image_file_name", "derp.png"], ["image_content_type", "image/png"], ["image_file_size", 63473], ["image_updated_at", "2015-02-21 19:27:39.860298"], ["created_at", "2015-02-21 19:27:40.154964"], ["updated_at", "2015-02-21 19:27:40.154964"]]
+  [1m[35m (0.4ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 327ms (ActiveRecord: 1.5ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:27:40 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 7]]
+  Rendered pictures/index.html.haml within layouts/application (114.8ms)
+Completed 200 OK in 117ms (Views: 114.1ms | ActiveRecord: 2.7ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:27:40 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.3ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 7]]
+  Rendered pictures/index.html.haml within layouts/application (4.7ms)
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 0.9ms)
+Started GET "/pictures/7/comments/new" for 127.0.0.1 at 2015-02-21 19:27:40 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"7"}
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 7]]
+  Rendered comments/new.html.haml within layouts/application (3.3ms)
+Completed 200 OK in 19ms (Views: 10.3ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:27:40 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:27:40 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 19:27:40 +0000
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 19:27:40 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007ff92dc830d8 @tempfile=#<Tempfile:/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/RackMultipart20150221-8863-kxqkmo.png>, @original_filename="derp.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"derp.png\"\r\nContent-Type: image/png\r\nContent-Length: 63473\r\n">}, "commit"=>"Create Picture"}
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1kduleq.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x.png[0]' -auto-orient -resize "64x64" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x20150221-8863-gmfkma'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x20150221-8863-gmfkma'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x.png[0]' -auto-orient -resize "100x100" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x20150221-8863-1u8m36k'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x20150221-8863-1u8m36k'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x.png[0]' -auto-orient -resize "200x200" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x20150221-8863-1az4v80'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1rip25x20150221-8863-1az4v80'
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1i836xl.png'
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "pictures" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["image_file_name", "derp.png"], ["image_content_type", "image/png"], ["image_file_size", 63473], ["image_updated_at", "2015-02-21 19:27:40.366946"], ["created_at", "2015-02-21 19:27:40.581813"], ["updated_at", "2015-02-21 19:27:40.581813"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 319ms (ActiveRecord: 0.9ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:27:40 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 8]]
+  Rendered pictures/index.html.haml within layouts/application (6.3ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:27:40 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-21 19:27:40 +0000
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2015-02-21 19:27:40 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007ff929941a40 @tempfile=#<Tempfile:/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/RackMultipart20150221-8863-vtpy75.png>, @original_filename="derp.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"derp.png\"\r\nContent-Type: image/png\r\nContent-Length: 63473\r\n">}, "commit"=>"Create Picture"}
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1sxz85h.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o.png[0]' -auto-orient -resize "64x64" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o20150221-8863-1sutf2t'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o20150221-8863-1sutf2t'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o.png[0]' -auto-orient -resize "100x100" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o20150221-8863-1n4x5hi'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o20150221-8863-1n4x5hi'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o.png[0]' -auto-orient -resize "200x200" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o20150221-8863-bvv0k5'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-2all4o20150221-8863-bvv0k5'
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150221-8863-1j82rez.png'
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "pictures" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["image_file_name", "derp.png"], ["image_content_type", "image/png"], ["image_file_size", 63473], ["image_updated_at", "2015-02-21 19:27:40.718460"], ["created_at", "2015-02-21 19:27:40.945203"], ["updated_at", "2015-02-21 19:27:40.945203"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 353ms (ActiveRecord: 0.8ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.3ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 9]]
+  Rendered pictures/index.html.haml within layouts/application (5.0ms)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.9ms)
+Started DELETE "/pictures/9" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by PicturesController#destroy as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mPicture Load (0.4ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 9]]
+  [1m[35mSQL (0.7ms)[0m  DELETE FROM "pictures" WHERE "pictures"."id" = $1  [["id", 9]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 12ms (ActiveRecord: 1.6ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.7ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/DDemkiw/.rvm/gems/ruby-2.0.0-p594/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (6.2ms)
+  Rendered /Users/DDemkiw/.rvm/gems/ruby-2.0.0-p594/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (24.5ms)
+Completed 200 OK in 47ms (Views: 33.5ms | ActiveRecord: 2.8ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (1.7ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (1.8ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$cDuDKQkofmW2cQm8J7sz1ulnN54nj7gj5Ja.RgFOPU7Gjosc04oSy"], ["created_at", "2015-02-21 19:27:41.214501"], ["updated_at", "2015-02-21 19:27:41.214501"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (1.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-02-21 19:27:41.220688"], ["current_sign_in_at", "2015-02-21 19:27:41.220688"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-02-21 19:27:41.222458"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 112ms (ActiveRecord: 5.4ms)
+Started GET "/" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.4ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.9ms)
+Started GET "/" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.4ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.8ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.4ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/DDemkiw/.rvm/gems/ruby-2.0.0-p594/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (2.9ms)
+  Rendered /Users/DDemkiw/.rvm/gems/ruby-2.0.0-p594/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$IUXD.ex5tw7tpuCmCLLjtu0dXCi/LtDMclVEVkV1pJJG4ucv6ONSa"], ["created_at", "2015-02-21 19:27:41.369708"], ["updated_at", "2015-02-21 19:27:41.369708"]]
+  [1m[36m (0.5ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-02-21 19:27:41.372998"], ["current_sign_in_at", "2015-02-21 19:27:41.372998"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-02-21 19:27:41.374244"], ["id", 2]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 14ms (ActiveRecord: 2.4ms)
+Started GET "/" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.4ms)
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+Completed 200 OK in 7ms (Views: 5.2ms | ActiveRecord: 1.2ms)
+Started GET "/" for 127.0.0.1 at 2015-02-21 19:27:41 +0000
+Processing by PicturesController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.6ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m

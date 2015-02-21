@@ -1,12 +1,12 @@
 - if @pictures.any?
   - @pictures.each do |picture|
-    %p=link_to image_tag(picture.image.url(:large)), picture.image.url
-    %p=link_to "Delete", picture_path(picture), method: :delete
-    %p=link_to "Comment", new_picture_comment_path(picture)   
+    %p= link_to image_tag(picture.image.url(:large)), picture.image.url
+    %p= link_to "Delete", picture_path(picture), method: :delete
+    %p= link_to "Comment", new_picture_comment_path(picture)   
     %ul
-      -if picture.comments.any?
-        -picture.comments.each do |comment|
-          %ul="#{comment.comments}"
+      - if picture.comments.any?
+        - picture.comments.each do |comment|
+          %ul= "#{comment.comments}"
 - else
   No pictures yet
 
