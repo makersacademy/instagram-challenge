@@ -47,4 +47,12 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  def create_post
+    visit '/posts'
+    click_link 'Add a post'
+    attach_file 'post_picture', 'spec/images/test_pic.jpeg'
+    fill_in 'post_title', with: 'Cute kitten'
+    click_button 'Create Post'
+  end
 end

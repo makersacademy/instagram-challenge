@@ -20,6 +20,10 @@ class PostsController < ApplicationController
     send_data @post.picture, type: :jpg, disposition: 'inline'
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   private
 
   def post_params
