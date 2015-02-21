@@ -12,4 +12,14 @@ feature 'commenting' do
 		expect(page).to have_content "Nice"
 	end
 
+	scenario 'comment is deleted if post is deleted' do
+		visit '/posts'
+		click_link 'Comment'
+		fill_in "Thoughts", with: "Nice"
+		expect(page).to have_content "Nice"
+		click_button 'Leave Comment'
+		click_link 'Delete Pic'
+		expect(page).not_to have_content "Nice"
+	end
+
 end
