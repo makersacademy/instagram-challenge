@@ -78,13 +78,25 @@ feature 'posts' do
   end
 
   context 'deleting posts' do
-    before { Post.create description: 'Awesome latte' }
 
     scenario 'lets a user delete a post' do
       sign_up('test@test.com', 'testtest', 'testtest')
+      click_link 'Add a post'
+      fill_in 'Description', with: 'Awesome latte'
+      click_button 'Post'
       click_link 'Delete post'
       expect(page).not_to have_content 'Awesome latte'
       expect(page).to have_content 'Post deleted successfully'
+    end
+
+    scenario 'prevents a user editing a post that is not theirs' do
+      sign_up('test@test.com', 'testtest', 'testtest')
+      click_link 'Add a post'
+      fill_in 'Description', with: 'Awesome latte'
+      click_button 'Post'
+      click_link 'Sign out'
+      sign_up('steph@test.com', 'stephtest', 'stephtest')
+      expect(page).not_to have_link 'Delete post'
     end
 
   end
