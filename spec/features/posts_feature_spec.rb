@@ -24,8 +24,9 @@ feature 'posts' do
   end
 
   context 'creating posts' do
+
     scenario 'prompts user to add content, then displays the new post' do
-      visit '/posts'
+      sign_up('test@test.com', 'testtest', 'testtest')
       click_link 'Add a post'
       fill_in 'Description', with: 'Awesome latte'
       click_button 'Post'
@@ -33,8 +34,14 @@ feature 'posts' do
       expect(current_path).to eq '/posts'
     end
 
-    scenario 'an invalid post description' do
+    scenario 'prevents a user posting if they are not logged in' do
       visit '/posts'
+      click_link 'Add a post'
+      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    end
+
+    scenario 'an invalid post description' do
+      sign_up('test@test.com', 'testtest', 'testtest')
       click_link 'Add a post'
       fill_in 'Description', with: 'X'
       click_button 'Post'
@@ -48,7 +55,7 @@ feature 'posts' do
     before { Post.create description: 'Awesome latte' }
 
     scenario 'lets a user edit a post description' do
-      visit '/posts'
+      sign_up('test@test.com', 'testtest', 'testtest')
       click_link 'Edit post'
       fill_in 'Description', with: 'Super latte'
       click_button 'Update Post'
@@ -62,7 +69,7 @@ feature 'posts' do
     before { Post.create description: 'Awesome latte' }
 
     scenario 'lets a user delete a post' do
-      visit '/posts'
+      sign_up('test@test.com', 'testtest', 'testtest')
       click_link 'Delete post'
       expect(page).not_to have_content 'Awesome latte'
       expect(page).to have_content 'Post deleted successfully'
@@ -70,4 +77,12 @@ feature 'posts' do
 
   end
 
+end
+
+def sign_up(email, password, password_confirmation)
+  visit '/users/sign_up'
+  fill_in 'Email', with: email
+  fill_in 'Password', with: password
+  fill_in 'Password confirmation', with: password_confirmation
+  click_button 'Sign up'
 end
