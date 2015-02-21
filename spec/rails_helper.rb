@@ -55,4 +55,12 @@ RSpec.configure do |config|
     fill_in 'post_title', with: 'Cute kitten'
     click_button 'Create Post'
   end
+
+  def leave_comment
+    visit '/posts'
+    click_link 'Add a comment'
+    fill_in "Thoughts", with: 'Super cute!'
+    click_button 'Leave Comment'
+  end
+  
 end
