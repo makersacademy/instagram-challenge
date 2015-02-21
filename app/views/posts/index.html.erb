@@ -13,7 +13,9 @@
       <p>No comments</p>
     <% end %>
     <p><%= pluralize post.likes.count, 'like' %></p>
-    <h3><%= link_to 'Edit post', edit_post_path(post) %></h3>
+    <% if post.created_by?(current_user) %>
+      <h3><%= link_to 'Edit post', edit_post_path(post) %></h3>
+    <% end %>
     <h3><%= link_to 'Delete post', post_path(post), method: :delete %></h3>
     <h3><%= link_to 'Write a comment', new_post_comment_path(post) %></h3>
      <h3><%= link_to 'Like', post_likes_path(post), method: :post %></h3>

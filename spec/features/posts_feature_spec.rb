@@ -52,15 +52,27 @@ feature 'posts' do
   end
 
   context 'editing posts' do
-    before { Post.create description: 'Awesome latte' }
 
     scenario 'lets a user edit a post description' do
       sign_up('test@test.com', 'testtest', 'testtest')
+      click_link 'Add a post'
+      fill_in 'Description', with: 'Awesome latte'
+      click_button 'Post'
       click_link 'Edit post'
       fill_in 'Description', with: 'Super latte'
       click_button 'Update Post'
       expect(page).to have_content 'Super latte'
       expect(current_path).to eq '/posts'
+    end
+
+    scenario 'prevents a user editing a post that is not theirs' do
+      sign_up('test@test.com', 'testtest', 'testtest')
+      click_link 'Add a post'
+      fill_in 'Description', with: 'Awesome latte'
+      click_button 'Post'
+      click_link 'Sign out'
+      sign_up('steph@test.com', 'stephtest', 'stephtest')
+      expect(page).not_to have_link 'Edit post'
     end
 
   end
