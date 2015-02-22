@@ -27,6 +27,7 @@ feature 'posts' do
 
     scenario 'user creates a post' do
       visit '/posts'
+      sign_up
       click_link 'Create a post!'
       fill_in 'Title', with: 'My bass guitar'
       attach_file 'Image', 'spec/test-images/bass.jpeg'
@@ -37,18 +38,36 @@ feature 'posts' do
     end
   end
 
+  context 'creating posts without being logged in' do
+
+    scenario 'user creates a post without being logged in' do
+      visit '/posts'
+      click_link 'Create a post!'
+      expect(current_path).to eq '/users/sign_in'
+      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    end
+  end
+
   context 'deleting posts' do
 
     before do
       Post.create(title: 'My bass guitar')
     end
 
-    scenario 'removes a post when user click a delete link' do
+    scenario 'removes a post when user click the delete link' do
       visit '/posts'
+      sign_up
       click_link 'Delete Post'
       expect(page).to have_content "Post 'My bass guitar' deleted"
     end
+  end
 
+  def sign_up
+    click_link 'Sign up'
+    fill_in 'Email', with: 'my@email.com'
+    fill_in 'Password', with: 'testtest'
+    fill_in 'Password confirmation', with: 'testtest'
+    click_button 'Sign up'
   end
 
 end

@@ -7,18 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1>Instagram</h1>
-<% if user_signed_in? %>
-  <% user = User.find_for_database_authentication(email) %>
-  <% flash[:notice] = "Successfully logged in as #{user}" %>
-  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to 'Sign in', new_user_session_path %>
-  <%= link_to 'Sign up', new_user_registration_path %>
-<% end %>
-<p class='alert'><%= alert %></p>
-<p class='notice'><%= notice %></p>
-<%= yield %>
+<section id='yield'>
+  <% if user_signed_in? %>
+    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Sign in', new_user_session_path %>
+    <%= link_to 'Sign up', new_user_registration_path %>
+  <% end %>
+
+  <p class='alert'><%= alert %></p>
+  <p class='notice'><%= notice %></p>
+  <%= yield %>
+</section>
 
 </body>
 </html>
