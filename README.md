@@ -1,14 +1,46 @@
 Instagram Challenge
-===================
+=======================
 
-Build Instagram: Simple huh!
+## Synopsis
 
-Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture. It will need to look like the instagrams website or better. 
+A basic clone of Instagram.
 
-Breakdown of models:
-- User
-- Post
-- Comment/description
-- Like
+Users can create an account, post pictures with a description, comment on and like other user's pictures.
 
-Bonus if you can add filters :P 
+## Technologies Used
+
+- Ruby
+- Javascript
+- HTML
+- CSS
+- Rails
+- RSpec
+- Capybara
+- Phantom JS
+- Poltergeist
+
+## Job List
+
+- [x] Users can create an account
+- [x] Users can log in/out
+- [x] Users can post a photo with a description
+- [x] Users can edit and delete their own posts
+- [x] Users can comment on a photo
+- [x] Users can like a photo
+- [ ] Implement the design
+
+## Still to complete/refactor
+
+- [ ] Refactor the tests
+
+## How to use
+
+`git clone git@github.com:stepholdcorn/instagram-challenge.git`
+
+`bundle install`
+
+`rails s`
+
+Point your browser at localhost:3000
+
+`rspec` runs the tests
