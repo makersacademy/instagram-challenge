@@ -8,11 +8,12 @@ Instagram Challenge
   - rename 'picture' model to 'post' model
 
 ##Tests
-  - fix comment tests... BAHHHHHHHH!
-  - fix like test -GARRRHHHH
-  - add testing for avatar
-  - factory girl? 
-  - shoulda? 
+  - my tests are absolute rubbish...Believe it or not, I tried. 
+    - fix comment tests... BAHHHHHHHH!
+    - fix like test -GARRRHHHH
+    - add testing for avatar
+    - factory girl? 
+    - shoulda? 
 
 ##Add functionality
   - ~~Add Avatar~~
