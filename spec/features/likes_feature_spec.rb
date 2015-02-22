@@ -13,4 +13,10 @@ feature 'liking posts' do
     expect(page).to have_content('1 like')
   end
 
+  scenario 'a user needs to be logged in to like a post' do
+    click_link 'Sign out'
+    click_button 'Like!'
+    expect(page).to have_content('Log in')
+  end
+
 end
