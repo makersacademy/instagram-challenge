@@ -14,7 +14,7 @@
         %ul
           %li #{index + 1}. #{user_post.title}
           = link_to 'Comment on your Snapshot!', new_post_comment_path(user_post)
-          = link_to 'View post in more detail', post_path(user_post)
+          = link_to 'View your Snapshot! in more detail', post_path(user_post)
           -if user_post.comments.any?
             -user_post.comments.each do | comment |
               %ul
@@ -30,8 +30,9 @@
   -@posts.each_with_index do | post, index|
     %ul
       %li #{index + 1}. #{post.title}, posted by #{post.user.email}
+      = link_to 'View this Snapshot! in more detail', post_path(post)
       = link_to 'Comment on this Snapshot!', new_post_comment_path(post)
-      = link_to 'View post in more detail', post_path(post)
+      = link_to 'Dig this Snapshot!', '#'
       -if post.comments.any?
         -post.comments.each do | comment |
           %ul
