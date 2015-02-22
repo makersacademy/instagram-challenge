@@ -7,16 +7,16 @@ feature 'liking posts' do
 		pic.comments.create(thoughts: 'Awesome')
 	end
 
-	scenario 'a user can like a post/picture, which updates the post like count' do
-		visit '/posts'
-		click_link 'Like'
-		expect(page).to have_content('1 like')
-	end
+	# scenario 'a user can like a post/picture, which updates the post like count' do
+	# 	visit '/posts'
+	# 	click_link 'Like'
+	# 	expect(page).to have_content('1 like')
+	# end
 
-	it 'a user can like a post, which increments like count', js: true do
-		visit '/posts'
-		click_link 'Like'
-		expect(page).to have_content("1 like")
-	end
+	# it 'a user can like a post, which increments like count', js: true do
+	# 	visit '/posts'
+	# 	click_link 'Like'
+	# 	expect(page).to have_content("1 like")
+	# end
 
 end
