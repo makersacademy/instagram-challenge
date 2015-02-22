@@ -1,6 +1,12 @@
-- if current_user
-  = link_to 'Profile', profile_path(current_user)
-  = link_to 'Sign out', destroy_user_session_path, method: :delete
-- else
-  = link_to 'Sign up', new_user_registration_path
-  = link_to 'Sign in', new_user_session_path
+%nav
+  %span(id='logo')
+    %h1
+      Instagrails
+  %section(class='nav-container')
+    %ul(class='top-nav')
+    - if current_user
+      %li= link_to 'Profile', profile_path(current_user)
+      %li= link_to 'Sign out', destroy_user_session_path, method: :delete
+    - else
+      %li= link_to 'Sign up', new_user_registration_path
+      %li= link_to 'Sign in', new_user_session_path
