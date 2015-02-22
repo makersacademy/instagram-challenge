@@ -3,10 +3,13 @@ require_relative '../helpers/helper_methods.rb'
 
 feature 'pictures' do
 
+  before do
+    sign_in
+  end
+
   context 'no pictures to begin' do
 
     scenario 'should display a prompt to add pictures' do
-      sign_in
       visit '/pictures'
       expect(page).to have_content 'No pictures'
       expect(page).to have_link 'Add a picture'
@@ -16,7 +19,6 @@ feature 'pictures' do
   context 'adding pictures' do
 
     scenario 'should be able to add pictures' do
-      sign_in
       add_picture
       expect(page).to have_xpath("//img[contains(@src,\"derp.png\")]")
     end
@@ -25,7 +27,6 @@ feature 'pictures' do
   context 'deleting pictures' do
 
     scenario 'should be able to delete pictures' do
-      sign_in
       add_picture
       click_link 'Delete'
       expect(page).not_to have_xpath("//img[contains(@src,\"derp.png\")]")

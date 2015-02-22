@@ -3,15 +3,17 @@ require_relative '../helpers/helper_methods.rb'
 
 
 feature 'liking a picture' do
+
   before do
-    sign_in 
+    sign_in
     add_picture
   end
-
-  scenario 'a user can endorse a review, which updates the review endorsement count' do
+ 
+  it 'a user can like a picture, which increments the like count', js: true do
     visit '/pictures'
     click_link 'Like'
-    expect(page).to have_content('1 Like')
+    save_and_open_page
+    expect(page).to have_content("1 like")
   end
 
 end

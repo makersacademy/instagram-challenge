@@ -21,11 +21,12 @@ Bonus if you can add filters :P
 ##Tests
   - more testing on comments
   - factory girl? 
-  - shoudla? 
+  - shoulda? 
 
 ##Add functionality
   - ~~Add Avatar~~
   - Add bootstrap
+  - Add facebook login
   - ~~Add Like model~~
   - Add Following Relationships
 
