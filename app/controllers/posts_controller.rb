@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @user_posts = get_users_posts
+    @posts = get_posts
   end
 
   def new
@@ -25,6 +26,10 @@ class PostsController < ApplicationController
 
   def get_users_posts
     current_user ? current_user.posts.sort_by{ |p| p[:created_at] }.reverse : nil
+  end
+
+  def get_posts
+    Post.any? ? Post.all.sort_by{ |p| p[:created_at] }.reverse : nil
   end
 
 end
