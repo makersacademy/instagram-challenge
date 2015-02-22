@@ -26,14 +26,15 @@ Bonus if you can add filters :P
 ##Add functionality
   - ~~Add Avatar~~
   - Add bootstrap
-  - Add Like model
+  - ~~Add Like model~~
   - Add Following Relationships
 
 ##Bugs
   - ~~Photo visibility bug~~
   - ~~comments bug~~
-  - delete photo bug
+  - delete photo bug (?database problem?)
   - Avatar display bug
+
 
 
 

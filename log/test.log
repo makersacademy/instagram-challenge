@@ -11379,3 +11379,356 @@ Processing by PicturesController#index as HTML
   Rendered pictures/index.html.haml within layouts/application (1.5ms)
 Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 0.5ms)
   [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-02-22 19:13:54 +0000
+Processing by PicturesController#index as HTML
+Completed 401 Unauthorized in 19ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-22 19:13:54 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (14.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (107.6ms)
+Completed 200 OK in 189ms (Views: 169.5ms | ActiveRecord: 4.3ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-22 19:13:54 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (85.9ms)
+Completed 200 OK in 95ms (Views: 93.9ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-22 19:13:54 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameter: password_confirmation
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (3.6ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@example.com"], ["encrypted_password", "$2a$04$LwXOSfkcT0KSiQtj38cIH.kcgI/luWfxqt8t/ADIFy.Z1hmYuYf4q"], ["created_at", "2015-02-22 19:13:54.564180"], ["updated_at", "2015-02-22 19:13:54.564180"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.9ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2015-02-22 19:13:54.570316"], ["current_sign_in_at", "2015-02-22 19:13:54.570316"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-02-22 19:13:54.571701"], ["id", 21]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 54ms (ActiveRecord: 8.6ms)
+Started GET "/" for 127.0.0.1 at 2015-02-22 19:13:54 +0000
+Processing by PicturesController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  [1m[36mPicture Exists (1.5ms)[0m  [1mSELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1[0m  [["user_id", 21]]
+  Rendered pictures/index.html.haml within layouts/application (23.0ms)
+Completed 200 OK in 43ms (Views: 29.1ms | ActiveRecord: 3.6ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-22 19:13:54 +0000
+Processing by PicturesController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  [1m[36mPicture Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1[0m  [["user_id", 21]]
+  Rendered pictures/index.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 0.7ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-22 19:13:54 +0000
+Processing by PicturesController#new as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 21]]
+  Rendered pictures/new.html.haml within layouts/application (3.7ms)
+Completed 200 OK in 16ms (Views: 7.4ms | ActiveRecord: 1.4ms)
+Started POST "/pictures" for 127.0.0.1 at 2015-02-22 19:13:54 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fe5139c6260 @tempfile=#<Tempfile:/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/RackMultipart20150222-25781-jn9ucs.png>, @original_filename="derp.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"derp.png\"\r\nContent-Type: image/png\r\nContent-Length: 63473\r\n">}, "commit"=>"Create Picture"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-19u670w.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla.png[0]' -auto-orient -resize "64x64" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla20150222-25781-c6seso'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla20150222-25781-c6seso'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla.png[0]' -auto-orient -resize "100x100" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla20150222-25781-izqn4x'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla20150222-25781-izqn4x'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla.png[0]' -auto-orient -resize "200x200" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla20150222-25781-1ilcgq1'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1f92cla20150222-25781-1ilcgq1'
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-580o4h.png'
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "pictures" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["image_file_name", "derp.png"], ["image_content_type", "image/png"], ["image_file_size", 63473], ["image_updated_at", "2015-02-22 19:13:54.745700"], ["user_id", 21], ["created_at", "2015-02-22 19:13:55.039456"], ["updated_at", "2015-02-22 19:13:55.039456"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 322ms (ActiveRecord: 1.6ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  [1m[35mPicture Exists (0.5ms)[0m  SELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1  [["user_id", 21]]
+  [1m[36mPicture Load (0.7ms)[0m  [1mSELECT "pictures".* FROM "pictures" WHERE "pictures"."user_id" = $1  ORDER BY "pictures"."created_at" DESC[0m  [["user_id", 21]]
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1  [["picture_id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 10]]
+  [1m[35mComment Exists (0.7ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 10]]
+  Rendered pictures/index.html.haml within layouts/application (35.1ms)
+Completed 200 OK in 41ms (Views: 32.5ms | ActiveRecord: 5.7ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 21]]
+  [1m[35mPicture Exists (0.3ms)[0m  SELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1  [["user_id", 21]]
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT "pictures".* FROM "pictures" WHERE "pictures"."user_id" = $1  ORDER BY "pictures"."created_at" DESC[0m  [["user_id", 21]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1  [["picture_id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 10]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 10]]
+  Rendered pictures/index.html.haml within layouts/application (8.1ms)
+Completed 200 OK in 13ms (Views: 8.9ms | ActiveRecord: 1.5ms)
+Started GET "/pictures/10/likes" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#index as HTML
+Completed 401 Unauthorized in 1ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (7.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 17ms (Views: 15.1ms | ActiveRecord: 0.0ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.4ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameter: password_confirmation
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@example.com"], ["encrypted_password", "$2a$04$V1OWgojCstfdtRj0LdsQwejuqbHdttHTa5jJqv2AraeuhgvTUW8si"], ["created_at", "2015-02-22 19:13:55.303271"], ["updated_at", "2015-02-22 19:13:55.303271"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2015-02-22 19:13:55.305726"], ["current_sign_in_at", "2015-02-22 19:13:55.305726"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-02-22 19:13:55.306811"], ["id", 22]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 13ms (ActiveRecord: 1.6ms)
+Started GET "/" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 22]]
+  [1m[36mPicture Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1[0m  [["user_id", 22]]
+  Rendered pictures/index.html.haml within layouts/application (1.9ms)
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 0.6ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 22]]
+  [1m[36mPicture Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1[0m  [["user_id", 22]]
+  Rendered pictures/index.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#index as HTML
+Completed 401 Unauthorized in 1ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (5.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 15ms (Views: 13.4ms | ActiveRecord: 0.0ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (4.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameter: password_confirmation
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$1xPYDnenpsLy0I3c4C1kFu0rp/kZtS.SuGiNESndmWRH3NFSMqPnG"], ["created_at", "2015-02-22 19:13:55.390251"], ["updated_at", "2015-02-22 19:13:55.390251"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-02-22 19:13:55.393829"], ["current_sign_in_at", "2015-02-22 19:13:55.393829"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-02-22 19:13:55.395085"], ["id", 23]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 16ms (ActiveRecord: 2.5ms)
+Started GET "/" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 23]]
+  [1m[35mPicture Exists (0.2ms)[0m  SELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1  [["user_id", 23]]
+  Rendered pictures/index.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 6ms (Views: 3.6ms | ActiveRecord: 0.5ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 23]]
+  [1m[35mPicture Exists (0.2ms)[0m  SELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1  [["user_id", 23]]
+  Rendered pictures/index.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 0.4ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 23]]
+  Rendered pictures/new.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 0.3ms)
+Started POST "/pictures" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fe516e86108 @tempfile=#<Tempfile:/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/RackMultipart20150222-25781-12hn034.png>, @original_filename="derp.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"derp.png\"\r\nContent-Type: image/png\r\nContent-Length: 63473\r\n">}, "commit"=>"Create Picture"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 23]]
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-rokt03.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs.png[0]' -auto-orient -resize "64x64" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs20150222-25781-h06jm1'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs20150222-25781-h06jm1'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs.png[0]' -auto-orient -resize "100x100" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs20150222-25781-1xuigk0'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs20150222-25781-1xuigk0'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs.png[0]' -auto-orient -resize "200x200" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs20150222-25781-sqjw66'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-3bwsrs20150222-25781-sqjw66'
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-s9pbeq.png'
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "pictures" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["image_file_name", "derp.png"], ["image_content_type", "image/png"], ["image_file_size", 63473], ["image_updated_at", "2015-02-22 19:13:55.436972"], ["user_id", 23], ["created_at", "2015-02-22 19:13:55.760086"], ["updated_at", "2015-02-22 19:13:55.760086"]]
+  [1m[36m (0.5ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 345ms (ActiveRecord: 1.6ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 23]]
+  [1m[36mPicture Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1[0m  [["user_id", 23]]
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures" WHERE "pictures"."user_id" = $1  ORDER BY "pictures"."created_at" DESC  [["user_id", 23]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 11]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1  [["picture_id", 11]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 11]]
+  Rendered pictures/index.html.haml within layouts/application (8.6ms)
+Completed 200 OK in 15ms (Views: 9.9ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#index as HTML
+Completed 401 Unauthorized in 1ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (6.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameter: password_confirmation
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$M8Obwg0WNCQKWMqnapK.zeYcEQ2KDh83MzBwsm6C9aD3.6dXe/YRe"], ["created_at", "2015-02-22 19:13:55.857505"], ["updated_at", "2015-02-22 19:13:55.857505"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-02-22 19:13:55.861985"], ["current_sign_in_at", "2015-02-22 19:13:55.861985"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-02-22 19:13:55.863631"], ["id", 24]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 19ms (ActiveRecord: 2.3ms)
+Started GET "/" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 24]]
+  [1m[35mPicture Exists (0.2ms)[0m  SELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1  [["user_id", 24]]
+  Rendered pictures/index.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 1.3ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 24]]
+  [1m[35mPicture Exists (0.3ms)[0m  SELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1  [["user_id", 24]]
+  Rendered pictures/index.html.haml within layouts/application (2.1ms)
+Completed 200 OK in 7ms (Views: 3.9ms | ActiveRecord: 0.5ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 24]]
+  Rendered pictures/new.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 0.3ms)
+Started POST "/pictures" for 127.0.0.1 at 2015-02-22 19:13:55 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fe516fe4ae0 @tempfile=#<Tempfile:/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/RackMultipart20150222-25781-1u16vjc.png>, @original_filename="derp.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"derp.png\"\r\nContent-Type: image/png\r\nContent-Length: 63473\r\n">}, "commit"=>"Create Picture"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 24]]
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15lc7e0.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg.png[0]' -auto-orient -resize "64x64" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg20150222-25781-fn3yx0'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg20150222-25781-fn3yx0'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg.png[0]' -auto-orient -resize "100x100" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg20150222-25781-1sd0182'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg20150222-25781-1sd0182'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg.png[0]'
+Command :: convert '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg.png[0]' -auto-orient -resize "200x200" '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg20150222-25781-1jic2i9'
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-15yjalg20150222-25781-1jic2i9'
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/var/folders/ch/bpxflnj51hxc8z5l66d_h3080000gn/T/58fd9edd83341c29f1aebba81c31e25720150222-25781-1sttn6c.png'
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "pictures" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["image_file_name", "derp.png"], ["image_content_type", "image/png"], ["image_file_size", 63473], ["image_updated_at", "2015-02-22 19:13:55.908838"], ["user_id", 24], ["created_at", "2015-02-22 19:13:56.210441"], ["updated_at", "2015-02-22 19:13:56.210441"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 323ms (ActiveRecord: 1.3ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-22 19:13:56 +0000
+Processing by PicturesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 24]]
+  [1m[36mPicture Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1[0m  [["user_id", 24]]
+  [1m[35mPicture Load (0.4ms)[0m  SELECT "pictures".* FROM "pictures" WHERE "pictures"."user_id" = $1  ORDER BY "pictures"."created_at" DESC  [["user_id", 24]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 12]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1  [["picture_id", 12]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 12]]
+  Rendered pictures/index.html.haml within layouts/application (9.2ms)
+Completed 200 OK in 16ms (Views: 10.4ms | ActiveRecord: 1.5ms)
+Started DELETE "/pictures/12" for 127.0.0.1 at 2015-02-22 19:13:56 +0000
+Processing by PicturesController#destroy as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 24]]
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1  ORDER BY "pictures"."created_at" DESC LIMIT 1[0m  [["id", 12]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 12]]
+  [1m[35mSQL (0.9ms)[0m  DELETE FROM "pictures" WHERE "pictures"."id" = $1  [["id", 12]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 16ms (ActiveRecord: 2.1ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-02-22 19:13:56 +0000
+Processing by PicturesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 24]]
+  [1m[36mPicture Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1[0m  [["user_id", 24]]
+  Rendered pictures/index.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-02-22 19:13:56 +0000
+Processing by PicturesController#index as HTML
+Completed 401 Unauthorized in 1ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-22 19:13:56 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (8.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 19ms (Views: 16.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-02-22 19:13:56 +0000
+Processing by PicturesController#index as HTML
+Completed 401 Unauthorized in 1ms
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-02-22 19:13:56 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (8.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.0ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-02-22 19:13:56 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (3.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-02-22 19:13:56 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameter: password_confirmation
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$.0PKwGHtcYlq0Sk4M/yeHuNo9uqCYwhfwci4Ppvigk6z592HjcZFK"], ["created_at", "2015-02-22 19:13:56.374059"], ["updated_at", "2015-02-22 19:13:56.374059"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-02-22 19:13:56.376816"], ["current_sign_in_at", "2015-02-22 19:13:56.376816"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-02-22 19:13:56.377925"], ["id", 25]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 14ms (ActiveRecord: 1.7ms)
+Started GET "/" for 127.0.0.1 at 2015-02-22 19:13:56 +0000
+Processing by PicturesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 25]]
+  [1m[35mPicture Exists (0.2ms)[0m  SELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1  [["user_id", 25]]
+  Rendered pictures/index.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 7ms (Views: 4.1ms | ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2015-02-22 19:13:56 +0000
+Processing by PicturesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 25]]
+  [1m[35mPicture Exists (0.5ms)[0m  SELECT  1 AS one FROM "pictures" WHERE "pictures"."user_id" = $1 LIMIT 1  [["user_id", 25]]
+  Rendered pictures/index.html.haml within layouts/application (2.6ms)
+Completed 200 OK in 104ms (Views: 5.0ms | ActiveRecord: 0.7ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
