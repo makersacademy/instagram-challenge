@@ -31,6 +31,7 @@ Bonus if you can add filters :P
   - Add facebook login
   - ~~Add Like model~~
   - Add Following Relationships
+  - Add filters to pictures
 
 ##Bugs
   - ~~Photo visibility bug~~
