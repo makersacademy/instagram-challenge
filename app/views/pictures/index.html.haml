@@ -2,11 +2,14 @@
   - @user.pictures.each do |picture|
     %p= link_to image_tag(picture.image.url(:large)), picture.image.url
     %p= link_to "Delete", picture_path(picture), method: :delete
-    %p= link_to "Comment", new_picture_comment_path(picture)   
+    %p= link_to "Comment", new_picture_comment_path(picture) 
+    %p= link_to "Like", picture_likes_path(picture), class: 'like-link'
+    %span.like_count= picture.likes.count 
+    ='like'.pluralize picture.likes.count 
     %ul
       - if picture.comments.any?
         - picture.comments.each do |comment|
-          %ul= "#{comment.content}"
+          %li= "#{comment.content}"
 - else
   %p= "No pictures yet"
   %a(href='pictures/new') Add a picture
