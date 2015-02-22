@@ -59,6 +59,12 @@ def sign_up(name)
   click_button('Sign up')
 end
 
+def log_in_on_page(name)
+  fill_in('Email', with: "#{name}@example.com")
+  fill_in('Password', with: 'testtest')
+  click_button('Log in')
+end
+
 def new_post(title)
   click_link 'Add a new Snapshot!'
   fill_in('Title', with: title)

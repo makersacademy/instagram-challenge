@@ -20,11 +20,10 @@ feature 'adding comments to a post' do
   context 'when not logged in' do
 
     it 'should take you to the log in page' do
-
-    end
-
-    it 'once logged in you should be auto redirected to add comment page' do
-
+      new_post('My first Snapshot!')
+      click_link('Sign out')
+      click_link('Comment on this Snapshot!')
+      expect(current_path).to eq('/users/sign_in')
     end
 
   end
@@ -32,7 +31,9 @@ feature 'adding comments to a post' do
   context 'when logged in' do
 
     it 'should take you to the add comment page' do
-
+      new_post('My first Snapshot!')
+      click_link('Comment on this Snapshot!')
+      expect(page).to have_button('Post your comment')      
     end
 
   end
