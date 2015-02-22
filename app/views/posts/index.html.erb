@@ -1,31 +1,46 @@
 <p id="add"><%= link_to 'Add a post', new_post_path %></p>
+
 <% if @posts.all.any? %>
+
   <% @posts.all.each do |post| %>
     <%= image_tag post.image.url(:medium) %>
     <p><%= post.description %></p>
+
     <ul>
       <li>
         <p><%= link_to 'Like', post_likes_path(post), class: 'likes-link' %>
         <span class="likes_count"><%= post.likes.count %></span><%= ' like'.pluralize(post.likes.count) %></p>
       </li>
     </ul>
+
     <% if post.comments.any? %>
+
       <ul>
         <% post.comments.each do |comment| %>
           <li>
-            <%= comment.thoughts %>
+            <p><%= comment.thoughts %></p>
           </li>
         <% end %>
       </ul>
+
     <% else %>
+
       <p>No comments</p>
+
     <% end %>
+
     <% if post.created_by?(current_user) %>
+
       <p id="edit"><%= link_to 'Edit post', edit_post_path(post) %></h3>
       <p id="delete"><%= link_to 'Delete post', post_path(post), method: :delete %></h3>
+
     <% end %>
+
     <p><%= link_to 'Write a comment', new_post_comment_path(post) %></p>
+
   <% end %>
 <% else %>
+
   <h1>There are no posts yet</h1>
+
 <% end %>

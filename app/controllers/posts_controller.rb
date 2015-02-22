@@ -11,11 +11,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    if @post.save
-      redirect_to posts_path
-    else
-      render 'new'
-    end
+    @post.save ? (redirect_to posts_path) : (render 'new')
   end
 
   def edit
@@ -24,11 +20,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
-      redirect_to posts_path
-    else
-      render 'edit'
-    end
+    @post.update(post_params) ? (redirect_to posts_path) : (render 'edit')
   end
 
   def destroy
