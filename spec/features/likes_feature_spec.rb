@@ -1,18 +1,25 @@
 require 'rails_helper'
 
 feature 'liking' do
-  before { Post.create description: 'Awesome latte' }
-
-  scenario 'allows a user to like a post' do
-    sign_up('test@test.com', 'testtest', 'testtest')
-    click_link 'Like'
-    expect(page).to have_content('1 like')
+  before do
+    sign_up('steph@test.com', 'stephtest', 'stephtest')
+    click_link 'Add a post'
+    attach_file('post[image]', 'spec/features/holiday.jpg')
+    fill_in 'Description', with: 'Lazy day'
+    click_button 'Post'
+    click_link 'Sign out'
   end
 
-  scenario 'prevents a user liking a post unless they are signed in' do
+  it 'allows a user to like a post', js: true do
+    sign_up('test@test.com', 'testtest', 'testtest')
+    click_link 'Like'
+    expect(page).to have_content '1 like'
+  end
+
+  it 'prevents a user liking a post unless they are signed in', js: true do
     visit '/posts'
     click_link 'Like'
-    expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    expect(page).to have_content '0 likes'
   end
 
 end
