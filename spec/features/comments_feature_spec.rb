@@ -4,7 +4,7 @@ feature 'commenting' do
 	before {Post.create name: 'Pic'}
 
 	scenario 'allows users to leave a comment' do
-		visit '/posts'
+		sign_up("a@a.com")
 		click_link 'Comment'
 		fill_in "Thoughts", with: "Nice"
 		click_button 'Leave Comment'
@@ -13,7 +13,7 @@ feature 'commenting' do
 	end
 
 	scenario 'comment is deleted if post is deleted' do
-		visit '/posts'
+		sign_up("a@a.com")
 		click_link 'Comment'
 		fill_in "Thoughts", with: "Nice"
 		expect(page).to have_content "Nice"

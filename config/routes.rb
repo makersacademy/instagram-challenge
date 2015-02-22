@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'posts#index'
 
-  resources :posts do
+  resources :posts, shallow: true do
     resources :comments
+    resources :likes
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
