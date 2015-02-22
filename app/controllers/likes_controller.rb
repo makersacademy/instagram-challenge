@@ -9,4 +9,5 @@ class LikesController < ApplicationController
 		@post.likes.create
 		redirect_to posts_path
 	end
+
 end
