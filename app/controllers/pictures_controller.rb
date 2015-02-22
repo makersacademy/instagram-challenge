@@ -4,18 +4,21 @@ class PicturesController < ApplicationController
 
   def index
     @pictures = Picture.all  
+    @user = current_user
   end  
 
   def show
     @picture = Picture.find(params[:id])
-  end
+   end
 
   def new
     @picture = Picture.new
   end
 
   def create
-    @picture = Picture.create(post_params)
+    @picture = Picture.new(post_params)
+    @picture.user_id = current_user.id
+    @picture.save
     redirect_to '/pictures'
   end 
 
