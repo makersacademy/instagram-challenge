@@ -46,7 +46,6 @@ feature 'adding comments to a post' do
       fill_in('Your comment', with: 'This is what I think about this Snapshot!')
       click_button('Post your comment')
       expect(page).to have_content('This is what I think about this Snapshot!')
-
     end
 
   end

@@ -11,8 +11,4 @@ class Post < ActiveRecord::Base
     comment
   end
 
-  def comments_sorted
-    comments.sort_by { |a| a[:created_at] }.reverse
-  end
-
 end
