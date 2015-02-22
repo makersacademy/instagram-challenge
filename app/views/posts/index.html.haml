@@ -4,6 +4,9 @@
     %h2= post.title
     = link_to image_tag("/posts/#{post.id}/picture"), post_path(post)
     = link_to "Add a comment", new_post_comment_path(post)
+    %p
+      = button_to "Like!", "/posts/#{post.id}/likes"
+      = pluralize post.likes.count , 'like'
     - if post.comments.any?
       - post.comments.each do |comment|
         = comment.thoughts
