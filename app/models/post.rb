@@ -5,4 +5,14 @@ class Post < ActiveRecord::Base
 
   validates :title, length: {minimum: 5}
 
+  def build_comment(params, user)
+    comment = comments.build(params)
+    comment.user = user
+    comment
+  end
+
+  def comments_sorted
+    comments.sort_by { |a| a[:created_at] }.reverse
+  end
+
 end

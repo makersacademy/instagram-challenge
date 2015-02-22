@@ -14,6 +14,10 @@
         %ul
           %li #{index + 1}. #{user_post.title}
           = link_to 'Comment on your Snapshot!', new_post_comment_path(user_post)
+          -if user_post.comments.any?
+            -user_post.comments_sorted.each do | comment |
+              %ul
+                %li #{comment.user.email}, commented: #{comment.comment}
 
 -else
   You must log in or sign up to view your snapshots
