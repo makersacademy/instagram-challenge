@@ -4,12 +4,9 @@ class Picture < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   has_many :comments, dependent: :destroy
-  has_many :likes
+  has_many :likes, dependent: :destroy
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
 
-  def filters
-
-  end 
 
 end

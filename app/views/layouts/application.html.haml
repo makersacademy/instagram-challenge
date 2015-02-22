@@ -6,10 +6,28 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body
-    - if user_signed_in?
-      %p= image_tag current_user.avatar.url(:thumb) 
-      %p= link_to "Sign out", destroy_user_session_path, method: :delete
 
-    = notice
-    = yield
+
+%body
+.navbar.navbar-default.navbar-static-top
+  .container
+    %button.navbar-toggle(type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse")
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    - if user_signed_in?
+      = image_tag current_user.avatar.url(:thumb)
+    .navbar-collapse.collapse.navbar-responsive-collapse
+      %ul.nav.navbar-nav
+        %li= link_to "Sign out", destroy_user_session_path, method: :delete
+      
+.container
+  .row
+    .col-lg-9
+      = notice
+      = yield
+        
+  %footer
+    %p &copy; Demkiw 
+    = Date.today.year
+

@@ -1,11 +1,13 @@
 - if @user.pictures.any?
   - @user.pictures.each do |picture|
     %p= link_to image_tag(picture.image.url(:large)), picture.image.url
-    %p= link_to "Delete", picture_path(picture), method: :delete
-    %p= link_to "Comment", new_picture_comment_path(picture) 
-    %p= link_to "Like", picture_likes_path(picture), class: 'like-link'
-    %span.like_count= picture.likes.count 
-    ='like'.pluralize picture.likes.count 
+    %p
+    %span.badge
+      %span.like_count= picture.likes.count
+      ='like'.pluralize picture.likes.count 
+    =link_to "Like", picture_likes_path(picture), class: 'like-link' 
+    =link_to "Comment", new_picture_comment_path(picture)
+    = link_to "Delete", picture_path(picture), method: :delete 
     %ul
       - if picture.comments.any?
         - picture.comments.each do |comment|
