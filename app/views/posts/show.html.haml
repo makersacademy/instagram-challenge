@@ -1,0 +1,12 @@
+%h1
+  Snapshot! #{@post.title}
+
+%h3
+  posted by #{@post.user.email}
+
+%h3
+  Comments
+  -if @post.comments
+    %ul
+      -@post.comments.each do |comment|
+        %li #{comment.user.email} commented #{comment.comment} at #{comment.created_at}

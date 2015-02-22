@@ -70,3 +70,9 @@ def new_post(title)
   fill_in('Title', with: title)
   click_button('Post your Snapshot!')
 end
+
+def add_comment(comment)
+  click_link('Comment on this Snapshot!')
+  fill_in('Your comment', with: comment)
+  click_button('Post your comment')
+end
