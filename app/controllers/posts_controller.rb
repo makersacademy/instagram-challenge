@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.picture = post_params[:picture].read
     @post.save!
-    redirect_to '/posts'
+    redirect_to posts_path
   end
 
   def show_pic
@@ -31,14 +31,14 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if current_user.id != @post.user_id
       flash[:notice] = 'Error: You must be the author to edit a post'
-      redirect_to '/posts'
+      redirect_to posts_path
     end
   end
 
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to '/posts'
+    redirect_to posts_path
   end
 
   def destroy
@@ -49,7 +49,7 @@ class PostsController < ApplicationController
       @post.destroy
       flash[:notice] = 'Post deleted successfully'
     end
-    redirect_to '/posts'
+    redirect_to posts_path
   end
 
   private

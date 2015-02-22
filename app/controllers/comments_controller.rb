@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def new
     @post = Post.find(params[:post_id])
     if !current_user
-      redirect_to '/users/sign_in'
+      redirect_to new_user_session_path
     else
       @comment = Comment.new
     end
