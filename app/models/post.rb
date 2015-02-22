@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :digs, dependent: :destroy
 
   validates :title, length: {minimum: 5}
 
