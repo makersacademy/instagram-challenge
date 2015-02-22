@@ -30,6 +30,10 @@ gem 'cancancan', '~> 1.10'
 gem 'paperclip' 
 # manages uploads gem
 
+gem 'poltergeist'
+
+gem 'database_cleaner'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

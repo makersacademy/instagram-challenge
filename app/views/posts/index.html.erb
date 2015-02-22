@@ -2,8 +2,8 @@
 	<% @posts.each do |post| %>
 		<h2><%= link_to post.name, post_path(post) %></h2>
 		<%= image_tag post.image.url(:large) %>
-		<p><%= pluralize post.likes.count, 'like' %></p>
-		<p><%= link_to "Like", post_likes_path(post), method: :post %></p>
+		<span class='likes_count'><%= post.likes.count %> <%= 'like'.pluralize(post.likes.count) %> </span>
+		<p class="likes-link"><%= link_to "Like", post_likes_path(post), method: :post, class: "likes-link" %></p>
 		<%= link_to "Edit", edit_post_path(post) %> 
 		<%= link_to	"Delete", post_path(post), method: :delete %>
 	<% end %>
