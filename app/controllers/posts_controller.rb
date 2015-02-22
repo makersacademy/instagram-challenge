@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-
+    @user_posts = get_users_posts
   end
 
   def new
@@ -21,6 +21,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title)
+  end
+
+  def get_users_posts
+    current_user ? current_user.posts.sort_by{ |p| p[:created_at] }.reverse : nil
   end
 
 end

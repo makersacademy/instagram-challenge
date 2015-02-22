@@ -58,3 +58,9 @@ def sign_up(name)
   fill_in('Password confirmation', with: 'testtest')
   click_button('Sign up')
 end
+
+def new_post(title)
+  click_link 'Add a new Snapshot!'
+  fill_in('Title', with: title)
+  click_button('Post your Snapshot!')
+end

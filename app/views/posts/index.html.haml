@@ -4,5 +4,11 @@ Welcome to snapshot!
   = link_to 'Add a new Snapshot!', new_post_path
   -if current_user.has_no_snapshots?
     %h2 You have not yet posted any Snapshot!s
+  - else
+    -if @user_posts.any?
+      -@user_posts.each_with_index do | up, index |
+        %ul
+          %li "#{index + 1}. #{up.title}"
+
 -else
   You must log in or sign up to view your snapshots

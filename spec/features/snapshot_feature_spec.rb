@@ -18,9 +18,7 @@ feature 'snapshots' do
     end
 
     it 'should successfully save a new snapshot' do
-      click_link 'Add a new Snapshot!'
-      fill_in('Title', with: 'My first Snapshot!')
-      click_button('Post your Snapshot!')
+      new_post('My first Snapshot!')
       expect(Post.count).to eq(1)
     end
 

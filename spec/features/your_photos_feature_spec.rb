@@ -13,11 +13,30 @@ feature 'your photos' do
 
   context 'user logged in' do
 
+    before do
+      sign_up('test')
+    end
+
     context 'user has no posted Snapshots' do
 
       it 'should tell the user they do not have any snapshots' do
-        sign_up('test')
         expect(page).to have_content 'You have not yet posted any Snapshot!s'
+      end
+
+    end
+
+    context 'user has previously posted a snapshot' do
+
+      it 'should display the snapshots a user has previously posted' do
+        new_post('My first Snapshot!')
+        expect(page).to have_content 'My first Snapshot!'
+      end
+
+      it 'should display the snapshots in order of most recent first' do
+        new_post('My first Snapshot!')
+        new_post('My second Snapshot!')
+        expect(page).to have_content '1. My second Snapshot!'
+        expect(page).to have_content '2. My first Snapshot!'
       end
 
     end
