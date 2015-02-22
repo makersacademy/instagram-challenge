@@ -19,7 +19,9 @@ Bonus if you can add filters :P
   - rename 'picture' model to 'post' model
 
 ##Tests
-  - more testing on comments
+  - fix comment tests... BAHHHHHHHH!
+  - fix like test
+  - add testing for avatar
   - factory girl? 
   - shoulda? 
 
