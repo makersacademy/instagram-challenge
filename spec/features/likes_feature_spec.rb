@@ -19,4 +19,12 @@ feature 'liking posts' do
     expect(page).to have_content('Log in')
   end
 
+  scenario 'a user can only like a post once' do
+    visit '/posts'
+    click_button 'Like!'
+    click_button 'Like!'
+    expect(page).to have_content '1 like'
+    expect(page).to have_content 'You have already liked this post'
+  end
+
 end
