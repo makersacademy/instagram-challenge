@@ -16,6 +16,8 @@ Bonus if you can add filters :P
 
 #TO DO
 
+  - rename 'picture' model to 'post' model
+
 ##Tests
   - more testing on comments
   - factory girl? 
