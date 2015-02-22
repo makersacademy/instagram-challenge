@@ -14,22 +14,24 @@ Breakdown of models:
 
 Bonus if you can add filters :P 
 
-##TO DO
-  #Tests
-    - more testing on comments
-    - factory girl? 
-    - shoudla? 
+#TO DO
 
-  #Add functionality
-    - ~~Add Avatar~~
-    - Add bootstrap
-    - Add Like model
-    - Add Following Relationships
-  #Bugs
-    - ~~Photo visibility bug~~
-    - ~~comments bug~~
-    - delete photo bug
-    - Avatar display bug
+##Tests
+  - more testing on comments
+  - factory girl? 
+  - shoudla? 
+
+##Add functionality
+  - ~~Add Avatar~~
+  - Add bootstrap
+  - Add Like model
+  - Add Following Relationships
+
+##Bugs
+  - ~~Photo visibility bug~~
+  - ~~comments bug~~
+  - delete photo bug
+  - Avatar display bug
 
 
 
