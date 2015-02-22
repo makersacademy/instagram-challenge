@@ -37,4 +37,18 @@ feature 'posts' do
     end
   end
 
+  context 'deleting posts' do
+
+    before do
+      Post.create(title: 'My bass guitar')
+    end
+
+    scenario 'removes a post when user click a delete link' do
+      visit '/posts'
+      click_link 'Delete Post'
+      expect(page).to have_content "Post 'My bass guitar' deleted"
+    end
+
+  end
+
 end
