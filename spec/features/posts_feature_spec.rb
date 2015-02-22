@@ -69,6 +69,19 @@ feature 'posts' do
       expect(current_path).to eq '/posts'
     end
 
+    scenario 'an invalid post description update' do
+      sign_up('test@test.com', 'testtest', 'testtest')
+      click_link 'Add a post'
+      attach_file('post[image]', 'spec/features/holiday.jpg')
+      fill_in 'Description', with: 'Lazy day'
+      click_button 'Post'
+      click_link 'Edit post'
+      fill_in 'Description', with: 'S'
+      click_button 'Update Post'
+      expect(page).not_to have_css 'h2', text: 'S'
+      expect(page).to have_content 'error'
+    end
+
     scenario 'prevents a user editing a post that is not theirs' do
       sign_up('test@test.com', 'testtest', 'testtest')
       click_link 'Add a post'
