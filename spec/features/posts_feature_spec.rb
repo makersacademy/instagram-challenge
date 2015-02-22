@@ -55,7 +55,7 @@ feature 'posts' do
 
 		scenario 'let a user edit a post' do
 			sign_up("a@a.com")
-			click_link 'Edit post'
+			click_link 'Edit'
 			fill_in 'Name', with: 'Picture'
 			click_button 'Update Post'
 			expect(page).to have_content "Picture"
@@ -68,7 +68,7 @@ feature 'posts' do
 
 		scenario 'let a user delete a post' do
 			sign_up("a@a.com")
-			click_link 'Delete Pic'
+			click_link 'Delete'
 			expect(page).not_to have_content "Pic"
 			expect(page).to have_content "Post deleted successfully"
 		end

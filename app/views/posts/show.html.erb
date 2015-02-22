@@ -1,2 +1,13 @@
 <p><%= @post.name %></p>
+<%= image_tag @post.image.url(:large) %>
 <p><%= @post.description %></p>
+<%= link_to "Comment", new_post_comment_path(@post) %>
+<% if @post.comments.any? %>
+	<ul>
+		<% @post.comments.each do |post| %>
+			<li><%= post.thoughts %></li>
+		<% end %>
+	</ul>
+<% else %>
+	<p> No Comments </p>
+<% end %>
