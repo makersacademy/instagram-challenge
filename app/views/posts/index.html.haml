@@ -1,4 +1,8 @@
-Welcome to snapshot!
+%h1
+  Welcome to snapshot!
+
+%h2
+  Your Snapshot!s
 
 -if current_user
   = link_to 'Add a new Snapshot!', new_post_path
@@ -8,12 +12,17 @@ Welcome to snapshot!
     -if @user_posts.any?
       -@user_posts.each_with_index do | up, index |
         %ul
-          %li "#{index + 1}. #{up.title}"
+          %li #{index + 1}. #{up.title}
+          = link_to 'Comment on this Snapshot!', '#'
 
 -else
   You must log in or sign up to view your snapshots
 
+%h2
+  Most Recent Snapshot!s
+
 -if @posts != nil
   -@posts.each_with_index do | p, index|
     %ul
-      %li "#{index + 1}. #{p.title}, posted by #{p.user.email}"
+      %li #{index + 1}. #{p.title}, posted by #{p.user.email}
+      = link_to 'Comment on this Snapshot!', '#'
