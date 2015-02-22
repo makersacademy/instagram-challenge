@@ -25,7 +25,7 @@ class PostsController < ApplicationController
 
 
   def post_params
-    params.require(:post).permit(:title)
+    params.require(:post).permit(:image, :title)
   end
 
   def get_users_posts
