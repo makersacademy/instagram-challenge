@@ -15,4 +15,8 @@ class Post < ActiveRecord::Base
     comment
   end
 
+  def get_post_image_id(size)
+    "post-#{title.gsub(" ","")}-image-#{size}"
+  end
+
 end

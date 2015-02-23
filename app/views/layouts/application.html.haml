@@ -39,7 +39,7 @@
           -if current_user.posts.any?
             -current_user.posts_sorted_recent_first.each_with_index do | user_post, index |
               %ul
-                = image_tag user_post.image.url(:thumb), id: "post-#{user_post.title}-image-thumb"
+                = image_tag user_post.image.url(:thumb), id: user_post.get_post_image_id('thumb')
                 %li #{index + 1}. #{user_post.title}
                 = link_to 'Comment on your Snapshot!', new_post_comment_path(user_post)
                 = link_to 'View your Snapshot! in more detail', post_path(user_post)

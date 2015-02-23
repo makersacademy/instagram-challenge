@@ -10,7 +10,7 @@ feature 'posting a Snapshot' do
       fill_in('Title', with: "Rails Week")
       attach_file 'Upload your Snapshot!', Rails.root + 'spec/rails.jpg'
       click_button 'Post your Snapshot!'
-      expect(page.find('#post-Rails Week-image-medium')['src']).to include('rails.jpg')
+      expect(page.find('#post-RailsWeek-image-medium')['src']).to include('rails.jpg')
     end
 
     scenario 'not uploading an image of the restaurant uses default' do
@@ -18,7 +18,7 @@ feature 'posting a Snapshot' do
       click_link 'Add a new Snapshot!'
       fill_in('Title', with: "Rails Week")
       click_button 'Post your Snapshot!'
-      expect(page.find('#post-Rails Week-image-medium')['src']).to include('missing.png')
+      expect(page.find('#post-RailsWeek-image-medium')['src']).to include('missing.png')
     end
 
   end
