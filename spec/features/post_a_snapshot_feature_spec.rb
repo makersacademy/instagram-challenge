@@ -16,7 +16,7 @@ feature 'posting a Snapshot' do
     scenario 'not uploading an image of the restaurant uses default' do
       sign_up('test')
       click_link 'Add a new Snapshot!'
-      fill_in('Title', with: "It's Rails Week")
+      fill_in('Title', with: "Rails Week")
       click_button 'Post your Snapshot!'
       expect(page.find('#post-Rails Week-image-medium')['src']).to include('missing.png')
     end
