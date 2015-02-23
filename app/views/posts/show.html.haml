@@ -1,15 +1,19 @@
 = link_to 'back to homepage', root_path
 
 
-%h1
+%h2
   Snapshot! #{@post.title}
-= image_tag @post.image.url(:large), id: "post-#{@post.title}-image-large"  
+= image_tag @post.image.url(:large), id: "post-#{@post.title}-image-large"
 
 %h3
   posted by #{@post.user.email}
+  Digged #{pluralize @post.digs.count, "time"}
+  -if (@post.user != current_user) && current_user.has_not_digged?(@post)
+    = link_to 'Dig this Snapshot!', post_digs_path(@post), method: :post
 
 %h3
   Comments
+  = link_to 'Comment on this Snapshot!', new_post_comment_path(@post)
   -if @post.comments
     %ul
       -@post.comments.each do |comment|

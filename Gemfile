@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'haml'
 gem 'devise'
 gem 'paperclip'
+gem 'aws-sdk', '< 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do

@@ -8,18 +8,26 @@
     = csrf_meta_tags
 
   %header
-    -if current_user
-      %h3
-        You are signed in as: #{current_user.email}
-      = link_to "Sign out", destroy_user_session_path, method: :delete
-    -else
-      = link_to "Log in", new_user_session_path
-      = link_to "Sign up", new_user_registration_path
+
+    %section{:class => "header_row"}
+      %section{:class => "col-2-3"}
+        %h1
+          Snapshot!
+
+      %section{:class => "col-1-3"}
+        -if current_user
+          %h3
+            You are signed in as: #{current_user.email}
+          = link_to "Sign out", destroy_user_session_path, method: :delete
+        -else
+          = link_to "Log in", new_user_session_path
+          = link_to "Sign up", new_user_registration_path
 
   %body
     = notice
 
-    %section
+
+    %section{:class => "col-1-3"}
       %h2
         Your Snapshot!s
 
@@ -43,5 +51,5 @@
       -else
         You must log in or sign up to view your snapshots
 
-    %section
+    %section{:class => "col-2-3"}
       = yield
