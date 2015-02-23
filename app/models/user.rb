@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
     digged_posts.include?(post) ? false : true
   end
 
+  def posts_sorted_recent_first
+    posts.sort_by { |p| p[:created_at] }.reverse
+  end
+
 end

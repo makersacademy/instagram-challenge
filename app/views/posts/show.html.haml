@@ -8,8 +8,9 @@
 %h3
   posted by #{@post.user.email}
   Digged #{pluralize @post.digs.count, "time"}
-  -if (@post.user != current_user) && current_user.has_not_digged?(@post)
-    = link_to 'Dig this Snapshot!', post_digs_path(@post), method: :post
+  -if current_user
+    -if (@post.user != current_user) && current_user.has_not_digged?(@post)
+      = link_to 'Dig this Snapshot!', post_digs_path(@post), method: :post
 
 %h3
   Comments

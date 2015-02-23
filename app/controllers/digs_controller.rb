@@ -7,6 +7,7 @@ class DigsController < ApplicationController
     dig.post = post
     dig.save
     redirect_to('/')
+    # render json: {new_dig_count: post.digs.count}
   end
 
 end
