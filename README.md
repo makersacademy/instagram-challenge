@@ -34,6 +34,7 @@ Instagram Challenge
   - like display delay bug
   - formatting of sign-up page
   - ~~after you add a picture, you can't add anymore picutres~~
+  - the likes disapear when you restart the server
 
 
 
