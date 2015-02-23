@@ -33,6 +33,7 @@ Instagram Challenge
   - ~~Avatar display bug~~
   - like display delay bug
   - formatting of sign-up page
+  - ~~after you add a picture, you can't add anymore picutres~~
 
 
 
