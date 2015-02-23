@@ -1,4 +1,7 @@
 require 'rails_helper'
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 
 context "user not signed on and on the homepage" do
 

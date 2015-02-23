@@ -18,5 +18,6 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'codeclimate-test-reporter', group: :test, require: nil
 end
 
