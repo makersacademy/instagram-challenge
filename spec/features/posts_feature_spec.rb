@@ -32,3 +32,29 @@ context 'creating a new post' do
     expect(current_path).to eq '/posts'
   end
 end
+
+context 'viewing posts' do
+
+  let!(:hello){Post.create(name:'Hello there')}
+
+  scenario 'lets a user view a post' do
+   visit '/posts'
+   click_link 'Hello there'
+   expect(page).to have_content 'Hello there'
+   expect(current_path).to eq "/posts/#{hello.id}"
+  end
+
+end
+
+context 'deleting posts' do
+
+  before {Post.create name: 'Hola'}
+
+  scenario 'removes a restaurant when a user clicks a delete link' do
+    visit '/posts'
+    click_link 'Delete post'
+    expect(page).not_to have_content 'Hola'
+    expect(page).to have_content 'Post deleted successfully'
+  end
+
+end

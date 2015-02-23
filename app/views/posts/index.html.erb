@@ -1,8 +1,11 @@
 
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-    <h2><%= post.name %></h2>
-    <%= image_tag post.image.url(:thumb) %>
+    <div class="post-card">
+      <h2><%= link_to post.name, post_path(post) %></h2>
+      <%= image_tag post.image.url(:thumb) %>
+      <br><%= link_to "Delete post", post_path(post), method: :delete %>
+    </div>
   <% end %>
 <% else %>
   <p>There are no posts here, none nada zero</p>
