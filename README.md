@@ -26,6 +26,7 @@ Instagram Challenge
   - Change 'Avatar' to 'Profile Picture'
   - Add comment text box with 'hint' instead of form
 
+
 ##Bugs
   - ~~Photo visibility bug~~
   - ~~comments bug~~
@@ -35,6 +36,7 @@ Instagram Challenge
   - formatting of sign-up page
   - ~~after you add a picture, you can't add anymore picutres~~
   - the likes disapear when you restart the server
+  - comments don't perist when you restart the server
 
 
 
