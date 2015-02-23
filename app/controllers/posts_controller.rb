@@ -3,7 +3,11 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
-    @posts = Post.all
+    if user_signed_in?
+      @posts = Post.all
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def show
