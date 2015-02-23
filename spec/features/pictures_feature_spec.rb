@@ -1,4 +1,7 @@
 require 'rails_helper'
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 
 feature 'pictures' do
 
