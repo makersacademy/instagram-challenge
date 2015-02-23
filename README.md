@@ -21,3 +21,18 @@ Breakdown of models:
 - Like
 
 Bonus if you can add filters :P 
+
+#Andy's Comments
+Issues to resolve:
+------------------
+- S3 storage of images in development and prouction environments (getting error message from AWS)
+- Failing test to check that images displayed can't find CSS element (though same approach worked on yelp project)
+
+Features to add:
+----------------
+- Unit tests for validations of entry types
+- before_action :authenticate_user!, except => [] for comments, digs
+- AJAX for 'digging' a snapshot
+- Twitter authenticated sign in
+- Further styling
+
