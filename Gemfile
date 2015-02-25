@@ -18,3 +18,4 @@ end
 
 # for pictures
 gem 'paperclip'
+gem 'aws-sdk'
