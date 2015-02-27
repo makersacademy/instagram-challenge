@@ -1,3 +1,4 @@
+
 Instagram Challenge
 ===================
 
@@ -24,5 +25,3 @@ Breakdown of models:
 - Post
 - Comment/description
 - Like
-
-Bonus if you can add filters :P 
