@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'posts' do
 
   context 'no posts have been added' do
@@ -27,10 +25,7 @@ feature 'posts' do
 
     scenario 'prompts user to add content, then displays the new post' do
       sign_up('test@test.com', 'testtest', 'testtest')
-      click_link 'Add a post'
-      attach_file('post[image]', 'spec/features/holiday.jpg')
-      fill_in 'Description', with: 'Lazy day'
-      click_button 'Post'
+      add_post('Lazy day')
       expect(page).to have_content 'Lazy day'
       expect(page).to have_css 'img'
       expect(current_path).to eq '/posts'
@@ -44,10 +39,7 @@ feature 'posts' do
 
     scenario 'an invalid post description' do
       sign_up('test@test.com', 'testtest', 'testtest')
-      click_link 'Add a post'
-      attach_file('post[image]', 'spec/features/holiday.jpg')
-      fill_in 'Description', with: 'X'
-      click_button 'Post'
+      add_post('X')
       expect(page).not_to have_css 'h2', text: 'X'
       expect(page).to have_content 'error'
     end
@@ -58,36 +50,23 @@ feature 'posts' do
 
     scenario 'lets a user edit a post description' do
       sign_up('test@test.com', 'testtest', 'testtest')
-      click_link 'Add a post'
-      attach_file('post[image]', 'spec/features/holiday.jpg')
-      fill_in 'Description', with: 'Lazy day'
-      click_button 'Post'
-      click_link 'Edit post'
-      fill_in 'Description', with: 'Super lazy day'
-      click_button 'Update Post'
+      add_post('Lazy day')
+      edit_post('Super lazy day')
       expect(page).to have_content 'Super lazy day'
       expect(current_path).to eq '/posts'
     end
 
     scenario 'an invalid post description update' do
       sign_up('test@test.com', 'testtest', 'testtest')
-      click_link 'Add a post'
-      attach_file('post[image]', 'spec/features/holiday.jpg')
-      fill_in 'Description', with: 'Lazy day'
-      click_button 'Post'
-      click_link 'Edit post'
-      fill_in 'Description', with: 'S'
-      click_button 'Update Post'
+      add_post('Lazy day')
+      edit_post('S')
       expect(page).not_to have_css 'h2', text: 'S'
       expect(page).to have_content 'error'
     end
 
     scenario 'prevents a user editing a post that is not theirs' do
       sign_up('test@test.com', 'testtest', 'testtest')
-      click_link 'Add a post'
-      attach_file('post[image]', 'spec/features/holiday.jpg')
-      fill_in 'Description', with: 'Lazy day'
-      click_button 'Post'
+      add_post('Lazy day')
       click_link 'Sign out'
       sign_up('steph@test.com', 'stephtest', 'stephtest')
       expect(page).not_to have_link 'Edit post'
@@ -99,10 +78,7 @@ feature 'posts' do
 
     scenario 'lets a user delete a post' do
       sign_up('test@test.com', 'testtest', 'testtest')
-      click_link 'Add a post'
-      attach_file('post[image]', 'spec/features/holiday.jpg')
-      fill_in 'Description', with: 'Lazy day'
-      click_button 'Post'
+      add_post('Lazy day')
       click_link 'Delete post'
       expect(page).not_to have_content 'Lazy day'
       expect(page).not_to have_css 'img'
@@ -111,10 +87,7 @@ feature 'posts' do
 
     scenario 'prevents a user editing a post that is not theirs' do
       sign_up('test@test.com', 'testtest', 'testtest')
-      click_link 'Add a post'
-      attach_file('post[image]', 'spec/features/holiday.jpg')
-      fill_in 'Description', with: 'Lazy day'
-      click_button 'Post'
+      add_post('Lazy day')
       click_link 'Sign out'
       sign_up('steph@test.com', 'stephtest', 'stephtest')
       expect(page).not_to have_link 'Delete post'
@@ -122,12 +95,4 @@ feature 'posts' do
 
   end
 
-end
-
-def sign_up(email, password, password_confirmation)
-  visit '/users/sign_up'
-  fill_in 'Email', with: email
-  fill_in 'Password', with: password
-  fill_in 'Password confirmation', with: password_confirmation
-  click_button 'Sign up'
 end

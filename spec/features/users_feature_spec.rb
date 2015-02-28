@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 context 'user not signed in and on the homepage' do
 
   scenario 'displays sign in and sign up links' do

@@ -1,12 +1,7 @@
-require 'rails_helper'
-
 feature 'liking' do
   before do
     sign_up('steph@test.com', 'stephtest', 'stephtest')
-    click_link 'Add a post'
-    attach_file('post[image]', 'spec/features/holiday.jpg')
-    fill_in 'Description', with: 'Lazy day'
-    click_button 'Post'
+    add_post('Lazy day')
     click_link 'Sign out'
   end
 
@@ -22,12 +17,4 @@ feature 'liking' do
     expect(page).to have_content '0 likes'
   end
 
-end
-
-def sign_up(email, password, password_confirmation)
-  visit '/users/sign_up'
-  fill_in 'Email', with: email
-  fill_in 'Password', with: password
-  fill_in 'Password confirmation', with: password_confirmation
-  click_button 'Sign up'
 end

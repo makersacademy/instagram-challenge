@@ -52,3 +52,30 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
+
+def sign_up(email, password, password_confirmation)
+  visit '/users/sign_up'
+  fill_in 'Email', with: email
+  fill_in 'Password', with: password
+  fill_in 'Password confirmation', with: password_confirmation
+  click_button 'Sign up'
+end
+
+def add_post(description)
+  click_link 'Add a post'
+  attach_file('post[image]', 'spec/features/holiday.jpg')
+  fill_in 'Description', with: description
+  click_button 'Post'
+end
+
+def edit_post(description)
+  click_link 'Edit post'
+  fill_in 'Description', with: description
+  click_button 'Update Post'
+end
+
+def write_comment(comment)
+  click_link 'Write a comment'
+  fill_in 'Thoughts', with: comment
+  click_button 'Comment'
+end
