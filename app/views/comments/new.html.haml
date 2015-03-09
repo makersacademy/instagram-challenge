@@ -1,0 +1,23 @@
+- if @comment.errors.any?
+  %section#errors
+    %h2
+      =pluralize @comment.errors.count, "error"
+      prohibited this Snapshot! from being saved:
+    %ul
+      -@comment.errors.full_messages.each do |message|
+        %li= message
+
+%h2
+  Snapshot! #{@post.title}
+= image_tag @post.image.url(:large), id: @post.get_post_image_id('large')
+
+=render 'form'
+
+%h3
+  Comments
+  -if @post.comments
+    %ul
+      -@post.comments.each do |comment|
+        %li #{comment.user.email} commented #{comment.comment} at #{comment.created_at}
+  -else
+    %p No one has commented yet

@@ -1,0 +1,2 @@
+module DigsHelper
+end
