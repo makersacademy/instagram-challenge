@@ -1,0 +1,12 @@
+<%= image_tag @post.image.url(:large), :class => "main-image" %>
+<p><%= @post.description %></p>
+<%= link_to "Comment", new_post_comment_path(@post) %>
+<%= link_to "Edit", edit_post_path(post) %> 
+<%= link_to	"Delete", post_path(post), method: :delete %>
+<% if @post.comments.any? %>
+		<% @post.comments.each do |post| %>
+			<p><%= post.thoughts %></p>
+		<% end %>
+<% else %>
+	<p> No Comments </p>
+<% end %>
