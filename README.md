@@ -1,4 +1,4 @@
-![image](https://github.com/ciawalsh/instagram-challenge/blob/master/app/assets/images/Instagram.svg)
+![image](https://github.com/ciawalsh/instagram-challenge/blob/master/app/assets/images/logo.png)
 ===================
 Instagram Clone.... Sort of.
 ===================
@@ -17,7 +17,7 @@ For the Friday Challenge for Week 9 of Makers, we were told to make an clone of 
 
 - [x] Add the models below implementing the MVC Software Architectural Pattern.
 - [x] Test Drive the Development
-- [ ] Add a clean user interface
+- [ ] Add a clean user interface 
 
 Breakdown of models:
 - User
@@ -29,10 +29,8 @@ Breakdown of models:
 
 * Ruby
 * Rails
-* Html
+* HTML
 * CSS
-* Git
-* Heroku
 
 How to clone this repo
 ----
