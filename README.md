@@ -1,7 +1,7 @@
 Instagram Challenge
 ===================
 
-Build Instagram: Simple huh!
+Build Instagram
 
 Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture. It will need to look like the instagrams website or better. 
 
