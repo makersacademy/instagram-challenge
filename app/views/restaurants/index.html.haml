@@ -1,0 +1,15 @@
+-if @restaurants.any?
+  -@restaurants.each do |restaurant|
+    %h2= link_to restaurant.name, restaurant_path(restaurant)
+    -restaurant.reviews.each do |review|
+      %ul
+        %li #{review.review}. Rating: #{review.rating} posted about #{time_ago_in_words(review.created_at)} ago
+        =link_to "Useful", review_usefuls_path(review.id)
+    %h3 Average rating: #{star_rating(restaurant.average_rating)}
+    =link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant)
+    =link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete
+    =link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant)
+-else 
+  %h2 No restaurants found
+
+=link_to 'Add a restaurant', new_restaurant_path
