@@ -37,4 +37,19 @@ feature 'posts' do
     end
   end
 
+  context 'deleting a post' do
+
+    before do
+      Post.create(description: 'This post is going to be deleted')
+    end
+
+    scenario 'can delete a post' do
+      visit '/posts'
+      expect(page).to have_content('This post is going to be deleted')
+      click_link 'Delete'
+      expect(page).not_to have_content('This post is going to be deleted')
+      expect(page).to have_content('Post deleted successfully')
+    end
+  end
+
 end
