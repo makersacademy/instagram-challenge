@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'paperclip'
+gem "paperclip", "~> 4.2"
 
 group :test do
   gem 'rspec-rails'
