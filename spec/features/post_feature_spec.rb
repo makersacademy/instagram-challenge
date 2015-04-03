@@ -26,7 +26,7 @@ feature 'posts' do
 
   context 'posting' do
 
-    scenario 'prompts user to fill out a form then displays the restuarant' do
+    scenario 'prompts user to fill out a form then displays the post' do
       visit '/posts'
       click_link 'Post to Instantgram'
       fill_in 'Description', with: 'First Post'
