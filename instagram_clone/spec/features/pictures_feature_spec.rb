@@ -11,7 +11,7 @@ feature 'pictures' do
 
   context 'pictures have been added' do
     before do
-      Picture.create(name: "First Pic")
+      Picture.create(title: "First Pic")
     end
 
     scenario 'display pictures' do
