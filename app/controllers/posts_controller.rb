@@ -24,4 +24,11 @@ class PostsController < ApplicationController
     redirect_to '/posts'
   end
 
+  def update
+    @post = Post.find(params[:id])
+    @post.add_like
+    flash[:notice] = 'Liked!'
+    redirect_to '/posts'
+  end
+
 end
