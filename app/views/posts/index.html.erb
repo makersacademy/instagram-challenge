@@ -5,7 +5,10 @@
       <%= post.description %>
       <%= post.likes.count %> Likes
       <%= image_tag post.image.url(:medium, timestamp: false) %>
-      <%= link_to 'Like', new_post_like_path(post) %>
+
+      <%= form_for [post, @like] do |f| %>
+        <%= f.submit 'Like' %>
+      <% end %>
       <%= link_to 'Delete', post_path(post), method: :delete %>
     </li>
   <% end %>
