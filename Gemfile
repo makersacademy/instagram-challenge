@@ -27,6 +27,7 @@ gem "paperclip", "~> 4.2"
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'shoulda'
 end
 
 # Use ActiveModel has_secure_password
