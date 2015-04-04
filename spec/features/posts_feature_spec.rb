@@ -22,4 +22,16 @@ feature 'posts' do
       expect(page).not_to have_content 'No posts yet'
     end
   end
+
+  context 'creating posts' do
+
+    scenario 'prompts user to fill out a form, then displays the new post' do
+      visit '/posts'
+      click_link 'Post to Instagram'
+      fill_in 'Description', with: 'This is my first post'
+      click_button 'Post'
+      expect(page).to have_content 'This is my first post'
+      expect(current_path).to eq '/posts'
+    end
+  end
 end
