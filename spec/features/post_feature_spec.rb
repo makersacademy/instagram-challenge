@@ -11,47 +11,24 @@ feature 'posts' do
     end
   end
 
-  context 'a post has been added' do
-
-    before do 
-      Post.create(description: 'First Post')
-    end
-
-    scenario 'display posts' do
-      visit '/posts'
-      expect(page).to have_content('First Post')
-      expect(page).not_to have_content('No posts yet')
-    end
-  end
-
   context 'posting' do
 
-    scenario 'can post with a photo' do
+    before do
       user = FactoryGirl.create(:user)
       login_as(user, :scope => :user)
       visit '/posts'
       click_link 'Post to Instantgram'
-      fill_in 'Description', with: 'First Photo'
       attach_file 'Image', 'spec/marmite.jpeg'
       click_button 'Post'
-      expect(page).to have_content('First Photo')
-      expect(page).to have_css("img[src*='marmite.jpeg']")
     end
-  end
 
-  context 'deleting a post' do
-
-    before do
-      Post.create(description: 'This post is going to be deleted')
-      user = FactoryGirl.create(:user)
-      login_as(user, :scope => :user)
+    scenario 'can post a new photo' do
+      expect(page).to have_css("img[src*='marmite.jpeg']")
     end
 
     scenario 'can delete a post' do
-      visit '/posts'
-      expect(page).to have_content('This post is going to be deleted')
       click_link 'Delete'
-      expect(page).not_to have_content('This post is going to be deleted')
+      expect(page).not_to have_css("img[src*='marmite.jpeg']")
       expect(page).to have_content('Post deleted successfully')
     end
   end
