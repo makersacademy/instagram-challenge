@@ -25,13 +25,14 @@ feature 'posts' do
 
   context 'creating posts' do
 
-    scenario 'prompts user to fill out a form, then displays the new post' do
+    scenario 'can post photos' do
       visit '/posts'
       click_link 'Post to Instagram'
+      attach_file 'Image', 'spec/features/files/photo.jpg'
       fill_in 'Description', with: 'This is my first post'
-      click_button 'Post'
+      click_button 'Create Post'
       expect(page).to have_content 'This is my first post'
-      expect(current_path).to eq '/posts'
+      expect(page).to have_css("img[src*='photo.jpg']")
     end
   end
 end
