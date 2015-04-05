@@ -3,8 +3,10 @@
 %h2= label_tag(:show, "Show All Images")
 
 - if @posts.any?
+  #posts.transitions-enabled
   - @posts.each do |post|
     - if post.user_id == current_user.id
-      %h2= link_to image_tag(post.image.url(:thumb), alt: post.name), post_path(post)
+      .box.panel.panel-default
+        %h2= link_to image_tag(post.image.url(:thumb), alt: post.name), post_path(post)
 
 
