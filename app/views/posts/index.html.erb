@@ -11,7 +11,9 @@
           <li>
             <%= comment.text %>
             User ID = <%= comment.user_id %>
-            <%= link_to 'Delete', post_comment_path(post, comment), method: :delete %>
+            <% if @user.owns_comment? (comment) %>
+              <%= link_to 'Delete', comment_path(comment), method: :delete %>
+            <% end %>
           </li>
           <% end %>
         </ul>
@@ -21,8 +23,13 @@
 
       <%= post.likes.count %> Likes
       <%= image_tag post.image.url(:medium, timestamp: false) %>
-      <%= form_for [post, @like] do |f| %>
-        <%= f.submit 'Like' %>
+
+      <% if @user.has_liked? (post) %>
+        <%= link_to 'Unlike', like_path(post.get_like_of(@user)), method: :delete %>
+      <% else %>
+        <%= form_for [post, @like] do |f| %>
+          <%= f.submit 'Like' %>
+        <% end %>
       <% end %>
 
       <%= form_for [post, @comment] do |f| %>
@@ -31,7 +38,10 @@
         <%= f.submit 'Comment' %>
       <% end %> 
 
-      <%= link_to 'Delete', post_path(post), method: :delete %>
+      <% if @user.owns_post? (post) %>
+        <%= link_to 'Delete', post_path(post), method: :delete %>
+
+      <% end %>
     </li>
   <% end %>
   </ul>
@@ -39,4 +49,4 @@
 No posts yet
 <% end %>
 
-<a href='/posts/new'>Post to Instantgram</a>
+<%= link_to 'Post to Instantgram', new_post_path %>

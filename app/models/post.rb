@@ -7,11 +7,14 @@ class Post < ActiveRecord::Base
   # validates_attachment_presence :image
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  def create_comment(user, params)
+  def new_comment(user, params)
     new_comment = comments.build(params)
     new_comment.user = user
-    new_comment.save
     new_comment 
   end
+
+  def get_like_of(user)
+    likes.where(user: user).first
+  end 
 
 end

@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
-    @user = current_user
+    @user = current_user || User.new
     @posts = Post.all
     @like = Like.new
     @comment = Comment.new
@@ -24,8 +24,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
+    post = Post.find(params[:id])
+    post.destroy
     flash[:notice] = 'Post deleted successfully'
     redirect_to '/posts'
   end

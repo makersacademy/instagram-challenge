@@ -4,17 +4,15 @@ class CommentsController < ApplicationController
 
   def create
     post = Post.find(params[:post_id])
-    new_comment = post.create_comment(current_user, comment_params)
-    flash[:notice] = 'Comment Added' if new_comment.save
+    comment = post.new_comment(current_user, comment_params)
+    flash[:notice] = 'Comment Added' if comment.save 
     redirect_to posts_path
   end
 
   def destroy
     comment = Comment.find(params[:id])
-    if current_user.owns_comment? comment
-      comment.destroy
-      flash[:notice] = 'Comment deleted successfully'
-    end
+    comment.destroy
+    flash[:notice] = 'Comment deleted successfully'
     redirect_to '/posts'
   end
 

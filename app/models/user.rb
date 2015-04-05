@@ -18,4 +18,8 @@ class User < ActiveRecord::Base
     comments.include? comment
   end
 
+  def owns_post?(post)
+    posts.include? post
+  end
+
 end

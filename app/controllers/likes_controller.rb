@@ -19,4 +19,11 @@ class LikesController < ApplicationController
     end
   end
 
+  def destroy
+    like = Like.find(params[:id])
+    like.destroy
+    flash[:notice] = 'Like deleted successfully'
+    redirect_to '/posts'
+  end
+
 end
