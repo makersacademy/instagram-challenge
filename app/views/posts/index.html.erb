@@ -3,12 +3,31 @@
   <% @posts.each do |post| %>
     <li>
       <%= post.description %>
+
+      <% if post.comments.any? %>
+        <ul>
+          <% post.comments.each do |comment| %>
+          <li>
+            <%= comment.text %>
+            <%= link_to 'Delete', post_comment_path(post, comment), method: :delete %>
+          </li>
+          <% end %>
+        </ul>
+      <% else %>
+        No comments
+      <% end %>
+
       <%= post.likes.count %> Likes
       <%= image_tag post.image.url(:medium, timestamp: false) %>
-
       <%= form_for [post, @like] do |f| %>
         <%= f.submit 'Like' %>
       <% end %>
+
+      <%= form_for [post, @comment] do |f| %>
+        <%= f.label :text %>
+        <%= f.text_area :text %>
+        <%= f.submit 'Comment' %>
+      <% end %> 
       <%= link_to 'Delete', post_path(post), method: :delete %>
     </li>
   <% end %>

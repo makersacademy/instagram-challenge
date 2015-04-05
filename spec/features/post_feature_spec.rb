@@ -58,18 +58,37 @@ feature 'posts' do
       Post.create(description: 'Like this post')
     end
 
-    # scenario 'after being posted has 0 likes' do
-    #   visit '/posts'
-    #   expect(page).to have_content('0 Likes')
-    # end
+    scenario 'after being posted has 0 likes' do
+      visit '/posts'
+      expect(page).to have_content('0 Likes')
+    end
 
     scenario 'can be liked' do
       visit '/posts'
-      # expect(page).to have_content('0 Likes')
-      click_link 'Like'
+      expect(page).to have_content('0 Likes')
       click_button 'Like'
-      # expect(page).to have_content('1 Likes')
+      expect(page).to have_content('1 Likes')
       expect(page).to have_content('Liked!')
+    end
+  end
+
+  context 'comments' do
+
+    before do
+      Post.create(description: 'Comment on this post')
+    end
+
+    scenario 'after being posted has no comments' do
+      visit '/posts'
+      expect(page).to have_content('No comments')
+    end
+
+    scenario 'can be commented' do
+      visit '/posts'
+      expect(page).to have_content('No comments')
+      fill_in 'Text', with: 'This is a comment'
+      click_button 'Comment'
+      expect(page).to have_content('This is a comment')
     end
 
   end
