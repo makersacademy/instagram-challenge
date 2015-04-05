@@ -13,7 +13,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
+    @user = current_user
+    @user.posts.create(post_params)
     redirect_to '/posts'
   end
 
