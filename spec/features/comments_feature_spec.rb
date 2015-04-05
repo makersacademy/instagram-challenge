@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'commenting on posts' do
   before {Post.create description: 'Alpaca'}
 
-  scenario 'allow users to leave a comment using a form' do
+  scenario 'allow users to leave a comment' do
     visit '/posts'
     click_link 'Comment on Alpaca'
     fill_in "Text", with: "What is that?"

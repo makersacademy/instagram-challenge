@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @like = Like.new
   end
 
   def new
@@ -15,6 +16,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:description, :image)
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.add_like
+    flash[:notice] = 'Liked!'
+    redirect_to '/posts'
   end
 
   def destroy

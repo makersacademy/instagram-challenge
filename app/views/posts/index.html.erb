@@ -1,6 +1,8 @@
+<%= link_to 'Post to Instagram', new_post_path %>
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <h2><%= post.description %></h2>
+
     <% if post.comments.any? %>
         <ul>
           <% post.comments.each do |comment| %>
@@ -13,12 +15,17 @@
       <% else %>
         No comments
       <% end %>
-        <%= image_tag post.image.url(:medium, timestamp: false) %>
+
+        <%= post.likes.count %> Likes
+        <%= image_tag post.image.url(:thumb, timestamp: false) %>
+
+        <%= form_for [post, @like] do |f| %>
+          <%= f.submit 'Like' %>
+        <% end %>
+
         <%= link_to "Delete #{post.description}", post_path(post), method: :delete %>
         <%= link_to "Comment on #{post.description}", new_post_comment_path(post) %>
   <% end %>
 <% else %>
   <h1>No posts yet</h1>
 <% end %>
-
-<%= link_to 'Post to Instagram', new_post_path %>
