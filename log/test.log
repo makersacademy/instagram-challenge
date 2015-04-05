@@ -948,3 +948,310 @@ Processing by PostsController#index as HTML
   Rendered posts/index.html.erb within layouts/application (2.1ms)
 Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.5ms)
   [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:24:17 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 34ms (Views: 21.0ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:24:17 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-04-05 09:24:17 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (21.6ms)
+Completed 200 OK in 32ms (Views: 24.0ms | ActiveRecord: 1.7ms)
+Started POST "/posts" for 127.0.0.1 at 2015-04-05 09:24:17 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007f9106e760c8 @tempfile=#<Tempfile:/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/RackMultipart20150405-30029-bbjbdw.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 22442\r\n">, "description"=>"This is my first post"}, "commit"=>"Create Post"}
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30029-16ftqsw.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30029-17lop7k.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30029-17lop7k.jpg[0]'
+Command :: convert '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30029-17lop7k.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30029-17lop7k20150405-30029-114lq54'
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30029-17lop7k20150405-30029-114lq54'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30029-17lop7k.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30029-17lop7k.jpg[0]'
+Command :: convert '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30029-17lop7k.jpg[0]' -auto-orient -resize "150x" -crop "150x150+0+0" +repage '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30029-17lop7k20150405-30029-1oz32jg'
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30029-17lop7k20150405-30029-1oz32jg'
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30029-1ui4kj5.jpg'
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("description", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["description", "This is my first post"], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 22442], ["image_updated_at", "2015-04-05 08:24:17.522489"], ["created_at", "2015-04-05 08:24:17.652729"], ["updated_at", "2015-04-05 08:24:17.652729"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 161ms (ActiveRecord: 1.1ms)
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:24:17 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:29:50 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 32ms (Views: 19.6ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:29:50 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-04-05 09:29:50 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 28ms (Views: 19.1ms | ActiveRecord: 2.4ms)
+Started POST "/posts" for 127.0.0.1 at 2015-04-05 09:29:50 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007f9b93fdfcd8 @tempfile=#<Tempfile:/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/RackMultipart20150405-30134-29d7e.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 22442\r\n">, "description"=>"This is my first post"}, "commit"=>"Create Post"}
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30134-z4vrnl.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30134-1wlv3id.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30134-1wlv3id.jpg[0]'
+Command :: convert '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30134-1wlv3id.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30134-1wlv3id20150405-30134-7upj59'
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30134-1wlv3id20150405-30134-7upj59'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30134-1wlv3id.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30134-1wlv3id.jpg[0]'
+Command :: convert '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30134-1wlv3id.jpg[0]' -auto-orient -resize "150x" -crop "150x150+0+0" +repage '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30134-1wlv3id20150405-30134-lkw9ii'
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30134-1wlv3id20150405-30134-lkw9ii'
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30134-1ran9ob.jpg'
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("description", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["description", "This is my first post"], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 22442], ["image_updated_at", "2015-04-05 08:29:50.965390"], ["created_at", "2015-04-05 08:29:51.096515"], ["updated_at", "2015-04-05 08:29:51.096515"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 159ms (ActiveRecord: 1.2ms)
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:29:51 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Alpaca"], ["created_at", "2015-04-05 08:29:51.135648"], ["updated_at", "2015-04-05 08:29:51.135648"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:29:51 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:33:35 +0100
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:33:35 +0100
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Alpaca"], ["created_at", "2015-04-05 08:33:35.544182"], ["updated_at", "2015-04-05 08:33:35.544182"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:33:35 +0100
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:33:50 +0100
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (1.8ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:33:50 +0100
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Alpaca"], ["created_at", "2015-04-05 08:33:50.296576"], ["updated_at", "2015-04-05 08:33:50.296576"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:33:50 +0100
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:34:04 +0100
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:34:04 +0100
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Alpaca"], ["created_at", "2015-04-05 08:34:04.503022"], ["updated_at", "2015-04-05 08:34:04.503022"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:34:04 +0100
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:34:15 +0100
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:34:15 +0100
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["description", "Alpaca"], ["created_at", "2015-04-05 08:34:15.421133"], ["updated_at", "2015-04-05 08:34:15.421133"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:34:15 +0100
+Processing by PostsController#index as HTML
+  Rendered posts/index.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:36:02 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 32ms (Views: 20.5ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:36:02 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-04-05 09:36:02 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 33ms (Views: 22.7ms | ActiveRecord: 2.8ms)
+Started POST "/posts" for 127.0.0.1 at 2015-04-05 09:36:02 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fa3e11d2d38 @tempfile=#<Tempfile:/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/RackMultipart20150405-30316-idl794.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 22442\r\n">, "description"=>"This is my first post"}, "commit"=>"Create Post"}
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30316-17fpm8b.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30316-1vzl0e9.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30316-1vzl0e9.jpg[0]'
+Command :: convert '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30316-1vzl0e9.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30316-1vzl0e920150405-30316-wv7rul'
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30316-1vzl0e920150405-30316-wv7rul'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30316-1vzl0e9.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30316-1vzl0e9.jpg[0]'
+Command :: convert '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30316-1vzl0e9.jpg[0]' -auto-orient -resize "150x" -crop "150x150+0+0" +repage '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30316-1vzl0e920150405-30316-kbi7ym'
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30316-1vzl0e920150405-30316-kbi7ym'
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30316-mcz1mc.jpg'
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("description", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["description", "This is my first post"], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 22442], ["image_updated_at", "2015-04-05 08:36:02.191233"], ["created_at", "2015-04-05 08:36:02.327604"], ["updated_at", "2015-04-05 08:36:02.327604"]]
+  [1m[36m (0.4ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 166ms (ActiveRecord: 1.2ms)
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:36:02 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Alpaca"], ["created_at", "2015-04-05 08:36:02.368702"], ["updated_at", "2015-04-05 08:36:02.368702"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:36:02 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:42:33 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 34ms (Views: 21.0ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:42:33 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2015-04-05 09:42:33 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (19.2ms)
+Completed 200 OK in 30ms (Views: 21.4ms | ActiveRecord: 2.0ms)
+Started POST "/posts" for 127.0.0.1 at 2015-04-05 09:42:33 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fd34e23a5e0 @tempfile=#<Tempfile:/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/RackMultipart20150405-30448-1pfm7wd.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 22442\r\n">, "description"=>"This is my first post"}, "commit"=>"Create Post"}
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30448-1l4ri7h.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30448-tsg2y2.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30448-tsg2y2.jpg[0]'
+Command :: convert '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30448-tsg2y2.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30448-tsg2y220150405-30448-jyiwjs'
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30448-tsg2y220150405-30448-jyiwjs'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30448-tsg2y2.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30448-tsg2y2.jpg[0]'
+Command :: convert '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30448-tsg2y2.jpg[0]' -auto-orient -resize "150x" -crop "150x150+0+0" +repage '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30448-tsg2y220150405-30448-w3b9s8'
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30448-tsg2y220150405-30448-w3b9s8'
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/var/folders/bw/t0c2q9h168z6drbf244f9_640000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520150405-30448-9r2v2r.jpg'
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("description", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["description", "This is my first post"], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 22442], ["image_updated_at", "2015-04-05 08:42:33.382622"], ["created_at", "2015-04-05 08:42:33.516008"], ["updated_at", "2015-04-05 08:42:33.516008"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 165ms (ActiveRecord: 1.1ms)
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:42:33 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "Alpaca"], ["created_at", "2015-04-05 08:42:33.557799"], ["updated_at", "2015-04-05 08:42:33.557799"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:42:33 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.5ms)
+Started DELETE "/posts/22" for 127.0.0.1 at 2015-04-05 09:42:33 +0100
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 22]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 22]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 11ms (ActiveRecord: 0.8ms)
+Started GET "/posts" for 127.0.0.1 at 2015-04-05 09:42:33 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
