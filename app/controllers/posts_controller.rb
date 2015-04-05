@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @like = Like.new
+    @comment = Comment.new
   end
 
   def new

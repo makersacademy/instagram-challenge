@@ -2,30 +2,26 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <h2><%= post.description %></h2>
-
-    <% if post.comments.any? %>
-        <ul>
+      <%= image_tag post.image.url(:thumb, timestamp: false) %>
+        <% if post.comments.any? %>
           <% post.comments.each do |comment| %>
-          <li>
             <%= comment.text %>
             <%= link_to 'Delete Comment', post_comment_path(post, comment), method: :delete %>
-          </li>
           <% end %>
-        </ul>
-      <% else %>
+        <% else %>
         No comments
-      <% end %>
-
-        <%= post.likes.count %> Likes
-        <%= image_tag post.image.url(:thumb, timestamp: false) %>
-
-        <%= form_for [post, @like] do |f| %>
-          <%= f.submit 'Like' %>
         <% end %>
-
-        <%= link_to "Delete #{post.description}", post_path(post), method: :delete %>
-        <%= link_to "Comment on #{post.description}", new_post_comment_path(post) %>
-  <% end %>
-<% else %>
-  <h1>No posts yet</h1>
+      <%= form_for [post, @like] do |f| %>
+        <%= f.submit 'Like' %>
+        <%= post.likes.count %> Likes
+      <% end %>
+        <%= form_for [post, @comment] do |f| %>
+          <%= f.label :text %>
+          <%= f.text_area :text %>
+          <%= f.submit 'Leave Comment' %>
+        <% end %>
+        <%= link_to "Delete Post", post_path(post), method: :delete %>
+    <% end %>
+  <% else %>
+  <h3>No posts yet</h3>
 <% end %>

@@ -30,7 +30,7 @@ feature 'posts' do
 
     scenario 'can delete photos' do
       visit '/posts'
-      click_link 'Delete Alpaca'
+      click_link 'Delete Post'
       expect(page).not_to have_content 'Alpaca'
       expect(page).to have_content 'Post deleted successfully'
     end
@@ -41,11 +41,21 @@ feature 'posts' do
     before {Post.create description: 'Like this post'}
 
     scenario 'likes can be added to a post' do
+      sign_in_helper
       visit '/posts'
       expect(page).to have_content '0 Likes'
       click_button 'Like'
       expect(page).to have_content '1 Likes'
       expect(page).to have_content 'Post Liked!'
+    end
+
+    def sign_in_helper
+      visit('/')
+      click_link('Sign up')
+      fill_in('Email', with: 'test@example.com')
+      fill_in('Password', with: 'testtest')
+      fill_in('Password confirmation', with: 'testtest')
+      click_button('Sign up')
     end
   end
 end
