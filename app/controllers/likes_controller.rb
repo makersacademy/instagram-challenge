@@ -8,9 +8,9 @@ class LikesController < ApplicationController
   end
 
   def create
-    @post = Post.find(params[:post_id])
-    @post.likes.create
-    flash[:notice] = 'Liked!'
+    post = Post.find(params[:post_id])
+    new_like = post.likes.create(:user_id => current_user)
+    flash[:notice] = 'Liked!' if new_like.save
     redirect_to posts_path
   end
 
