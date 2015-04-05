@@ -44,5 +44,6 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails', '~> 3.2.1'
   gem 'capybara', '~> 2.4.4'
+  gem 'shoulda'
 end
 

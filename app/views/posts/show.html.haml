@@ -1,0 +1,11 @@
+= @post.name
+= link_to "Delete #{@post.name}", post_path(@post), method: :delete
+= link_to "Add Comment", new_post_comment_path(@post)
+
+- if @post.comments.any?
+  %ul
+    - @post.comments.each do |comment|
+      %li
+        = comment.comment
+
+
