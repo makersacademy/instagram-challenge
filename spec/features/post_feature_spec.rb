@@ -27,6 +27,8 @@ feature 'posts' do
   context 'posting' do
 
     scenario 'can post with a photo' do
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
       visit '/posts'
       click_link 'Post to Instantgram'
       fill_in 'Description', with: 'First Photo'
@@ -41,6 +43,8 @@ feature 'posts' do
 
     before do
       Post.create(description: 'This post is going to be deleted')
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
     end
 
     scenario 'can delete a post' do
@@ -56,6 +60,8 @@ feature 'posts' do
 
     before do
       Post.create(description: 'Like this post')
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
     end
 
     scenario 'after being posted has 0 likes' do
@@ -76,6 +82,8 @@ feature 'posts' do
 
     before do
       Post.create(description: 'Comment on this post')
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
     end
 
     scenario 'after being posted has no comments' do
@@ -90,7 +98,6 @@ feature 'posts' do
       click_button 'Comment'
       expect(page).to have_content('This is a comment')
     end
-
   end
 
 end
