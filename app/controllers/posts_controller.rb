@@ -17,9 +17,6 @@ class PostsController < ApplicationController
     params.require(:post).permit(:description, :image)
   end
 
-  def show
-  end
-
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
