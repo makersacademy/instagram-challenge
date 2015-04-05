@@ -11,6 +11,12 @@ context 'user not signed in and on the homepage' do
     visit('/')
     expect(page).not_to have_link('Sign out')
   end
+
+  it 'should not be able to create a new post' do
+    visit('/')
+    click_link('Post to Instagram')
+    expect(page).to have_content('You need to sign in or sign up before continuing')
+  end
 end
 
 context 'user signed in on the homepage' do

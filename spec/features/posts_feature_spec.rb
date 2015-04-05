@@ -14,6 +14,8 @@ feature 'posts' do
   context 'creating posts' do
 
     scenario 'can post photos' do
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
       visit '/posts'
       click_link 'Post to Instagram'
       attach_file 'Image', 'spec/features/files/photo.jpg'
@@ -26,7 +28,11 @@ feature 'posts' do
 
   context 'deleting posts' do
 
-    before {Post.create description: 'Alpaca'}
+    before do
+      Post.create(description: 'Alpaca')
+      user = FactoryGirl.create(:user)
+      login_as(user, :scope => :user)
+    end
 
     scenario 'can delete photos' do
       visit '/posts'
