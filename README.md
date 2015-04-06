@@ -10,7 +10,7 @@ Testing is done with rspec and capybara coving the core functionality.
 
 Set up
 -----
-* Postgresql database needed
+* Postgresql databases. Check database.yml for database names.
 * Run bundle install
 * Paperclip gem is used for image upload, please refer to their docs for set up.
 
@@ -19,4 +19,4 @@ Future work
 * Include like functionality
 * Link user name to the comments
 * Filter last 5 comments to the images on the index page.
-* Option to show all or just the users images on the index page
+* Option to show all or just the user's images on the index page
