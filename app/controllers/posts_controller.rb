@@ -4,7 +4,11 @@ class PostsController < ApplicationController
 
 
   def index
+    @home = true
+    @add_image = true
     @posts = Post.all
+    @user = current_user
+    @comment = Comment.select("comment").last(5)
   end
 
   def new
@@ -12,6 +16,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @delete = true
+    @add_comment = true
     @post = Post.find(params[:id])
   end
 

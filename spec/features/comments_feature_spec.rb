@@ -1,14 +1,20 @@
 require 'rails_helper'
+require 'features/helpers/helpers'
+
+RSpec.configure do |c|
+  c.include Helpers
+end
 
 describe 'Comment' do
 
-  context 'new comment' do
+  context 'new comment.' do
 
     let!(:user_post) {Post.create(name: 'at the beach')}
 
-    scenario 'user can add a comment to a post' do
+    scenario 'User can add a comment to a post' do
+      sign_in_helper
       visit '/posts'
-      click_link 'at the beach'
+      click_link user_post.id
       click_link 'Add Comment'
       fill_in "Comment", with: 'nice day for a swim'
       click_button "Add Comment"
@@ -18,3 +24,4 @@ describe 'Comment' do
   end
 
 end
+

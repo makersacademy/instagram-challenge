@@ -1,15 +1,8 @@
-= image_tag @post.image.url(:large)
-
-%p= link_to "Delete #{@post.name}", post_path(@post), method: :delete
-%p= link_to "Add Comment", new_post_comment_path(@post)
-
-%p
-- if @post.comments.any?
-  %ul
-    - @post.comments.each do |comment|
-      %li
-        = comment.comment
-
-
-
-= link_to "Home", root_path, method: :get, class: "btn btn-default btn-lg"
+#posts
+  .box.panel.panel-default
+    .panel-body
+      = image_tag @post.image.url(:large)
+      - if @post.comments.any?
+        - @post.comments.each do |comment|
+          %p.user
+            = comment.comment

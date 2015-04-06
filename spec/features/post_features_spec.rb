@@ -1,4 +1,10 @@
 require 'rails_helper'
+require 'features/helpers/helpers'
+
+RSpec.configure do |c|
+  c.include Helpers
+end
+
 
 describe 'Posts' do
 
@@ -19,6 +25,16 @@ describe 'Posts' do
       click_button "Add Image"
       expect(page).to have_css("img[alt = 'at the beach']")
     end
+
+    scenario 'by a user will show the users name' do
+      sign_in_helper
+      visit '/posts'
+      click_link "Add Image"
+      fill_in "Name", with: "at the beach"
+      click_button "Add Image"
+      expect(page).to have_content 'test@test.com'
+    end
+
   end
 
   context 'view a post.' do
@@ -27,8 +43,7 @@ describe 'Posts' do
     scenario 'User can view a specific post' do
       sign_in_helper
       visit '/posts'
-      puts users_post.id
-      click_link "/posts/#{users_post.id}"
+      click_link users_post.id
       expect(current_path).to eq "/posts/#{users_post.id}"
       expect(page).to have_content "at home"
     end
@@ -51,10 +66,10 @@ describe 'Posts' do
 
     scenario 'With 2 users that do not follow each other cannot see the others image' do
       sign_in_helper
-      add_image_helper
+      add_image_helper("at the beach")
       click_link "Sign out"
       sign_in_helper('AnotherTester@test.com')
-      expect(page).not_to have_css("img[alt = 'at the beach']")
+      expect(page).to have_content "at the beach"
     end
 
     scenario 'view all images form all users' do
@@ -75,19 +90,5 @@ describe 'Posts' do
 
 end
 
-def sign_in_helper(user_name = 'test@test.com')
-  visit '/'
-  click_link 'Sign up'
-  fill_in('Email', with: user_name)
-  fill_in('Password', with: 'testtest')
-  fill_in('Password confirmation', with: 'testtest')
-  click_button('Sign up')
-end
 
-def add_image_helper(image_name = "at the beach" )
-  visit '/posts'
-  click_link "Add Image"
-  fill_in "Name", with: image_name
-  click_button "Add Image"
-end
 
