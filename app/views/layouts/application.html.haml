@@ -2,16 +2,25 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Instagram
+    %title In-a-gram
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-    - if user_signed_in?
-      = link_to "Sign out", destroy_user_session_path, method: :delete
-    - else
-      = link_to "Sign in", new_user_session_path
-      = link_to "Sign up", new_user_registration_path
   %body
-    %p= alert
-    %p= notice
+
+    %nav.navbar.navbar-default
+      .container
+        .navbar-brand= link_to "In-a-gram", root_path, method: :get
+
+        - if user_signed_in?
+          %ul.nav.navbar-nav.navbar-right
+            %li= link_to "Sign out", destroy_user_session_path, method: :delete
+        - else
+          %ul.nav.navbar-nav.navbar-right
+            %li= link_to "Sign up", new_user_registration_path
+            %li= link_to "Sign in", new_user_session_path
+
+    .container
+      = alert
+      = notice
     = yield
