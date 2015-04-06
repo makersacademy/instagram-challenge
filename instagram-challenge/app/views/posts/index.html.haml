@@ -1,0 +1,14 @@
+- if @posts.any?
+  - @posts.each do |post|
+    %p= link_to image_tag(post.image.url(:large)), post.image.url
+    = link_to "Delete Post", post_path(post), method: :delete 
+    =link_to "Comment", new_post_comment_path(post)
+    %ul
+      - if post.comments.any?
+        - post.comments.each do |comment|
+          %li= "#{comment.comment}"
+
+- else
+  %p No posts yet
+
+%a(href='/posts/new') Post an Image
