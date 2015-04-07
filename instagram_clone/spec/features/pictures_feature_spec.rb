@@ -32,4 +32,15 @@ feature 'pictures' do
     end
   end
 
+  context 'viewing pictures' do
+    let!(:piccy){Picture.create(title:'Test picture')}
+
+    scenario 'lets a user view a picture' do
+      visit '/pictures'
+      click_link 'Test picture'
+      expect(page).to have_content 'Test picture'
+      expect(current_path).to eq "/pictures/#{piccy.id}"
+    end
+  end
+
 end
