@@ -43,4 +43,27 @@ feature 'pictures' do
     end
   end
 
+  xcontext 'updating pictures' do
+    before {Picture.create title: 'Test picture'}
+    scenario 'let a user update a picture' do
+      visit '/pictures'
+      click_link "Edit Test picture"
+      fill_in "Title", with: "Changed the title"
+      click_button 'Update Picture'
+      expect(page).to have_content 'Changed the title'
+      expect(current_path).to eq '/pictures'
+    end
+  end
+
+  context 'deleting pictures' do
+    before {Picture.create title: 'Test picture'}
+    scenario '' do
+      visit '/pictures'
+      click_link 'Delete Test picture'
+      expect(page).not_to have_content 'Test picture'
+      expect(page).to have_content 'Picture deleted successfully'
+    end
+  end
+
+
 end
