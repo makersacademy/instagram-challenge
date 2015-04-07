@@ -10,8 +10,9 @@ Testing is done with rspec and capybara coving the core functionality.
 
 Set up
 -----
-* Postgresql databases. Check database.yml for database names.
+* Postgresql databases. Check database.yml for database names and create the databases.
 * Run bundle install
+* After you have created the databases run 'bin/rake db:migrate' and for your test environment run 'bin/rake db:migrate RAILS_ENV=test'.
 * Paperclip gem is used for image upload, please refer to their docs for set up.
 
 Future work
