@@ -1,0 +1,25 @@
+- if @posts.any?
+  - @posts.each do |post|
+    = link_to post.title, post_path(post)
+    %p= post.description
+    = image_tag post.image.url(:thumb)
+    = link_to "Edit post", edit_post_path(post)
+    = link_to "Delete post", post_path(post), method: :delete
+    = link_to "Leave comment", new_post_comment_path(post)
+    = link_to "Like", post_likes_path(post), class: 'likes-link'
+    %span.likes_count= post.likes.count 
+    = 'like'.pluralize post.likes.count
+    %p.likes_message
+
+    - if post.comments.any?
+      - post.comments.each do |comment|
+        %ul 
+          %li 
+            = comment.text
+    - else
+      %p No comments yet...    
+
+- else
+  No posts added yet
+
+= link_to "Add a post", new_post_path
