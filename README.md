@@ -3,9 +3,13 @@ Instagram Challenge
 
 My clone of the instagram web app written in Ruby on Rails.
 
-Users can sign up/log in to upload there images and add comments. Images can be viewed and shown individually with their comments below.
+Users can sign up/login to upload their images and add comments. Images can be viewed and shown individually with their comments below.
 
 Testing is done with rspec and capybara coving the core functionality.
+
+Paperclip gem was used for the uploading of images.
+
+Devise gem was used for user login control.
 
 
 Set up
