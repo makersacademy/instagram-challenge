@@ -1,0 +1,35 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title In-a-gram
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Pacifico'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+
+    %nav.navbar.navbar-default
+      .container
+        .navbar-brand= link_to image_tag('In-a-gram.png',  size: "25"), root_path, method: :get
+
+        - if user_signed_in?
+          %ul.nav.navbar-nav.navbar-left
+            %li= link_to "Sign out", destroy_user_session_path, method: :delete
+        - else
+          %ul.nav.navbar-nav.navbar-left
+            %li= link_to "Sign up", new_user_registration_path
+            %li= link_to "Sign in", new_user_session_path
+
+        -if @add_image
+          %h1= link_to "Add Image", new_post_path(), class: "btn btn-default btn-lg add"
+
+        -if @add_comment && @delete
+          %h1
+            = link_to "Delete #{@post.name}", post_path(@post), method: :delete, class: "btn btn-default btn-lg add"
+            = link_to "Add Comment", new_post_comment_path(@post), class: "btn btn-default btn-lg add"
+    .container
+      = alert
+      = notice
+    = yield
+
