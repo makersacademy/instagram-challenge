@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/kevinlanzon/instagram-challenge/badges/gpa.svg)](https://codeclimate.com/github/kevinlanzon/instagram-challenge)
 Instagram Challenge
 ==========
 

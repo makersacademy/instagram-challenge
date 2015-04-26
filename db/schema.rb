@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150406190310) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.text     "comments"
+    t.string     "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text     "text"
