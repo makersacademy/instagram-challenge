@@ -34,3 +34,5 @@ Then navigate to it:
 Run `bundle install` and `rake db:migrate` to install gems and the databases.
 
 Then use `rails s` to run the server and view the site by pasting `localhost:3000` into your browser.
+
+Know thyself...
