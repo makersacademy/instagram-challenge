@@ -1,0 +1,53 @@
+<% if @posts.any? %>
+<div id='main'>
+  <% @posts.each do |post| %>
+    <div id='post'>
+      <%= link_to post.user.email, user_path(post.user), class: 'user-link' %>
+      <% if @user.owns_post? (post) %>
+        <%= link_to 'Delete', post_path(post), method: :delete, class: 'delete' %>
+      <% end %>
+      <br>
+      <%= image_tag post.image.url(:medium, timestamp: false) %>
+      <br>
+      <%= post.description %>
+
+      <div id='like-bar'>
+        <div id='like-button'>
+          <% if @user.has_liked? (post) %>
+            <%= link_to 'Unlike', like_path(post.get_like_of(@user)), method: :delete %>
+          <% else %>
+            <%= form_for [post, @like] do |f| %>
+              <%= f.submit 'Like' %>
+            <% end %>
+          <% end %>
+        </div>
+        <div id='like-counter'>
+          <%= post.likes.count %> Likes
+        </div>
+      </div>
+
+      <% if post.comments.any? %>
+          <% post.comments.each do |comment| %>
+          <div id='comment'>
+            <%= comment.user.email %> - <%= comment.text %>
+            <% if @user.owns_comment? (comment) %>
+              <%= link_to 'Delete', comment_path(comment), method: :delete, class: 'delete' %>
+            <% end %>
+          </div>
+          <% end %>
+      <% else %>
+        No comments
+      <% end %>
+
+      <%= form_for [post, @comment] do |f| %>
+        <%= f.label :text %>
+        <%= f.text_area :text %>
+        <%= f.submit 'Comment' %>
+      <% end %> 
+
+    </div>
+  <% end %>
+</div>
+<% else %>
+No posts yet
+<% end %>

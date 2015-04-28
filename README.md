@@ -1,28 +1,38 @@
-Instagram Challenge
-===================
+# instagram-challenge
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9am Monday morning
+An exercise using Ruby on Rails to rebuild Instagram. 
 
-Task
------
+# Key Learning Areas
 
-Build Instagram: Simple huh!
+* Ruby on rails
+* Active Record
+* Paperclip
 
-As usual please start by
+I was able to code a solution which offered all the key functionality of Instagram. Users can create an account, sign in and out, posts picutres, and like/comment on pictures. 
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo
+# Future improvements
 
-Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture. It will need to look like the instagrams website or better. 
+* Work on styling
+* Add profile page with user picture
 
-Breakdown of models:
-- User
-- Post
-- Comment/description
-- Like
+# Screenshots
 
-Bonus if you can add filters :P 
+![ScreenShot](https://github.com/robertpulson/instagram-challenge/blob/master/screenshots/Screen%20Shot%202015-04-27%20at%2016.26.01.png?raw=true)
+
+# Getting Started
+
+The site can be viewed at notstagram.herokuapp.com, however if you would like to run it locally;
+
+Clone the repository by pasting the following line into your terminal:
+
+`git clone https://github.com/robertpulson/instagram-challenge.git`
+
+Then navigate to it:
+
+`cd instagram-challenge`
+
+Run `bundle install` and `rake db:migrate` to install gems and the databases.
+
+Then use `rails s` to run the server and view the site by pasting `localhost:3000` into your browser.
+
+Know thyself...
