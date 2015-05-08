@@ -11,7 +11,7 @@ feature 'Post' do
 
   context 'Posts that have been created are viewable at the /posts link' do
     # create a post in the database
-    before { Post.create(name: 'its a post', time:(Time.now.strftime("%y:%b:%d:%H:%M:%S")))}
+    before { Post.create(content: 'its a post', time:(Time.now.strftime("%y:%b:%d:%H:%M:%S")))}
     
     scenario 'Posts are displayed' do
       visit '/posts'
@@ -19,4 +19,12 @@ feature 'Post' do
       expect(page).to have_content(Time.now.strftime("%y:%b:%d:%H:%M:%S"))
     end
   end
+
+  # context 'A post can be made on the site' do
+  #   scenario 'When the user fills out the post form, the post is now displayed' do
+  #     visit 'posts'
+  #     click_link 'add a post!'
+  #     fill_in :content, with: 
+  #   end
+  # end
 end
