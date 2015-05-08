@@ -39,15 +39,14 @@ feature 'Post' do
     expect(current_path).to eq "/posts/#{post.id}"
   end  
 
-  # context 'Deleting a post' do
-  #   scenario 'A post can be deleted' do
-  #     visit '/posts'
-  #     click_link 'add a post!'
-  #     fill_in :Content, with: 'moar poasts!!!!'
-  #     click_button 'Create Post'
-  #     visit '/posts'
-  #     click_link 
-
-  #   end
-  # end
+  context 'Deleting a post' do
+    scenario 'A post can be deleted' do
+      post = Post.create(content: 'its a post')
+      visit '/posts'
+      click_link "post ##{post.id}"
+      click_link "delete post"
+      visit '/posts'
+      expect(page).not_to have_content('its a post')
+    end
+  end
 end
