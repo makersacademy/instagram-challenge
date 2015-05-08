@@ -17,4 +17,10 @@ feature 'comments' do
     expect(current_path).to eq '/posts'
   end
 
+  scenario 'all comments will be deleted if the post is deleted' do
+    create_comment('This is a comment')
+    click_link 'Delete post'
+    expect(page).not_to have_content('This is a comment')
+    expect(current_path).to eq '/posts'
+  end
 end
