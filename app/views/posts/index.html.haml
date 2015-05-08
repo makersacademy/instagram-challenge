@@ -2,6 +2,14 @@
   - @post.each do |post|
     %h2= link_to post.title, post_path(post)
     %h3= post.description
+    - if post.comments.any?
+      %ul
+        - post.comments.each do |comment|
+          %li
+            = comment.text
+    - else
+      %p No comments
+    = link_to "Comment", new_post_comment_path(post)
     = link_to "Edit post", edit_post_path(post)
     = link_to "Delete post", post_path(post), method: :delete
 - else
