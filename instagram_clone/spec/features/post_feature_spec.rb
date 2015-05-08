@@ -20,11 +20,14 @@ feature 'Post' do
     end
   end
 
-  # context 'A post can be made on the site' do
-  #   scenario 'When the user fills out the post form, the post is now displayed' do
-  #     visit 'posts'
-  #     click_link 'add a post!'
-  #     fill_in :content, with: 
-  #   end
-  # end
+  context 'A post can be made on the site' do
+    scenario 'When the user fills out the post form, the post is now displayed' do
+      visit '/posts'
+      click_link 'add a post!'
+      fill_in :Content, with: 'moar poasts!!!!'
+      click_button 'Create Post'
+      expect(page).to have_content 'moar poasts!!!!'
+      expect(current_path).to eq '/posts'
+    end
+  end
 end
