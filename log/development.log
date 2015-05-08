@@ -644,3 +644,484 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 
+
+
+Started GET "/" for ::1 at 2015-05-08 13:11:14 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.5ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 2]]
+  Rendered pictures/index.html.erb within layouts/application (51.5ms)
+Completed 200 OK in 224ms (Views: 206.7ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-05-08 13:11:15 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.1) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.1) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.1) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  rack (1.6.1) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.1) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/paulwallis/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/paulwallis/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/paulwallis/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.4ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (8.7ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (137.6ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (48.1ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.1ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (109.6ms)
+
+
+Started DELETE "/pictures/2" for ::1 at 2015-05-08 13:11:25 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"HS0IGkjPb1OssGp1aG/Yhk3kv2UVxtmbGnWRylYDzNYkfQ8Q10Wr0fEUPHYZGNTVDrqqVBjiHtAdNEVzIAECvQ==", "id"=>"2"}
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2015-05-08 13:11:25 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (1.4ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/sessions/new.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 66ms (Views: 53.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2015-05-08 13:11:29 +0100
+
+
+Started GET "/users/auth/facebook" for ::1 at 2015-05-08 13:11:29 +0100
+
+
+Started GET "/users/auth/facebook/callback?code=AQBy3QomldnaEhHw48b1qpsIDe-Qhlxzk3QBCL5dpGPbM0B9KN4qY2-rZvvL8Zvw5maMIvG5Zw7kuT9vr0bcIVTbNdrMWFsUnmmFlar28d_hH5XslIZ2niJWas9CHQOJ8Kay_eDhxOSrnLPgyGETUaOz_NzzEZ16IfO7xorT1rdyrWwtc01T9w7lziNyxRCD4pWgNUiFag3bX08EGrOv65L1m0_KfkwNT0ib-YYk13dD-jUBI4o8ZN_4u4paFP0H00zIQsbFFy2zdliboSmk7wfTvUqqniTO8fJb_U6QvdSrPy4zB3EwcQSVwJQgJu1eRrw&state=b7a9cded777633f2e213126f0a3893e3d718de2c910e79f6" for ::1 at 2015-05-08 13:11:29 +0100
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQBy3QomldnaEhHw48b1qpsIDe-Qhlxzk3QBCL5dpGPbM0B9KN4qY2-rZvvL8Zvw5maMIvG5Zw7kuT9vr0bcIVTbNdrMWFsUnmmFlar28d_hH5XslIZ2niJWas9CHQOJ8Kay_eDhxOSrnLPgyGETUaOz_NzzEZ16IfO7xorT1rdyrWwtc01T9w7lziNyxRCD4pWgNUiFag3bX08EGrOv65L1m0_KfkwNT0ib-YYk13dD-jUBI4o8ZN_4u4paFP0H00zIQsbFFy2zdliboSmk7wfTvUqqniTO8fJb_U6QvdSrPy4zB3EwcQSVwJQgJu1eRrw", "state"=>"b7a9cded777633f2e213126f0a3893e3d718de2c910e79f6"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2  ORDER BY "users"."id" ASC LIMIT 1  [["provider", "facebook"], ["uid", "10153218310030801"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4  [["current_sign_in_at", "2015-05-08 12:11:30.286346"], ["sign_in_count", 2], ["updated_at", "2015-05-08 12:11:30.288552"], ["id", 1]]
+  [1m[36m (6.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 19ms (ActiveRecord: 7.5ms)
+
+
+Started GET "/" for ::1 at 2015-05-08 13:11:30 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.6ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 2]]
+  Rendered pictures/index.html.erb within layouts/application (10.5ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 49ms (Views: 46.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-05-08 13:11:30 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.1) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.1) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.1) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  rack (1.6.1) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.1) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/paulwallis/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/paulwallis/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/paulwallis/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.2ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (73.6ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (43.6ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (101.6ms)
+
+
+Started DELETE "/pictures/2" for ::1 at 2015-05-08 13:11:34 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"k9tq389wHaL8r/CCXqVhIGe/yBhroavsT+xePBN+ezN6VFwWMIYynrdotnTZ7R2RfQLi4Tfc8IwIeJFtSbIzpg==", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPicture Load (0.8ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 2]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 2]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "comments" WHERE "comments"."id" = $1  [["id", 3]]
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 2]]
+  [1m[35m (6.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 18ms (ActiveRecord: 8.5ms)
+
+
+Started GET "/pictures" for ::1 at 2015-05-08 13:11:34 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.4ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 1]]
+  [1m[35mComment Load (1.0ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (7.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 55ms (Views: 52.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-05-08 13:11:34 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.1) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.1) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.1) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  rack (1.6.1) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.1) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/paulwallis/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/paulwallis/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/paulwallis/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.7ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (8.5ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (86.9ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (42.7ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (94.2ms)
+
+
+Started DELETE "/pictures/1" for ::1 at 2015-05-08 13:11:36 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ShFtgqX70XvFiqMI5yDgjrpepClXWMjAsRRRPVnhVxGjnltLWg3+R45N5f5gaJw/oOOO0Aslk6D2gJ5sAy0fhA==", "id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "comments" WHERE "comments"."id" = $1  [["id", 1]]
+  [1m[36mSQL (0.6ms)[0m  [1mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 8ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/pictures" for ::1 at 2015-05-08 13:11:36 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 48ms (Views: 46.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/pictures/new" for ::1 at 2015-05-08 13:11:41 +0100
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered pictures/_form.html.erb (3.6ms)
+  Rendered pictures/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 54ms (Views: 50.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/pictures" for ::1 at 2015-05-08 13:11:55 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dbez5NbPyx/VqDNNxGybFVTktpx7cXki+nn2EM4gTqmcOIUtKTnkI55vdbtDJOekTlmcZScMIkK97TlBlOwGPA==", "picture"=>{"title"=>""}, "commit"=>"Create Picture"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", ""], ["created_at", "2015-05-08 12:11:55.774388"], ["updated_at", "2015-05-08 12:11:55.774388"]]
+  [1m[36m (6.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 14ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/pictures" for ::1 at 2015-05-08 13:11:55 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.3ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (6.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 53ms (Views: 51.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-05-08 13:11:55 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.1) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.1) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.1) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  rack (1.6.1) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.1) lib/rack/handler/webrick.rb:89:in `service'
+  /Users/paulwallis/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /Users/paulwallis/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /Users/paulwallis/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.2ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (80.0ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.9ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/console.js.erb within layouts/javascript (46.5ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/web-console-2.1.2/lib/web_console/templates/index.html.erb (100.2ms)
+
+
+Started GET "/pictures/3/comments/new" for ::1 at 2015-05-08 13:12:09 +0100
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"3"}
+  [1m[35mPicture Load (0.2ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered comments/new.html.erb within layouts/application (3.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 44ms (Views: 41.9ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/pictures/3" for ::1 at 2015-05-08 13:12:12 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+SeZtKl3BU32Y05xb5kn+o63FLiqH5B3aCc2l7RCFk0QqK99VoEqcb2kCIfo0VtLlAo+QfZiyxcvs/nG7o5e2A==", "id"=>"3"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPicture Load (0.9ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 3]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "pictures" WHERE "pictures"."id" = $1  [["id", 3]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 9ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/pictures" for ::1 at 2015-05-08 13:12:12 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 57ms (Views: 55.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/pictures/new" for ::1 at 2015-05-08 13:12:16 +0100
+Processing by PicturesController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered pictures/_form.html.erb (1.3ms)
+  Rendered pictures/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 41ms (Views: 39.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/pictures" for ::1 at 2015-05-08 13:12:48 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DF7lH6E7byTtfbivUIXFh0VWONvlx13EgQ9t9DRvT/jl0dPWXs1AGKa6/lnXzbk2X+sSIrm6BqTGm6KlbqMHbQ==", "picture"=>{"title"=>"Rails Flow Chart", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fba1db9d910 @tempfile=#<Tempfile:/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/RackMultipart20150508-41853-j488a8.png>, @original_filename="Rails.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"Rails.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Picture"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Command :: file -b --mime '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41853-1smko4e.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41853-1koo76s.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41853-1koo76s.png[0]'
+Command :: convert '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41853-1koo76s.png[0]' -auto-orient -resize "300x300>" '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41853-1koo76s20150508-41853-1y08d56'
+Command :: file -b --mime '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41853-1koo76s20150508-41853-1y08d56'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41853-1koo76s.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41853-1koo76s.png[0]'
+Command :: convert '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41853-1koo76s.png[0]' -auto-orient -resize "100x100>" '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41853-1koo76s20150508-41853-1v6n46s'
+Command :: file -b --mime '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41853-1koo76s20150508-41853-1v6n46s'
+  [1m[35m (0.3ms)[0m  BEGIN
+Command :: file -b --mime '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41853-1c5bm1h.png'
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "pictures" ("title", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Rails Flow Chart"], ["image_file_name", "Rails.png"], ["image_content_type", "image/png"], ["image_file_size", 331804], ["image_updated_at", "2015-05-08 12:12:48.758932"], ["created_at", "2015-05-08 12:12:49.272145"], ["updated_at", "2015-05-08 12:12:49.272145"]]
+  [1m[35m (5.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 550ms (ActiveRecord: 6.7ms)
+
+
+Started GET "/pictures" for ::1 at 2015-05-08 13:12:49 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 4]]
+  Rendered pictures/index.html.erb within layouts/application (4.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 53ms (Views: 51.3ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/pictures/4" for ::1 at 2015-05-08 13:13:01 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"fdji1NTKG7fP4lAZK31y4w6McJEiFwCubTfiFyvcQzaUV9QdKzw0i4QlFu+sNQ5SFDFaaH5qW84qoy1GcRALow==", "id"=>"4"}
+  [1m[36mUser Load (12.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPicture Load (0.2ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 4]]
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 4]]
+  [1m[35m (6.1ms)[0m  COMMIT
+[paperclip] deleting /Users/paulwallis/Projects/wk8_challenge/instagram-challenge/public/system/pictures/images/000/000/004/original/Rails.png
+[paperclip] deleting /Users/paulwallis/Projects/wk8_challenge/instagram-challenge/public/system/pictures/images/000/000/004/medium/Rails.png
+[paperclip] deleting /Users/paulwallis/Projects/wk8_challenge/instagram-challenge/public/system/pictures/images/000/000/004/thumb/Rails.png
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 34ms (ActiveRecord: 19.8ms)
+
+
+Started GET "/pictures" for ::1 at 2015-05-08 13:13:01 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (1.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 37ms (Views: 35.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2015-05-08 13:13:53 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (5.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 180ms (Views: 162.8ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/pictures/new" for ::1 at 2015-05-08 13:13:55 +0100
+Processing by PicturesController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered pictures/_form.html.erb (20.8ms)
+  Rendered pictures/new.html.erb within layouts/application (24.4ms)
+Completed 200 OK in 65ms (Views: 54.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/pictures" for ::1 at 2015-05-08 13:14:08 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rcg1BU445fttWqh2+SSDpH7OT0vGRmYaXWDBY+ZSRFdERwPMsc7Kxyad7oB+bP8VZHNlspo7PXoa9A4yvJ4Mwg==", "picture"=>{"title"=>"Rails Flow Chart", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fabf3962b10 @tempfile=#<Tempfile:/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/RackMultipart20150508-41899-1fqq89e.png>, @original_filename="Rails.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"Rails.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Picture"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Command :: file -b --mime '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41899-dkdp6f.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41899-1venxjg.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41899-1venxjg.png[0]'
+Command :: convert '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41899-1venxjg.png[0]' -auto-orient -resize "300x300>" '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41899-1venxjg20150508-41899-zuwa9b'
+Command :: file -b --mime '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41899-1venxjg20150508-41899-zuwa9b'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41899-1venxjg.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41899-1venxjg.png[0]'
+Command :: convert '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41899-1venxjg.png[0]' -auto-orient -resize "100x100>" '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41899-1venxjg20150508-41899-1qtw9gf'
+Command :: file -b --mime '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41899-1venxjg20150508-41899-1qtw9gf'
+  [1m[35m (0.3ms)[0m  BEGIN
+Command :: file -b --mime '/var/folders/r6/hz1yj5wx5x595lz05bnhd4hw0000gn/T/637e4afdb5b95f08a85fee169f15da8120150508-41899-47xbud.png'
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "pictures" ("title", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Rails Flow Chart"], ["image_file_name", "Rails.png"], ["image_content_type", "image/png"], ["image_file_size", 331804], ["image_updated_at", "2015-05-08 12:14:08.448739"], ["created_at", "2015-05-08 12:14:08.899869"], ["updated_at", "2015-05-08 12:14:08.899869"]]
+  [1m[35m (6.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 479ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/pictures" for ::1 at 2015-05-08 13:14:08 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.4ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 5]]
+  Rendered pictures/index.html.erb within layouts/application (33.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 70ms (Views: 67.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/pictures/5/comments/new" for ::1 at 2015-05-08 13:14:19 +0100
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"5"}
+  [1m[36mPicture Load (0.5ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  Rendered comments/new.html.erb within layouts/application (5.9ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 56ms (Views: 43.9ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/pictures/5/comments" for ::1 at 2015-05-08 13:14:28 +0100
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Z7XTQ92iBpnkVIKWC+rTSWU+Ax4hBnydr2PVItdPAOWOOuWKIlQppa+TxGCMoq/4f4Mp5317J/3o9xpzjYNIcA==", "comment"=>{"thoughts"=>"Cool chart"}, "commit"=>"Leave Comment", "picture_id"=>"5"}
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "comments" ("thoughts", "picture_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["thoughts", "Cool chart"], ["picture_id", 5], ["created_at", "2015-05-08 12:14:28.033626"], ["updated_at", "2015-05-08 12:14:28.033626"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 14ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/pictures" for ::1 at 2015-05-08 13:14:28 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 5]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 5]]
+  Rendered pictures/index.html.erb within layouts/application (7.1ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 47ms (Views: 44.9ms | ActiveRecord: 1.2ms)

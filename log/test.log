@@ -8575,3 +8575,522 @@ Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.7ms)
   [1m[35m (0.1ms)[0m  ROLLBACK
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
   [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "Pic 1"], ["created_at", "2015-05-08 12:10:37.689180"], ["updated_at", "2015-05-08 12:10:37.689180"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:37 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.8ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 8]]
+  Rendered pictures/index.html.erb within layouts/application (26.1ms)
+Completed 200 OK in 153ms (Views: 143.3ms | ActiveRecord: 1.9ms)
+Started GET "/pictures/8/comments/new" for 127.0.0.1 at 2015-05-08 13:10:37 +0100
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"8"}
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  Rendered comments/new.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 25ms (Views: 18.3ms | ActiveRecord: 0.5ms)
+Started POST "/pictures/8/comments" for 127.0.0.1 at 2015-05-08 13:10:37 +0100
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"thoughts"=>"so so"}, "commit"=>"Leave Comment", "picture_id"=>"8"}
+  [1m[35mPicture Load (0.2ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "comments" ("thoughts", "picture_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["thoughts", "so so"], ["picture_id", 8], ["created_at", "2015-05-08 12:10:37.896385"], ["updated_at", "2015-05-08 12:10:37.896385"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 7ms (ActiveRecord: 0.8ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:37 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.1ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 8]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 8]]
+  Rendered pictures/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:37 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-05-08 13:10:37 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (2.0ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 26ms (Views: 16.5ms | ActiveRecord: 1.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-05-08 13:10:37 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.7ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@example.com"], ["encrypted_password", "$2a$04$biakqurpBwrlbHfGJE7.1eY3jlpQFjOFOtULEAjFzvwxiFiaNyxhu"], ["created_at", "2015-05-08 12:10:37.957748"], ["updated_at", "2015-05-08 12:10:37.957748"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2015-05-08 12:10:37.959935"], ["current_sign_in_at", "2015-05-08 12:10:37.959935"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-05-08 12:10:37.960497"], ["id", 10]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 18ms (ActiveRecord: 1.5ms)
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:37 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 10]]
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.4ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:37 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 10]]
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:37 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-05-08 13:10:37 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (0.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-05-08 13:10:37 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@example.com"], ["encrypted_password", "$2a$04$9lFKNlk70y7tkBZn2ng6behyHU/XgWIyMpyMfjidIpCGM7.urc8AW"], ["created_at", "2015-05-08 12:10:38.003882"], ["updated_at", "2015-05-08 12:10:38.003882"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2015-05-08 12:10:38.005488"], ["current_sign_in_at", "2015-05-08 12:10:38.005488"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-05-08 12:10:38.005977"], ["id", 11]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 8ms (ActiveRecord: 1.0ms)
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (19.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 11]]
+Completed 200 OK in 23ms (Views: 22.3ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Pic 1"], ["created_at", "2015-05-08 12:10:38.035990"], ["updated_at", "2015-05-08 12:10:38.035990"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.1ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 9]]
+  Rendered pictures/index.html.erb within layouts/application (2.8ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 11]]
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.8ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.2ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (0.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$qQXbBXWJ1.ECIZgbfEPNOueqWRoKvTlXNB4jkD9IPaLUnmyVaRBh2"], ["created_at", "2015-05-08 12:10:38.066195"], ["updated_at", "2015-05-08 12:10:38.066195"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-05-08 12:10:38.067717"], ["current_sign_in_at", "2015-05-08 12:10:38.067717"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-05-08 12:10:38.068181"], ["id", 12]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 8ms (ActiveRecord: 0.9ms)
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.6ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 12]]
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.6ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 12]]
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.5ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 12]]
+  Rendered pictures/_form.html.erb (3.9ms)
+  Rendered pictures/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.3ms)
+Started POST "/pictures" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"title"=>"Pic 1"}, "commit"=>"Create Picture"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 12]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "Pic 1"], ["created_at", "2015-05-08 12:10:38.106006"], ["updated_at", "2015-05-08 12:10:38.106006"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 10]]
+  Rendered pictures/index.html.erb within layouts/application (3.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 12]]
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (0.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@example.com"], ["encrypted_password", "$2a$04$5wj3a9/.KIK14ynG/M5un.KBOzAqkYHRV1Bf4vYV.41P89EvKemfu"], ["created_at", "2015-05-08 12:10:38.137573"], ["updated_at", "2015-05-08 12:10:38.137573"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2015-05-08 12:10:38.139110"], ["current_sign_in_at", "2015-05-08 12:10:38.139110"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-05-08 12:10:38.139590"], ["id", 13]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 9ms (ActiveRecord: 1.0ms)
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 13]]
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Pic 1"], ["created_at", "2015-05-08 12:10:38.149973"], ["updated_at", "2015-05-08 12:10:38.149973"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 11]]
+  Rendered pictures/index.html.erb within layouts/application (4.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 13]]
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 1.0ms)
+Started GET "/pictures/11" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 11]]
+  Rendered pictures/show.html.erb within layouts/application (1.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 13]]
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (0.4ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$z40YeqfDHeVTIj0HBQi.uOQGd92F490pe3IJHIQnET46hTnQ.NPIC"], ["created_at", "2015-05-08 12:10:38.194420"], ["updated_at", "2015-05-08 12:10:38.194420"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-05-08 12:10:38.196359"], ["current_sign_in_at", "2015-05-08 12:10:38.196359"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-05-08 12:10:38.197251"], ["id", 14]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 11ms (ActiveRecord: 1.0ms)
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 14]]
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "Pic 1"], ["created_at", "2015-05-08 12:10:38.210347"], ["updated_at", "2015-05-08 12:10:38.210347"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 12]]
+  Rendered pictures/index.html.erb within layouts/application (5.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 14]]
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 1.2ms)
+Started GET "/pictures/12/edit" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 14]]
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 12]]
+  Rendered pictures/_form.html.erb (1.4ms)
+  Rendered pictures/edit.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.7ms)
+Started PATCH "/pictures/12" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#update as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"title"=>"Picture 1"}, "commit"=>"Update Picture", "id"=>"12"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 14]]
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 12]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "pictures" SET "title" = $1, "updated_at" = $2 WHERE "pictures"."id" = $3[0m  [["title", "Picture 1"], ["updated_at", "2015-05-08 12:10:38.249863"], ["id", 12]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 12]]
+  Rendered pictures/index.html.erb within layouts/application (3.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 14]]
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.7ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (0.4ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$0LOn0V1ABf/gpayZraYg7.6bCoX.YtWtfEZwBQez71O2HrYXFYOte"], ["created_at", "2015-05-08 12:10:38.284824"], ["updated_at", "2015-05-08 12:10:38.284824"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-05-08 12:10:38.286388"], ["current_sign_in_at", "2015-05-08 12:10:38.286388"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-05-08 12:10:38.286957"], ["id", 15]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 9ms (ActiveRecord: 1.0ms)
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.8ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 15]]
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "Pic 1"], ["created_at", "2015-05-08 12:10:38.298238"], ["updated_at", "2015-05-08 12:10:38.298238"]]
+  [1m[36m (0.9ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 13]]
+  Rendered pictures/index.html.erb within layouts/application (4.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 15]]
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.8ms)
+Started DELETE "/pictures/13" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 15]]
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 13]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "pictures" WHERE "pictures"."id" = $1  [["id", 13]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 7ms (ActiveRecord: 1.2ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 15]]
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (0.6ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@example.com"], ["encrypted_password", "$2a$04$dxQN.AVD9aUWpTY1WtMS6.09MWvzkt4iy9qyBsqVuTbmWs/aTym8u"], ["created_at", "2015-05-08 12:10:38.361599"], ["updated_at", "2015-05-08 12:10:38.361599"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7  [["last_sign_in_at", "2015-05-08 12:10:38.363157"], ["current_sign_in_at", "2015-05-08 12:10:38.363157"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-05-08 12:10:38.363732"], ["id", 16]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 9ms (ActiveRecord: 0.9ms)
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (0.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 16]]
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Pic 1"], ["created_at", "2015-05-08 12:10:38.376304"], ["updated_at", "2015-05-08 12:10:38.376304"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.5ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 14]]
+  Rendered pictures/index.html.erb within layouts/application (5.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 16]]
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 1.0ms)
+Started GET "/pictures/14/comments/new" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"14"}
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  Rendered comments/new.html.erb within layouts/application (0.9ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 16]]
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 0.4ms)
+Started POST "/pictures/14/comments" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"thoughts"=>"so so"}, "commit"=>"Leave Comment", "picture_id"=>"14"}
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("thoughts", "picture_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["thoughts", "so so"], ["picture_id", 14], ["created_at", "2015-05-08 12:10:38.415993"], ["updated_at", "2015-05-08 12:10:38.415993"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 14]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 14]]
+  Rendered pictures/index.html.erb within layouts/application (3.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 16]]
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.7ms)
+Started DELETE "/pictures/14" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"id"=>"14"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 16]]
+  [1m[36mPicture Load (0.1ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 14]]
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "comments" WHERE "comments"."id" = $1  [["id", 4]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 14]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms)
+Started GET "/pictures" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 16]]
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (0.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$gMu7c4y5Ex3lQpWZPT9vNOzFLHgBz1SqkgCsSfyaEYp/e8i1eTjH6"], ["created_at", "2015-05-08 12:10:38.474218"], ["updated_at", "2015-05-08 12:10:38.474218"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-05-08 12:10:38.477210"], ["current_sign_in_at", "2015-05-08 12:10:38.477210"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-05-08 12:10:38.477864"], ["id", 17]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 10ms (ActiveRecord: 1.2ms)
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 17]]
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.4ms)
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.6ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 17]]
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/shared/_links.html.erb (0.3ms)
+  Rendered /Users/paulwallis/.rvm/gems/ruby-2.2.0/gems/devise-3.4.1/app/views/devise/registrations/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$Q6NeOb6iyOQeSfcrULRYC.v5cDeT9CxbGJ7ajIz5GGP5qWyc9ke72"], ["created_at", "2015-05-08 12:10:38.514007"], ["updated_at", "2015-05-08 12:10:38.514007"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-05-08 12:10:38.516021"], ["current_sign_in_at", "2015-05-08 12:10:38.516021"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-05-08 12:10:38.516545"], ["id", 18]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 9ms (ActiveRecord: 1.1ms)
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 18]]
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.4ms)
+Started GET "/" for 127.0.0.1 at 2015-05-08 13:10:38 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (0.7ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 18]]
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
