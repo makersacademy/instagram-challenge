@@ -7,11 +7,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    p params["post"]
-    edited_params = params["post"].merge({time: Time.now.strftime("%y:%b:%d:%H:%M:%S")})
-    p edited_params
-    Post.create(params['post'])
+    Post.create(post_params)
     redirect_to '/posts'
+  end
+
+  def post_params
+    params.require(:post).permit(:content)
   end
 
 end

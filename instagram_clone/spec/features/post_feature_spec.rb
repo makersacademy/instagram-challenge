@@ -8,15 +8,15 @@ feature 'Post' do
       expect(page).to have_link('add a post!')
     end
   end
+  # , time:(Time.now.strftime("%y:%b:%d:%H:%M:%S"))
 
   context 'Posts that have been created are viewable at the /posts link' do
     # create a post in the database
-    before { Post.create(content: 'its a post', time:(Time.now.strftime("%y:%b:%d:%H:%M:%S")))}
+    before { Post.create(content: 'its a post')}
     
     scenario 'Posts are displayed' do
       visit '/posts'
       expect(page).to have_content('its a post')
-      expect(page).to have_content(Time.now.strftime("%y:%b:%d:%H:%M:%S"))
     end
   end
 
