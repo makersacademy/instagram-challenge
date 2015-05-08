@@ -1,9 +1,15 @@
 <% if @posts.any? %>
+  <ul>
   <% @posts.each do |post| %>
+  <li>
+    <%= link_to "post ##{post.id}", post_path(post) %>
+    <br>
     <%= post.content %>
-    <%= post.time %>
-    ~~~~~~~~~~~~~~~~
+    <br>
+    <%= post.created_at %>
+  </li>
   <% end %>
+</ul>
 <% else %>
   No posts yet :-(
   <!-- probably will want to update new_post_path and pass it a user when we add users -->

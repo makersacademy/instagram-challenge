@@ -12,7 +12,7 @@ feature 'Post' do
 
   context 'Posts that have been created are viewable at the /posts link' do
     # create a post in the database
-    before { Post.create(content: 'its a post')}
+    before {Post.create(content: 'its a post')}
     
     scenario 'Posts are displayed' do
       visit '/posts'
@@ -30,4 +30,24 @@ feature 'Post' do
       expect(current_path).to eq '/posts'
     end
   end
+
+  scenario 'let a user view a post' do
+    post = Post.create(content: 'its a post')
+    visit '/posts'
+    click_link "post ##{post.id}"
+    expect(page).to have_content 'its a post'
+    expect(current_path).to eq "/posts/#{post.id}"
+  end  
+
+  # context 'Deleting a post' do
+  #   scenario 'A post can be deleted' do
+  #     visit '/posts'
+  #     click_link 'add a post!'
+  #     fill_in :Content, with: 'moar poasts!!!!'
+  #     click_button 'Create Post'
+  #     visit '/posts'
+  #     click_link 
+
+  #   end
+  # end
 end
