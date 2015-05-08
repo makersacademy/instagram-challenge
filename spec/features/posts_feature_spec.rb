@@ -42,5 +42,11 @@ feature 'posts' do
       expect(page).to have_content 'Amazing'
       expect(current_path).to eq '/posts'
     end
+
+    scenario 'remove a post when a user clicks on delete link' do
+      click_link 'Delete post'
+      expect(page).not_to have_content 'Awesome'
+      expect(page).to have_content 'Post has been deleted'
+    end
   end
 end
