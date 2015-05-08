@@ -15,9 +15,9 @@ end
     pic1.comments.create(thoughts: 'It was an abomination')
   end
 
-  scenario 'a user can like a picture, which updates the like picture count' do
+  it 'a user can like a picture, which updates the like picture count', js: true do
     visit '/pictures'
-    click_link 'Like Pic 1'
+    click_link 'Like'
     expect(page).to have_content('1 like')
   end
 
