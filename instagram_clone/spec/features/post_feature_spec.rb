@@ -29,6 +29,13 @@ feature 'Post' do
       expect(page).to have_content 'moar poasts!!!!'
       expect(current_path).to eq '/posts'
     end
+
+    # replace this with ajax?
+    scenario 'Theres a link to make a post on the front page' do
+      visit '/'
+      click_link 'add a post!'
+      expect(current_path).to eq '/posts/new'
+    end
   end
 
   scenario 'let a user view a post' do
