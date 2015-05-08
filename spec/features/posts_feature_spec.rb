@@ -19,6 +19,12 @@ feature 'posts' do
       expect(page).to have_content 'Awesome'
       expect(current_path).to eq '/posts'
     end
+
+    scenario 'does not let you submit a title that is too short' do
+      create_post('Aw', 'It is not so awesome')
+      expect(page).not_to have_content 'Aw'
+      expect(page).to have_content 'error'
+    end
   end
 
   context 'post have been added' do
