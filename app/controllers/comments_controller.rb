@@ -7,11 +7,43 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @post.comments.create(comments_params)
-    redirect_to posts_path
+    @comment = @post.comments.build_with_user(comment_params, current_user)
+    if @comment.save
+      redirect_to posts_path
+    else
+      render :new
+    end
   end
 
-  def comments_params
+  def edit
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    if current_user == @comment.user
+      @comment.update(comment_params)
+      flash[:notice] = 'Comment edited successfully'
+    else
+      flash[:notice] = 'Cannot edit comment'
+    end
+    redirect_to '/posts'
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    if current_user == @comment.user
+      @comment.destroy
+      flash[:notice] = 'Comment deleted successfully'
+    else
+      flash[:notice] = 'Cannot delete comment'
+    end
+    redirect_to '/posts'
+  end
+
+  def comment_params
     params.require(:comment).permit(:text)
   end
 end

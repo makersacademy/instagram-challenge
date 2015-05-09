@@ -2,14 +2,12 @@ require 'rails_helper'
 
 module PostsHelper
   def create_post(title, description)
-    visit '/posts'
     click_link 'Add a post'
     fill_fields(title, description)
     click_button 'Create Post'
   end
 
   def edit_post(title, description)
-    visit '/posts'
     click_link 'Edit post'
     fill_fields(title, description)
     click_button 'Update Post'
