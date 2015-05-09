@@ -61,4 +61,16 @@ feature 'Wesbite' do
       expect(current_path).to eq '/images'
     end
   end
+
+  context 'deleting images' do
+
+    before {Image.create description: 'My face'}
+
+    scenario 'removes an image when a user clicks a delete link' do
+      visit '/images'
+      click_link 'Delete My face'
+      expect(page).not_to have_content 'My face'
+      expect(page).to have_content 'Image deleted successfully'
+    end
+  end
 end
