@@ -7,8 +7,12 @@ class CommentsController < ApplicationController
 
   def create
     @image = Image.find(params[:image_id])
-    @image.comments.create(comment_params)
-    redirect_to image_path(@image)
+    @comment = @image.comments.new(comment_params)
+    if @comment.save
+      redirect_to image_path(@image)
+    else
+      render 'new'
+    end
   end
 
   def comment_params
