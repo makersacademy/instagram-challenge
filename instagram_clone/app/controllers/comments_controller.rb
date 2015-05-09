@@ -6,8 +6,11 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @post = Post.find(params[:post_id])
-    @post.comments.create(comment_params)
+    user = User.find(current_user.id)
+    @post = user.posts.find(params[:post_id])
+    user_id = {user_id: current_user.id}
+    new_params = comment_params.merge!(user_id)
+    @post.comments.create(new_params)
     redirect_to '/posts'
   end
 
@@ -17,9 +20,16 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-      @comment.destroy
-      flash[:notice] = 'comment deleted successfully'
-      redirect_to "/posts"
+    # p current_user
+    # p @comment
+      if current_user.id == @comment.user_id
+        @comment.destroy
+        flash[:notice] = 'comment deleted successfully'
+        redirect_to "/posts"
+      else
+        flash[:notice] = 'Only the author can delete comments'
+        redirect_to '/posts'
+      end
   end
 
 end

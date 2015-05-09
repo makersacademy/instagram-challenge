@@ -50,4 +50,20 @@ feature 'Leaving a comment' do
     click_link "Poast"
     expect(page).not_to have_content("Yeah buddy!!!")
   end
+
+  scenario 'A comment can only be deleted by the author' do
+    sign_up
+    make_post
+    visit '/posts'
+    click_link "Poast"
+    click_link "comment on post"
+    fill_in :Thoughts, with: "Yeah buddy!!!"
+    click_button 'leave comment'
+    click_link 'Sign out'
+    sign_up 'differentuser@test.com'
+    click_link "Poast"
+    click_link "delete comment"
+    expect(page).not_to have_content('comment deleted successfully')
+    expect(page).to have_content('Only the author can delete comments')
+  end
 end
