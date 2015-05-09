@@ -1,4 +1,4 @@
-class CreatePictures < ActiveRecord::Migration
+rspeclass CreatePictures < ActiveRecord::Migration
   def change
     create_table :pictures do |t|
       t.string :name

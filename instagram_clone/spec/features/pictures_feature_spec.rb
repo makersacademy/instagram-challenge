@@ -10,14 +10,15 @@ feature 'pictures' do
     end
   end
 
-  context 'pictures have been added' do
+# change pictures to comments instead
+  context 'pictures have been added' do  
   before do
-    Picture.create(comment: 'follow')
+    Picture.create(name: 'cool')
   end
 
   scenario 'display picture comments' do
     visit '/pictures'
-    expect(page).to have_content('follow')
+    expect(page).to have_content('cool')
     expect(page).not_to have_content('No pictures added yet')
   end
   end
