@@ -8,14 +8,15 @@ class PostsController < ApplicationController
   end
 
   def create
-    new_params = {user_id: current_user.id, username: current_user.email}
+    new_params = {username: current_user.email}
     new_params.merge!(post_params)
-    Post.create(new_params)
+    user = User.find(current_user.id)
+    newpost = user.posts.create(new_params)
     redirect_to '/posts'
   end
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :name)
   end
 
   def show

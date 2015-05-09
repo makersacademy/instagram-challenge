@@ -28,10 +28,7 @@ feature 'Post' do
     context 'only by a user who is signed in' do
       scenario 'When the user fills out the post form, the post is now displayed' do
         sign_up
-        visit '/posts'
-        click_link 'add a post!'
-        fill_in :Content, with: 'moar poasts!!!!'
-        click_button 'Create Post'
+        make_post
         expect(page).to have_content 'moar poasts!!!!'
         expect(current_path).to eq '/posts'
       end
@@ -47,31 +44,35 @@ feature 'Post' do
 
   scenario 'posts display the name of who created them' do
     sign_up
-    visit '/posts'
-    click_link 'add a post!'
-    fill_in :Content, with: 'moar poasts!!!!'
-    click_button 'Create Post'
+    make_post
     expect(page).to have_content 'test@example.com'
   end
 
   scenario 'let a user view a post' do
-    post = Post.create(content: 'its a post')
+    post = Post.create(name: 'Poast', content: 'its a post')
     visit '/posts'
-    click_link "post ##{post.id}"
+    click_link "Poast"
     expect(page).to have_content 'its a post'
     expect(current_path).to eq "/posts/#{post.id}"
   end
 
 
   context 'Deleting a post' do
-    scenario 'A post can be deleted' do
-      post = Post.create(content: 'its a post')
+    scenario 'can be done by the user who made it' do
       sign_up
+      make_post
       visit '/posts'
-      click_link "post ##{post.id}"
+      # save_and_open_page
+      click_link "Poast"
       click_link "delete post"
       visit '/posts'
       expect(page).not_to have_content('its a post')
+    end
+
+    scenario 'and not by someone else' do
+      sign_up 'differentuser@test.com'
+      make_post
+      visit '/posts'
     end
   end
 

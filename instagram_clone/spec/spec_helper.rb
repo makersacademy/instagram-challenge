@@ -93,4 +93,12 @@ RSpec.configure do |config|
       fill_in('Password confirmation', with: '12345678')
       click_button('Sign up')
   end
+
+  def make_post(name = 'Poast', content = 'moar poasts!!!!')
+    visit '/posts'
+    click_link 'add a post!'
+    fill_in :Name, with: 'Poast'
+    fill_in :Content, with: content
+    click_button 'Create Post'
+  end
 end
