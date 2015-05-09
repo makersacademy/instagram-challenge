@@ -4,9 +4,11 @@
   <% @images.each do |image| %>
     <h2>
       <%= link_to image.description, image_path(image) %>
+      <%= pluralize image.likes.count, 'likes' %>
+      <%= link_to "Like this", image_likes_path(:image_id => image.id), remote: true, method: :post %>
+      <%= link_to "Comment on #{image.description}", new_image_comment_path(image) %>
       <%= link_to "Edit #{image.description}", edit_image_path(image) %>
       <%= link_to "Delete #{image.description}", image_path(image), method: :delete %>
-      <%= link_to "Comment on #{image.description}", new_image_comment_path(image) %>
     </h2>
   <% end %>
 <% else %>
