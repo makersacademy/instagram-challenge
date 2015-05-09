@@ -18,7 +18,7 @@ feature 'Images' do
   context 'when image has been added in the database' do
 
     before do
-      Image.create(description: 'My face')
+      create_an_image
     end
 
     scenario 'will display image description' do
@@ -54,7 +54,9 @@ feature 'Images' do
 
   context 'editing image descriptions' do
 
-    before {Image.create description: 'My face'}
+    before do
+      create_an_image
+    end
 
     scenario 'let a user edit an image description' do
       visit '/images'
@@ -68,8 +70,10 @@ feature 'Images' do
 
   context 'deleting images' do
 
-    before {Image.create description: 'My face'}
-
+    before do
+      create_an_image
+    end
+    
     scenario 'removes an image when a user clicks a delete link' do
       visit '/images'
       click_link 'Delete My face'

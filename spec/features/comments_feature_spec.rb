@@ -4,7 +4,7 @@ feature 'Commenting' do
 
   before do
     sign_up_and_sign_in
-    Image.create description: 'My face'
+    create_an_image
   end
 
   scenario 'allows users to comment on an image from the homepage' do

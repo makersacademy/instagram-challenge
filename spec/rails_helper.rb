@@ -6,7 +6,10 @@ require 'rspec/rails'
 require 'capybara/rails'
 
 require 'helpers/users'
+require 'helpers/images'
+
 include UserHelpers
+include ImageHelpers
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
