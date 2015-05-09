@@ -24,4 +24,18 @@ feature 'Leaving a comment' do
     expect(page).not_to have_content("Yeah buddy!!!")
   end
 
+  scenario 'A comment can be deleted' do
+    post = Post.create(content: 'its a post')
+    visit '/posts'
+    click_link "post ##{post.id}"
+    click_link "comment on post"
+    fill_in :Thoughts, with: "Yeah buddy!!!"
+    click_button 'leave comment'
+    click_link "post ##{post.id}"
+    click_link "delete comment"
+    expect(current_path).to eq '/posts'
+    expect(page).to have_content('comment deleted successfully')
+    click_link "post ##{post.id}"
+    expect(page).not_to have_content("Yeah buddy!!!")
+  end
 end
