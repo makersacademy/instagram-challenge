@@ -1,0 +1,17 @@
+!!!!
+%html
+  %head
+    %title Instaham
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    %p.notice= notice
+    %p.alert= alert
+    - if current_user
+      %section= link_to 'Sign out', destroy_user_session_path, method: :delete
+    -else
+      %section= link_to 'Join in', new_user_registration_path
+      %section= link_to 'Sign in', new_user_session_path
+    = yield
