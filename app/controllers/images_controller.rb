@@ -10,8 +10,13 @@ class ImagesController < ApplicationController
   end
 
   def create
-    Image.create(image_params)
-    redirect_to '/images'
+    @image = Image.new(image_params)
+    @image.user_id = current_user.id
+    if @image.save
+      redirect_to images_path
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -25,14 +30,14 @@ class ImagesController < ApplicationController
   def update
     @image = Image.find(params[:id])
     @image.update(image_params)
-    redirect_to '/images'
+    redirect_to images_path
   end
 
   def destroy
     @image = Image.find(params[:id])
     @image.destroy
     flash[:notice] = 'Image deleted successfully'
-    redirect_to '/images'
+    redirect_to images_path
   end
 
   def image_params

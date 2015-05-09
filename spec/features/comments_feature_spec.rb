@@ -2,7 +2,10 @@ require 'rails_helper'
 
 feature 'Commenting' do
 
-  before {Image.create description: 'My face'}
+  before do
+    sign_up_and_sign_in
+    Image.create description: 'My face'
+  end
 
   scenario 'allows users to comment on an image from the homepage' do
     visit '/images'
