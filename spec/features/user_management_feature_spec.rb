@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'User management' do
 
-  context "when user not signed in and on the homepage" do
+  context "when user not signed in" do
 
     it "should see a 'sign in' link and a 'sign up' link" do
       visit('/')
@@ -13,6 +13,12 @@ feature 'User management' do
     it "should not see 'sign out' link" do
       visit('/')
       expect(page).not_to have_link('Sign out')
+    end
+
+    it "cannot upload an image" do
+      visit('/')
+      click_link 'Upload Image'
+      expect(page).to have_content('You need to sign in or sign up before continuing')
     end
   end
 
