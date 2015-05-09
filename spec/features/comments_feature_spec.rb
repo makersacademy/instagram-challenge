@@ -9,26 +9,20 @@ feature 'Commenting' do
 
   scenario 'allows users to comment on an image from the homepage' do
     visit '/images'
-    click_link 'Comment'
-    fill_in "Comment", with: "so so"
-    click_button 'Comment'
+    comment_on_image
     expect(page).to have_content('so so')
   end
 
   scenario 'allows users to comment on an image from the image page' do
     visit '/images'
     click_link 'My face'
-    click_link 'Comment'
-    fill_in "Comment", with: "so so"
-    click_button 'Comment'
+    comment_on_image
     expect(page).to have_content('so so')
   end
 
   scenario 'shows link back to homepage after commenting' do
     visit '/images'
-    click_link 'Comment'
-    fill_in "Comment", with: "so so"
-    click_button 'Comment'
+    comment_on_image
     expect(page).to have_link('Homepage')
   end
 

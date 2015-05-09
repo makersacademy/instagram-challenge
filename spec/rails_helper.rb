@@ -7,9 +7,11 @@ require 'capybara/rails'
 
 require 'helpers/users'
 require 'helpers/images'
+require 'helpers/comments'
 
 include UserHelpers
 include ImageHelpers
+include CommentHelpers
 
 # Add additional requires below this line. Rails is not loaded until this point!
 

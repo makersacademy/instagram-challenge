@@ -13,8 +13,8 @@ Build an [Instagram](https://www.instagram.com) clone using Rails.   You'll need
 
 Breakdown of models:
 - User
-- Post
-- Comment/description
+- Image
+- Comment
 - Like
 
 Development Blog:
