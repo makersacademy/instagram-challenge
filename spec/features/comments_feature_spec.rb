@@ -12,4 +12,11 @@ feature 'Commenting' do
     expect(page).to have_content('so so')
   end
 
+  scenario 'shows link back to homepage after commenting' do
+    visit '/images'
+    click_link 'Comment on My face'
+    fill_in "Comment", with: "so so"
+    click_button 'Comment'
+    expect(page).to have_link('Homepage')
+  end
 end

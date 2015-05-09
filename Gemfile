@@ -21,4 +21,5 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda'
+  gem 'rspec-collection_matchers'
 end
