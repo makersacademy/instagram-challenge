@@ -5,9 +5,9 @@ describe Post, type: :model do
   it { is_expected.to have_many :likes }
   it { is_expected.to belong_to :user }
 
-  it 'is not valid with a title less than three characters' do
+  it 'is not valid without an image' do
     post = described_class.new(title: 'Aw')
-    expect(post).to have(1).error_on(:title)
+    expect(post).to have(1).error_on(:image)
     expect(post).not_to be_valid
   end
 

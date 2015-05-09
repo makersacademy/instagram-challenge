@@ -8,10 +8,10 @@ class Post < ActiveRecord::Base
       dependent: :restrict_with_exception,
       dependent: :destroy
   belongs_to :user
-  validates :title, length: { minimum: 3 }
 
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_presence :image, message: 'is required'
 
   def has_posted?(current_user)
     self.user == current_user

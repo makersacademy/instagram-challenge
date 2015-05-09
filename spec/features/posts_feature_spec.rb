@@ -27,21 +27,23 @@ feature 'posts' do
     end
 
     context 'creating posts' do
-      scenario 'prompt user to fill out a form then displays the new post' do
+      scenario 'a user can create post with an img' do
         create_post('Awesome', 'It is awesome')
         expect(page).to have_content 'Awesome'
+        expect(page).to have_xpath("//img[@alt='Rubber duck']")
         expect(current_path).to eq '/posts'
+      end
+
+      scenario 'a user cannot create post without an img' do
+        click_link 'Add a post'
+        fill_fields('Awesome', 'It is awesome')
+        click_button 'Create Post'
+        expect(page).to have_content('Image is required')
       end
 
       scenario 'post should belong to a user' do
         create_post('Awesome', 'It is awesome')
         expect(page).to have_content 'username'
-      end
-
-      scenario 'does not let you submit a title that is too short' do
-        create_post('Aw', 'It is not so awesome')
-        expect(page).not_to have_content 'Aw'
-        expect(page).to have_content 'error'
       end
     end
 
