@@ -6,7 +6,7 @@
       <%= link_to image.description, image_path(image) %>
       <%= pluralize image.likes.count, 'likes' %>
 
-      <% if image.already_liked_by?(current_user) %>
+      <% if current_user.already_liked?(image) %>
         Liked
       <% else %>
         <%= link_to "Like", image_likes_path(image), remote: true, method: :post %>
