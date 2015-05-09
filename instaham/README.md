@@ -51,9 +51,9 @@ MVps
 
 2: Able to limit posting messages to signed up users
 
-3: can comment on messages
+3: messages are now photos stored in the cloud
 
-4: messages are now photos stored in the cloud
+4: can comment on photos
 
 5: can like photos
 
