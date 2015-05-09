@@ -24,9 +24,9 @@ feature 'Wesbite' do
     end
   end
 
-  context 'uploading images' do
+  context 'when user uploads images' do
 
-    scenario 'prompts user to enter a description, then displays it' do
+    scenario 'prompts them to enter a description, then displays description' do
       visit '/images'
       click_link 'Upload Image'
       fill_in 'Description', with: 'My face'
@@ -36,4 +36,15 @@ feature 'Wesbite' do
     end
   end
 
+  context 'when user visits website' do
+
+    let!(:myface){Image.create(description:'My face')}
+
+    scenario 'lets them view images' do
+      visit '/images'
+      click_link 'My face'
+      expect(page).to have_content 'My face'
+      expect(current_path).to eq "/images/#{myface.id}"
+    end
+  end
 end
