@@ -62,17 +62,22 @@ feature 'Post' do
       sign_up
       make_post
       visit '/posts'
-      # save_and_open_page
       click_link "Poast"
       click_link "delete post"
-      visit '/posts'
+      expect(page).to have_content('Post deleted successfully')
       expect(page).not_to have_content('its a post')
     end
 
     scenario 'and not by someone else' do
-      sign_up 'differentuser@test.com'
+      sign_up
       make_post
+      click_link 'Sign out'
+      sign_up 'differentuser@test.com'
       visit '/posts'
+      click_link "Poast"
+      click_link "delete post"
+      expect(page).to have_content('Only the author can delete posts')
+      expect(page).to have_content 'Poast'
     end
   end
 
