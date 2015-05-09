@@ -45,13 +45,23 @@ feature 'Post' do
 
   end
 
+  scenario 'posts display the name of who created them' do
+    sign_up
+    visit '/posts'
+    click_link 'add a post!'
+    fill_in :Content, with: 'moar poasts!!!!'
+    click_button 'Create Post'
+    expect(page).to have_content 'test@example.com'
+  end
+
   scenario 'let a user view a post' do
     post = Post.create(content: 'its a post')
     visit '/posts'
     click_link "post ##{post.id}"
     expect(page).to have_content 'its a post'
     expect(current_path).to eq "/posts/#{post.id}"
-  end  
+  end
+
 
   context 'Deleting a post' do
     scenario 'A post can be deleted' do

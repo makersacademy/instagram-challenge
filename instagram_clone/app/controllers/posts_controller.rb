@@ -8,7 +8,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
+    new_params = {user_id: current_user.id, username: current_user.email}
+    new_params.merge!(post_params)
+    Post.create(new_params)
     redirect_to '/posts'
   end
 
