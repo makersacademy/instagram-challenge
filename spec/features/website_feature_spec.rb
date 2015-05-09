@@ -47,4 +47,18 @@ feature 'Wesbite' do
       expect(current_path).to eq "/images/#{myface.id}"
     end
   end
+
+  context 'editing image descriptions' do
+
+    before {Image.create description: 'My face'}
+
+    scenario 'let a user edit an image description' do
+      visit '/images'
+      click_link 'Edit My face'
+      fill_in 'Description', with: 'My face again'
+      click_button 'Update'
+      expect(page).to have_content 'My face again'
+      expect(current_path).to eq '/images'
+    end
+  end
 end
