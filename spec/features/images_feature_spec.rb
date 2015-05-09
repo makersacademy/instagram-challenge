@@ -31,10 +31,7 @@ feature 'Images' do
   context 'when user uploads images' do
 
     scenario 'prompts them to enter a description, then displays description' do
-      visit '/images'
-      click_link 'Upload Image'
-      fill_in 'Description', with: 'My face'
-      click_button 'Upload'
+      create_an_image
       expect(page).to have_content 'My face'
       expect(current_path).to eq '/images'
     end
@@ -79,6 +76,14 @@ feature 'Images' do
       click_link 'Delete'
       expect(page).not_to have_content 'My face'
       expect(page).to have_content 'Image deleted successfully'
+    end
+
+    scenario 'only works if image was uploaded by current user' do
+      sign_out
+      sign_up_and_sign_in({ email: "sanj@sanj.com" })
+      click_link 'Delete'
+      expect(page).to have_content 'Not your image'
+      expect(page).to have_content 'My face'
     end
   end
 end

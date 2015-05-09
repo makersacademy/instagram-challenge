@@ -35,8 +35,12 @@ class ImagesController < ApplicationController
 
   def destroy
     @image = Image.find(params[:id])
-    @image.destroy
-    flash[:notice] = 'Image deleted successfully'
+    if @image.user_id == current_user.id
+      @image.destroy
+      flash[:notice] = 'Image deleted successfully'
+    else
+      flash[:notice] = "Not your image"
+    end
     redirect_to images_path
   end
 
