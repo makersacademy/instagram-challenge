@@ -19,4 +19,10 @@ context "user is signed in and on the homepage" do
     visit('/')
     expect(page).to have_link('Sign out')
   end
+
+  scenario "they should not see a sign in link or a sign up link" do
+    visit('/')
+    expect(page).not_to have_link('Sign in')
+    expect(page).not_to have_link('Sign up')
+  end
 end
