@@ -12,6 +12,11 @@ context "user not signed in and on the homepage" do
 end
 
 context "user is signed in and on the homepage" do
-  scenario "" do
+  before(:each) do
+    sign_up
+  end
+  scenario "they should see sign out link" do
+    visit('/')
+    expect(page).to have_link('Sign out')
   end
 end
