@@ -11,10 +11,14 @@ feature 'Likes' do
     expect(page).to have_content('0 likes')
   end
 
-  scenario 'a user can like an image, which updates the image likes count' do
+  scenario 'there is a like button' do
     visit '/'
-    click_link 'Like this'
-    expect(page).to have_content('1 like')
+    expect(page).to have_link 'Like'
   end
 
+  scenario 'a user can like an image, which updates the image likes count' do
+    visit '/'
+    click_link 'Like'
+    expect(page).to have_content('1 like')
+  end
 end

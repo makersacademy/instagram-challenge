@@ -60,7 +60,7 @@ feature 'Images' do
 
     scenario 'let a user edit an image description' do
       visit '/images'
-      click_link 'Edit My face'
+      click_link 'Edit'
       fill_in 'Description', with: 'My face again'
       click_button 'Update'
       expect(page).to have_content 'My face again'
@@ -73,10 +73,10 @@ feature 'Images' do
     before do
       create_an_image
     end
-    
+
     scenario 'removes an image when a user clicks a delete link' do
       visit '/images'
-      click_link 'Delete My face'
+      click_link 'Delete'
       expect(page).not_to have_content 'My face'
       expect(page).to have_content 'Image deleted successfully'
     end
