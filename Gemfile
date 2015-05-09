@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'devise'
 gem 'rails', '4.2.1'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
