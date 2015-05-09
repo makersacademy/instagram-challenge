@@ -15,7 +15,7 @@ feature 'comments' do
 
   context 'user not logged in' do
     scenario 'cannot like posts' do
-      expect(page).not_to have_content('Like')
+      expect(page).not_to have_link('Like')
     end
   end
 
@@ -38,7 +38,7 @@ feature 'comments' do
       click_link 'Like'
       click_link 'Unlike'
       expect(page).to have_link 'Like'
-      expect(page).to have content 'No likes'
+      expect(page).to have_content 'No Likes'
     end
 
   end

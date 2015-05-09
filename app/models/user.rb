@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :comments
+  has_many :likes
   has_many :commented_posts, through: :comments, source: :post
+  has_many :liked_posts, through: :likes, source: :post
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -29,7 +31,11 @@ class User < ActiveRecord::Base
     end
   end
 
-  def has_created?(element)
-    element.user == current_user
+  def has_commented?(post)
+    commented_posts.include? post
+  end
+
+  def has_liked?(post)
+    liked_posts.include? post
   end
 end

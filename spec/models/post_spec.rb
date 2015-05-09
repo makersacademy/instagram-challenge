@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Post, type: :model do
   it { is_expected.to have_many :comments }
+  it { is_expected.to have_many :likes }
   it { is_expected.to belong_to :user }
 
   it 'is not valid with a title less than three characters' do
@@ -24,6 +25,24 @@ describe Post, type: :model do
 
       it 'builds a review associated with the specified user' do
         expect(comment.user).to eq user
+      end
+    end
+  end
+
+  describe 'likes' do
+    describe 'build_with_user' do
+
+      let(:user) { User.create email: 'test@test.com', username: 'testuser', password: 'testpassword' }
+      let(:post) { Post.create title: 'Awesome' }
+
+      subject(:like) { post.likes.build_with_user(user) }
+
+      it 'builds a review' do
+        expect(like).to be_a Like
+      end
+
+      it 'builds a review associated with the specified user' do
+        expect(like.user).to eq user
       end
     end
   end
