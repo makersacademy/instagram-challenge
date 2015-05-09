@@ -1,8 +1,12 @@
 require 'rails_helper'
 
-feature 'Wesbite' do
+feature 'Images' do
 
-  context 'on initialization' do
+  before do
+    sign_up_and_sign_in
+  end
+
+  context 'Website on initialization' do
 
     scenario 'should display a prompt to add an image' do
       visit '/images'
