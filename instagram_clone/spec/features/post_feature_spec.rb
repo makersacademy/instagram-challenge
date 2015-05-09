@@ -10,7 +10,6 @@ feature 'Post' do
   end
 
   context 'Posts that have been created are viewable at the /posts link' do
-    # create a post in the database
     before {Post.create(content: 'its a post')}
     
     scenario 'Posts are displayed' do
@@ -20,21 +19,30 @@ feature 'Post' do
   end
 
   context 'A post can be made on the site' do
-    scenario 'When the user fills out the post form, the post is now displayed' do
-      visit '/posts'
-      click_link 'add a post!'
-      fill_in :Content, with: 'moar poasts!!!!'
-      click_button 'Create Post'
-      expect(page).to have_content 'moar poasts!!!!'
-      expect(current_path).to eq '/posts'
-    end
-
     # replace this with ajax?
     scenario 'Theres a link to make a post on the front page' do
       visit '/'
-      click_link 'add a post!'
-      expect(current_path).to eq '/posts/new'
+      expect(page).to have_link 'add a post!'
     end
+
+    context 'only by a user who is signed in' do
+      scenario 'When the user fills out the post form, the post is now displayed' do
+        sign_up
+        visit '/posts'
+        click_link 'add a post!'
+        fill_in :Content, with: 'moar poasts!!!!'
+        click_button 'Create Post'
+        expect(page).to have_content 'moar poasts!!!!'
+        expect(current_path).to eq '/posts'
+      end
+
+      scenario 'post cannot be made by a visitor' do
+        visit '/posts'
+        click_link 'add a post!'
+        expect(page).to have_content 'You need to sign in or sign up before continuing.'
+      end
+    end
+
   end
 
   scenario 'let a user view a post' do
@@ -48,6 +56,7 @@ feature 'Post' do
   context 'Deleting a post' do
     scenario 'A post can be deleted' do
       post = Post.create(content: 'its a post')
+      sign_up
       visit '/posts'
       click_link "post ##{post.id}"
       click_link "delete post"
@@ -56,7 +65,4 @@ feature 'Post' do
     end
   end
 
-  # context 'A post can be liked' do
-    
-  # end
 end
