@@ -7,11 +7,23 @@
     <%= post.content %>
     <br>
     <%= post.created_at %>
+      <% if post.comments.any? %>
+      <br>
+      <ul>
+        <% post.comments.each do |comment| %>
+          <li>
+            <%= comment.thoughts %>
+            <br>
+            <%= comment.created_at %>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
   </li>
   <% end %>
 </ul>
 <% else %>
   No posts yet :-(
+<% end %>
   <!-- probably will want to update new_post_path and pass it a user when we add users -->
   <%= link_to "add a post!", new_post_path %>
-<% end %>

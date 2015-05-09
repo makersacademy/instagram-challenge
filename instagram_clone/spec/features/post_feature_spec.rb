@@ -8,7 +8,6 @@ feature 'Post' do
       expect(page).to have_link('add a post!')
     end
   end
-  # , time:(Time.now.strftime("%y:%b:%d:%H:%M:%S"))
 
   context 'Posts that have been created are viewable at the /posts link' do
     # create a post in the database
@@ -56,4 +55,8 @@ feature 'Post' do
       expect(page).not_to have_content('its a post')
     end
   end
+
+  # context 'A post can be liked' do
+    
+  # end
 end
