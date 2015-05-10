@@ -81,4 +81,17 @@ feature 'Post' do
     end
   end
 
+  context 'uploading an image' do
+    scenario 'can upload an image' do
+      sign_up
+      visit '/posts'
+      click_link 'add a post!'
+      fill_in :Name, with: 'Poast'
+      attach_file('post_image', 'spec/testcat.jpg')
+      fill_in :Content, with: 'content'
+      click_button 'Create Post'
+      expect(page).to have_xpath("//img[@alt='Testcat']")
+    end
+  end
+
 end
