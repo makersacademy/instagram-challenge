@@ -1,28 +1,29 @@
-Instagram Challenge
-===================
+Simplagram
+==========
 
-Instructions
+Simplagram is a website dedicated to images that reflect the time-honoured concept of elegant simplicity. The site itself adheres to this principle wherever possible.
+
+User stories
 -------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9am Monday morning
 
-Task
------
+```
+As a lover of images that evoke elegant simplicity
+In order to view and share my favourite pictures
+I would like to be able to sign up to Simplagram with my own account
 
-Build Instagram: Simple huh!
+As a Simplagram user
+In order to post my own pictures
+I would like to be able to upload images in an easy way
 
-As usual please start by
+As a thoughtful Simplagram user
+In order to add detail to the images I post
+I would like to be able to add a caption/description to my uploads
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo
+As a socially-minded Simplagram user
+In order to add my views to the mix
+I would like to be able to comment on pictures
 
-Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture. It will need to look like the instagrams website or better. 
-
-Breakdown of models:
-- User
-- Post
-- Comment/description
-- Like
-
-Bonus if you can add filters :P 
+As a time-stretched Simplagram user
+In order to quickly indicate that I like a photo
+I would like to be able to 'like' photos
+```

@@ -1,0 +1,9 @@
+<%= get_username(@photo) %>
+<%= image_tag(@photo.image.url(:original)) %>
+<%= @photo.caption %>
+  <% if @photo.comments.any? %>
+    <% @photo.comments.each do |comment| %>
+      <%= get_username(comment) %>
+      <%= comment.content %>
+    <% end %>
+  <% end %>
