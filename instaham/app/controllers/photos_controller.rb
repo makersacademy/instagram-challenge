@@ -16,7 +16,7 @@ before_action :authenticate_user!, except: :index
   end
 
   def create_photo_params
-    params.require(:photo).permit(:message).merge({user_id: current_user.id})
+    params.require(:photo).permit(:message, :image).merge({user_id: current_user.id})
   end
 
 end
