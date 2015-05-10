@@ -37,7 +37,7 @@ feature 'posts' do
         click_link 'Add a post'
         fill_fields('Awesome', 'It is awesome')
         click_button 'Create Post'
-        expect(page).to have_content('Image is required')
+        expect(page).to have_css('.field_with_errors')
       end
 
       scenario 'post should belong to a user' do

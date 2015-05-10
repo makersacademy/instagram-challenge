@@ -32,6 +32,12 @@ feature 'comments' do
       expect(current_path).to eq "/posts/#{Post.last.id}"
     end
 
+    scenario 'cannot leave a comment without text' do
+      click_link 'Comment'
+      click_button 'Leave Comment'
+      expect(page).to have_css('.field_with_errors')
+    end
+
     context 'after a comment has been created' do
       before do
         create_comment('This is a comment')
@@ -49,6 +55,12 @@ feature 'comments' do
         go_to_view_page('Rubber duck')
         expect(page).to have_content 'This is a comment'
         expect(page).not_to have_css('.edit_comment')
+      end
+
+      scenario 'cannot edit a comment without text' do
+        find('.edit_comment').click
+        click_button 'Edit Comment'
+        expect(page).to have_content('This is a comment')
       end
 
       scenario 'can delete a comment' do
