@@ -8,26 +8,25 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body class="main">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <section class="user-links">
+  <body>
+    <header>
+      <%= render 'layouts/header' %>
+    </header>
+    <section class="flash">
+      <p class="flash--notice"><%= notice %></p>
+      <p class="flash--alert"><%= alert %></p>
+    </section>
+    <section class="main">
       <% if user_signed_in? %>
-        <article class="main--signed-out">
-          <header>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-          </header>
+        <article class="main--signed-in">
+          <%= yield %>
         </article>
       <% else %>
-        <article class="main--signed-in">
-          <header>
-          <%= link_to "Sign in", new_user_session_path %>
-          <%= link_to "Sign up", new_user_registration_path %>
-          </header>
+        <article class="main--signed-out">
+          <%= yield :register %>
+          <%= yield :login %>
         </article>
       <% end %>
-    <%= yield %>
     </section>
   </body>
 
