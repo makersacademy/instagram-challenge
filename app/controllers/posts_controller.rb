@@ -12,6 +12,6 @@ class PostsController < ApplicationController
 private
 
   def review_params
-    params.require(:post).permit(:description)
+    params.require(:post).permit(:description, :image)
   end
 end

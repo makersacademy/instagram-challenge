@@ -67,11 +67,11 @@ feature 'projects' do
       visit '/projects'
       click_link 'Add Photo to Pipeline ILI'
       fill_in 'Description', with:'Cleaning PIG Insertion'
-      # attach_file('post_photo', 'spec/pig_test.jpg')
+      attach_file('post_image', 'spec/test_pig.jpg')
       click_button 'Upload Photo'
       expect(current_path).to eq '/projects'
       expect(page).to have_content 'Cleaning PIG Insertion'
-      expect(page).to have_xpath("//img[@alt='pig_test']")
+      expect(page).to have_xpath("//img[contains(@src, 'test_pig.jpg')]")
     end
   end
 end
