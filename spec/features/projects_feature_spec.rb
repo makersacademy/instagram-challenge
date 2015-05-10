@@ -45,4 +45,17 @@ feature 'projects' do
       expect(current_path).to eq "/projects/#{pipeline.id}"
     end
   end
+
+  context 'deleting projects' do
+    before do
+      Project.create(name:'Pipeline Pigging', company:'RB Geomatics')
+    end
+
+    scenario 'removes a project on clicking the delete link' do
+      visit '/projects'
+      click_link 'Delete Pipeline Pigging'
+      expect(page).not_to have_content 'Pipeline Pigging'
+      expect(page).to have_content 'Project successfully deleted'
+    end
+  end
 end
