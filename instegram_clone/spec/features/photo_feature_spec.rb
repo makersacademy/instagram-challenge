@@ -16,7 +16,7 @@ feature 'photos' do
 
     scenario 'display photos' do
       visit '/photos'
-      expect(page).to have_content('irst Photo')
+      expect(page).to have_content('First Photo')
       expect(page).not_to have_content('No photos yet')
     end
   end
@@ -29,6 +29,17 @@ feature 'photos' do
       click_button 'Create Photo'
       expect(page).to have_content 'First Photo'
       expect(current_path).to eq '/photos'
+    end
+  end
+
+  context 'uploading a photo' do
+    scenario 'user can upload a photo' do
+      visit '/photos'
+      click_link 'Post a photo'
+      fill_in :Name, with: 'Test Photo'
+      attach_file('photo[image]', 'spec/files/test_photo.jpg')
+      click_button 'Create Photo'
+      expect(page.html).to include(%Q(alt=\"Test photo\"))
     end
   end
 end
