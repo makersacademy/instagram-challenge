@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
 before_action :authenticate_user!, except: :index
 
   def index
-    @photos = Photo.all
+    @photos = Photo.all.includes(:comments)
   end
 
   def new
