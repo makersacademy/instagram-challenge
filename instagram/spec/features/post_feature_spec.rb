@@ -34,4 +34,18 @@ feature 'posts' do
     end
   end
 
+  context 'viewing posts' do
+
+    let!(:cat){Post.create(name:'Cat image')}
+
+    scenario 'lets a user view a post' do
+     visit '/posts'
+     click_link 'Cat image'
+     expect(page).to have_content 'Cat image'
+     expect(current_path).to eq "/posts/#{cat.id}"
+    end
+  end
+
 end
+
+
