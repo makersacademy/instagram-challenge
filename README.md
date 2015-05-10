@@ -8,6 +8,7 @@ An instagram style website with posts, comments and likes that also converts you
 
 Test Coverage
 -------------
+```
 Leaving a comment
   doesnt allow visitors to comment
   sign up, make post
@@ -51,3 +52,4 @@ Post
 
 Finished in 5.89 seconds (files took 2.29 seconds to load)
 23 examples, 0 failures
+```
