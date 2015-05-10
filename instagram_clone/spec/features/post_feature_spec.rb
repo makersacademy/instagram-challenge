@@ -90,6 +90,7 @@ feature 'Post' do
       attach_file('post_image', 'spec/testcat.jpg')
       fill_in :Content, with: 'content'
       click_button 'Create Post'
+      click_link 'Poast'
       expect(page).to have_xpath("//img[@alt='Testcat']")
     end
   end

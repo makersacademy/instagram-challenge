@@ -1,10 +1,16 @@
-<% if @posts.any? %>
+<div class="bodycontainer"><% if @posts.any? %>
   <ul>
   <% @posts.each do |post| %>
   <li>
     <%= link_to post.name, post_path(post) %>
     <br>
-    <%= image_tag post.image.url(:thumb) %>
+
+    <% unless post.image.url(:medium) == '/images/medium/missing.png'%>
+      <% a = AsciiArt.new(post.image.url(:medium)).to_ascii_art(width: 75, format: 'html') %>
+      <div class="ascii"><%= a.to_s.html_safe %></div>
+    <% end %>
+
+
     <br>
     <%= post.content %>
     <br>
@@ -29,3 +35,4 @@
 <% end %>
   <!-- probably will want to update new_post_path and pass it a user when we add users -->
   <%= link_to "add a post!", new_post_path %>
+</div>
