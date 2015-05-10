@@ -15,17 +15,28 @@ feature 'User management' do
       expect(page).not_to have_link('Sign out')
     end
 
-    it "cannot upload an image" do
+    it "asked to sign up or sign in to upload an image" do
       visit('/')
       click_link 'Upload Image'
       expect(page).to have_content('You need to sign in or sign up before continuing')
     end
+
+    it "has to sign up or sign in to comment on an image" do
+      visit('/')
+      expect(page).not_to have_link('Comment')
+    end
+
+    it "has to sign up or sign in to like an image" do
+      visit('/')
+      expect(page).not_to have_link('Like')
+    end
   end
 
-  context "when user signed in on the homepage" do
+  context "when user signed in" do
 
     before do
       sign_up_and_sign_in
+      create_an_image
     end
 
     it "should see 'sign out' link" do
@@ -35,6 +46,21 @@ feature 'User management' do
     it "should not see a 'sign in' link and a 'sign up' link" do
       expect(page).not_to have_link('Sign in')
       expect(page).not_to have_link('Sign up')
+    end
+
+    it "should see link to upload an image" do
+      visit('/')
+      expect(page).to have_link('Upload Image')
+    end
+
+    it "should see link to comment on an image" do
+      visit('/')
+      expect(page).to have_link('Comment')
+    end
+
+    it "should see link to like an image" do
+      visit('/')
+      expect(page).to have_link('Like')
     end
   end
 

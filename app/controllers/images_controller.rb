@@ -25,6 +25,10 @@ class ImagesController < ApplicationController
 
   def edit
     @image = Image.find(params[:id])
+    if @image.user_id == current_user.id
+    else
+      flash[:notice] = "Not your image"
+    end
   end
 
   def update

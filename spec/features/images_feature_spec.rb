@@ -55,13 +55,20 @@ feature 'Images' do
       create_an_image
     end
 
-    scenario 'let a user edit an image description' do
+    scenario 'let a user edit their image description' do
       visit '/images'
       click_link 'Edit'
       fill_in 'Description', with: 'My face again'
       click_button 'Update'
       expect(page).to have_content 'My face again'
       expect(current_path).to eq '/images'
+    end
+
+    scenario 'does not let a user edit someone else\'s image description' do
+      sign_out
+      sign_up_and_sign_in({ email: "sanj@sanj.com" })
+      click_link 'Edit'
+      expect(page).to have_content 'Not your image'
     end
   end
 
