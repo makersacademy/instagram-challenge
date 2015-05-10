@@ -1,26 +1,21 @@
-  <%= link_to('Add a photo', new_photo_path) if current_user %>
 <% if Photo.all.empty? %>
   No photos yet
 <% else %>
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <% @photos.each do |photo| %>
-        <div class="well">
-          <ul class="media-list"
-            <li class="media">
-              <div class="media-left">
-                <a href="#">
-                  <%= image_tag photo.image.url(:medium), class: "media-object" %>
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">Username</h4>
-                Description: <%= photo.description %>
-              </div>
-            </li>
-          </ul>
-        </div>
-      <% end %>
+  <% @photos.each do |photo| %>
+    <div class="well">
+      <ul class="media-list"
+        <li class="media">
+          <div class="media-left">
+            <a href="#">
+              <%= image_tag photo.image.url(:medium), class: "media-object" %>
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">By <%= photo.user.username %></h4>
+            Description: <%= photo.description %>
+          </div>
+        </li>
+      </ul>
     </div>
-  </div>
+  <% end %>
 <% end %>
