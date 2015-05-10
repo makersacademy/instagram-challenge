@@ -34,4 +34,15 @@ feature 'projects' do
       expect(current_path).to eq '/projects'
     end
   end
+
+  context 'viewing projects' do
+    let!(:pipeline){Project.create(name:'Pipeline Pigging', company:'RB Geomatics')}
+
+    scenario 'lets a user view a particular project' do
+      visit '/projects'
+      click_link 'Pipeline Pigging'
+      expect(page).to have_content('Pipeline Pigging')
+      expect(current_path).to eq "/projects/#{pipeline.id}"
+    end
+  end
 end
