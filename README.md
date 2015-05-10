@@ -3,7 +3,7 @@ Sanjagram Challenge
 
 [![Build Status](https://travis-ci.org/makersacademy/instagram-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/instagram-challenge)
 
-[Use this app on Heroku](herokuapp.com)
+[Use this app on Heroku](https://sanjagram.herokuapp.com)
 
 ![screenshot](http://sanjsanj.github.io/images/week8_sanjface.png)
 
