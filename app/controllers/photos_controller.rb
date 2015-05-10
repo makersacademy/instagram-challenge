@@ -3,9 +3,17 @@ class PhotosController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
+    @photos = Photo.all
+    @comment = Comment.new
+    @new_like = Like.new
   end
 
-  def new
+  def get_username(item)
+    User.find(item.user_id).username
+  end
+
+  def get_user_like_id(photo, user)
+    Like.find_by(photo_id: photo.id, user_id: user.id).id
   end
 
   def create
@@ -20,6 +28,9 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.first(params[:id])[0]
+    @photo = Photo.find(params[:id])
   end
+  
+  helper_method :get_username, :get_user_like_id
+
 end

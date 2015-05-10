@@ -50,6 +50,26 @@ feature 'As a user on the homepage' do
       expect(page).to have_xpath("//img[contains(@src, 'fish.jpg')]")
     end
 
+    scenario 'I can add a comment' do
+      visit '/photos'
+      fill_in 'Content', with: 'Nice picture!'
+      click_button 'Create Comment'
+      expect(page).to have_content('Nice picture!')
+    end
+
+    scenario 'I can like a photo' do
+      visit '/photos'
+      click_button 'Create Like'
+      expect(page).to have_content('1 like')
+    end
+
+    scenario 'I can unlike a photo I have already liked' do
+      visit '/photos'
+      click_button 'Create Like'
+      click_link 'Unlike'
+      expect(page).to have_content('0 likes')
+    end
+
   end
 
 end

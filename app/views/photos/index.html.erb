@@ -6,12 +6,51 @@
   <%= f.submit %>
 <% end %>
 
-<% if Photo.all.any? %>
-  <% Photo.all.each do |photo| %>
-    <%= User.first(photo.user_id)[0].username %>
-    <%= link_to(image_tag(photo.image.url(:medium)), photo_path(id: photo.id)) %>
-    <%= photo.caption %>
-  <% end %>
+<% if @photos.any? %>
+
+  <section class="post">
+
+    <% @photos.each do |photo| %>
+
+      <h3 class="photo-author">
+        <%= get_username(photo) %>
+      </h3>
+      <%= link_to(image_tag(photo.image.url(:medium)), photo_path(id: photo.id)) %>
+      <p class="photo-caption">
+        <%= photo.caption %>
+      </p>
+
+      <section class="likes">
+        <%= pluralize(photo.likes.count, 'like') %>
+
+        <% if photo.has_been_liked_by?(current_user) %>
+          <%= link_to "Unlike", photo_like_path(id: get_user_like_id(photo, current_user), photo_id: photo.id), method: :delete %>
+        <% else %>
+          <%= form_for [photo, @new_like] do |f| %>
+            <%= f.submit %>
+          <% end %>
+        <% end %>
+      </section>
+
+      <section class="comments">
+        <%= form_for [photo, @comment] do |f| %>
+          <%= f.label :content %>
+          <%= f.text_field :content %>
+          <%= f.submit %>
+        <% end %>
+
+        <% if photo.comments.any? %>
+          <% photo.comments.each do |comment| %>
+            <%= get_username(comment) %>
+            <%= comment.content %>
+          <% end %>
+        <% end %>
+      </section>
+
+    <% end %>
+
+  </section>
+
 <% else %>
   No photos yet
 <% end %>
