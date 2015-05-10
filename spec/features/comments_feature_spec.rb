@@ -48,12 +48,13 @@ feature 'comments' do
         sign_up('another@test.com', 'another', 'testpassword')
         go_to_view_page('Rubber duck')
         expect(page).to have_content 'This is a comment'
-        expect(page).not_to have_link 'Edit comment'
+        expect(page).not_to have_css('.edit_comment')
       end
 
       scenario 'can delete a comment' do
-        click_link 'Delete comment'
+        find('.remove_comment').click
         expect(page).not_to have_content 'This is a comment'
+        expect(page).not_to have_css('.remove_comment')
       end
 
       scenario 'cannot delete a post if he is not the creator' do
@@ -61,11 +62,11 @@ feature 'comments' do
         sign_up('another@test.com', 'another', 'testpassword')
         go_to_view_page('Rubber duck')
         expect(page).to have_content 'This is a comment'
-        expect(page).not_to have_link 'Delete comment'
+        expect(page).not_to have_css '.delete_comment'
       end
 
       scenario 'all comments will be deleted if the post is deleted' do
-        click_link 'Delete post'
+        find('.remove_post').click
         expect(page).not_to have_content 'This is a comment'
         expect(current_path).to eq '/posts'
       end

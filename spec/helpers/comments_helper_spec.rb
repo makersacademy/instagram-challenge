@@ -8,7 +8,7 @@ module CommentsHelper
   end
 
   def edit_comment(text)
-    click_link 'Edit comment'
+    find('.edit_comment').click
     fill_in 'Text', with: text
     click_button 'Edit Comment'
   end

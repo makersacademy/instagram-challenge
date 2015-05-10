@@ -81,7 +81,7 @@ feature 'posts' do
 
       scenario 'remove a post when a user clicks on delete link' do
         go_to_view_page('Rubber duck')
-        click_link 'Delete post'
+        find('.remove_post').click
         expect(page).not_to have_xpath("//img[@alt='Rubber duck']")
         expect(page).to have_content 'Post deleted successfully'
       end
@@ -91,7 +91,7 @@ feature 'posts' do
         sign_up('another@test.com', 'another', 'testpassword')
         go_to_view_page('Rubber duck')
         expect(page).to have_content 'Awesome'
-        expect(page).not_to have_link 'Delete post'
+        expect(page).not_to have_css '.remove_post'
       end
     end
   end

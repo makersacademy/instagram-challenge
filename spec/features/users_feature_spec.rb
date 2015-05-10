@@ -1,11 +1,13 @@
 require 'rails_helper'
 require 'helpers/users_helper_spec'
+require 'helpers/posts_helper_spec'
 
 feature 'User' do
 
   include UsersHelper
+  include PostsHelper
 
-  context "user not signed in and on the homepage" do
+  context "user not signed in" do
     it 'displays sign in link and a sign up link' do
       visit '/'
       expect(page).to have_link 'Sign in'
@@ -15,6 +17,15 @@ feature 'User' do
     it 'not displays see sign out link' do
       visit '/'
       expect(page).not_to have_link 'Sign out'
+    end
+
+    it 'can view users personal pages' do
+      sign_up('user@test.com', 'testuser', 'testpassword')
+      create_post('Awesome', 'It is awesome')
+      click_link 'Sign out'
+      go_to_view_page('Rubber duck')
+      click_on("testuser")
+      expect(page).to have_xpath("//img[@alt='Rubber duck']")
     end
   end
 
@@ -50,6 +61,27 @@ feature 'User' do
       sign_in('testuser', 'testpassword')
       expect(page).to have_link 'Sign out'
     end
+
+    it 'can view his posts in his personal page' do
+      sign_in('user@test.com', 'testpassword')
+      create_post('Awesome', 'It is awesome')
+      go_to_view_page('Rubber duck')
+      within(".container") do
+        click_on("testuser")
+      end
+      expect(page).to have_xpath("//img[@alt='Rubber duck']")
+    end
+
+    it 'can view other users personal pages' do
+      sign_in('user@test.com', 'testpassword')
+      create_post('Awesome', 'It is awesome')
+      click_link 'Sign out'
+      sign_up('another@test.com', 'anotheruser', 'testpassword')
+      go_to_view_page('Rubber duck')
+      click_on("testuser")
+      expect(page).to have_xpath("//img[@alt='Rubber duck']")
+    end
   end
+
 
 end

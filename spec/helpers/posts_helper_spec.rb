@@ -9,7 +9,7 @@ module PostsHelper
   end
 
   def edit_post(title, description)
-    click_link 'Edit post'
+    find('.edit_post').click
     fill_fields(title, description)
     click_button 'Update Post'
   end
