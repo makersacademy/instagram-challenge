@@ -46,6 +46,20 @@ feature 'posts' do
     end
   end
 
+  context 'editing posts' do
+
+    before {Post.create name: 'Cat image'}
+
+    scenario 'let a user edit a post' do
+     visit '/posts'
+     click_link 'Edit Cat image'
+     fill_in 'Name', with: 'My cat'
+     click_button 'Update Post'
+     expect(page).to have_content 'My cat'
+     expect(current_path).to eq '/posts'
+    end
+  end
+
 end
 
 
