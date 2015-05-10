@@ -1,55 +1,70 @@
-<%= form_for Photo.new do |f| %>
-  <%= f.label :image %>
-  <%= f.file_field :image %>
-  <%= f.label :caption %>
-  <%= f.text_field :caption %>
-  <%= f.submit %>
-<% end %>
+<section class="post-form">
+
+  <%= form_for Photo.new do |f| %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= f.label :caption %>
+    <%= f.text_field :caption %>
+    <%= f.submit %>
+  <% end %>
+
+</section>
 
 <% if @photos.any? %>
 
-  <section class="post">
-
     <% @photos.each do |photo| %>
+      <section class="post">
 
-      <h3 class="photo-author">
-        <%= get_username(photo) %>
-      </h3>
-      <%= link_to(image_tag(photo.image.url(:medium)), photo_path(id: photo.id)) %>
-      <p class="photo-caption">
-        <%= photo.caption %>
-      </p>
+        <section class="post-main">
 
-      <section class="likes">
-        <%= pluralize(photo.likes.count, 'like') %>
+          <h3 class="photo-author">
+            <%= get_username(photo) %>
+          </h3>
+          <%= link_to(image_tag(photo.image.url(:medium)), photo_path(id: photo.id)) %>
+          <p class="photo-caption">
+            <%= photo.caption %>
+          </p>
 
-        <% if photo.has_been_liked_by?(current_user) %>
-          <%= link_to "Unlike", photo_like_path(id: get_user_like_id(photo, current_user), photo_id: photo.id), method: :delete %>
-        <% else %>
-          <%= form_for [photo, @new_like] do |f| %>
-            <%= f.submit %>
-          <% end %>
-        <% end %>
-      </section>
+        </section>
 
-      <section class="comments">
-        <%= form_for [photo, @comment] do |f| %>
-          <%= f.label :content %>
-          <%= f.text_field :content %>
-          <%= f.submit %>
-        <% end %>
+        <section class="photo-information">
 
-        <% if photo.comments.any? %>
-          <% photo.comments.each do |comment| %>
-            <%= get_username(comment) %>
-            <%= comment.content %>
-          <% end %>
-        <% end %>
-      </section>
+          <section class="likes">
+            <%= pluralize(photo.likes.count, 'like') %>
 
-    <% end %>
+            <% if photo.has_been_liked_by?(current_user) %>
+              <%= link_to "Unlike", photo_like_path(id: get_user_like_id(photo, current_user), photo_id: photo.id), method: :delete %>
+            <% else %>
+              <%= form_for [photo, @new_like] do |f| %>
+                <%= f.submit %>
+              <% end %>
+            <% end %>
+          </section>
 
-  </section>
+          <section class="comments">
+            <%= form_for [photo, @comment] do |f| %>
+              <%= f.label :content %>
+              <%= f.text_field :content %>
+              <%= f.submit %>
+            <% end %>
+
+            <% if photo.comments.any? %>
+              <ul class="photo-comments">
+                <% photo.comments.each do |comment| %>
+                  <li class="photo-comment">
+                    <%= get_username(comment) %>
+                    <%= comment.content %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          </section>
+
+        </section>
+
+    </section>
+
+  <% end %>
 
 <% else %>
   No photos yet
