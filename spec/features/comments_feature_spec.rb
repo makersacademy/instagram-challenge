@@ -28,9 +28,7 @@ feature 'Commenting' do
 
   scenario 'does not let you submit a comment of less than 3 characters' do
     visit '/images'
-    click_link 'Comment'
-    fill_in 'Comment', with: 'so'
-    click_button 'Comment'
+    comment_on_image(:comment => 'so')
     expect(page).to have_content 'Comment is too short'
   end
 

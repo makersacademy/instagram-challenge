@@ -35,17 +35,23 @@ feature 'Images' do
       expect(page).to have_content 'My face'
       expect(current_path).to eq '/images'
     end
+
+    scenario 'they must attach an image' do
+      visit '/'
+      click_link 'Upload Image'
+      fill_in 'Description', with: 'My face'
+      click_button 'Upload'
+      expect(page).not_to have_content 'My face'
+    end
   end
 
   context 'when user visits website' do
 
-    let!(:myface){Image.create(description:'My face')}
-
-    scenario 'lets them view images' do
-      visit '/images'
-      click_link 'My face'
+    scenario 'lets them view uploaded images' do
+      create_an_image
+      sign_out
+      visit '/'
       expect(page).to have_content 'My face'
-      expect(current_path).to eq "/images/#{myface.id}"
     end
   end
 
