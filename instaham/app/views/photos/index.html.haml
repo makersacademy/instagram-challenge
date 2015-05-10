@@ -3,12 +3,13 @@
 -else
 -if current_user
   = link_to "Add Photo", new_photo_path
-%br
 - @photos.each do |photo|
-  %br
-  = image_tag photo.image.url(:large)
-  = photo.message
-  - photo.comments.each do |comment|
-    = comment.text
-  - if current_user
-    = link_to "Comment on this photo", new_photo_comment_path(photo)
+  %section.panel.panel-default.post
+    %div.panel-heading
+      = image_tag photo.image.url(:large), class: 'photo'
+      %p.caption= photo.message
+    %ul.list-group
+      - photo.comments.each do |comment|
+        %li.list-group-item.comment= comment.text
+    - if current_user
+      = link_to "Comment on this photo", new_photo_comment_path(photo), class: 'comment'
