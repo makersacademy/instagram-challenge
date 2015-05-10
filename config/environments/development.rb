@@ -10,7 +10,8 @@ Rails.application.configure do
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
-
+  # Following line should be in other envs?
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Settings specified here will take precedence
   # over those in config/application.rb.
 

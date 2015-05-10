@@ -2,6 +2,13 @@ require 'rails_helper'
 
 feature 'photos' do
   context 'no photos have been added' do
+    before do
+      visit '/users/sign_up'
+      fill_in 'Username', with: 'MagicalInternationalWoodlouse'
+      fill_in 'Email', with: 'fake@fakeemail.com'
+      fill_in 'Password', with: 'secret'
+      fill_in 'Password confirmation', with: 'secret'
+    end
     scenario 'should display a prompt to upload a photo' do
       visit '/photos'
       expect(page).to have_content 'No photos yet'

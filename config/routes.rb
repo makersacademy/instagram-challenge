@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :photos
-
+  root to: "photos#index"
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"

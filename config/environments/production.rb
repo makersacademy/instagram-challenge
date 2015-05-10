@@ -10,6 +10,7 @@ Rails.application.configure do
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+config.action_mailer.default_url_options = { host: 'quitefastgram.herokuapp.com', port: 3000 }
 
   # Settings specified here will take
   # precedence over those in config/application.rb.
