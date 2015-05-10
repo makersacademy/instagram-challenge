@@ -23,7 +23,7 @@ feature 'Commenting' do
   scenario 'shows link back to homepage after commenting' do
     visit '/images'
     comment_on_image
-    expect(page).to have_link('SanjFaceAgram')
+    expect(page).to have_link('Sanjagram')
   end
 
   scenario 'does not let you submit a comment of less than 3 characters' do

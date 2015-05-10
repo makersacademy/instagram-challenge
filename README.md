@@ -1,7 +1,7 @@
-SanjFaceAgram Challenge
+Sanjagram Challenge
 =======================
 
-travis-ci-badge
+[![Build Status](https://travis-ci.org/makersacademy/instagram-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/instagram-challenge)
 
 [Use this app on Heroku](herokuapp.com)
 
@@ -24,6 +24,7 @@ Tools:
 ------
 
 Testing: Rspec, Capybara
+
 Code: Rails
 
 Development Blog:

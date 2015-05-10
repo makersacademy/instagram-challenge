@@ -16,11 +16,11 @@
 
           <% if current_user %>
 
-            <% if current_user.already_liked?(image) %>
+            <% if image.liked_by?(current_user, image) %>
               Liked
             <% else %>
               <button type="button" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-thumbs-up"></span>
                 <%= link_to "Like", image_likes_path(image), remote: true, method: :post %>
               </button>
             <% end %>
@@ -28,10 +28,10 @@
           <%= link_to "Comment", new_image_comment_path(image) %>
           <%= link_to "Edit", edit_image_path(image) %>
           <%= link_to "Delete", image_path(image), method: :delete %>
-        </div>
 
-        <% else %>
-        <% end %>
+          <% else %>
+          <% end %>
+        </div>
       <% end %>
 
     <% else %>

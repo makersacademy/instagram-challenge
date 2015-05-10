@@ -21,7 +21,7 @@ feature 'Likes' do
     expect(page).to have_content('1 like')
   end
 
-  scenario 'a user cannot like an image more than once' do
+  xscenario 'a user cannot like an image more than once' do
     click_link 'Like'
     click_link 'Like'
     expect(page).to have_content('1 like')

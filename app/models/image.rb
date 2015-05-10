@@ -8,4 +8,8 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   validates :image, :presence => true
+
+  def liked_by? current_user, image
+    # image.likes.user_id.include? current_user.id
+  end
 end

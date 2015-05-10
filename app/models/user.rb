@@ -10,7 +10,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  def already_liked? image
-    liked_images.include? image
-  end
+  # def already_liked? image
+  #   @likes = Like.all
+  #   @likes.each do |like|
+  #     if like.image_id == image.id
+  #       return true if like.user_id == @current_user.id
+  #     else
+  #     end
+  #     return false
+  #   end
+  # end
 end
