@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Post' do
 
-  scenario 'There are no posts until a first one has been created' do
+  scenario 'there are no posts until a first one has been created' do
     visit '/posts'
     expect(page).to have_content('No posts yet :-(')
     expect(page).to have_link('add a post!')
@@ -22,7 +22,7 @@ feature 'Post' do
     expect(page).to have_content 'You need to sign in or sign up before continuing.'
   end
 
-  scenario 'Theres a link to make a post on the front page' do
+  scenario 'theres a link to make a post on the front page' do
     visit '/'
     expect(page).to have_link 'add a post!'
   end
@@ -35,7 +35,7 @@ feature 'Post' do
       make_post
     end
 
-    scenario 'When the user fills out the post form, the post is now displayed' do
+    scenario 'when the user fills out the post form, the post is now displayed' do
       expect(page).to have_content 'moar poasts!!!!'
       expect(current_path).to eq '/posts'
     end
@@ -44,7 +44,7 @@ feature 'Post' do
       expect(page).to have_content 'test@example.com'
     end
 
-    context 'Deleting a post' do
+    context 'deleting a post' do
       scenario 'can be done by the user who made it' do
         visit '/posts'
         click_link "Poast"
