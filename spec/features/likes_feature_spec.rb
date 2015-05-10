@@ -5,7 +5,7 @@ feature 'Likes' do
   before do
     sign_up_and_sign_in
     create_an_image
-    visit '/'
+    # visit '/'
   end
 
   scenario 'an image initializes with zero likes' do
@@ -21,7 +21,7 @@ feature 'Likes' do
     expect(page).to have_content('1 like')
   end
 
-  xscenario 'a user cannot like an image more than once' do
+  scenario 'a user cannot like an image more than once' do
     click_link 'Like'
     click_link 'Like'
     expect(page).to have_content('1 like')
