@@ -30,5 +30,19 @@ feature 'comments' do
     end
   end
 
+  context 'logged out' do
+    scenario 'cannot comment on a photo' do
+      sign_up_and_add_msg
+      click_link 'Sign out'
+      visit '/photos'
+      expect(page).not_to have_content 'Comment on this photo'
+      id = Photo.find_by_message('My first post').id
+      visit "/photos/#{id}/comments/new"
+      expect(page).not_to have_content 'Post comment'
+      expect(current_path).to eq '/users/sign_in'
+      expect(page).to have_content "Please sign in to add your ham!"
+    end
+  end
+
 # signed out, linked to photo, dependent destory,
 end
