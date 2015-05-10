@@ -21,7 +21,7 @@ Development Blog:
 -----------------
 - [Day 0](http://sanjsanj.github.io/Week%208,%20Day%205/)
 - [Day 1](http://sanjsanj.github.io/Week%208,%20Day%206/)
-- [Day 2]()
+- [Day 2](http://sanjsanj.github.io/Week%208,%20Day%207/)
 
 Tests:
 ------
