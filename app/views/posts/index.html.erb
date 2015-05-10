@@ -1,4 +1,7 @@
-<div class="bodycontainer"><% if @posts.any? %>
+<div class="bodycontainer">
+  <%= link_to "add a post!", new_post_path %>
+  <br>
+  <% if @posts.any? %>
   <ul>
   <% @posts.each do |post| %>
   <li>
@@ -19,9 +22,9 @@
     <%= link_to "like", post_likes_path(post), class: 'likes-link' %>
       <span class="likes_count"> <%= post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
     </p>
-
       <% if post.comments.any? %>
       <br>
+      Comments:
       <ul>
         <% post.comments.each do |comment| %>
           <li>
@@ -31,6 +34,8 @@
           </li>
         <% end %>
       </ul>
+      <br>
+      <br>
       <% end %>
   </li>
   <% end %>
@@ -38,6 +43,4 @@
 <% else %>
   No posts yet :-(
 <% end %>
-  <!-- probably will want to update new_post_path and pass it a user when we add users -->
-  <%= link_to "add a post!", new_post_path %>
 </div>
