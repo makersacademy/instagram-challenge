@@ -10,11 +10,13 @@ feature 'photos' do
       fill_in 'Password confirmation', with: 'secretone'
       click_button 'Sign up'
     end
+
     scenario 'should display a prompt to upload a photo' do
       visit '/photos'
       expect(page).to have_content 'No photos yet'
       expect(page).to have_link 'Add a photo'
     end
+
     scenario 'add a photo' do
       visit '/photos'
       click_link 'Add a photo'

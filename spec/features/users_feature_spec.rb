@@ -10,6 +10,7 @@ feature 'users' do
       fill_in 'Password confirmation', with: 'secretone'
       click_button 'Sign up'
     end
+
     scenario 'signs out' do
       visit '/'
       click_link 'Logout'
