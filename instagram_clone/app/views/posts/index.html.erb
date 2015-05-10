@@ -15,6 +15,11 @@
     <%= post.content %>
     <br>
     by <%=post.username%> @<%= post.created_at %>
+    <p>
+    <%= link_to "like", post_likes_path(post), class: 'likes-link' %>
+      <span class="likes_count"> <%= post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
+    </p>
+
       <% if post.comments.any? %>
       <br>
       <ul>

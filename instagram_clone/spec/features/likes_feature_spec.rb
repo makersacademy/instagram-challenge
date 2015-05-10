@@ -3,15 +3,11 @@ require 'rails_helper'
 feature 'Likes' do
   before do
     post = Post.create(name: 'a post', content: 'its a post')
-    comment = post.comments.create(thoughts: 'its ok')
   end
 
-  xscenario 'liking a comment increase its like count' do
+  scenario 'liking a post increase its like count', js: true do
     visit '/'
-    click_link 'a post'
-    click_link 'like comment'
-    expect(page).to have_content 'likes: 1'
+    click_link 'like'
+    expect(page).to have_content '1 likes'
   end
 end
-
-# link like comment
