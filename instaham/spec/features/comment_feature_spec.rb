@@ -25,6 +25,7 @@ feature 'comments' do
       click_link 'Comment on this photo'
       fill_in 'Comment', with: "I'm leaving a comment!"
       click_button 'Post comment'
+      expect(Photo.find_by_message('My first post').comments.count).to eq 1
       expect(current_path).to eq '/'
       expect(page).to have_content "I'm leaving a comment"
     end
@@ -43,6 +44,4 @@ feature 'comments' do
       expect(page).to have_content "Please sign in to add your ham!"
     end
   end
-
-# signed out, linked to photo, dependent destory,
 end
