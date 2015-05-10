@@ -36,5 +36,20 @@ feature 'posts' do
       add_post
       expect(page).to have_content 'Beach'
     end
+
+    scenario 'can view a post in more detail' do
+      add_post
+      click_link('Beach')
+      expect(page).to have_content 'Title: Beach'
+    end
+  end
+
+  context 'Posts can be deleted' do
+    scenario 'can delete a post' do
+      add_post
+      click_link 'Delete Beach'
+      expect(page).not_to have_content 'Beach'
+      expect(page).to have_content 'Post deleted'
+    end
   end
 end

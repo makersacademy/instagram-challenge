@@ -57,6 +57,6 @@ gem 'omniauth-facebook'
 
 # For image uploads
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 gem 'rails_12factor', group: :production
