@@ -11,8 +11,10 @@ feature 'photos' do
       visit '/photos'
       click_link 'Add a photo'
       fill_in 'Description', with: "Nando's 4 lyf"
+      attach_file "photo[image]", 'spec/fixtures/files/images/MeAndMe.png'
       click_button 'Submit Photo'
       expect(page).to have_content 'Description: Nando\'s 4 lyf'
+      expect(page).to have_css('img', "MeAndMe.png")
     end
   end
 end
