@@ -1,4 +1,7 @@
 class PhotosController < ApplicationController
+
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
   end
 
@@ -11,7 +14,9 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit(:image, :caption)
+    combined_params = params.require(:photo).permit(:image, :caption)
+    combined_params['user_id'] = current_user.id
+    combined_params
   end
 
   def show

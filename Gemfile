@@ -34,6 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'paperclip'
 gem 'devise'
+gem 'aws-sdk-v1'
 
 group :development, :test do
   gem 'dotenv-rails'

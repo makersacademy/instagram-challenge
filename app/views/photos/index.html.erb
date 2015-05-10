@@ -8,6 +8,7 @@
 
 <% if Photo.all.any? %>
   <% Photo.all.each do |photo| %>
+    <%= User.first(photo.user_id)[0].username %>
     <%= link_to(image_tag(photo.image.url(:medium)), photo_path(id: photo.id)) %>
     <%= photo.caption %>
   <% end %>

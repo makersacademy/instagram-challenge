@@ -16,6 +16,7 @@ feature 'As a user on the homepage' do
     end
 
     scenario 'I can upload a photo with a caption' do
+      sign_up_and_log_in
       visit '/photos'
       fill_in 'Caption', with: 'Here is my fish!'
       attach_file('Image', 'spec/files/fish.jpg')
@@ -28,6 +29,7 @@ feature 'As a user on the homepage' do
   context 'when photos have been uploaded' do
 
     before do
+      sign_up_and_log_in
       upload_photo
     end
 
@@ -45,7 +47,7 @@ feature 'As a user on the homepage' do
     scenario 'I can click on a photo to see it bigger' do
       visit '/photos'
       find(:xpath, "//img[contains(@src, 'fish.jpg')]/..").click
-      expect(current_path).to include("fish.jpg")
+      expect(page).to have_xpath("//img[contains(@src, 'fish.jpg')]")
     end
 
   end
