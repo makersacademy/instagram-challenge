@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Engigram</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<%= notice %>
-<%= yield %>
 
-</body>
+  <head>
+    <title>Engigram</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="main">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <section class="user-links">
+      <% if user_signed_in? %>
+        <article class="main--signed-out">
+          <header>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+          </header>
+        </article>
+      <% else %>
+        <article class="main--signed-in">
+          <header>
+          <%= link_to "Sign in", new_user_session_path %>
+          <%= link_to "Sign up", new_user_registration_path %>
+          </header>
+        </article>
+      <% end %>
+    <%= yield %>
+    </section>
+  </body>
+
 </html>
