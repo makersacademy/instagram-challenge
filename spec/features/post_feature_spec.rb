@@ -65,7 +65,7 @@ feature 'Post' do
     end
   end
   context 'uploading an image' do
-    xscenario 'can upload an image' do
+    scenario 'can upload an image' do
       sign_up
       visit '/posts'
       click_link 'add a post!'
