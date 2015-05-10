@@ -1,9 +1,9 @@
-class RenameNameColumnTypo < ActiveRecord::Migration
-  def self.up
-    rename_table :posts, :post
-  end
+# class RenameNameColumnTypo < ActiveRecord::Migration
+#   def self.up
+#     rename_table :posts, :post
+#   end
 
- def self.down
-    rename_table :post, :posts
- end
-end
+#  def self.down
+#     rename_table :post, :posts
+#  end
+# end
