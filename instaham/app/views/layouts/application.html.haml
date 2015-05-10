@@ -8,7 +8,8 @@
   %nav.navbar.nav-bar-default.navbar-static-top
     %div.container-fluid
       %div.navbar-header
-        Instaham
+        %a.header{href: '/'}
+          Instaham
       %ul.nav.navbar-nav.navbar-right
         - if current_user
           = link_to 'Sign out', destroy_user_session_path, method: :delete
@@ -22,6 +23,8 @@
               %li= link_to 'Sign in', new_user_session_path
 
   %body
-    %p.notice= notice
-    %p.alert= alert
+    -if flash[:notice]
+      %p.notice.alert.alert-success= notice
+    -if flash[:success]
+      %p.alert.alert.alert-danger= alert
     = yield
