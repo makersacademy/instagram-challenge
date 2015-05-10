@@ -28,14 +28,16 @@ feature 'photos' do
   end
 
   context 'Authorisation' do
-    scenario 'signed up user can add a message' do
+    scenario 'signed up user can add a phot and message' do
       sign_up
       visit '/photos'
       click_link 'Add Photo'
+      attach_file 'Image', 'public/system/photos/images/000/000/015/large/dan.jpg'
       fill_in 'Message', with: 'My first post'
       click_button 'Add my photo'
       expect(current_path).to eq '/photos'
       expect(page).to have_content 'My first post'
+      expect(page).to have_css("img[src*='dan.jpg']")
     end
 
     scenario 'unknown user cannot add a message' do
