@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :project
+  has_many :comments
   has_attached_file :image,
                     :styles => { :medium => "600x600", :thumb => "100x100>" },
                     :storage => :s3,
