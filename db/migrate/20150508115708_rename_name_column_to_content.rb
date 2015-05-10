@@ -6,7 +6,7 @@ class RenameNameColumnToContent < ActiveRecord::Migration
   end
 
   def self.down
-    rename_column :posts, :content, :name
+    rename_column :post, :content, :name
   end
 # end
 end
