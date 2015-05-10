@@ -31,8 +31,6 @@ gem 'aws-sdk', '~> 1.6'
 
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
-gem 'coveralls', require: false
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -56,5 +54,7 @@ group :development, :test do
   gem 'capybara'
   gem 'shoulda'
   gem 'rspec-collection_matchers'
+
+  gem 'coveralls', require: false
 end
 
