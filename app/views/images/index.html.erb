@@ -4,34 +4,34 @@
     <% if @images.any? %>
       <% @images.each do |image| %>
 
-            <div class="col-lg-2 col-sm-3 col-xs-4">
+        <div class="col-lg-2 col-sm-3 col-xs-4">
 
-              <div class="center-block">
-                <%= link_to image_tag(image.image.url(:thumb)), image_path(image) %>
-              </div>
+          <div class="center-block">
+            <%= link_to image_tag(image.image.url(:thumb)), image_path(image) %>
+          </div>
 
-              <%= link_to image.description, image_path(image) %>
+          <%= link_to image.description, image_path(image) %>
 
-              <div class="badge"><%= pluralize image.likes.count, 'like' %></div>
+          <div class="badge"><%= pluralize image.likes.count, 'like' %></div>
 
-              <% if current_user %>
+          <% if current_user %>
 
-                <% if current_user.already_liked?(image) %>
-                  Liked
-                <% else %>
-                  <button type="button" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                    <%= link_to "Like", image_likes_path(image), remote: true, method: :post %>
-                  </button>
-                <% end %>
-
-              <%= link_to "Comment", new_image_comment_path(image) %>
-              <%= link_to "Edit", edit_image_path(image) %>
-              <%= link_to "Delete", image_path(image), method: :delete %>
-            </div>
-
+            <% if current_user.already_liked?(image) %>
+              Liked
             <% else %>
+              <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                <%= link_to "Like", image_likes_path(image), remote: true, method: :post %>
+              </button>
             <% end %>
+
+          <%= link_to "Comment", new_image_comment_path(image) %>
+          <%= link_to "Edit", edit_image_path(image) %>
+          <%= link_to "Delete", image_path(image), method: :delete %>
+        </div>
+
+        <% else %>
+        <% end %>
       <% end %>
 
     <% else %>
