@@ -36,7 +36,7 @@ feature 'projects' do
   end
 
   context 'viewing projects' do
-    let!(:pipeline){Project.create(name:'Pipeline Pigging', company:'RB Geomatics')}
+    let!(:pipeline){ Project.create(name:'Pipeline Pigging', company:'RB Geomatics') }
 
     scenario 'lets a user view a particular project' do
       visit '/projects'
@@ -56,6 +56,18 @@ feature 'projects' do
       click_link 'Delete Pipeline Pigging'
       expect(page).not_to have_content 'Pipeline Pigging'
       expect(page).to have_content 'Project successfully deleted'
+    end
+  end
+
+  context 'can add a photo to a project' do
+    scenario 'photo is displayed in timeline' do
+      visit '/projects'
+      click_link 'Add Photo'
+      fill_in 'Description', with:'Cleaning Pig Insertion'
+      attach_file('post_photo', 'spec/pig_test.jpg')
+      click_buttton 'Upload Photo'
+      expect(current_path).to eq '/projects'
+      expect(page).to have_xpath("//img[@alt='pig_test']")
     end
   end
 end
