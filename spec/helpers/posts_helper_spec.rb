@@ -2,7 +2,7 @@ require 'rails_helper'
 
 module PostsHelper
   def create_post(title, description)
-    click_link 'Add a post'
+    click_link 'Add a pic'
     attach_file "Image",  Rails.root + "spec/asset_specs/rubber_duck.jpg"
     fill_fields(title, description)
     click_button 'Create Post'

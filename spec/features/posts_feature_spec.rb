@@ -21,8 +21,8 @@ feature 'posts' do
 
     context 'no posts have been added' do
       scenario 'should display a prompt to add a post' do
-        expect(page).to have_content 'No posts yet'
-        expect(page).to have_link 'Add a post'
+        expect(page).to have_content 'No pics yet'
+        expect(page).to have_link 'Add a pic'
       end
     end
 
@@ -34,7 +34,7 @@ feature 'posts' do
       end
 
       scenario 'a user cannot create post without an img' do
-        click_link 'Add a post'
+        click_link 'Add a pic'
         fill_fields('Awesome', 'It is awesome')
         click_button 'Create Post'
         expect(page).to have_css('.field_with_errors')
