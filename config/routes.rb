@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   get '/posts' => 'posts#index'
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
   root to: "posts#index"
 

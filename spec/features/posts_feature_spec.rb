@@ -52,4 +52,16 @@ feature 'posts' do
       expect(page).to have_content 'Post deleted'
     end
   end
+
+  context 'Posts can have images attached' do
+    scenario 'can add an image' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Title', with: 'Beach'
+      attach_file 'post_image', 'spec/features/fixtures/files/beach.jpg'
+      click_button 'Create Post'
+      expect(page).to have_content 'Beach'
+      # Work out how to make capybara work with user uploaded images.
+    end
+  end
 end
