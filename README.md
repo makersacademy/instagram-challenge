@@ -4,7 +4,7 @@ Makers Academy Wk8 Challenge to build an instagram clone using rails. To add som
 
 ##User Stories##
 
-```sh
+```
 As an engineer
 I want to be able to sign in
 So I can share photos of my project
