@@ -1,10 +1,12 @@
-%h4= @post.user.username
-%h4= @post.title
+%div{ :class => 'row page-title' }
+  %h4= "#{@post.user.username} > #{@post.title}"
+
+  - if @post.has_posted?(current_user)
+    = link_to "Edit post", edit_post_path(@post), class: 'btn btn-warning'
+    = link_to "Delete post", post_path(@post), method: :delete, class: 'btn btn-danger'
+
+= image_tag @post.image.url(:medium)
+
 %h5= @post.description
-- if @post.comments.any?
-  %ul
-    - @post.comments.each do |comment|
-      %li
-        = comment.text
-- else
-  %p No comments
+
+= render :partial => "comments", locals: { post: @post }

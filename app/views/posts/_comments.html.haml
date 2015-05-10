@@ -1,0 +1,13 @@
+- if user_signed_in?
+  = link_to "Comment", new_post_comment_path(post), class: 'btn btn-primary'
+- if post.comments.any?
+  %ul
+    - post.comments.each do |comment|
+      %li
+        = comment.user.username
+        = comment.text
+        - if comment.has_commented?(current_user)
+          = link_to "Delete comment", post_comment_path(post, comment), method: :delete, class: 'btn btn-danger'
+          = link_to "Edit comment", edit_post_comment_path(post, comment), class: 'btn btn-warning'
+- else
+  %p No comments

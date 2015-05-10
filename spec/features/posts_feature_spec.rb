@@ -29,7 +29,6 @@ feature 'posts' do
     context 'creating posts' do
       scenario 'a user can create post with an img' do
         create_post('Awesome', 'It is awesome')
-        expect(page).to have_content 'Awesome'
         expect(page).to have_xpath("//img[@alt='Rubber duck']")
         expect(current_path).to eq '/posts'
       end
@@ -53,39 +52,44 @@ feature 'posts' do
       end
 
       scenario 'display post' do
-        expect(page).to have_content 'Awesome'
+        expect(page).to have_xpath("//img[@alt='Rubber duck']")
         expect(page).not_to have_content 'No posts yet'
       end
 
       scenario 'let a user view a post' do
-        click_link 'Awesome'
+        go_to_view_page('Rubber duck')
         expect(page).to have_content 'Awesome'
+        expect(page).to have_xpath("//img[@alt='Rubber duck']")
         expect(page).to have_content 'username'
         expect(current_path).to eq "/posts/#{Post.last.id}"
       end
 
       scenario 'let a user edit a post' do
+        go_to_view_page('Rubber duck')
         edit_post('Amazing', 'Now it is amazing')
+        go_to_view_page('Rubber duck')
         expect(page).to have_content 'Amazing'
-        expect(current_path).to eq '/posts'
       end
 
       scenario 'cannot edit a post if he is not the creator' do
         click_link 'Sign out'
         sign_up('another@test.com', 'another', 'testpassword')
+        go_to_view_page('Rubber duck')
         expect(page).to have_content 'Awesome'
         expect(page).not_to have_link 'Edit post'
       end
 
       scenario 'remove a post when a user clicks on delete link' do
+        go_to_view_page('Rubber duck')
         click_link 'Delete post'
-        expect(page).not_to have_content 'Awesome'
+        expect(page).not_to have_xpath("//img[@alt='Rubber duck']")
         expect(page).to have_content 'Post deleted successfully'
       end
 
       scenario 'cannot delete a post if he is not the creator' do
         click_link 'Sign out'
         sign_up('another@test.com', 'another', 'testpassword')
+        go_to_view_page('Rubber duck')
         expect(page).to have_content 'Awesome'
         expect(page).not_to have_link 'Delete post'
       end

@@ -18,4 +18,8 @@ module PostsHelper
     fill_in 'Title', with: title
     fill_in 'Description', with: description
   end
+
+  def go_to_view_page(img_alt)
+    find(:xpath, "//a/img[@alt='#{img_alt}']/..").click
+  end
 end

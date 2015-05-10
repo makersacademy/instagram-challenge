@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build_with_user(comment_params, current_user)
     if @comment.save
-      redirect_to posts_path
+      redirect_to post_path(@post)
     else
       render :new
     end
@@ -29,10 +29,11 @@ class CommentsController < ApplicationController
     else
       flash[:notice] = 'Cannot edit comment'
     end
-    redirect_to '/posts'
+    redirect_to post_path(@post)
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     if current_user == @comment.user
       @comment.destroy
@@ -40,7 +41,7 @@ class CommentsController < ApplicationController
     else
       flash[:notice] = 'Cannot delete comment'
     end
-    redirect_to '/posts'
+    redirect_to post_path(@post)
   end
 
   def comment_params

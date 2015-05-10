@@ -11,6 +11,10 @@ feature 'comments' do
 
   context 'user not logged in' do
     scenario 'cannot comment posts' do
+      sign_up('test@test.com', 'username', 'testpassword')
+      create_post('Awesome', 'This is awesome')
+      click_link 'Sign out'
+      go_to_view_page('Rubber duck')
       expect(page).not_to have_link 'Comment'
     end
   end
@@ -19,12 +23,13 @@ feature 'comments' do
     before do
       sign_up('test@test.com', 'username', 'testpassword')
       create_post('Awesome', 'This is awesome')
+      go_to_view_page('Rubber duck')
     end
 
     scenario 'can leave a comment using a form' do
       create_comment 'This is a comment'
       expect(page).to have_content 'This is a comment'
-      expect(current_path).to eq '/posts'
+      expect(current_path).to eq "/posts/#{Post.last.id}"
     end
 
     context 'after a comment has been created' do
@@ -41,6 +46,7 @@ feature 'comments' do
       scenario 'cannot edit a post if he is not the creator' do
         click_link 'Sign out'
         sign_up('another@test.com', 'another', 'testpassword')
+        go_to_view_page('Rubber duck')
         expect(page).to have_content 'This is a comment'
         expect(page).not_to have_link 'Edit comment'
       end
@@ -53,6 +59,7 @@ feature 'comments' do
       scenario 'cannot delete a post if he is not the creator' do
         click_link 'Sign out'
         sign_up('another@test.com', 'another', 'testpassword')
+        go_to_view_page('Rubber duck')
         expect(page).to have_content 'This is a comment'
         expect(page).not_to have_link 'Delete comment'
       end
