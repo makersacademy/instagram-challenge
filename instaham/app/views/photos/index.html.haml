@@ -1,0 +1,15 @@
+-if @photos.empty?
+  %p No ham makes us cry! Click here to add the first photo:
+-else
+-if current_user
+  = button_to "Add Photo", new_photo_path, class: "btn btn-success add-photo", method: :get
+- @photos.each do |photo|
+  %section.panel.panel-default.post
+    %div.panel-heading
+      = image_tag photo.image.url(:large), class: 'photo'
+      %p.caption= photo.message
+    %ul.list-group
+      - photo.comments.each do |comment|
+        %li.list-group-item.comment= comment.text
+    - if current_user
+      = link_to "Comment on this photo >>", new_photo_comment_path(photo), class: 'comment_link'
