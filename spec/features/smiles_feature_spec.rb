@@ -23,11 +23,11 @@ feature 'smiling at photos' do
   end
   scenario 'No likes' do
     expect(page).to have_content 0
-    expect(page).to have_css 'smiles__img--indifferent'
+    expect(page).to have_selector '.smiles__img--indifferent'
   end
   scenario 'Like a photo' do
     find('.smiles__img').click
     expect(page).to have_content 1
-    expect(page).to have_css 'smiles__img--smile'
+    expect(page).to have_selector '.smiles__img--smile'
   end
 end

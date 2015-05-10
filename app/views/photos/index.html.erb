@@ -3,7 +3,7 @@
 <% else %>
   <% @photos.each do |photo| %>
     <div class="well">
-      <ul class="media-list"
+      <ul class="media-list">
         <li class="media">
           <div class="media-left">
             <a href="#">
@@ -13,6 +13,13 @@
           <div class="media-body">
             <h4 class="media-heading">By <%= photo.user.username %></h4>
             Description: <%= photo.description %>
+            <%= form_for Smile.new do |f| %>
+              <div class="media-left media bottom smiles">
+                <span class="smiles-count"><%= photo.smiles.count %></span>
+                <%= hidden_field_tag :photo_id, photo.id%>
+                <%= image_submit_tag 'blank.png', alt: 'smile', class: "smiles__img smiles__img--#{smile_type(photo)}" %>
+              </div>
+            <% end %>
           </div>
         </li>
       </ul>
