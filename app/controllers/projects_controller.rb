@@ -5,6 +5,13 @@ class ProjectsController < ApplicationController
     redirect_to '/projects'
   end
 
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    flash[:notice] = 'Project successfully deleted'
+    redirect_to '/projects'
+  end
+
   def index
     @projects = Project.all
   end
