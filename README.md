@@ -1,29 +1,15 @@
 Instagram Challenge
 ===================
 
-Instructions
+About
 -------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9am Monday morning
+2 days to recreate instagram from scratch using rails!
 
-Task
+Screenshot
 -----
 
-Build Instagram: Simple huh!
+![screenshot](./instaham/public/Screenshot.png)
 
-As usual please start by
-
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo
-
-Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture. It will need to look like the instagrams website or better.
-
-Breakdown of models:
-- User
-- Post
-- Comment/description
-- Like
 
 User Stories Extracted From Brief
 -----
@@ -51,12 +37,34 @@ MVps
 
 2: Able to limit posting messages to signed up users
 
-3: can comment on messages
+3: can comment on photos
 
 4: messages are now photos stored in the cloud
 
-5: can like photos
+5: awesome design
 
-6: awesome design
+6: can like photos
+
+
+Next Steps
+-----
+
+Plan to fix issue with bootstrap gem causing tests to fail, and expand, with user names and timestamps on comments, and ability to delete accounts/photos.
+
+Will also extend design to sign in page and push to heroku.
+
+How to contribute
+-----
+
+Thoughts, ideas and oppinions always welcome, simply leave a comment! :D
+
+How to run
+-----
+
+Git clone to your machine.
+
+In the root, run 'bundle', then 'rake db:setup' then 'rails s'
+
+then load it up on localhost, port 3000! :)
 
 
