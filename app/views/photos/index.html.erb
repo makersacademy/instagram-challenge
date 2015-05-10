@@ -1,1 +1,16 @@
-No photos yet
+<%= form_for Photo.new do |f| %>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+  <%= f.label :caption %>
+  <%= f.text_field :caption %>
+  <%= f.submit %>
+<% end %>
+
+<% if Photo.all.any? %>
+  <% Photo.all.each do |photo| %>
+    <%= link_to(image_tag(photo.image.url(:medium)), photo_path(id: photo.id)) %>
+    <%= photo.caption %>
+  <% end %>
+<% else %>
+  No photos yet
+<% end %>

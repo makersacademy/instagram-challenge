@@ -1,4 +1,9 @@
 require 'rails_helper'
+require 'photo_helper'
+require 'user_helper'
+
+include PhotoSpecHelpers
+include UserSpecHelpers
 
 feature 'As a user on the homepage' do
 
@@ -7,7 +12,15 @@ feature 'As a user on the homepage' do
     scenario 'I am presented with a photo upload form' do
       visit '/photos'
       expect(page).to have_content 'No photos yet'
-      expect(page).to have_button 'Upload photo'
+      expect(page).to have_button 'Create Photo'
+    end
+
+    scenario 'I can upload a photo with a caption' do
+      visit '/photos'
+      fill_in 'Caption', with: 'Here is my fish!'
+      attach_file('Image', 'spec/files/fish.jpg')
+      click_button('Create Photo')
+      expect(page).to have_xpath("//img[contains(@src, 'fish.jpg')]")
     end
 
   end
@@ -15,13 +28,24 @@ feature 'As a user on the homepage' do
   context 'when photos have been uploaded' do
 
     before do
-      Photo.create(caption: 'dog')
+      upload_photo
     end
 
     scenario 'I can see the photos on the page' do
       visit '/photos'
-      expect(page).to have_content('dog')
+      expect(page).to have_content('Here is my fish')
       expect(page).not_to have_content('No photos yet')
+    end
+
+    scenario 'I can see the username of the person who posted the photo' do
+      visit '/photos'
+      expect(page).to have_content('testname123')
+    end
+
+    scenario 'I can click on a photo to see it bigger' do
+      visit '/photos'
+      find(:xpath, "//img[contains(@src, 'fish.jpg')]/..").click
+      expect(current_path).to include("fish.jpg")
     end
 
   end
