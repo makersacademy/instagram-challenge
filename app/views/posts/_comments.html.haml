@@ -4,7 +4,7 @@
   %ul{ :class => 'comment-list'}
     - post.comments.each do |comment|
       %li{ :class => 'comment-box'}
-        %h5= "#{comment.user.username}: "
+        %h5= raw "#{link_to comment.user.username, user_path(comment.user)}: "
         %span{ :class => 'comment-text' }
         - if comment.has_commented?(current_user)
           = link_to edit_post_comment_path(post, comment), class: 'custom-btn edit_comment' do
