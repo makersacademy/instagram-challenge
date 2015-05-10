@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/armi1189/instagram_challenge.svg?branch=master)](https://travis-ci.org/armi1189/instagram_challenge)  [![Coverage Status](https://coveralls.io/repos/armi1189/instagram_challenge/badge.svg)](https://coveralls.io/r/armi1189/instagram_challenge)
+[![Build Status](https://travis-ci.org/armi1189/instagram_challenge.svg?branch=master)](https://travis-ci.org/armi1189/instagram_challenge) [![Coverage Status](https://coveralls.io/repos/armi1189/instagram_challenge/badge.svg)](https://coveralls.io/r/armi1189/instagram_challenge)
 
 ###[Try it on Heroku!](https://secure-reaches-2288.herokuapp.com)
 
