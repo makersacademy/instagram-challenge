@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/rjlynch/instagram-challenge.svg?branch=master)](https://travis-ci.org/rjlynch/instagram-challenge)
 Instagram Challenge
 ===================
 ![alt text](http://i.imgur.com/0MovEsD.png "Asciigram logo")
