@@ -1,0 +1,17 @@
+<%= image_tag @image.image.url(:medium) %>
+
+<p><%= @image.description %></p>
+
+<%= link_to "Comment on #{@image.description}", new_image_comment_path(@image) %>
+
+<% if @image.comments.any? %>
+  <ul>
+    <% @image.comments.each do |comment| %>
+      <li>
+        <%= comment.comment %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No Comments Yet.</p>
+<% end %>
