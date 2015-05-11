@@ -34,5 +34,5 @@ feature 'users' do
     expect(page).not_to have_link('Sign Up')
   end
 end
-
+  end
 end
