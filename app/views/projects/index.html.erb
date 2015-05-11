@@ -1,0 +1,38 @@
+<% if @projects.any? %>
+  <% @projects.each do |project| %>
+  <article class="project">
+    <section class="project__details">
+      <h2>Project: <%= link_to project.name, project_path(project) %></h2>
+      <h2>Company: <%= project.company %></h2>
+    </section>
+    <section class="project__links">
+      <p><%= link_to "Delete #{project.name}", project_path(project), method: :delete %></p>
+      <p><%= link_to "Add Photo to #{project.name}", new_project_post_path(project) %></p>
+    </section>
+    <% project.posts.each do |post| %>
+    <section class="project__post">
+      <p><%= post.description %></p>
+      <div class="project__post__image">
+        <%= image_tag post.image.url(:medium) %>
+      </div>
+    </section>
+    <section class="project__post__comment--capture">
+      <%= form_tag(project_post_comments_path(project, post), method: "post") do %>
+        <%= label_tag(:feedback, "Feedback") %>
+        <%= text_field_tag(:feedback) %>
+        <%= submit_tag("Submit") %>
+      <% end %>
+    </section>
+    <section class="project__post__comment--display">
+      <% post.comments.each do |comment| %>
+        <p><%= comment.feedback %></p>
+      <% end %>
+    </section>
+    <% end %>
+  <% end %>
+  </article>
+<% else %>
+  <p>No projects added yet<p>
+<% end %>
+
+<a href=<%=new_project_path%>>Add a Project</a>
