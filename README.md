@@ -105,3 +105,5 @@ User
 
 38 examples, 0 failures
 ```
+
+![coverage](https://github.com/sanjsanj/sanjsanj.github.io/blob/master/images/week8_sanjface_coverage.png?raw=true)
