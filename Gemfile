@@ -29,6 +29,8 @@ gem 'aws-sdk', '< 2.0'
 
 gem 'devise'
 
+gem 'bootstrap-sass', '~> 3.3.4'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
