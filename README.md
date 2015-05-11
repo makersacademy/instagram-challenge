@@ -23,9 +23,11 @@ Breakdown Of Models:
 Tools:
 ------
 
-Testing: Rspec, Capybara
+Testing: Rspec, Capybara, JQuery, Shoulda
 
-Code: Rails
+Code: Ruby on Rails
+
+Other: Devise, Paperclip, PostgreSQL, HTML, CSS, Bootstrap
 
 Development Blog:
 -----------------

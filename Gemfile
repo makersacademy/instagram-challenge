@@ -23,4 +23,5 @@ group :test do
   gem 'capybara'
   gem 'shoulda'
   gem 'rspec-collection_matchers'
+  gem 'coveralls', require: false
 end
