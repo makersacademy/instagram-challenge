@@ -1,5 +1,8 @@
 class PicturesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+
 
   def index
     @pictures = Picture.all
@@ -9,7 +12,7 @@ class PicturesController < ApplicationController
   end
 
   def new
-    @picture = Picture.new
+    @picture = current_user.pictures.build
   end
 
 
@@ -17,7 +20,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params)
 
     if @picture.save
       redirect_to @picture, notice: 'Picture was successfully created.'
@@ -44,6 +47,11 @@ class PicturesController < ApplicationController
    
     def set_picture
       @picture = Picture.find(params[:id])
+    end
+
+    def correct_user
+      @picture = current_user.pictures.find_by(params[:id])
+      redirect_to pictures_path, notice: "Not authorised to edit this pin" if @picture.nil?
     end
 
    
