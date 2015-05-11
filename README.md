@@ -1,28 +1,54 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9am Monday morning
+Makers Academy Wk8 Challenge to build an instagram clone using rails. To add some personal interest to this I have added a particular theme to provide a service to allow site engineers to post photos of their work and allow colleagues to comment/like on this work as a peer review stratergy and communication system between site and office engineers. Introducing Engigram!
 
-Task
------
+##User Stories##
 
-Build Instagram: Simple huh!
+```
+As an engineer
+I want to be able to sign in
+So I can share photos of my project
 
-As usual please start by
+As an engineer
+I want to be able to be able to post photos
+To display my great work
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo
+As an engineer
+I want my peers to critically review my work
+And to be able to comment on it.
 
-Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture. It will need to look like the instagrams website or better. 
+As an engineer
+To recieve distinction from my peers
+I want them to be able to 'like' my photo
 
-Breakdown of models:
+As an engineer
+So I can agree with a comment
+I would like myself and others to be able to endorse it
+
+As an engineer
+I would only like to share my project with colleagues
+Therefore there should not be a public front
+
+As a linked-in user
+I would like to be able to sign in
+without having to remember extra passwords
+```
+
+##MVP Roadmap##
+
+MVp1a - User can sign up, sign in and post a photo
+MVp1b - User can post a comment to a photo
+MVp1c - Photos can be liked
+MVP1 - Comments can be endorsed
+MVP2 - Photos appear in chronological order with the newest first
+MVP3 - Photos can be filtered to a particular project
+
+##Model Structure##
 - User
-- Post
-- Comment/description
+- Project
+- Photo
+- Comment
 - Like
 
-Bonus if you can add filters :P 
+
