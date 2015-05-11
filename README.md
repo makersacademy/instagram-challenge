@@ -1,7 +1,9 @@
 Sanjagram Challenge
 =======================
 
-[![Build Status](https://travis-ci.org/makersacademy/instagram-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/instagram-challenge)
+[![Build Status](https://travis-ci.org/sanjsanj/instagram-challenge.svg?branch=master)](https://travis-ci.org/sanjsanj/instagram-challenge)
+
+[![Coverage Status](https://coveralls.io/repos/sanjsanj/instagram-challenge/badge.svg)](https://coveralls.io/r/sanjsanj/instagram-challenge)
 
 [Use this app on Heroku](https://sanjagram.herokuapp.com)
 
