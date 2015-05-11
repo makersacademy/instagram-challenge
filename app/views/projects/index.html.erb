@@ -16,7 +16,17 @@
         <%= image_tag post.image.url(:medium) %>
       </div>
     </section>
-    <section class="project__post__comment">
+    <section class="project__post__comment--capture">
+      <%= form_tag(project_post_comments_path(project, post), method: "post") do %>
+        <%= label_tag(:feedback, "Feedback") %>
+        <%= text_field_tag(:feedback) %>
+        <%= submit_tag("Submit") %>
+      <% end %>
+    </section>
+    <section class="project__post__comment--display">
+      <% post.comments.each do |comment| %>
+        <p><%= comment.feedback %></p>
+      <% end %>
     </section>
     <% end %>
   <% end %>
