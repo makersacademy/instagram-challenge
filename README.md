@@ -1,5 +1,5 @@
-Instagram Challenge
-===================
+#Instagram Challenge#
+
 
 Makers Academy Wk8 Challenge to build an instagram clone using rails. To add some personal interest to this I have added a particular theme to provide a service to allow site engineers to post photos of their work and allow colleagues to comment/like on this work as a peer review stratergy and communication system between site and office engineers. Introducing Engigram!
 
@@ -39,10 +39,10 @@ without having to remember extra passwords
 
 MVp1a - User can sign up, sign in and post a photo
 MVp1b - User can post a comment to a photo
-MVp1c - Photos can be liked
-MVP1 - Comments can be endorsed
-MVP2 - Photos appear in chronological order with the newest first
-MVP3 - Photos can be filtered to a particular project
+*Current stage reached*
+MVP2 - Comments can be endorsed
+MVP3 - Photos appear in chronological order with the newest first
+MVP4 - Photos can be filtered to a particular project
 
 ##Model Structure##
 - User
@@ -51,4 +51,20 @@ MVP3 - Photos can be filtered to a particular project
 - Comment
 - Like
 
+##Installation##
 
+To run the project
+```sh
+bundle install
+bin/rake db:create
+bin/rake db:migrate
+bin/rake db:migrate RAILS_ENV=test
+```
+You will also be required to insert the following file on your local copy at `/config/initializers/dev_environment.rb` with an AWS S3 bucket and account details.
+```ruby
+unless Rails.env.production?
+  ENV['S3_BUCKET_NAME'] = 'xyz
+  ENV['AWS_ACCESS_KEY_ID'] = 'xyz'
+  ENV['AWS_SECRET_ACCESS_KEY'] = 'xyz'
+end
+```

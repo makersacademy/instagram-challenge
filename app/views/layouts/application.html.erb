@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Engigram</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="container">
+    <header class="navbar navbar-header">
+      <%= render 'layouts/header' %>
+    </header>
+    <section class="row flash">
+      <p class="alert alert-info"><%= notice %></p>
+      <p class="alert alert-warning"><%= alert %></p>
+    </section>
+    <section class="row container main">
+      <% if user_signed_in? %>
+        <article class="main--signed-in">
+          <%= yield %>
+        </article>
+      <% else %>
+        <article class="container main--signed-out">
+          <%= yield :register %>
+          <%= yield :login %>
+        </article>
+      <% end %>
+    </section>
+  </body>
+
+</html>
