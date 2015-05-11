@@ -24,6 +24,8 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
+  private
+
   def project_params
     params.require(:project).permit(:name, :company)
   end

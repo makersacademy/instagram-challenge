@@ -4,12 +4,13 @@ class PostsController < ApplicationController
     @project.posts.create(review_params)
     redirect_to projects_path
   end
+
   def new
     @project = Project.find(params[:project_id])
     @post = Post.new
   end
 
-private
+  private
 
   def review_params
     params.require(:post).permit(:description, :image)

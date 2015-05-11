@@ -6,7 +6,9 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def review_params
     params.require(:comment).permit(:feedback)
   end
+
 end
