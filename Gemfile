@@ -43,3 +43,9 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'coveralls'
+  gem 'rspec-rails'
+  gem 'capybara'
+end
+

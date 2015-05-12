@@ -1,6 +1,9 @@
 Instagram Challenge - week 9
 ===================
 
+[![Build Status](https://travis-ci.org/augustinas/my-instagram-challenge.svg)](https://travis-ci.org/augustinas/my-instagram-challenge)
+[![Coverage Status](https://coveralls.io/repos/augustinas/my-instagram-challenge/badge.svg)](https://coveralls.io/r/augustinas/my-instagram-challenge)
+
 Installation
 ------------
 
