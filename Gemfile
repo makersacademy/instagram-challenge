@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.1'
+
 gem 'devise'
 
 gem 'haml'
@@ -53,4 +55,7 @@ group :test do
   gem 'thin'
   gem 'shoulda'
 end
+
+gem 'rails_12factor', group: :production
+gem 'puma', group: :production
 
