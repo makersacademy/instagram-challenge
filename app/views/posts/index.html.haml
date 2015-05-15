@@ -1,0 +1,20 @@
+- if user_signed_in?
+  = form_for Post.new do |f|
+    = f.label :title, hidden: true
+    = f.text_field :title
+    = f.label :body, hidden: true
+    = f.text_area :body, size: '60x6'
+    = f.submit 'Post'
+
+- @posts.each do |post|
+  %p= post.title
+  %p= post.body
+  - post.comments.each do |comment|
+    = comment.content
+    = comment.created_at
+
+  - if user_signed_in?
+    = form_for [post, Comment.new] do |f|
+      = f.label :content, hidden: true
+      = f.text_area :content, size: '60x3'
+      = f.submit 'Comment'

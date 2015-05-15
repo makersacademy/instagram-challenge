@@ -1,28 +1,34 @@
-Instagram Challenge
+Instagram Challenge - week 9
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use google, your notes, books, etc but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9am Monday morning
+[![Build Status](https://travis-ci.org/augustinas/my-instagram-challenge.svg)](https://travis-ci.org/augustinas/my-instagram-challenge)
+[![Coverage Status](https://coveralls.io/repos/augustinas/my-instagram-challenge/badge.svg)](https://coveralls.io/r/augustinas/my-instagram-challenge)
 
-Task
------
+Fully deployed working example of the app is [here](https://tranquil-lowlands-6668.herokuapp.com/).
 
-Build Instagram: Simple huh!
+Installation
+------------
 
-As usual please start by
+1. Clone the repository
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo
+2. Run
+```bash
+bundle install
+```
 
-Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture. It will need to look like the instagrams website or better. 
+3. Run
+```bash
+rails server
+```
+... and enjoy the app at _localhost:3000_
 
-Breakdown of models:
-- User
-- Post
-- Comment/description
-- Like
+Technologies Used
+-----------------
 
-Bonus if you can add filters :P 
+* Ruby on Rails 4.*
+
+* Postgresql
+
+* RSpec and Capybara suites for testing
+
+* Runs __Thin__ server in dev-env and __Puma__ in production
