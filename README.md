@@ -7,6 +7,10 @@ visit the [Asciigram](https://asciigram-app.herokuapp.com/) site
 
 An instagram style website with posts, comments and likes that also converts your images to ascii art (step back from the screen and squint for best effect)
 
+Built with Ruby on Rails (and a smattering of jQuery for asyncronus likes).
+Images hosted with Amazon Web Services.
+Tested with rspec and capybara.
+
 Test Coverage
 -------------
 ```
