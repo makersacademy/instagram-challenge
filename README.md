@@ -11,7 +11,7 @@ Built with Ruby on Rails (and a smattering of jQuery for asyncronus likes).
 Images hosted with Amazon Web Services.
 Tested with rspec and capybara.
 
-Test Coverage
+Test Coverage/Documentation
 -------------
 ```
 Leaving a comment
