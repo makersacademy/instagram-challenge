@@ -1,0 +1,46 @@
+<div class="bodycontainer">
+  <%= link_to "add a post!", new_post_path %>
+  <br>
+  <% if @posts.any? %>
+  <ul>
+  <% @posts.each do |post| %>
+  <li>
+    <%= link_to post.name, post_path(post) %>
+    <br>
+
+    <% unless post.image.url(:medium) == '/images/medium/missing.png'%>
+      <% a = AsciiArt.new(post.image.url(:medium)).to_ascii_art(width: 75, format: 'html') %>
+      <div class="ascii"><%= a.to_s.html_safe %></div>
+    <% end %>
+
+
+    <br>
+    <%= post.content %>
+    <br>
+    by <%=post.username%> @<%= post.created_at %>
+    <p>
+    <%= link_to "like", post_likes_path(post), class: 'likes-link' %>
+      <span class="likes_count"> <%= post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
+    </p>
+      <% if post.comments.any? %>
+      <br>
+      Comments:
+      <ul>
+        <% post.comments.each do |comment| %>
+          <li>
+            <%= comment.thoughts %>
+            <br>
+            <%= comment.created_at %>
+          </li>
+        <% end %>
+      </ul>
+      <br>
+      <br>
+      <% end %>
+  </li>
+  <% end %>
+</ul>
+<% else %>
+  No posts yet :-(
+<% end %>
+</div>
