@@ -17,7 +17,7 @@ feature 'photos' do
       expect(page).to have_link 'Add a photo'
     end
 
-    scenario 'add a photo' do
+    scenario 'add a photo with description' do
       visit '/photos'
       click_link 'Add a photo'
       fill_in 'Description', with: "Nando's 4 lyf"

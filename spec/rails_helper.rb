@@ -21,6 +21,16 @@ require 'capybara/rails'
 #
 # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
+# spec helper methods
+def sign_up
+  visit '/users/sign_up'
+  fill_in 'Username', with: 'TheMagicalInternationalWoodlouse'
+  fill_in 'Email', with: 'fake@fakeemail.com'
+  fill_in 'Password', with: 'secretone'
+  fill_in 'Password confirmation', with: 'secretone'
+  click_button 'Sign up'
+end
+
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!

@@ -1,7 +1,7 @@
 <% if Photo.all.empty? %>
   No photos yet
 <% else %>
-  <% @photos.each do |photo| %>
+  <% @photos.reverse_each do |photo| %>
     <div class="well">
       <ul class="media-list">
         <li class="media">
@@ -20,6 +20,10 @@
                 <%= image_submit_tag 'blank.png', alt: 'smile', class: "smiles__img smiles__img--#{smile_type(photo)}" %>
               </div>
             <% end %>
+            <% photo.comments.each do |comment| %>
+              <%= comment.user.username << " said:" << comment.text %>
+            <% end %>
+            <%= link_to "Comment", new_photo_comment_path(photo) %>
           </div>
         </li>
       </ul>
