@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="http://s3.amazonaws.com/quitefast-gram-instagram-clone/photos/images/000/000/002/medium/MeAndMe.png?1431263563">
+  <title>Quitefastgram</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Quitefastgram</a>
+      </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <div class="navbar-form navbar-right">
+            <h4><% if user_signed_in? %>
+                <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+            <% else %>
+                <%= link_to('Login', new_user_session_path)  %>
+                <%= link_to('Register', new_user_registration_path)  %>
+            <% end %></h4>
+          </div>
+      </div>
+  </nav>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <h4 class="link link__add-photo"><%= link_to('Add a photo', new_photo_path) if current_user %></h4>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>
