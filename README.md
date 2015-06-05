@@ -8,21 +8,25 @@ What is it?
 This is an attempt to clone Instagram concept done it as a challenge for Makers Accademy. The concepy is very basic, a user can sign up and log in, and after that he can upload his own pictures to the websites. In addition a user can also comment and like other people pictures.  
 
 ###[Try it on Heroku!](https://secure-reaches-2288.herokuapp.com)
--------
 ![InstagApp Home](https://github.com/armi1189/instagram-challenge/blob/master/public/img/inst1.jpg)
 -------
 
 Tools
 -----
-###### Testing: RSpec, Capybara  
-###### Develop: Rails, Paperclip Gem
+**Testing:** RSpec, Capybara  
+**Develop:** Rails, HTML, CSS
+**Gems:** OAuth, Paperclip, AWS, Bootstrap-Rails
 
 Some Features
 -----
-###### OAuth Facebook Login
+###### Facebook Login
+Trough the OAuth gem, is possible to log in with your Facebook account. 
 
-###### Paperclip pictures upload
+###### Pictures upload
+
 
 ###### Comments
 
+
 ###### Profile Pages
+
