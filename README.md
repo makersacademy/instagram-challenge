@@ -14,8 +14,8 @@ This is an attempt to clone Instagram concept done it as a challenge for Makers 
 
 Tools
 -----
-Testing: RSpec, Capybara
-Develop: Rails, Paperclip Gem
+###### Testing: RSpec, Capybara  
+###### Develop: Rails, Paperclip Gem
 
 Some Features
 -----
