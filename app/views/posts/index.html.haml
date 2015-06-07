@@ -1,0 +1,19 @@
+%div{ :class => 'row page-title' }
+  %h3= "> All"
+%div{ :class => 'row main' }
+  - if @post.any?
+    - @post.each do |post|
+      %span{ :class => 'col-xs-12 col-sm-6 col-md-3 image-box' }
+        = link_to image_tag(post.image.url(:thumb)), post_path(post)
+        %span{ :class => 'like like-counter' }
+          = post.likes_count
+        - if user_signed_in?
+          %span{ :class => 'like like-link' }
+            - if post.has_been_liked?(current_user)
+              = link_to "Unlike", post_like_path(post, post.like_by(current_user).first), method: :delete
+            - else
+              = link_to "Like", new_post_like_path(post)
+
+  - else
+    %p No pics yet
+
