@@ -10,8 +10,6 @@ As a passionate amateur photographer,
 So I can show off my beautiful artwork,
 I would like to be able to post images from my account.
 
-	Relates to the following tests: Images can be added to site!
-
 As an opinionated art critic,
 So I can view other people’s artwork,
 I would like to be able to view images loaded by other people.
@@ -47,7 +45,7 @@ Controllers
 Agile Testing
 -------------
 To ensure that I have a close view of the endpoint while I build, I will add my tests in the following order:
-	1) Images can be added to and viewed on site - would first want to check that we can add to the database, then check that we can add to the page (just words), then check that we can add images
+	&#x274f; Images can be added to and viewed on site
 	2) Images can be liked and commented on
 	3) Users can sign up and sign in and sign out
 	4) Only users can add images to site
