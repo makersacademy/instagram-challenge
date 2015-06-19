@@ -35,5 +35,15 @@ feature 'posts' do
 			click_link 'New Post'
 			expect(page).to have_content 'Add Post'
 		end
+
+		scenario 'visitor is able to post image to page' do
+			visit '/posts'
+			click_link 'New Post'
+			fill_in "Caption", with: "With my buddies"
+			attach_file "Image", "spec/features/test-image/mr-blobby.jpg"
+			click_button 'Post'
+			expect(page).to have_content 'With my buddies'
+			expect(page).to have_selector 'img'
+		end
 	end
 end
