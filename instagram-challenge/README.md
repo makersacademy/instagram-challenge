@@ -45,11 +45,11 @@ Controllers
 Agile Testing
 -------------
 To ensure that I have a close view of the endpoint while I build, I will add my tests in the following order:
-	U+2611 Images can be added to and viewed on site
-	U+2610 Images can be liked and commented on
-	U+2610 Users can sign up and sign in and sign out
-	U+2610 Only users can add images to site
-	U+2610 Only users can like images on site and add comments to images
+	[x] Images can be added to and viewed on site
+	[] Images can be liked and commented on
+	[] Users can sign up and sign in and sign out
+	[] Only users can add images to site
+	[] Only users can like images on site and add comments to images
 
 Feature Tests using RSpec and Capybara
 --------------------------------------
