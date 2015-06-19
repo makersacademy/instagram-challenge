@@ -21,5 +21,11 @@ feature 'posts' do
 			visit '/posts'
 			expect(page).to have_content 'Hello'
 		end
+
+		scenario 'images are displayed on page' do
+			Post.create(image_file_name: 'some_image.jpg')
+			visit '/posts'
+			expect(page).to have_selector 'img'
+		end
 	end
 end
