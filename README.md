@@ -8,6 +8,16 @@ Challenge:
 
 Build Instagram: Simple huh!
 
+User Stories:
+-------
+
+```
+As a user who likes photography
+I want to be able to upload my pictures on the internet
+So that others can see my bootiful creations 
+```
+
+
 Technologies Used:
 -------
 
