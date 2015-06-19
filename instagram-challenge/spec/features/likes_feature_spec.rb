@@ -9,7 +9,7 @@ feature 'liking images' do
 	end
 
 	context 'images have been posted' do
-		scenario 'visitor can like an image' do
+		scenario 'visitor can like an image and increase like count by one' do
 			visit '/posts'
 			click_link 'New Post'
 			fill_in "Caption", with: "With my buddies"

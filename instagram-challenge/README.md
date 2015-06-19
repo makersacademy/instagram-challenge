@@ -58,15 +58,15 @@ Feature Tests using RSpec and Capybara
 	[] Images
 		[x] Says when no image posts have been added to site
 		[x] Shows images and captions that are in database
-		[x] Lets a user upload and post an image with a caption
-		[] Image caption can be edited aftr being posted
+		[x] Lets a visitor upload and post an image with a caption
+		[] Image caption can be edited after being posted
 	[] Comments
- 		[] Users can comment on image posts
-	[] Likes
-		[] Users can like image posts
-		[] Displays number of likes for an image
+ 		[] Visitor can comment on image posts
+	[x] Likes
+		[x] Visitors can like image posts
+		[x] Displays number of likes for an image
 	[] Users
-		[] Can comment on images
+		[] Only users can do the above things!
 
 Unit Tests using RSpec
 ----------------------
