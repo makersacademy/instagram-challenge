@@ -15,5 +15,11 @@ feature 'posts' do
 			visit '/posts'
 			expect(page).not_to have_content 'No posts yet'
 		end
+
+		scenario 'image captions are displayed on page' do
+			Post.create(caption: 'Hello')
+			visit '/posts'
+			expect(page).to have_content 'Hello'
+		end
 	end
 end
