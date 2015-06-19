@@ -8,4 +8,12 @@ feature 'posts' do
 			expect(page).to have_content 'Post Image'
 		end
 	end
+
+	context 'images have been posted to site' do
+		scenario 'doesn\'t display \'no posts yet\' message' do
+			Post.create
+			visit '/posts'
+			expect(page).not_to have_content 'No posts yet'
+		end
+	end
 end
