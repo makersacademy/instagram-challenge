@@ -1,7 +1,9 @@
 <% if Post.all.any? %>
 	<% Post.all.each do |post| %>
-		<%= post.caption %>
 		<%= image_tag post.image.url(:thumb) %>
+		<%= post.caption %>
+		<%= link_to "❤", post_likes_path(post), method: :post %>
+		❤ <%= post.likes.count %>
 	<% end %>
 <% else %>
 	No posts yet

@@ -55,17 +55,18 @@ To ensure that I have a close view of the endpoint while I build, I will add my 
 
 Feature Tests using RSpec and Capybara
 --------------------------------------
-	* Images
-		* Says when no image posts have been added to site
-		* Images can be added with captions
-		* Image caption can be edited
-	* Comments
- 		* Users can comment on image posts
-	* Likes
-		* Users can like image posts
-		* Displays number of likes for an image
-	* Users
-		* Can comment on images
+	[] Images
+		[x] Says when no image posts have been added to site
+		[x] Shows images and captions that are in database
+		[x] Lets a user upload and post an image with a caption
+		[] Image caption can be edited aftr being posted
+	[] Comments
+ 		[] Users can comment on image posts
+	[] Likes
+		[] Users can like image posts
+		[] Displays number of likes for an image
+	[] Users
+		[] Can comment on images
 
 Unit Tests using RSpec
 ----------------------
@@ -82,6 +83,16 @@ Unit Tests using RSpec
 		* User can sign in
 		* Has a unique username
 		* Can comment on images only if signed in
+
+
+
+
+
+
+
+
+
+
 
 
 
