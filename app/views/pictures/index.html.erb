@@ -13,18 +13,22 @@
 <% @pictures.each do |picture| %>
   <%= image_tag picture.image.url(:medium) %>
   <br>
+  <%= pluralize picture.likes.count, 'likes' %>
+  <%= link_to 'Like', new_picture_likes_path(picture), class: 'likes-link' %>
+  <br>
   <%= picture.description %>
   <br>
-
   <% if Comment.count != 0 %>
     <% these_comments = Comment.where(picture_id: picture.id) %>
     <% if these_comments %>
       <% these_comments.each do |comment| %>
-        <%= comment.description %>
+        <% user = User.find(comment.user_id) %>
+        <%= comment.description %> by <i> <%= user.email %> </i>
       <% end %>
     <% end %>
   <% end %>
   <%= link_to 'Comment', new_picture_comment_path(picture) %>
+
 <% end %>
 
 <%= link_to 'Add a picture', new_picture_path %>

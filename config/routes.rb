@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :instagram
   resources :pictures do
+    resources :likes
     resources :comments
   end
 
