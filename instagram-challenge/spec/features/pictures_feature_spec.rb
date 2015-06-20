@@ -27,8 +27,7 @@ feature 'Pictures' do
       attach_picture
       expect(page).to have_content 'My lovely Iceland'
       click_link 'Sign out'
-      click_link 'Edit description'
-      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+      expect(page).not_to have_content 'Edit description'
     end
 
     scenario 'non creator cannot edit picture\'s description' do
@@ -58,8 +57,7 @@ feature 'Pictures' do
       attach_picture
       expect(page).to have_css('img[alt="Iceland"]')
       click_link 'Sign out'
-      click_link 'Delete picture'
-      expect(page).to have_content'You need to sign in or sign up before continuing.'
+      expect(page).not_to have_content 'Delete picture'
     end
 
     scenario 'non creator cannot delete the picture' do
