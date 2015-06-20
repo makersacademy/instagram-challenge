@@ -1,3 +1,4 @@
+<h3>
 <% if current_user && current_user.sign_in_count == 1 %>
   Welcome to Instagram <%= current_user.email %>
 <% elsif current_user && current_user.sign_in_count > 1 %>
@@ -5,9 +6,10 @@
 <% else %>
   Please sign in
 <% end %>
+</h3>
 <br>
 <% if Picture.count == 0 %>
-  no photos have been added!
+  <h5>  No photos have been added! </h5>
 <% end %>
 
 <% @pictures.each do |picture| %>
@@ -15,7 +17,9 @@
   <br>
   <%= picture.description %>
   <br>
-
+  <% if current_user && current_user.id == picture.user_id %>
+    <%= link_to "Delete #{picture.description}", picture_path(picture), method: :delete %>
+  <% end %>
   <% if Comment.count != 0 %>
     <% these_comments = Comment.where(picture_id: picture.id) %>
     <% if these_comments %>
@@ -24,7 +28,10 @@
       <% end %>
     <% end %>
   <% end %>
-  <%= link_to 'Comment', new_picture_comment_path(picture) %>
+  <% if current_user %>
+    <%= link_to 'Comment', new_picture_comment_path(picture) %>
+  <% end %>
 <% end %>
-
-<%= link_to 'Add a picture', new_picture_path %>
+<% if current_user %>
+  <%= link_to 'Add a picture', new_picture_path %>
+<% end %>

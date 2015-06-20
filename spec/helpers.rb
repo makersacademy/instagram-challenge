@@ -15,10 +15,9 @@ def sign_in(email)
   click_button 'Log in'
 end
 
-def add_picture(description)
-  visit '/'
+def add_picture
   click_link 'Add a picture'
-  # click_link 'picture_image'
-  fill_in 'picture_description', with: description
+  attach_file 'picture_image', 'spec/betty.jpg'
+  fill_in 'picture_description', with: 'Betty'
   click_button 'Create Picture'
 end

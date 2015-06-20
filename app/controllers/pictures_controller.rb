@@ -16,6 +16,18 @@ class PicturesController < ApplicationController
     end
   end
 
+  def destroy
+    @picture = Picture.find(params[:id])
+    if @picture.user_id == current_user.id
+      @picture.destroy
+      flash[:notice] = 'Picture deleted'
+      redirect_to '/'
+    else
+      flash[:notice] = 'You may not delete this'
+      redirect_to '/'
+    end
+  end
+
   def picture_params
     params.require(:picture).permit(:image, :description)
   end

@@ -1,17 +1,19 @@
 require 'rails_helper'
 
-feature 'A logged in user can' do
+feature 'A logged in user' do
 
   before do
     sign_up('test@test.com')
-    add_picture('Betty')
+    add_picture
     click_link 'Sign out'
     sign_up('test1@test.com')
     click_link 'Sign out'
-    visit '/'
   end
 
-  scenario 'comment on their own picture' do
+  scenario 'can only comment when logged in' do
+    expect(page).not_to have_link 'Comment'
+  end
+  scenario 'can comment on their own picture' do
     sign_in('test@test.com')
     click_link 'Comment'
     expect(page).to have_content 'Add a comment here:'
