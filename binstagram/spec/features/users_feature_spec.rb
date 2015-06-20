@@ -1,4 +1,6 @@
 require 'rails_helper'
+require_relative 'helpers/session'
+include SessionHelpers
 
 feature "User can sign in and out" do
   context "user not signed in and on the homepage" do

@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
   
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def photo_params
     params.require(:photo).permit(:image, :name, :description)
   end
@@ -14,7 +16,8 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-    redirect to photos_path
+    @photo.save
+    redirect_to photos_path
   end
 
 end

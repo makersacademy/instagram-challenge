@@ -59,7 +59,16 @@ Rails.application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
-
+  config.paperclip_defaults = {
+    :path => "/:class/:attachment/:id_partition/:style/:filename",
+    :url => ':s3_domain_url',
+    :storage => :s3,
+    :s3_credentials => {
+    :bucket => Rails.application.secrets.aws_bucket,
+    :access_key_id => Rails.application.secrets.aws_access_key_id,
+    :secret_access_key => Rails.application.secrets.aws_secret_access_key
+    }
+  }
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false

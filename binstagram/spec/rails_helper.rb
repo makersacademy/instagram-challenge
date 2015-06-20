@@ -32,6 +32,9 @@ require 'support/database_cleaner'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+
+  AWS.stub!
+  AWS.config(:access_key_id => 'TESTKEY', :secret_access_key => "TESTSECRET")
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
