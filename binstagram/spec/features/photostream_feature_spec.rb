@@ -9,9 +9,8 @@ feature 'photostream' do
     end
   end
 
-#   context 'photos have been added' do
+#   test for checking a photo is on the page
 
-# end
   context 'adding photos' do
     scenario 'prompts user to attach file and fill out form, then displays photo' do
       visit '/photos'
@@ -24,4 +23,7 @@ feature 'photostream' do
       expect(current_path). to eq '/photos'
     end
   end
+
+  # test for deleting a photo
+  
 end
