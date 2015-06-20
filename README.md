@@ -28,10 +28,11 @@ Bonus Functionality
 Users
 -----
      - can sign up/in via Twitter  
-     - can tag photos with Twitter handles  
+     - can tag photos and add Twitter handles  
      - can share images via social media  
      - can edit/delete their submissions  
      - can like/unlike a photo  
+     - can search for a photo by name/tag
 
 Photos 
 ------
