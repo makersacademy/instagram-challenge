@@ -1,19 +1,33 @@
 <%if @pictures.empty? %>
   No pictures in the network
-  <button> <%=link_to 'Add Picture', new_picture_path %> </button>
+  <button type="button" class="btn btn-default" aria-label="Left Align" id='dislikes'>
+    <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+    <%=link_to 'Add Picture', new_picture_path %>
+  </button>
 <%else%>
-  <button> <%=link_to 'Add Picture', new_picture_path %> </button>
   <div class='container'>
     <%@pictures.each do |picture| %>
       <div class='row'>
         <span class='img-post'> <%=image_tag picture.image.url(:medium)%> </span>
         <p> <%=picture.caption%> </p>
 
-        <button type="button" class="btn btn-default" aria-label="Left Align" id='comment'>
+        <button type="button" class="btn btn-default comment" aria-label="Left Align">
           <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
         </button>
-
-          <div id='comments'>
+        <button type="button" class="btn btn-default" aria-label="Left Align" id='likes'>
+          <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+           <%=link_to "", picture_likes_path(picture), class: 'likes-link' %>
+          <span class='likes-count'> <%=picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>
+        </button>
+         <button type="button" class="btn btn-default" aria-label="Left Align" id='dislikes'>
+          <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+           <%=link_to "", picture_likes_path(picture), class: 'dislikes-link', method: :delete%>
+        </button>
+        <button type="button" class="btn btn-default" aria-label="Left Align" id='dislikes'>
+          <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+          <%=link_to 'Add Picture', new_picture_path %>
+        </button>
+          <div class='comments'>
             <%picture.comments.each do |comment|%>
               <ul>
                 <li><%=comment.comment%></li>
@@ -29,8 +43,11 @@
   </div>
 <%end%>
 <script>
-  $('#comments').hide()
-    $('#comment').click(function() {
-    $('#comments').toggle()
+  $(document).ready( function() {
+    // comments
+    $('.comments').hide()
+    $('.comment').click(function() {
+      $('.comments').toggle()
+     });
   });
 </script>
