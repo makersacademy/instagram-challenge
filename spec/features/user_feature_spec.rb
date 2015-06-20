@@ -18,7 +18,5 @@ feature 'A new user arrives on the homepage' do
     click_link 'Sign out'
     sign_in('test@test.com')
     expect(page).to have_content 'Welcome back test@test.com'
-
   end
 end
-
