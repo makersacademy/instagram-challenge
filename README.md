@@ -15,12 +15,12 @@ Basic Features
 
 ```
 As a user
-So that I can use the website
-I would like to upload pictures
-
-As a user
 So that I can upload pictures
 I would like to log in
+
+As a user
+So that I can use the website
+I would like to upload pictures
 
 As a user
 So that I can show I think a picture is good
