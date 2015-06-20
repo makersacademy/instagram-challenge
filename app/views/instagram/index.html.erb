@@ -15,6 +15,15 @@
   <br>
   <%= picture.description %>
   <br>
+  <% if Comment.count != 0 %>
+    <% these_comments = Comment.where(picture_id: picture.id) %>
+    <% if these_comments %>
+      <% these_comments.each do |comment| %>
+        <%= comment.description %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= link_to 'Comment', new_picture_comment_path(picture) %>
 <% end %>
 
 <%= link_to 'Add a picture', new_picture_path %>

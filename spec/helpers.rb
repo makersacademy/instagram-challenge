@@ -14,3 +14,11 @@ def sign_in(email)
   fill_in 'Password', with: '12345678'
   click_button 'Log in'
 end
+
+def add_picture(description)
+  visit '/'
+  click_link 'Add a picture'
+  # click_link 'picture_image'
+  fill_in 'picture_description', with: description
+  click_button 'Create Picture'
+end
