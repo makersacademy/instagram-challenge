@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Photos' do
   context 'No photos have been added' do
-    scenario 'Should display a prompt to add a restaurant' do
+    scenario 'Should display a prompt to add a photo' do
       visit '/photos'
       expect(page).to have_content 'No photos yet'
       expect(page).to have_link 'Add a photo'
@@ -32,17 +32,32 @@ feature 'Photos' do
     end
   end
 
-  context 'viewing photos' do
+  context 'Viewing photos' do
 
-  let!(:mount_fuji){Photo.create(descr:'Mount Fuji')}
+    let!(:mount_fuji){Photo.create(descr:'Mount Fuji')}
 
-  scenario 'lets a user view profile page of a photo' do
-   visit '/photos'
-   click_link 'Mount Fuji'
-   expect(page).to have_content 'Mount Fuji'
-   expect(current_path).to eq "/photos/#{mount_fuji.id}"
+    scenario 'Lets a user view profile page of a photo' do
+      visit '/photos'
+      click_link 'Mount Fuji'
+      expect(page).to have_content 'Mount Fuji'
+      expect(current_path).to eq "/photos/#{mount_fuji.id}"
+    end
+
   end
 
-end
+  context 'Editing photos' do
+
+    before {Photo.create descr: 'Mount Fuji'}
+
+    scenario 'Let a user edit a photo' do
+      visit '/photos'
+      click_link 'Edit Mount Fuji'
+      fill_in 'Description', with: 'On top of Mount Fuji'
+      click_button 'Update photo'
+      expect(page).to have_content 'On top of Mount Fuji'
+      expect(current_path).to eq '/photos'
+    end
+
+  end
 
 end
