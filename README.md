@@ -34,7 +34,7 @@ As a photography enthusiast with little time
 I want to be able to quickly 'like' other users' photos
 So that I can register my appreciation of the photo
 
-As a user who wants to add photos
+As a user who has an account
 I want permission to add/edit/delete my photos only when logged into my account
 So that I can control my collection
 
@@ -86,14 +86,14 @@ Set-up Steps:
 Next Steps:
 -------
 
+* Tests to cover all facets of authentication as per `app/controllers/photos_controller.rb` and `app/controllers/comments_controller.rb`
+* Use partials for: `app/views/photos/new.html.erb` and `app/views/photos/edit.html.erb` (`@photos.errors.any?` block is duplicated)
+* Ability to edit comments w/requisite validation and testing (currently only able to add comments)
 * Apply Ruby 'Time Ago In Words' gem:-
 
 [Ruby On Rails - Time Ago In Words gem](http://api.rubyonrails.org/classes/ActionView/Helpers/DateHelper.html#method-i-time_ago_in_words)
 
 [Ruby Doc - Gems info](http://www.rubydoc.info/gems/time_ago_in_words/0.1.1)
-
-* Use partials for: `app/views/photos/new.html.erb` and `app/views/photos/edit.html.erb` (`@photos.errors.any?` block is duplicated)
-* Ability to edit comments w/requisite validation and testing (currently only able to add comments)
 
 
 Links:

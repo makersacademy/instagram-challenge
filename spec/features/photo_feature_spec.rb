@@ -1,4 +1,7 @@
 require 'rails_helper'
+require_relative '../helpers/session_helpers.rb'
+
+include Session
 
 feature 'Photos' do
   context 'No photos have been added' do
@@ -19,8 +22,14 @@ feature 'Photos' do
   end
 
   context 'Adding photos' do
-    scenario 'prompts user to add photo, then displays the description' do
+    scenario 'Does not allow user to add photos if not signed up/in' do
       visit '/photos'
+      click_link 'Add a photo'
+      expect(page).to have_content 'You need to sign in or sign up before continuing'
+    end
+
+    scenario 'Prompts user to add photo, then displays the description' do
+      sign_up('test@example.com', 'password')
       click_link 'Add a photo'
       fill_in 'Description', with: 'Mount Fuji'
       click_button 'Add photo'
@@ -30,7 +39,7 @@ feature 'Photos' do
 
     context 'An invalid description' do
       it 'Does not let you submit a description that is too short' do
-        visit '/photos'
+        sign_up('test@example.com', 'password')
         click_link 'Add a photo'
         click_button 'Add photo'
         expect(page).not_to have_css 'h3'
@@ -40,7 +49,7 @@ feature 'Photos' do
   end
 
   context 'Viewing photos' do
-    let!(:mount_fuji){Photo.create(descr:'Mount Fuji')}
+    let!(:mount_fuji) {Photo.create(descr:'Mount Fuji')}
     scenario 'Lets a user view profile page of a photo' do
       visit '/photos'
       click_link 'Mount Fuji'
@@ -50,19 +59,17 @@ feature 'Photos' do
   end
 
   context 'Editing photos' do
-    before {Photo.create descr: 'Mount Fuji'}
+    before {Photo.create descr: 'Mount Fuji'; sign_up('test@example.com', 'password')}
     scenario 'Let a user edit a photo' do
-      visit '/photos'
       click_link 'Edit Mount Fuji'
-      fill_in 'Description', with: 'On top of Mount Fuji'
+      fill_in 'Description', with: 'Mt Fuji'
       click_button 'Update photo'
-      expect(page).to have_content 'On top of Mount Fuji'
+      expect(page).to have_content 'Mt Fuji'
       expect(current_path).to eq '/photos'
     end
 
     context 'An invalid description' do
       it 'Does not let you submit a description that is too short' do
-        visit '/photos'
         click_link 'Edit Mount Fuji'
         fill_in 'Description', with: ''
         click_button 'Update photo'
@@ -75,7 +82,7 @@ feature 'Photos' do
   context 'Deleting photos' do
     before {Photo.create descr: 'Mount Fuji'}
     scenario 'Removes a photo when user clicks a delete link' do
-      visit '/photos'
+      sign_up('test@example.com', 'password')
       click_link 'Delete Mount Fuji'
       expect(page).not_to have_content 'Mount Fuji'
       expect(page).to have_content 'Photo deleted successfully'
