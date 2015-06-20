@@ -1,4 +1,14 @@
 Rails.application.configure do
+  config.paperclip_defaults = {
+    :path => "/:class/:attachment/:id_partition/:style/:filename",
+    :url => ':s3_domain_url',
+    :storage => :s3,
+    :s3_credentials => {
+    :bucket => Rails.application.secrets.aws_bucket,
+    :access_key_id => Rails.application.secrets.aws_access_key_id,
+    :secret_access_key => Rails.application.secrets.aws_secret_access_key
+    }
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

@@ -1,28 +1,26 @@
-<% if @posts.any? %>
-	<% @posts.each do |post| %>
-		<%= image_tag post.image.url(:thumb) %>
-		<%= post.caption %>
-		<%= link_to "❤", post_likes_path(post), method: :post %>
-		❤ <%= post.likes.count %>
-		<%= link_to '✎', new_post_comment_path(post) %>
+<div class="new_post"><%= link_to "◉ New Post ◉", new_post_path, class: "new_post_link" %></div>
 
-
-
-		<% if post.comments.any? %>
-			<ul>
-				<% post.comments.each do |comment| %>
-					<li>
-						<%= comment.comment %>
-					</li>
-				<% end %>
-			</ul>
-		<% end %>
-
-
-
-	<% end %>
-<% else %>
-	No posts yet
-<% end %>
-
-<%= link_to "New Post", new_post_path %>
+<div class="page_content">
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <div class="each_post">
+        <div class="each_image"><%= image_tag post.image.url(:medium) %></div>
+        <%= link_to "❤", post_likes_path(post), method: :post, class: "each_like_button" %>
+        <%= post.likes.count %>
+        <span class="each_caption"><%= post.caption %></span>
+        <% if post.comments.any? %>
+          <ul>
+            <% post.comments.each do |comment| %>
+              <li>
+                <%= comment.comment %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+        <%= link_to '✎', new_post_comment_path(post) %>
+      </div>
+    <% end %>
+  <% else %>
+  <div class="no_posts">No posts yet!</div>
+  <% end %>
+</div>

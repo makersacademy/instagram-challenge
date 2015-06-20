@@ -1,4 +1,8 @@
 Rails.application.configure do
+  config.paperclip_defaults = {
+    :path => "#{Rails.root}/spec/test_files/:class/:id_partition/:style.:extension",
+    :storage => :filesystem
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's

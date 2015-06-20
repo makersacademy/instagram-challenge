@@ -46,44 +46,44 @@ Agile Testing
 -------------
 To ensure that I have a close view of the endpoint while I build, I will add my tests in the following order:
 ```
-	[x] Images can be added to and viewed on site
-	[x] Images can be liked and commented on
-	[] Users can sign up and sign in and sign out
-	[] Only users can add images to site
-	[] Only users can like images on site and add comments to images
+  [x] Images can be added to and viewed on site
+  [x] Images can be liked and commented on
+  [] Users can sign up and sign in and sign out
+  [] Only users can add images to site
+  [] Only users can like images on site and add comments to images
 ```
 
 Feature Tests using RSpec and Capybara
 --------------------------------------
-	[] Images
-		[x] Says when no image posts have been added to site
-		[x] Shows images and captions that are in database
-		[x] Lets a visitor upload and post an image with a caption
-		[] Image caption can be edited after being posted
-	[x] Comments
- 		[x] Visitor can comment on image posts
-	[x] Likes
-		[x] Visitors can like image posts
-		[x] Displays number of likes for an image
-	[] Users
-		[] Only users can do the above things!
-		[] Only users are able to delete photos posted from their account
+  [] Images
+    [x] Says when no image posts have been added to site
+    [x] Shows images and captions that are in database
+    [x] Lets a visitor upload and post an image with a caption
+    [] Image caption can be edited after being posted
+  [x] Comments
+    [x] Visitor can comment on image posts
+  [x] Likes
+    [x] Visitors can like image posts
+    [x] Displays number of likes for an image
+  [] Users
+    [] Only users can do the above things!
+    [] Only users are able to delete photos posted from their account
 
 Unit Tests using RSpec
 ----------------------
-	* Image
-		* Image can be added DONE
-		* Image can be added with a caption/comment
-		* Image knows how many likes it has
-	* Comments
-		* Comments can be added to images
-	* User
-		* User can sign up
-		* User can sign in
-		* User can only post images when signed in
-		* User can sign in
-		* Has a unique username
-		* Can comment on images only if signed in
+  * Image
+    * Image can be added DONE
+    * Image can be added with a caption/comment
+    * Image knows how many likes it has
+  * Comments
+    * Comments can be added to images
+  * User
+    * User can sign up
+    * User can sign in
+    * User can only post images when signed in
+    * User can sign in
+    * Has a unique username
+    * Can comment on images only if signed in
 
 
 
