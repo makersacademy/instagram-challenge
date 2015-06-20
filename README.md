@@ -9,12 +9,10 @@ Build Instagram using Rails.
 Core Functionality
 ------------------
 
-Users - can sign up, sign in manually or via Facebook authentication - ✓
-
-      - can post photos with title and description - ✓
-      
-      - can comment on photos
-      - can 'like' photos
+Users * can sign up, sign in manually or via Facebook authentication - ✓
+      * can post photos with title and description - ✓
+      * can comment on photos
+      * can 'like' photos
 
 Photos - display on the homepage - ✓
        - are stored - ✓
