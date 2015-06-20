@@ -1,16 +1,18 @@
 require 'rails_helper'
 
 feature 'adding comments' do
+	before do
+		visit '/posts'
+	end
+
 	context 'no images have been posted' do
 		scenario 'visitor is not able to comment on an image that does not exist' do
-			visit '/posts'
 			expect(page).not_to have_content '✎'
 		end
 	end
 
 	context 'images have been posted' do
 		it 'visitor can comment on an image and their comment will appear on page' do
-			visit '/posts'
 			click_link 'New Post'
 			fill_in "Caption", with: "With my buddies"
 			attach_file "Image", "spec/features/test-image/mr-blobby.jpg"
