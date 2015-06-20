@@ -22,6 +22,13 @@ def add_picture
   click_button 'Create Picture'
 end
 
+def add_picture2
+  click_link 'Add a picture'
+  attach_file 'picture_image', 'spec/me.jpg'
+  fill_in 'Title', with: 'Daryl'
+  click_button 'Create Picture'
+end
+
 def add_comment(text)
   click_link 'Comment'
   fill_in 'comment_description', with: text

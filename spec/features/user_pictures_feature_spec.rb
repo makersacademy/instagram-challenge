@@ -17,6 +17,17 @@ feature 'A logged in user' do
     expect(page).not_to have_content 'no photos have been added!'
   end
 
+  scenario 'can search for a picture' do
+    sign_in('test@test.com')
+    add_picture
+    add_picture2
+    expect(page).to have_content 'Betty Daryl'
+    fill_in 'search', with: 'Betty'
+    click_button 'Search'
+    expect(page).to have_content 'Betty'
+    expect(page).not_to have_content 'Daryl'
+  end
+
   context 'deleting pictures' do
 
     scenario 'can be done by the owner of the picture' do

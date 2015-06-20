@@ -1,6 +1,11 @@
 class PicturesController < ApplicationController
 
   def index
+    if params[:search]
+      @pictures = Picture.search(params[:search]).order("created_at DESC")
+    else
+      @pictures = Picture.order("created_at DESC")
+    end
   end
 
   def new
@@ -14,6 +19,10 @@ class PicturesController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show
+    @picture = Picture.find(params[:title])
   end
 
   def destroy
