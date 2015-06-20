@@ -1,9 +1,25 @@
-<% if Post.all.any? %>
-	<% Post.all.each do |post| %>
+<% if @posts.any? %>
+	<% @posts.each do |post| %>
 		<%= image_tag post.image.url(:thumb) %>
 		<%= post.caption %>
 		<%= link_to "❤", post_likes_path(post), method: :post %>
 		❤ <%= post.likes.count %>
+		<%= link_to '✎', new_post_comment_path(post) %>
+
+
+
+		<% if post.comments.any? %>
+			<ul>
+				<% post.comments.each do |comment| %>
+					<li>
+						<%= comment.comment %>
+					</li>
+				<% end %>
+			</ul>
+		<% end %>
+
+
+
 	<% end %>
 <% else %>
 	No posts yet

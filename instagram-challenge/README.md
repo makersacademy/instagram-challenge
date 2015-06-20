@@ -47,7 +47,7 @@ Agile Testing
 To ensure that I have a close view of the endpoint while I build, I will add my tests in the following order:
 ```
 	[x] Images can be added to and viewed on site
-	[] Images can be liked and commented on
+	[x] Images can be liked and commented on
 	[] Users can sign up and sign in and sign out
 	[] Only users can add images to site
 	[] Only users can like images on site and add comments to images
@@ -60,13 +60,14 @@ Feature Tests using RSpec and Capybara
 		[x] Shows images and captions that are in database
 		[x] Lets a visitor upload and post an image with a caption
 		[] Image caption can be edited after being posted
-	[] Comments
- 		[] Visitor can comment on image posts
+	[x] Comments
+ 		[x] Visitor can comment on image posts
 	[x] Likes
 		[x] Visitors can like image posts
 		[x] Displays number of likes for an image
 	[] Users
 		[] Only users can do the above things!
+		[] Only users are able to delete photos posted from their account
 
 Unit Tests using RSpec
 ----------------------
