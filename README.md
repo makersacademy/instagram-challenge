@@ -1,22 +1,41 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9am Monday morning
-
 Task
 -----
 
-Build Instagram: Simple huh!
+Build Instagram using Rails.
 
-As usual please start by
+Core Functionality
+------------------
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo
+Users - can sign up, sign in manually or via Facebook authentication - ✓
+      - can post photos with title and description - ✓
+      - can comment on photos
+      - can 'like' photos
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome). 
+Photos - display on the homepage - ✓
+       - are stored - ✓
+       - Can be commented on and liked
 
-Bonus if you can add filters! 
+Bonus Functionality
+-------------------
+
+Users - can sign up/in via Twitter
+      - can tag photos with Twitter handles
+      - can share images via social media
+      - can edit/delete their submissions
+      - can like/unlike a photo
+
+Photos - display in reverse chronological order
+       - show when they were added to the site, in plain english (e.g 'One hour ago')
+       - Carry a 'Like' counter reflecting number of likes
+       
+Technologies
+------------
+
+Built on - Rails
+Tested with - Rspec, Capybara and Shoulda
+ORM - ActiveRecord
+Image management - Paperclip, Imagemagick, AWS S3
+Authentication - Devise, OmniAuth
