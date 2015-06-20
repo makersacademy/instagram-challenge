@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to root_path
     else
+      flash[:notice] = 'Invalid'
       render 'new'
     end
   end

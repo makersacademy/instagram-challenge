@@ -37,5 +37,14 @@ feature 'A logged in user' do
     scenario 'cannot be done when logged out' do
       expect(page).not_to have_link 'Delete Betty'
     end
+
+    scenario 'also deletes all associated comments' do
+      sign_in('test@test.com')
+      add_picture
+      add_comment('Cool')
+      click_link 'Delete Betty'
+      expect(page).not_to have_content 'Betty'
+      expect(Comment.count).to eq 0
+    end
   end
 end
