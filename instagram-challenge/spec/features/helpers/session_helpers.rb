@@ -16,4 +16,12 @@ module SessionHelpers
     fill_in 'Password', with: password
     click_button 'Log in'
   end
+
+  def attach_picture
+      visit '/pictures'
+      click_link 'Add a picture'
+      attach_file 'Image', 'spec/features/Iceland.jpg'
+      fill_in('Description', with: 'My lovely Iceland')
+      click_button 'Create Picture'
+    end
 end
