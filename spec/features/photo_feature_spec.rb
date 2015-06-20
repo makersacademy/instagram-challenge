@@ -10,10 +10,7 @@ feature 'Photos' do
   end
 
   context 'Photos have been added' do
-    before do
-      Photo.create(descr: 'Mount Fuji')
-    end
-
+    before {Photo.create descr: 'Mount Fuji'}
     scenario 'Display photos' do
       visit '/photos'
       expect(page).to have_content('Mount Fuji')
@@ -33,22 +30,17 @@ feature 'Photos' do
   end
 
   context 'Viewing photos' do
-
     let!(:mount_fuji){Photo.create(descr:'Mount Fuji')}
-
     scenario 'Lets a user view profile page of a photo' do
       visit '/photos'
       click_link 'Mount Fuji'
       expect(page).to have_content 'Mount Fuji'
       expect(current_path).to eq "/photos/#{mount_fuji.id}"
     end
-
   end
 
   context 'Editing photos' do
-
     before {Photo.create descr: 'Mount Fuji'}
-
     scenario 'Let a user edit a photo' do
       visit '/photos'
       click_link 'Edit Mount Fuji'
@@ -57,7 +49,16 @@ feature 'Photos' do
       expect(page).to have_content 'On top of Mount Fuji'
       expect(current_path).to eq '/photos'
     end
+  end
 
+  context 'deleting photos' do
+    before {Photo.create descr: 'Mount Fuji'}
+    scenario 'removes a photo when user clicks a delete link' do
+      visit '/photos'
+      click_link 'Delete Mount Fuji'
+      expect(page).not_to have_content 'Mount Fuji'
+      expect(page).to have_content 'Photo deleted successfully'
+    end
   end
 
 end
