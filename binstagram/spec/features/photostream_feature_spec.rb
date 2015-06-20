@@ -21,21 +21,37 @@ feature 'photostream' do
     end
   end
 
-#   test for checking a photo is on the page
+  context 'photos have been added' do
+    before do
+      add_photo('Dumpster', 'Industrial bin in blue with 4 multi-directional wheels.')
+    end
+    scenario 'display photos' do
+      visit '/photos'
+      expect(page).to have_content('Dumpster')
+      expect(page).not_to have_content('no photos yet')
+    end
+  end
 
   context 'adding photos' do
     scenario 'prompts user to attach file and fill out form, then displays photo' do
       visit '/photos'
       click_link 'Add a photo'
-      attach_file 'image', Rails.root.join('spec/features/dumpster.png')
+      attach_file 'Image', Rails.root.join('spec/features/dumpster.png')
       fill_in 'Name', with: 'Dumpster'
       fill_in 'Description', with: 'Industrial bin on wheels'
       click_button 'Create Photo'
       expect(page).to have_content 'Dumpster'
       expect(current_path). to eq '/photos'
     end
+
+    context 'an invalid submission' do
+      it 'does not let you submit a photo without choosing a file' do
+        add_photo('Dumpster', 'Industrial bin in blue with 4 multi-directional wheels.')
+        expect(page).not_to have_content 'No file chosen'
+      end
+    end
   end
 
-  # test for deleting a photo
+
 
 end

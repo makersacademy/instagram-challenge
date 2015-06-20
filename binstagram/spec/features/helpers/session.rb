@@ -12,7 +12,7 @@ module SessionHelpers
   def add_photo(name, description)
     visit '/photos'
     click_link 'Add a photo'
-    attach_file 'Image', Rails.root.join('spec/features/KFC_Logo.png')
+    attach_file 'Image', Rails.root.join('spec/features/dumpster.png')
     fill_in 'Name', with: name
     fill_in 'Description', with: description
     click_button 'Create Photo'
