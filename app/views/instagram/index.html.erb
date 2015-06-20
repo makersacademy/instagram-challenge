@@ -5,5 +5,16 @@
 <% else %>
   Please sign in
 <% end %>
+<br>
+<% if Picture.count == 0 %>
+  no photos have been added!
+<% end %>
 
-no photos have been added!
+<% @pictures.each do |picture| %>
+  <%= image_tag picture.image.url(:medium) %>
+  <br>
+  <%= picture.description %>
+  <br>
+<% end %>
+
+<%= link_to 'Add a picture', new_picture_path %>
