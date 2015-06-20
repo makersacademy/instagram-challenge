@@ -27,6 +27,16 @@ feature 'Photos' do
       expect(page).to have_content 'Mount Fuji'
       expect(current_path).to eq '/photos'
     end
+
+    context 'An invalid description' do
+      it 'Does not let you submit a description that is too short' do
+        visit '/photos'
+        click_link 'Add a photo'
+        click_button 'Add photo'
+        expect(page).not_to have_css 'h3'
+        expect(page).to have_content 'Description cannot be left blank'
+      end
+    end
   end
 
   context 'Viewing photos' do
@@ -49,11 +59,22 @@ feature 'Photos' do
       expect(page).to have_content 'On top of Mount Fuji'
       expect(current_path).to eq '/photos'
     end
+
+    context 'An invalid description' do
+      it 'Does not let you submit a description that is too short' do
+        visit '/photos'
+        click_link 'Edit Mount Fuji'
+        fill_in 'Description', with: ''
+        click_button 'Update photo'
+        expect(page).not_to have_css 'h3'
+        expect(page).to have_content 'Description cannot be left blank'
+      end
+    end
   end
 
-  context 'deleting photos' do
+  context 'Deleting photos' do
     before {Photo.create descr: 'Mount Fuji'}
-    scenario 'removes a photo when user clicks a delete link' do
+    scenario 'Removes a photo when user clicks a delete link' do
       visit '/photos'
       click_link 'Delete Mount Fuji'
       expect(page).not_to have_content 'Mount Fuji'
