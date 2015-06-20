@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'A logged in user can' do
+feature 'A logged in user' do
 
   before do
     sign_up('test@test.com')
@@ -10,7 +10,7 @@ feature 'A logged in user can' do
     visit '/'
   end
 
-  scenario 'add a new picture' do
+  scenario 'can add a new picture' do
     sign_in('test@test.com')
     add_picture
     expect(page).to have_content 'Betty'
@@ -31,6 +31,10 @@ feature 'A logged in user can' do
       sign_in('test@test.com')
       add_picture
       click_link 'Sign out'
+      expect(page).not_to have_link 'Delete Betty'
+    end
+
+    scenario 'cannot be done when logged out' do
       expect(page).not_to have_link 'Delete Betty'
     end
   end

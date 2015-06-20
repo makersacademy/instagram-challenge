@@ -15,23 +15,27 @@
 <% @pictures.each do |picture| %>
   <%= image_tag picture.image.url(:medium) %>
   <br>
-  <%= picture.description %>
+  <h4><%= picture.title %></h4>
   <br>
-  <% if current_user && current_user.id == picture.user_id %>
-    <%= link_to "Delete #{picture.description}", picture_path(picture), method: :delete %>
-  <% end %>
-  <% if Comment.count != 0 %>
-    <% these_comments = Comment.where(picture_id: picture.id) %>
-    <% if these_comments %>
-      <% these_comments.each do |comment| %>
-        <%= comment.description %>
-      <% end %>
+  <br>
+  <% these_comments = Comment.where(picture_id: picture.id) %>
+  <% if these_comments %>
+    <% these_comments.each do |comment| %>
+    <% user = User.find(comment.user_id) %>
+      <p>
+        <%= comment.description %> by <i> <%= user.email %> </i>
+        <br>
+        <% if current_user && current_user.id == comment.user_id %>
+          <%= link_to "Delete comment", picture_comment_path(picture, comment), method: :delete %>
+        <% end %>
+      </p>
     <% end %>
   <% end %>
+
   <% if current_user %>
     <%= link_to 'Comment', new_picture_comment_path(picture) %>
   <% end %>
-<% end %>
-<% if current_user %>
-  <%= link_to 'Add a picture', new_picture_path %>
+  <% if current_user && current_user.id == picture.user_id %>
+    <%= link_to "Delete #{picture.title}", picture_path(picture), method: :delete %>
+  <% end %>
 <% end %>

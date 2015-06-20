@@ -18,6 +18,12 @@ end
 def add_picture
   click_link 'Add a picture'
   attach_file 'picture_image', 'spec/betty.jpg'
-  fill_in 'picture_description', with: 'Betty'
+  fill_in 'Title', with: 'Betty'
   click_button 'Create Picture'
+end
+
+def add_comment(text)
+  click_link 'Comment'
+  fill_in 'comment_description', with: text
+  click_button 'Create Comment'
 end
