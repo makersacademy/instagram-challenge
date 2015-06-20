@@ -1,13 +1,36 @@
 <%if @pictures.empty? %>
   No pictures in the network
-<%end%>
+  <button> <%=link_to 'Add Picture', new_picture_path %> </button>
+<%else%>
+  <button> <%=link_to 'Add Picture', new_picture_path %> </button>
+  <div class='container'>
+    <%@pictures.each do |picture| %>
+      <div class='row'>
+        <span class='img-post'> <%=image_tag picture.image.url(:medium)%> </span>
+        <p> <%=picture.caption%> </p>
 
-<button> <%=link_to 'Add Picture', new_picture_path %> </button>
-<div class='container'>
-  <%=@pictures.each do |picture| %>
-    <div class='row'>
-      <span class='img-post'> <%=image_tag picture.image.url(:thumb)%> </span>
-      <p> <%=picture.caption%> </p>
-    </div>
-  <%end%>
-</div>
+        <button type="button" class="btn btn-default" aria-label="Left Align" id='comment'>
+          <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+        </button>
+
+          <div id='comments'>
+            <%picture.comments.each do |comment|%>
+              <ul>
+                <li><%=comment.comment%></li>
+              </ul>
+            <%end%>
+            <button type="button" class="btn btn-default" aria-label="Left Align">
+              <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+              <%=link_to "Add Comment", new_picture_comment_path(picture) %>
+            </button>
+          </div>
+      </div>
+    <%end%>
+  </div>
+<%end%>
+<script>
+  $('#comments').hide()
+    $('#comment').click(function() {
+    $('#comments').toggle()
+  });
+</script>
