@@ -30,12 +30,14 @@
   <% these_comments = Comment.where(picture_id: picture.id) %>
   <% if these_comments %>
     <span class="btn btn-default btn-file">
-    <% these_comments.each do |comment| %>
+    <% these_comments.reverse.each do |comment| %>
     <% user = User.find(comment.user_id) %>
       <p>
-        <b><font size='10'><%= comment.description %></b></font>
+        <b><%= comment.description %></b>
         <br>
         <i> <%= user.email %> </i>
+        <br>
+        <i> <%= comment.created_at.strftime('%r') %> </i>
         <br>
         <% if current_user && current_user.id == comment.user_id %>
           <%= link_to "Delete comment", picture_comment_path(picture, comment), method: :delete %>
