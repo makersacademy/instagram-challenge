@@ -4,8 +4,8 @@ class Photo < ActiveRecord::Base
                     :styles => { :medium => "300x300>", :thumb => "100x100>" },
                     :default_url => "",
                     # :default_url => "/images/:style/missing.png" # causes errors in testing
-                    :url => ":s3_domain_url"
-                    # :path => "/:class/:attachment/:id/:style/:filename" # will cause tests to fail if reinstated
+                    :url => ":s3_domain_url",
+                    :path => "/:class/:attachment/:id/:style/:filename" # will cause tests to fail if reinstated
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
