@@ -38,11 +38,12 @@ Technologies Used:
 
 
 
-Steps for MVP as dictated by the challenge:
+Steps taken/to take:
 -------
 
-* Add the ability to upload photos first, and figure out how to test for that
-* Then deal with users, logging in and showing their username with each photo. For the first four user stories, the basic functionality spec provided in the challenge, any associatons re: deleting etc can be added later
+* First step is to create the photos and list them on the page. I will be doing this without images first. It's not unreasonable to expect a photo will need a caption (although not directly specified in the brief, or within my user stories) but it is a handy placeholder for me to then bolt on a photo upload later
+* Once this is going I will add the ability to upload photos by associating them with the new photos model. The challenge will be working out how to test for that
+* With a simple photo uploader going well, this will be the time to deal with users - logging in, displaying their username with each photo etc. (NB for the first four user stories, the basic functionality spec provided in the challenge, any associatons re: deleting etc can be added later
 * Add a like (endorsement) button
 * Add a comments box
 
@@ -55,4 +56,4 @@ Further steps for the future:
 Links:
 -------
 
-[Github - Makers Academy: Instagram Challenge](https://github.com/makersacademy/instagram-challenge)
+Challenge issued here: [Github - Makers Academy: Instagram Challenge](https://github.com/makersacademy/instagram-challenge)
