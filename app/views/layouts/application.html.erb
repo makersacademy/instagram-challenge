@@ -10,17 +10,13 @@
   <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand" href="/">Instagram</a>
     </div>
-
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        <% if  current_user && current_user.image %>
+          <li><img src='<%= current_user.image %>'></li>
+        <% end %>
         <% if current_user %>
           <li class="active"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %><span class="sr-only"></span></li>
           <li class="active"><%= link_to 'Add a picture', new_picture_path %><span class="sr-only"></span></li>
@@ -36,6 +32,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <% if !current_user %>
+          <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
           <li><%= link_to 'Sign up', new_user_registration_path %></li>
           <li><%= link_to 'Sign in', new_user_session_path %></li>
         <% end %>
