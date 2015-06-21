@@ -1,6 +1,19 @@
 require 'rails_helper'
 
+
+
 feature 'pictures' do
+
+  before do
+    visit('/')
+    click_link('Sign up')
+    fill_in('Email', with: 'test@example.com')
+    fill_in('Password', with: 'testtest')
+    fill_in('Password confirmation', with: 'testtest')
+    click_button('Sign up')
+  end
+
+
   context 'no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
       visit '/pictures'
@@ -21,7 +34,19 @@ feature 'pictures' do
 
   xscenario 'display pictures' do
     visit '/pictures'
-    expect(page).to have_content('at the sea')
+    expect(page).to have_content('At the sea')
     expect(page).not_to have_content('No pictures yet')
   end
+  context 'deleting pictures' do
+
+  before {Picture.create title: 'at the sea'}
+
+  scenario 'removes a picture when a user clicks a delete link' do
+    visit '/pictures'
+    click_link 'Delete picture'
+    expect(page).not_to have_content 'at the sea'
+    expect(page).to have_content 'Picture deleted successfully'
+  end
+
+end
 end
