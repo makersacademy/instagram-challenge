@@ -16,7 +16,7 @@ Users
      - can comment on photos - ✓   
      - can 'like' photos - ✓    
 
-Photos
+Photos, Comments, Likes
 -----
      - display on the homepage - ✓  
      - are stored - ✓  
@@ -27,6 +27,7 @@ Bonus Functionality
 
 Users
 -----
+     - have many photos, comments, likes - ✓  
      - can sign up/in via Twitter  
      - can tag photos and add Twitter handles  
      - can share images via social media - ✓  
@@ -34,11 +35,13 @@ Users
      - can like/unlike a photo  
      - can search for a photo by name/tag
 
-Photos 
+Photos, Comments, Likes
 ------
-     - display in reverse chronological order - ✓   
+     - Belong to a User
+     - Photos display in reverse chronological order - ✓   
      - show when they were added to the site, in plain english (e.g 'One hour ago')  
      - Carry a 'Like' counter reflecting number of likes - ✓  
+     - Carry comments, with relevant user - ✓  
        
 Technologies
 ------------
