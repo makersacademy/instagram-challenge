@@ -1,2 +1,13 @@
-No pictures yet!
-<a href='#'>Add a picture</a>
+<%if @pictures.empty? %>
+  No pictures yet
+<%end%>
+
+<button> <%=link_to 'Upload a picture', new_picture_path %> </button>
+<div class='container'>
+  <%=@pictures.each do |picture| %>
+    <div class='row'>
+      <span class='img-post'> <%=image_tag picture.image.url(:thumb)%> </span>
+      <p> <%=picture.title%> </p>
+    </div>
+  <%end%>
+</div>

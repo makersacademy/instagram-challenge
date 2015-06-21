@@ -1,0 +1,2078 @@
+  [1m[36m (44.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (3.3ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20150619155635)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (38.7ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150619155635"]]
+  [1m[36m (6.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (5.3ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (24.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddColumnsToUsers (20150620094025)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (39.0ms)[0m  [1mALTER TABLE "users" ADD "provider" character varying[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "users" ADD "uid" character varying
+  [1m[36mSQL (2.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150620094025"]]
+  [1m[35m (6.5ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (3.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (4.2ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/" for ::1 at 2015-06-20 11:01:04 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PicturesController#index as HTML
+  Rendered pictures/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 2068ms (Views: 2052.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-20 11:01:06 +0100
+Processing by PicturesController#index as HTML
+  Rendered pictures/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 32ms (Views: 30.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 11:01:06 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 11:01:06 +0100
+
+
+Started GET "/users/auth/facebook" for ::1 at 2015-06-20 11:01:10 +0100
+
+
+Started GET "/users/auth/facebook" for ::1 at 2015-06-20 11:01:10 +0100
+
+
+Started GET "/" for ::1 at 2015-06-20 11:07:33 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PicturesController#index as HTML
+  Rendered pictures/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 317ms (Views: 304.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 11:07:34 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 11:07:34 +0100
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 11:07:34 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 11:07:34 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 11:07:34 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 11:07:34 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 11:07:34 +0100
+
+
+Started GET "/users/auth/facebook" for ::1 at 2015-06-20 11:07:35 +0100
+
+
+Started GET "/users/auth/facebook" for ::1 at 2015-06-20 11:07:36 +0100
+
+
+Started GET "/users/auth/facebook" for ::1 at 2015-06-20 11:09:56 +0100
+
+
+Started GET "/users/auth/facebook" for ::1 at 2015-06-20 11:09:57 +0100
+
+
+Started GET "/" for ::1 at 2015-06-20 11:10:44 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PicturesController#index as HTML
+  Rendered pictures/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 294ms (Views: 283.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 11:10:44 +0100
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 11:10:44 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 11:10:44 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 11:10:44 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 11:10:44 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 11:10:44 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 11:10:44 +0100
+
+
+Started GET "/users/auth/facebook" for ::1 at 2015-06-20 11:10:46 +0100
+
+
+Started GET "/users/auth/facebook" for ::1 at 2015-06-20 11:10:46 +0100
+
+
+Started GET "/" for ::1 at 2015-06-20 11:35:05 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PicturesController#index as HTML
+  Rendered pictures/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 493ms (Views: 480.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2015-06-20 11:35:06 +0100
+Processing by PicturesController#index as HTML
+  Rendered pictures/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 34ms (Views: 33.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2015-06-20 11:35:08 +0100
+
+
+Started GET "/users/auth/facebook" for ::1 at 2015-06-20 11:35:08 +0100
+
+
+Started GET "/users/auth/facebook/callback?error=access_denied&error_code=200&error_description=Permissions+error&error_reason=user_denied&state=046133b4c97e88473d6071b818a84e51f0098a8ac319e385" for ::1 at 2015-06-20 11:35:12 +0100
+Processing by Users::OmniauthCallbacksController#failure as HTML
+  Parameters: {"error"=>"access_denied", "error_code"=>"200", "error_description"=>"Permissions error", "error_reason"=>"user_denied", "state"=>"046133b4c97e88473d6071b818a84e51f0098a8ac319e385"}
+Redirected to http://localhost:3000/users/sign_in
+Completed 302 Found in 24ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2015-06-20 11:35:12 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (41.4ms)
+Completed 200 OK in 112ms (Views: 79.1ms | ActiveRecord: 3.3ms)
+  [1m[36mActiveRecord::SchemaMigration Load (6.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAttachmentImageToUsers (20150620141944)
+  [1m[35m (6.1ms)[0m  BEGIN
+  [1m[36m (23.0ms)[0m  [1mALTER TABLE "users" ADD "image_file_name" character varying[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "users" ADD "image_content_type" character varying
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "users" ADD "image_file_size" integer[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "image_updated_at" timestamp
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150620141944"]]
+  [1m[35m (13.2ms)[0m  COMMIT
+Migrating to CreatePictures (20150620143054)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (49.6ms)[0m  CREATE TABLE "pictures" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150620143054"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+Migrating to AddAttachmentImageToPictures (20150620151150)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (3.0ms)[0m  ALTER TABLE "pictures" ADD "image_file_name" character varying
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "pictures" ADD "image_content_type" character varying[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "pictures" ADD "image_file_size" integer
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "pictures" ADD "image_updated_at" timestamp[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150620151150"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (4.3ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'pictures'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/" for ::1 at 2015-06-20 16:37:57 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PicturesController#index as HTML
+  Rendered pictures/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 299ms (Views: 288.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-06-20 16:38:15 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.html.erb (2.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (55.6ms)
+Completed 200 OK in 110ms (Views: 82.4ms | ActiveRecord: 9.2ms)
+
+
+Started POST "/users" for ::1 at 2015-06-20 16:38:31 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"92mR4/LRBJiU7THkAIY3k3i8g83S/YI5dlSbw0Dy8lfveoBUYUj2uZriSX0QUytEm6XaaycF19MBRRLZ4nLe4w==", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (19.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (6.8ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$10$rw3dRxeGXKz/IYTPvWAHw.MUtLvg5GqpOhdedQWqL6Ud3V4IP6bmu"], ["created_at", "2015-06-20 15:38:31.591297"], ["updated_at", "2015-06-20 15:38:31.591297"]]
+  [1m[36m (12.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-06-20 15:38:31.614402"], ["current_sign_in_at", "2015-06-20 15:38:31.614402"], ["last_sign_in_ip", "::1/128"], ["current_sign_in_ip", "::1/128"], ["sign_in_count", 1], ["updated_at", "2015-06-20 15:38:31.616070"], ["id", 1]]
+  [1m[35m (6.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 183ms (ActiveRecord: 45.5ms)
+
+
+Started GET "/" for ::1 at 2015-06-20 16:38:31 +0100
+Processing by PicturesController#index as HTML
+  Rendered pictures/index.html.erb within layouts/application (0.0ms)
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 25ms (Views: 23.5ms | ActiveRecord: 0.9ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddTitleToPictures (20150620155209)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "pictures" ADD "title" character varying[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150620155209"]]
+  [1m[36m (6.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.4ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'pictures'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (4.1ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'pictures'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.2ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'pictures'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/restaurants" for ::1 at 2015-06-20 17:27:27 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/restaurants"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (15.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (13.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (77.9ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (25.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (54.0ms)
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 17:27:32 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (6.6ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (13.6ms)
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 516ms (Views: 477.0ms | ActiveRecord: 19.8ms)
+
+
+Started GET "/pictures/new" for ::1 at 2015-06-20 17:27:41 +0100
+Processing by PicturesController#new as HTML
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.7ms)
+
+ActionView::MissingTemplate (Missing template pictures/new, application/new with {:locale=>[:en], :formats=>[:html, :xml], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/rocco/Makers/week8/weekend_challenge/instagram-challenge/app/views"
+  * "/Users/rocco/.rvm/gems/ruby-2.1.5/gems/devise-3.5.1/app/views"
+):
+  actionview (4.2.1) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.1) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.1) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.1) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.1) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.1) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (27.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (17.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (36.1ms)
+
+
+Started GET "/pictures/new" for ::1 at 2015-06-20 17:27:41 +0100
+Processing by PicturesController#new as HTML
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template pictures/new, application/new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/rocco/Makers/week8/weekend_challenge/instagram-challenge/app/views"
+  * "/Users/rocco/.rvm/gems/ruby-2.1.5/gems/devise-3.5.1/app/views"
+):
+  actionview (4.2.1) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.1) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.1) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.1) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.1) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.1) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (24.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (18.0ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (40.4ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserIdToPicture (20150620170245)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (6.5ms)[0m  [1mALTER TABLE "pictures" ADD "user_id" integer[0m
+  [1m[35mSQL (6.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150620170245"]]
+  [1m[36m (14.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.7ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'pictures'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (2.2ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 18:45:06 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PicturesController#index as HTML
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.4ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (8.6ms)
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 412ms (Views: 383.3ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 18:45:07 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 18:45:07 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 18:45:07 +0100
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 18:45:07 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 18:45:07 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 18:45:07 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 18:45:07 +0100
+
+
+Started GET "/pictures/new" for ::1 at 2015-06-20 18:45:09 +0100
+Processing by PicturesController#new as HTML
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.8ms)
+
+ActionView::MissingTemplate (Missing template pictures/new, application/new with {:locale=>[:en], :formats=>[:html, :xml], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/rocco/Makers/week8/weekend_challenge/instagram-challenge/app/views"
+  * "/Users/rocco/.rvm/gems/ruby-2.1.5/gems/devise-3.5.1/app/views"
+):
+  actionview (4.2.1) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.1) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.1) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.1) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.1) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.1) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (29.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (25.0ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (54.5ms)
+
+
+Started GET "/pictures/new" for ::1 at 2015-06-20 18:45:09 +0100
+Processing by PicturesController#new as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+ActionView::MissingTemplate (Missing template pictures/new, application/new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/rocco/Makers/week8/weekend_challenge/instagram-challenge/app/views"
+  * "/Users/rocco/.rvm/gems/ruby-2.1.5/gems/devise-3.5.1/app/views"
+):
+  actionview (4.2.1) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.1) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.1) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.1) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.1) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.1) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.1) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.1) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.1) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.1) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.1) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.1) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_process_action_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.1) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.1) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.1) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.1) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.1) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.1) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.1) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.1) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.1) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `call'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:74:in `dispatch'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:43:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.1) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.1) lib/action_dispatch/routing/route_set.rb:819:in `call'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.2.2) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.3) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.3) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.3) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.1) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:649:in `call'
+  activerecord (4.2.1) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:776:in `_run_call_callbacks'
+  activesupport (4.2.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (23.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (15.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (32.5ms)
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 18:45:45 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (2.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 43ms (Views: 41.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 18:45:45 +0100
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 18:45:45 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 18:45:45 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 18:45:45 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 18:45:45 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 18:45:45 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 18:45:45 +0100
+
+
+Started GET "/pictures/new" for ::1 at 2015-06-20 18:45:46 +0100
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.erb within layouts/application (109.6ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 140ms (Views: 138.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/pictures" for ::1 at 2015-06-20 18:45:59 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"odYXgh9nsVY2d/eymnW5VjzREMWVq+Y0pTdplYfBLGW5xQY1jP5Ddzh4jyuKoKWB38hJY2BTs97SJuCPJUEA0Q==", "picture"=>{"title"=>"", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fc730f49878 @tempfile=#<Tempfile:/var/folders/_m/rxjymxms1zz6_mzr_jhwjj880000gn/T/RackMultipart20150620-9593-1qxdufe.jpeg>, @original_filename="10029227.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"10029227.jpeg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Picture"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: restaurant):
+  app/controllers/pictures_controller.rb:17:in `picture_params'
+  app/controllers/pictures_controller.rb:12:in `create'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.7ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fc72bed38d0 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fc72bed3448 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fc72bed0388 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started DELETE "/users/sign_out" for ::1 at 2015-06-20 18:46:39 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rFGdk+qKgRfpenrW89ahg+jdKunn9f5rBmp2g3U/dQW0QowkeRNzNud1Ak/jA71UC8RzTxINq4Fxe/+Z179ZsQ=="}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2015-06-20 18:46:39 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 43ms (Views: 41.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/pictures/new" for ::1 at 2015-06-20 18:46:42 +0100
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 46ms (Views: 45.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/pictures" for ::1 at 2015-06-20 18:46:56 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wOumm+dgdSFyO6yvYXkD6/KUjb0DCqqj7v+BwC3JpnT8ICeKhFzb9JprrhierF+dXJnGfZgPS1gweESN7UPCtg==", "picture"=>{"title"=>"", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fc7342f8020 @tempfile=#<Tempfile:/var/folders/_m/rxjymxms1zz6_mzr_jhwjj880000gn/T/RackMultipart20150620-9593-giaa63.jpeg>, @original_filename="10029227.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"10029227.jpeg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Picture"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms)
+
+ActionController::ParameterMissing (param is missing or the value is empty: restaurant):
+  app/controllers/pictures_controller.rb:17:in `picture_params'
+  app/controllers/pictures_controller.rb:12:in `create'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (33.1ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fc72bed38d0 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fc72bed3448 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fc72bed0388 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/" for ::1 at 2015-06-20 18:47:24 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 50ms (Views: 43.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2015-06-20 18:47:25 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.4ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 36ms (Views: 35.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 18:47:25 +0100
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 18:47:25 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 18:47:25 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 18:47:25 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 18:47:25 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 18:47:25 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 18:47:25 +0100
+
+
+Started GET "/pictures/new" for ::1 at 2015-06-20 18:47:27 +0100
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 55ms (Views: 46.7ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/pictures" for ::1 at 2015-06-20 18:47:36 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PS1IJf1B5u79FadlP9cDiJk1y93ZIq7bXHDaXoYSZmwB5sk0nn1IOxVFpdLAAl/+NziAHUInTyCC9x8TRpgCrg==", "picture"=>{"title"=>"at the sea", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fc730f39c98 @tempfile=#<Tempfile:/var/folders/_m/rxjymxms1zz6_mzr_jhwjj880000gn/T/RackMultipart20150620-9593-1afwfgk.jpeg>, @original_filename="10029227.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"10029227.jpeg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Picture"}
+Unpermitted parameter: image
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (7.1ms)[0m  [1mINSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "at the sea"], ["created_at", "2015-06-20 17:47:36.780158"], ["updated_at", "2015-06-20 17:47:36.780158"]]
+  [1m[35m (6.5ms)[0m  COMMIT
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 13.7ms)
+
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"pictures"} missing required keys: [:id]):
+  app/controllers/pictures_controller.rb:13:in `create'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (38.5ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fc72bed38d0 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fc72bed3448 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fc72bed0388 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started POST "/pictures" for ::1 at 2015-06-20 18:47:37 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PS1IJf1B5u79FadlP9cDiJk1y93ZIq7bXHDaXoYSZmwB5sk0nn1IOxVFpdLAAl/+NziAHUInTyCC9x8TRpgCrg==", "picture"=>{"title"=>"at the sea", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fc72ca38e78 @tempfile=#<Tempfile:/var/folders/_m/rxjymxms1zz6_mzr_jhwjj880000gn/T/RackMultipart20150620-9593-18xufr9.jpeg>, @original_filename="10029227.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"10029227.jpeg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Picture"}
+Unpermitted parameter: image
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "at the sea"], ["created_at", "2015-06-20 17:47:37.036406"], ["updated_at", "2015-06-20 17:47:37.036406"]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 6.4ms)
+
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"pictures"} missing required keys: [:id]):
+  app/controllers/pictures_controller.rb:13:in `create'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.1ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fc72bed38d0 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fc72bed3448 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fc72bed0388 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started POST "/pictures" for ::1 at 2015-06-20 18:50:29 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PS1IJf1B5u79FadlP9cDiJk1y93ZIq7bXHDaXoYSZmwB5sk0nn1IOxVFpdLAAl/+NziAHUInTyCC9x8TRpgCrg==", "picture"=>{"title"=>"at the sea", "image"=>#<ActionDispatch::Http::UploadedFile:0x007ffdb61ea210 @tempfile=#<Tempfile:/var/folders/_m/rxjymxms1zz6_mzr_jhwjj880000gn/T/RackMultipart20150620-9686-185gogy.jpeg>, @original_filename="10029227.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"10029227.jpeg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Picture"}
+Unpermitted parameter: image
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "at the sea"], ["created_at", "2015-06-20 17:50:29.164095"], ["updated_at", "2015-06-20 17:50:29.164095"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 3.5ms)
+
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"pictures"} missing required keys: [:id]):
+  app/controllers/pictures_controller.rb:13:in `create'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (34.2ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007ffdb40c1f20 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007ffdb40c1c00 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007ffdb40ba720 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/" for ::1 at 2015-06-20 18:50:32 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.4ms)[0m  SELECT "pictures".* FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 313ms (Views: 310.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-06-20 18:50:32 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (6.9ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (49.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.9ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.0ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (28.0ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (60.9ms)
+
+
+Started GET "/pictures/new" for ::1 at 2015-06-20 18:50:38 +0100
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 55ms (Views: 54.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/pictures" for ::1 at 2015-06-20 18:50:48 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"03gCiaN8gSz4I+U9jyzlL0NBgp3p8f0ageaGs+vxhrnvs4OYwEAv+RBz54pw+blZ7UzJXXL0HOFfYUP+K3view==", "picture"=>{"title"=>"dssd", "image"=>#<ActionDispatch::Http::UploadedFile:0x007ffdb67a59c0 @tempfile=#<Tempfile:/var/folders/_m/rxjymxms1zz6_mzr_jhwjj880000gn/T/RackMultipart20150620-9686-6aedr9.png>, @original_filename="Screen Shot 2015-06-20 at 09.01.10.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"Screen Shot 2015-06-20 at 09.01.10.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Picture"}
+Unpermitted parameter: image
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "dssd"], ["created_at", "2015-06-20 17:50:48.189400"], ["updated_at", "2015-06-20 17:50:48.189400"]]
+  [1m[36m (6.2ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 6.7ms)
+
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"pictures"} missing required keys: [:id]):
+  app/controllers/pictures_controller.rb:13:in `create'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (70.6ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007ffdb40c1f20 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007ffdb40c1c00 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007ffdb40ba720 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/pictures/new" for ::1 at 2015-06-20 18:51:59 +0100
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 58ms (Views: 47.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 18:51:59 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 18:51:59 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 18:51:59 +0100
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 18:51:59 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 18:51:59 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 18:51:59 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 18:51:59 +0100
+
+
+Started POST "/pictures" for ::1 at 2015-06-20 18:52:06 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"X8On9phcfatAao7ZwPSvUi3PtdCyoQRM+bNTz2cvArpjCCbn+2DTfqg6jG4/IfMkg8L+ECmk5bcnNJaCp6VmeA==", "picture"=>{"title"=>"dsa", "image"=>#<ActionDispatch::Http::UploadedFile:0x007ffdb6dbf978 @tempfile=#<Tempfile:/var/folders/_m/rxjymxms1zz6_mzr_jhwjj880000gn/T/RackMultipart20150620-9686-1h2xe3z.png>, @original_filename="Screen Shot 2015-06-20 at 09.01.10.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"Screen Shot 2015-06-20 at 09.01.10.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Picture"}
+Unpermitted parameter: image
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "dsa"], ["created_at", "2015-06-20 17:52:06.292001"], ["updated_at", "2015-06-20 17:52:06.292001"]]
+  [1m[35m (6.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 11ms (ActiveRecord: 6.7ms)
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 18:52:06 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 29ms (Views: 27.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-06-20 18:52:06 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (46.9ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (23.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (59.5ms)
+
+
+Started GET "/pictures/new" for ::1 at 2015-06-20 18:56:30 +0100
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 65ms (Views: 49.2ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/pictures" for ::1 at 2015-06-20 19:25:48 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vriZR5HnzV8cJI7lnR/jvaS/waotrwKazBR0AVd5I/WCcxhW8ttjivR0jFJiyr/LCrKKaraq42ESk7FMl/NHNw==", "picture"=>{"title"=>""}, "commit"=>"Create Picture"}
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", ""], ["created_at", "2015-06-20 18:25:48.770249"], ["updated_at", "2015-06-20 18:25:48.770249"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 19:31:06 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PicturesController#index as HTML
+  [1m[35m (1.1ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.4ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (32.3ms)
+Completed 200 OK in 439ms (Views: 392.4ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 19:31:07 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 19:31:07 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 19:31:07 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 19:31:07 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 19:31:07 +0100
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 19:31:07 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 19:31:07 +0100
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-06-20 19:31:07 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (18.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (77.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (9.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (59.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (1.0ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (89.8ms)
+
+
+Started GET "/pictures/new" for ::1 at 2015-06-20 19:31:10 +0100
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.erb within layouts/application (69.7ms)
+Completed 200 OK in 109ms (Views: 107.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/pictures" for ::1 at 2015-06-20 19:31:19 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8/piAMtSK2DzqQ1Y+kWFtbF45ZFtRNk/bVmF2itpJGfPMeMRqG6FtRv5D+8FkNnDH3WuUfZBOMSz3kCX6+NApQ==", "picture"=>{"title"=>"sdcd"}, "commit"=>"Create Picture"}
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "sdcd"], ["created_at", "2015-06-20 18:31:19.620795"], ["updated_at", "2015-06-20 18:31:19.620795"]]
+  [1m[35m (6.4ms)[0m  COMMIT
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 19:32:31 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 303ms (Views: 278.4ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 19:32:31 +0100
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 19:32:31 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 19:32:32 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 19:32:32 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 19:32:32 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 19:32:32 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 19:32:32 +0100
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-06-20 19:32:32 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.2ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (17.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (69.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (31.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (61.2ms)
+
+
+Started GET "/pictures/new" for ::1 at 2015-06-20 19:32:33 +0100
+Processing by PicturesController#new as HTML
+  Rendered pictures/new.html.erb within layouts/application (36.0ms)
+Completed 200 OK in 75ms (Views: 74.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/pictures" for ::1 at 2015-06-20 19:32:50 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y1V9t2KkmKR7tzVpn1a0HdfRf0Q61Q1z3oKjqx1gGOP3nvymAZg2cZPnN95gg+hredw0hKHQ7IgABWbm3ep8IQ==", "picture"=>{"title"=>"at the sea", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fa42964ab98 @tempfile=#<Tempfile:/var/folders/_m/rxjymxms1zz6_mzr_jhwjj880000gn/T/RackMultipart20150620-10401-j3vbvt.png>, @original_filename="Screen Shot 2015-06-20 at 09.01.10.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"Screen Shot 2015-06-20 at 09.01.10.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Picture"}
+Unpermitted parameter: image
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "at the sea"], ["created_at", "2015-06-20 18:32:50.662817"], ["updated_at", "2015-06-20 18:32:50.662817"]]
+  [1m[35m (6.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 18ms (ActiveRecord: 8.2ms)
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 19:32:50 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.8ms)[0m  SELECT "pictures".* FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 48ms (Views: 45.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-06-20 19:32:50 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.9ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (40.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (25.9ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (54.3ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.3ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'pictures'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.7ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 19:46:52 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (32.7ms)
+Completed 200 OK in 111ms (Views: 96.4ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 19:46:53 +0100
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 19:46:53 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 19:46:53 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 19:46:53 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 19:46:53 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 19:46:53 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 19:46:53 +0100
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-06-20 19:46:53 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (4.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (68.0ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (30.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (73.1ms)
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 19:49:18 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 50ms (Views: 48.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 19:49:18 +0100
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 19:49:18 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 19:49:18 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 19:49:18 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 19:49:18 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 19:49:18 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 19:49:18 +0100
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 19:54:39 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (18.6ms)
+Completed 200 OK in 334ms (Views: 309.2ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 19:54:40 +0100
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 19:54:40 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 19:54:40 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 19:54:40 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 19:54:40 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 19:54:40 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 19:54:40 +0100
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-06-20 19:54:40 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (15.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (73.2ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (49.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (2.0ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (91.0ms)
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 19:55:57 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.4ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 47ms (Views: 45.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 19:55:58 +0100
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 19:55:58 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 19:55:58 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 19:55:58 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 19:55:58 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 19:55:58 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 19:55:58 +0100
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-06-20 19:55:58 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.0ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (49.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (26.9ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (53.9ms)
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 19:55:59 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 49ms (Views: 47.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 19:55:59 +0100
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 19:55:59 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 19:55:59 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 19:55:59 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 19:55:59 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 19:55:59 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 19:55:59 +0100
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-06-20 19:55:59 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (53.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (23.0ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (71.0ms)
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 20:05:49 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.6ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 51ms (Views: 49.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/pictures.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-20 20:05:50 +0100
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-06-20 20:05:50 +0100
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-20 20:05:50 +0100
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-20 20:05:50 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-20 20:05:50 +0100
+
+
+Started GET "/assets/pictures.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-20 20:05:50 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-06-20 20:05:50 +0100
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-06-20 20:05:50 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.7ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (54.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (50.9ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (100.4ms)
+
+
+Started POST "/pictures" for ::1 at 2015-06-20 20:06:02 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"08rbq+T0UEsxRoe0ocOwf/1IZolVlHr71tY7zI7esZHvAVq6h8j+ntkWhQNeFuwJU0UtSc6RmwAIUf6BTlTVUw==", "picture"=>{"title"=>"at the sea", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fefc0ae82a8 @tempfile=#<Tempfile:/var/folders/_m/rxjymxms1zz6_mzr_jhwjj880000gn/T/RackMultipart20150620-10778-1yriz10.png>, @original_filename="Screen Shot 2015-06-20 at 09.01.10.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"Screen Shot 2015-06-20 at 09.01.10.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Create Picture"}
+Unpermitted parameter: image
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "pictures" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "at the sea"], ["created_at", "2015-06-20 19:06:02.847904"], ["updated_at", "2015-06-20 19:06:02.847904"]]
+  [1m[35m (1.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 76ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/pictures" for ::1 at 2015-06-20 20:06:02 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"
+  Rendered pictures/index.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 57ms (Views: 55.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-06-20 20:06:03 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.1) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.1) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.1) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.1) lib/rails/engine.rb:518:in `call'
+  railties (4.2.1) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/rocco/.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.2ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.2ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (40.1ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.9ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (26.3ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/rocco/.rvm/gems/ruby-2.1.5/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (57.0ms)
