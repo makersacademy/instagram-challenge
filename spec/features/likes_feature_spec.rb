@@ -18,14 +18,6 @@ feature 'Liking photos' do
       expect(page).to have_content '1 like'
       expect(page).not_to have_content '0 likes'
     end
-
-    scenario "User can only like the same photo once", js: true do
-      click_link 'Like'
-      visit '/photos'
-      click_link 'Like'
-      expect(page).to have_content '1 like'
-      expect(page).not_to have_content '2 likes'
-    end
   end
 
   context 'Not signed in' do

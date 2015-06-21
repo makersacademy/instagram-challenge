@@ -89,7 +89,7 @@ Set-up Steps:
 * Add dir and file: `spec/support/database_cleaner.rb`; add to file code from [Virtuous Code - Configuring database_cleaner with Rails, RSpec, Capybara, and Selenium](http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/)
 * Install ImageMagick (code library that deals with image compression) with Homebrew: `$ brew install imagemagick`
 * Add `paperclip` gem to Gemfile and run `bundle install` (Paperclip is a gem that makes file uploads to Ruby apps a bit simpler)
-* Amazon Web Services (AWS) S3 (Simple Storage Service) to save image files: add Amazon Web Services (AWS) `'aws-sdk', '< 2.0'` gem to Gemfile; run `bundle install`
+* Amazon Web Services (AWS) S3 (Simple Storage Service) cloud server to save image files: add Amazon Web Services (AWS) `'aws-sdk', '< 2.0'` gem to Gemfile; run `bundle install`
 
 
 Next Steps:
