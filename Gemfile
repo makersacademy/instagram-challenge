@@ -50,6 +50,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'paperclip'
+  gem 'aws-sdk', '< 2.0'
 
 end
 
