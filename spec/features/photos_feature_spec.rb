@@ -20,4 +20,15 @@ feature 'photos' do
       expect(page).not_to have_content('No restaurants yet')
     end
   end
+
+  context 'creating photos' do
+    scenario 'gives user a form to add photo, displays caption' do
+      visit '/photos'
+      click_button 'Upload your photo'
+      fill_in 'caption', with: "what a picture - what a photograph!"
+      click_button 'Post photo'
+      expect(page).to have_content "what a picture - what a photograph!"
+      expect(current_path).to eq '/photos'
+    end
+  end
 end
