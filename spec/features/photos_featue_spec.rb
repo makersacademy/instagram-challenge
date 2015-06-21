@@ -5,7 +5,7 @@ feature 'photos' do
     scenario 'should show an upload button' do
       visit '/photos'
       expect(page).to have_content 'No photos!'
-      expect(page).to have_link 'Upload your photo'
+      expect(page).to have_button 'Upload your photo'
     end
   end
 end
