@@ -12,9 +12,9 @@ Summary
 * Recreate a basic version of instagram using Rails
 
 * Currently the main functionalities include: 
-  ** sign-in/up/out and Facebook authentication
-  ** uploading or deleting a picture when logged in
-  ** commenting or liking a picture
+  ## sign-in/up/out and Facebook authentication
+  ## uploading or deleting a picture when logged in
+  ## commenting or liking a picture
 
 
 How to run
