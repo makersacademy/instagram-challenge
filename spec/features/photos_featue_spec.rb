@@ -8,4 +8,13 @@ feature 'photos' do
       expect(page).to have_button 'Upload your photo'
     end
   end
+
+  context 'photos have been added' do
+    scenario 'should display photo' do
+      visit '/photos'
+      click_button 'Upload your photo'
+      fill_in form with "what a picture - what a photograph!"
+      # upload picture??
+      expect(page).to have_content "what a picture - what a photograph!"
+    end
 end
