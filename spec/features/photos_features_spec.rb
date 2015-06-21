@@ -11,20 +11,27 @@ feature 'photos' do
 
   context 'photo has been added' do
     before do
-      Photo.create(caption: 'My pet', user: 'Mike', likes: 3)
+      Photo.create(caption: 'My pet')
     end
-
-    scenario 'display photos' do 
+   scenario 'display photos' do 
       visit '/photos'
       expect(page).to have_content 'My pet'
       expect(page).not_to have_content 'No photos added'    
     end
   end
+
+
+  context 'adding photos' do
+    scenario 'add a Picture' do
+      visit('/photos')
+      click_link ('Add photos')
+      attach_file 'Image', '/spec/waterpark.jpg'
+      fill_in 'Caption', with: 'My first photo'
+      click_button('Post')
+      expect(current_path).to eq ('/photos')
+      expect(page).to have_content('My first photo')
+      expect(page).to have_css('.img-post')
+    end
+  end
 end
 
-    # attach_file "Add photos", "spec/asset_specs/photos/photo.jpg"
-    # click_button "Add photos"
-    # expect(page).to have_selector("img")
-
-
-# http://www.charliemassry.com/posts/29-testing-paperclip-with-rspec-capybara-and-factory-girl
