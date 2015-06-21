@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
 
   def index
     @pictures = Picture.all
@@ -9,7 +10,6 @@ class PicturesController < ApplicationController
   end
 
   def create
-
     Picture.create(picture_params)
     redirect_to pictures_path
   end
@@ -19,7 +19,7 @@ class PicturesController < ApplicationController
   end
 
   def show
-
+    @picture = Picture.find(params[:id])
   end
 
 end

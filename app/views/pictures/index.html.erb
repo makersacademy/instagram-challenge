@@ -8,6 +8,19 @@
     <div class='row'>
       <span class='img-post'> <%=image_tag picture.image.url(:thumb)%> </span>
       <p> <%=picture.title%> </p>
+      <h3> Comments for <%= picture.title %></h3>
+        <% if picture.comments.any? %>
+          <ul>
+            <% picture.comments.each do |comment| %>
+              <li>
+                <%= comment.comment %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+        <p>No comments yet!</p>
+        <% end %>
+      <%= link_to "Add a comment", new_picture_comment_path(picture) %>
     </div>
   <%end%>
 </div>
