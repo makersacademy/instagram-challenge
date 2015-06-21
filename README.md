@@ -14,13 +14,13 @@ Users
      - can sign up, sign in manually or via Facebook authentication - ✓  
      - can post photos with title and description - ✓  
      - can comment on photos - ✓   
-     - can 'like' photos  
+     - can 'like' photos - ✓    
 
 Photos
 -----
      - display on the homepage - ✓  
      - are stored - ✓  
-     - Can be commented on and liked  
+     - Can be commented on and liked - ✓  
 
 Bonus Functionality
 -------------------
@@ -38,7 +38,7 @@ Photos
 ------
      - display in reverse chronological order  
      - show when they were added to the site, in plain english (e.g 'One hour ago')  
-     - Carry a 'Like' counter reflecting number of likes  
+     - Carry a 'Like' counter reflecting number of likes - ✓  
        
 Technologies
 ------------
