@@ -4,6 +4,7 @@ require_relative '../helpers/session_helpers.rb'
 include Session
 
 feature 'Photos' do
+
   context 'No photos have been added' do
     scenario 'Should display a prompt to add a photo' do
       visit '/photos'
@@ -21,15 +22,9 @@ feature 'Photos' do
     end
   end
 
-  context 'Adding photos' do
-    scenario 'Does not allow user to add photos if not signed up/in' do
-      visit '/photos'
-      click_link 'Add a photo'
-      expect(page).to have_content 'You need to sign in or sign up before continuing'
-    end
-
+  context 'Adding photos (signed in)' do
+    before {sign_up('test@example.com', 'password')}
     scenario 'Prompts user to add photo, then displays the description' do
-      sign_up('test@example.com', 'password')
       click_link 'Add a photo'
       fill_in 'Description', with: 'Mount Fuji'
       click_button 'Add photo'
@@ -39,12 +34,20 @@ feature 'Photos' do
 
     context 'An invalid description' do
       it 'Does not let you submit a description that is too short' do
-        sign_up('test@example.com', 'password')
         click_link 'Add a photo'
         click_button 'Add photo'
         expect(page).not_to have_css 'h3'
         expect(page).to have_content 'Description cannot be left blank'
       end
+    end
+  end
+
+  context 'Adding photos (not signed in)' do
+    scenario 'Does not allow user to add photos' do
+      visit '/photos'
+      click_link 'Add a photo'
+      expect(page).to have_content 'You need to sign in or sign up before continuing'
+      expect(page).not_to have_content 'Description:'
     end
   end
 
@@ -58,7 +61,7 @@ feature 'Photos' do
     end
   end
 
-  context 'Editing photos' do
+  context 'Editing photos (signed in)' do
     before {Photo.create descr: 'Mount Fuji'; sign_up('test@example.com', 'password')}
     scenario 'Let a user edit a photo' do
       click_link 'Edit Mount Fuji'
@@ -79,13 +82,32 @@ feature 'Photos' do
     end
   end
 
-  context 'Deleting photos' do
+  context 'Editing photos (not signed in)' do
     before {Photo.create descr: 'Mount Fuji'}
+    scenario 'Does not allow user to edit photos' do
+      visit '/photos'
+      click_link 'Edit Mount Fuji'
+      expect(page).to have_content 'You need to sign in or sign up before continuing'
+      expect(page).not_to have_content 'Description:'
+    end
+  end
+
+  context 'Deleting photos' do
+    before {Photo.create descr: 'Mount Fuji'; sign_up('test@example.com', 'password')}
     scenario 'Removes a photo when user clicks a delete link' do
-      sign_up('test@example.com', 'password')
       click_link 'Delete Mount Fuji'
       expect(page).not_to have_content 'Mount Fuji'
       expect(page).to have_content 'Photo deleted successfully'
+    end
+  end
+
+  context 'Deleting photos (not signed in)' do
+    before {Photo.create descr: 'Mount Fuji'}
+    scenario 'Does not allow user to delete photos' do
+      visit '/photos'
+      click_link 'Delete Mount Fuji'
+      expect(page).to have_content 'You need to sign in or sign up before continuing'
+      expect(page).not_to have_content 'Photo deleted successfully'
     end
   end
 
