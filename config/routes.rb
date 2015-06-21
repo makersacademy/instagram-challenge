@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  root to: 'instagram#index'
+  root to: 'pictures#index'
 
   devise_for :users
-  resources :instagram
+
   resources :pictures do
     resources :likes
     resources :comments

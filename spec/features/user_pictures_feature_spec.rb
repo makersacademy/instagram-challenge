@@ -21,7 +21,8 @@ feature 'A logged in user' do
     sign_in('test@test.com')
     add_picture
     add_picture2
-    expect(page).to have_content 'Betty Daryl'
+    expect(page).to have_content 'Betty'
+    expect(page).to have_content 'Daryl'
     fill_in 'search', with: 'Betty'
     click_button 'Search'
     expect(page).to have_content 'Betty'
