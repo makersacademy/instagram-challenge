@@ -47,6 +47,8 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'devise'
   gem 'omniauth-facebook'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 
 end
 

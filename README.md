@@ -52,6 +52,7 @@ Technologies Used:
 * Shoulda (Ruby gem for testing)
 * Devise (Ruby gem which handles building a user model, routes for your users controller, and also OmniAuth (which handles those 'Log in with Facebook'-type buttons))
 * OmniAuth (OmniAuth is a flexible Ruby authentication framework utilizing Rack middleware aimed to abstract away the difficulties of working with various types of authentication providers)
+* Poltergeist (headless browser for Capybara based on PhantomJS (scripted, headless browser used for automating web page interaction; provides a JavaScript API enabling automated navigation, screenshots, user behavior and assertions making it a common tool used to run browser-based unit tests in a headless system like a continuous integration environment))
 
 
 Set-up Steps:
@@ -81,6 +82,11 @@ Set-up Steps:
 * Declare provider in `config/initializers/devise.rb`: `config.omniauth :facebook, "APP_ID", "APP_SECRET"`
 * Make model (`app/models/user.rb`) omniauthable: `devise :omniauthable, :omniauth_providers => [:facebook]`
 * See `Github - OmniAuth: Overview` link below for remaining steps required
+* Poltergeist required PhantomJS - install using Homebrew: `brew install phantomjs`
+* Add `poltergeist` gem to Gemfile; run `bundle install`; require in `spec/rails_helper.rb`: `require 'capybara/poltergeist'` `Capybara.javascript_driver = :poltergeist`
+* Add `database_cleaner` gem to Gemfile; run `bundle install`; require in `spec/rails_helper.rb`: `require 'support/database_cleaner'`
+* In `spec/rails_helper.rb` switch following line from true to false: `config.use_transactional_fixtures = false`
+* Add dir and file: `spec/support/database_cleaner.rb`; add to file code from [Virtuous Code - Configuring database_cleaner with Rails, RSpec, Capybara, and Selenium](http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/)
 
 
 Next Steps:
