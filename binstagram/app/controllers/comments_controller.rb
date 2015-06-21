@@ -1,3 +1,5 @@
+require 'time_ago_in_words'
+
 class CommentsController < ApplicationController
 
   def comment_params
@@ -11,8 +13,12 @@ class CommentsController < ApplicationController
 
   def create
     @photo = Photo.find(params[:photo_id])
-    @photo.comments.create(comment_params)
+    @comment = @photo.comments.build(comment_params.merge(user: current_user))
+    @comment.save
     redirect_to photos_path
   end
 
+  def posted_at
+    (Time.now - comment.created_at).ago_in_words
+  end
 end

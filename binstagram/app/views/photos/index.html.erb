@@ -1,9 +1,15 @@
 <h3><%= link_to 'Add a photo', new_photo_path %></h3>
+
 <% if @photo.any? %>
-  <% @photo.all.each do |photo| %>
-    <h4><%= photo.name %></h4>
-    <h3 class='image'><%= image_tag photo.image.url(:thumb), {:width => "500", :height => "500"}%></h3>  
+  <ul list-unstyled>
+  <% @photo.all.reverse_each do |photo| %>
+    <li col-md-4>
+    <h4><%= link_to photo.name, photo_path(photo) %></h4> 
+    <h4><%= "Posted by #{photo.user_id}" %></h4>
+    <h3 class='image'><%= image_tag photo.image.url(:medium) %></h3> 
     <p><%= photo.description %></p> 
+    <p><span class='st_facebook_hcount' displayText='Facebook'></span>
+    <span class='st_twitter_hcount' displayText='Tweet'></span></p>
     <%= link_to "Like #{photo.name}", photo_likes_path(photo), class: 'likes-link' %>
     <span class="likes_count"> <%= photo.likes.count %> </span> 
     <%= 'like'.pluralize(photo.likes.count) %><br>
@@ -13,15 +19,18 @@
       <ul>
         <% photo.comments.each do |comment| %>
           <li>
-            <%= comment.thoughts %> 
+            <%= comment.thoughts %> - <h6><%= "Posted by #{comment.user_id}" %></h6>
           </li>
         <% end %>
       </ul>
-    <% else %>
+      </li>
+    </ul>
+        <% else %>
       <p>No comments.</p>
     <% end %>
   <% end %>
 <% else %>
   <h1>No photos yet!</h1>
+  <br>
 <% end %>
 

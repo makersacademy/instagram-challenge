@@ -14,8 +14,12 @@ class PhotosController < ApplicationController
     @photo = Photo.new
   end
 
+  def show
+    @photo = Photo.find(params[:id])
+  end
+
   def create
-    @photo = Photo.new(photo_params)
+    @photo = Photo.new(photo_params.merge(user: current_user))
     if @photo.save
       redirect_to photos_path
     else
