@@ -1,14 +1,14 @@
 $(document).ready( function() {
-    $('.likes').on('click', function(event) {
+    $('.likes-link').on('click', function(event) {
       event.preventDefault();
 
-      var likescount = $('.likes-link').siblings('.likes-count')
-      $.post($('.likes-link').attr('href'), function(response) {
+      var likescount = $(this).siblings('.likes-count')
+      $.post(this.href, function(response) {
         likescount.text(response.new_like_count);
       });
     });
 
-     $('.dislikes').on('click', function(event) {
+     $('.dislikes-link').on('click', function(event) {
       event.preventDefault();
 
       var likescount = $('.likes-link').siblings('.likes-count')
@@ -21,4 +21,3 @@ $(document).ready( function() {
       });
     });
 });
-
