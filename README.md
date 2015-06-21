@@ -29,14 +29,14 @@ Users
 -----
      - can sign up/in via Twitter  
      - can tag photos and add Twitter handles  
-     - can share images via social media  
+     - can share images via social media - ✓  
      - can edit/delete their submissions  
      - can like/unlike a photo  
      - can search for a photo by name/tag
 
 Photos 
 ------
-     - display in reverse chronological order  
+     - display in reverse chronological order - ✓   
      - show when they were added to the site, in plain english (e.g 'One hour ago')  
      - Carry a 'Like' counter reflecting number of likes - ✓  
        
