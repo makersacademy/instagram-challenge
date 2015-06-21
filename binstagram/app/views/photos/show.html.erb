@@ -1,5 +1,6 @@
-<h3 class='image'><%= image_tag @photo.image.url(:thumb), {:width => "500", :height => "500"}%></h3>  
     <h4><%=@photo.name%></h4>
+    <h4><%= "Posted by #{@photo.user_id}" %></h4>
+<h3 class='image'><%= image_tag @photo.image.url(:thumb), {:width => "500", :height => "500"}%></h3>    
 <p><%=@photo.description %></p>
 <p><span class='st_facebook_hcount' displayText='Facebook'></span>
     <span class='st_twitter_hcount' displayText='Tweet'></span></p>
@@ -12,7 +13,7 @@
       <ul>
         <% @photo.comments.each do |comment| %>
           <li>
-            <%= comment.thoughts %> 
+            <%= comment.thoughts %> - <h6><%= "Posted by #{comment.user_id}" %></h6>
           </li>
         <% end %>
       </ul>
