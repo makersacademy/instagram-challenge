@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 feature 'Pictures' do
+  before do
+    visit ('/')
+    click_link('Sign up')
+    fill_in("Email", with: 'test@example.com')
+    fill_in("Password", with: 'testtest')
+    fill_in("Password confirmation", with: 'testtest')
+    click_button('Sign up')
+  end
 
   scenario 'show button on homepage to add a picture' do
     visit('/')
@@ -21,7 +29,8 @@ feature 'Pictures' do
 
   context 'pictures added' do
     before do
-      Picture.create(caption: 'Photo 1')
+      @user = User.create(email: 'test@test.com', password: '123456789')
+      @user.pictures.create(caption: 'Photo 1')
     end
     scenario 'show all the pictures on homepage' do
       visit ('/')

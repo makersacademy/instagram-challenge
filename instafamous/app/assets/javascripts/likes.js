@@ -1,5 +1,5 @@
 $(document).ready( function() {
-    $('#likes').on('click', function(event) {
+    $('.likes').on('click', function(event) {
       event.preventDefault();
 
       var likescount = $('.likes-link').siblings('.likes-count')
@@ -8,7 +8,7 @@ $(document).ready( function() {
       });
     });
 
-     $('#dislikes').on('click', function(event) {
+     $('.dislikes').on('click', function(event) {
       event.preventDefault();
 
       var likescount = $('.likes-link').siblings('.likes-count')

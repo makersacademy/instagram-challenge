@@ -2,11 +2,19 @@ require 'rails_helper'
 
 feature 'Comments' do
   before do
-    Picture.create(caption: 'Photo 1')
+    @user = User.create(email: 'test@test.com', password: '123456789')
+    @user.pictures.create(caption: 'Photo 1')
+    visit ('/')
+    click_link('Sign up')
+    fill_in("Email", with: 'test@example.com')
+    fill_in("Password", with: 'testtest')
+    fill_in("Password confirmation", with: 'testtest')
+    click_button('Sign up')
   end
+
   scenario 'can be added to pictures' do
     visit('/')
-    click_button('comment')
+    find('.comment').click
     click_link('Add Comment')
     fill_in 'Comment', with: 'Hey there'
     click_button('Create Comment')

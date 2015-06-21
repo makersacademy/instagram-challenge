@@ -8,7 +8,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.create(picture_params)
+    @picture = current_user.pictures.create(picture_params)
     if @picture.save
        redirect_to('/pictures')
     else
