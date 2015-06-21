@@ -13,7 +13,7 @@ Users
 ----
      - can sign up, sign in manually or via Facebook authentication - ✓  
      - can post photos with title and description - ✓  
-     - can comment on photos  
+     - can comment on photos - ✓   
      - can 'like' photos  
 
 Photos
