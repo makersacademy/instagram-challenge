@@ -25,10 +25,12 @@ feature 'photos' do
     scenario 'gives user a form to add photo, displays caption' do
       visit '/photos'
       click_button 'Upload your photo'
-      fill_in 'Caption', with: 'what a picture - what a photograph!'
+      fill_in 'Caption', with: 'a lion'
+      attach_file 'Image', 'spec/features/lion.jpg'
       click_button 'Create photo'
-      expect(page).to have_content "what a picture - what a photograph!"
       expect(current_path).to eq '/photos'
+      expect(page).to have_content 'a lion'
+      expect(page).to have_css('img[alt="lion"]')
     end
   end
 end
