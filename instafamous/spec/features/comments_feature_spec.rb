@@ -15,7 +15,6 @@ feature 'Comments' do
   scenario 'can be added to pictures' do
     visit('/')
     find('.comment').click
-    click_link('Add Comment')
     fill_in 'Comment', with: 'Hey there'
     click_button('Create Comment')
     expect(current_path).to eq ('/')
