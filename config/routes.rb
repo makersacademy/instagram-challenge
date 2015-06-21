@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get 'pictures' => 'pictures#index'
   root to: 'pictures#index'
 
-  resources :pictures do
+  resources :pictures, shallow: true do
+    resources :likes
     resources :comments
   end
   # The priority is based upon order of creation: first created -> highest priority.

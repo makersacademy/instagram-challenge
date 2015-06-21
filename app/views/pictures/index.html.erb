@@ -5,12 +5,14 @@
         <%= picture.user.email %><br>
         <%= image_tag picture.image.url, {:width => "500", :height => "500"}%><br>
         <%= picture.description%><br>
+         <%= link_to "Like", picture_likes_path(picture), class: 'likes-link' %><br>
+          <span class="likes_count"> <%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>
         <p> Comments </p>
           <% if picture.comments.any? %>
             <ul>
              <% picture.comments.each do |comment| %>
              <li>
-              <%= comment.thoughts %><%= comment.user.email%>
+              <%= comment.thoughts %>   <%= comment.user.email%>
               </li>
               <% end %>
               </ul>

@@ -67,7 +67,7 @@ feature 'Pictures' do
       click_link 'Sign out'
       sign_up('bob@bob.com', '22222222', '22222222')
       click_link 'Delete picture'
-      expect(page).to have_content 'You can only delete a restaurant that you have created'
+      expect(page).to have_content 'You can only delete a pictures that you have created'
     end
      scenario 'only creator can delete the picture' do
       sign_up('test@test.com', '11111111', '11111111')

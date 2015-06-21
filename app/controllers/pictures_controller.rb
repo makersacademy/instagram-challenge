@@ -48,7 +48,7 @@ class PicturesController < ApplicationController
       flash[:notice] = 'Picture deleted successfully'
       redirect_to '/pictures'
     else
-      redirect_to pictures_path, alert: 'You can only delete a restaurant that you have created'
+      redirect_to pictures_path, alert: 'You can only delete a pictures that you have created'
     end
   end
 end
