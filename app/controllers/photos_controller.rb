@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
 
   def index
-    # raise 'Oi oi!'
+    @photos = Photo.all
   end
 
 end

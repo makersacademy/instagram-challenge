@@ -10,11 +10,14 @@ feature 'photos' do
   end
 
   context 'photos have been added' do
-    scenario 'should display photo' do
-      visit '/photos'
-      click_button 'Upload your photo'
-      fill_in form with "what a picture - what a photograph!"
-      # upload picture??
-      expect(page).to have_content "what a picture - what a photograph!"
+    before do
+      Photo.create(caption: "what a picture - what a photograph!")
     end
+
+    scenario 'should display caption' do
+      visit '/photos'
+      expect(page).to have_content('what a picture - what a photograph!')
+      expect(page).not_to have_content('No restaurants yet')
+    end
+  end
 end
