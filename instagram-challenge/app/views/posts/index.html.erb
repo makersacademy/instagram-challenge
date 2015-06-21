@@ -5,8 +5,8 @@
     <% @posts.each do |post| %>
       <div class="each_post">
         <div class="each_image"><%= image_tag post.image.url(:medium) %></div>
-        <%= link_to "❤", post_likes_path(post), method: :post, class: "each_like_button" %>
         <%= post.likes.count %>
+        <%= link_to "❤", post_likes_path(post), method: :post, class: "each_like_button" %>
         <span class="each_caption"><%= post.caption %></span>
         <% if post.comments.any? %>
           <ul>
@@ -17,7 +17,7 @@
             <% end %>
           </ul>
         <% end %>
-        <%= link_to '✎', new_post_comment_path(post) %>
+        <%= link_to '✎', new_post_comment_path(post), class: "add_comment_link" %>
       </div>
     <% end %>
   <% else %>

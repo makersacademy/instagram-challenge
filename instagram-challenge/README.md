@@ -85,7 +85,16 @@ Unit Tests using RSpec
     * Has a unique username
     * Can comment on images only if signed in
 
+Wishlist
+--------
+If there's time, try to add/tweak the following:
 
+* Like button - javascript
+* Rspec test environment not working now I have Amazon Web Services (fine in dev env) - try to sort this out
+* User sign up and sign in
+* Users an sign in through Fb
+* Better styling
+* How to style 'choose file' button in erb forms??
 
 
 
