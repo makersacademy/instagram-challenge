@@ -41,6 +41,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.paperclip_defaults = {
+    :path => "/:class/:attachment/:id/:style/:filename",
     :storage => :s3,
     :s3_credentials => {
       :bucket => Rails.application.secrets.aws_bucket,

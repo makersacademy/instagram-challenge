@@ -81,6 +81,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.paperclip_defaults = {
+    :path => "/:class/:attachment/:id/:style/:filename",
     :storage => :s3,
     :s3_credentials => {
       :bucket => Rails.application.secrets.aws_bucket,

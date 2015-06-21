@@ -95,12 +95,26 @@ Set-up Steps:
 Next Steps:
 -------
 
+* Remedy: to make images display in localhost, images must be displayed in `app/models/photo.rb` under `has_attached_file` `:path => "/:class/:attachment/:id/:style/:filename"` - however, doing so will break RSpec test (`photos_feature_spec.rb`) that tests image file can be uploaded (`Errno::EACCES: Permission denied @ dir_s_mkdir - /photos`)
+
+* Validation: image file must be uploaded if photo is being added/updated
+
 * When editing photo, image file should be included as existing file for given photo
-* Functionality and testing to prevent user from 'liking' same photo more than once
-* Functionality and testing to prevent user from 'liking' their own photo
+
+* Attribute users to comments and likes
+
+* Add image to photo's profile page
+
+* Functionality and testing to prevent user from liking same photo more than once
+
+* Functionality and testing to prevent user from liking their own photo
+
 * Tests to cover all facets of authentication as per `app/controllers/photos_controller.rb` and `app/controllers/comments_controller.rb`
-* Use partials for: `app/views/photos/new.html.erb` and `app/views/photos/edit.html.erb` (`@photos.errors.any?` block is duplicated)
+
+* Use partials for: `app/views/photos/new.html.erb` and `app/views/photos/edit.html.erb` (`@photos.errors.any?` block is duplicated; possible to use partial for entire form except minor differences of button labels (add / update)?)
+
 * Ability to edit comments w/requisite validation and testing (currently only able to add comments)
+
 * Apply Ruby 'Time Ago In Words' gem:-
 
 [Ruby On Rails - Time Ago In Words gem](http://api.rubyonrails.org/classes/ActionView/Helpers/DateHelper.html#method-i-time_ago_in_words)
