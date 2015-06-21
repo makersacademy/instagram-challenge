@@ -87,12 +87,15 @@ Set-up Steps:
 * Add `database_cleaner` gem to Gemfile; run `bundle install`; require in `spec/rails_helper.rb`: `require 'support/database_cleaner'`
 * In `spec/rails_helper.rb` switch following line from true to false: `config.use_transactional_fixtures = false`
 * Add dir and file: `spec/support/database_cleaner.rb`; add to file code from [Virtuous Code - Configuring database_cleaner with Rails, RSpec, Capybara, and Selenium](http://devblog.avdi.org/2012/08/31/configuring-database_cleaner-with-rails-rspec-capybara-and-selenium/)
+* Install ImageMagick (code library that deals with image compression) with Homebrew: `$ brew install imagemagick`
+* Add `paperclip` gem to Gemfile and run `bundle install` (Paperclip is a gem that makes file uploads to Ruby apps a bit simpler)
 
 
 Next Steps:
 -------
 
-* Functionality and testing to prevent user from 'liking' same photo more than once (`app/controllers/likes_controller.rb:3:in `<class:LikesController>': undefined method `validates_uniqueness_of' for LikesController:Class (NoMethodError)`).
+* When editing photo, image file should be included as existing file for given photo
+* Functionality and testing to prevent user from 'liking' same photo more than once
 * Tests to cover all facets of authentication as per `app/controllers/photos_controller.rb` and `app/controllers/comments_controller.rb`
 * Use partials for: `app/views/photos/new.html.erb` and `app/views/photos/edit.html.erb` (`@photos.errors.any?` block is duplicated)
 * Ability to edit comments w/requisite validation and testing (currently only able to add comments)

@@ -49,6 +49,7 @@ group :development, :test do
   gem 'omniauth-facebook'
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'paperclip'
 
 end
 
