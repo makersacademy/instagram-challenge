@@ -3,6 +3,19 @@
     <h3 class='image'><%= image_tag photo.image.url(:thumb), {:width => "500", :height => "500"}%></h3>
     <h4><%= photo.name %></h4>
     <p><%= photo.description %></p>
+    <%= link_to "Comment on #{photo.name}", new_photo_comment_path(photo) %></br>
+    <h3>Comments for <%= photo.name %></h3>
+    <% if photo.comments.any? %>
+      <ul>
+        <% photo.comments.each do |comment| %>
+          <li>
+            <%= comment.thoughts %> 
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments.</p>
+    <% end %>
   <% end %>
 <% else %>
   <h1>No photos yet!</h1>
