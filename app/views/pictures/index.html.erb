@@ -4,11 +4,12 @@
 
 <button> <%=link_to 'Upload a picture', new_picture_path %> </button>
 <div class='container'>
-  <%=@pictures.each do |picture| %>
+  <% @pictures.each do |picture| %>
     <div class='row'>
-      <span class='img-post'> <%=image_tag picture.image.url(:thumb)%> </span>
+      <span class='img-post'><%=image_tag picture.image.url(:thumb)%> </span>
       <p> <%=picture.title%> </p>
       <h3> Comments for <%= picture.title %></h3>
+        <p><%= pluralize picture.likes.count, 'likes' %></p>
         <% if picture.comments.any? %>
           <ul>
             <% picture.comments.each do |comment| %>
@@ -21,6 +22,7 @@
         <p>No comments yet!</p>
         <% end %>
       <%= link_to "Add a comment", new_picture_comment_path(picture) %>
+      <%= link_to "Like", picture_likes_path(picture), method: :post %>
     </div>
   <%end%>
 </div>
