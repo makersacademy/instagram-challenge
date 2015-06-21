@@ -68,7 +68,7 @@ Technologies used
 Screenshots
 ----
 
-![Home Page](https://github.com/AlexHandy1/instagram-challenge/tree/master/instafamous/app/assets/images/InstaFamous-homepage.png)
+![Home Page](https://github.com/AlexHandy1/instagram-challenge/blob/master/instafamous/app/assets/images/InstaFamous-homepage.png)
 
 Further Development
 ----
