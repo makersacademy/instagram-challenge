@@ -39,20 +39,22 @@ feature 'A logged in user' do
   scenario 'can comment on their own picture' do
     sign_in('test@test.com')
     add_comment('Nice cat')
-    expect(page).to have_content 'Betty Nice cat'
+    expect(page).to have_content 'Betty'
+    expect(page).to have_content 'Nice cat'
   end
 
   scenario 'can comment on other peoples picture' do
     sign_in('test1@test.com')
     add_comment('Nah!')
-    expect(page).to have_content 'Betty Nah!'
+    expect(page).to have_content 'Betty'
+    expect(page).to have_content 'Nah!'
   end
 
   scenario 'can delete their own comment' do
     sign_in('test@test.com')
     add_comment('Nice cat!')
     click_link 'Delete comment'
-    expect(page).not_to have_content 'Betty Nah!'
+    expect(page).not_to have_content 'Nah!'
   end
 
 end

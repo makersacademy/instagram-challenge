@@ -15,32 +15,39 @@
 <% @pictures.each do |picture| %>
   <%= image_tag picture.image.url(:medium) %>
   <br>
-  <h4><%= picture.title %></h4>
+  <h3><%= picture.title %></h3>
+  <% if current_user %>
+    |<%= link_to "Like", picture_likes_path(picture), class: 'likes-link' %> |
+    <%= link_to 'Comment', new_picture_comment_path(picture) %> |
+  <% end %>
+  <br>
+  <span class="likes_count"> <%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>,
+  <span class="comment_count"> <%= picture.comments.count %> </span> <%= 'comment'.pluralize(picture.comments.count) %>
   <br>
   <br>
-  <%= link_to "Like this", picture_likes_path(picture), class: 'likes-link' %>
-      <span class="likes_count"> <%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>
-    </li>
+
   <br>
   <% these_comments = Comment.where(picture_id: picture.id) %>
   <% if these_comments %>
+    <span class="btn btn-default btn-file">
     <% these_comments.each do |comment| %>
     <% user = User.find(comment.user_id) %>
       <p>
-        <%= comment.description %> by <i> <%= user.email %> </i>
+        <b><font size='10'><%= comment.description %></b></font>
+        <br>
+        <i> <%= user.email %> </i>
         <br>
         <% if current_user && current_user.id == comment.user_id %>
           <%= link_to "Delete comment", picture_comment_path(picture, comment), method: :delete %>
         <% end %>
       </p>
     <% end %>
-  <% end %>
-  <% if current_user %>
-    <%= link_to 'Comment', new_picture_comment_path(picture) %>
+    </span>
   <% end %>
   <br>
   <% if current_user && current_user.id == picture.user_id %>
     <%= link_to "Delete #{picture.title}", picture_path(picture), method: :delete %>
+    <br>
   <% end %>
   <br>
 <% end %>

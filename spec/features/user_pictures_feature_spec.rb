@@ -13,8 +13,9 @@ feature 'A logged in user' do
   scenario 'can add a new picture' do
     sign_in('test@test.com')
     add_picture
+    expect(Picture.count).to eq 1
     expect(page).to have_content 'Betty'
-    expect(page).not_to have_content 'no photos have been added!'
+    expect(page).not_to have_content 'No photos have been added!'
   end
 
   scenario 'can search for a picture' do
