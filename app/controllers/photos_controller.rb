@@ -11,7 +11,8 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
+    @user = current_user
+    @photo = @user.photos.build_with_user(photo_params, current_user)
     if @photo.save
       redirect_to photos_path
     else

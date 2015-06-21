@@ -17,8 +17,8 @@ feature 'Photos' do
     before {Photo.create descr: 'Mount Fuji'}
     scenario 'Display photos' do
       visit '/photos'
-      expect(page).to have_content('Mount Fuji')
-      expect(page).not_to have_content('No photos yet')
+      expect(page).to have_content 'Mount Fuji'
+      expect(page).not_to have_content 'No photos yet'
     end
   end
 
@@ -32,13 +32,11 @@ feature 'Photos' do
       expect(current_path).to eq '/photos'
     end
 
-    context 'An invalid description' do
-      it 'Does not let you submit a description that is too short' do
-        click_link 'Add a photo'
-        click_button 'Add photo'
-        expect(page).not_to have_css 'h3'
-        expect(page).to have_content 'Description cannot be left blank'
-      end
+    scenario 'Does not let you submit a blank description' do
+      click_link 'Add a photo'
+      click_button 'Add photo'
+      expect(page).not_to have_css 'h3'
+      expect(page).to have_content 'Description cannot be left blank'
     end
   end
 
@@ -71,14 +69,12 @@ feature 'Photos' do
       expect(current_path).to eq '/photos'
     end
 
-    context 'An invalid description' do
-      it 'Does not let you submit a description that is too short' do
-        click_link 'Edit Mount Fuji'
-        fill_in 'Description', with: ''
-        click_button 'Update photo'
-        expect(page).not_to have_css 'h3'
-        expect(page).to have_content 'Description cannot be left blank'
-      end
+    scenario 'Does not let you submit a blank description' do
+      click_link 'Edit Mount Fuji'
+      fill_in 'Description', with: ''
+      click_button 'Update photo'
+      expect(page).not_to have_css 'h3'
+      expect(page).to have_content 'Description cannot be left blank'
     end
   end
 

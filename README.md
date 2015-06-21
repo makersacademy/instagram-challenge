@@ -92,6 +92,7 @@ Set-up Steps:
 Next Steps:
 -------
 
+* Functionality and testing to prevent user from 'liking' same photo more than once (`app/controllers/likes_controller.rb:3:in `<class:LikesController>': undefined method `validates_uniqueness_of' for LikesController:Class (NoMethodError)`).
 * Tests to cover all facets of authentication as per `app/controllers/photos_controller.rb` and `app/controllers/comments_controller.rb`
 * Use partials for: `app/views/photos/new.html.erb` and `app/views/photos/edit.html.erb` (`@photos.errors.any?` block is duplicated)
 * Ability to edit comments w/requisite validation and testing (currently only able to add comments)
