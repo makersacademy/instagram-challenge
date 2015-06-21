@@ -2,8 +2,8 @@ require 'rails_helper'
 require_relative 'helpers/session'
 include SessionHelpers
 
-feature 'commenting' do
-
+feature 'liking a photo' do
+  
   before do
     visit('/')
     click_link('Sign up')
@@ -14,13 +14,11 @@ feature 'commenting' do
     add_photo('Dumpster', 'Industrial bin in blue with 4 multi-directional wheels.')
   end
 
-  scenario 'allows users to leave a comment using a form' do
+  scenario 'a user can like a photo, which increments the photo likes count', js: true do
     
     visit '/photos'
-    click_link 'Comment on Dumpster'
-    fill_in 'Thoughts', with: 'so so'
-    click_button 'Leave Comment'
-    expect(current_path).to eq '/photos'
-    expect(page).to have_content('so so')
+    click_link 'Like Dumpster'
+    expect(page).to have_content('1 Like')
   end
 end
+

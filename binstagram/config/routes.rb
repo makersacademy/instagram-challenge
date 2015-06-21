@@ -4,8 +4,9 @@ devise_for :users, :controllers => { :omniauth_callbacks => 'users/omniauth_call
 get 'photos' => 'photos#index'
 root to: 'photos#index'
 
-resources :photos do
+resources :photos, shallow: true do
   resources :comments
+  resources :likes
 end
 
 devise_scope :user do

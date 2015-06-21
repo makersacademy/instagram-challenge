@@ -1,10 +1,18 @@
-<% if Photo.all.any? %>
-  <% Photo.all.each do |photo| %>
-    <h3 class='image'><%= image_tag photo.image.url(:thumb), {:width => "500", :height => "500"}%></h3>
+<h3><%= link_to 'Add a photo', new_photo_path %></h3>
+<% if @photo.any? %>
+  <% @photo.all.each do |photo| %>
     <h4><%= photo.name %></h4>
+    
+    <h3 class='image'><%= image_tag photo.image.url(:thumb), {:width => "500", :height => "500"}%></h3>  
+    
     <p><%= photo.description %></p>
+    
+    <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
+    <span class="likes_count"> <%= photo.likes.count %> </span> 
+    <%= 'like'.pluralize(photo.likes.count) %>
+    
     <%= link_to "Comment on #{photo.name}", new_photo_comment_path(photo) %></br>
-    <h3>Comments for <%= photo.name %></h3>
+    <h5>Comments for <%= photo.name %></h5>
     <% if photo.comments.any? %>
       <ul>
         <% photo.comments.each do |comment| %>
@@ -21,4 +29,3 @@
   <h1>No photos yet!</h1>
 <% end %>
 
-<h3><%= link_to 'Add a photo', new_photo_path %></h3>
