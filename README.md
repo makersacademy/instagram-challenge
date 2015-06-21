@@ -1,22 +1,58 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9am Monday morning
-
 Task
 -----
 
-Build Instagram: Simple huh!
+Build Instagram:
 
-As usual please start by
+"Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo
+Bonus if you can add filters!"
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome). 
+User stories:
 
-Bonus if you can add filters! 
+```
+As a keen photographer
+So that other people can see my stuff
+I want to be able to post my pictures on the internet
+
+As a website visitor
+So that I know who posted what
+I want to be shown the user that uploaded an individual photo
+
+As a person who likes to show their appreciation for good photography
+So that I can register my approval for a photo
+I want a 'like' button for each photo
+
+As a person who likes to discuss photography
+So that I can enter into a dialogue with other users of the site
+I want to be able to leave a comment for each photo
+```
+
+Technologies Used:
+-------
+
+* Ruby On Rails (full-stack web app framework)
+* RSpec/Capybara(full testing suite for RoR applications testing the front and back end)
+
+
+
+Steps for MVP as dictated by the challenge:
+-------
+
+* Add the ability to upload photos first, and figure out how to test for that
+* Then deal with users, logging in and showing their username with each photo. For the first four user stories, the basic functionality spec provided in the challenge, any associatons re: deleting etc can be added later
+* Add a like (endorsement) button
+* Add a comments box
+
+Further steps for the future:
+-------
+* restrict deletion to the user that uploaded
+* image resizing on upload
+* add AJAX to make the magic happen all in one place
+
+Links:
+-------
+
+[Github - Makers Academy: Instagram Challenge](https://github.com/makersacademy/instagram-challenge)
