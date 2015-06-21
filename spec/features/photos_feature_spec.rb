@@ -25,8 +25,8 @@ feature 'photos' do
     scenario 'gives user a form to add photo, displays caption' do
       visit '/photos'
       click_button 'Upload your photo'
-      fill_in 'caption', with: "what a picture - what a photograph!"
-      click_button 'Post photo'
+      fill_in 'Caption', with: 'what a picture - what a photograph!'
+      click_button 'Create photo'
       expect(page).to have_content "what a picture - what a photograph!"
       expect(current_path).to eq '/photos'
     end
