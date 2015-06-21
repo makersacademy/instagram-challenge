@@ -2,15 +2,11 @@
 <% if @photo.any? %>
   <% @photo.all.each do |photo| %>
     <h4><%= photo.name %></h4>
-    
     <h3 class='image'><%= image_tag photo.image.url(:thumb), {:width => "500", :height => "500"}%></h3>  
-    
-    <p><%= photo.description %></p>
-    
-    <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
+    <p><%= photo.description %></p> 
+    <%= link_to "Like #{photo.name}", photo_likes_path(photo), class: 'likes-link' %>
     <span class="likes_count"> <%= photo.likes.count %> </span> 
-    <%= 'like'.pluralize(photo.likes.count) %>
-    
+    <%= 'like'.pluralize(photo.likes.count) %><br>
     <%= link_to "Comment on #{photo.name}", new_photo_comment_path(photo) %></br>
     <h5>Comments for <%= photo.name %></h5>
     <% if photo.comments.any? %>

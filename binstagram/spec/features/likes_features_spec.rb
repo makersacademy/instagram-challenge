@@ -18,7 +18,7 @@ feature 'liking a photo' do
     
     visit '/photos'
     click_link 'Like Dumpster'
-    expect(page).to have_content('1 Like')
+    expect(page).to have_content('1 likes')
   end
 end
 
