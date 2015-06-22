@@ -38,7 +38,8 @@ Users
 Photos, Comments, Likes
 ------
      - Belong to a User - ✓  
-     - Photos display in reverse chronological order - ✓   
+     - Photos display in reverse chronological order - ✓  
+     - show the relevant user name
      - show when they were added to the site, in plain english (e.g 'One hour ago')  
      - Carry a 'Like' counter reflecting number of likes - ✓  
      - Carry comments, with relevant user - ✓  
@@ -51,3 +52,15 @@ Tested with - Rspec, Capybara and Shoulda
 ORM - ActiveRecord  
 Image management - Paperclip, Imagemagick, AWS S3  
 Authentication - Devise, OmniAuth  
+
+
+For 121 Review
+----------
+
+- Testing for image on page
+- Like counter on photo show view
+- Posted by user name not user_id
+- Fixing sharing counters
+- time_ago_in_words gem
+- search/filters
+- like/unlike
