@@ -97,6 +97,10 @@ Next Steps:
 
 * Remedy: to make images display in localhost, images must be displayed in `app/models/photo.rb` under `has_attached_file` `:path => "/:class/:attachment/:id/:style/:filename"` - however, doing so will break RSpec test (`photos_feature_spec.rb`) that tests image file can be uploaded (`Errno::EACCES: Permission denied @ dir_s_mkdir - /photos`)
 
+* Rectify tests after adding `<%= photo.user.email %>` to `views/photos/index.html.erb` (all test images must have attributed user else error thrown)
+
+* Check pluralize method is working (in both localhost and testing environment)
+
 * Validation: image file must be uploaded if photo is being added/updated
 
 * When editing photo, image file should be included as existing file for given photo
