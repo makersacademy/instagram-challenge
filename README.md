@@ -1,11 +1,6 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9am Monday morning
 
 Task
 -----
@@ -46,16 +41,29 @@ Additional Features
 As a user
 So that I can see the pictures of people I like
 I would like to follow other users
+
+As a user
+So that I can find pictures tagged with my interests
+I would like to filter
 ```
 
 =======
-Build Instagram: Simple huh!
 
-As usual please start by
+Completed so far
+-----
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo
+* A user can sign up and sign in
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome). 
+To do
+-----
 
-Bonus if you can add filters! 
+* Add other user stories
+* Add styling
+
+How to run
+-----
+
+* git clone this repository
+* bundle install
+* use bin/rails s and view the site on localhost:3000
+
