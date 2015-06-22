@@ -42,6 +42,7 @@ feature 'photostream' do
       click_button 'Create Photo'
       expect(page).to have_content 'Dumpster'
       expect(current_path). to eq '/photos'
+      expect(page).to have_css('img[src*="/system/photos/images/000/000/002/medium/dumpster.png"]')
     end
 
     context 'an invalid submission' do
@@ -51,7 +52,5 @@ feature 'photostream' do
       end
     end
   end
-
-
 
 end
