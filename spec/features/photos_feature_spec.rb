@@ -9,17 +9,17 @@ feature 'photos' do
     end
   end
 
-  context 'photos have been added' do
-    before do
-      Photo.create(caption: "what a picture - what a photograph!")
-    end
+  # context 'photos have been added' do
+  #   before do
 
-    scenario 'should display caption' do
-      visit '/photos'
-      expect(page).to have_content('what a picture - what a photograph!')
-      expect(page).not_to have_content('No restaurants yet')
-    end
-  end
+  #    end
+
+  #   scenario 'should display caption' do
+  #     visit '/photos'
+  #     expect(page).to have_content('what a picture - what a photograph!')
+  #     expect(page).not_to have_content('No photos yet')
+  #   end
+  # end
 
   context 'creating photos' do
     scenario 'gives user a form to add photo, displays caption' do
@@ -30,7 +30,7 @@ feature 'photos' do
       click_button 'Create photo'
       expect(current_path).to eq '/photos'
       expect(page).to have_content 'a lion'
-      expect(page).to have_css('img[alt="lion"]')
+      expect(page).to have_selector 'img'
     end
   end
 end

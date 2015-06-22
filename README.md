@@ -41,14 +41,12 @@ Technologies Used:
 Steps taken/to take:
 -------
 
-```
 * [x] Create the photos and list them on the page. I will be doing this without images first. It's not unreasonable to expect a photo will need a caption (although not directly specified in the brief, or within my user stories) but it is a handy placeholder for me to then bolt on a photo upload later
 * [ ] Add the ability to upload photos by associating them with the new photos model. The challenge will be working out how to test for that
-* [ ] Add logging in feature.
+* [x] Add logging in feature.
 * [ ] Display username with each photo etc. (NB for the first four user stories, the basic functionality spec provided in the challenge, any associatons re: deleting etc can be added later
 * [ ] Add a like (endorsement) button
 * [ ] Add a comments box
-```
 
 Further steps for the future:
 -------
