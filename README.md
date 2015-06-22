@@ -37,7 +37,7 @@ Users
 
 Photos, Comments, Likes
 ------
-     - Belong to a User
+     - Belong to a User - ✓  
      - Photos display in reverse chronological order - ✓   
      - show when they were added to the site, in plain english (e.g 'One hour ago')  
      - Carry a 'Like' counter reflecting number of likes - ✓  
