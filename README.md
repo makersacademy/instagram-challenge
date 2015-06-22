@@ -1,22 +1,49 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9am Monday morning
-
 Task
 -----
 
-Build Instagram: Simple huh!
+Build an Instagram clone using Rails
 
-As usual please start by
+Summary
+=================
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo
+* Recreate a basic version of instagram using Rails
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome). 
+* Currently the main functionalities include: 
+  - sign-in/up/out and Facebook authentication
+  - uploading or deleting a picture when logged in
+  - commenting or liking a picture
 
-Bonus if you can add filters! 
+
+How to run
+----
+
+* For local use, clone or fork the repo to your local machine
+* Install ruby and ruby-on-rails then run bundle install to install all required gems locally
+* View on your local host through the rails server
+* Tests can be run by installing rspec and capybara gems and running rspec from your command line
+
+Technologies used
+----
+
+* Production - Rails, Ruby, HTML (+erb), PSQL, Devise
+* Testing - Rspec, Capybara, Rubocop, Coveralls
+
+
+Further Development
+----
+
+*  Use AWS to host pictures
+
+* Add Bootstrap 
+
+* Resolve issues with pending tests
+
+*  Add further validations around comments, likes 
+
+* Deploy on Heroku
+
+
+
