@@ -54,6 +54,7 @@ Further steps for the future:
 * [ ] restrict deletion to the user that uploaded
 * [ ] image resizing on upload
 * [ ] add AJAX to make the magic happen all in one place
+* [ ] add facial recognition which detects a face in an image, crops picture to focus just on the chin and mouth, flips the image vertically and adds eyes; rename project 'chinstagram'
 
 Links:
 -------
