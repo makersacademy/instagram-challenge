@@ -42,6 +42,7 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
     :path => "/:class/:attachment/:id/:style/:filename",
+    :url => ":s3_domain_url",
     :storage => :s3,
     :s3_credentials => {
       :bucket => Rails.application.secrets.aws_bucket,

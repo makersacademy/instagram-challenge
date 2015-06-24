@@ -95,7 +95,7 @@ Set-up Steps:
 Next Steps:
 -------
 
-* Remedy: to make images display in localhost, images must be displayed in `app/models/photo.rb` under `has_attached_file` `:path => "/:class/:attachment/:id/:style/:filename"` - however, doing so will break RSpec test (`photos_feature_spec.rb`) that tests image file can be uploaded (`Errno::EACCES: Permission denied @ dir_s_mkdir - /photos`)
+* Try alternate method of RSpec test for successful upload and display of image: `expect(page).to have_css('img[alt="Iceland"]')`
 
 * Rectify tests after adding `<%= photo.user.email %>` to `views/photos/index.html.erb` (all test images must have attributed user else error thrown)
 

@@ -32,14 +32,14 @@ feature 'Photos' do
       expect(current_path).to eq '/photos'
     end
 
-    # scenario 'Does not let you submit without an image' do
-    #   click_link 'Add a photo'
-    #   attach_file 'Image', 'spec/features/mount_fuji.jpg'
-    #   fill_in 'Description', with: 'Mount Fuji'
-    #   click_button 'Add photo'
-    #   expect(page).to have_content 'Mount Fuji'
-    #   expect(page).to have_css('img[src*="/system/photos/images/000/000/003/thumb.jpg"]')
-    # end
+    scenario 'Does not let you submit without an image file' do
+      click_link 'Add a photo'
+      attach_file 'Image', 'spec/features/mount_fuji.jpg'
+      fill_in 'Description', with: 'Mount Fuji'
+      click_button 'Add photo'
+      expect(page).to have_content 'Mount Fuji'
+      expect(page).to have_css('img[src*="mount_fuji.jpg"]')
+    end
 
     scenario 'Does not let you submit a blank description' do
       click_link 'Add a photo'
