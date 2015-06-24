@@ -1,0 +1,29 @@
+<% if @photos.any? %>
+  <% @photos.each do |photo| %>
+    <h2><%= link_to photo.descr, photo_path(photo) %></h2>
+    <%= image_tag photo.image.url(:medium) %>
+    <%= link_to "Edit #{photo.descr}", edit_photo_path(photo) %>
+    <%= link_to "Delete #{photo.descr}", photo_path(photo), method: :delete %>
+    <%= link_to "Comment on #{photo.descr}", new_photo_comment_path(photo) %>
+
+    <%= link_to 'Like', photo_likes_path(photo), class: 'likes-link' %>
+    <span class='likes_count'> <%= photo.likes.count %> </span> <%= 'like'.pluralize(photo.likes.count) %>
+
+    <h5>Comments for <%= photo.descr %></h5>
+    <% if photo.comments.any? %>
+      <ul>
+        <% photo.comments.each do |comment| %>
+          <li>
+            <h3><%= comment.words %></h3>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments</p>
+    <% end %>
+  <% end %>
+<% else %>
+  <h1>No photos yet</h1>
+<% end %>
+
+<%= link_to 'Add a photo', new_photo_path %>
