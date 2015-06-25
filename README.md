@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
 
+![Obama selfie](http://s3.amazonaws.com/digitaltrends-uploads-prod/2015/02/Obama-Selfie-Stick.jpg)
+
 Task
 -----
 
