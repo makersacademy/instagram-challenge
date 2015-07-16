@@ -1,0 +1,55 @@
+<h3>
+<% if current_user && current_user.sign_in_count == 1 %>
+  Welcome to Instagram <%=  current_user.name || current_user.email %>
+<% elsif current_user && current_user.sign_in_count > 1 %>
+  Welcome back <%= current_user.name || current_user.email %>
+<% else %>
+  Please sign in
+<% end %>
+</h3>
+<br>
+<% if Picture.count == 0 %>
+  <h5>  No photos have been added! </h5>
+<% end %>
+
+<% @pictures.each do |picture| %>
+  <%= image_tag picture.image.url(:medium) %>
+  <br>
+  <h3><%= picture.title %></h3>
+  <% if current_user %>
+    |<%= link_to "Like", picture_likes_path(picture), class: 'likes-link' %> |
+    <%= link_to 'Comment', new_picture_comment_path(picture) %> |
+  <% end %>
+  <br>
+  <span class="likes_count"> <%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>,
+  <span class="comment_count"> <%= picture.comments.count %> </span> <%= 'comment'.pluralize(picture.comments.count) %>
+  <br>
+  <br>
+
+  <br>
+  <% these_comments = Comment.where(picture_id: picture.id) %>
+  <% if these_comments %>
+    <span class="btn btn-default btn-file">
+    <% these_comments.reverse.each do |comment| %>
+    <% user = User.find(comment.user_id) %>
+      <p>
+        <b><%= comment.description %></b>
+        <br>
+        <i> <%= user.email %> </i>
+        <br>
+        <i> <%= comment.created_at.strftime('%r') %> </i>
+        <br>
+        <% if current_user && current_user.id == comment.user_id %>
+          <%= link_to "Delete comment", picture_comment_path(picture, comment), method: :delete %>
+        <% end %>
+      </p>
+    <% end %>
+    </span>
+  <% end %>
+  <br>
+  <% if current_user && current_user.id == picture.user_id %>
+    <%= link_to "Delete #{picture.title}", picture_path(picture), method: :delete %>
+    <br>
+  <% end %>
+  <br>
+<% end %>

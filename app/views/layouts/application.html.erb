@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head meta charset="UTF-8">
+  <title>InstagramChallenge</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<header><center>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Instagram</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <% if  current_user && current_user.image %>
+          <li><img src='<%= current_user.image %>'></li>
+        <% end %>
+        <% if current_user %>
+          <li class="active"><%= link_to 'Add a picture', new_picture_path %><span class="sr-only"></span></li>
+        <% end %>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <%= form_tag(pictures_path, method: "get", id: 'search-form') do %>
+            <span class="btn btn-default btn-file"><%= text_field_tag :search, params[:search], placeholder: "Search for a picture..." %></span>
+            <button class="btn btn-success btn-file" type="submit">Search<i class="icon-search"></i></button>
+          <% end %>
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li class="active"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %><span class="sr-only"></span></li>
+        <% end %>
+        <% if !current_user %>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
+          <li><%= link_to 'Sign in', new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<%= notice %>
+<h1>Instagram</h1>
+
+</center></header>
+<body><center>
+
+<%= yield %>
+
+</center></body>
+</html>
