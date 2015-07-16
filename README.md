@@ -1,7 +1,7 @@
 Instagram Challenge
 =======================
 
-[![Build Status](https://travis-ci.org/dwatson62/instagram-challenge.svg?branch=master)](https://travis-ci.org/dwatson62/instagram-challenge)
+[![Build Status](https://travis-ci.org/dwatson62/instagram-challenge.svg?branch=master)](https://travis-ci.org/dwatson62/instagram-challenge) [![Coverage Status](https://coveralls.io/repos/dwatson62/instagram-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/dwatson62/instagram-challenge?branch=master)
 
 ## Synopsis
 
