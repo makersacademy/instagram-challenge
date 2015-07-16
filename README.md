@@ -1,6 +1,8 @@
 Instagram Challenge
 =======================
 
+[![Build Status](https://travis-ci.org/dwatson62/instagram-challenge.svg?branch=master)](https://travis-ci.org/dwatson62/instagram-challenge)
+
 ## Synopsis
 
 Original repo: (https://github.com/makersacademy/instagram-challenge)
