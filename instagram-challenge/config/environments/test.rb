@@ -2,6 +2,7 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :path => "#{Rails.root}/spec/test_files/:class/:id_partition/:style.:extension",
     :storage => :filesystem
+    :s3_host_name => 's3-us-west-1.amazonaws.com'
   }
   # Settings specified here will take precedence over those in config/application.rb.
 
