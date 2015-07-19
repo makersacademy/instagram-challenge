@@ -11,11 +11,12 @@ $(document).ready( function() {
      $('.dislikes-link').on('click', function(event) {
       event.preventDefault();
 
-      var likescount = $('.likes-link').siblings('.likes-count')
+      var likescount = $(this).siblings('.likes-count')
       $.ajax({
-          url: $('.dislikes-link').attr('href'),
+          url: this.href,
           type: 'DELETE',
           success: function(response) {
+              console.log(response)
               likescount.text(response.new_like_count);
           }
       });

@@ -23,7 +23,7 @@
               </button>
                  <%=link_to "", picture_likes_path(picture), class: 'likes-link glyphicon glyphicon-heart btn btn-default'%>
                 <span class='likes-count'> <%=picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>
-                 <%=link_to "", like_path(picture.id), class: 'btn btn-default dislikes-link glyphicon glyphicon-thumbs-down', method: :delete%>
+                 <%=link_to "", like_path(picture), class: 'btn btn-default dislikes-link glyphicon glyphicon-thumbs-down'%>
               <button type="button" class="btn btn-default fix" aria-label="Left Align">
                 <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
                 <%if user_signed_in?%>
@@ -62,10 +62,9 @@
 <%end%>
 <script>
   $(document).ready( function() {
-    // comments
     $('.comments').hide()
     $('.comment').click(function() {
-      $('.comments').toggle()
+      $(this).siblings('.comments').toggle();
      });
   });
 </script>

@@ -10,8 +10,6 @@ class LikesController < ApplicationController
     @picture.likes.last
     @like = @picture.likes.last
     @like.destroy
-    redirect_to ('/')
-    #deleting 2 likes for some reason and sometimes across multiple pictures e.g. click dislike on second photo and deletes one from that and one from the first
-    #why when I rendered json here did it show the json object vs redirect with my ajax call
+    render json: {new_like_count: @picture.likes.count}
   end
 end

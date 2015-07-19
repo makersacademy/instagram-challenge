@@ -16,13 +16,13 @@ feature 'Pictures' do
     expect(page).to have_button('Add Picture')
   end
 
-  xscenario 'add a Picture' do
+  scenario 'add a Picture' do
     visit('/')
-    click_button('Add Picture')
-    attach_file 'Image', '/spec/features/uploads/nuggets.jpeg'
+    click_link('Add Picture')
+    attach_file "Image", Rails.root.join('spec/features/uploads/nuggets.jpeg')
     fill_in 'Caption', with: 'My first photo'
-    click_button('Post')
-    expect(current_path).to eq ('/')
+    click_button('Create Picture')
+    expect(current_path).to eq ('/pictures')
     expect(page).to have_content('My first photo')
     expect(page).to have_css('.img-post')
   end
