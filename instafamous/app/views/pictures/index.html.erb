@@ -1,0 +1,70 @@
+<%if @pictures.empty? %>
+  No pictures in the network
+  <button type="button" class="btn btn-default" aria-label="Left Align">
+    <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+    <%if user_signed_in?%>
+      <%=link_to 'Add Picture', new_picture_path %>
+    <%else%>
+      <%=link_to 'Add Picture', new_user_session_path %>
+    <%end%>
+  </button>
+<%else%>
+  <div class='container'>
+    <div class='row'>
+      <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2" id='canvas'>
+        <%@pictures.each do |picture| %>
+          <div class='row frame'>
+            <div class='col-md-6 col-md-offset-4'>
+              <h3 id='caption'> <%=picture.caption%> </h3>
+              <span class='img-post img-center'> <%=image_tag picture.image.url(:medium)%> </span>
+              <p id='instafamer'> <b>Instafamer:<b> <%=User.find(picture.user_id).email%> </p>
+
+              <button type="button" class="btn btn-default comment glyphicon glyphicon-comment" aria-label="Left Align">
+              </button>
+                 <%=link_to "", picture_likes_path(picture), class: 'likes-link glyphicon glyphicon-heart btn btn-default'%>
+                <span class='likes-count'> <%=picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>
+                 <%=link_to "", like_path(picture), class: 'btn btn-default dislikes-link glyphicon glyphicon-thumbs-down'%>
+              <button type="button" class="btn btn-default fix" aria-label="Left Align">
+                <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                <%if user_signed_in?%>
+                  <%=link_to 'Add Picture', new_picture_path %>
+                <%else%>
+                  <%=link_to 'Add Picture', new_user_session_path %>
+                <%end%>
+              </button>
+                <div class='comments'>
+                  <ul>
+                  <%picture.comments.each do |comment|%>
+                      <li><%=comment.comment%></li>
+                  <%end%>
+                  </ul>
+                    <% if user_signed_in? %>
+                    <button type="button" class="btn btn-default comment-button" aria-label="Left Align">
+                      <%=form_for [picture, @comment] do |f|%>
+                        <%= f.label :comment %>
+                        <%= f.text_field :comment %>
+                        <%= f.submit %>
+                      <%end%>
+                    </button>
+                    <%else%>
+                     <button type="button" class="btn btn-default fix" aria-label="Left Align">
+                       <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                        <%=link_to "Add Comment", new_user_session_path %>
+                      </button>
+                    <%end%>
+                </div>
+              </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+<%end%>
+<script>
+  $(document).ready( function() {
+    $('.comments').hide()
+    $('.comment').click(function() {
+      $(this).siblings('.comments').toggle();
+     });
+  });
+</script>

@@ -1,22 +1,80 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9am Monday morning
-
 Task
 -----
 
 Build Instagram: Simple huh!
 
-As usual please start by
+Summary
+=================
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo
+* Developed a basic rails app to develop a mock photo sharing live feed web app and explore the rails framework
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome). 
+* Implemented core usability features (e.g. upload pictures, leave comments, like pictures) and core user authentication (e.g. log-in, log-out to upload pictures and comments)
 
-Bonus if you can add filters! 
+Use Cases:
+-------
+
+```
+- [x] As a user,
+      So that I can see other pictures in the network,
+      I want to see a list of all pictures on the homepage
+
+- [x] As a user,
+      So that I can add pictures to the site,
+      I want to be able to upload my own pictures to the homepage
+
+- [x] As a user,
+      So that I can see what other people are saying about pictures,
+      I want to click on a icon to reveal a list of all comments on each picture
+
+- [x] As a user,
+      So that I can make sure I only add my own pictures,
+      I want to be able to login to the website
+
+- [x] As a user,
+      So that I can comment with others
+      I want to be able to leave comments on pictures from the homepage
+
+- [x] As a user,
+      So that no one makes comments as me,
+      I only want to be able to leave comments when logged in
+
+- [x] As a user,
+      So that I can like my favourite pictures,
+      I want a like button on each picture
+
+- [x] As a user,
+      So that I can dislike pictures,
+      I want a dislike button on each picture
+
+```
+
+How to run
+----
+
+* For local use, clone or fork the repo to your local machine
+* Install ruby and ruby-on-rails then run bundle install to install all required gems locally
+* View on your local host through the rails server
+* Tests can be run by installing rspec and capybara gems and running rspec from your command line
+
+Technologies used
+----
+
+* Production - Rails, Ruby, Javascript, jQuery, CSS (using Bootstrap), HTML, PSQL, Devise
+* Testing - Rspec, Capybara, Rubocop, Coveralls
+
+Screenshots
+----
+
+![Home Page](https://github.com/AlexHandy1/instagram-challenge/blob/master/instafamous/app/assets/images/InstaFamous-homepage.png)
+
+Further Development
+----
+
+*  Use AWS to host pictures
+
+*  Add further validations/ authentication around site usage e.g. only 1 like or dislike
+
+
