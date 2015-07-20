@@ -15,7 +15,7 @@ feature 'Likes' do
     fill_in 'Caption', with: 'My first photo'
     click_button('Create Picture')
   end
-  xscenario 'can add likes to pictures' do
+  scenario 'can add likes to pictures' do
     visit('/')
     expect(page).to have_content('0 likes')
     find("a.likes-link").click
