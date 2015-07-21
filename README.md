@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
 
+"Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome)"
+
 ![Obama selfie](http://s3.amazonaws.com/digitaltrends-uploads-prod/2015/02/Obama-Selfie-Stick.jpg)
 
 Task
@@ -8,9 +10,7 @@ Task
 
 Build Instagram:
 
-"Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters!"
 
 User stories:
 
