@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
   # permit(:title, :description, :picture)
 
   def index
@@ -11,10 +12,16 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @image = Image.create(image_params)
+    @image = current_user.images.build(image_params)
+    if @image.save
+      redirect_to images_path
+    else
+      render 'new'
+    end
+  end
 
-    redirect_to images_path
+  def show
+    @image = Image.find(params[:id])
   end
 
   def image_params
