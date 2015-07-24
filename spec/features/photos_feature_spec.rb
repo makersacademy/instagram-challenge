@@ -10,7 +10,6 @@ feature 'photos' do
   end
 
   context 'adding photo' do
-    before {Photo.create title: 'Awesome see'}
 
     scenario 'should display a photo and his title' do
       visit '/photos'
