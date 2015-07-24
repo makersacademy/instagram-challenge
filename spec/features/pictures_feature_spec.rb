@@ -11,13 +11,10 @@ feature 'pictures' do
   end
 
   context 'pictures have been added' do
-    before do
-      # upload a picture??
-    end
-
+    before {Picture.create description: 'Chillen with the boys'}
     scenario 'display pictures' do
       visit '/pictures'
-      # expect(page).to have_content(THE PICTURE)
+      expect(page).to have_content('Chillen with the boys')
       expect(page).not_to have_content('No pictures yet')
     end
   end
