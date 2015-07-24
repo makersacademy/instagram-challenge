@@ -2,21 +2,20 @@ feature 'User signup' do
   context 'when not signed in' do
 
     it 'should see sign up and sign in link' do
-      visit '/'
+      visit root_path
 
       expect(page).to have_content 'Sign in'
       expect(page).to have_content 'Sign up'
     end
 
     it 'a user can sign up' do
-      visit '/'
+      visit root_path
       click_link('Sign up')
 
       user = build(:user)
       sign_up_as(user)
 
       expect(page).to have_content "Welcome! You have signed up successfully."
-      expect(current_path).to eq photos_path
     end
   end
 
