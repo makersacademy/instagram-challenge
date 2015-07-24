@@ -8,4 +8,14 @@ feature 'pictures' do
       expect(page).to have_link 'Upload one'
     end
   end
+
+  context 'uploading your first image' do
+    scenario 'adds a single picture to the homepage' do
+
+      visit '/'
+      click_link 'Upload one'
+      click_button 'Upload your picture'
+      expect(current_path).to eq '/pictures'
+    end
+  end
 end
