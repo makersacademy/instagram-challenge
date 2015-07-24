@@ -23,7 +23,7 @@ feature 'photos' do
 
   end
 
-  context 'Viewing photos' do
+  context 'viewing photos' do
 
     let!(:sea) {Photo.create(title:'Awesome sea',
                              image: File.new("spec/features/sea.jpg") )}
@@ -36,6 +36,22 @@ feature 'photos' do
     end
 
   end
+
+  context 'editing title' do
+
+  let!(:sea) {Photo.create(title:'Awesome sea',
+                             image: File.new("spec/features/sea.jpg") )}
+
+  scenario 'let a user edit the title' do
+   visit '/photos'
+   click_link 'Edit'
+   fill_in 'Title', with: 'Really awesome sea'
+   click_button 'Edit'
+   expect(page).to have_content 'Really awesome sea'
+   expect(current_path).to eq '/photos'
+  end
+
+end
 
 
 
