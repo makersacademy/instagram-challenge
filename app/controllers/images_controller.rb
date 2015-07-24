@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
 
-  # before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   # before_action :set_current_user, only: :destroy
 
   def index
@@ -8,6 +8,7 @@ class ImagesController < ApplicationController
   end
 
   def new
+    @image = Image.new
   end
 
   def create

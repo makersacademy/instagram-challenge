@@ -11,7 +11,16 @@ feature 'Images' do
 
   context 'creating images' do
 
+    let!(:user) { FactoryGirl.create(:user) }
+
+    scenario 'is not allowed for users who are not logged in' do
+      visit '/images'
+      click_link 'Add Image'
+      expect(current_url).to have_content '/users/sign_in'
+    end
+
     scenario "allows creation" do
+      login_as(user, :scope => :user)
       visit '/images'
       click_link 'Add Image'
       fill_in 'Description', with: 'Anything'
