@@ -19,7 +19,7 @@ feature 'Images' do
       expect(current_url).to have_content '/users/sign_in'
     end
 
-    scenario "allows creation" do
+    scenario "is allowed for users who are logged in" do
       login_as(user, :scope => :user)
       visit '/images'
       click_link 'Add Image'
