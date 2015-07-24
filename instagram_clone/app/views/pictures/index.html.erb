@@ -1,2 +1,10 @@
-No pictures yet!
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <h2><%= link_to picture.descr, picture_path(picture) %></h2>
+    <%= image_tag photo.image.url(:medium) %>
+  <% end %>
+<% else %>
+  <h1> No pictures yet! </h1>
+<% end %>
+
 <%= link_to 'Upload a picture', new_picture_path %>
