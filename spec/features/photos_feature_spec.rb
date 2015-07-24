@@ -40,7 +40,7 @@ feature 'photos' do
   context 'editing title or photo' do
 
   let!(:sea) {Photo.create(title:'Awesome sea',
-                             image: File.new("spec/features/sea.jpg") )}
+                           image: File.new("spec/features/sea.jpg") )}
 
   scenario 'let a user edit the title' do
    visit '/photos'
@@ -49,6 +49,19 @@ feature 'photos' do
    click_button 'Edit'
    expect(page).to have_content 'Really awesome sea'
    expect(current_path).to eq '/photos'
+  end
+
+end
+
+context 'deleting photo' do
+
+  let!(:sea) {Photo.create(title:'Awesome sea',
+                           image: File.new("spec/features/sea.jpg") )}
+
+  scenario 'removes a photo when a user clicks a delete link' do
+    visit '/photos'
+    click_link 'Delete'
+    expect(page).to_not have_content 'Awesome sea'
   end
 
 end
