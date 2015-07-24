@@ -1,2 +1,11 @@
-No photos yet
-<a href='#'>Add a photo</a>
+<% if Photo.all.any? %>
+  <% Photo.all.each do |photo| %>
+    <h2><%= photo.title %></h2>
+    <%= image_tag photo.image.url(:medium) %>
+  <% end %>
+<% else %>
+  <h1>No photo yet</h1>
+<% end %>
+
+
+<%= link_to( "Add a photo", new_photo_path) %>
