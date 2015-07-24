@@ -8,4 +8,6 @@ feature 'pictures' do
       expect(page).to have_link 'Add a picture'
     end
   end
+
+  
 end
