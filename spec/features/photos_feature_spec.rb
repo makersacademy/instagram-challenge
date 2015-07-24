@@ -37,7 +37,7 @@ feature 'photos' do
 
   end
 
-  context 'editing title' do
+  context 'editing title or photo' do
 
   let!(:sea) {Photo.create(title:'Awesome sea',
                              image: File.new("spec/features/sea.jpg") )}
