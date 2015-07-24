@@ -12,9 +12,10 @@ feature 'User signup' do
       visit '/'
       click_link('Sign up')
 
+      user = build(:user)
       sign_up_as(user)
 
-      expect(page).to have_content "Hi #{user.name}"
+      expect(page).to have_content "Welcome! You have signed up successfully."
       expect(current_path).to eq photos_path
     end
   end
@@ -24,6 +25,7 @@ feature 'User signup' do
     it 'should not see sign up and sign in links' do
       visit root_path
 
+      user = build(:user)
       sign_up_as(user)
 
       expect(page).not_to have_content 'Sign in'

@@ -1,11 +1,11 @@
 feature 'Uploading photos' do
   context 'when logged in' do
-    before(:each) do
-      sign_up
-    end
+    # before(:each) do
+    #   sign_up
+    # end
 
     it 'a user can upload an image' do
-      visit new_photos_path
+      visit new_photo_path
       fill_in 'Title', with: 'cool photo'
       # upload the file...
       # attach_file
