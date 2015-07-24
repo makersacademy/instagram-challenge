@@ -6,13 +6,12 @@ feature 'Photos' do
     it 'A user can view the homepage' do
       visit '/'
       expect(page).to have_content 'No photos yet'
-      expect(current_path).to eq photos_path
     end
 
     it 'A user can upload a photo' do
       visit '/'
       click_link 'Upload photo'
-
+      expect(page).to have_content 'Upload photo here'
     end
 
 end
