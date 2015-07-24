@@ -1,2 +1,9 @@
-No images yet!
-<a href='#'>Upload an image</a>
+<% if @images.any? %>
+  <% @images.each do |image| %>
+    <p><%= image_tag image.picture.url(:medium) %><br><%= image.name %></p>
+  <% end %>
+<% else %>
+  <h1>No images yet!</h1>
+<% end %>
+
+<a href='images/new'>Upload an image</a>

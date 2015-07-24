@@ -8,4 +8,11 @@ feature 'images' do
       expect(page).to have_link 'Upload an image'
     end
   end
+
+  context 'creating posts' do
+    scenario 'adds the image to the homepage' do
+      attach_file 'Picture', Rails.root.join('spec/images/cake.jpg')
+      expect(page).to have_css 'img.uploaded-pic'
+    end
+  end
 end
