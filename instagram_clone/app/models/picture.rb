@@ -1,10 +1,10 @@
 class Picture < ActiveRecord::Base
 
   has_attached_file :image,
-                    :styles => { :medium => "300x300", :thumb => "100X100" },
+                    :styles => { :large => "800x600", :medium => "300x300>", :thumb => "100x100>" },
                     :default_url => "",
                     # :default_url => "/images/:style/missing.png",
-                    :path => "#{Rails.root}/public/system/:class/:id_partition/:style.:extension",
+                    :path => "#{Rails.root}/public/system/:class/images/:id_partition/:style/:basename.:extension",
                     :storage => :filesystem
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
