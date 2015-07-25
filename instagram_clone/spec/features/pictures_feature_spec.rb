@@ -26,9 +26,13 @@ feature 'pictures' do
       visit '/pictures'
       click_link 'Add a picture'
       fill_in 'Url', with: 'fakepic'
+      attach_file "Image", "spec/asset_specs/photos/uku.jpg"
       click_button 'Create Picture'
       expect(page).to have_content 'fakepic'
       expect(current_path).to eq '/pictures'
+      expect(page).to have_selector("img")
     end
   end
 end
+
+# http://bit.ly/1OsdGLs
