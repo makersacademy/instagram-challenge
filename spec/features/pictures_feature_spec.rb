@@ -9,4 +9,10 @@ feature 'pictures' do
     end
   end
 
+  context 'uploading a picture' do
+    scenario 'without a caption' do
+      visit '/pictures'
+      expect(page).to have_css("img[src*='Pompey.jpg']")
+    end
+  end
 end
