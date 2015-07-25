@@ -13,6 +13,6 @@ class PicturesController < ApplicationController
   end
 
   def picture_params
-    params.require(:picture).permit(:url, :image)
+    params.require(:picture).permit(:image)
   end
 end

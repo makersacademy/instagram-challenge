@@ -11,13 +11,17 @@ feature 'pictures' do
 
   context 'Pictures added' do
     before do
-      Picture.create(url: 'fakepic')
+      visit '/pictures'
+      click_link 'Add a picture'
+      attach_file "Image", "spec/asset_specs/photos/uku.jpg"
+      click_button 'Create Picture'
     end
 
-    scenario 'Displays pictures' do
+    scenario 'Displays pictures and timestamp' do
       visit '/pictures'
-      expect(page).to have_content('fakepic')
+      expect(page).to have_selector('img')
       expect(page).not_to have_content('No pictures yet')
+      expect(page).to have_content(Picture.all[0].created_at)
     end
   end
 
@@ -25,12 +29,10 @@ feature 'pictures' do
     scenario 'form to fill in' do
       visit '/pictures'
       click_link 'Add a picture'
-      fill_in 'Url', with: 'fakepic'
       attach_file "Image", "spec/asset_specs/photos/uku.jpg"
       click_button 'Create Picture'
-      expect(page).to have_content 'fakepic'
       expect(current_path).to eq '/pictures'
-      expect(page).to have_selector("img")
+      expect(page).to have_selector('img')
     end
   end
 end
