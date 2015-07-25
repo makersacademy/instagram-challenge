@@ -1,5 +1,7 @@
 class Picture < ActiveRecord::Base
 
+  has_many :comments
+
   has_attached_file :image,
                     :styles => { :large => "800x600", :medium => "300x300>", :thumb => "100x100>" },
                     :default_url => "",

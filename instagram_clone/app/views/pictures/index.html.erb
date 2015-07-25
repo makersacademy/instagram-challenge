@@ -4,6 +4,20 @@
     <%= image_tag picture.image.url(:medium) %>
     <%= link_to "Delete #{picture.descr}", picture_path(picture), method: :delete %>
     <%= link_to "Edit #{picture.descr}", edit_picture_path(picture) %>
+    <%= link_to "Comment on #{picture.descr}", new_picture_comment_path(picture) %>
+
+    <h5><%= picture.descr %> comments</h5>
+    <% if picture.comments.any? %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+          <li>
+            <h3><%= comment.comments %></h3>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments</p>
+    <% end %>
   <% end %>
 <% else %>
   <h1> No pictures yet! </h1>
