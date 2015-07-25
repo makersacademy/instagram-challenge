@@ -1,2 +1,16 @@
-No cute animal pictures yet
-<a href='#'>Add a post/image</a>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <div class="post-image">
+      <%= image_tag post.image.url(:medium) %>
+    </div>
+    <span class="post-credit">
+      <%= post.name %>
+    </span>
+  <% end %>
+<% else %>
+  <h1>No cute animal pictures yet</h1>
+<% end %>
+
+
+
+<a href='posts/new'>Add a post</a>

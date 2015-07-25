@@ -9,3 +9,16 @@ feature 'posts' do
     end
   end
 end
+
+feature 'adds new post' do
+  scenario 'successfully adds a new picture' do
+    # sign_in
+    visit '/posts'
+    click_link "Add a post"
+    expect(page).to have_content 'Add post'
+    fill_in "Title", with: "Monk"
+    # attach_file "Large cover", "spec/support/uploads/monk_large.jpg"
+    click_button "Add Post"
+    expect(page).to have_selector("img[src='/my-flix/monk_large.jpg']")
+  end
+end
