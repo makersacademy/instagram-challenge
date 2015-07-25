@@ -55,9 +55,20 @@ feature 'pictures' do
       expect(page).to have_content 'Pompey'
       expect(current_path).to eq '/pictures'
     end
-
-
   end
+
+  context 'deleting a picture' do
+    let!(:pfc) {Picture.create(title:'PFC',
+                               image: File.new("spec/features/Pompey.jpg") )}
+    scenario 'allows an image to be deleted' do
+    visit '/pictures'
+    click_link 'Delete PFC'
+    expect(page).not_to have_content 'PFC'
+    expect(page).not_to have_css("img[src*='Pompey.jpg']")
+    expect(page).to have_content 'Picture deleted successfully'
+    end
+  end
+
 
 
 
