@@ -56,7 +56,7 @@ feature 'posts' do
        visit '/posts'
        click_link "Add a post"
        expect(page).to have_content 'Add a new post'
-       attach_file 'Image', 'spec/features/support/istanbul.jpg'
+       attach_file 'post_image', 'spec/features/istanbul.jpg'
        fill_in 'post_name', with: 'Istanbul'
        click_button "Add"
        expect(page).to have_selector("img[src*='istanbul.jpg']")
