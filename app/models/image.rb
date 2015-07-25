@@ -1,7 +1,9 @@
 class Image < ActiveRecord::Base
 
   belongs_to :user
-  has_many :comments, dependent: :destroy
+  has_many :comments,
+            -> { extending WithUserAssociationExtension },
+            dependent: :destroy
 
   has_attached_file :picture,
                     :styles => { :large => "800x600", :medium => "300x300>", :thumb => "100x100>"}

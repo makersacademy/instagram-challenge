@@ -1,5 +1,11 @@
 <h1><%= @image.description %></h1>
   <%= image_tag(@image.picture.url(:large), class: 'uploaded-pic large') %>
-  <p>Created by <%= @creator.email.split('@').first %></p>
+  <p>Created by <%= @creator_handle %></p>
 
-  <%= link_to "Add Comment", new_comment_path() %>
+  <ul>
+    <% @comments_info.each do |comment_info| %>
+      <li><%= comment_info %></li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Add Comment", new_image_comment_path(@image) %>

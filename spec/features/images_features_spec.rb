@@ -33,7 +33,7 @@ feature 'Images' do
   context 'viewing images' do
 
     scenario 'images can be viewed individually' do
-      image = FactoryGirl.create(:image)
+      image = FactoryGirl.create(:image, user_id: user.id)
       visit '/images'
       find("a:nth-of-type(3)").click
       expect(page).to have_content image.description
