@@ -3,7 +3,9 @@
     =image_tag picture.image.url(:thumb)
     %h2= picture.caption
     %h2= picture.user
-    %h2= link_to "Comment", new_picture_comment_path
+    - picture.comments.each do |comment|
+      %h3= comment.my_comment
+    %h2= link_to "Comment", new_picture_comment_path(picture.id)
 - else
   No pictures yet!
 

@@ -9,10 +9,10 @@ feature 'commenting' do
   scenario 'allows users to leave a comment on a picture using a form' do
     visit '/pictures'
     click_link 'Comment'
-    fill_in 'My_comment', with: 'Amazing friggin comment'
-    click_button 'Post comment'
+    fill_in 'comment_my_comment', with: 'Amazing friggin comment'
+    click_button 'Post Comment'
 
     expect(current_path).to eq '/pictures'
-    expect(page).to have_content 'Amaging friggin comment'
+    expect(page).to have_content 'Amazing friggin comment'
   end
 end
