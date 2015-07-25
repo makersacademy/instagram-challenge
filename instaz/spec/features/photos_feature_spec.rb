@@ -34,4 +34,17 @@ feature 'photos' do
       expect(current_path).to eq "/photos/#{Photo.find_by(name: 'Grumpy cat').id}"
     end
   end
+  
+  context 'deleting photos' do
+    before do
+      add_photo      
+    end
+    
+    scenario 'removes photo when it is deleted' do
+      visit '/'
+      click_link 'Grumpy cat'
+      click_link 'Delete photo'
+      expect(page).to have_content 'Photo successfully deleted'
+    end
+  end
 end
