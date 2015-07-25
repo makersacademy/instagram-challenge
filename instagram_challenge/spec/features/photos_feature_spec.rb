@@ -28,7 +28,7 @@ feature 'photos' do
         click_button 'Upload Photo'
         expect(page).to have_css("img[src*='Ice.jpg']")
         expect(page).to have_content 'awesome'
-        expect(current_path).to eq '/pictures'
+        expect(current_path).to eq '/photos'
       end
 
     end

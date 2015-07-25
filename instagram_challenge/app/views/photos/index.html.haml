@@ -1,3 +1,10 @@
-No photos have been uploaded!
 
 = link_to("Upload Photo", new_photo_path)
+
+- if @photos.any?
+  - @photos.each do |photo|
+    = image_tag photo.image.url(:medium)
+    = photo.caption
+
+- else
+  %h1 No photos have been uploaded!
