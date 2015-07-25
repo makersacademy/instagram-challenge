@@ -9,11 +9,12 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @user = User.create ( user_params )
+    @picture = Picture.create ( picture_params )
+    redirect_to pictures_path
   end
 
-  def user_params
-    params.require(:user).permit(:image) #may need to add extra criteria to strong params
+  def picture_params
+    params.require(:picture).permit(:image, :name, :description) #may need to add extra criteria to strong params
   end
 
 

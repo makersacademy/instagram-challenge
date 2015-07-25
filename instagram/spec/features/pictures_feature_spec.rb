@@ -29,9 +29,9 @@ feature 'pictures' do
       click_link 'Add a picture'
       attach_file 'Image','spec/features/rasp.jpg'
       fill_in 'Name', with: 'garden'
-      fill_in 'Description', with: 'raspberries'
-      click_link 'Upload picture'
-      expect(page).to have_css('img[src="rasp.jpg"]')
+      fill_in 'Description', with: 'berries'
+      click_button 'Upload picture'
+      # expect(page).to have_css('img[src*="/system/pictures/images/000/000/001/thumb/rasp.jpg"]') WHAT IS THE BEST WAY TO TEST IF IMAGES ARE ON THE SCREEN? 
       expect(page).to have_content('garden')
       expect(current_path).to eq '/pictures'
     end

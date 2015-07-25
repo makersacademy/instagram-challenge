@@ -2,12 +2,12 @@
 
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
-          <% image_tag picture.image.url(:medium) %>
+      <%= image_tag picture.image.url(:thumb) %>
       <h2> <%= picture.name %> </h2>
-      <h2> <%= picture.description %> </h2>
+      <p> <%= picture.description %> </p>
     <% end %>
 <% else %>
   No pictures yet
 <% end %>
 
-<a href="#"> Add a picture </a>
+<%= link_to 'Add a picture', new_picture_path %>
