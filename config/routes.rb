@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
 
-  resources :photos
+  resources :photos do
+    resources :comments
+  end
 
   get 'photos' =>  'photos#index'
   # The priority is based upon order of creation: first created -> highest priority.
