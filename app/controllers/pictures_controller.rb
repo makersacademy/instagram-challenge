@@ -16,4 +16,8 @@ class PicturesController < ApplicationController
   def picture_params
     params.require(:picture).permit(:description, :picture)
   end
+
+  def show
+    @picture = Picture.find(params[:id])
+  end
 end
