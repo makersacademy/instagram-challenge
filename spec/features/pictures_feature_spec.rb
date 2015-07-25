@@ -10,9 +10,22 @@ feature 'pictures' do
   end
 
   context 'uploading a picture' do
-    scenario 'without a caption' do
+    scenario 'succeeds when a title is entered' do
       visit '/pictures'
+      click_link 'Click here to add a picture!'
+      fill_in 'Title', with: 'PFC'
+      attach_file "Image", 'spec/features/Pompey.jpg'
+      click_button 'Upload picture'
       expect(page).to have_css("img[src*='Pompey.jpg']")
     end
+
+    scenario 'fails without a title' do
+    visit '/pictures'
+    click_link 'Click here to add a picture!'
+    attach_file "Image", 'spec/features/Pompey.jpg'
+    click_button 'Upload picture'
+    expect(page).to have_content 'error'
+    end
+
   end
 end
