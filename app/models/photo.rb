@@ -6,4 +6,8 @@ class Photo < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
 
+  validates :title, length: {minimum: 1}
+
+  validates :image, :attachment_presence => true
+
 end

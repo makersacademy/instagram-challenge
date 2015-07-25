@@ -5,7 +5,7 @@ feature 'adding comments' do
   let!(:sea) {Photo.create(title:'Awesome sea',
                              image: File.new("spec/features/sea.jpg") )}
 
-  scenario 'allows users to leave a comment' do
+  skip 'allows users to leave a comment' do
     visit '/photos'
     click_link 'Add a comment'
     fill_in 'thoughts', with: 'wow amazing!'

@@ -21,6 +21,23 @@ feature 'photos' do
       expect(page).to have_css('img[src*="sea.jpg"]')
     end
 
+    scenario 'does not let you submit a photo without a title' do
+      visit '/photos'
+      click_link 'Add a photo'
+      attach_file 'Image', 'spec/features/sea.jpg'
+      fill_in 'Title', with: ''
+      click_button 'Add photo'
+      expect(page).to have_content 'error'
+    end
+
+    scenario 'does not let you submit a photo without upload a image' do
+      visit '/photos'
+      click_link 'Add a photo'
+      fill_in 'Title', with: 'hello world'
+      click_button 'Add photo'
+      expect(page).to have_content 'error'
+    end
+
   end
 
   context 'viewing photos' do
