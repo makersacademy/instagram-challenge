@@ -13,6 +13,10 @@ class PicturesController < ApplicationController
     redirect_to pictures_path
   end
 
+  def show
+    @picture = Picture.find(params[:id])
+  end
+
   def picture_params
     params.require(:picture).permit(:image, :description) #may need to add extra criteria to strong params
   end
