@@ -53,7 +53,7 @@ feature 'pictures' do
 
     scenario 'let a user edit a picture' do
     visit '/pictures'
-    click_link 'Edit Description'
+    click_link 'Edit description'
     fill_in 'Description', with: 'berries from garden'
     click_button 'Update Picture'
     expect(page).to have_content 'berries from garden'
