@@ -7,9 +7,7 @@ feature 'Uploading photos' do
 
     it 'a user can upload an image' do
       visit new_photo_path
-      fill_in 'Title', with: 'cool photo'
-      # upload the file...
-      # attach_file
+      attach_file 'upload_name', './spec/test_images/Honda-Gold-Wing-White.jpg'
 
       click_button 'Upload'
 
@@ -23,5 +21,5 @@ feature 'Uploading photos' do
 
     end
   end
-  
+
 end
