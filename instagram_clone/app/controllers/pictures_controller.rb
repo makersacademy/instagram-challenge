@@ -29,7 +29,7 @@ class PicturesController < ApplicationController
       @picture = Picture.find(params[:id])
     else
       flash[:notice] = 'You do not have permission to edit this picture'
-      redirect_to '/'
+      redirect_to '/pictures'
     end
   end
 
@@ -44,9 +44,14 @@ class PicturesController < ApplicationController
 
   def destroy
     @picture = Picture.find(params[:id])
-    @picture.destroy
-    flash[:notice] = 'Picture deleted successfully'
-    redirect_to '/pictures'
+    if current_user.id === @picture.user_id
+      @picture.destroy
+      flash[:notice] = 'Picture deleted successfully'
+      redirect_to '/pictures'
+    else
+      flash[:notice] = 'You do not have permission to delete this picture'
+      redirect_to '/pictures'
+    end
   end
 
   def picture_params

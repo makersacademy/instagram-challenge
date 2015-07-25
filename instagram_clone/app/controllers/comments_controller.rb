@@ -7,8 +7,24 @@ class CommentsController < ApplicationController
 
   def create
     @picture = Picture.find(params[:picture_id])
-    @picture.comments.create(comment_params)
-    redirect_to pictures_path
+    @comment = @picture.comments.build_with_user(comment_params, current_user)
+    if @comment.save
+      redirect_to pictures_path
+    else
+      render 'new'
+    end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    if current_user.id === @comment.user_id
+      @comment.destroy
+      flash[:notice] = 'You have succesfully deleted your comment'
+      redirect_to '/pictures'
+    else
+      flash[:notice] = 'You do not have permission to delete this comment'
+      redirect_to '/'
+    end
   end
 
   def comment_params

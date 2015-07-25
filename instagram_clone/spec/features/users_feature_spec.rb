@@ -39,7 +39,7 @@ end
 
 feature "When users are logged in" do
 
-  it "they can only edit there own restaurants" do
+  it "they can only edit their own pictures" do
     sign_up
     click_link 'Upload a picture'
     attach_file 'Image', 'spec/features/McAvoy.jpg'
@@ -50,8 +50,39 @@ feature "When users are logged in" do
     sign_up_2
     expect(current_path).to eq '/'
     click_link 'Edit Bae'
-    expect(current_path).to eq '/'
+    expect(current_path).to eq '/pictures'
     expect(page).to have_content 'You do not have permission to edit this picture'
+  end
+
+  it "they can only delete their own pictures" do
+    sign_up
+    click_link 'Upload a picture'
+    attach_file 'Image', 'spec/features/McAvoy.jpg'
+    fill_in 'Description', with: 'Bae'
+    click_button 'Upload your picture'
+    expect(current_path).to eq '/pictures'
+    click_link 'Log out'
+    sign_up_2
+    expect(current_path).to eq '/'
+    click_link 'Delete Bae'
+    expect(current_path).to eq '/pictures'
+    expect(page).to have_content 'You do not have permission to delete this picture'
+  end
+
+  it "they can delete there own comments for pictures" do
+    sign_up
+    click_link 'Upload a picture'
+    attach_file 'Image', 'spec/features/McAvoy.jpg'
+    fill_in 'Description', with: 'Bae'
+    click_button 'Upload your picture'
+    expect(current_path).to eq '/pictures'
+    click_link 'Comment on Bae'
+    fill_in 'Comment', with: 'My bae too'
+    click_button 'Leave your comment'
+    expect(current_path).to eq '/pictures'
+    click_link 'Delete comment for Bae'
+    expect(current_path).to eq '/pictures'
+    expect(page).to have_content 'You have succesfully deleted your comment'
   end
 
   def sign_up
