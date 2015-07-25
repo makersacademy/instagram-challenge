@@ -3,9 +3,11 @@
     =image_tag picture.image.url(:thumb)
     %h2= picture.caption
     %h2= picture.user
+    %p= pluralize picture.likes.count, 'like'
     - picture.comments.each do |comment|
       %h3= comment.my_comment
     %h2= link_to "Comment", new_picture_comment_path(picture.id)
+    %h2= link_to "Like", pictures_likes_path(picture.id)
 - else
   No pictures yet!
 
