@@ -22,7 +22,15 @@ feature 'pictures' do
     click_button 'Upload picture'
     expect(page).to have_content 'error'
     end
-  
+
+    scenario 'does not succeed without an image file' do
+      visit '/pictures'
+      click_link 'Click here to add a picture!'
+      fill_in 'Title', with: 'nothing'
+      click_button 'Upload picture'
+      expect(page).to have_content 'error'
+    end
+
   end
 
   context 'viewing a picture' do
