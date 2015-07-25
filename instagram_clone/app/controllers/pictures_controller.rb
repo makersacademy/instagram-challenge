@@ -21,6 +21,19 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
   end
 
+  def edit
+    @picture = Picture.find(params[:id])
+  end
+
+  def update
+    @picture = Picture.find(params[:id])
+    if @picture.update(picture_params)
+      redirect_to '/pictures'
+    else
+      render 'new'
+    end
+  end
+
   def destroy
     @picture = Picture.find(params[:id])
     @picture.destroy

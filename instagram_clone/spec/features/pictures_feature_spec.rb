@@ -44,6 +44,26 @@ feature 'pictures' do
       expect(page).not_to have_content 'Bae'
       expect(page).not_to have_css("img[src*='McAvoy.jpg']")
       expect(page).to have_content 'Picture deleted successfully'
+      expect(current_path).to eq '/pictures'
+    end
+  end
+
+  context 'editing pictures' do
+    before do
+      visit '/'
+      click_link 'Upload a picture'
+      attach_file 'Image', 'spec/features/McAvoy.jpg'
+      fill_in 'Description', with: 'Bae'
+      click_button 'Upload your picture'
+    end
+
+    scenario 'allows user to edit an images description' do
+      click_link 'Edit Bae'
+      fill_in 'Description', with: 'My Bae'
+      click_button 'Update your picture'
+      expect(page).to have_content 'My Bae'
+      expect(page).to have_css("img[src*='McAvoy.jpg']")
+      expect(current_path).to eq '/pictures'
     end
   end
 end
