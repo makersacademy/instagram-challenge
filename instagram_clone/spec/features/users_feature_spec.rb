@@ -36,3 +36,39 @@ feature "User can sign in and out" do
     end
   end
 end
+
+feature "When users are logged in" do
+
+  it "they can only edit there own restaurants" do
+    sign_up
+    click_link 'Upload a picture'
+    attach_file 'Image', 'spec/features/McAvoy.jpg'
+    fill_in 'Description', with: 'Bae'
+    click_button 'Upload your picture'
+    expect(current_path).to eq '/pictures'
+    click_link 'Log out'
+    sign_up_2
+    expect(current_path).to eq '/'
+    click_link 'Edit Bae'
+    expect(current_path).to eq '/'
+    expect(page).to have_content 'You do not have permission to edit this picture'
+  end
+
+  def sign_up
+    visit '/'
+    click_link 'Sign Up'
+    fill_in 'Email', with: 'test@email.com'
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+    click_button 'Sign up'
+  end
+
+  def sign_up_2
+    visit '/'
+    click_link 'Sign Up'
+    fill_in 'Email', with: 'test2@email.com'
+    fill_in 'Password', with: 'password2'
+    fill_in 'Password confirmation', with: 'password2'
+    click_button 'Sign up'
+  end
+end

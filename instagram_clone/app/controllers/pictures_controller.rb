@@ -11,7 +11,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.create(picture_params)
+    @picture = current_user.pictures.build(picture_params)
     if @picture.save
       redirect_to '/pictures'
     else
@@ -25,6 +25,12 @@ class PicturesController < ApplicationController
 
   def edit
     @picture = Picture.find(params[:id])
+    if current_user.id === @picture.user_id
+      @picture = Picture.find(params[:id])
+    else
+      flash[:notice] = 'You do not have permission to edit this picture'
+      redirect_to '/'
+    end
   end
 
   def update
