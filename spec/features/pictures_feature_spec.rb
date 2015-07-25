@@ -9,7 +9,13 @@ feature 'pictures' do
     end
   end
 
-    scenario 'adding a picture' do
+  context 'uploading images' do
+    before do
+      user = User.create email: 'kirsten@jones.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj'
+      login_as user
+    end
+
+    scenario 'a user adds a picture when signed in' do
       visit '/pictures'
       click_link 'Add a picture'
       fill_in('Caption', with: 'Test caption')
@@ -18,4 +24,5 @@ feature 'pictures' do
       expect(page).to have_content 'Test caption'
       expect(page).not_to have_content 'No pictures yet'
     end
+  end
 end
