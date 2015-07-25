@@ -3,7 +3,7 @@ class Picture < ActiveRecord::Base
   has_many :comments
 
   has_attached_file :image,
-                    :styles => { :large => "800x600", :medium => "300x300>", :thumb => "100x100>" },
+                    :styles => { :medium => "300x300", :thumb => "100x100" },
                     :default_url => "",
                     # :default_url => "/images/:style/missing.png",
                     :path => "#{Rails.root}/public/system/:class/images/:id_partition/:style/:basename.:extension",
