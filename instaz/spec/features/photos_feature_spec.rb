@@ -23,9 +23,7 @@ feature 'photos' do
   end
   
   context 'viewing photos' do
-    before do
-      add_photo      
-    end
+    before { add_photo }
     
     scenario 'lets a user view a photo' do
       visit '/'
@@ -36,9 +34,7 @@ feature 'photos' do
   end
   
   context 'deleting photos' do
-    before do
-      add_photo      
-    end
+    before { add_photo }
     
     scenario 'removes photo when it is deleted' do
       visit '/'
