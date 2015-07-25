@@ -4,6 +4,8 @@ class Photo < ActiveRecord::Base
                     :default_url => ""
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  belongs_to :user
+
   has_many :comments, dependent: :destroy
 
   validates :title, length: {minimum: 1}

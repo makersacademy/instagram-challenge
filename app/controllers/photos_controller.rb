@@ -40,6 +40,17 @@ class PhotosController < ApplicationController
     redirect_to '/photos'
   end
 
+  #   def destroy
+  #   @photo = Photo.find(params[:id])
+  #   if @photo.user === current_user
+  #     @photo.destroy
+  #     flash[:notice] = 'Photo deleted successfully'
+  #   else
+  #     flash[:notice] = "You cannot delete this photo"
+  #   end
+  #   redirect_to '/photos'
+  # end
+
   def photo_params
     params.require(:photo).permit(:title, :image)
   end
