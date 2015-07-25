@@ -9,20 +9,29 @@ feature 'photos' do
     end
   end
   
-  context 'photos have been added' do
-    before do   
+  context 'adding a photo' do
+    scenario 'prompts user to fill out a form, then displays the photo' do   
       file_path = "./app/assets/images/cat.jpg"
-      visit '/photos'
+      visit '/'
       click_link 'Upload Image'
       fill_in 'Description', with: 'grumpy cat'
       attach_file "photo_image", file_path
       click_button 'Upload'
-    end
-    
-    scenario 'display photo ' do
-      visit '/'
       expect(page).to have_content('grumpy cat')
       expect(page).not_to have_content('No photos yet!')
+    end
+  end
+  
+  context 'viewing photos' do
+    before do
+      add_photo      
+    end
+    
+    scenario 'lets a user view a photo' do
+      visit '/'
+      click_link 'Grumpy cat'
+      expect(page).to have_content 'Grumpy cat'
+      expect(current_path).to eq "/photos/#{Photo.find_by(name: 'Grumpy cat').id}"
     end
   end
 end
