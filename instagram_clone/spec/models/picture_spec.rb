@@ -9,5 +9,7 @@ describe Picture, :type => :model do
   end
 
   it { is_expected.to have_many :comments }
-  
+
+  it { is_expected.to have_many(:comments).dependent(:destroy) }
+
 end

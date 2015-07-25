@@ -11,7 +11,7 @@ feature 'pictures' do
 
   context 'uploading your first image' do
     scenario 'with a description' do
-      visit '/'
+      sign_up
       click_link 'Upload a picture'
       attach_file 'Image', 'spec/features/McAvoy.jpg'
       fill_in 'Description', with: 'Bae'
@@ -22,17 +22,24 @@ feature 'pictures' do
     end
 
     scenario 'does not let you upload without a description' do
-      visit '/'
+      sign_up
       click_link 'Upload a picture'
       attach_file 'Image', 'spec/features/McAvoy.jpg'
       click_button 'Upload your picture'
       expect(page).to have_content 'error'
     end
+
+    scenario 'user cannot upload a picture if not logged in' do
+      visit '/'
+      click_link 'Upload a picture'
+      expect(current_path).to eq '/users/sign_in'
+      expect(page).to have_content 'Log in'
+    end
   end
 
   context 'deleting pictures' do
     before do
-      visit '/'
+      sign_up
       click_link 'Upload a picture'
       attach_file 'Image', 'spec/features/McAvoy.jpg'
       fill_in 'Description', with: 'Bae'
@@ -50,7 +57,7 @@ feature 'pictures' do
 
   context 'editing pictures' do
     before do
-      visit '/'
+      sign_up
       click_link 'Upload a picture'
       attach_file 'Image', 'spec/features/McAvoy.jpg'
       fill_in 'Description', with: 'Bae'
@@ -66,4 +73,13 @@ feature 'pictures' do
       expect(current_path).to eq '/pictures'
     end
   end
+
+    def sign_up
+      visit '/'
+      click_link 'Sign Up'
+      fill_in 'Email', with: 'test@email.com'
+      fill_in 'Password', with: 'password'
+      fill_in 'Password confirmation', with: 'password'
+      click_button 'Sign up'
+    end
 end
