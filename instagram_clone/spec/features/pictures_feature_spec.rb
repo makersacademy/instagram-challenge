@@ -8,4 +8,14 @@ feature 'pictures' do
       expect(page).to have_content('Add a picture')
     end
   end
+
+  context 'Pictures added' do
+    before do
+      Picture.create()
+    end
+
+    scenario 'Displays pictures' do
+
+    end
+  end
 end
