@@ -35,13 +35,27 @@ feature 'pictures' do
 
   context 'viewing a picture' do
     let!(:pfc) {Picture.create(title:'PFC',
-                             image: File.new("spec/features/Pompey.jpg") )}
+                               image: File.new("spec/features/Pompey.jpg") )}
     scenario 'allows a picture to be viewed by clicking on the title' do
       visit '/pictures'
       click_link 'PFC'
       expect(page).to have_content 'PFC'
       expect(current_path).to eq "/pictures/#{pfc.id}"
     end
+  end
+
+  context 'editing a picture' do
+    let!(:pfc) {Picture.create(title:'PFC',
+                               image: File.new("spec/features/Pompey.jpg") )}
+    scenario 'allows a user to edit the title' do
+      visit '/pictures'
+      click_link 'Edit PFC'
+      fill_in 'Title', with: 'Pompey'
+      click_button 'Update Title'
+      expect(page).to have_content 'Pompey'
+      expect(current_path).to eq '/pictures'
+    end
+
 
   end
 
