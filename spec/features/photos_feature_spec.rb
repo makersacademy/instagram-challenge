@@ -13,6 +13,7 @@ feature 'photos' do
 
     scenario 'should display a photo and his title' do
       visit '/photos'
+      sign_up
       click_link 'Add a photo'
       attach_file 'Image', 'spec/features/sea.jpg'
       fill_in 'Title', with: 'Awesome sea'
@@ -23,6 +24,7 @@ feature 'photos' do
 
     scenario 'does not let you submit a photo without a title' do
       visit '/photos'
+      sign_up
       click_link 'Add a photo'
       attach_file 'Image', 'spec/features/sea.jpg'
       fill_in 'Title', with: ''
@@ -32,6 +34,7 @@ feature 'photos' do
 
     scenario 'does not let you submit a photo without upload a image' do
       visit '/photos'
+      sign_up
       click_link 'Add a photo'
       fill_in 'Title', with: 'hello world'
       click_button 'Add photo'
@@ -61,6 +64,7 @@ feature 'photos' do
 
   scenario 'let a user edit the title' do
    visit '/photos'
+   sign_up
    click_link 'Edit'
    fill_in 'Title', with: 'Really awesome sea'
    click_button 'Edit'
@@ -81,6 +85,15 @@ context 'deleting photo' do
     expect(page).to_not have_content 'Awesome sea'
   end
 
+end
+
+def sign_up
+  visit('/')
+  click_link('Sign up')
+  fill_in('Email', with: 'test@example.com')
+  fill_in('Password', with: 'testtest')
+  fill_in('Password confirmation', with: 'testtest')
+  click_button('Sign up')
 end
 
 
