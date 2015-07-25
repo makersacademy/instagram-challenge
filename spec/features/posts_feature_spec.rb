@@ -18,34 +18,49 @@ feature 'posts' do
      end
    end
 
-  context 'add post when signed in' do
-    scenario 'directs user to log in if not logged in' do
+  context 'when not signed in' do
+    scenario 'directs user back to log in' do
       visit '/posts'
       click_link 'Add a post'
       expect(page).to have_content('Log in')
     end
+  end
+
+  context 'when signed in' do
+    # before do
+    #   Post.create(name: 'Istanbul')
+    # end
 
     scenario 'prompts user to fill out form and displays post name' do
       sign_up_user1
       visit '/posts'
       click_link 'Add a post'
-      expect(page).to have_content 'Add a New Post'
-      fill_in 'Name', with: 'Istanbul'
-      click_button 'Add post'
+      expect(page).to have_content 'Add a new post'
+      fill_in 'post_name', with: 'Istanbul'
+      click_button 'Add'
       expect(page).to have_content 'Istanbul'
       expect(current_path).to eq '/posts'
     end
 
-  #    scenario 'successfully adds a new picture' do
-  #      # sign_in
-  #      visit '/posts'
-  #      click_link "Add a post"
-  #      expect(page).to have_content 'Add a New Post'
-  #      fill_in "Name", with: "Istanbul"
-  #      attach_file 'Image', 'spec/features/support/istanbul.jpg'
-  #      click_button "Add post"
-  #      expect(page).to have_selector("img[src*='istanbul.jpg']")
-  #    end
+    scenario 'does not let you upload photo without a name/credit' do
+      sign_up_user1
+      visit '/posts'
+      click_link 'Add a post'
+      expect(page).to have_content 'Add a new post'
+      click_button 'Add'
+      expect(page).to have_content 'Please correct the following errors to save this post:'
+    end
+
+     scenario 'successfully adds a new picture' do
+       sign_up_user1
+       visit '/posts'
+       click_link "Add a post"
+       expect(page).to have_content 'Add a new post'
+       attach_file 'Image', 'spec/features/support/istanbul.jpg'
+       fill_in 'post_name', with: 'Istanbul'
+       click_button "Add"
+       expect(page).to have_selector("img[src*='istanbul.jpg']")
+     end
   end
 
   def sign_up_user1

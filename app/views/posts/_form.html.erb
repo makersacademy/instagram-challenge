@@ -1,7 +1,17 @@
-<!-- send files to the server: -->
 <%= form_for @post, :html => {:multipart => true} do |f| %>
-<!-- adds file picker so users can select an iamge from their local machine and upload it -->
   <%= f.file_field :image %>
-  <%= f.text_field :name %>
-  <%= f.submit 'Add post' %>
+  <%= f.label 'Photo credit' %>
+  <%= f.text_field :name %><br />
+  <%= f.submit 'Add' %>
+<% end %>
+
+<% if @post.errors.any? %>
+  <section id="errors" >
+    <h2> <%= pluralize(@post.errors.count, "error") %> Please correct the following errors to save this post: </h2>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
 <% end %>
