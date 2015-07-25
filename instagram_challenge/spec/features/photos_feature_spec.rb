@@ -10,16 +10,6 @@ feature 'photos' do
 
 
     context 'uploading images' do
-      before do
-        Photo.create(caption: 'ice')
-      end
-
-      # scenario 'displaying photos' do
-      #   visit '/'
-      #   expect(page).to have_content 'ice'
-      #   expect(page).not_to have_content 'No photos have been uploaded!'
-      # end
-
       scenario 'uploading an image' do
         visit '/'
         click_link 'Upload Photo'
@@ -30,6 +20,15 @@ feature 'photos' do
         expect(page).to have_content 'awesome'
         expect(current_path).to eq '/photos'
       end
+
+    context 'viewing individual pictures' do
+      scenario 'lets a user view a picture' do
+        visit '/'
+        click_
+
+      end
+
+    end
 
     end
 
