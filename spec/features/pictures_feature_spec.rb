@@ -11,11 +11,7 @@ feature 'pictures' do
 
   context 'uploading a picture' do
     scenario 'succeeds when a title is entered' do
-      visit '/pictures'
-      click_link 'Click here to add a picture!'
-      fill_in 'Title', with: 'PFC'
-      attach_file "Image", 'spec/features/Pompey.jpg'
-      click_button 'Upload picture'
+      upload_picture
       expect(page).to have_css("img[src*='Pompey.jpg']")
     end
 
@@ -26,6 +22,29 @@ feature 'pictures' do
     click_button 'Upload picture'
     expect(page).to have_content 'error'
     end
+  
+  end
+
+  context 'viewing a picture' do
+    let!(:pfc) {Picture.create(title:'PFC',
+                             image: File.new("spec/features/Pompey.jpg") )}
+    scenario 'allows a picture to be viewed by clicking on the title' do
+      visit '/pictures'
+      click_link 'PFC'
+      expect(page).to have_content 'PFC'
+      expect(current_path).to eq "/pictures/#{pfc.id}"
+    end
 
   end
+
+
+
+  def upload_picture
+  visit '/pictures'
+  click_link 'Click here to add a picture!'
+  fill_in 'Title', with: 'PFC'
+  attach_file "Image", 'spec/features/Pompey.jpg'
+  click_button 'Upload picture'
+  end
+
 end
