@@ -1,2 +1,8 @@
-No pictures yet!
-%a(href='#') Click here to add a picture!
+- if @pictures.any?
+  - @pictures.each do |picture|
+    %h2= link_to picture.caption, picture_path(picture)
+    = image_tag picture.image.url(:thumb)
+- else
+  No pictures yet!
+
+= link_to "Click here to add a picture!", new_picture_path
