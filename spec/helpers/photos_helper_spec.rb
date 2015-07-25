@@ -10,5 +10,6 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe PhotosHelper, type: :helper do
-end
+
+# RSpec.describe PhotosHelper, type: :helper do
+# end

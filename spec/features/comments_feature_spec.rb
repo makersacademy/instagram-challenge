@@ -8,7 +8,7 @@ feature 'adding comments' do
   scenario 'allows users to leave a comment' do
     visit '/photos'
     click_link 'Add a comment'
-    fill_in "Comment", with: "wow amazing!"
+    fill_in 'thoughts', with: 'wow amazing!'
     click_button 'Leave comment'
 
     expect(current_path).to eq '/photos'

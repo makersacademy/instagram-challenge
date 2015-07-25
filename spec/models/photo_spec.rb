@@ -1,4 +1,5 @@
-require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Photo, type: :model do
+describe Photo, type: :model do
+  it { is_expected.to have_many :comments }
 end
