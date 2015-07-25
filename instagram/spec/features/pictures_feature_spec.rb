@@ -48,6 +48,17 @@ feature 'pictures' do
     end
   end
 
+  context 'editing pictures' do
+    before {Picture.create description: 'berries'}
 
-
+    scenario 'let a user edit a picture' do
+    visit '/pictures'
+    click_link 'Edit Description'
+    fill_in 'Description', with: 'berries from garden'
+    click_button 'Update Picture'
+    expect(page).to have_content 'berries from garden'
+    expect(current_path).to eq '/pictures'
+    end
   end
+
+end
