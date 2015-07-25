@@ -2,8 +2,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :users
+
+  resources :tags
+
   resources :images do
-    resources :tags
+    resources :comments
   end
 
   root to: "images#index"
