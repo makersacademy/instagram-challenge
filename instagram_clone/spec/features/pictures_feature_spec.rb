@@ -11,11 +11,13 @@ feature 'pictures' do
 
   context 'Pictures added' do
     before do
-      Picture.create()
+      Picture.create(url: 'fakepic')
     end
 
     scenario 'Displays pictures' do
-
+      visit '/pictures'
+      expect(page).to have_content('fakepic')
+      expect(page).not_to have_content('No pictures yet')
     end
   end
 end

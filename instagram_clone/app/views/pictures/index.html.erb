@@ -5,7 +5,14 @@
 </head>
 
 <body>
-  <p>No pictures yet</p>
-  <p><%= link_to('Add a picture', new_picture_path) %></p>
+  <% if @pictures.any? %>
+    <% @pictures.each do |picture| %>
+      <h2><%= picture.url %></h2>
+    <% end %>
+  <% else %>
+    <h2>No pictures yet</h2>
+  <% end %>
+
+  <h2><%= link_to('Add a picture', new_picture_path) %></h2>
 </body>
 </html>
