@@ -1,2 +1,14 @@
-No photos yet
 <a href='/photos/new'>Upload a photo</a>
+
+<% if @photos.any? %>
+  <% @photos.each do |photo| %>
+   <div>
+     <%= image_tag photo.image.url(:thumb) %>
+     <p>
+       <%= photo.description %>
+     </p>
+   </div>
+  <% end %>
+<% else %>
+  No photos yet
+<% end %>
