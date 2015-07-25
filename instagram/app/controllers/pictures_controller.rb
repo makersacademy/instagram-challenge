@@ -14,7 +14,7 @@ class PicturesController < ApplicationController
   end
 
   def picture_params
-    params.require(:picture).permit(:image, :name, :description) #may need to add extra criteria to strong params
+    params.require(:picture).permit(:image, :description) #may need to add extra criteria to strong params
   end
 
 

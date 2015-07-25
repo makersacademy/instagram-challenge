@@ -1,3 +1,4 @@
+#query about locating photo on page
 require 'rails_helper'
 
 feature 'pictures' do
@@ -12,7 +13,7 @@ feature 'pictures' do
 
   context 'pictures have been added' do
     before do
-      Picture.create(name: 'garden', description: 'raspberries')
+      Picture.create(description: 'raspberries')
     end
 
     scenario 'display pictures' do
@@ -28,13 +29,16 @@ feature 'pictures' do
       visit '/pictures'
       click_link 'Add a picture'
       attach_file 'Image','spec/features/rasp.jpg'
-      fill_in 'Name', with: 'garden'
       fill_in 'Description', with: 'berries'
       click_button 'Upload picture'
-      # expect(page).to have_css('img[src*="/system/pictures/images/000/000/001/thumb/rasp.jpg"]') WHAT IS THE BEST WAY TO TEST IF IMAGES ARE ON THE SCREEN? 
-      expect(page).to have_content('garden')
+      # expect(page).to have_css('img[src*="/system/pictures/images/000/000/001/thumb/rasp.jpg"]') WHAT IS THE BEST WAY TO TEST IF IMAGES ARE ON THE SCREEN?
+      expect(page).to have_content('berries')
       expect(current_path).to eq '/pictures'
     end
   end
-
 end
+  #
+  # context 'viewing pictures' do
+  #
+  #
+  # end
