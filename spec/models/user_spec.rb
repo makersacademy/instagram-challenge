@@ -1,5 +1,6 @@
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe User, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
+describe User, type: :model do
+  it { is_expected.to have_many(:posts) }
 end
