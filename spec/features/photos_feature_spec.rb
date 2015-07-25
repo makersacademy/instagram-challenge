@@ -41,6 +41,7 @@ feature 'photos' do
       expect(page).to have_content 'error'
     end
 
+
   end
 
   context 'viewing photos' do
@@ -74,7 +75,7 @@ feature 'photos' do
 
 end
 
-context 'deleting photo' do
+context 'deleting photo after log in' do
 
   let!(:sea) {Photo.create(title:'Awesome sea',
                            image: File.new("spec/features/sea.jpg") )}
@@ -87,10 +88,34 @@ context 'deleting photo' do
 
 end
 
+context 'deleting photo added by another user' do
+
+  scenario 'fails when I am not the user that added the photo' do
+    sign_up
+    click_link 'Add a photo'
+    attach_file 'Image', 'spec/features/sea.jpg'
+    fill_in 'Title', with: 'Awesome sea'
+    click_button 'Add photo'
+    click_link 'Sign out'
+    sign_up_2
+    click_link 'Delete'
+    expect(page).to have_content "You cannot delete this photo"
+  end
+end
+
 def sign_up
   visit('/')
   click_link('Sign up')
   fill_in('Email', with: 'test@example.com')
+  fill_in('Password', with: 'testtest')
+  fill_in('Password confirmation', with: 'testtest')
+  click_button('Sign up')
+end
+
+def sign_up_2
+  visit('/')
+  click_link('Sign up')
+  fill_in('Email', with: 'new_user@example.com')
   fill_in('Password', with: 'testtest')
   fill_in('Password confirmation', with: 'testtest')
   click_button('Sign up')
