@@ -2,6 +2,8 @@ require 'rails_helper'
 
 feature 'Images' do
 
+  let!(:user) { FactoryGirl.create(:user) }
+
   context 'none have been uploaded' do
     scenario 'should let the user know there are no images' do
       visit '/images'
@@ -10,8 +12,6 @@ feature 'Images' do
   end
 
   context 'creating images' do
-
-    let!(:user) { FactoryGirl.create(:user) }
 
     scenario 'is not allowed for users who are not logged in' do
       visit '/images'
@@ -28,6 +28,18 @@ feature 'Images' do
       click_button 'Create Image'
       expect(page).to have_selector 'img[src*="fatty.jpg"]'
     end
+  end
+
+  context 'viewing images' do
+
+    scenario 'images can be viewed individually' do
+      image = FactoryGirl.create(:image)
+      visit '/images'
+      find("a:nth-of-type(3)").click
+      expect(page).to have_content image.description
+      expect(page).to have_selector 'img[src*="fatty.jpg"]'
+    end
+
   end
 
 end
