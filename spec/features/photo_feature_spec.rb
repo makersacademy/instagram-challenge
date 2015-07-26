@@ -19,4 +19,12 @@ feature 'restaurants' do
       expect(page).not_to have_content 'No photos yet'
     end
   end
+
+  scenario 'Adding photos' do
+    visit '/photos'
+    click_link 'Upload a photo'
+    fill_in 'Title', with: 'Best Burger'
+    click_button 'Upload photo'
+    expect(page).to have_content 'Best Burger'
+  end
 end
