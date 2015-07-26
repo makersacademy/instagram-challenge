@@ -19,8 +19,16 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
     creator = User.find(@image.user_id)
     @creator_handle = make_handle(creator)
+    @likes = @image.likes
     comments = Comment.where("image_id = #{params[:id]}")
     @comments_info = comments.map { |comment| make_handle(User.find(comment.user_id)) + ' says: ' + comment.content }
+  end
+
+  def update
+    image = Image.find(params[:id])
+    new_likes = image.likes + 1
+    image.update_column('likes',  new_likes)
+    redirect_to :back
   end
 
   def image_params

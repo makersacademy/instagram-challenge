@@ -32,14 +32,22 @@ feature 'Images' do
 
   context 'viewing images' do
 
+    let!(:image){ FactoryGirl.create(:image, user_id: user.id) }
+
     scenario 'images can be viewed individually' do
-      image = FactoryGirl.create(:image, user_id: user.id)
       visit '/images'
       find("a:nth-of-type(3)").click
       expect(page).to have_content image.description
       expect(page).to have_selector 'img[src*="fatty.jpg"]'
     end
 
+    scenario 'a user can like an image' do
+      login_as(user, :scope => :user)
+      visit "/images/#{image.id}"
+      find("p a").click
+      # expect{ find(".info a").click }.to change{ image }
+      expect(page).to have_content '1'
+    end
   end
 
 end
