@@ -28,9 +28,22 @@ feature 'Images' do
       expect(page).to have_content 'Banana'
       expect(current_path).to eq "/images/#{banana.id}"
     end
-
   end
 
+  context 'editing images' do
+
+    let!(:banana) { Image.create(image: File.open("#{Rails.root}/spec/images/banana.jpeg"), description: "Banana") }
+
+    scenario 'users can edit their uploaded image' do
+      visit "/images/#{banana.id}"
+      click_link 'Edit'
+      fill_in 'Description', with: 'Here is a banana'
+      click_button 'Update'
+      expect(current_path).to eq '/images'
+      expect(page).to have_content 'Here is a banana'
+    end
+
+  end
   private
 
   def add_banana_image
