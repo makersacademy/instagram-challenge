@@ -43,6 +43,27 @@ feature 'Comments' do
       end
 
     end
+
+    context 'deleting comment' do
+
+      scenario 'is possible if the user created it' do
+        comment = image.comments.create_with_user({content: 'Adorable'}, user)
+        login_as(user, :scope => :user)
+        visit "/users/#{user.id}"
+        find("#delete_comment_#{comment.id}").click
+        expect(page).to have_content 'Comment deleted successfully'
+      end
+
+      scenario 'is not possible if the user did not create it' do
+        another_user = FactoryGirl.create(:user)
+        comment = image.comments.create_with_user({content: 'Adorable'}, another_user)
+        login_as(user, :scope => :user)
+        visit "/users/#{user.id}"
+        find("#delete_comment_#{comment.id}").click
+        expect(page).to have_content 'You did not leave this comment'
+      end
+
+    end
   end
 
 end

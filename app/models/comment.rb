@@ -5,4 +5,10 @@ class Comment < ActiveRecord::Base
 
   validates :content, presence: true, allow_blank: false
 
+  def destroy_as(user)
+    return false unless self.user == user
+    destroy
+    true
+  end
+
 end

@@ -17,6 +17,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    comment = Comment.find(params[:id])
+    if comment.destroy_as current_user
+      flash[:notice] = 'Comment deleted successfully'
+    else
+      flash[:notice] = 'You did not leave this comment'
+    end
+    redirect_to :back
+  end
+
   def comment_params
     params.require(:comment).permit(:content)
   end

@@ -6,11 +6,14 @@
     <p><%= link_to '&#x1F44D;'.html_safe, image_path(image), method: :patch %><%= image.likes %></p>
 
     <% if image.show_comments.any? %>
+    <div class="comments">
       <ul>
         <% image.show_comments.each do |comment| %>
-        <li><%= link_to comment[1], user_path(comment[0].user_id) %></li>
+        <li><%= link_to comment[1], user_path(comment[0].user_id) %>
+        <%= link_to '&#x2421;'.html_safe, image_comment_path(image, comment[0]), method: :delete, id: "delete_comment_#{comment[0].id}" %></li>
       <% end %>
-     </ul>
+     </ul
+   </div>
     <% end %>
 
   <% end %>
