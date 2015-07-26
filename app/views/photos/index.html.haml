@@ -1,2 +1,8 @@
-No photos yet
+- if Photo.any?
+  - Photo.all.reverse.each do |photo|
+    = image_tag photo.gram.url(:thumb)
+    %p Uploaded at
+    = photo.created_at
+- else
+  %p No photos yet
 = link_to 'Upload photo', new_photo_path
