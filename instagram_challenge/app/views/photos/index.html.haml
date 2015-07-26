@@ -8,6 +8,18 @@
     %p= image_tag photo.image.url(:medium)
     = link_to "Edit #{photo.title}", edit_photo_path(photo)
 
+    %h3
+      Comments for
+      = photo.title
+
+      - if photo.comments.any?
+        %ul
+          - photo.comments.each do |comment|
+            %li
+              = comment.comment
+      - else
+        %h4 No Comments
+
 
 - else
   %h1 No photos have been uploaded!

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'reviewing' do
+feature 'commenting' do
   before { Photo.create(title: 'Booya', caption: 'awesome') }
 
   scenario 'allows a user to comment on a photo' do
