@@ -1,4 +1,14 @@
-= form_for @photo, html: {multifart: true} do |f|
+- if @photo.errors.any?
+  %selection#errors
+    %h2
+      = pluralize @photo.errors.count, "error"
+      prohibited this photo from being saved:
+    %ul
+      - @photo.errors.full_messages.each do |message|
+        %li= message
+
+
+= form_for @photo, html: {multipart: true} do |f|
   = f.label :name
   = f.text_field :name
   = f.label :description

@@ -12,8 +12,9 @@
     
     
     %p
-      = link_to "Like", photo_likes_path(photo), method: :post
-      = pluralize photo.likes.count, 'like'
+      = link_to "like", photo_likes_path(photo), class: 'likes-link'
+      = 'like'.pluralize photo.likes.count
+      %span.likes_count= photo.likes.count 
     
     %h4
       = link_to '@'.html_safe + photo.user.username, user_photos_path(photo.user)
