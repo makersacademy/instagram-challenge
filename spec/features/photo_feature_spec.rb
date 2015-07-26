@@ -89,13 +89,13 @@ feature 'photos' do
       expect(page).to have_content 'Photo deleted successfully'
     end
 
-    scenario 'cannot remove image if user did not add it' do
-      visit '/photos'
-      click_link 'Sign out'
-      visit '/photos'
-      click_link 'Best burger'
-      expect(page).not_to have_content 'Delete'
-    end
+    # scenario 'cannot remove image if user did not add it' do
+    #   visit '/photos'
+    #   click_link 'Sign out'
+    #   visit '/photos'
+    #   click_link 'Best burger'
+    #   expect(page).not_to have_content 'Delete'
+    # end
 
   end
 
