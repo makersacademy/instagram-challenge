@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $('.likes-button').on('click', function(event) {
+  $('.likes-link').on('click', function(event) {
     event.preventDefault();
 
     var likeCount = $(this).siblings('.likes_count');

@@ -1,17 +1,19 @@
-- if @pictures.any?
-  - @pictures.each do |picture|
-    %h5= picture.user
-    =image_tag picture.image.url(:thumb)
-    %h5= picture.caption
-    = button_to "Like", picture_likes_path(picture), class: 'likes-button'
-    %span.likes_count= picture.likes.count
-    = 'like'.pluralize picture.likes.count
-    %h5= link_to "Comment", new_picture_comment_path(picture.id)
-    - picture.comments.each do |comment|
-      %h5= comment.my_comment
-
-
-- else
-  No pictures yet!
-
+%br
 %a(href='/pictures/new') Add a picture
+%ul
+  - if @pictures.any?
+    - @pictures.each do |picture|
+      %li
+        %h5= picture.user
+        =image_tag picture.image.url(:thumb)
+        %h5= picture.caption
+        = link_to "Like", picture_likes_path(picture), class: 'likes-link'
+        %span.likes_count= picture.likes.count
+        = 'like'.pluralize picture.likes.count
+        %h5= link_to "Comment", new_picture_comment_path(picture.id)
+        - picture.comments.each do |comment|
+          %h5= comment.my_comment
+
+
+  - else
+    No pictures yet!

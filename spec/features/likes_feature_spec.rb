@@ -3,12 +3,12 @@ require 'rails_helper'
 feature 'liking pictures' do
   before do
     user = User.create email: 'kirsten@jones.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj'
-    user.pictures.create(caption: 'Amazing friggin caption')
+    user.pictures.create(caption: 'Amazing friggin caption', image: File.open("#{Rails.root}/spec/support/rails.png"))
   end
 
-  scenario 'a user who is signed in can like a picture, which updates the picture\'s like count', js: true do
+  scenario 'a user can like a picture, which increments the picture\'s like count', js: true do
     visit '/pictures'
-    click_button 'Like'
+    click_link 'Like'
     expect(page).to have_content('1 like')
   end
 
