@@ -6,7 +6,7 @@ feature 'liking pictures' do
     user.pictures.create(caption: 'Amazing friggin caption')
   end
 
-  scenario 'a user who is signed in can like a picture, which updates the picture\'s like count' do
+  scenario 'a user who is signed in can like a picture, which updates the picture\'s like count', js: true do
     visit '/pictures'
     click_button 'Like'
     expect(page).to have_content('1 like')
