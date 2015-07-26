@@ -32,4 +32,5 @@ Bonus if you can add filters!
 ## v3.0
 
 * Add styling
+* Add dynamic loading
 * Use Bootstrap

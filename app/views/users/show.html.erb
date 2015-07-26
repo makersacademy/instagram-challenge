@@ -1,0 +1,18 @@
+<% if @user_images.any? %>
+  <% @user_images.each do |image| %>
+    <p><%= image.description %></p>
+    <%= link_to image_tag(image.picture.url(:medium), class: 'uploaded-pic medium'), image_path(image) %>
+    <p>&#x1F44D;<%= image.likes %></p>
+
+    <% if image.show_comments_with_image.any? %>
+      <ul>
+        <% image.show_comments_with_image.each do |comment| %>
+        <li><%= comment %></li>
+      <% end %>
+     </ul>
+    <% end %>
+
+  <% end %>
+<% else %>
+  <h1>No images have been posted yet</h1>
+<% end %>
