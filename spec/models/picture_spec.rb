@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Picture, type: :model do
-  # it { is_expected.to have_many :reviews }
-
+ 
   it 'is not valid without a name and attached file' do
     picture = Picture.new
     expect(picture).to have(1).error_on(:name)

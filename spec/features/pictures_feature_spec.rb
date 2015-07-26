@@ -57,7 +57,6 @@ feature 'pictures' do
       click_link 'delete another test'
       expect(page).to have_content 'Log in'
     end
-
   end
 
   context 'when logged in' do

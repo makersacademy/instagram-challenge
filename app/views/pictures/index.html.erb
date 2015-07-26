@@ -1,8 +1,9 @@
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
-    <%= picture.name %><br>
-    <%= link_to 'view ' + picture.name, picture_path(picture) %><br>
-    <%= link_to "delete #{picture.name}", picture_path(picture), method: :delete %><br>
+    <%= picture.name %>, Likes: <%= picture.likes.count %><br>
+    <%= link_to "view #{picture.name}", picture_path(picture) %>
+    <%= link_to "delete #{picture.name}", picture_path(picture), method: :delete %>
+    <%= link_to "like #{picture.name}", new_picture_like_path(picture) %><br>
     <%= image_tag picture.avatar.url(:medium) %><br><br>
   <% end %>
 <% else %>
