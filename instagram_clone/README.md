@@ -1,4 +1,4 @@
-Instagram Clone
+Instagram Challenge
 =======================
 
 ## Task
