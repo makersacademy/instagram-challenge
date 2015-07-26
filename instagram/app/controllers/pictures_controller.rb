@@ -36,13 +36,13 @@ before_action :authenticate_user!, :except => [:index, :show]
   def destroy
     @picture = Picture.find(params[:id])
 
-    if @picture.user = current_user
+    if @picture.user != current_user
+      flash[:notice] = "Only the original uploader can delete this photo"
+      redirect_to pictures_path
+    else
       @picture.destroy
       flash[:notice] = "Picture sucessfully deleted"
       redirect_to '/pictures'
-    else
-      flash[:notice] = "Only the original uploader can delete this photo"
-      redirect_to pictures_path
     end
   end
 

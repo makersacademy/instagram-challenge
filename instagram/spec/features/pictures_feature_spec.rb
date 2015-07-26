@@ -57,18 +57,6 @@ feature 'pictures' do
     end
   end
 
-  context 'delete pictures' do
-
-    before {Picture.create description: 'berries'}
-
-    scenario 'removes a picture when a user clicks a delete link' do
-      sign_up
-      click_link 'Delete picture'
-      expect(page).not_to have_content 'berries'
-      expect(page).to have_content 'Picture sucessfully deleted'
-    end
-  end
-
   context 'editing by authenticated users' do
     before {Picture.create description: 'berries'}
 
