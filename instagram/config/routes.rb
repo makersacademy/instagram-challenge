@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  root to: "pictures#index"
+
+  devise_for :users
   get 'pictures' => 'pictures#index'
 
   resources :pictures do
