@@ -3,9 +3,9 @@ require 'rails_helper'
 feature 'comments' do
   before do
     visit '/pictures'
-      click_link 'Add a picture'
-      attach_file "Image", "spec/asset_specs/photos/uku.jpg"
-      click_button 'Create Picture'
+    click_link 'Add a picture'
+    attach_file "Image", "spec/asset_specs/photos/uku.jpg"
+    click_button 'Create Picture'
   end
 
   scenario 'pictures can be commented on' do

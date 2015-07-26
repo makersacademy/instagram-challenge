@@ -26,6 +26,15 @@ feature 'pictures' do
   end
 
   context 'Adding pictures' do
+    before  do
+      visit '/'
+      click_link 'Sign up'
+      fill_in('Email', with: 'test@example.com')
+      fill_in('Password', with: 'testtest')
+      fill_in('Password confirmation', with: 'testtest')
+      click_button('Sign up')
+    end
+
     scenario 'form to fill in' do
       visit '/pictures'
       click_link 'Add a picture'
