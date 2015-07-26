@@ -7,7 +7,7 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\z/
 
   belongs_to :user
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :comments,
     -> { extending WithUserAssociationExtension },
     dependent: :destroy

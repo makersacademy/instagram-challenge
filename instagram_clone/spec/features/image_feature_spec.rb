@@ -31,11 +31,9 @@ feature 'images' do
 
     let!(:otter){Image.create(name:'otter')}
 
-    scenario 'lets a user view an image' do
+    scenario 'lets a user see uploaded images' do
       visit '/images'
-      click_link 'otter'
       expect(page).to have_content 'otter'
-      expect(current_path).to eq "/images/#{otter.id}"
     end
   end
 

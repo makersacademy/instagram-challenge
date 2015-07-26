@@ -1,32 +1,38 @@
-<% if @images.any? %>
-  <% @images.each do |image| %>
-    <p>
-      <%= image_tag image.picture.url(:medium)%>
-      <br>
-      <%= link_to image.name, image_path(image) %>
-      Posted by <%= image.user_id %>
-      <br>
-      <%= pluralize image.likes.count, 'Like' %>
-    </p>
+<div class='container'>
+  <div class='row'>
+    <% if @images.any? %>
+      <% @images.reverse_each do |image| %>
 
-      <% if image.comments.any? %>
-        <ul>
-          <% image.comments.each do |comment| %>
-            <li>
-              <%= comment.comment %>
-            </li>
+      <div class='col-lg-2 col-sm-3 col-xs-4'>
+
+          <%= link_to image_tag(image.picture.url(:thumb)), image_path(image)%>
+          <br>
+          <%= image.name %> posted by <%= image.user_id %>
+          <br>
+          <%= pluralize image.likes.count, 'like' %>
+
+          <% if image.comments.any? %>
+            <ul>
+              <% image.comments.each do |comment| %>
+                <li>
+                  <%= comment.comment %>
+                </li>
+              <% end %>
+            </ul>
           <% end %>
-        </ul>
-      <% end %>
 
-    <p>
-    <%= link_to "Comment", new_image_comment_path(image) %></p>
-    <p>
-    <%= button_to "Like", image_likes_path(image) %>
-    </p>
-    <p>
-    <%= link_to "Delete", image_path(image), method: :delete %></p>
-  <% end %>
-<% else %>
-  <h2>No images yet!</h2>
-<% end %>
+        <p>
+        <%= link_to "Comment", new_image_comment_path(image) %></p>
+        <button type='button' class='btn btn-default btn-xs'>
+          <span class='glyphicon glyphicon-heart'></span>
+            <%= link_to "Like", image_likes_path(image), method: :post %>
+        </button>
+        <p>
+        <%= link_to "Delete", image_path(image), method: :delete %></p>
+        </div>
+      <% end %>
+    <% else %>
+      <h2>No images yet!</h2>
+    <% end %>
+  </div>
+</div>
