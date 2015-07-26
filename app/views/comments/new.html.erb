@@ -5,20 +5,23 @@
     <title>Leave a comment</title>
   </head>
   <body>
+    <h2>Add a comment</h2>
     <% if @comment.errors.any? %>
-      <section id="errors" >
-        <h2><%= pluralize(@comment.errors.count, 'error') %> prohibited this comment from being added:</h2>
-        <ul>
+      <section class="panel panel-danger" id="errors" >
+        <div class="panel-heading"><%= pluralize(@comment.errors.count, 'error') %> prohibited this comment from being added:</div>
+        <ul class="panel-body">
           <% @comment.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
       </section>
     <% end %>
-    <%= form_for [@picture, @comment] do |f| %>
-      <%= f.label :comment %>
-      <%= f.text_area :comment %>
-      <%= f.submit 'Post' %>
-    <% end %>
+    <div class="field form-group">
+      <%= form_for [@picture, @comment] do |f| %>
+        <%= f.label :comment %><br />
+        <%= f.text_area :comment, class: "form-control" %><br />
+        <%= f.submit 'Post', class: "btn btn-default" %>
+      <% end %>
+    </div>
   </body>
 </html>

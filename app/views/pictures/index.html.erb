@@ -7,14 +7,16 @@
 </head>
 
 <body>
-  <% if @pictures.any? %>
-    <% @pictures.each do |picture| %>
-      <%= image_tag picture.picture.url(:thumb), class: "uploaded-pic" %>
-      <%= link_to picture.description, picture_path(picture) %>
-    <% end %>
-    <% else %>
-      No pictures yet
-    <% end %>
+  <div>
+    <% if @pictures.any? %>
+      <% @pictures.each do |picture| %>
+        <%= image_tag picture.picture.url(:small), class: "uploaded-pic" %>
+        <p><%= link_to picture.description, picture_path(picture) %></p>
+      <% end %>
+      <% else %>
+        No pictures yet
+      <% end %>
+    </div>
 </body>
 
 </html>
