@@ -53,6 +53,7 @@ feature 'photos' do
          click_link 'Booya'
          click_link 'Delete Booya'
          expect(page).not_to have_content 'Booya'
+         expect(page).to have_content 'Photo deleted successfully'
          expect(current_path).to eq '/photos'
         end
 
