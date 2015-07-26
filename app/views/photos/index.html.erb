@@ -6,11 +6,14 @@
    <div>
      <%= link_to (image_tag photo.image.url(:thumb)), photo_path(photo) %></a>
      <p>
-       <%= photo.description %><% if user_signed_in? %><%= link_to 'Comment on photo', new_photo_comment_path(photo) %><%= link_to 'Delete photo', photo_path(photo), method: :delete %><% end %>
+       <%= photo.description %><% if user_signed_in? %><%= link_to 'Comment on photo', new_photo_comment_path(photo) %>
+       <% end %>
+       <% if current_user && current_user.id == photo.user_id %>
+       <%= link_to 'Delete photo', photo_path(photo), method: :delete %><% end %>
        <% photo.comments.each do |comment| %>
 	    <li>
 	      <%= comment.message %>
-	      <% if user_signed_in? %><%= link_to 'Delete comment', photo_comment_path(photo, comment), method: :delete %>
+	      <% if current_user && current_user.id == comment.user_id %><%= link_to 'Delete comment', photo_comment_path(photo, comment), method: :delete %>
 	      <% end %>
 	    </li>
 	   <% end %>
