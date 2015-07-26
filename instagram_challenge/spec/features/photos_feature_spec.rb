@@ -9,18 +9,18 @@ feature 'photos' do
     end
 
 
-    context 'uploading images' do
-      scenario 'uploading an image' do
-        visit '/'
-        click_link 'Upload Photo'
-        attach_file 'Image', 'spec/features/Ice.jpg'
-        fill_in 'Caption', with: 'awesome'
-        click_button 'Upload Photo'
-        expect(page).to have_css("img[src*='Ice.jpg']")
-        expect(page).to have_content 'awesome'
-        expect(current_path).to eq '/photos'
-      end
-    end
+    # context 'uploading images' do
+    #   scenario 'uploading an image' do
+    #     visit '/'
+    #     click_link 'Upload Photo'
+    #     attach_file 'Image', 'spec/features/Ice.jpg'
+    #     fill_in 'Caption', with: 'awesome'
+    #     click_button 'Upload Photo'
+    #     expect(page).to have_css("img[src*='Ice.jpg']")
+    #     expect(page).to have_content 'awesome'
+    #     expect(current_path).to eq '/photos'
+    #   end
+    # end
 
     context 'viewing individual pictures' do
       let!(:image){Photo.create(title:'Icy', caption: 'awesome')}
@@ -33,6 +33,19 @@ feature 'photos' do
       end
     end
 
+    context 'editing restaurants' do
+      before {Photo.create(title:'Icy', caption: 'awesome')}
+
+      scenario 'let a user edit a photo' do
+       visit '/'
+       click_link 'Edit Icy'
+       fill_in 'Title', with: 'Iced out'
+       click_button 'Update Photo'
+       expect(page).to have_content 'Iced out'
+       expect(current_path).to eq '/photos'
+      end
+
+end
 
 
   end
