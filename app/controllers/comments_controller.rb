@@ -18,6 +18,17 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @photo = Photo.find(params[:photo_id])
+    @comment = Comment.find(params[:id])
+    if (@comment.user_id == current_user.id)
+      @comment.destroy
+    else 
+      flash[:notice] = 'You cannot delete other users\' comments'
+    end
+    redirect_to photos_path
+  end
+
   def comment_params
   	params[:comment][:user_id] = current_user.id
     params.require(:comment).permit(:message, :user_id)

@@ -1,14 +1,17 @@
+<% if user_signed_in? %>
 <a href='/photos/new'>Upload a photo</a>
-
+<% end %>
 <% if @photos.any? %>
   <% @photos.each do |photo| %>
    <div>
      <%= link_to (image_tag photo.image.url(:thumb)), photo_path(photo) %></a>
      <p>
-       <%= photo.description %><%= link_to 'Comment on photo', new_photo_comment_path(photo) %>
+       <%= photo.description %><% if user_signed_in? %><%= link_to 'Comment on photo', new_photo_comment_path(photo) %><%= link_to 'Delete photo', photo_path(photo), method: :delete %><% end %>
        <% photo.comments.each do |comment| %>
 	    <li>
 	      <%= comment.message %>
+	      <% if user_signed_in? %><%= link_to 'Delete comment', photo_comment_path(photo, comment), method: :delete %>
+	      <% end %>
 	    </li>
 	   <% end %>
      </p>

@@ -3,8 +3,8 @@ require 'rails_helper'
 feature 'photos' do
   
   before do
-    user = User.create email: 'natso@gmail.com', password: '12345678', password_confirmation: '12345678'
-    login_as user
+    @user = User.create email: 'natso@gmail.com', password: '12345678', password_confirmation: '12345678'
+    login_as @user
   end
 
   context 'no photos have been added' do
@@ -39,17 +39,30 @@ feature 'photos' do
     scenario 'denied if not logged in' do
       logout
       visit '/'
-      click_link 'Upload a photo'
-      expect(page).to have_content('You need to sign in or sign up before continuing')
+      expect(page).not_to have_selector(:link_or_button, 'Upload a photo')
     end
   end
 
   context 'viewing photos' do
-  	let!(:gram){Photo.create(description:'nice', image_file_name:'spec/fixtures/files/gramophone.png')}
+  	let!(:gram) { Photo.create(description:'nice', image_file_name:'spec/fixtures/files/gramophone.png') }
     scenario 'allows user to view full-size photos' do
       visit '/'
       find('img').click
       expect(page).to have_xpath("//img[contains(@src, 'spec/fixtures/files/gramophone.png')]")
+    end
+  end
+
+  context 'deleting photos' do
+
+    before do
+      Photo.create(description:'nice', image_file_name:'spec/fixtures/files/gramophone.png', user_id: @user.id)
+    end
+
+    scenario 'removes photo when owner clicks delete link' do
+      visit '/'
+      click_link 'Delete photo'
+      expect(page).not_to have_xpath("//img[contains(@src, 'thumb/gramophone.png')]")
+      expect(page).to have_content 'Photo removed successfully'
     end
   end
 end
