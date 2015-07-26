@@ -23,7 +23,7 @@ feature 'photos' do
     # end
 
     context 'viewing individual pictures' do
-      let!(:image){Photo.create(title:'Icy', caption: 'awesome')}
+      let!(:image){ Photo.create(title:'Icy', caption: 'awesome') }
 
       scenario 'lets a user view a picture' do
         visit '/'
@@ -34,7 +34,7 @@ feature 'photos' do
     end
 
     context 'editing restaurants' do
-      before {Photo.create(title:'Icy', caption: 'awesome')}
+      before { Photo.create(title:'Icy', caption: 'awesome') }
 
       scenario 'let a user edit a photo' do
        visit '/'
@@ -46,7 +46,7 @@ feature 'photos' do
       end
 
       context 'editing restaurants' do
-        before {Photo.create(title:'Booya', caption: 'awesome')}
+        before { Photo.create(title:'Booya', caption: 'awesome') }
 
         scenario 'let a user edit a photo' do
          visit '/'
