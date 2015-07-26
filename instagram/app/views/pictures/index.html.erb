@@ -4,7 +4,9 @@
   <% @pictures.each do |picture| %>
       <%= image_tag picture.image.url(:thumb) %>
       <p> <%= picture.description %> </p>
-      <%= pluralize picture.likes.count, 'Like picture' %>
+      <%= link_to "Like", review_likes_path(picture), class: 'likes-link' %>
+      <span class="likes_count"> <%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>
+
 
       <h3>Comments on picture</h3>
         <% if picture.comments.any? %>
