@@ -59,17 +59,16 @@ feature 'photos' do
       end
     end
 
-    context 'invalid photo uploads' do
-      scenario 'user cannot upload a photo without a title' do
-        visit '/'
-        click_link 'Upload Photo'
-        fill_in 'Title', with: ''
-        attach_file 'Image', 'spec/features/Ice.jpg'
-        click_button 'Upload Photo'
-        expect(page).not_to have_css("img[src*='Ice.jpg']")
-        expect(page).to have_content 'error'
-      end
-
-    end
+    # context 'invalid photo uploads' do
+    #   scenario 'user cannot upload a photo without a title' do
+    #     visit '/'
+    #     click_link 'Upload Photo'
+    #     fill_in 'Title', with: ''
+    #     attach_file 'Image', 'spec/features/Ice.jpg'
+    #     click_button 'Upload Photo'
+    #     expect(page).not_to have_css("img[src*='Ice.jpg']")
+    #     expect(page).to have_content 'error'
+    #   end
+    # end
   end
 end
