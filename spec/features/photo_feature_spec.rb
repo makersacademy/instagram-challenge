@@ -20,11 +20,23 @@ feature 'restaurants' do
     end
   end
 
-  scenario 'Adding photos' do
-    visit '/photos'
-    click_link 'Upload a photo'
-    fill_in 'Title', with: 'Best Burger'
-    click_button 'Upload photo'
-    expect(page).to have_content 'Best Burger'
+  context 'adding photos' do
+    scenario 'Adding title' do
+      visit '/photos'
+      click_link 'Upload a photo'
+      fill_in 'Title', with: 'Best Burger'
+      click_button 'Upload photo'
+      expect(page).to have_content 'Best Burger'
+    end
+
+    scenario 'Adding Image' do
+      visit '/photos'
+      click_link 'Upload a photo'
+      fill_in 'Title', with: 'Best Burger'
+      attach_file 'photo[image]', 'spec/features/bestburger.png'
+      click_button 'Upload photo'
+      expect(page).to have_content 'Best Burger'
+      expect(page).to have_css ('img[src*="bestburger.png"]')
+    end
   end
 end
