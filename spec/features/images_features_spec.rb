@@ -28,6 +28,16 @@ feature 'Images' do
       click_button 'Create Image'
       expect(page).to have_selector 'img[src*="fatty.jpg"]'
     end
+
+    scenario 'is not allowed if a description is not given' do
+      login_as(user, :scope => :user)
+      visit '/images'
+      click_link 'Add Image'
+      attach_file 'Picture', 'app/assets/images/fatty.jpg'
+      click_button 'Create Image'
+      expect(current_url).to have_content '/images/new'
+      expect(page).to have_content 'You need to add a description'
+    end
   end
 
   context 'viewing images' do

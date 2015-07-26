@@ -11,8 +11,12 @@ class ImagesController < ApplicationController
   end
 
   def create
-    current_user.images.create(image_params)
-    redirect_to images_path
+    @image = current_user.images.new(image_params)
+    if @image.save
+      redirect_to images_path
+    else
+      redirect_to new_image_path, alert: 'You need to add a description'
+    end
   end
 
   def show
