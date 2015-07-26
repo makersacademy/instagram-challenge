@@ -48,17 +48,31 @@ feature 'pictures' do
     end
   end
 
-  context 'editing pictures' do
+  context 'editing descriptions' do
     before {Picture.create description: 'berries'}
 
-    scenario 'let a user edit a picture' do
+    scenario 'let a user edit a picture description' do
     visit '/pictures'
     click_link 'Edit description'
     fill_in 'Description', with: 'berries from garden'
-    click_button 'Update Picture'
+    click_button 'Update description'
     expect(page).to have_content 'berries from garden'
     expect(current_path).to eq '/pictures'
     end
   end
+
+  context 'delete pictures' do
+
+    before {Picture.create description: 'berries'}
+
+    scenario 'removes a picture when a user clicks a delete link' do
+      visit '/pictures'
+      click_link 'Delete picture'
+      expect(page).not_to have_content 'berries'
+      expect(page).to have_content 'Picture sucessfully deleted'
+    end
+  end
+
+
 
 end
