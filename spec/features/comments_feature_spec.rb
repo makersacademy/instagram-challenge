@@ -14,14 +14,6 @@ feature 'comments' do
      expect(page).to have_content('What a lovely badge')
   end
 
-  scenario 'A comment must not be left blank' do
-    sign_up
-    visit '/pictures'
-    click_link 'Comment on PFC'
-    click_button 'Leave Comment'
-    expect(page).to have_content 'Error'
-  end
-
   def sign_up
     visit('/')
     click_link('Sign up')
