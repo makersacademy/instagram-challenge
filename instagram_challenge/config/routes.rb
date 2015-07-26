@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'photos#index'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :photos do
     resources :comments
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  root to: 'photos#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
