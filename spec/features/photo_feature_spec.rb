@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'restaurants' do
+feature 'photos' do
   context 'no photos have been added' do
     scenario 'should display a prompt to upload a photo' do
       visit '/photos'
@@ -32,6 +32,9 @@ feature 'restaurants' do
   end
 
   context 'adding photos' do
+    before do
+      sign_up
+    end
     scenario 'Adding title' do
       visit '/photos'
       click_link 'Upload a photo'
@@ -47,9 +50,18 @@ feature 'restaurants' do
     end
   end
 
+  scenario 'cannot upload photo unless signed in' do
+    visit '/photos'
+    click_link 'Upload a photo'
+    expect(page).to have_content 'Log in'
+  end
+
   context 'editing restaurants' do
 
-  before {Photo.create title: 'Best burger'}
+  before do
+    Photo.create title: 'Best burger'
+    sign_up
+  end
 
     scenario 'let a user edit a photo' do
       visit '/photos'
@@ -64,7 +76,10 @@ feature 'restaurants' do
 
   context 'deleting restaurants' do
 
-    before {Photo.create title: 'Best burger'}
+    before do
+      Photo.create title: 'Best burger'
+      sign_up
+    end
 
     scenario 'removes a photo when a user clicks a delete link' do
       visit '/photos'
@@ -82,5 +97,13 @@ feature 'restaurants' do
     fill_in 'Title', with: 'Best Burger'
     attach_file 'photo[image]', 'spec/features/bestburger.png'
     click_button 'Upload photo'
+  end
+  def sign_up
+    visit '/'
+    click_link 'Sign up'
+    fill_in 'Email', with: 'test@test.com'
+    fill_in 'Password', with: '12345678'
+    fill_in 'Password confirmation', with: '12345678'
+    click_button 'Sign up'
   end
 end
