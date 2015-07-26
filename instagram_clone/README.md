@@ -3,25 +3,25 @@ Instagram Challenge
 
 ## Task
 
-The aim for this project was to build an Instagram clone using Rails.
+The aim for this project was to build an Instagram clone using Rails and to style it to look similar to Instagram.
 
 
-## Job List
+## Functionality
 
-- [Users should be able to sign up, log in and log out]
-- [Users should be able to upload images]
-- [Users should be able to comment on images]
-- [Users should be able to 'like' images]
-- [Users should only be able to delete their own images and comments]
+- Users are able to sign up, log in and log out
+- Users are able to upload images
+- Users are able to comment on images
+- Users are able to 'like' images
+- Users are only able to delete their own images and comments
 
-- [Application should be styled to look similar to Instagram]
+- Some styling implemented using Bootstrap
 
 
 ## Still to complete/refactor
 
-- [User should only be able to 'like' an image once]
-- [Username should be displayed next to uploaded images and comments]
-- [Further styling to be implemented]
+- User should only be able to 'like' an image once
+- Username should be displayed next to uploaded images and comments
+- Further styling to be implemented
 
 
 ## Technologies Used
