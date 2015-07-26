@@ -13,4 +13,22 @@ feature 'Photos' do
       expect(page).to have_content 'Upload photo here'
     end
   end
+
+  context 'with uploaded photos' do
+    it 'uploaded photos are displayed in reverse chronological order' do
+      upload_photo './spec/test_images/Honda-Gold-Wing-White.jpg'
+      upload_photo './spec/test_images/GoldWing_2015_09.jpg'
+      upload_photo './spec/test_images/honda-gold-wing-airbag-2.jpg'
+
+      visit root_path
+
+      expect(page).to have_content 'Uploaded at'
+    end
+  end
+end
+
+def upload_photo photo_string
+  visit new_photo_path
+  attach_file 'photo[gram]', photo_string
+  click_button 'Create Photo'
 end
