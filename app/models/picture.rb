@@ -5,6 +5,6 @@ class Picture < ActiveRecord::Base
   belongs_to :user
   has_many   :comments,
       -> { extending WithUserAssociationExtension },
-      dependent: :restrict_with_exception
-  has_many   :likes
+      dependent: :destroy
+  has_many   :likes, dependent: :destroy
 end

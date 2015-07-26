@@ -3,9 +3,10 @@
     %h5= picture.user
     =image_tag picture.image.url(:thumb)
     %h5= picture.caption
-    = button_to "Like", picture_likes_path(picture)
+    = button_to "Like", picture_likes_path(picture), class: 'likes-button'
+    %span.likes_count= picture.likes.count
+    = 'like'.pluralize picture.likes.count
     %h5= link_to "Comment", new_picture_comment_path(picture.id)
-    %p= pluralize picture.likes.count, 'like'
     - picture.comments.each do |comment|
       %h5= comment.my_comment
 
