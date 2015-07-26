@@ -13,7 +13,7 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
-## v1.0
+## [v1.0](https://github.com/DataMinerUK/instagram-challenge/releases/tag/v1.0)
 
 * Users can post images, like images and comment on images
 * All images can be viewed and appear in order of amount of likes
@@ -25,7 +25,7 @@ Bonus if you can add filters!
 
 * Users images can be viewed on a users page
 * Users can delete images from their user page
-* Comments can be edited by their creators
+* Comments can be deleted by their creators
 * Images have tags
 * Tags have a page where you can view all the images they are associated with
 
