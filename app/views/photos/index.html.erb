@@ -6,7 +6,12 @@
 
     <h3><%= photo.title %></h3>
     <%= image_tag photo.image.url(:medium) %></br>
-    <p><%= pluralize photo.likes.count, 'like' %></p>
+
+    <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
+      <span class="likes_count"> <%= photo.likes.count %> </span> <%= 'like'.pluralize(photo.likes.count) %>
+    </li>
+
+
     <%= link_to( "Show photo", photo_path(photo), method: :get) %>
     <%= link_to( "Edit", edit_photo_path(photo)) %>
     <%= link_to "Delete", photo_path(photo), method: :delete %>

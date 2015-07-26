@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "photos#index"
 
 
-  resources :photos do
+  resources :photos, shallow: true do
     resources :comments
     resources :likes
   end
