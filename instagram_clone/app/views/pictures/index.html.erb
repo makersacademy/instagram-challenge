@@ -8,7 +8,14 @@
   <% if @pictures.any? %>
     <% @pictures.each do |picture| %>
       <p><%= picture.created_at %></p>
-      <p><%= image_tag picture.image.url(:thumb) %></p>
+      <p><%= image_tag picture.image.url(:medium) %></p>
+      <%= button_to 'Like', picture_likes_path(picture) %>
+      <%= pluralize picture.likes.count, 'like' %>
+      <ul><% picture.comments.each do |comment| %>
+        <li><%= comment.message %></li>
+        <% end %>
+      </ul>
+      <%= link_to 'Comment', new_picture_comment_path(picture) %>
     <% end %>
   <% else %>
     <h2>No pictures yet</h2>
