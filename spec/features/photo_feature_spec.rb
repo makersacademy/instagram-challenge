@@ -74,7 +74,7 @@ feature 'photos' do
     end
   end
 
-  context 'deleting restaurants' do
+  context 'deleting images' do
 
     before do
       Photo.create title: 'Best burger'
@@ -87,6 +87,14 @@ feature 'photos' do
       click_link 'Delete'
       expect(page).not_to have_content 'Best burger'
       expect(page).to have_content 'Photo deleted successfully'
+    end
+
+    scenario 'cannot remove image if user did not add it' do
+      visit '/photos'
+      click_link 'Sign out'
+      visit '/photos'
+      click_link 'Best burger'
+      expect(page).not_to have_content 'Delete'
     end
 
   end
