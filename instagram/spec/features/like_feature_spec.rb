@@ -8,7 +8,9 @@ feature 'likes' do
     scenario 'a user can endorse a review, which increments the endorsement count', js: true do
       sign_in
       click_link 'Like picture'
-      expect(page).to have_content '1 Like'
+      expect(page).to have_content('1 Like')
     end
   end
+
+
 end
