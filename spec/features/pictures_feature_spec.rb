@@ -27,7 +27,7 @@ feature 'pictures' do
 
   context 'viewing pictures' do
 
-    let!(:arches) { Picture.create(description: "Arches") }
+    let!(:arches) { Picture.create(picture: File.open("#{Rails.root}/spec/images/arches.jpeg"), description: "Arches") }
 
     scenario 'lets a user view a picture' do
       visit '/pictures'
@@ -39,7 +39,7 @@ feature 'pictures' do
 
   context 'editing pictures' do
 
-    let!(:arches) { Picture.create(description: "Arches") }
+    let!(:arches) { Picture.create(picture: File.open("#{Rails.root}/spec/images/arches.jpeg"), description: "Arches") }
 
     scenario 'lets a user edit a description' do
       visit '/pictures'
@@ -58,6 +58,13 @@ feature 'pictures' do
       expect(page).not_to have_content 'Arches'
       expect(page).to have_content 'Picture deleted successfully'
     end
+  end
 
+  context 'adding pictures' do
+    it 'is not valid with no description' do
+      picture = Picture.new(description: "")
+      expect(picture).to have(1).error_on(:description)
+      expect(picture).not_to be_valid
+    end
   end
 end
