@@ -25,6 +25,16 @@ feature 'Photos' do
       expect(page).to have_content 'Uploaded at'
     end
   end
+
+  context 'deleting photos' do
+    xit 'A user can delete their photos' do
+
+    end
+
+    xit 'a user cannot delete other people\'s phtotos' do
+
+    end
+  end
 end
 
 def upload_photo photo_string
