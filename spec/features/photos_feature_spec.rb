@@ -2,6 +2,11 @@ require 'rails_helper'
 
 feature 'photos' do
   
+  before do
+    user = User.create email: 'natso@gmail.com', password: '12345678', password_confirmation: '12345678'
+    login_as user
+  end
+
   context 'no photos have been added' do
     scenario 'prompts user to upload a photo' do
       visit '/photos'
@@ -29,6 +34,13 @@ feature 'photos' do
       click_button 'Create Photo'
       expect(page).not_to have_content 'Instrumental'
       expect(page).to have_content('Please choose an image')
+    end
+
+    scenario 'denied if not logged in' do
+      logout
+      visit '/'
+      click_link 'Upload a photo'
+      expect(page).to have_content('You need to sign in or sign up before continuing')
     end
   end
 
