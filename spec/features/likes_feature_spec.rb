@@ -4,7 +4,7 @@ feature 'liking photos' do
   before do
   	@user = User.create email: 'natso@gmail.com', password: '12345678', password_confirmation: '12345678'
     login_as @user
-    @photo = Photo.create(description:'nice', image_file_name:'spec/fixtures/files/gramophone.png')
+    @photo = Photo.create(description:'nice', image_file_name:'gramophone.png')
   end
 
   scenario 'photo has 0 likes initially' do
