@@ -8,6 +8,7 @@
      <p>
        <%= photo.description %><% if user_signed_in? %><%= link_to 'Comment on photo', new_photo_comment_path(photo) %>
        <% end %>
+        <%= pluralize photo.likes.count, 'like' %>
        <% if current_user && current_user.id == photo.user_id %>
        <%= link_to 'Delete photo', photo_path(photo), method: :delete %><% end %>
        <% photo.comments.each do |comment| %>
