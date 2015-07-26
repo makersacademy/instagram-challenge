@@ -10,6 +10,12 @@ feature 'Liking pictures' do
     expect(page).to have_content '0 likes'
   end
 
+  it "users can like a picture, which then updates the 'like' count by one", js: true do
+    click_link 'Like'
+    expect(page).to have_content '1 like'
+    expect(page).not_to have_content '0 likes'
+  end
+
   def sign_up
     visit '/'
     click_link 'Sign Up'

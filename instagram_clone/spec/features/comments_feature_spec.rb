@@ -83,7 +83,7 @@ end
   end
 
   def sign_up
-    visit '/'
+    visit '/pictures'
     click_link 'Sign Up'
     fill_in 'Email', with: 'test@email.com'
     fill_in 'Password', with: 'password'
@@ -92,7 +92,7 @@ end
   end
 
   def sign_up_2
-    visit '/'
+    visit '/pictures'
     click_link 'Sign Up'
     fill_in 'Email', with: 'test2@email.com'
     fill_in 'Password', with: 'password2'
