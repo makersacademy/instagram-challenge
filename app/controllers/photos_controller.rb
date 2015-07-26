@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
     if @photo.save
       redirect_to photos_path
     else
-      flash[:error] = 'Please choose an image'
+      flash[:alert] = 'Please choose an image'
       render :new
     end
   end

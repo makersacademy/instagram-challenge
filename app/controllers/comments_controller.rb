@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to photos_path
     else
-      flash[:error] = 'Please enter a comment'
+      flash[:alert] = 'Please enter a comment'
       redirect_to new_photo_comment_path
     end
   end
