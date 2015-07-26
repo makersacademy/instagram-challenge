@@ -27,3 +27,8 @@ Bonus if you can add filters!
 * Comments can be edited by their creators
 * Images have tags
 * Tags have a page where you can view all the images they are associated with
+
+## v3.0
+
+* Add styling
+* Use Bootstrap
