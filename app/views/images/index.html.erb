@@ -1,9 +1,8 @@
 <% if @images.any? %>
   <% @images.each do |image| %>
+    <p><%= link_to image.get_username_of_creator, user_path(image.user_id) %></p>
     <%= link_to image_tag(image.picture.url(:medium), class: 'uploaded-pic medium'), image_path(image) %>
-
-      <p><%= link_to image.get_username_of_creator, user_path(image.user_id) %></p>
-      <p><%= link_to '&#x1F44D;'.html_safe, image_path(image), method: :patch %><%= image.likes %></p>
+    <p><%= image.description %></p>
 
   <% end %>
 <% else %>
