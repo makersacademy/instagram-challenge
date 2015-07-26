@@ -28,8 +28,6 @@ feature 'photos' do
       fill_in 'Description', with: 'Instrumental'
       click_button 'Create Photo'
       expect(page).not_to have_content 'Instrumental'
-      #expect(page).to have_content 'No photos yet'
-      #expect(page).not_to have_xpath("//img[contains(@src, 'thumb/gramophone.png')]")
       expect(page).to have_content('Please choose an image')
     end
   end
