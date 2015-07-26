@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base
         dependent: :destroy
   belongs_to :user
   has_many :likes
-  validates :user_id, :presence => true
+  validates :user_id, presence: true
   
   
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "cat.jpg"

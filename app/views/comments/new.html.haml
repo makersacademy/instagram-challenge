@@ -1,3 +1,12 @@
+- if @comment.errors.any?
+  %selection#errors
+    %h2
+      = pluralize @comment.errors.count, "error"
+      prohibited this photo from being saved:
+    %ul
+      - @comment.errors.full_messages.each do |message|
+        %li= message
+        
 = form_for [@photo, @comment] do |f| 
   = f.text_area :thoughts, autofocus: true,  placeholder: 'Leave a comment'
   = f.submit 'Submit'
