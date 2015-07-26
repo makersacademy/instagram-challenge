@@ -48,10 +48,9 @@ feature 'pictures' do
   end
 
   context 'editing a picture' do
-    let!(:pfc) {Picture.create(title:'PFC',
-                               image: File.new("spec/features/Pompey.jpg") )}
     scenario 'allows a user to edit the title' do
       sign_up
+      upload_picture
       visit '/pictures'
       click_link 'Edit PFC'
       fill_in 'Title', with: 'Pompey'
@@ -62,10 +61,9 @@ feature 'pictures' do
   end
 
   context 'deleting a picture' do
-    let!(:pfc) {Picture.create(title:'PFC',
-                               image: File.new("spec/features/Pompey.jpg") )}
     scenario 'allows an image to be deleted' do
     sign_up
+    upload_picture
     visit '/pictures'
     click_link 'Delete PFC'
     expect(page).not_to have_content 'PFC'

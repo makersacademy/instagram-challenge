@@ -40,7 +40,7 @@ feature "User can sign in and out" do
     sign_up_2
     click_link 'Edit PFC'
     expect(current_path).to eq '/pictures'
-    expect(page).to have_content 'You do not have permission to edit this picture'
+    expect(page).to have_content 'Only the creator can edit this picture'
   end
 
   it "they can only delete their own pictures" do
@@ -48,10 +48,10 @@ feature "User can sign in and out" do
     upload_picture
     click_link 'Sign out'
     sign_up_2
-    expect(current_path).to eq '/pictures'
+    expect(current_path).to eq '/'
     click_link 'Delete PFC'
     expect(current_path).to eq '/pictures'
-    expect(page).to have_content 'You do not have permission to delete this picture'
+    expect(page).to have_content 'Only the creator can delete this picture'
   end
 end
 

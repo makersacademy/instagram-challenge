@@ -11,7 +11,7 @@ before_action :authenticate_user!, :except => [:index, :show]
   end
 
   def create
-    @picture = Picture.create(picture_params)
+    @picture = current_user.pictures.build(picture_params)
     if @picture.save
      redirect_to '/pictures'
    else
@@ -25,6 +25,12 @@ before_action :authenticate_user!, :except => [:index, :show]
 
   def edit
     @picture = Picture.find(params[:id])
+    if current_user.id === @picture.user_id
+      @picture = Picture.find(params[:id])
+    else
+      flash[:notice] = "Only the creator can edit this picture"
+      redirect_to '/pictures'
+    end
   end
 
   def update
@@ -36,9 +42,14 @@ before_action :authenticate_user!, :except => [:index, :show]
 
   def destroy
     @picture = Picture.find(params[:id])
-    @picture.destroy
-    flash[:notice] = 'Picture deleted successfully'
-    redirect_to '/pictures'
+    if current_user.id === @picture.user_id
+      @picture.destroy
+      flash[:notice] = 'Picture deleted successfully'
+      redirect_to '/pictures'
+    else
+      flash[:notice] = 'Only the creator can delete this picture'
+      redirect_to '/pictures'
+    end
   end
 
   def picture_params
