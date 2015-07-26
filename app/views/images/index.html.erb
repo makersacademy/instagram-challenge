@@ -4,6 +4,12 @@
     <%= link_to image_tag(image.picture.url(:medium), class: 'uploaded-pic medium'), image_path(image) %>
     <p><%= image.description %></p>
 
+    <% if image.get_tags.any? %>
+      <% image.get_tags.each do |tag| %>
+        <%= link_to tag[1], tag_path(tag[0].id) %>
+      <% end %>
+    <% end %>
+
   <% end %>
 <% else %>
   <h1>No images yet</h1>

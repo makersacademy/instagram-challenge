@@ -1,6 +1,7 @@
 class Image < ActiveRecord::Base
 
   belongs_to :user
+  has_and_belongs_to_many :tags
   has_many :comments,
             -> { extending WithUserAssociationExtension },
             dependent: :destroy
@@ -17,6 +18,10 @@ class Image < ActiveRecord::Base
 
   def get_username_of_creator
     User.find(self.user_id).username
+  end
+
+  def get_tags
+    self.tags.map { |tag| [tag, tag.name] }
   end
 
   def destroy_as(user)

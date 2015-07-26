@@ -5,6 +5,18 @@
     <p id="likes"><%= link_to '&#x1F44D;'.html_safe, image_path(@image), method: :patch %><%=  @likes %></p>
   </div>
 
+  <% if @image.get_tags.any? %>
+    <% @image.get_tags.each do |tag| %>
+      <%= link_to tag[1], tag_path(tag[0].id) %>
+    <% end %>
+  <% end %>
+
+  <%= form_for @tag do |f| %>
+    <%= f.text_field :name %>
+    <%= hidden_field_tag :image_id, @image.id %>
+    <%= f.submit %>
+  <% end %>
+
   <% if @image.show_comments.any? %>
   <div class="comments">
     <ul>
