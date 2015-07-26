@@ -43,7 +43,7 @@ feature 'images' do
     scenario 'removes an image when a user clicks a delete link' do
       sign_up
       upload_image
-      click_link 'Delete Cake'
+      click_link 'Delete'
       expect(page).not_to have_content 'Cake'
       expect(page).to have_content 'Image deleted successfully'
     end
@@ -54,7 +54,7 @@ feature 'images' do
       click_link 'Log out'
       sign_up_2
       expect(current_path).to eq '/'
-      click_link 'Delete Cake'
+      click_link 'Delete'
       expect(current_path).to eq images_path
       expect(page).to have_content 'You do not have permission to delete this image'
     end

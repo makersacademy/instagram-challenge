@@ -27,7 +27,7 @@ module Helpers
   end
 
   def leave_comment
-    click_link 'Comment on Cake'
+    click_link 'Comment'
     fill_in "Comment", with: "yum!"
     click_button 'Leave Comment'
   end

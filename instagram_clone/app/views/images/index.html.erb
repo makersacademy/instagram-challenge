@@ -5,9 +5,10 @@
       <br>
       <%= link_to image.name, image_path(image) %>
       Posted by <%= image.user_id %>
+      <br>
+      <%= pluralize image.likes.count, 'Like' %>
     </p>
 
-    <h3>Comments</h3>
       <% if image.comments.any? %>
         <ul>
           <% image.comments.each do |comment| %>
@@ -16,16 +17,16 @@
             </li>
           <% end %>
         </ul>
-      <% else %>
-        <p>no comments yet</p>
       <% end %>
+
     <p>
-    <%= link_to "Comment on #{image.name}", new_image_comment_path(image) %></p>
+    <%= link_to "Comment", new_image_comment_path(image) %></p>
     <p>
-    <%= link_to "Delete #{image.name}", image_path(image), method: :delete %></p>
+    <%= button_to "Like", image_likes_path(image) %>
+    </p>
+    <p>
+    <%= link_to "Delete", image_path(image), method: :delete %></p>
   <% end %>
 <% else %>
   <h2>No images yet!</h2>
 <% end %>
-
-<!-- <a href='images/new'>Upload an image</a> -->
