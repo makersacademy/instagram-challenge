@@ -5,6 +5,7 @@ class Photo < ActiveRecord::Base
         -> { extending WithUserAssociationExtension }, 
         dependent: :destroy
   belongs_to :user
+  has_many :likes
   validates :user_id, :presence => true
   
   

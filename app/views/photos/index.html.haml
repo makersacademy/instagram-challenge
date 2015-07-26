@@ -6,7 +6,15 @@
       = link_to photo.name, photo_path(photo)
       %h4= link_to '@'.html_safe + photo.user.username, user_photos_path(photo.user)
       
-    %p= image_tag photo.image.url(:medium)
+    %p
+      = link_to photo_path(photo) do
+        = image_tag photo.image.url(:medium)
+    
+    
+    %p
+      = link_to "Like", photo_likes_path(photo), method: :post
+      = pluralize photo.likes.count, 'like'
+    
     %h4
       = link_to '@'.html_safe + photo.user.username, user_photos_path(photo.user)
       = photo.description
