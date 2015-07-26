@@ -11,8 +11,12 @@ class Image < ActiveRecord::Base
   validates_attachment_presence :picture, message: "needs to be uploaded"
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\z/
 
-  def show_comments_with_image
-    comments = Comment.where(image_id: self.id).map { |comment| User.find(comment.user_id).username + ' says: ' + comment.content}
+  def show_comments
+    Comment.where(image_id: self.id).map { |comment| [comment, User.find(comment.user_id).username + ' says: ' + comment.content] }
+  end
+
+  def get_username_of_creator
+    User.find(self.user_id).username
   end
 
 end

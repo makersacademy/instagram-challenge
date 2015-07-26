@@ -5,10 +5,12 @@
     <p><%= link_to '&#x1F44D;'.html_safe, image_path(@image), method: :patch %><%=  @likes %></p>
   </div>
 
-  <ul>
-    <% @comments_info.each do |comment_info| %>
-      <li><%= comment_info %></li>
+  <% if @image.show_comments.any? %>
+    <ul>
+      <% @image.show_comments.each do |comment| %>
+      <li><%= link_to comment[1], user_path(comment[0].user_id) %></li>
     <% end %>
-  </ul>
+   </ul>
+  <% end %>
 
   <%= link_to "Add Comment", new_image_comment_path(@image) %>

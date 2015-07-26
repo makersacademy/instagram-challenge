@@ -25,8 +25,6 @@ class ImagesController < ApplicationController
     creator = User.find(@image.user_id)
     @creator_handle = creator.username
     @likes = @image.likes
-    comments = Comment.where("image_id = #{params[:id]}")
-    @comments_info = comments.map { |comment| User.find(comment.user_id).username + ' says: ' + comment.content }
   end
 
   def update
