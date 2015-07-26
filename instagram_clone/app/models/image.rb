@@ -7,7 +7,10 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\z/
 
   belongs_to :user
-  validates :name, length: { minimum: 3 }
+  has_many :comments,
+    -> { extending WithUserAssociationExtension },
+    dependent: :destroy
 
+  validates :name, length: { minimum: 3 }
 
 end

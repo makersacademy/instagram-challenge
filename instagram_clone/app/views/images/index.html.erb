@@ -1,9 +1,31 @@
 <% if @images.any? %>
   <% @images.each do |image| %>
-    <p><%= image_tag image.picture.url(:medium) %><br><%= image.name %> Posted by <%= image.user_id %></p>
+    <p>
+      <%= image_tag image.picture.url(:medium)%>
+      <br>
+      <%= link_to image.name, image_path(image) %>
+      Posted by <%= image.user_id %>
+    </p>
+
+    <h3>Comments</h3>
+      <% if image.comments.any? %>
+        <ul>
+          <% image.comments.each do |comment| %>
+            <li>
+              <%= comment.comment %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>no comments yet</p>
+      <% end %>
+    <p>
+    <%= link_to "Comment on #{image.name}", new_image_comment_path(image) %></p>
+    <p>
+    <%= link_to "Delete #{image.name}", image_path(image), method: :delete %></p>
   <% end %>
 <% else %>
-  <h1>No images yet!</h1>
+  <h2>No images yet!</h2>
 <% end %>
 
-<a href='images/new'>Upload an image</a>
+<!-- <a href='images/new'>Upload an image</a> -->
