@@ -8,8 +8,8 @@ feature 'liking pictures' do
 
   scenario 'a user who is signed in can like a picture, which updates the picture\'s like count' do
     visit '/pictures'
-    click_link 'Like'
-    expect(page).to have_Content('1 like')
+    click_button 'Like'
+    expect(page).to have_content('1 like')
   end
 
 end
