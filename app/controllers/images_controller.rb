@@ -24,6 +24,7 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
     creator = User.find(@image.user_id)
     @creator_handle = creator.username
+    @comment = Comment.new
     @likes = @image.likes
   end
 

@@ -31,6 +31,7 @@ Bonus if you can add filters!
 
 ## v3.0
 
+* Use partials
 * Add styling
 * Add dynamic loading
 * Use Bootstrap
