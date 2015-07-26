@@ -35,13 +35,12 @@ feature 'pictures' do
   end
 
   context 'viewing pictures' do
-    let!(:berries){Picture.create(description:'berries')}
+    before {Picture.create description: 'berries'}
 
     scenario 'lets a user view a picture' do
       visit '/pictures'
       click_link 'View picture'
       expect(page).to have_content 'berries'
-      expect(current_path).to eq "/pictures/#{berries.id}"
     end
   end
 
@@ -80,16 +79,16 @@ feature 'pictures' do
     end
   end
 
-  #   scenario 'only the user which uploaded the picture can delete it' do
-  #     sign_up
-  #
-  #
-  #
-  #
-  #
-  #
-  # end
+  context 'deletion of pictures' do
+    scenario 'only the user which uploaded the picture can delete it' do
+      sign_up
+      upload_picture
+      click_link 'Sign out'
+      sign_up_different
+      click_link 'Delete picture'
+      expect(page).to have_content 'Only the original uploader can delete this photo'
+    end
 
-
+  end
 
 end
