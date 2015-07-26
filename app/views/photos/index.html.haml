@@ -6,5 +6,13 @@
     = image_tag photo.image.url(:medium)
     = link_to "Add a comment", new_photo_comment_path(photo)
 
+    - if photo.comments.any?
+      %ul
+        - photo.comments.each do |comment|
+          %li
+            = comment.thoughts
+    - else
+      %p No comments
+
 - else
   %h1 No photos yet!

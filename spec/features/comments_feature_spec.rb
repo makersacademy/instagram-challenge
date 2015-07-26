@@ -15,7 +15,7 @@ feature 'commenting' do
   scenario 'allows users to leave a comment using a form' do
      visit '/photos'
      click_link 'Add a comment'
-     fill_in "Comment", with: "So Cute!"
+     fill_in "Thoughts", with: "So Cute!"
      click_button 'Leave Comment'
      expect(current_path).to eq '/photos'
      expect(page).to have_content("So Cute!")
