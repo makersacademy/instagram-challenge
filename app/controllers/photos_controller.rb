@@ -9,8 +9,13 @@ class PhotosController < ApplicationController
   end
 
   def create
-    Photo.create(photo_params)
-    redirect_to photos_path
+    @photo = Photo.create(photo_params)
+    if @photo.save
+      redirect_to photos_path
+    else
+      flash[:error] = 'Please choose an image'
+      render :new
+    end
   end
 
   def show

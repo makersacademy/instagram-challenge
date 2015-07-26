@@ -21,6 +21,17 @@ feature 'photos' do
       expect(page).not_to have_content 'No photos yet'
       expect(page).to have_xpath("//img[contains(@src, 'thumb/gramophone.png')]")
     end
+
+    scenario 'photo must be provided' do
+      visit '/'
+      click_link 'Upload a photo'
+      fill_in 'Description', with: 'Instrumental'
+      click_button 'Create Photo'
+      expect(page).not_to have_content 'Instrumental'
+      #expect(page).to have_content 'No photos yet'
+      #expect(page).not_to have_xpath("//img[contains(@src, 'thumb/gramophone.png')]")
+      expect(page).to have_content('Please choose an image')
+    end
   end
 
   context 'viewing photos' do
