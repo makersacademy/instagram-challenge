@@ -9,6 +9,21 @@
     <p><%= @picture.description %></p>
     <%= link_to 'Edit', edit_picture_path(@picture) %>
     <%= link_to 'Delete', picture_path(@picture), method: :delete %>
+    <%= link_to 'Comment', new_picture_comment_path(@picture) %>
+    </p>
+    <p>
+      <h3>Comments</h3>
+      <% if @picture.comments.any? %>
+        <ul>
+          <% @picture.comments.each do |comment| %>
+            <li>
+              <%= comment.comment %>,    <i><%= comment.created_at %></i>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= "No comments :(" %>
+      <% end %>
     </p>
   </body>
 </html>
