@@ -27,10 +27,7 @@ feature 'pictures' do
   context 'creating new pictures' do
     scenario 'user prompted to fill out form, upload picture, which displays new picture' do
       sign_up
-      click_link 'Add a picture'
-      attach_file 'Image','spec/features/rasp.jpg'
-      fill_in 'Description', with: 'berries'
-      click_button 'Upload picture'
+      upload_picture
       # expect(page).to have_css('img[src*="/system/pictures/images/000/000/001/thumb/rasp.jpg"]') WHAT IS THE BEST WAY TO TEST IF IMAGES ARE ON THE SCREEN?
       expect(page).to have_content('berries')
       expect(current_path).to eq '/pictures'
@@ -83,13 +80,16 @@ feature 'pictures' do
     end
   end
 
-  def sign_up
-    visit '/pictures'
-    click_link 'Sign up'
-    fill_in 'Email', with: 'test123@gmail.com'
-    fill_in 'Password', with: '123password'
-    fill_in 'Password confirmation', with: '123password'
-    click_button 'Sign up'
-  end
+  #   scenario 'only the user which uploaded the picture can delete it' do
+  #     sign_up
+  #
+  #
+  #
+  #
+  #
+  #
+  # end
+
+
 
 end
