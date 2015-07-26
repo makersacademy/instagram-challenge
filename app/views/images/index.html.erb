@@ -1,6 +1,10 @@
 <% if @images.any? %>
   <% @images.each do |image| %>
     <%= link_to image_tag(image.picture.url(:medium), class: 'uploaded-pic medium'), image_path(image) %>
+
+      <p><%= User.find(image.user_id).username %></p>
+      <p><%= link_to '&#x1F44D;'.html_safe, image_path(image), method: :patch %><%= image.likes %></p>
+
   <% end %>
 <% else %>
   <h1>No images yet</h1>
