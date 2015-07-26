@@ -5,7 +5,18 @@
     <title>Images</title>
   </head>
   <body>
-    No images available
-    <a href='images/new'>Upload image</a>
+
+    <% if @images.any? %>
+      <% @images.each do |image| %>
+        <h2><%= image_tag image.image.url(:small) %></h2>
+        <%= link_to image.description, image_path(image) %>
+      <% end %>
+    <% else %>
+      No images available
+    <% end %>
+
+    <a href='images/new'>Upload Image</a>
+
+
   </body>
 </html>
