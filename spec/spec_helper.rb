@@ -89,4 +89,7 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  config.after(:suite) do # or :each or :all
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/system/pictures/images/000"])
+  end
 end

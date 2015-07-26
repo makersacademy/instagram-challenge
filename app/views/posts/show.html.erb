@@ -1,2 +1,17 @@
 <p><%= image_tag @post.image.url(:large) %><p>
 <p><%= @post.name %></p>
+
+<!-- <h3>Comments</h3> -->
+   <% if @post.comments.any? %>
+     <ul>
+       <% @post.comments.each do |comment| %>
+         <li>
+           <%= comment.comments %>
+         </li>
+       <% end %>
+     </ul>
+   <% else %>
+     <p>no comments yet</p>
+   <% end %>
+
+  <a href='/posts'>Back</a>
