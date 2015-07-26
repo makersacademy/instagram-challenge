@@ -3,11 +3,14 @@ require 'rails_helper'
 
 feature 'Liking photos' do
 
-  before {Photo.create title:'Awesome sea'}
-
   context 'Signed in' do
-    before {sign_up}
+
+    let!(:sea) {Photo.create(title:'Awesome sea',
+                             image: File.new("spec/features/sea.jpg") )}
+
     scenario "User can like a photo, which updates the photo 'like' count", js: true do
+
+      sign_up
       click_link 'Like'
       expect(page).to have_content '1 like'
       expect(page).not_to have_content '0 likes'
@@ -15,7 +18,13 @@ feature 'Liking photos' do
   end
 
   context 'Not signed in' do
+
+    let!(:sea) {Photo.create(title:'Awesome sea',
+                             image: File.new("spec/features/sea.jpg") )}
+
+
     scenario "Does not allow users to like a photo", js: true do
+
       visit '/photos'
       click_link 'Like'
       expect(page).to have_content '0 likes'
