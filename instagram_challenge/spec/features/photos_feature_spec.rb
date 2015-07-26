@@ -45,10 +45,21 @@ feature 'photos' do
        expect(current_path).to eq '/photos'
       end
 
-end
+      context 'editing restaurants' do
+        before {Photo.create(title:'Booya', caption: 'awesome')}
+
+        scenario 'let a user edit a photo' do
+         visit '/'
+         click_link 'Booya'
+         click_link 'Delete Booya'
+         expect(page).not_to have_content 'Booya'
+         expect(current_path).to eq '/photos'
+        end
+
+      end
 
 
   end
 
-
+end
 end
