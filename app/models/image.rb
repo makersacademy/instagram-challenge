@@ -19,4 +19,10 @@ class Image < ActiveRecord::Base
     User.find(self.user_id).username
   end
 
+  def destroy_as(user)
+    return false unless self.user == user
+    destroy
+    true
+  end
+
 end

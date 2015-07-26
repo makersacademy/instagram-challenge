@@ -34,6 +34,16 @@ class ImagesController < ApplicationController
     redirect_to :back
   end
 
+  def destroy
+    image = Image.find(params[:id])
+    if image.destroy_as current_user
+      flash[:notice] = 'Image deleted successfully'
+    else
+      flash[:notice] = 'You are not the creator of this image'
+    end
+    redirect_to :back
+  end
+
   def image_params
     params.require(:image).permit(:description, :picture)
   end
