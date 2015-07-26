@@ -26,4 +26,6 @@ feature 'photos' do
         expect(page).not_to have_content 'No pictures yet'
       end
     end
+
+
 end
