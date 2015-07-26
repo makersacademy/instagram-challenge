@@ -3,33 +3,26 @@
     <% if @images.any? %>
       <% @images.reverse_each do |image| %>
 
-      <div class='col-lg-2 col-sm-3 col-xs-4'>
+      <center><div class='col-lg-12'>
 
-          <%= link_to image_tag(image.picture.url(:thumb)), image_path(image)%>
+        <div class="center-block">
+          <%= link_to image_tag(image.picture.url(:large)), image_path(image)%><br>
+          <%= image.name %> posted by <span class="user"> <%= image.user_id %></span>
+          <span class='badge'><%= pluralize image.likes.count, 'like' %></span>
+        </div>
           <br>
-          <%= image.name %> posted by <%= image.user_id %>
-          <br>
-          <%= pluralize image.likes.count, 'like' %>
-
           <% if image.comments.any? %>
-            <ul>
               <% image.comments.each do |comment| %>
-                <li>
-                  <%= comment.comment %>
-                </li>
+                <div class='comment'> <span class="user"> <%= comment.user_id %> </span> <%= comment.comment %> </div>
               <% end %>
-            </ul>
           <% end %>
-
-        <p>
-        <%= link_to "Comment", new_image_comment_path(image) %></p>
         <button type='button' class='btn btn-default btn-xs'>
           <span class='glyphicon glyphicon-heart'></span>
             <%= link_to "Like", image_likes_path(image), method: :post %>
         </button>
-        <p>
-        <%= link_to "Delete", image_path(image), method: :delete %></p>
-        </div>
+        <%= link_to "Comment", new_image_comment_path(image) %>
+        <%= link_to "Delete", image_path(image), method: :delete %>
+        </div></center>
       <% end %>
     <% else %>
       <h2>No images yet!</h2>
