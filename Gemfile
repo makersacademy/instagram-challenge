@@ -33,8 +33,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem "paperclip", "~> 4.3"
+gem 'devise'
 
 group :test do
+  gem 'shoulda-matchers'
+  gem 'rspec-collection_matchers'
   gem 'rspec-rails'
   gem 'capybara'
 end

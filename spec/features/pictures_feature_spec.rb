@@ -76,7 +76,7 @@ feature 'pictures' do
 
     scenario 'lets a user delete a picture' do
       visit '/pictures'
-      click_link 'Delete test'
+      click_link 'delete test'
       expect(page).not_to have_content 'test'
       expect(page).to have_content 'Picture deleted successfully'
     end
