@@ -20,9 +20,10 @@ feature 'photos' do
         click_link 'Add a photo'
         expect(current_path).to eq '/photos/new'
         attach_file 'Image', '/Users/DuskyShelf/projects/instagram-challenge/spec/testimages/cat.png'
+        fill_in 'Caption', with: 'Kitty'
         click_button 'Create Photo'
-        expect(page).to have_css('img', text: "cat.png")
+        expect(page).to have_css('img[src*="cat.png"]')
         expect(page).not_to have_content 'No pictures yet'
       end
-end
+    end
 end
