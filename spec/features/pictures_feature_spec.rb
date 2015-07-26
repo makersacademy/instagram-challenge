@@ -50,5 +50,14 @@ feature 'pictures' do
       expect(current_path).to eq '/pictures'
       expect(page).to have_content 'Arches National Park'
     end
+
+    scenario 'lets a user delete a picture' do
+      visit '/pictures'
+      click_link "#{arches.description}"
+      click_link "Delete"
+      expect(page).not_to have_content 'Arches'
+      expect(page).to have_content 'Picture deleted successfully'
+    end
+
   end
 end
