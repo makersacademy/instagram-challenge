@@ -1,0 +1,28 @@
+%h1= '@'.html_safe + @user.username
+
+- if @user.photos.any?
+  - @user.photos.each do |photo|
+    %h3
+      = link_to photo.name, photo_path(photo)
+      
+    = image_tag photo.image.url(:medium)
+    %h4
+      = '@'.html_safe + photo.user.username
+      = photo.description
+    %h4= link_to "Leave a Comment", new_photo_comment_path(photo)
+    
+    %h4 
+      Comments for
+      = photo.name
+    - if photo.comments.any?
+      %ul
+        - photo.comments.each do |comment|
+          %li
+            = link_to '@'.html_safe + photo.user.username, user_photos_path(photo.user)
+            = comment.thoughts
+    - else
+      %p No comments 
+
+    
+- else 
+  %h1 No photos yet!
