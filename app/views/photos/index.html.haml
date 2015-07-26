@@ -1,38 +1,39 @@
-%h3=link_to  "Upload Image", new_photo_path
+%section.container
+  %div.row
+    .col-md-8.col-md-offset-2
+      .col-md-8.col-md-offset-2.photo_page
+        - if @photos.any?
+          - @photos.each do |photo|
+            %h2.section__photo--h2
+              = link_to photo.name, photo_path(photo)
+              %h4= link_to '@'.html_safe + photo.user.username, user_photos_path(photo.user)
+              
+            %p.img-responsive
+              = link_to photo_path(photo) do
+                = image_tag photo.image.url(:medium)
+            %p
+              = link_to "like", photo_likes_path(photo), class: 'likes-link'
+              %span.likes_count= photo.likes.count 
+              = 'likes'.pluralize photo.likes.count
+          
+            %h4
+              = link_to '@'.html_safe + photo.user.username, user_photos_path(photo.user)
+              = photo.description
+    
+            %h4= link_to "Leave a Comment", new_photo_comment_path(photo)
+            
+            .comments 
+              .comments__individual
+                Comments for
+                = photo.name
+                - if photo.comments.any?
+                  - photo.comments.each do |comment|
+                    %li
+                      = link_to '@'.html_safe + comment.user.username, user_photos_path(photo.user)
+                      = comment.thoughts
+                - else
+                  %p No comments 
 
-- if @photos.any?
-  - @photos.each do |photo|
-    %h2
-      = link_to photo.name, photo_path(photo)
-      %h4= link_to '@'.html_safe + photo.user.username, user_photos_path(photo.user)
-      
-    %p
-      = link_to photo_path(photo) do
-        = image_tag photo.image.url(:medium)
-    
-    
-    %p
-      = link_to "like", photo_likes_path(photo), class: 'likes-link'
-      = 'like'.pluralize photo.likes.count
-      %span.likes_count= photo.likes.count 
-    
-    %h4
-      = link_to '@'.html_safe + photo.user.username, user_photos_path(photo.user)
-      = photo.description
-    %h4= link_to "Leave a Comment", new_photo_comment_path(photo)
-    
-    %h4 
-      Comments for
-      = photo.name
-    - if photo.comments.any?
-      %ul
-        - photo.comments.each do |comment|
-          %li
-            = link_to '@'.html_safe + comment.user.username, user_photos_path(photo.user)
-            = comment.thoughts
-    - else
-      %p No comments 
-
-    
-- else 
-  %h1 No photos yet!
+            
+        - else 
+          %h1 No photos yet!

@@ -1,7 +1,12 @@
+%h2= @photo.name
 = link_to '@'.html_safe + @photo.user.username, user_photos_path(@photo.user)
-= @photo.name
 %p= @photo.description
 = image_tag @photo.image.url(:medium)
+%p
+  = link_to "like", photo_likes_path(@photo), class: 'likes-link'
+  %span.likes_count= @photo.likes.count 
+  = 'likes'.pluralize @photo.likes.count
+  
 %h3= link_to "Leave a Comment", new_photo_comment_path(@photo)
 
 - if @photo.created_by?(current_user)
@@ -11,7 +16,7 @@
   %ul
     - @photo.comments.each do |comment|
       %li
-        = link_to '@'.html_safe + @photo.user.username, user_photos_path(@photo.user)
+        = link_to '@'.html_safe + comment.user.username, user_photos_path(comment.user)
         = comment.thoughts
 - else
   %p No comments 

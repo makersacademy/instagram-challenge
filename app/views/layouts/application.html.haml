@@ -7,15 +7,18 @@
     = csrf_meta_tags
     
   %body
-    %h1= link_to "InstaZ", root_path
-    - if user_signed_in?
-      = link_to "Sign out", destroy_user_session_path, method: :delete
-    - else
-      = link_to "Sign in", new_user_session_path
-      = link_to "Sign up", new_user_registration_path
-    
-    %p.notice
-      = notice
-    %p.alert
-      = alert
-    = yield
+    %header 
+      .title=link_to "InstaZ", root_path
+      %nav.navbar.navbar-default.navbar-static-top
+        .navbar-btn.btn.btn-default.upload-btn=link_to  "Upload Image", new_photo_path
+        .container-fluid
+          - if user_signed_in?
+            .navbar-btn.btn.btn-default= link_to "Sign out", destroy_user_session_path, method: :delete
+          - else
+            %div.navbar-btn.btn.btn-default= link_to "Sign in", new_user_session_path
+            %div.navbar-btn.btn.btn-default= link_to "Sign up", new_user_registration_path
+        
+  
+    %div.container
+      = render 'layouts/messages'
+      = yield

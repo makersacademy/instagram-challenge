@@ -10,7 +10,7 @@ feature 'liking photos' do
     add_photo
     expect(page).to have_content('Grumpy cat')
     click_link 'like'
-    expect(page).to have_content("likes 1")
+    expect(page).to have_content("1 like")
   end
 
 end
