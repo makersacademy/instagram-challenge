@@ -47,6 +47,21 @@ feature 'restaurants' do
     end
   end
 
+  context 'editing restaurants' do
+
+  before {Photo.create title: 'Best burger'}
+
+    scenario 'let a user edit a photo' do
+      visit '/photos'
+      click_link 'Best burger'
+      click_link 'Edit'
+      fill_in 'Title', with: 'Five Guys'
+      click_button 'Update Photo'
+      expect(page).to have_content 'Five Guys'
+      expect(current_path).to eq '/photos'
+    end
+  end
+
   def upload_photo
     visit '/photos'
     click_link 'Upload a photo'
