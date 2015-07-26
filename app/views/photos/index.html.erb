@@ -5,7 +5,12 @@
    <div>
      <%= link_to (image_tag photo.image.url(:thumb)), photo_path(photo) %></a>
      <p>
-       <%= photo.description %>
+       <%= photo.description %><%= link_to 'Comment on photo', new_photo_comment_path(photo) %>
+       <% photo.comments.each do |comment| %>
+	    <li>
+	      <%= comment.message %>
+	    </li>
+	   <% end %>
      </p>
    </div>
   <% end %>
