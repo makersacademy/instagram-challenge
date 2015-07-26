@@ -62,6 +62,20 @@ feature 'restaurants' do
     end
   end
 
+  context 'deleting restaurants' do
+
+    before {Photo.create title: 'Best burger'}
+
+    scenario 'removes a photo when a user clicks a delete link' do
+      visit '/photos'
+      click_link 'Best burger'
+      click_link 'Delete'
+      expect(page).not_to have_content 'Best burger'
+      expect(page).to have_content 'Photo deleted successfully'
+    end
+
+  end
+
   def upload_photo
     visit '/photos'
     click_link 'Upload a photo'
