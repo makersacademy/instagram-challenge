@@ -24,6 +24,15 @@ class Image < ActiveRecord::Base
     self.tags.map { |tag| [tag, tag.name] }
   end
 
+  def add_tag(tag)
+    existing_tag = Tag.find_by(name: tag)
+    if existing_tag
+      existing_tag.images << self
+    else
+      self.tags.create(name: tag)
+    end
+  end
+
   def destroy_as(user)
     return false unless self.user == user
     destroy

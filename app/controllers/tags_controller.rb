@@ -6,7 +6,7 @@ class TagsController < ApplicationController
     tag_list = tag_params[:name].split(' ')
     image = Image.find(params[:image_id])
     tag_list.each do |tag|
-      image.tags.create(name: tag)
+      image.add_tag(tag)
     end
     redirect_to :back
   end
