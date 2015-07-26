@@ -13,6 +13,10 @@ class ImagesController < ApplicationController
     redirect_to '/images'
   end
 
+  def show
+    @image = Image.find(params[:id])
+  end
+
   private
 
   def image_params

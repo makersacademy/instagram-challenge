@@ -12,15 +12,34 @@ feature 'Images' do
 
   context 'when uploading images' do
     scenario 'images can be added' do
-      visit '/images'
-      click_link 'Upload Image'
-      expect(current_path).to eq '/images/new'
-      attach_file 'Image', Rails.root.join('spec/images/banana.jpeg')
-      fill_in 'Description', with: 'Banana'
-      click_button 'Upload Image'
+      add_banana_image
       expect(current_path).to eq '/images'
       expect(page).to have_content 'Banana'
     end
   end
-  
+
+  context 'viewing images' do
+
+    let!(:banana) { Image.create(image: File.open("#{Rails.root}/spec/images/banana.jpeg"), description: "Banana") }
+
+    scenario 'users can view individual images' do
+      visit '/images'
+      click_link 'Banana'
+      expect(page).to have_content 'Banana'
+      expect(current_path).to eq "/images/#{banana.id}"
+    end
+
+  end
+
+  private
+
+  def add_banana_image
+    visit '/images'
+    click_link 'Upload Image'
+    expect(current_path).to eq '/images/new'
+    attach_file 'Image', Rails.root.join('spec/images/banana.jpeg')
+    fill_in 'Description', with: 'Banana'
+    click_button 'Upload Image'
+  end
+
 end
