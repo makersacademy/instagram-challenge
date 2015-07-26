@@ -9,15 +9,20 @@ feature 'photos' do
     end
   end
 
-  context 'photos have been added' do
-  before do
-    Photo.create(name: 'KFC')
-  end
+  context 'adding photos' do
+    before do
+      user = User.create email: 'test@test.com', password: '12345678', password_confirmation: '12345678'
+      login_as user
+    end
 
-  scenario 'display photos' do
-    visit '/photos'
-    expect(page).to have_content('KFC')
-    expect(page).not_to have_content('No photos yet')
-  end
+    scenario 'by a user who has signed in' do
+        visit '/photos'
+        click_link 'Add a photo'
+        expect(current_path).to eq '/photos/new'
+        attach_file 'Image', '/Users/DuskyShelf/projects/instagram-challenge/spec/testimages/cat.png'
+        click_button 'Create Photo'
+        expect(page).to have_css('img', text: "cat.png")
+        expect(page).not_to have_content 'No pictures yet'
+      end
 end
 end
