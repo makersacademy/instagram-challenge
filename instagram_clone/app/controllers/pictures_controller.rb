@@ -1,4 +1,6 @@
 class PicturesController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def index
     @pictures = Picture.all
   end
@@ -8,7 +10,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-    Picture.create(picture_params)
+    current_user.pictures.create(picture_params)
     redirect_to pictures_path
   end
 

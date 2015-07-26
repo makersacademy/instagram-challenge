@@ -11,6 +11,7 @@ feature 'pictures' do
 
   context 'Pictures added' do
     before do
+      sign_up
       visit '/pictures'
       click_link 'Add a picture'
       attach_file "Image", "spec/asset_specs/photos/uku.jpg"
@@ -27,12 +28,7 @@ feature 'pictures' do
 
   context 'Adding pictures' do
     before  do
-      visit '/'
-      click_link 'Sign up'
-      fill_in('Email', with: 'test@example.com')
-      fill_in('Password', with: 'testtest')
-      fill_in('Password confirmation', with: 'testtest')
-      click_button('Sign up')
+      sign_up
     end
 
     scenario 'form to fill in' do
@@ -44,6 +40,13 @@ feature 'pictures' do
       expect(page).to have_selector('img')
     end
   end
-end
 
-# http://bit.ly/1OsdGLs
+  def sign_up
+    visit '/'
+    click_link 'Sign up'
+    fill_in('Email', with: 'test@example.com')
+    fill_in('Password', with: 'testtest')
+    fill_in('Password confirmation', with: 'testtest')
+    click_button('Sign up')
+  end
+end
