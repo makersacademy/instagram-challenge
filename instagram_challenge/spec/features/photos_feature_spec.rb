@@ -33,7 +33,7 @@ feature 'photos' do
       end
     end
 
-    context 'editing restaurants' do
+    context 'editing photos' do
       before { Photo.create(title:'Icy', caption: 'awesome') }
 
       scenario 'let a user edit a photo' do
@@ -44,23 +44,32 @@ feature 'photos' do
        expect(page).to have_content 'Iced out'
        expect(current_path).to eq '/photos'
       end
+    end
 
-      context 'editing restaurants' do
-        before { Photo.create(title:'Booya', caption: 'awesome') }
+    context 'deleting photos' do
+      before { Photo.create(title:'Booya', caption: 'awesome') }
 
-        scenario 'let a user edit a photo' do
-         visit '/'
-         click_link 'Booya'
-         click_link 'Delete Booya'
-         expect(page).not_to have_content 'Booya'
-         expect(page).to have_content 'Photo deleted successfully'
-         expect(current_path).to eq '/photos'
-        end
+      scenario 'let a user delete a photo' do
+       visit '/'
+       click_link 'Booya'
+       click_link 'Delete Booya'
+       expect(page).not_to have_content 'Booya'
+       expect(page).to have_content 'Photo deleted successfully'
+       expect(current_path).to eq '/photos'
+      end
+    end
 
+    context 'invalid photo uploads' do
+      scenario 'user cannot upload a photo without a title' do
+        visit '/'
+        click_link 'Upload Photo'
+        fill_in 'Title', with: ''
+        attach_file 'Image', 'spec/features/Ice.jpg'
+        click_button 'Upload Photo'
+        expect(page).not_to have_css("img[src*='Ice.jpg']")
+        expect(page).to have_content 'error'
       end
 
-
+    end
   end
-
-end
 end
