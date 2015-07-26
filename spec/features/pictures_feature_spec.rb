@@ -27,19 +27,28 @@ feature 'pictures' do
 
   context 'viewing pictures' do
 
-    # before do
-    #   visit '/pictures/new'
-    #   attach_file 'Picture', Rails.root.join('spec/images/arches.jpeg')
-    #   fill_in 'Description', with: 'Arches National Park'
-    #   click_button 'Upload picture'
-    # end
-
-    before { Picture.create(description: "Arches") }
+    let!(:arches) { Picture.create(description: "Arches") }
 
     scenario 'lets a user view a picture' do
       visit '/pictures'
-      click_link "Arches"
+      click_link "#{arches.description}"
+      expect(current_path).to eq "/pictures/#{arches.id}"
       expect(page).to have_content "Edit"
+    end
+  end
+
+  context 'editing pictures' do
+
+    let!(:arches) { Picture.create(description: "Arches") }
+
+    scenario 'lets a user edit a description' do
+      visit '/pictures'
+      click_link "#{arches.description}"
+      click_link "Edit"
+      fill_in 'Description', with: 'Arches National Park'
+      click_button 'Update'
+      expect(current_path).to eq '/pictures'
+      expect(page).to have_content 'Arches National Park'
     end
   end
 end
