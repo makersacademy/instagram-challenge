@@ -14,15 +14,14 @@ feature 'Images' do
   context 'creating images' do
 
     scenario 'is not allowed for users who are not logged in' do
-      visit '/images'
-      click_link 'Add Image'
+      visit '/images/new'
       expect(current_url).to have_content '/users/sign_in'
     end
 
     scenario "is allowed for users who are logged in" do
       login_as(user, :scope => :user)
       visit '/images'
-      click_link 'Add Image'
+      click_link 'Upload'
       fill_in 'Description', with: 'Anything'
       attach_file 'Picture', 'app/assets/images/fatty.jpg'
       click_button 'Create Image'
@@ -32,7 +31,7 @@ feature 'Images' do
     scenario 'is not allowed if a description is not given' do
       login_as(user, :scope => :user)
       visit '/images'
-      click_link 'Add Image'
+      click_link 'Upload'
       attach_file 'Picture', 'app/assets/images/fatty.jpg'
       click_button 'Create Image'
       expect(current_url).to have_content '/images/new'
