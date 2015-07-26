@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   
   resources :photos do
-    resources :comments
+    resources :comments, :likes
   end
   
   resources :users 
