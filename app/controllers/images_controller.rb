@@ -15,7 +15,8 @@ class ImagesController < ApplicationController
     if @image.save
       redirect_to images_path
     else
-      redirect_to new_image_path, alert: 'You need to add a description'
+      flash[:notice] = @image.errors.full_messages.join(', ')
+      redirect_to new_image_path
     end
   end
 

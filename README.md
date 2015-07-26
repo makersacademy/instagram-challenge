@@ -15,10 +15,11 @@ Bonus if you can add filters!
 
 ## v1.0
 
-* All images can be viewed and each image can be viewed on its own page
 * Users can post images, like images and comment on images
+* All images can be viewed and appear in order of amount of likes
+* Each image can be viewed on its own page
 * An individual image page will show its likes and comments
-* TODO descriptions and comments cannot be empty
+* Descriptions and comments cannot be empty
 
 ## v2.0
 

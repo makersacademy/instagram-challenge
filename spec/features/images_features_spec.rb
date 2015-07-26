@@ -35,7 +35,7 @@ feature 'Images' do
       attach_file 'Picture', 'app/assets/images/fatty.jpg'
       click_button 'Create Image'
       expect(current_url).to have_content '/images/new'
-      expect(page).to have_content 'You need to add a description'
+      expect(page).to have_content "Description can't be blank"
     end
   end
 
