@@ -21,16 +21,28 @@ feature 'Comments' do
       expect(page).to have_selector 'form'
     end
 
-    scenario 'after adding a comment can see it on the image page' do
-      login_as(user, :scope => :user)
-      visit "/images/#{image.id}"
-      click_link 'Add Comment'
-      fill_in 'comment[content]', with: 'So cute!'
-      click_button 'Create Comment'
-      expect(current_url).to have_content "/images/#{image.id}"
-      expect(page).to have_content 'So cute!'
-    end
+    context 'adding a comment' do
 
+      scenario 'after adding a comment can see it on the image page' do
+        login_as(user, :scope => :user)
+        visit "/images/#{image.id}"
+        click_link 'Add Comment'
+        fill_in 'comment[content]', with: 'So cute!'
+        click_button 'Create Comment'
+        expect(current_url).to have_content "/images/#{image.id}"
+        expect(page).to have_content 'So cute!'
+      end
+
+      scenario 'it cannot be blank' do
+        login_as(user, :scope => :user)
+        visit "/images/#{image.id}"
+        click_link 'Add Comment'
+        click_button 'Create Comment'
+        expect(current_url).to have_content "/images/#{image.id}/comments/new"
+        expect(page).to have_content 'Cannot post an empty comment'
+      end
+
+    end
   end
 
 end

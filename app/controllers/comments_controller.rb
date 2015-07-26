@@ -9,8 +9,12 @@ class CommentsController < ApplicationController
 
   def create
     @image = Image.find params[:image_id]
-    @comment = @image.comments.create_with_user(comment_params, current_user)
-    redirect_to image_path(@image)
+    @comment = @image.comments.build_with_user(comment_params, current_user)
+    if @comment.save
+      redirect_to image_path(@image)
+    else
+      redirect_to new_image_comment_path(@image), alert: 'Cannot post an empty comment'
+    end
   end
 
   def comment_params
