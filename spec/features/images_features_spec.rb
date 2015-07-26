@@ -45,7 +45,7 @@ feature 'Images' do
       login_as(user, :scope => :user)
       visit "/images/#{image.id}"
       find("p a").click
-      # expect{ find(".info a").click }.to change{ image }
+      # expect{ find("p a").click }.to change{ image.likes }.by(1)
       expect(page).to have_content '1'
     end
   end

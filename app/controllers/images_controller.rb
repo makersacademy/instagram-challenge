@@ -18,10 +18,10 @@ class ImagesController < ApplicationController
   def show
     @image = Image.find(params[:id])
     creator = User.find(@image.user_id)
-    @creator_handle = make_handle(creator)
+    @creator_handle = creator.username
     @likes = @image.likes
     comments = Comment.where("image_id = #{params[:id]}")
-    @comments_info = comments.map { |comment| make_handle(User.find(comment.user_id)) + ' says: ' + comment.content }
+    @comments_info = comments.map { |comment| User.find(comment.user_id).username + ' says: ' + comment.content }
   end
 
   def update
@@ -34,10 +34,5 @@ class ImagesController < ApplicationController
   def image_params
     params.require(:image).permit(:description, :picture)
   end
-
-  def make_handle obj
-    obj.email.split('@').first
-  end
-
 
 end

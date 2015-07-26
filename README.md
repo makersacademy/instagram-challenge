@@ -18,7 +18,7 @@ Bonus if you can add filters!
 * All images can be viewed and each image can be viewed on its own page
 * Users can post images, like images and comment on images
 * An individual image page will show its likes and comments
-* TODO descriptions and comments cannot be empty
+* TODO username, descriptions and comments cannot be empty
 
 ## v2.0
 

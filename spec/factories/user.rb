@@ -5,6 +5,7 @@ FactoryGirl.define do
   end
 
   factory :user do
+    username 'test_user'
     email { generate(:email) }
     password 'secret1234'
   end
