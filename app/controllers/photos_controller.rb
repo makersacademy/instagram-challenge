@@ -9,6 +9,9 @@ class PhotosController < ApplicationController
     Photo.create(photos_params)
     redirect_to '/photos'
   end
+  def show
+    @photo = Photo.find(params[:id])
+  end
 
   def photos_params
     params.require(:photo).permit(:title, :image)

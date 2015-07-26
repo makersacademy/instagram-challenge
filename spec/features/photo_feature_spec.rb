@@ -20,6 +20,17 @@ feature 'restaurants' do
     end
   end
 
+  context 'viewing photos' do
+    let!(:bestburger){Photo.create(title:'Best burger')}
+    scenario 'titles are links' do
+      visit '/photos'
+      click_link 'Best burger'
+      expect(page).to have_content 'Best burger'
+      # how to test stub image
+      expect(current_path).to eq "/photos/#{bestburger.id}"
+    end
+  end
+
   context 'adding photos' do
     scenario 'Adding title' do
       visit '/photos'
@@ -30,13 +41,17 @@ feature 'restaurants' do
     end
 
     scenario 'Adding Image' do
-      visit '/photos'
-      click_link 'Upload a photo'
-      fill_in 'Title', with: 'Best Burger'
-      attach_file 'photo[image]', 'spec/features/bestburger.png'
-      click_button 'Upload photo'
+      upload_photo
       expect(page).to have_content 'Best Burger'
       expect(page).to have_css ('img[src*="bestburger.png"]')
     end
+  end
+
+  def upload_photo
+    visit '/photos'
+    click_link 'Upload a photo'
+    fill_in 'Title', with: 'Best Burger'
+    attach_file 'photo[image]', 'spec/features/bestburger.png'
+    click_button 'Upload photo'
   end
 end
