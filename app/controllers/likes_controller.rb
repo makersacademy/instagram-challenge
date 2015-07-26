@@ -2,8 +2,7 @@ class LikesController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
 
-  # the action below is actually creating the like so should be a post handler but I couldnt figure it out
-  def new 
+  def create 
     @picture = Picture.find(params[:picture_id])
     @like = @picture.likes.build(user: current_user)
 
