@@ -53,4 +53,5 @@ group :development, :test do
   gem 'spring'
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'shoulda'
 end
