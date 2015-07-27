@@ -9,8 +9,21 @@
     <%= image_tag @image.image.url(:medium) %>
     <%= @image.description %>
 
-    <%= link_to "Edit", edit_image_path(@image) %>
-    <%= link_to "Delete", image_path(@image), method: :delete %>
+    <i class="fa fa-comments-o fa-fw"></i><%= link_to "Comment", new_image_comment_path(@image) %>
+    <i class="fa fa-pencil fa-fw"></i><%= link_to "Edit", edit_image_path(@image) %>
+    <i class="fa fa-trash-o fa-fw"></i><%= link_to "Delete", image_path(@image), method: :delete %>
+
+    <% if @image.comments.any? %>
+      <ul>
+        <% @image.comments.reverse.each do |comment| %>
+          <li>
+            <%= comment.comment %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments.</p>
+    <% end %>      
 
   </body>
 </html>

@@ -8,4 +8,6 @@ class Image < ActiveRecord::Base
 
   validates_attachment_presence :image
 
+  has_many :comments, dependent: :destroy
+
 end
