@@ -8,11 +8,14 @@
      <p>
        <%= photo.description %><% if user_signed_in? %><%= link_to 'Comment on photo', new_photo_comment_path(photo) %>
        <% end %>
+       
+       <% if user_signed_in? %>
        <p>
-       <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
-        <span class="likes_count"><%= photo.likes.count %></span> <%= 'likes'.pluralize(photo.likes.count) %>
+         <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
+          <span class="likes_count"><%= photo.likes.count %></span> <span class="likes_pluralisation"><%= 'like'.pluralize(photo.likes.count) %></span>
        </p>
-       <% if current_user && current_user.id == photo.user_id %>
+       <% end %>
+       <% if user_signed_in? && current_user.id == photo.user_id %>
        <%= link_to 'Delete photo', photo_path(photo), method: :delete %><% end %>
        <% photo.comments.each do |comment| %>
 	    <li>
