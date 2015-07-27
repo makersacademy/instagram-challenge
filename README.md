@@ -1,17 +1,19 @@
 # Instagram Clone
 
+This is a basic instagram clone. Users can sign up. Post images. Likes, comment and tag images. Users have profile pages with all their images. Tag pages show all images associated with that tag. Images and comments can be deleted by their creator.
+
 
 ## Getting Started
 
-TODO
+```bash
+git clone https://github.com/DataMinerUK/instagram-challenge.git
+cd instagram-challenge
+bin/rake db:create
+bin/rake db:migrate
+rails s
+```
 
-## Task
-
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+Go to localhost:3000
 
 ## [v1.0](https://github.com/DataMinerUK/instagram-challenge/releases/tag/v1.0)
 
@@ -35,3 +37,13 @@ Bonus if you can add filters!
 * Add styling
 * Add dynamic loading
 * Use Bootstrap
+
+## Lessons Learnt
+
+* Test coverage is hard. Finding elements on the page using CSS selectors with Capybara `find` is a pain. It does not seem to work like JQuery
+* You cannot set a default on a property using `rails g migration`. Change this in the migration file before you `rake db:migrate`
+* When using FactoryGirl you need to use a [sequence](https://github.com/DataMinerUK/instagram-challenge/blob/master/spec/factories/user.rb#L3-L5) for properties which need to be unique
+* For password confirmation you need to [confirm](https://github.com/DataMinerUK/instagram-challenge/blob/master/spec/factories/user.rb#L17-L19) a FactoryGirl user after creation
+* To generate a migration for a join table you need to use `bin/rails g migration CreateJoinTableImageTag image tag` where the classes to be associated *have* to be in alphabetical order
+* When adding a username to a Devise user you need to add [this](bin/rails g migration CreateJoinTableImageTag image tag) to the application controller
+* You have to write you own [method](https://github.com/DataMinerUK/instagram-challenge/blob/master/app/models/image.rb#L27-L35) for the many-to-many association for creating tags or adding the image association to one
