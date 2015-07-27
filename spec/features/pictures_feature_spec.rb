@@ -20,7 +20,7 @@ feature 'pictures' do
       click_link 'Add a picture'
       expect(current_path).to eq '/pictures/new'
       fill_in('Caption', with: 'Test caption')
-      attach_file 'Image', '/users/kirstenjones/projects/instagram-challenge/spec/capybara.jpeg'
+      attach_file 'Image', './spec/capybara.jpeg'
       click_button 'Create Picture'
       expect(page).to have_content 'Test caption'
       expect(page).not_to have_content 'No pictures yet'
