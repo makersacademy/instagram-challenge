@@ -2,12 +2,16 @@ require 'rails_helper'
 
 feature 'liking photos' do
 
-  # before do
-  #   photo = Photo.create(title: 'mountains', caption: 'we be caption')
-  #   photo.comments.create(comment: 'great view!')
-  # end
-  #
-  # scenario 'a '
+  before do
+    photo = Photo.create(title: 'mountains', caption: 'we be caption')
+    photo.comments.create(comment: 'great view!')
+  end
+
+  scenario 'a user can like a photo' do
+    visit '/'
+    click_link 'Like mountains'
+    expect(page).to have_content('1 like')
+  end
 end
 
 
