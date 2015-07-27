@@ -42,8 +42,21 @@ feature 'Images' do
       expect(current_path).to eq '/images'
       expect(page).to have_content 'Here is a banana'
     end
-
   end
+
+  context 'deleting images' do
+
+    let!(:banana) { Image.create(image: File.open("#{Rails.root}/spec/images/banana.jpeg"), description: "Banana") }
+
+    scenario 'when user clicks delete, the image is removed' do
+      visit "/images/#{banana.id}"
+      click_link 'Delete'
+      expect(current_path).to eq '/images'
+      expect(page).not_to have_content 'Banana'
+      expect(page).to have_content 'Image deleted successfully'
+    end
+  end
+
   private
 
   def add_banana_image
