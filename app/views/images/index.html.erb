@@ -8,16 +8,26 @@
 
     <%= notice %>
 
+    <i class="fa fa-upload fa-fw"></i><a href='images/new'>Upload Image</a>
+
     <% if @images.any? %>
       <% @images.each do |image| %>
-        <h2><%= image_tag image.image.url(:small) %></h2>
-        <%= link_to image.description, image_path(image) %>
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+              <h2><%= image_tag image.image.url(:small) %></h2>
+                <div class="caption">
+                  <%= link_to image.description, image_path(image) %>
+                </div>
+              </div>
+            </div>
+          </div>
       <% end %>
     <% else %>
       No images available
     <% end %>
 
-    <a href='images/new'>Upload Image</a>
+
 
     <%= yield %>
 
