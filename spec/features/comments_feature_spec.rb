@@ -8,7 +8,7 @@ feature "comments" do
                      avatar_file_size: '10',
                      avatar_content_type: 'image/jpeg')
       visit '/pictures'
-      click_link 'comment on test'
+      click_link 'comment'
       expect(page).to have_content 'Log in'
     end
   end
@@ -51,7 +51,7 @@ feature "comments" do
 
     def leave_comment
       visit '/pictures'
-      click_link 'comment on test'
+      click_link 'comment'
       fill_in "Thoughts", with: "so so"
       click_button 'Post comment'
     end

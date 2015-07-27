@@ -12,7 +12,7 @@ feature 'liking' do
     end
     scenario 'a visitor cannot like a picture' do
       visit '/pictures'
-      click_link 'like another test'
+      click_link 'like'
       expect(page).to have_content 'Log in'
     end
   end
@@ -54,7 +54,7 @@ feature 'liking' do
 
     def like_picture
       visit '/pictures'
-      click_link 'like test'
+      click_link 'like'
     end
   end
 end

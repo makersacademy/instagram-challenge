@@ -33,7 +33,7 @@ feature 'pictures' do
 
     scenario 'lets a user view a picture' do
       visit '/pictures'
-      click_link 'view test'
+      click_link 'view'
       expect(page).to have_content 'test'
       expect(current_path).to eq "/pictures/#{test.id}"
     end
@@ -54,7 +54,7 @@ feature 'pictures' do
                        avatar_content_type: 'image/jpeg')
 
       visit '/pictures'
-      click_link 'delete another test'
+      click_link 'delete'
       expect(page).to have_content 'Log in'
     end
   end
@@ -94,7 +94,7 @@ feature 'pictures' do
       scenario 'lets a user delete their own picture' do
         new_picture
         visit '/pictures'
-        click_link 'delete test'
+        click_link 'delete'
         expect(page).not_to have_content 'test'
         expect(page).to have_content 'Picture deleted successfully'
       end
@@ -105,7 +105,7 @@ feature 'pictures' do
                        avatar_file_size: '10',
                        avatar_content_type: 'image/jpeg')
         visit '/pictures'
-        click_link 'delete another test'
+        click_link 'delete'
         expect(page).to have_content 'You did not add that picture'
       end
     end
