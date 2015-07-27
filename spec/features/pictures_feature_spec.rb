@@ -15,7 +15,7 @@ feature 'pictures' do
       login_as user
     end
 
-    xscenario 'a user who is signed in should be able to add a picture' do
+    scenario 'a user who is signed in should be able to add a picture' do
       visit '/pictures'
       click_link 'Add a picture'
       expect(current_path).to eq '/pictures/new'
@@ -45,7 +45,7 @@ feature 'pictures' do
       visit '/pictures'
       click_link 'Add a picture'
       fill_in('Caption', with: 'Test caption')
-      attach_file 'Image', '/users/kirstenjones/projects/instagram-challenge/spec/capybara.jpeg'
+      attach_file 'Image', './spec/capybara.jpeg'
       click_button 'Create Picture'
       expect(page).to have_content 'kirsten@jones.com'
     end
