@@ -1,17 +1,24 @@
-<p><%= image_tag @post.image.url(:large) %><p>
-<p><%= @post.name %></p>
+<div class="container">
+  <div class="row text-center">
+    <%= image_tag @post.image.url(:large) %>
+    <div class="photo-credit">
+      <%= @post.name %>
+    </div>
 
-<!-- <h3>Comments</h3> -->
-   <% if @post.comments.any? %>
-     <ul>
-       <% @post.comments.each do |comment| %>
-         <li>
-           <%= comment.comments %>
-         </li>
+    <!-- <h3>Comments</h3> -->
+       <% if @post.comments.any? %>
+         <ul class="comments">
+           <% @post.comments.each do |comment| %>
+             <li>
+               <%= comment.comments %>
+             </li>
+           <% end %>
+         </ul>
+       <% else %>
+         <p>no comments yet</p>
        <% end %>
-     </ul>
-   <% else %>
-     <p>no comments yet</p>
-   <% end %>
-
-  <a href='/posts'>Back</a>
+  </div>
+  <div class="btn">
+    <a href='/posts'>Back</a>
+  <div>
+</div>

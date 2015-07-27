@@ -1,18 +1,27 @@
-<div class="container-fluid">
-  <% if @posts.any? %>
-    <% @posts.each do |post| %>
-      <div class="post-image">
-        <%= image_tag post.image.url(:medium) %>
+<div class="container">
+  <div class="row">
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
+      <div class="col-md-4">
+        <div class="post-image">
+          <%= image_tag post.image.url(:medium) %>
+        </div>
+        <span class="post-credit">
+          <%= link_to post.name, post_path(post) %>
+        </span>
+        <span class="post-opts">
+          <%= link_to "Comment", new_post_comment_path(post) %> /
+          <%= link_to "Delete", post_path(post), method: :delete %>
+        </span>
       </div>
-      <span class="post-credit">
-        <%= link_to post.name, post_path(post) %>
-        <%= link_to "Comment", new_post_comment_path(post) %>
-        <%= link_to "Delete", post_path(post), method: :delete %>
-      </span>
+      <% end %>
+    <% else %>
+      <h1>No posts yet</h1>
     <% end %>
-  <% else %>
-    <h1>No posts yet</h1>
-<% end %>
+  </div>
 
-<a href='posts/new'>Add a post</a>
+  <div class="row text-center btn">
+    <a href='posts/new'>Add a post</a>
+  </div>
+
 </div>

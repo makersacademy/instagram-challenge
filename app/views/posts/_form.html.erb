@@ -1,17 +1,19 @@
-<%= form_for @post, :html => {:multipart => true} do |f| %>
-  <%= f.file_field :image %>
-  <%= f.label 'Photo credit' %>
-  <%= f.text_field :name %><br />
-  <%= f.submit 'Add' %>
-<% end %>
+<div class="container">
+  <%= form_for @post, :html => {:multipart => true} do |f| %>
+    <%= f.file_field :image %>
+    <%= f.label 'Photo credit' %>
+    <%= f.text_field :name %><br />
+    <%= f.submit 'Add' %>
+  <% end %>
 
-<% if @post.errors.any? %>
-  <section id="errors" >
-    <h2> <%= pluralize(@post.errors.count, "error") %> Please correct the following errors to save this post: </h2>
-    <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </section>
-<% end %>
+  <% if @post.errors.any? %>
+    <section id="errors" >
+      <h2> <%= pluralize(@post.errors.count, "error") %> Please correct the following errors to save this post: </h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+</div>
