@@ -74,11 +74,11 @@ end
   end
 
   def upload_picture
-  visit '/pictures'
-  click_link 'Click here to add a picture!'
-  fill_in 'Title', with: 'PFC'
-  attach_file "Image", 'spec/features/Pompey.jpg'
-  click_button 'Upload picture'
+    visit '/pictures'
+    click_link 'Click here to add a picture!'
+    fill_in 'Title', with: 'PFC'
+    attach_file "Image", 'spec/features/Pompey.jpg'
+    click_button 'Upload picture'
   end
 
 end

@@ -17,12 +17,12 @@ feature 'pictures' do
     end
 
     scenario 'fails without a title' do
-    sign_up
-    visit '/pictures'
-    click_link 'Click here to add a picture!'
-    attach_file "Image", 'spec/features/Pompey.jpg'
-    click_button 'Upload picture'
-    expect(page).to have_content 'error'
+      sign_up
+      visit '/pictures'
+      click_link 'Click here to add a picture!'
+      attach_file "Image", 'spec/features/Pompey.jpg'
+      click_button 'Upload picture'
+      expect(page).to have_content 'error'
     end
 
     scenario 'does not succeed without an image file' do
@@ -38,7 +38,7 @@ feature 'pictures' do
 
   context 'viewing a picture' do
     let!(:pfc) {Picture.create(title:'PFC',
-                               image: File.new("spec/features/Pompey.jpg") )}
+                               image: File.new("spec/features/Pompey.jpg"))}
     scenario 'allows a picture to be viewed by clicking on the title' do
       visit '/pictures'
       click_link 'PFC'
@@ -62,13 +62,13 @@ feature 'pictures' do
 
   context 'deleting a picture' do
     scenario 'allows an image to be deleted' do
-    sign_up
-    upload_picture
-    visit '/pictures'
-    click_link 'Delete PFC'
-    expect(page).not_to have_content 'PFC'
-    expect(page).not_to have_css("img[src*='Pompey.jpg']")
-    expect(page).to have_content 'Picture deleted successfully'
+      sign_up
+      upload_picture
+      visit '/pictures'
+      click_link 'Delete PFC'
+      expect(page).not_to have_content 'PFC'
+      expect(page).not_to have_css("img[src*='Pompey.jpg']")
+      expect(page).to have_content 'Picture deleted successfully'
     end
   end
 
@@ -82,11 +82,11 @@ feature 'pictures' do
   end
 
   def upload_picture
-  visit '/pictures'
-  click_link 'Click here to add a picture!'
-  fill_in 'Title', with: 'PFC'
-  attach_file "Image", 'spec/features/Pompey.jpg'
-  click_button 'Upload picture'
+    visit '/pictures'
+    click_link 'Click here to add a picture!'
+    fill_in 'Title', with: 'PFC'
+    attach_file "Image", 'spec/features/Pompey.jpg'
+    click_button 'Upload picture'
   end
 
 end

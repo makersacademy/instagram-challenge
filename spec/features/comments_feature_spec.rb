@@ -6,12 +6,12 @@ feature 'comments' do
 
   scenario 'allows users to leave comments using a form' do
     sign_up
-     visit '/pictures'
-     click_link 'Comment on PFC'
-     fill_in "Comment", with: "What a lovely badge"
-     click_button 'Leave Comment'
-     expect(current_path).to eq '/pictures'
-     expect(page).to have_content('What a lovely badge')
+      visit '/pictures'
+      click_link 'Comment on PFC'
+      fill_in "Comment", with: "What a lovely badge"
+      click_button 'Leave Comment'
+      expect(current_path).to eq '/pictures'
+      expect(page).to have_content('What a lovely badge')
   end
 
   def sign_up
