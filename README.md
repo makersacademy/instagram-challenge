@@ -9,12 +9,19 @@ Bonus if you can add filters!
 
 This is a simple app with features resembling those in Instagram.
 
-To do:
-1. Add features for editing and deleting pictures uploaded.
-2. Restrict actions of users - only those signed in should be able to make comments and like pictures.
-3. Restrict the number of times each user can like a picture to once.
-4. Add features for editing and deleting comments - restricted to the user who made the comment.
-5. Add CSS styling - possibly using bootstrap.
+Features:
+1. The homepage displays all images uploaded to the site.
+2. Users can sign up and sign in (with an email address or with Facebook) and sign out.
+3. Once signed in, a user can upload an image, with a caption if desired.
+4. Users (when signed in) can delete an image if they added it. If a user attempts to delete an image which was added by another user, an error message is displayed.
+5. Users can 'like' images, and the image will display how many likes it has.
+6. Users can leave comments on images, and the comments are displayed along with the image.
+
+Features to add:
+1. Restrict actions of users further - only users who are signed in should be able to make comments and like pictures.
+2. Add detail to comments - have the user's email address appear next to a comment they have made.
+3. Allow users to edit/delete comments which they added, but not comments of other users.
+4. Restrict the number of times each user can like a picture to once.
+6. Add CSS styling - possibly using bootstrap.
 6. Use Amazon Web Services for picture uploads rather than local file structure, so that the app can be deployed to Heroku.
-7. Increase test coverage by testing the associations between models.
-8. Add a tags features so that pictures can be filtered by tag.
+7. Add a tags features so that pictures can be filtered by tag.
