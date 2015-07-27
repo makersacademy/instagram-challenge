@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  get 'pictues' => 'pictures#index  '
-  resources :pictures
+  root to: "pictures#index"
+  
+  resources :pictures do
+    resources :comments
+  end
+  
+  devise_for :users
 end
