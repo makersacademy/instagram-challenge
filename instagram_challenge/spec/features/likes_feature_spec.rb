@@ -1,6 +1,14 @@
 require 'rails_helper'
 
+feature 'liking photos' do
 
+  # before do
+  #   photo = Photo.create(title: 'mountains', caption: 'we be caption')
+  #   photo.comments.create(comment: 'great view!')
+  # end
+  #
+  # scenario 'a '
+end
 
 
 

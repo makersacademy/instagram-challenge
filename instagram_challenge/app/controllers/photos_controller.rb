@@ -48,8 +48,8 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params[:photo][:user_id] = current_user.id
-    params.require(:photo).permit(:title, :caption, :image, :user_id)
+    params[:photo][:user] = current_user
+    params.require(:photo).permit(:title, :caption, :image, :user)
   end
 
 end

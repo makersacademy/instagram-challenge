@@ -109,6 +109,8 @@ feature 'photos' do
       click_link('Delete Icy')
       expect(page).to have_content "You can't delete someone else's photo"
     end
+
+    
   end
 
   def sign_up
