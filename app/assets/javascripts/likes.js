@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   $('.likes-link').on('click', function(event){
       event.preventDefault();
-
+      console.log('hi')
       var likeCount = $(this).siblings('.likes_count');
 
       $.post(this.href, function(response){
