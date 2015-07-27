@@ -1,5 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe Picture, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Picture do
+
+  it { is_expected.to belong_to :user }
+
+  it { is_expected.to have_many :comments }
+
+  it { is_expected.to have_many :likes }
+  
 end
