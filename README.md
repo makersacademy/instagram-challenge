@@ -29,3 +29,18 @@ Tested using RSpec (provides a behaviour driven development framework for the la
 Shoulda (Ruby gem for testing)
 Devise (Ruby gem which handles building a user model, routes for your users controller)
 Poltergeist (headless browser for Capybara based on PhantomJS (scripted, headless browser used for automating web page interaction; provides a JavaScript API enabling automated navigation, screenshots, user behavior and assertions making it a common tool used to run browser-based unit tests in a headless system like a continuous integration environment))
+
+To do:
+-----
+
+Add in 'Likes' functionality with corresponding tests. Check pluralize method is working (in both localhost and testing environment)
+
+Correct Rspec/Capybara tests to validate image on screen
+
+Attribute users to comments and likes
+
+Add image to photo's profile page
+
+Tests to cover all facets of authentication as per app/controllers/photos_controller.rb and app/controllers/comments_controller.rb
+
+
