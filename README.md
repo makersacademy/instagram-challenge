@@ -21,7 +21,7 @@ Bonus if you can add filters!
 * An individual image page will show its likes and comments
 * Descriptions and comments cannot be empty
 
-## v2.0
+## [v2.0](https://github.com/DataMinerUK/instagram-challenge/releases/tag/v2.0)
 
 * Users images can be viewed on a users page
 * Users can delete images from their user page
