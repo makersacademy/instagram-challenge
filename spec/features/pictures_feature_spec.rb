@@ -49,12 +49,23 @@ feature 'pictures' do
 
     scenario 'a visitor cannot delete a picture' do
       Picture.create(name:'another test',
-                       avatar_file_name: 'test.jpg',
-                       avatar_file_size: '10',
-                       avatar_content_type: 'image/jpeg')
+                     avatar_file_name: 'test.jpg',
+                     avatar_file_size: '10',
+                     avatar_content_type: 'image/jpeg')
 
       visit '/pictures'
       click_link 'delete'
+      expect(page).to have_content 'Log in'
+    end
+
+    scenario 'a visitor cannot edit a picture' do
+      Picture.create(name:'another test',
+                     avatar_file_name: 'test.jpg',
+                     avatar_file_size: '10',
+                     avatar_content_type: 'image/jpeg')
+
+      visit '/pictures'
+      click_link 'edit'
       expect(page).to have_content 'Log in'
     end
   end
@@ -80,12 +91,35 @@ feature 'pictures' do
         click_button 'Create Picture'
         expect(page).to have_content 'error'
       end
-      it 'does not let you select no iamge' do
+      it 'does not let you select no image' do
         visit '/pictures'
         click_link 'Add a picture'
         fill_in 'Name', with: 'test'
         click_button 'Create Picture'
         expect(page).to have_content 'error'
+      end
+    end
+
+    context 'editing pictures' do
+
+      scenario 'lets a user edit their own pictures' do
+        new_picture
+        visit '/pictures'
+        click_link 'edit'
+        fill_in 'Name', with: 'new name'
+        click_button 'Update Picture'
+        expect(page).to have_content 'new name'
+        expect(current_path).to eq '/pictures'
+      end
+
+      scenario 'stops a user editing other peoples pictures' do
+        Picture.create(name:'another test',
+                       avatar_file_name: 'test.jpg',
+                       avatar_file_size: '10',
+                       avatar_content_type: 'image/jpeg')
+        visit '/pictures'
+        click_link 'edit'
+        expect(page).to have_content 'You did not add that picture'
       end
     end
 

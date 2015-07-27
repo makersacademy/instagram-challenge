@@ -23,6 +23,25 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
   end
 
+  def edit
+    @picture = Picture.find(params[:id])
+    if @picture.user != current_user
+      flash[:notice] = 'You did not add that picture'
+      redirect_to '/pictures'
+    end
+  end
+
+  def update
+    @picture = Picture.find(params[:id])
+    @picture.update(picture_params)
+
+    if @picture.errors.any?
+      render 'edit'
+    else
+      redirect_to '/pictures'
+    end
+  end
+
   def destroy
     @picture = Picture.find(params[:id])
     if @picture.user == current_user
