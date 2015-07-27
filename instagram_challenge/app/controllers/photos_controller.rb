@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
 
   def index
     @photos = Photo.all
@@ -23,6 +24,10 @@ class PhotosController < ApplicationController
 
   def edit
     @photo = Photo.find(params[:id])
+    if @photo.user != current_user
+      flash[:notice] = "You can't edit someone else's photo"
+      redirect_to photos_path
+    end
   end
 
   def update
@@ -33,13 +38,18 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:id])
-    @photo.destroy
-    flash[:notice] = "Photo deleted successfully"
+    if @photo.user != current_user
+      flash[:notice] = "You can't delete someone else's photo"
+    else
+      @photo.destroy
+      flash[:notice] = "Photo deleted successfully"
+    end
     redirect_to photos_path
   end
 
   def photo_params
-    params.require(:photo).permit(:title, :caption, :image)
+    params[:photo][:user_id] = current_user.id
+    params.require(:photo).permit(:title, :caption, :image, :user_id)
   end
 
 end
