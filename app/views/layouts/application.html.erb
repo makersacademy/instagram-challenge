@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InstagramClone</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <ul class='nav navbar-nav'>
+    <li><%= link_to "Home page", images_path %></li>
+    <% if user_signed_in? %>
+      <li><%= link_to "Upload an image", new_image_path %></li>
+      <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Log in", new_user_session_path %></li>
+      <li><%= link_to "Sign up", new_user_registration_path %></li>
+    <% end %>
+    </ul>
+  </div>
+</nav>
+<div class='container'>
+
+  <% if flash[:notice] %>
+    <div class="alert alert-danger" role="alert"><%= notice %></div>
+  <% end %>
+
+  <%= yield %>
+</div>
+
+</body>
+</html>

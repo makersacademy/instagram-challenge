@@ -26,10 +26,10 @@ The aim for this project was to build an Instagram clone using Rails and to styl
 
 ## Technologies Used
 
-- Code: Ruby
-- Framework: Rails
-- Testing: Rspec, Capybara, Shoulda
-- Other: HTML, CSS, Bootstrap, PostgreSQL, Devise, Paperclip
+Code: Ruby
+Framework: Rails
+Testing: Rspec, Capybara, Shoulda
+Other: HTML, CSS, Bootstrap, PostgreSQL, Devise, Paperclip
 
 ## Tests
 
@@ -82,3 +82,4 @@ User
 Finished in 4.78 seconds (files took 9.7 seconds to load)
 23 examples, 0 failures
 ```
+
