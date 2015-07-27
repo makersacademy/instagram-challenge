@@ -25,6 +25,7 @@ Project to build Instagram using Rails.
 
 ## Still to complete/refactor
 * Add filters for pictures
+* Add ability to edit pictures (at which point users can change the filter aplplied)
 * Add functionality to enable users to like pictures
 * Styling/CSS - implement responsive grid 3x3
 * Integrate with Amazon web services
