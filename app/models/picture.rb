@@ -7,4 +7,10 @@ class Picture < ActiveRecord::Base
       -> { extending WithUserAssociationExtension },
       dependent: :destroy
   has_many   :likes, dependent: :destroy
+
+  def destroy_as(user)
+   return false unless self.user == user
+   destroy
+   true
+ end
 end
