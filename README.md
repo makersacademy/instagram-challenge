@@ -20,3 +20,12 @@ As usual please start by
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome). 
 
 Bonus if you can add filters! 
+
+Technologies used 
+-----
+
+Ruby On Rails (full stack, Web application framework)
+Tested using RSpec (provides a behaviour driven development framework for the language, allowing to write application scenarios and test them.)
+Shoulda (Ruby gem for testing)
+Devise (Ruby gem which handles building a user model, routes for your users controller)
+Poltergeist (headless browser for Capybara based on PhantomJS (scripted, headless browser used for automating web page interaction; provides a JavaScript API enabling automated navigation, screenshots, user behavior and assertions making it a common tool used to run browser-based unit tests in a headless system like a continuous integration environment))
