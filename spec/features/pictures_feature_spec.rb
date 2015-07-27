@@ -49,6 +49,23 @@ feature 'pictures' do
       click_button 'Create Picture'
       expect(page).to have_content 'kirsten@jones.com'
     end
+  end
 
+  context 'editing pictures' do
+
+    before do
+      user = User.create email: 'kirsten@jones.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj'
+      login_as user
+    end
+
+    scenario 'let a user delete a picture' do
+      visit '/pictures'
+      click_link 'Add a picture'
+      fill_in('Caption', with: 'Test caption')
+      attach_file 'Image', './spec/capybara.jpeg'
+      click_button 'Create Picture'
+      click_link 'Delete'
+      expect(page).not_to have_content 'Test caption'
+    end
   end
 end

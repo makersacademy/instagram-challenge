@@ -19,6 +19,13 @@ class PicturesController < ApplicationController
     end
   end
 
+  def destroy
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+    flash[:notice] = 'Restaurant deleted successfully'
+    redirect_to '/pictures'
+  end
+
   def picture_params
     params.require(:picture).permit(:caption, :image)
   end
