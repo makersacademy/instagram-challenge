@@ -26,7 +26,8 @@ class Image < ActiveRecord::Base
 
   def add_tag(tag)
     existing_tag = Tag.find_by(name: tag)
-    if existing_tag
+    image_tags = self.tags.map { |tag| tag.name }
+    if existing_tag && !image_tags.include?(tag)
       existing_tag.images << self
     else
       self.tags.create(name: tag)
