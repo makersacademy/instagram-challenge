@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= @image.description %></title>
+  </head>
+  <body>
+
+    <%= image_tag @image.image.url(:medium) %>
+    <%= @image.description %>
+
+    <i class="fa fa-comments-o fa-fw"></i><%= link_to "Comment", new_image_comment_path(@image) %>
+    <i class="fa fa-pencil fa-fw"></i><%= link_to "Edit", edit_image_path(@image) %>
+    <i class="fa fa-trash-o fa-fw"></i><%= link_to "Delete", image_path(@image), method: :delete %>
+
+    <% if @image.comments.any? %>
+      <ul>
+        <% @image.comments.reverse.each do |comment| %>
+          <li>
+            <%= comment.comment %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments.</p>
+    <% end %>      
+
+  </body>
+</html>
