@@ -4,7 +4,8 @@ feature 'liking photos' do
   before do
   	@user = User.create email: 'natso@gmail.com', password: '12345678', password_confirmation: '12345678'
     login_as @user
-    @photo = Photo.create description:'nice', image_file_name:'gramophone.png', user_id: @user.id
+    allow_any_instance_of(Paperclip::Attachment).to receive(:url).and_return("/system/photos/images/000/000/001/original/gramophone.png")
+    @photo = Photo.create description:'nice', image_file_name:'spec/fixtures/files/gramophone.png', user_id: @user.id
   end
 
   scenario 'photo has 0 likes initially' do
