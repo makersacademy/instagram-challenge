@@ -51,18 +51,31 @@ feature 'posts' do
       expect(page).to have_content 'Please correct the following errors to save this post:'
     end
 
-     scenario 'successfully adds a new picture' do
-       pending
-       sign_up_user1
-       visit '/posts'
-       click_link "Add a post"
-       expect(page).to have_content 'Add a new post'
-       attach_file 'post_image', 'spec/features/istanbul.jpg'
-       fill_in 'post_name', with: 'Istanbul'
-       click_button "Add"
-       expect(page).to have_content 'Istanbul'
-       expect(page).to have_selector("img[src*='istanbul.jpg']")
-     end
+    scenario 'successfully adds a new picture' do
+      sign_up_user1
+      visit '/posts'
+      click_link "Add a post"
+      expect(page).to have_content 'Add a new post'
+      attach_file 'post_image', 'spec/features/istanbul.jpg'
+      fill_in 'post_name', with: 'Istanbul'
+      click_button "Add"
+      expect(page).to have_content 'Istanbul'
+      expect(page).to have_selector(:id, 'istanbul-image')
+      expect(page).to have_selector("img[src*='istanbul.JPG']")
+    end
+
+    #  scenario 'successfully adds a new picture' do
+    #    pending
+    #    sign_up_user1
+    #    visit '/posts'
+    #    click_link "Add a post"
+    #    expect(page).to have_content 'Add a new post'
+    #    attach_file 'post_image', 'spec/features/istanbul.jpg'
+    #    fill_in 'post_name', with: 'Istanbul'
+    #    click_button "Add"
+    #    expect(page).to have_content 'Istanbul'
+    #    expect(page).to have_selector("img[src*='istanbul.jpg']")
+    #  end
   end
 
   def sign_up_user1
