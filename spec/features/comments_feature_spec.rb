@@ -2,21 +2,6 @@ require 'rails_helper'
 
 feature 'Commenting on posts' do
 
-  # let!(:post) { Post.create(image: File.open("#{Rails.root}/spec/features/istanbul.jpg"), name: "Istanbul at sunset") }
-
-  # before do
-  #   visit('/users/sign_up')
-  #   fill_in('Email', with: 'test@example.com')
-  #   fill_in('Password', with: 'testtest')
-  #   fill_in('Password confirmation', with: 'testtest')
-  #   click_button('Sign up')
-  #   click_link 'Add a post'
-  #   expect(page).to have_content 'Add a new post'
-  #   attach_file 'post_image', 'spec/features/istanbul.jpg'
-  #   fill_in 'post_name', with: 'Istanbul'
-  #   click_button 'Add'
-  # end
-
   let!(:post) { Post.create(image: File.open("#{Rails.root}/spec/features/istanbul.jpg"), name: "Istanbul at sunset") }
 
   scenario 'allows users to leave comments' do

@@ -9,19 +9,19 @@ class Post < ActiveRecord::Base
                     :styles => {
                       :large => {
                         :geometry => '500x500#',
-                        :format => 'JPG',
+                        :format => 'jpg',
                         :quality => 95,
                         :convert_options => '-colorspace Gray'
                       },
                       :medium => {
                         :geometry => '250x250#',
-                        :format => 'JPG',
+                        :format => 'jpg',
                         :quality => 75,
                         :convert_options => '-colorspace Gray'
                       },
                       :thumb => {
                         :geometry => '100x100#',
-                        :format => 'JPG',
+                        :format => 'jpg',
                         :quality => 40,
                         :convert_options => '-colorspace Gray'
                       },
