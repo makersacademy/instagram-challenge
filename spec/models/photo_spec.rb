@@ -15,7 +15,6 @@ describe Photo, type: :model do
 
     let(:user) { User.create email: 'test@test.com' }
     let(:photo) { Photo.create(description:'nice', image_file_name:'spec/fixtures/files/gramophone.png', user_id: user.id) }
-    #let(:like_params) { {rating: 5, thoughts: 'yum'} }
 
     subject(:like) { photo.likes.create(user.id) }
 

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'photos' do
-  
+
   before do
     @user = User.create email: 'natso@gmail.com', password: '12345678', password_confirmation: '12345678'
     login_as @user
@@ -16,7 +16,7 @@ feature 'photos' do
   end
 
   context 'adding a new photo' do
-  	scenario 'allows user to upload a photo' do
+    scenario 'allows user to upload a photo' do
       visit '/'
       click_link 'Upload a photo'
       fill_in 'Description', with: 'Instrumental'
@@ -44,7 +44,7 @@ feature 'photos' do
   end
 
   context 'viewing photos' do
-  	let!(:gram) { Photo.create(description:'nice', image_file_name:'spec/fixtures/files/gramophone.png') }
+    let!(:gram) { Photo.create(description:'nice', image_file_name:'spec/fixtures/files/gramophone.png') }
     scenario 'allows user to view full-size photos' do
       visit '/'
       find('img').click
@@ -55,7 +55,7 @@ feature 'photos' do
   context 'deleting photos' do
 
     before do
-      Photo.create(description:'nice', image_file_name:'spec/fixtures/files/gramophone.png', user_id: @user.id)
+      Photo.create(description:'nice', image_file_name: 'spec/fixtures/files/gramophone.png', user_id: @user.id)
     end
 
     scenario 'removes photo when owner clicks delete link' do
