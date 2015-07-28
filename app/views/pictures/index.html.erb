@@ -1,6 +1,15 @@
 <% if Picture.all.any? %>
   <% Picture.all.each do |picture| %>
     <%= image_tag picture.image.url(:medium) %>
+    <% if picture.comments.any? %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+          <li>
+            <%= comment.message %>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
       <%= link_to 'Add a comment', new_picture_comment_path(picture) %>
   <% end %>
 <% else %>
