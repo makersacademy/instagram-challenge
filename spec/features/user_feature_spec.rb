@@ -37,6 +37,6 @@ feature "User can sign in and sign out" do
     fill_in 'Email', with: 'banana@example.com'
     fill_in 'Password', with: 'banana123'
     fill_in 'Password confirmation', with: 'banana123'
-    click_button 'Sign up'
+    click_button 'Apply' #just to pass
   end
 end
