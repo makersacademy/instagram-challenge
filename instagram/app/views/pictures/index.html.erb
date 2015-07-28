@@ -1,0 +1,33 @@
+
+
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+      <%= image_tag picture.image.url(:thumb) %>
+      <p> <%= picture.description %> </p>
+      <%= link_to "Like", review_likes_path(picture), class: 'likes-link' %>
+      <span class="likes_count"> <%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>
+
+
+      <h3>Comments on picture</h3>
+        <% if picture.comments.any? %>
+          <ul>
+              <% picture.comments.each do |comment| %>
+                <li><%= comment.words %></li>
+              <% end %>
+          </ul>
+        <% else %>
+          <p>No comments</p>
+        <% end %>
+
+
+      <p> <%= link_to 'View picture', picture_path(picture) %> </p>
+      <p> <%= link_to 'Edit description', edit_picture_path(picture) %> </p>
+      <p> <%= link_to 'Delete picture', picture_path(picture), data: {confirm: "Are you sure?"}, method: :delete %> </p>
+      <p> <%= link_to 'Comment on picture', new_picture_comment_path(picture) %> </p>
+
+    <% end %>
+<% else %>
+  No pictures yet
+<% end %>
+
+<%= link_to 'Add a picture', new_picture_path %>
