@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
+      <div class="col-md-4 col-sm-3 col-centered">
+        <div class="post-image">
+          <a href="<%= post_path(post) %>" ><%= image_tag post.image.url(:medium), id: "#{post.name.downcase}-image" %></a>
+        </div>
+        <span class="post-credit">
+          <%= link_to post.name, post_path(post) %>
+        </span>
+        <span class="post-opts">
+          <%= link_to "Comment", new_post_comment_path(post) %> /
+          <%= link_to "Delete", post_path(post), method: :delete %>
+        </span>
+      </div>
+      <% end %>
+    <% else %>
+      <h1>No posts yet</h1>
+    <% end %>
+  </div>
+
+  <div class="row text-center btn col-centered">
+    <a href='posts/new'>Add a post</a>
+  </div>
+
+</div>

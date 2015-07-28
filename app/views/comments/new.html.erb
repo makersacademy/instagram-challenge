@@ -1,0 +1,17 @@
+<% if @comment.errors.any? %>
+  <div id="errors" >
+    <h2> <%= pluralize(@comment.errors.count, "error") %></h2>
+    <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<h2>Add a comment</h2>
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.label :comments %>
+  <%= f.text_area :comments %>
+  <%= f.submit 'Add comment' %>
+<% end %>
