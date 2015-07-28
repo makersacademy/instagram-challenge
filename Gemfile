@@ -33,6 +33,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'paperclip'
+gem 'poltergeist'
+gem 'database_cleaner'
 
 group :development, :test do
   gem 'rspec-rails'

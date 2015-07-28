@@ -1,11 +1,14 @@
 <% if Picture.all.any? %>
   <% Picture.all.each do |picture| %>
     <%= image_tag picture.image.url(:medium) %>
+    <p><%= pluralize picture.likes.count, 'like' %></p>
     <% if picture.comments.any? %>
       <ul>
         <% picture.comments.each do |comment| %>
           <li>
             <%= comment.message %>
+            <%= link_to "Like", picture_likes_path(picture), class: 'likes-link' %>
+            <span class="likes_count"> <%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>
           </li>
         <% end %>
       </ul>
