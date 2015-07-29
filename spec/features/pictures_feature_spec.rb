@@ -13,7 +13,7 @@ feature 'pictures' do
       visit '/pictures'
       click_link 'Add a picture'
       expect(current_path).to eq '/pictures/new'
-      attach_file "Image", "spec/asset_specs/photos/photo.jpg"
+      attach_file "Image", "spec/asset_specs/photos/test.jpg"
       click_button "Post"
       expect(page).to have_selector("img")
     end
