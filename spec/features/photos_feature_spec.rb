@@ -19,7 +19,7 @@ feature 'photos' do
         visit '/photos'
         click_link 'Add a photo'
         expect(current_path).to eq '/photos/new'
-        attach_file 'Image', '/Users/DuskyShelf/projects/instagram-challenge/spec/testimages/cat.png'
+        attach_file 'Image', 'spec/testimages/cat.png'
         fill_in 'Caption', with: 'Kitty'
         click_button 'Create Photo'
         expect(page).to have_css('img[src*="cat.png"]')
