@@ -14,9 +14,6 @@ feature 'liking photos' do
   end
 end
 
-
-
-
 def sign_up
       visit '/'
       click_link 'Sign up'

@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :photos, shallow: true do
-    resources :comments do
-      resources :likes
-    end
+    resources :comments
+    resources :likes
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
