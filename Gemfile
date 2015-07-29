@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'paperclip'
 gem 'poltergeist'
 gem 'database_cleaner'
+gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails'

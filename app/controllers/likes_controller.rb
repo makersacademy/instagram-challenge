@@ -6,6 +6,4 @@ class LikesController < ApplicationController
     render json: {new_like_count: @picture.likes.count}
   end
 
-
-
 end
