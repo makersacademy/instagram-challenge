@@ -7,16 +7,20 @@
 </head>
 
 <body>
-  <div>
-    <% if @pictures.any? %>
-      <% @pictures.each do |picture| %>
-        <%= image_tag picture.picture.url(:small), class: "uploaded-pic" %>
-        <p><%= link_to picture.description, picture_path(picture) %></p>
+  <div class="container-fluid">
+    <div class="row">
+      <% if @pictures.any? %>
+        <% @pictures.each do |picture| %>
+        <article class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+          <%= image_tag picture.picture.url(:small), class: "uploaded-pic" %>
+          <aside><%= link_to picture.description, picture_path(picture) %></aside>
+        </article>
       <% end %>
       <% else %>
-        No pictures yet
+          No pictures yet
       <% end %>
     </div>
+  </div>
 </body>
 
 </html>
