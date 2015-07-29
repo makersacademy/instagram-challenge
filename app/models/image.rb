@@ -13,7 +13,7 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\z/
 
   def show_comments
-    Comment.where(image_id: self.id).map { |comment| [comment, User.find(comment.user_id).username + ' says: ' + comment.content] }
+    Comment.where(image_id: self.id).map { |comment| comment }
   end
 
   def get_username_of_creator

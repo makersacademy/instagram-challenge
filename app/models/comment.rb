@@ -11,4 +11,8 @@ class Comment < ActiveRecord::Base
     true
   end
 
+  def say
+    User.find(self.user_id).username + ' says: ' + self.content
+  end
+
 end
