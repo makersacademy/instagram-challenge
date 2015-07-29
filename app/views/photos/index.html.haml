@@ -5,8 +5,8 @@
   - @photos.each do |photo|
     %p= link_to photo.title, photo_path(photo)
     %p= photo.caption
-    = image_tag photo.image.url(:medium)
-    %p= link_to "Like #{photo.title}", photo_likes_path(photo)
+    %p= link_to image_tag(photo.image.url(:medium)), photo_path(photo)
+    %p= link_to "Like #{photo.title}", photo_likes_path(photo), method: :post
 
     %h3
       Comments for
@@ -17,11 +17,10 @@
           - photo.comments.each do |comment|
             %li
               = comment.comment
-            %p
-              = pluralize photo.likes.count, 'like'
 
       - else
         %h4 No Comments
+      = pluralize photo.likes.count, 'like'
 
 
 - else
