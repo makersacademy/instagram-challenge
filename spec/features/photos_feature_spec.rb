@@ -7,32 +7,61 @@ feature 'Photos' do
       expect(page).to have_content 'No photos yet'
     end
 
-    it 'A user is prompted to upload a photo' do
-      visit '/'
-      click_link 'Upload photo'
-      expect(page).to have_content 'Upload photo here'
+    context 'when signed in' do
+      before(:each) do
+        user = build(:user)
+        sign_up_as(user)
+      end
+
+      it 'A user is prompted to upload a photo' do
+        click_link 'Upload photo'
+        expect(page).to have_content 'Upload photo here'
+      end
     end
   end
 
   context 'with uploaded photos' do
-    it 'uploaded photos are displayed in reverse chronological order' do
-      upload_photo './spec/test_images/Honda-Gold-Wing-White.jpg'
-      upload_photo './spec/test_images/GoldWing_2015_09.jpg'
-      upload_photo './spec/test_images/honda-gold-wing-airbag-2.jpg'
 
-      visit root_path
+    context 'when signed in' do
 
-      expect(page).to have_content 'Uploaded at'
+      before(:each) do
+        user = build(:user)
+        sign_up_as(user)
+      end
+
+      it 'uploaded photos are displayed in reverse chronological order' do
+        upload_photo './spec/test_images/Honda-Gold-Wing-White.jpg'
+        upload_photo './spec/test_images/GoldWing_2015_09.jpg'
+        upload_photo './spec/test_images/honda-gold-wing-airbag-2.jpg'
+
+        visit root_path
+
+        expect(page).to have_content 'Uploaded at'
+      end
     end
   end
 
   context 'deleting photos' do
-    xit 'A user can delete their photos' do
 
-    end
+    context 'when signed in' do
 
-    xit 'a user cannot delete other people\'s phtotos' do
+      before(:each) do
+        user = build(:user)
+        sign_up_as(user)
+      end
 
+      it 'A user can delete their photos' do
+        upload_photo './spec/test_images/Honda-Gold-Wing-White.jpg'
+
+        visit root_path
+        click_link 'Delete'
+
+        expect(page).to have_content 'Photo successfully deleted'
+      end
+
+      it 'a user cannot delete other people\'s phtotos' do
+
+      end
     end
   end
 end

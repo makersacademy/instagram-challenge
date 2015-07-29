@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def index
   end
 
@@ -7,6 +9,8 @@ class PhotosController < ApplicationController
   end
 
   def create
+    params[:photo][:user_id] = current_user
+    p photo_params
     @photo = Photo.create( photo_params )
   end
 
@@ -24,6 +28,6 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:gram)
+    params.require(:photo).permit(:gram, :user_id)
   end
 end

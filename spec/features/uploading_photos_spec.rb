@@ -18,7 +18,11 @@ feature 'Uploading photos' do
 
   context 'when not logged in' do
     it 'cannot upload photos' do
+      visit root_path
+      click_link 'Upload photo'
 
+      expect(page).to have_content 'Log in'
+      expect(current_path).to eq new_user_session_path
     end
   end
 
