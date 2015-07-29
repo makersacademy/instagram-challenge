@@ -7,7 +7,7 @@ feature 'commenting' do
     visit '/photos'
     click_link 'Add a photo'
     expect(current_path).to eq '/photos/new'
-    attach_file 'Image', '/Users/DuskyShelf/projects/instagram-challenge/spec/testimages/cat.png'
+    attach_file 'Image', 'spec/testimages/cat.png'
     fill_in 'Caption', with: 'TestCap'
     click_button 'Create Photo'
   end
