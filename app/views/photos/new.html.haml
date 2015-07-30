@@ -1,0 +1,20 @@
+= if @photo.errors.any?
+  %section#errors
+    %h2
+      = pluralize(@photo.errors.count, "error")
+      prohibited this restaurant from being saved:
+    %ul
+      - @photo.errors.full_messages.each do |message|
+        %li= message
+
+
+
+= form_for @photo, html: {multipart: true} do |photo|
+  = photo.label :title
+  = photo.text_field :title
+  = photo.label :caption
+  = photo.text_field :caption
+  = photo.label :image
+  = photo.file_field :image
+
+  = photo.submit "Upload Photo"

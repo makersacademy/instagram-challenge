@@ -1,0 +1,27 @@
+
+= link_to("Upload Photo", new_photo_path)
+
+- if @photos.any?
+  - @photos.each do |photo|
+    %p= link_to photo.title, photo_path(photo)
+    %p= photo.caption
+    %p= link_to image_tag(photo.image.url(:medium)), photo_path(photo)
+    %p= link_to "Like #{photo.title}", photo_likes_path(photo), method: :post
+
+    %h3
+      Comments for
+      = photo.title
+
+      - if photo.comments.any?
+        %ul
+          - photo.comments.each do |comment|
+            %li
+              = comment.comment
+
+      - else
+        %h4 No Comments
+      = pluralize photo.likes.count, 'like'
+
+
+- else
+  %h1 No photos have been uploaded!
