@@ -6,11 +6,12 @@ class Picture < ActiveRecord::Base
   has_many   :comments,
       -> { extending WithUserAssociationExtension },
       dependent: :destroy
-  has_many   :likes, dependent: :destroy
+  has_many :likes,
+      -> { extending WithUserAssociationExtension }, dependent: :destroy
 
   def destroy_as(user)
    return false unless self.user == user
    destroy
    true
- end
+  end
 end

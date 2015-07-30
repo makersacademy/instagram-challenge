@@ -7,7 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/poltergeist'
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :selenium
 require 'support/database_cleaner'
 # Add additional requires below this line. Rails is not loaded until this point!
 

@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
 
   has_many :pictures,
-      -> { extending WithUserAssociationExtension },
-      dependent: :restrict_with_exception
+      -> { extending WithUserAssociationExtension }, dependent: :destroy
 
   has_many :comments
+  has_many :likes
+  has_many :liked_pictures, through: :likes, source: :picture
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]

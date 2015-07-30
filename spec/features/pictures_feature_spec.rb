@@ -48,6 +48,7 @@ feature 'pictures' do
       attach_file 'Image', './spec/capybara.jpeg'
       click_button 'Create Picture'
       expect(page).to have_content 'kirsten@jones.com'
+      expect(page).to have_css("img[src*='capybara']")
     end
   end
 
