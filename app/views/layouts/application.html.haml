@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %title InstagramChallenge
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    %link{rel: "stylesheet", href: "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"}
+
+  %body
+    .container-fluid
+      %nav.navbar.navbar-default.navbar-fixed-top
+        .container-fluid
+          %ul.nav.navbar-nav
+            %li.active
+              - if user_signed_in?
+                = link_to "Sign out", destroy_user_session_path, method: :delete
+              - else
+                = link_to "Sign in", new_user_session_path
+                = link_to "Sign up", new_user_registration_path
+                = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
+    .main
+      = notice
+      = alert
+      = yield

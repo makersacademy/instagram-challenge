@@ -1,0 +1,22 @@
+%br
+%a(href='/pictures/new') Add a picture
+.center-block
+  %ul
+    - if @pictures.any?
+      - @pictures.each do |picture|
+        %li
+          %h5= picture.user.email
+          =image_tag picture.image.url(:medium)
+          %h5= picture.caption
+          = link_to "Delete" , picture_path(picture), method: :delete
+          = link_to "Like", picture_likes_path(picture), class: 'likes-link'
+          %span.likes_count= picture.likes.count
+          = 'like'.pluralize picture.likes.count
+          %h5= link_to "Comment", new_picture_comment_path(picture.id)
+          - picture.comments.each do |comment|
+            %h5= comment.my_comment
+
+
+    - else
+      No pictures yet!
+</div>
