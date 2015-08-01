@@ -8,6 +8,7 @@ This is a basic instagram clone. Users can sign up. Post images. Likes, comment 
 ```bash
 git clone https://github.com/DataMinerUK/instagram-challenge.git
 cd instagram-challenge
+bundle install
 bin/rake db:create
 bin/rake db:migrate
 rails s # -b 0.0.0.0 when running on a VM
