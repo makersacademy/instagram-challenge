@@ -10,7 +10,7 @@ git clone https://github.com/DataMinerUK/instagram-challenge.git
 cd instagram-challenge
 bin/rake db:create
 bin/rake db:migrate
-rails s
+rails s # -b 0.0.0.0 when running on a VM
 ```
 
 Go to localhost:3000
