@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-
+  gem 'poltergeist'
   gem 'rails', '4.2.3'
   gem 'pg'
   gem 'devise'

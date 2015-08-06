@@ -1,10 +1,21 @@
 require 'rails_helper'
 
 feature 'liking pictures' do
+  scenario 'The picture has 0 likes by default' do
+    visit '/pictures'
+    sign_up
+    upload_picture
+    expect(page).to have_content '0 likes'
+  end
 
-  # scenario 'The picture has 0 likes by default' do
-  #   expect(page).to have_content '0 likes'
-  # end
+  scenario 'a user can like a picture, which increases the like count by one', js:true do
+    sign_up
+    upload_picture
+    visit '/pictures'
+    click_button('like')
+    expect(page).to have_content('1 like')
+  end
+
 
   def sign_up
     visit('/')
