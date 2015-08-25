@@ -2,9 +2,10 @@ require 'rails_helper'
 
 feature 'photos' do
   before do
-    @user = User.create username: 'fakeuser', email: 'fake@gmail.com', password: '12345678', password_confirmation: '12345678'
-    @user2 = User.create username: 'fakeuser2', email: 'fake2@gmail.com', password: '12345678', password_confirmation: '12345678'
+    @user = create(:user)
+    @user2 = create(:user, username: 'fake2', email: 'fake2@fakemail.com')
   end
+  
   context 'no photos have been added' do
     scenario 'should display a prompt to add a photo' do
       visit '/photos'

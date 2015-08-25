@@ -7,7 +7,7 @@
             .panel.panel-default
               .panel-heading
                 .panel-title= link_to photo.name, photo_path(photo)
-                %h4= link_to '@'.html_safe + photo.user.username, user_photos_path(photo.user)
+                %h4= link_to '@' + photo.user.username, user_photos_path(photo.user)
                 
               .img-responsive
                 = link_to photo_path(photo) do
@@ -18,17 +18,19 @@
                 = 'likes'.pluralize photo.likes.count
             
               %h4
-                = link_to '@'.html_safe + photo.user.username, user_photos_path(photo.user)
+                = link_to '@' + photo.user.username, user_photos_path(photo.user)
                 = photo.description
       
-              %h4= link_to "Leave a Comment", new_photo_comment_path(photo)
+              = form_for [photo, photo.comments.build_with_user(current_user)] do |f| 
+                = f.text_field :thoughts, autofocus: true,  placeholder: 'Leave a comment'
+                = f.submit 'Submit'
               
               .comments 
                 .comments__individual
                   - if photo.comments.any?
-                    - photo.comments.each do |comment|
+                    - photo.comments.select(&:id).each do |comment|
                       %li
-                        = link_to '@'.html_safe + comment.user.username, user_photos_path(photo.user)
+                        = link_to '@' + comment.user.username, user_photos_path(photo.user)
                         = comment.thoughts
                   - else
                     %p No comments 

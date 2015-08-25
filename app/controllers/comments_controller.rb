@@ -10,9 +10,9 @@ class CommentsController < ApplicationController
   end
   
   def create
-    @user = current_user.username
+    # @user = current_user.username
     @photo = Photo.find(params[:photo_id])
-    @comment = @photo.comments.build_with_user comment_params, current_user
+    @comment = @photo.comments.build_with_user(comment_params, current_user)
     if @comment.save
       redirect_to root_path
     else 
