@@ -27,7 +27,7 @@ feature 'photos' do
       expect(page).not_to have_content('No photos yet!')
     end
     
-    scenario 'a user that is not signed in cannot create a restaurant' do
+    scenario 'a user that is not signed in cannot upload a picture' do
       visit '/'
       click_link 'Upload Image'
       expect(current_path).not_to eq '/photos/new'
@@ -54,7 +54,7 @@ feature 'photos' do
       add_photo 
     end
     
-    scenario 'removes photo when it is deleted only by the user created it' do
+    scenario 'removes photo when it is deleted only by the user that uploaded it' do
       visit '/'
       click_link 'Grumpy cat'
       click_link 'Delete photo'
