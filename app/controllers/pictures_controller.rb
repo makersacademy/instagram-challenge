@@ -22,7 +22,7 @@ class PicturesController < ApplicationController
   def destroy
     @picture = Picture.find(params[:id])
     if @picture.destroy_as current_user
-      flash[:notice] = 'Restaurant deleted successfully'
+      flash[:notice] = 'Picture deleted successfully'
     else
       flash[:notice] = 'You cannot delete this picture'
     end

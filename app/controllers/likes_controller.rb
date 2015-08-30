@@ -8,7 +8,7 @@ class LikesController < ApplicationController
   def create
     @picture = Picture.find(params[:picture_id])
     if current_user.liked_pictures.include?(@picture)
-      flash[:notice] = 'You like this picture'
+      flash[:notice] = 'You already liked this picture'
     else
       @picture.likes.create_with_user(current_user)
     end
