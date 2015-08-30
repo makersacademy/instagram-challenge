@@ -1,3 +1,7 @@
+[ ![Codeship Status for leggsimon/instagram-challenge](https://codeship.com/projects/2cb54010-3160-0133-e0ee-0a744e9a501a/status?branch=master)](https://codeship.com/projects/99699)
+
+[![Code Climate](https://codeclimate.com/github/leggsimon/instagram-challenge/badges/gpa.svg)](https://codeclimate.com/github/leggsimon/instagram-challenge)
+
 Instagram Challenge
 ===================
 
@@ -17,6 +21,6 @@ As usual please start by
 * Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
 * Forking this repo
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome). 
+Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters! 
+Bonus if you can add filters!
