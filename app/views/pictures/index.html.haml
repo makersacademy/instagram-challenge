@@ -5,7 +5,10 @@
     - if @pictures.any?
       - @pictures.each do |picture|
         %li
-          %h5= picture.user.username
+          - if picture.user.username
+            %h5= picture.user.username
+          - else
+            %h5= picture.user.email
           =image_tag picture.image.url(:medium)
           %h5= picture.caption
           = link_to "Delete" , picture_path(picture), method: :delete
