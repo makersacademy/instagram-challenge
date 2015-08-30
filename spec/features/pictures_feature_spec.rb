@@ -37,17 +37,17 @@ feature 'pictures' do
   context 'viewing pictures' do
 
     before do
-      user = User.create email: 'kirsten@jones.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj'
+      user = User.create email: 'kirsten@jones.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj', username: 'katsuraku'
       login_as user
     end
 
-    scenario 'pictures are displayed with the email address of the user who uploaded them' do
+    scenario 'pictures are displayed with the username of the user who uploaded them' do
       visit '/pictures'
       click_link 'Add a picture'
       fill_in('Caption', with: 'Test caption')
       attach_file 'Image', './spec/capybara.jpeg'
       click_button 'Create Picture'
-      expect(page).to have_content 'kirsten@jones.com'
+      expect(page).to have_content 'katsuraku'
       expect(page).to have_css("img[src*='capybara']")
     end
   end
