@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  attr_accessor :login
-
   has_many :pictures,
       -> { extending WithUserAssociationExtension }, dependent: :destroy
 
@@ -18,15 +16,6 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       # user.name = auth.info.name
       # user.image = auth.info.image
-      end
-    end
-
-  def self.find_for_database_authentication(warden_conditions)
-    conditions = warden_conditions.dup
-    if login = conditions.delete(:login)
-      where(conditions.to_hash).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-    else
-      where(conditions.to_hash).first
     end
   end
 
