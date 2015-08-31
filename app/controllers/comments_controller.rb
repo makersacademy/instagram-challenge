@@ -15,6 +15,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy_as current_user
+        flash[:notice] = 'Comment deleted successfully'
+    else
+      flash[:notice] = 'You can only delete comments which you wrote'
+    end
+    redirect_to '/pictures'
+  end
+
   def comment_params
     params.require(:comment).permit(:my_comment)
   end
