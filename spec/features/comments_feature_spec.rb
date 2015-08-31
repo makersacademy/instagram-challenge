@@ -14,21 +14,6 @@ feature 'comments' do
     expect(page).to have_content 'Amazing friggin comment'
   end
 
-  scenario 'a user who is not signed in cannot leave a comment on a picture' do
-    visit '/pictures'
-    post_comment
-
-    expect(page).not_to have_content 'Amazing friggin comment'
-  end
-  # end
-
-  # context 'deleting comments' do
-  # before do
-  #   login_as @user
-  #   @user.pictures.create(caption: 'Amazing friggin caption')
-  #   @user2 = User.create email: 'katsuraku@gmail.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj'
-  # end
-
   scenario 'comments can be deleted by the user who wrote them' do
     login_as @user
     post_comment
@@ -47,7 +32,6 @@ feature 'comments' do
     expect(page).to have_content('Amazing friggin comment')
     expect(page).to have_content('You can only delete comments which you wrote ')
   end
-  # end
 
   def post_comment
     visit '/pictures'
