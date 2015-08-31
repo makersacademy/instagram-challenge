@@ -15,6 +15,14 @@ feature 'comments' do
     expect(page).to have_content 'Amazing friggin comment'
   end
 
+  scenario 'a user who is not signed in cannot leave a comment on a picture' do
+    post_comment
+
+    expect(page).not_to have_content 'Amazing friggin comment'
+    expect(page).to have_content 'Time to sign in'
+
+  end
+
   scenario 'comments are displayed alongside the username of the poster' do
     login_as @user2
     post_comment
