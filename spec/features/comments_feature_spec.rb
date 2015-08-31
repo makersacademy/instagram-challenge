@@ -1,40 +1,53 @@
 require 'rails_helper'
 
-feature 'commenting' do
+feature 'comments' do
   before do
     @user = create(:user)
     @user.pictures.create(caption: 'Amazing friggin caption')
   end
 
-  scenario 'allows users to leave a comment on a picture using a form' do
+  scenario 'a signed in user can leave a comment on a picture using a form' do
+    login_as @user
     post_comment
+
     expect(current_path).to eq '/pictures'
     expect(page).to have_content 'Amazing friggin comment'
   end
 
-  context 'deleting comments' do
-    before do
-      login_as @user
-      @user2 = User.create email: 'katsuraku@gmail.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj'
-    end
+  scenario 'a user who is not signed in cannot leave a comment on a picture' do
+    visit '/pictures'
+    post_comment
 
-    scenario 'comments can be deleted by the user who wrote them' do
-      post_comment
-      click_link 'Delete comment'
-
-      expect(page).not_to have_content('Amazing friggin comment')
-    end
-
-    scenario 'comments cannot be deleted by a user who did not write them' do
-      post_comment
-      click_link 'Sign out'
-      login_as @user2
-      click_link 'Delete comment'
-
-      expect(page).to have_content('Amazing friggin comment')
-      expect(page).to have_content('You can only delete comments which you wrote ')
-    end
+    expect(page).not_to have_content 'Amazing friggin comment'
   end
+  # end
+
+  # context 'deleting comments' do
+  # before do
+  #   login_as @user
+  #   @user.pictures.create(caption: 'Amazing friggin caption')
+  #   @user2 = User.create email: 'katsuraku@gmail.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj'
+  # end
+
+  scenario 'comments can be deleted by the user who wrote them' do
+    login_as @user
+    post_comment
+    click_link 'Delete comment'
+
+    expect(page).not_to have_content('Amazing friggin comment')
+  end
+
+  scenario 'comments cannot be deleted by a user who did not write them' do
+    login_as @user
+    post_comment
+    click_link 'Sign out'
+    login_as @user2
+    click_link 'Delete comment'
+
+    expect(page).to have_content('Amazing friggin comment')
+    expect(page).to have_content('You can only delete comments which you wrote ')
+  end
+  # end
 
   def post_comment
     visit '/pictures'
