@@ -11,7 +11,7 @@ feature 'pictures' do
 
   context 'uploading pictures' do
     before do
-      user = User.create email: 'kirsten@jones.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj'
+      user = create(:user)
       login_as user
     end
 
@@ -37,7 +37,7 @@ feature 'pictures' do
   context 'viewing pictures' do
 
     before do
-      user = User.create email: 'kirsten@jones.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj', username: 'katsuraku'
+      user = create(:user)
       login_as user
     end
 
@@ -55,7 +55,7 @@ feature 'pictures' do
   context 'deleting pictures' do
 
     before do
-      user = User.create email: 'kirsten@jones.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj'
+      user = create(:user)
       @user2 = User.create email: 'katsuraku@gmail.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj'
       login_as user
 

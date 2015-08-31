@@ -19,6 +19,7 @@ feature 'User can sign in and out' do
       visit '/'
       click_link('Sign up')
       fill_in('Email', with: 'kirsten@jones.com')
+      fill_in('Username', with: 'katsuraku')
       fill_in('Password', with: 'kjkjkjkj')
       fill_in('Password confirmation', with: 'kjkjkjkj')
       click_button('Sign up')
