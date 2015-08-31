@@ -56,7 +56,7 @@ feature 'pictures' do
 
     before do
       user = create(:user)
-      @user2 = User.create email: 'katsuraku@gmail.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj'
+      @user2 = User.create email: 'katsuraku@gmail.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj', username: 'kjones'
       login_as user
 
       visit '/pictures'

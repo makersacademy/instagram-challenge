@@ -4,6 +4,7 @@ feature 'comments' do
   before do
     @user = create(:user)
     @user.pictures.create(caption: 'Amazing friggin caption')
+    @user2 = User.create email: 'katsuraku@gmail.com', password: 'kjkjkjkj', password_confirmation: 'kjkjkjkj', username: 'kjones'
   end
 
   scenario 'a signed in user can leave a comment on a picture using a form' do
@@ -12,6 +13,14 @@ feature 'comments' do
 
     expect(current_path).to eq '/pictures'
     expect(page).to have_content 'Amazing friggin comment'
+  end
+
+  scenario 'comments are displayed alongside the username of the poster' do
+    login_as @user2
+    post_comment
+
+    expect(current_path).to eq '/pictures'
+    expect(page).to have_content 'kjones'
   end
 
   scenario 'comments can be deleted by the user who wrote them' do
