@@ -11,17 +11,20 @@ This is a simple app with features resembling those in Instagram.
 
 Features:
 1. The homepage displays all images uploaded to the site.
-2. Users can sign up and sign in (with an email address or with Facebook) and sign out.
+2. Users can sign up (by inputting email, username and password) and sign in (with a username or with Facebook) and sign out.
 3. Once signed in, a user can upload an image, with a caption if desired.
 4. Users (when signed in) can delete an image if they added it. If a user attempts to delete an image which was added by another user, an error message is displayed.
-5. Users can 'like' images, and the image will display how many likes it has.
+5. Users can 'like' images (only one time per image), and the image will display how many likes it has.
 6. Users can leave comments on images, and the comments are displayed along with the image.
 
 Features to add:
 1. Restrict actions of users further - only users who are signed in should be able to make comments and like pictures.
 2. Add detail to comments - have the user's email address appear next to a comment they have made.
 3. Allow users to edit/delete comments which they added, but not comments of other users.
-4. Restrict the number of times each user can like a picture to once.
-6. Add CSS styling - possibly using bootstrap.
+4. Order the pictures in reverse chronological order, so the last uploaded one appears at the top.
+6. Improve the styling.
 6. Use Amazon Web Services for picture uploads rather than local file structure, so that the app can be deployed to Heroku.
 7. Add a tags features so that pictures can be filtered by tag.
+
+Bugs to fix:
+- The number of likes is displayed next to the word 'like' or 'likes' according to whether there are 1 or more likes. But the plural/singular updating only happens when the page is refreshed.
