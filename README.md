@@ -17,15 +17,16 @@ Features:
 5. Users who are signed in can 'like' images (only one time per image), and the image will display how many likes it has.
 6. Users can leave comments on images, and the comments are displayed along with the image.
 7. Users can delete a comment if they wrote it, but cannot delete comments made by other users.
+8. Users can only leave a comment if they have signed in.
+9. A user's username appears next to their comment - or the email address does, if there is no username.
 
 Features to add:
-1. Only let signed in users leave comments. 
-2. Add detail to comments - have the user's username appear next to a comment they have made.
-3. Allow users to edit which they added, but not comments of other users.
-4. Order the pictures in reverse chronological order, so the last uploaded one appears at the top.
-6. Improve the styling.
-6. Use Amazon Web Services for picture uploads rather than local file structure, so that the app can be deployed to Heroku.
-7. Add a tags features so that pictures can be filtered by tag.
+
+1. Editing of comments? Maybe not.
+2. Order the pictures in reverse chronological order, so the last uploaded one appears at the top.
+3. Improve the styling.
+4. Use Amazon Web Services for picture uploads rather than local file structure, so that the app can be deployed to Heroku.
+5. Add a tags features so that pictures can be filtered by tag.
 
 Bugs to fix:
 - The number of likes is displayed next to the word 'like' or 'likes' according to whether there are 1 or more likes. But the plural/singular updating only happens when the page is refreshed.
