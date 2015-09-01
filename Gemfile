@@ -60,5 +60,6 @@ group :test do
   gem 'shoulda'
   gem 'rspec-collection_matchers'
   gem "codeclimate-test-reporter", require: nil
+  gem 'factory_girl'
 
 end

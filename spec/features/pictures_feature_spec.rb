@@ -2,6 +2,10 @@ require 'rails_helper'
 
 feature 'pictures' do
 
+  let(:user) do
+    create :user
+  end
+
   context 'no pictures have been added' do
     scenario 'should display a prompt to upload a picture' do
       visit '/pictures'
@@ -11,6 +15,11 @@ feature 'pictures' do
   end
 
   context 'pictures have been added' do
+
+    before do
+      sign_in user
+    end
+
     scenario 'displays pictures' do
       visit '/pictures'
       click_link 'Upload picture'
@@ -37,9 +46,33 @@ feature 'pictures' do
     end
   end
 
-  context 'editing pictures' do
+  context 'visitor is prompted to sign in to' do
 
     let!(:arches) { Picture.create(picture: File.open("#{Rails.root}/spec/images/arches.jpeg"), description: "Arches") }
+
+    scenario 'edit pictures' do
+      visit '/pictures'
+      click_link "#{arches.description}"
+      click_link "Edit"
+      expect(current_path).to eq '/users/sign_in'
+    end
+
+    scenario 'delete a picture' do
+      visit '/pictures'
+      click_link "#{arches.description}"
+      click_link "Delete"
+      expect(current_path).to eq '/users/sign_in'
+    end
+
+  end
+
+  context 'when signed in a user can' do
+
+    let!(:arches) { Picture.create(picture: File.open("#{Rails.root}/spec/images/arches.jpeg"), description: "Arches") }
+
+    before do
+      sign_in user
+    end
 
     scenario 'lets a user edit a description' do
       visit '/pictures'
@@ -58,6 +91,7 @@ feature 'pictures' do
       expect(page).not_to have_content 'Arches'
       expect(page).to have_content 'Picture deleted successfully'
     end
+
   end
 
   context 'adding pictures' do
