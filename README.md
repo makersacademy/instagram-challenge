@@ -1,5 +1,7 @@
 # Instagram Clone
 
+[![Build Status](https://travis-ci.org/DataMinerUK/instagram-challenge.svg)](https://travis-ci.org/DataMinerUK/instagram-challenge) [![Test Coverage](https://codeclimate.com/github/DataMinerUK/instagram-challenge/badges/coverage.svg)](https://codeclimate.com/github/DataMinerUK/instagram-challenge/coverage) [![Code Climate](https://codeclimate.com/github/DataMinerUK/instagram-challenge/badges/gpa.svg)](https://codeclimate.com/github/DataMinerUK/instagram-challenge)
+
 This is a basic instagram clone. Users can sign up. Post images. Likes, comment and tag images. Users have profile pages with all their images. Tag pages show all images associated with that tag. Images and comments can be deleted by their creator.
 
 
