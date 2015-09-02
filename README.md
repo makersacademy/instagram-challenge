@@ -16,6 +16,14 @@ rails s # -b 0.0.0.0 when running on a VM
 
 Go to localhost:3000
 
+## Testing
+
+Run Rspec
+
+```sh
+rspec
+```
+
 ## [v1.0](https://github.com/DataMinerUK/instagram-challenge/releases/tag/v1.0)
 
 * Users can post images, like images and comment on images
