@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'pictures' do
+feature 'Pictures' do
 
   let(:user) do
     create :user
@@ -14,6 +14,14 @@ feature 'pictures' do
     end
   end
 
+  context 'adding pictures' do
+    it 'is not valid with no description' do
+      picture = Picture.new(description: "")
+      expect(picture).to have(1).error_on(:description)
+      expect(picture).not_to be_valid
+    end
+  end
+
   context 'pictures have been added' do
 
     before do
@@ -21,12 +29,7 @@ feature 'pictures' do
     end
 
     scenario 'displays pictures' do
-      visit '/pictures'
-      click_link 'Upload picture'
-      expect(current_path).to eq '/pictures/new'
-      attach_file 'Picture', Rails.root.join('spec/images/sanj.jpeg')
-      fill_in 'Description', with: 'Sanjay!'
-      click_button 'Upload picture'
+      add_photo('spec/images/sanj.jpeg', 'Sanjay!')
       expect(current_path).to eq '/pictures'
       expect(page).not_to have_content 'No pictures yet'
       expect(page).to have_css 'img.uploaded-pic'
@@ -36,69 +39,64 @@ feature 'pictures' do
 
   context 'viewing pictures' do
 
-    let!(:arches) { Picture.create(picture: File.open("#{Rails.root}/spec/images/arches.jpeg"), description: "Arches") }
+    let!(:arches) { Picture.create(picture: File.open("#{Rails.root}/spec/images/arches.jpeg"), description: "Arches", user: user) }
 
     scenario 'lets a user view a picture' do
       visit '/pictures'
       click_link "#{arches.description}"
       expect(current_path).to eq "/pictures/#{arches.id}"
-      expect(page).to have_content "Edit"
     end
-  end
-
-  context 'visitor is prompted to sign in to' do
-
-    let!(:arches) { Picture.create(picture: File.open("#{Rails.root}/spec/images/arches.jpeg"), description: "Arches") }
-
-    scenario 'edit pictures' do
-      visit '/pictures'
-      click_link "#{arches.description}"
-      click_link "Edit"
-      expect(current_path).to eq '/users/sign_in'
-    end
-
-    scenario 'delete a picture' do
-      visit '/pictures'
-      click_link "#{arches.description}"
-      click_link "Delete"
-      expect(current_path).to eq '/users/sign_in'
-    end
-
   end
 
   context 'when signed in a user can' do
 
-    let!(:arches) { Picture.create(picture: File.open("#{Rails.root}/spec/images/arches.jpeg"), description: "Arches") }
+    let!(:zion) { Picture.create(picture: File.open("#{Rails.root}/spec/images/zion.jpg"), description: "Zion", user: user) }
 
     before do
       sign_in user
     end
 
-    scenario 'lets a user edit a description' do
+    scenario "edit their picture's description" do
       visit '/pictures'
-      click_link "#{arches.description}"
+      click_link "#{zion.description}"
       click_link "Edit"
-      fill_in 'Description', with: 'Arches National Park'
+      fill_in 'Description', with: 'Zion National Park'
       click_button 'Update'
-      expect(current_path).to eq '/pictures'
-      expect(page).to have_content 'Arches National Park'
+      expect(current_path).to eq "/pictures/#{zion.id}"
+      expect(page).to have_content 'Zion National Park'
     end
 
-    scenario 'lets a user delete a picture' do
+    scenario "delete their picture" do
       visit '/pictures'
-      click_link "#{arches.description}"
+      click_link "#{zion.description}"
       click_link "Delete"
-      expect(page).not_to have_content 'Arches'
+      expect(page).not_to have_content 'Zion'
       expect(page).to have_content 'Picture deleted successfully'
     end
 
   end
 
-  context 'adding pictures' do
-    it 'is not valid with no description' do
-      picture = Picture.new(description: "")
-      expect(picture).to have(1).error_on(:description)
-      expect(picture).not_to be_valid
+  context 'users cannot' do
+
+    let :malicious_user do
+      create(:user, username: 'bad_user', email: 'bad_user@example.com')
+    end
+
+    before do
+      sign_in(user)
+      add_photo('spec/images/yosemite02.jpg', 'Yosemite')
+      sign_out
+      sign_in(malicious_user)
+    end
+
+    scenario "edit other users' pictures" do
+      click_link('Yosemite')
+      expect(page).not_to have_content 'Edit'
+    end
+
+    scenario "delete other users' pictures" do
+      click_link('Yosemite')
+      expect(page).not_to have_content 'Delete'
     end
   end
 end
