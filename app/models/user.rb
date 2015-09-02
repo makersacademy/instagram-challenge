@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
             :case_sensitive => false
             }
 
+  has_many :pictures
+
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
