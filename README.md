@@ -1,5 +1,6 @@
 Instagram Challenge
 ===================
+[![Code Climate](https://codeclimate.com/github/katsuraku/instagram-challenge/badges/gpa.svg)](https://codeclimate.com/github/katsuraku/instagram-challenge)
 
 Build Instagram: Simple huh!
 
