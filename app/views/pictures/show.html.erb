@@ -8,8 +8,10 @@
     <article>
       <span><%= image_tag @picture.picture.url(:medium), class: "uploaded-pic" %></span>
       <p><%= @picture.description %></p>
-      <%= link_to 'Edit', edit_picture_path(@picture) %>
-      <%= link_to 'Delete', picture_path(@picture), method: :delete %>
+      <% if @picture.user == @user %>
+        <%= link_to 'Edit', edit_picture_path(@picture) %>
+        <%= link_to 'Delete', picture_path(@picture), method: :delete %>
+      <% end %>
       <%= link_to 'Comment', new_picture_comment_path(@picture) %>
     </article>
     <p>
