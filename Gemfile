@@ -54,4 +54,5 @@ group :development, :test do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'shoulda'
+  gem 'codeclimate-test-reporter'
 end
