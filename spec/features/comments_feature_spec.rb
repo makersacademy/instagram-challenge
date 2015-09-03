@@ -16,11 +16,10 @@ feature 'comments' do
   end
 
   scenario 'a user who is not signed in cannot leave a comment on a picture' do
-    post_comment
+    visit '/pictures'
+    click_link 'Comment'
 
-    expect(page).not_to have_content 'Amazing friggin comment'
-    expect(page).to have_content 'Time to sign in'
-
+    expect(page).to have_content 'You need to sign in or sign up before continuing.'
   end
 
   scenario 'comments are displayed alongside the username of the poster' do
