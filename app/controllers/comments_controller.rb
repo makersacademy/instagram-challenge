@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     @picture = Picture.find(params[:picture_id])
     @comment = @picture.comments.build_with_user(comment_params, current_user)
     if @comment.save
-      redirect_to '/pictures'
+      redirect_to pictures_path
     else
       render 'new'
     end
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     else
       flash[:notice] = 'You can only delete comments which you wrote'
     end
-    redirect_to '/pictures'
+    redirect_to pictures_path
   end
 
   def comment_params

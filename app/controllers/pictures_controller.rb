@@ -12,7 +12,7 @@ class PicturesController < ApplicationController
   def create
     @picture = current_user.pictures.build(picture_params)
     if @picture.save
-      redirect_to '/pictures'
+      redirect_to pictures_path
     else
       render 'new'
     end
@@ -25,7 +25,7 @@ class PicturesController < ApplicationController
     else
       flash[:notice] = 'You cannot delete this picture'
     end
-    redirect_to '/pictures'
+    redirect_to pictures_path
   end
 
   def picture_params
