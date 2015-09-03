@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-  # if current_user
     @picture = Picture.find(params[:picture_id])
     @comment = @picture.comments.build_with_user(comment_params, current_user)
     if @comment.save
@@ -16,10 +15,6 @@ class CommentsController < ApplicationController
     else
       render 'new'
     end
-    # else
-    #   flash[:notice] = 'Time to sign in'
-    #   redirect_to '/pictures'
-    # end
   end
 
   def destroy
