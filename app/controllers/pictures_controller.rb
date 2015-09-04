@@ -12,6 +12,7 @@ class PicturesController < ApplicationController
 
   def create
     @picture = current_user.pictures.build(picture_params)
+
     if @picture.save
       redirect_to pictures_path
     else
@@ -25,6 +26,7 @@ class PicturesController < ApplicationController
 
   def edit
     @picture = Picture.find(params[:id])
+
     if @picture.user != current_user
       flash[:notice] = 'You did not add that picture'
       redirect_to '/pictures'
@@ -44,6 +46,7 @@ class PicturesController < ApplicationController
 
   def destroy
     @picture = Picture.find(params[:id])
+    
     if @picture.user == current_user
       @picture.destroy
       flash[:notice] = 'Picture deleted successfully'

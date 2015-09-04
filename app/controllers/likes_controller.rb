@@ -20,6 +20,7 @@ class LikesController < ApplicationController
 
   def destroy
     @like = Like.find(params[:id])
+    
     if current_user.reviews.include?(@review)
       @review.destroy
       flash[:notice] = 'Review deleted successfully'

@@ -20,6 +20,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+    
     if current_user.comments.include?(@comment)
       @comment.destroy
       flash[:notice] = 'Comment deleted successfully'
