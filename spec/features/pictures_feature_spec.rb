@@ -20,4 +20,16 @@ feature 'pictures' do
       expect(page).to have_selector('img')
     end
   end
+
+  context 'uploading pictures' do
+    scenario 'user writes a caption, then new picture and caption displayed' do
+      visit '/pictures'
+      click_link 'Add a new picture'
+      fill_in 'Caption', with: 'Awesome narwhal'
+      attach_file 'picture[image]', 'spec/assets/images/image01.png'
+      click_button 'Create Picture'
+      expect(page).to have_content('Awesome narwhal')
+      expect(page).to have_selector('img')
+    end
+  end
 end
