@@ -42,4 +42,17 @@ feature 'photos' do
       expect(current_path).to eq "/photos/#{sunset.id}"
     end
   end
+
+  context 'editing photos' do
+    before {Photo.create title: 'sunset'}
+
+    scenario 'let users edit a photo' do
+      visit '/photos'
+      click_link 'Edit sunset'
+      fill_in 'Title', with: 'dawn'
+      click_button 'Update Photo'
+      expect(page).to have_content 'dawn'
+      expect(current_path).to eq '/photos'
+    end
+  end
 end
