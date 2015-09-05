@@ -59,5 +59,14 @@ feature 'pictures' do
       expect(page).not_to have_selector('img')
       expect(page).to have_content('Image successfully deleted')
     end
+
+    scenario 'comments are deleted when an image is deleted' do
+      visit '/pictures'
+      click_link 'Comment'
+      fill_in 'Thoughts', with: 'Love this'
+      click_button 'Leave Comment'
+      click_link 'Delete image'
+      expect(page).not_to have_content('Love this')
+    end
   end
 end
