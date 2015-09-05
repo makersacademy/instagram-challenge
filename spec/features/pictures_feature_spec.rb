@@ -37,12 +37,27 @@ feature 'pictures' do
     before do
       Picture.create(caption: 'Awesome narwhal', image_file_name: 'spec/assets/images/image01.png')
     end
+
     scenario 'user is able to edit their picture captions' do
       visit '/pictures'
       click_link 'Edit caption'
       fill_in 'Caption', with: 'Amazing narwhal!'
       click_button 'Update Picture'
       expect(page).to have_content('Amazing narwhal!')
+    end
+  end
+
+  context 'deleting images' do
+    before do
+      Picture.create(caption: 'Awesome narwhal', image_file_name: 'spec/assets/images/image01.png')
+    end
+
+    scenario 'user is able to delete their pictures' do
+      visit '/pictures'
+      click_link 'Delete image'
+      expect(page).not_to have_content('Awesome narwhal')
+      expect(page).not_to have_selector('img')
+      expect(page).to have_content('Image successfully deleted')
     end
   end
 end
