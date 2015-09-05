@@ -10,7 +10,7 @@ feature 'pictures' do
   end
 
   context 'pictures have been added' do
-    before(:each) do
+    before do
       Picture.create(caption: 'Awesome narwhal', image_file_name: 'spec/assets/images/image01.png')
     end
 
@@ -30,6 +30,19 @@ feature 'pictures' do
       click_button 'Create Picture'
       expect(page).to have_content('Awesome narwhal')
       expect(page).to have_selector('img')
+    end
+  end
+
+  context 'editing captions' do
+    before do
+      Picture.create(caption: 'Awesome narwhal', image_file_name: 'spec/assets/images/image01.png')
+    end
+    scenario 'user is able to edit their picture captions' do
+      visit '/pictures'
+      click_link 'Edit caption'
+      fill_in 'Caption', with: 'Amazing narwhal!'
+      click_button 'Update Picture'
+      expect(page).to have_content('Amazing narwhal!')
     end
   end
 end
