@@ -12,6 +12,8 @@ Installation
 git clone the repo
 ```
 
+I have git ignored the photos I used for testing. You need to add them to /spec/assets_specs/photos/ if you would like to test images. You will also need to ensure the file names match those in the test that use photos
+
 user stories
 
 ```
