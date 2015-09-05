@@ -1,0 +1,16 @@
+= link_to "Make a post", new_post_path
+
+- if @posts.any?
+  %ul
+    - @posts.reverse_each do | post |
+      %li
+        = image_tag post.image.url(:thumb)
+        %h2= post.title
+        %p= pluralize post.likes.count, "Like"
+        = link_to "Like", post_likes_path(post), method: :post
+        = link_to "Leave comment", new_post_comment_path(post)
+        - if post.comments.any?
+          - post.comments.reverse_each do |comment|
+            = comment.thoughts
+- else
+  %h2 No posts yet!
