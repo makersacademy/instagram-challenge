@@ -22,4 +22,18 @@ feature 'photos' do
     end
   end
 
+
+	context 'Adding photos' do
+    
+    scenario 'Prompts user to add photo, then displays the description' do
+      visit '/photos'
+   	  click_link 'Add a photo'
+      fill_in 'Description', with: 'Fujisan'
+      click_button 'Add photo'
+      expect(page).to have_content 'Fujisan'
+      expect(current_path).to eq '/photos'
+    end
+  
+  end
+
 end
