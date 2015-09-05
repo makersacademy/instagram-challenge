@@ -2,10 +2,14 @@
   <% @pictures.all.each do |picture| %>
     <%= link_to picture.image, picture_path(picture) %>
     <h2><%= picture.description %></h2>
-    <h2>Likes: <%= picture.likes %></h2>
     <%= link_to "Edit Picture", edit_picture_path(picture) %>
     <%= link_to "Delete Picture", picture_path(picture), method: :delete %>
+    <%= button_to "Like Picture", new_picture_like_path(picture, like) %>
+    <%= form_for [@picture, @like] do |f| %>
+      <%= f.submit 'Like Picture' %>
+    <% end %>
   <% end %>
+
 <% else %>
   <h1>No pictures yet</h1>
 <% end %>
