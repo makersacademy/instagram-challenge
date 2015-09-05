@@ -1,3 +1,9 @@
-no photos yet
+- if @photos.any?
+  - @photos.each do | photo |
+    = link_to photo.name, photo_path(photo)
+    = image_tag photo.image.url(:thumb)
+- else
+  %h2 no photos yet
 
-%a(href='#') Add Photo
+%a(href=new_photo_path) Add Photo
+/ = link_to "Delete #{@photo.name}", photo_path(photo), method: :delete
