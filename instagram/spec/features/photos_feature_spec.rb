@@ -33,7 +33,33 @@ feature 'photos' do
       expect(page).to have_content 'Fujisan'
       expect(current_path).to eq '/photos'
     end
-  
   end
+
+
+  context 'Viewing photos' do
+
+  	let!(:fujisan){Photo.create(description:'Fujisan')}
+    
+    scenario 'lets a user view a photo' do
+      visit '/photos'
+   	  click_link 'Fujisan'
+      expect(page).to have_content 'Fujisan'
+      expect(current_path).to eq "/photos/#{fujisan.id}"
+    end
+  end
+
+  context 'Deleting photos' do
+
+  before {Photo.create(description:'Fujisan')}
+
+  scenario 'removes a photo when a user clicks a delete link' do
+    visit '/photos'
+    click_link 'Delete Fujisan'
+    expect(page).not_to have_content 'Fujisan'
+    expect(page).to have_content 'Photo deleted successfully'
+  end
+
+end
+
 
 end
