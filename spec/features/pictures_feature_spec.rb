@@ -38,4 +38,30 @@ feature 'pictures' do
       expect(current_path).to eq '/pictures'
     end
   end
+
+  context 'viewing restaurants' do
+
+    let!(:kitten){Picture.create(image:'Kitten', description: 'kittens!')}
+
+    scenario 'lets a user view a picture' do
+     visit '/pictures'
+     click_link 'Kitten'
+     expect(page).to have_content 'Kitten'
+     expect(current_path).to eq "/pictures/#{kitten.id}"
+    end
+  end
+
+  context 'editing pictures' do
+
+    before {Picture.create(image:'Kitten', description: 'kittens!')}
+
+    scenario 'let a user edit a picture' do
+     visit '/pictures'
+     click_link 'Edit Picture'
+     fill_in 'Image', with: 'Puppy'
+     click_button 'Update Picture'
+     expect(page).to have_content 'Puppy'
+     expect(current_path).to eq '/pictures'
+    end
+  end
 end
