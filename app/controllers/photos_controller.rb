@@ -16,4 +16,8 @@ class PhotosController < ApplicationController
   def photo_params
     params.require(:photo).permit(:title)
   end
+
+  def show
+    @photo = Photo.find(params[:id])
+  end
 end
