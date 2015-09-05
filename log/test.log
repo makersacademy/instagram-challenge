@@ -1682,3 +1682,436 @@ Processing by PhotosController#index as HTML
   Rendered photos/index.html.haml within layouts/application (1.1ms)
 Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms)
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:55:25 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (4.2ms)
+Completed 200 OK in 167ms (Views: 158.7ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "sunset.jpg"], ["created_at", "2015-09-05 18:55:25.384813"], ["updated_at", "2015-09-05 18:55:25.384813"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:55:25 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:55:25 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms)
+Started GET "/photos/new" for 127.0.0.1 at 2015-09-05 19:55:25 +0100
+Processing by PhotosController#new as HTML
+  Rendered photos/new.html.haml within layouts/application (8.4ms)
+Completed 200 OK in 10ms (Views: 9.9ms | ActiveRecord: 0.0ms)
+Started POST "/photos" for 127.0.0.1 at 2015-09-05 19:55:25 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "photo"=>{"title"=>"sunset.jpg"}, "commit"=>"Create Photo"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "sunset.jpg"], ["created_at", "2015-09-05 18:55:25.412208"], ["updated_at", "2015-09-05 18:55:25.412208"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/photos
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:55:25 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset"], ["created_at", "2015-09-05 18:55:25.421140"], ["updated_at", "2015-09-05 18:55:25.421140"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:55:25 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.4ms)
+Started GET "/photos/53" for 127.0.0.1 at 2015-09-05 19:55:25 +0100
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"53"}
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", 53]]
+  Rendered photos/show.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 7ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset"], ["created_at", "2015-09-05 18:55:25.436987"], ["updated_at", "2015-09-05 18:55:25.436987"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:55:25 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+Started GET "/photos/54/edit" for 127.0.0.1 at 2015-09-05 19:55:25 +0100
+Processing by PhotosController#edit as HTML
+  Parameters: {"id"=>"54"}
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", 54]]
+  Rendered photos/edit.html.haml within layouts/application (2.0ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.2ms)
+Started PATCH "/photos/54" for 127.0.0.1 at 2015-09-05 19:55:25 +0100
+Processing by PhotosController#update as HTML
+  Parameters: {"utf8"=>"✓", "photo"=>{"title"=>"dawn"}, "commit"=>"Update Photo", "id"=>"54"}
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", 54]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "photos" SET "title" = $1, "updated_at" = $2 WHERE "photos"."id" = $3[0m  [["title", "dawn"], ["updated_at", "2015-09-05 18:55:25.450489"], ["id", 54]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/photos
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:55:25 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset"], ["created_at", "2015-09-05 18:55:25.458858"], ["updated_at", "2015-09-05 18:55:25.458858"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:55:25 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:59:26 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (4.6ms)
+Completed 200 OK in 168ms (Views: 158.5ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "sunset.jpg"], ["created_at", "2015-09-05 18:59:26.256765"], ["updated_at", "2015-09-05 18:59:26.256765"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:59:26 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:59:26 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+Started GET "/photos/new" for 127.0.0.1 at 2015-09-05 19:59:26 +0100
+Processing by PhotosController#new as HTML
+  Rendered photos/new.html.haml within layouts/application (8.3ms)
+Completed 200 OK in 10ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+Started POST "/photos" for 127.0.0.1 at 2015-09-05 19:59:26 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "photo"=>{"title"=>"sunset.jpg"}, "commit"=>"Create Photo"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "sunset.jpg"], ["created_at", "2015-09-05 18:59:26.284848"], ["updated_at", "2015-09-05 18:59:26.284848"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/photos
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:59:26 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset"], ["created_at", "2015-09-05 18:59:26.293554"], ["updated_at", "2015-09-05 18:59:26.293554"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:59:26 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+Started GET "/photos/58" for 127.0.0.1 at 2015-09-05 19:59:26 +0100
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"58"}
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", 58]]
+  Rendered photos/show.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 7ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset"], ["created_at", "2015-09-05 18:59:26.308417"], ["updated_at", "2015-09-05 18:59:26.308417"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:59:26 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+Started GET "/photos/59/edit" for 127.0.0.1 at 2015-09-05 19:59:26 +0100
+Processing by PhotosController#edit as HTML
+  Parameters: {"id"=>"59"}
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", 59]]
+  Rendered photos/edit.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms)
+Started PATCH "/photos/59" for 127.0.0.1 at 2015-09-05 19:59:26 +0100
+Processing by PhotosController#update as HTML
+  Parameters: {"utf8"=>"✓", "photo"=>{"title"=>"dawn"}, "commit"=>"Update Photo", "id"=>"59"}
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", 59]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "photos" SET "title" = $1, "updated_at" = $2 WHERE "photos"."id" = $3[0m  [["title", "dawn"], ["updated_at", "2015-09-05 18:59:26.320682"], ["id", 59]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/photos
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:59:26 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset"], ["created_at", "2015-09-05 18:59:26.328196"], ["updated_at", "2015-09-05 18:59:26.328196"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 19:59:26 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:00:16 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (5.0ms)
+Completed 200 OK in 153ms (Views: 144.8ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "sunset.jpg"], ["created_at", "2015-09-05 19:00:16.320791"], ["updated_at", "2015-09-05 19:00:16.320791"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:00:16 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:00:16 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (0.6ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+Started GET "/photos/new" for 127.0.0.1 at 2015-09-05 20:00:16 +0100
+Processing by PhotosController#new as HTML
+  Rendered photos/new.html.haml within layouts/application (8.2ms)
+Completed 200 OK in 10ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+Started POST "/photos" for 127.0.0.1 at 2015-09-05 20:00:16 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "photo"=>{"title"=>"sunset.jpg"}, "commit"=>"Create Photo"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "sunset.jpg"], ["created_at", "2015-09-05 19:00:16.347163"], ["updated_at", "2015-09-05 19:00:16.347163"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/photos
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms)
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:00:16 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset"], ["created_at", "2015-09-05 19:00:16.355280"], ["updated_at", "2015-09-05 19:00:16.355280"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:00:16 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+Started GET "/photos/63" for 127.0.0.1 at 2015-09-05 20:00:16 +0100
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"63"}
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", 63]]
+  Rendered photos/show.html.haml within layouts/application (0.9ms)
+Completed 200 OK in 8ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset"], ["created_at", "2015-09-05 19:00:16.372846"], ["updated_at", "2015-09-05 19:00:16.372846"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:00:16 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+Started GET "/photos/64/edit" for 127.0.0.1 at 2015-09-05 20:00:16 +0100
+Processing by PhotosController#edit as HTML
+  Parameters: {"id"=>"64"}
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", 64]]
+  Rendered photos/edit.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms)
+Started PATCH "/photos/64" for 127.0.0.1 at 2015-09-05 20:00:16 +0100
+Processing by PhotosController#update as HTML
+  Parameters: {"utf8"=>"✓", "photo"=>{"title"=>"dawn"}, "commit"=>"Update Photo", "id"=>"64"}
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", 64]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "photos" SET "title" = $1, "updated_at" = $2 WHERE "photos"."id" = $3[0m  [["title", "dawn"], ["updated_at", "2015-09-05 19:00:16.385918"], ["id", 64]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/photos
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:00:16 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset"], ["created_at", "2015-09-05 19:00:16.393688"], ["updated_at", "2015-09-05 19:00:16.393688"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:00:16 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (4.3ms)
+Completed 200 OK in 167ms (Views: 158.8ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "sunset.jpg"], ["created_at", "2015-09-05 19:04:00.556657"], ["updated_at", "2015-09-05 19:04:00.556657"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms)
+Started GET "/photos/new" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#new as HTML
+  Rendered photos/new.html.haml within layouts/application (9.8ms)
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+Started POST "/photos" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "photo"=>{"title"=>"sunset.jpg"}, "commit"=>"Create Photo"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "sunset.jpg"], ["created_at", "2015-09-05 19:04:00.588118"], ["updated_at", "2015-09-05 19:04:00.588118"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/photos
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset"], ["created_at", "2015-09-05 19:04:00.597119"], ["updated_at", "2015-09-05 19:04:00.597119"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+Started GET "/photos/68" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"68"}
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", 68]]
+  Rendered photos/show.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset"], ["created_at", "2015-09-05 19:04:00.611405"], ["updated_at", "2015-09-05 19:04:00.611405"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+Started GET "/photos/69/edit" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#edit as HTML
+  Parameters: {"id"=>"69"}
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", 69]]
+  Rendered photos/edit.html.haml within layouts/application (1.8ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms)
+Started PATCH "/photos/69" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#update as HTML
+  Parameters: {"utf8"=>"✓", "photo"=>{"title"=>"dawn"}, "commit"=>"Update Photo", "id"=>"69"}
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", 69]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "photos" SET "title" = $1, "updated_at" = $2 WHERE "photos"."id" = $3[0m  [["title", "dawn"], ["updated_at", "2015-09-05 19:04:00.625681"], ["id", 69]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/photos
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.1ms)[0m  SELECT "photos".* FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset"], ["created_at", "2015-09-05 19:04:00.633806"], ["updated_at", "2015-09-05 19:04:00.633806"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+Started DELETE "/photos/70" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#destroy as HTML
+  Parameters: {"id"=>"70"}
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", 70]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "photos" WHERE "photos"."id" = $1  [["id", 70]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/photos
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms)
+Started GET "/photos" for 127.0.0.1 at 2015-09-05 20:04:00 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
