@@ -11,7 +11,7 @@ feature 'pictures' do
 
   context 'pictures have been added' do
     before do
-      Picture.create(caption: 'Awesome narwhal', image_file_name: 'spec/assets/images/image01.png')
+      create(:picture)
     end
 
     scenario 'display pictures' do
@@ -35,7 +35,7 @@ feature 'pictures' do
 
   context 'editing captions' do
     before do
-      Picture.create(caption: 'Awesome narwhal', image_file_name: 'spec/assets/images/image01.png')
+      create(:picture)
     end
 
     scenario 'user is able to edit their picture captions' do
@@ -49,7 +49,7 @@ feature 'pictures' do
 
   context 'deleting images' do
     before do
-      Picture.create(caption: 'Awesome narwhal', image_file_name: 'spec/assets/images/image01.png')
+      create(:picture)
     end
 
     scenario 'user is able to delete their pictures' do
