@@ -4,6 +4,22 @@
     <!-- <img src="<%= photo.picture %>"> -->
     <%= link_to photo.description, photo_path(photo) %>
     <%= link_to "Delete #{photo.description}", photo_path(photo), method: :delete %>
+      <%= link_to "Comment on #{photo.description}", new_photo_comment_path(photo) %>
+
+    <h3>Reviews for <%= photo.description %></h3>
+
+			<% if photo.comments.any? %>
+			  <ul>
+			    <% photo.comments.each do |comment| %>
+			      <li>
+			        <%= comment.comment %>
+			      </li>
+			    <% end %>
+			  </ul>
+			<% else %>
+			  <p>No comments yet :(</p>
+			<% end %>
+
   <% end %>
 <% else %>
   <h1>No photos yet</h1>
