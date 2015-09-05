@@ -41,16 +41,22 @@ feature 'photos' do
 
 	  context 'Deleting photos' do
 
-	  before {Photo.create(description:'Fujisan')}
+	  # before {Photo.create(description:'Fujisan')}
 
-		  scenario 'removes a photo when a user clicks a delete link' do
-		    visit '/photos'
-		    click_link 'Delete Fujisan'
-		    expect(page).not_to have_content 'Fujisan'
-		    expect(page).to have_content 'Photo deleted successfully'
-		  end
+		  # scenario 'removes a photo when a user clicks a delete link' do
+		  #   visit '/photos'
+		  #   click_link 'Delete Fujisan'
+		  #   expect(page).not_to have_content 'Fujisan'
+		  #   expect(page).to have_content 'Photo deleted successfully'
+		  # end
+
+	    scenario 'can be done by the owner of the picture' do
+	      add_picture
+	      click_link 'Delete Kamchatka'
+	      expect(page).not_to have_content 'Kamchatka'
+	      expect(page).to have_content 'No photos yet'
+	    end
 		end
-	
 	end
 
 	context "user does not need to be logged in" do
@@ -82,6 +88,13 @@ feature 'photos' do
 	def sign_out
 		visit ("/")
     click_link('Sign out')
+	end
+
+	def add_picture
+	  click_link 'Add a photo'
+	  attach_file 'new_photo', 'spec/test.jpg'
+	  fill_in 'Description', with: 'Kamchatka'
+	  click_button 'Add photo'
 	end
 
 

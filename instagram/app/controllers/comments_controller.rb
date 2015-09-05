@@ -20,6 +20,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to photos_path
     else
+    	flash[:notice] = 'Houston we have a problem'
       render 'new'
     end
   end
