@@ -39,7 +39,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'devise'
   gem 'shoulda'
-  gem 'factory_girl'
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'paperclip'
 end
 
 group :development do
