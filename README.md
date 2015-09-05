@@ -1,6 +1,55 @@
 Instagram Challenge
 ===================
 
+StieglitzGram
+-------------
+
+I have named my instagram clone after Alfred Stieglitz who is regarded as being  responible for making photagraphy an accepted art form.
+At the time photography was seen as hobbyists pastime for bicycle clubs to record their travels. Stieglitz was instramental in getting fine art institutions (most notably MOMA) to the show the work of photographers alongide painters and sculptors.  He was was also married to painter Georgia O'Keeffe
+
+Installation
+```sh
+git clone the repo
+```
+
+user stories
+
+```
+As a candid phototographer
+so I can show people my photos
+I want to post my photos to StieglitzGram
+
+As a candid photographer
+So that I can post photos on StieglitzGram
+I would like to join up to StieglitzGram
+
+As a candid photographer
+So that I can post photos as me
+I want to log into StieglitzGram
+
+As a candid photographer
+So that I can avoid others posting as me
+I want to log out of StieglitzGram
+
+As a candid photographer
+so I can tell other photographers what I think of photos
+I would like to comment on any photo
+
+As a candid photographer
+so that I can indicater wether I like a photo
+I would like to be able to add a like to any photo
+
+As a candid photographer
+so I can see which photos are popular
+I would like to be able to see the count of likes per photo
+
+```
+Lessons learnt
+
+*factory girl set up with rails
+
+
+
 Instructions
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
