@@ -9,4 +9,11 @@ RSpec.describe Comment, type: :model do
 	  expect { photo.destroy }.to change { Comment.count }.by(-1)
 	end
 
+	it 'is not valid when comment has no chars/is blank' do
+	  photo = Photo.create(description: "Fujisan")
+	  comment = photo.comments.new(comment: "")
+	  expect(comment).to have(1).error_on(:comment)
+	  expect(comment).not_to be_valid
+	end
+
 end
