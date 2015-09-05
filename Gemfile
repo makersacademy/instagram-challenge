@@ -39,6 +39,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'devise'
   gem 'shoulda'
+  gem 'factory_girl'
 end
 
 group :development do
