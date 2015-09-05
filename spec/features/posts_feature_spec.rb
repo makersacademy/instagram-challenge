@@ -45,4 +45,17 @@ feature 'posts' do
     end
 
   end
+
+  context 'deleting restaurants' do
+
+    before {Post.create text: 'Check out the hot new service CHRINSTAGRAM!!!'}
+
+    scenario 'removes a post when a user clicks a delete link' do
+      visit posts_path
+      click_link 'Delete post'
+      expect(page).not_to have_content 'Check out the hot new service CHRINSTAGRAM!!!'
+      expect(page).to have_content 'Post deleted successfully'
+    end
+
+  end
 end
