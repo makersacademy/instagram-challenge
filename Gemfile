@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-# Thoughtbot have written a fantastic gem called shoulda to help us test associations
-gem 'shoulda'
+# Devise handles building a user model, routes for your users controller, and OAuth
+gem 'devise'
 # Paperclip is a gem that makes file uploads to Ruby apps a bit simpler
 gem 'paperclip'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -36,6 +36,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  # Thoughtbot have written a fantastic gem called shoulda to help us test associations
+  gem 'shoulda'
 end
 
 group :development, :test do

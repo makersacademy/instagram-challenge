@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def create
       @image = Image.find(params[:image_id])
       @image.comments.create(comment_params)
