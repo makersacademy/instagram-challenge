@@ -12,6 +12,19 @@ feature "User Features" do
     it "should not see a sign out link on the home page before signing-in" do
       expect(page).not_to have_link 'Sign out'
     end
+
+    context "if user clicks on 'Upload Picture' button" do
+      before { click_on 'Upload Picture' }
+
+      it "they are not taken to the new_picture_path" do
+        expect(current_path).not_to eq new_picture_path
+      end
+
+      it "instead they are taken to the sign in page" do
+        expect(current_path).to eq new_user_session_path
+        expect(page).to have_content "You need to sign in or sign up before continuing"
+      end
+    end
   end
 
   context 'after signing up' do

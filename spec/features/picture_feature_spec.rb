@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "Picture Features" do
   it "can't be created without an image" do
     sign_up_user
-    visit new_picture_path
+    click_on 'Upload Picture'
     fill_in 'Title', with: "Smiley Face"
     click_button 'Create Picture'
     expect(current_path).to eq new_picture_path
@@ -23,7 +23,7 @@ feature "Picture Features" do
 
   it "can't be uploaded without a title" do
     sign_up_user
-    visit new_picture_path
+    click_on 'Upload Picture'
     attach_file "Image", 'spec/smiley.png'
     click_button 'Create Picture'
 
@@ -34,7 +34,7 @@ feature "Picture Features" do
 private
   def upload_picture
     sign_up_user
-    visit new_picture_path
+    click_on 'Upload Picture'
     fill_in 'Title', with: "Smiley Face"
     attach_file "Image", 'spec/smiley.png'
     click_button 'Create Picture'
