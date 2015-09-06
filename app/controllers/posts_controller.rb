@@ -31,8 +31,14 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    flash[:alert] = 'Post has been updated!'
-    redirect_to(post_path(@post))
+    if @post.save
+      flash[:success] = 'Post has been updated!'
+      redirect_to(post_path(@post))
+    else
+      flash[:alert] = 'You need to upload a valid image!'
+      render :new
+    end
+
   end
 
   private

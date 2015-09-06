@@ -16,4 +16,11 @@ feature 'Editing Posts' do
     expect(page).to have_content('This is a bad pic')
   end
 
+  scenario "won't update a post without an image" do
+    attach_file('Image', 'spec/files/images/monkey.jpg.zip')
+    click_button 'Update Post'
+
+    expect(page).to have_content('You need to upload a valid image!')
+  end
+
 end
