@@ -21,6 +21,12 @@ class PicturesController < ApplicationController
     params.require(:picture).permit(:name, :image)
   end
 
+  def destroy
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+    flash[:notice] = 'Image successfully deleted'
+    redirect_to pictures_path
+  end
 
 
 end
