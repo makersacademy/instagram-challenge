@@ -7,6 +7,8 @@ class Photo < ActiveRecord::Base
     has_many :comments,
       -> { extending WithUserAssociationExtension },
       dependent: :restrict_with_exception
-    has_many :likes
+    has_many :likes,
+      -> { extending WithUserAssociationExtension },
+      dependent: :restrict_with_exception
 
 end
