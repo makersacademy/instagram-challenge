@@ -1,5 +1,7 @@
 class PicturesController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @pictures = Picture.all
   end
@@ -21,6 +23,10 @@ class PicturesController < ApplicationController
 
   def edit
     @picture = Picture.find(params[:id])
+
+    unless current_user.id == @picture.user_id
+      redirect_to pictures_path
+    end
   end
 
   def update

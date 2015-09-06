@@ -57,7 +57,7 @@ feature 'pictures' do
       click_link 'Sign out'
       userina = build(:userina)
       sign_up(userina)
-      expect(page).not_to have_content('Edit caption')
+      expect(page).not_to have_link('Edit caption')
     end
 
     scenario 'only owner of picture is able to edit their picture captions' do
@@ -70,11 +70,24 @@ feature 'pictures' do
   end
 
   context 'deleting images' do
-    before do
-      create(:picture)
+    before(:each) do
+      user = build(:user)
+      sign_up(user)
+      visit '/pictures'
+      click_link 'Add a new picture'
+      fill_in 'Caption', with: 'Awesome narwhal'
+      attach_file 'picture[image]', 'spec/assets/images/image01.png'
+      click_button 'Create Picture'
     end
 
-    scenario 'user is able to delete their pictures' do
+    scenario 'users not able to delete pictures if they are not the owner' do
+      click_link 'Sign out'
+      userina = build(:userina)
+      sign_up(userina)
+      expect(page).not_to have_link('Delete image')
+    end
+
+    scenario 'only owner of picture is able to delete their pictures' do
       visit '/pictures'
       click_link 'Delete image'
       expect(page).not_to have_content('Awesome narwhal')
