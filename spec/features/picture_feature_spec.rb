@@ -31,6 +31,12 @@ feature "Picture Features" do
     expect(page).to have_content "You must provide an image file to upload"
   end
 
+  it "new_picture_path cannot be accessed by a non-signed-in user" do
+    visit new_picture_path
+    expect(current_path).to eq new_user_session_path
+    expect(page).to have_content "You need to sign in or sign up before continuing"
+  end
+
 private
   def upload_picture
     sign_up_user
