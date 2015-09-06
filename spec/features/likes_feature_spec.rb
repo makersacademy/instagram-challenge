@@ -16,7 +16,13 @@ feature 'liking photos' do
   scenario 'a user can like a photo', js: true do
     visit '/'
     click_link 'Like'
-    save_and_open_page
+    expect(page).to have_content('1 like')
+  end
+
+  scenario 'a user cannot like same photo twice', js: true do
+    visit '/'
+    click_link 'Like'
+    click_link 'Like'
     expect(page).to have_content('1 like')
   end
 end
