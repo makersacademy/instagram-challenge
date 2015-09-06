@@ -8,8 +8,12 @@ I have named my instagram clone after Alfred Stieglitz who is regarded as being 
 At the time photography was seen as hobbyists pastime for bicycle clubs to record their travels. Stieglitz was instramental in getting fine art institutions (most notably MOMA) to the show the work of photographers alongide painters and sculptors.  He was was also married to painter Georgia O'Keeffe
 
 Installation
+
+
 ```sh
-git clone the repo
+git clone the repo git@github.com:ljones140/instagram-challenge.git
+#in directory run
+bundle install
 ```
 
 I have git ignored the photos I used for testing. You need to add them to /spec/assets_specs/photos/ if you would like to test images. You will also need to ensure the file names match those in the test that use photos
@@ -60,6 +64,9 @@ To implement in next version
 * Sign in with facebook
 * See list of users who have liked photo
 * comments entery form below each photo
+* show limited amount of comments
+* host photos on AWS
+* test and ensure comments and photos are ordered correctly
 
 Lessons learnt
 --------------
@@ -67,7 +74,8 @@ Lessons learnt
 * factory girl set up with rails. Install factory girl at start of project and it will build the factory template files for you as you add
 * git ignore the photos directy so they are not uploaded to git hub
 * Phantom JS for javascript testing with capybara
-* If using phantom js in a test it affects factory girl factories you are trying to use in the test. They will not be recognised
+* If using phantom js in a test it affects factory girl factories. If you call them inside test block they will not be recognised.
+* Rails association and how to bring log to the model where needed.
 
 
 
