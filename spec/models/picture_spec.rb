@@ -8,13 +8,13 @@ describe Picture, type: :model do
   it 'has a dependent relationship with comments' do
     pic = create(:picture)
     pic.comments.create(thoughts: "this is great")
-    expect{ pic.destroy }.to change{ Comment.count }
+    expect { pic.destroy }.to change { Comment.count }
   end
 
   it 'has a dependent relationship with likes' do
     pic = create(:picture)
     pic.likes.create
-    expect{ pic.destroy }.to change{ Like.count }
+    expect { pic.destroy }.to change { Like.count }
   end
 end
 
