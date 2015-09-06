@@ -5,7 +5,19 @@ feature 'photos' do
     scenario 'should display a prompt to add a restaurant' do
       visit('/photos')
       expect(page).to have_content('No photos yet!')
-      expect(page).to have_link('Add a photo')
+      expect(page).to have_link('Upload a photo')
+    end
+  end
+
+  context 'uploading photos' do
+    scenario 'prompt user to fill out a form, then displays the photo' do
+      visit('/photos')
+      click_link('Upload a photo')
+      fill_in('Description', with: 'Testing')
+      attach_file('photo[image]', 'spec/support/fixtures/images/testing.png')
+      click_button('Upload')
+      expect(page).to have_content('Testing')
+      expect(page).to have_selector(:css, "img[src*='testing.png']")
     end
   end
 
@@ -17,6 +29,17 @@ feature 'photos' do
       expect(page).to have_content('Testing')
       expect(page).to have_selector(:css, "img[src*='testing.png']")
       expect(page).not_to have_content('No photos yet!')
+    end
+  end
+
+  context 'viewing photos' do
+    let(:photo) { create(:photo) }
+
+    scenario 'let a user view a specific photo' do
+      visit('/photos')
+      find('img').click
+      expect(page).to have_content('Test')
+      expect(page).to have_selector(:css, "img[src*='testing.png']")
     end
   end
 end
