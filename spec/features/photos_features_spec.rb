@@ -33,21 +33,17 @@ feature 'photos' do
     end
   end
 
-  # context 'deleting photos' do
+  context 'deleting photos' do
+    let!(:test_pic){Photo.create(name:'testing_picture')}
 
-  #   before do
-  #     visit '/photos'
-  #     click_link "Add Photo"
-  #     fill_in 'Name', with: 'test'
-  #     attach_file 'photo_image', 'spec/asset_specs/photos/photo.jpg'
-  #     click_button 'Create Photo'
-  #   end
-
-  #   scenario 'removes a photo when a user clicks a delete link' do
-  #     click_link 'Delete test'
-  #     expect(page).not_to have_content 'test'
-  #     expect(page).to have_content 'Photo deleted successfully'
-  #   end
-  # end
+    scenario 'removes a photo when a user clicks a delete link' do
+      visit '/photos'
+      click_link "#{test_pic.name}"
+      click_link "Delete #{test_pic.name}"
+      expect(page).not_to have_content "#{test_pic.name}"
+      expect(page).to have_content 'Photo deleted successfully'
+      expect(current_path).to eq("/photos")
+    end
+  end
 
 end
