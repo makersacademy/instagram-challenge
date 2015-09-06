@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   root to: "feeds#index"
 
-  resource :feeds
+  resource :feeds do
+    resource :comments
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
