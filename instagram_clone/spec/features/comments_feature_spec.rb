@@ -27,4 +27,26 @@ feature 'commenting' do
     expect(page).to have_content "successfully deleted!"
     expect(page).not_to have_content "Oh, wow, this looks great!"
   end
+
+  scenario 'user can edit their comment' do
+    visit '/posts'
+    click_link 'Leave comment'
+    fill_in "Thoughts", with: "Oh, wow, this looks great!"
+    click_button "Comment"
+    click_link "Edit comment"
+    fill_in "Thoughts", with: "Oh, wow, this looks to be the greatest!"
+    click_button "Comment"
+    expect(page).to have_content "Oh, wow, this looks to be the greatest!"
+  end
+
+  scenario 'user cannot edit someone else\'s comment' do
+    visit '/posts'
+    click_link 'Leave comment'
+    fill_in "Thoughts", with: "Oh, wow, this looks great!"
+    click_button "Comment"
+    click_link 'Sign out'
+    user_2 = build(:user, email: "b@alphabet.com")
+    visit "/posts"
+    expect(page).not_to have_content "Edit comment"
+  end
 end

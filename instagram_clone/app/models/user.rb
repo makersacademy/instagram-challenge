@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :posts
   has_many :likes
+  has_many :comments
   has_many :liked_posts, through: :posts, source: :likes
 
   def has_liked? post
