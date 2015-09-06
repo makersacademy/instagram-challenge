@@ -14,6 +14,7 @@ gem 'haml'
 gem 'simple_form'
 gem "paperclip", "~> 4.3"
 gem 'bootstrap-sass'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
