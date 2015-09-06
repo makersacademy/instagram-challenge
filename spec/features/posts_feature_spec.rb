@@ -46,7 +46,7 @@ feature 'posts' do
 
   end
 
-  context 'deleting restaurants' do
+  context 'deleting posts' do
 
     before {Post.create text: 'Check out the hot new service CHRINSTAGRAM!!!'}
 
@@ -56,6 +56,17 @@ feature 'posts' do
       expect(page).not_to have_content 'Check out the hot new service CHRINSTAGRAM!!!'
       expect(page).to have_content 'Post deleted successfully'
     end
+
+    scenario 'removes a post even when it has comments' do
+      visit posts_path
+      click_link "Reply to post: Check out the hot new service CHRINSTAGRAM!!!"
+      fill_in "Text", with: "It's hot!"
+      click_button 'Submit reply'
+      click_link 'Delete post'
+      expect(page).not_to have_content 'Check out the hot new service CHRINSTAGRAM!!!'
+      expect(page).to have_content 'Post deleted successfully'
+    end
+
 
   end
 end
