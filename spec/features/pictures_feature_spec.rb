@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Image upload' do
+feature 'Images' do
   context 'no images have been uploaded' do
     scenario 'should display a prompt to upload an image' do
       visit '/photos'
@@ -32,9 +32,12 @@ feature 'Image upload' do
   end
 
   context 'uploading images' do
+    before(:each) do
+      user = build :user
+      sign_up(user)
+    end
+
     scenario 'user can upload image with title' do
-      # user = build :user
-      # sign_up(user)
       visit '/photos'
       click_link 'Upload a new photo'
       fill_in 'Title', with: 'Tomato'
@@ -46,8 +49,6 @@ feature 'Image upload' do
     end
 
      xscenario 'image does not display if no image uploaded' do
-      # user = build :user
-      # sign_up(user)
       visit '/photos'
       click_link 'Upload a new photo'
       fill_in 'Title', with: 'Tomato'
@@ -61,8 +62,10 @@ feature 'Image upload' do
 
   context 'editing restaurants' do
 
-  before do
+  before(:each) do
     Photo.create title: 'Tomato'
+    user = build :user
+    sign_up(user)
   end
 
     scenario 'let a user edit a photo' do
@@ -73,6 +76,23 @@ feature 'Image upload' do
       click_button 'Update Photo'
       expect(page).to have_content 'Poetic tomatoes'
       expect(current_path).to eq '/photos'
+    end
+  end
+
+  context 'deleting images' do
+
+  before(:each) do
+    Photo.create title: 'Tomato'
+    user = build :user
+    sign_up(user)
+  end
+
+    scenario 'removes a photo when a user clicks a delete link' do
+      visit '/photos'
+      click_link 'Tomato'
+      click_link 'Delete'
+      expect(page).not_to have_content 'Tomato'
+      expect(page).to have_content 'Photo deleted successfully'
     end
   end
 
