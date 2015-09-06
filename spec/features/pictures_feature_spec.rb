@@ -28,6 +28,7 @@ feature 'pictures' do
   end
 
   context 'adding pictures' do
+
     scenario 'prompts user to fill out a form, then displays the new picture' do
       visit '/pictures'
       click_link 'Add a picture'
@@ -36,6 +37,18 @@ feature 'pictures' do
       click_button 'Create Picture'
       expect(page).to have_content 'Kitten'
       expect(current_path).to eq '/pictures'
+    end
+
+    context 'an invalid picture' do
+      it 'does not let you submit an image with no desciption' do
+        visit '/pictures'
+        click_link 'Add a picture'
+        fill_in 'Image', with: 'Kitten'
+        fill_in 'Description', with: ''
+        click_button 'Create Picture'
+        expect(page).not_to have_css 'h2', text: 'Kitten'
+        expect(page).to have_content 'Description is too short (minimum is 1 character)'
+      end
     end
   end
 

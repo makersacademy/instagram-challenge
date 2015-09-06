@@ -9,8 +9,12 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.create(picture_params)
-    redirect_to '/pictures'
+    @picture = Picture.new(picture_params)
+    if @picture.save
+      redirect_to pictures_path
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -25,14 +29,14 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
     @picture.update(picture_params)
 
-    redirect_to '/pictures'
+    redirect_to pictures_path
   end
 
   def destroy
     @picture = Picture.find(params[:id])
     @picture.destroy
     flash[:notice] = 'Picture deleted successfully'
-    redirect_to '/pictures'
+    redirect_to pictures_path
   end
 
   def picture_params
