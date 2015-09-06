@@ -10,4 +10,12 @@ feature 'Creating posts' do
     expect(page).to have_content('#monkey')
     expect(page).to have_css("img[src*='monkey.jpg']")
   end
+
+  scenario 'cannot create post without image' do
+    visit '/'
+    click_link 'New Post'
+    fill_in 'Caption', with: "Best image ever... NOT"
+    click_button 'Create Post'
+    expect(page).to have_content('Nope! You need an image to post here!')
+  end
 end
