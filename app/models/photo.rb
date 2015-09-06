@@ -4,6 +4,8 @@ class Photo < ActiveRecord::Base
 
     belongs_to :user
     validates_presence_of :image
-    has_many :comments, dependent: :destroy
+    has_many :comments,
+      -> { extending WithUserAssociationExtension },
+      dependent: :restrict_with_exception
 
 end

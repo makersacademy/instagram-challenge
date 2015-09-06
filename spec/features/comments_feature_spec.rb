@@ -18,6 +18,7 @@ feature 'comment on a photo' do
       click_button 'submit comment'
       expect(current_path).to eq photos_path
       expect(page).to have_content 'test comment'
+      expect(page).to have_content 'Comment by: test_user@test.com'
     end
   end
 
