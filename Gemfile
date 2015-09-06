@@ -29,6 +29,9 @@ gem 'haml'
 #image uploading
 gem 'paperclip'
 
+#devise for user sign up, log in, log out
+gem 'devise'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

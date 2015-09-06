@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'factory_girl_rails'
+require 'support/helpers.rb'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -39,6 +40,9 @@ RSpec.configure do |config|
 
   #factory girl include methods
   config.include FactoryGirl::Syntax::Methods
+
+  #include the helper modules
+  config.include FeatureHelpers
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
