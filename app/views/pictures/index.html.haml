@@ -1,21 +1,23 @@
 - if @pictures.any?
   - @pictures.each do |picture|
-    = picture.user.username
-    = picture.timestamp
-    = image_tag picture.image.url(:medium)
-    %h4= picture.caption
-    - if current_user && current_user.id == picture.user_id
-      = link_to "Edit caption", edit_picture_path(picture)
-      = link_to "Delete image", picture_path(picture), method: :delete
-    = link_to "Comment", new_picture_comment_path(picture)
-    = link_to "Like picture", picture_likes_path(picture), class: 'likes-link'
-    %span.likes_count= picture.likes.count
-    = 'like'.pluralize picture.likes.count
+    %div.img_container
+      %section.img_info
+        %span.username= picture.user.username
+        %span.timestamp= picture.timestamp
+      = image_tag picture.image.url(:medium)
+      %h4= picture.caption
+      - if current_user && current_user.id == picture.user_id
+        = link_to "Edit caption", edit_picture_path(picture)
+        = link_to "Delete image", picture_path(picture), method: :delete
+      %p= link_to "Comment", new_picture_comment_path(picture)
+      %p= link_to "Like picture", picture_likes_path(picture), class: 'likes-link'
+      %p.likes_count= picture.likes.count
+      = 'like'.pluralize picture.likes.count
 
-    - if picture.comments.any?
-      %ul
-        - picture.comments.each do |comment|
-          %li= "#{comment.user.username} #{comment.thoughts}"
+      - if picture.comments.any?
+        %ul
+          - picture.comments.each do |comment|
+            %li= "#{comment.user.username} #{comment.thoughts}"
 
 - else
   %h2 No pictures yet!
