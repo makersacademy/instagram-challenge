@@ -20,6 +20,15 @@ feature 'pictures' do
       expect(page).not_to have_content('No pictures yet')
     end
   end
+  
+  before do
+    visit '/'
+    click_link 'Sign up'
+    fill_in 'Email', with: 'test@email.com'
+    fill_in 'Password', with: 'randomness'
+    fill_in 'Password confirmation', with: 'randomness'
+    click_button 'Sign up'
+  end
 
   context 'creating picture captions' do
     scenario 'prompts user to fill out a form, then displays the new picture caption' do
