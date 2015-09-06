@@ -1,9 +1,12 @@
 <% if @images.any? %>
   <% @images.each do |image| %>
     <%= image_tag image.pic.url(:medium) %>
+    <%= link_to "Delete", feeds_path, method: :delete %>
   <% end %>
 <% else %>
 No Images
 <% end %>
 
+<% if user_signed_in? %>
 <a href= <%= new_feeds_path %>> Upload Image </a>
+<% end %>

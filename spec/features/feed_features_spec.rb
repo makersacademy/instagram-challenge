@@ -24,8 +24,8 @@ feature 'feeds' do
     scenario 'will see image on the page' do
       image = create :image
       visit root_path
-      expect(page).to have_css "img[src*='test.png']"
-      expect(page).to have_xpath "//img[contains(@src, 'test.png')]"
+      expect(page).to have_css "img[src*='test.jpg']"
+      expect(page).to have_xpath "//img[contains(@src, 'test.jpg')]"
     end
   end
 
