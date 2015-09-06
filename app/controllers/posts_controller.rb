@@ -38,7 +38,13 @@ class PostsController < ApplicationController
       flash[:alert] = 'You need to upload a valid image!'
       render :new
     end
+  end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:success] = 'Your post has been deleted!'
+    redirect_to(posts_path)
   end
 
   private
