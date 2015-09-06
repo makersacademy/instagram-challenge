@@ -5,12 +5,18 @@ class PicturesController < ApplicationController
   end
 
   def new
+    @user = User.find(current_user.id)
     @picture = Picture.new
   end
 
   def create
-    @picture = Picture.create(picture_params)
-    redirect_to pictures_path
+    @user = User.find(current_user.id)
+    @picture = @user.pictures.create(picture_params)
+    if @picture.save
+      redirect_to pictures_path
+    else
+      render 'new'
+    end
   end
 
   def edit

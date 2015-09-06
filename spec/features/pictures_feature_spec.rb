@@ -43,11 +43,24 @@ feature 'pictures' do
   end
 
   context 'editing captions' do
-    before do
-      create(:picture)
+    before(:each) do
+      user = build(:user)
+      sign_up(user)
+      visit '/pictures'
+      click_link 'Add a new picture'
+      fill_in 'Caption', with: 'Awesome narwhal'
+      attach_file 'picture[image]', 'spec/assets/images/image01.png'
+      click_button 'Create Picture'
     end
 
-    scenario 'user is able to edit their picture captions' do
+    scenario 'users not able to edit captions if they are not the owner' do
+      click_link 'Sign out'
+      userina = build(:userina)
+      sign_up(userina)
+      expect(page).not_to have_content('Edit caption')
+    end
+
+    scenario 'only owner of picture is able to edit their picture captions' do
       visit '/pictures'
       click_link 'Edit caption'
       fill_in 'Caption', with: 'Amazing narwhal!'

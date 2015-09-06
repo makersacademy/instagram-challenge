@@ -9,5 +9,10 @@ FactoryGirl.define do
     username 'james'
     password '12345678'
     password_confirmation '12345678'
+
+    factory :userina do
+      email 'jemima@test.com'
+      username 'jemima'
+    end
   end
 end
