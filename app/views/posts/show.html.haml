@@ -1,12 +1,13 @@
 %p= @post.text
 
 
-= post.text, post_path(post)
-= link_to "Delete post", post_path(post), method: :delete
-= link_to "Reply to post: #{post.text}", new_post_comment_path(post)
-- if post.comments.any?
+= image_tag @post.image.url(:medium)
+= @post.text
+= link_to "Delete post", post_path(@post), method: :delete
+= link_to "Reply to post: #{@post.text}", new_post_comment_path(@post)
+- if @post.comments.any?
   %ul
-    - post.comments.each do |comment|
+    - @post.comments.each do |comment|
       %li
         = comment.text
 - else
