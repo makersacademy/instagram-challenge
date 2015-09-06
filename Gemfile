@@ -5,6 +5,8 @@ group :test do
   gem 'capybara'
 end
 
+gem 'devise'
+
 gem 'paperclip'
 
 gem 'shoulda'
