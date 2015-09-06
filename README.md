@@ -38,7 +38,7 @@ so I can tell other photographers what I think of photos
 I would like to comment on any photo
 
 As a candid photographer
-so that I can indicater wether I like a photo
+so that I can indicate wether I like a photo
 I would like to be able to add a like to any photo
 
 As a candid photographer
@@ -50,7 +50,7 @@ Lessons learnt
 
 * factory girl set up with rails. Install factory girl at start of project and it will build the factory template files for you as you add
 * git ignore the photos directy so they are not uploaded to git hub
-
+*
 
 
 Instructions
@@ -58,6 +58,7 @@ Instructions
 * Challenge time: Friday, the entire day + the weekend if you need it
 * Feel free to use Google, your notes, books, etc., but work on your own
 * You must submit a pull request to this repo with your challenge solution (or partial solution) by 9AM Monday morning.
+* extending active record associations
 
 Task
 -----
