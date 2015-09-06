@@ -44,8 +44,7 @@ feature 'Images' do
       attach_file("photo[image]", "spec/asset_specs/photos/tomato.jpg")
       click_button 'Upload'
       expect(page).to have_selector 'img'
-      # expect(page.find('.RestaurantImage')['src']).to have_content 'KFC.jpg'
-      # expect(page).to have_xpath("//img[@src='/spec/assets_specs/photos/KFC.jpg?1441369740']")
+      expect(page).to have_css ('img[src*="tomato.jpg"]')
     end
 
      xscenario 'image does not display if no image uploaded' do
@@ -55,18 +54,23 @@ feature 'Images' do
       click_button 'Upload'
       expect(page).not_to have_selector 'img'
       expect(page).to have_content 'Please upload an image'
-      # expect(page.find('.RestaurantImage')['src']).to have_content 'KFC.jpg'
-      # expect(page).to have_xpath("//img[@src='/spec/assets_specs/photos/KFC.jpg?1441369740']")
     end
+
   end
 
-  context 'editing restaurants' do
-
-  before(:each) do
-    Photo.create title: 'Tomato'
-    user = build :user
-    sign_up(user)
+  scenario 'user must be signed in to upload photo' do
+    visit '/photos'
+    click_link 'Upload a new photo'
+    expect(page).to have_content 'Sign in'
   end
+
+  context 'editing images' do
+
+    before(:each) do
+      user = build :user
+      sign_up(user)
+      upload_photo
+    end
 
     scenario 'let a user edit a photo' do
       visit '/photos'
@@ -77,15 +81,16 @@ feature 'Images' do
       expect(page).to have_content 'Poetic tomatoes'
       expect(current_path).to eq '/photos'
     end
+
   end
 
   context 'deleting images' do
 
-  before(:each) do
-    Photo.create title: 'Tomato'
-    user = build :user
-    sign_up(user)
-  end
+    before(:each) do
+      user = build :user
+      sign_up(user)
+      upload_photo
+    end
 
     scenario 'removes a photo when a user clicks a delete link' do
       visit '/photos'
@@ -93,6 +98,17 @@ feature 'Images' do
       click_link 'Delete'
       expect(page).not_to have_content 'Tomato'
       expect(page).to have_content 'Photo deleted successfully'
+    end
+
+   scenario 'user can only delete own images' do
+      user_2 = build(:user_2)
+      visit '/'
+      click_link 'Sign out'
+      visit '/users/sign_up'
+      sign_up(user_2)
+      visit '/photos'
+      click_link 'Tomato'
+      expect(page).not_to have_link 'Delete'
     end
   end
 

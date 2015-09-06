@@ -7,12 +7,17 @@ class PhotosController < ApplicationController
   end
 
   def new
+    @user = current_user
     @photo = Photo.new
   end
 
   def create
-    Photo.create(photo_params)
-    redirect_to '/photos'
+    @photo = current_user.photos.create(photo_params)
+    if @photo.save
+      redirect_to photos_path
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -21,6 +26,10 @@ class PhotosController < ApplicationController
 
   def edit
     @photo = Photo.find(params[:id])
+    if current_user.id != @photo.user_id
+      flash[:notice] = "Cannot edit this"
+      redirect_to photos_path
+    end
   end
 
   def update
