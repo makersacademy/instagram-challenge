@@ -3,5 +3,6 @@ class Photo < ActiveRecord::Base
     validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
     belongs_to :user
+    validates_presence_of :image
 
 end

@@ -30,6 +30,18 @@ feature 'upload a photo' do
       expect(page).to have_selector 'img'
       expect(page).to have_content 'added by: test_user@test.com'
     end
+
+    scenario 'unable to upload without a file' do
+      visit photos_path
+      expect(page).to have_content 'No photos yet'
+      click_link 'Add a photo'
+      fill_in 'Title', with: 'test photo'
+      click_button 'Create Photo'
+      expect(page).not_to have_selector 'img'
+      expect(page).not_to have_content 'added by: test_user@test.com'
+      expect(page).to have_content 'photo not provided'
+    end
+
   end
 
   context 'user not logged in' do

@@ -8,8 +8,12 @@ class PhotosController < ApplicationController
 
   def create
     @photo = current_user.photos.new(photo_params)
-    @photo.save
-    redirect_to photos_path
+    if @photo.save
+      redirect_to photos_path
+    else
+      flash[:notice] = "photo not provided"
+      render :new
+    end
   end
 
   def photo_params
