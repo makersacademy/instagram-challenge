@@ -16,12 +16,24 @@ feature "photos" do
     end
   end
   scenario "users can add a photo" do
-    click_link "Add photo"
-    fill_in "Title", with: "Beach photo"
-    fill_in "Description", with: "Not actually a photo to do with the beach"
-    attach_file "photo_image", Rails.root.join("spec/fixtures", "test_photo.png")
-    click_button "Add Photo"
+    add_photo
     expect(page).not_to have_content "No photos available"
-    expect(page).to have_content Rails.root.join("spec/fixtures", "test_photo.png")
+    expect(page).to have_xpath "//img[contains(@src,'test_photo.png')]"
   end
+  scenario "photos can be viewed individally" do
+    add_photo
+    click_link "Sign out"
+    photo = Photo.last
+    click_link "#{photo.id}"
+    expect(page).to have_xpath "//img[contains(@src,'test_photo.png')]"
+    expect(page).to have_content "Beach photo"
+    expect(page).to have_content "Not actually a photo to do with the beach"
+  end
+end
+def add_photo
+  click_link "Add photo"
+  fill_in "Title", with: "Beach photo"
+  fill_in "Description", with: "Not actually a photo to do with the beach"
+  attach_file "photo_image", Rails.root.join("spec","fixtures", "test_photo.png")
+  click_button "Add Photo"
 end

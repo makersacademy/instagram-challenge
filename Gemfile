@@ -51,6 +51,7 @@ gem 'paperclip'
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'shoulda'
   gem 'rspec-collection_matchers'
 end
