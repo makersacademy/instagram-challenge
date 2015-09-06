@@ -7,7 +7,7 @@
     <%= link_to photo.description, photo_path(photo) %>
     <%= link_to "Delete #{photo.description}", photo_path(photo), method: :delete %>
       <%= link_to "Comment on #{photo.description}", new_photo_comment_path(photo) %>
-      
+      <%= link_to "Like #{photo.description}", new_photo_like_path(photo) %>
 
     <h3>Comments for <%= photo.description %></h3>
 
@@ -21,6 +21,7 @@
 			        <%= comment.comment %>
 			      </li>
 			    <% end %>
+			    <%= photo.likes.count %> Likes
 			  </ul>
 			<% else %>
 			  <p>No comments yet :(</p>
