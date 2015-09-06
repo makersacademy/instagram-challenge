@@ -17,4 +17,9 @@ class Picture < ActiveRecord::Base
       return "#{time_passed / 3600}h"
     end
   end
+
+  def build_comment(params, user)
+    self.comments.create(thoughts: params[:thoughts], user_id: user.id)
+  end
+
 end

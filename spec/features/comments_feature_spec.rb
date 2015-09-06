@@ -19,4 +19,14 @@ feature 'commenting' do
     expect(current_path).to eq('/pictures')
     expect(page).to have_content('I love this!')
   end
+
+  scenario 'usernames displayed with comments' do
+    click_link 'Sign out'
+    userina = build(:userina)
+    sign_up(userina)
+    click_link 'Comment'
+    fill_in 'Thoughts', with: 'I love this!'
+    click_button 'Leave Comment'
+    expect(page).to have_content('jemima')
+  end
 end
