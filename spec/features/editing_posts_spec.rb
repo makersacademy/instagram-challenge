@@ -4,7 +4,8 @@ feature 'Editing Posts' do
   before(:each) do
     post = create(:post)
     visit('/')
-    my_link = find(:xpath, "//a[contains(@href,'posts/1')]").click
+    find(:xpath, "//a/img[@alt='Monkey']/..").click
+    click_link 'Edit Post'
   end
 
   scenario 'I can edit a post' do
