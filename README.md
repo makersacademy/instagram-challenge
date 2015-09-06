@@ -42,6 +42,7 @@ Tests
     liking photos
       photo has 0 likes initially
       a user can like a photo
+      a user cannot like same photo twice
 
     photos
       no photos have been added
