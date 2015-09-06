@@ -31,4 +31,19 @@ feature 'pictures' do
       expect(current_path).to eq '/pictures'
     end
   end
+
+  context 'editing pictures' do
+
+    before {Picture.create caption: 'holiday snap'}
+
+    scenario 'let a user edit a picture caption' do
+     visit '/pictures'
+     click_link 'Edit holiday snap'
+     fill_in 'Caption', with: 'birthday snap'
+     click_button 'Update Picture'
+     expect(page).to have_content 'birthday snap'
+     expect(current_path).to eq '/pictures'
+    end
+  end
+
 end
