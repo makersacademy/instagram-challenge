@@ -32,7 +32,7 @@ feature 'pictures' do
     end
   end
 
-  context 'viewing restaurants' do
+  context 'viewing pictures' do
 
     let!(:holiday){Picture.create(name:'Holiday')}
 
@@ -41,6 +41,32 @@ feature 'pictures' do
       click_link 'Holiday'
       expect(page).to have_content 'Holiday'
       expect(current_path).to eq "/pictures/#{holiday.id}"
+    end
+  end
+
+  context 'editing picture titles' do
+
+    before {Picture.create name: 'Holiday'}
+
+    scenario 'let a user edit a pictures name' do
+      visit '/pictures'
+      click_link 'Edit Holiday'
+      fill_in 'Name', with: 'Vacation'
+      click_button 'Update Picture'
+      expect(page).to have_content 'Vacation'
+      expect(current_path).to eq '/pictures'
+    end
+  end
+
+  context 'deleting pictures' do
+
+    before {Picture.create name: 'Holiday'}
+
+    scenario 'removes a picture when a user clicks a delete link' do
+      visit '/pictures'
+      click_link 'Delete Holiday'
+      expect(page).not_to have_content 'Holiday'
+      expect(page).to have_content 'Picture deleted successfully'
     end
   end
 end
