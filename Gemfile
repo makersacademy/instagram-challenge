@@ -46,6 +46,7 @@ group :development do
 end
 
 gem 'devise'
+gem 'paperclip'
 
 group :test do
   gem 'rspec-rails'
