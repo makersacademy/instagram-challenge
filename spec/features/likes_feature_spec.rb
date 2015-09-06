@@ -17,6 +17,18 @@ feature 'likeing photos' do
       click_link 'Like'
       expect(page).to have_content('1 like')
     end
+
+    scenario 'a user can only like one photo once', js: true do
+      visit photos_path
+      click_link 'Like'
+      click_link 'Like'
+      click_link 'Like'
+      click_link 'Like'
+      click_link 'Like'
+      click_link 'Like'
+      expect(page).to have_content('1 like')
+    end
+
   end
 
   context 'user is not logged in' do

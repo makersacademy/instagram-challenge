@@ -41,16 +41,25 @@ As a candid photographer
 so that I can indicate wether I like a photo
 I would like to be able to add a like to any photo
 
-As a candid photographer
+As a curator of photography
 so I can see which photos are popular
 I would like to be able to see the count of likes per photo
+
+As a curator of photography
+so that the popularity is fair
+only members of StieglitzGram are allowed to like photos
+
+As a curator of photography
+so that the popularity is fair
+Each member should only be able to like a photo once
 
 ```
 Lessons learnt
 
 * factory girl set up with rails. Install factory girl at start of project and it will build the factory template files for you as you add
 * git ignore the photos directy so they are not uploaded to git hub
-*
+* Phantom JS for javascript testing with capybara
+* If using phantom js in a test it affects factory girl factories you are trying to use in the test. They will not be recognised
 
 
 Instructions
