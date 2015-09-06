@@ -13,6 +13,7 @@ gem 'factory_girl_rails'
 gem 'haml'
 gem 'simple_form'
 gem "paperclip", "~> 4.3"
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'byebug'

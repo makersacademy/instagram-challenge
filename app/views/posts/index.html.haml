@@ -1,8 +1,11 @@
-%h2 InstaClone
-= link_to 'New Post', new_post_path
-%br
-
--@posts.each do |post|
-  =image_tag post.image.url(:medium)
-  =post.caption
-  %br
+.container
+  .posts-wrapper.row
+    -@posts.each do |post|
+      .post
+        .post-head
+          .name
+            Zaid Lahham
+        .image.center-block
+          =link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post)
+        %p.caption
+          =post.caption

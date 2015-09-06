@@ -11,3 +11,16 @@ feature 'Viewing multiple posts on index' do
     expect(page).to have_css("img[src*='monkey']")
   end
 end
+
+
+
+feature 'Viewing a single post' do
+  scenario 'can view a single post when clicked' do
+    post = create(:post)
+
+    visit '/'
+    my_link = find(:xpath, "//a[contains(@href,'posts/1')]")
+    my_link.click
+    expect(current_path).to eq(post_path(post))
+  end
+end
