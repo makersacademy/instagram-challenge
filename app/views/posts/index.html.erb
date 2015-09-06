@@ -1,0 +1,27 @@
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+  	<h2><%= post.title %></h2>
+    <%= link_to (image_tag post.image.url(:large)), post_path(post) %>
+
+    <p>
+    <%= button_to 'Like', post_likes_path(post)%>
+    <span><%= post.likes.count %></span> <span><%= 'like'.pluralize(post.likes.count) %></span>
+    </p>
+
+
+    <% if post.comments.any? %>
+			<% post.comments.each do |comment| %>
+						<%= comment.thoughts %>
+				<% end %>
+		<% else %>
+			<p> No comments.</p>
+		<% end %>
+		<%= link_to "Add a comment", new_post_comment_path(post) %>
+  <% end %>
+
+<% else %>
+  <h1>No posts yet!</h1>
+<% end %>
+
+
+<a href='/posts/new'>Add a post</a>
