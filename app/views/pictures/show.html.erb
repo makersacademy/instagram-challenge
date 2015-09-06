@@ -1,0 +1,15 @@
+<p><%= @picture.name %></p>
+<p><%= @picture.description %></p>
+<div><%= image_tag @picture.image.url(:medium) %></div>
+<div><%= @picture.likes.count %> <%= 'likes'.pluralize(@picture.likes.count) %></div>
+<% if @picture.comments.any? %>
+      <ul>
+        <% @picture.comments.each do |comment| %>
+          <li>
+            <%= comment.comment %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments.</p>
+    <% end %>
