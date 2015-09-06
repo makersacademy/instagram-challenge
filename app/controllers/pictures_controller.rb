@@ -15,8 +15,7 @@ class PicturesController < ApplicationController
       redirect_to root_path
       flash[:notice] = "Picture successfully posted"
     else
-      redirect_to new_picture_path
-      flash[:notice] = "You must provide an image file to upload"
+      render 'new'
     end
   end
 

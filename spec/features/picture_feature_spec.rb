@@ -6,8 +6,8 @@ feature "Picture Features" do
     click_on 'Upload Picture'
     fill_in 'Title', with: "Smiley Face"
     click_button 'Create Picture'
-    expect(current_path).to eq new_picture_path
-    expect(page).to have_content "You must provide an image file to upload"
+    expect(current_path).not_to eq root_path
+    expect(page).to have_content "Image can't be blank"
   end
 
   it "can upload a picture" do
@@ -28,7 +28,7 @@ feature "Picture Features" do
     click_button 'Create Picture'
 
     expect(current_path).not_to eq root_path
-    expect(page).to have_content "You must provide an image file to upload"
+    expect(page).to have_content "Title can't be blank"
   end
 
   it "new_picture_path cannot be accessed by a non-signed-in user" do
