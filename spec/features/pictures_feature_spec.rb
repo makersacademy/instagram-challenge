@@ -31,6 +31,10 @@ feature 'pictures' do
     scenario 'pictures are displayed with the username of their owner' do
       expect(page).to have_content('james')
     end
+
+    scenario 'pictures are displayed with timestamp' do
+      expect(page).to have_content('a moment ago')
+    end
   end
 
   context 'uploading pictures' do
