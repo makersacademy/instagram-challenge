@@ -48,7 +48,8 @@ I would like to be able to see the count of likes per photo
 ```
 Lessons learnt
 
-*factory girl set up with rails
+* factory girl set up with rails
+* git ignore the photos directy so they are not uploaded to git hub
 
 
 
