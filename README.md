@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/natstar93/instagram-challenge.svg)](https://travis-ci.org/natstar93/instagram-challenge)
+[![Coverage Status](https://coveralls.io/repos/natstar93/instagram-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/natstar93/instagram-challenge?branch=master)
 
 Instagram Challenge
 ===================
