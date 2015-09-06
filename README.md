@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/natstar93/instagram-challenge.svg)](https://travis-ci.org/natstar93/instagram-challenge)
+
 Instagram Challenge
 ===================
 
