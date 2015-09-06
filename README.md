@@ -6,7 +6,7 @@ Approach
 
 Instagram challenge was an exercise in creating a RESTful Rails application. Technologies used were Rails, Rspec, PostgreSQL, jQuery, Capybara, Shoulda & Poltergeist. Devise and Omniauth gems were used for user login and authentication. This app was developed in a behaviour driven way.
 
-I started by enabling users to upload photos and view full-size images (/show method). I allowed users to comment on photos and ensured comments were removed from the database when the relevant photo was deleted using `has_many :comments, dependent: :destroy`
+I started by enabling users to upload photos and view full-size images ('show' method). I allowed users to comment on photos and ensured comments were removed from the database when the relevant photo was deleted using `has_many :comments, dependent: :destroy`. I added a user login and prevented guest users from commenting on, deleting, editing or adding photos using `before_action :authenticate_user!, :except => [:index, :show]`. I added a 'likes' feature which updates in real-time using jQuery and prevented users from liking the same photo more than once using a database association through the photos table `has_many :liked_photos, through: :likes, source: :photo`.
 
 How to Run
 -----
