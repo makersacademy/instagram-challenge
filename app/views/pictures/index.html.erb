@@ -4,10 +4,13 @@
     <h2><%= picture.description %></h2>
     <%= link_to "Edit Picture", edit_picture_path(picture) %>
     <%= link_to "Delete Picture", picture_path(picture), method: :delete %>
-    <%= button_to "Like Picture", new_picture_like_path(picture, like) %>
-    <%= form_for [@picture, @like] do |f| %>
-      <%= f.submit 'Like Picture' %>
+    <%= link_to "Like Picture", new_picture_like_path(picture) %>
+    <% if picture.likes.any? %>
+      <h3> Likes: <%= picture.likes.count %></h3>
+    <% else %>
+      <h3> Likes: 0</h3>
     <% end %>
+
   <% end %>
 
 <% else %>
