@@ -1,0 +1,34 @@
+<% if user_signed_in? %>
+  <div>
+    <a href='/photos/new'>Upload a photo</a>
+  </div>
+<% end %>
+<% if @photos.any? %>
+  <% @photos.each do |photo| %>
+    <div class="col-md-3">
+      <%= link_to (image_tag photo.image.url(:thumb)), photo_path(photo) %></a>
+      <p>
+        <%= photo.description %><br>
+        <% if user_signed_in? && current_user.id == photo.user_id %>
+          <%= link_to 'Delete photo', photo_path(photo), method: :delete %>
+        <% end %>
+      </p>
+       <% if user_signed_in? %><%= link_to 'Comment on photo', new_photo_comment_path(photo) %>
+       | <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
+          <span class="likes_count"><%= photo.likes.count %></span> <span class="likes_pluralisation"><%= 'like'.pluralize(photo.likes.count) %></span>
+       </p>
+       <% end %>
+
+       <% photo.comments.each do |comment| %>
+	    <li>
+	      <%= comment.message %>
+	      <% if current_user && current_user.id == comment.user_id %><%= link_to 'Delete comment', photo_comment_path(photo, comment), method: :delete %>
+	      <% end %>
+	    </li>
+	   <% end %>
+     </p>
+   </div>
+  <% end %>
+<% else %>
+  No photos yet
+<% end %>

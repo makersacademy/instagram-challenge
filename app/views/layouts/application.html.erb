@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Natstagram</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Natstagram</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to '<i class="glyphicon glyphicon-log-out"></i> Sign out'.html_safe, destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to '<i class="glyphicon glyphicon-log-in"></i> Sign in'.html_safe, new_user_session_path %></li>
+            <li><%= link_to '<i class="glyphicon glyphicon-user"></i> Sign up'.html_safe, new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <p>
+    <% if !user_signed_in? %>
+      Please sign in to upload a photo
+    <% end %>
+  </p>
+    <%= yield %>
+  </section>
+</body>
+</html>
