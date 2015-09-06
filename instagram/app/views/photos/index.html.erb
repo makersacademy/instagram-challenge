@@ -1,8 +1,11 @@
+<section id="container">
+<%= link_to 'Add a photo', new_photo_path %>
+
 <% if @photos.any? %>
   <% Photo.all.each do |photo| %>
   	<h2>User ID:<%= photo.user_id %></h2>
     <h2><%= photo.description %></h2>
-    <%= image_tag photo.image.url(:thumb) %>
+    <%= image_tag photo.image.url(:medium) %>
     <!-- <img src="<%= photo.picture %>"> -->
     <%= link_to photo.description, photo_path(photo) %>
     <%= link_to "Delete #{photo.description}", photo_path(photo), method: :delete %>
@@ -21,16 +24,13 @@
 			        <%= comment.comment %>
 			      </li>
 			    <% end %>
-			    <%= photo.likes.count %> Likes
 			  </ul>
 			<% else %>
 			  <p>No comments yet :(</p>
 			<% end %>
-
+			<%= photo.likes.count %> Likes
   <% end %>
 <% else %>
   <h1>No photos yet</h1>
 <% end %>
-
-
-<%= link_to 'Add a photo', new_photo_path %>
+</section>
