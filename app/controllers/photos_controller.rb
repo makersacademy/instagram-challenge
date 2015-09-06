@@ -13,10 +13,6 @@ class PhotosController < ApplicationController
     redirect_to '/photos'
   end
 
-  def photo_params
-    params.require(:photo).permit(:title)
-  end
-
   def show
     @photo = Photo.find(params[:id])
   end
@@ -36,5 +32,9 @@ class PhotosController < ApplicationController
     @photo.destroy
     flash[:notice] = 'Photo deleted successfully'
     redirect_to '/photos'
+  end
+
+  def photo_params
+    params.require(:photo).permit(:title)
   end
 end

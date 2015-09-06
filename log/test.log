@@ -4489,3 +4489,112 @@ Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
   [1m[35m (0.1ms)[0m  ROLLBACK
   [1m[36m (0.1ms)[0m  [1mBEGIN[0m
   [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (116.7ms)[0m  [1mDROP DATABASE IF EXISTS "instagram-challenge_test"[0m
+  [1m[35m (312.9ms)[0m  CREATE DATABASE "instagram-challenge_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (4.7ms)[0m  CREATE TABLE "comments" ("id" serial primary key, "thoughts" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "photo_id" integer) 
+  [1m[36m (1.1ms)[0m  [1mCREATE  INDEX  "index_comments_on_photo_id" ON "comments" USING btree ("photo_id")[0m
+  [1m[35m (3.3ms)[0m  CREATE TABLE "photos" ("id" serial primary key, "title" character varying, "like" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "description" text) 
+  [1m[36m (3.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (1.7ms)[0m  ALTER TABLE "comments" ADD CONSTRAINT "fk_rails_8e6de2dbfc"
+FOREIGN KEY ("photo_id")
+  REFERENCES "photos" ("id")
+
+  [1m[36m (1.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150906163308')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150905143605')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150905153242')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150906111809')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150906112408')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150906120509')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "sunset"], ["created_at", "2015-09-06 16:38:58.546330"], ["updated_at", "2015-09-06 16:38:58.546330"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/photos" for 127.0.0.1 at 2015-09-06 17:38:58 +0100
+Processing by PhotosController#index as HTML
+  Rendered photos/index.html.haml within layouts/application (5.3ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/photos" for 127.0.0.1 at 2015-09-06 17:38:58 +0100
+Processing by PhotosController#index as HTML
+  Rendered photos/index.html.haml within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset.jpg"], ["created_at", "2015-09-06 16:38:58.583749"], ["updated_at", "2015-09-06 16:38:58.583749"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-06 17:38:58 +0100
+Processing by PhotosController#index as HTML
+  Rendered photos/index.html.haml within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-06 17:38:58 +0100
+Processing by PhotosController#index as HTML
+  Rendered photos/index.html.haml within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "sunset"], ["created_at", "2015-09-06 16:38:58.601150"], ["updated_at", "2015-09-06 16:38:58.601150"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/photos" for 127.0.0.1 at 2015-09-06 17:38:58 +0100
+Processing by PhotosController#index as HTML
+  Rendered photos/index.html.haml within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "sunset"], ["created_at", "2015-09-06 16:38:58.606881"], ["updated_at", "2015-09-06 16:38:58.606881"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/photos" for 127.0.0.1 at 2015-09-06 17:38:58 +0100
+Processing by PhotosController#index as HTML
+  Rendered photos/index.html.haml within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "sunset"], ["created_at", "2015-09-06 16:38:58.611478"], ["updated_at", "2015-09-06 16:38:58.611478"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/photos" for 127.0.0.1 at 2015-09-06 17:38:58 +0100
+Processing by PhotosController#index as HTML
+  Rendered photos/index.html.haml within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-09-06 17:38:58 +0100
+Processing by PhotosController#index as HTML
+  Rendered photos/index.html.haml within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-09-06 17:38:58 +0100
+Processing by PhotosController#index as HTML
+  Rendered photos/index.html.haml within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-09-06 17:38:58 +0100
+Processing by PhotosController#index as HTML
+  Rendered photos/index.html.haml within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-09-06 17:38:58 +0100
+Processing by PhotosController#index as HTML
+  Rendered photos/index.html.haml within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
