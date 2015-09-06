@@ -11,7 +11,7 @@ feature 'liking pictures' do
     click_button 'Create Picture'
   end
 
-  scenario 'a user can like a picture, which updates the likes count', js: true do
+  scenario 'user likes a picture, which updates the likes count', js: true do
     visit '/pictures'
     click_link 'Like picture'
     expect(page).to have_content('1 like')
