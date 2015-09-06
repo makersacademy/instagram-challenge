@@ -48,14 +48,29 @@ feature "photos" do
       end
     end
     context "users can edit/delete photos" do
-      scenario "users can edit their photo information" do
+      before {
         add_photo
-        photo = Photo.last
-        click_link "#{ photo.id }"
+        @photo = Photo.last
+        click_link "#{ @photo.id }"
         click_link "Edit Photo"
-        expect(page).to have_field("Title", with: "#{ photo.title }")
-        expect(page).to have_field("Description", with: "#{ photo.description }")
-        expect(page).to have_link "Delete Photo"
+      }
+      scenario "users can edit their photo information" do
+        expect(page).to have_field("Title", with: "#{ @photo.title }")
+        expect(page).to have_field("Description", with: "#{ @photo.description }")
+        fill_in "Title", with: "Tetris score"
+        fill_in "Description", with: "Just a random high score from when I played tetris"
+        click_button "Edit Photo"
+        photo_refresh = Photo.find(@photo.id)
+        expect(photo_refresh.title).to eq "Tetris score"
+        expect(photo_refresh.description).to eq "Just a random high score from when I played tetris"
+        expect(current_path).to eq "/photos/#{ @photo.id }"
+      end
+      scenario "users can delete their photos" do
+        click_link "Delete Photo"
+        photo_refresh = 
+        expect { Photo.find(@photo.id) }.to raise_error "Couldn't find Photo with 'id'=#{ @photo.id }"
+        expect(current_path).to eq "/photos"
+        expect(page).to have_content "Photo deleted"
       end
     end
   end
