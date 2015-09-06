@@ -28,6 +28,7 @@ feature 'upload a photo' do
       attach_file("photo[image]", "spec/assets_specs/photos/test_photo1.jpg")
       click_button 'Create Photo'
       expect(page).to have_selector 'img'
+      expect(page).to have_content 'added by: test_user@test.com'
     end
   end
 
