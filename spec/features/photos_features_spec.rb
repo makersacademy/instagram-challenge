@@ -12,7 +12,7 @@ feature 'photos' do
   context 'creating photos' do
 
     scenario 'prompts user to fill out a form, then displays the new photo' do
-      visit '/photos'
+      sign_in
       click_link "Add Photo"
       fill_in 'Name', with: 'test'
       attach_file 'photo_image', 'spec/asset_specs/photos/photo.jpg'
@@ -37,6 +37,7 @@ feature 'photos' do
     let!(:test_pic){Photo.create(name:'testing_picture')}
 
     scenario 'removes a photo when a user clicks a delete link' do
+      sign_in
       visit '/photos'
       click_link "#{test_pic.name}"
       click_link "Delete #{test_pic.name}"
@@ -45,5 +46,23 @@ feature 'photos' do
       expect(current_path).to eq("/photos")
     end
   end
+end
 
+def sign_up
+  visit('/')
+  click_link('Sign up')
+  fill_in('Email', with: 'test@example.com')
+  fill_in('Password', with: 'testtest')
+  fill_in('Password confirmation', with: 'testtest')
+  click_button('Sign up')
+end
+
+def sign_in
+  sign_up
+  click_link 'Sign out'
+  visit('/')
+  click_link 'Sign in'
+  fill_in('Email', with: 'test@example.com')
+  fill_in('Password', with: 'testtest')
+  click_button 'Log in'
 end
