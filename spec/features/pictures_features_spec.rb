@@ -21,14 +21,27 @@ feature 'pictures' do
     end
   end
 
+  before do
+    visit('/')
+    click_link('Sign up')
+    fill_in('Email', with: 'test@example.com')
+    fill_in('Password', with: 'testtest')
+    fill_in('Password confirmation', with: 'testtest')
+    click_button('Sign up')
+  end
+
   context 'adding pictures' do
-    scenario 'prompts user to fill out a name for picture, then displays the name' do
-      visit '/pictures'
+    scenario 'after signing in user enters picture name, then can see the added picture name' do
       click_link 'Add A Picture'
       fill_in 'Name', with: 'Holiday'
       click_button 'Create Picture'
       expect(page).to have_content 'Holiday'
       expect(current_path).to eq '/pictures'
+    end
+    scenario 'if user not signed in' do
+      click_link 'Sign out'
+      click_link 'Add A Picture'
+      expect(page).to have_content 'Log in'
     end
   end
 
