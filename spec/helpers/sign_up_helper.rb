@@ -1,9 +1,9 @@
 
-def sign_up
+def sign_up(user)
   visit('/')
   click_link('Sign up')
-  fill_in('Email', with: 'test@example.com')
-  fill_in('Password', with: 'testtest')
-  fill_in('Password confirmation', with: 'testtest')
+  fill_in('Email', with: user.email)
+  fill_in('Password', with: user.password)
+  fill_in('Password confirmation', with: user.password_confirmation)
   click_button('Sign up')
 end

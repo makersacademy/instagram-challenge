@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'spec_helper'
 
 feature "User can sign in and out" do
   context "user not signed in and on the homepage" do
@@ -16,7 +17,8 @@ feature "User can sign in and out" do
 
   context "user signed in on the homepage" do
     before do
-      sign_up
+      user = build(:user)
+      sign_up(user)
     end
 
     it "should see 'sign out' link" do
