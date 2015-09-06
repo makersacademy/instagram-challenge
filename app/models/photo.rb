@@ -1,5 +1,7 @@
 class Photo < ActiveRecord::Base
 
+  belongs_to :user
+
   validates :caption, presence: true, allow_blank: false
 
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
