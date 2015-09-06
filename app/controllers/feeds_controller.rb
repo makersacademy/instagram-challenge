@@ -9,6 +9,7 @@ class FeedsController < ApplicationController
 
   def show
     @image = Image.find(params[:format])
+    console_print { p Comment.all }
     @comments = Comment.new
   end
 

@@ -14,8 +14,7 @@ feature 'comments' do
       user = build :user
       sign_in(user)
       visit root_path
-      save_and_open_page
-      find("a.image#{image.id}").click
+      find("img").click
       fill_in 'comment', with: 'Wow'
       click_button 'Submit'
       expect(page).to have_content 'Wow'
