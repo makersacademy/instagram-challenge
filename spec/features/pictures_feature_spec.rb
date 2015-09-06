@@ -117,5 +117,12 @@ feature 'pictures' do
       click_link 'Delete image'
       expect(page).not_to have_content('Love this')
     end
+
+    scenario 'likes are deleted when an image is deleted', js: true do
+      visit '/pictures'
+      click_link 'Like picture'
+      click_link 'Delete image'
+      expect(page).not_to have_content('1 like')
+    end
   end
 end
