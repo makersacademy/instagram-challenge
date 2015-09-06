@@ -11,6 +11,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.create(photo_params)
+    @photo.update(user_id: current_user.id)
     redirect_to '/photos'
   end
   def show
@@ -19,8 +20,12 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:id])
-    @photo.destroy
-    flash[:notice] = 'Photo deleted successfully'
+    if @photo.user_id == current_user.id
+      @photo.destroy
+      flash[:notice] = 'Photo deleted successfully'
+    else
+      flash[:notice] = 'You cannot delete this picture!'
+    end
     redirect_to '/photos'
   end
 
