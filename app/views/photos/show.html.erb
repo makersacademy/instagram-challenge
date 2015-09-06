@@ -1,2 +1,22 @@
 <p><%= @photo.description %></p>
 <%= image_tag(@photo.image.url(:large)) %>
+
+<h3>Comments for <%= @photo.description %></h3>
+
+<% if @photo.comments.any? %>
+  <ul>
+    <% @photo.comments.each do |comment| %>
+      <li>
+        <%= comment.contents %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No comments.</p>
+<% end %>
+
+<%= form_for [@photo, @comment] do |f| %>
+  <%= f.label :comments, class: "form label" %>
+  <%= f.text_area :contents, class: "form" %>
+  <%= f.submit "Comment", class: "form" %>
+<% end %>
