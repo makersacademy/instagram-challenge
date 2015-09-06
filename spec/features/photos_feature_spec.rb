@@ -73,19 +73,6 @@ feature 'photos' do
       expect(current_path).to eq '/photos'
     end
 
-    #  scenario "don't let a user edit the photo if he is not the one that added it" do
-    #   sign_up
-    #   click_link 'Add a photo'
-    #   attach_file 'Image', 'spec/features/sea.jpg'
-    #   fill_in 'Title', with: 'Awesome sea'
-    #   click_button 'Add photo'
-    #   click_link 'Sign out'
-    #   sign_up_2
-    #   click_button 'Edit'
-    #   expect(page).to have_content 'You cannot edit this photo'
-    #   expect(current_path).to eq '/photos'
-    # end
-
 end
 
   context 'deleting photo after log in' do
