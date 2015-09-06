@@ -54,11 +54,13 @@ group :development do
   gem 'spring'
 
 group :test do
-   gem 'rspec-rails'
-   gem 'capybara'
-   gem "factory_girl_rails"
-   gem 'shoulda'
-   gem 'rspec-collection_matchers'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem "factory_girl_rails"
+  gem 'shoulda'
+  gem 'rspec-collection_matchers'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 end
