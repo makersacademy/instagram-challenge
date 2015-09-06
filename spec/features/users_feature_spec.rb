@@ -36,10 +36,5 @@ feature 'User can sign in and out' do
       visit '/'
       expect(page).to have_link('Sign out')
     end
-
-    scenario 'user should see welcome message' do
-      visit '/'
-      expect(page).to have_content('Welcome james!')
-    end
   end
 end

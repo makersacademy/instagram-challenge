@@ -13,13 +13,23 @@ feature 'pictures' do
 
   context 'pictures have been added' do
     before do
-      create(:picture)
+      user = build(:user)
+      sign_up(user)
+      visit '/pictures'
+      click_link 'Add a new picture'
+      fill_in 'Caption', with: 'Awesome narwhal'
+      attach_file 'picture[image]', 'spec/assets/images/image01.png'
+      click_button 'Create Picture'
     end
 
-    scenario 'display pictures' do
+    scenario 'displaying pictures' do
       visit '/pictures'
       expect(page).to have_content('Awesome narwhal')
       expect(page).to have_selector('img')
+    end
+
+    scenario 'pictures are displayed with the username of their owner' do
+      expect(page).to have_content('james')
     end
   end
 
