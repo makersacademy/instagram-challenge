@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+# Thoughtbot have written a fantastic gem called shoulda to help us test associations
+gem 'shoulda'
 # Paperclip is a gem that makes file uploads to Ruby apps a bit simpler
 gem 'paperclip'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
