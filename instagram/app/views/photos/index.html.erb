@@ -1,26 +1,29 @@
 <section id="container">
-<%= link_to 'Add a photo', new_photo_path %>
 
 <% if @photos.any? %>
   <% Photo.all.each do |photo| %>
-  	<h2>User ID:<%= photo.user_id %></h2>
-    <h2><%= photo.description %></h2>
-    <%= image_tag photo.image.url(:medium) %>
+  <section id="post">
+  	<div id="postHeader">
+  	<h2 id="userName"><%= photo.user.email %></h2>
+  	<h2 id="createdAt"><%= photo.created_at.strftime("%Y-%m-%d %H:%M") %></h2>
+  	</div>
+
+    	<%= link_to image_tag(photo.image.url, :id => "photo"), photo_path(photo) %>
+
+    <div id="postFooter">
+    <div id="likeCounter"><%= photo.likes.count %> Likes </div>
+    <div id="likeButton"> <%= link_to "Like #{photo.description}", new_photo_like_path(photo) %> </div>
+    <p> <span id="userNameDescription"><%= photo.user.email %></span>
+    <span id="photoDescription"><%= photo.description %></span></p>
     <!-- <img src="<%= photo.picture %>"> -->
-    <%= link_to photo.description, photo_path(photo) %>
-    <%= link_to "Delete #{photo.description}", photo_path(photo), method: :delete %>
-      <%= link_to "Comment on #{photo.description}", new_photo_comment_path(photo) %>
-      <%= link_to "Like #{photo.description}", new_photo_like_path(photo) %>
-
-    <h3>Comments for <%= photo.description %></h3>
-
+			<div id="comments">
 			<% if photo.comments.any? %>
 			  <ul>
 			    <% photo.comments.each do |comment| %>
 			      <li>
-			        <%= comment.user_id %>
-			        <%= comment.created_at.strftime("%Y-%m-%d %H:%M") %>
-			        /
+			        <span id="commentUsername">
+			        <%= comment.photo.user.email %></span>
+			        
 			        <%= comment.comment %>
 			      </li>
 			    <% end %>
@@ -28,9 +31,19 @@
 			<% else %>
 			  <p>No comments yet :(</p>
 			<% end %>
-			<%= photo.likes.count %> Likes
+			</div>
+      <%= link_to photo.description, photo_path(photo) %>
+    <%= link_to "Delete #{photo.description}", photo_path(photo), method: :delete %>
+      <%= link_to "Comment on #{photo.description}", new_photo_comment_path(photo) %>
+
+		</section>
+
   <% end %>
+
+  </div>
+
 <% else %>
   <h1>No photos yet</h1>
+
 <% end %>
 </section>
