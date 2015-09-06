@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
    get 'pictures' => 'pictures#index'
 
-  resources :pictures do
-    resources :comments
+  resources :pictures, shallow: true do
+    resources :comments do
+      resources :likes
+    end
   end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
