@@ -3,9 +3,11 @@ require 'rails_helper'
 feature 'pictures' do
   context 'no pictures have been added' do
     scenario 'displays a link to add a new picture' do
+      user = build(:user)
+      sign_up(user)
       visit '/pictures'
       expect(page).to have_content('No pictures yet!')
-      expect(page).to have_content('Add a new picture')
+      expect(page).to have_link('Add a new picture')
     end
   end
 
@@ -22,7 +24,14 @@ feature 'pictures' do
   end
 
   context 'uploading pictures' do
-    scenario 'user writes a caption, then new picture and caption displayed' do
+    scenario 'if not logged in, user unable to add a picture' do
+      visit '/pictures'
+      expect(page).not_to have_link('Add a new picture')
+    end
+
+    scenario 'when logged in, user able to add picture and caption' do
+      user = build(:user)
+      sign_up(user)
       visit '/pictures'
       click_link 'Add a new picture'
       fill_in 'Caption', with: 'Awesome narwhal'
