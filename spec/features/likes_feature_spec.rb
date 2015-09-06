@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'liking pictures' do
-  before do
+  before(:each) do
     user = build(:user)
     sign_up(user)
     visit '/pictures'
@@ -11,16 +11,10 @@ feature 'liking pictures' do
     click_button 'Create Picture'
   end
 
-  scenario 'a user can like a picture, which updates the likes count' do
+  scenario 'a user can like a picture, which updates the likes count', js: true do
     visit '/pictures'
     click_link 'Like picture'
     expect(page).to have_content('1 like')
   end
 
-  scenario 'a picture can be like multiple times' do
-    visit '/pictures'
-    click_link 'Like picture'
-    click_link 'Like picture'
-    expect(page).to have_content('2 likes')
-  end
 end

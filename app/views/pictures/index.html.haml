@@ -7,9 +7,11 @@
     - if current_user && current_user.id == picture.user_id
       = link_to "Edit caption", edit_picture_path(picture)
       = link_to "Delete image", picture_path(picture), method: :delete
-    = link_to "Like picture", picture_likes_path(picture), method: :post
     = link_to "Comment", new_picture_comment_path(picture)
-    %p= pluralize picture.likes.count, 'like'
+    = link_to "Like picture", picture_likes_path(picture), class: 'likes-link'
+    %span.likes_count= picture.likes.count
+    = 'like'.pluralize picture.likes.count
+
     - if picture.comments.any?
       %ul
         - picture.comments.each do |comment|

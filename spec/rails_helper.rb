@@ -7,6 +7,9 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'factory_girl_rails'
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+
 require 'support/database_cleaner'
 require 'helpers/users_helper'
 # Add additional requires below this line. Rails is not loaded until this point!
