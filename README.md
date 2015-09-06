@@ -4,9 +4,9 @@ MassiGram
 [![Code Climate](https://codeclimate.com/github/MassimilianoMura/MassiGram/badges/gpa.svg)](https://codeclimate.com/github/MassimilianoMura/MassiGram)
 [![Travis](https://travis-ci.org/MassimilianoMura/MassiGram.svg)](https://travis-ci.org/MassimilianoMura/MassiGram)
 
-This is a basic Instagram clone, a weekend project. The tecnologies I used are Rails, RSpec, Shoulda, Devise, OmniAuth, Paperclip, Poltergeist.
+This is a basic Instagram clone, a weekend project. The technologies I used are Rails, Rspec, Shoulda, Devise, OmniAuth, Paperclip.
 
-# Getting started
+## Getting started
 -  clone the repo
 - `bundle install` to install the dependencies
 - `bin/rake db:create` to create databases
