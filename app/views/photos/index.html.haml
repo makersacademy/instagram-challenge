@@ -1,0 +1,17 @@
+!!!
+%head
+  %meta(charset="UTF-8")
+
+%body
+  - if @photos.any?
+    - @photos.each do |photo|
+      = image_tag photo.image.url(:medium)
+      %p= link_to photo.title, photo_path(photo)
+
+  - else
+    No images yet
+
+
+  %a(href=new_photo_path) Upload a new photo
+
+ 
