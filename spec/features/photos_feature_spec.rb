@@ -33,13 +33,13 @@ feature 'photos' do
   end
 
   context 'viewing photos' do
-    let(:photo) { create(:photo) }
-
     scenario 'let a user view a specific photo' do
+      photo = create(:photo)
       visit('/photos')
-      find('img').click
-      expect(page).to have_content('Test')
+      click_link('Testing')
+      expect(page).to have_content('Testing')
       expect(page).to have_selector(:css, "img[src*='testing.png']")
+      expect(current_path).to eq("/photos/#{photo.id}")
     end
   end
 end
