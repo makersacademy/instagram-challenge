@@ -7,6 +7,8 @@
         %strong
           = photo.user.email
         = photo.title
+        %p= pluralize photo.likes.count, 'like'
+        = link_to "Like", photo_likes_path(photo), method: :post
         - if photo.comments.any?
           %ul
             - photo.comments.each do |comment|
