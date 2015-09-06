@@ -2,13 +2,14 @@
   - @pictures.each do |picture|
     = picture.user.username
     = picture.timestamp
-    = image_tag picture.image.url(:thumb)
+    = image_tag picture.image.url(:medium)
     %h4= picture.caption
     - if current_user && current_user.id == picture.user_id
       = link_to "Edit caption", edit_picture_path(picture)
       = link_to "Delete image", picture_path(picture), method: :delete
+    = link_to "Like picture", picture_likes_path(picture), method: :post
     = link_to "Comment", new_picture_comment_path(picture)
-
+    %p= pluralize picture.likes.count, 'like'
     - if picture.comments.any?
       %ul
         - picture.comments.each do |comment|
