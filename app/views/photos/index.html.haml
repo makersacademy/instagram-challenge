@@ -1,5 +1,3 @@
-
-
 - if @photos.any?
   - @photos.each do |photo|
     %section
@@ -9,6 +7,12 @@
         %strong
           = photo.user.email
         = photo.title
+        - if photo.comments.any?
+          %ul
+            - photo.comments.each do |comment|
+              %li
+                = comment.comment
+        = link_to "Comment #{photo.title}", new_photo_comment_path(photo)
 - else
   %h1 No photos yet
 

@@ -4,5 +4,6 @@ class Photo < ActiveRecord::Base
 
     belongs_to :user
     validates_presence_of :image
+    has_many :comments
 
 end
