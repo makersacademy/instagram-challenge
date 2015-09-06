@@ -6,7 +6,7 @@ Instagram Challenge
 
 Build Instagram: Simple huh!
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
 Bonus if you can add filters!
 
@@ -52,14 +52,14 @@ rspec
 
 ##Things to remember
 
-* Set up rails with rails new [filename] -d postgresql -T
-* rake routes - lists all available paths
+* Set up rails with `rails new [filename] -d postgresql -T`
+* `rake routes` - lists all available paths
 * When using haml, install haml gem
-* bin/rails g controller [filename]
-* bin/rails g model [modelname], name:string rating:integer
-* bin/rails g migrtion AddDescriptionToRestaurants description:text
-* bin/rails g migration AddRestaurantIdToReviews restaurant:belongs_to
+* `bin/rails g controller [filename]`
+* `bin/rails g model [modelname], name:string rating:integer`
+* `bin/rails g migrtion AddDescriptionToRestaurants description:text`
+* `bin/rails g migration AddRestaurantIdToReviews restaurant:belongs_to`
 * Haml indentation is a major problem if wrong, rspec tests will fail!!!
-* Setting up sign-in, up and out, use gem 'devise', bin/rails g devise:install, bin/rails g devise User
+* Setting up sign-in, up and out, use `gem 'devise'`, `bin/rails g devise:install`, `bin/rails g devise User`
 
 
