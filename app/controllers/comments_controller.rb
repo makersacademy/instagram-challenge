@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def new
-    @photo = Photo.find(params{:photo_id})
+    @photo = Photo.find(params[:photo_id])
     @comment = Comment.new
   end
 
