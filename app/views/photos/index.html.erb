@@ -1,22 +1,24 @@
 <% if user_signed_in? %>
-<a href='/photos/new'>Upload a photo</a>
+  <div>
+    <a href='/photos/new'>Upload a photo</a>
+  </div>
 <% end %>
 <% if @photos.any? %>
   <% @photos.each do |photo| %>
-   <div>
-     <%= link_to (image_tag photo.image.url(:thumb)), photo_path(photo) %></a>
-     <p>
-       <%= photo.description %><% if user_signed_in? %><%= link_to 'Comment on photo', new_photo_comment_path(photo) %>
-       <% end %>
-       
-       <% if user_signed_in? %>
-       <p>
-         <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
+    <div class="col-md-3">
+      <%= link_to (image_tag photo.image.url(:thumb)), photo_path(photo) %></a>
+      <p>
+        <%= photo.description %><br>
+        <% if user_signed_in? && current_user.id == photo.user_id %>
+          <%= link_to 'Delete photo', photo_path(photo), method: :delete %>
+        <% end %>
+      </p>
+       <% if user_signed_in? %><%= link_to 'Comment on photo', new_photo_comment_path(photo) %>
+       | <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
           <span class="likes_count"><%= photo.likes.count %></span> <span class="likes_pluralisation"><%= 'like'.pluralize(photo.likes.count) %></span>
        </p>
        <% end %>
-       <% if user_signed_in? && current_user.id == photo.user_id %>
-       <%= link_to 'Delete photo', photo_path(photo), method: :delete %><% end %>
+
        <% photo.comments.each do |comment| %>
 	    <li>
 	      <%= comment.message %>
