@@ -9,7 +9,7 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.create(picture_params)
-    redirect_to '/pictures'
+    redirect_to pictures_path
   end
 
   def show
@@ -18,7 +18,7 @@ class PicturesController < ApplicationController
 
 
   def picture_params
-    params.require(:picture).permit(:name)
+    params.require(:picture).permit(:name, :image)
   end
 
 
