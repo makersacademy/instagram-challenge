@@ -48,7 +48,7 @@ I would like to be able to see the count of likes per photo
 ```
 Lessons learnt
 
-* factory girl set up with rails
+* factory girl set up with rails. Install factory girl at start of project and it will build the factory template files for you as you add
 * git ignore the photos directy so they are not uploaded to git hub
 
 
