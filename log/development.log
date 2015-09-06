@@ -2956,3 +2956,622 @@ ActiveRecord::RecordNotFound (Couldn't find Photo with 'id'={"controller"=>"comm
   Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
   Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
   Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (24.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAttachmentImageToPhotos (20150906210214)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "photos" ADD "image_file_name" character varying[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "photos" ADD "image_content_type" character varying
+  [1m[36m (0.1ms)[0m  [1mALTER TABLE "photos" ADD "image_file_size" integer[0m
+  [1m[35m (0.1ms)[0m  ALTER TABLE "photos" ADD "image_updated_at" timestamp
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150906210214"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.9ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'comments'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.4ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'photos'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.4ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/photos" for ::1 at 2015-09-06 22:06:27 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PhotosController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  [1m[35mComment Exists (0.3ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 2]]
+  Rendered photos/index.html.haml within layouts/application (34.0ms)
+Completed 200 OK in 250ms (Views: 233.9ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-09-06 22:06:28 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /richardgeoghegan.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /richardgeoghegan.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /richardgeoghegan.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.6ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.0ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (32.0ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.0ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (31.7ms)
+
+
+Started GET "/" for ::1 at 2015-09-06 22:06:28 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT "photos".* FROM "photos"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 2]]
+  Rendered photos/index.html.haml within layouts/application (3.5ms)
+Completed 200 OK in 35ms (Views: 33.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-09-06 22:06:28 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /richardgeoghegan.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /richardgeoghegan.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /richardgeoghegan.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.9ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (26.0ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (13.0ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (27.9ms)
+
+
+Started GET "/photos/2/comments/new" for ::1 at 2015-09-06 22:06:42 +0100
+Processing by CommentsController#new as HTML
+  Parameters: {"photo_id"=>"2"}
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered comments/new.html.haml within layouts/application (12.1ms)
+Completed 200 OK in 49ms (Views: 40.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/photos/new" for ::1 at 2015-09-06 22:06:53 +0100
+Processing by PhotosController#new as HTML
+  Rendered photos/new.html.haml within layouts/application (2.1ms)
+Completed 200 OK in 36ms (Views: 35.0ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/photos/2" for ::1 at 2015-09-06 22:07:36 +0100
+Processing by PhotosController#destroy as HTML
+  Parameters: {"authenticity_token"=>"mWt1c12NCOoXCpc/K8SvErDCOfASH8doYLOvCT+h5Rng+QWyC5S/1hBsc8jPLVe83azU4bCSSM0c29V3w0xnyg==", "id"=>"2"}
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."photo_id" = $1[0m  [["photo_id", 2]]
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM "photos" WHERE "photos"."id" = $1  [["id", 2]]
+  [1m[36m (6.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/photos
+Completed 302 Found in 11ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/photos" for ::1 at 2015-09-06 22:07:36 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  Rendered photos/index.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 70ms (Views: 69.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/photos/new" for ::1 at 2015-09-06 22:07:38 +0100
+Processing by PhotosController#new as HTML
+  Rendered photos/new.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 33ms (Views: 31.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/photos" for ::1 at 2015-09-06 22:07:48 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LjiAhY48QWx3rqU5P6GtXkg2an7q0Dfw+x26PfKfoYRXqvBE2CX2UHDIQc7bSFXwJViHb0hduFWHdcBDDnIjVw==", "photo"=>{"title"=>"A sunny day"}, "commit"=>"Create Photo"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "photos" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "A sunny day"], ["created_at", "2015-09-06 21:07:48.029485"], ["updated_at", "2015-09-06 21:07:48.029485"]]
+  [1m[36m (5.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/photos
+Completed 302 Found in 9ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/photos" for ::1 at 2015-09-06 22:07:48 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 3]]
+  Rendered photos/index.html.haml within layouts/application (2.8ms)
+Completed 200 OK in 31ms (Views: 29.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-09-06 22:07:48 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /richardgeoghegan.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /richardgeoghegan.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /richardgeoghegan.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (26.6ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (15.6ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (29.3ms)
+
+
+Started GET "/photos" for ::1 at 2015-09-06 22:13:45 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  [1m[35mComment Exists (0.3ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 3]]
+  Rendered photos/index.html.haml within layouts/application (31.7ms)
+Completed 200 OK in 237ms (Views: 220.5ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-09-06 22:13:45 +0100
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-09-06 22:13:45 +0100
+
+
+Started GET "/assets/jquery.self-a714331225dda820228db323939889f149aec0127aeb06255646b616ba1ca419.js?body=1" for ::1 at 2015-09-06 22:13:45 +0100
+
+
+Started GET "/assets/photos.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-09-06 22:13:45 +0100
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2015-09-06 22:13:45 +0100
+
+
+Started GET "/assets/photos.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-09-06 22:13:45 +0100
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-09-06 22:13:45 +0100
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-09-06 22:13:45 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-09-06 22:13:45 +0100
+
+
+Started GET "/images/thumb/missing.png" for ::1 at 2015-09-06 22:13:45 +0100
+
+ActionController::RoutingError (No route matches [GET] "/images/thumb/missing.png"):
+  actionpack (4.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.2.1) lib/web_console/middleware.rb:39:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.4) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.4) lib/rails/engine.rb:518:in `call'
+  railties (4.2.4) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /richardgeoghegan.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /richardgeoghegan.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /richardgeoghegan.rvm/rubies/ruby-2.1.5/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.6ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/actionpack-4.2.4/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (31.0ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/console.js.erb within layouts/javascript (11.5ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /richardgeoghegan.rvm/gems/ruby-2.1.5/gems/web-console-2.2.1/lib/web_console/templates/index.html.erb (25.7ms)
+
+
+Started GET "/photos/3/edit" for ::1 at 2015-09-06 22:13:49 +0100
+Processing by PhotosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPhoto Load (0.3ms)[0m  [1mSELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered photos/edit.html.haml within layouts/application (11.7ms)
+Completed 200 OK in 43ms (Views: 37.9ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/photos/3" for ::1 at 2015-09-06 22:15:36 +0100
+Processing by PhotosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RmhrJExm76hRqasUMKlZw6kGZM9NcJ9/9Aq0Bberfbg/+hvlGn9YlFbPT+PUQKFtxGiJ3u/9ENqIYs57S0b/aw==", "photo"=>{"title"=>"A sunny day", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fddf5a495e0 @tempfile=#<Tempfile:/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/RackMultipart20150906-11832-1r9eyqd.jpg>, @original_filename="IMG_20130123_073042.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"IMG_20130123_073042.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Update Photo", "id"=>"3"}
+  [1m[35mPhoto Load (0.4ms)[0m  SELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/5e7a00133e8f93b43c0c98101010a3d420150906-11832-1o1m95v.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/5e7a00133e8f93b43c0c98101010a3d420150906-11832-836jf.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/5e7a00133e8f93b43c0c98101010a3d420150906-11832-836jf.jpg[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/5e7a00133e8f93b43c0c98101010a3d420150906-11832-836jf.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/5cb6109b2e4d23c6adfc2146df7165b120150906-11832-1y7xg86'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/5e7a00133e8f93b43c0c98101010a3d420150906-11832-836jf.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/5e7a00133e8f93b43c0c98101010a3d420150906-11832-836jf.jpg[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/5e7a00133e8f93b43c0c98101010a3d420150906-11832-836jf.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/5cb6109b2e4d23c6adfc2146df7165b120150906-11832-1j4hd3f'
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/5e7a00133e8f93b43c0c98101010a3d420150906-11832-yce0if.jpg'
+  [1m[35mSQL (0.3ms)[0m  UPDATE "photos" SET "image_file_name" = $1, "image_content_type" = $2, "image_file_size" = $3, "image_updated_at" = $4, "updated_at" = $5 WHERE "photos"."id" = $6  [["image_file_name", "IMG_20130123_073042.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 438918], ["image_updated_at", "2015-09-06 21:15:36.985584"], ["updated_at", "2015-09-06 21:15:37.643259"], ["id", 3]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/photos
+Completed 302 Found in 687ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/photos" for ::1 at 2015-09-06 22:15:37 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.1ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 3]]
+  Rendered photos/index.html.haml within layouts/application (3.9ms)
+Completed 200 OK in 32ms (Views: 30.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/photos/3/edit" for ::1 at 2015-09-06 22:15:46 +0100
+Processing by PhotosController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered photos/edit.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 35ms (Views: 34.1ms | ActiveRecord: 0.2ms)
+
+
+Started PATCH "/photos/3" for ::1 at 2015-09-06 22:15:55 +0100
+Processing by PhotosController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ux4dhwfhdkJfSJUHwSYQC16C0ejgoNK9VOT35jBq/QMqjG1GUfjBflgucfAlz+ilM+w8+UItXRgojI2YzId/0A==", "photo"=>{"title"=>"Grand Canyon"}, "commit"=>"Update Photo", "id"=>"3"}
+  [1m[35mPhoto Load (0.3ms)[0m  SELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "photos" SET "title" = $1, "updated_at" = $2 WHERE "photos"."id" = $3  [["title", "Grand Canyon"], ["updated_at", "2015-09-06 21:15:55.699076"], ["id", 3]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/photos
+Completed 302 Found in 10ms (ActiveRecord: 6.6ms)
+
+
+Started GET "/photos" for ::1 at 2015-09-06 22:15:55 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 3]]
+  Rendered photos/index.html.haml within layouts/application (3.6ms)
+Completed 200 OK in 38ms (Views: 36.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/photos/new" for ::1 at 2015-09-06 22:18:03 +0100
+Processing by PhotosController#new as HTML
+  Rendered photos/new.html.haml within layouts/application (2.2ms)
+Completed 200 OK in 34ms (Views: 33.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/photos" for ::1 at 2015-09-06 22:18:51 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FhNSgRqOJyPljt+foZQu6t+4uncUPhnYl3qCds2Tk/tvgSJATJeQH+LoO2hFfdZEstZXZrazln3rEvgIMX4RKA==", "photo"=>{"title"=>"Vegas", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fddff1f23b0 @tempfile=#<Tempfile:/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/RackMultipart20150906-11832-1sawmem.jpg>, @original_filename="NEGATIVE REFLECTION.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"NEGATIVE REFLECTION.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Photo"}
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/708702db9cda4ef1f11d7e0faf0647ca20150906-11832-1ncfhjw.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c3bd3686824bed6ca57ca087cd3865af20150906-11832-1f4k2v.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c3bd3686824bed6ca57ca087cd3865af20150906-11832-1f4k2v.jpg[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c3bd3686824bed6ca57ca087cd3865af20150906-11832-1f4k2v.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/161935a398b31d1ecf571601446295e720150906-11832-te98j6'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c3bd3686824bed6ca57ca087cd3865af20150906-11832-1f4k2v.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c3bd3686824bed6ca57ca087cd3865af20150906-11832-1f4k2v.jpg[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c3bd3686824bed6ca57ca087cd3865af20150906-11832-1f4k2v.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/161935a398b31d1ecf571601446295e720150906-11832-lz68ry'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/708702db9cda4ef1f11d7e0faf0647ca20150906-11832-yddxgk.jpg'
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "photos" ("title", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "Vegas"], ["image_file_name", "NEGATIVE_REFLECTION.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 1988336], ["image_updated_at", "2015-09-06 21:18:51.522954"], ["created_at", "2015-09-06 21:18:53.559950"], ["updated_at", "2015-09-06 21:18:53.559950"]]
+  [1m[36m (5.7ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/photos
+Completed 302 Found in 2067ms (ActiveRecord: 6.1ms)
+
+
+Started GET "/photos" for ::1 at 2015-09-06 22:18:53 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 3]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 4]]
+  Rendered photos/index.html.haml within layouts/application (5.4ms)
+Completed 200 OK in 105ms (Views: 103.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/photos/new" for ::1 at 2015-09-06 22:18:58 +0100
+Processing by PhotosController#new as HTML
+  Rendered photos/new.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 29ms (Views: 28.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/photos" for ::1 at 2015-09-06 22:19:30 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BexOBF1QR00QTFklXERulo6r4PhO/BMEI2UDlR15Qf98fj7FC0nwcRcqvdK4rZY448UN6exxnKFfDXnr4ZTDLA==", "photo"=>{"title"=>"Ohhhh Lightning", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fddf46504a8 @tempfile=#<Tempfile:/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/RackMultipart20150906-11832-o8a735.jpg>, @original_filename="LIGHTNING EAGLE.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"LIGHTNING EAGLE.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Photo"}
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/d6dc619632eeeab195b923d09e771f4020150906-11832-1rrbjym.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/80ebff0948eb168c4565c9f68fbeca1020150906-11832-3tod8k.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/80ebff0948eb168c4565c9f68fbeca1020150906-11832-3tod8k.jpg[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/80ebff0948eb168c4565c9f68fbeca1020150906-11832-3tod8k.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/e0f0aa153e9929606da14dfc8fa0362820150906-11832-izozst'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/80ebff0948eb168c4565c9f68fbeca1020150906-11832-3tod8k.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/80ebff0948eb168c4565c9f68fbeca1020150906-11832-3tod8k.jpg[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/80ebff0948eb168c4565c9f68fbeca1020150906-11832-3tod8k.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/e0f0aa153e9929606da14dfc8fa0362820150906-11832-16o3pg9'
+  [1m[35m (0.2ms)[0m  BEGIN
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/d6dc619632eeeab195b923d09e771f4020150906-11832-wd3v1x.jpg'
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "photos" ("title", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Ohhhh Lightning"], ["image_file_name", "LIGHTNING_EAGLE.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 1778512], ["image_updated_at", "2015-09-06 21:19:30.212997"], ["created_at", "2015-09-06 21:19:31.383348"], ["updated_at", "2015-09-06 21:19:31.383348"]]
+  [1m[35m (6.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/photos
+Completed 302 Found in 1202ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/photos" for ::1 at 2015-09-06 22:19:31 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT "photos".* FROM "photos"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 3]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 4]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 5]]
+  Rendered photos/index.html.haml within layouts/application (6.9ms)
+Completed 200 OK in 35ms (Views: 33.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/photos/new" for ::1 at 2015-09-06 22:19:39 +0100
+Processing by PhotosController#new as HTML
+  Rendered photos/new.html.haml within layouts/application (2.8ms)
+Completed 200 OK in 43ms (Views: 42.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/photos" for ::1 at 2015-09-06 22:20:22 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"k33FujsdWDHzCSQ2DzjHm01+ClSRy2yFsgakR5SPcoPq77V7bQTvDfRvwMHr0T81IBDnRTNG4yDObt45aGLwUA==", "photo"=>{"title"=>"Ascot race day", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fddf62583f8 @tempfile=#<Tempfile:/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/RackMultipart20150906-11832-r1fndx.JPG>, @original_filename="IMG_0021.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"IMG_0021.JPG\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Photo"}
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c536661808f7e42e0397155e64d15e8c20150906-11832-ol6ca3.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c536661808f7e42e0397155e64d15e8c20150906-11832-6r16s.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c536661808f7e42e0397155e64d15e8c20150906-11832-6r16s.JPG[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c536661808f7e42e0397155e64d15e8c20150906-11832-6r16s.JPG[0]' -auto-orient -resize "300x300>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/b462fe7615b24063fd099f5703ba5fdb20150906-11832-1ylhftd'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c536661808f7e42e0397155e64d15e8c20150906-11832-6r16s.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c536661808f7e42e0397155e64d15e8c20150906-11832-6r16s.JPG[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c536661808f7e42e0397155e64d15e8c20150906-11832-6r16s.JPG[0]' -auto-orient -resize "100x100>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/b462fe7615b24063fd099f5703ba5fdb20150906-11832-1reifd3'
+  [1m[35m (0.2ms)[0m  BEGIN
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/c536661808f7e42e0397155e64d15e8c20150906-11832-c9p5kn.JPG'
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "photos" ("title", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Ascot race day"], ["image_file_name", "IMG_0021.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 1114866], ["image_updated_at", "2015-09-06 21:20:22.679523"], ["created_at", "2015-09-06 21:20:23.332929"], ["updated_at", "2015-09-06 21:20:23.332929"]]
+  [1m[35m (6.0ms)[0m  COMMIT
+Redirected to http://localhost:3000/photos
+Completed 302 Found in 682ms (ActiveRecord: 6.5ms)
+
+
+Started GET "/photos" for ::1 at 2015-09-06 22:20:23 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT "photos".* FROM "photos"
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 3]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 4]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 5]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 6]]
+  Rendered photos/index.html.haml within layouts/application (8.6ms)
+Completed 200 OK in 37ms (Views: 36.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/photos/new" for ::1 at 2015-09-06 22:20:27 +0100
+Processing by PhotosController#new as HTML
+  Rendered photos/new.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 34ms (Views: 33.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/photos" for ::1 at 2015-09-06 22:21:36 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wHeC369M4ramgmcyLkhiDmx3aMtlC/rKYjsLzGh3YJG55fIe+VVViqHkg8XKoZqgARmF2seGdW8eU3GylJriQg==", "photo"=>{"title"=>"Fancy a beer?", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fddfe954d20 @tempfile=#<Tempfile:/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/RackMultipart20150906-11832-1872d04.JPG>, @original_filename="IMG_1742.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"IMG_1742.JPG\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Photo"}
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/cf19aade1850b58e07f3718968b1f5d620150906-11832-kc2c34.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/cf19aade1850b58e07f3718968b1f5d620150906-11832-12auk6e.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/cf19aade1850b58e07f3718968b1f5d620150906-11832-12auk6e.JPG[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/cf19aade1850b58e07f3718968b1f5d620150906-11832-12auk6e.JPG[0]' -auto-orient -resize "300x300>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/ad09babbf74cf1f2885d93def9b3a63c20150906-11832-16qlf36'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/cf19aade1850b58e07f3718968b1f5d620150906-11832-12auk6e.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/cf19aade1850b58e07f3718968b1f5d620150906-11832-12auk6e.JPG[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/cf19aade1850b58e07f3718968b1f5d620150906-11832-12auk6e.JPG[0]' -auto-orient -resize "100x100>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/ad09babbf74cf1f2885d93def9b3a63c20150906-11832-1cv9l6g'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/cf19aade1850b58e07f3718968b1f5d620150906-11832-7cajs.JPG'
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "photos" ("title", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "Fancy a beer?"], ["image_file_name", "IMG_1742.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 1761968], ["image_updated_at", "2015-09-06 21:21:36.860749"], ["created_at", "2015-09-06 21:21:38.143312"], ["updated_at", "2015-09-06 21:21:38.143312"]]
+  [1m[36m (5.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/photos
+Completed 302 Found in 1313ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/photos" for ::1 at 2015-09-06 22:21:38 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 3]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 4]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 5]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 6]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 7]]
+  Rendered photos/index.html.haml within layouts/application (9.8ms)
+Completed 200 OK in 46ms (Views: 44.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/photos/new" for ::1 at 2015-09-06 22:22:07 +0100
+Processing by PhotosController#new as HTML
+  Rendered photos/new.html.haml within layouts/application (2.2ms)
+Completed 200 OK in 43ms (Views: 42.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/photos" for ::1 at 2015-09-06 22:22:52 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"E8z58wFtQUL1cQHqHYZzBDJ5nFqcv5cC5WtRp9S4MDFqXokyV3T2fvIX5R35b4uqXxdxSz4yGKeZAyvZKFWy4g==", "photo"=>{"title"=>"Vegas!!!!", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fddff299598 @tempfile=#<Tempfile:/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/RackMultipart20150906-11832-1stktk7.JPG>, @original_filename="IMG_1813.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"IMG_1813.JPG\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Photo"}
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/f320f0324b7f83a1fd8f22ec409f6d5520150906-11832-pkr27n.JPG'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/f320f0324b7f83a1fd8f22ec409f6d5520150906-11832-mw9q9w.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/f320f0324b7f83a1fd8f22ec409f6d5520150906-11832-mw9q9w.JPG[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/f320f0324b7f83a1fd8f22ec409f6d5520150906-11832-mw9q9w.JPG[0]' -auto-orient -resize "300x300>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/8ffbc9a063669e7cc49bc06770aae8b520150906-11832-1g0hbzd'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/f320f0324b7f83a1fd8f22ec409f6d5520150906-11832-mw9q9w.JPG[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/f320f0324b7f83a1fd8f22ec409f6d5520150906-11832-mw9q9w.JPG[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/f320f0324b7f83a1fd8f22ec409f6d5520150906-11832-mw9q9w.JPG[0]' -auto-orient -resize "100x100>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/8ffbc9a063669e7cc49bc06770aae8b520150906-11832-43r3ok'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/f320f0324b7f83a1fd8f22ec409f6d5520150906-11832-su317m.JPG'
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "photos" ("title", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "Vegas!!!!"], ["image_file_name", "IMG_1813.JPG"], ["image_content_type", "image/jpeg"], ["image_file_size", 1715382], ["image_updated_at", "2015-09-06 21:22:52.679263"], ["created_at", "2015-09-06 21:22:54.000208"], ["updated_at", "2015-09-06 21:22:54.000208"]]
+  [1m[36m (5.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/photos
+Completed 302 Found in 1371ms (ActiveRecord: 5.8ms)
+
+
+Started GET "/photos" for ::1 at 2015-09-06 22:22:54 +0100
+Processing by PhotosController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "photos"
+  [1m[36mPhoto Load (0.2ms)[0m  [1mSELECT "photos".* FROM "photos"[0m
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 3]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 4]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 5]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 6]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 7]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 8]]
+  Rendered photos/index.html.haml within layouts/application (10.0ms)
+Completed 200 OK in 41ms (Views: 39.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/photos/new" for ::1 at 2015-09-06 22:23:00 +0100
+Processing by PhotosController#new as HTML
+  Rendered photos/new.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 56ms (Views: 54.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/photos" for ::1 at 2015-09-06 22:23:54 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DRHfAvkHjjC+SB6cjZVluETegct3EWB85WYrm8SKGZF0g6/Drx45DLku+mtpfJ0WKbBs2tWc79mZDlHlOGebQg==", "photo"=>{"title"=>"Anyone hungry???", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fddf4570c90 @tempfile=#<Tempfile:/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/RackMultipart20150906-11832-6nd5th.jpg>, @original_filename="IMG_1841.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"IMG_1841.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Photo"}
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/29cb9551d665e1ee236e1d1bd966d27920150906-11832-1l0pnjv.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/29cb9551d665e1ee236e1d1bd966d27920150906-11832-174fari.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/29cb9551d665e1ee236e1d1bd966d27920150906-11832-174fari.jpg[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/29cb9551d665e1ee236e1d1bd966d27920150906-11832-174fari.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/7fdc093b61adeb6d08f450286cc05bd120150906-11832-s7c130'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/29cb9551d665e1ee236e1d1bd966d27920150906-11832-174fari.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/29cb9551d665e1ee236e1d1bd966d27920150906-11832-174fari.jpg[0]'
+Command :: convert '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/29cb9551d665e1ee236e1d1bd966d27920150906-11832-174fari.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/7fdc093b61adeb6d08f450286cc05bd120150906-11832-s08qk1'
+  [1m[35m (0.2ms)[0m  BEGIN
+Command :: file -b --mime '/var/folders/28/txv8qvqn7qs9f91q386rmhl80000gn/T/29cb9551d665e1ee236e1d1bd966d27920150906-11832-1ivlj0v.jpg'
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "photos" ("title", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Anyone hungry???"], ["image_file_name", "IMG_1841.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 1905827], ["image_updated_at", "2015-09-06 21:23:54.834881"], ["created_at", "2015-09-06 21:23:56.050732"], ["updated_at", "2015-09-06 21:23:56.050732"]]
+  [1m[35m (6.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/photos
+Completed 302 Found in 1249ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/photos" for ::1 at 2015-09-06 22:23:56 +0100
+Processing by PhotosController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "photos"[0m
+  [1m[35mPhoto Load (0.2ms)[0m  SELECT "photos".* FROM "photos"
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 3]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 4]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 5]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 6]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 7]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1  [["photo_id", 8]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."photo_id" = $1 LIMIT 1[0m  [["photo_id", 9]]
+  Rendered photos/index.html.haml within layouts/application (10.8ms)
+Completed 200 OK in 37ms (Views: 35.2ms | ActiveRecord: 1.1ms)
