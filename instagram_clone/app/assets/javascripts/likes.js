@@ -7,6 +7,7 @@ $(document).ready(function() {
 
       $.post(this.href, function(response){
         likeCount.text(response.new_like_count);
+
     })
   })
 })

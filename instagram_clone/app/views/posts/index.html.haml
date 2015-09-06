@@ -13,5 +13,7 @@
         - if post.comments.any?
           - post.comments.reverse_each do |comment|
             = comment.thoughts
+        - if user_signed_in? && current_user.id == post.user_id
+          = link_to "Delete", post_path(post), method: :delete
 - else
   %h2 No posts yet!

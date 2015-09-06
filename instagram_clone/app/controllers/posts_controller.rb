@@ -11,7 +11,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @user = current_user
+    @post = @user.posts.create(post_params)
     if !@post.save
       flash[:notice] = "You must select a photo"
     end
@@ -20,6 +21,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :image)
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = "Post successfully deleted!"
+    redirect_to "/posts"
   end
 
 end

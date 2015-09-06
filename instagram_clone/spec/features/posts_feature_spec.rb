@@ -45,4 +45,36 @@ feature 'posts' do
       expect(current_path).to eq "/users/sign_in"
     end
   end
+
+  context 'deleting posts' do
+    scenario 'owner can delete a post' do
+      user = build(:user)
+      sign_up user
+      click_link "Make a post"
+      fill_in "Title", with: "I love cheese"
+      attach_file("post[image]", "spec/assets/images/KFC.jpg")
+      click_button "Post"
+      click_link 'Delete'
+      expect(page).not_to have_content "I love cheese"
+      expect(page).to have_content "Post successfully deleted!"
+    end
+
+    scenario 'non-owner cannot delete a post' do
+      user = build(:user)
+      sign_up user
+      click_link "Make a post"
+      fill_in "Title", with: "I love cheese"
+      attach_file("post[image]", "spec/assets/images/KFC.jpg")
+      click_button "Post"
+      click_link "Sign out"
+      click_link 'Sign up'
+      fill_in "Email", with: "whoops@test.com"
+      fill_in "Password", with: "12345678"
+      fill_in "Password confirmation", with: "12345678"
+      click_button "Sign up"
+      expect(page).not_to have_content "Delete"
+    end
+
+
+  end
 end
