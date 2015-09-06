@@ -14,7 +14,7 @@ Build Instagram: Simple huh!
 
 
 
-todo
+**TODO**
 
 Add facebook login, omniauth (maybe)
 
