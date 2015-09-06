@@ -1,15 +1,6 @@
 require 'rails_helper'
 
 feature "Picture Features" do
-  it "can't be created without an image" do
-    sign_up_user
-    click_on 'Upload Picture'
-    fill_in 'Title', with: "Smiley Face"
-    click_button 'Create Picture'
-    expect(current_path).not_to eq root_path
-    expect(page).to have_content "Image can't be blank"
-  end
-
   it "can upload a picture" do
     upload_picture
     expect(page.status_code).to be 200
@@ -21,14 +12,25 @@ feature "Picture Features" do
     expect(page).to have_content "Smiley Face"
   end
 
-  it "can't be uploaded without a title" do
-    sign_up_user
-    click_on 'Upload Picture'
-    attach_file "Image", 'spec/smiley.png'
-    click_button 'Create Picture'
+  context "Error Handling:" do
+    it "can't be created without an image" do
+      sign_up_user
+      click_on 'Upload Picture'
+      fill_in 'Title', with: "Smiley Face"
+      click_button 'Create Picture'
+      expect(current_path).not_to eq root_path
+      expect(page).to have_content "Image can't be blank"
+    end
 
-    expect(current_path).not_to eq root_path
-    expect(page).to have_content "Title can't be blank"
+    it "can't be uploaded without a title" do
+      sign_up_user
+      click_on 'Upload Picture'
+      attach_file "Image", 'spec/smiley.png'
+      click_button 'Create Picture'
+
+      expect(current_path).not_to eq root_path
+      expect(page).to have_content "Title can't be blank"
+    end
   end
 
   it "new_picture_path cannot be accessed by a non-signed-in user" do
