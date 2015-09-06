@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Comment, type: :model do
-  it { is_expected.to have_many :comments }
+
+  context 'relationship with photo' do
+    it { is_expected.to belong_to :photo }
+  end
 end
