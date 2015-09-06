@@ -10,7 +10,7 @@ feature "Photo upload" do
 
   scenario "I should see the form to upload a photo" do
     expect(current_path).to eq(new_photo_path)
-    expect(page).to have_field(photo_upload)
+    expect(page).to have_content('Picture')
   end
 #
   scenario "I can upload a photo" do

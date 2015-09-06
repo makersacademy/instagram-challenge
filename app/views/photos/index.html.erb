@@ -1,5 +1,11 @@
 <h1>Instafraud</h1>
   <% if user_signed_in? %>
-    No photos yet!
     <a href=<%=new_photo_path%>>Upload Photo</a>
+    <% if @photos.any? %>
+      <% @photos.each do |photo| %>
+        <%=image_tag photo.picture.url(:thumb) %>
+      <% end %>
+    <% else %>
+      No photos yet!
+    <% end %>
   <% end %>
