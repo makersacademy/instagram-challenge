@@ -3,8 +3,15 @@ class Picture < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   has_many :comments, dependent: :destroy
-  has_many :likes
+  has_many :likes, dependent: :destroy
   belongs_to :user
 
+  def created_by_current_user?(user)
+    if user
+      self.user_id == user.id ? true : false
+    else
+      false
+    end
+  end
 
 end

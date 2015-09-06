@@ -4,7 +4,9 @@
     %h4= picture.name
     = link_to "Delete image", picture_path(picture), method: :delete
     = link_to "Comment", new_picture_comment_path(picture)
-    %p= pluralize picture.likes.count, 'like'
+    = link_to "Like", picture_likes_path(picture), class: 'likes-link'
+    %span.likes_count= picture.likes.count
+    = 'like'.pluralize picture.likes.count
 
 
     - if picture.comments.any?
