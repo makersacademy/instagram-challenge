@@ -1,2 +1,9 @@
-No photos yet!
+<% if @photos.any? %>
+  <% @photos.each do |photo| %>
+    <h2> <%= photo.description %> </h2>
+    <%= image_tag photo.image.url(:medium) %>
+  <% end %>
+<% else %>
+  No photos yet!
+<% end %>
 <%= link_to "Add a photo", new_photo_path, class: "button" %>
