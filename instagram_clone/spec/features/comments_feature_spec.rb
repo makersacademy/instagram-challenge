@@ -45,8 +45,31 @@ feature 'commenting' do
     fill_in "Thoughts", with: "Oh, wow, this looks great!"
     click_button "Comment"
     click_link 'Sign out'
-    user_2 = build(:user, email: "b@alphabet.com")
+    user_2 = build(:user, username: "otterface", email: "b@alphabet.com")
+    sign_up user_2
     visit "/posts"
     expect(page).not_to have_content "Edit comment"
+  end
+
+  scenario 'user can delete their comment' do
+    visit '/posts'
+    click_link 'Leave comment'
+    fill_in "Thoughts", with: "Oh, wow, this looks great!"
+    click_button "Comment"
+    click_link "Delete comment"
+    expect(page).not_to have_content "Oh, wow, this looks great!"
+    expect(page).to have_content "Successfully deleted"
+  end
+
+  scenario 'user cannot delete someone else\'s comment' do
+    visit '/posts'
+    click_link 'Leave comment'
+    fill_in "Thoughts", with: "Oh, wow, this looks great!"
+    click_button "Comment"
+    click_link 'Sign out'
+    user_2 = build(:user, username: "otterface", email: "b@alphabet.com")
+    sign_up user_2
+    visit "/posts"
+    expect(page).not_to have_content "Delete comment"
   end
 end

@@ -9,6 +9,7 @@ require 'capybara/rails'
 require 'capybara/poltergeist'
 require 'capybara-webkit'
 require 'factory_girl_rails'
+# Capybara.default_driver = :selenium
 Capybara.javascript_driver = :webkit
 require 'support/database_cleaner'
 require_relative './support/helpers/user_helpers'
@@ -58,4 +59,5 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
 end

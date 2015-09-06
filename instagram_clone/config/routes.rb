@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   get 'posts' => 'posts#index'
 
-
   resources :posts do
     resources :comments
     resources :likes
