@@ -3,9 +3,11 @@ require 'rails_helper'
 feature 'Creating posts' do
   before(:each) do
     visit '/'
+    click_link 'Sign Up'
+    sign_up
     click_link 'New Post'
   end
-  
+
   scenario 'can create a post' do
     attach_file('Image', "spec/files/images/monkey.jpg")
     fill_in 'Caption', with: 'What a cute little #monkey'

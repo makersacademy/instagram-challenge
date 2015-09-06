@@ -7,12 +7,7 @@ feature 'Creating a new user' do
   end
 
   scenario 'can create a new user via the index page' do
-    fill_in 'User name', with: 'monkey123'
-      fill_in 'Email', with: 'monkey@jungle.com'
-    fill_in 'Password', with: '12345678', match: :first
-    fill_in 'Password confirmation', with: '12345678'
-
-    click_button 'Sign up'
+    sign_up
     expect(page).to have_content('Welcome! You have signed up successfully.')
   end
 
