@@ -5,6 +5,10 @@ group :test do
   gem 'capybara'
 end
 
+gem 'poltergeist'
+
+gem 'database_cleaner'
+
 gem 'omniauth-facebook'
 
 gem 'devise'
