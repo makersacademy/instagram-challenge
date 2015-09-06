@@ -5,6 +5,8 @@ group :test do
   gem 'capybara'
 end
 
+gem 'omniauth-facebook'
+
 gem 'devise'
 
 gem 'paperclip'
