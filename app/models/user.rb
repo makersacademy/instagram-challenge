@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
 
-  has_many :photos
+  has_many :photos, dependent: :destroy
 
+  validates :username, presence: true, allow_blank: false, uniqueness: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

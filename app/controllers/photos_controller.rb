@@ -26,9 +26,6 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
   end
 
-  # def update
-  # end
-
   def destroy
     @photo = Photo.find(params[:id])
     if current_user.id == @photo.user_id
