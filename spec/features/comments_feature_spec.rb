@@ -20,4 +20,19 @@ feature 'comment on a photo' do
       expect(page).to have_content 'test comment'
     end
   end
+
+  context 'user not logged in' do
+
+      before do
+        user = create(:user) do |user|
+          user.photos.create(attributes_for(:photo))
+        end
+      end
+
+    it 'does not allow user to add comments' do
+      visit photos_path
+      click_link 'Comment test'
+      expect(page).to have_content 'You need to sign in or sign up before continuing'
+    end
+  end
 end
