@@ -8,6 +8,7 @@ get 'pictures' => 'pictures#index'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   resources :pictures do
+    resources :likes
     resources :comments
   end
   # Example of regular route:
