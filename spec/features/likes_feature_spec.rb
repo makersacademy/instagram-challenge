@@ -32,4 +32,12 @@ feature "likes" do
       expect(page).not_to have_link "Like"
     end
   end
+  scenario "likes are removed from the database if the photo is deleted" do
+    click_link "#{ @photo.id }"
+    click_link "Like"
+    like_id = (Like.last).id
+    click_link "Edit Photo"
+    click_link "Delete Photo"
+    expect { Like.find(like_id) }.to raise_error "Couldn't find Like with 'id'=#{ like_id }"
+  end
 end

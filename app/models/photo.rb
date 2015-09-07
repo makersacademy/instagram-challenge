@@ -4,7 +4,7 @@ class Photo < ActiveRecord::Base
 
   validates_presence_of :image
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   belongs_to :user
 end
