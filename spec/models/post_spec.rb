@@ -30,4 +30,23 @@ describe Post, type: :model do
     end
   end
 
+  describe 'Posts' do
+    let(:user) { create(:user) }
+    let(:user2) { create(:user, email: 'testing@testing.com') }
+    let(:post) { create(:post, user: user) }
+
+    describe 'deleting posts with users' do
+      scenario 'only the creator can delete posts' do
+        post.destroy_as_user(user)
+        expect(Post.first).to be nil
+      end
+
+      scenario 'cannot be deleted by non creator' do
+        post.destroy_as_user(user2)
+        expect(Post.first).to eq post
+      end
+    end
+
+  end
+
 end
