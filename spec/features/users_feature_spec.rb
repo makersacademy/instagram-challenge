@@ -26,9 +26,25 @@ feature 'Users' do
     end
 
     scenario 'should not see sign in or sign up link' do
-      visit '/'
+      visit '/posts'
       expect(page).not_to have_link('Sign up')
       expect(page).not_to have_link('Sign in')
+    end
+  end
+
+  context 'users must be signed in to create posts' do
+    scenario 'redirects to login page when not signed in and trying to create a post' do
+      visit '/posts'
+      click_link 'Add a post'
+      expect(current_path).to eq('/users/sign_in')
+    end
+
+    scenario 'goes to the form page' do
+      user = build(:user)
+      sign_up_as(user)
+      visit '/posts'
+      click_link 'Add a post'
+      expect(current_path).to eq('/posts/new')
     end
   end
 

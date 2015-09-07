@@ -20,6 +20,8 @@ feature 'Posts' do
 
   context 'validations' do
     scenario 'raises error when user does not include image' do
+      user = build(:user)
+      sign_up_as(user)
       visit '/posts'
       click_link 'Add a post'
       fill_in 'Caption', with: 'Amazing!'
@@ -30,6 +32,8 @@ feature 'Posts' do
 
   context 'creating posts' do
     scenario 'prompts user to fill out a form, then displays the posts' do
+      user = build(:user)
+      sign_up_as(user)
       visit '/posts'
       click_link 'Add a post'
       fill_in 'Caption', with: '#life'
@@ -43,6 +47,8 @@ feature 'Posts' do
 
   context 'editing post captions' do
     scenario 'lets users edit captions' do
+      user = build(:user)
+      sign_up_as(user)
       create(:post)
       visit '/posts'
       click_link 'Edit Caption'
@@ -55,6 +61,8 @@ feature 'Posts' do
 
   context 'deleting posts' do
     scenario 'allows users to delete their posts' do
+      user = build(:user)
+      sign_up_as(user)
       create(:post)
       visit '/posts'
       click_link 'Delete Post'
