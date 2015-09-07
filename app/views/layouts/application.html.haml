@@ -12,16 +12,15 @@
     = javascript_include_tag "application", 'data-turbolinks-track' => true
     = csrf_meta_tag
 
-    %body
-
-    .fixed
+%body
+  .fixed
     %nav.top-bar{"data-topbar" => "", :role => "navigation"}
       %ul.title-area
         %li.name
           %h1
             %a{:href => photos_path } StieglitzGram
         %li.toggle-topbar
-      %section.top-bar-section
+      .top-bar-section
         - unless user_signed_in?
           %ul.right
             %li.has-form
@@ -38,17 +37,7 @@
               %form.has-form
                 = link_to "Sign out", destroy_user_session_path, method: :delete
 
-
-
-
-
-    -# - if user_signed_in?
-    -#   = link_to "Sign out", destroy_user_session_path, method: :delete
-    -# - else
-    -#   = link_to "Sign in", new_user_session_path
-    -#   = link_to "Sign up", new_user_registration_path
-
-    = yield
-    = notice
-    = alert
+= yield
+= notice
+= alert
 
