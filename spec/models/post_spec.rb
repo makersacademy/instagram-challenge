@@ -10,4 +10,9 @@ describe Post, type: :model do
     expect(post).to have(1).error_on(:image)
     expect(post).not_to be_valid
   end
+
+  it 'is valid with images' do
+    post = create(:post)
+    expect(post).to be_valid
+  end
 end
