@@ -15,7 +15,7 @@ feature "Photo upload" do
 #
   scenario "I can upload a photo" do
     attach_file 'Picture', Rails.root.join('spec/images/dimensions.png')
-    expect(page).to have_css 'img.uploaded-pic'
+    expect(page).to have_selector('img')
   end
 end
 
