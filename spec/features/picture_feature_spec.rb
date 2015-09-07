@@ -41,8 +41,6 @@ feature 'pictures' do
     end
   end
 
-
-
   context 'editing pictures' do
 
     before {Picture.create caption: 'holiday snap'}
