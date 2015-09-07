@@ -62,6 +62,7 @@ To implement in next version
 ----------
 
 * Sign in with facebook
+* stub out images in test
 * See list of users who have liked photo
 * comments entery form below each photo
 * show limited amount of comments
