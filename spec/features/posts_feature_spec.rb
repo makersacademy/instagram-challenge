@@ -32,8 +32,8 @@ feature 'Posts' do
 
   context 'creating posts' do
     scenario 'prompts user to fill out a form, then displays the posts' do
-      user = create(:user)
-      sign_in_as(user)
+      user = build(:user)
+      sign_up_as(user)
       visit '/posts'
       click_link 'Add a post'
       fill_in 'Caption', with: '#life'
@@ -48,8 +48,8 @@ feature 'Posts' do
 
   context 'editing post captions' do
     before do
-      user = create(:user)
-      sign_in_as(user)
+      user = build(:user)
+      sign_up_as(user)
 
       visit '/posts'
       click_link 'Add a post'
@@ -69,8 +69,8 @@ feature 'Posts' do
 
     scenario 'non-creator cannot edit posts' do
       click_link 'Sign out'
-      user2 = create(:user, email: 'testing@testing.com')
-      sign_in_as(user2)
+      user2 = build(:user, email: 'testing@testing.com')
+      sign_up_as(user2)
       visit '/posts'
       click_link 'Edit Caption'
       expect(page).to have_content('You can only edit posts you have created')
@@ -80,8 +80,8 @@ feature 'Posts' do
 
   context 'deleting posts' do
     before do
-      user = create(:user)
-      sign_in_as(user)
+      user = build(:user)
+      sign_up_as(user)
 
       visit '/posts'
       click_link 'Add a post'
