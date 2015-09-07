@@ -7,6 +7,8 @@ RSpec.describe Photo, type: :model do
 
   it { is_expected.to have_many(:comments).dependent(:destroy) }
 
+  it { is_expected.to have_many(:likes).dependent(:destroy) }
+
   it 'is not valid when it is not uploaded by a user' do
     photo = Photo.create(description: 'test', image: File.new("#{Rails.root}/spec/support/fixtures/images/testing.png") )
     expect(photo).not_to be_valid
@@ -21,8 +23,8 @@ end
 describe 'likes' do
   describe 'build_with_user' do
 
-    let(:user) { create(:user) }
-    let(:photo) { create(:photo_without_user, user: user) }
+    let(:photo) { create(:photo) }
+    let(:user) { build(:user) }
 
     subject(:like) { photo.likes.build_with_user(user) }
 

@@ -10,7 +10,7 @@ feature 'photos' do
     end
   end
 
-  context 'uploading photos' do
+  context 'upload photos' do
     scenario 'prompt user to fill out a form, then displays the photo' do
       sign_in_as(user)
       visit('/photos')
@@ -22,8 +22,8 @@ feature 'photos' do
       expect(page).to have_selector(:css, "img[src*='testing.png']")
     end
 
-    scenario 'user is not allowed unless signed in' do
-      visit('/')
+    scenario 'user is not allowed to unless signed in' do
+      visit('/photos')
       expect(page).not_to have_link('/Upload a photo')
       visit('/photos/new')
       expect(current_path).to eq('/users/sign_in')
@@ -31,7 +31,7 @@ feature 'photos' do
   end
 
   context 'photos have been added' do
-    before { create(:photo) }
+    let!(:photo) { create(:photo) }
 
     scenario 'display photos' do
       visit('/photos')
@@ -42,8 +42,8 @@ feature 'photos' do
   end
 
   context 'viewing photos' do
-    let!(:user) { create(:user) }
-    let!(:photo) { create(:photo_without_user, user_id: user.id) }
+    let!(:photo) { create(:photo) }
+    let(:user) { build(:user) }
     before { sign_in_as(user) }
 
     scenario 'let a user view a specific photo' do

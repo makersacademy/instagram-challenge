@@ -38,26 +38,35 @@ feature 'User can sign in and out' do
 end
 
 feature 'User profile page' do
-  let!(:user1) { create(:user) }
-  let!(:user2) { create(:user) }
-  let!(:photo) { create(:photo_without_user, user_id: user1.id) }
-  let!(:photo2) { create(:photo_without_user, user_id: user2.id, description: 'Nope') }
+  let(:user1) { build(:user) }
+  let(:user2) { build(:user) }
+  let!(:photo1) { create(:photo, user: user1) }
+  let!(:photo2) { create(:photo, description: 'Nope', user: user2) }
   before { sign_in_as(user1) }
 
   scenario "contains only user's uploaded photos" do
     visit('/')
     click_link('My profile')
-    expect(page).to have_content(photo.description)
+    expect(page).to have_content(photo1.description)
     expect(page).to have_selector(:css, "img[src*='testing.png']")
     expect(page).not_to have_content(photo2.description)
   end
 
   scenario "contains only user's comments" do
-    photo.comments.create(contents: 'Nice', user: user1)
-    photo.comments.create(contents: 'Bad', user: user2)
+    photo1.comments.create(contents: 'Nice', user: user1)
+    photo1.comments.create(contents: 'Bad', user: user2)
     visit('/')
     click_link('My profile')
     expect(page).to have_content('Nice')
     expect(page).not_to have_content('Bad')
+  end
+
+  scenario 'can delete a comment' do
+    photo1.comments.create(contents: 'Nice', user: user1)
+    visit('/')
+    click_link('My profile')
+    expect(page).to have_content('Nice')
+    click_link('Delete')
+    expect(page).not_to have_content('Nice')
   end
 end
