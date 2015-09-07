@@ -1,0 +1,37 @@
+<div>
+  <span>
+    <%= image_tag @photo.image(:large) %>
+  </span>
+  <span>
+    <div>
+      <%= link_to "#{ @photo.user.username }", user_path(@photo.user.id) %>
+    </div>
+    <h2><%= @photo.title %></h2>
+    <h3><%= @photo.description %></h3>
+    <% if @photo.user == current_user %>
+      <%= link_to "Edit Photo", edit_photo_path(@photo) %>
+    <% end %>
+    <div>
+      <% if user_signed_in? && current_user.liked_photos.include?(@photo) %>
+        You and <%= pluralize(@likes-1,"person") %> like this photo
+      <% elsif user_signed_in? %>
+        <%= pluralize(@likes,"like") %>  <%= link_to "Like", photo_likes_path(@photo), method: :post %>
+      <% else %>
+        <%= pluralize(@likes,"like") %>
+      <% end %>
+    </div>
+    <div><% @comments.each do |com| %>
+      <%= link_to "#{ com.user.username }", user_path(com.user.id) %>: <%= com.comment %></div>
+      <% if com.user == current_user%>
+        <div><%= link_to "Delete Comment", photo_comment_path(@photo,com), method: :delete %></div>
+      <% end %>
+    <% end %>
+    <% if user_signed_in? %>
+      <%= form_for [@photo, @comment] do |f| %>
+        <%= f.label :comment %>
+        <%= f.text_field :comment %>
+        <%= f.submit "Post Comment" %>
+      <% end %>
+    <% end %>    
+  </span>
+</div>

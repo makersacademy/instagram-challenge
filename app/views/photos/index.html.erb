@@ -1,0 +1,8 @@
+<h4><%= link_to "Add photo", new_photo_path %></h4>
+<% if @photos.count == 0 %>
+  <h3>No photos available</h3>  
+<% else %>
+  <% @photos.each do |photo| %>
+    <a href="/photos/<%= photo.id %>" id="<%= photo.id %>"><%= image_tag photo.image(:medium) %></a>
+  <% end %>
+<% end %>
