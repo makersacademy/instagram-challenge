@@ -2,9 +2,10 @@ require 'rails_helper'
 
 feature 'Editing Posts' do
   before(:each) do
+    user = create(:user)
     visit '/'
-    click_link 'Sign Up'
-    sign_up
+    click_link 'Sign In'
+    sign_in(user)
     post = create(:post)
     visit '/'
     find(:xpath, "//a/img[@alt='Monkey']/..").click

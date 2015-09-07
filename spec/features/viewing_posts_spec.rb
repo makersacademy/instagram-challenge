@@ -9,7 +9,7 @@ feature 'Viewing multiple posts on index' do
 
     visit '/'
     click_link 'Sign In'
-    sign_in
+    sign_in(user)
     expect(page).to have_content("First post")
     expect(page).to have_content("Second post")
     expect(page).to have_css("img[src*='monkey']")
@@ -24,10 +24,9 @@ feature 'Viewing a single post' do
     user = create(:user)
     post = create(:post)
 
-
     visit '/'
     click_link 'Sign In'
-    sign_in
+    sign_in(user)
     find(:xpath, "//a/img[@alt='Monkey']/..").click
     expect(current_path).to eq(post_path(post))
   end

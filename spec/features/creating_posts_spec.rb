@@ -2,9 +2,10 @@ require 'rails_helper'
 
 feature 'Creating posts' do
   before(:each) do
+    user = create(:user)
     visit '/'
-    click_link 'Sign Up'
-    sign_up
+    click_link 'Sign In'
+    sign_in(user)
     click_link 'New Post'
   end
 
