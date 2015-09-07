@@ -45,31 +45,36 @@ feature 'Posts' do
     end
   end
 
-  # context 'editing posts' do
-  #   let(:user) { create(:user) }
-  #   let(:user2) { create(:user, email: 'testing@testing.com') }
-  #   let(:post) { create(:post, user: user) }
-  #
-  #   scenario 'non-creator cannot edit posts' do
-  #     visit '/'
-  #     sign_in_as(user2)
-  #     visit '/posts'
-  #     click_link 'Edit Caption'
-  #     expect(page).to have_content('You can only edit posts you have created')
-  #   end
-  # end
 
   context 'editing post captions' do
-    scenario 'lets users edit captions' do
+    before do
       user = create(:user)
       sign_in_as(user)
-      create(:post, user: user)
+
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Caption', with: '#life'
+      attach_file 'post[image]', 'spec/asset_spec/images/testing.png'
+      click_button 'Upload'
+    end
+
+    scenario 'creators can edit posts' do
       visit '/posts'
       click_link 'Edit Caption'
-      fill_in 'Caption', with: 'This coffee is amazing!'
+      fill_in 'Caption', with: 'London is amazing'
       click_button 'Update Post'
-      expect(page).to have_content('This coffee is amazing!')
-      expect(page).not_to have_content('#life')
+      expect(page).to have_content('London is amazing')
+      expect(current_path).to eq('/posts')
+    end
+
+    scenario 'non-creator cannot edit posts' do
+      click_link 'Sign out'
+      user2 = create(:user, email: 'testing@testing.com')
+      sign_in_as(user2)
+      visit '/posts'
+      click_link 'Edit Caption'
+      expect(page).to have_content('You can only edit posts you have created')
+      expect(current_path).to eq('/posts')
     end
   end
 
@@ -100,6 +105,7 @@ feature 'Posts' do
       visit '/posts'
       click_link 'Delete Post'
       expect(page).to have_content('You can only delete posts you have created')
+      expect(current_path).to eq('/posts')
     end
   end
 end

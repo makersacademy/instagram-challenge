@@ -20,16 +20,15 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    unless @post.created_by?(current_user)
+      flash[:notice] = 'You can only edit posts you have created'
+      redirect_to posts_path
+    end
   end
 
   def update
     @post = Post.find(params[:id])
-    # if @post.update_as_user(post_params, current_user)
-    #   redirect_to posts_path
-    # else
-    #   flash[:notice] = 'You can only edit posts you have created'
-    # end
-    @post.update(post_params)
+    @post.update_as_user(post_params, current_user)
     redirect_to posts_path
   end
 
