@@ -1,0 +1,16 @@
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <%= link_to image_tag(post.image.url(:medium)), post_path(post), class: "image#{post.id}" %>
+    <% if @user %>
+      <% if @user.id === post.user_id %>
+        <%= link_to "Delete", post_path(post), method: :delete %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% else %>
+No Posts
+<% end %>
+
+<% if user_signed_in? %>
+<a href= <%= new_post_path %>> New Post </a>
+<% end %>
