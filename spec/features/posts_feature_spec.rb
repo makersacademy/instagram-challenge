@@ -10,11 +10,8 @@ feature 'Posts' do
   end
 
   context 'when posts have been created' do
-    before do
-      Post.create(caption: '#life', image_file_name: 'spec/asset_spec/images/testing.png')
-    end
-
     scenario 'displays posts' do
+      create(:post)
       visit '/posts'
       expect(page).to have_content('#life')
       expect(page).not_to have_content('No posts have been added')
