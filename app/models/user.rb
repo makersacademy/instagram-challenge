@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_presence_of :username
   
+  has_many :likes
   has_many :comments
   has_many :photos
+
+  has_many :liked_photos, through: :likes, source: :photo
 end

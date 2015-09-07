@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "home" => "home#index"
   resources :photos do
     resources :comments
+    resources :likes
   end
   resources :users
 end

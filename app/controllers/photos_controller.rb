@@ -18,11 +18,11 @@ class PhotosController < ApplicationController
     else
       redirect_to photos_path
     end
-    
   end
 
   def show
     @photo = Photo.find(params[:id])
+    @likes = @photo.likes.count
     @comments = @photo.comments.reverse
     @comment = Comment.new
   end
