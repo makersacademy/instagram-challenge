@@ -4,5 +4,6 @@ class Post < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
   validates_presence_of :image
+  validates_presence_of :user
   belongs_to :user
 end
