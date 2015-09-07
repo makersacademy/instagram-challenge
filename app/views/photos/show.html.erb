@@ -11,11 +11,15 @@
     <% if @photo.user == current_user %>
       <%= link_to "Edit Photo", edit_photo_path(@photo) %>
     <% end %>
-    <div><% if user_signed_in? && current_user.liked_photos.include?(@photo) %>
-      You and <%= pluralize(@likes-1,"person") %> like this photo
-    <% else %>
-      0 likes <%= link_to "Like", photo_likes_path(@photo), method: :post %>
-    <% end %></div>
+    <div>
+      <% if user_signed_in? && current_user.liked_photos.include?(@photo) %>
+        You and <%= pluralize(@likes-1,"person") %> like this photo
+      <% elsif user_signed_in? %>
+        <%= pluralize(@likes,"like") %>  <%= link_to "Like", photo_likes_path(@photo), method: :post %>
+      <% else %>
+        <%= pluralize(@likes,"like") %>
+      <% end %>
+    </div>
     <div><% @comments.each do |com| %>
       <%= link_to "#{ com.user.username }", user_path(com.user.id) %>: <%= com.comment %></div>
       <% if com.user == current_user%>
