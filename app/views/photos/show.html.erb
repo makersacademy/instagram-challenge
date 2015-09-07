@@ -11,13 +11,18 @@
     <% if @photo.user == current_user %>
       <%= link_to "Edit Photo", edit_photo_path(@photo) %>
     <% end %>
-    <% @comments.each do |comment| %>
-      <%= comment.comment %>
+    <div><% @comments.each do |com| %>
+      <%= link_to "#{ com.user.username }", user_path(com.user.id) %>: <%= com.comment %></div>
+      <% if com.user == current_user%>
+        <div><%= link_to "Delete Comment", photo_comment_path(@photo,com), method: :delete %></div>
+      <% end %>
     <% end %>
-    <%= form_for [@photo, @comment] do |f| %>
-      <%= f.label :comment %>
-      <%= f.text_field :comment %>
-      <%= f.submit "Post Comment" %>
-    <% end %>
+    <% if user_signed_in? %>
+      <%= form_for [@photo, @comment] do |f| %>
+        <%= f.label :comment %>
+        <%= f.text_field :comment %>
+        <%= f.submit "Post Comment" %>
+      <% end %>
+    <% end %>    
   </span>
 </div>
