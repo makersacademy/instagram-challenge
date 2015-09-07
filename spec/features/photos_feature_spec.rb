@@ -10,10 +10,24 @@ feature "photos" do
       expect(page).to have_content "No photos available"
     end
   end
-  scenario "users can add a photo" do
-    add_photo
-    expect(page).not_to have_content "No photos available"
-    expect(page).to have_xpath "//img[contains(@src,'test_photo.png')]"
+  context "adding photos" do
+    scenario "users can add a photo" do
+      add_photo
+      expect(page).not_to have_content "No photos available"
+      expect(page).to have_xpath "//img[contains(@src,'test_photo.png')]"
+    end
+    scenario "users cannot upload without selecting a photo" do
+      click_link "Add photo"
+      fill_in "Title", with: "Beach photo"
+      fill_in "Description", with: "Not actually a photo to do with the beach"
+      expect { click_button "Add Photo" }.not_to change(Photo, :count)
+      expect(page).to have_content "You must select a photo to upload"
+    end
+    scenario "title and description can be left blank" do
+      click_link "Add photo"
+      attach_file "photo_image", Rails.root.join("spec","fixtures", "test_photo.png")
+      expect { click_button "Add Photo" }.to change(Photo, :count).by(1)
+    end
   end
   context "photos can be viewed individually" do
     scenario "by anyone" do

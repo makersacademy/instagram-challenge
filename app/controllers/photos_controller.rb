@@ -11,8 +11,14 @@ class PhotosController < ApplicationController
   end
 
   def create
-    Photo.create(photo_params.merge(user: current_user))
-    redirect_to photos_path
+    photo = Photo.create(photo_params.merge(user: current_user))
+    if !(photo.valid?)
+      flash[:notice] = "You must select a photo to upload"
+      redirect_to new_photo_path
+    else
+      redirect_to photos_path
+    end
+    
   end
 
   def show

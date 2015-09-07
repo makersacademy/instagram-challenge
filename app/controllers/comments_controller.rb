@@ -4,7 +4,10 @@ class CommentsController < ApplicationController
 
   def create
     @photo = Photo.find(params[:photo_id])
-    Comment.create(photo_params.merge(photo: @photo, user: current_user))
+    comment = Comment.create(photo_params.merge(photo: @photo, user: current_user))
+    if !(comment.valid?)
+      flash[:notice] = "You must include a comment when posting"
+    end
     redirect_to photo_path(@photo)
   end
 
