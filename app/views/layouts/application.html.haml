@@ -1,20 +1,54 @@
-!!!
-%html
+!!! 5
+%html{ :lang => "en"}
   %head
-    %title StieglitzGram
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
+    %meta{ :charset => "utf-8" }
 
-  %body
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
 
-  - if user_signed_in?
-    = link_to "Sign out", destroy_user_session_path, method: :delete
-  - else
-    = link_to "Sign in", new_user_session_path
-    = link_to "Sign up", new_user_registration_path
+    %title= content_for?(:title) ? yield(:title) : "StieglitzGram"
 
-  = yield
-  = notice
-  = alert
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application", 'data-turbolinks-track' => true
+    = csrf_meta_tag
+
+    %body
+
+    .fixed
+    %nav.top-bar{"data-topbar" => "", :role => "navigation"}
+      %ul.title-area
+        %li.name
+          %h1
+            %a{:href => photos_path } StieglitzGram
+        %li.toggle-topbar
+      %section.top-bar-section
+        - unless user_signed_in?
+          %ul.right
+            %li.has-form
+              = link_to "Sign in", new_user_session_path
+            %li.divider
+            %li.has-form
+              = link_to "Sign up", new_user_registration_path
+        - if current_user
+          %ul.left
+            %li
+              %a{:href => "/"}
+                #{current_user.email}
+            %li
+              %form.has-form
+                = link_to "Sign out", destroy_user_session_path, method: :delete
+
+
+
+
+
+    -# - if user_signed_in?
+    -#   = link_to "Sign out", destroy_user_session_path, method: :delete
+    -# - else
+    -#   = link_to "Sign in", new_user_session_path
+    -#   = link_to "Sign up", new_user_registration_path
+
+    = yield
+    = notice
+    = alert
 
