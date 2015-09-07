@@ -11,7 +11,7 @@ feature 'Posts' do
 
   context 'when posts have been created' do
     before do
-      Post.create(caption: '#life', picture_file_name: 'spec/asset_spec/images/testing.png')
+      Post.create(caption: '#life', image_file_name: 'spec/asset_spec/images/testing.png')
     end
 
     scenario 'displays posts' do
@@ -26,7 +26,7 @@ feature 'Posts' do
       visit '/posts'
       click_link 'Add a post'
       fill_in 'Caption', with: '#life'
-      attach_file 'post[picture]', 'spec/asset_spec/images/testing.png'
+      attach_file 'post[image]', 'spec/asset_spec/images/testing.png'
       click_button 'Upload'
       expect(page).to have_content('#life')
       expect(page).to have_selector(:css, "img[src*='testing.png']")
