@@ -42,4 +42,15 @@ feature 'Posts' do
       expect(page).not_to have_content('#life')
     end
   end
+
+  context 'deleting posts' do
+    scenario 'allows users to delete their posts' do
+      create(:post)
+      visit '/posts'
+      click_link 'Delete Post'
+      expect(page).to have_content('Post deleted successfully')
+      expect(page).not_to have_content('#life')
+      expect(page).not_to have_selector(:css, "img[src*='testing.png']")
+    end
+  end
 end
