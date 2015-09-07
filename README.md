@@ -28,7 +28,7 @@ Run Rspec
 $ rspec
 ```
 
-## [v1.0]()
+## [v1.0](https://github.com/giusepped/instagram-challenge/releases/tag/v1.0)
 
 * Users can sign up, sign in, sign out
 * Users can add pictures 
