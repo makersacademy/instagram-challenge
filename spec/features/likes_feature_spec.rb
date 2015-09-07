@@ -21,9 +21,6 @@ feature 'Liking images' do
   scenario 'the likes are pluralize properly' do
     visit '/posts'
     click_link 'Like'
-    user2 = build(:user, email: 'other@user.com')
-    sign_up_as(user2)
-    visit '/posts'
     click_link 'Like'
     expect(page).to have_content('2 likes')
   end
