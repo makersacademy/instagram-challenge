@@ -74,6 +74,36 @@ feature "photos" do
       end
     end
   end
+  context "users photo pages can be viewed by other users" do
+    before {
+      add_photo
+      @user = User.last
+      @photo = Photo.last
+      click_link "Sign out"
+    }
+    scenario "from from viewing a users picture" do
+      click_link "#{ @photo.id }"
+      click_link "#{ @user.username }"
+      expect(current_path).to eq "/users/#{ @user.id }"
+      expect(page).to have_content "#{ @user.username }"
+      expect(page).to have_xpath "//img[contains(@src,'test_photo.png')]"
+    end
+  end
+  context "users not signed in can't access /photos and nested paths other than #show" do
+    before { click_link "Sign out" }
+    scenario "/photos" do
+      visit "/photos"
+      expect(page).to have_content "You need to sign in or sign up before continuing."
+    end
+    scenario "/photos/new" do
+      visit "/photos/new"
+      expect(page).to have_content "You need to sign in or sign up before continuing."
+    end
+    scenario "/photos/1/edit" do
+      visit "/photos/1/edit"
+      expect(page).to have_content "You need to sign in or sign up before continuing."
+    end
+  end
 end
 def sign_up(email: email="test@email.co.uk")
   click_link "Sign up"
