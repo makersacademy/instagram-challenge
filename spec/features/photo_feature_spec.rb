@@ -28,6 +28,7 @@ feature 'upload a photo' do
       attach_file("photo[image]", "spec/assets_specs/photos/test_photo1.jpg")
       click_button 'Create Photo'
       expect(page).to have_selector 'img'
+      expect(page).to have_css ('img[src*="test_photo1.jpg"]')
       expect(page).to have_content 'added by: test_user@test.com'
     end
 
@@ -38,6 +39,7 @@ feature 'upload a photo' do
       fill_in 'Title', with: 'test photo'
       click_button 'Create Photo'
       expect(page).not_to have_selector 'img'
+      expect(page).not_to have_css ('img[src*="test_photo1.jpg"]')
       expect(page).not_to have_content 'added by: test_user@test.com'
       expect(page).to have_content 'photo not provided'
     end
