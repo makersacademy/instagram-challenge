@@ -29,7 +29,6 @@ gem 'devise'
 
 gem 'omniauth-facebook'
 
-gem 'database_cleaner'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -59,4 +58,6 @@ group :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'rspec-collection_matchers'
+  gem 'database_cleaner'
+  gem 'poltergeist'
 end
