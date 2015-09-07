@@ -11,5 +11,13 @@
     <% if @photo.user == current_user %>
       <%= link_to "Edit Photo", edit_photo_path(@photo) %>
     <% end %>
+    <% @comments.each do |comment| %>
+      <%= comment.comment %>
+    <% end %>
+    <%= form_for [@photo, @comment] do |f| %>
+      <%= f.label :comment %>
+      <%= f.text_field :comment %>
+      <%= f.submit "Post Comment" %>
+    <% end %>
   </span>
 </div>
