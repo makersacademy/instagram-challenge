@@ -12,7 +12,7 @@ end
 
 def create
   @photo = Photo.find(params[:photo_id])
-  @like = @photo.likes.create(like_params)
+  @like = @photo.likes.build(like_params)
   if @like.save
     redirect_to photos_path
   else

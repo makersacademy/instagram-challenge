@@ -4,6 +4,8 @@ class PhotosController < ApplicationController
 
 	def index
 		@photos = Photo.all
+		@comment = Comment.new
+		@like = Like.new
 	end
 
 	def show
