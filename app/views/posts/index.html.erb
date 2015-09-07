@@ -1,0 +1,14 @@
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <h2><%= link_to (image_tag post.image.url(:medium), :id => 'imageLink'), post_path(post) %></h2>
+    <p><%= post.user.user_name %></p>
+    <p><%= post.caption %></p>
+    <% if post.user.id == current_user.id %>
+      <h3><%= link_to "Edit", edit_post_path(post) %></h3>
+      <h3><%= link_to "Delete", post_path(post), method: :delete %></h3>
+    <% end %>
+  <% end %>
+
+<% else %>
+  <p>No posts yet</p>
+<% end %>
