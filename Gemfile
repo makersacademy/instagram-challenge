@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'shoulda'
 gem "paperclip", "~> 4.3"
-gem "factory_girl_rails", "~> 4.0" 
+gem "factory_girl_rails", "~> 4.0"
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
