@@ -1,6 +1,6 @@
 Instagram Challenge
 ===================
-[![Build Status](https://travis-ci.org/richgeog/instagram-challenge.svg)](https://travis-ci.org/richgeog/instagram-challenge) [![Test Coverage](https://codeclimate.com/github/richgeog/instagram-challenge/badges/coverage.svg)](https://codeclimate.com/github/richgeog/instagram-challenge/coverage) [![Code Climate](https://codeclimate.com/github/richgeog/instagram-challenge/badges/gpa.svg)](https://codeclimate.com/github/richgeog/instagram-challenge)
+[![Build Status](https://travis-ci.org/makersacademy/instagram-challenge.svg?branch=master)](https://travis-ci.org/makersacademy/instagram-challenge.svg?branch=master) [![Test Coverage](https://codeclimate.com/github/richgeog/instagram-challenge/badges/coverage.svg)](https://codeclimate.com/github/richgeog/instagram-challenge/coverage) [![Code Climate](https://codeclimate.com/github/richgeog/instagram-challenge/badges/gpa.svg)](https://codeclimate.com/github/richgeog/instagram-challenge)
 
 ##Task
 
