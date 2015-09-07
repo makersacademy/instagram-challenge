@@ -30,4 +30,16 @@ feature 'Posts' do
       expect(current_path).to eq('/posts')
     end
   end
+
+  context 'editing post captions' do
+    scenario 'lets users edit captions' do
+      create(:post)
+      visit '/posts'
+      click_link 'Edit Caption'
+      fill_in 'Caption', with: 'This coffee is amazing!'
+      click_button 'Update Post'
+      expect(page).to have_content('This coffee is amazing!')
+      expect(page).not_to have_content('#life')
+    end
+  end
 end
