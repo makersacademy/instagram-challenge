@@ -13,7 +13,7 @@ module Helpers
  end
 
  def create_image_n_sign_in
-   image = create :image
+   image = create :post
    user = build :user
    sign_in(user)
  end

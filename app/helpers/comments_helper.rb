@@ -1,4 +1,4 @@
-module PostsHelper
+module CommentsHelper
   def console_print
     p '===================================================================================='
     p '===================================================================================='
@@ -6,8 +6,8 @@ module PostsHelper
     p '===================================================================================='
     p '===================================================================================='
   end
-  
-  def post_params
-    params.require(:post).permit(:image, :description)
+
+  def comment_params
+    params.require(:comment).permit(:thoughts)
   end
 end

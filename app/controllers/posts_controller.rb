@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  include PostsHelper
 
   before_action :authenticate_user!, except: [:index, :show]
 
@@ -9,6 +10,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -28,15 +30,5 @@ class PostsController < ApplicationController
       flash.alert = 'Unauthorised'
     end
     redirect_to posts_path
-  end
-
-  def post_params
-    params.require(:post).permit(:image, :comments)
-  end
-
-  def console_print
-    p '-----------------------------------------------------'
-    yield
-    p '-----------------------------------------------------'
   end
 end

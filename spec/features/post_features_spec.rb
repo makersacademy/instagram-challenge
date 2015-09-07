@@ -17,6 +17,7 @@ feature 'post' do
       click_link 'New Post'
       expect(current_path).to eq new_post_path
       expect(page).to have_button 'Upload'
+      expect(page).to have_content 'Description'
     end
   end
 
@@ -26,6 +27,7 @@ feature 'post' do
       visit posts_path
       find("a.image#{image.id}").click
       expect(current_path).to eq post_path(image)
+      expect(page).to have_content 'wow'
     end
   end
 
@@ -54,30 +56,6 @@ feature 'post' do
       sign_in_user2
       visit posts_path
       expect(page).not_to have_content 'Delete'
-    end
-  end
-
-  context 'no comments' do
-    scenario 'logged in users can see comment option' do
-      image = create :post
-      user = build :user
-      sign_in(user)
-      visit posts_path
-      find("a.image#{image.id}").click
-      expect(page).to have_css 'form'
-    end
-  end
-
-  context 'adding comments' do
-    scenario 'logged in users can comment' do
-      image = create :post
-      user = build :user
-      sign_in(user)
-      visit posts_path
-      find("a.image#{image.id}").click
-      fill_in 'thoughts', with: 'Wow'
-      click_button 'Submit'
-      expect(page).to have_content 'Wow'
     end
   end
 end
