@@ -24,6 +24,11 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    # if @post.update_as_user(post_params, current_user)
+    #   redirect_to posts_path
+    # else
+    #   flash[:notice] = 'You can only edit posts you have created'
+    # end
     @post.update(post_params)
     redirect_to posts_path
   end

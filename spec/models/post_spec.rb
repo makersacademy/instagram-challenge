@@ -35,6 +35,20 @@ describe Post, type: :model do
     let(:user2) { create(:user, email: 'testing@testing.com') }
     let(:post) { create(:post, user: user) }
 
+    describe 'updating posts with users' do
+      let(:post_params) { {caption: 'Coffee and music'} }
+
+      scenario 'only the creator can update posts' do
+        post.update_as_user(post_params, user)
+        expect(Post.first.caption).to eq('Coffee and music')
+      end
+
+      scenario 'non-creators cannot update posts' do
+        post.update_as_user(post_params, user2)
+        expect(Post.first.caption).to eq('#life')
+      end
+    end
+
     describe 'deleting posts with users' do
       scenario 'only the creator can delete posts' do
         post.destroy_as_user(user)
@@ -45,6 +59,7 @@ describe Post, type: :model do
         post.destroy_as_user(user2)
         expect(Post.first).to eq post
       end
+
     end
 
   end
