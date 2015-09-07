@@ -28,12 +28,6 @@ feature 'Viewing a single post' do
     visit '/'
     click_link 'Sign In'
     sign_in
-    # expect(page).to have_content("First post")
-    # click_link ''
-    # find(".img-responsive").click
-    # find(:xpath, "//a[contains(@href,'posts/1')]").click
-    # my_link = find(:xpath, "//a[contains(@href,'posts/1')]")
-    # my_link.click
     find(:xpath, "//a/img[@alt='Monkey']/..").click
     expect(current_path).to eq(post_path(post))
   end
