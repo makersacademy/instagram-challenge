@@ -11,9 +11,25 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
-    redirect_to posts_path
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      redirect_to posts_path
+    else
+      render 'new'
+    end
   end
+
+  # def create
+  #   @restaurant = current_user.restaurants.new(restaurant_params)
+  #   if @restaurant.save
+  #     redirect_to restaurants_path
+  #   else
+  #     render 'new'
+  #   end
+  # end
+
+
+
 
   def post_params
     params.require(:post).permit(:text, :image)

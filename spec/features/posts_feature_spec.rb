@@ -62,7 +62,7 @@ feature 'posts' do
 
   context 'deleting posts' do
 
-    xscenario 'removes a post when a user clicks a delete their own link' do
+    scenario 'removes a post when a user clicks a delete their own link' do
       visit posts_path
       click_link "Sign up"
       fill_in 'Email', with: 'test@test.com'
@@ -98,7 +98,7 @@ feature 'posts' do
       expect(page).to have_content "You don't have permission to delete that"
     end
 
-    xscenario 'removes a post even when it has comments' do
+    scenario 'removes a post even when it has comments' do
       visit posts_path
       click_link "Sign up"
       fill_in 'Email', with: 'test@test.com'
