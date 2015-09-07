@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   #   end
 resources :posts do
   resources :comments
+  resources :likes
 end
   # Example resource route with sub-resources:
   #   resources :products do
