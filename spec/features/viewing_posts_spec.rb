@@ -4,8 +4,8 @@ feature 'Viewing multiple posts on index' do
 
   scenario 'index shows me the right post information' do
     user = create(:user)
-    job_one = create(:post, caption: "First post")
-    job_two = create(:post, caption: "Second post")
+    job_one = create(:post, caption: "First post", user_id: user.id)
+    job_two = create(:post, caption: "Second post", id: 2, user_id: user.id)
 
     visit '/'
     click_link 'Sign In'
@@ -22,7 +22,7 @@ feature 'Viewing a single post' do
 
   scenario 'can view a single post when clicked' do
     user = create(:user)
-    post = create(:post)
+    post = create(:post,  user_id: user.id)
 
     visit '/'
     click_link 'Sign In'

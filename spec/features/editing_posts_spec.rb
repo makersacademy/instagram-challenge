@@ -6,7 +6,9 @@ feature 'Editing Posts' do
     visit '/'
     click_link 'Sign In'
     sign_in(user)
-    post = create(:post)
+    user_id = user.id
+    p user_id
+    post = create(:post,  user_id: user.id )
     visit '/'
     find(:xpath, "//a/img[@alt='Monkey']/..").click
     click_link 'Edit Post'
