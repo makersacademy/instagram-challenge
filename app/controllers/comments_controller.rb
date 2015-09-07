@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @photo = Photo.find(params[:photo_id])
-    @photo.comments.create(comment_params)
+    @photo.comments.build_with_user(comment_params, current_user).save
     redirect_to photo_path(@photo)
   end
 

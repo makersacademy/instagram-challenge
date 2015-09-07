@@ -1,6 +1,15 @@
 <p><%= @photo.description %></p>
 <%= image_tag(@photo.image.url(:large)) %>
 
+<p><%= pluralize @photo.likes.count, 'like' %></p>
+
+<% if @photo.likes.find_by(user_id: current_user.id).nil? %>
+ <p><%= link_to "Like", photo_likes_path(@photo), class: "button", method: :post %></p>
+<% else %>
+ <p><%= link_to "Unlike", photo_like_path(@photo, @photo.likes), class: "button", method: :delete %></p>
+<% end %>
+
+
 <h3>Comments for <%= @photo.description %></h3>
 
 <% if @photo.comments.any? %>

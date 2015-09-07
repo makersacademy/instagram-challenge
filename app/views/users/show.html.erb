@@ -1,0 +1,23 @@
+<h1>Profile page for <%= @user.email %></h1>
+<% if @user_photos.any? %>
+  <% @user_photos.each do |photo| %>
+    <p><%= photo.description %></p>
+    <%= link_to image_tag(photo.image.url(:medium), class: "image medium"), photo_path(photo) %>
+    <p><%= link_to 'Delete Photo', image_path(photo), method: :delete %></p>
+
+    <% if photo.user_comments(current_user).any? %>
+      <ul>
+        <% photo.user_comments(current_user).each do |comment| %>
+          <li>
+            <%= comment.contents %>
+            <%= link_to "Delete", photo_comment_path(photo, comment), method: :delete %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments.</p>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>No photos have been posted yet</p>
+<% end %>

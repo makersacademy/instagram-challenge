@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 feature 'commenting' do
-  let!(:photo) { create(:photo) }
+  let!(:user) { create(:user) }
+  let!(:photo) { create(:photo_without_user, user_id: user.id) }
+  before { sign_in_as(user) }
 
   scenario 'allows users to leave comments using a form' do
     visit("/photos/#{photo.id}")
