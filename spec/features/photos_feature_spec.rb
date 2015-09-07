@@ -78,6 +78,7 @@ end
 def sign_up(email: email="test@email.co.uk")
   click_link "Sign up"
   fill_in "Email", with: "Test@email.co.uk"
+  fill_in "Username", with: "Tester"
   fill_in "Password", with: "testtest"
   fill_in "Password confirmation", with: "testtest"
   click_button "Sign up"

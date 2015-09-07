@@ -16,6 +16,7 @@ feature "home" do
       before do
         click_link "Sign up"
         fill_in "Email", with: "Test@email.co.uk"
+        fill_in "Username", with: "Tester"
         fill_in "Password", with: "testtest"
         fill_in "Password confirmation", with: "testtest"
         click_button "Sign up"
@@ -38,6 +39,7 @@ feature "home" do
     scenario "signed in" do
       click_link "Sign up"
       fill_in "Email", with: "Test@email.co.uk"
+      fill_in "Username", with: "Tester"
       fill_in "Password", with: "testtest"
       fill_in "Password confirmation", with: "testtest"
       click_button "Sign up"
@@ -50,6 +52,7 @@ feature "home" do
   scenario "pictures are displayed on home screen for all to see" do
     click_link "Sign up"
     fill_in "Email", with: "Test@email.co.uk"
+    fill_in "Username", with: "Tester"
     fill_in "Password", with: "testtest"
     fill_in "Password confirmation", with: "testtest"
     click_button "Sign up"
