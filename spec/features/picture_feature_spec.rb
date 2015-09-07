@@ -20,7 +20,7 @@ feature 'pictures' do
       expect(page).not_to have_content('No pictures yet')
     end
   end
-  
+
   before do
     visit '/'
     click_link 'Sign up'
@@ -41,9 +41,20 @@ feature 'pictures' do
     end
   end
 
+
+
   context 'editing pictures' do
 
     before {Picture.create caption: 'holiday snap'}
+
+    scenario 'uploads picture with caption' do
+     visit '/'
+     click_link 'Add a picture'
+     fill_in 'Caption', with: 'holiday snap'
+     page.attach_file('picture[image]', Rails.root + 'spec/support/image.png')
+     click_button 'Create Picture'
+     expect(page).to have_xpath("//img[contains(@src,'image.png')]")
+    end
 
     scenario 'let a user edit a picture caption' do
      visit '/pictures'
