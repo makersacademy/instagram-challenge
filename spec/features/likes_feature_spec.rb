@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-feature 'endorsing reviews' do
+feature 'endorsing comments' do
   before do
     snap = Picture.create(caption: 'snap')
     snap.comments.create(comment: 'awesome !!')
   end
 
-  scenario 'a user can like a comment, which updates the comment like count' do
+  it 'a user can like a comment, which increments the like count', js: true do
     visit '/pictures'
-    click_link 'Like Comment'
-    expect(page).to have_content('1 like')
+    click_link 'Like'
+    expect(page).to have_content("1 like")
   end
 
 end
