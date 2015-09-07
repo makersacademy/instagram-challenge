@@ -13,14 +13,10 @@ feature "home" do
       end
     end
     context "when signed in" do
-      before do
-        click_link "Sign up"
-        fill_in "Email", with: "Test@email.co.uk"
-        fill_in "Username", with: "Tester"
-        fill_in "Password", with: "testtest"
-        fill_in "Password confirmation", with: "testtest"
-        click_button "Sign up"
-      end
+      before { 
+        sign_up
+        visit "/"
+      }
       scenario "should see sign out link on home page" do
         expect(page).to have_link("Sign out")
       end
@@ -37,12 +33,8 @@ feature "home" do
   end
   context "Signed in users can view photos:" do
     scenario "signed in" do
-      click_link "Sign up"
-      fill_in "Email", with: "Test@email.co.uk"
-      fill_in "Username", with: "Tester"
-      fill_in "Password", with: "testtest"
-      fill_in "Password confirmation", with: "testtest"
-      click_button "Sign up"
+      sign_up
+      visit "/"
       expect(page).to have_link "My Photos"
     end
     scenario "signed out don't have the option" do
@@ -50,18 +42,8 @@ feature "home" do
     end
   end
   scenario "pictures are displayed on home screen for all to see" do
-    click_link "Sign up"
-    fill_in "Email", with: "Test@email.co.uk"
-    fill_in "Username", with: "Tester"
-    fill_in "Password", with: "testtest"
-    fill_in "Password confirmation", with: "testtest"
-    click_button "Sign up"
-    click_link "My Photos"
-    click_link "Add photo"
-    fill_in "Title", with: "Beach photo"
-    fill_in "Description", with: "Not actually a photo to do with the beach"
-    attach_file "photo_image", Rails.root.join("spec","fixtures", "test_photo.png")
-    click_button "Add Photo"
+    sign_up
+    add_photo
     click_link "Home"
     expect(page).not_to have_content "No photos available"
     expect(page).to have_xpath "//img[contains(@src,'test_photo.png')]"
