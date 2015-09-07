@@ -47,5 +47,4 @@ feature 'Users' do
       expect(current_path).to eq('/posts/new')
     end
   end
-
 end

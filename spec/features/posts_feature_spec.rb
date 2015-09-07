@@ -45,6 +45,20 @@ feature 'Posts' do
     end
   end
 
+  # context 'editing posts' do
+  #   let(:user) { create(:user) }
+  #   let(:user2) { create(:user, email: 'testing@testing.com') }
+  #   let(:post) { create(:post, user: user) }
+  #
+  #   scenario 'non-creator cannot edit posts' do
+  #     visit '/'
+  #     sign_in_as(user2)
+  #     visit '/posts'
+  #     click_link 'Edit Caption'
+  #     expect(page).to have_content('You can only edit posts you have created')
+  #   end
+  # end
+
   context 'editing post captions' do
     scenario 'lets users edit captions' do
       user = create(:user)
@@ -60,15 +74,32 @@ feature 'Posts' do
   end
 
   context 'deleting posts' do
-    scenario 'allows users to delete their posts' do
+    before do
       user = create(:user)
       sign_in_as(user)
-      create(:post, user: user)
+
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Caption', with: '#life'
+      attach_file 'post[image]', 'spec/asset_spec/images/testing.png'
+      click_button 'Upload'
+    end
+
+    scenario 'allows users to delete their posts if they are the creator' do
       visit '/posts'
       click_link 'Delete Post'
       expect(page).to have_content('Post deleted successfully')
       expect(page).not_to have_content('#life')
       expect(page).not_to have_css("img[src*='testing.png']")
+    end
+
+    scenario 'does not allow users to delete their posts if he/she is not the creator' do
+      click_link 'Sign out'
+      user2 = build(:user, email: 'testing@testing.com')
+      sign_up_as(user2)
+      visit '/posts'
+      click_link 'Delete Post'
+      expect(page).to have_content('You can only delete posts you have created')
     end
   end
 end

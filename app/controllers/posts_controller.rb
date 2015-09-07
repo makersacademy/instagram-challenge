@@ -30,8 +30,11 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:notice] = 'Post deleted successfully'
+    unless @post.destroy_as_user(current_user)
+      flash[:notice] = 'You can only delete posts you have created'
+    else
+      flash[:notice] = 'Post deleted successfully'
+    end
     redirect_to posts_path
   end
 
