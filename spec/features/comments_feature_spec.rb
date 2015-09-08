@@ -13,9 +13,8 @@ feature 'comment on a photo' do
 
     it 'lets comments be added' do
       visit photos_path
-      click_link 'Comment test'
       fill_in 'Comment', with: 'test comment'
-      click_button 'submit comment'
+      click_button 'comment'
       expect(current_path).to eq photos_path
       expect(page).to have_content 'test comment'
       expect(page).to have_content 'Comment by: test_user@test.com'

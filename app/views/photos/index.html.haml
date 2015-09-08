@@ -1,6 +1,6 @@
 %br/
 .row
-  .large-8.large-centered.columns
+  .large-6.large-centered.columns
     = link_to "Add a photo", new_photo_path
     %hr/
 
@@ -8,7 +8,7 @@
   - @photos.each do |photo|
     .section
       .row
-        .large-8.large-centered.columns
+        .large-6.large-centered.columns
           %p
             added by:
             %strong
@@ -27,7 +27,11 @@
                     Comment by:
                     = comment.user.email
                     = comment.comment
-            = link_to "Comment #{photo.title}", new_photo_comment_path(photo)
+            .row.collapse.prefix-round
+              = form_for [photo, @comment] do |f|
+                = f.label :comment
+                = f.text_field :comment
+                = f.submit 'comment', class: "button"
             %hr/
 - else
   .row
