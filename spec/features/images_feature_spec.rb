@@ -13,7 +13,7 @@ feature 'images' do
 
   context 'images have been added' do
     before do
-      Image.create(caption: 'Test Caption')
+      user.images.create(caption: 'Test Caption')
     end
 
     scenario 'display images' do
@@ -21,9 +21,15 @@ feature 'images' do
       expect(page).to have_content 'Test Caption'
       expect(page).not_to have_content('No images yet')
     end
+
+    scenario 'display user email of image owner' do
+      visit '/images'
+      expect(page).to have_content 'test@testing.com'
+    end
   end
-  context 'when logged in' do
-    context 'adding images' do
+
+  context 'adding images' do
+    context 'when logged in' do
       scenario 'prompts user to upload an image, then displays the new image' do
         sign_in(user)
         visit '/'
@@ -33,12 +39,11 @@ feature 'images' do
         click_button 'Create Image'
         expect(current_path).to eq '/images'
         expect(page).to have_selector("img")
+        expect(page).to have_content('test@testing.com')
       end
     end
-  end
 
-  context 'when not logged in' do
-    context 'adding images' do
+    context 'when not logged in' do
       scenario 'prompts user to log in or sign up' do
         visit '/'
         click_link 'Upload an image'
