@@ -68,6 +68,7 @@ feature 'User profile page' do
     click_link('Delete Photo')
     expect(page).not_to have_content(photo1.description)
     expect(page).not_to have_content('Nice')
+    expect(page).to have_content('Photo deleted successfully')
   end
 
   scenario 'can delete a comment' do
