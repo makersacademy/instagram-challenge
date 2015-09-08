@@ -11,5 +11,17 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe CommentsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'created_since' do
+    it 'returns 0 for recently created objects' do
+      expect(helper.created_since(Time.now)).to eq('0 hours ago')
+    end
+
+    it 'returns 1 for recently created objects' do
+      expect(helper.created_since(Time.now - 3600)).to eq('1 hour ago')
+    end
+
+    it 'returns 1 for recently created objects' do
+      expect(helper.created_since(Time.now - 7500)).to eq('2 hours ago')
+    end
+  end
 end

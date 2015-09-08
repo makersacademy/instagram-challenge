@@ -42,8 +42,8 @@ feature 'photos' do
   end
 
   context 'viewing photos' do
-    let!(:photo) { create(:photo) }
     let(:user) { build(:user) }
+    let!(:photo) { create(:photo, user: user) }
     before { sign_in_as(user) }
 
     scenario 'let a user view a specific photo' do

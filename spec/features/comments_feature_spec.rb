@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 feature 'commenting' do
-  let(:photo) { create(:photo) }
-  let(:user) { create(:user_with_fixed_username) }
-  let(:user2) { create(:user) }
+  let!(:photo) { create(:photo, user: user) }
+  let(:user) { create(:user) }
+  let(:user2) { create(:user2) }
   before { sign_in_as(user) }
 
   scenario 'allows users to leave comments using a form' do

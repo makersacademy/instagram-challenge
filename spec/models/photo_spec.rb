@@ -21,7 +21,7 @@ RSpec.describe Photo, type: :model do
 
   context 'destroying a photo' do
     let(:photo) { create(:photo, user: user) }
-    let(:user2) { create(:user, email: 'test2@test.com') }
+    let(:user2) { create(:user2) }
 
     it 'is destroyed when deleted by its creator' do
       photo.destroy_as_user(user)

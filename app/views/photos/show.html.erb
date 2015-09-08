@@ -17,7 +17,7 @@
     <% @photo.comments.each do |comment| %>
       <li>
         <%= comment.contents %>
-        Created by <%= comment.find_username %>
+        Created by <%= comment.find_username %> <%= created_since(comment.created_at) %>
         <% if comment.created_by?(current_user) %>
           <%= link_to "Delete Comment", photo_comment_path(@photo, comment), method: :delete %>
         <% end %>

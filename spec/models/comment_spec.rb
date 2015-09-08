@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   let(:user) { create(:user) }
-  let(:user2) { create(:user, email: 'test2@test.com') }
+  let(:user2) { create(:user2) }
 
   it { is_expected.to belong_to(:photo) }
 
