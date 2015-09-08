@@ -2,30 +2,32 @@
 .row
   .large-8.large-centered.columns
     = link_to "Add a photo", new_photo_path
+    %hr/
 
 - if @photos.any?
   - @photos.each do |photo|
-    .row
-      .large-8.large-centered.columns
-        = image_tag photo.image.url(:medium)
-        %p
+    .section
+      .row
+        .large-8.large-centered.columns
           added by:
           %strong
             = photo.user.email
+          = image_tag photo.image.url(:medium)
           %p
             = photo.title
-          %p
-            = link_to "Like", photo_likes_path(photo), class: 'likes-link'
-            %span.like_count= photo.likes.count
-            = 'like'.pluralize photo.likes.count
-          - if photo.comments.any?
-            %ul
-              - photo.comments.each do |comment|
-                %li
-                  Comment by:
-                  = comment.user.email
-                  = comment.comment
-          = link_to "Comment #{photo.title}", new_photo_comment_path(photo)
+            %p
+              = link_to "Like", photo_likes_path(photo), class: 'likes-link'
+              %span.like_count= photo.likes.count
+              = 'like'.pluralize photo.likes.count
+            - if photo.comments.any?
+              %ul
+                - photo.comments.each do |comment|
+                  %li
+                    Comment by:
+                    = comment.user.email
+                    = comment.comment
+            = link_to "Comment #{photo.title}", new_photo_comment_path(photo)
+            %hr/
 - else
   .row
     .large-8.large-centered.columns
