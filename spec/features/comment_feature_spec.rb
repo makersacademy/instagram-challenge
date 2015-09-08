@@ -42,5 +42,4 @@ private
     fill_in 'Password confirmation', with: "passwordpassword"
     click_button 'Sign up'
   end
-
 end
