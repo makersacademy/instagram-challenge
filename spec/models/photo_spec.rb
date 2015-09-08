@@ -18,6 +18,21 @@ RSpec.describe Photo, type: :model do
     photo = user.photos.create(description: 'test', image: File.new("#{Rails.root}/spec/support/fixtures/images/testing.png") )
     expect(photo).to be_valid
   end
+
+  context 'destroying a photo' do
+    let(:photo) { create(:photo, user: user) }
+    let(:user2) { create(:user, email: 'test2@test.com') }
+
+    it 'is destroyed when deleted by its creator' do
+      photo.destroy_as_user(user)
+      expect(Photo.all.last).to eq nil
+    end
+
+    it 'is not destroyed when deleted by some other user' do
+      photo.destroy_as_user(user2)
+      expect(Photo.all.last).to eq photo
+    end
+  end
 end
 
 describe 'likes' do

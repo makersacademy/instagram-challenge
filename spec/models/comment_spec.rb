@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   let(:user) { create(:user) }
+  let(:user2) { create(:user, email: 'test2@test.com') }
 
   it { is_expected.to belong_to(:photo) }
 
@@ -15,5 +16,17 @@ RSpec.describe Comment, type: :model do
   it 'it valid when it is made by a user' do
     comment = user.comments.create(contents: 'test')
     expect(comment).to be_valid
+  end
+
+  it 'is destroyed when deleted by its creator' do
+    comment = user.comments.create(contents: 'test')
+    comment.destroy_as_user(user)
+    expect(Comment.all.last).to eq nil
+  end
+
+  it 'is not destroyed when deleted by some other user' do
+    comment = user.comments.create(contents: 'test')
+    comment.destroy_as_user(user2)
+    expect(Comment.all.last).to eq comment
   end
 end
