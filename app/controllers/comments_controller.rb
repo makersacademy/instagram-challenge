@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @picture = Picture.find(params[:picture_id])
     @comment = @picture.comments.new(comment_params)
 
     if @comment.save
@@ -13,5 +14,11 @@ class CommentsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:content)
   end
 end
