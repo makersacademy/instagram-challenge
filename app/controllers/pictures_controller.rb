@@ -3,4 +3,7 @@ class PicturesController < ApplicationController
     @pictures = Picture.all
   end
 
+  def new
+  end
+
 end
