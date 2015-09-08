@@ -19,4 +19,6 @@ RSpec.describe Picture, type: :model do
   it { should validate_attachment_content_type(:image).
                 allowing('image/png', 'image/gif').
                 rejecting('text/plain', 'text/xml') }
+
+  it { is_expected.to have_many :comments }
 end

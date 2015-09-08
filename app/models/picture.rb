@@ -6,4 +6,5 @@ class Picture < ActiveRecord::Base
   validates_attachment :image, presence: true, size: { in: 0..1024.kilobytes }
 
   belongs_to :user
+  has_many :comments
 end
