@@ -9,4 +9,7 @@ class Photo < ActiveRecord::Base
 
   validates_presence_of :user
 
+  def find_username
+    User.find(self.user_id).username
+  end
 end

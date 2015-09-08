@@ -31,13 +31,22 @@ feature 'photos' do
   end
 
   context 'photos have been added' do
-    let!(:photo) { create(:photo) }
+    let!(:photo) { create(:photo, user: user) }
 
     scenario 'display photos' do
       visit('/photos')
       expect(page).to have_content('Testing')
       expect(page).to have_selector(:css, "img[src*='testing.png']")
       expect(page).not_to have_content('No photos yet!')
+    end
+
+    scenario 'shows the photo uploader and time since' do
+      sign_in_as(user)
+      click_link('Testing')
+      expect(page).to have_content('Testing')
+      expect(page).to have_selector(:css, "img[src*='testing.png']")
+      expect(page).to have_content('Uploaded by user')
+      expect(page).to have_content('0 hours ago')
     end
   end
 
