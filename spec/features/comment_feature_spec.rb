@@ -14,16 +14,17 @@ feature 'Comment Features' do
     expect(page).to have_content "Comment successfully posted"
   end
 
-  it "its creator is shown on the comment" do
+  xit "its creator's name is shown on the comment"
+
+  it 'must be signed in to visit the new comment creation url' do
     sign_up_user
     upload_picture
-    click_on 'Add Comment'
-    fill_in 'Content', with: "comment content"
-    click_on 'Create Comment'
-    expect(page).to have_content "by user@email.com"
+    sign_out
+    picture_id = Picture.last.id
+    visit "/pictures/#{picture_id}/comments/new"
+    expect(current_path).to eq new_user_session_path
+    expect(page).to have_content "You need to sign in or sign up before continuing"
   end
-
-  xit 'cannot be created without a user'
 
   xit 'has a picture id'
 
@@ -50,5 +51,10 @@ private
     fill_in 'Password', with: "passwordpassword"
     fill_in 'Password confirmation', with: "passwordpassword"
     click_button 'Sign up'
+  end
+
+  def sign_out
+    visit root_path
+    click_link 'Sign out'
   end
 end
