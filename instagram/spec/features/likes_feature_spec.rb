@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 feature "liking photos" do
-  before {Photo.create description: "Fujisan"}
+  before 
+    # {user = User.create}
+    # {user.Photo.create description: "Fujisan"}
+
 
   scenario "each photo starts with 0 likes" do
      visit "/photos"

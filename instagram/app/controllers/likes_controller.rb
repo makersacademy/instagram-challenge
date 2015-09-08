@@ -12,17 +12,29 @@ end
 
 def create
   @photo = Photo.find(params[:photo_id])
-  @like = @photo.likes.build(like_params)
+  @like = @photo.likes.build(like_params.merge({user: current_user}))
   if @like.save
     redirect_to photos_path
   else
-  	flash[:notice] = 'Houston we have a problem'
+    flash[:notice] = 'Houston we have a problem'
     render 'new'
   end
 end
 
+
+# def create
+#   @photo = Photo.find(params[:photo_id])
+#   @like = @photo.likes.build(like_params)
+#   if @like.save
+#     redirect_to photos_path
+#   else
+#   	flash[:notice] = 'Houston we have a problem'
+#     render 'new'
+#   end
+# end
+
 def like_params
-	params.require(:like).permit(:like)
+	params.permit(:like)
 end	
 
 end

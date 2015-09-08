@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+<script>
+
+$(document).ready(function(){
+
+var photoForm = document.getElementById("addPhotoForm");
+var addPhotoBtn = document.getElementById("addPhotoButton2")
+
+addPhotoButton.onclick = function() {
+	photoForm.style.display = "none"-;
+};
+
+</script>
