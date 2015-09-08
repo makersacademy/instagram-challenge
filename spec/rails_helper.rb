@@ -8,7 +8,11 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'factory_girl_rails'
 require_relative './helpers/user_management'
+
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
 require 'support/database_cleaner'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

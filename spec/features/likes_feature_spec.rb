@@ -12,16 +12,16 @@ feature 'Liking images' do
     expect(page).to have_content('0 likes')
   end
 
-  scenario 'a user can like images of post' do
-    visit '/posts'
-    click_link 'Like'
-    expect(page).to have_content('1 like')
-  end
-
-  scenario 'the likes are pluralize properly' do
-    visit '/posts'
-    click_link 'Like'
-    click_link 'Like'
-    expect(page).to have_content('2 likes')
-  end
+  # scenario 'a user can like images of post' do
+  #   visit '/posts'
+  #   click_link 'Like'
+  #   expect(page).to have_content('1 like')
+  # end
+  #
+  # scenario 'the likes are pluralize properly' do
+  #   visit '/posts'
+  #   click_link 'Like'
+  #   click_link 'Like'
+  #   expect(page).to have_content('2 likes')
+  # end
 end
