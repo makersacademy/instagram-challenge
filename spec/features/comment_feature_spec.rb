@@ -7,7 +7,7 @@ feature 'Comment Features' do
     upload_picture
     click_on 'Add Comment'
     fill_in 'Content', with: "comment content"
-    click_on 'Post'
+    click_on 'Create Comment'
 
     expect(current_path).to eq pictures_path
     expect(page).to have_content "comment content"
