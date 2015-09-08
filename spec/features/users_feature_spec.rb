@@ -37,6 +37,31 @@ feature 'User can sign in and out' do
   end
 end
 
+feature 'User sign up' do
+  scenario 'should also require user to give an username' do
+    visit('/')
+    click_link('Sign up')
+    fill_in('Username', with: 'test')
+    fill_in('Email', with: 'test@test.com')
+    fill_in('Password', with: 'test1234')
+    fill_in('Password confirmation', with: 'test1234')
+    click_button('Sign up')
+    expect(page).to have_content('Welcome! You have signed up successfully.')
+  end
+
+  scenario "cant have the same username" do
+    create(:user)
+    visit('/')
+    click_link('Sign up')
+    fill_in('Username', with: 'test')
+    fill_in('Email', with: 'test@test.com')
+    fill_in('Password', with: 'test1234')
+    fill_in('Password confirmation', with: 'test1234')
+    click_button('Sign up')
+    expect(page).to have_content('Username has already been taken')
+  end
+end
+
 feature 'User profile page' do
   let(:user1) { build(:user) }
   let(:user2) { build(:user) }

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature 'commenting' do
   let(:photo) { create(:photo) }
-  let(:user) { create(:user) }
-  let(:user2) { create(:user, email: 'test2@test.com') }
+  let(:user) { create(:user_with_fixed_username) }
+  let(:user2) { create(:user) }
   before { sign_in_as(user) }
 
   scenario 'allows users to leave comments using a form' do
@@ -12,6 +12,15 @@ feature 'commenting' do
     click_button('Comment')
     expect(current_path).to eq("/photos/#{photo.id}")
     expect(page).to have_content('looking good')
+  end
+
+  scenario 'shows the user who made the comment and time since' do
+    photo.comments.create(contents: 'Nice', user: user)
+    visit('/')
+    click_link('Testing')
+    expect(page).to have_content('Nice')
+    expect(page).to have_content('Created by user')
+    expect(page).to have_content('0 hours ago')
   end
 
   scenario 'can delete a comment created by user' do
