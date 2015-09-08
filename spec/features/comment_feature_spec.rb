@@ -14,6 +14,15 @@ feature 'Comment Features' do
     expect(page).to have_content "Comment successfully posted"
   end
 
+  it "its creator is shown on the comment" do
+    sign_up_user
+    upload_picture
+    click_on 'Add Comment'
+    fill_in 'Content', with: "comment content"
+    click_on 'Create Comment'
+    expect(page).to have_content "by user@email.com"
+  end
+
   xit 'cannot be created without a user'
 
   xit 'has a picture id'
