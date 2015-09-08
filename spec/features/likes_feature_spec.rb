@@ -6,7 +6,7 @@ feature 'liking posts', js: true do
     sign_up user
     click_link "Make a post"
     fill_in "Title", with: "I love cheese"
-    attach_file("post[image]", "/Users/Sarah/Documents/Projects/programs/Makers/Challenges/instagram-challenge/instagram_clone/spec/assets/images/KFC.jpg")
+    attach_file("post[image]", "spec/assets/images/KFC.jpg")
     click_button "Post"
     expect(page).to have_content "Like"
   end
