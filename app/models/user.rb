@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
             uniqueness: { case_sensitive: false }
 
   has_many :pictures
-
   has_many :comments
+  has_many :likes
+  has_many :liked_pictures, through: :likes, source: :picture
 
 end
