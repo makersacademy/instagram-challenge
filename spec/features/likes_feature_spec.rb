@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'likes' do
   let!(:photo) { create(:photo) }
-  let!(:user) { build(:user) }
+  let(:user) { build(:user) }
   before { sign_in_as(user) }
 
   scenario 'liking a photo' do

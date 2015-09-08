@@ -1,4 +1,6 @@
 class Photo < ActiveRecord::Base
+  include AsUserAssociationExtension
+
   belongs_to :user
   has_many :comments, -> { extending WithUserAssociationExtension }, dependent: :destroy
   has_many :likes, -> { extending WithUserAssociationExtension }, dependent: :destroy
@@ -7,7 +9,4 @@ class Photo < ActiveRecord::Base
 
   validates_presence_of :user
 
-  def user_comments(user)
-    comments.where(user_id: user)
-  end
 end

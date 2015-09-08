@@ -44,7 +44,7 @@ feature 'User profile page' do
   let!(:photo2) { create(:photo, description: 'Nope', user: user2) }
   before { sign_in_as(user1) }
 
-  scenario "contains only user's uploaded photos" do
+  scenario "contains user's uploaded photos" do
     visit('/')
     click_link('My profile')
     expect(page).to have_content(photo1.description)
@@ -52,13 +52,22 @@ feature 'User profile page' do
     expect(page).not_to have_content(photo2.description)
   end
 
-  scenario "contains only user's comments" do
+  scenario "contains the uploaded photo's comments" do
     photo1.comments.create(contents: 'Nice', user: user1)
     photo1.comments.create(contents: 'Bad', user: user2)
     visit('/')
     click_link('My profile')
     expect(page).to have_content('Nice')
-    expect(page).not_to have_content('Bad')
+    expect(page).to have_content('Bad')
+  end
+
+  scenario 'can delete a photo' do
+    photo1.comments.create(contents: 'Nice', user: user1)
+    visit('/')
+    click_link('My profile')
+    click_link('Delete Photo')
+    expect(page).not_to have_content(photo1.description)
+    expect(page).not_to have_content('Nice')
   end
 
   scenario 'can delete a comment' do
@@ -66,7 +75,14 @@ feature 'User profile page' do
     visit('/')
     click_link('My profile')
     expect(page).to have_content('Nice')
-    click_link('Delete')
+    click_link('Delete Comment')
     expect(page).not_to have_content('Nice')
+  end
+
+  scenario "can only delete comments made by user" do
+    photo1.comments.create(contents: 'Bad', user: user2)
+    visit('/')
+    click_link('My profile')
+    expect(page).not_to have_link('Delete Comment')
   end
 end

@@ -19,6 +19,12 @@ class PhotosController < ApplicationController
     @comment = Comment.new
   end
 
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy_as_user(current_user)
+    redirect_to :back
+  end
+
   def photo_params
     params.require(:photo).permit(:description, :image)
   end
