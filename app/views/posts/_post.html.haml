@@ -20,10 +20,11 @@
               = comment.content
             - if comment.user == current_user
               = link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } do
-                %span(class="glyphicon glyphicon-fire red")
+                %span(class="glyphicon glyphicon-fire red" id="flame-icon")
     .comment-like-form.row
       .like-button.col-sm-1
         %span(class="glyphicon glyphicon-heart-empty")
       .comment-form.col-sm-11
         = form_for [post, post.comments.new] do |f|
           = f.text_field :content, placeholder: 'Add a comment...'
+          = f.submit

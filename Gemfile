@@ -15,6 +15,7 @@ gem 'simple_form'
 gem "paperclip", "~> 4.3"
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'acts_as_votable'
 
 group :development, :test do
   gem 'byebug'
