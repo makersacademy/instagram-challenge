@@ -46,6 +46,12 @@ feature 'Liking images' do
       click_link 'Unlike'
       expect(page).to have_content('0 likes')
     end
+
+    scenario 'redirected to posts page if user clicks unlike twice' do
+      visit '/posts'
+      click_link 'Unlike'
+      expect(current_path).to eq('/')
+    end
   end
 
 end
