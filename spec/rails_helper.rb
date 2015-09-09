@@ -1,9 +1,9 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 
-# require 'aws'
-# AWS.stub!
-# AWS.config(:access_key_id => "TESTKEY", :secret_access_key => "TESTSECRET")
+require 'aws'
+AWS.stub!
+AWS.config(:access_key_id => "TESTKEY", :secret_access_key => "TESTSECRET", :stub_requests => true)
 
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
@@ -12,6 +12,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require_relative 'helpers/sign_up_helper'
 require_relative 'support/factory_girl.rb'
+require_relative 'helpers/sign_in_helper'
 
 ActiveRecord::Migration.maintain_test_schema!
 

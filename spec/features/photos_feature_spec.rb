@@ -3,7 +3,6 @@ require 'rails_helper'
 feature 'photos' do
 
   context 'no photos added' do
-
     scenario 'should display a Upload Photo button' do
       user = build(:user)
       visit photos_path
@@ -13,11 +12,11 @@ feature 'photos' do
     end
   end
 
-  context 'photos added' do
+  context 'adding photos' do
 
-    before(:each) do
-      user = build(:user)
-      sign_up(user)
+    before do
+      user = create(:user)
+      sign_in(user)
       visit photos_path
       click_link "Upload Photo"
     end
@@ -27,14 +26,11 @@ feature 'photos' do
       expect(page).to have_content('Picture')
     end
 
-    # photos go to an s3 bucket on aws so I couldnnt write a better test
-
     scenario "I can upload a photo" do
-      visit photos_path
-      click_link 'Upload Photo'
       attach_file("photo[picture]", "spec/images/dimensions.png")
-      expect(page.status_code).to be(200)
+      click_button 'Create Photo'
+      expect(page).to have_css('img')
+      expect(page).to have_content('test2@test.com')
     end
-
   end
 end
