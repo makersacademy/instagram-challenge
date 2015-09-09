@@ -19,7 +19,7 @@ feature 'Liking images' do
     expect(page).to have_content('1 like')
   end
 
-  context 'Users are only allowed to like a post once', js: true do
+  context 'Liking - users are only allowed to like a post once', js: true do
     scenario '1 user trying to like twice would only increase like once' do
       visit '/posts'
       click_link 'Like'
@@ -36,6 +36,15 @@ feature 'Liking images' do
       click_link 'Like'
       visit '/posts'
       expect(page).to have_content('2 likes')
+    end
+  end
+
+  context 'Unliking', js: true do
+    scenario 'remove your like and decrease like count' do
+      visit '/posts'
+      click_link 'Like'
+      click_link 'Unlike'
+      expect(page).to have_content('0 likes')
     end
   end
 

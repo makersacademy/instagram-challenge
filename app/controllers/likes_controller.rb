@@ -10,4 +10,10 @@ class LikesController < ApplicationController
     end
   end
 
+  def destroy
+    @like = Like.find(params[:post_id])
+    @like.destroy
+    redirect_to posts_path
+  end
+
 end
