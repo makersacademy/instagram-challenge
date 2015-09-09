@@ -31,8 +31,7 @@ feature 'comment on a photo' do
 
     it 'does not allow user to add comments' do
       visit photos_path
-      click_link 'Comment test'
-      expect(page).to have_content 'You need to sign in or sign up before continuing'
+      expect(page).not_to have_button 'submit comment'
     end
   end
 end

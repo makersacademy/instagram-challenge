@@ -28,10 +28,8 @@
                     = comment.user.email
                     = comment.comment
             .row.collapse.prefix-round
-              = form_for [photo, @comment] do |f|
-                = f.label :comment
-                = f.text_field :comment
-                = f.submit 'comment', class: "button"
+              - if current_user
+                = render partial: "comments/form", locals: { photo: photo }
             %hr/
 - else
   .row
