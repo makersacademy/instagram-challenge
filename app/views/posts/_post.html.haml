@@ -4,18 +4,26 @@
       .thumb-img
       .user-name
         = post.user.user_name
-      .time-ago
-        = time_ago_in_words post.created_at
     .image.center-block
       = link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post)
     .post-bottom
       .caption
-        .caption-content
-          .user-name
-            = post.user.user_name
-          = post.caption
-        .comments{id: "comments_#{post.id}"}
+        .user-name
+          = post.user.user_name
+        = post.caption
+      - if post.comments
+        - post.comments.each do |comment|
+          .comment
+            .user-name
+              = comment.user.user_name
+            .comment-content
+              = comment.content
+            - if comment.user == current_user
+              = link_to post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } do
+                %span(class="glyphicon glyphicon-fire red")
     .comment-like-form.row
       .like-button.col-sm-1
         %span(class="glyphicon glyphicon-heart-empty")
       .comment-form.col-sm-11
+        = form_for [post, post.comments.new] do |f|
+          = f.text_field :content, placeholder: 'Add a comment...'

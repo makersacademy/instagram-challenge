@@ -1,16 +1,8 @@
-.posts-wrapper.row
-  .post
-    .post-head
-      .name
-        =@post.user.user_name
-    .image.center-block
-      =image_tag @post.image.url(:medium), { class:'img-responsive' }
-    %p.caption
-      =@post.caption
-    = render 'post', post: @post
-    .text-center.edit-links
-      - if current_user.id == @post.user.id
-        =link_to "Back", posts_path
-        =link_to "Edit Post", edit_post_path(@post)
-      - else
-        =link_to "Back", posts_path
+= render 'post', post: @post
+.text-center.edit-linkss
+  - if @post.user.id == current_user.id
+    = link_to 'Cancel', posts_path
+    |
+    = link_to 'Edit Post', edit_post_path(@post)
+  - else
+    = link_to 'Cancel', posts_path
