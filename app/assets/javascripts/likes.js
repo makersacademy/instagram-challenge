@@ -1,4 +1,4 @@
-$(document).ready(function() {
+var ready = function() {
 
   $('.likes-link').on('click', function(event){
     event.preventDefault();
@@ -9,4 +9,8 @@ $(document).ready(function() {
       likeCount.text(response.new_like_count);
     })
   })
-});
+};
+
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
