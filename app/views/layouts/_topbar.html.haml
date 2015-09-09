@@ -1,0 +1,23 @@
+.fixed
+  %nav.top-bar{"data-topbar" => "", :role => "navigation"}
+    %ul.title-area
+      %li.name
+        %h1
+          %a{:href => root_path } StieglitzGram
+      %li.toggle-topbar
+    .top-bar-section
+      - unless user_signed_in?
+        %ul.right
+          %li.has-form
+            = link_to "Sign in", new_user_session_path
+          %li.divider
+          %li.has-form
+            = link_to "Sign up", new_user_registration_path
+      - if current_user
+        %ul.left
+          %li
+            %a{:href => "/"}
+              #{current_user.email}
+          %li
+            %form.has-form
+              = link_to "Sign out", destroy_user_session_path, method: :delete
