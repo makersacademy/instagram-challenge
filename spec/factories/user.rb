@@ -8,5 +8,5 @@ FactoryGirl.define do
       email "test2@test.com"
       username "test2"
     end
-   end
+  end
 end
