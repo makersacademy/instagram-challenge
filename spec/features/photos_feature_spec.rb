@@ -18,19 +18,28 @@ feature 'photos' do
       user = create(:user)
       sign_in(user)
       visit photos_path
-      click_link "Upload Photo"
     end
 
     scenario "I should see the form to upload a photo" do
+      click_link "Upload Photo"
       expect(current_path).to eq(new_photo_path)
       expect(page).to have_content('Picture')
     end
 
     scenario "I can upload a photo" do
+      click_link "Upload Photo"
       attach_file("photo[picture]", "spec/images/dimensions.png")
       click_button 'Create Photo'
       expect(page).to have_css('img')
       expect(page).to have_content('test2@test.com')
     end
+
+    # scenario "I cannot upload without attaching a file" do
+    #   expect(page).to have_content 'No photos yet!'
+    #   click_link "Upload Photo"
+    #   click_button 'Create Photo'
+    #   expect(page).not_to have_css('img')
+    #
+    # end
   end
 end
