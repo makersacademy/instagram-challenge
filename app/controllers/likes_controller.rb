@@ -2,14 +2,12 @@ class LikesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @post.likes.create
-    # p '---------------'
-    # p @final
-    # p '--------------'
-    render json: { new_like_count: @post.likes.count }
-    # else
-    #   redirect_to posts_path
-    # end
+    @like = @post.likes.build_with_user(current_user)
+    if @like.save
+      render json: { new_like_count: @post.likes.count }
+    else
+      redirect_to posts_path
+    end
   end
 
 end
