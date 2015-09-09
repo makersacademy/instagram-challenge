@@ -8,4 +8,5 @@ describe Picture, type: :model do
     expect(picture).to have(1).error_on(:description)
     expect(picture).not_to be_valid
   end
+
 end

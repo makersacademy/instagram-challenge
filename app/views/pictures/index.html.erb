@@ -1,6 +1,7 @@
 <% if @pictures.all.any? %>
   <% @pictures.all.each do |picture| %>
     <%= link_to picture.image, picture_path(picture) %>
+    <%= image_tag picture.image_url.url(:thumb) %>
     <h2><%= picture.description %></h2>
     <%= link_to "Edit Picture", edit_picture_path(picture) %>
     <%= link_to "Delete Picture", picture_path(picture), method: :delete %>
