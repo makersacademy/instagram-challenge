@@ -8,12 +8,9 @@ feature 'liking posts', js: true do
     fill_in "Title", with: "I love cheese"
     attach_file("post[image]", "spec/assets/images/KFC.jpg")
     click_button "Post"
-    expect(page).to have_content "Like"
   end
 
   scenario 'users can like a post, which updates the like count' do
-
-    expect(page).to have_content "Like"
     click_link "Like"
     expect(page).to have_content "1 Like"
   end

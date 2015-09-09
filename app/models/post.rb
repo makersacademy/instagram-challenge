@@ -5,4 +5,14 @@ class Post < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   validates :image, presence: true
   belongs_to :user
+
+  def create_like user
+    @like = self.likes.build
+    @like.user_id = user.id
+    @like.save
+  end
+
+  def create_comment comment_params, user
+    @post = self.comments.create(thoughts: comment_params[:thoughts], user_id: user.id)
+  end
 end
