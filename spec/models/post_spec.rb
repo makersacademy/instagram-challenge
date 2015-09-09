@@ -60,9 +60,27 @@ describe Post, type: :model do
         post.destroy_as_user(user2)
         expect(Post.first).to eq post
       end
-
     end
 
+  end
+
+  describe 'Likes' do
+    describe 'build_with_user' do
+      let(:user) { create(:user) }
+      let(:post) { create(:post, user: user) }
+      subject(:like) { post.likes.build_with_user(user) }
+
+      it 'increments like' do
+        expect(like).to be_a Like
+      end
+
+      it 'builds a like associated with a user' do
+        expect(like.user).to eq user
+      end
+
+
+
+    end
   end
 
 end
