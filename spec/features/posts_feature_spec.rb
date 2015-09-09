@@ -69,7 +69,7 @@ feature 'Posts' do
 
     scenario 'non-creator cannot edit posts' do
       click_link 'Sign out'
-      user2 = build(:user, email: 'testing@testing.com')
+      user2 = build(:user, email: 'testing@testing.com', username: 'potato')
       sign_up_as(user2)
       visit '/posts'
       click_link 'Edit Caption'
@@ -100,7 +100,7 @@ feature 'Posts' do
 
     scenario 'does not allow users to delete their posts if he/she is not the creator' do
       click_link 'Sign out'
-      user2 = build(:user, email: 'testing@testing.com')
+      user2 = build(:user, email: 'testing@testing.com', username: 'potato')
       sign_up_as(user2)
       visit '/posts'
       click_link 'Delete Post'

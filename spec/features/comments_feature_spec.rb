@@ -34,7 +34,7 @@ feature 'Comments' do
 
     scenario 'non-creators cannot delete comments' do
       click_link 'Sign out'
-      user2 = build(:user, email: 'testing@testing.com')
+      user2 = build(:user, email: 'testing@testing.com', username: 'potato')
       sign_up_as(user2)
       visit '/posts'
       click_link 'Delete Comment'

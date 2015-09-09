@@ -32,7 +32,7 @@ describe Post, type: :model do
   end
 
   describe 'Posts' do
-    let(:user) { create(:user) }
+    let(:user) { create(:user, username: 'seamonkey') }
     let(:user2) { create(:user, email: 'testing@testing.com') }
     let(:post) { create(:post, user: user) }
 

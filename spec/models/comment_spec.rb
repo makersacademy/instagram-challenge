@@ -6,8 +6,8 @@ describe Comment, type: :model do
 
   describe 'Comments' do
     describe 'Deleting Comments' do
-      let(:user) { create(:user, email: 'testing@testing.com') }
-      let(:user2) { create(:user, email: 'creator@creator.com') }
+      let(:user) { create(:user, email: 'testing@testing.com', username: 'seamonkey') }
+      let(:user2) { create(:user, email: 'creator@creator.com', username: 'potato') }
       let(:post) { create(:post) }
       let(:comment) { create(:comment, user: user) }
 
