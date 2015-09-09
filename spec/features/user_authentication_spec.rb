@@ -19,6 +19,13 @@ feature 'User authentication' do
 
     scenario 'can log out once logged in' do
       click_link 'Sign Out'
+      visit '/'
+      click_link 'Sign In'
+      fill_in 'Email', with: 'monkey@jungle.com'
+      fill_in 'Password', with: '12345678'
+      click_button 'Log in'
+
+      click_link 'Sign Out'
       expect(page).to have_content('You need to sign in or sign up before continuing.')
     end
   end
@@ -34,5 +41,4 @@ feature 'User authentication' do
       expect(page).to have_content('You need to sign in or sign up before continuing.')
     end
   end
-
 end

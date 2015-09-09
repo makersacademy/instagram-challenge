@@ -7,6 +7,10 @@
       =image_tag @post.image.url(:medium), { class:'img-responsive' }
     %p.caption
       =@post.caption
+    = render 'post', post: @post
     .text-center.edit-links
-      =link_to "Back", posts_path
-      =link_to "Edit Post", edit_post_path(@post)
+      - if current_user.id == @post.user.id
+        =link_to "Back", posts_path
+        =link_to "Edit Post", edit_post_path(@post)
+      - else
+        =link_to "Back", posts_path
