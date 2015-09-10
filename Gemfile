@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'aws-sdk', '< 2.0'
 gem 'paperclip'
+gem 'devise'
 
 
 # Use ActiveModel has_secure_password
@@ -41,7 +42,7 @@ group :development, :test do
   gem 'byebug'
   gem 'capybara'
   gem 'rspec-rails'
-  gem 'devise'
+
   gem 'shoulda'
   gem "factory_girl_rails", "~> 4.0"
 end
