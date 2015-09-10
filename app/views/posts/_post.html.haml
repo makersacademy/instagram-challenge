@@ -23,18 +23,26 @@
                 %span(class="glyphicon glyphicon-fire red" id="flame-icon")
     .comment-like-form.row
       .like-button.col-sm-2
-        = link_to like_post_path(post), method: :put do
-          %span(class="glyphicon glyphicon-thumbs-up")
-          = post.get_upvotes.size
-        = link_to dislike_post_path(post), method: :put do
-          %span(class="glyphicon glyphicon-thumbs-down")
-          = post.get_downvotes.size
-
-
-
-
+        - if current_user.voted_up_on?(post)
+          = link_to dislike_post_path(post), method: :put do
+            %span(class="glyphicon glyphicon-thumbs-down")
+            = post.get_upvotes.size
+        - else
+          = link_to like_post_path(post), method: :put do
+            %span(class="glyphicon glyphicon-thumbs-up")
+            = post.get_upvotes.size
 
       .comment-form.col-sm-10
         = form_for [post, post.comments.new] do |f|
           = f.text_field :content, placeholder: 'Add a comment...'
           = f.submit
+        -#
+        -# - if post.liked_by current_user
+        -#   = link_to dislike_post_path(post), method: :put do
+        -#     %span(class="glyphicon glyphicon-thumbs-up")
+        -#     = post.get_upvotes.size
+        -# - else
+        -#   = link_to like_post_path(post), method: :put do
+        -#   = post.get_upvotes.size
+        -#     %span(class="glyphicon glyphicon-thumbs-up")
+        -#   -# = post.get_downvotes.size
