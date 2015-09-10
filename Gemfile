@@ -40,6 +40,7 @@ group :test do
   gem 'factory_girl_rails'
   # Thoughtbot have written a fantastic gem called shoulda to help us test associations
   gem 'shoulda'
+  gem 'launchy'
 end
 
 group :development, :test do

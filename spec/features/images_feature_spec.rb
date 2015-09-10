@@ -22,9 +22,9 @@ feature 'images' do
       expect(page).not_to have_content('No images yet')
     end
 
-    scenario 'display user email of image owner' do
+    scenario 'display username of image owner' do
       visit '/images'
-      expect(page).to have_content 'test@testing.com'
+      expect(page).to have_content 'testie'
     end
   end
 
@@ -49,6 +49,17 @@ feature 'images' do
         click_link 'Upload an image'
         expect(page).to have_content('You need to sign in or sign up before continuing.')
       end
+    end
+
+    scenario 'clicking on an image takes you through to the image page' do
+      sign_in(user)
+      click_link "Upload an image"
+      allow_any_instance_of(Paperclip::Attachment).to receive(:url).and_return("/spec/test.png")
+      fill_in "Caption", with: "Test Caption"
+      click_button "Create Image"
+      click_link 'Test'
+      expect(page).to have_content "Test Caption"
+      expect(page).not_to have_content "Upload an image"
     end
   end
 

@@ -19,9 +19,9 @@ feature 'commenting' do
       expect(page).to have_content 'Test comment'
     end
 
-    scenario 'display user email of comment owner' do
+    scenario 'display username of comment owner' do
       visit '/images'
-      expect(page).to have_content 'test@testing.com'
+      expect(page).to have_content 'testie'
     end
   end
 

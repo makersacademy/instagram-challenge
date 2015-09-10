@@ -1,0 +1,15 @@
+<%= image_tag @image.upload.url(:original) %>
+<h3><%= @image.caption %></h3>
+<h4><%= @image.user.username %></h4>
+<h3>Comments</h3>
+<% if @image.comments.any? %>
+  <ul>
+    <% @image.comments.each do |comment| %>
+      <li>
+        <%= comment.message %>
+        -
+        <%= comment.user.username %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

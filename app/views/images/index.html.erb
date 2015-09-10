@@ -1,17 +1,25 @@
 <% if @images.all.any? %>
   <% @images.all.each do |image| %>
-    <%= image_tag image.upload.url(:medium) %>
-    <h3><%= image.caption %></h3>
     <h4><%= image.user.username %></h4>
+    <h4><%= image.created_at.strftime "%H:%M | %d-%m-%Y" %></h4>
+    <%= link_to image_path(image) do %>
+      <%= image_tag image.upload.url(:medium) %>
+    <% end %>
+    <h3><%= image.caption %></h3>
     <h3>Comments</h3>
     <% if image.comments.any? %>
       <ul>
-        <% image.comments.each do |comment| %>
+        <% image.comments[0..2].each do |comment| %>
           <li>
             <%= comment.message %>
             -
             <%= comment.user.username %>
           </li>
+        <% end %>
+        <% if image.comments.length > 3 %>
+          <%= link_to image_path(image) do %>
+            <li>Read more...</li>
+          <% end %>
         <% end %>
       </ul>
     <% end %>
