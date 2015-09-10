@@ -2,19 +2,20 @@
   <% @images.all.each do |image| %>
     <%= image_tag image.upload.url(:medium) %>
     <h3><%= image.caption %></h3>
-    <h4><%= image.user.email %></h4>
+    <h4><%= image.user.username %></h4>
     <h3>Comments</h3>
     <% if image.comments.any? %>
       <ul>
         <% image.comments.each do |comment| %>
           <li>
             <%= comment.message %>
-            <%= comment.user.email %>
+            -
+            <%= comment.user.username %>
           </li>
         <% end %>
       </ul>
     <% end %>
-    <%= form_for [image, Comment.new] do |f| %>
+    <%= form_for [image, @comment] do |f| %>
     <%= f.label :message %>
     <%= f.text_area :message %>
     <%= f.submit 'Leave Comment' %>
