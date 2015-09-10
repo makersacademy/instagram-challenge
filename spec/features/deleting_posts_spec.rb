@@ -7,7 +7,8 @@ feature 'Deleting posts' do
     click_link 'Sign In'
     sign_in(user)
     # post = create( :post, user_id = user.id )
-    post = create(:post, caption: 'Cant think of anything to type', user_id: user.id)
+    post = create(:post, caption: 'Cant think of anything to type',
+                         user_id: user.id)
     visit '/'
 
     expect(page).to have_css("img[src*='monkey']")
