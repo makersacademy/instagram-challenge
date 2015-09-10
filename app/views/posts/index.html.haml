@@ -4,14 +4,15 @@
 - if @posts.any?
   %section
     - @posts.reverse_each do | post |
-      .col-xs-12.col-sm-6.col-md-4
+      .section.text-center
+        %h3= post.user.username
         = link_to post_path(post) do
-          = image_tag post.image.url(:original), class: 'img-responsive center-block img-rounded'
+          = image_tag post.image.url(:medium), class: 'img-responsive center-block img-rounded'
         %h3= post.title
-        %span.likes_count= post.likes.count
-        = "Like".pluralize post.likes.count
-        = link_to "Like", post_likes_path(post), class: 'likes-link'
-        = link_to "Leave comment", new_post_comment_path(post)
+        %p.likes
+          %span.likes_count= post.likes.count
+          = "Like".pluralize post.likes.count
+          = link_to "Like", post_likes_path(post), class: 'likes-link'
         - if post.comments.any?
           - post.comments.reverse_each do |comment|
             = comment.thoughts
@@ -20,5 +21,6 @@
               = link_to "Delete comment", post_comment_path(post, comment), method: :delete
         - if user_signed_in? && current_user.id == post.user_id
           = link_to "Delete", post_path(post), method: :delete
+        %p= link_to "Leave comment", new_post_comment_path(post)
 - else
   %h2 No posts yet!
