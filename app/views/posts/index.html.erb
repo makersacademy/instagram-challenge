@@ -1,13 +1,21 @@
 <% if @posts.any? %>
+<div class="posts-wrapper row">
   <% @posts.each do |post| %>
-    <h2><%= link_to (image_tag post.image.url(:medium), :id => 'imageLink'), post_path(post) %></h2>
-    <p><%= post.user.user_name %></p>
-    <p><%= post.caption %></p>
-    <% if post.user.id == current_user.id %>
-      <h3><%= link_to "Edit", edit_post_path(post) %></h3>
-      <h3><%= link_to "Delete", post_path(post), method: :delete %></h3>
-    <% end %>
+    <div class="post">
+      <div class="post-head">
+        <div class="name">
+          <%= post.user.user_name %>
+        </div>
+      </div>
+      <div class="image center-block">
+        <%= link_to (image_tag post.image.url(:medium), class: 'text-center', id:'imageLink'), post_path(post) %>
+      </div>
+      <p class="caption">
+        <%= post.caption %>
+      </p>
+    </div>
   <% end %>
+</div>
 
 <% else %>
   <p>No posts yet</p>

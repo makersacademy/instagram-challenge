@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @posts = Post.all
+    @posts = Post.all.order("created_at DESC")
   end
 
   def new
@@ -10,7 +10,6 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-
     if @post.save
       flash[:notice] = "Your post has been created!"
       redirect_to posts_path
@@ -20,11 +19,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
+
   def edit
     @post = Post.find(params[:id])
-    # if current_user.id != @post.user_id
-    #   redirect_to post_path
-    # end
+    if current_user.id != @post.user_id
+      redirect_to post_path
+    end
   end
 
   def update
@@ -36,14 +40,16 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:notice] = "Post deleted successfully"
-    redirect_to posts_path
+    if current_user.id == @post.user_id
+      @post.destroy
+      flash[:notice] = "Post deleted successfully"
+      redirect_to '/posts'
+    else
+      flash[:notice] = "Posts can only be deleted by their owner"
+      redirect_to '/posts'
+    end
   end
 
-  def show
-    @post = Post.find(params[:id])
-  end
 
   private
 
