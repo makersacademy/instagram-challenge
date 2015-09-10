@@ -48,7 +48,7 @@ $ rspec
 ## v3.0
 
 * Add a profile picture to each user
-*
+
 
 ## Lessons learnt so far
 
