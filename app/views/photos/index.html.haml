@@ -1,0 +1,9 @@
+- if @photos.any?
+  - @photos.each do |photo|
+    = image_tag photo.image.url(:medium)
+    %h2= photo.caption
+    = link_to "Delete photo", photo_path(photo), method: :delete
+- else
+  %h1 no photos on your feed
+
+%a(href=new_photo_path) Add a photo
