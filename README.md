@@ -1,7 +1,7 @@
 Instagram Challenge
 ===================
-[![Build Status](https://travis-ci.org/giusepped/instagram-challenge.svg)](https://travis-ci.org/richgeog/instagram-challenge)
-[![Test Coverage](https://codeclimate.com/github/giusepped/instagram-challenge/badges/coverage.svg)](https://codeclimate.com/github/richgeog/instagram-challenge/coverage)
+[![Build Status](https://travis-ci.org/giusepped/instagram-challenge.svg)](https://travis-ci.org/giusepped/instagram-challenge)
+[![Test Coverage](https://codeclimate.com/github/giusepped/instagram-challenge/badges/coverage.svg)](https://codeclimate.com/github/giusepped/instagram-challenge/coverage)
 
 Overview
 -------
