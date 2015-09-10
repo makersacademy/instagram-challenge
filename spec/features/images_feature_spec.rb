@@ -34,12 +34,12 @@ feature 'images' do
         sign_in(user)
         visit '/'
         click_link 'Upload an image'
-        attach_file 'Upload', "spec/test.png"
+        allow_any_instance_of(Paperclip::Attachment).to receive(:url).and_return("/spec/test.png")
         fill_in 'Caption', with: 'Test Caption'
         click_button 'Create Image'
         expect(current_path).to eq '/images'
         expect(page).to have_selector("img")
-        expect(page).to have_content('test@testing.com')
+        expect(page).to have_css ('img[src*="test.png"]')
       end
     end
 
@@ -55,7 +55,7 @@ feature 'images' do
   def sign_in(user)
     visit '/'
     click_link 'Sign in'
-    fill_in 'Email', with: user.email
+    fill_in 'Login', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
   end
