@@ -4,7 +4,9 @@
       <h2><%= post.caption %></h2>
       <%= image_tag post.image.url(:thumb) %>
       <%= link_to "Like", post_likes_path(post), class: 'likes-link' %>
-      <%= link_to "Unlike", post_like_path(post, post.likes), method: :delete, class: 'unlikes-link' %>
+      <% if post.likes.find_by(user: current_user) %>
+        <%= link_to "Unlike", post_like_path(post, post.likes.find_by(user: current_user)), class: 'unlikes-link' %>
+      <% end %>
       <span class="likes_count"> <%= post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
 
       <% if post.comments.any? %>

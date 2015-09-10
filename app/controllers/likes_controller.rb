@@ -13,11 +13,11 @@ class LikesController < ApplicationController
   def destroy
     @post = Post.find(params[:post_id])
     @like = @post.likes.find_by(user_id: current_user.id)
-    if @like == nil
+    if @like.nil?
       redirect_to root_path
     else
       @like.destroy
-      render json: { detroy_like_count: @post.likes.count }
+      render json: { destroy_like_count: @post.likes.count }
     end
   end
 
