@@ -15,7 +15,6 @@ class CommentsController < ApplicationController
 	# end
 
   def create
-  	byebug
     @photo = Photo.find(params[:photo_id])
     @comment = @photo.comments.build(comment_params.merge({user: current_user}))
     if @comment.save

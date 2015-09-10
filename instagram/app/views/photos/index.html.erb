@@ -1,13 +1,12 @@
-<div id="container">
+
 <%= form_for @photo, html: {multipart: true, :id => "addPhotoForm"} do |f| %>
+  <%= f.text_area :description, :placeholder => "Add description for your photo here...." %>
+  <br>
+  <br>
   <%= f.file_field :image %>
-  <br>
-  <br>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
   <%= f.submit :value => "Add photo" %>
 <% end %>
-</div>
+
 
 <% if @photos.any? %>
   <% Photo.all.reverse.each do |photo| %>
