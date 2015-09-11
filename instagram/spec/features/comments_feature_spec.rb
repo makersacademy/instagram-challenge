@@ -1,7 +1,13 @@
 require 'rails_helper'
 
 feature 'comments' do
-  before {Photo.create description: 'Fujisan'}
+  let (:user) {User.create(email: "test@test.com", 
+                                password: "password123", 
+                                password_confirmation: "password123"
+                                )}
+
+  before {Photo.create description: 'Fujisan', user: user}
+
 
   context "user must be logged in" do
 
@@ -11,10 +17,8 @@ feature 'comments' do
 
     scenario 'allows users to leave a comment using a form' do
        visit '/photos'
-       click_link 'Comment on'
-       fill_in "Comment", with: "Epic mountain"
-       click_button 'Leave Comment'
-
+       fill_in "comment[comment]", with: "Epic mountain"
+       click_button 'addCommentSubmit'
        expect(current_path).to eq '/photos'
        expect(page).to have_content('Epic mountain')
     end
@@ -22,9 +26,8 @@ feature 'comments' do
     context 'an invalid comment' do
       it 'does not let user submit a blank comment' do
         visit '/photos'
-        click_link 'Comment on'
-        fill_in "Comment", with: ""
-        click_button 'Leave Comment'
+        fill_in "comment[comment]", with: ""
+        click_button 'addCommentSubmit'
         expect(page).to have_content 'Comment cannot be blank'
       end
     end

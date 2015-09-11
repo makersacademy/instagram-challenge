@@ -7,12 +7,19 @@ feature 'photos' do
 	    scenario 'should display a prompt to post a photos' do
 	      visit '/photos'
 	      expect(page).to have_content 'No photos yet'
-	      expect(page).to have_link 'Add a photo'
+	      expect(page).to have_button 'Add photo'
 	    end
 	  end
 
 	  context 'photos have been added' do
-	    before {Photo.create description: 'Fujisan'}
+
+	  	let (:user) {User.create(email: "test@test.com", 
+	  														password: "password123", 
+	  														password_confirmation: "password123"
+	  														)}
+
+	    before {Photo.create description: 'Fujisan', user: user}
+
 	    
 	    scenario 'Display photos' do
 	      visit '/photos'
@@ -31,7 +38,7 @@ feature 'photos' do
 		context 'Adding photos' do    
 	    scenario 'Prompts user to add photo, then displays the description' do
 	      visit '/photos'
-	   	  click_link 'Add a photo'
+	   	  click_button 'Add photo'
 	      fill_in 'Description', with: 'Fujisan'
 	      click_button 'Add photo'
 	      expect(page).to have_content 'Fujisan'
@@ -62,13 +69,16 @@ feature 'photos' do
 	context "user does not need to be logged in" do
 	  context 'viewing photos' do
 
-	  	let!(:fujisan){Photo.create(description:'Fujisan')}
+	  let (:user) {User.create(email: "test@test.com", 
+	  												password: "password123", 
+	  												password_confirmation: "password123"
+	  														)}
+
+	    before {Photo.create description: 'Fujisan', user: user}
 	    
 	    scenario 'lets a user view a photo' do
 	      visit '/photos'
-	   	  click_link 'Fujisan'
 	      expect(page).to have_content 'Fujisan'
-	      expect(current_path).to eq "/photos/#{fujisan.id}"
 	    end
 	  end
 	end
@@ -91,9 +101,10 @@ feature 'photos' do
 	end
 
 	def add_picture
-	  click_link 'Add a photo'
-	  attach_file 'new_photo', 'spec/test.jpg'
-	  fill_in 'Description', with: 'Kamchatka'
+	  click_button 'Add photo'
+	  #check Capybara attach file syntax - not finding image field.
+	  attach_file 'image', 'spec/test.jpg'
+	  fill_in 'Description', with: 'Test Description'
 	  click_button 'Add photo'
 	end
 

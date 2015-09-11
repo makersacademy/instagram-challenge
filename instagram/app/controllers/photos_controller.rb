@@ -1,12 +1,11 @@
 class PhotosController < ApplicationController
-
 	before_action :authenticate_user!, :except => [:index, :show]
 
 	def index
-		@photos = Photo.all
+		@photos  = Photo.all
 		@comment = Comment.new
-		@like = Like.new
-		@photo = Photo.new
+		@like    = Like.new
+		@photo   = Photo.new
 	end
 
 	def show
@@ -50,7 +49,7 @@ class PhotosController < ApplicationController
     end
   end
 
-
+  private
 
   #utility method
   def photo_params
