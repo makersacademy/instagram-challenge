@@ -3,10 +3,11 @@
     <li class="post">
       <h2><%= post.caption %></h2>
       <%= image_tag post.image.url(:thumb) %>
-      <%= link_to "Like", post_likes_path(post), class: 'likes-link' %>
-      <% if post.likes.find_by(user: current_user) %>
-        <%= link_to "Unlike", post_like_path(post, post.likes.find_by(user: current_user)), class: 'unlikes-link' %>
-      <% end %>
+
+      <div class="likes_and_unlikes">
+        <%= render partial: "posts/likes_and_unlikes", :locals => { post: post, current_user: current_user } %>
+      </div>
+
       <span class="likes_count"> <%= post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
 
       <% if post.comments.any? %>
