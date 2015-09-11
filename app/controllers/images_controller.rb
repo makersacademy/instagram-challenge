@@ -3,7 +3,7 @@ class ImagesController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
 
   def index
-    @images = Image.all
+    @images = Image.all.order("created_at DESC")
     @comment = Comment.new
   end
 

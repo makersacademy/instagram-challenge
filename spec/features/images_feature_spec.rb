@@ -57,7 +57,8 @@ feature 'images' do
       allow_any_instance_of(Paperclip::Attachment).to receive(:url).and_return("/spec/test.png")
       fill_in "Caption", with: "Test Caption"
       click_button "Create Image"
-      click_link 'Test'
+      visit '/images/1'
+      # click_link 'Test'
       expect(page).to have_content "Test Caption"
       expect(page).not_to have_content "Upload an image"
     end

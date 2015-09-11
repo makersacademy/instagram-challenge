@@ -9,16 +9,18 @@
     <h3>Comments</h3>
     <% if image.comments.any? %>
       <ul>
-        <% image.comments[0..2].each do |comment| %>
+        <% image.comments.reverse[0..2].each do |comment| %>
           <li>
             <%= comment.message %>
             -
             <%= comment.user.username %>
+            -
+            <%= comment.created_at.strftime "%H:%M | %d-%m-%Y" %>
           </li>
         <% end %>
         <% if image.comments.length > 3 %>
           <%= link_to image_path(image) do %>
-            <li>Read more...</li>
+            <li>Read <%= image.comments.length - 3 %> more comment/s...</li>
           <% end %>
         <% end %>
       </ul>
