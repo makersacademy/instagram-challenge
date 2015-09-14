@@ -1,20 +1,29 @@
 require 'rails_helper'
 
 feature 'Comment Features' do
+  context "after being created" do
+    before :each do
+      sign_up_user
+      upload_picture
+      click_on 'Add Comment'
+      fill_in 'Content', with: "comment content"
+      click_on 'Create Comment'
+    end
 
-  it "can be created" do
-    sign_up_user
-    upload_picture
-    click_on 'Add Comment'
-    fill_in 'Content', with: "comment content"
-    click_on 'Create Comment'
+    it "is displayed on pictures page after being created" do
+      expect(current_path).to eq pictures_path
+      expect(page).to have_content "comment content"
+      expect(page).to have_content "Comment successfully posted"
+    end
 
-    expect(current_path).to eq pictures_path
-    expect(page).to have_content "comment content"
-    expect(page).to have_content "Comment successfully posted"
+    it "its creator's name is shown on the comment" do
+      expect(page).to have_content "username"
+    end
+
+    it "its creator's email is not shown on the comment" do
+      expect(page).not_to have_content "user@email.com"
+    end
   end
-
-  xit "its creator's name is shown on the comment"
 
   it 'must be signed in to visit the new comment creation url' do
     sign_up_user
@@ -43,6 +52,7 @@ private
   def sign_up_user
     visit root_path
     click_link 'Sign up'
+    fill_in 'Username', with: "username"
     fill_in 'Email', with: "user@email.com"
     fill_in 'Password', with: "passwordpassword"
     fill_in 'Password confirmation', with: "passwordpassword"
