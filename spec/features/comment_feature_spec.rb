@@ -36,7 +36,7 @@ private
   def upload_picture
     click_on 'Upload Picture'
     fill_in 'Title', with: "Smiley Face"
-    attach_file "Image", 'spec/smiley.png'
+    attach_file "Image", 'spec/spec_assets/smiley.png'
     click_button 'Create Picture'
   end
 

@@ -25,7 +25,7 @@ feature "Picture Features" do
     it "can't be uploaded without a title" do
       sign_up_user
       click_on 'Upload Picture'
-      attach_file "Image", 'spec/smiley.png'
+      attach_file "Image", 'spec/spec_assets/smiley.png'
       click_button 'Create Picture'
 
       expect(current_path).not_to eq root_path
@@ -44,7 +44,7 @@ private
     sign_up_user
     click_on 'Upload Picture'
     fill_in 'Title', with: "Smiley Face"
-    attach_file "Image", 'spec/smiley.png'
+    attach_file "Image", 'spec/spec_assets/smiley.png'
     click_button 'Create Picture'
   end
 

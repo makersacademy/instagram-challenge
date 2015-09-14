@@ -31,5 +31,6 @@ group :development, :test do
     gem 'rspec-collection_matchers'
     gem 'poltergeist'
     gem 'database_cleaner'
+    gem 'factory_girl_rails'
   end
 end
