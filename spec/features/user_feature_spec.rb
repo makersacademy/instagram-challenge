@@ -64,6 +64,7 @@ feature "User Features" do
   def sign_up_user
     visit root_path
     click_link 'Sign up'
+    fill_in 'Username', with: "username"
     fill_in 'Email', with: "user@email.com"
     fill_in 'Password', with: "passwordpassword"
     fill_in 'Password confirmation', with: "passwordpassword"
