@@ -26,10 +26,6 @@ feature 'Comment Features' do
     expect(page).to have_content "You need to sign in or sign up before continuing"
   end
 
-  xit 'has a picture id'
-
-  xit 'has a user id'
-
   xit 'is displayed on index page after being created'
 
   xit 'can be deleted'
