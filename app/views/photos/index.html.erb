@@ -1,27 +1,38 @@
 
 <html>
-  <body>
-    <h1>Instafraud</h1>
-    <% if user_signed_in? %>
-      <h2><a href=<%=new_photo_path%>>Upload Photo</a>
-      </h2>
+<body>
+  <h1>Instafraud</h1>
+  <% if user_signed_in? %>
+    <h2><a href=<%=new_photo_path%>>Upload Photo</a>
+    </h2>
+    <h3>
     <% if @photos.any? %>
-      <% @photos.each do |photo| %>
-      <h3>
-        <ul>
-          <li><%=photo.user.email %></li>
-          <li><%=photo.time_ago %></li>
-        </ul>
-        <section class='stream_pic'><%=image_tag photo.picture.url(:stream) %>
-        </section>
-        <form>
-        <input method='post' type='text' placeholder='Add a comment...'>
-      </form>
+      <ul>
+      <% @photos.reverse.each do |photo| %>
+        <li><%=photo.user.email %></li>
+        <li><%=photo.time_ago %></li>
+      </ul>
+      <section class='stream_pic'><%=image_tag photo.picture.url(:stream) %>
+      </section>
+      <section class='comment_form'>
+      <%= form_for [photo, @comment], html: {class: "comment_form"} do |f| %>
+        <%  f.text_area :content, :placeholder => 'Add a comment...' %>
+        <%= f.text_field :content %>
+        <%= f.submit 'submit' %>
+      <%end%>
+      </section>
+        <% if photo.comments.any? %>
+          <ul class='comments'>
+          <% photo.comments.each do |comment| %>
+            <li><%=comment.user.email %> : <%=comment.content %></li>
+          </ul>
+          <% end %>
+        <% end %>
       <% end %>
-      <% else %>
+    <% else %>
       No photos yet!
     <% end %>
-    <% end %>
+  <% end %>
       </h3>
-  </body>
+</body>
 </html>
