@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
 
   def index
     @photos = Photo.all
-    # @comment = Comment.new
+    @comment = Comment.new
   end
 
   def new
