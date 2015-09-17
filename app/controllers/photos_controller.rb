@@ -1,4 +1,3 @@
-
 class PhotosController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
@@ -13,12 +12,14 @@ class PhotosController < ApplicationController
   end
 
   def create
+    p "about to create photo"
     @photo = current_user.photos.new(photo_params)
-    # @photo.user_id = current_user.id
     if @photo.save
       redirect_to photos_path
     else
-      render 'new'
+      p "about to flash error"
+      render :new
+      flash[:notice] = 'You need to provide a photo file'
     end
   end
 

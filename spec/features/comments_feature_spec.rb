@@ -19,5 +19,5 @@ feature 'comments' do
     fill_in 'comment[content]', with: "test comment\n"
     click_button 'submit'
     expect(page).to have_content "test comment"
-  end
+  end  
 end

@@ -14,6 +14,7 @@ class Photo < ActiveRecord::Base
     }
 
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\z/
+  validates_attachment_presence :picture
 
   def time_ago
     self.created_at.strftime("%d %b '%y - %H:%M")

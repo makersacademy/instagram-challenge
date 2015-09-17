@@ -23,7 +23,7 @@ feature 'photos' do
     scenario "I should see the form to upload a photo" do
       click_link "Upload Photo"
       expect(current_path).to eq(new_photo_path)
-      expect(page).to have_content('Picture')
+      expect(page).to have_content('Photo')
     end
 
     scenario "I can upload a photo" do
@@ -34,12 +34,13 @@ feature 'photos' do
       expect(page).to have_content('test2@test.com')
     end
 
-    # scenario "I cannot upload without attaching a file" do
-    #   expect(page).to have_content 'No photos yet!'
-    #   click_link "Upload Photo"
-    #   click_button 'Create Photo'
-    #   expect(page).not_to have_css('img')
-    #
-    # end
+    scenario "I cannot upload without attaching a file" do
+      expect(page).to have_content 'No photos yet!'
+      click_link "Upload Photo"
+      click_button 'Create Photo'
+      expect(page).not_to have_css('img')
+      expect(page).to have_content('You need to provide a photo file')
+
+    end
   end
 end
