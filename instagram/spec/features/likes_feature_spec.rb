@@ -27,6 +27,7 @@ feature "liking photos" do
   	
     scenario "can like a photo, and update like counter" do
   		visit "/photos"
+      save_and_open_page
   		click_button "likeButton"
   		expect(page).to have_content "1 Likes"
   		expect(page).not_to have_content "0 likes"
