@@ -13,8 +13,8 @@ class Photo < ActiveRecord::Base
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     }
 
-  validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\z/
   validates_attachment_presence :picture
+  validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\z/
 
   def time_ago
     self.created_at.strftime("%d %b '%y - %H:%M")

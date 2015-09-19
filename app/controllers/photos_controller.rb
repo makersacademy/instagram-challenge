@@ -8,20 +8,21 @@ class PhotosController < ApplicationController
   end
 
   def new
-    @photo = Photo.new
+    @photo = current_user.photos.new
+    @comment = Comment.new
   end
 
   def create
-    p "about to create photo"
     @photo = current_user.photos.new(photo_params)
     if @photo.save
       redirect_to photos_path
     else
-      p "about to flash error"
-      render :new
-      flash[:notice] = 'You need to provide a photo file'
+      flash[:alert] = 'You need to provide a photo file'
+      redirect_to new_photo_path
     end
   end
+
+  private
 
   def photo_params
     params.require(:photo).permit(:picture)

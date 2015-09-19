@@ -39,7 +39,7 @@ feature 'photos' do
       click_link "Upload Photo"
       click_button 'Create Photo'
       expect(page).not_to have_css('img')
-      expect(page).to have_content('You need to provide a photo file')
+      expect('/photos/new').to have_content('You need to provide a photo file')
 
     end
   end
