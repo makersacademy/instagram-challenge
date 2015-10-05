@@ -7,11 +7,10 @@
     </h2>
     <h3>
     <% if @photos.any? %>
-      <ul>
-      <% @photos.reverse.each do |photo| %>
-        <li><%=photo.user.email %></li>
-        <li><%=photo.time_ago %></li>
-      </ul>
+      <section class='photo_owner'>
+        <% @photos.reverse.each do |photo| %>
+          Photo by <%=photo.user.email %>, <%=photo.time_ago %>
+      </section>
       <section class='stream_pic'><%=image_tag photo.picture.url(:stream) %>
       </section>
       <section class='comment_form'>
@@ -20,13 +19,15 @@
         <%= f.text_field :content %>
         <%= f.submit 'submit' %>
       <%end%>
+      <br />
       </section>
         <% if photo.comments.any? %>
           <ul class='comments'>
           <% photo.comments.each do |comment| %>
             <li><%=comment.user.email %> : <%=comment.content %></li>
-          </ul>
           <% end %>
+          </ul>
+        <br />
         <% end %>
       <% end %>
     <% else %>

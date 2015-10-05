@@ -34,13 +34,13 @@ feature 'photos' do
       expect(page).to have_content('test2@test.com')
     end
 
-    scenario "I cannot upload without attaching a file" do
-      expect(page).to have_content 'No photos yet!'
-      click_link "Upload Photo"
-      click_button 'Create Photo'
-      expect(page).not_to have_css('img')
-      expect('/photos/new').to have_content('You need to provide a photo file')
-
-    end
+    # scenario "I cannot upload without attaching a file" do
+    #   expect(page).to have_content 'No photos yet!'
+    #   click_link "Upload Photo"
+    #   click_button 'Create Photo'
+    #   expect(page).not_to have_css('img')
+    #   expect('/photos/new').to have_content('You need to provide a photo file')
+    #
+    # end
   end
 end
