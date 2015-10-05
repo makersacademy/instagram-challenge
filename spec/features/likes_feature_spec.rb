@@ -13,9 +13,10 @@ feature 'like-ing photos' do
 
   context 'user is logged in' do
 
-    scenario 'a user can like a photo' do
+    scenario 'a user can like a photo, which updates the likes count' do
       visit photos_path
-      expect(page).to have_link 'Like'
+      click_link 'Like'
+      expect(page).to have_content('1 like')
     end
   end
 
