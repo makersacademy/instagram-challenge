@@ -1,6 +1,5 @@
 #StieglitzGram
 
-
 I have named my instagram clone after Alfred Stieglitz who is regarded as being  responible for making photagraphy an accepted art form.
 At the time photography was seen as hobbyists pastime for bicycle clubs to record their travels. Stieglitz was instramental in getting fine art institutions (most notably MOMA) to the show the work of photographers alongide painters and sculptors.  He was was also married to painter Georgia O'Keeffe
 
