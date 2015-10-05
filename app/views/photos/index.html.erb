@@ -11,15 +11,16 @@
         <% @photos.reverse.each do |photo| %>
           Photo by <%=photo.user.email %>, <%=photo.time_ago %>
       </section>
-      <section class='stream_pic'><%=image_tag photo.picture.url(:stream) %>
+      <section class='stream_pic'>
+        <%=image_tag photo.picture.url(:stream) %>
       </section>
       <section class='comment-like-form'>
-        <form
       <%= form_for [photo, @comment], html: {class: "comment_form"} do |f| %>
         <%  f.text_area :content, :placeholder => 'Add a comment...' %>
         <%= f.text_field :content %>
         <%= f.submit 'submit' %>
       <%end%>
+      <p><%= pluralize photo.likes.count, 'like' %></p>
       <br />
       </section>
         <% if photo.comments.any? %>

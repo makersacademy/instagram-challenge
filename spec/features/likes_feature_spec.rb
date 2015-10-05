@@ -13,6 +13,11 @@ feature 'like-ing photos' do
 
   context 'user is logged in' do
 
+    scenario 'photos start with 0 likes as default' do
+      visit photos_path
+      expect(page).to have_content '0 likes'
+    end
+
     scenario 'a user can like a photo, which updates the likes count' do
       visit photos_path
       click_link 'Like'
