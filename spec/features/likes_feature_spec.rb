@@ -18,7 +18,7 @@ feature 'like-ing photos' do
       expect(page).to have_content '0 likes'
     end
 
-    scenario 'a user can like a photo, which updates the likes count' do
+    scenario 'a user can like a photo, which updates the likes count', js: true do
       visit photos_path
       click_link 'Like'
       expect(page).to have_content('1 like')
