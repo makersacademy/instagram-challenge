@@ -5,13 +5,13 @@ feature 'user can sign in and out' do
   context 'user not signed in on homepage' do
 
     it 'should see sign in and sing up links' do
-      visit('/')
+      visit root_path
       expect(page).to have_content('Sign in')
       expect(page).to have_content('Sign up')
     end
 
     it 'should not see a sign out link' do
-      visit('/')
+      visit root_path
       expect(page).not_to have_link('Sign out')
     end
   end
@@ -24,13 +24,13 @@ feature 'user can sign in and out' do
     end
 
     it 'should not see sign out link' do
-      visit('/')
+      visit root_path
       expect(page).to have_link('Sign out')
       expect(page).to have_content('test_user@test.com')
     end
 
     it 'should not see sign up or sign in links' do
-      visit('/')
+      visit root_path
       expect(page).not_to have_link('Sign in')
       expect(page).not_to have_link('Sign up')
     end

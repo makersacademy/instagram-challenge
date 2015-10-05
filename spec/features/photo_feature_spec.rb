@@ -1,3 +1,4 @@
+
 require 'rails_helper'
 
 feature 'photos' do
@@ -47,6 +48,7 @@ feature 'upload a photo' do
   end
 
   context 'user not logged in' do
+
     it 'does not allow no logged in user to upload' do
       visit photos_path
       click_link 'Add a photo'

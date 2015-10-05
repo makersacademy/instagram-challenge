@@ -11,7 +11,7 @@ RSpec.describe Photo, type: :model do
     let(:user) { create(:user) }
 
     let(:photo) { Photo.create title: "test",
-    image:  Rack::Test::UploadedFile.new(Rails.root + 'spec/assets_specs/photos/test_photo1.jpg', 'image/jpg')}
+                  image:  Rack::Test::UploadedFile.new(Rails.root + 'spec/assets_specs/photos/test_photo1.jpg', 'image/jpg')}
     let(:comment_params) { { comment: 'text' } }
 
     subject(:comment) { photo.comments.build_with_user(comment_params, user) }
@@ -32,7 +32,7 @@ RSpec.describe Photo, type: :model do
     let(:user) { create(:user) }
 
     let(:photo) { Photo.create title: "test",
-    image:  Rack::Test::UploadedFile.new(Rails.root + 'spec/assets_specs/photos/test_photo1.jpg', 'image/jpg')}
+                  image:  Rack::Test::UploadedFile.new(Rails.root + 'spec/assets_specs/photos/test_photo1.jpg', 'image/jpg')}
     let(:comment_params) { { comment: 'text' } }
 
     subject(:comment) { photo.comments.create_with_user(comment_params, user) }
@@ -56,7 +56,7 @@ RSpec.describe Photo, type: :model do
     let(:user) { create(:user) }
 
     let(:photo) { Photo.create title: "test",
-    image:  Rack::Test::UploadedFile.new(Rails.root + 'spec/assets_specs/photos/test_photo1.jpg', 'image/jpg')}
+                  image:  Rack::Test::UploadedFile.new(Rails.root + 'spec/assets_specs/photos/test_photo1.jpg', 'image/jpg')}
     let(:comment_params) { { comment: 'text' } }
 
     subject(:comment) { photo.comments.create_with_user!(comment_params, user) }
@@ -77,5 +77,3 @@ RSpec.describe Photo, type: :model do
 
 
 end
-
-

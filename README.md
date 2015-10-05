@@ -1,8 +1,5 @@
-Instagram Challenge
-===================
+#StieglitzGram
 
-StieglitzGram
--------------
 
 I have named my instagram clone after Alfred Stieglitz who is regarded as being  responible for making photagraphy an accepted art form.
 At the time photography was seen as hobbyists pastime for bicycle clubs to record their travels. Stieglitz was instramental in getting fine art institutions (most notably MOMA) to the show the work of photographers alongide painters and sculptors.  He was was also married to painter Georgia O'Keeffe
@@ -77,6 +74,3 @@ Lessons learnt
 * Phantom JS for javascript testing with capybara
 * If using phantom js in a test it affects factory girl factories. If you call them inside test block they will not be recognised.
 * Rails association and how to bring log to the model where needed.
-
-
-
