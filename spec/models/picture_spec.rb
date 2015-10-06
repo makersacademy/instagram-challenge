@@ -16,6 +16,8 @@ describe Picture, type: :model do
     pic.likes.create
     expect { pic.destroy }.to change { Like.count }
   end
+
+  it ''
 end
 
 

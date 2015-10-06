@@ -10,12 +10,10 @@ class Picture < ActiveRecord::Base
 
   def timestamp
     time_passed = (Time.now - self.created_at).to_i
-    if time_passed < 60
-      return "a moment ago"
-    elsif time_passed < 3600
-      return "#{time_passed / 60}m"
-    else
-      return "#{time_passed / 3600}h"
+    return "a moment ago" if time_passed < 60
+    return "#{time_passed / 60}m" if time_passed < 3600
+    return "#{time_passed / 3600}h" if time_passed < 86400
+    return "#{time_passed / 86400}d"
     end
   end
 
