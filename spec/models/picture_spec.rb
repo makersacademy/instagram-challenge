@@ -17,7 +17,31 @@ describe Picture, type: :model do
     expect { pic.destroy }.to change { Like.count }
   end
 
-  it ''
+  describe 'it calculates the timestamp for each picture' do
+    it 'calculates a timestamp for a moment ago' do
+      pic = create(:picture)
+      expect(pic.timestamp).to eq("a moment ago")
+    end
+
+    it 'calculates a timestamp for a few minutes ago' do
+      pic = create(:picture)
+      Timecop.freeze(Time.now + 120)
+      expect(pic.timestamp).to eq("2m ago")
+    end
+
+    it 'calculates a timestamp for a few hours ago' do
+      pic = create(:picture)
+      Timecop.freeze(Time.now + 7200)
+      expect(pic.timestamp).to eq("2h ago")
+    end
+
+    it 'calculates a timestamp for a few days ago' do
+      pic = create(:picture)
+      Timecop.freeze(Time.now + 172800)
+      expect(pic.timestamp).to eq("2d ago")
+    end
+  end
+
 end
 
 
