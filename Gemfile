@@ -1,3 +1,5 @@
+ruby '2.1.5'
+
 source 'https://rubygems.org'
 gem 'pry'
 gem 'rails', '4.2.4'
@@ -12,6 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'aws-sdk', '< 2.0'
 gem 'paperclip'
 gem 'devise'
+
 
 group :development, :test do
   gem 'byebug'

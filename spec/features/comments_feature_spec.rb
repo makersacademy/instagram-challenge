@@ -10,14 +10,12 @@ feature 'comments' do
   end
 
   scenario 'photos have a comment field' do
-    visit photos_path
     expect(page).to have_button "submit"
   end
 
   scenario 'I can see other comments on photos' do
-    visit photos_path
     fill_in 'comment[content]', with: "test comment\n"
     click_button 'submit'
     expect(page).to have_content "test comment"
-  end  
+  end
 end
