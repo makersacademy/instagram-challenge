@@ -1,14 +1,14 @@
-Instagram Challenge
-===================
+[![Build Status](https://travis-ci.org/katylouise/instagram-challenge.svg?branch=v1.0)]
 
-Task
+Bextagram
+==========
+A picture sharing app built in order to practise using Ruby on Rails and ActiveRecord.  In particular, this project helped me to gain a better understanding of associations in ActiveRecord.
+
+v1.0
 -----
-
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+* Users can upload pictures, write comments and like pictures.
+* Users can sign in/up using Devise.
+* Simple styling.
 
 
 Still to do/ Wish list
@@ -20,3 +20,4 @@ Still to do/ Wish list
 * Bootstrap or something similar.
 * Unlike feature.
 * Comments form displayed in line.
+* Bonus if you can add filters!
