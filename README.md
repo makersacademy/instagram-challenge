@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/katylouise/instagram-challenge.svg?branch=v1.0)
+[![Build Status](https://travis-ci.org/katylouise/instagram-challenge.svg?branch=v1.0)](https://travis-ci.org/katylouise/instagram-challenge.svg?branch=v1.0)
 [![Coverage Status](https://coveralls.io/repos/katylouise/instagram-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/katylouise/instagram-challenge?branch=master)
 
 Bextagram
