@@ -5,10 +5,11 @@
         %li.username= picture.user.username
         %li.timestamp= picture.timestamp
       = image_tag picture.image.url(:medium)
-      %h4= picture.caption
-      - if current_user && current_user.id == picture.user_id
-        = link_to "Edit caption", edit_picture_path(picture)
-        = link_to "Delete image", picture_path(picture), method: :delete
+      %div.caption_container
+        %h4= picture.caption
+        - if current_user && current_user.id == picture.user_id
+          = link_to image_tag('/images/edit.png', :class => "edit"), edit_picture_path(picture)
+          = link_to image_tag('/images/delete.png', :class => "delete"), picture_path(picture), method: :delete
       %p= link_to "Comment", new_picture_comment_path(picture)
       %p= link_to "Like picture", picture_likes_path(picture), class: 'likes-link'
       %p
