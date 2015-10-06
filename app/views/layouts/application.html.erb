@@ -12,11 +12,15 @@
     <header>
       <h1>Bextagram</h1>
       <% if user_signed_in? %>
-        <p class='user-reg'><%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-        <p class='username'>Signed in as <%= current_user.username %>
+        <ul>
+          <li class='sign-out'><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+          <li class='username'>Signed in as <%= current_user.username %></li>
+        </ul>
       <% else %>
-        <span class='user-reg'><%= link_to 'Sign up', new_user_registration_path %>
-        <span class='user-reg'><%= link_to 'Sign in', new_user_session_path %>
+        <ul>
+          <li class='sign-up'><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li class='sign-in'><%= link_to 'Sign in', new_user_session_path %></li>
+        </ul>
       <% end %>
       <p class='notice'><%= notice %>
       <p class='alert'><%= alert %>
