@@ -23,8 +23,10 @@ feature 'liking posts', js: true do
 
   context "on post page" do
     scenario 'users can like a post, which updates the like count' do
-      # find("img[alt='Kfc']").click
-      visit "/posts/1"
+      # find("img[src*='KFC.jpg']").click
+      click_link 'Kfc'
+      # visit "/posts/1"
+      expect(page).to have_content "I love cheese"
       click_link "Like"
       expect(page).to have_content "1 Like"
     end

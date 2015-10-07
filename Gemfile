@@ -44,6 +44,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'coveralls'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda'

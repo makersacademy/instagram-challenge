@@ -16,3 +16,4 @@ class Post < ActiveRecord::Base
     @post = self.comments.create(thoughts: comment_params[:thoughts], user_id: user.id)
   end
 end
+
