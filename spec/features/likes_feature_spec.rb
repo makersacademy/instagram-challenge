@@ -26,7 +26,7 @@ feature 'like-ing photos' do
   end
 
 
-  scenario 'a different user can like the photo one more time', js: true do
+  scenario 'likes from different users are summed the previous ones', js: true do
     user_2 = build(:user)
     click_link 'Like'
     expect(page).to have_content('1 like')
