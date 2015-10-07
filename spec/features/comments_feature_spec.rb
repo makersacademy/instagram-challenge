@@ -13,7 +13,7 @@ feature 'commenting' do
 
   scenario 'allow users to leave a comment using a form' do
     visit '/pictures'
-    click_link 'Comment'
+    click_link 'Write a comment...'
     fill_in 'Thoughts', with: 'I love this!'
     click_button 'Leave Comment'
     expect(current_path).to eq('/pictures')
@@ -24,7 +24,7 @@ feature 'commenting' do
     click_link 'Sign out'
     userina = build(:userina)
     sign_up(userina)
-    click_link 'Comment'
+    click_link 'Write a comment...'
     fill_in 'Thoughts', with: 'I love this!'
     click_button 'Leave Comment'
     expect(page).to have_content('jemima')

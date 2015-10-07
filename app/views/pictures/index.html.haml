@@ -8,18 +8,19 @@
       %div.caption_container
         %h4= picture.caption
         - if current_user && current_user.id == picture.user_id
-          = link_to image_tag('/images/edit.png', :class => "edit"), edit_picture_path(picture)
-          = link_to image_tag('/images/delete.png', :class => "delete"), picture_path(picture), method: :delete
-      %p= link_to "Comment", new_picture_comment_path(picture)
-      %p= link_to "Like picture", picture_likes_path(picture), class: 'likes-link'
+          = link_to image_tag('/images/edit.png', :class => "edit"), edit_picture_path(picture), class: 'edit-link'
+          = link_to image_tag('/images/delete.png', :class => "delete"), picture_path(picture), class: 'delete-link', method: :delete
       %p
         %span.likes_count= picture.likes.count
         = 'like'.pluralize picture.likes.count
-
       - if picture.comments.any?
         %ul
           - picture.comments.each do |comment|
             %li= "#{comment.user.username} #{comment.thoughts}"
+      %div.interact_container
+        = link_to image_tag('/images/like.png', :class => "like"), picture_likes_path(picture), class: ' likes-link'
+        = link_to "Write a comment...", new_picture_comment_path(picture), class: 'comment-link'
+
 
 - else
   %h2 No pictures yet!

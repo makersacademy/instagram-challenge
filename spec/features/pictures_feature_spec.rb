@@ -76,7 +76,7 @@ feature 'pictures' do
 
     scenario 'only owner of picture is able to edit their picture captions' do
       visit '/pictures'
-      click_link 'Edit caption'
+      find('.edit-link').click
       fill_in 'Caption', with: 'Amazing narwhal!'
       click_button 'Update Picture'
       expect(page).to have_content('Amazing narwhal!')
@@ -103,7 +103,7 @@ feature 'pictures' do
 
     scenario 'only owner of picture is able to delete their pictures' do
       visit '/pictures'
-      click_link 'Delete image'
+      find('.delete-link').click
       expect(page).not_to have_content('Awesome narwhal')
       expect(page).not_to have_selector('img')
       expect(page).to have_content('Image successfully deleted')
@@ -111,17 +111,17 @@ feature 'pictures' do
 
     scenario 'comments are deleted when an image is deleted' do
       visit '/pictures'
-      click_link 'Comment'
+      click_link 'Write a comment...'
       fill_in 'Thoughts', with: 'Love this'
       click_button 'Leave Comment'
-      click_link 'Delete image'
+      find('.delete-link').click
       expect(page).not_to have_content('Love this')
     end
 
     scenario 'likes are deleted when an image is deleted', js: true do
       visit '/pictures'
-      click_link 'Like picture'
-      click_link 'Delete image'
+      find('.like').click
+      page.find('.delete-link').trigger('click')
       expect(page).not_to have_content('1 like')
     end
   end
