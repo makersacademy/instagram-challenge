@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/katylouise/instagram-challenge.svg?branch=master)](https://travis-ci.org/katylouise/instagram-challenge.svg?branch=master)
+[![Test Coverage](https://codeclimate.com/github/katylouise/instagram-challenge/badges/coverage.svg)](https://codeclimate.com/github/katylouise/instagram-challenge/coverage)
 [![Code Climate](https://codeclimate.com/github/katylouise/instagram-challenge/badges/gpa.svg)](https://codeclimate.com/github/katylouise/instagram-challenge)
 
 Bextagram
