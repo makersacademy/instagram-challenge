@@ -14,6 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'aws-sdk', '< 2.0'
 gem 'paperclip'
 gem 'devise'
+gem 'foundation-rails'
 
 
 group :development, :test do
