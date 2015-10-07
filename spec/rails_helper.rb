@@ -11,6 +11,7 @@ require 'rspec/rails'
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
 require 'support/database_cleaner'
+require 'faker'
 
 require_relative 'helpers/sign_up_helper'
 require_relative 'support/factory_girl'

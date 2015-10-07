@@ -27,17 +27,14 @@ feature 'like-ing photos' do
 
 
   scenario 'a different user can like the photo one more time', js: true do
+    user_2 = build(:user)
     click_link 'Like'
     expect(page).to have_content('1 like')
     click_link 'Sign out'
-    user_2 = create(:user_two)
     sign_up(user_2)
-    visit photos_path
-    expect(page).to have_content 'No photos yet!'
-    # click_link 'Like'
-    # expect(page).to have_content('2 likes')
+    expect(page).to have_content '1 like'
+    click_link 'Like'
+    expect(page).to have_content '2 like'
   end
-
-
 
 end

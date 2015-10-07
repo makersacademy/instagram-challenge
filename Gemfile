@@ -24,6 +24,7 @@ group :development, :test do
   gem "factory_girl_rails", "~> 4.0"
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'faker'
 end
 
 group :development do
