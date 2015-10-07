@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title InstaWow
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  .navbar.navbar-inverse
+    %a.navbar-brand{ href: "/"}InstaWow
+    .pull-right
+      - if user_signed_in?
+        .btn.btn-default
+          =link_to "Sign out", destroy_user_session_path, method: :delete
+      - else
+        .btn.btn-default
+          = link_to "Sign in", new_user_session_path
+        .btn.btn-default
+          = link_to "Sign up", new_user_registration_path
+
+  %body
+    = notice
+    = yield
