@@ -21,23 +21,21 @@ feature 'liking posts', js: true do
     expect(page).to have_content "1 Like"
   end
 
-  context "on post page" do
-    scenario 'users can like a post, which updates the like count' do
-      # find("img[src*='KFC.jpg']").click
-      click_link 'Kfc'
-      # visit "/posts/1"
-      expect(page).to have_content "I love cheese"
-      click_link "Like"
-      expect(page).to have_content "1 Like"
-    end
+  scenario 'users can like a post, which updates the like count' do
+    # find("img[src*='KFC.jpg']").click
+    click_link 'Kfc'
+    # visit "/posts/1"
+    expect(page).to have_content "I love cheese"
+    click_link "Like"
+    expect(page).to have_content "1 Like"
+  end
 
-    scenario 'user can only like post once' do
-      # find("img[alt='Kfc']").click
-      visit "/posts/1"
-      expect(page).to have_content "0 Likes"
-      click_link "Like"
-      click_link "Like"
-      expect(page).to have_content "1 Like"
-    end
+  scenario 'user can only like post once' do
+    # find("img[alt='Kfc']").click
+    visit "/posts/1"
+    expect(page).to have_content "0 Likes"
+    click_link "Like"
+    click_link "Like"
+    expect(page).to have_content "1 Like"
   end
 end
