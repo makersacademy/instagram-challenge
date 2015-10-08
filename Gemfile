@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'foundation-rails'
 # Devise handles building a user model, routes for your users controller, and OAuth
 gem 'devise'
 # Paperclip is a gem that makes file uploads to Ruby apps a bit simpler
