@@ -2,7 +2,12 @@
   - @photos.each do |photo|
     %h1= link_to photo.title, photo_path(photo)
     = image_tag photo.image.url(:thumb)
-    %p= pluralize photo.likes.count, 'likes'
+
+    %p
+      = link_to "Likes", photo_likes_path(photo), class: 'likes-link'
+      %span.likes_count= photo.likes.count
+      = 'like'.pluralize photo.likes.count
+
     %h3
       Comment for
       = photo.title
@@ -12,6 +17,7 @@
           - photo.comments.each do |comment|
             %li
               = comment.thoughts
+
       - else
         %p No comments
         %p= link_to "Comment #{photo.title}", new_photo_comment_path(photo)
