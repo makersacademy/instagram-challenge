@@ -6,10 +6,13 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'capybara/rails'
 require 'rspec/rails'
 require 'spec_helper'
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+require 'support/database_cleaner'
 
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 end
