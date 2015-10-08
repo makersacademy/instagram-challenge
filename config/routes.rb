@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :images do
-    resources :comments
+    resources :comments, :likes
   end
 
   root to: "images#index"
