@@ -1,39 +1,58 @@
 
 <html>
 <body>
-  <h1>Instafraud</h1>
+
   <% if user_signed_in? %>
-    <h2><a href=<%=new_photo_path%>>Upload Photo</a>
+    <h2><a class="button" href=<%=new_photo_path%>>Upload Photo</a>
     </h2>
     <h3>
     <% if @photos.any? %>
+    <div class='row'>
+      <div class='one column large-centered'>
+    <ul class="small-block-grid-2">
+      <li>
       <section class='photo_owner'>
         <% @photos.reverse.each do |photo| %>
-          Photo by <%=photo.user.email %>, <%=photo.time_ago %>
+        Photo by 
+        <span class="photo-user">
+        <%=photo.user.email %>
+        </span>
+        , <%=photo.time_ago %>
       </section>
         <section class='stream_pic'>
         <%=image_tag photo.picture.url(:stream) %>
       </section>
       <section class='comment-like-form'>
       <%= form_for [photo, @comment], html: {class: "comment_form"} do |f| %>
-        <%  f.text_area :content, :placeholder => 'Add a comment...' %>
-        <%= f.text_field :content %>
+        <%= f.text_field :content, :placeholder => 'Add a comment...' %>
         <%= f.submit 'submit' %>
       <%end%>
+      <span class="like-button">
       <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
-      <span class='likes_count'><%= photo.likes.count %></span>
+    </span>
+      <span class='likes_count'>
+      <%= photo.likes.count %>
+    </span>
       <%= 'like'.pluralize(photo.likes.count) %>
       <br />
       </section>
         <% if photo.comments.any? %>
           <ul class='comments'>
           <% photo.comments.each do |comment| %>
-            <li><%=comment.user.email %> : <%=comment.content %></li>
+            <li>
+            <span class='comment-user'><%=comment.user.email %>
+            </span>
+             <%=comment.content %>
+          </li>
           <% end %>
           </ul>
         <br />
         <% end %>
       <% end %>
+      </li>
+      </ul>
+    </div>
+    </div>
     <% else %>
       No photos yet!
     <% end %>
