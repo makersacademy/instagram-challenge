@@ -13,19 +13,17 @@
       <li>
       <section class='photo_owner'>
         <% @photos.reverse.each do |photo| %>
-        Photo by 
-        <span class="photo-user">
-        <%=photo.user.email %>
-        </span>
-        , <%=photo.time_ago %>
+        Photo by
+        <span class="photo-user"><%=photo.user.email %>
+      </span>, <%=photo.time_ago %>
       </section>
         <section class='stream_pic'>
         <%=image_tag photo.picture.url(:stream) %>
       </section>
       <section class='comment-like-form'>
       <%= form_for [photo, @comment], html: {class: "comment_form"} do |f| %>
-        <%= f.text_field :content, :placeholder => 'Add a comment...' %>
-        <%= f.submit 'submit' %>
+        <%= f.text_field :content, :placeholder => 'Add a comment...', :class => 'comment-text-field' %>
+        <%= f.submit 'submit', :class => 'button tiny comment-button' %>
       <%end%>
       <span class="like-button">
       <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>

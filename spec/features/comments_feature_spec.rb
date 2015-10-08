@@ -16,7 +16,7 @@ feature 'comments' do
   scenario 'Users can comment photos' do
     fill_in 'comment[content]', with: "test comment\n"
     click_button 'submit'
-    expect(page).to have_content ("#{@user.email} : test comment")
+    expect(page).to have_content ("#{@user.email} test comment")
   end
 
 end
