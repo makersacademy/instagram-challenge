@@ -75,14 +75,11 @@ feature 'posts' do
   scenario 'clicking on a photo takes you through to full post', js: true do
     user = build(:user)
     sign_up user
-    # require 'byebug'; byebug
     click_link "Make a post"
     fill_in "Title", with: "I love cheese"
     attach_file("post[image]", "spec/assets/images/KFC.jpg")
     click_button "Post"
-    find(".img-rounded").trigger('click')
-    # visit "/posts/1"
+    find(".img-responsive").trigger('click')
     expect(page).to have_content "I love cheese"
-    expect(page).not_to have_content "Make a post"
   end
 end

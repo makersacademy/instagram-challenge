@@ -12,16 +12,14 @@ feature 'commenting' do
 
   scenario 'allows users to comment on posts' do
     visit '/posts'
-    click_link 'Leave comment'
-    fill_in "Thoughts", with: "Oh, wow, this looks great!"
-    click_button "Comment"
+    fill_in "Leave a comment...", with: "Oh, wow, this looks great!"
+    click_on "Comment"
     expect(page).to have_content "Oh, wow, this looks great!"
   end
 
   scenario 'deleting posts deletes comments' do
     visit '/posts'
-    click_link 'Leave comment'
-    fill_in "Thoughts", with: "Oh, wow, this looks great!"
+    fill_in "Leave a comment...", with: "Oh, wow, this looks great!"
     click_button "Comment"
     click_link "Delete"
     expect(page).to have_content "successfully deleted!"
@@ -30,8 +28,7 @@ feature 'commenting' do
 
   scenario 'user can edit their comment' do
     visit '/posts'
-    click_link 'Leave comment'
-    fill_in "Thoughts", with: "Oh, wow, this looks great!"
+    fill_in "Leave a comment...", with: "Oh, wow, this looks great!"
     click_button "Comment"
     click_link "Edit comment"
     fill_in "Thoughts", with: "Oh, wow, this looks to be the greatest!"
@@ -41,8 +38,7 @@ feature 'commenting' do
 
   scenario 'user cannot edit someone else\'s comment' do
     visit '/posts'
-    click_link 'Leave comment'
-    fill_in "Thoughts", with: "Oh, wow, this looks great!"
+    fill_in "Leave a comment...", with: "Oh, wow, this looks great!"
     click_button "Comment"
     click_link 'Sign out'
     user_2 = build(:user, username: "otterface", email: "b@alphabet.com")
@@ -53,8 +49,7 @@ feature 'commenting' do
 
   scenario 'user can delete their comment' do
     visit '/posts'
-    click_link 'Leave comment'
-    fill_in "Thoughts", with: "Oh, wow, this looks great!"
+    fill_in "Leave a comment...", with: "Oh, wow, this looks great!"
     click_button "Comment"
     click_link "Delete comment"
     expect(page).not_to have_content "Oh, wow, this looks great!"
@@ -63,8 +58,7 @@ feature 'commenting' do
 
   scenario 'user cannot delete someone else\'s comment' do
     visit '/posts'
-    click_link 'Leave comment'
-    fill_in "Thoughts", with: "Oh, wow, this looks great!"
+    fill_in "Leave a comment...", with: "Oh, wow, this looks great!"
     click_button "Comment"
     click_link 'Sign out'
     user_2 = build(:user, username: "otterface", email: "b@alphabet.com")

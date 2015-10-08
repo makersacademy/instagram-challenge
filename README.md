@@ -1,5 +1,4 @@
-Instagram Challenge
-===================
+[![Build Status](https://travis-ci.org/tealpaintedduck/instagram-challenge.svg?branch=master)](https://travis-ci.org/tealpaintedduck/instagram-challenge) [![Coverage Status](https://coveralls.io/repos/tealpaintedduck/instagram-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/tealpaintedduck/instagram-challenge?branch=master)
 
 This is an instagram clone - you can upload images with titles, make comments on your and other people's posts, and like posts. You can only like a post once.
 You can edit and delete your own comments.
