@@ -4,5 +4,11 @@
 //= require foundation
 //= require turbolinks
 //= require_tree .
+//= require_self
 
-$(function(){ $(document).foundation(); });
+var ready;
+ready = function() {
+  $(document).foundation();
+};
+$(document).ready(ready);
+$(document).on('page:load', ready);

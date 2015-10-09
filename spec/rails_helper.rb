@@ -25,3 +25,10 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
 end
+
+
+
+options = {js_errors: false}
+Capybara.register_driver :poltergeist do |app|
+Capybara::Poltergeist::Driver.new(app, options)
+end

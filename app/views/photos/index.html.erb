@@ -25,9 +25,19 @@
         <%= f.text_field :content, :placeholder => 'Add a comment...', :class => 'comment-text-field' %>
         <%= f.submit 'submit', :class => 'button tiny comment-button' %>
       <%end%>
-      <span class="like-button">
+
+      <script>
+      if($('.comment-text-field').val() ==  "")
+        $('.comment-button').attr('disabled', true);
+      $('.comment-text-field').keyup(function(){
+      if($('.comment-text-field').val() !=  "")
+       $('.comment-button').attr('disabled', false);
+      else
+       $('.comment-button').attr('disabled', true);
+      });
+      </script>
+
       <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
-    </span>
       <span class='likes_count'>
       <%= photo.likes.count %>
     </span>
