@@ -9,7 +9,7 @@ feature 'liking photos' do
 
   xit 'a user can like a photo, which increments the like count', js: true do
     visit '/photos'
-    click_link 'like'
+    click_on 'like'
     expect(page).to have_content("1 like")
   end
 end
