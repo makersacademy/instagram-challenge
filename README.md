@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/ljones140/StieglitzGram/badges/gpa.svg)](https://codeclimate.com/github/ljones140/StieglitzGram)
+
 #StieglitzGram
 
 This application is an online gallery for photographers to upload their photos. In a similar style to Instagram.
