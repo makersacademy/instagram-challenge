@@ -13,7 +13,9 @@ Application was built using behavour driven desgin. Feature tests were written f
 
 ##Technology used
 
-The application is built on rails with postgres as a database and foundation for the frontend. Also uses Jquery for some AJAX for some features. ImageMagick is used for the photo uploading.
+
+
+The application is built on Rails with Postgres as a database with Foundation as the frontend framework. Also uses Jquery for some AJAX for some features. ImageMagick is used for the photo uploading.
 
 Testing: RSpec and Capybara were used with Thoughtbots  FactoryGirl and Shoulda gems to help with the testing. To feature test the Javascript Poltergeist is used with RSpec and Capybara.
 
@@ -83,7 +85,7 @@ Lessons learnt
 * git ignore the photos directy so they are not uploaded to git hub
 * Phantom JS for javascript testing with capybara
 * If using phantom js in a test it affects factory girl factories. If you call them inside test block they will not be recognised.
-* 
+*
 
 To implement in next version
 ----------
