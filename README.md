@@ -9,7 +9,7 @@ At the time photography was seen as hobbyists pastime for bicycle clubs to recor
 
 ##Approach
 
-Application was built using behavour driven desgin. Feature tests were written first, then either code or if nesessary a unit test was written. This allowed the domain model to emerge as the test, code refactor cycle iterated.
+Application was built using BDD. Feature tests were written first, then either code or if nesessary a unit test was written. This allowed the domain model to emerge as the test, code refactor cycle iterated.
 
 ##Technology used
 
@@ -17,14 +17,15 @@ Application was built using behavour driven desgin. Feature tests were written f
 
 The application is built on Rails with Postgres as a database with Foundation as the frontend framework. Also uses Jquery for some AJAX for some features. ImageMagick is used for the photo uploading.
 
-Testing: RSpec and Capybara were used with Thoughtbots  FactoryGirl and Shoulda gems to help with the testing. To feature test the Javascript Poltergeist is used with RSpec and Capybara.
+Testing: RSpec and Capybara were used with Thoughtbots FactoryGirl and Shoulda gems to help with the testing. To feature test the Javascript Poltergeist.
 
 
 ##Installation
 
+Need to ensure you have ImageMagick and Postgres installed locally and also Poltergeist if you would like to run the tests
+
 ```sh
 git clone the repo git@github.com:ljones140/instagram-challenge.git
-# requires RVM and ImageMagick to be installed 
 #in directory run
 bundle install
 rails s
@@ -32,9 +33,7 @@ rails s
 rspec
 ```
 
-
-
-I have git ignored the photos I used for testing. You need to add them to /spec/assets_specs/photos/ if you would like to test images. You will also need to ensure the file names match those in the test that use photos
+I have git ignored the photos I used for testing. You need to add them to /spec/assets_specs/photos/ if you would like to test images.
 
 user stories
 
