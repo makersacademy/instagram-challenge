@@ -1,0 +1,39 @@
+%br/
+.row
+  .large-6.large-centered.columns
+    = link_to "Add a photo", new_photo_path
+    %hr/
+
+- if @photos.any?
+  - @photos.each do |photo|
+    .section
+      .row
+        .large-6.large-centered.columns
+          %p
+            added by:
+            %strong
+              = photo.user.email
+          = image_tag photo.image.url(:medium)
+          %p
+            = photo.title
+            %p
+              = link_to "Like", photo_likes_path(photo), class: 'likes-link'
+              %span.like_count= photo.likes.count
+              = 'like'.pluralize photo.likes.count
+            - if photo.comments.any?
+              %ul
+                - photo.comments.each do |comment|
+                  %li
+                    Comment by:
+                    = comment.user.email
+                    = comment.comment
+            .row.collapse.prefix-round
+              - if current_user
+                = render partial: "comments/form", locals: { photo: photo }
+            %hr/
+- else
+  .row
+    .large-8.large-centered.columns
+      %h1 No photos yet
+
+
