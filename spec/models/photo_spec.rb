@@ -6,14 +6,11 @@ RSpec.describe Photo, type: :model do
   it { is_expected.to have_many :comments }
   it { is_expected.to have_many :likes }
 
+  let(:user) { create(:user) }
+  let(:photo) { create(:photo) }
+  let(:comment_params) { { comment: 'text' } }
+
   describe 'build_with_user' do
-
-    let(:user) { create(:user) }
-
-    let(:photo) { Photo.create title: "test",
-                  image:  Rack::Test::UploadedFile.new(Rails.root + 'spec/assets_specs/photos/test_photo1.jpg', 'image/jpg')}
-    let(:comment_params) { { comment: 'text' } }
-
     subject(:comment) { photo.comments.build_with_user(comment_params, user) }
 
     it 'builds a comment' do
@@ -26,15 +23,7 @@ RSpec.describe Photo, type: :model do
 
   end
 
-
   describe 'create_with_user' do
-
-    let(:user) { create(:user) }
-
-    let(:photo) { Photo.create title: "test",
-                  image:  Rack::Test::UploadedFile.new(Rails.root + 'spec/assets_specs/photos/test_photo1.jpg', 'image/jpg')}
-    let(:comment_params) { { comment: 'text' } }
-
     subject(:comment) { photo.comments.create_with_user(comment_params, user) }
 
     it 'builds a comment' do
@@ -52,13 +41,6 @@ RSpec.describe Photo, type: :model do
   end
 
   describe 'create_with_user!' do
-
-    let(:user) { create(:user) }
-
-    let(:photo) { Photo.create title: "test",
-                  image:  Rack::Test::UploadedFile.new(Rails.root + 'spec/assets_specs/photos/test_photo1.jpg', 'image/jpg')}
-    let(:comment_params) { { comment: 'text' } }
-
     subject(:comment) { photo.comments.create_with_user!(comment_params, user) }
 
     it 'builds a comment' do
@@ -74,6 +56,5 @@ RSpec.describe Photo, type: :model do
       expect(Comment.count).to eq(1)
     end
   end
-
 
 end
