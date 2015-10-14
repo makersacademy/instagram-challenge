@@ -1,51 +1,52 @@
-require: rubocop-rspec
-
-EmptyLinesAroundBlockBody:
-  Enabled: false
-
-Style/StringLiterals:
-  Enabled: false
-
-Style/Documentation:
-  Description: Document classes and non-namespace modules.
-  Enabled: false
-
-Style/MethodDefParentheses:
-  Description: Checks if the method definitions have or don't have parentheses.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#method-parens
-  Enabled: false
-
-Style/SingleLineBlockParams:
-  Description: Enforces the names of some block params.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#reduce-blocks
-  Enabled: false
-  Methods:
-  - reduce:
-    - a
-    - e
-  - inject:
-    - a
-    - e
-
-Lint/UselessAssignment:
-  Description: Checks for useless assignment to a local variable.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars
-  Enabled: false
-
-Style/TrailingBlankLines:
-  Description: Checks trailing blank lines and final newline.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#newline-eof
-  Enabled: false
-  EnforcedStyle: final_newline
-  SupportedStyles:
-  - final_newline
-  - final_blank_line
-
-Style/EmptyLinesAroundClassBody:
-  Enabled: false
-
-Rails/Output:
-  Enabled: false
-
 AllCops:
+  DisabledByDefault: true
+  DisplayCopNames: true
+  DisplayStyleGuide: true
   RunRailsCops: true
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+inherit_from:
+  - enabled.yml
+  - disabled.yml
+
+Metrics/AbcSize:
+  # The ABC size is a calculated magnitude, so this number can be a Fixnum or
+  # a Float.
+  Max: 15
+
+Metrics/BlockNesting:
+  Max: 3
+
+Metrics/ClassLength:
+  CountComments: false  # count full line comments?
+  Max: 100
+
+Metrics/ModuleLength:
+  CountComments: false  # count full line comments?
+  Max: 100
+
+# Avoid complex methods.
+Metrics/CyclomaticComplexity:
+  Max: 6
+
+Metrics/LineLength:
+  Max: 90
+  # To make it possible to copy or click on URIs in the code, we allow lines
+  # contaning a URI to be longer than Max.
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 5
+
+Metrics/ParameterLists:
+  Max: 5
+  CountKeywordArgs: true
+
+Metrics/PerceivedComplexity:
+  Max: 7
+
