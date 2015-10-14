@@ -43,6 +43,32 @@ end
      expect(current_path).to eq "/posts/#{post.id}"
   end
 
+  context 'editing posts' do
+
+  scenario 'let a user edit a post' do
+   post = Post.create(content: 'hey')
+   visit '/posts'
+   click_link 'Edit hey'
+   fill_in 'Content', with: 'hello'
+   click_button 'Update Post'
+   expect(page).to have_content 'hello'
+   expect(current_path).to eq '/posts'
+  end
+
+end
+
+  context 'deleting posts' do
+
+    scenario 'removes a post when a user clicks a delete link' do
+      post = Post.create(content: 'hey')
+      visit '/posts'
+      click_link 'Delete hey'
+      expect(page).not_to have_content 'hey'
+      expect(page).to have_content 'Post deleted successfully'
+    end
+
+  end
+
 end
 
 end
