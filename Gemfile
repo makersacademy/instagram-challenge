@@ -13,6 +13,7 @@ gem 'haml'
 gem 'paperclip'
 gem 'devise'
 gem 'foundation-rails'
+gem 'coveralls', require: false
 
 group :development, :test do
   gem 'byebug'
