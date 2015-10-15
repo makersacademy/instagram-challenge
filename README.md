@@ -1,4 +1,7 @@
+[![CoverageStatus](https://coveralls.io/repos/ljones140/StieglitzGram/badge.svg?branch=master&service=github)](https://coveralls.io/github/ljones140/StieglitzGram?branch=master)
+
 [![Code Climate](https://codeclimate.com/github/ljones140/StieglitzGram/badges/gpa.svg)](https://codeclimate.com/github/ljones140/StieglitzGram)
+
 
 #StieglitzGram
 
