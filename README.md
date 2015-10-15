@@ -1,5 +1,5 @@
 [![CoverageStatus](https://coveralls.io/repos/ljones140/StieglitzGram/badge.svg?branch=master&service=github)](https://coveralls.io/github/ljones140/StieglitzGram?branch=master)
-
+[![BuildStatus](https://travis-ci.org/ljones140/StieglitzGram.svg)](https://travis-ci.org/ljones140/StieglitzGram)
 [![Code Climate](https://codeclimate.com/github/ljones140/StieglitzGram/badges/gpa.svg)](https://codeclimate.com/github/ljones140/StieglitzGram)
 
 
