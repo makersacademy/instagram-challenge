@@ -6,9 +6,9 @@ feature 'users' do
 
     scenario 'can see a sign up link' do
       visit root_path
-      expect(page).to have_button "Sign up"
+      expect(page).to have_link "Sign up"
     end
 
   end
-  
+
 end
