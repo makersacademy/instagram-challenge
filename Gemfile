@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'omniauth-github'
 gem "omniauth-google-oauth2"
+gem 'omniauth-twitter'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
