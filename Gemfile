@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'travis', '~> 1.8.0'
 gem 'coveralls', require: false
 gem 'omniauth-github'
 gem "omniauth-google-oauth2"
@@ -37,6 +38,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'rake'
   gem 'byebug'
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
