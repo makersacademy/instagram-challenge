@@ -10,6 +10,12 @@ class CommentsController < ApplicationController
     redirect_to pictures_path
   end
 
+  def destroy
+    @comment = Comment.find_by(picture_id: params[:picture_id], id: params[:id])
+    @comment.destroy
+    redirect_to pictures_path
+  end
+
 
   private
 
