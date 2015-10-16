@@ -25,7 +25,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'launchy'
 gem 'devise'
 gem 'paperclip'
-gem 'better errors'
 gem 'aws-sdk-v1'
 
 # Use ActiveModel has_secure_password
