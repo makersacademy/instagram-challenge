@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'users' do
+feature 'User Features ' do
 
   context 'when visiting the home page' do
 
@@ -9,6 +9,11 @@ feature 'users' do
       expect(page).to have_link "Sign up"
     end
 
-  end
+    scenario 'user can sign up' do
+    user = build(:user)
+    sign_up(user)
+    expect(page).to have_content "Welcome! You have signed up successfully."
+    end
 
+  end
 end
