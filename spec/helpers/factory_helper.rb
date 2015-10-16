@@ -1,0 +1,3 @@
+module FactoryHelper
+
+end
