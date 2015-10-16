@@ -9,7 +9,7 @@ class PicturesController < ApplicationController
 
   def create
     Picture.create(picture_params)
-    redirect_to pictures_path
+    redirect_to pictures_path, notice: 'successfully created'
   end
 
   def edit
@@ -19,7 +19,13 @@ class PicturesController < ApplicationController
   def update
     @picture = Picture.find(params[:id])
     @picture.update(update_params)
-    redirect_to pictures_path
+    redirect_to pictures_path, notice: 'successfully updated'
+  end
+
+  def destroy
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+    redirect_to pictures_path, notice: 'successfully deleted'
   end
 
   private
