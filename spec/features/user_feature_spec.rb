@@ -24,7 +24,6 @@ feature 'User Features ' do
       expect(page).to have_content "Signed out successfully."
     end
 
-
     scenario "" do end
     scenario "" do end
     scenario "" do end
