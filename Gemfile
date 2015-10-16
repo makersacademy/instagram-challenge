@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'coveralls', require: false
 gem 'omniauth-github'
 gem "omniauth-google-oauth2"
 gem 'omniauth-twitter'
