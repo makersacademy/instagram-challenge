@@ -9,11 +9,15 @@ class PicturesController < ApplicationController
   end
 
   def create
-    Picture.create(picture_params)
+    @picture = Picture.create(picture_params)
     redirect_to '/pictures'
+  end
+  
+  def show
+    @picture = Picture.find(params[:id])
   end
 
   def picture_params
-    params.require(:picture).permit(:description)
+    params.require(:picture).permit(:description, :image)
   end
 end

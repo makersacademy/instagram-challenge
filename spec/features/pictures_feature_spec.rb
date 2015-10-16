@@ -25,4 +25,16 @@ feature 'pictures' do
       expect(page).to have_content('Look at my dinner')
     end
   end
+
+  context 'viewing pictures' do
+    scenario do
+      visit '/pictures'
+      click_link 'Add a picture'
+      page.attach_file('picture[image]', Rails.root + 'spec/fixtures/test.jpg')
+      fill_in 'Description', with: 'test'
+      click_button 'Create Picture'
+      click_link 'test'
+      expect(current_path).to eq "/pictures/1"
+    end
+  end
 end
