@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'travis', '~> 1.8.0'
-gem 'coveralls', require: false
+gem 'coveralls', '~> 0.7.12', require: false
 gem 'omniauth-github'
 gem "omniauth-google-oauth2"
 gem 'omniauth-twitter'
