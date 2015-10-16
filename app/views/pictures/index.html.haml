@@ -1,6 +1,9 @@
 - if @pictures.any?
-  = @pictures.each do |picture|
+  - @pictures.each do |picture|
+    = image_tag picture.picture.url(:thumb)
+    = picture.picture_file_name
     %p= picture.description
+    = link_to 'Edit', edit_picture_path(picture)
 - else
   %h3 No pictures yet
 = link_to 'Add a picture', new_picture_path
