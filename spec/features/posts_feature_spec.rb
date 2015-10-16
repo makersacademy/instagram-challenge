@@ -33,6 +33,17 @@ feature 'posts' do
   end
 end
 
+  context 'an invalid post' do
+    it 'does not let you submit a blank post' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Content', with: ''
+      click_button 'Create Post'
+      expect(page).not_to have_css 'h2', text: ''
+      expect(page).to have_content 'error'
+    end
+end
+
   context 'viewing posts' do
 
   scenario 'lets a user view a post' do
