@@ -8,6 +8,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if user_signed_in? %>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign in", new_user_session_path %>
+  <%= link_to image_tag("GitHub_Logo.png", :alt => "Sign in with Github", :style => "width:80px; height:20; "), user_omniauth_authorize_path(:github) %>
+  <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
+  <%= link_to "Sign up", new_user_registration_path %>
+<% end %>
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
