@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
   def create
     @picture = Picture.find(params[:picture_id])
-    @comment = @picture.comments.new(comment_params)
+    @comment = @picture.build_with_user(comment_params, current_user)
     if @comment.save
       redirect_to pictures_path
     else
@@ -17,8 +17,12 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find_by(picture_id: params[:picture_id], id: params[:id])
-    @comment.destroy
-    redirect_to pictures_path
+    if @comment.user == current_user
+      @comment.destroy
+      redirect_to pictures_path
+    else
+      redirect_to pictures_path
+    end
   end
 
 

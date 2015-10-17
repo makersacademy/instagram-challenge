@@ -6,4 +6,9 @@ class Picture < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   belongs_to :user
 
+  def build_with_user(params, user)
+    comment = self.comments.build(params)
+    comment.user = user
+    comment
+  end
 end

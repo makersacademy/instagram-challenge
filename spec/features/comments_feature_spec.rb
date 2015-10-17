@@ -23,6 +23,7 @@ feature 'commenting' do
       click_link 'Create comment'
       fill_in 'Content', with: ''
       click_button 'Comment'
+      save_and_open_page
       expect(page).not_to have_link 'Delete this comment'
       expect(page).to have_content 'You cannot post an empty comment'
     end
