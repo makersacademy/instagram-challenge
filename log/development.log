@@ -1059,3 +1059,379 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 
+
+
+Started GET "/" for ::1 at 2015-10-17 19:59:50 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/christopherweeks/.rvm/gems/ruby-2.2.1/gems/railties-4.2.4/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 21ms (Views: 10.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 19:59:54 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.8ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 1]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 2]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 3]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 4]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 5]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 6]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 7]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 8]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 9]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 10]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 11]]
+  Rendered pictures/index.html.haml within layouts/application (58.0ms)
+Completed 200 OK in 399ms (Views: 385.1ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-10-17 19:59:54 +0100
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-10-17 19:59:54 +0100
+
+
+Started GET "/pictures/2/comments/new" for ::1 at 2015-10-17 20:00:10 +0100
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"2"}
+  [1m[36mPicture Load (0.4ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered comments/new.html.haml within layouts/application (25.9ms)
+Completed 200 OK in 97ms (Views: 82.9ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/pictures/2/comments" for ::1 at 2015-10-17 20:00:13 +0100
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2DTpGiey6RMDnzEwWUm0CN3yGMuu+E23WDH0/SPVNjH404vBWrPZ8+s9Fq6kklJVhjQXTRG/hGP8eOFD8Qk7FQ==", "comment"=>{"comment"=>"wank"}, "commit"=>"Leave Comment", "picture_id"=>"2"}
+  [1m[35mPicture Load (0.3ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "comments" ("comment", "picture_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["comment", "wank"], ["picture_id", 2], ["created_at", "2015-10-17 19:00:13.376737"], ["updated_at", "2015-10-17 19:00:13.376737"]]
+  [1m[36m (6.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 18ms (ActiveRecord: 7.5ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 20:00:13 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 1]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 2]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 2]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 3]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 4]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 5]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 6]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 7]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 8]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 9]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 10]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 11]]
+  Rendered pictures/index.html.haml within layouts/application (27.0ms)
+Completed 200 OK in 83ms (Views: 79.8ms | ActiveRecord: 2.9ms)
+
+
+Started DELETE "/pictures/2" for ::1 at 2015-10-17 20:00:15 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"3+YOzbHrFAJ43ECVJUOavWZzGYcxSJi16XWI35EVaBX/AWwWzOok4pB+ZwvYmHzgPbUWAY4PUWFNPJ1hQ8llMQ==", "id"=>"2"}
+  [1m[35mPicture Load (0.3ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 2]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 1]]
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "pictures" WHERE "pictures"."id" = $1  [["id", 2]]
+  [1m[36m (6.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 13ms (ActiveRecord: 7.8ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 20:00:15 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 1]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 3]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 4]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 5]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 6]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 7]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 8]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 9]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 10]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 11]]
+  Rendered pictures/index.html.haml within layouts/application (18.1ms)
+Completed 200 OK in 61ms (Views: 58.1ms | ActiveRecord: 2.4ms)
+
+
+Started DELETE "/pictures/3" for ::1 at 2015-10-17 20:00:18 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"UdA9lLZIG3alfkbdEjdlhy4k01AX80WwbffrSY5LRIdxN19Py0krlk3cYUPv7IPadeLc1qi0jGTJvv73XJdJow==", "id"=>"3"}
+  [1m[35mPicture Load (0.3ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 3]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 3]]
+  [1m[35m (6.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 11ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 20:00:18 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 1]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 4]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 5]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 6]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 7]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 8]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 9]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 10]]
+  [1m[36mComment Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 11]]
+  Rendered pictures/index.html.haml within layouts/application (15.8ms)
+Completed 200 OK in 60ms (Views: 57.4ms | ActiveRecord: 2.2ms)
+
+
+Started DELETE "/pictures/1" for ::1 at 2015-10-17 20:00:19 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"akaiPjsoxjjCB9h3ftRdH0iSUK8Ygq37AcBxWlp3LVhKocDlRin22Cql/+mDD7tCE1RfKafFZC+liWTkiKsgfA==", "id"=>"1"}
+  [1m[35mPicture Load (0.5ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 1]]
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 1]]
+  [1m[35m (6.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 12ms (ActiveRecord: 8.0ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 20:00:19 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 4]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 5]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 6]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 7]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 8]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 9]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 10]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 11]]
+  Rendered pictures/index.html.haml within layouts/application (15.6ms)
+Completed 200 OK in 63ms (Views: 59.7ms | ActiveRecord: 2.3ms)
+
+
+Started DELETE "/pictures/5" for ::1 at 2015-10-17 20:00:20 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"gf9GNRldhuTf1BlIdUwJxLK4+f7IY+IUPfpNtI8VN9ShGCTuZFy2BDd2PtaIl++Z6X72eHckK8CZs1gKXck68A==", "id"=>"5"}
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 5]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "pictures" WHERE "pictures"."id" = $1  [["id", 5]]
+  [1m[36m (6.5ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 11ms (ActiveRecord: 7.5ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 20:00:20 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 4]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 6]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 7]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 8]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 9]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 10]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 11]]
+  Rendered pictures/index.html.haml within layouts/application (15.2ms)
+Completed 200 OK in 81ms (Views: 78.5ms | ActiveRecord: 2.0ms)
+
+
+Started DELETE "/pictures/6" for ::1 at 2015-10-17 20:00:21 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0AqGFmunGOsxIB3Tn7U4FWgPybqY1SoFPd5SverNx+nw7eTNFqYoC9mCOk1ibt5IM8nGPCeS49GZl0cDOBHKzQ==", "id"=>"6"}
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 6]]
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "pictures" WHERE "pictures"."id" = $1  [["id", 6]]
+  [1m[36m (6.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 13ms (ActiveRecord: 8.0ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 20:00:21 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.7ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.4ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 4]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 7]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 8]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 9]]
+  [1m[35mComment Exists (0.1ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 10]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 11]]
+  Rendered pictures/index.html.haml within layouts/application (13.2ms)
+Completed 200 OK in 64ms (Views: 60.7ms | ActiveRecord: 2.4ms)
+
+
+Started DELETE "/pictures/7" for ::1 at 2015-10-17 20:00:21 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"VGzzG5UgHPLjFqUxajmNdq1zhXXm3E8h/r8qvoGL0Jx0i5HA6CEsEgu0gq+X4msr9rWK81mbhvVa9j8AU1fduA==", "id"=>"7"}
+  [1m[35mPicture Load (0.2ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 7]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 7]]
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 7]]
+  [1m[35m (6.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 12ms (ActiveRecord: 7.4ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 20:00:21 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 4]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 8]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 9]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 10]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 11]]
+  Rendered pictures/index.html.haml within layouts/application (12.2ms)
+Completed 200 OK in 70ms (Views: 67.1ms | ActiveRecord: 1.7ms)
+
+
+Started DELETE "/pictures/8" for ::1 at 2015-10-17 20:00:22 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"C9KWGBXKBlvI+2U1M+WHf//iQvHV7dK2cAC6K2y5+6crNfTDaMs2uyBZQqvOPmEipCRNd2qqG2LUSa+VvmX2gw==", "id"=>"8"}
+  [1m[35mPicture Load (0.3ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 8]]
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 8]]
+  [1m[35m (6.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 12ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 20:00:22 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 4]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 9]]
+  [1m[36mComment Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 10]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 11]]
+  Rendered pictures/index.html.haml within layouts/application (10.3ms)
+Completed 200 OK in 57ms (Views: 54.5ms | ActiveRecord: 1.8ms)
+
+
+Started DELETE "/pictures/9" for ::1 at 2015-10-17 20:00:22 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"y7th3ytrd2yw5uqwlJj/MWuiNhbId15iVxuj9QlUxbbrXAMEVmpHjFhEzS5pQxlsMGQ5kHcwl7bzUrZL24jIkg==", "id"=>"9"}
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 9]]
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "pictures" WHERE "pictures"."id" = $1  [["id", 9]]
+  [1m[36m (6.4ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 11ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 20:00:22 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 4]]
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 10]]
+  [1m[35mComment Exists (0.2ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 11]]
+  Rendered pictures/index.html.haml within layouts/application (7.0ms)
+Completed 200 OK in 48ms (Views: 46.4ms | ActiveRecord: 1.4ms)
+
+
+Started DELETE "/pictures/10" for ::1 at 2015-10-17 20:00:23 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"mKFMRah2iXZk3CHn3kxpyhdUU7bzdEiV36hK9QB+o7S4Ri6e1Xe5lox+Bnkjl4+XTJJcMEwzgUF74V9L0qKukA==", "id"=>"10"}
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 10]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "pictures" WHERE "pictures"."id" = $1  [["id", 10]]
+  [1m[36m (4.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 9ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 20:00:23 +0100
+Processing by PicturesController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mComment Exists (0.3ms)[0m  SELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1  [["picture_id", 4]]
+  [1m[36mComment Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 11]]
+  Rendered pictures/index.html.haml within layouts/application (6.1ms)
+Completed 200 OK in 48ms (Views: 46.5ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/pictures/11" for ::1 at 2015-10-17 20:00:24 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"joyAhs1w1g++i/DeVLKP9Y0iAmH2DAZLw6n4a8ciFwuua+JdsHHm71Yp10CpaWmo1uQN50lLz59n4O3VFf4aLw==", "id"=>"11"}
+  [1m[35mPicture Load (0.2ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 11]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 11]]
+  [1m[35m (6.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 11ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 20:00:24 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 4]]
+  Rendered pictures/index.html.haml within layouts/application (3.5ms)
+Completed 200 OK in 45ms (Views: 43.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/pictures/4/comments/new" for ::1 at 2015-10-17 20:00:25 +0100
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"4"}
+  [1m[35mPicture Load (0.2ms)[0m  SELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered comments/new.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 43ms (Views: 41.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/pictures/4/comments" for ::1 at 2015-10-17 20:00:29 +0100
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"SNIpcYAe4oXlXkai0olnUhKEYpp5Tc5k8iYo+5D81NBoNUuq/R/SZQ38YTwvUoEPSUJtHMYKB7BWbz1FQiDZ9A==", "comment"=>{"comment"=>"hello"}, "commit"=>"Leave Comment", "picture_id"=>"4"}
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "comments" ("comment", "picture_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["comment", "hello"], ["picture_id", 4], ["created_at", "2015-10-17 19:00:29.920718"], ["updated_at", "2015-10-17 19:00:29.920718"]]
+  [1m[35m (6.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 11ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 20:00:29 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[35mPicture Load (0.2ms)[0m  SELECT "pictures".* FROM "pictures"
+  [1m[36mComment Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT 1[0m  [["picture_id", 4]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1  [["picture_id", 4]]
+  Rendered pictures/index.html.haml within layouts/application (3.8ms)
+Completed 200 OK in 54ms (Views: 52.3ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/pictures/4" for ::1 at 2015-10-17 20:00:32 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"43wtfrDfQ9GAyKqjj/u9yuRyNZ2WHtPuw6+WkpViou/Dm0+lzd5zMWhqjT1yIFuXv7Q6GylZGjpn5oMsR76vyw==", "id"=>"4"}
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 4]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "comments" WHERE "comments"."id" = $1  [["id", 2]]
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 4]]
+  [1m[35m (6.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 12ms (ActiveRecord: 7.6ms)
+
+
+Started GET "/pictures" for ::1 at 2015-10-17 20:00:32 +0100
+Processing by PicturesController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 45ms (Views: 44.3ms | ActiveRecord: 0.3ms)
