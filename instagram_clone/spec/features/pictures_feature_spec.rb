@@ -21,4 +21,15 @@ feature 'pictures' do
     end
   end
 
+  context 'creating pictures' do
+    scenario 'prompts user to pill upload picture with a title' do
+      visit '/pictures'
+      click_link 'Add a picture'
+      fill_in 'Title', with: 'Holiday'
+      click_button 'Create Picture'
+      expect(page).to have_content 'Holiday'
+      expect(current_path).to eq '/pictures'
+    end
+  end
+
 end
