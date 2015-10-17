@@ -21,4 +21,15 @@ feature 'pictures' do
     end
   end
 
+  context 'creating pictures' do
+    scenario 'prompts user to fill out a form, then displays the new picture' do
+      visit '/pictures'
+      click_link 'Add a picture'
+      attach_file 'picture[image]', 'spec/assets/images/dism.jpg'
+      click_button 'Create Picture'
+      expect(page).to have_xpath("//img[@alt='Dism']")
+      expect(current_path).to eq '/pictures'
+    end
+  end
+
 end

@@ -1,7 +1,21 @@
 class PicturesController < ApplicationController
 
   def index
-    @pictures = Picture.all
+    @pictures = Picture.all.order('created_at DESC')
+  end
+
+  def new
+    @picture = Picture.new
+  end
+
+  def create
+    Picture.create(picture_params)
+    redirect_to '/pictures'
+  end
+
+  def picture_params
+    params.require(:picture).permit(:image)
   end
 
 end
+
