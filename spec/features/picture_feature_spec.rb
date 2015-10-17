@@ -10,14 +10,14 @@ feature 'pictures' do
   end
 
   context 'pictures have been added' do
-    
+
   before do
-    Picture.create(name: 'london_bridge')
+    Picture.create(description: 'london bridge')
   end
 
     scenario 'display pictures' do
       visit '/pictures'
-      expect(page).to have_content('london_bridge')
+      expect(page).to have_content('london bridge')
       expect(page).not_to have_content('No pictures yet')
     end
   end
