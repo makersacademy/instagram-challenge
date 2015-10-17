@@ -21,6 +21,26 @@ feature 'Picture' do
 
   end
 
+  context 'when creating pictures' do
+
+    scenario "picture's name cannot be shorter than 2 characters" do
+      visit '/pictures'
+      click_link 'Add a picture'
+      fill_in 'Name', with: 'A'
+      click_button 'Create Picture'
+      expect(page).to have_content 'error'
+    end
+
+    scenario "picture's name cannot be longer than 100 characters" do
+      visit '/pictures'
+      click_link 'Add a picture'
+      fill_in 'Name', with: "Maybe this is a wrong test but I want my picture's name not to be longer than one hundred characters."
+      click_button 'Create Picture'
+      expect(page).to have_content 'error'
+    end
+
+  end
+
   context 'pictures have been created' do
 
     let!(:picture) { Picture.create(name: 'Love', description: 'I love you') }

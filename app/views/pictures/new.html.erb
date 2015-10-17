@@ -1,3 +1,20 @@
+<% if @picture.errors.any? %>
+  <section id="errors">
+    <h2>
+      Failure. Please inspect the following
+      <%= pluralize(@picture.errors.count, "error") %>:
+    </h2>
+
+    <ul>
+      <% @picture.errors.full_messages.each do |error_message| %>
+      <li> <%= error_message %> </li>
+      <% end %>
+    </ul>
+
+  </section>
+<% end %>
+
+
 <%= form_for @picture do |f| %>
   <p>
     <%= f.label      :name %>
