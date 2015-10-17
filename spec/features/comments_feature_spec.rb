@@ -2,13 +2,14 @@ require 'rails_helper'
 
 feature 'commenting' do
   before do
-    user = create :user
-    sign_in(user)
-    user.pictures.create({picture_file_name: 'associations.jpg'})
+    @user = create :user
+    @user2 = create :user2
+    sign_in(@user)
+    @user.pictures.create({picture_file_name: 'associations.jpg'})
   end
 
   context 'creating a comment' do
-    scenario 'users can add a comment to a picture' do
+    scenario 'user can add a comment to a picture' do
       visit '/pictures'
       click_link 'Create comment'
       fill_in 'Content', with: 'Great'
@@ -17,7 +18,7 @@ feature 'commenting' do
       expect(current_path).to eq '/pictures'
     end
 
-    scenario 'users cannot post empty comment' do
+    scenario 'user cannot post empty comment' do
       visit '/pictures'
       click_link 'Create comment'
       fill_in 'Content', with: ''
@@ -34,10 +35,17 @@ feature 'commenting' do
       fill_in 'Content', with: 'Great'
       click_button 'Comment'
     end
-    scenario 'users can delete a comment' do
+    scenario 'user can delete a comment' do
       visit '/pictures'
       click_link 'Delete this comment'
       expect(page).not_to have_content 'Great'
+    end
+
+    scenario 'user can only delete their own comment' do
+      click_link 'Sign out'
+      sign_in(@user2)
+      click_link 'Delete this comment'
+      expect(page).to have_content 'Great'
     end
   end
 end
