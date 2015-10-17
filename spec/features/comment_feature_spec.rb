@@ -1,7 +1,13 @@
 require 'rails_helper'
 
 feature 'comments' do
-  before {Picture.create description: 'tower bridges'}
+
+  let(:user){ build :user }
+
+  before do
+    sign_up(user)
+    add_picture('tower bridge')
+  end
 
   scenario 'allows users to leave a comment using a form' do
      visit '/pictures'

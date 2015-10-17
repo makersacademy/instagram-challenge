@@ -9,6 +9,12 @@ feature 'pictures' do
     end
   end
 
+  let(:user){ build :user }
+
+  before do
+    sign_up(user)
+  end
+
   context 'creating pictures' do
     scenario 'prompts user to fill out a form, then displays the new pictures' do
       visit '/pictures'
@@ -23,7 +29,7 @@ feature 'pictures' do
   context 'pictures have been added' do
 
     before do
-      Picture.create(description: 'tower bridge')
+      add_picture('tower bridge')
     end
 
     scenario 'display pictures' do
