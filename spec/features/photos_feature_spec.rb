@@ -1,11 +1,10 @@
 require 'rails_helper'
 
   feature 'photos' do
-    xcontext 'no photos have been added' do
+    context 'no photos have been added' do
       scenario 'should display a prompt to add a photo' do
         visit '/photos'
-        expect(page).to have_content 'No photos yet'
-        expect(page).to have_link 'Add a photo'
+        expect(page).to have_link 'Add photo'
       end
     end
   end
@@ -14,12 +13,6 @@ require 'rails_helper'
     before do
       Photo.create(title: 'Test Photo')
     end
-
-  xscenario 'display photos' do
-    visit '/photos'
-    expect(page).to have_content('Test Photo')
-    expect(page).not_to have_content('No photos yet!')
-  end
 
   context 'creating photos' do
     scenario 'can create a photo' do
@@ -30,6 +23,41 @@ require 'rails_helper'
       click_button 'Create Photo'
       expect(page).to have_content('Test Photo')
       expect(page).to have_css("img[src*='testimage.jpg']")
+    end
+
+    scenario 'cannot create a photo without adding an image' do
+      visit '/photos'
+      click_link 'Add photo'
+      fill_in 'Title', with: 'Test Photo'
+      click_button 'Create Photo'
+      expect(page).to have_content('You must add an image to create a photo')
+    end
+
+    scenario 'cannot create a photo without adding a title' do
+      visit '/photos'
+      click_link 'Add photo'
+      attach_file('Image', 'spec/files/images/testimage.jpg')
+      click_button 'Create Photo'
+      expect(page).to have_content('You must add a title to create a photo')
+    end
+  end
+
+  context 'creating photos' do
+    scenario 'the index display' do
+      photo_one = create(:photo, title: "first post")
+      photo_two = create(:photo, title: "second post")
+
+      visit '/'
+      expect(page).to have_content("first post")
+      expect(page).to have_content("second post")
+      expect(page).to have_css("img[src*='testimage.jpg']")
+    end
+
+    xscenario 'can click on the image in the index and be taken to the photo' do
+      photo_one = create(:photo, title: "first photo")
+      visit '/'
+      find(:xpath, "//a[contains(@href,'photos/108')]").click
+      expect(page.current_path).to eq(photo_path(photo))
     end
   end
 end

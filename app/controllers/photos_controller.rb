@@ -5,7 +5,13 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.create(photo_params)
-    redirect_to @photo
+      if @photo.save
+        flash[:success] = "your photo as been added to Pinstagram"
+          redirect_to @photo
+      else
+        flash[:alert] = "You must a an image to create a photo"
+        render :new
+      end
   end
 
   def show
