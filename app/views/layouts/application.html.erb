@@ -8,9 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"> <%= notice %> </p>
-<p class="alert"> <%= alert %> </p>
-
+<div class="navbar navbar-default">
 <% if user_signed_in? %>
   <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 <% else %>
@@ -20,7 +18,9 @@
   <%= link_to image_tag("btn_google_signin_light_normal_web.png", :alt => "Sign in with Google", :style => "width:140px; height:50; "), user_omniauth_authorize_path(:google_oauth2) %>
   <%= link_to image_tag("sign-in-with-twitter-link.png", :alt => "Sign in with Twitter", :style => "width:140px; height:50; "), user_omniauth_authorize_path(:twitter) %>
 <% end %>
-
+</div>
+<p class="notice"> <%= notice %> </p>
+<p class="alert"> <%= alert %> </p>
 <%= yield %>
 
 </body>
