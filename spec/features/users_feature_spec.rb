@@ -17,11 +17,7 @@ feature 'User sign in and out' do
   context 'user signed in' do
     before do
       user = create :user
-      visit '/pictures'
-      click_link 'Sign in'
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
-      click_button 'Log in'
+      sign_in(user)
     end
 
     scenario 'user should see a "sign out" link' do

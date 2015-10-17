@@ -2,6 +2,8 @@ require 'rails_helper'
 
 feature 'commenting' do
   before do
+    user = create :user
+    sign_in(user)
     visit '/pictures'
     click_link 'Add a picture'
     attach_file('Picture', './spec/fixtures/associations.jpg')

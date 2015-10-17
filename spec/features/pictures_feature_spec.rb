@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 feature 'pictures' do
+  before do
+    user = create :user
+    sign_in(user)
+  end
   context 'no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
       visit '/pictures'
@@ -18,7 +22,6 @@ feature 'pictures' do
       click_button 'Post'
       expect(current_path).to eq '/pictures'
       expect(page).to have_selector 'img'
-      expect(page).to have_content 'associations'
       expect(page).to have_content 'Nice'
       expect(page).to have_content 'successfully created'
     end
@@ -30,6 +33,15 @@ feature 'pictures' do
       click_button 'Post'
       expect(page).to have_content 'error'
       expect(page).not_to have_content 'successfully created'
+    end
+
+    context 'user not signed in' do
+      scenario 'user cannot post without sign in' do
+        visit '/pictures'
+        click_link 'Add a picture'
+        expect(current_path).to eq '/users/sign_in'
+        expect(page).to have_content 'You need to sign in or sign up before continuing'
+      end
     end
   end
 
