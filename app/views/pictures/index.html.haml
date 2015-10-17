@@ -9,7 +9,8 @@
     - if picture.comments.any?
       - picture.comments.each do |comment|
         = comment.content
-        = link_to 'Delete this comment', picture_comment_path(picture, comment), method: :delete
+        - if current_user == comment.user
+          = link_to 'Delete this comment', picture_comment_path(picture, comment), method: :delete
     = link_to 'Create comment', new_picture_comment_path(picture)
 - else
   %h3 No pictures yet

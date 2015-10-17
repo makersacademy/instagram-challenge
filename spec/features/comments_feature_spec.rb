@@ -23,7 +23,6 @@ feature 'commenting' do
       click_link 'Create comment'
       fill_in 'Content', with: ''
       click_button 'Comment'
-      save_and_open_page
       expect(page).not_to have_link 'Delete this comment'
       expect(page).to have_content 'You cannot post an empty comment'
     end
@@ -42,11 +41,17 @@ feature 'commenting' do
       expect(page).not_to have_content 'Great'
     end
 
-    scenario 'user can only delete their own comment' do
+    # scenario 'user can only delete their own comment' do
+    #   click_link 'Sign out'
+    #   sign_in(@user2)
+    #   click_link 'Delete this comment'
+    #   expect(page).to have_content 'Great'
+    # end
+
+    scenario 'other users cannot see the delete this review link' do
       click_link 'Sign out'
       sign_in(@user2)
-      click_link 'Delete this comment'
-      expect(page).to have_content 'Great'
+      expect(page).not_to have_link 'Delete this comment'
     end
   end
 end
