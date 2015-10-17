@@ -28,7 +28,7 @@ feature 'pictures' do
       click_link 'Add a picture'
       fill_in 'Description', with: 'Nice'
       click_button 'Post'
-      expect(page).to have_content 'You need to attach a picture'
+      expect(page).to have_content 'error'
       expect(page).not_to have_content 'successfully created'
     end
   end
