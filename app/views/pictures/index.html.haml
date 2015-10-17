@@ -6,11 +6,12 @@
     - if current_user == picture.user
       = link_to 'Delete', picture_path(picture), method: :delete
       = link_to 'Edit', edit_picture_path(picture)
+    = link_to 'Like'
     - if picture.comments.any?
       - picture.comments.each do |comment|
         = comment.content
         - if current_user == comment.user
-          = link_to 'Delete this comment', picture_comment_path(picture, comment), method: :delete
+          = link_to 'Delete this comment', comment_path(comment), method: :delete
     = link_to 'Create comment', new_picture_comment_path(picture)
 - else
   %h3 No pictures yet
