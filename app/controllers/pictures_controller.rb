@@ -24,8 +24,12 @@ class PicturesController < ApplicationController
 
   def update
     @picture = Picture.find(params[:id])
-    @picture.update(update_params)
-    redirect_to pictures_path, notice: 'successfully updated'
+    if @picture.user == current_user
+      @picture.update(update_params)
+      redirect_to pictures_path, notice: 'successfully updated'
+    else
+      redirect_to pictures_path, alert: 'You cannot edit other users\' post'
+    end
   end
 
   def destroy

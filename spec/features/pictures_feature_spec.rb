@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature 'pictures' do
   before do
-    user = create :user
-    sign_in(user)
+    @user = create :user
+    sign_in(@user)
   end
   context 'no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
@@ -15,11 +15,7 @@ feature 'pictures' do
 
   context 'creating a picture with descriptions' do
     scenario 'users can add a picture with descriptions' do
-      visit '/pictures'
-      click_link 'Add a picture'
-      attach_file('Picture', './spec/fixtures/associations.jpg')
-      fill_in 'Description', with: 'Nice'
-      click_button 'Post'
+      post_picture
       expect(current_path).to eq '/pictures'
       expect(page).to have_selector 'img'
       expect(page).to have_content 'Nice'
@@ -48,17 +44,25 @@ feature 'pictures' do
 
   context 'editing descriptions' do
     scenario 'user can edit descriptions' do
-      visit '/pictures'
-      click_link 'Add a picture'
-      attach_file('Picture', './spec/fixtures/associations.jpg')
-      fill_in 'Description', with: 'Nice'
-      click_button 'Post'
+      post_picture
       click_link 'Edit'
       fill_in 'Description', with: 'Great'
       click_button 'Post'
       expect(page).not_to have_content 'Nice'
       expect(page).to have_content 'Great'
       expect(page).to have_content 'successfully updated'
+    end
+
+    scenario 'user can only edit their own descriptions' do
+      @user.pictures.create({picture_file_name: 'associations.jpg'})
+      click_link 'Sign out'
+      user2 = create :user2
+      sign_in(user2)
+      click_link 'Edit'
+      fill_in 'Description', with: 'Other users'
+      click_button 'Post'
+      expect(page).not_to have_content 'Other users'
+      expect(page).to have_content 'You cannot edit other users\' post'
     end
   end
 
