@@ -18,6 +18,15 @@ feature 'commenting' do
       expect(page).to have_content 'Great'
       expect(current_path).to eq '/pictures'
     end
+
+    scenario 'users cannot post empty comment' do
+      visit '/pictures'
+      click_link 'Create comment'
+      fill_in 'Content', with: ''
+      click_button 'Comment'
+      expect(page).not_to have_link 'Delete this comment'
+      expect(page).to have_content 'You cannot post an empty comment'
+    end
   end
 
   context 'deleting a comment' do
