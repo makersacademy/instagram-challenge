@@ -17,4 +17,11 @@ module FactoryHelper
     click_button "Log in"
   end
 
+  def request_forgotten_pass(user)
+    click_link "Sign in"
+    click_link "Forgot your password?"
+    fill_in "Email", with: user.email
+    click_button "Send me reset password instructions"
+  end
+
 end
