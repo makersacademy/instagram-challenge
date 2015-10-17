@@ -68,8 +68,12 @@ feature 'Pictures' do
 
     scenario 'user can change the title of a picture' do
       visit '/pictures'
+      click_link 'Comment on Holiday'
+      fill_in "Comment", with: 'SO sunny'
+      click_button 'Leave Comment'
       click_link 'Delete Holiday'
       expect(page).not_to have_content 'My Holiday'
+      expect(page).not_to have_content 'SO sunny'
       expect(page).to have_content 'Picture deleted successfully'
     end
   end
