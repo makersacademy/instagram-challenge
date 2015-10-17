@@ -26,13 +26,34 @@ feature 'Pictures' do
     let!(:picture) { Picture.create(name: 'Love', description: 'I love you') }
 
     scenario 'should display the pictures' do
-      visit '/pictures'
+      visit '/'
       expect(page).to have_content 'Name: Love'
-      expect(page).to have_content 'Description: I love you'    
+      expect(page).to have_content 'Description: I love you'
     end
 
     scenario 'can go to the pictures individual page' do
+      visit '/'
+      click_link 'Love'
+      expect(page).to have_content 'Name: Love'
+      expect(page.current_path).to eq "/pictures/#{picture.id}"
+    end
 
+    scenario 'can edit a picture' do
+      visit '/'
+      click_link 'Love'
+      click_link 'Edit Picture'
+      fill_in 'Name', with: 'You'
+      click_button 'Update Picture'
+      expect(page).to have_content 'You'
+      expect(page.current_path).to eq "/pictures/#{picture.id}"
+    end
+
+    scenario 'can delete a picture' do
+      visit '/'
+      click_link 'Love'
+      click_link 'Delete Picture'
+      expect(page.current_path).to eq '/pictures'
+      expect(page).to have_content 'No pictures yet'
     end
 
   end
