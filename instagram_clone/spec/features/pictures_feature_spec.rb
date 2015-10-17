@@ -61,9 +61,18 @@ feature 'Pictures' do
       click_button 'Update Picture'
       expect(page).to have_content 'My Holiday'
       expect(current_path).to eq '/pictures'
-
     end
+  end
 
+  context 'deleting pictures' do
+    before { Picture.create title: 'Holiday' }
+
+    scenario 'user can change the title of a picture' do
+      visit '/pictures'
+      click_link 'Delete Holiday'
+      expect(page).not_to have_content 'My Holiday'
+      expect(page).to have_content 'Picture deleted successfully'
+    end
   end
 
 end
