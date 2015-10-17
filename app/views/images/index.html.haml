@@ -4,6 +4,9 @@
     = image_tag image.image.url(:thumb)
     %br
     = link_to image.name, image_path(image)
+    - if current_user == image.user
+      = link_to "Edit image", edit_image_path(image)
+      = link_to "Delete image", image_path(image), method: :delete
     %br
     %span.likes_count= image.likes.count
     = 'like'.pluralize image.likes.count
@@ -17,4 +20,5 @@
             = comment.comments
 - else
   No images yet
+%br
 %a(href='images/new') Add an image

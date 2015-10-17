@@ -1,9 +1,14 @@
 %p= @image.name
 = image_tag @image.image.url(:thumb)
 = link_to "Add comment", new_image_comment_path(@image)
-= link_to "Delete image", image_path(@image), method: :delete
+- if current_user == @image.user
+  = link_to "Edit image", edit_image_path(@image)
+  = link_to "Delete image", image_path(@image), method: :delete
 - if @image.comments.any?
   %ul
     - @image.comments.each do |comment|
       %li
         = comment.comments
+        - if current_user == comment.user
+          = link_to "Edit comment", edit_image_comment_path(comment.id, comment)
+          = link_to "Delete comment", image_comment_path(comment.image_id, comment), method: :delete
