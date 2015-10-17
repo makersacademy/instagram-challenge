@@ -6,8 +6,20 @@
   <% @pictures.each do |picture| %>
     <p>
       <%= image_tag picture.image.url(:medium) %>
+    </p>
+    <p>
+      <%= link_to "Comment", new_picture_comment_path(picture) %>
       <%= link_to "Delete", picture_path(picture), method: :delete %>
     </p>
+    <% if picture.comments.any? %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+          <li>
+            <%= comment.thoughts %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   <% end %>
 <% else %>
   No pictures yet
