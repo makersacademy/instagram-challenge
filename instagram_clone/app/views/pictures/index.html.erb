@@ -5,6 +5,20 @@
     <h5><%= link_to "Delete #{picture.title}", picture_path(picture), method: :delete %></h5>
     <h5><%= link_to "Comment on #{picture.title}", new_picture_comment_path(picture)%></h5>
     <p><%= image_tag picture.image.url(:thumb) %></p>
+
+    <h3>Comments</h3>
+
+    <% if picture.comments.any? %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+          <li>
+            <%= comment.comments %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments</p>
+    <% end %>
   <% end %>
 <% else %>
   <h1>No pictures yet</h1>
