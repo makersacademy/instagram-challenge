@@ -10,9 +10,8 @@ feature 'pictures' do
   end
 
   context 'pictures have been added' do
-    before do
-      Picture.create(image_file_name: 'spec/assets/images/dism.jpg')
-    end
+
+    before {Picture.create(image_file_name: 'spec/assets/images/dism.jpg')}
 
     scenario 'display pictures' do
       visit '/pictures'
@@ -40,7 +39,19 @@ feature 'pictures' do
       click_button 'Create Picture'
       expect(page.body.index('Choc')).to be < (page.body.index('Dism'))
     end
-
   end
+
+  context 'deleting pictures' do
+
+    before {Picture.create(image_file_name: 'spec/assets/images/dism.jpg')}
+
+    scenario 'removes a picture when a user clicks a delete link' do
+      visit '/pictures'
+      click_link 'Delete'
+      expect(page).not_to have_xpath("//img[@alt='Dism']")
+      expect(page).to have_content 'Picture deleted successfully'
+    end
+
+end
 
 end
