@@ -17,7 +17,7 @@ feature 'pictures' do
     scenario 'display pictures' do
       visit '/pictures'
       expect(page).to have_content('Mountain')
-      expect(page).not to have_content('No pictures yet')
+      expect(page).not_to have_content('No pictures yet')
     end
   end
 
