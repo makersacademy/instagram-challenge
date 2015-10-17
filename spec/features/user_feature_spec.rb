@@ -24,7 +24,15 @@ feature 'User Features ' do
       expect(page).to have_content "Signed out successfully."
     end
 
-    scenario "" do end
+    scenario "users can sign in" do
+      user = build(:user)
+      sign_up(user)
+      visit root_path
+      click_link "Sign out"
+      visit root_path
+      sign_in(user)
+      expect(page).to have_content "Signed in successfully."
+    end
     scenario "" do end
     scenario "" do end
     scenario "" do end
