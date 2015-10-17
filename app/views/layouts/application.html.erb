@@ -8,16 +8,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div style="padding: 20px;">
+<p class="notice"> <%= notice %> </p>
+<p class="alert"> <%= alert %> </p>
+
 <% if user_signed_in? %>
   <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 <% else %>
   <%= link_to "Sign in", new_user_session_path %>
   <%= link_to "Sign up", new_user_registration_path %>
+  <%= link_to image_tag("GitHub_Logo.png", :alt => "Sign in with Github", :style => "width:80px; height:20; "), user_omniauth_authorize_path(:github) %>
+  <%= link_to image_tag("btn_google_signin_light_normal_web.png", :alt => "Sign in with Google", :style => "width:140px; height:50; "), user_omniauth_authorize_path(:google_oauth2) %>
+  <%= link_to image_tag("sign-in-with-twitter-link.png", :alt => "Sign in with Twitter", :style => "width:140px; height:50; "), user_omniauth_authorize_path(:twitter) %>
 <% end %>
-<div>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
 <%= yield %>
 

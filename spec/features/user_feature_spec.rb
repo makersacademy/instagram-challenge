@@ -56,7 +56,8 @@ feature 'User Features ' do
       visit root_path
       click_link "Sign out"
       request_forgotten_pass(user)
-      expect(page).to have_content ""
+      expect(page).to have_content "You will receive an email 
+      with instructions on how to reset your password in a few minutes."
     end
 
   end
