@@ -40,5 +40,12 @@ feature 'pictures' do
       expect(page).to have_content 'london bridge'
       expect(current_path).to eq '/pictures'
     end
+
+    scenario 'removes a picture when a user clicks a delete link' do
+      visit '/pictures'
+      click_link 'Delete'
+      expect(page).not_to have_content 'tower bridge'
+      expect(page).to have_content 'Post deleted successfully'
+    end
   end
 end
