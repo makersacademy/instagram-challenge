@@ -26,6 +26,7 @@ gem 'launchy'
 gem 'devise'
 gem 'paperclip'
 gem 'aws-sdk-v1'
+gem 'simple_form'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -41,6 +42,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'factory_girl'
 end
 
 group :development do
