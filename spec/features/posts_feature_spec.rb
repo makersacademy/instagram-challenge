@@ -23,8 +23,17 @@ feature 'posts' do
   end
 
   context 'creating posts' do
+    scenario 'user must be logged in to create a post' do
+      visit '/posts'
+      click_link 'Add a post'
+      expect(page).not_to have_content 'Create Post'
+      expect(current_path).to eq '/users/sign_in'
+    end
+
+
   scenario 'prompts user to fill out a form, then displays the new post' do
     visit '/posts'
+    sign_in
     click_link 'Add a post'
     fill_in 'Content', with: 'Hello World'
     click_button 'Create Post'
@@ -36,10 +45,10 @@ end
   context 'an invalid post' do
     it 'does not let you submit a blank post' do
       visit '/posts'
+      sign_in
       click_link 'Add a post'
       fill_in 'Content', with: ''
       click_button 'Create Post'
-      expect(page).not_to have_css 'h2', text: ''
       expect(page).to have_content 'error'
     end
 end
@@ -59,6 +68,7 @@ end
   scenario 'let a user edit a post' do
    post = Post.create(content: 'hey')
    visit '/posts'
+   sign_in
    click_link 'Edit hey'
    fill_in 'Content', with: 'hello'
    click_button 'Update Post'
@@ -72,12 +82,20 @@ end
 
     scenario 'removes a post when a user clicks a delete link' do
       post = Post.create(content: 'hey')
+      sign_in
       visit '/posts'
       click_link 'Delete hey'
       expect(page).not_to have_content 'hey'
       expect(page).to have_content 'Post deleted successfully'
     end
 
+    scenario "user cannot delete another user's posts" do
+      post = Post.create(content: 'not your post')
+      p post.user_id
+      sign_in
+      p current_user.id
+      expect(page).not_to have_link 'Delete not your post'
+    end
   end
 
 end
