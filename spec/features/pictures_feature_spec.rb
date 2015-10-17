@@ -30,6 +30,17 @@ feature 'pictures' do
       expect(page).to have_xpath("//img[@alt='Dism']")
       expect(current_path).to eq '/pictures'
     end
+    scenario 'the new picture appears above an old one' do
+      visit '/pictures'
+      click_link 'Add a picture'
+      attach_file 'picture[image]', 'spec/assets/images/dism.jpg'
+      click_button 'Create Picture'
+      click_link 'Add a picture'
+      attach_file 'picture[image]', 'spec/assets/images/choc.jpg'
+      click_button 'Create Picture'
+      expect(page.body.index('Choc')).to be < (page.body.index('Dism'))
+    end
+
   end
 
 end
