@@ -3,6 +3,7 @@
     <h2><%= link_to picture.title, picture_path(picture) %></h2>
     <h5><%= link_to "Comment on #{picture.title}", new_picture_comment_path(picture)%></h5>
     <p><%= image_tag picture.image.url(:thumb) %></p>
+    <p><%= pluralize picture.likes.count, 'like' %></p>
     <% if current_user %>
       <% if (picture.user_id == current_user.id) %>
         <h5><%= link_to "Edit #{picture.title}", edit_picture_path(picture) %></h5>
