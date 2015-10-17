@@ -1,3 +1,9 @@
 %p= @image.name
 = image_tag @image.image.url(:thumb)
+= link_to "Add comment", new_image_comment_path(@image)
 = link_to "Delete image", image_path(@image), method: :delete
+- if @image.comments.any?
+  %ul
+    - @image.comments.each do |comment|
+      %li
+        = comment.comments

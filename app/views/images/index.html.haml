@@ -3,6 +3,12 @@
     %h2= image.name
     = image_tag image.image.url(:thumb)
     = link_to image.name, image_path(image)
+    = link_to "Add comment", new_image_comment_path(image)
+    - if image.comments.any?
+      %ul
+        - image.comments.each do |comment|
+          %li
+            = comment.comments
 - else
   No images yet
 %a(href='images/new') Add an image
