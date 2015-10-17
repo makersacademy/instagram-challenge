@@ -8,8 +8,13 @@ class PicturesController < ApplicationController
   end
 
   def create
-    Picture.create(picture_params)
-    redirect_to pictures_path, notice: 'successfully created'
+    @picture = Picture.new(picture_params)
+    if @picture.save
+      redirect_to pictures_path, notice: 'successfully created'
+    else
+      flash.now[:alert] = 'You need to attach a picture'
+      render 'new'
+    end
   end
 
   def edit

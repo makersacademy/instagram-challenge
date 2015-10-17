@@ -22,6 +22,15 @@ feature 'pictures' do
       expect(page).to have_content 'Nice'
       expect(page).to have_content 'successfully created'
     end
+
+    scenario 'user cannot post without attaching a picture' do
+      visit '/pictures'
+      click_link 'Add a picture'
+      fill_in 'Description', with: 'Nice'
+      click_button 'Post'
+      expect(page).to have_content 'You need to attach a picture'
+      expect(page).not_to have_content 'successfully created'
+    end
   end
 
   context 'editing descriptions' do
@@ -41,18 +50,30 @@ feature 'pictures' do
   end
 
   context 'deleting a picture' do
-    scenario 'user can delete a picture' do
+
+    before do
       visit '/pictures'
       click_link 'Add a picture'
       attach_file('Picture', './spec/fixtures/associations.jpg')
       fill_in 'Description', with: 'Nice'
       click_button 'Post'
+    end
+
+    scenario 'user can delete a picture' do
       click_link 'Delete'
       expect(current_path).to eq '/pictures'
       expect(page).not_to have_selector 'img'
       expect(page).not_to have_content 'associations'
       expect(page).not_to have_content 'Nice'
       expect(page).to have_content 'successfully deleted'
+    end
+
+    scenario 'comment gets deleted when deleting a picture' do
+      click_link 'Create comment'
+      fill_in 'Content', with: 'Great'
+      click_button 'Comment'
+      click_link 'Delete'
+      expect(page).not_to have_content 'Great'
     end
   end
 
