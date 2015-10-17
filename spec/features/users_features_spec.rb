@@ -12,6 +12,11 @@ feature "User can sign in and out" do
       visit('/')
       expect(page).not_to have_link('Sign out')
     end
+
+    it "should not see 'add photo' link" do
+      visit('/')
+      expect(page).not_to have_link('Add photo')
+    end
   end
 
   context "user signed in on the homepage" do
@@ -35,4 +40,7 @@ feature "User can sign in and out" do
       expect(page).not_to have_link('Sign up')
     end
   end
+
+
+
 end

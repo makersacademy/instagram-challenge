@@ -14,17 +14,13 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+  <%= render 'layouts/header' %>
 <body class= "container">
   <% flash.each do |name, msg| %>
     <% content_tag :div, msg, class: [:alert, alert_for(name)] %>
   <% end %>
 <%= yield %>
 
-  <% if user_signed_in? %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% else %>
-    <%= link_to "Sign in", new_user_session_path %>
-    <%= link_to "Sign up", new_user_registration_path %>
-  <% end %>
+
 </body>
 </html>
