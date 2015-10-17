@@ -12,20 +12,19 @@ feature 'Pictures' do
 
   context 'when picture has been added in the database' do
 
-    def create_a_picture file_path = "spec/fixtures/image3.png"
+    scenario 'image of picture is displayed' do
       visit '/pictures'
       click_link 'Add a picture'
       fill_in 'Title', with: 'Holiday'
-      attach_file "picture_image", file_path
+      attach_file "picture_image", "spec/fixtures/image3.png"
       click_button 'Create Picture'
-    end
-
-    scenario 'image of picture is displayed' do
-      visit '/pictures'
-      create_a_picture
       #make capybara test for image on page
       expect(page).to have_content('Holiday')
       expect(page).not_to have_content('No pictures yet')
+      # expect(page).to have_css 'img', src: 'image3.png'
+      # expect(page).to have_css("img[src='image3.jpg']")
+      # expect(page).to have_selector("img[src='/spec/fixtures/image3']")
+
     end
 
     scenario 'title of picture is displayed' do
