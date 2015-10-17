@@ -25,8 +25,8 @@ require 'rails_helper'
     scenario 'can create a photo' do
       visit '/photos'
       click_link 'Add photo'
-      attach_file('Image1', 'spec/files/images/testimage.jpg')
-      fill_in 'title', with: 'Test Photo'
+      attach_file('Image', 'spec/files/images/testimage.jpg')
+      fill_in 'Title', with: 'Test Photo'
       click_button 'Create Photo'
       expect(page).to have_content('#testimage')
       expect(page).to have_css("img[src*='testimage.jpg']")
