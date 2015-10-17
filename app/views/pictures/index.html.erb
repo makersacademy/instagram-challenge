@@ -1,7 +1,9 @@
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
     <p> <%= image_tag picture.image.url(:medium) %> </p>
-    <p> <%= picture.caption %> </p>    
+    <p> <%= picture.name %> </p>
+    <p> <%= picture.caption %> </p>
+    <p> <%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %></p>
   <% end %>
 <% else %>
   <h2>No one has uploaded any pictures yet!</h2>
