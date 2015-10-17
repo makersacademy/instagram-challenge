@@ -6,8 +6,13 @@ class CommentsController < ApplicationController
 
   def create
     @picture = Picture.find(params[:picture_id])
-    @picture.comments.create(comment_params)
-    redirect_to pictures_path
+    @comment = @picture.comments.new(comment_params)
+    if @comment.save
+      redirect_to pictures_path
+    else
+      flash.now[:alert] = 'You cannot post an empty comment'
+      render 'new'
+    end
   end
 
   def destroy
