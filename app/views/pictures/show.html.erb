@@ -5,3 +5,18 @@
 </p>
 
 <p> <%= @picture.description %> </p>
+
+<p> Comments: </p>
+
+<% if @picture.comments.any? %>
+  <% @picture.comments.each do |comment| %>
+    <p> <%= comment.comment %> </p>
+  <% end %>
+
+<% else %>
+
+<p> No comments </p>
+
+<% end %>
+
+<p> <%= link_to "Leave a comment", new_picture_comment_path(@picture.id) %> </p>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Pictures' do
+feature 'Picture' do
 
   context 'when there are no pictures' do
 
@@ -45,6 +45,7 @@ feature 'Pictures' do
       fill_in 'Name', with: 'You'
       click_button 'Update Picture'
       expect(page).to have_content 'You'
+      expect(page).to have_content "You have successfully updated the picture"
       expect(page.current_path).to eq "/pictures/#{picture.id}"
     end
 
@@ -54,6 +55,7 @@ feature 'Pictures' do
       click_link 'Delete Picture'
       expect(page.current_path).to eq '/pictures'
       expect(page).to have_content 'No pictures yet'
+      expect(page).to have_content 'You have successfully deleted the picture'
     end
 
   end
