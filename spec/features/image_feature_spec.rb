@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 feature 'images' do
+
+  before do
+    user = build(:user)
+    sign_up(user)
+  end
   context 'no images have been added' do
     scenario 'should display a prompt to add an image' do
       visit '/images'
@@ -19,10 +24,7 @@ feature 'images' do
 
   context 'image has been added' do
     scenario 'display images' do
-      visit '/images/new'
-      fill_in 'Name', with: 'Missing'
-      attach_file(id="image_image", Rails.root + 'public/images/thumb/missing.png')
-      click_button 'Create Image'
+      add_image
       expect(page).to have_content('Missing')
       expect(page).not_to have_content('No images yet')
     end
