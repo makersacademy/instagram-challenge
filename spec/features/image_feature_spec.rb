@@ -9,6 +9,17 @@ feature 'images' do
     end
   end
 
+  xcontext 'creating images' do
+    scenario 'prompts user to fill out a form, then displays the new image' do
+      visit '/images'
+      click_link 'Add an image'
+      fill_in 'Name', with: 'KFC'
+      click_button 'Create Restaurant'
+      expect(page).to have_content 'KFC'
+      expect(current_path).to eq '/restaurants'
+    end
+  end
+
   xcontext 'images have been added' do
     before do
       Image.create(name: 'me')
