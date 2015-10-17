@@ -24,8 +24,7 @@ module FactoryHelper
     click_button "Send me reset password instructions"
   end
 
-  def create_post(user)
-    sign_up(user)
+  def create_post
     visit root_path
     click_link "Create post"
     fill_in "post[caption]", with: "test post!"
