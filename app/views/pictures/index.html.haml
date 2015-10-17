@@ -3,8 +3,9 @@
     = image_tag picture.picture.url(:thumb)
     = picture.picture_file_name
     %p= picture.description
-    = link_to 'Edit', edit_picture_path(picture)
-    = link_to 'Delete', picture_path(picture), method: :delete
+    - if current_user == picture.user
+      = link_to 'Delete', picture_path(picture), method: :delete
+      = link_to 'Edit', edit_picture_path(picture)
     - if picture.comments.any?
       - picture.comments.each do |comment|
         = comment.content

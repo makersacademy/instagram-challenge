@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'pictures' do
   before do
     @user = create :user
+    @user2 = create :user2
     sign_in(@user)
   end
   context 'no pictures have been added' do
@@ -53,16 +54,22 @@ feature 'pictures' do
       expect(page).to have_content 'successfully updated'
     end
 
-    scenario 'user can only edit their own descriptions' do
-      @user.pictures.create({picture_file_name: 'associations.jpg'})
+    # scenario 'user can only edit their own descriptions' do
+    #   @user.pictures.create({picture_file_name: 'associations.jpg'})
+    #   click_link 'Sign out'
+    #   sign_in(@user2)
+    #   click_link 'Edit'
+    #   fill_in 'Description', with: 'Other users'
+    #   click_button 'Post'
+    #   expect(page).not_to have_content 'Other users'
+    #   expect(page).to have_content 'You cannot edit other users\' post'
+    # end
+
+    scenario 'other users cannot see the edit link' do
+      post_picture
       click_link 'Sign out'
-      user2 = create :user2
-      sign_in(user2)
-      click_link 'Edit'
-      fill_in 'Description', with: 'Other users'
-      click_button 'Post'
-      expect(page).not_to have_content 'Other users'
-      expect(page).to have_content 'You cannot edit other users\' post'
+      sign_in(@user2)
+      expect(page).not_to have_link 'Edit'
     end
   end
 
@@ -89,13 +96,18 @@ feature 'pictures' do
       expect(page).not_to have_content 'Great'
     end
 
-    scenario 'user can only delete their own posted pictures' do
-      user2 = create :user2
+    # scenario 'user can only delete their own posted pictures' do
+    #   click_link 'Sign out'
+    #   sign_in(@user2)
+    #   click_link 'Delete'
+    #   expect(page).to have_content 'Nice'
+    #   expect(page).to have_selector 'img'
+    # end
+
+    scenario 'other users cannot see the delete link' do
       click_link 'Sign out'
-      sign_in(user2)
-      click_link 'Delete'
-      expect(page).to have_content 'Nice'
-      expect(page).to have_selector 'img'
+      sign_in(@user2)
+      expect(page).not_to have_link 'Delete'
     end
   end
 
