@@ -9,26 +9,22 @@ feature 'images' do
     end
   end
 
-  xcontext 'creating images' do
+  context 'creating images' do
     scenario 'prompts user to fill out a form, then displays the new image' do
       visit '/images'
       click_link 'Add an image'
-      fill_in 'Name', with: 'KFC'
-      click_button 'Create Restaurant'
-      expect(page).to have_content 'KFC'
-      expect(current_path).to eq '/restaurants'
+      expect(page).to have_content 'Name'
     end
   end
 
-  xcontext 'images have been added' do
-    before do
-      Image.create(name: 'me')
-    end
-
-    scenario 'display restaurants' do
-      visit '/restaurants'
-      expect(page).to have_content('KFC')
-      expect(page).not_to have_content('No restaurants yet')
+  context 'image has been added' do
+    scenario 'display images' do
+      visit '/images/new'
+      fill_in 'Name', with: 'Missing'
+      attach_file(id="image_image", Rails.root + 'public/images/thumb/missing.png')
+      click_button 'Create Image'
+      expect(page).to have_content('Missing')
+      expect(page).not_to have_content('No images yet')
     end
   end
 end
