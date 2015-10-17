@@ -28,7 +28,7 @@ require 'rails_helper'
       attach_file('Image', 'spec/files/images/testimage.jpg')
       fill_in 'Title', with: 'Test Photo'
       click_button 'Create Photo'
-      expect(page).to have_content('#testimage')
+      expect(page).to have_content('Test Photo')
       expect(page).to have_css("img[src*='testimage.jpg']")
     end
   end
