@@ -32,9 +32,11 @@ feature 'pictures' do
       visit '/pictures'
       click_link 'Upload a picture'
       fill_in 'Caption', with: 'what a day!'
+      page.attach_file("picture_image", File.absolute_path('./spec/imgs/nandos.png'))
       click_button 'Create Picture'
       expect(page).to have_content('what a day!')
-      expect(page).not_to have_content('No one has uploaded any pictures yet!')
+      expect(page).to have_css('img', text: "")
+      expect{page.find(:xpath, "//img[@alt='Nandos']")}.not_to raise_error
     end
 
   end
