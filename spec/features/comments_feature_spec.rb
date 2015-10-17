@@ -5,17 +5,11 @@ feature 'commenting' do
     user = create :user
     sign_in(user)
     user.pictures.create({picture_file_name: 'associations.jpg'})
-    # visit '/pictures'
-    # click_link 'Add a picture'
-    # attach_file('Picture', './spec/fixtures/associations.jpg')
-    # fill_in 'Description', with: 'Nice'
-    # click_button 'Post'
   end
 
   context 'creating a comment' do
     scenario 'users can add a comment to a picture' do
       visit '/pictures'
-      save_and_open_page
       click_link 'Create comment'
       fill_in 'Content', with: 'Great'
       click_button 'Comment'

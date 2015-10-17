@@ -30,8 +30,12 @@ class PicturesController < ApplicationController
 
   def destroy
     @picture = Picture.find(params[:id])
-    @picture.destroy
-    redirect_to pictures_path, notice: 'successfully deleted'
+    if @picture.user == current_user
+      @picture.destroy
+      redirect_to pictures_path, notice: 'successfully deleted'
+    else
+      redirect_to pictures_path
+    end
   end
 
   private
