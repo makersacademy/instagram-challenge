@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find(params[:id])
-    if current_user == @comment.user
+    if current_user.username == @comment.username
       render 'edit'
     else
       flash[:notice] = "You can not edit someone else's comment"
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    if current_user == @comment.user
+    if current_user.username == @comment.username
       @comment.destroy
       flash[:notice] = 'Comment deleted successfully'
       redirect_to '/images'
