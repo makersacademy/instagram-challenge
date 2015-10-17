@@ -6,6 +6,7 @@ feature "User can sign in and out" do
       visit('/')
       expect(page).to have_link('Sign in')
       expect(page).to have_link('Sign up')
+      expect(page).to have_link('Sign in with Facebook')
     end
 
     it "should not see 'sign out' link" do
