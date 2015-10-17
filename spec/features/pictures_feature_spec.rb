@@ -34,7 +34,7 @@ feature 'pictures' do
       fill_in 'Caption', with: 'what a day!'
       click_button 'Create Picture'
       expect(page).to have_content('what a day!')
-      expect(page).not_to have_content('No one has uploaded any pictures yet!') 
+      expect(page).not_to have_content('No one has uploaded any pictures yet!')
     end
 
   end
