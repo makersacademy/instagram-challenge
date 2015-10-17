@@ -4,6 +4,9 @@ class PicturesController < ApplicationController
     @pictures = Picture.all
   end
 
+  # def show
+  # end
+
   def new
     @picture = Picture.new
   end
@@ -20,7 +23,7 @@ class PicturesController < ApplicationController
   private
 
   def picture_params
-    params.require(:picture).permit(:name)
+    params.require(:picture).permit(:name, :description)
   end
 
 end

@@ -23,10 +23,16 @@ feature 'Pictures' do
 
   context 'pictures have been created' do
 
+    let!(:picture) { Picture.create(name: 'Love', description: 'I love you') }
+
     scenario 'should display the pictures' do
-      Picture.create(name: 'Love')
       visit '/pictures'
-      expect(page).to have_content 'Love'
+      expect(page).to have_content 'Name: Love'
+      expect(page).to have_content 'Description: I love you'    
+    end
+
+    scenario 'can go to the pictures individual page' do
+
     end
 
   end
