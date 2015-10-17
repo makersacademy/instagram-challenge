@@ -38,6 +38,7 @@ feature 'pictures' do
     context 'user not signed in' do
       scenario 'user cannot post without sign in' do
         visit '/pictures'
+        click_link 'Sign out'
         click_link 'Add a picture'
         expect(current_path).to eq '/users/sign_in'
         expect(page).to have_content 'You need to sign in or sign up before continuing'
