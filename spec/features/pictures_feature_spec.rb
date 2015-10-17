@@ -65,11 +65,7 @@ feature 'pictures' do
   context 'deleting a picture' do
 
     before do
-      visit '/pictures'
-      click_link 'Add a picture'
-      attach_file('Picture', './spec/fixtures/associations.jpg')
-      fill_in 'Description', with: 'Nice'
-      click_button 'Post'
+      post_picture
     end
 
     scenario 'user can delete a picture' do
@@ -87,6 +83,15 @@ feature 'pictures' do
       click_button 'Comment'
       click_link 'Delete'
       expect(page).not_to have_content 'Great'
+    end
+
+    scenario 'user can only delete their own posted pictures' do
+      user2 = create :user2
+      click_link 'Sign out'
+      sign_in(user2)
+      click_link 'Delete'
+      expect(page).to have_content 'Nice'
+      expect(page).to have_selector 'img'
     end
   end
 

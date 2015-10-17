@@ -4,4 +4,6 @@ class Picture < ActiveRecord::Base
   validates_attachment_presence :picture
   validates :picture_file_name, presence: true
   has_many :comments, dependent: :destroy
+  belongs_to :user
+
 end
