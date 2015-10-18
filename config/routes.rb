@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'users/:user_id/photos' => 'users#show'
-  resources :photos
+  resources :photos do
+    resources :comments
+  end
   root to: "photos#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
