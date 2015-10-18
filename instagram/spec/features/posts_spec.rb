@@ -1,0 +1,14 @@
+require 'rails_helper'
+
+feature 'posts' do
+  scenario 'photos can be uploaded' do
+    visit '/posts'
+    click_link 'New post'
+    attach_file('Image', 'spec/features/test.jpg')
+    fill_in('Caption', with:'This is the BBC')
+    click_button 'Create Post'
+    expect(page).to have_content('This is the BBC')
+
+    #expect(page).to have_css("img[src*='test.jpg']")
+  end
+end
