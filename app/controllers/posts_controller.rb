@@ -7,10 +7,6 @@ class PostsController < ApplicationController
   def new
   end
 
-  def show
-    @posts = Post.all
-  end
-
   def create
     @post = Post.new(post_params.merge(post_params))
     if @post.save
