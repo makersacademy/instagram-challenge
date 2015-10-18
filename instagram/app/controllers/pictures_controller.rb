@@ -10,6 +10,10 @@ class PicturesController < ApplicationController
     @picture = Picture.new
   end
 
+  def show
+    @picture = Picture.find(params[:id])
+  end
+
   def create
     @picture = Picture.create(picture_params)
     redirect_to pictures_path

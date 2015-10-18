@@ -40,12 +40,17 @@ feature 'pictures' do
       fill_in("Password", with: "testtest")
       fill_in("Password confirmation", with: "testtest")
       click_button("Sign up")
-    end
-    scenario 'prompts user to upload an image and write a caption' do
       visit '/'
       click_link "New Post"
       upload_picture
+    end
+
+    scenario 'User uploads picture and caption appears on page' do
       expect(page).to have_content "lunch"
+    end
+
+    scenario 'displays picture on the page' do
+      expect(page).to have_css("img[src*='lunch.png']")
     end
   end
 
