@@ -23,7 +23,6 @@ feature "User can sign in and out" do
     before do
       visit('/')
       click_link('Sign up')
-      save_and_open_page
       fill_in('Email', with: 'test@example.com')
       fill_in('Username', with: 'Test User')
       fill_in('Password', with: 'testtest', :match => :prefer_exact)

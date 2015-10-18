@@ -91,6 +91,19 @@ context 'photos have been added' do
     end
   end
 
+  context 'The user did not create the comment' do
+    scenario 'Users cannot edit a comment that they did not create' do
+      visit '/photos'
+      click_link 'Add photo'
+      fill_in('Title', with: 'Test Photo')
+      attach_file('Image', 'spec/files/images/testimage.jpg')
+      click_button 'Create Photo'
+      click_link('Add Comment')
+      fill_in('Comment', with: 'What a lovely photo')
+      click_button('Create Comment')
+      click_liink('Sign Out')
+    end
+  end
 
 
 

@@ -9,14 +9,20 @@
 <h3>
   <% if @photo.comments.any? %>
     <% @photo.comments.order('created_at DESC').each do |comment| %>
+
     <br>
 </h3>
     <h4>
         <%= time_ago_in_words(comment.created_at) + ' ' + "ago" %>
+        <%= "Created by #{comment.user}"%>
     </h4>
   <h3>
         <%= comment.comment %>
     <br>
+    <td><%= link_to 'Edit', edit_comment_path %></td>
+    <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
     <% end %>
   <% end %>
 </h3>
