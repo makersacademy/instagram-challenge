@@ -10,9 +10,7 @@ feature 'posts' do
   end
 
   context 'posts have been added' do
-    before do
-      Post.create(description: 'My first instagram post')
-    end
+    before { Post.create description: 'My first instagram post' }
 
     scenario 'display posts' do
       visit '/posts'
@@ -31,6 +29,20 @@ feature 'posts' do
       expect(current_path).to eq '/posts'
     end
   end
+
+  context 'editing posts' do
+    before { Post.create description: 'KFC' }
+
+    scenario 'user can edit posts' do
+      visit '/posts'
+      click_link 'Edit post'
+      fill_in 'Description', with: 'I\'ve now edited my post'
+      click_button 'Update Post'
+      expect(page).to have_content 'I\'ve now edited my post'
+      expect(current_path).to eq '/posts'
+    end
+  end
+
 
 
 
