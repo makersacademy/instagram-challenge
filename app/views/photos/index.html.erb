@@ -7,6 +7,11 @@
         <% photo.comments.each do |comment| %>
           <li>
             <%= comment.comment %>
+            <% if current_user %>
+              <% if comment.user_id == current_user.id %>
+                <%= link_to "Delete Comment", photo_comment_path(photo, comment), method: :delete %>
+              <% end %>
+            <% end %>
           </li>
         <% end %>
       </ul>
