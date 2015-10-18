@@ -16,6 +16,7 @@ module SessionHelpers
     fill_in :user_password, with: user.password
     click_button 'Log in'
   end
+
   def create_image
     visit '/images'
     click_link 'Add an Image'

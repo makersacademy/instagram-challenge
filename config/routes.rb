@@ -4,8 +4,9 @@ devise_for :users
 
 root to: "images#index"
 
-resources :images do
+resources :images, shallow: true do
   resources :comments
+  resources :likes
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
