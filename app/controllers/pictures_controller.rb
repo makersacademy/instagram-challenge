@@ -10,11 +10,11 @@ class PicturesController < ApplicationController
   end
 
   def new
-    @picture = Picture.new
+    @picture = current_user.pictures.new
   end
 
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.new(picture_params)
 
     if @picture.save
       redirect_to pictures_path
@@ -30,15 +30,26 @@ class PicturesController < ApplicationController
   def update
     @picture = Picture.find(params[:id])
     @picture.update(picture_params)
-    flash[:notice] = "You have successfully updated the picture"
+
+    if current_user == @picture.user
+      flash[:notice] = "You have successfully updated the picture"
+    else
+      flash[:notice] = "Only the creator can edit the picutre"
+    end
     redirect_to picture_path(@picture)
   end
 
   def destroy
     @picture = Picture.find(params[:id])
-    @picture.destroy
-    flash[:notice] = "You have successfully deleted the picture"
-    redirect_to pictures_path
+
+    if current_user == @picture.user
+      @picture.destroy
+      flash[:notice] = "You have successfully deleted the picture"
+      redirect_to pictures_path
+    else
+      flash[:notice] = "Only the creator can delete the picture"
+      redirect_to picture_path(@picture)
+    end
   end
 
   private

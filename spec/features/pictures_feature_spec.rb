@@ -81,23 +81,52 @@ feature 'Picture' do
     scenario 'can edit a picture' do
       sign_up(user)
       visit '/'
-      click_link 'Love'
+      click_link 'Add a picture'
+      fill_in 'Name', with: 'Kiss'
+      fill_in 'Description', with: 'You'
+      click_button 'Create Picture'
+
+      click_link 'Kiss'
       click_link 'Edit Picture'
       fill_in 'Name', with: 'You'
       click_button 'Update Picture'
       expect(page).to have_content 'You'
       expect(page).to have_content "You have successfully updated the picture"
+    end
+
+    scenario "user cannot edit other people's pictures" do
+      sign_up(user)
+      visit '/'
+      click_link 'Love'
+      click_link 'Edit Picture'
+      fill_in 'Name', with: 'You'
+      click_button 'Update Picture'
+      expect(page).to have_content 'Only the creator can edit the picutre'
       expect(page.current_path).to eq "/pictures/#{picture.id}"
     end
 
     scenario 'can delete a picture' do
       sign_up(user)
       visit '/'
-      click_link 'Love'
+      click_link 'Add a picture'
+      fill_in 'Name', with: 'Kiss'
+      fill_in 'Description', with: 'You'
+      click_button 'Create Picture'
+
+      click_link 'Kiss'
       click_link 'Delete Picture'
       expect(page.current_path).to eq '/pictures'
-      expect(page).to have_content 'No pictures yet'
       expect(page).to have_content 'You have successfully deleted the picture'
+      expect(page).not_to have_content 'Kiss'
+    end
+
+    scenario "cannot delete someone else's picture" do
+      sign_up(user)
+      visit '/'
+      click_link 'Love'
+      click_link 'Delete Picture'
+      expect(page.current_path).to eq "/pictures/#{picture.id}"
+      expect(page).to have_content 'Only the creator can delete the picture'
     end
 
   end
