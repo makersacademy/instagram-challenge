@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Commenting' do
-  before {Picture.create description: 'Something'}
+  before {Picture.create description: 'Something', image_file_name: 'test.jpg'}
   scenario 'User can leave a comment' do
     visit '/pictures'
     click_link 'View picture'
