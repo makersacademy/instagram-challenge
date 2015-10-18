@@ -20,6 +20,7 @@ feature 'liking pictures' do
     click_link 'Like'
     click_link 'Like'
     expect(page).to_not have_content('2 likes')
+    expect(page).to have_content('You have already liked this picture')
   end
 
   scenario 'can not like a picture while not signed in' do

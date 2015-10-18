@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
-  
+
   def index
     @pictures = Picture.all
   end
@@ -37,6 +37,6 @@ class PicturesController < ApplicationController
   end
 
   def picture_params
-    params.require(:picture).permit(:description)
+    params.require(:picture).permit(:description, :image)
   end
 end
