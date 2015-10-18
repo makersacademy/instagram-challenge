@@ -1,11 +1,14 @@
 class LikesController < ApplicationController
 
   def create
+    print "LIKED POSTSSSS"
+    p current_user.liked_posts
     @post = Post.find(params[:post_id])
     if current_user.has_liked? @post
-      @post.likes.destroy
+      like = @post.likes.find_by(user_id: current_user.id)
+      current_user.likes.destroy(like)
     else
-      @post.likes.create
+      current_user.likes.create(post_id: params[:post_id])
     end
     redirect_to posts_path
   end

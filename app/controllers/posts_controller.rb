@@ -22,9 +22,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    p "HERE HERE HERE HERE HERE HIYAAAAA"
     @post = Post.find(params[:id])
-    p @post.likes
   end
 
   def edit

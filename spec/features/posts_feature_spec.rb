@@ -56,24 +56,34 @@ end
   context 'viewing posts' do
 
   scenario 'lets a user view a post' do
-     post = Post.create(content: 'hey')
-     visit '/posts'
-     click_link 'hey'
-     expect(page).to have_content 'hey'
-     expect(current_path).to eq "/posts/#{post.id}"
+    user = build(:user)
+    sign_up(user)
+    make_post
+    click_link 'hey'
+    expect(page).to have_content 'hey'
   end
 
   context 'editing posts' do
 
   scenario 'let a user edit a post' do
-   post = Post.create(content: 'hey')
-   visit '/posts'
-   sign_in
+   user = build(:user)
+   sign_up(user)
+   make_post
    click_link 'Edit hey'
    fill_in 'Content', with: 'hello'
-   click_button 'Update Post'
+   click_button "Update Post"
    expect(page).to have_content 'hello'
    expect(current_path).to eq '/posts'
+  end
+
+  scenario 'user can only edit their own posts' do
+    user = build(:user)
+    user2 = build(:user, email: "different@gmail.com")
+    sign_up(user)
+    make_post
+    click_link "Sign out"
+    sign_up(user2)
+    expect(page).to_not have_content "Edit hey"
   end
 
 end
@@ -81,18 +91,22 @@ end
   context 'deleting posts' do
 
     scenario 'removes a post when a user clicks a delete link' do
-      post = Post.create(content: 'hey')
-      sign_in
-      visit '/posts'
+      user = build(:user)
+      sign_up(user)
+      make_post
       click_link 'Delete hey'
       expect(page).not_to have_content 'hey'
       expect(page).to have_content 'Post deleted successfully'
     end
 
     scenario "user cannot delete another user's posts" do
-      post = Post.create(content: 'not your post')
-      sign_in
-      expect(page).not_to have_link 'Delete not your post'
+      user = build(:user)
+      user2 = build(:user, email: "different@gmail.com")
+      sign_up(user)
+      make_post
+      click_link "Sign out"
+      sign_up(user2)
+      expect(page).not_to have_link 'Delete hey'
     end
   end
 

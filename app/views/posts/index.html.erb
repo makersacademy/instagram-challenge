@@ -2,8 +2,12 @@
   <% @posts.each do |post| %>
     <h2> <%= link_to post.content, post_path(post) %> </h2>
       <%= image_tag post.image.url(:thumb) %>
-      <% if current_user && current_user.has_liked?(post) == false  %>
-      <%= link_to "Like", post_likes_path(post), method: :post %>
+      <% if current_user %>
+        <% if current_user.liked_posts.include?(post) %>
+          <%= link_to "Unlike", post_likes_path(post), method: :post %>
+        <% else %>
+          <%= link_to "Like", post_likes_path(post), method: :post %>
+        <% end %>
       <% end %>
       <p><%= pluralize post.likes.count, 'like' %></p>
       <% if post.comments.any? %>
