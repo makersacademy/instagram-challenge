@@ -27,6 +27,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'aws-sdk-v1'
 gem 'simple_form'
+gem 'slim'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -7,8 +7,10 @@ context 'photos have been added' do
     visit('/')
     click_link('Sign up')
     fill_in('Email', with: 'test@example.com')
-    fill_in('Password', with: 'testtest')
-    fill_in('Password confirmation', with: 'testtest')
+    save_and_open_page
+    fill_in('Username', with: 'Test User')
+    fill_in('Password', with: 'testtest', :match => :prefer_exact)
+    fill_in('Password confirmation', with: 'testtest', :match => :prefer_exact)
     click_button('Sign up')
     Photo.create(title: 'Test Photo')
   end
@@ -35,6 +37,18 @@ context 'photos have been added' do
   end
 
   scenario 'should display the time ago a comment has added' do
+    visit '/photos'
+    click_link 'Add photo'
+    fill_in('Title', with: 'Test Photo')
+    attach_file('Image', 'spec/files/images/testimage.jpg')
+    click_button 'Create Photo'
+    click_link('Add Comment')
+    fill_in('Comment', with: 'What a lovely photo')
+    click_button('Create Comment')
+    expect(page).to have_content('less than a minute ago')
+  end
+
+  scenario 'should display the name of the user who added the comment' do
     visit '/photos'
     click_link 'Add photo'
     fill_in('Title', with: 'Test Photo')
