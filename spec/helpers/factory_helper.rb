@@ -51,6 +51,7 @@ module FactoryHelper
   end
 
   def comment_on_post(comment)
+    Timecop.freeze(Time.now)
     visit root_path
     click_link "test post!"
     click_link "Leave comment"

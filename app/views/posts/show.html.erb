@@ -5,6 +5,8 @@
 <% if @comments.any? %>
   <% @comments.each do |comment| %>
     <ul>
+      <%= comment.created_at.strftime('%a, %d %b %Y %H:%M:%S') %> <br>
+      <%= "#{@users.find(comment.user_id).email} commented:" %>
       <%= comment.comment %>
     </ul>
   <% end %>
