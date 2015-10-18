@@ -62,7 +62,6 @@ require 'rails_helper'
     scenario 'photos have the name of the user who created them' do
       photo_one = create(:photo, title: "first post")
       photo_two = create(:photo, title: "second post")
-
       visit '/'
       expect(page).to have_content("first post")
       expect(page).to have_content("second post")

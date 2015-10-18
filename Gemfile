@@ -45,6 +45,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda'
   gem 'orderly'
+  gem 'timecop'
 end
 
 group :development do

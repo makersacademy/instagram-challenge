@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+
 context 'photos have been added' do
   before do
     Photo.create(title: 'Test Photo')
@@ -31,6 +32,18 @@ context 'photos have been added' do
     fill_in('Comment', with: 'What a lovely photo')
     click_button('Create Comment')
     expect(page).to have_content('What a lovely photo')
+  end
+
+  scenario 'should display the time ago a comment has added' do
+    visit '/photos'
+    click_link 'Add photo'
+    fill_in('Title', with: 'Test Photo')
+    attach_file('Image', 'spec/files/images/testimage.jpg')
+    click_button 'Create Photo'
+    click_link('Add Comment')
+    fill_in('Comment', with: 'What a lovely photo')
+    click_button('Create Comment')
+    expect(page).to have_content('less than a minute ago')
   end
 
   xscenario 'should display a comment on the photos page in descending created order' do
