@@ -6,25 +6,24 @@
 <h3>
   <%= link_to "Add Comment", new_photo_comment_path(@photo) %>
 <br>
-<h3>
   <% if @photo.comments.any? %>
     <% @photo.comments.order('created_at DESC').each do |comment| %>
 
     <br>
 </h3>
-    <h4>
+<h4>
         <%= time_ago_in_words(comment.created_at) + ' ' + "ago" %>
         <%= "Created by #{comment.user}"%>
-    </h4>
-  <h3>
+</h4>
+<h3>
         <%= comment.comment %>
+</h3>
     <br>
     <h4>
+    <% if comment.user_id == current_user.id %>
     <td><%= link_to 'Edit', edit_comment_path %></td>
     <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </h4>
-
+    <% end %>
     <% end %>
   <% end %>
-</h3>
-</h3>
