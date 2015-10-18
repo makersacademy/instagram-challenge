@@ -9,9 +9,11 @@
 
     - if photo.comments.any?
       %ul
-        - photo.comments.each do |comment|
+        - photo.comments.reverse.each do |comment|
           %li
             = comment.thoughts
+            - if current_user && current_user.id == comment.user_id
+              = link_to "Delete comment", photo_comment_path(photo, comment), method: :delete
     - else
       %p No comments
 

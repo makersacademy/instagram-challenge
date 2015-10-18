@@ -15,5 +15,4 @@ class User < ActiveRecord::Base
     photo
   end
 
-
 end

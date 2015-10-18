@@ -15,4 +15,10 @@ module UserHelpers
     click_button "Post photo"
   end
 
+  def add_comment
+    click_link '💬'
+    fill_in "Thoughts", with: 'So cute!'
+    click_button 'Add comment'
+  end
+
 end
