@@ -5,11 +5,11 @@
         <div class="username"><%= photo.username %></div>
         <div class="timestamp"><%= relative_time(photo.created_at) %></div>
         <% if photo.image_file_name %>
-          <%= link_to image_tag(photo.image.url(:thumb)), photo_path(photo), class: "photolink" %>
+          <div class="image"><%= link_to image_tag(photo.image.url(:thumb)), photo_path(photo), class: "photolink" %></div>
         <% end %>
-        <h2><%= photo.caption %></h2>
+        <span class="favourites_count"> <%= photo.favourites.length %> </span> <span class="favourite_icon"><%= 'Favourite'.pluralize(photo.favourites.count) %></span>
         <%= link_to "Favourite", photo_favourites_path(photo), class: 'favourites-link' %>
-        <span class="favourites_count"> <%= photo.favourites.length %> </span> <%= 'Favourite'.pluralize(photo.favourites.count) %>
+        <div class="caption"><%= photo.caption %></div>
         <% if photo.comments.any? %>
         <h3>Comments for <%= photo.caption %></h3>
           <ul>
