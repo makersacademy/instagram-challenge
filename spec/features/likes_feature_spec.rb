@@ -15,4 +15,18 @@ feature 'liking pictures' do
     expect(page).to have_content('1 like')
   end
 
+  scenario 'a user can only like a picture once' do
+    visit '/'
+    click_link 'Like'
+    click_link 'Like'
+    expect(page).to_not have_content('2 likes')
+  end
+
+  scenario 'can not like a picture while not signed in' do
+    visit('/')
+    click_link('Sign out')
+    click_link('Like')
+    expect(page).to_not have_content('1 like')
+  end
+
 end
