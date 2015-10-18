@@ -53,8 +53,9 @@ module FactoryHelper
   def comment_on_post(comment)
     visit root_path
     click_link "test post!"
-    fill_in "comment", with: comment
-    click_link "Leave Comment"
+    click_link "Leave comment"
+    fill_in "comment[comment]", with: comment
+    click_button "Create Comment"
   end
 
 end
