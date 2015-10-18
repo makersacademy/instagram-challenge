@@ -23,6 +23,13 @@ feature 'User posts' do
       page.has_content? "reset_5.png'"
     end
 
+    scenario 'users can view individuals posts' do
+      user = build(:user)
+      sign_up(user)
+      upload_picture
+      click_link "test post!"
+    end
+
   end
   
 end

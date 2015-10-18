@@ -39,7 +39,5 @@ module FactoryHelper
       Rails.root + "spec/fixtures/files/reset_5.png")
     click_button "Create Post"
   end
-
-
-
+  
 end
