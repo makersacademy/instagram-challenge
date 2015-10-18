@@ -10,7 +10,7 @@ feature 'posts' do
     click_button 'Log in'
   end
 
-  scenario 'photos can be uploaded' do
+  scenario 'posts can be created with image and caption' do
     visit '/posts'
     click_link 'New post'
     attach_file('Image', 'spec/features/test.jpg')
