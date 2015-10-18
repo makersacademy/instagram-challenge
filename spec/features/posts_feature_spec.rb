@@ -33,7 +33,7 @@ feature 'posts' do
   context 'editing posts' do
     before { Post.create description: 'KFC' }
 
-    scenario 'user can edit posts' do
+    scenario 'edits post upon clicking update edit post link' do
       visit '/posts'
       click_link 'Edit post'
       fill_in 'Description', with: 'I\'ve now edited my post'
@@ -43,6 +43,16 @@ feature 'posts' do
     end
   end
 
+  context 'deleting posts' do
+    before { Post.create description: 'Delete this post' }
+
+    scenario 'removes post upon clicking delete post link' do
+      visit '/posts'
+      click_link 'Delete post'
+      expect(page).to have_content 'Post deleted successfully'
+      expect(page).not_to have_content 'Delete this post'
+    end
+  end
 
 
 
