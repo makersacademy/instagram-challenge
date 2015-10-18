@@ -1,6 +1,8 @@
 <% if @photos.all.any? %>
   <% @photos.all.each do |photo| %>
     <h2><%= link_to photo.caption, photo_path(photo) %></h2>
+    <%= link_to "Edit #{photo.caption}", edit_photo_path(photo) %>
+    <%= link_to "Delete #{photo.caption}", photo_path(photo), method: :delete %>
   <% end %>
 <% else %>
   <h1>No photos yet</h1>

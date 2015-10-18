@@ -34,7 +34,6 @@ feature 'photos' do
   end
 
   context 'viewing photos' do
-
     let!(:sunrise){Photo.create(caption:'sunrise')}
 
     scenario 'lets a user view a photo' do
@@ -43,7 +42,30 @@ feature 'photos' do
      expect(page).to have_content 'sunrise'
      expect(current_path).to eq "/photos/#{sunrise.id}"
     end
+  end
 
+  context 'editing photo captions' do
+    before { Photo.create caption: 'sunrise' }
+
+    scenario 'let a user edit a photo caption' do
+     visit '/photos'
+     click_link 'Edit sunrise'
+     fill_in 'Caption', with: 'amazing sunrise'
+     click_button 'Update Caption'
+     expect(page).to have_content 'amazing sunrise'
+     expect(current_path).to eq '/photos'
+    end
+  end
+
+  context 'deleting photos' do
+    before {Photo.create caption: 'sunrise'}
+
+    scenario 'removes a photo when a user clicks a delete link' do
+      visit '/photos'
+      click_link 'Delete sunrise'
+      expect(page).not_to have_content 'sunrise'
+      expect(page).to have_content 'Photo deleted successfully'
+    end
   end
 
 end
