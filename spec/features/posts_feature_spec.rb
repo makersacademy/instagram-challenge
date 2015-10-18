@@ -3,7 +3,9 @@ require 'rails_helper'
 feature 'posts' do
   context 'no posts have been added' do
     scenario 'should display a prompt to add a post' do
+      user = build(:user)
       visit '/posts'
+      sign_up(user)
       expect(page).to have_content 'No posts yet'
       expect(page).to have_link 'Add a post'
     end
@@ -11,13 +13,12 @@ feature 'posts' do
 
   context 'restaurants have been added' do
 
-  before do
-    Post.create(content: 'Hello world')
-  end
-
     scenario 'display posts' do
+      user = build(:user)
       visit '/posts'
-      expect(page).to have_content('Hello world')
+      sign_up(user)
+      make_post 'hey'
+      expect(page).to have_content('hey')
       expect(page).not_to have_content('No posts yet')
     end
   end
@@ -32,20 +33,19 @@ feature 'posts' do
 
 
   scenario 'prompts user to fill out a form, then displays the new post' do
+    user = build(:user)
     visit '/posts'
-    sign_in
-    click_link 'Add a post'
-    fill_in 'Content', with: 'Hello World'
-    click_button 'Create Post'
-    expect(page).to have_content 'Hello World'
+    sign_up(user)
+    make_post 'test'
+    expect(page).to have_content 'test'
     expect(current_path).to eq '/posts'
   end
 end
 
   context 'an invalid post' do
     it 'does not let you submit a blank post' do
-      visit '/posts'
-      sign_in
+      user = build(:user)
+      sign_up(user)
       click_link 'Add a post'
       fill_in 'Content', with: ''
       click_button 'Create Post'
@@ -58,9 +58,9 @@ end
   scenario 'lets a user view a post' do
     user = build(:user)
     sign_up(user)
-    make_post
-    click_link 'hey'
-    expect(page).to have_content 'hey'
+    make_post 'hi there'
+    click_link 'hi there'
+    expect(page).to have_content 'hi there'
   end
 
   context 'editing posts' do
@@ -68,7 +68,7 @@ end
   scenario 'let a user edit a post' do
    user = build(:user)
    sign_up(user)
-   make_post
+   make_post 'hey'
    click_link 'Edit hey'
    fill_in 'Content', with: 'hello'
    click_button "Update Post"
@@ -80,10 +80,10 @@ end
     user = build(:user)
     user2 = build(:user, email: "different@gmail.com")
     sign_up(user)
-    make_post
+    make_post 'not yours'
     click_link "Sign out"
     sign_up(user2)
-    expect(page).to_not have_content "Edit hey"
+    expect(page).to_not have_content "Edit not yours"
   end
 
 end
@@ -93,9 +93,9 @@ end
     scenario 'removes a post when a user clicks a delete link' do
       user = build(:user)
       sign_up(user)
-      make_post
-      click_link 'Delete hey'
-      expect(page).not_to have_content 'hey'
+      make_post 'remove me'
+      click_link 'Delete remove me'
+      expect(page).not_to have_content 'remove me'
       expect(page).to have_content 'Post deleted successfully'
     end
 
@@ -103,10 +103,10 @@ end
       user = build(:user)
       user2 = build(:user, email: "different@gmail.com")
       sign_up(user)
-      make_post
+      make_post 'oops'
       click_link "Sign out"
       sign_up(user2)
-      expect(page).not_to have_link 'Delete hey'
+      expect(page).not_to have_link 'Delete oops'
     end
   end
 

@@ -18,27 +18,22 @@ require 'factory_girl_rails'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-def sign_in
-  visit '/'
-  click_link 'Sign up'
-  fill_in 'Email', with: 'test@test.com'
-  fill_in "Password", with: 'password'
-  fill_in "Password confirmation", with: 'password'
-  click_button 'Sign up'
-end
-
-def make_post
-  click_link "Add a post"
-  fill_in "Content", with:  "hey"
-  click_button "Create Post"
-end
-
-def make_post_sign_out
-  click_link 'Add a post'
-  fill_in 'Content', with: 'hey'
-  click_button 'Create Post'
-  click_link 'Sign out'
-end
+# def sign_in
+#   visit '/'
+#   click_link 'Sign up'
+#   fill_in 'Email', with: 'test@test.com'
+#   fill_in "Password", with: 'password'
+#   fill_in "Password confirmation", with: 'password'
+#   click_button 'Sign up'
+# end
+#
+#
+# def make_post_sign_out
+#   click_link 'Add a post'
+#   fill_in 'Content', with: 'hey'
+#   click_button 'Create Post'
+#   click_link 'Sign out'
+# end
 
 def sign_up(user)
   visit '/'
@@ -47,6 +42,18 @@ def sign_up(user)
   fill_in 'Password', with: user.password
   fill_in 'Password confirmation', with: user.password_confirmation
   click_button 'Sign up'
+end
+
+def make_post post
+  click_link "Add a post"
+  fill_in "Content", with:  post
+  click_button "Create Post"
+end
+
+def make_comment comment
+  click_link 'Comment'
+  fill_in "Content", with: comment
+  click_button 'Leave Comment'
 end
 
 RSpec.configure do |config|
