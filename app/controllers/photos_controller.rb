@@ -6,6 +6,11 @@ class PhotosController < ApplicationController
     @photo = Photo.new
   end
 
+  def build_with_user(attributes = {}, user)
+  attributes[:user] ||= user
+  build(attributes)
+  end
+
   def create
     @photo = current_user.photos.new(photo_params)
       if @photo.save

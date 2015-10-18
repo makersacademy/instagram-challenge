@@ -27,8 +27,13 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @photo = Photo.find(params[:photo_id])
-    @photo.comments.create(comment_params)
-    redirect_to photo_path(@photo)
+    @comment = @photo.comments.build_with_user comment_params, current_user
+
+    if @comment.save
+      redirect_to photo_path(@photo)
+    else
+      render :new
+    end
   end
 
   # PATCH/PUT /comments/1

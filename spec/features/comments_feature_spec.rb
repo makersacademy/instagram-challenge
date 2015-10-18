@@ -7,7 +7,6 @@ context 'photos have been added' do
     visit('/')
     click_link('Sign up')
     fill_in('Email', with: 'test@example.com')
-    save_and_open_page
     fill_in('Username', with: 'Test User')
     fill_in('Password', with: 'testtest', :match => :prefer_exact)
     fill_in('Password confirmation', with: 'testtest', :match => :prefer_exact)
@@ -57,7 +56,7 @@ context 'photos have been added' do
     click_link('Add Comment')
     fill_in('Comment', with: 'What a lovely photo')
     click_button('Create Comment')
-    expect(page).to have_content('less than a minute ago')
+    expect(page).to have_content('added by Test User')
   end
 
   xscenario 'should display a comment on the photos page in descending created order' do
