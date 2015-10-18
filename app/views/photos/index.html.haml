@@ -1,0 +1,21 @@
+- if @photos.any?
+  - @photos.reverse.each do |photo|
+    %br
+    = link_to photo.title, photo_path(photo)
+    %p= image_tag photo.image.url(:medium)
+    <br>
+    = link_to "Delete #{photo.title}", photo_path(photo), method: :delete
+
+    - if photo.comments.any?
+      %ul
+        - photo.comments.each do |comment|
+          %li
+            = comment.thoughts
+    - else
+      %p No comments
+
+    = link_to "💬", new_photo_comment_path(photo)
+- else
+  No photos yet!
+
+%p= link_to "Add a photo", new_photo_path
