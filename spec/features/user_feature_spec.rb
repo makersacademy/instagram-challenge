@@ -72,6 +72,12 @@ feature 'User Features ' do
       expect(page).to have_content "Profile"
     end
 
+    scenario 'users can add a profile picture' do
+      go_to_profile_page
+      visit user_path(:id)
+      expect(page).to have_css("img[src*='reset_5.png']")
+    end
+
   end
 
 end

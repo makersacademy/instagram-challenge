@@ -59,4 +59,14 @@ module FactoryHelper
     click_button "Create Comment"
   end
 
+  def go_to_profile_page
+    user = build(:user)
+    sign_up(user)
+    visit root_path
+    click_link "testtest@gmail.com"
+    attach_file("post[image]", 
+      Rails.root + "spec/fixtures/files/reset_5.png")
+    click_button "Upload"
+  end
+
 end
