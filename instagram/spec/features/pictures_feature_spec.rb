@@ -4,10 +4,19 @@ require 'rails_helper'
 feature 'pictures' do
 
   context 'no pictures should be added' do
+    before do
+      visit ('/')
+      click_link("Registration")
+      fill_in("Email", with: "test@example.com")
+      fill_in("Password", with: "testtest")
+      fill_in("Password confirmation", with: "testtest")
+      click_button("Sign up")
+    end
+
     scenario 'should display a prompt to add a picture' do
       visit '/pictures'
       expect(page).to have_content "No pictures yet"
-      expect(page).to have_button "Create Picture"
+      expect(page).to have_link "New Post"
     end
   end
 
@@ -24,8 +33,17 @@ feature 'pictures' do
   end
 
   context 'uploading images' do
+    before do
+      visit ('/')
+      click_link("Registration")
+      fill_in("Email", with: "test@example.com")
+      fill_in("Password", with: "testtest")
+      fill_in("Password confirmation", with: "testtest")
+      click_button("Sign up")
+    end
     scenario 'prompts user to upload an image and write a caption' do
-      visit '/pictures'
+      visit '/'
+      click_link "New Post"
       upload_picture
       expect(page).to have_content "lunch"
     end
