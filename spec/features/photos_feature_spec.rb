@@ -2,6 +2,15 @@ require 'rails_helper'
 
 feature 'photos' do 
 
+  def sign_up_with(email)
+    visit('/')
+    click_link('Sign up')
+    fill_in('Email', with: email)
+    fill_in('Password', with: 'testttest')
+    fill_in('Password confirmation', with: 'testttest')
+    click_button('Sign up')
+  end
+
   context 'no photos have been added' do 
     scenario 'should display a prompt to add a photo' do 
       visit '/photos'
@@ -24,12 +33,18 @@ feature 'photos' do
 
   context 'posting photos' do
     scenario 'prompts user to fill out a form, then displays the new photo caption' do
-      visit '/photos'
+      sign_up_with('test@example.com')
       click_link 'Post a photo'
       fill_in 'Caption', with: 'sunrise'
       click_button 'Post photo'
       expect(page).to have_content 'sunrise'
       expect(current_path).to eq '/photos'
+    end
+
+    scenario 'users can only post a photo if they are signed in' do
+      visit '/photos'
+      click_link 'Post a photo'
+      expect(current_path).to eq '/users/sign_in'
     end
   end
 
@@ -47,8 +62,8 @@ feature 'photos' do
   context 'editing photo captions' do
     before { Photo.create caption: 'sunrise' }
 
-    scenario 'let a user edit a photo caption' do
-     visit '/photos'
+    scenario 'lets a user edit a photo caption' do
+     sign_up_with('test@example.com')
      click_link 'Edit sunrise'
      fill_in 'Caption', with: 'amazing sunrise'
      click_button 'Update Caption'
@@ -61,7 +76,7 @@ feature 'photos' do
     before {Photo.create caption: 'sunrise'}
 
     scenario 'removes a photo when a user clicks a delete link' do
-      visit '/photos'
+      sign_up_with('test@example.com')
       click_link 'Delete sunrise'
       expect(page).not_to have_content 'sunrise'
       expect(page).to have_content 'Photo deleted successfully'
