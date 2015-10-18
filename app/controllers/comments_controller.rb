@@ -7,11 +7,15 @@ class CommentsController < ApplicationController
   def create
     @picture = Picture.find(params[:picture_id])
     @comment = @picture.build_with_user(comment_params, current_user)
-    if @comment.save
-      redirect_to pictures_path
+    if user_signed_in?
+      if @comment.save
+        redirect_to pictures_path
+      else
+        flash.now[:alert] = 'You cannot post an empty comment'
+        render 'new'
+      end
     else
-      flash.now[:alert] = 'You cannot post an empty comment'
-      render 'new'
+      redirect_to new_user_session_path
     end
   end
 

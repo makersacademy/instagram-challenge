@@ -13,7 +13,8 @@
         = comment.content
         - if current_user == comment.user
           = link_to 'Delete this comment', comment_path(comment), method: :delete
-    = link_to 'Create comment', new_picture_comment_path(picture)
+    - if user_signed_in?
+      = link_to 'Create comment', new_picture_comment_path(picture)
 - else
   %h3 No pictures yet
 = link_to 'Add a picture', new_picture_path

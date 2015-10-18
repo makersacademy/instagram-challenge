@@ -5,7 +5,7 @@ feature 'commenting' do
     @user = create :user
     @user2 = create :user2
     sign_in(@user)
-    @user.pictures.create({picture_file_name: 'associations.jpg'})
+    @picture = @user.pictures.create({picture_file_name: 'associations.jpg'})
   end
 
   context 'creating a comment' do
@@ -52,6 +52,24 @@ feature 'commenting' do
       click_link 'Sign out'
       sign_in(@user2)
       expect(page).not_to have_link 'Delete this comment'
+    end
+  end
+
+  context 'user not signed in' do
+    context 'creating comment' do
+      # scenario 'user cannot create a comment' do
+      #   click_link 'Sign out'
+      #   click_link 'Create comment'
+      #   fill_in 'Content', with: 'Great'
+      #   click_button 'Comment'
+      #   expect(current_path).to eq '/users/sign_in'
+      #   expect(page).not_to have_content 'Great'
+      # end
+
+      scenario 'user cannot see "Create comment" link' do
+        click_link 'Sign out'
+        expect(page).not_to have_link 'Create comment'
+      end
     end
   end
 end
