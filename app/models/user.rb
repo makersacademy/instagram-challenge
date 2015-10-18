@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+  has_many :pictures
+  has_many :comments
+
   devise :omniauthable, :omniauth_providers => [:facebook]
 
   devise :database_authenticatable, :registerable,
