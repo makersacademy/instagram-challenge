@@ -50,13 +50,28 @@ feature 'images' do
       page.attach_file 'image[image]', 'spec/assets/images/dom-s-eatery.jpg'
       click_button 'Create Image'
     end
+    scenario 'let a user edit an image' do
+      visit '/images'
+      click_link 'Edit breakfast'
+      fill_in 'Name', with: 'My Breakfast'
+      click_button 'Update Image'
+      expect(page).to have_content('My Breakfast')
+      expect(current_path).to eq('/images')
+    end
   end
-  scenario 'let a user edit an image' do
-    visit '/images'
-    click_link 'Edit an Image'
-    fill_in 'Name', with: 'My Breakfast'
-    click_button 'Update Image'
-    expect(page).to have_content('My Breakfast')
-    expect(current_path).to eq('/images')
+  context 'Can delete an Image' do
+    before do
+      visit '/images'
+      click_link 'Add an Image'
+      fill_in 'Name', with: 'breakfast'
+      page.attach_file 'image[image]', 'spec/assets/images/dom-s-eatery.jpg'
+      click_button 'Create Image'
+    end
+    scenario 'let a user delete an image' do
+      visit '/images'
+      click_link 'Delete breakfast'
+      expect(page).not_to have_content('breakfast')
+      expect(page).to have_content('Image deleted successfully')
+    end
   end
 end
