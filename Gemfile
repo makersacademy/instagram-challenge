@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'haml-rails', '~> 0.9.0'
+gem 'devise', '~> 3.5.2'
+gem 'shoulda', '~> 3.5.0'
 gem 'paperclip', '~> 4.3.1'
 
 group :development, :test do
