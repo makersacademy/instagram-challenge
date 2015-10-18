@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 feature 'favouriting photos' do
-  before do
-    sunrise = Photo.create(caption: 'sunrise')
+  before(:each) do
+    sign_up_with('test@example.com')
+    post_photo('sunrise')
   end
 
   scenario 'a user can favourite a photo, which updates the photo favourite count', js: true do
-    visit '/photos'
-    click_link 'Favourite' #are we endorsing restaurants or the review of the restaurants?
+    click_link 'Favourite'
     expect(page).to have_content('1 Favourite')
   end
 

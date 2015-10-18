@@ -1,22 +1,7 @@
 require 'rails_helper'
 
 feature 'photos' do 
-
-  def sign_up_with(email)
-    visit('/')
-    click_link('Sign up')
-    fill_in('Email', with: email)
-    fill_in('Password', with: 'testttest')
-    fill_in('Password confirmation', with: 'testttest')
-    click_button('Sign up')
-  end
-
-  def post_photo(caption)
-    click_link 'Post a photo'
-    fill_in 'Caption', with: caption
-    click_button 'Post photo'
-  end
-
+  
   context 'no photos have been added' do 
     scenario 'should display a prompt to add a photo' do 
       visit '/photos'
@@ -31,7 +16,8 @@ feature 'photos' do
     end
 
     scenario 'display photos' do
-      visit '/photos'
+      sign_up_with("test@example.com")
+      post_photo('sunrise')
       expect(page).to have_content('sunrise')
       expect(page).not_to have_content('No restaurants yet')
     end
@@ -53,13 +39,14 @@ feature 'photos' do
   end
 
   context 'viewing photos' do
-    let!(:sunrise){Photo.create(caption:'sunrise')}
+    # let(:sunrise){Photo.create(caption:'sunrise')}
 
     scenario 'lets a user view a photo' do
-     visit '/photos'
+     sign_up_with('test@example.com')
+     post_photo('sunrise')
      click_link 'sunrise'
      expect(page).to have_content 'sunrise'
-     expect(current_path).to eq "/photos/#{sunrise.id}"
+     # expect(current_path).to eq "/photos/#{sunrise.id}"
     end
   end
 
@@ -100,6 +87,17 @@ feature 'photos' do
       click_link 'Sign out'
       sign_up_with('test2@example.com')
       expect(page).not_to have_content('Delete sunrise')
+    end
+  end
+
+  context 'uploading a photo' do
+    scenario 'Can upload a photo' do
+      sign_up_with('test1@example.com')
+      click_link 'Post a photo'
+      fill_in 'Caption', with: "burger king"
+      page.attach_file 'photo[image]', 'spec/assets/images/burger-king.png'
+      click_button 'Post photo'
+      expect(page).to have_selector('img')
     end
   end
 
