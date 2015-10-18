@@ -1,24 +1,22 @@
 require 'rails_helper'
 
-feature 'feed' do
-  context 'pictures' do
-    context 'no pictures have been added' do
-      scenario 'should display a prompt to add a picture' do
-        visit '/feed'
-        expect(page).to have_content 'No Pictures Yet!'
-        expect(page).to have_link 'Add a Picture'
-      end
+feature 'posts' do
+  context 'no pictures have been added' do
+    scenario 'should display a prompt to add a picture' do
+      visit '/posts'
+      expect(page).to have_content 'No Pictures Yet!'
+      expect(page).to have_link 'Add a Post'
     end
 
-    context 'restaurants have been added' do
+    context 'posts have been added' do
       before do
-        Restaurant.create(name: 'KFC')
+        Post.create(caption: '#chilling')
       end
 
-      scenario 'display restaurants' do
-        visit '/restaurants'
-        expect(page).to have_content('KFC')
-        expect(page).not_to have_content('No restaurants yet')
+      scenario 'display posts' do
+        visit '/posts'
+        expect(page).to have_content('#chilling')
+        expect(page).not_to have_content('No Pictures Yet!')
       end
     end
   end

@@ -25,6 +25,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #HAML
 gem 'haml'
 gem'haml-rails'
+#Paperclip
+gem 'paperclip'
+#Simple Form
+gem 'simple_form'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
