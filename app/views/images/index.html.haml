@@ -1,6 +1,7 @@
 - if @images.any?
-  - @images.each do |image|
+  - @images.reverse.each do |image|
     = link_to image.name, image_path(image)
+    = relative_time(image.created_at)
     - if image.image_file_name
       = image_tag image.image.url(:thumb)
     - if current_user == image.user
@@ -9,11 +10,16 @@
     - if current_user
       = link_to "Add a comment", new_image_comment_path(image)
     %p
+      = link_to "like", image_likes_path(image), method: :post
+      = image.likes.length
+      = 'like'.pluralize image.likes.length
+    %p
       comments on
       = image.name
     - if image.comments.any?
-      - image.comments.each do |comment|
+      - image.comments.reverse.each do |comment|
         %p
+          = relative_time(comment.created_at)
           = comment.thoughts
           - if current_user == comment.user
             = link_to "Delete comment", comment_path(comment), method: :delete
