@@ -66,6 +66,16 @@ feature 'photos' do
       expect(page).not_to have_content 'sunrise'
       expect(page).to have_content 'Photo deleted successfully'
     end
+
+    scenario 'deleting a photo also deletes any associated comments' do
+      visit '/photos'
+      click_link 'Leave a comment'
+      fill_in "Comment", with: "nice photo"
+      click_button 'Leave Comment'
+      click_link 'Delete sunrise'
+      expect(page).not_to have_content 'sunrise'
+      expect(page).not_to have_content 'nice photo'
+    end
   end
 
 end
