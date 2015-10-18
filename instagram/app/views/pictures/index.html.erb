@@ -1,12 +1,11 @@
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
     <h2> <%= picture.caption %> </h2>
-    <%= image_tag picture.image.url(:thumb) %>
+    <p> <%= image_tag picture.image.url(:medium) %> </p>
     <% end %>
 <% else %>
 "No pictures yet"
 <% end %>
-<a href='#'>Upload a picture</a>
 
 <%= form_for Picture.new, html: {multipart: true} do |f| %>
 <%= f.label :name %>

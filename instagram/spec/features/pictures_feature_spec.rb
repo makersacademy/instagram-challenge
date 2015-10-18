@@ -7,7 +7,7 @@ feature 'pictures' do
     scenario 'should display a prompt to add a picture' do
       visit '/pictures'
       expect(page).to have_content "No pictures yet"
-      expect(page).to have_link "Upload a picture"
+      expect(page).to have_button "Create Picture"
     end
   end
 
@@ -27,14 +27,14 @@ feature 'pictures' do
     scenario 'prompts user to upload an image and write a caption' do
       visit '/pictures'
       upload_picture
-      expect(page).to have_content "Picture uploaded"
+      expect(page).to have_content "lunch"
     end
   end
 
   def upload_picture
-    fill_in "caption", with: "lunch"
-    attach_file "Image", 'spec/spec_assets/lunch.png'
-    click_button "Upload"
+    fill_in "picture[caption]", with: "lunch"
+    attach_file "picture[image]", 'spec/spec_assets/lunch.png'
+    click_button "Create Picture"
   end
 
 end
