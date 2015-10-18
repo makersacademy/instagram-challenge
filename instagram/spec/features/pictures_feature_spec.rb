@@ -52,6 +52,12 @@ feature 'pictures' do
     scenario 'displays picture on the page' do
       expect(page).to have_css("img[src*='lunch.png']")
     end
+
+    scenario 'removes a picture when user clicks a delete link' do
+      visit '/'
+      click_link "Delete picture"
+      expect(page).not_to have_css("img[src*='lunch.png']")
+    end
   end
 
   def upload_picture
