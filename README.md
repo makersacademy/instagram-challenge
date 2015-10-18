@@ -12,5 +12,11 @@ Set up
 4. Go to your localhost:3000 to view the app
 
 Testing
-------
+-------
 run `rspec` to view feature and unit tests
+
+Still to do
+-----------
+
+* amend flash error for users trying to like more than once
+* css
