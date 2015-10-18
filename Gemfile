@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -39,6 +40,7 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'rspec-rails'
   gem 'shoulda'
+  gem 'factory_girl_rails'
 end
 
 group :development do
