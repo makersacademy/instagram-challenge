@@ -19,14 +19,20 @@ feature 'commenting' do
 
   before {Photo.create caption: 'sunrise'}
 
-  before(:each) do
+  before do
     sign_up_with('test@example.com')
+    Timecop.freeze(Time.local(2015))
+  end
+
+  after do 
+    Timecop.return
   end
 
   scenario 'allows users to leave a comment using a form' do
      leave_comment('nice photo')
      expect(current_path).to eq '/photos'
      expect(page).to have_content('nice photo')
+     expect(page).to have_content('Just now')
   end
 
   scenario 'user can delete a comment' do
