@@ -91,9 +91,7 @@ end
 
     scenario "user cannot delete another user's posts" do
       post = Post.create(content: 'not your post')
-      p post.user_id
       sign_in
-      p current_user.id
       expect(page).not_to have_link 'Delete not your post'
     end
   end
