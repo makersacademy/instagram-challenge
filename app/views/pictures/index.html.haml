@@ -1,9 +1,11 @@
-= link_to 'Add a picture', new_picture_path
 - if @pictures.any?
   - @pictures.each do |picture|
     %h3
-      = picture.description
       = image_tag picture.image.url('medium')
+      %br
+      = picture.description
+      %br
+    %p
       = pluralize picture.likes.count, 'like'
       = link_to 'Edit', edit_picture_path(picture)
       = link_to 'Like', new_picture_like_path(picture)
@@ -18,8 +20,11 @@
       %p No comments
 - else
   No pictures yet
+  %br
 
--unless user_signed_in?
+-if user_signed_in?
+  = link_to 'Add a picture', new_picture_path
+-else
   =link_to 'Sign up', new_user_registration_path
   %br
   =link_to 'Sign in', new_user_session_path
