@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018143338) do
+ActiveRecord::Schema.define(version: 20151018185622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,9 +21,11 @@ ActiveRecord::Schema.define(version: 20151018143338) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "image_id"
+    t.integer  "user_id"
   end
 
   add_index "comments", ["image_id"], name: "index_comments_on_image_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "name"
@@ -33,7 +35,10 @@ ActiveRecord::Schema.define(version: 20151018143338) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "images", ["user_id"], name: "index_images_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -54,4 +59,6 @@ ActiveRecord::Schema.define(version: 20151018143338) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "comments", "images"
+  add_foreign_key "comments", "users"
+  add_foreign_key "images", "users"
 end

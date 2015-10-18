@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 feature 'images' do
+  before(:each) do
+    @user = create(:user)
+    sign_in(@user)
+  end
+
   context 'no images have been added yet' do
     scenario 'It should have a prompt to add an image' do
       visit '/images'
@@ -27,6 +32,14 @@ feature 'images' do
       expect(current_path).to eq('/images')
     end
   end
+  context 'when not signed in' do
+    scenario 'does not let you create a Image when not signed in' do
+      click_link 'Sign out'
+      click_link 'Add an Image'
+      expect(current_path).to eq '/users/sign_in'
+    end
+  end
+
   context 'Viewing an Image' do
     before do
       visit '/images'
@@ -58,6 +71,18 @@ feature 'images' do
       expect(page).to have_content('My Breakfast')
       expect(current_path).to eq('/images')
     end
+    scenario 'cannot edit an image unless signed in' do
+      click_link('Sign out')
+      visit('/images')
+      expect(page).not_to have_link('Edit breakfast')
+    end
+    scenario 'can only edit if user who created' do
+      click_link('Sign out')
+      @wrong_user = create(:user, email: "wrong@test.com")
+      sign_in(@wrong_user)
+      visit('/images')
+      expect(page).not_to have_link("Edit breakfast")
+    end
   end
   context 'Can delete an Image' do
     before do
@@ -72,6 +97,17 @@ feature 'images' do
       click_link 'Delete breakfast'
       expect(page).not_to have_content('breakfast')
       expect(page).to have_content('Image deleted successfully')
+    end
+    scenario 'A user cannot delete an image they did not create' do
+      click_link('Sign out')
+      expect(page).not_to have_link('Delete breakfast')
+    end
+    scenario 'can only delete if user who created' do
+      click_link('Sign out')
+      @wrong_user = create(:user, email: "wrong@test.com")
+      sign_in(@wrong_user)
+      visit('/images')
+      expect(page).not_to have_link("Delete breakfast")
     end
   end
 end

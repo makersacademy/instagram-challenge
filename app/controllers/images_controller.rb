@@ -1,4 +1,7 @@
 class ImagesController < ApplicationController
+
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @images = Image.all
   end
@@ -6,8 +9,14 @@ class ImagesController < ApplicationController
     @image = Image.new
   end
   def create
-    Image.create(image_params)
-    redirect_to('/images')
+    @image = Image.new(image_params)
+    if @image.save
+      @image.user_id = current_user.id
+      @image.save
+      redirect_to images_path
+    else
+      render new
+    end
   end
   def show
     @image = Image.find(params[:id])

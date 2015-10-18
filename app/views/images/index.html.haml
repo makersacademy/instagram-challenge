@@ -3,8 +3,9 @@
     = link_to image.name, image_path(image)
     - if image.image_file_name
       = image_tag image.image.url(:thumb)
-    = link_to "Edit #{image.name}", edit_image_path(image)
-    = link_to "Delete #{image.name}", image_path(image), method: :delete
+    - if current_user == image.user
+      = link_to "Edit #{image.name}", edit_image_path(image)
+      = link_to "Delete #{image.name}", image_path(image), method: :delete
     = link_to "Add a comment", new_image_comment_path(image)
     %p
       comments on
@@ -13,6 +14,8 @@
       - image.comments.each do |comment|
         %p
           = comment.thoughts
+          - if current_user == comment.user
+            = link_to "Delete comment", image_comment_path(image, comment), method: :delete
 - else
   No Images Added Yet
 %br
