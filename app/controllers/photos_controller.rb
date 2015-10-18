@@ -12,7 +12,13 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.create(photo_params)
-    redirect_to photos_path
+      if @photo.save
+        @photo.user_id = current_user.id
+        @photo.save
+        redirect_to photos_path
+      else
+        render 'new'
+      end
   end
 
   def photo_params
@@ -21,6 +27,13 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    flash[:notice] = 'Photo deleted successfully'
+    redirect_to photos_path
   end
 
 end

@@ -5,6 +5,13 @@
   <% @photos.each do |photo| %>
     <%= link_to photo.title, photo_path(photo) %>
     <%= photo.description %>
+
+    <% if current_user %>
+      <% if current_user.id == photo.user_id %>
+        <%= link_to "Delete #{photo.title}", photo_path(photo), method: :delete %>
+      <% end %>
+    <% end %>
+
   <% end %>
 <% else %>
   No photos yet
