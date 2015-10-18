@@ -8,6 +8,8 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'support/database_cleaner'
 require 'helpers/user_helper'
+require 'helpers/comment_helper'
+require 'helpers/picture_helper'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

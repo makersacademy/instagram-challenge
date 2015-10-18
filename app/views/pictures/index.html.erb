@@ -18,6 +18,9 @@
         <% picture.comments.each do |comment| %>
           <li>
             <%= comment.thoughts %>
+            <% if comment.created_by?(current_user)%>
+              <%= link_to "x", comment_path(comment), method: :delete %>
+            <% end %>
           </li>
         <% end %>
       </ul>

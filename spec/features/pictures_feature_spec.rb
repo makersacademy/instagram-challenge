@@ -39,12 +39,8 @@ feature 'pictures' do
       user = create :user
       sign_in_as(user)
       visit '/pictures'
-      click_link 'Add a picture'
-      attach_file 'picture[image]', 'spec/assets/images/dism.jpg'
-      click_button 'Create Picture'
-      click_link 'Add a picture'
-      attach_file 'picture[image]', 'spec/assets/images/choc.jpg'
-      click_button 'Create Picture'
+      add_picture('spec/assets/images/dism.jpg')
+      add_picture('spec/assets/images/choc.jpg')
       expect(page.body.index('Choc')).to be < (page.body.index('Dism'))
     end
   end
@@ -55,9 +51,7 @@ feature 'pictures' do
       user = create :user
       sign_in_as(user)
       visit '/pictures'
-      click_link 'Add a picture'
-      attach_file 'picture[image]', 'spec/assets/images/dism.jpg'
-      click_button 'Create Picture'
+      add_picture('spec/assets/images/dism.jpg')
     end
 
     scenario 'lets a user delete picture he added' do
