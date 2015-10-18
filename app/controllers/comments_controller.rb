@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
   def create
     @photo = Photo.find(params[:photo_id])
     @photo.comments.create(comment_params)
-    redirect_to photos_path
+    redirect_to photo_path(@photo)
   end
 
   # PATCH/PUT /comments/1

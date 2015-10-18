@@ -30,7 +30,7 @@ context 'photos have been added' do
     click_link('Add Comment')
     save_and_open_page
     fill_in('Comment', with: 'What a lovely photo')
-    click_button('Submit')
+    click_button('Create Comment')
     expect(page).to have_content('What a lovely photo')
   end
 

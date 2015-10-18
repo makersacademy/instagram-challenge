@@ -1,11 +1,18 @@
 <h1>
-<%= @photo.title %>
+  <%= @photo.title %>
 </h1>
-
 <br>
-
-
-<%= image_tag @photo.image.url(:medium) %>
+  <%= image_tag @photo.image.url(:medium) %>
 <h3>
-<%= link_to "Add Comment", new_photo_comment_path(@photo) %>
+  <%= link_to "Add Comment", new_photo_comment_path(@photo) %>
+<br>
+<h3>
+  <% if @photo.comments.any? %>
+    <% @photo.comments.each do |comment| %>
+    <br>
+        <%= comment.comment %>
+    <br>
+    <% end %>
+  <% end %>
+</h3>
 </h3>
