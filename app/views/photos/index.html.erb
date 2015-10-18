@@ -7,6 +7,8 @@
       <%= link_to image_tag(photo.image.url :medium), photo_path(photo) %><br/>
       <%= link_to photo.user.email, "users/#{photo.user_id}/photos" %>
       <%= link_to 'Comment', new_photo_comment_path(photo) %><br/>
+      <%= link_to 'Like', photo_photo_likes_path(photo), method: :post %><br/>
+      <%= pluralize photo.photo_likes.count, 'like' %><br/>
       <% photo.comments.each do |comment| %>
         <%= comment.content %>
       <% end %>

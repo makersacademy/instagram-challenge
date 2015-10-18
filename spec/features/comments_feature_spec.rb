@@ -13,3 +13,9 @@ feature 'leaving comment on a photo' do
     end
   end
 end
+
+def leave_comment
+  click_link 'Comment'
+  fill_in 'Content', with: 'Nice!'
+  click_button 'Submit'
+end

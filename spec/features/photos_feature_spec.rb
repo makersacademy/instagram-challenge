@@ -29,9 +29,13 @@ feature 'showing individual photos' do
       user = build :user
       sign_up user
       add_photo 'Testing'
+      click_link 'Like'
+      leave_comment
       click_link 'Testing'
       expect(page).to have_content 'Testing'
       expect(page).to have_selector :css, "img[src*='testing.jpg']"
+      expect(page).to have_content '1 like'
+      expect(page).to have_content 'Nice!'
       expect(current_path).to eq '/photos/1'
     end
   end
@@ -43,6 +47,8 @@ feature 'showing all photos created by a particular user' do
       user = build :user
       sign_up user
       add_photo 'Testing1'
+      click_link 'Like'
+      leave_comment
       add_photo 'Testing2'
       within "#photo0" do
         click_link user.email
@@ -50,6 +56,8 @@ feature 'showing all photos created by a particular user' do
       expect(page).to have_content 'Testing'
       expect(page).to have_content 'Testing2'
       expect(page).to have_selector :css, "img[src*='testing.jpg']"
+      expect(page).to have_content '1 like'
+      expect(page).to have_content 'Nice!'
       expect(current_path).to eq "/users/1/photos"
     end
   end
@@ -60,13 +68,4 @@ def add_photo title
   fill_in 'Title', with: title
   attach_file 'photo[image]', 'spec/fixtures/images/testing.jpg'
   click_button 'Upload photo'
-end
-
-def sign_up user
-  visit '/photos'
-  click_link 'Sign up'
-  fill_in 'Email', with: user.email
-  fill_in 'Password', with: user.password
-  fill_in 'Password confirmation', with: user.password_confirmation
-  click_button 'Sign up'
 end

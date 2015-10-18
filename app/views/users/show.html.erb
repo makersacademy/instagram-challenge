@@ -1,4 +1,8 @@
 <% @user.photos.each do |photo| %>
   <%= photo.title %><br/>
-  <%= link_to image_tag(photo.image.url :medium), photo_path(photo) %>
+  <%= link_to image_tag(photo.image.url :medium), photo_path(photo) %><br/>
+  <%= pluralize photo.photo_likes.count, 'like' %><br/>
+  <% photo.comments.each do |comment| %>
+    <%= comment.content %>
+  <% end %><br/>
 <% end %>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'users/:user_id/photos' => 'users#show'
   resources :photos do
     resources :comments
+    resources :photo_likes
   end
   root to: "photos#index"
 
