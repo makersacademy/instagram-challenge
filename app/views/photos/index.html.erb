@@ -1,7 +1,12 @@
 <% if @photos.all.any? %>
   <% @photos.all.each do |photo| %>
+    <% if photo.image_file_name %>
+      <%= image_tag photo.image.url(:thumb) %>
+    <% end %>
     <h2><%= link_to photo.caption, photo_path(photo) %></h2>
-    <p><%= pluralize photo.favourites.count, 'endorsement' %></p>
+
+    <%= link_to "Favourite", photo_favourites_path(photo), class: 'favourites-link' %>
+    <span class="favourites_count"> <%= photo.favourites.length %> </span> <%= 'Favourite'.pluralize(photo.favourites.count) %>
     <% if photo.comments.any? %>
     <h3>Comments for <%= photo.caption %></h3>
       <ul>

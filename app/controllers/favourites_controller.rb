@@ -1,9 +1,9 @@
 class FavouritesController < ApplicationController
 
   def create
-    @photo = Photo.find(params[:comment_id])
+    @photo = Photo.find(params[:photo_id])
     @photo.favourites.create
-    redirect_to photos_path
+    render json: {new_favourite_count: @photo.favourites.count}
   end
 
 end
