@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:github, :google_oauth2, :twitter]
 
   has_many :posts
+  has_many :comments
+  has_many :commented_posts, through: :comments, source: :post
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
