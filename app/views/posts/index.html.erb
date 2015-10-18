@@ -1,10 +1,9 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
       <ul>
-        <li>
+          <%= post.image_updated_at.strftime('%a, %d %b %Y %H:%M:%S') if post.image_updated_at %>
           <%= link_to image_tag(post.image.url(:med)), post_path(post.id) %>
           <%= link_to post.caption, post_path(post.id) %>
-        </li>
       </ul>
   <% end %>
     <% else %>

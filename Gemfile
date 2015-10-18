@@ -39,6 +39,7 @@ gem 'activerecord-session_store'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'timecop'
   gem 'rake'
   gem 'byebug'
   gem 'dotenv-rails'

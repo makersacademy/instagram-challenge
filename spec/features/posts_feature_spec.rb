@@ -20,7 +20,7 @@ feature 'User posts' do
       user = build(:user)
       sign_up(user)
       upload_picture
-      page.has_content? "reset_5.png'"
+      expect(page).to have_css("img[src*='reset_5.png']")
     end
 
     scenario 'users can view individuals posts' do
@@ -28,6 +28,14 @@ feature 'User posts' do
       sign_up(user)
       upload_picture
       click_link "test post!"
+    end
+
+    scenario 'posts display a timestamp' do
+      user = build(:user)
+      sign_up(user)
+      upload_picture_time_freeze
+      time = Time.now - 3600
+      expect(page).to have_content("#{time.strftime('%a, %d %b %Y %H:%M:%S')}")
     end
 
   end
