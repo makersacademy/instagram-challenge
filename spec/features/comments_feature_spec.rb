@@ -28,6 +28,7 @@ context 'photos have been added' do
     attach_file('Image', 'spec/files/images/testimage.jpg')
     click_button 'Create Photo'
     click_link('Add Comment')
+    save_and_open_page
     fill_in('Comment', with: 'What a lovely photo')
     click_button('Submit')
     expect(page).to have_content('What a lovely photo')
