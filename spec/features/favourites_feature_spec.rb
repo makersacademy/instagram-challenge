@@ -7,7 +7,7 @@ feature 'favouriting photos' do
   end
 
   scenario 'a user can favourite a photo, which updates the photo favourite count', js: true do
-    click_link 'Favourite'
+    find(".favourites-link").click
     expect(page).to have_content('1 Favourite')
   end
 
