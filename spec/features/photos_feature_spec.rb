@@ -23,14 +23,27 @@ feature 'photos' do
   end
 
   context 'posting photos' do
-  scenario 'prompts user to fill out a form, then displays the new photo caption' do
-    visit '/photos'
-    click_link 'Post a photo'
-    fill_in 'Caption', with: 'sunrise'
-    click_button 'Post photo'
-    expect(page).to have_content 'sunrise'
-    expect(current_path).to eq '/photos'
+    scenario 'prompts user to fill out a form, then displays the new photo caption' do
+      visit '/photos'
+      click_link 'Post a photo'
+      fill_in 'Caption', with: 'sunrise'
+      click_button 'Post photo'
+      expect(page).to have_content 'sunrise'
+      expect(current_path).to eq '/photos'
+    end
   end
-end
+
+  context 'viewing photos' do
+
+    let!(:sunrise){Photo.create(caption:'sunrise')}
+
+    scenario 'lets a user view a photo' do
+     visit '/photos'
+     click_link 'sunrise'
+     expect(page).to have_content 'sunrise'
+     expect(current_path).to eq "/photos/#{sunrise.id}"
+    end
+
+  end
 
 end
