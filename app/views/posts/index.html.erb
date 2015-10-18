@@ -2,7 +2,11 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <h2> <%= post.description %> </h2>
+
+    <% if current_user && post.user_id == current_user.id %>
     <%= link_to "Edit post", edit_post_path(post) %>
+    <% end %>
+
     <%= link_to "Delete post", post_path(post), method: :delete %>
 
   <% end %>

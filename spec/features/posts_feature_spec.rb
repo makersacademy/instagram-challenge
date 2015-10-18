@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 feature 'posts' do
+
+  before do
+    @user = create :user
+    @user2 = create(:user, email: 'test2@example.com')
+    sign_in(@user)
+  end
+
   context 'no posts have been added' do
     scenario 'should display a prompt to add a post' do
       visit '/posts'
@@ -21,7 +28,6 @@ feature 'posts' do
 
   context 'adding posts' do
     scenario 'prompts user to fill out form, then displays the new post' do
-      sign_up
       visit '/posts'
       click_link 'Add post'
       fill_in 'Description', with: 'My first instagram post'
@@ -32,10 +38,9 @@ feature 'posts' do
   end
 
   context 'editing posts' do
-    before { Post.create description: 'before edit' }
+    before { @user.posts.create description: 'My post' }
 
     scenario 'edits post upon clicking update edit post link' do
-      sign_up
       visit '/posts'
       click_link 'Edit post'
       fill_in 'Description', with: 'I\'ve now edited my post'
@@ -43,13 +48,28 @@ feature 'posts' do
       expect(page).to have_content 'I\'ve now edited my post'
       expect(current_path).to eq '/posts'
     end
+
+    scenario 'users can only edit their own posts' do
+      click_link 'Sign out'
+      sign_in(@user2)
+      visit '/posts'
+      expect(page).not_to have_link 'Edit post'
+    end
+
+    scenario 'cannot HTTP edit posts that are not yours' do
+      post = @user.posts.create description: 'My 2nd post'
+      click_link 'Sign out'
+      sign_in(@user2)
+      visit "/posts/#{post.id}/edit"
+      expect(page).to have_content "You cannot edit this post"
+    end
+
   end
 
   context 'deleting posts' do
     before { Post.create description: 'Delete this post' }
 
     scenario 'removes post upon clicking delete post link' do
-      sign_up
       visit '/posts'
       click_link 'Delete post'
       expect(page).to have_content 'Post deleted successfully'
