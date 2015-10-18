@@ -21,6 +21,7 @@ feature 'posts' do
 
   context 'adding posts' do
     scenario 'prompts user to fill out form, then displays the new post' do
+      sign_up
       visit '/posts'
       click_link 'Add post'
       fill_in 'Description', with: 'My first instagram post'
@@ -31,9 +32,10 @@ feature 'posts' do
   end
 
   context 'editing posts' do
-    before { Post.create description: 'KFC' }
+    before { Post.create description: 'before edit' }
 
     scenario 'edits post upon clicking update edit post link' do
+      sign_up
       visit '/posts'
       click_link 'Edit post'
       fill_in 'Description', with: 'I\'ve now edited my post'
@@ -47,6 +49,7 @@ feature 'posts' do
     before { Post.create description: 'Delete this post' }
 
     scenario 'removes post upon clicking delete post link' do
+      sign_up
       visit '/posts'
       click_link 'Delete post'
       expect(page).to have_content 'Post deleted successfully'
