@@ -1,7 +1,9 @@
-- if @posts.any?
-  - @posts.each do |post|
-    = image_tag post.image.url(:medium)
-    %p= post.caption
-- else
-  No Pictures Yet!
-  %a(href='/posts/new') Add a Post
+.container{:style => "font-family: Open Sans; text-align: center;"}
+  - if @posts.any?
+    - @posts.each do |post|
+      = link_to (image_tag post.image.url(:medium)), post_path(post)
+      %p= post.caption
+    %a(href='/posts/new') Add a Post
+  - else
+    No Pictures Yet!
+    %a(href='/posts/new') Add a Post

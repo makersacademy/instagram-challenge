@@ -29,6 +29,12 @@ gem'haml-rails'
 gem 'paperclip'
 #Simple Form
 gem 'simple_form'
+# Devise
+gem 'devise'
+# OmniAuth for facebook
+gem 'omniauth-facebook'
+# OmniAuth for github
+gem 'omniauth-github'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -54,4 +60,8 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  # Shoulda(thoughtbot)
+  gem 'shoulda'
+  # extra rspec matchers
+  gem 'rspec-collection_matchers'
 end
