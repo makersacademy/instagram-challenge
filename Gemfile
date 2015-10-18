@@ -35,10 +35,6 @@ gem 'factory_girl_rails'
 
 gem 'launchy'
 
-gem 'poltergeist'
-
-gem 'database_cleaner'
-
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
