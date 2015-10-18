@@ -9,7 +9,6 @@ feature 'liking pictures' do
     click_link 'Add a picture'
     fill_in 'Title', with: 'Holiday'
     attach_file "picture_image", "spec/fixtures/image3.png"
-    # attach_file(id="picture_image", Rails.root + 'public/images/thumb/image2.png')
     click_button 'Create Picture'
     click_link 'Like'
     expect(page).to have_content('1 Like')
