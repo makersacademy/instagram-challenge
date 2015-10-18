@@ -9,15 +9,15 @@ module UserHelpers
   end
 
   def add_photo
-    click_link "Add a photo"
+    click_link 'Add a photo'
     fill_in 'Title', with: 'My cats'
-    attach_file("photo[image]", "spec/assets/cats.jpg")
-    click_button "Post photo"
+    attach_file 'photo[image]', 'spec/assets/cats.jpg'
+    click_button 'Post photo'
   end
 
   def add_comment
     click_link '💬'
-    fill_in "Thoughts", with: 'So cute!'
+    fill_in 'Thoughts', with: 'So cute!'
     click_button 'Add comment'
   end
 

@@ -5,12 +5,19 @@ class Photo < ActiveRecord::Base
   validates_attachment_presence :image
 
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   belongs_to :user
 
   def build_comment(comment_params, current_user)
     comment = comments.create(comment_params)
     comment.user = current_user
     comment
+  end
+
+  def create_like(current_user)
+    like = likes.create
+    like.user = current_user
+    like
   end
 
 end

@@ -8,12 +8,35 @@ class CommentsController < ApplicationController
   def create
     @photo = Photo.find(params[:photo_id])
     @comment = @photo.build_comment comment_params, current_user
-    @comment.save
-    redirect_to photos_path
+    if @comment.save
+      redirect_to photos_path
+    else
+      if @comment.errors[:user]
+        redirect_to photos_path, alert: 'You have to sign in to comment'
+      else
+        render :new
+      end
+    end
   end
 
   def comment_params
     params.require(:comment).permit(:thoughts)
+  end
+
+  def edit
+    @photo = Photo.find(params[:photo_id])
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    if current_user.id == @comment.user_id
+      @comment.update(comment_params)
+      flash[:notice] = 'Comment updated'
+      redirect_to photos_path
+    else
+      redirect_to photos_path, alert: 'You can only update your comment'
+    end
   end
 
   def destroy

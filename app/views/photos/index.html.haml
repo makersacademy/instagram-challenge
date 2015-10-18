@@ -3,9 +3,15 @@
     %br
     = link_to photo.title, photo_path(photo)
     %p= image_tag photo.image.url(:medium)
-    <br>
+    = link_to '♡', photo_likes_path(photo), class: 'likes-link'
+    = link_to '💬', new_photo_comment_path(photo), id: "comment_bubble"
+    %br
+    %heart='♥'
+    %span.likes_count= photo.likes.count
+    ='like'.pluralize photo.likes.count
+    %br
     - if current_user && current_user.id == photo.user_id
-      = link_to "Delete #{photo.title}", photo_path(photo), method: :delete
+      %p= link_to "Delete #{photo.title}", photo_path(photo), method: :delete
 
     - if photo.comments.any?
       %ul
@@ -13,11 +19,11 @@
           %li
             = comment.thoughts
             - if current_user && current_user.id == comment.user_id
+              = link_to "Edit comment", edit_photo_comment_path(photo, comment)
               = link_to "Delete comment", photo_comment_path(photo, comment), method: :delete
     - else
       %p No comments
 
-    = link_to "💬", new_photo_comment_path(photo)
 - else
   No photos yet!
 

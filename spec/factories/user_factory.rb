@@ -10,4 +10,9 @@ FactoryGirl.define do
     password 'secret4321'
   end
 
+  factory :user3, class: User do
+    email 'foo3@bar.com'
+    password 'secret3333'
+  end
+
 end

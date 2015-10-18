@@ -17,11 +17,8 @@ feature 'photos' do
     scenario 'sign-in users can post a photo' do
       visit '/photos'
       sign_up(user)
-      click_link "Add a photo"
-      fill_in 'Title', with: 'My cats'
-      attach_file("photo[image]", "spec/assets/cats.jpg")
-      click_button "Post photo"
-      expect(page).to have_content "My cats"
+      add_photo
+      expect(page).to have_content 'My cats'
     end
 
     scenario 'users must upload a photo in order to post' do

@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   has_many :photos
+  has_many :likes
+  has_many :liked_photos, through: :likes, source: :photo
   has_many :comments
   has_many :commented_photos, through: :comments, source: :photo
 
@@ -13,6 +15,10 @@ class User < ActiveRecord::Base
     photo = photos.create(photo_params)
     photo.user = current_user
     photo
+  end
+
+  def has_liked?(photo)
+    liked_photos.include? photo
   end
 
 end
