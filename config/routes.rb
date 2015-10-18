@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :comments
   resources :reviews
   devise_for :users
   root 'photos#index'
