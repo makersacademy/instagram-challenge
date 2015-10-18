@@ -48,26 +48,20 @@ feature 'photos' do
     scenario 'users can delete a photo they posted' do
       visit '/photos'
       sign_up(user)
-      click_link 'Delete cat'
-      expect(page).not_to have_content 'cat'
+      add_photo
+      click_link 'Delete My cats'
+      expect(page).not_to have_content 'My cats'
       expect(page).to have_content 'Photo deleted successfully'
     end
 
-    # scenario "users cannot delete a photo they haven't posted" do
-    #   visit '/photos'
-    #   sign_up(user)
-    #   click_link 'Delete cat'
-    #   expect(page).not_to have_content 'cat'
-    #   expect(page).to have_content 'Photo deleted successfully'
-    # end
-
+    scenario "users cannot delete a photo they haven't posted" do
+      visit '/photos'
+      sign_up(user)
+      add_photo
+      click_link 'Sign out'
+      sign_up(user2)
+      expect(page).not_to have_content 'Delete My cats'
+    end
   end
-
-
-
-
-
-
-
 
 end

@@ -4,7 +4,8 @@
     = link_to photo.title, photo_path(photo)
     %p= image_tag photo.image.url(:medium)
     <br>
-    = link_to "Delete #{photo.title}", photo_path(photo), method: :delete
+    - if current_user && current_user.id == photo.user_id
+      = link_to "Delete #{photo.title}", photo_path(photo), method: :delete
 
     - if photo.comments.any?
       %ul

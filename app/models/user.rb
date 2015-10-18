@@ -8,4 +8,12 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def build_photo(photo_params, current_user)
+    photo = photos.create(photo_params)
+    photo.user = current_user
+    photo
+  end
+
+
 end

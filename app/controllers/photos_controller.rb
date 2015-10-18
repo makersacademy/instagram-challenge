@@ -11,13 +11,12 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.create(photo_params)
-    if @photo.save
-      redirect_to photos_path
-    else
+    @user = current_user
+    @photo = @user.build_photo photo_params, current_user
+    if !@photo.save
       flash[:notice] = 'You must upload a photo to post'
-      redirect_to photos_path
     end
+    redirect_to photos_path
   end
 
   def photo_params
@@ -30,9 +29,13 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:id])
-    @photo.destroy
-    flash[:notice] = 'Photo deleted successfully'
-    redirect_to photos_path
+    if current_user.id == @photo.user_id
+      @photo.destroy
+      flash[:notice] = 'Photo deleted successfully'
+      redirect_to photos_path
+    else
+      redirect_to photos_path, alert: 'You can only delete photos you posted'
+    end
   end
 
 

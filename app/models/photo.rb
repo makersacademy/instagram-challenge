@@ -7,4 +7,10 @@ class Photo < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   belongs_to :user
 
+  def build_comment(comment_params, current_user)
+    comment = comments.create(comment_params)
+    comment.user = current_user
+    comment
+  end
+
 end
