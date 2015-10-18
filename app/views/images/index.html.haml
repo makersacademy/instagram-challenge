@@ -1,29 +1,37 @@
-- if @images.any?
-  - @images.reverse.each do |image|
-    = link_to image.name, image_path(image)
-    = relative_time(image.created_at)
-    - if image.image_file_name
-      = image_tag image.image.url(:thumb)
-    - if current_user == image.user
-      = link_to "Edit #{image.name}", edit_image_path(image)
-      = link_to "Delete #{image.name}", image_path(image), method: :delete
-    - if current_user
-      = link_to "Add a comment", new_image_comment_path(image)
-    %p
-      = link_to "like", image_likes_path(image), method: :post
-      = image.likes.length
-      = 'like'.pluralize image.likes.length
-    %p
-      comments on
-      = image.name
-    - if image.comments.any?
-      - image.comments.reverse.each do |comment|
-        %p
-          = relative_time(comment.created_at)
-          = comment.thoughts
-          - if current_user == comment.user
-            = link_to "Delete comment", comment_path(comment), method: :delete
-- else
-  No Images Added Yet
-%br
-= link_to 'Add an Image', new_image_path()
+%div.container-fluid.col-sm-4.col-sm-offset-3
+  - if @images.any?
+    - @images.reverse.each do |image|
+      %div.instagram-container.container-fluid.col-sm-12
+        %div.container-fluid.col-sm-7
+          = image.user.email
+        %div.container-fluid.col-sm-7
+          - if image.image_file_name
+            = image_tag image.image.url(:medium)
+        %div.container-fluid.col-sm-6
+          = relative_time(image.created_at)
+        %div.container-fluid.col-sm-6
+          = link_to "like", image_likes_path(image), method: :post
+          = image.likes.length
+          = 'like'.pluralize image.likes.length
+        %div.container-fluid.col-sm-7
+          = link_to image.name, image_path(image)
+        - if current_user == image.user
+          %div.container-fluid.col-sm-6
+            = link_to "Edit #{image.name}", edit_image_path(image)
+          %div.container-fluid.col-sm-6
+            = link_to "Delete #{image.name}", image_path(image), method: :delete
+        - if current_user
+          %div.container-fluid.col-sm-7
+            = link_to "Add a comment", new_image_comment_path(image)
+        %div.container-fluid.col-sm-7
+          comments on
+          = image.name
+        - if image.comments.any?
+          - image.comments.reverse.each do |comment|
+            %div.container-fluid.col-sm-7
+              = relative_time(comment.created_at)
+              = comment.thoughts
+              - if current_user == comment.user
+                = link_to "Delete comment", comment_path(comment), method: :delete
+  - else
+    No Images Added Yet
