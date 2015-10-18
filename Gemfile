@@ -47,6 +47,7 @@ group :development, :test do
   gem 'byebug'
   gem 'shoulda'
   gem 'factory_girl_rails'
+  gem 'rspec-collection_matchers'
 end
 
 group :development do
