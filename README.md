@@ -1,22 +1,16 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9AM Monday morning.
+This is an instagram clone. It allows users to upload photos, add comments, and like photos. Users can only like a photo once, edit and delete their own comments and photos.
 
-Task
------
+Set up
+------
 
-Build Instagram: Simple huh!
+1. Clone this repo
+2. Run `bundle install`
+3. Run `bin/rails s`
+4. Go to your localhost:3000 to view the app
 
-As usual please start by
-
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+Testing
+------
+run `rspec` to view feature and unit tests
