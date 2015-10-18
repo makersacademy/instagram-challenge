@@ -4,6 +4,4 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates_attachment_file_name :image, matches: [/png\Z/, /jpe?g\Z/]
 
-  # attr_accessor :image_file_name
-
 end
