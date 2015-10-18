@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem "paperclip", "~> 4.3"
 gem 'travis', '~> 1.8.0'
 gem 'coveralls', '~> 0.7.12', require: false
 gem 'omniauth-github'
