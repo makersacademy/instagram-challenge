@@ -44,7 +44,7 @@ feature 'pictures' do
   end
 
   context 'editing descriptions' do
-    scenario 'user can edit descriptions' do
+    scenario 'user can edit descriptions', js: true do
       post_picture
       click_link 'Edit'
       fill_in 'Description', with: 'Great'
