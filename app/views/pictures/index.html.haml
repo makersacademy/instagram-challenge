@@ -2,7 +2,9 @@
   - @pictures.each do |picture|
     %h3
       = picture.description
+      = pluralize picture.likes.count, 'like'
       = link_to 'Edit', edit_picture_path(picture)
+      = link_to 'Like', new_picture_like_path(picture)
       = link_to 'Comment', new_picture_comment_path(picture)
       = link_to 'Delete', picture_path(picture), method: :delete
     - if picture.comments.any?
