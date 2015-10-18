@@ -13,9 +13,13 @@
     <% else %>
       <p>No Comments</p>
     <% end %>
-    <%= link_to "Edit #{photo.caption}", edit_photo_path(photo) %>
-    <%= link_to "Delete #{photo.caption}", photo_path(photo), method: :delete %>
-    <%= link_to "Leave a comment", new_photo_comment_path(photo) %>
+    <% if current_user %>
+      <% if photo.user_id == current_user.id %> 
+        <%= link_to "Edit #{photo.caption}", edit_photo_path(photo) %>
+        <%= link_to "Delete #{photo.caption}", photo_path(photo), method: :delete %>
+      <% end %>
+      <%= link_to "Leave a comment", new_photo_comment_path(photo) %>
+    <% end %>
   <% end %>
 <% else %>
   <h1>No photos yet</h1>

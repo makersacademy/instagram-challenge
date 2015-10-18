@@ -11,6 +11,12 @@ feature 'photos' do
     click_button('Sign up')
   end
 
+  def post_photo(caption)
+    click_link 'Post a photo'
+    fill_in 'Caption', with: caption
+    click_button 'Post photo'
+  end
+
   context 'no photos have been added' do 
     scenario 'should display a prompt to add a photo' do 
       visit '/photos'
@@ -34,9 +40,7 @@ feature 'photos' do
   context 'posting photos' do
     scenario 'prompts user to fill out a form, then displays the new photo caption' do
       sign_up_with('test@example.com')
-      click_link 'Post a photo'
-      fill_in 'Caption', with: 'sunrise'
-      click_button 'Post photo'
+      post_photo('sunrise')
       expect(page).to have_content 'sunrise'
       expect(current_path).to eq '/photos'
     end
@@ -60,10 +64,9 @@ feature 'photos' do
   end
 
   context 'editing photo captions' do
-    before { Photo.create caption: 'sunrise' }
-
     scenario 'lets a user edit a photo caption' do
      sign_up_with('test@example.com')
+     post_photo('sunrise')
      click_link 'Edit sunrise'
      fill_in 'Caption', with: 'amazing sunrise'
      click_button 'Update Caption'
@@ -73,23 +76,30 @@ feature 'photos' do
   end
 
   context 'deleting photos' do
-    before {Photo.create caption: 'sunrise'}
-
     scenario 'removes a photo when a user clicks a delete link' do
       sign_up_with('test@example.com')
+      post_photo('sunrise')
       click_link 'Delete sunrise'
       expect(page).not_to have_content 'sunrise'
       expect(page).to have_content 'Photo deleted successfully'
     end
 
     scenario 'deleting a photo also deletes any associated comments' do
-      visit '/photos'
+      sign_up_with('test@example.com')
+      post_photo('sunrise')
       click_link 'Leave a comment'
       fill_in "Comment", with: "nice photo"
       click_button 'Leave Comment'
       click_link 'Delete sunrise'
       expect(page).not_to have_content 'sunrise'
       expect(page).not_to have_content 'nice photo'
+    end
+
+    scenario 'can only delete a photo if created by user' do
+      sign_up_with('test1@example.com')
+      click_link 'Sign out'
+      sign_up_with('test2@example.com')
+      expect(page).not_to have_content('Delete sunrise')
     end
   end
 
