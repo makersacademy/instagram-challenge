@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 feature 'posts' do
+
+  before(:each) do
+    user = FactoryGirl.create(:user)
+    visit '/users/sign_in'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
+  end
+
   scenario 'photos can be uploaded' do
     visit '/posts'
     click_link 'New post'
