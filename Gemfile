@@ -33,6 +33,8 @@ gem 'omniauth-facebook'
 
 gem 'factory_girl_rails'
 
+gem 'launchy'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'

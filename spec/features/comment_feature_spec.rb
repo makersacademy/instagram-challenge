@@ -30,4 +30,12 @@ feature 'comments' do
     expect(page).to_not have_content('great')
   end
 
+  scenario "can't leave a comment when not signed in" do
+
+    visit '/'
+    click_link 'Sign out'
+    click_link 'Comment'
+    expect(current_path).to eq '/users/sign_in'
+    expect(page).to have_content('You need to sign in')
+  end
 end

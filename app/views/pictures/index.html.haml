@@ -1,24 +1,22 @@
--if user_signed_in?
+- if @pictures.any?
+  - @pictures.each do |picture|
+    %h3
+      = picture.description
+      = link_to 'Edit', edit_picture_path(picture)
+      = link_to 'Comment', new_picture_comment_path(picture)
+      = link_to 'Delete', picture_path(picture), method: :delete
+    - if picture.comments.any?
+      %ul
+        - picture.comments.each do |comment|
+          %li
+            = comment.comment
+    - else
+      %p No comments
+- else
+  No pictures yet
+  = link_to 'Add a picture', new_picture_path
 
-  - if @pictures.any?
-    - @pictures.each do |picture|
-      %h3
-        = picture.description
-        = link_to 'Edit', edit_picture_path(picture)
-        = link_to 'Comment', new_picture_comment_path(picture)
-        = link_to 'Delete', picture_path(picture), method: :delete
-      - if picture.comments.any?
-        %ul
-          - picture.comments.each do |comment|
-            %li
-              = comment.comment
-      - else
-        %p No comments
-  - else
-    No pictures yet
-    = link_to 'Add a picture', new_picture_path
-
--else
+-unless user_signed_in?
   =link_to 'Sign up', new_user_registration_path
   %br
   =link_to 'Sign in', new_user_session_path
