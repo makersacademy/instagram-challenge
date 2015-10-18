@@ -5,6 +5,6 @@ class Photo < ActiveRecord::Base
   validates_attachment_presence :image
 
   has_many :comments, dependent: :destroy
-
+  belongs_to :user
 
 end

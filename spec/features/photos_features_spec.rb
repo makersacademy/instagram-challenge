@@ -14,7 +14,7 @@ feature 'photos' do
   end
 
   context 'posting photos' do
-    scenario 'user can post a photo and then see the title and photo' do
+    scenario 'sign-in users can post a photo' do
       visit '/photos'
       sign_up(user)
       click_link "Add a photo"
@@ -47,12 +47,19 @@ feature 'photos' do
 
     scenario 'users can delete a photo they posted' do
       visit '/photos'
+      sign_up(user)
       click_link 'Delete cat'
       expect(page).not_to have_content 'cat'
       expect(page).to have_content 'Photo deleted successfully'
     end
 
-
+    # scenario "users cannot delete a photo they haven't posted" do
+    #   visit '/photos'
+    #   sign_up(user)
+    #   click_link 'Delete cat'
+    #   expect(page).not_to have_content 'cat'
+    #   expect(page).to have_content 'Photo deleted successfully'
+    # end
 
   end
 
