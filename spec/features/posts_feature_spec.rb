@@ -38,6 +38,13 @@ feature 'User posts' do
       expect(page).to have_content("#{time.strftime('%a, %d %b %Y %H:%M:%S')}")
     end
 
+    scenario 'post display the user who made the post' do
+      user = build(:user)
+      sign_up(user)
+      upload_picture
+      expect(page).to have_content("testtest@gmail.com")
+    end
+
   end
   
 end
