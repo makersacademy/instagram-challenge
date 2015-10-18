@@ -1,5 +1,10 @@
 <%= link_to "Add a photo", new_photo_path %>
 
-<% @photos.each do |photo| %>
-  <%= link_to photo.id, photo_path(photo) %>
+<% if @photos.any? %>
+
+  <% @photos.each do |photo| %>
+    <%= link_to photo.title, photo_path(photo) %>
+  <% end %>
+<% else %>
+  No photos yet
 <% end %>
