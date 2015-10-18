@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/anitacanita/instagram-challenge.svg)](https://travis-ci.org/anitacanita/instagram-challenge)
+
 Instagram Challenge
 ===================
 
