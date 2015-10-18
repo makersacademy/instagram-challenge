@@ -32,6 +32,13 @@ feature 'User can sign in and out' do
       visit('/')
       expect(page).not_to have_link("Sign in")
       expect(page).not_to have_link("Sign up")
-    end 
+    end
+  end
+end
+
+feature 'User cannot upload photos unless signed in' do
+  scenario "No link should exist for uploading picture" do
+    visit('/')
+    expect(page).not_to have_link("New Post")
   end
 end
