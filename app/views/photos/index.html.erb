@@ -1,43 +1,45 @@
-<% if @photos.all.any? %>
-  <% @photos.all.each do |photo| %>
-    <%= relative_time(photo.created_at) %>
-    <%= photo.username %>
-    <% if photo.image_file_name %>
-      <%= link_to image_tag(photo.image.url(:thumb)), photo_path(photo), class: "photolink" %>
-    <% end %>
-    <h2><%= photo.caption %></h2>
-    
-
-    <%= link_to "Favourite", photo_favourites_path(photo), class: 'favourites-link' %>
-    <span class="favourites_count"> <%= photo.favourites.length %> </span> <%= 'Favourite'.pluralize(photo.favourites.count) %>
-    <% if photo.comments.any? %>
-    <h3>Comments for <%= photo.caption %></h3>
-      <ul>
-        <% photo.comments.each do |comment| %>
-          <li>
-            <%= comment.username %> said <%= comment.comment %>
-            <% if current_user %>
-              <% if comment.user_id == current_user.id %>
-                <%= link_to "Delete Comment", photo_comment_path(photo, comment), method: :delete %>
-              <% end %>
-            <% end %>
-          </li>
+<div class="central_divide">
+  <% if @photos.all.any? %>
+    <% @photos.all.reverse.each do |photo| %>
+      <div class="photo_box">
+        <div class="username"><%= photo.username %></div>
+        <div class="timestamp"><%= relative_time(photo.created_at) %></div>
+        <% if photo.image_file_name %>
+          <%= link_to image_tag(photo.image.url(:thumb)), photo_path(photo), class: "photolink" %>
         <% end %>
-      </ul>
-    <% else %>
-      <p>No Comments</p>
+        <h2><%= photo.caption %></h2>
+        <%= link_to "Favourite", photo_favourites_path(photo), class: 'favourites-link' %>
+        <span class="favourites_count"> <%= photo.favourites.length %> </span> <%= 'Favourite'.pluralize(photo.favourites.count) %>
+        <% if photo.comments.any? %>
+        <h3>Comments for <%= photo.caption %></h3>
+          <ul>
+            <% photo.comments.each do |comment| %>
+              <li>
+                <%= comment.username %> said <%= comment.comment %>
+                <% if current_user %>
+                  <% if comment.user_id == current_user.id %>
+                    <%= link_to "Delete Comment", photo_comment_path(photo, comment), method: :delete %>
+                  <% end %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No Comments</p>
+        <% end %>
+        <% if current_user %>
+          <% if photo.user_id == current_user.id %> 
+            <%= link_to "Edit #{photo.caption}", edit_photo_path(photo) %>
+            <%= link_to "Delete #{photo.caption}", photo_path(photo), method: :delete %>
+          <% end %>
+          <%= link_to "Leave a comment", new_photo_comment_path(photo) %>
+        <% end %>
+      </div>
     <% end %>
-    <% if current_user %>
-      <% if photo.user_id == current_user.id %> 
-        <%= link_to "Edit #{photo.caption}", edit_photo_path(photo) %>
-        <%= link_to "Delete #{photo.caption}", photo_path(photo), method: :delete %>
-      <% end %>
-      <%= link_to "Leave a comment", new_photo_comment_path(photo) %>
-    <% end %>
+  <% else %>
+    <h1>No photos yet</h1>
   <% end %>
-<% else %>
-  <h1>No photos yet</h1>
-<% end %>
+</div>
 
 
 <%= link_to 'Post a photo', new_photo_path() %>
