@@ -3,6 +3,7 @@
   - @pictures.each do |picture|
     %div
       = image_tag picture.picture.url(:medium)
+      %p #{time_ago_in_words(picture.created_at)} ago
       %p= picture.description
       - if current_user == picture.user
         = link_to 'Delete', picture_path(picture), method: :delete
