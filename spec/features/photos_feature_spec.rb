@@ -48,8 +48,18 @@ require 'rails_helper'
     end
   end
 
-  context 'creating photos' do
-    scenario 'the index display' do
+  context 'view photos on the index' do
+    scenario 'the index display exists' do
+      photo_one = create(:photo, title: "first post")
+      photo_two = create(:photo, title: "second post")
+
+      visit '/'
+      expect(page).to have_content("first post")
+      expect(page).to have_content("second post")
+      expect(page).to have_css("img[src*='testimage.jpg']")
+    end
+
+    scenario 'photos have the name of the user who created them' do
       photo_one = create(:photo, title: "first post")
       photo_two = create(:photo, title: "second post")
 
