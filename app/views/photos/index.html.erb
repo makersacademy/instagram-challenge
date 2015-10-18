@@ -7,23 +7,20 @@
         <% if photo.image_file_name %>
           <div class="image"><%= link_to image_tag(photo.image.url(:thumb)), photo_path(photo), class: "photolink" %></div>
         <% end %>
-        <span class="favourites_count"> <%= photo.favourites.length %> </span> <span class="favourite_icon"><%= 'Favourite'.pluralize(photo.favourites.count) %></span>
-        <%= link_to "Favourite", photo_favourites_path(photo), class: 'favourites-link' %>
+        <div class="favourites_box">
+          <span class="favourites_count"> <%= photo.favourites.length %> </span> <span class="favourite_text"><%= 'Favourite'.pluralize(photo.favourites.count) %></span>
+          <%= link_to image_tag('heart.png'), photo_favourites_path(photo), class: 'favourites-link' %>
+        </div>
         <div class="caption"><%= photo.caption %></div>
         <% if photo.comments.any? %>
-        <h3>Comments for <%= photo.caption %></h3>
-          <ul>
             <% photo.comments.each do |comment| %>
-              <li>
-                <%= comment.username %> said <%= comment.comment %>
-                <% if current_user %>
-                  <% if comment.user_id == current_user.id %>
-                    <%= link_to "Delete Comment", photo_comment_path(photo, comment), method: :delete %>
-                  <% end %>
+              <div class="comment"><%= comment.username %> said <%= comment.comment %> </div>
+              <% if current_user %>
+                <% if comment.user_id == current_user.id %>
+                  <%= link_to "Delete Comment", photo_comment_path(photo, comment), method: :delete %> </br>
                 <% end %>
-              </li>
-            <% end %>
-          </ul>
+              <% end %>
+          <% end %>
         <% else %>
           <p>No Comments</p>
         <% end %>
