@@ -1,10 +1,12 @@
 <% if @photos.all.any? %>
   <% @photos.all.each do |photo| %>
+    <%= relative_time(photo.created_at) %>
     <%= photo.username %>
     <% if photo.image_file_name %>
-      <%= image_tag photo.image.url(:thumb) %>
+      <%= link_to image_tag(photo.image.url(:thumb)), photo_path(photo), class: "photolink" %>
     <% end %>
-    <h2><%= link_to photo.caption, photo_path(photo) %></h2>
+    <h2><%= photo.caption %></h2>
+    
 
     <%= link_to "Favourite", photo_favourites_path(photo), class: 'favourites-link' %>
     <span class="favourites_count"> <%= photo.favourites.length %> </span> <%= 'Favourite'.pluralize(photo.favourites.count) %>
@@ -13,8 +15,7 @@
       <ul>
         <% photo.comments.each do |comment| %>
           <li>
-            <%= comment.comment %>
-            <%= relative_time(comment.created_at) %>
+            <%= comment.username %> said <%= comment.comment %>
             <% if current_user %>
               <% if comment.user_id == current_user.id %>
                 <%= link_to "Delete Comment", photo_comment_path(photo, comment), method: :delete %>

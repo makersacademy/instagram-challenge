@@ -38,6 +38,12 @@ feature 'photos' do
       expect(current_path).to eq '/photos'
     end
 
+    scenario 'photos have a relative timestamp' do
+      sign_up_with('test@example.com')
+      post_photo('sunrise')
+      expect(page).to have_content 'Just now'
+    end
+
     scenario 'users can only post a photo if they are signed in' do
       visit '/photos'
       click_link 'Post a photo'
@@ -51,7 +57,7 @@ feature 'photos' do
     scenario 'lets a user view a photo' do
      sign_up_with('test@example.com')
      post_photo('sunrise')
-     click_link 'sunrise'
+     find(".photolink").click
      expect(page).to have_content 'sunrise'
      # expect(current_path).to eq "/photos/#{sunrise.id}"
     end

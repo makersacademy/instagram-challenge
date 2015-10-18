@@ -18,7 +18,6 @@ feature 'commenting' do
   scenario 'allows users to leave a comment using a form' do
     expect(current_path).to eq '/photos'
     expect(page).to have_content('nice photo')
-    expect(page).to have_content('Just now')
   end
 
   scenario 'user can delete a comment' do

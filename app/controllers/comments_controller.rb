@@ -9,6 +9,9 @@ class CommentsController < ApplicationController
     @photo = Photo.find(params[:photo_id])
     @comment = @photo.comments.new(comment_params)
     @comment.user_id = current_user.id
+    @user = User.find(@photo.user_id)
+    @username = @user.username
+    @comment.username = @username
     @comment.save
     redirect_to photos_path
   end
