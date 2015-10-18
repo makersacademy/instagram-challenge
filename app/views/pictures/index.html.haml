@@ -1,8 +1,17 @@
 - if @pictures.any?
   - @pictures.each do |picture|
-    %h3= picture.title
-    = image_tag picture.image.url(:thumb)
-- else
-  No pictures yet!
+    %h3= link_to picture.title, picture_path(picture)
+    %p= link_to image_tag(picture.image.url(:medium )), picture_path(picture)
+    %p= link_to "Add a comment", new_picture_comment_path(picture)
+    = link_to "Delete", picture_path(picture), method: :delete
 
-= link_to 'Add a picture', new_picture_path
+
+    - if picture.comments.any?
+      %ul
+      - picture.comments.each do |comment|
+        %p= comment.thoughts
+
+- else
+  %p No pictures yet!
+
+%p= link_to 'Add a picture', new_picture_path
