@@ -1,9 +1,12 @@
 <% if @photos.empty? %>
   No photo yet
 <% else %>
-  <% @photos.each do |photo| %>
-    <%= photo.title %><br/>
-    <%= image_tag photo.image.url(:medium) %>
+  <% @photos.each_with_index do |photo, i| %>
+    <div id="photo<%=i%>">
+      <%= photo.title %><br/>
+      <%= link_to image_tag(photo.image.url :medium), photo_path(photo) %>
+      <%= link_to photo.user.email, "users/#{photo.user_id}/photos" %>
+    </div>
   <% end %>
 <% end %>
-<br/><a href='/photos/new'>Add photo</a>
+<br/><%= link_to 'Add photo', new_photo_path %>
