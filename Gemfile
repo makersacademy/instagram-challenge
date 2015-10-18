@@ -44,6 +44,7 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'shoulda'
+  gem 'orderly'
 end
 
 group :development do
