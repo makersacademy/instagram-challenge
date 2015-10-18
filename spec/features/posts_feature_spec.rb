@@ -56,7 +56,7 @@ feature 'posts' do
       expect(page).not_to have_link 'Edit post'
     end
 
-    scenario 'cannot HTTP edit posts that are not yours' do
+    scenario 'cannot HTTP edit posts that are not theirs' do
       post = @user.posts.create description: 'My 2nd post'
       click_link 'Sign out'
       sign_in(@user2)
@@ -67,15 +67,25 @@ feature 'posts' do
   end
 
   context 'deleting posts' do
-    before { Post.create description: 'Delete this post' }
+    before { @user.posts.create description: 'Delete this post' }
 
     scenario 'removes post upon clicking delete post link' do
       visit '/posts'
       click_link 'Delete post'
       expect(page).to have_content 'Post deleted successfully'
-      expect(page).not_to have_content 'Delete this post'
+      expect(page).not_to have_link 'Delete this post'
     end
+
+    scenario 'users can only delete their own posts' do
+      click_link 'Sign out'
+      sign_in(@user2)
+      visit '/posts'
+      expect(page).not_to have_link 'Delete this post'
+    end
+
   end
+
+
 
 
 
