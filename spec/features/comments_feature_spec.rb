@@ -7,7 +7,7 @@ feature 'comments' do
      visit '/posts'
      click_link "#{post.id}"
      click_link 'Comment'
-     fill_in 'Comments', with: 'Looking Good!'
+     find(:css, '#textarea').set "Looking Good!"
      click_button 'Create Comment'
      expect(current_path).to eq "/posts/#{post.id}"
      expect(page).to have_content('Looking Good!')
