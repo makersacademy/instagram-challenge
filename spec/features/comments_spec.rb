@@ -2,7 +2,7 @@ require 'rails_helper'
 include UsersHelper
 include PhotosHelper
 
-feature 'reviewing' do
+feature 'commenting' do
   before {  user = build :user
             sign_up user
             create_photo }
@@ -11,9 +11,17 @@ feature 'reviewing' do
      click_link 'Comment on Test Title'
      fill_in "Comment", with: "Awesome!"
      click_button 'Leave Comment'
-
      expect(current_path).to eq '/photos'
      expect(page).to have_content('Awesome!')
+  end
+
+  scenario 'users can only delete comments that they have made' do
+    click_link 'Comment on Test Title'
+    fill_in "Comment", with: "AMAZING!"
+    click_button 'Leave Comment'
+    expect(page).to have_link('Delete Comment')
+    click_link "Sign out"
+    expect(page).not_to have_link 'Delete Comment'
   end
 
 end

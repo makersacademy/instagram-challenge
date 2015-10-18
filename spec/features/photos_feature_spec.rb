@@ -63,6 +63,14 @@ feature 'photos' do
       expect(page).not_to have_link 'Delete Test Title'
     end
 
+    scenario 'users can only delete photos that they have posted' do
+      expect(page).to have_link 'Delete Test Title'
+      click_link 'Sign out'
+      user2 = build(:user, email: 'user2@example.com')
+      sign_up user2
+      expect(page).not_to have_link 'Delete Test Title'
+    end
+
   end
 
 end

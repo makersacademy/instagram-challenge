@@ -5,20 +5,23 @@
       <% if photo.comments.any? %>
        <ul>
          <% photo.comments.each do |comment| %>
-          <li>
-          <%= comment.comments %>
-        </li>
-        <% end %>
+           <li>
+             <%= comment.comments %>
+           </li>
+           <% if user_signed_in? && comment.user_id == current_user.id %>
+             <%= link_to "Delete Comment", photo_comment_path(photo, comment), method: :delete %>
+           <% end %>
+           <% end %>
        <% else %>
-       <p> No comments yet </p>
-    <% end %>
+         <p> No comments yet </p>
+       <% end %>
 
-    <% if current_user %>
-      <%= link_to "Comment on #{photo.title}", new_photo_comment_path(photo) %>
-      <% if current_user.id == photo.user_id %>
-        <%= link_to "Delete #{photo.title}", photo_path(photo), method: :delete %>
-      <% end %>
-    <% end %>
+   <% if current_user %>
+     <%= link_to "Comment on #{photo.title}", new_photo_comment_path(photo) %>
+     <% if current_user.id == photo.user_id %>
+       <%= link_to "Delete #{photo.title}", photo_path(photo), method: :delete %>
+     <% end %>
+   <% end %>
     <br>
 
   <% end %>
