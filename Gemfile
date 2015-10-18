@@ -5,6 +5,7 @@ gem 'rails', '4.2.4'
 gem 'haml-rails'
 gem 'haml'
 gem 'paperclip'
+gem 'shoulda'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
