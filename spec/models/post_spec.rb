@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Restaurant, type: :model do
+describe Post, type: :model do
 
 end
