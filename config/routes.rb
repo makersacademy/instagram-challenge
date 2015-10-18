@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   get 'users/:user_id/photos' => 'users#show'
   resources :photos do
-    resources :comments
+    resources :comments do
+      resources :comment_likes
+    end
     resources :photo_likes
   end
   root to: "photos#index"

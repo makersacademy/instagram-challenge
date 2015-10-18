@@ -50,7 +50,7 @@ feature 'showing all photos created by a particular user' do
       click_link 'Like'
       leave_comment
       add_photo 'Testing2'
-      within "#photo0" do
+      within '#photo0' do
         click_link user.email
       end
       expect(page).to have_content 'Testing'
