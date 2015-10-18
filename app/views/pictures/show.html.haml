@@ -3,3 +3,11 @@
 %ul
   %li= link_to 'Edit picture', edit_picture_path(@picture)
   %li= link_to 'Delete picture', picture_path(@picture), method: :delete
+%h2 Comments
+- if @picture.comments.any?
+  %ul
+    - @picture.comments.each do |comment|
+      %li= comment.content
+- else
+  %p No comments just yet
+%p= link_to 'Leave a comment', new_picture_comment_path(@picture)
