@@ -9,7 +9,9 @@
     </p>
     <p>
       <%= link_to "Comment", new_picture_comment_path(picture) %>
-      <%= link_to "Delete", picture_path(picture), method: :delete %>
+      <% if picture.created_by?(current_user)%>
+        <%= link_to "Delete", picture_path(picture), method: :delete %>
+      <% end %>
     </p>
     <% if picture.comments.any? %>
       <ul>

@@ -51,15 +51,26 @@ feature 'pictures' do
 
   context 'deleting pictures' do
 
-    before {Picture.create(image_file_name: 'spec/assets/images/dism.jpg')}
-
-    scenario 'removes a picture when a user clicks a delete link' do
+    before do
       user = create :user
       sign_in_as(user)
       visit '/pictures'
+      click_link 'Add a picture'
+      attach_file 'picture[image]', 'spec/assets/images/dism.jpg'
+      click_button 'Create Picture'
+    end
+
+    scenario 'lets a user delete picture he added' do
       click_link 'Delete'
       expect(page).not_to have_xpath("//img[@alt='Dism']")
       expect(page).to have_content 'Picture deleted successfully'
+    end
+
+    scenario 'does not let user delete another user\'s picture' do
+      click_link 'Sign out'
+      user2 = create(:user, email: 'test2@example.com')
+      sign_in_as(user2)
+      expect(page).not_to have_link 'Delete'
     end
 
 end

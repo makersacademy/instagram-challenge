@@ -11,14 +11,23 @@ class PicturesController < ApplicationController
   end
 
   def create
-    Picture.create(picture_params)
-    redirect_to pictures_path
+    picture = Picture.new(picture_params)
+    if picture.save
+      current_user.pictures << picture
+      current_user.save
+      redirect_to pictures_path
+    else
+      render 'new'
+    end
   end
 
   def destroy
-    @picture = Picture.find(params[:id])
-    @picture.destroy
-    flash[:notice] = 'Picture deleted successfully'
+    picture = Picture.find(params[:id])
+    if picture.destroy_as current_user
+      flash[:notice] = 'Picture deleted successfully'
+    else
+      flash[:alert] = picture.errors
+    end
     redirect_to pictures_path
   end
 
