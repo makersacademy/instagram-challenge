@@ -2,9 +2,9 @@ require 'rails_helper'
 
 feature 'User comments' do
 
-  context 'when commenting' do
+  context 'when making a comment' do
     
-    scenario 'comments display on the page' do
+    scenario 'the comments display in the feed' do
       user = build(:user)
       sign_up(user)
       create_post
@@ -12,15 +12,15 @@ feature 'User comments' do
       expect(page).to have_content "awesome pic!"
     end
 
-    scenario 'comments display who commented' do
+    scenario 'the feed display who commented' do
       user = build(:user)
       sign_up(user)
       create_post
       comment_on_post("awesome post!")
-      expect(page).to have_content "testtest@gmail.com commented: awesome post!"
+      expect(page).to have_content "testtest@gmail.com"
     end
 
-    scenario 'comments have a timestamp' do
+    scenario 'a timestamp is included' do
       user = build(:user)
       sign_up(user)
       create_post

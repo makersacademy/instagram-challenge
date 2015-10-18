@@ -1,10 +1,10 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-      <ul>
-          <%= "#{@users.find(post.user_id).email}, posted at:" %>
-          <%= post.image_updated_at.strftime('%a, %d %b %Y %H:%M:%S') if post.image_updated_at %>
-          <%= link_to image_tag(post.image.url(:med)), post_path(post.id) %>
-          <%= link_to post.caption, post_path(post.id) %>
+      <ul class="container-fluid">
+          <div class="user-post-email"><%= "#{@users.find(post.user_id).email}, posted at:" %></div>
+          <div class="user-post-time"><%= post.image_updated_at.strftime('%a, %d %b %Y %H:%M:%S') if post.image_updated_at %></div>
+          <div class="user-post-image"><%= link_to image_tag(post.image.url(:med)), post_path(post.id) %></div>
+          <div class="user-post-caption"><%= link_to post.caption, post_path(post.id) %></div>
       </ul>
   <% end %>
     <% else %>
