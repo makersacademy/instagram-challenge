@@ -1,16 +1,16 @@
 require 'rails_helper'
 
+feature 'commenting' do
+
+let(:user){ build :user }
+let(:user2){ build :user2 }
+
+before do
+  sign_up(user)
+end
 
 context 'photos have been added' do
   before do
-    Photo.create(title: 'Test Photo')
-    visit('/')
-    click_link('Sign up')
-    fill_in('Email', with: 'test@example.com')
-    fill_in('Username', with: 'Test User')
-    fill_in('Password', with: 'testtest', :match => :prefer_exact)
-    fill_in('Password confirmation', with: 'testtest', :match => :prefer_exact)
-    click_button('Sign up')
     Photo.create(title: 'Test Photo')
   end
 
@@ -107,4 +107,5 @@ context 'photos have been added' do
 
 
 
+end
 end
