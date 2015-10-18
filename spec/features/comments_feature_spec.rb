@@ -18,11 +18,20 @@ context 'photos have been added' do
     fill_in('Title', with: 'Test Photo')
     attach_file('Image', 'spec/files/images/testimage.jpg')
     click_button 'Create Photo'
-    save_and_open_page
-    expect(page).to have_content('Test Photo')
+    expect(page).to have_content('Add Comment')
   end
 
-
+  scenario 'should display a prompt to add a comment' do
+    visit '/photos'
+    click_link 'Add photo'
+    fill_in('Title', with: 'Test Photo')
+    attach_file('Image', 'spec/files/images/testimage.jpg')
+    click_button 'Create Photo'
+    click_link('Add Comment')
+    fill_in('Comment', with: 'What a lovely photo')
+    click_button('Submit')
+    expect(page).to have_content('What a lovely photo')
+  end
 
 
 

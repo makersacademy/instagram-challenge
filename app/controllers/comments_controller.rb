@@ -14,6 +14,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
+    @photo = Photo.find(params[:photo_id])
+    puts params
     @comment = Comment.new
   end
 
@@ -24,17 +26,8 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
-
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
+    @photo = Photo.find(params[:photo_id])
+    @photo.comments.create(comment_params)
   end
 
   # PATCH/PUT /comments/1
