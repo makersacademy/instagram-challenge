@@ -31,4 +31,15 @@ module FactoryHelper
     click_button "Create Post"
   end
 
+  def upload_picture
+    visit root_path
+    click_link "Create post"
+    fill_in "post[caption]", with: "test post!"
+    attach_file("post[image]", 
+      Rails.root + "spec/fixtures/files/reset_5.png")
+    click_button "Create Post"
+  end
+
+
+
 end
