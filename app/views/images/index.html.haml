@@ -1,0 +1,10 @@
+- if @images.any?
+  - @images.each do |image|
+    = link_to image.name, image_path(image)
+    - if image.image_file_name
+      = image_tag image.image.url(:thumb)
+    = link_to "Edit #{image.name}, edit_image_path(image)
+- else
+  No Images Added Yet
+%br
+= link_to 'Add an Image', new_image_path()
