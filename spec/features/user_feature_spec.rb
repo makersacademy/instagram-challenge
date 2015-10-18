@@ -62,5 +62,16 @@ feature 'User Features ' do
 
   end
 
+  context 'when visiting the profile page' do
+    
+    scenario 'the user can go to their page' do
+      user = build(:user)
+      sign_up(user)
+      visit root_path
+      click_link "testtest@gmail.com"
+      expect(page).to have_content "Profile"
+    end
+
+  end
 
 end
