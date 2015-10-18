@@ -1,9 +1,9 @@
-%div{:class => "addimages"}
+%div{:id => "addimages"}
   %a(href='images/new') Add an image
 %br
-%div{:class => "images"}
-  - if @images.any?
-    - @images.each do |image|
+- if @images.any?
+  - @images.each do |image|
+    %div{:id => "images"}
       %h2= image.name
       = image_tag image.image.url(:thumb)
       %br
@@ -15,17 +15,19 @@
       %br
       %span.likes_count= image.likes.count
       = 'like'.pluralize image.likes.count
-      = link_to "Like", image_likes_path(image), class: 'likes-link'
+      = link_to image_tag('like.png', :width => 30, :height => 30), image_likes_path(image), class: 'likes-link', :id => "likebutton"
       %br
-      = link_to "Add comment", new_image_comment_path(image)
       - if image.comments.any?
         %ul
           - image.comments.each do |comment|
-            %li
+            %div{:id => "comments"}
               %p
-                = comment.username
-                %strong :
+                %strong
+                  = comment.username
+                  %strong :
                 = comment.comments
-  - else
-    No images yet
+      %div{:id => "addcomment"}
+        = link_to "Add comment", new_image_comment_path(image)
+- else
+  No images yet
 %br
