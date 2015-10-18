@@ -14,6 +14,9 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     if @photo.save
       @photo.user_id = current_user.id
+      @user = User.find(@photo.user_id)
+      @username = @user.username
+      @photo.username = @username
       @photo.save
       redirect_to photos_path
     else
@@ -27,6 +30,8 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
+    @user = User.find(@photo.user_id)
+    @username = @user.username
   end
 
   def edit

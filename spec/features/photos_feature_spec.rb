@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'photos' do 
-  
+
   context 'no photos have been added' do 
     scenario 'should display a prompt to add a photo' do 
       visit '/photos'
@@ -19,6 +19,13 @@ feature 'photos' do
       sign_up_with("test@example.com")
       post_photo('sunrise')
       expect(page).to have_content('sunrise')
+      expect(page).not_to have_content('No restaurants yet')
+    end
+
+    scenario 'associated username is displayed' do
+      sign_up_with("test@example.com")
+      post_photo('sunrise')
+      expect(page).to have_content('testuser')
       expect(page).not_to have_content('No restaurants yet')
     end
   end
