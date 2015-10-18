@@ -1,3 +1,7 @@
+require 'helpers/user_helpers'
+
+include UserHelpers
+
 feature 'pictures' do
   scenario 'Should display a prompt to add a picture' do
     visit '/pictures'
@@ -6,6 +10,7 @@ feature 'pictures' do
 
   scenario 'user can fill out a form to add a picture' do
     visit '/pictures'
+    sign_up('test@test.com','testtest')
     click_link 'Add a picture'
     page.attach_file('picture[image]', Rails.root + 'spec/fixtures/test.jpg')
     fill_in 'Description', with: 'What a cool picture'
@@ -35,6 +40,7 @@ feature 'pictures' do
     before { Picture.create description: 'Something', image_file_name: 'test.jpg'}
     scenario 'User can edit a picture' do
       visit '/pictures'
+      sign_up('test@test.com','testtest')
       click_link 'View picture'
       click_link 'Edit picture'
       fill_in 'Description', with: 'Something different'
@@ -48,6 +54,7 @@ feature 'pictures' do
     before { Picture.create description: 'Something', image_file_name: 'test.jpg'}
     scenario 'User can delete a picture and it deletes from database' do
       visit '/pictures'
+      sign_up('test@test.com','testtest')
       click_link 'View picture'
       click_link 'Delete picture'
       expect(page).not_to have_content 'Something'
