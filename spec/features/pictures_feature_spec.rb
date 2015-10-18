@@ -3,6 +3,8 @@ require 'rails_helper'
 feature 'pictures' do
   context 'no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
+      user = create :user
+      sign_in_as(user)
       visit '/pictures'
       expect(page).to have_content 'No pictures yet'
       expect(page).to have_link 'Add a picture'
@@ -14,6 +16,8 @@ feature 'pictures' do
     before {Picture.create(image_file_name: 'spec/assets/images/dism.jpg')}
 
     scenario 'display pictures' do
+      user = create :user
+      sign_in_as(user)
       visit '/pictures'
       expect(page).to have_xpath("//img[@alt='Dism']")
       expect(page).not_to have_content('No pictures yet')
@@ -22,6 +26,8 @@ feature 'pictures' do
 
   context 'creating pictures' do
     scenario 'prompts user to fill out a form, then displays the new picture' do
+      user = create :user
+      sign_in_as(user)
       visit '/pictures'
       click_link 'Add a picture'
       attach_file 'picture[image]', 'spec/assets/images/dism.jpg'
@@ -30,6 +36,8 @@ feature 'pictures' do
       expect(current_path).to eq '/pictures'
     end
     scenario 'the new picture appears above an old one' do
+      user = create :user
+      sign_in_as(user)
       visit '/pictures'
       click_link 'Add a picture'
       attach_file 'picture[image]', 'spec/assets/images/dism.jpg'
@@ -46,6 +54,8 @@ feature 'pictures' do
     before {Picture.create(image_file_name: 'spec/assets/images/dism.jpg')}
 
     scenario 'removes a picture when a user clicks a delete link' do
+      user = create :user
+      sign_in_as(user)
       visit '/pictures'
       click_link 'Delete'
       expect(page).not_to have_xpath("//img[@alt='Dism']")

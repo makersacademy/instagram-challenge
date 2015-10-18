@@ -1,5 +1,7 @@
 class PicturesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @pictures = Picture.all.order('created_at DESC')
   end

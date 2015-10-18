@@ -5,6 +5,8 @@ feature 'commenting' do
   before {Picture.create(image_file_name: 'spec/assets/images/dism.jpg')}
 
   scenario 'allows users to leave a comment using a form' do
+    user = create :user
+    sign_in_as(user)
     visit '/pictures'
     click_link 'Comment'
     fill_in "Thoughts", with: "Wow!"
