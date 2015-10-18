@@ -1,11 +1,10 @@
 class CommentsController < ApplicationController
+  before_action :find_picture, only: [:new, :create]
   def new
-    @picture = Picture.find(params[:picture_id])
     @comment = Comment.new
   end
 
   def create
-    @picture = Picture.find(params[:picture_id])
     @comment = @picture.build_with_user(comment_params, current_user)
     if user_signed_in?
       if @comment.save
@@ -31,6 +30,10 @@ class CommentsController < ApplicationController
 
 
   private
+
+  def find_picture
+    @picture = Picture.find(params[:picture_id])
+  end
 
   def comment_params
     params.require(:comment).permit(:content)
