@@ -11,10 +11,8 @@ class PicturesController < ApplicationController
   end
 
   def create
-    picture = Picture.new(picture_params)
+    picture = Picture.new(picture_params.merge(user_id: current_user.id))
     if picture.save
-      current_user.pictures << picture
-      current_user.save
       redirect_to pictures_path
     else
       render 'new'

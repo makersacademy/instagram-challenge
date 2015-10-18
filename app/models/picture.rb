@@ -1,6 +1,7 @@
 class Picture < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   belongs_to :user
 
   has_attached_file :image, styles: { medium: "300x300>" }

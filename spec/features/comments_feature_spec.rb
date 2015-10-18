@@ -5,7 +5,9 @@ feature 'commenting' do
   before do
     user = create :user
     sign_in_as(user)
-    add_picture('spec/assets/images/dism.jpg')
+    click_link 'Add a picture'
+    attach_file 'picture[image]', 'spec/assets/images/dism.jpg'
+    click_button 'Create Picture'
   end
 
   scenario 'allows users to leave a comment using a form' do
