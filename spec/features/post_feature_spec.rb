@@ -11,11 +11,11 @@ feature 'posts' do
 end
 
 context 'creating posts' do
-  scenario 'prompts user to fill out a form, then displays the new restaurant' do
+  scenario 'prompts user to fill out a form, then displays the new post' do
     visit '/posts'
-    click_link 'Add a post'
+    click_link 'Add a new post'
     fill_in 'Name', with: 'Bird'
-    click_button 'Create post'
+    click_button 'Create Post'
     expect(page).to have_content 'Bird'
     expect(current_path).to eq '/posts'
   end
@@ -23,7 +23,7 @@ end
 
 context 'viewing posts' do
 
-  let!(:bird){Restaurant.create(name:'Bird')}
+  let!(:bird){Post.create(name:'Bird')}
 
   scenario 'lets a user view a post' do
    visit '/posts'
