@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'comments' do
   before {Post.create name: 'Bird'}
 
-  scenario 'allows users to leave a review using a form' do
+  scenario 'allows users to leave a comment using a form' do
      visit '/posts'
      click_link 'Comment Bird'
      fill_in "Thoughts", with: "so so"
