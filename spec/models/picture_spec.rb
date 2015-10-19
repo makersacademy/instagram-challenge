@@ -8,6 +8,11 @@ describe Picture, type: :model do
 
   it { is_expected.to belong_to :user }
 
+  context 'Likes' do
+    it { is_expected.to have_many :likes }
+    it { is_expected.to have_many(:likes).dependent(:destroy) }
+  end
+
   context 'Comments' do
     it { is_expected.to have_many(:comments) }
 
