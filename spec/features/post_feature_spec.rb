@@ -71,3 +71,14 @@ context 'deleting posts' do
   end
 
 end
+
+
+# context 'post get likes' do
+#   before {Post.create name: 'Bird'}
+#
+#   it 'a user can like a post, which increments the like count', js: true do
+#     visit '/posts'
+#     click_link 'Like it Bird'
+#     expect(page).to have_content("1 Likes")
+#   end
+#   end
