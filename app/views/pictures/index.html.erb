@@ -1,16 +1,18 @@
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
+    <br>
+    <%= picture.user %>
+    <br>
     <h3>
       <%= image_tag picture.image.url('medium') %>
-      <br/>
+      <br>
       <%= picture.description %>
-      <br/>
     </h3>
     <p>
       <%= pluralize picture.likes.count, 'like' %>
-      <%= link_to 'Edit', edit_picture_path(picture) %>
       <%= link_to 'Like', new_picture_like_path(picture) %>
       <%= link_to 'Comment', new_picture_comment_path(picture) %>
+      <%= link_to 'Edit', edit_picture_path(picture) %>
       <%= link_to 'Delete', picture_path(picture), method: :delete %>
     </p>
     <% if picture.comments.any? %>
