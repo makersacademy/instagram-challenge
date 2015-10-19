@@ -58,6 +58,18 @@ feature 'pictures' do
       click_link "Delete picture"
       expect(page).not_to have_css("img[src*='lunch.png']")
     end
+
+    scenario "does not allow you to delete a picture you didn't upload" do
+      visit '/'
+      click_link("Sign out")
+      click_link("Registration")
+      fill_in("Email", with: "test2@example2.com")
+      fill_in("Password", with: "testtest")
+      fill_in("Password confirmation", with: "testtest")
+      click_button("Sign up")
+      visit '/'
+      expect(page).not_to have_link("Delete picture")
+    end
   end
 
   def upload_picture

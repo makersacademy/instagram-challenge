@@ -15,8 +15,11 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.create(picture_params)
+    @picture = Picture.new(picture_params)
+    @picture.user_id = current_user.id
+    if @picture.save
     redirect_to pictures_path
+    end
   end
 
   def destroy
