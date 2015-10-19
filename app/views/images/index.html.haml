@@ -10,13 +10,16 @@
       = link_to image.name, image_path(image)
       %br
       - if current_user == image.user
-        = link_to image_tag('edit.png', :width => 20, :height => 20), edit_image_path(image)
-        = link_to image_tag('delete.png', :width => 20, :height => 20), image_path(image), method: :delete
+        = link_to image_tag('edit.png', :width => 20,
+          :height => 20), edit_image_path(image)
+        = link_to image_tag('delete.png', :width => 20,
+          :height => 20), image_path(image), method: :delete
       %br
       %span.likes_count= image.likes.count
       = 'like'.pluralize image.likes.count
       %br
-      = link_to image_tag('like.png', :width => 30, :height => 30), image_likes_path(image), class: 'likes-link', :id => "likebutton"
+      = link_to image_tag('like.png', :width => 30,
+        :height => 30), image_likes_path(image), class: 'likes-link', :id => "likebutton"
       %br
       - if image.comments.any?
         %ul
