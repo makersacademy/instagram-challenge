@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'posts' do
+feature 'Posts' do
   let!(:user){User.create(email: 'dan@example.com',
                           password: 'Hell0World!')}
 
@@ -11,8 +11,8 @@ feature 'posts' do
   context 'no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
       visit '/posts'
-      expect(page).to have_content 'No Pictures Yet!'
-      expect(page).to have_link 'Add a Post'
+      expect(page).to have_content('No Pictures Yet!')
+      expect(page).to have_link('Add a Post')
     end
   end
 
@@ -23,6 +23,14 @@ feature 'posts' do
       fill_in 'Caption', with: '#chilling'
       click_button 'Create Post'
       expect(page).to have_content('#chilling')
+    end
+
+    scenario 'should not let user add a post if not signed in' do
+      visit '/'
+      click_link 'Sign Out'
+      click_link 'Add a Post'
+      expect(page).to have_content('You need to sign in or sign up before continuing.')
+      expect(current_path).to eq('/users/sign_in')
     end
   end
 
@@ -43,13 +51,23 @@ feature 'posts' do
         click_link "#{post.id}"
       end
 
-      scenario 'allows user to view post on separate page' do
-        expect(page).to have_content('#chilling')
-        expect(current_path).to eq "/posts/#{post.id}"
+      scenario 'should not let user click picture if not logged in' do
+        visit '/'
+        click_link 'Sign Out'
+        click_link "#{post.id}"
+        expect(page).to have_content('You need to sign in or sign up before continuing.')
+        expect(current_path).to eq('/users/sign_in')
       end
 
-      scenario 'allows a user to leave a comment' do
-        expect(page).to have_link('Comment')
+      context 'and user is logged in' do
+        scenario 'allows user to view post on separate page' do
+          expect(page).to have_content('#chilling')
+          expect(current_path).to eq "/posts/#{post.id}"
+        end
+
+        scenario 'allows a user to leave a comment' do
+          expect(page).to have_link('Comment')
+        end
       end
     end
 
@@ -57,8 +75,8 @@ feature 'posts' do
       scenario 'removes a restaurant when a user clicks a delete link' do
         visit '/posts'
         click_link 'Delete Post'
-        expect(page).not_to have_content '#chilling'
-        expect(page).to have_content 'Post deleted successfully'
+        expect(page).not_to have_content('#chilling')
+        expect(page).to have_content('Post deleted successfully')
       end
     end
   end
