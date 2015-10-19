@@ -2,7 +2,7 @@
 <div id='main'>
 <% if @photos.any? %>
   <% @photos.each do |photo| %>
-  <div class = 'test'>
+  <div class = 'photo'>
     <p id = 'title'>Title:<%= link_to photo.title, photo_path(photo) %></p>
     <p id = 'image'><%= image_tag photo.image.url(:medium) %></p>
     <p>Descripton: <%= photo.description %></p>
@@ -11,11 +11,10 @@
   </div>
   <% if photo.comments.any? %>
     <% photo.comments.each do |comment| %>
-      <li>
-        <%= comment.comments %>
-      </li>
+      <%= comment.comments %>
       <% if user_signed_in?  && comment.user_id == current_user.id %>
-        <%= link_to "Delete Comment", comment_path(comment), method: :delete %>
+      <p id='delete_comment'><%= link_to "Delete Comment", comment_path(comment), method: :delete %></p>
+      <br>
       <% end %>
       <% end %>
   <% else %>
@@ -23,11 +22,10 @@
   <% end %>
 
   <% if current_user %>
-    <%= link_to "Comment on this photo", new_photo_comment_path(photo) %>
-    <br>
     <% if current_user.id == photo.user_id %>
-      <%= link_to "Delete this photo", photo_path(photo), method: :delete %>
+    <p id='delete_photo'><%= link_to "Delete this photo", photo_path(photo), method: :delete %></p>
     <% end %>
+    <%= link_to "Comment on this photo", new_photo_comment_path(photo) %>
   <% end %>
   <br>
 
