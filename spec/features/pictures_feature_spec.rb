@@ -11,14 +11,6 @@ feature 'post pictures' do
 
   context 'adding pictures to post' do
 
-    before { Picture.create title: 'little wren' }
-
-    scenario 'user can make a post on the page' do
-      visit '/pictures'
-      expect(page).to have_content('little wren')
-      expect(page).not_to have_content('No pictures yet')
-    end
-
     scenario 'prompts user to upload a picture' do
       visit '/pictures'
       click_link 'Add a picture'
@@ -26,7 +18,7 @@ feature 'post pictures' do
       attach_file('picture[image]', 'spec/assets/images/wren_small.jpg')
       click_button 'Post'
       expect(page).to have_content 'little wren'
-      expect(page).to have_xpath("//img")
+      expect(page).to have_xpath("/html/body/p[1]/a/img")
     end
 
     scenario 'user can post image without title' do
@@ -34,27 +26,30 @@ feature 'post pictures' do
       click_link 'Add a picture'
       attach_file('picture[image]', 'spec/assets/images/wren_small.jpg')
       click_button 'Post'
-      expect(page).to have_xpath("//img")
+      expect(page).to have_xpath("/html/body/p[1]/a/img")
+    end
+
+    scenario 'user has to upload picture' do
+      visit '/pictures'
+      click_link 'Add a picture'
+      click_button 'Post'
+      expect(page).to have_content "Image can't be blank"
     end
   end
 
   context 'viewing pictures' do
-
-    let!(:wren){ Picture.create title:'little wren' }
-
     scenario 'lets a user view a picture' do
       visit '/pictures'
       click_link 'Add a picture'
+      fill_in 'Title', with: 'little wren'
       attach_file('picture[image]', 'spec/assets/images/wren_small.jpg')
       click_button 'Post'
       click_link 'little wren'
-      expect(current_path).to eq "/pictures/#{wren.id}"
+      expect(current_path).to eq "/pictures/#{Picture.first.id}"
     end
   end
 
   context 'deleting pictures' do
-
-    # before { Picture.create title: 'little wren' }
 
     scenario 'let a user delete a picture' do
       visit '/pictures'

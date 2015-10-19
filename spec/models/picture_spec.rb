@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Picture, type: :model do
-  it { is_expected.to have_many :comments }
+  it { should have_many(:comments).dependent(:destroy) }
+
+  it { should have_attached_file(:image) }
+
 end

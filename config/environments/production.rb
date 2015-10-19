@@ -1,4 +1,6 @@
 Rails.application.configure do
+
+# DEVISE -  In production, :host should be set to the actual host of your application.  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
