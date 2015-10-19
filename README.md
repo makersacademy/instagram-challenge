@@ -27,7 +27,7 @@ Installation/Dependencies
 - Tested with Rspec 3.0, Capybara, and Poltergeist
 
 **Installation**      
-`git clone` this repo and update dependencies listed below by running `bundle`. Then `Rails s` to 'rackup' the localhost, navigate to port 3000 in the browser,  Navigate to the specified localhost (3000 as default), and sign up!
+`git clone` this repo and update dependencies listed below by running `bundle`. Make sure to migrate the database models by running `rake db:schema:load` - Then hit `Rails s` to rackup on local. Navigate to port 3000 in your browser and sign up!
 
 
 Screenshots:

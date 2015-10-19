@@ -8,5 +8,7 @@ script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rspec spec/
+before_install:
+  - gem install bundler -v '= 1.5.1'
 before_script:
   - psql -c 'create database my_app_test' -U postgres
