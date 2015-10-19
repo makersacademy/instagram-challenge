@@ -19,7 +19,7 @@ feature "User can login and out" do
 
     it "should see 'Sign Out' link" do
       visit('/')
-      expect(page).to have_link('Sign out')
+      expect(page).to have_link('Sign Out')
     end
 
     it "should not see a 'Login' link and a 'Sign Up' link" do
