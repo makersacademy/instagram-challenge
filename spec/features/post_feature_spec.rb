@@ -19,6 +19,17 @@ context 'creating posts' do
     expect(page).to have_content 'Bird'
     expect(current_path).to eq '/posts'
   end
+
+  context 'an invalid post' do
+      it 'does not let you submit a name that is too short' do
+        visit '/posts'
+        click_link 'Add a new post'
+        fill_in 'Name', with: 'Bi'
+        click_button 'Create Post'
+        expect(page).not_to have_css 'h2', text: 'Bi'
+        expect(page).to have_content 'error'
+      end
+    end
 end
 
 context 'viewing posts' do
