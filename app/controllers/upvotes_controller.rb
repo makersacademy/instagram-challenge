@@ -1,9 +1,10 @@
 class UpvotesController < ApplicationController
 
   def create
-    @post = Post.find(params[:post_id])
-    @post.upvotes.create
-    redirect_to posts_path
+    @comment = Comment.find(params[:comment_id])
+    @comment.upvote.create
+    render json: {new_upvote_count: @comment.upvotes.count}
   end
+
 
 end
