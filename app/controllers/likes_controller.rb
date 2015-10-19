@@ -5,13 +5,13 @@ class LikesController < ApplicationController
     if !current_user.has_liked? @photo
       @like = @photo.create_like current_user
       @like.save
-      render json: {new_like_count: @photo.likes.count}
     # elsif @like.errors[:user]
     else
       flash[:notice] = 'You have liked this already'
       redirect_to photos_path
       # redirect_to photos_path, alert: 'You have liked this already'
     end
+    render json: {new_like_count: @photo.likes.count}
   end
 
 end

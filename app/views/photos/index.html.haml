@@ -1,28 +1,28 @@
 - if @photos.any?
   - @photos.reverse.each do |photo|
-    %br
-    = link_to photo.title, photo_path(photo)
-    %p= image_tag photo.image.url(:medium)
-    = link_to '♡', photo_likes_path(photo), class: 'likes-link'
-    = link_to '💬', new_photo_comment_path(photo), class: "comment-bubble"
-    %br
-    %heart='♥'
-    %span.likes_count= photo.likes.count
-    ='like'.pluralize photo.likes.count
-    %br
-    - if current_user && current_user.id == photo.user_id
-      %p= link_to "Delete #{photo.title}", photo_path(photo), method: :delete
+    %article
+      = link_to photo.title, photo_path(photo)
+      %p= image_tag photo.image.url(:medium)
+      = link_to '♡', photo_likes_path(photo), class: 'likes-link'
+      = link_to '💬', new_photo_comment_path(photo), class: "comment-bubble"
+      %br
+      %heart='♥'
+      %span.likes_count= photo.likes.count
+      ='like'.pluralize photo.likes.count
+      %br
+      - if current_user && current_user.id == photo.user_id
+        %p= link_to "Delete #{photo.title}", photo_path(photo), method: :delete
 
-    - if photo.comments.any?
-      %ul
-        - photo.comments.reverse.each do |comment|
-          %li
-            = comment.thoughts
-            - if current_user && current_user.id == comment.user_id
-              = link_to "Edit comment", edit_photo_comment_path(photo, comment)
-              = link_to "Delete comment", photo_comment_path(photo, comment), method: :delete
-    - else
-      %p No comments
+      - if photo.comments.any?
+        %ul
+          - photo.comments.reverse.each do |comment|
+            %li
+              = comment.thoughts
+              - if current_user && current_user.id == comment.user_id
+                = link_to "Edit comment", edit_photo_comment_path(photo, comment)
+                = link_to "Delete comment", photo_comment_path(photo, comment), method: :delete
+      - else
+        %p No comments
 
 - else
   No photos yet!
