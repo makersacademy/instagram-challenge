@@ -39,6 +39,8 @@ gem 'activerecord-session_store'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'poltergeist'
+  gem 'database_cleaner'
   gem 'timecop'
   gem 'rake'
   gem 'byebug'
