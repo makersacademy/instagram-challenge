@@ -24,6 +24,24 @@ describe 'Photos' do
       click_button 'Post'
       expect(page).to have_css "img[src*='test_image.jpg']"
       expect(page).not_to have_content('No photos to show')
+      expect(page).to have_content('Successfully posted')
+    end
+
+    scenario 'can include a description' do
+      visit '/'
+      click_link 'Post new pic'
+      attach_file(:photo_image, 'spec/fixtures/files/test_image.jpg')
+      fill_in 'Description', with: 'The Fonz rulz!'
+      click_button 'Post'
+      expect(page).to have_content('The Fonz rulz!')
+    end
+
+    scenario 'raises an error when no photo provided' do
+      visit '/'
+      click_link 'Post new pic'
+      click_button 'Post'
+      expect(page).to have_content('Image required')
+      expect(Photo.all.count).to eq 0
     end
 
   end
