@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.2.0'
 
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem 'aws-sdk'
 gem "paperclip", "~> 4.3"
 gem 'travis', '~> 1.8.0'
