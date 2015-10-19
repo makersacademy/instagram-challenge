@@ -8,6 +8,7 @@ feature 'User posts' do
       user = build(:user)
       sign_up(user)
       create_post
+      visit root_path
       expect(page).to have_content "test post!"
     end
 

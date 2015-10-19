@@ -8,8 +8,9 @@ feature 'upvoting user comments' do
       user = build(:user)
       sign_up(user)
       create_post
-      visit root_path
-      click_link "upvote"
+      comment_on_post("test")
+      visit post_path(1)
+      click_link "Upvote"
       expect(page).to have_content('1 upvote')
     end
 
