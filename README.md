@@ -23,9 +23,10 @@ A bare-bones instagram clone
 ## Usage
 
 Clone repo.
-
+```
 cd instagram-challenge
 bundle install
 bin/rake db:create
 bin/rake db:migrate
 bin/rails server
+```
