@@ -2,6 +2,7 @@ class PhotosController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
 
+
   def new
     @photo = Photo.new
   end
@@ -26,8 +27,20 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
   end
 
-
   def photo_params
     params.require(:photo).permit(:title, :image)
   end
+
+  def upvote
+    @photo = Photo.find(params[:id])
+    @photo.liked_by current_user
+    redirect_to @photo
+  end
+
+  def downvote
+    @photo = Photo.find(params[:id])
+    @photo.unliked_by current_user
+    redirect_to @photo
+  end
+
 end

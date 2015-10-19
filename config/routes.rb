@@ -6,7 +6,14 @@ Rails.application.routes.draw do
   resources :photos do
     resources :comments, :users
   end
+  resources :photos do
+  member do
+    put "like", to: "photos#upvote"
+    put "unlike", to: "photos#downvote"
+  end
+end
   resources :comments
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

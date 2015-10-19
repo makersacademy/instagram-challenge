@@ -107,6 +107,22 @@ feature 'commenting' do
         click_link('Test Photo')
         expect(page).not_to have_content('Edit ')
       end
+
+      scenario 'Users cannot delete a comment that they did not create' do
+        visit '/photos'
+        click_link 'Add photo'
+        fill_in('Title', with: 'Test Photo')
+        attach_file('Image', 'spec/files/images/testimage.jpg')
+        click_button 'Create Photo'
+        click_link('Add Comment')
+        fill_in('Comment', with: 'What a lovely photo')
+        click_button('Create Comment')
+        click_link('Sign out')
+        sign_up(user2)
+        visit '/photos'
+        click_link('Test Photo')
+        expect(page).not_to have_content('Delete')
+      end
     end
 
 

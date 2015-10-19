@@ -52,7 +52,6 @@ require 'rails_helper'
     scenario 'the index display exists' do
       photo_one = create(:photo, title: "first post")
       photo_two = create(:photo, title: "second post")
-
       visit '/'
       expect(page).to have_content("first post")
       expect(page).to have_content("second post")
@@ -73,6 +72,25 @@ require 'rails_helper'
       visit '/'
       find(:xpath, "//a[contains(@href,'photos/108')]").click
       expect(page.current_path).to eq(photo_path(photo))
+    end
+  end
+
+  context 'liking photos' do
+    scenario 'The user can like a photo' do
+      photo_one = create(:photo, title: "first post")
+      visit '/'
+      click_on 'first post'
+      click_on 'like'
+      expect(page).to have_content('1 like')
+    end
+
+    scenario 'The user can unlike a photo' do
+      photo_one = create(:photo, title: "first post")
+      visit '/'
+      click_on 'first post'
+      click_on 'like'
+      click_on 'unlike'
+      expect(page).not_to have_content('1 liked')
     end
   end
 end
