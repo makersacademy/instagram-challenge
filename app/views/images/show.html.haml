@@ -26,16 +26,15 @@
       %div.container-fluid.col-sm-7
         = link_to "Add a comment", new_image_comment_path(@image)
     %div.container-fluid.col-sm-7
-    - if @image.comments.any?
-      - @image.comments.reverse.each do |comment|
-        %div#imagecontainer.container-fluid.col-sm-12
-          %div.container-fluid.col-sm-8
-            = comment.user.email
-          %div.container-fluid.col-sm-4
-            = relative_time(comment.created_at)
-          %div.container-fluid.col-sm-8
-            = comment.thoughts
-        %div.container-fluid.col-sm-12
-          %div.container-fluid.col-sm-8
-            - if current_user == comment.user
-              = link_to "Delete comment", comment_path(comment), method: :delete
+    - @image.comments.reverse.each do |comment|
+      %div#imagecontainer.container-fluid.col-sm-12
+        %div.container-fluid.col-sm-8
+          = comment.user.email
+        %div.container-fluid.col-sm-4
+          = relative_time(comment.created_at)
+      %div#imagecontainer.container-fluid.col-sm-12
+        = comment.thoughts
+      %div.container-fluid.col-sm-12
+        %div.container-fluid.col-sm-8
+          - if current_user == comment.user
+            = link_to "Delete comment", comment_path(comment), method: :delete
