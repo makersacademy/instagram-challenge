@@ -6,18 +6,21 @@
 
 </p>
 
-<% if @picture.liked_by(user) %>
-delete like
-<% else %>
+<% if @picture.likes.none? %>
   <p> <%= link_to 'Like', picture_likes_path(@picture), method: :post %> </p>
+
+<% elsif @picture.liked_by?(current_user) %>
+  <p>
+    <%= link_to "#{pluralize(@picture.likes.size, 'like')}", picture_like_path(@picture, @picture.likes.current_user), method: :delete %>
+  </p>
+
+<% else %>
+<p>
+  <%= link_to pluralize(@picture.likes.size, 'like'), picture_likes_path(@picture), method: :post %>
+</p>
 <% end %>
 
-<% if @picture.likes.any? %>
-<p>
-  <%= pluralize(@picture.likes.size, 'like') %>
-</p>
-<p> <%= link_to pluralize(@picture.likes.size, 'like'), id: 'likes', picture_like_path(@picture, @like), method: :delete %> </p>
-<% end %>
+
 
 <p> <%= @picture.description %> </p>
 
