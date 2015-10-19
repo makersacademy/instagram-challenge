@@ -1,11 +1,14 @@
+<div id='wrapper'>
+<div id='main'>
 <% if @photos.any? %>
   <% @photos.each do |photo| %>
-    <p>Title:<%= link_to photo.title, photo_path(photo) %></p>
-    <p>Descripton:<%= photo.description %></p>
-    <p class = 'image'><%= image_tag photo.image.url(:medium) %></p>
-    <p><%= pluralize photo.likes.count, 'like' %></p>
-    <p><%= link_to 'Like',  photo_likes_path(photo), method: :post %></p>
-
+  <div class = 'test'>
+    <p id = 'title'>Title:<%= link_to photo.title, photo_path(photo) %></p>
+    <p id = 'image'><%= image_tag photo.image.url(:medium) %></p>
+    <p>Descripton: <%= photo.description %></p>
+    <p><%= pluralize photo.likes.count, 'like' %>
+    <%= link_to 'Like',  photo_likes_path(photo), method: :post %></p>
+  </div>
   <% if photo.comments.any? %>
     <% photo.comments.each do |comment| %>
       <li>
@@ -35,3 +38,5 @@
 
 <br>
 <%= link_to "Add a photo", new_photo_path %>
+</div>
+</div>
