@@ -75,8 +75,6 @@ feature 'commenting' do
 
     end
 
-
-
     context 'The user is not logged in' do
       scenario 'Users who are not logged in should not be able to add a comment' do
         visit '/photos'
@@ -124,8 +122,5 @@ feature 'commenting' do
         expect(page).not_to have_content('Delete')
       end
     end
-
-
-
   end
 end

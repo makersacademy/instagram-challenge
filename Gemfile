@@ -29,6 +29,8 @@ gem 'aws-sdk-v1'
 gem 'simple_form'
 gem 'slim'
 gem 'acts_as_votable'
+gem 'gibbon'
+gem 'high_voltage'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

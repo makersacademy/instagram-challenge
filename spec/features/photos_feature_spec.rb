@@ -92,5 +92,14 @@ require 'rails_helper'
       click_on 'unlike'
       expect(page).not_to have_content('1 liked')
     end
+
+    scenario 'The total number of likes are displayed' do
+      photo_one = create(:photo, title: "first post")
+      visit '/'
+      click_on 'first post'
+      click_on 'like'
+      visit '/'
+      expect(page).to have_content('1 like')
+    end
   end
 end
