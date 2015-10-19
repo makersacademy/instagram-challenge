@@ -9,32 +9,30 @@
   <%= csrf_meta_tags %>
 </head>
 
-<div class="navbar navbar-default" style="padding: 10px; position: fixed; width:100%; margin-top:-10px;">
-  <div style="float:left;">
-  <%= link_to image_tag("top-banner.png", :alt => "Home", :style => "width:140px; height:50; "), root_path %>
-  </div>
-  <div style="float:right">
-  <% if user_signed_in? %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <%= link_to "Create post", new_post_path %>
-    <%= link_to "#{current_user.email}", user_path(current_user.id) %>
-  <% else %>
-    <%= link_to "Sign in", new_user_session_path %>
-    <%= link_to "Sign up", new_user_registration_path %>
-    <%= link_to image_tag("GitHub_Logo.png", :alt => "Sign in with Github", :style => "width:80px; height:20; "), user_omniauth_authorize_path(:github) %>
-    <%= link_to image_tag("btn_google_signin_light_normal_web.png", :alt => "Sign in with Google", :style => "width:140px; height:50; "), user_omniauth_authorize_path(:google_oauth2) %>
-    <%= link_to image_tag("sign-in-with-twitter-link.png", :alt => "Sign in with Twitter", :style => "width:140px; height:50; "), user_omniauth_authorize_path(:twitter) %>
+<body>
+  <div class="navbar navbar-default" style="padding: 10px; position: fixed; width:100%; margin-top:-10px;">
+    <div style="float:left;">
+      <%= link_to image_tag("top-banner.png", :alt => "Home", :style => "width:140px; height:50; "), root_path %>
     </div>
-  <% end %>
+    <div style="float:right">
+      <% if user_signed_in? %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        <%= link_to "Create post", new_post_path %>
+        <%= link_to "#{current_user.email}", user_path(current_user.id) %>
+        <% else %>
+        <%= link_to "Sign in", new_user_session_path %>
+        <%= link_to "Sign up", new_user_registration_path %>
+        <%= link_to image_tag("GitHub_Logo.png", :alt => "Sign in with Github", :style => "width:80px; height:20; "), user_omniauth_authorize_path(:github) %>
+        <%= link_to image_tag("btn_google_signin_light_normal_web.png", :alt => "Sign in with Google", :style => "width:140px; height:50; "), user_omniauth_authorize_path(:google_oauth2) %>
+        <%= link_to image_tag("sign-in-with-twitter-link.png", :alt => "Sign in with Twitter", :style => "width:140px; height:50; "), user_omniauth_authorize_path(:twitter) %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
-
-<p class="notice"> <%= notice %> </p>
-<p class="alert"> <%= alert %> </p>
-
-<div style="padding:30px;">
-<%= yield %>
-</div>
-
-</body>
+  <p class="notice"> <%= notice %> </p>
+  <p class="alert"> <%= alert %> </p>
+  <div style="padding:30px;">
+    <%= yield %>
+  </div>
+  </body>
 </html>

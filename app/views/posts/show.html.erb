@@ -15,10 +15,10 @@
                 <section class="comment-list">
                   <!-- First Comment -->
                   <article class="row">
-                    <div class="col-md-2 col-sm-2 hidden-xs">
+                    <div class="col-md-2 col-sm-2 hidden-xs" >
                       <figure class="thumbnail">
                         <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
-                        <figcaption class="text-center">username</figcaption>
+                        <figcaption class="text-center"><%= "#{@users.find(comment.user_id).email}" %></figcaption>
                       </figure>
                     </div>
                     <div class="col-md-10 col-sm-10">
@@ -26,7 +26,6 @@
                         <div class="panel-body">
                           <header class="text-left">
                             <div class="comment-user"><i class="fa fa-user"></i> 
-                              <%= "#{@users.find(comment.user_id).email} commented:" %>
                             </div>
                             <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> 
                               <%= comment.created_at.strftime('%a, %d %b %Y %H:%M:%S') %> <br>
@@ -35,11 +34,15 @@
                           <div class="comment-post">
                             <p>
                               <%= comment.comment %>
-                              <%= link_to "Upvote", comment_upvotes_path(comment), :class => 'upvotes-link' %>
-                              <span class="upvotes_count"> <%= comment.upvotes.count %> </span> <%= 'upvote'.pluralize(comment.upvotes.count) %>
                             </p>
                           </div>
-                          <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
+                          <p class="text-right">
+                              <%= link_to "Upvote", comment_upvotes_path(comment), method: :create,:class => 'upvotes-link' %>
+                            <a class="btn btn-default btn-sm">
+                              <span class="upvotes_count"> <%= @upvotes.count %> </span>
+                              <%= 'upvote'.pluralize(@upvotes.count) %>
+                            </a>
+                          </p>
                         </div>
                       </div>
                     </div>
