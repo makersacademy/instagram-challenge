@@ -9,14 +9,15 @@
 <% if @picture.likes.none? %>
   <p> <%= link_to 'Like', picture_likes_path(@picture), method: :post %> </p>
 
-<% elsif @picture.liked_by?(current_user) %>
+<% elsif @picture.find_like(current_user) %>
   <p>
-    <%= link_to "#{pluralize(@picture.likes.size, 'like')}", picture_like_path(@picture, @picture.likes.current_user), method: :delete %>
+    <%= link_to pluralize(@picture.likes.size, 'like'), picture_like_path(@picture, @picture.find_like(current_user)), method: :delete %>
   </p>
 
 <% else %>
 <p>
   <%= link_to pluralize(@picture.likes.size, 'like'), picture_likes_path(@picture), method: :post %>
+
 </p>
 <% end %>
 

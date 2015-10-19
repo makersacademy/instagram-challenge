@@ -2,9 +2,19 @@ require 'spec_helper'
 
 feature 'Like' do
 
+  def sign_in(user)
+    visit '/'
+    click_link 'Sign in'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
+  end
+
   let!(:picture) { Picture.create(name: 'Love', description: 'Do you love me?') }
 
   before do
+    user = create :user
+    sign_in(user)
     visit '/'
     click_link 'Love'
     click_link 'Like'
@@ -18,17 +28,12 @@ feature 'Like' do
       expect(page).to have_content '1 like'
     end
 
-    scenario 'can like a picture multiple times' do
-      click_link 'Like'
-      expect(page).to have_content '2 likes'
-    end
-
   end
 
   context 'when there are likes' do
 
-    xscenario 'can delete a like' do
-      click_link 'p#picture_likes'
+    scenario 'can delete a like' do
+      click_link '1 like'
       expect(page).not_to have_content '1 like'
     end
   end

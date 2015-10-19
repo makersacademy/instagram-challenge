@@ -8,4 +8,10 @@ class Picture < ActiveRecord::Base
     likes.include?(user)
   end
 
+  def find_like(user)
+    likes.each do |like|
+      return like if like.user == user
+    end
+  end
+
 end

@@ -29,7 +29,6 @@ class CommentsController < ApplicationController
   def destroy
     @picture = Picture.find(params[:picture_id])
     @comment = Comment.find(params[:id])
-
     if @comment.user == current_user
       @comment.destroy
       flash[:notice] = 'You have successfully deleted the comment.'
