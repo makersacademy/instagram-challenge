@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  <title> Instagram clone</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  </head>
-  <body>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <%= link_to post.name, post_path(post) %>
+    <%= link_to "Edit #{post.name}", edit_post_path(post) %>
+    <%= link_to "Delete #{post.name}", post_path(post), method: :delete %>
+  <% end %>
+<% else %>
+  No posts yet
+<% end %>
 
-    <%= yield %>
-
-  </body>
-</html>
+<a href='#'>Add a new post</a>
