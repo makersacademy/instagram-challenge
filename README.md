@@ -4,12 +4,12 @@ Instagram Challenge
 Getting Started
 -----
 ```ruby
-git clone git@github.com:jongmin141215/instagram-challenge.git
-cd instagram-challenge
-bundle install
-bin/rake db:create
-bin/rake db:migrate
-rails s
+$ git clone git@github.com:jongmin141215/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle install
+$ rake db:create
+$ rake db:migrate
+$ rails s
 ```
 visit http://localhost:3000
 
