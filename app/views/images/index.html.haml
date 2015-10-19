@@ -3,21 +3,21 @@
     - @images.reverse.each do |image|
       %div.instagram-container.container-fluid.col-sm-12
         %div.container-fluid.col-sm-12#username
-          %div.container-fluid.col-sm-5
-            = link_to image.name.capitalize, image_path(image)
-          %div.container-fluid.col-sm-7
-            = "by " + image.user.email
+          %div.container-fluid.col-sm-8
+            = image.user.email
+          %div.container-fluid.col-sm-4
+            = relative_time(image.created_at)
         %div#imagecontainer.container-fluid.col-sm-12
           %div.container-fluid.col-sm-10.col-sm-offset-1
             - if image.image_file_name
               = image_tag image.image.url(:medium), :id => "image"
         %div#imagecontainer.container-fluid.col-sm-12
           %div.container-fluid.col-sm-8
+            = link_to image.name.capitalize, image_path(image)
+          %div.container-fluid.col-sm-4
             = link_to "", image_likes_path(image), method: :post, :class => "glyphicon glyphicon-thumbs-up"
             = image.likes.length
             = 'like'.pluralize image.likes.length
-          %div.container-fluid.col-sm-4
-            = relative_time(image.created_at)
         - if current_user == image.user
           %div#imagecontainer.container-fluid.col-sm-12
             %div.container-fluid.col-sm-8
