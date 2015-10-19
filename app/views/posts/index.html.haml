@@ -4,7 +4,9 @@
       .posts
         = link_to (image_tag post.image.url(:medium)), post_path(post), id: post.id
         %p= post.caption
-        %p= link_to "Delete Post", post_path(post), method: :delete
+      - if current_user
+        - if (post.user_id == current_user.id)
+          %p= link_to "Delete Post", post_path(post), method: :delete
     %p= link_to "Add a Post", new_post_path
   - else
     No Pictures Yet!
