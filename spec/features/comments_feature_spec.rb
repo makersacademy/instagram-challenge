@@ -13,7 +13,7 @@ feature 'Comment' do
   def leave_comment
     visit '/'
     click_link 'Love'
-    click_link 'Leave a comment'
+    # click_link 'Leave a comment'
     fill_in 'Comment', with: 'I am a comment'
     click_button 'Leave comment'
   end

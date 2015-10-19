@@ -27,4 +27,11 @@
 
 <% end %>
 
-<p> <%= link_to "Leave a comment", new_picture_comment_path(@picture) %> </p>
+<%= form_for [@picture, @picture.comments.build], url: picture_comments_path(@picture), method: :post do |f| %>
+
+  <p> <%= f.label :comment %> </p>
+  <p> <%= f.text_area :comment %> </p>
+  <p> <%= f.submit 'Leave comment' %> </p>
+
+
+<% end %>
