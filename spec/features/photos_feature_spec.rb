@@ -39,7 +39,7 @@ feature 'photos' do
     scenario 'should let you upload a photo' do
       create_photo
       expect(current_path).to eq '/photos'
-      expect(page).to have_content 'Test Title'
+      expect(page).to have_xpath("//img[contains(@src,'test.jpg')]")
     end
 
     scenario 'should have a description of the photo' do
@@ -58,17 +58,17 @@ feature 'photos' do
     end
 
     scenario 'user can delete photos that they have created' do
-      expect(page).to have_link 'Delete Test Title'
-      click_link 'Delete Test Title'
-      expect(page).not_to have_link 'Delete Test Title'
+      expect(page).to have_link 'Delete this photo'
+      click_link 'Delete this photo'
+      expect(page).not_to have_link 'Delete this photo'
     end
 
     scenario 'users can only delete photos that they have posted' do
-      expect(page).to have_link 'Delete Test Title'
+      expect(page).to have_link 'Delete this photo'
       click_link 'Sign out'
       user2 = build(:user, email: 'user2@example.com')
       sign_up user2
-      expect(page).not_to have_link 'Delete Test Title'
+      expect(page).not_to have_link 'Delete this photo'
     end
 
   end

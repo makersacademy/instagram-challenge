@@ -8,7 +8,7 @@ feature 'commenting' do
             create_photo }
 
   scenario 'allows users to leave a comment on a photo' do
-     click_link 'Comment on Test Title'
+     click_link 'Comment on this photo'
      fill_in "Comment", with: "Awesome!"
      click_button 'Leave Comment'
      expect(current_path).to eq '/photos'
@@ -16,7 +16,7 @@ feature 'commenting' do
   end
 
   scenario 'users can only delete comments that they have made' do
-    click_link 'Comment on Test Title'
+    click_link 'Comment on this photo'
     fill_in "Comment", with: "AMAZING!"
     click_button 'Leave Comment'
     expect(page).to have_link('Delete Comment')
