@@ -2,12 +2,21 @@
   Name: <%= @picture.name %>
   <%= link_to "Edit Picture", edit_picture_path(@picture) %>
   <%= link_to "Delete Picture", picture_path(@picture), method: :delete %>
-  <p> <%= link_to 'Like', picture_likes_path(@picture), method: :post %> </p>
+
 
 </p>
 
+<% if @picture.liked_by(user) %>
+delete like
+<% else %>
+  <p> <%= link_to 'Like', picture_likes_path(@picture), method: :post %> </p>
+<% end %>
+
 <% if @picture.likes.any? %>
-<p id='picture_likes'> <%= pluralize(@picture.likes.size, 'like') %> </p>
+<p>
+  <%= pluralize(@picture.likes.size, 'like') %>
+</p>
+<p> <%= link_to pluralize(@picture.likes.size, 'like'), id: 'likes', picture_like_path(@picture, @like), method: :delete %> </p>
 <% end %>
 
 <p> <%= @picture.description %> </p>
