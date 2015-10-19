@@ -1,7 +1,7 @@
 
 
 
-**Congo Web Store Project**
+**Instagram Challenge**
 =================
 Week 8 Makers Academy - Instagram Challange!    
 **AKA Supagram**
