@@ -1,5 +1,6 @@
 Instagram Challenge
 ===================
+This is the 7th weekend challenge, which is to create a picture-sharing app using Ruby on Rails.  
 
 Getting Started
 -----
@@ -25,3 +26,13 @@ Still to do
 * Add Ajax
 * Upload pictures on Amazon S3
 * More styling
+
+Technologies
+
+Technologies
+
+Web Framework: Ruby on Rails
+Database: PostgreSQL
+Testing: Rspec, Capybara, Poltergeist, Shoulda, FactoryGirl
+Template Language: Haml
+Style: Bootstrap
