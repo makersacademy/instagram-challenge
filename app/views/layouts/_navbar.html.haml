@@ -13,12 +13,13 @@
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %form.navbar-form.navbar-left{:role => "search"}
         .form-group
-          %input.form-control{:placeholder => "Search", :type => "text"}/
-        %button.btn.btn-default{:type => "submit"} Submit
+          %input#search.form-control{:placeholder => "Search", :type => "text"}/
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li
             = link_to 'Add an Image', new_image_path()
+          %li
+            = link_to "#{current_user.email}", user_session_path
           %li
             = link_to "Sign out", destroy_user_session_path, method: :delete
         - else

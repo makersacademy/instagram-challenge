@@ -1,11 +1,12 @@
 $(document).ready(function() {
-  $('.endorsements-link').on('click', function(event) {
-    event.preventDefault();
 
-    var endorsementCount = $(this).siblings('.endorsements_count');
+  $('.likes-link').on('click', function(event){
+      event.preventDefault();
 
-    $.post(this.href, function(response) {
-      endorsementCount.text(response.new_endorsement_count);
-    });
-  });
-});
+      var likesCount = $(this).siblings('.likes-count');
+
+      $.post(this.href, function(response){
+        likesCount.text(response.new_like_count);
+    })
+  })
+})

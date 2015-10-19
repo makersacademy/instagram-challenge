@@ -1,11 +1,9 @@
 class LikesController < ApplicationController
   def create
-    if current_user
-      @image = Image.find(params[:image_id])
+    @image = Image.find(params[:image_id])
+    if !current_user.has_liked? @image
       @image.likes.create
-      redirect_to images_path
-    else
-      redirect_to new_user_session_path
     end
+    render json: {new_like_count: @image.likes.count}
   end
 end

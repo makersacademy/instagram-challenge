@@ -37,6 +37,8 @@ gem 'shoulda', '~> 3.5.0'
 gem 'paperclip', '~> 4.3.1'
 gem 'factory_girl_rails', '~> 4.5'
 gem 'time_difference', '~> 0.4.2'
+gem 'poltergeist'
+gem 'database_cleaner'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
