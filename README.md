@@ -1,5 +1,4 @@
-
-
+[![Coverage Status](https://coveralls.io/repos/Harryandrew/instagram-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/Harryandrew/instagram-challenge?branch=master)
 
 **Instagram Challenge**
 =================
