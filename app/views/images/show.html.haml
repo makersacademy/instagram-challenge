@@ -9,8 +9,8 @@
   %span.likes_count= @image.likes.count
   = 'like'.pluralize @image.likes.count
   %br
-  = link_to image_tag('like.png', :width => 30,
-    :height => 30), image_likes_path(@image), class: 'likes-link', :id => "likebutton"
+  = link_to image_tag('like.png', :width => 30, :height => 30),
+    image_likes_path(@image), class: 'likes-link', :id => "likebutton"
   %br
   - if @image.comments.any?
     %ul
@@ -24,7 +24,7 @@
           - if current_user.username == comment.username
             = link_to image_tag('edit.png', :width => 20,
               :height => 20), edit_image_comment_path(comment.id, comment)
-            = link_to image_tag('delete.png', :width => 20,
-              :height => 20), image_comment_path(comment.image_id, comment), method: :delete
+            = link_to image_tag('delete.png', :width => 20, :height => 20),
+              image_comment_path(comment.image_id, comment), method: :delete
   %div{ :id => "addcomment" }
     = link_to "Add comment", new_image_comment_path(@image)
