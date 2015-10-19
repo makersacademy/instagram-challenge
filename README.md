@@ -6,7 +6,7 @@
 Week 8 Makers Academy - Instagram Challange!    
 **AKA Supagram**
 
-![home](https://github.com/harryandrew/instagram-challenge/blob/master/public/images/main-logo.png)     
+![home](https://github.com/harryandrew/instagram-challenge/blob/master/public/images/main.logo.png)     
 
 Description
 ------------    
