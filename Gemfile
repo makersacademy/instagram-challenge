@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.2.0'
 
+gem 'rake'
+gem 'rspec-rails'
 gem 'rails_12factor', group: :production
 gem 'aws-sdk'
 gem "paperclip", "~> 4.3"
