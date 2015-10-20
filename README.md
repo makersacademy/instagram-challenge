@@ -25,8 +25,12 @@ Installation/Dependencies
 - Ruby 2.2.0 (build tests for others pending)
 - Tested with Rspec 3.0, Capybara, and Poltergeist
 
+
+
+
 **Installation**      
-`git clone` this repo and update dependencies listed below by running `bundle`. Make sure to migrate the database models by running `rake db:schema:load` - Then hit `Rails s` to rackup on local. Navigate to port 3000 in your browser and sign up!
+
+[Click here](https://serene-crag-6162.herokuapp.com/) to sign up and login, or to run locally; `git clone` this repo and update dependencies listed by running `bundle`. Make sure to migrate the database models by running `rake db:schema:load` - Then hit `Rails s` to rackup on local. Navigate to port 3000 in your browser and sign up!
 
 
 Screenshots:
