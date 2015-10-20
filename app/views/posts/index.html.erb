@@ -1,15 +1,16 @@
+  <div class="col-md-4">
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <h2> <%= link_to post.content, post_path(post) %> </h2>
       <%= image_tag post.image.url(:thumb) %>
-      <% if current_user %>
+    <% if current_user %>
         <% if current_user.liked_posts.include?(post) %>
-          <%= link_to "Unlike", post_likes_path(post), method: :post %>
+          <p><%= link_to "Unlike", post_likes_path(post), method: :post, :class => "glyphicon glyphicon-remove btn btn-sm btn-default" %></p>
         <% else %>
-          <%= link_to "Like", post_likes_path(post), method: :post %>
+          <p><%= link_to "Like", post_likes_path(post), method: :post, :class => "glyphicon glyphicon-heart btn btn-sm btn-default" %></p>
         <% end %>
       <% end %>
-      <p><%= pluralize post.likes.count, 'like' %></p>
+      <p><%=post.likes.count%> <button type="button" class="btn btn-xs" aria-label="Left Align"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button></p>
       <% if post.comments.any? %>
         <ul>
         <% post.comments.each do |comment| %>
@@ -25,13 +26,12 @@
       <p>No comments.</p>
       <% end %>
     <% if current_user && current_user.id == post.user_id %>
-      <%= link_to "Edit #{post.content}", edit_post_path(post) %>
-      <%= link_to "Delete #{post.content}", post_path(post), method: :delete %>
+      <%= link_to "Edit", edit_post_path(post), :class => "btn btn-info"  %>
+      <%= link_to "Delete", post_path(post), method: :delete, :class => "btn btn-danger" %>
     <% end %>
-    <%= link_to "Comment", new_post_comment_path(post) %>
+    <%= link_to "Comment", new_post_comment_path(post), :class => "btn btn-info" %>
   <% end %>
 <% else %>
   No posts yet
 <% end %>
-
-<%= link_to "Add a post", new_post_path %>
+      </div>
