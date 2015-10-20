@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'adding photos' do
-  context 'no photo has been added; on index page' do
+  context 'no photo has been added; on homepage' do
     scenario 'displays a prompt to add photo' do
       visit '/photos'
       expect(page).to have_content 'No photo yet'
@@ -9,22 +9,24 @@ feature 'adding photos' do
     end
   end
 
-  scenario 'can add photo' do
-    user = build :user
-    sign_up user
-    click_link 'Add photo'
-    fill_in 'Title', with: 'Testing'
-    attach_file 'photo[image]', 'spec/fixtures/images/testing.jpg'
-    click_button 'Upload photo'
-    expect(page).to have_content 'Testing'
-    expect(page).to have_selector :css, "img[src*='testing.jpg']"
-    expect(page).to have_content user.email
-    expect(current_path).to eq '/photos'
+  context 'on homepage' do
+    scenario 'can add photo' do
+      user = build :user
+      sign_up user
+      click_link 'Add photo'
+      fill_in 'Title', with: 'Testing'
+      attach_file 'photo[image]', 'spec/fixtures/images/testing.jpg'
+      click_button 'Upload photo'
+      expect(page).to have_content 'Testing'
+      expect(page).to have_selector :css, "img[src*='testing.jpg']"
+      expect(page).to have_content user.email
+      expect(current_path).to eq '/photos'
+    end
   end
 end
 
 feature 'showing individual photos' do
-  context 'clicking a photo on index page' do
+  context 'clicking a photo on homepage' do
     scenario 'displays individual photo on a new page' do
       user = build :user
       sign_up user
@@ -42,7 +44,7 @@ feature 'showing individual photos' do
 end
 
 feature 'showing all photos created by a particular user' do
-  context 'clicking a user email on index page' do
+  context 'clicking a user email on homepage' do
     scenario 'displays all photos created by that user' do
       user = build :user
       sign_up user

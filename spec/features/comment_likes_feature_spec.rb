@@ -1,5 +1,5 @@
 feature 'liking a comment' do
-  context 'clicking a "Like" link' do
+  context 'clicking a "Like" link on homepage' do
     scenario 'can like a comment' do
       user = build :user
       sign_up user

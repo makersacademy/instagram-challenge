@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'users/:user_id/photos' => 'users#show'
+
   resources :photos do
+    resources :tags
+    resources :photo_likes
     resources :comments do
       resources :comment_likes
     end
-    resources :photo_likes
   end
+
   root to: "photos#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

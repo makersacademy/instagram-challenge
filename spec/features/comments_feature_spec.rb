@@ -1,5 +1,5 @@
 feature 'leaving comment on a photo' do
-  context 'clicking a "comment" link' do
+  context 'clicking a "comment" link on homepage' do
     scenario 'can leave comment on a photo' do
       user = build :user
       sign_up user

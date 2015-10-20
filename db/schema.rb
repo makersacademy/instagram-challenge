@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151018214750) do
+ActiveRecord::Schema.define(version: 20151020202358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,23 @@ ActiveRecord::Schema.define(version: 20151018214750) do
 
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
+  create_table "tagged_photos", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "photo_id"
+    t.integer  "tag_id"
+  end
+
+  add_index "tagged_photos", ["photo_id"], name: "index_tagged_photos_on_photo_id", using: :btree
+  add_index "tagged_photos", ["tag_id"], name: "index_tagged_photos_on_tag_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "phrase"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -76,4 +93,6 @@ ActiveRecord::Schema.define(version: 20151018214750) do
   add_foreign_key "comments", "photos"
   add_foreign_key "photo_likes", "photos"
   add_foreign_key "photos", "users"
+  add_foreign_key "tagged_photos", "photos"
+  add_foreign_key "tagged_photos", "tags"
 end

@@ -1,5 +1,5 @@
 feature 'liking a photo' do
-  context 'clicking a "Like" link' do
+  context 'clicking a "Like" link on homepage' do
     scenario 'can like a photo' do
       user = build :user
       sign_up user
