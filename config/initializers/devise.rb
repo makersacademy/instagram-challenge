@@ -1,5 +1,5 @@
 Devise.setup do |config|
-  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
   config.secret_key = ENV['DEVISE_KEY']
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
   
