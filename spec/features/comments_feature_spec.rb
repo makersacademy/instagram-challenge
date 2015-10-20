@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 feature 'Comments' do
-  let!(:post){Post.create(image: File.new(Rails.root + 'spec/fixtures/images/example.png'), caption: '#chilling')}
+  let!(:post){Post.create(image: File.new(Rails.root + 'spec/fixtures/images/example.png'),
+                          caption: '#chilling')}
   let!(:user){User.create(email: 'dan@example.com',
                           password: 'Hell0World!')}
   before do
