@@ -3,4 +3,5 @@ class Picture < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type =>  /\Aimage\/.*\Z/
   validates :image, attachment_presence: true
   has_many :comments
+  belongs_to :user
 end

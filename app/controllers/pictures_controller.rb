@@ -11,7 +11,7 @@ before_action :authenticate_user!, :except => [:index, :show]
   end
 
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.new(picture_params)
     if @picture.save
       redirect_to '/pictures'
     else

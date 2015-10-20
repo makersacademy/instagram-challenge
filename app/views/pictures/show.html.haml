@@ -1,8 +1,10 @@
 %p= @picture.image.url
 %p= @picture.description
-%ul
-  %li= link_to 'Edit picture', edit_picture_path(@picture)
-  %li= link_to 'Delete picture', picture_path(@picture), method: :delete
+- if current_user
+  - if current_user.id == @picture.user_id
+    %ul
+      %li= link_to 'Edit picture', edit_picture_path(@picture)
+      %li= link_to 'Delete picture', picture_path(@picture), method: :delete
 %h2 Comments
 - if @picture.comments.any?
   %ul
