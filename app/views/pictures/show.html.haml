@@ -10,6 +10,9 @@
   %ul
     - @picture.comments.each do |comment|
       %li= comment.content
+      - if current_user
+        - if current_user.id == comment.user_id
+          %p= link_to 'Delete comment', picture_comment_path(comment.picture_id, comment), method: :delete
 - else
   %p No comments just yet
 %p= link_to 'Leave a comment', new_picture_comment_path(@picture)

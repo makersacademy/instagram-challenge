@@ -14,5 +14,16 @@ feature 'Commenting' do
     expect(page).to have_content 'Nice picture of food'
   end
 
-  scenario ''
+  scenario 'User cannot see delete button on comment they did not make' do
+    visit '/'
+    sign_up('test@test.com', 'testtest')
+    click_link 'View picture'
+    click_link 'Leave a comment'
+    fill_in 'comment_content', with: 'This is a cool picture'
+    click_button 'Comment'
+    click_link 'Sign out'
+    sign_up('random@email.com', 'testtest')
+    click_link 'View picture'
+    expect(page).to_not have_content('Delete comment')
+  end
 end
