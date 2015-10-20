@@ -1,6 +1,6 @@
 Devise.setup do |config|
 
-  config.secret_key = ENV['DEVISE_KEY']
+  config.secret_key = ENV['DEVISE_KEY'] if Rails.env.production?
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
   
   require 'devise/orm/active_record'
