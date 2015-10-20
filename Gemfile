@@ -64,4 +64,6 @@ group :test do
   gem 'shoulda'
   # extra rspec matchers
   gem 'rspec-collection_matchers'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
