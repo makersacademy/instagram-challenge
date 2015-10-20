@@ -8,7 +8,7 @@ feature 'likes' do
   end
   scenario 'A user can like an image, which will update the likes count' do
     visit('/images')
-    click_link('like')
+    click_link('👍')
     expect(page).to have_content('1 like')
   end
 end

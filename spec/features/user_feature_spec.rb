@@ -10,6 +10,10 @@ feature 'users' do
     visit('/')
     expect(page).to_not have_link('Sign out')
   end
+  scenario 'a user should not see the add image link when not signed in' do
+    visit('/')
+    expect(page).to_not have_link('Add an Image')
+  end
   context 'a user signs in on the homepage' do
     before do
       @user = build(:user)
