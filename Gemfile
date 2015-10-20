@@ -13,6 +13,7 @@ gem 'omniauth-github'
 gem "omniauth-google-oauth2"
 gem 'omniauth-twitter'
 gem 'devise'
+gem 'dotenv-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
@@ -50,9 +51,7 @@ group :development, :test do
   gem 'timecop'
   gem 'rake'
   gem 'byebug'
-  gem 'dotenv-rails'
   gem 'factory_girl_rails'
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda'
   gem 'rspec-collection_matchers'
