@@ -1,0 +1,58 @@
+<%= image_tag(@post.image.url) %>
+<br><br>
+<%= link_to "Leave comment", new_post_comment_path(@post.id) %>
+<br><br>
+
+
+<h2 class="page-header">Comments</h2>
+  <% if @comments.any? %>
+    <% @comments.each do |comment| %>
+      <% if comment.post_id == @post.id %>
+      <% @comment_prescence = true %>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8">
+                <section class="comment-list">
+                  <!-- First Comment -->
+                  <article class="row">
+                    <div class="col-md-2 col-sm-2 hidden-xs" >
+                      <figure class="thumbnail">
+                        <img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />
+                        <figcaption class="text-center"><%= "#{@users.find(comment.user_id).email}" %></figcaption>
+                      </figure>
+                    </div>
+                    <div class="col-md-10 col-sm-10">
+                      <div class="panel panel-default arrow left">
+                        <div class="panel-body">
+                          <header class="text-left">
+                            <div class="comment-user"><i class="fa fa-user"></i> 
+                            </div>
+                            <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> 
+                              <%= comment.created_at.strftime('%a, %d %b %Y %H:%M:%S') %> <br>
+                            </time>
+                          </header>
+                          <div class="comment-post">
+                            <p>
+                              <%= comment.comment %>
+                            </p>
+                          </div>
+                          <p class="text-right">
+                              <%= link_to "Upvote", comment_upvotes_path(comment), method: :create,:class => 'upvotes-link' %>
+                            <a class="btn btn-default btn-sm">
+                              <span class="upvotes_count"> <%= comment.upvotes.count %> </span>
+                              <%= 'upvote'.pluralize(comment.upvotes.count) %>
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </section>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <h2 class="page-header"><%= link_to "No comments - be the first!", new_post_comment_path(@post.id) unless @comment_prescence %></h2>
+<% end %>
+

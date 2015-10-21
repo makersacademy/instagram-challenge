@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <title>Supagram</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <div class="navbar navbar-default" style="padding: 10px; position: fixed; width:100%; margin-top:-10px;">
+    <div style="float:left;">
+      <%= link_to image_tag("top-banner.png", :alt => "Home", :style => "width:140px; height:50; "), root_path %>
+      <% if user_signed_in? %>
+        <%= link_to image_tag("sign-out.png", size: "100x33" ), destroy_user_session_path, method: :delete %>
+        <%= link_to image_tag("create-post.png", size: "100x24"), new_post_path %>
+    </div>
+    <div style="float:right">
+        <%= link_to "#{current_user.email}", user_path(current_user.id) if current_user %>
+    </div>
+      <% else %>
+        <%= link_to image_tag("sign-in.png", size: "80x30"), new_user_session_path %>
+        <%= link_to image_tag("sign-up.png", size: "81x32"), new_user_registration_path %>
+    <div style="float:right;">
+        <%= link_to image_tag("GitHub_Logo.png", :alt => "Sign in with Github", :style => "width:80px; height:20; "), user_omniauth_authorize_path(:github) %>
+        <%= link_to image_tag("btn_google_signin_light_normal_web.png", :alt => "Sign in with Google", :style => "width:140px; height:50; "), user_omniauth_authorize_path(:google_oauth2) %>
+        <%= link_to image_tag("sign-in-with-twitter-link.png", :alt => "Sign in with Twitter", :style => "width:150px; height:60; "), user_omniauth_authorize_path(:twitter) %>
+    </div>
+      <% end %>
+  </div>
+  </div>
+  <p class="notice"> <%= notice %> </p>
+  <p class="alert"> <%= alert %> </p>
+  <div style="padding:30px;">
+    <%= yield %>
+  </div>
+  </body>
+</html>

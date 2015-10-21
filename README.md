@@ -1,22 +1,45 @@
-Instagram Challenge
-===================
+[![Coverage Status](https://coveralls.io/repos/Harryandrew/instagram-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/Harryandrew/instagram-challenge?branch=master)
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9AM Monday morning.
+**Instagram Challenge**
+=================
+Week 8 Makers Academy - Instagram Challange!    
+**AKA Supagram**
+[![Supagram](https://github.com/harryandrew/instagram-challenge/blob/master/public/images/main.logo.png)](https://supagram.herokuapp.com/)
 
-Task
------
+Description
+------------    
 
-Build Instagram: Simple huh!
+Instagram challenge - built on Ruby - Riding Rails. Tested with Rspec & Capybara.    
 
-As usual please start by
+A basic web application which allows users to post and comment images.
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+**Features**
+- User sign up, sign in functionality - Github, Google, Twitter sign ins.
+- Built in 128bit salted password encryption
+- User password reset
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Installation/Dependencies
+--------------------------
+- Rails 4.2.3
+- Ruby 2.2.0 (build tests for others pending)
+- Tested with Rspec 3.0, Capybara, and Poltergeist
 
-Bonus if you can add filters!
+
+
+
+**Installation**      
+
+[Click here](https://supagram.herokuapp.com/) to sign up and login, or to run locally; `git clone` this repo and update dependencies listed by running `bundle`. Make sure to migrate the database models by running `rake db:schema:load` - Then hit `Rails s` to rackup on local. Navigate to port 3000 in your browser and sign up!
+
+
+Screenshots:
+------------  
+![home](https://github.com/harryandrew/instagram-challenge/blob/master/public/images/1.png)    
+![home](https://github.com/harryandrew/instagram-challenge/blob/master/public/images/2.png)    
+![home](https://github.com/harryandrew/instagram-challenge/blob/master/public/images/3.png)    
+![home](https://github.com/harryandrew/instagram-challenge/blob/master/public/images/4.png)    
+![home](https://github.com/harryandrew/instagram-challenge/blob/master/public/images/5.png)    
+![home](https://github.com/harryandrew/instagram-challenge/blob/master/public/images/6.png)    
+![home](https://github.com/harryandrew/instagram-challenge/blob/master/public/images/7.png)    
+   
+
