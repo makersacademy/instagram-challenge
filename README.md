@@ -4,8 +4,7 @@
 =================
 Week 8 Makers Academy - Instagram Challange!    
 **AKA Supagram**
-
-![home](https://github.com/harryandrew/instagram-challenge/blob/master/public/images/main.logo.png)     
+[![Supagram](https://github.com/harryandrew/instagram-challenge/blob/master/public/images/main.logo.png)](https://supagram.herokuapp.com/)
 
 Description
 ------------    
@@ -30,7 +29,7 @@ Installation/Dependencies
 
 **Installation**      
 
-[Click here](https://serene-crag-6162.herokuapp.com/) to sign up and login, or to run locally; `git clone` this repo and update dependencies listed by running `bundle`. Make sure to migrate the database models by running `rake db:schema:load` - Then hit `Rails s` to rackup on local. Navigate to port 3000 in your browser and sign up!
+[Click here](https://supagram.herokuapp.com/) to sign up and login, or to run locally; `git clone` this repo and update dependencies listed by running `bundle`. Make sure to migrate the database models by running `rake db:schema:load` - Then hit `Rails s` to rackup on local. Navigate to port 3000 in your browser and sign up!
 
 
 Screenshots:
