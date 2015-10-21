@@ -3,6 +3,19 @@
     <div class="post" id="<%=post.id%>">
     <%= image_tag post.image.url(:medium) %><br>
     <%= post.caption %><br>
+
+    <% if current_user && current_user.id != post.user_id%>
+        <% if post.comments.any? && post.comments.last.user_id == current_user.id %>
+        <% else %>
+          <div>Comment on this post</div><br>
+        <% end %>
+    <% end %>
+
+    <% if post.comments.any? == true %>
+      <%= post.comments.last.comment %>
+      <!-- THIS IS A HACKED WAY TO DO THIS -->
+    <% end %>
+
     </div>
   <% end %>
 <% else %>
