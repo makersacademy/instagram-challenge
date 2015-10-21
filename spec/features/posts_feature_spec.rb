@@ -1,7 +1,10 @@
 require 'rails_helper'
 
+
 feature 'posts' do
+
   context 'no posts have been added' do
+
     scenario 'should display a prompt to add a post' do
       user = build(:user)
       visit '/posts'
@@ -11,7 +14,7 @@ feature 'posts' do
     end
   end
 
-  context 'restaurants have been added' do
+  context 'posts have been added' do
 
     scenario 'display posts' do
       user = build(:user)
@@ -26,9 +29,7 @@ feature 'posts' do
   context 'creating posts' do
     scenario 'user must be logged in to create a post' do
       visit '/posts'
-      click_link 'Add a post'
-      expect(page).not_to have_content 'Create Post'
-      expect(current_path).to eq '/users/sign_in'
+      expect(page).not_to have_content 'Add a post'
     end
 
 
@@ -51,7 +52,19 @@ end
       click_button 'Create Post'
       expect(page).to have_content 'error'
     end
-end
+  end
+
+  context 'images' do
+      it 'lets user add images to post' do
+      user = build(:user)
+      sign_up(user)
+      click_link 'Add a post'
+      fill_in 'Content', with: 'test'
+      attach_file 'post_image', "spec/features/files/test.png"
+      click_button 'Create Post'
+      expect(page).to have_xpath("//img[contains(@src, 'test.png')]")
+    end
+  end
 
   context 'viewing posts' do
 
@@ -69,7 +82,7 @@ end
    user = build(:user)
    sign_up(user)
    make_post 'hey'
-   click_link 'Edit hey'
+   click_link 'Edit'
    fill_in 'Content', with: 'hello'
    click_button "Update Post"
    expect(page).to have_content 'hello'
@@ -83,7 +96,7 @@ end
     make_post 'not yours'
     click_link "Sign out"
     sign_up(user2)
-    expect(page).to_not have_content "Edit not yours"
+    expect(page).to_not have_content "Edit"
   end
 
 end
@@ -94,7 +107,7 @@ end
       user = build(:user)
       sign_up(user)
       make_post 'remove me'
-      click_link 'Delete remove me'
+      click_link 'Delete'
       expect(page).not_to have_content 'remove me'
       expect(page).to have_content 'Post deleted successfully'
     end
@@ -106,7 +119,7 @@ end
       make_post 'oops'
       click_link "Sign out"
       sign_up(user2)
-      expect(page).not_to have_link 'Delete oops'
+      expect(page).not_to have_link 'Delete'
     end
   end
 

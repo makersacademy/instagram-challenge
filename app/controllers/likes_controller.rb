@@ -1,8 +1,6 @@
 class LikesController < ApplicationController
 
   def create
-    print "LIKED POSTSSSS"
-    p current_user.liked_posts
     @post = Post.find(params[:post_id])
     if current_user.has_liked? @post
       like = @post.likes.find_by(user_id: current_user.id)

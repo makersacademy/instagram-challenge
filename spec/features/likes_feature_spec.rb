@@ -6,7 +6,7 @@ feature 'likes' do
     user = build(:user)
     sign_up(user)
     make_post 'like me'
-    expect(page).to have_content('0 likes')
+    expect(page).to have_content('0')
   end
 
   scenario "like count is increased by one when 'like' is clicked by user" do
@@ -14,7 +14,7 @@ feature 'likes' do
     sign_up(user)
     make_post 'like me please :)'
     click_link 'Like'
-    expect(page).to have_content('1 like')
+    expect(page).to have_content('1')
   end
 
   scenario "users 'like' is removed if they click 'unlike'" do
@@ -23,7 +23,7 @@ feature 'likes' do
     make_post 'like me please :)'
     click_link 'Like'
     click_link 'Unlike'
-    expect(page).to have_content('0 likes')
+    expect(page).to have_content('0')
   end
 
   scenario 'likes can only be made by signed in users' do
