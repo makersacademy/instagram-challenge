@@ -1,4 +1,24 @@
 Rails.application.configure do
+
+ #  config.paperclip_defaults = {
+ #   :storage => :s3,
+ #   :s3_credentials => {
+ #     :url => 'literallyanything.s3-us-west-2.amazonaws.com',
+ #     :bucket => ENV['S3_BUCKET_NAME'],
+ #     :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+ #     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
+ #     :path => '/:class/:attachment/:id_partition/:style/:filename',
+ #     :s3_host_name => 's3-us-west-2.amazonaws.com'
+ #   }
+ # }
+ config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -69,11 +89,29 @@ Rails.application.configure do
   config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners.
-  config.active_support.deprecation = :notify
+  # config.active_support.deprecation = :notify
+  config.active_support.deprecation = :log
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = false
+
+  # Raise an error on page load if there are pending migrations.
+config.active_record.migration_error = :page_load
+
+  # Debug mode disables concatenation and preprocessing of assets.
+  # This option may cause significant delays in view rendering with a large
+  # number of complex assets.
+  config.assets.debug = true
+
+  # Adds additional error checking when serving assets at runtime.
+  # Checks for improperly declared sprockets dependencies.
+  # Raises helpful error messages.
+  config.assets.raise_runtime_errors = true
+
 end
