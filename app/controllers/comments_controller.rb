@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
-  def create
+  def create 
     @photo = Photo.find(params[:photo_id])
     @comment = @photo.comments.new(comment_params)
     @comment.user_id = current_user.id
@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
     @comment.username = @username
     @comment.save
     redirect_to photos_path
+    # refactor this down (in the same way as photos)
   end
 
   def comment_params

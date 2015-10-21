@@ -10,7 +10,7 @@ end
 
 def post_photo(caption)
   click_link 'Post a photo'
-  page.attach_file 'photo[image]', 'spec/assets/images/burger-king.png'
+  page.attach_file 'photo[image]', './spec/assets/images/burger-king.png'
   fill_in 'Caption', with: caption
   click_button 'Post photo'
 end
