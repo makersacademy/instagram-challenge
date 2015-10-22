@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature 'Picture' do
+  # attach_file('Image', 'spec/files/images/coffee.jpg')
 
   def sign_up(user)
     visit '/'
@@ -31,6 +32,7 @@ feature 'Picture' do
     scenario 'can add a picture if logged in' do
       sign_up(user)
       click_link 'Add a picture'
+      attach_file('picture[image]', File.join(Rails.root,'spec',"files", 'images', 'duck.jpg'))
       fill_in 'Name', with: 'Kiss'
       click_button 'Create Picture'
       expect(page).to have_content 'Kiss'
@@ -45,6 +47,7 @@ feature 'Picture' do
       sign_up(user)
       visit '/pictures'
       click_link 'Add a picture'
+      attach_file('picture[image]', File.join(Rails.root,'spec',"files", 'images', 'duck.jpg'))
       fill_in 'Name', with: 'A'
       click_button 'Create Picture'
       expect(page).to have_content 'error'
@@ -54,6 +57,7 @@ feature 'Picture' do
       sign_up(user)
       visit '/pictures'
       click_link 'Add a picture'
+      attach_file('picture[image]', File.join(Rails.root,'spec',"files", 'images', 'duck.jpg'))
       fill_in 'Name', with: "Maybe this is a wrong test but I want my picture's name not to be longer than one hundred characters."
       click_button 'Create Picture'
       expect(page).to have_content 'error'
@@ -63,29 +67,29 @@ feature 'Picture' do
 
   context 'pictures have been created' do
 
-    let!(:picture) { Picture.create(name: 'Love', description: 'I love you') }
+    before do
+      sign_up(user)
+      click_link 'Add a picture'
+      attach_file('picture[image]', File.join(Rails.root,'spec',"files", 'images', 'duck.jpg'))
+      fill_in 'Name', with: 'Kiss'
+      fill_in 'Description', with: 'You'
+      click_button 'Create Picture'
+    end
 
     scenario 'should display the pictures' do
       visit '/'
-      expect(page).to have_content 'Name: Love'
-      expect(page).to have_content 'Description: I love you'
+      expect(page).to have_content 'Name: Kiss'
+      expect(page).to have_content 'Description: You'
     end
 
     scenario 'can go to the pictures individual page' do
       visit '/'
-      click_link 'Love'
-      expect(page).to have_content 'Name: Love'
-      expect(page.current_path).to eq "/pictures/#{picture.id}"
+      click_link 'Kiss'
+      expect(page).to have_content 'Name: Kiss'
+      expect(page).to have_css("img[src*='duck.jpg']")
     end
 
     scenario 'can edit a picture' do
-      sign_up(user)
-      visit '/'
-      click_link 'Add a picture'
-      fill_in 'Name', with: 'Kiss'
-      fill_in 'Description', with: 'You'
-      click_button 'Create Picture'
-
       click_link 'Kiss'
       click_link 'Edit Picture'
       fill_in 'Name', with: 'You'
@@ -95,24 +99,19 @@ feature 'Picture' do
     end
 
     scenario "user cannot edit other people's pictures" do
-      sign_up(user)
+      click_link 'Sign out'
+      user2 = build :user, email: 'test2@example.com'
+      sign_up(user2)
       visit '/'
-      click_link 'Love'
+      click_link 'Kiss'
+
       click_link 'Edit Picture'
       fill_in 'Name', with: 'You'
       click_button 'Update Picture'
       expect(page).to have_content 'Only the creator can edit the picutre'
-      expect(page.current_path).to eq "/pictures/#{picture.id}"
     end
 
     scenario 'can delete a picture' do
-      sign_up(user)
-      visit '/'
-      click_link 'Add a picture'
-      fill_in 'Name', with: 'Kiss'
-      fill_in 'Description', with: 'You'
-      click_button 'Create Picture'
-
       click_link 'Kiss'
       click_link 'Delete Picture'
       expect(page.current_path).to eq '/pictures'
@@ -121,11 +120,12 @@ feature 'Picture' do
     end
 
     scenario "cannot delete someone else's picture" do
-      sign_up(user)
+      click_link 'Sign out'
+      user2 = build :user, email: 'test2@example.com'
+      sign_up(user2)
       visit '/'
-      click_link 'Love'
+      click_link 'Kiss'
       click_link 'Delete Picture'
-      expect(page.current_path).to eq "/pictures/#{picture.id}"
       expect(page).to have_content 'Only the creator can delete the picture'
     end
 

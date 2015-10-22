@@ -33,6 +33,12 @@ describe Picture, type: :model do
       expect(picture).not_to be_valid
     end
 
+    it "needs an image to create a picture" do
+        picture = Picture.create(name: 'boo')
+        expect(picture).to have(1).error_on(:image)
+        expect(picture).not_to be_valid
+    end
+
   end
 
 end

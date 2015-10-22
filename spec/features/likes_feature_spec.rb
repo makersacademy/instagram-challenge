@@ -10,13 +10,16 @@ feature 'Like' do
     click_button 'Log in'
   end
 
-  let!(:picture) { Picture.create(name: 'Love', description: 'Do you love me?') }
-
   before do
     user = create :user
     sign_in(user)
+    click_link 'Add a picture'
+    attach_file('picture[image]', File.join(Rails.root,'spec',"files", 'images', 'duck.jpg'))
+    fill_in 'Name', with: 'Kiss'
+    fill_in 'Description', with: 'You'
+    click_button 'Create Picture'
     visit '/'
-    click_link 'Love'
+    click_link 'Kiss'
     click_link 'Like'
   end
 
@@ -24,7 +27,6 @@ feature 'Like' do
   context 'when no likes' do
 
     scenario 'can like a picture' do
-      expect(page.current_path).to eq "/pictures/#{picture.id}"
       expect(page).to have_content '1 like'
     end
 
