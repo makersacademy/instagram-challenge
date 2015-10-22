@@ -7,4 +7,9 @@ module PicturesHelpers
     fill_in 'Description', with: description
     click_button 'Create Picture'
   end
+
+  def add_view_picture
+    click_link 'View picture'
+    click_link 'Leave a comment'
+  end
 end

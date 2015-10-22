@@ -10,8 +10,7 @@ feature 'Commenting' do
   scenario 'User can leave a comment' do
     visit pictures_path
     sign_up(@user.email, @user.password)
-    click_link 'View picture'
-    click_link 'Leave a comment'
+    add_view_picture
     fill_in 'comment_content', with: 'Nice picture of food'
     click_button 'Comment'
     expect(page).to have_content 'Nice picture of food'
@@ -21,8 +20,7 @@ feature 'Commenting' do
     visit pictures_path
     user2 = build(:user, email: "random@email.com")
     sign_up(@user.email, @user.password)
-    click_link 'View picture'
-    click_link 'Leave a comment'
+    add_view_picture
     fill_in 'comment_content', with: 'This is a cool picture'
     click_button 'Comment'
     click_link 'Sign out'
