@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @photo = Photo.find(params[:photo_id])
     @comment = Comment.new

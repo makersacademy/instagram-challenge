@@ -1,4 +1,6 @@
 class PhotoLikesController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     photo = Photo.find(params[:photo_id])
     photo_like = PhotoLike.new

@@ -1,5 +1,16 @@
 feature 'leaving comment on a photo' do
-  context 'clicking a "comment" link on homepage' do
+  context 'clicking a "comment" link on homepage; logged out' do
+    scenario 'cannot leave comment on a photo' do
+      user = build :user
+      sign_up user
+      add_photo 'Testing', '#tag'
+      click_link 'Sign out'
+      click_link 'Comment'
+      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    end
+  end
+
+  context 'clicking a "comment" link on homepage; logged in' do
     scenario 'can leave comment on a photo' do
       user = build :user
       sign_up user

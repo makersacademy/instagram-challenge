@@ -10,7 +10,7 @@ feature 'adding photos' do
   end
 
   context 'clicking "Add photo" link on homepage; logged out' do
-    scenario 'cannot add photos' do
+    scenario 'cannot add photo' do
       visit '/photos'
       click_link 'Add photo'
       expect(page).not_to have_button 'Upload photo'
@@ -19,7 +19,7 @@ feature 'adding photos' do
   end
 
   context 'clicking "Add photo" link on homepage; logged in' do
-    scenario 'can add a photo' do
+    scenario 'can add photo' do
       user = build :user
       sign_up user
       click_link 'Add photo'
@@ -103,7 +103,7 @@ end
 
 feature 'deleting a photo' do
   context 'clicking "Delete photo" link on homepage; logged out' do
-    scenario 'cannot delete photos' do
+    scenario 'cannot delete photo' do
       user = build :user
       sign_up user
       add_photo 'Testing', '#tag'
@@ -119,7 +119,7 @@ feature 'deleting a photo' do
   end
 
   context 'clicking a "Delete photo" link on homepage, logged in' do
-    scenario 'can delete a photo' do
+    scenario 'can delete photo' do
       user = build :user
       sign_up user
       add_photo 'Testing', '#tag'
