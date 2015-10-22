@@ -3,9 +3,9 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :user
-  has_many :comments
-  has_many :photo_likes
-  has_many :tagged_photos
+  has_many :comments, dependent: :destroy
+  has_many :photo_likes, dependent: :destroy
+  has_many :tagged_photos, dependent: :destroy
   has_many :tags, through: :tagged_photos
 
   # accepts_nested_attributes_for :tags

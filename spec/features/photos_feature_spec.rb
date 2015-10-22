@@ -92,6 +92,26 @@ feature 'showing all photos associated with a tag' do
   end
 end
 
+feature 'deleting a photo' do
+  context 'clicking a "Delete photo" link on homepage' do
+    scenario 'does not display the deleted photo and related info' do
+      user = build :user
+      sign_up user
+      add_photo 'Testing', '#tag'
+      click_link 'Like'
+      leave_comment
+      click_link 'Delete photo'
+      expect(page).not_to have_content 'Testing'
+      expect(page).not_to have_content '#tag'
+      expect(page).not_to have_selector :css, "img[src*='testing.jpg']"
+      expect(page).not_to have_content user.email
+      expect(page).not_to have_content '1 like'
+      expect(page).not_to have_content 'Nice!'
+      expect(current_path).to eq "/photos"
+    end
+  end
+end
+
 def add_photo title, tag
   click_link 'Add photo'
   fill_in 'Title', with: title
