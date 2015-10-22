@@ -51,7 +51,7 @@ feature 'Pictures' do
 
   context 'deleting pictures' do
 
-    xscenario 'can delete a picture which you uploaded' do
+    scenario 'can delete a picture which you uploaded' do
       visit '/pictures'
       user = create(:user)
       sign_in(user)
@@ -63,6 +63,33 @@ feature 'Pictures' do
       visit '/pictures'
       click_link 'Delete Nightlife'
       expect(page).to have_content 'No one has uploaded any pictures yet!'
+    end
+
+    scenario 'cannot delete a picture which you did not upload' do
+      visit '/pictures'
+      user = create(:user)
+      sign_in(user)
+      click_link 'Upload a picture'
+      fill_in 'Name', with: 'Nightlife'
+      fill_in 'Caption', with: 'coding at home'
+      page.attach_file("picture_image", File.absolute_path('./spec/imgs/test.png'))
+      click_button 'Create Picture'
+      visit '/pictures'
+      click_link("Sign out")
+
+      # click_link('Sign up')
+      # fill_in('Username', with: 'test2')
+      # fill_in('Email', with: 'test2@example.com')
+      # fill_in('Password', with: 'testtest')
+      # fill_in('Password confirmation', with: 'testtest')
+      # click_button('Sign up')
+
+      # user2 = User.create(username: 'test2', email: 'test2@example.com', password: '12344321', password_confirmation: '12344321')
+
+
+      user2 = create(:user, username:'some_user', email: 'test2@email.com')
+      sign_in(user2)
+      expect(page).not_to have_link 'Delete Nightlife'
     end
     #
     # scenario 'can delete a picture' do
