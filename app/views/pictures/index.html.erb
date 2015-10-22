@@ -1,0 +1,24 @@
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <p> <%= image_tag picture.image.url(:medium) %> </p>
+    <p> <%= picture.name %> </p>
+    <p> <%= picture.caption %> </p>
+    <% if !current_user.nil? && current_user.id == picture.user_id %>
+      <p>
+        <%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %>
+        <%= link_to "Edit #{picture.name}", edit_picture_path(picture) %>
+      </p>
+    <% end %>
+    <% if current_user %>
+      <p><%= link_to "Comment on #{picture.name}", new_picture_comment_path(picture) %></p>
+    <% end %>
+  <% end %>
+<% else %>
+  <h2>No one has uploaded any pictures yet!</h2>
+<% end %>
+
+<% if current_user %>
+  <p><%= link_to "Upload a picture", new_picture_path %></p>
+<% else %>
+  <p>You must be signed in to upload pictures.</p>
+<% end %>
