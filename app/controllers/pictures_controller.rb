@@ -36,8 +36,14 @@ before_action :authenticate_user!, :except => [:index, :show]
 
   def destroy
     @picture = Picture.find(params[:id])
-    @picture.destroy
-    flash[:notice] = 'Picture successfully deleted'
+
+    if destroy_as(@picture.user_id)
+      @picture.destroy
+      flash[:notice] = 'Picture successfully deleted'
+    else
+      flash[:notice] = 'Picture not deleted'
+    end
+
     redirect_to '/pictures'
   end
 
@@ -48,6 +54,6 @@ before_action :authenticate_user!, :except => [:index, :show]
   end
 
   def destroy_as(id)
-
+    current_user.id == id
   end
 end
