@@ -7,23 +7,35 @@ feature 'pictures' do
     scenario 'should have link to upload a picture' do
       visit '/pictures'
       expect(page).to have_content "No one has uploaded any pictures yet!"
-      expect(page).to have_link "Upload a picture"
     end
 
   end
 
   context 'pictures has been uploaded' do
 
-    before do
-      User.create(email: 'test@test.com', password: '12344321', password_confirmation: '12344321')
-      Picture.create(caption: 'coding at home', name: 'Nightlife', user_id: 1)
-    end
-
     scenario 'display pictures' do
+      User.create(username: 'test_user', email: 'test@test.com', password: '12344321', password_confirmation: '12344321')
+      Picture.create(caption: 'coding at home', name: 'Nightlife', user_id: 1)
       visit '/pictures'
       expect(page).to have_content 'Nightlife'
       expect(page).to have_content 'coding at home'
       expect(page).not_to have_content 'No one has uploaded any pictures yet!'
+    end
+
+  end
+
+  context 'uploading a picture' do
+
+    # before do
+    #   User.create(username: 'test_user', email: 'test@test.com', password: '12344321', password_confirmation: '12344321')
+    #   Picture.create(caption: 'coding at home', name: 'Nightlife', user_id: 1)
+    # end
+
+    scenario 'when not logged in cannot upload pictures' do
+      visit '/pictures'
+      expect(page).to have_content 'Sign in'
+      expect(page).not_to have_link "Upload a picture"
+      # expect(page).to have_content 'You must be signed up to upload pictures'
     end
 
   end
