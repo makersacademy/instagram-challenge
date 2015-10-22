@@ -4,7 +4,10 @@
     <p> <%= picture.name %> </p>
     <p> <%= picture.caption %> </p>
     <% if !current_user.nil? && current_user.id == picture.user_id %>
-      <p> <%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %></p>
+      <p>
+        <%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %>
+        <%= link_to "Edit #{picture.name}", edit_picture_path(picture) %>
+      </p>
     <% end %>
   <% end %>
 <% else %>

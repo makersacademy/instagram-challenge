@@ -56,6 +56,9 @@ As a user
 So I can follow my friend's pictures
 I would like to be able to follow certain other users
 ```
+To Do
+-----
+_Delete / Remove_ unused routes
 
 Task
 -----
