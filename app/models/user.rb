@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :username, length: {minimum: 3}, uniqueness: true,  presence: true
+  has_many :pictures
 end

@@ -13,6 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'paperclip'
 gem 'devise'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -50,6 +51,8 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'database_cleaner'
+  gem 'shoulda'
+  gem 'rspec-collection_matchers'
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end

@@ -52,16 +52,30 @@ feature "User can sign in and out" do
       fill_in('Password confirmation', with: 'testtest')
     end
 
-    it "should error out when username left blank" do
+    it "should throw error when username left blank" do
       click_button('Sign up')
       expect(page).to have_content "Username can't be blank"
       expect(page).not_to have_content 'Welcome'
     end
 
-    it "should error out when username is too short" do
+    it "should throw error when username is too short" do
       fill_in('Username', with: "T")
       click_button('Sign up')
       expect(page).to have_content "Username is too short"
+      expect(page).not_to have_content 'Welcome'
+    end
+
+    it "should throw error when username is already taken" do
+      fill_in('Username', with: "test_user")
+      click_button('Sign up')
+      click_link('Sign out')
+      click_link('Sign up')
+      fill_in('Email', with: 'test1@example.com')
+      fill_in('Password', with: 'testtest')
+      fill_in('Password confirmation', with: 'testtest')
+      fill_in('Username', with: "test_user")
+      click_button('Sign up')
+      expect(page).to have_content "Username has already been taken"
       expect(page).not_to have_content 'Welcome'
     end
 

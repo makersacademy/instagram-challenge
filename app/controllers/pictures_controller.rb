@@ -9,7 +9,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-    Picture.create(picture_params)
+    current_user.pictures.create(picture_params)
     redirect_to pictures_path
   end
 
