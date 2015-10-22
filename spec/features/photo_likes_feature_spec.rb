@@ -3,7 +3,7 @@ feature 'liking a photo' do
     scenario 'can like a photo' do
       user = build :user
       sign_up user
-      add_photo 'Testing'
+      add_photo 'Testing', '#tag'
       click_link 'Like'
       click_link 'Like'
       expect(page).to have_content '2 likes'

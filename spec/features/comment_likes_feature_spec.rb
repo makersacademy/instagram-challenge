@@ -3,7 +3,7 @@ feature 'liking a comment' do
     scenario 'can like a comment' do
       user = build :user
       sign_up user
-      add_photo 'Testing'
+      add_photo 'Testing', '#tag'
       leave_comment
       within '#photo0comment0' do
         click_link 'Like'

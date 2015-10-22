@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'users/:user_id/photos' => 'users#show'
+  get 'tags/:tag_id/photos' => 'tags#show'
 
   resources :photos do
     resources :tags

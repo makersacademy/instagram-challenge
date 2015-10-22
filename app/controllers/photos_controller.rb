@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
     photo.user = current_user
     tag_array = tag_params['phrase'].split(' ')
     tag_array.each do |t|
-      tag = Tag.new({'phrase'=>t})
+      tag = Tag.find_or_initialize_by({'phrase'=>t})
       photo.tags << tag
     end
     photo.save

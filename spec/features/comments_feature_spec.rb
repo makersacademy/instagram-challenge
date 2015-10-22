@@ -3,7 +3,7 @@ feature 'leaving comment on a photo' do
     scenario 'can leave comment on a photo' do
       user = build :user
       sign_up user
-      add_photo 'Testing'
+      add_photo 'Testing', '#tag'
       click_link 'Comment'
       expect(current_path).to eq '/photos/1/comments/new'
       fill_in 'Content', with: 'Nice!'
