@@ -9,7 +9,7 @@ feature 'pictures' do
     @user = build(:user)
   end
 
-  scenario 'user can fill out a form to add a picture' do
+  scenario 'I can fill out a form to add a picture' do
     visit pictures_path
     sign_up(@user.email, @user.password)
     add_picture('What a cool picture')
@@ -18,7 +18,7 @@ feature 'pictures' do
 
   context 'picture has been added' do
     before { Picture.create description: 'Look at my dinner', image_file_name: 'test.jpg'}
-    scenario 'display picture descriptions' do
+    scenario 'I can see picture descriptions' do
       visit pictures_path
       expect(page).to have_content('Look at my dinner')
     end
@@ -26,7 +26,7 @@ feature 'pictures' do
 
   context 'viewing pictures' do
     let!(:pic){Picture.create(description: 'something', image_file_name: 'test.jpg')}
-    scenario do
+    scenario 'View picture links to the appropriate picture through its id' do
       visit pictures_path
       click_link 'View picture'
       expect(current_path).to eq picture_path(pic.id)
@@ -34,7 +34,7 @@ feature 'pictures' do
   end
 
   context 'updating pictures' do
-    scenario 'User can edit a picture' do
+    scenario 'I can edit a picture' do
       visit pictures_path
       sign_up(@user.email, @user.password)
       add_picture('Something')
@@ -48,7 +48,7 @@ feature 'pictures' do
   end
 
   context 'deleting pictures' do
-    scenario 'User can delete a picture and it deletes from database' do
+    scenario 'I can delete a picture permanently' do
       visit pictures_path
       sign_up(@user.email, @user.password)
       add_picture('Something')
@@ -60,7 +60,7 @@ feature 'pictures' do
   end
 
   context 'User limits' do
-    scenario 'Only users who own pictures can edit them' do
+    scenario 'I can only edit pictures that I have posted' do
       visit pictures_path
       sign_up(@user.email, @user.password)
       click_link 'Add a picture'

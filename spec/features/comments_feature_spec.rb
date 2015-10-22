@@ -7,7 +7,7 @@ feature 'Commenting' do
     @user = build(:user)
     Picture.create description: 'Something', image_file_name: 'test.jpg'
   end
-  scenario 'User can leave a comment' do
+  scenario 'I can leave a comment' do
     visit pictures_path
     sign_up(@user.email, @user.password)
     add_view_picture
@@ -16,7 +16,7 @@ feature 'Commenting' do
     expect(page).to have_content 'Nice picture of food'
   end
 
-  scenario 'User cannot see delete button on comment they did not make' do
+  scenario 'I can only delete comments that I have made' do
     visit pictures_path
     user2 = build(:user, email: "random@email.com")
     sign_up(@user.email, @user.password)
