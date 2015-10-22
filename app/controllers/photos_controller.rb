@@ -11,8 +11,11 @@ class PhotosController < ApplicationController
   def create
     photo = Photo.new(photo_params)
     photo.user = current_user
-    tag = Tag.new(tag_params)
-    photo.tags << tag
+    tag_array = tag_params['phrase'].split(' ')
+    tag_array.each do |t|
+      tag = Tag.new({'phrase'=>t})
+      photo.tags << tag
+    end
     photo.save
     redirect_to photos_path
   end
