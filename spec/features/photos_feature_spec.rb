@@ -9,8 +9,17 @@ feature 'adding photos' do
     end
   end
 
-  context 'on homepage' do
-    scenario 'can add photo' do
+  context 'clicking "Add photo" link on homepage; logged out' do
+    scenario 'cannot add photos' do
+      visit '/photos'
+      click_link 'Add photo'
+      expect(page).not_to have_button 'Upload photo'
+      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    end
+  end
+
+  context 'clicking "Add photo" link on homepage; logged in' do
+    scenario 'can add a photo' do
       user = build :user
       sign_up user
       click_link 'Add photo'
@@ -93,8 +102,24 @@ feature 'showing all photos associated with a tag' do
 end
 
 feature 'deleting a photo' do
-  context 'clicking a "Delete photo" link on homepage' do
-    scenario 'does not display the deleted photo and related info' do
+  context 'clicking "Delete photo" link on homepage; logged out' do
+    scenario 'cannot delete photos' do
+      user = build :user
+      sign_up user
+      add_photo 'Testing', '#tag'
+      click_link 'Sign out'
+      click_link 'Delete photo'
+      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+      visit '/photos'
+      expect(page).to have_content 'Testing'
+      expect(page).to have_content '#tag'
+      expect(page).to have_selector :css, "img[src*='testing.jpg']"
+      expect(page).to have_content user.email
+    end
+  end
+
+  context 'clicking a "Delete photo" link on homepage, logged in' do
+    scenario 'can delete a photo' do
       user = build :user
       sign_up user
       add_photo 'Testing', '#tag'
