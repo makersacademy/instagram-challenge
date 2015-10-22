@@ -1,44 +1,44 @@
-%div.container-fluid.col-sm-7.col-sm-offset-2
+.container-fluid.col-sm-7.col-sm-offset-2
   - if @images.any?
     - @images.reverse.each do |image|
-      %div.instagram-container.container-fluid.col-sm-12
-        %div.container-fluid.col-sm-12#username
-          %div.container-fluid.col-sm-8
+      .instagram-container.container-fluid.col-sm-12
+        .container-fluid.col-sm-12#username
+          .container-fluid.col-sm-8
             = image.user.email
-          %div.container-fluid.col-sm-4.text-right
+          .container-fluid.col-sm-4.text-right
             = relative_time(image.created_at)
-        %div#imagecontainer.container-fluid.col-sm-12
+        #imagecontainer.container-fluid.col-sm-12
           - if image.image_file_name
             = image_tag image.image.url(:medium), :id => "image", :class => "img-responsive"
-        %div.imagecontainer.container-fluid.col-sm-12
-          %div.container-fluid.col-sm-8
+        .imagecontainer.container-fluid.col-sm-12
+          .container-fluid.col-sm-8
             = link_to image.name.capitalize, image_path(image)
-          %div.container-fluid.col-sm-4.text-right
+          .container-fluid.col-sm-4.text-right
             - if current_user
               = link_to "👍", image_likes_path(image), :class => "likes-link"
             %span.likes-count= image.likes.length
             = 'like'.pluralize image.likes.length
         - if current_user == image.user
-          %div.imagecontainer.container-fluid.col-sm-12
-            %div.container-fluid.col-sm-8
+          .imagecontainer.container-fluid.col-sm-12
+            .container-fluid.col-sm-8
               = link_to "Edit #{image.name}", edit_image_path(image)
-            %div.container-fluid.col-sm-4.text-right
+            .container-fluid.col-sm-4.text-right
               = link_to "Delete #{image.name}", image_path(image), method: :delete
         - if current_user
-          %div.container-fluid.col-sm-7
+          .container-fluid.col-sm-7
             = link_to "Add a comment", new_image_comment_path(image)
-        %div.container-fluid.col-sm-7
+        .container-fluid.col-sm-7
         - if image.comments.any?
           - image.comments.reverse.each do |comment|
-            %div.imagecontainer.container-fluid.col-sm-12
-              %div.container-fluid.col-sm-8
+            .imagecontainer.container-fluid.col-sm-12
+              .container-fluid.col-sm-8
                 = comment.user.email
-              %div.container-fluid.col-sm-4.text-right
+              .container-fluid.col-sm-4.text-right
                 = relative_time(comment.created_at)
-            %div.imagecontainer.container-fluid.col-sm-12
+            .imagecontainer.container-fluid.col-sm-12
               = comment.thoughts
-            %div.container-fluid.col-sm-12
-              %div.container-fluid.col-sm-8
+            .container-fluid.col-sm-12
+              .container-fluid.col-sm-8
                 - if current_user == comment.user
                   = link_to "Delete comment", comment_path(comment), method: :delete
   - else
