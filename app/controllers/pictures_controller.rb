@@ -41,7 +41,13 @@ before_action :authenticate_user!, :except => [:index, :show]
     redirect_to '/pictures'
   end
 
+  private
+
   def picture_params
     params.require(:picture).permit(:description, :image)
+  end
+
+  def destroy_as(id)
+
   end
 end
