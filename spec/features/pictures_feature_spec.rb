@@ -9,11 +9,6 @@ feature 'pictures' do
     @user = build(:user)
   end
 
-  scenario 'Should display a prompt to add a picture' do
-    visit pictures_path
-    expect(page).to have_link 'Add a picture'
-  end
-
   scenario 'user can fill out a form to add a picture' do
     visit pictures_path
     sign_up(@user.email, @user.password)

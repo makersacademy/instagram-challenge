@@ -31,7 +31,7 @@ before_action :authenticate_user!, :except => [:index, :show]
   def update
     @picture = Picture.find(params[:id])
     @picture.update(picture_params)
-    redirect_to '/pictures'
+    redirect_to pictures_path
   end
 
   def destroy
@@ -44,7 +44,7 @@ before_action :authenticate_user!, :except => [:index, :show]
       flash[:notice] = 'Picture not deleted'
     end
 
-    redirect_to '/pictures'
+    redirect_to pictures_path
   end
 
   private
