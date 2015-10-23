@@ -102,20 +102,14 @@ feature 'showing all photos associated with a tag' do
 end
 
 feature 'deleting a photo' do
-  context 'clicking "Delete photo" link on homepage; logged out' do
-    scenario 'cannot delete photo' do
-      user = build :user
-      sign_up user
-      add_photo 'Testing', '#tag'
-      click_link 'Sign out'
-      click_link 'Delete photo'
-      expect(page).to have_content 'You need to sign in or sign up before continuing.'
-      visit '/photos'
-      expect(page).to have_content 'Testing'
-      expect(page).to have_content '#tag'
-      expect(page).to have_selector :css, "img[src*='testing.jpg']"
-      expect(page).to have_content user.email
-    end
+  scenario 'can only delete photos uploaded by oneself' do
+    user1 = build :user
+    sign_up user1
+    add_photo 'Testing', '#tag'
+    click_link 'Sign out'
+    user2 = build :user, email: 'testing2@testing.com'
+    sign_up user2
+    expect(page).not_to have_link 'Delete photo'
   end
 
   context 'clicking a "Delete photo" link on homepage, logged in' do
