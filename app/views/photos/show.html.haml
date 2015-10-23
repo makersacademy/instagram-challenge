@@ -1,0 +1,12 @@
+%h1= @photo.title
+%p= @photo.description
+
+= image_tag @photo.image.url(:medium)
+
+- if @photo.comments.any?
+  %ul
+    - @photo.comments.each do |comment|
+      %li
+        = comment.thoughts
+- else
+  %p No comments
