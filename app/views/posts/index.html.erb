@@ -1,0 +1,23 @@
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <h2><%= post.title %></h2>
+    <%= link_to image_tag(post.image), post_path(post) %>
+    <%= link_to 'Comment it', new_post_comment_path(post) %>
+    <%= link_to 'Delete Post', post_path(post), method: :delete %>
+    <% if post.comments.any? %>
+      <ul>
+        <% post.comments.each do |comment| %>
+          <li>
+            <%= comment.comment %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>Be the first to comment!</p>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>No posts...</p>
+<% end %>
+
+<a href='/posts/new'>Create a post!</a>
