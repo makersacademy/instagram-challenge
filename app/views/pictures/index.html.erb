@@ -1,0 +1,35 @@
+<p>
+  <%= link_to "Add a picture", new_picture_path %>
+</p>
+
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <p>
+      <%= image_tag picture.image.url(:medium) %>
+    </p>
+    <p>
+      <p><%= pluralize picture.likes.count, 'likes' %></p>
+    </p>
+    <p>
+      <%= link_to "Like", picture_likes_path(picture), method: :post %>
+      <%= link_to "Comment", new_picture_comment_path(picture) %>
+      <% if picture.created_by?(current_user)%>
+        <%= link_to "Delete", picture_path(picture), method: :delete %>
+      <% end %>
+    </p>
+    <% if picture.comments.any? %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+          <li>
+            <%= comment.thoughts %>
+            <% if comment.created_by?(current_user)%>
+              <%= link_to "x", comment_path(comment), method: :delete %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+<% else %>
+  No pictures yet
+<% end %>
