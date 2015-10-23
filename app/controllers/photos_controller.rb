@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
 
   def create
     photo = Photo.new(photo_params)
-    photo.user = current_user 
+    photo.user = current_user
     create_tag photo, tag_params
     photo.save
     redirect_to photos_path

@@ -4,44 +4,46 @@ feature 'adding photos' do
   context 'no photo has been added; on homepage' do
     scenario 'displays a prompt to add photo' do
       visit '/photos'
-      expect(page).to have_content 'No photo yet'
+      expect(page).to have_content 'No photo yet; Please add a photo.'
       expect(page).to have_link 'Add photo'
     end
   end
 
-  context 'clicking "Add photo" link on homepage; logged out' do
-    scenario 'cannot add photo' do
-      visit '/photos'
-      click_link 'Add photo'
-      expect(page).not_to have_button 'Upload photo'
-      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+  context 'clicking "Add photo" link on homepage' do
+    context 'logged out' do
+      scenario 'cannot add photo' do
+        visit '/photos'
+        click_link 'Add photo'
+        expect(page).not_to have_button 'Upload photo'
+        expect(page).to have_content 'You need to sign in or sign up before continuing.'
+      end
     end
-  end
 
-  context 'clicking "Add photo" link on homepage; logged in' do
-    scenario 'can add photo' do
-      user = build :user
-      sign_up user
-      click_link 'Add photo'
-      fill_in 'Title', with: 'Testing'
-      attach_file 'photo[image]', 'spec/fixtures/images/testing.jpg'
-      click_button 'Upload photo'
-      expect(page).to have_content 'Testing'
-      expect(page).to have_selector :css, "img[src*='testing.jpg']"
-      expect(page).to have_content user.email
-      expect(current_path).to eq '/photos'
+    context 'logged in' do
+      scenario 'can add photo' do
+        user = build :user
+        sign_up user
+        click_link 'Add photo'
+        fill_in 'Title', with: 'Testing'
+        attach_file 'photo[image]', 'spec/fixtures/images/testing.jpg'
+        click_button 'Upload photo'
+        expect(page).to have_content 'Testing'
+        expect(page).to have_selector :css, "img[src*='testing.jpg']"
+        expect(page).to have_content user.email
+        expect(current_path).to eq '/photos'
+      end
     end
   end
 end
 
-feature 'showing individual photos' do
+feature 'showing individual photos of full size' do
   context 'clicking a photo on homepage' do
     scenario 'displays individual photo on a new page' do
       user = build :user
       sign_up user
       add_photo 'Testing', '#tag'
       click_link 'Like'
-      leave_comment
+      leave_comment 'Nice!'
       click_link 'Testing'
       expect(page).to have_content 'Testing'
       expect(page).to have_content '#tag'
@@ -61,7 +63,7 @@ feature 'showing all photos created by a particular user' do
       sign_up user
       add_photo 'Testing1', '#tag'
       click_link 'Like'
-      leave_comment
+      leave_comment 'Nice!'
       add_photo 'Testing2', '#tag'
       within '#photo0' do
         click_link user.email
@@ -84,7 +86,7 @@ feature 'showing all photos associated with a tag' do
       sign_up user
       add_photo 'Testing1', '#tag'
       click_link 'Like'
-      leave_comment
+      leave_comment 'Nice!'
       add_photo 'Testing2', '#tag'
       within '#photo0tag0' do
         click_link '#tag'
@@ -118,7 +120,7 @@ feature 'deleting a photo' do
       sign_up user
       add_photo 'Testing', '#tag'
       click_link 'Like'
-      leave_comment
+      leave_comment 'Nice!'
       click_link 'Delete photo'
       expect(page).not_to have_content 'Testing'
       expect(page).not_to have_content '#tag'

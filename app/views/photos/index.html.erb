@@ -1,5 +1,5 @@
 <% if @photos.empty? %>
-  No photo yet
+  No photo yet; Please add a photo.
 <% else %>
   <% @photos.each_with_index do |photo, i| %>
     <div id="photo<%=i%>">
@@ -19,13 +19,13 @@
       <% if photo.comments.present? %>
         Comments:
         <% photo.comments.each_with_index do |comment, k| %>
-        <div id="photo<%=i%>comment<%=k%>">
-          <%= comment.content %>
-          <%= link_to 'Like comment', photo_comment_comment_likes_path(photo, comment), method: :post %>
-          <% if comment.comment_likes.present? %>
-            <%= pluralize comment.comment_likes.count, 'like' %>
-          <% end %>
-        </div>
+          <div id="photo<%=i%>comment<%=k%>">
+            <%= comment.content %>
+            <%= link_to 'Like comment', photo_comment_comment_likes_path(photo, comment), method: :post %>
+            <% if comment.comment_likes.present? %>
+              <%= pluralize comment.comment_likes.count, 'like' %>
+            <% end %>
+          </div>
         <% end %>
       <% end %>
       <% if photo.user == current_user %>
