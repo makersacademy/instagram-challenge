@@ -8,9 +8,7 @@ class CommentsController < ApplicationController
 
   def create
     photo = Photo.find(params[:photo_id])
-    comment = Comment.new(comment_params)
-    comment.photo = photo
-    comment.save
+    comment = photo.comments.create(comment_params)
     redirect_to photos_path
   end
 

@@ -7,6 +7,4 @@ class Photo < ActiveRecord::Base
   has_many :photo_likes, dependent: :destroy
   has_many :tagged_photos, dependent: :destroy
   has_many :tags, through: :tagged_photos
-
-  # accepts_nested_attributes_for :tags
 end
