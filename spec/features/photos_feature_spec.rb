@@ -72,6 +72,7 @@ feature 'showing all photos created by a particular user' do
       expect(page).to have_content 'Testing2'
       expect(page).to have_content '#tag'
       expect(page).to have_selector :css, "img[src*='testing.jpg']"
+      expect(page).to have_content user.email
       expect(page).to have_content '1 like'
       expect(page).to have_content 'Nice!'
       expect(current_path).to eq "/users/1/photos"
