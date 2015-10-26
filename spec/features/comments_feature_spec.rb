@@ -41,13 +41,6 @@ feature 'commenting' do
       expect(page).not_to have_content 'Great'
     end
 
-    # scenario 'user can only delete their own comment' do
-    #   click_link 'Sign out'
-    #   sign_in(@user2)
-    #   click_link 'Delete this comment'
-    #   expect(page).to have_content 'Great'
-    # end
-
     scenario 'other users cannot see the delete this review link' do
       click_link 'Sign out'
       sign_in(@user2)
@@ -57,15 +50,6 @@ feature 'commenting' do
 
   context 'user not signed in' do
     context 'creating comment' do
-      # scenario 'user cannot create a comment' do
-      #   click_link 'Sign out'
-      #   click_link 'Create comment'
-      #   fill_in 'Content', with: 'Great'
-      #   click_button 'Comment'
-      #   expect(current_path).to eq '/users/sign_in'
-      #   expect(page).not_to have_content 'Great'
-      # end
-
       scenario 'user cannot see "Create comment" link' do
         click_link 'Sign out'
         expect(page).not_to have_link 'Create comment'

@@ -1,20 +1,18 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!, only: :create
   before_action :find_picture, only: [:new, :create]
+  
   def new
     @comment = Comment.new
   end
 
   def create
     @comment = @picture.build_with_user(comment_params, current_user)
-    if user_signed_in?
-      if @comment.save
-        redirect_to pictures_path
-      else
-        flash.now[:alert] = 'You cannot post an empty comment'
-        render 'new'
-      end
+    if @comment.save
+      redirect_to pictures_path
     else
-      redirect_to new_user_session_path
+      flash.now[:alert] = 'You cannot post an empty comment'
+      render 'new'
     end
   end
 

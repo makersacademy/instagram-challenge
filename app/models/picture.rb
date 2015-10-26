@@ -12,4 +12,10 @@ class Picture < ActiveRecord::Base
     comment.user = user
     comment
   end
+
+  def build_with_user2(user)
+    like = self.likes.build
+    like.user = user
+    like
+  end
 end
