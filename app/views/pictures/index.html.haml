@@ -1,0 +1,21 @@
+- if @pictures.any?
+  - @pictures.each do |picture|
+    %div
+      = image_tag picture.picture.url(:medium)
+      %p #{time_ago_in_words(picture.created_at)} ago
+      %p= picture.description
+      - if current_user == picture.user
+        = link_to 'Delete', picture_path(picture), method: :delete
+        = link_to 'Edit', edit_picture_path(picture), class: 'edit_description'
+        = render 'edit', picture: picture
+      = link_to 'Like', picture_likes_path(picture), class: 'likes-link'
+      %span.likes_count= render 'likes', picture: picture
+    - if picture.comments.any?
+      - picture.comments.each do |comment|
+        = comment.content
+        - if current_user == comment.user
+          = link_to 'Delete this comment', comment_path(comment), method: :delete
+    - if user_signed_in?
+      = link_to 'Create comment', new_picture_comment_path(picture)
+- else
+  %h3 No pictures yet
