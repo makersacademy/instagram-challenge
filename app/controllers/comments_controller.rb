@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def new
     @picture = Picture.find(params[:picture_id])
@@ -14,6 +14,15 @@ class CommentsController < ApplicationController
     @comment.save
     redirect_to '/pictures'
   end
+
+  def destroy
+    p @picture= Picture.find(params[:id])
+    @comment = @picture.comment.find(comment_params)
+    @comment.destroy
+    flash[:notice] = 'Commented deleted successfully'
+    redirect_to '/pictures'
+  end
+
 
   def comment_params
     params.require(:comment).permit(:comment)

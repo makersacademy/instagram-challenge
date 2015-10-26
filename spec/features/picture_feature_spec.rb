@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'pictures' do
-  context 'no pictures have been added' do
+  context 'when no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
       visit '/'
       expect(page).to have_content 'No pictures yet'
@@ -10,12 +10,13 @@ feature 'pictures' do
   end
 
   let(:user){ build :user }
+  let(:user2){ build :user2 }
 
   before do
     sign_up(user)
   end
 
-  context 'creating pictures' do
+  context 'when creating pictures' do
     scenario 'prompts user to fill out a form, then displays the new pictures' do
       visit '/'
       click_link 'Add a picture'
@@ -26,7 +27,7 @@ feature 'pictures' do
     end
   end
 
-  context 'pictures have been added' do
+  context 'when pictures have been added' do
 
     before do
       add_picture('tower bridge')
@@ -52,6 +53,15 @@ feature 'pictures' do
       click_link 'Delete'
       expect(page).not_to have_content 'tower bridge'
       expect(page).to have_content 'Post deleted successfully'
+    end
+
+    scenario 'cannot remove another users picture' do
+      visit '/'
+      click_link 'Sign out'
+      sign_up(user2)
+      click_link 'Delete'
+      expect(page).to have_content 'tower bridge'
+      expect(page).to have_content 'You cannot delete that picture'
     end
   end
 end
