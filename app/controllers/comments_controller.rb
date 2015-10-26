@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    p @picture= Picture.find(params[:id])
+    @picture= Picture.find(params[:id])
     @comment = @picture.comment.find(comment_params)
     @comment.destroy
     flash[:notice] = 'Commented deleted successfully'
