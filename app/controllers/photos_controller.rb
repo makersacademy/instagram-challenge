@@ -20,6 +20,13 @@ class PhotosController < ApplicationController
     end
   end
 
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    flash[:notice] = 'Pic removed'
+    redirect_to photos_path
+  end
+
   private
 
   def photo_params

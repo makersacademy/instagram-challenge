@@ -2,10 +2,13 @@ require 'rails_helper'
 
 describe 'Photos' do
 
+  before do
+    visit '/'
+  end
+
   context 'no photos added' do
 
     scenario 'advises no photos added with link to add new' do
-      visit '/'
       expect(page).to have_content 'No photos to show'
       expect(page).to have_link 'Post new pic'
     end
@@ -14,30 +17,19 @@ describe 'Photos' do
 
   context 'posting a photo' do
 
-    # let(:test_image){ fixture_file_upload('files/test_image.jpg', 'image/jpg') }
-
     scenario 'displays the photo' do
-      visit '/'
-      click_link 'Post new pic'
-      # p test_image
-      attach_file(:photo_image, 'spec/fixtures/files/test_image.jpg')
-      click_button 'Post'
+      post_pic
       expect(page).to have_css "img[src*='test_image.jpg']"
       expect(page).not_to have_content('No photos to show')
       expect(page).to have_content('Successfully posted')
     end
 
     scenario 'can include a description' do
-      visit '/'
-      click_link 'Post new pic'
-      attach_file(:photo_image, 'spec/fixtures/files/test_image.jpg')
-      fill_in 'Description', with: 'The Fonz rulz!'
-      click_button 'Post'
-      expect(page).to have_content('The Fonz rulz!')
+      post_pic('New description')
+      expect(page).to have_content('New description')
     end
 
     scenario 'raises an error when no photo provided' do
-      visit '/'
       click_link 'Post new pic'
       click_button 'Post'
       expect(page).to have_content('Image required')
@@ -46,4 +38,18 @@ describe 'Photos' do
 
   end
 
+  context 'deleting photos' do
+
+    before do
+      post_pic
+    end
+
+    scenario 'removes the photo' do
+      click_button 'Remove'
+      expect(page).not_to have_content('Testing default')
+      expect(page).not_to have_css "img[src*='test_image.jpg']"
+      expect(page).to have_content('No photos to show')
+      expect(page).to have_content('Pic removed')
+    end
+  end
 end
