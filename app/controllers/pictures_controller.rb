@@ -30,7 +30,7 @@ class PicturesController < ApplicationController
   def update
     @picture = Picture.find(params[:id])
     @picture.update(picture_params)
-
+    require 'pry'; binding.pry
     if current_user == @picture.user
       flash[:notice] = "You have successfully updated the picture"
     else
