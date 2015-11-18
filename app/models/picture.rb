@@ -14,14 +14,13 @@ class Picture < ActiveRecord::Base
   validates :image, presence: true
 
   def liked_by?(user)
-    likes.map(&:user).include?(user)
-    likes.any?{|like|like.user == user}
+    likes.include?(user)
   end
 
   def find_like(user)
-    likes.select do |like|
-      like.user == user
-    end.first
+    likes.each do |like|
+      return like if like.user == user
+    end
   end
 
 end

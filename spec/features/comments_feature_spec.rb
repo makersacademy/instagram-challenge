@@ -2,9 +2,9 @@ require 'rails_helper'
 
 feature 'Comment' do
 
-  def sign_in(user)
+  def log_in(user)
     visit '/'
-    click_link 'Sign in'
+    click_link 'Log in'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
@@ -27,7 +27,7 @@ feature 'Comment' do
   context 'when there are no comments' do
 
     scenario 'can add a comment to a picture when signed in' do
-      sign_in(user)
+      log_in(user)
       leave_comment
       expect(page).to have_content 'I am a comment'
     end
@@ -37,7 +37,7 @@ feature 'Comment' do
   context 'when there is a comment' do
 
     scenario 'can edit the comment' do
-      sign_in(user)
+      log_in(user)
       leave_comment
       click_link 'Edit comment'
       fill_in 'Comment', with: "Let's say yes"
@@ -50,11 +50,11 @@ feature 'Comment' do
 
     scenario "cannot edit someone else's comment" do
       user2 = create :user, email: 'test2@example.com'
-      sign_in(user)
+      log_in(user)
       leave_comment
-      click_link 'Sign out'
+      click_link 'Log out'
 
-      sign_in(user2)
+      log_in(user2)
       click_link 'Kiss'
       click_link 'Edit comment'
       fill_in 'Comment', with: "Won't work"
@@ -65,7 +65,7 @@ feature 'Comment' do
     end
 
     scenario 'can delete a comment when signed in' do
-      sign_in(user)
+      log_in(user)
       leave_comment
       click_link 'Delete comment'
       expect(page).not_to have_content 'Maybe I do'
@@ -73,11 +73,11 @@ feature 'Comment' do
 
     scenario 'cannot delete someone else\' comment' do
       user2 = create :user, email: 'test2@example.com'
-      sign_in(user)
+      log_in(user)
       leave_comment
-      click_link 'Sign out'
+      click_link 'Log out'
 
-      sign_in(user2)
+      log_in(user2)
       click_link 'Kiss'
       click_link 'Delete comment'
       expect(page).to have_content 'I am a comment'

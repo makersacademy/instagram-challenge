@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-feature 'User can sign in and sign out' do
+feature 'User' do
 
-  context 'user is not registered and on the homepage' do
+  context 'is not registered and on the homepage' do
     it "should see links 'sign in' and 'sign up'" do
       visit '/'
-      expect(page).to have_link 'Sign in'
-      expect(page).to have_link 'Sign up'
+      expect(page).to have_link 'Log in'
+      expect(page).to have_link 'Register'
     end
 
     it "shouldn't see a 'sign out link'" do
@@ -15,26 +15,26 @@ feature 'User can sign in and sign out' do
     end
   end
 
-  context "user is logged in and on the home page" do
+  context "is logged in and on the home page" do
 
     before do
       visit '/'
-      click_link 'Sign up'
+      click_link 'Register'
       fill_in 'Email', with: 'test@test.com'
       fill_in 'Password', with: 'testtest'
       fill_in 'Password confirmation', with: 'testtest'
-      click_button 'Sign up'
+      click_button 'Register'
     end
 
     it "should see 'sign out' link" do
       visit '/'
-      expect(page).to have_link 'Sign out'
+      expect(page).to have_link 'Log out'
     end
 
     it "shouldn't have 'sign in' and 'sign up' links" do
       visit '/'
-      expect(page).not_to have_link 'Sign in'
-      expect(page).not_to have_link 'Sign up'
+      expect(page).not_to have_link 'Log in'
+      expect(page).not_to have_link 'Register'
     end
   end
 

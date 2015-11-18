@@ -1,15 +1,10 @@
-<a href="/pictures/new">Add a picture</a>
-
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
-    <section>
-      <p> Name: <%= link_to picture.name, picture_path(picture) %>  </p>
-      <p> <%= image_tag picture.image.url(:thumb) %></p>
-      <p> Description: <%= picture.description %> </p>
-    </section>
+        <p> Name: <%= link_to picture.name, picture_path(picture) %>  </p>
+        <p> <%= image_tag picture.image.url(:thumb) %></p>
+        <p> Description: <%= picture.description %> </p>
   <%end %>
-
 <% else %>
+  <%= link_to "Add a picture", new_picture_path, class: "btn btn-lg btn-primary" %>
 
-No pictures yet
 <% end %>

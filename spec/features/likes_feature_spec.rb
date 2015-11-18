@@ -2,9 +2,9 @@ require 'spec_helper'
 
 feature 'Like' do
 
-  def sign_in(user)
+  def log_in(user)
     visit '/'
-    click_link 'Sign in'
+    click_link 'Log in'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
     click_button 'Log in'
@@ -12,7 +12,7 @@ feature 'Like' do
 
   before do
     user = create :user
-    sign_in(user)
+    log_in(user)
     click_link 'Add a picture'
     attach_file('picture[image]', File.join(Rails.root,'spec',"files", 'images', 'duck.jpg'))
     fill_in 'Name', with: 'Kiss'
