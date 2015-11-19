@@ -1,34 +1,26 @@
 <p>
-  Name: <%= @picture.name %>
-  <%= link_to "Edit Picture", edit_picture_path(@picture) %>
-  <%= link_to "Delete Picture", picture_path(@picture), method: :delete %>
-
-
+  <b>Name:<b> <%= @picture.name %>
+  <%= link_to "Edit", edit_picture_path(@picture) %> /
+  <%= link_to "Delete", picture_path(@picture), method: :delete %>
 </p>
 
-<p>
+<p><%= image_tag @picture.image.url(:medium) %></p>
 
- <%= image_tag @picture.image.url(:medium) %>
-
-</p>
 <%= render "likes" %>
 
+<p> <b><i>Description:</b></i> <%= @picture.description %> </p>
 
-
-<p> <%= @picture.description %> </p>
-
-<p> Comments: </p>
+<p> <b>Comments:<b> </p>
 
 <% if @picture.comments.any? %>
   <% @picture.comments.each do |comment| %>
-    <p> <%= comment.comment %> </p>
-    <p> <%= link_to 'Edit comment', edit_picture_comment_path(@picture, comment) %> </p>
-    <p> <%= link_to 'Delete comment', picture_comment_path(@picture, comment), method: :delete %> </p>
+    <div class="container border">
+      <h4> <%= comment.comment %> </h4>
+      <p> <%= link_to 'Edit', edit_picture_comment_path(@picture, comment) %> /
+          <%= link_to 'Delete', picture_comment_path(@picture, comment), method: :delete %>
+      </p>
+    </div>
   <% end %>
-
-<% else %>
-
-<p> No comments </p>
 
 <% end %>
 

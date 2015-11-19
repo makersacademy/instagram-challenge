@@ -7,7 +7,7 @@ class Picture < ActiveRecord::Base
 
   validates :name, length: { in: 2..100 }
 
-  has_attached_file :image, :styles => { :medium => "800x800>", :thumb => "600x600>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :image, :styles => { :medium => "800x800>", :thumb => "200x200>" }, :default_url => "/images/:style/missing.png"
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 

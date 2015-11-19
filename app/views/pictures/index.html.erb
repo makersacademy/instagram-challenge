@@ -1,10 +1,23 @@
-<% if @pictures.any? %>
-  <% @pictures.each do |picture| %>
-        <p> Name: <%= link_to picture.name, picture_path(picture) %>  </p>
-        <p> <%= image_tag picture.image.url(:thumb) %></p>
-        <p> Description: <%= picture.description %> </p>
-  <%end %>
-<% else %>
-  <%= link_to "Add a picture", new_picture_path, class: "btn btn-lg btn-primary" %>
+<div class="center jumbotron">
+  <h1> Welcome to Instagram </h1>
+</div>
 
+<% if @pictures.any? %>
+  <div class="container">
+    <div class="container">
+      <% @pictures.each do |picture| %>
+          <div class="col-md-3">
+            <p> <%= link_to image_tag(picture.image.url(:thumb)), picture_path(picture) %> </p>
+            <h4> <b>Name: <b><%= picture.name %>  </h4>
+            <p> <b><i>Description:</i><b></i> <%= picture.description %> </p>
+          </div>
+      <%end %>
+    </div>
+  <% else %>
+
+    <h3 class="text-center">
+      Please <%= link_to "log in", new_picture_path %> or <%= link_to "register",  new_user_registration_path %>
+      to upload a picture.
+    </h3>
+  </div>
 <% end %>
