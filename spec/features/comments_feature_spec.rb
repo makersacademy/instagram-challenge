@@ -1,26 +1,6 @@
 require 'rails_helper'
 
-feature 'Comment' do
-
-  def log_in(user)
-    visit '/'
-    click_link 'Log in'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
-  end
-
-  def leave_comment
-    visit '/'
-    click_link 'Add a picture'
-    attach_file('picture[image]', File.join(Rails.root,'spec',"files", 'images', 'duck.jpg'))
-    fill_in 'Name', with: 'Kiss'
-    click_button 'Create Picture'
-    visit '/'
-    click_link 'Kiss'
-    fill_in 'Comment', with: 'I am a comment'
-    click_button 'Leave comment'
-  end
+feature 'Comments' do
 
   let (:user) { create :user }
 

@@ -1,16 +1,7 @@
 require 'rails_helper'
 
-feature 'Picture' do
+feature 'Pictures' do
   # attach_file('Image', 'spec/files/images/coffee.jpg')
-
-  def register(user)
-    visit '/'
-    click_link 'Register'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    fill_in 'Password confirmation', with: user.password_confirmation
-    click_button 'Register'
-  end
 
   let(:user) { build :user }
 

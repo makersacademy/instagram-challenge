@@ -1,14 +1,6 @@
 require 'spec_helper'
 
-feature 'Like' do
-
-  def log_in(user)
-    visit '/'
-    click_link 'Log in'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
-  end
+feature 'Likes' do
 
   before do
     user = create :user
@@ -37,6 +29,11 @@ feature 'Like' do
     scenario 'can delete a like' do
       click_link '1 like'
       expect(page).not_to have_content '1 like'
+    end
+
+    scenario 'cannot like the same picture twice' do
+      click_link '1 like'
+      expect(page).to have_content 'Like'
     end
   end
 

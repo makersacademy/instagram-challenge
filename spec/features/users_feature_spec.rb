@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User' do
+feature 'Users' do
 
   context 'is not registered and on the homepage' do
     it "should see links 'sign in' and 'sign up'" do
