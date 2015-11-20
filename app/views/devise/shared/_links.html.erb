@@ -1,0 +1,36 @@
+<%= simple_form_for(resource, as: resource_name, url: new_session_path(resource_name)) do |f| %>
+  <%- if controller_name != 'sessions' %>
+    <%= f.button :submit, "Log in"%>
+  <% end -%>
+<% end %>
+
+<%= simple_form_for(resource, as: resource_name, url: new_registration_path(resource_name)) do |f| %>
+  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <%= f.button :submit, "Sign up"%><br />
+  <% end -%>
+<% end %>
+
+<%= simple_form_for(resource, as: resource_name, url: new_password_path(resource_name)) do |f| %>
+  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <%= f.button :submit, "Forgot your password?"%><br />
+  <% end -%>
+<% end %>
+
+<%= simple_form_for(resource, as: resource_name, url: new_session_path(resource_name)) do |f| %>
+  <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+  <% end -%>
+<% end %>
+
+<%= simple_form_for(resource, as: resource_name, url: new_session_path(resource_name)) do |f| %>
+  <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+    <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+  <% end -%>
+<% end %>
+
+
+<%- if devise_mapping.omniauthable? %>
+  <%- resource_class.omniauth_providers.each do |provider| %>
+    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+  <% end -%>
+<% end -%>
