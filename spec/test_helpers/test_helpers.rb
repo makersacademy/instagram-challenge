@@ -17,16 +17,25 @@ module TestHelpers
     click_button 'Log in'
   end
 
-  def leave_comment
-    visit '/'
-    click_link 'Add a picture'
+  def add_picture
+    click_link 'New Post'
     attach_file('picture[image]', File.join(Rails.root,'spec',"files", 'images', 'duck.jpg'))
-    fill_in 'Name', with: 'Kiss'
+    fill_in 'Name', with: 'Duck Punching'
     click_button 'Create Picture'
+  end
+
+  def leave_comment
+    add_picture
     visit '/'
-    click_link 'Kiss'
-    fill_in 'Comment', with: 'I am a comment'
+    click_link 'Duck'
+    fill_in 'New comment', with: 'I am a comment'
     click_button 'Leave comment'
+  end
+
+  def edit_comment
+    click_link 'Edit comment'
+    fill_in 'Comment', with: "There is a comment"
+    click_button 'Edit comment'
   end
 
 end

@@ -5,13 +5,13 @@ feature 'Likes' do
   before do
     user = create :user
     log_in(user)
-    click_link 'Add a picture'
+    click_link 'New Post'
     attach_file('picture[image]', File.join(Rails.root,'spec',"files", 'images', 'duck.jpg'))
-    fill_in 'Name', with: 'Kiss'
+    fill_in 'Name', with: 'Duck Duck'
     fill_in 'Description', with: 'You'
     click_button 'Create Picture'
     visit '/'
-    click_link 'Kiss'
+    click_link 'Duck'
     click_link 'Like'
   end
 

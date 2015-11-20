@@ -3,9 +3,14 @@ class CommentsController < ApplicationController
   def create
     @picture = Picture.find(params[:picture_id])
     @comment = @picture.comments.new(comment_params)
-    @comment.user = current_user
-    @comment.save
-    redirect_to picture_path(@picture)
+    if user_signed_in?
+      @comment.user = current_user
+      @comment.save
+      redirect_to picture_path(@picture)
+    else
+      redirect_to new_user_session_path
+      flash[:notice] = 'Please log in or register to leave a comment.'
+    end
   end
 
   def edit
