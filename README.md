@@ -56,7 +56,7 @@ _posts_
     + removes a post when a user clicks a delete link
     + user cannot delete another user's posts
 
-  + User can sign in and out
+  _User can sign in and out_
     + user not signed in and on the homepage
       + should see a 'sign in' link and a 'sign up' link
       + should not see 'sign out' link
@@ -64,11 +64,11 @@ _posts_
       + should see 'sign out' link
       + should not see a 'sign in' link and a 'sign up' link
 
-  + Post
+  _Post_
     + should have many comments
     + is not valid without user providing content
 
-  + User
+  _User_
     + should have many liked_posts
     + has comments
 
