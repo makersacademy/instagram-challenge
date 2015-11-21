@@ -1,22 +1,76 @@
-Instagram Challenge
-===================
+## Instagram Challenge
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9AM Monday morning.
+[Use this app on heroku](https://blooming-river-2172.herokuapp.com/)
 
-Task
------
+#### Task:
 
-Build Instagram: Simple huh!
+Build an Instagram clone using rails. You'll need users who can post pictures, write comments on pictures and like a picture.
 
-As usual please start by
+#### Breakdown of models:
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
++ User
++ Post
++ Comment
++ Like
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+#### Tools:
 
-Bonus if you can add filters!
+Testing: Rspec, Capybara, Shoulda, FactoryGirl
+
+Code: Ruby on Rails
+
+Other: Devise, Paperclip, PostgreSQL, AWS, HTML, CSS, Bootstrap
+
+#### Testing:
+
+_comments_
+  + user must be logged in to create a comment
+  + allows users to leave a comment
+  + allows users to delete their own comments
+  + users cannot delete others comments
+
+_likes_
+  + like count is displayed on posts
+  + like count is increased by one when 'like' is clicked by user
+  + users 'like' is removed if they click 'unlike'
+  + likes can only be made by signed in users
+
+_posts_
+  + no posts have been added
+    + should display a prompt to add a post
+  + posts have been added
+    + display posts
+  + creating posts
+    + user must be logged in to create a post
+    + prompts user to fill out a form, then displays the new post
+  + an invalid post
+    + does not let you submit a blank post
+  + images
+    + lets user add images to post
+  + viewing posts
+    + lets a user view a post
+  + editing posts
+    + let a user edit a post
+    + user can only edit their own posts
+  + deleting posts
+    + removes a post when a user clicks a delete link
+    + user cannot delete another user's posts
+
+_User can sign in and out_
+  + user not signed in and on the homepage
+    + should see a 'sign in' link and a 'sign up' link
+    + should not see 'sign out' link
+  + user signed in on the homepage
+    + should see 'sign out' link
+    + should not see a 'sign in' link and a 'sign up' link
+
+_Post_
+  + should have many comments
+  + is not valid without user providing content
+
+_User_
+  + should have many liked_posts
+  + has comments
+
+Finished in 2.64 seconds (files took 3.41 seconds to load)
+27 examples, 0 failures

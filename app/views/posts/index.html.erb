@@ -1,0 +1,37 @@
+  <div class="col-md-4">
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <h2> <%= link_to post.content, post_path(post) %> </h2>
+      <%= image_tag post.image.url(:thumb) %>
+    <% if current_user %>
+        <% if current_user.liked_posts.include?(post) %>
+          <p><%= link_to "Unlike", post_likes_path(post), method: :post, :class => "glyphicon glyphicon-remove btn btn-sm btn-default" %></p>
+        <% else %>
+          <p><%= link_to "Like", post_likes_path(post), method: :post, :class => "glyphicon glyphicon-heart btn btn-sm btn-default" %></p>
+        <% end %>
+      <% end %>
+      <p><%=post.likes.count%> <button type="button" class="btn btn-xs" aria-label="Left Align"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></button></p>
+      <% if post.comments.any? %>
+        <ul>
+        <% post.comments.each do |comment| %>
+          <li>
+          <%= comment.content %>
+          <% if current_user && current_user.id == comment.user_id %>
+            <%= link_to "Delete comment", comment_path(comment), method: :delete %>
+          <% end %>
+          </li>
+        <% end %>
+        </ul>
+      <% else %>
+      <p>No comments.</p>
+      <% end %>
+    <% if current_user && current_user.id == post.user_id %>
+      <%= link_to "Edit", edit_post_path(post), :class => "btn btn-info"  %>
+      <%= link_to "Delete", post_path(post), method: :delete, :class => "btn btn-danger" %>
+    <% end %>
+    <%= link_to "Comment", new_post_comment_path(post), :class => "btn btn-info" %>
+  <% end %>
+<% else %>
+  No posts yet
+<% end %>
+      </div>
