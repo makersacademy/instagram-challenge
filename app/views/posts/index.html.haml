@@ -1,0 +1,17 @@
+.container
+  - if @posts.any?
+    - @posts.each do |post|
+      .well.well-lg
+        %p.username= post.email
+        = link_to (image_tag post.image.url(:large)), post_path(post), id: post.id
+        %p.caption= post.caption
+        = link_to "Like", post_likes_path(post), class: 'likes-link'
+        %span.likes_count= post.likes.count
+        = 'like'.pluralize post.likes.count
+        - if current_user
+          - if (post.user_id == current_user.id)
+            %p= link_to "Delete Post", post_path(post), method: :delete
+    %p= link_to "Add a Post", new_post_path
+  - else
+    No Pictures Yet!
+    %a(href='/posts/new') Add a Post

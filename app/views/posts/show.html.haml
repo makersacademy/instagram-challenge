@@ -1,0 +1,16 @@
+.container
+  %p= image_tag @post.image.url(:medium)
+  %p= @post.caption
+  %br
+  %p= link_to "Comment", new_post_comment_path(@post)
+
+- if @post.comments.any?
+  %ul
+    - @post.comments.each do |comment|
+      %li
+        = "#{User.find(comment.user_id).email} says: "
+      %br
+      %p
+        = comment.comments
+- else
+  %p No Comments
