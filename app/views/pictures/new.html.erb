@@ -1,0 +1,32 @@
+<% if @picture.errors.any? %>
+  <section id="errors">
+    <h2>
+      Failure. Please inspect the following
+      <%= pluralize(@picture.errors.count, "error") %>:
+    </h2>
+
+    <ul>
+      <% @picture.errors.full_messages.each do |error_message| %>
+      <li> <%= error_message %> </li>
+      <% end %>
+    </ul>
+
+  </section>
+<% end %>
+
+
+<%= form_for @picture, html: {multipart: true} do |f| %>
+  <p> <%= f.file_field :image %> </p>
+
+  <p>
+    <%= f.label      :name %>
+    <%= f.text_field :name, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= f.label     :description %>
+    <%= f.text_area :description, class: "form-control" %>
+  </p>
+
+  <p><%= f.submit "Create Picture", class: "btn btn-primary" %></p>
+<% end %>
