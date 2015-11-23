@@ -54,7 +54,7 @@ I want to be able to unlike a picture.
 ##Getting Started
 
 ####Set up
-Please make sure you have postgresql installed on your local machine.
+Please make sure you have postgresql installed on your local machine. Follow [these instructions](https://github.com/zsid/chitter-challenge/blob/master/psql.md) if you don't have it.
 
 ```
 git clone git@github.com:zsid/instagram-challenge.git
@@ -144,3 +144,17 @@ User
   should have many pictures
   should have many likes
 ```
+
+####Screenshots
+
+* Home page
+
+![Home Page](https://github.com/zsid/instagram-challenge/blob/master/app/assets/images/home_page.png)
+
+* Pictures
+
+![Pictures](https://github.com/zsid/instagram-challenge/blob/master/app/assets/images/pictures.png)
+
+* Picture's profile page
+
+![Picture Profile](https://github.com/zsid/instagram-challenge/blob/master/app/assets/images/picture_profile.png)
