@@ -29,4 +29,20 @@ feature 'images' do
       expect(page).not_to have_content('No images yet')
     end
   end
+
+  context 'edit images' do
+    scenario 'if they belong to user' do
+      add_image
+      edit_image
+      expect(page).to have_content('Test')
+    end
+  end
+
+  context 'delete image' do
+    scenario 'if they belong to user' do
+      add_image
+      delete_image
+      expect(page).to have_content('Image deleted successfully')
+    end
+  end
 end

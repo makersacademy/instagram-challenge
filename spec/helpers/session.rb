@@ -28,4 +28,16 @@ module SessionHelpers
     fill_in 'Comment', with: 'nice pic'
     click_button 'Leave Comment'
   end
+
+  def edit_image
+    click_link 'Missing'
+    click_link 'Edit image'
+    fill_in 'Name', with: 'Test'
+    click_button 'Update Image'
+  end
+
+  def delete_image
+    click_link 'Missing'
+    click_link 'Delete image'
+  end
 end

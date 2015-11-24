@@ -33,6 +33,12 @@ class ImagesController < ApplicationController
     end
   end
 
+  def update
+    @image = Image.find(params[:id])
+    @image.update(image_params)
+    redirect_to images_path
+  end
+
   def destroy
     @image = Image.find(params[:id])
     if current_user == @image.user
