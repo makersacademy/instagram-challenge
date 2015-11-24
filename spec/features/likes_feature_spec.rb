@@ -15,4 +15,11 @@ feature 'liking posts' do
     click_link 'Like'
     expect(page).to have_content('1 like')
   end
+
+  scenario 'a user cannot like a post that they have already liked', js: true do
+    visit '/posts'
+    click_link 'Like'
+    click_link 'Like'
+    expect(page).to have_content('1 like')
+  end
 end
