@@ -56,7 +56,7 @@ Technologies used:
 Installation:
 ------
 
-To run the application you can either visit it on Heroku (https://usmaninstagram.herokuapp.com/)
+To run the application you can either visit it on [Heroku](https://usmaninstagram.herokuapp.com/).
 
 -- or --
 
