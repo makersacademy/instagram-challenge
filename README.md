@@ -4,7 +4,7 @@ Instagram Challenge     [![Build Status](https://travis-ci.org/UsmanJ/instagram-
 Synopsis
 -----
 
-The task set was to build an application which functions like Instagram. The web application should be able to store images and user details.
+The task set was to build an application which functions like Instagram. The web application should be able to store images and user details. Users should be able to upload images, edit and delete their own images. They must also be able to comment on and like images from other users.
 
 Features:
 -------
@@ -34,15 +34,6 @@ As a user
 So that I can edit my own image title
 I must be able to edit my image's title
 ```
-
-
-Approach towards solving the challenge
---------------------------------------
-
-I built the system using test-driven development to ensure that bugs can be eliminated. As you can see the build has 100% coveralls and all RSpec tests are passing.
-
-The instagram clone is fully functional MVP. If you feel that there are any errors or improvements can be made then please let me know.
-
 
 Technologies used:
 ------
