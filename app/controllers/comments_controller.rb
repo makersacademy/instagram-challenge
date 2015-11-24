@@ -17,16 +17,6 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:comments)
   end
 
-  def edit
-    @comment = Comment.find(params[:id])
-    if current_user.username == @comment.username
-      render 'edit'
-    else
-      flash[:notice] = "You can not edit someone else's comment"
-      redirect_to '/images'
-    end
-  end
-
   def destroy
     @comment = Comment.find(params[:id])
     if current_user.username == @comment.username
