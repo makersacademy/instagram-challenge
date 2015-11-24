@@ -1,4 +1,4 @@
-Instagram Challenge
+Instagram Challenge     [![Build Status](https://travis-ci.org/UsmanJ/instagram-challenge.svg?branch=master)](https://travis-ci.org/UsmanJ/instagram-challenge) [![Coverage Status](https://coveralls.io/repos/UsmanJ/instagram-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/UsmanJ/instagram-challenge?branch=master)
 ======================
 
 Synopsis
