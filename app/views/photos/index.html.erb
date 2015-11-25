@@ -1,0 +1,43 @@
+<div class="central_divide">
+    <% @photos.all.sort{|a,b|b.updated_at <=> a.updated_at}.each do |photo| %>
+      <div class="photo_box">
+        <div class="username"><%= photo.user.username.to_s %></div>
+        <div class="timestamp"><%= relative_time(photo.created_at) %></div>
+        <% if photo.image_file_name %>
+          <div class="image"><%= link_to image_tag(photo.image.url(:medium)), photo_path(photo), class: "photolink" %></div>
+        <% end %>
+        <div class="favourites_box">
+          <span class="favourites_count"> <%= photo.favourites.length %> </span> <span class="favourite_text"><%= 'Favourite'.pluralize(photo.favourites.count) %></span>
+          <%= link_to image_tag('heart.png'), photo_favourites_path(photo), class: 'favourites-link' %>
+        </div>
+        <div class="caption"><%= photo.caption %></div>
+        <div class="comment_divide"></div>
+        <div class="comment_box">
+            <% photo.comments.each do |comment| %>
+              <div class="comment"><%= comment.username %> said <%= comment.comment %> </div>
+              <% if current_user && comment.user == current_user %>
+                  <%= link_to "Delete Comment", photo_comment_path(photo, comment), method: :delete %> </br>
+              <% end %>
+          <% end %>
+          <% unless photo.comments.any? %>
+            No Comments
+          <% end %>
+        </div>
+        <% if current_user && current_user == photo.user%>
+            <div class="modify_box">
+              <span class="modify_icon" id="edit_icon"><%= link_to "Edit #{photo.caption}", edit_photo_path(photo) %></span>
+              <span class="modify_icon" id="delete_icon"><%= link_to "Delete #{photo.caption}", photo_path(photo), method: :delete %></span>
+          <% end %>
+          <%if current_user %>
+            <span class="comment_icon"><%= link_to "Leave a comment", new_photo_comment_path(photo) %></span>
+            </div>
+            <% end %>
+      </div>
+      <%end%>
+  <% if @photos.empty? %>
+    <h1>No photos yet</h1>
+  <% end %>
+</div>
+
+
+<%= link_to 'Post a photo', new_photo_path() %>

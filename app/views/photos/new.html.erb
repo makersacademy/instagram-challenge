@@ -1,0 +1,17 @@
+<% if @photo.errors.any? %>
+  <section id="errors" >
+    <h2> <%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being posted: </h2>
+    <ul>
+      <% @photo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
+<%= form_for @photo, html: {multipart: true} do |photo| %>
+  <%= photo.file_field :image %>
+  <%= photo.label :caption %>
+  <%= photo.text_field :caption %>
+  <%= photo.submit 'Post photo' %>
+<% end %>

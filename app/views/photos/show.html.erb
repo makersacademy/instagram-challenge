@@ -1,0 +1,15 @@
+<%= image_tag @photo.image.url(:thumb) %>
+<p><%= @photo.caption %></p>
+<% if @photo.comments.any? %>
+<h3>Comments for <%= @photo.caption %></h3>
+  <ul>
+    <% @photo.comments.each do |comment| %>
+      <li>
+        <%= comment.comment %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No Comments</p>
+<% end %>
+
