@@ -8,4 +8,15 @@ feature 'pictures' do
       expect(page).to have_link 'New post'
     end
   end
+
+  context 'pictures have been added' do
+    before do
+      Picture.create(caption: 'Sunset')
+    end
+
+    scenario 'display caption for each picture' do
+      visit '/pictures'
+      expect(page).to have_content('Sunset')
+    end
+  end
 end
