@@ -159,6 +159,10 @@ Favor present tense specs and read http://betterspecs.org
 
 # Step 4: Application code and \*.rb files
 
+## Delete empty helper files
+
+Rails generators can create scaffolds, models, controllers and views, and will generate empty helper files in the process.  Helpers are great for DRYing out your views but should be deleted if not needed.
+
 ## Use nested forms where appropriate
 
 acceptable
@@ -465,10 +469,6 @@ Related links:
 * http://html5doctor.com/lets-talk-about-semantics/
 * http://learn.shayhowe.com/advanced-html-css/semantics-accessibility/ ?
 * http://www.w3schools.com/html/html5_semantic_elements.asp
-
-## Delete empty helper files
-
-Rails generators can create scaffolds, models, controllers and views, and will generate empty helper files in the process.  Helpers are great for DRYing out your views but should be deleted if not needed.
 
 ## Avoid anonymous javascript functions
 
