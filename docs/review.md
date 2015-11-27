@@ -69,7 +69,7 @@ Try to avoid creating tests with irrelevant expectations or expectations duplica
 
 ### Lack of model tests
 
-Do test your models using the thoughtbot shoulda package, e.g.
+Do test your models using the thoughtbot [shoulda](https://github.com/thoughtbot/shoulda-matchers) package, e.g.
 
 ```ruby
 describe User, type: :model do
