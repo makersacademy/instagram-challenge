@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
 
 	def index
-		"Hello from the index action"
+		@pictures = Picture.all
 	end
 
 end
