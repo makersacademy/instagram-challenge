@@ -16,6 +16,7 @@ feature 'pictures' do
 
     scenario 'display caption for each picture' do
       visit '/pictures'
+      # expect(page).not_to have_xpath('//img[@src="/system/**/sunset.jpg*"]')
       expect(page).to have_content('Sunset')
     end
   end
