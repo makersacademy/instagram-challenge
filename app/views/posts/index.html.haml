@@ -12,6 +12,16 @@
         - if current_user
           - if (post.user_id == current_user.id)
             %p= link_to "Delete Post", post_path(post), method: :delete
+        %legend
+        - if post.comments.any?
+          - post.comments.each do |comment|
+            %li
+              = "#{User.find(comment.user_id).email} "
+            %br
+            %p
+              = comment.comments
+        - else
+          %p No Comments
     %p= link_to "Add a Post", new_post_path
   - else
     No Pictures Yet!

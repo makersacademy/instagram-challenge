@@ -12,6 +12,14 @@ module Helpers
     click_link 'Add a Post'
     fill_in 'Caption', with: '#testing'
     page.attach_file("Image", Rails.root + 'spec/fixtures/images/example.png')
-    click_button 'Create Post'
+    click_button 'Post!'
+  end
+
+  def comment
+    visit '/posts'
+    click_link "#{post.id}"
+    click_link 'Comment'
+    find(:css, '#textarea').set "Looking Good!"
+    click_button 'Create Comment'
   end
 end

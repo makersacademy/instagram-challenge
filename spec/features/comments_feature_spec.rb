@@ -9,15 +9,21 @@ feature 'Comments' do
     login(user)
   end
 
+  scenario "Posts have default message if there are none" do
+    expect(page).to have_content('No Comments')
+  end
+
+  scenario "comments are displayed at the bottom of each post" do
+    comment
+    visit '/'
+    expect(page).to have_content('Looking Good!')
+  end
+
   context 'when user logged in' do
     scenario 'allows users to leave a comment on a post using a form' do
-       visit '/posts'
-       click_link "#{post.id}"
-       click_link 'Comment'
-       find(:css, '#textarea').set "Looking Good!"
-       click_button 'Create Comment'
-       expect(current_path).to eq "/posts/#{post.id}"
-       expect(page).to have_content('Looking Good!')
+      comment
+      expect(current_path).to eq "/posts/#{post.id}"
+      expect(page).to have_content('Looking Good!')
     end
   end
 end

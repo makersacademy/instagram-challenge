@@ -21,7 +21,7 @@ feature 'Posts' do
       visit '/'
       click_link 'Add a Post'
       fill_in 'Caption', with: '#chilling'
-      click_button 'Create Post'
+      click_button 'Post!'
       expect(page).to have_content('#chilling')
     end
 

@@ -1,16 +1,23 @@
-.container
-  %p= image_tag @post.image.url(:medium)
-  %p= @post.caption
+.well.well-lg
+  %p.username= @post.email
+  = link_to (image_tag @post.image.url(:large)), post_path(@post), id: @post.id
+  %p.caption= @post.caption
+  = link_to post_likes_path(@post), class: 'likes-link', id: 'Like' do
+    %span.glyphicon.glyphicon-heart
+  %span.likes_count= @post.likes.count
+  = 'like'.pluralize @post.likes.count
   %br
-  %p= link_to "Comment", new_post_comment_path(@post)
-
-- if @post.comments.any?
-  %ul
+  %br
+  %a.button= link_to "Comment", new_post_comment_path(@post)
+  %br
+  %br
+  %legend
+  - if @post.comments.any?
     - @post.comments.each do |comment|
       %li
-        = "#{User.find(comment.user_id).email} says: "
+        = "#{User.find(comment.user_id).email} "
       %br
       %p
         = comment.comments
-- else
-  %p No Comments
+  - else
+    %p No Comments
