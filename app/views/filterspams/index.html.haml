@@ -1,3 +1,8 @@
 %p= link_to 'Add filterspam', new_filterspam_path
 
-%p No filterspams :(
+- if @filterspams.empty?
+  %p No filterspams :(
+- else
+  - @filterspams.each do |filterspam|
+    = image_tag filterspam.image.url(:medium)
+    = filterspam.comment
