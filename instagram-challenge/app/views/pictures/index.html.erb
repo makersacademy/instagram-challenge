@@ -10,7 +10,21 @@
     <p1><%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %></p1>
     <p></p>
     <p1><%= link_to "Comment #{picture.name}", new_picture_comment_path(picture) %></p1>
-    
+
+    <h3>Comments for <%= picture.name %></h3>
+
+		<% if picture.comments.any? %>
+		  <ul>
+		    <% picture.comments.each do |comment| %>
+		      <li>
+		        <%= comment.comment %>
+		      </li>
+		    <% end %>
+		  </ul>
+		<% else %>
+		  <p>No comments.</p>
+		<% end %>
+
     <hr>
   <% end %>
 <% else %>
