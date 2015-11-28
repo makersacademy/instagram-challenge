@@ -31,4 +31,15 @@ feature 'pictures' do
       expect(page).not_to have_content('No pictures yet')
     end
   end
+
+  context 'viewing pictures' do
+    let!(:ncfc){Picture.create(name:'NCFC')}
+
+    scenario 'lets a user view a picture' do
+     visit '/pictures'
+     click_link 'NCFC'
+     expect(page).to have_content 'NCFC'
+     expect(current_path).to eq "/pictures/#{ncfc.id}"
+    end
+  end
 end
