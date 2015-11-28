@@ -42,4 +42,28 @@ feature 'pictures' do
      expect(current_path).to eq "/pictures/#{ncfc.id}"
     end
   end
+
+  context 'editing pictures' do
+    before { Picture.create name: 'NCFC' }
+
+    scenario 'let a user edit a picture' do
+     visit '/pictures'
+     click_link 'Edit NCFC'
+     fill_in 'Name', with: 'Norwich City Football Club'
+     click_button 'Update Picture'
+     expect(page).to have_content 'Norwich City Football Club'
+     expect(current_path).to eq '/pictures'
+    end
+  end
+
+  context 'deleting pictures' do
+    before {Picture.create name: 'NCFC'}
+
+    scenario 'removes a picture when a user clicks a delete link' do
+      visit '/pictures'
+      click_link 'Delete NCFC'
+      expect(page).not_to have_content 'NCFC'
+      expect(page).to have_content 'Picture deleted successfully'
+    end
+  end
 end
