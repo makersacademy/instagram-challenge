@@ -32,4 +32,15 @@ feature 'pictures' do
 	    expect(current_path).to eq '/pictures'
 	  end
 	end
+
+	context 'viewing pictures' do
+	  let!(:summer){Picture.create(name:'summer')}
+
+	  scenario 'lets a user view a picture' do
+	    visit '/pictures'
+	    click_link 'summer'
+	    expect(page).to have_content 'summer'
+	  	expect(current_path).to eq "/pictures/#{summer.id}"
+	  end
+	end
 end
