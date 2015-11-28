@@ -20,4 +20,15 @@ feature 'post pictures' do
     end
   end
 
+  context 'creating caption for picture posts' do
+  scenario 'prompts user to fill out a form, then displays the new caption' do
+    visit '/posts'
+    click_link 'Add a post picture'
+    fill_in 'Caption', with: 'big ass cakes'
+    click_button 'Create Post'
+    expect(page).to have_content 'big ass cakes'
+    expect(current_path).to eq '/posts'
+  end
+end
+
 end
