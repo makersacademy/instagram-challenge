@@ -1,0 +1,2 @@
+class FilterspamsController < ApplicationController
+end
