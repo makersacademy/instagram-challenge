@@ -11,7 +11,7 @@ feature 'pictures' do
 
 	context 'restaurants have been added' do
 	  before do
-	    Picture.create(name: 'selfie', comment: 'cool')
+	    Picture.create(name: 'selfie', description: 'cool')
 	  end
 
 	  scenario 'display pictures' do
@@ -26,7 +26,7 @@ feature 'pictures' do
 	    visit '/pictures'
 	    click_link 'Add a picture'
 	    fill_in 'Name', with: 'selfie2'
-	    fill_in 'Comment', with: 'holidays'
+	    fill_in 'Description', with: 'holidays'
 	    click_button 'Add a picture'
 	    expect(page).to have_content 'selfie2'
 	    expect(current_path).to eq '/pictures'
