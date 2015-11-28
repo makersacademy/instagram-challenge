@@ -43,4 +43,18 @@ feature 'pictures' do
 	  	expect(current_path).to eq "/pictures/#{summer.id}"
 	  end
 	end
+
+	context 'editing pictures' do
+
+	  before { Picture.create name: 'holidays' }
+
+	  scenario 'let a user edit a picture' do
+	    visit '/pictures'
+	    click_link 'Edit holidays'
+	    fill_in 'Name', with: 'holidays 2015'
+	    click_button 'Update Picture'
+	    expect(page).to have_content 'holidays 2015'
+	    expect(current_path).to eq '/pictures'
+	  end
+	end
 end
