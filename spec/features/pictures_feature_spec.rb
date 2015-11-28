@@ -9,6 +9,17 @@ feature 'pictures' do
     end
   end
 
+  context 'creating pictures' do
+    scenario 'prompts user to fill out a form, then displays the new picture' do
+      visit '/pictures'
+      click_link 'Add a picture'
+      fill_in 'Name', with: 'NCFC'
+      click_button 'Create Picture'
+      expect(page).to have_content 'NCFC'
+      expect(current_path).to eq '/pictures'
+    end
+  end
+
   context 'pictures have been added' do
     before do
       Picture.create(name: 'NCFC')
