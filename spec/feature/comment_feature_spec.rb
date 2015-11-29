@@ -5,12 +5,12 @@ feature 'commenting' do
 
   scenario 'allows users to leave a comment using a form' do
      visit '/posts'
-     click_link 'Comment big ass cakes'
+     click_link 'Add comment to big ass cakes'
      fill_in "Comment", with: "Much too nice for cake"
-     select '3', from: 'HotOrNot'
+     select '3', from: 'Hotornot'
      click_button 'Leave Comment'
 
-     expect(current_path).to eq '/comments'
+     expect(current_path).to eq '/posts'
      expect(page).to have_content('Much too nice for cake')
   end
 

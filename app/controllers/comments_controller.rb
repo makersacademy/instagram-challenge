@@ -6,8 +6,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-  @post = Post.find(params[:restaurant_id])
+  @post = Post.find(params[:post_id])
   @post.comments.create(review_params)
+  redirect_to posts_path
 end
 
 def review_params
