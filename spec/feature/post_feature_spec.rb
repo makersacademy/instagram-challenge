@@ -72,4 +72,15 @@ feature 'post pictures' do
 
   end
 
+  context 'an invalid post' do
+    it 'does not let you submit a caption that is too short' do
+      visit '/posts'
+      click_link 'Add a post picture'
+      fill_in 'Caption', with: 'il'
+      click_button 'Create Post'
+      expect(page).not_to have_css 'h2', text: 'il'
+      expect(page).to have_content 'error'
+    end
+  end
+
 end
