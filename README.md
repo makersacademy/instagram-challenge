@@ -9,6 +9,8 @@
 * Users can like images, currently this is only implemented to display in the image description.
 * Users can comment on images.
 
+visit deployed site (here)[http://andygram.herokuapp.com/]
+
 **How to run a local version**
 -----------
 
