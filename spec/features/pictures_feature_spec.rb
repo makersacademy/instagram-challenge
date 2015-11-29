@@ -6,7 +6,7 @@ feature 'pictures' do
 		scenario 'should display a prompt to add a picture' do
 			visit '/pictures'
 			expect(page).to have_content 'No pictures yet'
-			expect(page).to have_link 'Add a picture'
+			expect(page).to have_link 'Add a Picture'
 		end
 	end
 
@@ -26,10 +26,10 @@ feature 'pictures' do
 	  scenario 'prompts user to fill out a form, then displays the new picture' do
 	    sign_up
 	    visit '/pictures'
-	    click_link 'Add a picture'
+	    click_link 'Add a Picture'
 	    fill_in 'Name', with: 'selfie2'
 	    fill_in 'Description', with: 'holidays'
-	    click_button 'Add a picture'
+	    click_button 'Add Picture'
 	    expect(page).to have_content 'selfie2'
 	    expect(current_path).to eq '/pictures'
 	  end
@@ -55,7 +55,7 @@ feature 'pictures' do
 	    visit '/pictures'
 	    click_link 'Edit holidays'
 	    fill_in 'Name', with: 'holidays 2015'
-	    click_button 'Update Picture'
+	    click_button 'Add Picture'
 	    expect(page).to have_content 'holidays 2015'
 	    expect(current_path).to eq '/pictures'
 	  end
@@ -77,7 +77,7 @@ feature 'pictures' do
 	context "a user must be logged in to add a picture" do
     it "should sign in for adding a picture" do
       visit '/pictures'
-      click_link 'Add a picture'
+      click_link 'Add a Picture'
       expect(page).to have_content "Log in"
     end
   end
