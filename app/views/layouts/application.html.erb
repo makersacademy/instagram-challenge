@@ -5,13 +5,31 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
-<HEADER>welcome to andygram</HEADER>
+<div class='col-md-3'></div>
+<div class='col-md-6'>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">andygram</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><%= link_to "Upload a new image", new_upload_path if user_signed_in? %></li>
+          <li><%= link_to "Sign out", destroy_user_session_path, method: :delete if user_signed_in? %></li>
+          <li><%= link_to "Sign in", new_user_session_path unless user_signed_in? %></li>
+          <li><%= link_to "Sign up", new_user_registration_path unless user_signed_in? %></li>
+        </ul>
+        <p class="navbar-text navbar-right"><%= "Signed in as #{current_user.email}" if user_signed_in? %></p>
+      </div>
+    </div>
+  </nav>
+  <%= yield %>
+</div>
+<div class='col-md-3'></div>
 
-<%= yield %>
-
-<%= button_to "Sign in", action: new_user_session_path %>
-<%= button_to "Sign up", action: new_user_registration_path %>
 </body>
 </html>
