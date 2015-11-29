@@ -4,9 +4,13 @@
   <h3> Welcome <%= @user.email %> </h3>
   <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
   <%= link_to "Upload image", new_picture_path %>
+  <br>
   <% if @pictures.any? %>
     <% @pictures.each do |picture| %>
-      <%= picture.tag %>
+      Picture Tag: <%= picture.tag %>
+      <br>
+      <%= image_tag picture.image.url %>
+      <br>
     <% end %>
   <% end %>
 <% else %>
