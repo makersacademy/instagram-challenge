@@ -9,11 +9,17 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.create(picture_params)
-    redirect_to '/pictures'
+
+    if @picture.save
+      redirect_to '/pictures'
+    else
+      render 'new'
+    end
   end
 
   def show
     @picture = Picture.find(params[:id])
+    # redirect_to '/pictures'
   end
 
   def edit
