@@ -19,6 +19,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'shoulda'
 end
 
 group :development, :test do

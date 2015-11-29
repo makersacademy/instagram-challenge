@@ -1,11 +1,19 @@
 %p= link_to 'Add filterspam', new_filterspam_path
-
+%br
 - if @filterspams.empty?
   %p No filterspams :(
 - else
   - @filterspams.each do |filterspam|
-    <br>
     = image_tag filterspam.image.url(:medium)
-    <br>
+    %br
     %em= filterspam.comment
-    <br>
+    %br
+    Actions:
+    = link_to 'Delete', filterspam_path(filterspam), method: :delete
+    |
+    = link_to 'Comment', new_filterspam_comment_path(filterspam)
+    %ul
+      - filterspam.comments.each do |comment|
+        %li<
+          %em= comment.comment
+    %br

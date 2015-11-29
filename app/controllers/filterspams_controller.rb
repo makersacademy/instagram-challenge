@@ -10,12 +10,16 @@ class FilterspamsController < ApplicationController
 
   def create
     @filterspam = Filterspam.new(_filterspam_params)
-
     if @filterspam.save
       redirect_to '/'
     else
       render 'new'
     end
+  end
+
+  def destroy
+    Filterspam.destroy(params[:id])
+    redirect_to '/'
   end
 
   def _filterspam_params

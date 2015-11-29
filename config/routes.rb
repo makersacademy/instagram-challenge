@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :filterspams
+  resources :filterspams do
+    resources :comments
+  end
+
 
   root 'filterspams#index'
 

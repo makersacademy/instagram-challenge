@@ -17,8 +17,8 @@ feature 'feed' do
   end
 
   context 'filterspam has been posted' do
-
     comment_0 = 'The fierce order heads the sign.'
+    comment_1 = 'The credit triples the experience.'
 
     before do
       image_0 = File.new(Rails.root.join('spec/features',image_0_name), 'rb')
@@ -31,6 +31,27 @@ feature 'feed' do
       expect(page).to have_css("img[src*='#{image_0_name}']")
       expect(page).not_to have_content('No filterspams :(')
     end
+
+    context 'deleting filterspams' do
+      scenario 'delete a filterspam' do
+        visit '/'
+        click_link 'Delete'
+        expect(page).not_to have_content(comment_0)
+        expect(page).not_to have_css("img[src*='#{image_0_name}']")
+        expect(page).to have_content('No filterspams :(')
+      end
+    end
+
+    context 'adding comments' do
+      scenario 'add comment' do
+        visit '/'
+        click_link 'Comment'
+        fill_in 'Comment', with: comment_1
+        click_button 'Create Comment'
+        expect(page).to have_content(comment_1)
+      end
+    end
+
   end
 
   context 'creating filterspams' do
