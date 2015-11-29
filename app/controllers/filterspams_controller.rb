@@ -1,5 +1,7 @@
 class FilterspamsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @filterspams = Filterspam.all
   end

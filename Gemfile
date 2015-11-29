@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'devise'
 gem 'haml'
 gem 'paperclip'
 gem 'rails', '4.2.5'
