@@ -25,6 +25,9 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+  end
+
   def posts_params
     params.require(:post).permit(:description, :image)
   end

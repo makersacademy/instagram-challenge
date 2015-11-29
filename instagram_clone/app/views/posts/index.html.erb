@@ -1,3 +1,22 @@
 <h2>Instagram posts</h2>
 
+<% if @posts.all.any? %>
+  <div class='row'>
+    <div class="col-md-4">
+      <% @posts.all.each do |post| %>
+        <%= link_to image_tag(post.image.url(:medium)), post_path(post) %>
+        <br>
+        <%= link_to post.description, post_path(post) %>
+        <br>
+        <%= link_to 'Delete Post', post_path(post), method: :delete, class: 'btn btn-danger' %>
+        <br>
+        <br>
+    </div>
+      <% end %>
+      <% else %>
+        <h2> No Instagram posts availiable </h2>
+      <% end %>
+  </div>
+  <br>
+  <br>
 <%= link_to 'Add Post', new_post_path, class: 'btn btn-primary' %>
