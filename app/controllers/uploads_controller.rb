@@ -2,7 +2,7 @@ class UploadsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
-    @uploads = Upload.all
+    @uploads = Upload.order(id: :DESC).all
   end
 
   def new
