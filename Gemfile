@@ -34,6 +34,7 @@ gem 'shoulda' #permette di creare relazioni tra DB
 gem 'haml' #sostituisce il linguaggio html per ruby/views
 gem 'poltergeist'
 gem 'database_cleaner'
+gem 'paperclip'
 # fine gems aggiunte da me
 gem 'twitter-bootstrap-rails'
 # Use ActiveModel has_secure_password
