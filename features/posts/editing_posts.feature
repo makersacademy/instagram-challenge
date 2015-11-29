@@ -6,14 +6,14 @@ Feature: Editing posts
   Scenario: A guest cannot edit posts
     Given there is a post to view
     And I am on the root page
-    Then I should not see a link to edit the post
+    Then I should not see a 'Edit' link 
 
   Scenario: Cannot edit if not the owner
     Given there is someone elses post to view
     And I am a registered user
     And I am logged in
     And I am on the root page
-    Then I should not see a link to edit the post
+    Then I should not see a 'Edit' link 
 
   Scenario: Author edits the post description
     Given I am a registered user

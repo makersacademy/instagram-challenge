@@ -1,7 +1,3 @@
-Then(/^I should not see a link to edit the post$/) do
-  expect(page).not_to have_link('Edit')
-end
-
 Then(/^I should see the Edit page for the post$/) do
   expect(current_path).to eq edit_post_path(@post.id)
 end

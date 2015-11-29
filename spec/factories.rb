@@ -11,4 +11,10 @@ FactoryGirl.define do
     email "norm@example.com"
     password "HeyHeyHey"
   end
+
+  factory :comment do
+    body 'Fantastic'
+    user_id 1
+    post_id 1
+  end
 end

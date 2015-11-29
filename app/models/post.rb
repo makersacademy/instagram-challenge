@@ -4,4 +4,8 @@ class Post < ActiveRecord::Base
                               thumb: "100x100>" },
                     default_url: "/images/:style/missing.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+  belongs_to :user
+  has_many :comments
+  has_many :user_comments, through: :comments, source: :user
+
 end

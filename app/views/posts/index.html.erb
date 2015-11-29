@@ -15,7 +15,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= image_tag post.image.url(:thumb) %></td>
-        <td><%= link_to post.id, post_path(post) %></td>
+        <td><%= link_to "Detail", post_path(post) %></td>
         <td><%=l post.created_at %></td>
         <td>
           <% if user_signed_in? && current_user.id == post.user_id %>
@@ -26,6 +26,9 @@
               :method => :delete,
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
               :class => 'btn btn-xs btn-danger' %>
+          <% end %>
+          <% if user_signed_in? %>
+            <%= link_to "Comment", new_post_comment_path(post) %>
           <% end %>
         </td>
       </tr>

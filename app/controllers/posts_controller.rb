@@ -16,11 +16,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    p = post_params
-    p['user_id'] = current_user.id
-    @post = Post.new(p)
+    @post = Post.new(post_params)
 
     if @post.save
+      current_user.posts << @post
       redirect_to @post, notice: 'Post was successfully created.'
     else
       render :new
