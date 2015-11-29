@@ -6,6 +6,10 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def new
     @post = Post.new
   end
@@ -13,14 +17,16 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(posts_params)
     if @post.save
-      redirect_to posts_path
+      flash[:success] = 'Suucessfully posted into Instagram'
+      redirect_to post_path(@post)
     else
-      render 'new'
+      flash[:error] = @post.errors.full_messages
+      redirect_to 'new'
     end
   end
 
   def posts_params
-    params.require(:post).permit(:description)
+    params.require(:post).permit(:description, :image)
   end
 
 end
