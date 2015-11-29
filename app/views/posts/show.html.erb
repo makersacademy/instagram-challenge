@@ -1,0 +1,20 @@
+<p><%= @post.name %></p>
+<h3> Comments: </h3>
+<% if @post.comments.any? %>
+<ul>
+	<% @post.comments.each do |comment| %>
+		<li>
+			<%= comment.message %>
+			<%= link_to "Edit Comment", edit_post_comment_path(@post,comment) %>
+			<%= link_to "Delete Comment", post_comment_path(@post,comment), method: :delete %>
+		</li>
+	<% end %>
+</ul>
+<% else %>
+	<p> No Comments yet! </p>
+<% end %>
+
+
+
+
+edit_post_comment
