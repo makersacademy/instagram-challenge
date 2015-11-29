@@ -1,22 +1,19 @@
-Instagram Challenge
+**Instagram Challenge**
 ===================
 
-Instructions
+**Functionality implemented**
 -------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* You must submit a pull request to this repo with your challenge solution (or partial solution) by 9AM Monday morning.
 
-Task
------
+* Use can sign up, sign in and sign out.  Nav bar displays confirmation of user email when logged in.  No ability to use omniauth to sign in at present, though this would be relatively easy to fit in at a later point.
+* Able to post pictures, fixed square of 500px side length, will crop but fill square if aspect ratio is not square.  You can click on the images themselves to view the original size (this can cause problems with the formatting of the page if the image is particularly large)
+* Users can like images, currently this is only implemented to display in the image description.
+* Users can comment on images.
 
-Build Instagram: Simple huh!
+**How to run a local version**
+-----------
 
-As usual please start by
+* git clone https://github.com/k0zakinio/instagram-challenge
+* bundle install
+* rake andygram_setup
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+You should now be able to run a local server/run rspec tests.
