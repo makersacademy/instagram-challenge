@@ -11,9 +11,8 @@ feature 'Pictures' do
   end
 
   context 'pictures are displayed' do
-    before do
-      Picture.create(title: 'My picture')
-    end
+    before { Picture.create title: 'My picture' }
+
     scenario 'display picture' do
       visit '/pictures'
       expect(page).to have_content('My picture')
@@ -21,8 +20,8 @@ feature 'Pictures' do
     end
   end
 
-  context 'add title to a  picture' do
-    scenario 'prompts user to fill title, then displays the picture title' do
+  context 'add picture' do
+    scenario 'prompts user to upload picture and give it a title, then displays the picture' do
       visit '/pictures'
       click_link 'Post a picture'
       fill_in 'Title', with: 'My Picture'
@@ -33,11 +32,11 @@ feature 'Pictures' do
   end
 
 
-  context 'editing picture title' do
+  context 'editing picture' do
 
     before { Picture.create title: 'My picture' }
 
-    scenario 'let a user edit title' do
+    scenario 'let a user edit title and/or change picture' do
      visit '/pictures'
      click_link 'Edit'
      fill_in 'Title', with: 'My edited picture'
@@ -47,6 +46,21 @@ feature 'Pictures' do
     end
 
   end
+
+  context 'deleting picture' do
+
+  before {Picture.create title: 'My picture'}
+
+  scenario 'removes a picture and all its related data' do
+    visit '/pictures'
+    click_link 'Delete'
+    expect(page).not_to have_content 'My picture'
+    expect(page).to have_content 'Picture deleted successfully'
+  end
+
+end
+
+
 
 
 end
