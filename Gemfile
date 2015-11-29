@@ -34,7 +34,8 @@ gem 'sdoc', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-  gem 'devise'
+gem 'devise'
+gem 'rails_12factor'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -44,12 +45,12 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console'
-
+  gem 'spring'
+end
 
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda'
-end
 end
 
