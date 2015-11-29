@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
 
   def index
-    @user = User.find(current_user.id)
+    @user = current_user || nil
   end
 end
