@@ -17,7 +17,7 @@ feature 'Posts' do
         fill_in 'Description', with: 'Picture of Dubai'
         click_button 'Create Post'
         expect(page).to have_content 'Picture of Dubai'
-        expect(current_path).to eq '/posts'
+        expect(current_path).to eq '/posts/1'
     end
   end
 
