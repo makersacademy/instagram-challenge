@@ -46,17 +46,30 @@ feature 'post pictures' do
 
   context 'editing posts' do
 
-  before { Post.create caption: 'big ass cakes' }
+    before { Post.create caption: 'big ass cakes' }
 
-  scenario 'let a user edit a post' do
-   visit '/posts'
-   click_link 'Edit big ass cakes'
-   fill_in 'Caption', with: 'Enormous buns'
-   click_button 'Update Post'
-   expect(page).to have_content 'Enormous buns'
-   expect(current_path).to eq '/posts'
+    scenario 'let a user edit a post' do
+       visit '/posts'
+       click_link 'Edit big ass cakes'
+       fill_in 'Caption', with: 'Enormous buns'
+       click_button 'Update Post'
+       expect(page).to have_content 'Enormous buns'
+       expect(current_path).to eq '/posts'
+    end
+
   end
 
-end
+  context 'deleting posts' do
+
+    before {Post.create caption: 'big ass cakes'}
+
+    scenario 'removes a post when a user clicks a delete link' do
+      visit '/posts'
+      click_link 'Delete big ass cakes'
+      expect(page).not_to have_content 'big ass cakes'
+      expect(page).to have_content 'Caption deleted successfully'
+    end
+
+  end
 
 end

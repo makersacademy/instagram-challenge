@@ -30,4 +30,11 @@ class PostsController < ApplicationController
 
     redirect_to '/posts'
   end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = 'Caption deleted successfully'
+    redirect_to '/posts'
+  end
 end
