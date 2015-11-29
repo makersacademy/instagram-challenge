@@ -1,3 +1,23 @@
+Current Status of Instagram Challenge
+=====================================
+
+The features implemented so far are
+* users can add pictures
+* write comments about picture
+
+Unfortunately attaching an image to a picture causes the application to error.
+
+Below are attached the screen shots of the application:
+
+![No pictures](public/images/1_no_pictures.png)
+![Add picture](public/images/2_add_picture.png)
+![Picture added](public/images/3_picture_added.png)
+![Add comment](public/images/4_add_comment.png)
+![Show comment](public/images/5_show_comments.png)
+![Add Image](public/images/6_add_picture_image.png)
+![PicturesController Error](public/images/7_PicturesController_error.png)
+
+
 Instagram Challenge
 ===================
 
