@@ -46,4 +46,15 @@ feature "posts" do
       expect(current_path).to eq("/posts")
     end
   end
+
+  context "deleting posts" do
+    before { Post.create(description: "My first post") }
+
+    scenario "removes a post when a user clicks a delete link" do
+      visit("/posts")
+      click_link("Delete Post")
+      expect(page).not_to have_content("My first post")
+      expect(page).to have_content("Post deleted successfully")
+    end
+  end
 end
