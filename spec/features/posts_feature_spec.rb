@@ -4,7 +4,7 @@ feature "posts" do
   context "no posts have been added" do
     scenario "display a link to add a post" do
       visit("/posts")
-      expect(page).to have_link("Create a post")
+      expect(page).to have_link("Create Post")
     end
 
     scenario "display a message that there are no posts" do
@@ -14,9 +14,7 @@ feature "posts" do
   end
 
   context "posts have been added" do
-    before do
-      Post.create(description: "My first post")
-    end
+    before { Post.create(description: "My first post") }
 
     scenario "display posts" do
       visit("/posts")
@@ -28,10 +26,23 @@ feature "posts" do
   context "creating posts" do
     scenario "prompts user to fill out a form, then display new posts" do
       visit("/posts")
-      click_link("Create a post")
+      click_link("Create Post")
       fill_in("Description", with: "My first post")
       click_button("Create Post")
       expect(page).to have_content("My first post")
+      expect(current_path).to eq("/posts")
+    end
+  end
+
+  context "updating posts" do
+    before { Post.create(description: "My first post") }
+
+    scenario "let a user edit a post" do
+      visit("/posts")
+      click_link("Edit Post")
+      fill_in("Description", with: "My edited post")
+      click_button("Update Post")
+      expect(page).to have_content("My edited post")
       expect(current_path).to eq("/posts")
     end
   end
