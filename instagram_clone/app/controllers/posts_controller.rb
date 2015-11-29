@@ -16,16 +16,33 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(posts_params)
+    @post.user = current_user
     if @post.save
-      flash[:success] = 'Suucessfully posted into Instagram'
+      flash[:notice] = 'Successfully posted into Instagram'
       redirect_to post_path(@post)
     else
-      flash[:error] = @post.errors.full_messages
+      flash[:notice] = @post.errors.full_messages
       redirect_to 'new'
     end
   end
 
+  def edit
+    @post = Post.find(params[:id])
+    render 'edit'
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(posts_params)
+    flash[:notice] = 'Post updated successfully'
+    redirect_to '/posts'
+  end
+
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = 'Post deleted successfully'
+    redirect_to '/posts'
   end
 
   def posts_params

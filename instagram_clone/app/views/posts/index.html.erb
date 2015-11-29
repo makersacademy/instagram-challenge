@@ -8,7 +8,10 @@
         <br>
         <%= link_to post.description, post_path(post) %>
         <br>
-        <%= link_to 'Delete Post', post_path(post), method: :delete, class: 'btn btn-danger' %>
+        <% if post.user == current_user %>
+          <%= link_to 'Delete Post', post_path(post), method: :delete, class: 'btn btn-danger' %>
+          <%= link_to 'Edit Post', edit_post_path(post), class: 'btn btn-success' %>
+        <% end %>
         <br>
         <br>
     </div>

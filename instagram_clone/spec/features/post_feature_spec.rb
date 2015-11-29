@@ -48,4 +48,22 @@ feature 'Posts' do
     end
   end
 
+  context 'Edit posts' do
+    before do
+        visit '/posts'
+        click_link 'Add Post'
+        fill_in 'Description', with: 'Picture of Dubai'
+        click_button 'Create Post'
+    end
+
+    scenario 'lets a user edit a post' do
+      visit '/posts'
+      click_link 'Edit Post'
+      fill_in 'Description', with: 'Picture of England'
+      click_button 'Update Post'
+      expect(page).not_to have_content 'Picture of Dubai'
+      expect(page).to have_content 'Post updated successfully'
+    end
+  end
+
 end
