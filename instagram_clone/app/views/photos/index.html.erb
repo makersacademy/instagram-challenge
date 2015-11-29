@@ -4,6 +4,19 @@
     <%= link_to 'Edit caption', edit_photo_path(p) %>
     <%= link_to 'Delete photo', photo_path(p), method: :delete %>
     <p><%= p.caption %></p>
+    <% if p.comments.any? %>
+      <p> Comments: </p>
+      <ul>
+        <% p.comments.each do |c| %>
+          <li>
+            <%= c.thoughts %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p> No Comments </p>
+   <% end %>
+    <%= link_to 'Leave comment', new_photo_comment_path(p) %>
   <% end %>
 <% else %>
   No photos yet :(

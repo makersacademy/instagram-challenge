@@ -34,7 +34,7 @@ feature 'Photos' do
 
     let(:photo) { Photo.first }
 
-    it 'lets a user view a photo' do
+    xit 'lets a user view a photo' do
       find(:xpath, "//a[contains(@href,'photos/#{photo.id}')]").click
       expect(page).to have_content('Cool')
       expect(current_path).to eq "/photos/#{photo.id}"
