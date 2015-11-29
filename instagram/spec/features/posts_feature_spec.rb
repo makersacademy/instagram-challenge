@@ -8,4 +8,16 @@ feature 'posts' do
       expect(page).to have_content('Add a post!')
     end
   end
+  context 'adding posts' do
+    it 'prompt user to fill a form then show post' do
+      visit '/'
+      click_link('Add a post!')
+      attach_file('Image', "spec/files/images/test_post.png")
+      fill_in 'Caption', with: 'This is my first picture!'
+      click_button('Post')
+      expect(page).to_not have_content 'No posts yet.'
+      expect(page).to have_content 'This is my first picture!'
+      expect(page).to have_css("img[src*='test_post.png']")
+    end
+  end
 end
