@@ -6,12 +6,16 @@
   - @filterspams.each do |filterspam|
     = image_tag filterspam.image.url(:medium)
     %br
+    = filterspam.likes.map{|like| like.user}.join(',')
+    %br
     %em= filterspam.comment
     %br
     Actions:
     = link_to 'Delete', filterspam_path(filterspam), method: :delete
     |
     = link_to 'Comment', new_filterspam_comment_path(filterspam)
+    |
+    = link_to 'Like', filterspam_likes_path(filterspam), method: :post
     %ul
       - filterspam.comments.each do |comment|
         %li<

@@ -8,5 +8,6 @@ def sign_up_and_sign_in(email: 'user0@users.com', password: 'password')
 end
 
 def sign_out
-  visit '/users/sign_out'
+  visit '/'
+  click_link 'Sign out'
 end
