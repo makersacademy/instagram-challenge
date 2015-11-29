@@ -12,11 +12,11 @@ feature 'Uploads' do
       upload_image("Me having a grand time in bed", true)
       expect(page).to have_content("Me having a grand time in bed")
       expect(page).to have_css("img[src*='test.jpeg']")
-      expect(page).not_to have_css("img[src*='missing.jpg']")
+      expect(page).not_to have_css("img[src*='missing.jpeg']")
     end
     scenario 'can try uploading without an image' do
       upload_image("missing image!")
-      expect(page).to have_css("img[src*='missing.jpg']")
+      expect(page).to have_css("img[src*='missing.jpeg']")
     end
   end
 
