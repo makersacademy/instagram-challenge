@@ -12,4 +12,16 @@ feature "posts" do
       expect(page).to have_content("There are no posts")
     end
   end
+
+  context "posts have been added" do
+    before do
+      Post.create(description: "My first post")
+    end
+
+    scenario "display posts" do
+      visit("/posts")
+      expect(page).to have_content("My first post")
+      expect(page).not_to have_content("There are no posts")
+    end
+  end
 end
