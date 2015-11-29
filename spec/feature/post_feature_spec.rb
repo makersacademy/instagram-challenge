@@ -21,14 +21,27 @@ feature 'post pictures' do
   end
 
   context 'creating caption for picture posts' do
-  scenario 'prompts user to fill out a form, then displays the new caption' do
-    visit '/posts'
-    click_link 'Add a post picture'
-    fill_in 'Caption', with: 'big ass cakes'
-    click_button 'Create Post'
-    expect(page).to have_content 'big ass cakes'
-    expect(current_path).to eq '/posts'
+    scenario 'prompts user to fill out a form, then displays the new caption' do
+      visit '/posts'
+      click_link 'Add a post picture'
+      fill_in 'Caption', with: 'big ass cakes'
+      click_button 'Create Post'
+      expect(page).to have_content 'big ass cakes'
+      expect(current_path).to eq '/posts'
+    end
   end
-end
+
+  context 'viewing posts' do
+
+    let!(:caption){Post.create(caption:'big ass cakes')}
+
+    scenario 'lets a user view a post' do
+       visit '/posts'
+       click_link 'big ass cakes'
+       expect(page).to have_content 'big ass cakes'
+       expect(current_path).to eq "/posts/#{big ass cakes.id}"
+    end
+
+  end
 
 end
