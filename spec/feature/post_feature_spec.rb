@@ -33,15 +33,30 @@ feature 'post pictures' do
 
   context 'viewing posts' do
 
-    let!(:caption){Post.create(caption:'big ass cakes')}
+    let!(:big){Post.create(caption:'big ass cakes')}
 
     scenario 'lets a user view a post' do
        visit '/posts'
        click_link 'big ass cakes'
        expect(page).to have_content 'big ass cakes'
-       expect(current_path).to eq "/posts/#{big ass cakes.id}"
+       expect(current_path).to eq "/posts/#{big.id}"
     end
 
   end
+
+  context 'editing posts' do
+
+  before { Post.create caption: 'big ass cakes' }
+
+  scenario 'let a user edit a post' do
+   visit '/posts'
+   click_link 'Edit big ass cakes'
+   fill_in 'Caption', with: 'Enormous buns'
+   click_button 'Update Post'
+   expect(page).to have_content 'Enormous buns'
+   expect(current_path).to eq '/posts'
+  end
+
+end
 
 end
