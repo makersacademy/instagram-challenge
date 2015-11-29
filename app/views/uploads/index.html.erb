@@ -3,39 +3,34 @@
 
   <% @uploads.each do |upload| %>
 
-  <div class='uploads'>
-    <div class="panel panel-default">
-      <div class='panel-heading'><%= "#{upload.description} (#{pluralize(upload.likes.length, "Like")})" %></div>
-      <div class='panel-body' id='upload-image'><%= link_to(image_tag(upload.image.url(:medium), :class => 'img-preview'), upload_path(upload)) %></div>
+  <div class="panel panel-default">
+    <div class='panel-heading'><%= "#{upload.description} (#{pluralize(upload.likes.length, "Like")})" %></div>
+    <div class='panel-body' id='upload-image'><%= link_to(image_tag(upload.image.url(:medium), :class => 'img-preview'), upload_path(upload)) %></div>
+
     <div class="btn-group btn-group-justified" role="group">
       <div class="btn-group" role="group">
-      <button type="button" class="btn btn-default" role="group"><%= link_to("Like", upload_likes_path(upload), method: :post) %></button>
+        <button type="button" class="btn btn-default" role="group"><%= link_to("Like", upload_likes_path(upload), method: :post) %></button>
       </div>
 
       <div class="btn-group" role="group">
-      <button type="button" class="btn btn-default" role="group"><%= link_to "Add comment", new_upload_comment_path(upload) %></button>
+        <button type="button" class="btn btn-default" role="group"><%= link_to "Add comment", new_upload_comment_path(upload) %></button>
       </div>
     </div>
 
     <div class='panel-heading'>Comments</div>
-    <% if upload.comments.any? %>
-      <div class='panel-body'>
-        <% upload.comments.each do |comment|%>
-          <p id='comment-content'><%= find_user_email(comment.user_id) %>: <%= comment.comment %></p>
-        <% end %>
-      </div>
+      <% if upload.comments.any? %>
+        <div class='panel-body'>
+          <% upload.comments.each do |comment|%>
+            <p id='comment-content'><%= find_user_email(comment.user_id) %>: <%= comment.comment %></p>
+          <% end %>
+        </div>
+      <% else %>
+        <div class='panel-body'>
+          <p id='comment'>No comments yet</p>
+        </div>
+      <% end %>
     </div>
-    </div>
-    <% else %>
-      <div class='panel-body'>
-        <p id='comment'>No comments yet</p>
-      </div>
-    <% end %>
   <% end %>
-  <div class='uploads'>
 <% else %>
-
   <div class='panel-heading'>No uploads yet</div>
-
 <% end %>
-</div>
