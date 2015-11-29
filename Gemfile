@@ -51,6 +51,5 @@ group :test do
   gem 'capybara'
   gem 'shoulda'
 end
-
 end
 
