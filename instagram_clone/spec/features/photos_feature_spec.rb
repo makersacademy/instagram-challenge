@@ -22,4 +22,22 @@ feature 'Photos' do
       expect(page).to have_content('Picture uploaded')
     end
   end
+
+  context 'Viewing a photo' do
+    before do
+      visit '/photos'
+      click_link 'Upload Photo'
+      fill_in :Caption, with: 'Cool'
+      attach_file('Image', './spec/images/test1.jpg')
+      click_button 'Create Photo'
+    end
+
+    let(:photo) { Photo.first }
+
+    it 'lets a user view a photo' do
+      find(:xpath, "//a[contains(@href,'photos/#{photo.id}')]").click
+      expect(page).to have_content('Cool')
+      expect(current_path).to eq "/photos/#{photo.id}"
+    end
+  end
 end

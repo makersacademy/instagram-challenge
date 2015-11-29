@@ -8,6 +8,10 @@ class PhotosController < ApplicationController
 
   end
 
+  def show
+    @photo = Photo.find(params[:id])
+  end
+
   def create
     Photo.create(photo_params)
     flash[:notice] = 'Picture uploaded successfully'
