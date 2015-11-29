@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'shoulda'
+gem 'devise'
+gem 'omniauth-facebook'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
