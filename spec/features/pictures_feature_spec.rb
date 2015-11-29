@@ -2,6 +2,10 @@ require 'rails_helper'
 
 feature 'Pictures' do
 
+  before do
+    signup(email: 'test@example.com', password: 'testtest', password_confirmation: 'testtest' )
+  end
+
   context 'no pictures are added yet' do
     scenario 'should display a prompt to add a picture' do
       visit '/pictures'
@@ -49,18 +53,15 @@ feature 'Pictures' do
 
   context 'deleting picture' do
 
-  before {Picture.create title: 'My picture'}
+    before {Picture.create title: 'My picture'}
 
-  scenario 'removes a picture and all its related data' do
-    visit '/pictures'
-    click_link 'Delete'
-    expect(page).not_to have_content 'My picture'
-    expect(page).to have_content 'Picture deleted successfully'
+    scenario 'removes a picture and all its related data' do
+      visit '/pictures'
+      click_link 'Delete'
+      expect(page).not_to have_content 'My picture'
+      expect(page).to have_content 'Picture deleted successfully'
+    end
+
   end
-
-end
-
-
-
 
 end

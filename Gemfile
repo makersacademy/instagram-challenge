@@ -6,6 +6,8 @@ gem 'autoprefixer-rails'
 gem 'shoulda'
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'poltergeist'
+gem 'database_cleaner'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
