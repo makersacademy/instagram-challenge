@@ -9,10 +9,8 @@ Rails.application.configure do
     },
     :url =>':s3_domain_url',
     :path => '/:class/:attachment/:id_partition/:style/:filename',
-}
+  }
 
-  Paperclip.options[:comand_path] = "/usr/local/bin/"
-  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
