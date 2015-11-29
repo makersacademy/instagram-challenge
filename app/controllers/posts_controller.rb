@@ -20,4 +20,11 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
   end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = 'Post deleted successfully'
+    redirect_to '/posts'
+  end
 end

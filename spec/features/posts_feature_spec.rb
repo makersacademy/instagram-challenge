@@ -36,10 +36,22 @@ feature 'Posts:' do
 
     scenario 'lets a user view a post' do
      visit '/posts'
-     click_link 'test_post'
+     click_link 'One day on holiday!'
      expect(page).to have_content 'One day on holiday!'
-     expect(current_path).to eq "/restaurants/#{test_post.id}"
+     expect(current_path).to eq "/posts/#{test_post.id}"
     end
+  end
+
+  context 'deleting posts' do
+    before {Post.create(description:'One day on holiday!')}
+
+    scenario 'removes a post when a user clicks a delete post' do
+      visit '/posts'
+      click_link 'Delete One day on holiday!'
+      expect(page).not_to have_content 'One day on holiday!'
+      expect(page).to have_content 'Post deleted successfully'
+    end
+
   end
 
 end
