@@ -1,0 +1,20 @@
+<h4><%= @picture.name %></h4>
+<p><%= @picture.description %></p>
+<%= image_tag @picture.image.url(:medium) %>
+<hr>
+
+<h3>Comments for <%= @picture.name %></h3>
+
+<% if @picture.comments.any? %>
+	<ul>
+		<% @picture.comments.each do |comment| %>
+		<li>
+		  <%= comment.comment %>
+		</li>
+<% end %>
+	</ul>
+		<% else %>
+		  <p>No comments.</p>
+		<% end %>
+
+<p1><%= link_to "Leave a comment", new_picture_comment_path(@picture) %></p1>
