@@ -6,6 +6,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+    # @comment.picture_id =
     @comment.save
     redirect_to root_path
   end
