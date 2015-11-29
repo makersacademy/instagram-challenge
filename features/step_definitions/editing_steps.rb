@@ -6,8 +6,8 @@ Then(/^I should see the Edit page for the post$/) do
   expect(current_path).to eq edit_post_path(@post.id)
 end
 
-When(/^I fill in the description with '(.+)'$/) do |description|
-  fill_in 'Description', with: description
+When(/^I fill the '(.+)' field with '(.+)'$/) do |field, text|
+  fill_in field, with: text
 end
 
 When(/^I click the '(.+)' button$/) do |button|
