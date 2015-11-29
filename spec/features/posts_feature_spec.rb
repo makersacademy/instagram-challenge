@@ -24,4 +24,15 @@ feature "posts" do
       expect(page).not_to have_content("There are no posts")
     end
   end
+
+  context "creating posts" do
+    scenario "prompts user to fill out a form, then display new posts" do
+      visit("/posts")
+      click_link("Create a post")
+      fill_in("Description", with: "My first post")
+      click_button("Create Post")
+      expect(page).to have_content("My first post")
+      expect(current_path).to eq("/posts")
+    end
+  end
 end
