@@ -1,3 +1,31 @@
+My Approach
+===========
+
+The app was created with Ruby on Rails. Feature tests have been created using the Cucumber BDD framework. Factory_Girl was used to create test objects during feature testing. The following features have been implemented.
+
+* User can create, read, update and delete posts (pictures)
+* User can create, read, update and delete comments.
+
+Instructions
+------------
+
+To run this application, you will need to do the following:
+
+* install postgresql to your machine
+* clone this repo
+* bin/rake db:create
+* bin/rake db:migrate
+* bin/rails server
+
+TODO:
+-----
+
+The following features need to be implemented.
+
+* Style the website
+* Implement Likes
+* Deploy to Heroku
+
 Instagram Challenge
 ===================
 
