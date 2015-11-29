@@ -1,6 +1,8 @@
 <% if @photos.any? %>
   <% @photos.reverse.each do |p| %>
-    <%= link_to image_tag(p.image.url(:medium), id: p.id),photo_path(p) %>
+    <%= link_to image_tag(p.image.url(:medium), id: "imageNo#{p.id}"),photo_path(p) %>
+    <%= link_to 'Edit caption', edit_photo_path(p) %>
+    <%= link_to 'Delete photo', photo_path(p), method: :delete %>
     <p><%= p.caption %></p>
   <% end %>
 <% else %>
