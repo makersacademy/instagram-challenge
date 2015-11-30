@@ -47,7 +47,7 @@ feature 'Posts:' do
 
     scenario 'removes a post when a user clicks a delete post' do
       visit '/posts'
-      click_link 'Delete One day on holiday!'
+      click_link 'Delete post'
       expect(page).not_to have_content 'One day on holiday!'
       expect(page).to have_content 'Post deleted successfully'
     end
