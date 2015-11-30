@@ -16,7 +16,7 @@ feature "posts" do
   context "posts have been added" do
     before { Post.create(description: "My first post") }
 
-    scenario "display posts" do
+    scenario "display a description to posts" do
       visit("/posts")
       expect(page).to have_content("My first post")
       expect(page).not_to have_content("There are no posts")
@@ -55,6 +55,18 @@ feature "posts" do
       click_link("Delete Post")
       expect(page).not_to have_content("My first post")
       expect(page).to have_content("Post deleted successfully")
+    end
+  end
+
+  context "adding images" do
+    scenario "let a user to add an image when he creates a post" do
+      visit("/posts")
+      click_link("Create Post")
+      fill_in("Description", with: "My first post")
+      attach_file("post[image]", File.expand_path("./spec/test.jpg"))
+      click_button("Create Post")
+      save_and_open_page
+      expect(page).to have_xpath('//img[@src="/system/**/test.jpg*"]')
     end
   end
 end
