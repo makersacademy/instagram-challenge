@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User can sign in and out' do
+feature 'User' do
 
   context 'User not signed in' do
     before { visit '/' }

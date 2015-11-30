@@ -17,4 +17,18 @@ feature 'Likes' do
     expect(page).to have_content "user6@users.com likes this"
   end
 
+  context 'multiple likes' do
+    before do
+      sign_out
+      sign_up_and_sign_in(email: 'user7@users.com')
+      click_link 'Like'
+      sign_out
+      sign_up_and_sign_in(email: 'user8@users.com')
+      click_link 'Like'
+    end
+    scenario 'should be displayed in correct format' do
+      likestr = "user6@users.com, user7@users.com and user8@users.com like this"
+      expect(page).to have_content likestr
+    end
+  end
 end

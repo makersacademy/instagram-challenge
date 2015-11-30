@@ -7,4 +7,15 @@ class Filterspam < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   validates :user, presence: true
+
+    def formatted_likes
+      likes = self.likes.map{ |like| like.user.email }
+      if likes.length == 1
+        return "#{likes.first} likes this"
+      else
+        last = likes.pop
+        return likes.join(', ') + " and #{last} like this"
+      end
+    end
+
 end
