@@ -1,0 +1,32 @@
+<!-- <%- model_class = Image -%> -->
+<div class="page-logo">
+  <h1><%= "INSTOGARM" %></h1>
+</div>
+  <tbody>
+    <% @images.each do |image| %>
+      <!-- <tr> -->
+
+      <tr>
+        <td><div class="img"></div></td>
+          <%= image_tag image.avatar.url(:thumb) %>
+        <td><%= image.description %><br></td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_image_path(image), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      image_path(image),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm',
+                                 :default => t("helpers.links.confirm",
+                                 :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        <%= image.created_at %>
+        </td>
+      </tr>
+      <!-- </tr> -->
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_image_path,
+            :class => 'btn btn-primary' %>
