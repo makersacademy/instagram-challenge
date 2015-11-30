@@ -11,16 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128104505) do
+ActiveRecord::Schema.define(version: 20151130003209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "pictures", force: :cascade do |t|
-    t.string   "caption"
+  create_table "comments", force: :cascade do |t|
+    t.string   "thoughts"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "picture_id"
   end
+
+  add_index "comments", ["picture_id"], name: "index_comments_on_picture_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "pictures", force: :cascade do |t|
+    t.string   "caption"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "user_id"
+    t.string   "comments"
+  end
+
+  add_index "pictures", ["user_id"], name: "index_pictures_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -37,6 +56,11 @@ ActiveRecord::Schema.define(version: 20151128104505) do
     t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.text     "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
@@ -44,4 +68,7 @@ ActiveRecord::Schema.define(version: 20151128104505) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
+  add_foreign_key "comments", "pictures"
+  add_foreign_key "comments", "users"
+  add_foreign_key "pictures", "users"
 end

@@ -1,11 +1,50 @@
-Welcome to PXLZ
+<div class="heading">
+  <div id="logo">PXLZ</div>
+  <p></p>
+  <a href="/pictures/new">New post</a>
+</div>
 
-<a href="new post">New post</a>
+<div class="timeline">
+  <% if @picture.all.any? %>
+    <% @picture.all.each do |picture| %>
+      <div class="post">
+        <div id="user-banner">
+          <%= image_tag picture.avatar.url(:medium) %>
+          <% if picture.name != nil %>
+            <% display_name = picture.name %>
+          <% else %>
+            <% display_name = picture.email %>
+          <% end %>
+          <%= display_name %>
+        </div>
+        <div id="image"><%= image_tag picture.image.url(:medium) %></div>
+        <div id="caption">
+          <b><%= display_name %></b> <%= picture.caption %><br>
+          <% if picture.comments != nil %>
+            <% picture.comments.each do |comment| %>
+              <% comment.user.name != nil ? (display_name = comment.user.name) : (display_name = comment.user.email) %>
+              <b> <%= display_name %> </b> <%= comment.thoughts %><br>
+            <% end %>
+          <% end %>
+          </div>
+          <div id="new_comment">
+            <%= form_for [picture, @comment] do |f| %>
+              <%= f.label "Add a comment:" %>
+              <%= f.text_field :thoughts, :size => '80' %>
+              <%= f.submit "comment!" %>
+            <% end %>
+         
 
-<% if @picture.all.any? %>
-  <% @picture.all.each do |picture| %>
-    <h2><%= picture.caption %></h2>
+<!--           <form action="/pictures/6/comments" method='post'>
+            <input id="add_a_comment" name="comment" type="text"  value="Add a comment..." onfocus="if (this.value == 'Add a comment...') {this.value = '';}" onblur="if (this.value == '') " />
+            <input type="submit" value="comment!">
+          </form>   -->
+         
+        </div>
+      </div>
+      <p></p>
+    <% end %>
+  <% else %>
+    <div class="empty-timeline">No PXLZ yet!</div>
   <% end %>
-<% else %>
-  <h1>No PXLZ yet!</h1>
-<% end %>
+</div>

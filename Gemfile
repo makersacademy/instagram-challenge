@@ -39,7 +39,12 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'dotenv'
+  gem 'shoulda'
+  gem 'dotenv-rails'
+  gem 'paperclip'
+  gem 'papercrop'
+  gem 'open_uri_redirections'
+  # gem 'open_uri_w_redirect_to_https'
 end
 
 group :development do
