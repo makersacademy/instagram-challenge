@@ -19,8 +19,8 @@ Clone the repo to your local machine:
 ``` git clone git@github.com:forty9er/instagram-challenge.git```
 
 Create the database and run the migrations:
-``` bin/rake db:create
-bin/rake db:migrate```
+``` bin/rake db:create ```
+``` bin/rake db:migrate ```
 
 Run Bundler to install Gems:
 ``` bundle ```
