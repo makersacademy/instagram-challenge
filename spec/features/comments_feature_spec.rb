@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'comments' do
- context 'leaving comments' do
+  context 'leaving comments' do
     scenario 'picture owner can leave more comments on pictures' do
       sign_up('test@test.com', '12345678')
       upload_picture('a test picture')

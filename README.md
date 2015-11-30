@@ -64,6 +64,11 @@ upload a new comment:
 * Images hosted on Amazon AWS
 * Bootstrap front-end
 * Deploy to Heroku
+* Add username to sign up
+* Add user profile page
+* Add/change user avatar
+* Add tags
+* Add search for tags
 
 
 ### Technologies used
