@@ -1,7 +1,20 @@
 Instagram Challenge
 ===================
 
+
+
+
 Instructions
+
+clone the repo
+run bundle in the terminal
+run bin/rake db:create in the terminal
+run bin/rake db:migrate in the terminal
+run rails s in the terminal
+
+then go to you webpage and type localhost:3000
+then you have the instagram clone to play with, start by signing up
+then you can upload images with a text of your chose.
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
 * Feel free to use Google, your notes, books, etc., but work on your own
