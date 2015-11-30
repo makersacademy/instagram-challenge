@@ -14372,3 +14372,229 @@ Processing by PostsController#index as HTML
   Rendered posts/index.html.erb within layouts/application (4.4ms)
   [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
 Completed 200 OK in 146ms (Views: 144.5ms | ActiveRecord: 1.0ms)
+  [1m[36m (962.5ms)[0m  [1mCREATE DATABASE "instergram-challenge_development" ENCODING = 'unicode'[0m
+  [1m[36m (54.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (2.4ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreatePosts (20151129175721)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (22.0ms)[0m  [1mCREATE TABLE "posts" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (17.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20151129175721"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Migrating to AddDescriptionToPosts (20151129182654)
+  [1m[35m (15.6ms)[0m  BEGIN
+  [1m[36m (12.5ms)[0m  [1mALTER TABLE "posts" ADD "description" text[0m
+  [1m[35mSQL (7.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20151129182654"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to DeviseCreateUsers (20151129192259)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (37.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")
+  [1m[36m (19.7ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20151129192259"]]
+  [1m[36m (14.9ms)[0m  [1mCOMMIT[0m
+Migrating to AddAttachmentImageToPosts (20151129193536)
+  [1m[35m (15.7ms)[0m  BEGIN
+  [1m[36m (0.6ms)[0m  [1mALTER TABLE "posts" ADD "image_file_name" character varying[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "posts" ADD "image_content_type" character varying
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "posts" ADD "image_file_size" integer[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "posts" ADD "image_updated_at" timestamp
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20151129193536"]]
+  [1m[35m (15.6ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (11.4ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'posts'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (2.9ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/" for ::1 at 2015-11-30 09:01:29 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35m (10.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 1337ms (Views: 1289.5ms | ActiveRecord: 11.2ms)
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/application.self-ef690747056b5e910479e0a34fe325761ebf1eb4d939ce88c672394541f4e9f9.css?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-11-30 09:01:31 +0000
+
+
+Started GET "/users/sign_in" for ::1 at 2015-11-30 09:01:34 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/shared/_links.html.erb (8.5ms)
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/sessions/new.html.erb within layouts/application (290.9ms)
+Completed 200 OK in 478ms (Views: 420.2ms | ActiveRecord: 5.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2015-11-30 09:01:44 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"E7/SghA0PKqNoxa3wQ/oUcDqdQcphXFn3VqdlSIoGZWLqWx30ydbtsR3cUBYzdsSUCtS7/QMl69InBsHwcme2A==", "user"=>{"email"=>"jrose1184@hotmail.co.uk", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (95.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "jrose1184@hotmail.co.uk"]]
+Completed 401 Unauthorized in 283ms (ActiveRecord: 96.3ms)
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"E7/SghA0PKqNoxa3wQ/oUcDqdQcphXFn3VqdlSIoGZWLqWx30ydbtsR3cUBYzdsSUCtS7/QMl69InBsHwcme2A==", "user"=>{"email"=>"jrose1184@hotmail.co.uk", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/shared/_links.html.erb (4.1ms)
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/sessions/new.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 369ms (Views: 214.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2015-11-30 09:01:52 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/shared/_links.html.erb (4.9ms)
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/registrations/new.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 165ms (Views: 163.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2015-11-30 09:02:09 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pPwIdzr6hMRavT+ldZZACTlnIuYwQkDBDMgunanKcXg86raC+enj2BNpWFLsVHNKqaYFDu3LpgmZDqgPSiv2NQ==", "user"=>{"email"=>"jrose1184@hotmail.co.uk", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'jrose1184@hotmail.co.uk' LIMIT 1[0m
+  [1m[35mSQL (25.6ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "jrose1184@hotmail.co.uk"], ["encrypted_password", "$2a$10$hvfR.huYpD8rKA3CCaPVAu7jK7ToRtbG8A.vrxYqirnN460YgLcYm"], ["created_at", "2015-11-30 09:02:09.809557"], ["updated_at", "2015-11-30 09:02:09.809557"]]
+  [1m[36m (28.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-11-30 09:02:09.868392"], ["current_sign_in_at", "2015-11-30 09:02:09.868392"], ["last_sign_in_ip", "::1/128"], ["current_sign_in_ip", "::1/128"], ["sign_in_count", 1], ["updated_at", "2015-11-30 09:02:09.871189"], ["id", 1]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 343ms (ActiveRecord: 56.6ms)
+
+
+Started GET "/" for ::1 at 2015-11-30 09:02:09 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.5ms)
+  [1m[35mUser Load (15.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 236ms (Views: 219.1ms | ActiveRecord: 16.3ms)
+
+
+Started GET "/posts/new" for ::1 at 2015-11-30 09:02:14 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (22.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 186ms (Views: 177.6ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/posts" for ::1 at 2015-11-30 09:02:38 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LAlLuSrLojtnvH5i5OG0CSa+px8v6UrV6P3l13PlGqq0H/VM6djFJy5oGZV9I4dKtn+A9/JgrB19O2NFkASd5w==", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007ffcbfbfeeb0 @tempfile=#<Tempfile:/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/RackMultipart20151130-5094-anu4df.png>, @original_filename="Screen Shot 2015-11-29 at 14.41.36.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"Screen Shot 2015-11-29 at 14.41.36.png\"\r\nContent-Type: image/png\r\n">, "name"=>"my image"}, "commit"=>"Create Post"}
+Command :: file -b --mime '/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/6e451aae1ce0304c603d7b753ce2f51520151130-5094-2oog62.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/a72c3cfac3a32f9c19d9ab081dbb120420151130-5094-jfn15p.png[0]' 2>/dev/null
+Completed 500 Internal Server Error in 591ms (ActiveRecord: 0.0ms)
+
+Paperclip::Errors::CommandNotFoundError (Could not run the `identify` command. Please install ImageMagick.):
+  app/controllers/posts_controller.rb:11:in `create'
+
+
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (14.5ms)
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (106.9ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007ffcbc0e8c90 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007ffcbc0e8970 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007ffcbc0e18a0 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/" for ::1 at 2015-11-30 09:05:02 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (5.2ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 1006ms (Views: 965.6ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/posts/new" for ::1 at 2015-11-30 09:05:06 +0000
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (139.0ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 292ms (Views: 282.9ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/posts" for ::1 at 2015-11-30 09:05:19 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qiVjej1pCrqEBTnMDj7q/SsskdYV16hZbzWeJ0XtfmIyM92P/nptps3RXjuX/Nm+u+22PsheTpH68xi1pgz5Lw==", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fd7f23db7e8 @tempfile=#<Tempfile:/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/RackMultipart20151130-7308-xw4vo0.png>, @original_filename="Screen Shot 2015-11-29 at 13.15.50.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"Screen Shot 2015-11-29 at 13.15.50.png\"\r\nContent-Type: image/png\r\n">, "name"=>"my image"}, "commit"=>"Create Post"}
+Command :: file -b --mime '/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/b5d3b118cb010e7969e4aadcf5c6f18c20151130-7308-68mzcl.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/d13fb0e85d9a62db878c4bd51bcadea220151130-7308-lds4ju.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/d13fb0e85d9a62db878c4bd51bcadea220151130-7308-lds4ju.png[0]'
+Command :: convert '/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/d13fb0e85d9a62db878c4bd51bcadea220151130-7308-lds4ju.png[0]' -auto-orient -resize "500x500>" '/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/51e2a153b1387827863c77e59556df5420151130-7308-18wwbix'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/d13fb0e85d9a62db878c4bd51bcadea220151130-7308-lds4ju.png[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/d13fb0e85d9a62db878c4bd51bcadea220151130-7308-lds4ju.png[0]'
+Command :: convert '/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/d13fb0e85d9a62db878c4bd51bcadea220151130-7308-lds4ju.png[0]' -auto-orient -resize "100x100>" '/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/51e2a153b1387827863c77e59556df5420151130-7308-df6hkd'
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/var/folders/22/hvq4x2n1327371w0nbc8pw0m0000gn/T/b5d3b118cb010e7969e4aadcf5c6f18c20151130-7308-166lcev.png'
+  [1m[35mSQL (15.9ms)[0m  INSERT INTO "posts" ("name", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "my image"], ["image_file_name", "Screen_Shot_2015-11-29_at_13.15.50.png"], ["image_content_type", "image/png"], ["image_file_size", 140932], ["image_updated_at", "2015-11-30 09:05:19.379027"], ["created_at", "2015-11-30 09:05:20.113338"], ["updated_at", "2015-11-30 09:05:20.113338"]]
+  [1m[36m (34.2ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 813ms (ActiveRecord: 50.3ms)
+
+
+Started GET "/posts" for ::1 at 2015-11-30 09:05:20 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.9ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Completed 200 OK in 336ms (Views: 333.9ms | ActiveRecord: 1.1ms)
