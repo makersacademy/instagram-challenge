@@ -69,12 +69,8 @@ feature "posts" do
 
   context "adding images" do
     scenario "let a user to add an image when he creates a post" do
-      visit("/posts")
-      click_link("Create Post")
-      fill_in("Description", with: "My first post")
-      attach_file("post[image]", File.expand_path("./spec/test.jpg"))
-      click_button("Create Post")
-      expect(page).to have_css("img[src*='test.jpeg']")
+      create_post("My first post")
+      expect(page).to have_css("img[src*='test.jpg']")
     end
   end
 end

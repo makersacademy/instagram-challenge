@@ -10,9 +10,9 @@ module User_helpers
     click_button('Sign up')
   end
 
-  def create_restaurant(description)
-    visit("/restaurants")
-    click_link("Creat Post")
+  def create_post(description)
+    visit("/posts")
+    click_link("Create Post")
     attach_file("post[image]", File.expand_path("./spec/test.jpg"))
     fill_in("Description", with: description)
     click_button("Create Post")
