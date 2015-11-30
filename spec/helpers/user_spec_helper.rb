@@ -1,9 +1,9 @@
-def sign_up_and_sign_in(email: 'user0@users.com', password: 'password')
+def sign_up_and_sign_in(options)
   visit '/'
   click_link 'Sign up'
-  fill_in 'Email', with: email
-  fill_in 'Password', with: password
-  fill_in 'Password confirmation', with: password
+  fill_in 'Email', with: options[:email]
+  fill_in 'Password', with: options[:password]
+  fill_in 'Password confirmation', with: options[:password]
   click_button 'Sign up'
 end
 

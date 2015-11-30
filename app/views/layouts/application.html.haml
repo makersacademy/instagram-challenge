@@ -8,18 +8,19 @@
 
   %body
 
-    %span#logo Filterspam
-    - if user_signed_in?
-      |
-      %span#username= current_user.email
-      |
-      = link_to 'Sign out', destroy_user_session_path, method: :delete
+    %div#header
+      %span#logo Filterspam
+      - if user_signed_in?
+        |
+        %span#username= current_user.email
+        |
+        = link_to 'Sign out', destroy_user_session_path, method: :delete
 
-    - if alert
-      %br
-      = alert
-    - if notice
-      %br
-      = notice
-      
-    = yield
+      - if alert
+        %br
+        = alert
+      - if notice
+        %br
+        = notice
+
+      = yield

@@ -1,26 +1,28 @@
-%p= link_to 'Add filterspam', new_filterspam_path
+%div#feed_header
+  %p= link_to 'Add filterspam', new_filterspam_path
 %br
 - if @filterspams.empty?
   %p No filterspams :(
 - else
   - @filterspams.each do |filterspam|
-    = "By: #{filterspam.user.email}"
-    %br
-    = image_tag filterspam.image.url(:medium)
-    %br
-    = filterspam.likes.map{|like| like.user.email}.join(', ')
-    likes this
-    %br
-    %em= filterspam.comment
-    %br
-    Actions:
-    = link_to 'Delete', filterspam_path(filterspam), method: :delete
-    |
-    = link_to 'Comment', new_filterspam_comment_path(filterspam)
-    |
-    = link_to 'Like', filterspam_likes_path(filterspam), method: :post
-    %ul
-      - filterspam.comments.each do |comment|
-        %li<
-          %em= comment.comment
+    %div.filterspam
+      = "By: #{filterspam.user.email}"
+      %br
+      = image_tag filterspam.image.url(:medium)
+      %br
+      = filterspam.likes.map{|like| like.user.email}.join(', ')
+      likes this
+      %br
+      %em= filterspam.comment
+      %br
+      Actions:
+      = link_to 'Delete', filterspam_path(filterspam), method: :delete
+      |
+      = link_to 'Comment', new_filterspam_comment_path(filterspam)
+      |
+      = link_to 'Like', filterspam_likes_path(filterspam), method: :post
+      %ul
+        - filterspam.comments.each do |comment|
+          %li<
+            %em= comment.comment
     %br

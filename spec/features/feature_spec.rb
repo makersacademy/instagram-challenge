@@ -3,26 +3,7 @@ require 'rails_helper'
 feature 'feed' do
   image_0_name = 'feature_spec_img.png'
 
-  scenario 'display the welcome message' do
-    visit '/'
-    expect(page).to have_content('Filterspam')
-  end
-
-  context 'User is not signed in' do
-    scenario 'display login prompt' do
-      visit '/'
-      expect(page).to have_current_path(user_session_path)
-    end
-  end
-
   context 'User is signed in' do
-    user_0_email = 'user0@users.com'
-    before do
-      sign_up_and_sign_in(email: user_0_email)
-    end
-    scenario 'display the sign out link' do
-      expect(page).to have_link 'Sign out'
-    end
 
     context 'no filterspams have been posted' do
       scenario 'display prompt to add filterspam' do
@@ -33,13 +14,7 @@ feature 'feed' do
       context 'creating filterspams' do
         comment_0 = 'The defective force maintains the drink.'
         scenario 'prompt user to fill out form, then display new filterspam' do
-          visit '/'
-          click_link 'Add filterspam'
-          fill_in 'Comment', with: comment_0
-          attach_file 'Image', Rails.root.join("spec/features/#{image_0_name}")
-          click_button 'Create Filterspam'
-          expect(page).to have_content(comment_0)
-          expect(page).to have_css("img[src*='#{image_0_name}']")
+
         end
       end
     end
