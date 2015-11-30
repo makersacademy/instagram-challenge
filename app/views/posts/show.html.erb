@@ -1,0 +1,18 @@
+<p><%= image_tag(post.image.url(:medium)) %></p>
+<p><%= post.description %></p>
+<p><%= link_to "Edit Post", edit_post_path(post) %>
+<%= link_to "Delete Post", post_path(post), method: :delete %></p>
+<p><%= link_to "Write a comment", new_post_comment_path(post) %>
+<h3>Comments:</h3>
+    <% if post.comments.any? %>
+      <ul>
+        <% post.comments.each do |comment| %>
+          <li>
+            <%= comment.thoughts %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments.</p>
+    <% end %>
+<% end %>

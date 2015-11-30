@@ -34,6 +34,15 @@ feature "posts" do
     end
   end
 
+  context "viewing posts" do
+    before { Post.create(description: "My first post") }
+
+    scenario "lets a user to view a post" do
+      visit("/posts")
+      expect(page).to have_content("My first post")
+    end
+  end
+
   context "updating posts" do
     before { Post.create(description: "My first post") }
 
