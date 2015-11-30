@@ -11,8 +11,9 @@ class FilterspamsController < ApplicationController
   end
 
   def create
-    @filterspam = Filterspam.new(_filterspam_params)
-    if @filterspam.save
+    filterspam = Filterspam.new(filterspam_params)
+    filterspam.user = current_user
+    if filterspam.save
       redirect_to '/'
     else
       render 'new'
@@ -24,7 +25,7 @@ class FilterspamsController < ApplicationController
     redirect_to '/'
   end
 
-  def _filterspam_params
+  def filterspam_params
     params.require(:filterspam).permit(:comment, :image)
   end
 

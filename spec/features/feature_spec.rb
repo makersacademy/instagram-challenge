@@ -16,9 +16,9 @@ feature 'feed' do
   end
 
   context 'User is signed in' do
-    user_email = 'user0@users.com'
+    user_0_email = 'user0@users.com'
     before do
-      sign_up_and_sign_in(email: user_email)
+      sign_up_and_sign_in(email: user_0_email)
     end
     scenario 'display the sign out link' do
       expect(page).to have_link 'Sign out'
@@ -47,12 +47,18 @@ feature 'feed' do
     context 'filterspam has been posted' do
       comment_0 = 'The fierce order heads the sign.'
       comment_1 = 'The credit triples the experience.'
+      user_1_email = 'user_1@users.com'
       before do
+        user_1 = User.create( email: user_1_email,
+                              password: 'password',
+                              password_confirmation: 'password')
         image_0 = File.new(Rails.root.join('spec/features',image_0_name), 'rb')
-        filterspam_0 = Filterspam.create(comment: comment_0, image: image_0)
+        params = { comment: comment_0, image: image_0, user: user_1 }
+        filterspam_0 = Filterspam.create(params)
       end
       scenario 'display filterspams' do
         visit '/'
+        expect(page).to have_content("By: #{user_1_email}")
         expect(page).to have_content(comment_0)
         expect(page).to have_css("img[src*='#{image_0_name}']")
         expect(page).not_to have_content('No filterspams :(')
@@ -79,7 +85,7 @@ feature 'feed' do
         scenario 'add like' do
           visit '/'
           click_link 'Like'
-          expect(page).to have_content "#{user_email} likes this"
+          expect(page).to have_content "#{user_0_email} likes this"
         end
       end
     end

@@ -4,9 +4,12 @@
   %p No filterspams :(
 - else
   - @filterspams.each do |filterspam|
+    = "By: #{filterspam.user.email}"
+    %br
     = image_tag filterspam.image.url(:medium)
     %br
-    = filterspam.likes.map{|like| like.user}.join(',')
+    = filterspam.likes.map{|like| like.user.email}.join(', ')
+    likes this
     %br
     %em= filterspam.comment
     %br
