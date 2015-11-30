@@ -65,8 +65,7 @@ feature "posts" do
       fill_in("Description", with: "My first post")
       attach_file("post[image]", File.expand_path("./spec/test.jpg"))
       click_button("Create Post")
-      save_and_open_page
-      expect(page).to have_xpath('//img[@src="/system/**/test.jpg*"]')
+      expect(page).to have_css("img[src*='test.jpeg']")
     end
   end
 end
