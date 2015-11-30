@@ -22,7 +22,7 @@ feature 'User can sign in and out' do
 
   context 'User signed in' do
     before do
-      sign_up_and_sign_in(email: 'user0@users.com', password: 'password')
+      sign_up_and_sign_in(email: 'user0@users.com')
     end
     scenario 'should see the welcome message' do
       within(:css, 'div#header') do
