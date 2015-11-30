@@ -1,5 +1,6 @@
 def add_filterspam(options)
   user = User.create( email: options[:email],
+                      username: options[:username],
                       password: 'password',
                       password_confirmation: 'password')
   image = File.new(Rails.root.join('spec/features',options[:image_name]), 'rb')

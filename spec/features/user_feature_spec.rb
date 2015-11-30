@@ -22,7 +22,7 @@ feature 'User' do
 
   context 'User signed in' do
     before do
-      sign_up_and_sign_in(email: 'user0@users.com')
+      sign_up_and_sign_in(email: 'user0@users.com', username: 'user0')
     end
     scenario 'should see the welcome message' do
       within(:css, 'div#header') do
@@ -31,7 +31,7 @@ feature 'User' do
     end
     scenario 'should see own username' do
       within(:css, 'div#header') do
-        expect(page).to have_content('user0@users.com')
+        expect(page).to have_content('user0')
       end
     end
     scenario 'should see the sign out link' do

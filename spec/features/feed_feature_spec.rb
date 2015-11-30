@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Feed' do
 
   before do
-    sign_up_and_sign_in(email: 'user2@users.com')
+    sign_up_and_sign_in(email: 'user2@users.com', username: 'user2')
   end
 
   context 'when no filterspams posted' do
@@ -15,6 +15,7 @@ feature 'Feed' do
   context 'when one filterspam has been posted' do
     before do
       add_filterspam(email: 'user1@users.com',
+                     username: 'user1',
                      image_name: 'feature_spec_img.png',
                      comment: 'comment 1')
       visit '/'

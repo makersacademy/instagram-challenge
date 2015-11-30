@@ -9,7 +9,7 @@ class Filterspam < ActiveRecord::Base
   validates :user, presence: true
 
     def formatted_likes
-      likes = self.likes.map{ |like| like.user.email }
+      likes = self.likes.map{ |like| like.user.username }
       if likes.length == 1
         return "#{likes.first} likes this"
       else

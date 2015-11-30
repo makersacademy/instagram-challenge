@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Filterspams' do
 
-  before { sign_up_and_sign_in(email: 'user2@users.com') }
+  before { sign_up_and_sign_in(email: 'user2@users.com', username: 'user2') }
   before { visit '/' }
 
   context 'adding' do
@@ -27,6 +27,7 @@ feature 'Filterspams' do
   context 'deleting' do
     before do
       add_filterspam(email: 'user3@users.com',
+                     username: 'user3',
                      image_name: 'feature_spec_img.png',
                      comment: 'comment 3')
       visit '/'
