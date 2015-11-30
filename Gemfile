@@ -40,7 +40,7 @@ gem 'omniauth-github'
 gem 'rails_12factor'
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'time_difference'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

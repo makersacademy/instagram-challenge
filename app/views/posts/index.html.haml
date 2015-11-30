@@ -3,6 +3,8 @@
     - @posts.reverse.each do |post|
       .well.well-lg
         %p.username= post.email
+        %span#timestamp= relative_time(post.created_at)
+        %br
         = link_to (image_tag post.image.url(:large)), post_path(post), id: post.id
         %p.caption= post.caption
         = link_to post_likes_path(post), class: 'likes-link', id: 'Like' do
