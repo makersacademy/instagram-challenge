@@ -3,8 +3,8 @@
 
 ### Approach
 
-Very much a work-in-progress still... it's an Instagram clone. Well, a clone of the Instagram web interface. You can sign up/sign in (including sign-in with Facebook, if you are on my approved list of testers). You can then post images with a caption and comment on images on the timeline.
-I made a set of user stories which can be read [here!](https://docs.google.com/document/d/1K5FblAl-u1s9Cssf38Tfj1guI0UChdFFEbFNw_OOxZ8/edit).
+Very much a work-in-progress still... it's an Instagram clone. Well, a clone of the Instagram web interface. You can sign up/sign in (including sign-in with Facebook, if you are on my approved list of testers). You can then post images with a caption and comment on images on the timeline. I'm using the Paperclip Gem to handle uploads and a Postgresql database to provide my db needs.
+I made a set of user stories which can be read [here](https://docs.google.com/document/d/1K5FblAl-u1s9Cssf38Tfj1guI0UChdFFEbFNw_OOxZ8/edit).
 
 
 ### Testing
@@ -21,6 +21,7 @@ Clone the repo to your local machine:
 
 Create the database and run the migrations:
 ``` bin/rake db:create ```
+and
 ``` bin/rake db:migrate ```
 
 Run Bundler to install Gems:
