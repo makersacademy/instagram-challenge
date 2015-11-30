@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
 
+https://travis-ci.org/hvenables/instagram-challenge.svg?branch=master
+
 Instructions
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
