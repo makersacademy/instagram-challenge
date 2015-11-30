@@ -13,8 +13,17 @@ The Instagram challenge is being built using TDD. The testing framework used is 
 
 ### Usage
 
+You must have a working Postgresql installation on your machine. 
+
 Clone the repo to your local machine:
 ``` git clone git@github.com:forty9er/instagram-challenge.git```
+
+Create the database and run the migrations:
+``` bin/rake db:create
+bin/rake db:migrate```
+
+Run Bundler to install Gems:
+```bundle```
 
 Navigate to the root directory in the terminal and spin up the server:
 
@@ -24,7 +33,7 @@ Navigate to the root directory in the terminal and spin up the server:
 
 Navigate to ```http://localhost:3000``` in your browser.
 
-You can log in if you are already registered (nb. Facebook log in will not work unless I have listed you as a tester with Facebook):
+You can log in if you are already registered (nb. Facebook log in will not work unless I have listed you as a tester with Facebook, if you are using locally you will need a .env file with your Facebook App ID and secret in the root of the project. See the dotenv Gem usage):
 ![Log in](https://www.dropbox.com/s/445lq1308mquztb/PXLZ-log-in.png?raw=1)
 
 
