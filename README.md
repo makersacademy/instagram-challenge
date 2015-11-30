@@ -27,7 +27,7 @@ Run Bundler to install Gems:
 
 Navigate to the root directory in the terminal and spin up the server:
 
-``` rails s ```
+```rails s```
 
 (Nb. If you start the server using ```rails s -b 0.0.0.0``` and forward port 3000 on your router you can access the server over the internet).
 
