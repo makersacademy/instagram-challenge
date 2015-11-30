@@ -23,7 +23,4 @@ feature 'comments' do
     expect(page).not_to have_content('Nice Pic')
     expect(current_path).to eq('/images')
   end
-  scenario 'A user can only delete own comments'
-
-  scenario 'A user must be signed into leave a comment'
 end
