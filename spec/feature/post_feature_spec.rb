@@ -22,6 +22,7 @@ feature 'post pictures' do
 
   context 'creating caption for picture posts' do
     scenario 'prompts user to fill out a form, then displays the new caption' do
+      sign_in
       visit '/posts'
       click_link 'Add a post picture'
       fill_in 'Caption', with: 'big ass cakes'
@@ -49,6 +50,7 @@ feature 'post pictures' do
     before { Post.create caption: 'big ass cakes' }
 
     scenario 'let a user edit a post' do
+        sign_in
        visit '/posts'
        click_link 'Edit big ass cakes'
        fill_in 'Caption', with: 'Enormous buns'
@@ -64,6 +66,7 @@ feature 'post pictures' do
     before {Post.create caption: 'big ass cakes'}
 
     scenario 'removes a post when a user clicks a delete link' do
+      sign_in
       visit '/posts'
       click_link 'Delete big ass cakes'
       expect(page).not_to have_content 'big ass cakes'
@@ -74,6 +77,7 @@ feature 'post pictures' do
 
   context 'an invalid post' do
     it 'does not let you submit a caption that is too short' do
+      sign_in
       visit '/posts'
       click_link 'Add a post picture'
       fill_in 'Caption', with: 'il'

@@ -8,5 +8,14 @@ describe Post, type: :model do
     expect(post).not_to be_valid
   end
 
+  describe '#average_hotness' do
+    context 'no comments' do
+      it 'returns "N/A" when there are no comments' do
+        post = Post.create(caption: "illing")
+        expect(post.average_hotness).to eq 'N/A'
+      end
+    end
+  end
+
 end
 
