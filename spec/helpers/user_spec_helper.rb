@@ -1,5 +1,5 @@
 def sign_up_and_sign_in(options)
-  visit '/'
+  visit root_path
   click_link 'Sign up'
   fill_in 'Email', with: options[:email]
   fill_in 'Username', with: options[:username]
@@ -9,6 +9,6 @@ def sign_up_and_sign_in(options)
 end
 
 def sign_out
-  visit '/'
+  visit root_path
   click_link 'Sign out'
 end
