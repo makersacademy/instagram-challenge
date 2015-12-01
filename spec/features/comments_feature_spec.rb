@@ -1,9 +1,9 @@
 require "rails_helper"
 
 feature "comments" do
-  before { Post.create(description: "My first post") }
-
   scenario "allows users to leave a comment" do
+    sign_up
+    create_post("My first post")
     write_comment("Nice one!")
     expect(page).to have_content("Nice one!")
     expect(current_path).to eq("/posts")

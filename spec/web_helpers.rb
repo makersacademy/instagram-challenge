@@ -18,6 +18,18 @@ module User_helpers
     click_button("Create Post")
   end
 
+  def edit_post(description)
+    visit("/posts")
+    click_link("Edit Post")
+    fill_in("Description", with: "My edited post")
+    click_button("Update Post")
+  end
+
+  def delete_post
+    visit("/posts")
+    click_link("Delete Post")
+  end
+
   def sign_out
     click_link("Sign out")
   end
