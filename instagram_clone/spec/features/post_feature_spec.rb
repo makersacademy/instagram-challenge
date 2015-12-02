@@ -9,10 +9,10 @@ feature 'Posts' do
     scenario 'prompt user to fill out a form, then display the post' do
         visit '/posts'
         click_link 'Add Post'
+        page.attach_file 'Image', Rails.root + 'spec/fixtures/test.jpg'
         fill_in 'Description', with: 'Picture of Dubai'
         click_button 'Create Post'
         expect(page).to have_content 'Picture of Dubai'
-        expect(current_path).to eq '/posts/1'
     end
   end
 

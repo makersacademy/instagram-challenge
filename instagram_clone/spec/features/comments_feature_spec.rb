@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'Comments' do
   before do
     sign_up
+    do_post
   end
 
   context 'create comments' do
