@@ -406,6 +406,8 @@ can be replaced with:
 <% end %>
 ```
 
+This is a sensible step because we are encapsulating the set of variables that this partial depends on.  The render operation is now self documenting in that it is describing the set of variables that need to be made available for its use. 
+
 ### Law of Demeter Violations
 
 Consider the following view snippet:
