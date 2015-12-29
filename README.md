@@ -7,6 +7,8 @@ update so you must sign in before you can add a post
 the home page to see other posts
 ![alt tag](http://postimg.org/image/4uam4wsf1/ba60dbbb/)
 
+![image_name](public/images/post.png)`
+
 
 ### Instructions
 
