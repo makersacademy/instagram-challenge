@@ -2,12 +2,11 @@ Instagram Challenge
 ===================
 update so you must sign in before you can add a post
 
-![alt tag](http://postimg.org/image/h38lf4gyx/)
+![log in](public/images/login.png)
 
-the home page to see other posts
-![alt tag](http://postimg.org/image/4uam4wsf1/ba60dbbb/)
+home page to see other posts
 
-![image_name](public/images/post.png)`
+![post](public/images/post.png)
 
 
 ### Instructions
