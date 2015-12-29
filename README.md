@@ -1,8 +1,8 @@
 Instagram Challenge
 ===================
+update so you must sign in before you can add a post
 
-
-
+http://postimg.org/image/h38lf4gyx/
 
 ### Instructions
 
@@ -23,6 +23,10 @@ Go to `localhost:3000`.
 then you have the instagram clone to play with, start by signing up
 then you can upload images with a text of your chose.
 
+Things i did not complete
+
+I would have liked to add a comment section were you can have your say on a picture
+I would have all so liked to add a like button, but as always this was a weekend challenge and ran out of time.
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
 * Feel free to use Google, your notes, books, etc., but work on your own
