@@ -2995,3 +2995,310 @@ Processing by PostsController#index as HTML
   [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 6]]
 Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.6ms)
   [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-12-29 12:07:49 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 5283ms (Views: 5266.2ms | ActiveRecord: 1.4ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "posts" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "flower"], ["created_at", "2015-12-29 12:07:54.789826"], ["updated_at", "2015-12-29 12:07:54.789826"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-12-29 12:07:54 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "flower"], ["created_at", "2015-12-29 12:07:54.810959"], ["updated_at", "2015-12-29 12:07:54.810959"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-12-29 12:07:54 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.6ms)
+Started GET "/posts/56/edit" for 127.0.0.1 at 2015-12-29 12:07:54 +0000
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"56"}
+  [1m[35mPost Load (33.7ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 56]]
+  Rendered posts/edit.html.erb within layouts/application (35.6ms)
+Completed 200 OK in 94ms (Views: 39.2ms | ActiveRecord: 33.7ms)
+Started PATCH "/posts/56" for 127.0.0.1 at 2015-12-29 12:07:54 +0000
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"name"=>"roses"}, "commit"=>"Update Post", "id"=>"56"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 56]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.9ms)[0m  [1mUPDATE "posts" SET "name" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["name", "roses"], ["updated_at", "2015-12-29 12:07:54.932533"], ["id", 56]]
+  [1m[35m (1.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 10ms (ActiveRecord: 2.5ms)
+Started GET "/posts" for 127.0.0.1 at 2015-12-29 12:07:54 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (1.9ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 7ms (Views: 3.9ms | ActiveRecord: 2.7ms)
+  [1m[36m (3.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "posts" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "flower"], ["created_at", "2015-12-29 12:07:54.975944"], ["updated_at", "2015-12-29 12:07:54.975944"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-12-29 12:07:54 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (4.8ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (1.9ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 16ms (Views: 8.2ms | ActiveRecord: 6.7ms)
+Started DELETE "/posts/57" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"57"}
+  [1m[35mPost Load (1.7ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 57]]
+  [1m[36m (1.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (2.1ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 57]]
+  [1m[36m (1.4ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 11ms (ActiveRecord: 6.6ms)
+Started GET "/posts" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (10.8ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 14ms (Views: 2.6ms | ActiveRecord: 10.8ms)
+  [1m[36m (5.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.4ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/shared/_links.html.erb (12.0ms)
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/registrations/new.html.erb within layouts/application (35.6ms)
+Completed 200 OK in 69ms (Views: 52.4ms | ActiveRecord: 1.9ms)
+Started POST "/users" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (1.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$L2jvzP68mmQV6Z0t9oC1Huw06FgIQrE8iZoYgqosFewAKmf94ppG2"], ["created_at", "2015-12-29 12:07:55.212993"], ["updated_at", "2015-12-29 12:07:55.212993"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-12-29 12:07:55.217626"], ["current_sign_in_at", "2015-12-29 12:07:55.217626"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-12-29 12:07:55.218488"], ["id", 25]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 51ms (ActiveRecord: 2.8ms)
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.2ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 25]]
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 25]]
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.7ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/shared/_links.html.erb (3.9ms)
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/registrations/new.html.erb within layouts/application (47.1ms)
+Completed 200 OK in 50ms (Views: 49.1ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$rAUzqAL8iYF6s1RctNGgG.1sdtmo/Oit7ihRJtv5ube32mDSZiEgW"], ["created_at", "2015-12-29 12:07:55.327984"], ["updated_at", "2015-12-29 12:07:55.327984"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-12-29 12:07:55.330075"], ["current_sign_in_at", "2015-12-29 12:07:55.330075"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-12-29 12:07:55.330828"], ["id", 26]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 11ms (ActiveRecord: 1.5ms)
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.3ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 26]]
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.7ms)
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:07:55 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 26]]
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2015-12-29 12:15:26 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 276ms (Views: 259.3ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "posts" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "flower"], ["created_at", "2015-12-29 12:15:26.591582"], ["updated_at", "2015-12-29 12:15:26.591582"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-12-29 12:15:26 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.7ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "flower"], ["created_at", "2015-12-29 12:15:26.614347"], ["updated_at", "2015-12-29 12:15:26.614347"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2015-12-29 12:15:26 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.6ms)
+Started GET "/posts/59/edit" for 127.0.0.1 at 2015-12-29 12:15:26 +0000
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"59"}
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-12-29 12:15:26 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/shared/_links.html.erb (20.5ms)
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/sessions/new.html.erb within layouts/application (76.1ms)
+Completed 200 OK in 111ms (Views: 93.3ms | ActiveRecord: 1.5ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "flower"], ["created_at", "2015-12-29 12:15:26.801142"], ["updated_at", "2015-12-29 12:15:26.801142"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2015-12-29 12:15:26 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 14ms (Views: 6.7ms | ActiveRecord: 0.6ms)
+Started DELETE "/posts/60" for 127.0.0.1 at 2015-12-29 12:15:26 +0000
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"60"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2015-12-29 12:15:26 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/shared/_links.html.erb (8.7ms)
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/sessions/new.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 21ms (Views: 19.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:15:26 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:15:26 +0000
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:15:26 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.3ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-12-29 12:15:26 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/shared/_links.html.erb (8.2ms)
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/registrations/new.html.erb within layouts/application (22.4ms)
+Completed 200 OK in 36ms (Views: 34.4ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-12-29 12:15:27 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$8YX2zX06v6733kuU0E4pKuOYDVaLO/kgZvJ39u295jvIlaqezvX5K"], ["created_at", "2015-12-29 12:15:27.052912"], ["updated_at", "2015-12-29 12:15:27.052912"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-12-29 12:15:27.055782"], ["current_sign_in_at", "2015-12-29 12:15:27.055782"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-12-29 12:15:27.056724"], ["id", 27]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 48ms (ActiveRecord: 2.1ms)
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:15:27 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.3ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 27]]
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.7ms)
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:15:27 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 27]]
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:15:27 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.3ms)
+Started GET "/users/sign_up" for 127.0.0.1 at 2015-12-29 12:15:27 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/shared/_links.html.erb (4.4ms)
+  Rendered /Users/jamierose/.rvm/gems/ruby-2.2.3/gems/devise-3.5.2/app/views/devise/registrations/new.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 13ms (Views: 12.4ms | ActiveRecord: 0.0ms)
+Started POST "/users" for 127.0.0.1 at 2015-12-29 12:15:27 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "user"=>{"email"=>"test@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'test@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["email", "test@example.com"], ["encrypted_password", "$2a$04$NGTGwf2X1DMK7oLqz5OGZuOlS99/3DaehNPQgXBdMl8a8ITtQ7xi2"], ["created_at", "2015-12-29 12:15:27.132633"], ["updated_at", "2015-12-29 12:15:27.132633"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "last_sign_in_ip" = $3, "current_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["last_sign_in_at", "2015-12-29 12:15:27.135618"], ["current_sign_in_at", "2015-12-29 12:15:27.135618"], ["last_sign_in_ip", "127.0.0.1/32"], ["current_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2015-12-29 12:15:27.136535"], ["id", 28]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/
+Completed 302 Found in 12ms (ActiveRecord: 1.6ms)
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:15:27 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 28]]
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.6ms)
+Started GET "/" for 127.0.0.1 at 2015-12-29 12:15:27 +0000
+Processing by PostsController#index as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.2ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 28]]
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.8ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
