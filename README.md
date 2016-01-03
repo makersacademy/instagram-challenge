@@ -1,36 +1,45 @@
 Instagram Challenge
 ===================
-update so you must sign in before you can add a post
+Some images.
+
+You must sign in before you can add a post.
 
 ![log in](public/images/login.png)
 
-home page to see other posts
+Home page to see other posts
 
 ![post](public/images/post.png)
 
 
 ### Instructions
 
+To use this app open terminal
+
 ```
-$ git clone http
+$ git clone https://github.com/jrose111284/instagram-challenge.git
 $ bundle
 $ bin/rake db:create
 $ bin/rake db:migrate
 $ rails s
 ```
 
-You need to have imagemagick to do stuff, install this by running
+You need to have imagemagick to use this app, install this by running
 ```
 $ brew install imagemagick
 ```
-Go to `localhost:3000`.
+Go to
 
-then you have the instagram clone to play with, start by signing up
-then you can upload images with a text of your chose.
+```
+localhost:3000
+```
 
-### Things i did not complete
+Start by signing up
+Then you can upload images with a text of your chose.
+enjoy
 
-I would have liked to add a comment section were you can have your say on a picture
+### Things i did not complete.
+
+I would have liked to add a comment section were you can have your say on a picture.
 I would have all so liked to add a like button, but as always this was a weekend challenge and ran out of time.
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
