@@ -1,4 +1,5 @@
-<p><%= @post.name %></p>
+<div id="container">
+<h1><%= @post.name %></h1>
 <%= image_tag @post.image.url(:medium) %>
 <h3> Comments: </h3>
 <% if @post.comments.any? %>
@@ -6,16 +7,14 @@
 	<% @post.comments.each do |comment| %>
 		<li>
 			<%= comment.message %>
-			<%= link_to "Edit Comment", edit_post_comment_path(@post,comment) %>
-			<%= link_to "Delete Comment", post_comment_path(@post,comment), method: :delete %>
+			<b id="controls">
+			<%= link_to "Edit", edit_post_comment_path(@post,comment) %>
+			<%= link_to "Delete", post_comment_path(@post,comment), method: :delete %>
+			</b>
 		</li>
 	<% end %>
 </ul>
 <% else %>
 	<p> No Comments yet! </p>
 <% end %>
-
-
-
-
-edit_post_comment
+</div>
