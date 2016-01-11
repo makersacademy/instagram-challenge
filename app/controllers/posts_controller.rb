@@ -44,11 +44,11 @@ class PostsController < ApplicationController
 	end
 
 	def post_creator?
-    @post = Post.find(params[:id])
-    unless current_user.id == @post.user_id
-      flash[:notice] = "You didn't post this"
-      redirect_to posts_path
-    end
+	 	@post = Post.find(params[:id])
+	  unless current_user.id == @post.user_id
+	    flash[:notice] = "You didn't post this"
+	    redirect_to posts_path
+	  end
   end
 
 	private 
