@@ -1,8 +1,11 @@
 # PXLZ
-## (A.K.A. Instagram Challenge)
+### (A.K.A. Instagram Challenge)
 
 ### Duration
 2 days
+
+### Live demo
+Coming soon...
 
 ### Approach
 
