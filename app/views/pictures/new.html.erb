@@ -1,0 +1,19 @@
+<% if @picture.errors.any? %>
+  <section id="errors" >
+    <h2> <%= pluralize(@picture.errors.count, "error") %> prohibited this picture from being saved: </h2>
+    <ul>
+      <% @picture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+<div class="login">
+  <div id="login-text"><h2>New post</h2>
+  <%= form_for @picture, html: {multipart: true} do |f| %>
+    <p><%= f.file_field :image %></p>
+    <p><%= f.label :caption %>
+    <%= f.text_field :caption %></p>
+    <p><%= f.submit %></p>
+  <% end %>
+</div>
