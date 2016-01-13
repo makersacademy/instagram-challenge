@@ -84,3 +84,6 @@ upload a new comment:
 * Ruby on Rails
 * PostgreSQL
 * TDD (via RSpec and Capybara)
+
+### Original challenge instructions
+[via the power of Git](https://github.com/forty9er/PXLZ/blob/058a4ce59abefb28c76cd10269ab8b200462bbf7/README.md)
