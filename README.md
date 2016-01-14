@@ -4,7 +4,7 @@ This is my solution to the sixth Makers Academy weekend challenge.
 
 The task was to build an Instagram clone using rails.
 
-![screenshot](http://i.imgur.com/zhNXeaQ.png)
+![screenshot](http://i.imgur.com/9RJvXxQ.png)
 
 ## Setup
 0. clone this repo
