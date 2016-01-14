@@ -1,26 +1,25 @@
-Instagram Challenge
-===================
+# Instagram (a.k.a Filterspam) challenge
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This is my solution to the sixth Makers Academy weekend challenge.
 
-Task
------
+The task was to build an Instagram clone using rails.
 
-Build Instagram: Simple huh!
+![screenshot](http://i.imgur.com/zhNXeaQ.png)
 
-Bonus if you can write your own set of sensible user stories!
+## Setup
+0. clone this repo
+0. install postgresql
+0. install imagemagick
+0. `bundle update`
+0. `bundle install`
 
-As usual please start by
+## Usage
+0. `createdb filterspam_development`
+0. `rake db:migrate RAILS_ENV=development`
+0. `rails s`
+0. visit http://localhost:3000 in your browser
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+## Running tests
+0. `createdb filterspam_test`
+0. `rake db:migrate RAILS_ENV=test`
+0. `rspec`
