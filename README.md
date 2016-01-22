@@ -1,26 +1,65 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This is a solution to a challenge given by Makers Academy on week 7, part of Learn to code in 12 weeks course.
 
-Task
------
+The aim of the challenge.
+-------------------------
 
-Build Instagram: Simple huh!
+Create an Instagram clone application using Ruby on Rails, JS, HTML and CSS.
 
-Bonus if you can write your own set of sensible user stories!
+The application needs to be driven by TDD and BDD by using RSpec or Cucumber.
 
-As usual please start by
+When the application is 100% functional, needs to be deployed to Heroku.
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+### Optional Extra
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Create a nice interactive animated interface with jQuery.
 
-Bonus if you can add filters!
+Create filters
+
+
+Technologies used
+-----------------
+
+  * Testing
+    * RSpec
+
+  * Back end framework
+    * JavaScript
+    * Rails
+
+  * Front end framework
+    * jQuery
+    * CSS
+    * Bootstrap
+
+
+    Setting up testing environment
+    ------------------------------
+
+    In order to edit, view or modify the source code, you will need to clone the repo shown below and execute the following commands to be functional.
+
+    ```sh
+    $ git clone git@github.com:Willibaur/instagram-challenge.git
+    $ cd instagram-challenge
+    $ bundle
+    ```
+
+    If you want to run all tests written previously, you need to execute:
+
+    ```sh
+    $ username/instagram-challenge/rspec
+    ```
+
+
+    Web access application
+    -----------------------
+
+    [![Build Status](https://travis-ci.org/Willibaur/instagram-challenge.svg?branch=master)](https://travis-ci.org/makers/instagram-challenge)
+
+
+    Contributors
+    ------------
+
+    * [William Bautista](https://github.com/Willibaur)
