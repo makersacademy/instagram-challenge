@@ -2,11 +2,11 @@
 
 Ruby on Rails, test driven with RSpec.
 
-Also using:
-Capybara, shoulda, factory_girl_rails for testing.
-HTML, CSS, JS and Jquery for front end.
-Postgresql database.
-Image upload using paperclip and hosting with Amazon S3.
+Also using:  
+* Capybara, shoulda, factory_girl_rails for testing.  
+* HTML, CSS, JS and Jquery for front end.  
+* Postgresql database.  
+* Image upload using paperclip and hosting with Amazon S3.
 
 ###Usage
 ```
