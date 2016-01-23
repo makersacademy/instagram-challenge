@@ -1,6 +1,46 @@
 Instagram Challenge
 ===================
 
+NB: This is not actually Instagram Challenge! I've attempted to build of my own
+project which has very similar requirements to Instagram (but would be immediately
+useful in my local community right now if it was an actual website!)
+
+The aim is to produce a database version of local baby activity listings websites
+such as these:
+
+http://www.edtots.co.uk/directory/monday
+
+http://se19kids.com/monday/
+
+
+User Stories (v1)
+------------
+```
+As a class provider
+So that I can promote my classes
+I would like to create an account & sign in
+
+As a class provider
+So that I can promote my classes
+I would like to create a listing for each of my classes
+  e.g. Day:           Monday
+       Time:          16:00
+       Suitable for:  Babies
+       Venue:         St Hilda's Church
+
+As a class provider
+So that people can recognise my brand
+I would like to attach an image of my logo to my account
+
+As a parent
+So that I can choose a class
+I would like to see a list of classes, ordered by time
+
+As a parent
+So that I can tell people what I think of a class
+I would like to be able to leave a review
+```
+
 Instructions
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
