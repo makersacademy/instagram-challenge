@@ -1,7 +1,13 @@
-<h2><%= @picture.title %></h2>
-<p><%= @picture.username %></p>
-<p><%= @picture.description %></p>
-<%= image_tag @picture.image.url(:medium) %>
-<hr>
-<%= link_to "Edit #{@picture.title}", edit_picture_path(@picture) %>
-<%= link_to "Delete #{@picture.title}", picture_path(@picture), method: :delete %>
+<article>
+  <header><a href=""><%= @picture.username %></a></header>
+  <figure style="background-image:url('<%= @picture.image.url(:original)%>')"></figure>
+  <section class="details">
+    <p class="likes">0 likes</p>
+    <ul class="comments">
+      <% unless @picture.description.empty? %>
+      <li><a href=""><%= @picture.username %></a> <%= @picture.description %></li>
+      <% end %>
+    </ul>
+    <hr>
+  </section>
+</article>

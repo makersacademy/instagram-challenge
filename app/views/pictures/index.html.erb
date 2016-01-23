@@ -1,16 +1,21 @@
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
-  <h2><%= link_to picture.title, picture_path(picture) %></h2>
-  <p><%= picture.username %></p>
-  <p><%= picture.description %></p>
-  <%= image_tag picture.image.url(:medium) %>
-  <%= link_to "Edit #{picture.title}", edit_picture_path(picture) %>
-  <%= link_to "Delete #{picture.title}", picture_path(picture), method: :delete %>
-  <hr>
+  <article>
+    <header><a href=""><%= picture.username %></a></header>
+    <a class="image" href="<%= picture_path(picture) %>">
+    <figure style="background-image:url('<%= picture.image.url(:original)%>')"></figure>
+    </a>
+    <section class="details">
+      <p class="likes">0 likes</p>
+      <ul class="comments">
+        <% unless picture.description.empty? %>
+        <li><a href=""><%= picture.username %></a> <%= picture.description %></li>
+        <% end %>
+      </ul>
+      <hr>
+    </section>
+  </article>
   <% end %>
 <% else %>
   No pictures yet
-<% end %>
-<% if user_signed_in? %>
-  <%= link_to 'Add a picture', new_picture_path() %>
 <% end %>
