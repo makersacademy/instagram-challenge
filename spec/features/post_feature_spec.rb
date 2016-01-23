@@ -21,4 +21,15 @@ feature 'posts' do
     end
   end
 
+  context 'creating posts' do
+    scenario 'promts a user to add a post then displays the post' do |variable|
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Caption', with: 'Birthday'
+      click_button 'Create Post'
+      expect(page).to have_content 'Birthday'
+      expect(current_path).to eq '/posts'
+    end
+  end
+
 end
