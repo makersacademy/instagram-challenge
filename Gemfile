@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'pg'
+gem 'paperclip'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -37,10 +38,6 @@ gem 'pg'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'capybara'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'database_cleaner'
 end
 
 group :development do
@@ -49,4 +46,11 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
