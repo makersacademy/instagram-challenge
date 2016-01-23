@@ -5,10 +5,23 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta charset="utf-8">
 </head>
 <body>
+
+  <% if user_signed_in? %>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% else %>
+  <%= link_to "Sign in", new_user_session_path %>
+  <%= link_to "Sign up", new_user_registration_path %>
+  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+<% end %>
+<br>
 <%= notice %>
 <%= yield %>
 
 </body>
+<br>
+<br>
+| © 2016 PhotoMapper created by Andrew Htun, while at <a href="http://www.makersacademy.com/" target="_blank">Makers Academy</a> | <a href="https://github.com/Htunny" target="_blank">GitHub</a> | <a href="https://htunnycodes.wordpress.com/" target="_blank">Blog</a> |
 </html>

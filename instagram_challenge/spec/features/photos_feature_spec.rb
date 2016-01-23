@@ -25,6 +25,12 @@ end
 context 'adding photos' do
   scenario 'prompts user to fill out a form, then displays the new photo' do
     visit '/photos'
+    click_link 'Sign up'
+    fill_in 'Email', with: 'steve@email.com'
+    fill_in 'Password', with: '12345678'
+    fill_in 'Password confirmation', with: '12345678'
+    click_button 'Sign up'
+    visit '/photos'
     click_link 'Add a photo'
     fill_in 'Caption', with: 'NYC'
     click_button 'Create Photo'
@@ -38,6 +44,12 @@ context 'viewing photos' do
   let!(:nyc){Photo.create(caption:'NYC')}
 
   scenario 'lets a user view a photo' do
+    visit '/photos'
+    click_link 'Sign up'
+    fill_in 'Email', with: 'steve@email.com'
+    fill_in 'Password', with: '12345678'
+    fill_in 'Password confirmation', with: '12345678'
+    click_button 'Sign up'
    visit '/photos'
    click_link 'NYC'
    expect(page).to have_content 'NYC'
@@ -51,8 +63,14 @@ context 'editing captions' do
   before { Photo.create caption: 'NYC' }
 
   scenario 'let a user edit a caption' do
+    visit '/photos'
+    click_link 'Sign up'
+    fill_in 'Email', with: 'steve@email.com'
+    fill_in 'Password', with: '12345678'
+    fill_in 'Password confirmation', with: '12345678'
+    click_button 'Sign up'
    visit '/photos'
-   click_link 'Edit NYC'
+   click_link 'Edit Caption'
    fill_in 'Caption', with: 'New York City'
    click_button 'Update Photo'
    expect(page).to have_content 'New York City'
@@ -67,6 +85,12 @@ context 'deleting photos' do
   before {Photo.create caption: 'NYC'}
 
   scenario 'removes a photo when a user clicks a delete link' do
+    visit '/photos'
+    click_link 'Sign up'
+    fill_in 'Email', with: 'steve@email.com'
+    fill_in 'Password', with: '12345678'
+    fill_in 'Password confirmation', with: '12345678'
+    click_button 'Sign up'
     visit '/photos'
     click_link 'Delete NYC'
     expect(page).not_to have_content 'NYC'
