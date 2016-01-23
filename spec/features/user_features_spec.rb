@@ -24,6 +24,14 @@ feature 'A user can sign in and out' do
       expect(current_path).to eq '/pictures'
 
     end
+
+    scenario 'can not sign up with duplicate username' do
+      sign_up
+      click_link 'Sign out'
+      sign_up(email: 'different@user.com')
+      expect(page).to have_content 'Username has already been taken'
+
+    end
   end
 
   context 'User signed in and on the homepage' do

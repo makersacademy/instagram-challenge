@@ -31,7 +31,7 @@ feature 'Leaving comments' do
 
     scenario 'comment can not be deleted if not the user\'s' do
       click_link 'Sign out'
-      sign_up(email: 'different@user.com')
+      sign_up(email: 'different@user.com', username: 'Different')
       visit '/pictures'
       click_link 'Delete comment'
       expect(page).to have_content 'What a fantastic cat'

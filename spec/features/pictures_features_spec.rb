@@ -46,7 +46,7 @@ feature 'Pictures' do
       sign_up
       post_a_picture
       click_link 'Sign out'
-      sign_up(email: 'another@user.com')
+      sign_up(email: 'another@user.com', username: 'Different')
       visit '/pictures'
       click_link 'Delete picture'
       expect(page).to have_content 'Sorry, you may only delete your own picture'

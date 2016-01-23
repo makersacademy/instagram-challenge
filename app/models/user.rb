@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
   has_many :pictures
   has_many :likes
   has_many :liked_pictures, through: :likes, source: :picture
+  validates :username, uniqueness: true
 
 end
