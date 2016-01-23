@@ -20,13 +20,13 @@ As a User
 So I can link up my web experience
 I want to sign in with Facebook
 
-As a User
+<!-- As a User
 So I can show off my instagrams
-I want to post a picture
+I want to post a picture -->
 
-As a User
+<!-- As a User
 So I can show off my instagrams
-I want to give my picture a title and description
+I want to give my picture a title and description -->
 
 As a User
 So I can improve my instagrams
