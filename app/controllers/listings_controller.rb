@@ -20,6 +20,8 @@ class ListingsController < ApplicationController
     end
   end
 
-
+  def show
+    @listings = Listing.where(user_id: params[:id])
+  end
 
 end
