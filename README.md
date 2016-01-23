@@ -52,3 +52,4 @@ Approach
 Further Work
 -------------
 * Edit picture
+* Linked hashtags
