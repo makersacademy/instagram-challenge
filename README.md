@@ -8,6 +8,10 @@ As a user,
 So I can make people jealous of my lifestyle
 I want to be able to upload pictures
 
+As a user,
+So I can prevent embarrassment,
+I want to be able to delete pictures
+
 As a service provider,
 To protect my users's privacy,
 I want to prevent non users from viewing users pictures.

@@ -22,13 +22,21 @@ feature 'pictures' do
 
   context 'creating pictures' do
     scenario 'prompts users to fill in a form and then displays their picture' do
-      visit '/pictures'
-      click_link 'Post a picture'
-      fill_in 'Title', with: 'My cat is awesome'
-      page.attach_file 'picture[image]', './spec/support/cat.jpg'
-      click_button 'Post picture'
+      post_a_picture
       visit '/pictures'
       expect(page).to have_css("img[src*='cat.jpg']")
     end
+  end
+
+  context 'deleting pictures' do
+    scenario 'clicking the delete link removes the picture' do
+      post_a_picture
+      visit '/pictures'
+      click_link 'Delete picture'
+      expect(page).not_to have_css("img[src*='cat.jpg']")
+      expect(page).not_to have_content('My cat is awesome')
+      expect(page).to have_content('Picture deleted successfully')
+    end
+
   end
 end
