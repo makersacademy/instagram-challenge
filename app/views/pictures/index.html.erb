@@ -1,0 +1,16 @@
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+  <h2><%= link_to picture.title, picture_path(picture) %></h2>
+  <p><%= picture.username %></p>
+  <p><%= picture.description %></p>
+  <%= image_tag picture.image.url(:medium) %>
+  <%= link_to "Edit #{picture.title}", edit_picture_path(picture) %>
+  <%= link_to "Delete #{picture.title}", picture_path(picture), method: :delete %>
+  <hr>
+  <% end %>
+<% else %>
+  No pictures yet
+<% end %>
+<% if user_signed_in? %>
+  <%= link_to 'Add a picture', new_picture_path() %>
+<% end %>

@@ -1,4 +1,5 @@
-Instagram [![Build Status](https://travis-ci.org/giamir/instagram-challenge.svg?branch=master)](https://travis-ci.org/giamir/instagram-challenge) [![Coverage Status](https://coveralls.io/repos/giamir/instagram-challenge/badge.svg?branch=master&service=github)](https://coveralls.io/github/giamir/instagram-challenge?branch=master)
+Instagram [![Build Status](https://travis-ci.org/giamir/instagram-challenge.svg?branch=master)](https://travis-ci.org/giamir/instagram-challenge) 
+[![Coverage Status](https://coveralls.io/repos/github/giamir/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/giamir/instagram-challenge?branch=master)
 =================
 
 Screenshot
