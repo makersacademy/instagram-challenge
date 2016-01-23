@@ -1,0 +1,21 @@
+= form_for @listing, html: {multipart: true} do |f|
+  = f.label :day
+  = f.text_field :day
+  %br
+  = f.label :"Start Time (hour, minutes)"
+  = f.text_field :hour
+  = f.text_field :mins
+  %br
+  = f.submit
+
+
+%hr
+
+- if @listing.errors.any?
+  %section#errors
+    %strong
+      = pluralize @listing.errors.count, "error"
+      Sorry this listing could not be saved:
+    %ul
+      - @restaurant.errors.full_messages.each do |message|
+        %li= message
