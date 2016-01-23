@@ -1,0 +1,13 @@
+.row
+  %h1 Your travel adventures
+  %p Collect all your travel photos into one simple place. Organize them by trip, pin photos on the map and share your journeys with the person you love
+.row
+  - if @photos.any?
+    - @photos.each do |photo|
+      - if current_user.owns?(photo)
+        = link_to 'Delete photo', photos_path(photo), method: :delete
+      = image_tag photo.image.url, class: 'img-rounded'
+      %p Likes
+      %p= "#{time_ago_in_words(photo.created_at)} ago"
+  - else
+    %p No photos yet!

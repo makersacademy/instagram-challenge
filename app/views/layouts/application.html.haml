@@ -1,5 +1,5 @@
 !!!
-  %html
+%html
   %head
     %title Travelgum!
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
@@ -7,7 +7,42 @@
     = csrf_meta_tags
 
   %body
-    %p.notice= notice
-    %p.alert= alert
-
-    = yield
+    %nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => photos_path} Travelgram
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a.btn.btn-primary{:href => new_photo_path} Upload
+            - if current_user
+              %li.dropdown
+                = image_tag current_user.avatar.url(:thumb), class: 'img-circle'
+                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}= current_user.email
+                %span.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "#"} My account
+                  %li
+                    %a= link_to "Log out", destroy_user_session_path, method: :delete
+            - else
+              %li
+                %a.btn.btn-default{:href => new_user_session_path} Log in
+              %li
+                %a.btn.btn-default{:href => new_user_registration_path} Sign up
+    .container-fluid
+      - if notice
+        .row
+          .alert.alert-success
+            %p.notice= notice
+      - if alert
+        .row
+          .alert.alert-warning
+            %p.alert= alert
+      = yield
+  %footer

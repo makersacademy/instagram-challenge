@@ -40,6 +40,8 @@ gem 'dotenv', '~> 2.1'
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 
+gem 'font-awesome-sass', '~> 4.5.0'
+
 gem 'devise', '~> 3.5', '>= 3.5.5'
 
 gem 'paperclip', '~> 4.3', '>= 4.3.2'
@@ -47,7 +49,7 @@ gem 'paperclip', '~> 4.3', '>= 4.3.2'
 gem 'aws-sdk', '< 2.0'
 
 group :development, :test do
-  gem "erb2haml"  
+  gem "erb2haml"
   gem 'byebug'
   gem 'rspec-rails', '~> 3.4'
   gem 'capybara', '~> 2.6'
