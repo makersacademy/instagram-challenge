@@ -7,22 +7,7 @@ feature '<<Pictures>>' do
       expect(page).to have_content 'There aren\'t any pictures here yet.'
       expect(page).to have_link 'Upload a picture...'
       end
-  end
 
-  context 'when pictures have been added' do
-
-    before do
-      Picture.create(title: 'Pirate Party!')
-    end
-
-  scenario 'it should display the pictures' do
-    visit '/pictures'
-    expect(page).to have_content 'Pirate Party!'
-    expect(page).not_to have_content 'There are\'nt any pictures here yet.'
-    end
-  end
-
-  context 'adding a picture' do
     scenario 'a user may upload a picture' do
       visit '/pictures'
       click_link 'Upload a picture...'
@@ -32,6 +17,26 @@ feature '<<Pictures>>' do
       click_button 'Create Picture'
       expect(current_path).to eq '/pictures'
       expect(page).to have_css "img[src*='pirates1.jpeg']"
+    end
+  end
+
+  context 'when pictures have been added' do
+
+    let!(:pic){Picture.create(title: 'Pirate Party!',
+                              caption: 'Nothing here...')}
+
+    scenario 'it should display the pictures' do
+      visit '/pictures'
+      expect(page).to have_content 'Pirate Party!'
+      expect(page).to have_css "img[src*='missing.jpeg']"
+      expect(page).not_to have_content 'There are\'nt any pictures here yet.'
+    end
+
+    scenario 'a user may view a picture' do
+      visit '/pictures'
+      click_link 'Pirate Party!'
+      expect(page).to have_content 'Nothing here...'
+      expect(current_path).to eq "/pictures/#{pic.id}"
     end
   end
 
