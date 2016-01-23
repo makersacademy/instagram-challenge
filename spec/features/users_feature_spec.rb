@@ -35,5 +35,24 @@ RSpec.feature 'Users Features' do
   end
 
   context 'when user is signed in' do
+    let!(:user) { FactoryGirl.create(:user) }
+    before(:each) { login_as(user, scope: :user) }
+
+    scenario 'they should see their name and the sign out link' do
+      visit '/'
+
+      expect(page).to have_link 'Sign Out'
+      expect(page).to have_content user.email
+    end
+
+    scenario 'they should be able to sign out' do
+      visit '/'
+      click_link 'Sign Out'
+
+      expect(page).to have_content 'Signed out successfully'
+      expect(page).to have_link 'Sign In'
+      expect(page).to have_link 'Sign Up'
+      expect(page).not_to have_link 'Sign Out'
+    end
   end
 end
