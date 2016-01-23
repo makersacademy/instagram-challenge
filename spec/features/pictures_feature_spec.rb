@@ -11,7 +11,7 @@ feature '<<Pictures>>' do
 
   context 'when pictures have been added' do
     before do
-      Picture.create(name: 'Pirate Party!')
+      Picture.create(title: 'Pirate Party!')
     end
 
     scenario 'it should display the pictures' do
