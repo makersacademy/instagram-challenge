@@ -1,0 +1,12 @@
+- if user_signed_in?
+  = link_to "Sign out", destroy_user_session_path, method: :delete
+
+
+- if @posts.any?
+  - @posts.each do |post|
+    %h3= post.caption
+- else
+  %h2 no posts yet mate!
+%br
+
+= link_to 'Chuck up a photo', new_post_path
