@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Picture, type: :model do
   it { should have_many :comments }
   it { should belong_to :user}
+  it { should have_many :likes }
 
   describe 'comments' do
     describe 'build_with_user' do

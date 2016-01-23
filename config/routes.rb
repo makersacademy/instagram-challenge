@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "home#index"
   resources :pictures do
-    resources :comments
+    resources :comments, :likes
   end
 
   resources :comments
