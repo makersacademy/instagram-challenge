@@ -1,6 +1,7 @@
 feature 'Leaving comments' do
 
   scenario 'allows a user to leave a comment using a form' do
+    sign_up
     post_a_picture
     leave_a_comment
     expect(current_path).to eq '/pictures'
@@ -8,10 +9,10 @@ feature 'Leaving comments' do
   end
 
   scenario 'comments are deleted if it\'s picture is deleted' do
+    sign_up
     post_a_picture
     leave_a_comment
     visit '/pictures'
-
     expect{ click_link 'Delete picture' }.to change{ Comment.count }.by(-1)
   end
 
