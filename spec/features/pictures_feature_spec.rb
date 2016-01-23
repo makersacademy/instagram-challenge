@@ -12,7 +12,9 @@ feature 'Pictures' do
     end
   end
 
-  context 'pictures have been posted' do
+  context 'posting pictures' do
+    let(:picture_description) { create :picture, :picture_description }
+    let!(:description) { create :picture, :description_only }
     scenario 'allows user to upload a picture' do
       visit '/pictures/'
       click_link 'Post a picture'
@@ -26,7 +28,12 @@ feature 'Pictures' do
       fill_in 'Description', with: 'My first picture!'
       page.attach_file('Image', Rails.root + 'spec/factories/test.jpg')
       click_button 'Post'
-      expect(page).to have_xpath("//img[contains(@src, \"thumb/test.jpg\")]")
+      expect(page).to have_xpath("//img[contains(@src, \"medium/test.jpg\")]")
+    end
+
+    scenario 'picture description can be viewed' do
+      visit '/pictures'
+      expect(page).to have_content(description.description)
     end
   end
 end

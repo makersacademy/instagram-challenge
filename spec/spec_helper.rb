@@ -90,3 +90,7 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+# FactoryGirl::SyntaxRunner.class_eval do
+#   include ActionDispatch::TestProcess
+# end

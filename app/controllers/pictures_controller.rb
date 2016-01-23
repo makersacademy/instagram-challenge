@@ -1,9 +1,6 @@
 class PicturesController < ApplicationController
   def index
-  end
-
-  def new
-    @picture = Picture.new
+    @pictures = Picture.all
   end
 
   def create
@@ -12,8 +9,16 @@ class PicturesController < ApplicationController
       redirect_to pictures_path
     else
       redirect_to pictures_new_path
-      flash[:error] = 'An error has occurred.'
+      flash[:notice] = 'An error has occurred.'
     end
+  end
+
+  def new
+    @picture = Picture.new
+  end
+
+  def show
+    @pictures = Picture.find(params[:id])
   end
 
   def picture_params
