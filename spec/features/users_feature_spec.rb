@@ -1,3 +1,4 @@
+require 'rails_helper'
 # As a user
 # So that I can post pictures on Instagram
 # I would like to create my own account
@@ -25,11 +26,7 @@ feature 'Users' do
   end
 
   scenario 'can sign out' do
-    visit '/'
-    click_button 'Sign in'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
+    sign_in(user.email, user.password)
     click_button 'Sign out'
     expect(page).to have_content 'Signed out successfully.'
   end

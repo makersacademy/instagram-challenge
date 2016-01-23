@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :username, uniqueness: true
   validates :email, uniqueness: true
+  has_many :pictures
 end
