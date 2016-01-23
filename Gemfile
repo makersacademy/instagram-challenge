@@ -43,6 +43,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'shoulda'
   gem 'rspec-collection_matchers'
+  gem 'devise'
 end
 
 group :development do
