@@ -41,6 +41,13 @@ So that I can tell people what I think of a class
 I would like to be able to leave a review
 ```
 
+
+TO DOs
+-----
+* Omniauth Facebook login
+
+
+
 Instructions
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
