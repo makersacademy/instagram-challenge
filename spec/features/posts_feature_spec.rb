@@ -4,9 +4,29 @@ RSpec.feature 'Posts Features' do
   context 'when no posts have been posted' do
     scenario 'there is a link to add an image and a prompt to start' do
       visit '/posts'
-      
+
       expect(page).to have_content 'No posts yet'
       expect(page).to have_link 'Create Post'
+    end
+  end
+
+  context 'creating a post' do
+    context 'while signed in' do
+      before(:each) do
+        user = FactoryGirl.create(:user)
+        login_as(user)
+      end
+
+      scenario 'a user can create a new post' do
+        visit '/posts'
+        click_link 'Create Post'
+        fill_in :description, with: 'A random cat'
+        attach_file :image, './spec/images/cat.png'
+        click_button 'Post It!'
+
+        expect(page).to have_css 'img[src*=\'cat.png\']'
+        expect(page).to have_content 'A random cat'
+      end
     end
   end
 end

@@ -36,7 +36,7 @@ RSpec.feature 'Users Features' do
 
   context 'when user is signed in' do
     let!(:user) { FactoryGirl.create(:user) }
-    before(:each) { login_as(user, scope: :user) }
+    before(:each) { login_as(user) }
 
     scenario 'they should see their name and the sign out link' do
       visit '/'
