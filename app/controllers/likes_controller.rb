@@ -7,8 +7,7 @@ class LikesController < ApplicationController
     if @like.save
       render json: { new_likes_count: @picture.likes.count }
     else
-      flash[:alert] = 'Sorry, you have already liked this picture'
-      redirect_to pictures_path
+      render json: { already_liked_message: 'Sorry, you have already liked this picture' }
     end
   end
 
