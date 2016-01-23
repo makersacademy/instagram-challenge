@@ -15,6 +15,14 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # NB: In production, :host should be set to the actual host of your application.
+  # If you are deploying on Heroku with Rails 3.2 only, you may want to set:
+  #
+  #     config.assets.initialize_on_precompile = false
+  #
+  #   On config/application.rb forcing your application to not access the DB
+  #   or load models when precompiling your assets.
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
