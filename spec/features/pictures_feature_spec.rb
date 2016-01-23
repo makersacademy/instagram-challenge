@@ -1,8 +1,12 @@
 require 'rails_helper'
 
 feature 'Pictures' do
-  let(:user) { create :user, :first }
   let(:user2) { create :user, :second }
+  let!(:user){User.create(name: 'Betty Draper', email: 'betty@drapers.com',
+                          username: 'bettydraper', password: 'janedoee',
+                          password_confirmation: 'janedoee')}
+  let(:picture) {Picture.create(description: 'My first picture!',
+                                user_id: user)}
   # As a user
   # So that I can use Instagram
   # I would like to post pictures on it
@@ -16,8 +20,6 @@ feature 'Pictures' do
   end
 
   context 'posting pictures' do
-    let(:picture_description) { create :picture, :picture_description }
-    let!(:description) { create :picture, :description_only }
     scenario 'allows user to upload a picture' do
       sign_in(user.email, user.password)
       visit '/pictures/'
@@ -37,8 +39,9 @@ feature 'Pictures' do
     end
 
     scenario 'picture description can be viewed' do
-      visit '/pictures'
-      expect(page).to have_content(description.description)
+      sign_in(user.email, user.password)
+      post_picture('My first picture!')
+      expect(page).to have_content('My first picture!')
     end
 
     # As a user

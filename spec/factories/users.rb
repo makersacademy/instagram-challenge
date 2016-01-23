@@ -2,6 +2,7 @@
 FactoryGirl.define do
   factory :user do
     trait :first do
+      name 'Betty Draper'
       username 'bettydraper'
       email 'betty@drapers.com'
       password 'bettylovesdon'
@@ -9,6 +10,7 @@ FactoryGirl.define do
     end
 
     trait :second do
+      name 'Don Draper'
       username 'dondraper'
       email 'don@drapers.com'
       password 'donloveswhisky'
