@@ -12,14 +12,17 @@ feature "Display listings" do
 
   context "listings have been added" do
     before do
-      Listing.create(day: "Monday", start_time: (10*60))
+      sign_up
+      add_listing
     end
 
     scenario "display listings" do
       visit "/listings"
       expect(page).to have_content("Monday 10:00")
+      expect(page).to have_content("Tippee Toes")
       expect(page).not_to have_content("No classes yet")
     end
+
   end
 
 

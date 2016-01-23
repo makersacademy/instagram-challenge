@@ -12,6 +12,7 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
+    current_user.listings << @listing
     if @listing.save
       redirect_to listings_path
     else

@@ -18,11 +18,9 @@ feature "Create listings" do
       sign_up
     end
 
-    scenario "prompts user to fill out a form, then displays the new listing" do
+    scenario "adds a class listing" do
       add_listing
-      expect(page).to have_content "Monday"
-      expect(page).to have_content "10:00"
-      expect(current_path).to eq "/listings"
+      expect(Listing.count).to eq(1)
     end
   end
 end
