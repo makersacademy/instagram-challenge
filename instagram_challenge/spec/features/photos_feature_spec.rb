@@ -45,4 +45,33 @@ context 'viewing photos' do
   end
 
 end
+
+context 'editing captions' do
+
+  before { Photo.create caption: 'NYC' }
+
+  scenario 'let a user edit a caption' do
+   visit '/photos'
+   click_link 'Edit NYC'
+   fill_in 'Caption', with: 'New York City'
+   click_button 'Update Photo'
+   expect(page).to have_content 'New York City'
+   expect(current_path).to eq '/photos'
+  end
+
+end
+
+
+context 'deleting photos' do
+
+  before {Photo.create caption: 'NYC'}
+
+  scenario 'removes a photo when a user clicks a delete link' do
+    visit '/photos'
+    click_link 'Delete NYC'
+    expect(page).not_to have_content 'NYC'
+    expect(page).to have_content 'Photo deleted successfully'
+  end
+
+end
 end
