@@ -1,5 +1,25 @@
 This is my solution to the Makers Academy Week 7 weekend challenge.
 
+As a user,
+So I can view people's pictures
+I want to be able to sign up
+
+As a service provider,
+To protect my users's privacy,
+I want to prevent non users from viewing users pictures.
+
+As a user,
+So I can make people jealous of my lifestyle
+I want to be able to upload pictures
+
+As a user,
+So I can let other users know what I think of their life,
+I want to be able to leave comments on their pictures
+
+As a user,
+So I don't have to use my words to express my appreciation of others pictures,
+I'd want to be able to 'like' other users pictures
+
 
 
 Instagram Challenge
