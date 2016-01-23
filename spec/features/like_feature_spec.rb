@@ -16,7 +16,7 @@ feature 'Likes' do
     visit '/pictures'
     click_link 'Like'
     expect{ click_link 'Like' }.not_to change{ Like.count }
-    expect(page).to have_content('Sorry, you can only like a picture once')
+    expect(page).to have_content('Sorry, you have already liked this picture')
   end
 
 end
