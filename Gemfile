@@ -13,7 +13,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "haml-rails"
 
 group :development do
-  gem 'spring'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
 end
