@@ -49,6 +49,13 @@ feature '<<Pictures>>' do
       expect(page).to have_content 'No party'
       expect(page).to have_css "img[src*='missing.jpeg']"
     end
+
+    scenario 'a user may delete their picture' do
+      visit '/pictures'
+      click_link 'Delete Pirate Party!'
+      expect(page).not_to have_content 'Pirate Party!'
+      expect(page).to have_content 'Picture deleted'      
+    end
   end
 
 end
