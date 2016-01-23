@@ -27,14 +27,14 @@ I want to post a picture -->
 <!-- As a User
 So I can show off my instagrams
 I want to give my picture a title and description -->
-
+<!--
 As a User
 So I can improve my instagrams
 I want to edit my own picture's title and description
 
 As a User
 So I can tidy my instagrams
-I want to delete my pictures
+I want to delete my pictures -->
 
 As a User
 So I can be sure my instagrams are safe
@@ -64,9 +64,9 @@ As a User
 So I can see the most popular pictures
 I want them to be ordered by likes on the home screen
 
-As a web owner
+<!-- As a web owner
 So my machine doesn't get full of pictures
-I want Amazon to store them for me
+I want Amazon to store them for me -->
 
 As a web developer
 So I can store the details
