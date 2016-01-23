@@ -25,7 +25,9 @@ group :development, :test do
   gem 'shoulda'
   gem 'rspec-collection_matchers'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'coveralls'
+  gem 'simplecov'
 end
 
 group :development do
