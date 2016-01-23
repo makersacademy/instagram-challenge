@@ -14,11 +14,13 @@ def leave_a_comment(words: 'What a fantastic cat' )
 end
 
 def sign_up(email: 'test@test.com',
+            username: 'Wynndow',
             password: 'password',
             password_confirmation: 'password')
   visit '/'
   click_link 'Sign up'
   fill_in 'Email', with: email
+  fill_in 'Username', with: username
   fill_in 'Password', with: password
   fill_in 'Password confirmation', with: password_confirmation
   click_button 'Sign up'

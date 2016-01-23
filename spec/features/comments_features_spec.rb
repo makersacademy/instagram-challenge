@@ -15,6 +15,13 @@ feature 'Leaving comments' do
 
   end
 
+  context 'displaying a comment' do
+
+    scenario 'shows users username before comment' do
+      expect(page).to have_content('Wynndow What a fantastic cat')
+    end
+  end
+
   context 'deleting comments' do
 
     scenario 'comment can be deleted' do
