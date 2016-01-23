@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  include ListingsHelper
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -7,7 +8,6 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    flash[:notice] = "You must be signed in to add a listing"
   end
 
   def create
@@ -19,10 +19,6 @@ class ListingsController < ApplicationController
     end
   end
 
-  def listing_params
-    @listing_params = params.require(:listing).permit(:day, :hour, :mins)
-    @listing_params[:start_time] = params[:listing][:hour].to_i*60 + params[:listing][:mins].to_i
-    return @listing_params
-  end
+
 
 end

@@ -45,6 +45,7 @@ I would like to be able to leave a review
 TO DOs
 -----
 * Omniauth Facebook login
+* Listing is dependent destroy on User
 
 
 

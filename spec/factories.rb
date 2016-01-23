@@ -3,16 +3,30 @@ FactoryGirl.define do  factory :endorsement do
   end
 
   factory :user do
-    email 'user@email.com'
+    sequence(:email, 1) { |n| "email#{n}@example.com" }
+    sequence(:provider_name, 1) { |n| "Provider#{n}" }
     password 'password1234'
     password_confirmation { "#{password}" }
   end
 
-  # factory :restaurant do
-  #   name 'KFC'
-  #   rating 3
-  #   association :user
-  # end
+  factory :invalid_user, class: User do
+    email "email"
+    provider_name ""
+    password "p"
+    password_confirmation ""
+  end
+
+  factory :listing_with_user do
+    day "Monday"
+    start_time { rand(420..1320) }
+    association :user
+  end
+
+  factory :listing_without_user do
+    day "Monday"
+    start_time { rand(420..1320) }
+    association :user
+  end
   #
   # factory :review do
   #   thoughts 'so so'
