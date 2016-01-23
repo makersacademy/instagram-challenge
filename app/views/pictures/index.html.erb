@@ -2,8 +2,8 @@
   <% @pictures.each do |picture| %>
     <%= image_tag picture.image.url(:medium) %>
     <h2><%= picture.title %></h2>
-    <h5><%= link_to 'Like', picture_likes_path(picture), method: :post%></h5>
-    <h5><%= pluralize picture.likes.count, 'like' %>
+    <h5><%= link_to 'Like', picture_likes_path(picture), class: 'like-link'%>
+    <span class="likes_count"><%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %> </h5>
     <h5><%= link_to 'Delete picture', picture_path(picture), method: :delete %></h5>
     <h5><%= link_to 'Comment', new_picture_comment_path(picture) %></h5>
     <% if picture.comments.any? %>

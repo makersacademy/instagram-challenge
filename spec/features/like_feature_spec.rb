@@ -5,7 +5,7 @@ feature 'Likes' do
     post_a_picture
   end
 
-  scenario 'a user can like a picture, which updates the likes count' do
+  scenario 'a user can like a picture, which updates the likes count', js: true do
     visit '/pictures'
     click_link 'Like'
     expect(Like.count).to eq 1
