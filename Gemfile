@@ -26,14 +26,17 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml-rails'
 
 group :test do
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :development, :test do
   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'faker'
 end
 
 group :development do

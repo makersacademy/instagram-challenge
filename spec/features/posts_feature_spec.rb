@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Posts' do
+RSpec.feature 'Posts Features' do
   context 'when no posts have been posted' do
     scenario 'there is a link to add an image and a prompt to start' do
       visit '/posts'
