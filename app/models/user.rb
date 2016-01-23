@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
   validates :email, uniqueness: true
   has_many :pictures
+  has_many :comments
+  has_many :commented_pictures, through: :comments, source: :pictures
 end

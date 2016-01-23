@@ -6,7 +6,7 @@ FactoryGirl.define do
     end
 
     trait :picture_description do
-      file { fixture_file_upload 'test.jpg', 'image/jpg' }
+      file { fixture_file_upload './spec/factories/test.jpg', 'image/jpg' }
       description 'My posted picture'
     end
 

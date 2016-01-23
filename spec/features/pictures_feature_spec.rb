@@ -1,10 +1,10 @@
-require 'rails_helper'
+  require 'rails_helper'
 
 feature 'Pictures' do
   let(:user2) { create :user, :second }
   let!(:user){User.create(name: 'Betty Draper', email: 'betty@drapers.com',
-                          username: 'bettydraper', password: 'janedoee',
-                          password_confirmation: 'janedoee')}
+                          username: 'bettydraper', password: 'pigeons123',
+                          password_confirmation: 'pigeons123')}
   let(:picture) {Picture.create(description: 'My first picture!',
                                 user_id: user)}
   # As a user

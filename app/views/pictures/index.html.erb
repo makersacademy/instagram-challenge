@@ -3,8 +3,18 @@
 <% @pictures.each do |picture| %>
   <%= image_tag picture.image.url(:medium) %>
   <br>
-  <%= link_to 'Delete', picture_path(picture), method: :delete %>
-  <%= link_to picture.user.username, '#' %>
   <%= picture.description %>
   <br>
+  <%= link_to picture.user.username, '#' %> |
+  <%= link_to 'Delete', picture_path(picture), method: :delete %>
+  <%= link_to 'Comment', new_picture_comment_path(picture) %>
+  <br>
+  <strong>Comments</strong>
+  <br>
+  <% if picture.comments.any? %>
+    <%= picture.comments.each do |comment| %>
+    <strong><%= comment.user.username %></strong> <%= comment.comment %>
+    <% end %>
+  <% end %>
+  <p>
 <% end %>
