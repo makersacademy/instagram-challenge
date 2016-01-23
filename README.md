@@ -51,4 +51,4 @@ Approach
 
 Further Work
 -------------
-*
+* Edit picture
