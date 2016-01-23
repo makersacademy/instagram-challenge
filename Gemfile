@@ -9,7 +9,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'spring', '<= 1.11.0'
 
 gem 'haml-rails'
 gem 'paperclip'
@@ -17,6 +16,7 @@ gem 'paperclip'
 group :development do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
+	gem 'spring', '<= 1.2.0'
 end
 
 group :test do
