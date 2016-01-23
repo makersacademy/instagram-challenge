@@ -28,10 +28,10 @@ feature '<<Pictures>>' do
       click_link 'Upload a picture...'
       fill_in 'Title', with: 'Pirate Party!'
       fill_in 'Caption', with: 'Ahoy!'
-      attach_file 'Image', Rails.root.join('./spec/files/missing.jpeg')
-      click_button 'Create picture'
+      attach_file 'Image', Rails.root.join('spec/files/pirates1.jpeg')
+      click_button 'Create Picture'
       expect(current_path).to eq '/pictures'
-      expect(page).to have_css "img[src*='missing.jpeg']"
+      expect(page).to have_css "img[src*='pirates1.jpeg']"
     end
   end
 
