@@ -24,3 +24,10 @@ As usual please start by
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
 Bonus if you can add filters!
+
+
+User stories
+--------------------------------------------------------------------------------
+User must be logged in to Instagram to view content
+
+Home page will display photos
