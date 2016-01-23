@@ -9,8 +9,10 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'spring', '<= 1.11.0'
 
-gem "haml-rails"
+gem 'haml-rails'
+gem 'paperclip'
 
 group :development do
   gem 'byebug'
@@ -24,5 +26,3 @@ group :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
 end
-
-

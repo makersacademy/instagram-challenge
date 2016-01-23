@@ -1,2 +1,7 @@
-No photos yet!
-%a(href='#') Upload a photo
+- if @photos.any?
+  - @photos.each do |photo|
+    = link_to(image_tag(photo.image.url(:thumb)), photo_path(photo))
+- else
+  %h1 No photos yet!
+
+= link_to 'Upload a photo', new_photo_path

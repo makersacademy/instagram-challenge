@@ -12,7 +12,7 @@ Also using:
 ```
 git clone https://github.com/hibreez/instagram-challenge.git
 cd instagram-challenge
-bundle
+bundle install
 bin/rake db:setup
 bin/rails s
 open http://localhost:3000
@@ -24,6 +24,10 @@ open http://localhost:3000
 As a user
 So that I can be indentified when I use the site
 I'd like to sign up
+
+As a time-pressed user
+So that I can sign up quickly
+I'd like to sign up through Facebook
 
 As a user
 So that I can make posts as myself
