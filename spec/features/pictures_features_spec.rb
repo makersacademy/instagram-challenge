@@ -41,6 +41,16 @@ feature 'Pictures' do
       expect(page).not_to have_content('My cat is awesome')
       expect(page).to have_content('Picture deleted successfully')
     end
+
+    scenario 'user can not delete others pictures' do
+      sign_up
+      post_a_picture
+      click_link 'Sign out'
+      sign_up(email: 'another@user.com')
+      visit '/pictures'
+      click_link 'Delete picture'
+      expect(page).to have_content 'Sorry, you may only delete your own picture'
+    end
   end
 
   context 'viewing pictures' do

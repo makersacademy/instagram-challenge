@@ -11,18 +11,23 @@ class PicturesController < ApplicationController
   end
 
   def create
-    Picture.create(restaurant_params)
+    Picture.create_with_user(picture_params, current_user)
     redirect_to pictures_path
   end
 
   def destroy
     @picture = Picture.find(params[:id])
-    @picture.destroy
-    flash[:notice] = 'Picture deleted successfully'
-    redirect_to pictures_path
+    if @picture.user == current_user
+      @picture.destroy
+      flash[:notice] = 'Picture deleted successfully'
+      redirect_to pictures_path
+    else
+      flash[:notice] = 'Sorry, you may only delete your own picture'
+      redirect_to pictures_path
+    end
   end
 
-  def restaurant_params
+  def picture_params
     params.require(:picture).permit(:title, :image)
   end
 end
