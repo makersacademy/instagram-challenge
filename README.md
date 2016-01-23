@@ -1,3 +1,7 @@
+This is my solution to the Makers Academy Week 7 weekend challenge.
+
+
+
 Instagram Challenge
 ===================
 
