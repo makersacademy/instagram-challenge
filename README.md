@@ -12,13 +12,14 @@ As a user,
 So I can prevent embarrassment,
 I want to be able to delete pictures
 
-As a service provider,
-To protect my users's privacy,
-I want to prevent non users from viewing users pictures.
 
 As a user,
 So I can let other users know what I think of their life,
 I want to be able to leave comments on their pictures
+
+As a service provider,
+To protect my users's privacy,
+I want to prevent non users from viewing users pictures.
 
 As a user,
 So I don't have to use my words to express my appreciation of others pictures,

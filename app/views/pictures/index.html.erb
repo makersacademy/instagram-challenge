@@ -1,9 +1,18 @@
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
     <%= image_tag picture.image.url(:medium) %>
-
     <h2><%= picture.title %></h2>
     <h5><%= link_to 'Delete picture', picture_path(picture), method: :delete %></h5>
+    <h5><%= link_to 'Comment', new_picture_comment_path(picture) %></h5>
+    <% if picture.comments.any? %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+          <li> <%= comment.words %> </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h5>No comments. Yet...</h5>
+    <% end %>
     <br>
   <% end %>
 <% else %>

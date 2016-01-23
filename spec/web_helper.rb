@@ -5,3 +5,10 @@ def post_a_picture
   page.attach_file 'picture[image]', './spec/support/cat.jpg'
   click_button 'Post picture'
 end
+
+def leave_a_comment(words: 'What a fantastic cat' )
+  visit '/pictures'
+  click_link 'Comment'
+  fill_in 'comment[words]', with: words
+  click_button 'Post comment'
+end
