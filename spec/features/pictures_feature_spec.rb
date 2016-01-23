@@ -1,4 +1,5 @@
 require 'rails_helper'
+img = Rack::Test::UploadedFile.new('spec/files/pirates1.jpeg', 'image/jpg')
 
 feature '<<Pictures>>' do
   context 'when no pictures have been added' do
@@ -23,12 +24,13 @@ feature '<<Pictures>>' do
   context 'when pictures have been added' do
 
     let!(:pic){Picture.create(title: 'Pirate Party!',
-                              caption: 'Nothing here...')}
+                              caption: 'Nothing here...',
+                              image: img)}
 
-    scenario 'it should display the pictures' do
+    scenario 'all pictures should be visible' do
       visit '/pictures'
       expect(page).to have_content 'Pirate Party!'
-      expect(page).to have_css "img[src*='missing.jpeg']"
+      expect(page).to have_css "img[src*='pirates1.jpeg']"
       expect(page).not_to have_content 'There are\'nt any pictures here yet.'
     end
 
@@ -54,7 +56,24 @@ feature '<<Pictures>>' do
       visit '/pictures'
       click_link 'Delete Pirate Party!'
       expect(page).not_to have_content 'Pirate Party!'
-      expect(page).to have_content 'Picture deleted'      
+      expect(page).to have_content 'Picture deleted'
+    end
+  end
+
+  context 'creating pictures' do
+    scenario 'does not accept pictures without a title' do
+      visit '/pictures'
+      click_link 'Upload a picture...'
+      click_button 'Create Picture'
+      expect(page).to have_content 'error'
+    end
+
+    scenario 'does not accept pictures without an image' do
+      visit '/pictures'
+      click_link 'Upload a picture...'
+      fill_in 'Title', with: 'Pic'
+      click_button 'Create Picture'
+      expect(page).to have_content 'error'
     end
   end
 

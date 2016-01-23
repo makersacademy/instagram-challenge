@@ -1,2 +1,11 @@
 %h3 Create a new picture
+-if @picture.errors.any?
+  %section#errors
+    %strong
+      = pluralize @picture.errors.count, "error"
+      stopped this picture being created
+    %ul
+      - @picture.errors.full_messages.each do |message|
+        %li= message
+
 = render "form"

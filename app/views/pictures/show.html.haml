@@ -1,4 +1,8 @@
 %h1= @picture.title
 = image_tag(@picture.image.url(:medium))
 %h3= @picture.caption
+-if @picture.comments.any?
+  -@picture.comments.each do |comment|
+    %p= comment.message
+
 = link_to "Post a comment...", new_picture_comment_path(@picture)
