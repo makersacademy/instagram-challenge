@@ -38,6 +38,17 @@ feature '<<Pictures>>' do
       expect(page).to have_content 'Nothing here...'
       expect(current_path).to eq "/pictures/#{pic.id}"
     end
+
+    scenario 'a user may edit their picture' do
+      visit '/pictures'
+      click_link 'Edit Pirate Party!'
+      fill_in 'Title', with: 'No party'
+      fill_in 'Caption', with: 'not any more'
+      attach_file 'Image', Rails.root.join('spec/files/missing.jpeg')
+      click_button 'Update Picture'
+      expect(page).to have_content 'No party'
+      expect(page).to have_css "img[src*='missing.jpeg']"
+    end
   end
 
 end
