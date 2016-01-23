@@ -1,10 +1,13 @@
 class ListingsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @listings = Listing.all
   end
 
   def new
     @listing = Listing.new
+    flash[:notice] = "You must be signed in to add a listing"
   end
 
   def create
