@@ -16,7 +16,7 @@ gem 'paperclip'
 group :development do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
-	gem 'spring'
+  gem 'spring', '1.2.0'
 end
 
 group :test do
