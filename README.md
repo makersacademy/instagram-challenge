@@ -36,6 +36,22 @@ I would like to write a comment on a picture
 As a user
 So that I can show my appreciation for a picture
 I would like to 'like' a picture
+
+As a user
+So that I can remove one of my posted pictures
+I would like to delete a picture
+
+As a user
+So that I can change one of my posted pictures
+I would like to edit a picture
+
+As a user
+So that I can see pictures posted by other users
+I would like to see all users' pictures on the homepage
+
+As a user
+So that I can see one user's pictures
+I would like to view all of a user's pictures on one page
 ```
 
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
