@@ -24,11 +24,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'haml-rails'
+gem 'devise'
 
 group :test do
   gem 'capybara'
   gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
   gem 'poltergeist'
   gem 'database_cleaner'
 end
@@ -37,6 +37,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'faker'
+  gem 'factory_girl_rails'
 end
 
 group :development do
