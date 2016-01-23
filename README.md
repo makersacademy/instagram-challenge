@@ -4,13 +4,13 @@ As a user,
 So I can view people's pictures
 I want to be able to sign up
 
-As a service provider,
-To protect my users's privacy,
-I want to prevent non users from viewing users pictures.
-
 As a user,
 So I can make people jealous of my lifestyle
 I want to be able to upload pictures
+
+As a service provider,
+To protect my users's privacy,
+I want to prevent non users from viewing users pictures.
 
 As a user,
 So I can let other users know what I think of their life,
