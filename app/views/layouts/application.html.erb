@@ -7,9 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= notice %>
+  <% if user_signed_in? %>
+    <p><%= current_user.name %></p>
+    <%= form_tag(destroy_user_session_path, method: 'delete') do %>
+      <%= submit_tag("Sign out") %>
+    <% end %>
+  <% else %>
+    <%= form_tag(new_user_session_path) do %>
+    <%= submit_tag("Sign in") %>
+    <% end %>
+    <%= form_tag(new_user_registration_path, method: 'get') do %>
+    <%= submit_tag("Sign up") %>
+    <% end %>
+  <% end %>
 
-<%= yield %>
-<%= notice %>
+
+
+  <%= yield %>
 
 </body>
 </html>
