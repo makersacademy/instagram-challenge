@@ -12,6 +12,18 @@ feature 'A user can sign in and out' do
       visit '/'
       expect(page).not_to have_link 'Sign out'
     end
+
+    scenario 'Signing in from home page takes user to /pictures' do
+      sign_up
+      click_link 'Sign out'
+      visit '/'
+      click_link 'Sign in'
+      fill_in 'user[email]', with: 'test@test.com'
+      fill_in 'user[password]', with: 'password'
+      click_button 'Log in'
+      expect(current_path).to eq '/pictures'
+
+    end
   end
 
   context 'User signed in and on the homepage' do
@@ -36,6 +48,5 @@ feature 'A user can sign in and out' do
       expect(page).not_to have_link 'Sign in'
       expect(page).not_to have_link 'Sign up'
     end
-
   end
 end
