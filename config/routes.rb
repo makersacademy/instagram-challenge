@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :posts, shallow: true do
+    resources :ticks
     resources :comments do
       resources :likes
     end
