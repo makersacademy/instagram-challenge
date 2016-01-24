@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :pictures
   has_many :comments
   has_many :likes
+  has_many :liked_pictures, through: :likes, source: :pictures
+  has_many :commented_pictures, through: :comments, source: :pictures
 
   validates :user_name, presence: true
 

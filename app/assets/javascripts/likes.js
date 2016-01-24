@@ -2,12 +2,12 @@ $(document).ready(function() {
 
   $('.likes-link').click(function(event){
     event.preventDefault();
-    // event.stopImmediatePropagation();
+    event.stopImmediatePropagation();
 
     var likeCount = $(this).siblings('.likes_count');
 
     $.post(this.href, function(response){
       likeCount.text(response.new_like_count);
-  });
+    });
   });
 });

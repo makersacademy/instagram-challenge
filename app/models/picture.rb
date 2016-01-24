@@ -22,4 +22,10 @@ class Picture < ActiveRecord::Base
     return comment
   end
 
+  def build_like(user)
+    like = likes.new(picture_id: self.id)
+    like.user_id = user.id
+    return like
+  end
+
 end
