@@ -58,6 +58,7 @@ I'd like to be able to delete them
 ```
 
 #####Likes/Comments
+```
 As a user
 So that I can easily show approval
 I'd like to be able to 'like' an image
