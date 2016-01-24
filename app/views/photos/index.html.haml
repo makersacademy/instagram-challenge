@@ -1,2 +1,10 @@
-No photos uploaded yet!
-%a(href='#') Upload a photo
+-# %a(href='#') Upload a photo
+-# @photos
+
+
+- if @photos.any?
+  - @photos.each do |photo|
+    = image_tag photo.image.url(:medium)
+    %p.caption= photo.caption
+- else
+  %h2 No photos uploaded yet!
