@@ -30,6 +30,8 @@ group :development, :test do
   gem 'faker'
   gem 'coveralls'
   gem 'simplecov'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :development do

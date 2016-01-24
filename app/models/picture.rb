@@ -1,5 +1,9 @@
 class Picture < ActiveRecord::Base
   belongs_to :user
+  has_many :comments,
+           -> { extending WithUserAssociationExtension },
+           dependent: :destroy
+
   delegate :username, to: :user
 
   validates :image, presence: true

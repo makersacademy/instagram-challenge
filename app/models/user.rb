@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
 
   has_many :pictures, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validate :validate_username
