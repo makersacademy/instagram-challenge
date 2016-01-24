@@ -27,6 +27,7 @@ Technologies used
 
   * Testing
     * RSpec
+    * Capybara
 
 
   * Back end framework
