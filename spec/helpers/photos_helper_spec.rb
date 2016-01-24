@@ -17,5 +17,5 @@ end
 def upload_photo(path: 'spec/fixtures/city.jpg')
   click_link 'Upload'
   attach_file "photo_image", path
-  click_button 'Upload'
+  find('input[type=submit]').click
 end

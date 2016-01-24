@@ -7,7 +7,7 @@ feature 'Liking photos' do
     upload_photo
   end
 
-  xit 'a user is able to like a photo', js: true do
+  it 'a user is able to like a photo', js: true do
     find(".fa-heart-o").click
     sleep(1)
     expect(page).to have_content "1"

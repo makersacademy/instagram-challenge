@@ -14,7 +14,7 @@ feature 'Uploading photoes' do
       sign_up(username: 'allimac',email: 'camilla@email.com', password: 'pass1234')
     end
 
-    scenario 'a user can upload a photo to his account' do
+    scenario 'a user can upload a photo' do
       visit '/'
       upload_photo
       expect(page).to have_css('img', 'city.jpg')
@@ -28,7 +28,7 @@ end
 feature 'Viewing and deleting photoes' do
 
   context 'when no photos have been uploaded yet' do
-    scenario 'if there are no photos' do
+    scenario 'no photos are shown' do
       visit '/'
       expect(page).to have_content 'No photos yet!'
       expect(page).not_to have_css('img')
@@ -55,7 +55,7 @@ feature 'Viewing and deleting photoes' do
       expect(page).not_to have_css('img-rounded', 'city.jpg')
     end
 
-    scenario 'another user is not allowed to delete somebody\'s elses photo' do
+    scenario 'another user is not allowed to delete his photo' do
       visit '/'
       click_link 'allimac'
       click_link 'Log out'

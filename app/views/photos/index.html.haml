@@ -1,15 +1,27 @@
 - if @photos.any?
   - @photos.each do |photo|
     .row
-      .col-md-12
-        = image_tag photo.image.url, class: 'img-rounded'
-      .row
-        .col-md-12
-          = link_to icon('heart-o'), photo_likes_path(photo), method: :post, class: 'like-link'
-          %p.likes-count= photo.likes.count
-          - if current_user && current_user.owns?(photo)
-            = link_to 'Delete photo', photo_path(photo), method: :delete
+      .ul.list-group
+        .li.list-group-item
           %p.small= "#{time_ago_in_words(photo.created_at)} ago"
           %p= "by #{photo.username}"
+        .li.list-group-item
+          = image_tag photo.image.url, class: 'img-rounded'
+        .li.list-group-item
+          = link_to icon('heart-o'), photo_likes_path(photo), method: :post, class: 'like-link'
+          %span.likes-count photo.likes.count
+        .li.list-group-item
+          - if current_user && current_user.owns?(photo)
+            = link_to 'Delete photo', photo_path(photo), method: :delete
+        .li.list-group-item
+          .form-group
+            %input{:type=>"text"}
+
+        -# - if photo.comments.any?
+        -#   - comments.each do |comment|
+        -#     .li.list-group-item
+        -#       %p= comment.message
+        -#       %p= comment.username
+
 - else
   %p No photos yet!
