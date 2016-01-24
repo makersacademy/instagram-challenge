@@ -9,7 +9,6 @@ RSpec.feature '<<Comments>>' do
     visit '/pictures'
     click_link 'Pirate Party!'
     post_comment
-    expect(current_path).to eq "/pictures/#{pic.id}"
     expect(page).to have_content 'Arggh!'
   end
 
