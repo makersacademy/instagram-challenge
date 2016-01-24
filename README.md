@@ -38,16 +38,26 @@ So that others can't use my account
 I'd like to log out
 ```
 
-#####Content
+#####Photos
 ```
 As a user
 So that I can share my photos
-I'd like to upload images
+I'd like to upload images (✔)
 
 As a user
 So that I can make my photos look cool
 I'd like to be able to add filters to them
 
+As a user
+So that other users can see my photos
+I'd like to have a personal page to show them
+
+As a user
+So that I can curate my photos
+I'd like to be able to delete them
+```
+
+#####Likes/Comments
 As a user
 So that I can easily show approval
 I'd like to be able to 'like' an image
@@ -61,7 +71,7 @@ So that I can have a conversation about an image
 I'd like to be able to reply to comments
 
 As a user
-So that I can curate my posts 
+So that I can retract my comments 
 I'd like to be able to delete them
 ```
 

@@ -13,13 +13,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml-rails'
 gem 'paperclip'
 
-group :development do
+group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring', '1.2.0'
-end
 
-group :test do
   gem 'rspec-rails'
   gem 'rspec-collection_matchers' 
   gem 'capybara'
