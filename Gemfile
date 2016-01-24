@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml-rails'
 gem 'devise'
 gem 'paperclip'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 group :test do
   gem 'capybara'

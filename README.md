@@ -31,7 +31,9 @@ Bonus if you can add filters!
 * Add styling to the site
 * Extend the controllers to allow more actions (particularly on comments)
 * Add the ability to like comments
-* Add validations (there's currently almost none of these)
+* Add validations (there's currently almost none of these) to models
 * Extend feature specs to follow more user journeys and to avoid making use of Warden
 * Neaten up controller specs
+* Deploy to Heroku
+* Set paperclip to host images on S3
 * Work out how you're meant to write an instagram clone in a single weekend
