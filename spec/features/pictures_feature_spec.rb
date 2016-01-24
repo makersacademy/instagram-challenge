@@ -32,8 +32,9 @@ feature 'pictures' do
     scenario "the picture's page is deleted" do
       visit picture_path(@picture)
       click_link 'Delete this picture'
-      #visit picture_path(@picture)
-      expect(@picture).to be nil
+      visit picture_path(@picture)
+      expect(page.status_code).to be 200
+      #expect(@picture).to be nil
     end
   end
 end

@@ -1,8 +1,8 @@
 include ActionDispatch::TestProcess
 
 FactoryGirl.define do
-  factory :comment do
-    thoughts "What a cool picture!"
+  factory :user do
+    email "me@gmail.com"
+    password "instagram"
   end
-
 end
