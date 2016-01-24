@@ -28,3 +28,8 @@ def add_picture
   attach_file 'Image', Rails.root.join('spec/files/pirates1.jpeg')
   click_button 'Create Picture'
 end
+
+def visit_picture
+  visit '/pictures'
+  click_link 'Pirate Party!'
+end

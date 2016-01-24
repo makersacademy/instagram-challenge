@@ -15,6 +15,26 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = Comment.find(params[:id])
+    @picture = Picture.find(params[:picture_id])
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    @picture = Picture.find(params[:picture_id])
+    @comment.update(comment_params)
+    redirect_to picture_path(@picture)
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @picture = Picture.find(params[:picture_id])
+    @comment.delete
+    flash[:notice] = "Comment deleted"
+    redirect_to picture_path(@picture)
+  end
+
   private
 
   def comment_params

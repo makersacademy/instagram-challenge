@@ -8,4 +8,8 @@ class Comment < ActiveRecord::Base
     user.user_name
   end
 
+  def was_posted_by?(user)
+    user.id == self.user_id
+  end
+
 end
