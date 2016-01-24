@@ -27,17 +27,17 @@ feature 'photos' do
       expect(page).to have_content 'Please upload photo'
     end
   end
-  #
-  # context 'deleting photos' do
-  #   scenario 'user can remove photo by clicking delete button' do
-  #     upload_photo
-  #     click_button 'Delete photo'
-  #     expect(page).to have_content 'Chill...photo deleted'
-  #   end
+
+  context 'deleting photos' do
+    scenario 'user can remove photo by clicking delete button' do
+      upload_photo
+      click_link 'Delete photo'
+      expect(page).to have_content 'Chill...photo deleted'
+    end
   #
   #   scenario 'user cannot remove photos uploaded by other users' do
   #   end
-  # end
+  end
   #
   context 'editing photo upload' do
     scenario 'user can edit upload by clicking edit button' do
