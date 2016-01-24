@@ -7,19 +7,18 @@ describe Picture, type: :model do
   it { should validate_presence_of(:image) }
 
   describe '#build_comment' do
-    let(:user) {create :user, :first}
-    xit 'associates a comment with a user' do
-      picture = Picture.new({description: 'My picture',
-      image: Rack::Test::UploadedFile.new('spec/factories/test.jpg', 'images/jpg')})
+    it 'associates a comment with a user' do
+      user = FactoryGirl.create(:user, :first)
+      picture = FactoryGirl.create(:picture, user: user)
       comment_params = {comment: 'My comment'}
       comment = picture.build_comment(comment_params, user)
       comment.save
-      expect(comment).to eq user
+      expect(comment.user).to eq user
     end
 
     it 'returns a comment' do
-      picture = Picture.new({description: 'My picture',
-      image: Rack::Test::UploadedFile.new('spec/factories/test.jpg', 'images/jpg')})
+      user = FactoryGirl.create(:user, :first)
+      picture = FactoryGirl.create(:picture, user: user)
       comment_params = {comment: 'My comment'}
       comment = picture.build_comment(comment_params, user)
       comment.save

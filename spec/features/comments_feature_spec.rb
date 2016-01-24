@@ -5,11 +5,12 @@ feature 'Comments' do
   # I would like to write a comment on a picture
 
   context 'when signed in' do
-  let!(:user){User.create(name: 'Betty Draper', email: 'betty@drapers.com',
-                          username: 'bettydraper', password: 'pigeons123',
-                          password_confirmation: 'pigeons123')}
-    scenario 'a user can post a comment' do
+    before(:each) do
+      user = FactoryGirl.create(:user, :first)
       sign_in(user.email, user.password)
+    end
+
+    scenario 'a user can post a comment' do
       post_picture
       click_link 'Add a comment'
       fill_in 'Comment', with: 'A nice comment'
@@ -19,13 +20,8 @@ feature 'Comments' do
   end
 
   context 'when not signed in' do
-    let!(:user){User.create(name: 'Betty Draper', email: 'betty@drapers.com',
-                            username: 'bettydraper', password: 'pigeons123',
-                            password_confirmation: 'pigeons123')}
     scenario 'comments cannot be posted' do
-      sign_in(user.email, user.password)
-      post_picture
-      click_button 'Sign out'
+      picture = FactoryGirl.create(:picture, user: FactoryGirl.create(:user, :first))
       visit '/'
       click_link 'Add a comment'
       expect(page).to have_content 'Log in'

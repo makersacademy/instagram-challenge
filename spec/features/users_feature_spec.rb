@@ -3,7 +3,6 @@ require 'rails_helper'
 # So that I can post pictures on Instagram
 # I would like to create my own account
 feature 'Users' do
-  let(:user) { create :user, :first}
   scenario 'can sign up' do
     visit '/'
     click_button 'Sign up'
@@ -17,6 +16,7 @@ feature 'Users' do
   end
 
   scenario 'can sign in' do
+    user = FactoryGirl.create(:user, :first)
     visit '/'
     click_button 'Sign in'
     fill_in 'Email', with: user.email
@@ -26,6 +26,7 @@ feature 'Users' do
   end
 
   scenario 'can sign out' do
+    user = FactoryGirl.create(:user, :first)
     sign_in(user.email, user.password)
     click_button 'Sign out'
     expect(page).to have_content 'Signed out successfully.'
