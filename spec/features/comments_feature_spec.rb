@@ -5,10 +5,8 @@ RSpec.feature 'Comments Features' do
 
   context 'creating a comment' do
     context 'while signed in' do
-      before(:each) do
-        user = FactoryGirl.create(:user)
-        login_as(user)
-      end
+      let!(:user) { FactoryGirl.create(:user) }
+      before(:each) { login_as(user) }
 
       scenario 'a user can add a new comment to a post' do
         visit "/posts/#{post.id}"
@@ -18,6 +16,7 @@ RSpec.feature 'Comments Features' do
 
         expect(current_path).to eq post_path(post)
         expect(page).to have_content 'Hey I can write epic comments'
+        expect(page).to have_content "Posted by: #{user.email}"
       end
     end
   end
