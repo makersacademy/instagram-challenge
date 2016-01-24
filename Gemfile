@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.2.3'
-# require 'bundler/setup'
+require 'bundler/setup'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'rake'
+# gem 'rake'
 gem 'pg'
 gem 'paperclip'
 gem 'devise'
