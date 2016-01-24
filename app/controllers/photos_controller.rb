@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
 	def index
-		@photos = Photo.all.sort
+		@photos = Photo.all.sort_by { |p| p.created_at }.reverse
 	end
 
   def new

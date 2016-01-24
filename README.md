@@ -42,7 +42,7 @@ I'd like to log out
 ```
 As a user
 So that I can share my photos
-I'd like to upload images (✔)
+I'd like to upload images ✔
 
 As a user
 So that I can make my photos look cool
@@ -79,7 +79,7 @@ I'd like to be able to delete them
 ```
 As a user
 So that I can keep up with other users posts
-I'd like to see them all in reverse chronological order
+I'd like to see them all in reverse chronological order ✔
 
 As a user
 So that I can understand users posts in context
