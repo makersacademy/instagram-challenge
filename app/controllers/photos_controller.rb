@@ -9,7 +9,13 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.create(photo_params)
-    redirect_to photos_path
+    if @photo.save
+      flash[:notice] = 'Nice, photo uploaded'
+      redirect_to photos_path
+    else
+      flash[:alert] = 'Please upload photo'
+      render :new
+    end
   end
 
   def photo_params

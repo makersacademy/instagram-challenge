@@ -27,7 +27,11 @@ Bonus if you can add filters!
 
 
 User stories
---------------------------------------------------------------------------------
+-------------------------------------------------------
+User can sign up, and sign in with email or facebook
+
 User must be logged in to Instagram to view content
 
+
+Other Functionalities -------------------------------------------------------
 Home page will display photos
