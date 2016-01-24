@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PostsController do
+RSpec.describe PostsController, type: :controller do
   it { is_expected.to use_before_action(:authenticate_user!) }
 
   describe 'GET #index' do
@@ -50,9 +50,6 @@ RSpec.describe PostsController do
         post :create, post: FactoryGirl.attributes_for(:post_params)
         expect(response).to redirect_to posts_path
       end
-    end
-
-    context 'with invalid attributes' do
     end
   end
 

@@ -43,9 +43,6 @@ RSpec.describe CommentsController, type: :controller do
         expect(response).to redirect_to post_path(post_)
       end
     end
-
-    context 'with invalid attributes' do
-    end
   end
 
   describe 'PUT #update' do
