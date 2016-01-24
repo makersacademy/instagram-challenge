@@ -50,7 +50,24 @@ feature 'Can view individual posts' do
     attach_file('Image', "spec/files/images/maccabees.jpg")
     fill_in 'Caption', with: 'great gig last night'
     click_button 'Create Post'
-    visit '/posts/2'
+    visit '/posts/1'
     expect(page).to have_content('great gig last night')
+  end
+end
+
+feature 'Deleting posts' do
+  background do
+    visit '/'
+    click_link 'New Post'
+    attach_file('Image', "spec/files/images/maccabees.jpg")
+    fill_in 'Caption', with: 'great gig last night'
+    click_button 'Create Post'
+    visit '/posts/1'
+    click_link 'Edit Post'
+  end
+  scenario 'Can delete a single post' do
+    click_link 'Delete Post'
+    expect(page).to have_content('Problem solved!  Post deleted.')
+    expect(page).to_not have_content('Abs for days.')
   end
 end
