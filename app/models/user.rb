@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
       # user.image = auth.info.image # assuming the user model has an image
     end
   end
-  
+
 ################################### IS THIS METHOD NECESSARY??
   def self.new_with_session(params, session)
     super.tap do |user|

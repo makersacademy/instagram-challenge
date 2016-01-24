@@ -21,4 +21,20 @@ feature 'posts' do
     click_button('Create Post')
     expect(page).to have_content('This is my caption!')
   end
+
+  it 'allows users to edit posts' do
+    Post.create(caption: 'This is my caption baby!!')
+    sign_up
+    click_link 'Edit'
+    fill_in('Caption', with: 'My edited caption')
+    click_button('Update Post')
+    expect(page).to have_content('My edited caption')
+  end
+
+  it 'allows users to delete posts' do
+    Post.create(caption: 'This is my caption baby!!')
+    sign_up
+    click_link 'Delete'
+    expect(page).to_not have_content('This is my caption baby!!')
+  end
 end

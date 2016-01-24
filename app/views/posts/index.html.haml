@@ -5,6 +5,14 @@
 - if @posts.any?
   - @posts.each do |post|
     %h3= post.caption
+    = link_to 'Like', post_likes_path(post), class: 'likes-link'
+    %span.likes_count= post.likes.count
+    = 'like'.pluralize post.likes.count
+    =link_to 'Edit', edit_post_path(post)
+    =link_to 'Delete', post_path(post), method: :delete
+    - post.comments.all.each do |comment|
+      %h5= comment.text
+    = link_to 'Comment', new_post_comment_path(post)
 - else
   %h2 no posts yet mate!
 %br
