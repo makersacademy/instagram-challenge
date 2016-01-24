@@ -15,9 +15,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-    flash[:success] = 'Post deleted successfully'
+    post = Post.find(params[:id])
+    if post.created_by?(current_user)
+      post.destroy
+      flash[:success] = 'Post deleted successfully'
+    else
+      flash[:error] = 'Only the owner can delete a post'
+    end
     redirect_to posts_path
   end
 

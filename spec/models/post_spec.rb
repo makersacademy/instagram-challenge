@@ -16,12 +16,12 @@ RSpec.describe Post, type: :model do
 
     it 'returns true if post was created by the user' do
       post = FactoryGirl.create(:post, user: user)
-      expect(post.created_by? user).to be true
+      expect(post.created_by?(user)).to be true
     end
 
     it 'returns false if post was created by a different user' do
       post = FactoryGirl.create(:post)
-      expect(post.created_by? user).to be false
+      expect(post.created_by?(user)).to be false
     end
   end
 end

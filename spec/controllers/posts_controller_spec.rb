@@ -42,7 +42,6 @@ RSpec.describe PostsController do
     end
 
     context 'with invalid attributes' do
-
     end
   end
 
@@ -70,7 +69,25 @@ RSpec.describe PostsController do
     end
 
     context 'with invalid user' do
+      let!(:user) { FactoryGirl.create(:user) }
+      let!(:post) { FactoryGirl.create(:post) }
+      before(:each) { sign_in user }
 
+      it 'does not delete the post' do
+        expect do
+          delete :destroy, id: post
+        end.not_to change(Post, :count)
+      end
+
+      it do
+        delete :destroy, id: post
+        is_expected.to set_flash[:error].to 'Only the owner can delete a post'
+      end
+
+      it 'redirects to posts path' do
+        delete :destroy, id: post
+        expect(response).to redirect_to posts_path
+      end
     end
   end
 end
