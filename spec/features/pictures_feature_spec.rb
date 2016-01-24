@@ -34,7 +34,6 @@ feature 'pictures' do
       click_link 'Delete this picture'
       visit picture_path(@picture)
       expect(page.status_code).to be 200
-      #expect(@picture).to be nil
     end
   end
 end
