@@ -7,6 +7,11 @@ Rails.application.routes.draw do
 root 'posts#index'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  #
+  resources :posts do
+    resources :likes
+  end
+
   resources :posts do
     resources :comments
   end
