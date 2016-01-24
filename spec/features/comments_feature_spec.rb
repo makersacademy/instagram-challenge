@@ -1,8 +1,9 @@
 require 'rails_helper'
 img = Rack::Test::UploadedFile.new('spec/files/pirates1.jpeg', 'image/jpg')
 
-feature '<<Comments>>' do
+RSpec.feature '<<Comments>>' do
   let!(:pic) {Picture.create title:'Pirates', image: img}
+
   scenario 'users may comment on an image' do
     visit '/pictures'
     click_link 'Pirates'
