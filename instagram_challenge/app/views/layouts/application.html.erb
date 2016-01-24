@@ -1,50 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>InstagramChallenge</title>
+  <title>PhotoMapper</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <meta charset="utf-8">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="/public/css/styles.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/public/css/styles.css">
 </head>
 <body>
-  <div class="page-header">
-    <div class="container">
-      <div class="col-md-6">
-            <h1><a href="/photos">PhotoMapper</a></h1>
+  <div class="panel-header">
+    <div class="row">
+      <div class="col-md-7 text-left">
+        <% if user_signed_in? %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        <% else %>
+        <button class="btn btn-default btn-xs">
+          <%= link_to "Log In", new_user_session_path %>
+        </button>
+        <button class="btn btn-default btn-xs">
+          <%= link_to "Sign Up", new_user_registration_path %>
+        </button>
+        <button class="btn btn-default btn-xs">
+          <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+        </button>
+        <% end %>
+        <br>
+        <%= notice %>
+        <div class="col-md-6">
+          <h1><a href="/photos">PhotoMapper</a></h1>
         </div>
+        <br>
+        <div class="page-header">
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
-
-  <% if user_signed_in? %>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-  <% else %>
-  <%= link_to "Sign in", new_user_session_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
-  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-<% end %>
-<br>
-<%= notice %>
 <%= yield %>
 
 </body>
 <br>
-<br>
 <div style="border-top: solid 1px #eee; padding-top: 1em;">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                <p class="text-muted">PhotoMapper | © Copyright 2016, All Rights Reserved
-                  <br>| PhotoMapper created by Andrew Htun, while at <a href="http://www.makersacademy.com/" target="_blank">Makers Academy</a> | <a href="https://github.com/Htunny" target="_blank">GitHub</a> | <a href="https://htunnycodes.wordpress.com/" target="_blank">Blog</a> |</p>
-                <p class="text-center">
-                    <i class="fa fa-twitter-square fa-2x text-primary"></i>
-                    <i class="fa fa-facebook-square fa-2x text-primary"></i>
-                </p>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <p class="text-muted">PhotoMapper | © Copyright 2016, All Rights Reserved
+          <br>| PhotoMapper created by Andrew Htun, while at <a href="http://www.makersacademy.com/" target="_blank">Makers Academy</a> | <a href="https://github.com/Htunny" target="_blank">GitHub</a> | <a href="https://htunnycodes.wordpress.com/" target="_blank">Blog</a> |</p>
+          <p class="text-center">
+            <i class="fa fa-twitter-square fa-2x text-primary"></i>
+            <i class="fa fa-facebook-square fa-2x text-primary"></i>
+          </p>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script type="text/javascript" src="/public/js/scripts.js"></script>
+  </html>

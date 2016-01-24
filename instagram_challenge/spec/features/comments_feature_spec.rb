@@ -5,7 +5,7 @@ feature 'commenting on a photo' do
 
   scenario 'allows users to leave a review using a form' do
     visit '/photos'
-    click_link 'Sign up'
+    click_link 'Sign Up'
     fill_in 'Email', with: 'steve@email.com'
     fill_in 'Password', with: '12345678'
     fill_in 'Password confirmation', with: '12345678'

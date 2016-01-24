@@ -1,38 +1,67 @@
-<a href="photos/new">Add a photo</a>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+<p>
+  <button class="btn btn-link btn-s">
+    <a href="photos/new" id="button">Add a photo</a>
+  </button>
+</p>
 
-
-    <!-- <div class="panel-body">
-        <p>{{ image.description }}</p>
-        <div class="col-md-12 text-center">
-            <img src="/public/upload/temp/{{image.filename}}" class="img-thumbnail">
-    </div> -->
 <% if @photos.any? %>
-  <% @photos.each do |photo| %>
+<% @photos.each do |photo| %>
 
-  <div class="panel panel-primary">
-      <div class="panel-heading">
-          <h2 class="panel-title"><%=  photo.caption %></h2>
-      </div>
-        </div>
-<%= image_tag photo.image.url(:thumb) %>
-<% if photo.comments.any? %>
-  <ul>
-    <% photo.comments.each do |comment| %>
-      <li>
-        <%= comment.thoughts %>
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No comments.</p>
-<% end %>
-  <!-- <%= link_to photo.caption, photo_path(photo) %> -->
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2 class="panel-title"><%=  photo.caption %></h2>
+  </div>
+</div>
+<div class="panel-body">
+  <p><%= image_tag photo.image.url(:thumb) %></p>
+  <div class="col-md-12 text-center">
+    <img class="img-thumbnail">
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-md-8">
+        <strong class="panel-title">Comments</strong>
+      <% if photo.comments.any? %>
+      <ul class="media-list">
+        <% photo.comments.each do |comment| %>
+        <li class="media">
 
-  <%= link_to "Edit Caption", edit_photo_path(photo) %> |
-  <%= link_to "Comment on #{photo.caption}", new_photo_comment_path(photo) %> |
-  <%= link_to "Delete #{photo.caption}", photo_path(photo), method: :delete %>
-  <% end %>
-<% else %>
-  <h1>No photos yet!</h1>
+            <%= comment.thoughts %>
+
+        </li>
+        <% end %>
+      </ul>
+      <% else %>
+      <p>No comments.</p>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+<!-- <%= link_to photo.caption, photo_path(photo) %> -->
+<div class="panel-footer">
+  <div class="row">
+    <div class="col-md-7 text-left">
+      <button class="btn btn-default">
+        <strong><%= link_to "Edit Caption", edit_photo_path(photo) %></strong>
+      </button>
+      <button class="btn btn-default">
+        <strong> <%= link_to "Comment on #{photo.caption}", new_photo_comment_path(photo) %></strong>
+      </button>
+      <button class="btn btn-default">
+        <strong> <%= link_to "Delete #{photo.caption}", photo_path(photo), method: :delete %></strong>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
 <% end %>
-<br>
+<% else %>
+<h1>No photos yet!</h1>
+<% end %>
