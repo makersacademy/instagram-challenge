@@ -10,8 +10,14 @@ RSpec.feature 'Comments Features' do
         login_as(user)
       end
 
-      xscenario 'a user can add a new comment to a post' do
+      scenario 'a user can add a new comment to a post' do
         visit "/posts/#{post.id}"
+        click_link 'Add Comment'
+        fill_in 'Comment', with: 'Hey I can write epic comments'
+        click_button 'Create Comment'
+
+        expect(current_path).to eq post_path(post)
+        expect(page).to have_content 'Hey I can write epic comments'
       end
     end
   end
