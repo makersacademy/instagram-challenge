@@ -14,7 +14,14 @@ This is my submission for the Makers Academy Week 7 Weekend Challenge: https://g
 Overview
 ---------
 
-This week we have been tasked with building an Instagram clone.  I created the following user stories based on the brief:
+This week we have been tasked with building an Instagram clone using Ruby on Rails.
+```
+Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+
+Bonus if you can add filters!
+```
+
+I created the following user stories based on the brief:
 
 ```
 As a user
@@ -54,20 +61,28 @@ So that I can see one user's pictures
 I would like to view all of a user's pictures on one page
 ```
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
 Instructions
 ------------
 1. Fork this repo and clone to your local machine.
+2. Create the databases and migrate
+```
+$ bin/rake db:create
+$ bin/rake db:migrate
+```
+3. Launch the rails server
+```
+$ bin/rails s
+```
+4. Navigate to `http://localhost:3000` in your browser.
 
 Approach
 ---------
+This project was test-driven using RSpec for the unit and controller tests, and RSpec/Capybara for the feature tests.  I made use of FactoryGirl to set up test objects for the tests, and Shoulda to provide appropriate matchers for the unit tests.  Additionally, I used DatabaseCleaner to empty the test database in between tests to ensure reliable results.  File attachment functionality was provided by Paperclip.  I also made use of Bootstrap for styling purposes.
 
 Further Work
 -------------
-* View all of one user's pictures
+* Outstanding issue with likes not pluralising correctly unless you refresh the page
+* View all of a user's pictures on one page
 * Linked hashtags
 * Display when the picture was posted
 * Users can only like a picture once
