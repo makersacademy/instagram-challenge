@@ -46,7 +46,7 @@ TO DOs
 -----
 * Omniauth Facebook login
 * Listing is dependent destroy on User
-
+* Change select time dropdown list to show only 5 min intervals (and also display leading 0?
 
 
 Instructions
