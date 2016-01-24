@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe PostsController do
   it { is_expected.to use_before_action(:authenticate_user!) }
-  login_user
 
   describe 'GET #index' do
     let!(:post) { FactoryGirl.create(:post) }
@@ -16,6 +15,7 @@ RSpec.describe PostsController do
   end
 
   describe 'GET #new' do
+    login_user
     before { get :new }
 
     it { is_expected.to render_template 'new'}
@@ -26,6 +26,8 @@ RSpec.describe PostsController do
   end
 
   describe 'POST #create' do
+    login_user
+
     context 'with valid attributes' do
       it 'creates a new post' do
         expect do
@@ -40,6 +42,34 @@ RSpec.describe PostsController do
     end
 
     context 'with invalid attributes' do
+
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    context 'with valid user' do
+      let!(:user) { FactoryGirl.create(:user) }
+      let!(:post) { FactoryGirl.create(:post, user: user) }
+      before(:each) { sign_in user }
+
+      it 'deletes the post' do
+        expect do
+          delete :destroy, id: post
+        end.to change(Post, :count).by(-1)
+      end
+
+      it do
+        delete :destroy, id: post
+        is_expected.to set_flash[:success].to 'Post deleted successfully'
+      end
+
+      it 'redirects to posts path' do
+        delete :destroy, id: post
+        expect(response).to redirect_to posts_path
+      end
+    end
+
+    context 'with invalid user' do
 
     end
   end

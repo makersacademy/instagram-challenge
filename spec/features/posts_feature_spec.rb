@@ -55,7 +55,7 @@ RSpec.feature 'Posts Features' do
         fill_in 'Description', with: 'A random cat'
         click_button 'Post It!'
 
-        click_button 'Delete Post'
+        click_link 'Delete Post'
 
         expect(current_path).to eq posts_path
         expect(page).to have_content 'Post deleted successfully'
