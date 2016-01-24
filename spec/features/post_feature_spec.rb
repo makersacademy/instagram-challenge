@@ -25,6 +25,7 @@ feature 'posts' do
     scenario 'promts a user to add a post then displays the post' do
       visit '/posts'
       click_link 'Add a post'
+      # attach_file('post[image]', Rails.root + 'spec/features/support/test_image.jpg')
       fill_in 'Caption', with: 'Birthday'
       click_button 'Create Post'
       expect(page).to have_content 'Birthday'
