@@ -1,0 +1,19 @@
+.container
+  = link_to 'NotInstagram',
+    posts_path,
+    class: 'navbar-brand'
+  .navbar-right
+    - if user_signed_in?
+      %p.navbar-text Signed in as: #{current_user.email}
+      = link_to 'Sign Out',
+        destroy_user_session_path,
+        method: :delete,
+        class: 'btn btn-default navbar-btn',
+        type: 'button'
+    - else
+      = link_to 'Sign In',
+        new_user_session_path,
+        class: 'btn btn-primary navbar-btn'
+      = link_to 'Sign Up',
+        new_user_registration_path,
+        class: 'btn btn-default navbar-btn'

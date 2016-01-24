@@ -1,0 +1,27 @@
+.posts.col-md-6.col-md-offset-3.text-center
+  = image_tag @post.image.url(:large)
+  %h2= @post.description
+  %h3= pluralize @post.likes.count, 'like'
+  = link_to 'Like!',
+    post_likes_path(@post),
+    method: :post,
+    type: 'button',
+    class: 'btn btn-primary'
+  - if @post.comments.any?
+    %ul
+    - @post.comments.each do |comment|
+      %li
+        = comment.comment
+        Posted by: #{comment.email}
+
+.col-md-6.col-md-offset-3.text-center
+  = link_to 'Add Comment',
+    new_post_comment_path(@post),
+    type: 'button',
+    class: 'btn btn-primary'
+  - if @post.created_by?(current_user)
+    = link_to 'Delete Post',
+      post_path(@post),
+      method: :delete,
+      type: 'button',
+      class: 'btn btn-danger'
