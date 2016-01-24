@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe PostsController do
+  it { is_expected.to use_before_action(:authenticate_user!) }
+  login_user
+
   describe 'GET #index' do
     let!(:post) { FactoryGirl.create(:post) }
     before { get :index }

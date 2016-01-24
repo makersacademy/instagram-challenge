@@ -29,5 +29,15 @@ RSpec.feature 'Posts Features' do
         expect(page).to have_content 'A random cat'
       end
     end
+
+    context 'while not signed in' do
+      scenario 'a user cannot create a new post' do
+        visit '/posts'
+        click_link 'Create Post'
+
+        expect(current_path).to eq new_user_session_path
+        expect(page).to have_content 'You need to sign in or sign up'
+      end
+    end
   end
 end
