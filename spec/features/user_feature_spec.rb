@@ -12,6 +12,12 @@ feature "User can sign in and out" do
       visit('/')
       expect(page).not_to have_link('Sign out')
     end
+
+    it "should not see 'My gallery' link" do
+      visit('/')
+      expect(page).not_to have_link('Manage my gallery')
+    end
+
   end
 
   context "user signed in on the homepage" do
@@ -21,8 +27,12 @@ feature "User can sign in and out" do
 
     it "should see 'sign out' link" do
       visit('/')
-      save_and_open_page
       expect(page).to have_link('Sign out')
+    end
+
+    it "should see 'my gallery' link" do
+      visit('/')
+      expect(page).to have_link('Manage my gallery')
     end
 
     it "should not see a 'sign in' link and a 'sign up' link" do

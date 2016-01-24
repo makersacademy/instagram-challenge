@@ -22,6 +22,7 @@ class ListingsController < ApplicationController
 
   def show
     @listings = Listing.where(user_id: params[:id])
+    @user = User.find(params[:id])
   end
 
 end

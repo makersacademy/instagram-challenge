@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  resources :listings, shallow: true
-
   root to: "listings#index"
+
+  resources :listings, shallow: true
+  resources :pictures
 
   devise_for :users, :controllers => { registrations: 'registrations' }
 
