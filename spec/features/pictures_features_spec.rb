@@ -8,19 +8,19 @@ feature 'Pictures' do
     end
   end
 
-  context 'pictures have been added' do
-
-    before do
-      Picture.create(title: 'My cat is awesome')
-    end
-
-    scenario 'display picture titles' do
-      sign_up
-      visit '/pictures'
-      expect(page).to have_content('My cat is awesome')
-      expect(page).not_to have_content('No pictures yet')
-    end
-  end
+  # context 'pictures have been added' do
+  #
+  #   before do
+  #     Picture.create(title: 'My cat is awesome')
+  #   end
+  #
+  #   scenario 'display picture titles' do
+  #     sign_up
+  #     visit '/pictures'
+  #     expect(page).to have_content('My cat is awesome')
+  #     expect(page).not_to have_content('No pictures yet')
+  #   end
+  # end
 
   context 'creating pictures' do
     scenario 'prompts users to fill in a form and then displays their picture' do

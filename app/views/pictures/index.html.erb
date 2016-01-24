@@ -1,24 +1,35 @@
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
-    <%= image_tag picture.image.url(:medium) %>
-    <h2><%= picture.title %></h2>
-    <h5><%= link_to 'Like', picture_likes_path(picture), class: 'like-link'%>
-    <span class="likes_count"><%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %> </h5>
-    <h5><%= link_to 'Delete picture', picture_path(picture), method: :delete %></h5>
-    <h5><%= link_to 'Comment', new_picture_comment_path(picture) %></h5>
-    <% if picture.comments.any? %>
-      <ul>
-        <% picture.comments.each do |comment| %>
-          <li>
-            <strong><%= comment.user.username %></strong> <%= comment.words %>
-            <%= link_to 'Delete comment', comment_path(comment), method: :delete %>
-          </li>
+    <section class='ind_picture'>
+      <section class="img_head">
+        <section id="img_head_username">
+          <%= picture.user.username %>
+        </section>
+        <section id="img_head_title">
+            <%= picture.title %>
+        </section>
+      </section>
+      <%= image_tag picture.image.url(:medium) %>
+      <section class="comments_and_likes">
+        <section class="likes"><%= link_to 'Like', picture_likes_path(picture), class: 'like-link'%>
+        <span class="likes_count"><%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %> </section>
+        <% if picture.comments.any? %>
+          <ul>
+            <% picture.comments.each do |comment| %>
+              <li>
+                <strong><%= comment.user.username %></strong> <%= comment.words %>
+                <%= link_to 'Delete comment', comment_path(comment), method: :delete %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <h5>No comments. Yet...</h5>
         <% end %>
-      </ul>
-    <% else %>
-      <h5>No comments. Yet...</h5>
-    <% end %>
-    <br>
+        <br>
+        <h5><%= link_to 'Comment', new_picture_comment_path(picture) %></h5>
+        <h5><%= link_to 'Delete picture', picture_path(picture), method: :delete %></h5>
+      </section>
+    </section>
   <% end %>
 <% else %>
   No pictures yet
