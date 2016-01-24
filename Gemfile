@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form'
 gem "paperclip", "~> 4.3"
 gem "factory_girl_rails"
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 
 # Use ActiveModel has_secure_password

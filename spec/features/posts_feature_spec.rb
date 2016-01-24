@@ -42,3 +42,15 @@ feature 'Index displays a list of posts' do
     expect(page).to have_css("img[src*='maccabees']")
   end
 end
+
+feature 'Can view individual posts' do
+  scenario 'Can click and view a single post' do
+    visit '/'
+    click_link 'New Post'
+    attach_file('Image', "spec/files/images/maccabees.jpg")
+    fill_in 'Caption', with: 'great gig last night'
+    click_button 'Create Post'
+    visit '/posts/2'
+    expect(page).to have_content('great gig last night')
+  end
+end
