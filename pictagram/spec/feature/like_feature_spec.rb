@@ -12,4 +12,10 @@ feature 'liking a post' do
     expect(page).to have_content('1 like')
   end
 
+  it 'a user can like a post, which increments the like count', js: true do
+    visit '/posts'
+    click_link 'Like'
+    expect(page).to have_content("1 Like")
+  end
+
 end
