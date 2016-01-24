@@ -11,7 +11,7 @@ RSpec.feature '<<Pictures>>' do
       visit '/pictures'
       expect(page).to have_content 'There aren\'t any pictures here yet.'
       expect(page).to have_link 'Upload a picture...'
-      end
+    end
 
     scenario 'a user may upload a picture' do
       add_picture
