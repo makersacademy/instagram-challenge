@@ -1,4 +1,4 @@
-.posts.col-md-6.col-md-offset-3
+.posts.col-md-6.col-md-offset-3.text-center
   - if @posts.any?
     - @posts.each do |post|
       .article.well
@@ -9,11 +9,15 @@
         %h3= pluralize post.likes.count, 'like'
         = link_to 'Like!',
           post_likes_path(post),
-          method: :post
+          method: :post,
+          type: 'button',
+          class: 'btn btn-primary'
         - if post.created_by?(current_user)
           = link_to "Delete Post",
             post_path(post),
-            method: :delete
+            method: :delete,
+            type: 'button',
+            class: 'btn btn-danger'
   - else
     %h2 No posts yet
 
