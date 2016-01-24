@@ -63,7 +63,7 @@ RSpec.feature 'Posts Features' do
         expect(page).not_to have_content 'A random cat'
       end
 
-      scenario 'a user cannot delete someone elses post' do
+      scenario 'a user should not see a delete link for someone elses post' do
 
       end
     end

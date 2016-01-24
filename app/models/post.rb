@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  belongs_to :user
+
   has_attached_file :image,
                     styles: { large: "600x600>", medium: "400x400>" },
                     default_url: "/images/:style/missing.png"

@@ -29,12 +29,12 @@ RSpec.describe PostsController do
     context 'with valid attributes' do
       it 'creates a new post' do
         expect do
-          post :create, post: FactoryGirl.attributes_for(:post)
+          post :create, post: FactoryGirl.attributes_for(:post_params)
         end.to change(Post, :count).by(1)
       end
 
       it 'redirects to the posts path' do
-        post :create, post: FactoryGirl.attributes_for(:post)
+        post :create, post: FactoryGirl.attributes_for(:post_params)
         expect(response).to redirect_to posts_path
       end
     end

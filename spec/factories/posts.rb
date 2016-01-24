@@ -5,4 +5,9 @@ FactoryGirl.define do
     description 'Description text'
     image { fixture_file_upload './spec/images/cat.png', 'image/png' }
   end
+
+  factory :post_params, class: Post do
+    description 'Description text'
+    image { fixture_file_upload './spec/images/cat.png', 'image/png' }
+  end
 end
