@@ -13,7 +13,8 @@ RSpec.describe Post, type: :model do
 
   describe '#created_by?' do
     let!(:user) { FactoryGirl.create(:user) }
-    it 'returns true if a post was created by the user' do
+
+    it 'returns true if post was created by the user' do
       post = FactoryGirl.create(:post, user: user)
       expect(post.created_by? user).to be true
     end
