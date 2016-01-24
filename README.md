@@ -16,7 +16,9 @@ Overview
 
 This week we have been tasked with building an Instagram clone using Ruby on Rails.
 ```
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Your challenge is to build Instagram using Rails.
+You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture.
+Style it like Instagram's website (or more awesome).
 
 Bonus if you can add filters!
 ```
@@ -63,17 +65,17 @@ I would like to view all of a user's pictures on one page
 
 Instructions
 ------------
-1. Fork this repo and clone to your local machine.
-2. Create the databases and migrate
+* Fork this repo and clone to your local machine.
+* Create the databases and migrate
 ```
 $ bin/rake db:create
 $ bin/rake db:migrate
 ```
-3. Launch the rails server
+* Launch the rails server
 ```
 $ bin/rails s
 ```
-4. Navigate to `http://localhost:3000` in your browser.
+* Navigate to `http://localhost:3000` in your browser.
 
 Approach
 ---------
