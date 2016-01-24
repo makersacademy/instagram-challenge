@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :pictures do
     resources :comments
+    resources :likes
   end
 
   # Example of regular route:

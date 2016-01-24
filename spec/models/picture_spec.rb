@@ -4,6 +4,7 @@ img = Rack::Test::UploadedFile.new('spec/files/pirates1.jpeg', 'image/jpg')
 
 RSpec.describe Picture, type: :model do
   it { should have_many(:comments).dependent(:destroy) }
+  it { should have_many(:likes).dependent(:destroy) }
   it { should belong_to :user }
 
   it 'is not valid without a title' do

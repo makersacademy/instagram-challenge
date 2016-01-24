@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :pictures
   has_many :comments
+  has_many :likes
 
   validates :user_name, presence: true
 

@@ -21,7 +21,6 @@ def sign_up_2
 end
 
 def add_picture
-  visit '/pictures'
   click_link 'Upload a picture...'
   fill_in 'Title', with: 'Pirate Party!'
   fill_in 'Caption', with: 'Ahoy!'

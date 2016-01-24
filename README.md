@@ -44,13 +44,13 @@ As a User
 So I can talk about pictures
 I want to be able to comment on all the pictures -->
 
-As a User
+<!-- As a User
 So I can change my mind
-I want to be able to delete my own comments
+I want to be able to delete my own comments -->
 
-As a User
+<!-- As a User
 So I can see when comments and pictures were posted
-I want to see a timestamp
+I want to see a timestamp -->
 
 As a User
 So I can quickly show my support
@@ -67,7 +67,7 @@ I want them to be ordered by likes on the home screen
 <!-- As a web owner
 So my machine doesn't get full of pictures
 I want Amazon to store them for me -->
-<!-- 
+<!--
 As a web developer
 So I can store the details
 I want a table called users
@@ -76,13 +76,13 @@ As a web developer
 So I can monitor associations
 Users should have many pictures and pictures belong to Users -->
 
-As a web developer
+<!-- As a web developer
 So I can monitor associations
-Users should have many comments and comments belong to Users
+Users should have many comments and comments belong to Users -->
 
-As a web developer
+<!-- As a web developer
 So I can monitor associations
-Pictures should have many comments and be joined to them through Users
+Pictures should have many comments and be joined to them through Users -->
 
 As a web developer
 So I can monitor associations

@@ -47,6 +47,7 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'devise'
   gem 'database_cleaner', '~> 1.5', '>= 1.5.1'
+  gem 'poltergeist'
 end
 
 group :development do
