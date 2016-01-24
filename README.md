@@ -70,3 +70,4 @@ Further Work
 * Edit picture
 * Linked hashtags
 * Display when the picture was posted
+* Users can only like a picture once
