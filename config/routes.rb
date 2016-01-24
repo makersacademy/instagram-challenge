@@ -15,9 +15,8 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :posts, shallow: true, except: [:edit, :update] do
-    resources :comments, except: [:show, :index] do
-      resources :likes, only: :create
-    end
+    resources :comments, except: [:show, :index]
+    resources :likes, only: :create
   end
   # Example resource route with options:
   #   resources :products do

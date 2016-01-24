@@ -10,6 +10,7 @@ RSpec.feature 'Likes Features' do
 
       scenario 'a user can like a post' do
         visit '/posts'
+        expect(page).to have_content '0 likes'
         click_link 'Like!'
 
         expect(current_path).to eq posts_path
