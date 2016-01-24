@@ -7,4 +7,14 @@
     </ul>
   </section>
 <% end %>
-<%= render "form" %>
+<%= form_for @picture, html: {multipart: true} do |f| %>
+  <div class="field">
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.text_field :description,  placeholder: 'Description' %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Post picture' %>
+  </div>
+<% end %>

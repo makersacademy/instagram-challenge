@@ -5,6 +5,7 @@ describe User, type: :model do
   it { is_expected.to validate_uniqueness_of :username }
   it { is_expected.to have_many(:pictures).dependent(:destroy) }
   it { is_expected.to have_many(:comments).dependent(:destroy) }
+  it { is_expected.to have_many(:likes).dependent(:destroy) }
 
   describe '::find_for_database_authentication' do
     context 'using login as authentication key' do

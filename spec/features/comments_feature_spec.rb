@@ -19,7 +19,7 @@ feature 'comments' do
     let!(:pic2) { create(:picture) }
     let!(:comment)  { create(:comment, picture: pic) }
     let!(:comment2) { create(:comment, picture: pic2) }
-    scenario 'show comments below relative picture', js: true do
+    scenario 'show comments below relative picture' do
       visit '/'
       within(:xpath, '//article[@id="' + pic.id.to_s + '"]') do
         expect(page).to have_content comment.content
@@ -37,6 +37,7 @@ feature 'comments' do
       visit '/'
       fill_in 'comment[content]', with: 'a comment'
       find('input#comment_content').native.send_keys(:return)
+      wait_for_ajax
       expect(page).to have_content 'a comment'
     end
     scenario 'does not allow user to leave empty picture comment', js: true do
@@ -59,6 +60,7 @@ feature 'comments' do
         wait_for_ajax
         fill_in 'comment[content]', with: 'second comment'
         find('input#comment_content').native.send_keys(:return)
+        wait_for_ajax
         expect(page).to have_content 'first comment'
         expect(page).to have_content 'second comment'
         expect(page).to have_css('li', count: size + 2)
@@ -76,6 +78,7 @@ feature 'comments' do
       within(:xpath, '//article[@id="' + pic.id.to_s + '"]') do
         fill_in 'comment[content]', with: 'second comment'
         find('input#comment_content').native.send_keys(:return)
+        wait_for_ajax
         expect(page).to have_content user1.username + ' first comment'
         expect(page).to have_content user2.username + ' second comment'
       end

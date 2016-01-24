@@ -7,9 +7,15 @@ class User < ActiveRecord::Base
 
   has_many :pictures, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_pictures, through: :likes, source: :picture
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validate :validate_username
+
+  def liked?(picture)
+    liked_pictures.include? picture
+  end
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

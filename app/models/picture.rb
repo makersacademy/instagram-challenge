@@ -3,6 +3,9 @@ class Picture < ActiveRecord::Base
   has_many :comments,
            -> { extending WithUserAssociationExtension },
            dependent: :destroy
+  has_many :likes,
+            -> { extending WithUserAssociationExtension },
+            dependent: :destroy
 
   delegate :username, to: :user
 
