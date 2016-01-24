@@ -1,6 +1,9 @@
 class PicturesController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @pictures = Picture.all
+    @current_user = current_user
   end
 
   def new
@@ -14,6 +17,7 @@ class PicturesController < ApplicationController
 
   def show
     @picture = Picture.find(params[:id])
+    @current_user = current_user
   end
 
   def destroy
@@ -24,7 +28,7 @@ class PicturesController < ApplicationController
   end
 
   private
-  
+
   def picture_params
     params.require(:picture).permit(:image)
   end
