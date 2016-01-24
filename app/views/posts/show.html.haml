@@ -1,5 +1,7 @@
 = image_tag @post.image.url(:large)
 %h2= @post.description
+%h3= pluralize @post.likes.count, 'like'
+= link_to 'Like!', post_likes_path(@post), method: :post
 - if @post.comments.any?
   %ul
   - @post.comments.each do |comment|
