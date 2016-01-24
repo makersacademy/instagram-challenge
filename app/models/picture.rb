@@ -14,4 +14,11 @@ class Picture < ActiveRecord::Base
     user.id === self.user_id
   end
 
+  def build_comment(params, user)
+    comment = comments.new(picture_id: self.id,
+                            message: params[:message])
+    comment.user_id = user.id
+    return comment
+  end
+
 end

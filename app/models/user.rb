@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
 
   has_many :pictures
   has_many :comments
-  
+
+  validates :user_name, presence: true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
