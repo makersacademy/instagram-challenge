@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :pictures do
     resources :comments
+    resources :likes
   end
 
   root to: 'pictures#index'

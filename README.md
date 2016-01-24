@@ -69,3 +69,4 @@ Further Work
 -------------
 * Edit picture
 * Linked hashtags
+* Display when the picture was posted
