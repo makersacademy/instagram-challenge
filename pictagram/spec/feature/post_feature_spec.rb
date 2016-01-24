@@ -47,17 +47,37 @@ feature 'posts' do
 
   context 'editing posts' do
 
-  before { Post.create comment: 'sunset!' }
+    before { Post.create comment: 'sunset!' }
 
-  scenario 'let a user edit a post' do
-   visit '/posts'
-   click_link 'Edit sunset!'
-   fill_in 'post[comment]', with: 'sunrise!'
-   click_button 'Update Post'
-   expect(page).to have_content 'sunrise!'
-   expect(current_path).to eq '/posts'
+    scenario 'let a user edit a post' do
+     visit '/posts'
+     click_link 'Edit sunset!'
+     fill_in 'post[comment]', with: 'sunrise!'
+     click_button 'Update Post'
+     expect(page).to have_content 'sunrise!'
+     expect(current_path).to eq '/posts'
+    end
+
   end
 
-end
+  context 'deleting posts' do
+
+    before {Post.create comment: 'fun!'}
+
+    scenario 'removes a post when a user clicks a delete link' do
+      visit '/posts'
+      click_link 'Delete fun!'
+      expect(page).not_to have_content 'fun!'
+      expect(page).to have_content 'Post deleted successfully'
+    end
+
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = 'Post deleted successfully'
+    redirect_to '/posts'
+  end
 
 end
