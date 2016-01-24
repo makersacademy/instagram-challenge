@@ -4,8 +4,9 @@ feature 'Signing up' do
 
   scenario 'users can sign up to start using travelgram' do
     visit '/'
-    sign_up(email: 'camilla@email.com', password: 'pass1234')
+    sign_up(username: 'allimac',email: 'camilla@email.com', password: 'pass1234')
     expect(page).to have_content 'Welcome!'
+    expect(page).to have_css('img', 'user.png')
     expect(current_path).to eq '/'
   end
 
@@ -15,7 +16,7 @@ feature 'Logging in' do
 
   background do
     visit '/'
-    sign_up(email: 'camilla@email.com', password: 'pass1234')
+    sign_up(username: 'allimac',email: 'camilla@email.com', password: 'pass1234')
     click_link 'Log out'
   end
 
@@ -44,7 +45,7 @@ feature 'Signing out' do
 
   scenario 'users can sign out from travelgram' do
     visit '/'
-    click_link 'camilla@email.com'
+    click_link 'allimac'
     click_link 'Log out'
     expect(page).not_to have_content 'camilla@email.com'
     expect(page).to have_content 'See you soon!'

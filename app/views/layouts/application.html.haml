@@ -23,7 +23,7 @@
             - if current_user
               %li.dropdown
                 = image_tag current_user.avatar.url(:thumb), class: 'img-circle'
-                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}= current_user.email
+                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}= current_user.username
                 %span.caret
                 %ul.dropdown-menu
                   %li
@@ -35,14 +35,14 @@
                 %a.btn.btn-default{:href => new_user_session_path} Log in
               %li
                 %a.btn.btn-default{:href => new_user_registration_path} Sign up
-    .container-fluid
-      - if notice
-        .row
-          .alert.alert-success
-            %p.notice= notice
-      - if alert
-        .row
-          .alert.alert-warning
-            %p.alert= alert
+    - if notice
+      .row
+      .alert.alert-success
+      %p.notice= notice
+    - if alert
+      .row
+      .alert.alert-warning
+      %p.alert= alert
+    .container
       = yield
   %footer

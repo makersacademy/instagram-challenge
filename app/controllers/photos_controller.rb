@@ -20,4 +20,14 @@ class PhotosController < ApplicationController
   def photo_params
     params.require(:photo).permit(:image)
   end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    if current_user.owns?(@photo)
+      @photo.destroy
+    else
+      flash[:alert] = "You can't delete this picture"
+    end
+    redirect_to photos_path
+  end
 end
