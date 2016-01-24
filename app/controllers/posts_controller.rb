@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @posts = Post.all
@@ -23,6 +23,10 @@ class PostsController < ApplicationController
       flash[:error] = 'Only the owner can delete a post'
     end
     redirect_to posts_path
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   private

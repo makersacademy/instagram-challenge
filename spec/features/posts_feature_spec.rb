@@ -78,9 +78,11 @@ RSpec.feature 'Posts Features' do
       post = FactoryGirl.create(:post)
 
       visit '/posts'
-      click_link ''
+      find('.image_post').click
 
       expect(current_path).to eq post_path(post)
+      expect(page).to have_content post.description
+      expect(page).to have_css 'img[src*=\'cat.png\']'
     end
   end
 end
