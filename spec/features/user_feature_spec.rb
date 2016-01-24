@@ -12,6 +12,11 @@ feature 'Users' do
       visit '/'
       expect(page).not_to have_link 'Sign Out'
     end
+
+    it "should not see a 'New Post' link" do
+      visit '/'
+      expect(page).not_to have_link 'New Post'
+    end
   end
 
   context 'when logged in and on hompeage' do
@@ -28,6 +33,11 @@ feature 'Users' do
     it "should see a 'Sign Out' link" do
       visit '/'
       expect(page).to have_link 'Sign Out'
+    end
+
+    it "should not see a 'New Post' link" do
+      visit '/'
+      expect(page).to have_link 'New Post'
     end
 
     it "should not see a 'Sign Up' and 'Sign In' link" do
