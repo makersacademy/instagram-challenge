@@ -6,7 +6,9 @@ def add_listing(day: "Monday")
   click_button "Create Listing"
 end
 
-def sign_up (email: "test@example.com", name: "Tippee Toes", password: "password")
+def sign_up(  email: "test@example.com",
+              name: "Tippee Toes",
+              password: "password")
   visit "/users/sign_up"
   fill_in "user_email", with: email
   fill_in "user_provider_name", with: name

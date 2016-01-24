@@ -3,7 +3,7 @@ Not The Instagram Challenge
 
 #### Week 7: Makers Academy Weekend Challenge
 
-I'm not an Instagram user, so this week I had a go at building a completely new and different project in rails. This is my attempt at Not The Instagram Challenge, which had very similar requirements to the Instagram Challenge.
+I'm not a fan of Instagram, so this week I had a go at building my own new project in rails instead. (Not The Instagram Challenge, has very similar requirements to the Instagram Challenge.)
 
 My aim was to work on a proper database version of the very many local websites that help new mums keep their sanity by listing out baby activities, e.g.:
 
