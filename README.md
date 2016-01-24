@@ -67,7 +67,7 @@ Approach
 
 Further Work
 -------------
-* Edit picture
+* View all of one user's pictures
 * Linked hashtags
 * Display when the picture was posted
 * Users can only like a picture once

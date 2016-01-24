@@ -10,8 +10,8 @@ class PicturesController < ApplicationController
     if @picture.save
       redirect_to pictures_path
     else
-      redirect_to pictures_new_path
-      flash[:notice] = 'An error has occurred.'
+      redirect_to new_picture_path
+      flash[:notice] = 'Error: You must upload a picture'
     end
   end
 

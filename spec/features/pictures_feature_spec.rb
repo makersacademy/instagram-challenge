@@ -29,37 +29,57 @@ feature 'Pictures' do
       expect(attach_file('Image', 'spec/factories/test.jpg')).to be_truthy
     end
 
-    scenario 'pictures can be viewed' do
+    scenario 'throws error if user does not upload an image' do
       sign_in(user.email, user.password)
-      visit '/pictures/new'
+      click_link 'Post a picture'
       fill_in 'Description', with: 'My first picture!'
-      page.attach_file('Image', Rails.root + 'spec/factories/test.jpg')
       click_button 'Post'
-      expect(page).to have_xpath("//img[contains(@src, \"medium/test.jpg\")]")
+      expect(page).to have_content('Error: You must upload a picture')
     end
 
-    scenario 'picture description can be viewed' do
-      sign_in(user.email, user.password)
-      post_picture('My first picture!')
-      expect(page).to have_content('My first picture!')
-    end
-
-    # As a user
-    # So that I can show that I posted a picture
-    # I would like my username to be displayed with a picture I posted
-    scenario 'username is displayed' do
-      sign_in(user.email, user.password)
-      post_picture
-      visit '/pictures'
-      expect(page).to have_link user.username
+    scenario 'signed out users cannot post pictures' do
+      visit '/'
+      click_link 'Post a picture'
+      expect(page).to have_content 'Log in'
     end
   end
+
+  # As a user
+  # So that I can see pictures posted by other users
+  # I would like to see all users' pictures on the homepage
+    context 'viewing pictures' do
+      scenario 'pictures can be viewed' do
+        sign_in(user.email, user.password)
+        visit '/pictures/new'
+        fill_in 'Description', with: 'My first picture!'
+        page.attach_file('Image', Rails.root + 'spec/factories/test.jpg')
+        click_button 'Post'
+        visit '/'
+        expect(page).to have_xpath("//img[contains(@src, \"medium/test.jpg\")]")
+      end
+
+      scenario 'picture description can be viewed' do
+        sign_in(user.email, user.password)
+        post_picture('My first picture!')
+        expect(page).to have_content('My first picture!')
+      end
+
+      # As a user
+      # So that I can show that I posted a picture
+      # I would like my username to be displayed with a picture I posted
+      scenario 'username is displayed' do
+        sign_in(user.email, user.password)
+        post_picture
+        visit '/pictures'
+        expect(page).to have_link user.username
+      end
+    end
 
   # As a user
   # So that I can remove one of my posted pictures
   # I would like to delete a picture
   context 'deleting pictures' do
-    scenario 'user can delete their own pictures' do
+    scenario 'users can delete their own pictures' do
       sign_in(user.email, user.password)
       post_picture
       visit '/pictures'
