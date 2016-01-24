@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :listings
+  has_many :pictures
 
   validates :provider_name, presence: true
 end

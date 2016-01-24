@@ -1,5 +1,6 @@
-FactoryGirl.define do  factory :endorsement do
-    review nil
+FactoryGirl.define do
+  factory :picture do
+
   end
 
   factory :user do
@@ -27,11 +28,4 @@ FactoryGirl.define do  factory :endorsement do
     start_time { rand(420..1320) }
     association :user
   end
-  #
-  # factory :review do
-  #   thoughts 'so so'
-  #   rating 3
-  #   association :user
-  #   association :restaurant
-  # end
 end
