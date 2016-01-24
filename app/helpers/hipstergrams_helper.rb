@@ -1,0 +1,2 @@
+module HipstergramsHelper
+end
