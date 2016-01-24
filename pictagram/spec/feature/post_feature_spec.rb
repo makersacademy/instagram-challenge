@@ -30,6 +30,18 @@ feature 'posts' do
       expect(page).to have_content 'My Fave Breakfast!'
       expect(current_path).to eq '/posts'
     end
+
+
+    context 'an invalid post' do
+    it 'does not let you submit a post comment that is too short' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'post[comment]', with: 'M'
+      click_button 'Create Post'
+      expect(page).not_to have_css 'h2', text: 'M'
+      expect(page).to have_content 'error'
+    end
+  end
   end
 
   context 'viewing posts' do
@@ -72,6 +84,8 @@ feature 'posts' do
     end
 
   end
+
+
 
 
 

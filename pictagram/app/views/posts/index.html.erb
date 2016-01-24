@@ -1,9 +1,12 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-    <%= link_to post.comment, post_path(post) %>
-    <%= link_to "Edit #{post.comment}", edit_post_path(post) %>
-    <%= link_to "Delete #{post.comment}", post_path(post), method: :delete %>
-    <%= link_to "Comment #{post.comment}", new_post_comment_path(post) %>
+
+  <br>
+  <%= link_to post.comment, post_path(post) %>
+
+  <%= link_to "Edit #{post.comment}", edit_post_path(post) %>
+  <%= link_to "Delete #{post.comment}", post_path(post), method: :delete %>
+  <%= link_to "Comment #{post.comment}", new_post_comment_path(post) %>
 
     <h3>Comments for <%= post.comment %></h3>
 
@@ -16,9 +19,9 @@
           <% end %>
         </ul>
       <% else %>
-        <p>No reviews.</p>
+        <p>No comments.</p>
     <% end %>
-
+<!-- <a href="posts/new">Add a post</a> -->
 
 
   <% end %>
@@ -26,4 +29,4 @@
   <h1>No posts yet!</h1>
 <% end %>
 
-<a href="posts/new">Add a post</a>
+<%= link_to "Add a post", new_post_path %>

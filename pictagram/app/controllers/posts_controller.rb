@@ -7,9 +7,18 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  # def create
+  #   @post = Post.create(post_params)
+  #   redirect_to '/posts'
+  # end
+
   def create
-    @post = Post.create(post_params)
-    redirect_to '/posts'
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to '/posts'
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -36,11 +45,6 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:comment)
   end
-
-
-
-
-
 
 
 
