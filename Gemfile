@@ -39,6 +39,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
   gem 'factory_girl_rails'
+  gem 'spring', '1.2.0'
 end
 
 group :development do
