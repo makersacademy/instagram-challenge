@@ -11,8 +11,8 @@ FactoryGirl.define do
 
   factory :hipster do
     email "test@test.com"
-    password 12345678
-    password_confirmation 12345678
+    password "12345678"
+    password_confirmation "12345678"
     hipstername "Horatio"
   end
 

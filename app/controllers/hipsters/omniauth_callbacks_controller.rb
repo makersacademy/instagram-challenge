@@ -8,7 +8,7 @@ class Hipsters::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
       set_flash_message(:notice, :success, :kind => "Facebook") if is_navigation_format?
     else
       session["devise.facebook_data"] = request.env["omniauth.auth"]
-      redirect_to_new_user_registration_url
+      redirect_to_new_hipster_registration_url
     end
   end
 

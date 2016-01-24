@@ -1,13 +1,19 @@
 
 
 def sign_up
-  FactoryGirl.create(:hipster)
+  visit "/hipsters/sign_up"
+  fill_in "hipstername", with: "Horatiooo"
+  fill_in "email", with: "test@live.co.uk"
+  fill_in "password", with: "123456789"
+  fill_in "password_confirmation", with: "123456789"
+  click_button "Sign up"
 end
 
-def sign_in(user)
+def sign_in
+  visit "/"
   click_link "Sign in"
-  fill_in "hipstername", with: user.hipstername
-  fill_in "password", with: user.password
+  fill_in "Hipstername", with: user.hipstername
+  fill_in "Password", with: user.password
   click_button "Log in"
 end
 
