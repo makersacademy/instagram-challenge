@@ -8,9 +8,14 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   has_many :photos, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_photos, through: :likes, source: :photo
 
   def owns?(photo)
     photo.user_id == self.id
   end
 
+  def has_liked?(photo)
+    self.liked_photos.include? photo
+  end
 end

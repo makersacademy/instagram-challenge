@@ -1,15 +1,15 @@
-.row
-  - if @photos.any?
-    - @photos.each do |photo|
+- if @photos.any?
+  - @photos.each do |photo|
+    .row
+      .col-md-12
+        = image_tag photo.image.url, class: 'img-rounded'
       .row
         .col-md-12
-          .row
-            = image_tag photo.image.url, class: 'img-rounded'
-          .row
-            = link_to icon('heart-o'), photo_likes_path(photo), method: :post, class: 'like-link'
-            - if current_user && current_user.owns?(photo)
-              = link_to 'Delete photo', photo_path(photo), method: :delete
-            %p.small= "#{time_ago_in_words(photo.created_at)} ago"
-            %p= "by #{photo.username}"
-  - else
-    %p No photos yet!
+          = link_to icon('heart-o'), photo_likes_path(photo), method: :post, class: 'like-link'
+          %p.likes-count= photo.likes.count
+          - if current_user && current_user.owns?(photo)
+            = link_to 'Delete photo', photo_path(photo), method: :delete
+          %p.small= "#{time_ago_in_words(photo.created_at)} ago"
+          %p= "by #{photo.username}"
+- else
+  %p No photos yet!

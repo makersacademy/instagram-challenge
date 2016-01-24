@@ -39,21 +39,23 @@ feature 'Viewing and deleting photoes' do
     background do
       visit '/'
       sign_up(username: 'allimac',email: 'camilla@email.com', password: 'pass1234')
-      upload_photo
+      upload_photo(path: 'spec/fixtures/city.jpg')
     end
 
-    scenario 'a user can see photos on the home page' do
+    xit 'a user can see photos with the most recent at the top' do
+      upload_photo(path: 'spec/fixtures/dog.jpg')
       visit '/'
-      expect(page).to have_css('img', 'city.jpg')
+      expect(page).to have_css(".row .col-md-12 img:eq(0)[src*='dog.jpg']")
+      expect(page).to have_css(".row .col-md-12 img:eq(1)[src*='city.jpg']")
     end
 
     scenario 'a user is allowed to delete his photo' do
       visit '/'
       click_link 'Delete photo'
-      expect(page).not_to have_css('img', 'city.jpg')
+      expect(page).not_to have_css('img-rounded', 'city.jpg')
     end
 
-    scenario 'another user is not allowed to delete his photo' do
+    scenario 'another user is not allowed to delete somebody\'s elses photo' do
       visit '/'
       click_link 'allimac'
       click_link 'Log out'
