@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
+  it { is_expected.to use_before_action(:authenticate_user!) }
+
   let!(:post_) { FactoryGirl.create(:post) }
 
   describe 'GET #new' do

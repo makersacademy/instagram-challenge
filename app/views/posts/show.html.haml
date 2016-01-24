@@ -1,5 +1,11 @@
 = image_tag @post.image.url(:large)
 %h2= @post.description
+- if @post.comments.any?
+  %ul
+  - @post.comments.each do |comment|
+    %li
+      = comment.comment
+
 = link_to 'Add Comment', new_post_comment_path(@post)
 - if @post.created_by?(current_user)
   = link_to 'Delete Post', post_path(@post), method: :delete
