@@ -1,9 +1,6 @@
 %h1= @picture.title
 = image_tag(@picture.image.url(:medium))
 %h3= @picture.caption
-= link_to "Like #{@picture.title}", picture_likes_path(@picture), class: 'likes-link'
-%span.likes_count= @picture.likes.count
-= 'like'.pluralize @picture.likes.count
 -if @picture.comments.any?
   -@picture.comments.each do |comment|
     %p= "#{comment.poster_name} says:"
