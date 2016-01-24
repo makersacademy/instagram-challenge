@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  $('.likes-link').click(function(event){
+  $('.likes-link').on('click', function(event){
     event.preventDefault();
     event.stopImmediatePropagation();
 
