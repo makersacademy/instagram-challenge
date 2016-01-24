@@ -5,13 +5,12 @@ feature 'pictures' do
     scenario 'it states that there are no pictures' do
       visit '/pictures'
       expect(page).to have_content 'No pictures yet'
-      expect(page).to have_link 'Add a picture'
     end
   end
 
-  context 'a picture has been added' do
+  context 'adding a picture' do
     before do
-      @pic = create(:picture)
+      @picture = create(:picture)
     end
 
     scenario 'it does not state that there are no pictures' do
@@ -19,10 +18,22 @@ feature 'pictures' do
       expect(page).not_to have_content 'No pictures yet'
     end
 
-    xscenario 'test' do
-      visit '/pictures'
-      click_link picture_path(@pic)
-      expect(page).to have_content "Delete this page"
+    scenario 'a page is created for each picture' do
+      visit picture_path(@picture)
+      expect(page.status_code).to be 200
+    end
+  end
+
+  xcontext 'deleting a picture' do
+    before do
+      @picture = create(:picture)
+    end
+
+    scenario "the picture's page is deleted" do
+      visit picture_path(@picture)
+      click_link 'Delete this picture'
+      #visit picture_path(@picture)
+      expect(@picture).to be nil
     end
   end
 end
