@@ -1,7 +1,9 @@
 - if @photos.any?
   - @photos.each do |photo|
-    = image_tag photo.image.url(:medium)
+    = link_to (image_tag photo.image.url(:medium)), photo_path(photo)
     = photo.caption
+    = link_to 'Edit photo', edit_photo_path(photo)
+
 - else
   %h2 No photos uploaded yet!
   = link_to 'Upload photo', new_photo_path

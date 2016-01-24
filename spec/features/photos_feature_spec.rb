@@ -15,11 +15,7 @@ feature 'photos' do
 
   context 'creating photos' do
     scenario 'user is able to upload a photo' do
-      visit '/photos'
-      click_link 'Upload photo'
-      attach_file('photo[image]', "spec/fixtures/files/teckel.jpeg")
-      fill_in 'Caption', with: 'cutie'
-      click_button 'Upload photo'
+      upload_photo
       expect(page).to have_css("img[src*='teckel.jpeg']")
     end
 
@@ -31,15 +27,29 @@ feature 'photos' do
       expect(page).to have_content 'Please upload photo'
     end
   end
+  #
+  # context 'deleting photos' do
+  #   scenario 'user can remove photo by clicking delete button' do
+  #     upload_photo
+  #     click_button 'Delete photo'
+  #     expect(page).to have_content 'Chill...photo deleted'
+  #   end
+  #
+  #   scenario 'user cannot remove photos uploaded by other users' do
+  #   end
+  # end
+  #
+  context 'editing photo upload' do
+    scenario 'user can edit upload by clicking edit button' do
+      upload_photo
+      click_link 'Edit photo'
+      fill_in 'Caption', with: 'bla bla'
+      click_button 'Update photo'
+      expect(page).to have_content 'bla bla'
+    end
 
+    # scenario 'user cannot remove photos uploaded by other users' do
+    # end
+  end
 
 end
-
-
-# def post_a_picture
-#   visit '/pictures'
-#   click_link 'Post a picture'
-#   fill_in 'Title', with: 'My cat is awesome'
-#   page.attach_file 'picture[image]', './spec/support/cat.jpg'
-#   click_button 'Post picture'
-# end
