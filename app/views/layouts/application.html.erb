@@ -3,29 +3,48 @@
 <head>
   <title>Instagram</title>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
-  <%= notice %>
-  <% if user_signed_in? %>
-    <p><%= current_user.username %></p>
-    <%= form_tag(destroy_user_session_path, method: 'delete') do %>
-      <%= submit_tag("Sign out") %>
-    <% end %>
-  <% else %>
-    <%= form_tag(new_user_session_path) do %>
-    <%= submit_tag("Sign in") %>
-    <% end %>
-    <%= form_tag(new_user_registration_path, method: 'get') do %>
-    <%= submit_tag("Sign up") %>
-    <% end %>
-  <% end %>
-
-
-
-  <%= yield %>
-
+  <div class="text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-4"><h2 class="text-center">Instagram</h2></div>
+        <div class="col-xs-4"><p class="text-success"><%= notice %></p></div>
+        <div class="col-xs-4">
+          <div class="row">
+            <div class="col-xs-6">
+              <% if user_signed_in? %>
+                <h4 class="text-center"><%= current_user.username %></h4>
+            </div>
+            <div class="col-xs-6">
+              <%= form_tag(destroy_user_session_path, method: 'delete') do %>
+                <%= submit_tag("Sign out") %>
+              <% end %>
+              <% else %>
+                <%= form_tag(new_user_session_path) do %>
+                <%= submit_tag("Sign in") %>
+                <% end %>
+                <%= form_tag(new_user_registration_path, method: 'get') do %>
+                <%= submit_tag("Sign up") %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= yield %>
+  </div>
 </body>
 </html>

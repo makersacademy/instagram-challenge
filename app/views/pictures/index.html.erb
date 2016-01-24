@@ -1,30 +1,39 @@
 <%= link_to 'Post a picture', new_picture_path(current_user) %>
 <p>
+<div class="container">
 <% @pictures.each do |picture| %>
-  <%= link_to picture.user.username, pictures_path %>
-  <% if user_signed_in? %>|
-  <%= link_to 'Delete', picture_path(picture), method: :delete %> |
-  <%= link_to 'Edit', edit_picture_path(picture) %>
-  <% end %>
-  <br>
-  <%= image_tag picture.image.url(:medium) %>
-  <br>
-  <%= link_to '♥', picture_likes_path(picture), class: 'likes-link', method: :post %>
-  <span class="likes_count"><%= picture.likes.count %></span> <%= 'like'.pluralize(picture.likes.count) %>
-  <br>
-  <%= link_to picture.user.username, '#' %>
-  <%= picture.description %>
-  <br>
-
-  <br>
-  <strong>Comments</strong>
-  <br>
-  <% if picture.comments.any? %>
-    <% picture.comments.each do |comment| %>
-    <strong><%= link_to comment.user.username, '#' %></strong> <%= comment.comment %>
+  <div class="img-thumbnail">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="text-left"><strong><%= link_to picture.user.username, pictures_path %></strong></div>
+      </div>
+      <div class="col-sm-6">
+        <div class="text-right">
+          <% if user_signed_in? %>
+          <%= link_to 'Delete', picture_path(picture), method: :delete %>
+          <%= link_to 'Edit', edit_picture_path(picture) %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+    <%= image_tag picture.image.url(:medium) %>
     <br>
-    <% end %>
-  <% end %>
-  <%= link_to 'Comment', new_picture_comment_path(picture) %>
+    <div class="text-left">
+      <%= link_to '♥', picture_likes_path(picture), class: 'likes-link', method: :post %>
+      <span class="likes_count"><%= picture.likes.count %></span> <%= 'like'.pluralize(picture.likes.count) %>
+      <br>
+      <strong><%= link_to picture.user.username, '#' %></strong>
+      <%= picture.description %>
+      <br>
+      <% if picture.comments.any? %>
+        <% picture.comments.each do |comment| %>
+        <strong><%= link_to comment.user.username, '#' %></strong> <%= comment.comment %>
+        <br>
+        <% end %>
+      <% end %>
+      <%= link_to 'Add a comment', new_picture_comment_path(picture) %>
+    </div>
+  </div>
   <p>
 <% end %>
+</div>

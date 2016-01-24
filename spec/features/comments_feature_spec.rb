@@ -11,7 +11,7 @@ feature 'Comments' do
     scenario 'a user can post a comment' do
       sign_in(user.email, user.password)
       post_picture
-      click_link 'Comment'
+      click_link 'Add a comment'
       fill_in 'Comment', with: 'A nice comment'
       click_button 'Comment'
       expect(page).to have_content 'A nice comment'
@@ -27,7 +27,7 @@ feature 'Comments' do
       post_picture
       click_button 'Sign out'
       visit '/'
-      click_link 'Comment'
+      click_link 'Add a comment'
       expect(page).to have_content 'Log in'
       expect(page).not_to have_content 'Comment'
     end
