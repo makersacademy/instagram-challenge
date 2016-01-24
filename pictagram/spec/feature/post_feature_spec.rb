@@ -44,5 +44,20 @@ feature 'posts' do
     end
 
   end
-  
+
+  context 'editing posts' do
+
+  before { Post.create comment: 'sunset!' }
+
+  scenario 'let a user edit a post' do
+   visit '/posts'
+   click_link 'Edit sunset!'
+   fill_in 'post[comment]', with: 'sunrise!'
+   click_button 'Update Post'
+   expect(page).to have_content 'sunrise!'
+   expect(current_path).to eq '/posts'
+  end
+
+end
+
 end
