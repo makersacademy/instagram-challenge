@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+require 'web_helper'
 feature 'posts' do
   context 'no posts have been added' do
     scenario 'should display a prompt to add a post' do
@@ -24,6 +24,7 @@ feature 'posts' do
   context 'creating posts' do
     scenario 'prompts user to fill out a form, then displays the new post' do
       visit '/posts'
+      sign_up
       click_link 'Add a post'
       fill_in 'post[comment]', with: 'My Fave Breakfast!'
       click_button 'Create Post'
@@ -35,6 +36,7 @@ feature 'posts' do
     context 'an invalid post' do
     it 'does not let you submit a post comment that is too short' do
       visit '/posts'
+      sign_up
       click_link 'Add a post'
       fill_in 'post[comment]', with: 'M'
       click_button 'Create Post'
@@ -63,6 +65,7 @@ feature 'posts' do
 
     scenario 'let a user edit a post' do
      visit '/posts'
+     sign_up
      click_link 'Edit sunset!'
      fill_in 'post[comment]', with: 'sunrise!'
      click_button 'Update Post'
@@ -78,15 +81,12 @@ feature 'posts' do
 
     scenario 'removes a post when a user clicks a delete link' do
       visit '/posts'
+      sign_up
       click_link 'Delete fun!'
       expect(page).not_to have_content 'fun!'
       expect(page).to have_content 'Post deleted successfully'
     end
 
   end
-
-
-
-
 
 end

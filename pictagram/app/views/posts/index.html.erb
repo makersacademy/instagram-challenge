@@ -4,8 +4,15 @@
   <br>
   <%= link_to post.comment, post_path(post) %>
 
-  <%= link_to "Edit #{post.comment}", edit_post_path(post) %>
-  <%= link_to "Delete #{post.comment}", post_path(post), method: :delete %>
+
+  <% if user_signed_in? && @current_user_id == post.user_id %>
+       <h3>
+        <%= link_to "Edit #{post.comment}", edit_post_path(post) %>
+       </h3>
+       <h5>
+          <%= link_to "Delete #{post.comment}", post_path(post), method: :delete %>
+       </h5>
+     <% end %>
   <%= link_to "Comment #{post.comment}", new_post_comment_path(post) %>
 
     <h3>Comments for <%= post.comment %></h3>
@@ -21,7 +28,7 @@
       <% else %>
         <p>No comments.</p>
     <% end %>
-<!-- <a href="posts/new">Add a post</a> -->
+
 
 
   <% end %>
