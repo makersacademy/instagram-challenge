@@ -40,4 +40,32 @@ RSpec.feature 'Posts Features' do
       end
     end
   end
+
+  context 'deleting a post' do
+    context 'while signed in' do
+      before(:each) do
+        user = FactoryGirl.create(:user)
+        login_as(user)
+      end
+
+      scenario 'a user can delete their own post' do
+        visit '/posts'
+        click_link 'Create Post'
+        attach_file :post_image, './spec/images/cat.png'
+        fill_in 'Description', with: 'A random cat'
+        click_button 'Post It!'
+
+        click_button 'Delete Post'
+
+        expect(current_path).to eq posts_path
+        expect(page).to have_content 'Post deleted successfully'
+        expect(page).not_to have_css 'img[src*=\'cat.png\']'
+        expect(page).not_to have_content 'A random cat'
+      end
+
+      scenario 'a user cannot delete someone elses post' do
+
+      end
+    end
+  end
 end
