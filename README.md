@@ -10,11 +10,39 @@ I aimed to complete this challenge in a test driven manner. I wrote automated in
 
 ##Installation Instructions
 
-TBD
+Clone down from github and cd into the directory
+
+```
+$ git clone git@github.com:michaellennox/instagram-challenge.git
+$ cd instagram-challenge
+```
+
+Create the database and carry out migrations
+
+```
+$ bin/rake db:create
+$ bin/rake db:migrate
+```
+
+Run the app
+
+```
+$ bin/rails s
+```
+
+Visit `http://localhost:3000/` and enjoy the beauty that is NotInstagram
 
 ##Usage Instructions
 
-TBD
+When you visit NotInstagram you will see something like follows:
+
+[NotInstagramHomescreen](http://i.imgur.com/iRTAjzp.png)
+
+* You can sign up for the service via sign up or if you already have an account press sign in.
+* Create a new post via the Create Post button.
+* Like an existing post with the Like! button.
+* See all comments on a post by pressing the picture.
+* Leave a comment by pressing Create Comment.
 
 ##Brief
 
@@ -28,11 +56,13 @@ Bonus if you can add filters!
 
 ##Future Improvements
 
-* Add styling to the site
 * Extend the controllers to allow more actions (particularly on comments)
 * Add the ability to like comments
+* Display the top comment for each photo on the front page
+* Order posts by total likes
 * Add validations (there's currently almost none of these) to models
 * Extend feature specs to follow more user journeys and to avoid making use of Warden
+* Work out why js: true is ruining asset routing and crashing my tests. For now I'm stuck with just redirecting when you like instead of responding with JSON.
 * Neaten up controller specs
 * Deploy to Heroku
 * Set paperclip to host images on S3
