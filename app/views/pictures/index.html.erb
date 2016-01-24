@@ -1,9 +1,11 @@
 <%= link_to 'Post a picture', new_picture_path(current_user) %>
 <p>
 <% @pictures.each do |picture| %>
-  <%= link_to picture.user.username, pictures_path %> |
+  <%= link_to picture.user.username, pictures_path %>
+  <% if user_signed_in? %>|
   <%= link_to 'Delete', picture_path(picture), method: :delete %> |
   <%= link_to 'Edit', edit_picture_path(picture) %>
+  <% end %>
   <br>
   <%= image_tag picture.image.url(:medium) %>
   <br>

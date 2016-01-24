@@ -76,6 +76,14 @@ feature 'Pictures' do
       click_link 'Delete'
       expect(page).to have_content 'You cannot delete this picture as you did not create it'
     end
+
+    scenario 'signed out users cannot delete pictures' do
+      sign_in(user.email, user.password)
+      post_picture
+      click_button 'Sign out'
+      visit '/pictures'
+      expect(page).not_to have_link 'Delete'
+    end
   end
 
   context 'editing pictures' do
@@ -87,6 +95,24 @@ feature 'Pictures' do
       fill_in 'Description', with: 'My first edited picture!'
       click_button 'Update'
       expect(page).to have_content 'My first edited picture!'
+    end
+
+    scenario 'user cannot edit other users\' pictures' do
+      sign_in(user.email, user.password)
+      post_picture
+      click_button 'Sign out'
+      sign_in(user2.email, user2.password)
+      visit '/pictures'
+      click_link 'Edit'
+      expect(page).to have_content 'You cannot edit this picture as you did not create it'
+    end
+
+    scenario 'signed out users cannot edit pictures' do
+      sign_in(user.email, user.password)
+      post_picture
+      click_button 'Sign out'
+      visit '/pictures'
+      expect(page).not_to have_link 'Edit'
     end
   end
 end
