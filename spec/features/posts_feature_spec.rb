@@ -31,4 +31,17 @@ feature 'posts' do
       expect(current_path).to eq '/posts'
     end
   end
+
+  context 'viewing posts' do
+
+    let!(:testpost){Post.create(caption:'Here is a test post')}
+
+    scenario 'lets a user view a post' do
+     visit '/posts'
+     click_link 'Here is a test post'
+     expect(page).to have_content 'Here is a test post'
+     expect(current_path).to eq "/posts/#{testpost.id}"
+    end
+
+  end
 end
