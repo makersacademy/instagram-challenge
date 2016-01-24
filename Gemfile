@@ -25,9 +25,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'byebug'
   gem 'haml'
   gem 'devise'
+  gem 'dotenv'
 end
 
 group :test do
