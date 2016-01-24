@@ -25,6 +25,10 @@ RSpec.describe PostsController do
     end
   end
 
+  describe 'GET #show' do
+    
+  end
+
   describe 'POST #create' do
     login_user
 
