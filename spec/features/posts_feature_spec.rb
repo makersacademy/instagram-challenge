@@ -65,6 +65,7 @@ RSpec.feature 'Posts Features' do
 
       scenario 'a user should not see a delete link for someone elses post' do
         FactoryGirl.create(:post)
+        
         visit '/posts'
 
         expect(page).not_to have_link 'Delete Post'
