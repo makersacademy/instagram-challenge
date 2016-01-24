@@ -22,13 +22,43 @@ feature 'posts' do
   end
 
   context 'creating posts' do
-    scenario 'promts a user to add a post then displays the post' do |variable|
+    scenario 'promts a user to add a post then displays the post' do
       visit '/posts'
       click_link 'Add a post'
       fill_in 'Caption', with: 'Birthday'
       click_button 'Create Post'
       expect(page).to have_content 'Birthday'
       expect(current_path).to eq '/posts'
+    end
+  end
+
+  context 'editing posts' do
+
+    before do
+      Post.create caption: 'Birthday'
+    end
+
+    scenario 'let a user edit a post' do
+      visit '/posts'
+      click_link 'Edit Birthday'
+      fill_in 'Caption', with: 'Birthday party'
+      click_button 'Update Post'
+      expect(page).to have_content 'Birthday party'
+      expect(current_path).to eq '/posts'
+    end
+  end
+
+  context 'deleting posts' do
+
+    before do
+       Post.create caption: 'Birthday'
+    end
+
+    scenario 'removes a post when user clicks delete post' do
+      visit '/posts'
+      click_link 'Delete post'
+      expect(page).not_to have_content 'Birthday'
+      expect(page).to have_content 'Post deleted!'
     end
   end
 
