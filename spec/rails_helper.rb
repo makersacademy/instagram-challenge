@@ -10,6 +10,7 @@ require 'devise'
 require 'capybara/rails'
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
+require 'paperclip/matchers'
 require 'support/database_cleaner'
 require 'support/factory_girl'
 require 'support/devise'
@@ -36,6 +37,7 @@ require 'support/warden'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include Paperclip::Shoulda::Matchers
   config.extend ControllerMacros, type: :controller
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

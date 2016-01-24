@@ -11,9 +11,9 @@ RSpec.feature 'Users Features' do
     scenario 'they should be able to sign up for an account' do
       visit '/'
       click_link 'Sign Up'
-      fill_in :user_email, with: 'test@example.com'
-      fill_in :user_password, with: 'testtest'
-      fill_in :user_password_confirmation, with: 'testtest'
+      fill_in 'Email', with: 'test@example.com'
+      fill_in 'Password', with: 'testtest'
+      fill_in 'Password confirmation', with: 'testtest'
       click_button 'Sign up'
 
       expect(page).to have_content 'test@example.com'
@@ -25,8 +25,8 @@ RSpec.feature 'Users Features' do
 
       visit '/'
       click_link 'Sign In'
-      fill_in :user_email, with: user.email
-      fill_in :user_password, with: user.password
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
       click_button 'Log in'
 
       expect(page).to have_content user.email

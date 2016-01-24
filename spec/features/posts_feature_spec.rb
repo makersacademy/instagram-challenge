@@ -20,10 +20,11 @@ RSpec.feature 'Posts Features' do
       scenario 'a user can create a new post' do
         visit '/posts'
         click_link 'Create Post'
-        fill_in :description, with: 'A random cat'
-        attach_file :image, './spec/images/cat.png'
+        attach_file :post_image, './spec/images/cat.png'
+        fill_in 'Description', with: 'A random cat'
         click_button 'Post It!'
 
+        expect(current_path).to eq posts_path
         expect(page).to have_css 'img[src*=\'cat.png\']'
         expect(page).to have_content 'A random cat'
       end
