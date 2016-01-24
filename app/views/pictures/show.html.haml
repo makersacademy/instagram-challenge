@@ -10,11 +10,11 @@
 = 'like'.pluralize @picture.likes.count
 
 - if @picture.comments.any?
-  -@picture.comments.each do |comment|
+  - @picture.comments.each do |comment|
     %p= "#{comment.poster_name} says:"
     %p= comment.message
     %p= "Posted #{time_ago_in_words(comment.created_at)} ago"
-    -if user_signed_in? && comment.was_posted_by?(current_user)
+    - if user_signed_in? && comment.was_posted_by?(current_user)
       = link_to "Edit comment", edit_picture_comment_path(@picture, comment)
       = link_to "Delete comment", picture_comment_path(@picture, comment),
       method: :delete
