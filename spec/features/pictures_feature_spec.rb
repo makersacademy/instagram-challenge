@@ -77,4 +77,16 @@ feature 'Pictures' do
       expect(page).to have_content 'You cannot delete this picture as you did not create it'
     end
   end
+
+  context 'editing pictures' do
+    scenario 'user can edit their own pictues' do
+      sign_in(user.email, user.password)
+      post_picture
+      visit '/pictures'
+      click_link 'Edit'
+      fill_in 'Description', with: 'My first edited picture!'
+      click_button 'Update'
+      expect(page).to have_content 'My first edited picture!'
+    end
+  end
 end

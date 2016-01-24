@@ -1,12 +1,14 @@
-<%= link_to 'Post a picture', new_picture_path %>
+<%= link_to 'Post a picture', new_picture_path(current_user) %>
 <p>
 <% @pictures.each do |picture| %>
-  <%= link_to picture.user.username, '#' %> |
-  <%= link_to 'Delete', picture_path(picture), method: :delete %>
+  <%= link_to picture.user.username, pictures_path %> |
+  <%= link_to 'Delete', picture_path(picture), method: :delete %> |
+  <%= link_to 'Edit', edit_picture_path(picture) %>
   <br>
   <%= image_tag picture.image.url(:medium) %>
   <br>
-  <%= link_to '♥', '#' %> <%= pluralize picture.likes.count, 'like' %>
+  <%= link_to '♥', picture_likes_path(picture), class: 'likes-link', method: :post %>
+  <span class="likes_count"><%= picture.likes.count %></span> <%= 'like'.pluralize(picture.likes.count) %>
   <br>
   <%= link_to picture.user.username, '#' %>
   <%= picture.description %>

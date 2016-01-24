@@ -10,14 +10,14 @@ feature 'Likes' do
     let(:user2){User.create(name: 'Don Draper', email: 'don@drapers.com',
                             username: 'dondraper', password: 'whisky123',
                             password_confirmation: 'whisky123')}
-    it 'allows users to \'like\' a picture' do
+    it 'allows users to \'like\' a picture', js: true do
       sign_in(user.email, user.password)
       post_picture
       click_link '♥'
       expect(page).to have_content '1 like'
     end
 
-    it 'displays correct count of likes' do
+    it 'displays correct count of likes', js: true do
       sign_in(user.email, user.password)
       post_picture
       click_link '♥'

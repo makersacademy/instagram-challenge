@@ -19,6 +19,20 @@ class PicturesController < ApplicationController
     @picture = Picture.new
   end
 
+  def edit
+    @picture = Picture.find(params[:id])
+    unless current_user.pictures.include? @picture
+      flash[:notice] = 'Error: You cannot edit this picture as you did not create it'
+      redirect_to pictures_path
+    end
+  end
+
+  def update
+    @picture = Picture.find(params[:id])
+    @picture.update(picture_params)
+    redirect_to pictures_path
+  end
+
   def show
     @pictures = Picture.find(params[:id])
   end
