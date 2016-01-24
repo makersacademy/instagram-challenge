@@ -3,6 +3,24 @@
     <%= link_to post.comment, post_path(post) %>
     <%= link_to "Edit #{post.comment}", edit_post_path(post) %>
     <%= link_to "Delete #{post.comment}", post_path(post), method: :delete %>
+    <%= link_to "Comment #{post.comment}", new_post_comment_path(post) %>
+
+    <h3>Comments for <%= post.comment %></h3>
+
+      <% if post.comments.any? %>
+        <ul>
+          <% post.comments.each do |comment| %>
+            <li>
+              <%= comment.comment %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No reviews.</p>
+    <% end %>
+
+
+
   <% end %>
 <% else %>
   <h1>No posts yet!</h1>
