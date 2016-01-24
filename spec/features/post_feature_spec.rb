@@ -3,6 +3,8 @@ require 'rails_helper'
 feature 'post' do
   before(:each) do
     visit '/'
+    user = FactoryGirl.create(:user)
+    login_as(user)
   end
   context 'no images have been added' do
     scenario 'should display a prompt to add a restaurant' do
