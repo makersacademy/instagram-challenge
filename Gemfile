@@ -29,9 +29,16 @@ group :development, :test do
   gem 'haml'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'rspec-collection_matchers'
+  gem 'shoulda'
+  gem 'shoulda-context'
+end
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
   gem 'spring'
 end
