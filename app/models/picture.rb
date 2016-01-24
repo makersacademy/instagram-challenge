@@ -10,4 +10,8 @@ class Picture < ActiveRecord::Base
                     :default_url => "/images/:style/missing.jpeg"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  def was_created_by?(user)
+    user.id === self.user_id
+  end
+
 end

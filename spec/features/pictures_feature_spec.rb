@@ -1,5 +1,4 @@
 require 'rails_helper'
-img = Rack::Test::UploadedFile.new('spec/files/pirates1.jpeg', 'image/jpg')
 
 RSpec.feature '<<Pictures>>' do
 
@@ -15,73 +14,9 @@ RSpec.feature '<<Pictures>>' do
       end
 
     scenario 'a user may upload a picture' do
-      visit '/pictures'
-      click_link 'Upload a picture...'
-      fill_in 'Title', with: 'Pirate Party!'
-      fill_in 'Caption', with: 'Ahoy!'
-      attach_file 'Image', Rails.root.join('spec/files/pirates1.jpeg')
-      click_button 'Create Picture'
+      add_picture
       expect(current_path).to eq '/pictures'
       expect(page).to have_css "img[src*='pirates1.jpeg']"
-    end
-  end
-
-  context 'when pictures have been added' do
-
-    let!(:pic){Picture.create(title: 'Pirate Party!',
-                              caption: 'Nothing here...',
-                              image: img)}
-
-    scenario 'viewing all pictures' do
-      visit '/pictures'
-      expect(page).to have_content 'Pirate Party!'
-      expect(page).to have_css "img[src*='pirates1.jpeg']"
-      expect(page).not_to have_content 'There are\'nt any pictures here yet.'
-    end
-
-    scenario 'viewing individual pictures' do
-      visit '/pictures'
-      click_link 'Pirate Party!'
-      expect(page).to have_content 'Nothing here...'
-      expect(current_path).to eq "/pictures/#{pic.id}"
-    end
-
-    context 'editing pictures' do
-      scenario 'a user may edit their picture' do
-        visit '/pictures'
-        click_link 'Pirate Party!'
-        click_link 'Edit Pirate Party!'
-        fill_in 'Title', with: 'No party'
-        fill_in 'Caption', with: 'not any more'
-        attach_file 'Image', Rails.root.join('spec/files/missing.jpeg')
-        click_button 'Update Picture'
-        expect(page).to have_content 'No party'
-        expect(page).to have_css "img[src*='missing.jpeg']"
-      end
-      scenario 'a user may not edit anothers picture' do
-        click_link 'Sign out'
-        sign_up_2
-        visit '/pictures'
-        click_link 'Pirate Party!'
-        expect(page).not_to have_link 'Edit Pirate Party!'
-      end
-    end
-
-    context 'deleting pictures' do
-      scenario 'a user may delete their picture' do
-        visit '/pictures'
-        click_link 'Pirate Party!'
-        click_link 'Delete Pirate Party!'
-        expect(page).not_to have_content 'Pirate Party!'
-        expect(page).to have_content 'Picture deleted'
-      end
-      scenario 'a user may not delete anothers picture' do
-        click_link 'Sign out'
-        sign_up_2
-        visit '/pictures'
-        click_link 'Pirate Party!'
-        expect(page).not_to have_link 'Delete Pirate Party!'
-      end
     end
   end
 
@@ -102,4 +37,63 @@ RSpec.feature '<<Pictures>>' do
     end
   end
 
+  context 'when pictures have been added' do
+
+    before do
+      add_picture
+    end
+
+    scenario 'viewing all pictures' do
+      visit '/pictures'
+      expect(page).to have_content 'Pirate Party!'
+      expect(page).to have_css "img[src*='pirates1.jpeg']"
+      expect(page).not_to have_content 'There are\'nt any pictures here yet.'
+    end
+
+    scenario 'viewing individual pictures' do
+      visit '/pictures'
+      click_link 'Pirate Party!'
+      expect(page).to have_content 'Ahoy!'
+    end
+
+    context 'editing pictures' do
+      scenario 'a user may edit their picture' do
+        visit '/pictures'
+        click_link 'Pirate Party!'
+        click_link 'Edit Pirate Party!'
+        fill_in 'Title', with: 'No party'
+        fill_in 'Caption', with: 'not any more'
+        attach_file 'Image', Rails.root.join('spec/files/missing.jpeg')
+        click_button 'Update Picture'
+        expect(page).to have_content 'No party'
+        expect(page).to have_css "img[src*='missing.jpeg']"
+      end
+
+      scenario 'a user may not edit anothers picture' do
+        click_link 'Sign out'
+        sign_up_2
+        visit '/pictures'
+        click_link 'Pirate Party!'
+        expect(page).not_to have_link 'Edit Pirate Party!'
+      end
+    end
+
+    context 'deleting pictures' do
+      scenario 'a user may delete their picture' do
+        visit '/pictures'
+        click_link 'Pirate Party!'
+        click_link 'Delete Pirate Party!'
+        expect(page).not_to have_content 'Pirate Party!'
+        expect(page).to have_content 'Picture deleted'
+      end
+
+      scenario 'a user may not delete anothers picture' do
+        click_link 'Sign out'
+        sign_up_2
+        visit '/pictures'
+        click_link 'Pirate Party!'
+        expect(page).not_to have_link 'Delete Pirate Party!'
+      end
+    end
+  end
 end

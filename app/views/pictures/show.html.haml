@@ -5,7 +5,8 @@
   -@picture.comments.each do |comment|
     %p= comment.message
 
+-if user_signed_in? && @picture.was_created_by?(current_user)
+  = link_to "Edit #{@picture.title}", edit_picture_path(@picture)
+  = link_to "Delete #{@picture.title}", picture_path(@picture), method: :delete
 
-= link_to "Edit #{@picture.title}", edit_picture_path(@picture)
-= link_to "Delete #{@picture.title}", picture_path(@picture), method: :delete
 = link_to "Post a comment...", new_picture_comment_path(@picture)

@@ -18,6 +18,7 @@ RSpec.feature '<<Users>>' do
       click_link 'Upload a picture...'
       expect(current_path).to eq '/users/sign_in'
     end
+  end
 
   context 'user signed in and on homepage' do
 
@@ -39,12 +40,8 @@ RSpec.feature '<<Users>>' do
     it 'should allow a user to add a picture' do
       visit '/'
       click_link 'Upload a picture...'
-      expect(current_path).to eq '/pictures/new'   
+      expect(current_path).to eq '/pictures/new'
     end
   end
-
-end
-
-
 
 end
