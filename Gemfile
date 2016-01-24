@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml-rails'
 gem 'paperclip'
 gem 'aws-sdk','< 2.0'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -37,10 +39,10 @@ gem 'aws-sdk','< 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'dotenv-rails'
   gem 'byebug'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'dotenv-rails'
   gem 'shoulda'
   gem 'rspec-collection_matchers'
   gem 'devise'
