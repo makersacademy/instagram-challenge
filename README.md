@@ -23,16 +23,25 @@ Visit: [http://localhost:3000](http://localhost:3000) on your machine.
 
 Technologies
 -------------
-- Ruby
+Builded with:
 - Ruby on Rails
 - Devise
-- OmniAuth
 - Postgres
 - JQuery AJAX
-- Bootstrap
+- Bootstrap SASS
 - Paperclip
 - ImageMagick
 - AWS S3 Bucket
+
+Tested with:
+- RSpec Rails
+- Capybara
+- Poltergeist
+- Shoulda
+- Factory Girl
+- Faker
+- Coveralls
+
 
 Contributors
 -------------
