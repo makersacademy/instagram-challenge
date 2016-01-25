@@ -1,0 +1,25 @@
+%h1= @picture.title
+= image_tag(@picture.image.url(:medium))
+%h3= @picture.caption
+-if user_signed_in?
+  = link_to "Like #{@picture.title}", picture_likes_path(@picture),
+  class: 'likes-link', method: :post
+%span.likes_count= @picture.likes.count
+= 'like'.pluralize @picture.likes.count
+- if @picture.comments.any?
+  - @picture.comments.each do |comment|
+    #comment
+      .well
+        %p= "#{comment.poster_name} says:"
+        %p= comment.message
+        %p= "Posted #{time_ago_in_words(comment.created_at)} ago"
+        - if user_signed_in? && comment.was_posted_by?(current_user)
+          = link_to "Edit comment", edit_picture_comment_path(@picture, comment)
+          = link_to "Delete comment", picture_comment_path(@picture, comment),
+          method: :delete
+
+- if user_signed_in? && @picture.was_created_by?(current_user)
+  = link_to "Edit #{@picture.title}", edit_picture_path(@picture)
+  = link_to "Delete #{@picture.title}", picture_path(@picture), method: :delete
+- if user_signed_in?
+  = link_to "Post a comment...", new_picture_comment_path(@picture)
