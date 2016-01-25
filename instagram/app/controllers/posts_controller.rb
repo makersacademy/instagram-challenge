@@ -32,10 +32,10 @@ before_action :check_owner, only: [:edit, :update, :destroy]
 
   def update
    if @post.update(post_params)
-     flash[:notice] = "Post updated."
+     flash[:notice] = "Updated."
      redirect_to posts_path
    else
-     flash.now[:alert] = "Update failed.  Please check the form."
+     flash.now[:alert] = "Update failed."
      render :edit
    end
   end
