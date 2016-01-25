@@ -8,24 +8,26 @@
     = csrf_meta_tags
     %meta(charset="UTF-8")
 
+  %header
+    = link_to 'Upload a picture...', new_picture_path,
+    class: "btn btn-primary"
+    - if user_signed_in?
+      = link_to "Sign out", destroy_user_session_path, method: :delete,
+      class: "btn btn-default"
+    - else
+      = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook),
+      class: "btn btn-default"
+      = link_to "Sign in", new_user_session_path,
+      class: "btn btn-default"
+      = link_to "Sign up", new_user_registration_path,
+      class: "btn btn-default"
+    = link_to 'Return home', pictures_path,
+    class: "btn btn-primary"
+  %name
+    %h1 EDSTAGRAM
   %body
-    %header
-      = link_to 'Upload a picture...', new_picture_path,
-      class: "btn btn-primary"
-      - if user_signed_in?
-        = link_to "Sign out", destroy_user_session_path, method: :delete,
-        class: "btn btn-default"
-      - else
-        = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook),
-        class: "btn btn-default"
-        = link_to "Sign in", new_user_session_path,
-        class: "btn btn-default"
-        = link_to "Sign up", new_user_registration_path,
-        class: "btn btn-default"
-      = link_to 'Return home', pictures_path,
-      class: "btn btn-primary"
-      - if notice
-        .alert.alert-success= notice
-      - if alert
-        .alert.alert-danger= alert
-    = yield
+    - if notice
+      .alert.alert-success= notice
+    - if alert
+      .alert.alert-danger= alert
+  = yield

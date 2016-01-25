@@ -22,7 +22,7 @@ RSpec.feature 'liking pictures' do
     visit '/pictures'
     click_link 'Like Pirate Party!'
     expect(page).to have_content '1 like'
-    expect(page).to have_content 'Already liked!'
+    expect(page).to have_content 'Already liked'
   end
 
 end
