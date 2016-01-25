@@ -20,4 +20,30 @@ feature 'posts' do
       expect(current_path).to eq '/'
     end
   end
+
+  context 'viewing posts' do
+
+    let!(:burger){Post.create(description:'Burger')}
+
+    it 'lets a user view a post' do
+     visit '/posts'
+     click_link 'Burger'
+     expect(page).to have_content 'Burger'
+     expect(current_path).to eq "/posts/#{burger.id}"
+    end
+  end
+
+  context 'editing posts' do
+
+    before { Post.create description: 'Burger' }
+
+    it 'let a user edit a post' do
+     visit '/posts'
+     click_link 'Edit'
+     fill_in 'Description', with: 'Burger King'
+     click_button 'Update Post'
+     expect(page).to have_content 'Burger King'
+     expect(current_path).to eq '/posts'
+    end
+  end
 end
