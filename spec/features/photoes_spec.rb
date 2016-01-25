@@ -30,7 +30,7 @@ feature 'Viewing and deleting photoes' do
   context 'when no photos have been uploaded yet' do
     scenario 'no photos are shown' do
       visit '/'
-      expect(page).to have_content 'No photos yet!'
+      expect(page).to have_content 'OMG!'
       expect(page).not_to have_css('img')
     end
   end

@@ -16,7 +16,7 @@ The implementation was driven by acceptance unit test cycles, using Rspec/Capyba
 - So that I can upload my pictures, I can log in into Instagram
 - So that I can keep my Instagram identity safe, I can log out
 - So that I can show off my photographic skills, I can upload a picture
-- So that I can show other users my love, I can like pictures
+- So that I can show other users my love, I can like pictures (bugs to be fixed)
 - So that I can always find something interesting, I can see the latest added pictures
 - So that I can perceive the space as alive, I can see how long ago the pictures were posted
 - So that I can know who the author was, I can see the name of the picture's author
@@ -41,5 +41,9 @@ $ rspec
 ```
 
 ## Future improvements
-- Many user stories that I was planning to have developed by the weekend
-## Credits
+- Only one like per user
+- Like icon persists full after user logs out
+- Ajax for login/signup/image upload overlays
+- So that I can start a discussion, I want to be able to leave comments
+- So that I can categorize my pictures, I want to be able to tag them
+- So that I can more easily find interesting pictures, I want to be able to click on a tag
