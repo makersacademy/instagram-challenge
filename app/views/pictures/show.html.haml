@@ -11,13 +11,15 @@
 
 - if @picture.comments.any?
   - @picture.comments.each do |comment|
-    %p= "#{comment.poster_name} says:"
-    %p= comment.message
-    %p= "Posted #{time_ago_in_words(comment.created_at)} ago"
-    - if user_signed_in? && comment.was_posted_by?(current_user)
-      = link_to "Edit comment", edit_picture_comment_path(@picture, comment)
-      = link_to "Delete comment", picture_comment_path(@picture, comment),
-      method: :delete
+    #comment
+      .well
+        %p= "#{comment.poster_name} says:"
+        %p= comment.message
+        %p= "Posted #{time_ago_in_words(comment.created_at)} ago"
+        - if user_signed_in? && comment.was_posted_by?(current_user)
+          = link_to "Edit comment", edit_picture_comment_path(@picture, comment)
+          = link_to "Delete comment", picture_comment_path(@picture, comment),
+          method: :delete
 
 - if user_signed_in? && @picture.was_created_by?(current_user)
   = link_to "Edit #{@picture.title}", edit_picture_path(@picture)
