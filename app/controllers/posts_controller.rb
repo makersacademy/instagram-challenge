@@ -1,10 +1,15 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def new
     @post = Post.new
   end
 
   def index
+    if user_signed_in?
+      @current_user_id = current_user.id
+    end
     @posts = Post.all
   end
 
@@ -13,7 +18,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @current_user = current_user
+    @post = @current_user.posts.create(post_params)
+    # @post = Post.new(post_params)
     if @post.save
       redirect_to root_url(@post)
     else

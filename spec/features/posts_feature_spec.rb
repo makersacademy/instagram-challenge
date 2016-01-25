@@ -13,10 +13,8 @@ feature 'posts' do
   context 'creating a post' do
     it 'prompts user to fill out a form and displays the new post' do
       sign_up
-      click_link 'New Post'
-      fill_in 'Description', with: 'hello'
-      click_button 'Create Post'
-      expect(page).to have_content 'hello'
+      create_post
+      expect(page).to have_content 'Burger'
       expect(current_path).to eq '/'
     end
   end
@@ -35,10 +33,9 @@ feature 'posts' do
 
   context 'editing posts' do
 
-    before { Post.create description: 'Burger' }
-
     it 'let a user edit a post' do
-     visit '/posts'
+     sign_up
+     create_post
      click_link 'Edit'
      fill_in 'Description', with: 'Burger King'
      click_button 'Update Post'
@@ -49,10 +46,9 @@ feature 'posts' do
 
   context 'deleting posts' do
 
-    before {Post.create description: 'Burger'}
-
     it 'removes a post when a user clicks a delete link' do
-      visit '/posts'
+      sign_up
+      create_post
       click_link 'Delete'
       expect(page).not_to have_content 'Burger'
       expect(page).to have_content 'Post deleted successfully'

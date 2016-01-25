@@ -46,4 +46,28 @@ feature 'Users' do
       expect(page).not_to have_link 'Sign In'
     end
   end
+
+  context 'editing' do
+    it 'user can only edit their own post' do
+      visit('/')
+      sign_up
+      create_post
+      click_link 'Sign Out'
+      sign_up2
+      expect(page).not_to have_link 'Edit'
+    end
+  end
+
+  context 'deleting' do
+    it 'user can only delete their own post' do
+      visit('/')
+      sign_up
+      create_post
+      click_link 'Sign Out'
+      sign_up2
+      expect(page).not_to have_link 'Delete'
+    end
+  end
+
+
 end
