@@ -7,7 +7,7 @@ class LikesController < ApplicationController
       render json: {new_like_count: @picture.likes.count}
     else
       flash[:notice] = "Already liked"
-      redirect_to picture_path(@picture)
+      redirect_to :back
     end
   end
 

@@ -240,7 +240,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   config.omniauth :facebook,
                   Rails.application.secrets.FACEBOOK_APP_ID,
-                  Rails.application.secrets.FACEBOOK_APP_SECRET,
+                  Rails.application.secrets.FACEBOOK_APP2_SECRET,
                   :display => 'popup'
 
   # ==> Warden configuration

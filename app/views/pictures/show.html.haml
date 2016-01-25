@@ -1,14 +1,11 @@
 %h1= @picture.title
 = image_tag(@picture.image.url(:medium))
 %h3= @picture.caption
-
-- if user_signed_in?
+-if user_signed_in?
   = link_to "Like #{@picture.title}", picture_likes_path(@picture),
   class: 'likes-link', method: :post
-
 %span.likes_count= @picture.likes.count
 = 'like'.pluralize @picture.likes.count
-
 - if @picture.comments.any?
   - @picture.comments.each do |comment|
     #comment

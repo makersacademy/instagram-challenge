@@ -2,5 +2,10 @@
   - @pictures.each do |picture|
     %h1= link_to picture.title, picture_path(picture)
     = link_to image_tag(picture.image.url(:thumb)), picture_path(picture)
+    - if user_signed_in?
+      = link_to "Like #{picture.title}", picture_likes_path(picture),
+      class: 'likes-link', method: :post
+    %span.likes_count= picture.likes.count
+    = 'like'.pluralize picture.likes.count
 - else
   %h4 There aren't any pictures here yet.

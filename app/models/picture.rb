@@ -19,13 +19,13 @@ class Picture < ActiveRecord::Base
     comment = comments.new(picture_id: self.id,
                             message: params[:message])
     comment.user_id = user.id
-    return comment
+    comment
   end
 
   def build_like(user)
     like = likes.new(picture_id: self.id)
     like.user_id = user.id
-    return like
+    like
   end
 
 end

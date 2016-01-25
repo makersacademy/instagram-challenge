@@ -12,7 +12,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    puts 'BROKEN'
     redirect_to root_path
   end
 end
