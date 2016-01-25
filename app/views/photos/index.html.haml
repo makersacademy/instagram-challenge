@@ -2,6 +2,16 @@
   - @photos.each do |photo|
     = link_to (image_tag photo.image.url(:medium)), photo_path(photo)
     = photo.caption
+    - if post.user == current_user
+      = link_to 'Delete post', post_path(post), method: :delete
+      = link_to 'Edit post', edit_post_path(post)
+        .likes
+        - if photo.likes.any? { |like| like.user == current_user }
+          = link_to 'Unlike'
+        - else
+          = link_to 'Like', photo_likes_path(photo), method: :post
+          %p= pluralize photo.likes.count, 'like'
+
     = link_to 'Edit photo', edit_photo_path(photo)
     = link_to 'Delete photo', photo_path(photo), method: :delete
     = link_to 'Upload photo', new_photo_path
