@@ -18,3 +18,10 @@ def sign_up(email: 'test@test.com',
   fill_in 'Password confirmation', with: password_confirmation
   click_button 'Sign up'
 end
+
+def leave_a_comment
+  visit '/photos'
+  click_link 'Comment'
+  fill_in 'Comment', with: 'Meet Coco'
+  click_button 'Post comment'
+end
