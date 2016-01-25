@@ -42,7 +42,7 @@ $ rspec
 ```
 
 ## Future improvements
-- Only one like per user
+- Only one like per user (current bugs need fixing)
 - Like icon persists full after user logs out
 - Ajax for login/signup/image upload overlays
 - So that I can start a discussion, I want to be able to leave comments
