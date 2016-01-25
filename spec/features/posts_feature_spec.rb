@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'web_helper'
 
 feature 'posts' do
   context 'no posts have been added' do
@@ -23,6 +24,7 @@ feature 'posts' do
 
   context 'creating posts' do
     scenario 'prompts user to fill out a form, then displays the new post' do
+      sign_in
       visit '/posts'
       click_link 'Add a post'
       fill_in 'Caption', with: 'Here is a test post'
@@ -37,10 +39,10 @@ feature 'posts' do
     let!(:testpost){Post.create(caption:'Here is a test post')}
 
     scenario 'lets a user view a post' do
-     visit '/posts'
-     click_link 'Here is a test post'
-     expect(page).to have_content 'Here is a test post'
-     expect(current_path).to eq "/posts/#{testpost.id}"
+      visit '/posts'
+      click_link 'Here is a test post'
+      expect(page).to have_content 'Here is a test post'
+      expect(current_path).to eq "/posts/#{testpost.id}"
     end
   end
 
@@ -48,12 +50,13 @@ feature 'posts' do
     before { Post.create caption: 'Here is a test post' }
 
     scenario 'let a user edit a post' do
-     visit '/posts'
-     click_link 'Edit post'
-     fill_in 'Caption', with: 'A differently worded test post'
-     click_button 'Update Post'
-     expect(page).to have_content 'A differently worded test post'
-     expect(current_path).to eq '/posts'
+      sign_in
+      visit '/posts'
+      click_link 'Edit post'
+      fill_in 'Caption', with: 'A differently worded test post'
+      click_button 'Update Post'
+      expect(page).to have_content 'A differently worded test post'
+      expect(current_path).to eq '/posts'
     end
   end
 
@@ -61,6 +64,7 @@ feature 'posts' do
     before {Post.create caption: 'Here is a test post'}
 
     scenario 'removes a post when a user clicks a delete link' do
+      sign_in
       visit '/posts'
       click_link 'Delete post'
       expect(page).not_to have_content 'Here is a test post'
