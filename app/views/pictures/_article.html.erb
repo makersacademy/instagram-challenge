@@ -1,0 +1,30 @@
+<article id="<%= picture.id %>">
+  <header><a href=""><%= picture.username %></a></header>
+  <a class="image" href="<%= picture_path(picture) %>">
+  <figure style="background-image:url('<%= picture.image.url(:original)%>')"></figure>
+  </a>
+  <section class="details">
+    <p class="likes"><%= picture.likes.count %> <%= 'like'.pluralize(picture.likes.count) %></p>
+    <ul class="comments">
+      <% unless picture.description.empty? %>
+      <li><a href=""><%= picture.username %></a> <%= picture.description %></li>
+      <% end %>
+      <% if picture.comments.any? %>
+        <% picture.comments.each do |comment| %>
+          <li><a href=""><%= comment.username %></a> <%= comment.content %></li>
+        <% end %>
+      <% end %>
+    </ul>
+    <% if user_signed_in? %>
+      <hr class="separator">
+      <% if current_user.liked? picture %>
+        <%= link_to "Like", like_path(Like.find_by(user: current_user, picture: picture)), class: 'like full-like', method: :delete  %>
+      <% else %>
+        <%= link_to "Unlike", picture_likes_path(picture), class: 'like empty-like', method: :post %>
+      <% end %>
+      <%= form_for [picture, picture.comments.new] do |f| %>
+        <%= f.text_field :content,  placeholder: 'Add a comment...', class: 'comment_content', autocomplete: 'off' %>
+      <% end %>
+    <% end %>
+  </section>
+</article>
