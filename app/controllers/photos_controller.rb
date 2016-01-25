@@ -18,9 +18,22 @@ class PhotosController < ApplicationController
     end
   end
 
+  def destroy
+    photo = Photo.find(params[:id])
+    if photo.posted_by?(current_user)
+      photo.destroy
+      flash[:success] = 'Photo deleted successfully'
+    else
+      flash[:error] = 'Only the owner can delete a photo'
+    end
+    redirect_to photos_path
+  end
+
   private
 
   def photo_params
-    params.require(:photo).permit(:image)
+    new_params = params.require(:photo).permit(:image)
+    new_params[:user_id] = current_user.id
+    new_params
   end
 end

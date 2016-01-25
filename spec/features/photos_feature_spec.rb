@@ -1,5 +1,4 @@
 require 'rails_helper'
-include Devise::TestHelpers
 
 describe 'photo features' do
   feature 'showing photos' do
@@ -13,8 +12,8 @@ describe 'photo features' do
     end
 
     context 'photos have been added' do
-      let!(:photo) { create :test_photo, :first }
-      let!(:second_photo) { create :test_photo, :second }
+      let!(:photo) { FactoryGirl.create :test_photo, :first }
+      let!(:second_photo) { FactoryGirl.create :test_photo, :second }
 
       scenario 'display photos' do
         visit '/photos'
@@ -33,10 +32,10 @@ describe 'photo features' do
   end
 
   feature 'uploading photos' do
-    let!(:user) { create :user }
 
     scenario 'by submitting form' do
-      log_in
+      user = FactoryGirl.create :user
+      login_as user
       visit '/photos'
       click_link 'Upload a photo'
       page.attach_file('Image', Rails.root + 'spec/factories/images/test.png')
@@ -53,6 +52,35 @@ describe 'photo features' do
         expect(page).to have_content "You need to sign in or sign up before "\
                                      "continuing."
       end
+    end
+  end
+
+  feature 'deleteing photos' do
+    
+    context 'user logged in' do
+      scenario 'can delete their own post' do
+        user = FactoryGirl.create :user
+        login_as user
+        new_photo = FactoryGirl.create :test_photo, user: user
+        p new_photo
+        visit '/photos'
+        click_link 'Delete photo'
+        expect(current_path).to eq photos_path
+        expect(page).to have_content 'Photo deleted successfully'
+        expect(page).to_not have_xpath("//img[contains(@src, \'thumb/test.png\')]")
+      end
+
+      scenario 'should not see a delete link for someone elses photo' do
+        user2 = FactoryGirl.create :user2
+        login_as user2
+        visit '/photos'
+        expect(page).not_to have_link 'Delete photo'
+      end
+    end
+
+    scenario 'cannot delete any photos if not logged in' do
+      visit '/photos'
+      expect(page).not_to have_link 'Delete photo'
     end
   end
 end 

@@ -54,7 +54,7 @@ I'd like to have a personal page to show them
 
 As a user
 So that I can curate my photos
-I'd like to be able to delete them
+I'd like to be able to delete them ✔
 ```
 
 #####Likes/Comments
@@ -88,7 +88,7 @@ I'd like them to be tagged with a timestamp in a readable format
 
 As a user
 So that I know who owns each photo
-I'd like users to be logged in before they can post ✔
+I'd like them all to be tagged with a username
 
 As a user
 So that I can enjoy using the site

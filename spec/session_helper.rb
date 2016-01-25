@@ -9,11 +9,11 @@ module SessionHelpers
     click_button 'Sign up'
   end
 
-  def log_in(email='joeb@test.com')
+  def log_in(user)
     visit '/'
     log_out
     click_link 'Log in'
-    fill_in 'user_email', with: email
+    fill_in 'user_email', with: user.email
     fill_in 'user_password', with: 'password'
     click_button 'Log in'
   end
