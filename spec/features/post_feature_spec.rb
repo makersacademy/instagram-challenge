@@ -24,6 +24,7 @@ feature 'posts' do
   context 'creating posts' do
     scenario 'promts a user to add a post then displays the post' do
       visit '/posts'
+      sign_up
       click_link 'Add a post'
       # attach_file('post[image]', Rails.root + 'spec/features/support/test_image.jpg')
       fill_in 'Caption', with: 'Birthday'
@@ -41,6 +42,7 @@ feature 'posts' do
 
     scenario 'let a user edit a post' do
       visit '/posts'
+      sign_up
       click_link 'Edit Birthday'
       fill_in 'Caption', with: 'Birthday party'
       click_button 'Update Post'
@@ -57,6 +59,7 @@ feature 'posts' do
 
     scenario 'removes a post when user clicks delete post' do
       visit '/posts'
+      sign_up
       click_link 'Delete post'
       expect(page).not_to have_content 'Birthday'
       expect(page).to have_content 'Post deleted!'
