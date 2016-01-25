@@ -42,6 +42,29 @@ feature 'posts' do
      expect(page).to have_content 'Here is a test post'
      expect(current_path).to eq "/posts/#{testpost.id}"
     end
+  end
 
+  context 'editing posts' do
+    before { Post.create caption: 'Here is a test post' }
+
+    scenario 'let a user edit a post' do
+     visit '/posts'
+     click_link 'Edit post'
+     fill_in 'Caption', with: 'A differently worded test post'
+     click_button 'Update Post'
+     expect(page).to have_content 'A differently worded test post'
+     expect(current_path).to eq '/posts'
+    end
+  end
+
+  context 'deleting posts' do
+    before {Post.create caption: 'Here is a test post'}
+
+    scenario 'removes a post when a user clicks a delete link' do
+      visit '/posts'
+      click_link 'Delete post'
+      expect(page).not_to have_content 'Here is a test post'
+      expect(page).to have_content 'Post deleted successfully'
+    end
   end
 end
