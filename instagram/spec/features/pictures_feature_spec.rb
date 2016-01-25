@@ -8,4 +8,14 @@ feature 'pictures' do
       expect(page).to have_link 'Post a picture'
     end
   end
+
+  context 'pictures have been posted' do
+    before do
+    Picture.create(:picture, user: create(:user, username: 'user'))
+    end
+    scenario 'display picture' do
+      visit '/pictures'
+      expect(page).to have_css("img[src*='image_name.png']")
+    end
+  end
 end
