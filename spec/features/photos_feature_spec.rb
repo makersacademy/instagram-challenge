@@ -2,24 +2,36 @@ require 'rails_helper'
 
 feature 'photos' do
   context 'viewing photos' do
+
     scenario 'no photos added' do
+      sign_up
       visit '/photos'
       expect(page).to have_content 'No photos uploaded yet!'
     end
+
     scenario 'should display a prompt to add a picture' do
+      sign_up
       visit '/photos'
       expect(page).to have_link('Upload photo')
       expect(page).to have_content 'No photos uploaded yet!'
     end
+
+    # scenario 'should not allow access to photos if not logged in' do
+    #   click_link('Sign out')
+    #   visit '/photos'
+    #   expect(page).to have_content 'You need to sign up first!'
+    # end
   end
 
   context 'creating photos' do
+
     scenario 'user is able to upload a photo' do
       upload_photo
       expect(page).to have_css("img[src*='teckel.jpeg']")
     end
 
     scenario 'an image must be uploaded during photo upload' do
+      sign_up
       visit '/photos'
       click_link 'Upload photo'
       fill_in 'Caption', with: 'cutie'
@@ -29,6 +41,7 @@ feature 'photos' do
   end
 
   context 'deleting photos' do
+
     scenario 'user can remove photo by clicking delete button' do
       upload_photo
       click_link 'Delete photo'
@@ -40,6 +53,7 @@ feature 'photos' do
   end
   #
   context 'editing photo upload' do
+
     scenario 'user can edit upload by clicking edit button' do
       upload_photo
       click_link 'Edit photo'
