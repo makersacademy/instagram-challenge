@@ -3,20 +3,15 @@ require 'rails_helper'
 feature 'photos' do
   context 'viewing photos' do
 
-    scenario 'no photos added' do
+    scenario 'when no photos added should display a prompt to add a picture' do
       sign_up
       visit '/photos'
       expect(page).to have_content 'No photos uploaded yet!'
-    end
-
-    scenario 'should display a prompt to add a picture' do
-      sign_up
-      visit '/photos'
       expect(page).to have_link('Upload photo')
-      expect(page).to have_content 'No photos uploaded yet!'
     end
-
+    #
     # scenario 'should not allow access to photos if not logged in' do
+    #   sign_up
     #   click_link('Sign out')
     #   visit '/photos'
     #   expect(page).to have_content 'You need to sign up first!'
