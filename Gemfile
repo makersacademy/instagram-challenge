@@ -29,7 +29,7 @@ group :development, :test do
   gem 'byebug'
   gem 'haml'
   gem 'devise'
-  gem 'dotenv'
+  gem 'omniauth-facebook'
 end
 
 group :test do
