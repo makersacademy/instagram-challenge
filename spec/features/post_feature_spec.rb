@@ -20,23 +20,23 @@ feature 'post' do
       fill_in 'Description', with: 'Test'
       click_button 'Create Post'
     end
-    xscenario 'images added are displayed on screen' do
+    scenario 'images added are displayed on screen' do
       expect(page).to have_css 'img[src*=\'test.jpg\']'
       expect(page).to have_content 'Test'
     end
-    xscenario 'images can be deleted' do
+    scenario 'images can be deleted' do
       click_link 'Back'
       click_link 'Delete'
       click_button 'Create Post'
       expect(page).to_not have_css 'img[src*=\'test.jpg\']'
     end
-    xscenario 'images can be edited' do
+    scenario 'images can be edited' do
       click_link 'Edit'
       fill_in 'Title', with: 'Test2'
       click_button 'Update Post'
       expect(page).to have_content 'Test2'
     end
-    xscenario 'image can only be edited and deleted by the user that made them' do
+    scenario 'image can only be edited and deleted by the user that made them' do
       click_link('Sign out')
       click_link('Sign up')
       fill_in('Email', with: 'test3@example.com')
