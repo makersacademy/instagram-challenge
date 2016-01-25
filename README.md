@@ -1,12 +1,6 @@
 Instagram Challenge
 ===================
 
-NOTE TO MAKERS REVIEWER
-
-2 RSpec tests are commented out in spec/features/likes_features_spec.rb.
-I have not been able to get the ajax request for the likes to work correctly - it is rendering the json object rather than refreshing the like count.
-
-
 Overview
 -------
 * This is my solution to Makers Academy Week 7 challenge, producing an image-uploader with persistent storage of images, comments and likes.
