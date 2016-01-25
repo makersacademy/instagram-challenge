@@ -1,0 +1,30 @@
+- if @photos.any?
+  - @photos.each do |photo|
+    .row.photo-feed
+      .ul.list-group
+        .li.list-group-item
+          %p.small= "#{time_ago_in_words(photo.created_at)} ago"
+          %p= "by #{photo.username}"
+        .li.list-group-item.photo
+          = image_tag photo.image.url
+        .li.list-group-item
+          = link_to icon('heart-o'), photo_likes_path(photo), method: :post, class: 'like-link'
+          %span.likes-count= photo.likes.count
+        .li.list-group-item
+          - if current_user && current_user.owns?(photo)
+            = link_to 'Delete photo', photo_path(photo), method: :delete
+        .li.list-group-item
+          .form-group
+            %input{:type=>"text"}
+
+        -# - if photo.comments.any?
+        -#   - comments.each do |comment|
+        -#     .li.list-group-item
+        -#       %p= comment.message
+        -#       %p= comment.username
+
+- else
+  .row.form-signin
+    %h1 OMG!
+    %p This place is still empty, but you can be the first to make some noise:
+    %a.btn.btn-primary{:href => new_photo_path} Upload the first ever image
