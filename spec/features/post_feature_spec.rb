@@ -36,6 +36,16 @@ feature 'post' do
       click_button 'Update Post'
       expect(page).to have_content 'Test2'
     end
+    xscenario 'image can only be edited and deleted by the user that made them' do
+      click_link('Sign out')
+      click_link('Sign up')
+      fill_in('Email', with: 'test3@example.com')
+      fill_in('Password', with: 'testtest3')
+      fill_in('Password confirmation', with: 'testtest3')
+      click_button('Sign up')
+      expect(page).to_not have_link 'Delete'
+      expect(page).to_not have_link 'Edit'
+    end
   end
   context 'when invalid information is inputed' do
     scenario 'no title' do

@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
   def index
     @posts = Post.all
+    @current_user = current_user
   end
   def show
   end
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-
+    @post.user = current_user
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -29,8 +30,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params)
