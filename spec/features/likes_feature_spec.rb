@@ -3,7 +3,6 @@ require 'rails_helper'
 feature 'Likes' do
 
 before do
-  sign_up
   upload_photo
 end
 
