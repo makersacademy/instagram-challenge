@@ -1,0 +1,37 @@
+<% if @posts.all.any? %>
+  <% @posts.all.each do |post| %>
+    <p>
+      <%= image_tag post.image.url(:thumb) %>
+      <%= link_to post.caption, post_path(post) %>
+    </p>
+      <%= link_to 'Edit post', edit_post_path(post) %>
+      <%= link_to 'Delete post', post_path(post), method: :delete %>
+    <br>
+
+    <%= link_to "Like", post_likes_path(post), class: 'likes-link' %>
+    <span class="likes_count"><%= post.likes.count %></span> <%= 'Like'.pluralize(post.likes.count) %>
+
+      <p>Comments on post</p>
+        <% if post.comments.any? %>
+          <ul>
+            <% post.comments.each do |comment| %>
+              <li>
+                <%= comment.text %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No comments.</p>
+        <% end %>
+
+    <p>
+      <%= link_to 'Comment on post', new_post_comment_path(post) %>
+    </p>
+  <% end %>
+<% else %>
+  <h1>No posts yet</h1>
+<% end %>
+
+<p>
+  <%= link_to "Add a post", new_post_path %>
+</p>
