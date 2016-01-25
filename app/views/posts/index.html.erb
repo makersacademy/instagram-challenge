@@ -3,7 +3,9 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
       <h2> <%= post.caption %> </h2>
-      <p><%= pluralize post.ticks.count, 'tick' %></p>
+      <p><%= link_to "Give social validation!", post_ticks_path(post), class: 'ticks-link' %>
+      <span class="ticks_count"> <%= post.ticks.count %> </span> <%= 'tick'.pluralize(post.ticks.count) %></p>
+      <!-- <p><%= pluralize post.ticks.count, 'tick' %></p> -->
       <%= image_tag post.image.url(:medium) %>
       <%= link_to "Edit #{post.caption}", edit_post_path(post) %>
       <%= link_to "Delete post", post_path(post), method: :delete %>
