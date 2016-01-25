@@ -16,6 +16,7 @@ The implementation was driven by acceptance unit test cycles, using Rspec/Capyba
 - So that I can upload my pictures, I can log in into Instagram
 - So that I can keep my Instagram identity safe, I can log out
 - So that I can show off my photographic skills, I can upload a picture
+- So that I can remove things I don't want to share anymore, I can delete a picture I have added
 - So that I can show other users my love, I can like pictures (bugs to be fixed)
 - So that I can always find something interesting, I can see the latest added pictures
 - So that I can perceive the space as alive, I can see how long ago the pictures were posted
