@@ -5,7 +5,7 @@ feature 'liking posts' do
     testpost = Post.create(caption: 'Here is a test post')
   end
 
-  scenario 'a user can like a post, which updates the post like count' do
+  scenario 'a user can like a post, which increments the post like counter', js: true do
     visit '/posts'
     click_link 'Like'
     expect(page).to have_content('1 Like')
