@@ -23,8 +23,10 @@ feature 'posts' do
   end
 
   it 'allows users to edit posts' do
-    Post.create(caption: 'This is my caption baby!!')
     sign_up
+    click_link('Chuck up a photo')
+    fill_in('Caption', with: 'Here is a post')
+    click_button('Create Post')
     click_link 'Edit'
     fill_in('Caption', with: 'My edited caption')
     click_button('Update Post')
@@ -32,9 +34,11 @@ feature 'posts' do
   end
 
   it 'allows users to delete posts' do
-    Post.create(caption: 'This is my caption baby!!')
     sign_up
+    click_link('Chuck up a photo')
+    fill_in('Caption', with: 'Here is a post')
+    click_button('Create Post')
     click_link 'Delete'
-    expect(page).to_not have_content('This is my caption baby!!')
+    expect(page).to_not have_content('Here is a post')
   end
 end

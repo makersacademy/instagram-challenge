@@ -1,9 +1,11 @@
 class PostsController < ApplicationController
 
+
   before_action :authenticate_user!
 
   def index
     @posts = Post.all
+    @users = User.all
   end
 
   def new
@@ -11,7 +13,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @current_user = current_user
+    @post = @current_user.posts.new(post_params)
     if @post.save
       redirect_to '/posts'
     else
@@ -39,6 +42,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:caption)
+    params.require(:post).permit(:caption, :image)
   end
 end

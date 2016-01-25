@@ -4,9 +4,4 @@ class LikesController < ApplicationController
     @post.likes.create
     render json: {new_like_count: @post.likes.count}
   end
-
-
-
-
-
 end

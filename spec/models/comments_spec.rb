@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Post, type: :model do
-  it { is_expected.to have_many :comments }
-
+describe Comment, type: :model do
+  it { is_expected.to belong_to :post }
+  it { is_expected.to belong_to :user }
 
   it 'should destroy all comments associated with it upon deletion' do
     post = Post.create(caption: 'this is my post')
