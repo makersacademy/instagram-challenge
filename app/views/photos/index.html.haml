@@ -1,0 +1,12 @@
+- if @photos.any?
+  %ul
+    - @photos.each do |photo|
+      %li
+        = link_to(image_tag(photo.image.url(:thumb)), photo_path(photo))
+        - if photo.posted_by?(current_user)
+          = link_to "Delete photo", photo_path(photo),	method: :delete
+
+- else
+  %h1 No photos yet!
+
+= link_to 'Upload a photo', new_photo_path

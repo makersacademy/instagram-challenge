@@ -1,26 +1,96 @@
-Instagram Challenge
-===================
+#Instagram Clone
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Ruby on Rails, test driven with RSpec.
 
-Task
------
+Also using:  
+* Capybara, shoulda, factory_girl_rails for testing.  
+* HTML, CSS, JS and Jquery for front end.  
+* Postgresql database.  
+* Image upload using paperclip and hosting with Amazon S3.
 
-Build Instagram: Simple huh!
+###Usage
+```
+git clone https://github.com/hibreez/instagram-challenge.git
+cd instagram-challenge
+bundle install
+bin/rake db:setup
+bin/rails s
+open http://localhost:3000
+```
 
-Bonus if you can write your own set of sensible user stories!
+###Features/User Stories  
+#####User Accounts
+```
+As a user
+So that I can be indentified when I use the site
+I'd like to sign up ✔
 
-As usual please start by
+As a time-pressed user
+So that I can sign up quickly
+I'd like to sign up through Facebook
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+As a user
+So that I can make posts as myself
+I'd like to log in ✔
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a user
+So that others can't use my account
+I'd like to log out ✔
+```
 
-Bonus if you can add filters!
+#####Photos
+```
+As a user
+So that I can share my photos
+I'd like to upload images ✔
+
+As a user
+So that I can make my photos look cool
+I'd like to be able to add filters to them
+
+As a user
+So that other users can see my photos
+I'd like to have a personal page to show them
+
+As a user
+So that I can curate my photos
+I'd like to be able to delete them ✔
+```
+
+#####Likes/Comments
+```
+As a user
+So that I can easily show approval
+I'd like to be able to 'like' an image
+
+As a user
+So that I can share my thoughts about an image
+I'd like to be able to post comments on them
+
+As a user
+So that I can have a conversation about an image
+I'd like to be able to reply to comments
+
+As a user
+So that I can retract my comments 
+I'd like to be able to delete them
+```
+
+#####UI Features/Constrains
+```
+As a user
+So that I can keep up with other users posts
+I'd like to see them all in reverse chronological order ✔
+
+As a user
+So that I can understand users posts in context
+I'd like them to be tagged with a timestamp in a readable format
+
+As a user
+So that I know who owns each photo
+I'd like them all to be tagged with a username
+
+As a user
+So that I can enjoy using the site
+I'd like to to be styled awesomely
+```
