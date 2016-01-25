@@ -14,8 +14,11 @@
           <% post.comments.each do |comment| %>
           <li>
             <%= comment.comment %>
+            <p><%= link_to "Like", comment_likes_path(comment), class: 'likes-link' %>
+            <span class="likes_count"> <%= comment.likes.count %> </span> <%= 'like'.pluralize(comment.likes.count) %></p>
           </li>
-            <p><%= pluralize comment.likes.count, 'like' %></p>
+
+
           <% end %>
         </ul>
         <% else %>
