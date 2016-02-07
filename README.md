@@ -27,11 +27,18 @@ Bonus if you can add filters!
 
 
 User stories
--------------------------------------------------------
-User can sign up, and sign in with email or facebook
+------------------------------------------------------------------------
+As a user so that I can share my life with my friends, I want to
+be able to upload photos
 
-User must be logged in to Instagram to view content
+As a user to protect me from my clumsiness, I want to be able to
+edit and delete the photos that I have uploaded
 
+As a user for social validation, I want my friends to be able
+to view my photos
 
-Other Functionalities -------------------------------------------------------
-Home page will display photos
+As the web owner to protect user's privacy I want user to have to
+sign in before viewing photos
+
+As a user to make sign up faster, I want to be able to sign in using
+email or through facebook

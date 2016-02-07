@@ -42,11 +42,16 @@ feature 'Photos' do
       click_link 'Delete photo'
       expect(page).to have_content 'Chill...photo deleted'
     end
-  #
-  #   scenario 'user cannot remove photos uploaded by other users' do
-  #   end
+
+    scenario 'user cannot remove photos uploaded by other users' do
+      upload_photo
+      click_link 'Sign out'
+      sign_up(email: 'daniela@test.com')
+      click_link 'Delete photo'
+      expect(page).to have_content 'Only the owner can delete this'
+    end
   end
-  #
+
   context 'editing photo upload' do
 
     scenario 'user can edit upload by clicking edit button' do
@@ -56,9 +61,6 @@ feature 'Photos' do
       click_button 'Update photo'
       expect(page).to have_content 'bla bla'
     end
-
-    # scenario 'user cannot remove photos uploaded by other users' do
-    # end
   end
 
 end

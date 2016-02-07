@@ -1,5 +1,12 @@
 class PhotosController < ApplicationController
   before_action :authenticate_user!
+  # before_action :check_author, :only => [:destroy]
+  #
+  # def check_author
+  #   if current_user != Photo.find(params[:id]).user_id
+  #     redirect_to photos_path
+  #   end
+  # end
 
   def index
     @photos=Photo.all
@@ -14,7 +21,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.create(photo_params)
+    @photo = current_user.photos.new(photo_params)
     if @photo.save
       flash[:notice] = 'Nice, photo uploaded'
       redirect_to photos_path
@@ -36,10 +43,16 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:id])
-    @photo.destroy
+    if current_user.photos.include? @photo
+      @photo.destroy
       flash[:notice] = 'Chill...photo deleted'
-      redirect_to photos_path
+    else
+      flash[:alert] = 'Only the owner can delete this'
+    end
+    redirect_to photos_path
   end
+
+private
 
   def photo_params
     params.require(:photo).permit(:image, :caption)
