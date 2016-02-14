@@ -37,6 +37,12 @@ edit and delete the photos that I have uploaded
 As a user for social validation, I want my friends to be able
 to view my photos
 
+As a user to protect my property, I want to be the only one able
+to delete my photos
+
+As a user to protect my property, I want to be the only one able
+to edit my photos
+
 As the web owner to protect user's privacy I want user to have to
 sign in before viewing photos
 
