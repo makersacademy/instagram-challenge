@@ -16,18 +16,48 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div class="text-center">
+  <nav class="navbar navbar-default">
     <div class="container">
+      <!-- <div class="navbar-header"> -->
+        <div class="navbar-brand"><a href="/">Instagram</a></div>
+        <div class="navbar-right" style="display:inline-block">
+          <% if user_signed_in? %>
+            <div class="navbar-right">
+              <%= form_tag(destroy_user_session_path, method: 'delete', class: 'navbar-btn') do %>
+                <%= submit_tag("Sign out") %>
+              </div>
+              <div class="navbar-right">
+                <p class="navbar-text" style="float:right">@<%= current_user.username %></p>
+              </div>
+              <% end %>
+            </div>
+            <% else %>
+            <div class="navbar-right" style="margin-left:10px">
+              <%= form_tag(new_user_session_path, class: 'navbar-btn') do %>
+              <%= submit_tag("Sign in") %>
+              <% end %>
+            </div>
+            <div class="navbar-right">
+              <%= form_tag(new_user_registration_path, method: 'get', class: 'navbar-btn') do %>
+              <%= submit_tag("Sign up") %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </nav>
+    <!-- <div class="container">
       <div class="row">
-        <div class="col-xs-4"><h2 class="text-center">Instagram</h2></div>
-        <div class="col-xs-4"><p class="text-success"><%= notice %></p></div>
-        <div class="col-xs-4">
+        <div class="col col-xs-4"><h2 class="text-center">Instagram</h2></div>
+        <div class="col col-xs-4"><p class="text-success"><%= notice %></p></div>
+        <div class="col col-xs-4">
           <div class="row">
-            <div class="col-xs-6">
+            <div class="col col-xs-6">
               <% if user_signed_in? %>
                 <h4 class="text-center"><%= current_user.username %></h4>
             </div>
-            <div class="col-xs-6">
+            <div class="col col-xs-6">
               <%= form_tag(destroy_user_session_path, method: 'delete') do %>
                 <%= submit_tag("Sign out") %>
               <% end %>
@@ -43,8 +73,11 @@
           </div>
         </div>
       </div>
+    </div> -->
+  <div class="text-center">
+    <div class="container">
+      <%= yield %>
     </div>
-    <%= yield %>
   </div>
 </body>
 </html>

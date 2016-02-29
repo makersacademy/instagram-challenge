@@ -81,6 +81,17 @@ Approach
 ---------
 This project was test-driven using RSpec for the unit and controller tests, and RSpec/Capybara for the feature tests.  I made use of FactoryGirl to set up test objects for the tests, and Shoulda to provide appropriate matchers for the unit tests.  Additionally, I used DatabaseCleaner to empty the test database in between tests to ensure reliable results.  File attachment functionality was provided by Paperclip.  I also made use of Bootstrap for styling purposes.
 
+Screenshots
+------------
+Signed out
+![signed out](http://i.imgur.com/ulDBVSn.png)
+
+Signed in
+![signed in](http://i.imgur.com/cagVQPh.png)
+
+Posting a picture
+![Post picture](http://i.imgur.com/d1MPQ6f.png)
+
 Further Work
 -------------
 * Outstanding issue with likes not pluralising correctly unless you refresh the page
