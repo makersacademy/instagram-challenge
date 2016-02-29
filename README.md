@@ -1,4 +1,4 @@
-Instagram Challenge
+Instagram Clone
 ===================
 
 Author: Emma Beynon
@@ -7,14 +7,10 @@ Github: https://github.com/emmabeynon
 
 Email: emma.beynon@gmail.com
 
-
-This is my submission for the Makers Academy Week 7 Weekend Challenge: https://github.com/makersacademy/instagram-challenge
-
-
 Overview
 ---------
 
-This week we have been tasked with building an Instagram clone using Ruby on Rails.
+I have been tasked with building an Instagram clone using Ruby on Rails.  This is the brief:
 ```
 Your challenge is to build Instagram using Rails.
 You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture.
@@ -65,6 +61,9 @@ I would like to view all of a user's pictures on one page
 
 Instructions
 ------------
+You can view this project at https://fierce-spire-98420.herokuapp.com/
+To create your own version:
+
 * Fork this repo and clone to your local machine.
 * Create the databases and migrate
 ```
@@ -101,4 +100,3 @@ Further Work
 * Users can only like a picture once
 * Allow users to delete their comments
 * Host images on S3
-* Deploy to Heroku
