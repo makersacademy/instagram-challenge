@@ -1,4 +1,4 @@
-Instagram Challenge
+Winstagram
 ===================
 Makers Academy week 07 weekend challenge<br>
 Rufus Raghunath<br>
@@ -27,7 +27,7 @@ User stories
 
 ```
 As a visitor,
-So I can see what Instagram has to offer,
+So I can see what Winstagram has to offer,
 I would like to be able to browse recent images.
 ```
 ```
@@ -37,8 +37,13 @@ I would like to sign up with my email, user handle, and password.
 ```
 ```
 As a user,
+For extra convenience,
+I would like to sign up for Winstagram with my Facebook account.
+```
+```
+As a user,
 So I can share a picture with the world,
-I would like to be able to upload images to Instagram.
+I would like to be able to upload images to Winstagram.
 ```
 ```
 As a user,
@@ -47,13 +52,18 @@ I would like to add descriptions to images when posting.
 ```
 ```
 As a user,
-So I can show my reaction to Instagram images,
+So I can show my reaction to Winstagram images,
 I would like to comment on other users' comments.
 ```
 ```
 As a user,
 So I can show my appreciation for good posts,
 I would like to be able to 'like' images.
+```
+```
+As a user,
+So I can have a smoother WWinstagram experience,
+I would like my comments and likes to be posted without a page refresh.
 ```
 ```
 As an administrator,
