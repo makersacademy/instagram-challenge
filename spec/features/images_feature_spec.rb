@@ -25,6 +25,15 @@ feature 'images' do
   end
 
   context 'Uploading an image' do
+    scenario 'users can upload an image' do
+      visit '/images'
+      click_link 'Add an Image'
+      page.attach_file('image_image', Rails.root + 'spec/Fixtures/2005-spring39.jpg')
+      fill_in 'Title', with: 'Zeekust'
+      click_button 'Create Image'
+      expect(current_path).to eq '/images'
+      expect(page).to have_css("img[src*='2005-spring39.jpg']")
+    end
     scenario 'users can add an title for the image' do
       visit '/images'
       click_link 'Add an Image'
