@@ -16,13 +16,14 @@ feature 'photos' do
       expect(page).to have_content 'TESTDESC'
     end
 
-    scenario 'users can fill in a description for the image' do
+      scenario 'users can upload an image using the form' do
       visit '/'
       click_link 'Upload A Photo'
-      fill_in 'Description', with: 'test description'
+      attach_file "photo[image]", "spec/asset_specs/photos/Elephant.jpg"
+      fill_in 'Description', with: 'test image of elephant'
       click_button 'Create Photo'
-      expect(current_path).to eq '/'
-      expect(page).to have_content 'test description'
+      expect(page).to have_content 'test image of elephant'
+      expect(page).to have_selector("img")
     end
   end
   
