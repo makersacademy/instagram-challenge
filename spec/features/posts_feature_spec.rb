@@ -31,4 +31,21 @@ feature 'Posts' do
     end
   end
 
+  context 'editing pictures' do
+    scenario '-> users can update pictures & descriptions' do
+      signup
+      post_pic
+      click_link('Edit picture')
+      fill_in('Description', with: 'Evil Leader')
+      attach_file 'post[image]', Rails.root.join('spec','fixtures','cake.png')
+      click_button('Update Post')
+      expect(page).to have_content 'Evil Leader'
+      expect(page).to have_css("img[src*='cake.png']")
+    end
+  end
+
+
+
+
+
 end
