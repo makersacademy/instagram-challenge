@@ -13,6 +13,7 @@ feature 'user can add a photo' do
 	visit('/')
 	click_link('Add a photo')
 	expect(current_path).to eq('/photos/new')
+	allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(:true)
 	attach_file('photo[image]', "#{Rails.root}/spec/cat.jpg", visible: false)
 	click_button('Create Photo')
 	expect(page).to have_css("img[src*='cat.jpg']")
