@@ -28,5 +28,11 @@ feature 'comments' do
       expect(page).not_to have_content('This is my comment')
     end
 
+    scenario 'users can only delete their own comments' do
+      sign_up_with_second_user
+      visit photos_path
+      expect(page).not_to have_link('Delete comment')
+    end
+
   end
 end

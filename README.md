@@ -15,7 +15,6 @@ To build Instagram
 
 Completed
 -----
-* You must submit a pull request to this repo with your code by 9am Monday morning
 * A user can upload a picture to the website
 * All users can see all the pictures uploaded
 * A photo can be deleted
@@ -26,6 +25,12 @@ Completed
 * Deleting a photo deletes the comments as well
 * A user can sign in, and out of the website
 * Only users that are signed in can upload a picture
+* only the photos owner can delete the photo
+* only the comment owner can delete the comment
+* The time when the picture was uploaded is added in the description  
+
+
+
 
 
 
@@ -33,8 +38,6 @@ Completed
 
 Todo
 -----
-* only the photos owner can delete the photo
-* The time when the picture was uploaded is added in the description  
 * A user can comment on someones else picture
 * The comment includes the username of the person and the time ago since it was made
 * Multiple comments can be added to a picture

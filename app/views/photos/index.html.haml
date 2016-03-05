@@ -5,13 +5,17 @@
   - @photos.each do |photo|
     %li= photo.description
     %p= image_tag photo.image.url(:thumb)
+    = "Uploaded #{distance_of_time_in_words(Time.at(photo.image_updated_at), Time.now)} ago"
+
     - if photo.comments.any?
       <ul>
       - photo.comments.each do |comment|
         %li= comment.comment
-        =link_to 'Delete comment', comment_path(comment), method: :delete
+        - if (current_user && current_user.owns?(comment))
+          =link_to 'Delete comment', comment_path(comment), method: :delete
       </ul>
-    = link_to "Delete photo", photo_path(photo), method: :delete
+    - if (current_user && current_user.owns?(photo))
+      = link_to "Delete photo", photo_path(photo), method: :delete
     = link_to "Add comment", new_photo_comment_path(photo)
 
   </ul>

@@ -1,5 +1,17 @@
 class PhotosController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
+  # before_action :photo_owner, :except =>[:index, :new, :create]
+
+
+  # def photo_owner
+  #   @photo = Photo.find(params[:id])
+  #   unless @photo.user_id == current_user.id
+  #     flash[:notice] = 'You are not authorised to change the photo'
+  #     redirect_to photos_path
+  #   end
+  # end
+
+
   def index
     @photos = Photo.all
   end
@@ -9,7 +21,8 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.create(photo_params)
+    @user = User.find(current_user.id)
+    @user.photos.create(photo_params)
     redirect_to photos_path
   end
 

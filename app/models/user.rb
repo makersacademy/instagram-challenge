@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def owns?(post)
+    post.user_id == self.id
+  end
 end
