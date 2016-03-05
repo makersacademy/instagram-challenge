@@ -12,6 +12,11 @@ feature "User sessions" do
 
     it "should not give the option to 'sign out' yet" do
       visit('/')
+      expect(page).not_to have_selector('img')
+    end
+
+    it "should not have a profile picture thumbnail" do
+      visit('/')
       expect(page).not_to have_link('I\'ve Had Enough InstaGratification')
     end
   end
