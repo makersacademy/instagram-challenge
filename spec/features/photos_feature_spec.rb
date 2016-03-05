@@ -8,4 +8,15 @@ feature 'photos' do
       expect(page).to have_link 'Add a photo'
     end
   end
+
+  context 'a photo can be added' do
+    scenario 'user can upload and view a photo' do
+      visit '/photos'
+      click_link 'Add a photo'
+      attach_file 'Image', Rails.root.join('spec','features','img.jpg')
+      click_button 'Create Photo'
+      expect(page).to have_css("img[src*='img.jpg']")
+    end
+  end
+
 end

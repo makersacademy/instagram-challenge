@@ -1,2 +1,8 @@
-No photos yet!
-%a(href='#') Add a photo
+%meta(charset="UTF-8")
+- if @photos.any?
+  - @photos.each do | photo |
+    = image_tag photo.image.url(:thumb)
+- else
+  No photos yet!
+  
+%a(href='/photos/new') Add a photo
