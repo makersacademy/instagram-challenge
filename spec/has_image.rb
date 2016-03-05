@@ -1,7 +1,7 @@
 module Capybara
   class Session
     def has_image?(src)
-      has_css?("img[src*='Ambox_warning_red.png']")
+      has_xpath?("//img[contains(@src,\"/assets/#{src}\")]")
     end
   end
 end
