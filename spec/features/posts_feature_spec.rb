@@ -30,5 +30,27 @@ feature 'posts' do
       expect(page).to have_content 'This is my first real message'
       expect(current_path).to eq '/posts'
     end
+    scenario 'shows date of post' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Message', with: 'This is my first real message'
+      click_button 'Create Post'
+      expect(page).to have_content DateTime.now.strftime('%m/%d/%Y')
+      expect(page).to have_content DateTime.now.strftime('%I:%M%p')
+    end
+  end
+
+    context 'viewing posts' do
+
+    let!(:post1){Post.create(message: 'Hello world!')}
+
+    scenario 'lets a user view a post' do
+     visit '/posts'
+     click_link 'Hello world!'
+     expect(page).to have_content 'Hello world!'
+     expect(page).to have_content "Posted at #{DateTime.now.strftime('%I:%M%p, %m/%d/%Y')}" 
+     expect(current_path).to eq "/posts/#{post1.id}"
+    end
+
   end
 end

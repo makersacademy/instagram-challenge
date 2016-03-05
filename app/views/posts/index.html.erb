@@ -1,9 +1,9 @@
+<a href="posts/new">Add a post</a>
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-    <h2><%= post.message %></h2>
+    <h2><%= link_to post.message, post_path(post) %></h2>
+    <%= post.created_at.strftime('%I:%M%p, %m/%d/%Y') %>
   <% end %>
 <% else %>
   <h1>No posts yet</h1>
 <% end %>
-
-<a href="posts/new">Add a post</a>

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.all.reverse
   end
 
   def new
@@ -14,5 +14,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:message)
+  end
+
+  def show
+    @post = Post.find(params[:id])
+    @time_of_post = @post.created_at.strftime("Posted at %I:%M%p, %m/%d/%Y")
   end
 end
