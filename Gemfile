@@ -30,6 +30,8 @@ gem 'paperclip', git: 'https://github.com/thoughtbot/paperclip', ref: '523bd46c7
 gem 'aws-sdk'
 # devise for use authentication
 gem 'devise'
+# facebook login
+gem 'omniauth-facebook'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
