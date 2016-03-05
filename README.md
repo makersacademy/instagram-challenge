@@ -24,6 +24,8 @@ Completed
 * The comment is shown under each picture
 * A user can delete the comment
 * Deleting a photo deletes the comments as well
+* A user can sign in, and out of the website
+* Only users that are signed in can upload a picture
 
 
 
@@ -31,8 +33,7 @@ Completed
 
 Todo
 -----
-* A user can sign in, and out of the website
-* Only users that are signed in can upload a picture
+* only the photos owner can delete the photo
 * The time when the picture was uploaded is added in the description  
 * A user can comment on someones else picture
 * The comment includes the username of the person and the time ago since it was made

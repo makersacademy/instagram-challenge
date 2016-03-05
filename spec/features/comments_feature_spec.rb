@@ -4,6 +4,7 @@ require_relative './helpers/photo_helpers'
 feature 'comments' do
   context 'a photo is uploaded' do
     scenario 'a user can add a comment to the photo' do
+      sign_up_helper
       upload_photo
       leave_comment
       expect(page).to have_content('This is my comment')
@@ -12,6 +13,7 @@ feature 'comments' do
 
   context 'a photo with a comment' do
     before do
+      sign_up_helper
       upload_photo
       leave_comment
     end
