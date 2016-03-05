@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'pictures' => 'pictures#index'
   resources :pictures
   # The priority is based upon order of creation: first created -> highest priority.
@@ -55,4 +56,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  root to: 'pictures#index'
 end
