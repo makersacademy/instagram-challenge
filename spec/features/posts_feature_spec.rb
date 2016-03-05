@@ -52,4 +52,15 @@ feature 'posts' do
       expect(page).to have_content 'New description'
     end
   end
+
+  context 'deleting a post' do
+    before { Post.create description: 'Sample post' }
+
+    scenario 'delete post when user clicks delete link' do
+      visit '/posts'
+      click_link 'Delete'
+      expect(page).not_to have_content 'Sample post'
+      expect(page).to have_content 'Post deleted successfully'
+    end
+  end
 end
