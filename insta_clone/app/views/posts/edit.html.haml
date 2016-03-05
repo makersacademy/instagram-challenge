@@ -1,8 +1,11 @@
 %h1 Edit post
 
-= form_for @post do |f|
+= form_for @post, html: {multipart: true} do |f|
   %p
     = f.label :title
     = f.text_field :title
+    %br
+    = image_tag @post.image.url(:thumb)
+    = f.file_field :image, name: "image"
   %p
     = f.submit

@@ -28,6 +28,13 @@ feature 'posts' do
       expect(page).to have_content 'Log in'
     end
 
+    scenario 'a user is able to upload a picture' do
+      sign_up(email: "asd@asd.com", password: "asdasdasd")
+      new_post(title: "kfc")
+      expect(page).to have_content 'kfc'
+      expect(page).to have_css('img')
+    end
+
   end
 
   context 'editing posts' do
