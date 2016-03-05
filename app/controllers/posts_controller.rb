@@ -20,4 +20,14 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @time_of_post = @post.created_at.strftime("Posted at %I:%M%p, %m/%d/%Y")
   end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    redirect_to '/posts'
+  end
 end

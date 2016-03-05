@@ -40,16 +40,29 @@ feature 'posts' do
     end
   end
 
-    context 'viewing posts' do
+      context 'viewing posts' do
 
-    let!(:post1){Post.create(message: 'Hello world!')}
+      let!(:post1){Post.create(message: 'Hello world!')}
 
-    scenario 'lets a user view a post' do
+      scenario 'lets a user view a post' do
+       visit '/posts'
+       click_link 'Hello world!'
+       expect(page).to have_content 'Hello world!'
+       expect(page).to have_content "Posted at #{DateTime.now.strftime('%I:%M%p, %m/%d/%Y')}"
+       expect(current_path).to eq "/posts/#{post1.id}"
+      end
+    end
+
+    context 'editing posts' do
+     before { Post.create message: 'Hello Universe!' }
+
+    scenario 'let a user edit a post' do
      visit '/posts'
-     click_link 'Hello world!'
-     expect(page).to have_content 'Hello world!'
-     expect(page).to have_content "Posted at #{DateTime.now.strftime('%I:%M%p, %m/%d/%Y')}" 
-     expect(current_path).to eq "/posts/#{post1.id}"
+     click_link 'Edit post'
+     fill_in 'Message', with: 'Goodbye World'
+     click_button 'Update Post'
+     expect(page).to have_content 'Goodbye World'
+     expect(current_path).to eq '/posts'
     end
 
   end
