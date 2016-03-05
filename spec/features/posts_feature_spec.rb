@@ -53,6 +53,7 @@ feature 'posts' do
   end
 
   context 'editing posts' do
+
     scenario 'let a user edit a post' do
       signup
       create_post
@@ -63,9 +64,19 @@ feature 'posts' do
       expect(page).to have_content 'A new description'
       expect(current_path).to eq '/posts'
     end
+
+    scenario 'users can only edit own posts' do
+      post = FactoryGirl.create(:post)
+      signup
+      visit '/'
+      expect(page).to have_content post.description
+      expect(page).to_not have_content 'Edit'
+    end
+
   end
 
   context 'deleting posts' do
+
     scenario 'removes a post when a user clicks a delete link' do
       signup
       create_post
@@ -74,6 +85,15 @@ feature 'posts' do
       expect(page).not_to have_content 'A description'
       expect(page).to have_content 'Post deleted successfully'
     end
+
+    scenario 'users can only delete own posts' do
+      post = FactoryGirl.create(:post)
+      signup
+      visit '/'
+      expect(page).to have_content post.description
+      expect(page).to_not have_content 'Delete'
+    end
+
   end
 
 end
