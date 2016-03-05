@@ -35,8 +35,7 @@ feature 'posts' do
     scenario 'a user can edit a post' do
       Post.create(title: "test")
       sign_up(email: "asd@asd.com", password: "asdasdasd")
-      visit '/'
-      click_link 'test'
+      click_link 'Edit test'
       expect(page).to have_content('Edit post')
       fill_in "Title", with: "test has been edited"
       click_button 'Update Post'
@@ -47,8 +46,29 @@ feature 'posts' do
       new_post(title: "test")
       click_link 'Sign out'
       sign_up(email: "assdfdsd@asd.com", password: "asdasdasd")
-      click_link 'test'
+      click_link 'Edit test'
+      click_button 'Update Post'
       expect(page).to have_content 'You can only edit your own posts'
+    end
+
+  end
+
+  context 'deleting posts' do
+
+    scenario 'a user can delete a post' do
+      sign_up(email: "asd@asd.com", password: "asdasdasd")
+      new_post(title: "test")
+      click_link 'Delete test'
+      expect(page).to have_content('Post deleted')
+    end
+
+    scenario 'a user can only delete his own post' do
+      sign_up(email: "asd@asd.com", password: "asdasdasd")
+      new_post(title: "test")
+      click_link 'Sign out'
+      sign_up(email: "assdsdfd@asd.com", password: "asdasdasd")
+      click_link 'Delete test'
+      expect(page).to have_content('You can only delete your own posts')
     end
 
   end

@@ -1,7 +1,9 @@
+= link_to "Add a post", new_post_path
 - if @posts.any?
   - @posts.each do |post|
-    %h2
-      = link_to post.title, edit_post_path(post)
+    %h2= link_to post.title, post_path(post)
+    - if current_user
+      = link_to "Edit #{post.title}", edit_post_path(post)
+      = link_to "Delete #{post.title}", post_path(post), method: :delete
 - else
   %p No posts yet
-= link_to "Add a post", new_post_path

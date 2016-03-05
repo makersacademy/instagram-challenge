@@ -10,6 +10,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def edit
     @post = Post.find(params[:id])
   end
@@ -18,16 +22,25 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if user_owns_post?
       @post.update(post_params)
-      redirect_to '/'
     else
       flash[:notice] = "You can only edit your own posts"
-      redirect_to '/'
     end
-
+    redirect_to '/'
   end
 
   def create
     @post = current_user.posts.create(post_params)
+    redirect_to '/'
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    if user_owns_post?
+      @post.destroy
+      flash[:notice] = "Post deleted"
+    else
+      flash[:notice] = "You can only delete your own posts"
+    end
     redirect_to '/'
   end
 
