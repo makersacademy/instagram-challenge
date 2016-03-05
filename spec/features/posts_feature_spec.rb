@@ -10,7 +10,7 @@ feature 'Posts' do
     end
   end
 
-  context 'pictures have been added' do
+  context 'pictures & descriptions have been added' do
     scenario '-> pictures should be displayed' do
       signup
       click_link('Add a picture')
@@ -22,7 +22,7 @@ feature 'Posts' do
     end
   end
 
-  context 'creating pictures' do
+  context 'creating pictures & descriptions' do
     scenario '-> users can only add pics when logged in' do
       visit('/')
       click_link('Add a picture')
@@ -31,7 +31,7 @@ feature 'Posts' do
     end
   end
 
-  context 'editing pictures' do
+  context 'editing pictures & descriptions' do
     scenario '-> users can update pictures & descriptions' do
       signup
       post_pic
@@ -44,8 +44,14 @@ feature 'Posts' do
     end
   end
 
-
-
-
+  context 'deleting pictures' do
+    scenario ('-> users can delete pictures') do
+      signup
+      post_pic
+      click_link('Delete picture')
+      expect(page).to_not have_css("img[src*='kimj.png']")
+      expect(page).to_not have_content 'Great Leader'
+    end
+  end
 
 end
