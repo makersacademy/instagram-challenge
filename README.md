@@ -1,7 +1,13 @@
 INSTRUCTIONS:
 
 ```
-$ XXX
+$ git clone git@github.com:[USERNAME]/instagram-challenge.git
+$ cd instagram-challenge
+$ rake db:setup
+$ rspec
+$ rake db:seed
+$ rails s
+$ open http://localhost:3000
 ```
 
 ABOUT:		
