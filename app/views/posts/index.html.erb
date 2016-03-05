@@ -2,11 +2,20 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <h2><%= link_to post.message, post_path(post) %></h2>
+    <% if post.comments.any? %>
+      <ul>
+        <% post.comments.each do |comment| %>
+          <li>
+            <%= comment.message %>
+          </li>
+       <% end %>
+      </ul>
+    <% end %>
+    <%= link_to "Add comment", new_post_comment_path(post) %>
     <%= link_to "Edit post", edit_post_path(post) %>
     <%= link_to "Delete post", post_path(post), method: :delete %>
-    <%= link_to "Add comment", new_post_comment_path(post) %>
     <%= post.created_at.strftime('%I:%M%p, %m/%d/%Y') %>
-  <% end %>
+<% end %>
 <% else %>
   <h1>No posts yet</h1>
 <% end %>

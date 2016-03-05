@@ -12,4 +12,10 @@ feature 'reviewing' do
      expect(page).to have_content('I agree')
   end
 
+  scenario 'deleting a post deletes the comments as well' do
+    visit '/posts'
+    click_link 'Delete post'
+    expect(page).not_to have_content('I agree')
+  end
+
 end
