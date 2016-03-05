@@ -4,7 +4,11 @@
     <ul>
         <% @posts.each do |post| %>
             <li>
-                <%= image_tag post.image.url(:thumb) %>
+                <%= link_to post_path(post), class: "show-link" do %>
+                    <div class="image-box">
+                        <%= image_tag post.image.url(:thumb) %>
+                    </div>
+                <% end %>
                 <%= post.title %>
             </li>
         <% end %>

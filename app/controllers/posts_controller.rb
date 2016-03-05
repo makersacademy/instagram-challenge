@@ -5,13 +5,48 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def new
+    @user = User.find(current_user.id)
     @post = Post.new
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
   def create
-    @post = Post.create(post_params)
-    redirect_to posts_path 
+    @user = User.find(current_user.id)
+    @post = @user.posts.create(post_params)
+    if @post.save
+      redirect_to posts_path 
+    else
+      render 'new'
+    end
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if current_user.id == @post.user_id
+      @post.update(post_params)
+      redirect_to posts_path 
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    if current_user.id == @post.user_id
+      @post.destroy
+      flash[:notice] = 'Your post was deleted successfully'
+      redirect_to posts_path
+    else
+      render "index"
+    end
   end
 
   private
