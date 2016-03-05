@@ -25,6 +25,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # haml for templates
 gem 'haml'
 
+gem 'devise'
+
+gem 'omniauth-facebook'
+
+gem 'dotenv-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -39,6 +45,13 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'capybara'
+  # Using factory girl to create objects in tests
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  # for generating content in tests
+  gem 'faker'
+  gem 'shoulda'
+  gem 'rspec-collection_matchers'
 end
 
 group :development do
