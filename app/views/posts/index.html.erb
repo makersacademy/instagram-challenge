@@ -1,2 +1,11 @@
 <h1>Instagram clone</h1>
 <%= link_to "New post", new_post_path %>
+<br/>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <%=image_tag post.image.url(:medium) %>
+    <%= link_to "View #{post.caption}", post_path(post) %>
+  <% end %>
+<% else %>
+  No posts yet
+<% end %>

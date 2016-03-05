@@ -1,0 +1,21 @@
+<% if @post.errors.any? %>
+  <section id="errors" >
+    <h2> <%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved: </h2>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+<% if @post.image %>
+  <%= image_tag @post.image.url(:medium) %>
+<% end %>
+<%= form_for @post, html: { multipart: true } do |f| %>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+  <%= f.label :caption %>
+  <%= f.text_field :caption %>
+  <%= f.submit %>
+<% end %>
+<%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: 'Are you sure you want to delete this post?' }%>
