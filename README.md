@@ -4,14 +4,18 @@ Instagram Challenge
 User Stories
 -------------
 ```
+:white_check_mark:
 As a user,
 so that I can share my experiences,
 id like to be able to post photos.
+:white_check_mark:
 ```
 ```
+:construction:
 As a user,
 so that my posts are unique to me,
 Id like to be able to sign up/in
+:construction:
 ```
 ```
 as a user,
