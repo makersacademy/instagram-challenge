@@ -1,11 +1,6 @@
 require 'rails_helper'
 
 feature 'posts' do
-  scenario 'display a link to post a photo' do
-    visit '/posts'
-    expect(page).to have_link 'Post a photo'
-  end
-
   context 'if no photos have been posted' do
     scenario 'display a message that there are no posts' do
       visit '/posts'
@@ -22,6 +17,17 @@ feature 'posts' do
       visit '/posts'
       expect(page).to have_content 'Sample post'
       expect(page).not_to have_content 'No posts yet...'
+    end
+  end
+
+  context 'viewing a post' do
+    let!(:post) { Post.create(description: 'Sample post') }
+
+    scenario 'let a user view a post' do
+      visit '/posts'
+      click_link 'More'
+      expect(page).to have_content 'Sample post'
+      expect(current_path).to eq "/posts/#{post.id}"
     end
   end
 
