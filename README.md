@@ -19,15 +19,16 @@ Completed
 * A user can upload a picture to the website
 * All users can see all the pictures uploaded
 * A photo can be deleted
+* A user can add a description to their picture when they upload it
+
 
 
 Todo
 -----
 
-
+* A user can add a comment
 * A user can sign in, and out of the website
 * Only users that are signed in can upload a picture
-* A user can add a description to their picture when they upload it
 * The time when the picture was uploaded is added in the description  
 * A user can comment on someones else picture
 * The comment is shown under each picture
