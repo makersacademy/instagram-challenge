@@ -4,6 +4,7 @@ feature 'posts' do
 
   context 'no posts have been added' do
     scenario 'should display a prompt to add a post' do
+      signup
       visit '/posts'
       expect(page).to have_content 'No posts yet'
       expect(page).to have_link 'Add a post'
@@ -35,8 +36,7 @@ feature 'posts' do
     context 'must be signed in' do
       it 'does not let you add a post if not signed in' do
         visit '/'
-        click_link 'Add a post'
-        expect(page).to have_content 'Log in'
+        expect(page).to_not have_content 'Add a post'
       end
     end
 

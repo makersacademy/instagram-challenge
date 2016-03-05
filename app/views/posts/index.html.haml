@@ -4,10 +4,10 @@
     %h2= post.description
     = image_tag post.image.url(:medium)
     = link_to "More", post_path(post)
-    = link_to "Edit", edit_post_path(post)
-    = link_to "Delete", post_path(post), method: :delete
-    = link_to "Add comment", new_post_comment_path(post)
     - if current_user
+      = link_to "Edit", edit_post_path(post)
+      = link_to "Delete", post_path(post), method: :delete
+      = link_to "Add comment", new_post_comment_path(post)
       = form_for [post, @comment] do |f|
         = f.label :comment
         = f.text_area :comment
@@ -26,4 +26,5 @@
 - else
   No posts yet
 
-%a(href='#{url_for(action: 'new', controller: 'posts')}') Add a post
+- if current_user
+  %a(href='#{url_for(action: 'new', controller: 'posts')}') Add a post
