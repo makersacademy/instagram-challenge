@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root 'posts#index'
+  post '/posts/:id/update_likes' => 'posts#update_likes'
   resources :posts do
     resources :comments
   end

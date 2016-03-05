@@ -65,4 +65,11 @@ feature 'Posts' do
       expect(page).not_to have_link("Delete Your Post")
     end
   end
+
+  scenario 'users can like posts' do
+    @user.posts.create(title: "First post")
+    visit '/'
+    click_button "Like"
+    expect(page).to have_content "1 like"
+  end
 end

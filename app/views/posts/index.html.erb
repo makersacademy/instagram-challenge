@@ -9,8 +9,14 @@
                         <%= image_tag post.image.url(:thumb) %>
                     </div>
                 <% end %>
-                <%= link_to "Comment", post_path(post), class: "comment" %>
-                <%= post.title %>
+                <p>
+                    <%= form_for post, url: "/posts/#{post.id}/update_likes", action: "update_likes", method: :post do |f| %>
+                        <%= f.submit "Like" %>
+                    <% end %>
+                    <%= pluralize(post.likes, 'like') %> 
+                    <%= link_to "Comment", post_path(post), class: "comment" %>
+                </p>
+                <p><%= find_username_by_id(post.user_id)%> <%= post.title %></p>
             </li>
         <% end %>
     </ul>
