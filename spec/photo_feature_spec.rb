@@ -13,9 +13,8 @@ feature 'user can add a photo' do
 	visit('/')
 	click_link('Add a photo')
 	expect(current_path).to eq('/photos/new')
-	attach_file('photo[file]', "#{Rails.root}/spec/cat.jpg", visible: false)
+	attach_file('photo[image]', "#{Rails.root}/spec/cat.jpg", visible: false)
 	click_button('Create Photo')
-	puts current_path
-  expect(page).to have_image('cat')
+	expect(page).to have_css("img[src*='cat.jpg']")
   end
 end
