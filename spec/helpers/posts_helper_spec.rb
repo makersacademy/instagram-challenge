@@ -13,3 +13,31 @@ require 'rails_helper'
 RSpec.describe PostsHelper, type: :helper do
   pending "add some examples to (or delete) #{__FILE__}"
 end
+
+
+
+def signup
+  visit '/'
+  click_link('Sign up')
+  fill_in('Email', with: 'test@example.com')
+  fill_in('Password', with: 'testtest')
+  fill_in('Password confirmation', with: 'testtest')
+  click_button('Sign up')
+end
+
+def signup_two
+  visit '/'
+  click_link('Sign up')
+  fill_in('Email', with: 'two@example.com')
+  fill_in('Password', with: 'testtest')
+  fill_in('Password confirmation', with: 'testtest')
+  click_button('Sign up')
+end
+
+def create_post
+  visit '/'
+  click_link 'Add a post'
+  fill_in 'Description', with: 'A description'
+  attach_file 'post[image]', Rails.root.join('spec','images','bbc-g.jpg')
+  click_button 'Create Post'
+end

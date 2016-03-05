@@ -4,7 +4,7 @@ RSpec.describe PostsController, type: :controller do
 
   context 'creating a post' do
 
-    # login_user
+    login_user
 
     before :each do
         get :new

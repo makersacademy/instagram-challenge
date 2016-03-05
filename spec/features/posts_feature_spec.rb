@@ -20,8 +20,10 @@ feature 'posts' do
   end
 
   context 'adding posts' do
+
     scenario 'prompts user to fill out a form, then displays the new post' do
-      visit '/posts'
+      signup
+      visit '/'
       click_link 'Add a post'
       fill_in 'Description', with: 'This is the description'
       attach_file 'post[image]', Rails.root.join('spec','images','bbc-g.jpg')
@@ -29,6 +31,15 @@ feature 'posts' do
       expect(page).to have_content 'This is the description'
       expect(current_path).to eq '/posts'
     end
+
+    context 'must be signed in' do
+      it 'does not let you add a post if not signed in' do
+        visit '/'
+        click_link 'Add a post'
+        expect(page).to have_content 'Log in'
+      end
+    end
+
   end
 
   context 'viewing a post' do
@@ -43,7 +54,8 @@ feature 'posts' do
 
   context 'editing posts' do
     scenario 'let a user edit a post' do
-      post = FactoryGirl.create(:post)
+      signup
+      create_post
       visit '/posts'
       click_link 'Edit'
       fill_in 'Description', with: 'A new description'
@@ -55,10 +67,11 @@ feature 'posts' do
 
   context 'deleting posts' do
     scenario 'removes a post when a user clicks a delete link' do
-      post = FactoryGirl.create(:post)
+      signup
+      create_post
       visit '/posts'
       click_link 'Delete'
-      expect(page).not_to have_content post.description
+      expect(page).not_to have_content 'A description'
       expect(page).to have_content 'Post deleted successfully'
     end
   end

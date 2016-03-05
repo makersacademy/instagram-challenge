@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @posts = Post.all
   end
@@ -27,27 +29,27 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    # if @restaurant.owned_by?(current_user)
+    if @post.owned_by?(current_user)
       @post.update(post_params)
-    # else
-      # flash[:notice] = 'Sorry - you can only edit your own posts'
-    # end
+    else
+      flash[:notice] = 'Sorry - you can only edit your own posts'
+    end
     redirect_to '/posts'
   end
 
   def destroy
     @post = Post.find(params[:id])
-    # if @restaurant.owned_by?(current_user)
+    if @post.owned_by?(current_user)
       @post.destroy
       flash[:notice] = 'Post deleted successfully'
-    # else
-      # flash[:notice] = 'Sorry - you can only delete your own posts'
-    # end
+    else
+      flash[:notice] = 'Sorry - you can only delete your own posts'
+    end
     redirect_to '/posts'
   end
 
   def post_params
-    params.require(:post).permit(:description, :image)
+    params.require(:post).permit(:description, :image).merge(user: current_user)
   end
 
 end
