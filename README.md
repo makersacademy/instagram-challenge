@@ -1,6 +1,35 @@
 Instagram Challenge
 ===================
 
+User Stories
+-------------
+```
+As a user,
+so that I can share my experiences,
+id like to be able to post photos.
+```
+```
+As a user,
+so that my posts are unique to me,
+Id like to be able to sign up/in
+```
+```
+as a user,
+for ease of use,
+i'd like to be able to sign in using facebook
+```
+```
+as a User,
+so I can share my thoughts,
+i'd like to be able to comment on another user's photo
+```
+```
+as a User,
+so I can show my appreciation for a photo,
+i want to be able to like it.
+```
+
+
 Instructions
 -------
 * Challenge time: Friday, the entire day + the weekend if you need it
