@@ -20,18 +20,21 @@ Completed
 * All users can see all the pictures uploaded
 * A photo can be deleted
 * A user can add a description to their picture when they upload it
+* A user can add a comment
+* The comment is shown under each picture
+* A user can delete the comment
+* Deleting a photo deletes the comments as well
+
+
 
 
 
 Todo
 -----
-
-* A user can add a comment
 * A user can sign in, and out of the website
 * Only users that are signed in can upload a picture
 * The time when the picture was uploaded is added in the description  
 * A user can comment on someones else picture
-* The comment is shown under each picture
 * The comment includes the username of the person and the time ago since it was made
 * Multiple comments can be added to a picture
 * A user can like a picture

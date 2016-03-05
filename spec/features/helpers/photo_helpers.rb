@@ -5,3 +5,9 @@ def upload_photo
   attach_file 'Image', Rails.root + 'spec/features/images/hammericon.png'
   click_button 'Create Photo'
 end
+
+def leave_comment
+  click_link 'Add comment'
+  fill_in 'Comment', with: 'This is my comment'
+  click_button 'Leave Comment'
+end
