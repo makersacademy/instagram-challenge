@@ -41,4 +41,16 @@ feature 'posts' do
     end
   end
 
+  context 'editing restaurants' do
+    scenario 'let a user edit a restaurant' do
+      post = FactoryGirl.create(:post)
+      visit '/posts'
+      click_link 'Edit'
+      fill_in 'Description', with: 'A new description'
+      click_button 'Update Post'
+      expect(page).to have_content 'A new description'
+      expect(current_path).to eq '/posts'
+    end
+  end
+
 end
