@@ -56,6 +56,7 @@ group :development, :test do
   gem 'faker'
   gem 'shoulda'
   gem 'rspec-collection_matchers'
+  gem 'rtask-db-drop-connections'
 end
 
 group :development do
