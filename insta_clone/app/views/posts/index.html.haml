@@ -2,12 +2,28 @@
 - if @posts.any?
   - @posts.each do |post|
     %h2= link_to post.title, post_path(post)
+
     -if post.user
       %small Posted by: #{post.user.name} (#{post.user.email})
     %div
       = image_tag post.image.url(:medium)
+
     - if current_user
       = link_to "Edit #{post.title}", edit_post_path(post)
       = link_to "Delete #{post.title}", post_path(post), method: :delete
+      = link_to "Comment", new_post_comment_path(post)
+
+    %div
+      %h2
+        %u Comments
+      - if post.comments.any?
+        - post.comments.each do |c|
+          %p
+            - if c.user
+              #{c.user.name} wrote:
+            #{c.comment}
+      - else
+        %p No comments
+    %hr
 - else
   %p No posts yet
