@@ -20,4 +20,15 @@ feature 'photos' do
       expect(page).to have_content 'The Beach'
     end
   end
+
+  context 'creating photos' do
+    scenario 'asks user to describe the photo being uploaded' do
+      visit '/photos'
+      click_link 'Add a photo'
+      fill_in 'Description', with: 'The Beach'
+      click_button 'Create Photo'
+      expect(page).to have_content 'The Beach'
+      expect(current_path).to eq '/photos'
+    end
+  end
 end
