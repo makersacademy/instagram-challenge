@@ -10,7 +10,7 @@ feature "User sessions" do
       expect(page).to have_link('I Need InstaGratification')
     end
 
-    it "should not give the option to 'sign out' yet" do
+    it "should always have a profile picture of sorts" do
       visit('/')
       expect(page).not_to have_selector('img')
     end
@@ -24,7 +24,7 @@ feature "User sessions" do
   context "When a user has signed in and is on the homepage" do
 
     before do
-      sign_up_and_in('me@meemail.com', 'passwordy')
+      sign_up_and_in('me@meemail.com', 'passwordy', 'Viola')
     end
 
     it "should give the option to 'sign out'" do
