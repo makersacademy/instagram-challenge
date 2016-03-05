@@ -41,8 +41,8 @@ feature 'posts' do
     end
   end
 
-  context 'editing restaurants' do
-    scenario 'let a user edit a restaurant' do
+  context 'editing posts' do
+    scenario 'let a user edit a post' do
       post = FactoryGirl.create(:post)
       visit '/posts'
       click_link 'Edit'
@@ -50,6 +50,16 @@ feature 'posts' do
       click_button 'Update Post'
       expect(page).to have_content 'A new description'
       expect(current_path).to eq '/posts'
+    end
+  end
+
+  context 'deleting posts' do
+    scenario 'removes a post when a user clicks a delete link' do
+      post = FactoryGirl.create(:post)
+      visit '/posts'
+      click_link 'Delete'
+      expect(page).not_to have_content post.description
+      expect(page).to have_content 'Post deleted successfully'
     end
   end
 

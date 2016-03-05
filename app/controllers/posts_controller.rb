@@ -35,6 +35,17 @@ class PostsController < ApplicationController
     redirect_to '/posts'
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    # if @restaurant.owned_by?(current_user)
+      @post.destroy
+      flash[:notice] = 'Post deleted successfully'
+    # else
+      # flash[:notice] = 'Sorry - you can only delete your own posts'
+    # end
+    redirect_to '/posts'
+  end
+
   def post_params
     params.require(:post).permit(:description, :image)
   end
