@@ -37,7 +37,7 @@ feature 'photos' do
       sign_up_helper
       upload_photo
       sign_up_with_second_user
-      visit photos_paht
+      visit photos_path
       expect(page).not_to have_link('Delete photo')
       # expect(page).to have_content('so so')
     end
