@@ -24,9 +24,20 @@ feature 'posts' do
       visit '/posts'
       click_link 'Add a post'
       fill_in 'Description', with: 'This is the description'
+      attach_file 'post[image]', Rails.root.join('spec','images','bbc-g.jpg')
       click_button 'Create Post'
       expect(page).to have_content 'This is the description'
       expect(current_path).to eq '/posts'
+    end
+  end
+
+  context 'viewing a post' do
+    scenario 'lets a user view a post' do
+       post = FactoryGirl.create(:post)
+       visit '/posts'
+       click_link 'More'
+       expect(page).to have_content post.description
+       expect(current_path).to eq "/posts/#{post.id}"
     end
   end
 

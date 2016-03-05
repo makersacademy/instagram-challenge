@@ -17,6 +17,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def restaurant_params
     params.require(:post).permit(:description, :image)
   end
