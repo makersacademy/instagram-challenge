@@ -6,7 +6,7 @@ feature "User sessions" do
     it "should give the option to 'sign in' or 'sign up'" do
       visit('/')
       expect(page).to have_link('I Need MY InstaGratification')
-      # expect(page).to have_link('Sign in with Facebook')
+      expect(page).to have_link('Sign in with Facebook')
       expect(page).to have_link('I Need InstaGratification')
     end
 
