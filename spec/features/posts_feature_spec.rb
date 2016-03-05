@@ -43,7 +43,7 @@ feature 'Posts' do
       expect(page).to have_css("img[src*='cake.png']")
     end
 
-    scenario ('-> users can only edit their own pictures & descriptions') do
+    scenario ('-> only users can edit their own pictures & descriptions') do
       visit('/')
       expect(page).to_not have_link 'Edit picture'
     end
@@ -58,6 +58,12 @@ feature 'Posts' do
       expect(page).to_not have_css("img[src*='kimj.png']")
       expect(page).to_not have_content 'Great Leader'
     end
+
+    scenario ('-> only users can delete their own pictures & descriptions') do
+      visit('/')
+      expect(page).to_not have_link 'Delete picture'
+    end
+
   end
 
 end

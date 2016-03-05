@@ -32,20 +32,21 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.user_id == current_user.id
       @post.update(post_params)
-      redirect_to posts_path
     end
+    redirect_to posts_path
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:notice] = "Deleted successfully"
-    redirect_to posts_path
+    if @post.user_id == current_user.id
+      @post.destroy
+      flash[:notice] = "Deleted successfully"
+      redirect_to posts_path
+    end
   end
 
   def post_params
-    params.require(:post).permit(:description, :image)
+    params.require(:post).permit(:description, :image).merge(user: current_user)
   end
-
 
 end
