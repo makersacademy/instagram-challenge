@@ -39,6 +39,7 @@ gem 'rspec-rails'
 gem 'capybara'
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
+gem 'database_cleaner'
 end
 
 group :development do
