@@ -40,4 +40,16 @@ feature 'posts' do
       expect(page).to have_content 'Sample post'
     end
   end
+
+  context 'editing a post' do
+    before { Post.create description: 'Old description' }
+
+    scenario 'let a user edit a post' do
+      visit '/posts'
+      click_link 'Edit'
+      fill_in 'Description', with: 'New description'
+      click_button 'Update'
+      expect(page).to have_content 'New description'
+    end
+  end
 end
