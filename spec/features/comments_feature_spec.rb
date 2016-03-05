@@ -2,19 +2,27 @@ require 'rails_helper'
 require_relative './helpers/photo_helpers'
 
 feature 'comments' do
+  before do
+    sign_up_helper
+    upload_photo
+  end
+
   context 'a photo is uploaded' do
     scenario 'a user can add a comment to the photo' do
-      sign_up_helper
-      upload_photo
       leave_comment
+      expect(page).to have_content('This is my comment')
+    end
+
+    scenario 'another user can comment on anothers photo' do
+      sign_up_with_second_user
+      leave_comment
+      click_link('Sign out')
       expect(page).to have_content('This is my comment')
     end
   end
 
   context 'a photo with a comment' do
     before do
-      sign_up_helper
-      upload_photo
       leave_comment
     end
 
