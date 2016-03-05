@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>InstagramChallenge</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>InstagramChallenge</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<%= yield %>
+  <body>
 
-</body>
+
+    <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <p>
+    <% if user_signed_in? %>
+      <%= link_to "I've Had Enough InstaGratification", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "I Need MY InstaGratification", new_user_session_path %>
+      <%= link_to "I Need InstaGratification", new_user_registration_path %>
+    <% end %>
+    </p>
+  </body>
 </html>
