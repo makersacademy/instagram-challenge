@@ -7,7 +7,7 @@ feature 'Posts' do
     click_button "Post"
     within '.posts' do
       expect(page).to have_content('Hello world!')
-      #expect(page).to have_xpath("//img[@src=\"/public/images/test.jpg\"]")
+      expect(page.find('img')['alt']).to have_content 'Test'
     end
   end
 end

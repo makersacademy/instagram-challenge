@@ -1,15 +1,18 @@
 Dotenv.lod
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
-  config.paperclip_defaults = {
+config.paperclip_defaults = {
     storage: :s3,
     s3_credentials: {
+      s3_protocol: 'http',
       bucket: ENV['S3_BUCKET_NAME'],
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRECT_ACCESS_KEY']
-    } 
+      secret_access_key: ENV['AWS_SECRECT_ACCESS_KEY'],
+      s3_host_name: 's3-us-west-2.amazonaws.com',
+      s3_region: 'us-west-2'
+    }
   }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
