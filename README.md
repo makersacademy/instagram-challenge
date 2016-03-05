@@ -1,26 +1,62 @@
 Instagram Challenge
 ===================
+Makers Academy week 07 weekend challenge<br>
+Rufus Raghunath<br>
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
 Task
 -----
 
-Build Instagram: Simple huh!
+Build an Instagram clone using Rails. The functionality should be based on **users** who can post **pictures**, write **comments** on pictures and **like** a picture.
 
-Bonus if you can write your own set of sensible user stories!
 
-As usual please start by
+Approach
+-----
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+Coming soon...
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters!
+How to use
+-----
+
+Coming soon...
+
+
+User stories
+-----
+
+```
+As a visitor,
+So I can see what Instagram has to offer,
+I would like to be able to browse recent images.
+```
+```
+As a user,
+So that I can start sharing pictures,
+I would like to sign up with my email, user handle, and password.
+```
+```
+As a user,
+So I can share a picture with the world,
+I would like to be able to upload images to Instagram.
+```
+```
+As a user,
+So I can provide context to my posts,
+I would like to add descriptions to images when posting.
+```
+```
+As a user,
+So I can show my reaction to Instagram images,
+I would like to comment on other users' comments.
+```
+```
+As a user,
+So I can show my appreciation for good posts,
+I would like to be able to 'like' images.
+```
+```
+As an administrator,
+So I can ensure the integrity of my system,
+I don't want visitors without user accounts to post images, comments, or likes.
+```
