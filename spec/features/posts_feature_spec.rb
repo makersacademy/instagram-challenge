@@ -54,7 +54,7 @@ feature 'posts' do
     end
 
     context 'editing posts' do
-     before { Post.create message: 'Hello Universe!' }
+      before { Post.create message: 'Hello Universe!' }
 
     scenario 'let a user edit a post' do
      visit '/posts'
@@ -64,6 +64,17 @@ feature 'posts' do
      expect(page).to have_content 'Goodbye World'
      expect(current_path).to eq '/posts'
     end
-
   end
+
+  context 'deleting posts' do
+
+  before {Post.create message: 'Look at my cat'}
+
+  scenario 'removes a post when a user clicks a delete post' do
+    visit '/posts'
+    click_link 'Delete post'
+    expect(page).not_to have_content 'Look at my cat'
+    expect(page).to have_content 'Post deleted successfully'
+  end
+ end
 end
