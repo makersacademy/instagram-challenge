@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-describe Photo, type: :model do
+describe Post, type: :model do
   it { is_expected.to belong_to(:user) }
 end
