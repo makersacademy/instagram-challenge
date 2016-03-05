@@ -12,7 +12,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    @post.user_id = current_user.id
     if @post.save
       redirect_to posts_path
     else
@@ -30,19 +29,23 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.user_id == current_user.id
+    if @post.owned_by?(current_user)
       @post.update(post_params)
+    else
+      flash[:notice] = 'You don\'t own this picture'
     end
-    redirect_to posts_path
+    redirect_to '/posts'
   end
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.user_id == current_user.id
+    if @post.owned_by?(current_user)
       @post.destroy
       flash[:notice] = "Deleted successfully"
-      redirect_to posts_path
+    else
+      flash[:notice] = 'You don\'t own this picture'
     end
+    redirect_to '/posts'
   end
 
   def post_params
