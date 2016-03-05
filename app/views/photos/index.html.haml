@@ -1,6 +1,9 @@
-%a(href= new_photo_path) Upload photo
+= link_to "Upload photo", new_photo_path
 
 - if @photos.any?
+  <ul>
   - @photos.each do |photo|
-    = photo.description
-    = image_tag photo.image.url(:thumb)
+    %li= photo.description
+    %p= image_tag photo.image.url(:thumb)
+    = link_to "Delete photo", photo_path(photo), method: :delete
+  </ul>

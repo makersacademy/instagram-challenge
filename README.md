@@ -16,11 +16,15 @@ To build Instagram
 Completed
 -----
 * You must submit a pull request to this repo with your code by 9am Monday morning
+* A user can upload a picture to the website
+* All users can see all the pictures uploaded
+* A photo can be deleted
+
 
 Todo
 -----
-* A user can upload a picture to the website
-* All users can see all the pictures uploaded
+
+
 * A user can sign in, and out of the website
 * Only users that are signed in can upload a picture
 * A user can add a description to their picture when they upload it
