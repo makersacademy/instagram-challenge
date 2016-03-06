@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :liking_users, through: :likes, source: :user
 
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
@@ -12,5 +12,5 @@ class Post < ActiveRecord::Base
     attributes[:user] ||= user
     comments.build(attributes)
   end
-  
+
 end
