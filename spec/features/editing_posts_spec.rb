@@ -33,13 +33,7 @@ feature 'Editing posts' do
     click_link 'Sign out'
     sign_up(email: 'bob@bob.com', password: 'password', password_confirmation: 'password')
     click_link 'This post will be edited'
-    click_link 'Edit Post'
-    attach_file('Image', 'spec/files/images/scenery.jpg')
-    fill_in 'Caption', with: 'I am making an edit to this caption!'
-    click_button 'Update Post'
-    expect(page).to have_content 'You cannot edit this post, it is not yours'
-    expect(page).not_to have_content 'Your post has been updated'
-    expect(page).not_to have_content 'I am making an edit to this caption!'
+    expect(page).not_to have_content 'Edit Post'
   end
 
 end

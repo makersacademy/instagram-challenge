@@ -30,8 +30,6 @@ feature 'Deleting posts' do
     click_link 'Sign out'
     sign_up(email: 'bob@bob.com',password: '12345678',password_confirmation: '12345678')
     click_link 'This post was accidental.'
-    click_link 'Delete Post'
-    expect(page).to have_content 'You cannot delete this post, it is not yours'
-    expect(page).not_to have_content 'Your post has been deleted'
+    expect(page).not_to have_content 'Delete Post'
   end
 end
