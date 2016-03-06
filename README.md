@@ -1,26 +1,50 @@
 Instagram Challenge
 ===================
 
+Build Badges
+-------
+:construction:
+
+
+Implementation
+-------
+An Instagram clone built with Ruby on Rails. Tested with RSpec and Capybara.
+:construction:
+
+
 Instructions
 -------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+:construction:
 
-Task
------
 
-Build Instagram: Simple huh!
+User Stories
+-------
+```
+As a user,
+So that I can share my images,
+I can create a new post with an image and caption
 
-Bonus if you can write your own set of sensible user stories!
+As a user,
+So that I don't have posts with just text,
+All posts must be created with an image
 
-As usual please start by
+As a user,
+So that I can see whats been posted,
+When I visit the website I can see all the posts
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+As a user,
+So that I can view a single post,
+I can click on it and view that single post
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a user,
+If I want to change my caption message,
+I can edit the caption of my existing posts
 
-Bonus if you can add filters!
+As a user,
+So that I can only upload images,
+I will receive a message if I try to upload anything else
+
+As a user,
+So that I can rectify my mistakes,
+I can delete posts that I have made
+```
