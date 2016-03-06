@@ -1,24 +1,23 @@
 = link_to "Upload photo", new_photo_path
 
 - if @photos.any?
-  <ul>
-  - @photos.each do |photo|
-    %li= photo.description
-    %p= image_tag photo.image.url(:thumb)
-    = "Uploaded by: #{User.find(photo.user_id).username} #{distance_of_time_in_words(Time.at(photo.image_updated_at), Time.now)} ago"
-    - if (current_user && !current_user.has_liked?(photo))
-      = link_to "Like", photo_likes_path(photo), method: :post
-    = "#{photo.likes.count} #{' like'.pluralize photo.likes.count}: #{User.get_usernames(photo.likes)}"
-    - if photo.comments.any?
-      <ul>
-      - photo.comments.each do |comment|
-        %li= comment.comment
-        = "Left by:  #{User.find(comment.user_id).username} #{distance_of_time_in_words(Time.at(comment.created_at), Time.now)} ago"
-        - if (current_user && current_user.owns?(comment))
-          =link_to 'Delete comment', comment_path(comment), method: :delete
-      </ul>
-    - if (current_user && current_user.owns?(photo))
-      = link_to "Delete photo", photo_path(photo), method: :delete
-    = link_to "Add comment", new_photo_comment_path(photo)
-
-  </ul>
+  %ul
+    - @photos.each do |photo|
+      %li
+        = photo.description
+        %p= image_tag photo.image.url(:thumb)
+        = "Uploaded by: #{User.find(photo.user_id).username} #{distance_of_time_in_words(Time.at(photo.image_updated_at), Time.now)} ago"
+        - if (current_user && !current_user.has_liked?(photo))
+          = link_to "Like", photo_likes_path(photo), method: :post
+        %p= "#{photo.likes.count} #{' like'.pluralize photo.likes.count}: #{User.get_usernames(photo.likes)}"
+        - if photo.comments.any?
+          %ul
+            - photo.comments.each do |comment|
+              %li
+                = comment.comment
+                = "Left by:  #{User.find(comment.user_id).username} #{distance_of_time_in_words(Time.at(comment.created_at), Time.now)} ago"
+                - if (current_user && current_user.owns?(comment))
+                  =link_to 'Delete comment', comment_path(comment), method: :delete
+        - if (current_user && current_user.owns?(photo))
+          = link_to "Delete photo", photo_path(photo), method: :delete
+        = link_to "Add comment", new_photo_comment_path(photo)
