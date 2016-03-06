@@ -28,7 +28,7 @@ feature 'images' do
 
   context 'Uploading an image' do
     # pending because creates file in public without dleting it
-    scenario 'users can upload an image' do
+    xscenario 'users can upload an image' do
       visit '/images'
       click_link 'Add an Image'
       page.attach_file('image_image', Rails.root + 'spec/Fixtures/2005-spring39.jpg')
@@ -68,7 +68,7 @@ feature 'images' do
       expect(page).to have_content 'Een stukje kust in Zuid Italië'
     end
 
-    scenario 'users can view image' do
+    xscenario 'users can view image' do
       visit '/images'
       click_link 'Add an Image'
       page.attach_file('image_image', Rails.root + 'spec/Fixtures/2005-spring39.jpg')
@@ -119,6 +119,7 @@ feature 'images' do
       click_button 'Create Image'
       expect(current_path).to eq '/images'
       expect(page).to have_content 'Zeekust'
+      click_link 'View Image'
       click_link 'Delete Image'
       expect(page).to have_content 'Image deleted succesfully'
     end
