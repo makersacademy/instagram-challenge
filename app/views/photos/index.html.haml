@@ -1,8 +1,15 @@
 %meta(charset="UTF-8")
+%h2 Instagram
 - if @photos.any?
   - @photos.each do | photo |
-    = image_tag photo.image.url(:thumb)
+    = image_tag photo.image.url(:medium)
+    = link_to "Comment", new_photo_comment_path(photo)
+    - if photo.comments.any?
+      %ul
+        - photo.comments.each do |comment|
+          %li
+          = comment.comment
 - else
   No photos yet!
-  
+
 %a(href='/photos/new') Add a photo
