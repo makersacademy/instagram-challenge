@@ -13,7 +13,6 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    p params
     @like = Like.find(params[:id])
     @like.destroy
     redirect_to '/'

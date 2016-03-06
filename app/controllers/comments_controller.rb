@@ -26,10 +26,6 @@ class CommentsController < ApplicationController
 
   private
 
-  def user_owns_comment?
-    @comment.user == current_user
-  end
-
   def comment_params
     params.require(:comment).permit(:comment)
   end
