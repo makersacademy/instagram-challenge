@@ -24,4 +24,12 @@ module SessionHelpers
     fill_in 'Caption', with: 'a nice picture'
     click_button 'Post picture'
   end
+
+  def leave_comment
+    visit '/pictures'
+    find(:xpath, "//a/img[@alt='a nice picture']/..").click
+    click_link 'Comment'
+    fill_in 'Thoughts', with: 'it is a picture'
+    click_button 'Leave comment'
+  end
 end
