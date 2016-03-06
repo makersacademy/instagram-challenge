@@ -27,6 +27,8 @@ feature 'posts' do
         expect(page).to have_content 'test_user'
       end
     end
+
+    # TODO: test time
   end
 
   context 'viewing a post' do
