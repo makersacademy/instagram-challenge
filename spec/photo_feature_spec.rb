@@ -33,6 +33,20 @@ it'displays a brief description' do
 end
 end
 
+feature 'a user can edit a photo' do 
+	it 'edits a photo' do 
+	sign_up_and_in
+	create_photo
+ 	first(:css, 'a[href*="photo"]').click
+	click_link("Edit Photo")
+	fill_in('Description', with: "Check out my cute cat" )
+	click_button('Update Photo')
+	expect(page).to have_content("Check out my cute cat")
+end
+end
+
+
+
 feature 'A user cannot add a photo' do 
 	it 'if not logged in' do 
 	visit('/')

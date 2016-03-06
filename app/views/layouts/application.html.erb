@@ -7,7 +7,6 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
-
 	<% if user_signed_in? %>
 	<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
 	<% else %>
@@ -16,8 +15,10 @@
 	<% end %>
 
 
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
+	<% flash.each do |key, value| %>
+  <%= value %>
+  <% end %>
+
 	<%= yield %>
 
 </body>

@@ -9,3 +9,11 @@ fill_in("Password", with: "testtest")
 fill_in("Password confirmation", with: "testtest")
 click_button('Sign up')
 end
+
+def create_photo
+click_link("Add a photo")
+allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(:true)
+attach_file('photo[image]', "#{Rails.root}/spec/cat.jpg", visible: false)
+fill_in('Description', with: "Check out my cat" )
+click_button('Create Photo')
+end
