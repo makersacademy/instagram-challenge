@@ -28,4 +28,18 @@ feature 'User can log in and out' do
       expect(page).not_to have_link 'Log up'
     end
   end
+
+  context 'signing up' do
+    before do
+      sign_up(username: 'test_user')
+      log_out
+    end
+
+    scenario 'user cannot sign up with existing username' do
+      sign_up(username: 'test_user', email: 'other@email.com')
+
+      expect(page).to have_content 'Username has already been taken'
+      expect(page).to have_content 'Sign up'
+    end
+  end
 end

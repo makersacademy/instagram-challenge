@@ -4,10 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :username,
+    presence: true,
+    uniqueness: {case_sensitive: false}
+
   has_many :posts
   has_many :comments
-
-  def is_owner?(post)
-    self.id == post.user_id
-  end
 end
