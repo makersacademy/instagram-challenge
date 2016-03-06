@@ -7,6 +7,7 @@ require 'rails_helper'
 feature 'images' do
 
   context 'No images have been added yet' do
+
     scenario 'no images have been uploaded yet' do
       visit '/images'
       expect(page).to have_content 'No images have been uploaded yet!'
@@ -18,14 +19,16 @@ feature 'images' do
     before do
       Image.create( title: 'Zonsondergang')
     end
-    scenario 'images are shown' do
+
+    scenario 'images titles are shown' do
       visit '/images'
       expect(page).to have_content 'Zonsondergang'
     end
   end
 
   context 'Uploading an image' do
-    scenario 'users can upload an image' do
+    # pending because creates file in public without dleting it
+    xscenario 'users can upload an image' do
       visit '/images'
       click_link 'Add an Image'
       page.attach_file('image_image', Rails.root + 'spec/Fixtures/2005-spring39.jpg')
@@ -34,12 +37,14 @@ feature 'images' do
       expect(current_path).to eq '/images'
       expect(page).to have_css("img[src*='2005-spring39.jpg']")
     end
+
     scenario 'users can add an title for the image' do
       visit '/images'
       click_link 'Add an Image'
       expect(current_path).to eq '/images/new'
       expect(page).to have_content 'Title'
     end
+
     scenario 'users sees added title on images page' do
       visit '/images'
       click_link 'Add an Image'
@@ -47,6 +52,35 @@ feature 'images' do
       click_button 'Create Image'
       expect(current_path).to eq '/images'
       expect(page).to have_content 'Zonsopgang'
+    end
+
+    scenario 'users can add a description for the image' do
+      visit '/images'
+      click_link 'Add an Image'
+      expect(page).to have_content 'Description'
+    end
+
+    scenario 'users sees added description for the image' do
+      visit '/images'
+      click_link 'Add an Image'
+      fill_in 'Description', with: 'Een stukje kust in Zuid Italië'
+      click_button 'Create Image'
+      expect(page).to have_content 'Een stukje kust in Zuid Italië'
+    end
+  end
+
+  context 'updating an image' do
+
+    xscenario 'users can change the title of an image' do
+      visit '/images'
+      click_link 'Add an Image'
+      fill_in 'Title', with: 'Zeekust'
+      click_button 'Create Image'
+      click_link 'Edit'
+      fill_in 'Title', with: 'Strand'
+      click_button 'Update Image'
+      expect(current_path).to eq '/images'
+      expect(page).to have_content 'Strand'
     end
   end
 end
