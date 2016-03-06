@@ -1,18 +1,6 @@
 = link_to 'Post a photo', new_post_path
 
 - if @posts.any?
-  %ul
-    - @posts.each do |post|
-      %li
-        = post.user.email
-        = image_tag post.image.url(:medium)
-        = post.caption
-        - if post.comments.any?
-          %ul
-          - post.comments.each do |comment|
-            %li.comments
-              = comment.user.email
-              = comment.content
-        = link_to 'Comment', new_post_comment_path(post)
+  = render 'posts', posts: @posts
 - else
   No posts, upload one!

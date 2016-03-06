@@ -1,0 +1,12 @@
+%ul
+  - @posts.each do |post|
+    %li.posts
+      = post.user.email
+      = image_tag post.image.url(:medium)
+      = post.caption
+      posted
+      = time_ago_in_words(post.created_at)
+      ago
+      - if post.comments.any?
+        = render 'comments', comments: post.comments
+      = link_to 'Comment', new_post_comment_path(post)

@@ -17,6 +17,6 @@ def make_a_post
   click_link 'Post a photo'
   attach_file 'post[image]',
               Rails.root.join('spec', 'fixtures', 'testpattern.jpg')
-  fill_in 'Caption', with: 'Test image'
+  fill_in 'Caption', with: 'Test caption'
   click_button 'Post'
 end
