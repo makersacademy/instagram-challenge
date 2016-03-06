@@ -8,7 +8,23 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.create(image_params)
+    @image = Image.new(image_params)
+    if @image.save
+      redirect_to '/images'
+    else
+      render 'new'
+    end
+  end
+
+  def show
+    @image = Image.find(params[:id])
+  end
+
+  def destroy
+    @image = Image.find(params[:id])
+    name = @image.name
+    @image.destroy
+    flash[:notice] = "Image '#{name}' deleted successfully"
     redirect_to '/images'
   end
 
