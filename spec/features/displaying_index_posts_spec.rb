@@ -31,6 +31,6 @@ feature 'Index displays a list of posts' do
     visit '/'
     # find(:xpath, "//a[contains(@href,'posts/1')]").click
     click_link 'This is image number 1'
-    expect(page.current_path).to eq('/posts/5')
+    expect(page.current_path).to eq('/posts/6')
   end
 end

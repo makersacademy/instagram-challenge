@@ -35,19 +35,28 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
-      flash[:notice] = 'Your post has been updated!'
-      redirect_to post_path(@post)
+    if @post.owned_by?(current_user)
+      if @post.update(post_params)
+        flash[:notice] = 'Your post has been updated!'
+        redirect_to post_path(@post)
+      else
+        flash[:notice] = "You did not attach an image in the correct format! Please try again!"
+        render 'edit'
+      end
     else
-      flash[:notice] = "You did not attach an image in the correct format! Please try again!"
-      render 'edit'
+      flash[:notice] = 'You cannot edit this post, it is not yours'
+      redirect_to posts_path
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:notice] = 'Your post has been deleted!'
+    if @post.owned_by?(current_user)
+      @post.destroy
+      flash[:notice] = 'Your post has been deleted!'
+    else
+      flash[:notice] = "You cannot delete this post, it is not yours"
+    end
     redirect_to posts_path
   end
 end
