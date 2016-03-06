@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'Creating Posts' do
   scenario 'can create a post' do
+    sign_up
     visit '/'
     click_link 'New Post'
     attach_file('Image', 'spec/files/images/scenery.jpg')
@@ -12,10 +13,16 @@ feature 'Creating Posts' do
   end
 
   scenario 'cannot create a post without an image' do
+    sign_up
     visit '/'
     click_link 'New Post'
     fill_in 'Caption', with: 'What a nice picture'
     click_button 'Create Post'
     expect(page).to have_content('You need to upload an image to post!')
+  end
+
+  scenario 'user cannot post if not logged in' do
+    visit '/'
+    expect(page).not_to have_content('New Post')
   end
 end

@@ -36,6 +36,8 @@ gem "paperclip", "~> 4.3"
 
 gem "factory_girl_rails", "~> 4.0"
 
+gem 'omniauth-facebook'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :test do
