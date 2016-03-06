@@ -30,4 +30,32 @@ feature 'pictures' do
     expect(current_path).to eq '/pictures'
   	end
 	end
+	context 'editing pictures' do
+
+  before { Picture.create name: 'Sunshine' }
+
+  scenario 'let a user edit a picture' do
+   visit '/pictures'
+   click_link 'Edit'
+   fill_in 'Name', with: '#beach'
+   click_button 'Update'
+   expect(page).to have_content '#beach'
+   expect(current_path).to eq '/pictures'
+  end
+  scenario 'removes a picture' do
+    visit '/pictures'
+    click_link 'Delete'
+    expect(page).not_to have_content 'Sunshine'
+    expect(page).to have_content 'Picture deleted successfully'
+  end
+
+   scenario 'allows users to leave a review using a form' do
+     visit '/pictures'
+     click_link 'Tag'
+     fill_in "Tag", with: "#holidays"
+     click_button 'Tag it'
+     click_link 'Sunshine'
+     expect(page).to have_content('#holidays')
+  	end
+	end
 end

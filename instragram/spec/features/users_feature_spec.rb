@@ -35,4 +35,15 @@ feature "User can sign in and out" do
       expect(page).not_to have_link('Sign up')
     end
   end
+#   context 'viewing restaurants' do
+
+#   let!(:sunshine){Picture.create(name:'Sunshine')}
+
+#   scenario 'lets a user view a profile' do
+#    visit '/pictures'
+#    click_link 'Eduardo'
+#    expect(page).to have_content 'Sunshine'
+#    expect(current_path).to eq "/restaurants/#{sunshine.id}"
+#   end
+# end
 end

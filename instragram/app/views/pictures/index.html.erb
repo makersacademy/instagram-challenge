@@ -1,9 +1,16 @@
 <% if @picture.all.any? %>
+
   <% @picture.all.each do |pics| %>
+  <%= link_to pics.name, picture_path(pics) %>
+  <%= link_to "Tag", new_picture_tag_path(pics)%>
+  <%= link_to "Delete", picture_path(pics), method: :delete %>
+  <%= link_to "Edit", edit_picture_path(pics) %>
     <h2><%= pics.name %></h2>
+  
   <% end %>
 <% else %>
   <h1>No pictures yet</h1>
 <% end %>
 
 <a href="/pictures/new">Add a picture</a>
+
