@@ -1,8 +1,9 @@
 
 - if @posts.any?
   - @posts.each do |post|
-    %h2= post.description
     = image_tag post.image.url(:medium)
+    %h2= post.description
+    = time_ago_in_words(post.created_at)
     = link_to "More", post_path(post)
     - if post.owned_by? current_user
       = link_to "Edit", edit_post_path(post)

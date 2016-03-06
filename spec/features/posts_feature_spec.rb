@@ -43,6 +43,7 @@ feature 'posts' do
   end
 
   context 'viewing a post' do
+
     scenario 'lets a user view a post' do
        post = FactoryGirl.create(:post)
        visit '/posts'
@@ -50,6 +51,23 @@ feature 'posts' do
        expect(page).to have_content post.description
        expect(current_path).to eq "/posts/#{post.id}"
     end
+
+    scenario 'displays the correct time on the post relative to created_at an hour ago' do
+      Timecop.travel(Time.new - 3600)
+      post = FactoryGirl.create(:post)
+      Timecop.return
+      visit '/'
+      expect(page).to have_content('about 1 hour')
+    end
+
+    scenario 'displays the correct time on the post relative to created_at two days ago' do
+      Timecop.travel(Time.new - 2.days)
+      post = FactoryGirl.create(:post)
+      Timecop.return
+      visit '/'
+      expect(page).to have_content('2 days')
+    end
+
   end
 
   context 'editing posts' do

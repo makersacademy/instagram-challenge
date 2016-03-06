@@ -58,6 +58,7 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'rtask-db-drop-connections'
   gem 'poltergeist'
+  gem 'timecop'
 end
 
 group :development do
