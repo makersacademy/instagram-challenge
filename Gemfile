@@ -32,6 +32,8 @@ gem "haml-rails", "~> 0.9"
 # gem 'unicorn'
 gem "paperclip", "~> 4.3"
 
+gem "factory_girl_rails", "~> 4.0"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :test do

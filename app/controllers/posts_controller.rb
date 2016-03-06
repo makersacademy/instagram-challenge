@@ -16,7 +16,6 @@ class PostsController < ApplicationController
       flash[:notice] = 'You need to upload an image to post!'
       render 'new'
     end
-    # redirect_to @post
   end
 
   def post_params
