@@ -1,3 +1,4 @@
+<a href='posts/new'> Add a picture </a>
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <h2> <%= image_tag post.image.url(:thumb) %> </h2>
@@ -7,15 +8,18 @@
       <%= link_to "Edit picture", edit_post_path(post) %>
       <%= link_to "Delete picture", post_path(post), method: :delete %>
     <% end %>
-    <h6> Comments: <h6>
+    <h4> Comments: <h4>
       <% if post.comments.any? %>
+      <h5>
         <ul>
           <% post.comments.each do |comment| %>
             <li>
               <%= comment.comment %>
+              <h6> posted <%= time_ago_in_words(comment.created_at)%> ago</h6>
             </li>
           <% end %>
         </ul>
+      </h5>
       <% else %>
         <p> No comments... yet! </p>
       <% end %>
@@ -23,4 +27,3 @@
 <% else %>
   No pictures yet
 <% end %>
-<a href='posts/new'> Add a picture </a>
