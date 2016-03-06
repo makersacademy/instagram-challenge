@@ -12,3 +12,9 @@ def upload
   fill_in('Description', with: 'The Beach')
   click_button 'Create Photo'
 end
+
+def comment
+  click_link 'Comment'
+  fill_in "Thoughts", with: "so cool"
+  click_button 'Comment'
+end

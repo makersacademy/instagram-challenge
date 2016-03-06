@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
 
-  resources :photos do
+  resources :photos, shallow: true do
     resources :comments
   end
 

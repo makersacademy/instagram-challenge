@@ -33,6 +33,19 @@ feature 'photos' do
     end
   end
 
+  context 'deleting photos' do
+
+    scenario 'removes a photo when a user clicks a delete link' do
+      visit '/'
+      sign_up('harry@random.com', 'password123')
+      upload
+      click_link 'Delete'
+      expect(page).not_to have_content 'The Beach'
+      expect(page).to have_content 'Photo deleted successfully'
+    end
+
+  end
+
   context 'deleting uploaded photos' do
     scenario 'a user can only delete photos they uploaded' do
       visit '/'
