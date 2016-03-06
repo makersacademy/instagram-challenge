@@ -58,4 +58,18 @@ feature 'pictures' do
       expect(current_path).to eq "/pictures/#{picture.id}"
     end
   end
+
+  context 'deleting pictures' do
+    before do
+      Picture.create(caption: 'a nice picture', image: File.new(Rails.root.join('spec','images','img.jpg')))
+    end
+
+    scenario 'removes a picture when a user clicks a delete link' do
+      visit '/pictures'
+      find(:xpath, "//a/img[@alt='a nice picture']/..").click
+      click_link 'Delete'
+      expect(page).not_to have_content 'a nice picture'
+      expect(page).to have_content 'Picture deleted successfully'
+    end
+  end
 end
