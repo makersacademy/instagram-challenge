@@ -16,4 +16,11 @@ feature 'Editing posts' do
     expect(page).to have_content 'Your post has been updated'
     expect(page).to have_content 'I am making an edit to this caption!'
   end
+
+  scenario 'a user cannot edit a post without an image' do
+    attach_file('Image', 'spec/files/images/scenery.zip')
+    click_button 'Update Post'
+    expect(page).to have_content("You did not attach an image in the correct format! Please try again!")
+  end
+
 end

@@ -33,9 +33,13 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    flash[:notice] = 'Your post has been updated!'
-    redirect_to post_path(@post)
+    if @post.update(post_params)
+      flash[:notice] = 'Your post has been updated!'
+      redirect_to post_path(@post)
+    else
+      flash[:notice] = "You did not attach an image in the correct format! Please try again!"
+      render 'edit'
+    end
   end
 
   def destroy
