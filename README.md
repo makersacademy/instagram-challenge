@@ -1,3 +1,17 @@
+Harry Gordon - Instagram
+
+Run rails s to start the web app.
+
+Then visit the local host in your preferred browser.
+
+
+
+
+
+
+
+
+
 Instagram Challenge
 ===================
 
