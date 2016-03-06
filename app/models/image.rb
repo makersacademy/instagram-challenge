@@ -3,4 +3,6 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   
   belongs_to :user
+  has_many :comments, dependent: :delete_all
+  
 end

@@ -15,4 +15,8 @@ As a User,
 So I can remove pictures I no longer like, 
 I would like to be able to delete pictures
 
+As a User, 
+So I can communicate with other users, 
+I would like to be able to leave a comment on a picture
+
 ```
