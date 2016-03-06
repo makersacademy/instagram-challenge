@@ -2,9 +2,10 @@ require 'rails_helper'
 
 feature 'Editing posts' do
   before do
-    job = create(:post)
+    job = create(:post, caption: "This post will be edited")
     visit '/'
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    click_link 'This post will be edited'
+    # find(:xpath, "//a[contains(@href,'posts/1')]").click
     click_link 'Edit Post'
   end
 

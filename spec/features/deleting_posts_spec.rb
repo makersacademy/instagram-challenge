@@ -1,10 +1,11 @@
 require 'rails_helper'
 
-feature 'Editing posts' do
+feature 'Deleting posts' do
   before do
     job = create(:post, caption: 'This post was accidental.')
     visit '/'
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    # find(:xpath, "//a[contains(@href,'posts/1')]").click
+    click_link 'This post was accidental.'
   end
 
   scenario 'users can delete posts' do
