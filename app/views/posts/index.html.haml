@@ -1,0 +1,41 @@
+.container-fluid
+  = link_to "Add a post", new_post_path, class: 'btn btn-success btn-lg'
+
+  .row
+    .col-md-5.col-md-offset-3.text-center
+      - if @posts.any?
+        - @posts.each do |post|
+          %h2= link_to post.title, post_path(post)
+
+          -if post.user
+            %small Posted by: #{post.user.name} (#{post.user.email})
+          %br
+            = image_tag post.image.url(:medium)
+          - if current_user
+            - if current_user.already_likes?(post)
+              - like = post.likes.where(user_id: current_user.id).first
+              = link_to "Unlike", post_like_path(post, like.id), method: :delete
+            - else
+              = link_to "Like", post_likes_path(post, param1: post.id), method: :post
+
+            -if current_user.user_owns_post?(post)
+              = link_to "Edit #{post.title}", edit_post_path(post)
+              = link_to "Delete #{post.title}", post_path(post), method: :delete
+
+            = link_to "Comment", new_post_comment_path(post)
+          %p Likes(#{post.likes.count})
+
+          %br
+            %h2
+              %u Comments
+            - if post.comments.any?
+              - post.comments.each do |c|
+                %p
+                  - if c.user
+                    %strong #{c.user.name} wrote:
+                    #{c.comment}
+            - else
+              %p No comments
+          %hr
+      - else
+        %p No posts yet

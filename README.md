@@ -1,26 +1,92 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+**Deployed on heroku: https://aa-instaclone.herokuapp.com**
 
-Task
+What is it?
+-------
+A basic Instagram clone. Users are able to post pictures, comments and likes.
+Made with Rails and Postgres.
+
+How to use
+----
+* git clone https://github.com/AlexAvlonitis/instagram-challenge.git
+* bundle install
+* rake db:create db:migrate
+* rails s
+* visit 'http://localhost:3000'
+
+User Stories
 -----
 
-Build Instagram: Simple huh!
+```
+Feature - Authentication
 
-Bonus if you can write your own set of sensible user stories!
+As a user
+So i can use the website securely
+I want to be able to register a new account
 
-As usual please start by
+As a user
+So i can use the website securely
+I want to be able to login with my account
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+As a user
+So i can use the website securely
+I want to be able to post only if I'm logged in
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a user
+So i will never be locked out
+I want to be able to reset my password
 
-Bonus if you can add filters!
+```
+
+```
+Feature - Posts
+
+As a user
+So i can share my photos
+I want to be able to post them
+
+As a user
+So i can manage my posts
+I want to be able to edit and delete them
+
+As a user
+So i can comment on photos
+I want to be able to comment on any posted photo
+
+As a user
+So i can show that i like a photo
+I want to be able to like a photo with a button
+
+As a user
+So i can take my like back
+I want to be able to unlike a photo
+
+```
+
+```
+Feature - Authorization
+
+As a user
+So i can be sure my posts are secure
+I want other users not to be able to edit or delete my posts.
+
+```
+
+Build Process
+----
+
+Created the above user stories to follow a BDD life cycle. Used Capybara to TDD
+this project. The most challenging part was the table associations, for every
+user to have posts and the posts to have likes that are linked back to users.
+Plus the "Unlike" functionality. Rails guides as well as Stack Overflow helped
+me find my solutions. Also i found out that pictures posted directly on Heroku
+are not saved. It is mandatory to outsource them, i pushed them to S3 AWS.
+http://stackoverflow.com/questions/32459959/heroku-paperclip-images-appear-but-then-disappear
+
+To DOs
+----
+* Use Ajax on requests to avoid page refreshes
+* Add Oauth for easier logins
+* Use Javascript for a better front end.

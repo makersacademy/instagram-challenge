@@ -1,0 +1,10 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      %a.navbar-brand{href: "/"} InstaClone
+      - if current_user
+        = link_to 'Sign out', destroy_user_session_path, method: :delete, class: "btn btn-default navbar-btn"
+        #{current_user.name} (#{current_user.email})
+      -else
+        = link_to 'Sign in', new_user_session_path, class: "btn btn-default navbar-btn"
+        = link_to 'Sign up', new_user_registration_path, class: "btn btn-default navbar-btn"
