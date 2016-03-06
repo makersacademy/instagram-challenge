@@ -6,6 +6,12 @@
         = image_tag @post.image.url(:medium)
         %article.description
           %p= @post.description
+        .post-meta
+          .post-time
+            posted
+            = time_ago_in_words(@post.created_at)
+            ago by
+            = @post.user.name
         .likes
           - if current_user
             = link_to post_likes_path(@post), method: :post, class: 'likes-link' do
