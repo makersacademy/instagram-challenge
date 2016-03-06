@@ -3,7 +3,8 @@ class Photo < ActiveRecord::Base
       -> { extending WithUserAssociationExtension },
       dependent: :destroy
   belongs_to :user
-  has_many :likes
+  has_many :likes,
+      -> { extending WithUserAssociationExtension }
 
 
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"

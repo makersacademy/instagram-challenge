@@ -33,6 +33,8 @@ Completed
 * pictures are stored in AWS
 * A user can like a picture
 * The number of likes a picture has is shown
+* The username of the people that like are shown next to the like
+
 
 
 
@@ -41,7 +43,6 @@ Completed
 Todo
 -----
 * A user can only like a picture once
-* The username of the people that like are shown next to the like
 * pictures are shown in reverse order, newest first
 * The like button is a heart
 * Users can add a filter to their pictures
