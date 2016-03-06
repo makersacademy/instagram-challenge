@@ -71,7 +71,7 @@ feature 'images' do
 
   context 'updating an image' do
 
-    xscenario 'users can change the title of an image' do
+    scenario 'users can change the title of an image' do
       visit '/images'
       click_link 'Add an Image'
       fill_in 'Title', with: 'Zeekust'
@@ -81,6 +81,18 @@ feature 'images' do
       click_button 'Update Image'
       expect(current_path).to eq '/images'
       expect(page).to have_content 'Strand'
+    end
+
+    scenario 'users can update the description of an image' do
+      visit '/images'
+      click_link 'Add an Image'
+      fill_in 'Description', with: 'Een mooi plaatje'
+      click_button 'Create Image'
+      click_link 'Edit'
+      fill_in 'Description', with: 'Het is nog mooier geworden'
+      click_button 'Update Image'
+      expect(current_path).to eq '/images'
+      expect(page).to have_content 'Het is nog mooier geworden'
     end
   end
 end
