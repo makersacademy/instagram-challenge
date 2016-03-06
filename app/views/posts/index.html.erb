@@ -1,29 +1,26 @@
-<a href='posts/new'> Add a picture </a>
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-    <h2> <%= image_tag post.image.url(:thumb) %> </h2>
-    <h3> <%= post.description %> </h3>
-    <h4>
-      <p><%= pluralize post.likes.count, 'like' %></p>
-    </h4>
-    <% if current_user %>
-      <%= link_to "Comment", new_post_comment_path(post) %>
-      <%= link_to "Edit picture", edit_post_path(post) %>
-      <%= link_to "Delete picture", post_path(post), method: :delete %>
-      <%= link_to "Like", post_likes_path(post), method: :post %>
-    <% end %>
-    <h4> Comments: <h4>
-      <% if post.comments.any? %>
-      <h5>
-        <ul>
+    <h2> <%= image_tag post.image.url(:thumb) %>
+    <br></br>
+    <%= post.description %>
+      <br></br>
+      <% if current_user %>
+        <%= link_to "Comment", new_post_comment_path(post) %>
+        <%= link_to "Edit picture", edit_post_path(post) %>
+        <%= link_to "Delete picture", post_path(post), method: :delete %>
+        <%= link_to "Like", post_likes_path(post), method: :post %>
+      <% end %>
+        <p><%= pluralize post.likes.count, 'like' %></p>
+        Comments:
+        <% if post.comments.any? %>
+        <div>
+          <br> </br>
           <% post.comments.each do |comment| %>
-            <li>
-              <%= comment.comment %>
-              <h6> posted <%= time_ago_in_words(comment.created_at)%> ago</h6>
-            </li>
-          <% end %>
-        </ul>
-      </h5>
+            <%= comment.comment %>
+            <h6> posted <%= time_ago_in_words(comment.created_at)%> ago</h6>
+            <% end %>
+        </div>
+      </h2>
       <% else %>
         <p> No comments... yet! </p>
       <% end %>
