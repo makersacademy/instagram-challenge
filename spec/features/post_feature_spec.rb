@@ -13,12 +13,12 @@ feature 'Uploading and Viewing posts' do
 
     scenario 'user can upload posts' do
       make_a_post
+      expect(current_path).to eq '/posts'
       within('li') do
         expect(page).to have_content 'test@email.com'
         expect(page).to have_selector("img[src*='testpattern.jpg']")
         expect(page).to have_content 'Test image'
       end
-      expect(current_path).to eq '/posts'
     end
   end
 end

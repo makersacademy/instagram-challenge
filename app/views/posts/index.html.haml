@@ -1,4 +1,4 @@
-%a(href=new_post_path) Post a photo
+= link_to 'Post a photo', new_post_path
 
 - if @posts.any?
   %ul
@@ -7,5 +7,12 @@
         = post.user.email
         = image_tag post.image.url(:medium)
         = post.caption
+        - if post.comments.any?
+          %ul
+          - post.comments.each do |comment|
+            %li.comments
+              = comment.user.email
+              = comment.content
+        = link_to 'Comment', new_post_comment_path(post)
 - else
   No posts, upload one!
