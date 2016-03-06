@@ -39,4 +39,8 @@ I can click on it and view that single post
 As a user,
 If I want to change my caption message,
 I can edit the caption of my existing posts
+
+As a user,
+So that I can only upload images,
+I will receive a message if I try to upload anything else
 ```
