@@ -1,5 +1,15 @@
 
+* As a user,
+* So that i show others my pictures,
+* I would like to be able to upload a picture
 
+* As a user,
+* If i upload the wrong image,
+* I would like to be able to delete a picture
+
+* As a user,
+* So that I can manage pictures,
+* I would like to sign up and log in to my account
 
 Instagram Challenge
 ===================

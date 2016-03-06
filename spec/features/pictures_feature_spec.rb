@@ -8,13 +8,27 @@ feature 'pictures' do
       expect(page).to have_link 'Add picture'
     end
 
-    scenario 'user can add a picture that is then displayed' do
-      visit '/pictures'
-      click_link 'Add picture'
-      attach_file 'picture_image', Rails.root + 'spec/features/test.jpg'
-      fill_in 'Caption', with: 'First pic'
-      click_button 'Upload picture'
-      expect(page).to have_selector("img[src*=test]")
+    context 'adding a picture' do
+      it 'lets the user add a picture that is then displayed' do
+        visit '/pictures'
+        add_picture
+        expect(page).to have_selector("img[src*=test]")
+      end
+
+      it 'lets the user add a caption when adding a picture' do
+        visit '/pictures'
+        add_picture
+        expect(page).to have_content("First pic")
+      end
+    end
+
+    context 'with a picture uploaded' do
+      it 'lets the user delete a picture' do
+        visit '/pictures'
+        add_picture
+        click_link 'Delete'
+        expect(page).not_to have_selector("img[src*=test]")
+      end
     end
   end
 end
