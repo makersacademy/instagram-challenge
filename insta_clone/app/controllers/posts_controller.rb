@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order(:created_at)
+    @likes = Like.all
   end
 
   def new
