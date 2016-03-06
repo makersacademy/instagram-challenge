@@ -11,7 +11,7 @@ end
 
 context 'when photo has been added' do
 it'displays the photo' do 
-	sign_up_and_in
+	sign_up_and_in("Russell", "Vaughan", "russellvaughan", "russell@example.com")
 	click_link('Add a photo')
 	expect(current_path).to eq('/photos/new')
 	allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(:true)
@@ -22,7 +22,7 @@ end
 end
 
 it'displays a brief description' do 
-	sign_up_and_in
+	sign_up_and_in("Russell", "Vaughan", "russellvaughan", "russell@example.com")
 	click_link('Add a photo')
 	expect(current_path).to eq('/photos/new')
 	allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(:true)
@@ -35,7 +35,7 @@ end
 
 feature 'a user can edit a photo' do 
 	it 'edits a photo' do 
-	sign_up_and_in
+	sign_up_and_in("Russell", "Vaughan", "russellvaughan", "russell@example.com")
 	create_photo
  	first(:css, 'a[href*="photo"]').click
 	click_link("Edit Photo")
@@ -45,16 +45,15 @@ feature 'a user can edit a photo' do
 end
 end
 
-feature 'a user can edit a photo' do 
-	it 'edits a photo' do 
-	sign_up_and_in
+feature 'a user can delete a photo' do 
+	it 'deletes a photo' do 
+	sign_up_and_in("Russell", "Vaughan", "russellvaughan", "russell@example.com")
 	create_photo
  	first(:css, 'a[href*="photo"]').click
 	click_link("Delete Photo")
 	expect(page).to_not have_css("img[src*='cat.jpg']")
 end
 end
-
 
 
 feature 'A user cannot add a photo' do 
@@ -64,4 +63,16 @@ feature 'A user cannot add a photo' do
 	expect(current_path).not_to eq('/photos/new')
 	end
 end
+
+feature 'A user only delete their own photo' do 
+	it 'cannot delete another users photo' do 
+	sign_up_and_in("Russell", "Vaughan", "russellvaughan", "russell@example.com")
+	create_photo
+	click_link("Sign Out")
+	sign_up_and_in("Johnny", "Appleseed", "jappleseeed", "johnny@example.com")
+ 	first(:css, 'a[href*="photo"]').click
+	expect(page).to_not have_link("Delete Photo")
+end
+end
+
 
