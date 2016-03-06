@@ -6,34 +6,28 @@ feature 'Posts feature' do
 
     scenario 'user fills in a form, then displays the new post' do
       visit('/')
-      click_link 'New post'
-      attach_file('Image', "spec/files/images/first.jpg")
-      fill_in 'Caption', with: 'Lorem ipsum dolor sit amet.'
-      click_button 'Create Post'
-      expect(page).to have_content('Lorem ipsum dolor sit amet.')
+      create_post
+      expect(page).to have_content('First post')
       expect(page).to have_css("img[src*='first.jpg']")
     end
 
     scenario 'not saving new post without image' do
       visit('/')
-      click_link 'New post'
-      fill_in 'Caption', with: 'Lorem ipsum dolor sit amet.'
+      create_post(image_path: nil, caption: 'First post')
       click_button 'Create Post'
-      expect(page).not_to have_content('Lorem ipsum dolor sit amet.')
+      expect(page).not_to have_content('First post')
       expect(page).to have_content 'error'
     end
 
   end
 
-  context 'viewing posts' do
+  context 'viewing/ editing/ deleting posts' do
 
-    let!(:post1){Post.create(
-                        image: File.open("#{Rails.root}/spec/files/images/first.jpg"),
-                        caption: 'First post')}
+    let!(:post1){add_existing_post}
 
-    let!(:post2){Post.create(
-                        image: File.open("#{Rails.root}/spec/files/images/second.jpg"),
-                        caption: 'Second post')}
+    let!(:post2){add_existing_post(
+                    path: '/spec/files/images/second.jpg',
+                    caption: 'Second post')}
 
     scenario 'let a user view posts' do
       visit '/'
@@ -49,15 +43,6 @@ feature 'Posts feature' do
       expect(page).to have_content 'First post'
       expect(page.current_path).to eq(post_path(post1))
     end
-
-  end
-
-  context 'editing posts' do
-
-    let!(:post1){Post.create(
-                        image: File.open("#{Rails.root}/spec/files/images/first.jpg"),
-                        caption: 'First post')}
-
 
     scenario 'let a user edit a post' do
       visit '/'
@@ -79,12 +64,6 @@ feature 'Posts feature' do
       expect(page).not_to have_content('Something new.')
       expect(page).to have_content 'error'
     end
-  end
-
-  context 'deleting posts' do
-    let!(:post1){Post.create(
-                        image: File.open("#{Rails.root}/spec/files/images/first.jpg"),
-                        caption: 'First post')}
 
     scenario 'delete a post when user press Delete button' do
       visit '/'
