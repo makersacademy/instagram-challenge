@@ -10,7 +10,7 @@ feature 'posts' do
 
   context 'if photos have been posted' do
     before do
-      Post.create(description: 'Sample post', image_file_name: 'sample.jpg')
+      Post.create(description: 'Sample post')
     end
 
     scenario 'display posts' do
