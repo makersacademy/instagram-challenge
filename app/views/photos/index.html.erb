@@ -8,12 +8,15 @@
 			<% if photo.comments.any? %>
 				<% photo.comments.each do |comment| %>
 				<li>
-				<%= comment.body %>
+				<p><%= comment.body %> from <%= comment.commenter %></p>
+					<p><%=link_to "Edit Comment", edit_comment_path(comment) %> </p>
+					<p><%=link_to "Delete Comment", comment_path(comment), method: :delete %> </p>
 				</li>
 				<%end%>		
 		<% else %>
 			<p>No comments</p>
-		<% end %>
+	
+	<% end %>
 	<% end %>
 
 <% else %>

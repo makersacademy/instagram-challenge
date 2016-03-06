@@ -7,4 +7,11 @@ class Photo < ActiveRecord::Base
 		validates_attachment_content_type :image, { content_type: ["image/jpeg", 
 			"image/gif", "image/png"] }
 
+
+ def build_comment(attributes={}, user)
+  attributes[:user_id] = user.id 
+  comments.build(attributes)
+  end
+
+
 end

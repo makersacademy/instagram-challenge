@@ -1,15 +1,15 @@
 class CommentsController < ApplicationController
   def new
-    puts Photo.find(params[:photo_id]).nil?
     @photo = Photo.find(params[:photo_id])
-    @comment = Comment.new
+    @comment = @photo.comments.new
   end
 
   def create
     @photo = Photo.find(params[:photo_id])
     @comment = @photo.comments.new(comment_params)
+    @comment.commenter = current_user.email
     if @comment.save
-      flash[:success] = "the photo was added!"
+      flash[:success] = "the comment was added!"
       redirect_to '/'
     end 
   end
@@ -18,16 +18,25 @@ class CommentsController < ApplicationController
   end
 
   def edit
-  end
+    @comment = Comment.find(params[:id])
+end
 
-  def update
-  end
+def update
+  @comment = Comment.find(params[:id])
+  @comment = @comment.update(comment_params)
+  redirect_to '/'
+end 
 
-  def destroy
-  end
+def destroy
+@comment = Comment.find(params[:id])
+if @comment.destroy
+flash[:success] = "the photo was deleted!"
+redirect_to '/'
+end
+end
 
-   def comment_params
-    params.require(:comment).permit(:body)
-  end
+def comment_params
+  params.require(:comment).permit(:body)
+end
 
 end

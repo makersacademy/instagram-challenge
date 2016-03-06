@@ -17,3 +17,9 @@ attach_file('photo[image]', "#{Rails.root}/spec/cat.jpg", visible: false)
 fill_in('Description', with: "Check out my cat" )
 click_button('Create Photo')
 end
+
+def add_comment
+click_link("Add a comment")
+fill_in("comment[body]", with: "you have a cute cat" )
+click_button("Create Comment")
+end
