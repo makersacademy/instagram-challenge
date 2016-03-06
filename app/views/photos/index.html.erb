@@ -5,6 +5,19 @@
   <% @photos.each do |photo| %>
     <h2><%= photo.description %></h2>
     <%= link_to "Delete", photo_path(photo), method: :delete %>
+    <%= link_to "Comment", new_photo_comment_path(photo) %>
+
+    <h3>Comments for <%= photo.description %></h3>
+
+    <% if photo.comments.any? %>
+      <ul>
+        <% photo.comments.each do |comment| %>
+          <li>
+            <%= comment.thoughts %>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
   <% end %>
 <% else %>
   <h1>No photos uploaded yet!</h1>
