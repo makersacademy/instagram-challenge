@@ -17,14 +17,18 @@ Instructions
 :construction:
 
 
-Implemented Feature Stories
+User Stories
 -------
 ```
 As a user,
 So that I can share my images,
 I can create a new post with an image and caption
 
-As the website owner,
+As a user,
 So that I don't have posts with just text,
 All posts must be created with an image
+
+As a user,
+So that I can see whats been posted,
+When I visit the website I can see all the posts
 ```
