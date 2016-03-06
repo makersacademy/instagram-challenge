@@ -15,8 +15,7 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.new( image: image_params[:image],
-                        description: image_params[:description])
+    @image = Image.new(image_params)
 
     @image.user = current_user
     if @image.save

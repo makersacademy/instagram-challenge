@@ -11,7 +11,7 @@ feature "Image upload" do
     attach_file 'image[image]', Rails.root + "spec/assets/success.jpg"
     fill_in 'image[description]', with: "test caption"
     click_button "Create Image"
-    expect(page).to have_css '.image-div'
+    expect(page).to have_css '.image-link'
   end
 
   scenario "Can't submit blank file field" do
@@ -24,5 +24,12 @@ feature "Image upload" do
     fill_in 'image[description]', with: "should not work"
     click_button "Create Image"
     expect(page).to have_content 'Incorrect attachment'
+  end
+
+  scenario 'show page has big image and description' do
+    upload_image
+    find('.image-link').click
+    expect(page).to have_css('.big-image-div')
+    expect(page).to have_content 'test caption'
   end
 end
