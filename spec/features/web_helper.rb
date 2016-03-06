@@ -11,3 +11,12 @@ def sign_out
   visit '/'
   click_link 'Sign out'
 end
+
+def make_a_post
+  visit '/'
+  click_link 'Post a photo'
+  attach_file 'post[image]',
+              Rails.root.join('spec', 'fixtures', 'testpattern.jpg')
+  fill_in 'Caption', with: 'Test image'
+  click_button 'Post'
+end

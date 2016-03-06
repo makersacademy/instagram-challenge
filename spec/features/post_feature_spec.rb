@@ -12,14 +12,12 @@ feature 'Uploading and Viewing posts' do
     end
 
     scenario 'user can upload posts' do
-      visit '/'
-      click_link 'Post a photo'
-      attach_file 'post[image]',
-                  Rails.root.join('spec', 'fixtures', 'testpattern.jpg')
-      fill_in 'Caption', with: 'Test image'
-      click_button 'Post'
-      expect(page).to have_content 'Test image'
-      expect(page).to have_selector("img[src*='testpattern.jpg']")
+      make_a_post
+      within('li') do
+        expect(page).to have_content 'test@email.com'
+        expect(page).to have_selector("img[src*='testpattern.jpg']")
+        expect(page).to have_content 'Test image'
+      end
       expect(current_path).to eq '/posts'
     end
   end
