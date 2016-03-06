@@ -1,5 +1,15 @@
 %div= image_tag @image.image.url(:medium), class: 'big-image-div'
-= form_for @comment do |f|
-  - f.label :comment
-  - f.text_field, maxlength: 50
-  - f.submit
+
+%div= "Posted by #{@image.user.user_handle}"
+%div= @image.description
+
+- @image.comments.each do |comment|
+  %div{ class: 'comment-div' }
+    %p= comment.user.user_handle + ' says:'
+    %p= comment.content
+
+= form_for [@image, @comment] do |f|
+  = f.text_field  :content,
+                  maxlength: 50,
+                  placeholder: 'Comment'
+  = f.submit

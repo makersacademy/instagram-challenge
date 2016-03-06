@@ -30,6 +30,7 @@ feature "Image upload" do
     upload_image
     find('.image-link').click
     expect(page).to have_css('.big-image-div')
-    expect(page).to have_content 'test caption'
+    expect(page).to have_content('Posted by helloworld')
+    expect(page).to have_content 'test description'
   end
 end

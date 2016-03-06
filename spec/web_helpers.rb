@@ -11,6 +11,6 @@ end
 def upload_image
   click_link "Upload image"
   attach_file 'image[image]', Rails.root + "spec/assets/success.jpg"
-  fill_in 'image[description]', with: "test caption"
+  fill_in 'image[description]', with: "test description"
   click_button "Create Image"
 end
