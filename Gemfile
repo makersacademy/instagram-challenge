@@ -16,6 +16,10 @@ gem 'coffee-rails', '~> 4.1.0'
 
 #image uploads
 gem 'paperclip'
+# FB login auth
+gem 'omniauth-facebook'
+# dotenv for concealment
+gem 'dotenv-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -7,6 +7,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '4197e6da851f94a85a8048393681eec489bdfdef29bbad41e1cb1e1acade18bc28d0c47aca33bc43a2695d0a26a6ec22d4d4a84239bbdfaf8c56267211cb542e'
+  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"]
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
