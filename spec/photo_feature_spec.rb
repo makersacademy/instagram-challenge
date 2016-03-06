@@ -11,7 +11,7 @@ end
 
 context 'when photo has been added' do
 it'displays the photo' do 
-	visit('/')
+	sign_up_and_in
 	click_link('Add a photo')
 	expect(current_path).to eq('/photos/new')
 	allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(:true)
@@ -22,7 +22,7 @@ end
 end
 
 it'displays a brief description' do 
-	visit('/')
+	sign_up_and_in
 	click_link('Add a photo')
 	expect(current_path).to eq('/photos/new')
 	allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(:true)
@@ -32,3 +32,12 @@ it'displays a brief description' do
 	expect(page).to have_content("Check out my cat")
 end
 end
+
+feature 'A user cannot add a photo' do 
+	it 'if not logged in' do 
+	visit('/')
+	click_link('Add a photo')
+	expect(current_path).not_to eq('/photos/new')
+	end
+end
+
