@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @posts = Post.all
     @comment = Comment.new
@@ -9,7 +11,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
+    current_user.posts.create(post_params)
+    flash[:notice] = 'Posted successfully'
     redirect_to posts_path
   end
 

@@ -32,35 +32,69 @@ feature 'posts' do
   end
 
   context 'posting a photo' do
-    scenario 'display a form to fill out, then display the post' do
+    scenario 'redirects to log in page if user is not signed in' do
       visit '/posts'
+      click_link 'Post a photo'
+      expect(page).to have_content 'Log in'
+      expect(page).not_to have_content 'Post'
+    end
+
+    scenario 'display a form to fill out, then display the post' do
+      sign_up
       click_link 'Post a photo'
       fill_in 'Description', with: 'Sample post'
       click_button 'Post'
+      expect(page).to have_content 'Posted successfully'
       expect(page).to have_content 'Sample post'
     end
   end
 
   context 'editing a post' do
-    before { Post.create description: 'Old description' }
+    before do
+      sign_up
+      post_photo
+      log_out
+    end
 
-    scenario 'let a user edit a post' do
-      visit '/posts'
-      click_link 'Edit'
-      fill_in 'Description', with: 'New description'
-      click_button 'Update'
-      expect(page).to have_content 'New description'
+    context 'if user is not the post author' do
+      scenario 'do not display edit link' do
+        sign_up(email: 'other@email.com')
+        expect(page).not_to have_link 'Edit'
+      end
+    end
+
+    context 'if user is the post author' do
+      scenario 'let the post author edit a post' do
+        log_in
+        click_link 'Edit'
+        fill_in 'Description', with: 'New description'
+        click_button 'Update'
+        expect(page).to have_content 'New description'
+      end
     end
   end
 
   context 'deleting a post' do
-    before { Post.create description: 'Sample post' }
+    before do
+      sign_up
+      post_photo
+      log_out
+    end
 
-    scenario 'delete post when user clicks delete link' do
-      visit '/posts'
-      click_link 'Delete'
-      expect(page).not_to have_content 'Sample post'
-      expect(page).to have_content 'Post deleted successfully'
+    context 'if user is not the post author' do
+      scenario 'do not display delete link' do
+        sign_up(email: 'other@email.com')
+        expect(page).not_to have_link 'Delete'
+      end
+    end
+
+    context 'if user is the post author' do
+      scenario 'let the post author delete a post' do
+        log_in
+        click_link 'Delete'
+        expect(page).not_to have_content 'Sample post'
+        expect(page).to have_content 'Post deleted successfully'
+      end
     end
   end
 end
