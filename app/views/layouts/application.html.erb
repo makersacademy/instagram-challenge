@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Instagram Challenge</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Instagram Challenge</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="navigation" class="navbar-top">
+      <div class="container navbar-container">
+        <div class="row">
+          <nav class="navbar">
+            <div class="col-md-4">
+              <h1>Instagram</h1>
+            </div>
+            <div class="col-md-8">
+              <ul class="nav navbar-nav navbar-right navbar-text">
+              <% if user_signed_in? %>
+                <li><%= current_user.username %></li>
+                <li> <%= link_to 'New post', new_post_path , class: 'btn btn-link'%>
+                </li>
+                <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "Log in", new_user_session_path %></li>
+                <li><%= link_to "Sign up", new_user_registration_path %></li>
+              <% end %>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
 
-<% if user_signed_in? %>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-<% else %>
-  <%= link_to "Log in", new_user_session_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
-<% end %>
-
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
-
-</body>
+    <div id="main-container" class="container">
+      <div class="row">
+        <div id="main-content" class="col-md-12">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

@@ -28,15 +28,24 @@ feature 'Posts feature' do
 
   context 'viewing/ editing/ deleting posts' do
     let!(:user){create_user}
-    let!(:user1){create_user(
-                  username: 'test1',
-                  email: 'test1@example.com')}
-    let!(:post1){add_existing_post(user_id: user.id)}
+    let!(:user1) do
+      create_user(
+        username: 'test1',
+        email: 'test1@example.com'
+      )
+    end
 
-    let!(:post2){add_existing_post(
-                    path: '/spec/files/images/second.jpg',
-                    caption: 'Second post',
-                    user_id: user.id)}
+    let!(:post1) do
+      add_existing_post(user_id: user.id)
+    end
+
+    let!(:post2) do
+      add_existing_post(
+        path: '/spec/files/images/second.jpg',
+        caption: 'Second post',
+        user_id: user.id
+      )
+    end
 
     scenario 'let a user view posts only if logged in' do
       visit '/'

@@ -1,16 +1,20 @@
-<h1>Instagram clone</h1>
 <% if user_signed_in? %>
-  <%= link_to "New post", new_post_path %>
-  <br/>
-  <% if @posts.any? %>
-    <% @posts.each do |post| %>
-      <%=image_tag post.image.url(:medium) %>
-      <%= post.user.username %>
-      <%= link_to "View #{post.caption}", post_path(post) %>
+
+  <div class="row">
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <p><%= post.user.username %></p>
+        <%=image_tag post.image.url(:medium) %>
+        <p><%= link_to "View #{post.caption}", post_path(post) %></p>
+      </div>
+      <% end %>
+    <% else %>
+    <div class="col-md-4">
+      No posts yet
+    </div>
     <% end %>
-  <% else %>
-    No posts yet
-  <% end %>
+  </div>
 <% else %>
   You need to Log in to see posts!
 <% end %>
