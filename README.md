@@ -8,6 +8,14 @@ What is it?
 A basic Instagram clone. Users are able to post pictures, comments and likes.
 Made with Rails and Postgres.
 
+How to use
+----
+* git clone https://github.com/AlexAvlonitis/instagram-challenge.git
+* bundle install
+* rake db:create db:migrate
+* rails s
+* visit 'http://localhost:3000'
+
 User Stories
 -----
 
