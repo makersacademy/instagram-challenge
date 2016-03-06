@@ -5,9 +5,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-    post = Post.find(params[:post_id])
-    comment = post.comments.build
-    comment.save
-    render json: {new_comment_body: comment.body}
+    @post = Post.find(params[:post_id])
+    @post.comments.create(comment_params)
+    redirect_to posts_path
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:body) # .merge(user: current_user)
   end
 end
