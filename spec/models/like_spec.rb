@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe Like, type: :model do
-  it { is_expected.to belong_to(:user).dependent(:destroy) }
+  it { is_expected.to belong_to(:user) }
 
-  it { is_expected.to belong_to(:post).dependent(:destroy) }
+  it { is_expected.to belong_to(:post) }
 
   describe 'validation' do
     let(:user) { User.new }
