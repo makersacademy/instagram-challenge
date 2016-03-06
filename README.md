@@ -19,6 +19,10 @@
 * To protect my images,
 * I want to be the only person that can delete or edit my pictures
 
+* As a user,
+* To be social,
+* I would like to comment on photos
+
 Instagram Challenge
 ===================
 

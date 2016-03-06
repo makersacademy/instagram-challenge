@@ -6,6 +6,7 @@ def add_picture
 end
 
 def sign_up(email='test@email.com', password='P4ssword')
+  visit '/'
   click_link 'Sign up'
   fill_in 'Email', with: email
   fill_in 'Password', with: password
@@ -14,6 +15,7 @@ def sign_up(email='test@email.com', password='P4ssword')
 end
 
 def sign_in
+  visit '/'
   click_link 'Sign in'
   fill_in 'Email', with: 'test@email.com'
   fill_in 'Password', with: 'P4ssword'

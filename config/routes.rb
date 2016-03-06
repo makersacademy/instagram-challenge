@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   get 'pictures' => 'pictures#index'
 
-  resources :pictures
+  resources :pictures, shallow: true do
+    resources :comments
+  end
 
   root to: "pictures#index"
 

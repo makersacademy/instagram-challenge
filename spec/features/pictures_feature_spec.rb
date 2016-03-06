@@ -17,7 +17,6 @@ feature 'pictures' do
   context 'user signed in' do
 
     before do
-      visit '/'
       sign_up
     end
 

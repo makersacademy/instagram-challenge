@@ -5,6 +5,14 @@
     <p><%= picture.caption %></p>
     <p><%= link_to "Delete", picture_path(picture), method: :delete if picture.user == current_user %></p>
     <p><%= link_to "Edit", edit_picture_path(picture) if picture.user == current_user %></p>
+    <p><%= link_to "Comment", new_picture_comment_path(picture) %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+        <li>
+        <%= comment.comments %>
+        </li>
+        <% end %>
+      </ul>
   <% end %>
 <% else %>
   <h2>No pictures to display</h2>
