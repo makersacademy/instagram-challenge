@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index]
+
   def index
     @photos = Photo.all
   end
@@ -19,5 +21,12 @@ class PhotosController < ApplicationController
 
   def photo_params
     params.require(:photo).permit(:image)
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    flash[:notice] = 'Photo deleted successfully'
+    redirect_to '/photos'
   end
 end

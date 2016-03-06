@@ -3,6 +3,7 @@ require_relative 'web_spec_helper'
 
 
 feature 'comments' do
+  before { sign_up }
   before { add_photo }
 
   scenario 'allows users to leave a comment' do
