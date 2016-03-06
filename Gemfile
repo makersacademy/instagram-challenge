@@ -46,6 +46,7 @@ group :test do
   gem 'timecop'
   gem 'orderly'
   gem 'pry'
+  gem 'database_cleaner'
 end
 
 group :development, :test do

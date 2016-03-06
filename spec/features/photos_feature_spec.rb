@@ -61,4 +61,43 @@ feature 'Homepage photo view' do
       expect('Cute kittens').to appear_before 'Amazing times'
     end
   end
+
+  context 'Deleting and editing photos' do
+
+    scenario 'user not logged in' do
+      visit '/photos'
+      expect(page).not_to have_content("Censor photo")
+      expect(page).not_to have_content("Destroy the evidence")
+    end
+
+    context 'user logged in' do
+
+      before do
+        sign_up_and_in('me@metest.com', 'thisisapassword', 'Viola')
+        basic_new_upload('spec/support/photo_upload_placeholder.jpg', 'Amazing times')
+      end
+
+      scenario 'edit and delete options only available on your own photos' do
+        expect(page).to have_content("Censor photo")
+        expect(page).to have_content("Destroy the evidence")
+      end
+
+      scenario 'deleting a photo' do
+        click_link "Destroy the evidence"
+        expect(page).not_to have_content "Amazing times"
+        expect(page).to have_content 'It\'s like it never even existed.'
+        expect(current_path).to eq '/photos'
+      end
+
+      scenario 'updating a photo' do
+        click_link "Censor photo"
+        fill_in('Caption', with: "Censored")
+        click_button "Censor"
+        expect(page).to have_content 'Don\'t worry, nobody will ever know.'
+        expect(page).to have_content 'Censored'
+        expect(page).not_to have_content "Amazing times"
+        expect(current_path).to eq '/photos'
+      end
+    end
+  end
 end

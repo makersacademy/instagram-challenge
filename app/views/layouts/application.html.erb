@@ -14,13 +14,7 @@
 
     <p>
     <% if user_signed_in? %>
-        <figure class="current_user_pic">
-          <% if current_user.profile_pic.present? %>
-            <%= image_tag(current_user.profile_pic.url(:thumb)) %>
-          <% else %>
-            <img src="http://i.imgur.com/qeCKQGP.jpg">
-          <% end %>
-      </figure>
+      <%= render 'profile_pic' %>
       <%= link_to "I've Had Enough InstaGratification", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "I Need MY InstaGratification", new_user_session_path %>

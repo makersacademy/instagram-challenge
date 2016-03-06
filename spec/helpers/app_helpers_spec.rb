@@ -42,4 +42,18 @@ describe ApplicationHelper, :type => :helper do
     end
   end
 
+  describe '#post_exact_time' do
+
+    before do
+      @test_time = Time.new(2016, 03, 5, 13, 0, 30)
+      Timecop.freeze(@test_time)
+    end
+    after do
+      Timecop.return
+    end
+
+    it 'gives an exact time for a post' do
+      expect(post_exact_time(@test_time)).to eq "05/03/2016 at 01:00PM"
+    end
+  end
 end
