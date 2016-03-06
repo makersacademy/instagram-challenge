@@ -33,4 +33,19 @@ feature 'pictures' do
   end
 end
 
+context 'editing pictures' do
+
+  before { Picture.create postcomment: 'Another pic' }
+
+  scenario 'let a user edit a picture' do
+   visit '/pictures'
+   click_link 'Edit Picture'
+   fill_in 'picture[postcomment]', with: 'Another great pic'
+   click_button 'Update Picture'
+   expect(page).to have_content 'Another great pic'
+   expect(current_path).to eq '/pictures'
+  end
+
+end
+
 end
