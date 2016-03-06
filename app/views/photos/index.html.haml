@@ -4,8 +4,10 @@
   %ul
     - @photos.each do |photo|
       %li
-        = photo.description
-        %p= image_tag photo.image.url(:thumb)
+        %h4= photo.description
+        %figure{class: photo.filter_class}
+          = image_tag photo.image.url(:medium)
+        %p= link_to 'Add filter', photo_path(photo)
         - if (current_user && !current_user.has_liked?(photo))
           = link_to "#{'&#9825'}".html_safe, photo_likes_path(photo), method: :post, class: 'like_link'
         = "Uploaded by: #{User.find(photo.user_id).username} #{distance_of_time_in_words(Time.at(photo.image_updated_at), Time.now)} ago"
@@ -15,9 +17,10 @@
             - photo.comments.each do |comment|
               %li
                 = comment.comment
-                = "Left by:  #{User.find(comment.user_id).username} #{distance_of_time_in_words(Time.at(comment.created_at), Time.now)} ago"
+                %p= "Left by:  #{User.find(comment.user_id).username} #{distance_of_time_in_words(Time.at(comment.created_at), Time.now)} ago"
                 - if (current_user && current_user.owns?(comment))
                   =link_to 'Delete comment', comment_path(comment), method: :delete
+        %p= link_to "Add comment", new_photo_comment_path(photo)
+
         - if (current_user && current_user.owns?(photo))
-          = link_to "Delete photo", photo_path(photo), method: :delete
-        = link_to "Add comment", new_photo_comment_path(photo)
+          %p= link_to "Delete photo", photo_path(photo), method: :delete

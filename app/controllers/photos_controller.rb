@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
 
 
   def index
-    @photos = Photo.all.reverse
+    @photos = Photo.all.sort_by(&:created_at).reverse
   end
 
   def new
@@ -32,6 +32,14 @@ class PhotosController < ApplicationController
   end
 
   def show
+    @photo = Photo.find(params[:id])
+  end
+
+  def edit
+    @photo = Photo.find(params[:id])
+    @photo.filter_class = params[:filter]
+    @photo.save
+    redirect_to photos_path
   end
 
   def destroy

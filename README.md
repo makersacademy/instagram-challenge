@@ -37,6 +37,9 @@ Completed
 * A user can only like a picture once
 * pictures are shown in reverse order, newest first
 * The like button is a heart
+* Users can add a filter to their pictures
+* filters are added dynamically
+
 
 
 
@@ -48,13 +51,20 @@ Completed
 
 Todo
 -----
-* Users can add a filter to their pictures
+* test for dynamic filters
 * Comments, likes are added without moving to another page
 * The site uses foundation
 * The site looks like Instagram
 
-
-
+Questions
+-----
+- Turbolinks?
+- Why is AWS so slow to upload?
+- For finding usernames - where is the right place to put the method? is it a User class method? how does it sit under the photo for example, or in the view?
+- At the moment I'm hiding links based on whether the current user has done x or y - but this also means that I have to ask if there is a current user (e.g), or not show them. A better way of doing it?
+- what is the form_for helper doing? when in takes in an element such as |f|
+- how to use the asset library - where to place the css bits?
+- 
 
 Build Instagram: Simple huh!
 

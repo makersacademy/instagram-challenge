@@ -59,11 +59,20 @@ feature 'photos' do
       attach_file 'Image', Rails.root + 'spec/features/images/hammericon.png'
       check 'add_filter'
       click_button 'Create Photo'
-      expect(current_path).to eq photo_path
-      choose 'walden-filter'
-      # expect(page).to have_selector("img[class=walden]")
+      choose 'filter_walden'
       click_button 'Save'
-      expect(page).to have_selector("img[class=walden]")
+      expect(page).to have_selector("figure[class=walden]")
+    end
+
+    scenario 'users can edit the filter on their photo' do
+      sign_up_helper
+      upload_photo
+      click_link 'Add filter'
+      choose 'filter_walden'
+      click_button 'Save'
+      expect(page).to have_selector("figure[class=walden]")
+      click_link 'Add filter'
+      expect(page).to have_selector("figure[class=walden]")
     end
   end
 
