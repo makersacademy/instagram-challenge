@@ -5,7 +5,7 @@ feature 'Authentication' do
     fill_in "Email", with: "test@test.com"
     fill_in "Username", with: "test12"
     fill_in "Password", with: "1234abcd"
-    fill_in "Password confirmation", with: "1234abcd"
+    fill_in "user[password_confirmation]", with: "1234abcd"
     click_button "Sign up"
   end
 

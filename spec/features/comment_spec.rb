@@ -15,7 +15,7 @@ feature 'Comments' do
 
   scenario 'Users can leave comments on posts' do
     within ".comments" do
-      expect(page).to have_content "Lovely image! test12" 
+      expect(page).to have_content "test12 - Lovely image!" 
     end
   end
 
@@ -37,7 +37,7 @@ feature 'Comments' do
       visit '/'
       click_link "Comment"
       within ".comments" do
-        expect(page).to have_content "Lovely image! test12"
+        expect(page).to have_content "test12 - Lovely image!"
         expect(page).not_to have_content "Delete"
       end
     end

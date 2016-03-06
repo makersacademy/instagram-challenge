@@ -20,11 +20,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def update_likes
-    Post.increment_counter(:likes, params[:id])
-    redirect_to posts_path
-  end
-
   def create
     @user = User.find(current_user.id)
     @post = @user.posts.create(post_params)

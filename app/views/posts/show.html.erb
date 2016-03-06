@@ -1,26 +1,26 @@
-<h1><%= @post.title %></h1>
-<%= image_tag @post.image.url  %>
+<main class='single-post-container'>
+    <%= image_tag @post.image.url  %>
 
-<% if @post.user_id == current_user.id %>
-    <%= link_to "Edit Your Post", edit_post_path(@post) %>
-    <%= link_to "Delete Your Post", post_path(@post), method: :delete %>
-<% end %>
-
-<ul class='comments'>
-    <% @comments.each do |comment| %>
-        <li>
-            <%= comment.body %>
-            <%= find_username_by_id(comment.user_id) %>
-            <% if current_user.id == comment.user_id %>
-                <%= link_to "Delete Comment", [@post, comment], method: :delete %>
-            <% end %>
-        </li>
+    <% if @post.user_id == current_user.id %>
+        <%= link_to "Edit Your Post", edit_post_path(@post) %>
+        <%= link_to "Delete Your Post", post_path(@post), method: :delete, class: "fr" %>
     <% end %>
-</ul>
 
-<%= form_for [@user, @post, @comment] do |f| %>
-    <%= f.label :body, "Comment" %><br/>
-    <%= f.text_field :body %>
-    <%= f.submit "Send" %>
-<% end %>
+    <ul class='comments'>
+        <li><span class="username"><%= find_username_by_id(@post.user_id) %></span> - <%= @post.title %>
+        <% @comments.each do |comment| %>
+            <li>
+                <span class='username'><%= find_username_by_id(comment.user_id) %></span> - 
+                <%= comment.body %>
+                <% if current_user.id == comment.user_id %>
+                    <%= link_to "Delete Comment", [@post, comment], method: :delete, class: "fr" %>
+                <% end %>
+            </li>
+        <% end %>
+    </ul>
 
+    <%= form_for [@user, @post, @comment] do |f| %>
+        <%= f.text_field :body, class: 'text-input', placeholder: 'Comment' %>
+        <%= f.submit "Send", class: 'btn fr' %>
+    <% end %>
+</main>

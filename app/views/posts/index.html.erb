@@ -1,23 +1,23 @@
-<%= link_to "Make a post", new_post_path %>
+<main class="post-container">
 
-<section class="posts">
-    <ul>
-        <% @posts.each do |post| %>
-            <li>
-                <%= link_to post_path(post), class: "show-link" do %>
-                    <div class="image-box">
-                        <%= image_tag post.image.url(:thumb) %>
-                    </div>
-                <% end %>
-                <p>
-                    <%= form_for post, url: "/posts/#{post.id}/update_likes", action: "update_likes", method: :post do |f| %>
-                        <%= f.submit "Like" %>
+    <section class="posts">
+        <ul>
+            <% @posts.each do |post| %>
+                <li class="main-li">
+                    <p class='owner'><%= find_username_by_id(post.user_id)%> - <%= post.title %></p>
+                    <%= link_to post_path(post), class: "show-link" do %>
+                        <div class="image-box">
+                            <%= image_tag post.image.url(:medium) %>
+                        </div>
                     <% end %>
-                    <%= pluralize(post.likes, 'like') %> 
-                    <%= link_to "Comment", post_path(post), class: "comment" %>
-                </p>
-                <p><%= find_username_by_id(post.user_id)%> <%= post.title %></p>
-            </li>
-        <% end %>
-    </ul>
-</section>
+                    <ul class="post-nav">
+                        <li>
+                                <%= link_to "Like", post_likes_path(post), class: 'likes-link' %>
+                                <span class="likes_count"><%= post.likes.count %></span> <%= 'like'.pluralize(post.likes.count) %></li>
+                        <li><%= link_to "Comment", post_path(post), class: "comment" %></li>
+                    </ul>
+                </li>
+            <% end %>
+        </ul>
+    </section>
+</main>
