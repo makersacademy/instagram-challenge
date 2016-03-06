@@ -1,0 +1,28 @@
+<header id="masthead">
+  <% if user_signed_in? %>
+    <div class="user-details">
+      <p>You're signed in as <%= current_user.name %></p>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="small-12 columns">
+      <h1 id="site-title">
+          insta
+      </h1>
+
+      <nav id="main-nav">
+
+        <%= link_to "Home", posts_path %><span class="sep"> | </span>
+
+        <% if user_signed_in? %>
+        <%= link_to "Add a post", new_post_path %><span class="sep"> | </span>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        <% else %>
+        <%= link_to "Sign in", new_user_session_path %><span class="sep"> | </span>
+        <%= link_to "Sign up", new_user_registration_path %>
+        <% end %>
+
+      </nav>
+    </div>
+  </row>
+</header>

@@ -1,0 +1,42 @@
+%section#posts
+  .row
+    - if @posts.any?
+      - @posts.each do |post|
+        .small-12.medium-4.columns.end
+          .image-container
+            = image_tag post.image.url(:medium), class: 'adaptive-background'
+            .post-meta-container
+              .post-meta
+                .post-time
+                  %p
+                    posted
+                    = time_ago_in_words(post.created_at)
+                    ago
+                  %p
+                    by
+                    = post.user.name
+                .likes
+                  - if current_user
+                    = link_to post_likes_path(post), method: :post, class: 'likes-link' do
+                      %span.icon.icon-heart(aria-hidden="true")
+                  - else
+                    %span.icon.icon-heart(aria-hidden="true")
+                  %span.likes_count= post.likes.count
+                  = 'like'.pluralize post.likes.count
+
+                .comment-count
+                  %span.icon.icon-chat3(aria-hidden="true")
+                  = post.comments.length
+                  = 'comment'.pluralize post.comments.length
+                .post-actions
+                  = link_to post_path(post) do
+                    More
+                  - if post.owned_by? current_user
+                    %span.sep
+                      |
+                    = link_to "Edit", edit_post_path(post)
+                    %span.sep
+                      |
+                    = link_to "Delete", post_path(post), method: :delete
+    - else
+      No posts yet
