@@ -26,7 +26,7 @@ feature 'pictures' do
   scenario 'prompts user to fill out a form, then displays the new picture' do
     visit '/pictures'
     click_link 'Add a picture'
-    fill_in 'postcomment', with: 'My first selfie'
+    fill_in 'picture[postcomment]', with: 'My first selfie'
     click_button 'Create Picture'
     expect(page).to have_content 'My first selfie'
     expect(current_path).to eq '/pictures'
