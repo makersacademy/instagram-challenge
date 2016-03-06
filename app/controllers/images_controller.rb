@@ -5,7 +5,6 @@ class ImagesController < ApplicationController
   end
 
   def new
-
   end
 
   def create
@@ -17,6 +16,10 @@ class ImagesController < ApplicationController
     end
   end
 
+  def show
+    @image = Image.find(params[:id])
+  end
+
   def edit
     @image = Image.find(params[:id])
   end
@@ -24,6 +27,13 @@ class ImagesController < ApplicationController
   def update
     @image = Image.find(params[:id])
     @image.update(image_params)
+    redirect_to '/images'
+  end
+
+  def destroy
+    @image = Image.find(params[:id])
+    @image.destroy
+    flash[:notice] = 'Image deleted successfully'
     redirect_to '/images'
   end
 
