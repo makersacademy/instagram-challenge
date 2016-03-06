@@ -10,4 +10,12 @@ feature 'Creating Posts' do
     expect(page).to have_content('great view!')
     expect(page).to have_css("img[src*='scenery.jpg']")
   end
+
+  scenario 'cannot create a post without an image' do
+    visit '/'
+    click_link 'New Post'
+    fill_in 'Caption', with: 'What a nice picture'
+    click_button 'Create Post'
+    expect(page).to have_content('You need to upload an image to post!')
+  end
 end
