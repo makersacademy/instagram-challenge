@@ -54,5 +54,8 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-resources :pictures
+resources :pictures do
+  resources :comments
+end
+
 end
