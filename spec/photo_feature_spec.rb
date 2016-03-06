@@ -45,6 +45,16 @@ feature 'a user can edit a photo' do
 end
 end
 
+feature 'a user can edit a photo' do 
+	it 'edits a photo' do 
+	sign_up_and_in
+	create_photo
+ 	first(:css, 'a[href*="photo"]').click
+	click_link("Delete Photo")
+	expect(page).to_not have_css("img[src*='cat.jpg']")
+end
+end
+
 
 
 feature 'A user cannot add a photo' do 

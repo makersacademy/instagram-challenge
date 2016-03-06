@@ -29,11 +29,19 @@ class PhotosController < ApplicationController
 		@photo = Photo.find(params[:id])
 		@photo.update(description_params)
 		if @photo.save
-		render 'show'
+			render 'show'
 		else
-		render 'edit'
+			render 'edit'
 		end
 	end
+
+	def destroy
+		@photo = Photo.find(params[:id])
+		if @photo.destroy
+			flash[:success] = "the photo was deleted!"
+			redirect_to '/'
+		end
+	end	
 
 	private
 
