@@ -11,15 +11,16 @@ RSpec.configure do |config|
         example.run
       end
     end
- 
+  
   config.expect_with :rspec do |expectations|
     
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
  
-  config.mock_with :rspec do |mocks|
+    config.mock_with :rspec do |mocks|
    
+    mocks.allow_message_expectations_on_nil = true
     mocks.verify_partial_doubles = true
   end
 

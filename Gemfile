@@ -17,6 +17,10 @@ gem 'devise'
 
 gem 'paperclip'
 
+gem "font-awesome-rails"
+
+gem 'aws-sdk'
+
 gem 'omniauth-facebook'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
