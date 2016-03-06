@@ -11,6 +11,6 @@ feature 'deleting photos' do
    expect(page).to have_content 'test image of elephant'
    click_link 'Delete this photo'
    expect(current_path).to eq '/'
-   expect(page).not_to have_content 'test image of elephant'
+   expect(page).to have_content 'Photo deleted successfully'
   end 
 end
