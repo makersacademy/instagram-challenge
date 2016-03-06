@@ -2,21 +2,26 @@
 
 - if @posts.any?
   - @posts.each do |post|
-    %section= post.description
+    %section.post
+      = post.description
 
-    - if user_signed_in? && post.user_id == current_user.id
-      = link_to 'Edit',   edit_post_path(post)
-      = link_to 'Delete', post_path(post), method: :delete
+      - if user_signed_in? && post.user_id == current_user.id
+        = link_to 'Edit',   edit_post_path(post)
+        = link_to 'Delete', post_path(post), method: :delete
 
-    = link_to 'More', post_path(post)
+      = link_to 'More', post_path(post)
 
-    - if post.comments.any?
-      - post.comments.each do |comment|
-        %article= comment.body
+      - if post.comments.any?
+        %section.comments
+          - post.comments.each do |comment|
+            %article.comment
+              = comment.body
+              - if user_signed_in? && comment.user_id == current_user.id
+                = link_to 'Delete', comment_path(comment), method: :delete
 
-    = form_for [post, @comment] do |f|
-      = f.text_field :body, placeholder: 'Add a comment...'
-      = f.submit 'Comment'
+      = form_for [post, @comment] do |f|
+        = f.text_field :body, placeholder: 'Add a comment...'
+        = f.submit 'Comment'
 
 - else
   No posts yet...

@@ -23,9 +23,15 @@ def log_out
 end
 
 def post_photo(file_path: nil,
-               description: 'Sample post')
+               description: 'Test post')
   visit '/'
   click_link 'Post a photo'
   fill_in 'Description', with: description
   click_button 'Post'
+end
+
+def leave_comment(body: 'Test comment')
+  visit '/'
+  fill_in 'comment_body', with: body
+  click_button 'Comment'
 end

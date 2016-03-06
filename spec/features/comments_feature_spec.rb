@@ -1,12 +1,51 @@
 require 'rails_helper'
 
 feature 'comments' do
-  before { Post.create description: 'Test post' }
 
-  scenario 'let users leave comments, which are displayed under the post' do
-    visit '/posts'
-    fill_in 'comment_body', with: 'Test comment'
-    click_button 'Comment'
-    expect(page).to have_content 'Test comment'
+  context 'leaving comments' do
+    before { Post.create description: 'Test post' }
+
+    context 'if user is not logged in' do
+      scenario 'redirects user to log in page' do
+        visit '/posts'
+        leave_comment
+        expect(page).to have_content 'Log in'
+        expect(page).not_to have_content 'Test comment'
+      end
+    end
+
+    context 'if user is logged in' do
+      scenario 'let user leave a comment, which is displayed under the post' do
+        sign_up
+        leave_comment
+        expect(page).to have_content 'Test comment'
+      end
+    end
+  end
+
+  context 'deleting comments' do
+    before do
+      Post.create description: 'Test post'
+      sign_up
+      leave_comment
+      log_out
+    end
+
+    context 'if user is not the post author' do
+      scenario 'do not display delete link' do
+        sign_up(email: 'other@email.com')
+        expect(page).not_to have_content 'Delete'
+      end
+    end
+
+    context 'if user is the post author' do
+      scenario 'let user delete comment' do
+        log_in
+        within('article.comment') do
+          click_link 'Delete'
+        end
+        expect(page).not_to have_content 'Test comment'
+      end
+    end
   end
 end
