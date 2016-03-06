@@ -81,11 +81,13 @@ Created the above user stories to follow a BDD life cycle. Used Capybara to TDD
 this project. The most challenging part was the table associations, for every
 user to have posts and the posts to have likes and also linked to users. Rails
 guides as well as Stack Overflow helped me find my solutions.
+Also i found out that pictures posted directly on Heroku are not saved. It is
+mandatory to outsource them, i pushed them to S3 AWS.
+http://stackoverflow.com/questions/32459959/heroku-paperclip-images-appear-but-then-disappear
 
 
 To DOs
 ----
 * Use Ajax on requests to avoid page refreshes
-* Add AWS S3 to outsource my pictures
 * Add Oauth for easier logins
 * Use Javascript for a better front end.
