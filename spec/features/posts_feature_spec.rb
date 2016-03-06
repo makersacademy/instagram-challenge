@@ -25,20 +25,14 @@ feature 'posts' do
   context 'creating posts' do
 
     scenario 'prompts user to fill out a form, then displays the new post' do
-      sign_up
-      visit '/posts'
-      click_link 'Add a post'
-      fill_in 'Message', with: 'This is my first real message'
-      click_button 'Create Post'
+      sign_up('john')
+      create_post
       expect(page).to have_content 'This is my first real message'
       expect(current_path).to eq '/posts'
     end
     scenario 'shows date of post' do
-      sign_up
-      visit '/posts'
-      click_link 'Add a post'
-      fill_in 'Message', with: 'This is my first real message'
-      click_button 'Create Post'
+      sign_up('john')
+      create_post
       expect(page).to have_content DateTime.now.strftime('%m/%d/%Y')
       expect(page).to have_content DateTime.now.strftime('%I:%M%p')
     end
@@ -59,10 +53,9 @@ feature 'posts' do
 
   context 'editing posts' do
 
-    before { Post.create message: 'Hello Universe!' }
-
     scenario 'let a user edit a post' do
-      sign_up
+      sign_up('john')
+      create_post
       visit '/posts'
       click_link 'Edit post'
       fill_in 'Message', with: 'Goodbye World'
@@ -70,15 +63,23 @@ feature 'posts' do
       expect(page).to have_content 'Goodbye World'
       expect(current_path).to eq '/posts'
     end
+
+    scenario 'user cannot edit another users post' do
+      sign_up('john')
+      create_post
+      click_link 'Sign out'
+      sign_up('steve')
+      click_link 'Edit post'
+      expect(page).to have_content('Cannot edit post belonging to another user')
+    end
+
   end
 
   context 'deleting posts' do
-    
-    before {Post.create message: 'Look at my cat'}
 
     scenario 'removes a post when a user clicks a delete post' do
-      sign_up
-      visit '/posts'
+      sign_up('steve')
+      create_post
       click_link 'Delete post'
       expect(page).not_to have_content 'Look at my cat'
       expect(page).to have_content 'Post deleted successfully'
@@ -89,5 +90,15 @@ feature 'posts' do
     visit '/posts'
     click_link 'Add a post'
     expect(page).to have_content "You need to sign in or sign up before continuing."
+  end
+
+
+  scenario 'user cannot delete another users post' do
+    sign_up('john')
+    create_post
+    click_link 'Sign out'
+    sign_up('steve')
+    click_link 'Delete post'
+    expect(page).to have_content('Cannot delete post belonging to another user')
   end
 end
