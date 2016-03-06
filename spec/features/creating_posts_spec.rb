@@ -6,6 +6,7 @@ feature 'Creating Posts' do
     click_link 'New Post'
     attach_file('Image', 'spec/files/images/scenery.jpg')
     fill_in 'Caption', with: 'great view!'
+    click_button 'Create Post'
     expect(page).to have_content('great view!')
     expect(page).to have_css("img[src*='scenery.jpg']")
   end
