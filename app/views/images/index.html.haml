@@ -5,4 +5,8 @@
   = link_to 'Sign up', new_user_registration_path
   = link_to 'Sign in', new_user_session_path
 
-%p No images yet!
+- if @images.empty?
+  %p No images yet!
+- else
+  = @images.each do |img|
+    = image_tag img.image.url(:medium)
