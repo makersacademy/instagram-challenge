@@ -40,6 +40,8 @@ gem 'capybara'
 gem 'paperclip'
 gem 'aws-sdk', '< 2.0'
 gem 'database_cleaner'
+gem 'devise'
+gem 'shoulda'
 end
 
 group :development do
