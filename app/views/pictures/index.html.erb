@@ -1,8 +1,7 @@
 <%= link_to "Add picture", new_picture_path %>
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
-    <p><%= image_tag picture.image.url(:medium) %></p>
-    <p><%= link_to "Full size", picture_path(picture) %>
+    <p><%= link_to(image_tag(picture.image.url(:medium)), picture_path(picture)) %></p>
     <p><%= picture.caption %></p>
     <p><%= link_to "Delete", picture_path(picture), method: :delete %>
     <p><%= link_to "Edit", edit_picture_path(picture) %>

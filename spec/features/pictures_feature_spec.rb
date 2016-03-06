@@ -31,7 +31,7 @@ feature 'pictures' do
 
       it 'lets the user see a full size version of the picture' do
         visit '/pictures'
-        click_link 'Full size'
+        find("img[src*=test]").click
         expect(page).to have_selector("img[src*=test]")
         expect(current_path).not_to eq '/restaurants'
       end
