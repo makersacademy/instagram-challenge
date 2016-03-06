@@ -1,12 +1,5 @@
-- if current_user
-  = link_to 'Upload image', new_image_path
-  = link_to 'Sign out', destroy_user_session_path, method: :delete
-- else
-  = link_to 'Sign up', new_user_registration_path
-  = link_to 'Sign in', new_user_session_path
-
 - if @images.empty?
   %p No images yet!
 - else
-  = @images.each do |img|
-    = image_tag img.image.url(:medium)
+  - @images.each do |img|
+    %div= image_tag img.image.url(:medium), class: 'image-div'
