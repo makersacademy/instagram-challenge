@@ -26,6 +26,19 @@ class PhotosController < ApplicationController
     redirect_to '/'
   end 
 
+  def edit
+    @photo = current_user.photos.find(params[:id])
+  rescue 
+    flash[:notice] = 'You can only edit your own photos!'
+    redirect_to '/'
+  end
+
+  def update
+    @photo = current_user.photos.find(params[:id])
+    @photo.update(photo_params)
+    redirect_to '/'
+  end
+
 def photo_params
   params.require(:photo).permit(:description, :image)
 end
