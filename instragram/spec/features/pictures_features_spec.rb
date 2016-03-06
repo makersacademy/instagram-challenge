@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ApplicationHelper
 
 feature 'pictures' do 
 	context 'no pictures have been added' do 
@@ -22,6 +23,7 @@ feature 'pictures' do
 	end
 	context 'add pictures' do
   scenario 'prompts user to fill the picture name, then displays it' do
+    sign_up
     visit '/pictures'
     click_link 'Add a picture'
     fill_in 'Name', with: 'Sunshine'
@@ -35,6 +37,7 @@ feature 'pictures' do
   before { Picture.create name: 'Sunshine' }
 
   scenario 'let a user edit a picture' do
+    sign_up
    visit '/pictures'
    click_link 'Edit'
    fill_in 'Name', with: '#beach'
@@ -43,6 +46,7 @@ feature 'pictures' do
    expect(current_path).to eq '/pictures'
   end
   scenario 'removes a picture' do
+    sign_up
     visit '/pictures'
     click_link 'Delete'
     expect(page).not_to have_content 'Sunshine'

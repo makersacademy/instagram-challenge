@@ -3,6 +3,9 @@
 	
   <% @picture.all.each do |pics| %>
   <h2><%= pics.name %></h2>
+   <%=image_tag pics.image.url(:thumb) %>
+   <!--    <img src='https://s3-us-west-2.amazonaws.com/instagram-ed/pictures/images/000/000/007/medium/barbie-heman.jpg' /> -->
+   <br>
   <%= link_to pics.name.capitalize, picture_path(pics) %>
   <%= link_to "Tag", new_picture_tag_path(pics)%>
   <%= link_to "Comment", new_picture_comment_path(pics)%>
@@ -14,6 +17,6 @@
 <% else %>
   <h1>No pictures yet</h1>
 <% end %>
-
+<br>
 <a href="/pictures/new">Add a picture</a>
 

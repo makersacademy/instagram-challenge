@@ -35,7 +35,14 @@ feature "User can sign in and out" do
       expect(page).not_to have_link('Sign up')
     end
   end
-#   context 'viewing restaurants' do
+  context "user needs to signup" do
+    it 'should not be able to add pictures before sign up' do
+    visit '/pictures'
+    click_link 'Add a picture'
+    expect(page).to have_content 'Log in'
+    end
+  end
+#   context 'viewing pictures do
 
 #   let!(:sunshine){Picture.create(name:'Sunshine')}
 
