@@ -8,18 +8,16 @@ feature 'pictures' do
       expect(page).to have_link 'Add picture'
     end
 
-    context 'adding a picture' do
-      it 'lets the user add a picture that is then displayed' do
-        visit '/pictures'
-        add_picture
-        expect(page).to have_selector("img[src*=test]")
-      end
+    it 'lets the user add a picture that is then displayed' do
+      visit '/pictures'
+      add_picture
+      expect(page).to have_selector("img[src*=test]")
+    end
 
-      it 'lets the user add a caption when adding a picture' do
-        visit '/pictures'
-        add_picture
-        expect(page).to have_content("First pic")
-      end
+    it 'lets the user add a caption when adding a picture' do
+      visit '/pictures'
+      add_picture
+      expect(page).to have_content("First pic")
     end
 
     context 'with a picture uploaded' do
