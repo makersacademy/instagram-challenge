@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :comment do
-    comment "MyText"
+    comment { Faker::Hipster.sentence }
   end
 end

@@ -1,35 +1,25 @@
-
-- if @posts.any?
-  - @posts.each do |post|
-    = image_tag post.image.url(:medium)
-    %h2= post.description
-    = time_ago_in_words(post.created_at)
-    = link_to "More", post_path(post)
-    - if post.owned_by? current_user
-      = link_to "Edit", edit_post_path(post)
-      = link_to "Delete", post_path(post), method: :delete
-    - if current_user
-      = link_to "Add comment", new_post_comment_path(post)
-      = form_for [post, @comment] do |f|
-        = f.label :comment
-        = f.text_area :comment
-        = f.submit 'Leave comment'
-      = link_to "Like", post_likes_path(post), method: :post, class: 'likes-link'
-      %span.likes_count= post.likes.count
-      = 'like'.pluralize post.likes.count
-
-    %h3
-      Comments
-
-    - if post.comments.any?
-      %ul
-        - post.comments.each do |comment|
-          %li
-            = comment.comment
-            = comment.user.name
-      %p No comments
-- else
-  No posts yet
-
-- if current_user
-  %a(href='#{url_for(action: 'new', controller: 'posts')}') Add a post
+%section#posts
+  .row
+    - if @posts.any?
+      - @posts.each do |post|
+        .small-12.medium-4.columns.end
+          .image-container
+            = image_tag post.image.url(:medium), class: 'adaptive-background'
+            .post-meta
+              posted
+              = time_ago_in_words(post.created_at)
+              ago
+              = link_to "More", post_path(post)
+              - if post.owned_by? current_user
+                = link_to "Edit", edit_post_path(post)
+                = link_to "Delete", post_path(post), method: :delete
+              .likes
+                - if current_user
+                  = link_to "Like", post_likes_path(post), method: :post, class: 'likes-link'
+                %span.likes_count= post.likes.count
+                = 'like'.pluralize post.likes.count
+              .comments
+                = post.comments.length
+                = 'comment'.pluralize post.comments.length
+    - else
+      No posts yet

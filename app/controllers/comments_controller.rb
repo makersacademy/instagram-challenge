@@ -8,8 +8,18 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @post.comments.create(comment_params)
-    redirect_to posts_path
+    redirect_to(:back)
     # render json: {comments: @post.comments}
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.owned_by?(current_user)
+      @comment.destroy
+    else
+      flash[:notice] = 'Sorry - you can only delete your own comments'
+    end
+    redirect_to(:back)
   end
 
   def comment_params

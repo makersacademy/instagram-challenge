@@ -11,5 +11,11 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe CommentsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+end
+
+def addcomment
+  click_link 'Add comment'
+  fill_in "Comment", with: "a new comment"
+  click_button 'Leave comment'
 end

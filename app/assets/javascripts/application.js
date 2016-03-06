@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.adaptive-backgrounds.js
 //= require turbolinks
 //= require_tree .
