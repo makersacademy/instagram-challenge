@@ -18,10 +18,11 @@ feature 'Homepage photo view' do
       expect(page).not_to have_selector('img')
     end
 
-    xscenario 'User is logged in' do
+    scenario 'User is logged in' do
       sign_up_and_in('me@metest.com', 'thisisapassword', 'Viola')
-      new_upload('spec/support/photo_upload_placeholder.jpg', 'Amazing times', 'makers')
+      basic_new_upload('spec/support/photo_upload_placeholder.jpg', 'Amazing times')
       expect(page).to have_content 'Amazing times'
+      expect(page).to have_content 'Viola'
       expect(current_path).to eq '/photos'
       expect(page).to have_selector('img')
     end

@@ -18,7 +18,7 @@ class PhotosController < ApplicationController
   	@newphoto = Photo.create(photo_params)
     @newphoto.user_id = current_user.id
     if @newphoto.save
-      redirect_to '/'
+      redirect_to photos_path
     else
       render 'new'
     end

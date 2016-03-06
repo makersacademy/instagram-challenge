@@ -5,8 +5,12 @@
 
 <section class="photo_feed">
 <% if @photos.any? %>
-  <%= @photos %>
+  <% @photos.each do |photo| %>
+  <%= image_tag(photo.image.url(:medium)) %>
+  <%= photo.caption %>
+  <%= photo.user_name %>
+  <% end %>
+</section>
 <% else %>
   <h1> Nobody is using our site :'( <h1>
 <% end %>
-</section>
