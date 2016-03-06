@@ -16,6 +16,7 @@
 # users commonly want.
 #
 require 'factory_girl_rails'
+require 'database_cleaner'
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -90,4 +91,7 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+
+
 end
