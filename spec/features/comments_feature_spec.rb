@@ -3,8 +3,8 @@ require 'rails_helper'
 feature 'comments' do
   context 'viewing comments' do
     before do
-      Post.create description: 'Test post'
       sign_up
+      post_photo
       leave_comment
       log_out
     end
@@ -25,7 +25,11 @@ feature 'comments' do
   end
 
   context 'leaving comments' do
-    before { Post.create description: 'Test post' }
+    before do
+      sign_up
+      post_photo
+      log_out
+    end
 
     scenario 'display comments form under a post' do
       visit '/'
@@ -44,7 +48,7 @@ feature 'comments' do
 
     context 'if user is logged in' do
       scenario 'let user leave a comment, which is displayed under the post' do
-        sign_up
+        log_in
         leave_comment
         expect(page).to have_content 'Test comment'
       end
@@ -53,8 +57,8 @@ feature 'comments' do
 
   context 'deleting comments' do
     before do
-      Post.create description: 'Test post'
       sign_up
+      post_photo
       leave_comment
       log_out
     end

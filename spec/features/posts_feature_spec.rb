@@ -10,24 +10,36 @@ feature 'posts' do
 
   context 'if photos have been posted' do
     before do
-      Post.create(description: 'Sample post')
+      sign_up
+      post_photo
+      log_out
     end
 
     scenario 'display posts' do
       visit '/posts'
-      expect(page).to have_content 'Sample post'
+      expect(page).to have_css 'section.post'
       expect(page).not_to have_content 'No posts yet...'
+    end
+
+    scenario "display post author's username" do
+      visit '/posts'
+      within('section.post') do
+        expect(page).to have_content 'test_user'
+      end
     end
   end
 
   context 'viewing a post' do
-    let!(:post) { Post.create(description: 'Sample post') }
+    before do
+      sign_up
+      post_photo
+      log_out
+    end
 
     scenario 'let a user view a post' do
       visit '/posts'
       click_link 'More'
-      expect(page).to have_content 'Sample post'
-      expect(current_path).to eq "/posts/#{post.id}"
+      expect(page).to have_content 'Test post'
     end
   end
 

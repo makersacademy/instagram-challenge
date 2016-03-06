@@ -3,10 +3,11 @@
 - if @posts.any?
   - @posts.each do |post|
     %section.post
+      %strong= post.username
       = image_tag post.photo.url(:full)
       = post.description
 
-      - if user_signed_in? && post.user_id == current_user.id
+      - if post.owned_by? current_user
         = link_to 'Edit',   edit_post_path(post)
         = link_to 'Delete', post_path(post), method: :delete
 
@@ -18,7 +19,7 @@
             %article.comment
               %strong= comment.username
               = comment.body
-              - if user_signed_in? && comment.user_id == current_user.id
+              - if comment.owned_by? current_user
                 = link_to 'Delete', comment_path(comment), method: :delete
 
       = form_for [post, @comment] do |f|
