@@ -1,4 +1,10 @@
-
+<% if user_signed_in? %>
+  <%= link_to  "Sign out", destroy_user_session_path, method: :delete, class:'button' %>
+  <% else %>
+  <%= link_to "Sign in", new_user_session_path, class:'button' %>
+  
+  <%= link_to "Sign up", new_user_registration_path, class:'button'  %>
+<% end %>
 
 
 
@@ -11,13 +17,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if user_signed_in? %>
-  <%= link_to  "Sign out", destroy_user_session_path, method: :delete, class:'button' %>
-  <% else %>
-  <%= link_to "Sign in", new_user_session_path, class:'button' %>
-  
-  <%= link_to "Sign up", new_user_registration_path, class:'button'  %>
-<% end %>
+
 <h1>Instagram</h1>
 <%= notice %>
 <%= yield %>
