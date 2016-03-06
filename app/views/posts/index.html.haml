@@ -1,0 +1,31 @@
+= link_to 'Post a photo', new_post_path
+
+- if @posts.any?
+  - @posts.each do |post|
+    %section.post
+      %strong= post.username
+      = time_ago_in_words(post.created_at) + ' ago'
+      = image_tag post.photo.url(:full)
+      = post.description
+
+      - if post.owned_by? current_user
+        = link_to 'Edit',   edit_post_path(post)
+        = link_to 'Delete', post_path(post), method: :delete
+
+      = link_to 'More', post_path(post)
+
+      - if post.comments.any?
+        %section.comments
+          - post.comments.each do |comment|
+            %article.comment
+              %strong= comment.username
+              = comment.body
+              - if comment.owned_by? current_user
+                = link_to 'Delete', comment_path(comment), method: :delete
+
+      = form_for [post, @comment] do |f|
+        = f.text_field :body, placeholder: 'Add a comment...'
+        = f.submit 'Comment'
+
+- else
+  No posts yet...
