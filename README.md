@@ -36,6 +36,8 @@ Completed
 * The username of the people that like are shown next to the like
 * A user can only like a picture once
 * pictures are shown in reverse order, newest first
+* The like button is a heart
+
 
 
 
@@ -46,7 +48,6 @@ Completed
 
 Todo
 -----
-* The like button is a heart
 * Users can add a filter to their pictures
 * Comments, likes are added without moving to another page
 * The site uses foundation

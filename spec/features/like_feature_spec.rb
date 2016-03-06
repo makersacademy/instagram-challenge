@@ -14,20 +14,20 @@ feature 'likes' do
 
   context 'likes' do
     scenario 'shows the number of likes' do
-      click_link 'Like'
+      first('.like_link').click
       expect(page).to have_content '1 like'
     end
 
     scenario 'shows the users that like the photos' do
-      click_link 'Like'
+      first('.like_link').click
       sign_up_with_second_user
-      click_link 'Like'
+      first('.like_link').click
       expect(page).to have_content '2 likes: test, test2'
     end
 
     scenario 'a user can only like a photo once' do
-      click_link 'Like'
-      expect(page).not_to have_link('Like')
+      first('.like_link').click
+      expect(page).not_to have_link('♡')
     end
   end
 end

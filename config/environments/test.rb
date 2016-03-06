@@ -39,4 +39,11 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+
+  # VIOLAs solution for removing images
+  # config.after(:suite) do # or :each or :all
+  #  FileUtils.rm_rf(Dir["#{Rails.root}/public/system/photos/images"])
+  #  FileUtils.rm_rf(Dir["#{Rails.root}/public/system/users/profile_pics"])
+  # end
 end
