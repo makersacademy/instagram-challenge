@@ -17,13 +17,13 @@
               = link_to "Unlike", post_like_path(post, like.id), method: :delete
             - else
               = link_to "Like", post_likes_path(post, param1: post.id), method: :post
-            (#{post.likes.count})
 
             -if current_user.user_owns_post?(post)
               = link_to "Edit #{post.title}", edit_post_path(post)
               = link_to "Delete #{post.title}", post_path(post), method: :delete
 
             = link_to "Comment", new_post_comment_path(post)
+          %p Likes(#{post.likes.count})
 
           %br
             %h2
