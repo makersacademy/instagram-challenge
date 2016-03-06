@@ -13,8 +13,9 @@ feature 'a user can sign up' do
 			expect(page).not_to have_link('Sign out')
 		end	
 	end
-	
-	context "user signed in on the hompage"  do 
+
+
+	context "A user signed in on the hompage"  do 
 
 		before "allows user to sign up" do
 			visit('/')
@@ -26,7 +27,7 @@ feature 'a user can sign up' do
 			fill_in("Password", with: "testtest")
 			fill_in("Password confirmation", with: "testtest")
 			click_button('Sign up')
-		end
+		end	
 
 		it "should not see 'sign out' link" do
 			visit('/')
