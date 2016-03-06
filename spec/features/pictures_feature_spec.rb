@@ -48,4 +48,17 @@ context 'editing pictures' do
 
 end
 
+context 'deleting pictures' do
+
+  before {Picture.create postcomment: 'Holiday pic'}
+
+  scenario 'removes a picture when a user clicks a delete link' do
+    visit '/pictures'
+    click_link 'Delete Picture'
+    expect(page).not_to have_content 'Holiday pic'
+    expect(page).to have_content 'Picture deleted successfully'
+  end
+
+end
+
 end
