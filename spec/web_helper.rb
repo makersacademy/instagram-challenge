@@ -7,3 +7,12 @@ def sign_up
   click_button 'Sign up'
 end 
 
+def post_photo
+  visit '/'
+  sign_up 
+  click_link 'Upload A Photo'
+  attach_file "photo[image]", "spec/asset_specs/photos/Elephant.jpg"
+  fill_in 'Description', with: 'test image of elephant'
+  click_button 'Create Photo'
+end 
+
