@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   #   resources :products
   resources :posts, shallow: true do
     resources :comments
+    resources :likes
   end
 
   # Example resource route with options:
