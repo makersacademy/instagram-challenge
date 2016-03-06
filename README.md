@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
 
+[![Build Status](https://travis-ci.org/seanhawkridge/instagram-challenge.svg?branch=master)](https://travis-ci.org/seanhawkridge/instagram-challenge)
+
 The Challenge
 -------------
 
