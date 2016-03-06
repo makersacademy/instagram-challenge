@@ -23,7 +23,8 @@ feature 'photos' do
 
   context 'creating photos' do
     scenario 'asks user to describe the photo being uploaded' do
-      visit '/photos'
+      visit '/'
+      sign_up('harry@random.com', 'password123')
       click_link 'Add a photo'
       fill_in 'Description', with: 'The Beach'
       click_button 'Create Photo'
@@ -32,16 +33,16 @@ feature 'photos' do
     end
   end
 
-  context 'deleting photos' do
-
-    before {Photo.create description: 'The Beach'}
-
-    scenario 'removes a photo when a user clicks a delete link' do
-      visit '/photos'
+  context 'deleting uploaded photos' do
+    scenario 'a user can only delete photos they uploaded' do
+      visit '/'
+      sign_up('harry@random.com', 'password123')
+      upload
+      click_link 'Sign out'
+      sign_up('sid@sloth.com', 'password123')
       click_link 'Delete'
-      expect(page).not_to have_content 'The Beach'
-      expect(page).to have_content 'Photo deleted successfully'
+      expect(page).to have_content 'The Beach'
+      expect(page).to have_content 'This is not your photo to delete'
     end
-
-end
+  end
 end
