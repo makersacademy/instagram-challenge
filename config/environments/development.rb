@@ -8,6 +8,16 @@ Rails.application.configure do
 
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :bucket => Rails.application.secrets.s3_bucket_name,
+  :s3_credentials => {
+    :s3_protocol => 'http',
+    :access_key_id => Rails.application.secrets.aws_access_key_id,
+    :secret_access_key => Rails.application.secrets.aws_secret_access_key,
+    :s3_host_name => 's3-eu-west-1.amazonaws.com'
+  }
+
 
 
   # Do not eager load code on boot.

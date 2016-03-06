@@ -20,6 +20,8 @@ gem 'paperclip'
 gem 'omniauth-facebook'
 # dotenv for concealment
 gem 'dotenv-rails'
+gem 'aws-sdk', '< 2.0'
+# Amazon web services for cloud storage
 
 
 # Use jquery as the JavaScript library
