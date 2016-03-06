@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Creating Posts' do
   scenario 'can create a post' do
     sign_up
-    visit '/'
+    # visit '/'
     click_link 'New Post'
     attach_file('Image', 'spec/files/images/scenery.jpg')
     fill_in 'Caption', with: 'great view!'
