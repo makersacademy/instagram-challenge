@@ -15,13 +15,12 @@ As a user,
 so that my posts are unique to me,
 Id like to be able to sign up/in
 ```
-:construction:
+:white_check_mark:
 ```
 As a user,
 incase I no longer want to share my photo,
 i'd like to be able to delete it.
 ``` 
-:construction:
 ```
 as a user, 
 incase I want to alter my image,
