@@ -41,6 +41,15 @@ feature 'comments' do
       visit photos_path
       expect(page).not_to have_link('Delete comment')
     end
+  end
 
+  context 'leaving a comment 1 hour ago' do
+    scenario 'a comment contains the time ago and the username' do
+      Timecop.travel(-3600)
+      leave_comment
+      Timecop.return
+      visit photos_path
+      expect(page).to have_content('Left by: test about 1 hour ago')
+    end
   end
 end

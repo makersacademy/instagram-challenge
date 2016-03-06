@@ -24,13 +24,12 @@ feature 'photos' do
     end
 
     scenario 'shows the time of when the photo was uploaded' do
-      new_time = Time.local(2016, 1, 1, 12, 0, 0)
       Timecop.travel(-3600)
       sign_up_helper
       upload_photo
       Timecop.return
       visit photos_path
-      expect(page).to have_content('Uploaded about 1 hour ago')
+      expect(page).to have_content('Uploaded by: test about 1 hour ago')
     end
   end
 

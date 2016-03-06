@@ -27,10 +27,12 @@ Completed
 * Only users that are signed in can upload a picture
 * only the photos owner can delete the photo
 * only the comment owner can delete the comment
-* The time when the picture was uploaded is added in the description  
-
-
-
+* The time when the picture was uploaded is added in the description
+* A user can comment on someones else picture
+* The comment includes the username of the person and the time ago since it was made
+* pictures are stored in AWS
+* A user can like a picture
+* The number of likes a picture has is shown
 
 
 
@@ -38,16 +40,14 @@ Completed
 
 Todo
 -----
-* A user can comment on someones else picture
-* The comment includes the username of the person and the time ago since it was made
-* Multiple comments can be added to a picture
-* A user can like a picture
-* The number of likes a picture has is shown
+* A user can only like a picture once
 * The username of the people that like are shown next to the like
 * pictures are shown in reverse order, newest first
 * The like button is a heart
 * Users can add a filter to their pictures
-* pictures are stored in AWS
+* Comments, likes are added on the site
+* The site uses foundation
+* The site looks like Instagram
 
 
 

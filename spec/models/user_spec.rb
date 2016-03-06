@@ -6,9 +6,9 @@ RSpec.describe User, type: :model do
 end
 
 describe 'User' do
-  let(:user) { User.create(email: 'test@test.com', password: '12345678') }
+  let(:user) { User.create(username: 'test', email: 'test@test.com', password: '12345678') }
   # let(:photo) { Photo.create description: 'Test' }
-  let(:user2) { User.create(email: 'test2@test.com', password: '12345678') }
+  let(:user2) { User.create(username: 'test2', email: 'test2@test.com', password: '12345678') }
 
   subject(:photo) { user.photos.create({description: 'Test'})}
 
@@ -22,4 +22,6 @@ describe 'User' do
       expect(user2.owns?(photo)).to eq false
     end
   end
+
+  describe 'get username'
 end
