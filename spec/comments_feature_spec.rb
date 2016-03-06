@@ -37,3 +37,30 @@ scenario 'delete a comment' do
  	expect(page).not_to have_content("you have a cute cat")
 end
 end
+
+feature 'a user can only edit and delete their own comment' do 
+scenario 'cannot delete another users comment' do
+sign_up_and_in("Russell", "Vaughan", "russellvaughan", "russell@example.com")
+create_photo
+add_comment
+click_link('Sign Out')
+sign_up_and_in("Johnny", "Appleseed", "jappleseeed", "johnny@example.com")
+expect(page).not_to have_link("Delete Comment")
+end
+
+scenario 'cannot edit another users comment' do
+sign_up_and_in("Russell", "Vaughan", "russellvaughan", "russell@example.com")
+create_photo
+add_comment
+click_link('Sign Out')
+sign_up_and_in("Johnny", "Appleseed", "jappleseeed", "johnny@example.com")
+expect(page).not_to have_link("Edit Comment")
+end
+
+
+
+end
+
+
+
+

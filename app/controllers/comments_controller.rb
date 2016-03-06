@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
   def create
     @photo = Photo.find(params[:photo_id])
     @comment = @photo.comments.new(comment_params)
+    @comment.user_id=current_user.id  
     @comment.commenter = current_user.email
     if @comment.save
       flash[:success] = "the comment was added!"
