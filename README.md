@@ -11,12 +11,22 @@ id like to be able to post photos.
 :white_check_mark:
 ```
 ```
-:construction:
+:white_check_mark:
 As a user,
 so that my posts are unique to me,
 Id like to be able to sign up/in
-:construction:
+:white_check_mark:
 ```
+```
+As a user,
+incase I no longer want to share my photo,
+i'd like to be able to delete it.
+``` 
+```
+as a user, 
+incase I want to alter my image,
+i'd like to be able to edit it's description
+``` 
 ```
 as a user,
 for ease of use,
