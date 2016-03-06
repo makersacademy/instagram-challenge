@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :comments
+  has_many :likes
   has_many :commented_posts, through: :comments, source: :post
 
   devise :database_authenticatable, :registerable,

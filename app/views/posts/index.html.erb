@@ -3,10 +3,14 @@
   <% @posts.each do |post| %>
     <h2> <%= image_tag post.image.url(:thumb) %> </h2>
     <h3> <%= post.description %> </h3>
+    <h4>
+      <p><%= pluralize post.likes.count, 'like' %></p>
+    </h4>
     <% if current_user %>
       <%= link_to "Comment", new_post_comment_path(post) %>
       <%= link_to "Edit picture", edit_post_path(post) %>
       <%= link_to "Delete picture", post_path(post), method: :delete %>
+      <%= link_to "Like", post_likes_path(post), method: :post %>
     <% end %>
     <h4> Comments: <h4>
       <% if post.comments.any? %>
