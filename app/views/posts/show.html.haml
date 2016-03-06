@@ -2,13 +2,13 @@
   .post
     .post-head
       .name
-        Zeshan Rasul
+        = @post.user.email
     .image.center-block
       =image_tag @post.image.url(:medium)
     %p.caption
       = @post.caption
     .text-center.edit-links
-      - if @post.user.id == current_user.id
+      - if @post.owned_by?(current_user)
         = link_to "Cancel", posts_path
         |
         = link_to "Edit Post", edit_post_path(@post)
