@@ -7,5 +7,13 @@ feature 'pictures' do
       expect(page).to have_content 'No pictures to display'
       expect(page).to have_link 'Add picture'
     end
+
+    scenario 'user can add a picture that is then displayed' do
+      visit '/pictures'
+      click_link 'Add picture'
+      attach_file 'picture_image', Rails.root + 'spec/features/test.jpg'
+      click_button 'Upload now'
+      expect(page).to have_selector("img[src*=test]")
+    end
   end
 end
