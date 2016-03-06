@@ -59,6 +59,17 @@ context 'deleting pictures' do
     expect(page).to have_content 'Picture deleted successfully'
   end
 
+  scenario 'removes a picture and deletes it\'s comments' do
+      visit '/pictures'
+      click_link 'Add a Comment'
+      fill_in "comment[thoughts]", with: "Pretty Good."
+      click_button 'Leave Comment'
+      expect(current_path).to eq '/pictures'
+      expect(page).to have_content("Pretty Good.")
+      click_link 'Delete Picture'
+      expect(page).not_to have_content("Pretty Good.")
+    end
+
 end
 
 end
