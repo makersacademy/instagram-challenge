@@ -32,8 +32,4 @@ class ImagesController < ApplicationController
     params.require(:image).permit(:image, :title, :user_id)
   end
   
-  #def comment_params
-  #  params.require(:comment).permit(:thoughts, :image_id)
-  #end
-  
 end

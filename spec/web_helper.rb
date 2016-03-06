@@ -18,6 +18,6 @@ end
 def post_picture(comment = "")
   click_link "Post Picture"
   attach_file 'image_image', 'spec/fixtures/files/test.png'
-  fill_in "Comment", with: comment
+  fill_in "image[comment][thoughts]", with: comment
   click_button "Create Image" 
 end

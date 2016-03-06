@@ -15,6 +15,10 @@ As a User,
 So I can remove pictures I no longer like, 
 I would like to be able to delete pictures
 
+As A User, 
+So I can describe the pictures I post, 
+I would like to add a commment to it
+
 As a User, 
 So I can communicate with other users, 
 I would like to be able to leave a comment on a picture

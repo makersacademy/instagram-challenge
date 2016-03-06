@@ -19,7 +19,7 @@ gem 'paperclip'
 
 gem "font-awesome-rails"
 
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 gem 'omniauth-facebook'
 # Use jquery as the JavaScript library
