@@ -1,8 +1,18 @@
 require 'rails_helper'
 
 feature 'pictures' do
+  def sign_up
+    visit '/'
+    click_link 'Sign up'
+    fill_in 'Email', with: 'test@example.com'
+    fill_in 'Password', with: 'testtest'
+    fill_in 'Password confirmation', with: 'testtest'
+    click_button 'Sign up'
+  end
+
   context 'no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
+      sign_up
       visit '/pictures'
       expect(page).to have_content 'No pictures yet'
       expect(page).to have_link 'Post a picture'
@@ -23,6 +33,7 @@ feature 'pictures' do
 
   context 'posting pictures' do
     scenario 'prompts user to fill out a form, then displays the new picture' do
+      sign_up
       visit '/pictures'
       click_link 'Post a picture'
       attach_file 'picture[image]', Rails.root.join('spec','images','img.jpg')
