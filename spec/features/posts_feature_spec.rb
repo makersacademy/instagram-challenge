@@ -41,11 +41,10 @@ feature 'posts' do
 
     scenario 'display a form to fill out, then display the post' do
       sign_up
-      click_link 'Post a photo'
-      fill_in 'Description', with: 'Sample post'
-      click_button 'Post'
+      post_photo
       expect(page).to have_content 'Posted successfully'
-      expect(page).to have_content 'Sample post'
+      expect(page).to have_content 'Test post'
+      expect(page).to have_css "img[src*='test-photo.png']"
     end
   end
 

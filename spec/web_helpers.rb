@@ -22,11 +22,11 @@ def log_out
   click_link 'Log out'
 end
 
-def post_photo(file_path: nil,
-               description: 'Test post')
+def post_photo
   visit '/'
   click_link 'Post a photo'
-  fill_in 'Description', with: description
+  attach_file 'post_photo', Rails.root + 'spec/support/test-photo.png'
+  fill_in 'Description', with: 'Test post'
   click_button 'Post'
 end
 
