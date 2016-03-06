@@ -4,9 +4,12 @@
       = post.user.email
       = image_tag post.image.url(:medium)
       = post.caption
-      posted
-      = time_ago_in_words(post.created_at)
-      ago
+      = "posted #{time_ago_in_words(post.created_at)} ago"
+
+      = link_to 'Like', post_likes_path(post), class: 'likes-link'
+      %span.likes_count= post.likes.count
+      = 'like'.pluralize post.likes.count
+
       - if post.comments.any?
         = render 'comments', comments: post.comments
       = link_to 'Comment', new_post_comment_path(post)
