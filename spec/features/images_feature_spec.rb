@@ -110,7 +110,7 @@ feature 'images' do
 
   context 'deleting an image' do
 
-    scenario 'users can delete an image' do
+    xscenario 'users can delete an image' do
       visit 'images'
       click_link 'Add an Image'
       page.attach_file('image_image', Rails.root + 'spec/Fixtures/2005-spring39.jpg')
