@@ -43,4 +43,19 @@ feature 'pictures' do
       expect(current_path).to eq "/pictures/#{picture.id}"
     end
   end
+
+  context 'editing post' do
+    let!(:picture) { Picture.create(caption: 'a nice picture', image: File.new(Rails.root.join('spec','images','img.jpg'))) }
+
+    scenario 'let a user edit caption of a picture' do
+      visit '/pictures'
+      find(:xpath, "//a/img[@alt='a nice picture']/..").click
+      click_link 'Edit'
+      attach_file 'picture[image]', Rails.root.join('spec','images','img_edit.jpg')
+      fill_in 'Caption', with: 'a very nice picture'
+      click_button 'Update'
+      expect(page).to have_content 'a very nice picture'
+      expect(current_path).to eq "/pictures/#{picture.id}"
+    end
+  end
 end

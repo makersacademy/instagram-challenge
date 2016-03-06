@@ -11,9 +11,19 @@ class PicturesController < ApplicationController
     @picture = Picture.new
   end
 
+  def edit
+    @picture = Picture.find(params[:id])
+  end
+
   def create
     @picture = Picture.create(picture_params)
     redirect_to pictures_path
+  end
+
+  def update
+    @picture = Picture.find(params[:id])
+    @picture.update(picture_params)
+    redirect_to(picture_path(@picture))
   end
 
   private
