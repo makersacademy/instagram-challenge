@@ -3,20 +3,19 @@ Instagram Challenge
 
 User Stories
 -------------
-```
 :white_check_mark:
+```
 As a user,
 so that I can share my experiences,
 id like to be able to post photos.
-:white_check_mark:
-```
 ```
 :white_check_mark:
+```
 As a user,
 so that my posts are unique to me,
 Id like to be able to sign up/in
-:white_check_mark:
 ```
+:white_check_mark:
 ```
 As a user,
 incase I no longer want to share my photo,
