@@ -20,4 +20,16 @@ feature 'Photos' do
       expect(page).not_to have_content('No photos yet')
     end
   end
+
+  context 'Adding photos' do
+    scenario 'Prompts users to fill out a form with the filename and attach an image for upload' do
+      visit '/photos'
+      click_link 'Add a photo'
+      fill_in 'File', with: 'Test'
+      attach_file('Image', '/Users/jeremybarrass/Pictures/Space!/AI_dream2.jpg')
+      click_button 'Create Photo'
+      expect(page).to have_content 'Test'
+      expect(page).to have_content :thumb
+    end
+  end
 end
