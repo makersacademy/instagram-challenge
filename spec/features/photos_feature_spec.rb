@@ -51,5 +51,21 @@ feature 'photos' do
     end
   end
 
+  context 'Adding a filter' do
+    scenario 'user can add a filter to the photo' do
+      sign_up_helper
+      click_link 'Upload photo'
+      fill_in 'Description', with: 'My photo of a hammer'
+      attach_file 'Image', Rails.root + 'spec/features/images/hammericon.png'
+      check 'add_filter'
+      click_button 'Create Photo'
+      expect(current_path).to eq photo_path
+      choose 'walden-filter'
+      # expect(page).to have_selector("img[class=walden]")
+      click_button 'Save'
+      expect(page).to have_selector("img[class=walden]")
+    end
+  end
+
 
 end

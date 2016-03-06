@@ -23,7 +23,15 @@ class PhotosController < ApplicationController
   def create
     @user = User.find(current_user.id)
     @user.photos.create(photo_params)
-    redirect_to photos_path
+    @photo = Photo.last
+    if params[:add_filter]
+      redirect_to(photo_path(@photo))
+    else
+      redirect_to photos_path
+    end
+  end
+
+  def show
   end
 
   def destroy
