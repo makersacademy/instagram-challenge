@@ -43,4 +43,8 @@ I can edit the caption of my existing posts
 As a user,
 So that I can only upload images,
 I will receive a message if I try to upload anything else
+
+As a user,
+So that I can rectify my mistakes,
+I can delete posts that I have made
 ```
