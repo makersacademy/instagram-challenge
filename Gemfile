@@ -49,6 +49,7 @@ group :test do
   gem 'orderly'
   gem 'pry'
   gem 'database_cleaner'
+  gem 'poltergeist'
 end
 
 group :development, :test do

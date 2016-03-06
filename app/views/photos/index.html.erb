@@ -18,9 +18,10 @@
   </h4>
   <%= image_tag(photo.user.profile_pic.url(:thumb)) %>
   <%= photo.user_name %>
-    <p class="timestamp">
-      <%= post_exact_time(photo.created_at) %>
-    </p>
+  <span class=likes_count><%= photo.likes.count %>
+  <%= 'like'.pluralize(photo.likes.count) %></span>
+    <%= button_to "Like", photo_likes_path(photo), class: "like_button" %>
+    <p class="timestamp"><%= post_exact_time(photo.created_at) %></p>
   <%= render 'user_photo_options', photo: photo %>
 </aside>
 

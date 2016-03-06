@@ -5,6 +5,9 @@ class Photo < ActiveRecord::Base
     -> { extending WithUserAssociationExtension },
     dependent: :destroy
   # accept_nested_attributes_for :comments
+  has_many :likes,
+  -> { extending WithUserAssociationExtension },
+  dependent: :destroy
 
   has_attached_file :image,
   :styles => { :large => "900x900",
