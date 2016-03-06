@@ -79,12 +79,11 @@ Build Process
 
 Created the above user stories to follow a BDD life cycle. Used Capybara to TDD
 this project. The most challenging part was the table associations, for every
-user to have posts and the posts to have likes and also linked to users. Rails
-guides as well as Stack Overflow helped me find my solutions.
-Also i found out that pictures posted directly on Heroku are not saved. It is
-mandatory to outsource them, i pushed them to S3 AWS.
+user to have posts and the posts to have likes that are linked back to users.
+Plus the "Unlike" functionality. Rails guides as well as Stack Overflow helped
+me find my solutions. Also i found out that pictures posted directly on Heroku
+are not saved. It is mandatory to outsource them, i pushed them to S3 AWS.
 http://stackoverflow.com/questions/32459959/heroku-paperclip-images-appear-but-then-disappear
-
 
 To DOs
 ----
