@@ -19,7 +19,7 @@ feature 'comments' do
     scenario 'display username of comment author' do
       log_in
       within('article.comment:last-child') do
-        expect(page).to have_content 'test@email.com'
+        expect(page).to have_content 'test_user'
       end
     end
   end

@@ -1,7 +1,5 @@
 = link_to 'Post a photo', new_post_path
 
--# TODO: add username, validate uniqueness
-
 - if @posts.any?
   - @posts.each do |post|
     %section.post
@@ -18,7 +16,7 @@
         %section.comments
           - post.comments.each do |comment|
             %article.comment
-              %strong= comment.email
+              %strong= comment.username
               = comment.body
               - if user_signed_in? && comment.user_id == current_user.id
                 = link_to 'Delete', comment_path(comment), method: :delete
