@@ -1,5 +1,9 @@
 require 'rails_helper'
 
+# TODO: test time
+# TODO: test reverse chronological order
+# TODO: test invalid filetype
+
 feature 'posts' do
   context 'if no photos have been posted' do
     scenario 'display a message that there are no posts' do
@@ -27,8 +31,6 @@ feature 'posts' do
         expect(page).to have_content 'test_user'
       end
     end
-
-    # TODO: test time
   end
 
   context 'viewing a post' do
@@ -82,6 +84,7 @@ feature 'posts' do
         click_link 'Edit'
         fill_in 'Description', with: 'New description'
         click_button 'Update'
+        expect(page).to have_content 'Post updated successfully'
         expect(page).to have_content 'New description'
       end
     end

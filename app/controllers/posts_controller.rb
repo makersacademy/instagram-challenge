@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.reverse_order
     @comment = Comment.new
   end
 
@@ -11,9 +11,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    current_user.posts.create(post_params)
-    flash[:notice] = 'Posted successfully'
-    redirect_to posts_path
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      flash[:notice] = 'Posted successfully'
+      redirect_to posts_path
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -26,8 +30,9 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
+    render 'edit' unless @post.update(post_params)
 
+    flash[:notice] = 'Post updated successfully'
     redirect_to posts_path
   end
 
