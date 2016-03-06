@@ -21,13 +21,12 @@ As a user,
 incase I no longer want to share my photo,
 i'd like to be able to delete it.
 ``` 
-:construction:
+:white_check_mark:
 ```
 as a user, 
 incase I want to alter my image,
 i'd like to be able to edit it's description
 ``` 
-:construction:
 ```
 as a user,
 for ease of use,
@@ -38,6 +37,7 @@ as a User,
 so I can share my thoughts,
 i'd like to be able to comment on another user's photo
 ```
+:construction:
 ```
 as a User,
 so I can show my appreciation for a photo,
