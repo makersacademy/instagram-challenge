@@ -1,8 +1,27 @@
 require 'rails_helper'
 
 feature 'pictures' do
-  context 'no pictures have been added' do
-    it 'prompts a user to add a picture' do
+
+  context 'user not signed in' do
+    it 'redirects them to the login page when they try to add a picture' do
+      visit '/pictures/new'
+      expect(current_path).to eq '/users/sign_in'
+    end
+
+    it 'does not display "Add picture" link on the homepage' do
+      visit '/'
+      expect(page).not_to have_content 'Add picture'
+    end
+  end
+
+  context 'user signed in' do
+
+    before do
+      visit '/'
+      sign_up
+    end
+
+    it 'lets a user to add a picture' do
       visit '/pictures'
       expect(page).to have_content 'No pictures to display'
       expect(page).to have_link 'Add picture'
@@ -18,6 +37,10 @@ feature 'pictures' do
       visit '/pictures'
       add_picture
       expect(page).to have_content("First pic")
+    end
+
+    scenario 'user must be logged in to upload a picture' do
+      visit '/pictures'
     end
 
     context 'with a picture uploaded' do
