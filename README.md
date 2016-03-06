@@ -35,4 +35,8 @@ When I visit the website I can see all the posts
 As a user,
 So that I can view a single post,
 I can click on it and view that single post
+
+As a user,
+If I want to change my caption message,
+I can edit the caption of my existing posts
 ```

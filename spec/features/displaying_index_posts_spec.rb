@@ -12,12 +12,3 @@ feature 'Index displays a list of posts' do
   end
 end
 
-feature 'Can view individual posts' do
-  scenario 'can click and view a single post' do
-    post = create(:post)
-    visit '/'
-    p post.id
-    find(:xpath, "//a[contains(@href,'posts/4')]").click
-    expect(page.current_path).to eq(post_path(post))
-  end
-end
