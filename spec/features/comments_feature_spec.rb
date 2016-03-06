@@ -1,12 +1,12 @@
-# require 'rails_helper'
-#
-# feature 'comments' do
-#   before { Post.create description: 'Test post' }
-#
-#   scenario 'display a form for users to comment on a post' do
-#     visit '/posts'
-#     fill_in 'comment-body', with: 'Test comment'
-#     click_button 'Comment'
-#     expect(page).to have_content 'Test comment'
-#   end
-# end
+require 'rails_helper'
+
+feature 'comments' do
+  before { Post.create description: 'Test post' }
+
+  scenario 'let users leave comments, which are displayed under the post', js: true do
+    visit '/posts'
+    fill_in 'comment_body', with: 'Test comment'
+    click_button 'Comment'
+    expect(page).to have_content 'Test comment'
+  end
+end
