@@ -4,8 +4,12 @@
 * I would like to be able to upload a picture
 
 * As a user,
-* If i upload the wrong image,
-* I would like to be able to delete a picture
+* If i change my mind about a upload,
+* I would like to be able to edit or delete the picture
+
+* As a user,
+* If like a picture,
+* I would like to be able to see a full size version
 
 * As a user,
 * So that I can manage pictures,

@@ -23,11 +23,33 @@ feature 'pictures' do
     end
 
     context 'with a picture uploaded' do
-      it 'lets the user delete a picture' do
+
+      before do
         visit '/pictures'
         add_picture
+      end
+
+      it 'lets the user see a full size version of the picture' do
+        visit '/pictures'
+        click_link 'Full size'
+        expect(page).to have_selector("img[src*=test]")
+        expect(current_path).not_to eq '/restaurants'
+      end
+
+      it 'lets the user delete a picture' do
+        visit '/pictures'
         click_link 'Delete'
         expect(page).not_to have_selector("img[src*=test]")
+      end
+
+      it 'lets the user edit a caption' do
+        visit '/pictures'
+        click_link 'Edit'
+        attach_file 'picture_image', Rails.root + 'spec/features/test.jpg'
+        fill_in "Caption", with: 'New caption'
+        click_button 'Upload picture'
+        expect(page).to have_content('New caption')
+        expect(page).not_to have_content('First pic')
       end
     end
   end
