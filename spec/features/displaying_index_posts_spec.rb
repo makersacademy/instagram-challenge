@@ -10,4 +10,12 @@ feature 'Index displays a list of posts' do
     expect(page).to have_content('This is the second post')
     expect(page).to have_css("img[src*='scenery']")
   end
+
+  scenario 'the images in the index link to each individual show page' do
+    post = create(:post)
+
+    visit '/'
+    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    expect(page.current_path).to eq(post_path(post))
+  end
 end
