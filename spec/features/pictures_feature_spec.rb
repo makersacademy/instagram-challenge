@@ -89,7 +89,7 @@ end
 
 context 'deleting pictures' do
 
-  before {Picture.create postcomment: 'Holiday pic'}
+  # before {Picture.create postcomment: 'Holiday pic'}
   before do
     visit('/')
     click_link('Sign up')
@@ -97,6 +97,8 @@ context 'deleting pictures' do
     fill_in('Password', with: 'testtest')
     fill_in('Password confirmation', with: 'testtest')
     click_button('Sign up')
+    id = User.first.id
+    Picture.create postcomment: 'Holiday pic', user_id: id
   end
   scenario 'removes a picture when a user clicks a delete link' do
     visit '/pictures'
