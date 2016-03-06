@@ -13,4 +13,11 @@ feature 'deleting photos' do
    expect(current_path).to eq '/'
    expect(page).to have_content 'Photo deleted successfully'
   end 
+
+  it 'only lets the owner delete the photo' do
+    post_photo
+    click_link 'Sign out'
+    sign_up_2
+    expect(page).not_to have_link 'Delete this photo'
+  end
 end

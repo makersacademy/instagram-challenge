@@ -10,12 +10,17 @@ class PhotosController < ApplicationController
   end
 
   def create
-    Photo.create(photo_params)
+    @user = current_user
+    @user.photos.create(photo_params)
     redirect_to '/'
   end
 
   def destroy
-    @photo = Photo.find(params[:id])
+    @photo = current_user.photos.find(params[:id])
+  rescue
+    flash[:notice] = 'You can only delete your own photos!'
+    redirect_to '/'
+  else
     @photo.destroy
     flash[:notice] = "Photo deleted successfully"
     redirect_to '/'
@@ -24,4 +29,5 @@ class PhotosController < ApplicationController
 def photo_params
   params.require(:photo).permit(:description, :image)
 end
+
 end
