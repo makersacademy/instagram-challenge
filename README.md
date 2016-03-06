@@ -17,19 +17,19 @@ $ rails s
 Screenshots
 -----------
 Sign in Page:
-![login form](https://www.dropbox.com/s/bwo5oc51420zqg5/Screenshot%202016-03-06%2020.05.18.png?)
+![login form](https://www.dropbox.com/s/bwo5oc51420zqg5/Screenshot%202016-03-06%2020.05.18.png?raw=1)
 
 Sign up Page:
-![sign-up form](https://www.dropbox.com/s/jfj88opcnf4xp4c/Screenshot%202016-03-06%2020.05.36.png?)
+![sign-up form](https://www.dropbox.com/s/jfj88opcnf4xp4c/Screenshot%202016-03-06%2020.05.36.png?raw=1)
 
 New post page:
-![new post](https://www.dropbox.com/s/5pkkbq2bby4k2fj/Screenshot%202016-03-06%2020.07.15.png?)
+![new post](https://www.dropbox.com/s/5pkkbq2bby4k2fj/Screenshot%202016-03-06%2020.07.15.png?raw=1)
 
 Posts page:
-![posts page](https://www.dropbox.com/s/ygg4i94lpkpvth9/Screenshot%202016-03-06%2020.11.45.png?)
+![posts page](https://www.dropbox.com/s/ygg4i94lpkpvth9/Screenshot%202016-03-06%2020.11.45.png?raw=1)
 
 Single Post Page:
-![individual post page](https://www.dropbox.com/s/b5ccocgi4luprd6/Screenshot%202016-03-06%2020.16.32.png?)
+![individual post page](https://www.dropbox.com/s/b5ccocgi4luprd6/Screenshot%202016-03-06%2020.16.32.png?raw=1)
 
 Technologies Used
 -----------------
@@ -48,6 +48,7 @@ Known Issues
 - Likes cannot be undone
 - Users who log in with facebook do not have a username  
 - Style issue
+
 User Stories
 ------------
 ```
