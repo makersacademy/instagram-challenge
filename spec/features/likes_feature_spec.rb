@@ -6,7 +6,8 @@ feature 'liking posts' do
     signup
     create_post
     visit '/'
-    click_link 'Like'
+    find('.image-container').hover
+    find('.likes .icon').click
     expect(page).to have_content('1 like')
   end
 
@@ -14,9 +15,10 @@ feature 'liking posts' do
     signup
     create_post
     visit '/'
-    click_link 'Like'
-    click_link 'Like'
-    click_link 'Like'    
+    find('.image-container').hover
+    find('.likes .icon').click
+    find('.likes .icon').click
+    find('.likes .icon').click
     expect(page).to have_content('1 like')
   end
 

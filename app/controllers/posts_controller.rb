@@ -36,7 +36,7 @@ class PostsController < ApplicationController
     else
       flash[:notice] = 'Sorry - you can only edit your own posts'
     end
-    redirect_to '/posts'
+      redirect_to post_path(@post)
   end
 
   def destroy

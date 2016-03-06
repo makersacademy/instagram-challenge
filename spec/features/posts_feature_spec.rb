@@ -15,7 +15,7 @@ feature 'posts' do
     scenario 'display posts' do
       post = FactoryGirl.create(:post)
       visit '/posts'
-      expect(page).to have_content(post.description)
+      expect(page).to have_css 'img'
       expect(page).not_to have_content('No posts yet')
     end
   end
@@ -29,7 +29,7 @@ feature 'posts' do
       fill_in 'Description', with: 'This is the description'
       attach_file 'post[image]', Rails.root.join('spec','images','bbc-g.jpg')
       click_button 'Create Post'
-      expect(page).to have_content 'This is the description'
+      expect(page).to have_css 'img'
       expect(current_path).to eq '/posts'
     end
 
@@ -76,17 +76,18 @@ feature 'posts' do
       signup
       create_post
       visit '/posts'
+      click_link 'More'
       click_link 'Edit'
       fill_in 'Description', with: 'A new description'
       click_button 'Update Post'
       expect(page).to have_content 'A new description'
-      expect(current_path).to eq '/posts'
     end
 
     scenario 'users can only edit own posts' do
       post = FactoryGirl.create(:post)
       signup
       visit '/'
+      click_link 'More'
       expect(page).to have_content post.description
       expect(page).to_not have_content 'Edit'
     end
@@ -99,6 +100,7 @@ feature 'posts' do
       signup
       create_post
       visit '/posts'
+      click_link 'More'
       click_link 'Delete'
       expect(page).not_to have_content 'A description'
       expect(page).to have_content 'Post deleted successfully'
@@ -108,6 +110,7 @@ feature 'posts' do
       post = FactoryGirl.create(:post)
       signup
       visit '/'
+      click_link 'More'
       expect(page).to have_content post.description
       expect(page).to_not have_content 'Delete'
     end

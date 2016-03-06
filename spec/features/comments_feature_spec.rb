@@ -14,7 +14,7 @@ feature 'comments' do
     scenario 'allows users to add a comment using a form' do
        visit '/'
        click_link 'More'
-       fill_in "Comment", with: "a new comment"
+       fill_in "comment[comment]", with: "a new comment"
        click_button 'Leave comment'
        expect(page).to have_content('a new comment')
     end
@@ -27,7 +27,7 @@ feature 'comments' do
     scenario 'comments display the time relative to created_at' do
       visit '/'
       click_link 'More'
-      fill_in "Comment", with: "a new comment"
+      fill_in "comment[comment]", with: "a new comment"
       click_button 'Leave comment'
       expect(page).to have_content('less than a minute')
     end
@@ -41,7 +41,7 @@ feature 'comments' do
       create_post
       visit '/posts'
       click_link 'More'
-      fill_in "Comment", with: "a new comment"
+      fill_in "comment[comment]", with: "a new comment"
       click_button 'Leave comment'
       expect(page).to have_content 'a new comment'
       click_link 'Delete comment'

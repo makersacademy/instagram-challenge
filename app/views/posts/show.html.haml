@@ -1,30 +1,53 @@
-= image_tag @post.image.url(:medium)
-%p= @post.description
-- if @post.owned_by? current_user
-  = link_to "Edit", edit_post_path(@post)
-  = link_to "Delete", post_path(@post), method: :delete
-- if current_user
-  = link_to "Add comment", new_post_comment_path(@post)
-  = form_for [@post, @comment] do |f|
-    = f.label :comment
-    = f.text_area :comment
-    = f.submit 'Leave comment'
-    .likes
-      = link_to "Like", post_likes_path(@post), method: :post, class: 'likes-link'
-      %span.likes_count= @post.likes.count
-      = 'like'.pluralize @post.likes.count
 
-%h3
-  Comments
+%section#post
+  .row
+    .small-10.small-centered.columns
+      .post-image-container
+        = image_tag @post.image.url(:medium)
+        %article.description
+          %p= @post.description
+        .likes
+          - if current_user
+            = link_to post_likes_path(@post), method: :post, class: 'likes-link' do
+              %span.icon.icon-heart(aria-hidden="true")
+          - else
+            %span.icon.icon-heart(aria-hidden="true")
+          %span.likes_count= @post.likes.count
+          = 'like'.pluralize @post.likes.count
+        - if @post.owned_by? current_user
+          = link_to "Edit", edit_post_path(@post)
+          = link_to "Delete", post_path(@post), method: :delete
+        - if current_user
+          .row
+            .small-8.small-centered.columns
+              .comments-form
+                .form-desc
+                  %h4
+                    leave a comment
+                  = form_for [@post, @comment] do |f|
+                    = f.text_area :comment, placeholder: "Remeber: be nice!"
+                    = f.submit 'Leave comment'
 
-- if @post.comments.any?
-  %ul
-    - @post.comments.each do |comment|
-      %li
-        = comment.comment
-        = comment.user.name
-        = time_ago_in_words(comment.created_at)
-        - if comment.owned_by? current_user
-          = link_to "Delete comment", post_comment_path(@post, comment), method: :delete
 
-  %p No comments
+%section#comments
+  .row
+    .small-12.medium-10.medium-centered.columns
+      .comments
+        - if @post.comments.any?
+
+          %h3
+            comments
+          - @post.comments.each do |comment|
+            .comment
+              %p.comment-text= comment.comment
+              .name= comment.user.name
+              .comment-post-time
+                posted
+                = time_ago_in_words(comment.created_at)
+                ago
+              - if comment.owned_by? current_user
+                .delete-comment= link_to "Delete comment", post_comment_path(@post, comment), method: :delete
+        - else
+          %h3
+            No comments
+            %span.icon.icon-sad(aria-hidden="true")

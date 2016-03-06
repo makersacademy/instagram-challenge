@@ -6,20 +6,32 @@
           .image-container
             = image_tag post.image.url(:medium), class: 'adaptive-background'
             .post-meta
-              posted
-              = time_ago_in_words(post.created_at)
-              ago
-              = link_to "More", post_path(post)
-              - if post.owned_by? current_user
-                = link_to "Edit", edit_post_path(post)
-                = link_to "Delete", post_path(post), method: :delete
+              .post-time
+                posted
+                = time_ago_in_words(post.created_at)
+                ago
               .likes
                 - if current_user
-                  = link_to "Like", post_likes_path(post), method: :post, class: 'likes-link'
+                  = link_to post_likes_path(post), method: :post, class: 'likes-link' do
+                    %span.icon.icon-heart(aria-hidden="true")
+                - else
+                  %span.icon.icon-heart(aria-hidden="true")
                 %span.likes_count= post.likes.count
                 = 'like'.pluralize post.likes.count
-              .comments
+
+              .comment-count
+                %span.icon.icon-chat3(aria-hidden="true")
                 = post.comments.length
                 = 'comment'.pluralize post.comments.length
+              .post-actions
+                = link_to post_path(post) do
+                  More
+                - if post.owned_by? current_user
+                  %span.sep
+                    |
+                  = link_to "Edit", edit_post_path(post)
+                  %span.sep
+                    |
+                  = link_to "Delete", post_path(post), method: :delete
     - else
       No posts yet
