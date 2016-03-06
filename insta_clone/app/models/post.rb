@@ -12,4 +12,5 @@ class Post < ActiveRecord::Base
     attributes[:user] ||= user
     comments.build(attributes)
   end
+  
 end

@@ -40,8 +40,8 @@ feature 'posts' do
   context 'editing posts' do
 
     scenario 'a user can edit a post' do
-      Post.create(title: "test")
       sign_up(email: "asd@asd.com", password: "asdasdasd")
+      new_post(title: "test")
       click_link 'Edit test'
       expect(page).to have_content('Edit post')
       fill_in "Title", with: "test has been edited"
@@ -53,9 +53,7 @@ feature 'posts' do
       new_post(title: "test")
       click_link 'Sign out'
       sign_up(email: "assdfdsd@asd.com", password: "asdasdasd")
-      click_link 'Edit test'
-      click_button 'Update Post'
-      expect(page).to have_content 'You can only edit your own posts'
+      expect(page).not_to have_content 'Edit test'
     end
 
   end
@@ -74,8 +72,7 @@ feature 'posts' do
       new_post(title: "test")
       click_link 'Sign out'
       sign_up(email: "assdsdfd@asd.com", password: "asdasdasd")
-      click_link 'Delete test'
-      expect(page).to have_content('You can only delete your own posts')
+      expect(page).not_to have_content('Delete test')
     end
 
   end

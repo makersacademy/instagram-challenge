@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
     post.liking_users.include?(self)
   end
 
+  def user_owns_post?(post)
+    self.posts.include?(post)
+  end
+
 end
