@@ -32,4 +32,15 @@ feature 'pictures' do
       expect(current_path).to eq '/pictures'
     end
   end
+
+  context 'viewing pictures' do
+    let!(:picture) { Picture.create(caption: 'a nice picture', image: File.new(Rails.root.join('spec','images','img.jpg'))) }
+
+    scenario 'lets a user view a picture' do
+      visit '/pictures'
+      find(:xpath, "//a/img[@alt='a nice picture']/..").click
+      expect(page).to have_content 'a nice picture'
+      expect(current_path).to eq "/pictures/#{picture.id}"
+    end
+  end
 end
