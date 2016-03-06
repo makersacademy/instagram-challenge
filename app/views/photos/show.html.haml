@@ -1,0 +1,10 @@
+= @photo.description
+%figure{class: @photo.filter_class, id: 'photo_to_edit'}
+  = image_tag @photo.image.url(:medium)
+
+%h2 Filters:
+= form_tag(edit_photo_path(@photo),method: 'get') do
+  - @photo.show_filters.each do |p_filter|
+    = radio_button_tag(:filter, "#{p_filter}")
+    = label_tag "#{p_filter}"
+  = submit_tag('Save')
