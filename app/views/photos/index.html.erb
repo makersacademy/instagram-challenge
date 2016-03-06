@@ -1,5 +1,11 @@
 <h1> Welcome to pretend Instagram </h1>
 
-<p> No photos yet </P>
+<% if @photos.all.any? %>
+  <% @photos.all.each do |photo| %>
+    <%= photo.file %>
+  <% end %>
+<% else %>
+  <p> No photos yet </P>
+<% end %>
 
 <a href=<% new_photo_path %>>Add a photo</a>
