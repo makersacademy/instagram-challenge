@@ -19,8 +19,11 @@ root 'photos#index'
 
 resources :photos, shallow: true do
   resources :comments
-  end
+end
 
+resources :photos, shallow: true do
+  resources :likes
+end
 
 
 

@@ -16,6 +16,7 @@ allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(:true)
 attach_file('photo[image]', "#{Rails.root}/spec/cat.jpg", visible: false)
 fill_in('Description', with: "Check out my cat" )
 click_button('Create Photo')
+visit('/')
 end
 
 def add_comment
