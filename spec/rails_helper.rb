@@ -64,4 +64,5 @@ RSpec.configure do |config|
     FileUtils.rm_rf(Dir["#{Rails.root}/public/system/photos/images"])
     FileUtils.rm_rf(Dir["#{Rails.root}/public/system/users/profile_pics"])
   end
+
 end

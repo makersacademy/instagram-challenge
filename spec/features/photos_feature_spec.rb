@@ -28,8 +28,8 @@ feature 'Homepage photo view' do
 
   context 'Viewing photos in the photo feed' do
     before do
-      test_time = Time.new(2016, 03, 5, 13, 0, 30)
-      Timecop.freeze(test_time)
+      @test_time = Time.new(2016, 03, 5, 13, 0, 30)
+      Timecop.freeze(@test_time)
       sign_up_and_in('me@metest.com', 'thisisapassword', 'Viola')
       basic_new_upload('spec/support/photo_upload_placeholder.jpg', 'Amazing times')
       sign_out
@@ -43,8 +43,11 @@ feature 'Homepage photo view' do
     end
 
     scenario 'Anybody how long ago a picture was posted' do
+      time_expected = time_ago_in_words(@test_time,
+          :highest_measure_only => true,
+          :vague => :seconds)
       visit '/photos'
-      expect(page).to have_content 'Sought InstaGratification 1 day ago'
+      expect(page).to have_content "Sought InstaGratification #{time_expected} ago"
     end
 
     scenario 'Anybody can see exactly when a picture was posted' do

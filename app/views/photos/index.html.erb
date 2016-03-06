@@ -18,11 +18,33 @@
   </h4>
   <%= image_tag(photo.user.profile_pic.url(:thumb)) %>
   <%= photo.user_name %>
-  <p class="timestamp">
-    <%= post_exact_time(photo.created_at) %>
-  </p>
+    <p class="timestamp">
+      <%= post_exact_time(photo.created_at) %>
+    </p>
   <%= render 'user_photo_options', photo: photo %>
 </aside>
+
+<section class="comment_feed">
+  <% photo.comments.each do |comment| %>
+  <h3 class="photo_caption">
+  <%= comment.content %>
+  </h3>
+  <aside class="comment_feed_info">
+    <%= image_tag(comment.user.profile_pic.url(:thumb)) %>
+    <%= photo.user_name %>
+    <%= button_to "Destroy the evidence", photo_comment_path(photo, comment), method: :delete %>
+    <p class="timestamp">
+      <%= "left comment #{post_recency(comment.created_at)} ago on #{post_exact_time(comment.created_at)}" %>
+    </p>
+    <% end %>
+  </section>
+  <section class="comment_box">
+    <%= form_for Comment.create, url: new_photo_comment_path(photo) do |f| %>
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+    <%= f.submit "Give Gratification"%>
+    <% end %>
+  </section>
   <% end %>
 </section>
 <% else %>
