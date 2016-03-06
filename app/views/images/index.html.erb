@@ -1,24 +1,23 @@
 <header class="center-block">
   <h1>Welcome to Pictagram</h1>
+   <p> <%= link_to "#{current_user.name}", account_images_path, id: 'user_account' %> </p>
 </header>
 
-<div class="cointainer center-block">
-  <div class='row'>
-    <div class'col-md-6'>
-  
-  <p> <%= current_user.name %> </p>
+
   
  
   
+ <div class="cointainer center-block">
+   <div class='row'>
+     <div class'col-md-6'>
+  
    <% @images.each do |image| %>
      
-      
-      <%= image_tag image.image(:medium) %></br><div
-        class="fb-like center-block"
-        data-share="true"
-        data-width="450"
-        data-show-faces="true">
+     <div class="cointainer center-block">
+      <%= User.find(image.user_id).name %></br>
+      <%= image_tag image.image(:medium) %></br>
        </div></br>
+     </div>
      
       <% end %>
   

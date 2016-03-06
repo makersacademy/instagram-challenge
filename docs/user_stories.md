@@ -7,6 +7,10 @@ As a Facebook User,
 So that I can easily share and like pictures, 
 I would like to Log in with facebook
 
+As a registered user, 
+so that I can share my pictures, 
+I would like to add pictures to my account
+
 As a User, 
 So I can remove pictures I no longer like, 
 I would like to be able to delete pictures

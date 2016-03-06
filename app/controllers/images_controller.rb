@@ -6,6 +6,10 @@ class ImagesController < ApplicationController
     @images = Image.all
   end
   
+  def account 
+    @images = Image.all.where(user_id: current_user.id)
+  end
+  
   def new
      @image = Image.new
   end
@@ -16,8 +20,14 @@ class ImagesController < ApplicationController
     redirect_to images_path
   end
   
+  def destroy
+    @image = Image.find(params[:id])
+    @image.delete
+    redirect_to account_images_path
+  end
+  
   def image_params
-    params.require(:image).permit(:title, :image, :user_id)
+    params.require(:image).permit(:image, :title, :user_id)
   end
   
 end
