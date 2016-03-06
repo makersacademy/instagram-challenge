@@ -17,4 +17,11 @@ feature 'Commenting on posts' do
       expect(page).to have_content 'This is a comment'
     end
   end
+
+  scenario 'user needs to be signed in to comment' do
+    sign_out
+    click_link 'Comment'
+    expect(page).not_to have_button('Post')
+    expect(page).to have_content('Log in')
+  end
 end

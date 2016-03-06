@@ -9,4 +9,9 @@ class Post < ActiveRecord::Base
   validates_attachment :image,
                        presence: true,
                        size: { less_than: 2.megabytes }
+
+  def build_comment(attributes, user)
+    attributes[:user] ||= user
+    comments.build(attributes)
+  end
 end
