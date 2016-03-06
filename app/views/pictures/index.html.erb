@@ -1,2 +1,13 @@
-<h2>No pictures to display</h2>
-<a href='#'>Add picture</a>
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <%= image_tag picture.image.url(:original) %>
+    <br>
+    <%= picture.caption %>
+    <br>
+    <br>
+  <% end %>
+<% else %>
+  <h2>No pictures to display</h2>
+<% end %>
+<br>
+<%= link_to "Add picture", new_picture_path %>
