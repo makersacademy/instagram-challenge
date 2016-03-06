@@ -1,11 +1,14 @@
+<br>
 <% if @picture.all.any? %>
-
+	
   <% @picture.all.each do |pics| %>
-  <%= link_to pics.name, picture_path(pics) %>
+  <h2><%= pics.name %></h2>
+  <%= link_to pics.name.capitalize, picture_path(pics) %>
   <%= link_to "Tag", new_picture_tag_path(pics)%>
+  <%= link_to "Comment", new_picture_comment_path(pics)%>
   <%= link_to "Delete", picture_path(pics), method: :delete %>
   <%= link_to "Edit", edit_picture_path(pics) %>
-    <h2><%= pics.name %></h2>
+    
   
   <% end %>
 <% else %>

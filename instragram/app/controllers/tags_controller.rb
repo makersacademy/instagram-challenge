@@ -7,9 +7,6 @@ class TagsController < ApplicationController
 	def create
  	 	@picture = Picture.find(params[:picture_id])
   		@a = @picture.tags.create(tag_params)
-  		p '--------'
-  		p @a
-  		p '---------'
   		redirect_to pictures_path
 	end
 

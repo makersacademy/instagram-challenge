@@ -49,7 +49,7 @@ feature 'pictures' do
     expect(page).to have_content 'Picture deleted successfully'
   end
 
-   scenario 'allows users to leave a review using a form' do
+   scenario 'allows users to tag using a form' do
      visit '/pictures'
      click_link 'Tag'
      fill_in "Tag", with: "#holidays"
@@ -57,5 +57,14 @@ feature 'pictures' do
      click_link 'Sunshine'
      expect(page).to have_content('#holidays')
   	end
+
+  scenario 'allows users to leave a comment' do
+     visit '/pictures'
+     click_link 'Comment'
+     fill_in "Comment", with: "nice one!"
+     click_button 'leave comment'
+     click_link 'Sunshine'
+     expect(page).to have_content('nice one!')
+  end
 	end
 end
