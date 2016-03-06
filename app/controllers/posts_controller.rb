@@ -1,18 +1,23 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index]
+
   def index
     @posts = Post.all
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
+
     if @post.save
+      flash[:success] = "Post was added successfully!"
       redirect_to @post
     else
+      flash[:alert] = "Post couldn't be added!"
       render 'new'
     end
   end
@@ -46,4 +51,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:caption, :image)
   end
+
 end

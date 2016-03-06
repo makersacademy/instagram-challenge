@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_many :posts, dependent: :destroy
+
   validates :username, length: {minimum: 4}, uniqueness: true, presence: true
 
   # Include default devise modules. Others available are:

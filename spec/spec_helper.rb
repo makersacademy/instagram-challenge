@@ -21,6 +21,17 @@ module UserHelpers
     click_button ('Log in')
   end
 
+  def create_user(username: 'test',
+                  email: 'test@example.com',
+                  password: 'testtest',
+                  password_confirmation: 'testtest')
+
+    User.create(username: username,
+                email: email,
+                password: password,
+                password_confirmation: password_confirmation)
+  end
+
 end
 
 module PostHelpers
@@ -31,11 +42,14 @@ module PostHelpers
     fill_in :post_caption, with: caption
     click_button('Create Post')
   end
+
   def add_existing_post(path: '/spec/files/images/first.jpg',
-                        caption: 'First post')
+                        caption: 'First post',
+                        user_id: nil)
     Post.create(
-     image: File.open("#{Rails.root}"+path),
-     caption: caption)
+      image: File.open("#{Rails.root}"+path),
+      caption: caption,
+      user_id: user_id)
   end
 end
 

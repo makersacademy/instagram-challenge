@@ -4,15 +4,20 @@ feature 'Posts feature' do
 
   context 'creating posts' do
 
-    scenario 'user fills in a form, then displays the new post' do
+    before do
       visit('/')
+      sign_up_user
+    end
+
+    scenario 'then displays the new post and username of author' do
       create_post
+      visit('/')
+      expect(page).to have_content('test')
       expect(page).to have_content('First post')
       expect(page).to have_css("img[src*='first.jpg']")
     end
 
     scenario 'not saving new post without image' do
-      visit('/')
       create_post(image_path: nil, caption: 'First post')
       click_button 'Create Post'
       expect(page).not_to have_content('First post')
@@ -22,30 +27,42 @@ feature 'Posts feature' do
   end
 
   context 'viewing/ editing/ deleting posts' do
-
-    let!(:post1){add_existing_post}
+    let!(:user){create_user}
+    let!(:user1){create_user(
+                  username: 'test1',
+                  email: 'test1@example.com')}
+    let!(:post1){add_existing_post(user_id: user.id)}
 
     let!(:post2){add_existing_post(
                     path: '/spec/files/images/second.jpg',
-                    caption: 'Second post')}
+                    caption: 'Second post',
+                    user_id: user.id)}
 
-    scenario 'let a user view posts' do
+    scenario 'let a user view posts only if logged in' do
       visit '/'
-      expect(page).to have_content 'First post'
-      expect(page).to have_css("img[src*='first.jpg']")
-      expect(page).to have_content 'Second post'
-      expect(page).to have_css("img[src*='second.jpg']")
+      expect(page).not_to have_content('First post')
+      expect(page).to have_content('You need to Log in to see posts!')
+      log_in_user
+      expect(page).not_to have_content('You need to Log in to see posts!')
+      expect(page).to have_content('First post')
+      expect(page).to have_content ('Second post')
     end
 
     scenario 'let a user view individual post' do
       visit '/'
+      log_in_user
       click_link 'View First post'
       expect(page).to have_content 'First post'
       expect(page.current_path).to eq(post_path(post1))
     end
 
-    scenario 'let a user edit a post' do
+    scenario 'let a user edit only his posts' do
       visit '/'
+      log_in_user(email: 'test1@example.com')
+      click_link 'View First post'
+      expect(page).not_to have_content 'Edit'
+      click_link('Sign out')
+      log_in_user
       click_link 'View First post'
       click_link 'Edit'
       fill_in 'Caption', with: 'First POST'
@@ -56,6 +73,7 @@ feature 'Posts feature' do
 
     scenario 'not saving updates for post without image' do
       visit('/')
+      log_in_user
       click_link 'View First post'
       click_link 'Edit'
       fill_in 'Caption', with: 'Something new.'
@@ -67,6 +85,7 @@ feature 'Posts feature' do
 
     scenario 'delete a post when user press Delete button' do
       visit '/'
+      log_in_user
       click_link 'View First post'
       click_link 'Edit'
       click_link 'Delete'

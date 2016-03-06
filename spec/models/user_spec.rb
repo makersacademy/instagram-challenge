@@ -20,4 +20,5 @@ RSpec.describe User, type: :model do
                     encrypted_password: 'testtest')
     expect(user).not_to be_valid
   end
+
 end
