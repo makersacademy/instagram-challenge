@@ -31,6 +31,21 @@ feature 'pictures' do
     expect(page).to have_content 'My first selfie'
     expect(current_path).to eq '/pictures'
   end
+
+  context 'an invalid picture' do
+    it 'does not let you submit a post comment that is too long' do
+      visit '/pictures'
+      click_link 'Add a picture'
+      fill_in 'picture[postcomment]', with: '111111111122222222223333333333' +
+      '4444444444555555555566666666667777777777888888888899999999990000000000' +
+      '1111111111222222222233333333334444444444555555555566666666667777777777' +
+      '8888888888999999999900000000001111111111222222222233333333334444444444' +
+      '55555555556666666666' + 'extra characters!'
+      click_button 'Create Picture'
+      expect(page).not_to have_content 'extra characters!'
+      expect(page).to have_content 'error'
+    end
+  end
 end
 
 context 'editing pictures' do
