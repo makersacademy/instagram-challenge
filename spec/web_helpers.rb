@@ -11,6 +11,13 @@ module SessionHelpers
     click_button('I Need InstaGratification')
   end
 
+  def new_upload(image_path, caption, tags)
+    click_link "InstaGratify"
+    attach_file('image', image_path)
+    fill_in('Caption', with: caption)
+    fill_in('Tags', with: tags)
+    click_button('Make me famous')
+  end
 
   def sign_out
     click_link 'I\'ve Had Enough InstaGratification'
