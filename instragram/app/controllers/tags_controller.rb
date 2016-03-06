@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+	before_action :authenticate_user!, :except => [:index, :show]
 	def new
 		@picture = Picture.find(params[:picture_id])
 		@tag = Tag.new

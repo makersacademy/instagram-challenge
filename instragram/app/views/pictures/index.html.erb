@@ -1,10 +1,36 @@
+
 <br>
+<a href="/pictures/new">Add a picture</a>
 <% if @picture.all.any? %>
 	
   <% @picture.all.each do |pics| %>
   <h2><%= pics.name %></h2>
+  <br>
+  <% if pics.tags.any? %>
+  Tags:
+    <% pics.tags.each do |t| %>
+        <%= t.tag %>
+        .
+    <% end %>
+    
+    <br>
+    Comments:
+</a>
+  <% if pics.comments.any? %>
+    <% pics.comments.each do |c| %>
+      <li>
+        <%= c.comments %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No comments.</p>
+<% end %>
+  </ul>
+<% else %>
+  <p>No tags.</p>
+<% end %>
    <%=image_tag pics.image.url(:thumb) %>
-   <!--    <img src='https://s3-us-west-2.amazonaws.com/instagram-ed/pictures/images/000/000/007/medium/barbie-heman.jpg' /> -->
    <br>
   <%= link_to pics.name.capitalize, picture_path(pics) %>
   <%= link_to "Tag", new_picture_tag_path(pics)%>
@@ -18,5 +44,5 @@
   <h1>No pictures yet</h1>
 <% end %>
 <br>
-<a href="/pictures/new">Add a picture</a>
+
 

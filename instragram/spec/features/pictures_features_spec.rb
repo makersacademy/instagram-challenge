@@ -20,6 +20,17 @@ feature 'pictures' do
 			expect(page).to have_content('Sunshine')
 			expect(page).not_to have_content('No pictures yet')
 		end
+    # scenario 'upload a picture' do 
+    #   sign_up
+    #    visit '/pictures'
+    #   click_link 'Add a picture'
+    #   fill_in 'Name', with: 'Sunshine'
+    #   click_link 'Choose File'
+      
+    #   click_button 'Create Picture'
+    #   expect(page).to have_content 'Sunshine'
+    #   expect(current_path).to eq '/pictures'
+
 	end
 	context 'add pictures' do
   scenario 'prompts user to fill the picture name, then displays it' do
@@ -54,6 +65,7 @@ feature 'pictures' do
   end
 
    scenario 'allows users to tag using a form' do
+     sign_up
      visit '/pictures'
      click_link 'Tag'
      fill_in "Tag", with: "#holidays"
@@ -63,6 +75,7 @@ feature 'pictures' do
   	end
 
   scenario 'allows users to leave a comment' do
+      sign_up
      visit '/pictures'
      click_link 'Comment'
      fill_in "Comment", with: "nice one!"
@@ -70,5 +83,6 @@ feature 'pictures' do
      click_link 'Sunshine'
      expect(page).to have_content('nice one!')
   end
+
 	end
 end
