@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Posts' do
+feature 'Posts feature' do
 
   context 'creating posts' do
 
