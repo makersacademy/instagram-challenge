@@ -17,6 +17,8 @@ gem 'devise'
 
 gem 'paperclip'
 
+gem 'bootstrap_form'
+
 gem "font-awesome-rails"
 
 gem 'aws-sdk', '< 2.0'
