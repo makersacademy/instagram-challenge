@@ -28,7 +28,9 @@ gem 'devise'
 gem 'omniauth-facebook'
 
 #IMAGES
-gem 'paperclip'
+gem 'dotiw'
+gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
+gem 'aws-sdk'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -41,6 +43,9 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda'
+  gem 'timecop'
+  gem 'orderly'
+  gem 'pry'
 end
 
 group :development, :test do

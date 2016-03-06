@@ -66,6 +66,10 @@ So that I can feel jealous of everyone elses lives
 I would like to look at everyone else's selfies and photos of food on InstaGratification
 
 As a User
+So that I can can feel more jealous of what I am currently missing out on.
+I would like to look at everyone else's photos in order of the most recent. 
+
+As a User
 So that I can change my mind about that selfie I uploaded
 I would like to be able to delete photos I had uploaded
 

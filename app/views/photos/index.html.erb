@@ -6,9 +6,20 @@
 <section class="photo_feed">
 <% if @photos.any? %>
   <% @photos.each do |photo| %>
+  <figure class="med_photo_feed_item" id="<%= photo.id %>">
   <%= image_tag(photo.image.url(:medium)) %>
+</figure>
+<aside class="photo_feed_info">
+  <h3 class="photo_caption">
   <%= photo.caption %>
+  <%= "Sought InstaGratification #{post_recency(photo.created_at)} ago" %>
+  </h3>
+  <%= image_tag(photo.user.profile_pic.url(:thumb)) %>
   <%= photo.user_name %>
+  <p class="timestamp">
+    <%= post_exact_time(photo.created_at) %>
+  </p>
+</aside>
   <% end %>
 </section>
 <% else %>

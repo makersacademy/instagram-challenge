@@ -21,10 +21,44 @@ feature 'Homepage photo view' do
     scenario 'User is logged in' do
       sign_up_and_in('me@metest.com', 'thisisapassword', 'Viola')
       basic_new_upload('spec/support/photo_upload_placeholder.jpg', 'Amazing times')
-      expect(page).to have_content 'Amazing times'
-      expect(page).to have_content 'Viola'
       expect(current_path).to eq '/photos'
       expect(page).to have_selector('img')
+    end
+  end
+
+  context 'Viewing photos in the photo feed' do
+    before do
+      test_time = Time.new(2016, 03, 5, 13, 0, 30)
+      Timecop.freeze(test_time)
+      sign_up_and_in('me@metest.com', 'thisisapassword', 'Viola')
+      basic_new_upload('spec/support/photo_upload_placeholder.jpg', 'Amazing times')
+      sign_out
+      Timecop.return
+    end
+
+    scenario 'Anybody see who posted the picture and their caption for it' do
+      visit '/photos'
+      expect(page).to have_content 'Amazing times'
+      expect(page).to have_content 'Viola'
+    end
+
+    scenario 'Anybody how long ago a picture was posted' do
+      visit '/photos'
+      expect(page).to have_content 'Sought InstaGratification 1 day ago'
+    end
+
+    scenario 'Anybody can see exactly when a picture was posted' do
+      visit '/photos'
+      expect(page).to have_content '1:00PM'
+      expect(page).to have_content '05/03/2016'
+      expect(page).to have_content 'Viola'
+    end
+
+    scenario 'The most recent photos are at the top of the page' do
+      visit '/'
+      sign_up_and_in('otherme@metest.com', 'thisisanotherpassword', 'Johny')
+      basic_new_upload('spec/support/photo_upload_placeholder1.jpg', 'Cute kittens')
+      expect('Cute kittens').to appear_before 'Amazing times'
     end
   end
 end
