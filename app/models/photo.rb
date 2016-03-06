@@ -4,6 +4,7 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   has_many :comments, dependent: :destroy
+  has_many :likes
   belongs_to :user
 
   def build_review(attributes = {}, user)
