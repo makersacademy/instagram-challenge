@@ -6,7 +6,8 @@
       = post.caption
       = "posted #{time_ago_in_words(post.created_at)} ago"
 
-      = link_to 'Like', post_likes_path(post), class: 'likes-link'
+      = link_to 'Like', post_likes_path(post), class: 'like-link' if current_user && !current_user.liked?(post)
+      = link_to 'Unlike', post_likes_path(post), class: 'like-link' if current_user && current_user.liked?(post)
       %span.likes_count= post.likes.count
       = 'like'.pluralize post.likes.count
 

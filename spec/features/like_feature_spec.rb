@@ -12,4 +12,10 @@ feature 'Liking posts' do
     expect(page).not_to have_link('Like')
     expect(page).to have_link('Unlike')
   end
+
+  scenario 'user needs to be signed in to like posts', js: true do
+    sign_out
+    expect(page).not_to have_link('Like')
+    expect(page).not_to have_link('Unlike')
+  end
 end
