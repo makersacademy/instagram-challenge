@@ -66,7 +66,6 @@ end
 
 context 'editing pictures' do
 
-  before { Picture.create postcomment: 'Another pic' }
   before do
     visit('/')
     click_link('Sign up')
@@ -74,6 +73,8 @@ context 'editing pictures' do
     fill_in('Password', with: 'testtest')
     fill_in('Password confirmation', with: 'testtest')
     click_button('Sign up')
+    id = User.first.id
+    Picture.create postcomment: 'Another pic', user_id: id
   end
   scenario 'let a user edit a picture' do
    visit '/pictures'

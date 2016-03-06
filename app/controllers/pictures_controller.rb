@@ -9,7 +9,8 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.new(picture_params)
+    # @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.new(picture_params)
     if @picture.save
       redirect_to pictures_path
     else
@@ -23,6 +24,11 @@ class PicturesController < ApplicationController
 
   def edit
     @picture = Picture.find(params[:id])
+    if !(current_user == @picture.user)
+      redirect_to '/pictures'
+      flash[:notice] = 'Only the owner of this picture can edit it!'
+    end
+
   end
 
   def update
