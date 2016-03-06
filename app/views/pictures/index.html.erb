@@ -3,8 +3,8 @@
   <% @pictures.each do |picture| %>
     <p><%= link_to(image_tag(picture.image.url(:medium)), picture_path(picture)) %></p>
     <p><%= picture.caption %></p>
-    <p><%= link_to "Delete", picture_path(picture), method: :delete %></p>
-    <p><%= link_to "Edit", edit_picture_path(picture) %></p>
+    <p><%= link_to "Delete", picture_path(picture), method: :delete if picture.user == current_user %></p>
+    <p><%= link_to "Edit", edit_picture_path(picture) if picture.user == current_user %></p>
   <% end %>
 <% else %>
   <h2>No pictures to display</h2>

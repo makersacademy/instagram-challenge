@@ -15,6 +15,10 @@
 * So that I can manage pictures,
 * I would like to sign up and log in to my account
 
+* As a user,
+* To protect my images,
+* I want to be the only person that can delete or edit my pictures
+
 Instagram Challenge
 ===================
 

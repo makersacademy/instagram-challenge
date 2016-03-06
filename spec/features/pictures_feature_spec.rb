@@ -21,7 +21,7 @@ feature 'pictures' do
       sign_up
     end
 
-    it 'lets a user to add a picture' do
+    it 'lets a user add a picture' do
       visit '/pictures'
       expect(page).to have_content 'No pictures to display'
       expect(page).to have_link 'Add picture'
@@ -37,10 +37,6 @@ feature 'pictures' do
       visit '/pictures'
       add_picture
       expect(page).to have_content("First pic")
-    end
-
-    scenario 'user must be logged in to upload a picture' do
-      visit '/pictures'
     end
 
     context 'with a picture uploaded' do
@@ -61,6 +57,7 @@ feature 'pictures' do
         visit '/pictures'
         click_link 'Delete'
         expect(page).not_to have_selector("img[src*=test]")
+        expect(page).to have_content('Picture deleted')
       end
 
       it 'lets the user edit a caption' do
@@ -71,6 +68,18 @@ feature 'pictures' do
         click_button 'Upload picture'
         expect(page).to have_content('New caption')
         expect(page).not_to have_content('First pic')
+      end
+
+      it 'does not let another user delete their picture' do
+        click_link 'Sign out'
+        sign_up("newuser@email.com")
+        expect(page).not_to have_content 'Delete'
+      end
+
+      it 'does not let another user edit their caption' do
+        click_link 'Sign out'
+        sign_up("newuser@email.com")
+        expect(page).not_to have_content 'Edit'
       end
     end
   end

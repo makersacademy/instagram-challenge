@@ -5,11 +5,11 @@ def add_picture
   click_button 'Upload picture'
 end
 
-def sign_up
+def sign_up(email='test@email.com', password='P4ssword')
   click_link 'Sign up'
-  fill_in 'Email', with: 'test@email.com'
-  fill_in 'Password', with: 'P4ssword'
-  fill_in 'Password confirmation', with: 'P4ssword'
+  fill_in 'Email', with: email
+  fill_in 'Password', with: password
+  fill_in 'Password confirmation', with: password
   click_button 'Sign up'
 end
 

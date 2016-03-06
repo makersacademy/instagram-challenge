@@ -11,7 +11,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.create(picture_params)
+    @picture = current_user.pictures.create(picture_params)
     redirect_to pictures_path
   end
 
@@ -32,6 +32,7 @@ class PicturesController < ApplicationController
   def destroy
     @picture = Picture.find(params[:id])
     @picture.destroy
+    flash[:notice] = 'Picture deleted'
     redirect_to pictures_path
   end
 
