@@ -4,6 +4,22 @@
     <%= link_to "Edit Picture", edit_picture_path(picture) %>
     <%= link_to "Delete Picture", picture_path(picture), method: :delete %>
     <%= link_to "Add a Comment", new_picture_comment_path(picture) %>
+
+    <h3>Comments</h3>
+
+    <% if picture.comments.any? %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+          <li>
+            <%= comment.thoughts %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No reviews.</p>
+    <% end %>
+
+
   <% end %>
 <% else %>
   <h1>No pictures yet</h1>
