@@ -1,4 +1,6 @@
 <%= image_tag @picture.image.url(:medium), alt: @picture.caption %>
 <%= @picture.caption %>
-<%= link_to 'Edit', edit_picture_path(@picture) %>
-<%= link_to 'Delete', picture_path(@picture), method: :delete %>
+<% if current_user && @picture.user_id == current_user.id %>
+  <%= link_to 'Edit', edit_picture_path(@picture) %>
+  <%= link_to 'Delete', picture_path(@picture), method: :delete %>
+<% end %>

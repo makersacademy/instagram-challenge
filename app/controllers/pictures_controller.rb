@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
   def index
     @pictures = Picture.all
   end
@@ -8,7 +9,7 @@ class PicturesController < ApplicationController
   end
 
   def new
-    @picture = Picture.new
+    @picture = current_user.pictures.new
   end
 
   def edit
@@ -16,21 +17,21 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.create(picture_params)
+    @picture = current_user.pictures.create(picture_params)
     redirect_to pictures_path
   end
 
   def update
     @picture = Picture.find(params[:id])
     @picture.update(picture_params)
-    redirect_to(picture_path(@picture))
+    redirect_to pictures_path
   end
 
   def destroy
     @picture = Picture.find(params[:id])
     @picture.destroy
     flash[:notice] = 'Picture deleted successfully'
-    redirect_to '/pictures'
+    redirect_to pictures_path
   end
 
   private
