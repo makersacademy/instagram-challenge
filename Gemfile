@@ -45,14 +45,15 @@ gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523b
 gem 'shoulda'
 
 group :test do
- gem 'rspec-rails'
- gem 'capybara'
+
 
 end
 
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails'
+ 	gem 'capybara'
   gem 'byebug'
   gem 'rspec-collection_matchers'
 end
