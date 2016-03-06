@@ -1,10 +1,27 @@
 Rails.application.routes.draw do
 
+  get 'comments/new'
+
+  get 'comments/create'
+
+  get 'comments/show'
+
+  get 'comments/edit'
+
+  get 'comments/update'
+
+  get 'comments/destroy'
+
 devise_for :users, 
 :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
 root 'photos#index'
-resources :photos
+
+resources :photos, shallow: true do
+  resources :comments
+  end
+
+
 
 
 
