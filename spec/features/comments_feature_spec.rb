@@ -2,8 +2,29 @@ require 'rails_helper'
 
 feature 'comments' do
 
+  context 'viewing comments' do
+    let!(:post) { Post.create description: 'Test post' }
+
+    before do
+      post.comments.create body: 'Test comment'
+    end
+
+    scenario 'display comments under a post' do
+      visit '/'
+      within('article.comment') do
+        expect(page).to have_content 'Test comment'
+      end
+    end
+  end
+
   context 'leaving comments' do
     before { Post.create description: 'Test post' }
+
+    scenario 'display comments form under a post' do
+      visit '/'
+      expect(page).to have_css 'form#new_comment'
+      expect(page).to have_button 'Comment'
+    end
 
     context 'if user is not logged in' do
       scenario 'redirects user to log in page' do
