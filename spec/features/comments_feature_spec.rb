@@ -1,18 +1,24 @@
 require 'rails_helper'
 
 feature 'comments' do
-
   context 'viewing comments' do
     let!(:post) { Post.create description: 'Test post' }
-
-    before do
-      post.comments.create body: 'Test comment'
-    end
+    let!(:user) { User.create email: 'user@email.com' }
+    let!(:comment_params) { {body: 'Test comment'} }
+    let!(:comment) { post.comments.create_with_user(comment_params, user) }
 
     scenario 'display comments under a post' do
       visit '/'
       within('article.comment') do
         expect(page).to have_content 'Test comment'
+      end
+    end
+
+    scenario 'display username of comment author' do
+      sign_up
+      leave_comment
+      within('article.comment:last-child') do
+        expect(page).to have_content 'test@email.com'
       end
     end
   end
