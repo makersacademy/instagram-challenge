@@ -25,6 +25,13 @@ describe 'User' do
     end
   end
 
+  describe '#has_liked?' do
+    it 'returns true if user has liked' do
+      photo.likes.create_with_user(user1)
+      expect(user1.has_liked?(photo)).to eq(true)
+    end
+  end
+
   describe "#get_usernames" do
     it 'returns the usernames of the entity' do
       photo.likes.create_with_user(user1)

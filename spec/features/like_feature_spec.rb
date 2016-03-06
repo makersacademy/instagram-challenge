@@ -24,5 +24,10 @@ feature 'likes' do
       click_link 'Like'
       expect(page).to have_content '2 likes: test, test2'
     end
+
+    scenario 'a user can only like a photo once' do
+      click_link 'Like'
+      expect(page).not_to have_link('Like')
+    end
   end
 end

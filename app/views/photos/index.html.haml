@@ -6,7 +6,8 @@
     %li= photo.description
     %p= image_tag photo.image.url(:thumb)
     = "Uploaded by: #{User.find(photo.user_id).username} #{distance_of_time_in_words(Time.at(photo.image_updated_at), Time.now)} ago"
-    = link_to "Like", photo_likes_path(photo), method: :post
+    - if (current_user && !current_user.has_liked?(photo))
+      = link_to "Like", photo_likes_path(photo), method: :post
     = "#{photo.likes.count} #{' like'.pluralize photo.likes.count}: #{User.get_usernames(photo.likes)}"
     - if photo.comments.any?
       <ul>
