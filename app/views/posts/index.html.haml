@@ -3,8 +3,13 @@
 = link_to "New Post", new_post_path
 
 - if @posts.any?
-  - @posts.each do |post|
-    .row
-      =link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post)
-      %h3
-        = link_to (post.caption), post_path(post)
+  .posts-wrapper.row
+    -@posts.each do |post|
+      .post
+        .post-head
+          .name
+            Ben Walker
+        .image.center-block
+          =link_to (image_tag post.image.url(:medium), class: 'img-responsive'), post_path(post)
+        %p.caption
+          =link_to (post.caption), post_path(post)
