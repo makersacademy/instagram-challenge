@@ -1,0 +1,31 @@
+%div{ class: 'big-image-div' }
+  = image_tag @image.image.url(:medium)
+
+%div{ class: 'image-info'}
+  %div{ class: 'image-stats'}
+    %div{ class: 'bold' }= "Posted by #{@image.user.user_handle}"
+
+    - unless @image.description.empty?
+      %div{ class: 'description-div' }= @image.description
+    - else
+      %div{ class: 'description-div' }
+        %em No description added
+
+    %div{ class: 'like-div' }
+      = "#{@image.likes.count} #{'like'.pluralize(@image.likes.count)}"
+      - if current_user && @image.likes.find_by(user: current_user).nil?
+        = " | "
+        = link_to 'Like', image_likes_path(@image), method: :post
+
+  - unless current_user.nil?
+    = form_for [@image, @comment] do |f|
+      = f.text_field  :content,
+                      maxlength: 50,
+                      placeholder: 'Comment'
+      = f.submit
+
+
+  - @image.comments.each do |comment|
+    %div{ class: 'comment-div' }
+      %p{ class: 'bold' }= comment.user.user_handle + ' says:'
+      %p{ class: 'comment' }= comment.content

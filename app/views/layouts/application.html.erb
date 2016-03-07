@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Winstagram</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<div class='header'>
+  <%= link_to 'Winstagram', images_path, class: 'logo' %>
+  <% if current_user %>
+    <div class='header-link'>
+      <%= link_to 'Upload image', new_image_path %>
+    </div>
+    <div class='header-link'>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+    </div>
+  <% else %>
+    <div class='header-link'>
+      <%= link_to 'Sign up', new_user_registration_path %>
+    </div>
+    <div class='header-link'>
+      <%= link_to 'Sign in', new_user_session_path %>
+    </div>
+  <% end %>
+</div>
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+
+<%= yield %>
+
+</body>
+</html>
