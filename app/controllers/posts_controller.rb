@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def new
-   @post = Post.new
+    @post = Post.new
   end
 
   def create
@@ -43,13 +43,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
-   @post = Post.find(params[:id])
-   if @post.user_id != current_user.id
-     flash[:notice] = 'Cannot delete post belonging to another user'
-   else
-    @post.destroy
-    flash[:notice] = 'Post deleted successfully'
-  end
+    @post = Post.find(params[:id])
+    if @post.user_id != current_user.id
+      flash[:notice] = 'Cannot delete post belonging to another user'
+    else
+      @post.destroy
+      flash[:notice] = 'Post deleted successfully'
+    end
     redirect_to '/posts'
   end
 end
