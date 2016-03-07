@@ -4,7 +4,8 @@
     <p><%= image_tag post.image.url(:medium) %></p>
         <h2><%= link_to post.message, post_path(post) %></h2>
       <p><%= post.created_at.strftime('%I:%M%p, %m/%d/%Y') %></p>
-    <p><%= pluralize post.likes.count, 'like' %></p>
+      <%= link_to "Like", post_likes_path(post), class: 'likes-link' %>
+      <span class="likes_count"> <%= post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
     <% if post.comments.any? %>
       <ul>
         <% post.comments.each do |comment| %>

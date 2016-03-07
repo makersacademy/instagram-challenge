@@ -4,6 +4,8 @@ gem 'shoulda'
 gem 'paperclip'
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'poltergeist'
+gem 'database_cleaner'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use postgresql as the database for Active Record

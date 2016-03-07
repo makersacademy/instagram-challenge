@@ -2,15 +2,19 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  get 'posts' => 'posts#index'
-  resources :posts do
-    resources :comments
-  end
-  resources :posts do
-    resources :likes
-  end
+  #get 'posts' => 'posts#index'
 
   root to: "posts#index"
+
+  resources :posts do
+    resources :comments
+    resources :likes
+  end
+  # resources :posts do
+  #   resources :likes
+  # end
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
