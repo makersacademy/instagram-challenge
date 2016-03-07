@@ -23,6 +23,10 @@
 * To be social,
 * I would like to comment on photos
 
+* As a user,
+* So i can show appreciation,
+* I want to be able to 'like' pictures
+
 Instagram Challenge
 ===================
 

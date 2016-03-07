@@ -3,9 +3,11 @@
   <% @pictures.each do |picture| %>
     <p><%= link_to(image_tag(picture.image.url(:medium)), picture_path(picture)) %></p>
     <p><%= picture.caption %></p>
+    <p><%= pluralize picture.likes.count, 'like' %></p>
     <p><%= link_to "Delete", picture_path(picture), method: :delete if picture.user == current_user %></p>
     <p><%= link_to "Edit", edit_picture_path(picture) if picture.user == current_user %></p>
-    <p><%= link_to "Comment", new_picture_comment_path(picture) %>
+    <p><%= link_to "Comment", new_picture_comment_path(picture) %></p>
+    <p><%= link_to "Like", picture_likes_path(picture), method: :post if user_signed_in? %></p>
       <ul>
         <% picture.comments.each do |comment| %>
         <li>
