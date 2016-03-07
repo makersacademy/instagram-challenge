@@ -28,6 +28,15 @@ Screenshots
 ![upload](app/assets/images/upload.png)
 
 
+To do
+-----
+
+- implement Facebook login via OAuth
+- implement AJAX for likes and comments
+- validate user login at model level for creation of images, comments, and likes
+- shift data storage to Amazon Web Services
+
+
 User stories
 -----
 
