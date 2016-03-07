@@ -1,9 +1,14 @@
+<div class='posts-wrapper row'>
+<center> <div class='image center-block'>
+<div class='post'>
 <p><%= image_tag @photo.image.url(:medium) %></p>
+<div class='name'>
 <p><%= @photo.description %></p>
+</div>
 <% if @photo.comments.any? %>
 				<% @photo.comments.each do |comment| %>
 				<li>
-				<%= comment.body %>
+			<p><%= comment.body %> from <%= comment.commenter %>
 				</li>
 				<%end%>		
 		<% else %>
@@ -12,4 +17,8 @@
 <% if current_user == @photo.user %>
 <%= link_to "Edit Photo", edit_photo_path %>
 <%= link_to "Delete Photo", photo_path(@photo), method: :delete %>
+</div>
+</div>
+</center>
+</div>
 <% end %>

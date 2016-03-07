@@ -1,33 +1,46 @@
+
 <% if @photo.any? %>
-<% @photo.each do |photo| %>
+	<center><p><a href= 'photos/new'> Add a photo </a><p><center> <br>
+		
+		<% @photo.each do |photo| %>
+		<div class='posts-wrapper row'>
+		<center> <div class='image center-block'>
+		<div class='post'>
+			<p> <%= link_to (image_tag photo.image.url(:medium)), photo_path(photo) %><p> 
+			<div class='name'>
+				<p><%= photo.description %> <p>
+						<p><%= photo.created_at.strftime("Added on %m/%d/%Y")%> </p>
 
-<p> <%= link_to (image_tag photo.image.url(:medium)), photo_path(photo) %><p> 
-	<p><%= photo.description %> <p>
-		<p><%= photo.created_at.strftime("Added on %m/%d/%Y")%> </p>
-		<%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
-		<span class ='likes_count'> <%= photo.likes.count %> </span> <%= 'like'.pluralize(photo.likes.count) %>
-		<p><%=link_to "Add a comment", new_photo_comment_path(photo) %> </p>
-		<% if photo.comments.any? %>
-		<% photo.comments.each do |comment| %>
-		<li>
-			<p><%= comment.body %> from <%= comment.commenter %></p>
-			<%if current_user %> 
-			<% if comment.user_id == current_user.id %>
-			<p><%=link_to "Edit Comment", edit_comment_path(comment) %> </p>
-			<p><%=link_to "Delete Comment", comment_path(comment), method: :delete %> </p>
-			<%end%>	
-			<%end%>	
-		</li>
-		<%end%>		
-		<% else %>
-		<p>No comments</p>
+						<%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
+						<span class ='likes_count'> <%= photo.likes.count %> </span> <%= 'like'.pluralize(photo.likes.count) %>
+						</div>
+						<p><%=link_to "Add a comment", new_photo_comment_path(photo) %> </p>
+						<% if photo.comments.any? %>
+						<p> Comments: </P>
+							<% photo.comments.each do |comment| %>
+							<li>
+								<p><%= comment.body %> from <%= comment.commenter %></p>
+								<%if current_user %> 
+								<% if comment.user_id == current_user.id %>
 
-		<% end %>
-		<% end %>
+								<p><%=link_to "Edit Comment", edit_comment_path(comment) %> 
+									<%=link_to "Delete Comment", comment_path(comment), method: :delete %> </p>
+							</div>
+							</div>
+							</div>
+								<%end%>	
+								<%end%>	
+							</li>
+							<%end%>		
+							<% else %>
+							<p>No comments</p>
+							<% end %>
+							<% end %>
 
-		<% else %>
-		No photos added yet
-		<% end %>
+							<% else %>
+						No photos added yet
+				
+						<% end %>
 
 
-		<a href= 'photos/new'> Add a photo </a> <br>
+						
