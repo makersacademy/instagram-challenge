@@ -7,15 +7,13 @@ class PostsController < ApplicationController
   end
 
   def new
+    @user = User.find(current_user.id)
     @post = Post.new
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user = current_user
-    @post.save
-    @posts = Post.all
-    @posts << @post
+    user = User.find(current_user.id)
+    user.posts.create(post_params)
     redirect_to '/posts'
   end
 
@@ -37,17 +35,17 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
-    @post.update(post_params)
+    post = Post.find(params[:id])
+    post.update(post_params)
     redirect_to '/posts'
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    if @post.user_id != current_user.id
+    post = Post.find(params[:id])
+    if post.user_id != current_user.id
       flash[:notice] = 'Cannot delete post belonging to another user'
     else
-      @post.destroy
+      post.destroy
       flash[:notice] = 'Post deleted successfully'
     end
     redirect_to '/posts'
