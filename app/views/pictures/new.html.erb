@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4"></div>
+      <div class="col-xs-4">
+        <% if flash[:notice] %>
+        <%= flash[:notice] %>
+        <% end %>
+        <p>
+        <%= form_for @picture, html: {multipart: true}, :url => pictures_path do |f| %>
+        <div class="form-group">
+          <%= f.label :image %>
+          <%= f.file_field :image, class: 'form-control' %>
+        </div>
+          <br>
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_field :description, class: 'form-control' %>
+        </div>
+          <br>
+        <div class="form-group">
+          <%= f.submit "Post" %>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-xs-4"></div>
+  </div>
+</div>

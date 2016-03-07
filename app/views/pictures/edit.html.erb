@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4"></div>
+      <div class="col-xs-4">
+        <% if flash[:notice] %>
+        <%= flash[:notice] %>
+        <% end %>
+        <%= form_for @picture, html: {multipart: true} do |f| %>
+          <div class="form-group">
+            <%= f.label :image %>
+            <%= f.file_field :image, class: 'form-control' %>
+          </div>
+          <br>
+          <div class="form-group">
+            <%= f.label :description %>
+            <%= f.text_field :description, class: 'form-control' %>
+          </div>
+          <br>
+          <div class="form-group">
+            <%= f.submit "Update" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-xs-4"></div>
+  </div>
+</div>

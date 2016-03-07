@@ -1,26 +1,103 @@
-Instagram Challenge
+Instagram Clone
 ===================
+[![Build Status](https://travis-ci.org/emmabeynon/instagram-challenge.svg?branch=master)](https://travis-ci.org/emmabeynon/instagram-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/emmabeynon/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/emmabeynon/instagram-challenge?branch=master)
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Author: Emma Beynon
 
-Task
------
+Github: https://github.com/emmabeynon
 
-Build Instagram: Simple huh!
+Email: emma.beynon@gmail.com
 
-Bonus if you can write your own set of sensible user stories!
+Overview
+---------
 
-As usual please start by
-
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+I have been tasked with building an Instagram clone using Ruby on Rails.  This is the brief:
+```
+Your challenge is to build Instagram using Rails.
+You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture.
+Style it like Instagram's website (or more awesome).
 
 Bonus if you can add filters!
+```
+
+I created the following user stories based on the brief:
+
+```
+As a user
+So that I can use Instagram
+I would like to post pictures on it
+
+As a user
+So that I can post pictures on Instagram
+I would like to create my own account
+
+As a user
+So that I can show that I posted a picture
+I would like my username to be displayed with a picture I posted
+
+As a user
+So that I can share my thoughts on a picture
+I would like to write a comment on a picture
+
+As a user
+So that I can show my appreciation for a picture
+I would like to 'like' a picture
+
+As a user
+So that I can remove one of my posted pictures
+I would like to delete a picture
+
+As a user
+So that I can change one of my posted pictures
+I would like to edit a picture
+
+As a user
+So that I can see pictures posted by other users
+I would like to see all users' pictures on the homepage
+
+As a user
+So that I can see one user's pictures
+I would like to view all of a user's pictures on one page
+```
+
+Instructions
+------------
+You can view this project at https://fierce-spire-98420.herokuapp.com/
+To create your own version:
+
+* Fork this repo and clone to your local machine.
+* Create the databases and migrate
+```
+$ bin/rake db:create
+$ bin/rake db:migrate
+```
+* Launch the rails server
+```
+$ bin/rails s
+```
+* Navigate to `http://localhost:3000` in your browser.
+
+Approach
+---------
+This project was test-driven using RSpec for the unit and controller tests, and RSpec/Capybara for the feature tests.  I made use of FactoryGirl to set up test objects for the tests, and Shoulda to provide appropriate matchers for the unit tests.  Additionally, I used DatabaseCleaner to empty the test database in between tests to ensure reliable results.  File attachment functionality was provided by Paperclip.  I also made use of Bootstrap for styling purposes.
+
+Screenshots
+------------
+Signed out
+![signed out](http://i.imgur.com/ulDBVSn.png)
+
+Signed in
+![signed in](http://i.imgur.com/cagVQPh.png)
+
+Posting a picture
+![Post picture](http://i.imgur.com/d1MPQ6f.png)
+
+Further Work
+-------------
+* Outstanding issue with likes not pluralising correctly unless you refresh the page
+* View all of a user's pictures on one page
+* Linked hashtags
+* Display when the picture was posted
+* Users can only like a picture once
+* Allow users to delete their comments
