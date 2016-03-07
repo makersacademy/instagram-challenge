@@ -265,6 +265,5 @@ Devise.setup do |config|
 
 config.omniauth :facebook, 
 Rails.application.secrets.instergraham_app_id, 
-Rails.application.secrets.instergraham_app_secret,
-callback_url: 'http://sleepy-river-30971.herokuapp.com/'
+Rails.application.secrets.instergraham_app_secret
 end
