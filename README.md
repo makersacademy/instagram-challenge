@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/tcpickard94/instagram-challenge.svg?branch=master)
+
 Instagram Challenge
 ===================
 
