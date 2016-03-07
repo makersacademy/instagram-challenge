@@ -1,28 +1,3 @@
--# .posts-wrapper.row
--#   .post
--#     .post-head
--#       .name
--#         = @post.user.email
--#     .image.center-block
--#       =image_tag @post.image.url(:medium)
--#     %p.caption
--#       = @post.caption
--#     .text-center.edit-links
--#       - if @post.owned_by?(current_user)
--#         = link_to "Cancel", posts_path
--#         |
--#         = link_to "Edit Post", edit_post_path(@post)
--#         |
--#         = link_to "Delete Post", post_path(@post), method: :delete, data: { confirm: "Are you sure you want to delete this post?" }
--#       - else
--#         = link_to "Cancel", posts_path
--#     -# .text-center
--#     -#   - if user_signed_in?
--#     -#     = form_for [@post, @post.comments.new] do |f|
--#     -#       .text-center
--#     -#       = f.text_field :content, placeholder: 'Leave your comment here'
--#     -#       .text-center
--#     -#       = f.button :submit, class: 'btn-success'
 = render 'post', post: @post
 - if @post.user_id == current_user.id
   .text-center.edit-links

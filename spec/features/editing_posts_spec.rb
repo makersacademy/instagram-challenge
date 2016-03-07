@@ -10,14 +10,12 @@ feature 'Editing posts' do
     click_button 'Create Post'
     visit '/'
     click_link 'This post will be edited'
-    # find(:xpath, "//a[contains(@href,'posts/1')]").click
   end
 
   scenario 'a user can edit a post' do
     click_link 'Edit Post'
     fill_in 'Caption', with: 'I am making an edit to this caption!'
     click_button 'Update Post'
-
     expect(page).to have_content 'Your post has been updated'
     expect(page).to have_content 'I am making an edit to this caption!'
   end

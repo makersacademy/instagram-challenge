@@ -23,7 +23,6 @@ feature 'Index displays a list of posts' do
   scenario 'the images in the index link to each individual show page' do
     visit '/'
     sign_up
-
     click_link 'New Post'
     attach_file('Image', 'spec/files/images/scenery.jpg')
     fill_in 'Caption', with: 'This is image number 1'
