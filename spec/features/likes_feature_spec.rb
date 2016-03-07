@@ -14,15 +14,6 @@ feature 'Likes' do
       click_link '♥'
       expect(page).to have_content '1 like'
     end
-
-    scenario 'displays correct count of likes', js: true do
-      click_link '♥'
-      click_button 'Sign out'
-      user = FactoryGirl.create(:user, :second)
-      sign_in(user.email, user.password)
-      click_link '♥'
-      expect(page).to have_content '2 likes'
-    end
   end
 
   context 'when not signed in' do
