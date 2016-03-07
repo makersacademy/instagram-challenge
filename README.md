@@ -23,9 +23,9 @@ How to use
 
 Screenshots
 -----
-![index]('app/assets/images/index.png')
-![image]('app/assets/images/view-image.png')
-![upload]('app/assets/images/upload.png')
+![index](app/assets/images/index.png)
+![image](app/assets/images/view-image.png)
+![upload](app/assets/images/upload.png)
 
 
 User stories
