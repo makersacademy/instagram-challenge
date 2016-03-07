@@ -9,7 +9,7 @@
 
 ###Description
 
-Online, account based platform for sharing, comming and liking photos. Users can sign-up to the site, either through facebook or through a log in form. They are automatically logged in and are able to upload to a general photo 'feed'. After uploding, the photo will show a descirption, when uploaded and will have the ability to be commented on. Only the user who uploads the photo is able to edit or delete that photo. Likewise, only the user who comments can edit or delete that comment. The photos are also able to be 'liked' through a like link.
+Online, account based platform for sharing, commenting on and liking photos. Users can sign-up to the site, either through facebook or through a log in form. They are automatically logged in and are able to upload a photo to a general photo 'feed'. After uploding, the photo will show a descirption, will have the ability to be commented on and liked. Only the user who uploads the photo is able to edit or delete that photo. Likewise, only the user who comments can edit or delete that comment. The photos are also able to be 'liked' through a 'like' link.
 
 ###Screenshots
 
