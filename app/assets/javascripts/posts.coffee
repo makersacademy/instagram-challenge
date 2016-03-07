@@ -7,7 +7,7 @@ $ ->
     likeCount = $(this).siblings '.likes_count'
     $.post this.href, (response) ->
       likeCount.text response.new_like_count
-    if $(this).text() is 'Like'
-      $(this).text('Unlike')
+    if $(this).text() is '♥'
+      $(this).text('♡')
     else
-      $(this).text('Like')
+      $(this).text('♥')

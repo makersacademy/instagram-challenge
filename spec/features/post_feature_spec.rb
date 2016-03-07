@@ -15,7 +15,7 @@ feature 'Uploading and Viewing posts' do
       make_a_post
       expect(current_path).to eq '/posts'
       within('.post') do
-        expect(page).to have_content 'test@email.com'
+        expect(page).to have_content 'testuser'
         expect(page).to have_selector("img[src*='testpattern.jpg']")
         expect(page).to have_content 'Test caption'
       end

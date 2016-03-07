@@ -1,4 +1,4 @@
-def sign_up(email = 'test@email.com')
+def sign_up(email = 'testuser@email.com')
   visit '/'
   click_link 'Sign up'
   fill_in 'Email', with: email

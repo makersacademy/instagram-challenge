@@ -13,7 +13,7 @@ feature 'Commenting on posts' do
     fill_in 'Comment', with: 'This is a comment'
     click_button 'Post'
     within('li.comments') do
-      expect(page).to have_content 'commenter@email.com'
+      expect(page).to have_content 'commenter'
       expect(page).to have_content 'This is a comment'
     end
   end

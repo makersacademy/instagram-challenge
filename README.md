@@ -1,5 +1,40 @@
 Instagram Challenge
 ===================
+author: Arnold Manzano (arnoldmanzano)
+
+This challenge project is an Instagram clone, created using **Rails** for Makers Academy weekend 7.
+
+Instructions
+```sh
+$ git clone <repo_link>
+$ cd instagram-challenge
+$ bundle
+$ rspec # to run tests
+$ rails server # open http://localhost:3000 in browser
+```
+
+Screenshot:
+![Imgur](http://i.imgur.com/dP4COdp.jpg?1)
+
+```
+User Stories
+
+As a photo enthusiast and social person
+So that I can share my passion for great pictures
+I would like to post my photos with a caption online
+
+As a photo enthusiast and social person
+So that I can interact with other like-minded people
+I would like to be able to post comments on photos posted
+
+As a photo enthusiast and social person
+So that I can appreciate photos I see
+I would like to be able to like a photo
+
+As a photo enthusiast and social person
+So that I can enjoy the online user experience
+I would like the service to look sleek and stylish
+```
 
 Instructions
 -------
