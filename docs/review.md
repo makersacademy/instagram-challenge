@@ -17,7 +17,7 @@ Please checkout your reviewee's code and run their tests. Read the code and try 
   * [ ] Styled awesomely
 
 * Bonus Features
-  * [ ] Filters
+  * [ ] Filters    
   * [ ] Deployed to Heroku
 
 

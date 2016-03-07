@@ -1,0 +1,35 @@
+<header class="center-block">
+  <h1>Welcome to Pictagram</h1>
+   <p> <%= link_to "#{current_user.name}", account_images_path, id: 'user_account' %> </p>
+</header>
+
+
+  
+ 
+  
+ <div class="container center-block">
+   <div class='row bg-primary'>
+     <div class'col-md-6'>
+  
+   <% @images.each do |image| %>
+     
+     <div class="cointainer center-block">
+      <%= User.find(image.user_id).name %></br>
+      <%= image_tag image.image(:large) %></br>
+      <%= image.comments.where(image_id: image.id).first.thoughts %>
+       </div></br>
+       <div
+         class="fb-like"
+         data-share="true"
+         data-width="450"
+         data-show-faces="true">
+       </div>
+     </div>
+     
+      <% end %>
+  
+   </div>
+ 
+  
+ </div>
+</div>
