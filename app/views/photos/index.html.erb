@@ -15,13 +15,13 @@
 
 						<%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
 						<span class ='likes_count'>  <%= photo.likes.count %> </span><%= ' like'.pluralize(photo.likes.count) %>
+						<%if current_user %> 
 						<p><%=link_to "Add a comment", new_photo_comment_path(photo) %> </p>
 						<% if photo.comments.any? %>
 						<p> Comments: </P>
 							<% photo.comments.each do |comment| %>
 							<li>
 								<p><%= comment.body %> from <%= comment.commenter %></p>
-								<%if current_user %> 
 								<% if comment.user_id == current_user.id %>
 								<p><%=link_to "Edit Comment", edit_comment_path(comment) %> 
 									<%=link_to "Delete Comment", comment_path(comment), method: :delete %> </p>
