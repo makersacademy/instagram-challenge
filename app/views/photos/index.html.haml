@@ -5,9 +5,11 @@
     %br
     = link_to "Delete photo", photo_path(photo), method: :delete
     = link_to "Comment", new_photo_comment_path(photo)
-    = link_to "Like", photo_likes_path(photo), class: 'likes-link'
-    %span.likes_count= photo.likes.count
-    = 'like'.pluralize photo.likes.count
+    %ul
+      %li
+        = link_to "Like", photo_likes_path(photo), class: 'likes-link'
+        %span.likes_count= photo.likes.count
+        = 'like'.pluralize photo.likes.count
     %br
     - if photo.comments.any?
       %ul
