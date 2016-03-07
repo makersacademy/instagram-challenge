@@ -1,0 +1,23 @@
+%meta(charset="UTF-8")
+- if @photos.any?
+  - @photos.each do | photo |
+    = image_tag photo.image.url(:medium)
+    %br
+    = link_to "Delete photo", photo_path(photo), method: :delete
+    = link_to "Comment", new_photo_comment_path(photo)
+    %ul
+      %li
+        = link_to "Like", photo_likes_path(photo), class: 'likes-link'
+        %span.likes_count= photo.likes.count
+        = 'like'.pluralize photo.likes.count
+    %br
+    - if photo.comments.any?
+      %ul
+        - photo.comments.each do |comment|
+          %li
+            = comment.comment
+- else
+  No photos yet!
+- 2.times do
+  %br
+%a(href='/photos/new') Add a photo
