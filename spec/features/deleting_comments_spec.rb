@@ -18,4 +18,15 @@ feature 'Deleting comments' do
     click_link 'Delete Comment'
     expect(page).not_to have_content 'That looks awesome!'
   end
+
+  scenario 'user cannot delete another users comments' do
+    sign_up(email: "bob@bob.com", password: "password", password_confirmation: "password")
+    click_link 'great view!'
+    fill_in 'Content', with: 'That looks awesome!'
+    click_button 'submit'
+    click_link 'Sign out'
+    sign_up(email: "rob@rob.com", password: "password", password_confirmation: "password")
+    click_link 'great view!'
+    expect(page).not_to have_content 'Delete Comment'
+  end
 end

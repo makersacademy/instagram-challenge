@@ -29,8 +29,7 @@ feature 'Index displays a list of posts' do
     fill_in 'Caption', with: 'This is image number 1'
     click_button 'Create Post'
     visit '/'
-    # find(:xpath, "//a[contains(@href,'posts/1')]").click
     click_link 'This is image number 1'
-    expect(page.current_path).to eq('/posts/8')
+    expect(page.current_path).to eq('/posts/1')
   end
 end
