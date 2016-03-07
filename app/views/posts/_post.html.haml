@@ -29,10 +29,10 @@
             - if comment.user == current_user
               = link_to "Delete Comment", post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" }
       .comment-form
-        - if user_signed_in?
-          = form_for [post, post.comments.new] do |f|
-            .text-center
-            = f.text_field :content, placeholder: 'Leave your comment here'
-            .text-center
-            = f.button :submit, class: 'btn-success'
-      
+      - if user_signed_in?
+        = form_for [post, post.comments.new] do |f|
+          .text-center
+          = f.label :content 
+          = f.text_field :content, placeholder: 'Leave your comment here'
+          .text-center
+          = f.button :submit, class: 'btn-success'

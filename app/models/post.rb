@@ -2,7 +2,8 @@ class Post < ActiveRecord::Base
   validates :user_id, presence: true
 
   belongs_to :user
-
+  has_many :comments, dependent: :destroy
+  
   has_attached_file :image, styles: { :medium => "640x" }
 
   validates :image, presence: true
@@ -12,5 +13,5 @@ class Post < ActiveRecord::Base
   def owned_by?(user)
     user == self.user
   end
-  
+
 end
