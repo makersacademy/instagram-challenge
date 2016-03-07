@@ -10,8 +10,8 @@ class PhotosController < ApplicationController
 	end
 
 	def create
-		@photo = current_user.photos.new(photo_params)
-		if @photo.save
+		photo = current_user.photos.new(photo_params)
+		if photo.save
 			flash[:success] = "the photo was added!"
 			redirect_to '/'
 		end	
@@ -36,8 +36,8 @@ class PhotosController < ApplicationController
 	end
 
 	def destroy
-		@photo = Photo.find(params[:id])
-		if @photo.destroy
+		photo = Photo.find(params[:id])
+		if photo.destroy
 			flash[:success] = "the photo was deleted!"
 			redirect_to '/'
 		end
