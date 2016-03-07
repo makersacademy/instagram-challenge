@@ -1,19 +1,20 @@
 
+<center><p><a href= 'photos/new'> Add a photo </a><p><center> <br>
+
 <% if @photo.any? %>
-	<center><p><a href= 'photos/new'> Add a photo </a><p><center> <br>
+	
 		
 		<% @photo.each do |photo| %>
-		<div class='posts-wrapper row'>
+		<center> 
+	<div class='posts-wrapper row'>
 		<center> <div class='image center-block'>
 		<div class='post'>
 			<p> <%= link_to (image_tag photo.image.url(:medium)), photo_path(photo) %><p> 
-			<div class='name'>
 				<p><%= photo.description %> <p>
 						<p><%= photo.created_at.strftime("Added on %m/%d/%Y")%> </p>
 
 						<%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
-						<span class ='likes_count'> <%= photo.likes.count %> </span> <%= 'like'.pluralize(photo.likes.count) %>
-						</div>
+						<span class ='likes_count'>  <%= photo.likes.count %> </span><%= ' like'.pluralize(photo.likes.count) %>
 						<p><%=link_to "Add a comment", new_photo_comment_path(photo) %> </p>
 						<% if photo.comments.any? %>
 						<p> Comments: </P>
@@ -22,24 +23,21 @@
 								<p><%= comment.body %> from <%= comment.commenter %></p>
 								<%if current_user %> 
 								<% if comment.user_id == current_user.id %>
-
 								<p><%=link_to "Edit Comment", edit_comment_path(comment) %> 
 									<%=link_to "Delete Comment", comment_path(comment), method: :delete %> </p>
-							</div>
-							</div>
-							</div>
-								<%end%>	
-								<%end%>	
 							</li>
-							<%end%>		
+					     	<%end%>	
+								<%end%>	
+ 							<%end%>	
 							<% else %>
-							<p>No comments</p>
+							<p>No comments</p> 
 							<% end %>
+							</div>
 							<% end %>
-
+							</div>
+							</div>
 							<% else %>
 						No photos added yet
-				
 						<% end %>
 
 
