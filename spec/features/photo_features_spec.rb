@@ -31,4 +31,15 @@ feature 'Photos' do
       expect(page).to have_content :thumb
     end
   end
+
+  context 'Viewing photos' do
+    let!(:test1) {Photo.create(file: 'test')}
+
+    scenario 'Lets a user view a photo' do
+      sign_up
+      click_link 'test'
+      expect(page).to have_content :medium
+      expect(current_path).to eq "/photos/#{test1.id}"
+    end
+  end
 end
