@@ -1,6 +1,7 @@
 Instagram Clone
 ===================
 [![Build Status](https://travis-ci.org/emmabeynon/instagram-challenge.svg?branch=master)](https://travis-ci.org/emmabeynon/instagram-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/emmabeynon/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/emmabeynon/instagram-challenge?branch=master)
 
 Author: Emma Beynon
 

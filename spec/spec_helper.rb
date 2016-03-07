@@ -91,6 +91,5 @@ RSpec.configure do |config|
 =end
 end
 
-# FactoryGirl::SyntaxRunner.class_eval do
-#   include ActionDispatch::TestProcess
-# end
+require 'coveralls'
+Coveralls.wear!
