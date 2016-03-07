@@ -77,7 +77,7 @@ I would like to be able to 'like' images.
 ```
 ```
 As a user,
-So I can have a smoother WWinstagram experience,
+So I can have a smoother Winstagram experience,
 I would like my comments and likes to be posted without a page refresh.
 ```
 ```
