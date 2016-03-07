@@ -237,7 +237,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :facebook, ENV['FB_API'], ENV['FB_SEC'], callback_url: 'http://picta-challenge.herokuapp.com/users/auth/facebook/callback', {:scope => 'PERMISSION_1, PERMISSION_2, PERMISSION_3...', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  config.omniauth :facebook, ENV['FB_API'], ENV['FB_SEC'], callback_url: 'http://picta-challenge.herokuapp.com/users/auth/facebook/callback'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
