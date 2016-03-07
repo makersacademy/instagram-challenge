@@ -1,11 +1,13 @@
-%ul
+.posts-wrapper.row
   - @posts.each do |post|
-    %li.posts
-      = image_tag post.user.fbimage
-      = post.user.email
-      = image_tag post.image.url(:medium)
-      = post.caption
-      = "posted #{time_ago_in_words(post.created_at)} ago"
+    .post
+      .post-head
+        .post-user
+          .avatar= image_tag post.user.fbimage
+          .name= post.user.email
+        .post-time= "posted #{time_ago_in_words(post.created_at)} ago"
+      .image.center.block= image_tag post.image.url(:medium)
+      %p.caption= post.caption
 
       = link_to 'Like', post_likes_path(post), class: 'like-link' if current_user && !current_user.liked?(post)
       = link_to 'Unlike', post_likes_path(post), class: 'like-link' if current_user && current_user.liked?(post)

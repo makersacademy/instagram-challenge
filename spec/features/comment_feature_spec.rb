@@ -10,7 +10,7 @@ feature 'Commenting on posts' do
 
   scenario 'users can make comments on posts' do
     click_link 'Comment'
-    fill_in 'Content', with: 'This is a comment'
+    fill_in 'Comment', with: 'This is a comment'
     click_button 'Post'
     within('li.comments') do
       expect(page).to have_content 'commenter@email.com'
