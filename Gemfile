@@ -1,5 +1,13 @@
 source 'https://rubygems.org'
 
+gem 'omniauth-facebook'
+
+gem 'aws-sdk'
+
+gem 'devise'
+
+gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -33,15 +41,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'omniauth-facebook'
 
-gem 'aws-sdk'
-
-gem 'devise'
-
-gem 'omniauth-facebook'
-
-gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
 
 
 group :test do
@@ -53,7 +53,7 @@ group :test do
   gem 'poltergeist'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
-  
+
 end
 
 
