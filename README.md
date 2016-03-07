@@ -10,16 +10,22 @@ Task
 Build an Instagram clone using Rails. The functionality should be based on **users** who can post **pictures**, write **comments** on pictures and **like** a picture.
 
 
-Approach
------
-
-Coming soon...
-
-
 How to use
 -----
 
-Coming soon...
+- clone this repo
+- ```bundle install``` dependencies
+- visit ```localhost:3000``` in your browser
+- maker a Winstagram account by clicking 'Sign up'
+- you can post pictures with descriptions by clicking 'Upload image'
+- you can view a larger version of existing images by clicking on its thumbnail on the index page. There you can post likes and comments on the picture.
+
+
+Screenshots
+-----
+![index]('app/assets/images/index.png')
+![image]('app/assets/images/view-image.png')
+![upload]('app/assets/images/upload.png')
 
 
 User stories
