@@ -14,6 +14,8 @@
           .user-name
             = post.user.email
           = link_to post.caption, post_path(post)
+
+          -# = pluralize post.likes.count, 'like'
         .comments
     .comment-like-form.row
       -# .like-button.col-sm-1
@@ -32,7 +34,7 @@
       - if user_signed_in?
         = form_for [post, post.comments.new] do |f|
           .text-center
-          = f.label :content 
+          = f.label :content
           = f.text_field :content, placeholder: 'Leave your comment here'
           .text-center
           = f.button :submit, class: 'btn-success'

@@ -5,10 +5,10 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      flash[:notice] = "You commented the hell out of that post!"
+      flash[:notice] = "Your comment has been saved!"
       redirect_to @post
     else
-        flash[:notice] = "Check the comment form, something went horribly wrong."
+        flash[:notice] = "You made an error with your comment, try again."
         render root_path
     end
   end
