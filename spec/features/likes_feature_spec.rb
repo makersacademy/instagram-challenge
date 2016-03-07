@@ -12,7 +12,7 @@ feature "adding likes" do
     click_link 'Like'
     expect(page).to have_content '1 like'
     click_link 'Sign out'
-    signup({email: 'other@test.com', handle: 'goodbyeworld'})
+    signup email: 'other@test.com', handle: 'goodbyeworld'
     find('.image-link').click
     click_link 'Like'
     expect(page).to have_content '2 likes'
