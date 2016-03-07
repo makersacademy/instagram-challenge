@@ -14,6 +14,7 @@ $ click on Log In with facebook if you have an account already or
 
 ```
 
+
 Documents
 ---------
 
@@ -28,6 +29,7 @@ Features
 - User can post pictures 
 - User can add a comment when posting a picture 
 - User can delete a picture
+
 
  
 Author
