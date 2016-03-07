@@ -101,4 +101,3 @@ Further Work
 * Display when the picture was posted
 * Users can only like a picture once
 * Allow users to delete their comments
-* Host images on S3
