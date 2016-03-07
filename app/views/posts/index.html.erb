@@ -1,7 +1,9 @@
 <a href="posts/new">Add a post</a>
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-    <h2><%= link_to post.message, post_path(post) %></h2>
+    <p><%= image_tag post.image.url(:medium) %></p>
+        <h2><%= link_to post.message, post_path(post) %></h2>
+      <p><%= post.created_at.strftime('%I:%M%p, %m/%d/%Y') %></p>
     <p><%= pluralize post.likes.count, 'like' %></p>
     <% if post.comments.any? %>
       <ul>
@@ -15,7 +17,7 @@
     <%= link_to "Add comment", new_post_comment_path(post) %>
     <%= link_to "Edit post", edit_post_path(post) %>
     <%= link_to "Delete post", post_path(post), method: :delete %>
-    <%= post.created_at.strftime('%I:%M%p, %m/%d/%Y') %>
+
 <% end %>
 <% else %>
   <h1>No posts yet</h1>
