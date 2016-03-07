@@ -33,7 +33,6 @@ scenario 'delete a comment' do
   sign_up_and_in("Russell", "Vaughan", "russellvaughan", "russell@example.com")
   create_photo
  	add_comment
-  expect(page).to have_content('whats here?')
  	click_link("Delete Comment")
  	expect(page).not_to have_content("you have a cute cat")
 end

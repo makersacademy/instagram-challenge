@@ -52,6 +52,8 @@ group :test do
   gem 'rspec-collection_matchers'
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
+  
 end
 
 
