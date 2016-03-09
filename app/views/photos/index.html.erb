@@ -5,8 +5,8 @@
   <% @photos.each do |photo| %>
     <h2><%= photo.description %></h2>
     <%= image_tag photo.image.url(:thumb) %>
-    <p><%= pluralize photo.likes.count, 'Like' %></p>
-    <%= link_to "Like", photo_likes_path(photo), method: :post %>
+     <span class="likes_count"> <%= photo.likes.count %> </span> <%= 'like'.pluralize(photo.likes.count) %>
+    <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
     <%= link_to "Delete", photo_path(photo), method: :delete %>
     <%= link_to "Comment", new_photo_comment_path(photo) %>
 
