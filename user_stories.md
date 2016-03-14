@@ -1,6 +1,6 @@
-######### USER STORIES ###########
+# USER STORIES
 
-
+```
 As a hipster,
 So that I can be lazy,
 I want to be able to login in using Facebook.
@@ -29,7 +29,7 @@ As a photocopier,
 So that I can be individual,
 I would like to be able to apply generic filters to my hipstergrams. 
 
-### EXTRAS ###
+### EXTRAS
 
 As a hipster,
 So that I can see other hipstergrams,
@@ -38,3 +38,4 @@ I want to be able to follow other hipsters.
 As a hipster,
 So that others can see my hipstergrams, 
 I want other users to be able to follow me.
+```
