@@ -1,0 +1,20 @@
+
+<% if @hipstergrams.any? %>
+  <% @hipstergrams.each do |hipstergram| %>
+    
+    <%= image_tag hipstergram.image.url(:large)%>
+    <p> <%= hipstergram.description %> </p>
+    <p><%= link_to "Like before it is cool", "/hipstergrams/#{hipstergram.id}/likes_before_cool", method: :post, class: 'likes-link' %>
+  <span class="likes_before_cool_count"> <%= hipstergram.like_before_cools.count %> </span> <%= 'Like'.pluralize(hipstergram.like_before_cools.count) %><p>before they were cool</p>
+    <p><%= link_to "Disintegrate Photogram", "/hipstergrams/#{hipstergram.id}", method: :delete %></p> 
+  <% end %>
+<% else %>
+  <h1>You got here before it was cool; no hipstergrams have been added yet</h1>
+<% end %>
+
+<% if hipster_signed_in? %>
+  <%= link_to "Upload new hipstergram", new_hipstergram_path %>
+<% else %>
+  <p> You must be signed in to add a restaurant!</p>
+<%end%>
+
