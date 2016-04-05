@@ -1,6 +1,15 @@
 Instagram Challenge
 ===================
 
+## Installation Instructions 
+
+- Clone this repo down to your local machine
+- Change directory into this repo
+- Run `rake db:create`
+- Run `bundle`
+- Tests are ran using `rspec`
+- Run `bin/rails s` to start the server on localhost
+
 User Stories
 -------------
 :white_check_mark:
