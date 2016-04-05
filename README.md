@@ -25,7 +25,7 @@ $ bundle # Installs all dependencies
 $ rails server # Runs the application locally
 ```
 
-To access live site: http://sleepy-river-30971.herokuapp.com/
+To access live site: https://thawing-citadel-66605.herokuapp.com/
 
 ###Technologies
 - Ruby on Rails
