@@ -1,0 +1,23 @@
+<main class="post-container">
+
+    <section class="posts">
+        <ul>
+            <% @posts.each do |post| %>
+                <li class="main-li">
+                    <p class='owner'><%= find_username_by_id(post.user_id)%> - <%= post.title %></p>
+                    <%= link_to post_path(post), class: "show-link" do %>
+                        <div class="image-box">
+                            <%= image_tag post.image.url(:medium) %>
+                        </div>
+                    <% end %>
+                    <ul class="post-nav">
+                        <li>
+                                <%= link_to "Like", post_likes_path(post), class: 'likes-link' %>
+                                <span class="likes_count"><%= post.likes.count %></span> <%= 'like'.pluralize(post.likes.count) %></li>
+                        <li><%= link_to "Comment", post_path(post), class: "comment" %></li>
+                    </ul>
+                </li>
+            <% end %>
+        </ul>
+    </section>
+</main>

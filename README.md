@@ -1,26 +1,91 @@
+![Build Status](https://travis-ci.org/tcpickard94/instagram-challenge.svg?branch=master)
+![Coverage](https://coveralls.io/repos/github/tcpickard94/instagram-challenge/badge.svg?branch=master)
+
 Instagram Challenge
 ===================
 
+Project Overview
+----------------
+The challenge was to build a web-based version of instagram. The project includes functionality for sign-up, sign-in and sign-out as well as handling sign-in via facebook. Once logged in users are able to create a post which consists of a simple title and an image to upload. Posts are displayed on the home page for logged in users. Users can like other posts as well as comment on them. Posts can be deleted and edited by the owner of the post. Comments can be deleted by the comment owner.  
+
 Instructions
 -------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+To install and run locally: 
+```
+$ git clone https://github.com/tcpickard94/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle
+$ rails s
+```
+Screenshots
+-----------
+Sign in Page:
+![login form](https://www.dropbox.com/s/bwo5oc51420zqg5/Screenshot%202016-03-06%2020.05.18.png?raw=1)
 
-Task
------
+Sign up Page:
+![sign-up form](https://www.dropbox.com/s/jfj88opcnf4xp4c/Screenshot%202016-03-06%2020.05.36.png?raw=1)
 
-Build Instagram: Simple huh!
+New post page:
+![new post](https://www.dropbox.com/s/5pkkbq2bby4k2fj/Screenshot%202016-03-06%2020.07.15.png?raw=1)
 
-Bonus if you can write your own set of sensible user stories!
+Posts page:
+![posts page](https://www.dropbox.com/s/ygg4i94lpkpvth9/Screenshot%202016-03-06%2020.11.45.png?raw=1)
 
-As usual please start by
+Single Post Page:
+![individual post page](https://www.dropbox.com/s/b5ccocgi4luprd6/Screenshot%202016-03-06%2020.16.32.png?raw=1)
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+Technologies Used
+-----------------
+- Ruby on Rails
+- Devise
+- Omniauth
+- Rspec
+- Capybara
+- jQuery 
+- Paperclip
+- AWS - S3
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Known Issues
+------------
+- Users can like as many times as they want
+- Likes cannot be undone
+- Users who log in with facebook do not have a username  
+- Style issue
 
-Bonus if you can add filters!
+User Stories
+------------
+```
+As a user,
+So that I can show off my photos
+I want to be able to upload them to the site
+```
+
+```
+As a user,
+So that I can post pictures as me
+I want to be able to sign-up
+```
+
+```
+As a user,
+So that I can prevent access to my account
+I want to be able to sign-out
+```
+
+```
+As a user,
+So that I can continue to post pictures as me
+I want to be able to sign-in
+```
+
+```
+As a user,
+So that I can show appreciation
+I want to be able to like photos
+``` 
+
+```
+As a user,
+So that I can add notes
+I want to be able to leave a comment on photos
+```

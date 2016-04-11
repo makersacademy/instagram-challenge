@@ -1,0 +1,32 @@
+<div class="background">
+    <main class="auth-form">
+        <section>
+            <h2>Log in</h2>
+
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="field">
+                    <%= f.email_field :email, autofocus: true, class: "text-input", placeholder: "Email" %>
+                </div>
+
+                <div class="field">
+                    <%= f.password_field :password, autocomplete: "off", class: "text-input", placeholder: "Password" %>
+                </div>
+
+                <% if devise_mapping.rememberable? -%>
+                    <div class="field fl">
+                        <%= f.check_box :remember_me %>
+                        <%= f.label :remember_me %>
+                    </div>
+                <% end -%>
+
+                <div class="actions">
+                    <%= f.submit "Log in", class: "btn fr" %>
+                </div>
+            <% end %>
+            <div class="facebook">
+                <h3>Or</h3>
+                <%= button_to "Log in With Facebook", user_omniauth_authorize_path(:facebook), class: "btn" %>
+            </div>
+        </section>
+    </main>
+</div>
