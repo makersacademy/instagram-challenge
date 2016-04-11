@@ -1,4 +1,5 @@
 ![Build Status](https://travis-ci.org/tcpickard94/instagram-challenge.svg?branch=master)
+![Coverage](https://coveralls.io/repos/github/tcpickard94/instagram-challenge/badge.svg?branch=master)
 
 Instagram Challenge
 ===================
