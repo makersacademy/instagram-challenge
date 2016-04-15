@@ -4,7 +4,7 @@
 * BONUS --> avatar
 
 
-### PICTURES
+### PHOTOS
 * caption: string
 * can only delete/edit own pic
 * time posted
