@@ -28,4 +28,6 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'rspec-collection_matchers'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
 end
