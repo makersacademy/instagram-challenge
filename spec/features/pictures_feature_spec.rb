@@ -8,4 +8,12 @@ feature 'Picture:' do
       expect(page).to have_link 'Post a picture'
     end
   end
+
+  # context 'A picture has been added' do
+  #   let(:picture) { Picture.create
+  #
+  #   scenario 'displays a posted picture' do
+  #     visit pictures_path
+  #   end
+  # end
 end
