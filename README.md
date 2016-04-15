@@ -1,26 +1,26 @@
-Instagram Challenge
+J-Instagram
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Introduction :camera:
+------------------
 
-Task
------
+Features :star2:
+--------------
 
-Build Instagram: Simple huh!
+How to use J-Instagram :page_with_curl:
+-------------------------------------
 
-Bonus if you can write your own set of sensible user stories!
+Testing :white_check_mark:
+---------
 
-As usual please start by
+Tools used :wrench:
+-----------
+* Ruby on Rails
+* RSpec
+* AWS S3
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+Author :cat:
+----------------------
+Junyuan Xue
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+[github](https://github.com/junyuanxue)  [blog](https://spinningcodes.wordpress.com/)
