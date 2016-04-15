@@ -1,5 +1,4 @@
 ## Kaleidoboard
-Life 
 
 #### Makers Academy W7 Weekend challenge
 
