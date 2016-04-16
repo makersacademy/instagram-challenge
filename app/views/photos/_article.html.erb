@@ -3,10 +3,12 @@
 </a>
 <p><%= photo.status %></p>
 
-<div class="edit-status">
-  <%= link_to "Edit", edit_photo_path(photo) %>
-</div>
-<%= link_to "Delete", photo_path(photo), method: :delete %>
+<% if user_signed_in? && photo.belong_to?(current_user) %>
+  <div class="edit-status">
+    <%= link_to "Edit", edit_photo_path(photo) %>
+  </div>
+  <%= link_to "Delete", photo_path(photo), method: :delete %>
+<% end %>
 
 <% if photo.comments.any? %>
   <% photo.comments.each do |comment| %>

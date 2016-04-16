@@ -15,14 +15,14 @@ feature "User can sign in and out" do
   end
 
   context "user signed in on the homepage" do
+    let!(:user) { FactoryGirl.create(:user) }
+
     before do
-      visit "/"
-      click_link "Sign up"
-      fill_in :user_username, with: "skywalker"
-      fill_in :user_email, with: "luke@starwars.com"
-      fill_in :user_password, with: "j3di_temple"
-      fill_in :user_password_confirmation, with: "j3di_temple"
-      click_button "Sign up"
+      sign_in_as(user)
+    end
+
+    it "should display a welcome message" do
+      expect(page).to have_content "Welcome #{user.username}"
     end
 
     it "should see sign out link" do
