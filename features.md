@@ -5,7 +5,7 @@
 
 
 ### PHOTOS
-* caption: string
+<!-- * caption: string -->
 * can only delete/edit own pic
 * time posted
 
