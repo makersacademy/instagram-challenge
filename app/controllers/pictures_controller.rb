@@ -14,7 +14,16 @@ class PicturesController < ApplicationController
   end
 
   def show
-    @picture = Picture.find(params[:id])
+    current_picture
+  end
+
+  def edit
+    current_picture
+  end
+
+  def update
+    update_current_picture
+    redirect_to picture_path
   end
 
   private
@@ -34,5 +43,13 @@ class PicturesController < ApplicationController
   def create_picture
     @picture = Picture.new(picture_params)
     @picture.save
+  end
+
+  def current_picture
+    @picture = Picture.find(params[:id])
+  end
+
+  def update_current_picture
+    @picture = current_picture.update(picture_params)
   end
 end
