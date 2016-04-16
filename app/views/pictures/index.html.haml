@@ -1,7 +1,8 @@
 - if @pictures.any?
-  - @pictures.each do |picture|
-    = link_to "#{picture.title}", picture_path(picture)
-    = image_tag picture.image.url(:thumb)
+  - @pictures.each do |pic|
+    .picture{id: "#{pic.id}"}
+      = link_to picture_path(pic), text: pic.title do
+        = image_tag pic.image.url(:thumb)
 - else
   No picture has been added
 
