@@ -24,6 +24,12 @@ feature "photos" do
       expect(page).to have_css "img[src*=kitten]"
       expect(page).to have_content "Fluffy kitten"
     end
+
+    scenario "guest has to sign in before adding a photo" do
+      visit photos_path
+      click_link "New Photo"
+      expect(current_path).to eq new_user_session_path
+    end
   end
 
   context "viewing photos" do

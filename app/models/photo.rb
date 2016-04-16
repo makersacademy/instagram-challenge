@@ -8,7 +8,7 @@ class Photo < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   belongs_to :user
 
-  def belong_to?(user)
-    user_id == user.id
+  def created_by?(user)
+    self.user == user
   end
 end

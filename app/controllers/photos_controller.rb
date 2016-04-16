@@ -24,17 +24,18 @@ class PhotosController < ApplicationController
 
   def update
     photo = Photo.find(params[:id])
-    photo.update(photo_params) if photo.belong_to?(current_user)
+    photo.update(photo_params) if photo.created_by?(current_user)
     redirect_to photos_path
   end
 
   def destroy
     photo = Photo.find(params[:id])
-    photo.destroy if photo.belong_to?(current_user)
+    photo.destroy if photo.created_by?(current_user)
     redirect_to photos_path
   end
 
   def photo_params
-    params.require(:photo).permit(:image, :status)
+    form_params = params.require(:photo).permit(:image, :status).merge(user: current_user)
+
   end
 end
