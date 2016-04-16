@@ -18,6 +18,15 @@ feature 'sharing moments' do
       visit '/moments'
       expect(page).to have_content('something profound')
     end
+  end
 
+  context 'adding moments' do
+    scenario 'users can add a moment' do
+      visit '/moments'
+      click_link 'Share a moment'
+      fill_in 'Description', with: 'Something profound'
+      click_button 'Share'
+      expect(page).to have_content('Something profound')
+    end
   end
 end
