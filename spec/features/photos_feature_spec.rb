@@ -37,7 +37,7 @@ feature "photos" do
     scenario "allows user to edit a photo's status" do
       photo = FactoryGirl.create(:photo)
       visit photos_path
-      click_link "Edit"
+      find(".edit-status").click_link "Edit"
       fill_in "Status", with: "Fluffy kitten"
       click_button "Save"
       expect(page).to have_content "Fluffy kitten"

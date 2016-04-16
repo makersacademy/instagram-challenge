@@ -8,11 +8,14 @@
 <!-- * caption: string -->
 * can only delete/edit own pic
 * time posted
+* posted by
 
 
 ### COMMENTS
-* can only delete/edit own pic
+* can only delete own comment
 * time posted
+* posted by
+* edit comment
 
 
 ### LIKES

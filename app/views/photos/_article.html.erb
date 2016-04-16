@@ -3,13 +3,18 @@
 </a>
 <p><%= photo.status %></p>
 
-<%= link_to "Edit", edit_photo_path(photo) %>
+<div class="edit-status">
+  <%= link_to "Edit", edit_photo_path(photo) %>
+</div>
 <%= link_to "Delete", photo_path(photo), method: :delete %>
 
 <% if photo.comments.any? %>
   <% photo.comments.each do |comment| %>
     <ul>
       <%= comment.content %>
+      <div class="delete-comment">
+        <%= link_to "Delete", comment_path(comment), method: :delete %>
+      </div>
     </ul>
   <% end %>
 <% end %>
