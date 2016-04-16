@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
+gem 'paperclip'
 
 group :development, :test do
     gem 'byebug'
@@ -23,4 +24,8 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'shoulda'
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
 end
