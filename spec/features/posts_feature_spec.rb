@@ -11,7 +11,7 @@ feature 'posts' do
 
   context 'post in DB' do
 
-    let(:post1) { create(:post) }
+    let!(:post1) { create(:post) }
     let(:post2) { build(:post) }
 
     scenario 'display restaurants' do
