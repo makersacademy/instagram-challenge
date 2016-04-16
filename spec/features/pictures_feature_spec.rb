@@ -27,9 +27,11 @@ feature 'pictures' do
       attach_file 'picture[image]', 'app/assets/images/DOGE.jpeg'
       fill_in 'Description', with: 'much doge'
       click_button 'Add'
-      find(:xpath, "//a[contains(@href,'pictures/1')]").click
-      expect(page).to have_content 'KFC'
-      expect(current_path).to eq "/restaurants/#{kfc.id}"
+      picture = Picture.first
+      click_link 'image_tag'
+      find(:xpath, "//a[contains(@href,'pictures/')]").click
+      expect(page).to have_content 'much doge'
+      expect(current_path).to eq "/pictures/#{picture.id}"
     end
   end
 end
