@@ -44,4 +44,16 @@ feature "photos" do
       expect(current_path).to eq photos_path
     end
   end
+
+  context "deleting photos" do
+    scenario "allows user to delete a photo" do
+      photo = FactoryGirl.create(:photo)
+      visit photos_path
+      click_link "Delete"
+      expect(page).not_to have_css "img[src*=kitten]"
+      expect(page).not_to have_content photo.status
+      expect(page).to have_content "Photo deleted!"
+      expect(current_path).to eq photos_path
+    end
+  end
 end
