@@ -10,7 +10,9 @@ class ImagesController < ApplicationController
   end
 
   def create
-    Image.create(restaurant_params)
+    image = Image.new(restaurant_params)
+    image.user_id = current_user.id
+    image.save
     redirect_to ('/images')
   end
 

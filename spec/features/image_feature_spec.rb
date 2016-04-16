@@ -7,7 +7,9 @@ feature 'Image' do
       expect(page).to have_content('No images added yet')
       expect(page).to have_link('Upload new image')
     end
-  
+  end
+
+  context 'user is logged in on website' do
     scenario 'user can add a image' do
       visit '/images'
       signup_user1
@@ -18,6 +20,7 @@ feature 'Image' do
       click_button('Upload image')
       expect(current_path).to eq('/images')
       expect(page).not_to have_content 'No images added yet'
+      expect(page).to have_content("Test_user")
       expect(page).to have_xpath("//img[contains(@src, 'test_image.jpg')]")
     end
   end
