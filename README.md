@@ -15,7 +15,7 @@ I would like to visit Shnapshots without having to log in
 ```
 As a User
 So that I can post pictures to Shnapshots
-I would like to upload pictures from my photo libraries
+I would like to upload pictures 
 ```
 ```
 As a User
