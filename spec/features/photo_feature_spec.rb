@@ -24,7 +24,7 @@ feature 'photos' do
       visit '/photos'
       click_link 'Add a photo'
       fill_in 'photo[caption]', with: 'caption2'
-      click_link 'Upload'
+      click_button 'Create Photo'
       expect(page).to have_content('caption2') 
     end
   end

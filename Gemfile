@@ -30,6 +30,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'unicorn'
 gem 'haml'
 gem 'paperclip'
+gem 'aws-sdk', '<2.0'
+
+gem 'dotenv-rails', :groups => [:development, :test]
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
