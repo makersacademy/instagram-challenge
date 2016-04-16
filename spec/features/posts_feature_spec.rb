@@ -19,9 +19,7 @@ feature 'posts' do
       expect(page).to have_content post1.caption
       # expect(page).to have_xpath("//img[contains(@src,'photo.jpg')]")
     end
-  # end
 
-  # context 'posting images' do
     scenario 'prompts user to fill out a form, then displays post' do
       visit '/posts'
       click_link 'Post an image'
