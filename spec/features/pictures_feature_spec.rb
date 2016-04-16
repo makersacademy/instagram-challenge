@@ -16,22 +16,25 @@ feature 'Picture:' do
       visit pictures_path
       expect(page).to have_link 'My Picture'
     end
+
+    scenario 'title with a links takes a user to the picture page' do
+      visit pictures_path
+      click_link 'My Picture'
+      expect(current_path).to eq picture_path(picture)
+    end
   end
 
-  context "When a user visits a pictures page" do
-    scenario 'user can post a picture with title' do
-      post_picture
-      expect(current_path).to eq pictures_path
+  context "When a user visits the pictures page" do
+    scenario 'user can post a picture with title and image' do
+      post_picture_with_image
       expect(page).to have_link 'My Picture'
+      expect(page).to have_xpath("//img[contains(@src, 'bird.png')]")
     end
 
-    scenario 'user can post a picture with title and image' do
-      visit pictures_path
-      click_link 'Post a picture'
-      fill_in 'Title', with: 'My Picture'
-      attach_file 'picture[image]', 'spec/assets/images/bird.png'
-      click_button 'Post'
-      expect(page).to have_link 'My Picture'
+    scenario 'user can view a picture by clicking the title link' do
+      post_picture_with_image
+      click_link 'My Picture'
+      expect(page).to have_content 'My Picture'
       expect(page).to have_xpath("//img[contains(@src, 'bird.png')]")
     end
   end

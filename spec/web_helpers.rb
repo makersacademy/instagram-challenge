@@ -9,5 +9,6 @@ def post_picture_with_image
   visit pictures_path
   click_link 'Post a picture'
   fill_in 'Title', with: 'My Picture'
+  attach_file 'picture[image]', 'spec/assets/images/bird.png'
   click_button 'Post'
 end
