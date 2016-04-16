@@ -39,4 +39,16 @@ feature 'Picture:' do
       expect(page).to have_xpath("//a[contains(@text, 'Better title')]")
     end
   end
+
+  context 'Deleting a picture' do
+    let!(:pic){ Picture.create(title: 'To be deleted')}
+
+    scenario 'user can delete picture from picture page' do
+      visit picture_path(pic)
+      click_link 'Delete'
+      expect(current_path).to eq pictures_path
+      expect(page).to have_content 'Picture has been deleted'
+      expect(page).not_to have_xpath("//a[contains(@text, 'To be deleted')]")
+    end
+  end
 end

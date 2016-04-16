@@ -26,6 +26,11 @@ class PicturesController < ApplicationController
     redirect_to picture_path
   end
 
+  def destroy
+    destroy_current_picture
+    redirect_to pictures_path
+  end
+
   private
 
   def picture_params
@@ -51,5 +56,10 @@ class PicturesController < ApplicationController
 
   def update_current_picture
     @picture = current_picture.update(picture_params)
+  end
+
+  def destroy_current_picture
+    current_picture.destroy
+    flash[:notice] = 'Picture has been deleted'
   end
 end
