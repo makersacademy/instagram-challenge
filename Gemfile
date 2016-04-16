@@ -32,6 +32,9 @@ gem 'haml'
 gem 'paperclip'
 gem 'aws-sdk', '<2.0'
 
+gem 'devise'
+gem 'pry-nav'
+
 gem 'dotenv-rails', :groups => [:development, :test]
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
