@@ -1,5 +1,10 @@
-
+ENV['RAILS_ENV'] = 'test'
 RSpec.configure do |config|
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+  
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -22,6 +27,8 @@ RSpec.configure do |config|
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
   end
+
+
 
       config.backtrace_exclusion_patterns = [
     /\/lib\d*\/ruby\//,

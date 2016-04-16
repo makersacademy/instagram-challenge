@@ -31,6 +31,7 @@ group :development, :test do
   gem 'pry'
   gem 'shoulda'
   gem 'rspec-collection_matchers'
+  gem 'database_cleaner'
 end
 
 group :development do
