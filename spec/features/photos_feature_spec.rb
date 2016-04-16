@@ -23,6 +23,9 @@ feature "photos" do
       expect(current_path).to eq photos_path
       expect(page).to have_css "img[src*=kitten]"
       expect(page).to have_content "Fluffy kitten"
+      within ".creator" do
+        expect(page).to have_content user.username
+      end
     end
 
     scenario "guest has to sign in before adding a photo" do

@@ -6,17 +6,14 @@
 
 ### PHOTOS
 <!-- * caption: string -->
-* can only delete/edit own pic
+<!-- * can only delete/edit own pic -->
 * time posted
-* posted by
+<!-- * posted by -->
 
 
 ### COMMENTS
-* can only delete own comment
-* time posted
-* posted by
-* edit comment
-
+* can only edit/delete own comment
+<!-- * posted by -->
 
 ### LIKES
 * can only like once

@@ -1,3 +1,7 @@
+<p class="creator">
+  <%= photo.user.username %>
+<p>
+
 <a href="<%= photo_path(photo) %>" class="image">
   <%= image_tag photo.image.url(:large) %>
 </a>
@@ -13,7 +17,7 @@
 <% if photo.comments.any? %>
   <% photo.comments.each do |comment| %>
     <ul>
-      <%= comment.content %>
+      <%= comment.user.username %> <%= comment.content %>
       <div class="delete-comment">
         <%= link_to "Delete", comment_path(comment), method: :delete %>
       </div>

@@ -12,7 +12,7 @@ feature "adding comments" do
       visit photos_path
       fill_in :comment_content, with: comment.content
       click_button "Send"
-      expect(page).to have_content comment.content
+      expect(page).to have_content "#{comment.user.username} #{comment.content}"
     end
 
     scenario "a guest cannot leave a comment" do
