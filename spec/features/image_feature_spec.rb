@@ -10,6 +10,7 @@ feature 'Image' do
   
     scenario 'user can add a image' do
       visit '/images'
+      signup_user1
       click_link('Upload new image')
       fill_in ('Name'), with: 'Test image'
       fill_in ('Description'), with: 'Test description'

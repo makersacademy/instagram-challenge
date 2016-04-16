@@ -36,5 +36,15 @@ feature 'User' do
       expect(current_path).to eq('/')
       expect(page).not_to have_link('Sign in')
     end
+
+    scenario 'cannot upload an image' do
+      visit('/')
+      click_link('Upload new image')
+      expect(current_path).to eq('/users/sign_in')
+    end
+  end
+
+  context 'User is signed in' do
+    
   end
 end
