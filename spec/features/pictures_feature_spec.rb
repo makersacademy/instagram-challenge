@@ -29,10 +29,10 @@ feature 'Picture:' do
       visit pictures_path
       click_link 'Post a picture'
       fill_in 'Title', with: 'My Picture'
-      attach_file 'picture[image]', Rails.root + 'spec/assets/images/bird.png'
+      attach_file 'picture[image]', 'spec/assets/images/bird.png'
       click_button 'Post'
       expect(page).to have_link 'My Picture'
-      expect(page).to have_css("img[src*='bird']")
+      expect(page).to have_xpath("//img[contains(@src, 'bird.png')]")
     end
   end
 end
