@@ -11,22 +11,38 @@ feature 'sharing moments' do
 
   context 'a moment has been shared' do
     before do
-      Moment.create(description: 'something profound')
+      share_a_moment
     end
 
     scenario 'displays all the moments' do
-      visit '/moments'
-      expect(page).to have_content('something profound')
-    end
-  end
-
-  context 'adding moments' do
-    scenario 'users can add a moment' do
-      visit '/moments'
-      click_link 'Share a moment'
-      fill_in 'Description', with: 'Something profound'
-      click_button 'Share'
       expect(page).to have_content('Something profound')
     end
   end
+
+  context 'adding an image' do
+    scenario 'users can add a moment with an image' do
+      share_a_moment
+      expect(page).to have_content('Something profound')
+      expect(page).to have_css("img[src*='Scissors_icon']")
+    end
+  end
+
+  context 'deleting moments' do
+    before do
+      share_a_moment
+    end
+
+    scenario 'users can delete moments' do
+      click_link 'Delete'
+      expect(page).to have_content('Moment deleted')
+      expect(page).not_to have_content('Something profound')
+      expect(page).not_to have_css("img[src*='Scissors_icon']")
+    end
+  end
+
+
+
+
+
+
 end
