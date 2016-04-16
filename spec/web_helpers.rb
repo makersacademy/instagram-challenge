@@ -6,6 +6,11 @@ def post_picture_with_image
   click_button 'Post'
 end
 
+def visit_picture
+  image_with_link = find(:xpath, "//a[contains(@text, 'Bird')]")
+  image_with_link.click
+end
+
 def edit_title
   visit picture_path(pic)
   click_link 'Edit'

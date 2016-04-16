@@ -1,5 +1,13 @@
 %p
-  = @picture.title
+  %h3= @picture.title
+%p
   = link_to 'Edit', edit_picture_path
   = link_to 'Delete', picture_path, method: :delete
-= image_tag @picture.image.url(:medium)
+%p= image_tag @picture.image.url(:medium)
+= link_to 'Comment', new_picture_comment_path(@picture)
+
+%ul
+  - if @picture.comments.any?
+    - @picture.comments.each do |comment|
+      %li
+        %h4= comment.thoughts
