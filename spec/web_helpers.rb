@@ -9,3 +9,11 @@ def signup_user1
   click_button('Sign up')
 end
 
+
+def upload_image1
+  click_link('Upload new image')
+  fill_in ('Name'), with: 'Test image'
+  fill_in ('Description'), with: 'Test description'
+  attach_file 'image[image]', Rails.root + 'spec/support/uploads/test_image.jpg'
+  click_button('Upload image')
+end

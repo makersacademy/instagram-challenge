@@ -14,14 +14,28 @@ feature 'Image' do
       visit '/images'
       signup_user1
       click_link('Upload new image')
-      fill_in ('Name'), with: 'Test image'
+      fill_in ('Name'), with: 'Testimage'
       fill_in ('Description'), with: 'Test description'
       attach_file 'image[image]', Rails.root + 'spec/support/uploads/test_image.jpg'
       click_button('Upload image')
+      
       expect(current_path).to eq('/images')
       expect(page).not_to have_content 'No images added yet'
       expect(page).to have_content("Test_user")
       expect(page).to have_xpath("//img[contains(@src, 'test_image.jpg')]")
+    end
+  end
+
+  context 'user can navigate to username homepage' do
+
+    before do
+      signup_user1  
+    end
+
+    scenario 'link beneath each picture to username' do
+      upload_image1
+      click_link('Test_user')
+      expect(page).to have_content("Test_user")
     end
   end
 end
