@@ -25,11 +25,23 @@ feature "photos" do
   context "viewing photos" do
     scenario "allows user to view a photo" do
       photo = FactoryGirl.create(:photo)
-      visit "/photos"
+      visit photos_path
       find(".image").click
       expect(current_path).to eq photo_path(photo)
       expect(page).to have_css "img[src*=kitten]"
       expect(page).to have_content photo.status
+    end
+  end
+
+  context "editing photo status" do
+    scenario "allows user to edit a photo's status" do
+      photo = FactoryGirl.create(:photo)
+      visit photos_path
+      click_link "Edit"
+      fill_in "Status", with: "Fluffy kitten"
+      click_button "Save"
+      expect(page).to have_content "Fluffy kitten"
+      expect(current_path).to eq photos_path
     end
   end
 end
