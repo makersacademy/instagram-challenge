@@ -1,2 +1,10 @@
-No photos yet!
+<% if @photos.all.any? %>
+  <% @photos.all.each do |photo| %>
+    <%= image_tag photo.image.url(:original) %>
+    <p><%= photo.status %></p>
+  <% end %>
+<% else %>
+  <h1>No photos yet!</h1>
+<% end %>
+
 <%= link_to "New Photo", new_photo_path %>
