@@ -15,8 +15,8 @@ feature 'image' do
     fill_in ('Name'), with: 'Test image'
     fill_in ('Description'), with: 'Test description'
     attach_file 'image[image]', Rails.root + 'spec/support/uploads/test_image.jpg'
-    click_link('Upload image')
-    expect(page).to have_path '/images'
+    click_button('Upload image')
+    expect(current_path).to eq('/images')
     expect(page).not_to have_content 'No images added yet'
     expect(page).to have_xpath("//img[contains(@src, 'test_image.jpg')]")
   end
