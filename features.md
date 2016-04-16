@@ -19,6 +19,8 @@
 * can only like once
 * BONUS --> UNLIKE?
 
+### --> partials
 ### --> CSS
+
 
 ### BONUS: FILTER

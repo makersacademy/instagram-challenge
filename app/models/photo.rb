@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-
+  has_many :comments, dependent: :destroy
 
   has_attached_file :image,
                     :styles => { :large => "500x500>",
