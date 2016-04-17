@@ -9,7 +9,14 @@ class CommentsController < ApplicationController
 
   def create
     comment_on_current_picture
-    redirect_to current_picture_path
+  end
+
+  def edit
+    current_comment
+  end
+
+  def update
+    update_current_comment
   end
 
   private
@@ -27,10 +34,24 @@ class CommentsController < ApplicationController
   end
 
   def comment_on_current_picture
-    current_picture.comments.create(comment_params)
+    @comment = current_picture.comments.create(comment_params)
+    redirect_to current_picture_path
   end
 
   def current_picture_path
     picture_path(params[:picture_id])
+  end
+
+  def current_comment
+    @comment = Comment.find(params[:id])
+  end
+
+  def comment_params
+    params.require(:comment).permit(:thoughts)
+  end
+
+  def update_current_comment
+    current_comment.update(comment_params)
+    redirect_to picture_path(@comment.picture_id)
   end
 end

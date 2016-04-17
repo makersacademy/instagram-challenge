@@ -77,13 +77,6 @@ feature 'Picture:' do
       post_picture_with_image
     end
 
-    # scenario 'user cannot edit others pictures' do
-    #   click_link 'Sign out'
-    #   sign_up_jinis2
-    #   visit_picture
-    #   expect(page).not_to have_link 'Delete'
-    # end
-
     scenario 'user can delete picture from picture page' do
       visit_picture
       click_link 'Delete'
