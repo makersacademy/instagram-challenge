@@ -8,12 +8,19 @@ class PicturesController < ApplicationController
     @picture = Picture.new
   end
 
+  def create
+    @picture = Picture.create(picture_params)
+    redirect_to pictures_path
+  end
+
   def show
     @picture = Picture.find(params[:id])
   end
 
-  def create
-    @picture = Picture.create(picture_params)
+  def destroy
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+    flash[:notice] = 'Picture deleted successfully!'
     redirect_to pictures_path
   end
 

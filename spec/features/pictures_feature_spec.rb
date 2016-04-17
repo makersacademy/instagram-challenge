@@ -21,7 +21,7 @@ feature 'pictures' do
   end
 
   context 'viewing pictures' do
-    scenario 'lets a view a picture' do
+    scenario 'lets user view a picture' do
       visit '/pictures'
       click_link 'Add picture'
       attach_file 'picture[image]', 'app/assets/images/DOGE.jpeg'
@@ -31,6 +31,20 @@ feature 'pictures' do
       click_link 'photo'
       expect(page).to have_content 'much doge'
       expect(current_path).to eq "/pictures/#{picture.id}"
+    end
+  end
+
+  context 'deleting pictures' do
+    scenario 'lets photo owner delete picture' do
+        visit '/pictures'
+        click_link 'Add picture'
+        attach_file 'picture[image]', 'app/assets/images/DOGE.jpeg'
+        fill_in 'Description', with: 'much doge'
+        click_button 'Add'
+        click_link 'photo'
+        click_link 'Delete'
+        expect(page).not_to have_content 'much doge'
+        expect(page).to have_content 'Picture deleted successfully!'
     end
   end
 end

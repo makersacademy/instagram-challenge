@@ -9,7 +9,6 @@ feature 'commenting' do
     click_button 'Add'
     picture = Picture.first
     click_link 'photo'
-    p current_path
     click_link 'Comment'
     fill_in 'Comment', with: 'wow'
     click_button 'Comment'
