@@ -1,8 +1,9 @@
 %p
   %h3= @picture.title == '' ? 'Untitled' : @picture.title
 %p
-  = link_to 'Edit', edit_picture_path
-  = link_to 'Delete', picture_path, method: :delete
+  - if @user && @user.id == @picture.user_id
+    = link_to 'Edit', edit_picture_path
+    = link_to 'Delete', picture_path, method: :delete
 %p= image_tag @picture.image.url(:medium)
 
 - if user_signed_in?

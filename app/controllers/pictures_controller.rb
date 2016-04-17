@@ -16,6 +16,7 @@ class PicturesController < ApplicationController
   end
 
   def show
+    @user = current_user
     current_picture
   end
 
@@ -48,7 +49,7 @@ class PicturesController < ApplicationController
   end
 
   def create_picture
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.new(picture_params)
     @picture.save
   end
 

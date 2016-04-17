@@ -12,7 +12,6 @@ def visit_picture
 end
 
 def edit_title
-  visit picture_path(pic)
   click_link 'Edit'
   fill_in 'picture_title', with: 'Better title'
   click_button 'Update'
@@ -28,6 +27,16 @@ def sign_up_jinis
   visit root_path
   click_link 'Sign up'
   fill_in 'Username', with: 'jinis'
+  fill_in 'Email', with: 'misa@misa.com'
+  fill_in 'Password', with: '123456789'
+  fill_in 'Password confirmation', with: '123456789'
+  click_button 'Sign up'
+end
+
+def sign_up_jinis2
+  visit root_path
+  click_link 'Sign up'
+  fill_in 'Username', with: 'jinis2'
   fill_in 'Email', with: 'misa2@misa.com'
   fill_in 'Password', with: '123456789'
   fill_in 'Password confirmation', with: '123456789'

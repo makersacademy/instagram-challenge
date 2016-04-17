@@ -43,30 +43,41 @@ feature 'Picture:' do
   end
 
   context 'Editing a picture' do
-    let!(:pic){ Picture.create(title: 'No So Good Title') }
 
-    before do
+    before (:each) do
       sign_up_jinis
-      edit_title
+      post_picture_with_image
+    end
+
+    scenario 'user cannot edit others pictures' do
+      click_link 'Sign out'
+      sign_up_jinis2
+      visit_picture
+      expect(page).not_to have_link 'Edit'
     end
 
     scenario 'user can edit picture title from picture page' do
-      expect(current_path).to eq picture_path(pic)
+      visit_picture
+      edit_title
       expect(page).to have_content 'Better title'
     end
 
     scenario 'edited title is reflected in the text of image link' do
+      visit_picture
+      edit_title
       visit pictures_path
       expect(page).to have_xpath("//a[contains(@text, 'Better title')]")
     end
   end
 
   context 'Deleting a picture' do
-    let!(:pic){ Picture.create(title: 'To be deleted')}
+    before do
+      sign_up_jinis
+      post_picture_with_image
+    end
 
     scenario 'user can delete picture from picture page' do
-      sign_up_jinis
-      visit picture_path(pic)
+      visit_picture
       click_link 'Delete'
       expect(current_path).to eq pictures_path
       expect(page).to have_content 'Picture has been deleted'
