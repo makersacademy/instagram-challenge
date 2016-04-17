@@ -9,7 +9,15 @@ feature 'Picture:' do
     end
   end
 
-  context "Posting a picture with image" do
+  context 'Posting a picture without a title' do
+    let!(:picture){ Picture.create }
+
+    scenario 'assigns a default name Untitled' do
+      
+    end
+  end
+
+  context 'Posting a picture with image' do
     before { post_picture_with_image }
 
     scenario 'user can post a picture with title and image' do
