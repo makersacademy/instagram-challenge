@@ -19,6 +19,12 @@ class ImagesController < ApplicationController
     redirect_to images_path
   end
 
+  def destroy
+    Image.find(params[:id]).destroy
+    flash[:notice] = 'Image successfully nuked'
+    redirect_to images_path
+  end
+
   def image_params
     params.require(:image).permit :title
   end

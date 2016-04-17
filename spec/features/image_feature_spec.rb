@@ -63,7 +63,6 @@ feature 'Images' do
     before :each do
       helper_sign_in
       click_link test_image_1.title
-
     end
 
     scenario 'clicking an image leads a user to the images#show route' do
@@ -73,6 +72,36 @@ feature 'Images' do
     scenario 'page has the image, a link to go back, and the title' do
       expect(page).to have_content test_image_1.title
       expect(page).to have_link 'Go back to the Main Page'
+    end
+
+  end
+
+  context 'deleting an image' do
+    let!(:test_user_2) {User.create email: 'second@user.com', password: 'correcthorsebatterystaple'}
+    let!(:test_image_1) {Image.create title: DEFAULT_TITLE, user_id: test_user.id}
+    let!(:test_image_2) {Image.create title: DEFAULT_TITLE_2, user_id: test_user_2.id}
+
+    before :each do
+      helper_sign_in
+      visit image_path test_image_1.id
+    end
+
+    scenario 'should be possible for the owner of the image' do
+      p current_path
+      expect(page).to have_link 'Delete this image'
+    end
+
+    scenario 'should not be possible for other people' do
+      visit images_path test_image_2.id
+      expect(page).not_to have_link 'Delete this image'
+
+    end
+
+    scenario 'will remove the image from the stream if the link is clicked' do
+      click_link 'Delete this image'
+      expect(current_path).to eq images_path
+      expect(page).to have_content 'Image successfully nuked'
+      expect(page).not_to have_content test_image_1.title
     end
 
   end

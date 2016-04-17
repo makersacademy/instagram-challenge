@@ -1,5 +1,5 @@
 DEFAULT_TITLE = 'best image on the site'
-DEFAULT_TITLE_2 = '2nd best image on the site'
+DEFAULT_TITLE_2 = 'better image on the site'
 DEFAULT_MAIL = 'lo@renzo.com'
 DEFAULT_PASSWORD = 'lolsrenzo'
 
@@ -9,7 +9,8 @@ def helper_sign_up email: DEFAULT_MAIL, password: DEFAULT_PASSWORD
   fill_in :user_email, with: email
   fill_in :user_password, with: password
   fill_in :user_password_confirmation, with: password
-  click_button 'Sign Up'
+  save_and_open_page
+  click_button 'Sign up'
 end
 
 def helper_sign_in email: DEFAULT_MAIL, password: DEFAULT_PASSWORD
