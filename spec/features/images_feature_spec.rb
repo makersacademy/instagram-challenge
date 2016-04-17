@@ -1,9 +1,10 @@
 feature 'Images' do
-
+  let!(:test_user) {User.create(email: DEFAULT_MAIL, password: DEFAULT_PASSWORD)}
+  
   context 'visiting the main page with no images added yet' do
 
     before :each do
-      visit '/images'
+      visit images_path
     end
 
     scenario 'should show there are no images' do
@@ -17,7 +18,7 @@ feature 'Images' do
     let!(:test_image_2) {Image.create(title: DEFAULT_TITLE_2)}
 
     before :each do
-      visit '/images'
+      visit images_path
     end
 
     scenario 'show the image title' do
@@ -33,7 +34,7 @@ feature 'Images' do
   context 'adding a new image' do
 
     before :each do
-      visit '/images'
+      helper_sign_in
     end
 
     scenario 'should prompt to add a new image' do

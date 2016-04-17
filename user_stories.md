@@ -1,11 +1,3 @@
-As a Visitor
-So that I can see other people's cats
-I want to see a stream of the photos on the site
-
-As a Visitor
-So that I don't have to scroll to the end of the page every time
-I want the photo stream to be Last First
-
 As a Recurring Visitor
 So that I can be part of this awesome site
 I want to be able to register with my mail, username, and pass.
@@ -55,3 +47,13 @@ I want to be able to filter photos by user
 As a Site Owner
 So that I can attract even more users
 I want to have a 'web 2.0' interface
+
+-------------------
+
+As a Visitor
+So that I can see other people's cats
+I want to see a stream of the photos on the site
+
+As a Visitor
+So that I don't have to scroll to the end of the page every time
+I want the photo stream to be Last First
