@@ -10,21 +10,16 @@ class ImagesController < ApplicationController
   end
 
   def create
-    image = Image.new(restaurant_params)
-    image.user_id = current_user.id
-    image.save
+    Image.save_with_current_user(restaurant_params, current_user)
     redirect_to ('/images')
   end
 
   def show
-    user = User.find(params[:id])
-    image = Image.all
-    @images = user.images
+    @images = Image.all_from_a_user(params[:id])
   end
 
   def destroy
-    image = Image.find(params[:id])
-    image.destroy 
+    Image.delete(params[:id])
     flash[:notice] = 'Image was removed'
     redirect_to('/')
   end

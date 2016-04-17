@@ -7,19 +7,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-    image = Image.find(params[:image_id])
-    @comment = image.comments.create(comment_params)
-    @comment.user_id = current_user.id
-    @comment.save
+    Comment.save_new_with_current_user(params[:image_id], comment_params, current_user)
     redirect_to('/')
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    comment.destroy
+    Comment.delete(params[:id])
     flash[:notice] = 'Comment was deleted'
     redirect_to('/')
-
   end
 
   def comment_params
