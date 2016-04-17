@@ -22,7 +22,7 @@
 * BONUS --> Like using heart
 
 ### --> partials
-### --> CSS
+<!-- ### --> CSS -->
 
 
 ### BONUS: FILTER
