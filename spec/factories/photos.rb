@@ -6,9 +6,4 @@ FactoryGirl.define do
     image { fixture_file_upload "./spec/images/kitten.jpg", "image/jpg" }
     user
   end
-
-  # factory :photo_params, class: Photo do
-  #   status { Faker::Hipster.sentence }
-  #   image { fixture_file_upload "./spec/images/kitten.jpg", "image/jpg" }
-  # end
 end

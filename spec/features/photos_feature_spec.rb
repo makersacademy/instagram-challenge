@@ -68,13 +68,13 @@ feature "photos" do
         sign_in_as(other_user)
       end
 
-      scenario "prevents from editing other users photo status" do
+      scenario "cannot edit other users photo status on user interface" do
         visit photos_path
         expect(page).not_to have_css ".edit-status"
       end
 
-      scenario "prevents from editing other users photos via a update request" do
-        page.driver.submit :patch, photo_path(photo.id), { status: "Hacking" }
+      scenario "cannot edit other users photos via a update request" do
+        page.driver.submit :patch, photo_path(photo.id), status: "Hacking"
         expect(current_path).to eq photos_path
         expect(page).to have_content photo.status
         expect(page).not_to have_content "Hacking"
@@ -102,12 +102,12 @@ feature "photos" do
         sign_in_as(other_user)
       end
 
-      scenario "prevents from deleting other users photos on user interface" do
+      scenario "cannot delete other users photos on user interface" do
         visit photos_path
         expect(page).not_to have_link "Delete"
       end
 
-      scenario "prevents from deleting other users photos via a delete request" do
+      scenario "cannot delete other users photos via a delete request" do
         page.driver.submit :delete, photo_path(photo.id), {}
         expect(current_path).to eq photos_path
         expect(page).to have_content photo.status

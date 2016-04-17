@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @photos = Photo.all.reverse
@@ -35,7 +35,6 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    form_params = params.require(:photo).permit(:image, :status).merge(user: current_user)
-
+    params.require(:photo).permit(:image, :status).merge(user: current_user)
   end
 end

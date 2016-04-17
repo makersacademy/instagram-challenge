@@ -1,5 +1,5 @@
 ### USERS
-* sign in, sign up, sign out
+<!-- * sign in, sign up, sign out -->
 * BONUS --> sign in with fb
 * BONUS --> avatar
 
@@ -16,7 +16,7 @@
 <!-- * posted by -->
 
 ### LIKES
-* can only like once
+<!-- * can only like once -->
 * BONUS --> UNLIKE?
 * Like using Ajax
 * BONUS --> Like using heart
