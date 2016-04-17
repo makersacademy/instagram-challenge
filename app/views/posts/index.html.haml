@@ -1,10 +1,10 @@
+= link_to "New post", new_post_path
 - if @posts.any?
   - @posts.each do |post|
+    = image_tag post.image.url(:thumb)
     %p= post.description
     = link_to "Like", post_likes_path(post), class: 'likes-link'
     %span.likes_count= post.likes.count
     = 'Like'.pluralize post.likes.count
 - else
   %h1 No posts yet!
-
-= link_to "New post", new_post_path
