@@ -3,8 +3,14 @@
 - if @posts.any?
   - @posts.each do |post|
     = link_to image_tag(post.image.url(:thumb), alt: "post#{post.id}"), post_path(post)
-    -# :id => "post#{post.id}", :popup=>['original_image', 'height=700,width=900']
     = post.caption
+    - if post.comments
+      - post.comments.each do |comment|
+        = comment.content
+    .comment-form
+      = form_for [post, post.comments.new] do |f|
+        = f.text_field :content, placeholder: 'Add a comment...'
+        = f.submit 'Leave comment'
 - else
   %h2 No posts yet!
 

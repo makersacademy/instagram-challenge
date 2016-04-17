@@ -56,7 +56,7 @@ feature 'posts' do
       end
     end
 
-    context 'deleting restaurants', focus: true do
+    context 'deleting restaurants' do
       scenario 'removes a restaurant when a user clicks a delete link' do
         visit '/posts'
         click_link "post#{post1.id}"
