@@ -17,3 +17,9 @@ def edit_title
   fill_in 'Title', with: 'Better title'
   click_button 'Update'
 end
+
+def leave_comment
+  click_link 'Comment'
+  fill_in 'Thoughts', with: 'Beautiful picture!'
+  click_button 'Comment'
+end
