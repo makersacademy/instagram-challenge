@@ -32,6 +32,7 @@ gem 'haml'
 gem 'paperclip'
 gem 'aws-sdk', '<2.0'
 
+gem 'shoulda'
 gem 'devise'
 gem 'pry-nav'
 

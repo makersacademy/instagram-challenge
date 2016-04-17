@@ -13,6 +13,10 @@ class PhotosController < ApplicationController
     redirect_to '/photos'
   end
 
+  def destroy
+    
+  end
+
   def photo_params
     params.require(:photo).permit(:caption, :image)
   end

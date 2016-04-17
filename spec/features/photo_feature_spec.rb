@@ -30,6 +30,13 @@ feature 'photos' do
       visit '/photos'
       expect(page).to have_link 'Delete photo'
     end
+
+    scenario 'users can only delete their own photos' do
+      visit '/photos'
+      click_link 'Delete photo'
+      expect(Photo.all.size).to eq 1
+
+    end
   end
 end
 
