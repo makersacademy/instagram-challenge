@@ -5,13 +5,17 @@
       <%= image_tag image.image.url(:thumb) %>
       <li> <%= image.name %> <br> <%= image.description %> <%= image.user.username %> </li>
       <%= link_to (image.user.username), image_path(image.user_id) %>
-      <%= link_to ("Remove image"), image_path(image), method: :delete %>
+      <% if current_user && current_user.id == image.user_id %>
+        <%= link_to ("Remove image"), image_path(image), method: :delete %>
+      <% end %>
       <%= link_to ('Comment'), new_image_comment_path(image) %>
       
       <% if image.comments.any? %>
         <% image.comments.each do |comment|%>
         <%= comment.comment%>
-        <%= link_to ('Delete comment'), image_comment_path(image,comment), method: :delete %>
+          <% if current_user && current_user.id == comment.user_id %>
+            <%= link_to ('Delete comment'), image_comment_path(image,comment), method: :delete %>
+          <%end%>
         <% end %>
       <% end %>
     <%end%>  

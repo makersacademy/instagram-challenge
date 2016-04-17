@@ -39,6 +39,14 @@ feature 'Image' do
       expect(page).to have_content('Image was removed')
       expect(page).not_to have_xpath("//img[contains(@src, 'test_image.jpg')]")
     end
+
+    scenario 'user cannot delete another persons image' do
+      upload_image1
+      signout
+      signup_user2
+      expect(page).to_not have_link('Remove image')
+      expect(page).to have_xpath("//img[contains(@src, 'test_image.jpg')]")
+    end
   end
 
   context 'user can navigate to username homepage' do

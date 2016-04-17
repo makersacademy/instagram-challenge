@@ -9,6 +9,21 @@ def signup_user1
   click_button('Sign up')
 end
 
+def signup_user2
+  visit '/images'
+  click_link('Sign up')
+  fill_in('Name', with: 'Test2 Name')
+  fill_in('Username', with: 'Test2_user')
+  fill_in('Email', with: 'test2@test.com')
+  fill_in('Password', with: 'testtest')
+  fill_in('Password confirmation', with: 'testtest')
+  click_button('Sign up')
+end
+
+def signout
+  visit '/images'
+  click_link('Sign out')
+end
 
 def upload_image1
   click_link('Upload new image')
