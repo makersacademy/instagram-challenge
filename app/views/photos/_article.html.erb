@@ -1,42 +1,57 @@
-<p class="creator">
-  <%= photo.user.username %>
-  <%= photo.time_posted %>
-<p>
+<div class="creator">
+  <div class="head-inline"><%= photo.user.username %></div>
+  <div class="head-inline" id="time-posted"><%= photo.time_posted %></div>
+</div>
 
 <a href="<%= photo_path(photo) %>" class="image">
   <%= image_tag photo.image.url(:large) %>
 </a>
-<p><%= photo.status %></p>
-<%= pluralize photo.likes.count, "like" %>
 
-<% if user_signed_in? && photo.created_by?(current_user) %>
-  <span class="edit-status">
-    <%= link_to "Edit", edit_photo_path(photo) %>
-  </span>
-  <span class="delete-photo">
-    <%= link_to "Delete", photo_path(photo), method: :delete %>
-  </span>
-<% end %>
-
-<% if photo.comments.any? %>
-  <% photo.comments.each do |comment| %>
-    <ul>
-      <%= comment.user.username %> <%= comment.content %>
-      <% if user_signed_in? && comment.created_by?(current_user) %>
-        <span class="edit-comment">
-          <%= link_to "Edit", edit_comment_path(comment) %>
-        </span>
-        <span class="delete-comment">
-          <%= link_to "Delete", comment_path(comment), method: :delete %>
-        </span>
-      <% end %>
-    </ul>
+<div class="likes"><%= pluralize photo.likes.count, "like" %></div>
+<div class="edit-delete">
+  <% if user_signed_in? && photo.created_by?(current_user) %>
+    <span class="edit-status">
+      <%= link_to "Edit", edit_photo_path(photo) %>
+    </span>
+    <span class="delete-photo">
+      <%= link_to "Delete", photo_path(photo), method: :delete %>
+    </span>
   <% end %>
-<% end %>
+</div>
+
+<div class="discussions">
+  <p>
+    <%= photo.user.username %>
+    <span class="content"><%= photo.status %></span>
+  </p>
+  <p>
+    <% if photo.comments.any? %>
+      <% photo.comments.each do |comment| %>
+        <ul>
+          <%= comment.user.username %> <span class="content"><%= comment.content %></span>
+          <% if user_signed_in? && comment.created_by?(current_user) %>
+            <div class="edit-delete">
+              <span class="edit-comment">
+                <%= link_to "Edit", edit_comment_path(comment) %>
+              </span>
+              <span class="delete-comment">
+                <%= link_to "Delete", comment_path(comment), method: :delete %>
+            </div>
+            </span>
+          <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </p>
+</div>
+
+<hr />
 
 <div>
   <% if user_signed_in? %>
-    <%= link_to "Like", photo_likes_path(photo), method: :post %>
+    <p>
+      <%= link_to "Like", photo_likes_path(photo), method: :post %>
+    </p>
     <%= form_for [photo, photo.comments.new] do |f| %>
       <%= f.text_field :content, placeholder: "Add a comment" %>
       <%= f.submit "Send" %>

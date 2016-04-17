@@ -3,14 +3,6 @@ require "rails_helper"
 feature "photos" do
   let!(:user) { FactoryGirl.create(:user) }
 
-  context "no photos" do
-    scenario "displays a prompt to add a photos" do
-      visit photos_path
-      expect(page).to have_content "No photos yet"
-      expect(page).to have_link "New Photo"
-    end
-  end
-
   context "adding photos" do
     scenario "allows user to add a new photo" do
       sign_in_as(user)
@@ -30,8 +22,7 @@ feature "photos" do
 
     scenario "guest has to sign in before adding a photo" do
       visit photos_path
-      click_link "New Photo"
-      expect(current_path).to eq new_user_session_path
+      expect(page).not_to have_link "New Photo"
     end
   end
 
