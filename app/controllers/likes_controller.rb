@@ -3,6 +3,7 @@ class LikesController < ApplicationController
   def create
     @picture = Picture.find(params[:picture_id])
     @picture.likes.create
-    redirect_to picture_path(@pictures)
+    render json: { new_like_count: @picture.likes.count }
+    # redirect_to picture_path(@picture)
   end
 end
