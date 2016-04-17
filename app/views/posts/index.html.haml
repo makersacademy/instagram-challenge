@@ -2,7 +2,8 @@
 
 - if @posts.any?
   - @posts.each do |post|
-    = image_tag post.image.url(:thumb)
+    = link_to image_tag(post.image.url(:thumb), alt: "post#{post.id}"), post_path(post)
+    -# :id => "post#{post.id}", :popup=>['original_image', 'height=700,width=900']
     = post.caption
 - else
   %h2 No posts yet!
