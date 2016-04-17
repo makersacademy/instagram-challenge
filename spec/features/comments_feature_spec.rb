@@ -14,7 +14,7 @@ feature 'commenting' do
     fill_in 'Comment', with: 'wow'
     click_button 'Comment'
 
-    expect(current_path).to eq pictures_path
+    expect(current_path).to eq picture_path(picture)
     expect(page).to have_content 'wow'
   end
 end
