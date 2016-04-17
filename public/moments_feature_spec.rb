@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature 'sharing moments' do
+
   context 'no moments have been shared' do
     scenario 'a user can upload a moment' do
       visit '/moments'
@@ -10,18 +11,17 @@ feature 'sharing moments' do
   end
 
   context 'a moment has been shared' do
-    before do
-      share_a_moment
-    end
-
     scenario 'displays all the moments' do
+      visit '/'
+      share_a_moment_signed_in
       expect(page).to have_content('Something profound')
     end
   end
 
   context 'adding an image' do
+
     scenario 'users can add a moment with an image' do
-      share_a_moment
+      share_a_moment_signed_in
       expect(page).to have_content('Something profound')
       expect(page).to have_css("img[src*='Scissors_icon']")
     end
@@ -29,7 +29,7 @@ feature 'sharing moments' do
 
   context 'show the moment page' do
     scenario 'user can go to the image page' do
-      share_a_moment
+      share_a_moment_signed_in
       expect(current_path).to eq('/moments')
       find(:xpath, "//a/img[@alt='moment']/..").click
       expect(page).to have_content('hello')
@@ -39,7 +39,7 @@ feature 'sharing moments' do
 
   context 'deleting moments' do
     before do
-      share_a_moment
+      share_a_moment_signed_in
     end
 
     scenario 'users can delete moments' do

@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'features/moments_helper'
+require 'features/users_helper'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
