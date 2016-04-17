@@ -12,11 +12,7 @@ feature 'photos' do
   context 'have been added' do
     before do
       sign_up
-      visit '/photos'
-      click_link 'Add a photo'
-      fill_in 'photo[caption]', with: 'caption1'
-      attach_file 'photo[image]', 'spec/assets/images/test.jpg'
-      click_button 'Create Photo'
+      upload_photo
     end
 
     scenario 'should display photos and captions' do
