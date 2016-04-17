@@ -20,6 +20,6 @@ end
 
 def leave_comment
   click_link 'Comment'
-  fill_in 'Thoughts', with: 'Beautiful picture!'
+  fill_in 'comment_thoughts', with: 'Beautiful picture!'
   click_button 'Comment'
 end
