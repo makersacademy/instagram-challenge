@@ -1,5 +1,5 @@
 class CustomFailure < Devise::FailureApp
-  
+
   def redirect_url
     new_user_session_url subdomain: 'secure'
   end
@@ -8,7 +8,7 @@ class CustomFailure < Devise::FailureApp
     if http_auth?
       http_auth
     else
-      flash[:alert] = "You need to be signed in to do that!"
+      flash[:alert] = 'You need to be signed in to do that!'
       redirect_to images_path
     end
   end
