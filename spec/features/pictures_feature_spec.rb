@@ -9,7 +9,16 @@ feature 'Picture:' do
     end
   end
 
-  context "Posting a picture with image" do
+  context 'Posting a picture without a title' do
+    let!(:pic){ Picture.create(title: '') }
+
+    scenario 'displays a default name Untitled if title is empty' do
+      visit picture_path(pic)
+      expect(page).to have_content 'Untitled'
+    end
+  end
+
+  context 'Posting a picture with image' do
     before { post_picture_with_image }
 
     scenario 'user can post a picture with title and image' do
