@@ -47,14 +47,14 @@
 
 <hr />
 
-<div>
-  <% if user_signed_in? %>
-    <p>
-      <%= link_to "Like", photo_likes_path(photo), method: :post %>
-    </p>
+<% if user_signed_in? %>
+  <p>
+    <%= link_to "Like", photo_likes_path(photo), method: :post %>
+  </p>
+  <div id="comment-form">
     <%= form_for [photo, photo.comments.new] do |f| %>
       <%= f.text_field :content, placeholder: "Add a comment" %>
       <%= f.submit "Send" %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>
