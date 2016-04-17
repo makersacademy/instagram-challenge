@@ -1,6 +1,8 @@
 require "rails_helper"
 
 feature "photos" do
+  let!(:user) { FactoryGirl.create(:user) }
+
   context "no photos" do
     scenario "displays a prompt to add a photos" do
       visit photos_path
@@ -10,8 +12,6 @@ feature "photos" do
   end
 
   context "adding photos" do
-    let!(:user) { FactoryGirl.create(:user) }
-
     scenario "allows user to add a new photo" do
       sign_in_as(user)
       visit photos_path
@@ -36,8 +36,7 @@ feature "photos" do
   end
 
   context "displaying photos" do
-    let!(:user) { FactoryGirl.create(:user) }
-    let!(:pic_1) { FactoryGirl.create(:photo, created_at: Time.parse("2016-04-17 11:02:56 +0000")) }
+    let!(:pic_1) { FactoryGirl.create(:photo, created_at: Time.parse("2016-04-15 11:02:56 +0000")) }
 
     before do
       now = Time.parse("2016-04-17 13:02:56 +0100")
@@ -46,13 +45,22 @@ feature "photos" do
 
     scenario "should display the time photo was created relative to now" do
       visit photos_path
-      expect(page).to have_content "2h"
+      expect(page).to have_content "2d"
     end
 
     scenario "should display photos in reverse chronological order" do
       pic_2 = FactoryGirl.create(:photo, created_at: Time.parse("2016-04-17 12:02:56 +0100"))
       visit photos_path
 
+      within "li ul:first-child" do
+        expect(page).to have_content pic_2.status
+        expect(page).to have_content "1h"
+      end
+
+      within "li ul:last-child" do
+        expect(page).to have_content pic_1.status
+        expect(page).to have_content "2d"
+      end
     end
   end
 
@@ -69,7 +77,6 @@ feature "photos" do
   end
 
   context "editing photo status" do
-    let!(:user) { FactoryGirl.create(:user) }
     let!(:photo) { FactoryGirl.create(:photo, user: user) }
 
     scenario "allows user to edit a photo's status" do
@@ -104,7 +111,6 @@ feature "photos" do
   end
 
   context "deleting photos" do
-    let!(:user) { FactoryGirl.create(:user) }
     let!(:photo) { FactoryGirl.create(:photo, user: user) }
 
     scenario "allows user to delete a photo" do
