@@ -16,7 +16,6 @@ class PicturesController < ApplicationController
   end
 
   def show
-    @user = current_user
     current_picture
   end
 
