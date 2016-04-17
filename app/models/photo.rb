@@ -14,4 +14,8 @@ class Photo < ActiveRecord::Base
   def created_by?(user)
     self.user == user
   end
+
+  def time_posted
+    "#{Time.now.hour - created_at.hour}h"
+  end
 end

@@ -35,6 +35,27 @@ feature "photos" do
     end
   end
 
+  context "displaying photos" do
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:pic_1) { FactoryGirl.create(:photo, created_at: Time.parse("2016-04-17 11:02:56 +0000")) }
+
+    before do
+      now = Time.parse("2016-04-17 13:02:56 +0100")
+      allow(Time).to receive(:now).and_return(now)
+    end
+
+    scenario "should display the time photo was created relative to now" do
+      visit photos_path
+      expect(page).to have_content "2h"
+    end
+
+    scenario "should display photos in reverse chronological order" do
+      pic_2 = FactoryGirl.create(:photo, created_at: Time.parse("2016-04-17 12:02:56 +0100"))
+      visit photos_path
+      
+    end
+  end
+
   context "viewing photos" do
     scenario "allows user to view a photo" do
       photo = FactoryGirl.create(:photo)

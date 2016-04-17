@@ -8,6 +8,7 @@ abort("The Rails environment is running
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
+require 'database_cleaner'
 require 'features/feature_helper'
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -30,7 +31,27 @@ require 'features/feature_helper'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+DatabaseCleaner.strategy = :truncation
+
+# then, whenever you need to clean the DB
+
 RSpec.configure do |config|
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  # Everything in this block runs once before each individual test
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  # Everything in this block runs once after each individual test
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
