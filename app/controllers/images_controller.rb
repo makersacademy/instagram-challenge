@@ -7,7 +7,6 @@ class ImagesController < ApplicationController
   end
 
   def show
-    p params
     user = User.find(params[:id])
     image = Image.all
     @images = user.images

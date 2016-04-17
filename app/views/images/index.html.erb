@@ -5,6 +5,12 @@
       <li> <%= image_tag image.image.url(:thumb) %>
            <%= image.name %> <br> <%= image.description %> <%= image.user.username %> </li>
            <%= link_to (image.user.username), image_path(image.user_id) %>
+           <%= link_to ('Comment'), new_image_comment_path(image) %>
+           <% if image.comment.any? %>
+             <%= image.comment.each do |comment|%>
+             <%= comment.comment%>
+             <% end %>
+           <% end %>
     <%end%>  
   </ul>
 
