@@ -41,6 +41,11 @@ feature 'Comments' do
       expect(page).not_to have_link 'Edit comment'
     end
 
+    scenario 'user can delete comments' do
+      click_link 'Delete comment'
+      expect(page).not_to have_content 'Beautiful picture!'
+    end
+
     scenario 'user cannot delete other users comments' do
       click_link 'Sign out'
       sign_up_jinis2

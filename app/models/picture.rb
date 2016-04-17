@@ -7,5 +7,9 @@ class Picture < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :likes
 
+  def has_been_liked_by?(current_user)
+    likes.map { |like| like.userid }.include? (current_user.id)
+  end
 end
