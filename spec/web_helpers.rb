@@ -25,6 +25,14 @@ def signout
   click_link('Sign out')
 end
 
+def signin_user1
+  visit '/images'
+  click_link('Sign in')
+  fill_in('Email', with: 'test@test.com')
+  fill_in('Password', with: 'testtest')
+  click_button('Log in')
+end
+
 def upload_image1
   click_link('Upload new image')
   fill_in ('Name'), with: 'Test image'
