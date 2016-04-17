@@ -21,15 +21,14 @@ feature 'pictures' do
   end
 
   context 'viewing pictures' do
-    scenario 'lets a user add a comment to a picture' do
+    scenario 'lets a view a picture' do
       visit '/pictures'
       click_link 'Add picture'
       attach_file 'picture[image]', 'app/assets/images/DOGE.jpeg'
       fill_in 'Description', with: 'much doge'
       click_button 'Add'
       picture = Picture.first
-      click_link 'image_tag'
-      find(:xpath, "//a[contains(@href,'pictures/')]").click
+      click_link 'photo'
       expect(page).to have_content 'much doge'
       expect(current_path).to eq "/pictures/#{picture.id}"
     end

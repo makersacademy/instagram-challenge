@@ -7,11 +7,14 @@ feature 'commenting' do
     attach_file 'picture[image]', 'app/assets/images/DOGE.jpeg'
     fill_in 'Description', with: 'much doge'
     click_button 'Add'
+    picture = Picture.first
+    click_link 'photo'
+    p current_path
     click_link 'Comment'
     fill_in 'Comment', with: 'wow'
     click_button 'Comment'
 
-    expect(current_path).to eq picture_path
+    expect(current_path).to eq pictures_path
     expect(page).to have_content 'wow'
   end
 end
