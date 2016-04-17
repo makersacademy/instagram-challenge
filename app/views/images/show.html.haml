@@ -9,3 +9,16 @@
       =@image.user.email
     -if current_user == @image.user
       =link_to 'Delete this image', image_path(@image.id), method: :delete
+    %h3
+      ='Comments'
+    -if @image.comments.empty?
+      =link_to 'Be the first to comment!', new_image_comment_path(@image.id)
+    -else
+      %ul.comment_list
+        - @image.comments.reverse_each do |comment|
+          %li.comment_entry
+            %h5
+              =comment.text
+              =' -- by: '
+              =comment.user.email
+      =link_to 'Add a comment!', new_image_comment_path(@image.id)

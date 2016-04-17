@@ -2,6 +2,7 @@ DEFAULT_TITLE = 'best image on the site'
 DEFAULT_TITLE_2 = 'better image on the site'
 DEFAULT_MAIL = 'lo@renzo.com'
 DEFAULT_PASSWORD = 'lolsrenzo'
+DEFAULT_COMMENT = 'this is awesome'
 
 
 def helper_sign_up email: DEFAULT_MAIL, password: DEFAULT_PASSWORD
