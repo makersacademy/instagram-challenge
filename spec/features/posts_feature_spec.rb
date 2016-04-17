@@ -24,12 +24,27 @@ feature 'posts' do
       scenario 'user can post image with caption' do
         visit '/posts'
         click_link 'Post an image'
-        attach_file 'post[image]', "#{Rails.root}/spec/images/monkey.jpg"
+        attach_file 'post[image]', "#{Rails.root}/spec/assets/images/monkey.jpg"
         fill_in 'Caption', with: post2.caption
         click_button 'Post image'
         expect(page).to have_content post2.caption
         expect(current_path).to eq '/posts'
         expect(page).to have_xpath("//img[contains(@src,'monkey.jpg')]")
+      end
+      scenario 'needs an image to create a post' do
+        visit '/posts'
+        click_link 'Post an image'
+        fill_in 'Caption', with: post2.caption
+        click_button 'Post image'
+        expect(page).to have_content("Image can't be blank")
+      end
+      scenario 'uploaded file must be image', focus: true do
+        visit '/posts'
+        click_link 'Post an image'
+        attach_file 'post[image]', "#{Rails.root}/spec/assets/WordDoc.docx"
+        fill_in 'Caption', with: post2.caption
+        click_button 'Post image'
+        expect(page).to have_content('Image content type is invalid')
       end
     end
 

@@ -39,7 +39,7 @@ feature 'comments' do
       expect(page).to have_content 'Comment deleted successfully'
       expect(current_path).to eq "/posts"
     end
-    scenario 'deleting comment from post page', focus: true do
+    scenario 'deleting comment from post page' do
       visit '/posts'
       click_link "post#{post.id}"
       click_link 'Delete comment'
