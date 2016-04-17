@@ -6,6 +6,10 @@ So that I can attract and retain users
 I want to have a css style for my site
 
 As a User
+So that I can admire images in all their majesty
+I want to be able to click on one and be taken to its page
+
+As a User
 So that I can undo bad decisions I've done in life
 I want to be able to delete my images
 

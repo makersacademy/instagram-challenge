@@ -12,7 +12,7 @@ feature 'Images' do
     end
 
     scenario 'should not show the add image link' do
-      expect(page).not_to have_link 'Add new image' 
+      expect(page).not_to have_link 'Add new image'
     end
 
   end
@@ -53,6 +53,26 @@ feature 'Images' do
       helper_add_image
       expect(current_path).to eq images_path
       expect(page).to have_content DEFAULT_TITLE
+    end
+
+  end
+
+  context 'visualizing an image' do
+    let!(:test_image_1) {Image.create title: DEFAULT_TITLE, user_id: test_user.id}
+
+    before :each do
+      helper_sign_in
+      click_link test_image_1.title
+
+    end
+
+    scenario 'clicking an image leads a user to the images#show route' do
+      expect(current_path).to eq image_path test_image_1.id
+    end
+
+    scenario 'page has the image, a link to go back, and the title' do
+      expect(page).to have_content test_image_1.title
+      expect(page).to have_link 'Go back to the Main Page'
     end
 
   end
