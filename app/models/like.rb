@@ -1,8 +1,8 @@
 class Like < ActiveRecord::Base
   belongs_to :photo
+  belongs_to :user
 
-  def self.create_with_photo_id(photo_id)
-    like = Like.create
-    like.photo_id = photo_id
-  end
+
+  validates :user, uniqueness: { scope: :photo, message: "has liked this photo already" }
+  
 end
