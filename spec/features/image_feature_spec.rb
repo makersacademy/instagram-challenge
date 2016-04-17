@@ -9,10 +9,18 @@ feature 'Image' do
     end
   end
 
+  context 'images are uploaded but user is not logged in' do
+    scenario 'should not see delete & comment button' do
+    end
+  end
+
   context 'user is logged in on website' do
-    scenario 'user can add a image' do
-      visit '/images'
+    
+    before do
       signup_user1
+    end
+    
+    scenario 'user can add a image' do
       click_link('Upload new image')
       fill_in ('Name'), with: 'Testimage'
       fill_in ('Description'), with: 'Test description'
@@ -24,10 +32,16 @@ feature 'Image' do
       expect(page).to have_content("Test_user")
       expect(page).to have_xpath("//img[contains(@src, 'test_image.jpg')]")
     end
+
+    scenario 'user can delete image' do
+      upload_image1
+      click_link('Remove image')
+      expect(page).to have_content('Image was removed')
+      expect(page).not_to have_xpath("//img[contains(@src, 'test_image.jpg')]")
+    end
   end
 
   context 'user can navigate to username homepage' do
-
     before do
       signup_user1  
     end

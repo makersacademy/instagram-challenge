@@ -17,3 +17,11 @@ def upload_image1
   attach_file 'image[image]', Rails.root + 'spec/support/uploads/test_image.jpg'
   click_button('Upload image')
 end
+
+def leave_comment1
+  click_link 'Comment'
+  fill_in 'Comment', with: 'Wow what a great image'
+  click_button 'Leave comment'
+  expect(page).to have_content('Wow what a great image')
+  expect(current_path).to eq('/')
+end

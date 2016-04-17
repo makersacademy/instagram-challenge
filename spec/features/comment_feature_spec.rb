@@ -13,4 +13,12 @@ feature 'Comment' do
     expect(page).to have_content('Wow what a great image')
     expect(current_path).to eq('/')
   end
+
+  scenario ' Delete comment' do
+    leave_comment1
+    click_link 'Delete comment'
+    expect(page).to have_content('Comment was deleted')
+    expect(page).not_to have_content('Wow what a great image')
+    expect(current_path).to eq('/')
+  end
 end
