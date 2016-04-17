@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 ruby "2.3.0"
 
 gem 'devise'
+gem 'haml'
+
 
 #Rails Default Gems.
 gem 'rails', '4.2.6'
