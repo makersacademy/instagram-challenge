@@ -13,6 +13,11 @@ feature 'posts' do
 
     let!(:post1) { create(:post) }
     let(:post2) { build(:post) }
+    let(:user) { create(:user) }
+
+    before do
+      user_sign_in(user)
+    end
 
     scenario 'display posts' do
       visit '/'

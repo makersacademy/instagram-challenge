@@ -1,8 +1,10 @@
 require 'factory_girl'
+require 'helpers/user_helpers'
 
 RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
+  config.include UserHelpers
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
