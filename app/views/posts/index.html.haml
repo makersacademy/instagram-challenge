@@ -7,6 +7,7 @@
     - if post.comments
       - post.comments.each do |comment|
         = comment.content
+        = link_to 'Delete comment', post_comment_path(post, comment), method: :delete
     .comment-form
       = form_for [post, post.comments.new] do |f|
         = f.text_field :content, placeholder: 'Add a comment...'
