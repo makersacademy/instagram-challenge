@@ -29,6 +29,12 @@ class ImagesController < ApplicationController
     redirect_to('/')
   end
 
+  def upvote
+    @image = Image.find(params[:id])
+    @image.upvote_by current_user
+    redirect_to ('/')
+  end
+
   def restaurant_params
     params.require(:image).permit(:name, :description, :image)
   end
