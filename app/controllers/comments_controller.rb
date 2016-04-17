@@ -35,6 +35,7 @@ class CommentsController < ApplicationController
 
   def comment_on_current_picture
     @comment = current_picture.comments.create(comment_params)
+    @comment.associate_with(current_user)
     redirect_to current_picture_path
   end
 
