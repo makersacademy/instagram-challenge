@@ -26,10 +26,12 @@
   <% end %>
 <% end %>
 
-<% if user_signed_in? %>
-  <%= link_to "Like", photo_likes_path(photo), method: :post %>
-  <%= form_for [photo, photo.comments.new] do |f| %>
-    <%= f.text_field :content, placeholder: "Add a comment" %>
-    <%= f.submit "Send" %>
+<div>
+  <% if user_signed_in? %>
+    <%= link_to "Like", photo_likes_path(photo), method: :post %>
+    <%= form_for [photo, photo.comments.new] do |f| %>
+      <%= f.text_field :content, placeholder: "Add a comment" %>
+      <%= f.submit "Send" %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
