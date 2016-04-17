@@ -38,8 +38,7 @@ feature 'photos' do
       click_link 'Sign out'
       sign_up(email: 'test2@example.com')
       visit '/photos'
-      click_link 'Delete photo'
-      expect(Photo.all.size).to eq 1
+      expect(page).not_to have_link('Delete photo')
     end
   end
 end
