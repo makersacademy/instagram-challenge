@@ -1,8 +1,10 @@
 %p
   %h3= @picture.title == '' ? 'Untitled' : @picture.title
 %p
-  = link_to 'Edit', edit_picture_path
-  = link_to 'Delete', picture_path, method: :delete
+  - if user_signed_in? && current_user.is_owner_of?(@picture)
+    = link_to 'Edit', edit_picture_path
+    = link_to 'Delete', picture_path, method: :delete
+
 %p= image_tag @picture.image.url(:medium)
 
 - if user_signed_in?

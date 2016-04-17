@@ -20,11 +20,11 @@ feature 'Comments' do
   end
 
   context 'When a picture is deleted' do
-    let!(:pic){ Picture.create(title: 'To be deleted')}
 
     scenario 'associated comments are destroyed too' do
       sign_up_jinis
-      visit picture_path(pic)
+      post_picture_with_image
+      visit_picture
       leave_comment
       click_link 'Delete'
       expect(Comment.count).to eq 0

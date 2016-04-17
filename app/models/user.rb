@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+
+  has_many :pictures
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -13,7 +16,7 @@ class User < ActiveRecord::Base
   validate :validate_username
 
   attr_accessor :login
-  
+
   def validate_username
     if User.where(email: username).exists?
       errors.add(:username, :invalid)
@@ -27,5 +30,9 @@ class User < ActiveRecord::Base
     elsif conditions.has_key?(:username) || conditions.has_key?(:email)
       where(conditions.to_h).first
     end
+  end
+
+  def is_owner_of?(pic)
+    id == pic.user_id
   end
 end
