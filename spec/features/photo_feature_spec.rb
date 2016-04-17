@@ -31,11 +31,19 @@ feature 'photos' do
       expect(page).to have_link 'Delete photo'
     end
 
-    scenario 'users can only delete their own photos' do
+    scenario 'users can delete their own photos' do
+      visit '/photos'
+      click_link 'Delete photo'
+      expect(Photo.all.size).to eq 0
+    end
+
+    scenario 'users cannot delete others\' photos' do
+      visit '/photos'
+      click_link 'Sign out'
+      sign_up(email: 'test2@example.com')
       visit '/photos'
       click_link 'Delete photo'
       expect(Photo.all.size).to eq 1
-
     end
   end
 end
