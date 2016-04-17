@@ -10,18 +10,15 @@ describe User do
                                           password: 'passwordforjinis',
                                           password_confirmation: 'passwordforjinis')}
 
-  let(:own_pic) { double(:picture, user_id: user.id) }
-  let(:others_pic) { double(:picture, user_id: user.id + 1) }
+  let(:own_post) { double(:post, user_id: user.id) }
+  let(:others_post) { double(:post, user_id: user.id + 1) }
 
-  # let(:own_comment) { double(:comment, user_id: user.id) }
-  # let(:others_comment) { double(:comment, user_id: user.id + 1) }
-
-  describe '#is_owner?' do
+  describe '#is_owner_of?(post)' do
     it 'should return true if the user owns the picture' do
-      expect(user.is_owner_of?(own_pic)).to eq true
+      expect(user.is_owner_of?(own_post)).to eq true
     end
     it 'should return false if the user owns the picture' do
-      expect(user.is_owner_of?(others_pic)).to eq false
+      expect(user.is_owner_of?(others_post)).to eq false
     end
   end
 end

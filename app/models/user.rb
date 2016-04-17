@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def is_owner_of?(pic)
-    id == pic.user_id
+  def is_owner_of?(post)
+    id == post.user_id
   end
 end

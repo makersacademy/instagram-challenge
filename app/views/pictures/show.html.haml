@@ -17,5 +17,5 @@
     - @picture.comments.each do |comment|
       %li
         %strong= comment.thoughts
-      - if current_user.id == comment.user_id
+      - if user_signed_in? && current_user.is_owner_of?(comment)
         = link_to 'Edit comment', edit_comment_path(comment)
