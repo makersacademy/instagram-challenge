@@ -13,14 +13,19 @@ feature 'Images' do
   end
 
   context 'visiting the main page with images present' do
-    let!(:test_image) {Image.create(title: DEFAULT_TITLE)}
+    let!(:test_image_1) {Image.create(title: DEFAULT_TITLE)}
+    let!(:test_image_2) {Image.create(title: DEFAULT_TITLE_2)}
 
     before :each do
       visit '/images'
     end
 
     scenario 'show the image title' do
-      expect(page).to have_content test_image.title
+      expect(page).to have_content test_image_1.title
+    end
+
+    scenario 'show the images in reverse chronological order' do
+      expect(DEFAULT_TITLE_2).to appear_before DEFAULT_TITLE
     end
 
   end

@@ -1,4 +1,5 @@
 DEFAULT_TITLE = 'best image on the site'
+DEFAULT_TITLE_2 = '2nd best image on the site'
 
 def helper_add_image title: DEFAULT_TITLE
   visit '/images'
