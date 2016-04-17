@@ -1,6 +1,9 @@
 - if @posts.any?
   - @posts.each do |post|
-    %h2= post.description
+    %p= post.description
+    = link_to "Like", post_likes_path(post), class: 'likes-link'
+    %span.likes_count= post.likes.count
+    = 'Like'.pluralize post.likes.count
 - else
   %h1 No posts yet!
 
