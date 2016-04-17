@@ -7,12 +7,11 @@ class CommentsController < ApplicationController
 
   def create
     @moment = Moment.find(params[:moment_id])
-    @moment.comments.create(comment_params)
+    @moment.comments.create_with_user(comment_params, current_user)
     redirect_to "/moments/#{@moment.id}"
   end
 
   def comment_params
     params.require(:comment).permit(:comment)
   end
-
 end

@@ -9,9 +9,7 @@ feature 'Adding comments' do
     end
 
     scenario 'a user can comment on moment' do
-      p current_path
       add_a_comment
-
       expect(page).to have_content('That is profound')
     end
   end

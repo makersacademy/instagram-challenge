@@ -10,7 +10,7 @@ before_action :authenticate_user!, :except => [:index, :show]
   end
 
   def create
-    @moment = Moment.create(moment_params)
+    @moment = current_user.moments.create(moment_params)
     redirect_to '/moments'
   end
 
