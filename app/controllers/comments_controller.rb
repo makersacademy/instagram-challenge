@@ -19,6 +19,10 @@ class CommentsController < ApplicationController
     update_current_comment
   end
 
+  def destroy
+    destroy_current_comment
+  end
+
   private
 
   def comment_params
@@ -62,5 +66,12 @@ class CommentsController < ApplicationController
       redirect_to picture_path(current_comment.picture_id)
     end
     current_comment
+  end
+
+  def destroy_current_comment
+    @comment = Comment.find(params[:id])
+    picture_id = @comment.picture_id
+    @comment.destroy
+    redirect_to picture_path(picture_id)
   end
 end
