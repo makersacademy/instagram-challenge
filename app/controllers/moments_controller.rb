@@ -23,4 +23,9 @@ class MomentsController < ApplicationController
     redirect_to '/moments'
   end
 
+  def show
+    @moment = Moment.find(params[:id])
+    @comment = @moment.comments.new
+  end
+
 end
