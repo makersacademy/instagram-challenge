@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-    Photo.find_and_delete_photo(params[:id], current_user)
+    flash[:notice] = Photo.find_and_delete_photo(params[:id], current_user)
     redirect_to photos_path
   end
 
@@ -22,14 +22,6 @@ class PhotosController < ApplicationController
     params.require(:photo).permit(:caption, :image)
   end
 
-  private
-  def flash_notice_message(photo)
-    if photo.authorized_to_delete(current_user)
-      'Photo has been deleted'
-    else
-      'You cannot delete this photo'
-    end
-  end
     
 end
 

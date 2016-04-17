@@ -20,7 +20,12 @@ class Photo < ActiveRecord::Base
   end
 
   def delete_if_authorized(current_user)  
-    destroy if authorized_to_delete(current_user)
+    if authorized_to_delete(current_user)
+      destroy
+      'Photo has been deleted'
+    else
+      'You cannot delete this photo'
+    end
   end
 
   def authorized_to_delete(current_user)

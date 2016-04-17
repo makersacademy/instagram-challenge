@@ -4,7 +4,8 @@
     = image_tag photo.image.url(:medium)
     %p= pluralize photo.likes.count, 'like'
     = link_to 'Like photo', photo_likes_url(photo), method: :post
-    = link_to 'Delete photo', photo_path(photo), method: :delete
+    - if current_user && photo.user_id == current_user.id 
+      = link_to 'Delete photo', photo_path(photo), method: :delete
     %h3= '********************'
 - else
   %h1 No photos yet!
