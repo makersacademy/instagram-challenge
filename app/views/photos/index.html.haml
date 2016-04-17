@@ -2,7 +2,9 @@
   - @photos.each do |photo|
     %h5= photo.caption
     = image_tag photo.image.url(:medium)
-    = link_to "Delete photo", photo_path(photo), method: :delete
+    %p= pluralize photo.likes.count, 'like'
+    = link_to 'Like photo', photo_likes_url(photo), method: :post
+    = link_to 'Delete photo', photo_path(photo), method: :delete
     %h3= '********************'
 - else
   %h1 No photos yet!
