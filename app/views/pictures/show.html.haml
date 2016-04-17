@@ -1,0 +1,13 @@
+%p= image_tag(@picture.image(:original))
+%p= @picture.description
+=link_to 'Comment', new_picture_comment_path(@picture)
+=link_to 'Delete', picture_path(@picture), method: :delete
+
+%h6 Comments:
+- if @picture.comments.any?
+  %ul
+    - @picture.comments.reverse.each do |comment|
+      %li
+        = comment.comment
+- else
+  No comments yet!

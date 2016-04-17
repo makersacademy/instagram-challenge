@@ -1,13 +1,61 @@
-Instagram Challenge
+Instagram Challenge (A.K.A. Shnapshots)
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+#### User Stories
+```
+As a person
+So that I can use Shnapshots
+I would like to sign up
+```
+```
+As a person
+So that I can see posted pictures on Shnapshots
+I would like to visit Shnapshots without having to log in
+```
+```
+As a User
+So that I can post pictures to Shnapshots
+I would like to upload pictures 
+```
+```
+As a User
+So that I can share my opinion about a picture
+I would like to be able to comment on it
+```
+```
+As a User
+So that I can show my appreciation for a picture
+I would like to be able to 'like' a photo
+```
+Bonus
+```
+As a User
+So that I can embellish my Pictures
+I would like to apply filters to them
+```
+
+#### Relations
+Users
+- have_many pictures
+- *can make many comments*
+- *can like many pictures*
+
+Pictures
+- belong_to User
+- have_many comments
+- have_many likes
+
+Comments
+- belong_to pictures
+- belong_to users
+
+Likes
+- belong_to users
+- belong_to pictures
+
+
+
+
 
 Task
 -----
