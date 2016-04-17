@@ -14,8 +14,8 @@ feature 'Images' do
   end
 
   context 'visiting the main page with images present' do
-    let!(:test_image_1) {Image.create title: DEFAULT_TITLE}
-    let!(:test_image_2) {Image.create title: DEFAULT_TITLE_2}
+    let!(:test_image_1) {Image.create title: DEFAULT_TITLE, user_id: test_user.id}
+    let!(:test_image_2) {Image.create title: DEFAULT_TITLE_2, user_id: test_user.id}
 
     before :each do
       visit images_path
@@ -23,6 +23,10 @@ feature 'Images' do
 
     scenario 'show the image title' do
       expect(page).to have_content test_image_1.title
+    end
+
+    scenario 'show the image owner' do
+      expect(page).to have_content test_image_1.user.email
     end
 
     scenario 'show the images in reverse chronological order' do

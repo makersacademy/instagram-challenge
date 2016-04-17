@@ -11,11 +11,12 @@ class ImagesController < ApplicationController
   end
 
   def create
-    Image.create image_params
+    current_user.images.create(image_params)
     redirect_to images_path
   end
 
   def image_params
-    params.require(:image).permit :title
+    params.require(:image).permit :title, :user_id
   end
+
 end
