@@ -2,3 +2,10 @@
 %p= @post.caption
 = link_to "Edit caption", edit_post_path(@post)
 = link_to "Delete post", post_path(@post), method: :delete
+- if @post.comments
+  - @post.comments.each do |comment|
+    = comment.content
+.comment-form
+  = form_for [@post, @post.comments.new] do |f|
+    = f.text_field :content, placeholder: 'Add a comment...'
+    = f.submit 'Leave comment'
