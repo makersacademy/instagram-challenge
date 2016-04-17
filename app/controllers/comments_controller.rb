@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    current_comment
+    check_editing_permission
   end
 
   def update
@@ -53,6 +53,14 @@ class CommentsController < ApplicationController
 
   def update_current_comment
     current_comment.update(comment_params)
-    redirect_to picture_path(@comment.picture_id)
+    redirect_to picture_path(current_comment.picture_id)
+  end
+
+  def check_editing_permission
+    unless current_user.is_owner_of?(current_comment)
+      flash[:notice] = 'You cannot edit this comment'
+      redirect_to picture_path(current_comment.picture_id)
+    end
+    current_comment
   end
 end

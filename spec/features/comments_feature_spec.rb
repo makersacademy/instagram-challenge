@@ -40,6 +40,13 @@ feature 'Comments' do
       visit_picture
       expect(page).not_to have_link 'Edit comment'
     end
+
+    # scenario 'user cannot delete other users comments' do
+    #   click_link 'Sign out'
+    #   sign_up_jinis2
+    #   visit_picture
+    #   expect(page).not_to have_link 'Delete comment'
+    # end
   end
 
   context 'When a picture is deleted' do
