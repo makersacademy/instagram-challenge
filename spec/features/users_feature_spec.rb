@@ -38,4 +38,12 @@ feature "User can sign in and out" do
       expect(page).not_to have_link('Sign up')
     end
   end
+
+  context 'restrictions', type: :user do
+    it 'cannot post images when not logged in' do
+      visit('/')
+      click_link 'Post an image'
+      expect(page).to have_content('You need to sign in or sign up before continuing.')
+    end
+  end
 end

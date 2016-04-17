@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'posts' do
   context 'no posts' do
     scenario 'should display a prompt to post an image' do
-      visit '/posts'
+      visit '/'
       expect(page).to have_content 'No posts yet'
       expect(page).to have_link 'Post an image'
     end
@@ -15,14 +15,14 @@ feature 'posts' do
     let(:post2) { build(:post) }
 
     scenario 'display posts' do
-      visit '/posts'
+      visit '/'
       expect(page).to have_content post1.caption
       expect(page).to have_xpath("//img[contains(@src,'monkey.jpg')]")
     end
 
     context 'creating posts' do
       scenario 'user can post image with caption' do
-        visit '/posts'
+        visit '/'
         click_link 'Post an image'
         attach_file 'post[image]', "#{Rails.root}/spec/assets/images/monkey.jpg"
         fill_in 'Caption', with: post2.caption
@@ -32,14 +32,14 @@ feature 'posts' do
         expect(page).to have_xpath("//img[contains(@src,'monkey.jpg')]")
       end
       scenario 'needs an image to create a post' do
-        visit '/posts'
+        visit '/'
         click_link 'Post an image'
         fill_in 'Caption', with: post2.caption
         click_button 'Post image'
         expect(page).to have_content("Image can't be blank")
       end
       scenario 'uploaded file must be image', focus: true do
-        visit '/posts'
+        visit '/'
         click_link 'Post an image'
         attach_file 'post[image]', "#{Rails.root}/spec/assets/WordDoc.docx"
         fill_in 'Caption', with: post2.caption
@@ -50,7 +50,7 @@ feature 'posts' do
 
     context 'showing posts' do
       scenario 'user can view post' do
-       visit '/posts'
+       visit '/'
        click_link "post#{post1.id}"
        expect(page).to have_xpath("//img[contains(@src,'monkey.jpg')]")
        expect(page).to have_content post1.caption
@@ -61,7 +61,7 @@ feature 'posts' do
 
     context 'updating posts' do
       scenario 'user can edit caption' do
-       visit '/posts'
+       visit '/'
        click_link "post#{post1.id}"
        click_link 'Edit caption'
        fill_in 'Caption', with: post2.caption
@@ -73,7 +73,7 @@ feature 'posts' do
 
     context 'deleting restaurants' do
       scenario 'removes a restaurant when a user clicks a delete link' do
-        visit '/posts'
+        visit '/'
         click_link "post#{post1.id}"
         click_link 'Delete post'
         expect(page).not_to have_xpath("//img[contains(@src,'monkey.jpg')]")
