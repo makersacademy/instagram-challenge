@@ -38,8 +38,8 @@ feature 'sharing moments' do
     scenario 'user can go to the image page' do
       share_a_moment_signed_in
       expect(current_path).to eq('/moments')
-      find(:xpath, "//a/img[@alt='moment']/..").click
-      expect(page).to have_content('hello')
+      click_link("moment")
+      expect(page).to have_content('Something profound')
       expect(page).to have_css("img[src*='Scissors_icon']")
     end
   end

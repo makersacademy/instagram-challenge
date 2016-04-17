@@ -17,7 +17,8 @@ def share_a_moment_signed_in
 end
 
 def add_a_comment
-  find("#moment").click
-  fill_in 'comment', with: 'That is profound'
+  click_link("moment")
+  p current_path
+  fill_in 'comment[comment]', with: 'That is profound'
   click_button 'Comment'
 end
