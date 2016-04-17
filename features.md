@@ -18,6 +18,8 @@
 ### LIKES
 * can only like once
 * BONUS --> UNLIKE?
+* Like using Ajax
+* BONUS --> Like using heart
 
 ### --> partials
 ### --> CSS
