@@ -1,0 +1,9 @@
+%h2 Snapgram
+= link_to 'Add Photo', new_picture_path
+
+- if @pictures.any?
+  - @pictures.each do |picture|
+    = link_to image_tag(picture.image.url(:medium), :alt=>'photo'), picture_path(picture.id)
+    = picture.caption
+- else
+  No pictures yet!
