@@ -5,6 +5,8 @@ describe Photo, type: :model do
 
   it { is_expected.to belong_to :user }
 
+  it { is_expected.to have_many(:likes).dependent :destroy }
+
   describe "#created_by?" do
     it "returns true if the user created the photo" do
       user = FactoryGirl.create(:user)
