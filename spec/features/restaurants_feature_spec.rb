@@ -8,4 +8,17 @@ feature 'Images' do
       expect(page).to have_link 'Add an image'
     end
   end
+
+  context 'images have been added' do
+
+    before do
+      Image.create(title: 'Musafa')
+    end
+
+    scenario 'display title of image' do
+      visit '/images'
+      expect(page).to have_content('Musafa')
+      expect(page).not_to have_content('No images yet')
+    end
+  end
 end
