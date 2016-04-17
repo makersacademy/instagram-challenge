@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Picture:' do
   context 'When no pictures added' do
     scenario 'prompts users to post a picture' do
-      visit pictures_path
+      sign_up_jinis
       expect(page).to have_content 'No picture has been added'
       expect(page).to have_link 'Post a picture'
     end
@@ -19,7 +19,15 @@ feature 'Picture:' do
   end
 
   context 'Posting a picture with image' do
-    before { post_picture_with_image }
+    before do
+      sign_up_jinis
+      post_picture_with_image
+    end
+
+    scenario 'user must be signed in to post a picture' do
+      click_link 'Sign out'
+      expect(page).not_to have_link 'Post a picture'
+    end
 
     scenario 'user can post a picture with title and image' do
       expect(page).to have_xpath("//a[contains(@text, 'Bird')]")
@@ -35,8 +43,12 @@ feature 'Picture:' do
   end
 
   context 'Editing a picture' do
-    let!(:pic){ Picture.create(title: 'No So Good Title')}
-    before { edit_title }
+    let!(:pic){ Picture.create(title: 'No So Good Title') }
+
+    before do
+      sign_up_jinis
+      edit_title
+    end
 
     scenario 'user can edit picture title from picture page' do
       expect(current_path).to eq picture_path(pic)
@@ -53,6 +65,7 @@ feature 'Picture:' do
     let!(:pic){ Picture.create(title: 'To be deleted')}
 
     scenario 'user can delete picture from picture page' do
+      sign_up_jinis
       visit picture_path(pic)
       click_link 'Delete'
       expect(current_path).to eq pictures_path
