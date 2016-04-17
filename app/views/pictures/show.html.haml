@@ -1,19 +1,4 @@
-%p= image_tag(@picture.image(:original))
-%p= @picture.description
-= link_to 'Comment', new_picture_comment_path(@picture)
--# = link_to 'Like', picture_likes_path(@picture), class: 'likes-link'
-= link_to 'Delete Picture', picture_path(@picture), method: :delete
+%p= image_tag @picture.image.url(:original)
+%p= @picture.caption
 
-%p
-- if @picture.likes.any?
-  ♥
-  %span.like_count= @picture.likes.count
-- else
-  Be the first to like this!
-
-%h6 Comments:
-- if @picture.comments.any?
-  - @picture.comments.reverse.each do |comment|
-    %p= comment.comment
-- else
-  No comments yet!
+= link_to 'Edit Picture', edit_picture_path(@picture)

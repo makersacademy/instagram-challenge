@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
-
-resources :pictures, shallow: true do
-  resources :comments
-  resources :likes
-end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  root 'pictures#index'
+  resources :pictures
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

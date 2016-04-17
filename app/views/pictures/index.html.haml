@@ -1,15 +1,9 @@
+%h2 Snapgram
+= link_to 'Add Photo', new_picture_path
+
 - if @pictures.any?
   - @pictures.each do |picture|
-    -# = image_tag picture.image.url(:original)
-    =link_to image_tag(picture.image.url(:medium), :alt=>'photo'), picture_path(picture)
-    %br= picture.description
-    = link_to 'Like', picture_likes_path(picture), class: 'likes-link'
-
-    %p
-    ♥
-    %span.like_count= picture.likes.count
-    %br
+    = link_to image_tag(picture.image.url(:medium), :alt=>'photo'), picture_path(picture.id)
+    = picture.caption
 - else
-  %h5 No pictures yet!
-
-=link_to 'Add picture', new_picture_path
+  No pictures yet!
