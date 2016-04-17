@@ -3,6 +3,7 @@ ruby "2.3.0"
 
 gem 'devise'
 gem 'haml'
+gem 'paperclip'
 
 
 #Rails Default Gems.

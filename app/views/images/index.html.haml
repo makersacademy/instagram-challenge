@@ -1,2 +1,9 @@
-%h2 'No Images Yet'
-= link_to 'Add new image', new_image_path
+- if @images.empty?
+  %h2 'No Images Yet'
+- else
+  %ul.image_list
+    - @images.each do |image|
+      %li.image_entry
+        =image.title
+
+=link_to 'Add new image', new_image_path
