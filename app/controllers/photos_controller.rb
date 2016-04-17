@@ -9,14 +9,11 @@ class PhotosController < ApplicationController
   end
 
   def create
-    photo = Photo.create(photo_params)
-    photo.user_id = current_user.id
-    photo.save
-    redirect_to '/photos'
+    build_photo(photo_params, current_user.id)
+    redirect_to photos_path
   end
 
   def destroy
-    puts @photo
     @photo = Photo.find(params[:id])
     unless current_user.has_created?(@photo)
       flash[:notice] = 'You cannot delete this photo'
@@ -30,4 +27,6 @@ class PhotosController < ApplicationController
   def photo_params
     params.require(:photo).permit(:caption, :image)
   end
+
+  private
 end
