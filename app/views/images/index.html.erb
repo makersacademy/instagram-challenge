@@ -1,38 +1,51 @@
-
-<% if @images.any? %>
-  <ul>
+<section class='feed'>
+  <% if @images.any? %>
     <% @images.each do |image| %>
-      <%= image_tag image.image.url(:thumb) %>
-        <li> 
-          <%= image.name %> <br> <%= image.description %> <%= image.user.username %>
-        </li>
+      <section class='segment'>
+        <section id="post">
+          <section id="image_title">
+            <%= image.name %> 
+          </section>
 
-      <%= link_to (image.user.username), image_path(image.user_id) %>
+          <section id="image">
+            <%= image_tag image.image.url(:medium) %>
+          </section>
 
-      <% if current_user && current_user.id == image.user_id %>
-        <%= link_to ("Remove image"), image_path(image), method: :delete %>
-      <% end %>
+          <section id='description'>
+          <%= image.description %> 
+          </section>
 
-      <%= link_to ('Comment'), new_image_comment_path(image) %>
-      <%= link_to ('Likes'), like_image_path(image), method: :put %>
-      <%= image.get_upvotes.size%>
-      
-      <% if image.comments.any? %>
-        <ul>
-          <% image.comments.each do |comment|%>
-          <li>  <%= comment.comment%> </li>
-          
-            <% if current_user && current_user.id == comment.user_id %>
-              <%= link_to ('Delete comment'), image_comment_path(image,comment), method: :delete %>
+        </section>
+
+        <section id='footer'>
+        <%= link_to image.user.username, image_path(image.user_id), class: "button" %>
+        <% if current_user && current_user.id == image.user_id %>
+          <%= link_to ("Remove image"), image_path(image), method: :delete %>
+        <% end %>
+        <%= link_to ('Likes'), like_image_path(image), method: :put %>
+        <%= image.get_upvotes.size %>
+        <%= link_to ('Comment'), new_image_comment_path(image), class: "button" %>
+        </section .button>
+
+        <section id="comments">
+          <h3>Comments</h3>
+            <% if image.comments.any? %>
+              <% image.comments.each do |comment|%>
+                <section>
+                  <%= comment.comment%> 
+                </section>
+
+                <section .button>
+                  <% if current_user && current_user.id == comment.user_id %>
+                    <%= link_to ('Delete comment'), image_comment_path(image,comment), method: :delete %>
+                  <% end %>
+                </section>  
+              <% end %> 
             <% end %>
-          <% end %>
-        </ul>
-      <% end %>
+        </section>
+      </section>
     <%end%>  
-  </ul>
-
-<% else %>
-
-No images added yet
-
-<%end%>
+  <% else %>
+    No images added yet
+  <%end%>
+</section>
