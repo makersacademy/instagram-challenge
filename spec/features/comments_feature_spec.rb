@@ -20,22 +20,60 @@ feature "adding comments" do
     end
   end
 
+  context "editing comments" do
+    scenario "allows user to edit a comment" do
+      sign_in_as(user)
+      visit photos_path
+      find(".edit-comment").click_link "Edit"
+      fill_in :comment_content, with: "More fluff!"
+      click_button "Save"
+      expect(page).to have_content "More fluff!"
+    end
 
-  scenario "allows user to edit a comment" do
-    visit photos_path
-    find(".edit-comment").click_link "Edit"
+    context "cannot edit other users' comments" do
+      before do
+        other_user = FactoryGirl.create(:user)
+        sign_in_as(other_user)
+      end
 
-    puts current_url
-    require 'pry'; binding.pry
+      scenario "cannot edit other users comments on user interface" do
+        visit photos_path
+        expect(page).not_to have_css ".edit-comment"
+      end
 
-    fill_in :comment_content, with: "More fluff!"
-    click_button "Save"
-    expect(page).to have_content "More fluff!"
+      scenario "cannot edit other comments via a update request" do
+        page.driver.submit :patch, comment_path(comment.id), status: "Hacked comment"
+        expect(current_path).to eq photos_path
+        expect(page).to have_content comment.content
+        expect(page).not_to have_content "Hacked comment"
+      end
+    end
   end
 
-  scenario "allows user to delete a comment" do
-    visit photos_path
-    find(".delete-comment").click_link "Delete"
-    expect(page).not_to have_content comment.content
+  context "deleting comments" do
+    scenario "allows user to delete a comment" do
+      sign_in_as(user)
+      visit photos_path
+      find(".delete-comment").click_link "Delete"
+      expect(page).not_to have_content comment.content
+    end
+
+    context "cannot delete other user's comments" do
+      before do
+        other_user = FactoryGirl.create(:user)
+        sign_in_as(other_user)
+      end
+
+      scenario "cannot delete other users comments on user interface" do
+        visit photos_path
+        expect(page).not_to have_css ".delete-comment"
+      end
+
+      scenario "cannot delete other users comments via a delete request" do
+        page.driver.submit :delete, comment_path(comment.id), {}
+        expect(current_path).to eq photos_path
+        expect(page).to have_content comment.content
+      end
+    end
   end
 end

@@ -13,13 +13,13 @@ class CommentsController < ApplicationController
 
   def update
     comment = Comment.find(params[:id])
-    comment.update(comment_params)
+    comment.update(comment_params) if comment.created_by?(current_user)
     redirect_to photos_path
   end
 
   def destroy
     comment = Comment.find(params[:id])
-    comment.destroy
+    comment.destroy if comment.created_by?(current_user)
     redirect_to photos_path
   end
 
