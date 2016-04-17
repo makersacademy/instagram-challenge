@@ -48,20 +48,21 @@ feature "User can sign in and out" do
       click_link 'Post an image'
       expect(page).to have_content('You need to sign in or sign up before continuing.')
     end
-    # context 'creator of post signed in' do
-    #   scenario 'User can only edit caption of post they have created' do
-    #     visit '/'
-    #     click_link "post#{post1.id}"
-    #     click_link 'Edit caption'
-    #     expect(page).not_to have_button 'Update Restaurant'
-    #     expect(page).to have_content 'Cannot edit restaurant'
-    #   end
-    #
-    #   scenario 'User can only delete post they have created' do
-    #     click_link "Delete #{restaurant.name}"
-    #     expect(page).to have_content restaurant.name
-    #     expect(page).to have_content 'Cannot delete restaurant'
-    #   end
-    # end
+    context 'creator of post not signed in' do
+
+      before {user_sign_in(user2)}
+
+      scenario 'User can only edit caption of post they have created' do
+        visit '/'
+        click_link "post#{post.id}"
+        expect(page).not_to have_link 'Edit caption'
+      end
+
+      # scenario 'User can only delete post they have created' do
+      #   click_link "Delete #{restaurant.name}"
+      #   expect(page).to have_content restaurant.name
+      #   expect(page).to have_content 'Cannot delete restaurant'
+      # end
+    end
   end
 end

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'comments' do
 
+  let(:user) { create(:user) }
   let!(:post) { create(:post) }
   let(:comment1) { build(:comment) }
   let(:comment2) { build(:comment) }

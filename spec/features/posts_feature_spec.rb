@@ -13,7 +13,7 @@ feature 'posts' do
 
     let!(:post1) { create(:post) }
     let(:post2) { build(:post) }
-    let(:user) { create(:user) }
+    let!(:user) { create(:user) }
 
     before do
       user_sign_in(user)
@@ -25,9 +25,9 @@ feature 'posts' do
       expect(page).to have_xpath("//img[contains(@src,'monkey.jpg')]")
     end
 
-    context 'creating posts' do
+    context 'creating posts', js: true, focus: true do
       scenario 'user can post image with caption' do
-        visit '/'
+        byebug
         click_link 'Post an image'
         attach_file 'post[image]', "#{Rails.root}/spec/assets/images/monkey.jpg"
         fill_in 'Caption', with: post2.caption
@@ -37,14 +37,14 @@ feature 'posts' do
         expect(page).to have_xpath("//img[contains(@src,'monkey.jpg')]")
       end
       scenario 'needs an image to create a post' do
-        visit '/'
+        # visit '/'
         click_link 'Post an image'
         fill_in 'Caption', with: post2.caption
         click_button 'Post image'
         expect(page).to have_content("Image can't be blank")
       end
       scenario 'uploaded file must be image', focus: true do
-        visit '/'
+        # visit '/'
         click_link 'Post an image'
         attach_file 'post[image]', "#{Rails.root}/spec/assets/WordDoc.docx"
         fill_in 'Caption', with: post2.caption
