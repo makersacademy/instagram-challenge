@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby "2.3.0"
 
+gem 'devise'
+
 #Rails Default Gems.
 gem 'rails', '4.2.6'
 gem 'sqlite3'
