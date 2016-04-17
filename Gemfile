@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+ruby '2.2.3'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
@@ -31,7 +32,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+# gem 'bcrypt', '~> 3.1.7'
+gem 'haml-rails', '~> 0.9'
+gem 'shoulda'
+gem 'devise'
+gem 'paperclip'
+# Use Unicorn as the app server
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -48,4 +54,6 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'rspec-collection_matchers'
+  gem 'database_cleaner'
 end
