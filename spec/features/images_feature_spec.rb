@@ -1,6 +1,6 @@
 feature 'Images' do
-  let!(:test_user) {User.create(email: DEFAULT_MAIL, password: DEFAULT_PASSWORD)}
-  
+  let!(:test_user) {User.create email: DEFAULT_MAIL, password: DEFAULT_PASSWORD}
+
   context 'visiting the main page with no images added yet' do
 
     before :each do
@@ -14,8 +14,8 @@ feature 'Images' do
   end
 
   context 'visiting the main page with images present' do
-    let!(:test_image_1) {Image.create(title: DEFAULT_TITLE)}
-    let!(:test_image_2) {Image.create(title: DEFAULT_TITLE_2)}
+    let!(:test_image_1) {Image.create title: DEFAULT_TITLE}
+    let!(:test_image_2) {Image.create title: DEFAULT_TITLE_2}
 
     before :each do
       visit images_path

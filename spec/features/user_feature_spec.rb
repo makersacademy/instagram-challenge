@@ -1,5 +1,5 @@
 describe 'Users' do
-  let!(:test_user) {User.create(email: DEFAULT_MAIL, password: DEFAULT_PASSWORD)}
+  let!(:test_user) {User.create email: DEFAULT_MAIL, password: DEFAULT_PASSWORD}
 
   context 'logged out user on the main page' do
 
@@ -35,8 +35,9 @@ describe 'Users' do
       visit new_image_path
     end
 
-    scenario 'should be redirected to the main page' do
+    scenario 'should be redirected to the main page with a warning' do
       expect(current_path).to eq images_path
+      expect(page).to have_content 'You need to be signed in to do that!'
     end
 
   end

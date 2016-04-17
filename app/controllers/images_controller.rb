@@ -11,11 +11,11 @@ class ImagesController < ApplicationController
   end
 
   def create
-    Image.create(image_params)
+    Image.create image_params
     redirect_to images_path
   end
 
   def image_params
-    params.require(:image).permit(:title)
+    params.require(:image).permit :title
   end
 end
