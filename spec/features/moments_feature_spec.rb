@@ -51,6 +51,7 @@ feature 'sharing moments' do
 
     scenario 'users can delete moments' do
       #changed functionality, need to click image link
+      click_link("moment")
       click_link 'Delete'
       expect(page).to have_content('Moment deleted')
       expect(page).not_to have_content('Something profound')

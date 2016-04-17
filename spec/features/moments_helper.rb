@@ -18,7 +18,6 @@ end
 
 def add_a_comment
   click_link("moment")
-  p current_path
   fill_in 'comment[comment]', with: 'That is profound'
   click_button 'Comment'
 end
