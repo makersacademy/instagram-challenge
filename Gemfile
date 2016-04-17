@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'aws-sdk'
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
@@ -33,6 +35,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'rspec-collection_matchers'
   gem 'database_cleaner'
+  gem 'dotenv-rails'
 end
 
 group :development do

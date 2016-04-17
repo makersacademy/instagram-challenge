@@ -1,13 +1,26 @@
-Welcome to <%= current_user.username %> Wall
+<header>
+  Welcome to <%= current_user.username %> Wall
+</header>
 
+<body>
   <% @images.each do |image| %>
-    <%= image.name %>
-    <%= image_tag image.image.url(:medium) %>
-    <%= image.description %>
+    
+    <header>
+      <%= image.name %>
+    </header>
+    
+    <section>
+      <%= image_tag image.image.url(:medium) %>
+      <%= image.description %>
+    </section>
 
-    <% if image.comments.any? %>
-      <% image.comments.each do |comment|%>
-      <%= comment.comment%>
+    <section>
+      <% if image.comments.any? %>
+        <% image.comments.each do |comment|%>
+        <%= comment.comment%>
+        <% end %>
       <% end %>
-    <% end %>
+    </section>
+
   <% end %>
+</body>
