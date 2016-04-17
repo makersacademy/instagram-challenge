@@ -30,4 +30,16 @@ feature 'posts' do
       expect(current_path).to eq '/posts'
     end
   end
+
+  context 'viewing restaurants' do
+
+  let!(:firstpost){Post.create(description:'First post')}
+
+    scenario 'lets a user view a post' do
+     visit '/posts'
+     click_link 'firstpost'
+     expect(page).to have_content 'First post'
+     expect(current_path).to eq "/posts/#{firstpost.id}"
+    end
+  end
 end
