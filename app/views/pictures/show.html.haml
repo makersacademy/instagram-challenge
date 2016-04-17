@@ -4,7 +4,11 @@
   = link_to 'Edit', edit_picture_path
   = link_to 'Delete', picture_path, method: :delete
 %p= image_tag @picture.image.url(:medium)
-= link_to 'Comment', new_picture_comment_path(@picture)
+
+- if user_signed_in?
+  = link_to 'Comment', new_picture_comment_path(@picture)
+- else
+  %p= 'Sign up/in to leave a comment'
 
 %ul
   - if @picture.comments.any?

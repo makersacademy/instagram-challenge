@@ -11,6 +11,14 @@ feature 'Comments' do
     expect(page).to have_content 'Beautiful picture!'
   end
 
+  scenario 'user must be signed in to leave a comment' do
+    sign_up_jinis
+    post_picture_with_image
+    click_link 'Sign out'
+    visit_picture
+    expect(page).not_to have_link 'Comment'
+  end
+
   context 'When a picture is deleted' do
     let!(:pic){ Picture.create(title: 'To be deleted')}
 
