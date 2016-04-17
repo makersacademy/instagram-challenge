@@ -16,6 +16,11 @@ class Photo < ActiveRecord::Base
   end
 
   def time_posted
-    "#{Time.now.hour - created_at.hour}h"
+    return "#{Time.now.hour - created_at.hour}h" if posted_today?
+    "#{Time.now.day - created_at.day}d"
+  end
+
+  def posted_today?
+    Time.now.day == created_at.day
   end
 end

@@ -52,7 +52,7 @@ feature "photos" do
     scenario "should display photos in reverse chronological order" do
       pic_2 = FactoryGirl.create(:photo, created_at: Time.parse("2016-04-17 12:02:56 +0100"))
       visit photos_path
-      
+
     end
   end
 
@@ -110,7 +110,7 @@ feature "photos" do
     scenario "allows user to delete a photo" do
       sign_in_as(user)
       visit photos_path
-      click_link "Delete"
+      find(".delete-photo").click_link "Delete"
 
       expect(page).not_to have_css "img[src*=kitten]"
       expect(page).not_to have_content photo.status
