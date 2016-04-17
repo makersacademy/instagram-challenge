@@ -12,7 +12,6 @@ class PicturesController < ApplicationController
 
   def create
     create_picture
-    redirect_to pictures_path
   end
 
   def show
@@ -20,17 +19,15 @@ class PicturesController < ApplicationController
   end
 
   def edit
-    current_picture
+    check_editing_permission
   end
 
   def update
     update_current_picture
-    redirect_to picture_path
   end
 
   def destroy
     destroy_current_picture
-    redirect_to pictures_path
   end
 
   private
@@ -50,6 +47,7 @@ class PicturesController < ApplicationController
   def create_picture
     @picture = current_user.pictures.new(picture_params)
     @picture.save
+    redirect_to pictures_path
   end
 
   def current_picture
@@ -58,10 +56,20 @@ class PicturesController < ApplicationController
 
   def update_current_picture
     @picture = current_picture.update(picture_params)
+    redirect_to picture_path
   end
 
   def destroy_current_picture
     current_picture.destroy
     flash[:notice] = 'Picture has been deleted'
+    redirect_to pictures_path
+  end
+
+  def check_editing_permission
+    unless current_user.is_owner_of?(current_picture)
+      flash[:notice] = 'You cannot edit this picture'
+      redirect_to picture_path
+    end
+    current_picture
   end
 end
