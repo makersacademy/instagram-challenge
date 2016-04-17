@@ -7,12 +7,12 @@
 ### PHOTOS
 <!-- * caption: string -->
 <!-- * can only delete/edit own pic -->
-* time posted
+<!-- * time posted -->
 <!-- * posted by -->
 
 
 ### COMMENTS
-* can only edit/delete own comment
+<!-- * can only edit/delete own comment -->
 <!-- * posted by -->
 
 ### LIKES

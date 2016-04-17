@@ -23,12 +23,14 @@ describe Photo, type: :model do
       end
 
       it "displays the hour difference if photo posted on the same day" do
-        photo = FactoryGirl.create(:photo, created_at: Time.parse("2016-04-17 09:02:56 +0100"))
+        today = Time.parse("2016-04-17 09:02:56 +0100")
+        photo = FactoryGirl.create(:photo, created_at: today)
         expect(photo.time_posted).to eq "4h"
       end
 
       it "displays the day difference if photo posted on a different day" do
-        photo = FactoryGirl.create(:photo, created_at: Time.parse("2016-04-15 09:02:56 +0100"))
+        not_today = Time.parse("2016-04-15 09:02:56 +0100")
+        photo = FactoryGirl.create(:photo, created_at: not_today)
         expect(photo.time_posted).to eq "2d"
       end
     end
@@ -41,12 +43,14 @@ describe Photo, type: :model do
     end
 
     it "returns true if photo is posted today" do
-      photo = FactoryGirl.create(:photo, created_at: Time.parse("2016-04-17 09:02:56 +0000"))
+      today = Time.parse("2016-04-17 09:02:56 +0100")
+      photo = FactoryGirl.create(:photo, created_at: today)
       expect(photo).to be_posted_today
     end
 
     it "returns false if photo is not posted today" do
-      photo = FactoryGirl.create(:photo, created_at: Time.parse("2016-04-15 09:02:56 +0000"))
+      not_today = Time.parse("2016-04-15 09:02:56 +0100")
+      photo = FactoryGirl.create(:photo, created_at: not_today)
       expect(photo).not_to be_posted_today
     end
   end

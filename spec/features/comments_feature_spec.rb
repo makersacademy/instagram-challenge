@@ -42,10 +42,10 @@ feature "adding comments" do
       end
 
       scenario "cannot edit other comments via a update request" do
-        page.driver.submit :patch, comment_path(comment.id), status: "Hacked comment"
+        page.driver.submit :patch, comment_path(comment.id), status: "Hacking"
         expect(current_path).to eq photos_path
         expect(page).to have_content comment.content
-        expect(page).not_to have_content "Hacked comment"
+        expect(page).not_to have_content "Hacking"
       end
     end
   end

@@ -36,7 +36,8 @@ feature "photos" do
   end
 
   context "displaying photos" do
-    let!(:pic_1) { FactoryGirl.create(:photo, created_at: Time.parse("2016-04-15 11:02:56 +0000")) }
+    let!(:earlier) { Time.parse("2016-04-15 11:02:56 +0000") }
+    let!(:pic_1) { FactoryGirl.create(:photo, created_at: earlier) }
 
     before do
       now = Time.parse("2016-04-17 13:02:56 +0100")
@@ -49,7 +50,8 @@ feature "photos" do
     end
 
     scenario "should display photos in reverse chronological order" do
-      pic_2 = FactoryGirl.create(:photo, created_at: Time.parse("2016-04-17 12:02:56 +0100"))
+      later = Time.parse("2016-04-17 12:02:56 +0100")
+      pic_2 = FactoryGirl.create(:photo, created_at: later)
       visit photos_path
 
       within "li ul:first-child" do
