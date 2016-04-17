@@ -11,6 +11,10 @@ feature 'Images' do
       expect(page).to have_content 'No Images Yet'
     end
 
+    scenario 'should not show the add image link' do
+      expect(page).not_to have_link 'Add new image' 
+    end
+
   end
 
   context 'visiting the main page with images present' do
