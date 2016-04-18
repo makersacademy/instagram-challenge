@@ -16,7 +16,7 @@ feature 'posts' do
     let!(:user) { create(:user) }
 
     before do
-      user_sign_in(user)
+      user_sign_in(post2.user)
     end
 
     scenario 'display posts' do
@@ -25,9 +25,8 @@ feature 'posts' do
       expect(page).to have_xpath("//img[contains(@src,'monkey.jpg')]")
     end
 
-    context 'creating posts', js: true, focus: true do
+    context 'creating posts' do
       scenario 'user can post image with caption' do
-        byebug
         click_link 'Post an image'
         attach_file 'post[image]', "#{Rails.root}/spec/assets/images/monkey.jpg"
         fill_in 'Caption', with: post2.caption
