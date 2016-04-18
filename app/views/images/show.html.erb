@@ -1,0 +1,26 @@
+<header>
+  Welcome to <%= current_user.username %> Wall
+</header>
+
+<body>
+  <% @images.each do |image| %>
+    
+    <header>
+      <%= image.name %>
+    </header>
+    
+    <section>
+      <%= image_tag image.image.url(:medium) %>
+      <%= image.description %>
+    </section>
+
+    <section>
+      <% if image.comments.any? %>
+        <% image.comments.each do |comment|%>
+        <%= comment.comment%>
+        <% end %>
+      <% end %>
+    </section>
+
+  <% end %>
+</body>
