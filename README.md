@@ -1,26 +1,51 @@
-Instagram Challenge
+J-Instagram
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+![Imgur](http://i.imgur.com/oDehFA6.png)
 
-Task
------
+Introduction :camera:
+------------------
+J-Instagram is a little Instagram clone that provides a platform for users to post and comment on photos.
 
-Build Instagram: Simple huh!
+Features :star2:
+--------------
+* Post a photo with a status;
+* User can edit the status or delete their photo;
+* User can comment on a photo;
+* User can like a photo.
 
-Bonus if you can write your own set of sensible user stories!
+How to use J-Instagram :page_with_curl:
+-------------------------------------
+Click [here](http://j-instagram.herokuapp.com/) to explore J-Instagram online.
 
-As usual please start by
+To install and use locally:
+```
+$ git clone git@github.com:junyuanxue/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle
+$ rake db:create
+$ rake db:migrate
+$ rails s
+```
+Then open your browser, visit `http://localhost:3000`.
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+Testing :white_check_mark:
+---------
+This project is test-driven with RSpec-Capybara. To run all the tests, simply run `rspec` in your terminal.
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Tools used :wrench:
+-----------
+* Ruby on Rails
+* RSpec-Capybara
+* Active Record
+* Devise
+* Paperclip
+* Shoulda
+* Factory Girl
+* AWS S3
 
-Bonus if you can add filters!
+Author :cat:
+----------------------
+Junyuan Xue
+
+[github](https://github.com/junyuanxue)  [blog](https://spinningcodes.wordpress.com/)
