@@ -21,8 +21,8 @@
 * Like using Ajax
 * BONUS --> Like using heart
 
-### --> partials
-<!-- ### --> CSS -->
+### --> partials --> MORE PARTIALS!
+<!-- ### CSS -->
 
 
 ### BONUS: FILTER
