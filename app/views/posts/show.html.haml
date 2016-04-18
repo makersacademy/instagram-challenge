@@ -1,2 +1,5 @@
-    = image_tag post.image.url(:large)
-    %p= post.description
+= image_tag @post.image.url(:medium)
+%span.likes_count= @post.likes.count
+= 'Like'.pluralize @post.likes.count
+= link_to "Like", post_likes_path(@post), class: 'likes-link'
+%p= @post.description

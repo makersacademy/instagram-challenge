@@ -20,7 +20,7 @@ feature 'posts' do
     end
   end
 
-  context 'creating restaurants' do
+  context 'creating posts' do
     scenario 'prompts user to fill out a form, then displays the new post' do
       visit '/posts'
       click_link 'New post'
@@ -31,15 +31,29 @@ feature 'posts' do
     end
   end
 
-  context 'viewing restaurants' do
+  context 'viewing posts' do
 
   let!(:firstpost){Post.create(description:'First post')}
 
-    scenario 'lets a user view a post' do
+    xscenario 'lets a user view a post' do
      visit '/posts'
-     click_link 'firstpost'
+     click_link(1)
      expect(page).to have_content 'First post'
      expect(current_path).to eq "/posts/#{firstpost.id}"
+    end
+  end
+
+  context 'editing posts' do
+
+  before { Post.create description: 'First post' }
+
+    scenario 'let a user edit a post' do
+     visit '/posts'
+     click_link 'Edit'
+     fill_in 'Description', with: 'This is my first post'
+     click_button 'Update Post'
+     expect(page).to have_content 'This is my first post'
+     expect(current_path).to eq '/posts'
     end
   end
 end
