@@ -266,4 +266,6 @@ Devise.setup do |config|
 config.omniauth :facebook, 
 Rails.application.secrets.instergraham_app_id, 
 Rails.application.secrets.instergraham_app_secret
+provider :facebook, 'YOUR_APP_ID', 'YOUR_SECRET_KEY', 
+           {:scope => 'PERMISSION_1, PERMISSION_2, PERMISSION_3...', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 end
