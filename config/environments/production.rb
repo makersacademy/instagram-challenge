@@ -24,7 +24,7 @@ Rails.application.configure do
     # Control-Request-Method', not the normal Request Method.
     resource '*', :headers => :any, :methods => [:get, :post, :options, :delete, :put, :patch], credentials: true
   end
-
+end
 
 
 

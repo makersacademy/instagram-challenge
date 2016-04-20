@@ -24,7 +24,7 @@ Rails.application.configure do
     # Control-Request-Method', not the normal Request Method.
     resource '*', :headers => :any, :methods => [:get, :post, :options, :delete, :put, :patch], credentials: true
   end
-
+end
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
