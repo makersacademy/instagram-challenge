@@ -14,7 +14,7 @@ Online, account based platform for sharing, commenting on and liking photos. Use
 ###Screenshots
 
 ![Image of Photos Page]
-(http://i.imgur.com/xKkUuiI.png)
+(http://i.imgur.com/4G8uh3u.png)
 
 ###Instructions
 To deploy local version
