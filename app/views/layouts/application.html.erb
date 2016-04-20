@@ -8,18 +8,49 @@
 </head>
 <body>
 
-	<% if user_signed_in? %>
-	<p><%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-	<% else %>
-		<p><%= link_to "Sign Up", new_user_registration_path %> 
-		<%= link_to "Sign In", new_user_session_path %> 
-	<%= link_to "Sign in with Facebook", 
-	user_omniauth_authorize_path(:facebook) %><p/>
-	<% end %>
+<nav class="navbar navbar-default">
+  <div class="navbar-container">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand">
+        <%= link_to "Instergraham", root_path %>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+   			<% if user_signed_in? %>
+   			 <li>
+   			<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+   			<% end %>
+        </li>
+        <li>
+          <%= link_to "Sign Up", new_user_registration_path %> 
+        </li>
+        <li>
+          <%= link_to "Sign In", new_user_session_path %> 
+        </li>
+        <li>
+        	<%= link_to "Sign in with Facebook", 
+				user_omniauth_authorize_path(:facebook) %>
+        </li>	
+      </ul>
+    </div>
+  </div>
+</nav>
+
 	<% flash.each do |key, value| %>
+	<center><div class="alert alert-warning">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <%= value %>
   <% end %>
-<center><p class=logo>Instergraham</p></center>
+  </center>
+</div>
+
+<center><p class="logo">Instergraham</p></center>
 	<%= yield %>
 
 </body>
