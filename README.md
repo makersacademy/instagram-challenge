@@ -1,26 +1,41 @@
-Instagram Challenge
-===================
+#INSTERGRAHAM
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+#MAKERS ACADEMY WEEK 7 PROJECT
 
-Task
------
+#####Authors
 
-Build Instagram: Simple huh!
+- Russell Vaughan ([russellvaughan](https://github.com/russellvaughan))
 
-Bonus if you can write your own set of sensible user stories!
 
-As usual please start by
+###Description
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan_october2015 (if you haven't already)
-* Forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+Online, account based platform for sharing, commenting on and liking photos. Users can sign-up to the site, either through facebook or through a log in form. They are automatically logged in and are able to upload a photo to a general photo 'feed'. After uploding, the photo will show a descirption, will have the ability to be commented on and liked. Only the user who uploads the photo is able to edit or delete that photo. Likewise, only the user who comments can edit or delete that comment. The photos are also able to be 'liked' through a 'like' link.
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+###Screenshots
 
-Bonus if you can add filters!
+![Image of Photos Page]
+(http://i.imgur.com/YeGWfQX.png)
+
+###Instructions
+To deploy local version
+```
+$ git clone hhttps://github.com/russellvaughan/instagram-challenge
+$ cd instagram-challenge
+$ bundle # Installs all dependencies
+$ rails server # Runs the application locally
+```
+
+To access live site: https://thawing-citadel-66605.herokuapp.com/
+
+###Technologies
+- Ruby on Rails
+- Javascript
+- jQuery
+- Paperclip
+- Omniauth
+- Poltergeist 
+- Devise
+- AWS SDK
+- Capybara
+- Database Cleaner
+- Rake
