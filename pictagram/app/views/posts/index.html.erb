@@ -1,0 +1,39 @@
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+
+  <br>
+  <%= link_to post.comment, post_path(post) %>
+ <p><%= pluralize post.likes.count, 'likes' %></p>
+
+  <% if user_signed_in? && @current_user_id == post.user_id %>
+       <h3>
+        <%= link_to "Edit #{post.comment}", edit_post_path(post) %>
+       </h3>
+       <h5>
+          <%= link_to "Delete #{post.comment}", post_path(post), method: :delete %>
+       </h5>
+     <% end %>
+  <%= link_to "Comment #{post.comment}", new_post_comment_path(post) %>
+
+    <h3>Comments for <%= post.comment %></h3>
+
+      <% if post.comments.any? %>
+        <ul>
+          <% post.comments.each do |comment| %>
+            <li>
+              <%= comment.comment %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No comments.</p>
+    <% end %>
+
+
+
+  <% end %>
+<% else %>
+  <h1>No posts yet!</h1>
+<% end %>
+
+<%= link_to "Add a post", new_post_path %>
