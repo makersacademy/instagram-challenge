@@ -3,6 +3,25 @@ Instagram Challenge
 
 Makers Academy Week 7 weekend challenge
 
+Task: create a clone of Instagram
+
+Technologies used:
+* Ruby, Rails, PostgreSQL
+* RSpec, Capybara
+* ImageMagick
+
+The instagram app is deployed live at : http://vickymg-instagram.herokuapp.com/
+
+To use this app:
+
+```
+$ git clone https://github.com/vickymg/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle
+$ rails s
+
+```
+
 User Stories:
 ```
 As a user
