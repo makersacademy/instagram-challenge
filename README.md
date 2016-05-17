@@ -5,7 +5,7 @@ J-Instagram
 
 Introduction :camera:
 ------------------
-J-Instagram is a little Instagram clone that provides a platform for users to post and comment on photos.
+J-Instagram is an Instagram clone that provides a platform for users to post and comment on photos.
 
 Features :star2:
 --------------
@@ -40,7 +40,6 @@ Tools used :wrench:
 * Active Record
 * Devise
 * Paperclip
-* Shoulda
 * Factory Girl
 * AWS S3
 
