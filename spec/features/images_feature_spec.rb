@@ -1,25 +1,27 @@
 require 'rails_helper'
 
-feature 'images' do
+feature 'photos' do
 
-  context 'no images have been added' do
+  context 'no photos have been added' do
     scenario 'should display a prompt to add an image' do
-      visit '/images'
-      expect(page).to have_content 'No images yet'
-      expect(page).to have_link 'Add an image'
+      visit '/photos'
+      expect(page).to have_content 'No photos yet'
+      expect(page).to have_link 'Add an photo'
     end
   end
 
-  context 'images have been added' do
+  context 'photos have been added' do
     before do
-      upload_image
+      upload_photo
     end
 
-    scenario 'displays images and captions' do
-      visit '/images'
+    scenario 'displays photos and captions' do
+      visit '/photos'
       expect(page).to have_content "Galaxy"
-      expect(page).not_to have_content "No images yet"
-      # expect(page).to have_css ""     #where's the image?
+      expect(page).not_to have_content "No photos yet"
+      expect(page).to have_css "img[src*='night_sky.jpg']"
+      expect(current_path).to eq '/photos'
+      #Is this the right way to expect an image?
     end
   end
 end
