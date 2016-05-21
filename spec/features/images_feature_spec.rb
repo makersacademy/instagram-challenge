@@ -11,17 +11,26 @@ feature 'photos' do
   end
 
   context 'photos have been added' do
+
     before do
       upload_photo
     end
 
     scenario 'displays photos and captions' do
       visit '/photos'
-      expect(page).to have_content "Galaxy"
+      expect(page).to have_content "Night sky"
       expect(page).not_to have_content "No photos yet"
-      expect(page).to have_css "img[src*='night_sky.jpg']"
+      expect(page).to have_css("img[src*='night_sky']")
       expect(current_path).to eq '/photos'
-      #Is this the right way to expect an image?
     end
+
+    # scenario 'views a photo' do
+    #   visit '/photos'
+    #   click_link 'Night sky'
+    #   fin
+    #   expect(page).to have_content 'Night sky'
+    #   #expect page to have image
+    #   expect(current_path).to eq '/photos/#{sky.id}'
+    # end
   end
 end
