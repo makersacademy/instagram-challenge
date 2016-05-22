@@ -2,9 +2,13 @@
 
 Clone this repo
 Install Postgresql $ brew install postgresql
+
 Install ImageMagick $ brew install imagemagik
+
 Install gems $ bundle install
+
 Create your database $ rake db:create
+
 Migrate your database $ rake db:migrate
 
 ##Usage
