@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'photos' do
 
-  context 'no photos have been added' do
+  context 'have not been added' do
     scenario 'should display a prompt to add an image' do
       visit '/photos'
       expect(page).to have_content 'No photos yet'
@@ -10,7 +10,7 @@ feature 'photos' do
     end
   end
 
-  context 'photos have been added' do
+  context 'have been added' do
 
     before do
       sign_up_user1
@@ -59,8 +59,7 @@ feature 'photos' do
     scenario 'user can delete their own photos' do
       visit '/photos'
       find("img[src*='night_sky']").click
-      click_link 'Delete'
-      expect(
+      expect{ click_link 'Delete' }.to change{Photo.all.size}.by(-1)
     end
   end
 end
