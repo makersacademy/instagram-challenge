@@ -10,6 +10,7 @@ Migrate your database $ rake db:migrate
 ##Usage
 
 Launch the app with rails $ rails s
+
 Open the app in your browser at http://localhost:3000
 Tests
 
