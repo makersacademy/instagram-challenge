@@ -15,8 +15,11 @@ Open the app in your browser at http://localhost:3000
 Tests
 
 If not already created, create test databases $ rake db:create RAILS_ENV=test
+
 If you had to create the database, migrate it $ rake db:migrate RAILS_ENV=test
+
 Install PhantomJS $ brew install phantomjs
+
 Run the tests using $ rspec
 
 ##User Stories
