@@ -8,4 +8,16 @@ feature 'pictures' do
       expect(page).to have_link 'Upload a picture'
     end
   end
+
+  context 'pictures have been added' do
+	  before do
+	    Picture.create(title: 'Me')
+	  end
+
+	  scenario 'display pictures' do
+	    visit '/pictures'
+	    expect(page).to have_content('Me')
+	    expect(page).not_to have_content('No pictures yet')
+	  end
+	end
 end
