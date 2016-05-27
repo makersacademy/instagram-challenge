@@ -21,7 +21,7 @@ feature 'pictures' do
 	  end
 	end
 
-	context 'uploading picturesrestaurants' do
+	context 'uploading pictures' do
 	  scenario 'prompts user to fill out a form, then displays the new picture' do
 	    visit '/pictures'
 	    click_link 'Upload a picture'
@@ -31,4 +31,17 @@ feature 'pictures' do
 	    expect(current_path).to eq '/pictures'
 	  end
 	end
+
+	context 'viewing restaurants' do
+
+	  let!(:myself){ Picture.create(title: 'Me') }
+
+	  scenario 'lets a user view a picture' do
+	   visit '/pictures'
+	   click_link 'Me'
+	   expect(page).to have_content 'Me'
+	   expect(current_path).to eq "/pictures/#{myself.id}"
+	  end
+	end
+
 end
