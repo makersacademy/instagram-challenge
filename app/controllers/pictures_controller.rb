@@ -17,6 +17,29 @@ class PicturesController < ApplicationController
 	  @picture = Picture.find(params[:id])
 	end
 
+	def edit
+    @picture = Picture.find(params[:id])
+  end
+
+  def update
+    @picture = Picture.find(params[:id])
+    @picture.update(picture_params)
+
+    redirect_to my_pictures_pictures_path
+  end
+
+  def destroy
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+    flash[:notice] = 'Picture deleted successfully'
+    redirect_to my_pictures_pictures_path
+  end
+
+	def my_pictures
+		# @pictures = Picture.all.where(user_id: current_user.id)
+		@pictures = Picture.all
+	end
+
   def picture_params
     params.require(:picture).permit(:title)
   end
