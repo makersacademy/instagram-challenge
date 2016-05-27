@@ -25,9 +25,10 @@ feature 'posts' do
   scenario 'prompts user to fill out a form, then displays the new post' do
     visit '/posts'
     click_link 'Add a post'
-    fill_in 'Caption', with: 'perrito'
+    attach_file('Image',"spec/files/images/googlelogo.png")
+    fill_in 'Caption', with: 'google'
     click_button 'Create Post'
-    expect(page).to have_content 'perrito'
+    expect(page).to have_content 'google'
     expect(current_path).to eq '/posts'
   end
 end
