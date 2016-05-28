@@ -8,12 +8,12 @@ feature 'Creating a new user' do
   end
 
   scenario 'can create a new user from the index page' do
-    fill_in 'User name', with: 'Letian'
     fill_in 'Email', with: 'Letian@gmail.com'
     fill_in 'Password', with: '123456'
     fill_in 'Password confirmation', with: '123456'
 
     click_button 'Sign up'
+    expect(current_path).to eq '/posts/index'
     expect(page).to have_content 'Welcome! You have successfully signed up.'
   end
 end
