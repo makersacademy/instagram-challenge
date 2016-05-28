@@ -1,0 +1,15 @@
+<%= image_tag(@post.image.url(:medium)) %>
+<%= @post.caption %>
+<p>Posted by <%= link_to @post.user.email, "/users/#{@post.user.id}" %></p>
+<% if @post.comments.any? %>
+	<p>Comments:</p>
+	<% @post.comments.each do |comment| %>
+		<%= comment.comment %>
+	<% end %>
+<% end %>
+
+<%= form_for [@post, @comment] do |f| %>
+	<%= f.label :comment %>
+	<%= f.text_area :comment %>
+	<%= f.submit 'Add comment' %>
+<% end %>

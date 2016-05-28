@@ -16,20 +16,17 @@ feature 'posts' do
 			expect(page).to have_css("img[src*='test.png']")
 			remove_uploaded_file
 		end
-
 		scenario 'a user can add a caption when posting an image' do
 			create_post
 			expect(page).to have_content 'The best name ever'
 			remove_uploaded_file
 		end
-
 		scenario 'a user cannot put an empty post on the feed' do
 			create_post(image: nil)
 			expect(page).to have_content 'You have to post a picture!'
 			expect(current_path).to eq '/posts/new'
 			remove_uploaded_file
 		end
-
 		scenario 'a user cannot post an image if they are not signed in' do
 			click_link 'Sign out'
 			visit '/posts'

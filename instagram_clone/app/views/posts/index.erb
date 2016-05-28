@@ -1,7 +1,13 @@
 <% @posts.each do |post| %>
-	<%= image_tag post.image.url(:thumb) %>
+	<%= link_to image_tag(post.image.url(:thumb)), post_path(post), id: "pic#{post.id}" %>
 	<%= post.caption %>
 	<p>Posted by <%= link_to post.user.email, "/users/#{post.user.id}" %></p>
+	<% if post.comments.any? %>
+		<p>Comments:</p>
+		<% post.comments.each do |comment| %>
+			<%= comment.comment %>
+		<% end %>
+	<% end %>
 <% end %>
 
 <%= link_to 'New post', new_post_path %>

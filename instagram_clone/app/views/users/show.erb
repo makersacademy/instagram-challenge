@@ -1,6 +1,6 @@
 <%= @user.email %>'s posts
 <% @user.posts.each do |post| %>
-	<%= image_tag post.image.url(:thumb) %>
+	<%= link_to image_tag(post.image.url(:thumb)), post_path(post), id: "pic#{post.id}" %>
 	<%= post.caption %>
 	<% if @user == current_user %>
 		<%= link_to 'Delete post', "/posts/#{post.id}", method: :delete %>
