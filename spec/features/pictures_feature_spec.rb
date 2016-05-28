@@ -22,6 +22,8 @@ feature 'pictures' do
 	end
 
 	context 'Creating pictures' do
+	  before { User.create(name: 'Foo Bar', email: 'foo@bar.com', password: '00000000', password_confirmation: '00000000') }
+
 	  scenario 'prompts user to fill out a form, then displays the new picture' do
 	    visit '/pictures'
 	    click_link 'Upload a picture'
@@ -55,10 +57,14 @@ feature 'pictures' do
 	end
 
 	context 'editing picture information' do
-		before { Picture.create title: 'Me' }
+		before {
+			sign_in_helper
+			create_picture
+		}
 
 		scenario 'let a user edit the picture info' do
-			visit '/pictures'
+			# visit '/'
+			p current_path
 			click_link 'My pictures'
 			click_link 'Edit picture Me'
 			fill_in 'Title', with: 'You'
@@ -69,10 +75,14 @@ feature 'pictures' do
 	end
 
 	context 'deleting pictures' do
-	  before { Picture.create title: 'Me' }
+		before {
+			sign_in_helper
+			create_picture
+		}
 
 	  scenario 'removes a picture when a user clicks a delete link' do
-	    visit '/pictures'
+	    # visit '/'
+	    p current_path
 			click_link 'My pictures'
 			click_link 'Delete picture Me'
 	    expect(page).not_to have_content 'Me'

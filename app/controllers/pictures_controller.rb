@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
-	
+	before_action :authenticate_user!, :except => [:index, :show]
+
 	def index
 		@pictures = Picture.all
   end
@@ -10,6 +11,7 @@ class PicturesController < ApplicationController
 
   def create
   	@picture = Picture.new(picture_params)
+    @picture.user_id = current_user.id
   	if @picture.save
     	redirect_to pictures_path
     else
@@ -40,8 +42,8 @@ class PicturesController < ApplicationController
   end
 
 	def my_pictures
-		# @pictures = Picture.all.where(user_id: current_user.id)
-		@pictures = Picture.all
+		p @pictures = Picture.all.where(user_id: current_user.id)
+		# @pictures = Picture.all
 	end
 
   private

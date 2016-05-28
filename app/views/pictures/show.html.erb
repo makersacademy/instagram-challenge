@@ -1,9 +1,10 @@
-<p><%= @picture.title %></p>
+<h2><%= @picture.title %></h2>
 <% if @picture.comments.any? %>
-  <h2>Comments</h2>
-  <% @picture.comments.each do |p| %>
-    <p><%= p.author %></p>
-    <p><%= p.content %></p>
+  <p>Comments</p>
+  <% @picture.comments.each do |comment| %>
+    <p>Posted by <%= comment.author %></p>
+    <p><%= comment.content %></p>
+    <p><%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></p>
     <hr>
   <% end %>
 <% else %>
