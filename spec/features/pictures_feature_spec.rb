@@ -21,6 +21,15 @@ feature 'Pictures' do
     expect(page).to have_css "img[src*=succulents]"
     expect(current_path).to eq pictures_path
     end
+
+    it 'does not let you post without a picture' do
+      visit pictures_path
+      click_link 'Add a picture'
+      fill_in 'Description', with: '#sweetsucculents'
+      click_button 'Post'
+      expect(page).to have_content 'error'
+    end
+
   end
 
   # context 'viewing pictures' do
