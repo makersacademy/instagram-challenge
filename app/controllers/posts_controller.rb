@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
   def index
     @posts = Post.all
   end
@@ -20,21 +22,28 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       flash[:success] = "Woohoo! Here's your updated post!"
       redirect_to post_path(@post)
     else
       flash.now[:alert] = "Uh oh! You need to select an image!"
-      render "new"
+      render "edit"
+    end
+  end
+
+  def destroy
+    if @post.destroy
+      flash[:success] = "Your post was successfully deleted!"
+      redirect_to posts_path
+    else
+      flash[:alert] = "Uh oh! Couldn't delete your post!"
+      redirect_to post_path(@post)
     end
   end
 
@@ -42,5 +51,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:caption, :image)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
