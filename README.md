@@ -3,9 +3,25 @@ PictureFace
 
 The purpose of this Project is to build an Instagram clone
 
-I started the project by using the rails command `rails new picture_face -d postgresql -T` in order to intialize the project using PostgreSQL as my database and allowing rspec as my testing platform
+* I started the project by using the rails command `rails new picture_face -d postgresql -T` in order to intialize the project using PostgreSQL as my database and without the default testing framework
 
+* The next step was to set up development and testing databases like so
+```
+bin/rake db:create
+bin/rake db:migrate
+bin/rake db:create RAILS_ENV=test
+bin/rake db:migrate RAILS_ENV=test
+```
+* I set up the Rspec as my testing framework by adding the following to my Gemfile and running `bundle`
+```
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+end
+```
+* I then ran `bin/rails generate rspec:install` in order to get rspec going by creating a spec directory with 2 helper files, spec/spec_helper.rb' and 'spec/rails_helper.rb, and a .rspec behaviour configuration file
 
+* In order to allow capybara testing I added the line `require 'capybara/rails'` to spec/rails_helper.rb
 
 Instagram Challenge
 ===================
