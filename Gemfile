@@ -25,6 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'dotenv-rails'
 gem 'omniauth-facebook'
+gem 'paperclip'
 
 
 # Use ActiveModel has_secure_password
