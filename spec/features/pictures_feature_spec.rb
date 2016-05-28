@@ -49,6 +49,18 @@ feature 'Pictures' do
     end
   end
 
+  describe 'deleting restaurants' do
+
+  let!(:succulent){ Picture.create(description:'#sweetsucculents', image_file_name: "./spec/images/succulents.jpg") }
+
+    it 'deletes an image and it\'s description' do
+      visit pictures_path
+      click_link 'Delete'
+      expect(page).not_to have_content '#sweetsucculents'
+      expect(page).to have_content 'Picture deleted 😔'
+    end
+  end
+
 
 
 
