@@ -10,7 +10,7 @@ feature 'posts' do
 		click_button('Sign up')
 	end
 
-	context 'create posts' do
+	context 'creating posts' do
 		scenario 'a user can post an image using the create post form on the homepage' do
 			create_post
 			expect(page).to have_css("img[src*='test.png']")
@@ -27,6 +27,7 @@ feature 'posts' do
 			create_post(image: nil)
 			expect(page).to have_content 'You have to post a picture!'
 			expect(current_path).to eq '/posts/new'
+			remove_uploaded_file
 		end
 
 		scenario 'a user cannot post an image if they are not signed in' do
@@ -38,7 +39,7 @@ feature 'posts' do
 		end
 	end
 
-	context 'delete posts' do
+	context 'deleting posts' do
 		scenario 'a user can delete a post they created' do
 			create_post
 			click_link 'My posts'
@@ -46,6 +47,21 @@ feature 'posts' do
 			visit('/posts')
 			expect(page).not_to have_css("img[src*='test.png']")
 			expect(page).not_to have_content 'The best name ever'
+			remove_uploaded_file
+		end
+		scenario 'a user cannot delete a post they did not create' do
+			create_post
+			click_link('Sign out')
+			click_link('Sign up')
+			fill_in('Email', with: 'test2@test.com')
+			fill_in('Password', with: '123456')
+			fill_in('Password confirmation', with: '123456')
+			click_button('Sign up')
+			click_link("test@test.com")
+			click_link('Delete post')
+			expect(page).to have_content('You can only delete your own posts')
+			visit('/posts')
+			expect(page).to have_css("img[src*='test.png']")
 		end
 	end
 
