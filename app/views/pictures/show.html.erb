@@ -1,1 +1,15 @@
 <p><%= @picture.title %></p>
+<% if @picture.comments.any? %>
+  <h2>Comments</h2>
+  <% @picture.comments.each do |p| %>
+    <p><%= p.author %></p>
+    <p><%= p.content %></p>
+    <hr>
+  <% end %>
+<% else %>
+	<p>No comments</p>
+<% end %>
+<br>
+<p><%= link_to "Comment", new_picture_comment_path(@picture) %></p>
+<p><%= link_to "Back", pictures_path %></p>
+

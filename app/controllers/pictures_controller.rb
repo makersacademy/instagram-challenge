@@ -40,6 +40,8 @@ class PicturesController < ApplicationController
 		@pictures = Picture.all
 	end
 
+  private
+
   def picture_params
     params.require(:picture).permit(:title)
   end
