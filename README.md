@@ -8,6 +8,7 @@ Installation Instructions
 
 Fork this repo
 Initialize your repo using rails new .
+Run brew install imagemagick
 Run bundle install
 
 Gems used
