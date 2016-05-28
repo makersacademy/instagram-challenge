@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
 
+	include PostsHelper
+
 	before_action :authenticate_user!, only: [:new,:create,:destroy,:edit,:update]
+	before_action :check_post_belongs_to_user, only: [:destroy]
 
 	def index
 		@posts = Post.all
@@ -22,8 +25,7 @@ class PostsController < ApplicationController
 
 	def destroy
 		post = Post.find(params[:id])
-		post.action_if_creator(user: current_user,method: __method__.to_s)
-
+		post.destroy
 		redirect_to "/users/#{post.user.id}"
 	end
 

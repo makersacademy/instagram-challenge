@@ -6,4 +6,8 @@ class Post < ActiveRecord::Base
 
   validates :image, presence: { message: 'You have to post a picture!' }
 
+  def belongs_to?(user)
+  	user.posts.include?(self)
+  end
+
 end

@@ -58,10 +58,12 @@ feature 'posts' do
 			fill_in('Password confirmation', with: '123456')
 			click_button('Sign up')
 			click_link("test@test.com")
-			click_link('Delete post')
-			expect(page).to have_content('You can only delete your own posts')
-			visit('/posts')
-			expect(page).to have_css("img[src*='test.png']")
+			expect(page).not_to have_link('Delete post')
+			# click_link('Delete post')
+			# expect(page).to have_content("That post isn't yours")
+			# visit('/posts')
+			# expect(page).to have_css("img[src*='test.png']")
+			# remove_uploaded_file
 		end
 	end
 
