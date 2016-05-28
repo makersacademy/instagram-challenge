@@ -8,10 +8,11 @@ feature 'Commenting' do
      click_link 'Me'
      click_link 'Comment'
      fill_in "Content", with: "Guapo!"
+     fill_in "Author", with: "Foo"
      click_button 'Post'
-
-     expect(current_path).to eq "/pictures/#{myself.id}"
+     expect(page).to have_content('Foo')
      expect(page).to have_content('Guapo!')
+     expect(current_path).to eq "/pictures/#{myself.id}"
   end
 
 end

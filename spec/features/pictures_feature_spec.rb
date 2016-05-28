@@ -21,7 +21,7 @@ feature 'pictures' do
 	  end
 	end
 
-	context 'uploading pictures' do
+	context 'Creating pictures' do
 	  scenario 'prompts user to fill out a form, then displays the new picture' do
 	    visit '/pictures'
 	    click_link 'Upload a picture'
@@ -29,6 +29,16 @@ feature 'pictures' do
 	    click_button 'Upload'
 	    expect(page).to have_content 'Me'
 	    expect(current_path).to eq '/pictures'
+	  end
+
+	  context 'an invalid picture' do
+	    it 'does not let you submit a picture without title' do
+	      visit '/pictures'
+		    click_link 'Upload a picture'
+		    fill_in 'Title', with: ''
+		    click_button 'Upload'
+	      expect(page).to have_content 'error'
+	    end
 	  end
 	end
 
