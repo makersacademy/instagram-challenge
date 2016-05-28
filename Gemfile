@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'devise'
+
 gem 'haml'
 # makes file uploads to Ruby apps a bit simpler
 gem 'paperclip'
