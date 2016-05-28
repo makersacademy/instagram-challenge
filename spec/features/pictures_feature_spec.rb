@@ -9,14 +9,15 @@ feature 'pictures' do
     end
   end
   context 'pictures have been added' do
-  before do
-    Picture.create(name: 'summer')
-  end
 
-  scenario 'display pictures' do
-    visit '/pictures'
-    expect(page).to have_content('summer')
-    expect(page).not_to have_content('No pictures yet')
+    before do
+      Picture.create(name: 'summer')
+    end
+
+    scenario 'display pictures' do
+      visit '/pictures'
+      expect(page).to have_content('summer')
+      expect(page).not_to have_content('No pictures yet')
+    end
   end
-end
 end
