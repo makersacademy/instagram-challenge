@@ -20,8 +20,8 @@ feature 'posts' do
      expect(page).to have_content 'first post!'
      expect(page).to have_content 'second post'
      expect(page).to have_css("img[src*='googlelogo.png']")
-    end
-  end
+   end
+ end
 
 
   context 'creating posts' do
@@ -33,18 +33,31 @@ feature 'posts' do
   end
 
   context 'viewing posts' do
-
     scenario 'lets a user view a post' do
      post = create(:post, caption: "google logo")
-     visit '/'
-     mylink = find(:xpath, "//a[contains(@href,'posts/1')]")
-     p mylink
-     mylink.click
-     # newp = find(:xpath, "//a[contains(@href,'posts/new')]")
-     # p newp
+     # p "post ID=#{post.id}"
+     # visit '/'
+     link = find(:xpath, "//a[contains(@href,'posts/1')]").click
+     link.click
      expect(page).to have_content 'google logo'
      expect(page.current_path).to eq(post_path(post))
      expect(page).to have_css("img[src*='googlelogo.png']")
    end
  end
+
+  context 'editing posts' do
+    scenario 'a user can edit a post' do
+      pending
+      post = create(:post, caption: "google logo")
+      visit '/'
+      mylink = page.first(:xpath, "//a[contains(@href,'posts/1')]")
+      # p mylink
+      mylink.click
+      click_link('Edit Post')
+      fill_in 'Caption', with: "updated caption"
+      expect(page).to have_content 'updated caption'
+      expect(page).not_to have_content 'google logo'
+      expect(page).to have_css("img[src*='googlelogo.png']")
+   end
+  end
 end
