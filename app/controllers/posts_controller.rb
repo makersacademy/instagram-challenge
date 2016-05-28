@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  #TODO show separate images with comments
+  before_action :authenticate_user!, :except => [:index, :show]
 
   def index
     @posts = Post.all
@@ -9,8 +11,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.save
+    current_user.posts.create(post_params)
     redirect_to posts_path
   end
 
