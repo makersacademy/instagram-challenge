@@ -10,16 +10,11 @@ feature 'Posts' do
 
     before do
       sign_up
+      create_post
     end
 
     context 'adding' do
       it "user can add a post" do
-        visit posts_path
-        click_link "Add post"
-        fill_in :Title, with: "Beautiful Sunset"
-        fill_in :Description, with: "blah blah blah blah"
-        attach_file :Image, 'public/test/image.jpg'
-        click_button 'Create Post'
         expect(current_path).to eq posts_path
         expect(page).to have_content "Beautiful Sunset"
         expect(page).to have_content "blah blah blah blah"
@@ -27,8 +22,15 @@ feature 'Posts' do
       end
     end
     context 'editing' do
-      it 'user can title and description of own posts' do
-      
+      it 'user can edit title and description of own posts' do
+        click_link 'Edit post'
+        fill_in :Title, with: "New title"
+        fill_in :Description, with: "Some stuff"
+        click_button 'Update Post'
+        expect(page).not_to have_content "Beautiful Sunset"
+        expect(page).not_to have_content "blah blah blah blah"
+        expect(page).to have_content "New title"
+        expect(page).to have_content "Some stuff"
       end
     end
 
