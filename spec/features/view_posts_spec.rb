@@ -10,3 +10,13 @@ feature 'User can view a list of posts' do
     expect(page).to have_css("img[src*='burger']")
   end
 end
+
+feature 'User can view an individual post' do 
+  scenario 'the user can navigate to an individual post' do 
+    post = create(:post, caption: "I like tacos")
+    visit '/'
+    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    expect(page.current_path).to eq(post_path(post))
+    expect(page).to have_content("I like tacos")
+  end
+end
