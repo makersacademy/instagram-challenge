@@ -3,6 +3,8 @@ require "spec_helper"
 describe Post, type: :model do
 
   it { should belong_to :user }
+  it { should have_many :comments }
+
 
   it "is invalid if there is no picture attached" do
     post = Post.new(title: 'Test Post')
@@ -29,5 +31,5 @@ describe Post, type: :model do
         expect(user.posts.count).to be 1
       end
     end
-    
+
   end
