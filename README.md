@@ -29,12 +29,11 @@ Sensible User Stories
 ```
 As a user
 So that I can sign up for this madness
-I want to use Facebook to sign up (cause I'm lazy
-and they are doing a better job at protecting my
-information than you will, which is kind of ironic,
-but still, you know what I mean. They know their
-stuff, even this markdown file states Facebook
-can't be spelled with a lower capital 'f', just obey!)
+I want to use Facebook to sign up
+
+(cause I'm lazy and they are doing a better job at protecting my information than you will,
+which is kind of ironic, but still, you know what I mean. They know their stuff, even this markdown
+file states Facebook can't be spelled with a lower capital 'f', just obey!)
 ```
 
 ```

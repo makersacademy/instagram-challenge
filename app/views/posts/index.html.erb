@@ -4,5 +4,11 @@
 <%=post.title %><br>
 <%= image_tag post.image.url(:medium) %>
 
+<% if user_signed_in? %>
+
+<% if current_user.posts.include?(post) %>
+<p> <%= link_to "Delete Post", post_path(post), method: :delete %> </p>
+<% end %>
+<% end %>
 <% end %>
 <% end %>

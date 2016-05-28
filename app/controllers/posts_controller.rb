@@ -11,8 +11,23 @@ class PostsController < ApplicationController
   end
 
   def create
-    current_user.posts.create(post_params)
-    redirect_to posts_path
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      flash[:notice] = 'Post successfully created'
+    else
+      flash[:alert] = 'You must upload an image to create a post'
+    end
+    redirect_to new_post_path
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy_if_created_by?(current_user)
+      flash[:notice] = 'Post deleted successfully'
+    else
+      flash[:alert] = 'You can only delete your own posts'
+    end
+    redirect_to '/posts'
   end
 
   private
