@@ -28,7 +28,7 @@ class PicturesController < ApplicationController
   def update
     @picture = Picture.find(params[:id])
     @picture.update(picture_params)
-
+    flash[:notice] = 'Picture updated successfully'
     redirect_to my_pictures_pictures_path
   end
 
