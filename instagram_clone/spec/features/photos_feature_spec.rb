@@ -5,10 +5,13 @@ feature 'photos'
 
     scenario 'displays button to post a photo' do
       visit '/photos'
-      expect(page).to have_content "Post a Photo"
+      expect(page).to have_content 'Post a photo'
     end
 
-    scenario ''
+    scenario "displays 'no photos to show'" do
+      visit '/photos'
+      expect(page).to have_content 'No photos to show :('
+    end
 
 
   end
