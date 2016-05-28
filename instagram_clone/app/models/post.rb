@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
 
 	has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+  
   belongs_to :user
   has_many :comments, dependent: :destroy do
   	def create_with_user(params,user)
@@ -9,6 +10,7 @@ class Post < ActiveRecord::Base
   		create(params)
   	end
   end
+  has_many :likes, dependent: :destroy
 
   validates :image, presence: { message: 'You have to post a picture!' }
 

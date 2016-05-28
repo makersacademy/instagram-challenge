@@ -1,7 +1,12 @@
+POST FEED
+
 <% @posts.each do |post| %>
 	<%= link_to image_tag(post.image.url(:thumb)), post_path(post), id: "pic#{post.id}" %>
 	<%= post.caption %>
+	<%= post.likes.count %><%= ' like'.pluralize(post.likes.count) %>
+	<%= link_to 'Like', post_likes_path(post), method: :post %>
 	<p>Posted by <%= link_to post.user.email, user_path(post.user) %></p>
+
 	<% if post.comments.any? %>
 		<p>Comments:</p>
 		<% post.comments.each do |comment| %>
