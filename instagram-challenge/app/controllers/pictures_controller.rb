@@ -17,6 +17,11 @@ class PicturesController < ApplicationController
   def show
     @picture = Picture.find(params[:id])
   end
+  def destroy
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+   redirect_to pictures_path
+  end
 
   private
   def picture_params
