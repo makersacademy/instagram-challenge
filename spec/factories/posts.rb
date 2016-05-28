@@ -1,5 +1,6 @@
-FactoryGirl.define do
+FactoryGirl.define do  
   factory :post do
-    caption "MyString"
+    caption "nofilter"
+    image Rack::Test::UploadedFile.new(Rails.root + 'spec/files/images/burger.jpg', 'image/jpg')
   end
-end
+end  
