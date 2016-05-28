@@ -23,6 +23,12 @@ end
 
 * In order to allow capybara testing I added the line `require 'capybara/rails'` to spec/rails_helper.rb
 
+* Time to start TDD'ing and developing the app, following information will be mostly notes on useful rails commands/shortcuts and the like...
+
+  - In order to create new controllers run `bin/rails g controller name_of_controller` from the command line
+
+  -
+
 Instagram Challenge
 ===================
 
