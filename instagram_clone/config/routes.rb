@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  
   devise_for :users
-  get 'users/:id' => 'users#show'
+
+  resources :users, only: [:show] 
+
+  resources :comments, only: [:destroy]
+
   resources :posts do
     resources :comments, only: [:create]
   end
+
   root 'posts#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

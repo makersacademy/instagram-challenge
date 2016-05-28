@@ -9,23 +9,23 @@ feature 'posts' do
 		fill_in('Password confirmation', with: '123456')
 		click_button('Sign up')
 	end
+	after do
+		remove_uploaded_file
+	end
 
 	context 'creating posts' do
 		scenario 'a user can post an image using the create post form on the homepage' do
 			create_post
 			expect(page).to have_css("img[src*='test.png']")
-			remove_uploaded_file
 		end
 		scenario 'a user can add a caption when posting an image' do
 			create_post
 			expect(page).to have_content 'The best name ever'
-			remove_uploaded_file
 		end
 		scenario 'a user cannot put an empty post on the feed' do
 			create_post(image: nil)
 			expect(page).to have_content 'You have to post a picture!'
 			expect(current_path).to eq '/posts/new'
-			remove_uploaded_file
 		end
 		scenario 'a user cannot post an image if they are not signed in' do
 			click_link 'Sign out'
@@ -44,7 +44,6 @@ feature 'posts' do
 			visit('/posts')
 			expect(page).not_to have_css("img[src*='test.png']")
 			expect(page).not_to have_content 'The best name ever'
-			remove_uploaded_file
 		end
 		scenario 'a user cannot delete a post they did not create' do
 			create_post
@@ -60,7 +59,6 @@ feature 'posts' do
 			# expect(page).to have_content("That post isn't yours")
 			# visit('/posts')
 			# expect(page).to have_css("img[src*='test.png']")
-			# remove_uploaded_file
 		end
 	end
 
