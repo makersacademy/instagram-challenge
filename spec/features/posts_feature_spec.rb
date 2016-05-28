@@ -15,6 +15,7 @@ feature 'posts' do
     end
 
     scenario 'display posts' do
+      pending
       visit '/posts'
       expect(page).to have_content('perrito')
       expect(page).not_to have_content('No posts yet')
