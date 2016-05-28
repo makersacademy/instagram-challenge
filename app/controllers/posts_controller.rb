@@ -23,6 +23,21 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:success] = "Woohoo! Here's your updated post!"
+      redirect_to post_path(@post)
+    else
+      flash.now[:alert] = "Uh oh! You need to select an image!"
+      render "new"
+    end
+  end
+
   private
 
   def post_params
