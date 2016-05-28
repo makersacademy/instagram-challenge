@@ -12,7 +12,7 @@ feature "User can upload images as posts" do
   end
 
   context 'creating posts' do
-    scenario 'prompts user to fill out a form with an image, then displays the post' do
+    scenario 'prompts user to create post with an image, then displays the post' do
       visit '/posts'
       click_link 'New Post'
       fill_in 'Title', with: 'Iron Man Beta'
