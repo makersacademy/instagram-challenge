@@ -1,3 +1,12 @@
+PictureFace
+========================
+
+The purpose of this Project is to build an Instagram clone
+
+I started the project by using the rails command `rails new picture_face -d postgresql -T` in order to intialize the project using PostgreSQL as my database and allowing rspec as my testing platform
+
+
+
 Instagram Challenge
 ===================
 
