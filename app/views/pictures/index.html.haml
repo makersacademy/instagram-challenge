@@ -2,8 +2,11 @@
   - @pictures.each do |picture|
     %p= image_tag picture.image.url(:medium), :id => "picture"
     %p= picture.description
+    - picture.comments.each do |comment|
+      %p= comment.thoughts
     = link_to "Edit", edit_picture_path(picture)
     = link_to "Delete", picture_path(picture), method: :delete
+    = link_to "Add comment", new_picture_comment_path(picture)
 - else
   No pictures here 😳
 
