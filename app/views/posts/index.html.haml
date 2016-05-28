@@ -1,10 +1,12 @@
 %section
-  = link_to 'Add post', new_post_path
+  - if user_signed_in?
+    = link_to 'Add post', new_post_path
 
 %section
   - @posts.each do |post|
     %p= post.title
     %p= post.description
     = image_tag post.image.url(:thumb)
-    = link_to 'Edit post', edit_post_path(post)
-    = link_to 'Delete post', post_path(post), method: :delete
+    - if post.belongs_to? current_user
+      = link_to 'Edit post', edit_post_path(post)
+      = link_to 'Delete post', post_path(post), method: :delete

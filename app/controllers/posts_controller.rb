@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    redirect_to posts_path unless @post.belongs_to? current_user
   end
 
   def update
@@ -22,9 +23,14 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy if post.belongs_to? current_user
+    redirect_to posts_path
+  end
 
   def post_params
-    params.require(:post).permit(:title, :description, :image)
+    params.require(:post).permit(:title, :description, :image).merge(user: current_user)
   end
 
 end
