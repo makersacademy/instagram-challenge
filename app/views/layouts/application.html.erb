@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>InstagramChallenge</title>
+  <title>InstaClone</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<% flash.each do |name, msg| %>
-  <p><%= msg %></p>
-<% end %>
-<%= yield %>
-
+<body style="padding-top: 20px" >
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "InstaClone", root_path, class: "navbar-brand" %>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "New", new_post_path %></li>
+          <li><%= link_to "Login", "#" %></li>
+          <li><%= link_to "Sign up", "#" %></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <%= flash.each do |name,msg|  %>
+      <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+    <% end %>
+    <%= yield %>
+  </div>
 </body>
 </html>
