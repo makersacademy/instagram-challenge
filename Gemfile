@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'haml'
 # makes file uploads to Ruby apps a bit simpler
 gem 'paperclip'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
