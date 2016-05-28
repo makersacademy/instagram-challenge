@@ -1,4 +1,4 @@
-def sign_in_helper(email: 'foo@abar.com', password: '00000000')
+def sign_in_helper(email: 'foo@bar.com', password: '00000000')
 	visit '/'
 	click_link 'Sign In'
 	fill_in 'Email', with: email
@@ -6,7 +6,7 @@ def sign_in_helper(email: 'foo@abar.com', password: '00000000')
 	click_button 'Log in'
 end
 
-def sign_up_helper(name: 'Foo Bar',email: 'foo@abar.com', password: '00000000', password_confirmation: '00000000')
+def sign_up_helper(name: 'Foo Bar', email: 'foo@bar.com', password: '00000000', password_confirmation: '00000000')
 	visit '/'
 	click_link 'Sign Up'
 	fill_in 'Name', with: name
