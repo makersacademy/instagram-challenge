@@ -10,4 +10,14 @@ feature 'Creating new posts' do
     expect(page).to have_css("img[src*='burger.jpg']")
     expect(page).to have_content('meat and cheese and carbs')
   end
+
+  scenario 'User must upload an image with their post' do 
+    visit '/'
+    click_link 'New Post'
+    fill_in 'Caption', with: 'meat and cheese and carbs'
+    click_button 'Create Post'
+    expect(page).not_to have_content('meat and cheese and carbs')
+    expect(page).to have_content('You must upload an image!')
+  end
+
 end
