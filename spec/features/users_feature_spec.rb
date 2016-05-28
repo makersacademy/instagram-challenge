@@ -8,6 +8,7 @@ feature 'Creating a new user' do
   end
 
   scenario 'can create a new user from the index page' do
+    fill_in 'User name', with: 'Batman'
     fill_in 'Email', with: 'Letian@gmail.com'
     fill_in 'Password', with: '123456'
     fill_in 'Password confirmation', with: '123456'
