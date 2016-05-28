@@ -28,6 +28,13 @@ feature 'likes' do
 			visit '/posts'
 			expect(page).to have_content '0 likes'
 		end
+		scenario 'each user can only like a post once' do
+			create_post
+			click_link 'Like'
+			click_link 'Like'
+			expect(page).to have_content('You have already liked that post')
+			expect(page).to have_content('1 like')
+		end
 	end
 
 end

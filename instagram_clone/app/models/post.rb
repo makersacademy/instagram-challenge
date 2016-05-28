@@ -4,18 +4,17 @@ class Post < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   
   belongs_to :user
-  has_many :comments, dependent: :destroy do
-  	def create_with_user(params,user)
-  		params[:user] ||= user
-  		create(params)
-  	end
-  end
-  has_many :likes, dependent: :destroy
+  has_many :comments, -> { extending WithUserAssociationExtension }, dependent: :destroy
+  has_many :likes, -> { extending WithUserAssociationExtension }, dependent: :destroy
 
   validates :image, presence: { message: 'You have to post a picture!' }
 
   def belongs_to?(user)
   	user.posts.include?(self)
+  end
+
+  def liked_by?(user)
+    user.liked_posts.include?(self)
   end
 
 end

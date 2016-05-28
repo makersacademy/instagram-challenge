@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  #user has many posts he has liked - user has many liked posts - through his likes
+  has_many :liked_posts, through: :likes, source: :post
 
 end
