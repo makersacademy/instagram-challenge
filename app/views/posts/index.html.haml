@@ -6,7 +6,12 @@
   - @posts.each do |post|
     %p= post.title
     %p= post.description
+    %p= "posted by: #{post.user.username}"
     = image_tag post.image.url(:thumb)
+    = link_to 'Comment', new_post_comment_path(post)
+
     - if post.belongs_to? current_user
       = link_to 'Edit post', edit_post_path(post)
       = link_to 'Delete post', post_path(post), method: :delete
+    - post.comments.each do |comment|
+      %p= comment.content
