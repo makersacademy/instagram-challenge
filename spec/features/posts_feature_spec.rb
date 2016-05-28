@@ -35,9 +35,8 @@ feature 'posts' do
   context 'viewing posts' do
     scenario 'lets a user view a post' do
      post = create(:post, caption: "google logo")
-     # p "post ID=#{post.id}"
-     # visit '/'
-     link = find(:xpath, "//a[contains(@href,'posts/1')]").click
+     visit '/'
+     link = page.first(:xpath, '//a')
      link.click
      expect(page).to have_content 'google logo'
      expect(page.current_path).to eq(post_path(post))
