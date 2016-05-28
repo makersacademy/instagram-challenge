@@ -1,7 +1,22 @@
 class PhotosController < ApplicationController
 
   def index
-    @photos = Photo.count
+    @photos = Photo.all
+  end
+
+  def new
+    Photo.new
+  end
+
+  def create
+    Photo.create(photo_params)
+    redirect_to '/photos'
+  end
+
+  private
+
+  def photo_params
+    params.require(:photo).permit(:location, :image, :description)
   end
 
 end

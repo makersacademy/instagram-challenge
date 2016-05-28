@@ -1,6 +1,12 @@
-<% if @photos == 0 %>
+<% if @photos.empty? %>
   <%= 'No photos to show :(' %>
+<% else %>
+  <% @photos.each do |photo| %>
+    <%= photo.location %> <br>
+    <%= photo.image %> <br>
+    <%= photo.description %> <br>
+  <% end %>
 <% end %>
 
 
-<%= link_to 'Post a photo', photos_path %>
+<%= link_to 'Post a photo', new_photo_path %>
