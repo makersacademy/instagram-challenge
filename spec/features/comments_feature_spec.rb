@@ -25,8 +25,15 @@ feature 'Comments' do
        expect(current_path).to eq pictures_path
        expect(page).to have_content 'I want to put these in my bathroom!'
     end
-
   end
 
+  context 'User is not signed in' do
 
+    let!(:succulent){ Picture.create(description:'#sweetsucculents', image_file_name: "./spec/images/succulents.jpg") }
+
+    it 'unable to leave a comment' do
+       visit pictures_path
+       expect(page).not_to have_content 'Add comments'
+    end
+  end
 end
