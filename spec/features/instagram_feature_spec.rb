@@ -10,10 +10,8 @@ describe 'instagram' do
   end
 
   context 'photos have been added' do
-    before do
-      Photo.create(title: 'Check out my sepia food')
-    end
     scenario 'display posts' do
+      add_post
       visit '/photos'
       expect(page).to have_content 'Check out my sepia food'
       expect(page).not_to have_content 'No photos yet'
@@ -22,22 +20,16 @@ describe 'instagram' do
 
   context 'creating photos' do
     scenario 'prompts user to fill out a form, then displays new photo post' do
-      visit '/photos'
-      click_link 'Show everyone how great your life is'
-      fill_in 'Title', with: 'Check out my sepia food'
-      click_button 'Post photo / fill the yawning void'
+      add_post
       expect(page).to have_content 'Check out my sepia food'
       expect(current_path).to eq '/photos'
     end
   end
 
   context 'viewing posts' do
+
     scenario 'view a post' do
-      visit '/photos'
-      click_link 'Show everyone how great your life is'
-      fill_in 'Title', with: 'Check out my sepia food'
-      page.attach_file('Image', Rails.root + 'public/system/photos/images/Honey_Roast_Ham_1.jpg')
-      click_button 'Post photo / fill the yawning void'
+      add_post
       expect(page.find('img')['src']).to have_content('Honey_Roast_Ham_1.jpg')
     end
   end
