@@ -1,5 +1,3 @@
-require_relative "helper_methods"
-
 feature "login and logout" do
   before do
     user = create :user
@@ -32,7 +30,7 @@ feature "login and logout" do
       click_link "Logout"
       expect(page).not_to have_link "Logout"
       expect(page).to have_link "Login"
-      expect(page).to have_content("Signed out successfully.")
+      expect(page).to have_content("You need to sign in or sign up before continuing")
     end
   end
 end

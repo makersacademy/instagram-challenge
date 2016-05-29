@@ -1,6 +1,7 @@
 feature "editing posts" do
   let!(:post) { create(:post, caption:"yolo") }
   before do
+    sign_up
     visit posts_path
     find(:xpath, "//a[contains(@href,'/posts/#{post.id}')]").click
     click_link "Edit"

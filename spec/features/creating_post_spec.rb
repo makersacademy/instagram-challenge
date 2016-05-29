@@ -1,5 +1,3 @@
-require_relative "helper_methods"
-
 feature "creating post" do
   before do
     user = create :user
