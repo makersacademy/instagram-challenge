@@ -4,13 +4,21 @@
 
 <% if @pictures.any? %> 
 	<% @pictures.each do |picture| %>
-		<%= image_tag picture.image_url, class: 'img-thumbnail', style: "width:150px;height:150px" %><br>
-		<%= link_to "Edit", edit_picture_path(picture) %> - 
-		<%= link_to "Delete", picture_path(picture), method: :delete %></br>
-		<br>
+		<div class="panel panel-default center-block">
+	  <div class="panel-body">
+			<%= image_tag picture.image_url, class: 'img-thumbnail', style: "width:150px;height:150px" %><br>
+	  </div>
+	  <div class="panel-footer">
+	  	<div class="btn-group">
+		    <%= link_to "Edit", edit_picture_path(picture), class: "btn btn-warning" %>
+		    <%= link_to "Delete", picture_path(picture), class: "btn btn-danger", method: :delete %>
+		  </div>
+			<br>
+	  </div>
+	</div>
 	<% end %>
 <% else %>
 	<p>No pictures yet.</p>
 <% end %>
 <hr>
-<%= link_to "Home", root_path %>
+<div class='center-block'><%= link_to "Home", root_path, class: 'btn btn-warning' %></div>
