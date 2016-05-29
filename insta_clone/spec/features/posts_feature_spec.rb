@@ -10,7 +10,7 @@ feature 'posts' do
     scenario 'should display a prompt to upload a post' do
       visit '/posts'
       expect(page).to have_content 'No posts yet'
-      expect(page).to have_link 'Post to instagram'
+      expect(page).to have_link 'New post'
     end
   end
 

@@ -1,18 +1,36 @@
 !!!
 %html
-  %head
-    %title YelpClone
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+  %nav.navbar.navbar-default
+    .navbar-container
+      .navbar-header
+        %button.navbar-toggle.collapsed{"data-target" => "#bs-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+          %span.sr-only Toggle Navigation
+          %span.icon-bar
+          %span.icon-bar
+        .navbar-brand= link_to "Instaclone", root_path
+      .collapse.navbar-collapse#bs-navbar-collapse-1
+        %ul.nav.navbar-nav.navbar-right
+          -if user_signed_in?
+            %li
+              = link_to "Sign out", destroy_user_session_path, method: :delete
+              %li
+                = link_to "New Post", '/posts/new'
+          -else
+            %li
+              = link_to "Sign in", new_user_session_path
+            %li
+              = link_to "Sign up with Facebook", user_facebook_omniauth_authorize_path
+            %li
+              = link_to "Register", new_user_registration_path
 
-    - if user_signed_in?
-      = link_to "Sign out", destroy_user_session_path, method: :delete
-    - else
-      = link_to "Sign in", new_user_session_path
-      = link_to "Sign up", new_user_registration_path
-      = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
+  %head
+    %title Instaclone
+
 
   %body
     = notice
+    = alert
     = yield
