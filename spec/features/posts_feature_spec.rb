@@ -35,8 +35,8 @@ feature 'posts' do
   context 'viewing posts' do
     scenario 'lets a user view a post' do
      post = create(:post, caption: "google logo")
-     visit '/'
-     link = page.first(:xpath, '//a').click
+     visit '/posts'
+     find(:xpath, "//a[contains(@href,'posts/#{post.id}')]").click
      expect(page).to have_content 'google logo'
      expect(page.current_path).to eq(post_path(post))
      expect(page).to have_css("img[src*='googlelogo.png']")
@@ -47,7 +47,7 @@ feature 'posts' do
     scenario 'a user can edit a post' do
       post = create(:post, caption: "google logo")
       visit '/'
-      link = page.first(:xpath, '//a').click
+      find(:xpath, "//a[contains(@href,'posts/#{post.id}')]").click
       click_link('Edit Post')
       fill_in 'Caption', with: "updated caption"
       attach_file('Image',"spec/files/images/tomate.jpg")
@@ -56,6 +56,7 @@ feature 'posts' do
       expect(page).to have_content 'updated caption'
       expect(page).not_to have_content 'google logo'
       expect(page).to have_css("img[src*='tomate.jpg']")
+      expect(page).not_to have_css("img[src*='googlelogo.png']")
    end
   end
 end
