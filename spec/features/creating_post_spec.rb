@@ -1,6 +1,9 @@
+require_relative "helper_methods"
+
 feature "creating post" do
   before do
-    visit "/"
+    user = create :user
+    log_in
     click_link "New"
     fill_in "Caption", with: "hipster coffee"
   end
