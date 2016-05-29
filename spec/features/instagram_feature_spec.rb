@@ -37,7 +37,8 @@ describe 'instagram' do
       click_link 'Show everyone how great your life is'
       fill_in 'Title', with: 'Check out my sepia food'
       page.attach_file('Image', Rails.root + 'public/system/photos/images/Honey_Roast_Ham_1.jpg')
-      expect(page).to have_xpath("//img[@src=\"/public/system/photos/images/Honey_Roast_Ham_1.jpg\"]")
+      click_button 'Post photo / fill the yawning void'
+      expect(page.find('img')['src']).to have_content('Honey_Roast_Ham_1.jpg')
     end
   end
 end
