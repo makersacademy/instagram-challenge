@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20160528214317) do
   create_table "photos", force: :cascade do |t|
     t.string   "location"
     t.binary   "image"
-    t.datetime "time"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

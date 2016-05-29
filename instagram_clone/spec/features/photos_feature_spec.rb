@@ -16,24 +16,44 @@ feature 'photos'
   context 'photos added' do
 
     scenario 'can add a photo' do
-      visit '/photos'
-      click_link 'Post a photo'
-      fill_in :Location, with: 'Dolores Park'
-      fill_in :Image, with: 'sss'
-      fill_in :Description, with: 'Such a nice day'
-      click_button 'Post'
+      post_a_photo
       expect(current_path).to eq '/photos'
+      expect(page.first('img')['src']).to have_content 'kitten.jpg'
     end
 
-    scenario 'added photo displays on /photos' do
-      visit '/photos'
-      click_link 'Post a photo'
-      fill_in :Location, with: 'Dolores Park'
-      fill_in :Image, with: 'sss'
-      fill_in :Description, with: 'Such a nice day'
-      click_button 'Post'
-      expect(page).to have_content 'Dolores Park'
-      expect(page).to have_content 'Such a nice day'
+  end
+
+  context 'editing photos' do
+
+    scenario 'shows edit button for photos' do
+      post_a_photo
+      expect(page).to have_link 'edit'
+    end
+
+    scenario 'can successfully edit a photo' do
+      post_a_photo
+      click_link 'edit'
+      edit_a_photo
+      expect(current_path).to eq '/photos'
+      expect(page).to have_content 'Hawk Hill'
+      expect(page).to have_content 'Pretty view'
+    end
+
+  end
+
+  context 'deleting a photo' do
+
+    scenario 'shows delete button for photos' do
+      post_a_photo
+      expect(page).to have_link 'delete'
+    end
+
+    scenario 'can successfully delete a photo' do
+      post_a_photo
+      click_link 'delete'
+      expect(current_path).to eq '/photos'
+      expect(page).not_to have_content 'Dolores Park'
+      expect(page).to have_content 'No photos to show :('
     end
 
   end
