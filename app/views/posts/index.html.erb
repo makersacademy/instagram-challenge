@@ -7,10 +7,23 @@
     <%= button_to "like", like_post_path(post), {:onclick => "like"} %>
     <%= link_to "Edit #{post.title}", edit_post_path(post) %>
     <%= link_to "Delete #{post.title}", post_path(post), method: :delete %>
+    <%= link_to "Comment on #{post.title}", new_post_comment_path(post) %>
 
-  <%end%>
-  <%else%>
+    <h3> Comments on <%=post.title%>:</h3>
+      <% if post.comments.any? %>
+        <ul><%= post.comments.each do |comment| %>
+            <li>
+              <%= comment.message %>
+              <strong><%= comment.reaction %></strong>
+            </li>
+          </ul>
+          <% end %>
+      <% else %>
+        <p> No comments yet </p>
+      <% end %>
+      <% end %>
+  <% else %>
     <h1>No posts yet</h1>
-<%end%>
+<% end %>
 
 <a href='/posts/new'>Add a post</a>'
