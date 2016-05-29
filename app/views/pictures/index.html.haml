@@ -1,11 +1,7 @@
 - if Picture.all.any?
   - @pictures.each do |picture|
+    %p= picture.user.email
     %p= image_tag picture.image.url(:medium), :id => "picture"
-    %p= picture.description
-    %p= pluralize picture.likes.count, 'like'
-    - picture.comments.each do |comment|
-      %p= comment.thoughts
-
     - if current_user
       - if current_user.id == @pictures.find(picture.id).user_id
         = link_to "Edit", edit_picture_path(picture)
@@ -20,7 +16,12 @@
     - if current_user
       - unless current_user.has_liked?(picture)
         = link_to "Like", picture_likes_path(picture), method: :post
+    %p= picture.description
+    %p= pluralize picture.likes.count, 'like'
+    - picture.comments.each do |comment|
+      %p= comment.thoughts
 - else
-  No pictures here 😳
+  %p No pictures here 😳
 
+%p
 %a(href='/pictures/new') Add a picture
