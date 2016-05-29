@@ -1,22 +1,38 @@
-<h2><%= @picture.title %></h2>
-<%= image_tag @picture.image_url, class: 'img-rounded' %><br>
-<%= link_to like_picture_path(@picture), method: :put, class: 'btn btn-default' do %>
-	<span class='glyphicon glyphicon-heart'><%= @picture.get_upvotes.size %></span>
-<% end %>
-<% if @picture.comments.any? %>
-  <p>Comments</p>
-  <% @picture.comments.each do |comment| %>
-    <p>Posted by <%= comment.author %></p>
-    <p><%= comment.content %></p>
-    <p><%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></p>
-    <hr>
-  <% end %>
-<% else %>
-	<p>No comments</p>
-<% end %>
-<br>
-<% if user_signed_in? %>
-	<%= link_to "Comment", new_picture_comment_path(@picture) %>
-<% end %>
-<p><%= link_to "Back", pictures_path %></p>
+<div id='picture_show' class='row'>
+	<div class='col-md-8 col-md-offset-2'>
+		<div class='box panel panel-default'>
+			<div class="panel-heading"><h3><%= @picture.title %></h3></div>
+			<div class="panel-body picture_image"><%= image_tag @picture.image_url %></div>
+			<div class="panel-footer">
+				<div class='row'>
+					<div class='col-md-6'><strong>Submitted by </strong><%= @picture.user.email %></div>
+					<div class='col-md-6'>
+						<div class='btn-group pull-right'>
+							<%= link_to like_picture_path(@picture), method: :put, class: 'btn btn-default' do %>
+							<span class='glyphicon glyphicon-heart'> <%= @picture.get_upvotes.size %></span>
+							<% end %>
+							<% if user_signed_in? %>
+								<%= link_to "Comment", new_picture_comment_path(@picture), class: 'btn btn-default' %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='panel-body'>
+				<% if @picture.comments.any? %>
+				  <h2 class='center-block'>Comments</h2>
+				  <% @picture.comments.each do |comment| %>
+				    <p><strong>Posted by </strong><%= comment.author %> (<%= comment.created_at.strftime('%b %d, %Y at %H:%M') %>)</p>
+				    <p><%= comment.content %></p>
+				    <hr>
+				  <% end %>
+				<% else %>
+					<p>No comments</p>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
 
+
+<div class='center-block'><%= link_to "Back", pictures_path, class: 'btn btn-warning' %></div>

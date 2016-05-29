@@ -1,26 +1,47 @@
 <% if @pictures.any? %>
-  <% @pictures.each do |picture| %>
-    <h2><%= link_to picture.title, picture_path(picture) %></h2>
-    <% unless picture.image_url.nil? %>
-    	<a href="<%=picture_path(picture) %>"><%= image_tag picture.image_url %></a><br>
-    <% end %>
-    <% if picture.comments.any? %>
-		  <h3>Comments</h3>
-		  <% picture.comments.each do |comment| %>
-		    <p>Posted by <%= comment.author %></p>
-		    <p><%= comment.content %></p>
-		    <p><%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></p>
-		  <% end %>
-		<% else %>
-			<p>No comments</p>
-		<% end %>
-		<% if user_signed_in? %>
-			<%= link_to "Comment", new_picture_comment_path(picture) %>
-		<% end %>
-		<hr>
-  <% end %>
+<% @pictures.each do |picture| %>
+<div id='picture_show' class='row'>
+	<div class='col-md-8 col-md-offset-2'>
+		<div class='box panel panel-default'>
+			<div class="panel-heading"><h3><%= picture.title %></h3></div>
+			<div class="panel-body picture_image">
+				<% unless picture.image_url.nil? %>
+				<a href="<%=picture_path(picture) %>"><%= image_tag picture.image_url %></a><br>
+				<% end %>
+			</div>
+			<div class="panel-footer">
+				<div class='row'>
+					<div class='col-md-6'>Submitted by <%= picture.user.email %></div>
+					<div class='col-md-6'>
+						<div class='btn-group pull-right'>
+							<%= link_to like_picture_path(picture), method: :put, class: 'btn btn-default' do %>
+							<span class='glyphicon glyphicon-heart'> <%= picture.get_upvotes.size %></span>
+							<% end %>
+							<% if user_signed_in? %>
+								<%= link_to "Comment", new_picture_comment_path(picture), class: 'btn btn-default' %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class='panel-body'>
+				<% if picture.comments.any? %>
+				<h2 class='center-block'>Comments</h2>
+				<% picture.comments.each do |comment| %>
+				<p><strong>Posted by </strong><%= comment.author %> (<%= comment.created_at.strftime('%b %d, %Y at %H:%M') %>)</p>
+				<p><%= comment.content %></p>
+				<hr>
+				<% end %>
+				<% else %>
+				<p>No comments</p>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %>
 <% else %>
-  <h1>No pictures yet</h1>
+<h1>No pictures yet</h1>
 <% end %>
 
-<a href="/pictures/new">Upload a picture</a>
+<div class='center-block'><%= link_to "Upload a picture", new_picture_path, class: 'btn btn-warning' %></div>
