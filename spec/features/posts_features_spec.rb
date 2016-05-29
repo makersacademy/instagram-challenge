@@ -69,7 +69,7 @@ feature 'posts' do
         expect(page).to have_content('CHANGED TEST')
         expect(page).to have_content('retagged')
         expect(current_path).to eq '/posts'
-    end
+      end
   end
   context 'deleting posts' do
     image = File.new(File.expand_path('./spec/features/test.png'))
@@ -80,6 +80,6 @@ feature 'posts' do
         expect(page).not_to have_content('TEST')
         expect(page).not_to have_content('tagged')
         expect(current_path).to eq '/posts'
-    end
+      end
   end
 end

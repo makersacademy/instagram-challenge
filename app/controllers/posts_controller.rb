@@ -40,7 +40,7 @@ class PostsController < ApplicationController
     redirect_to '/posts'
   end
 
-private
+  private
 
   def post_params
     params.require(:post).permit(:title, :image, :tag)
