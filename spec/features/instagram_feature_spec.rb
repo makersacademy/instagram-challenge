@@ -40,4 +40,20 @@ describe 'instagram' do
       expect(page).to have_content 'Check out my sepia food'
     end
   end
+
+  context 'editing restaurants' do
+
+    scenario 'let a user edit a restaurant' do
+      add_post
+      visit '/photos'
+      click_link 'Check out my sepia food'
+      click_link 'Edit post'
+      fill_in 'Title', with: 'Actually, I forgot the filter'
+      click_button 'Update'
+      expect(page).to have_content 'Actually, I forgot the filter'
+      expect(current_path).to eq '/photos'
+    end
+
+  end
+
 end
