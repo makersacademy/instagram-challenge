@@ -34,6 +34,6 @@ feature 'Posts' do
       make_post_without_image
       expect(page).to have_content 'Error: Image required'
     end
-end
+  end
 
 end

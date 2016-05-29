@@ -12,7 +12,7 @@ bin/rake db:migrate
 bin/rake db:create RAILS_ENV=test
 bin/rake db:migrate RAILS_ENV=test
 ```
-* I set up the Rspec as my testing framework by adding the following to my Gemfile and running `bundle`
+* I set up Rspec as my testing framework by adding the following to my Gemfile and running `bundle`
 ```
 group :test do
   gem 'rspec-rails'
@@ -23,11 +23,31 @@ end
 
 * In order to allow capybara testing I added the line `require 'capybara/rails'` to spec/rails_helper.rb
 
-* Time to start TDD'ing and developing the app, following information will be mostly notes on useful rails commands/shortcuts and the like...
+* Included `gem 'factory_girl_rails' in Gemfile, Factory Girl let’s you create active record objects to test against, add `config.include FactoryGirl::Syntax::Methods` to the `rails_helper.rb` inside the `Rspec.configure` block to prep configure rspec to use factories
 
-  - In order to create new controllers run `bin/rails g controller name_of_controller` from the command line
+* `brew install imagemagick` to help paperclip gem for image uploading
 
-  -
+* Included `gem 'paperclip'` in Gemfile for image uploads
+
+* Time to start TDD'ing and developing the app
+
+  - In order to create new controllers run `bin/rails g controller name_of_controller` from the command line, then migrate
+
+  - In order to create new models run `bin/rails g model model_name field_name:data_type from the command line, then migrate
+
+  - In order to create a migration to add images to a model `bin/rails g paperclip model_name image`
+
+  - To build a default factory for posts create `spec/factories/post.rb` and use the following template to build a factory
+    ```
+    FactoryGirl.define do
+      factory :post do
+        caption "nofilter"
+        image Rack::Test::UploadedFile.new(Rails.root + 'spec/files/images/coffee.jpg', 'image/jpg')
+      end
+    end
+    ```
+
+
 
 Instagram Challenge
 ===================
