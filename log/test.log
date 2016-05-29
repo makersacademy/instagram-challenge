@@ -16107,3 +16107,321 @@ Processing by PostsController#new as HTML
   Rendered posts/new.html.haml within layouts/application (3.3ms)
 Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms)
   [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (169.5ms)[0m  [1mDROP DATABASE IF EXISTS "pichagram_test"[0m
+  [1m[35m (1260.9ms)[0m  CREATE DATABASE "pichagram_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (16.5ms)[0m  CREATE TABLE "posts" ("id" serial primary key, "caption" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp) 
+  [1m[36m (13.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_name" character varying) [0m
+  [1m[35m (6.7ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (6.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (7.6ms)[0m  CREATE UNIQUE INDEX  "index_users_on_user_name" ON "users" USING btree ("user_name")
+  [1m[36m (8.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (8.3ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160529114839')
+  [1m[36m (2.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160527175156')[0m
+  [1m[35m (2.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160527181834')
+  [1m[36m (3.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160529112944')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 14:37:13 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.haml within layouts/application (6.2ms)
+Completed 200 OK in 208ms (Views: 194.5ms | ActiveRecord: 1.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-pga6ko.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-1v19v57.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-1v19v57.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-1v19v57.png[0]' -auto-orient -resize "640" '/tmp/6b76b494ff1d0c461d7c845d44b00c4920160529-16049-17uu9h0'
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-l520qp.png'
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "posts" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["caption", "first post!"], ["image_file_name", "googlelogo.png"], ["image_content_type", "image/png"], ["image_file_size", 13504], ["image_updated_at", "2016-05-29 13:37:13.704553"], ["created_at", "2016-05-29 13:37:14.113123"], ["updated_at", "2016-05-29 13:37:14.113123"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-iiwaj4.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-1c6rb2n.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-1c6rb2n.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-1c6rb2n.png[0]' -auto-orient -resize "640" '/tmp/09ebfe1bac15941fea8b5cc63a6b9d2520160529-16049-d07tp'
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-vxtosn.png'
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "posts" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "second post"], ["image_file_name", "googlelogo.png"], ["image_content_type", "image/png"], ["image_file_size", 13504], ["image_updated_at", "2016-05-29 13:37:14.214607"], ["created_at", "2016-05-29 13:37:14.275541"], ["updated_at", "2016-05-29 13:37:14.275541"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 14:37:14 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.haml within layouts/application (3.5ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 14:37:14 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.haml within layouts/application (1.0ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2016-05-29 14:37:14 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.haml (56.8ms)
+  Rendered posts/new.html.haml within layouts/application (61.8ms)
+Completed 200 OK in 66ms (Views: 65.0ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2016-05-29 14:37:14 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x000000071894d8 @tempfile=#<Tempfile:/tmp/RackMultipart20160529-16049-1tqrssg.png>, @original_filename="googlelogo.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"googlelogo.png\"\r\nContent-Type: image/png\r\nContent-Length: 13504\r\n">, "caption"=>"google"}, "commit"=>"Create Post"}
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-1mvucb0.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-h0uk2h.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-h0uk2h.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-h0uk2h.png[0]' -auto-orient -resize "640" '/tmp/aac4919cdcf374e2653917e955b9127e20160529-16049-45jba2'
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-ce9fn6.png'
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("image_file_name", "image_content_type", "image_file_size", "image_updated_at", "caption", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["image_file_name", "googlelogo.png"], ["image_content_type", "image/png"], ["image_file_size", 13504], ["image_updated_at", "2016-05-29 13:37:14.391806"], ["caption", "google"], ["created_at", "2016-05-29 13:37:14.451693"], ["updated_at", "2016-05-29 13:37:14.451693"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 70ms (ActiveRecord: 0.4ms)
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 14:37:14 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.haml within layouts/application (2.6ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  BEGIN
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-raq4ep.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-ui93st.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-ui93st.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-ui93st.png[0]' -auto-orient -resize "640" '/tmp/42b39ba3b2435991149c9b865ed265c720160529-16049-ci5j3u'
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-14bfirl.png'
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["caption", "google logo"], ["image_file_name", "googlelogo.png"], ["image_content_type", "image/png"], ["image_file_size", 13504], ["image_updated_at", "2016-05-29 13:37:14.478375"], ["created_at", "2016-05-29 13:37:14.542025"], ["updated_at", "2016-05-29 13:37:14.542025"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 14:37:14 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.haml within layouts/application (2.4ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.4ms)
+Started GET "/posts/4" for 127.0.0.1 at 2016-05-29 14:37:14 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered posts/show.html.haml within layouts/application (3.3ms)
+Completed 200 OK in 12ms (Views: 5.3ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-jky1kz.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-1c1dthz.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-1c1dthz.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-1c1dthz.png[0]' -auto-orient -resize "640" '/tmp/ab50635fe0b9b1a8ac0211ae733f9ba220160529-16049-1f0xubg'
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-oe0u7n.png'
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["caption", "google logo"], ["image_file_name", "googlelogo.png"], ["image_content_type", "image/png"], ["image_file_size", 13504], ["image_updated_at", "2016-05-29 13:37:14.581848"], ["created_at", "2016-05-29 13:37:14.643043"], ["updated_at", "2016-05-29 13:37:14.643043"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2016-05-29 14:37:14 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.4ms)
+Started GET "/posts/5" for 127.0.0.1 at 2016-05-29 14:37:14 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 5]]
+  Rendered posts/show.html.haml within layouts/application (1.4ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.3ms)
+Started GET "/posts/5/edit" for 127.0.0.1 at 2016-05-29 14:37:14 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  Rendered posts/_form.html.haml (3.3ms)
+  Rendered posts/edit.html.haml within layouts/application (4.5ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.3ms)
+Started PATCH "/posts/5" for 127.0.0.1 at 2016-05-29 14:37:14 +0100
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00000006aea000 @tempfile=#<Tempfile:/tmp/RackMultipart20160529-16049-pkhpcl.jpg>, @original_filename="tomate.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"tomate.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 56334\r\n">, "caption"=>"updated caption"}, "commit"=>"Update Post", "id"=>"5"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/tmp/02e409c8bf00d35d7a7d61c56829da7f20160529-16049-r8euhb.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/02e409c8bf00d35d7a7d61c56829da7f20160529-16049-em780d.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/02e409c8bf00d35d7a7d61c56829da7f20160529-16049-em780d.jpg[0]'
+Command :: convert '/tmp/02e409c8bf00d35d7a7d61c56829da7f20160529-16049-em780d.jpg[0]' -auto-orient -resize "640" '/tmp/66baa3b933d29b4e7cd021b3aec245d020160529-16049-1muwjwn'
+Command :: file -b --mime '/tmp/02e409c8bf00d35d7a7d61c56829da7f20160529-16049-nsnqc0.jpg'
+  [1m[35mSQL (0.2ms)[0m  UPDATE "posts" SET "image_file_name" = $1, "image_content_type" = $2, "image_file_size" = $3, "image_updated_at" = $4, "caption" = $5, "updated_at" = $6 WHERE "posts"."id" = $7  [["image_file_name", "tomate.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 56334], ["image_updated_at", "2016-05-29 13:37:14.687439"], ["caption", "updated caption"], ["updated_at", "2016-05-29 13:37:15.036737"], ["id", 5]]
+[paperclip] deleting /home/sergio/Ronin/Week7/challenge/instagram-challenge/public/system/posts/images/000/000/005/original/googlelogo.png
+[paperclip] deleting /home/sergio/Ronin/Week7/challenge/instagram-challenge/public/system/posts/images/000/000/005/medium/googlelogo.png
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 363ms (ActiveRecord: 0.6ms)
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 14:37:15 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.haml within layouts/application (2.5ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-18uwxqd.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-irrys3.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-irrys3.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-irrys3.png[0]' -auto-orient -resize "640" '/tmp/917dee7d2c62f458a78a8742ddda391b20160529-16049-tqab7b'
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-16049-1s8swhl.png'
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "google logo"], ["image_file_name", "googlelogo.png"], ["image_content_type", "image/png"], ["image_file_size", 13504], ["image_updated_at", "2016-05-29 13:37:15.057998"], ["created_at", "2016-05-29 13:37:15.117623"], ["updated_at", "2016-05-29 13:37:15.117623"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/" for 127.0.0.1 at 2016-05-29 14:37:15 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.haml within layouts/application (2.3ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.4ms)
+Started GET "/posts/6" for 127.0.0.1 at 2016-05-29 14:37:15 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered posts/show.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms)
+Started DELETE "/posts/6" for 127.0.0.1 at 2016-05-29 14:37:15 +0100
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 8ms (ActiveRecord: 0.5ms)
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 14:37:15 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.haml within layouts/application (1.3ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2016-05-29 14:37:15 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (1.2ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.haml within layouts/application (1.9ms)
+Completed 200 OK in 12ms (Views: 10.3ms | ActiveRecord: 1.2ms)
+Started GET "/posts/new" for 127.0.0.1 at 2016-05-29 14:37:15 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/_form.html.haml (4.4ms)
+  Rendered posts/new.html.haml within layouts/application (5.1ms)
+Completed 200 OK in 12ms (Views: 10.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 14:59:19 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 29ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-05-29 14:59:19 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (144.0ms)
+  Rendered layouts/_navbar.html.haml (14.1ms)
+Completed 200 OK in 654ms (Views: 602.8ms | ActiveRecord: 30.4ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-1yj4g1.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-uqvrxb.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-uqvrxb.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-uqvrxb.png[0]' -auto-orient -resize "640" '/tmp/e6547054166de0d3be6fa5acf93a7fa120160529-17012-93zybf'
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-yax4to.png'
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["caption", "first post!"], ["image_file_name", "googlelogo.png"], ["image_content_type", "image/png"], ["image_file_size", 13504], ["image_updated_at", "2016-05-29 13:59:20.591161"], ["created_at", "2016-05-29 13:59:20.679943"], ["updated_at", "2016-05-29 13:59:20.679943"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-1dee57d.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-10ymd03.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-10ymd03.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-10ymd03.png[0]' -auto-orient -resize "640" '/tmp/837162d4ce385441bd2c4fe158fae1ca20160529-17012-1o5vax6'
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-16u8m6m.png'
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "second post"], ["image_file_name", "googlelogo.png"], ["image_content_type", "image/png"], ["image_file_size", 13504], ["image_updated_at", "2016-05-29 13:59:20.721229"], ["created_at", "2016-05-29 13:59:20.775055"], ["updated_at", "2016-05-29 13:59:20.775055"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 14:59:20 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-05-29 14:59:20 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_navbar.html.haml (0.8ms)
+Completed 200 OK in 18ms (Views: 8.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 14:59:20 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-05-29 14:59:20 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (25.5ms)
+  Rendered layouts/_navbar.html.haml (0.6ms)
+Completed 200 OK in 29ms (Views: 27.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-10qmiey.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-o9zcxm.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-o9zcxm.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-o9zcxm.png[0]' -auto-orient -resize "640" '/tmp/416000bc2ea1efd8dcc8abcf4c5eb1fc20160529-17012-v62c51'
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-1ywf1fc.png'
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "posts" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["caption", "google logo"], ["image_file_name", "googlelogo.png"], ["image_content_type", "image/png"], ["image_file_size", 13504], ["image_updated_at", "2016-05-29 13:59:20.882203"], ["created_at", "2016-05-29 13:59:20.944001"], ["updated_at", "2016-05-29 13:59:20.944001"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 14:59:20 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-05-29 14:59:20 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.2ms)
+  Rendered layouts/_navbar.html.haml (0.5ms)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-1pd5lnv.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-1h83sec.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-1h83sec.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-1h83sec.png[0]' -auto-orient -resize "640" '/tmp/f635a73fcea34a8257565d43564dcb0720160529-17012-zssuqk'
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-rvpjta.png'
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "posts" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "google logo"], ["image_file_name", "googlelogo.png"], ["image_content_type", "image/png"], ["image_file_size", 13504], ["image_updated_at", "2016-05-29 13:59:20.971502"], ["created_at", "2016-05-29 13:59:21.032005"], ["updated_at", "2016-05-29 13:59:21.032005"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/" for 127.0.0.1 at 2016-05-29 14:59:21 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-05-29 14:59:21 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.2ms)
+  Rendered layouts/_navbar.html.haml (0.8ms)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-kfwb49.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-g30skx.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-g30skx.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-g30skx.png[0]' -auto-orient -resize "640" '/tmp/97fa46fbcc1f165cc2bc8d32d0d8fbf820160529-17012-1kjpuie'
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-17012-i7if4.png'
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("caption", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["caption", "google logo"], ["image_file_name", "googlelogo.png"], ["image_content_type", "image/png"], ["image_file_size", 13504], ["image_updated_at", "2016-05-29 13:59:21.150042"], ["created_at", "2016-05-29 13:59:21.211934"], ["updated_at", "2016-05-29 13:59:21.211934"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2016-05-29 14:59:21 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-05-29 14:59:21 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.2ms)
+  Rendered layouts/_navbar.html.haml (0.8ms)
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-05-29 14:59:21 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-05-29 14:59:21 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_navbar.html.haml (0.9ms)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
