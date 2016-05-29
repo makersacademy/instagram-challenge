@@ -3,10 +3,14 @@
     <% @images.each do |image| %>
       <ul>
         <%= image_tag image.image.url(:medium) %>
+        <% if image.belongs_to_user?(current_user) %>
         <p><%= link_to 'Edit', edit_image_path(image) %></p>
         <p><%= link_to 'Delete', image_path(image), method: :delete %>
-        <p><%= pluralize image.likes.count, 'like' %></p>
-        <p><%= link_to 'Like', image_likes_path(image), method: :post %>
+          <% else %>
+          <p></p>
+          <% end %>
+        <p><%= link_to 'Like', image_likes_path(image), class: 'likes-link' %>
+        <span class='likes_count'> <%= image.likes.count %> </span> <%= 'likes'.pluralize(image.likes.count) %>
         <%= image.caption %>
           <% if image.comments.any? %>
             <ul>

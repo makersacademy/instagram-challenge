@@ -26,6 +26,8 @@ gem 'devise'
 gem 'dotenv-rails'
 gem 'omniauth-facebook'
 gem 'paperclip'
+gem 'poltergeist'
+gem 'database_cleaner'
 
 
 # Use ActiveModel has_secure_password
