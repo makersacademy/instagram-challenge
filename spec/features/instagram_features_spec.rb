@@ -18,4 +18,7 @@ feature 'instagram' do
       expect(page).not_to have_content('No posts')
     end
   end
+  context 'creating posts' do
+    scenario ''
+  end
 end
