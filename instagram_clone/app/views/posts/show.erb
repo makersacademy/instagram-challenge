@@ -1,16 +1,24 @@
-<%= image_tag(@post.image.url(:medium)) %>
-<%= @post.caption %>
-<p>Posted by <%= link_to @post.user.email, user_path(@post.user) %></p>
-<% if @post.comments.any? %>
-	<p>Comments:</p>
-	<% @post.comments.each do |comment| %>
-		<%= comment.comment %>
-		<%= link_to 'Delete comment', comment_path(comment), method: :delete %>
-	<% end %>
-<% end %>
+<div class='large-image'>
+	<%= image_tag(@post.image.url(:large)) %>
+</div>
 
-<%= form_for [@post, @comment] do |f| %>
-	<%= f.label :comment %>
-	<%= f.text_area :comment %>
-	<%= f.submit 'Add comment' %>
-<% end %>
+<section class='large-image-text'>
+
+	<h2><%= @post.caption %></h2>
+	<h3>Posted by <%= link_to @post.user.email, user_path(@post.user) %></h3>
+	
+	<% if @post.comments.any? %>
+		<h4>Comments:</h4>
+		<% @post.comments.each do |comment| %>
+			<p><%= comment.comment %></p>
+			<%= link_to 'Delete comment', comment_path(comment), method: :delete %>
+		<% end %>
+	<% end %>
+
+	<%= form_for [@post, @comment] do |f| %>
+		<%= f.label :comment, class: 'hide' %>
+		<%= f.text_area :comment %>
+		<%= f.submit 'Add comment', class: 'btn btn-submit' %>
+	<% end %>
+
+</section>
