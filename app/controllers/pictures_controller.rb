@@ -12,7 +12,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-      @picture = Picture.new(picture_params)
+      @picture = Picture.create_with_user(picture_params, current_user)
       if @picture.save
         redirect_to pictures_path
       else

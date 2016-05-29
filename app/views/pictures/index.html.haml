@@ -4,9 +4,17 @@
     %p= picture.description
     - picture.comments.each do |comment|
       %p= comment.thoughts
-    = link_to "Edit", edit_picture_path(picture)
-    = link_to "Delete", picture_path(picture), method: :delete
-    = link_to "Add comment", new_picture_comment_path(picture)
+
+    - if current_user
+      - if current_user.id == @pictures.find(picture.id).user_id
+        = link_to "Edit", edit_picture_path(picture)
+
+    - if current_user
+      - if current_user.id == @pictures.find(picture.id).user_id
+        = link_to "Delete", picture_path(picture), method: :delete
+
+    - if current_user
+      = link_to "Add comment", new_picture_comment_path(picture)
 - else
   No pictures here 😳
 

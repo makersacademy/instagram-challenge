@@ -10,7 +10,7 @@ feature 'Pictures' do
     end
   end
 
-  context 'User is signed in' do
+  describe 'User is signed in' do
 
     before do
       visit pictures_path
@@ -21,7 +21,7 @@ feature 'Pictures' do
       click_button 'Sign up'
     end
 
-    describe 'adding pictures' do
+    context 'adding pictures' do
       it 'prompts user to upload a picture, then displays the new picture' do
       visit pictures_path
       click_link 'Add a picture'
@@ -42,33 +42,64 @@ feature 'Pictures' do
       end
     end
 
-    describe 'editing pictures' do
+    context 'editing pictures' do
+      it 'allows a user edit a description they have created' do
+      visit pictures_path
+      click_link 'Add a picture'
+      attach_file :picture_image, "./spec/images/succulents.jpg"
+      fill_in 'Description', with: '#sweetsucculents'
+      click_button 'Post'
 
-    let!(:succulent){ Picture.create(description:'#sweetsucculents', image_file_name: "./spec/images/succulents.jpg") }
-
-      scenario 'let a user edit a post' do
        visit pictures_path
        click_link 'Edit'
        fill_in 'Description', with: '#sexysucculents'
-       click_button 'Update'
+       click_button 'Save'
        expect(page).to have_content '#sexysucculents'
        expect(current_path).to eq pictures_path
       end
     end
 
-    describe 'deleting pictures' do
+    context 'deleting pictures' do
+      it 'allows a user to delete a post they have created' do
+        visit pictures_path
+        click_link 'Add a picture'
+        attach_file :picture_image, "./spec/images/succulents.jpg"
+        fill_in 'Description', with: '#sweetsucculents'
+        click_button 'Post'
 
-    let!(:succulent){ Picture.create(description:'#sweetsucculents', image_file_name: "./spec/images/succulents.jpg") }
-
-      it 'deletes a picture and it\'s description' do
         visit pictures_path
         click_link 'Delete'
         expect(page).not_to have_content '#sweetsucculents'
         expect(page).to have_content 'Picture deleted 😔'
       end
     end
-
   end
+
+  describe 'User is not signed in' do
+
+    context 'adding pictures' do
+      it 'must be signed in in to add a picture' do
+      visit pictures_path
+      click_link 'Add a picture'
+      expect(page).to have_content 'Log in'
+      end
+    end
+
+    context 'editing pictures' do
+      it 'should not be able to edit a post that user has not added themselves' do
+       visit pictures_path
+       expect(page).not_to have_content 'Edit'
+      end
+    end
+
+    context 'deleting pictures' do
+      it 'should not be able to edit a post that user has not added themselves' do
+        visit pictures_path
+        expect(page).not_to have_content 'Delete'
+      end
+    end
+  end
+end
 
 
   # context 'viewing pictures' do
@@ -82,6 +113,3 @@ feature 'Pictures' do
   #   end
   #
   # end
-
-
-end
