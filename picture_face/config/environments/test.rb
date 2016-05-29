@@ -1,4 +1,9 @@
 Rails.application.configure do
+
+
+# this sets the default path for saving attached images for the test environment, this path is deleted in the spec helper after each suite of tests
+  Paperclip::Attachment.default_options[:path] = "#{Rails.root}/spec/test_files/:class/:id_partition/:style.:extension"
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's
