@@ -3,12 +3,12 @@ require 'rails_helper'
 feature "create posts" do
   before do
     user = create :user
-    log_in
-    click_link "New Post"
   end
 
   context "when image is selected" do
     scenario "can create a post" do
+      log_in
+      click_link "New Post"
       attach_file("Image", "spec/files/images/googlelogo.png")
       fill_in "Caption", with: "google logo"
       click_button "Create"
@@ -19,6 +19,8 @@ feature "create posts" do
   end
   context "when image is not selected" do
     scenario "can not create a post" do
+      log_in
+      click_link "New Post"
       click_button "Create"
       expect(page).to have_content "Oh no! Problem creating post, check the form"
     end

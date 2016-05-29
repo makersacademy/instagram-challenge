@@ -16,9 +16,10 @@ feature "viewing posts" do
   end
 
   context "when not logged in" do
+
     scenario "asked to log in first" do
       visit "/"
-      expect(page).to have_content "You need to sign in or sign up before continuing."
+      expect(page).to have_content "Login"
     end
   end
 end

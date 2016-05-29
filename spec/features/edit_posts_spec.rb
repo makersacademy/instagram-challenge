@@ -5,12 +5,12 @@ feature "editing posts" do
     DatabaseCleaner.clean_with(:truncation)
     user = FactoryGirl.create(:user)
     post = FactoryGirl.create(:post, user: user, id: 600)
-    log_in
   end
 
   context "when user created post" do
     context "when update with a valid photo" do
       scenario "can edit the post" do
+        log_in
         find(:xpath, "//a[contains(@href,'/posts/600')]").click
         click_link "Edit"
         fill_in "Caption", with: "Updated comment"
@@ -24,6 +24,7 @@ feature "editing posts" do
     end
     context "when update with a invalid photo" do
       scenario "can't update the post" do
+        log_in
         find(:xpath, "//a[contains(@href,'/posts/600')]").click
         click_link "Edit"
         fill_in "Caption", with: "Edited comment"
@@ -38,6 +39,7 @@ feature "editing posts" do
     before do
       user2 = FactoryGirl.create(:user, email: "paco@mail.com", user_name: "pacojones", id: 2)
       post2 = FactoryGirl.create(:post, user: user2, id: 700)
+      log_in
     end
     scenario "can't edit the post" do
       visit posts_path

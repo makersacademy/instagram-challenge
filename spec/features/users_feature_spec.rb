@@ -22,7 +22,6 @@ feature "User can sign in and out" do
     before do
       sign_up
     end
-
     it "should see 'sign out' link" do
       visit('/')
       expect(page).to have_link('Logout')
