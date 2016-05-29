@@ -2,6 +2,7 @@
   - @pictures.each do |picture|
     %p= image_tag picture.image.url(:medium), :id => "picture"
     %p= picture.description
+    %p= pluralize picture.likes.count, 'like'
     - picture.comments.each do |comment|
       %p= comment.thoughts
 
@@ -15,6 +16,10 @@
 
     - if current_user
       = link_to "Add comment", new_picture_comment_path(picture)
+
+    - if current_user
+      - unless current_user.has_liked?(picture)
+        = link_to "Like", picture_likes_path(picture), method: :post
 - else
   No pictures here 😳
 
