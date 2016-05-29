@@ -5,6 +5,19 @@ Welcome to Instagram
     <% @images.each do |image| %>
       <ul>
         <%= link_to image_tag(image.image.url(:medium)), image_path(image) %>
+        <%= image.caption %>
+          <% if image.comments.any? %>
+            <ul>
+              <% image.comments.each do |comment| %>
+                <ul>
+                  <%= comment.comments %>
+                </ul>
+              <% end %>
+            </ul>
+          <% else %>
+            <p> </p>
+          <% end %>
+        <%= link_to 'Comment', new_image_comment_path(image) %>
       </ul>
     <% end %>
   </ul>
