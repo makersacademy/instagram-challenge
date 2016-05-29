@@ -8,7 +8,13 @@ class PicturesController < ApplicationController
 
 	def create
     @picture = Picture.create(picture_params)
-    redirect_to @picture
+    if @picture.save
+      flash[:success] = "Your picture has been created."
+      redirect_to @picture
+    else
+      flash[:alert] = "You need an image to post here!"
+      render :new
+    end
   end
 
   def show

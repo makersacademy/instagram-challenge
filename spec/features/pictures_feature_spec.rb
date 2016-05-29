@@ -18,4 +18,12 @@ feature 'pictures' do
     expect(page).to have_content('#coffeetime')
     expect(page).to have_css("img[src*='coffee.jpg']")
   end
+
+  scenario 'needs an image to create a post' do  
+    visit '/pictures'
+    click_link 'Add Picture'
+    fill_in 'Caption', with: "Thermostat"
+    click_button 'Create Picture'
+    expect(page).to have_content('You need an image to post here!')
+  end 
 end
