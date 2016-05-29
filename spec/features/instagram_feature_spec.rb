@@ -30,4 +30,14 @@ describe 'instagram' do
       expect(current_path).to eq '/photos'
     end
   end
+
+  context 'viewing posts' do
+    scenario 'view a post' do
+      visit '/photos'
+      click_link 'Show everyone how great your life is'
+      fill_in 'Title', with: 'Check out my sepia food'
+      page.attach_file('Image', Rails.root + 'public/system/photos/images/Honey_Roast_Ham_1.jpg')
+      expect(page).to have_xpath("//img[@src=\"/public/system/photos/images/Honey_Roast_Ham_1.jpg\"]")
+    end
+  end
 end
