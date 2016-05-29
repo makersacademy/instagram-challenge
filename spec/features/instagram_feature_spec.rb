@@ -41,9 +41,9 @@ describe 'instagram' do
     end
   end
 
-  context 'editing restaurants' do
+  context 'editing posts' do
 
-    scenario 'let a user edit a restaurant' do
+    scenario 'let a user edit a post' do
       add_post
       visit '/photos'
       click_link 'Check out my sepia food'
@@ -52,6 +52,18 @@ describe 'instagram' do
       click_button 'Update'
       expect(page).to have_content 'Actually, I forgot the filter'
       expect(current_path).to eq '/photos'
+    end
+  end
+
+  context 'deleting posts' do
+
+    scenario 'removes a post when a user clicks a delete link' do
+      add_post
+      visit '/photos'
+      click_link 'Check out my sepia food'
+      click_link 'Delete post'
+      expect(page).not_to have_content 'Check out my sepia food'
+      expect(page).to have_content 'Post deleted successfully'
     end
 
   end
