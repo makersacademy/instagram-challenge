@@ -12,8 +12,12 @@ class PostsController < ApplicationController
     redirect_to '/posts'
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   def post_params
-    params.require(:post).permit(:title, :image)
+    params.require(:post).permit(:title, :image, :tag)
   end
 
 end
