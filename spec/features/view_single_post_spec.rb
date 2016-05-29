@@ -9,7 +9,7 @@ feature 'view a single post' do
     scenario 'lets a user view a single post' do
       user = create :user
       post = FactoryGirl.create(:post, user: user, id: 600)
-      sign_up
+      log_in
       visit '/posts'
       find(:xpath, "//a[contains(@href,'posts/#{post.id}')]").click
       expect(page).to have_content 'google logo'

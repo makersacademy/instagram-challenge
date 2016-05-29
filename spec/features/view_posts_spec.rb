@@ -8,7 +8,7 @@ feature "viewing posts" do
   end
   context "when logged in" do
     scenario "can view all posts on homepage" do
-      sign_up
+      log_in
       expect(page).to have_content "First post!"
       expect(page).to have_content "Second post"
       expect(page).to have_css("img[src*='googlelogo.png']")
