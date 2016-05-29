@@ -4,9 +4,10 @@
 
 <% if @pictures.any? %> 
 	<% @pictures.each do |picture| %>
-		<!-- Thumbnail here <image_tag image.image(:thumb)> -->
-		<%= link_to "Edit picture #{picture.title}", edit_picture_path(picture) %></br>
-		<%= link_to "Delete picture #{picture.title}", picture_path(picture), method: :delete %></br>
+		<%= image_tag picture.image_url, class: 'img-thumbnail', style: "width:150px;height:150px" %><br>
+		<%= link_to "Edit", edit_picture_path(picture) %> - 
+		<%= link_to "Delete", picture_path(picture), method: :delete %></br>
+		<br>
 	<% end %>
 <% else %>
 	<p>No pictures yet.</p>
