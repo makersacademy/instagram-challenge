@@ -2,8 +2,11 @@
   - @posts.each do |post|
     = link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post)
     %h2= post.caption
+    - post.comments.each do |comment|
+      %h5= comment.comment
     = link_to "Edit post", edit_post_path(post)
     = link_to "Delete post", post_path(post), method: :delete
+    = link_to "Add comment", new_post_comment_path(post)
 - else
   No posts yet
 %a(href='/posts/new') Post to instagram
