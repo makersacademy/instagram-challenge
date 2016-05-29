@@ -21,6 +21,10 @@ class ImagesController < ApplicationController
 
   def edit
     @image = Image.find(params[:id])
+    if !@image.belongs_to_user?(current_user)
+      flash[:notice] = 'You can only edit your own pictures!'
+      redirect_to '/images'
+    end
   end
 
   def update
@@ -31,14 +35,18 @@ class ImagesController < ApplicationController
 
   def destroy
     @image = Image.find(params[:id])
-    @image.destroy
-    flash[:notice] = 'Image deleted'
+    if @image.belongs_to_user?(current_user)
+      @image.destroy
+      flash[:notice] = 'Image deleted'
+    else
+      flash[:notice] = 'You can only delete your own pictures!'
+    end
     redirect_to '/images'
   end
 
   private
 
   def image_params
-    params.require(:image).permit(:image, :caption)
+    params.require(:image).permit(:image, :caption).merge(user: current_user)
   end
 end

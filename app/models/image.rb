@@ -6,4 +6,8 @@ class Image < ActiveRecord::Base
   has_many :likes
   belongs_to :user
 
+  def belongs_to_user?(user)
+    self.user_id == user.id
+  end
+
 end

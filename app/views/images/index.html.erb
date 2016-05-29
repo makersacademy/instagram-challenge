@@ -1,10 +1,10 @@
-
-
 <% if @images.any? %>
   <ul>
     <% @images.each do |image| %>
       <ul>
         <%= image_tag image.image.url(:medium) %>
+        <p><%= link_to 'Edit', edit_image_path(image) %></p>
+        <p><%= link_to 'Delete', image_path(image), method: :delete %>
         <p><%= pluralize image.likes.count, 'like' %></p>
         <p><%= link_to 'Like', image_likes_path(image), method: :post %>
         <%= image.caption %>
