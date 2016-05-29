@@ -4,6 +4,20 @@
     <% unless picture.image_url.nil? %>
     	<a href="<%=picture_path(picture) %>"><%= image_tag picture.image_url %></a><br>
     <% end %>
+    <% if picture.comments.any? %>
+		  <h3>Comments</h3>
+		  <% picture.comments.each do |comment| %>
+		    <p>Posted by <%= comment.author %></p>
+		    <p><%= comment.content %></p>
+		    <p><%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></p>
+		  <% end %>
+		<% else %>
+			<p>No comments</p>
+		<% end %>
+		<% if user_signed_in? %>
+			<%= link_to "Comment", new_picture_comment_path(picture) %>
+		<% end %>
+		<hr>
   <% end %>
 <% else %>
   <h1>No pictures yet</h1>
