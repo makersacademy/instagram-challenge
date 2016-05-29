@@ -2,5 +2,8 @@
 <p><%= @photo.caption %></p>
 <p><%= image_tag(@photo.image.url(:large)) %>
 <p><%= @photo.created_at %></p>
-<%= link_to "Edit", edit_photo_path(@photo) %>
-<%= link_to "Delete", photo_path(@photo), method: :delete %>
+
+<% if user_signed_in? && current_user.is_owner_of?(@photo) %>
+	<%= link_to "Edit", edit_photo_path(@photo) %>
+	<%= link_to "Delete", photo_path(@photo), method: :delete %>
+<% end %>

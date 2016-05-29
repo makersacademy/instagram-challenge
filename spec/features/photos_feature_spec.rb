@@ -3,7 +3,11 @@ require 'rails_helper'
 feature 'photos' do
 
   context 'have not been added' do
+
     scenario 'should display a prompt to add an image' do
+      visit '/'
+      expect(page).not_to have_link "Add an photo"
+      sign_up_user1
       visit '/photos'
       expect(page).to have_content 'No photos yet'
       expect(page).to have_link 'Add an photo'

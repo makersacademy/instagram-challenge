@@ -28,6 +28,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Unicorn as the app server
 # gem 'unicorn'
+gem 'aws-sdk'
+gem 'aws-sdk-v1'
 gem 'paperclip'
 gem 'devise'
 
@@ -50,5 +52,6 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'database_cleaner'
 end
 
