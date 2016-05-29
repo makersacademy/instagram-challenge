@@ -30,7 +30,14 @@ describe 'instagram' do
 
     scenario 'view a post' do
       add_post
-      expect(page.find('img')['src']).to have_content('Honey_Roast_Ham_1.jpg')
+      expect(page.find('img')['src']).to have_content 'Honey_Roast_Ham_1.jpg'
+    end
+
+    scenario 'lets a user view a post' do
+      add_post
+      click_link 'Check out my sepia food'
+      expect(page.find('img')['src']).to have_content 'Honey_Roast_Ham_1.jpg'
+      expect(page).to have_content 'Check out my sepia food'
     end
   end
 end
