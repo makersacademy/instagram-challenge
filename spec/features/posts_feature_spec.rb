@@ -62,14 +62,26 @@ feature 'posts' do
 
   context 'deleting posts' do
     scenario 'lets a user delete a post' do
-     post = create(:post, caption: "google logo")
-     visit '/'
-     find(:xpath, "//a[contains(@href,'posts/#{post.id}')]").click
-     click_link('Delete')
-     expect(page.current_path).to eq('/posts')
-     expect(page).to have_content("Post deleted successfully")
-     expect(page).not_to have_content 'google logo'
+      post = create(:post, caption: "google logo")
+      visit '/'
+      find(:xpath, "//a[contains(@href,'posts/#{post.id}')]").click
+      click_link('Delete')
+      expect(page.current_path).to eq('/posts')
+      expect(page).to have_content("Post deleted")
+      expect(page).not_to have_content 'google logo'
    end
+ end
+
+ context 'no picha, no post' do
+   scenario 'without uploading a pic no post can be created' do
+    pending
+     visit '/'
+     click_link('New Post')
+     fill_in 'Caption', with: 'google'
+     click_link('Create Post')
+     expect(page.current_path).to eq('/posts/new')
+     expect(page).to have_content("Oh no! Problem creating post, check the form")
+    end
  end
 
 end
