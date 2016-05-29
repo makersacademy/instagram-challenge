@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 
-feature 'instagram' do
+feature 'posts' do
   before(:each) {Post.delete_all}
 
   context 'no posts should have been added' do
@@ -55,6 +55,31 @@ feature 'instagram' do
       click_link 'TEST'
       expect(page).to have_content('Likes: 1')
       expect(current_path).to eq "/posts/#{test_image.id}"
+    end
+  end
+  context 'editing posts' do
+    image = File.new(File.expand_path('./spec/features/test.png'))
+    before {Post.create(title:'TEST', image:image, tag:'tagged')}
+      scenario 'posts can be edited' do
+        visit '/posts'
+        click_link 'Edit TEST'
+        fill_in 'Title', with: 'CHANGED TEST'
+        fill_in 'Tag', with: 'retagged'
+        click_button 'Update Post'
+        expect(page).to have_content('CHANGED TEST')
+        expect(page).to have_content('retagged')
+        expect(current_path).to eq '/posts'
+    end
+  end
+  context 'deleting posts' do
+    image = File.new(File.expand_path('./spec/features/test.png'))
+    before {Post.create(title:'TEST', image:image, tag:'tagged')}
+      scenario 'posts can be deleted' do
+        visit '/posts'
+        click_link 'Delete TEST'
+        expect(page).not_to have_content('TEST')
+        expect(page).not_to have_content('tagged')
+        expect(current_path).to eq '/posts'
     end
   end
 end
