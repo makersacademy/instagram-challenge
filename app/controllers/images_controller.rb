@@ -1,5 +1,7 @@
 class ImagesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @images = Image.all
   end
@@ -13,9 +15,9 @@ class ImagesController < ApplicationController
     redirect_to '/images'
   end
 
-  def show
-    @image = Image.find(params[:id])
-  end
+  # def show
+  #   @image = Image.find(params[:id])
+  # end
 
   def edit
     @image = Image.find(params[:id])
