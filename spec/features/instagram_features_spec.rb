@@ -1,6 +1,10 @@
 require 'rails_helper'
 
+
+
 feature 'instagram' do
+  before(:each) {Post.delete_all}
+
   context 'no posts should have been added' do
     scenario 'should display a promp to add a post' do
       visit '/posts'
@@ -39,6 +43,17 @@ feature 'instagram' do
       expect(page).to have_content('TEST')
       expect(page).to have_content('tagged')
       expect(page).to have_content('Likes: 0')
+      expect(current_path).to eq "/posts/#{test_image.id}"
+    end
+  end
+  context 'liking posts' do
+    image = File.new(File.expand_path('./spec/features/test.png'))
+    let!(:test_image){Post.create(title:'TEST', image:image, tag:'tagged')}
+    scenario 'liking a post increases it\'s like count' do
+      visit '/posts'
+      click_button 'like'
+      click_link 'TEST'
+      expect(page).to have_content('Likes: 1')
       expect(current_path).to eq "/posts/#{test_image.id}"
     end
   end

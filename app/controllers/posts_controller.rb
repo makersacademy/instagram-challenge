@@ -16,6 +16,13 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def like
+    @post = Post.find(params[:id])
+    @post.likes += 1
+    @post.save
+    redirect_to '/posts'
+  end
+
   def post_params
     params.require(:post).permit(:title, :image, :tag)
   end
