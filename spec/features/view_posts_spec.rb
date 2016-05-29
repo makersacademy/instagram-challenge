@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User can view a list of posts' do  
+feature 'Viewing a list of posts' do  
   scenario 'the index displays previously created posts' do
     job_one = create(:post, caption: "This is a post")
     job_two = create(:post, caption: "This is another post")
@@ -11,7 +11,7 @@ feature 'User can view a list of posts' do
   end
 end
 
-feature 'User can view an individual post' do 
+feature 'Viewing individual post' do 
   scenario 'the user can navigate to an individual post' do 
     post = create(:post, caption: "I like tacos")
     visit '/'
