@@ -10,29 +10,29 @@ feature 'Posts' do
 
   context 'have been added' do
     before do
-      Post.create(title: 'Picture', caption: 'a picture')
+      make_post
     end
 
     scenario 'display posts' do
       visit '/posts'
-      expect(page).to have_content('Picture')
-      expect(page).to have_content('a picture')
+      expect(page).to have_content('My First Pic')
+      expect(page).to have_content('a random picture')
       expect(page).not_to have_content('No posts yet')
     end
   end
 
   context 'creating posts' do
     scenario 'prompts user to fill out a form, then displays the new post' do
-      visit '/posts'
-      click_link 'Make a Post'
-      fill_in 'Title', with: 'My First Pic'
-      attach_file('Image', "spec/files/images/poo.jpg")
-      fill_in 'Caption', with: 'a random picture'
-      click_button 'Create Post'
+      make_post
       expect(page).to have_content 'My First Pic'
       expect(page).to have_content 'a random picture'
       expect(page).to have_css("img[src*='poo.jpg']")
       expect(current_path).to eq '/posts'
+    end
+
+    scenario 'fails if an image is not attached' do
+      make_post_without_image
+      expect(page).to have_content 'Error: Image required'
     end
 end
 

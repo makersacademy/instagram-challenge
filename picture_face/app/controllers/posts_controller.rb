@@ -9,8 +9,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
-    redirect_to posts_path
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to posts_path
+    else
+      flash[:alert] = 'Error: Image required'
+      render 'new'
+    end
   end
 
 
