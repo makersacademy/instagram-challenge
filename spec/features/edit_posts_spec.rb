@@ -8,9 +8,9 @@ feature "editing posts" do
     post2 = FactoryGirl.create(:post, user: user2, id: 700)
     log_in
   end
-  after(:each) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
+  # after(:each) do
+  #   DatabaseCleaner.clean_with(:truncation)
+  # end
 
   context "when user created post" do
     context "when update with a valid photo" do

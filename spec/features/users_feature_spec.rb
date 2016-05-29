@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 feature "User can sign in and out" do
-  after(:each) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
+  # after(:each) do
+  #   DatabaseCleaner.clean_with(:truncation)
+  # end
   context "user not signed in and on the homepage" do
     it "should see a 'login' link" do
       visit('/')

@@ -24,6 +24,9 @@
     .comment-like-form.row
       .like-button.col-sm-1
         %span(class="glyphicon glyphicon-heart-empty")
+        = link_to "Like Post", post_endorsements_path(post), class: 'endorsements-link'
+        %span.endorsements_count= post.endorsements.count
+        = 'like'.pluralize post.endorsements.count
 
       .comment-form.col-sm-11
         = form_for [post, post.comments.new] do |f|

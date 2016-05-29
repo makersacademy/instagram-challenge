@@ -7,9 +7,9 @@ feature "deleting posts" do
     log_in
   end
 
-  after(:each) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
+  # after(:each) do
+  #   DatabaseCleaner.clean_with(:truncation)
+  # end
 
   context "when user created post" do
     scenario "can delete the post" do

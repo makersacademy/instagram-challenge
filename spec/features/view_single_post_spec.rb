@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 feature 'view a single post' do
-  before do
-
-  end
 
   context 'User creates post' do
     scenario 'lets a user view a single post' do

@@ -4,9 +4,9 @@ feature "create posts" do
   before(:each) do
     user = create :user
   end
-  after(:each) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
+  # after(:each) do
+  #   DatabaseCleaner.clean_with(:truncation)
+  # end
 
 
   context "when image is selected" do
