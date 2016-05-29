@@ -59,4 +59,17 @@ feature 'posts' do
       expect(page).not_to have_css("img[src*='googlelogo.png']")
    end
   end
+
+  context 'deleting posts' do
+    scenario 'lets a user delete a post' do
+     post = create(:post, caption: "google logo")
+     visit '/'
+     find(:xpath, "//a[contains(@href,'posts/#{post.id}')]").click
+     click_link('Delete')
+     expect(page.current_path).to eq('/posts')
+     expect(page).to have_content("Post deleted successfully")
+     expect(page).not_to have_content 'google logo'
+   end
+ end
+
 end

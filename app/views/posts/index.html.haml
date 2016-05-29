@@ -1,9 +1,15 @@
-- if @posts.any?
-  - @posts.each do |post|
-    .row
-      = link_to (image_tag(post.image, id: "imagen#{post.id}")), post_path(post)
-      %p= post.caption
-- else
-  No posts yet
+.posts-wrapper.row
+  - if @posts.any?
+    - @posts.each do |post|
+      .post
+        .post-head
+          .name
+            Sergio
+        .image.center-block
+        = link_to (image_tag(post.image, id: "imagen#{post.id}")), post_path(post)
+        %p.caption
+        = post.caption
+  - else
+    No posts yet
 
 =link_to 'Add a post', new_post_path
