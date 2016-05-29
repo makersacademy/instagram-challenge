@@ -10,6 +10,27 @@
     <div class="caption">
       <div class="username"><%= post.user.username %></div>
       <div class="caption-content"><%= post.caption %></div>
+      <div class="comments">
+        <% post.comments.each do |comment| %>
+          <div id="comments_<%= post.id %>" class="comment">
+            <div class="username"><%= comment.user.username %></div>
+            <div class="comment-content"><%= comment.content %></div>
+            <div class="delete-comment">
+              <%= link_to "Delete", post_comment_path(post, comment), method: :delete, data: {confirm: "Are you sure?"} %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
+  </div>
+  <div class="comment-like-form row">
+    <div class="like-button col-sm-1">
+      <span class="glyphicon glyphicon-heart-empty"></span>
+    </div>
+    <%= form_for [post, post.comments.new] do |f| %>
+      <%= f.label :content, class: "label-hidden"%>
+      <%= f.text_field :content, placeholder: "Add a comment..." %>
+      <%= f.submit %>
+    <% end %>
   </div>
 </div>
