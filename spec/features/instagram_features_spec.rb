@@ -19,6 +19,14 @@ feature 'instagram' do
     end
   end
   context 'creating posts' do
-    scenario ''
+    scenario 'prompts user to fill out a form, then displays the nre post' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Title', with: 'Insta-lunch' do
+      click_button 'Create Post'
+      expect(page).to have_content 'Insta-lunch'
+      expect(current_path).th eq '/posts'
+      end
+    end
   end
 end
