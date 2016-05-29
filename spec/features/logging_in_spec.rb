@@ -13,12 +13,12 @@ feature "login and logout" do
 
     context "when credentials are incorrect" do
       scenario "do not login if wrong password" do
-        log_in("amy@gmail.com", "wrong password")
+        log_in({email: "amy@gmail.com", password: "wrong password"})
         expect(page).to have_content("Invalid Email or password")
       end
 
       scenario "do not login if wrong email" do
-        log_in("invalidEmailAddress")
+        log_in({email: "incorrect@gmail.com", password: "testtest"})
         expect(page).to have_content("Invalid Email or password")
       end
     end

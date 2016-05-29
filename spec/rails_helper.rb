@@ -8,10 +8,10 @@ require 'rspec/rails'
 require 'capybara/rails'
 
 module AuthHelpers
-  def log_in(email = "amy@gmail.com", password = "testtest")
+  def log_in(user = {email: "amy@gmail.com", password: "testtest"})
     visit("/")
-    fill_in("Email", with: email)
-    fill_in("Password", with: password)
+    fill_in("Email", with: user[:email])
+    fill_in("Password", with: user[:password])
     click_button("Log in")
   end
 

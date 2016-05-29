@@ -2,7 +2,7 @@ feature "viewing posts" do
   before do
     user = create :user
     post_one = create(:post, caption: "Comment one", user: user)
-    post_two = create(:post, caption: "Comment two", user: user)
+    post_two = create(:post, caption: "Comment two", user: user, id: 2)
   end
   context "when logged in" do
     scenario "can view all posts on homepage" do
