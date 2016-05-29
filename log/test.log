@@ -16425,3 +16425,177 @@ Processing by Devise::SessionsController#new as HTML
   Rendered layouts/_navbar.html.haml (0.9ms)
 Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms)
   [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (441.5ms)[0m  [1mDROP DATABASE IF EXISTS "pichagram_test"[0m
+  [1m[35m (1076.6ms)[0m  CREATE DATABASE "pichagram_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (14.5ms)[0m  CREATE TABLE "comments" ("id" serial primary key, "user_id" integer, "post_id" integer, "content" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (10.1ms)[0m  [1mCREATE  INDEX  "index_comments_on_post_id" ON "comments" USING btree ("post_id")[0m
+  [1m[35m (5.9ms)[0m  CREATE  INDEX  "index_comments_on_user_id" ON "comments" USING btree ("user_id")
+  [1m[36m (15.1ms)[0m  [1mCREATE TABLE "posts" ("id" serial primary key, "caption" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp, "user_id" integer) [0m
+  [1m[35m (5.7ms)[0m  CREATE  INDEX  "index_posts_on_user_id" ON "posts" USING btree ("user_id")
+  [1m[36m (12.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_name" character varying) [0m
+  [1m[35m (10.5ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (5.4ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (7.8ms)[0m  CREATE UNIQUE INDEX  "index_users_on_user_name" ON "users" USING btree ("user_name")
+  [1m[36m (3.5ms)[0m  [1mALTER TABLE "comments" ADD CONSTRAINT "fk_rails_2fd19c0db7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+[0m
+  [1m[35m (2.8ms)[0m  ALTER TABLE "comments" ADD CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+
+  [1m[36m (2.7ms)[0m  [1mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_5b5ddfd518"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (6.2ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (7.1ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.4ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (3.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160529150512')[0m
+  [1m[35m (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160529141334')
+  [1m[36m (2.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160529114839')[0m
+  [1m[35m (2.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160527175156')
+  [1m[36m (3.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160527181834')[0m
+  [1m[35m (2.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160529112944')
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 16:47:31 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 22ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-05-29 16:47:31 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (30.2ms)
+  Rendered layouts/_navbar.html.haml (4.4ms)
+Completed 200 OK in 576ms (Views: 565.4ms | ActiveRecord: 2.2ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-jpbcm8.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-rgrdmm.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-rgrdmm.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-rgrdmm.png[0]' -auto-orient -resize "640" '/tmp/886ad475d1db8096613f9a1d8736e36e20160529-21071-1d6ymzn'
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-1f76hqb.png'
+  [1m[36m (16.6ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 16:47:33 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-05-29 16:47:33 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_navbar.html.haml (0.5ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-13qr7zi.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-1o9k3jx.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-1o9k3jx.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-1o9k3jx.png[0]' -auto-orient -resize "640" '/tmp/d48cf752e3c7d22dff50c7f6a72ead9820160529-21071-6vmzc1'
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-deqcs0.png'
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-1e16iv9.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-13451cw.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-13451cw.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-13451cw.png[0]' -auto-orient -resize "640" '/tmp/291f831d6f080f3f5083eef0d76fde9d20160529-21071-xckb4k'
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-1ft9e4t.png'
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-1ykafsm.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-nzojnb.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-nzojnb.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-nzojnb.png[0]' -auto-orient -resize "640" '/tmp/5de96ca9e7144efefeb9d5ab5dd580bd20160529-21071-yg9d4g'
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21071-1fi4v64.png'
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2016-05-29 16:47:33 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-05-29 16:47:33 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_navbar.html.haml (0.5ms)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 16:49:53 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 25ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-05-29 16:49:53 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (44.2ms)
+  Rendered layouts/_navbar.html.haml (4.9ms)
+Completed 200 OK in 757ms (Views: 746.4ms | ActiveRecord: 1.7ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-1tswx65.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-agbz61.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-agbz61.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-agbz61.png[0]' -auto-orient -resize "640" '/tmp/b701e2415b679266c4947e1ef4e4aa4220160529-21271-173tvvd'
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-1jekxnd.png'
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2016-05-29 16:49:55 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-05-29 16:49:55 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.4ms)
+  Rendered layouts/_navbar.html.haml (0.8ms)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-g6nhtl.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-43x8wi.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-43x8wi.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-43x8wi.png[0]' -auto-orient -resize "640" '/tmp/99f572811be405acc99f0184affad65520160529-21271-glediw'
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-194w4e6.png'
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-e9ltz7.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-1b6xg6s.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-1b6xg6s.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-1b6xg6s.png[0]' -auto-orient -resize "640" '/tmp/1a0a0b0d380ec8a9083ed0bbb60dc3bd20160529-21271-zw54tp'
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-1jgf2up.png'
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-13d16yg.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-j6uim2.png[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-j6uim2.png[0]'
+Command :: convert '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-j6uim2.png[0]' -auto-orient -resize "640" '/tmp/5338537184a8cde2faeda7b9efbdf2a820160529-21271-106hbes'
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+Command :: file -b --mime '/tmp/eb2563c1cd3287380e9ae882fd6d8b2120160529-21271-3o1jqt.png'
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  BEGIN
+Started GET "/" for 127.0.0.1 at 2016-05-29 16:49:55 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms)
+Started GET "/users/sign_in" for 127.0.0.1 at 2016-05-29 16:49:55 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.html.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_navbar.html.haml (0.6ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
