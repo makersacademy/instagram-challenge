@@ -3,7 +3,7 @@ require 'rails_helper'
 feature "create posts" do
   before do
     user = create :user
-    sign_up
+    log_in
     click_link "New Post"
   end
 
@@ -14,7 +14,7 @@ feature "create posts" do
       click_button "Create"
       expect(page).to have_content "google logo"
       expect(page).to have_css("img[src*='googlelogo.png']")
-      expect(page).to have_xpath("//div[@class='user-name']", :text => 'test')
+      expect(page).to have_xpath("//div[@class='user-name']", :text => 'sergioet')
     end
   end
   context "when image is not selected" do
