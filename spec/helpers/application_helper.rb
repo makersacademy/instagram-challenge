@@ -17,4 +17,10 @@ module ApplicationHelper
     attach_file :Image, 'public/test/image.jpg'
     click_button 'Create Post'
   end
+
+  def create_comment content: "wow your dinner looks so dreamy"
+    click_link 'Comment'
+    fill_in :Content, with: content
+    click_button "Create Comment"
+  end
 end
