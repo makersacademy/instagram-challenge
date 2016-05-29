@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
   has_many :images
+  has_many :likes
+  has_many :liked_images, through: :likes, source: :image
 
          def self.from_omniauth(auth)
            where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -13,4 +15,7 @@ class User < ActiveRecord::Base
            end
          end
 
+         def has_liked?(image)
+           liked_images.include? image
+         end
 end
