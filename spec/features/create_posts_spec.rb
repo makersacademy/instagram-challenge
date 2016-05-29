@@ -1,9 +1,13 @@
 require 'rails_helper'
 
 feature "create posts" do
-  before do
+  before(:each) do
     user = create :user
   end
+  after(:each) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
 
   context "when image is selected" do
     scenario "can create a post" do
