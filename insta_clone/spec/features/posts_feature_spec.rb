@@ -26,13 +26,38 @@ feature 'posts' do
 
   context 'viewing posts' do
 
-  scenario 'lets a user view a post' do
-   visit '/posts'
-   create_post
-   find("img[src*='test.png']").click
-   expect(page).to have_content 'My first post'
-  #  expect(current_path).to eq "/posts/1"
+    scenario 'lets a user view a post' do
+     visit '/posts'
+     create_post
+     find("img[src*='test.png']").click
+     expect(page).to have_content 'My first post'
+    #  expect(current_path).to eq "/posts/1"
+    end
   end
 
-end
+  context 'editing posts' do
+
+    scenario 'let a user edit a post' do
+     visit '/posts'
+     create_post
+     click_link 'Edit post'
+     fill_in 'Caption', with: 'My post'
+     click_button 'Update Post'
+     expect(page).to have_content 'My post'
+     expect(current_path).to eq '/posts'
+    end
+  end
+
+  context 'deleting posts' do
+
+
+    scenario 'removes a post when a user clicks a delete link' do
+      visit '/posts'
+      create_post
+      click_link 'Delete post'
+      expect(page).not_to have_content 'My first post'
+      expect(page).to have_content 'Post deleted successfully'
+    end
+  end
+
 end
