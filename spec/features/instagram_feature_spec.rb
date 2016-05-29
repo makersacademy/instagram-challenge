@@ -19,4 +19,15 @@ describe 'instagram' do
       expect(page).not_to have_content 'No photos yet'
     end
   end
+
+  context 'creating photos' do
+    scenario 'prompts user to fill out a form, then displays new photo post' do
+      visit '/photos'
+      click_link 'Show everyone how great your life is'
+      fill_in 'Title', with: 'Check out my sepia food'
+      click_button 'Post photo / fill the yawning void'
+      expect(page).to have_content 'Check out my sepia food'
+      expect(current_path).to eq '/photos'
+    end
+  end
 end
