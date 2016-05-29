@@ -1,7 +1,8 @@
 feature "deleting posts" do
   scenario "can delete the post" do
-    sign_up
-    post = create(:post, caption: "ready to delete")
+    user = create(:user)
+    log_in
+    post = create(:post, caption: "ready to delete", user: user)
     visit posts_path
     find(:xpath, "//a[contains(@href,'/posts/#{post.id}')]").click
     click_link "Delete"

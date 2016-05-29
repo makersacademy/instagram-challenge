@@ -1,7 +1,8 @@
 feature "editing posts" do
-  let!(:post) { create(:post, caption:"yolo") }
   before do
-    sign_up
+    user = create(:user)
+    log_in
+    post = create(:post, user: user)
     visit posts_path
     find(:xpath, "//a[contains(@href,'/posts/#{post.id}')]").click
     click_link "Edit"
@@ -14,7 +15,7 @@ feature "editing posts" do
       click_button "Update"
       expect(page).to have_content "Edited comment"
       expect(page).to have_css("img[src*='poodle.jpg']")
-      expect(page).not_to have_content "yolo"
+      expect(page).not_to have_content "nofilter"
       expect(page).not_to have_css("img[src*='hipster.jpg']")
     end
   end

@@ -1,5 +1,3 @@
-require_relative "helper_methods"
-
 feature "user sign up" do
 
   context "when valid credentials" do
