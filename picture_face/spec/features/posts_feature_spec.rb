@@ -21,4 +21,17 @@ feature 'Posts' do
     end
   end
 
+  context 'creating posts' do
+    scenario 'prompts user to fill out a form, then displays the new post' do
+      visit '/posts'
+      click_link 'Make a Post'
+      fill_in 'Title', with: 'My First Pic'
+      fill_in 'Caption', with: 'a random picture'
+      click_button 'Create Post'
+      expect(page).to have_content 'My First Pic'
+      expect(page).to have_content 'a random picture'
+      expect(current_path).to eq '/posts'
+    end
+end
+
 end
