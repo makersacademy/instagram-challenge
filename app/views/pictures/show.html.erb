@@ -1,5 +1,8 @@
 <h2><%= @picture.title %></h2>
 <%= image_tag @picture.image_url, class: 'img-rounded' %><br>
+<%= link_to like_picture_path(@picture), method: :put, class: 'btn btn-default' do %>
+	<span class='glyphicon glyphicon-heart'><%= @picture.get_upvotes.size %></span>
+<% end %>
 <% if @picture.comments.any? %>
   <p>Comments</p>
   <% @picture.comments.each do |comment| %>

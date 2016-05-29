@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+  before_action :find_picture, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 	before_action :authenticate_user!, :except => [:index, :show]
 
 	def index
@@ -20,22 +21,22 @@ class PicturesController < ApplicationController
   end
 
   def show
-	  @picture = Picture.find(params[:id])
+	  # @picture = Picture.find(params[:id])
 	end
 
 	def edit
-    @picture = Picture.find(params[:id])
+    # @picture = Picture.find(params[:id])
   end
 
   def update
-    @picture = Picture.find(params[:id])
+    # @picture = Picture.find(params[:id])
     @picture.update(picture_params)
     flash[:notice] = 'Picture updated successfully'
     redirect_to my_pictures_pictures_path
   end
 
   def destroy
-    @picture = Picture.find(params[:id])
+    # @picture = Picture.find(params[:id])
     @picture.destroy
     flash[:notice] = 'Picture deleted successfully'
     redirect_to my_pictures_pictures_path
@@ -43,12 +44,20 @@ class PicturesController < ApplicationController
 
 	def my_pictures
 		p @pictures = Picture.all.where(user_id: current_user.id)
-		# @pictures = Picture.all
 	end
+
+  def upvote
+    @picture.upvote_by current_user
+    redirect_to :back
+  end
 
   private
 
   def picture_params
     params.require(:picture).permit(:title, :image)
+  end
+
+  def find_picture
+    @picture = Picture.find(params[:id]) 
   end
 end

@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   root "pictures#index"
 
   resources :pictures do
+  	member do
+  		put "like", to: "pictures#upvote"
+  	end
+    
     resources :comments, shallow: true
+    
     collection do
       get 'my_pictures'
     end
