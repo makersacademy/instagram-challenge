@@ -32,6 +32,7 @@ gem 'aws-sdk'
 gem 'aws-sdk-v1'
 gem 'paperclip'
 gem 'devise'
+gem 'omniauth-facebook'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
