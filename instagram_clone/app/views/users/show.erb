@@ -1,16 +1,37 @@
-<%= @user.email %>'s posts
+<section class='row jumbotron'>
+	<h1><%= @user.email %>'s posts</h1>
+</section>
 
-<% @user.posts.each do |post| %>
-	<%= link_to image_tag(post.image.url(:thumb)), post_path(post), id: "pic#{post.id}" %>
-	<%= post.caption %>
-	<% if @user == current_user %>
-		<%= link_to 'Delete post', "/posts/#{post.id}", method: :delete %>
-	<% end %>
-	<% if post.comments.any? %>
-		<p>Comments:</p>
-		<% post.comments.each do |comment| %>
-			<%= comment.comment %>
-			<%= link_to 'Delete comment', comment_path(comment), method: :delete %>
+<div class='grid row'>
+	<section class='col-1-3'>
+		<p>PLACEHOLDER FOR USER SUMMARY AND LINKS</p>
+	</section>
+	<section class='col-2-3 user-feed'>
+
+		<% @user.posts.each do |post| %>
+
+			<div class='grid feed-row'>
+				<section class='col-1-2 image'>
+					<%= link_to image_tag(post.image.url(:thumb)), post_path(post), id: "pic#{post.id}" %>
+				</section><!--
+			--><section class='col-1-2'>
+					<h2><%= post.caption %></h2>
+					<h3><%= post.likes.count %><%= ' like'.pluralize(post.likes.count) %><span> | <%= link_to 'Like', post_likes_path(post), method: :post %></span></h3>
+					<% if @user == current_user %>
+						<h3><%= link_to 'Delete post', "/posts/#{post.id}", method: :delete %></h3>
+					<% end %>
+					<% if post.comments.any? %>
+						<h4>Comments:</h4>
+						<% post.comments.each do |comment| %>
+							<p><%= comment.comment %></p>
+							<p>from <%=comment.user.email%></p>
+							<p><%= link_to 'Delete comment', comment_path(comment), method: :delete %></p>
+						<% end %>
+					<% end %>
+				</section>
+			</div>
+
 		<% end %>
-	<% end %>
-<% end %>
+
+	</section>
+</div>
