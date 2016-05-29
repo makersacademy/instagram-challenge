@@ -17,6 +17,7 @@ feature 'posts' do
   context 'creating posts' do
     scenario 'prompts user to fill out a form, then displays the new post' do
       visit '/posts'
+      sign_up_test
       create_post
       expect(page).to have_content 'My first post'
       expect(page).to have_css("img[src*='test.png']")
@@ -28,6 +29,7 @@ feature 'posts' do
 
     scenario 'lets a user view a post' do
      visit '/posts'
+     sign_up_test
      create_post
      find("img[src*='test.png']").click
      expect(page).to have_content 'My first post'
@@ -39,6 +41,7 @@ feature 'posts' do
 
     scenario 'let a user edit a post' do
      visit '/posts'
+     sign_up_test
      create_post
      click_link 'Edit post'
      fill_in 'Caption', with: 'My post'
@@ -53,6 +56,7 @@ feature 'posts' do
 
     scenario 'removes a post when a user clicks a delete link' do
       visit '/posts'
+      sign_up_test
       create_post
       click_link 'Delete post'
       expect(page).not_to have_content 'My first post'

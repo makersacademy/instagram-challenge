@@ -1,5 +1,6 @@
-feature 'reviewing' do
+feature 'commenting' do
   before do
+    sign_up_test
     create_post
   end
 
