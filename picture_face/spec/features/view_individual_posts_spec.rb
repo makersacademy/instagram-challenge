@@ -1,8 +1,16 @@
 feature 'viewing' do
-  before do
+
+  scenario 'user can return to index page' do
     make_post
+    click_link 'My First Pic'
+    click_button 'Homepage'
+    expect(current_path).to eq posts_path
   end
-  context 'posts' do
+
+  context 'Can view individual posts' do
+    before do
+      make_post
+    end
     let!(:pic){ Post.find_by(title: 'My First Pic') }
     scenario 'user can view an individual post' do
       click_link 'My First Pic'
@@ -13,9 +21,11 @@ feature 'viewing' do
     end
   end
 
-  scenario 'user can return to index page' do
-    click_link 'My First Pic'
-    click_button 'Homepage'
-    expect(current_path).to eq posts_path
+  scenario 'Can click an image and view that post' do
+    post = create(:post)
+    visit '/'
+    first(:xpath, '//a[@class="img"]').click
+    expect(page.current_path).to eq "/posts/#{post.id}"
   end
+
 end
