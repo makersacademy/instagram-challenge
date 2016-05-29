@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
 
   before_action :set_post
+  before_action :set_comment, only: [:destroy]
+  before_action :owned_post, only: [:destroy]
 
   def create
     comment = @post.comments.build(comment_params)
@@ -10,14 +12,13 @@ class CommentsController < ApplicationController
       flash[:success] = "Congratulations, you've left a comment!"
       redirect_to :back
     else
-      flash.now[:alert] = "Oops, comment couldn't be added."
-      render root_path
+      flash[:alert] = "Oops, comment couldn't be added."
+      redirect_to :back
     end
   end
 
   def destroy
-    comment = @post.comments.find(params[:id])
-    if comment.destroy
+    if @comment.destroy
       flash[:success] = "Congratulations, you've deleted this comment!"
       redirect_to root_path
     else
@@ -35,5 +36,16 @@ class CommentsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:post_id])
+  end
+
+  def set_comment
+    @comment = @post.comments.find(params[:id])
+  end
+
+  def owned_post
+    unless @comment.user == current_user
+      flash[:alert] = "That comment doesn't belong to you!"
+      redirect_to root_path
+    end
   end
 end

@@ -15,9 +15,11 @@
           <div id="comments_<%= post.id %>" class="comment">
             <div class="username"><%= comment.user.username %></div>
             <div class="comment-content"><%= comment.content %></div>
-            <div class="delete-comment">
-              <%= link_to "Delete", post_comment_path(post, comment), method: :delete, data: {confirm: "Are you sure?"} %>
-            </div>
+            <% if comment.user == current_user %>
+              <div class="delete-comment">
+                <%= link_to "Delete", post_comment_path(post, comment), method: :delete, data: {confirm: "Are you sure?"} %>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
