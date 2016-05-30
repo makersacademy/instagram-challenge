@@ -7,3 +7,14 @@
   <%= f.text_field :tag %>
   <%= f.submit %>
 <% end %>
+
+<% if @post.errors.any? %>
+<section id='errors'>
+  <h2><%= pluralize(@post.errors.count, 'error') %> post not saved: </h2>)
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+  <% end %>

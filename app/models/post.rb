@@ -5,5 +5,6 @@ class Post < ActiveRecord::Base
                             :thumb => "100x100>" },
                             :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-
+  validates :title, length: {minimum: 3}
+  validates :image, presence: true
 end
