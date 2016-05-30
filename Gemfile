@@ -30,6 +30,10 @@ gem 'devise'
 
 gem 'acts_as_votable', '~> 0.10.0'
 
+gem 'aws-sdk'
+
+gem 'aws-sdk-v1'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

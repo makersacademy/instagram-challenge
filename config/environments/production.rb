@@ -78,4 +78,15 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #config.action_mailer.default_url_options = { host: "example.com" }
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_permissions => 'public-read',
+    :s3_region => 'eu-west-1',
+    :bucket => ENV['S3_BUCKET_NAME_INSTA'],
+    :s3_credentials => {
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
 end
