@@ -14,7 +14,7 @@ feature 'likes' do
 	end
 
 	context 'adding likes' do
-		scenario 'a logged in user can add a like to a post' do
+		scenario 'a logged in user can add a like to a post', js: true do
 			create_post
 			click_link 'Like'
 			expect(page).to have_content('1 like')
@@ -28,7 +28,7 @@ feature 'likes' do
 			visit '/posts'
 			expect(page).to have_content '0 likes'
 		end
-		scenario 'each user can only like a post once' do
+		scenario 'each user can only like a post once', js: true do
 			create_post
 			click_link 'Like'
 			click_link 'Like'
