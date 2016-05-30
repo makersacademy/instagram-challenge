@@ -7,14 +7,13 @@
     <%= link_to (image_tag post.image.url(:medium), class: "img_responsive"), post_path(post) %>
   </div>
   <div class="post-bottom">
+    <div class="col-sm-1 like-button">
+      <%= link_to "", already_liked_path?(post), class: "glyphicon like #{already_liked?(post)}" %>
+    </div>
+    <%= render "posts/likes", post: post %>
     <div class="caption">
       <div class="username"><%= post.user.username %></div>
       <div class="caption-content"><%= post.caption %></div>
-      <div id="likes_<%= post.id %>" class="likes">
-        <% post.votes_for.up.by_type(User).voters.each do |voter| %>
-          <div class="username"><%= voter.username %></div>
-        <% end %>
-      </div>
       <div class="comments">
         <% post.comments.each do |comment| %>
           <div id="comments_<%= post.id %>" class="comment">
@@ -31,9 +30,6 @@
     </div>
   </div>
   <div class="comment-like-form row">
-    <div class="col-sm-1">
-      <%= link_to "", like_post_path(post), class: already_liked(post) %>
-    </div>
     <%= form_for [post, post.comments.new] do |f| %>
       <%= f.label :content, class: "label-hidden"%>
       <%= f.text_field :content, placeholder: "Add a comment..." %>

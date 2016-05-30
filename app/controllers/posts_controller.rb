@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :like, :unlike]
   before_action :authenticate_user!
   before_action :owned_post, only: [:edit, :update, :destroy]
 
@@ -50,13 +50,15 @@ class PostsController < ApplicationController
   end
 
   def like
-    # if @post.votes_for.up.by_type(User).voters.include? current_user
-    #   @post.unliked_by(current_user)
-    # else
-      @post.liked_by(current_user)
-      flash[:success] = "You liked this post!"
-      redirect_to posts_path
-    #end
+    @post.liked_by(current_user)
+    flash[:success] = "You liked this post!"
+    redirect_to posts_path
+  end
+
+  def unlike
+    @post.unliked_by(current_user)
+    flash[:success] = "You unliked this post!"
+    redirect_to posts_path
   end
 
   private
