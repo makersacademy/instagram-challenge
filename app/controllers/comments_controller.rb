@@ -17,14 +17,13 @@ class CommentsController < ApplicationController
 	  	redirect_to picture_path(@picture)
 	  else
 	  	flash.now[:notice] = "Field cannot be blank"
-      render 'new'
-    end
+	  	render 'new'
+	  end
 	end
 
 	private
 
 	def comment_params
-	  params.require(:comment).permit(:content)
+		params.require(:comment).permit(:content)
 	end
-
 end
