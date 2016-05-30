@@ -1,0 +1,29 @@
+<center>
+  <div class='container'>
+    <p class="alignleft">
+      username
+    </p>
+    <p class="alignright">
+      <%= link_to "edit", edit_photo_path %>
+      <%= link_to "delete", photo_path, method: :delete %>
+    </p>
+    <p class="alignright"> </p>
+      <center>
+          <img src= "<%= @photo.image %>" class="post">
+      </center><br>
+          <p class="alignleft">
+            <img src="locationpin.png" height='10' width='10'>
+            <%= @photo.location %>
+          </p>
+          <p class="alignright"><%= @photo.created_at_formatted %></p>
+        <br>
+          <div style="clear: both;">
+          <p class="desc-alignleft"><%= @photo.description %></p><br>
+          <%= form_for [@photos, @comments] do |field| %>
+            <%= field.label :comment %>
+            <%= field.text_field :comment %>
+            <%= field.submit 'comment' %>
+          <% end %>
+    </div><br>
+  </div>
+</center>

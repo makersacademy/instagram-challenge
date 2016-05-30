@@ -6,22 +6,26 @@
   <div class="post">
     <center>
     <div class='container'>
+    <p class="alignleft">
+      username
+    </p>
     <p class="alignright">
       <%= link_to "edit", edit_photo_path(photo) %>
       <%= link_to "delete", photo_path(photo), method: :delete %>
     </p>
     <p class="alignright"> </p>
       <center>
-        <img src= "<%= photo.image %>" alt="post" height="250" width="250">
+        <%= link_to(image_tag("#{photo.image}", :alt => "pic", :width => 250, :height => 250), new_photo_comment_path(photo)) %>
       </center><br>
           <p class="alignleft">
             <img src="locationpin.png" height='10' width='10'>
             <%= photo.location %>
           </p>
-          <p class="alignright"><%= photo.created_at_formatted %></p>
+          <p class="alignright"><%= time_ago_in_words(photo.created_at) %> ago</p>
         <br>
           <div style="clear: both;">
           <p class="desc-alignleft"><%= photo.description %></p>
+          <p class="alignright"><%= link_to 'comment', new_photo_comment_path(photo) %></p>
     </div><br>
     </div>
     </center>

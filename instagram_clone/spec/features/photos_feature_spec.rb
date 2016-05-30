@@ -13,6 +13,15 @@ feature 'photos'
       expect(page).to have_content 'No photos to show :('
     end
 
+    scenario 'displays photo details on click' do
+      post_a_photo
+      photo =
+      expect(current_path).to eq '/photos'
+      click_link('pic')
+      expect(current_path).to eq "/photos/2/comments/new"
+    end
+  end
+
   context 'photos added' do
 
     scenario 'can add a photo' do
@@ -37,6 +46,7 @@ feature 'photos'
       expect(current_path).to eq '/photos'
       expect(page).to have_content 'Hawk Hill'
       expect(page).to have_content 'Pretty view'
+      expect(page).not_to have_content 'Dolores Park'
     end
 
   end
@@ -57,4 +67,3 @@ feature 'photos'
     end
 
   end
-end
