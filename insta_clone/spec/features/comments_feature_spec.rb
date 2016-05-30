@@ -14,9 +14,9 @@ feature 'commenting' do
      fill_in "Comment", with: "Awesome pic"
 
      click_button 'Leave comment'
-
-     expect(current_path).to eq '/posts'
+     visit '/posts'
      expect(page).to have_content('Comments: 1')
+     expect(page).to have_content("Awesome pic")
   end
 
 end

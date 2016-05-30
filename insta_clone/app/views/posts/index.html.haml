@@ -1,21 +1,5 @@
 - if @posts.any?
-  .posts-wrapper.row
-    - @posts.reverse.each do |post|
-      .post
-        .post-head
-          .name
-            %h4=post.user.user_name || post.user.email
-        .image.center-block
-          = link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post)
-          -if current_user == post.user
-            = link_to "Edit post", edit_post_path(post)
-            = link_to "Delete post", post_path(post), method: :delete
-          -else
-            = link_to "Add comment", new_post_comment_path(post)
-        .caption
-          %h6= post.caption
-          %h6= "Comments: #{post.comments.count}"
-
-
+  - @posts.reverse.each do |post|
+    = render 'post', post: post
 - else
   No posts yet

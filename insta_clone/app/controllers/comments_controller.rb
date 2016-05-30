@@ -5,9 +5,17 @@ class CommentsController < ApplicationController
   end
 
   def create
-  @post = Post.find(params[:post_id])
-  @post.comments.create(comments_params)
-  redirect_to '/posts'
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.build(comments_params)
+    @comment.user_id = current_user.id
+
+    if @comment.save
+      flash[:notice] = "You commented the hell out of that post!"
+      redirect_to :back
+    else
+      flash[:alert] = "Check the comment form, something went horribly wrong."
+      render root_path
+    end
   end
 
   def destroy
