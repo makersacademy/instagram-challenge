@@ -60,16 +60,8 @@ feature 'likes' do
       click_link "Sign out"
     end
 
-    scenario 'liking posts will take to sign in page' do
+    scenario 'asked to sign in before you can like something' do
       within 'span.post_like' do
-        expect{click_link "like"}.not_to change(Like, :count)
-      end
-      expect(page).to have_content "Email"
-      expect(page).to have_content "Password"
-    end
-
-    scenario 'liking comments will take to sign in page' do
-      within 'ul.comments' do
         expect{click_link "like"}.not_to change(Like, :count)
       end
       expect(page).to have_content "Email"

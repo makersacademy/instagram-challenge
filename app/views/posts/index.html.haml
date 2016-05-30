@@ -1,27 +1,56 @@
-%section
-  - if user_signed_in?
-    = link_to 'Add post', new_post_path
+.container
+  .row
+    .four.columns
+      %br
+    .four.columns
+      - if user_signed_in?
+        = link_to 'Add post', new_post_path, class: "button button-primary"
 
-%section
-  %ul.posts
-    - @posts.each do |post|
-      %li.post
-        %p= post.title
-        = image_tag post.image.url(:medium)
-        %p= post.description
-        %p= "posted by: #{post.user.username}"
-        %span.post_like
-          = link_to 'like', post_likes_path(post), method: :post
-          = "likes: #{post.likes.count}"
-          %p= link_to 'Comment', new_post_comment_path(post)
+.container
+  .row
+    .one.columns
+    %br
+    .ten.columns
+      %ul.posts
+        - @posts.each do |post|
+          %li.post
+            .row
+              %h4= post.title
+            .row
+              .one.columns
+                %br
+              .six.columns
+                = image_tag post.image.url(:medium)
+              .five.columns.post_info
+                .post_info_content
+                  %strong= "#{post.user.username}: "
+                  = post.description
+                  %p
+                    %span.date= post.created_at.strftime("%d %b at %I:%M")
+                  %span.post_like
+                    %p.likes
+                      = link_to 'like', post_likes_path(post), method: :post
+                      %span.presentation ·
+                      = "likes: #{post.likes.count}"
 
-        - if post.belongs_to? current_user
-          = link_to 'Edit post', edit_post_path(post)
-          = link_to 'Delete post', post_path(post), method: :delete
-
-        %ul.comments
-          - post.comments.each do |comment|
-            %li.comment
-              %p= "#{comment.author}: #{comment.content}"
-              = link_to 'like', comment_likes_path(comment), method: :post
-              = "likes: #{comment.likes.count}"
+                  - if post.belongs_to? current_user
+                    .row
+                      = link_to 'Edit post', edit_post_path(post)
+                      %span.presentation ·
+                      = link_to 'Delete post', post_path(post), method: :delete
+            .row
+              .one.columns
+                %br
+              .nine.columns
+                %ul.comments
+                  - post.comments.each do |comment|
+                    %li.comment
+                      %strong= "#{comment.author}:"
+                      %span= "#{comment.content}"
+                      %p.likes
+                        = link_to 'like', comment_likes_path(comment), method: :post
+                        %span.presentation ·
+                        = "likes: #{comment.likes.count}"
+                        %span.presentation ·
+                        %span.date= comment.created_at.strftime("%d %b at %I:%M")
+                = link_to 'Comment', new_post_comment_path(post)

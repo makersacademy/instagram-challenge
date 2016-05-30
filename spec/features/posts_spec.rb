@@ -10,12 +10,16 @@ feature 'Posts' do
       scenario "user can add a post" do
         expect(current_path).to eq posts_path
         expect(page).to have_content "Beautiful Sunset"
-        expect(page).to have_content "blah blah blah blah"
+        expect(page).to have_content "bob: blah blah blah blah"
         expect(page).to have_css "img[alt='Image']"
       end
 
-      scenario 'shows username of poster' do
-        expect(page).to have_content "posted by: bob"
+      scenario "all fields are required" do
+        click_link "Add post"
+        click_button 'Create Post'
+        expect(page).to have_content "Title can't be blank"
+        expect(page).to have_content "Description can't be blank"
+        expect(page).to have_content "Image can't be blank"
       end
     end
 

@@ -9,8 +9,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
-    redirect_to posts_path
+    @post = Post.create(post_params)
+    if @post.save
+      redirect_to posts_path
+    else
+      flash[:notice] = @post.errors.full_messages.join(", ")
+      render :new
+    end
   end
 
   def edit
