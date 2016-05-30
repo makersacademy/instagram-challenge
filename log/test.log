@@ -6894,3 +6894,138 @@ Processing by PostsController#index as HTML
   Rendered posts/index.html.haml within layouts/application (0.8ms)
 Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms)
   [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (11.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (27.2ms)[0m  INSERT INTO "posts" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "Vacation"], ["created_at", "2016-05-30 15:18:42.377866"], ["updated_at", "2016-05-30 15:18:42.377866"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.haml within layouts/application (5.0ms)
+Completed 200 OK in 192ms (Views: 183.1ms | ActiveRecord: 0.5ms)
+Started GET "/posts/36" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 36]]
+  Rendered posts/show.html.haml within layouts/application (20.5ms)
+Completed 200 OK in 31ms (Views: 22.0ms | ActiveRecord: 1.8ms)
+Started GET "/posts/36/comments/new" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"36"}
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 36]]
+  Rendered comments/new.html.haml within layouts/application (18.2ms)
+Completed 200 OK in 28ms (Views: 24.2ms | ActiveRecord: 0.6ms)
+Started POST "/posts/36/comments" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"comment"=>"beautiful"}, "commit"=>"Leave Comment", "post_id"=>"36"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (23.6ms)[0m  [1mINSERT INTO "comments" ("comment", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["comment", "beautiful"], ["post_id", 36], ["created_at", "2016-05-30 15:18:42.704662"], ["updated_at", "2016-05-30 15:18:42.704662"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts/36
+Completed 302 Found in 28ms (ActiveRecord: 24.1ms)
+Started GET "/posts/36" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"36"}
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 36]]
+  Rendered posts/show.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Vacation"], ["created_at", "2016-05-30 15:18:42.751186"], ["updated_at", "2016-05-30 15:18:42.751186"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.4ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Started GET "/posts" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  Rendered posts/index.html.haml within layouts/application (0.7ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+Started GET "/posts/new" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.haml within layouts/application (3.9ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"title"=>"Vacation"}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Vacation"], ["created_at", "2016-05-30 15:18:42.779931"], ["updated_at", "2016-05-30 15:18:42.779931"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/posts
+Completed 302 Found in 24ms (ActiveRecord: 0.5ms)
+Started GET "/posts" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.haml within layouts/application (2.1ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "posts" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["title", "Vacation"], ["created_at", "2016-05-30 15:18:42.812787"], ["updated_at", "2016-05-30 15:18:42.812787"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/posts" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.haml within layouts/application (1.9ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.5ms)
+Started GET "/posts/39" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"39"}
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1  [["id", 39]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 39]]
+  Rendered posts/show.html.haml within layouts/application (1.6ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "posts" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Vacation"], ["created_at", "2016-05-30 15:18:42.831471"], ["updated_at", "2016-05-30 15:18:42.831471"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Started GET "/posts" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#index as HTML
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.haml within layouts/application (1.7ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.4ms)
+Started GET "/posts/40" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"40"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 40]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1  [["post_id", 40]]
+  Rendered posts/show.html.haml within layouts/application (1.5ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.4ms)
+Started DELETE "/posts/40" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#destroy as HTML
+  Parameters: {"id"=>"40"}
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT 1[0m  [["id", 40]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 40]]
+  [1m[35mSQL (5.6ms)[0m  DELETE FROM "posts" WHERE "posts"."id" = $1  [["id", 40]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 9ms (ActiveRecord: 6.2ms)
+Started GET "/posts" for 127.0.0.1 at 2016-05-30 16:18:42 +0100
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.haml within layouts/application (0.8ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
