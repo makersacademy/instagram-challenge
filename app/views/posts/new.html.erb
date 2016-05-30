@@ -1,20 +1,24 @@
-<%= form_for @post, html: {multipart: true} do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :image %>
-  <%= f.file_field :image %>
-  <%= f.label :tag %>
-  <%= f.text_field :tag %>
-  <%= f.submit %>
-<% end %>
+    <div class="col-md-5">
+      <%= form_for @post, html: {multipart: true} do |f| %>
+        <div class="form-group">
+          <%= f.label :title, :class => 'label' %>
+          <%= f.text_field :title, :class => 'form-control' %>
+          <%= f.label :image, :class => 'label' %>
+          <%= f.file_field :image, :class => 'choose_file' %>
+          <%= f.label :tag, :class => 'label' %>
+          <%= f.text_field :tag, :class => 'form-control' %>
+          <%= f.submit :class => 'create_post'%>
+        </div>
+      <% end %>
+    </div>
 
 <% if @post.errors.any? %>
 <section id='errors'>
-  <h2><%= pluralize(@post.errors.count, 'error') %> post not saved: </h2>)
-    <ul>
-      <% @post.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
+        <h2><%= pluralize(@post.errors.count, 'error') %> post not saved: </h2>)
+          <ul>
+            <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
   </section>
   <% end %>
