@@ -2,6 +2,9 @@
   <% @posts.each do |post| %>
     <h3><%= link_to post.title, post_path(post) %></h3>
     <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post), class: 'img' %><br>
+
+    <%= '+' + post.likes.count.to_s %><br>
+
     <%= post.caption %><br>
 
     <% rev_comments = [] %>
@@ -17,6 +20,7 @@
       <%= comment.comment %>
 
     <% end %>
+    <%= link_to "Like", post_likes_path(post), :method => :post %>
     <%= link_to "Comment", new_post_comment_path(post) %>
 
   <% end %>

@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments
+  has_many :likes
   validates :title, length: { minimum: 3 }
   validates :image, presence: true
 
