@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
 	def index
+    @pictures = Picture.all
 	end
 
 	def new 
@@ -10,7 +11,7 @@ class PicturesController < ApplicationController
     @picture = Picture.create(picture_params)
     if @picture.save
       flash[:success] = "Your picture has been created."
-      redirect_to @picture
+      redirect_to '/pictures'
     else
       flash[:alert] = "You need an image to post here!"
       render :new
