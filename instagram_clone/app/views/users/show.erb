@@ -15,11 +15,15 @@
 					<%= link_to image_tag(post.image.url(:thumb)), post_path(post), id: "pic#{post.id}" %>
 				</section><!--
 			--><section class='col-2-3'>
+					
 					<h2><%= post.caption %></h2>
-					<h3><%= post.likes.count %><%= ' like'.pluralize(post.likes.count) %><span> | <%= link_to 'Like', post_likes_path(post), method: :post %></span></h3>
+
+					<h3><%= link_to 'Like', post_likes_path(post), class: 'add-like-link' %> | <span class='like-count'><%= post.likes.count %><%= ' like'.pluralize(post.likes.count) %></span> <span class='like-error'></span></h3>
+
 					<% if @user == current_user %>
 						<h3><%= link_to 'Delete post', "/posts/#{post.id}", method: :delete %></h3>
 					<% end %>
+
 					<% if post.comments.any? %>
 						<h4>Comments:</h4>
 						<% post.comments.each do |comment| %>
@@ -28,6 +32,7 @@
 							<p><%= link_to 'Delete comment', comment_path(comment), method: :delete %></p>
 						<% end %>
 					<% end %>
+					
 				</section>
 			</div>
 
