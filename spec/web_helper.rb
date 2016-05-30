@@ -20,5 +20,6 @@ def create_picture
 	visit '/'
 	click_link 'Upload a picture'
 	fill_in 'Title', with: 'Me'
+	attach_file('Image', Rails.root + "spec/fixtures/bart-simpson-01.gif")
 	click_button 'Upload'
 end
