@@ -2,12 +2,15 @@
 <html>
 <head>
   <title>PictureFace</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
 </head>
 <body>
-<%= button_to "Homepage", posts_path, :method => "get" %>
+  <%= button_to "Homepage", posts_path, :method => "get" %>
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
 <%= yield %>
 
 </body>
