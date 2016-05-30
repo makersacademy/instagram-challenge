@@ -1,0 +1,35 @@
+<% if Post.all.any? %>
+  <% Post.all.each do |post| %>
+  <div class="row">
+    <article class="post">
+      <div class="col-md-5">
+        <h3 class='title'><%= link_to(post.title, post_path(post)) %></h3>
+        <%= image_tag post.image.url(:thumb) %>
+        #<%= post.tag %>
+        Likes: <%= post.likes %>
+        <%= button_to "like", like_post_path(post), {:onclick => "like", :class => 'btn like' } %>
+        <%= link_to "Edit #{post.title}", edit_post_path(post), { :class => 'btn btn-default'} %>
+        <%= link_to "Delete #{post.title}", post_path(post), { method: :delete, :class => 'btn btn-default'} %>
+        <%= link_to "Comment on #{post.title}", new_post_comment_path(post), { :class => 'btn btn-default'} %>
+
+        <h5> Comments on <%=post.title%>:</h5>
+          <% if post.comments.any? %>
+            <ul><% post.comments.each do |comment| %>
+                    <li>
+                      <%= comment.message %>
+                      <strong><%= comment.reaction %></strong>
+                    </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p> No comments yet </p>
+      <% end %>
+    </div>
+  </article>
+</div>
+    <% end %>
+<% else %>
+  <h1>No posts yet</h1>
+<% end %>
+
+<a href='/posts/new', class='btn add'>Add a post</a>'

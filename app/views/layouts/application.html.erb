@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>InstagramChallenge</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top", id="nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-xs-10">
+          <h2 class='header'>Instagram Challenge <small class='header'> social picture sharing </small></h2>
+        </div>
+        <div class="col-md-2 col-xs-2">
+          <% if user_signed_in? %>
+            <%= link_to "Sign out", destroy_user_session_path, {method: :delete, :class => 'btn btn-default'} %>
+          <% else %>
+            <%= link_to "Sign in", new_user_session_path, { :class => 'btn btn-default'} %>
+            <%= link_to "Sign up", new_user_registration_path, { :class => 'btn btn-default'} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container" id="yield">
+    <%= notice %>
+    <%= yield %>
+  </div
+</body>
+</html>
