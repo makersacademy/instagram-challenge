@@ -3,16 +3,25 @@
     = link_to 'Add post', new_post_path
 
 %section
-  - @posts.each do |post|
-    %p= post.title
-    %p= post.description
-    %p= "posted by: #{post.user.username}"
-    = image_tag post.image.url(:thumb)
-    = link_to 'Comment', new_post_comment_path(post)
+  %ul.posts
+    - @posts.each do |post|
+      %li.post
+        %p= post.title
+        = image_tag post.image.url(:medium)
+        %p= post.description
+        %p= "posted by: #{post.user.username}"
+        %span.post_like
+          = link_to 'like', post_likes_path(post), method: :post
+          = "likes: #{post.likes.count}"
+          %p= link_to 'Comment', new_post_comment_path(post)
 
-    - if post.belongs_to? current_user
-      = link_to 'Edit post', edit_post_path(post)
-      = link_to 'Delete post', post_path(post), method: :delete
+        - if post.belongs_to? current_user
+          = link_to 'Edit post', edit_post_path(post)
+          = link_to 'Delete post', post_path(post), method: :delete
 
-    - post.comments.each do |comment|
-      %p= "#{comment.author}: #{comment.content}"
+        %ul.comments
+          - post.comments.each do |comment|
+            %li.comment
+              %p= "#{comment.author}: #{comment.content}"
+              = link_to 'like', comment_likes_path(comment), method: :post
+              = "likes: #{comment.likes.count}"

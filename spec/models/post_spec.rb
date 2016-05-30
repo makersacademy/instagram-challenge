@@ -2,6 +2,7 @@ RSpec.describe Post, type: :model do
 
   it { is_expected.to belong_to :user }
   it { is_expected.to have_many :comments }
+  it { is_expected.to have_many :likes}
 
   describe '#belongs_to?' do
     let(:user) {User.create(email: 'abc@abc.com')}

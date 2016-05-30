@@ -1,5 +1,6 @@
 feature "Comments" do
   context "when signed in" do
+
     before do
       sign_up
       create_post

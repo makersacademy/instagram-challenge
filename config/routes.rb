@@ -7,7 +7,15 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :likes, only: [:create, :destroy]
   end
+
+  resources :comments, only: [:index] do
+    resources :likes, only: [:create, :destroy]
+  end
+
+  #   resources :likes, only: [:create, :destroy]
+  # end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
