@@ -1,4 +1,4 @@
-Instagram Challenge [![Build Status](https://travis-ci.org/omajul85/instagram-challenge.svg?branch=master)](https://travis-ci.org/omajul85/instagram-challenge)
+Instagram Challenge
 ===================
 
 **Author:** Omar Alvarez
