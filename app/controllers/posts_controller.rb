@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
   def index
     @posts = Post.all
   end
@@ -8,14 +9,14 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:notice] = "Your post has been created."
-      redirect_to @post
+      redirect_to posts_path
     else
       flash[:alert] = "Picture needed"
       render :new
@@ -24,12 +25,12 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    # if @post.user == current_user
-    #   render 'edit'
-    # else
-    #   flash[:alert] = 'Error: Cannot edit someone elses post'
-    #   redirect_to '/posts'
-    # end
+    if @post.user == current_user
+      render 'edit'
+    else
+      flash[:alert] = 'Error: Cannot edit someone elses post'
+      redirect_to '/posts'
+    end
   end
 
   def update
@@ -45,19 +46,14 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.destroy
+    if @post.user == current_user
+      @post.destroy
       flash[:notice] = "Post deleted"
       redirect_to posts_path
     else
-      flash.now[:alert] = "Update failed.  Please check the form."
+      flash[:alert] = 'Error: Cannot delete someone elses post'
       render :show
     end
-    # if @post.user == current_user
-    #   @post.destroy
-    #   flash[:notice] = 'Post deleted successfully'
-    # else
-    #   flash[:alert] = 'Error: Cannot delete someone elses post'
-    # end
   end
 
   private
