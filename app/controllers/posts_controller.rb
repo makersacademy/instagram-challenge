@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "Your post has been updated"
+      flash[:success] = "Your post has been published"
       redirect_to posts_path
     else
       flash.now[:alert] = "Post failed. Check your submission priviledge"
@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   end
 
   def update
+
     if @post.update(post_params)
       flash[:success] = "Your post has been updated."
       redirect_to(post_path(@post))
@@ -50,8 +51,8 @@ class PostsController < ApplicationController
   end
 
   def can_edit
-    unless current_user = @post.user
-      flash[:alert] = "Cannot modify other user's post! Naughty user bad user!"
+    unless current_user == @post.user
+      flash[:alert] = "Cannot edit other user posts! Naughty user!"
       redirect_to root_path
     end
   end

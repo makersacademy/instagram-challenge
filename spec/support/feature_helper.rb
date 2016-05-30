@@ -10,5 +10,13 @@ module FeatureHelper
     click_button 'Sign up'
   end
 
+  def post_image(caption: 'Dig that hole')
+    visit '/'
+    click_link 'New Post'
+    attach_file "Image", 'spec/support/fixtures/1.jpg'
+    fill_in 'Caption', with: caption
+    click_button 'Create Post'
+  end
+
 end
 
