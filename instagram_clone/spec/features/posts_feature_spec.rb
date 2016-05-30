@@ -10,9 +10,8 @@ feature 'posts' do
   end
 
   context 'photo has been uploaded' do
-    before do
-      Post.create(title: 'Vacation')
-    end
+
+    before { Post.create title: 'Vacation'}
 
     scenario 'display photos' do
       visit '/posts'
@@ -26,10 +25,38 @@ feature 'posts' do
       visit '/posts'
       click_link 'Add a photo'
       fill_in 'Title', with: 'Vacation'
-      click_button 'Upload photo'
+      click_button 'Create Post'
       expect(page).to have_content 'Vacation'
       expect(current_path).to eq '/posts'
     end
   end
 
+  context 'viewing photos' do
+    let!(:vacation){Post.create(title:'Vacation')}
+
+    scenario 'lets a user view a photo' do
+      visit '/posts'
+      click_link 'Vacation'
+      expect(page).to have_content 'Vacation'
+      expect(current_path).to eq "/posts/#{vacation.id}"
+    end
+  end
+
+  context 'deleting posts' do
+
+    before { Post.create title: 'Vacation'}
+
+    scenario 'removes a photo when a user clicks a delete link' do
+      visit '/posts'
+      click_link 'Vacation'
+      click_link 'Delete Vacation'
+      expect(page).not_to have_content 'Vacation'
+      expect(page).to have_content 'Photo deleted successfully'
+    end
+  end
+
 end
+
+
+
+
