@@ -35,4 +35,15 @@ feature "User can sign in and out" do
       expect(page).not_to have_link('Sign up')
     end
   end
+
+  scenario 'can create a new user via the index page' do
+    visit('/users/sign_up')
+    fill_in 'User name', with: 'sxyrailsdev'
+    fill_in 'Email', with: 'sxyrailsdev@myspace.com'
+    fill_in 'Password', with: 'supersecret', match: :first
+    fill_in 'Password confirmation', with: 'supersecret'
+
+    click_button 'Sign up'
+    expect(page).to have_content('Welcome! You have signed up successfully.')
+  end
 end
