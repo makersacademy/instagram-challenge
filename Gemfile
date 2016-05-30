@@ -27,6 +27,7 @@ gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'devise'
+gem 'factory_girl_rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -39,6 +40,9 @@ gem 'devise'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'shoulda-matchers'
+  gem 'rspec-rails'
+  gem 'rspec-collection_matchers'
 end
 
 group :development do
@@ -50,7 +54,6 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'capybara'
 end
 
