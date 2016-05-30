@@ -1,0 +1,31 @@
+<div class="post">
+  <div class="post-head">
+    <div class="username"><%= post.user.username %></div>
+    <div class="time-ago"><%= time_ago_in_words(post.created_at) %> ago</div>
+  </div>
+  <div class="image">
+    <%= link_to (image_tag post.image.url(:medium), class: "img_responsive"), post_path(post) %>
+  </div>
+  <div class="post-bottom">
+    <div class="col-sm-1 like-button">
+      <%= link_to "", already_liked_path?(post), class: "glyphicon like #{already_liked?(post)}", id: "like_#{ post.id }", remote: true %>
+    </div>
+      <%= render "posts/likes", post: post %>
+    <div class="caption">
+      <div class="username"><%= post.user.username %></div>
+      <div class="caption-content"><%= post.caption %></div>
+      <div class="comments">
+        <div id="comments_<%= post.id %>" class="comment">
+          <%= render post.comments.order("created_at ASC"), post: post %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="comment-like-form row">
+    <%= form_for [post, post.comments.build], remote: true do |f| %>
+      <%= f.label :content, class: "label-hidden" %>
+      <%= f.text_field :content, placeholder: "Add a comment...", class: "comment_content", id: "comment_content_#{ post.id }" %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
