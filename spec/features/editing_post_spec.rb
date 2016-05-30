@@ -2,7 +2,8 @@ feature "editing posts" do
   before do
     user = FactoryGirl.create(:user)
     post = FactoryGirl.create(:post, user: user)
-    user2 = FactoryGirl.create(:user, email: "amy2@gmail.com", username: "amynic2", id: 2)
+    user2 = FactoryGirl.create(:user, email: "amy2@gmail.com",
+                                      username: "amynic2", id: 2)
     post2 = FactoryGirl.create(:post, user: user2, id: 2)
     log_in
   end

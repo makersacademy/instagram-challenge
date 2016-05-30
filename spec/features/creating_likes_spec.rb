@@ -23,9 +23,9 @@ feature "creating likes" do
         click_link "Logout"
         (2..max_users_id).each do |num|
           user = FactoryGirl.create(:user, id: num,
-                                    email: "#{num.to_s}email@gmail.com",
-                                    username: "#{num.to_s}username")
-          log_in({email: "#{num.to_s}email@gmail.com", password: "testtest"})
+                                    email: "#{num}email@gmail.com",
+                                    username: "#{num}username")
+          log_in({email: "#{num}email@gmail.com", password: "testtest"})
           visit "/"
           find("a[href='#{like_post_path(1)}']").click
           click_link "Logout"

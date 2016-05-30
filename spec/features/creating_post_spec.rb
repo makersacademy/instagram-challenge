@@ -12,7 +12,7 @@ feature "creating post" do
       click_button "Create"
       expect(page).to have_content "hipster coffee"
       expect(page).to have_css("img[src*='hipster.jpg']")
-      expect(page).to have_xpath("//div[@class='username']", :text => 'amynic')
+      expect(page).to have_xpath("//div[@class='username']", text: 'amynic')
     end
   end
   context "when image is not selected" do

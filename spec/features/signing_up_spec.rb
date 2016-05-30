@@ -15,12 +15,14 @@ feature "user sign up" do
   context "when invalid credentials" do
     scenario "sign up with short username" do
       sign_up("my")
-      expect(page).to have_content "Username is too short (minimum is 4 characters)"
+      error = "Username is too short (minimum is 4 characters)"
+      expect(page).to have_content error
     end
 
     scenario "sign up with long username" do
       sign_up("myVeryVeryLongUsername")
-      expect(page).to have_content "Username is too long (maximum is 16 characters)"
+      error = "Username is too long (maximum is 16 characters)"
+      expect(page).to have_content error
     end
 
     scenario "sign up with blank username" do
