@@ -6,11 +6,11 @@ feature 'photos' do
 
     scenario 'should display a prompt to add an image' do
       visit '/'
-      expect(page).not_to have_link "Add an photo"
+      expect(page).not_to have_link "New Photo"
       sign_up_user1
       visit '/photos'
       expect(page).to have_content 'No photos yet'
-      expect(page).to have_link 'Add an photo'
+      expect(page).to have_link 'New Photo'
     end
   end
 
