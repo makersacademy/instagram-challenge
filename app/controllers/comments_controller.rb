@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
 	def new
 	  @picture = Picture.find(params[:picture_id])
 	  @comment = Comment.new
-	  # @comment = @picture.comments.build
 	end
 
 	def create
