@@ -15,7 +15,11 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
-      flash[:alert] = 'Error: Image required'
+      if @post.title.length < 3
+        flash[:alert] = 'Error: Title must be minimum of 3 characters'
+      else
+        flash[:alert] = 'Error: Image required'
+      end
       render 'new'
     end
   end

@@ -28,6 +28,8 @@ end
 
 * Included `gem 'paperclip'` in Gemfile for image uploads
 
+* Included `gem 'devise'` in Gemfile for User Sign in and out
+
 * Time to start TDD'ing and developing the app
 
   - In order to create new controllers run `bin/rails g controller name_of_controller` from the command line, then migrate
@@ -47,6 +49,23 @@ end
       end
     end
     ```
+
+  - In order to allow unit tests on models in the following format add this to the Gemfile and `bundle` afterwards `gem 'rspec-collection_matchers'`
+      ```
+      describe Restaurant, type: :model do
+        it 'is not valid with a name of less than three characters' do
+          restaurant = Restaurant.new(name: "kf")
+          expect(restaurant).to have(1).error_on(:name)
+          expect(restaurant).not_to be_valid
+        end
+      end
+      ```
+
+  - `bin/rails g devise:install` to setup devise
+
+  - add `config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }` to development environment
+
+  - `bin/rails g devise User` to generate User model for devise
 
 
 

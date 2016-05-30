@@ -36,4 +36,12 @@ feature 'Posts' do
     end
   end
 
+  context 'an invalid post' do
+    scenario 'does not let you submit a name that is too short' do
+      make_post(title: 'df')
+      expect(page).not_to have_css 'h3', text: 'df'
+      expect(page).to have_content 'Error: Title must be minimum of 3 characters'
+    end
+  end
+
 end
