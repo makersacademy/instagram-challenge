@@ -45,7 +45,7 @@ feature 'pictures' do
     before { create(:picture) }
     scenario 'let a user edit a picture' do
      visit '/pictures'
-     click_link 'Edit Picture'
+     click_link 'Edit'
      fill_in 'Caption', with: 'Updated pic'
      click_button 'Update Picture'
      expect(page).to have_content 'Updated pic'

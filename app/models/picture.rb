@@ -1,5 +1,6 @@
 class Picture < ActiveRecord::Base
 	validates :image, presence: true
+	has_many :comments, dependent: :destroy
 	
 	has_attached_file :image, styles: { :medium => "640x" }
 
