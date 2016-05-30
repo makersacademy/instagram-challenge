@@ -82,7 +82,5 @@ feature 'pictures' do
 	    expect(page).to have_content 'Picture deleted successfully'
 	    expect(current_path).to eq '/pictures/my_pictures'
 	  end
-
 	end
-
 end
