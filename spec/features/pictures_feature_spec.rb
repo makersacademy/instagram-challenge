@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'picture'
+require 'web_helper'
 
 feature 'pictures' do
   context 'no picture have been added' do
@@ -11,6 +12,7 @@ feature 'pictures' do
   end
 
   scenario 'can create a picture' do
+    my_sign_up
     visit '/pictures'
     click_link 'Add Picture'
     attach_file('Image', "spec/files/images/coffee.jpg")
@@ -20,7 +22,8 @@ feature 'pictures' do
     expect(page).to have_css("img[src*='coffee.jpg']")
   end
 
-  scenario 'needs an image to create a post' do  
+  scenario 'needs an image to create a post' do 
+    my_sign_up 
     visit '/pictures'
     click_link 'Add Picture'
     fill_in 'Caption', with: "Thermostat"
@@ -44,12 +47,13 @@ feature 'pictures' do
 
     before { create(:picture) }
     scenario 'let a user edit a picture' do
-     visit '/pictures'
-     click_link 'Edit'
-     fill_in 'Caption', with: 'Updated pic'
-     click_button 'Update Picture'
-     expect(page).to have_content 'Updated pic'
-     expect(current_path).to eq '/pictures'
+      my_sign_up
+      visit '/pictures'
+      click_link 'Edit'
+      fill_in 'Caption', with: 'Updated pic'
+      click_button 'Update Picture'
+      expect(page).to have_content 'Updated pic'
+      expect(current_path).to eq '/pictures'
     end
   end
 
@@ -58,6 +62,7 @@ feature 'pictures' do
     before { create(:picture) }
 
     scenario 'removes a picture when a user clicks a delete link' do
+      my_sign_up
       visit '/pictures'
       click_link 'Delete'
       expect(page).not_to have_content 'nofilter'
