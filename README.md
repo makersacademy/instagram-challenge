@@ -70,34 +70,48 @@ So that likes cant be inflated,
 I want a user to only be able to like a picture ones.
 ````
 
+Features
+-------
+- PostgreSQL as database
+- Paperclip gem to manage pictures
+- AWS S3 used to store pictures
+- Devise for authentication
+- Bootstrap gem to make it pretty
+- Factory Girl gem to create objects for test
+- Simple Form gem to make nice easy forms
+- Testing collection tools: Shoulda, rspec, capybara, poltergeist, and database cleaner
+
+
 Issues
 -----
 - In local all rspec tests are passing, but Travis CI is not playing ball, it would seem that it is not login in in some cases creating errors.  No time to correct so added to the improvements list
-- I manage to broke the rspec testset when I added js and poltergeist.  Again added to improvement list
+- I managed to break the rspec test set when I added js and poltergeist.  The type of thing that happens to me...  Again added to improvement list to fix when I have a bit of time...
 
 Improvement list
 --------
 - Resolve issues, (see above)
+- Sign up with Facebook (omniauth with devise)
 - improve looking on authentication windows
 - implement filter options
 - improve looking on the like windows
 - ensure owner can't like itself (not implemented)
+- How to keep your testbed clean and remove the files in the hard drive? (using a bit of "cocaine" gem?)
 
 Special Thanks
 -------
-To Ben Walkers of https://www.devwalks.com, as I followed the way of the goat!  All the nice looks come from the website
+To Ben Walkers of https://www.devwalks.com, as I followed the way of the goat!  All the nice looks come from the website from his suggestions of using bootstraps, simple forms and many more.
 
 General Comment & Reflection
 ------
-I discovered how poweful rails can be, and how little do I know... Anyway with the help of the materials around I was able to put together something that looks like the requested product.  TDD can be pretty difficult in Rails projects, I got my head banging to the wall during all this week-end trying to get Travis to be nice with me, and failed misserably. I used database cleaner but no difference.  I am puzzled as I don't understand why Travis tells me that I got failing tests that they pass in local... More effort is required!
+I discovered how poweful Rails can be, and been humbled by the huge task of mastering it... Anyway with the help of the materials around I was able to put together something that looks like the requested product.  TDD can be pretty difficult in Rails projects, I tried hard during all this week-end trying to get Travis to be nice with me, and failed misserably. I used database cleaner but no difference.  I am puzzled as I don't understand why Travis tells me that I got failing tests that they pass in local... More effort is required!  Will take a look to any successful products done by my fellows to understand how they do it.
 
-The power of Rails is amazing.  If we had tried to implement this in Sinatra it probably would have taken us 2 weeks to get the same result.  However Rails is a difficult horse to tame, and it has quite a lot of magic to take on.  Finally I was crazy enough to use HAML for the project, and you can become insane aligning things... Yes, it is very clean and elegant, but who is aligning those lines of code?
+The power of Rails is amazing.  If we had tried to implement this in Sinatra it probably would have taken us 2+ weeks of intense work to get the same result.  However Rails is a difficult horse to tame, and it has quite a lot of magic to master.  On top of that I was crazy enough to use HAML for the project, and I almost became insane aligning... Yes, HAML is very clean and elegant, and all the cool kids are doing it but who is aligning all those lines of code?
 
-All in all a good learning exercise, I am amazed of how much work can be done in a couple of days of intense work, (even spending hours in stupid errors as it is always my destiny).  I need to spend much more time consolidating the use of Rails, but for the moment time to turn my head and start another battle: Angular: you, me... now!
+All in all a good learning exercise, I am amazed of how much work can be done in a couple of days of intense work, (even spending plenty of hours in stupid errors as it is always my destiny).  I need to spend much more time consolidating the use of Rails, but for the moment time to turn my head and start another battle: Angular: you, me... now!
 
 
-Task
------
+The Task was
+--------
 
 Build Instagram: Simple huh!
 
