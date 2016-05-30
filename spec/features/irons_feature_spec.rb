@@ -36,17 +36,16 @@ feature "User can iron a post" do
 
     end
 
-    it "user can un-iron" do
+    it "user can only iron a post once" do
       visit('/posts')
       click_link 'Iron'
       expect(@post.irons.count).to eq 1
       expect(@user.irons.count).to eq 1
+      click_link 'Iron'
+      expect(@user.irons.count).to eq 1
+      expect(@post.irons.count).to eq 1
+      expect(page).to have_content("You have ironed this post already")
 
-      expect(page).to have_link('UnIron')
-      click_link 'UnIron'
-      expect(@user.irons.count).to eq 0
-      expect(@post.irons.count).to eq 0
     end
-
   end
 end
