@@ -8,14 +8,14 @@ class PostsController < ApplicationController
   end
 
   def new 
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def create 
-    @post = Post.create(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "Success! Post uploaded."
-      redirect_to @post
+      redirect_to posts_path
     else
       flash[:alert] = "You must upload an image!"
       render :new
