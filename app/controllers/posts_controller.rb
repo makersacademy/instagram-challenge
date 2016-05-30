@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :can_edit, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -12,12 +13,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "Your post has been updated"
       redirect_to posts_path
     else
-      flash.now[:alert] = "Post failed"
+      flash.now[:alert] = "Post failed. Check your submission priviledge"
       render :new
     end
   end
@@ -51,6 +52,13 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def can_edit
+    unless current_user = @post.user
+      flash[:alert] = "Cannot modify other user's post! Naughty user bad user!"
+      redirect_to root_path
+    end
   end
 
 end

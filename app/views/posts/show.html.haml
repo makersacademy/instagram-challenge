@@ -2,13 +2,14 @@
   .post
     .post-head
       .name
-        Instantgram
+        =@post.user.user_name
       .image.center-block
         =image_tag @post.image.url(:medium)
       %p.caption
         =@post.caption
       .test-center.edit-links
-        = link_to "Edit Post", edit_post_path(@post)
-        = link_to "Delete Post", post_path(@post), method: :delete
+        - if current_user.id == @post.user.id
+          = link_to "Edit Post", edit_post_path(@post)
+          = link_to "Delete Post", post_path(@post), method: :delete
       .text-center
         = link_to "Back to all posts", posts_path
