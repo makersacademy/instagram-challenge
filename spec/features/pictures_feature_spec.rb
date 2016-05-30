@@ -11,7 +11,8 @@ feature 'pictures' do
 
   context 'pictures have been added' do
 	  before do
-	    Picture.create(title: 'Me')
+	    sign_up_helper
+    	create_picture
 	  end
 
 	  scenario 'display pictures' do
@@ -25,21 +26,15 @@ feature 'pictures' do
 	  before { sign_up_helper }
 
 	  scenario 'prompts user to fill out a form, then displays the new picture' do
-	    visit '/pictures'
-	    click_link 'Upload a picture'
-	    fill_in 'Title', with: 'Me'
-	    click_button 'Upload'
+	    create_picture
 	    expect(page).to have_content 'Me'
 	    expect(current_path).to eq '/pictures'
 	  end
 
 	  context 'an invalid picture' do
 	    it 'does not let you submit a picture without title' do
-	      visit '/pictures'
-		    click_link 'Upload a picture'
-		    fill_in 'Title', with: ''
-		    click_button 'Upload'
-	      expect(page).to have_content 'error'
+	      create_picture_invalid
+	      expect(page).to have_content 'Title can\'t be blank'
 	    end
 	  end
 	end

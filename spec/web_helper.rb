@@ -23,3 +23,11 @@ def create_picture
 	attach_file('Image', Rails.root + "spec/fixtures/bart-simpson-01.gif")
 	click_button 'Upload'
 end
+
+def create_picture_invalid
+	visit '/'
+	click_link 'Upload a picture'
+	fill_in 'Title', with: ''
+	attach_file('Image', Rails.root + "spec/fixtures/bart-simpson-01.gif")
+	click_button 'Upload'
+end
