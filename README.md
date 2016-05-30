@@ -32,6 +32,8 @@ end
 
 * Included `gem 'dotenv-rails'` in Gemfile for storing of secrets
 
+* Included `gem 'shoulda-matchers'` in Gemfile for testing associations, include `config.include(Shoulda::Matchers::ActiveRecord, type: :model)` to complete setup
+
 * Time to start TDD'ing and developing the app
 
   - In order to create new controllers run `bin/rails g controller name_of_controller` from the command line, then migrate

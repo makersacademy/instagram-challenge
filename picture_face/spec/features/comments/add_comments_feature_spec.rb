@@ -1,5 +1,9 @@
 feature 'Comments' do
-  before { post = create(:post) }
+
+  before do
+    sign_user_up
+    post = create(:post)
+  end
 
   scenario 'allows users to leave a comment' do
      visit '/'
