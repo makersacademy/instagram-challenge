@@ -31,7 +31,7 @@
                     %p.likes
                       = link_to 'like', post_likes_path(post), method: :post
                       %span.presentation ·
-                      = "likes: #{post.likes.count}"
+                      %span= "likes: #{post.likes.count}"
 
                   - if post.belongs_to? current_user
                     .row
@@ -48,9 +48,10 @@
                       %strong= "#{comment.author}:"
                       %span= "#{comment.content}"
                       %p.likes
-                        = link_to 'like', comment_likes_path(comment), method: :post
+                        = link_to 'like', comment_likes_path(comment),
+                          method: :post
                         %span.presentation ·
-                        = "likes: #{comment.likes.count}"
+                        %span= "likes: #{comment.likes.count}"
                         %span.presentation ·
                         %span.date= comment.created_at.strftime("%d %b at %I:%M")
                 = link_to 'Comment', new_post_comment_path(post)

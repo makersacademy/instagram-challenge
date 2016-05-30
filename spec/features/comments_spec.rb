@@ -10,7 +10,7 @@ feature "Comments" do
     scenario "can make multiple comments which show username" do
       create_comment content: "I wouldn't touch that with a barge pole"
       expect(page).to have_content "bob: wow your dinner looks so dreamy"
-      expect(page).to have_content "bob: I wouldn't touch that with a barge pole"
+      expect(page).to have_content "bob: I wouldn't touch that with a barge"
     end
 
     scenario "posts with comments can be deleted by user" do

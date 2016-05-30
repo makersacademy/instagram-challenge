@@ -16,7 +16,7 @@ class LikesController < ApplicationController
   def find_likeable
     if params[:post_id]
       Post.find(params[:post_id])
-    else params[:comment_id]
+    elsif params[:comment_id]
       Comment.find(params[:comment_id])
     end
   end
