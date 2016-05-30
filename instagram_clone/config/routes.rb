@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   devise_for :users
 
-  resources :users, only: [:show] 
+  resources :users, only: [:show, :index] 
+
+  post 'users/:to_follow_id/follow' => 'users#follow'
 
   resources :comments, only: [:destroy]
 
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     resources :likes, only: [:create]
   end
+  get 'my_feed' => 'posts#my_feed'
 
   root 'posts#index'
 

@@ -9,6 +9,10 @@ class PostsController < ApplicationController
 		@posts = Post.all
 	end
 
+	def my_feed
+		@posts = current_user.posts_following
+	end
+
 	def show
 		@post = Post.find(params[:id])
 		@comment = Comment.new
