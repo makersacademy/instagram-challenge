@@ -30,6 +30,8 @@ end
 
 * Included `gem 'devise'` in Gemfile for User Sign in and out
 
+* Included `gem 'dotenv-rails'` in Gemfile for storing of secrets
+
 * Time to start TDD'ing and developing the app
 
   - In order to create new controllers run `bin/rails g controller name_of_controller` from the command line, then migrate
