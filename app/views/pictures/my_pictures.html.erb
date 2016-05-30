@@ -2,26 +2,31 @@
   <h2>My Pictures</h2>
 </header>
 
+<div>
 <% if @pictures.any? %> 
 	<% @pictures.each do |picture| %>
+	<box class='thumbnail'>
 		<div class="panel panel-default center-block">
-	  <div class="panel-heading">
-			<p><%= picture.title %></p>
-	  </div>
-	  <div class="panel-body">
-			<%= image_tag picture.image_url(:thumbnail), class: 'img-thumbnail' %><br>
-	  </div>
-	  <div class="panel-footer">
-	  	<div class="btn-group">
-		    <%= link_to "Edit", edit_picture_path(picture), class: "btn btn-warning" %>
-		    <%= link_to "Delete", picture_path(picture), class: "btn btn-danger", method: :delete %>
-		  </div>
-			<br>
-	  </div>
-	</div>
+			<div class="panel-heading">
+				<h4><%= picture.title %></h4>
+			</div>
+			<div class="panel-body">
+				<%= image_tag picture.image_url(:thumbnail) %><br>
+			</div>
+			<div class="panel-footer">
+				<div class="btn-group">
+					<%= link_to "Edit", edit_picture_path(picture), class: "btn btn-warning" %>
+					<%= link_to "Delete", picture_path(picture), class: "btn btn-danger", method: :delete %>
+				</div>
+				<br>
+			</div>
+		</div>
+	</box>
 	<% end %>
+</div>
 <% else %>
 	<p>No pictures yet.</p>
 <% end %>
-<hr>
-<div class='center-block'><%= link_to "Home", root_path, class: 'btn btn-warning' %></div>
+<footer>
+	<div class='after-box center-block'><%= link_to "Home", root_path, class: 'btn btn-warning' %></div>
+</footer>
