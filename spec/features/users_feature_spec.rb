@@ -2,27 +2,19 @@ require 'rails_helper'
 
 feature 'Creating a new user' do
 
-  before(:each) do
-    visit '/'
-    click_link 'Register'
-  end
+  # before(:each) do
+  #   visit '/'
+  #   click_link 'Register'
+  # end
 
   scenario 'can create a new user from the index page' do
-    fill_in 'User name', with: 'Batman'
-    fill_in 'Email', with: 'Letian@gmail.com'
-    fill_in("Password", with: '123456', :match => :prefer_exact)
-    fill_in("Password confirmation", with: '123456', :match => :prefer_exact)
-    click_button 'Sign up'
+    sign_up
     expect(current_path).to eq '/'
     expect(page).to have_content 'Welcome! You have signed up successfully.'
   end
 
   scenario 'username must be longer than 3 characters' do
-    fill_in 'User name', with: 'Bat'
-    fill_in 'Email', with: 'Letian@gmail.com'
-    fill_in("Password", with: '123456', :match => :prefer_exact)
-    fill_in("Password confirmation", with: '123456', :match => :prefer_exact)
-    click_button 'Sign up'
+    sign_up(username: 'Bat')
     expect(current_path).to eq '/users'
     expect(page).to have_content 'too short'
   end
@@ -36,6 +28,12 @@ feature 'User can sign in and out' do
       expect(page).to have_link('Login')
     end
 
+    it 'click login should bring me to login page' do
+      visit '/'
+      click_link 'Login'
+      expect(current_path).to eq('/users/sign_in')
+    end
+
     it 'should not see Logout link' do
       visit '/'
       expect(page).not_to have_link('Logout')
@@ -43,13 +41,15 @@ feature 'User can sign in and out' do
   end
 
   context 'user signed in' do
+    before(:each) { sign_up }
 
     scenario 'user should be able to see sign out link' do
-
+      expect(page).to have_link 'Logout'
     end
 
     scenario 'user should not be able to see sign in and sign up link' do
-
+      expect(page).not_to have_link 'Register'
+      expect(page).not_to have_link 'Login'
     end
   end
 
