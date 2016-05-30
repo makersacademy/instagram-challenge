@@ -1,2 +1,25 @@
-<h1>No posts yet</h1>
-<%= link_to "New Post", new_post_path %>
+<% if @posts.any? %>
+  <div class="posts-wrapper row" >
+  <% @posts.each do |post| %>
+    <div class="post">
+      <div class="post-head">
+        <div class="name">
+          Post's Username
+        </div>
+      </div>
+      <div class="image center-block">
+        <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
+      </div>
+      <p class="caption">
+        <%= post.caption %><br><br>
+      </p>
+      <div class="text-center">
+        <%= link_to "Edit Post", edit_post_path(post) %>
+        <%= link_to "Delete Post", post_path(post), method: :delete %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+<% else %>
+  <div class="posts-wrapper row"> No posts yet </div>
+<% end %>
