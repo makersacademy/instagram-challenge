@@ -9,10 +9,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      respond_to do |format|
-        format.html { redirect_to root_path }
-        format.js
-      end
+      json_respond
     else
       flash[:alert] = "Oops, comment couldn't be added."
       redirect_to :back
@@ -21,10 +18,7 @@ class CommentsController < ApplicationController
 
   def destroy
     if @comment.destroy
-      respond_to do |format|
-        format.html { redirect_to root_path }
-        format.js
-      end
+      json_respond
     else
       flash[:alert] = "Oops, comment couldn't be deleted."
       redirect_to :back
@@ -50,6 +44,13 @@ class CommentsController < ApplicationController
     unless @comment.user == current_user
       flash[:alert] = "That comment doesn't belong to you!"
       redirect_to root_path
+    end
+  end
+
+  def json_respond
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
     end
   end
 end

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :like, :unlike]
+  before_action :set_post, only: [:show, :edit, :update,
+                                  :destroy, :like, :unlike]
   before_action :authenticate_user!
   before_action :owned_post, only: [:edit, :update, :destroy]
 
@@ -51,18 +52,12 @@ class PostsController < ApplicationController
 
   def like
     @post.liked_by(current_user)
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.js
-    end
+    json_respond
   end
 
   def unlike
     @post.unliked_by(current_user)
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.js
-    end
+    json_respond
   end
 
   private
@@ -79,6 +74,13 @@ class PostsController < ApplicationController
     unless @post.user == current_user
       flash[:alert] = "That post doesn't belong to you!"
       redirect_to root_path
+    end
+  end
+
+  def json_respond
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
     end
   end
 end

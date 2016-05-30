@@ -3,18 +3,18 @@ module PostsHelper
 
   def already_liked?(post)
     return "glyphicon-heart" if current_user.voted_for?(post)
-    return "glyphicon-heart-empty"
+    "glyphicon-heart-empty"
   end
 
   def already_liked_path?(post)
     return unlike_post_path(post) if current_user.voted_for?(post)
-    return like_post_path(post)
+    like_post_path(post)
   end
 
   def display_likes(post)
     votes = post.votes_for.up.by_type(User)
     return likes_count(votes) if votes.count > LIKERS_MAX
-    return likers_of(votes)
+    likers_of(votes)
   end
 
   private
