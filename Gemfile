@@ -18,6 +18,9 @@ gem "factory_girl_rails", "~> 4.0"
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'aws-sdk', '< 2.0'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'figaro'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
