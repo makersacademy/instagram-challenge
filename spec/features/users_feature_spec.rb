@@ -2,21 +2,24 @@ require 'rails_helper'
 
 feature 'Creating a new user' do
 
-  # before(:each) do
-  #   visit '/'
-  #   click_link 'Register'
-  # end
-
   scenario 'can create a new user from the index page' do
     sign_up
     expect(current_path).to eq '/'
     expect(page).to have_content 'Welcome! You have signed up successfully.'
+    expect(User.count).to eq 1
   end
 
   scenario 'username must be longer than 3 characters' do
     sign_up(username: 'Bat')
     expect(current_path).to eq '/users'
     expect(page).to have_content 'too short'
+    expect(User.count).to eq 0
+  end
+
+  scenario 'cannot sign up with an invalid email address' do
+    sign_up(email:'123')
+    expect(page).to have_content 'invalid'
+    expect(User.count).to eq 0
   end
 end
 
@@ -50,6 +53,11 @@ feature 'User can sign in and out' do
     scenario 'user should not be able to see sign in and sign up link' do
       expect(page).not_to have_link 'Register'
       expect(page).not_to have_link 'Login'
+    end
+
+    scenario 'user should be able to log out' do
+      click_link 'Logout'
+      expect(current_path).to eq '/users/sign_in'
     end
   end
 
