@@ -1,6 +1,9 @@
 feature 'Delete' do
 
-  before { post = create(:post) }
+  before do
+    sign_user_up
+    post = create(:post)
+  end
 
   scenario 'removes a post when a user clicks a delete link' do
     visit '/posts'

@@ -1,5 +1,9 @@
 feature 'Posts' do
 
+  before do
+    sign_user_up
+  end
+
   context 'have not been added' do
     scenario 'should display a prompt to make a post' do
       visit '/posts'

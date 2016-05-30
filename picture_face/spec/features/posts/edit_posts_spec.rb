@@ -1,5 +1,9 @@
 feature 'Editing posts' do
 
+  before do
+    sign_user_up
+  end
+
   scenario 'Can edit a post' do
     post = create(:post)
     visit '/'

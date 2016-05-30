@@ -1,5 +1,9 @@
 feature 'viewing' do
 
+  before do
+    sign_user_up
+  end
+
   scenario 'user can return to index page' do
     make_post
     click_link 'My First Pic'
