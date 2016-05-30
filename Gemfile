@@ -10,7 +10,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'paperclip', '~> 4.2'
-gem "factory_girl_rails", "~> 4.0"  
+gem "factory_girl_rails", "~> 4.0" 
+gem 'devise' 
 
 
 group :development, :test do
