@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'factory_girl_rails'
+gem 'factory_girl_rails', '~> 4.7'
 gem 'simple_form'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 
