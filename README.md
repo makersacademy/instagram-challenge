@@ -35,7 +35,7 @@ end
 
   - In order to create new models run `bin/rails g model model_name field_name:data_type from the command line, then migrate
 
-  - In order to create a migration to add images to a model `bin/rails g paperclip model_name image`
+  - In order to create a migration to add images to a model (using paperclip) `bin/rails g paperclip model_name image`
 
   - To build a default factory for posts create `spec/factories/post.rb` and use the following template to build a factory
     ```
