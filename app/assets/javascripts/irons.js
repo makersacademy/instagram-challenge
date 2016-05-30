@@ -22,9 +22,3 @@ $( document ).ready(function() {
     });
   });
 });
-
-
-// $.ajax({
-//   url: "someurl.php",
-//   success: function() {}
-// });
