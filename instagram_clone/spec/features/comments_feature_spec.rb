@@ -7,7 +7,7 @@ feature 'comments' do
     visit '/posts'
     click_link 'Vacation'
     click_link 'Comment on Vacation'
-    fill_in 'Comments', with: 'beautiful'
+    fill_in 'Comment', with: 'beautiful'
     click_button 'Leave Comment'
     expect(current_path).to eq "/posts/#{vacation.id}"
     expect(page).to have_content'beautiful'

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+has_many :comments, dependent: :destroy
   def index
     @posts = Post.all
   end
