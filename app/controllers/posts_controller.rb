@@ -24,12 +24,12 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    if @post.user == current_user
-      render 'edit'
-    else
-      flash[:alert] = 'Error: Cannot edit someone elses post'
-      redirect_to '/posts'
-    end
+    # if @post.user == current_user
+    #   render 'edit'
+    # else
+    #   flash[:alert] = 'Error: Cannot edit someone elses post'
+    #   redirect_to '/posts'
+    # end
   end
 
   def update
@@ -40,12 +40,13 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.user == current_user
-      @post.destroy
-      flash[:notice] = 'Post deleted successfully'
-    else
-      flash[:alert] = 'Error: Cannot delete someone elses post'
-    end
+    @post.destroy
+    # if @post.user == current_user
+    #   @post.destroy
+    #   flash[:notice] = 'Post deleted successfully'
+    # else
+    #   flash[:alert] = 'Error: Cannot delete someone elses post'
+    # end
     redirect_to '/posts'
   end
 
