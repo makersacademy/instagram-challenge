@@ -11,7 +11,7 @@ The instructions can be found [here](https://github.com/makersacademy/instagram-
 
 User Stories
 -----
-
+```
 As a user,
 So that I can see what other people are up to,
 I want to view posts on the homepage.
@@ -59,7 +59,7 @@ I want other users not to be able to delete posts I create.
 As a concerned user,
 So that other people cannot remove my witty remarks,
 I want other users not to be able to delete comments I write.
-
+```
 
 Installation
 -----
