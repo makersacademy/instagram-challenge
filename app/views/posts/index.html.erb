@@ -1,21 +1,25 @@
 <% if @posts.any? %>
-<% @posts.each do |post| %>
+  <% @posts.each do |post| %>
 
-<%=post.title %><br>
-<%= image_tag post.image.url(:medium) %>
-<p> <%= link_to "Leave Comment", new_post_comment_path(post) %> </p>
+    <%=post.title %><br>
+    <%= image_tag post.image.url(:medium) %>
+    <p> <%= link_to "Leave Comment", new_post_comment_path(post) %> </p>
 
+    <% if post.irons.any? %>
+      <%= post.irons.count %>
+    <% end %>
 
-<% if post.irons.any? %>
-<%= post.irons.count %>
-<% end %>
+    <% if iron = post.irons.where(:user_id => current_user.id, :post_id => post.id).first %>
+      <p> <%= link_to "UnIron", post_iron_path(post, iron), method: :delete, class: "iron" %> </p>
+    <% else %>
+      <p> <%= link_to "Iron", post_irons_path(post), method: :post, class: "iron" %> </p>
+    <% end %>
 
-<p> <%= link_to "Iron", new_post_iron_path(post) %> </p>
+    <% if user_signed_in? %>
+      <% if current_user.posts.include?(post) %>
+      <p> <%= link_to "Delete Post", post_path(post), method: :delete %> </p>
+      <% end %>
+    <% end %>
 
-<% if user_signed_in? %>
-<% if current_user.posts.include?(post) %>
-<p> <%= link_to "Delete Post", post_path(post), method: :delete %> </p>
-<% end %>
-<% end %>
-<% end %>
+  <% end %>
 <% end %>
