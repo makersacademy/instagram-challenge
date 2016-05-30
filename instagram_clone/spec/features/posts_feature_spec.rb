@@ -41,7 +41,19 @@ feature 'posts' do
 			create_post
 			click_link 'My posts'
 			click_link 'Delete post'
-			visit('/posts')
+			user = User.find_by(email: 'test@test.com')
+			expect(current_path).to eq "/users/#{user.id}"
+			expect(page).not_to have_css("img[src*='test.png']")
+			expect(page).not_to have_content 'The best name ever'
+		end
+		scenario 'a user can delete a post from the individual post page' do
+			create_post
+			click_link 'My posts'
+			post = Post.find_by(caption: 'The best name ever')
+			click_link('', href: "/posts/#{post.id}")
+			click_link 'Delete post'
+			user = User.find_by(email: 'test@test.com')
+			expect(current_path).to eq "/users/#{user.id}"
 			expect(page).not_to have_css("img[src*='test.png']")
 			expect(page).not_to have_content 'The best name ever'
 		end

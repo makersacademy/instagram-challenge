@@ -68,7 +68,8 @@ feature 'comments' do
 			click_link('My posts')
 			click_link('Delete comment')
 			expect(page).not_to have_content 'My comment'
-			visit('/posts')
+			user = User.find_by(email: 'test@test.com')
+			expect(current_path).to eq "/users/#{user.id}"
 			expect(page).not_to have_content 'My comment'
 		end
 		scenario 'a user cannot remove a comment someone else added' do

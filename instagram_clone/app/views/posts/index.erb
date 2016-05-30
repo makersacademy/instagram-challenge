@@ -3,40 +3,4 @@
 	<%= link_to 'New post', new_post_path, class: 'btn' %>
 </section>
 
-
-<% if @posts.count > 0 %>
-
-	<% @posts.each do |post| %>
-
-		<div class='grid feed-row'>
-			<section class='col-1-2 image'>
-				<%= link_to image_tag(post.image.url(:medium)), post_path(post), id: "pic#{post.id}" %>
-			</section><!--
-			--><section class='col-1-2'>
-				
-				<h2><%= post.caption %></h2>
-
-				<h3><%= link_to 'Like', post_likes_path(post), class: 'add-like-link' %> | <span class='like-count'><%= post.likes.count %><%= ' like'.pluralize(post.likes.count) %></span> <span class='like-error'></span></h3>
-
-				<p>Posted by <%= link_to post.user.email, user_path(post.user) %></p>
-				
-				<% if post.comments.any? %>
-					<% post.comments.each do |comment| %>
-						<section class='comment'>
-							<span class="tip tip-up"></span>
-							<div class='message'>
-								<p><%= comment.comment %></p>
-								<p>from <%=comment.user.email%></p>
-								<%= link_to 'Delete comment', comment_path(comment),method: :delete, class: 'btn btn-delete' %>
-							</div>
-						</section>
-					<% end %>
-				<% end %>
-
-			</section>
-		</div>
-
-	<% end %>
-
-<% end %>
-
+<%= render "postsfeed" %>

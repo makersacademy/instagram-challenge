@@ -13,21 +13,23 @@ class UsersController < ApplicationController
 	def follow
 		user = User.find(params[:to_follow_id])
 		current_user.follower_relationships.create(followed: user)
-		redirect_to users_path
+		redirect_to request.referer
 	end
 
 	def unfollow
 		user = User.find(params[:to_unfollow_id])
 		current_user.follower_relationships.destroy_where(followed: user)
-		redirect_to users_path
+		redirect_to request.referer
 	end
 
 	def following
-		@users = current_user.following
+		@user = User.find(params[:id])
+		@users = @user.following
 	end
 
 	def followers
-		@users = current_user.followers
+		@user = User.find(params[:id])
+		@users = @user.followers
 	end
 
 end

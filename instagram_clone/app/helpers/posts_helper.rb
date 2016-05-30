@@ -4,7 +4,7 @@ module PostsHelper
 		post = Post.find(params[:id])
 		unless post.belongs_to?(current_user)
 			flash[:alert] = "That post isn't yours"
-			redirect_to user_path(post.user)
+			redirect_to request.referer
 		end
 	end
 

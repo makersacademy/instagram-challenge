@@ -9,6 +9,10 @@
 	
 	<h3><%= link_to 'Like', post_likes_path(@post), class: 'add-like-link' %> | <span class='like-count'><%= @post.likes.count %><%= ' like'.pluralize(@post.likes.count) %></span> <span class='like-error'></span></h3>
 
+	<% if @post.user == current_user %>
+		<h3><%= link_to 'Delete post', "/posts/#{@post.id}", method: :delete %></h3>
+	<% end %>
+
 	<% if @post.comments.any? %>
 		<% @post.comments.each do |comment| %>
 			<section class='comment'>

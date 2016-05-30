@@ -4,7 +4,7 @@ module CommentsHelper
 		comment = Comment.find(params[:id])
 		unless comment.belongs_to?(current_user)
 			flash[:alert] = "That comment isn't yours"
-			redirect_to post_path(comment.post)
+			redirect_to request.referer
 		end
 	end
 

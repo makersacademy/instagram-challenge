@@ -110,7 +110,7 @@ feature 'following' do
 			user = User.find_by(email: 'test@test.com')
 			click_link('Follow', href: "/users/#{user.id}/follow")
 			click_link 'My posts'
-			click_link 'Following'
+			click_link 'following'
 			expect(page).to have_content('test@test.com')
 		end
 		scenario 'a user can click in a profile to see the users that person is followed by' do
@@ -130,7 +130,7 @@ feature 'following' do
 			fill_in('Password', with: '123456')
 			click_button('Log in')
 			click_link 'My posts'
-			click_link 'Followers'
+			click_link 'followers'
 			expect(page).to have_content('test2@test.com')
 		end
 	end
