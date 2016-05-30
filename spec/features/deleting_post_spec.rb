@@ -9,7 +9,7 @@ feature "deleting posts" do
 
   context "when user created post" do
     scenario "can delete the post" do
-      find(:xpath, "//a[contains(@href,'/posts/1')]").click
+      find("a[href='#{post_path(1)}']").click
       click_link "Delete"
       expect(page).to have_content "Your post was successfully deleted!"
       expect(page).not_to have_content "ready to delete"
@@ -19,7 +19,7 @@ feature "deleting posts" do
 
   context "when user didn't create post" do
     scenario "can't delete the post" do
-      find(:xpath, "//a[contains(@href,'/posts/2')]").click
+        find("a[href='#{post_path(2)}']").click
       expect(page).not_to have_link "Delete"
     end
 

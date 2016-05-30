@@ -10,6 +10,11 @@
     <div class="caption">
       <div class="username"><%= post.user.username %></div>
       <div class="caption-content"><%= post.caption %></div>
+      <div id="likes_<%= post.id %>" class="likes">
+        <% post.votes_for.up.by_type(User).voters.each do |voter| %>
+          <div class="username"><%= voter.username %></div>
+        <% end %>
+      </div>
       <div class="comments">
         <% post.comments.each do |comment| %>
           <div id="comments_<%= post.id %>" class="comment">
@@ -26,8 +31,8 @@
     </div>
   </div>
   <div class="comment-like-form row">
-    <div class="like-button col-sm-1">
-      <span class="glyphicon glyphicon-heart-empty"></span>
+    <div class="col-sm-1">
+      <%= link_to "", like_post_path(post), class: already_liked(post) %>
     </div>
     <%= form_for [post, post.comments.new] do |f| %>
       <%= f.label :content, class: "label-hidden"%>

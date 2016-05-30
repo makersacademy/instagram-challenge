@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
   before_action :authenticate_user!
   before_action :owned_post, only: [:edit, :update, :destroy]
 
@@ -47,6 +47,16 @@ class PostsController < ApplicationController
       flash[:alert] = "Uh oh! Couldn't delete your post!"
       redirect_to post_path(@post)
     end
+  end
+
+  def like
+    # if @post.votes_for.up.by_type(User).voters.include? current_user
+    #   @post.unliked_by(current_user)
+    # else
+      @post.liked_by(current_user)
+      flash[:success] = "You liked this post!"
+      redirect_to posts_path
+    #end
   end
 
   private

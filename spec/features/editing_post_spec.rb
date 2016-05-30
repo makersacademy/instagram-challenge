@@ -10,7 +10,7 @@ feature "editing posts" do
   context "when user created post" do
     context "when update with a valid photo" do
       scenario "can edit the post" do
-        find(:xpath, "//a[contains(@href,'/posts/1')]").click
+        find("a[href='#{post_path(1)}']").click
         click_link "Edit"
         fill_in "Caption", with: "Edited comment"
         attach_file("Image", "spec/files/images/poodle.jpg")
@@ -23,7 +23,7 @@ feature "editing posts" do
     end
     context "when update with a invalid photo" do
       scenario "can't update the post" do
-        find(:xpath, "//a[contains(@href,'/posts/1')]").click
+        find("a[href='#{post_path(1)}']").click
         click_link "Edit"
         fill_in "Caption", with: "Edited comment"
         attach_file("Image", "spec/files/images/dummy.zip")
@@ -36,7 +36,7 @@ feature "editing posts" do
   context "when not the user who created the post" do
     scenario "can't edit the post" do
       visit posts_path
-      find(:xpath, "//a[contains(@href,'/posts/2')]").click
+      find("a[href='#{post_path(2)}']").click
       expect(page).not_to have_link "Edit"
     end
 
