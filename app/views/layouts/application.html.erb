@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>InstagramChallenge</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Instagram Challenge</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="navbar-container">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand">
+            <%= link_to "Instagram", root_path %>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <%= link_to "New Post", new_post_path %>
+            </li>
+            <% if user_signed_in? %>
+              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "Sign in", new_user_session_path %></li>
+              <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-  <div class="container">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
-    <% end %>
-    <%= yield %>
-  </div>
-
-</body>
+    <div class="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
 </html>
