@@ -9,10 +9,9 @@ feature "creating comment" do
   context "valid comment" do
     scenario "add a comment to a post" do
       visit "/"
-      fill_in "Content", with: "lol"
+      fill_in "comment_content_1", with: "lol"
       click_button "Create"
       expect(page).to have_css("div#comments_1", text: "lol")
-      expect(page).to have_content "Congratulations, you've left a comment!"
     end
   end
 

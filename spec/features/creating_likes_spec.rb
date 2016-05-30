@@ -14,7 +14,6 @@ feature "creating likes" do
         visit "/"
         find("a[href='#{like_post_path(1)}']").click
         expect(page).to have_css("a.glyphicon-heart")
-        expect(page).to have_content "You liked this post!"
         expect(page).to have_css("div#likes_1", text: "amynic")
       end
     end
@@ -35,7 +34,6 @@ feature "creating likes" do
         visit "/"
         find("a[href='#{like_post_path(1)}']").click
         expect(page).to have_css("a.glyphicon-heart")
-        expect(page).to have_content "You liked this post!"
         expect(page).to have_css("div#likes_1", text: "#{max_users_id} likes")
       end
     end
@@ -56,7 +54,6 @@ feature "creating likes" do
       find("a[href='#{like_post_path(1)}']").click
       find("a[href='#{unlike_post_path(1)}']").click
       expect(page).to have_css("a.glyphicon-heart-empty")
-      expect(page).to have_content "You unliked this post!"
       expect(page).not_to have_css("div#likes_1", text: "amynic")
     end
   end

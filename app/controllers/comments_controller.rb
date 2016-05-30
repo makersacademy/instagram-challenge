@@ -5,12 +5,14 @@ class CommentsController < ApplicationController
   before_action :owned_post, only: [:destroy]
 
   def create
-    comment = @post.comments.build(comment_params)
-    comment.user = current_user
+    @comment = @post.comments.build(comment_params)
+    @comment.user = current_user
 
-    if comment.save
-      flash[:success] = "Congratulations, you've left a comment!"
-      redirect_to :back
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     else
       flash[:alert] = "Oops, comment couldn't be added."
       redirect_to :back
@@ -19,11 +21,13 @@ class CommentsController < ApplicationController
 
   def destroy
     if @comment.destroy
-      flash[:success] = "Congratulations, you've deleted this comment!"
-      redirect_to root_path
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     else
       flash[:alert] = "Oops, comment couldn't be deleted."
-      redirect_to root_path
+      redirect_to :back
     end
 
   end

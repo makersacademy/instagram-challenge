@@ -10,7 +10,6 @@ feature "deleting comments" do
   context "when user wrote the comment" do
     scenario "can delete the post" do
       find(:xpath, "//a[contains(@href,'/posts/1/comments/1')]").click
-      expect(page).to have_content "Congratulations, you've deleted this comment!"
       expect(page).not_to have_content "lol"
     end
   end

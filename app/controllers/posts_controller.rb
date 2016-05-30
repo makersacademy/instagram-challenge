@@ -51,14 +51,18 @@ class PostsController < ApplicationController
 
   def like
     @post.liked_by(current_user)
-    flash[:success] = "You liked this post!"
-    redirect_to posts_path
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 
   def unlike
     @post.unliked_by(current_user)
-    flash[:success] = "You unliked this post!"
-    redirect_to posts_path
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 
   private
