@@ -1,6 +1,23 @@
-<h2>Log in</h2>
+<!DOCTYPE html>
+<link href="/index.css" type="text/css" rel="stylesheet">
+<html>
+<body>
 
+<h1>Instagram</h1>
+
+<form>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <div class="link_to">
+    <%= link_to 'Sign up', new_user_registration_path %>
+  </div>
+
+  <div class="link_to">
+    <%= link_to 'Log in with Facebook', user_facebook_omniauth_authorize_path %>
+  </div>
+
+  <h2>Log in</h2>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
@@ -21,6 +38,10 @@
   <div class="actions">
     <%= f.submit "Log in" %>
   </div>
+
+  <%= render "devise/shared/links" %>
 <% end %>
 
-<%= render "devise/shared/links" %>
+</form>
+</body>
+</html>
