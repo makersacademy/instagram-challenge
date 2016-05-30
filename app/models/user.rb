@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
+  has_many :irons
+
   has_many :commented_posts, through: :comments, source: :post
+  has_many :ironed_posts, through: :irons, source: :post
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

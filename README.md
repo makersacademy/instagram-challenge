@@ -63,7 +63,7 @@ I want to delete posts I created
 ```
 As a user
 So that I can ironically show my approval of other posts
-I want to 'pump up' other users posts
+I want to 'iron' other users posts
 ```
 
 ```

@@ -5,8 +5,14 @@
 <%= image_tag post.image.url(:medium) %>
 <p> <%= link_to "Leave Comment", new_post_comment_path(post) %> </p>
 
-<% if user_signed_in? %>
 
+<% if post.irons.any? %>
+<%= post.irons.count %>
+<% end %>
+
+<p> <%= link_to "Iron", new_post_iron_path(post) %> </p>
+
+<% if user_signed_in? %>
 <% if current_user.posts.include?(post) %>
 <p> <%= link_to "Delete Post", post_path(post), method: :delete %> </p>
 <% end %>

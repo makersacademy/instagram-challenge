@@ -1,9 +1,13 @@
 class Post < ActiveRecord::Base
   belongs_to :user
 
+  has_many :irons,
+  -> { extending WithUserAssociationExtension },
+  dependent: :destroy
+
   has_many :comments,
-      -> { extending WithUserAssociationExtension },
-      dependent: :destroy
+  -> { extending WithUserAssociationExtension },
+  dependent: :destroy
 
 
   has_attached_file :image, :styles => { :medium => "500x500>" },
@@ -20,4 +24,4 @@ class Post < ActiveRecord::Base
       true
     end
 
- end
+  end
