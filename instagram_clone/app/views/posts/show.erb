@@ -10,10 +10,15 @@
 	<h3><%= link_to 'Like', post_likes_path(@post), class: 'add-like-link' %> | <span class='like-count'><%= @post.likes.count %><%= ' like'.pluralize(@post.likes.count) %></span> <span class='like-error'></span></h3>
 
 	<% if @post.comments.any? %>
-		<h4>Comments:</h4>
 		<% @post.comments.each do |comment| %>
-			<p><%= comment.comment %></p>
-			<%= link_to 'Delete comment', comment_path(comment), method: :delete %>
+			<section class='comment'>
+				<span class="tip tip-up"></span>
+				<div class='message'>
+					<p><%= comment.comment %></p>
+					<p>from <%=comment.user.email%></p>
+					<%= link_to 'Delete comment', comment_path(comment),method: :delete, class: 'btn btn-delete' %>
+				</div>
+			</section>
 		<% end %>
 	<% end %>
 
