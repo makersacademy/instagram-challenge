@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-feature 'images' do
+feature 'posts' do
   context 'no images have been added' do
     scenario 'should display a prompt to add a  photo' do
-      visit '/images'
-      expect(page).to have_content 'No images yet'
+      visit '/posts'
+      expect(page).to have_content 'No photos yet'
       expect(page).to have_link 'Add a photo'
     end
   end
