@@ -1,18 +1,18 @@
 def sign_up_user1
   visit '/'
   click_link 'Sign up'
-  fill_in 'Email', with: 'hello@example.com'
-  fill_in "Password", with: 'secret'
-  fill_in "Password confirmation", with: 'secret'
+  fill_in('Email', with: 'hello@example.com')
+  fill_in("Password", with: 'secret', :match => :prefer_exact)
+  fill_in("Password confirmation", with: 'secret', :match => :prefer_exact)
   click_button 'Sign up'
 end
 
 def sign_up_user2
   visit '/'
   click_link 'Sign up'
-  fill_in 'Email', with: 'example@hello.com'
-  fill_in "Password", with: 'secret'
-  fill_in "Password confirmation", with: 'secret'
+  fill_in('Email', with: 'example@hello.com')
+  fill_in("Password", with: 'secret', :match => :prefer_exact)
+  fill_in("Password confirmation", with: 'secret', :match => :prefer_exact)
   click_button 'Sign up'
 end
 
