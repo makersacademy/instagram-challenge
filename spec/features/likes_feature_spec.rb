@@ -10,16 +10,16 @@ feature 'Likes' do
     it 'a photo\'s likes count increases when a user clicks like' do
       sign_in_as(user)
       visit pictures_path
-      expect(page).to have_content '0 ♥'
+      expect(page).to have_content 'Be the first to like this!'
       click_link 'Like'
-      expect(page).to have_content '1 ♥'
+      expect(page).to have_content '♥ 1'
     end
 
     it 'can only like a photo once' do
       sign_in_as(user)
       visit pictures_path
       click_link 'Like'
-      expect(page).to have_content '1 ♥'
+      expect(page).to have_content '♥ 1'
       expect(page).not_to have_link 'Like'
     end
   end

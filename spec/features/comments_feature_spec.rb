@@ -11,7 +11,7 @@ feature 'Comments' do
 
     it 'allows users to leave a comment using a form' do
        visit pictures_path
-       click_link 'Add comment'
+       click_link 'Comment'
        fill_in 'Thoughts', with: 'I want to put these in my bathroom!'
        click_button 'Post'
        expect(current_path).to eq pictures_path
@@ -25,7 +25,7 @@ feature 'Comments' do
 
     it 'unable to leave a comment' do
        visit pictures_path
-       expect(page).not_to have_content 'Add comments'
+       expect(page).not_to have_content 'Comment'
     end
   end
 end

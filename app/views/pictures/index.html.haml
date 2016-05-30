@@ -1,28 +1,33 @@
+
 - if Picture.all.any?
   - @pictures.each do |picture|
-    %p= image_tag picture.image.url(:medium), :id => "picture"
+    %p= image_tag picture.image.url(:medium)
     %p
-    %span.like_count= picture.likes.count
-    ♥
+    - if picture.likes.count > 0
+      .likes
+        ♥
+        = picture.likes.count
+    -else
+      .first Be the first to like this!
     - if current_user
       - unless current_user.has_liked?(picture)
-        = link_to "Like", picture_likes_path(picture), method: :post
+        .additions= link_to "Like", picture_likes_path(picture), method: :post
     - if current_user
       - if current_user.id == @pictures.find(picture.id).user_id
-        = link_to "Edit", edit_picture_path(picture)
+        .additions= link_to "Edit", edit_picture_path(picture)
 
     - if current_user
       - if current_user.id == @pictures.find(picture.id).user_id
-        = link_to "Delete", picture_path(picture), method: :delete
+        .additions= link_to "Delete", picture_path(picture), method: :delete
 
     - if current_user
-      = link_to "Add comment", new_picture_comment_path(picture)
+      .additions= link_to "Comment", new_picture_comment_path(picture)
 
-    %p= picture.description
-    - picture.comments.each do |comment|
-      %p= comment.thoughts
+    %p{:class => "description"}= picture.description
+    - if picture.comments.size > 0
+      - picture.comments.each do |comment|
+        %p{:class => "comments"}= comment.thoughts
+    - else
+      .first Be the first to comment!
 - else
   %p No pictures here 😳
-
-%p
-%a(href='/pictures/new') Add a picture

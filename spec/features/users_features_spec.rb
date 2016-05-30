@@ -5,7 +5,7 @@ feature 'User' do
   context 'not signed in on the homepage' do
     it 'should see a sign in link and a sign up link' do
       visit pictures_path
-      expect(page).to have_link 'Sign in'
+      expect(page).to have_link 'Log in'
       expect(page).to have_link 'Sign up'
     end
 
@@ -33,7 +33,7 @@ feature 'User' do
 
     it 'should not see a sign in link and a sign up link' do
       visit pictures_path
-      expect(page).not_to have_link 'Sign in'
+      expect(page).not_to have_link 'Log in'
       expect(page).not_to have_link 'Sign up'
     end
   end

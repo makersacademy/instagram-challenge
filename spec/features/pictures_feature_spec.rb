@@ -4,17 +4,17 @@ feature 'Pictures' do
 
   let!(:user) { User.create(email: 'sity@pop.com', password: 'secret') }
 
-  describe 'no pictures have been added' do
-    it 'should display a prompt to add a picture' do
-      visit pictures_path
-      expect(page).to have_content 'No pictures here 😳'
-      expect(page).to have_link 'Add a picture'
-    end
-  end
-
   describe 'User is signed in' do
 
     before { sign_in_as(user) }
+
+    context 'no pictures have been added' do
+      it 'should display a prompt to add a picture' do
+        visit pictures_path
+        expect(page).to have_content 'No pictures here 😳'
+        expect(page).to have_link 'Add a picture'
+      end
+    end
 
     context 'adding pictures' do
       it 'prompts user to upload a picture, then displays the new picture' do
@@ -61,8 +61,7 @@ feature 'Pictures' do
     context 'adding pictures' do
       it 'must be signed in in to add a picture' do
       visit pictures_path
-      click_link 'Add a picture'
-      expect(page).to have_content 'Log in'
+      expect(page).not_to have_content 'Add picture'
       end
     end
 

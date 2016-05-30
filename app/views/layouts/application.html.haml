@@ -3,14 +3,24 @@
   %head
     %title Instababy
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Poiret+One'
+    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Pacifico'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
 
+
     %body
-      - if user_signed_in?
-        = link_to "Sign out", destroy_user_session_path, method: :delete
-      - else
-        = link_to "Sign in", new_user_session_path
-        = link_to "Sign up", new_user_registration_path
-      = notice
-      = yield
+      .container
+        = notice
+        = yield
+      .nav
+        #nav_elements
+          #instababy
+            = link_to "Instababy", pictures_path
+        - if user_signed_in?
+          .sign_ins= link_to "Sign out", destroy_user_session_path, method: :delete
+          .sign_ins= link_to "Add a picture", new_picture_path
+
+        - else
+          .sign_ins= link_to "Log in", new_user_session_path
+          .sign_ins= link_to "Sign up", new_user_registration_path
