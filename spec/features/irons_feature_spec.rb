@@ -21,31 +21,28 @@ feature "User can iron a post" do
   end
 
   context "user is on /posts" do
-    it "should see an iron link" do
+    it "should see an iron image" do
       visit('/posts')
-      expect(page).to have_link('Iron')
+      expect(page).to have_css("img[src*='mustache.svg']")
     end
 
     it "clicking iron link increases iron count by one" do
       visit('/posts')
-      click_link 'Iron'
+      page.first(".iron").click
       expect(@post.irons.count).to eq 1
       expect(@user.irons.count).to eq 1
-
       expect(page).to have_content('1')
-
     end
 
     it "user can only iron a post once" do
       visit('/posts')
-      click_link 'Iron'
+      page.first(".iron").click
       expect(@post.irons.count).to eq 1
       expect(@user.irons.count).to eq 1
-      click_link 'Iron'
+      page.first(".iron").click
       expect(@user.irons.count).to eq 1
       expect(@post.irons.count).to eq 1
       expect(page).to have_content("You have ironed this post already")
-
     end
   end
 end

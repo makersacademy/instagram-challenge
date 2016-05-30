@@ -42,8 +42,7 @@ feature "User can upload images as posts" do
 
     scenario 'prompts user to log in if signed out before creating a post' do
       click_link 'Sign out'
-      visit '/posts'
-      click_link 'New Post'
+      visit '/posts/new'
       expect(page).to have_content 'Sign in'
     end
   end
