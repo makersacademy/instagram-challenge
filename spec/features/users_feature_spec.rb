@@ -31,6 +31,11 @@ feature 'User can sign in and out' do
       expect(page).to have_link('Login')
     end
 
+    it 'should not be able to see new post link' do
+      visit '/'
+      expect(page).not_to have_link('New Post')
+    end
+
     it 'click login should bring me to login page' do
       visit '/'
       click_link 'Login'
@@ -40,6 +45,18 @@ feature 'User can sign in and out' do
     it 'should not see Logout link' do
       visit '/'
       expect(page).not_to have_link('Logout')
+    end
+
+    it 'should not be able to visit index' do
+      visit '/'
+      expect(current_path).to eq '/users/sign_in'
+      expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    end
+
+    it 'should not be able to create new post' do
+      visit new_post_path
+      expect(current_path).to eq '/users/sign_in'
+      expect(page).to have_content 'You need to sign in or sign up before continuing.'
     end
   end
 
