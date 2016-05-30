@@ -41,41 +41,43 @@ feature 'pictures' do
 
 	context 'viewing restaurants' do
 
-	  let!(:myself){ Picture.create(title: 'Me') }
+	  before do
+	    sign_up_helper
+    	create_picture
+	  end
 
 	  scenario 'lets a user view a picture' do
 	   visit '/pictures'
-	   click_link 'Me'
+	   first('.panel-body > a').click
 	   expect(page).to have_content 'Me'
-	   expect(current_path).to eq "/pictures/#{myself.id}"
 	  end
 	end
 
 	context 'editing picture information' do
-		before {
+		before do
 			sign_up_helper
 			create_picture
-		}
+		end
 
 		scenario 'let a user edit the picture info' do
 			click_link 'My pictures'
-			click_link 'Edit picture Me'
+			click_link 'Edit'
 			fill_in 'Title', with: 'You'
-			click_button 'Update Picture'
+			click_button 'Upload'
 			expect(page).to have_content 'You'
 			expect(current_path).to eq '/pictures/my_pictures'
 		end
 	end
 
 	context 'deleting pictures' do
-		before {
+		before do
 			sign_up_helper
 			create_picture
-		}
+		end
 
 	  scenario 'removes a picture when a user clicks a delete link' do
 			click_link 'My pictures'
-			click_link 'Delete picture Me'
+			click_link 'Delete'
 	    expect(page).not_to have_content 'Me'
 	    expect(page).to have_content 'Picture deleted successfully'
 	    expect(current_path).to eq '/pictures/my_pictures'
