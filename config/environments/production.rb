@@ -86,4 +86,7 @@ Rails.application.configure do
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
+
+  # Development settings for Devise
+  config.action_mailer.default_url_options = { host: 'http://bs-instagram-challenge.herokuapp.com' }
 end
