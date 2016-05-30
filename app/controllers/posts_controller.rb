@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
     if @post.save
-      flash[:success] = "Your post has been created."
+      flash[:notice] = "Your post has been created."
       redirect_to @post
     else
       flash[:alert] = "Picture needed"
@@ -34,20 +34,30 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to '/posts'
+    if @post.update(post_params)
+      flash[:notice] = "Post updated"
+      redirect_to posts_path
+    else
+      flash.now[:alert] = "Update failed.  Please check the form."
+      render :edit
+    end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
+    if @post.destroy
+      flash[:notice] = "Post deleted"
+      redirect_to posts_path
+    else
+      flash.now[:alert] = "Update failed.  Please check the form."
+      render :show
+    end
     # if @post.user == current_user
     #   @post.destroy
     #   flash[:notice] = 'Post deleted successfully'
     # else
     #   flash[:alert] = 'Error: Cannot delete someone elses post'
     # end
-    redirect_to '/posts'
   end
 
   private

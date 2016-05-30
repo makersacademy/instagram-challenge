@@ -8,6 +8,7 @@ feature 'Posts' do
       expect(page).to have_link 'New Post'
     end
   end
+
   context 'Create a new post' do
     scenario 'prompts user to fill out a form, then displays the new post' do
       visit '/'
@@ -40,13 +41,31 @@ feature 'Posts' do
     end
   end
 
-  context 'Index displays a post' do
-    scenario 'Can click and view a single post' do
-      post = create(:post)
+  context 'Editing a post' do
+    background do
+      job = create(:post, caption: "This is post one")
 
-      visit '/'
-      find(:xpath, "//a[contains(@href,'posts/1')]").click
-      expect(page.current_path).to eq(post_path(post))
+      visit post_path(job)
+      click_link 'Edit Post'
+    end
+    scenario 'Can edit a post' do
+      fill_in 'Caption', with: "Oh god, you weren't meant to see this picture!"
+      click_button 'Update Post'
+
+      expect(page).to have_content("Post updated")
+      expect(page).to have_content("Oh god, you weren't meant to see this picture!")
+    end
+  end
+
+  context 'Delete a post' do
+    scenario 'Can delete a single post' do
+      job = create(:post, caption: "This is post one")
+
+      visit post_path(job)
+      click_link 'Delete Post'
+
+      expect(page).to have_content('Post deleted')
+      expect(page).to_not have_content('This is post one')
     end
   end
 end
