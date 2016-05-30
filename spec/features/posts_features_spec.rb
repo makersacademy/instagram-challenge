@@ -1,9 +1,11 @@
 require 'rails_helper'
-
-
+require 'web_helper'
 
 feature 'posts' do
-  before(:each) {Post.delete_all}
+  before(:each) {
+    Post.delete_all
+    create_account_and_sign_in
+  }
   image = File.new(File.expand_path('./spec/features/test.png'))
 
   context 'no posts should have been added' do

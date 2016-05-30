@@ -39,6 +39,7 @@ group :development, :test do
   gem 'devise'
   gem 'dotenv-rails'
   gem 'paperclip'
+
 end
 
 group :development do
@@ -52,4 +53,5 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec-collection_matchers'
   gem 'capybara'
+  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
 end
