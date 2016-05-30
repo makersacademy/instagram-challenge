@@ -17,3 +17,10 @@ def make_post_without_image(title: 'My First Pic',
   fill_in 'Caption', with: caption
   click_button 'Create Post'
 end
+
+def comment(comment: "why upload a picture of poo?")
+  visit '/'
+  click_link 'Comment'
+  fill_in "Comment", with: comment
+  click_button 'Submit'
+end

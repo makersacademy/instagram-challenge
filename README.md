@@ -1,7 +1,6 @@
-PictureFace
+PictureFace(an instagram clone)
 ========================
-
-The purpose of this Project is to build an Instagram clone
+This project was built with reference to [Ben Walkers Instagram clone walkthrough](https://www.devwalks.com/lets-build-instagram-in-rails-part-1/)
 
 * I started the project by using the rails command `rails new picture_face -d postgresql -T` in order to intialize the project using PostgreSQL as my database and without the default testing framework
 
@@ -36,6 +35,8 @@ end
   - In order to create new models run `bin/rails g model model_name field_name:data_type from the command line, then migrate
 
   - In order to create a migration to add images to a model (using paperclip) `bin/rails g paperclip model_name image`
+
+  - In order to create a migration to add a reference for associations `bin/rails g migration AddModelparentRefToModelchild parentmodel:references`
 
   - To build a default factory for posts create `spec/factories/post.rb` and use the following template to build a factory
     ```

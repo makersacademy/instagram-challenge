@@ -1,5 +1,7 @@
 class Post < ActiveRecord::Base
 
+  has_many :comments
+
   validates :image, presence: true
 
   has_attached_file :image, styles: { :medium => "640x", :thumb => "200x200" }
