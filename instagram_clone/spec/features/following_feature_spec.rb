@@ -53,6 +53,49 @@ feature 'following' do
 			expect(page).to have_content('The best name ever')
 			expect(page).not_to have_content('Post I am not interested in')
 		end
+		scenario 'a user cannot click to follow a user they are already following' do
+			visit '/'
+			click_link 'Sign out'
+			click_link 'Sign up'
+			fill_in('Email', with: 'test2@test.com')
+			fill_in('Password', with: '123456')
+			fill_in('Password confirmation', with: '123456')
+			click_button('Sign up')
+			click_link 'View users'
+			user = User.find_by(email: 'test@test.com')
+			click_link('Follow', href: "/users/#{user.id}/follow")
+			click_link 'View users'
+			expect(page).not_to have_link('Follow', href: "/users/#{user.id}/follow")
+		end
 	end
+
+	context 'unfollowing a user' do
+		scenario 'a user can unfollow a user they are following' do
+			visit '/'
+			create_post
+			click_link 'Sign out'
+			click_link 'Sign up'
+			fill_in('Email', with: 'test2@test.com')
+			fill_in('Password', with: '123456')
+			fill_in('Password confirmation', with: '123456')
+			click_button('Sign up')
+			create_post(caption: 'Post I am not interested in')
+			click_link 'Sign out'
+			click_link 'Sign up'
+			fill_in('Email', with: 'test3@test.com')
+			fill_in('Password', with: '123456')
+			fill_in('Password confirmation', with: '123456')
+			click_button('Sign up')
+			click_link 'View users'
+			user = User.find_by(email: 'test@test.com')
+			click_link('Follow', href: "/users/#{user.id}/follow")
+			click_link 'View users'
+			click_link('Unfollow', href: "/users/#{user.id}/unfollow")
+			visit('/my_feed')
+			expect(page).not_to have_content('The best name ever')
+			expect(page).not_to have_content('Post I am not interested in')
+		end
+	end
+
 
 end

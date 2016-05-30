@@ -11,7 +11,13 @@ class User < ActiveRecord::Base
 
   has_many :follower_relationships, class_name: "Followrelationship",
   																	foreign_key: "follower_id",
-  																	dependent: :destroy
+  																	dependent: :destroy do
+                                      def destroy_where(followed:)
+                                        rel = self.find_by(followed: followed)
+                                        destroy(rel)
+                                      end
+                                    end
+
   has_many :followed_relationships, class_name: "Followrelationship",
   																	foreign_key: "followed_id",
   																	dependent: :destroy
@@ -19,5 +25,9 @@ class User < ActiveRecord::Base
   has_many :followers, through: :followed_relationships, source: :follower
 
   has_many :posts_following, through: :following, source: :posts
+
+  def followed_by?(user)
+    user.following.include?(self)
+  end
 
 end
