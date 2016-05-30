@@ -35,6 +35,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'simple_form'
 gem 'bootstrap-sass'
+gem 'launchy'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -56,5 +57,6 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
 end
 

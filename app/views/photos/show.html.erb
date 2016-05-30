@@ -1,9 +1,15 @@
-<p><%= @user.email %></p>
-<p><%= @photo.caption %></p>
-<p><%= image_tag @photo.image.url(:medium) %>
-<p><%= @photo.created_at %></p>
+<div class="container">
+    <div class="row row-centered">
+    	<div class="col-xs-6 col-centered">
+			<p><%= @photo.user.email %></p>
+			<p><%= @photo.caption %></p>
+			<p><%= image_tag @photo.image.url(:medium) %></p>
+			<p><%= @photo.created_at %></p>
 
-<% if user_signed_in? && current_user.is_owner_of?(@photo) %>
-	<%= link_to "Edit", edit_photo_path(@photo) %>
-	<%= link_to "Delete", photo_path(@photo), method: :delete %>
-<% end %>
+			<% if user_signed_in? && current_user.is_owner_of?(@photo) %>
+				<%= link_to "Edit", edit_photo_path(@photo) %>
+				<%= link_to "Delete", photo_path(@photo), method: :delete %>
+			<% end %>
+		</div>
+	</div>
+</div>

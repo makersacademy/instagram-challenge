@@ -45,7 +45,7 @@ feature 'photos' do
 
     scenario 'user can edit their own photos' do
       visit '/photos'
-      find("img[src*='night_sky']").click
+      all('a.photo').first.click
       click_link 'Edit'
       fill_in 'Caption', with: 'Blue sky'
       click_button 'Update Photo'
@@ -62,7 +62,7 @@ feature 'photos' do
 
     scenario 'user can delete their own photos' do
       visit '/photos'
-      find("img[src*='night_sky']").click
+      all('a.photo').first.click
       expect{ click_link 'Delete' }.to change{Photo.all.size}.by(-1)
     end
   end

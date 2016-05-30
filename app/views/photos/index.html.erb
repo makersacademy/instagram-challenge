@@ -1,8 +1,12 @@
 <% if @photos.any? %>
 	<% @photos.each do |photo| %>
-		<%= link_to image_tag(photo.image.url(:medium)), photo_path(photo) %>
-		<p><%= photo.caption %></p>
-	<% end %>
+		<p><%= photo.user.email %></p>
+			</div>
+				<%= link_to (image_tag photo.image.url(:medium), class:'img-responsive'), photo_path(photo), class: "photo" %>
+			</div>
+			<p><%= photo.caption %></p>
+		<% end %>
+	</div>
 <% else %>
 	<h2>No photos yet</h2>
 <% end %>
