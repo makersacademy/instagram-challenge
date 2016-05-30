@@ -28,7 +28,7 @@ feature 'pictures' do
     expect(page).to have_content('You need an image to post here!')
   end 
 
-  feature 'Index displays a list of pictures' do  
+  context 'Index displays a list of pictures' do  
     scenario 'the index displays correct created job information' do
       job_one = create(:picture, caption: "This is post one")
       job_two = create(:picture, caption: "This is the second post")
@@ -38,5 +38,19 @@ feature 'pictures' do
       expect(page).to have_content("This is the second post")
       expect(page).to have_css("img[src*='coffee']")
     end
+  end
+
+  context 'editing pictures' do
+
+    before { create(:picture) }
+    scenario 'let a user edit a picture' do
+     visit '/pictures'
+     click_link 'Edit Picture'
+     fill_in 'Caption', with: 'Updated pic'
+     click_button 'Update Picture'
+     expect(page).to have_content 'Updated pic'
+     expect(current_path).to eq '/pictures'
+    end
+
   end
 end
