@@ -34,6 +34,18 @@ end
 
 * Included `gem 'shoulda-matchers'` in Gemfile for testing associations, include `config.include(Shoulda::Matchers::ActiveRecord, type: :model)` to complete setup
 
+* Included `gem 'aws-sdk'` in order to use Amazon Web Services for image storing. Added config in the following format for development and production environments
+  ```
+    config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
+  ```
+
 * Time to start TDD'ing and developing the app
 
   - In order to create new controllers run `bin/rails g controller name_of_controller` from the command line, then migrate
