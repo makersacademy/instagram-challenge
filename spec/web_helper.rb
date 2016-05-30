@@ -1,4 +1,5 @@
 def my_sign_up(params = {
+	 user_name: "test",
    email: "test@example.com",
    password: "testtest",
    password_confirmation: "testtest"})

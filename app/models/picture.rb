@@ -1,4 +1,5 @@
 class Picture < ActiveRecord::Base
+	validates :user_id, presence: true
 	validates :image, presence: true
 	has_many :comments, dependent: :destroy
 	belongs_to :user

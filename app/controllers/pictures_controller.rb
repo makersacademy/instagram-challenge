@@ -5,11 +5,11 @@ class PicturesController < ApplicationController
 	end
 
 	def new 
-		@picture = Picture.new
+		@picture = current_user.pictures.build
 	end
 
 	def create
-    @picture = Picture.create(picture_params)
+    @picture = current_user.pictures.build(picture_params)
     if @picture.save
       flash[:success] = "Your picture has been created."
       redirect_to '/pictures'
