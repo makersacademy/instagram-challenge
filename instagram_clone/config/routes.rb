@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   post 'users/:to_follow_id/follow' => 'users#follow'
   delete 'users/:to_unfollow_id/unfollow' => 'users#unfollow'
+  get 'users/:id/following' => 'users#following'
+  get 'users/:id/followers' => 'users#followers'
 
   resources :comments, only: [:destroy]
 

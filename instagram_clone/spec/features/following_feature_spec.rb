@@ -97,5 +97,43 @@ feature 'following' do
 		end
 	end
 
+	context 'seeing followers and who you are following' do
+		scenario 'a user can click in a profile to see the users that person is following' do
+			visit '/'
+			click_link 'Sign out'
+			click_link 'Sign up'
+			fill_in('Email', with: 'test2@test.com')
+			fill_in('Password', with: '123456')
+			fill_in('Password confirmation', with: '123456')
+			click_button('Sign up')
+			click_link 'View users'
+			user = User.find_by(email: 'test@test.com')
+			click_link('Follow', href: "/users/#{user.id}/follow")
+			click_link 'My posts'
+			click_link 'Following'
+			expect(page).to have_content('test@test.com')
+		end
+		scenario 'a user can click in a profile to see the users that person is followed by' do
+			visit '/'
+			click_link 'Sign out'
+			click_link 'Sign up'
+			fill_in('Email', with: 'test2@test.com')
+			fill_in('Password', with: '123456')
+			fill_in('Password confirmation', with: '123456')
+			click_button('Sign up')
+			click_link 'View users'
+			user = User.find_by(email: 'test@test.com')
+			click_link('Follow', href: "/users/#{user.id}/follow")
+			click_link 'Sign out'
+			click_link 'Sign in'
+			fill_in('Email', with: 'test@test.com')
+			fill_in('Password', with: '123456')
+			click_button('Log in')
+			click_link 'My posts'
+			click_link 'Followers'
+			expect(page).to have_content('test2@test.com')
+		end
+	end
+
 
 end
