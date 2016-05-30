@@ -4,6 +4,8 @@ ruby '2.3.0'
 
 gem 'haml'
 gem 'devise'
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
