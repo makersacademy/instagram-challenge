@@ -19,10 +19,10 @@ feature "User can sign in and out" do
       visit('/')
       click_link('Register')
       fill_in('Email', with: 'test@example.com')
-      fill_in('User_name', with: 'firstuser')
+      fill_in('User name', with: 'firstuser')
       fill_in('Password', with: 'testtest')
       fill_in('Password confirmation', with: 'testtest')
-      click_button('Sign up')
+      click_button('Create User')
     end
 
     it "should see 'sign out' link" do

@@ -7,10 +7,11 @@ feature 'posts' do
   end
 
   context 'no posts have been added' do
-    scenario 'should display a prompt to upload a post' do
+    scenario 'should display a prompt to upload a post if signed in' do
+      sign_up_test
       visit '/posts'
       expect(page).to have_content 'No posts yet'
-      expect(page).to have_link 'New post'
+      expect(page).to have_link 'New Post'
     end
   end
 

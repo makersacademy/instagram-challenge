@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 feature 'commenting' do
   before do
     sign_up_test
@@ -5,6 +7,8 @@ feature 'commenting' do
   end
 
   scenario 'allows users to leave a comment using a form' do
+     click_link('Sign out')
+     sign_up_test(email:'test2@example.com', user_name: 'seconduser')
      visit '/posts'
      click_link 'Add comment'
      fill_in "Comment", with: "Awesome pic"
@@ -12,7 +16,7 @@ feature 'commenting' do
      click_button 'Leave comment'
 
      expect(current_path).to eq '/posts'
-     expect(page).to have_content('Awesome pic')
+     expect(page).to have_content('Comments: 1')
   end
 
 end

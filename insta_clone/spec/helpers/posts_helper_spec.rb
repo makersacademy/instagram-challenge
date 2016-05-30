@@ -11,7 +11,7 @@ end
 
 def create_post(image: image_upload, caption: 'My first post')
 	visit '/posts'
-	click_link 'Add post'
+	click_link 'New Post'
 	attach_file('Image', image)
 	fill_in('Caption', with: caption)
 	click_button 'Create Post'
