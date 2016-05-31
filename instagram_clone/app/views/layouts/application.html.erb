@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>InstagramClone</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,900,900italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Oleo+Script:400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+<ul class='nav'>
+	<section class='container'>
+		<% if user_signed_in? %>
+			<li><%= link_to 'My posts', "/users/#{current_user.id}" %></li>
+			<li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+			<li><%= link_to 'My feed', my_feed_path %></li>
+		<% else %>
+			<li><%= link_to 'Sign up', new_user_registration_path %></li>
+			<li><%= link_to 'Sign in', new_user_session_path %></li>
+		<% end %>
+		<li><%= link_to 'All posts', posts_path %></li>
+		<li><%= link_to 'View users', users_path %></li>
+	</section>
+</ul>
+	
+<%= alert %>
+<%= notice %>
+
+<section class='container'>
+	<%= yield %>
+</section>
+
+</body>
+</html>

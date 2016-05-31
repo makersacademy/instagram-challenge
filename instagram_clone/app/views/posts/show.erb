@@ -1,0 +1,35 @@
+<div class='large-image'>
+	<%= image_tag(@post.image.url(:large)) %>
+</div>
+
+<section class='large-image-text'>
+
+	<h2><%= @post.caption %></h2>
+	<h3>Posted by <%= link_to @post.user.email, user_path(@post.user) %></h3>
+	
+	<h3><%= link_to 'Like', post_likes_path(@post), class: 'add-like-link' %> | <span class='like-count'><%= @post.likes.count %><%= ' like'.pluralize(@post.likes.count) %></span> <span class='like-error'></span></h3>
+
+	<% if @post.user == current_user %>
+		<h3><%= link_to 'Delete post', "/posts/#{@post.id}", method: :delete %></h3>
+	<% end %>
+
+	<% if @post.comments.any? %>
+		<% @post.comments.each do |comment| %>
+			<section class='comment'>
+				<span class="tip tip-up"></span>
+				<div class='message'>
+					<p><%= comment.comment %></p>
+					<p>from <%=comment.user.email%></p>
+					<%= link_to 'Delete comment', comment_path(comment),method: :delete, class: 'btn btn-delete' %>
+				</div>
+			</section>
+		<% end %>
+	<% end %>
+
+	<%= form_for [@post, @comment] do |f| %>
+		<%= f.label :comment, class: 'hide' %>
+		<%= f.text_area :comment %>
+		<%= f.submit 'Add comment', class: 'btn btn-submit' %>
+	<% end %>
+
+</section>
