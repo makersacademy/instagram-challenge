@@ -16,4 +16,13 @@ class Post < ActiveRecord::Base
     comment
   end
 
+  def last_three_comments
+    rev_three = comments.reverse
+    rev_three[0..2]
+  end
+
+  def reversed_comments
+    comments.reverse
+  end
+
 end
