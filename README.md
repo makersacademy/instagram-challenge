@@ -1,16 +1,126 @@
 Instagram Challenge
 ===================
-
-Instructions
+Author
 -------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Sergio Enrech Trillo
 
-Task
+Install Instructions
+----------------
+fork or clone this repo
+in the termninal shell, type:
+
+```` 
+$ cd instagram-challenge
+$ createdb pichagram_test
+$ createdb pichagram_development
+$ bundle
+$ bin/rails server
+$ rake db:migrate
+````
+then open a browser and navigate to http://localhost:3000
+
+[or you can take a look online here](https://pichagram.herokuapp.com/)
+
+if you want to test it:
+````
+$ rake db:setup
+$ rspec
+````
+
+User Stories
+````
+As a User,
+So that I can share my exciting life with others,
+I want to be able to post pictures on a virtual wall online.
+````
+````
+As a User,
+So that I can see other people's exciting lives,
+I want to see public fotos from others.
+````
+````
+As a User,
+So that people know pictures owners,
+I want to tag each picture posted with a username.
+````
+````
+As a User,
+So that I can see all the pictures of people I like,
+I want to be able to filter by username their pictures
+````
+````
+As a User,
+So that I can share my thoughts about a picture,
+I want to be able to comment on pictures.
+````
+````
+As a User,
+So that my embarrassing pictures are not permanent,
+I want to be able to delete my pictures.
+````
+````
+As a User,
+So that my embarrassing comments are not forever
+I want to be able to delete my own comments beneath my pictures.
+````
+````
+As a developer,
+So that there are not any orphan comments,
+I want all comments to be deleted, if the picture they belong to is deleted.
+````
+````
+As a User,
+So that I can show my appreciation for a picture,
+I want to be able to like a picture
+````
+````
+As a developer,
+So that likes cant be inflated,
+I want a user to only be able to like a picture ones.
+````
+
+Features
+-------
+- PostgreSQL as database
+- Paperclip gem to manage pictures
+- AWS S3 used to store pictures
+- Devise for authentication
+- Bootstrap gem to make it pretty
+- Factory Girl gem to create objects for test
+- Simple Form gem to make nice easy forms
+- Testing collection tools: Shoulda, rspec, capybara, poltergeist, and database cleaner
+
+
+Issues
 -----
+- In local all rspec tests are passing, but Travis CI is not playing ball, it would seem that it is not login in in some cases creating errors.  No time to correct so added to the improvements list
+- I managed to break the rspec test set when I added js and poltergeist.  The type of thing that happens to me...  Again added to improvement list to fix when I have a bit of time...
+
+Improvement list
+--------
+- Resolve issues, (see above)
+- Sign up with Facebook (omniauth with devise)
+- improve looking on authentication windows
+- implement filter options
+- improve looking on the like windows
+- ensure owner can't like itself (not implemented)
+- How to keep your testbed clean and remove the files in the hard drive? (using a bit of "cocaine" gem?)
+
+Special Thanks
+-------
+To Ben Walkers of https://www.devwalks.com, as I followed the way of the goat!  All the nice looks come from the website from his suggestions of using bootstraps, simple forms and many more.
+
+General Comment & Reflection
+------
+I discovered how poweful Rails can be, and been humbled by the huge task of mastering it... Anyway with the help of the materials around I was able to put together something that looks like the requested product.  TDD can be pretty difficult in Rails projects, I tried hard during all this week-end trying to get Travis to be nice with me, and failed misserably. I used database cleaner but no difference.  I am puzzled as I don't understand why Travis tells me that I got failing tests that they pass in local... More effort is required!  Will take a look to any successful products done by my fellows to understand how they do it.
+
+The power of Rails is amazing.  If we had tried to implement this in Sinatra it probably would have taken us 2+ weeks of intense work to get the same result.  However Rails is a difficult horse to tame, and it has quite a lot of magic to master.  On top of that I was crazy enough to use HAML for the project, and I almost became insane aligning... Yes, HAML is very clean and elegant, and all the cool kids are doing it but who is aligning all those lines of code?
+
+All in all a good learning exercise, I am amazed of how much work can be done in a couple of days of intense work, (even spending plenty of hours in stupid errors as it is always my destiny).  I need to spend much more time consolidating the use of Rails, but for the moment time to turn my head and start another battle: Angular: you, me... now!
+
+
+The Task was
+--------
 
 Build Instagram: Simple huh!
 
