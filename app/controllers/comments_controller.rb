@@ -5,8 +5,10 @@ class CommentsController < ApplicationController
   def create
     @comment = @post.comments.build_with_user(comment_params, current_user)
     if @comment.save
-      flash[:success] = 'You have successfully commented!'
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     else
       flash[:alert] = "Comment unsuccessful. Something went wrong!"
       render root_path
@@ -17,8 +19,10 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     if @comment.user.id == current_user.id
       @comment.destroy
-      flash[:success] = 'Comment deleted successfully!'
-      redirect_to root_path
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     else
       flash[:alert] = 'You cannot delete other user\'s comments!'
       redirect_to root_path
