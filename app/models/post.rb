@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-
+  acts_as_votable
 
   validates :image, presence: true
   has_attached_file :image, styles: { :medium => "640x" }
