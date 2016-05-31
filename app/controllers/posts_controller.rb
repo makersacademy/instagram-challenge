@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy,:like]
   before_action :authenticate_user!
   before_action :can_edit, only: [:edit, :update, :destroy]
 
@@ -37,6 +37,15 @@ class PostsController < ApplicationController
     else
       flash.now[:alert] = "Update failed."
       render :edit
+    end
+  end
+
+  def like
+    if @post.liked_by current_user
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
     end
   end
 
