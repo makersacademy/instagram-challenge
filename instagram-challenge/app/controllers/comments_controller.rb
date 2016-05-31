@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     redirect_to '/pictures'
   end
 
-def comment_params
- params.require(:comment).permit(:thoughts)
-end
+  def comment_params
+   params.require(:comment).permit(:thoughts)
+  end
 end
