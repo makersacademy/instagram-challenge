@@ -30,7 +30,7 @@ To install and run locally:
 
 ```
 $ git clone https://github.com/RobinHeathcote/instagram-challenge.git
-$ cd instagram-challenge/insta_clone
+$ cd instagram-challenge/
 $ bundle
 $ rails s
 ```
