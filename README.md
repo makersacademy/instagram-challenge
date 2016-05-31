@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/RobinHeathcote/instagram-challenge.svg?branch=master)](https://travis-ci.org/RobinHeathcote/instagram-challenge)
+
+
 Instagram Challenge
 ===================
 
@@ -7,6 +10,8 @@ Project Overview
 -------
 
 The task was to build a web based clone of Instagram built using Ruby on Rails. This includes sign-up/sign out functionality, the ability to upload photos with captions and the ability to comment and like photos. Posts are displayed on the homepage and can be viewed by users or guests and images can be clicked to see them individually with their comments. This project borrows its styling implementation from Ben Walker at https://www.devwalks.com which I used to teach myself CSS and bootstrap with HAML.
+
+The page is hosted at: https://robin-instagram.herokuapp.com/posts
 
 Screenshots
 -------

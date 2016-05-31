@@ -1,9 +1,11 @@
+require 'rails_helper'
+require 'coveralls'
 require_relative './helpers/posts_helper_spec'
 require_relative './helpers/users_helper_spec'
 require 'shoulda-matchers'
-require 'coveralls'
 
-Coveralls.wear!
+
+Coveralls.wear!('rails')
 
 RSpec.configure do |config|
 
