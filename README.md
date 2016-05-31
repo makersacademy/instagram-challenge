@@ -13,10 +13,17 @@ in the termninal shell, type:
 $ cd instagram-challenge
 $ bundle
 $ bin/rails server
+$ rake db:seed
 ````
 then open a browser and navigate to http://localhost:3000
 
 [or you can take a look online here](https://pichagram.herokuapp.com/)
+
+if you want to test it, (why you would be doing that, but!)
+````
+$ rake db:setup
+$ rspec
+````
 
 User Stories
 ````
