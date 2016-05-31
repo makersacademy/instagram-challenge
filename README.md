@@ -1,23 +1,86 @@
 Instagram Challenge
 ===================
 
+Author:Robin Heathcote
+
+Project Overview
+-------
+
+The task was to build a web based clone of Instagram built using Ruby on Rails. This includes sign-up/sign out functionality, the ability to upload photos with captions and the ability to comment and like photos. Posts are displayed on the homepage and can be viewed by users or guests and images can be clicked to see them individually with their comments. This project borrows its styling implementation from Ben Walker at https://www.devwalks.com which I used to teach myself CSS and bootstrap with HAML.
+
+Screenshots
+-------
+
+Sign in Page:
+![login form](https://www.dropbox.com/s/7f1mwhb9688gxea/Screen%20Shot%202016-05-31%20at%2008.54.12.png?dl=0)
+
+Sign-up Page:
+![sign-up form](https://www.dropbox.com/s/9faxz4cker6euvp/Screen%20Shot%202016-05-31%20at%2008.54.23.png?dl=0)
+
+Edit or delete your post:
+![edit-post](https://www.dropbox.com/s/oliiozadajahd9u/Screen%20Shot%202016-05-31%20at%2008.55.26.png?dl=0)
+
+New post page:
+![newpost](https://www.dropbox.com/s/secbased1zoqepd/Screen%20Shot%202016-05-31%20at%2009.00.42.png?dl=0)
+
 Instructions
 -------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
-Task
------
+To install and run locally:
 
-Build Instagram: Simple huh!
+```
+$ git clone https://github.com/RobinHeathcote/instagram-challenge.git
+$ cd instagram-challenge/insta_clone
+$ bundle
+$ rails s
+```
 
-Bonus if you can write your own set of sensible user stories!
+Technologies Used
+-------
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+Ruby on Rails
+HAML
+Devise
+Omniauth
+Dot env
+Rspec
+Capybara
+Paperclip
+AWS - S3
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Work in Progress
+-------
 
-Bonus if you can add filters!
+This project is not yet completed. Things which require work:
+
+Ability to delete your own comments
+Ability to Like photos
+Extract partials to clean up views
+Better test coverage
+Heroku deployment
+
+User stories
+-------
+
+```
+- As a user
+- So I can keep my account secure,
+- I want to be able to log in and log out
+
+- As a user,
+- So I can have a place to share photos,
+- I want to be able to upload my photos
+
+- As a user,
+- So I can see what other people are up to,
+- I want to be able to see other peoples photos
+
+- As a user,
+- So I can show that I like someones photo
+- I want to be able able to click a like button
+
+
+- As a user,
+- So I can give feedback on photos or start a discussion,
+- I want to be able to leave comments on a photo
+```
