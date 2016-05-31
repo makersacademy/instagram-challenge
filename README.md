@@ -12,16 +12,16 @@ Screenshots
 -------
 
 Sign in Page:
-![login form](https://www.dropbox.com/s/7f1mwhb9688gxea/Screen%20Shot%202016-05-31%20at%2008.54.12.png?dl=0)
+![login form](https://www.dropbox.com/s/7f1mwhb9688gxea/Screen%20Shot%202016-05-31%20at%2008.54.12.png?raw=1)
 
 Sign-up Page:
-![sign-up form](https://www.dropbox.com/s/9faxz4cker6euvp/Screen%20Shot%202016-05-31%20at%2008.54.23.png?dl=0)
+![sign-up form](https://www.dropbox.com/s/9faxz4cker6euvp/Screen%20Shot%202016-05-31%20at%2008.54.23.png?raw=1)
 
 Edit or delete your post:
-![edit-post](https://www.dropbox.com/s/oliiozadajahd9u/Screen%20Shot%202016-05-31%20at%2008.55.26.png?dl=0)
+![edit-post](https://www.dropbox.com/s/oliiozadajahd9u/Screen%20Shot%202016-05-31%20at%2008.55.26.png?raw=1)
 
 New post page:
-![newpost](https://www.dropbox.com/s/secbased1zoqepd/Screen%20Shot%202016-05-31%20at%2009.00.42.png?dl=0)
+![newpost](https://www.dropbox.com/s/secbased1zoqepd/Screen%20Shot%202016-05-31%20at%2009.00.42.png?raw=1)
 
 Instructions
 -------
