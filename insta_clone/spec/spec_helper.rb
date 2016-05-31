@@ -1,6 +1,9 @@
 require_relative './helpers/posts_helper_spec'
 require_relative './helpers/users_helper_spec'
 require 'shoulda-matchers'
+require 'coveralls'
+
+Coveralls.wear!
 
 RSpec.configure do |config|
 
