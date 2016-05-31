@@ -1,23 +1,62 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+**Author:** Omar Alvarez
 
 Task
------
+----
 
-Build Instagram: Simple huh!
+Build a clone of Instagram that fulfills the following features:
 
-Bonus if you can write your own set of sensible user stories!
+#####Basic features
+* Users can post pictures
+* Users can write comments on pictures
+* Users can like a picture
+* Styled awesomely
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+#####Bonus features
+* Filters
+* Deployed to Heroku
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Instructions
+------------
 
-Bonus if you can add filters!
+From a user perspective, these are the instructions for how to download and run the tests:
+
+```sh
+ $ git clone git@github.com:omajul85/instagram-challenge.git
+ $ cd instagram-challenge/
+ $ bundle install
+ $ bin/rake db:setup
+ $ rspec
+```
+To run the app:
+```sh
+$ bin/rails s
+```
+Then go to `http://localhost:3000/` in the browser oy your preference. 
+
+You need to sign up before uploading new pictures, post comments, like pictures, etc. The images below shows the user's interaction:
+
+* Index page where users can see the uploaded pictures, click on button to add comment and like it.
+![Index](http://s19.postimg.org/z31utvawj/Index.png)
+
+* When clicking on an image, user can see the individual image (show view), add comments, and like the picture.
+![Show](http://s19.postimg.org/4n0j9her7/Show.png)
+
+* When clicking on `My pictures`, user list the uploaded images and can edit/delete them.
+![My pictures](http://s19.postimg.org/87wespjar/My_pictures.png)
+
+Deployment
+----------
+
+The application has been pushed to Heroku using Git. You can use it <a href="https://instagram-omajul85.herokuapp.com/" target="_blank">here</a>.
+
+Some interesting Gems used on this project
+------------------------------------------
+
+* **devise:** Flexible authentication solution for Rails with Warden
+* **carrierwave:** Upload files in your Ruby applications, map them to a range of ORMs, store them on different backends. Carrierwave has been configured to work with Cloudinary.
+* **cloudinary:** Client library for easily using the Cloudinary service, which is the one used for store the uploaded images on the cloud.
+* **acts_as_votable:** Allows records to be votable. In this project, this is used to manage likes on pictures.
+* **bootstrap-sass:** Sass-powered version of Bootstrap 3, used to style the application.
