@@ -1,3 +1,9 @@
+Author: Rahul Ramakrishna
+
+(With utmost credit to Ben Walker at Devwalks)
+
+Please fork this repo, install rails (if you haven't already got it), run bin/rails s and then navigate to localhost:3000
+
 Instagram Challenge
 ===================
 
