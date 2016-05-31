@@ -39,7 +39,7 @@ class PicturesController < ApplicationController
   end
 
   def my_pictures
-    p @pictures = Picture.all.where(user_id: current_user.id)
+    @pictures = Picture.all.where(user_id: current_user.id)
   end
 
   def upvote
