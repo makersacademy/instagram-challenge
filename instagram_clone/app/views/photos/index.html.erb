@@ -2,12 +2,12 @@
 <% if @photos.empty? %>
   <%= 'No photos to show :(' %>
 <% else %>
-  <% @photos.each do |photo| %>
+  <% @photos.reverse_each do |photo| %>
   <div class="post">
     <center>
     <div class='container'>
     <p class="alignleft">
-      username
+      'username'
     </p>
     <p class="alignright">
       <%= link_to "edit", edit_photo_path(photo) %>
@@ -25,7 +25,8 @@
         <br>
           <div style="clear: both;">
           <p class="desc-alignleft"><%= photo.description %></p>
-          <p class="alignright"><%= link_to 'comment', new_photo_comment_path(photo) %></p>
+          <p class="alignright"><%= link_to pluralize(photo.comments.count, 'comment'), new_photo_comment_path(photo) %><br>
+          </p>
     </div><br>
     </div>
     </center>
