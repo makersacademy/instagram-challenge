@@ -1,30 +1,30 @@
 ##Setup
 
 Clone this repo
-Install Postgresql $ brew install postgresql
+Install Postgresql ```$ brew install postgresql```
 
-Install ImageMagick $ brew install imagemagik
+Install ImageMagick ```$ brew install imagemagik```
 
-Install gems $ bundle install
+Install gems ```$ bundle install```
 
-Create your database $ rake db:create
+Create your database ```$ rake db:create```
 
-Migrate your database $ rake db:migrate
+Migrate your database ```$ rake db:migrate```
 
 ##Usage
 
-Launch the app with rails $ rails s
+Launch the app with rails ```$ rails s```
 
-Open the app in your browser at http://localhost:3000
+Open the app in your browser at ```http://localhost:3000```
 Tests
 
-If not already created, create test databases $ rake db:create RAILS_ENV=test
+If not already created, create test databases  ```$ rake db:create RAILS_ENV=test```
 
-If you had to create the database, migrate it $ rake db:migrate RAILS_ENV=test
+If you had to create the database, migrate it ```$ rake db:migrate RAILS_ENV=test```
 
-Install PhantomJS $ brew install phantomjs
+Install PhantomJS ```$ brew install phantomjs```
 
-Run the tests using $ rspec
+Run the tests using ```$ rspec```
 
 ##User Stories
 The user stories I worked from are below.
