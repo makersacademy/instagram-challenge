@@ -16,6 +16,8 @@ Migrate your database ```$ rake db:migrate```
 Launch the app with rails ```$ rails s```
 
 Open the app in your browser at ```http://localhost:3000```
+
+
 Tests
 
 If not already created, create test databases  ```$ rake db:create RAILS_ENV=test```
