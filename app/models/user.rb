@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
   has_many :posts, dependent: :destroy
-
+  has_many :comments, dependent: :destroy
 
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first

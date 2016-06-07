@@ -11,11 +11,16 @@
     <p class="caption">
       <%= @post.caption %>
     </p>
-    <div class="text-center">
-      <%= link_to "Edit Post", edit_post_path(@post) %> 
-      |
-      <%= link_to "Cancel", posts_path %>
-    </div>
+    <% if @post.user.id == current_user.id %>
+      <div class="text-center">
+        <%= link_to "Edit Post", edit_post_path(@post) %> 
+        |
+        <%= link_to "Cancel", posts_path %>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <%= link_to "Cancel", posts_path %>
+      </div>
+    <% end %>
   </div>
 </div>
-  
