@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
   # end
 
   def index
-    @photos=Photo.all
+    @photos=Photo.all.order("created_at DESC")
   end
 
   def show
@@ -35,8 +35,13 @@ class PhotosController < ApplicationController
   end
 
   def update
-    @photo.update(photo_params)
-    redirect_to(photos_path(@photo))
+    if current_user.photos.include? @photo
+      @photo.update(photo_params)
+      redirect_to(photos_path(@photo))
+    else
+      flash[:alert] = 'Only the owner can edit this photo'
+      redirect_to photos_path
+    end
   end
 
   def destroy
