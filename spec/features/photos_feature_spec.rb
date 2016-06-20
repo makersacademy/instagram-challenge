@@ -61,6 +61,14 @@ feature 'Photos' do
       click_button 'Update photo'
       expect(page).to have_content 'bla bla'
     end
+
+    # scenario 'user cannot edit a photo uploaded by anothe user' do
+    #   upload_photo
+    #   click_link 'Sign out'
+    #   sign_up(email: 'daniela@test.com')
+    #   click_link 'Edit photo'
+    #   expect(page).to have_content 'Only the owner can edit this'
+    # end
   end
 
 end
