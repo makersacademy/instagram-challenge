@@ -27,10 +27,11 @@ feature 'Photos' do
 
     scenario 'an image must be uploaded during photo upload' do
       sign_up
-      visit '/photos'
-      click_link 'Upload photo'
+      within '.navbar' do
+        click_link 'Upload photo'
+      end
       fill_in 'Caption', with: 'cutie'
-      click_button 'Upload photo'
+      click_button 'Shoot'
       expect(page).to have_content 'Please upload photo'
     end
   end

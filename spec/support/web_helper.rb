@@ -1,10 +1,11 @@
 def upload_photo
   sign_up
-  visit '/photos'
-  click_link 'Upload photo'
+  within '.navbar' do
+    click_link 'Upload photo'
+  end
   attach_file('photo[image]', "spec/fixtures/files/teckel.jpeg")
   fill_in 'Caption', with: 'cutie'
-  click_button 'Upload photo'
+  click_button 'Shoot'
 end
 
 def sign_up(email: 'test@test.com',
