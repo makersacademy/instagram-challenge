@@ -24,13 +24,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
-
 gem 'haml'
-
 gem 'paperclip'
-
 gem 'bootstrap-sass', '~> 3.2.0.2'
-
+gem 'masonry-rails'
 gem 'omniauth-facebook'
 
 # Use ActiveModel has_secure_password
