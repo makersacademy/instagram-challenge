@@ -6,20 +6,22 @@
           .panel-heading.photo_image
             %p.user= photo.user.email
           .panel-body
-            = link_to (image_tag photo.image.url(:medium)), photo_path(photo)
+            = link_to (image_tag photo.image.url), photo_path(photo)
             %p.caption= photo.caption
-            %p= pluralize photo.likes.count, 'likes'
+            %span.glyphicon.glyphicon-heart
+            = pluralize photo.likes.count, 'likes'
           .panel-footer
             .row
               .col-md-6
-                .btn-group.center
-                  = link_to 'Like', photo_likes_path(photo), method: :post
-                  = link_to 'Edit photo', edit_photo_path(photo)
-                  = link_to 'Delete photo', photo_path(photo), method: :delete
-                  -# = link_to 'Comment', new_photo_comment_path(photo)
-                -# if @photo.comments.any?
-                -#   - @photo.comments.each do |comment|
-                -#     = photo.content
+                .btn-group.pull-right
+                  - if photo.user == current_user
+                    = link_to 'Edit photo', edit_photo_path(photo)
+                    = link_to 'Delete photo', photo_path(photo), method: :delete
+                  = link_to photo_likes_path(photo), method: :post, class: 'btn btn-default', id: 'like' do
+                    %span.glyphicon.glyphicon-heart
+                    -# = link_to 'Comment', new_photo_comment_path(photo)
+                  -# if @photo.comments.any?
+                  -#   - @photo.comments.each do |comment|
+                  -#     = photo.content
     - else
       %h2 No photos uploaded yet!
-      = link_to 'Upload photo', new_photo_path

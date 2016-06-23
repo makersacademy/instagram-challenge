@@ -38,9 +38,9 @@ class PhotosController < ApplicationController
     if current_user.photos.include? @photo
       @photo.update(photo_params)
       redirect_to(photos_path(@photo))
-    else
-      flash[:alert] = 'Only the owner can edit this photo'
-      redirect_to photos_path
+    # else
+    #   flash[:alert] = 'Only the owner can edit this photo'
+    #   redirect_to photos_path
     end
   end
 
@@ -48,8 +48,8 @@ class PhotosController < ApplicationController
     if current_user.photos.include? @photo
       @photo.destroy
       flash[:notice] = 'Chill...photo deleted'
-    else
-      flash[:alert] = 'Only the owner can delete this'
+    # else
+    #   flash[:alert] = 'Only the owner can delete this'
     end
     redirect_to photos_path
   end

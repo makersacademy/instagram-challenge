@@ -48,8 +48,7 @@ feature 'Photos' do
       upload_photo
       click_link 'Sign out'
       sign_up(email: 'daniela@test.com')
-      click_link 'Delete photo'
-      expect(page).to have_content 'Only the owner can delete this'
+      expect(page).not_to have_content 'Delete post'
     end
   end
 
@@ -67,9 +66,7 @@ feature 'Photos' do
       upload_photo
       click_link 'Sign out'
       sign_up(email: 'daniela@test.com')
-      click_link 'Edit photo'
-      click_button 'Update photo'
-      expect(page).to have_content 'Only the owner can edit this photo'
+      expect(page).not_to have_content 'Edit photo'
     end
   end
 
