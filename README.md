@@ -1,9 +1,11 @@
+[![Build Status](https://travis-ci.org/chriscoates/instagram-challenge.svg?branch=master)](https://travis-ci.org/chriscoates/instagram-challenge)
+
 Instagram Challenge
 ===================
 
 Project Overview
 ----------------
-The task was to build an Instagram clone. I have included the functionality for sign-up, sign-in and sign-out and amd also looking to handle sign-in via facebook. Once logged in users are able to create a post which consists of a cpation and an image to upload. Posts are displayed on the home page for logged in users. Users can comment on them posts the see. Posts can be deleted and edited by the owner of the post. Comments can be deleted by the comment owner.
+The task was to build an Instagram clone. I have included the functionality for sign-up, sign-in and sign-out and am also looking to handle sign-in via Facebook. Once logged in users are able to create a post which consists of a caption and an image to upload. Posts are displayed on the home page for logged in users. Users can comment on them posts the see. Posts can be deleted and edited by the owner of the post. Comments can be deleted by the comment owner.
 
 Instructions
 -------
