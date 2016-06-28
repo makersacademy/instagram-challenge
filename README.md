@@ -58,4 +58,4 @@ I want to be able to leave a comment on photos
 
 How I found the challenge
 ------------
-I found this challenge a really good oppotunity to embed and play with the Rails and the technologies learnt so far on this course. I have to admit that in order to get the functionality to work and the styling to look similar to Instagram I needed to use an online tutorial. I found the challenge enjoyable but found using TDD on it incredible hard as I'm not always sure what tests I should be writing and how to successfully make them fail them before making them pass.
+I found this challenge a really good opportunity to embed and play with the Rails and the technologies learnt so far on this course. In order to get the functionality to work and the styling to look similar to Instagram I needed to use an online tutorial. I found the challenge enjoyable but found using TDD on it incredible hard as I'm not always sure what tests I should be writing and how to successfully make them fail them before making them pass.
