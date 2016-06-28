@@ -22,7 +22,8 @@ feature "create posts" do
       click_link 'New Post'
       fill_in 'Caption', with: "No picture given for this test"
       click_button 'Create Post'
-      expect(page).to have_content("Your new post couldn't be created! Please check the form.")
+      error = "Your new post couldn't be created! Please check the form."
+      expect(page).to have_content(error)
     end
   end
 end
