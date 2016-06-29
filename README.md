@@ -11,7 +11,7 @@ Instructions
 -------
 To install and run locally:
 ```
-$ git clone https://github.com/chriselevate/instagram-challenge
+$ git clone https://github.com/chriscoates/instagram-challenge
 $ cd instagram-challenge
 $ bundle
 $ rails s
