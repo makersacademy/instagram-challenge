@@ -1,23 +1,67 @@
+[![Build Status](https://travis-ci.org/chriscoates/instagram-challenge.svg?branch=master)](https://travis-ci.org/chriscoates/instagram-challenge)
+
 Instagram Challenge
 ===================
 
+Project Overview
+----------------
+The task was to build an Instagram clone. I have included the functionality for sign-up, sign-in and sign-out and am also looking to handle sign-in via Facebook. Once logged in users are able to create a post which consists of a caption and an image to upload. Posts are displayed on the home page for logged in users. Users can comment on them posts the see. Posts can be deleted and edited by the owner of the post. Comments can be deleted by the comment owner.
+
+Screenshot
+-----------------
+![mainpage](http://i.imgur.com/pA7yMbt.png)
+
 Instructions
 -------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+To install and run locally:
+```
+$ git clone https://github.com/chriscoates/instagram-challenge
+$ cd instagram-challenge
+$ bundle
+$ rails s
+```
 
-Task
------
+Technologies Used
+-----------------
+- Ruby on Rails
+- Devise
+- Rspec
+- Capybara
+- jQuery
+- Paperclip
 
-Build Instagram: Simple huh!
+User Stories
+------------
+```
+As a user,
+So that I can show off my photos
+I want to be able to upload them to the site
+```
 
-Bonus if you can write your own set of sensible user stories!
+```
+As a user,
+So that I can post pictures as me
+I want to be able to sign-up
+```
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+```
+As a user,
+So that I can prevent access to my account
+I want to be able to sign-out
+```
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+```
+As a user,
+So that I can continue to post pictures as me
+I want to be able to sign-in
+```
 
-Bonus if you can add filters!
+```
+As a user,
+So that I can add notes
+I want to be able to leave a comment on photos
+```
+
+How I found the challenge
+------------
+I found this challenge a really good opportunity to embed and play with Rails and the technologies learnt so far on this course. In order to get the functionality to work and the styling to look similar to Instagram I made use of online tutorials.
