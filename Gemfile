@@ -4,7 +4,7 @@ gem 'rails_12factor'
 
 gem 'dotenv'
 
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 gem 'devise'
 
