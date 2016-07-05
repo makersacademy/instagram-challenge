@@ -1,23 +1,75 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+User Stories
+------
 
-Task
------
+```
+MoSCow
 
-Build Instagram: Simple huh!
+MUST HAVE:
 
-Bonus if you can write your own set of sensible user stories!
+As a User
+So that I can share my pictures
+I want to be able to upload pictures
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+As a User
+So that I can share my thoughts on my pictures
+I want to be able to upload description with a picture
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a User
+So that I can see what pictures other people have shared
+I want to be able to view other people's pictures
 
-Bonus if you can add filters!
+As a User
+SO that I can voice my opinion on a picture
+I want to be able to write comments on a picture
+
+As a User
+So that I can show my appreciation for a picture
+I want to be able to like a picture
+
+SHOULD HAVE:
+
+As a User
+So that I can remove a picture I regret
+I want to be able to delete my picture
+
+As a User
+So that I can change a picture
+I want to be able to edit my picture
+
+As a User
+So that I can alter a description
+I want to be able to edit my description
+
+As a User
+So that I can have an Instagram account
+I want to be able to sign up
+
+As a User
+So that I can retain my details
+I want to be able to log in
+
+As a User
+So that I can prevent leaving my account open for people to upload embarrassing photos
+I want to be able to log out
+
+
+COULD HAVE:
+
+As a User
+So that I can navigate around the site smoothly
+I want to be able to enjoy a pleasing interface
+
+As a User
+So that I can see who has uploaded which pictures
+I want to be able to see the name of the user by their picture
+
+As a User
+So that I can see when a picture was uploaded
+I want to be able to see the time the picture was uploaded
+
+WON'T HAVE:
+
+```
