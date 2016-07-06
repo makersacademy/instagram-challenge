@@ -9,13 +9,7 @@ feature 'Photos' do
       expect(page).to have_content 'No photos uploaded yet!'
       expect(page).to have_link('Upload photo')
     end
-    #
-    # scenario 'should not allow access to photos if not logged in' do
-    #   sign_up
-    #   click_link('Sign out')
-    #   visit '/photos'
-    #   expect(page).to have_content 'You need to sign up first!'
-    # end
+  
   end
 
   context 'creating photos' do
