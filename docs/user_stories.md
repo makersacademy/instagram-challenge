@@ -1,6 +1,6 @@
 ```
 As a user
-So that I can post new photos
+So that I can post new pictures
 I would like to sign up and log in
 ```
 
@@ -12,22 +12,33 @@ I would like my passwords to be secure
 
 ```
 As a user
-So that I can post new photos
-I would like to upload a new photo
+So that I can post new pictures
+I would like to upload a new picture
 ```
 
 ```
 As a user
-So that I can view related photos
-I would like to tag my photos
+So that I can appreciate a picture
+I would like to endorse a picture
+```
+
+```
+As a user
+So that I can leave feedback on a picture
+I would like to add a comment
 ```
 
 Bonus:
+```
+As a user
+So that I can view related pictures
+I would like to tag my pictures
+```
 
 ```
 As a user
-So that I can have prettier photos
-I would like to add filters to my photos
+So that I can have prettier pictures
+I would like to add filters to my pictures
 ```
 
 ```
@@ -46,7 +57,7 @@ Users
 - bio
 - password_digest
 
-Photos
+Pictures
 - user_id
 - file_path
 - caption
@@ -55,5 +66,5 @@ Hashtags
 - name
 
 JOIN TABLE
-- photo_id
+- picture_id
 - hashtag_id
