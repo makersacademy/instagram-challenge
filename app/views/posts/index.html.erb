@@ -1,8 +1,14 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-    <h2><%= post.title %></h2>
+    <h2><%= link_to post.title, post_path(post) %></h2>
     <h3><%= post.description %></h3>
     <%= image_tag post.image.url(:medium) %>
+    <% post.comments.each do |comment| %>
+      <%= comment.comment %>
+    <% end %>
+    <%= link_to "Comment", new_post_comment_path(post) %>
+    <%= link_to "Edit #{post.title}", edit_post_path(post) %>
+    <%= link_to "Delete #{post.title}", post_path(post), method: :delete %>
   <% end %>
 <% else %>
   <h1>No posts yet</h1>
