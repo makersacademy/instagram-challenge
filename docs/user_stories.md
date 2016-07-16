@@ -6,7 +6,7 @@ definitely evolve along with the app.
 ```
 As a user of InstaRails
 So I can show off my pictures
-I want to create a picture with title and description
+I want to add a picture with title/description
 ``` 
 
 ```
