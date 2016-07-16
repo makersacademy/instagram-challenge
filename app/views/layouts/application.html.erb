@@ -3,12 +3,16 @@
   <head>
     <title>InstagramChallenge</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/navbar' %>
+      <% flash.each do |name, msg| %>
+        <div class="container"></div>
+        <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+      <% end %>
+      <%= yield %>
   </body>
 </html>
