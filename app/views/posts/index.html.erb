@@ -3,7 +3,12 @@
     <%= image_tag post.image.url(:medium) %>
     <%= post.caption %>
 
+      <% post.comments.each do |comment| %>
+        <p> Comment: <%= comment.comments %> </p>
+      <% end %>
+      
     <%= link_to "Edit Post", edit_post_path(post) %>
+    <%= link_to "Comment", new_post_comment_path(post) %>
   <% end %>
 <% else %>
   No posts yet
