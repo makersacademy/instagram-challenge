@@ -9,23 +9,18 @@ feature 'posts' do
     end
   end
 
-  context 'posts have been added' do
-    before { Post.create(picture: 'PIC') }
-    scenario 'display posts' do
-      visit '/posts'
-      expect(page).to have_content('PIC')
-      expect(page).not_to have_content('No pictures yet')
-    end
-  end
-
-  context 'creating posts' do
-    scenario 'prompts user to add a picture' do
+  context 'create posts' do
+    scenario 'uploads a picture' do
       visit '/posts'
       click_link 'Add a picture'
-      fill_in 'Picture', with: 'PIC'
+      attach_file "Image", "./docs/testing.jpg"
+      fill_in 'Title', with: 'PIC'
       click_button 'Post'
       expect(page).to have_content 'PIC'
       expect(current_path).to eq '/posts'
+    end
+
+    scenario 'prompts user to add a picture' do
     end
   end
 end
