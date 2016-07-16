@@ -9,5 +9,6 @@ feature 'Create posts' do
       click_button 'Create Post'
       expect(page).to have_content 'Snowboarding in Canada #winter'
       expect(page).to have_css "img[src*='canada.jpg']"
+      expect(current_path).to eq '/posts'
     end
 end
