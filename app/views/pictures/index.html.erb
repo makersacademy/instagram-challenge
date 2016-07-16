@@ -1,6 +1,17 @@
+<%= button_to 'Add a picture', new_picture_path, method: 'get' %>
+
 <% @pictures.each do |p| %>
+  <hr>
   <%= p.title %><br>
   <%= p.description %><br>
+
   <%= image_tag p.photo.url(:medium) %>
+
+  <% if p.comments.first %>
+    <h5>Comments</h5>
+    <%= p.comments.first.comment %>
+  <% end %>
+
+  <%= link_to 'Add comment', new_picture_comment_path(p)  %>
   <hr>
 <% end %>

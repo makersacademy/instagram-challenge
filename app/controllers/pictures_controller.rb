@@ -7,7 +7,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.create(picture_parameters)
+    Picture.create(picture_parameters)
     redirect_to pictures_path
   end
 
