@@ -1,0 +1,14 @@
+<h1>Instagramish</h1>
+
+<%= link_to 'Add a post!', new_post_path %> </br></br>
+
+<% @posts.each do |post| %>
+<%= image_tag post.image.url(:medium) %></br>
+<%= post.description %></br></br>
+<%= link_to "Comment", new_post_comment_path(post) %></br>
+<ul>
+	<% post.comments.each do |c|  %>
+	<li><%= c.comments %></li>
+	<% end %>
+</ul>
+<% end %>
