@@ -11,16 +11,28 @@ feature 'posts' do
 
   context 'create posts' do
     scenario 'uploads a picture' do
-      visit '/posts'
-      click_link 'Add a picture'
-      attach_file "Image", "./docs/testing.jpg"
-      fill_in 'Title', with: 'PIC'
-      click_button 'Post'
+      create_post
       expect(page).to have_content 'PIC'
-      expect(current_path).to eq '/posts'
+      expect(current_path).to eq posts_path
     end
 
-    scenario 'prompts user to add a picture' do
+    # scenario 'prompts user to add a picture' do
+    # end
+  end
+
+  context 'viewing a post' do
+    scenario 'user can view a post' do
+      create_post
+      find('.img_link').click
+      expect(page).to have_content 'PIC'
+      expect(current_path).to eq "/posts"
+      create_post
     end
+
+    # scenario 'post has a description' do
+    # end
+
+    # scenario 'users can add comments' do
+    # end
   end
 end
