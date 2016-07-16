@@ -2,8 +2,8 @@
 
 <% @pictures.each do |p| %>
   <hr>
-  <%= p.title %><br>
-  <%= p.description %><br>
+  <h5>Title <%= p.title %></h5>
+  <h5>Description <%= p.description %></h5>
 
   <%= image_tag p.photo.url(:medium) %>
 
@@ -11,7 +11,10 @@
     <h5>Comments</h5>
     <%= p.comments.first.comment %>
   <% end %>
-
+  <br>
+  <br>
   <%= link_to 'Add comment', new_picture_comment_path(p)  %>
+  <br>
+  <p><%= link_to 'Like', picture_likes_path(p), method: 'post' %> <%= p.likes.count %> </p>
   <hr>
 <% end %>
