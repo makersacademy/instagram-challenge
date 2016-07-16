@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %meta(charset="UTF-8")
+    %title YelpClone
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    -flash.each do |name, msg|
+      = content_tag :div, msg, class: [:alert, alert_for(name)]
+    = link_to 'New Post', new_post_path
+    = yield
