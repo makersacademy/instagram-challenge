@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'posts' do
   context 'no posts have been added' do
     scenario 'should display a prompt to add a post' do
-      visit '/posts'
+      visit posts_path
       expect(page).to have_content 'No posts yet'
       expect(page).to have_button 'Add a Picture'
     end
@@ -11,6 +11,7 @@ feature 'posts' do
 
   context 'create posts' do
     scenario 'uploads a picture' do
+      sign_up
       create_post
       expect(page).to have_content 'PIC'
       expect(page).to_not have_content 'Description_text'
@@ -19,12 +20,14 @@ feature 'posts' do
     end
 
     scenario 'does not let user submit a title that is too short' do
+      sign_up
       create_post_invalid_title
       expect(page).not_to have_css 'h2', text: 'PI'
       expect(page).to have_content 'error'
     end
 
     scenario 'does not let user submit without a image' do
+      sign_up
       create_post_no_image
       expect(page).not_to have_css 'h2', text: 'PIC'
       expect(page).to have_content 'error'
@@ -41,6 +44,7 @@ feature 'posts' do
 
   context 'viewing a post' do
     scenario 'user can view a post with description' do
+      sign_up
       create_post
       click_link 'PIC'
       expect(page).to have_content 'PIC'
@@ -50,6 +54,7 @@ feature 'posts' do
 
   context "editing a post" do
     scenario 'user can edit a post' do
+      sign_up
       create_post
       edit_post
       expect(page).to have_content 'edited PIC'
@@ -60,6 +65,7 @@ feature 'posts' do
 
   context "deleting a post" do
     scenario 'user can delete a post' do
+      sign_up
       create_post
       click_link 'PIC'
       click_button 'Delete'
