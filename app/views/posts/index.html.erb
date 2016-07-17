@@ -1,13 +1,19 @@
 <h1>Instagramish</h1>
 
+<% if current_user %>
 <%= link_to 'Add a post!', new_post_path %> </br></br>
+<% end %>
 
 <% @posts.each do |post| %>
 <%= image_tag post.image.url(:medium) %></br>
-<%= post.description %> posted by <%= post.user.email %></br></br>
+<%= post.description %> posted by <%= post.user.email %></br>
 
-<%= link_to "Comment", new_post_comment_path(post) %></br>
-
+<% if current_user %>
+	<%= post.endorsements.count %><%= link_to '&#x1F496;'.html_safe, "/posts/#{post.id}/endorsements/", method: :post %></br>
+	<%= link_to "Comment", new_post_comment_path(post) %></br>
+<% else %>
+	<p><%= post.endorsements.count %> &#x1F496;</p>
+<% end %>
 
 <ul>
 	<% post.comments.each do |c|  %>

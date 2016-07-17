@@ -3,11 +3,7 @@ require 'rails_helper'
 feature 'comments' do
 	before :each do
 		sign_up
-		visit '/'
-		click_on 'Add a post!'
-		fill_in 'post_description', with: 'When we were at Germany!'
-		attach_file('post_image', Rails.root + "spec/fixtures/test_image.jpg")
-		click_on 'Create Post'
+		add_post
 	end
 
 	scenario 'allows user to leave a comment on the post' do
