@@ -3,7 +3,7 @@ require_relative '../web_helpers'
 
 describe 'Users features' do
 
-  context 'when a picture has been created' do
+  context 'when a picture has been created and user is logged in' do
 
     #US4
     #As a user of InstaRails
@@ -29,6 +29,10 @@ describe 'Users features' do
 
     scenario 'second user cannot see the delete button' do
 
+      #US5
+      #As a user of InstaRails
+      #So I know who commented on my pictures
+      #I want only logged in users to be able to leave a comment
       create_account('user_email' => 't@t.c', 
                      'user_password' => '123456',
                      'user_password_confirmation' => '123456')
@@ -47,6 +51,36 @@ describe 'Users features' do
 
       visit('/pictures')
       expect(page).not_to have_button('Delete')
+    end
+
+    scenario 'second user can only add one comment' do
+
+      #US6
+      #As a user of InstaRails
+      #So the comments on my pictures do not get overcrowded
+      #I want any user to only be able to leave one comment per picture
+      create_account('user_email' => 't@t.c', 
+                     'user_password' => '123456',
+                     'user_password_confirmation' => '123456')
+
+      #create picture
+      visit('/pictures/new')
+      fill_in('Title', with: 'lovely pic')
+      fill_in('Description', with: 'me and my friends havin a blast')
+      click_button('Save Picture')
+
+      #Create account 2
+      click_link('Sign out')
+      create_account('user_email' => 'f@f.f', 
+                     'user_password' => '123456',
+                     'user_password_confirmation' => '123456')
+
+      visit('/pictures')
+      click_link('Add comment')
+      fill_in('comment_comment', with: 'first comment')
+      click_button('Submit')
+      visit('/pictures')
+      expect(page).not_to have_link('Add comment')
     end
   end
 end

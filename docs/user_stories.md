@@ -34,8 +34,8 @@ I want to sign up/sign in/sign out
 ```
 US5
 As a user of InstaRails
-So I can edit some or all of my pictures and prevent other users from doing so
-I want to sign up/sign in/sign out
+So I know who commented on my pictures
+I want only logged in users to be able to leave a comment
 ```
 
 ```
@@ -46,8 +46,10 @@ I want any user to only be able to leave one comment per picture
 ```
 
 Further thoughts: 
+editing pictures
 show pictures by user
 can only add picture if signed in
+notifications
 tags
 email sent when account created, updated, deleted
 Geolocator

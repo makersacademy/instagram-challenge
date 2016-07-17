@@ -1,26 +1,30 @@
 <%= button_to 'Add a picture', new_picture_path, method: 'get' %>
 
-<h1>CURRENT <%= current_user %> </h1>
-
 <% @pictures.each do |p| %>
+
   <hr>
   <h5>Title <%= p.title %></h5>
   <h5>Description <%= p.description %></h5>
+  <h5>Uploaded by <%= p.user.email %></h5>
 
   <%= image_tag p.photo.url(:medium) %>
 
   <% if p.comments.first %>
     <h5>Comments</h5>
-    <%= p.comments.first.comment %>
+    <%= p.comments.first.comment %> <em>written by</em> <%= p.comments.first.user.email %>
   <% end %>
   <br>
   <br>
-  <%= link_to 'Add comment', new_picture_comment_path(p)  %>
-  <br>
-  <p><%= link_to 'Like', picture_likes_path(p), method: 'post' %> <%= p.likes.count %> </p>
-  <br>
-  <% if current_user && (p.user_id == current_user.id)  %>
-  <p><%= button_to 'Delete', picture_path(p), method: 'delete' %></p>
+
+  <% if user_signed_in? && (p.user_id != current_user.id) && p.comments.none? { |comment| comment.user == current_user } %>
+    <%= link_to 'Add comment', new_picture_comment_path(p)  %>
+    <br>
+    <p><%= link_to 'Like', picture_likes_path(p), method: 'post' %> <%= p.likes.count %> </p>
+    <br>
+  <% end %>
+
+  <% if user_signed_in? && (p.user_id == current_user.id)  %>
+    <p><%= button_to 'Delete', picture_path(p), method: 'delete' %></p>
   <% end %>
   <hr>
 <% end %>

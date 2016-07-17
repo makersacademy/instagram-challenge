@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716162028) do
+ActiveRecord::Schema.define(version: 20160717093216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,9 +21,11 @@ ActiveRecord::Schema.define(version: 20160716162028) do
     t.integer  "picture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "comments", ["picture_id"], name: "index_comments_on_picture_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "likes", force: :cascade do |t|
     t.integer  "picture_id"
@@ -70,6 +72,7 @@ ActiveRecord::Schema.define(version: 20160716162028) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "comments", "pictures"
+  add_foreign_key "comments", "users"
   add_foreign_key "likes", "pictures"
   add_foreign_key "pictures", "users"
 end
