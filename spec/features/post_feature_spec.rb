@@ -9,4 +9,15 @@ feature 'posts' do
     end
   end
 
+  context 'posts have been added' do
+    before do
+      Post.create(title: 'title')
+    end
+
+    scenario 'display posts' do
+      visit '/posts'
+      expect(page).to have_content('title')
+    end
+  end
+
 end
