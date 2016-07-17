@@ -9,17 +9,23 @@
   </head>
 
   <body>
-    <p class="alert"><%= alert %></p>
-    <p class="notice"><%= notice %></p>
+    <ul class='nav'>
+      <h1>InstagraMish</h1>
+      <% if user_signed_in? %>
+        <li><%= link_to 'Add a post!', new_post_path %></li>
+        <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+        <p>You are logged in as <%= current_user.email %></p>
+      <% else %>
+        <li><%= link_to 'Sign in', new_user_session_path %></li>
+        <li><%= link_to 'Sign up', new_user_registration_path %></li>
+      <% end %>
+      <p class="alert"><%= alert %></p>
+      <p class="notice"><%= notice %></p>
+    </ul>
 
-    <% if user_signed_in? %>
-      <span>Welcome <%= current_user.email %></span>
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', new_user_session_path %>
-      <%= link_to 'Sign up', new_user_registration_path %>
-    <% end %>
 
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
