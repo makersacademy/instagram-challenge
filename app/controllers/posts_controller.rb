@@ -16,6 +16,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
+    @post.user = current_user
     if @post.save
       flash[:success] = 'Your post has been uploaded'
       redirect_to posts_path
