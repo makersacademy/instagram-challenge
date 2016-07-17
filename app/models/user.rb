@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments
+
+  def owns?(item)
+    self.id == item.user_id
+  end
 end

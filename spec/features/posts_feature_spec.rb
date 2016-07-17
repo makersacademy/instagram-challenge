@@ -53,13 +53,24 @@ feature 'posts' do
   end
 
   context "editing a post" do
-    scenario 'user can edit a post' do
+    scenario 'user can edit a post description' do
       sign_up
       create_post
       edit_post
       expect(page).to have_content 'edited PIC'
       expect(page).to have_content 'edited Description'
       expect(page).to have_content 'Post updated successfully'
+    end
+
+    scenario "only onwer can edit a post description" do
+      sign_up
+      create_post
+      click_link 'Sign out'
+      sign_up_diff_user
+      edit_post
+      expect(page).to have_content 'PIC'
+      expect(page).to have_content 'Description'
+      expect(page).to have_content 'You must be the owner to update a post description'
     end
   end
 
@@ -72,6 +83,18 @@ feature 'posts' do
       expect(page).not_to have_content 'PIC'
       expect(page).not_to have_content 'Description_text'
       expect(page).to have_content 'Post deleted successfully'
+    end
+
+    scenario "only onwer can delete a post" do
+      sign_up
+      create_post
+      click_link 'Sign out'
+      sign_up_diff_user
+      click_link 'PIC'
+      click_button 'Delete'
+      expect(page).to have_content 'PIC'
+      expect(page).to have_content 'Description_text'
+      expect(page).to have_content 'You must be the owner to delete a post'
     end
   end
 end
