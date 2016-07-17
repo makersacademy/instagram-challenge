@@ -29,10 +29,15 @@ feature 'posts' do
       expect(page).not_to have_css 'h2', text: 'PIC'
       expect(page).to have_content 'error'
     end
-
-    # scenario 'prompts user to add a picture' do
-    # end
   end
+
+  # context "comments and likes" do
+  #   scenario 'users can like posts' do
+  #   end
+  #
+  #   scenario 'users can add comments' do
+  #   end
+  # end
 
   context 'viewing a post' do
     scenario 'user can view a post with description' do
@@ -41,9 +46,6 @@ feature 'posts' do
       expect(page).to have_content 'PIC'
       expect(page).to have_content 'Description_text'
     end
-
-    # scenario 'users can add comments' do
-    # end
   end
 
   context "editing a post" do
