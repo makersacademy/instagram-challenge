@@ -1,23 +1,33 @@
-Instagram Challenge
-===================
+# README
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+*   Ruby version: 5.0.0
+*   Configuration: Run `bundle`
+*   Database creation: Run `bin/rake db:create`
+*   Test suite: Run `rspec`
+*   This is a Rails exercise.
 
-Task
------
+## User Stories
 
-Build Instagram: Simple huh!
+```text
+As a user
+So I can post a picture
+I want to log in to the site
+```
 
-Bonus if you can write your own set of sensible user stories!
+```text
+As a user
+So I can see other users pictures
+I want a list of all pictures
+```
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+```text
+As a user
+So users can know my opinion
+I want to be able to comment and like a picture
+```
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+```text
+As a user
+So I can see an user picture
+I want a list of a single user pictures
+```

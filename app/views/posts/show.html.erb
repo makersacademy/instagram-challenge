@@ -1,0 +1,17 @@
+<h2><%= @post.title %></h2>
+<%= image_tag @post.image.url(:large) %>
+<br />
+<%= @post.description %>
+<br />
+
+<%= button_to "Edit", { action: "edit" }, method: :get %>
+<%= button_to "Delete", { action: "destroy" }, method: :delete %>
+<br />
+<%= link_to "Leave a Comment", new_post_comment_path(@post) %><br />
+
+Comments:
+<br />
+<%  @comments.each do |comment| %>
+  <%= "#{comment.comments}" %><br />
+  <br />
+<% end %>

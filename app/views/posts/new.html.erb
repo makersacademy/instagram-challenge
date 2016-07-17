@@ -1,0 +1,35 @@
+<h1>New Post</h1>
+
+<% if @post.errors.any? %>
+<section id="errors" >
+  <h3> <%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved: </h3>
+  <ul>
+    <% @post.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</section>
+<% end %>
+
+<%= form_for @post, html: { multipart: true } do |f| %>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div><br />
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div><br />
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div><br />
+
+  <div class="actions">
+    <%= f.submit :Post%>
+  </div>
+
+<% end %>
