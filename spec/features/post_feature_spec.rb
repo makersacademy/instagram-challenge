@@ -25,10 +25,10 @@ feature 'posts' do
       visit '/posts'
       click_link 'Add a post'
       fill_in 'Title', with: 'Something'
-      # attach_file('post_image', Rails.root + 'spec/fixtures/test_image.png')
+      attach_file('post_image', Rails.root + 'spec/fixtures/test_image.png')
       click_button 'Create Post'
       expect(page).to have_content 'Something'
-      # expect(page).to have_selector 'img'
+      expect(page).to have_selector 'img'
       expect(current_path).to eq '/posts'
     end
   end
