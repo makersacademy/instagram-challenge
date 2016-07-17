@@ -18,6 +18,8 @@ gem 'coffee-rails', '~> 4.2'
 
 gem 'paperclip', '~> 4.2'
 
+gem 'devise'
+
 gem 'simple_form'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
