@@ -33,4 +33,19 @@ feature 'posts' do
     end
   end
 
+  context 'editing posts title' do
+    before do
+      Post.create(title: 'title')
+    end
+
+  scenario 'let a user edit post title' do
+    visit '/posts'
+    click_link 'Edit'
+    fill_in 'Title', with: 'Something else'
+    click_button 'Update Post'
+    expect(page).to have_content 'Something else'
+    expect(current_path).to eq '/posts'
+    end
+  end
+
 end
