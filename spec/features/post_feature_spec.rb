@@ -20,4 +20,17 @@ feature 'posts' do
     end
   end
 
+  context 'creating posts and viewing them on the index page'  do
+    scenario 'prompts user to fill out form, then displays the new post' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Title', with: 'Something'
+      # attach_file('post_image', Rails.root + 'spec/fixtures/test_image.png')
+      click_button 'Create Post'
+      expect(page).to have_content 'Something'
+      # expect(page).to have_selector 'img'
+      expect(current_path).to eq '/posts'
+    end
+  end
+
 end
