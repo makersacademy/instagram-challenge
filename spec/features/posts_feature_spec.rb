@@ -18,6 +18,12 @@ feature 'posts' do
       expect(current_path).to eq posts_path
     end
 
+    scenario 'does not let user submit a title that is too short' do
+      create_post_invalid_title
+      expect(page).not_to have_css 'h2', text: 'ha'
+      expect(page).to have_content 'error'
+    end
+
     # scenario 'prompts user to add a picture' do
     # end
   end

@@ -1,5 +1,16 @@
 <h1>New Post</h1>
 
+<% if @post.errors.any? %>
+<section id="errors" >
+  <h3> <%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved: </h3>
+  <ul>
+    <% @post.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</section>
+<% end %>
+
 <%= form_for @post, html: { multipart: true } do |f| %>
 
   <div class="field">
