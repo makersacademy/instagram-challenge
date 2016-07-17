@@ -7,9 +7,9 @@
 
   <%= image_tag p.photo.url(:medium) %>
 
-  <% if p.comments.first %>
+  <% if p.comments != [] %>
     <h5>Comments</h5>
-    <%= p.comments.first.comment %> <em>written by</em> <%= p.comments.first.user.email %>
+    <%= p.comments.last.comment %> <em>written by</em> <%= p.comments.last.user.email %>
   <% end %>
   <br>
   <br>
@@ -17,8 +17,10 @@
   <% if user_signed_in? && !current_user.has_commented?(p) && (p.user_id != current_user.id) %>
     <%= link_to 'Add comment', new_picture_comment_path(p)  %>
     <br>
+  <% end %>
+
+  <% if user_signed_in? %>
     <p><%= link_to 'Like', picture_likes_path(p), method: 'post' %> <%= p.likes.count %> </p>
-    <br>
   <% end %>
 
   <% if user_signed_in? && (p.user_id == current_user.id)  %>
