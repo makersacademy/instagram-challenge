@@ -1,2 +1,48 @@
-<a href='#'>Add a Picture</a>
+<body class="pics-page">
+	<% if @pictures.any? %>
+
+		<% @pictures.each do|picture| %>
+			<div class="post-wrapper">
+
+				<div class="headline-name"><span class="username"><%= picture.user.try(:email) %></span></div>
+
+				<div class="likes-pic"><%= image_tag picture.image.url(:medium), class: "pic" %></div>
+
+				<div class="text">
+
+					<div class="likes-text">&hearts; <span class="likes_count"><%= picture.likes.count %></span> <%= 'like'.pluralize(picture.likes.count) %></div>
+
+					<br>
+					
+					<div><span class="username"><%= picture.user.try(:email) %></span>: <%= picture.caption %></div>
+					
+					<% picture.comments.each do |comment| %>
+						<div><span class="username"><%= comment.user.try(:email) %></span>: <%= comment.thoughts %></div>
+					<% end %>
+
+				</div>
+
+				<br>
+
+				<div class="like-comment">
+					<div class="like-link"><%= link_to 'Like', picture_likes_path(picture), method: :post, class: "likes-link" %></div>
+
+					<div class="comment-link"><%= link_to 'Add Comment...', new_picture_comment_path(picture) %></div>
+				</div>
+
+			</div>
+
+			<br>
+			<br>
+
+		<% end %>
+
+	<% else %>
+
+		<p>No pictures yet!</P>
+
+	<% end %> 
+
+	<p><%= link_to 'Add a Picture', new_picture_path %></p>
+</body>
 
