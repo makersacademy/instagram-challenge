@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @posts = Post.all
   end
@@ -9,11 +11,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params)
-    redirect_to '/posts'
+    @post = Post.create_with_user(post_params, current_user)
+    if @post.save
+      redirect_to '/posts'
+    else
+      render 'new'
+    end
   end
 
   def show
+    @user = User
     @post = Post.find(params[:id])
   end
 
@@ -24,7 +31,6 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-
     redirect_to '/posts'
   end
 
