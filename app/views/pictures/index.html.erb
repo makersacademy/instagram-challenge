@@ -1,5 +1,7 @@
 <%= button_to 'Add a picture', new_picture_path, method: 'get' %>
 
+<h1>CURRENT <%= current_user %> </h1>
+
 <% @pictures.each do |p| %>
   <hr>
   <h5>Title <%= p.title %></h5>
@@ -16,5 +18,9 @@
   <%= link_to 'Add comment', new_picture_comment_path(p)  %>
   <br>
   <p><%= link_to 'Like', picture_likes_path(p), method: 'post' %> <%= p.likes.count %> </p>
+  <br>
+  <% if current_user && (p.user_id == current_user.id)  %>
+  <p><%= button_to 'Delete', picture_path(p), method: 'delete' %></p>
+  <% end %>
   <hr>
 <% end %>

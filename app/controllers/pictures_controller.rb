@@ -7,11 +7,19 @@ class PicturesController < ApplicationController
   end
 
   def create
-    Picture.create(picture_parameters)
+    @picture = Picture.new(picture_parameters)
+    @picture.user_id = current_user.id
+    @picture.save
+    redirect_to pictures_path
+  end
+
+  def destroy
+    Picture.find(params[:id]).destroy
     redirect_to pictures_path
   end
 
   def picture_parameters
-    params.require(:picture).permit(:title, :description,:photo)
+    params.require(:picture).permit(:title, :description, :photo)
   end
+
 end

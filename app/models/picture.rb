@@ -3,4 +3,5 @@ class Picture < ActiveRecord::Base
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  belongs_to :user
 end

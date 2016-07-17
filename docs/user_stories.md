@@ -44,3 +44,14 @@ As a user of InstaRails
 So the comments on my pictures do not get overcrowded
 I want any user to only be able to leave one comment per picture
 ```
+
+Further thoughts: 
+show pictures by user
+can only add picture if signed in
+tags
+email sent when account created, updated, deleted
+Geolocator
+User/Admin
+like without reload
+show the name of who is signed in
+unique user
