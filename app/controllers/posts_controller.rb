@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+before_action :authenticate_user!, :except => [:index, :show]
 	def index
 		@posts = Post.all
 	end
@@ -9,17 +9,13 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		@post = Post.create(post_params)
-		# respond_to do |format|
-		# 	if @post.save
-		# 		format.html { redirect_to @post, notice: 'Post was successfully created.' }
-		# 		format.json { render :show, status: :created, location: @post }
-		# 	else
-		# 		format.html { render :new }
-		# 		format.json { render json: @post.errors, status: :unprocessable_entity }
-		# 	end
-		# end
-		redirect_to '/posts'
+		@post = Post.new(post_params)
+		@post.user_id = current_user.id
+		if @post.save
+			redirect_to '/posts'
+		else
+			render 'new'
+		end
 	end
 
 	def show

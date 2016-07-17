@@ -4,11 +4,14 @@
 
 <% @posts.each do |post| %>
 <%= image_tag post.image.url(:medium) %></br>
-<%= post.description %></br></br>
+<%= post.description %> posted by <%= post.user.email %></br></br>
+
 <%= link_to "Comment", new_post_comment_path(post) %></br>
+
+
 <ul>
 	<% post.comments.each do |c|  %>
-	<li><%= c.comments %></li>
+	<li> <%= c.user.email %> says: <%= c.comments %> </li>
 	<% end %>
 </ul>
 <% end %>

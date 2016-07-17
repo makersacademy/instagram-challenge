@@ -1,16 +1,19 @@
 require 'rails_helper'
 
 feature 'posts' do
+	before do
+		sign_up
+	end
+
 	context 'no posts have been added' do
 		scenario 'should display a prompt to add a post' do
-			visit '/posts'
+			visit '/'
 			expect(page).to have_link 'Add a post!'
 		end
 	end
 
 	context 'posts added without pictures' do
 		before :each do
-			visit '/posts'
 			click_on 'Add a post!'
 		end
 

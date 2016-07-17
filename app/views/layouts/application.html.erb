@@ -9,6 +9,17 @@
   </head>
 
   <body>
+    <p class="alert"><%= alert %></p>
+    <p class="notice"><%= notice %></p>
+
+    <% if user_signed_in? %>
+      <span>Welcome <%= current_user.email %></span>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign in', new_user_session_path %>
+      <%= link_to 'Sign up', new_user_registration_path %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
