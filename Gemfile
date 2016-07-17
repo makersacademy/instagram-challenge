@@ -13,8 +13,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   gem 'byebug'
-  gem 'factory_girl_rails'
-  gem 'database_cleaner'
 end
 
 group :development do
@@ -25,6 +23,10 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'shoulda-matchers'
+  gem 'rspec-collection_matchers'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 gem 'haml'
