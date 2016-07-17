@@ -15,6 +15,11 @@ feature 'Users' do
       expect(page).to have_link 'Sign in'
     end
 
+    scenario 'cannot create a post' do
+      visit '/'
+      expect(page).not_to have_link 'Add a picture'
+    end
+
     scenario 'page should not show "Sign out" link' do
       visit '/'
       expect(page).not_to have_link "Sign out"

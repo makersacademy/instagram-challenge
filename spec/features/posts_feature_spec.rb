@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'posts' do
+feature 'Posts' do
   context 'no posts have been added' do
     scenario 'should display a welcome message' do
       visit '/'
@@ -8,11 +8,10 @@ feature 'posts' do
     end
 
     scenario 'can add a new post' do
-      visit '/posts/new'
-      fill_in 'Caption', with: 'Pokemon GO'
-      attach_file 'post[image]', 'spec/asset_spec/photos/test_image.PNG'
-      click_on 'Create Post'
-      expect(page).to have_content 'Pokemon GO'
+      sign_up
+      post_a_picture
+      visit '/'
+      expect(page).to have_content 'testPicture'
       expect(page).to have_selector("img")
     end
   end

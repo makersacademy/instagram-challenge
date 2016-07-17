@@ -1,4 +1,7 @@
 
+<% if can? :create, Post %>
+  <%= link_to "Add a picture", new_post_path %>
+<% end %>
 
 <% if @posts.any? %>
   <ul id="posts">
@@ -6,6 +9,9 @@
       <li>
         <%= image_tag post.image.url(:medium) %>
         <%= post.caption %>
+        <% if can? :create, Comment %>
+          <%= link_to "Comment", post_path(post) %>
+        <% end %>
       </li>
     <% end %>
   </ul>
