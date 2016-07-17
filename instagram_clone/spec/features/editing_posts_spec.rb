@@ -15,4 +15,10 @@ feature 'Editing posts' do
     expect(page).to have_content('Post updated')
     expect(page).to have_content('oops. I needed to edit this')
   end
+
+  scenario "cannot edit a post without an image" do
+    attach_file('Image', 'spec/files/images/coffee.zip')
+    click_button 'Update Post'
+    expect(page).to have_content("Update failed.  Please check the form.")
+  end
 end
