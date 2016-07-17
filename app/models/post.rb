@@ -10,4 +10,7 @@ class Post < ApplicationRecord
 
   validates :title, length: { minimum: 3 }
   validates :image, presence: true
+
+  # belongs_to :user
+  has_many :comments, dependent: :destroy
 end
