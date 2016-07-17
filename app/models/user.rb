@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :commented_pictures, through: :comments, source: :picture
 
   def has_commented?(picture) 
-    commented_pictures.include? picture    
+    commented_pictures.include? picture
   end
 
 end
