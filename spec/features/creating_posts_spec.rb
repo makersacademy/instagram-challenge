@@ -3,11 +3,8 @@ require 'rails_helper'
 feature 'Creating posts' do
   context 'adding a post' do
     scenario 'you should see that post' do
-      sign_up
-      click_link 'New Post'
-      attach_file 'Image', "app/assets/images/coffee.jpg"
-      fill_in 'Caption', with: 'COFFEE'
-      click_button 'Create Post'
+      sign_in
+      add_post
       expect(page).to have_content 'COFFEE'
       expect(page).to have_css "img[src*='coffee.jpg']"
     end

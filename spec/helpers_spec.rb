@@ -14,3 +14,10 @@ def sign_in
   fill_in('Password', with: 'testtest')
   click_button('Login')
 end
+
+def add_post(caption = 'COFFEE')
+  click_link 'New Post'
+  attach_file 'Image', "app/assets/images/coffee.jpg"
+  fill_in 'Caption', with: caption
+  click_button 'Create Post'
+end

@@ -4,11 +4,15 @@
       .post
         .post-head
           .name
-            %p= username(post.user.email)
+            - if post.user != nil
+              %p= username(post.user.email)
         .image.center-block
           =link_to (image_tag post.image.url(:medium)), post_path(post)
         %p.caption
           = post.caption
+        - comments_for_post(post, @comments).each do |comment|
+          %p= comment.comment
+
 -else
   .row
     No Posts Yet

@@ -15,18 +15,8 @@ feature 'Users can sign in and out' do
   end
 
   context 'user signed in on the homepage' do
-
-    before do
-      visit '/'
-      click_link 'Sign Up'
-      fill_in('Email', with: 'test@example.com')
-      fill_in('Password', with: 'testtest')
-      fill_in('Password confirmation', with: 'testtest')
-      click_button('Sign Up')
-    end
-
     scenario 'should see the sign out link, and not see the login or sign up link' do
-      visit '/'
+      sign_in
       expect(page).to have_link 'Sign Out'
       expect(page).not_to have_link 'Sign Up'
       expect(page).not_to have_link 'Login'
