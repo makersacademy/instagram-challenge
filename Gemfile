@@ -30,4 +30,5 @@ end
 gem 'haml'
 gem 'simple_form'
 gem 'paperclip'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'sass-rails', '~> 5.0'
