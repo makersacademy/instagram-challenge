@@ -46,14 +46,16 @@ I want any user to only be able to leave one comment per picture
 ```
 
 Further thoughts: 
-editing pictures
-show pictures by user
-can only add picture if signed in
-notifications
-tags
-email sent when account created, updated, deleted
-Geolocator
-User/Admin
-like without reload
-show the name of who is signed in
-unique user
+  seed database
+  editing pictures
+  show pictures by user
+  can only add picture if signed in
+  notifications
+  tags
+  email sent when account created, updated, deleted
+  Geolocator
+  User/Admin
+  like without reload
+  show the name of who is signed in
+  unique user
+  pictures displayed in reverse order
