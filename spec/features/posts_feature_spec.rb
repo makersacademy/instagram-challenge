@@ -13,6 +13,8 @@ feature 'posts' do
     scenario 'uploads a picture' do
       create_post
       expect(page).to have_content 'PIC'
+      expect(page).to_not have_content 'Description_text'
+      expect(page).to have_content 'Post created successfully'
       expect(current_path).to eq posts_path
     end
 
@@ -21,28 +23,35 @@ feature 'posts' do
   end
 
   context 'viewing a post' do
-    let!(:pic){ Post.create(title:'PIC') }
-    scenario 'user can view a post' do
-      visit posts_path
+    scenario 'user can view a post with description' do
+      create_post
       click_link 'PIC'
       expect(page).to have_content 'PIC'
-      expect(current_path).to eq post_path(pic)
-      create_post
+      expect(page).to have_content 'Description_text'
     end
-
-    # scenario 'post has a description' do
-    # end
 
     # scenario 'users can add comments' do
     # end
   end
 
-  context "editing posts" do
-    scenario 'users can edit posts' do
+  context "editing a post" do
+    scenario 'user can edit a post' do
       create_post
       edit_post
       expect(page).to have_content 'edited PIC'
       expect(page).to have_content 'edited Description'
+      expect(page).to have_content 'Post updated successfully'
+    end
+  end
+
+  context "deleting a post" do
+    scenario 'user can delete a post' do
+      create_post
+      click_link 'PIC'
+      click_button 'Delete'
+      expect(page).not_to have_content 'PIC'
+      expect(page).not_to have_content 'Description_text'
+      expect(page).to have_content 'Post deleted successfully'
     end
   end
 end

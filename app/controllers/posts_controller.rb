@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
+    flash[:notice] = 'Post created successfully'
     redirect_to posts_path
   end
 
@@ -24,7 +25,15 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
+    flash[:notice] = 'Post updated successfully'
     redirect_to post_path(@post)
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = 'Post deleted successfully'
+    redirect_to posts_path
   end
 
   def post_params

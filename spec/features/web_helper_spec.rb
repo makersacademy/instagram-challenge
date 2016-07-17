@@ -3,6 +3,7 @@ def create_post
   click_button 'Add a Picture'
   attach_file "Image", "./docs/testing.jpg"
   fill_in 'Title', with: 'PIC'
+  fill_in 'Description', with: 'Description_text'
   click_button 'Post'
 end
 
