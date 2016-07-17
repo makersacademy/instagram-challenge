@@ -48,4 +48,17 @@ feature 'posts' do
     end
   end
 
+  context 'deleting posts' do
+
+    before { Post.create title: 'Title'}
+
+    scenario 'removes a post when a user clicks' do
+      visit '/posts'
+      click_link 'Delete'
+      expect(page).not_to have_content 'Title'
+      expect(page).to have_content 'Post deleted successfully'
+    end
+
+  end
+
 end
