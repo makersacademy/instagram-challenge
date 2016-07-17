@@ -1,0 +1,31 @@
+<% if @posts.any? %>
+
+  <div class="posts-wrapper" class="row">
+    <% @posts.each do |post| %>
+      <div class="post">
+        <div class="image" class="center-block">
+          <%= image_tag post.image.url(:medium), class:"img-responsive" %>
+        </div>
+          <div class="caption">
+            <%= post.caption %>
+          </div>
+          <% post.comments.each do |comment| %>
+            <div class="comment">
+              <p> Comment: <%= comment.comments %> </p>
+            </div>
+          <% end %>
+          <div class="edit-links">
+            <%= link_to "Comment", new_post_comment_path(post) %>
+            <%= link_to "Edit Post", edit_post_path(post) %>
+            <%= link_to "Delete Post", post_path(post), method: :delete %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <% else %>
+      No posts yet
+<% end %>
+
+
+-
