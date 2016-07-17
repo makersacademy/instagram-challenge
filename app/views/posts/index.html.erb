@@ -1,0 +1,29 @@
+<% if @posts.any? %>
+  <ul>
+  <% @posts.each do |post| %>
+  <li class='main_list'>
+    <div class='posts_list'>
+    <%= image_tag post.image.url(:medium) %>
+    <h3><%= post.title %></h2>
+    <p><%= post.description %></p>
+    <p><% post.comments.each_with_index do |comment, i| %>
+      <% if i == 0 || i == 1 || i == 2%>
+        <p class='index_comment'><%= comment.comment %> <em> by <%= comment.user.email %></em></p>
+        <br>
+        <%end%>
+        <%end%>
+      </p>
+    <br>
+    <%= link_to "#{ (post.comments.count - 3) < 0 ? 0 : (post.comments.count - 3)} more comments - ", post_path(post) %>
+    <%= link_to "New Comment", new_post_comment_path(post) %>
+
+  </div>
+  </li>
+  <% end %>
+  </ul>
+<% else %>
+  <h1 class='no_posts'>No posts yet</h1>
+<% end %>
+<div class='create_post'>
+<a href="/posts/new">Create a Post</a>
+</div>

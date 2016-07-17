@@ -1,0 +1,16 @@
+<div class='post'>
+<h1><%= @post.title %></h1>
+<%= image_tag @post.image.url(:large) %>
+<p><%= @post.description %></p>
+<p><%= @user.find(@post.user_id).email %> </p>
+<ul class='comments_list'>
+  <% @post.comments.each do |comment| %>
+    <li> <%= comment.comment %> by <em><%= @user.find(comment.user_id).email %></em> </li>
+  <% end %>
+</ul>
+<%= link_to "Comment", new_post_comment_path(@post) %>
+<% if @post.user == current_user %>
+  <%= link_to "Edit", edit_post_path(@post) %>
+  <%= link_to "Delete", post_path(@post), method: :delete %>
+<% end %>
+</div>
