@@ -21,11 +21,12 @@ feature 'posts' do
   end
 
   context 'viewing a post' do
+    let!(:pic){ Post.create(title:'PIC') }
     scenario 'user can view a post' do
-      create_post
-      find('.img_link').click
+      visit posts_path
+      click_link 'PIC'
       expect(page).to have_content 'PIC'
-      expect(current_path).to eq "/posts"
+      expect(current_path).to eq "/posts/#{pic.id}"
       create_post
     end
 
