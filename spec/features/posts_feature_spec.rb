@@ -20,7 +20,13 @@ feature 'posts' do
 
     scenario 'does not let user submit a title that is too short' do
       create_post_invalid_title
-      expect(page).not_to have_css 'h2', text: 'ha'
+      expect(page).not_to have_css 'h2', text: 'PI'
+      expect(page).to have_content 'error'
+    end
+
+    scenario 'does not let user submit without a image' do
+      create_post_no_image
+      expect(page).not_to have_css 'h2', text: 'PIC'
       expect(page).to have_content 'error'
     end
 

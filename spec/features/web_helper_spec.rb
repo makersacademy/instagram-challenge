@@ -7,6 +7,14 @@ def create_post
   click_button 'Post'
 end
 
+def create_post_no_image
+  visit posts_path
+  click_button 'Add a Picture'
+  fill_in 'Title', with: 'PIC'
+  fill_in 'Description', with: 'Description_text'
+  click_button 'Post'
+end
+
 def create_post_invalid_title
   visit posts_path
   click_button 'Add a Picture'
