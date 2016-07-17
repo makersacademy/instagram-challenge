@@ -21,6 +21,11 @@ feature 'posts' do
   end
 
   context 'creating posts and viewing them on the index page'  do
+
+    before do
+      sign_up
+    end
+
     scenario 'prompts user to fill out form, then displays the new post' do
       visit '/posts'
       click_link 'Add a post'
@@ -35,7 +40,8 @@ feature 'posts' do
 
   context 'editing posts title' do
     before do
-      Post.create(title: 'title')
+      sign_up
+      create_post
     end
 
   scenario 'let a user edit post title' do
@@ -50,7 +56,10 @@ feature 'posts' do
 
   context 'deleting posts' do
 
-    before { Post.create title: 'Title'}
+    before do
+      sign_up
+      create_post
+    end
 
     scenario 'removes a post when a user clicks' do
       visit '/posts'
@@ -61,4 +70,21 @@ feature 'posts' do
 
   end
 
+end
+
+
+def sign_up
+  visit '/'
+  click_link 'Sign up'
+  fill_in 'Email', with: 'b@mail.com'
+  fill_in 'Password', with: 'bbbbbb'
+  fill_in 'Password confirmation', with: 'bbbbbb'
+  click_button 'Sign up'
+end
+
+def create_post
+  click_link 'Add a post'
+  fill_in 'Title', with: 'Something'
+  attach_file('post_image', Rails.root + 'spec/fixtures/test_image.png')
+  click_button 'Create Post'
 end

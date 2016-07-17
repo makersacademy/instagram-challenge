@@ -12,6 +12,20 @@ feature 'User can sign in and out' do
       visit '/'
       expect(page).not_to have_link('Sign out')
     end
+
+    it 'can create posts only if logged in' do
+      visit('/')
+      click_link('Add a post')
+      expect(page).to have_content('Log in')
+    end
+
+    it 'can only edit/delete posts which it has created' do
+      sign_up
+      create_post
+      click_link('Sign out')
+      click_link('Delete')
+      expect(page).to have_content('Log in')
+    end
   end
 
   context 'user signed in on the homepage' do
