@@ -1,18 +1,19 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @posts = Post.all
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = current_user.posts.build(post_params)
    if @post.save
-     flash[:success]
-     redirect_to @post
+     flash[:success] = 'Your post has been created!'
+     redirect_to posts_path
    else
      flash[:alert]= 'You need an image to post'
      render :new
@@ -37,6 +38,12 @@ class PostsController < ApplicationController
      render :edit
    end
  end
+
+ def destroy
+  @post = Post.find(params[:id])
+  @post.destroy
+  redirect_to posts_path
+end
 
   private
 
