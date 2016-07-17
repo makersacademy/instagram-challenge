@@ -1,15 +1,8 @@
 require 'rails_helper'
 
 feature 'commenting' do
-  before do
-    visit '/'
-    click_link 'New Post'
-    attach_file 'Image', "spec/files/images/canada.jpg"
-    fill_in 'Caption', with: 'Snowboarding in Canada #winter'
-    click_button 'Create Post'
-  end
-
   scenario 'add a comment to a post' do
+    create_post
     visit '/posts'
     click_link 'Comment'
     fill_in "Comment", with: 'Amazing'
