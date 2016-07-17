@@ -5,7 +5,7 @@ feature 'posts' do
     scenario 'should display a prompt to add a post' do
       visit '/posts'
       expect(page).to have_content 'No posts yet'
-      expect(page).to have_link 'Add a picture'
+      expect(page).to have_button 'Add a Picture'
     end
   end
 
@@ -26,7 +26,7 @@ feature 'posts' do
       visit posts_path
       click_link 'PIC'
       expect(page).to have_content 'PIC'
-      expect(current_path).to eq "/posts/#{pic.id}"
+      expect(current_path).to eq post_path(pic)
       create_post
     end
 
@@ -35,5 +35,14 @@ feature 'posts' do
 
     # scenario 'users can add comments' do
     # end
+  end
+
+  context "editing posts" do
+    scenario 'users can edit posts' do
+      create_post
+      edit_post
+      expect(page).to have_content 'edited PIC'
+      expect(page).to have_content 'edited Description'
+    end
   end
 end
