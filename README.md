@@ -1,15 +1,88 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Weekend Challenge - Week 8
 
-Task
+
+Set Up
+--------
+
+```
+$ git clone git@github.com:riyapabari/instagram-challenge.git
+$ cd instagram-challenge
+$ gem install bundler
+$ bundle
+$ bin/rake db:setup
+$ rspec
+```
+
+How to run the program
+--------
+```
+$ bin/rails s
+$ open http://localhost:3000
+```
+
+Screenshots
+--------
+![Main scree](http://i.imgur.com/ZrMD98x.png?1)
+
+Still To Do
+---
+* Add username to devise login
+* Allow a user to delete a post
+* Limit each user to 1 like per photo
+* Host photos on AWS
+
+User Stories
+--------
+
+```
+As a user 
+So that I can set up a profile
+I can sign up with an email, password, and a unique username
+```
+```
+As a user
+So that I can be in control of my account
+I can sign in and sign out
+```
+```
+As a user 
+So that I can share moments with my friends
+I can post a photo
+```
+```
+As a user
+So that I can share moments with my friends
+I can see photos they have posted on the home page
+```
+
+```
+As a user
+So that I know who has posted each photo
+Users can only post a photo once I have signed up/logged in
+```
+
+```
+As a user
+So that I can be funny
+I can add captions to my photos
+```
+```
+As a user
+So that I can show my friends some love
+I can like my friends' photos
+```
+
+```
+As a user
+So that I can respond to photos that my friends post
+I can make multiple comments on my friends' photos
+```
+
+
+Brief
 -----
 
 Build Instagram: Simple huh!
