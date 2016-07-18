@@ -16,12 +16,19 @@ def create_post_two
   click_button 'Create Post'
 end
 
-
-
 def create_post
   visit '/'
   click_link 'New Post'
   attach_file('Image', "spec/files/images/coffee.jpg")
   fill_in 'Caption', with: 'nom nom nom #coffeetime'
   click_button 'Create Post'
+end
+
+def sign_in
+  visit root_path
+  expect(page).to_not have_content('New Post')
+  click_link "Login"
+  fill_in 'Email', with: 'test@test.co.uk'
+  fill_in 'Password', with: 'testytest'
+  click_button 'Log in'
 end
