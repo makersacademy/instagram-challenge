@@ -7,7 +7,7 @@ feature 'endorsing comments' do
      add_post
    end
 
-   scenario 'a user can endorse a post, and updates the endorsement count' do
+   xscenario 'a user can endorse a post, and updates the endorsement count' do
      click_link 'Endorse Post'
      expect(page).to have_content '1 endorsement'
    end
