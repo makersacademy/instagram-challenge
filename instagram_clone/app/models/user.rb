@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
 
-  belongs_to :user
   has_many :posts, dependent: :destroy   
 
   # Include default devise modules. Others available are:
