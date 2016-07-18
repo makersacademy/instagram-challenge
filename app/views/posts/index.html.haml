@@ -1,18 +1,17 @@
 -if @post.any?
   -@post.each do |post|
     .posts-wrapper.row
-      .post
+      .post{id: "post_#{post.id}"}
         .post-head
           .name
-            - if post.user != nil
-              %p= username(post.user.email)
+            %p= username(post.user.email)
         .image.center-block
           =link_to (image_tag post.image.url(:medium)), post_path(post)
         %p.caption
           = post.caption
-        - comments_for_post(post, @comments).each do |comment|
-          %p= comment.comment
-          %p= user(comment.user_id)
+          - post.comments.each do |comment|
+            %p= comment.comment
+            %p= "&nbsp;&nbsp;&nbsp;".html_safe + username(comment.user.email)
 
 -else
   .row

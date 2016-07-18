@@ -1,10 +1,5 @@
 class CommentsController < ApplicationController
 
- def index
-   create
-  #  redirect_to action: "create", id: params[:id]
- end
-
   def new
     @post = Post.find(params[:id])
     @comment = Comment.new
