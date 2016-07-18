@@ -35,12 +35,15 @@ gem "paperclip", "~> 5.0.0"
 
 gem "simple_form"
 
+gem "devise"
+
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'autoprefixer-rails'
 
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'factory_girl'
 end
 
 group :development, :test do
