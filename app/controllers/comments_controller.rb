@@ -28,6 +28,7 @@ class CommentsController < ApplicationController
   def create
     @image = Image.find(params[:image_id])
     @comment = Comment.new(comment_params)
+    @comment.image_id = @image.id
 
     respond_to do |format|
       if @comment.save
