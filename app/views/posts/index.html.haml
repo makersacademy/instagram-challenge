@@ -1,0 +1,14 @@
+%a(href='/posts/new') Add a post
+%br
+
+- if @posts.any?
+  - @posts.reverse.each do |post|
+    =image_tag post.image.url(:regular)
+    %h2= post.title
+    - post.comments.reverse.each do |comment|
+      %h4= comment.thoughts
+    %br= link_to "Add a comment", new_post_comment_path(post)
+    = link_to 'Edit', edit_post_path(post)
+    %br= link_to "Delete", post_path(post), method: :delete
+- else
+  %h1 No posts yet
