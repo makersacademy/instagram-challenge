@@ -1,22 +1,19 @@
-
-
-
 <% @posts.each do |post| %>
-<div class="post">
-<%= image_tag post.image.url(:high) %></br>
-<%= post.description %> posted by <%= post.user.email %></br>
+	<div class="post">
+		<%= image_tag post.image.url(:high) %></br>
+		<%= post.description %> posted by <%= post.user.email %></br>
 
-<% if current_user %>
-	<%= post.endorsements.count %><%= link_to '&#x1F496;'.html_safe, "/posts/#{post.id}/endorsements/", method: :post %>
-	<%= link_to "Comment", new_post_comment_path(post) %>
-<% else %>
-	<p><%= post.endorsements.count %> &#x1F496;</p>
-<% end %>
+		<% if current_user %>
+			<%= post.endorsements.count %><%= link_to '&#x1F496;'.html_safe, "/posts/#{post.id}/endorsements/", id: 'heart_link', method: :post %>
+			<%= link_to "Comment", new_post_comment_path(post) %>
+		<% else %>
+			<p><%= post.endorsements.count %> &#x1F496;</p>
+		<% end %>
 
-<ul>
-	<% post.comments.each do |c|  %>
-	<li> <%= c.user.email %> says: <%= c.comments %> </li>
-	<% end %>
-</ul>
-</div>
+		<ul>
+			<% post.comments.each do |c|  %>
+				<li> <%= c.user.email %> says: <%= c.comments %> </li>
+			<% end %>
+		</ul>
+	</div>
 <% end %>
