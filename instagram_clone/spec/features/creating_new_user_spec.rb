@@ -11,7 +11,7 @@ feature 'Creating a new user' do
     expect(page).to have_content('Welcome! You have signed up successfully.')
   end
 
-  scenario 'requires a user name to successfully create an account' do
+  scenario 'requires a username to successfully create an account' do
     fill_in 'Email', with: 'thisisfun@hotmail.com'
     fill_in 'Password', with: 'supersecret', match: :first
     fill_in 'Password confirmation', with: 'supersecret'
@@ -20,7 +20,7 @@ feature 'Creating a new user' do
     expect(page).to have_content("can't be blank")
  end
 
- scenario 'requires a user name to be more than 4 characters' do
+ scenario 'requires a username to be more than 4 characters' do
    fill_in 'User name', with: 'h'
    fill_in 'Email', with: 'thisisfun@hotmail.com'
    fill_in 'Password', with: 'supersecret', match: :first
@@ -30,7 +30,7 @@ feature 'Creating a new user' do
    expect(page).to have_content('minimum is 4 characters')
  end
 
- scenario 'requires a user name to be less than 16 characters' do
+ scenario 'requires a username to be less than 16 characters' do
     fill_in 'User name', with: 'h' * 17
     fill_in 'Email', with: 'thisisfun@hotmail.com'
     fill_in 'Password', with: 'supersecret', match: :first
