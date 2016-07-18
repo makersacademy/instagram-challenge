@@ -30,18 +30,17 @@ feature 'User can sign in and out' do
 
   context 'user signed in on the homepage' do
     before do
-      visit '/'
-      click_link('Sign up')
-      fill_in('Email', with:'a@mail.com')
-      fill_in('Password', with: 'aaaaaa')
-      fill_in('Password confirmation', with: 'aaaaaa')
-      click_button('Sign up')
+      sign_up
     end
 
     it 'should see \'sign out \' link' do
-      visit '/'
       expect(page).not_to have_link('Sign in')
       expect(page).not_to have_link('Sign up')
     end
+
+    it 'should see it\'s username displayed' do
+      expect(page).to have_content('babyboo')
+    end
+
   end
 end

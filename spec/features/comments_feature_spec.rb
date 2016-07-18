@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 feature 'leaving comments' do
-  before { Post.create title: 'Title'}
+  before do
+    sign_up
+    create_post
+  end
 
   scenario 'allows users to leave a review using a form' do
     visit '/posts'

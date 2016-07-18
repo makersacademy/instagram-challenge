@@ -97,3 +97,19 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def sign_up
+  visit '/'
+  click_link 'Sign up'
+  fill_in 'Email', with: 'b@mail.com'
+  fill_in 'Password', with: 'bbbbbb'
+  fill_in 'Password confirmation', with: 'bbbbbb'
+  click_button 'Sign up'
+end
+
+def create_post
+  click_link 'Add a post'
+  fill_in 'Title', with: 'Something'
+  attach_file('post_image', Rails.root + 'spec/fixtures/test_image.png')
+  click_button 'Create Post'
+end
