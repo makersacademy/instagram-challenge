@@ -1,0 +1,19 @@
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <h2><%= image_tag post.image.url(:large) %></h2>
+    <h3><%= link_to post.caption, post_path(post) %></h3>
+
+
+    <%  post.comments.each do |comment| %>
+      <%= "Comments: #{comment.thoughts}" %><br />
+    <% end %>
+
+    <%= link_to "Comment", new_post_comment_path(post) %>
+    <%= link_to "Edit post", edit_post_path(post) %>
+    <%= link_to "Delete post", post_path(post), method: :delete %>
+  <% end %>
+<% else %>
+  No posts yet
+<% end %>
+
+<a href='posts/new'>Add a post</a>
