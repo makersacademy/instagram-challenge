@@ -23,7 +23,7 @@ $ open http://localhost:3000
 
 Screenshots
 --------
-[Imgur](http://i.imgur.com/ZrMD98x.png?1)
+![Main scree](http://i.imgur.com/ZrMD98x.png?1)
 
 Still To Do
 ---
