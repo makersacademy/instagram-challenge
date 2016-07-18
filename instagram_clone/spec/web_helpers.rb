@@ -6,7 +6,6 @@ def sign_up
   fill_in('Password', with: 'testytest', :match => :prefer_exact)
   fill_in('Password confirmation', with: 'testytest', :match => :prefer_exact)
   click_button 'Sign up'
-  p current_path
 end
 
 def create_post_two
