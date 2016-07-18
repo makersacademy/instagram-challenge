@@ -10,6 +10,8 @@ Set Up
 ```
 $ git clone git@github.com:riyapabari/instagram-challenge.git
 $ cd instagram-challenge
+$ gem install bundler
+$ bundle
 $ bin/rake db:setup
 $ rspec
 ```
