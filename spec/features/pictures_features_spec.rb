@@ -28,12 +28,12 @@ describe 'Pictures features' do
   end
 
 
-  context 'when a picture has been created' do
+  context 'when a picture has been created by another user' do
   
     before do
-      create_account('user_email' => 't@t.c', 
-                     'user_password' => '123456',
-                     'user_password_confirmation' => '123456')
+      user = FactoryGirl.create(:user)
+      login_as(user, scope: :user)
+
 
       #create picture
       visit('/pictures/new')

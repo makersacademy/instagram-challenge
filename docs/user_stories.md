@@ -46,6 +46,7 @@ I want any user to only be able to leave one comment per picture
 ```
 
 Further thoughts: 
+  update readme
   seed database
   editing pictures
   show pictures by user
