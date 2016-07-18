@@ -3,6 +3,35 @@ Instagram Challenge
 
 Weekend Challenge - Week 8
 
+
+Set Up
+--------
+
+```
+$ git clone git@github.com:riyapabari/instagram-challenge.git
+$ cd instagram-challenge
+$ bin/rake db:setup
+$ rspec
+```
+
+How to run the program
+--------
+```
+$ bin/rails s
+$ open http://localhost:3000
+```
+
+Screenshots
+--------
+![Alt text](/public/images/Screenshot.jpg?raw=true)
+
+Still To Do
+---
+* Add username to devise login
+* Allow a user to delete a post
+* Limit each user to 1 like per photo
+* Host photos on AWS
+
 User Stories
 --------
 
@@ -50,15 +79,8 @@ So that I can respond to photos that my friends post
 I can make multiple comments on my friends' photos
 ```
 
-Still To Do
----
-* Add username
-* Delete a post
-* AWS
-* Limit 1 like per user
 
-
-Task
+Brief
 -----
 
 Build Instagram: Simple huh!
