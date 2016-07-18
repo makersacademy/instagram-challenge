@@ -16,4 +16,13 @@ feature 'Creating posts' do
     click_button 'Create Post'
     expect(page).to have_content('You need an image to post')
   end
+
+  scenario 'an image shows the username of the user' do
+    user = FactoryGirl.create(:user)
+    post = FactoryGirl.create(:post, user: user)
+    login_as(user, scope: :user)
+    visit post_path(post)
+    expect(page).to have_content(user.user_name)
+
+  end
 end
