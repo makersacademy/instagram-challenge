@@ -31,8 +31,9 @@ describe 'Pictures features' do
   context 'when a picture has been created by another user' do
   
     before do
-      user = FactoryGirl.create(:user)
-      login_as(user, scope: :user)
+      user1 = FactoryGirl.create(:user)
+      user2 = FactoryGirl.create(:user, email: '2@2.2')
+      login_as(user1, scope: :user)
 
 
       #create picture
@@ -41,10 +42,8 @@ describe 'Pictures features' do
       fill_in('Description', with: 'me and my friends havin a blast')
       click_button('Save Picture')
 
-      click_link('Sign out')
-      create_account('user_email' => 'f@f.f', 
-                     'user_password' => '123456',
-                     'user_password_confirmation' => '123456')
+      logout(user1)
+      login_as(user2, scope: :user)
     end
 
     #US2
