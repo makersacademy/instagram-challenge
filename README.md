@@ -1,23 +1,51 @@
-Instagram Challenge
-===================
+# Instababy
 
-Instructions
--------
-* Challenge time: Friday, the entire day + the weekend if you need it
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Introduction
 
-Task
------
+📷
 
-Build Instagram: Simple huh!
+Instababy is an Instagram clone that provides a platform for users to post and comment on photos.
 
-Bonus if you can write your own set of sensible user stories!
+![Imgur](http://imgur.com/MV7HYcU.png)
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+## Features
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+* Post a photo with a description
+* User can edit the description or delete their photo
+* User can comment on a photo
+* User can like a photo
 
-Bonus if you can add filters!
+## Instructions
+
+To install and use locally:
+
+
+```
+$ git clone git@github.com:sitypop/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle
+$ rake db:create
+$ rake db:migrate
+$ rails s
+```
+
+Then, in your browser, type in `http://localhost:3000`
+
+
+## Testing
+
+This project is test-driven with RSpec-Capybara. To run all the tests, simply run `rspec` in your terminal.
+
+## Tools
+
+* Ruby on Rails
+* RSpec-Capybara
+* Active Record
+* Devise
+* PostgreSQL database
+* Paperclip
+* Heroku
+
+## Author
+
+Sity Shah
