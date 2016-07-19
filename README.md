@@ -6,7 +6,7 @@
 
 Instababy is an Instagram clone that provides a platform for users to post and comment on photos.
 
-![Imgur](http://imgur.com/vgr1qXf.png)
+![Imgur](http://imgur.com/LVRT8aT.png)
 
 ## Features
 
