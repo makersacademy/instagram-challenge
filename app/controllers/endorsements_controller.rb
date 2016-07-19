@@ -2,9 +2,8 @@ class EndorsementsController < ApplicationController
 
 	def create
 		@post = Post.find(params[:post_id])
-		@endorsement = Endorsement.create
-		@post.endorsements << @endorsement
-		redirect_to '/'
+		@post.endorsements.create
+		render json: {new_endorsement_count: @post.endorsements.count}
 	end
 
 end

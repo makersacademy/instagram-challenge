@@ -50,6 +50,8 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 gem 'rails_12factor', group: :production
