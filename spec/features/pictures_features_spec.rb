@@ -26,49 +26,4 @@ describe 'Pictures features' do
       expect(page).to have_content('me and my friends havin a blast')
     end
   end
-
-
-  context 'when a picture has been created by another user' do
-  
-    before do
-      user1 = FactoryGirl.create(:user)
-      user2 = FactoryGirl.create(:user, email: '2@2.2')
-      login_as(user1, scope: :user)
-
-
-      #create picture
-      visit('/pictures/new')
-      fill_in('Title', with: 'lovely pic')
-      fill_in('Description', with: 'me and my friends havin a blast')
-      click_button('Save Picture')
-
-      logout(user1)
-      login_as(user2, scope: :user)
-    end
-
-    #US2
-    #As a user of InstaRails
-    #So I can express my opinions on pictures
-    #I want to add a comment for a picture
-    scenario('user adds a comment to a picture, this is shown on pictures index page') do
-      visit('/pictures')
-      click_link('Add comment')
-      fill_in('Comment', with: 'lovely shot')
-      click_button('Submit')
-      expect(page).to have_content('lovely shot')
-    end
-
-    #US3
-    #As a user of InstaRails
-    #So I can quickly express my opinions on pictures
-    #I want to add a like for a picture
-    scenario 'user adds a like to a picture, Likes count is updated' do
-      visit('/pictures')
-      expect(page).to have_content('Like 0')
-      click_link('Like')
-      expect(page).to have_content('Like 1')
-    end
-
-  end
-
 end
