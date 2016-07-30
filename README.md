@@ -8,7 +8,7 @@ Installation
 * rake db:setup
 * rake db:migrate
 * rails s (to run on a local host; visit http:/localhost:3000)
-(rspec to check the tests)
+* rspec (to check the tests)
 
 Instructions
 -------
