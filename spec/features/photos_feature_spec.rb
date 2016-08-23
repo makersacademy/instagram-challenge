@@ -9,7 +9,10 @@ feature 'Photos' do
       expect(page).to have_content 'No photos uploaded yet!'
       expect(page).to have_link('Upload photo')
     end
-  
+
+    scenario 'when photos have been added I want to view individual photo' do
+
+
   end
 
   context 'creating photos' do
