@@ -1,23 +1,59 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+An instagram clone developed using the Ruby on Rails framework.
 
-Task
------
+Installation
+------------
 
-Build Instagram: Simple huh!
+Running the app
+---------------
 
-Bonus if you can write your own set of sensible user stories!
+User stories
+------------
+```
+As a photographer
+So that I can show everyone my awesome life
+I want to be able to post pictures
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+As a photographer
+So that I can show where my pictures were taken
+I want to be able to add a description to a picture
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a photographer
+So that I only show my favourite pictures
+I want to be able to delete a picture
+```
+```
+As a user
+So that I can be jealous of my friends
+I want to be able to view pictures
 
-Bonus if you can add filters!
+As a user
+So that I can give my opinion
+I want to be able to comment on pictures
+
+As a user
+So that I can show my love for pictures
+I want to be able to like a picture
+
+```
+
+Bonus user stories
+------------------
+```
+As a photographer
+So that others can find my pictures
+I would like to be able to add tags
+
+As a photographer
+So that I can make my pictures look better
+I would like to be able to add filters to a pictures
+
+As a user
+So that I can easily find interests of mine
+I would like to be able to search for pictures by tags
+```
+
+Technologies
+------------
