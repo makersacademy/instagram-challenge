@@ -1,2 +1,9 @@
-<h1>No posts yet</h1>
-<a href='#'> Add a post</a>
+
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <h3><%= post.title %></h3>
+  <% end %>
+<%else %>
+  <h1>No posts yet</h1>
+  <%= link_to "New post", new_post_path %>
+<% end %>
