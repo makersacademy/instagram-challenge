@@ -21,4 +21,12 @@ feature "posts" do
     end
   end
 
+  scenario "adding images" do
+    visit "/posts"
+    click_link "Add an image"
+    fill_in "Caption", with: "Selfie"
+    click_button "Upload image"
+    expect(page).to have_content "Selfie"
+  end
+
 end
