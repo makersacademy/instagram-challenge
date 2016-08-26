@@ -1,6 +1,7 @@
 class FeedController < ApplicationController
 
   def index
+    @photos = Photo.all
   end
 
 end

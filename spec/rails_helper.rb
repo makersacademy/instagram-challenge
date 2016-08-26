@@ -6,6 +6,7 @@ require 'spec_helper'
 require 'rspec/rails'
 
 require_relative 'spec_helpers/user_helpers'
+require_relative 'spec_helpers/photo_helpers'
 
 ActiveRecord::Migration.maintain_test_schema!
 
