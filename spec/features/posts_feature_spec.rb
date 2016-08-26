@@ -10,4 +10,15 @@ feature "posts" do
     end
   end
 
+  context "posts made" do
+    before do
+      Post.create(caption: "Selfie")
+    end
+    scenario "user can view posts" do
+      visit "/posts"
+      expect(page).to have_content "Selfie"
+      expect(page).not_to have_content "No posts yet"
+    end
+  end
+
 end
