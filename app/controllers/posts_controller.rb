@@ -21,8 +21,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params)
-    redirect_to posts_path
+    @post = current_user.posts.build(post_params)
+    if @post.save
+      redirect_to posts_path
+    else
+      flash[:alert] = "Couldn't create post. Please ensure the form is filled correctly"
+      render :new
+    end
   end
 
   private
