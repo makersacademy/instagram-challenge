@@ -1,7 +1,7 @@
 Welcome to BubHub.
 %br
 %br
-Please post a photo, and remember YOU ARE NOT GOING INSANE. YOU ARE JUST TIRED.
+Please post a photo.
 %br
 %br
 = link_to 'post', new_post_path
@@ -9,8 +9,12 @@ Please post a photo, and remember YOU ARE NOT GOING INSANE. YOU ARE JUST TIRED.
 %br
 - if @posts.any?
   - @posts.each do |post|
-    = post.caption
     = image_tag post.image.url(:thumb)
+    = post.caption
+      - if post.comments.any?
+        - post.comments.each do |comment|
+        %h4= comment.thoughts
     = link_to 'delete', post_path(post), method: :delete
+    = link_to 'comment', new_post_comment_path(post)
 - else
   No posts yet.
