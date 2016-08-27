@@ -1,23 +1,33 @@
-Instagram Challenge
+Instagram Challenge   [![Build Status](https://travis-ci.org/nomi811/instagram-challenge.svg?branch=master)](https://travis-ci.org/nomi811/instagram-challenge)
 ===================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Author
+Nomi Vos
 
-Task
------
+### User stories
 
-Build Instagram: Simple huh!
+```
+As a new user
+So that I can start using Instagram
+I want to be able to sign up to the app
 
-Bonus if you can write your own set of sensible user stories!
+As a new user
+So that I can use Instagram
+I want to be able to sign in
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+As a user
+So that I can keep my account secure
+I want to be able to sign out
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a user
+So that I can post pictures
+I want to be able to download a picture
 
-Bonus if you can add filters!
+As a user
+So that I can connect with my friends
+I want to be able to write acomment on my picture
+
+As a user
+So that I can show my opinion
+I want to be able to like a picture
+```
