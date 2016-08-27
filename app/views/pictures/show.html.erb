@@ -1,0 +1,25 @@
+<%= image_tag @picture.image.url(:medium), alt: @picture.caption %>
+<%= @picture.caption %>
+<% if current_user && @picture.user == current_user %>
+  <%= link_to 'Edit', edit_picture_path(@picture) %>
+  <%= link_to 'Delete', @picture, method: :delete %>
+<% end %>
+
+<% if @picture.comments.any? %>
+  <ul>
+    <% @picture.comments.each do |comment| %>
+      <li>
+        <%= comment.thoughts %>
+        <% if current_user && comment.user_id == current_user.id %>
+          <%= link_to 'Delete comment', [comment.picture, comment], method: :delete %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No comments</p>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= link_to 'Comment', new_picture_comment_path(@picture) %>
+<% end %>
