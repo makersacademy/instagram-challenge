@@ -10,7 +10,7 @@ feature 'comments' do
 
   scenario 'a user can write a comment on a post' do
     visit posts_path
-    click_link 'Comment'
+    click_link '✎'
     fill_in 'comment[comment_text]', with: "I love Jack's Point!"
     click_button 'Post'
     expect(page).to have_content "I love Jack's Point!"
