@@ -33,4 +33,39 @@ end
       expect(current_path).to eq '/photographs'
     end
   end
+
+  context 'viewing photographs' do
+
+    let!(:ocean){ Photograph.create(name:'ocean') }
+
+    scenario 'lets a user view a photographs' do
+      visit '/photographs'
+      click_link 'ocean'
+      expect(page).to have_content 'ocean'
+      expect(current_path).to eq "/photographs/#{ocean.id}"
+    end
+
+  context 'editing photographs name' do
+
+    scenario 'let a user edit a photographs name' do
+      visit '/photographs'
+      click_link 'Edit ocean'
+      fill_in 'Name', with: 'Great blue sea'
+      click_button 'Update Photograph'
+      expect(page).to have_content 'Great blue sea'
+      expect(current_path).to eq '/photographs'
+    end
+  end
+
+  context 'deleting photographs' do
+
+    scenario 'removes a photographs when a user clicks a delete link' do
+      visit '/photographs'
+      click_link 'Delete ocean'
+      expect(page).not_to have_content 'ocean'
+      expect(page).to have_content 'Photograph deleted successfully'
+    end
+
+end
+end
 end

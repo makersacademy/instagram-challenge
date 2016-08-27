@@ -1,7 +1,8 @@
 <% if @photographs.any? %>
   <% @photographs.each do |photograph| %>
-    <%= image_tag photograph.image.url(:medium) %>
-    <h2> <%= photograph.name %> </h2>
+    <%= link_to image_tag(photograph.image.url(:thumb)), photograph_path(photograph), :method => :get %>
+    <h2> <%= link_to photograph.name, photograph_path(photograph) %> </h2>
+    <p><%= link_to "Edit #{photograph.name}", edit_photograph_path(photograph) %> <%= link_to "Delete #{photograph.name}", photograph_path(photograph), method: :delete %></p><br>
   <% end %>
 <% else %>
   No photographs yet
