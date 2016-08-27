@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :find_by_params, only: [:show, :edit, :update, :destroy]
+
   def index
     @posts = Post.all
   end
@@ -14,16 +16,19 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
     @post.update(post_params)
+    redirect_to posts_path
+  end
+
+  def destroy
+    @post.destroy
+    flash[:notice] = 'Post deleted successfully'
     redirect_to posts_path
   end
 
@@ -31,6 +36,11 @@ class PostsController < ApplicationController
 
   def post_params
       params.require(:post).permit(:title, :description)
+  end
+
+  def find_by_params
+    @post = Post.find(params[:id])
+
   end
 
 end

@@ -33,18 +33,29 @@ feature 'posts' do
 
   context 'editing posts' do
 
-  before { create_post }
+    before { create_post }
 
-  scenario 'let a user edit a post' do
-   visit '/posts'
-   click_link 'Edit First post'
-   fill_in 'Title', with: 'Updated First post'
-   fill_in 'Description', with: 'even more great'
-   click_button 'Create Post'
-   expect(page).to have_content 'Updated First post'
-   expect(current_path).to eq '/posts'
+    scenario 'let a user edit a post' do
+     visit '/posts'
+     click_link 'Edit First post'
+     fill_in 'Title', with: 'Updated First post'
+     fill_in 'Description', with: 'even more great'
+     click_button 'Create Post'
+     expect(page).to have_content 'Updated First post'
+     expect(current_path).to eq '/posts'
+    end
   end
+  context 'deleting posts' do
 
-end
+    before { create_post }
+
+    scenario 'removes a post when a user clicks a delete link' do
+      visit '/posts'
+      click_link 'Delete First post'
+      expect(page).not_to have_content 'First post'
+      expect(page).to have_content 'Post deleted successfully'
+    end
+
+  end
 
 end
