@@ -1,0 +1,17 @@
+<%= link_to("Add an Image", new_image_path) %>
+<% if @images.any? %>
+  <ul>
+  <% @images.each do |image| %>
+    <li>
+      <%= image_tag image.image.url(:thumb) %>
+      <%= image.description %><br>
+      <%= image.title %>
+      <%= link_to("Edit Text", edit_image_path(image)) %>
+      <%= link_to("View Image", image_path(image)) %>
+
+    </li>
+  <% end %>
+    </ul>
+<% else %>
+  <h1>No images have been uploaded yet!</h1>
+<% end %>
