@@ -6,11 +6,14 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.paperclip_defaults = {
     :storage => :s3,
+    :s3_region => ENV['AWS_REGION'],
     :s3_credentials => {
       :bucket => ENV['S3_BUCKET_NAME'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-    }
+    },
+    :url =>':s3_domain_url',
+    :path => '/:class/:attachment/:id_partition/:style/:filename'
   }
 
   config.cache_classes = false
