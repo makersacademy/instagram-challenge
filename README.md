@@ -1,7 +1,7 @@
 Instagram Challenge
 ===================
 
-- Challenge time
+- Challenge time limit
   - 2 days (weekend)
 - Challenge requirements
   - Ruby on Rails

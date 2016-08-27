@@ -19,6 +19,7 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
+    @comment = Comment.new
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end

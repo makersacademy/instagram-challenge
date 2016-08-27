@@ -1,2 +1,7 @@
 = render partial: 'photos/photo_view', locals: { photo: @photo }
 = render partial: 'photos/photo_actions', locals: { photo: @photo }
+- @photo.comments.each do |comment|
+  = render partial: 'comments/comment_view', locals: { comment: comment}
+  %br/
+- if user_signed_in?
+  = render partial: 'comments/comment_form', locals: { '@comment': @comment }

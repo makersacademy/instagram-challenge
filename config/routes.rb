@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :photos do
+    resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create]
   end
 
