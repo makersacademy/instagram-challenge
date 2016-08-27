@@ -12,4 +12,9 @@ RSpec.describe User, type: :model do
     expect(user).to have(1).error_on(:username)
   end
 
+  it 'creates a Feed upon registration' do
+    user = User.new(email: 'test@test.com', password: 'password', username: 'arukomp')
+    expect{ user.save }.to change(Feed, :count).by(1)
+  end
+
 end
