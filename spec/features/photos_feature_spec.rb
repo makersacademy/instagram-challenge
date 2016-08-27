@@ -17,8 +17,9 @@ feature 'Photos' do
     end
 
     scenario 'user can post a new photo' do
-      sign_up
+      sign_up(username: 'arukomp')
       create_photo(photo_url: 'something.png', description: 'helooo')
+      expect(current_path).to eq '/arukomp'
       expect(page).to have_content 'helooo'
       expect(page).to have_xpath("//img[contains(@src, 'something.png')]")
     end

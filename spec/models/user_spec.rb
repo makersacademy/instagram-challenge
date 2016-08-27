@@ -12,6 +12,14 @@ RSpec.describe User, type: :model do
     expect(user).to have(1).error_on(:username)
   end
 
+  it 'username is unique' do
+    User.create(email: 'test@test.com', password: 'password', username: 'arukomp')
+    user = User.create(email: 'another@test.com', password: 'password', username: 'arukomp')
+    expect(user).to have(1).error_on(:username)
+  end
+
+  it { is_expected.to validate_uniqueness_of(:username).case_insensitive }
+
   it 'creates a Feed upon registration' do
     user = User.new(email: 'test@test.com', password: 'password', username: 'arukomp')
     expect{ user.save }.to change(Feed, :count).by(1)

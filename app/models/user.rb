@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_one :feed
 
   validates :username, presence: true
+  validates_uniqueness_of :username, case_sensitive: false
 
   private
 

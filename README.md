@@ -2,9 +2,12 @@ Instagram Challenge
 ===================
 
 - Challenge time
-  2 days (weekend)
+  - 2 days (weekend)
 - Challenge requirements
-  Ruby on Rails
+  - Ruby on Rails
+- Development practices used
+  - TDD
+  - Agile
 
 
 User stories

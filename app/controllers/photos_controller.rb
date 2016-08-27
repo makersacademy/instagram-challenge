@@ -7,13 +7,14 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
+    @photo = current_user.feed.photos.build(photo_params)
+    @photo.user = current_user
     if @photo.save
       flash[:notice] = "Photo has been successfully added"
     else
       flash[:error] = "There's been an error adding your photo"
     end
-    redirect_to root_path
+    redirect_to "/#{current_user.username}"
   end
 
   def show
