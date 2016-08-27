@@ -11,15 +11,15 @@ Instagram Challenge
   * Agile
 
 ## Features
-* Sign in / Sign up - :heavy_check_mark:
-* Posting photos - :construction: (todo: use AWS)
-* Editing/deleting photos - :heavy_check_mark:
-* Liking photos - :heavy_check_mark:
-* Posting/deleting comments - :heavy_check_mark:
-* Viewing individual users - :heavy_check_mark:
-* Following/unfollowing users - :heavy_check_mark:
-* User feed includes photos from followed users - :heavy_check_mark:
-* Viewing the list of active users - :heavy_check_mark:
+* :heavy_check_mark: Sign in / Sign up
+* :construction: Posting photos - (todo: use AWS)
+* :heavy_check_mark: Editing/deleting photos
+* :heavy_check_mark: Liking photos
+* :heavy_check_mark: Posting/deleting comments
+* :heavy_check_mark: Viewing individual users
+* :heavy_check_mark: Following/unfollowing users
+* :heavy_check_mark: User feed includes photos from followed users
+* :heavy_check_mark: Viewing the list of active users
 
 ## How to run
 1. Clone this repository
