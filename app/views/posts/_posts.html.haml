@@ -1,0 +1,19 @@
+.posts-wrapper.row
+  - @posts.each do |post|
+    .post
+      .post-head
+        .post-user
+          .avatar= image_tag post.user.fbimage
+          .name= user_handle(post.user)
+        .post-time= "posted #{time_ago_in_words(post.created_at)} ago"
+      .image.center.block= image_tag post.image.url(:medium)
+      %p.caption= post.caption
+
+      .like-container
+        = link_to '♡', post_likes_path(post), class: 'like-link' if current_user && !current_user.liked?(post)
+        = link_to '♥', post_likes_path(post), class: 'like-link' if current_user && current_user.liked?(post)
+        %span.likes_count= post.likes.count
+
+      - if post.comments.any?
+        = render 'comments', comments: post.comments
+      .comment-link= link_to 'Comment', new_post_comment_path(post)

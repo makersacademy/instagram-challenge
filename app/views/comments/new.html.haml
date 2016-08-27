@@ -1,0 +1,9 @@
+- if @post.comments.any?
+  = render 'comments', comments: @post.comments
+
+.form-wrapper
+  = form_for [@post, @comment] do |f|
+    .form-group
+      = f.text_area :content, class: 'form-control', placeholder: 'Comment'
+    .form-group
+      = f.submit 'Post comment', class: 'btn btn-primary'

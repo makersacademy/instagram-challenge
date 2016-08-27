@@ -1,0 +1,36 @@
+!!!
+%html
+  %head
+    %title photo_bomb
+    %link{ href: "https://fonts.googleapis.com/css?family=Open+Sans", rel: "stylesheet", type: "text/css" }
+    %meta{ charset: "UTF-8" }
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    .navbar.navbar-default.navbar-fixed-top{role: "navigation"}
+      .navbar-container
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => "#bs-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Toggle Navigation
+            %span.icon-bar
+            %span.icon-bar
+          .navbar-brand= link_to "📷 photo_bomb", root_path
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav
+            %li
+              = link_to 'Post a photo', new_post_path
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              %li
+                = image_tag current_user.fbimage
+              %li
+                = link_to "Sign out", destroy_user_session_path, method: :delete
+            - else
+              %li
+                = link_to "Sign in", new_user_session_path
+              %li
+                = link_to "Sign up", new_user_registration_path
+    = notice
+    = yield
