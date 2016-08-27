@@ -1,3 +1,32 @@
+
+* As a user,
+* So that i show others my pictures,
+* I would like to be able to upload a picture
+
+* As a user,
+* If i change my mind about a upload,
+* I would like to be able to edit or delete the picture
+
+* As a user,
+* If like a picture,
+* I would like to be able to see a full size version
+
+* As a user,
+* So that I can manage pictures,
+* I would like to sign up and log in to my account
+
+* As a user,
+* To protect my images,
+* I want to be the only person that can delete or edit my pictures
+
+* As a user,
+* To be social,
+* I would like to comment on photos
+
+* As a user,
+* So i can show appreciation,
+* I want to be able to 'like' pictures
+
 Instagram Challenge
 ===================
 
