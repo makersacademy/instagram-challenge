@@ -1,7 +1,12 @@
 - if @posts.any?
   - @posts.each do |post|
     %h2= link_to post.caption, post_path(post)
+
+    - post.comments.each do |comment|
+      %ul
+        %li= comment.comment
+
 - else
   %h1 No posts yet
 
-%a(href="/posts/new") Add an image
+= link_to "Add an image", new_post_path
