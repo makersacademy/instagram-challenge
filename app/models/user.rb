@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  before_save :add_feed_to_user
+  before_create :add_feed_to_user
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
