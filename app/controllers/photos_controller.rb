@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
     else
       flash[:error] = "There's been an error adding your photo"
     end
-    redirect_to "/#{current_user.username}"
+    redirect_to feed_path(current_user)
   end
 
   def show

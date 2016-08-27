@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827093730) do
+ActiveRecord::Schema.define(version: 20160827124310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20160827093730) do
   end
 
   add_index "feeds", ["user_id"], name: "index_feeds_on_user_id", using: :btree
+
+  create_table "likes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "photo_id"
+  end
+
+  add_index "likes", ["photo_id"], name: "index_likes_on_photo_id", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.string   "photo_url"
@@ -56,6 +66,8 @@ ActiveRecord::Schema.define(version: 20160827093730) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "feeds", "users"
+  add_foreign_key "likes", "photos"
+  add_foreign_key "likes", "users"
   add_foreign_key "photos", "feeds"
   add_foreign_key "photos", "users"
 end

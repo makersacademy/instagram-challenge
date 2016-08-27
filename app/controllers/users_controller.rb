@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find_by(username: params[:username])
-    redirect_to root_path unless @user
+    @user = User.find_by!(username: params[:username])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path
   end
 
 
