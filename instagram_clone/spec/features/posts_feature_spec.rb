@@ -34,6 +34,8 @@ feature 'Posts' do
       expect(page).to have_content 'error'
     end
 
+    # POSTS CANNOT BE CREATED WITHOUT UPLOADING AN IMAGE
+
     scenario 'User sees a success message with successful posts' do
       create_post
       expect(current_path).to eq '/posts'
