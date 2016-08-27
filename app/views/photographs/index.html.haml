@@ -1,0 +1,18 @@
+%div.grid
+  %div.col-3
+    %br
+  %div.col-6
+    - if @photographs.any?
+      %ul{class: "photographs_feed"}
+        - @photographs.each do |photo|
+          %li{class: "photograph_in_feed"}
+            %h4= link_to photo.caption, photograph_path(photo)
+          = link_to "Edit", edit_photograph_path(photo), class: "button_styled"
+          = link_to "Delete", photograph_path(photo), method: :delete, class: "button_styled"
+    - else
+      %h2 Where are all the photographers?
+
+    %h3.add_photograph= link_to "Add a photograph", new_photograph_path(@photograph)
+
+  %div.col-3
+    %br

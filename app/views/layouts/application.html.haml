@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %title Instagram Challenge - Kittygram
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    %div.nav
+      %div.grid
+        %div.col-3
+          %br
+        %div.col-6
+
+          %ul
+            %li.logo
+              = link_to "Kittygram!", root_path
+            - if user_signed_in?
+              %li.right
+                = link_to "Sign Out", destroy_user_session_path, method: :delete
+            - else
+              %li.right
+                = link_to "Sign In", new_user_session_path
+              %li.right
+                = link_to "Sign Up", new_user_registration_path
+          %div.col-3
+            %br
+            %div.grid
+              %div.col-3
+                %br
+              %div.col-6
+                = notice
+                = alert
+              %div.col-3
+              %br
+
+
+    = yield

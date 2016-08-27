@@ -1,0 +1,18 @@
+%div.grid
+  %div.col-3
+    %br
+  %div.col-6
+
+    - if @comment.errors.any?
+      %section#errors
+        %h3
+          = pluralize @comment.errors.count, "error"
+          prohibited this comment from being added:
+        %ul
+          - @comment.errors.full_messages.each do |message|
+            %li= message
+
+    = render "comment_form"
+    
+  %div.col-3
+    %br
