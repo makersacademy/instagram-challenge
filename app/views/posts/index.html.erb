@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+
+  <div class="row">
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <p><%= post.user.username %></p>
+        <%=image_tag post.image.url(:medium) %>
+        <p><%= link_to "View #{post.caption}", post_path(post) %></p>
+      </div>
+      <% end %>
+    <% else %>
+    <div class="col-md-4">
+      No posts yet
+    </div>
+    <% end %>
+  </div>
+<% else %>
+  You need to Log in to see posts!
+<% end %>
