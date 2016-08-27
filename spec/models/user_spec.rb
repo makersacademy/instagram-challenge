@@ -29,4 +29,46 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_one :feed }
   end
 
+  # it { is_expected.to have_many(:followers).source(:followings).with_foreign_key('followed_user_id') }
+  # it { is_expected.to have_many(:followed_users).source(:followings).with_foreign_key('follower_id') }
+
+  describe '#following?' do
+
+    let(:user1) { User.create(email: 'test@test.com', password: 'password', username: 'user1') }
+    let(:user2) { User.create(email: 'test2@test.com', password: 'password', username: 'user2') }
+
+    it 'returns true if user is following another user' do
+      user1.follow(user2)
+      expect(user1.following?(user2)).to eq true
+    end
+
+    it 'returns false if user is NOT following another user' do
+      expect(user1.following?(user2)).to eq false
+    end
+
+  end
+
+  describe '#follow/#unfollow' do
+
+    let(:user1) { User.create(email: 'test@test.com', password: 'password', username: 'user1') }
+    let(:user2) { User.create(email: 'test2@test.com', password: 'password', username: 'user2') }
+
+    it 'follows the user' do
+      user1.follow(user2)
+      expect(user1).to be_following user2
+    end
+
+    it 'can unfollow the user' do
+      user1.follow(user2)
+      expect(user1).to be_following user2
+      user1.unfollow(user2)
+      expect(user1).to_not be_following user2
+    end
+
+    it 'cannot follow itself' do
+      expect{ user1.follow(user1) }.to_not change{ user1.following.count }
+    end
+
+  end
+
 end

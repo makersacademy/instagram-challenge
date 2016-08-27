@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'likes/create'
-
   root 'feed#index'
-
 
   devise_for :users
 
@@ -12,6 +9,10 @@ Rails.application.routes.draw do
     resources :likes, only: [:create]
   end
 
-  get '/:username', to: 'users#show'
+  scope ':username' do
+    root 'users#show', as: 'feed'
+    post '/follow', to: 'follows#create', as: 'new_follow'
+    delete '/follow', to: 'follows#destroy', as: 'delete_follow'
+  end
 
 end

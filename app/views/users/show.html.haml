@@ -1,4 +1,8 @@
 %h2 @#{@user.username}'s Feed
+- if user_signed_in? && current_user.following?(@user)
+  = link_to 'Unfollow', delete_follow_path(@user.username), method: :delete
+- elsif @user != current_user
+  = link_to 'Follow', new_follow_path(@user.username), method: :post
 
 - @user.feed.photos.each do |photo|
   = render partial: 'photos/photo_view', locals: { photo: photo }
