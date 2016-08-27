@@ -29,9 +29,6 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_one :feed }
   end
 
-  # it { is_expected.to have_many(:followers).source(:followings).with_foreign_key('followed_user_id') }
-  # it { is_expected.to have_many(:followed_users).source(:followings).with_foreign_key('follower_id') }
-
   describe '#following?' do
 
     let(:user1) { User.create(email: 'test@test.com', password: 'password', username: 'user1') }
