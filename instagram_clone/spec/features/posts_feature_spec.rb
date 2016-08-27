@@ -19,6 +19,15 @@ feature 'posts' do
       expect(page).to have_content 'First post'
       expect(current_path).to eq '/posts'
     end
+
+    it 'does not allow posts with a title less than 3 characters' do
+      visit '/posts'
+      click_link 'New post'
+      fill_in 'Title', with: 'aa'
+      click_button 'Create Post'
+      expect(page).not_to have_css 'h2', text: 'aa'
+      expect(page).to have_content 'error'
+    end
   end
 
   context 'viewing posts' do
@@ -45,6 +54,7 @@ feature 'posts' do
      expect(current_path).to eq '/posts'
     end
   end
+
   context 'deleting posts' do
 
     before { create_post }
