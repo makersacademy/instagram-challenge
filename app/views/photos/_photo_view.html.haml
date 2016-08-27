@@ -1,8 +1,11 @@
 .photo-container
-  = link_to image_tag(photo.photo_url), photo_path(photo), id: photo.id
+  = link_to image_tag(photo.photo_url, class: 'img-responsive'), photo_path(photo), id: photo.id
   %br/
-  = link_to 'Like', photo_likes_path(photo), method: :post
-  %b 👍 #{photo.likes.count}
+  = link_to 'Like', photo_likes_path(photo), method: :post, class: 'btn btn-xs btn-primary'
+  %span(class='text-primary')
+    %b= photo.likes.count
+    = "like".pluralize(photo.likes.count)
+  = render 'photos/photo_actions', { photo: photo }
   %br/
   %b= link_to '@' + photo.user.username, feed_path(photo.user)
   = photo.description

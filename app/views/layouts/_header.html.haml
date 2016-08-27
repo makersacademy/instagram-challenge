@@ -1,9 +1,13 @@
-= link_to 'Users', users_path
-- if user_signed_in?
-  %span Signed in as #{ link_to('@' + current_user.username, '/' + current_user.username) }
-  = link_to 'Sign out', destroy_user_session_path, method: :delete
-  %p
-    = link_to 'Add a new photo', new_photo_path
-- else
-  = link_to 'Sign in', new_user_session_path
-  = link_to 'Sign up', new_user_registration_path
+= nav_bar static: :top, responsive: true, brand: "SquareGram", brand_link: root_path do
+  = menu_group do
+    = menu_item 'Home', root_path
+    = menu_item 'Users', users_path
+    = menu_divider
+  = menu_group pull: :right do
+    - if user_signed_in?
+      = menu_item '@' + current_user.username, feed_path(current_user)
+      = menu_item 'Add a new photo', new_photo_path
+      = menu_item 'Sign out', destroy_user_session_path, method: :delete
+    - else
+      = menu_item 'Sign in', new_user_session_path
+      = menu_item 'Sign up', new_user_registration_path

@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.7.1'
 gem 'haml'
+gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
