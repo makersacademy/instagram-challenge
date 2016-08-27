@@ -14,6 +14,12 @@ feature 'Sign In and Sign Out' do
       visit '/'
       expect(page).not_to have_content 'Sign out'
     end
+
+    scenario "Should not be able to add a post to Instagram" do
+      visit '/'
+      expect(page).not_to have_content 'Add a post'
+      expect(page).to have_content 'Sign up'
+    end
   end
 
   context 'Currently has a signed in user' do

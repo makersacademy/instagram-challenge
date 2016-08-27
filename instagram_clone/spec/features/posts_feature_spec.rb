@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Posts' do
   context 'No posts' do
     scenario 'Should display a prompt to add a new post' do
-      visit '/posts'
+      sign_up
       expect(page).to have_content "No posts yet"
       expect(page).to have_content "Add a post"
     end
@@ -23,12 +23,14 @@ feature 'Posts' do
 
   context 'Creating posts' do
     scenario 'User can add a post and see it on the posts page' do
+      sign_up
       create_post
       expect(current_path).to eq '/posts'
       expect(page).to have_content 'handsome chap'
     end
 
     scenario 'Posts cannot be created without a caption shorter than 3 characters' do
+      sign_up
       create_post(caption: 'zz')
       expect(page).not_to have_content 'zz'
       expect(page).to have_content 'error'
@@ -37,6 +39,7 @@ feature 'Posts' do
     # POSTS CANNOT BE CREATED WITHOUT UPLOADING AN IMAGE
 
     scenario 'User sees a success message with successful posts' do
+      sign_up
       create_post
       expect(current_path).to eq '/posts'
       expect(page).to have_content 'Your image was successfully posted to Instagram'
@@ -58,7 +61,7 @@ feature 'Posts' do
     before { Post.create(caption: "what a view") }
 
     scenario 'Users can edit image captions' do
-      visit '/posts'
+      sign_up
       click_link 'Edit caption'
       fill_in 'Caption', with: "the view from our villa"
       click_button 'Update Post'
@@ -73,7 +76,7 @@ feature 'Posts' do
 
     scenario 'Users can delete a post' do
       # I WOULD RATHER THIS WAS A FEATURE ON THE INDIVIDUAL POST PAGE
-      visit '/posts'
+      sign_up
       click_link 'Delete post'
       expect(page).not_to have_content "what a view"
       expect(page).to have_content "Your post has successfully been removed from Instagram"
