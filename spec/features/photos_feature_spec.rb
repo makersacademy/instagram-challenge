@@ -25,4 +25,22 @@ feature 'Photos' do
 
   end
 
+  context 'Viewing an individual photo' do
+
+    let!(:photo) { Photo.create(photo_url: 'something.png', description: 'Something nice') }
+    scenario 'can view an individual photo' do
+      visit '/'
+      find("//a[@id='#{photo.id}']").click
+      expect(current_path).to eq "/photos/#{photo.id}"
+      expect(page).to have_content 'Something nice'
+      expect(page).to have_xpath("//img[contains(@src, 'something.png')]")
+    end
+
+    scenario 'does not let you view a photo that does not exist' do
+      visit "/photos/#{photo.id + 1}"
+      expect(current_path).to eq '/'
+    end
+
+  end
+
 end
