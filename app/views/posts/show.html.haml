@@ -1,0 +1,12 @@
+%p= image_tag(@post.image.url(:original))
+%p= @post.caption
+= link_to "Edit caption", edit_post_path(@post)
+= link_to "Delete post", post_path(@post), method: :delete
+- if @post.comments
+  - @post.comments.each do |comment|
+    = comment.content
+    = link_to 'Delete comment', post_comment_path(@post, comment), method: :delete
+.comment-form
+  = form_for [@post, @post.comments.new] do |f|
+    = f.text_field :content, placeholder: 'Add a comment...'
+    = f.submit 'Leave comment'

@@ -1,0 +1,18 @@
+%h1 Instagram
+
+- if @posts.any?
+  - @posts.each do |post|
+    = link_to image_tag(post.image.url(:thumb), alt: "post#{post.id}"), post_path(post)
+    = post.caption
+    - if post.comments
+      - post.comments.each do |comment|
+        = comment.content
+        = link_to 'Delete comment', post_comment_path(post, comment), method: :delete
+    .comment-form
+      = form_for [post, post.comments.new] do |f|
+        = f.text_field :content, placeholder: 'Add a comment...'
+        = f.submit 'Leave comment'
+- else
+  %h2 No posts yet!
+
+= link_to 'Post an image', new_post_path

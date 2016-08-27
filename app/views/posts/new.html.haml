@@ -1,0 +1,14 @@
+- if @post.errors.any?
+  %section#errors
+    %h2
+      = pluralize @post.errors.count, "error"
+      prohibited this image from being posted:
+    %ul
+      - @post.errors.full_messages.each do |message|
+        %li= message
+
+= form_for @post, html: {multipart: true} do |f|
+  = f.file_field :image
+  = f.label :caption
+  = f.text_field :caption
+  = f.submit 'Post image'
