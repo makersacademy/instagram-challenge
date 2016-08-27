@@ -14,6 +14,7 @@ feature 'posts' do
       visit '/posts'
       click_link 'New post'
       fill_in 'Title', with: 'First post'
+      fill_in 'Description', with: 'great'
       click_button 'Create Post'
       expect(page).to have_content 'First post'
       expect(current_path).to eq '/posts'
@@ -21,7 +22,7 @@ feature 'posts' do
   end
 
   context 'viewing posts' do
-    let!(:first_post) {Post.create(title: 'First post')}
+    let!(:first_post) {Post.create(title: 'First post', description: 'great')}
     scenario 'lets a user view a post' do
      visit '/posts'
      click_link 'First post'
@@ -29,4 +30,21 @@ feature 'posts' do
      expect(current_path).to eq "/posts/#{first_post.id}"
     end
   end
+
+  context 'editing posts' do
+
+  before { create_post }
+
+  scenario 'let a user edit a post' do
+   visit '/posts'
+   click_link 'Edit First post'
+   fill_in 'Title', with: 'Updated First post'
+   fill_in 'Description', with: 'even more great'
+   click_button 'Create Post'
+   expect(page).to have_content 'Updated First post'
+   expect(current_path).to eq '/posts'
+  end
+
+end
+
 end
