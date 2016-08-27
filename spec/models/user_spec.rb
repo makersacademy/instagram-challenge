@@ -17,4 +17,8 @@ RSpec.describe User, type: :model do
     expect{ user.save }.to change(Feed, :count).by(1)
   end
 
+  describe 'feed' do
+    it { is_expected.to have_one :feed }
+  end
+
 end
