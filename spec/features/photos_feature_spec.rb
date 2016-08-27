@@ -2,6 +2,8 @@ require 'rails_helper'
 
 feature 'Photos' do
 
+  let(:photo_url) { "/photos/#{Photo.last.id}" }
+
   context 'Posting a new photo' do
 
     scenario 'must be signed in to post a new photo' do
@@ -28,7 +30,12 @@ feature 'Photos' do
 
   context 'Viewing an individual photo' do
 
-    let!(:photo) { Photo.create(photo_url: 'something.png', description: 'Something nice') }
+    before do
+      sign_up(username: 'arukomp')
+      create_photo(photo_url: 'something.png', description: 'Something nice')
+    end
+    let(:photo) { Photo.last }
+
     scenario 'can view an individual photo' do
       visit '/'
       find("//a[@id='#{photo.id}']").click
@@ -42,6 +49,15 @@ feature 'Photos' do
       expect(current_path).to eq '/'
     end
 
+    scenario 'photo has a link to the author\'s page' do
+      visit photo_url
+      within '.photo-container' do
+        expect(page).to have_link '@arukomp'
+        click_link '@arukomp'
+      end
+      expect(current_path).to eq '/arukomp'
+    end
+
   end
 
   context 'Editing photo\'s description' do
@@ -51,10 +67,8 @@ feature 'Photos' do
       create_photo
     end
 
-    let(:photo) { Photo.last }
-
     scenario 'owner can edit his photo description' do
-      visit "/photos/#{photo.id}"
+      visit photo_url
       click_link 'Edit'
       fill_in 'Description', with: 'Alternative description'
       click_button 'Save changes'
@@ -64,7 +78,7 @@ feature 'Photos' do
     scenario 'a different user cannot edit another person\'s photo' do
       sign_out
       sign_up(email: 'hi@google.com', username: 'hithere')
-      visit "/photos/#{photo.id}"
+      visit photo_url
       expect(page).to_not have_link 'Edit'
     end
 
@@ -77,10 +91,8 @@ feature 'Photos' do
       create_photo(description: 'really interesting description')
     end
 
-    let(:photo) { Photo.last }
-
     scenario 'owner can delete his photos' do
-      visit "/photos/#{photo.id}"
+      visit photo_url
       click_link 'Delete'
       expect(page).to have_content 'Photo has been deleted'
       expect(page).to_not have_content 'really interesting description'
@@ -89,7 +101,7 @@ feature 'Photos' do
     scenario 'a different user cannot delete another person\'s photo' do
       sign_out
       sign_up(email: 'hi@google.com', username: 'hithere')
-      visit "/photos/#{photo.id}"
+      visit photo_url
       expect(page).to_not have_link 'Delete'
     end
 
