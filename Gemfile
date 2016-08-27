@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'haml'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -45,3 +47,8 @@ group :development do
   gem 'spring'
 end
 
+group:test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+end
