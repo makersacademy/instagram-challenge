@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 feature 'commenting' do
-  before { create_post }
+  before do
+    user_sign_up
+    create_post
+  end
 
   scenario 'allows users to leave a comment using a form' do
      visit '/posts'

@@ -34,12 +34,11 @@ feature 'posts' do
     end
 
     context 'viewing posts' do
-      let!(:first_post) {Post.create(title: 'First post', description: 'great')}
       scenario 'lets a user view a post' do
+       create_post
        visit '/posts'
        click_link 'First post'
        expect(page).to have_content 'First post'
-       expect(current_path).to eq "/posts/#{first_post.id}"
       end
     end
 
