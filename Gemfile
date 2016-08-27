@@ -25,4 +25,5 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'shoulda-matchers', '~> 3.1'
 end
