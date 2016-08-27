@@ -25,9 +25,11 @@ end
     scenario 'prompts user to fill out a form, then displays the new photographs' do
       visit '/photographs'
       click_link 'Add a photograph'
+      attach_file "photograph_image", "spec/spec_assets/2395_What_causes_waves_in_the_ocean.jpg"
       fill_in 'Name', with: 'Ocean'
       click_button 'Create Photograph'
       expect(page).to have_content 'Ocean'
+      expect(page).to have_selector("img")
       expect(current_path).to eq '/photographs'
     end
   end
