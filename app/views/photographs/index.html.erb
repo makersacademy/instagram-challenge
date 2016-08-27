@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PhotoHub</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <%= yield %>
-</body>
-</html>
+<% if @photographs.any? %>
+  <% @photographs.each do |photograph| %>
+    <%= image_tag photograph.image.url(:medium) %>
+    <h2> <%= photograph.name %> </h2>
+  <% end %>
+<% else %>
+  No photographs yet
+<% end %>
 
-
-No photographs yet
-<a href="#">Add a photograph</a>
+<a href='<%= new_photograph_path %>'>Add a photograph</a>
