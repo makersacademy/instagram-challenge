@@ -7,19 +7,7 @@
     = csrf_meta_tags
   %body
     = console if Rails.env.development?
-    - if user_signed_in?
-      %span Signed in as #{ link_to('@' + current_user.username, '/' + current_user.username) }
-      = link_to 'Sign out', destroy_user_session_path, method: :delete
-      %p
-        = link_to 'Add a new photo', new_photo_path
-    - else
-      = link_to 'Sign in', new_user_session_path
-      = link_to 'Sign up', new_user_registration_path
-
-    - if flash[:error]
-      %br/
-      %span(style="color:red")= flash[:error]
-    - if flash[:notice]
-      %br/
-      %span= flash[:notice]
+    = render 'layouts/header'
+    = render 'layouts/flash_messages'
     = yield
+    = render 'layouts/footer'

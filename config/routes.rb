@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'feed#index'
 
+  get '/users' => 'users#index'
+
   devise_for :users
 
   resources :photos do
