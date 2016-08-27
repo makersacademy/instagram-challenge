@@ -3,6 +3,7 @@ require "rails_helper"
 feature "posts" do
 
   context "no posts made yet" do
+
     scenario "user is prompted for posts" do
       visit "/posts"
       expect(page).to have_content "No posts yet"
@@ -11,14 +12,30 @@ feature "posts" do
   end
 
   context "posts made" do
+
     before do
       Post.create(caption: "Selfie")
     end
-    scenario "user can view posts" do
+
+    scenario "user can view list of posts" do
       visit "/posts"
       expect(page).to have_content "Selfie"
       expect(page).not_to have_content "No posts yet"
     end
+
+    scenario "viewing individual images" do
+      visit "/posts"
+      click_link "Selfie"
+      expect(page).to have_content "Selfie"
+    end
+
+    scenario "deleting images" do
+      visit "/posts"
+      click_link "Selfie"
+      click_link "Delete"
+      expect(page).to have_content "Image successfully deleted"
+    end
+
   end
 
   scenario "adding images" do
@@ -28,5 +45,7 @@ feature "posts" do
     click_button "Upload image"
     expect(page).to have_content "Selfie"
   end
+
+
 
 end
