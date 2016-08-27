@@ -7,8 +7,13 @@
     <br />
     <%= link_to image_tag(post.image.url(:medium)), post_path(post) %>
     <br />
+    <% post.comments.each do |comment| %>
+      <%= comment.thoughts %>
+    <% end %>
+    <br />
     <%= link_to "Edit caption", edit_post_path(post) %>
     <%= link_to "Delete post", post_path(post), method: :delete %>
+    <%= link_to "Add a comment", new_post_comment_path(post) %>
   <% end %>
 <% else %>
   No posts yet
