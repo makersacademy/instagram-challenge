@@ -95,4 +95,26 @@ end
    end
   end
 
+  context 'when another user is signed in' do
+    before do
+      user_sign_up
+      create_post
+      user_sign_out
+      second_user_sign_up
+    end
+
+   scenario "cannot edit another user's post" do
+     visit '/posts'
+     expect(page).not_to have_content 'Edit First post'
+     expect(current_path).to eq '/posts'
+   end
+
+   scenario "cannot delete another user's post" do
+     visit '/posts'
+     expect(page).not_to have_content 'Delete First post'
+     expect(current_path).to eq '/posts'
+   end
+  end
+
+
 end

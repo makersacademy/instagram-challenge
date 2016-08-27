@@ -1,7 +1,10 @@
 class PostsController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
-  before_action :find_by_params, only: [:show, :edit, :update, :destroy]
+  before_action :find_by_params, only: [:show, :edit, :update,
+                                        :destroy, :post_owner]
+  before_action :post_owner, only: [:update, :destroy, :edit]
+
 
   def index
     @posts = Post.all
@@ -47,6 +50,13 @@ class PostsController < ApplicationController
   def find_by_params
     @post = Post.find(params[:id])
 
+  end
+
+  def post_owner
+    unless @post.user_id == current_user.id
+      flash[:notice] = 'Permission denied: only owner has edit/delete privileges'
+      redirect_to posts_path
+    end
   end
 
 end
