@@ -25,7 +25,7 @@ I want to be able to download a picture
 
 As a user
 So that I can connect with my friends
-I want to be able to write acomment on my picture
+I want to be able to write a comment on my picture
 
 As a user
 So that I can show my opinion
