@@ -9,8 +9,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
-    redirect_to "/posts"
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to "/"
+    else
+      render "new"
+    end
   end
 
   def show
@@ -24,9 +28,7 @@ class PostsController < ApplicationController
     redirect_to "/posts"
   end
 
-
   private
-
   #only permits caption params to be accepted by controller
   def post_params
     params.require(:post).permit(:caption)

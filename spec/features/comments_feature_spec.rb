@@ -7,7 +7,7 @@ feature "comments" do
   end
 
   scenario "add a comment to an image" do
-    visit "/posts/"
+    visit "/"
     click_link "Selfie"
     click_link "Add comment"
     fill_in "Comment", with: "Lovely picture"
