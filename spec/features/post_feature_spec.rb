@@ -35,4 +35,17 @@ feature 'posts' do
     end
   end
 
+  context 'deleting posts from bubhub' do
+    scenario 'removes a post when a user clicks delete' do
+      visit '/posts'
+      click_link 'post'
+      fill_in 'Caption', with: 'Should I take him to the doctor?'
+      click_button 'post it'
+      click_link 'delete'
+      expect(page).not_to have_content 'Should I take him to the doctor?'
+    end
+  end
+
+
+
 end
