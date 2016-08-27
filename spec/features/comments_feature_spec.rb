@@ -15,4 +15,13 @@ feature "comments" do
     expect(page).to have_content "Lovely picture"
   end
 
+  scenario "comment cannot be empty" do
+    visit "/"
+    click_link "Selfie"
+    click_link "Add comment"
+    fill_in "Comment", with: ""
+    click_button "Add comment"
+    expect(page).to have_content "error"
+  end
+
 end
