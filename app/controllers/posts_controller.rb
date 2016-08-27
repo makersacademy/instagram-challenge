@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   private
   #only permits caption params to be accepted by controller
   def post_params
-    params.require(:post).permit(:caption)
+    params.require(:post).permit(:caption, :image)
   end
 
 end
