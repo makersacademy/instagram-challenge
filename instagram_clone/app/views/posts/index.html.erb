@@ -2,6 +2,8 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <h3><%= link_to post.title, post_path(post) %></h3>
+    <%= link_to "Like", post_likes_path(post), method: :post%>
+    <%= pluralize post.likes.count, 'like' %>
     <%= link_to "Comment on #{post.title}", new_post_comment_path(post) %>
     <% if post.user == current_user %>
       <%= link_to "Edit #{post.title}", edit_post_path(post) %>

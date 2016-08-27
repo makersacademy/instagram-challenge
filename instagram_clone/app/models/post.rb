@@ -1,8 +1,9 @@
 class Post < ApplicationRecord
   validates :title, length: { minimum: 3 }, uniqueness: true
   belongs_to :user
+  has_many :likes
   has_many :comments,
-          -> { extending WithUserAssociationExtension }, 
+          -> { extending WithUserAssociationExtension },
           dependent: :destroy
 
 end
