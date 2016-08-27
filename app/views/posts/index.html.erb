@@ -1,0 +1,11 @@
+<%= link_to 'New Post', new_post_path %>
+
+<% @posts.all.each do |post| %>
+  <p> <%= post.user.user_name %> </p>
+  <div> <%= image_tag post.image.url(:medium) %> </div>
+  <p> <%= post.caption %> </p>
+  <p> <%= link_to 'Write a Comment', new_post_comment_path(post) %>
+  <% post.comments.all.each do |comment| %>
+    <p> <%=comment.user.user_name%>: <%= comment.comment_text %> </p>
+  <% end%>
+<%end%>
