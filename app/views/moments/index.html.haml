@@ -1,0 +1,14 @@
+
+%div{:id => "navbar"}
+  %ul
+    %li= link_to "My moments"
+    %li= link_to "Share a moment", new_moment_url
+    %li= link_to "Hottest"
+
+- if @moments.any?
+  - @moments.each do |moment|
+    %h2= moment.description
+    %article{:id => "moments" }= link_to image_tag(moment.image.url(:medium), :alt => "moment" ), moment_path(moment), method: :get
+
+- else
+  %h2 No moments have been shared yet
