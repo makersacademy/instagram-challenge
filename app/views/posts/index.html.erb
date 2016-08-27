@@ -1,0 +1,25 @@
+<a href="posts/new">Add a post</a>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <p><%= image_tag post.image.url(:medium) %></p>
+        <h2><%= link_to post.message, post_path(post) %></h2>
+      <p><%= post.created_at.strftime('%I:%M%p, %m/%d/%Y') %></p>
+      <%= link_to "Like", post_likes_path(post), class: 'likes-link' %>
+      <span class="likes_count"> <%= post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
+    <% if post.comments.any? %>
+      <ul>
+        <% post.comments.each do |comment| %>
+          <li>
+            <%= comment.message %>
+          </li>
+       <% end %>
+      </ul>
+    <% end %>
+    <%= link_to "Add comment", new_post_comment_path(post) %>
+    <%= link_to "Edit post", edit_post_path(post) %>
+    <%= link_to "Delete post", post_path(post), method: :delete %>
+
+<% end %>
+<% else %>
+  <h1>No posts yet</h1>
+<% end %>
