@@ -14,8 +14,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Your image was successfully posted to Instagram"
       redirect_to '/posts'
     else
-      flash[:notice] = "Something went wrong"
-      redirect_to '/posts/new'
+      render 'new'
     end
   end
 

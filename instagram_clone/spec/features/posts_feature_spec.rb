@@ -21,11 +21,17 @@ feature 'Posts' do
     end
   end
 
-  context 'Adding posts' do
+  context 'Creating posts' do
     scenario 'User can add a post and see it on the posts page' do
       create_post
       expect(current_path).to eq '/posts'
       expect(page).to have_content 'handsome chap'
+    end
+
+    scenario 'Posts cannot be created without a caption shorter than 3 characters' do
+      create_post(caption: 'zz')
+      expect(page).not_to have_content 'zz'
+      expect(page).to have_content 'error'
     end
 
     scenario 'User sees a success message with successful posts' do
