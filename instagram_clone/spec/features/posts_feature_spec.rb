@@ -69,6 +69,7 @@ feature 'Posts' do
       expect(page).not_to have_content "what a view"
       expect(current_path).to eq '/posts'
     end
+
   end
 
   context 'Deleting posts' do
