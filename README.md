@@ -1,6 +1,12 @@
 Instagram Challenge
 ===================
 
+- Challenge time
+  2 days (weekend)
+- Challenge requirements
+  Ruby on Rails
+
+
 User stories
 ```
 As a user,
@@ -27,3 +33,10 @@ As a user,
 So I can be updated with photos from my favourite users,
 I would like to be able to follow users and see their posts on my feed.
 ```
+
+* `Feed` model as a resource to hold particular user's feeds.
+  * `#show` shows an individual user's feed (his/her photos only)
+  * `#index` shows your personal feed joined by the feeds of every user you follow.
+* As usual, `Photo` model deals with individual photos, and they belong to a user and a particular feed.
+* `Users` have many photos and one (1) feed. Feeds cannot be edited or deleted by hand. Only shown.
+* `Likes` belong to a `Photo` and they're unique within the scope of a `User`
