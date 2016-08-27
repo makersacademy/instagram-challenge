@@ -44,4 +44,55 @@ feature 'Photos' do
 
   end
 
+  context 'Editing photo\'s description' do
+
+    before do
+      sign_up
+      create_photo
+    end
+
+    let(:photo) { Photo.last }
+
+    scenario 'owner can edit his photo description' do
+      visit "/photos/#{photo.id}"
+      click_link 'Edit'
+      fill_in 'Description', with: 'Alternative description'
+      click_button 'Save changes'
+      expect(page).to have_content 'Alternative description'
+    end
+
+    scenario 'a different user cannot edit another person\'s photo' do
+      sign_out
+      sign_up(email: 'hi@google.com', username: 'hithere')
+      visit "/photos/#{photo.id}"
+      expect(page).to_not have_link 'Edit'
+    end
+
+  end
+
+  context 'Deleting a photo' do
+
+    before do
+      sign_up
+      create_photo(description: 'really interesting description')
+    end
+
+    let(:photo) { Photo.last }
+
+    scenario 'owner can delete his photos' do
+      visit "/photos/#{photo.id}"
+      click_link 'Delete'
+      expect(page).to have_content 'Photo has been deleted'
+      expect(page).to_not have_content 'really interesting description'
+    end
+
+    scenario 'a different user cannot delete another person\'s photo' do
+      sign_out
+      sign_up(email: 'hi@google.com', username: 'hithere')
+      visit "/photos/#{photo.id}"
+      expect(page).to_not have_link 'Delete'
+    end
+
+  end
+
 end

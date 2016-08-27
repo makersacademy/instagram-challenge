@@ -23,6 +23,29 @@ class PhotosController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @photo = current_user.photos.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path
+  end
+
+  def update
+    @photo = current_user.photos.find(params[:id])
+    @photo.update(photo_params)
+    redirect_to photo_path(@photo)
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path
+  end
+
+  def destroy
+    @photo = current_user.photos.find(params[:id])
+    @photo.destroy
+    flash[:notice] = "Photo has been deleted"
+    redirect_to feed_path(current_user)
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path
+  end
+
   private
 
   def photo_params

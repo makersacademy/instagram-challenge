@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :feed
+  has_many :photos
 
   validates :username, presence: true
   validates_uniqueness_of :username, case_sensitive: false
