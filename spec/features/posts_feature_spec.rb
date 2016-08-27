@@ -10,7 +10,16 @@ feature "posts" do
       expect(page).to have_content "Add an image"
     end
 
-    scenario "adding images" do
+    scenario "adding an image" do
+      visit "/"
+      click_link "Add an image"
+      fill_in "Caption", with: "Selfie"
+      page.attach_file("post_image", Rails.root + "app/assets/images/smile.jpg")
+      click_button "Upload image"
+      expect(page).to have_css("img[src*='smile.jpg']")
+    end
+
+    scenario "adding image description" do
       visit "/"
       click_link "Add an image"
       fill_in "Caption", with: "Selfie"
