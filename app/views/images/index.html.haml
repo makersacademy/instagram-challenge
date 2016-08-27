@@ -1,0 +1,13 @@
+- if user_signed_in?
+  =link_to 'Add new image', new_image_path
+- if @images.empty?
+  %h2 'No Images Yet'
+- else
+  %ul.image_list
+    - @images.reverse_each do |image|
+      %li.image_entry
+        %h3
+          =link_to image.title, image_path(image.id)
+        %h5
+          ='uploaded by:'
+          =image.user.email
