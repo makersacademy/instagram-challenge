@@ -8,7 +8,7 @@ feature 'Likes' do
 
   scenario 'A user can like a post which increases the number of likes by 1' do
     visit '/posts'
-    click_link 'Like this post'
+    click_button 'Like this post'
     expect(page).to have_content '1 like'
   end
 

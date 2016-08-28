@@ -1,5 +1,6 @@
 <% if user_signed_in? %>
-  <a href='/posts/new'>Add a post</a>
+  <!-- <a href='/posts/new' class="btn btn-secondary">Add a post</a> -->
+  <%= button_to "Add a post", new_post_path, :method => "get", :class => "btn btn-danger" %>
 <% end %>
 <br />
 
@@ -14,18 +15,17 @@
     Posted by <%= post.user.email %>
     <br />
     <%= pluralize post.likes.count, 'like' %>
-    <%= link_to "Like this post", post_likes_path(post), method: :post %>
+    <%= button_to "Like this post", post_likes_path(post), method: :post, :class => "btn btn-info" %>
     <br />
-    <%= link_to image_tag(post.image.url(:medium)), post_path(post) %>
+    <%= link_to image_tag(post.image.url(:medium), :class => "img-rounded"), post_path(post)%>
     <br />
-    Comments:
+    <%= button_to "Add a comment", new_post_comment_path(post), :method => "get", :class => "btn btn-info" %>
+    <br />
+    <h4>Comments:</h4>
     <% post.comments.each do |comment| %>
       <%= comment.thoughts %>
       <br />
     <% end %>
-    <br />
-    <%= link_to "Add a comment", new_post_comment_path(post) %>
-    <br />
   <% end %>
 <% else %>
   No posts yet

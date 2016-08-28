@@ -5,7 +5,7 @@ feature 'Posts' do
     scenario 'Should display a prompt to add a new post' do
       sign_up
       expect(page).to have_content "No posts yet"
-      expect(page).to have_content "Add a post"
+      expect(page).to have_button "Add a post"
     end
   end
 
