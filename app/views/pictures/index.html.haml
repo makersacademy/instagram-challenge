@@ -2,9 +2,13 @@
   - @pictures.each do |picture|
     %p= image_tag picture.image.url(:thumb)
     %p= link_to picture.description, picture_path(picture)
+    %p= link_to "Comment on picture", new_picture_comment_path(picture)
     %p= link_to "Edit picture description", edit_picture_path(picture)
     %p= link_to "Delete picture", picture_path(picture), method: :delete
+    - picture.comments.each do |comment|
+      = comment.text
+      = "Like photo: #{comment.like}"
 -else
   No pictures added yet
 
-= link_to 'Upload a picture', new_picture_path
+%p= link_to 'Upload a picture', new_picture_path

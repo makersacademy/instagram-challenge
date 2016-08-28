@@ -15,7 +15,7 @@ feature 'pictures' do
       upload_image
     end
 
-      let!(:testPic){ Picture.first }
+    let!(:testPic){ Picture.first }
 
     context 'index view' do
       scenario 'display all added pictures' do
