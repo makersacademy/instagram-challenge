@@ -2,6 +2,13 @@
   <% @mewments.each do |mewment| %>
     <%= image_tag mewment.image.url(:medium) %>
     <h2> <%= mewment.caption %> </h2>
+    <%= link_to "Comment", new_mewment_comment_path(mewment) %>
+    <%= link_to "Edit", edit_mewment_path(mewment) %>
+    <%= link_to "Delete", mewment_path(mewment), method: :delete %>
+
+    <% mewment.comments.each do |comment| %>
+      <%= comment.message %>
+    <% end %>
   <% end %>
 <% else %>
   Start preening your whiskers, kitty cats!
