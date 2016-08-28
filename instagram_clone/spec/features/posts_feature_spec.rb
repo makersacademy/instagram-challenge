@@ -47,6 +47,10 @@ feature 'Posts' do
   end
 
   context 'Viewing posts' do
+    before do
+      sign_up
+      create_post
+    end
   #   let!(:villa){ Post.create(caption: "what a view") }
   #
   #   scenario 'Users can click on caption and be taken to view a specific post' do
@@ -55,6 +59,9 @@ feature 'Posts' do
   #     expect(page).to have_content "what a view"
   #     expect(current_path).to eq "/posts/#{villa.id}"
   #   end
+    scenario 'Posts display the creator of a post' do
+      expect(page).to have_content 'Posted by jonny@mail.com'
+    end
   end
 
   context 'Editing posts' do
