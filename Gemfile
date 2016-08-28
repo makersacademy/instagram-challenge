@@ -36,6 +36,7 @@ gem "haml-rails"
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'paperclip'
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -45,6 +46,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'rspec-collection_matchers'
 end
 
 group :development do

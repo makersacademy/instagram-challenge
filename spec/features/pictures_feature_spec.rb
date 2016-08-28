@@ -48,6 +48,12 @@ feature 'pictures' do
         click_button 'Upload Picture'
         expect(page).to have_content "You need to include an image file"
       end
+
+      scenario 'picture must be in an image format' do
+        upload_image(picture_image: Rails.root + 'spec/images/Test.pdf')
+        expect(page).to have_content 'You need to include an image file'
+        expect(page).not_to have_content "Test description"
+      end
     end
 
     context "editing picture details" do
