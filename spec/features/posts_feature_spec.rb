@@ -11,31 +11,28 @@ feature "posts" do
     end
 
     scenario "adding an image" do
-      visit "/"
-      click_link "Add an image"
-      fill_in "Caption", with: "Selfie"
+      sign_up
+      add_image("Selfie")
       page.attach_file("post_image", Rails.root + "app/assets/images/smile.jpg")
       click_button "Upload image"
       expect(page).to have_css("img[src*='smile.jpg']")
     end
 
     scenario "adding image description" do
-      visit "/"
-      click_link "Add an image"
-      fill_in "Caption", with: "Selfie"
+      sign_up
+      add_image("Selfie")
       click_button "Upload image"
       expect(page).to have_content "Selfie"
     end
 
     scenario "image description cannot be too short" do
-      visit "/"
-      click_link "Add an image"
-      fill_in "Caption", with: "Se"
+      sign_up
+      add_image("Se")
       click_button "Upload image"
       expect(page).not_to have_content "Selfie"
       expect(page).to have_content "error"
     end
-    
+
   end
 
   context "posts made" do
@@ -57,6 +54,7 @@ feature "posts" do
     end
 
     scenario "deleting images" do
+      sign_up
       visit "/"
       click_link "Selfie"
       click_link "Delete"
