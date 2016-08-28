@@ -4,7 +4,10 @@ feature "comments" do
 
   before do
     sign_up
-    Post.create(caption: "Selfie")
+    add_image("Selfie")
+    click_button "Upload image"
+    click_link "Sign out"
+    sign_up("commenter@mail.com")
   end
 
   scenario "add a comment to an image" do
@@ -21,6 +24,13 @@ feature "comments" do
   scenario "comment cannot be empty" do
     add_comment("")
     expect(page).to have_content "error"
+  end
+
+  scenario "users can see who wrote a comment" do
+    add_comment("Lovely picture")
+    expect(page).to have_content "commenter@mail.com"
+    visit "/"
+    expect(page).to have_content "commenter@mail.com"
   end
 
 end

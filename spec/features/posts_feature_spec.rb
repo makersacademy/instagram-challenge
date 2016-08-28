@@ -55,6 +55,13 @@ feature "posts" do
       expect(page).not_to have_content "No posts yet"
     end
 
+    scenario "users can see who uploaded the image" do
+      visit "/"
+      expect(page).to have_content "test@mail.com"
+      click_link "Selfie"
+      expect(page).to have_content "test@mail.com"
+    end
+
     scenario "user can view individual images" do
       visit "/"
       click_link "Selfie"
