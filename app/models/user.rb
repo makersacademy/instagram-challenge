@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
+  validates :username, uniqueness: true
+  validates :email, uniqueness: true
+
   def email_required?
     false
   end
