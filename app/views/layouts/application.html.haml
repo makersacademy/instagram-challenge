@@ -16,6 +16,8 @@
           %ul
             %li.logo
               = link_to "Kittygram!", root_path
+            %li.logo
+              = link_to image_tag("kittygram_logo.png"), root_path, :class => "logo"
             - if user_signed_in?
               %li.right
                 = link_to "Sign Out", destroy_user_session_path, method: :delete
@@ -26,16 +28,16 @@
                 = link_to "Sign Up", new_user_registration_path
           %div.col-3
             %br
-            %div.grid
-              %div.col-3
-                %br
-              %div.col-6
-                %div.notice
-                  = notice
-                %div.alert
-                  = alert
-              %div.col-3
-              %br
+      %div.grid
+        %div.col-3
+          %br
+        %div.col-6
+          %div.notice
+            = notice
+          %div.alert
+            = alert
+        %div.col-3
+          %br
 
-
+    = console if ENV['RAILS_ENV'] == 'development'
     = yield

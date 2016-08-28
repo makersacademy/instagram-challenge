@@ -14,3 +14,9 @@ def sign_in(email:, password:)
   fill_in 'Password', with: password
   click_button 'Sign In'
 end
+
+def create_photograph(caption: 'Kitty!')
+  click_link "Add a photograph"
+  fill_in "Say something about your photo", with: caption
+  click_button "Post Photo"
+end

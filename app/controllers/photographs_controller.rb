@@ -14,7 +14,13 @@ class PhotographsController < ApplicationController
   end
 
   def create
-    @photograph = Photograph.create(photograph_params)
+    @photograph = current_user.photographs.build(photograph_params)
+    @photograph.user = current_user
+    if @photograph.save
+      flash[:notice] = "Photo has been successfully added"
+    else
+      flash[:error] = "There's been an error adding your photo"
+    end
     redirect_to root_path
   end
 
@@ -38,7 +44,7 @@ class PhotographsController < ApplicationController
   private
 
   def photograph_params
-    params.require(:photograph).permit(:caption, :image)
+    params.require(:photograph).permit(:caption, :photograph_url)
   end
 
 end

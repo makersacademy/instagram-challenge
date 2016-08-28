@@ -6,13 +6,15 @@
       %ul{class: "photographs_feed"}
         - @photographs.each do |photo|
           %li{class: "photograph_in_feed"}
+            = image_tag photo.image.url(:large)
             %h4= link_to photo.caption, photograph_path(photo)
-          = link_to "Edit", edit_photograph_path(photo), class: "button_styled"
-          = link_to "Delete", photograph_path(photo), method: :delete, class: "button_styled"
+            - if user_signed_in? && photo.user == current_user
+              = link_to "Edit", edit_photograph_path(photo), class: "button_styled"
+              = link_to "Delete", photograph_path(photo), method: :delete, class: "button_styled"
     - else
       %h2 Where are all the photographers?
-
-    %h3.add_photograph= link_to "Add a photograph", new_photograph_path(@photograph)
+    - if user_signed_in?
+      %h3.add_photograph= link_to "Add a photograph", new_photograph_path(@photograph)
 
   %div.col-3
     %br

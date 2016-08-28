@@ -5,4 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :photographs
   has_many :comments
+  has_many :commented_photographs, through: :comments, source: :photograph
+
+  def has_commented?(photograph)
+    commented_photographs.include? photograph
+  end
+
 end

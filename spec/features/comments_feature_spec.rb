@@ -15,7 +15,7 @@ feature 'commenting' do
     expect(current_path).to eq "/photographs/#{kitty.id}/comments/new"
     fill_in "Comment", with: "It's so fluffy, I'm gonna die!"
     click_button "Leave Comment"
-    expect(current_path).to eq "/photographs/#{kitty.id}"
+    expect(current_path).to eq "/photographs/#{kitty.id}/comments"
     expect(page).to have_content "It's so fluffy, I'm gonna die!"
   end
 
@@ -29,7 +29,7 @@ feature 'commenting' do
     expect(page).to have_content 'error'
   end
 
-  let!(:kitty_comment){ kitty.comments.create(comment: "It's so fluffy, I'm gonna die!")}
+  let!(:kitty_comment){ kitty.comments.create_with_user({comment: "It's so fluffy, I'm gonna die!"}, user) }
 
   scenario "user can update a comment" do
     sign_in(email: user.email, password: user.password)
