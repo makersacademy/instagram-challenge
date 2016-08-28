@@ -22,19 +22,25 @@
       <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <%= link_to "New Post", new_post_path %>
+            <% if !user_signed_in? %>
+            <%= link_to "Sign in", new_user_session_path %>
           </li>
           <li>
-            <%= link_to "Login", '#' %>
+            <%= link_to "Sign up", new_user_registration_path %>
+            <%end%>
           </li>
           <li>
-            <%= link_to "Register", '#' %>
+            <% if user_signed_in? %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            <li>
+              <%= link_to "New Post", new_post_path %>
+            </li>
+            <%end%>
           </li>
         </ul>
       </div>
     </div>
     <p><%= notice %></p>
-
   </nav>
 <%= yield %>
 

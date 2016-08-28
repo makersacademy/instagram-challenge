@@ -3,7 +3,12 @@ require 'rails_helper'
 feature 'create posts' do
   context 'no posts' do
     scenario 'should display information to publish a post' do
-      visit '/posts'
+      visit('/')
+      click_link('Sign up')
+      fill_in('Email', with: 'test@example.com')
+      fill_in('Password', with: 'testtest')
+      fill_in('Password confirmation', with: 'testtest')
+      click_button('Sign up')
       expect(page).to have_content 'No posts yet'
       expect(page).to have_content 'New Post'
     end
@@ -11,7 +16,12 @@ feature 'create posts' do
 
   describe "Create posts with images" do
       scenario "displays a post with an image" do
-        visit '/'
+        visit('/')
+        click_link('Sign up')
+        fill_in('Email', with: 'test@example.com')
+        fill_in('Password', with: 'testtest')
+        fill_in('Password confirmation', with: 'testtest')
+        click_button('Sign up')
         click_link "New Post"
         fill_in "Caption", with: "My new post"
         page.attach_file("post_image", Rails.root + 'app/assets/images/imagename.jpg')
@@ -20,14 +30,24 @@ feature 'create posts' do
         expect(page).not_to have_content 'No posts yet'
     end
       scenario "does not display a post without an image" do
-        visit '/'
+        visit('/')
+        click_link('Sign up')
+        fill_in('Email', with: 'test@example.com')
+        fill_in('Password', with: 'testtest')
+        fill_in('Password confirmation', with: 'testtest')
+        click_button('Sign up')
         click_link "New Post"
         fill_in "Caption", with: "My second post"
         click_button "Create Post"
         expect(page).not_to have_content "My second post"
     end
       scenario "user can view the picture in a separate window" do
-        visit "/"
+        visit('/')
+        click_link('Sign up')
+        fill_in('Email', with: 'test@example.com')
+        fill_in('Password', with: 'testtest')
+        fill_in('Password confirmation', with: 'testtest')
+        click_button('Sign up')
         click_link "New Post"
         fill_in "Caption", with: "My new post"
         page.attach_file("post_image", Rails.root + 'app/assets/images/imagename.jpg')
@@ -40,8 +60,13 @@ feature 'create posts' do
 
     describe "editing posts" do
       scenario "user wants to change the post" do
-      visit '/'
-      click_link "New Post"
+        visit('/')
+        click_link('Sign up')
+        fill_in('Email', with: 'test@example.com')
+        fill_in('Password', with: 'testtest')
+        fill_in('Password confirmation', with: 'testtest')
+        click_button('Sign up')
+        click_link "New Post"
       fill_in "Caption", with: "My new post"
       page.attach_file("post_image", Rails.root + 'app/assets/images/imagename.jpg')
       click_button "Create Post"
@@ -52,7 +77,12 @@ feature 'create posts' do
       expect(page).not_to have_content "My new post"
     end
     scenario "user wants to delete the post" do
-      visit '/'
+      visit('/')
+      click_link('Sign up')
+      fill_in('Email', with: 'test@example.com')
+      fill_in('Password', with: 'testtest')
+      fill_in('Password confirmation', with: 'testtest')
+      click_button('Sign up')
       click_link "New Post"
       fill_in "Caption", with: "My new post"
       page.attach_file("post_image", Rails.root + 'app/assets/images/imagename.jpg')
