@@ -1,2 +1,10 @@
-<h1>Oh no, it seems there are no photos to display</h1>
+<% if @photos.any? %>
+  <% @photos.each do |photo| %>
+    <%= photo.image %>
+    <%= photo.caption %>
+  <% end %>
+<% else %>
+  <h1>Oh no, it seems there are no photos to display</h1>
+<% end %>
+
 <%= link_to "Add a photo", new_photo_path %>
