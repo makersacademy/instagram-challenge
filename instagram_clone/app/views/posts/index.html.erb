@@ -2,8 +2,11 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <h3><%= link_to post.title, post_path(post) %></h3>
+    <% if post.image_file_name %>
+        <%= image_tag post.image.url(:thumb) %>
+      <% end %>
     <%= link_to "Like", post_likes_path(post), class: 'likes-link'%>
-    <span class="likes_count"> <%= post.likes.count %> </span> 
+    <span class="likes_count"> <%= post.likes.count %> </span>
     <%= 'like'.pluralize(post.likes.count) %>
 
     <%= link_to "Comment on #{post.title}", new_post_comment_path(post) %>
