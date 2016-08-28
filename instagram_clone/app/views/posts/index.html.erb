@@ -13,10 +13,8 @@
     <% end %>
     Posted by <%= post.user.email %>
     <br />
-    <% if post.user == current_user %>
-      <%= pluralize post.likes.count, 'like' %>
-      <%= link_to "Like this post", post_likes_path(post), method: :post %>
-    <% end %>
+    <%= pluralize post.likes.count, 'like' %>
+    <%= link_to "Like this post", post_likes_path(post), method: :post %>
     <br />
     <%= link_to image_tag(post.image.url(:medium)), post_path(post) %>
     <br />
@@ -26,6 +24,8 @@
     <% end %>
     <br />
     <%= link_to "Add a comment", new_post_comment_path(post) %>
+    <br />
+    Comments:
   <% end %>
 <% else %>
   No posts yet
