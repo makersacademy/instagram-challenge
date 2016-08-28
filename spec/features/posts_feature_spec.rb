@@ -35,6 +35,7 @@ feature "posts" do
       expect(page).not_to have_content "Selfie"
       expect(page).to have_content "error"
     end
+    
   end
 
   context "posts made" do
