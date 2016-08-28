@@ -9,6 +9,14 @@ Instructions
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday morning
 
+Prerequisites
+-------
+* Rails 4.2.7.1
+* Imagemagick
+* AWS account with S3
+* Facebook developer account
+
+
 Task
 -----
 

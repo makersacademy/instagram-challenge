@@ -8,5 +8,5 @@ Rails.application.routes.draw do
       root :to => 'devise/registrations#new', as: :unauthenticated_root
     end
   end
-  resources :profiles
+  resources :profiles, :path => ''
 end
