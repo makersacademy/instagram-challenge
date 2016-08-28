@@ -19,12 +19,7 @@ feature "users" do
   context "signed in" do
 
     before do
-      visit "/"
-      click_link("Sign up")
-      fill_in "Email", with: "test@mail.com"
-      fill_in "Password", with: "123123"
-      fill_in "Password confirmation", with: "123123"
-      click_button("Sign up")
+      sign_up
     end
 
     scenario "user should see sign out link" do

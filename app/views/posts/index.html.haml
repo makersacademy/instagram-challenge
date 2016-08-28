@@ -1,13 +1,19 @@
 - if @posts.any?
   - @posts.each do |post|
     = image_tag post.image.url(:thumb)
-    %h2= link_to post.caption, post_path(post)
+    = post.user.email
+    = link_to post.caption, post_path(post)
+    = time_ago_in_words(post.created_at)
+    ago
 
     - post.comments.each do |comment|
       %ul
-        %li= comment.comment
+        %li= comment.user.email
+        = comment.comment
+        = time_ago_in_words(comment.created_at)
+        ago
 
 - else
   %h1 No posts yet
-
+%br
 = link_to "Add an image", new_post_path

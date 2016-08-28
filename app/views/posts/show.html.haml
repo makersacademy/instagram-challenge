@@ -1,5 +1,6 @@
 = image_tag @post.image.url(:medium)
 %h1= @post.caption
+%h3= @post.user.email
 %br
 Uploaded
 = time_ago_in_words(@post.created_at)
@@ -7,8 +8,12 @@ ago
 
 - @post.comments.each do |comment|
   %ul
-    %li= comment.comment
+    %li= comment.user.email
+    = comment.comment
+    = time_ago_in_words(comment.created_at)
+    ago
 
-= link_to "Add comment", new_post_comment_path(@post)
-= link_to "Delete", post_path(@post), method: :delete
 = link_to "Home", posts_path
+= link_to "Add comment", new_post_comment_path(@post)
+- if @post.user == current_user
+  = link_to "Delete", post_path(@post), method: :delete

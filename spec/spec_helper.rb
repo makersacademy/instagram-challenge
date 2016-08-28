@@ -1,4 +1,7 @@
 require_relative 'rails_helper'
+require_relative 'spec_helpers/comments_helper'
+require_relative 'spec_helpers/posts_helper'
+require_relative 'spec_helpers/sign_up_helper'
 
 RSpec.configure do |config|
 
