@@ -58,29 +58,41 @@ feature 'Posts' do
   end
 
   context 'Editing posts' do
-    before { Post.create(caption: "what a view") }
-
-    scenario 'Users can edit image captions' do
+    before do
       sign_up
-      click_link 'Edit caption'
-      fill_in 'Caption', with: "the view from our villa"
-      click_button 'Update Post'
-      expect(page).to have_content "the view from our villa"
-      expect(page).not_to have_content "what a view"
+      create_post
+    end
+
+    scenario 'Users can edit image captions if they created post' do
       expect(current_path).to eq '/posts'
+      expect(page).to have_content 'Edit caption'
+    end
+
+    scenario 'Users CANNOT edit an image caption if they did not create the post' do
+      click_link 'Sign out'
+      sign_up(email: 'different@user.com')
+      visit '/posts'
+      expect(page).not_to have_content 'Edit caption'
     end
 
   end
 
   context 'Deleting posts' do
-    before { Post.create(caption: "what a view") }
-
-    scenario 'Users can delete a post' do
-      # I WOULD RATHER THIS WAS A FEATURE ON THE INDIVIDUAL POST PAGE
+    before do
       sign_up
-      click_link 'Delete post'
-      expect(page).not_to have_content "what a view"
-      expect(page).to have_content "Your post has successfully been removed from Instagram"
+      create_post
+    end
+
+    scenario 'Users can delete posts if they created post' do
+      expect(current_path).to eq '/posts'
+      expect(page).to have_content 'Delete post'
+    end
+
+    scenario 'Users CANNOT delete a post if they did not create the post' do
+      click_link 'Sign out'
+      sign_up(email: 'different@user.com')
+      visit '/posts'
+      expect(page).not_to have_content 'Delete post'
     end
   end
 
