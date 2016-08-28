@@ -11,7 +11,7 @@ feature 'Displaying posts' do
     expect(page).to have_css "img[src*='cat']"
   end
 
-  scenario "can view indivisual posts" do
+  scenario "can view individual posts" do
     post = create(:post)
 
     visit '/'
