@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @post = Post.create(post_params)
     if @post.save
       flash[:success] = "Your post has been created"
-      redirect_to @post
+      redirect_to post_path(@post)
     else
       flash[:alert] = "Halt! You need an image to post here!"
       render :new
@@ -20,6 +20,17 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    flash[:success] = "Post updated!" 
+    redirect_to post_path(@post)
   end
 
   private
