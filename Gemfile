@@ -32,4 +32,7 @@ group:test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'rspec-collection_matchers'
+  gem 'poltergeist'
 end
