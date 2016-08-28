@@ -1,17 +1,19 @@
-
-<% if @photos.any? %>
-  <%= link_to "Add a photo", new_photo_path %>
-  <% @photos.each do |photo| %>
-
-    <div id="photo-content">
-      <p>
-        <%= image_tag photo.image.url(:medium) %><br>
-        <%= photo.caption %>
-      </p>
-    </div>
-
+<div class="wrapper_skinny">
+  <% if @photos.any? %>
+    <%= link_to "Add a photo", new_photo_path %>
+    <% @photos.each do |photo| %>
+      <div id="photo-content">
+        <ul>
+          <li>
+            <%= "Posted at #{photo.created_at}" %>
+            <%= image_tag photo.image.url(:large) %>
+            <%= photo.caption %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  <% else %>
+    <h1>Oh no, it seems there are no photos to display</h1>
+    <%= link_to "Add a photo", new_photo_path %>
   <% end %>
-<% else %>
-  <h1>Oh no, it seems there are no photos to display</h1>
-  <%= link_to "Add a photo", new_photo_path %>
-<% end %>
+</div>
