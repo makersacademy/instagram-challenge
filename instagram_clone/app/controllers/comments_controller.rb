@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @post.comments.create(review_params)
-    redirect_to '/posts'
+    redirect_to posts_path
   end
 
   private
