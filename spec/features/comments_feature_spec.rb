@@ -9,7 +9,7 @@ feature 'commenting' do
     end
 
   scenario 'allows mums to comment on each others photos' do
-    visit '/posts'
+    sign_up
     click_link 'comment'
     fill_in 'Thoughts', with: 'Hmm, he is a bit spotty :-/'
     click_button 'post comment'

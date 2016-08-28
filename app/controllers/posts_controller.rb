@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @posts=Post.all
   end
@@ -13,8 +15,6 @@ class PostsController < ApplicationController
       if @post.save
         redirect_to posts_path
       else
-        # flash[:notice] = 'Please upload your photo'
-        # redirect_to new_post_path
         render 'new'
     end
   end
@@ -31,4 +31,4 @@ end
 
 def post_params
     params.require(:post).permit(:caption, :image)
-  end
+end
