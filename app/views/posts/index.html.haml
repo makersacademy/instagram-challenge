@@ -9,16 +9,17 @@ Please post a photo.
 %br
 - if @posts.any?
   - @posts.each do |post|
+
     = image_tag post.image.url(:thumb)
     = post.caption
+      - if post.user_id == current_user.id
+        = link_to 'delete', post_path(post), method: :delete
       - if post.likes.any?
         = pluralize post.likes.count, 'like'
       - if post.comments.any?
         - post.comments.each do |comment|
         %h4= comment.thoughts
-      - if post.user_id == current_user.id
-        = link_to 'delete', post_path(post), method: :delete
-    = link_to 'comment', new_post_comment_path(post)
-    = link_to 'like', post_likes_path(post), method: :post
+    =link_to 'comment', new_post_comment_path(post)
+    =link_to 'like', post_likes_path(post), method: :post
 - else
   No posts yet.
