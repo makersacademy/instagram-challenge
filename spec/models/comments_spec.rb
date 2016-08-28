@@ -6,4 +6,6 @@ describe Comment, type: :model do
     expect(comment).to have(1).error_on(:comment)
     expect(comment).not_to be_valid
   end
+
+  it { is_expected.to belong_to :user }
 end
