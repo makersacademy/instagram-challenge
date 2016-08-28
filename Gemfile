@@ -16,9 +16,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
 gem 'devise'
 gem 'paperclip'
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'byebug'
+  gem 'dotenv-rails'
 end
 
 group :development do
