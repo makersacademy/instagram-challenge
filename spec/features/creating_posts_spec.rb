@@ -6,7 +6,7 @@ feature 'Creating posts' do
     click_link 'New Post'
     attach_file('Image', 'spec/files/images/cat.jpg')
     fill_in 'Caption', with: "My cat"
-    click_button 'Submit'
+    click_button 'Create Post'
     expect(page).to have_content "My cat"
     expect(page).to have_css("img[src*='cat.jpg']")
   end

@@ -1,4 +1,9 @@
 source 'https://rubygems.org'
+# my production gems
+gem 'haml'
+gem 'simple_form'
+gem 'paperclip', '~> 5.0.0'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
