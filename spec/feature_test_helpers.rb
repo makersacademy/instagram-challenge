@@ -8,6 +8,7 @@ end
 def sign_up
   visit '/'
   click_link 'Sign up'
+  fill_in 'Username', with: 'testy'
   fill_in 'Email', with: 'test@test.co.uk'
   fill_in 'Password', with: 'secret1234'
   fill_in 'Password confirmation', with: 'secret1234'
