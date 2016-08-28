@@ -36,6 +36,15 @@ feature 'posts' do
         expect(page).to have_content 'Should I take him to the doctor?'
         expect(current_path).to eq '/posts'
       end
+
+      scenario 'throws an error when no photo is uploaded, and the user clicks post it' do
+        visit '/posts'
+        click_link 'post'
+        fill_in 'Caption', with: 'Should I take him to the doctor?'
+        click_button 'post it'
+        expect(page).to have_content 'error'
+      end
+
   end
 
   context 'deleting posts from bubhub' do
