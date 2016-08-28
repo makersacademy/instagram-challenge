@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     if @post.save
       flash[:notice] = "Your image was successfully posted to Instagram"
-      redirect_to '/posts'
+      redirect_to posts_path
     else
       render 'new'
     end
@@ -32,14 +32,14 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to '/posts'
+    redirect_to posts_path
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "Your post has successfully been removed from Instagram"
-    redirect_to '/posts'
+    redirect_to posts_path
   end
 
   private

@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 feature 'Comments' do
-  before { Post.create(caption: "What a handsome fellow") }
+  before do
+    sign_up
+    create_post
+  end
 
   scenario 'Users can comment on posts and see their comment added' do
     visit '/posts'

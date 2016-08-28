@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :posts do
     resources :comments
+    resources :likes
   end
 
   root to: "posts#index"

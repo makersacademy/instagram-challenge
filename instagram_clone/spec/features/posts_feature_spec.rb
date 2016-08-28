@@ -11,26 +11,29 @@ feature 'Posts' do
 
   context 'At least one post has been added' do
     before do
-      Post.create(caption: "view from the villa")
+      sign_up
+      create_post
     end
 
     scenario 'Posts are displayed on the posts page' do
       visit '/posts'
-      expect(page).to have_content "view from the villa"
+      expect(page).to have_content "handsome chap"
       expect(page).not_to have_content "No posts yet"
     end
   end
 
   context 'Creating posts' do
-    scenario 'User can add a post and see it on the posts page' do
+    before do
       sign_up
+    end
+
+    scenario 'User can add a post and see it on the posts page' do
       create_post
       expect(current_path).to eq '/posts'
       expect(page).to have_content 'handsome chap'
     end
 
     scenario 'Posts cannot be created without a caption shorter than 3 characters' do
-      sign_up
       create_post(caption: 'zz')
       expect(page).not_to have_content 'zz'
       expect(page).to have_content 'error'
@@ -39,7 +42,6 @@ feature 'Posts' do
     # POSTS CANNOT BE CREATED WITHOUT UPLOADING AN IMAGE
 
     scenario 'User sees a success message with successful posts' do
-      sign_up
       create_post
       expect(current_path).to eq '/posts'
       expect(page).to have_content 'Your image was successfully posted to Instagram'
