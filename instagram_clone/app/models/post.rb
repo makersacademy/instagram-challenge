@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   validates :title, length: { minimum: 3 }, uniqueness: true
+  validates :image, presence: true
   belongs_to :user
 
   has_many :likes

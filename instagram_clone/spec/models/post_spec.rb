@@ -13,6 +13,11 @@ describe Post, type: :model do
     expect(duplicate_post).to have(1).error_on(:title)
   end
 
+  it "is not valid without an image" do
+    post = Post.create(title: "An imageless post")
+    expect(post).to have(1).error_on(:image)
+  end
+
   describe 'comments' do
     describe 'build_with_user' do
 

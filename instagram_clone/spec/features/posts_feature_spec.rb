@@ -18,6 +18,7 @@ feature 'posts' do
         click_link 'New post'
         fill_in 'Title', with: 'First post'
         fill_in 'Description', with: 'great'
+        page.attach_file("post_image", Rails.root + 'app/assets/images/shadow.JPG')
         click_button 'Create Post'
         expect(page).to have_content 'First post'
         expect(current_path).to eq '/posts'
@@ -30,6 +31,16 @@ feature 'posts' do
         click_button 'Create Post'
         expect(page).not_to have_css 'h2', text: 'aa'
         expect(page).to have_content 'error'
+      end
+
+      it "does not allow posts without an image" do
+        visit '/posts'
+        click_link 'New post'
+        fill_in 'Title', with: 'valid title'
+        click_button 'Create Post'
+        expect(page).not_to have_css 'h2', text: 'valid title'
+        expect(page).to have_content 'error'
+
       end
     end
 
@@ -50,6 +61,7 @@ feature 'posts' do
        click_link 'Edit First post'
        fill_in 'Title', with: 'Updated First post'
        fill_in 'Description', with: 'even more great'
+       page.attach_file("post_image", Rails.root + 'app/assets/images/shadow.JPG')
        click_button 'Create Post'
        expect(page).to have_content 'Updated First post'
        expect(current_path).to eq '/posts'
