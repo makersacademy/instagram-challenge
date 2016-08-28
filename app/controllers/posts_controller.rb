@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts=Post.all
+    
   end
 
   def new
@@ -26,6 +27,7 @@ class PostsController < ApplicationController
     flash[:notice] = 'Post deleted'
     redirect_to posts_path
   end
+
 
 
 end

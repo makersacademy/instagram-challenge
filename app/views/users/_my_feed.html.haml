@@ -1,0 +1,13 @@
+- if @posts.any?
+  - @posts.each do |post|
+
+    = image_tag post.image.url(:thumb)
+    = post.caption
+      - if post.likes.any?
+        = pluralize post.likes.count, 'like'
+      - if post.comments.any?
+        - post.comments.each do |comment|
+        %h4= comment.thoughts
+    = link_to 'delete', post_path(post), method: :delete
+- else
+  You haven't made any posts yet :(
