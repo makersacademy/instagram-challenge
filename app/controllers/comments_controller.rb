@@ -6,13 +6,13 @@ class CommentsController < ApplicationController
 
   def create
     @photograph = Photograph.find(params[:photograph_id])
-    @photograph.comments.create(review_params)
+    @photograph.comments.create(comment_params)
     redirect_to photographs_path
   end
 
   def create
     @photograph = Photograph.find(params[:photograph_id])
-    @comment= @photograph.comments.build_with_user(review_params, current_user)
+    @comment = @photograph.comments.build_with_user(comment_params, current_user)
     if @comment.save
       redirect_to photographs_path
     else
@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
 
   private
 
-  def review_params
+  def comment_params
     params.require(:comment).permit(:thoughts)
   end
 end

@@ -10,6 +10,7 @@ before_action :authenticate_user!, :except => [:index, :show]
 
   def create
     @photograph = Photograph.create(photograph_params)
+    @photograph.user = current_user
     if @photograph.save
       redirect_to photographs_path
     else

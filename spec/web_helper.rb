@@ -31,6 +31,6 @@ def photograph_upload
   visit '/photographs'
   click_link 'Add a photograph'
   attach_file "photograph_image", "spec/spec_assets/2395_What_causes_waves_in_the_ocean.jpg"
-  fill_in 'Name', with: 'Sea'
+  fill_in 'Name', with: 'sea'
   click_button 'Create Photograph'
 end
