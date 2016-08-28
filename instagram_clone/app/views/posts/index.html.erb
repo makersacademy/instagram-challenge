@@ -1,31 +1,36 @@
 <% if user_signed_in? %>
-  <!-- <a href='/posts/new' class="btn btn-secondary">Add a post</a> -->
-  <%= button_to "Add a post", new_post_path, :method => "get", :class => "btn btn-danger" %>
+  <div class="postbox">
+    <%= button_to "Add a post", new_post_path, :method => "get", :class => "btn btn-danger" %>
+  </div>
 <% end %>
-<br />
 
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-    <h4> <%= post.caption %> </h4>
+  <div class="postbox">
     <% if post.user == current_user %>
       <%= link_to "Edit caption", edit_post_path(post) %>
       <%= link_to "Delete post", post_path(post), method: :delete %>
       <br />
     <% end %>
-    Posted by <%= post.user.email %>
-    <br />
+    Posted by <span class="user_email"><%= post.user.email %></span>
     <%= pluralize post.likes.count, 'like' %>
-    <%= button_to "Like this post", post_likes_path(post), method: :post, :class => "btn btn-info" %>
     <br />
+    <%= button_to "Like this post", post_likes_path(post), method: :post, :class => "btn btn-danger" %>
+    <h4><em>"<%= post.caption %>". . .</em></h4>
     <%= link_to image_tag(post.image.url(:medium), :class => "img-rounded"), post_path(post)%>
     <br />
-    <%= button_to "Add a comment", new_post_comment_path(post), :method => "get", :class => "btn btn-info" %>
+    <div class="trial">
+      <% post.comments.each do |comment| %>
+        <span class="user_email">
+          <%= post.user.email %>
+        </span>:
+        "<%= comment.thoughts %>"
+        <br />
+      <% end %>
+    </div>
+    <%= button_to "Add a comment", new_post_comment_path(post), :method => "get", :class => "btn btn-danger" %>
     <br />
-    <h4>Comments:</h4>
-    <% post.comments.each do |comment| %>
-      <%= comment.thoughts %>
-      <br />
-    <% end %>
+  </div>
   <% end %>
 <% else %>
   No posts yet
