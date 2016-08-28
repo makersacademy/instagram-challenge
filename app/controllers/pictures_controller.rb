@@ -9,14 +9,24 @@ class PicturesController < ApplicationController
   end
 
   def create
-    Picture.create(pictures_params)
-    redirect_to pictures_path
+    @picture = Picture.new(pictures_params)
+    if @picture.save
+      flash[:success] = "Picture posted!"
+      redirect_to pictures_path
+    else
+      flash[:alert] = "You need to include an image file"
+      render :new
+    end
+  end
+
+  def show
+    @picture = Picture.find(params[:id])
   end
 
   private
 
   def pictures_params
-    params.require(:picture).permit(:description, :image)
+    params.require(:picture).permit(:image, :description)
   end
 
 end
