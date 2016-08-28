@@ -3,13 +3,13 @@
     <div class="col-xs-12 col-md-8 col-md-offset-2">
       <span class="form-group center-block text-center">
         <input type="text" id="search" placeholder="Search">
-        <button type="submit" class="btn btn-primary btn-lg" id="search-btn">Search</button>
+        <button type="submit" class="btn btn-default" id="search-btn">👓</button>
         </form>
         <%= link_to 'New Post', new_post_path, role:"button", class: "btn btn-primary btn-lg" %>
       </span>
         <% @posts.all.each do |post| %>
           <div class="post">
-          <p> <%= post.user.user_name %> </p>
+          <p> @<%= post.user.user_name %> </p>
           <div class="picture"> <%= image_tag post.image.url(:medium), class: 'center-block' %> </div>
           <span class="likes"> <%= link_to '♡', post_likes_path(post), method: 'post', class: 'like-link', id: 'like-id'%> <span class="write-comment"><%= link_to '✎', new_post_comment_path(post), class: 'write-comment-link' %></span><br>
             <span class="like-count"> ♥ <%= pluralize(post.likes.count, 'like') %></span>
