@@ -24,4 +24,14 @@ feature "comments" do
     expect(page).to have_content "error"
   end
 
+  scenario "comment can be seen on individual images" do
+    visit "/"
+    click_link "Selfie"
+    click_link "Add comment"
+    fill_in "Comment", with: "Lovely picture"
+    click_button "Add comment"
+    click_link "Selfie"
+    expect(page).to have_content "Lovely picture"
+  end
+
 end
