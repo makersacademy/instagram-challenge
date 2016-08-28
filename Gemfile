@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
 
 gem 'rails', '4.2.7.1'
 gem 'haml'
@@ -13,6 +14,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'puma'
 
 group :development, :test do
   gem 'byebug'
@@ -20,10 +22,13 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-collection_matchers'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'dotenv-rails'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
+end
 
-  # gem 'spring'
+group :production do
+  gem 'rails_12factor'
 end
