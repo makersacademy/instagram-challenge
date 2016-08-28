@@ -12,4 +12,18 @@ feature 'Photos' do
 
   end
 
+  context 'Adding a photo' do
+
+    scenario 'A user uploads a photo' do
+      visit '/'
+      click_link 'Add a photo'
+      upload_file "Upload photo", Rails.root + 'spec/fixtures/files/wham.jpg'
+      fill_in :caption, with: 'WHAM!'
+      click_button 'Post Photo'
+      expect(page).to have_content 'WHAM!'
+      expect(current_path).to eq '/'
+    end
+
+  end
+
 end
