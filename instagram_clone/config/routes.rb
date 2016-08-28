@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     resources :likes
   end
 
+  resources :tags
 end
