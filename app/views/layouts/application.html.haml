@@ -7,10 +7,11 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = link_to "Home", root_path
     - if user_signed_in?
-      = link_to "Sign out", destroy_user_session_path, method: :delete
+      = link_to "Home", root_path
       = link_to "Profile", profile_path(current_user.username)
+      = link_to "Upload", new_post_path
+      = link_to "Sign out", destroy_user_session_path, method: :delete
     = notice
     = alert
     = yield
