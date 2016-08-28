@@ -32,6 +32,15 @@ require 'rails_helper'
         expect(page).to have_content 'My post'
         expect(current_path).to eq '/posts'
       end
+
+      context 'an invalid post' do
+        it 'does not let you submit a post with no caption' do
+          visit '/posts'
+          click_link 'Add a post'
+          click_button 'Post'
+          expect(page).to have_content 'error'
+        end
+      end
     end
 
     context 'viewing posts' do
@@ -51,7 +60,7 @@ require 'rails_helper'
 
       scenario 'let a user edit a post' do
         visit '/posts'
-        click_link 'Edit #Brunch'
+        click_link 'Edit'
         fill_in 'Caption', with: '#AvoBrunch'
         click_button 'Update Post'
         expect(page).to have_content '#AvoBrunch'
@@ -65,7 +74,7 @@ require 'rails_helper'
 
       scenario 'removes a post when a user clicks a delete link' do
         visit '/posts'
-        click_link 'Delete #Cats'
+        click_link 'Delete'
         expect(page).not_to have_content '#Cats'
         expect(page).to have_content 'Post deleted successfully'
       end

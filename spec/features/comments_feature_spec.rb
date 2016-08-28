@@ -9,7 +9,7 @@ feature 'reviewing' do
     fill_in "Comment", with: "nice"
     click_button 'Leave Comment'
 
-    expect(current_path).to eq '/post'
+    expect(current_path).to eq '/posts'
     expect(page).to have_content('nice')
   end
 end
