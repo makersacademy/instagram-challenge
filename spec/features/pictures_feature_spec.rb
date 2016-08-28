@@ -50,4 +50,18 @@ feature 'pictures' do
     end
   end
 
+  context "editing picture details" do
+
+    scenario "allows a user to edit the description of a picture" do
+      upload_image
+      visit '/'
+      click_link "Edit image description"
+      fill_in 'Description', with: "A different description"
+      click_button "Edit description"
+      expect(page).to have_content "A different description"
+      expect(page).not_to have_content "Test description"
+      expect(current_path).to eq '/pictures'
+    end
+  end
+
 end
