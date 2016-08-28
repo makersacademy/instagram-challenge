@@ -13,8 +13,9 @@ feature "Sign up" do
     it "should display 'sign out' link" do
       expect(page).to have_link("Sign out")
     end
-    xit "redirects user to pictures main page" do
-      expect(current_path).to eq "/pictures"
+    it "redirects user to his pictures page" do
+      expect(current_path).to eq "/users/1/pictures"
+      expect(page).to have_content "test@test"
     end
   end
 end
