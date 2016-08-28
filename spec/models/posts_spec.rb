@@ -7,6 +7,6 @@ describe Post, type: :model do
     expect(post).not_to be_valid
   end
 
-  it { is_expected.to belong_to :user_}
+  it { is_expected.to belong_to :user }
   it { is_expected.to have_many :comments }
 end
