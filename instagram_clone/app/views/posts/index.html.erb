@@ -1,4 +1,6 @@
-<a href='/posts/new'>Add a post</a>
+<% if user_signed_in? %>
+  <a href='/posts/new'>Add a post</a>
+<% end %>
 <br />
 
 <% if @posts.any? %>
@@ -9,6 +11,7 @@
     <br />
     <% post.comments.each do |comment| %>
       <%= comment.thoughts %>
+      <br />
     <% end %>
     <br />
     <%= link_to "Edit caption", edit_post_path(post) %>
