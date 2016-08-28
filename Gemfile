@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'carrierwave'
+gem 'paperclip'
 gem 'omniauth-github'
 # gem 'rubocop'
 gem 'devise'
