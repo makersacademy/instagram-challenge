@@ -10,12 +10,9 @@ feature 'User Profiles' do
     end
 
     scenario 'A logged in user can upload a picture to there profile' do
-      click_link 'Upload'
-      fill_in 'Description', with: 'This is my first post :)'
-      attach_file('post_image', "#{Dir.pwd}/spec/features/test_images/garden.jpg")
-      click_button 'Post'
+      create_a_post
       expect(current_path).to eq '/mannieg'
-      expect(page).to have_xpath '/html/body/div[1]/div/img'
+      expect(page).to have_xpath '//div[@class="post"]'
       expect(page).to have_content 'This is my first post :)'
     end
   end

@@ -6,7 +6,12 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.create(post_params)
-    redirect_to profile_path(current_user.username)
+
+    if @post.save
+      redirect_to profile_path(current_user.username)
+    else
+      render new_post_path
+    end
   end
 
   private

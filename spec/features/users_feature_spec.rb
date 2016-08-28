@@ -43,7 +43,9 @@ feature 'User can sign in' do
     scenario 'can login' do
       sign_up
       click_link 'Sign out'
-      click_link 'Log in'
+      within '//div[@class="navigation"]' do
+        click_link 'Log in'
+      end
       fill_in 'Username', with: 'test'
       fill_in 'Password', with: 'Password123'
       click_button 'Log in'

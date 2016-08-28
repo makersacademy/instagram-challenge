@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     end
   end
   resources :profiles, :path => ''
-  resources :posts
+  resources :posts do
+    resources :likes
+  end
 end

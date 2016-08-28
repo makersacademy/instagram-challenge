@@ -1,6 +1,9 @@
 - if @user
-  = @user.username
+  %h2= @user.username
   - @user.posts.each do |post|
-    %div.post
-      %div.image= image_tag post.image.url(:thumb)
+    %div.post{:id => post.id}
+      %div.image= image_tag post.image.url(:medium)
+      %span.like-count= post.likes.count
+      = 'like'.pluralize post.likes.count
       %p= post.description
+      = link_to "Heart", post_likes_path(post), class: 'heart-link'
