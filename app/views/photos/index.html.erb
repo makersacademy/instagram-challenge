@@ -1,19 +1,27 @@
 <div class="wrapper_skinny">
   <% if @photos.any? %>
-    <%= link_to "Add a photo", new_photo_path %>
+    <div id="add-photo">
+      <%= link_to "Add a photo", new_photo_path %>
+    </div>
     <% @photos.each do |photo| %>
       <div id="photo-content">
         <ul>
           <li>
-            <%= "Posted #{time_ago_in_words(photo.created_at)} ago" %>
+            <div class="photo-time">
+              <%= "#{time_ago_in_words(photo.created_at)} ago" %>
+            </div>
             <%= image_tag photo.image.url(:large) %>
-            <%= photo.caption %>
+            <div class="photo-caption">
+              <%= photo.caption %>
+            </div>
           </li>
         </ul>
       </div>
     <% end %>
   <% else %>
-    <h1>Oh no, it seems there are no photos to display</h1>
-    <%= link_to "Add a photo", new_photo_path %>
+    <div id="add-photo">
+      <h3>Oh no, it seems there are no photos to display</h3>
+      <%= link_to "Add a photo", new_photo_path %>
+    </div>
   <% end %>
 </div>
