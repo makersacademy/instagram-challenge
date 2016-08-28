@@ -1,3 +1,4 @@
+require 'rails_helper'
 
 describe Post, type: :model do
   it 'is not valid with a title of less than three characters' do
@@ -16,6 +17,14 @@ describe Post, type: :model do
   it "is not valid without an image" do
     post = Post.create(title: "An imageless post")
     expect(post).to have(1).error_on(:image)
+  end
+
+  it 'can have tags' do
+    tag = Tag.create(name: 'first')
+    post = Post.new(title: 'test')
+    post.save(:validate => false)
+    post.tags << tag
+    expect(post.tags).to include(tag)
   end
 
   describe 'comments' do
