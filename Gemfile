@@ -32,15 +32,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'dotenv-rails'
 gem "haml-rails"
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'paperclip'
 gem 'devise'
+gem 'omniauth-facebook'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
 end
 
 group :test do
