@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @posts = Post.all
   end
@@ -9,8 +11,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params)
-    redirect_to '/posts'
+    @post = Post.new(post_params)
+    @post.user = current_user
+    if @post.save
+      redirect_to '/posts'
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -29,9 +36,15 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    @post.user = current_user
+    if current_user == @post.user
     @post.destroy
     flash[:notice] = 'Post deleted successfully'
     redirect_to '/posts'
+    else
+    flash[:notice] = "It's not your picture"
+    render 'new'
+    end
   end
 
 
