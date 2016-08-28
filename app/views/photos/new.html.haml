@@ -1,10 +1,10 @@
 %center
   %h1 New Photo
 .form-container
-  = form_for @photo do |f|
+  = form_for(@photo, html: { class: "directUpload", data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f|
     .form-group
       = f.label :photo_url
-      = f.text_field :photo_url, class: 'form-control'
+      = f.file_field :photo_url, class: 'form-control'
     .form-group
       = f.label :description
       = f.text_field :description, class: 'form-control'
