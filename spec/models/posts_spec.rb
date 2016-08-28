@@ -6,4 +6,7 @@ describe Post, type: :model do
     expect(post).to have(1).error_on(:caption)
     expect(post).not_to be_valid
   end
+
+  it { is_expected.to belong_to :user_}
+  it { is_expected.to have_many :comments }
 end
