@@ -10,6 +10,20 @@ class CommentsController < ApplicationController
     redirect_to photographs_path
   end
 
+  def create
+    @photograph = Photograph.find(params[:photograph_id])
+    @comment= @photograph.comments.build_with_user(review_params, current_user)
+    if @comment.save
+      redirect_to photographs_path
+    else
+      if @comment.errors[:user]
+        redirect_to photographs_path, alert: 'You have already commented on this photograph'
+      else
+        render :new
+      end
+    end
+  end
+
   private
 
   def review_params

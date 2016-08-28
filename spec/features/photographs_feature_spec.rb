@@ -4,6 +4,7 @@ feature 'photographs' do
   context 'no photographs have been added' do
     scenario 'should display a prompt to add a photograph' do
       visit '/photographs'
+      sign_up
       click_link 'Delete ocean'
       expect(page).to have_content 'No photographs yet'
       expect(page).to have_link 'Add a photograph'
@@ -24,11 +25,7 @@ feature 'photographs' do
 
   context 'creating photographs' do
     scenario 'prompts user to fill out a form, then displays the new photographs' do
-      visit '/photographs'
-      click_link 'Add a photograph'
-      attach_file "photograph_image", "spec/spec_assets/2395_What_causes_waves_in_the_ocean.jpg"
-      fill_in 'Name', with: 'Sea'
-      click_button 'Create Photograph'
+      photograph_upload
       expect(page).to have_content 'Sea'
       expect(page).to have_selector("img")
       expect(current_path).to eq '/photographs'
@@ -50,6 +47,7 @@ feature 'photographs' do
   context 'editing photographs name' do
     scenario 'let a user edit a photographs name' do
       visit '/photographs'
+      sign_up
       click_link 'Edit ocean'
       fill_in 'Name', with: 'Great blue sea'
       click_button 'Update Photograph'
@@ -62,6 +60,7 @@ feature 'photographs' do
 
     scenario 'removes a photographs when a user clicks a delete link' do
       visit '/photographs'
+      sign_up
       click_link 'Delete ocean'
       expect(page).not_to have_content 'ocean'
       expect(page).to have_content 'Photograph deleted successfully'
@@ -71,6 +70,7 @@ feature 'photographs' do
   context 'an invalid image file' do
     scenario 'does not let you submit a file that is not an image' do
       visit '/photographs'
+      sign_up
       click_link 'Add a photograph'
       attach_file "photograph_image", "spec/spec_assets/text_file_spec.txt"
       fill_in 'Name', with: 'Ocean'

@@ -1,5 +1,5 @@
 class PhotographsController < ApplicationController
-
+before_action :authenticate_user!, :except => [:index, :show]
   def index
     @photographs = Photograph.all
   end
