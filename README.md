@@ -24,18 +24,18 @@ Bonus if you can add filters!
 
 ## User stories
 
-```As a user
-So that I can share photos
+```As a user  
+So that I can share photos  
 I want to be able to upload images```
 
-```As a user
-So that my photos are in one place
+```As a user  
+So that my photos are in one place  
 I want to be able to sign up for an account```
 
-```As a user
-So that my photos are secure
+```As a user  
+So that my photos are secure  
 I want to be able to sign in and sign out```
 
-```As a user
-So that I can share my thoughts
+```As a user  
+So that I can share my thoughts  
 I want to be able to post comments on pictures```
