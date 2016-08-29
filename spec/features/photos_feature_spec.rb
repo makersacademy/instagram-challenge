@@ -31,6 +31,17 @@ feature 'photos' do
     end
   end
 
+  context 'an invalid photo' do
+    it 'does not let you submit without an image' do
+      visit '/'
+      click_link 'Add Photo'
+      fill_in 'Description', with: 'Selfie'
+      click_button 'Post Photo'
+      expect(page).not_to have_content 'selfie.jpg'
+      expect(page).to have_content 'error'
+    end
+  end
+
   context 'viewing photos' do
     before do
       post_photo
