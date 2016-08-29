@@ -2,7 +2,6 @@ Instagram Challenge
 ===================
 ## Kittygram
 
-https://kittygram-lucalabs.herokuapp.com
 
 ## Features
 - [x] Sign in / Sign up
@@ -13,7 +12,22 @@ https://kittygram-lucalabs.herokuapp.com
 - [] Filters for images
 - [] Not finished
 
+## Technologies & Principles
+
+* Ruby
+* Rails
+* REST
+* Devise Token Authentication
+* JQuery
+* JSON
+* Paperclip
+* AWS S3
+* Heroku
+* HAML
+
 ## How to run
+Either connect to:
+https://kittygram-lucalabs.herokuapp.com
 1. Clone this repository
 2. Run `bundle install`
 3. Run `rake db:create` and `rake db:migrate`
@@ -42,3 +56,9 @@ As a kitty enthusiast,
 So I can better appreciate other kitty photos,
 I would like to be able to post comments.
 ```
+## Further Development
+* Allow users to tag photos
+* Allow users to sort photos by tags
+* Build User Profiles - only showing that users images
+* Connect Users - configure following other users
+* Logged in feed - only photogaphs from followed users
