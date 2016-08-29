@@ -12,6 +12,7 @@ feature 'pictures' do
 
   context 'pictures have been added' do
     before do
+      sign_up
       upload_image
     end
 

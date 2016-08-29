@@ -1,5 +1,7 @@
 class PicturesController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @pictures = Picture.all
   end
@@ -10,6 +12,7 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(pictures_params)
+    @picture.user = current_user
     if @picture.save
       flash[:success] = "Picture posted!"
       redirect_to pictures_path
