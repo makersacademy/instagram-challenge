@@ -19,15 +19,22 @@ class PicturesController < ApplicationController
     end
   end
 
+  def show
+    find_picture
+  end
+
   def destroy
-    @picture = Picture.find(params[:id])
-    @picture.destroy
+    find_picture.destroy
     redirect_to '/pictures'
   end
 
   private
 
-  def picture_params
-    params.require(:picture).permit(:image) if params[:picture]
-  end
+    def picture_params
+      params.require(:picture).permit(:image) if params[:picture]
+    end
+
+    def find_picture
+      @picture = Picture.find(params[:id])
+    end
 end

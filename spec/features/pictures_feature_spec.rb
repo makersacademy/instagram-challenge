@@ -39,6 +39,16 @@ feature 'pictures' do
     end
   end
 
+  context 'viewing pictures' do
+    scenario "let's users view a picture" do
+      visit '/pictures'
+      click_link 'Add a picture'
+      attach_file "picture_image", "spec/pictures/test_picture.jpg"
+      click_button "Create Picture"
+      click_link 'View picture test_picture.jpg'
+    end
+  end
+
   context 'removing pictures' do
     scenario 'deleting a single picture' do
       visit '/pictures'
@@ -46,9 +56,24 @@ feature 'pictures' do
       attach_file "picture_image", "spec/pictures/test_picture.jpg"
       click_button "Create Picture"
       expect(page).to have_css("img[src*='test_picture.jpg']")
-      click_link 'Remove picture'
+      click_link 'Remove picture test_picture.jpg'
       expect(page).not_to have_css("img[src*='test_picture.jpg']")
     end
-  end
 
+    scenario 'deleting multiple pictures' do
+      visit '/pictures'
+      click_link 'Add a picture'
+      attach_file "picture_image", "spec/pictures/test_picture.jpg"
+      click_button "Create Picture"
+      click_link 'Add a picture'
+      attach_file "picture_image", "spec/pictures/test_picture2.jpg"
+      click_button "Create Picture"
+      expect(page).to have_css("img[src*='test_picture.jpg']")
+      expect(page).to have_css("img[src*='test_picture2.jpg']")
+      click_link 'Remove picture test_picture.jpg'
+      click_link 'Remove picture test_picture2.jpg'
+      expect(page).not_to have_css("img[src*='test_picture.jpg']")
+      expect(page).not_to have_css("img[src*='test_picture2.jpg']")
+    end
+  end
 end
