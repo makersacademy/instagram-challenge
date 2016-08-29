@@ -12,8 +12,11 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.create(photo_params)
-    redirect_to root_path
+    @photo = Photo.new(photo_params)
+    @photo.user_id = current_user.id
+    if @photo.save
+      redirect_to root_path
+    end
   end
 
   def edit

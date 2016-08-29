@@ -8,6 +8,9 @@
         <ul>
           <li>
             <div class="photo-time">
+              <% if photo.user %> <!-- Migrate so all photos have users-->
+                <%= photo.user.email %>
+              <% end %>
               <i><%= "#{time_ago_in_words(photo.created_at)} ago" %></i>
             </div>
             <%= image_tag photo.image.url(:large), class: 'photo-image' %>
