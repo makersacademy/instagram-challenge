@@ -108,3 +108,6 @@ I would like to be able to "love" posts.
 
 TO DO
 * Implement only one like per user per post.
+* Failure to add a post and error message if no image is uploaded.
+* Sort out fb sign in for Heroku app.
+* Posts arranged in reverse chronological order.
