@@ -6,7 +6,7 @@ feature 'liking posts' do
     post = Post.create(caption: 'Sunset', user_id: user.id )
   end
 
-  scenario 'a user can like a post, which updates the post like count' do
+  scenario 'a user can like a post, which increases the post like count', js: true do
     visit '/posts'
     click_link 'Like'
     expect(page).to have_content('1 like')

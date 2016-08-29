@@ -1,11 +1,11 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <h2><%= link_to post.caption, post_path(post) %></h2>
-    <p><%= pluralize post.likes.count, 'like' %></p>
+    <p><span class="likes_count"><%= post.likes.count %></span><%= ' like'.pluralize(post.likes.count) %>
       <% post.comments.each do |comment| %>
         <h3><%= comment.comment %></h3>
       <% end %>
-    <br><%= link_to "Like", new_post_like_path(post) %>
+    <br><%= link_to "Like", new_post_like_path(post), class: 'likes-link' %>
     <%= link_to "Comment", new_post_comment_path(post) %>
     <%= link_to "Edit", edit_post_path(post) %>
     <%= link_to "Delete", post_path(post), method: :delete %>
