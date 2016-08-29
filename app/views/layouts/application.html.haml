@@ -32,12 +32,15 @@
         %div.col-3
           %br
         %div.col-6
-          %div.notice
-            = notice
           %div.alert
+            = notice
             = alert
+          %div
+          - if user_signed_in?
+            = link_to "Add a photograph", new_photograph_path(@photograph), class: "button_styled", id: "add_photograph"
+
         %div.col-3
           %br
 
-    = console if ENV['RAILS_ENV'] == 'development'
+    -# = console if ENV['RAILS_ENV'] == 'development'
     = yield

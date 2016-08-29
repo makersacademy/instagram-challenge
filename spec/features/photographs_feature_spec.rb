@@ -42,13 +42,27 @@ feature 'photographs' do
         expect(page).to have_content "Add a photograph"
       end
 
-      scenario 'user can add a caption to an uploaded photograph' do
+
+      scenario 'add a caption to an uploaded photograph' do
         sign_in(email: user.email, password: user.password)
         click_link "Add a photograph"
         fill_in "Say something about your photo", with: "Kitty!"
         click_button "Post Photo"
         expect(page).to have_content "Kitty!"
         expect(current_path).to eq root_path
+      end
+
+      scenario 'upload a photograph' do
+        sign_in(email: user.email, password: user.password)
+        click_link "Add a photograph"
+        page.attach_file "photograph[image]", Rails.root + 'spec/fixtures/kitty_1.jpeg'
+        fill_in "Say something about your photo", with: "Kitty!"
+        click_button "Post Photo"
+        expect(page).to have_content "Kitty!"
+        expect(page).to have_content "Photo has been successfully added"
+        expect(current_path).to eq root_path
+        expect(page).to have_xpath("//img[contains(@src,'kitty_1.jpeg')]")
+
       end
     end
 
