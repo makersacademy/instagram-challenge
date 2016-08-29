@@ -1,5 +1,6 @@
-# Photo Model
-class Photo < ActiveRecord::Base
+# Post Model
+class Post < ActiveRecord::Base
+  belongs_to :user
   has_attached_file :image,
                     styles: { thumb: ['200x200#', :jpg],
                               original: ['500x500>', :jpg] },
