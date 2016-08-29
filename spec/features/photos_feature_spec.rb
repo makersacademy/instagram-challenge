@@ -27,7 +27,7 @@ feature 'photos' do
       visit '/photos'
       click_link 'Add Photo'
       fill_in 'Description', with: 'Selfie'
-      click_button 'Create Photo'
+      click_button 'Post Photo'
       expect(page).to have_content 'Selfie'
       expect(current_path).to eq '/'
     end
