@@ -8,7 +8,6 @@ feature 'Comments' do
 
   scenario 'Users can comment on posts and see their comment added' do
     visit '/posts'
-    # YOU WILL NEED TO COME AND FIX THIS FOR MULTIPLE, AMBIGUOUS POSTS:
     click_button 'Add a comment'
     fill_in 'Thoughts:', with: "He's a little thin"
     click_button 'Add comment'

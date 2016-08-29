@@ -6,6 +6,7 @@
     <%= button_to "Add a post", new_post_path, :method => "get", :class => "btn btn-danger" %>
   </div>
 <% end %>
+
 <% if @posts.any? %>
   <% @posts.each do |post| %>
   <div class="postbox">
@@ -22,6 +23,7 @@
     <%= link_to image_tag(post.image.url(:medium), :class => "img-rounded"), post_path(post)%>
     <br />
     <div class="comments-index">
+
       <% post.comments.each do |comment| %>
         <span class="user-email">
           <%= post.user.email %>
@@ -29,17 +31,19 @@
         "<%= comment.thoughts %>"
         <br />
       <% end %>
+
     </div>
     <%= button_to "Add a comment", new_post_comment_path(post), :method => "get", :class => "btn btn-danger" %>
     <br />
   </div>
   <% end %>
+
 <% else %>
+
   <div id="errors" style="padding: 6px; width: 96%">
     <span class="glyphicon glyphicon-thumbs-down"></span>
     No posts yet.
-
     <%= render "layouts/sign_in_to_add_post" %>
-
   </div>
+
 <% end %>

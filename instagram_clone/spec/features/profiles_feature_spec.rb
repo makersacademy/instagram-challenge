@@ -34,20 +34,4 @@ feature 'Profile page' do
       expect(page).to have_content "jonny@mail.com has not posted to Instarails yet"
     end
   end
-
-
-
-
-
 end
-
-
-
-
-
-
-  # scenario "From the main posts page, users can click on an creator's email
-  #           to link to their profile page" do
-  #   click_link "jonny@mail.com"
-  #   expect(page).to have_content "jonny@mail.com's profile page"
-  # end
