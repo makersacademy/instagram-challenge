@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'haml'
 gem 'simple_form'
 gem 'paperclip', '~> 5.0.0'
-
+gem 'bootstrap-sass', '~> 3.3.6'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -42,7 +42,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'capybara'
-  gem "factory_girl_rails", "~> 4.0" 
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :development do
