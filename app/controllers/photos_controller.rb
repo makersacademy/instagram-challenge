@@ -1,5 +1,8 @@
 class PhotosController < ApplicationController
 
+  before_action :find_photo_params, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except:[:index]
+
   def index
     @photos = Photo.all.order('created_at DESC')
   end
@@ -14,17 +17,14 @@ class PhotosController < ApplicationController
   end
 
   def edit
-    @photo = Photo.find(params[:id])
   end
 
   def update
-    @photo = Photo.find(params[:id])
     @photo.update(photo_params)
     redirect_to root_path
   end
 
   def destroy
-    @photo = Photo.find(params[:id])
     @photo.destroy
     flash[:notice] = 'Post successfully deleted'
     redirect_to root_path
@@ -34,6 +34,10 @@ class PhotosController < ApplicationController
 
   def photo_params
     params.require(:photo).permit(:caption, :image)
+  end
+
+  def find_photo_params
+    @photo = Photo.find(params[:id])
   end
 
 end
