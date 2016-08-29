@@ -12,6 +12,9 @@ This app was my weekend challenge for week 8 at Makers Academy. Deployed version
 * "rspec" to run the tests.
 
 ### Screenshots
+<img width="1278" alt="screen shot 2016-08-29 at 23 28 09" src="https://cloud.githubusercontent.com/assets/18581870/18069877/d88bbf94-6e41-11e6-8dcd-619d509cb7e8.png">
+
+<img width="1275" alt="screen shot 2016-08-29 at 23 31 04" src="https://cloud.githubusercontent.com/assets/18581870/18069883/e43f770e-6e41-11e6-8770-fe247e7fd744.png">
 
 ### Implemented User Stories
 
