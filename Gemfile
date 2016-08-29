@@ -5,6 +5,7 @@ gem 'paperclip', '~> 5.0.0'
 gem 'omniauth-github'
 # gem 'rubocop'
 gem 'devise'
+gem 'devise-bootstrap-views'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7.1'
 # Use postgresql as the database for Active Record

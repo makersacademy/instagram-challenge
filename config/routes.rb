@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'images' => 'images#index'
-  resources :images, only: [:new, :create, :index, :destroy]
+  get 'photos' => 'photos#index'
+  resources :photos, only: [:new, :create, :index, :destroy]
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  root to: 'images#index'
+  root to: 'photos#index'
 end
