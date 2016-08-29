@@ -52,4 +52,19 @@ feature 'Photos' do
 
   end
 
+  context 'editing photos' do
+    before do
+      Photo.create(caption: "this is a photo")
+    end
+
+    it 'lets the user edit a photo' do
+      visit '/photos'
+      click_link 'Edit photo'
+      fill_in 'Caption', with: "It's still a photo"
+      click_button 'Update Photo'
+      expect(page).to(have_content("It's still a photo"))
+      expect(current_path).to(eq('/photos'))
+    end
+  end
+
 end
