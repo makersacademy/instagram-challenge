@@ -1,2 +1,13 @@
-%p= image_tag @picture.image.url
-%p= @picture.description
+.picture-div
+  %p= image_tag @picture.image.url
+.picture-details-div
+  %p= @picture.description
+  %span= link_to "Comment on picture | ", new_picture_comment_path(@picture)
+  %span= link_to "Edit picture description | ", edit_picture_path(@picture)
+  %span= link_to "Delete picture", picture_path(@picture), method: :delete
+  .comments
+    - @picture.comments.each do |comment|
+      %span= "#{comment.text} | "
+      %span= "#{comment.picture.user.name} | "
+      %span= "#{comment.created_at}"
+      %br
