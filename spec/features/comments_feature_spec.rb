@@ -10,6 +10,8 @@ feature 'Comments' do
   scenario 'users not logged in cannot leave comments' do
     visit '/photos'
     expect(page).not_to(have_link("Comment"))
+    click_link 'this is a photo'
+    expect(page).not_to(have_link("Comment"))
   end
 
 
@@ -25,5 +27,6 @@ feature 'Comments' do
     click_button 'Leave Comment'
     expect(page).to(have_content("Amazing photo"))
   end
+
 
 end
