@@ -3,8 +3,8 @@ require 'rails_helper'
 feature 'User list' do
 
   before do
-    User.create(username: 'arukomp', email: 'arunas@a.co', password: 'password')
-    User.create(username: 'arunas', email: 'arunas2@a.co', password: 'password')
+    User.create(username: 'arukomp', email: 'arunas@arunas.com', password: 'password')
+    User.create(username: 'arunas', email: 'arunas2@arunas.com', password: 'password')
   end
 
   scenario '/users shows all users' do
