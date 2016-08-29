@@ -1,16 +1,19 @@
 %div.grid
   %div.col-3
     %br
-  %div.col-6
+  %div.col-6.photographs_feed
     = image_tag @photograph.image.url(:large), class: "feed_image"
     %h3= @photograph.caption
     %br
     Uploaded
     = time_ago_in_words(@photograph.created_at)
     ago
+    = pluralize @photograph.likes.count, "like"
+    %br
     = link_to "Comment", new_photograph_comment_path(@photograph), class: "button_styled"
     - if user_signed_in? && @photograph.user == current_user
       = link_to "Delete", photograph_path(@photograph), method: :delete, class: "button_styled"
+    %br
     %ul.comments_list
       %h4 Comments
       - @photograph.comments.all.each do |comment|

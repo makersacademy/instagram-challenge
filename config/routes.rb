@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :photographs do
     resources :comments
+    resources :likes, only: [:create]
   end
   # root 'welcome#index'
   root 'photographs#index'

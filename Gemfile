@@ -34,4 +34,6 @@ group :test do
   gem 'nyan-cat-formatter'
   gem 'rspec-collection_matchers'
   gem 'shoulda-matchers'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end

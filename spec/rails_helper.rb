@@ -5,18 +5,18 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+require 'support/database_cleaner'
 require_relative "helpers/test_helpers"
 # Add additional requires below this line. Rails is not loaded until this point!
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
-    # Choose a test framework:
+
     with.test_framework :rspec
 
-    # Choose one or more libraries:
     with.library :active_record
 
-    # Or, choose the following (which implies all of the above):
-    # with.library :rails
   end
 end
 
@@ -27,7 +27,7 @@ RSpec.configure do |config|
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   config.infer_spec_type_from_file_location!
 
