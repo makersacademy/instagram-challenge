@@ -11,6 +11,6 @@ def new_post
   visit posts_path
   click_link 'New Post'
   fill_in 'Caption', with: 'Amazing. #jackspoint #queenstown'
-  attach_file('Image', File.absolute_path('./public/system/posts/images/000/000/001/medium/jackspoint.jpeg'))
+  attach_file('Image', File.absolute_path('./public/system/posts/images/000/000/003/medium/jackspoint.jpeg'))
   click_button 'Create Post'
 end

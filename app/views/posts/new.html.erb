@@ -1,7 +1,11 @@
 <%= form_for @post, url: posts_path, html: { multipart: true } do |f| %>
-  <%= f.label :caption %>
-  <%= f.text_field :caption %>
   <%= f.label :image %>
   <%= f.file_field :image %>
+  <%= f.label :caption %>
+  <%= f.text_field :caption %>
+  <%= fields_for @tags do |ff|%>
+    <%= ff.label :tag_text %>
+    <%= ff.text_field :tag_text %>
+  <%end%>
   <%= f.submit%>
 <% end %>
