@@ -59,4 +59,17 @@ feature 'photos' do
     end
   end
 
+  context 'deleting photos' do
+    before do
+      post_photo
+    end
+
+    scenario 'removes a photo when a user clicks a delete link' do
+      visit '/'
+      click_link 'Delete Photo'
+      expect(page).not_to have_content 'Selfie'
+      expect(page).to have_content 'Photo deleted successfully'
+    end
+  end
+
 end
