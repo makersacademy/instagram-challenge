@@ -32,6 +32,8 @@ gem 'omniauth-facebook'
 
 gem 'haml'
 
+gem 'paperclip'
+
 gem 'launchy'
 
 gem 'pry'

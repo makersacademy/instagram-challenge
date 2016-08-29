@@ -38,7 +38,6 @@ feature 'comments' do
 
     scenario 'let a user edit a comment' do
       click_link 'View Comments'
-      save_and_open_page
       click_link 'Edit Comment'
       fill_in 'Content', with: 'so cute'
       click_button 'Update Comment'

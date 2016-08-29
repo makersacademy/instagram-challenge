@@ -2,11 +2,16 @@
   - @posts.each do |post|
     %h1= link_to post.title, post_path(post)
     = post.description
+    = image_tag post.image.url(:thumb)
+    %p= pluralize post.likes.count, 'like'
     - if post.comments.any?
       = link_to 'View Comments', post_path(post)
 
     - if user_signed_in?
       = link_to "Comment on #{post.title}", new_post_comment_path(post)
+      - unless current_user.has_liked?(post)
+        = link_to "Like", post_likes_path(post), method: :post
+
       -if post.user_id == current_user.id
         = link_to "Edit #{post.title}", edit_post_path(post)
         = link_to "Delete #{post.title}", post_path(post), method: :delete

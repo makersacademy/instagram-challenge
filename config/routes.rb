@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :posts, shallow: true do
     resources :comments
+    resources :likes
   end
 
 end
