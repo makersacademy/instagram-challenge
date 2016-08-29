@@ -5,7 +5,7 @@ feature 'Posts' do
     scenario 'Should display a prompt to add a new post' do
       sign_up
       expect(page).to have_content "No posts yet"
-      expect(page).to have_content "Add a post"
+      expect(page).to have_button "Add a post"
     end
   end
 
@@ -44,6 +44,7 @@ feature 'Posts' do
     scenario 'User sees a success message with successful posts' do
       create_post
       expect(current_path).to eq '/posts'
+      # require 'pry'; binding.pry
       expect(page).to have_content 'Your image was successfully posted to Instagram'
     end
   end

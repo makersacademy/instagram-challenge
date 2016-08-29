@@ -3,7 +3,7 @@ require 'rails_helper'
 def sign_up(email: 'jonny@mail.com', password: 'password',
             password_confirmation: 'password')
   visit '/'
-  click_link 'Sign up'
+  click_link 'Sign up', match: :first
   fill_in 'Email', with: email
   fill_in 'Password', with: password
   fill_in 'Password confirmation', with: password_confirmation

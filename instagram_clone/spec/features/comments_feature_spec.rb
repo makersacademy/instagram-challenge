@@ -9,9 +9,9 @@ feature 'Comments' do
   scenario 'Users can comment on posts and see their comment added' do
     visit '/posts'
     # YOU WILL NEED TO COME AND FIX THIS FOR MULTIPLE, AMBIGUOUS POSTS:
-    click_link 'Add a comment'
-    fill_in 'thoughts', with: "He's a little thin"
-    click_button 'Create Comment'
+    click_button 'Add a comment'
+    fill_in 'Thoughts:', with: "He's a little thin"
+    click_button 'Add comment'
     expect(current_path).to eq '/posts'
     expect(page).to have_content "He's a little thin"
   end
