@@ -22,5 +22,7 @@ Devise.setup do |config|
   config.sign_out_via = :delete
 
   config.omniauth :github,
-                  Rails.application.secrets.github_app_id, Rails.application.secrets.github_app_secret
+                  # Rails.application.secrets.github_app_id, Rails.application.secrets.github_app_secret
+                  'GITHUB_ID',
+                  'GITHUB_SECRET', scope: 'user, public_repo'
 end
