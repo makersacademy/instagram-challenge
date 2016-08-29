@@ -8,3 +8,12 @@ def sign_up
   click_button 'Sign Up'
 
 end
+
+def add_image
+
+  click_link 'Add An Image'
+  fill_in 'Name', with: 'Holiday pic'
+  fill_in 'Description', with: 'Some holiday photo'
+  click_button 'Upload Image'
+
+end

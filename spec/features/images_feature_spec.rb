@@ -52,10 +52,9 @@ feature 'images' do
 
   context 'updating an image' do
 
-    before { Image.create name: 'Holiday pic', description: 'Vacation photo' }
-
     scenario 'allows a user to edit an image' do
       sign_up
+      add_image
       click_link 'Edit Holiday pic'
       fill_in 'Name', with: 'Italy in the summer'
       click_button 'Update Image'
@@ -68,10 +67,9 @@ feature 'images' do
 
   context 'deleting an image' do
 
-    before { Image.create name: 'Holiday pic', description: 'Vacation photo' }
-
     scenario 'deletes an image when the user clicks a link' do
       sign_up
+      add_image
       click_link 'Holiday pic'
       click_link 'Delete Holiday pic'
       expect(current_path).to eq '/images'
