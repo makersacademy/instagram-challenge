@@ -12,7 +12,23 @@
             </div>
             <%= image_tag photo.image.url(:large), class: 'photo-image' %>
             <div class="photo-caption">
-              <%= photo.caption %><hr> <span><%= link_to "Edit caption", edit_photo_path(photo) %> | <%= link_to "Delete post", photo_path(photo), method: :delete %></span>
+              <%= photo.caption %>
+
+              <% if photo.comments.any? %>
+                <div class="comments">
+                  <hr>
+                  <% photo.comments.each do |comment| %>
+                    <p><%= comment.content %></p><hr>
+                  <% end %>
+                </div>
+              <% else %>
+                <hr>
+              <% end %>
+              <div class="photo-btns">
+                <%= link_to "Comment", new_photo_comment_path(photo) %> |
+                <%= link_to "Edit caption", edit_photo_path(photo) %> |
+                <%= link_to "Delete post", photo_path(photo), method: :delete %>
+              </div>
             </div>
           </li>
         </ul>
