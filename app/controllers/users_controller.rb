@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
-                                          :following, :followers]
+
 
   def show
     @posts=current_user.posts.all
@@ -8,20 +7,13 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = "Following"
-    @user  = User.find(params[:id])
-    @users = @user.following.paginate(page: params[:page])
-    render 'show_follow'
+    @following = current_user.following
   end
 
   def followers
-    @title = "Followers"
-    @user  = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
-    render 'show_follow'
+    @followers = current_user.followers
+    @users = User.all - (current_user.following)
   end
-
-
 
 
 end

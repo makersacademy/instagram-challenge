@@ -3,8 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts=Post.all
-    
+    @posts = current_user.feed
   end
 
   def new
@@ -34,4 +33,8 @@ end
 
 def post_params
     params.require(:post).permit(:caption, :image)
+end
+
+def following(user)
+  return user.following.each{ |following| following }
 end

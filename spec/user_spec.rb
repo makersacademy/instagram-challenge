@@ -15,4 +15,9 @@ describe User, type: :model do
     michael.unfollow(archer)
     expect(michael.following? archer).to be false
   end
+
+  xit "the feed should contain the correct posts" do
+
+  end
+
 end

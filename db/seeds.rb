@@ -6,20 +6,26 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-99.times do |n|
-  username  = "username-#{n+1}"
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
-  User.create!(username: username,
-              email: email,
-              password:              password,
-              password_confirmation: password,
-              )
-end
+jess = User.create!(username: "jess",
+            email: 'test1@test.co.uk',
+            password: "password",
+            password_confirmation: "password")
 
-users = User.all
-user  = users.first
-following = users[2..50]
-followers = users[3..40]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
+
+matt = User.create!(username: "matt",
+            email: 'test2@test.co.uk',
+            password: "password",
+            password_confirmation: "password")
+
+
+lila = User.create!(username: "lila",
+            email: 'test3@test.co.uk',
+            password: "password",
+            password_confirmation: "password")
+
+
+
+jess.follow(lila)
+jess.follow(matt)
+lila.follow(jess)
+lila.follow(matt)
