@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  has_many :comments, dependent: :destroy
+  has_many :commented_posts, through: :comments, source: :post
+  has_many :posts,
+            -> {extending WithUserAssociationExtension}
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -21,4 +25,9 @@ class User < ApplicationRecord
       end
     end
   end
+
+  def has_commented?(post)
+    commented_posts.include? post
+  end
+
 end

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
     @posts = Post.all
@@ -9,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build_with_user(post_params, current_user)
     if @post.save
       redirect_to posts_path
     else
@@ -34,9 +35,13 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:notice] = 'Post deleted successfully'
-    redirect_to '/posts'
+    if current_user.posts.delete_with_user(@post, current_user[:id])
+      flash[:notice] = 'Post deleted successfully'
+      redirect_to '/posts'
+      else
+        flash[:notice] = 'Only post owner can delete post'
+        redirect_to '/posts'
+      end
   end
 
   private
