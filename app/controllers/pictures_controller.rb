@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
 
   def index
-    @pictures = Picture.all
+    @pictures = Picture.all.order("created_at DESC")
   end
 
   def new
@@ -12,7 +12,7 @@ class PicturesController < ApplicationController
     @picture = Picture.create(picture_params)
 
     if @picture.save
-      redirect_to pictures_path
+      redirect_to pictures_path, notice: "Successfully created a Picture"
     else
       @errors = @picture.errors
       render 'new'
