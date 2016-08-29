@@ -1,10 +1,12 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <h2><%= link_to post.caption, post_path(post) %></h2>
+    <p><%= pluralize post.likes.count, 'like' %></p>
       <% post.comments.each do |comment| %>
         <h3><%= comment.comment %></h3>
       <% end %>
-    <br><%= link_to "Comment", new_post_comment_path(post) %>
+    <br><%= link_to "Like", new_post_like_path(post) %>
+    <%= link_to "Comment", new_post_comment_path(post) %>
     <%= link_to "Edit", edit_post_path(post) %>
     <%= link_to "Delete", post_path(post), method: :delete %>
   <% end %>
