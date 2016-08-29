@@ -39,7 +39,7 @@ I want to be able to sign up for an account
 ```
 As a user  
 So that my photos are secure  
-SI want to be able to sign in and sign out
+I want to be able to sign in and sign out
 ```
 
 ```
