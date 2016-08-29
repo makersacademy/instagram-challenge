@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+    <title>Insta-WHAM!</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="cf">
+    <div class="wrapper">
+      <a href="/" id="logo">Insta-<br>WHAM!</a>
+      <nav>
+        <ul>
+          <% if !user_signed_in? %>
+            <li><a href="/users/sign_in" id="signin">Sign In</a></li>
+            <li><%= link_to "Create an account", new_user_registration_path, id: :create_account%></li>
+          <% else %>
+            <li><%= link_to "Log out", destroy_user_session_path, method: :delete, id: :signin%></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <% if notice %>
+    <div class = "alert alert-success wrapper">
+      <%= flash[:notice] %></p>
+      <%= alert %>
+    </div>
+  <% end %>
+  <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<div class="wrapper_skinny">
+  <% if @photos.any? %>
+    <div id="add-photo">
+      <%= link_to "Add a photo", new_photo_path %>
+    </div>
+    <% @photos.each do |photo| %>
+      <div id="photo-content">
+        <ul>
+          <li>
+            <div class="photo-time">
+              <% if photo.user %> <!-- Migrate so all photos have users-->
+                <%= photo.user.email %>
+              <% end %>
+              <i><%= "#{time_ago_in_words(photo.created_at)} ago" %></i>
+            </div>
+            <%= image_tag photo.image.url(:large), class: 'photo-image' %>
+            <div class="photo-caption">
+              <%= photo.caption %>
+
+              <% if photo.comments.any? %>
+                <div class="comments">
+                  <hr>
+                  <% photo.comments.each do |comment| %>
+                    <p><%= comment.content %></p><hr>
+                  <% end %>
+                </div>
+              <% else %>
+                <hr>
+              <% end %>
+              <div class="photo-btns">
+                <%= link_to "Comment", new_photo_comment_path(photo) %> |
+                <%= link_to "Edit caption", edit_photo_path(photo) %> |
+                <%= link_to "Delete post", photo_path(photo), method: :delete %>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  <% else %>
+    <div id="add-photo">
+      <h3>Oh no, it seems there are no photos to display</h3>
+      <%= link_to "Add a photo", new_photo_path %>
+    </div>
+  <% end %>
+</div>
