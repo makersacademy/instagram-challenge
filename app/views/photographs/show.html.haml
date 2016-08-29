@@ -3,13 +3,15 @@
     %br
   %div.col-6.photographs_feed
     = image_tag @photograph.image.url(:large), class: "feed_image"
-    %h3= @photograph.caption
+    %h3.caption= @photograph.caption
     %br
     Uploaded
     = time_ago_in_words(@photograph.created_at)
     ago
-    = pluralize @photograph.likes.count, "like"
-    %br
+    %section.likes
+      %span.like-count= @photograph.likes.count
+      = "like".pluralize(@photograph.likes.count)
+      = link_to 'Like', photograph_likes_path(@photograph), class: "like-link button_styled"
     = link_to "Comment", new_photograph_comment_path(@photograph), class: "button_styled"
     - if user_signed_in? && @photograph.user == current_user
       = link_to "Delete", photograph_path(@photograph), method: :delete, class: "button_styled"

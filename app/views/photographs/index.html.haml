@@ -3,17 +3,18 @@
     %br
   %div.col-6
     - if @photographs.any?
-      %ul{class: "photographs_feed"}
+      %ul.photographs_feed
         - @photographs.each do |photo|
           %li{class: "photograph_in_feed"}
-            = link_to photograph_path(photo) do
-              = image_tag photo.image.url(:large), class: "feed_image", id: photo.id
-            %span.like-count= photo.likes.count
-            = "like".pluralize(photo.likes.count)
+            = link_to photograph_path(photo), id: photo.id do
+              = image_tag photo.image.url(:large), class: "feed_image"
+            %section.likes
+              %span.like-count= photo.likes.count
+              = "like".pluralize(photo.likes.count)
+              = link_to 'Like', photograph_likes_path(photo), class: "like-link button_styled"
             %h4= link_to photo.caption, photograph_path(photo), class: "caption"
             %br
             %br
-            = link_to 'Like', photograph_likes_path(photo), method: :post, class: "like-link button_styled"
             - if user_signed_in? && photo.user == current_user
               = link_to "Edit", edit_photograph_path(photo), class: "button_styled"
               = link_to "Delete", photograph_path(photo), method: :delete, class: "button_styled"
