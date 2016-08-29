@@ -46,7 +46,7 @@ feature 'pictures' do
     scenario 'deleting a single picture' do
       add_picture("spec/pictures/test_picture.jpg")
       expect(page).to have_css("img[src*='test_picture.jpg']")
-      click_link 'Remove picture test_picture.jpg'
+      click_button 'Remove test_picture.jpg'
       expect(page).not_to have_css("img[src*='test_picture.jpg']")
     end
 
@@ -55,8 +55,8 @@ feature 'pictures' do
       add_picture("spec/pictures/test_picture2.jpg")
       expect(page).to have_css("img[src*='test_picture.jpg']")
       expect(page).to have_css("img[src*='test_picture2.jpg']")
-      click_link 'Remove picture test_picture.jpg'
-      click_link 'Remove picture test_picture2.jpg'
+      click_button 'Remove test_picture.jpg'
+      click_button 'Remove test_picture2.jpg'
       expect(page).not_to have_css("img[src*='test_picture.jpg']")
       expect(page).not_to have_css("img[src*='test_picture2.jpg']")
     end

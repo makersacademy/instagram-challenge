@@ -14,7 +14,6 @@ class PicturesController < ApplicationController
     if @picture.save
       redirect_to pictures_path, notice: "Successfully created a Picture"
     else
-      @errors = @picture.errors
       render 'new'
     end
   end
@@ -24,7 +23,8 @@ class PicturesController < ApplicationController
   end
 
   def destroy
-    find_picture.destroy
+    find_picture
+    @picture.destroy
     redirect_to '/pictures'
   end
 
