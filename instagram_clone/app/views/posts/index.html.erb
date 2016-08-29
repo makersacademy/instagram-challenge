@@ -1,4 +1,7 @@
 <% if user_signed_in? %>
+  <div id="logged_in_as">
+    <h5>  You are currently signed in as <%=current_user.email%></h5>
+  </div>
   <div class="center-button">
     <%= button_to "Add a post", new_post_path, :method => "get", :class => "btn btn-danger" %>
   </div>
@@ -32,5 +35,11 @@
   </div>
   <% end %>
 <% else %>
-  No posts yet
+  <div id="errors" style="padding: 6px; width: 96%">
+    <span class="glyphicon glyphicon-thumbs-down"></span>
+    No posts yet.
+
+    <%= render "layouts/sign_in_to_add_post" %>
+
+  </div>
 <% end %>
