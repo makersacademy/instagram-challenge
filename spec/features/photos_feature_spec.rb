@@ -26,4 +26,17 @@ feature 'Photos' do
 
   end
 
+  context 'adding photos' do
+
+    it 'prompts a user to add a caption' do
+      visit '/photos'
+      click_link 'Add a photo'
+      fill_in 'Caption', with: 'This is my first photo'
+      click_button 'Create Photo'
+      expect(page).to(have_content("This is my first photo"))
+      expect(current_path).to(eq('/photos'))
+     end
+
+  end
+
 end
