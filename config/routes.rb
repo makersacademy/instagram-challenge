@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/users' => 'users#index'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :photos do
     resources :comments, only: [:create, :destroy]
