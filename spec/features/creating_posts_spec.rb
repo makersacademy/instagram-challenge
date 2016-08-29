@@ -1,8 +1,16 @@
 require 'rails_helper'
 
 feature 'Creating posts' do
-  scenario 'user can create a post' do
+  background do
+    user = create(:user)
     visit '/'
+    click_link 'Login'
+    fill_in 'Email', with: 'mr_deadpool@marvel.com'
+    fill_in 'Password', with: 'chimichanga'
+    click_button 'Log in'
+  end
+
+  scenario 'user can create a post' do
     click_link 'New Post'
     attach_file('Image', 'spec/files/images/cat.jpg')
     fill_in 'Caption', with: "My cat"
@@ -12,7 +20,6 @@ feature 'Creating posts' do
   end
 
   scenario 'user must include a pic to post' do
-    visit '/'
     click_link 'New Post'
     fill_in 'Caption', with: "Whatever!! #yolo"
     click_button 'Create Post'
