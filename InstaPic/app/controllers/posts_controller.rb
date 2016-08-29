@@ -30,29 +30,33 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
+    if current_user != @post.user
+    flash[:notice] = 'You shall not pass'
     redirect_to '/posts'
+    else
+    @post.update(post_params)
+    redirect_to :action => 'index'
+    end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.user = current_user
-    if current_user == @post.user
-    @post.destroy
-    flash[:notice] = 'Post deleted successfully'
+    if current_user != @post.user
+    flash[:notice] = 'You shall not pass'
     redirect_to '/posts'
     else
-    flash[:notice] = "It's not your picture"
-    render 'new'
+    @post.destroy
+    flash[:notice] = "Post deleted successfully"
+    redirect_to :action => 'index'
     end
   end
 
 
-private
+  private
 
-def post_params
-  params.require(:post).permit(:caption, :image)
-end
+  def post_params
+    params.require(:post).permit(:caption, :image)
+  end
 
 
 
