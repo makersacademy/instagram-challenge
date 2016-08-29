@@ -1,9 +1,8 @@
 <% if user_signed_in? %>
-  <div class="postbox">
+  <div class="center-button">
     <%= button_to "Add a post", new_post_path, :method => "get", :class => "btn btn-danger" %>
   </div>
 <% end %>
-
 <% if @posts.any? %>
   <% @posts.each do |post| %>
   <div class="postbox">
@@ -12,16 +11,16 @@
       <%= link_to "Delete post", post_path(post), method: :delete %>
       <br />
     <% end %>
-    Posted by <span class="user_email"><%= post.user.email %></span>
-    <%= pluralize post.likes.count, 'like' %>
+    Posted by <span class="user-email"><%= post.user.email %></span>
     <br />
-    <%= button_to "Like this post", post_likes_path(post), method: :post, :class => "btn btn-danger" %>
-    <h4><em>"<%= post.caption %>". . .</em></h4>
+    <%= pluralize post.likes.count, 'like'%>
+    <%= button_to "Like", post_likes_path(post), method: :post, :class => "btn btn-danger button" %>
+    <h4 class="big-captions">"<%= post.caption %>". . .</h4>
     <%= link_to image_tag(post.image.url(:medium), :class => "img-rounded"), post_path(post)%>
     <br />
-    <div class="trial">
+    <div class="comments-index">
       <% post.comments.each do |comment| %>
-        <span class="user_email">
+        <span class="user-email">
           <%= post.user.email %>
         </span>:
         "<%= comment.thoughts %>"
