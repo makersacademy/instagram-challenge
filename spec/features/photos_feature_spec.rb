@@ -82,13 +82,23 @@ feature 'Photos' do
       expect(page).not_to(have_link('Edit photo'))
     end
 
-    it 'lets the user edit a photo' do
+    it "does not let users edit photos they didn't upload" do
       visit '/photos'
       click_link 'Sign up'
       fill_in 'Email', with: "test1@test.com"
       fill_in 'Password', with: "123456"
       fill_in 'Password confirmation', with: "123456"
       click_button 'Sign up'
+      expect(page).not_to(have_link('Edit photo'))
+    end
+
+    it 'lets the user edit their own photo' do
+      visit '/photos'
+      click_link 'Sign in'
+      fill_in 'Email', with: 'test@test.com'
+      fill_in 'Password', with: '123456'
+      click_button 'Log in'
+      visit '/photos'
       click_link 'Edit photo'
       fill_in 'Caption', with: "It's still a photo"
       click_button 'Update Photo'
@@ -108,16 +118,26 @@ feature 'Photos' do
       expect(page).not_to(have_link('Edit photo'))
     end
 
-    it 'lets the user delete a photo' do
+    it "does not let users delete photos they didn't upload" do
       visit '/photos'
       click_link 'Sign up'
       fill_in 'Email', with: "test1@test.com"
       fill_in 'Password', with: "123456"
       fill_in 'Password confirmation', with: "123456"
       click_button 'Sign up'
+      expect(page).not_to(have_link('Delete photo'))
+    end
+
+    it 'lets the user delete their own photo' do
+      visit '/photos'
+      click_link 'Sign in'
+      fill_in 'Email', with: 'test@test.com'
+      fill_in 'Password', with: '123456'
+      click_button 'Log in'
+      visit '/photos'
       click_link 'Delete photo'
       expect(page).not_to(have_content("this is a photo"))
-      expect(page).to(have_content("Photo deleted successfully"))
+      expect(current_path).to(eq('/photos'))
     end
   end
 

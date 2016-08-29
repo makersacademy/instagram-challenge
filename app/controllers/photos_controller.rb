@@ -23,18 +23,30 @@ class PhotosController < ApplicationController
 
   def edit
     @photo = Photo.find(params[:id])
+    if @photo.user_id != current_user.id
+      flash[:notice] = 'Cannot edit photos you did not upload'
+      redirect_to '/photos'
+    end
   end
 
   def update
     @photo = Photo.find(params[:id])
-    @photo.update(photo_params)
+    if @photo.user_id == current_user.id
+      @photo.update(photo_params)
+    else
+      flash[:notice] = 'Cannot edit photos you did not upload'
+    end
     redirect_to '/photos'
   end
 
   def destroy
     @photo = Photo.find(params[:id])
-    @photo.destroy
-    flash[:notice] = 'Photo deleted successfully'
+    if @photo.user_id == current_user.id
+      @photo.destroy
+      flash[:notice] = 'Photo deleted successfully'
+    else
+      flash[:notice] = 'Cannot delete photos you did not upload'
+    end
     redirect_to '/photos'
   end
 
