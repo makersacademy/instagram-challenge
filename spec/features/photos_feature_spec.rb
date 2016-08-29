@@ -72,6 +72,11 @@ feature 'Photos' do
       Photo.create(caption: "this is a photo")
     end
 
+    it 'can only be edited by a logged in user' do
+      visit '/photos'
+      expect(page).not_to(have_link('Edit photo'))
+    end
+
     it 'lets the user edit a photo' do
       visit '/photos'
       click_link 'Sign up'
@@ -90,6 +95,11 @@ feature 'Photos' do
   context 'deleting photos' do
     before do
       Photo.create(caption: "this is a photo")
+    end
+
+    it 'can only be deleted by a logged in user' do
+      visit '/photos'
+      expect(page).not_to(have_link('Edit photo'))
     end
 
     it 'lets the user delete a photo' do
