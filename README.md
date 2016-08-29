@@ -1,23 +1,44 @@
 Instagram Challenge
 ===================
+## Kittygram
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+https://kittygram-lucalabs.herokuapp.com
 
-Task
------
+## Features
+- [x] Sign in / Sign up
+- [x] Posting photos
+- [x] Editing/deleting photos
+- [x] Liking photos
+- [x] Posting/deleting comments
+- [] Filters for images
+- [] Not finished
 
-Build Instagram: Simple huh!
+## How to run
+1. Clone this repository
+2. Run `bundle install`
+3. Run `rake db:create` and `rake db:migrate`
+4. Run `rails server`
+5. Visit `http://localhost:3000`
 
-Bonus if you can write your own set of sensible user stories!
+## User stories
+```
+As a kitty enthusiast,
+So I can use Kittygram,
+I would like to Sign up to the website.
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+As a kitty enthusiast,
+So I can share my photos of cute kitties with other users,
+I would like to be able to post a photo.
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a kitty enthusiast,
+So I can have more control over my photos,
+I would like to be able to edit description and/or delete photos.
 
-Bonus if you can add filters!
+As a kitty enthusiast,
+So I can appreciate other people's photos,
+I would like to be able to 'Like' them.
+
+As a kitty enthusiast,
+So I can better appreciate other kitty photos,
+I would like to be able to post comments.
+```
