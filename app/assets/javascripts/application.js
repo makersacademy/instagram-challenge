@@ -15,3 +15,12 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+// Fade out notice after 4.5 seconds
+$(document).ready(function() {
+  setTimeout(function() {
+    $('.alert').fadeOut("slow", function() {
+      $(this).remove();
+    });
+  }, 4500);
+});
