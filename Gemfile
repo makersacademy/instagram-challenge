@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'paperclip'
+gem 'bootstrap-sass'
+gem 'paperclip', '~> 5.0.0'
 gem 'omniauth-github'
 # gem 'rubocop'
 gem 'devise'
