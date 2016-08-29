@@ -1,2 +1,11 @@
-<h1>No photos yet</h1>
-<a class="btn btn-primary" href="#">Add a photo</a>
+<% if @photos.any? %>
+
+  <% @photos.each do |photo| %>
+    <p><%= photo.description %></p>
+  <% end %>
+
+<% else %>
+  <h1>No photos yet</h1>
+<% end %>
+
+<%= link_to "Add Photo", new_photo_path, :class => 'btn btn-primary' %>
