@@ -1,0 +1,14 @@
+%br
+%br
+Followers:
+%br
+- @followers.each do |follower|
+  - if current_user.following?(follower)
+    = link_to "Unfollow #{follower.username}", relationship_path(follower), method: :delete
+  - else
+    = link_to "Follow #{follower.username}", relationships_path
+  %br
+- @users.each do |user|
+  %br
+  =link_to "Follow #{user.username}"
+  %br
