@@ -1,2 +1,7 @@
 %h1= @post.title
 %p= @post.description
+- @post.comments.each do |comment|
+  = comment.content
+  -if user_signed_in? && @post.user_id == current_user.id
+    = link_to "Edit Comment", edit_comment_path(comment)
+    = link_to "Delete Comment", comment_path(comment), method: :delete

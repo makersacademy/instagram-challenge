@@ -55,9 +55,8 @@ feature 'posts' do
           fill_in 'Title', with: 'This title is way too long, it should raise an error'
           fill_in 'Description', with: description
           click_button 'Create Post'
-          expect(page).not_to have_content description
-          expect(page).not_to have_content 'This title is way too long, it should raise an error'
-          expect(page).to have_content 'error'
+          expect(page).to have_content 'Title is too long'
+          expect(page).to have_content 'Description is too long'
         end
       end
 

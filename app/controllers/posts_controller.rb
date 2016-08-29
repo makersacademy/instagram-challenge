@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
+  before_action :post_owner, only: [:edit, :destroy]
+
 
   def index
     @posts = Post.all
@@ -31,7 +33,11 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to '/posts'
+    if @post.save
+      redirect_to posts_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -42,6 +48,14 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def post_owner
+    @post = Post.find(params[:id])
+    unless @post.user_id == current_user.id
+      flash[:notice] = 'You did not create this comment'
+      redirect_to posts_path
+    end
+  end
 
   def post_params
     params.require(:post).permit(:title, :description)
