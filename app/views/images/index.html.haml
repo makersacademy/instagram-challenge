@@ -1,0 +1,16 @@
+- if @images.any?
+  - @images.each do |image|
+    .thumbs
+      = image_tag image.image.url(:thumb)
+      %h2
+        &nbsp;
+        = link_to image.name, image_path(image)
+      = link_to "Comment On '#{image.name}'", new_image_comment_path(image)
+      %br
+      - if current_user && current_user.id == image.user_id
+        = link_to "Edit #{image.name}", edit_image_path(image), :class => "edit"
+      %br
+      = pluralize image.likes.count, 'Love'
+      %br
+      = image_tag('fi-heart.svg', :class => 'love_mark')
+      = link_to "Love this", image_likes_path(image), :class => "love"

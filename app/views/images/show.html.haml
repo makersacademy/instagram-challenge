@@ -1,0 +1,9 @@
+%p= @image.name
+= image_tag @image.image.url(:medium)
+%p= @image.description
+- if @image.comments.any?
+  - @image.comments.each do |comment|
+    %p= comment.thoughts
+
+- if current_user && current_user.id == @image.user_id
+  = link_to "Delete #{@image.name}", image_path(@image), method: :delete

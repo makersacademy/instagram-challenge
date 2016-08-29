@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %meta(charset="UTF-8")
+    %title &mdash;InstaClone
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    %header
+      %a(href="/")
+        %h1
+          = image_tag('inta_mark.png', :class => 'logo')
+          INTA
+    #top_nav
+      - if user_signed_in?
+        = link_to 'Sign Out', destroy_user_session_path, method: :delete
+      - else
+        = link_to 'Sign In', new_user_session_path
+        = link_to 'Sign Up', new_user_registration_path
+      %br
+      = link_to('Add An Image', new_image_path)
+      %br
+      %span(class="notice")
+        = notice
+        = alert
+    = yield
