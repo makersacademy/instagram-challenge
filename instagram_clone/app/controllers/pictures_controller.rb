@@ -9,14 +9,14 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.new(picture_params)
+    @picture = Picture.create(picture_params)
     redirect_to '/pictures'
   end
 
   private
 
   def picture_params
-    params.require(:picture).permit(:image)
+    params.require(:picture).permit(:image, :caption)
   end
 
 end

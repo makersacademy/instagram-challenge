@@ -12,6 +12,15 @@ feature "Pictures" do
       click_link "Add a picture!"
       page.attach_file('picture_image', Rails.root + 'spec/capybara.jpg')
       click_button "Upload Image"
+      expect(page).to have_css("//img[@src*='capybara.jpg']")
+    end
+    scenario "A user wants to add a caption" do
+      visit '/pictures'
+      click_link "Add a picture!"
+      page.attach_file('picture_image', Rails.root + 'spec/capybara.jpg')
+      fill_in "Caption", with: "This is a capybara"
+      click_button "Upload Image"
+      expect(page).to have_content("This is a capybara")
     end
   end
 end
