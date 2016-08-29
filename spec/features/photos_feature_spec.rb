@@ -37,10 +37,25 @@ feature 'photos' do
     end
 
     scenario 'lets a user view a photo' do
-     visit '/'
-     click_link 'photo_link'
-     expect(page.find('img')['src']).to have_content 'selfie.jpg'
-     expect(page).to have_content 'Selfie'
+      visit '/'
+      click_link 'photo_link'
+      expect(page.find('img')['src']).to have_content 'selfie.jpg'
+      expect(page).to have_content 'Selfie'
+    end
+  end
+
+  context 'editing photos' do
+    before do
+      post_photo
+    end
+
+    scenario 'let a user edit a photo' do
+      visit '/'
+      click_link 'Edit Photo'
+      fill_in 'Description', with: 'Shameless selfie'
+      click_button 'Update Photo'
+      expect(page).to have_content 'Shameless selfie'
+      expect(current_path).to eq '/'
     end
   end
 
