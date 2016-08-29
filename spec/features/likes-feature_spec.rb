@@ -7,4 +7,17 @@ feature 'Feature - likes' do
     sign_out
     sign_up("seconduser", "second@somewhere.com", "123456")
   end
+
+  context 'liking a picture' do
+    scenario 'any user can Like a picture' do
+      click_link 'Like'
+      expect(page).to have_content 'Liked'
+    end
+
+    scenario 'user cannot Like a picture more than once' do
+     click_link 'Like'
+     click_link 'Like'
+     expect(page).to have_content "You have already Liked this picture"
+    end
+  end
 end

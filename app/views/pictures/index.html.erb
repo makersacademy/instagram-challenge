@@ -8,6 +8,17 @@
     <span><h3><%= picture.user.username %></h3>
     <%= image_tag picture.image.url(:med) %>
     <%= picture.description %></span><br>
+    <% if picture.likes.any? %>
+      <% picture.likes.each do |like| %>
+        <% if current_user == like.user %>
+          <% if like.user.has_liked? picture %>
+            Liked
+          <% end %>
+        <% else %>
+         <span><%= link_to "Like", picture_likes_path(picture) %></span>
+        <% end %>
+      <% end %>
+    <% end %>
 
     <% if picture.comments.any? %>
       <% picture.comments.each do |comment| %>
@@ -18,6 +29,7 @@
     <% end %>
 
     <% if user_signed_in? %>
+      <span><%= link_to "Like", picture_likes_path(picture), method: :post %></span>
       <span><%= link_to "Comment", new_picture_comment_path(picture) %></span>
       <span><%= link_to "Delete", picture_path(picture), method: :delete %></span><br><br>
     <% end %>
