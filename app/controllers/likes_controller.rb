@@ -1,4 +1,10 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
+  def index
+    @post = Post.find(params[:post_id])
+    render json: { likes_count: @post.likes.count }
+  end
 
   def create
     @post = Post.find(params[:post_id])

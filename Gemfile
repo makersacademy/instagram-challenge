@@ -17,6 +17,8 @@ gem 'haml'
 gem 'devise'
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 group :development, :test do
   gem 'byebug'
