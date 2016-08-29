@@ -10,19 +10,13 @@ feature 'Pictures' do
   end
 
   context 'adding a picture' do
-    pic = File.new(Rails.root + "spec/fixtures/files/test_picture.jpg")
-
     before do
       visit '/pictures'
       sign_up
+      add_a_picture
     end
 
     scenario 'signed in user can add a picture' do
-      click_link 'Upload a picture'
-      page.attach_file "picture_image", Rails.root + "spec/fixtures/files/test_picture.jpg"
-      fill_in 'Description', with: "Test description"
-      click_button 'Post'
-      expect(page).to have_content 'Test description'
       expect(page).to have_content 'testname'
       expect(page).not_to have_content 'No pictures yet'
     end

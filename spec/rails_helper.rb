@@ -58,6 +58,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # removes test pictures created during rspec checks
   config.after(:suite) do
   FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
 end
