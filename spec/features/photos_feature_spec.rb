@@ -20,7 +20,8 @@ feature 'Photos' do
   context 'photos have been added' do
 
     before do
-      Photo.create(caption: "this is a photo")
+      User.create(email: "test@test.com", password: "123456")
+      Photo.create(caption: "this is a photo", user_id: User.last.id)
     end
 
     it 'should display the added photo' do
@@ -55,8 +56,11 @@ feature 'Photos' do
   end
 
   context 'viewing photos' do
+    before do
+      User.create(email: "test@test.com", password: "123456")
+    end
 
-    let!(:photo) { Photo.create(caption: "this is a photo") }
+    let!(:photo) { Photo.create(caption: "this is a photo", user_id: User.last.id) }
 
     scenario 'displays the caption for the individual photo' do
       visit '/photos'
@@ -69,7 +73,8 @@ feature 'Photos' do
 
   context 'editing photos' do
     before do
-      Photo.create(caption: "this is a photo")
+      User.create(email: "test@test.com", password: "123456")
+      Photo.create(caption: "this is a photo", user_id: User.last.id)
     end
 
     it 'can only be edited by a logged in user' do
@@ -80,7 +85,7 @@ feature 'Photos' do
     it 'lets the user edit a photo' do
       visit '/photos'
       click_link 'Sign up'
-      fill_in 'Email', with: "test@test.com"
+      fill_in 'Email', with: "test1@test.com"
       fill_in 'Password', with: "123456"
       fill_in 'Password confirmation', with: "123456"
       click_button 'Sign up'
@@ -94,7 +99,8 @@ feature 'Photos' do
 
   context 'deleting photos' do
     before do
-      Photo.create(caption: "this is a photo")
+      User.create(email: "test@test.com", password: "123456")
+      Photo.create(caption: "this is a photo", user_id: User.last.id)
     end
 
     it 'can only be deleted by a logged in user' do
@@ -105,7 +111,7 @@ feature 'Photos' do
     it 'lets the user delete a photo' do
       visit '/photos'
       click_link 'Sign up'
-      fill_in 'Email', with: "test@test.com"
+      fill_in 'Email', with: "test1@test.com"
       fill_in 'Password', with: "123456"
       fill_in 'Password confirmation', with: "123456"
       click_button 'Sign up'
