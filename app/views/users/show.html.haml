@@ -8,8 +8,15 @@
     = link_to 'Follow', new_follow_path(@user.username),
       method: :post,
       class: 'btn btn-primary'
+%p(style="font-size: 18px;")
+  %b= @user.photos.count
+  photos /
+  %b= @user.following.count
+  following /
+  %b= @user.followers.count
+  followers
 
 %br/
-- @user.feed.photos.each do |photo|
+- @user.feed.photos.order(created_at: :desc).each do |photo|
   .col-md-4.col-sm-6.col-xs-12
     = render 'photos/photo_view', { photo: photo }

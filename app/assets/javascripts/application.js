@@ -22,7 +22,7 @@ $(function() {
     var fileInput = $(elem);
     var form      = $(fileInput.parents('form:first'));
     var submitButton = form.find('input[type="submit"]');
-    var progressBar  = $("<div class='bar'></div>");
+    var progressBar  = $("<div class='progress-bar'></div>");
     var barContainer = $("<div class='progress'></div>").append(progressBar);
     fileInput.after(barContainer);
     fileInput.fileupload({
@@ -42,14 +42,15 @@ $(function() {
         submitButton.prop('disabled', true);
 
         progressBar.
-          css('background', 'green').
-          css('display', 'block').
+          addClass('progress-bar-info').
           css('width', '0%').
           text("Loading...");
       },
       done: function(e, data) {
         submitButton.prop('disabled', false);
         progressBar.text("Uploading done");
+        progressBar.addClass('progress-bar-success').
+                    removeClass('progress-bar-info');
 
         // extract key and generate URL from response
         var key = $(data.jqXHR.responseXML).find("Key").text();
@@ -63,8 +64,9 @@ $(function() {
         submitButton.prop('disabled', false);
 
         progressBar.
-          css("background", "red").
-          text("Failed");
+          addClass('progress-bar-danger').
+          removeClass('progress-bar-info').
+          text('Failed');
       }
     });
   });

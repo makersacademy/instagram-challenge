@@ -15,7 +15,7 @@ https://arugram.herokuapp.com
 
 ## Features
 * :heavy_check_mark: Sign in / Sign up
-* :construction: Posting photos - (todo: use AWS)
+* :heavy_check_mark: Posting photos
 * :heavy_check_mark: Editing/deleting photos
 * :heavy_check_mark: Liking photos
 * :heavy_check_mark: Posting/deleting comments
@@ -64,5 +64,6 @@ I would like to be able to follow users and see their posts on my feed.
   * `#index` shows your personal feed joined by the feeds of every user you follow.
 * As usual, `Photo` model deals with individual photos, and they belong to a user and a particular feed.
 * `Users` have many photos and one (1) feed. Feeds cannot be edited or deleted by hand. Only shown.
+* `Comments` can be posted by registered users and they belong to `User` and a `Comment`. Can be deleted.
 * `Likes` belong to a `Photo` and they're unique within the scope of a `User`
 * `Users` have many followers and many followed users.
