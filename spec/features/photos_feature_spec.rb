@@ -39,4 +39,17 @@ feature 'Photos' do
 
   end
 
+  context 'viewing photos' do
+
+    let!(:photo) { Photo.create(caption: "this is a photo") }
+
+    scenario 'displays the caption for the individual photo' do
+      visit '/photos'
+      click_link 'this is a photo'
+      expect(page).to(have_content('this is a photo'))
+      expect(current_path).to(eq("/photos/#{photo.id}"))
+    end
+
+  end
+
 end
