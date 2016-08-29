@@ -47,3 +47,9 @@ As a user
 So that I can share my thoughts  
 I want to be able to post comments on pictures
 ```
+
+```
+As a user  
+So that I can share my thoughts quickly  
+I want to be able to like pictures
+```
