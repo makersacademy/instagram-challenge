@@ -45,4 +45,34 @@ feature 'posts' do
     end
 
   end
+
+  context 'editing restaurants' do
+
+    before { Post.create(title: 'dog', description: 'adorable') }
+
+    scenario 'let a user edit a post' do
+      visit '/posts'
+      click_link 'Edit dog'
+      fill_in 'Title', with: 'dog'
+      fill_in 'Description', with: 'adorable'
+      click_button 'Update Post'
+      expect(page).to have_content 'dog'
+      expect(page).to have_content 'adorable'
+      expect(current_path).to eq '/posts'
+    end
+
+  end
+
+  context 'deleting posts' do
+
+    before { Post.create title: 'dog', description: 'adorable' }
+
+    scenario 'removes a post when a user clicks a delete link' do
+      visit '/posts'
+      click_link 'Delete dog'
+      expect(page).not_to have_content 'dog'
+      expect(page).to have_content 'Post deleted successfully'
+    end
+
+  end
 end
