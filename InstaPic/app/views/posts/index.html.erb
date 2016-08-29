@@ -12,9 +12,27 @@
         <%= link_to "Delete", post_path(post), method: :delete %>
         <%= post.caption %>
       </p>
-    </div>
-    <% end %>
-  <% else %>
-  No posts yet
-  <% end %>
+    <% if post.comments %>
+        <% post.comments.each do |comment| %>
+          <div class="comment">
+            <div class="user-name">
+                <%= comment.user.email %>
+              </div>
+              <div class="comment-content">
+                <%= comment.content %>
+              </div>
+              <%= link_to "Delete", post_comment_path(post, comment), method: :delete %>
+            </div>
+          <% end %>
+        <% end %>
+        <div class="comment-form">
+          <%= form_for [post, post.comments.new] do |f| %>
+            <%= f.text_field :content, placeholder: 'Add a comment...' %>
+          <% end %>
+          <% end %>
+          <% else %>
+          No posts yet
+          <% end %>
+        </div>
+      </div>
 </div>
