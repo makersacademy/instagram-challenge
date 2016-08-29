@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Instagramclone posts' do
   context 'no posts yet' do
     scenario 'should display button for new posts' do
-      visit '/posts'
+      visit '/'
       expect(page).to have_link 'New Post'
     end
   end
@@ -18,4 +18,13 @@ feature 'Post creation' do
     click_button 'Create Post'
     expect(page).to have_content('#thumb')
   end
+
+  scenario 'image required to create a post' do
+    visit '/'
+    click_link 'New Post'
+    fill_in 'Caption', with: "No picture added"
+    click_button 'Create Post'
+    expect(page).to have_content('Image can\'t be blank Caption')
+  end
+
 end

@@ -5,13 +5,13 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version - 2.3.0
 
 * System dependencies
 
 * Configuration
 
-* Database creation
+* Database creation - psql 9.5.3
 
 * Database initialization
 
@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Alwin Solanky
+Work is my own using yelp clone and google searches on Instagram code to do this tutorial.
