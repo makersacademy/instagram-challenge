@@ -51,19 +51,27 @@ feature "User can sign in and out" do
     expect(page).to have_content('You shall not pass')
   end
     it "should not be able to edit the post other than his/hers" do
+      click_link "New Post"
+      fill_in "Caption", with: "My new post"
+      page.attach_file("post_image", Rails.root + 'app/assets/images/imagename.jpg')
+      click_button "Create Post"
+      click_link "Sign out"
+      click_link('Sign up')
+      fill_in('Email', with: 'test2@example.com')
+      fill_in('Password', with: 'testtest')
+      fill_in('Password confirmation', with: 'testtest')
+      click_button('Sign up')
+      click_link('Edit')
+      click_button ('Update Post')
+      expect(page).to have_content('You shall not pass')
+  end
+
+  it "should see the user's email" do
     click_link "New Post"
     fill_in "Caption", with: "My new post"
     page.attach_file("post_image", Rails.root + 'app/assets/images/imagename.jpg')
     click_button "Create Post"
-    click_link "Sign out"
-    click_link('Sign up')
-    fill_in('Email', with: 'test2@example.com')
-    fill_in('Password', with: 'testtest')
-    fill_in('Password confirmation', with: 'testtest')
-    click_button('Sign up')
-    click_link('Edit')
-    click_button ('Update Post')
-    expect(page).to have_content('You shall not pass')
-  end
+    expect(page).to have_content('test@example.com')
+  end 
 end
 end
