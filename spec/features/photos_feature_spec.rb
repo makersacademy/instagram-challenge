@@ -27,4 +27,27 @@ feature 'Photos' do
 
   end
 
+  context 'Editing a photos' do
+
+    scenario 'editing a photos caption' do
+      add_photo
+      click_link 'Edit caption'
+      fill_in :photo_caption, with: 'New caption'
+      click_button 'Update caption'
+      expect(page).to have_content 'New caption'
+      expect(current_path).to eq '/'
+    end
+
+  end
+
+  context 'Deleting a photo' do
+
+    scenario 'A photo gets deleted' do
+      add_photo
+      click_link 'Delete post'
+      expect(page).not_to have_css 'img.photo-image'
+    end
+
+  end
+
 end

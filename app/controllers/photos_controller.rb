@@ -13,6 +13,23 @@ class PhotosController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @photo = Photo.find(params[:id])
+  end
+
+  def update
+    @photo = Photo.find(params[:id])
+    @photo.update(photo_params)
+    redirect_to root_path
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    flash[:notice] = 'Post successfully deleted'
+    redirect_to root_path
+  end
+
   private
 
   def photo_params
