@@ -4,7 +4,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.create(picture_params)
+    @picture = Picture.create_with_user(picture_params, current_user)
     redirect_to '/profiles#index'
   end
 
