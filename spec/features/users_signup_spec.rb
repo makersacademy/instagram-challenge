@@ -12,6 +12,7 @@ feature 'Creating a new user' do
     fill_in 'Password', with: "maximumeffort", match: :first
     fill_in 'Password confirmation', with: "maximumeffort"
     click_button 'Sign up'
-    expect(page).to have_content "Welcome! You've sign up successfully."
+    expect(page).to have_content "Welcome! You have signed up successfully."
   end
+
 end
