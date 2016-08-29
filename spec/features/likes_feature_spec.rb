@@ -6,10 +6,9 @@ feature 'Like Posts' do
     click_link 'Sign out'
     sign_up
     visit '/mannieg'
-    within(:css, 'div.post') do
-      click_link 'Heart'
-    end
-    expect(page).to have_content '1 like'
+    find('div.image').click
+    find('span#heart').click
+    expect(page).to have_content '1 likes'
   end
 
 end

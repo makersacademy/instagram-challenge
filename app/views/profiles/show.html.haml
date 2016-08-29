@@ -1,9 +1,35 @@
-- if @user
-  %h2= @user.username
-  - @user.posts.each do |post|
-    %div.post{:id => post.id}
-      %div.image= image_tag post.image.url(:medium)
-      %span.like-count= post.likes.count
-      = 'like'.pluralize post.likes.count
-      %p= post.description
-      = link_to "Heart", post_likes_path(post), class: 'heart-link'
+%div.container
+  %div.row
+    - if @user
+      %div{ :style => 'text-align:center;' }
+        = image_tag('https://scontent-lhr3-1.cdninstagram.com/t51.2885-19/s320x320/12328202_176174576097511_776297312_a.jpg',
+                    :class => 'img-circle')
+        %h2= @user.username
+      - @user.posts.each do |post|
+        %div.col-sm-4.post{:id => post.id}
+          %div.image= image_tag(post.image.url(:medium))
+          %p.post_caption{:id => "post_caption_#{post.id}"}= post.description
+
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h4#myModalLabel.modal-title
+      .modal-body
+        %img#mimg{:src => ""}/
+        %div.modal-right{:id => ''}
+          %div.stats{:style => 'padding-bottom:5px;'}
+            %span.glyphicon.glyphicon-heart
+            %span#like-count 0 Likes
+            &nbsp;&nbsp;&nbsp;
+            %span.glyphicon.glyphicon-comment
+            %span#comments-count 0 Comments
+          %ul.modal-comments
+          %hr
+          %section.comment-form
+            = form_tag post_comments_path('id'), :name => 'comment_form', remote: true do
+              %span.glyphicon.glyphicon-heart-empty#heart
+              = text_area_tag 'comment[message]', nil,  :id => 'comment_message', placeholder: 'Add a comment', rows: '3', cols: '30'
+              = hidden_field_tag 'authenticity_token', form_authenticity_token
+              = submit_tag 'Post', :style => 'display:none'

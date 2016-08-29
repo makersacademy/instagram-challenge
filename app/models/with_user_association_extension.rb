@@ -1,4 +1,5 @@
 module WithUserAssociationExtension
+
   def create_with_user(attributes = {}, user)
     attributes[:user] ||= user
     create(attributes)
@@ -13,4 +14,5 @@ module WithUserAssociationExtension
     attributes[:user] ||= user
     build(attributes)
   end
+  
 end

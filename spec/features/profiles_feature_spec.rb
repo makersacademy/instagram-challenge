@@ -12,7 +12,7 @@ feature 'User Profiles' do
     scenario 'A logged in user can upload a picture to there profile' do
       create_a_post
       expect(current_path).to eq '/mannieg'
-      expect(page).to have_xpath '//div[@class="post"]'
+      expect(page).to have_xpath '//*[@id="1"]'
       expect(page).to have_content 'This is my first post :)'
     end
   end
