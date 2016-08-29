@@ -1,4 +1,5 @@
 # INSTAGRAM CHALLENGE&mdash;
+[![Build Status](https://travis-ci.org/benjamin-white/instagram-challenge.svg?branch=master)](https://travis-ci.org/benjamin-white/instagram-challenge)
 
 Instagram inspired weekend challenge from **Makers Academy**. The guidelines for the challenge were _'Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture.'_<br>
 For the site's database I used **PostgreSQL** to store user and image information and the **Paperclip Gem** to facilitate image upload. I chose to use **HAML** as the templating language as I liked it's simplicity to write and low cognitive overhead when reading back. Unit and feature tests were written using **Rspec/Capybara** and Facebook login was added through **OmniAuth**. The directory layout and configuration was driven by Rails.<br>
