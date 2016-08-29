@@ -9,4 +9,12 @@ class User < ActiveRecord::Base
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
   has_many :pictures, -> { extending WithUserAssociationExtension }, dependent: :destroy
+
+  has_many :comments
+
+  has_many :commented_pictures, through: :comments, source: :picture
+
+  def has_commented?(picture)
+    commented_pictures.include? picture
+  end
 end

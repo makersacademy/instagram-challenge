@@ -1,14 +1,27 @@
-<br><br>
+<br>
+<% if user_signed_in? %>
+  <br><br><%= link_to "Upload a picture", new_picture_path %>
+<% end %>
+
 <% if @pictures.any? %>
-<% @pictures.each do |picture| %>
-  <span><%= picture.user.username %>
-  <%= image_tag picture.image.url(:med)%>
-  <%#= picture.description %></span>
+  <% @pictures.each do |picture| %><br>
+    <span><h3><%= picture.user.username %></h3>
+    <%= image_tag picture.image.url(:med) %>
+    <%= picture.description %></span><br>
+
+    <% if picture.comments.any? %>
+      <% picture.comments.each do |comment| %>
+        <span><%= comment.user.username %>:  <%= comment.thoughts %>
+        </span>
+        <br>
+      <% end %>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <span><%= link_to "Comment", new_picture_comment_path(picture) %></span>
+      <span><%= link_to "Delete", picture_path(picture), method: :delete %></span><br><br>
+    <% end %>
   <% end %>
 <% else %>
   No pictures yet
-<% end %>
-
-<% if user_signed_in? %>
-  <br><br><%= link_to "Upload a picture", new_picture_path %>
 <% end %>

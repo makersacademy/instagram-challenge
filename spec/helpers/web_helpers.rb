@@ -18,3 +18,9 @@ def add_a_picture (file = Rails.root + "spec/fixtures/files/test_picture.jpg")
   fill_in 'Description', with: "Test description"
   click_button 'Post'
 end
+
+def add_comment
+  click_link 'Comment'
+  fill_in "Thoughts", with: "Why do you do these things?"
+  click_button 'Add comment'
+end

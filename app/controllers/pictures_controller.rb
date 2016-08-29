@@ -10,7 +10,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = current_user.pictures.create(picture_params)
+    @picture = current_user.pictures.build(picture_params)
       if @picture.save
         flash[:success] = "Your picture has been added successfully"
         redirect_to pictures_path
@@ -21,6 +21,17 @@ class PicturesController < ApplicationController
 
   def show
     @picture = Picture.find(params[:id])
+  end
+
+  def destroy
+    @picture = Picture.find(params[:id])
+    if @picture.user.id != current_user.id
+      flash[:notice] =  "You are not allowed to delete another user's picture"
+    else
+      @picture.delete
+      flash[:notice] = 'Picture deleted successfully'
+    end
+    redirect_to pictures_path
   end
 
 private

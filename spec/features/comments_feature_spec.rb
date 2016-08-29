@@ -10,8 +10,7 @@ feature 'Feature - comments' do
 
   context 'adding comments' do
     scenario "user can add a comment to another user's picture" do
-      fill_in "Comment", with: "Why do you do these things?"
-      click_link 'Add comment'
+      add_comment
       expect(page).to have_content "Why do you do these things?"
       expect(page).to have_content "seconduser"
     end
