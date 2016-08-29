@@ -9,6 +9,20 @@ feature 'posts' do
     end
   end
 
+  context 'an invalid post' do
+    it 'does not let you submit a comment that is too long' do
+      description = 'This description is way too long, and so the validation should make this an invalid description and raise an error to notifying the user to shorten their description content to a maximum of 200 characters.'
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Title', with: 'This title is way too long, it should raise an error'
+      fill_in 'Description', with: description
+      click_button 'Create Post'
+      expect(page).not_to have_content description
+      expect(page).not_to have_content 'This title is way too long, it should raise an error'
+      expect(page).to have_content 'error'
+    end
+  end
+
   context 'posts have been added' do
     before do
       Post.create(title:'dog', description:'adorable')
@@ -31,6 +45,7 @@ feature 'posts' do
       expect(page).to have_content 'dog'
       expect(current_path).to eq '/posts'
     end
+
   end
 
   context 'viewing posts' do
