@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'comments' do
 
   before :each do
+    user_sign_up
     add_photo
   end
 

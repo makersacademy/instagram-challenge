@@ -15,6 +15,7 @@ feature 'Photos' do
   context 'Adding a photo' do
 
     scenario 'A user uploads a photo' do
+      user_sign_up
       visit '/'
       click_link 'Add a photo'
       attach_file "photo_image", Rails.root + 'spec/fixtures/files/wham.jpg'
@@ -30,6 +31,7 @@ feature 'Photos' do
   context 'Editing a photos' do
 
     scenario 'editing a photos caption' do
+      user_sign_up
       add_photo
       click_link 'Edit caption'
       fill_in :photo_caption, with: 'New caption'
@@ -43,6 +45,7 @@ feature 'Photos' do
   context 'Deleting a photo' do
 
     scenario 'A photo gets deleted' do
+      user_sign_up
       add_photo
       click_link 'Delete post'
       expect(page).not_to have_css 'img.photo-image'
