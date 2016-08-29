@@ -1,8 +1,15 @@
 
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
-    <%= image_tag picture.image.url %>
-    <%= picture.caption %><br>
+    <%= image_tag picture.image.url(:medium)  %>
+    <%= picture.caption %>
+    <%= button_to "Like", picture_likes_path(picture), method: :post %>
+    <%= "Likes: #{picture.likes.count}" %><br>
+    <% picture.comments.each do |comment| %>
+      <%= "#{comment.thoughts}" %><br>
+    <% end %>
+    <%= link_to "Comment", new_picture_comment_path(picture) %>
+  <br>
   <% end %>
 <% else %>
   No one has added any pictures yet!
