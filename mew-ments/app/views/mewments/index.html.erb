@@ -2,6 +2,8 @@
   <% @mewments.each do |mewment| %>
     <%= image_tag mewment.image.url(:medium) %>
     <h2> <%= mewment.caption %> </h2>
+    <span class="likes_count"> <%= mewment.likes.count %> </span> <%= 'like'.pluralize(mewment.likes.count) %>
+    <%= link_to "like", mewment_likes_path(mewment), class: 'likes-link' %>
     <%= link_to "Comment", new_mewment_comment_path(mewment) %>
     <%= link_to "Edit", edit_mewment_path(mewment) %>
     <%= link_to "Delete", mewment_path(mewment), method: :delete %>

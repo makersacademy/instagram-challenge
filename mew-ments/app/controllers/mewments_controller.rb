@@ -1,4 +1,7 @@
 class MewmentsController < ApplicationController
+  
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @mewments = Mewment.all
   end
@@ -7,8 +10,12 @@ class MewmentsController < ApplicationController
   end
 
   def create
-    Mewment.create(mewment_params)
-    redirect_to '/mewments'
+    @mewment = Mewment.new(mewment_params)
+    if @mewment.save
+      redirect_to '/mewments'
+    else
+      render 'new'
+    end
   end
 
   def mewment_params

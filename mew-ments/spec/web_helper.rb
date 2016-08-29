@@ -18,3 +18,17 @@ def edit_caption(caption)
   fill_in 'Caption', with: caption
   click_button 'Update Mewment'
 end
+
+def sign_up
+  visit('/')
+  click_link('Sign up')
+  fill_in('Email', with: 'joe@test.com')
+  fill_in('Password', with: 'password')
+  fill_in('Password confirmation', with: 'password')
+  click_button('Sign up')
+end
+
+def sign_out
+  visit('/')
+  click_link('Sign Out')
+end

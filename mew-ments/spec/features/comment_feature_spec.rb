@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 feature 'comment' do
-  before { Mewment.create caption: 'Just a little Pro-cat-stination'}
+  before do
+    sign_up
+    create_mewment('Just pro-cat-tinating', 'Cathletes.jpg')
+  end
 
   scenario 'write a comment on a mewment' do
     add_comment('you should be more pro-dog-tive')
