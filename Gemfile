@@ -44,6 +44,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'poltergeist'
   gem 'database_cleaner'
+  gem 'paperclip'
+  gem 'aws-sdk'
 
 end
 

@@ -1,6 +1,7 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <h2><%= link_to post.caption, post_path(post) %></h2>
+    <%= image_tag post.image.url(:thumb) %>
     <p><span class="likes_count"><%= post.likes.count %></span><%= ' like'.pluralize(post.likes.count) %>
       <% post.comments.each do |comment| %>
         <h3><%= comment.comment %></h3>
