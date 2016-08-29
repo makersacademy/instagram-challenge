@@ -11,7 +11,7 @@ def create_post
   visit '/posts'
   click_link 'Add a post'
   fill_in 'Title', with: 'dog'
-  fill_in 'Description', with: 'Adorable'
+  fill_in 'Description', with: 'adorable'
   click_button 'Create Post'
 end
 
