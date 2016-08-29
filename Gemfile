@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# Users
+gem 'devise'
 # Add images
 gem 'paperclip'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
