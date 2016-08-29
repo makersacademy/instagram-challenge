@@ -4,7 +4,7 @@ feature 'photos' do
 
   context 'no photos have been added' do
     scenario 'should display a prompt to add a photo' do
-      visit '/photos'
+      visit '/'
       expect(page).to have_content 'No photos yet'
       expect(page).to have_link 'Add Photo'
     end
@@ -12,11 +12,12 @@ feature 'photos' do
 
   context 'photos have been added' do
     before do
-      Photo.create(description: 'Selfie')
+      post_photo
     end
 
     scenario 'display photos' do
-      visit '/photos'
+      visit '/'
+      expect(page.find('img')['src']).to have_content 'selfie.jpg'
       expect(page).to have_content('Selfie')
       expect(page).not_to have_content('No photos yet')
     end
@@ -24,12 +25,22 @@ feature 'photos' do
 
   context 'creating photos' do
     scenario 'prompts user to fill out a form, then displays the new photo' do
-      visit '/photos'
-      click_link 'Add Photo'
-      fill_in 'Description', with: 'Selfie'
-      click_button 'Post Photo'
+      post_photo
       expect(page).to have_content 'Selfie'
       expect(current_path).to eq '/'
+    end
+  end
+
+  context 'viewing photos' do
+    before do
+      post_photo
+    end
+
+    scenario 'lets a user view a photo' do
+     visit '/'
+     click_link 'photo_link'
+     expect(page.find('img')['src']).to have_content 'selfie.jpg'
+     expect(page).to have_content 'Selfie'
     end
   end
 
