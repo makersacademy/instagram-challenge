@@ -1,20 +1,16 @@
-= link_to 'post', new_post_path
+.jumbotron
+  - if user_signed_in?
+    %h1
+      Hey
+      =current_user.username.capitalize
+      !
 
-= link_to 'my profile', user_path(current_user)
+  %ul.nav.nav-pills
+    =link_to new_post_path, class: "btn btn-lg" do
+      %i.glyphicon.glyphicon-camera
 
-%br Welcome to BubHub
-= current_user.username
-%br
-%br
+    =link_to user_path(current_user), class: "btn btn-lg" do
+      %i.glyphicon.glyphicon-user
 
 
-
-%br
-%br
-.text Please post a photo.
-%br
-%br
-
-%br
-%br
 = render 'feed'
