@@ -1,6 +1,13 @@
 <br><br>
-No pictures yet
-
+<% if @pictures.any? %>
+<% @pictures.each do |picture| %>
+  <%= picture.user.username %><br><br>
+  <%= image_tag picture.image.url(:med)%><br>
+  <%= picture.description %><br>
+  <% end %>
+<% else %>
+  No pictures yet
+<% end %>
 
 <% if user_signed_in? %>
   <br><br><%= link_to "Upload a picture", new_picture_path %>
