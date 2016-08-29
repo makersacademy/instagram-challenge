@@ -67,4 +67,17 @@ feature 'Photos' do
     end
   end
 
+  context 'deleting photos' do
+    before do
+      Photo.create(caption: "this is a photo")
+    end
+
+    it 'lets the user delete a photo' do
+      visit '/photos'
+      click_link 'Delete photo'
+      expect(page).not_to(have_content("this is a photo"))
+      expect(page).to(have_content("Photo deleted successfully"))
+    end
+  end
+
 end
