@@ -8,6 +8,11 @@
             <%= image_tag photo.image.url %>
           </a>
           <div class="caption">
+            <% if photo.created_at > Time.now.beginning_of_day %>
+                <p class="timestamp"><%="#{time_ago_in_words(photo.created_at).gsub('about','')} ago"%></p>
+            <% else %>
+                <p class="timestamp"><%= photo.created_at.strftime("%b %d, %Y") %></p>
+            <% end %>
             <p><%= photo.description %></p>
 
             <div class="btn-group btn-group-sm" role="group">
