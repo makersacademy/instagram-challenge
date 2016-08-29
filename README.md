@@ -1,6 +1,12 @@
 Instagram Challenge
 ===================
 
+Heroku
+-------
+Note some issues with Heroku deployment. Some feature's may not work correctly yet.
+https://murmuring-island-90328.herokuapp.com/mannieg
+
+
 Prerequisites
 -------
 * Rails 4.2.7.1
