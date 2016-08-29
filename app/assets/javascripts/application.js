@@ -48,7 +48,7 @@ $(function() {
       },
       done: function(e, data) {
         submitButton.prop('disabled', false);
-        progressBar.text("Uploading done");
+        progressBar.text('Uploading done');
         progressBar.addClass('progress-bar-success').
                     removeClass('progress-bar-info');
 
@@ -57,7 +57,7 @@ $(function() {
         var url = '//' + form.data('host') + '/' + key;
 
         // create hidden field
-        var input = $("<input />", { type: 'hidden', name: fileInput.attr('name'), value: url });
+        var input = $('<input />', { type: 'hidden', name: fileInput.attr('name'), value: url });
         form.append(input);
       },
       fail: function(e, data) {

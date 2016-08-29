@@ -4,7 +4,9 @@ feature 'Feeds' do
 
   context 'User exists' do
 
-    let!(:user) { User.create(email: 'test@test.com', password: 'password', username: 'arukomp') }
+    let!(:user) { User.create(email: 'test@test.com',
+                              password: 'password',
+                              username: 'arukomp') }
 
     scenario 'going to a particular user\'s page shows his/her feed' do
       visit "/#{user.username}"
@@ -59,13 +61,15 @@ feature 'Feeds' do
         expect(page.find(".photo-container")).to have_content 'Autumn'
         create_photo(description: 'Winter')
         visit '/'
-        expect(page.find(".photo-container", match: :first)).to have_content 'Winter'
+        expect(page.find(".photo-container", match: :first)).
+          to have_content 'Winter'
         create_photo(description: 'Spring')
         visit '/'
-        expect(page.find(".photo-container", match: :first)).to have_content 'Spring'
+        expect(page.find(".photo-container", match: :first)).
+          to have_content 'Spring'
       end
 
-      scenario 'unfollowing a user stops the feed from showing his/her photos' do
+      scenario 'unfollowing a user stops the feed from including its photos' do
         visit '/arukomp'
         click_link 'Unfollow'
         visit '/'
