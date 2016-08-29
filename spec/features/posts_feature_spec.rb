@@ -9,7 +9,7 @@ feature 'Instagramclone posts' do
   end
 end
 
-feature 'Post creation' do
+feature 'Posts' do
   scenario 'create a post' do
     visit '/'
     click_link 'New Post'
@@ -25,6 +25,17 @@ feature 'Post creation' do
     fill_in 'Caption', with: "No picture added"
     click_button 'Create Post'
     expect(page).to have_content('Image can\'t be blank Caption')
+  end
+
+  scenario 'delete a post' do
+    visit '/'
+    click_link 'New Post'
+    attach_file('post_image', "spec/images/thumb.png")
+    fill_in 'Caption', with: 'This is #thumbs123'
+    click_button 'Create Post'
+    expect(page).to have_content('#thumbs123')
+    click_link 'Delete'
+    expect(page).not_to have_content('#thumbs123')
   end
 
 end
