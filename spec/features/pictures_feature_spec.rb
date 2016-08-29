@@ -18,7 +18,7 @@ feature 'Pictures' do
 
     context 'adding pictures' do
       scenario 'signed in user can add a picture' do
-        expect(page).to have_content 'testname'
+        expect(page).to have_content 'user1'
         expect(page).not_to have_content 'No pictures yet'
       end
     end
