@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
     resources :likes
-    resources :tags
   end
+
+  resources :tags, param: :tag_text
+
+  get '/filter', to: 'tags#find_posts'
 
 end
