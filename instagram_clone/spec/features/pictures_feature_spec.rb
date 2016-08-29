@@ -8,6 +8,7 @@ feature "Pictures" do
       expect(page).to have_link "Add a picture!"
     end
     scenario "A user wants to upload an image" do
+      sign_up
       visit '/pictures'
       click_link "Add a picture!"
       page.attach_file('picture_image', Rails.root + 'spec/capybara.jpg')
@@ -15,6 +16,7 @@ feature "Pictures" do
       expect(page).to have_css("//img[@src*='capybara.jpg']")
     end
     scenario "A user wants to add a caption" do
+      sign_up
       visit '/pictures'
       click_link "Add a picture!"
       page.attach_file('picture_image', Rails.root + 'spec/capybara.jpg')
