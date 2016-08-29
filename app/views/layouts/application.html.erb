@@ -15,14 +15,21 @@
       <a href="/" id="logo">Insta-<br>WHAM!</a>
       <nav>
         <ul>
-          <li><a href="#" id="signin">Sign In</a></li>
-          <li><a href="#" id="create_account">Create an account</a></li>
+          <% if !user_signed_in? %>
+            <li><a href="/users/sign_in" id="signin">Sign In</a></li>
+            <li><%= link_to "Create an account", new_user_registration_path, id: :create_account%></li>
+          <% else %>
+            <li><%= link_to "Log out", destroy_user_session_path, method: :delete, id: :signin%></li>
+          <% end %>
         </ul>
       </nav>
     </div>
   </header>
   <% if notice %>
-    <div class = "alert alert-success wrapper"><%= flash[:notice] %></div>
+    <div class = "alert alert-success wrapper">
+      <%= flash[:notice] %></p>
+      <%= alert %>
+    </div>
   <% end %>
   <%= yield %>
   </body>
