@@ -1,0 +1,20 @@
+<% if @post.errors.any? %>
+  <section id="errors" >
+    <%= pluralize(@post.errors.count, "errors") %> stopped the post from being saved:
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
+<div class="postbox", style="padding: 0px 0px 4px 0px;">
+  <%= form_for @post, html: {multipart: true} do |f| %>
+    <%= f.label :image, "Image" %>
+    <%= f.file_field :image %>
+    <%= f.label :caption, "Caption:" %>
+    <%= f.text_field :caption %>
+    <%= f.submit 'Create Post', :class => 'btn btn-danger' %>
+  <% end %>
+</div>
