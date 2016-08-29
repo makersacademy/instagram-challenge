@@ -14,6 +14,18 @@ feature 'posts' do
     scenario 'display posts' do
       visit '/posts'
       expect(page).to have_content('dog')
-    end    
+    end
+  end
+
+  context 'creating posts' do
+    scenario 'prompts user to add a post, then displays the new post\'s title' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Title', with: 'dog'
+      click_button 'Create Post'
+      expect(page).to have_content 'dog'
+      expect(current_path).to eq '/posts'
+    end
+
   end
 end
