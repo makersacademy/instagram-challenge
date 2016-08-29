@@ -2,7 +2,6 @@ Instagram Challenge (Instarails)
 ===================
 
 This app was my weekend challenge for week 8 at Makers Academy. Deployed version of the app coming soon...
-<<<<<<< HEAD
 
 ### Instructions
 * Change into the "instagram_clone" directory
@@ -109,4 +108,3 @@ I would like to be able to "love" posts.
 
 TO DO
 * Implement only one like per user per post.
->>>>>>> 43ca3f6eac388874c1834517b895d1d4487b7d9d
