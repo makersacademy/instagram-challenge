@@ -37,7 +37,7 @@ $(function() {
       dataType:        'XML',  // S3 returns XML if success_action_status is set to 201
       replaceFileInput: false,
       add: function(e, data) {
-        submitButton.prop('disabled', true);
+        // submitButton.prop('disabled', true);
         var fileUrl = window.URL.createObjectURL(data.files[0]);
         crop = photoView.croppie({
           url: fileUrl,
@@ -51,12 +51,11 @@ $(function() {
             blobData = dataURItoBlob(resp);
             imageFile = new File([blobData], data.files[0].name, {type: "image/png", lastModified: Date.now()});
             data.files[0] = imageFile;
-            data.submit();
+            // data.submit();
           });
         });
       },
       progressall: function(e, data) {
-        console.log(data);
         var progress = parseInt(data.loaded / data.total * 100, 10);
         progressBar.css('width', progress + '%')
       },
@@ -91,6 +90,14 @@ $(function() {
           text('Failed');
       }
     });
+  });
+
+  $(".like-button").on('click', function(e) {
+    e.preventDefault();
+    $.post(e.target.href + '.json', function(response) {
+      e.target.nextSibling.nextSibling.innerHTML = response.string;
+    });
+    return false;
   });
 
   function dataURItoBlob(dataURI, callback) {
