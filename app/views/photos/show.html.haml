@@ -1,0 +1,7 @@
+.col-md-offset-3.col-sm-offset-2.col-md-6.col-sm-8.col-xs-12
+  = render partial: 'photos/photo_view', locals: { photo: @photo }
+  - @photo.comments.each do |comment|
+    = render partial: 'comments/comment_view', locals: { comment: comment}
+    %br/
+  - if user_signed_in?
+    = render partial: 'comments/comment_form', locals: { '@comment': @comment }

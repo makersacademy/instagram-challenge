@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: instagram_challenge_development
+
+test:
+  <<: *default
+  database: instagram_challenge_test
+
+production:
+  <<: *default
+  database: instagram_challenge_production
+  username: instagram_challenge
+  password: <%= ENV['INSTAGRAM-CHALLENGE_DATABASE_PASSWORD'] %>
