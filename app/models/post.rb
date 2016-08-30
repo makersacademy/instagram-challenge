@@ -2,7 +2,7 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   has_attached_file :image,
-                    styles: { thumb: ['200x200#', :jpg],
+                    styles: { thumb: ['500 x 500#', :jpg],
                               original: ['500x500>', :jpg] },
                     convert_options: { thumb: '-quality 75 -strip',
                                        original: '-quality 85 -strip' },
