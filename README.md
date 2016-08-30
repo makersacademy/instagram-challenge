@@ -23,3 +23,5 @@ $ rails s
 $ open http://localhost:3000
 ```
 In case you get database error, try `rake db:reset`
+
+Alternatively visit https://arcane-peak-67823.herokuapp.com
