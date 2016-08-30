@@ -1,0 +1,27 @@
+<% if @posts.any? %>
+  <% @posts.reverse.each do |post| %>
+  <h2><%= link_to post.description, post %></h2>
+  <%= image_tag post.image.url(:medium) %>
+  <br>
+  <%= link_to "Comment", new_post_comment_path(post) %>
+  <% if user_signed_in? && @current_user_id == post.user_id %>
+    <%= link_to "Edit", edit_post_path(post) %>
+    <%= link_to "Delete", post_path(post), method: :delete %>
+  <% end %>
+  <h3>Comments:</h3>
+
+  <% if post.comments.any? %>
+    <ul>
+      <% post.comments.each do |comment| %>
+      <ul>
+        <%= comment.comments %>
+      </ul>
+      <% end %>
+    </ul>
+    <% else %>
+    <p>No comments.</p>
+    <% end %>
+  <% end %>
+<% else %>
+  <h1>No posts as of yet</h1>
+<% end %>
