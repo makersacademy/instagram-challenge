@@ -13,6 +13,8 @@ Rails.application.configure do
   }
 }
 
+config.serve_static_assets = true
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
