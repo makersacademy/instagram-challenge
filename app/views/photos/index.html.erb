@@ -1,0 +1,53 @@
+<% if @photos.any? %>
+
+  <div class="row">
+    <% @photos.each do |photo| %>
+      <div class="col-md-6 col-md-offset-3">
+        <div class="thumbnail">
+          <a id="photo_link" href="<%= photo_path(photo) %>">
+            <%= image_tag photo.image.url %>
+          </a>
+          <div class="caption">
+            <% if photo.user %>
+              <div class="user-email pull-left"><%= photo.user.email %></div>
+            <% end %>
+            <div class="pull-right">
+            <% if photo.created_at > Time.now.beginning_of_day %>
+                <p class="timestamp"><%="#{time_ago_in_words(photo.created_at).gsub('about','')} ago"%></p>
+            <% else %>
+                <p class="timestamp"><%= photo.created_at.strftime("%b %d, %Y") %></p>
+            <% end %>
+            </div>
+            <div class="clearfix"></div>
+            <p><%= photo.description %></p>
+
+            <% if user_signed_in? %>
+            <div class="btn-group btn-group-sm" role="group">
+              <%= link_to "Edit Photo", edit_photo_path(photo), :class => 'btn btn-primary' %>
+              <%= link_to "Delete Photo", photo_path(photo), method: :delete, :class => 'btn btn-primary' %>
+              <%= link_to "Comment", new_photo_comment_path(photo), :class => 'btn btn-primary' %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+        <% if photo.comments.any? %>
+        <ul class="list-group">
+          <li class="list-group-item text-center"><b>Comments</b></li>
+          <% photo.comments.each do |comment| %>
+            <li class="list-group-item text-muted"><%= comment.message %></li>
+          <% end %>
+        </ul>
+        <% end %>
+
+      </div>
+    <% end %>
+  </div>
+
+<% else %>
+  <h1>No photos yet</h1>
+<% end %>
+
+<center>
+  <%= link_to "Add Photo", new_photo_path, :class => 'btn btn-primary btn-lg' %>
+</center>

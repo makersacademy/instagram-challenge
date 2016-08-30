@@ -1,0 +1,28 @@
+<% if @photo.errors.any? %>
+  <div id="errors" class="alert alert-danger">
+    <span><%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being posted:</span>
+    <ul>
+      <% @photo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="col-md-8 col-md-offset-2">
+  <div class="page-header">
+    <h1 class="text-center">Add Photo</h1>
+  </div>
+
+  <%= form_for @photo, html: {multipart: true} do |f| %>
+    <div class="form-group">
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, rows: 5, :class => 'form-control' %>
+    </div>
+      <%= f.submit "Post Photo", :class => 'btn btn-primary' %>
+  <% end %>
+</div>

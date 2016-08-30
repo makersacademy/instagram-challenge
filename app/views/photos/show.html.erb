@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+
+    <div class="thumbnail">
+      <%= image_tag @photo.image.url %>
+      <div class="caption">
+        <% if @photo.created_at > Time.now.beginning_of_day %>
+            <p class="timestamp"><%="#{time_ago_in_words(@photo.created_at).gsub('about','')} ago"%></p>
+        <% else %>
+            <p class="timestamp"><%= @photo.created_at.strftime("%b %d, %Y") %></p>
+        <% end %>
+        <p><%= @photo.description %></p>
+
+        <% if user_signed_in? %>
+        <div class="btn-group btn-group-sm" role="group">
+          <%= link_to "Edit Photo", edit_photo_path(@photo), :class => 'btn btn-primary' %>
+          <%= link_to "Delete Photo", photo_path(@photo), method: :delete, :class => 'btn btn-primary' %>
+          <%= link_to "Comment", new_photo_comment_path(@photo), :class => 'btn btn-primary' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+    <% if @photo.comments.any? %>
+    <ul class="list-group">
+      <li class="list-group-item text-center"><b>Comments</b></li>
+      <% @photo.comments.each do |comment| %>
+        <li class="list-group-item text-muted"><%= comment.message %></li>
+      <% end %>
+    </ul>
+    <% end %>
+
+  </div>
+</div>
