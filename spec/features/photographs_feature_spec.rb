@@ -44,6 +44,7 @@ feature 'photographs' do
   context 'editing photographs name' do
     scenario 'let a user edit a photographs name' do
       photograph_upload
+      click_link 'sea'
       click_link 'Edit sea'
       fill_in 'Name', with: 'Great blue sea'
       click_button 'Update Photograph'
@@ -56,6 +57,7 @@ feature 'photographs' do
 
     scenario 'removes a photographs when a user clicks a delete link' do
       photograph_upload
+      click_link 'sea'
       click_link 'Delete sea'
       expect(page).not_to have_content 'sea'
       expect(page).to have_content 'Photograph deleted successfully'

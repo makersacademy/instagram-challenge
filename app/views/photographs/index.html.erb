@@ -7,7 +7,11 @@
     <% photograph.comments.each do |comment| %>
       <li><%= comment.thoughts %></li>
     <% end %>
-    <p><%= link_to "Edit #{photograph.name}", edit_photograph_path(photograph) %> <%= link_to "Delete #{photograph.name}", photograph_path(photograph), method: :delete %> <%= link_to "Comment on #{photograph.name}", new_photograph_comment_path(photograph)%></p><br>
+    <% if photograph.user == current_user %>
+      <p> <%= link_to "Comment on #{photograph.name}", new_photograph_comment_path(photograph)%></p>
+      <% else %>
+      <p>Sign in to edit</p>
+    <% end %>
   <% end %>
 <% else %>
   No photographs yet
