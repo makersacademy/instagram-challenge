@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get 'photographs' => 'photographs#index'
   resources :photographs do
     resources :comments
+    resources :admiration
   end
 end

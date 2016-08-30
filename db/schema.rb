@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828090009) do
+ActiveRecord::Schema.define(version: 20160830064910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admirations", force: :cascade do |t|
+    t.integer  "photograph_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["photograph_id"], name: "index_admirations_on_photograph_id", using: :btree
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text     "thoughts"
@@ -56,6 +63,7 @@ ActiveRecord::Schema.define(version: 20160828090009) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "admirations", "photographs"
   add_foreign_key "comments", "photographs"
   add_foreign_key "comments", "users"
   add_foreign_key "photographs", "users"
