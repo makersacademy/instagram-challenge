@@ -1,16 +1,14 @@
 <% if @photos.any? %>
 
   <% @photos.all.each do |photo| %>
+    <br><%=  image_tag photo.image.url(:medium) %>
     <h3><%= link_to photo.caption, photo_path(photo) %></h3>
     <% if current_user %>
-      <%= link_to "Comment", new_photo_comment_path(photo) %>
+      <%= link_to "Comment", new_photo_comment_path(photo) %><br>
       <% if current_user.id == photo.user_id %>
         <%= link_to "Edit photo", edit_photo_path(photo) %>
-        <%= link_to "Delete photo", photo_path(photo), method: :delete %>
+        <%= link_to "Delete photo", photo_path(photo), method: :delete %><br>
       <% end %>
-    <% end %>
-    <% if photo.user_id == @user_id %>
-
     <% end %>
   <% end %>
 
@@ -21,5 +19,5 @@
 <% end %>
 
 <% if current_user %>
-  <%= link_to "Add a photo", new_photo_path %>
+  <br><%= link_to "Add a photo", new_photo_path %>
 <% end %>
