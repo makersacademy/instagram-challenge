@@ -1,5 +1,6 @@
 Instagram Challenge
 ===================
+[![Build Status](https://travis-ci.org/cyberplanner/instagram-challenge.svg?branch=master)](https://travis-ci.org/cyberplanner/instagram-challenge)
 
 Instructions
 -------
