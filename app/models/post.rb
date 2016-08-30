@@ -1,6 +1,7 @@
 # Post Model
 class Post < ActiveRecord::Base
   belongs_to :user
+  validates :image, presence: true
   has_attached_file :image,
                     styles: { thumb: ['500 x 500#', :jpg],
                               original: ['500x500>', :jpg] },
