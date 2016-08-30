@@ -4933,3 +4933,115 @@ Processing by PostsController#index as HTML
   [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts"
   Rendered posts/index.html.erb within layouts/application (2.2ms)
 Completed 200 OK in 59ms (Views: 55.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2016-08-30 08:55:46 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35mUser Load (1.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 688ms (Views: 600.5ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-30 08:55:47 +0100
+Processing by PostsController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 118ms (Views: 110.5ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-08-30 08:55:52 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Xt4r5xNH4jdJUhl9+669e4rY5s58bO4XYeWBUejnX924FYOmjTmauD0tQ/OtCF35EhjNIYqy6j0sR/QTARDAgg=="}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (7.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 26ms (ActiveRecord: 8.5ms)
+
+
+Started GET "/" for ::1 at 2016-08-30 08:55:52 +0100
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-08-30 08:55:52 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/prashantmathias/.rvm/gems/ruby-2.3.1/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.4ms)
+  Rendered /Users/prashantmathias/.rvm/gems/ruby-2.3.1/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (22.7ms)
+Completed 200 OK in 83ms (Views: 80.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-08-30 08:56:02 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendered /Users/prashantmathias/.rvm/gems/ruby-2.3.1/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (0.4ms)
+  Rendered /Users/prashantmathias/.rvm/gems/ruby-2.3.1/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 65ms (Views: 63.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-08-30 08:56:07 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dT1QTzulG6LFPiVMpd5ctLRCMJg+VthwnhtVC89ue6FzSa/HAqrDnb2G9YrVAccawzDAIbQgq/1v1ZQkVw7mhA==", "user"=>{"email"=>"prashant@mathias.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "prashant@mathias.com"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", "2016-08-30 07:56:07.722098"], ["sign_in_count", 2], ["updated_at", "2016-08-30 07:56:07.724418"], ["id", 1]]
+  [1m[35m (0.8ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 177ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/" for ::1 at 2016-08-30 08:56:07 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts"
+  Rendered posts/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 64ms (Views: 61.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/new" for ::1 at 2016-08-30 08:56:10 +0100
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered posts/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 77ms (Views: 73.2ms | ActiveRecord: 0.5ms)
+  [1m[36m (122.4ms)[0m  [1mDROP DATABASE IF EXISTS "insta_clone_development"[0m
+  [1m[35m (518.6ms)[0m  CREATE DATABASE "insta_clone_development" ENCODING = 'unicode'
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.3ms)[0m  CREATE TABLE "posts" ("id" serial primary key, "description" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "image_file_name" character varying, "image_content_type" character varying, "image_file_size" integer, "image_updated_at" timestamp) 
+  [1m[36m (4.4ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (2.1ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users" USING btree ("reset_password_token")[0m
+  [1m[35m (2.1ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (1.8ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.6ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160829195103')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160829172637')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160829192239')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.5ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'posts'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.9ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
