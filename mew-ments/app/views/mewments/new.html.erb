@@ -1,0 +1,18 @@
+<% if @mewment.errors.any? %>
+  <section id="errors">
+    <%= pluralize(@mewment.errors.count, "error") %> where's your claw-some picture?
+    <ul>
+      <% @mewment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
+<%= form_for @mewment, html: {multipart: true} do |p| %>
+  <%= p.label :image %>
+  <%= p.file_field :image %>
+  <%= p.label :caption %>
+  <%= p.text_area :caption %>
+  <%= p.submit %>
+<% end %>

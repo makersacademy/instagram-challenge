@@ -1,0 +1,27 @@
+<% if @mewments.any? %>
+  <% @mewments.each do |mewment| %>
+  <div id="mewment">
+    <div id="image_and_caption">
+      <%= image_tag mewment.image.url(:medium) %>
+      <br>
+      <%= mewment.caption %>
+    </div>
+    <div class="like_list">
+      <span class="likes_count"> <%= mewment.likes.count %> </span> <%= 'like'.pluralize(mewment.likes.count) %>
+    </div>
+    <%= link_to "like", mewment_likes_path(mewment), class: 'likes-link' %>
+    <%= link_to "Comment", new_mewment_comment_path(mewment) %>
+  </div>
+    <%= link_to "Edit", edit_mewment_path(mewment) %>
+    <%= link_to "Delete", mewment_path(mewment), method: :delete %>
+
+    <div id="comment section">
+    <% mewment.comments.each do |comment| %>
+      <%= comment.message %>
+      <br>
+    <% end %>
+  </div>
+  <% end %>
+<% else %>
+  Start preening your whiskers, kitty cats!
+<% end %>
