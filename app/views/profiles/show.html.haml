@@ -2,13 +2,15 @@
   %div.row
     - if @user
       %div{ :style => 'text-align:center;' }
-        = image_tag('http://www.qqxxzx.com/images/cool-pictures/cool-pictures-6.jpg',
+        = image_tag('profile-pic.jpg',
                     :class => 'img-circle')
         %h2= @user.username
-      - @user.posts.each do |post|
-        %div.col-sm-4.post{:id => post.id}
-          %div.image= image_tag(post.image.url(:medium))
-          %p.post_caption{:id => "post_caption_#{post.id}"}= post.description
+      - @user.posts.each_slice(3) do |group|
+        %div{:id => "groups"}
+          - group.each do |post|
+            %div.col-sm-4.post{:id => post.id}
+              %div.image= image_tag(post.image.url(:medium))
+              %p.post_caption{:id => "post_caption_#{post.id}"}= post.description
 
 #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
   .modal-dialog
