@@ -8,11 +8,17 @@
             <%= image_tag photo.image.url %>
           </a>
           <div class="caption">
+            <% if photo.user %>
+              <div class="user-email pull-left"><%= photo.user.email %></div>
+            <% end %>
+            <div class="pull-right">
             <% if photo.created_at > Time.now.beginning_of_day %>
                 <p class="timestamp"><%="#{time_ago_in_words(photo.created_at).gsub('about','')} ago"%></p>
             <% else %>
                 <p class="timestamp"><%= photo.created_at.strftime("%b %d, %Y") %></p>
             <% end %>
+            </div>
+            <div class="clearfix"></div>
             <p><%= photo.description %></p>
 
             <% if user_signed_in? %>

@@ -5,6 +5,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :photos
-  has_many :comments
-  has_many :commented_photos, through: :comments, source: :photo
 end
