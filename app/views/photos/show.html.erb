@@ -1,0 +1,13 @@
+
+<br><%=  image_tag @photo.image.url(:medium) %>
+<h2><%= @photo.caption %></h2>
+<% if @photo.comments.any? %>
+  <h3>Comments:</h3>
+  <% @photo.comments.each do |comment| %>
+    <p><%= comment.comments %></p>
+  <% end %>
+<% end %>
+<% if current_user %>
+  <%= link_to "Comment", new_photo_comment_path(@photo) %>
+<% end %>
+<%= link_to "Home", '/photos' %>
