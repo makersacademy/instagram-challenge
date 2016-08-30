@@ -1,0 +1,13 @@
+- if @comment.errors.any?
+  %section#errors.alert.alert-danger
+    %h2
+      = pluralize @comment.errors.count, "error"
+      prohibited this post from being saved:
+    %ul
+      - @comment.errors.full_messages.each do |message|
+        %li= message
+
+= form_for [@post, @comment] do |f|
+  = f.label :content
+  = f.text_area :content
+  = f.submit "Post Comment"

@@ -1,0 +1,41 @@
+!!!
+%html
+  %head
+    %meta(charset="UTF-8")
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :integrity => "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", :rel => "stylesheet"}
+    %title YelpClone
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = csrf_meta_tags
+
+  %body
+    //NAVBAR
+    %nav.navbar
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only
+            %span.icon-bar
+          %a.navbar-brand InstagramClone
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            -if user_signed_in?
+              %li.active
+                %a= '@' + current_user.email.split('@')[0]
+                %span.sr-only
+                %li= link_to "Home", posts_path
+                %li= link_to "Add a post", new_post_path
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              %li= link_to "Sign out", destroy_user_session_path, method: :delete
+            - else
+              %li= link_to "Sign in", new_user_session_path
+              %li= link_to "Sign up", new_user_registration_path
+      //NAVBAR
+    - if alert
+      .container.alert.alert-info(style='width: 400px; text-align: center')
+        = alert
+    - if notice
+      .container.alert.alert-info(style='width: 400px; text-align: center')
+        = notice
+    = yield

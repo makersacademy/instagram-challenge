@@ -1,0 +1,30 @@
+.row
+  - if @posts.any?
+    - @posts.reverse_each do |post|
+      .col-md-4.col-md-offset-4
+        .panel-heading
+          %h3.panel-title
+            %b= '@' + post.user.email.split('@')[0]
+            = post.title
+            = post.created_at.strftime("%d %b")
+        .thumbnail
+          = image_tag post.image.url(:medium), class: 'img-responsive'
+        .caption
+          %h3
+            = post.description
+        %div.likes
+          %span.likes-count= pluralize post.likes.count, 'like'
+        - if post.comments.any?
+          = link_to 'View Comments', post_path(post), class: "btn btn-default"
+
+        - if user_signed_in?
+          = link_to "Comment", new_post_comment_path(post), class: "btn btn-default"
+          - unless current_user.has_liked?(post)
+            = link_to "Like", post_likes_path(post), method: :post, class: "btn btn-default"
+
+          -if post.user_id == current_user.id
+            = link_to "Edit #{post.title}", edit_post_path(post), class: "btn btn-default"
+            = link_to "Delete #{post.title}", post_path(post), method: :delete, class: "btn btn-default"
+
+  - else
+    %h1 No posts yet

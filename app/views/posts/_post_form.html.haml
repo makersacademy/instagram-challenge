@@ -1,0 +1,26 @@
+- if @post.errors.any?
+  .container#errors.alert.alert-danger
+    %h4
+      = pluralize @post.errors.count, "error"
+      prohibited this post from being saved:
+    %ul
+      - @post.errors.full_messages.each do |message|
+        %li= message
+
+.col-md-8.col-md-offset-2
+  .page-header
+    %h1.text-center
+      Post
+
+  = form_for @post, html: {multipart: true} do |f|
+    .form-group
+      = f.label :title
+      = f.text_field :title, class: 'form-control'
+    .form-group
+      = f.label :description
+      = f.text_area :description, rows: 5, class: 'form-control'
+    .form-group
+      = f.label :image
+      = f.file_field :image
+    .actions.btn.btn-primary
+      = f.submit "Post", class: 'btn btn-primary'
