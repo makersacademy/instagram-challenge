@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'posts' do
   context 'no posts have been added' do
     scenario 'should display a prompt to add a post' do
+      sign_up
       visit '/posts'
       expect(page).to have_content 'No posts yet'
       expect(page).to have_link 'Add a post'
@@ -11,9 +12,9 @@ feature 'posts' do
 
   context 'posts have been added' do
 
-    before { Post.create(title:'dog', description:'adorable').save(validate: false) }
-
     scenario 'display posts' do
+      sign_up
+      create_post
       visit '/posts'
       expect(page).to have_content('dog')
       expect(page).not_to have_content('No posts yet')
@@ -25,8 +26,6 @@ feature 'posts' do
     context 'Not signed in' do
       scenario 'does not allow user to create restaurant unless signed in' do
         visit '/posts'
-        click_link 'Add a post'
-        expect(page).to have_content 'You need to sign in or sign up before continuing'
         expect(page).not_to have_link 'Create Post'
       end
     end
@@ -48,7 +47,7 @@ feature 'posts' do
       end
 
       context 'an invalid post' do
-        it 'does not let you submit a comment that is too long' do
+        it 'does not let you submit a post that is too long' do
           description = 'This description is way too long, and so the validation should make this an invalid description and raise an error to notifying the user to shorten their description content to a maximum of 200 characters.'
           visit '/posts'
           click_link 'Add a post'
@@ -70,7 +69,8 @@ feature 'posts' do
       sign_up
       create_post
       visit '/posts'
-      click_link 'dog'
+      create_comment 'cute'
+      click_link 'View Comments'
       id = Post.first.id
       expect(page).to have_content 'adorable'
       expect(current_path).to eq "/posts/#{id}"

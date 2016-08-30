@@ -17,7 +17,7 @@ end
 
 def create_comment(content)
   visit '/posts'
-  click_link 'Comment on dog'
+  click_link 'Comment'
   fill_in 'Content', with: content
   click_button 'Post Comment'
 end

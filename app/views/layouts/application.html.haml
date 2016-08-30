@@ -10,7 +10,7 @@
 
   %body
     //NAVBAR
-    %nav.navbar.navbar-inverse
+    %nav.navbar
       .container-fluid
         .navbar-header
           %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
@@ -24,6 +24,7 @@
                 %a= current_user.email
                 %span.sr-only
                 %li= link_to "Home", posts_path
+                %li= link_to "Add a post", new_post_path
           %ul.nav.navbar-nav.navbar-right
             - if user_signed_in?
               %li= link_to "Sign out", destroy_user_session_path, method: :delete
@@ -31,6 +32,6 @@
               %li= link_to "Sign in", new_user_session_path
               %li= link_to "Sign up", new_user_registration_path
       //NAVBAR
-    = yield
     = notice
     = alert
+    = yield

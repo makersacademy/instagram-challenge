@@ -26,7 +26,7 @@ feature 'comments' do
   context 'signed out' do
     it 'users cannot comment unless signed in' do
       click_link 'Sign out'
-      expect(page).not_to have_link 'Comment on dog'
+      expect(page).not_to have_link 'Comment'
     end
   end
 
