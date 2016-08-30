@@ -4,7 +4,7 @@ def sign_up(email: 'alice@example.com')
   fill_in 'Email', with: email
   fill_in 'Password', with: '12345678'
   fill_in 'Password confirmation', with: '12345678'
-  click_button 'Sign up'
+  click_button 'Sign Up'
 end
 
 def create_post
@@ -12,7 +12,7 @@ def create_post
   click_link 'Add a post'
   fill_in 'Title', with: 'dog'
   fill_in 'Description', with: 'adorable'
-  click_button 'Create Post'
+  click_button 'Post'
 end
 
 def create_comment(content)

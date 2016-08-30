@@ -21,7 +21,7 @@
           %ul.nav.navbar-nav
             -if user_signed_in?
               %li.active
-                %a= current_user.email
+                %a= '@' + current_user.email.split('@')[0]
                 %span.sr-only
                 %li= link_to "Home", posts_path
                 %li= link_to "Add a post", new_post_path
@@ -32,6 +32,10 @@
               %li= link_to "Sign in", new_user_session_path
               %li= link_to "Sign up", new_user_registration_path
       //NAVBAR
-    = notice
-    = alert
+    - if alert
+      .container.alert.alert-info(style='width: 400px; text-align: center')
+        = alert
+    - if notice
+      .container.alert.alert-info(style='width: 400px; text-align: center')
+        = notice
     = yield

@@ -26,7 +26,7 @@ feature 'posts' do
     context 'Not signed in' do
       scenario 'does not allow user to create restaurant unless signed in' do
         visit '/posts'
-        expect(page).not_to have_link 'Create Post'
+        expect(page).not_to have_link 'Post'
       end
     end
 
@@ -41,7 +41,7 @@ feature 'posts' do
         click_link 'Add a post'
         fill_in 'Title', with: 'dog'
         fill_in 'Description', with: 'adorable'
-        click_button 'Create Post'
+        click_button 'Post'
         expect(page).to have_content 'dog'
         expect(current_path).to eq '/posts'
       end
@@ -53,7 +53,7 @@ feature 'posts' do
           click_link 'Add a post'
           fill_in 'Title', with: 'This title is way too long, it should raise an error'
           fill_in 'Description', with: description
-          click_button 'Create Post'
+          click_button 'Post'
           expect(page).to have_content 'Title is too long'
           expect(page).to have_content 'Description is too long'
         end
@@ -78,7 +78,7 @@ feature 'posts' do
 
   end
 
-  context 'editing restaurants' do
+  context 'editing posts' do
 
     before do
       sign_up
@@ -90,7 +90,7 @@ feature 'posts' do
       click_link 'Edit dog'
       fill_in 'Title', with: 'dog'
       fill_in 'Description', with: 'adorable'
-      click_button 'Update Post'
+      click_button 'Post'
       expect(page).to have_content 'dog'
       expect(page).to have_content 'adorable'
       expect(current_path).to eq '/posts'
