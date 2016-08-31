@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row row-centered">
+    	<div class="col-xs-6 col-centered">
+    		<p><%= @photo.created_at %></p>
+			<p><%= image_tag @photo.image.url(:medium) %></p>
+			<p><strong><%= @photo.user.email %>:</strong> <%= @photo.caption %></p>
+			<% if @photo.comments %>
+				<% @photo.comments.each do |comment| %>
+					<p><%= comment.thoughts %></p>
+				<% end %>
+			<% end %>
+
+			<%= simple_form_for ([@photo, @photo.comments.new]) do |f| %>
+				<%= f.text_area :thoughts, label: 'thoughts', placeholder: 'Add a comment' %>
+				<%= f.submit 'Comment' %>
+			<% end %>
+
+			<% if user_signed_in? && current_user.is_owner_of?(@photo) %>
+				<%= link_to "Edit", edit_photo_path(@photo) %>
+				<%= link_to "Delete", photo_path(@photo), method: :delete %>
+			<% end %>
+		</div>
+	</div>
+</div>
