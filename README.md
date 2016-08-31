@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/lexiht/instagram-challenge.svg?branch=master)](https://travis-ci.org/lexiht/instagram-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/makersacademy/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/makersacademy/instagram-challenge?branch=master)
+
+
 Instagram Challenge
 ===================
 

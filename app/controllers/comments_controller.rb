@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_photo
+  before_action :authenticate_user!
 
   def create 
     @comment = @photo.comments.create(comment_params)

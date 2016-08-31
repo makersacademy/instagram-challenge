@@ -1,24 +1,21 @@
 <% if @photos.any? %>
-	<% @photos.each do |photo| %>
-		<p><%= photo.user.email %></p>
-		<div>
-			<%= link_to (image_tag photo.image.url(:medium), class:'img-responsive'), photo_path(photo), class: "photo" %>
-		</div>
-		<p><%= photo.caption %></p>
-		<% if photo.comments %>
-			<% photo.comments.each do |comment| %>
-				<p><%= comment.thoughts %></p>
-				<% if comment.user == current_user %>
-					<%= link_to photo_comment_path(photo, comment), method: :delete %>
-				<% end %>
-			<% end %>
-		<% end %>
+  <% @photos.each do |photo| %>
+    <div>
+      <%= link_to (image_tag photo.image.url(:medium), class:'img-responsive'), photo_path(photo), class: "photo" %>
+    </div>
+    <p><strong><%= photo.user.email %>:</strong> <%= photo.caption %></p>
+    <% if photo.comments %>
+      <% photo.comments.each do |comment| %>
+        <p><%= comment.thoughts %></p>
+      <% end %>
+    <% end %>
 
-		<%= simple_form_for [photo, photo.comments.new] do |f| %>
-			<%= f.text_area :thoughts, label: 'thoughts', placeholder: 'Add a comment' %>
-			<%= f.submit 'Comment' %>
-		<% end %>
-	<% end %>
+    <%= simple_form_for ([photo, photo.comments.new]) do |f| %>
+      <%= f.text_area :thoughts, label: 'thoughts', placeholder: 'Add a comment' %>
+      <%= f.submit 'Comment' %>
+    <% end %>
+
+  <% end %>
 <% else %>
-	<h2>No photos yet</h2>
+  <h2>No photos yet</h2>
 <% end %>
