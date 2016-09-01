@@ -1,6 +1,60 @@
 Instagram Challenge
 ===================
 
+## Installation Instructions 
+
+- Clone this repo down to your local machine
+- Change directory into this repo
+- Run `rake db:create`
+- Run `rake db:migrate`
+- Run `bundle`
+- Tests are ran using `rspec`
+- Run `bin/rails s` to start the server on localhost
+
+User Stories
+-------------
+:white_check_mark:
+```
+As a user,
+so that I can share my experiences,
+id like to be able to post photos.
+```
+:white_check_mark:
+```
+As a user,
+so that my posts are unique to me,
+Id like to be able to sign up/in
+```
+:white_check_mark:
+```
+As a user,
+incase I no longer want to share my photo,
+i'd like to be able to delete it.
+``` 
+:white_check_mark:
+```
+as a user, 
+incase I want to alter my image,
+i'd like to be able to edit it's description
+``` 
+```
+as a user,
+for ease of use,
+i'd like to be able to sign in using facebook
+```
+```
+as a User,
+so I can share my thoughts,
+i'd like to be able to comment on another user's photo
+```
+:construction:
+```
+as a User,
+so I can show my appreciation for a photo,
+i want to be able to like it.
+```
+
+
 Instructions
 -------
 * Challenge time: one weekend

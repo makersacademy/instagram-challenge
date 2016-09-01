@@ -1,0 +1,16 @@
+<h1>Welcome To Reisstagram!</h1>
+<% if @photos.any? %>
+  <% @photos.each do |photo| %>
+    <%= image_tag photo.image.url(:medium) %>
+    <p><%= photo.description %></p>
+    <% if @user && @user.id == photo.user_id %>
+      <p> <%= link_to 'Edit this photo', edit_photo_path(photo) %></p>
+      <p> <%= link_to 'Delete this photo', photo_path(photo), method: :delete %></p>  
+    <% end %>
+  <% end %>
+<% else %>
+  <h1>no photos added</h1>
+<% end %>
+<% if @user %>
+  <%= link_to 'Upload A Photo', new_photo_path %>
+<% end %>
