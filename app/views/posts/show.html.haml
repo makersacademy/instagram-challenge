@@ -1,23 +1,31 @@
-= image_tag @post.image.url(:medium)
-%h1= @post.caption
-%h3= @post.user.email
-%br
-Uploaded
-= time_ago_in_words(@post.created_at)
-ago
+.individual-posts-wrapper
+  .individual-post
+    .post-head
+      .user-name
+        = @post.user.email
+      .time-ago
+        = time_ago_in_words(@post.created_at)
+    .image.center-block
+      = image_tag @post.image.url(:medium)
+    .post-bottom
+      .likes
+        .like-link
+          = link_to "Like:", post_likes_path(@post), method: :post
+        .like-count
+          = @post.likes.count
+      .comment-link
+        = link_to "Add comment", new_post_comment_path(@post)
+      .caption
+        .user-name
+          = @post.user.email
+        = @post.caption
 
-- @post.comments.each do |comment|
-  %ul
-    %li= comment.user.email
-    = comment.comment
-    = time_ago_in_words(comment.created_at)
-    ago
-
-Likes:
-= @post.likes.count
-= link_to "Like", post_likes_path(@post), method: :post
-
-= link_to "Home", posts_path
-= link_to "Add comment", new_post_comment_path(@post)
-- if @post.user == current_user
-  = link_to "Delete", post_path(@post), method: :delete
+      - @post.comments.each do |comment|
+        .comment
+          .user-name
+            = comment.user.email
+          .comment-content
+            = comment.comment
+      .delete-link
+        - if @post.user == current_user
+          = link_to "Delete", post_path(@post), method: :delete
