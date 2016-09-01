@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bin-stagram</h1>
+<% if @posts.all.any? %>
+<% @posts.each do |post| %>
+    <a href="<%= post_url(post) %>"><%= image_tag(post.image.profile_size.url) %></a>
+    <h2><%= link_to post.title, post %></h2>
+    <%= post.description %>
+    <br>
+    <!-- <a href="@post.liked_by :voter => @current_user">Like</a> -->
+    <% if @current_user == post.user %>
+    <%= link_to 'Edit', edit_post_path(post) %>
+    <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <hr>
+    <% end %>
+    <h3>Comments for <%= post.title %></h3>
+
+    <% if post.comments.any? %>
+      <ul>
+        <% post.comments.each do |comment| %>
+          <li>
+            <%= comment.thoughts %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments.</p>
+    <% end %>
+    <%= link_to "Comment on #{post.title}", new_post_comment_path(post)%>
+<% end %>
+<% else %>
+  <p>Nothing here, please upload an image</p>
+<% end %>
+<br>
+
+<%= link_to 'New Post', new_post_path %>
