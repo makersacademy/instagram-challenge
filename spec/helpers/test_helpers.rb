@@ -12,10 +12,10 @@ def sign_out
   click_link 'Sign out'
 end
 
-def add_a_picture (file = Rails.root + "spec/fixtures/files/test_picture.jpg")
+def add_a_picture (file = Rails.root + "spec/fixtures/files/test_picture.jpg", description = "Test description")
   click_link 'Upload a picture'
-  page.attach_file "picture_image", file
-  fill_in 'Description', with: "Test description"
+  attach_file "picture_image", file
+  fill_in 'Description', with: description
   click_button 'Post'
 end
 

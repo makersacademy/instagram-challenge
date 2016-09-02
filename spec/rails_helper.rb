@@ -7,7 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 require 'shoulda-matchers'
-require_relative 'helpers/web_helpers'
+require_relative 'helpers/test_helpers'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 

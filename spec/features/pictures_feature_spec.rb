@@ -9,7 +9,7 @@ feature 'Pictures' do
     end
   end
 
-  context 'pctures have been added' do
+  context 'pictures have been added' do
     before do
       visit '/pictures'
       sign_up
@@ -19,7 +19,13 @@ feature 'Pictures' do
     context 'adding pictures' do
       scenario 'signed in user can add a picture' do
         expect(page).to have_content 'user1'
+        expect(page).to have_selector "img"
         expect(page).not_to have_content 'No pictures yet'
+      end
+
+      scenario 'user cannot submit an invalid file type' do
+        add_a_picture(Rails.root + "spec/fixtures/files/test_picture.pdf", "wrong")
+        expect(page).not_to have_content "wrong"
       end
     end
 
