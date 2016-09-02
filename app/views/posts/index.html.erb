@@ -1,0 +1,40 @@
+<!-- <%= link_to 'Add a post', new_post_path %> -->
+
+<% if @posts.any? %>
+
+  <% @posts.each do |post| %>
+      <div class="post">
+        <div class="post-head">
+          <div class="name">
+            <h2> <%= post.caption %> </h2>
+          </div>
+        </div>
+      <p><%= link_to "Give social validation!", post_ticks_path(post), class: 'ticks-link' %>
+      <span class="ticks_count"> <%= post.ticks.count %> </span> <%= 'tick'.pluralize(post.ticks.count) %></p>
+      <%= image_tag post.image.url(:medium) %>
+      <%= link_to "Edit #{post.caption}", edit_post_path(post) %>
+      <%= link_to "Delete post", post_path(post), method: :delete %>
+      <%= link_to "Comment", new_post_comment_path(post) %>
+      <h4> Comments for <%= post.caption %> </h4>
+        <% if post.comments.any? %>
+        <ul>
+          <% post.comments.each do |comment| %>
+          <li>
+            <%= comment.comment %>
+            <p><%= link_to "Like", comment_likes_path(comment), class: 'likes-link' %>
+            <span class="likes_count"> <%= comment.likes.count %> </span> <%= 'like'.pluralize(comment.likes.count) %></p>
+          </li>
+
+
+          <% end %>
+        </ul>
+        <% else %>
+        <p>No comments!</p>
+        <% end %>
+      </div>
+    <% end %>
+
+  <% else %>
+  No posts yet!
+
+  <% end %>
