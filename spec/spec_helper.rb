@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 require_relative 'rails_helper'
 require_relative 'spec_helpers/comments_helper'
 require_relative 'spec_helpers/posts_helper'
