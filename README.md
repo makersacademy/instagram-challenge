@@ -1,7 +1,7 @@
 Instagram Challenge
 ===================
 [![Build Status](https://travis-ci.org/richo225/richagram.svg?branch=master)](https://travis-ci.org/richo225/richagram)
-[![Coverage Status](https://coveralls.io/repos/github/richo225/chitter-challenge/badge.svg?branch=master)](https://coveralls.io/github/richo225/chitter-challenge?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/richo225/richagram/badge.svg?branch=master)](https://coveralls.io/github/richo225/richagram?branch=master)
 
 An instagram clone developed using the Ruby on Rails framework.
 
