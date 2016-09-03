@@ -5,10 +5,12 @@
 
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %><br>
+
     <span><h3><%= picture.user.username %></h3>
     <%= image_tag picture.image.url(:med) %>
     <%= picture.description %></span><br>
     <% if picture.likes.any? %>
+      <%= pluralize picture.likes.count, 'Like' %>
       <% picture.likes.each do |like| %>
         <% if current_user == like.user %>
           <% if like.user.has_liked? picture %>

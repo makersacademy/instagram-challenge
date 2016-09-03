@@ -11,7 +11,8 @@ feature 'Feature - likes' do
   context 'liking a picture' do
     scenario 'any user can Like a picture' do
       click_link 'Like'
-      expect(page).to have_content 'Liked'
+      expect(current_path).to eq '/pictures'
+      expect(page).to have_content '1 Like'
     end
 
     scenario 'user cannot Like a picture more than once' do
