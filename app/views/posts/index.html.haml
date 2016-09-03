@@ -1,22 +1,6 @@
 - if @posts.any?
-  - @posts.each do |post|
-    = image_tag post.image.url(:thumb)
-    = post.user.email
-    = link_to post.caption, post_path(post)
-    = time_ago_in_words(post.created_at)
-    ago
-
-    Likes:
-    = post.likes.count
-
-    - post.comments.each do |comment|
-      %ul
-        %li= comment.user.email
-        = comment.comment
-        = time_ago_in_words(comment.created_at)
-        ago
+  - @posts.reverse.each do |post|
+    = render "post", post: post
 
 - else
   %h1 No posts yet
-%br
-= link_to "Add an image", new_post_path

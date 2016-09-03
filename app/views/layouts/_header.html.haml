@@ -1,0 +1,20 @@
+%nav.navbar.navbar-dark.bg-inverse
+
+  %a.navbar-brand{href:root_path} Richagram
+
+  %ul.nav.navbar-nav
+    %li.nav-item
+      %a.nav-link{href:root_path} Home
+    %li.nav-item
+      %a.nav-link{href:new_post_path} Add an image
+
+  %ul.nav.navbar-nav.pull-xs-right
+    -if user_signed_in?
+      %li.nav-item= link_to "Sign out", destroy_user_session_path, method: :delete
+    -else
+      %li.nav-item
+        %a.nav-link{href:new_user_registration_path} Sign up
+      %li.nav-item
+        %a.nav-link{href:new_user_session_path} Sign in
+    -# %li
+    -#   %p.nav.navbar-text= "You're currently logged in as #{current_user.email}"

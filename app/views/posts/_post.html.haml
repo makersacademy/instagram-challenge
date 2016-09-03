@@ -1,0 +1,24 @@
+.posts-wrapper
+  .post
+    .post-head
+      .user-name
+        = post.user.email
+      .time-ago
+        = time_ago_in_words(post.created_at)
+    .image.center-block
+      = image_tag post.image.url(:thumb)
+    .post-bottom
+      .likes
+        Likes:
+        = post.likes.count
+      .caption
+        .user-name
+          = post.user.email
+        = link_to post.caption, post_path(post)
+
+      - post.comments.each do |comment|
+        .comment
+          .user-name
+            = comment.user.email
+          .comment-content
+            = comment.comment
