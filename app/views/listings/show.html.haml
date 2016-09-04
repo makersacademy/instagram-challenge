@@ -1,0 +1,12 @@
+%h2= @user.provider_name
+%br
+
+= render "partials/gallery"
+
+%h3 Weekly Timetable
+
+- if @listings.any?
+  -@listings.each do |listing|
+    %p
+      =listing.day + " " + listing.convert_time(listing.start_time)
+      %br

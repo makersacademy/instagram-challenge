@@ -1,0 +1,11 @@
+= render "form"
+%hr
+
+- if @listing.errors.any?
+  %section#errors
+    %strong
+      = pluralize @listing.errors.count, "error"
+      Sorry this listing could not be saved:
+    %ul
+      - @restaurant.errors.full_messages.each do |message|
+        %li= message

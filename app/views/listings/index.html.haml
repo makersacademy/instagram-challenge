@@ -1,0 +1,12 @@
+
+%p= link_to "Add a class", new_listing_path
+
+- if @listings.any?
+  - @listings.each do |listing|
+    %p
+      = listing.day + " " + listing.convert_time(listing.start_time)
+      %br
+      = link_to listing.user.provider_name, listing_path(listing.user)
+- else
+  %p
+    No classes yet!
