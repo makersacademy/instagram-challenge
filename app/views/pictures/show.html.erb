@@ -1,0 +1,11 @@
+<%= image_tag @picture.image.url %>
+<% if @current_user %>
+  <%= link_to "Delete this picture", picture_path(@picture), method: :delete %>
+  <%= link_to "Comment on this picture", new_picture_comment_path(@picture) %>
+<% end %>
+<% if @picture.comments.any? %>
+  <% @picture.comments.each do |comment| %>
+    <%= comment.thoughts %>
+    <% comment.user %>
+  <% end %>
+<% end %>
