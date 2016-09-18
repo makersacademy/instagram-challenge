@@ -15,5 +15,13 @@ feature 'User Profiles' do
       expect(page).to have_xpath '//*[@id="1"]'
       expect(page).to have_content 'This is my first post :)'
     end
+
+    scenario 'Can upload a custom profile picture', :focus => true do
+      click_link 'Profile'
+      attach_file('#add-profile-img', "#{Dir.pwd}/spec/features/test_images/demo-profile-img.png")
+      click_button 'Save'
+      expect(current_path).to eq '/mannieg'
+      expect(page).to have_xpath '//img[@class="img-circle"]'
+    end
   end
 end
