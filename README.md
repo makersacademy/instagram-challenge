@@ -6,10 +6,27 @@ Demo
 -------
 https://murmuring-island-90328.herokuapp.com/mannieg
 
+Technologies used
+-------
+* Ruby
+* Ruby on Rails
+* Postgres
+* RSpec
+* Capybara
+* Devise
+* Paperclip
+* Amazon Web Services
+* Bootstrap
+* Heroku
+* Javascript
+* AJAX
+* Waffle (Managing the project)
+
 Prerequisites
 -------
 * Rails 4.2.7.1
-* Imagemagick
+* Postgres
+* ImageMagick
 * PhantomJS
 * AWS account with S3
 * Facebook developer account
@@ -20,9 +37,31 @@ For testing you will need PhantomJS installed on your OS:
 ```
 brew install phantomjs
 ```
-You will also need to install ImageMagick
+You will also need to install ImageMagick:
 ```
 brew install imagemagick
+```
+Run bundle install:
+```
+bundle install
+```
+Create the database and run migrations:
+```
+rake db:create
+rake db:migrate
+```
+
+Running rails in development mode
+-------
+After running the below command site should be accessible via your browser: http://localhost:3000 as long as no custom changes have been made.
+```
+rails s
+```
+
+Testing the application
+-------
+```
+rspec
 ```
 
 ## Profile view
