@@ -1,18 +1,29 @@
-Instagram Challenge
+Instagram Clone
 ===================
+A site developed in Ruby on Rails and Javascript.
 
-Heroku
+Demo
 -------
-Note some issues with Heroku deployment. Some feature's may not work correctly yet.
 https://murmuring-island-90328.herokuapp.com/mannieg
-
 
 Prerequisites
 -------
 * Rails 4.2.7.1
 * Imagemagick
+* PhantomJS
 * AWS account with S3
 * Facebook developer account
+
+Installation Instructions
+-------
+For testing you will need PhantomJS installed on your OS:
+```
+brew install phantomjs
+```
+You will also need to install ImageMagick
+```
+brew install imagemagick
+```
 
 ## Profile view
 ![ScreenShot](screenshots/profile.png)
@@ -25,3 +36,5 @@ Prerequisites
 * Follows/Unfollow
 * Pagination
 * Layout improvements
+* Search by username
+* Autosuggestions on search
