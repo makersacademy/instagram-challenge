@@ -36,6 +36,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    console
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "Your post has successfully been removed from Instagram"
