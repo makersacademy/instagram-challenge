@@ -5,7 +5,7 @@ This app was my weekend challenge for week 8 at Makers Academy. Deployed version
 
 ### Instructions for use
 * Change into the "instagram_clone" directory
-* Run "bundle install" (Ruby version 2.2.3)
+* Run "bundle install" (Ruby version 2.3.1)
 * "rake db:create" to create a database.
 * "rails s" to run the server and check out Instarails.
 * "rspec" to run the tests.
