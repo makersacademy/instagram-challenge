@@ -1,0 +1,22 @@
+<% if @photographs.any? %>
+  <% @photographs.each do |photograph| %>
+    <%= link_to image_tag(photograph.image.url(:thumb)), photograph_path(photograph), :method => :get %>
+    <h2> <%= link_to photograph.name, photograph_path(photograph) %> </h2>
+    <%= link_to "Admire #{photograph.name}", photograph_admiration_index_path(photograph), class: 'admirations-link' %>
+    <span class="admirations_count"> <%= photograph.admirations.count %> </span> <%= 'admirations'.pluralize(photograph.admirations.count) %>
+
+    <h4>Comments:</h4>
+    <% photograph.comments.each do |comment| %>
+      <li><%= comment.thoughts %></li>
+    <% end %>
+    <% if photograph.user == current_user %>
+      <p> <%= link_to "Comment on #{photograph.name}", new_photograph_comment_path(photograph)%></p>
+      <% else %>
+      <p>Sign in to edit</p>
+    <% end %>
+  <% end %>
+<% else %>
+  No photographs yet
+<% end %>
+
+<a href='<%= new_photograph_path %>'>Add a photograph</a>
