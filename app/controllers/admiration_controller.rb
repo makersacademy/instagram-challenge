@@ -3,7 +3,7 @@ class AdmirationController < ApplicationController
   def create
     @photograph = Photograph.find(params[:photograph_id])
     @photograph.admirations.create
-    redirect_to photographs_path
+    render json: {new_admiration_count: @photograph.admirations.count}
   end
 
 end

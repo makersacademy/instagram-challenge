@@ -2,7 +2,9 @@
   <% @photographs.each do |photograph| %>
     <%= link_to image_tag(photograph.image.url(:thumb)), photograph_path(photograph), :method => :get %>
     <h2> <%= link_to photograph.name, photograph_path(photograph) %> </h2>
-    <p><%= pluralize photograph.admirations.count, 'admiration' %> <%= link_to "Admire Photograph", photograph_admiration_index_path(photograph), :method => :post %></p>
+    <%= link_to "Admire #{photograph.name}", photograph_admiration_index_path(photograph), class: 'admirations-link' %>
+    <span class="admirations_count"> <%= photograph.admirations.count %> </span> <%= 'admirations'.pluralize(photograph.admirations.count) %>
+
     <h4>Comments:</h4>
     <% photograph.comments.each do |comment| %>
       <li><%= comment.thoughts %></li>
