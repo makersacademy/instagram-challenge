@@ -1,0 +1,24 @@
+.text-center
+  %h1 Pictorials
+.posts-wrapper.row
+  -@post.each do |post|
+    .post
+      .post-head
+        .name
+          = post.user.user_name
+      .image.center-block
+        =link_to (image_tag post.image.url(:medium), class: 'img-responsive'), post_path(post)
+      %p.caption
+      .post-bottom
+        .caption
+          = post.caption
+        - if post.comments
+          - post.comments.each do |comment|
+            .comment
+              .user-name
+                = comment.user.user_name
+              .comment-content
+                = comment.content
+        .comment-form
+          = form_for [post, post.comments.new] do |f|
+            = f.text_field :content, placeholder: 'Add a comment...'
