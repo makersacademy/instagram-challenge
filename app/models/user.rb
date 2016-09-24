@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_attached_file :image, :styles => { :medium => "293x293#",
+                                        :thumb => "100x100>" },
+                                        :default_url => "/assets/upload-plus.png"
+
+  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
   validates :username, uniqueness: true
@@ -21,5 +26,5 @@ class User < ActiveRecord::Base
   def email_changed?
     false
   end
-  
+
 end

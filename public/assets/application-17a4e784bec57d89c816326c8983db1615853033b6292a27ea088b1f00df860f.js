@@ -13984,6 +13984,15 @@ var o,i,s,a,u;return i=null!=n?n:{},a=i.restorationIdentifier,s=i.restorationDat
         }
       });
 
+      $('#upload-profile').on('click', function(event) {
+        $('#upload-input').trigger('click');
+      });
+
+      $('#upload-input').change(function() {
+        previewImage();
+        uploadProfileImage();
+      });
+
       $('#heart').on('click', function(event) {
         var className = 'glyphicon glyphicon-heart-empty';
 
@@ -14026,11 +14035,50 @@ var o,i,s,a,u;return i=null!=n?n:{},a=i.restorationIdentifier,s=i.restorationDat
 
   });
 
+  function uploadProfileImage() {
+    var inp = document.querySelector('#upload-input');
+    var formData = new FormData();
+    var input = $('#upload-input');
+    var profileTxt = document.querySelector('#upload-profile-txt');
+
+    formData.append('profile[image]', input[0].files[0]);
+
+    $.ajax({
+      url: inp.parentElement.action,
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false,
+      type: 'PUT',
+      success: function() {
+        profileTxt.textContent = 'Profile photo added!';
+      }
+    });
+  }
 
 
   function resetData() {
     $('.modal-comments').empty();
     document.getElementById("heart").className = 'glyphicon glyphicon-heart-empty';
+  }
+
+  function previewImage() {
+    var preview = document.querySelector('img#upload-profile');
+    var file = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
+
+    reader.addEventListener('load', function() {
+      preview.src = reader.result;
+      preview.className = 'img-circle';
+    }, false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  }
+
+  function postData(inp) {
+
   }
 
 })();
