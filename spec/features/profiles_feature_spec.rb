@@ -16,12 +16,11 @@ feature 'User Profiles' do
       expect(page).to have_content 'This is my first post :)'
     end
 
-    scenario 'Can upload a custom profile picture', :focus => true do
-      click_link 'Profile'
-      attach_file('#add-profile-img', "#{Dir.pwd}/spec/features/test_images/demo-profile-img.png")
-      click_button 'Save'
+    scenario 'Can upload a custom profile picture', :js => true, :focus => true do
+      visit '/mannieg'
+      attach_file('upload-input', "#{Rails.root }/spec/features/test_images/demo-profile-img.png", visible: false)
       expect(current_path).to eq '/mannieg'
-      expect(page).to have_xpath '//img[@class="img-circle"]'
+      expect(page).to have_content 'Profile photo added!'
     end
   end
 end

@@ -1,9 +1,14 @@
 %div.container
   %div.row
     - if @user
-      %div{ :style => 'text-align:center;' }
-        = image_tag('profile-pic.jpg',
-                    :class => 'img-circle')
+      %div.user-profile
+        = form_tag profile_path(@user), :multipart => true, :id => 'upload-form' do
+          = file_field_tag 'profile[image]', :id => 'upload-input', accept: 'image/png, image/jpeg, image/jpg'
+
+        %img#upload-profile{:src => @user.image.url(:medium), :class => 'img-circle'}
+        %div#upload-profile-txt
+          - if @user.image == false
+            Add a profile photo
         %h2= @user.username
       - @user.posts.each_slice(3) do |group|
         %div{:id => "groups"}
