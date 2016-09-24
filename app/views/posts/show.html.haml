@@ -1,13 +1,19 @@
-= image_tag @post.image.url(:medium)
-%h1= @post.title
-%p= @post.description
-%p
-
-Post by:
-= @post.user.email
-
-%br
-
-= link_to "Back", root_path
-= link_to "Edit", edit_post_path
-= link_to "Delete", post_path, method: :delete, data: { confirm: "Are you sure?" }
+#post_show.row
+  .col-md-6.col-md-offset-3
+    .panel.panel-default
+      .panel.heading.post_image
+        = image_tag @post.image.url(:medium)
+      .panel-body
+        %h1= @post.title
+        %p= @post.description
+      .panel-footer
+        .row
+          .col-md-6
+            %p.user
+              by:
+              = @post.user.email
+          .col-md-6
+            .btn-group.pull-right
+              - if user_signed_in?
+                = link_to "Edit", edit_post_path, class: "btn btn-info"
+                = link_to "Delete", post_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
