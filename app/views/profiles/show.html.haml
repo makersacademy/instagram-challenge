@@ -1,0 +1,42 @@
+%div.container
+  %div.row
+    - if @user
+      %div.user-profile
+        = form_tag profile_path(@user), :multipart => true, :id => 'upload-form' do
+          = file_field_tag 'profile[image]', :id => 'upload-input', accept: 'image/png, image/jpeg, image/jpg'
+
+        %img#upload-profile{:src => @user.image.url(:medium), :class => 'img-circle'}
+        %div#upload-profile-txt
+          - if @user.image == false
+            Add a profile photo
+        %h2= @user.username
+      - @user.posts.each_slice(3) do |group|
+        %div{:id => "groups"}
+          - group.each do |post|
+            %div.col-sm-4.post{:id => post.id}
+              %div.image= image_tag(post.image.url(:medium))
+              %p.post_caption{:id => "post_caption_#{post.id}"}= post.description
+
+#myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+        %h4#myModalLabel.modal-title
+      .modal-body
+        %img#mimg{:src => ""}/
+        %div.modal-right{:id => ''}
+          %div.stats{:style => 'padding-bottom:5px;'}
+            %span.glyphicon.glyphicon-heart
+            %span#like-count 0 Likes
+            &nbsp;&nbsp;&nbsp;
+            %span.glyphicon.glyphicon-comment
+            %span#comments-count 0 Comments
+          %ul.modal-comments
+          %hr
+          %section.comment-form
+            = form_tag post_comments_path('id'), :name => 'comment_form', remote: true do
+              %span.glyphicon.glyphicon-heart-empty#heart
+              = text_area_tag 'comment[message]', nil,  :id => 'comment_message', placeholder: 'Add a comment', rows: '3', cols: '30'
+              = hidden_field_tag 'authenticity_token', form_authenticity_token
+              = submit_tag 'Post', :style => 'display:none'
