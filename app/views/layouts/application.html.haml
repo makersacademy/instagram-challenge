@@ -1,0 +1,34 @@
+!!!
+%html
+  %head
+    %meta(charset="UTF-8")
+    %title Instagram
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %div.navigation{ :style => 'padding-top:20px; padding-left:10px' }
+      = image_tag 'logo.png', :id => 'logo'
+      %span{ :style => 'font-size:26px' }
+        Instagram
+      %span.navbar.nav.pull-right{ :style => 'float: right; margin-right: 98px;' }
+        = link_to "Home", root_path
+
+        - if user_signed_in?
+          = link_to "Profile", profile_path(current_user.username)
+          = link_to "Upload", new_post_path
+          = link_to "Sign out", destroy_user_session_path, method: :delete
+        - else
+          = link_to "Sign up", new_user_registration_path
+          = link_to "Log in", new_user_session_path
+      %br
+      %br
+    %hr
+    %br
+    %div#main-container.container-fluid
+      %div.col-sm-12.col-centered#loading_page{:style => 'display:none;text-align:center;'}
+        = image_tag 'loading.gif'
+      %div#main_content
+        = notice
+        = alert
+        = yield

@@ -1,23 +1,79 @@
-Instagram Challenge
+Instagram Clone
 ===================
+A site developed in Ruby on Rails and Javascript.
 
-Instructions
+Demo
 -------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+https://murmuring-island-90328.herokuapp.com/mannieg
 
-Task
------
+Technologies used
+-------
+* Ruby
+* Ruby on Rails
+* Postgres
+* RSpec
+* Capybara
+* Devise
+* Paperclip
+* Amazon Web Services
+* Bootstrap
+* Heroku
+* Javascript
+* AJAX
+* Waffle (Managing the project)
 
-Build Instagram: Simple huh!
+Prerequisites
+-------
+* Rails 4.2.7.1
+* Postgres
+* ImageMagick
+* PhantomJS
+* AWS account with S3
+* Facebook developer account
 
-Bonus if you can write your own set of sensible user stories!
+Installation Instructions
+-------
+For testing you will need PhantomJS installed on your OS:
+```
+brew install phantomjs
+```
+You will also need to install ImageMagick:
+```
+brew install imagemagick
+```
+Run bundle install:
+```
+bundle install
+```
+Create the database and run migrations:
+```
+rake db:create
+rake db:migrate
+```
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+Running rails in development mode
+-------
+After running the below command site should be accessible via your browser: http://localhost:3000 as long as no custom changes have been made.
+```
+rails s
+```
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Testing the application
+-------
+```
+rspec
+```
 
-Bonus if you can add filters!
+## Profile view
+![ScreenShot](screenshots/profile.png)
+
+## Comment/Like view
+![ScreenShot](screenshots/comment_like.png)
+
+
+## Working on:
+* Follows/Unfollow
+* Pagination
+* Layout improvements
+* Search by username
+* Autosuggestions on search
