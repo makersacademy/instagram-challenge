@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-
-  root 'posts#index'
-  resources :posts
   devise_for :users
-
-
+  root 'posts#index'
+  resources :posts do
+    member do
+      put "like", to: "posts#upvote"
+    end
+  end
 end

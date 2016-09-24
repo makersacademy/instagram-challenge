@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
-  # before_action :authenticate_user!
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote]
 
   def new
     @post = current_user.posts.build
@@ -38,6 +38,11 @@ class PostsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def upvote
+    @post.upvote_by current_user
+    redirect_to :back
   end
 
   private
