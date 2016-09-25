@@ -1,0 +1,24 @@
+#post_show.row
+  .col-md-6.col-md-offset-3
+    .panel.panel-default
+      .panel.heading.post_image
+        = image_tag @post.image.url(:medium)
+      .panel-body
+        %h1= @post.title
+        %p= @post.description
+      .panel-footer
+        .row
+          .col-md-6
+            %p.user
+              by:
+              = @post.user.email
+          .col-md-6
+            .btn-group.pull-right
+              = link_to like_post_path(@post), method: :put, class: "btn btn-default" do
+                %span.glyphicon.glyphicon-thumbs-up
+                  = @post.get_upvotes.size
+
+
+              - if user_signed_in?
+                = link_to "Edit", edit_post_path, class: "btn btn-info"
+                = link_to "Delete", post_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"

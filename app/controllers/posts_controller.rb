@@ -1,33 +1,57 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :find_post, only: [:show, :edit, :update, :destroy, :upvote]
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def index
-    @post = Post.all
-  end
-
-  def create
-    @post = Post.new(permit_post)
-    if @post.save
-      flash[:success] = "Success!"
-      redirect_to post_path(@post)
-    else
-      flash[:error] = @post.errors.full_messages
-      redirect_to new_post_path
-    end
+    @posts = Post.all.order("created_at DESC")
   end
 
   def show
-    @post = Post.find(params[:id])
+  end
+
+  def create
+    @post = current_user.posts.build(permit_post)
+
+    if @post.save
+      redirect_to @post, notice: "Success!"
+    else
+      render 'new'
+    end
+  end
+
+  def edit
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to root_path
+  end
+
+  def update
+    if @post.update(permit_post)
+      redirect_to @post, notice: "Success!"
+    else
+      render 'edit'
+    end
+  end
+
+  def upvote
+    @post.upvote_by current_user
+    redirect_to :back
   end
 
   private
 
   def permit_post
-    params.require(:post).permit(:description, :image)
+    params.require(:post).permit(:title, :description, :image)
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
   end
 end
