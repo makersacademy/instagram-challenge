@@ -14,7 +14,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml', '~> 4.0.5'
 gem 'simple_form', '~> 3.1.0'
-gem 'masonry-rails', '~> 0.2.4'
+gem 'masonry-rails', '~> 0.2.1'
 gem 'acts_as_votable', '~> 0.10.0'
 
 group :development, :test do
