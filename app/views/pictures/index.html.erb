@@ -4,13 +4,13 @@
 <% end %>
 
 <% if @pictures.any? %>
+<section style="text-align: center">
   <% @pictures.each do |picture| %><br>
-
-    <span><h3><%= picture.user.username %></h3>
+    <p><h3><%= picture.user.username %></h3>
     <%= image_tag picture.image.url(:med) %>
-    <%= picture.description %></span><br>
+    <%= picture.description %></p><br>
     <% if picture.likes.any? %>
-      <%= pluralize picture.likes.count, 'Like' %>
+      <br><%= pluralize picture.likes.count, 'Like' %>
       <% picture.likes.each do |like| %>
         <% if current_user == like.user %>
           <% if like.user.has_liked? picture %>
@@ -30,12 +30,9 @@
       <% end %>
     <% end %>
 
-    <% if user_signed_in? %>
-      <span><%= link_to "Like", picture_likes_path(picture), method: :post %></span>
-      <span><%= link_to "Comment", new_picture_comment_path(picture) %></span>
-      <span><%= link_to "Delete", picture_path(picture), method: :delete %></span><br><br>
-    <% end %>
+
   <% end %>
 <% else %>
   No pictures yet
 <% end %>
+</section>
