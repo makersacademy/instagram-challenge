@@ -1,0 +1,38 @@
+<br>
+<% if user_signed_in? %>
+  <br><br><%= link_to "Upload a picture", new_picture_path %>
+<% end %>
+
+<% if @pictures.any? %>
+<section style="text-align: center">
+  <% @pictures.each do |picture| %><br>
+    <p><h3><%= picture.user.username %></h3>
+    <%= image_tag picture.image.url(:med) %>
+    <%= picture.description %></p><br>
+    <% if picture.likes.any? %>
+      <br><%= pluralize picture.likes.count, 'Like' %>
+      <% picture.likes.each do |like| %>
+        <% if current_user == like.user %>
+          <% if like.user.has_liked? picture %>
+            Liked
+          <% end %>
+        <% else %>
+         <span><%= link_to "Like", picture_likes_path(picture) %></span>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <% if picture.comments.any? %>
+      <% picture.comments.each do |comment| %>
+        <span><%= comment.user.username %>:  <%= comment.thoughts %>
+        </span>
+        <br>
+      <% end %>
+    <% end %>
+
+
+  <% end %>
+<% else %>
+  No pictures yet
+<% end %>
+</section>
