@@ -1,23 +1,65 @@
-Instagram Challenge
+Instagram Challenge (Instarails)
 ===================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This app was made during a weekend as my week 8 weekend challenge at Makers Academy. Check out the Heroku link for live deployment: 
 
-Task
------
+[Heroku](https://instarails-jonny.herokuapp.com)
 
-Build Instagram: Simple huh!
+### Screenshots
+<img width="1280" alt="instarails 1b" src="https://cloud.githubusercontent.com/assets/18581870/18626906/bdc91008-7e4f-11e6-8960-5f26f3b5b6f3.png">
 
-Bonus if you can write your own set of sensible user stories!
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+<img width="1280" alt="instarails 2b" src="https://cloud.githubusercontent.com/assets/18581870/18626916/ceb7bd24-7e4f-11e6-949e-3d3b20b11121.png">
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+### Implemented User Stories
 
-Bonus if you can add filters!
+```
+As a user
+So I can use Instrails
+I would like to be able to Sign up.
+```
+```
+As a user
+So I can use Instarails securely
+I would like to be able to Sign out or Sign in.
+```
+```
+As a user
+So I can share images with the world
+I would like to be able to post images to Instrails.
+```
+```
+As a user
+So I can see lots of interesting images
+I would like to see a "posts" page, showing posted images by all the users.
+```
+```
+As a user
+So I can examine a photo
+I would like to a link to a large version of each image.
+```
+```
+As a user
+So I can engage with other users about posts
+I would like to be able to comment on posts.
+```
+```
+As a user
+So I can keep my posts updated
+I would like to be able to edit and delete MY posts.
+```
+```
+As a user
+So I can remember all my posts
+I would like to have a profile page with a historical record of my posted images.
+```
+```
+As a user
+So I can show my love for a post
+I would like to be able to "love" posts.
+```
+
+### TO DO
+* Implement only one like per user per post.
+* Validation for image uploaded with post.
+* Posts arranged in reverse chronological order.

@@ -1,0 +1,30 @@
+<div class="center-button">
+  <%= button_to "Hompage", posts_path, :method => "get", :class => "btn btn-danger" %>
+</div>
+
+<div id="logged_in_as">
+  <% if !@user.posts.empty? %>
+    <h5><strong>Check out <%= @user.email %>'s posts!</h5></strong>
+  <% else %>
+    <h5><strong><span class="glyphicon glyphicon-thumbs-down"></span> <%= @user.email %> has not posted to Instarails yet </h5></strong>
+  <% end %>
+</div>
+
+<% if !@user.posts.empty? %>
+  <div class="postbox">
+    <% @user.posts.each do |post| %>
+      <h4 class="big-captions">"<%= post.caption %>". . .</h4>
+      <%= link_to image_tag(post.image.url(:medium), :class => "img-rounded"), post_path(post) %>
+      <br />
+      <%= hearts(post.likes.count) %>
+      <%= button_to "Love this post", post_likes_path(post), method: :post, :class => "btn btn-danger button" %>
+      <br />
+    <% end %>
+  </div>
+<% end %>
+
+<% if !@user.posts.empty? %>
+  <div class="center-button">
+    <%= button_to "Hompage", posts_path, :method => "get", :class => "btn btn-danger" %>
+  </div>
+<% end %>

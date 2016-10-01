@@ -1,0 +1,49 @@
+<% if user_signed_in? %>
+  <div id="logged_in_as">
+    <h5>  You are currently signed in as <%=current_user.email%></h5>
+  </div>
+  <div class="center-button">
+    <%= button_to "Add a post", new_post_path, :method => "get", :class => "btn btn-danger" %>
+  </div>
+<% end %>
+
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+  <div class="postbox">
+    <% if post.user == current_user %>
+      <%= link_to "Edit caption", edit_post_path(post) %>
+      <%= link_to "Delete post", post_path(post), method: :delete %>
+      <br />
+    <% end %>
+    Posted by <span class="user-email"><%= link_to post.user.email, user_path(post.user) %></span>
+    <br />
+    <%= hearts(post.likes.count) %>
+    <%= button_to "Love this post", post_likes_path(post), method: :post, :class => "btn btn-danger button" %>
+    <h4 class="big-captions">"<%= post.caption %>". . .</h4>
+    <%= link_to image_tag(post.image.url(:medium), :class => "img-rounded"), post_path(post)%>
+    <br />
+    <div class="comments-index">
+
+      <% post.comments.each do |comment| %>
+        <span class="user-email">
+          <%= link_to comment.user.email, user_path(comment.user) %>
+        </span>:
+        "<%= comment.thoughts %>"
+        <br />
+      <% end %>
+
+    </div>
+    <%= button_to "Add a comment", new_post_comment_path(post), :method => "get", :class => "btn btn-danger" %>
+    <br />
+  </div>
+  <% end %>
+
+<% else %>
+
+  <div id="errors" style="padding: 6px; width: 96%">
+    <span class="glyphicon glyphicon-thumbs-down"></span>
+    No posts yet.
+    <%= render "layouts/sign_in_to_add_post" %>
+  </div>
+
+<% end %>

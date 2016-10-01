@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/posts"><strong>Instarails</strong></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active">
+        <% if user_signed_in? %>
+        <li>
+          <%= link_to "Profile", user_path(current_user) %>
+        </li>
+        <li>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        </li>
+        <% else %>
+        <li>
+          <%= link_to "Sign in", user_session_path %>
+        </li>
+        <% end %>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+      <% else %>
+        <li>
+          <%= link_to "Sign up", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
