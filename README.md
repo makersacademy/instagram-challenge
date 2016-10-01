@@ -1,14 +1,9 @@
 Instagram Challenge (Instarails)
 ===================
 
-This app was my weekend challenge for week 8 at Makers Academy. Deployed version of the app coming soon...
+This app was made during a weekend as my week 8 weekend challenge at Makers Academy. Check out the Heroku link for live deployment: 
 
-### Instructions for use
-* Change into the "instagram_clone" directory
-* Run "bundle install" (Ruby version 2.3.1)
-* "rake db:create" to create a database.
-* "rails s" to run the server and check out Instarails.
-* "rspec" to run the tests.
+[Heroku](https://instarails-jonny.herokuapp.com)
 
 ### Screenshots
 <img width="1280" alt="instarails 1b" src="https://cloud.githubusercontent.com/assets/18581870/18626906/bdc91008-7e4f-11e6-8960-5f26f3b5b6f3.png">
