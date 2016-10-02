@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
+ruby '2.3.1'
+
 # my production gems
+gem 'rails_12factor', group: :production
+
 gem 'haml'
 gem 'simple_form'
 gem 'paperclip', '~> 5.0.0'
