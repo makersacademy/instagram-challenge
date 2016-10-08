@@ -1,22 +1,30 @@
 <div class="container">
   <h2>New post</h2>
 
-  <%= form_for(@post) do |r| %>
+  <%= form_for(@post, html: {multipart: true}) do |post| %>
     <div class="form-group row">
-      <label for="description" class="col-xs-2 col-form-label"><%= r.label :description %></label>
+      <label for="description" class="col-xs-2 col-form-label"><%= post.label :description %></label>
       <div class="col-xs-10" id="description">
-        <%= r.text_field(:description, class: "form-control", placeholder: "Add description here") %>
+        <%= post.text_field(:description, class: "form-control", placeholder: "Add description here") %>
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="location" class="col-xs-2 col-form-label"><%= r.label :location %></label>
+      <label for="location" class="col-xs-2 col-form-label"><%= post.label :location %></label>
       <div class="col-xs-10" id="location">
-        <%= r.text_field(:location, class: "form-control", placeholder: "Add location here") %>
+        <%= post.text_field(:location, class: "form-control", placeholder: "Add location here") %>
       </div>
     </div>
 
-    <%= r.submit "Post it", class: "btn btn-primary" %>
+    <div class="form-group row">
+      <label for="image" class="col-xs-2 col-form-label"><%= post.label :image %></label>
+      <div class="col-xs-10" id="image">
+        <%= post.file_field :image %>
+      </div>
+
+    </div>
+
+    <%= post.submit "Post it", class: "btn btn-primary" %>
     <%= link_to "Cancel", posts_path %>
   <% end %>
 </div>
