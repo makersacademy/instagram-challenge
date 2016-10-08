@@ -12,7 +12,8 @@ feature 'posts' do
 
   context 'posts have been added' do
     before do
-      Post.create(caption: 'Oh look, a cat!')
+      Post.create(caption: 'Oh look, a cat!',
+                  image: File.new(Rails.root + 'public/images/cat.jpg'))
     end
 
     scenario 'should display post' do
@@ -46,6 +47,18 @@ feature 'posts' do
       expect(page).to have_content 'Oh look, a cat!'
       expect(page).to have_css "img[src*='cat']"
       expect(current_path).to eq "/posts/#{post.id}"
+    end
+  end
+
+  context 'invalid posts' do
+
+    scenario 'users must add an image' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Caption', with: 'Oh look, a cat'
+      click_button 'Add'
+      expect(page).not_to have_content 'Oh look, a cat!'
+      expect(page).to have_content "Image can't be blank"
     end
   end
 

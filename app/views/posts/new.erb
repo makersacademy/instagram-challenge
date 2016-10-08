@@ -1,3 +1,9 @@
+<% if @post.errors.any? %>
+  <% @post.errors.full_messages.each do |msg| %>
+    <div><%= msg %></div>
+  <% end %>
+<% end %>
+
 <%= form_for @post, html: { multipart: true } do |f| %>
   <%= f.file_field :image %>
   <%= f.label :caption %>
