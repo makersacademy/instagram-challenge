@@ -55,6 +55,17 @@ feature 'posts' do
       end
     end
 
+    context 'deleting posts' do
+      let!(:cat){Post.create(image_file_name: 'cat.jpg', caption:'Awesome cat')}
+      scenario 'posts can be deleted from the edit page' do
+        visit '/posts'
+        click_link 'Awesome cat'
+        click_link 'Edit'
+        click_link 'Delete post'
+        expect(page).not_to have_content 'Awesome cat'
+      end
+    end
+
 
 
   end
