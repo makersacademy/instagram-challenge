@@ -14,6 +14,7 @@ feature 'posts' do
 
   context 'posts have been added' do
     scenario 'should display post' do
+      sign_up
       add_post('Oh look, a cat!', 'cat.jpg')
       expect(page).to have_content 'Oh look, a cat!'
       expect(page).not_to have_content 'No posts yet'
@@ -22,19 +23,27 @@ feature 'posts' do
 
   context 'creating posts' do
     scenario 'users can create posts through form' do
+      sign_up
       add_post('Oh look, a cat!', 'cat.jpg')
       expect(page).to have_content 'Oh look, a cat!'
       expect(page).to have_css "img[src*='cat']"
-      expect(current_path).to eq '/posts'
+      expect(current_path).to eq posts_path
     end
 
     scenario 'users must add an image' do
+      sign_up
       visit '/posts'
       click_link 'Add a post'
       fill_in 'Caption', with: 'Oh look, a cat'
       click_button 'Add'
       expect(page).not_to have_content 'Oh look, a cat!'
       expect(page).to have_content "Image can't be blank"
+    end
+
+    scenario 'cannot create post unless signed in' do
+      visit '/posts'
+      click_link 'Add a post'
+      expect(current_path).to eq new_user_session_path
     end
   end
 
@@ -53,16 +62,18 @@ feature 'posts' do
 
   context 'editing posts' do
     scenario 'users can edit a post' do
+      sign_up
       add_post('Oh look, a cat!', 'cat.jpg')
       edit_post('A different caption')
       expect(page).to have_content 'A different caption'
       expect(page).not_to have_content 'Oh look, a cat!'
-      expect(current_path).to eq "/posts"
+      expect(current_path).to eq posts_path
     end
   end
 
   context 'deleting posts' do
     scenario 'users can delete a post' do
+      sign_up
       add_post('Oh look, a cat!', 'cat.jpg')
       click_link 'Delete'
       expect(page).to have_content 'Post deleted successfully'
