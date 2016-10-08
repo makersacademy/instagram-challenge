@@ -22,7 +22,24 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
+Features:
+-----
+
+[ ] adding posts
+[x] displaying posts
+[ ] adding pictures
+[ ] displaying pictures
+[ ] adding comments
+[ ] displaying comments
+[ ] adding users
+[ ] log in
+[ ] Facebook log in
+[ ] features for logged in users
+[ ] bootstrap
+[ ] running, live project
+
 Ruby on Rails setup:
+-----
 
 - `mkdir` your_project_name
 - `cd` into the project
@@ -45,4 +62,42 @@ end
 ```
 - run `bin/rails generate rspec:install` to generate RSpec files
 - add `require 'capybara/rails'` to `spec/rails_helper.rb`
+- that's it! Good idea to commit your project now!
+
+Feature tests:
+-----
+
+- create `spec/features/` dir, add a file `posts_feature_spec.rb`:
+```require 'rails_helper'
+
+feature 'posts' do
+  context 'no posts' do
+    scenario 'should display a prompt to post' do
+      visit '/posts'
+      expect(page).to have_content 'No posts yet'
+      expect(page).to have_link 'Add a post'
+    end
+  end
+end
+```
 -
+
+Adding routes:
+-----
+- in `config/routes.rb` add `resources :posts`
+- `rake routes` in cmd will display current routes
+- `rails g controller posts` to generate a controller inside `app/controllers` and related view files
+- now in controller `posts_controller.rb` add to display a basic page::
+```def index
+
+end
+```
+- in `app/views/posts/index.html.erb`:
+```No posts yet
+```
+
+Creating a mode:
+-----
+- `rails g model post name:string content:string` (note singularity of 'post' - this is important!)
+- run `rake db:migrate` and `rake db:migrate RAILS_ENV=test` if needed
+- to remove a migration `rails d migration MigrationName`, then `rake db:drop db:create db:migrate` (+ test environment if required)
