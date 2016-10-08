@@ -21,7 +21,7 @@ feature 'posts' do
         click_link 'Upload a photo'
         attach_file('Upload', "spec/files/images/cat.jpg")
         click_button 'Create Post'
-        expect(page).to have_css("img[src*='cat.jpg']")
+        expect(page).to have_css("ims sg[src*='cat.jpg']")
       end
     end
   end

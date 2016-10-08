@@ -30,6 +30,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'paperclip'
+gem 'aws-sdk', '<2.0'
+
+group :production do
+  gem 'rails_12factor'
+end
+
 
 group :test do
   gem 'rspec-rails'
