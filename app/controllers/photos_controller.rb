@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 
+before_action :authenticate_user!
+
 before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -7,16 +9,18 @@ before_action :set_post, only: [:show, :edit, :update, :destroy]
   end
 
   def new
-    @photo = Photo.new
+    @photo = current_user.photos.build
   end
 
   def create
-    if @photo = Photo.create(photo_params)
-      flash[:success] = "Your post has been created!"
-      redirect_to photos_path
-    else
-      flash.now[:alert] = "Your new post couldn't be created! Please check the form."
-      render :new
+     @photo = current_user.photos.build(photo_params)
+
+      if @photo.save
+        flash[:success] = "Your post has been created!"
+        redirect_to photos_path
+      else
+        flash.now[:alert] = "Your new post couldn't be created! Please check the form."
+        render :new
   end
   end
 
