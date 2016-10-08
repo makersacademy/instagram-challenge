@@ -67,5 +67,15 @@ feature 'posts' do
     end
 
 
+    context 'a caption longer than 140 characters' do
+      scenario 'does not let you submit caption more than 140 chars' do
+        visit '/posts'
+        click_link 'Upload a photo'
+        fill_in 'post[caption]', with: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et mag.'
+        click_button 'Upload' 
+        expect(page).not_to have_content 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et mag.'
+      end
+    end
+
 
   end

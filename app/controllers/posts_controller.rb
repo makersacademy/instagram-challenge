@@ -9,8 +9,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
-    redirect_to '/posts'
+    @post = Post.new(post_params)
+      if @post.save
+        redirect_to '/posts'
+      else
+        render 'new'
+    end
   end
 
   def show

@@ -1,3 +1,14 @@
+<% if @post.errors.any? %>
+  <section id="errors">
+    <h3>Had some problems uploading:</h3>
+    <ul>
+      <% @post.errors.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
 <%= form_for @post, html: {multipart: true} do |f| %>
   <%= f.label 'Choose a photo' %>
   <%= f.file_field :image %>

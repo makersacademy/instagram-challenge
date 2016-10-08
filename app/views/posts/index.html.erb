@@ -1,22 +1,23 @@
-No posts yet
-
-<% @posts.each do |post| %>
-<ul>
-  <li>
-  <%= image_tag post.image.url(:thumb) %>
-  <%= link_to post.caption, post_path(post) %>
-  <br>
-    Comments:
-    <% post.comments.each do |c| %>
+<% if @posts.all.any? %>
+    <% @posts.each do |post| %>
     <ul>
-      <li><%= c.comments%></li>
+      <li>
+        <%= image_tag post.image.url(:thumb) %>
+        <%= link_to post.caption, post_path(post) %>
+        <br>
+        Comments:
+        <% post.comments.each do |c| %>
+        <ul>
+          <li><%= c.comments%></li>
+        </ul>
+        <% end %>
+        <br>
+        <%= link_to "Comment", new_post_comment_path(post) %>
+      </li>
     </ul>
     <% end %>
-    <br>
-  <%= link_to "Comment", new_post_comment_path(post) %>
-  </li>
-</ul>
-
+  <% else %>
+  <h3>No posts yet</h3>
 <% end %>
 
 <%= link_to "Upload a photo", new_post_path %>
