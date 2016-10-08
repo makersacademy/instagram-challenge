@@ -1,2 +1,22 @@
-<div> <%= @post.caption %> </div>
-<div> <%= image_tag @post.image.url(:medium) %> </div>
+<div class='posts-wrapper row'>
+  <div class='post'>
+    <div class='post-head'>
+      <div class="name">
+        Abigail McP
+      </div>
+    </div>
+    <div class='image center-block'>
+      <%= image_tag @post.image.url(:medium), class: "img-responsive" %>
+    </div>
+    <div class="caption">
+      <%= @post.caption %>
+    </div>
+    <div class="buttons">
+      <%= link_to 'Back', :back %>
+      |
+      <%= link_to 'Edit', edit_post_path(@post) %>
+      |
+      <%= link_to 'Delete', post_path(@post), method: :delete %>
+    </div>
+  </div>
+</div>

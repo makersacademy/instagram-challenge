@@ -4,9 +4,16 @@
   <% end %>
 <% end %>
 
-<%= form_for @post, html: { multipart: true } do |f| %>
-  <%= f.file_field :image %>
-  <%= f.label :caption %>
-  <%= f.text_field :caption %>
-  <%= f.submit "Add" %>
-<% end %>
+<div class='form-wrapper'>
+  <%= form_for @post, html: { class: 'form-horizontal', multipart: true } do |f| %>
+  <div class='form-group'>
+    <%= f.file_field :image %>
+  </div>
+  <div class='form-group text-center'>
+    <%= f.text_field :caption, placeholder: 'say something witty', class: 'textbox' %>
+  </div>
+  <div class='form-group text-center'>
+    <%= f.submit "Add", class: 'btn btn-link' %>
+  </div>
+  <% end %>
+</div>
