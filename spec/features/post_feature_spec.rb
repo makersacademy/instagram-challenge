@@ -27,8 +27,10 @@ feature 'posts' do
       visit '/posts'
       click_link 'Add a post'
       fill_in 'Caption', with: 'Oh look, a cat!'
+      page.attach_file('post_image', Rails.root + 'public/images/cat.jpg')
       click_button 'Add'
       expect(page).to have_content 'Oh look, a cat!'
+      expect(page).to have_css "img[src*='cat']"
       expect(current_path).to eq '/posts'
     end
   end
