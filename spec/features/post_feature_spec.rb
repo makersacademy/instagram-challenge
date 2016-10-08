@@ -37,12 +37,14 @@ feature 'posts' do
 
   context 'viewing posts' do
 
-    let!(:post){ Post.create(caption:'Oh look, a cat!')}
+    let!(:post){ Post.create(caption:'Oh look, a cat!',
+                 image: File.new(Rails.root + 'public/images/cat.jpg'))}
 
     scenario 'users can view an individual post' do
       visit '/posts'
       click_link 'Oh look, a cat'
       expect(page).to have_content 'Oh look, a cat!'
+      expect(page).to have_css "img[src*='cat']"
       expect(current_path).to eq "/posts/#{post.id}"
     end
   end
