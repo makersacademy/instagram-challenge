@@ -6836,3 +6836,172 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 33ms (Views: 30.5ms | ActiveRecord: 1.1ms)
 
 
+Started GET "/" for ::1 at 2016-10-08 17:59:37 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  Rendered posts/index.html.erb within layouts/application (52.2ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 293ms (Views: 265.8ms | ActiveRecord: 10.4ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-10-08 17:59:39 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"+XyZzJguH6M/qjtQ3zJKZoDp4WcQamat8XKA2CfHCbDlUxJoq94JGNBNe6o0Ji28vHYNHlkWq6z7nEEet1BaSQ=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 16ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2016-10-08 17:59:39 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  Rendered posts/index.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 42ms (Views: 39.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-10-08 17:59:40 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.4ms)
+  Rendered /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (24.6ms)
+Completed 200 OK in 72ms (Views: 69.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-10-08 17:59:42 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"17GLgm7mHcdPEbtNGWTejKSl0iBNtCAKTd/yn9Y+CByK3hdkYbKiMjdk1GvfJpysXfT+aqLcSXtsOkWbVUlLGg==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.6ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"17GLgm7mHcdPEbtNGWTejKSl0iBNtCAKTd/yn9Y+CByK3hdkYbKiMjdk1GvfJpysXfT+aqLcSXtsOkWbVUlLGg==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 189ms (Views: 46.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-10-08 17:59:46 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"N+D/GFTlQ8vTUoGF/h5m+I2xe2i/iBUpARqQu06+RiAkW9mPQPGQuevBoYwa0vO1lKo+UIYhgb6Th2fJzhnpWQ==", "user"=>{"email"=>"tes1t@t.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "tes1t@t.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.4ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"N+D/GFTlQ8vTUoGF/h5m+I2xe2i/iBUpARqQu06+RiAkW9mPQPGQuevBoYwa0vO1lKo+UIYhgb6Th2fJzhnpWQ==", "user"=>{"email"=>"tes1t@t.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/devise-4.2.0/app/views/devise/shared/_links.html.erb (1.8ms)
+  Rendered /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/devise-4.2.0/app/views/devise/sessions/new.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 184ms (Views: 46.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2016-10-08 17:59:51 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OgNL6C9bFlY5O2Xws8XzdCDzZSGocVbAtwV1oT4S4QspuG1/O0/FJAGoRflXCWY5OeggGZHYwlclmILTvrVOcg==", "user"=>{"email"=>"test1@t.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test1@t.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", 2016-10-08 16:59:51 UTC], ["sign_in_count", 2], ["updated_at", 2016-10-08 16:59:51 UTC], ["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 158ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2016-10-08 17:59:51 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  Rendered posts/index.html.erb within layouts/application (8.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 33ms (Views: 29.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/posts/new" for ::1 at 2016-10-08 17:59:54 +0100
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (5.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 36ms (Views: 33.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/posts" for ::1 at 2016-10-08 18:00:11 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"L4K7ZWkA22e+baqbaYvpOm/VlqZ1h5kPPb7ZImMHCKGrb7pXOhYw9KKZo6QFjngo7NsgvkL+nMnG2Ql0y92Zpw==", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007ffee0ef1000 @tempfile=#<Tempfile:/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/RackMultipart20161008-12358-1voav3d.jpg>, @original_filename="13714192_622049647959033_1011112920_n.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"13714192_622049647959033_1011112920_n.jpg\"\r\nContent-Type: image/jpeg\r\n">, "caption"=>"Swiss train"}, "commit"=>"Upload"}
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/d880704e8dcf7071dbb414b55febe03220161008-12358-ifdv81.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/d880704e8dcf7071dbb414b55febe03220161008-12358-ifdv81.jpg[0]'
+Command :: convert '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/d880704e8dcf7071dbb414b55febe03220161008-12358-ifdv81.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/7a7554fff2ac607ee2ba372b705a9d7620161008-12358-1h1ck2t'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/d880704e8dcf7071dbb414b55febe03220161008-12358-ifdv81.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/d880704e8dcf7071dbb414b55febe03220161008-12358-ifdv81.jpg[0]'
+Command :: convert '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/d880704e8dcf7071dbb414b55febe03220161008-12358-ifdv81.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/7a7554fff2ac607ee2ba372b705a9d7620161008-12358-6zq2g3'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/d880704e8dcf7071dbb414b55febe03220161008-12358-23aj6.jpg'
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "caption") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", 2016-10-08 17:00:12 UTC], ["updated_at", 2016-10-08 17:00:12 UTC], ["image_file_name", "13714192_622049647959033_1011112920_n.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 104402], ["image_updated_at", 2016-10-08 17:00:11 UTC], ["caption", "Swiss train"]]
+[paperclip] saving /posts/images/000/000/004/original/13714192_622049647959033_1011112920_n.jpg
+[AWS S3 200 2.055833 0 retries] put_object(:acl=>:public_read,:bucket_name=>"instagram-challenge-dev-makers",:content_length=>104402,:content_type=>"image/jpeg",:data=>Paperclip::UploadedFileAdapter: 13714192_622049647959033_1011112920_n.jpg,:key=>"posts/images/000/000/004/original/13714192_622049647959033_1011112920_n.jpg")  
+
+[paperclip] saving /posts/images/000/000/004/medium/13714192_622049647959033_1011112920_n.jpg
+[AWS S3 200 0.334259 0 retries] put_object(:acl=>:public_read,:bucket_name=>"instagram-challenge-dev-makers",:content_length=>13461,:content_type=>"image/jpeg",:data=>Paperclip::FileAdapter: 7a7554fff2ac607ee2ba372b705a9d7620161008-12358-1h1ck2t,:key=>"posts/images/000/000/004/medium/13714192_622049647959033_1011112920_n.jpg")  
+
+[paperclip] saving /posts/images/000/000/004/thumb/13714192_622049647959033_1011112920_n.jpg
+[AWS S3 200 0.398744 0 retries] put_object(:acl=>:public_read,:bucket_name=>"instagram-challenge-dev-makers",:content_length=>2721,:content_type=>"image/jpeg",:data=>Paperclip::FileAdapter: 7a7554fff2ac607ee2ba372b705a9d7620161008-12358-6zq2g3,:key=>"posts/images/000/000/004/thumb/13714192_622049647959033_1011112920_n.jpg")  
+
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 3219ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/posts" for ::1 at 2016-10-08 18:00:14 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/index.html.erb within layouts/application (11.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 40ms (Views: 35.6ms | ActiveRecord: 1.5ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-10-08 18:00:17 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"05xW22pIFFtHVyvkKe9WP8KvCNkKQoYcSjZhHdVIa70uPmOBbzTtZEqxYMx6lURN/LwWYXjB9PwQFDAQ5K8jQg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2016-10-08 18:00:17 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/index.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 38ms (Views: 35.0ms | ActiveRecord: 1.0ms)
+
+
