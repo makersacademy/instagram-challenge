@@ -68,6 +68,25 @@ feature "posts" do
       end
     end
 
+    context "show post" do
+
+      let!(:post1){ Post.create(description: "visit Budapest", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg") }
+
+      before do
+        sign_in
+        visit "/posts"
+      end
+
+      scenario "user can see the post on a separate page" do
+        click_link "visit Budapest"
+        expect(current_path).to eq "/posts/#{post1.id}"
+        expect(page).to have_css("div#yield", text: "visit Budapest")
+        expect(page).to have_css("div#yield", text: "Parliament in Budapest, Hungary")
+        expect(page).to have_css("img[src*='photo_01']")
+      end
+
+    end
+
     context "edit post" do
 
     end
