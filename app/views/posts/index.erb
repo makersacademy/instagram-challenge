@@ -1,14 +1,27 @@
 <% if @posts.any? %>
-  <% @posts.reverse.each do |post| %>
-    <div> <%= link_to post_path(post) do %>
-      <%= image_tag post.image.url(:thumb), class: "image" %>
-      <% end %>
-    </div>
-    <div> <%= post.caption %> </div>
-    <div> <%= link_to 'Edit', edit_post_path(post) %> </div>
-    <div> <%= link_to 'Delete', post_path(post), method: :delete %> </div>
-    <br>
-  <% end %>
+  <div class='posts-wrapper row'>
+    <% @posts.reverse.each do |post| %>
+      <div class='post'>
+        <div class='post-head'>
+          <div class="name">
+            Abigail McP
+          </div>
+        </div>
+        <div class='image center-block'>
+          <%= link_to post_path(post) do %>
+            <%= image_tag post.image.url(:medium), class: "img-responsive" %>
+          <% end %>
+          <div class="caption">
+            <%= post.caption %>
+          </div>
+          <div class="buttons">
+            <%= link_to 'Edit', edit_post_path(post) %>
+            <%= link_to 'Delete', post_path(post), method: :delete %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% else %>
   <p> No posts yet </p>
 <% end %>
