@@ -4,7 +4,7 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col-xs-6">
-            <%= "Posted on: #{@post.created_at.strftime('%d/%m/%Y')} (by TBD)" %>
+            <%= "Posted on: #{@post.created_at.strftime('%d/%m/%y')} (by TBD)" %>
           </div>
           <div class="col-xs-6 text-right">
             Location: <%= @post.location%>
@@ -20,20 +20,26 @@
         </div>
       </div>
     </div>
-    <div>
-      <p><%= link_to "Edit post", edit_post_path(@post) %></p>
+    <div class="row text-center">
+      <div class="col-xs-4 v_top">
+        Like(5)
+      </div>
+      <div class="col-xs-4">
+        <%= link_to "add comment", new_post_comment_path(@post) %>
+      </div>
+      <div class="col-xs-4">
+        <%= link_to "Edit post", edit_post_path(@post) %>
+      </div>
     </div>
     <div class="panel panel-info">
       <div class="panel-body">
         <div class="row">
-          <div class="col-xs-10">
+          <div class="col-xs-12">
             <% @comments.each do |comment| %>
-
-            <p><strong>User ID </strong>(<%= comment.created_at.strftime('%d/%m/%Y') %>): <%= comment.comment %></p>
+              <div class="">
+                <%= link_to "User ID (#{comment.created_at.strftime('%d/%m/%y')}): #{comment.comment}", post_comment_path(@post, comment), id: "#{comment.id}" %>
+              </div>
             <% end %>
-          </div>
-          <div class="col-xs-2 vtop">
-            <%= link_to "add comment", new_post_comment_path(@post) %>
           </div>
         </div>
       </div>

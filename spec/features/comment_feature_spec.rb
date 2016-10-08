@@ -4,6 +4,7 @@ feature "comments" do
 
   let!(:user1){ User.create(email: "test@test.com", password: "123456") }
   let!(:post1){ Post.create(description: "visit", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg") }
+  let!(:comment1){ Comment.create(comment: "good pic", post_id: post1.id) }
 
   context "logged in" do
 
@@ -24,10 +25,35 @@ feature "comments" do
 
       end
 
-      scenario "user can add more than 1 comments to a post"
+      scenario "user can add more than 1 comments to a post" do
+        visit_post_and_add_comment(post: post1)
+        visit_post_and_add_comment(comment: "my favourite pic", post: post1)
+
+        expect(page).to have_css("div#yield", text: "nice photo, like it")
+        expect(page).to have_css("div#yield", text: "my favourite pic")
+      end
+    end
+
+    context "show comment" do
+
+      scenario "user clicks on a comment and the entire content become visible" do
+        visit_post(post1)
+        # visit "/posts/#{post1.id}/comments/#{comment1.id}"
+        click_link("#{comment1.id}")
+
+        expect(page).to have_css("div#yield", text: "good pic")
+
+        expect(find_link('Edit comment').visible?).to eq true
+        expect(find_link('Delete comment').visible?).to eq true
+      end
+
     end
 
     context "edit comment" do
+
+      scenario "users can edit their own comment" do
+        visit "/posts/#{post1.id}/comments/#{comment1.id}"
+      end
 
     end
 

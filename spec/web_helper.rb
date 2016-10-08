@@ -22,6 +22,6 @@ def visit_post_and_add_comment(comment: "nice photo, like it", post: )
 end
 
 def add_comment(comment: "nice photo, like it", post: )
-  fill_in('Comment', with: comment)
+  fill_in('comment_field', with: comment)
   click_button "Add comment"
 end
