@@ -7005,3 +7005,203 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 38ms (Views: 35.0ms | ActiveRecord: 1.0ms)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8350704865120313745);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddOmniauthToUsers (20161008231432)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (24.2ms)[0m  [1m[35mALTER TABLE "users" ADD "provider" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "uid" character varying[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161008231432"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8350704865120313745)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'comments'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'posts'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started GET "/" for ::1 at 2016-10-09 00:34:21 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/index.html.erb within layouts/application (49.2ms)
+Completed 200 OK in 269ms (Views: 244.5ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-10-09 00:34:24 +0100
+Started GET "/users/auth/facebook" for ::1 at 2016-10-09 00:34:24 +0100
+Started GET "/" for ::1 at 2016-10-09 00:35:22 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 39ms (Views: 35.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-10-09 00:35:23 +0100
+Started GET "/users/auth/facebook" for ::1 at 2016-10-09 00:35:24 +0100
+Started GET "/" for ::1 at 2016-10-09 00:40:30 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/index.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 38ms (Views: 34.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-10-09 00:40:32 +0100
+Started GET "/users/auth/facebook" for ::1 at 2016-10-09 00:40:32 +0100
+Started GET "/" for ::1 at 2016-10-09 00:41:39 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/index.html.erb within layouts/application (48.9ms)
+Completed 200 OK in 271ms (Views: 247.2ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-10-09 00:41:41 +0100
+Started GET "/users/auth/facebook" for ::1 at 2016-10-09 00:41:41 +0100
+Started GET "/users/auth/facebook/callback?code=AQDqTMugAN3wn7sV7t4PgLj5aTdRRg7OzGUjBSXS4i8Q50jeBQ9fK9T1hoMsyn-a5YtWSAK96BpUKt2L7ZTdVeW9grO4oTLEDF5CSyE9yQmDZjkf6GFPPBAzmmmB8_2DW2wjSH2yjeNxEqy4wav9GVqGiUZxAeH6u3q_0-3e8oANgcbNkUytNUNpGgFGpJ65taQO_fz89cXYfxXMGNXjqu-h6k2iNjMgIXrl6HmKw2ISh0p0lDhWsiXIFycbCDmGuGXi1nQPzVnL5d6EMd-cLh--DGU2ydmk6zapWbxUEiS4UI7LrNVcYFiDH8-E7FIVDjEXn9duN2ZAKjGajt2kK9Na&state=94f6372db9daa536d9a759a920418be4f50c3ab0a2471314" for ::1 at 2016-10-09 00:41:47 +0100
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQDqTMugAN3wn7sV7t4PgLj5aTdRRg7OzGUjBSXS4i8Q50jeBQ9fK9T1hoMsyn-a5YtWSAK96BpUKt2L7ZTdVeW9grO4oTLEDF5CSyE9yQmDZjkf6GFPPBAzmmmB8_2DW2wjSH2yjeNxEqy4wav9GVqGiUZxAeH6u3q_0-3e8oANgcbNkUytNUNpGgFGpJ65taQO_fz89cXYfxXMGNXjqu-h6k2iNjMgIXrl6HmKw2ISh0p0lDhWsiXIFycbCDmGuGXi1nQPzVnL5d6EMd-cLh--DGU2ydmk6zapWbxUEiS4UI7LrNVcYFiDH8-E7FIVDjEXn9duN2ZAKjGajt2kK9Na", "state"=>"94f6372db9daa536d9a759a920418be4f50c3ab0a2471314"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "facebook"], ["uid", "113410282460310"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 171ms (ActiveRecord: 3.2ms)
+
+
+  
+NoMethodError (undefined method `name=' for #<User:0x007fb2c972e1a0>):
+  
+app/models/user.rb:12:in `block in from_omniauth'
+app/models/user.rb:9:in `from_omniauth'
+app/controllers/users/omniauth_callbacks_controller.rb:4:in `facebook'
+  Rendering /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.4ms)
+  Rendering /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (73.9ms)
+Started GET "/" for ::1 at 2016-10-09 00:42:57 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/index.html.erb within layouts/application (45.5ms)
+Completed 200 OK in 262ms (Views: 239.3ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/users/auth/facebook" for ::1 at 2016-10-09 00:42:59 +0100
+Started GET "/users/auth/facebook" for ::1 at 2016-10-09 00:42:59 +0100
+Started GET "/users/auth/facebook/callback?code=AQBVSa1ewiCGw0BskxXhq-2Z7olD57xMvFwHNgsmN_Pu61rcTgiJ-72TEqRJu0gmWqsvJ8nwjhnN-EMuNG9O8R45HnAktLHKwBVssUB7wA0m5L8LZLhnBE1z8HKOqxfUDjAM4gRE15ufsxdQod_FCNfRAp8YaREw0nCo0KgwFiqzilAQ9OONHDKo3LDZYIQTIK91qbVGqDEuEmETCdGUGtkZk_McjIyZRfNV69IFlhJkjgPWaka_EG2qmtfaJmGbOX2fOPZ4l5alZwVifvA3OZ0Uzy_oqa8wHdpm0otF1WNd58TkJT5_nZ_YTfjmJqXYwZa76zlyZ3Vpe-I6d6RB73mo&state=18a44a25546adc767c2116eb58f7901377a2e024d97e4f4e" for ::1 at 2016-10-09 00:42:59 +0100
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQBVSa1ewiCGw0BskxXhq-2Z7olD57xMvFwHNgsmN_Pu61rcTgiJ-72TEqRJu0gmWqsvJ8nwjhnN-EMuNG9O8R45HnAktLHKwBVssUB7wA0m5L8LZLhnBE1z8HKOqxfUDjAM4gRE15ufsxdQod_FCNfRAp8YaREw0nCo0KgwFiqzilAQ9OONHDKo3LDZYIQTIK91qbVGqDEuEmETCdGUGtkZk_McjIyZRfNV69IFlhJkjgPWaka_EG2qmtfaJmGbOX2fOPZ4l5alZwVifvA3OZ0Uzy_oqa8wHdpm0otF1WNd58TkJT5_nZ_YTfjmJqXYwZa76zlyZ3Vpe-I6d6RB73mo", "state"=>"18a44a25546adc767c2116eb58f7901377a2e024d97e4f4e"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "facebook"], ["uid", "113410282460310"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "murtzdev@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "murtzdev@gmail.com"], ["encrypted_password", "$2a$11$7/R/fycm3Uio.6RNFoBoc.jr5qTSJgUWZq99FkM.gLN9iVUtyhW9m"], ["created_at", 2016-10-08 23:43:00 UTC], ["updated_at", 2016-10-08 23:43:00 UTC], ["provider", "facebook"], ["uid", "113410282460310"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-10-08 23:43:00 UTC], ["last_sign_in_at", 2016-10-08 23:43:00 UTC], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["updated_at", 2016-10-08 23:43:00 UTC], ["id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 193ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/" for ::1 at 2016-10-09 00:43:00 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/index.html.erb within layouts/application (12.6ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 44ms (Views: 40.3ms | ActiveRecord: 1.9ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2016-10-09 00:43:04 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"2NL+tRKGRuU76Vt7IYffmxyKdIrBBtPsjq00I0NlEv6UjJbIijHpIow4cjbuyJ7G+VwxWfhT7eKx4m58ItBc2g=="}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2016-10-09 00:43:04 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 4]]
+  Rendered posts/index.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 50ms (Views: 46.0ms | ActiveRecord: 2.3ms)
+
+
