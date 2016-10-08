@@ -5,6 +5,15 @@ No posts yet
   <li>
   <%= image_tag post.image.url(:thumb) %>
   <%= link_to post.caption, post_path(post) %>
+  <br>
+    Comments:
+    <% post.comments.each do |c| %>
+    <ul>
+      <li><%= c.comments%></li>
+    </ul>
+    <% end %>
+    <br>
+  <%= link_to "Comment", new_post_comment_path(post) %>
   </li>
 </ul>
 
