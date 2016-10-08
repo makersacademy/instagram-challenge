@@ -44,7 +44,7 @@ feature 'posts' do
 
     scenario 'users can view an individual post' do
       visit '/posts'
-      click_link 'Oh look, a cat'
+      first("a[href='/posts/#{post.id}']").click
       expect(page).to have_content 'Oh look, a cat!'
       expect(page).to have_css "img[src*='cat']"
       expect(current_path).to eq "/posts/#{post.id}"

@@ -28,5 +28,9 @@ feature 'User can sign in and out' do
     scenario 'should see a link to sign out' do
       expect(page).to have_link 'Sign out'
     end
+
+    scenario 'should see who is signed in' do
+      expect(page).to have_content 'Signed in as: abi@abi.com'
+    end
   end
 end

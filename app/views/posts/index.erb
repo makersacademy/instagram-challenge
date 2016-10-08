@@ -1,9 +1,13 @@
 <% if @posts.any? %>
   <% @posts.reverse.each do |post| %>
-    <div> <%= link_to post.caption, post_path(post) %> </div>
-    <div> <%= image_tag post.image.url(:thumb) %> </div>
+    <div> <%= link_to post_path(post) do %>
+      <%= image_tag post.image.url(:thumb), class: "image" %>
+      <% end %>
+    </div>
+    <div> <%= post.caption %> </div>
     <div> <%= link_to 'Edit', edit_post_path(post) %> </div>
     <div> <%= link_to 'Delete', post_path(post), method: :delete %> </div>
+    <br>
   <% end %>
 <% else %>
   <p> No posts yet </p>
