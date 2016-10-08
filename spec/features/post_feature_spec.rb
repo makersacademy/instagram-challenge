@@ -29,21 +29,43 @@ feature "posts" do
         expect(page).not_to have_css("div#yield", text: "New post")
       end
 
-      scenario "user can add post if logged in" do
-        sign_in
-        visit "/posts"
-        click_link("New post")
-        expect(current_path).to eq "/posts/new"
+      context "logged in" do
 
-        fill_in("Description", with: "it was a nice weekend")
-        fill_in("Location", with: "Parliament in Budapest, Hungary")
-        click_button("Post it")
+        before do
+          sign_in
+          visit "/posts"
+          click_link("New post")
+        end
 
-        expect(page).to have_content("it was a nice weekend")
-        expect(page).to have_content("Parliament in Budapest, Hungary")
+        scenario "user can add post if logged in" do
+          expect(current_path).to eq "/posts/new"
+
+          fill_in("Description", with: "it was a nice weekend")
+          fill_in("Location", with: "Parliament in Budapest, Hungary")
+          attach_file("Image", "spec/assets/photo_01.jpg")
+          click_button("Post it")
+
+          expect(page).to have_content("it was a nice weekend")
+          expect(page).to have_content("Parliament in Budapest, Hungary")
+          expect(page).to have_css("img[src*='photo_01']")
+        end
+
+        scenario "user cannot add post w/o description" do
+          fill_in("Location", with: "Parliament in Budapest, Hungary")
+          attach_file("Image", "spec/assets/photo_01.jpg")
+          click_button("Post it")
+
+          expect(page).to have_css("section#errors", text: "Description can't be blank")
+        end
+
+        scenario "user cannot add post w/o an image" do
+          fill_in("Description", with: "it was a nice weekend")
+          fill_in("Location", with: "Parliament in Budapest, Hungary")
+          click_button("Post it")
+
+          expect(page).to have_css("section#errors", text: "Image can't be blank")
+        end
       end
-
-
     end
 
     context "edit post" do
