@@ -37,7 +37,6 @@ feature 'posts' do
   end
 
   context 'viewing posts' do
-
     let!(:post){ Post.create(caption:'Oh look, a cat!',
                  image: File.new(Rails.root + 'public/images/cat.jpg'))}
 
@@ -59,6 +58,23 @@ feature 'posts' do
       click_button 'Add'
       expect(page).not_to have_content 'Oh look, a cat!'
       expect(page).to have_content "Image can't be blank"
+    end
+  end
+
+  context 'editing posts' do
+    before do
+      Post.create(caption: 'Oh look, a cat!',
+                  image: File.new(Rails.root + 'public/images/cat.jpg'))
+    end
+
+    scenario 'users can edit a post' do
+      visit '/posts'
+      click_link 'Edit'
+      fill_in 'Caption', with: 'A different caption'
+      click_button 'Update'
+      expect(page).to have_content 'A different caption'
+      expect(page).not_to have_content 'Oh look, a cat!'
+      expect(current_path).to eq "/posts"
     end
   end
 
