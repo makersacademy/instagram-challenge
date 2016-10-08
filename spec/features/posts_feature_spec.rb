@@ -24,4 +24,15 @@ feature 'posts' do
         expect(page).to have_css("ims sg[src*='cat.jpg']")
       end
     end
+
+    context 'viewing posts' do
+      let!(:cat){Post.create(image_file_name: 'cat.jpg')}
+      scenario 'Clicking full shows the post' do
+        visit '/posts'
+        click_link 'full'
+        expect(current_path).to eq "/posts/#{cat.id}"
+        expect(page).to have_content 'cat.jpg'
+      end
+
+    end
   end
