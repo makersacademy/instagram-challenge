@@ -1,4 +1,4 @@
-# Instgram Weekend Challenge
+# Instagram Weekend Challenge
 
 The weekend challenge of week 8 at Makers Academy is to build Instagram using Rails.
 
