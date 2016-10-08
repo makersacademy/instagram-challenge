@@ -78,4 +78,19 @@ feature 'posts' do
     end
   end
 
+  context 'deleting posts' do
+    before do
+      Post.create(caption: 'Oh look, a cat!',
+                  image: File.new(Rails.root + 'public/images/cat.jpg'))
+    end
+
+    scenario 'users can delete a post' do
+      visit '/posts'
+      click_link 'Delete'
+      expect(page).to have_content 'Post deleted successfully'
+      expect(page).not_to have_content 'Oh look, a cat!'
+    end
+  end
+
+
 end
