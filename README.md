@@ -21,3 +21,28 @@ As usual please start by forking this repo. After cloning your fork and cd'ing i
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
 Bonus if you can add filters!
+
+Ruby on Rails setup:
+
+- `mkdir` your_project_name
+- `cd` into the project
+- proceed with the step only if you want to use specific/older version of Rails:
+`touch` Gemfile and add the following content (for the newest 4 version):
+```source 'https://rubygems.org'
+gem 'rails', '~> 4'
+```
+then run `bundle` and `rails --version` should output your desired version in my case:
+> Rails 4.2.7.1
+
+- now run `rails new . -d postgresql -T`, where `.` will use current directory, `-d` specify database to postgresql and `-T` disable Rails default testing framework. Running `rails` in terminal will provide all possible options, in case of any conflicts with existing files (like a Gemfile from the previous step) just overwrite them
+- `rails s` should run your server now (default `http://localhost:3000` in your browser)
+- `rake db:create` will set up database for you (additional `bin/rake db:create RAILS_ENV=test` may be required to create a separate one for testing, depending on your system)
+- to use RSpec and Capybara for your test the following content needs to be added into Gemfile (+ `bundle`):
+```group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+end
+```
+- run `bin/rails generate rspec:install` to generate RSpec files
+- add `require 'capybara/rails'` to `spec/rails_helper.rb`
+-
