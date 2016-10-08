@@ -4,19 +4,39 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col-xs-6">
-            <strong><%= @post.description  %></strong>
+            <%= "Posted on: #{@post.created_at.strftime('%d/%m/%Y')} (by TBD)" %>
           </div>
           <div class="col-xs-6 text-right">
             Location: <%= @post.location%>
           </div>
         </div>
       </div>
-      <div class="panel-body text-center">
-        <%= image_tag @post.image.url(:medium)%>
+      <div class="panel-body">
+        <div class="row text-center">
+          <%= image_tag @post.image.url(:medium)%>
+          <figcaption>
+            <%= @post.description%>
+          </figcaption>
+        </div>
       </div>
     </div>
     <div>
       <p><%= link_to "Edit post", edit_post_path(@post) %></p>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-10">
+            <% @comments.each do |comment| %>
+
+            <p><strong>User ID </strong>(<%= comment.created_at.strftime('%d/%m/%Y') %>): <%= comment.comment %></p>
+            <% end %>
+          </div>
+          <div class="col-xs-2 vtop">
+            <%= link_to "add comment", new_post_comment_path(@post) %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

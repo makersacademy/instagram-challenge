@@ -14,10 +14,6 @@ feature "posts" do
 
   context "manage posts" do
 
-    before do
-
-    end
-
     context "add post" do
 
       scenario "user cannot add a post if not logged in" do

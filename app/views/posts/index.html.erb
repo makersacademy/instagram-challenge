@@ -8,18 +8,22 @@
       <div class="panel-heading">
         <div class="row">
           <div class="col-xs-6">
-            <strong><%= link_to "#{index + 1}.: #{post.description}", post_path(post)%></strong>
+            <%= "Posted on: #{post.created_at.strftime('%d/%m/%Y')} (by TBD)" %>
           </div>
           <div class="col-xs-6 text-right">
             Location: <%= post.location%>
           </div>
         </div>
       </div>
-      <div class="panel-body text-center">
-        <%= image_tag post.image.url(:medium) %>
+      <div class="panel-body">
+        <div class="row text-center">
+          <%= image_tag post.image.url(:medium)%>
+          <figcaption>
+            <%= link_to post.description, post_path(post)%>
+          </figcaption>
+        </div>
       </div>
     </div>
-
   <% end %>
 
   <% else %>
