@@ -1,1 +1,22 @@
-<h1>Posts</h1>
+<div class="container">
+  <h2>Posts</h2>
+
+  <% if @posts.any? %>
+
+  <% @posts.each.with_index do |post, index| %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <strong><%= link_to "#{index + 1}.: #{post.name}", post_path(post)%></strong>
+      </div>
+      <div class="panel-body">
+        <p>Location: <%= post.location%></p>
+        Image:
+      </div>
+    </div>
+
+  <% end %>
+
+  <% else %>
+    No post found
+  <% end %>
+</div>
