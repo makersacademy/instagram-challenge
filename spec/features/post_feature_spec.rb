@@ -22,4 +22,15 @@ feature 'posts' do
     end
   end
 
+  context 'creating posts' do
+    scenario 'users can create posts through form' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Caption', with: 'Oh look, a cat!'
+      click_button 'Add'
+      expect(page).to have_content 'Oh look, a cat!'
+      expect(current_path).to eq '/posts'
+    end
+  end
+
 end
