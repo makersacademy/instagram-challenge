@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <h2>Edit post</h2>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-6">
+              <strong><%= @post.description  %></strong>
+            </div>
+            <div class="col-xs-6 text-right">
+              Location: <%= @post.location%>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+          <%= form_for(@post) do |post| %>
+            <div class="form-group row">
+              <label for="description" class="col-xs-2 col-form-label"><%= post.label :description %></label>
+              <div class="col-xs-10" id="description">
+                <%= post.text_field(:description, class: "form-control") %>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="location" class="col-xs-2 col-form-label"><%= post.label :location %></label>
+              <div class="col-xs-10" id="location">
+                <%= post.text_field(:location, class: "form-control") %>
+              </div>
+            </div>
+
+            <div class="form-group row text-center">
+              <%= image_tag @post.image.url(:thumb)%>
+            </div>
+
+            <%= post.submit "Update", class: "btn btn-primary" %>
+            <%= link_to "Cancel", post_path(@post) %>
+          <% end %>          
+        </div>
+      </div>
+
+
+
+
+
+  </div>
+</div>

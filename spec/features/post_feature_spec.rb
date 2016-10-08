@@ -40,12 +40,12 @@ feature "posts" do
         scenario "user can add post if logged in" do
           expect(current_path).to eq "/posts/new"
 
-          fill_in("Description", with: "it was a nice weekend")
+          fill_in("Description", with: "visit Budapest")
           fill_in("Location", with: "Parliament in Budapest, Hungary")
           attach_file("Image", "spec/assets/photo_01.jpg")
           click_button("Post it")
 
-          expect(page).to have_content("it was a nice weekend")
+          expect(page).to have_content("visit Budapest")
           expect(page).to have_content("Parliament in Budapest, Hungary")
           expect(page).to have_css("img[src*='photo_01']")
         end
@@ -59,7 +59,7 @@ feature "posts" do
         end
 
         scenario "user cannot add post w/o an image" do
-          fill_in("Description", with: "it was a nice weekend")
+          fill_in("Description", with: "visit Budapest")
           fill_in("Location", with: "Parliament in Budapest, Hungary")
           click_button("Post it")
 
@@ -70,7 +70,7 @@ feature "posts" do
 
     context "show post" do
 
-      let!(:post1){ Post.create(description: "visit Budapest", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg") }
+      let!(:post1){ Post.create(description: "visit", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg") }
 
       before do
         sign_in
@@ -78,9 +78,9 @@ feature "posts" do
       end
 
       scenario "user can see the post on a separate page" do
-        click_link "visit Budapest"
+        click_link "visit"
         expect(current_path).to eq "/posts/#{post1.id}"
-        expect(page).to have_css("div#yield", text: "visit Budapest")
+        expect(page).to have_css("div#yield", text: "visit")
         expect(page).to have_css("div#yield", text: "Parliament in Budapest, Hungary")
         expect(page).to have_css("img[src*='photo_01']")
       end
@@ -88,10 +88,24 @@ feature "posts" do
     end
 
     context "edit post" do
+      let!(:post1){ Post.create(description: "visit", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg") }
 
-    end
+      before do
+        sign_in
+        visit "/posts"
+      end
 
-    context "delete post" do
+      scenario "user can edit a post" do
+        click_link "visit"
+        click_link "Edit post"
+        expect(current_path).to eq "/posts/#{post1.id}/edit"
+
+        fill_in("Description", with: "weekend visit")
+        click_button("Update")
+
+      end
+
+
 
     end
 
