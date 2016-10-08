@@ -70,6 +70,4 @@ feature 'posts' do
       expect(page).not_to have_css "img[src*='cat']"
     end
   end
-
-
 end
