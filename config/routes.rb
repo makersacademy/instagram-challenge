@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :photo
   resources :photo do
     resources :comment, only: [:index, :new, :create, :destroy]
