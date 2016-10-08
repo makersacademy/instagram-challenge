@@ -12,9 +12,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      flash[:success] = "Post created!"
       redirect_to posts_path
     else
-      render 'new'
+      flash[:error] = "Post unsuccessful"
+      render :new
     end
   end
 
@@ -29,13 +31,14 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
+    flash[:success] = "Post updated!"
     redirect_to posts_path
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    flash[:notice] = 'Post deleted successfully'
+    flash[:notice] = 'Post deleted!'
     redirect_to posts_path
   end
 
