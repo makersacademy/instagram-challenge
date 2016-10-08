@@ -3900,3 +3900,239 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 27ms (Views: 24.3ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/posts" for ::1 at 2016-10-08 14:56:45 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (21.9ms)
+Completed 200 OK in 217ms (Views: 195.6ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/posts/new" for ::1 at 2016-10-08 14:56:48 +0100
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (23.1ms)
+Completed 200 OK in 45ms (Views: 42.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for ::1 at 2016-10-08 14:57:01 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UckpYRVn78WkA4MWL7l05Pg1Pa1PbXH5TQtmy6h++GNE6fIyDzDvlT2KOUimnBRpbS9tFjRAyUoO8jJaW5aNYQ==", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fe2c6194550 @tempfile=#<Tempfile:/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/RackMultipart20161008-8392-6cszeo.jpg>, @original_filename="13687106_1067617969990946_1945363407_n.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"13687106_1067617969990946_1945363407_n.jpg\"\r\nContent-Type: image/jpeg\r\n">, "caption"=>"Waterfalls"}, "commit"=>"Upload"}
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/ac70631cedeaaf2c7f4c3be762bd32ab20161008-8392-1twjgck.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/ac70631cedeaaf2c7f4c3be762bd32ab20161008-8392-1twjgck.jpg[0]'
+Command :: convert '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/ac70631cedeaaf2c7f4c3be762bd32ab20161008-8392-1twjgck.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/7ef80d5fcdb647654364042073d51c0920161008-8392-1hh4jxr'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/ac70631cedeaaf2c7f4c3be762bd32ab20161008-8392-1twjgck.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/ac70631cedeaaf2c7f4c3be762bd32ab20161008-8392-1twjgck.jpg[0]'
+Command :: convert '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/ac70631cedeaaf2c7f4c3be762bd32ab20161008-8392-1twjgck.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/7ef80d5fcdb647654364042073d51c0920161008-8392-8p200n'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/var/folders/q7/sqkf_51n7rb2_t61g95xyj940000gn/T/ac70631cedeaaf2c7f4c3be762bd32ab20161008-8392-a52eca.jpg'
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "caption") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["created_at", 2016-10-08 13:57:01 UTC], ["updated_at", 2016-10-08 13:57:01 UTC], ["image_file_name", "13687106_1067617969990946_1945363407_n.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 317216], ["image_updated_at", 2016-10-08 13:57:01 UTC], ["caption", "Waterfalls"]]
+[paperclip] saving /posts/images/000/000/007/original/13687106_1067617969990946_1945363407_n.jpg
+[AWS S3 200 2.51887 0 retries] put_object(:acl=>:public_read,:bucket_name=>"instagram-challenge-dev-makers",:content_length=>317216,:content_type=>"image/jpeg",:data=>Paperclip::UploadedFileAdapter: 13687106_1067617969990946_1945363407_n.jpg,:key=>"posts/images/000/000/007/original/13687106_1067617969990946_1945363407_n.jpg")  
+
+[paperclip] saving /posts/images/000/000/007/medium/13687106_1067617969990946_1945363407_n.jpg
+[AWS S3 200 0.329216 0 retries] put_object(:acl=>:public_read,:bucket_name=>"instagram-challenge-dev-makers",:content_length=>28929,:content_type=>"image/jpeg",:data=>Paperclip::FileAdapter: 7ef80d5fcdb647654364042073d51c0920161008-8392-1hh4jxr,:key=>"posts/images/000/000/007/medium/13687106_1067617969990946_1945363407_n.jpg")  
+
+[paperclip] saving /posts/images/000/000/007/thumb/13687106_1067617969990946_1945363407_n.jpg
+[AWS S3 200 0.315945 0 retries] put_object(:acl=>:public_read,:bucket_name=>"instagram-challenge-dev-makers",:content_length=>3671,:content_type=>"image/jpeg",:data=>Paperclip::FileAdapter: 7ef80d5fcdb647654364042073d51c0920161008-8392-8p200n,:key=>"posts/images/000/000/007/thumb/13687106_1067617969990946_1945363407_n.jpg")  
+
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 3715ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/posts" for ::1 at 2016-10-08 14:57:05 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 41ms (Views: 38.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/7" for ::1 at 2016-10-08 14:57:08 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 41ms (Views: 33.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts" for ::1 at 2016-10-08 15:10:03 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (21.8ms)
+Completed 200 OK in 240ms (Views: 222.1ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/posts/7" for ::1 at 2016-10-08 15:10:07 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 37ms (Views: 26.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/7/edit" for ::1 at 2016-10-08 15:10:09 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/edit.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 46ms (Views: 42.7ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/posts/7" for ::1 at 2016-10-08 15:10:22 +0100
+  
+AbstractController::ActionNotFound (The action 'update' could not be found for PostsController):
+  
+actionpack (5.0.0.1) lib/abstract_controller/base.rb:121:in `process'
+actionview (5.0.0.1) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.0.1) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.0.1) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.0.1) lib/action_dispatch/routing/route_set.rb:725:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.0.1) lib/active_record/migration.rb:552:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0.1) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout
+  Rendered /Users/Murtz/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/unknown_action.html.erb within rescues/layout (0.4ms)
+Started GET "/posts/7" for ::1 at 2016-10-08 15:14:24 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 228ms (Views: 197.4ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/posts/7/edit" for ::1 at 2016-10-08 15:14:26 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/edit.html.erb within layouts/application (26.4ms)
+Completed 200 OK in 50ms (Views: 45.9ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/posts/7" for ::1 at 2016-10-08 15:14:34 +0100
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6CVEtXEdZFjrRxJRFn2aBjQ3hNcHdJj+8/HlLjQCC2kpae/zAJCnirZPjQDtk0inG99AQmhy4Dd89zrFH4yFHw==", "post"=>{"caption"=>"Waterfalls in wetzikon"}, "commit"=>"Update", "id"=>"7"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "posts" SET "caption" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["caption", "Waterfalls in wetzikon"], ["updated_at", 2016-10-08 14:14:34 UTC], ["id", 7]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 12ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/posts" for ::1 at 2016-10-08 15:14:34 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 26ms (Views: 23.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/7" for ::1 at 2016-10-08 15:14:37 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 51ms (Views: 47.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/7/edit" for ::1 at 2016-10-08 15:14:38 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/edit.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 34ms (Views: 30.5ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/posts/7" for ::1 at 2016-10-08 15:14:45 +0100
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"o5xlZseiAB7V2k7GR6hbFvjhYnx5JcXOs8xIytbvtjli0M4gti/DzIjS0Ze8Rom31wmm6RYjvQc8ypch/WE4Tw==", "post"=>{"caption"=>"Wetzikon trial park"}, "commit"=>"Update", "id"=>"7"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "posts" SET "caption" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["caption", "Wetzikon trial park"], ["updated_at", 2016-10-08 14:14:45 UTC], ["id", 7]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 11ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/posts" for ::1 at 2016-10-08 15:14:45 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 32ms (Views: 29.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/1" for ::1 at 2016-10-08 15:15:41 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 227ms (Views: 197.8ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/posts/1/edit" for ::1 at 2016-10-08 15:15:43 +0100
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/edit.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 46ms (Views: 42.9ms | ActiveRecord: 0.3ms)
+
+

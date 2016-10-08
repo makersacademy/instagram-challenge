@@ -31,7 +31,7 @@ feature 'posts' do
         visit '/posts'
         click_link 'Awesome cat'
         expect(current_path).to eq "/posts/#{cat.id}"
-        expect(page).to have_content 'cat.jpg'
+        expect(page).to have_content 'Awesome cat'
       end
     end
 
@@ -42,4 +42,19 @@ feature 'posts' do
         expect(page).to have_content 'Jokes cat'
       end
     end
+
+    context 'editting posts' do
+      let!(:cat){Post.create(image_file_name: 'cat.jpg', caption:'Awesome cat')}
+      scenario 'let a user edit caption and img' do
+        visit '/posts'
+        click_link 'Awesome cat'
+        click_link 'Edit'
+        fill_in 'post[caption]', with: 'Not so awesome cat'
+        click_button 'Update'
+        expect(page).to have_content 'Not so awesome cat'
+      end
+    end
+
+
+
   end

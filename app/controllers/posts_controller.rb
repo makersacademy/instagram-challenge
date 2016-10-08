@@ -12,17 +12,24 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def create
-    @post
-    Post.create(post_params)
+  def edit
+    @post = Post.find(params[:id])
+  end
 
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    redirect_to '/posts'
+  end
+
+  def create
+    Post.create(post_params)
     redirect_to '/posts'
   end
 
   private
   def post_params
     params.require(:post).permit(:image, :caption)
-
   end
 
 end
