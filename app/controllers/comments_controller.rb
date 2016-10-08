@@ -1,8 +1,12 @@
 class CommentsController < ApplicationController
   before_action :set_post
 
+  def index
+    @comments = @photos.comments.order('created_at asc')
+  end
+
 def create
-  @comment = @post.comments.build(comment_params)
+  @comment = @photo.comments.build(comment_params)
   @comment.user_id = current_user.id
 
   if @comment.save
@@ -15,7 +19,7 @@ def create
 end
 
 def destroy
-  @comment = @post.comments.find(params[:id])
+  @comment = @photo.comments.find(params[:id])
 
   @comment.destroy
   flash[:success] = "Comment deleted :("
@@ -29,6 +33,6 @@ def comment_params
 end
 
 def set_post
-  @photo = Photos.find(params[:post_id])
+  @photo = Photo.find(params[:photo_id])
 end
 end
