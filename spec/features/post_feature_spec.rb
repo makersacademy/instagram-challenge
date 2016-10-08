@@ -1,4 +1,6 @@
 require 'rails_helper'
+require_relative '../web_helper'
+
 
 feature 'posts' do
 
@@ -11,13 +13,8 @@ feature 'posts' do
   end
 
   context 'posts have been added' do
-    before do
-      Post.create(caption: 'Oh look, a cat!',
-                  image: File.new(Rails.root + 'public/images/cat.jpg'))
-    end
-
     scenario 'should display post' do
-      visit '/posts'
+      add_post('Oh look, a cat!', 'cat.jpg')
       expect(page).to have_content 'Oh look, a cat!'
       expect(page).not_to have_content 'No posts yet'
     end
@@ -25,14 +22,19 @@ feature 'posts' do
 
   context 'creating posts' do
     scenario 'users can create posts through form' do
-      visit '/posts'
-      click_link 'Add a post'
-      fill_in 'Caption', with: 'Oh look, a cat!'
-      page.attach_file('post_image', Rails.root + 'public/images/cat.jpg')
-      click_button 'Add'
+      add_post('Oh look, a cat!', 'cat.jpg')
       expect(page).to have_content 'Oh look, a cat!'
       expect(page).to have_css "img[src*='cat']"
       expect(current_path).to eq '/posts'
+    end
+
+    scenario 'users must add an image' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Caption', with: 'Oh look, a cat'
+      click_button 'Add'
+      expect(page).not_to have_content 'Oh look, a cat!'
+      expect(page).to have_content "Image can't be blank"
     end
   end
 
@@ -49,29 +51,10 @@ feature 'posts' do
     end
   end
 
-  context 'invalid posts' do
-
-    scenario 'users must add an image' do
-      visit '/posts'
-      click_link 'Add a post'
-      fill_in 'Caption', with: 'Oh look, a cat'
-      click_button 'Add'
-      expect(page).not_to have_content 'Oh look, a cat!'
-      expect(page).to have_content "Image can't be blank"
-    end
-  end
-
   context 'editing posts' do
-    before do
-      Post.create(caption: 'Oh look, a cat!',
-                  image: File.new(Rails.root + 'public/images/cat.jpg'))
-    end
-
     scenario 'users can edit a post' do
-      visit '/posts'
-      click_link 'Edit'
-      fill_in 'Caption', with: 'A different caption'
-      click_button 'Update'
+      add_post('Oh look, a cat!', 'cat.jpg')
+      edit_post('A different caption')
       expect(page).to have_content 'A different caption'
       expect(page).not_to have_content 'Oh look, a cat!'
       expect(current_path).to eq "/posts"
@@ -79,16 +62,12 @@ feature 'posts' do
   end
 
   context 'deleting posts' do
-    before do
-      Post.create(caption: 'Oh look, a cat!',
-                  image: File.new(Rails.root + 'public/images/cat.jpg'))
-    end
-
     scenario 'users can delete a post' do
-      visit '/posts'
+      add_post('Oh look, a cat!', 'cat.jpg')
       click_link 'Delete'
       expect(page).to have_content 'Post deleted successfully'
       expect(page).not_to have_content 'Oh look, a cat!'
+      expect(page).not_to have_css "img[src*='cat']"
     end
   end
 
