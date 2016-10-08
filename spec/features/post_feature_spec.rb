@@ -10,4 +10,16 @@ feature 'posts' do
     end
   end
 
+  context 'posts have been added' do
+    before do
+      Post.create(caption: 'Oh look, a cat!')
+    end
+
+    scenario 'should display post' do
+      visit '/posts'
+      expect(page).to have_content 'Oh look, a cat!'
+      expect(page).not_to have_content 'No posts yet'
+    end
+  end
+
 end
