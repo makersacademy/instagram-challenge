@@ -25,10 +25,10 @@ Bonus if you can add filters!
 Features:
 -----
 
-[ ] adding posts
+[x] adding posts
 [x] displaying posts
-[ ] adding pictures
-[ ] displaying pictures
+[x] adding pictures
+[x] displaying pictures
 [ ] adding comments
 [ ] displaying comments
 [ ] adding users

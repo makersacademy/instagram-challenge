@@ -1,10 +1,11 @@
+<%= link_to 'Add', new_post_path %>
+<br>
 <% if @posts.any? %>
-  <% @posts.each do |post| %>
-    <h6><%= post.name %></h6><br>
+  <% @posts.reverse.each do |post| %>
+    <h3><%= post.name %></h3>
+    <%= image_tag post.image.url(:medium) %><br>
     <%= post.content %><br>
   <% end %>
 <% else %>
 No posts yet
 <% end %>
-
-<a href="#">Add a post</a>
