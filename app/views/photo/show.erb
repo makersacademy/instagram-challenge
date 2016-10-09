@@ -1,0 +1,20 @@
+<%= image_tag @photo.image.url(:medium) %>
+<br>
+<%= @photo.description %>---<%= @photo.user.email %>
+<%= form_for :comment,  url: "/photo/#{@photo.id}/comment" do |f| %>
+  Comment: <%= f.text_area :description, placeholder: "Comment"%><br />
+  <%= f.submit("Add Comment") %>
+  <br>
+<% end %>
+<% if @check %>
+<%= button_to "Delete Picture", "/photo/#{@photo.id}", method: :delete %>
+<% end %>
+<% @comments.each do |comment| %>
+<li><%= comment.description %> - <%= comment.user.email %>
+
+<br>
+<% if comment.user.id == current_user.id %>
+<%= button_to "Delete comment", "/photo/#{@photo.id}/comment/#{comment.id}", method: :delete %>
+<br>
+<% end %>
+<% end %>

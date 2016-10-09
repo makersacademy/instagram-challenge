@@ -11,16 +11,19 @@ class PhotoController < ApplicationController
   def create
     @user = User.find(current_user.id)
     @photo = @user.photos.create(photo_params)
-    redirect_to action:"index"
+    redirect_to "/photo"
   end
 
-  def edit
-  end
-
-  def update
+  def show
+    @photo = Photo.find(params[:id])
+    @check = @photo.user.id == current_user.id
+    @comments = @photo.comments
   end
 
   def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    redirect_to "/photo"
   end
 
   private

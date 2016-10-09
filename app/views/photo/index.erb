@@ -1,9 +1,12 @@
 <% @photos.each do |photo| %>
-<%= image_tag(photo.image.url(:medium)) %>
+<%= link_to image_tag(photo.image.url(:medium)), "/photo/#{photo.id}", method: :get %>
 <br>
-<%= photo.description %>
+<%= photo.description %>---<%= photo.user.email %>
 <br>
-
+<% end %>
+<% if @check %>
+<%= button_to "Edit", "/photo/#{@photo.id}/edit", method: :get %>
+<%= button_to "Delete", "/photo/#{@photo.id}", method: :delete %>
 <% end %>
 <% if @photos.empty? %>
 <p>There are no photos yet!</p>

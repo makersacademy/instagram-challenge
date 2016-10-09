@@ -5,5 +5,18 @@
       <a class="btn btn-default btn-lg" href='/users/sign_up' role="button">Sign Up</a>
       <a class="btn btn-default btn-lg" href='/users/sign_in' role="button">Sign In</a>
     <% else %>
-    <div style="height:30px;"></div>
+    <% @photos.each do |photo| %>
+    <%= link_to image_tag(photo.image.url(:medium)), "/photo/#{photo.id}", method: :get %>
+
+    <br>
+    <%= photo.description %>---<%= photo.user.email %>
+    <br>
+    <% if @check %>
+    <%= button_to "Edit", "/photo/#{@photo.id}/edit", method: :get %>
+    <%= button_to "Delete", "/photo/#{@photo.id}", method: :delete %>
+    <% end %>
+    <% end %>
+    <% if @photos.empty? %>
+    <p>There are no photos yet!</p>
+    <% end %>
     <% end %>
