@@ -5,6 +5,7 @@ module FeatureHelpers
     visit '/'
     click_link("New Post")
     fill_in 'picture[title]', with: title
+    page.attach_file('picture[image]', Rails.root + 'spec/support/duck.jpg')
     click_button('Post')
   end
   #
