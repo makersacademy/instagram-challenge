@@ -1,9 +1,13 @@
 require 'rails_helper'
 
 
+
 feature 'Upload pictures' do
+  let!(:user){ User.create(email: "test@example.com", password: "123456") }
+
   context 'Welcome Page' do
     scenario 'Welcome is displayed when loading the page' do
+      sign_in
       visit '/'
       click_link('View Photos')
       expect(current_path).to eq('/photos')
@@ -13,13 +17,8 @@ feature 'Upload pictures' do
 
   context 'uploading photos' do
     scenario 'when a picture is uploaded, they should be displayed' do
-      visit '/photos/new'
-
-      fill_in('photo_name', with: 'Restaurant')
-      fill_in('photo_description', with: 'mmmmmmmm')
-
-      attach_file('photo_image', 'app/assets/images/holla_start_image.jpg')
-      click_button('Save Photo')
+      sign_in
+      add_photo
 
       expect(current_path).to eq('/photos')
 
