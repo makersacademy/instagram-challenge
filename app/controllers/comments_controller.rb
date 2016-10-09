@@ -13,8 +13,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
-    flash[:notice] = "Comment successfully added."
-    redirect_to "/posts/#{@post.id}"
+    redirect_to post_path(@post), notice: "Comment successfully added."
   end
 
   def show
@@ -32,19 +31,22 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if (current_user.id == @comment.user_id)
       @comment.update(comment_params)
-      flash[:notice] = "Comment successfully updated."
+      redirect_to post_comment_path(@post, @comment), notice: "Comment successfully updated."
     else
-      flash[:alert] = "You cannot update this comment."
+      redirect_to post_comment_path(@post, @comment), alert: "You cannot update this comment."
     end
-    redirect_to "/posts/#{params[:post_id]}/comments/#{params[:id]}"
   end
 
   def destroy
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to "/posts/#{params[:post_id]}"
-    flash[:notice] = "Comment successfully deleted!"
+
+    if (current_user.id == @comment.user_id)
+      @comment.destroy
+      redirect_to post_path(@post), notice: "Comment successfully deleted!"
+    else
+      redirect_to post_comment_path(@post, @comment), alert: "You cannot delete this comment."
+    end
   end
 
   private

@@ -16,8 +16,7 @@ class PostsController < ApplicationController
     @post.user = current_user
 
     if @post.save
-      redirect_to "/posts"
-      flash[:notice] = "Post successfully added."
+      redirect_to posts_path, notice: "Post successfully added."
     else
       render "new"
     end
@@ -26,6 +25,8 @@ class PostsController < ApplicationController
   def show
    @post = Post.find(params[:id])
    @comments = @post.comments.order("created_at DESC")
+   @likes = Like.find_by(post_id: @post.id)
+   @likes = [@likes] if @likes.class != Array
   end
 
   def edit
@@ -36,11 +37,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if (current_user.id == @post.user_id)
       @post.update(post_params)
-      flash[:notice] = "Post successfully updated."
+      redirect_to post_path(@post), notice: "Post successfully updated."
     else
-      flash[:alert] = "You cannot update this post."
+      redirect_to post_path(@post), alert: "You cannot update this post."
     end
-    redirect_to "/posts/#{params[:id]}"
   end
 
   def destroy
@@ -48,11 +48,9 @@ class PostsController < ApplicationController
     if (current_user.id == @post.user_id)
       @post.comments.each { |comment| comment.destroy }
       @post.destroy
-      flash[:notice] = "Post successfully deleted."
-      redirect_to "/posts"
+      redirect_to posts_path, notice: "Post successfully deleted."
     else
-      flash[:alert] = "You cannot delete this post."
-      redirect_to "/posts/#{params[:id]}"
+      redirect_to post_path(@post), alert: "You cannot delete this post."
     end
   end
 

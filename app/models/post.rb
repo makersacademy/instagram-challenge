@@ -4,7 +4,8 @@ class Post < ApplicationRecord
   validates :image, presence: true
 
   has_many :comments, dependent: :destroy
-  belongs_to :user, optional: false
+  has_many :likes, dependent: :destroy
+  belongs_to :user
 
   has_attached_file :image, :styles => { medium: "autoxauto>", thumb: "300x300>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
