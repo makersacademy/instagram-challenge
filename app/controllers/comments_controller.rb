@@ -1,4 +1,8 @@
 class CommentsController < ApplicationController
+  include CommentsHelper
+
+  before_action :authenticate_user!, :except => [:show]
+
   def new
     @post = Post.find(params[:post_id])
     @comment = Comment.new

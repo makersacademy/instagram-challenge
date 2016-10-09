@@ -33,17 +33,24 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
+    if (current_user.id == @post.user_id)
+      @post.update(post_params)
+    else
+      flash[:alert] = "You cannot update this post."
+    end
     redirect_to "/posts/#{params[:id]}"
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.comments.each do |comment|
-      comment.destroy
+    if (current_user.id == @post.user_id)
+      @post.comments.each { |comment| comment.destroy }
+      @post.destroy
+      redirect_to "/posts"
+    else
+      flash[:alert] = "You cannot delete this post."
+      redirect_to "/posts/#{params[:id]}"
     end
-    @post.destroy
-    redirect_to "/posts"
   end
 
   private

@@ -28,10 +28,14 @@
         <%= link_to "Add comment", new_post_comment_path(@post) %>
       </div>
       <div class="col-xs-3">
-        <%= link_to "Edit post", edit_post_path(@post) %>
+        <% if (current_user && current_user.id == @post.user_id)%>
+          <%= link_to "Edit post", edit_post_path(@post) %>
+        <% end %>
       </div>
       <div class="col-xs-3">
-        <%= link_to "Delete post", post_path(@post), method: :delete %>
+        <% if (current_user && current_user.id == @post.user_id)%>
+          <%= link_to "Delete post", post_path(@post), method: :delete %>
+        <% end %>
       </div>
     </div>
     <div class="panel panel-info">
