@@ -17,6 +17,7 @@ class PostsController < ApplicationController
 
     if @post.save
       redirect_to "/posts"
+      flash[:notice] = "Post successfully added."
     else
       render "new"
     end
@@ -35,6 +36,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if (current_user.id == @post.user_id)
       @post.update(post_params)
+      flash[:notice] = "Post successfully updated."
     else
       flash[:alert] = "You cannot update this post."
     end
@@ -46,6 +48,7 @@ class PostsController < ApplicationController
     if (current_user.id == @post.user_id)
       @post.comments.each { |comment| comment.destroy }
       @post.destroy
+      flash[:notice] = "Post successfully deleted."
       redirect_to "/posts"
     else
       flash[:alert] = "You cannot delete this post."

@@ -3,6 +3,7 @@ require "rails_helper"
 feature "comments" do
 
   let!(:user1){ User.create(email: "test@test.com", password: "123456") }
+  let!(:user2){ User.create(email: "test2@test.com", password: "123456") }
   let!(:post1){ Post.create(description: "visit", location: "Chain bridge in Budapest, Hungary", image_file_name: "photo_01.jpg", user: user1) }
   let!(:comment1){ Comment.create(comment: "good pic", post_id: post1.id, user: user1) }
 
@@ -15,13 +16,14 @@ feature "comments" do
 
     context "add comment" do
 
-      scenario "user can add a comment to a post" do
+      scenario "user can add a comment to a post, and notice is shown" do
         visit_post(post1)
         click_link("Add comment")
         expect(current_path).to eq "/posts/#{post1.id}/comments/new"
 
         add_comment(post: post1)
         expect(page).to have_css("div#post#{post1.id}_comments", text: "nice photo, like it")
+        expect(page).to have_css("div#notice", text: "Comment successfully added.")
 
       end
 
@@ -65,12 +67,11 @@ feature "comments" do
         visit "/posts"
         expect(page).to have_css("div#post#{post1.id}_comments", text: "No comments available")
       end
-
     end
 
     context "edit comment" do
 
-      scenario "users can edit their own comment" do
+      scenario "users can edit their own comment, and notice is shown" do
         visit_post(post1)
         click_link("#{comment1.id}")
         click_link("Edit comment")
@@ -78,14 +79,33 @@ feature "comments" do
         click_button "Update"
 
         expect(page).to have_css("div#comment_body", text: "comment updated")
+        expect(page).to have_css("div#notice", text: "Comment successfully updated.")
         expect(page).to_not have_css("div#comment_body", text: "good pic")
         expect(current_path).to eq "/posts/#{post1.id}/comments/#{comment1.id}"
       end
 
+      scenario "users cannot see 'Edit comment' link on comments that are owned by other users" do
+        sign_out
+        sign_in(email: "test2@test.com")
+        visit_post(post1)
+        click_link("#{comment1.id}")
+
+        expect(page).not_to have_css("div#yield", text: "Edit comment")
+      end
+
+      scenario "users cannot edit comments that are not owned by them" do
+        sign_out
+        sign_in(email: "test2@test.com")
+        visit("/posts/#{post1.id}/comments/#{comment1.id}/edit")
+        click_button("Update")
+
+        expect(current_path).to eq "/posts/#{post1.id}/comments/#{comment1.id}"
+        expect(page).to have_css("div#alert", text: "You cannot update this comment.")
+      end
     end
 
     context "delete comment" do
-      scenario "users can delete their own comment" do
+      scenario "users can delete their own comment, and notice is shown" do
         visit_post(post1)
         expect(page).to have_css("div#yield", text: "good pic")
         click_link("#{comment1.id}")

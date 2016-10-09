@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
+    flash[:notice] = "Comment successfully added."
     redirect_to "/posts/#{@post.id}"
   end
 
@@ -29,7 +30,12 @@ class CommentsController < ApplicationController
   def update
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
-    @comment.update(comment_params)
+    if (current_user.id == @comment.user_id)
+      @comment.update(comment_params)
+      flash[:notice] = "Comment successfully updated."
+    else
+      flash[:alert] = "You cannot update this comment."
+    end
     redirect_to "/posts/#{params[:post_id]}/comments/#{params[:id]}"
   end
 

@@ -20,7 +20,9 @@
         <%= link_to "Back to post", post_path(@post) %>
       </div>
       <div class="col-xs-4">
-        <%= link_to "Edit comment", edit_post_comment_path(@post, @comment) %>
+        <% if (current_user && current_user.id == @comment.user_id)%>
+          <%= link_to "Edit comment", edit_post_comment_path(@post, @comment) %>
+        <% end %>
       </div>
       <div class="col-xs-4">
         <%= link_to "Delete comment", post_comment_path(@post, @comment), method: :delete %>

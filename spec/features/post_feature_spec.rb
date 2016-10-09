@@ -48,7 +48,7 @@ feature "posts" do
       context "add post" do
         before {click_link("New post")}
 
-        scenario "user can add post if logged in" do
+        scenario "user can add post if logged in, and notice is shown" do
           expect(current_path).to eq "/posts/new"
 
           fill_in("Description", with: "visit Budapest")
@@ -61,6 +61,7 @@ feature "posts" do
           expect(page).to have_css("div#post#{post.id}_body",text: "visit Budapest")
           expect(page).to have_css("div#post#{post.id}_location", text: "Bridge in Budapest, Hungary")
           expect(page).to have_css("img[src*='photo_01']")
+          expect(page).to have_css("div#notice", text: "Post successfully added.")
         end
 
         scenario "user cannot add post w/o description" do
@@ -102,13 +103,16 @@ feature "posts" do
 
       context "edit post" do
 
-        scenario "users can edit their own posts" do
+        scenario "users can edit their own posts, and notice is shown" do
           click_link "visit"
           click_link "Edit post"
           expect(current_path).to eq "/posts/#{post1.id}/edit"
 
           fill_in("Description", with: "weekend visit")
           click_button("Update")
+
+          expect(page).to have_css("div#notice", text: "Post successfully updated.")
+          expect(page).to have_css("div#post_body", text: "weekend visit")
         end
 
         scenario "users cannot see 'Edit post' link on posts that are owned by other users" do
@@ -133,11 +137,12 @@ feature "posts" do
       context "delete post" do
         let!(:comment1){ Comment.create(comment: "good pic", post_id: post1.id, user: user1) }
 
-        scenario "users can delete their own post" do
+        scenario "users can delete their own post, and notice is shown" do
           click_link "visit"
           click_link "Delete post"
 
           expect(current_path).to eq "/posts"
+          expect(page).to have_css("div#notice", text: "Post successfully deleted.")
           expect(page).not_to have_css("div#yield", text: "Chain bridge in Budapest, Hungary")
           expect(page).not_to have_css("div#yield", text: "good pic")
         end
