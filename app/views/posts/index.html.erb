@@ -1,4 +1,5 @@
-<% if @posts.all.any? %>
+<% if user_signed_in? %>
+    <% if @posts.all.any? %>
     <% @posts.each do |post| %>
     <ul>
       <li>
@@ -16,8 +17,31 @@
       </li>
     </ul>
     <% end %>
-  <% else %>
-  <h3>No posts yet</h3>
-<% end %>
+    <% else %>
+    <h3>No posts yet</h3>
+    <% end %>
 
-<%= link_to "Upload a photo", new_post_path %>
+    <%= link_to "Upload a photo", new_post_path %>
+
+<% else %>
+
+  <% if @posts.all.any? %>
+  <% @posts.each do |post| %>
+  <ul>
+    <li>
+      <%= image_tag post.image.url(:thumb) %>
+      <br>
+      Comments:
+      <% post.comments.each do |c| %>
+      <ul>
+        <li><%= c.comments%></li>
+      </ul>
+      <% end %>
+    </li>
+    <br>
+  </ul>
+    <% end %>
+  <% else %>
+    <h3>No posts yet</h3>
+  <% end %>
+<% end %>
