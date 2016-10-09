@@ -60,13 +60,21 @@ feature "comments" do
         expect(page).to have_css("div#yield", text: "comment updated")
         expect(page).to_not have_css("div#yield", text: "good pic")
         expect(current_path).to eq "/posts/#{post1.id}/comments/#{comment1.id}"
-
       end
 
     end
 
     context "delete comment" do
+      scenario "users can delete their own comment" do
+        visit_post(post1)
+        expect(page).to have_css("div#yield", text: "good pic")
+        click_link("#{comment1.id}")
+        click_link("Delete comment")
 
+        expect(current_path).to eq "/posts/#{post1.id}"
+        expect(page).not_to have_css("div#yield", text: "good pic")
+        expect(page).to have_css("div#notice", text: "Comment successfully deleted!")
+      end
     end
 
   end
