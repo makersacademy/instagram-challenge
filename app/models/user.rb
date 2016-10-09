@@ -1,11 +1,12 @@
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
   validates :username, presence: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
-
-  has_many :posts, dependent: destroy
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
