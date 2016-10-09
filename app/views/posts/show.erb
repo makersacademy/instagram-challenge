@@ -8,9 +8,26 @@
     <div class='image center-block'>
       <%= image_tag @post.image.url(:medium), class: "img-responsive" %>
     </div>
-    <div class="caption">
-      <%= @post.caption %>
-    </div>
+    <div class='post-bottom'>
+      <div class="caption">
+        <div class="username">
+          <%= @post.user.username %>
+        </div>
+        <%= @post.caption %>
+      </div>
+      <% if @post.comments %>
+        <% @post.comments.each do |comment|%>
+          <div class="comment">
+            <div class="username">
+              <%= comment.user.username %>
+            </div>
+            <div class="comment-content">
+              <%= comment.content %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% if user_signed_in? %>
     <div class="buttons">
       <%= link_to 'Back', :back %>
       <% if current_user.id == @post.user.id %>
@@ -19,6 +36,7 @@
         |
         <%= link_to 'Delete', post_path(@post), method: :delete %>
       <% end %>
+    <% end %>
     </div>
   </div>
 </div>

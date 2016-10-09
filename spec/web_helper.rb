@@ -21,3 +21,10 @@ def sign_up
   fill_in 'user_password_confirmation', with: '123456'
   click_button 'Sign up'
 end
+
+def add_comment(content)
+  visit '/posts'
+  click_link 'Comment'
+  fill_in 'comment_content', with: content
+  click_button 'Comment'
+end
