@@ -1,5 +1,19 @@
 require 'rails_helper'
 
-# RSpec.describe Picture, type: :model do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
+describe Picture do
+
+  let(:picture) {Picture.new({title: "Wild ducks", likes: "20"})}
+
+  describe 'Show likes' do
+
+    before(:each) do
+      picture.save
+    end
+
+    it 'should return the number of likes' do
+      expect(picture.show_likes).to eq(20)
+    end
+
+  end
+
+end

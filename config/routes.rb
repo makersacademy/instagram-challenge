@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :pictures do
     resources :comments
+    get :add_like, on: :collection 
   end
 
   root 'pictures#index'

@@ -1,6 +1,15 @@
+.divider
 - @pictures.each do |picture|
-  %divider
+  .divider
   .row
     .col.s12
-      %h4= link_to picture.title, picture_path(picture)
       = image_tag picture.image.url(:standard), id: "image_display"
+      %h5= link_to picture.title, picture_path(picture)
+      .col.s1
+        = link_to picture_path(picture), method: :put do
+          %i.material-icons#like_icon thumb_up
+      .col.3
+        %p= "#{picture.show_likes} likes"
+      .col.s1
+        = link_to picture_path(picture) do
+          %i.material-icons#comment_icon comment

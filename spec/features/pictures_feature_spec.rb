@@ -7,12 +7,6 @@ feature 'pictures' do
 
   context 'user can post a picture' do
 
-    scenario 'user clicks post and adds a picture' do
-      post_picture("Amazing Mountains")
-      expect(page).to have_current_path('/pictures')
-      expect(page).to have_content("Amazing Mountains")
-    end
-
     scenario 'user can post a picture it appears in the main feed' do
       post_picture("Wild ducks")
       expect(page.find('#image_display')['src']).to have_content('duck.jpg')

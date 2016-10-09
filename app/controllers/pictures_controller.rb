@@ -25,6 +25,15 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
   end
 
+  def update
+    puts params[:id]
+    @picture = Picture.find(params[:id])
+    puts @picture
+    update_likes = @picture.likes.to_i + 1
+    puts update_likes
+    @picture.update(likes: update_likes)
+  end
+
   private
 
   def picture_params

@@ -6,4 +6,8 @@ $( document ).ready(function(){
      readURL(this);
    });
 
+   $( "#like_icon" ).click(function() {
+
+   });
+
 });
