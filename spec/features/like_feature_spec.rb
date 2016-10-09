@@ -11,10 +11,7 @@ feature "likes" do
   end
 
   context "logged in" do
-    before { sign_in }
-    context "show likes" do
-
-    end
+    before { sign_in(email: "test2@test.com") }
 
     context "like a post" do
       scenario "user can like a post if logged in" do
@@ -28,7 +25,15 @@ feature "likes" do
         expect(page).to have_css("div#notice", text: "You liked the post.")
       end
 
-      scenario "users cannot like their own posts"
+      scenario "users cannot like their own posts" do
+        sign_out
+        sign_in
+        visit_post(post1)
+        click_link("Like")
+
+        expect(page).to have_css("div#likes", text: "0")
+        expect(page).to have_css("div#alert", text: "You cannot like your own post.")
+      end
 
     end
 
@@ -44,14 +49,20 @@ feature "likes" do
         expect(page).not_to have_css("div#likes", text: "1")
         expect(page).to have_css("div#notice", text: "You unliked the post.")
       end
-
-      scenario "users cannot unlik their own posts"
     end
 
   end
 
   context "logged out" do
+    context "like a post" do
 
+      scenario "user cannot like a post if logged out" do
+        visit_post(post1)
+
+        expect(current_path).to eq "/posts/#{post1.id}"
+        expect{click_link("Like")}.to raise_error(Capybara::ElementNotFound)
+      end
+    end
   end
 
 end
