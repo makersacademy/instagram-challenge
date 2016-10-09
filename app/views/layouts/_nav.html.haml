@@ -1,0 +1,27 @@
+%nav
+  .nav-wrapper
+    %a.brand-logo.center{:href => "/"} InstaClone
+    %a.button-collapse{"data-activates" => "mobile", :href => "#"}
+      %i.material-icons menu
+    %ul.right.hide-on-med-and-down
+      - if user_signed_in?
+        %li
+          %a= current_user.email
+        %li
+          =link_to "Log out", destroy_user_session_path, method: :delete
+      - else
+        %li
+          %a{:id => "log_in_link", :href => "/users/sign_in"} Log In
+        %li
+          %a.waves-effect.waves-light.btn{:id => "sign_up_btn", :href => "/users/sign_up"} Sign Up
+    %ul#mobile.side-nav
+      - if user_signed_in?
+        %li
+          %a current_user.email
+        %li
+          %a{:href => "/users/sign_out"} Log Out
+      - else
+        %li
+          %a{:href => "/users/sign_in"} Log In
+        %li
+          %a.waves-effect.waves-light.btn{:href => "/users/sign_up"} Sign Up
