@@ -38,7 +38,6 @@ feature "comments" do
 
       scenario "user clicks on a comment and the entire content become visible" do
         visit_post(post1)
-        # visit "/posts/#{post1.id}/comments/#{comment1.id}"
         click_link("#{comment1.id}")
 
         expect(page).to have_css("div#yield", text: "good pic")
@@ -52,7 +51,16 @@ feature "comments" do
     context "edit comment" do
 
       scenario "users can edit their own comment" do
-        visit "/posts/#{post1.id}/comments/#{comment1.id}"
+        visit_post(post1)
+        click_link("#{comment1.id}")
+        click_link("Edit comment")
+        fill_in('comment_field', with: "comment updated")
+        click_button "Update"
+
+        expect(page).to have_css("div#yield", text: "comment updated")
+        expect(page).to_not have_css("div#yield", text: "good pic")
+        expect(current_path).to eq "/posts/#{post1.id}/comments/#{comment1.id}"
+
       end
 
     end
