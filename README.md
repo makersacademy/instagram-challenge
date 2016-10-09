@@ -1,4 +1,4 @@
-Instagram Challenge
+Instagram plus (Instagram challenge)
 ===================
 
 Description:
@@ -9,9 +9,54 @@ The program acts as a little Instagram clone that allows the users to post photo
 The program covers the following user stories:
 
 ```
-Put user stories here
-```
+As a User
+So that I can post my photos, comment and like other posts on Instagram plus
+I want to sign up for Instagram plus
 
+As a User
+So that I can post my photos, comment and like other posts on Instagram plus
+I want to log in to Instagram plus
+
+As a User
+So that I can avoid other posting, commenting or liking on Instagram plus as me
+I want to log out of Instagram plus
+
+As a User
+So that I can share my photos
+I want to post a photo to Instagram plus
+
+As a User
+So that I can tell people where I took a photo
+I want to add a location to the photo I'm posting
+
+As a User
+So that I can share a story relates to the photo
+I want to add a description to the photo I'm posting
+
+As a User
+So that I can change my previous posts
+I want to update and/or delete any of my posts
+
+As a User
+So that I can share my thoughts about posts
+I want to comment an already posted photo
+
+As a User
+So that I can change my thoughts about other posts
+I want to update and/or delete my recently added comment
+
+As a User
+So that I can see what others are commenting about my posted
+I want to see the comment after my post in reverse chronological order
+
+As a User
+So that I can appreciate other posts
+I want to like a post on Instagram plus
+
+As a User
+So that I can see the popularity of my post
+I want to see the number of likes at my post
+```
 
 The program provides the following functions:
 ------
