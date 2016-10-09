@@ -9,10 +9,11 @@ feature 'Upload pictures' do
     end
   end
 
-  context 'Uploading a photo' do
-    scenario 'when a picture is uploaded' do
-      visit ('/photos/new')
-
-    end
-  end
+  # context 'displaying photos' do
+  #   scenario 'when a picture is uploaded, they should be displayed' do
+  #     visit ('/photos')
+  #     fill_in()
+  #
+  #   end
+  # end
 end
