@@ -9,11 +9,18 @@ feature 'Upload pictures' do
     end
   end
 
-  # context 'displaying photos' do
-  #   scenario 'when a picture is uploaded, they should be displayed' do
-  #     visit ('/photos')
-  #     fill_in()
-  #
-  #   end
-  # end
+  context 'uploading photos' do
+    scenario 'when a picture is uploaded, they should be displayed' do
+      visit '/photos/new'
+
+      fill_in('photo_name', with: 'Restaurant')
+      fill_in('photo_description', with: 'mmmmmmmm')
+
+      attach_file('photo_image', 'app/assets/images/holla_start_image.jpg')
+      click_button('Save Photo')
+
+      expect(current_path).to eq('/photos')
+
+    end
+  end
 end
