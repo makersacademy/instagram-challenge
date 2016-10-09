@@ -100,9 +100,25 @@ feature "posts" do
         click_button("Update")
 
       end
+    end
 
+    context "delete post" do
+      let!(:post1){ Post.create(description: "visit", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg") }
+      let!(:comment1){ Comment.create(comment: "good pic", post_id: post1.id) }
 
+      before do
+        sign_in
+        visit "/posts"
+      end
 
+      scenario "users can delete their own post" do
+        click_link "visit"
+        click_link "Delete post"
+
+        expect(current_path).to eq "/posts"
+        expect(page).not_to have_css("div#yield", text: "Parliament in Budapest, Hungary")
+        expect(page).not_to have_css("div#yield", text: "good pic")        
+      end
     end
 
   end

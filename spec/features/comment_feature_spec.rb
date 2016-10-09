@@ -17,7 +17,7 @@ feature "comments" do
 
       scenario "user can add a comment to a post" do
         visit_post(post1)
-        click_link("add comment")
+        click_link("Add comment")
         expect(current_path).to eq "/posts/#{post1.id}/comments/new"
 
         add_comment(post: post1)

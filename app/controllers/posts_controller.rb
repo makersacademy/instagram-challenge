@@ -36,6 +36,15 @@ class PostsController < ApplicationController
     redirect_to "/posts/#{params[:id]}"
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.comments.each do |comment|
+      comment.destroy
+    end
+    @post.destroy
+    redirect_to "/posts"
+  end
+
   private
 
   def post_params

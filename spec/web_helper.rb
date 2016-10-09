@@ -17,7 +17,7 @@ end
 
 def visit_post_and_add_comment(comment: "nice photo, like it", post: )
   visit_post(post)
-  click_link "add comment"
+  click_link "Add comment"
   add_comment(comment: comment, post: post)
 end
 
