@@ -6,11 +6,7 @@ feature "likes" do
   let!(:user2){ User.create(email: "test2@test.com", password: "123456") }
   let!(:post1){ Post.create(description: "visit", location: "Chain bridge in Budapest, Hungary", image_file_name: "photo_01.jpg", user: user1) }
 
-  context "logged out" do
-
-  end
-
-  context "logged in" do
+  context "User logged in" do
     before { sign_in(email: "test2@test.com") }
 
     context "like a post" do
@@ -53,7 +49,7 @@ feature "likes" do
 
   end
 
-  context "logged out" do
+  context "User logged out" do
     context "like a post" do
 
       scenario "user cannot like a post if logged out" do

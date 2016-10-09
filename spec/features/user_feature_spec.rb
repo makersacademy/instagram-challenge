@@ -2,7 +2,7 @@ require "rails_helper"
 
 feature "user management" do
 
-  context "user can sign up" do
+  context "sign up" do
 
     scenario "signs up successfully" do
       visit "/"
@@ -19,7 +19,7 @@ feature "user management" do
     end
   end
 
-  context "user can log in and log out" do
+  context "log in and log out" do
 
     before do
       visit "/"
@@ -30,7 +30,7 @@ feature "user management" do
       click_button("Sign up")
     end
 
-    scenario "signs in successfully" do
+    scenario "user logs in successfully" do
       visit "/"
       click_link("Log out")
       click_link("Log in")
@@ -50,7 +50,7 @@ feature "user management" do
 
       click_link("Log out")
       expect(page).to have_css("nav", text: "Log in")
-      
+
     end
 
   end

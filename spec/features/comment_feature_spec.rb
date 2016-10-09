@@ -7,7 +7,7 @@ feature "comments" do
   let!(:post1){ Post.create(description: "visit", location: "Chain bridge in Budapest, Hungary", image_file_name: "photo_01.jpg", user: user1) }
   let!(:comment1){ Comment.create(comment: "good pic", post_id: post1.id, user: user1) }
 
-  context "logged in" do
+  context "User logged in" do
 
     before do
       sign_in

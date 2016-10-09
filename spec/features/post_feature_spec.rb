@@ -16,9 +16,9 @@ feature "posts" do
   context "manage posts" do
     let!(:post1){ Post.create(description: "visit", location: "Chain bridge in Budapest, Hungary", image_file_name: "photo_01.jpg", user: user1) }
 
-    context "logged out" do
+    context "User logged out" do
       context "add post" do
-        scenario "user cannot add a post if not logged in" do
+        scenario "user cannot add a post if logged out" do
           visit "/posts"
           click_link("New post")
 
@@ -29,7 +29,7 @@ feature "posts" do
       end
 
       context "edit post" do
-        scenario "user cannot edit a post if not logged in" do
+        scenario "user cannot edit a post if logged out" do
           visit "/posts"
           click_link "visit"
 
@@ -38,7 +38,7 @@ feature "posts" do
       end
     end
 
-    context "logged in" do
+    context "User logged in" do
 
       before do
         sign_in

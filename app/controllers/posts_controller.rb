@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order("updated_at DESC")
   end
 
   def new
@@ -47,6 +47,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if (current_user.id == @post.user_id)
       @post.comments.each { |comment| comment.destroy }
+      @post.likes.each { |like| like.destroy }
       @post.destroy
       redirect_to posts_path, notice: "Post successfully deleted."
     else
