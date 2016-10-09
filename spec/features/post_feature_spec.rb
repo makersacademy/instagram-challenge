@@ -66,7 +66,7 @@ feature "posts" do
 
     context "show post" do
 
-      let!(:post1){ Post.create(description: "visit", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg") }
+      let!(:post1){ Post.create(description: "visit", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg", user: user1) }
 
       before do
         sign_in
@@ -84,7 +84,7 @@ feature "posts" do
     end
 
     context "edit post" do
-      let!(:post1){ Post.create(description: "visit", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg") }
+      let!(:post1){ Post.create(description: "visit", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg", user: user1) }
 
       before do
         sign_in
@@ -103,8 +103,8 @@ feature "posts" do
     end
 
     context "delete post" do
-      let!(:post1){ Post.create(description: "visit", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg") }
-      let!(:comment1){ Comment.create(comment: "good pic", post_id: post1.id) }
+      let!(:post1){ Post.create(description: "visit", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg", user: user1) }
+      let!(:comment1){ Comment.create(comment: "good pic", post_id: post1.id, user: user1) }
 
       before do
         sign_in
@@ -117,7 +117,7 @@ feature "posts" do
 
         expect(current_path).to eq "/posts"
         expect(page).not_to have_css("div#yield", text: "Parliament in Budapest, Hungary")
-        expect(page).not_to have_css("div#yield", text: "good pic")        
+        expect(page).not_to have_css("div#yield", text: "good pic")
       end
     end
 

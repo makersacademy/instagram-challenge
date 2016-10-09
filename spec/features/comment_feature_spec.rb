@@ -3,8 +3,8 @@ require "rails_helper"
 feature "comments" do
 
   let!(:user1){ User.create(email: "test@test.com", password: "123456") }
-  let!(:post1){ Post.create(description: "visit", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg") }
-  let!(:comment1){ Comment.create(comment: "good pic", post_id: post1.id) }
+  let!(:post1){ Post.create(description: "visit", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg", user: user1) }
+  let!(:comment1){ Comment.create(comment: "good pic", post_id: post1.id, user: user1) }
 
   context "logged in" do
 
@@ -44,6 +44,16 @@ feature "comments" do
 
         expect(find_link('Edit comment').visible?).to eq true
         expect(find_link('Delete comment').visible?).to eq true
+      end
+
+      scenario "user can go back to the post" do
+        visit_post(post1)
+        click_link("#{comment1.id}")
+        click_link("Back to post")
+
+        expect(current_path).to eq "/posts/#{post1.id}"
+        expect(page).to have_css("div#yield", text: "Parliament in Budapest, Hungary")
+        expect(page).to have_css("div#yield", text: "good pic")
       end
 
     end

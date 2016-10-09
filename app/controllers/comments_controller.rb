@@ -6,7 +6,9 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @post.comments.create(comment_params)
+    @comment = @post.comments.new(comment_params)
+    @comment.user = current_user
+    @comment.save
     redirect_to "/posts/#{@post.id}"
   end
 
@@ -32,7 +34,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     redirect_to "/posts/#{params[:post_id]}"
-    flash[:notice] = "Comment successfully deleted!"    
+    flash[:notice] = "Comment successfully deleted!"
   end
 
   private
