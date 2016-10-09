@@ -28,3 +28,12 @@ def add_comment(content)
   fill_in 'comment_content', with: content
   click_button 'Comment'
 end
+
+def add_post_with_tags(caption=nil, tag_string)
+  visit '/posts'
+  click_link 'Add a post'
+  fill_in 'post_caption', with: caption
+  page.attach_file('post_image', Rails.root + "spec/images/cat.jpg")
+  fill_in 'post_all_tags', with: tag_string
+  click_button 'Add'
+end
