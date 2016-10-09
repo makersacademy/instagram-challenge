@@ -1,0 +1,70 @@
+<% if @posts.any? %>
+
+  <div class='posts-wrapper row'>
+    <% @posts.reverse.each do |post| %>
+
+      <div class='post'>
+
+        <div class='post-head'>
+          <div class="name">
+            <%= post.user.username %>
+          </div>
+        </div>
+
+        <div class='image center-block'>
+          <%= link_to post_path(post) do %>
+            <%= image_tag post.image.url(:medium), class: "img-responsive" %>
+          <% end %>
+        </div>
+
+        <div class='post-bottom'>
+
+          <div class="caption">
+            <div class="username">
+              <%= post.user.username %>
+            </div>
+            <%= post.caption %>
+          </div>
+
+          <% unless post.all_tags.empty? %>
+          <div class="comment">
+            <div class="username">
+              <%= post.user.username %>
+            </div>
+            <% post.all_tags.each do |tag| %>
+              <%= link_to '#'+tag, tag_path(tag) %>
+            <% end %>
+          </div>
+          <% end %>
+
+          <% if post.comments %>
+            <% post.comments.each do |comment|%>
+              <div class="comment">
+                <div class="username">
+                  <%= comment.user.username %>
+                </div>
+                <div class="comment-content">
+                  <%= comment.content %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+
+          <div class="buttons">
+            <%= link_to 'Comment', new_post_comment_path(post) %>
+            <% if user_signed_in? %>
+              <% if current_user.id == post.user.id %>
+              |
+              <%= link_to 'Edit', edit_post_path(post) %>
+              |
+              <%= link_to 'Delete', post_path(post), method: :delete %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% else %>
+  <p> No posts yet </p>
+<% end %>
