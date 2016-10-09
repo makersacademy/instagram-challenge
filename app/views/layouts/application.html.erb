@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>InstagramChallenge</title>
+    <title>Sofigram</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,8 +9,21 @@
   </head>
 
   <body>
-    <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <ul>
+          <% if user_signed_in? %>
+          <li><p>Signed In As: <%= current_user.email %></p></li>
+          <li><%= link_to('Sign Out', destroy_user_session_path, {method: :delete}) %></li>
+          <% else %>
+          <li><%= link_to('Sign In', new_user_session_path, {method: :get}) %></li>
+          <li><%= link_to('Sign Up', new_user_registration_path, {method: :get}) %></li>
+          <% end %>
+        </ul>
+
+        <% flash.each do |key, value| %>
+    <%= value %>
+    <a href="#" data-dismiss="alert" class="close">x</a>
+
+<% end %>
+<%= yield %>
   </body>
 </html>
