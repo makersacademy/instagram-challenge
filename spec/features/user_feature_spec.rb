@@ -18,7 +18,6 @@ feature 'users' do
       user_sign_up
       user_log_out
       expect(page).not_to have_content 'johnny@appleseed.com'
-      expect(page).not_to have_link 'Post'
     end
 
     scenario 'should allow user to log in using top nav' do

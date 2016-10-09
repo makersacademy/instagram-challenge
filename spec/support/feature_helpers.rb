@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 module FeatureHelpers
-  # def create_restaurant(name)
-  #   visit '/'
-  #   click_link('Add Restaurant')
-  #   fill_in 'restaurant[name]', with: name
-  #   fill_in 'restaurant[description]', with: 'a restaurant that serves pizza pie'
-  #   click_button('Save Restaurant')
-  # end
+  def post_picture(title)
+    visit '/'
+    click_link("New Post")
+    fill_in 'picture[title]', with: title
+    click_button('Post')
+  end
   #
   # def add_review(rating)
   #   visit '/restaurants/1/review/new'
