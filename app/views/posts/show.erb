@@ -2,7 +2,7 @@
   <div class='post'>
     <div class='post-head'>
       <div class="name">
-        Abigail McP
+        <%= @post.user.username %>
       </div>
     </div>
     <div class='image center-block'>
@@ -13,10 +13,12 @@
     </div>
     <div class="buttons">
       <%= link_to 'Back', :back %>
-      |
-      <%= link_to 'Edit', edit_post_path(@post) %>
-      |
-      <%= link_to 'Delete', post_path(@post), method: :delete %>
+      <% if current_user.id == @post.user.id %>
+        |
+        <%= link_to 'Edit', edit_post_path(@post) %>
+        |
+        <%= link_to 'Delete', post_path(@post), method: :delete %>
+      <% end %>
     </div>
   </div>
 </div>

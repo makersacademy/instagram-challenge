@@ -4,7 +4,7 @@
       <div class='post'>
         <div class='post-head'>
           <div class="name">
-            Abigail McP
+            <%= post.user.username %>
           </div>
         </div>
         <div class='image center-block'>
@@ -14,11 +14,13 @@
           <div class="caption">
             <%= post.caption %>
           </div>
+          <% if current_user.id == post.user.id %>
           <div class="buttons">
             <%= link_to 'Edit', edit_post_path(post) %>
             |
             <%= link_to 'Delete', post_path(post), method: :delete %>
           </div>
+          <% end %>
         </div>
       </div>
     <% end %>

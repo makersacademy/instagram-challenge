@@ -30,7 +30,7 @@ feature 'User can sign in and out' do
     end
 
     scenario 'should see who is signed in' do
-      expect(page).to have_content 'Signed in as: abi@abi.com'
+      expect(page).to have_content 'Signed in as: abimcp'
     end
   end
 end
