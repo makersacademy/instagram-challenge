@@ -26,6 +26,17 @@
             <%= post.caption %>
           </div>
 
+          <% unless post.all_tags.empty? %>
+          <div class="comment">
+            <div class="username">
+              <%= post.user.username %>
+            </div>
+            <% post.all_tags.each do |tag| %>
+              <%= link_to tag, '#' %>
+            <% end %>
+          </div>
+          <% end %>
+
           <% if post.comments %>
             <% post.comments.each do |comment|%>
               <div class="comment">

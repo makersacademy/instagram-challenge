@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params[:post].permit(:caption, :image)
+    params[:post].permit(:caption, :image, :all_tags)
   end
 
   def owned_post

@@ -1,20 +1,36 @@
 <div class='posts-wrapper row'>
   <div class='post'>
+
     <div class='post-head'>
       <div class="name">
         <%= @post.user.username %>
       </div>
     </div>
+
     <div class='image center-block'>
       <%= image_tag @post.image.url(:medium), class: "img-responsive" %>
     </div>
+
     <div class='post-bottom'>
+
       <div class="caption">
         <div class="username">
           <%= @post.user.username %>
         </div>
         <%= @post.caption %>
       </div>
+
+      <% unless @post.all_tags.empty? %>
+      <div class="comment">
+        <div class="username">
+          <%= @post.user.username %>
+        </div>
+        <% @post.all_tags.each do |tag| %>
+          <%= link_to tag, '#' %>
+        <% end %>
+      </div>
+      <% end %>
+
       <% if @post.comments %>
         <% @post.comments.each do |comment|%>
           <div class="comment">
@@ -27,16 +43,18 @@
           </div>
         <% end %>
       <% end %>
+
     <% if user_signed_in? %>
-    <div class="buttons">
-      <%= link_to 'Back', :back %>
-      <% if current_user.id == @post.user.id %>
-        |
-        <%= link_to 'Edit', edit_post_path(@post) %>
-        |
-        <%= link_to 'Delete', post_path(@post), method: :delete %>
-      <% end %>
+      <div class="buttons">
+        <%= link_to 'Back', :back %>
+        <% if current_user.id == @post.user.id %>
+          |
+          <%= link_to 'Edit', edit_post_path(@post) %>
+          |
+          <%= link_to 'Delete', post_path(@post), method: :delete %>
+        <% end %>
+      </div>
     <% end %>
-    </div>
+
   </div>
 </div>
