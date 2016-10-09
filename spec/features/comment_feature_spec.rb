@@ -3,7 +3,7 @@ require "rails_helper"
 feature "comments" do
 
   let!(:user1){ User.create(email: "test@test.com", password: "123456") }
-  let!(:post1){ Post.create(description: "visit", location: "Parliament in Budapest, Hungary", image_file_name: "photo_01.jpg", user: user1) }
+  let!(:post1){ Post.create(description: "visit", location: "Chain bridge in Budapest, Hungary", image_file_name: "photo_01.jpg", user: user1) }
   let!(:comment1){ Comment.create(comment: "good pic", post_id: post1.id, user: user1) }
 
   context "logged in" do
@@ -21,7 +21,7 @@ feature "comments" do
         expect(current_path).to eq "/posts/#{post1.id}/comments/new"
 
         add_comment(post: post1)
-        expect(page).to have_css("div#yield", text: "nice photo, like it")
+        expect(page).to have_css("div#post#{post1.id}_comments", text: "nice photo, like it")
 
       end
 
@@ -29,31 +29,41 @@ feature "comments" do
         visit_post_and_add_comment(post: post1)
         visit_post_and_add_comment(comment: "my favourite pic", post: post1)
 
-        expect(page).to have_css("div#yield", text: "nice photo, like it")
-        expect(page).to have_css("div#yield", text: "my favourite pic")
+        expect(page).to have_css("div#post#{post1.id}_comments", text: "nice photo, like it")
+        expect(page).to have_css("div#post#{post1.id}_comments", text: "my favourite pic")
       end
     end
 
     context "show comment" do
 
-      scenario "user clicks on a comment and the entire content become visible" do
+      scenario "user clicks on a comment and the entire content becomes visible" do
         visit_post(post1)
         click_link("#{comment1.id}")
 
-        expect(page).to have_css("div#yield", text: "good pic")
-
+        expect(page).to have_css("div#comment_body", text: "good pic")
+        expect(page).to have_css("div#comment_created", text: "by #{user1.email}")
         expect(find_link('Edit comment').visible?).to eq true
         expect(find_link('Delete comment').visible?).to eq true
       end
 
-      scenario "user can go back to the post" do
+      scenario "user can go back to the post and comment is shown there" do
         visit_post(post1)
         click_link("#{comment1.id}")
         click_link("Back to post")
 
         expect(current_path).to eq "/posts/#{post1.id}"
-        expect(page).to have_css("div#yield", text: "Parliament in Budapest, Hungary")
-        expect(page).to have_css("div#yield", text: "good pic")
+        expect(page).to have_css("div#post_location", text: "Chain bridge in Budapest, Hungary")
+        expect(page).to have_css("div#post#{post1.id}_comments", text: "good pic")
+      end
+
+      scenario "message available if there is no comment" do
+        visit_post(post1)
+        click_link("#{comment1.id}")
+        click_link("Delete comment")
+
+        expect(page).to have_css("div#post#{post1.id}_comments", text: "No comments available")
+        visit "/posts"
+        expect(page).to have_css("div#post#{post1.id}_comments", text: "No comments available")
       end
 
     end
@@ -67,8 +77,8 @@ feature "comments" do
         fill_in('comment_field', with: "comment updated")
         click_button "Update"
 
-        expect(page).to have_css("div#yield", text: "comment updated")
-        expect(page).to_not have_css("div#yield", text: "good pic")
+        expect(page).to have_css("div#comment_body", text: "comment updated")
+        expect(page).to_not have_css("div#comment_body", text: "good pic")
         expect(current_path).to eq "/posts/#{post1.id}/comments/#{comment1.id}"
       end
 
