@@ -23,3 +23,7 @@ module InstagramChallenge
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+# config.generators do |g|
+#   g.template_engine :haml
+# end
