@@ -5,6 +5,15 @@
     <h3><%= post.name %></h3>
     <%= image_tag post.image.url(:medium) %><br>
     <%= post.content %><br>
+    <%= link_to 'Leave comment', new_post_comment_path(post) %>
+    <% if post.comments.any? %>
+      <% post.comments.each do |comment| %>
+      <%= comment.content %>
+      <% end %>
+      <% else %>
+      No comments yet
+    <% end %>
+    <%=  %>
   <% end %>
 <% else %>
 No posts yet

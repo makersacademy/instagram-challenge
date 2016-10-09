@@ -29,8 +29,8 @@ Features:
 [x] displaying posts
 [x] adding pictures
 [x] displaying pictures
-[ ] adding comments
-[ ] displaying comments
+[x] adding comments
+[x] displaying comments
 [ ] adding users
 [ ] log in
 [ ] Facebook log in
@@ -101,3 +101,4 @@ Creating a mode:
 - `rails g model post name:string content:string` (note singularity of 'post' - this is important!)
 - run `rake db:migrate` and `rake db:migrate RAILS_ENV=test` if needed
 - to remove a migration `rails d migration MigrationName`, then `rake db:drop db:create db:migrate` (+ test environment if required)
+- to add a referenece `rails g migration AddPostRefToComments post:references`
