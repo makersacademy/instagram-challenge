@@ -8,4 +8,11 @@ feature 'Upload pictures' do
       expect(page).to have_content("Add your photos and share you experiences!")
     end
   end
+
+  context 'Uploading a photo' do
+    scenario 'when a picture is uploaded' do
+      visit ('/photos/new')
+
+    end
+  end
 end
