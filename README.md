@@ -84,6 +84,7 @@ The program provides the following functions:
 $ gem install rails
 $ git clone https://github.com/peter-miklos/instagram-challenge
 $ bin/rake db:create
+$ bin/rake db:migrate
 $ bundle
 $ bin/rails s
 ```
