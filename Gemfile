@@ -14,6 +14,7 @@ gem "haml-rails"
 gem 'materialize-sass'
 
 gem 'paperclip'
+gem 'aws-sdk'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -38,6 +39,7 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'database_cleaner'
