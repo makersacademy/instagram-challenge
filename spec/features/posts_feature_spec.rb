@@ -28,7 +28,13 @@ feature 'posts' do
     context 'viewing posts' do
       let!(:cat){Post.create(image_file_name: 'cat.jpg', caption:'Awesome cat')}
       scenario 'Clicking full shows the post' do
-        visit '/posts'
+        visit '/'
+        click_link 'Sign up'
+        fill_in 'user[email]', with: "testing@test.com"
+        fill_in 'user[password]', with: "testing"
+        fill_in 'user[password_confirmation]', with: "testing"
+        click_button "Sign up"
+        save_and_open_page
         click_link 'Awesome cat'
         expect(current_path).to eq "/posts/#{cat.id}"
         expect(page).to have_content 'Awesome cat'
@@ -66,16 +72,13 @@ feature 'posts' do
       end
     end
 
-
     context 'a caption longer than 140 characters' do
       scenario 'does not let you submit caption more than 140 chars' do
         visit '/posts'
         click_link 'Upload a photo'
         fill_in 'post[caption]', with: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et mag.'
-        click_button 'Upload' 
+        click_button 'Upload'
         expect(page).not_to have_content 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et mag.'
       end
     end
-
-
   end

@@ -34,6 +34,8 @@ gem 'aws-sdk', '<2.0'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'dotenv'
+gem 'bootstrap-sass'
+gem 'launchy'
 
 group :production do
   gem 'rails_12factor'

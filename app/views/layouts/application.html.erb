@@ -9,13 +9,31 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-      <% else %>
-      <%= link_to "Sign in", new_user_session_path %>
-      <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
-      <%= link_to "Sign up", new_user_registration_path %>
-      <% end %>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div class="navbar-brand" href="/index">
+            <a href="/index">IG</a>
+          </div>
+
+
+          <ul class="nav nav-bar navbar-right">
+
+            <% if user_signed_in? %>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+            <li><%= link_to "Sign in", new_user_session_path %></a></li>
+            <li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <% end %>
+
+          </ul>
+
+        </div>
+
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
