@@ -1,0 +1,41 @@
+<div class="container">
+
+  <% if @post.errors.any? %>
+  <section id="errors" >
+    <h2> <%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved: </h2>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
+  <h2>New post</h2>
+
+  <%= form_for(@post, html: {multipart: true}) do |post| %>
+    <div class="form-group row">
+      <label for="image" class="col-xs-3 col-form-label"><%= post.label :image %></label>
+      <div class="col-xs-9" id="image">
+        <%= post.file_field :image %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="description" class="col-xs-3 col-form-label"><%= post.label :description %></label>
+      <div class="col-xs-9" id="description">
+        <%= post.text_field(:description, class: "form-control", placeholder: "Add description here") %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="location" class="col-xs-3 col-form-label"><%= post.label :location %></label>
+      <div class="col-xs-9" id="location">
+        <%= post.text_field(:location, class: "form-control", placeholder: "Add location here") %>
+      </div>
+    </div>
+
+    <%= post.submit "Post it", class: "btn btn-primary" %>
+    <%= link_to "Cancel", posts_path %>
+  <% end %>
+</div>

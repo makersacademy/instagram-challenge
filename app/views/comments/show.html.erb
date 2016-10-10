@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-6" id="comment_created">
+            <%= "Commented on: #{@comment.created_at.strftime('%d/%m/%y')} (by #{@comment.user.email})" %>
+          </div>
+          <div class="col-xs-6 text-right" id="comment_last_updated">
+            <%= "Last updated on: #{@comment.updated_at.strftime('%d/%m/%y')}" %>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body" id="comment_body">
+          <%= @comment.comment%>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-xs-4">
+        <%= link_to "Back", :back %>
+      </div>
+      <div class="col-xs-4">
+        <% if (current_user && current_user.id == @comment.user_id)%>
+          <%= link_to "Edit comment", edit_post_comment_path(@post, @comment) %>
+        <% end %>
+      </div>
+      <div class="col-xs-4">
+        <%= link_to "Delete comment", post_comment_path(@post, @comment), method: :delete %>
+      </div>
+    </div>
+  </div>
+</div>

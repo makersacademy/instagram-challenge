@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-6" id="post_created">
+            <%= "Posted on: #{@post.created_at.strftime('%d/%m/%y')} (by #{@post.user.email})" %>
+          </div>
+          <div class="col-xs-6 text-right" id="post_location">
+            Location: <%= @post.location%>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body" id="post_body">
+        <div class="row text-center">
+          <%= image_tag @post.image.url(:medium)%>
+          <figcaption>
+            <%= @post.description%>
+          </figcaption>
+        </div>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-xs-3" id="likes">
+        <% if (current_user && Like.exists?(user_id: current_user.id, post_id: @post.id)) %>
+          <% @like = Like.find_by(user_id: current_user.id, post_id: @post.id) %>
+          <%= link_to ("Liked"), post_like_path(@post, @like), method: :delete %>
+          (<%= @post.likes.count %>)
+        <% elsif (current_user) %>
+          <%= link_to ("Like"), post_likes_path(@post), method: :post %>
+          (<%= @post.likes.count %>)
+        <% else %>
+          Like(<%= @post.likes.count %>)
+        <% end %>
+      </div>
+      <div class="col-xs-3">
+        <%= link_to "Add comment", new_post_comment_path(@post) %>
+      </div>
+      <div class="col-xs-3">
+        <% if (current_user && current_user.id == @post.user_id)%>
+          <%= link_to "Edit post", edit_post_path(@post) %>
+        <% end %>
+      </div>
+      <div class="col-xs-3">
+        <% if (current_user && current_user.id == @post.user_id)%>
+          <%= link_to "Delete post", post_path(@post), method: :delete %>
+        <% end %>
+      </div>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-12" id="post<%= @post.id%>_comments">
+            <% if (@comments.empty?)%>
+              No comments available
+            <% else %>
+              <% @comments.each do |comment| %>
+                <div class="">
+                  <%= link_to raw("<strong>#{comment.user.email} </strong>(#{comment.created_at.strftime('%d/%m/%y')}): #{comment.comment}"), post_comment_path(@post, comment), id: "#{comment.id}" %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="container">
+  <h2>Posts</h2>
+
+  <% if @posts.any? %>
+
+  <% @posts.each.with_index do |post, index| %>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-6" id="post<%= post.id %>_created">
+            <%= "Posted on: #{post.created_at.strftime('%d/%m/%y')} (by #{post.user.email})" %>
+          </div>
+          <div class="col-xs-6 text-right" id="post<%= post.id %>_location">
+            Location: <%= post.location%>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body" id="post<%=post.id%>_body">
+        <div class="row text-center">
+          <%= link_to image_tag(post.image.url(:medium)), post_path(post)%>
+          <figcaption>
+            <%= link_to post.description, post_path(post)%>
+          </figcaption>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-12" id="post<%= post.id %>_comments">
+            <% if (post.comments.empty?)%>
+              No comments available
+            <% else %>
+              <% post.comments.each do |comment| %>
+                <div class="">
+                  <%= link_to raw("<strong>#{comment.user.email} </strong>(#{comment.created_at.strftime('%d/%m/%y')}): #{comment.comment}"), post_comment_path(post, comment), id: "#{comment.id}" %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p></p>
+  <% end %>
+  <% else %>
+    No post found
+  <% end %>
+</div>
