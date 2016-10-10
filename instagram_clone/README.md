@@ -22,26 +22,40 @@ So I can look up a photo quickly
 I want to be able to filter photos according to a category and/or date  
 ```
 
+## Installation
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```sh
+$ git clone https://github.com/littlethao/instagram-challenge.git
+$ cd instagram-challenge/instagram_clone
+$ rake db:setup
+$ rspec
+```
 
-Things you may want to cover:
+To run app:
+
+```sh
+$ rake db:migrate
+$ rails s
+```
+
+**You should now be able to access the app in your browser at [localhost:3000](http://localhost:3000)**!
+
+```
+![Screenshot](http://imgur.com/c7kjEZ3)
+```
+
+## Technologies
 
 * Ruby version
 
-* System dependencies
+* Rails version 5.0.0
 
-* Configuration
+* Gem Devise for user functionalities
 
-* Database creation
+* Gem Paperclip and ImageMagick for picture upload management
 
-* Database initialization
+* Test suite with RSpec-rails, Capybara and gem Shoulda
 
-* How to run the test suite
+* PostgreSQL for database set up
 
 * Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

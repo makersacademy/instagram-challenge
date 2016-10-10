@@ -16,8 +16,29 @@
       <%= link_to "Sign up", new_user_registration_path %>
     <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to 'Instagram Clone', root_path, class: 'navbar-brand' %>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Pictures', root_path %></li>
+            <li><%= link_to 'Upload Your Picture', new_picture_path %></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+          <%= value %>
+        </div>
+      <% end %>
+
+    </div>
 
     <%= yield %>
   </body>
