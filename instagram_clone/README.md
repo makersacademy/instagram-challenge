@@ -41,7 +41,7 @@ $ rails s
 **You should now be able to access the app in your browser at [localhost:3000](http://localhost:3000)**!
 
 ```
-![Screenshot](http://imgur.com/c7kjEZ3)
+![Screenshot]([Imgur](http://i.imgur.com/c7kjEZ3.png)
 ```
 
 ## Technologies
