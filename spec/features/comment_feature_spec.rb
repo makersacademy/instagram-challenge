@@ -51,7 +51,7 @@ feature "comments" do
       scenario "user can go back to the post and comment is shown there" do
         visit_post(post1)
         click_link("#{comment1.id}")
-        click_link("Back to post")
+        click_link("Back")
 
         expect(current_path).to eq "/posts/#{post1.id}"
         expect(page).to have_css("div#post_location", text: "Chain bridge in Budapest, Hungary")
