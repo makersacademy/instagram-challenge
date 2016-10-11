@@ -1,0 +1,11 @@
+- if @picture
+  .row
+    .col.s12
+      %h4.strong Add Comment
+      .divider
+      = form_for :comment, url: picture_comments_path(@picture.id), method: :post do |f|
+        = f.text_area :comment,class: "materialize-textarea"
+        = f.submit 'Post', :class => "btn"
+- else
+  = notice
+  = alert
