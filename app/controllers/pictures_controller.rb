@@ -26,11 +26,8 @@ class PicturesController < ApplicationController
   end
 
   def update
-    puts params[:id]
     @picture = Picture.find(params[:id])
-    puts @picture
     update_likes = @picture.likes.to_i + 1
-    puts update_likes
     @picture.update(likes: update_likes)
   end
 

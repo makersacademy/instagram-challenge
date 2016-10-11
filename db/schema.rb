@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 20161009165827) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "comment"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "pictures_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "picture_id"
     t.integer  "user_id"
-    t.index ["pictures_id"], name: "index_comments_on_pictures_id", using: :btree
+    t.index ["picture_id"], name: "index_comments_on_picture_id", using: :btree
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -53,5 +53,5 @@ ActiveRecord::Schema.define(version: 20161009165827) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "comments", "pictures", column: "pictures_id"
+  add_foreign_key "comments", "pictures"
 end

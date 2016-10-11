@@ -11,5 +11,10 @@ class Picture < ApplicationRecord
   def show_likes
     self.likes
   end
-  
+
+  def show_comments
+    total_comments = Comment.where(picture_id: self)
+    return total_comments.size
+  end
+
 end
