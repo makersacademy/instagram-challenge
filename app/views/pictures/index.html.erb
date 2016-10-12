@@ -1,0 +1,19 @@
+<% if @pictures.any? %>
+  <% @pictures.each do |pic| %>
+    <h2> <%= pic.caption %> </h2>
+    <h2> <%= image_tag pic.image.url(:medium) %> </h2>
+    <h3> comments </h3>
+    <p> <%= pic.user.user_name %>
+    <% pic.comments.each do |comment| %>
+      <p> <%= comment.thoughts %> </p>
+    <% end %>
+    <%= link_to "Edit", edit_picture_path(pic) %>
+    <%= link_to "Delete", picture_path(pic), method: :delete %>
+    <%= link_to "Comment", new_picture_comment_path(pic) %>
+  <% end %>
+<% else %>
+  No pictures yet
+<% end %>
+
+<%= link_to "Add Picture", new_picture_path %>
+
