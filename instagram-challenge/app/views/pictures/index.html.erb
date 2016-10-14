@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+
+  <div class="col-lg-2 col-sm-3 col-lg-*">
+ <div class="center-block">
+    <%= link_to picture.description, picture_path(picture) %>
+    <%= link_to image_tag(picture.image.url(:thumb)), picture_path(picture) %>
+  </div>
+      <% if current_user %>
+
+        <%= link_to "Comment on #{picture.description}", new_picture_comment_path(picture)  %>
+          <% if current_user && picture.user == current_user %>
+            <%= link_to "Delete #{picture.description}", picture_path(picture), method: :delete %>
+          <% end %>
+            <% if current_user.has_liked?(picture) %>
+            <button type="button" class="btn btn-default btn-sm">
+              <span class="glyphicon glyphicon"> liked <%= "♥ #{picture.likes.count}" %></span>
+            </button>
+            <% else %>
+              <button type="button" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon"></span>
+                  <%= link_to "♥ #{picture.likes.count}", picture_likes_path(picture), method: :post %>
+              </button>
+            <% end %>
+              <%= link_to "View all comments", picture_path(picture) %>
+          <% end %>
+
+</div>
+<% end %>
+<% else %>
+<h1>No pictures yet</h1>
+<% end %>
+</div>
+</div>
