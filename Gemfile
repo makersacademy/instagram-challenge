@@ -54,3 +54,4 @@ gem 'devise'
 gem 'pg'
 gem "paperclip", "~> 5.0.0"
 gem "fog-aws"
+gem 'omniauth-facebook'

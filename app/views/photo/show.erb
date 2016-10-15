@@ -1,10 +1,13 @@
 <%= image_tag @photo.image.url(:medium) %>
 <br>
 <%= @photo.description %>---<%= @photo.user.email %>
+Posted on <%= @photo.created_at.strftime("%d %b")%>
+<% if user_signed_in? %>
 <%= form_for :comment,  url: "/photo/#{@photo.id}/comment" do |f| %>
   Comment: <%= f.text_area :description, placeholder: "Comment"%><br />
   <%= f.submit("Add Comment") %>
   <br>
+<% end %>
 <% end %>
 <% if @check %>
 <%= button_to "Delete Picture", "/photo/#{@photo.id}", method: :delete %>

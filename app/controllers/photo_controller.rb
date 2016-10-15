@@ -16,16 +16,16 @@ class PhotoController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
-    @check = @photo.user.id == current_user.id
+    if user_signed_in?
+      @user = User.find(current_user.id)
+      @check = @photo.user.id == current_user.id
+    end
     @comments = @photo.comments
   end
 
   def destroy
     @photo = Photo.find(params[:id])
     @comments = @photo.comments
-    @comments.each do |comment|
-      comment.destroy
-    end
     @photo.destroy
     redirect_to "/photo"
   end
