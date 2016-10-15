@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sofigram</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/photo">SofiGram</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><%= link_to('Home', "/photo", {method: :get}) %></li>
+            <% if user_signed_in? %>
+            <li><%= link_to('Add Picture', new_photo_path, {method: :get}) %></li>
+            <% end %>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed In As: <%= current_user.email %><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to('Sign Out', destroy_user_session_path, {method: :delete}) %></li>
+              </ul>
+            </li>
+            <% else %>
+            <li><%= link_to('Sign In', new_user_session_path, {method: :get}) %></li>
+            <li><%= link_to('Sign Up', new_user_registration_path, {method: :get}) %></li>
+            <% end %>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <% flash.each do |key, value| %>
+      <%= value %>
+      <a href="#" data-dismiss="alert" class="close">x</a>
+    <% end %>
+<div class="jumbotron">
+  <div class="container" align="center">
+    <%= yield %>
+  </div>
+</div>
+<div class="footer">
+  <div class="container">Project by Erce</div>
+</div>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<% @photos.reverse.each do |photo| %>
+<%= link_to image_tag(photo.image.url(:medium)), "/photo/#{photo.id}", method: :get %>
+<br>
+<%= photo.description %>---<%= photo.user.email %> <br>
+Posted on <%=photo.created_at.strftime("%d %b")%>
+<br>
+<% end %>
+<% if @check %>
+<%= button_to "Edit", "/photo/#{@photo.id}/edit", method: :get %>
+<%= button_to "Delete", "/photo/#{@photo.id}", method: :delete %>
+<% end %>
+<% if @photos.empty? %>
+<p>There are no photos yet!</p>
+<% end %>
