@@ -60,4 +60,16 @@ feature 'photos' do
       expect(page).to have_content('edited description')
     end
   end
+
+  context 'deleting photos' do
+
+    scenario 'users can delete a photo' do
+      add_photo
+      click_link 'Jonathan shad'
+      click_link 'Delete photo'
+      expect(current_path).to eq '/photos'
+      expect(page).not_to have_css("img[src*='jonathan_shad.jpg']")
+      expect(page).to have_content('Photo deleted')
+    end
+  end
 end
