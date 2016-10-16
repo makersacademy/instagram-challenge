@@ -1,0 +1,13 @@
+
+<% if @photos.any? %>
+
+  <% @photos.each do |photo| %>
+    <photo><%= link_to image_tag(photo.image.url(:medium)), photo_path(photo) %></photo>
+    <p><%= photo.description %></p>
+  <% end %>
+
+<% else %>
+  <h3>Nothing seems to have been added yet.</h3>
+<% end %>
+
+<%= link_to "Add photo", new_photo_path %>
