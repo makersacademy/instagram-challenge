@@ -27,14 +27,22 @@ feature 'photos' do
   context 'Adding photos' do
 
     scenario 'prompts user to fill out a form, then links back to main page' do
-      visit '/photos'
-      click_link 'Add photo'
-      attach_file('Image', '/Users/Jon/Desktop/jonathan_shad.jpg')
-      fill_in 'Description', with: 'My makers pic'
-      click_button 'Add photo'
-      expect(page).to have_content('jonathan_shad.jpg')
+      add_photo
+      expect(page).to have_css("img[src*='jonathan_shad.jpg']")
       expect(page).to have_content('My makers pic')
       expect(current_path).to eq '/photos'
+    end
+  end
+
+  context 'Reading photos' do
+
+    scenario 'user can click a photo to see its individual page' do
+      add_photo
+      click_link 'Jonathan shad'
+      expect(page).to have_css("img[src*='jonathan_shad.jpg']")
+      expect(page).to have_content('My makers pic')
+      photo = Photo.last
+      expect(current_path).to eq photo_path(photo)
     end
   end
 end
