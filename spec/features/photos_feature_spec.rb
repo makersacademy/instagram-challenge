@@ -45,4 +45,19 @@ feature 'photos' do
       expect(current_path).to eq photo_path(photo)
     end
   end
+
+  context 'updating photos' do
+
+    scenario 'user can edit a previously uploaded image' do
+      add_photo
+      click_link 'Jonathan shad'
+      click_link 'Edit photo'
+      fill_in 'Description', with: 'edited description'
+      click_button 'Confirm changes'
+      photo = Photo.last
+      expect(current_path).to eq photo_path(photo)
+      expect(page).to have_css("img[src*='jonathan_shad.jpg']")
+      expect(page).to have_content('edited description')
+    end
+  end
 end
