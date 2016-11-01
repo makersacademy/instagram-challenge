@@ -1,0 +1,31 @@
+
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <h3><%= link_to post.title, post_path(post) %></h3>
+    <% if post.image_file_name %>
+        <%= image_tag post.image.url(:medium) %>
+      <% end %>
+    <%= link_to "Like", post_likes_path(post), class: 'likes-link'%>
+    <span class="likes_count"> <%= post.likes.count %> </span>
+    <%= 'like'.pluralize(post.likes.count) %>
+
+    <%= link_to "Comment on #{post.title}", new_post_comment_path(post) %>
+    <% if post.user == current_user %>
+      <%= link_to "Edit #{post.title}", edit_post_path(post) %>
+      <%= link_to "Delete #{post.title}", post_path(post), method: :delete %>
+    <% end %>
+
+    <% if post.comments.any? %>
+      <p> Comments: </p>
+      <% post.comments.each do |comment| %>
+        <%= comment.thoughts %>
+      <% end %>
+    <% end %>
+
+  <% end %>
+<%else %>
+  <h1>No posts yet</h1>
+<% end %>
+<br>
+<br>
+<%= link_to "New post", new_post_path, :class => 'btn btn-primary' %>
