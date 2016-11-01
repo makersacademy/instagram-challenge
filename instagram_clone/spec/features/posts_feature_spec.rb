@@ -15,7 +15,7 @@ feature 'posts' do
     context 'creating posts' do
       scenario 'prompts user to fill out a form, then displays the new post' do
         visit '/posts'
-        click_link 'New post'
+        click_link 'New post', match: :first
         fill_in 'Title', with: 'First post'
         fill_in 'Description', with: 'great'
         page.attach_file("post_image", Rails.root + 'app/assets/images/shadow.JPG')
@@ -26,7 +26,7 @@ feature 'posts' do
 
       it 'does not allow posts with a title less than 3 characters' do
         visit '/posts'
-        click_link 'New post'
+        click_link 'New post', match: :first
         fill_in 'Title', with: 'aa'
         click_button 'Create Post'
         expect(page).not_to have_css 'h2', text: 'aa'
@@ -35,7 +35,7 @@ feature 'posts' do
 
       it "does not allow posts without an image" do
         visit '/posts'
-        click_link 'New post'
+        click_link 'New post', match: :first
         fill_in 'Title', with: 'valid title'
         click_button 'Create Post'
         expect(page).not_to have_css 'h2', text: 'valid title'

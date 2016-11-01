@@ -1,7 +1,7 @@
 
 def create_post
   visit '/posts'
-  click_link 'New post'
+  click_link 'New post', match: :first
   fill_in 'Title', with: 'First post'
   fill_in 'Description', with: 'great'
   page.attach_file("post_image", Rails.root + 'app/assets/images/shadow.JPG')
