@@ -13,6 +13,7 @@
 // = require jquery
 // = require jquery_ujs
 // = require turbolinks
+// = require_self
 // = require_tree .
 // = require z.jquery.fileupload
 // = require jquery.ui.widget
