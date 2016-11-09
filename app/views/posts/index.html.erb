@@ -1,0 +1,58 @@
+<% if @posts.any? %>
+<% @posts.reverse.each do |post| %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class='post'>
+      <h3 class='post-title'>
+        <%=post.title %><br>
+      </h3>
+        <%= image_tag post.image.url(:medium) %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-5 col-md-offset-3">
+    <div class='leave-comment'>
+      <p> <%= link_to "Leave Comment", new_post_comment_path(post) %> </p>
+    </div>
+  </div>
+</div>
+<div class="row">
+
+  <div class="col-md-5 col-md-offset-3">
+    <div class='delete-post'>
+      <% if user_signed_in? %>
+      <% if current_user.posts.include?(post) %>
+      <p> <%= link_to "Delete Post", post_path(post), method: :delete %> </p>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1 col-md-offset-6">
+    <p> <%= link_to post_irons_path(post), method: :post, class: "iron" do %>
+      <img alt='image' width='80' src='/images/mustache.svg'/>
+      <% end %>
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1 col-md-offset-6">
+    <div class='iron-wrapper'>
+      <span class='iron-count'>
+        <% if post.irons.any? %>
+        <%= post.irons.count %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<% end %>
+<% end %>
