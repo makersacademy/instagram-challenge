@@ -5,7 +5,7 @@ feature 'images' do
     scenario 'should display a prompt to add an image' do
       visit '/images'
       expect(page).to have_content('No images yet')
-      expect(page).to have_link('Ad an image')
+      expect(page).to have_link('Add an image')
     end
   end
 end
