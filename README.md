@@ -13,16 +13,12 @@ So that I can be entertained
 I would like to be able to add comments to all pictures including my own pictures.
 
 As a user (logged in)
-So that I can be entertained
-I would like to be able to like other people's pictures (but not my own pictures)
-
-As a user (logged in)
 So that I can show my best pictures
 I would like to be able to delete the pictures that I no longer want to show (but not other people's pictures)
 
 As a user (logged in)
 So that I fairly vote on pictures I like
-I would like to be able to vote once for the pictures that I like (but my own pictures)
+I would like to be able to vote once for the pictures that I like (but not my own pictures)
 
 As a website visitor (not logged in)
 So that I can be entertained
