@@ -45,6 +45,7 @@ class GramsController < ApplicationController
 
   def show
     @gram = Gram.find(params[:id])
+    @comment = Comment.new
   end
 
   private

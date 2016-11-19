@@ -3,3 +3,12 @@
 <% if current_user && current_user == @gram.user %>
   <%= link_to "Edit", edit_gram_path(@gram) %>
 <% end %>
+
+<%= simple_form_for [@gram, @comment] do |f| %>
+  <%= f.input :body, label: "Leave a comment:" %>
+  <%= f.button :submit %>
+<% end %>
+
+<% @gram.comments.each do |comment| %>
+  <p><%= comment.user.email %> says <%= comment.body %></p>
+<% end %>
