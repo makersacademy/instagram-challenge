@@ -6,10 +6,19 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @post = Post.find(params[:post_id])
-    @post.comments.create(comment_params)
-    redirect_to '/posts'
+    @post = Post.find comment_params[:post_id]
+    @comment = @post.build_comment comment_params, current_user
+    if @comment.save
+      redirect_to posts_path
+    else
+      if @comment.errors[:user]
+        redirect_to posts_path, alert: 'You have already commented on this post'
+      else
+        render :new
+      end
+    end
   end
+
 
   private
 

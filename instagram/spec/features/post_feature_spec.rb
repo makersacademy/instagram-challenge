@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative 'sign_in_helper'
 
 feature 'posts' do
   context 'no posts have been added' do
@@ -25,6 +26,7 @@ feature 'posts' do
 
     context 'an invalid post' do
       scenario 'does not let you submit a post caption that is too short' do
+        sign_in
         visit '/posts'
         click_link 'Add a post'
         fill_in 'Caption', with: 'uf'
@@ -34,6 +36,7 @@ feature 'posts' do
       end
     end
     scenario 'tells user to fill in a form, then displays the new post' do
+      sign_in
       visit '/posts'
       click_link 'Add a post'
       fill_in 'Caption', with: 'Amazing'
@@ -60,6 +63,7 @@ feature 'posts' do
     before { Post.create caption: 'Sunset', description: 'Devon dreaming' }
 
     scenario 'let a user edit a post' do
+      sign_in
       visit '/posts'
       click_link 'Edit Sunset'
       fill_in 'Caption', with: 'Devon sunset'
@@ -76,6 +80,7 @@ feature 'posts' do
     before { Post.create caption: 'Devon sunset', description: 'Devon dreaming' }
 
     scenario 'removes a post when a user clicks a delete link' do
+      sign_in
       visit '/posts'
       click_link 'Delete Devon sunset'
       expect(page).not_to have_content 'Devon sunset'
