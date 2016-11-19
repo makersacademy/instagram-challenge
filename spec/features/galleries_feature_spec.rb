@@ -42,17 +42,18 @@ feature 'gallery' do
     end
   end
 
-  context 'editing restaurants' do
+  context 'editing gallery name' do
 
   before { @gallery = Gallery.create name: 'GB favourites' }
 
   scenario 'let a user edit a gallery' do
    visit '/galleries'
-   click_link "Edit \"#{@gallery.name}\""
+   click_link "GB favourites"
+   click_link "Edit name"
    fill_in 'Name', with: 'GB ultimate favourites'
    click_button 'Update Gallery'
    expect(page).to have_content 'GB ultimate favourites'
-   expect(current_path).to eq '/galleries'
+   expect(current_path).to eq "/galleries/#{@gallery.id}"
   end
 
 end
