@@ -14,6 +14,10 @@ I would like to be able to add comments to all pictures including my own picture
 
 As a user (logged in)
 So that I can show my best pictures
+I would like to be able to delete galleries that I no longer want to show (but not other people's galleries)
+
+As a user (logged in)
+So that I can show my best pictures
 I would like to be able to delete the pictures that I no longer want to show (but not other people's pictures)
 
 As a user (logged in)

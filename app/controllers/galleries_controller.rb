@@ -28,6 +28,13 @@ class GalleriesController < ApplicationController
     redirect_to gallery_path
   end
 
+  def destroy
+    @gallery = Gallery.find(params[:id])
+    @gallery.destroy
+    flash[:notice] = "The \"#{@gallery.name}\" gallery was successfully deleted"
+    redirect_to "/galleries"
+  end
+
   private
   def gallery_params
     params.require(:gallery).permit(:name)

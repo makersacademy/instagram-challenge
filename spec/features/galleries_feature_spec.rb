@@ -43,20 +43,41 @@ feature 'gallery' do
   end
 
   context 'editing gallery name' do
-
   before { @gallery = Gallery.create name: 'GB favourites' }
-
-  scenario 'let a user edit a gallery' do
-   visit '/galleries'
-   click_link "GB favourites"
-   click_link "Edit name"
-   fill_in 'Name', with: 'GB ultimate favourites'
-   click_button 'Update Gallery'
-   expect(page).to have_content 'GB ultimate favourites'
-   expect(current_path).to eq "/galleries/#{@gallery.id}"
+    scenario 'let a user edit a gallery' do
+      visit '/galleries'
+      click_link "GB favourites"
+      click_link "Edit name"
+      fill_in 'Name', with: 'GB ultimate favourites'
+      click_button 'Update Gallery'
+      expect(page).to have_content 'GB ultimate favourites'
+      expect(current_path).to eq "/galleries/#{@gallery.id}"
+    end
   end
 
+  context 'deleting galleries' do
+    before { @gallery = Gallery.create name: 'GB favourites' }
+    scenario 'removes a gallery when a user clicks a delete link' do
+      visit '/galleries'
+      click_link "GB favourites"
+      click_link 'Delete Gallery'
+      expect(page).to have_content "The \"#{@gallery.name}\" gallery was successfully deleted"
+    end
+
+  end
 end
 
 
-end
+
+
+
+
+
+
+
+
+
+
+
+
+#
