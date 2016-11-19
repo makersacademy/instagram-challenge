@@ -12,7 +12,15 @@ I want to be able to comment on pictures
 
 As a social user
 So I can show my friends I am interested in their lives
-I want to be able to like pictures
+I want to be able to 'like' pictures
+
+As a user,
+So I don't leave compromising images on the site,
+I want to be able to delete photos
+
+As a user,
+So I can correct mistakes,
+I want to be able to edit photo descriptions.
 
 As a photographer wannabe
 So I can make my photos look awesome
