@@ -44,4 +44,18 @@ describe 'Posts' do
       end
     end
   end
+
+  describe 'Post#show' do
+    before do
+      post_photo
+    end
+
+    context 'displaying a post' do
+      scenario '#index has link to #show' do
+        visit '/'
+        click_link 'Kittens!'
+        expect(current_path).to eq "/posts/#{Post.last.id}"
+      end
+    end
+  end
 end
