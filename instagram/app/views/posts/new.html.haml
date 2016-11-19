@@ -7,8 +7,9 @@
     %ul
       - @post.errors.full_messages.each do |message|
         %li= message
-        
-= form_for @post do |f|
+
+= form_for @post, html: {multipart: true} do |f|
   = f.label :caption
   = f.text_field :caption
+  = f.file_field :image
   = f.submit
