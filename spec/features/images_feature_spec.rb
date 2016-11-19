@@ -31,4 +31,13 @@ feature 'images' do
       # expect(page).to have_image
     end
   end
+
+  context 'viewing images' do
+    scenario 'lets a user view an image' do
+      visit '/images'
+      click_link OF THE IMAGE
+      expect(page).to have_image
+      expect(current_path).to eq '/images/#{}'
+    end
+  end
 end

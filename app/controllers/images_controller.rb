@@ -13,9 +13,14 @@ class ImagesController < ApplicationController
     redirect_to images_path
   end
 
+  def show
+    @image = Image.find(params[:id])
+    @image.image
+  end
+
   private
 
   def image_params
-    params.require(:image).permit(:description)
+    params.require(:image).permit(:avatar, :description)
   end
 end
