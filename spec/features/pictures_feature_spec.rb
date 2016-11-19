@@ -33,4 +33,16 @@ feature 'pictures' do
      expect(current_path).to eq '/pictures'
     end
   end
+
+  context 'deleting pictures' do
+    before { Picture.create(description: 'Kitty cat') }
+    scenario 'removes a picture when a user clicks a delete link' do
+      visit '/pictures'
+      click_link 'Kitty cat'
+      click_link 'Delete'
+      expect(page).not_to have_content 'Kitty cat'
+      expect(page).to have_content 'Picture deleted successfully'
+      expect(current_path).to eq '/pictures'
+    end
+  end
 end
