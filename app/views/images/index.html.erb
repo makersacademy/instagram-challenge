@@ -1,11 +1,12 @@
-<% if @images.any? %>
-  <% @images.each do |image| %>
+<% if @image.any? %>
+  <% @image.each do |image| %>
     <h2> <%= image.description %> </h2>
     <%= link_to image.description, image_path(image) %>
     <%= link_to (image_tag (image.avatar.url(:medium))), image_path(image) %>
     <%= link_to "Edit description", edit_image_path(image) %>
     <%= link_to "Delete image", image_path(image), method: :delete %>
-
+    <%= link_to "Love", new_image_loves_path(image) %>
+    <%= "Loves: NUMBER" %>
   <% end %>
 <% else %>
   No images yet
