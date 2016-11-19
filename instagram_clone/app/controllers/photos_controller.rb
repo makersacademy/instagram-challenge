@@ -16,11 +16,20 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
   end
 
+  def edit
+    @photo = Photo.find(params[:id])
+  end
 
-end
+  def update
+    @photo = Photo.find(params[:id])
+    @photo.update(photo_params)
+    redirect_to(photo_path(@photo))
+  end
 
 private
 
 def photo_params
   params.require(:photo).permit(:image, :caption)
+end
+
 end
