@@ -26,7 +26,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 gem 'kaminari'
-
+gem 'aws-sdk', '~> 2.3'
 %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
   gem lib, :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'
 end
