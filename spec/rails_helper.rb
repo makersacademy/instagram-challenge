@@ -9,8 +9,8 @@ require 'feature_helper'
 require 'database_cleaner'
 require 'capybara/rails'
 
-# include Warden::Test::Helpers
-# Warden.test_mode!
+include Warden::Test::Helpers
+Warden.test_mode!
 
 
 ActiveRecord::Migration.maintain_test_schema!

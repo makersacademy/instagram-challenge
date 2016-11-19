@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Picture, type: :model do
 
-  subject(:picture) {described_class.new}
+  let(:user) { User.create(username: 'bob', email: 'bob@gmail.com', password: '12345678', password_confirmation: '12345678') }
+
+  subject(:picture) {described_class.new(user_id: user.id)}
 
   it 'can save a picture object to the database' do
     expect{picture.save!}.to change {Picture.count}.by(1)
