@@ -40,5 +40,7 @@ group :test do
   gem 'capybara'
 end
 
+gem 'devise'
+
 # Use debugger
 # gem 'debugger', group: [:development, :test]

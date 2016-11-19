@@ -2,6 +2,7 @@ class PicturesController < ApplicationController
 
   def index
     @pictures = Picture.all
+
   end
 
   def new
@@ -9,9 +10,12 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.create(picture_params)
-    p @picture.persisted?
-    redirect_to '/pictures'
+    picture = Picture.new(picture_params)
+    if picture.save
+      redirect_to '/pictures'
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -35,10 +39,10 @@ class PicturesController < ApplicationController
     redirect_to '/pictures'
   end
 
-private
+  private
 
-def picture_params
-params.require(:picture).permit(:name, :description)
-end
+  def picture_params
+    params.require(:picture).permit(:name, :description)
+  end
 
 end

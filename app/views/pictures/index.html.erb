@@ -4,10 +4,15 @@
 <h3> <%= picture.description %>
   <h5> <%= link_to "Edit #{picture.name}", edit_picture_path(picture) %> </h5>
   <h5> <%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %> </h5>
-<%= picture.likes %>
-<% end %>
-<% else %>
-<p> No pictures yet </p>
-<% end %>
+  <%= picture.likes %>
+  <% picture.comments.each do |comment| %>
+  <h4> <%= comment.thoughts %> </h4>
+    <% end %>
+    <h5> <%= link_to "Comment #{picture.name}", new_picture_comment_path(picture) %> </h5>
 
-<a href="pictures/new">Add a picture </a>
+    <% end %>
+    <% else %>
+    <p> No pictures yet </p>
+    <% end %>
+
+    <a href="pictures/new">Add a picture </a>
