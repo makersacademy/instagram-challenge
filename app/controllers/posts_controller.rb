@@ -3,7 +3,7 @@ before_action :authenticate_user!
 before_action :set_post, only: [:show, :edit, :update, :destroy]
 before_action :owned_post, only: [:edit, :update, :destroy]
   def index
-    @posts = Post.all
+    @posts = Post.all.order('created_at DESC').page params[:page]
   end
 
 
