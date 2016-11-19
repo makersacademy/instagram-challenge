@@ -32,4 +32,14 @@ feature 'gallery' do
     end
   end
 
+  context "viewing galleries" do
+    let!(:gallery1) {Gallery.create(name: 'GB Gallery')}
+    scenario 'lets a user view a gallery' do
+      visit '/galleries'
+      click_link 'GB Gallery'
+      expect(page).to have_content 'GB Gallery'
+      expect(current_path).to eq "/galleries/#{gallery1.id}"
+    end
+  end
+
 end

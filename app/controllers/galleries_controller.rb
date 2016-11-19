@@ -14,6 +14,10 @@ class GalleriesController < ApplicationController
     redirect_to gallery_path
   end
 
+  def show
+    @gallery = Gallery.find(params[:id])
+  end
+
   private
   def gallery_params
     params.require(:gallery).permit(:name)
