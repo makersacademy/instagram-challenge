@@ -22,27 +22,20 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
-# README
+Solution
+--------
+Ruby version: 2.3.1
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
+- ``` git clone https://github.com/lauraweston/instagram-challenge.git```
+- ```cd instagram-challenge```
+- Install dependencies: 
+```gem install bundle```    
+```bundle install```
 
-Things you may want to cover:
+## Usage
+- Start Rails web server: ```bin/rails server``` or ```bin/rails s```
+- Navigate to [http://localhost:3000] (http://localhost:3000) 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Database
+- Install [postgres] (https://www.postgresql.org/)
