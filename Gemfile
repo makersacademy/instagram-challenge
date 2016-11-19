@@ -28,8 +28,13 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Paperclip is for attaching files
+gem 'paperclip', '~> 5.0.0'
+gem 'climate_control', '~> 0.0.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# simple form methods
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
