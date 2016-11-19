@@ -2,7 +2,7 @@
 
   <% @photos.all.each do |photo| %>
     <br><%=  image_tag photo.image.url(:medium) %>
-    <h3><%= link_to photo.description, photo_path(photo) %></h3>
+    <h3><%= link_to photo.caption, photo_path(photo) %></h3>
     <% if current_user %>
       <%= link_to "Comment", new_photo_comment_path(photo) %><br>
       <% if current_user.id == photo.user_id %>
@@ -19,5 +19,5 @@
 <% end %>
 
 <% if current_user %>
-  <br><%= link_to "Add a photo", new_photo_path %>
+  <br><%= link_to "Add post", new_photo_path %>
 <% end %>
