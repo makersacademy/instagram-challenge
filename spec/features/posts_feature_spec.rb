@@ -30,6 +30,10 @@ describe 'Posts' do
       scenario 'displays caption' do
         expect(page).to have_content caption_text
       end
+
+      scenario 'displays image' do
+        expect(page).to have_css 'img[src*="kittens.jpg"]'
+      end
     end
   end
 
