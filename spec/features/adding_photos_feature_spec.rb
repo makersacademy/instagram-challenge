@@ -5,12 +5,7 @@ feature 'Photos' do
   context 'adding posts' do
 
     it 'signed in user can add a post' do
-      visit '/'
-      click_link 'Sign up'
-      fill_in 'Email', with: "test@hotmail.com"
-      fill_in 'Password', with: "123456"
-      fill_in 'Password confirmation', with: "123456"
-      click_button 'Sign up'
+      sign_up
       expect(page).to(have_content("No photos yet"))
       expect(page).to(have_link("Add post"))
       click_link 'Add post'
@@ -27,12 +22,7 @@ feature 'Photos' do
     end
 
     it 'in order to post a caption the user must add a photo' do
-      visit '/photos'
-      click_link 'Sign up'
-      fill_in 'Email', with: "test@hotmail.com"
-      fill_in 'Password', with: "123456"
-      fill_in 'Password confirmation', with: "123456"
-      click_button 'Sign up'
+      sign_up
       click_link 'Add post'
       fill_in 'Caption', with: 'I am not adding a photo'
       click_button 'Create Photo'

@@ -29,14 +29,12 @@ class PhotosController < ApplicationController
       @photo = Photo.find(params[:id])
     end
 
-
     def update
       @photo = Photo.find(params[:id])
       @photo.user_id == current_user.id
-        @photo.update(photo_params)
+      @photo.update(photo_params)
       redirect_to '/photos'
     end
-
 
     def destroy
       @photo = Photo.find(params[:id])
