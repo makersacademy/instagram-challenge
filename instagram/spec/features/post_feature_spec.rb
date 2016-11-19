@@ -11,10 +11,10 @@ feature 'posts' do
 
     context 'posts have been added' do
         before do
-            post.create(caption: 'Woof')
+            Post.create(caption: 'Woof')
         end
 
-        scenario 'display postss' do
+        scenario 'display posts' do
             visit '/posts'
             expect(page).to have_content('Woof')
             expect(page).not_to have_content('No posts yet')
