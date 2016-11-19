@@ -53,8 +53,15 @@ describe 'Posts' do
     context 'displaying a post' do
       scenario '#index has link to #show' do
         visit '/'
-        click_link 'Kittens!'
+        click_link caption_text
         expect(current_path).to eq "/posts/#{Post.last.id}"
+      end
+
+      scenario '#show displays image and caption' do
+        visit '/'
+        click_link caption_text
+        expect(page).to have_css 'img[src*="kittens.jpg"]'
+        expect(page).to have_content caption_text
       end
     end
   end
