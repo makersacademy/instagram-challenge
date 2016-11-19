@@ -20,4 +20,15 @@ feature 'images' do
       expect(page).not_to have_content 'No images yet'
     end
   end
+
+  context 'adding images' do
+    scenario 'prompts user to fill out form, then displays new image' do
+      visit '/images'
+      click_link 'Add an image'
+      fill_in 'Description', with: 'First picture'
+      click_button 'Create Image'
+      expect(page).to have_content 'First picture'
+      # expect(page).to have_image
+    end
+  end
 end
