@@ -42,13 +42,12 @@ feature 'posts' do
       expect(page).to have_content 'sunset'
       expect(current_path).to eq "/posts/#{sunset.id}"
     end
-
   end
 
   context 'editing posts' do
 
     before { Post.create caption: 'Sunset', description: 'Devon dreaming' }
-    
+
     scenario 'let a user edit a post' do
       visit '/posts'
       click_link 'Edit Sunset'
@@ -59,6 +58,17 @@ feature 'posts' do
       expect(page).to have_content 'Devon dreaming'
       expect(current_path).to eq '/posts'
     end
+  end
+  
+  context 'deleting posts' do
 
+    before { Post.create caption: 'Devon sunset', description: 'Devon dreaming' }
+
+    scenario 'removes a post when a user clicks a delete link' do
+      visit '/posts'
+      click_link 'Delete Devon sunset'
+      expect(page).not_to have_content 'Devon sunset'
+      expect(page).to have_content 'Post deleted successfully'
+    end
   end
 end
