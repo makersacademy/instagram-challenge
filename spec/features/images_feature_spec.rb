@@ -54,4 +54,16 @@ feature 'images' do
       expect(current_path).to eq '/images'
     end
   end
+
+  context 'deleting images' do
+
+    before { Image.create description: 'First picture', avatar_file_name: 'text.jpg' }
+
+    scenario 'lets user delete their image' do
+      visit '/images'
+      click_link 'Delete image'
+      expect(page).to have_content 'Image deleted successfully'
+      expect(page).not_to have_content 'First picture'
+    end
+  end
 end
