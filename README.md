@@ -27,13 +27,13 @@ Ruby version: 2.3.1
 ```gem install bundle```    
 ```bundle install```
 
-## Usage
-- Start Rails web server: ```bin/rails server``` or ```bin/rails s```
-- Navigate to [http://localhost:3000] (http://localhost:3000) 
-
 ## Database
 - Install [postgres] (https://www.postgresql.org/)
 - ```bin/rake db:create```
 
 ## Testing
-- ```rspec```
+- ```bundle exec rspec```
+
+## Usage
+- Start Rails web server: ```bin/rails server``` or ```bin/rails s```
+- Navigate to [http://localhost:3000] (http://localhost:3000) 
