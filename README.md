@@ -33,3 +33,7 @@ Ruby version: 2.3.1
 
 ## Database
 - Install [postgres] (https://www.postgresql.org/)
+- ```bin/rake db:create```
+
+## Testing
+- ```rspec```
