@@ -1,12 +1,12 @@
 
 User stories:
 As a user (logged in)
-So that my photos are secure
+So that my pictures are secure
 I would like to be able to securely log in
 
 As a user (logged in)
-So that I can show my photos
-I would like to be able to be able to upload my photos
+So that I can show my pictures
+I would like to be able to be able to upload my pictures
 
 As a user (logged in)
 So that I can be entertained
@@ -20,11 +20,21 @@ As a user (logged in)
 So that I fairly vote on pictures I like
 I would like to be able to vote once for the pictures that I like (but not my own pictures)
 
-As a website visitor (not logged in)
+As a website visitor (not logged in) and a user (logged in)
 So that I can be entertained
 I would like to be able to view all users and their pictures
 
+As a website visitor (not logged in) and a user (logged in)
+So that I can be entertained
+I would like to be able to search for a particular user's pictures
 
+As a website visitor (not logged in) and a user (logged in)
+So that I can be entertained
+I would like to be able to shuffle the order of all users pictures
+
+As a website visitor (not logged in) and a user (logged in)
+So that I can be entertained
+I would like to be able to see the most recent users pictures
 
 Instagram Challenge
 ===================
