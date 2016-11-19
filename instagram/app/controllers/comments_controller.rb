@@ -6,8 +6,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @post = Post.find comment_params[:post_id]
-    @comment = @post.build_comment comment_params, current_user
+    @post = Post.find params[:post_id]
+    @comment = @post.comments.build_with_user(comment_params, current_user)
     if @comment.save
       redirect_to posts_path
     else
