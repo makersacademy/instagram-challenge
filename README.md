@@ -1,24 +1,46 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+User Stories for MVP
 
-Things you may want to cover:
+####MVP Version 1
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+```
+As a user of instagram
+So that I can see pictures without signing in
+I would like to visit the index page and see other user photos on the home page
 
-* Database creation
+```
 
-* Database initialization
+####MVP Version 2
 
-* How to run the test suite
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+As a user of instagram
+So that I can have an account
+I would like to be able to sign up to the site
 
-* Deployment instructions
+As a user of instagram
+So that I can use my account
+I would like to to be able to sign in
 
-* ...
+As a user of instagram
+So that I can leave the site
+I would like to be able to sign out
+
+As a user of instagram
+So that I can share my photos
+I would like to be able to upload my photos to my account
+
+```
+
+####MVP Version 3
+
+```
+
+As a user of instagram
+So that I can share the love
+I would like to be able to comment on other peoples photos when I'm signed in
+
+```
