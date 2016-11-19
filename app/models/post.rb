@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+
+  acts_as_votable
+
   validates :user_id, presence: true
   validates :image, presence: true
   validates_length_of :caption, :minimum => 2, :maximum => 300, :allow_blank => true
@@ -7,5 +10,7 @@ class Post < ApplicationRecord
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :user
+  acts_as_votable
+
   has_many :comments, dependent: :destroy
 end

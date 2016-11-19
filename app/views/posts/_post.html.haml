@@ -9,6 +9,7 @@
     .image.center-block
       = link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post)
     .post-bottom
+      = render 'posts/likes', post: post
       .caption
         .caption-content
         .user-name
@@ -18,8 +19,8 @@
           - if post.comments
             = render post.comments, post: post
     .comment-like-form.row
-      .like-button.col-sm-1
-        %span(class="glyphicon glyphicon-heart-empty")
+      .col-sm-1
+        = link_to '', like_post_path(post.id), remote: true, id: "like_#{post.id}", class: "glyphicon glyphicon-heart-empty"
       .comment-form.col-sm-11
         = form_for([post, post.comments.build], remote: true) do |f|
           = f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}"
