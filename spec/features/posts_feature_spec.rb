@@ -63,6 +63,13 @@ describe 'Posts' do
         expect(page).to have_css 'img[src*="kittens.jpg"]'
         expect(page).to have_content caption_text
       end
+
+      scenario 'user can submit comment' do
+        visit '/'
+        click_link caption_text
+        fill_in 'Comment', with: 'Cool pic!'
+        click_button 'Comment!'
+      end
     end
   end
 end
