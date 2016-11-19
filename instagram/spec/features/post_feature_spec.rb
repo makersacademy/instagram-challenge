@@ -31,4 +31,17 @@ feature 'posts' do
             expect(current_path).to eq '/posts'
         end
     end
+
+    context 'viewing posts' do
+
+  let!(:sunset){ Post.create(caption:'sunset') }
+
+  scenario 'lets a user view a post' do
+   visit '/posts'
+   click_link 'sunset'
+   expect(page).to have_content 'sunset'
+   expect(current_path).to eq "/posts/#{sunset.id}"
+  end
+
+end
 end
