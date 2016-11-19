@@ -20,4 +20,20 @@ feature 'images' do
       expect(page).not_to have_content('No images yet')
     end
   end
+
+  context 'creating images' do
+    scenario 'prompts a user to fill out a form, then displays the new image' do
+      visit '/images'
+      click_link 'Add an image'
+      expect(current_path).to eq '/images/new'
+    end
+
+    scenario 'prompts a user to fill out a form, then displays the new image' do
+      visit '/images/new'
+      fill_in 'Description', with: 'Sunday'
+      click_button 'Create Image'
+      expect(page).to have_content 'Sunday'
+      expect(current_path).to eq '/images'
+    end
+  end
 end
