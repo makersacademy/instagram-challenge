@@ -18,7 +18,7 @@ feature 'Photos' do
       click_button 'Create Photo'
       expect(page).to have_css "img[src*='toffee.jpg']"
       click_link "Delete photo"
-      expect(page).to(have_content('Photo deleted successfully'))
+      expect(page).to(have_content('Photo deleted'))
       expect(page).not_to(have_css "img[src*='toffee.jpg']")
     end
 

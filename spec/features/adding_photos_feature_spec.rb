@@ -36,7 +36,7 @@ feature 'Photos' do
       click_link 'Add post'
       fill_in 'Caption', with: 'I am not adding a photo'
       click_button 'Create Photo'
-      expect(page).to(have_content('Must include a photo'))
+      expect(page).to(have_content('Please attach a photo'))
      end
   end
 

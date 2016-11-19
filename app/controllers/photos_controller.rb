@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
       if @photo.save
         redirect_to '/photos'
       else
-        flash[:notice] = "Must include a photo"
+        flash[:notice] = "Please attach a photo"
         redirect_to '/photos/new'
       end
     end
@@ -27,30 +27,22 @@ class PhotosController < ApplicationController
 
     def edit
       @photo = Photo.find(params[:id])
-      if @photo.user_id != current_user.id
-        flash[:notice] = 'Cannot edit photos you did not upload'
-        redirect_to '/photos'
-      end
     end
+
 
     def update
       @photo = Photo.find(params[:id])
-      if @photo.user_id == current_user.id
+      @photo.user_id == current_user.id
         @photo.update(photo_params)
-      else
-        flash[:notice] = 'Cannot edit photos you did not upload'
-      end
       redirect_to '/photos'
     end
 
+
     def destroy
       @photo = Photo.find(params[:id])
-      if @photo.user_id == current_user.id
-        @photo.destroy
-        flash[:notice] = 'Photo deleted successfully'
-      else
-        flash[:notice] = 'Cannot delete photos you did not upload'
-      end
+      @photo.user_id == current_user.id
+      @photo.destroy
+      flash[:notice] = 'Photo deleted'
       redirect_to '/photos'
     end
 
