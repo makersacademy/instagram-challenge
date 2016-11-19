@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Feezygram</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><%= link_to "Home", root_path %></li>
+      <% if current_user %>
+        <li role="presentation"><%= link_to "Profile", edit_user_registration_path %></li>
+        <li role="presentation"><%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %></li>
+      <% else %>
+        <li role="presentation"><%= link_to "Sign In", new_user_session_path %></li>
+        <li role="presentation"><%= link_to "Sign Up", new_user_registration_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= yield %>
+
+</body>
+</html>
