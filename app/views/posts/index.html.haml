@@ -1,2 +1,10 @@
-No pictures posted yet
 = link_to "Post a picture", new_post_path
+%br
+- if @posts.any?
+  - @posts.each do |post|
+    = image_tag post.image.url(:medium)
+    %br
+    = post.caption
+    %br
+- else
+  No pictures posted yet

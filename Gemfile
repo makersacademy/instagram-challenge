@@ -35,6 +35,8 @@ gem 'climate_control', '~> 0.0.3'
 # gem 'capistrano-rails', group: :development
 # simple form methods
 gem 'simple_form'
+# Use factory girl for testing active record objects
+gem 'factory_girl_rails', '~> 4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
