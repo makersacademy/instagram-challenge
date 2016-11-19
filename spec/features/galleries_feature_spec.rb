@@ -19,7 +19,17 @@ feature 'gallery' do
       expect(page).to have_content("GB favourites")
       expect(page).not_to have_content("No galleries yet")
     end
+  end
 
+  context 'creating galleries' do
+    scenario 'prompts user to fill out the new gallery creation form, then displays it' do
+      visit '/galleries'
+      click_link "Add a gallery"
+      fill_in "Name", with: "GB favourites"
+      click_button "Create Gallery"
+      expect(page).to have_content "GB favourites"
+      expect(current_path).to eq "/gallery"
+    end
   end
 
 end
