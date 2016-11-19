@@ -29,7 +29,7 @@ Ruby version: 2.3.1
 ## Installation
 - ``` git clone https://github.com/lauraweston/instagram-challenge.git```
 - ```cd instagram-challenge```
-- Install dependencies: 
+- Install dependencies:   
 ```gem install bundle```    
 ```bundle install```
 
