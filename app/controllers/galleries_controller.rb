@@ -18,6 +18,16 @@ class GalleriesController < ApplicationController
     @gallery = Gallery.find(params[:id])
   end
 
+  def edit
+    @gallery = Gallery.find(params[:id])
+  end
+
+  def update
+    @gallery = Gallery.find(params[:id])
+    @gallery.update(gallery_params)
+    redirect_to gallery_path
+  end
+
   private
   def gallery_params
     params.require(:gallery).permit(:name)
