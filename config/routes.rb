@@ -14,9 +14,9 @@ resources :posts do
     end
 end
 
+
 get ':user_name', to: 'profiles#show', as: :profile
 get ':user_name/edit', to: 'profiles#edit', as: :edit_profile
 patch ':user_name/edit', to: 'profiles#update', as: :update_profile
-delete 'logout' => 'sessions#destroy'
-get 'users/sign_out' => 'sessions#destroy', as: :destroy_user_session
+
 end
