@@ -1,0 +1,19 @@
+<%= image_tag @picture.image.url(:medium) %>
+<%= link_to "Delete Image", picture_path(@picture), method: :delete, data: { confirm: "Are you sure?" } %>
+
+<% @picture.comments.each do |comment| %>
+<p>
+  <%= comment.comment %>
+</p>
+<% end %>
+
+
+<h3>Add comments</h3>
+<%= form_for ([@picture, @picture.comments.build]) do |f| %>
+  <p>
+    <%= f.text_field :comment %>
+  </p>
+  <p>
+    <%= f.submit "Add comment" %>
+  </p>
+<% end %>
