@@ -1,3 +1,14 @@
-<h3>No pictures yet </h3>
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <ul>
+      <li>
+        <%= image_tag picture.image.url(:thumb) %>
+        <%= picture.description %>
+      </li>
+    </ul>
+  <% end %>
+<% else %>
+  <h3>No pictures yet </h3>
+<% end %>
 
 <%= link_to "Add a picture", new_picture_path %>
