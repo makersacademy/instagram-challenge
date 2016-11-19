@@ -1,5 +1,9 @@
-def post_photo
+def caption_text
+  'Fluffy kittens!'
+end
+
+def post_photo(caption = caption_text)
   visit '/posts/new'
-  fill_in 'Caption', with: 'Fluffy kittens!'
+  fill_in 'Caption', with: caption
   click_button 'Post'
 end

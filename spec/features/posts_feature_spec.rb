@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Posts' do
-  describe 'Posts#Index' do
+  describe 'Posts#index' do
     scenario 'visitor sees homepage' do
       visit '/'
       expect(page).to have_content 'Instakilo - like Instagram, just a thousand times better'
@@ -19,14 +19,21 @@ describe 'Posts' do
       end
     end
     context 'posts to display' do
-      scenario 'no post messages absent' do
+      before do
         post_photo
+      end
+
+      scenario 'no post messages absent' do
         expect(page).not_to have_content 'No posts yet :\'('
+      end
+
+      scenario 'displays caption' do
+        expect(page).to have_content caption_text
       end
     end
   end
 
-  describe 'Posts#New' do
+  describe 'Posts#new' do
     context 'Posting' do
       scenario 'user submits with comment' do
         post_photo
