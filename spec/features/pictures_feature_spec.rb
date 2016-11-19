@@ -22,7 +22,7 @@ feature 'pictures' do
 
   context 'editing pictures' do
     before { Picture.create(description: 'Kitty cat') }
-    scenario 'let a user edit a picture' do
+    scenario 'lets a user edit a picture' do
      visit '/pictures'
      click_link 'Kitty cat'
      click_link 'Edit'
@@ -36,7 +36,7 @@ feature 'pictures' do
 
   context 'deleting pictures' do
     before { Picture.create(description: 'Kitty cat') }
-    scenario 'removes a picture when a user clicks a delete link' do
+    scenario 'removes a picture when a user clicks delete' do
       visit '/pictures'
       click_link 'Kitty cat'
       click_link 'Delete'
