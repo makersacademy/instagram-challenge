@@ -11,7 +11,7 @@ class GalleriesController < ApplicationController
 
   def create
     Gallery.create(gallery_params)
-    redirect_to gallery_path
+    redirect_to "/galleries"
   end
 
   def show
@@ -25,7 +25,7 @@ class GalleriesController < ApplicationController
   def update
     @gallery = Gallery.find(params[:id])
     @gallery.update(gallery_params)
-    redirect_to gallery_path
+    redirect_to "/galleries"
   end
 
   private

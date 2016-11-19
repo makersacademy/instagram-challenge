@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'gallery' do
   context 'no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
-      visit '/gallery'
+      visit '/galleries'
       expect(page).to have_content "No galleries yet"
       expect(page).to have_link "Add a gallery"
     end
@@ -28,7 +28,7 @@ feature 'gallery' do
       fill_in "Name", with: "GB favourites"
       click_button "Create Gallery"
       expect(page).to have_content "GB favourites"
-      expect(current_path).to eq "/gallery"
+      expect(current_path).to eq "/galleries"
     end
   end
 
