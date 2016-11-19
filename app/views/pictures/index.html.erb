@@ -4,6 +4,12 @@
       <%= image_tag picture.image.url(:medium) %>
     <% end %>
       <p><%= picture.caption%></p>
+      <% if picture.comments.any? %>
+        <% picture.comments.each do |comment| %>
+          <p><%= comment.comment_text %></p>
+        <% end %>
+      <% end %>
+      <%= link_to "Comment", new_picture_comment_path(picture) %>
   <% end %>
 <% else %>
   <h1>No pictures yet :(</h1>
