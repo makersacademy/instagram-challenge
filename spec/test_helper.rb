@@ -2,6 +2,10 @@ def caption_text
   'Fluffy kittens!'
 end
 
+def comment_text
+  'Cool pic!'
+end
+
 def post_photo(caption = caption_text)
   visit '/posts/new'
   attach_file(:post_image, File.absolute_path('../kittens.jpg'))

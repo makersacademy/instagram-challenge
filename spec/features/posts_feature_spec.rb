@@ -67,8 +67,16 @@ describe 'Posts' do
       scenario 'user can submit comment' do
         visit '/'
         click_link caption_text
-        fill_in 'Comment', with: 'Cool pic!'
+        fill_in 'Comment', with: comment_text
         click_button 'Comment!'
+      end
+
+      scenario 'user can see comments on Posts#show' do
+        visit  '/'
+        click_link caption_text
+        fill_in 'Comment', with: comment_text
+        click_button 'Comment!'
+        expect(page).to have_content comment_text
       end
     end
   end

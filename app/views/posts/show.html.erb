@@ -1,7 +1,15 @@
 <div class="post">
   <%= image_tag @post.image.url, width: '400' %>
-  <p><%= @post.caption %>
+  <p><%= @post.created_at %></p>
+  <p><%= @post.caption %></p>
 </div>
+<% @comments.each do |cmt| %>
+  <div class="comment">
+    <p><%= cmt.comment %></p>
+    <p><%= cmt.created_at %></p>
+  </div>
+<% end %>
+
 <%= form_for [@post, @comment] do |f| %>
   <%= f.label :comment %>
   <%= f.text_area :comment %><br>
