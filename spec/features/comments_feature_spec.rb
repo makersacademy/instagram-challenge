@@ -4,7 +4,7 @@ feature 'Comments' do
 
   before do
     User.create(email: "test@test.com", password: "123456")
-    Photo.create(caption: "this is a photo", user_id: User.last.id)
+    Photo.create(description: "this is a photo", user_id: User.last.id)
   end
 
   scenario 'only logged users can leave comments' do
