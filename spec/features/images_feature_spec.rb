@@ -36,4 +36,16 @@ feature 'images' do
       expect(current_path).to eq '/images'
     end
   end
+
+  context 'viewing iages' do
+
+    let!(:sunday){ Image.create(description:'Sunday') }
+
+    scenario 'lets a user view an image' do
+      visit '/images'
+      click_link 'Sunday'
+      expect(page).to have_content 'Sunday'
+      expect(current_path).to eq "/images/#{sunday.id}"
+    end
+  end
 end
