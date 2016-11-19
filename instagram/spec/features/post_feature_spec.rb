@@ -22,6 +22,17 @@ feature 'posts' do
   end
 
   context 'creating posts' do
+
+    context 'an invalid post' do
+      scenario 'does not let you submit a post caption that is too short' do
+        visit '/posts'
+        click_link 'Add a post'
+        fill_in 'Caption', with: 'uf'
+        click_button 'Create Post'
+        expect(page).not_to have_css 'h2', text: 'uf'
+        expect(page).to have_content 'error'
+      end
+    end
     scenario 'tells user to fill in a form, then displays the new post' do
       visit '/posts'
       click_link 'Add a post'
@@ -59,7 +70,7 @@ feature 'posts' do
       expect(current_path).to eq '/posts'
     end
   end
-  
+
   context 'deleting posts' do
 
     before { Post.create caption: 'Devon sunset', description: 'Devon dreaming' }

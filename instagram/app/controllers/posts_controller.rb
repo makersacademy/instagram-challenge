@@ -9,16 +9,20 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
-    redirect_to '/posts'
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to posts_path
+    else
+      render 'new'
+    end
   end
 
   def show
-  @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def edit
-   @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def update
@@ -28,10 +32,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
-   @post = Post.find(params[:id])
-   @post.destroy
-   flash[:notice] = 'Post deleted successfully'
-   redirect_to '/posts'
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = 'Post deleted successfully'
+    redirect_to '/posts'
   end
 
   private
