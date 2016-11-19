@@ -4,7 +4,7 @@ feature 'Photos' do
 
   context 'no photos have been added' do
 
-    it 'should display a prompt to add a photo' do
+    it 'signed in user can add a post' do
       visit '/'
       click_link 'Sign up'
       fill_in 'Email', with: "test@hotmail.com"
@@ -13,12 +13,13 @@ feature 'Photos' do
       click_button 'Sign up'
       expect(page).to(have_content("No photos yet"))
       expect(page).to(have_link("Add post"))
-      # click_link 'Add a photo'
-      # page.attach_file 'image', "spec/images/toffee.jpg"
-      # fill_in 'Caption', with: 'Amazing doggie #toffee'
-      # click_button 'Create Post'
-      # expect(page).to have_content 'mazing doggie #toffee'
-      # expect(page).to have_css "img[src*='toffee.jpg']"
+      click_link 'Add post'
+
+      page.attach_file 'photo_image', "spec/images/toffee.jpg"
+      fill_in 'Caption', with: 'Amazing doggie #toffee'
+      click_button 'Create Photo'
+      expect(page).to have_content 'Amazing doggie #toffee'
+      expect(page).to have_css "img[src*='toffee.jpg']"
     end
 
   end
