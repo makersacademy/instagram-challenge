@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Home' do
+describe 'Posts#Index' do
   context 'on the home page' do
     scenario 'visitor sees homepage' do
       visit '/'
