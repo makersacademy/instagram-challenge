@@ -11,7 +11,8 @@ class PicturesController < ApplicationController
   end
 
   def create
-    Picture.create(picture_params)
+    @user = User.find(current_user.id)
+    @picture = @user.pictures.create(picture_params)
     redirect_to '/pictures'
   end
 
@@ -39,6 +40,6 @@ class PicturesController < ApplicationController
 private
 
   def picture_params
-    params.require(:picture).permit(:image, :caption)
+    params.require(:picture).permit(:image, :caption, :user_id)
   end
 end

@@ -5,6 +5,12 @@
     <p><%= comment.comment_text %></p>
   <% end %>
 <% end %>
-
-<p><%= link_to "Edit Caption", edit_picture_path(@picture) %></p>
-<p><%= link_to "Delete Picture", picture_path(@picture), method: :delete %></p>
+<% if current_user == nil %>
+  <p>You need to sign in to comment on pictures</p>
+<% elsif current_user.id == @picture.user_id %>
+  <p><%= link_to "Comment", new_picture_comment_path(@picture) %></p>
+  <p><%= link_to "Edit Caption", edit_picture_path(@picture) %></p>
+  <p><%= link_to "Delete Picture", picture_path(@picture), method: :delete %></p>
+<% else %>
+  <p><%= link_to "Comment", new_picture_comment_path(@picture) %></p>
+<% end %>
