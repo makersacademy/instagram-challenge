@@ -1,0 +1,9 @@
+- if user_signed_in?
+  - if current_user.liked? @content
+    = link_to "Dislike", dislike_content_path(@content), class: 'vote', method: :put
+  - else
+    = link_to "Like", like_content_path(@content), class: 'vote', method: :put
+  %span ·
+= @content.get_likes.size
+users like this
+%br/
