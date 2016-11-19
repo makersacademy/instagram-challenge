@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
 
+  devise_for :users
+  
   get 'pictures' => 'pictures#index'
   get 'pictures/new' => 'pictures#new'
+
+  root "pictures#index"
 
   resources :pictures do
     resources :comments

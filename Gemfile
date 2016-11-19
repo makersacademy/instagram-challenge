@@ -41,6 +41,7 @@ group :test do
 end
 
 gem 'devise'
+gem 'dotenv-rails', :groups => [:development, :test]
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
