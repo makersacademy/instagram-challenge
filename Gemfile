@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'rspec-collection_matchers'
 end
 
 group :development, :test do

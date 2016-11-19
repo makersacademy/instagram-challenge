@@ -32,6 +32,26 @@ feature 'gallery' do
     end
   end
 
+  context 'an invalid gallery' do
+    scenario 'does not let you submit a name that is too short' do
+      visit '/galleries'
+      click_link 'Add a gallery'
+      fill_in 'Name', with: ''
+      click_button 'Create Gallery'
+      expect(page).to have_content 'Name is too short'
+    end
+  end
+
+  context 'an invalid gallery' do
+    scenario 'does not let you submit a name that is too long' do
+      visit '/galleries'
+      click_link 'Add a gallery'
+      fill_in 'Name', with: 'This name is 31 chars in length'
+      click_button 'Create Gallery'
+      expect(page).to have_content 'Name is too long'
+    end
+  end
+
   context "viewing galleries" do
     let!(:gallery1) {Gallery.create(name: 'GB Gallery')}
     scenario 'lets a user view a gallery' do

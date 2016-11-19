@@ -10,8 +10,13 @@ class GalleriesController < ApplicationController
   end
 
   def create
-    Gallery.create(gallery_params)
-    redirect_to "/galleries"
+    @gallery = Gallery.new(gallery_params)
+    if @gallery.save
+      flash[:notice] = "The \"#{@gallery.name}\" gallery was successfully created"
+      redirect_to "/galleries"
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -24,8 +29,13 @@ class GalleriesController < ApplicationController
 
   def update
     @gallery = Gallery.find(params[:id])
-    @gallery.update(gallery_params)
-    redirect_to gallery_path
+    # @gallery.update(gallery_params)
+    if @gallery.update(gallery_params)
+      flash[:notice] = "The \"#{@gallery.name}\" gallery was successfully updated"
+      redirect_to gallery_path
+    else
+      render "edit"
+    end
   end
 
   def destroy
