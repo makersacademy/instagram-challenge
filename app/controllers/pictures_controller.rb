@@ -10,9 +10,8 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
-
     if @picture.save
-      redirect_to @picture, notice: 'Picture was successfully uploaded.'
+      redirect_to 'index', notice: 'Picture was successfully uploaded.'
      else
        render action: 'new'
     end
