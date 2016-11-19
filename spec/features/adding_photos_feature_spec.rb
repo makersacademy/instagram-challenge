@@ -21,7 +21,7 @@ feature 'Photos' do
       expect(page).to have_css "img[src*='toffee.jpg']"
     end
 
-    it 'a logged out user cannot add photos' do
+    it 'logged out user cannot add posts' do
       visit '/photos'
       expect(page).not_to(have_link('Add post'))
     end
