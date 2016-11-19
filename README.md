@@ -1,13 +1,7 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+[![Build Status](https://travis-ci.org/lauraweston/instagram-challenge.svg?branch=master)](https://travis-ci.org/lauraweston/instagram-challenge)
 
 Task
 -----
