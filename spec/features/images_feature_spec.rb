@@ -24,8 +24,9 @@ feature 'images' do
       visit '/images'
       click_link 'Add an image'
       fill_in 'Description', with: 'First picture'
-      attach_file('file_field', "spec/test_files/images/test.jpg")
+      attach_file('image_avatar', "spec/test_files/images/test.jpg")
       click_button 'Create Image'
+      visit '/images'
       expect(page).to have_content 'First picture'
       expect(page).to have_css("img[src*='test.jpg']")
       # expect(page).to have_image
@@ -33,10 +34,13 @@ feature 'images' do
   end
 
   context 'viewing images' do
+
+    before { Image.create description: 'First picture', avatar_file_name: 'test.jpg' }
+
     scenario 'lets a user view an image' do
       visit '/images/1'
       expect(page).to have_image
-      expect(current_path).to eq '/images/#{}'
+      expect(current_path).to eq '/images'
     end
   end
 
@@ -57,7 +61,7 @@ feature 'images' do
 
   context 'deleting images' do
 
-    before { Image.create description: 'First picture', avatar_file_name: 'text.jpg' }
+    before { Image.create description: 'First picture', avatar_file_name: 'test.jpg' }
 
     scenario 'lets user delete their image' do
       visit '/images'
