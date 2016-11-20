@@ -1,7 +1,4 @@
-class FeedsController < ApplicationController
-  def index
-  end
-
+class PhotoController < ApplicationController
   def new
   end
 

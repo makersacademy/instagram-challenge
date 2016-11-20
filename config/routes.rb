@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
+  get 'photo/new'
+
+  get 'photo/create'
+
+  get 'photo/update'
+
+  get 'photo/edit'
+
+  devise_for :users
   resources :feeds
+  resources :welcome
 
   get 'welcome/index'
 

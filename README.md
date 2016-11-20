@@ -50,3 +50,15 @@ As a user,
 So I let the world know my thoughts,
 I want to be write comments by photos.
 ```
+
+```
+As a user,
+So I can customise my photos,
+I want to be add a title to my photos.
+```
+
+```
+As a user,
+So I can explain more about my pictures,
+I want to be able to tag them.
+```
