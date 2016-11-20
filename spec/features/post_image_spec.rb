@@ -27,5 +27,5 @@ feature 'Post an image' do
     expect{click_button 'Post'}.not_to change{Picture.count}
     expect(page).to have_content 'Comment is too long'
   end
-  
+
 end
