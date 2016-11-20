@@ -2,12 +2,16 @@
   .post
     .post-head
       .name
-        //insert user name here
+        =@post.user.user_name
     .image.center-block
       =image_tag @post.image.url(:medium)
     %p.caption
       =@post.caption
-    .text-center.edit-links
-      = link_to "Cancel", posts_path
-      |
-      = link_to "Edit Post", edit_post_path(@post)
+    - if @post.user.id == current_user.id
+      .text-center.edit-links
+        = link_to "Cancel", posts_path
+        |
+        = link_to "Edit Post", edit_post_path(@post)
+    - else
+      .text-center.edit-links
+        =link_to "Cancel", posts_path
