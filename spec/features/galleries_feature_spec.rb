@@ -11,12 +11,13 @@ feature 'gallery' do
   end
 
   context "galleries have been added" do
-    before do
-      Gallery.create(name: "GB favourites")
-    end
+    # before do
+    #   # Gallery.create(name: "GB favourites")
+    # end
 
     scenario "display galleries" do
-      visit "/galleries"
+      sign_up_and_sign_in
+      create_a_gallery
       expect(page).to have_content("GB favourites")
       expect(page).not_to have_content("No galleries yet")
     end
@@ -57,7 +58,8 @@ feature 'gallery' do
   end
 
   context "viewing galleries" do
-    let!(:gallery1) {Gallery.create(name: 'GB Gallery')}
+    let!(:user1) {User.create(email: 'fred@freddy.co.uk', password: "secret",password_confirmation: "secret")}
+    let!(:gallery1) {Gallery.create(name: 'GB Gallery', user_id: user1.id)}
     scenario 'lets a user view a gallery' do
       visit '/galleries'
       click_link 'GB Gallery'
@@ -67,7 +69,8 @@ feature 'gallery' do
   end
 
   context 'editing gallery name' do
-  before { @gallery = Gallery.create name: 'GB favourites' }
+  before { @user = User.create(email: 'fred@freddy.co.uk', password: "secret",password_confirmation: "secret") }
+  before { @gallery = Gallery.create name: 'GB favourites', user_id: @user.id }
     scenario 'let a user edit a gallery' do
       sign_up_and_sign_in
       visit '/galleries'
@@ -81,9 +84,10 @@ feature 'gallery' do
   end
 
   context 'deleting galleries' do
-    before { @gallery = Gallery.create name: 'GB favourites' }
+    before { @user = User.create(email: 'fred@freddy.co.uk', password: "secret",password_confirmation: "secret") }
+    before { @gallery = Gallery.create name: 'GB favourites', user_id: @user.id }
     scenario 'removes a gallery when a user clicks a delete link' do
-      sign_up_and_sign_in
+      sign_in(email: 'fred@freddy.co.uk', password: 'secret')
       visit '/galleries'
       click_link "GB favourites"
       click_link 'Delete Gallery'
