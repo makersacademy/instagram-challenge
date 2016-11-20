@@ -1,5 +1,21 @@
 class ImagesController < ApplicationController
   def index
-  
-   end
+    @image = Image.all
+  end
+
+  def new
+    @image = Image.new
+  end
+
+  def create
+    @image = Image.create(image_params)
+    redirect_to '/images'
+  end
+
+private
+
+def image_params
+  params.require(:image).permit(:url)
+end
+
 end
