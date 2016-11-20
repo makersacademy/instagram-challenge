@@ -11,8 +11,7 @@ feature "Pictures" do
 
   context 'pictures have been added' do
     before do
-      @rick = User.create(name: "rick", email: "asda@example.com")
-      @picture = @rick.pictures.create(description: 'Loch Lomond')
+      create_user_picture
     end
 
     scenario 'display pictures' do
@@ -39,8 +38,7 @@ feature "Pictures" do
 
   context 'reading pictures' do
     before do
-      @rick = User.create(name: "rick", email: "asda@example.com")
-      @picture = @rick.pictures.create(description: 'Loch Lomond')
+      create_user_picture
     end
 
     scenario 'can view an individual picture' do

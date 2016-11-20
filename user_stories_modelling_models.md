@@ -1,18 +1,22 @@
 As a vain user
 So people can see how interesting my life is
 I want to be able to upload my pictures
+DONE
 
 As a user,
 So I can spy on other people's amazing lives,
 I want to be able to view other people's pictures
+DONE
 
 As a social user,
 So I can tell my friends I like their photos
 I want to be able to comment on pictures
+DONE
 
 As a social user
 So I can show my friends I am interested in their lives
 I want to be able to 'like' pictures
+DONE
 
 As a user,
 So I don't leave compromising images on the site,

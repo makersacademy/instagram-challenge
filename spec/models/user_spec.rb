@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe User do
   before do
-    @user = User.new(name: "Example User", email: "user@example.com")
+    @user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
   end
 
   it "should be valid" do
@@ -59,6 +59,16 @@ describe User do
     @user.email = mixed_case_email
     @user.save
     expect(@user.reload.email).to eq(mixed_case_email.downcase)
+  end
+
+  it "password can't be blank" do
+    @user.password = @user.password_confirmation = " " * 6
+    expect(@user).not_to be_valid
+  end
+
+  it "password can't be less than 6 characters" do
+    @user.password = @user.password_confirmation = "a" * 5
+    expect(@user).not_to be_valid
   end
 
 end
