@@ -49,16 +49,18 @@ end
 
 context 'reader comments' do
 
-  before { Picture.create name: 'pic1', description: 'first picture' }
-
   scenario 'let a user comment on a picture' do
-   visit '/pictures'
-   click_link 'Reader comment'
-   fill_in 'Reader Comment', with: 'Lovely photo'
-   click_button 'Update picture'
-   expect(page).to have_content 'Kentucky Fried Chicken'
-   expect(page).to have_content 'Deep fried goodness'
-   expect(current_path).to eq '/restaurants'
+    visit '/pictures'
+    click_link 'Add a picture'
+    fill_in 'Name', with: 'pic1'
+    fill_in 'Comment', with: 'comment1'
+    click_button 'Create Picture'
+    expect(current_path).to eq '/pictures'
+    click_link 'Comment on pic1'
+    click_button 'Update picture'
+    expect(page).to have_content 'pic1'
+    expect(page).to have_content 'Lovely photo'
+    expect(current_path).to eq '/pictures'
   end
 
 end
