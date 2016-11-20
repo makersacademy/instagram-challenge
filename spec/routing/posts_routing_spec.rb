@@ -1,20 +1,5 @@
 require "rails_helper"
 
-# Examples:
-# describe "routing to profiles", :type => :routing do
-#   it "routes /profile/:username to profile#show for username" do
-#     expect(:get => "/profiles/jsmith").to route_to(
-#       :controller => "profiles",
-#       :action => "show",
-#       :username => "jsmith"
-#     )
-#   end
-#
-#   it "does not expose a list of profiles" do
-#     expect(:get => "/profiles").not_to be_routable
-#   end
-# end
-
 describe "routing to posts", :type => :routing do
   it "routes get / to posts#index" do
     expect(get: "/").to route_to(

@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)do |t|
+    @post = Post.new(post_params) do |t|
       if params[:post][:image_data]
         t.image_data         = params[:post][:image_data].read
         t.image_name         = params[:post][:image_data].original_filename
