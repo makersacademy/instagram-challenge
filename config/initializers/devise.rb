@@ -236,6 +236,7 @@ Devise.setup do |config|
   # access, but formats like :xml or :json, should return 401.
   #
   # If you have any extra navigational formats, like :iphone or :mobile, you
+
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
@@ -246,7 +247,9 @@ Devise.setup do |config|
 
   # ==> OmniAuth
   config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET_KEY"],
-  callback_url: "http://localhost:3000/users/auth/facebook/callback"
+  callback_url: "http://localhost:3000/users/auth/facebook/callback",
+  scope: 'email',
+  info_fields: 'email'
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'

@@ -12,7 +12,9 @@ feature "User can sign in and out" do
       visit('/')
       expect(page).not_to have_link('Sign out')
     end
+
   end
+
 
   context "user signed in on the homepage" do
     before do
