@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html { render layout: !request.xhr }
+    end
   end
 
   def create
