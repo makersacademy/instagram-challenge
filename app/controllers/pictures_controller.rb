@@ -8,6 +8,7 @@ class PicturesController < ApplicationController
     @gallery = Gallery.find(params[:gallery_id])
     p params[:gallery_id]
     @gallery.pictures.create(picture_params)
+    redirect_to "/galleries"
   end
 
   private
