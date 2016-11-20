@@ -88,7 +88,3 @@ As a user
 So users can't cheat about their picture popularity
 I can only like a picture once
 ```
-
-Approach
------
-After writing the user stories, I create a diagram to extract classes, their properties and relationships.
