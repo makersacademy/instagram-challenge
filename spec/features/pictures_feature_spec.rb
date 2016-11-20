@@ -46,3 +46,19 @@ context 'viewing pictures' do
   end
 
 end
+
+context 'reader comments' do
+
+  before { Picture.create name: 'pic1', description: 'first picture' }
+
+  scenario 'let a user comment on a picture' do
+   visit '/pictures'
+   click_link 'Reader comment'
+   fill_in 'Reader Comment', with: 'Lovely photo'
+   click_button 'Update picture'
+   expect(page).to have_content 'Kentucky Fried Chicken'
+   expect(page).to have_content 'Deep fried goodness'
+   expect(current_path).to eq '/restaurants'
+  end
+
+end
