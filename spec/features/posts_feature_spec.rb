@@ -119,7 +119,7 @@ describe 'Posts' do
 
       scenario 'users can \'dislike\' posts' do
         click_link caption_text
-        click_link 'Like'
+        click_link 'Dislike'
         expect(page).to have_content 'Likes: 0 | Dislikes: 1'
       end
     end
