@@ -15,13 +15,19 @@
 %ul.nav.navbar-nav.navbar-right
 %li
 = link_to "New Post", new_post_path
-%li
-= link_to "Login", '#'
-%li
-= link_to "Register", '#'
+-if current_user
+  %li
+  = link_to "Sign Out", destroy_user_session_path
+-else
+  %li
+  = link_to "Login", new_user_session_path
+  %li
+  = link_to "Register",  new_user_registration_path
 
-%body
 %p.notice= notice
 %p.alert= alert
+
+%body
+
 
 =yield
