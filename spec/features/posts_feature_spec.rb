@@ -85,6 +85,12 @@ describe 'Posts' do
         click_link 'Delete post'
         expect(page).not_to have_text caption_text
       end
+
+      scenario 'users have links to delete and edit comments' do
+        visit '/'
+        expect(page).to have_link 'Delete comment'
+        expect(page).to have_link 'Edit comment'
+      end
     end
   end
 end
