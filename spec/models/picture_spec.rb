@@ -20,5 +20,4 @@ RSpec.describe Picture, type: :model do
   it "adds an optional comment" do
     expect(picture.comment).to eq("Love this image!")
   end
-
 end

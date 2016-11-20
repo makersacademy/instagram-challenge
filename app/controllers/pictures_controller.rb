@@ -21,5 +21,4 @@ class PicturesController < ApplicationController
   def picture_params
     params.require(:picture).permit(:image, :comment)
   end
-
 end
