@@ -3,8 +3,18 @@
 <% else %>
   <% @posts.each do |post| %>
     <div class="post">
-      <%= image_tag post.image.url, width: '400' %>
+      <%= link_to (image_tag post.image.url, width: '400'), post_path(post.id) %>
       <p class="caption"><%= link_to post.caption, post_path(post.id) %></p>
+      <p>
+        <% case post.comments.length %>
+        <% when 0 %>
+          No comments
+        <% when 1 %>
+          1 comment
+        <% else %>
+          <%= post.comments.length %> comments
+        <% end %>
+      </p>
     </div>
   <% end %>
 <% end %>
