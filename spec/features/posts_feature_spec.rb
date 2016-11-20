@@ -52,27 +52,23 @@ describe 'Posts' do
 
     context 'displaying a post' do
       scenario '#index has link to #show' do
-        visit '/'
         click_link caption_text
         expect(current_path).to eq "/posts/#{Post.last.id}"
       end
 
       scenario '#show displays image and caption' do
-        visit '/'
         click_link caption_text
         expect(page).to have_css 'img[src*="kittens.jpg"]'
         expect(page).to have_content caption_text
       end
 
       scenario 'user can submit comment' do
-        visit '/'
         click_link caption_text
         fill_in 'Comment', with: comment_text
         click_button 'Comment!'
       end
 
       scenario 'user can see comments on Posts#show' do
-        visit  '/'
         click_link caption_text
         fill_in 'Comment', with: comment_text
         click_button 'Comment!'
@@ -80,19 +76,39 @@ describe 'Posts' do
       end
 
       scenario 'user can delete a post on Posts#show' do
-        visit '/'
         click_link caption_text
         click_link 'Delete post'
         expect(page).not_to have_text caption_text
       end
 
       scenario 'users have links to delete and edit comments' do
-        visit '/'
-        click_link caption_text
-        fill_in 'Comment', with: comment_text
-        click_button 'Comment!'
+        leave_comment
         expect(page).to have_link 'Delete comment'
         expect(page).to have_link 'Edit comment'
+      end
+
+      scenario 'users can delete comments' do
+        leave_comment
+        expect(page).to have_content comment_text
+        click_link  'Delete comment'
+        expect(current_path).to eq  "/posts/#{Post.last.id}"
+        expect(page).not_to have_content comment_text 
+      end
+
+      scenario 'users can edit comments' do
+        leave_comment
+        expect(page).to have_content comment_text
+        click_link 'Edit comment'
+        fill_in 'Comment', with: new_comment_text
+        click_button 'Comment!'
+        expect(page).not_to have_content comment_text
+        expect(page).to have_content new_comment_text
+      end
+
+      scenario  'users can see likes and dislikes n index and show' do
+        expect(page).to have_content 'Likes: 0 | Dislikes: 0'
+        click_link caption_text
+        expect(page).to have_content 'Likes: 0 | Dislikes: 0'
       end
     end
   end

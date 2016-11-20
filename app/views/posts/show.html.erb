@@ -2,6 +2,7 @@
   <%= image_tag @post.image.url, width: '400' %>
   <p><%= @post.created_at %></p>
   <p><%= @post.caption %></p>
+  <p>Likes: <%= @post.likes.size %> | Dislikes: <%= @post.dislikes.size %>
   <p><%= link_to 'Delete post', post_path(@post.id), method: :delete %></p>
 </div>
 
@@ -9,7 +10,7 @@
   <div class="comment">
     <p><%= cmt.comment %></p>
     <p><%= cmt.created_at %></p>
-    <%= link_to 'Delete comment', post_comment_path(cmt.id), method: :delete %> | <%= link_to 'Edit comment', edit_post_comment_path(cmt.id) %>
+    <%= link_to 'Delete comment', post_comment_path(@post.id, cmt.id), method: :delete %> | <%= link_to 'Edit comment', edit_post_comment_path(@post.id, cmt.id) %>
   </div>
 <% end %>
 
