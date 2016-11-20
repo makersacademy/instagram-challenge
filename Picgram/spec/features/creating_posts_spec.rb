@@ -5,7 +5,7 @@ feature 'Creating posts' do
     visit '/'
     click_link 'New Post'
     attach_file('Image','spec/files/images/messier.jpg')
-    fill_in 'caption', with: 'messier marathon #astronomy'
+    fill_in 'Caption', with: 'messier marathon #astronomy'
     click_button 'Post'
     expect(page).to have_content('#astronomy')
     expect(page).to have_css("img[src*='messier.jpg']")
