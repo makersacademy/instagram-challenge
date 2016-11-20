@@ -13,6 +13,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.secret_key = '162d43a48dda4ca4b2f7a09819c62f0a76ae5cca6471eb450628fad4b58868ff06ef60588a50917a1c818fc28f54f0607bbf9507905dc1adc135ad8dd1ab23bb'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -244,7 +245,7 @@ Devise.setup do |config|
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
   config.sign_out_via = Rails.env.production? ? :get : :delete
-  
+
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
