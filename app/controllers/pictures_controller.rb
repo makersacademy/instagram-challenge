@@ -11,8 +11,10 @@ class PicturesController < ApplicationController
   end
 
   def destroy
-    # DELETE   /galleries/:gallery_id/pictures/:id(.:format)      pictures#destroy
-
+    @gallery = Gallery.find(params[:gallery_id])
+    @picture = Picture.find(params[:id])
+    @gallery.pictures.destroy(@picture)
+    redirect_to "/galleries/#{@gallery.id}"
   end
 
   private
