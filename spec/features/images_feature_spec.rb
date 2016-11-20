@@ -38,9 +38,9 @@ feature 'images' do
     before { Image.create description: 'First picture', avatar_file_name: 'test.jpg' }
 
     scenario 'lets a user view an image' do
-      visit '/images/1'
-      expect(page).to have_image
-      expect(current_path).to eq '/images'
+
+      visit '/images'
+      expect(page).to have_content 'First picture'
     end
   end
 
