@@ -20,4 +20,24 @@ feature 'happysnaps posts' do
       expect(page).not_to have_content('No posts yet')
     end
   end
+
+  context 'creating posts' do
+    scenario 'option for user to upload a photo and write a caption' do
+      visit '/posts/new/'
+      attach_file('post_image', '/Users/annalucking/Desktop/amelie.png')
+      fill_in 'post_caption', with: 'Check it out!'
+      click_button 'Add post'
+      expect(page).to have_content 'Check it out!'
+      expect(current_path).to eq '/posts'
+    end
+  end
+
+  # context 'viewing posts' do
+  #   let!(:/posts/1){Post.create(image: post.image.url)}
+  #   scenario 'lets a user see a post' do
+  #     visit '/posts'
+  #     click_link '/posts/1'
+  #     expect(current_path).to eq '/posts/#{image.url.id}'
+  #   end
+  # end
 end
