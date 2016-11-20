@@ -1,15 +1,25 @@
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
+  include CarrierWave::RMagick
 
   process resize_to_fit: [800, 800]
+  process :sepia
 
   version :thumb do
     process resize_to_fill: [200,200]
   end
-  
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+
+  version :big_thumb, from_version: :thumb do
+   process resize_to_fill: [400, 400]
+ end
+
+ def sepia
+    manipulate! do |img|
+      img = img.sepiatone
+    end
+  end
+
+
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -43,9 +53,9 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_whitelist
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_whitelist
+    %w(jpg jpeg gif png)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

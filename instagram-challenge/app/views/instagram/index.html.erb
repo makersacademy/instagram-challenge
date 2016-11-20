@@ -17,16 +17,6 @@
 
     <p><%= picture.caption %></p>
 
-
-    <% if picture.comments.length > 2 %>
-     <%= link_to "View more comments", picture_path(picture.id) %>
-    <% end %>
-
-    <% if user_signed_in? %>
-     <p><%= link_to "Add Comment", new_picture_comment_path(picture.id)%></p>
-    <% end %>
-
-
     <% arr = picture.comments.last(2) %>
     <p><% arr.each do |comment| %></p>
     <p><%= comment.user.username %>:
@@ -36,7 +26,13 @@
      <%= link_to "Delete comment", picture_comment_url(picture.id, comment.id), method: :delete %>
     <% end %>
     </p>
+    <% end %>
+    <% if picture.comments.length > 2 %>
+     <%= link_to "View more comments", picture_path(picture.id) %>
+    <% end %>
 
+    <% if user_signed_in? %>
+     <p><%= link_to "Add Comment", new_picture_comment_path(picture.id)%></p>
     <% end %>
     ----------------------------------------
    <% end %>
