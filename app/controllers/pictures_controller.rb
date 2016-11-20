@@ -7,10 +7,6 @@ class PicturesController < ApplicationController
   end
 
   def create
-    # @gallery = Gallery.find(params[:gallery_id])
-    # @gallery.pictures.create(picture_params)
-    # redirect_to "/galleries/#{@gallery.id}"
-
     @gallery = Gallery.find(params[:gallery_id])
     @picture = @gallery.pictures.new(picture_params)
     if @picture.save
@@ -24,9 +20,6 @@ class PicturesController < ApplicationController
   def destroy
     @gallery = Gallery.find(params[:gallery_id])
     @picture = Picture.find(params[:id])
-    # @gallery.pictures.destroy(@picture)
-    # redirect_to "/galleries/#{@gallery.id}"
-
     if @gallery.pictures.destroy(@picture)
       flash[:notice] = "The \"#{@picture.title}\" picture was successfully deleted"
       redirect_to "/galleries/#{@gallery.id}"

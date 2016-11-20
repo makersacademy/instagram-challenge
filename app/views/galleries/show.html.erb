@@ -12,7 +12,9 @@
   <div id = "picture">
     <div id = "title">
       <%= picture.title %>
-      <%= link_to "Delete Picture", "/galleries/#{@gallery.id}/pictures/#{picture.id}", method: :delete %>
+      <% if user_signed_in? %>
+        <%= link_to "Delete Picture", "/galleries/#{@gallery.id}/pictures/#{picture.id}", method: :delete %>
+      <% end %>
     </div>
   </div>
 <% end %>

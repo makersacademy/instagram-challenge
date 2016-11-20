@@ -1,0 +1,22 @@
+describe Picture, type: :model do
+  it "is not valid with a name less than 1 character" do
+    gallery = Gallery.create(name: "GB favourites")
+    picture = Picture.new(title: "", gallery_id: gallery.id)
+    expect(picture).to have(1).error_on(:title)
+    expect(picture).not_to be_valid
+  end
+
+  it "is not valid with a title more than 30 characters" do
+    gallery = Gallery.create(name: "GB favourites")
+    picture = Picture.new(title: "This title is 32 chars in length", gallery_id: gallery.id)
+    expect(picture).to have(1).error_on(:title)
+    expect(picture).not_to be_valid
+  end
+
+  it "is not valid unless it has a unique title" do
+    gallery = Gallery.create(name: "GB favourites")
+    Picture.create(title: "My best picture of all time", gallery_id: gallery.id)
+    picture = Picture.new(title: "My best picture of all time", gallery_id: gallery.id)
+    expect(picture).to have(1).error_on(:title)
+  end
+end
