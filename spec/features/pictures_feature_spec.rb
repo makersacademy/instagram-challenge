@@ -10,6 +10,7 @@ feature 'adding pictures' do
     fill_in "Title", with: "Oh my god!"
     click_button 'Create Picture'
     expect(page).to have_content('Oh my god!')
+    expect(page).to have_content('The "Oh my god!" picture was successfully created')
   end
 end
 
@@ -19,11 +20,10 @@ feature 'deleting pictures' do
     create_a_gallery
     visit_a_gallery
     click_link 'Add Picture'
-    fill_in "Title", with: "Oh my god!"
+    fill_in "Title", with: "Another cute pic"
     click_button 'Create Picture'
     click_link 'Delete Picture'
-    expect(page).not_to have_content('Another cute pic')
-    expect(page).to have_content("Picture \"Another cute pic\" was successfully deleted")
+    expect(page).to have_content("The \"Another cute pic\" picture was successfully deleted")
   end
 
 end
