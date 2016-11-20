@@ -1,11 +1,20 @@
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
+    <br>
+    <br>
     <%= link_to picture.name, picture_path(picture) %>
+    <br>
+    <%= image_tag picture.image.url(:thumb) %>
+    <br>
+    <%= link_to "Edit #{picture.name}", edit_picture_path(picture) %>
+    <%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %>
+    <br>
   <% end %>
 <% else %>
   No pictures on here yet
 <% end %>
 
+<br>
 <a href='/pictures/new'>Add a photo!</a>
 <a href='#'>Sign in</a>
 <a href='#'>Sign up</a>

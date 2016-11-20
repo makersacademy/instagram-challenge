@@ -46,4 +46,32 @@ feature 'pictures' do
       end
     end
 
+    context 'editing posts.' do
+      before do
+        Picture.create(name: 'Awesome pic!', comment: 'So awesome!')
+      end
+      scenario 'User decides to change the information that has been inputted' do
+        visit ('/pictures')
+        click_link 'Edit Awesome pic!'
+        fill_in :name, with: 'Terrible pic'
+        fill_in :comment, with: 'So terrible!'
+        click_button 'Update picture'
+        expect(page).to have_content("So terrible!")
+        expect(page).to have_content("Terrible pic")
+        expect(current_path).to eq "/restaurants"
+      end
+    end
+
+    context 'deleting posts.' do
+      before do
+        Picture.create(name: 'Awesome pic!', comment: 'So awesome!')
+      end
+      scenario 'User wishes to delete one of the inputted posts' do
+        visit ('/pictures')
+        click_link 'Delete Awesome pic!'
+        expect(page).not_to have_content('Awesome pic!')
+        expect(page).to have_content('Picture successfully deleted')
+      end
+    end
+
 end

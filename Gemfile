@@ -51,3 +51,5 @@ group :test do
   gem 'capybara'
   gem 'rspec-rails'
 end
+
+gem "paperclip", "~> 5.0.0"
