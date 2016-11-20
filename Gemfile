@@ -29,7 +29,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+# Kaminari for pagination
+gem 'kaminari', '~> 0.16.3'  
 # Paperclip is for attaching files
 gem 'paperclip', '~> 5.0.0'
 gem 'climate_control', '~> 0.0.3'
