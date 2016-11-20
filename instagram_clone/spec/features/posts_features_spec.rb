@@ -30,15 +30,25 @@ feature 'posts' do
         end
     end
     context 'viewing posts' do
+        let!(:post) { Post.create(name: 'Nice Picture') }
 
-  let!(:post){ Post.create(name:'Nice Picture') }
-
-  scenario 'lets a user view a post' do
-   visit '/posts'
-   click_link 'Nice Picture'
-   expect(page).to have_content 'Nice Picture'
-   expect(current_path).to eq "/posts/#{post.id}"
-  end
-
-end
+        scenario 'lets a user view a post' do
+            visit '/posts'
+            click_link 'Nice Picture'
+            expect(page).to have_content 'Nice Picture'
+            expect(current_path).to eq "/posts/#{post.id}"
+        end
+    end
+    context 'uploading a picture' do
+        scenario 'user can add a picture to the post' do
+            visit '/posts'
+            click_link 'Add a post'
+            fill_in 'Name', with: 'Nice Picture'
+            page.attach_file('post_image', Rails.root + 'app/assets/images/post.png')
+            click_button 'Create Post'
+            expect(page).to have_content('Nice Picture')
+            expect(page).to have_css "img[src*='post']"
+            expect(current_path).to eq '/posts'
+        end
+    end
 end
