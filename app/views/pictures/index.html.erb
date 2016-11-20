@@ -1,12 +1,16 @@
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
-    <h2> <%= picture.name %> </h2>
+  <section>
+    <%= link_to picture.name, picture_path(picture) %>
     <h3> <%= picture.comment %></h3>
     <%= image_tag picture.image.url(:thumb) %>
+  </section>
+  <br>
   <% end %>
-<section>
-<% else %>
-  No pictures yet
+  <% else %>
+  <section>
+    No pictures yet
+  </section>
 <% end %>
-</section>
+
 <a href='/pictures/new'>Add a picture</a>
