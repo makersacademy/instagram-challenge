@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validate :validate_username
   has_many :pictures
   has_many :comments
+  has_many :endorsements
   has_many :picture_comments, through: :comments, source: :picture
 
   attr_accessor :login
