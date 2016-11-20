@@ -2,9 +2,13 @@
 <p><%= image_tag @picture.image.url(:thumb) %></p>
 <p><%= @picture.caption %></p>
 <p><% @picture.comments.each do |comment| %></p>
-<p><%= comment.user.username %>:
-<%= comment.comment %></p>
-<% end %>
-<% if user_signed_in? %>
- <p><%= link_to "Add Comment", new_picture_comment_path(@picture.id)%></p>
+  <p><%= comment.user.username %>:
+  <%= comment.comment %>
+  <% if comment.user == current_user %>
+   <%= link_to "Delete comment", picture_comment_url(@picture.id, comment.id), method: :delete %>
+  <% end %>
+  </p>
+  <% end %>
+  <% if user_signed_in? %>
+   <p><%= link_to "Add Comment", new_picture_comment_path(@picture.id)%></p>
 <% end %>
