@@ -9,6 +9,7 @@ class User < ApplicationRecord
   after_create :build_default_feed
 
   def build_default_feed
-    self.feed << Feed.create(user_id: current_user.id)
+    p User.last
+    self.feed = Feed.create(user_id: User.last.id)
   end
 end
