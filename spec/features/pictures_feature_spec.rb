@@ -56,10 +56,10 @@ context 'reader comments' do
     fill_in 'Comment', with: 'comment1'
     click_button 'Create Picture'
     expect(current_path).to eq '/pictures'
-    click_link 'Comment on pic1'
-    click_button 'Update picture'
+    click_link "Comment on pic1"
+    click_button 'Update Picture'
     expect(page).to have_content 'pic1'
-    expect(page).to have_content 'Lovely photo'
+    expect(page).to have_content 'comment1'
     expect(current_path).to eq '/pictures'
   end
 
