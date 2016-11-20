@@ -1,0 +1,41 @@
+
+<div class="jumbotron text-center">
+  <h1 class="headings"> Instagram</h1>
+</div>
+<p><%=link_to("Post", new_feed_photo_path(@feed_id), method: :get, class: 'btn btn-success')%></p>
+
+
+
+<% @photos.each do |photo| %>
+<div class="jumbotron text-center">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="thumbnail">
+      <%= User.find_by_id(photo.user_id).email%>
+      posted: <%= Feed.time(photo.created_at) %></br>
+      <%= image_tag photo.image.url(:medium) %></br>
+      <div class="caption">
+      <%= photo.name %></br>
+      <%@photo_id = photo.id%>
+      <%=link_to("Add Comment", new_feed_photo_comment_path(@feed_id, @photo_id), method: :get, class: 'btn btn-success')%>
+      <% @comments= Comment.where(photo_id: @photo_id)%>
+        <%@comments.each do |comment| %>
+        <%= Comment.comment_author(comment.user_id)%> wrote:
+        <%=comment.description%>
+        <%end%>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<%end%>
+
+<style>
+.headings {
+  text-align: center;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+}
+</style>
