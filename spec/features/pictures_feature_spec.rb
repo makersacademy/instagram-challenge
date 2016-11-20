@@ -14,8 +14,9 @@ feature 'pictures' do
       user = create(:user)
       picture = create(:picture)
       visit '/'
-      expect(page).to have_content("Test")
+      expect(page).to have_content("This is a caption")
       expect(page).to have_css("img[src*='picture']")
+      print page.body
     end
   end
 end
