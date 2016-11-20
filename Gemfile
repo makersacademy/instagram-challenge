@@ -38,7 +38,10 @@ gem 'spring',        group: :development
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'database_cleaner'
+  gem 'shoulda', '~> 3.5'
 end
+
 
 gem 'devise'
 gem 'dotenv-rails', :groups => [:development, :test]

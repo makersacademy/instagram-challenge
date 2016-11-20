@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 feature 'pictures' do
+  before do
+    sign_up
+    sign_out
+  end
+
   context 'no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
       visit '/pictures'
@@ -10,6 +15,9 @@ feature 'pictures' do
   end
 
   context 'adding pictures' do
+    before do
+      sign_in
+    end
     scenario 'prompts the user with a form to add pictures' do
       visit '/pictures'
       add_a_picture
@@ -44,9 +52,12 @@ feature 'pictures' do
 
   context 'editing pictures' do
 
-    before { Picture.create name: 'My picture', description: 'This is a fantastic pic' }
+    before do
+      Picture.create(name: 'My picture', description: 'This is a fantastic pic')
+      sign_in
+    end
 
-    scenario 'let a user edit a picture' do
+    scenario 'let a user edit a picture if the picture belongs to the user' do
       visit '/pictures'
       click_link 'Edit My picture'
       fill_in 'Name', with: 'My picture'
@@ -61,7 +72,10 @@ feature 'pictures' do
 
   context 'deleting pictures' do
 
-    before { Picture.create name: 'My picture', description: 'This is a fantastic pic' }
+    before do
+      Picture.create(name: 'My picture', description: 'This is a fantastic pic')
+      sign_in
+    end
 
     scenario 'removes a picture when a user clicks a delete link' do
       visit '/pictures'
@@ -72,11 +86,4 @@ feature 'pictures' do
 
   end
 
-end
-
-def add_a_picture
-  click_link 'Add a picture'
-  fill_in 'Name', with: 'My picture'
-  fill_in 'Description', with: 'This is a fantastic pic'
-  click_button 'Create Picture'
 end

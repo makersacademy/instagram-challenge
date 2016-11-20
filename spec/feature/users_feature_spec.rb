@@ -2,13 +2,13 @@ require 'rails_helper'
 
 feature "User can sign in and out" do
   context "user not signed in and on the homepage" do
-    it "should see a 'sign in' link and a 'sign up' link" do
+    scenario "should see a 'sign in' link and a 'sign up' link" do
       visit('/')
       expect(page).to have_link('Sign in')
       expect(page).to have_link('Sign up')
     end
 
-    it "should not see 'sign out' link" do
+    scenario "should not see 'sign out' link" do
       visit('/')
       expect(page).not_to have_link('Sign out')
     end
@@ -20,14 +20,16 @@ feature "User can sign in and out" do
     before do
       visit('/')
       sign_up
+      sign_out
+      sign_in
     end
 
-    it "should see 'sign out' link" do
+    scenario "should see 'sign out' link" do
       visit('/')
       expect(page).to have_link('Sign out')
     end
 
-    it "should not see a 'sign in' link and a 'sign up' link" do
+    scenario "should not see a 'sign in' link and a 'sign up' link" do
       visit('/')
       expect(page).not_to have_link('Sign in')
       expect(page).not_to have_link('Sign up')
@@ -36,10 +38,27 @@ feature "User can sign in and out" do
 end
 
 
-def sign_up
-  click_link('Sign up')
-  fill_in('Email', with: 'laszlo@makers.com')
-  fill_in('Password', with: 'password')
-  fill_in('Password confirmation', with: 'password')
-  click_button('Sign up')
+feature "User authentication" do
+  before do
+    Picture.create(name:'My picture', description: 'This is a fantastic pic')
+  end
+  context 'user not signed in' do
+    scenario 'can visit index page' do
+      visit('/')
+      expect(page).to have_link('Sign in')
+    end
+    scenario 'can visit show picture page' do
+      visit('/')
+      click_link('My picture')
+      expect(page).to have_link('Sign in')
+      expect(page).to have_content('My picture')
+    end
+    scenario 'can not visit any other pages' do
+      visit('/')
+      click_link('Edit My picture')
+      expect(page).to have_content('Log in')
+
+    end
+  end
+
 end
