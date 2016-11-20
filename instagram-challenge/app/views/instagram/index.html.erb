@@ -1,6 +1,10 @@
 <% if @pictures.any? %>
   <% @pictures.reverse_each do |picture| %>
-    <p><%= picture.user.username %></p>
+    <p><%= picture.user.username %>
+    <% if picture.user == current_user %>
+     <%= link_to "Delete Image", picture_path(picture.id), method: :delete %>
+    <% end %>
+   </p>
     <p><%= image_tag picture.image.url(:thumb) %></p>
     <p><%= picture.caption %></p>
 
@@ -23,7 +27,3 @@
   <% else %>
   <h1>No pictures yet</h1>
  <% end %>
-
-<% if user_signed_in? %>
- <%= link_to 'Add a picture', new_picture_url %>
-<% end %>

@@ -11,8 +11,9 @@ class User < ApplicationRecord
   validate :validate_username
   has_many :pictures
   has_many :comments
+  has_many :picture_comments, through: :comments, source: :picture
 
-  attr_accessor :login 
+  attr_accessor :login
 
   def validate_username
     if User.where(email: username).exists?

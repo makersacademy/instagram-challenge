@@ -25,6 +25,22 @@ class PicturesController < ApplicationController
     end
   end
 
+  def destroy
+	 picture = Picture.find(params[:id])
+   comment = Comment.all
+		if picture.user == current_user
+      # if comment.picture_id == picture.id
+      #   comment.destroy
+      # end
+			picture.destroy
+			flash[:notice] = "Image has been deleted"
+			redirect_to('/')
+		else
+			flash[:notice] = "You do not have permission to delete this Image"
+			redirect_to ('/')
+		end
+	end
+
   private
 
   def picture_params
