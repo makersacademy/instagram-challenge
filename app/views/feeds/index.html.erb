@@ -1,5 +1,34 @@
-<h1>Instafeed</h1>
 
-<h2>Upload Photo<h2>
+<div class="jumbotron text-center">
+  <h1 class="headings"> Instagram</h1>
+  <p><%=link_to("Post", new_feed_photo_path(@feed_id), method: :get)%></p>
+</div>
 
-<%= p new_feed_photo_path(@feed_id); link_to("Upload", new_feed_photo_path(@feed_id), method: :get)%>
+
+
+<% @photos.each do |photo| %>
+<div class="jumbotron text-center">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="thumbnail">
+      <%= User.find_by_id(photo.user_id).email%></br>
+      <%= image_tag photo.image.url(:medium) %></br>
+      <div class="caption">
+      <%= photo.name %></br>
+      <%= photo.created_at %></br>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<%end%>
+
+<style>
+.headings {
+  text-align: center;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 40px;
+}
+</style>

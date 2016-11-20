@@ -4,10 +4,9 @@ class FeedsController < ApplicationController
   end
 
   def index
-    # @photos = Feed.photo
     feed = Feed.find_by(user_id: @currentUser)
     @feed_id = feed.id
-    # @photos = Photo.find_by_id(@feed.id)
+    @photos = Photo.all.order(created_at: :asc)
   end
 
   def update
