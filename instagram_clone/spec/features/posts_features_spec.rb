@@ -8,7 +8,7 @@ feature 'posts' do
             expect(page).to have_link 'Add a post'
         end
     end
-    context 'restaurants have been added' do
+    context 'posts have been added' do
         before do
             Post.create(name: 'Nice Picture')
         end
@@ -17,6 +17,16 @@ feature 'posts' do
             visit '/posts'
             expect(page).to have_content('Nice Picture')
             expect(page).not_to have_content('No posts yet')
+        end
+    end
+    context 'creating posts' do
+        scenario 'prompts user to fill out a form, then displays the new post' do
+            visit '/posts'
+            click_link 'Add a post'
+            fill_in 'Name', with: 'Nice Picture'
+            click_button 'Create Post'
+            expect(page).to have_content 'Nice Picture'
+            expect(current_path).to eq '/posts'
         end
     end
 end
