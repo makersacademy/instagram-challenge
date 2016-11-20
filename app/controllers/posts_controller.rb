@@ -6,8 +6,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(image_params)
-    redirect_to 'posts_path'
-end
+    redirect_to posts_path
+  end
+
+  def index
+    @posts = Post.all
+  end
 
 private
 
