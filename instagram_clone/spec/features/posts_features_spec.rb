@@ -15,6 +15,7 @@ feature 'posts' do
         end
 
         scenario 'display posts' do
+            sign_up
             visit '/posts'
             expect(page).to have_content('Nice Picture')
             expect(page).not_to have_content('No posts yet')
@@ -22,6 +23,7 @@ feature 'posts' do
     end
     context 'creating posts' do
         scenario 'prompts user to fill out a form, then displays the new post' do
+            sign_up
             visit '/posts'
             click_link 'Add a post'
             fill_in 'Name', with: 'Nice Picture'
@@ -39,6 +41,7 @@ feature 'posts' do
         end
 
         scenario 'lets a user view a post' do
+            sign_up
             visit '/posts'
             click_link 'Nice Picture'
             expect(page).to have_content 'Nice Picture'
@@ -48,6 +51,7 @@ feature 'posts' do
     end
     context 'uploading a picture' do
         scenario 'user can add a picture to the post' do
+            sign_up
             visit '/posts'
             click_link 'Add a post'
             fill_in 'Name', with: 'Nice Picture'
@@ -60,6 +64,7 @@ feature 'posts' do
     end
     context 'invalid posts' do
         scenario 'users must add an image' do
+            sign_up
             visit '/posts'
             click_link 'Add a post'
             fill_in 'Name', with: 'Nice Picture'
@@ -75,6 +80,7 @@ feature 'posts' do
         end
 
         scenario 'let a user edit a post' do
+            sign_up
             visit '/posts'
             click_link 'Edit'
             fill_in 'Name', with: 'Bahh not at all'
@@ -91,6 +97,7 @@ feature 'posts' do
        end
 
        scenario 'users can delete a post' do
+         sign_up
          visit '/posts'
          click_link 'Delete'
          expect(page).to have_content 'Post deleted successfully'
