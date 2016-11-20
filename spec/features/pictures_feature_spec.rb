@@ -9,13 +9,13 @@ feature 'pictures' do
     end
   end
 
-  # context 'pictures have been added' do
-  #   before do
-  #     Picture.new(image: '/Users/crispinandrews/Pictures/brighton_2472753b-1.jpg')
-  #   end
-  #   scenario 'display pictures' do
-  #     vist '/pictures'
-  #     expect(page).to have_css("img[src*='/Users/crispinandrews/Pictures/brighton_2472753b-1.jpg']")
-  #   end
-  # end
+  context 'pictures have been added' do
+    scenario 'displays the pictures' do
+      user = create(:user)
+      picture = create(:picture)
+      visit '/'
+      expect(page).to have_content("Test")
+      expect(page).to have_css("img[src*='picture']")
+    end
+  end
 end

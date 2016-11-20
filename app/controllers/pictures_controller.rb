@@ -12,8 +12,12 @@ class PicturesController < ApplicationController
 
   def create
     @user = User.find(current_user.id)
-    @picture = @user.pictures.create(picture_params)
-    redirect_to '/pictures'
+    @picture = @user.pictures.build(picture_params)
+    if @picture.save
+      redirect_to(pictures_path(@picture))
+    else
+      render('new')
+    end
   end
 
   def show
