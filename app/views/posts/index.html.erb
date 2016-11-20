@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <div class="container">
+    <% @posts.each do |post| %>
+    <div class="row">
+    <tr><%=image_tag post.image.url(:medium)%>
+    </tr>
+      <tr>
+        <p><%=post.caption%></p>
+        <p><%= link_to 'Write a Comment', new_post_comment_path(post) %></p>
+        <p><%= link_to 'Show', post %></p>
+        <p><%= link_to 'Edit', edit_post_path(post) %></p>
+        <p><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      </tr>
+      <tr>
+        <h3>Comments</h3>
+      </tr>
+        <% comment = post.get_comments(post.id) %>
+            <% comment.last(3).each do |comment| %>
+            <tr><%= User.find_by_id(comment.user_id).email%> wrote:
+            <%= comment.text %><br></tr>
+        <% end %>
+      </tr>
+    </div>
+    <% end %>
+  </div>
+  </tbody>
+</table>
+<br>
+
+<%= link_to 'New Post', new_post_path %>
