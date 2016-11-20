@@ -10,11 +10,11 @@ class PicturesController < ApplicationController
     @gallery = Gallery.find(params[:gallery_id])
     @picture = @gallery.pictures.new(picture_params)
     @picture.user_id = current_user.id
-    if @picture.save
+    if current_user.id == @gallery.user_id && @picture.save
       flash[:notice] = "The \"#{@picture.title}\" picture was successfully created"
       redirect_to "/galleries/#{@gallery.id}"
     else
-      render 'new'
+      redirect_to "/galleries"
     end
   end
 
@@ -26,13 +26,12 @@ class PicturesController < ApplicationController
   def update
     @gallery = Gallery.find(params[:gallery_id])
     @picture = Picture.find(params[:id])
-    if @picture.update(picture_params)
+    if current_user.id == @gallery.user_id && @picture.update(picture_params)
       flash[:notice] = "The \"#{@picture.title}\" picture was successfully edited"
       redirect_to "/galleries/#{@gallery.id}"
     else
       # I can only see validation errors if I use "render 'new'" here.
       flash[:error] = @picture.errors
-      p @picture.errors
       redirect_to "/galleries/#{@gallery.id}/pictures/#{@picture.id}/edit"
     end
   end
@@ -40,11 +39,11 @@ class PicturesController < ApplicationController
   def destroy
     @gallery = Gallery.find(params[:gallery_id])
     @picture = Picture.find(params[:id])
-    if @gallery.pictures.destroy(@picture)
+    if current_user.id == @gallery.user_id && @gallery.pictures.destroy(@picture)
       flash[:notice] = "The \"#{@picture.title}\" picture was successfully deleted"
       redirect_to "/galleries/#{@gallery.id}"
     else
-      render 'new'
+      redirect_to "/galleries"
     end
   end
 

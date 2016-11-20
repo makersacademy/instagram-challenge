@@ -1,5 +1,5 @@
 <h1><%= @gallery.name %></h1>
-<% if user_signed_in? %>
+<% if user_signed_in? && current_user.id == @gallery.user_id%>
   <strong><%= link_to "Edit name", edit_gallery_path(@gallery) %></strong>
   <strong><%= link_to "Delete Gallery", gallery_path(@gallery), method: :delete %></strong>
   <p><strong><%= link_to "Add Picture", "/galleries/#{@gallery.id}/pictures/new" %></strong>
@@ -12,7 +12,7 @@
   <div id = "picture">
     <div id = "title">
       <%= picture.title %>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && current_user.id == @gallery.user_id%>
         <%= link_to "Edit Picture", "/galleries/#{@gallery.id}/pictures/#{picture.id}/edit" %>
         <%= link_to "Delete Picture", "/galleries/#{@gallery.id}/pictures/#{picture.id}", method: :delete %>
       <% end %>
