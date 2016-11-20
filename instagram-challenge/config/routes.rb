@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   root to: "instagram#index"
 
   resources :instagram
-  resources :pictures
+
+  resources :pictures do
+    resources :comments
+  end
 
   # get 'instagram' => 'instagram#index'
 

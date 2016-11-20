@@ -5,8 +5,18 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @add_picture = Picture.create(picture_params)
-    redirect_to('/')
+    if !user_signed_in?
+      redirect_to('/users/sign_in')
+    else
+      @add_picture = Picture.new(picture_params)
+      @add_picture.user = current_user
+      if @add_picture.save
+        redirect_to('/')
+      else
+        flash[:notice] = 'There was a problem adding your picture'
+        redirect_to('/')
+      end
+    end 
   end
 
   private

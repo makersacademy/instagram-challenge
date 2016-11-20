@@ -1,10 +1,18 @@
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
-    <%= image_tag picture.image.url(:thumb) %>
+    <p><%= picture.user.username %></p>
+    <p><%= image_tag picture.image.url(:thumb) %></p>
     <p><%= picture.caption %></p>
+    <p><%= link_to "Add Comment", new_picture_comment_path(picture.id)%></p>
+    <p><% picture.comments.each do |comment| %></p>
+    <p><%= comment.user.username %>:
+    <%= comment.comment %></p>
+    <% end %>
   <% end %>
-<% else %>
+ <% else %>
   <h1>No pictures yet</h1>
 <% end %>
 
-<%= link_to 'Add a picture', new_picture_url %>
+<% if user_signed_in? %>
+ <%= link_to 'Add a picture', new_picture_url %>
+<% end %>
