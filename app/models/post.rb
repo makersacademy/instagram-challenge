@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   has_many :comments,
       -> { extending WithUserAssociationExtension },
       dependent: :destroy
-  has_many :likes
+  has_many :likes, dependent: :destroy
 
   validates :caption, length: { minimum: 3 }, uniqueness: true
 
