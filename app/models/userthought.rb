@@ -1,0 +1,2 @@
+class Userthought < ApplicationRecord
+end
