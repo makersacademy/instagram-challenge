@@ -63,4 +63,15 @@ feature 'images' do
       expect(current_path).to eq '/images'
     end
   end
+
+  context 'deleting images' do
+    before { Image.create description: 'Sunday', url: 'http://cdn.pcwallart.com/images/morning-sunrise-city-wallpaper-2.jpg'}
+
+    scenario 'removes an image when a user clicks delete link' do
+      visit '/images'
+      click_link 'Delete Sunday'
+      expect(page).not_to have_content 'Sunday'
+      expect(page).to have_content 'Image deleted successfully'
+    end
+  end
 end
