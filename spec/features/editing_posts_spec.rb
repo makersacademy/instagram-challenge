@@ -13,6 +13,5 @@ feature 'Editing posts' do
     click_button 'Update Post'
 
     expect(page).to have_content("Post updated")
-    # expect(page).to have_content("Oh god, you weren't meant to see this picture!")
   end
 end

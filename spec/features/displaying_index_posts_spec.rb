@@ -14,14 +14,14 @@ end
 
 feature 'Can view individual posts' do
   scenario 'Can click and view a single post' do
-    # post = create(:post)
     post = create(:post, caption: "This is post one")
 
-
     visit '/'
-    find(:xpath, "//a[contains(@href,'/posts/1')]").click
-    # find("img[alt='Weebl']").click
-    # find('img.img-responsive').click
+    find("img[alt='Weebl']").click
+    # find(:xpath, "//a[@href='/posts/1']").click
+    # my_link = find(:xpath, "//a[contains(@href)]")
+    # my_link.click
+    # find(:xpath, "//a[contains(@href,'posts/1')]").click
     expect(page.current_path).to eq(post_path(post))
   end
 end
