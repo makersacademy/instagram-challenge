@@ -11,6 +11,7 @@ before_action :authenticate_user!, :except => [:index, :show]
 
   def create
     @gallery = Gallery.new(gallery_params)
+    @gallery.user_id = current_user.id
     if @gallery.save
       flash[:notice] = "The \"#{@gallery.name}\" gallery was successfully created"
       redirect_to "/galleries"
