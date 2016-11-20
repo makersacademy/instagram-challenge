@@ -2,23 +2,29 @@
 
 <div class="row">
 
-  <% @pics.each do |pic| %>
-    <div class="picture_div">
+  <% if @pics.empty? %>
+    <p>No pics yet</p>
+  <% else %>
 
-      <% if pic.url.present? %>
-      <div>
-        <a href="/pics/<%= pic.id %>">
-          <%= image_tag(pic.url, width: 300, height: 150) %>
-        </a>
-      </div>
-      <% end %>
+    <% @pics.each do |pic| %>
+      <div class="picture_div">
 
-      <div><%= pic.description %></div>
-      <div class="edit_links">
-        <%= link_to 'Edit', edit_pic_path(pic) %> |
-        <%= link_to 'Delete', pic, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if pic.url.present? %>
+        <div>
+          <a href="/pics/<%= pic.id %>">
+            <%= image_tag(pic.url, width: 300, height: 150) %>
+          </a>
+        </div>
+        <% end %>
+
+        <div><%= pic.description %></div>
+        <div class="edit_links">
+          <%= link_to 'Edit', edit_pic_path(pic) %> |
+          <%= link_to 'Delete', pic, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
-    </div>
+    <% end %>
+
   <% end %>
 
 </div>
