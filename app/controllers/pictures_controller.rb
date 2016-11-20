@@ -1,16 +1,15 @@
 class PicturesController < ApplicationController
   def index
     @pictures = Picture.all
+    @pictures = Picture.all.order('created_at DESC')
   end
 
   def create
-    if params[:image].nil?
-      flash[:error] = "Please select a file"
-    else
-      @picture = Picture.new(picture_params)
-      @picture.save
-      redirect_to pictures_path
-    end
+    p params
+    @picture = Picture.new(picture_params)
+    @picture.user_id = current_user.id
+    @picture.save
+    redirect_to pictures_path
   end
 
   def show
@@ -20,12 +19,11 @@ class PicturesController < ApplicationController
   def destroy
     @picture = Picture.find(params[:id])
     @picture.destroy
-
     redirect_to pictures_path
   end
 
   private
-    def picture_params
-      params.require(:picture).permit(:image)
-    end
+  def picture_params
+    params.require(:picture).permit(:image, :caption)
+  end
 end

@@ -1,13 +1,26 @@
-require 'rails-helper'
+require 'rails_helper'
 
 RSpec.feature 'Picture' do
+  before (:each) do
+  end
 
-scenario 'can add an image' do
-  #  click_button 'Upload Image'
-  #  expect(page). to include image path? check capybara syntax
+scenario 'can add an image', :focus => true do
+  sign_up
+  add_new_picture
+  p body
+  expect(current_path).to eq '/pictures'
+  expect(page).to have_css("img[src*='fallingwater']")
+end
+
+scenario 'can add caption', :focus => true do
+  sign_up
+  add_new_picture
+  expect(page).to have_content("Gorgeous place")
 end
 
 scenario 'can have comments' do
+  sign_up
+  find("a:contains['']")
   #  click on image/id
   # fill_in comments with some comments
   # click_button "Post Comments"

@@ -77,8 +77,16 @@ So I can stop others from using my account
 I can sign out of the website
 
 As a user
+So other users know the picture I post (and vice versa)
+I can see the author(by username) of each picture
+
+As a user
 So other users know my comments and vice versa
 I can see the author(by username) of each comments
+
+As a user
+So users can't cheat about their picture popularity
+I can only like a picture once
 ```
 
 Approach
