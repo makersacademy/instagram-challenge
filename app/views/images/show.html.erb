@@ -1,4 +1,10 @@
 <p><%= @image.description %></p>
 <%= image_tag @image.avatar.url(:medium) %>
 
-<%= @comments %>
+<% if @comments.any? %>
+  <% @comments.each do |comment| %>
+    <h3> <%= comment.comment %> </h3>
+  <% end %>
+<% else %>
+  <h3>No comments yet</h3>
+<% end %>

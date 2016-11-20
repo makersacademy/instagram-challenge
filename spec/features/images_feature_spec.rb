@@ -29,20 +29,20 @@ feature 'images' do
     end
   end
 
-  context 'adding images' do
-    scenario 'prompts user to fill out form, then displays new image' do
-      visit '/images'
-      click_link 'Add an image'
-      fill_in 'Description', with: 'First picture'
-      attach_file('image_avatar', "spec/test_files/images/test.jpg")
-      click_button 'Create Image'
-      visit '/images'
-      expect(page).to have_content 'First picture'
-      expect(page).to have_css("img[src*='test.jpg']")
-      # expect(page).to have_image
-    end
+  # context 'adding images' do
+  #   scenario 'prompts user to fill out form, then displays new image' do
+  #     visit '/images'
+  #     click_link 'Add an image'
+  #     fill_in 'Description', with: 'First picture'
+  #     attach_file('image_avatar', "spec/test_files/images/test.jpg")
+  #     click_button 'Create Image'
+  #     visit '/images'
+  #     expect(page).to have_content 'First picture'
+  #     expect(page).to have_css("img[src*='test.jpg']")
+  #     # expect(page).to have_image
+  #   end
 
-  end
+  # end
 
   context 'viewing images' do
 
