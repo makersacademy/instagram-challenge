@@ -1,3 +1,21 @@
 <h1>Picgram</h1>
 
 <%= link_to "New Post", new_post_path %>
+
+<div class="posts-wrapper row">
+  <% @posts.each do |post| %>
+    <div class="post">
+      <div class="post-head">
+        <div class="name">
+          Dio
+        </div>
+      </div>
+      <div class="image center-block">
+        <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
+      </div>
+      <p class="caption">
+        <%= post.caption %>
+      </p>
+    </div>
+  <% end %>
+</div>

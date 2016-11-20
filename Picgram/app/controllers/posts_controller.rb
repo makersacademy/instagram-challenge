@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   def index
+    @posts = Post.all
   end
 
   def new
@@ -11,7 +12,7 @@ class PostsController < ApplicationController
     @post = Post.create(post_params)
     if @post.save
       flash[:success] = "You have successfully posted an image "
-      redirect_to @post
+      redirect_to posts_path
     else
       flash[:alert] = "You have't uploaded an image"
       render :new
