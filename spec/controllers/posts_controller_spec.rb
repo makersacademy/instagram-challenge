@@ -24,6 +24,11 @@ describe PostsController, type: :controller do
       expect(response).to render_template("new")
     end
   end
+
+  describe "POST #create" do
+    post :create
+# TBC
+  end
 end
 
 # RSpec.describe PostsController, :type => :controller do
