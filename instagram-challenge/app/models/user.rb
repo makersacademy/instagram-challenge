@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :pictures
   has_many :comments
   has_many :endorsements
+  has_many :liked_pictures, through: :endorsements, source: :picture
   has_many :picture_comments, through: :comments, source: :picture
 
   attr_accessor :login
@@ -38,6 +39,10 @@ class User < ApplicationRecord
      elsif conditions.has_key?(:username) || conditions.has_key?(:email)
        where(conditions.to_h).first
      end
+   end
+
+   def has_liked?(picture)
+    liked_pictures.include?(picture)
    end
 
 end

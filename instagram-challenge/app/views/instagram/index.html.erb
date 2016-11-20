@@ -6,11 +6,17 @@
     <% end %>
    </p>
 
-    <p><%= image_tag picture.image.url(:thumb) %></p>
+    <% if current_user && !current_user.has_liked?(picture) %>
+      <p><%= link_to image_tag(picture.image.url(:thumb)), picture_endorsements_path(picture), class: 'endorsements-link' %>
+      <br>
+      <span class="endorsements_count"> <%= picture.endorsements.count %> </span><%= ' Like'.pluralize(picture.endorsements.count) %></p>
+    <% else %>
+     <p><%= image_tag(picture.image.url(:thumb)) %></p>
+     <p><small><span class="endorsements_count"> <%= picture.endorsements.count %> </span><%= ' Like'.pluralize(picture.endorsements.count) %></small></p>
+    <% end %>
+
     <p><%= picture.caption %></p>
 
-    <%= link_to "Like", picture_endorsements_path(picture), class: 'endorsements-link' %>
-    <span class="endorsements_count"> <%= picture.endorsements.count %> </span></p>
 
     <% if picture.comments.length > 2 %>
      <%= link_to "View more comments", picture_path(picture.id) %>
