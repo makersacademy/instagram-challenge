@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
   before_action :find_commentable
 
   def new
@@ -12,14 +13,22 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @commentable.comments.create(comment_params)
+    @comment = @commentable.comments.new(comment_params)
+    @comment.user_id = current_user.id
+    @comment.save
     redirect_to '/photos'
   end
 
   def show
+    @user = current_user
     @photo = Photo.find(params[:id])
     @comments = @photo.comments
-    puts @comments
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to '/photos'
   end
 
   private

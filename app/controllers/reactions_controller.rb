@@ -7,7 +7,9 @@ class ReactionsController < ApplicationController
 
   def create
     @photo = Photo.find(params[:photo_id])
-    @reaction = @photo.reactions.create(reaction_params)
+    @reaction = @photo.reactions.new(reaction_params)
+    @reaction.user_id = current_user.id
+    @reaction.save
     redirect_to '/photos'
   end
 
