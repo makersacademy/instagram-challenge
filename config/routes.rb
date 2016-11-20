@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :comments
     member do
       get 'like'
+      get 'unlike'
     end
   end
   get ':user_name', to: 'profiles#show', as: :profile
