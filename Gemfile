@@ -11,6 +11,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
+
+gem 'devise'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -34,8 +36,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'capybara'
-gem "paperclip", "~> 4.1.1"
-
+gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'simple_form', '~> 3.1.0'
+gem 'bootstrap-sass', '~> 3.3.5'
 
 
 

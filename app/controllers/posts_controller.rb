@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @comments = Comment.all
   end
 
   # GET /posts/1
@@ -14,8 +15,12 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
+    if !user_signed_in?
+      redirect_to '/users/sign_up'
+    else
     @post = Post.new
   end
+end
 
   # GET /posts/1/edit
   def edit
@@ -24,8 +29,9 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
-
+    @post = Post.create(post_params)
+    @post.user_id = current_user.id
+    @post.save
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -69,6 +75,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.fetch(:post, {})
+      params.require(:post).permit(:image, :caption)
     end
 end

@@ -1,4 +1,4 @@
-<%= form_for(@post) do |f| %>
+<%= simple_form_for(@post, :html => { :multipart => true }) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -12,6 +12,8 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit %>
+  <%= f.input :image%>
+  <%= f.input :caption%>
+  <%= f.button :submit%>
   </div>
 <% end %>
