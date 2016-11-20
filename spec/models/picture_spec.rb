@@ -5,7 +5,7 @@ RSpec.describe Picture, type: :model do
   subject(:picture) {described_class.create(comment: "Love this image!")}
 
   it "adds an image to the picture" do
-    File.open('./app/assets/images/duck.jpg') do |f|
+    File.open('./spec/fixtures/duck.jpg') do |f|
       picture.image = f
     end
     picture.save
