@@ -22,6 +22,12 @@ feature 'Posts' do
   end
 
   context 'creating posts' do
+
+    before do
+      sign_up
+      sign_in
+    end
+
     scenario 'prompts user to fill out a form, then displays the new post' do
       visit '/posts'
       click_link 'Add a post'
@@ -48,31 +54,40 @@ feature 'Posts' do
     let!(:test_post){ Post.create(description:'Test post') }
 
     scenario 'lets a user view a post' do
-     visit '/posts'
-     click_link 'Test post'
-     expect(page).to have_content 'Test post'
-     expect(current_path).to eq "/posts/#{test_post.id}"
+
+    visit '/posts'
+    click_link 'Test post'
+    expect(page).to have_content 'Test post'
+    expect(current_path).to eq "/posts/#{test_post.id}"
     end
   end
 
   context 'editing posts' do
 
-    before { Post.create description: 'This is a post' }
+    before do
+      sign_up
+      sign_in
+      Post.create description: 'This is a post'
+    end
 
     scenario 'let a user edit a post' do
-     visit '/posts'
-     click_link 'This is a post'
-     click_link 'Edit'
-     fill_in 'Description', with: 'This is an editted post'
-     click_button 'Update Post'
-     expect(page).to have_content 'This is an editted post'
-     expect(current_path).to eq '/posts'
+      visit '/posts'
+      click_link 'This is a post'
+      click_link 'Edit'
+      fill_in 'Description', with: 'This is an editted post'
+      click_button 'Update Post'
+      expect(page).to have_content 'This is an editted post'
+      expect(current_path).to eq '/posts'
     end
   end
 
   context 'deleting restaurants' do
 
-    before { Post.create description: 'This is a post' }
+    before do
+      sign_up
+      sign_in
+      Post.create description: 'This is a post'
+    end
 
     scenario 'removes a post when a user clicks a delete link' do
       visit '/posts'
