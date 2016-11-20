@@ -4,6 +4,7 @@ feature 'pictures' do
 
   before do
     sign_in('test@test.com', 'testpassword')
+    @user = User.create(email: 'abc@123.com', password: '123456')
   end
 
   context 'no pictures have been added' do
@@ -23,7 +24,7 @@ feature 'pictures' do
   end
 
   context 'viewing pictures' do
-    let!(:kitty){ Picture.create(description:'Kitty cat') }
+    let!(:kitty){ @user.pictures.create(description:'Kitty cat') }
     scenario 'lets a user view a picture' do
       visit_picture('Kitty cat')
       expect(page).to have_content 'Kitty cat'
@@ -32,7 +33,7 @@ feature 'pictures' do
   end
 
   context 'editing pictures' do
-    before { Picture.create(description: 'Kitty cat') }
+    before { @user.pictures.create(description: 'Kitty cat') }
     scenario 'lets a user edit a picture' do
       visit_picture('Kitty cat')
       click_link 'Edit'
@@ -45,7 +46,7 @@ feature 'pictures' do
   end
 
   context 'deleting pictures' do
-    before { Picture.create(description: 'Kitty cat') }
+    before { @user.pictures.create(description: 'Kitty cat') }
     scenario 'removes a picture when a user clicks delete' do
       visit_picture('Kitty cat')
       click_link 'Delete'
