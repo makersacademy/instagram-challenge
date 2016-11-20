@@ -8,8 +8,9 @@
     <%= image_tag photo.image.url(:medium) %>
     <h4> <%=  photo.caption %> </h4>
     <%= link_to "Comment", new_photo_comment_path(photo) %> <%= link_to "View Comments", comment_path(photo) %>
-
-    <h4> React with: </h4>
+    <br></br>
+    <h4><%= pluralize photo.reactions.count(:like), 'like' %>, <%= pluralize photo.reactions.count(:love), 'love' %>, <%= pluralize photo.reactions.count(:indifference), 'indifference' %></h4>
+    <%= link_to "React to this post", new_photo_reaction_path(photo) %>
     <br></br>
   <% end %>
 <% else %>

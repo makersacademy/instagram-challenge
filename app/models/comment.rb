@@ -1,3 +1,6 @@
 class Comment < ApplicationRecord
-  belongs_to :photo
+
+  has_many :comments, as: :commentable
+  belongs_to :commentable, polymorphic: true
+
 end

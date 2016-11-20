@@ -2,6 +2,8 @@ class PhotosController < ApplicationController
 
   def index
     @photos = Photo.all
+    @reaction = Reaction.new
+    @photo = Photo.new
     render 'index'
   end
 

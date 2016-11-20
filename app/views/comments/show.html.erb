@@ -1,8 +1,17 @@
 
   <%= image_tag @photo.image.url(:medium) %>
   <h4> <%=  @photo.caption %> </h4>
-  <% @comments.each do |comment| %>
+  <% @comments.reverse.each do |comment| %>
     <h4><%= comment.body %> </h4>
     <h5> Made <%= time_ago_in_words(comment.created_at)  %> ago </h5>
+    <%= link_to "Add reply", new_comment_comment_path(comment) %>
+    <% if comment.comments.any? %>
+      <%= comment.comments.each do | reply | %>
+        <ul>
+        <%= reply.body %>
+        <h5> Made <%= time_ago_in_words(reply.created_at)  %> ago </h5>
+        <% end %>
+      </ul>
+    <% end %>
      <br></br>
   <% end %>
