@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :photos
   end
   resources :welcome
+  resources :comments
 
 
   # post '/feeds/:feed_id/photos/new'
