@@ -1,10 +1,19 @@
 <p><% @user.pictures.reverse_each do |image| %></p>
-
+<p><%= @user.username %>'s profile</p>
+<p><%= @user.about_me %></p>
 <% if image.user == current_user %>
  <%= link_to "Delete Image", picture_path(image.id), method: :delete %>
 <% end %>
 
-<p><%= image_tag image.image.url(:thumb) %></p>
+<% if current_user && !current_user.has_liked?(image) %>
+  <p><%= link_to image_tag(image.image.url(:thumb)), picture_endorsements_path(image), class: 'endorsements-link' %>
+  <br>
+  <span class="endorsements_count"> <%= image.endorsements.count %> </span><%= ' Like'.pluralize(image.endorsements.count) %></p>
+<% else %>
+ <p><%= image_tag(image.image.url(:thumb)) %></p>
+ <p><small><span class="endorsements_count"> <%= image.endorsements.count %> </span><%= ' Like'.pluralize(image.endorsements.count) %></small></p>
+<% end %>
+
 <p><%= image.caption %></p>
 
 <% if image.comments.length > 2 %>
@@ -14,14 +23,12 @@
 <% if user_signed_in? %>
  <p><%= link_to "Add Comment", new_picture_comment_path(image.id)%></p>
 <% end %>
-
-
-  <% arr = image.comments.last(2) %>
+    <% arr = image.comments.last(2) %>
     <p><% arr.each do |comment| %></p>
     <p><%= comment.user.username %>:
   <%= comment.comment %>
   <% if comment.user == current_user %>
-    <%= link_to "Delete comment", picture_comment_url(picture.id, comment.id), method: :delete %>
+    <%= link_to "Delete comment", picture_comment_url(image.id, comment.id), method: :delete %>
   <% end %>
   </p>
  <% end %>
