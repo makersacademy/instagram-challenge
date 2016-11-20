@@ -43,4 +43,18 @@ feature 'Posts' do
      expect(current_path).to eq "/posts/#{test_post.id}"
     end
   end
+
+  context 'editing posts' do
+
+    before { Post.create description: 'This is a post' }
+
+    scenario 'let a user edit a post' do
+     visit '/posts'
+     click_link 'Edit: This is a post'
+     fill_in 'Description', with: 'This is an editted post'
+     click_button 'Update Post'
+     expect(page).to have_content 'This is an editted post'
+     expect(current_path).to eq '/posts'
+    end
+  end
 end
