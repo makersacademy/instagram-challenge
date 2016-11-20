@@ -1,5 +1,11 @@
 class PicturesController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index]
+
+  def show
+   @picture = Picture.find(params[:id])
+  end
+
   def new
     @add_picture = Picture.new
   end
@@ -16,7 +22,7 @@ class PicturesController < ApplicationController
         flash[:notice] = 'There was a problem adding your picture'
         redirect_to('/')
       end
-    end 
+    end
   end
 
   private
