@@ -1,0 +1,31 @@
+<h1>New Instagram</h1>
+
+<%= link_to "Home", posts_path %>
+<br/><br/>
+
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@post.errors.count, "error") %> prohibited
+      this article from being saved:
+    </h2>
+    <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for :post, url: posts_path do |f| %>
+  <p>
+    <%= f.file_field :image_data %>
+  </p>
+  <p>
+    <%= f.label :description %><br/>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit "Post photo" %>
+  </p>
+<% end %>

@@ -1,0 +1,24 @@
+<%= link_to "Home", posts_path %>
+<br/><br/>
+
+<img src="<%= url_for(:controller => "posts",
+                      :action => "show_image",
+                      :id => @post.id) %>">
+<p>
+  <%= @post.description %>
+</p>
+<br/>
+
+<h2>Comments: <%=@post.comments.count %></h2>
+<% @post.comments.each do |comment| %>
+  <p><%= comment.body %></p>
+  <p><%= comment.created_at %>
+<% end %>
+<%= form_for @comment, url: post_comments_path(@post) do |f| %>
+  <p>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit "Add comment" %>
+  </p>
+<% end %>

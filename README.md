@@ -1,13 +1,7 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+[![Build Status](https://travis-ci.org/lauraweston/instagram-challenge.svg?branch=master)](https://travis-ci.org/lauraweston/instagram-challenge)
 
 Task
 -----
@@ -21,3 +15,25 @@ As usual please start by forking this repo. After cloning your fork and cd'ing i
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
 Bonus if you can add filters!
+
+Solution
+--------
+Ruby version: 2.3.1
+
+## Installation
+- ``` git clone https://github.com/lauraweston/instagram-challenge.git```
+- ```cd instagram-challenge```
+- Install dependencies:   
+```gem install bundle```    
+```bundle install```
+
+## Database
+- Install [postgres] (https://www.postgresql.org/)
+- ```bin/rake db:create```
+
+## Testing
+- ```bundle exec rspec```
+
+## Usage
+- Start Rails web server: ```bin/rails server``` or ```bin/rails s```
+- Navigate to [http://localhost:3000] (http://localhost:3000) 
