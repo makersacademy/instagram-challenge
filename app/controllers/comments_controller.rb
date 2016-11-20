@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
   def create
     image = Image.find(params[:image_id])
-    image.comments.create(comment_params)
+    image.comments.create(comment_params.merge({user_id: current_user.id}))
 
     redirect_to image_path(image)
   end

@@ -22,13 +22,14 @@ feature 'images' do
   end
 
   context 'creating images' do
-    scenario 'prompts a user to fill out a form, then displays the new image' do
-      visit '/images'
+    scenario 'user is redirected to add new image page' do
+      user_sign_up
       click_link 'Add an image'
       expect(current_path).to eq '/images/new'
     end
 
     scenario 'prompts a user to fill out a form, then displays the new image' do
+      user_sign_up
       visit '/images/new'
       fill_in 'Description', with: 'Sunday'
       click_button 'Create Image'

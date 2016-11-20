@@ -43,6 +43,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'dotenv-rails'
+  gem 'shoulda'
 end
 
 group :development do
