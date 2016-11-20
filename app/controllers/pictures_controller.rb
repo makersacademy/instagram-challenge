@@ -17,6 +17,25 @@ class PicturesController < ApplicationController
     end
   end
 
+  def edit
+    @gallery = Gallery.find(params[:gallery_id])
+    @picture = Picture.find(params[:id])
+  end
+
+  def update
+    @gallery = Gallery.find(params[:gallery_id])
+    @picture = Picture.find(params[:id])
+    if @picture.update(picture_params)
+      flash[:notice] = "The \"#{@picture.title}\" picture was successfully edited"
+      redirect_to "/galleries/#{@gallery.id}"
+    else
+      # I can only see validation errors if I use "render 'new'" here.
+      flash[:error] = @picture.errors
+      p @picture.errors
+      redirect_to "/galleries/#{@gallery.id}/pictures/#{@picture.id}/edit"
+    end
+  end
+
   def destroy
     @gallery = Gallery.find(params[:gallery_id])
     @picture = Picture.find(params[:id])
