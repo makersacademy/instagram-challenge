@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120125212) do
+ActiveRecord::Schema.define(version: 20161120131308) do
 
   create_table "feeds", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_feeds_on_user_id"
+  end
+
+  create_table "feeds_photos", id: false, force: :cascade do |t|
+    t.integer "feed_id",  null: false
+    t.integer "photo_id", null: false
   end
 
   create_table "photos", force: :cascade do |t|

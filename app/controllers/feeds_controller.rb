@@ -1,14 +1,11 @@
 class FeedsController < ApplicationController
+  before_action do
+    @currentUser = current_user.id
+  end
+
   def index
-  end
-
-  def new
-    if !user_signed_in?
-      redirect_to '/feeds'
-    end
-  end
-
-  def create
+    @photos = Feed.photos.all
+    @feed = Feed.find_by_id(@currentUser)
   end
 
   def update

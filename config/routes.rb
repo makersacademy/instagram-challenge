@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get 'photo/edit'
 
   devise_for :users
-  resources :feeds
+  resources :feeds do
+    resources :photos
+  end
   resources :welcome
 
   get 'welcome/index'
