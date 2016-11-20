@@ -2,11 +2,26 @@ require 'rails_helper'
 
 feature 'pictures' do
 
+  before do
+    sign_in('test@test.com', 'testpassword')
+  end
+
   context 'no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
       visit '/pictures'
       expect(page).to have_content 'No pictures yet'
       expect(page).to have_link 'Add a picture'
+    end
+  end
+
+  context 'adding a picture' do
+    scenario 'lets a user add a picture' do
+     visit '/pictures'
+     click_link 'Add a picture'
+     fill_in 'Description', with: 'Gorgeous cat cat'
+     click_button 'Post picture'
+     expect(current_path).to eq '/pictures'
+     expect(page).to have_content 'Gorgeous cat cat'
     end
   end
 
