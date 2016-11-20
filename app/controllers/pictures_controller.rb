@@ -1,9 +1,5 @@
 class PicturesController < ApplicationController
 
-  def picture_params
-    params.require(:picture).permit(:description, :image)
-  end
-
   def index
     @pictures = Picture.all
   end
@@ -20,5 +16,12 @@ class PicturesController < ApplicationController
   def show
     @picture = Picture.find(params[:id])
   end
+
+private
+
+  def picture_params
+    params.require(:picture).permit(:description, :image)
+  end
+
 
 end

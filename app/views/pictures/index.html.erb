@@ -5,6 +5,17 @@
         <%= image_tag picture.image.url(:thumb) %>
         <%= picture.description %>
         <%= link_to "View #{picture.description}", picture_path(picture) %>
+        <%= link_to "Comment on #{picture.description}", new_picture_comment_path(picture) %>
+        <h3>Comments</h3>
+        <% if picture.comments.any? %>
+          <ul>
+            <% picture.comments.each do |comment| %>
+              <li><%= comment.body %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <h4>Be the first one to comment!</h4>
+        <% end %>
       </li>
       ________________________
     </ul>
