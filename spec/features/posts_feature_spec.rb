@@ -30,6 +30,17 @@ feature 'Posts' do
       expect(page).to have_content 'Test post'
       expect(current_path).to eq '/posts'
     end
+
+    context 'an invalid post' do
+      scenario 'does not let you submit a description that is too short' do
+        visit '/posts'
+        click_link 'Add a post'
+        fill_in 'post_description', with: 'Heh'
+        click_button 'Create Post'
+        expect(page).not_to have_css 'h2', text: 'Heh'
+        expect(page).to have_content 'error'
+      end
+    end
   end
 
   context 'viewing posts' do
