@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @picture = Picture.find(params[:picture_id])
@@ -7,7 +8,10 @@ class CommentsController < ApplicationController
 
   def create
     @picture = Picture.find(params[:picture_id])
-    @picture.comments.create(comment_params)
+    comment = Comment.new(comment_params)
+    comment.user = current_user
+    comment.picture = @picture
+    comment.save
     redirect_to '/pictures'
   end
 
