@@ -7,9 +7,10 @@ def sign_up_sign_in
   click_button('Sign up')
 end
 
-def upload_picture
-  click_link 'Post a picture'
-  attach_file("Image", File.join(Rails.root + "spec/asset_specs/pictures/picture.jpg"))
-  fill_in "Caption", with: 'Test caption'
-  click_button "Create Picture"
+def sign_in
+  visit '/'
+  click_link 'Sign in'
+  fill_in('Email', with: 'mail@mail.com')
+  fill_in('Password', with: '123456')
+  click_button('Log in')
 end
