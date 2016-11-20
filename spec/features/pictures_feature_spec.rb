@@ -9,14 +9,25 @@ feature 'pictures' do
     end
 end
 
-context 'restaurants have been added' do
+context 'pictures have been added' do
   before do
-    Pictures.create(name: 'pic1')
+    Picture.create(name: 'pic1')
   end
 
   scenario 'display pictures' do
     visit '/pictures'
-    expect(page).to have_css("img[src*='file_name_here']")
+    expect(page).to have_content('pic1')
     expect(page).not_to have_content('No pictures yet')
+  end
+end
+
+context 'creating pictures' do
+  scenario 'prompts user to upload a new picture and displays it' do
+    visit '/pictures'
+    click_link 'Add a picture'
+    fill_in 'Name', with: 'pic1'
+    click_button 'Create Picture'
+    expect(page).to have_content 'pic1'
+    expect(current_path).to eq '/pictures'
   end
 end
