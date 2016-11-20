@@ -78,6 +78,13 @@ describe 'Posts' do
         click_button 'Comment!'
         expect(page).to have_content comment_text
       end
+
+      scenario 'user can delete a post on Posts#show' do
+        visit '/'
+        click_link caption_text
+        click_link 'Delete post'
+        expect(page).not_to have_text caption_text
+      end
     end
   end
 end
