@@ -1,24 +1,20 @@
-# README
+##Vitagram
+**This is a web application that allows users to post pictures and like/comment on other users' pictures**
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Working on my own. I used Rails to develop a copy of the website of Instagram in only 2 days!
+I used the following technologies : Ruby, Rails, Jquery, Javascript, PSQL, AWS S3, Rspec, Capybara.
 
-Things you may want to cover:
+```
+The user can create and account including a bio and profile picture.
+```
+```
+The user can post a photo with a comment.
+```
+```
+The user can edit or delete their posts
+```
+```
+User can like and/or comment on other people's posts
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This MVP version have the main functionalities than the original Instagram website. Check it out here : [Vitagram](https://vitagram.herokuapp.com)
