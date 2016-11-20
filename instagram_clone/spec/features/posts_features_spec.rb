@@ -10,7 +10,8 @@ feature 'posts' do
     end
     context 'posts have been added' do
         before do
-            Post.create(name: 'Nice Picture')
+            Post.create(name: 'Nice Picture',
+                        image: File.new(Rails.root + 'app/assets/images/post.png'))
         end
 
         scenario 'display posts' do
@@ -24,18 +25,24 @@ feature 'posts' do
             visit '/posts'
             click_link 'Add a post'
             fill_in 'Name', with: 'Nice Picture'
+            page.attach_file('post_image', Rails.root + 'app/assets/images/post.png')
             click_button 'Create Post'
-            expect(page).to have_content 'Nice Picture'
+            expect(page).to have_content('Nice Picture')
+            expect(page).to have_css "img[src*='post']"
             expect(current_path).to eq '/posts'
         end
     end
     context 'viewing posts' do
-        let!(:post) { Post.create(name: 'Nice Picture') }
+        let!(:post) do
+            Post.create(name: 'Nice Picture',
+                        image: File.new(Rails.root + 'app/assets/images/post.png'))
+        end
 
         scenario 'lets a user view a post' do
             visit '/posts'
             click_link 'Nice Picture'
             expect(page).to have_content 'Nice Picture'
+            expect(page).to have_css "img[src*='post']"
             expect(current_path).to eq "/posts/#{post.id}"
         end
     end
@@ -49,6 +56,16 @@ feature 'posts' do
             expect(page).to have_content('Nice Picture')
             expect(page).to have_css "img[src*='post']"
             expect(current_path).to eq '/posts'
+        end
+    end
+    context 'invalid posts' do
+        scenario 'users must add an image' do
+            visit '/posts'
+            click_link 'Add a post'
+            fill_in 'Name', with: 'Nice Picture'
+            click_button 'Create Post'
+            expect(page).not_to have_content 'Nice Picture'
+            expect(page).to have_content "Image can't be blank"
         end
     end
 end
