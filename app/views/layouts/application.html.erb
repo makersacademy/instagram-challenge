@@ -6,17 +6,47 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../../assets/stylesheets/style.css">
+
   </head>
 
   <body>
+
+    <nav class="navbar navbar-light bg-faded">
+      <a class="navbar-brand" href="#">Aligram</a>
+      <ul class="nav navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/"> Posts <span class="sr-only">(current)</span></a>
+        </li>
+        <% if !current_user %>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign_in"> Sign In </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign_up"> Sign Up </a>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+
     <% if user_signed_in? %>
     <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% else %>
-    <%= link_to "Sign in", new_user_session_path %>
-    <%= link_to "Sign up", new_user_registration_path %>
     <% end %>
 
     <%= notice %>
-    <%= yield %>
+    <div id="yielded">
+      <%= yield %>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted"> Designed and developed by Ali </span>
+      </div>
+    </footer>
   </body>
 </html>
