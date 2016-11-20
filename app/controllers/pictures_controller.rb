@@ -14,7 +14,8 @@ class PicturesController < ApplicationController
       flash[:notice] = "The \"#{@picture.title}\" picture was successfully created"
       redirect_to "/galleries/#{@gallery.id}"
     else
-      redirect_to "/galleries"
+      # redirect_to "/galleries"
+      render :new
     end
   end
 
