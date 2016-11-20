@@ -31,6 +31,7 @@ feature 'images' do
       expect(page).to have_css("img[src*='test.jpg']")
       # expect(page).to have_image
     end
+
   end
 
   context 'viewing images' do
@@ -70,4 +71,5 @@ feature 'images' do
       expect(page).not_to have_content 'First picture'
     end
   end
+
 end
