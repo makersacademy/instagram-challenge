@@ -52,4 +52,15 @@ feature 'happysnaps posts' do
       expect(current_path).to eq '/posts'
     end
   end
+
+  context 'delete posts' do
+    before do
+      Post.create(caption: 'Yum!')
+    end
+    scenario 'lets users delete posts' do
+      visit '/posts'
+      click_link('Delete Post')
+      expect(page).not_to have_content('Yum!')
+    end
+  end
 end
