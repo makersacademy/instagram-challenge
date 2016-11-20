@@ -40,4 +40,16 @@ feature 'happysnaps posts' do
   #     expect(current_path).to eq '/posts/#{image.url.id}'
   #   end
   # end
+
+  context 'updating posts' do
+    scenario 'lets user edit a post' do
+      visit '/posts'
+      click_link('Edit Post')
+      attach_file('post_image', '/Users/annalucking/Desktop/amelie.png')
+      fill_in 'post_caption', with: 'Check it out!'
+      click_button 'Update post'
+      expect(page).to have_content 'Check it out!'
+      expect(current_path).to eq '/posts'
+    end
+  end
 end
