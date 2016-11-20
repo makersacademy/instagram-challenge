@@ -1,10 +1,11 @@
 <% if @pictures.any? %>
   <% @pictures.reverse_each do |picture| %>
-    <p><%= picture.user.username %>
+    <p><%= link_to picture.user.username, instagram_path(picture.user.id)%>
     <% if picture.user == current_user %>
      <%= link_to "Delete Image", picture_path(picture.id), method: :delete %>
     <% end %>
    </p>
+
     <p><%= image_tag picture.image.url(:thumb) %></p>
     <p><%= picture.caption %></p>
 
@@ -20,7 +21,13 @@
     <% arr = picture.comments.last(2) %>
     <p><% arr.each do |comment| %></p>
     <p><%= comment.user.username %>:
-    <%= comment.comment %></p>
+    <%= comment.comment %>
+
+    <% if comment.user == current_user %>
+     <%= link_to "Delete comment", picture_comment_url(picture.id, comment.id), method: :delete %>
+    <% end %>
+    </p>
+
     <% end %>
     ----------------------------------------
    <% end %>

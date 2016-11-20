@@ -11,13 +11,24 @@ class CommentsController < ApplicationController
    @picture = Picture.find(params[:picture_id])
    @comment = @picture.comments.build(comment_params)
    @comment.user = current_user
-   p @comment
    if @comment.save
      redirect_to('/')
    else
      flash[:notice] = 'There was a problem posting your comment'
      redirect_to('/')
    end
+  end
+
+  def destroy
+   comment = Comment.find(params[:id])
+    if comment.user == current_user
+      comment.destroy
+      flash[:notice] = "comment has been deleted"
+      redirect_to('/')
+    else
+      flash[:notice] = "You do not have permission to delete this comment"
+      redirect_to ('/')
+    end
   end
 
   private

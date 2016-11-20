@@ -29,9 +29,6 @@ class PicturesController < ApplicationController
 	 picture = Picture.find(params[:id])
    comment = Comment.all
 		if picture.user == current_user
-      # if comment.picture_id == picture.id
-      #   comment.destroy
-      # end
 			picture.destroy
 			flash[:notice] = "Image has been deleted"
 			redirect_to('/')
