@@ -6,9 +6,8 @@ class PicturesController < ApplicationController
 
   def create
     @gallery = Gallery.find(params[:gallery_id])
-    p params[:gallery_id]
     @gallery.pictures.create(picture_params)
-    redirect_to "/galleries"
+    redirect_to "/galleries/#{@gallery.id}"
   end
 
   private

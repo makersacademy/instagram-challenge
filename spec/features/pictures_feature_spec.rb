@@ -10,7 +10,6 @@ feature 'adding pictures' do
     click_link 'Add Picture'
     fill_in "Title", with: "Oh my god!"
     click_button 'Create Picture'
-    expect(current_path).to eq '/galleries'
     expect(page).to have_content('Oh my god!')
   end
 
