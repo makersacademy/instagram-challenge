@@ -1,5 +1,5 @@
 class GalleriesController < ApplicationController
-
+before_action :authenticate_user!, :except => [:index, :show]
   def index
     # raise 'Hello from galleries index controller'
     @galleries = Gallery.all
