@@ -1,23 +1,64 @@
-Instagram Challenge
-===================
+# Instagram Challenge #
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+```
+As a user,
+So I can join Instagram,
+I want to be able to register.
+```
+```
+As a user,
+So I can access my account,
+I want to sign in and sign out.
+```
+```
+As a user,
+So I can show the world what I am doing,
+I want to be able to upload photos.
+```
+```
+As a user,
+So I can know see what the world is doing,
+I want to be able to see other user's photos.
+```
+```
+As a user,
+So I can know who's photo's are whose,
+I want to be able to see a name by each photo.
+```
+```
+As a user,
+So I can know how old each photo is,
+I want to be able to see the date it was posted.
+```
+```
+As a user,
+So I can look back over my photos,
+I want to my posts to appears chronologically.
+```
+```
+As a user,
+So I show how I feel about pictures,
+I want to be able to like photos.
+```
+```
+As a user,
+So I know how popular a photo is,
+I want to see how many likes it has.
+```
+```
+As a user,
+So I let the world know my thoughts,
+I want to be write comments by photos.
+```
 
-Task
------
+```
+As a user,
+So I can customise my photos,
+I want to be add a title to my photos.
+```
 
-Build Instagram: Simple huh!
-
-Bonus if you can write your own set of sensible user stories!
-
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+```
+As a user,
+So I can explain more about my pictures,
+I want to be able to tag them.
+```
