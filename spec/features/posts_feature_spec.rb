@@ -50,7 +50,8 @@ feature 'Posts' do
 
     scenario 'let a user edit a post' do
      visit '/posts'
-     click_link 'Edit: This is a post'
+     click_link 'This is a post'
+     click_link 'Edit'
      fill_in 'Description', with: 'This is an editted post'
      click_button 'Update Post'
      expect(page).to have_content 'This is an editted post'
@@ -64,7 +65,8 @@ feature 'Posts' do
 
     scenario 'removes a post when a user clicks a delete link' do
       visit '/posts'
-      click_link 'Delete: This is a post'
+      click_link 'This is a post'
+      click_link 'Delete'
       expect(page).not_to have_content 'This is a post'
       expect(page).to have_content 'Post successfully deleted'
     end
