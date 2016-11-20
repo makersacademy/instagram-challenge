@@ -1,0 +1,19 @@
+.posts-wrapper
+  .post
+    .post-body
+      .image-wrap
+        = form_for @user, url: {action: "update"}, html: { multipart: true } do |f|
+          .row
+            .col-md-12
+              .form-group.text-center
+                %h4 Change your profile image:
+                .img-circle
+                  = profile_avatar_select(@user)
+                = f.file_field :avatar, onChange: 'loadFile(event)'
+          .row
+            .col-md-12
+              .form-group.text-center
+                %h4 Update your bio:
+                = f.text_area :bio, label: false, rows: 4
+          .form-group.text-center
+            = f.submit "Update Profile", class: 'btn btn-success'
