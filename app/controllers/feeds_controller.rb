@@ -3,6 +3,9 @@ class FeedsController < ApplicationController
   end
 
   def new
+    if !user_signed_in?
+      redirect_to '/feeds'
+    end
   end
 
   def create
@@ -13,4 +16,5 @@ class FeedsController < ApplicationController
 
   def edit
   end
+
 end
