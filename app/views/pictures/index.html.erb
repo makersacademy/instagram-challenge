@@ -1,0 +1,23 @@
+<h1>Instagram-C</h1>
+
+<% if user_signed_in? %>
+<form action="/pictures/new">
+  <button type="submit" name="create_image">Add Image</button>
+</form>
+<% end %>
+
+<% @pictures.each do |picture| %>
+  <% author = User.find(picture.user_id) %>
+  <%= author.username %><br>
+  <%= link_to "#{image_tag picture.image.url(:medium)}".html_safe, picture_path(picture) %><br>
+  p <%= picture.inspect %>
+  <%= link_to "Add a comment...", picture_path(picture) %>
+ <% if user_signed_in? %>
+  p <%= current_user.likes.inspect %>
+ <% end %>
+
+
+  <%= link_to "Like", picture_likes_path(picture), method: :post %>
+  <br>
+
+<% end %>
