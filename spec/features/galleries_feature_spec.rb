@@ -72,7 +72,7 @@ feature 'gallery' do
   before { @user = User.create(email: 'fred@freddy.co.uk', password: "secret",password_confirmation: "secret") }
   before { @gallery = Gallery.create name: 'GB favourites', user_id: @user.id }
     scenario 'let a user edit a gallery' do
-      sign_up_and_sign_in
+      sign_in(email: 'fred@freddy.co.uk', password: 'secret')
       visit '/galleries'
       click_link "GB favourites"
       click_link "Edit name"

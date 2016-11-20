@@ -8,6 +8,7 @@ feature 'adding pictures' do
     visit_a_gallery
     click_link 'Add Picture'
     fill_in "Title", with: "Oh my god!"
+    attach_file('picture_image', File.absolute_path('./spec/helpers/images/ducky.jpg'))
     click_button 'Create Picture'
     expect(page).to have_content('Oh my god!')
     expect(page).to have_content('The "Oh my god!" picture was successfully created')
@@ -21,6 +22,7 @@ feature 'deleting pictures' do
     visit_a_gallery
     click_link 'Add Picture'
     fill_in "Title", with: "Another cute pic"
+    attach_file('picture_image', File.absolute_path('./spec/helpers/images/ducky.jpg'))
     click_button 'Create Picture'
     click_link 'Delete Picture'
     expect(page).to have_content("The \"Another cute pic\" picture was successfully deleted")
@@ -34,6 +36,7 @@ feature 'editing pictures' do
     visit_a_gallery
     click_link 'Add Picture'
     fill_in "Title", with: "Another cute pic"
+    attach_file('picture_image', File.absolute_path('./spec/helpers/images/ducky.jpg'))
     click_button 'Create Picture'
     click_link 'Edit Picture'
     expect(page).to have_content("Edit picture")
