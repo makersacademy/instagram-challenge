@@ -68,4 +68,22 @@ feature 'posts' do
             expect(page).to have_content "Image can't be blank"
         end
     end
+    context 'editing posts' do
+
+      before do
+          Post.create(name: 'Nice Picture',
+                      image: File.new(Rails.root + 'app/assets/images/post.png'))
+      end
+
+  scenario 'let a user edit a post' do
+   visit '/posts'
+   click_link 'Edit'
+   fill_in 'Name', with: 'Bahh not at all'
+   click_button 'Update'
+   expect(page).to have_content  'Bahh not at all'
+   expect(page).not_to have_content 'Nice Picture'
+   expect(current_path).to eq '/posts'
+  end
+
+end
 end
