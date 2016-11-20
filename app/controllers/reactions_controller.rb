@@ -8,7 +8,6 @@ class ReactionsController < ApplicationController
   def create
     @photo = Photo.find(params[:photo_id])
     @reaction = @photo.reactions.create(reaction_params)
-    puts @reaction
     redirect_to '/photos'
   end
 
