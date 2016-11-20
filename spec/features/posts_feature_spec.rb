@@ -110,6 +110,18 @@ describe 'Posts' do
         click_link caption_text
         expect(page).to have_content 'Likes: 0 | Dislikes: 0'
       end
+
+      scenario 'users can \'like\' posts' do
+        click_link caption_text
+        click_link 'Like'
+        expect(page).to have_content 'Likes: 1 | Dislikes: 0'
+      end
+
+      scenario 'users can \'dislike\' posts' do
+        click_link caption_text
+        click_link 'Like'
+        expect(page).to have_content 'Likes: 0 | Dislikes: 1'
+      end
     end
   end
 end
