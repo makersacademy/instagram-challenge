@@ -12,6 +12,7 @@ before_action :owned_post, only: [:edit, :update, :destroy]
   end
 
   def create
+    puts "hello"
     @post = current_user.posts.build(post_params)
     if @post.save
         flash[:success] = "Your post has been created!"
@@ -39,7 +40,9 @@ before_action :owned_post, only: [:edit, :update, :destroy]
   end
 
   def destroy
-    @post.destroy
+      puts "hello"
+    @post.delete
+
     flash[:success] = "Post successfully deleted"
     redirect_to posts_path
   end
