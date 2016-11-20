@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :feeds do
-    resources :photos
+    resources :photos do
+      resources :comments
+    end
   end
   resources :welcome
-  resources :comments
 
 
   # post '/feeds/:feed_id/photos/new'
