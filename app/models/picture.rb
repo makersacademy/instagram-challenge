@@ -11,5 +11,7 @@ class Picture < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   validates :user, presence: true
   belongs_to :user
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
 end
