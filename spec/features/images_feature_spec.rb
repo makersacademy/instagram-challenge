@@ -39,39 +39,13 @@ feature 'images' do
 
   context 'viewing images' do
 
-    let!(:sunday){ Image.create(description:'Sunday') }
+    let!(:sunday){ Image.create(description: 'Sunday') }
 
     scenario 'lets a user view an image' do
       visit '/images'
       click_link 'Sunday'
       expect(page).to have_content 'Sunday'
       expect(current_path).to eq "/images/#{sunday.id}"
-    end
-  end
-
-  context 'editing images' do
-    before { Image.create description: 'Sunday', url: 'http://cdn.pcwallart.com/images/morning-sunrise-city-wallpaper-2.jpg'}
-
-    scenario 'let a user edit an image' do
-      visit '/images'
-      click_link 'Edit Sunday'
-      fill_in 'Description', with: 'Sunday morning'
-      fill_in 'Url', with: 'http://cdn.pcwallart.com/images/morning-sunrise-city-wallpaper-2.jpg'
-      click_button 'Update Image'
-      expect(page).to have_content 'Sunday morning'
-      expect(page).to have_css("img[src*='http://cdn.pcwallart.com/images/morning-sunrise-city-wallpaper-2.jpg']")
-      expect(current_path).to eq '/images'
-    end
-  end
-
-  context 'deleting images' do
-    before { Image.create description: 'Sunday', url: 'http://cdn.pcwallart.com/images/morning-sunrise-city-wallpaper-2.jpg'}
-
-    scenario 'removes an image when a user clicks delete link' do
-      visit '/images'
-      click_link 'Delete Sunday'
-      expect(page).not_to have_content 'Sunday'
-      expect(page).to have_content 'Image deleted successfully'
     end
   end
 end

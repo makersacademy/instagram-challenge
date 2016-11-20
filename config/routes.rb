@@ -13,7 +13,9 @@ get 'images' => 'images#index'
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-resources :images
+resources :images do
+  resources :comments
+end
   # Example resource route with options:
   #   resources :products do
   #     member do

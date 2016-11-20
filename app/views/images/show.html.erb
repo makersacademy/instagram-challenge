@@ -1,2 +1,11 @@
+<p><%= image_tag(@image.url) %></p>
 <p><%= @image.description %></p>
-<%= image_tag("http://cdn.pcwallart.com/images/morning-sunrise-city-wallpaper-2.jpg") %>
+
+<%= link_to "Edit #{@image.description}", edit_image_path(@image) %>
+<%= link_to "Delete #{@image.description}", image_path(@image), method: :delete %>
+<%= link_to "Comment #{@image.description}", new_image_comment_path(@image) %>
+
+<p>Comments here</p>
+<% @image.comments.each do |comment| %>
+  <p><%= comment.thoughts %></p>
+<% end %>

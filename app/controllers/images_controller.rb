@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
 
   def create
     Image.create(image_params)
-    redirect_to '/images'
+    redirect_to images_path
   end
 
   def show
@@ -24,14 +24,14 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
     @image.update(image_params)
 
-    redirect_to '/images'
+    redirect_to image_path(@image)
   end
 
   def destroy
     @image = Image.find(params[:id])
     @image.destroy
     flash[:notice] = 'Image deleted successfully'
-    redirect_to '/images'
+    redirect_to images_path
   end
 
   private
