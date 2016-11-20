@@ -1,7 +1,12 @@
--# - if Pictures.all.any?
--#   - Pictures.all.each do |pic|
--#   %img(src='/images/#{pic.path}')
--#   - else
+- if @pictures.all.any?
+  - @pictures.all.each do |pic|
+    %h3
+      =pic.title
+    = image_tag pic.image.url(:thumb)
+    %p
+      =pic.description
+    -# %img(src='/images/#{pic.path}')
+- else
+  %p You don't have any pictures yet
 
-%p You don't have any pictures yet
-%a(href='#') Upload a picture
+%a(href='/pictures/new') Upload a picture
