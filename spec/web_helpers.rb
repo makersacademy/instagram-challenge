@@ -7,13 +7,14 @@ def sign_in(email, password)
   click_button 'Sign up'
 end
 
-def add_picture(description)
+def add_picture(text)
   visit '/pictures'
   click_link 'Add a picture'
-  fill_in 'description', with: description
-  click_button 'Submit'
+  fill_in 'Description', with: text
+  click_button 'Post picture'
 end
 
-def show_picture(description)
+def visit_picture(description)
+  visit '/pictures'
   click_link description
 end
