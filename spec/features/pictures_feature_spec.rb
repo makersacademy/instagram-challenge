@@ -16,7 +16,6 @@ feature 'pictures' do
       visit '/'
       expect(page).to have_content("This is a caption")
       expect(page).to have_css("img[src*='picture']")
-      print page.body
     end
   end
 end

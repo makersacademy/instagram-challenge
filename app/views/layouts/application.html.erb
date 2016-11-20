@@ -16,6 +16,15 @@
       <%= link_to "Sign in", new_user_session_path %>
       <%= link_to "Sign up", new_user_registration_path %>
     <% end %>
+    <br>
+    <% if flash[:errors] && !flash[:errors].empty? %>
+      Please refer to the following errors below:
+      <ul id='errors'>
+        <% flash[:errors].each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

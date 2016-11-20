@@ -14,9 +14,10 @@ class PicturesController < ApplicationController
     @user = User.find(current_user.id)
     @picture = @user.pictures.build(picture_params)
     if @picture.save
-      redirect_to(pictures_path(@picture))
+      redirect_to(picture_path(@picture))
     else
-      render('new')
+      flash.now[:errors] = ["You need to have an image to post!!"]
+      render :new
     end
   end
 
