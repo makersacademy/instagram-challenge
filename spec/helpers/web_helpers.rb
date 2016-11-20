@@ -9,3 +9,15 @@ end
 def sign_out
   click_link "Sign out"
 end
+
+def create_a_gallery(name: "GB favourites")
+  visit '/galleries'
+  click_link "Add a gallery"
+  fill_in "Name", with: name
+  click_button "Create Gallery"
+end
+
+def visit_a_gallery(name: "GB favourites")
+  visit '/galleries'
+  click_link(name)
+end
