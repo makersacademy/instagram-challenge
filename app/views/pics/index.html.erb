@@ -1,28 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pics</h1>
+<div class="row">
 
-<table>
-  <thead>
-    <tr>
-      <th>Url</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% @pics.each do |pic| %>
+    <div class="picture_div">
 
-  <tbody>
-    <% @pics.each do |pic| %>
-      <tr>
-        <td><%= pic.url %></td>
-        <td><%= pic.description %></td>
-        <td><%= link_to 'Show', pic %></td>
-        <td><%= link_to 'Edit', edit_pic_path(pic) %></td>
-        <td><%= link_to 'Destroy', pic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% if pic.url.present? %>
+      <div>
+        <a href="/pics/<%= pic.id %>">
+          <%= image_tag(pic.url, width: 300, height: 150) %>
+        </a>
+      </div>
+      <% end %>
+
+      <div><%= pic.description %></div>
+      <div class="edit_links">
+        <%= link_to 'Edit', edit_pic_path(pic) %> |
+        <%= link_to 'Delete', pic, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
 
 <br>
 

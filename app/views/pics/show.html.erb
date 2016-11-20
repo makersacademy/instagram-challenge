@@ -1,14 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div id="show_image">
 
-<p>
-  <strong>Url:</strong>
-  <%= @pic.url %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @pic.description %>
-</p>
+  <div>
+    <a href="<%= pics_path %>">
+      <%= image_tag(@pic.url, width: 600) if @pic.url.present? %>
+    </a>
+  </div>
 
-<%= link_to 'Edit', edit_pic_path(@pic) %> |
-<%= link_to 'Back', pics_path %>
+  <div>
+    <%= @pic.description %>
+  </div>
+
+  <div class="edit_links">
+    <%= link_to 'Edit', edit_pic_path(@pic) %>
+  </div>
+
+</div>
