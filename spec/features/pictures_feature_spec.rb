@@ -21,7 +21,7 @@ feature 'deleting pictures' do
     click_link 'Add Picture'
     fill_in "Title", with: "Oh my god!"
     click_button 'Create Picture'
-    click_button 'Delete Picture'
+    click_link 'Delete Picture'
     expect(page).not_to have_content('Another cute pic')
     expect(page).to have_content("Picture \"Another cute pic\" was successfully deleted")
   end

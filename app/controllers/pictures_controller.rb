@@ -10,6 +10,11 @@ class PicturesController < ApplicationController
     redirect_to "/galleries/#{@gallery.id}"
   end
 
+  def destroy
+    # DELETE   /galleries/:gallery_id/pictures/:id(.:format)      pictures#destroy
+
+  end
+
   private
   def picture_params
     params.require(:picture).permit(:title)
