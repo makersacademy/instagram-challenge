@@ -14,7 +14,7 @@ feature 'pictures' do
 
   context 'posting basics to the home page' do
     before do
-      Post.create(post_text: 'Seasons greetings')
+      Picture.create(picture_text: 'Seasons greetings')
     end
     scenario 'we should be able to see the posts on the indexpage' do
       visit('/pictures')
