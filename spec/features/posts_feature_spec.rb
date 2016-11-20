@@ -57,4 +57,16 @@ feature 'Posts' do
      expect(current_path).to eq '/posts'
     end
   end
+
+  context 'deleting restaurants' do
+
+    before { Post.create description: 'This is a post' }
+
+    scenario 'removes a post when a user clicks a delete link' do
+      visit '/posts'
+      click_link 'Delete: This is a post'
+      expect(page).not_to have_content 'This is a post'
+      expect(page).to have_content 'Post successfully deleted'
+    end
+  end
 end
