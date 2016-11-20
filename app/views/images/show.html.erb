@@ -1,11 +1,16 @@
-<p><%= image_tag(@image.url) %></p>
-<p><%= @image.description %></p>
+<div class="description">
+  <p><%= image_tag(@image.url) %></p>
+  <p><%= @image.description %></p>
+</div>
 
-<%= link_to "Edit #{@image.description}", edit_image_path(@image) %>
-<%= link_to "Delete #{@image.description}", image_path(@image), method: :delete %>
-<%= link_to "Comment #{@image.description}", new_image_comment_path(@image) %>
-
-<% @image.comments.each do |comment| %>
-  <p><%= comment.user.email %></p>
-  <p><%= comment.thoughts %></p>
-<% end %>
+<div class="actions">
+  <%= link_to "Edit", edit_image_path(@image) %>
+  <%= link_to "Delete", image_path(@image), method: :delete %>
+  <%= link_to "Comment", new_image_comment_path(@image) %>
+</div>
+<div class="comments">
+  <% @image.comments.each do |comment| %>
+    <p class="posted-by">Posted by <%= comment.user.email %></p>
+    <p><%= comment.thoughts %></p>
+  <% end %>
+</div>

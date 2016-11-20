@@ -1,12 +1,16 @@
 <% if @images.any? %>
-  <% @images.each do |image| %>
-    <div class="show-image">
-    <%= link_to image_tag(image.url), image_path(image) %>
-    <%= link_to image.description, image_path(image) %>
-    </div>
-  <% end %>
+  <div class="images">
+    <% @images.each do |image| %>
+      <div class="image">
+        <%= link_to image_tag(image.url), image_path(image) %>
+        <%= link_to image.description, image_path(image) %>
+      </div>
+    <% end %>
+  </div>
 <% else %>
   <h1>No images yet</h1>
 <% end %>
 
-<a href="/images/new">Add an image</a>
+<div class="actions">
+  <a href="/images/new">Add an image</a>
+</div>
