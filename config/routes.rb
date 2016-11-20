@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
-  get 'photo/new'
-
-  get 'photo/create'
-
-  get 'photo/update'
-
-  get 'photo/edit'
-
   devise_for :users
   resources :feeds do
     resources :photos
   end
   resources :welcome
+
+
+  # post '/feeds/:feed_id/photos/new'
 
   get 'welcome/index'
 

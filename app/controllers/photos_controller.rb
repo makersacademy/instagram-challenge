@@ -8,13 +8,14 @@ class PhotosController < ApplicationController
     if !user_signed_in?
       redirect_to '/feeds'
     end
+    @photo = Photo.new
   end
 
   def create
     @photo = Photo.new(photo_params)
     @photo.user_id = current_user.id
     @photo.save
-    flash[]
+    flash[:notice] = "Post successfully created"
     redirect_to '/feeds'
   end
 
