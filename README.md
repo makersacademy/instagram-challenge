@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
 
+Disclaimer: I shamelessly copied code from Stackoverflow wherever possible. I also spied on previous cohort git repos to see their method of implementation (and copied a DB migrate file). This was not a wise move as I spent most of the weekend reverse engineering the database, although the was a useful exercise in itself.
+
 Instructions
 -------
 * Challenge time: one weekend

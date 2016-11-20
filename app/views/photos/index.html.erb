@@ -1,0 +1,25 @@
+<% if @photos.any? %>
+
+  <% @photos.all.each do |photo| %>
+    <br><%=  image_tag photo.image.url(:medium) %>
+    <h3><%= link_to photo.caption, photo_path(photo) %></h3>
+    <% if current_user %>
+      <%= link_to "Comment", new_photo_comment_path(photo) %>
+      <br>
+      <br>
+      <% if current_user.id == photo.user_id %>
+        <%= link_to "Edit photo", edit_photo_path(photo) %>
+        <%= link_to "Delete photo", photo_path(photo), method: :delete %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+<% else %>
+
+  <h3>No photos yet</h3>
+
+<% end %>
+
+<% if current_user %>
+<h2>  <%= link_to "Add post", new_photo_path %> </h2>
+<% end %>
