@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
-  def index
-    raise 'Hello from the index action'
-  end
+    def index
+        @posts = Post.all
+    end
+
+    def create
+   end
 end
