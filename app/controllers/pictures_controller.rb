@@ -9,6 +9,7 @@ class PicturesController < ApplicationController
   def create
     @gallery = Gallery.find(params[:gallery_id])
     @picture = @gallery.pictures.new(picture_params)
+    @picture.user_id = current_user.id
     if @picture.save
       flash[:notice] = "The \"#{@picture.title}\" picture was successfully created"
       redirect_to "/galleries/#{@gallery.id}"
