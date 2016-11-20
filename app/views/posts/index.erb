@@ -1,37 +1,84 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Going post'all</title>
-    </head>
-    <body>
-        <h1>Going post'all</h1>
-        <% if @posts.all.any? %>
-        <% @posts.all.each do |post|  %>
-        <%= link_to post.caption, post_path(post) %>
-        <p><%= post.description %></p>
-        <% post.comments.each do |comment| %>
-        <p><%= comment.thoughts %></p>
-        <% end %>
-        <%= image_tag post.image.url(:thumb) %>
-        <p><%= link_to "Like post", new_post_like_path(post) %></p>
-        <p><%= pluralize post.likes.count, 'like' %></p>
-        <p><%= link_to "Show #{post.caption}", post_path(post) %></p>
-        <p><%= link_to "Edit #{post.caption}", edit_post_path(post) %></p>
-        <p><%= link_to "Delete #{post.caption}", post_path(post), method: :delete %></p>
-        <p><%= link_to "Review #{post.caption}", new_post_comment_path(post) %></p>
-        <% end %>
-    <% else %>
-        <h1>No posts yet!</h1>
-        <% end %>
-        <a href="/posts/new">Add a post</a>
-    </body>
-</html>
+<head>
+  <meta charset="utf-8">
+  <title>Going post'all</title>
+</head>
+<body>
+  <h1>Gonna post y'all</h1>
+  <% if @posts.all.any? %>
+  <% @posts.all.each do |post|  %>
+  <div class="desc">
+    <%= link_to post.caption, post_path(post) %>
+    <p><%= post.description %></p>
+    <% post.comments.each do |comment| %>
+    <p>Comments: <%= comment.thoughts %></p>
+    <% end %>
+  </div>
+  <div class="img">
+    <%= image_tag post.image.url %>
+  </div>
+  <div class="desc">
+    <span><%= link_to "Like post", new_post_like_path(post) %></span>
+    <span><%= pluralize post.likes.count, 'like' %></p>
+      <span><%= link_to "Show #{post.caption}", post_path(post) %></span>
+      <span><%= link_to "Edit #{post.caption}", edit_post_path(post) %></span>
+      <span><%= link_to "Delete #{post.caption}", post_path(post), method: :delete %></span>
+      <span><%= link_to "Review #{post.caption}", new_post_comment_path(post) %></span>
+      <% end %>
+      <% else %>
+      <h1>No posts yet!</h1>
+      <% end %>
+      <a href="/posts/new">Add a post</a>
+    </div>
+  </body>
+  </html>
 
-<style>
+  <style>
 
-    body {
-        background-image: url('http://www.easterlingstudios.com/assets/images/background.jpg');
-        background-position: center;
-    }
+  body {
+    background-image: url('http://www.easterlingstudios.com/assets/images/background.jpg');
+    background-position: center;
+  }
 
-</style>
+  /*div.img {
+    margin: 5px;
+    border: 1px solid #ccc;
+    width: 750px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  div.img:hover {
+    border: 1px solid #777;
+  }*/
+
+  div.img img {
+    width: 30%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  div.desc {
+    padding: 15px;
+    text-align: center;
+    text-align: center;
+    font-family: 'Arima Madurai', cursive;
+    color: white;
+  }
+
+  h1 {
+    text-align: center;
+    font-family: 'Arima Madurai', cursive;
+    color: white;
+  }
+
+  a {
+    font-family: 'Arima Madurai', cursive;
+    font-size: 1.5em;
+    color: white;
+  }
+
+  </style>
