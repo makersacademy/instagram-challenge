@@ -4,4 +4,12 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :dislikes, dependent: :destroy
+
+  def calculate_rating
+    likes.size - dislikes.size
+  end
+
+  def update_rating
+    update(rating: calculate_rating)
+  end
 end

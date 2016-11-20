@@ -122,6 +122,15 @@ describe 'Posts' do
         click_link 'Dislike'
         expect(page).to have_content 'Likes: 0 | Dislikes: 1'
       end
+
+      scenario 'users can an up-to-date overall rating' do
+        click_link caption_text
+        3.times{ click_link 'Like' }
+        5.times{ click_link 'Dislike' }
+        expect(page).to have_content 'Likes: 3 | Dislikes: 5 | Overall: -2'
+        click_link 'Instakilo'
+        expect(page).to have_content 'Likes: 3 | Dislikes: 5 | Overall: -2'
+      end
     end
   end
 end
