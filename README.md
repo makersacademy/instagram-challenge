@@ -15,15 +15,17 @@ Done
 
 To do
 --------
-* Users can edit their comments
-* Users can delete their comments
-* Users can only edit or delete their own pictures
+* Users can only edit their own pictures
+* Users can only delete their own pictures
+* Users can edit (only) their comments
+* Users can delete (only) their comments
 * Users can like pictures
 * Users can unlike pictures
-* Make it so you can see the comments and likes on the index page
 * Include username
 * Style it up!
 * Improve testing using FactoryGirl
 * Use Amazon web services to store images
 * Use AJAX instead of page refreshes
 * Users can add filters to images
+* See comments and likes on the index page instead of having to click through
+* Update README.md with installation instructions and screenshots
