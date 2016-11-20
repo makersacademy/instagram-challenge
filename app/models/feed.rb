@@ -7,4 +7,5 @@ class Feed < ApplicationRecord
     return "Today" if created_at.strftime("%b %d, %Y") == Time.now.strftime("%b %d, %Y")
     return  created_at.strftime("%b %d, %Y")
   end
+
 end

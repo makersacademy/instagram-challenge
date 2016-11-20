@@ -12,7 +12,7 @@
     <div class="col-lg-12">
       <div class="thumbnail">
       <%= User.find_by_id(photo.user_id).email%>
-      <%= Feed.time(photo.created_at) %></br>
+      posted: <%= Feed.time(photo.created_at) %></br>
       <%= image_tag photo.image.url(:medium) %></br>
       <div class="caption">
       <%= photo.name %></br>
@@ -20,6 +20,7 @@
       <%=link_to("Add Comment", new_feed_photo_comment_path(@feed_id, @photo_id), method: :get)%>
       <% @comments= Comment.where(photo_id: @photo_id)%>
         <%@comments.each do |comment| %>
+        <%= Comment.comment_author(comment.user_id)%> wrote:
         <%=comment.description%>
         <%end%>
       </div>

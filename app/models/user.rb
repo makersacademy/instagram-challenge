@@ -13,4 +13,5 @@ class User < ApplicationRecord
     p User.last
     self.feed = Feed.create(user_id: User.last.id)
   end
+
 end

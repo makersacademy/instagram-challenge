@@ -8,18 +8,14 @@ class CommentsController < ApplicationController
     if !user_signed_in?
       redirect_to '/feeds'
     end
-  p  @comment = Comment.new
-  p "at new"
+    @comment = Comment.new
   end
 
   def create
-    p "at create"
     @comment = Comment.new(comment_params)
-    p @comment
-  p  @comment.photo_id = params[:photo_id]
-    p @comment.user_id = @current_user.id
+    @comment.photo_id = params[:photo_id]
+    @comment.user_id = @current_user.id
     @comment.save
-    p @comment
     flash[:notice] = "comment successfully posted"
     redirect_to '/feeds'
   end
