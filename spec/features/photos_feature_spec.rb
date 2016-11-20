@@ -12,10 +12,11 @@ feature 'photo' do
     scenario 'uploading a photo' do
       visit '/photos'
       click_link 'Post a photo'
-      # fill_in 'Caption', with: "Luvyababes xx"
+      fill_in 'Caption', with: "Luvyababes xx"
       attach_file "Image", Rails.root + 'spec/features/test_images/chase.jpg'
       click_button 'Create Photo'
       expect(page).to have_css("img[src*='chase.jpg']")
+      expect(page).to have_content "Luvyababes xx"
     end
   end
 end
