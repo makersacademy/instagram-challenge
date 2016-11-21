@@ -1,5 +1,5 @@
 
-*User stories:*  
+**User stories:**  
 As a user (logged in)  
 So that my pictures are secure  
 I would like to be able to securely log in  
