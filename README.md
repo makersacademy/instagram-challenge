@@ -26,10 +26,10 @@ then visit http://localhost:3000 in your browser.
 Screenshots
 ---------
 Homepage:
-!(http://i.imgur.com/yH7YMKD.png)
+![Homepage](http://i.imgur.com/yH7YMKD.png)
 
 Picture:
-!(http://i.imgur.com/FGeQcBg.png)
+![Picture](http://i.imgur.com/FGeQcBg.png)
 
 Features
 ----
@@ -40,7 +40,6 @@ Features
 * Users can comment on pictures
 * Users cannot post, edit, delete or comment unless signed in
 * Users can like pictures
-* Style it up!
 
 Still to be implemented
 --------
