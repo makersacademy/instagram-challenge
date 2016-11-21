@@ -1,0 +1,17 @@
+-if @image.errors.any?
+  %section#errors
+    %h4
+      = pluralize(@image.errors.count, "error")
+      stopped this image from being uploaded:
+    %ul
+      - @image.errors.full_messages.each do |message|
+        %li= message
+
+= form_for @image, html: {multipart: true} do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.label :description
+  = f.text_field :description
+  = f.label :image
+  = f.file_field :image
+  = f.submit
