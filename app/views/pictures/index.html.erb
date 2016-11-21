@@ -1,5 +1,8 @@
+<a href='/pictures/new'>Add a picture</a>
+
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
+  <div class='box'>
     <h2> <%= picture.title %> </h2>
     <%= link_to image_tag(picture.image.url(:thumb)), picture_path(picture) %>
     <%= link_to "Like", "/pictures/#{picture.id}/likes", method: :post %>
@@ -11,8 +14,7 @@
     <%end%>
     <%= link_to "Add comment", new_picture_comment_path(picture) %>
   <% end %>
+  </div>
 <% else %>
   No pictures yet
 <% end %>
-
-<a href='/pictures/new'>Add a picture</a>
