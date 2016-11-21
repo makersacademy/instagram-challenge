@@ -1,6 +1,38 @@
 Instagram Challenge
 ===================
 
+As a new user
+so I can use Instagram
+I want to sign up and sign in to my account
+
+AS a user
+so I can share my stuff
+I want to be able to upload pictures
+
+As a user
+so I can make my stuff more accessible
+I want to be able to assign tags to my pictures
+
+As a user
+so I can stalk people
+I want to be able to follow other users
+
+As a stalker
+so I can mind my friends' business
+I want to be able to see what they posted
+
+As a user
+so I can express appretiation for other people's pictures
+I want to be able to like and comment their pictures
+
+Bonus
+
+filter by tags
+making profile private
+login with facebook
+list of people following me
+
+
 Instructions
 -------
 * Challenge time: one weekend
