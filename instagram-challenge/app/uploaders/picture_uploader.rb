@@ -1,7 +1,6 @@
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   include CarrierWave::RMagick
-
   process resize_to_fit: [800, 800]
   process :sepia
 
@@ -13,9 +12,10 @@ class PictureUploader < CarrierWave::Uploader::Base
    process resize_to_fill: [400, 400]
  end
 
- def sepia
+  def sepia
     manipulate! do |img|
       img = img.sepiatone
+      img
     end
   end
 

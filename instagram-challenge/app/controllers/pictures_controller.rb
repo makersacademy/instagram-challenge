@@ -42,7 +42,7 @@ class PicturesController < ApplicationController
   private
 
   def picture_params
-   params.require(:picture).permit(:caption, :image)
+   params.require(:picture).permit(:caption, :image, :sepia_box)
   end
 
 
