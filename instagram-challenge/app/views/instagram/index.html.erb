@@ -1,0 +1,41 @@
+<% if @pictures.any? %>
+  <% @pictures.reverse_each do |picture| %>
+    <p><%= link_to picture.user.username, instagram_path(picture.user.id)%>
+    <% if picture.user == current_user %>
+     <%= link_to "Delete Image", picture_path(picture.id), method: :delete %>
+    <% end %>
+   </p>
+
+    <% if current_user && !current_user.has_liked?(picture) %>
+      <p><%= link_to image_tag(picture.image.url(:thumb)), picture_endorsements_path(picture), class: 'endorsements-link' %>
+      <br>
+      <span class="endorsements_count"> <%= picture.endorsements.count %> </span><%= ' Like'.pluralize(picture.endorsements.count) %></p>
+    <% else %>
+     <p><%= image_tag(picture.image.url(:thumb)) %></p>
+     <p><span class="endorsements_count"> <%= picture.endorsements.count %> </span><%= ' Like'.pluralize(picture.endorsements.count) %></p>
+    <% end %>
+
+    <p><%= picture.caption %></p>
+
+    <% arr = picture.comments.last(2) %>
+    <p><% arr.each do |comment| %></p>
+    <p><%= comment.user.username %>:
+    <%= comment.comment %>
+
+    <% if comment.user == current_user %>
+     <%= link_to "Delete comment", picture_comment_url(picture.id, comment.id), method: :delete %>
+    <% end %>
+    </p>
+    <% end %>
+    <% if picture.comments.length > 2 %>
+     <%= link_to "View more comments", picture_path(picture.id) %>
+    <% end %>
+
+    <% if user_signed_in? %>
+     <p><%= link_to "Add Comment", new_picture_comment_path(picture.id)%></p>
+    <% end %>
+    ----------------------------------------
+   <% end %>
+  <% else %>
+  <h1>No pictures yet</h1>
+ <% end %>
