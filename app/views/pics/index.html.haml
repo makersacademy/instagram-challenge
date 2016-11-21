@@ -1,0 +1,22 @@
+- if @moments.any?
+  - @moments.each do |moment|
+    %h2= moment.title
+    = image_tag moment.image.url(:thumb)
+    = link_to like_pic_path(moment), method: :put do
+      Upvote
+      = moment.get_upvotes.size
+
+    = link_to dislike_pic_path(moment), method: :put do
+      Downvote
+      = moment.get_downvotes.size
+
+    - if moment.comments.any?
+      - moment.comments.each do |comment|
+        = comment.thoughts
+    = link_to moment.title, pic_path(moment)
+    = link_to "Delete #{moment.title}", pic_path(moment), method: :delete
+    = link_to "Comment #{moment.title}",new_pic_comment_path(moment)
+- else
+  %h1 No Moments yet!
+
+%a(href='http://localhost:3000/pics/new') Add a Moment!
