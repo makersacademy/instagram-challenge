@@ -40,7 +40,7 @@ As a website visitor (not logged in) and a user (logged in) - NOT YET COMPLETE!
 So that I can be entertained  
 I would like to be able to see the most recent users pictures  
 
-**SCREEN SHOT:**
+**SCREEN SHOT:**  
 ![Alt text](https://www.dropbox.com/s/jlmoyfaxils6wej/instagram-challenge.png?raw=1 "Optional title")
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
