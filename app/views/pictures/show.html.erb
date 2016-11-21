@@ -1,5 +1,7 @@
 <h1><%= @picture.description %></h1>
 <%= image_tag @picture.image.url(:medium) %>
+<p><%= pluralize @picture.likes.count, 'like' %></p>
+<%= link_to "Like", new_picture_like_path(@picture) %>
 <% if @comments.any? %>
   <% @comments.each do |c| %>
   <div class="comments">
