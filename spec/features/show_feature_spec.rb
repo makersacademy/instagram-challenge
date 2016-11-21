@@ -8,7 +8,7 @@ context 'editing images' do
   scenario 'let a user edit an image' do
     user_sign_up
     visit "/images/#{sunday.id}"
-    click_link 'Edit Sunday'
+    click_link 'Edit'
     fill_in 'Description', with: 'Sunday morning'
     fill_in 'Url', with: 'http://foobar/image.jpg'
     click_button 'Update Image'
@@ -25,7 +25,7 @@ context 'deleting images' do
   scenario 'removes an image when a user clicks delete link' do
     user_sign_up
     visit "/images/#{sunday.id}"
-    click_link 'Delete Sunday'
+    click_link 'Delete'
     expect(page).not_to have_content 'Sunday'
     expect(page).to have_content 'Image deleted successfully'
   end
