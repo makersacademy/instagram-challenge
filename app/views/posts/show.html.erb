@@ -1,0 +1,18 @@
+<h2><%= @post.description %></h2>
+<%= image_tag @post.image.url(:medium) %>
+
+<% if @comments.any? %>
+  <% @comments.each do |comment| %>
+  <div class="comments">
+    <p><%= comment.created_at.strftime("%d %B %Y %H:%M") %></p>
+    <h3>"<%= comment.thoughts %>"</h3>
+    <h3><%= comment.rating %> / 5</h3>
+  </div>
+  <% end %>
+<% else %>
+  <p>No comments have been added yet.</p>
+<% end %>
+
+<h4><%= link_to "Edit", edit_post_path(@post.id) %>
+<%= link_to "Delete", post_path(@post), method: :delete %></h4>
+<h4><%= link_to "Comment", new_post_comment_path(@post) %></h4>
