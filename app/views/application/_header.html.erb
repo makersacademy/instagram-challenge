@@ -1,1 +1,8 @@
-<h1><%= link_to 'Instakilo ', root_path %><small><%= link_to '- like Instagram, just a thousand times better!', root_path %></small></h1> <div id="user-actions"><%= link_to 'Home', root_path %></div>
+<h1><%= link_to 'Instakilo ', root_path %><small><%= link_to '- like Instagram, just a thousand times better!', root_path %></small></h1>
+<div id="user-actions">
+  <% if user_signed_in? %>
+    <%= link_to 'Sign out', destroy_user_session_path, method: 'delete' %>
+  <% else %>
+    <%= link_to 'Sign up', new_user_registration_path %> | <%= link_to 'Sign in', new_user_session_path %>
+  <% end %>
+  | <%= link_to 'Home', root_path %></div>
