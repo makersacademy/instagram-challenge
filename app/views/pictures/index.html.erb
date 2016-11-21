@@ -1,4 +1,33 @@
 
 <% @pictures.each do |picture| %>
+  <p><%= picture.user.username %> posted: </p>
   <%= image_tag picture.image.url(:square) %>
-<% end %>
+  <%= form_for(@like, url: picture_likes_path(picture)) do |f| %>
+    <%= f.submit "Like", id: "likePic"+picture.id.to_s %>
+  <%end%>
+  <%= form_for(@comment, url: picture_comments_path(picture)) do |f| %>
+    <%= f.label "Comment" %>
+    <%= f.text_field :words, id: "words"+picture.id.to_s %>
+    <%= f.submit "Post Comment" %>
+  <%end%>
+  <% unless Like.find_by(picture_id: picture.id).nil? %>
+    <% if Like.find_by(picture_id: picture.id).class == Like %>
+      <p><%= Like.find_by(picture_id: picture.id).user.username %> liked this! </p>
+    <% else %>
+      <% Like.find_by(picture_id: picture.id).each do |like| %>
+        <p> <%= like.user.username %> liked this! </p>
+      <%end%>
+    <%end%>
+  <%end%>
+  <% unless Comment.find_by(picture_id: picture.id).nil? %>
+    <% if Comment.find_by(picture_id: picture.id).class == Comment %>
+      <p> <%= Comment.find_by(picture_id: picture.id).user.username %> commented... </p><br>
+      <p> <%= Comment.find_by(picture_id: picture.id).words %>
+    <%else%>
+      <% Comment.find_by(picture_id: picture.id).each do |comment| %>
+        <p> <%= comment.user.username %> commented... </p><br>
+        <p> <%= comment.words %>
+      <%end%>
+    <%end%>
+  <%end%>
+<%end%>

@@ -10,9 +10,9 @@ class CommentsController < ApplicationController
     @comment = @picture.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      render '/'
+      redirect_to '#index'
     else
-      render '/'
+      redirect_to '#index'
     end
   end
 

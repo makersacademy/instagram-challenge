@@ -10,9 +10,9 @@ class LikeController < ApplicationController
     @like = @picture.likes.new
     @like.user_id = current_user.id
     if @like.save
-      render '/'
+      redirect_to '#index'
     else
-      render '/'
+      redirect_to '#index'
     end
   end
 
