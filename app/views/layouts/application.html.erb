@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instabrat</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "stylesheet.css" %>
+  <link href='http://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div>
+    <h1> Instabrat </h1>
+    <h6>
+  </h6>
+    <h5>
+      <%= notice %>
+      <%= alert %>
+      <a href='posts/new'> Add a picture </a>
+      <% if user_signed_in? %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path %>
+        <%= link_to "Sign up", new_user_registration_path %>
+        <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+      <% end %>
+    </h5>
+  </div>
+  <%= yield %>
+</body>
+</html>
