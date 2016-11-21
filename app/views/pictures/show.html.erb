@@ -3,13 +3,15 @@
 <% if @comments.any? %>
   <% @comments.each do |c| %>
   <div class="comments">
-    <p><%= c.created_at.strftime("%d %B %Y %H:%M") %></p>
-    <h3>"<%= c.comment %>"</h3>
+    <p class="comment_date"><%= c.created_at.strftime("%d %B %Y %H:%M") %></p>
+    <h3 class="comment_text">"<%= c.comment %>"</h3>
   </div>
   <% end %>
 <% else %>
   <p>No comments have been added yet.</p>
 <% end %>
-<%= link_to "Edit", edit_picture_url(@picture.id) %>
-<%= link_to "Delete", picture_path(@picture), method: :delete %>
-<%= link_to "Comment", new_picture_comment_path(@picture) %>
+<div class="picture_links">
+  <%= link_to "Edit", edit_picture_url(@picture.id), class: "pure-button" %>
+  <%= link_to "Delete", picture_path(@picture), method: :delete, class: "pure-button" %>
+  <%= link_to "Comment", new_picture_comment_path(@picture), class: "pure-button" %>
+</div>

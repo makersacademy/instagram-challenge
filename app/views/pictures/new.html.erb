@@ -8,10 +8,12 @@
     </ul>
   </section>
 <% end %>
-<%= form_for @picture, html: {multipart: true} do |f| %>
-  <%= f.label :image %>
-  <%= f.file_field :image %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.submit 'Post picture' %>
+<%= form_for @picture, html: { multipart: true, :class => "pure-form pure-form-aligned" } do |f| %>
+  <%= field_set_tag do %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <%= f.submit 'Post picture', class: "pure-button pure-button-primary" %>
+  <% end %>
 <% end %>

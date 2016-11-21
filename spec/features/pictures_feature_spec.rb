@@ -38,7 +38,7 @@ feature 'pictures' do
       visit_picture('Kitty cat')
       click_link 'Edit'
       fill_in 'Description', with: 'Gorgeous cat cat'
-      click_button 'Update'
+      click_button 'Edit picture'
       expect(current_path).to eq '/pictures'
       expect(page).to have_content 'Gorgeous cat cat'
       expect(page).not_to have_content 'Kitty cat'
