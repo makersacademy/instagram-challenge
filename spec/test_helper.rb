@@ -22,3 +22,11 @@ def leave_comment
   fill_in 'Comment', with: comment_text
   click_button 'Comment!'
 end
+
+def sign_in
+  visit '/users/sign_up'
+  fill_in 'Email', with: 'q@q.com'
+  fill_in 'Password', with: '123456'
+  fill_in 'Password confirmation', with: '123456'
+  click_button 'Sign up'
+end

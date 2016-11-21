@@ -7,7 +7,7 @@ describe 'Posts' do
       expect(page).to have_content 'Instakilo - like Instagram, just a thousand times better'
     end
     scenario 'link takes visitor to posts#new' do
-      visit '/'
+      sign_in
       click_link 'Post photo'
       expect(current_path).to eq '/posts/new'
     end
@@ -20,6 +20,7 @@ describe 'Posts' do
     end
     context 'posts to display' do
       before do
+        sign_in
         post_photo
       end
 
@@ -40,6 +41,7 @@ describe 'Posts' do
   describe 'Posts#new' do
     context 'Posting' do
       scenario 'user submits with comment' do
+        sign_in
         post_photo
       end
     end
@@ -47,6 +49,7 @@ describe 'Posts' do
 
   describe 'Post#show' do
     before do
+      sign_in
       post_photo
     end
 
@@ -125,11 +128,10 @@ describe 'Posts' do
 
       scenario 'users can an up-to-date overall rating' do
         click_link caption_text
-        3.times{ click_link 'Like' }
-        5.times{ click_link 'Dislike' }
-        expect(page).to have_content 'Likes: 3 | Dislikes: 5 | Overall: -2'
-        click_link 'Instakilo'
-        expect(page).to have_content 'Likes: 3 | Dislikes: 5 | Overall: -2'
+        click_link 'Dislike'
+        expect(page).to have_content 'Likes: 0 | Dislikes: 1 | Overall: -1'
+        click_link 'Undislike'
+        expect(page).to have_content 'Likes: 0 | Dislikes: 0 | Overall: 0'
       end
     end
   end
