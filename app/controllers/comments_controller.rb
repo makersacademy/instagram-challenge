@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:notice] = 'Your comment has been saved'
     else
-      flash[:error] = 'Your comment has not been saved'
+      flash[:alert] = 'Your comment has not been saved'
     end
     redirect_to post_path(@post.id)
   end
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       flash[:notice] = 'Your comment has been saved'
     else
-      flash[:error] = 'Your comment has not been saved'
+      flash[:alert] = 'Your comment has not been saved'
     end
     redirect_to post_path(@comment.post.id)
   end
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
     if @comment.destroy
       flash[:notice] = 'Your comment has been deleted'
     else
-      flash[:error] = 'Your comment was not deleted'
+      flash[:alert] = 'Your comment was not deleted'
     end
     redirect_to post_path(@comment.post.id)
   end
