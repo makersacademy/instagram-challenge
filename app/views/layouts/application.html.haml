@@ -1,0 +1,37 @@
+%head
+%title InstagramChallenge
+= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+= javascript_include_tag 'application', 'data-turbolinks-track' => true
+= csrf_meta_tags
+%nav.navbar.navbar-default
+.navbar-container
+.navbar-header
+%button.navbar-toggle.collapsed{"data-target" => "#bs-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+%span.sr-only Toggle Navigation
+%span.icon-bar
+%span.icon-bar
+.navbar-brand= link_to "Instagram", root_path
+.collapse.navbar-collapse#bs-navbar-collapse-1
+%ul.nav.navbar-nav.navbar-right
+%li
+= link_to "New Post", new_post_path
+-if current_user
+  %li
+  = link_to "Sign Out", destroy_user_session_path
+-else
+  %li
+  = link_to "Login", new_user_session_path
+  %li
+  = link_to "Register",  new_user_registration_path
+
+%p.notice= notice
+%p.alert= alert
+
+%body
+
+-flash.each do |key, value|
+  .alert.alert-info
+  =value
+
+
+=yield
