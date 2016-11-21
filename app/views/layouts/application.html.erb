@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>picstagram</title>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top" id='nav_bar'>
+        <div class='navbarr'>
+          <a id='logo_link' class="navbar-brand" href="/"><div class="arrow"><</div> picstagram <div class="arrow">></div></a>
+        </div>
+    </nav>
+
+    <div class='container pagination-centered text-center' id='app_div'>
+      <div id="alerts_notices">
+        <p id="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <p id="error"><%= flash[:error] %></p>
+      </div>
+
+      <div class="row">
+        <% if user_signed_in? %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path %>
+          <%= link_to "Sign up", new_user_registration_path %>
+        <% end %>
+      </div>
+      
+      <%= yield %>
+    </div>
+
+    <footer class='navbar-fixed-bottom text-center'>
+        <a href='http://github.com/tadasmajeris'>© Tadas Majeris. 2016</a>
+    </footer>
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.js"></script>
+
+    <script>
+      $('img').each(deflate);
+
+      $('img').hover(inflate, deflate);
+
+      function inflate(){
+        this.style = 'border: 10px solid #bbb;';
+      }
+      function deflate(){
+        this.style = 'border: 10px solid transparent;';
+      }
+    </script>
+  </body>
+</html>
