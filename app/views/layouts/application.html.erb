@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstaRails</title>
+    <link rel="stylesheet" type="text/css" 
+          href="https://fonts.googleapis.com/css?family=Roboto+Light">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+    <ul>
+      <li><%= link_to 'Home', pictures_path  %></li>
+
+      <% if user_signed_in? %>
+        <li class='right-aligned'><p>Hello <%= current_user.email %></p></li>
+        <li class='right-aligned'><%= link_to 'Add a picture', new_picture_path %></li>
+        <li class='right-aligned'><%= link_to 'Sign out', destroy_user_session_path, method: 'delete' %></li>
+      <% else %>
+        <li class='right-aligned'><%= link_to 'Sign in', new_user_session_path %></li>
+        <li class='right-aligned'><%= link_to 'Sign up', new_user_registration_path %></li>
+      <% end %>
+    </ul>
+    <br>
+    <%= yield %>
+
+  </body>
+</html>
