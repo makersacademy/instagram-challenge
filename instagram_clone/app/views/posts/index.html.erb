@@ -1,21 +1,26 @@
+<div class="title">
+  <span style="font-size:30px;">List of Posts <a href="/posts/new", style="display:inline-block;", class="btn btn-success">Add a post</a></span>
+</div>
 <% if @posts.any? %>
-<% @posts.reverse.each do |post| %>
-<h2><%= post.name %></h2>
-<div>
-    <%= link_to post.name, post_path(post) %>
-</div>
-<div>
-    <%= image_tag post.image.url(:thumb) %>
-</div>
-<div>
-    <%= link_to 'Edit', edit_post_path(post) %>
-</div>
-<div>
-    <%= link_to 'Delete', post_path(post), method: :delete %>
-</div>
-<% end %>
-<% else %>
-<h1>No posts yet</h1>
-<% end %>
-
-<a href="/posts/new">Add a post</a>
+   <div class='posts-wrapper row'>
+     <% @posts.reverse.each do |post| %>
+       <div class='post'>
+         <div class='post-head'>
+           <div class="name">
+             <h2><%= link_to post.name, post_path(post) %></h2>
+           </div>
+         </div>
+         <div class='image center-block'>
+             <%= image_tag post.image.url(:medium), class: "img-responsive" %>
+            <div class="buttons">
+              <%= link_to 'Edit', edit_post_path(post) %>
+                |
+              <%= link_to 'Delete', post_path(post), method: :delete %>
+            </div>
+          </div>
+       </div>
+     <% end %>
+   </div>
+ <% else %>
+   <p> No posts yet </p>
+ <% end %>

@@ -34,27 +34,14 @@
               </div>
             </div>
         </nav>
-        <div class="notice">
-            <% if notice %>
-            <div class="alert alert-info fade in" role="alert">
-                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                <ul id='notice'>
-                    <li><%= notice %></li>
-                </ul>
-            </div>
-            <% end %>
-        </div>
-
-        <div class="errors">
-            <% if alert %>
-            <div class="alert alert-danger fade in" role="alert">
-                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                <ul id='errors'>
-                    <li><%= alert %></li>
-                </ul>
-            </div>
-            <% end %>
-        </div>
+        <div class="row">
+         <% flash.each do |type, message| %>
+           <div class="alert <%= bootstrap_class_for(type) %>">
+             <button class="close" data-dismiss="alert">×</button>
+             <%= message %>
+           </div>
+         <% end %>
+       </div>
 
         <div class="yield_container">
             <%= yield %>
