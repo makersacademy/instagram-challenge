@@ -48,6 +48,26 @@ class GramsController < ApplicationController
     @comment = Comment.new
   end
 
+  def like
+    @gram = Gram.find(params[:id])
+    if @gram.liked_by current_user
+      respond_to do |format|
+        render inline: "location.reload();"
+        format.html { redirect_to current_page_url }
+      end
+    end
+  end
+
+  def unlike
+    @gram = Gram.find(params[:id])
+    if @gram.unliked_by current_user
+      respond_to do |format|
+        render inline: "location.reload();"
+        format.html { redirect_to current_page_url }
+      end
+    end
+  end
+
   private
 
     def gram_params

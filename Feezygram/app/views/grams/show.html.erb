@@ -2,13 +2,28 @@
 
 <% if current_user && current_user == @gram.user %>
   <%= link_to "Edit", edit_gram_path(@gram) %>
+<% end %><br>
+
+
+<% if current_user %>
+  <% if current_user.voted_up_on? @gram %>
+  <%= link_to "Unlike", unlike_gram_path(@gram), remote: true, id: "unlike_#{@gram.id}", onclick: "window.location.reload()" %><br>
+<% else %>
+  <%= link_to "Like", like_gram_path(@gram), remote: true, id: "like_#{@gram.id}", onclick: "window.location.reload()" %><br>
+  <% end %>
 <% end %>
 
+    <div class="likes">
+      <% @gram.votes_for.up.by_type(User).voters.each do |user| %>
+        <%= user.email %> Liked this<br>
+      <% end %>
+    </div>
+
+<h1>Comments</h1>
 <%= simple_form_for [@gram, @comment] do |f| %>
   <%= f.input :body, label: "Leave a comment:" %>
   <%= f.button :submit %>
 <% end %>
-
 <% @gram.comments.each do |comment| %>
   <p><%= comment.user.email %> says <%= comment.body %></p>
 <% end %>

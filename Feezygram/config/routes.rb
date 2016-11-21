@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   root 'grams#index'
   resources :grams do
     resources :comments
+    member do
+      get 'like'
+      get 'unlike'
+    end
   end
 
   # Example of regular route:
