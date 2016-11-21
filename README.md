@@ -1,3 +1,43 @@
+User stories
+==================
+```
+As a timstigrammer
+So that i can can use timstigram
+I want to register as a user
+```
+```
+As a timstigrammer
+So that I can ensure that nobody posts pictures on my account other than me
+I want to log out
+```
+```
+As a timstigrammer
+So that I can post pictures
+I want to log in
+```
+```
+As a timstigrammer
+So that I can show off my cool photos
+I want to post photos to timstigram
+```
+```
+As a timstigrammer
+So that I can tell people how bad their photos are
+I want to be able to leave a comment
+```
+```
+As a timstigrammer
+So I can let someone know when they have taken an acceptable photo
+I want to be able to like a picture
+```
+```
+As a timstigrammer
+So that I want to look at the page
+I want it to be beautifully styled
+```
+s
+
+
 Instagram Challenge
 ===================
 
