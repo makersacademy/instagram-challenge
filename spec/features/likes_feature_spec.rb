@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'endorsing reviews' do
+feature 'liking pictures' do
 
   before do
     @user = User.create(email: 'abc@123.com', password: '123456')
