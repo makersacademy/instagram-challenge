@@ -12,13 +12,20 @@ feature 'photo' do
     end
   end
   context 'uploading a photo' do
-    scenario 'uploading a photo' do
+    before do
       click_link 'Post a photo'
       fill_in 'Caption', with: "Luvyababes xx"
       attach_file "Image", Rails.root + 'spec/features/test_images/chase.jpg'
       click_button 'Create Photo'
+    end
+    scenario 'uploading a photo' do
       expect(page).to have_css("img[src*='chase.jpg']")
       expect(page).to have_content "Luvyababes xx"
+    end
+    scenario 'deleting a photo' do
+      click_link 'Delete post'
+      expect(page).not_to have_css("img[src*='chase.jpg']")
+      expect(page).not_to have_content "Luvyababes xx"
     end
   end
 end
