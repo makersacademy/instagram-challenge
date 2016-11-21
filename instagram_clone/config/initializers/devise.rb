@@ -14,6 +14,12 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
+  # in case you have multiple models and you want customized views
+  config.scoped_views = true
+  # Configure Devise to use username as reset password or confirmation keys
+  config.reset_password_keys = [ :username ]
+  config.confirmation_keys = [ :username ]
+
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
