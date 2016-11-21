@@ -1,0 +1,20 @@
+<a href='/pictures/new'>Add a picture</a>
+
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+  <div class='box'>
+    <h2> <%= picture.title %> </h2>
+    <%= link_to image_tag(picture.image.url(:thumb)), picture_path(picture) %>
+    <%= link_to "Like", "/pictures/#{picture.id}/likes", method: :post %>
+    <p><%= pluralize picture.likes.count, 'like' %></p>
+    <%= link_to "Edit", edit_picture_path(picture) %>
+    <%= link_to "Delete", picture_path(picture), method: :delete %>
+    <% picture.comments.each do |comment| %>
+      <p><%= comment.thoughts %>
+    <%end%>
+    <%= link_to "Add comment", new_picture_comment_path(picture) %>
+  <% end %>
+  </div>
+<% else %>
+  No pictures yet
+<% end %>
