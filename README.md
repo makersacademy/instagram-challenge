@@ -16,7 +16,7 @@ bin/rails s
 ````
 Enter the following into your browser
 
-[Imgur](http://i.imgur.com/DA2X5Gq.png)
+![Imgur](http://i.imgur.com/DA2X5Gq.png)
 
 
 Functionality implemented
