@@ -1,0 +1,38 @@
+<% if @pictures.any? %>
+  <% @pictures.reverse.each do |picture| %>
+    <section class='ind_picture'>
+      <section class="img_head">
+        <section id="img_head_username">
+          <%= picture.user.username %>
+        </section>
+        <section id="img_head_title">
+            <%= picture.title %>
+        </section>
+      </section>
+      <%= image_tag picture.image.url(:medium) %>
+      <section class="comments_and_likes">
+        <section class="likes">
+          <%= link_to 'Like', picture_likes_path(picture), class: 'like-link'%>
+          <span class="likes_count"><%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>
+        </section>
+        <section class="comments">
+          <% if picture.comments.any? %>
+              <% picture.comments.each do |comment| %>
+                  <strong><%= comment.user.username %></strong> <%= comment.words %>
+                  <span class="delete_link">
+                    <%= link_to 'Delete comment', comment_path(comment), method: :delete %>
+                  </span>
+                  <br>
+              <% end %>
+          <% else %>
+            <p>No comments. Yet...</p>
+          <% end %>
+        </section>
+        <p class="new_comment"><%= link_to 'Comment', new_picture_comment_path(picture) %></p>
+        <p class="delete_link"><%= link_to 'Delete picture', picture_path(picture), method: :delete %></p>
+      </section>
+    </section>
+  <% end %>
+<% else %>
+  No pictures yet
+<% end %>
