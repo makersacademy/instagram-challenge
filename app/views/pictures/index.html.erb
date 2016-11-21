@@ -10,24 +10,11 @@
     <%= f.text_field :words, id: "words"+picture.id.to_s %>
     <%= f.submit "Post Comment" %>
   <%end%>
-  <% unless Like.find_by(picture_id: picture.id).nil? %>
-    <% if Like.find_by(picture_id: picture.id).class == Like %>
-      <p><%= Like.find_by(picture_id: picture.id).user.username %> liked this! </p>
-    <% else %>
-      <% Like.find_by(picture_id: picture.id).each do |like| %>
-        <p> <%= like.user.username %> liked this! </p>
-      <%end%>
-    <%end%>
+  <% Like.where(picture_id: picture.id).to_a.each do |like| %>
+    <p> <%= like.user.username %> liked this! </p>
   <%end%>
-  <% unless Comment.find_by(picture_id: picture.id).nil? %>
-    <% if Comment.find_by(picture_id: picture.id).class == Comment %>
-      <p> <%= Comment.find_by(picture_id: picture.id).user.username %> commented... </p><br>
-      <p> <%= Comment.find_by(picture_id: picture.id).words %>
-    <%else%>
-      <% Comment.find_by(picture_id: picture.id).each do |comment| %>
+  <% Comment.where(picture_id: picture.id).to_a.each do |comment| %>
         <p> <%= comment.user.username %> commented... </p><br>
         <p> <%= comment.words %>
-      <%end%>
-    <%end%>
   <%end%>
 <%end%>

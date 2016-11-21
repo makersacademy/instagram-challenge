@@ -6,7 +6,6 @@ class PicturesController < ApplicationController
 
   def index
     @pictures = Picture.all
-    @user = current_user
     @comment = Comment.new
     @like = Like.new
   end

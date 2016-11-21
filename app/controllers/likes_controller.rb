@@ -1,4 +1,4 @@
-class LikeController < ApplicationController
+class LikesController < ApplicationController
 
   def new
     @picture = Picture.find(params[:picture_id])
