@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature "Users" do
   scenario "users can sign up" do
+    skip
     visit '/signup'
     fill_in :name, with: "asda"
     fill_in :email, with: "asda@hotmail.com"
