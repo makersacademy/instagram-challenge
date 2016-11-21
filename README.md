@@ -1,6 +1,14 @@
 Instagram Challenge
 ===================
 
+User stories
+------------
+* As a user, I want to upload my photos online so
+that I can share my artistic genius with others.
+* As a user, I want to be able to like other peoples photos so that they know how great they are (and hopefully they'll like my photos in return... #likes4likes).
+* As a user, I want to be able to add comments to photos so I express my appreciation or distaste for other people's photos.  
+* As Instagram's creator, I want users to be able to log in and out so that Instagram can display who posted which pictures. 
+
 Instructions
 -------
 * Challenge time: one weekend
