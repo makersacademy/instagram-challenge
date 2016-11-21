@@ -1,6 +1,29 @@
 Instagram Challenge
 ===================
 
+### Set up
+```
+$ git clone git@github.com:gerauf/instagram-challenge.git
+$ cd instagram-challenge
+$ rake db:setup
+$ rspec
+```
+
+### Running the program
+```
+$ rails s
+$ open http://localhost:3000
+```
+
+### Screen shots
+
+![Main screen](http://i.imgur.com/9vi5SSI.png)
+
+
+
+
+
+
 Instructions
 -------
 * Challenge time: one weekend

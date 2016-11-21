@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %title InstagramChallenge
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all',
+     'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.fixed-nav-bar
+      .u-pull-left
+        %h1.main_title InstaSham
+      .u-pull-right
+        - if user_signed_in?
+          %span.presentation= "#{current_user.username} : #{current_user.email}"
+          = link_to "Sign out", destroy_user_session_path, method: :delete, class: "button"
+        - else
+          = link_to "Sign up", new_user_registration_path, class: "button"
+          = link_to "Sign in", new_user_session_path, class: "button"
+
+        %p= notice
+        = alert
+    %section.main-body
+      = yield
