@@ -1,16 +1,16 @@
 
 User stories:
 As a user (logged in)  
-So that my pictures are secure
-I would like to be able to securely log in
+So that my pictures are secure  
+I would like to be able to securely log in  
 
-As a user (logged in)
-So that I can show my pictures
-I would like to be able to be able to upload my pictures
+As a user (logged in)  
+So that I can show my pictures  
+I would like to be able to be able to upload my pictures  
 
-As a user (logged in) - NOT YET COMPLETE!
-So that I can be entertained
-I would like to be able to add comments to all pictures including my own pictures.
+As a user (logged in) - NOT YET COMPLETE!  
+So that I can be entertained  
+I would like to be able to add comments to all pictures including my own pictures.  
 
 As a user (logged in)
 So that I can show my best pictures
