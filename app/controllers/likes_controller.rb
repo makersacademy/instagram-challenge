@@ -5,9 +5,9 @@ class LikesController < ApplicationController
     @post = Post.find(params[:post_id])
     if @post.likes.where(user: current_user).empty?
       @post.likes.create(user: current_user)
-      @post.dislikes.where(user: current_user).destroy_all
-      @post.update_rating
     end
+    @post.dislikes.where(user: current_user).destroy_all
+    @post.update_rating
     redirect_to post_path(@post.id)
   end
 end
