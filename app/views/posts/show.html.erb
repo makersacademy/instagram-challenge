@@ -1,6 +1,8 @@
 <div class="post">
   <%= image_tag @post.image.url, width: '400' %>
-  <p><%= link_to 'Like', post_likes_path(@post.id), method: 'post' %> | <%= link_to 'Dislike', post_dislikes_path(@post.id), method: 'post' %>
+  <p>
+    <%= if (user_signed_in? && @post.likes_for?(current_user)) then (link_to 'Unlike', post_like_path(@post.id), method: 'delete') else (link_to 'Like', post_likes_path(@post.id), method: 'post') end %> | 
+    <%= if (user_signed_in? && @post.dislikes_for?(current_user)) then (link_to 'Undislike', post_dislike_path(@post.id), method: 'delete') else (link_to 'Dislike', post_dislikes_path(@post.id), method: 'post') end %>
   <p><%= @post.created_at %></p>
   <p><%= @post.caption %></p>
   <p>Likes: <%= @post.likes.size %> | Dislikes: <%= @post.dislikes.size %> | Overall: <%= @post.rating %>
@@ -10,7 +12,7 @@
 <% @comments.each do |cmt| %>
   <div class="comment">
     <p><%= cmt.comment %></p>
-    <p><%= cmt.created_at %></p>
+    <p><%= cmt.user.name + ' at ' + cmt.created_at %></p>
     <%= link_to 'Delete comment', post_comment_path(@post.id, cmt.id), method: :delete %> | <%= link_to 'Edit comment', edit_post_comment_path(@post.id, cmt.id) %>
   </div>
 <% end %>

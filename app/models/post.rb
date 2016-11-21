@@ -12,4 +12,28 @@ class Post < ApplicationRecord
   def update_rating
     update(rating: calculate_rating)
   end
+
+  def likes_for?(user)
+    if likes.where(user: user).empty?
+      false
+    else
+      likes.where(user: user)
+    end
+  end
+
+  def likes_for(user)
+    likes.where(user: user)
+  end
+
+  def dislikes_for?(user)
+    if dislikes.where(user: user).empty?
+      false
+    else
+      dislikes.where(user: user)
+    end
+  end
+
+  def dislikes_for(user)
+    dislikes.where(user: user)
+  end
 end

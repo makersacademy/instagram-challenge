@@ -3,10 +3,17 @@ class DislikesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    if @post.dislikes.where(user: current_user).empty?
+    if !@post.dislikes_for?(current_user)
       @post.dislikes.create(user: current_user)
     end
-    @post.likes.where(user: current_user).destroy_all
+    @post.likes_for(current_user).destroy_all
+    @post.update_rating
+    redirect_to post_path(@post.id)
+  end
+
+  def destroy
+    @post = Post.find(params[:post_id])
+    @post.dislikes_for(current_user).destroy_all
     @post.update_rating
     redirect_to post_path(@post.id)
   end
