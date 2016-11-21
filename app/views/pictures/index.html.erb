@@ -1,0 +1,34 @@
+<% if @pictures.any? %>
+  <ul>
+    <% @pictures.each do |picture| %>
+        <li>
+          <%= image_tag picture.image.url(:thumb) %>
+          <%= picture.description %>
+          <%= link_to "View #{picture.description}", picture_path(picture) %>
+          <%= link_to "Comment on #{picture.description}", new_picture_comment_path(picture) %>
+          <h4>Comments</h4>
+          <% if picture.comments.any? %>
+            <ul>
+              <% picture.comments.each do |comment| %>
+                <li><%= comment.body %></li>
+              <% end %>
+            </ul>
+          <% else %>
+            <h4>Be the first one to comment!</h4>
+          <% end %>
+          <h4>
+            Likes:
+            <span class="likes-count" data-id="<%= picture.id %>">
+              <%= picture.likes.size %>
+            </span>
+          </h4>
+          <%= link_to "Like", "/pictures/#{picture.id}/likes", class: 'like', method: :post, remote: true %>
+        </li>
+        ________________________
+    <% end %>
+  </ul>
+<% else %>
+  <h3>No pictures yet </h3>
+<% end %>
+
+<%= link_to "Add a picture", new_picture_path %>
