@@ -32,4 +32,21 @@ context 'viewing images' do
    expect(current_path).to eq "/images/#{hello.id}"
   end
 
+  context 'editing images' do
+
+  before { Image.create url: 'hello', comment: 'hello picture' }
+
+  scenario 'let a user edit a comment on an image' do
+   visit '/images'
+   click_link 'Edit hello'
+   fill_in 'Name', with: 'goodbye'
+   fill_in 'Comment', with: 'bye felicia'
+   click_button 'Update Image'
+   expect(page).to have_content 'goodbye'
+   expect(page).to have_content 'bye felicia'
+   expect(current_path).to eq '/images'
+  end
+
+end
+
 end
