@@ -1,3 +1,6 @@
+**INSTAGRAM-CHALLENGE:**  
+This is a variation on the instagram website. It allows a user to save pictures to the website. These are saved into galleries.  
+At this point in time the functionality is not complete. Refer to the user stories below to see what is still outstanding. 
 
 **USER STORIES:**  
 As a user (logged in)  
