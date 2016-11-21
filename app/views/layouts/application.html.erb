@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstaGratification</title>
+    <link href='https://fonts.googleapis.com/css?family=Lobster|Lobster+Two|Amaranth|Fugaz+One' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <p>
+    <% if user_signed_in? %>
+      <%= render 'profile_pic' %>
+      <%= link_to "I've Had Enough InstaGratification", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "I Need MY InstaGratification", new_user_session_path %>
+      <%= link_to "I Need InstaGratification", new_user_registration_path %>
+      <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+    <% end %>
+    </p>
+
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<banner>
+  <h1> InstaGratification <h1>
+  <h3><%= button_to "InstaGratify", new_photo_path, method: :get %></h3>
+</banner>
+
+<section class="photo_feed">
+<% if @photos.any? %>
+  <% @photos.each do |photo| %>
+  <figure class="med_photo_feed_item" id="<%= photo.id %>">
+  <%= image_tag(photo.image.url(:large)) %>
+</figure>
+<aside class="photo_feed_info">
+  <h3 class="photo_caption">
+  <%= photo.caption %>
+  </h3>
+  <h4 class="time_ago">
+    <%= "Sought InstaGratification #{post_recency(photo.created_at)} ago" %>
+  </h4>
+  <%= image_tag(photo.user.profile_pic.url(:thumb)) %>
+  <%= photo.user_name %>
+  <span class=likes_count><%= photo.likes.count %>
+  <%= 'like'.pluralize(photo.likes.count) %></span>
+    <%= button_to "Like", photo_likes_path(photo), class: "like-button" %>
+    <p class="timestamp"><%= post_exact_time(photo.created_at) %></p>
+  <%= render 'user_photo_options', photo: photo %>
+</aside>
+
+<section class="comment_feed">
+  <% photo.comments.each do |comment| %>
+  <h3 class="photo_caption">
+  <%= comment.content %>
+  </h3>
+  <aside class="comment_feed_info">
+    <%= image_tag(comment.user.profile_pic.url(:thumb)) %>
+    <%= photo.user_name %>
+    <%= button_to "Destroy the evidence", photo_comment_path(photo, comment), method: :delete %>
+    <p class="timestamp">
+      <%= "left comment #{post_recency(comment.created_at)} ago on #{post_exact_time(comment.created_at)}" %>
+    </p>
+    <% end %>
+    <section class="comment_box">
+      <%= form_for Comment.create, url: new_photo_comment_path(photo) do |f| %>
+      <%= f.label "Comment here #{current_user.user_name}" %><br />
+      <%= f.text_field :content %>
+      <%= f.submit "Give Gratification"%>
+      <% end %>
+    </section>
+  </section>
+
+  <% end %>
+</section>
+<% else %>
+  <h1> Nobody is using our site :'( <h1>
+<% end %>
