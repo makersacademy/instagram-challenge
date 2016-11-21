@@ -1,0 +1,22 @@
+<a href='/pictures/new'>Add a photo!</a>
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <br>
+    <br>
+    <%= link_to picture.name, picture_path(picture) %>
+    <br>
+    <%= image_tag picture.image.url(:thumb) %>
+    <br>
+    <%= link_to "Edit #{picture.name}", edit_picture_path(picture) %>
+    <%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %>
+    <%= link_to "Review #{picture.name}", new_picture_userthought_path(picture)%>
+    <br>
+    <%= picture.userthoughts.map {|x| x[:thoughts]}.join(', ') %>
+    <% picture.userthoughts.each {|x| x[:ratings]}.join(',') %>
+    <br>
+  <% end %>
+<% else %>
+  No pictures on here yet
+<% end %>
+
+<br>
