@@ -1,0 +1,13 @@
+<h3><%= @post.title %></h3>
+<%= image_tag @post.image.url(:original) %><br>
+<%= @post.caption %><br>
+<%= link_to 'Edit Post', edit_post_path(@post) %><br>
+<%= link_to "Delete Image", post_path(@post), method: :delete %>
+
+<br><br><br><br>
+<h3>Comments</h3>
+
+<% @post.reversed_comments.each do |comment| %>
+  <strong><%= comment.user.email %></strong><br>
+  <%= comment.comment %>
+<% end %>
