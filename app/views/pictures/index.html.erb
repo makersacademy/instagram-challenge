@@ -1,0 +1,17 @@
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <a href="<%= picture_path(picture) %>">
+      <div class="whitebox">
+        <h3><%= picture.description %></h3>
+        <%= image_tag picture.image.url(:medium) %>
+        <p>
+          <%= pluralize picture.likes.count, 'like' %> |
+          <%= pluralize picture.comments.count, 'comment' %>
+        </p>
+      </div>
+    </a>
+  <% end %>
+<% else %>
+  <h1>No pictures yet</h1>
+  <%= link_to 'Add picture', new_picture_url, class: "pure-button pure-button-primary" %>
+<% end %>

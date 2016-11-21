@@ -1,23 +1,59 @@
 Instagram Challenge
 ===================
+This is a basic functional recreation of Instagram, whereby users can sign-up to the service and create, read, update and delete images. Users can also like and comment on images.
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Technologies used
+--------------
+It was written in Ruby using the Rails MVC framework, using Devise for user authentication, RSpec for testing, and a Postgres database.
 
-Task
------
+Installation instructions
+----------
+````
+$ git clone git@github.com:francesmx/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle
+$ rake db:setup
+````
+You can view tests:
+````
+$ rspec
+````
+To play with the app using the web interface, start the server:
+````
+$ rails server
+$ open http://localhost:3000
+````
 
-Build Instagram: Simple huh!
+Screenshots
+---------
+Homepage:
+![Homepage](http://i.imgur.com/yH7YMKD.png)
 
-Bonus if you can write your own set of sensible user stories!
+Picture:
+![Picture](http://i.imgur.com/FGeQcBg.png)
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+Features
+----
+* Users can sign up, in and out
+* Users can post pictures
+* Users can edit pictures
+* Users can delete pictures
+* Users can comment on pictures
+* Users cannot post, edit, delete or comment unless signed in
+* Users can like pictures
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+Still to be implemented
+--------
+* Include username (so it can be shown alongside the image)
+* Users can only edit their own pictures
+* Users can only delete their own pictures
+* Users can edit (only) their comments
+* Users can delete (only) their comments
+* Users can unlike pictures
+* Improve testing using FactoryGirl
+* Use Amazon web services to store images
+* Use AJAX instead of page refreshes
+* Users can add filters to images
+* See comments and likes on the index page instead of having to click through
+* Users can edit their profiles
+* Deploy to Heroku
