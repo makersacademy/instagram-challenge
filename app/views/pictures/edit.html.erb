@@ -1,21 +1,14 @@
-<h1><%= @picture.description %></h1>
-<%= image_tag @picture.image.url(:medium) %>
-<% if @picture.errors.any? %>
-  <section id="errors" >
-    <h2> <%= pluralize(@picture.errors.count, "error") %> prohibited this picture from being saved: </h2>
-    <ul>
-      <% @picture.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </section>
-<% end %>
-<%= form_for @picture, html: { multipart: true, :class => "pure-form pure-form-aligned" } do |f| %>
-  <%= field_set_tag do %>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-    <%= f.submit 'Edit picture', class: "pure-button pure-button-primary" %>
+<div class="whitebox">
+  <h3><%= @picture.description %></h3>
+  <%= image_tag @picture.image.url(:medium) %>
+  <%= form_for @picture, html: { multipart: true, :class => "pure-form pure-form-aligned" } do |f| %>
+    <%= field_set_tag do %>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+      <%= f.submit 'Edit picture', class: "pure-button pure-button-primary" %>
+    <% end %>
   <% end %>
-<% end %>
+  <%= link_to "Cancel", picture_path(@picture) %>
+</div>

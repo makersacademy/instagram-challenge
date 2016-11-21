@@ -1,10 +1,37 @@
 Instagram Challenge
 ===================
-The challenge is to build Instagram using Rails.
+This is a basic functional recreation of Instagram, whereby users can sign-up to the service and create, read, update and delete images. Users can also like and comment on images.
 
- **Users** can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome). Bonus if you can add filters!
+Technologies used
+--------------
+It was written in Ruby using the Rails MVC framework, using Devise for user authentication, RSpec for testing, and a Postgres database.
 
-Done
+Installation instructions
+----------
+````
+$ git clone git@github.com:francesmx/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle
+````
+You can view tests:
+````
+$ rspec
+````
+To play with the app using the web interface, start the server:
+````
+$ rails server
+````
+then visit http://localhost:3000 in your browser.
+
+Screenshots
+---------
+Homepage:
+!(http://i.imgur.com/yH7YMKD.png)
+
+Picture:
+!(http://i.imgur.com/FGeQcBg.png)
+
+Features
 ----
 * Users can sign up, in and out
 * Users can post pictures
@@ -12,13 +39,12 @@ Done
 * Users can delete pictures
 * Users can comment on pictures
 * Users cannot post, edit, delete or comment unless signed in
-
-To do
---------
 * Users can like pictures
-* Include username
 * Style it up!
-* Update README.md with installation instructions and screenshots
+
+Still to be implemented
+--------
+* Include username (so it can be shown alongside the image)
 * Users can only edit their own pictures
 * Users can only delete their own pictures
 * Users can edit (only) their comments
@@ -29,4 +55,5 @@ To do
 * Use AJAX instead of page refreshes
 * Users can add filters to images
 * See comments and likes on the index page instead of having to click through
+* Users can edit their profiles
 * Deploy to Heroku

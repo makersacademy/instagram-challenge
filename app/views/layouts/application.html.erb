@@ -19,6 +19,7 @@
     <!--[if gt IE 8]><!-->
     <link rel="stylesheet" href="/combo/1.18.13?/css/marketing.css">
     <!--<![endif]-->
+    <%= favicon_link_tag 'favicon.ico' %>
     <%= csrf_meta_tags %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -28,7 +29,9 @@
       <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
         <%= link_to 'Franagram', root_url, class: "pure-menu-heading" %>
         <ul class="pure-menu-list">
+          <li class="pure-menu-item"><%= link_to 'Home', root_url, class: "pure-menu-link" %></li>
           <% if user_signed_in? %>
+            <li class="pure-menu-item"><%= link_to 'Add a picture', new_picture_url, class: "pure-menu-link" %></li>
             <li class="pure-menu-item"><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "pure-menu-link" %></li>
           <% else %>
             <li class="pure-menu-item"><%= link_to "Log in", new_user_session_path, class: "pure-menu-link" %></li>
