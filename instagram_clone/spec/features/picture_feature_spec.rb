@@ -24,31 +24,5 @@ feature 'Pictures:' do
       end
     end
 
-    # context 'viewing pictures' do
-    #   before do
-    #     # create_picture
-    #   end
-    #
-    #   scenario 'should display pictures' do
-    #     visit '/'
-    #     create_picture
-    #     p Picture.all
-    #     expect(page).to have_content 'Summer 96'
-    #   end
-    #
-    #   scenario 'lets a user view a pic' do
-    #    visit '/'
-    #    click_link 'Summer 96'
-    #    expect(page).to have_content 'Summer 96'
-    #    expect(current_path).to eq "/pictures/#{pic.id}"
-    #   end
-    #
-    #   scenario 'let a user delete a pic' do
-    #    visit '/'
-    #    click_link 'Delete Summer 96'
-    #    expect(page).not_to have_content 'Summer 96'
-    #    expect(current_path).to eq '/'
-    #   end
-    # end
   end
 end
