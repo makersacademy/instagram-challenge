@@ -1,6 +1,7 @@
 <div id="show_image">
 
   <p id="notice"><%= notice %></p>
+  <p id="error"><%= flash[:error] %></p>
 
   <div>
     <a href="<%= pics_path %>">
@@ -15,6 +16,22 @@
   <div class="edit_links">
     <%= link_to 'Edit', edit_pic_path(@pic) %> |
     <%= link_to 'Delete', @pic, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+
+  <div class="comments_form_div">
+    <%= form_for [@pic, Comment.new] do |f| %>
+      <%= f.label :thoughts %>
+      <%= f.text_area :thoughts %>
+      <%= f.submit 'Comment' %>
+    <% end %>
+  </div>
+
+  <div class="row" id='comments_div'>
+    <% if @comments.any? %>
+      <% @comments.each do |comment| %>
+        <p><%= comment.thoughts %> - <span> <%= comment.created_at.strftime('%H:%M ') %></span><span class='date_span'> <%= comment.created_at.strftime(' %d.%m.%Y') %></span></p>
+      <% end %>
+    <% end %>
   </div>
 
 </div>

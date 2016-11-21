@@ -7,15 +7,15 @@ feature 'pics' do
       expect(page).to have_content 'No pics yet'
       expect(page).to have_link 'New Pic'
     end
+
+    scenario 'Pic cant be created without a picture' do
+      visit '/pics/new'
+      expect { click_button 'Create Pic' }.not_to change(Pic, :count)
+    end
   end
 
   context 'pics have been added' do
-    before do
-      visit '/pics/new'
-      fill_in :Description, with: 'awesome picture'
-      page.attach_file('pic_url', Rails.root + 'public/test.png')
-      click_button 'Create Pic'
-    end
+    before { add_a_pic }
 
     scenario 'should display the pic and description' do
       expect(page).to have_css('img')

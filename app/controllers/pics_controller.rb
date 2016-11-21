@@ -10,6 +10,7 @@ class PicsController < ApplicationController
   # GET /pics/1
   # GET /pics/1.json
   def show
+    @comments = @pic.comments.order(created_at: :desc)
   end
 
   # GET /pics/new
@@ -29,10 +30,8 @@ class PicsController < ApplicationController
     respond_to do |format|
       if @pic.save
         format.html { redirect_to @pic, notice: 'Pic was successfully created.' }
-        format.json { render :show, status: :created, location: @pic }
       else
         format.html { render :new }
-        format.json { render json: @pic.errors, status: :unprocessable_entity }
       end
     end
   end
