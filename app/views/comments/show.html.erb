@@ -1,0 +1,26 @@
+
+  <%= image_tag @photo.image.url(:medium) %>
+  <h4> <%=  @photo.caption %> </h4>
+  <h5> Posted by: <%= @photo.owner_of_photo.email %>  </h5>
+  <% @comments.reverse.each do |comment| %>
+    <h4><%= comment.body %> </h4>
+    <h5> Posted by: <%= comment.owner_of_comment.email %>  </h5>
+    <h5> Made <%= time_ago_in_words(comment.created_at)  %> ago </h5>
+    <% if @user.comments.include?(comment) %>
+      <%= link_to "Delete comment", comment_path(comment), method: :delete %>
+    <% end %>
+    <%= link_to "Add reply", new_comment_comment_path(comment) %>
+    <% if comment.comments.any? %>
+      <%= comment.comments.each do | reply | %>
+        <ul>
+        <%= reply.body %>
+        <h5> Posted by: <%= reply.owner_of_comment.email %>  </h5>
+        <h5> Made <%= time_ago_in_words(reply.created_at)%> ago </h5>
+        <% if @user.comments.include?(reply) %>
+          <%= link_to "Delete reply", comment_path(reply), method: :delete %>
+        <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+     <br></br>
+  <% end %>

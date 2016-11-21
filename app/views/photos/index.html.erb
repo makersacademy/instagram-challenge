@@ -1,0 +1,28 @@
+
+
+
+  <% unless @user.nil? %>
+  <%= link_to "Post a photo", controller: "photos", action: "new" %>
+  <br></br>
+    <% if @photos.any? %>
+      <% @photos.reverse.each do |photo|%>
+        <%= image_tag photo.image.url(:medium) %>
+        <h4> <%=  photo.caption %> </h4>
+        <% if @user.photos.include?(photo) %>
+          <%= link_to "Delete post", photo_path(photo), method: :delete %> <%= link_to "Edit post", edit_photo_path(photo) %>
+          <br></br>
+        <% end %>
+        <%= link_to "Comment", new_photo_comment_path(photo) %> <%= link_to "View Comments", comment_path(photo) %>
+        <br></br>
+        <h4><%= pluralize photo.reactions.count(:like), 'like' %>, <%= pluralize photo.reactions.count(:love), 'love' %>, <%= pluralize photo.reactions.count(:indifference), 'indifference' %></h4>
+        <% if @user.photos.include?(photo) %>
+          <h4> You can't react to your own photo ..... narcissist </h4>
+        <% else %>
+            <%= link_to "React to this post", new_photo_reaction_path(photo) %>
+        <% end %>
+        <br></br>
+      <% end %>
+    <% else %>
+      <h4> Be the first to post a photo </h4>
+    <% end %>
+  <% end %>
