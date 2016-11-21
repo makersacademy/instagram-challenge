@@ -1,0 +1,20 @@
+
+<% @pictures.each do |picture| %>
+  <p><%= picture.user.username %> posted: </p>
+  <%= image_tag picture.image.url(:square) %>
+  <%= form_for(@like, url: picture_likes_path(picture)) do |f| %>
+    <%= f.submit "Like", id: "likePic"+picture.id.to_s %>
+  <%end%>
+  <%= form_for(@comment, url: picture_comments_path(picture)) do |f| %>
+    <%= f.label "Comment" %>
+    <%= f.text_field :words, id: "words"+picture.id.to_s %>
+    <%= f.submit "Post Comment" %>
+  <%end%>
+  <% Like.where(picture_id: picture.id).to_a.each do |like| %>
+    <p> <%= like.user.username %> liked this! </p>
+  <%end%>
+  <% Comment.where(picture_id: picture.id).to_a.each do |comment| %>
+        <p> <%= comment.user.username %> commented... </p><br>
+        <p> <%= comment.words %>
+  <%end%>
+<%end%>
