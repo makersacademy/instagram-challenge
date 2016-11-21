@@ -12,6 +12,7 @@ Installation instructions
 $ git clone git@github.com:francesmx/instagram-challenge.git
 $ cd instagram-challenge
 $ bundle
+$ rake db:setup
 ````
 You can view tests:
 ````
@@ -20,8 +21,8 @@ $ rspec
 To play with the app using the web interface, start the server:
 ````
 $ rails server
+$ open http://localhost:3000
 ````
-then visit http://localhost:3000 in your browser.
 
 Screenshots
 ---------
