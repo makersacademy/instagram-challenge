@@ -1,0 +1,30 @@
+
+
+
+<% if @photos.any? %>
+  <% @photos.each do |photo| %>
+    <h2><%= photo.description %></h2>
+    <%= image_tag photo.image.url(:thumb) %>
+     <span class="likes_count"> <%= photo.likes.count %> </span> <%= 'like'.pluralize(photo.likes.count) %>
+    <%= link_to "Like", photo_likes_path(photo), class: 'likes-link' %>
+    <%= link_to "Delete", photo_path(photo), method: :delete %>
+    <%= link_to "Comment", new_photo_comment_path(photo) %>
+
+    <h3>Comments for <%= photo.description %></h3>
+
+    <% if photo.comments.any? %>
+      <ul>
+        <% photo.comments.each do |comment| %>
+          <li>
+            <%= comment.thoughts %>
+            <%= link_to "Delete comment", comment_path(comment), method: :delete %>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+  <% end %>
+<% else %>
+  <h1>No photos uploaded yet!</h1>
+<% end %>
+
+<a href='/photos/new'>Add a photo</a>
