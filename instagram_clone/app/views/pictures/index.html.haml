@@ -1,12 +1,14 @@
 - if @pictures.all.any?
   - @pictures.all.each do |pic|
     %h3
-      =pic.title
-    = image_tag pic.image.url(:thumb)
+      = link_to pic.title, picture_path(pic)
+    = link_to image_tag(pic.image.url(:thumb)), new_picture_like_path(pic)
     %p
-      =pic.description
-    -# %img(src='/images/#{pic.path}')
+      +
+      =pic.likes.size
+    - if current_user.id == pic.user_id
+      = link_to "Delete #{pic.title}", picture_path(pic), method: :delete
 - else
   %p You don't have any pictures yet
-
-%a(href='/pictures/new') Upload a picture
+%p
+  %a(href='/pictures/new') Upload a picture

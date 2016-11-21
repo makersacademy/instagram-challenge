@@ -1,4 +1,6 @@
 class PicturesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @pictures = Picture.all
   end
@@ -8,7 +10,22 @@ class PicturesController < ApplicationController
   end
 
   def create
-    Picture.create(pic_params)
+    @picture = current_user.pictures.build(pic_params)
+    if @picture.save
+      redirect_to "/"
+    else
+      render 'new'
+    end
+  end
+
+  def show
+    @picture = Picture.find(params[:id])
+  end
+
+  def destroy
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+    flash[:notice] = 'Picture deleted successfully'
     redirect_to '/'
   end
 
