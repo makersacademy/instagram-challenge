@@ -3,21 +3,49 @@ Instagram Challenge
 
 Instructions
 -------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Clone repo: https://github.com/KPobeeNorris/instagram-challenge.git
+* Bundle install
+* Gems incl. paperclip, aws, rails 4.2.7
+* App has been deployed to Heroku, but issues with images not saving to AWS as yet.
+* App has Facebook log in included, but not set for public access yet.
 
 Task
 -----
 
-Build Instagram: Simple huh!
+Build Instagram.
 
-Bonus if you can write your own set of sensible user stories!
+This weekend I also tried attempted to include CSS and styling for the first time!  It isn't the flashiest site, but I'm really proud of what I managed in a short time!
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+User stories
+----
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+```
+As a user,
+So that I can show off how amazing my life is;
+I want to be able to display my beautiful photos for the world to see.
 
-Bonus if you can add filters!
+As a user,
+So that I can check how popular I am
+I want to be able for people to 'like' my posts.
+
+As a user,  
+So others can enjoy my posts even more
+I want to be able to give them clearly clever captions; to make my chums chortle.
+
+
+As a user,  
+So I can ensure others really understand the deep and meaningful image of a bag blowing in the wind,
+I want to be able to give my posts a description
+
+As a user,
+I am incredibly busy taking very important  photos,
+So I want to be able to sign in via Facebook and save time not having to sign up to yet another website.
+
+As a user,  
+I need to know how iconic my posts are and know I have worth in my life,
+So I want other users to be able to leave comments on my posts.
+
+As a user,
+I want to be able to destroy posts
+So that of if in the future I decide that I really shouldn't have included that reeeeaalllllyyy drunk photo I can save face.
+```
