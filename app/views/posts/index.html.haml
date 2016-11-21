@@ -1,0 +1,29 @@
+- if user_signed_in?
+  = link_to "Sign out", destroy_user_session_path, method: :delete
+
+
+- if @posts.any?
+  - @posts.each do |post|
+    %div
+      %h3= post.caption
+      = image_tag post.image.url(:thumb)
+      %br
+      - post.comments.all.each do |comment|
+        %h5= @users.find_by_id(comment.user_id)
+        %h4= comment.text
+
+      = link_to 'Like', post_likes_path(post), class: 'likes-link'
+      %span.likes_count= post.likes.count
+      = 'like'.pluralize post.likes.count
+
+
+      - if post.user_id == current_user.id
+        =link_to 'Delete', post_path(post), method: :delete
+        =link_to 'Edit', edit_post_path(post)
+
+      = link_to 'Comment', new_post_comment_path(post)
+- else
+  %h2 no posts yet mate!
+%br
+
+= link_to 'Chuck up a photo', new_post_path
