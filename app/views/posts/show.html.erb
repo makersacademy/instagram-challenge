@@ -6,14 +6,18 @@
   <p><%= @post.created_at %></p>
   <p><%= @post.caption %></p>
   <p>Likes: <%= @post.likes.size %> | Dislikes: <%= @post.dislikes.size %> | Overall: <%= @post.rating %>
-  <p><%= link_to 'Delete post', post_path(@post.id), method: :delete %></p>
+  <% if @post.user == current_user %>
+    <p><%= link_to 'Delete post', post_path(@post.id), method: :delete %></p>
+  <% end %>
 </div>
 
 <% @comments.each do |cmt| %>
   <div class="comment">
     <p><%= cmt.comment %></p>
-    <p><%= cmt.user.name + ' at ' + cmt.created_at %></p>
-    <%= link_to 'Delete comment', post_comment_path(@post.id, cmt.id), method: :delete %> | <%= link_to 'Edit comment', edit_post_comment_path(@post.id, cmt.id) %>
+    <p><%= cmt.user.email %> at <%= cmt.created_at %></p>
+    <%  if cmt.user == current_user %>
+      <%= link_to 'Delete comment', post_comment_path(@post.id, cmt.id), method: :delete %> | <%= link_to 'Edit comment', edit_post_comment_path(@post.id, cmt.id) %>
+    <% end %>
   </div>
 <% end %>
 

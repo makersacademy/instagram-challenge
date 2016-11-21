@@ -1,24 +1,19 @@
-# README
+# Instakilo - like 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Built on Ruby version 2.3.1
 
-Things you may want to cover:
+###This app uses:
+* PostgreSQL
+* Devise
+* Omniauth-facebook
+* Paperclip
 
-* Ruby version
+###Features for all users:
+* View all posts and comments
 
-* System dependencies
+###Features when signed in
+* Post photos
+* Delete own posts
+* Like and dislike all photos
+* Comment on all photos
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

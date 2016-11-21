@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.new(comment_params)
+    @comment = @post.comments.new_with_user(comment_params, current_user)
     if @comment.save
       flash[:notice] = 'Your comment has been saved'
     else
