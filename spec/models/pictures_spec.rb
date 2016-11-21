@@ -28,6 +28,7 @@ describe Picture, type: :model do
     expect(picture).not_to be_valid
   end
 
+# Test function to prove that creation process is working.
   it "allows a 'picture' to be uploaded" do
     user = User.create(email: 'fred@freddy.co.uk', password: "secret",password_confirmation: "secret")
     gallery = Gallery.create(name: "GB favourites", user_id: user.id)
@@ -37,6 +38,3 @@ describe Picture, type: :model do
   end
 
 end
-
-
-# attach_file('picture_image', File.absolute_path('./spec/helpers/images/ducky.jpg'))
