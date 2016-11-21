@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InstagramClone</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <ul class="topnav">
+    <li><%= link_to 'Post a photo', new_photo_path %></li>
+    <li><a>My photos</a></li>
+    <li><a>Home</a></li>
+    <% if user_signed_in? %>
+      <li><a> <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a></li>
+    <% else %>
+      <li><a><%= link_to "Sign in", new_user_session_path %></a></li>
+      <li><a><%= link_to "Sign up", new_user_registration_path %></a></li>
+    <% end %>
+    </user>
+    <li class="icon">
+      <a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
+    </li>
+  </ul>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+</body>
+</html>

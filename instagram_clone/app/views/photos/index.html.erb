@@ -1,0 +1,35 @@
+
+<% if @photos.empty? %>
+  <%= 'No photos to show :(' %>
+<% else %>
+  <% @photos.reverse_each do |photo| %>
+  <div class="post">
+    <center>
+    <div class='container'>
+    <p class="alignleft">
+      'username'
+    </p>
+    <p class="alignright">
+      <%= link_to "edit", edit_photo_path(photo) %>
+      <%= link_to "delete", photo_path(photo), method: :delete %>
+    </p>
+    <p class="alignright"> </p>
+      <center>
+        <%= link_to(image_tag("#{photo.image}", :alt => "pic", :width => 250, :height => 250), new_photo_comment_path(photo)) %>
+      </center><br>
+          <p class="alignleft">
+            <img src="locationpin.png" height='10' width='10'>
+            <%= photo.location %>
+          </p>
+          <p class="alignright"><%= time_ago_in_words(photo.created_at) %> ago</p>
+        <br>
+          <div style="clear: both;">
+          <p class="desc-alignleft"><%= photo.description %></p>
+          <p class="alignright"><%= link_to pluralize(photo.comments.count, 'comment'), new_photo_comment_path(photo) %><br>
+          </p>
+    </div><br>
+    </div>
+    </center>
+  </div>
+  <% end %>
+<% end %>

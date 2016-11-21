@@ -1,0 +1,38 @@
+<center>
+  <div class='container'>
+    <p class="alignleft">
+      'username'
+    </p>
+    <p class="alignright"> </p>
+      <center>
+          <img src= "<%= @photo.image %>" class="post">
+      </center><br>
+          <p class="alignleft">
+            <img src="./public/locationpin.png" height='10' width='10'>
+            <%= @photo.location %>
+          </p>
+          <p class="alignright"><%= time_ago_in_words(@photo.created_at) %> ago</p>
+        <br>
+          <div style="clear: both;">
+          <p class="desc-alignleft"><%= @photo.description %></p><br>
+          <div style="clear: both;">
+          <p class="alignleft">
+          <%= form_for [@photo, @comment] do |field| %>
+            <%= field.label :comment, class: 'hidden' %>
+            <%= field.text_field :comment %>
+            <%= field.submit 'comment' %>
+          <% end %>
+          </p>
+          <div style="clear: both;">
+          <p class="desc-alignleft">
+            <% @photo.comments.each do |comment| %>
+            <p class="alignleft">
+              <%= comment.comment %>
+            </p>
+            <p class="alignright">
+              <%= time_ago_in_words(comment.created_at) %> ago
+            </p>
+            <% end %>
+    </div><br>
+  </div>
+</center>
