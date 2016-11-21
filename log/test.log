@@ -20025,3 +20025,1716 @@ Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.8ms)
   [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "likes" DISABLE TRIGGER ALL;ALTER TABLE "comments" DISABLE TRIGGER ALL;ALTER TABLE "pictures" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+            tablename <> 'schema_migrations' AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.2ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'instagram_test'[0m
+  [1m[35m (11.6ms)[0m  [1m[35mTRUNCATE TABLE "public"."ar_internal_metadata", "public"."users", "public"."likes", "public"."comments", "public"."pictures" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "likes" ENABLE TRIGGER ALL;ALTER TABLE "comments" ENABLE TRIGGER ALL;ALTER TABLE "pictures" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:38:00 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 7574ms (Views: 7551.3ms | ActiveRecord: 3.4ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:38:07 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f860c279860 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35693-1k9gjee.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-ryw8c0.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-eh4hqp.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-eh4hqp.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-eh4hqp.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/6cd69492074992b9aa7cd9cd8b3a760220161120-35693-4nmgbe'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-eh4hqp.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-eh4hqp.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-eh4hqp.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/6cd69492074992b9aa7cd9cd8b3a760220161120-35693-s4068u'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-10xg0om.jpg'
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:38:07 UTC], ["updated_at", 2016-11-20 12:38:07 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:38:07 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 282ms (ActiveRecord: 1.0ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:07 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 39ms (Views: 35.1ms | ActiveRecord: 2.9ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:07 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.8ms)
+Started GET "/pictures/1/comments/new" for 127.0.0.1 at 2016-11-20 12:38:07 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"1"}
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 17ms (Views: 7.4ms | ActiveRecord: 1.3ms)
+Started POST "/pictures/1/comments" for 127.0.0.1 at 2016-11-20 12:38:07 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"Great photo huni"}, "commit"=>"Post Comment", "picture_id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("body", "created_at", "updated_at", "picture_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "Great photo huni"], ["created_at", 2016-11-20 12:38:08 UTC], ["updated_at", 2016-11-20 12:38:08 UTC], ["picture_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 7ms (ActiveRecord: 1.1ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 11ms (Views: 8.9ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f860dfa7040 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35693-1xli5mv.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-131khv5.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1nsjlkd.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1nsjlkd.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1nsjlkd.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/4cbcd90235bce1fb551b327fd28b34ab20161120-35693-ta3tp3'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1nsjlkd.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1nsjlkd.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1nsjlkd.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/4cbcd90235bce1fb551b327fd28b34ab20161120-35693-36j8kt'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-ayx8zn.jpg'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:38:08 UTC], ["updated_at", 2016-11-20 12:38:08 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:38:08 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 265ms (ActiveRecord: 0.6ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 2]]
+  Rendered pictures/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.8ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 2]]
+  Rendered pictures/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 13ms (Views: 10.7ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f8617863ae0 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35693-r9hrnx.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1hmxisu.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-s6znff.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-s6znff.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-s6znff.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/24e653439c0d61a41fc0353e0e4d5a5620161120-35693-ow2ssl'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-s6znff.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-s6znff.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-s6znff.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/24e653439c0d61a41fc0353e0e4d5a5620161120-35693-74v54t'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-ho73zq.jpg'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:38:08 UTC], ["updated_at", 2016-11-20 12:38:08 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:38:08 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 261ms (ActiveRecord: 0.7ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 14ms (Views: 11.3ms | ActiveRecord: 1.1ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 12ms (Views: 9.8ms | ActiveRecord: 0.9ms)
+Started POST "/pictures/3/likes" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"picture_id"=>"3"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "likes" ("picture_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["picture_id", 3], ["created_at", 2016-11-20 12:38:08 UTC], ["updated_at", 2016-11-20 12:38:08 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 10ms (ActiveRecord: 2.1ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 11ms (Views: 8.5ms | ActiveRecord: 0.7ms)
+Started POST "/pictures/3/likes" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"picture_id"=>"3"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "likes" ("picture_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["picture_id", 3], ["created_at", 2016-11-20 12:38:08 UTC], ["updated_at", 2016-11-20 12:38:08 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "asda@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "rick"], ["email", "asda@example.com"], ["created_at", 2016-11-20 12:38:08 UTC], ["updated_at", 2016-11-20 12:38:08 UTC], ["password_digest", "$2a$04$93kPqERWr4W3tlfMRMAqlONo1PbWtwXLx8tNS76P7.dcjVnvG0CbO"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Loch Lomond"], ["created_at", 2016-11-20 12:38:08 UTC], ["updated_at", 2016-11-20 12:38:08 UTC], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 4]]
+  Rendered pictures/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.2ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:38:08 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f860db33388 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35693-1nuw8wq.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-yap5gu.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1k0fgwe.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1k0fgwe.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1k0fgwe.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/72f3518ca89461b586a3566125aa544820161120-35693-1bq9fg0'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1k0fgwe.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1k0fgwe.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1k0fgwe.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/72f3518ca89461b586a3566125aa544820161120-35693-1ktdzmj'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35693-1nfhjs1.jpg'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:38:09 UTC], ["updated_at", 2016-11-20 12:38:09 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:38:08 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 260ms (ActiveRecord: 0.6ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:09 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 5]]
+  Rendered pictures/index.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 13ms (Views: 10.8ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "asda@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "rick"], ["email", "asda@example.com"], ["created_at", 2016-11-20 12:38:09 UTC], ["updated_at", 2016-11-20 12:38:09 UTC], ["password_digest", "$2a$04$nzicyc9fHu295dDTC1SQ0etZnMf3DsRGCXZEmnecO3nezUr2LySUi"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Loch Lomond"], ["created_at", 2016-11-20 12:38:09 UTC], ["updated_at", 2016-11-20 12:38:09 UTC], ["user_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:09 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 6]]
+  Rendered pictures/index.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.7ms)
+Started GET "/pictures/6" for 127.0.0.1 at 2016-11-20 12:38:09 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:09 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 6]]
+  Rendered pictures/index.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", " "], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "USER@foo.COM"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "A_US-ER@foo.bar.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "first.last@foo.jp"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "alice+bob@baz.cn"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example,com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user_at_foo.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user.name@example."], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "foo@bar_baz.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "foo@bar+baz.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "foo@bar..com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Example User"], ["email", "user@example.com"], ["created_at", 2016-11-20 12:38:09 UTC], ["updated_at", 2016-11-20 12:38:09 UTC], ["password_digest", "$2a$04$/.1UwPLAhkYXvg9ugMh.GeiUChhfOEsSsVUzoM0aMsNtc0z7N/bEC"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "USER@EXAMPLE.COM"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "Foo@ExAMPle.CoM"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Example User"], ["email", "foo@example.com"], ["created_at", 2016-11-20 12:38:09 UTC], ["updated_at", 2016-11-20 12:38:09 UTC], ["password_digest", "$2a$04$K8a4SAsh2UBxyYz303lQ6.n8AZlvukaqRhUnd2mxTul8QyTtS1DEm"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "likes" DISABLE TRIGGER ALL;ALTER TABLE "comments" DISABLE TRIGGER ALL;ALTER TABLE "pictures" DISABLE TRIGGER ALL[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+            tablename <> 'schema_migrations' AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'instagram_test'[0m
+  [1m[35m (9.1ms)[0m  [1m[35mTRUNCATE TABLE "public"."ar_internal_metadata", "public"."users", "public"."likes", "public"."comments", "public"."pictures" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "likes" ENABLE TRIGGER ALL;ALTER TABLE "comments" ENABLE TRIGGER ALL;ALTER TABLE "pictures" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:38:16 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 202ms (Views: 179.4ms | ActiveRecord: 3.7ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:38:17 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fcc121fb1f8 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35749-1mnl9c3.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-15w76kj.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-ne68ak.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-ne68ak.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-ne68ak.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/f81ccbbc24beb4ff26ffa6739de07aac20161120-35749-1hnaufu'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-ne68ak.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-ne68ak.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-ne68ak.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/f81ccbbc24beb4ff26ffa6739de07aac20161120-35749-1cgy3bw'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-17me381.jpg'
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:38:17 UTC], ["updated_at", 2016-11-20 12:38:17 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:38:17 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 273ms (ActiveRecord: 1.1ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:17 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (34.1ms)
+Completed 200 OK in 40ms (Views: 34.7ms | ActiveRecord: 3.7ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:17 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 12ms (Views: 9.4ms | ActiveRecord: 1.1ms)
+Started GET "/pictures/1/comments/new" for 127.0.0.1 at 2016-11-20 12:38:17 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"1"}
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 17ms (Views: 7.7ms | ActiveRecord: 1.3ms)
+Started POST "/pictures/1/comments" for 127.0.0.1 at 2016-11-20 12:38:17 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"Great photo huni"}, "commit"=>"Post Comment", "picture_id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("body", "created_at", "updated_at", "picture_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "Great photo huni"], ["created_at", 2016-11-20 12:38:17 UTC], ["updated_at", 2016-11-20 12:38:17 UTC], ["picture_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 8ms (ActiveRecord: 1.1ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:17 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (34.9ms)
+Completed 200 OK in 41ms (Views: 38.6ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:38:17 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 11ms (Views: 8.9ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:38:17 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fcc0dc69608 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35749-1ioyf3d.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-16p92gx.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-18l6sn7.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-18l6sn7.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-18l6sn7.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/4b5fe68a9d6f2585b6a2581ddb528f2920161120-35749-thkpy5'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-18l6sn7.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-18l6sn7.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-18l6sn7.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/4b5fe68a9d6f2585b6a2581ddb528f2920161120-35749-1emk5ik'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-1d4xlxd.jpg'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:38:17 UTC], ["updated_at", 2016-11-20 12:38:17 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:38:17 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 256ms (ActiveRecord: 0.7ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:17 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 2]]
+  Rendered pictures/index.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 15ms (Views: 12.0ms | ActiveRecord: 1.1ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:17 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 2]]
+  Rendered pictures/index.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:38:17 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:38:17 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fcc120c5ce8 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35749-26g2ck.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-b4182z.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-qkhlhn.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-qkhlhn.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-qkhlhn.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/404a91046ed758415f60704e7507644620161120-35749-h9cpn3'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-qkhlhn.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-qkhlhn.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-qkhlhn.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/404a91046ed758415f60704e7507644620161120-35749-1shmxfn'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-1yif7pb.jpg'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:38:18 UTC], ["updated_at", 2016-11-20 12:38:18 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:38:17 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 261ms (ActiveRecord: 0.7ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.8ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 13ms (Views: 10.7ms | ActiveRecord: 0.9ms)
+Started POST "/pictures/3/likes" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"picture_id"=>"3"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "likes" ("picture_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["picture_id", 3], ["created_at", 2016-11-20 12:38:18 UTC], ["updated_at", 2016-11-20 12:38:18 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 16ms (ActiveRecord: 2.4ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.8ms)
+Started POST "/pictures/3/likes" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"picture_id"=>"3"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "likes" ("picture_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["picture_id", 3], ["created_at", 2016-11-20 12:38:18 UTC], ["updated_at", 2016-11-20 12:38:18 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "asda@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "rick"], ["email", "asda@example.com"], ["created_at", 2016-11-20 12:38:18 UTC], ["updated_at", 2016-11-20 12:38:18 UTC], ["password_digest", "$2a$04$BM2.xKFdOmcnb1sAN4m/p.KcrUTW/fE7BwDPgiwq5Y8Kbdi0Yvf8q"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Loch Lomond"], ["created_at", 2016-11-20 12:38:18 UTC], ["updated_at", 2016-11-20 12:38:18 UTC], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 4]]
+  Rendered pictures/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 14ms (Views: 10.8ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 10ms (Views: 7.7ms | ActiveRecord: 0.3ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 9ms (Views: 6.8ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fcc12463170 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35749-s0aa7x.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-hqv60u.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-1om6306.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-1om6306.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-1om6306.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/17ca1880d04facf1e2cd7b1a5a0d4c4420161120-35749-67i0t8'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-1om6306.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-1om6306.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-1om6306.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/17ca1880d04facf1e2cd7b1a5a0d4c4420161120-35749-e8plbp'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35749-wtpfpm.jpg'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:38:18 UTC], ["updated_at", 2016-11-20 12:38:18 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:38:18 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 259ms (ActiveRecord: 0.7ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 5]]
+  Rendered pictures/index.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "asda@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "rick"], ["email", "asda@example.com"], ["created_at", 2016-11-20 12:38:18 UTC], ["updated_at", 2016-11-20 12:38:18 UTC], ["password_digest", "$2a$04$ocvbkVyhMK5y0jZ06pWNSuXXORi53ULwviDiB0o9DXDMVfnSzf0w2"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Loch Lomond"], ["created_at", 2016-11-20 12:38:18 UTC], ["updated_at", 2016-11-20 12:38:18 UTC], ["user_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 6]]
+  Rendered pictures/index.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 12ms (Views: 9.9ms | ActiveRecord: 0.9ms)
+Started GET "/pictures/6" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 0.3ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 6]]
+  Rendered pictures/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/signup" for 127.0.0.1 at 2016-11-20 12:38:18 +0000
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", " "], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "USER@foo.COM"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "A_US-ER@foo.bar.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "first.last@foo.jp"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "alice+bob@baz.cn"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example,com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user_at_foo.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user.name@example."], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "foo@bar_baz.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "foo@bar+baz.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "foo@bar..com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Example User"], ["email", "user@example.com"], ["created_at", 2016-11-20 12:38:18 UTC], ["updated_at", 2016-11-20 12:38:18 UTC], ["password_digest", "$2a$04$KhMFPyI55txtKZa3wB9z2.ttdKobUzhua3e3DMK396YgM3NMuR9he"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "USER@EXAMPLE.COM"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "Foo@ExAMPle.CoM"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Example User"], ["email", "foo@example.com"], ["created_at", 2016-11-20 12:38:18 UTC], ["updated_at", 2016-11-20 12:38:18 UTC], ["password_digest", "$2a$04$iloWkvPwIRrU0hZjXlpRJeOpgIGF.l4jLT0hM8TosfnspIFV5imJy"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "likes" DISABLE TRIGGER ALL;ALTER TABLE "comments" DISABLE TRIGGER ALL;ALTER TABLE "pictures" DISABLE TRIGGER ALL[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+            tablename <> 'schema_migrations' AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'instagram_test'[0m
+  [1m[35m (11.4ms)[0m  [1m[35mTRUNCATE TABLE "public"."ar_internal_metadata", "public"."users", "public"."likes", "public"."comments", "public"."pictures" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "likes" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "comments" ENABLE TRIGGER ALL;ALTER TABLE "pictures" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:39:31 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 208ms (Views: 185.2ms | ActiveRecord: 3.3ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:39:32 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007ff769c7aa20 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35820-9ni660.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-1b72nkp.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-d8966.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-d8966.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-d8966.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/b8ba55074e2b9e8e3f7a62ef746dde1220161120-35820-1bmwlhe'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-d8966.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-d8966.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-d8966.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/b8ba55074e2b9e8e3f7a62ef746dde1220161120-35820-1l6e0yc'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-1q269a5.jpg'
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:39:32 UTC], ["updated_at", 2016-11-20 12:39:32 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:39:32 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 281ms (ActiveRecord: 0.9ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:32 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (36.3ms)
+Completed 200 OK in 43ms (Views: 37.6ms | ActiveRecord: 3.5ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:32 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 10ms (Views: 8.4ms | ActiveRecord: 0.8ms)
+Started GET "/pictures/1/comments/new" for 127.0.0.1 at 2016-11-20 12:39:32 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"1"}
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 18ms (Views: 8.4ms | ActiveRecord: 1.4ms)
+Started POST "/pictures/1/comments" for 127.0.0.1 at 2016-11-20 12:39:32 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"Great photo huni"}, "commit"=>"Post Comment", "picture_id"=>"1"}
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("body", "created_at", "updated_at", "picture_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "Great photo huni"], ["created_at", 2016-11-20 12:39:32 UTC], ["updated_at", 2016-11-20 12:39:32 UTC], ["picture_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 7ms (ActiveRecord: 1.1ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:32 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (33.2ms)
+Completed 200 OK in 38ms (Views: 35.8ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:39:32 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:39:32 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007ff76fccfb28 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35820-1gvbkgr.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-1fpayqe.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-qlq84z.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-qlq84z.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-qlq84z.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/33ebab0f115c93b100c6d2a6092d175320161120-35820-1vl979h'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-qlq84z.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-qlq84z.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-qlq84z.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/33ebab0f115c93b100c6d2a6092d175320161120-35820-17vtx5e'
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-8gh5ty.jpg'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:39:32 UTC], ["updated_at", 2016-11-20 12:39:32 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:39:32 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 267ms (ActiveRecord: 0.6ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:32 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 2]]
+  Rendered pictures/index.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 14ms (Views: 11.7ms | ActiveRecord: 1.0ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:32 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 2]]
+  Rendered pictures/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 11ms (Views: 9.1ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:39:32 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:39:32 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007ff76a6c0e08 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35820-1k6ejlh.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-8bhqr6.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-r0bp0c.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-r0bp0c.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-r0bp0c.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/c8ae8a377a26ad966c58e23ce4c702c720161120-35820-1pjkpr2'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-r0bp0c.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-r0bp0c.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-r0bp0c.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/c8ae8a377a26ad966c58e23ce4c702c720161120-35820-1txhdne'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-tj4kdw.jpg'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:39:33 UTC], ["updated_at", 2016-11-20 12:39:33 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:39:32 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 275ms (ActiveRecord: 0.6ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 0.9ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 14ms (Views: 10.9ms | ActiveRecord: 0.9ms)
+Started POST "/pictures/3/likes" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"picture_id"=>"3"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "likes" ("picture_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["picture_id", 3], ["created_at", 2016-11-20 12:39:33 UTC], ["updated_at", 2016-11-20 12:39:33 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 14ms (ActiveRecord: 2.1ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 16ms (Views: 12.9ms | ActiveRecord: 0.8ms)
+Started POST "/pictures/3/likes" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"picture_id"=>"3"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "likes" ("picture_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["picture_id", 3], ["created_at", 2016-11-20 12:39:33 UTC], ["updated_at", 2016-11-20 12:39:33 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 21ms (Views: 18.3ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "asda@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "rick"], ["email", "asda@example.com"], ["created_at", 2016-11-20 12:39:33 UTC], ["updated_at", 2016-11-20 12:39:33 UTC], ["password_digest", "$2a$04$NFz27I9aZULjH8UAb8EBZO7HIm7BnxoSd5X3UZFyQP/1IaegWnSw."]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Loch Lomond"], ["created_at", 2016-11-20 12:39:33 UTC], ["updated_at", 2016-11-20 12:39:33 UTC], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 4]]
+  Rendered pictures/index.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 15ms (Views: 12.2ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.3ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007ff76fc7c900 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35820-13695nt.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-11jtwgv.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-1ne1kso.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-1ne1kso.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-1ne1kso.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/bfdf6f84fe8fee262adf91877d34a0a320161120-35820-14wx0pg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-1ne1kso.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-1ne1kso.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-1ne1kso.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/bfdf6f84fe8fee262adf91877d34a0a320161120-35820-853v6h'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35820-16xx3ng.jpg'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:39:33 UTC], ["updated_at", 2016-11-20 12:39:33 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:39:33 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 265ms (ActiveRecord: 0.6ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 5]]
+  Rendered pictures/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 21ms (Views: 17.9ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "asda@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "rick"], ["email", "asda@example.com"], ["created_at", 2016-11-20 12:39:33 UTC], ["updated_at", 2016-11-20 12:39:33 UTC], ["password_digest", "$2a$04$3stAo1.fSqQLEoU69UMO/.w4EcppmsAZH7NyUbRlAc3O2Ux7S4f3G"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Loch Lomond"], ["created_at", 2016-11-20 12:39:33 UTC], ["updated_at", 2016-11-20 12:39:33 UTC], ["user_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 6]]
+  Rendered pictures/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.8ms)
+Started GET "/pictures/6" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 0.3ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 6]]
+  Rendered pictures/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/signup" for 127.0.0.1 at 2016-11-20 12:39:33 +0000
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", " "], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "USER@foo.COM"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "A_US-ER@foo.bar.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "first.last@foo.jp"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "alice+bob@baz.cn"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example,com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user_at_foo.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user.name@example."], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "foo@bar_baz.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "foo@bar+baz.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "foo@bar..com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Example User"], ["email", "user@example.com"], ["created_at", 2016-11-20 12:39:33 UTC], ["updated_at", 2016-11-20 12:39:33 UTC], ["password_digest", "$2a$04$D4jyYE8Z6h3etpNJi2e.oecytDQESoUAeLey7xsGwGqrl3cOMh1LK"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "USER@EXAMPLE.COM"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "Foo@ExAMPle.CoM"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Example User"], ["email", "foo@example.com"], ["created_at", 2016-11-20 12:39:33 UTC], ["updated_at", 2016-11-20 12:39:33 UTC], ["password_digest", "$2a$04$caFEE0XurMHobCxEV6P5UO2hYm8ln7uCxIWpLXSuVJWpu49znmOUW"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "likes" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "comments" DISABLE TRIGGER ALL;ALTER TABLE "pictures" DISABLE TRIGGER ALL[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+            tablename <> 'schema_migrations' AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'instagram_test'[0m
+  [1m[35m (12.3ms)[0m  [1m[35mTRUNCATE TABLE "public"."ar_internal_metadata", "public"."users", "public"."likes", "public"."comments", "public"."pictures" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "likes" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "comments" ENABLE TRIGGER ALL;ALTER TABLE "pictures" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:40:25 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 197ms (Views: 175.3ms | ActiveRecord: 2.8ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:40:25 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fcbe1d6f9e8 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35879-7k2qsi.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-cuol5a.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-111zguv.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-111zguv.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-111zguv.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/75f3d5cd36e30fec0086a84c658f76e420161120-35879-1iko1fb'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-111zguv.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-111zguv.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-111zguv.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/75f3d5cd36e30fec0086a84c658f76e420161120-35879-yyzkgs'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-z2hyy2.jpg'
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:40:25 UTC], ["updated_at", 2016-11-20 12:40:25 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:40:25 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 270ms (ActiveRecord: 1.0ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:25 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (33.1ms)
+Completed 200 OK in 38ms (Views: 33.9ms | ActiveRecord: 3.1ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:25 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 0.8ms)
+Started GET "/pictures/1/comments/new" for 127.0.0.1 at 2016-11-20 12:40:25 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"1"}
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 16ms (Views: 7.2ms | ActiveRecord: 1.2ms)
+Started POST "/pictures/1/comments" for 127.0.0.1 at 2016-11-20 12:40:25 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "comment"=>{"body"=>"Great photo huni"}, "commit"=>"Post Comment", "picture_id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "comments" ("body", "created_at", "updated_at", "picture_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "Great photo huni"], ["created_at", 2016-11-20 12:40:25 UTC], ["updated_at", 2016-11-20 12:40:25 UTC], ["picture_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 8ms (ActiveRecord: 1.2ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:25 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/index.html.erb within layouts/application (39.3ms)
+Completed 200 OK in 45ms (Views: 42.3ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fcbe99bb7b8 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35879-1d2oho8.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-10lrks1.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1xaedzq.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1xaedzq.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1xaedzq.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/d94a91bebeab46e05bb24c24cbfe609b20161120-35879-1xgegag'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1xaedzq.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1xaedzq.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1xaedzq.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/d94a91bebeab46e05bb24c24cbfe609b20161120-35879-1i7jss2'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-9o65nz.jpg'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:40:26 UTC], ["updated_at", 2016-11-20 12:40:26 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:40:26 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 260ms (ActiveRecord: 0.6ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 2]]
+  Rendered pictures/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 13ms (Views: 10.8ms | ActiveRecord: 1.0ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 2]]
+  Rendered pictures/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fcbe1c2deb8 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35879-1m9ivst.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1zf1vb.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1183xmw.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1183xmw.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1183xmw.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/55f7242adfc55fce55a7345f8b8d667820161120-35879-1mg1wi'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1183xmw.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1183xmw.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1183xmw.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/55f7242adfc55fce55a7345f8b8d667820161120-35879-ddsioe'
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1vbxsjx.jpg'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:40:26 UTC], ["updated_at", 2016-11-20 12:40:26 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:40:26 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 259ms (ActiveRecord: 0.6ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 13ms (Views: 10.6ms | ActiveRecord: 0.9ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 14ms (Views: 11.4ms | ActiveRecord: 1.0ms)
+Started POST "/pictures/3/likes" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"picture_id"=>"3"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "likes" ("picture_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["picture_id", 3], ["created_at", 2016-11-20 12:40:26 UTC], ["updated_at", 2016-11-20 12:40:26 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 14ms (ActiveRecord: 2.2ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.9ms)
+Started POST "/pictures/3/likes" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by LikesController#create as HTML
+  Parameters: {"picture_id"=>"3"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "likes" ("picture_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["picture_id", 3], ["created_at", 2016-11-20 12:40:26 UTC], ["updated_at", 2016-11-20 12:40:26 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered pictures/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 18ms (Views: 15.9ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "asda@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "rick"], ["email", "asda@example.com"], ["created_at", 2016-11-20 12:40:26 UTC], ["updated_at", 2016-11-20 12:40:26 UTC], ["password_digest", "$2a$04$R0ha67c2ZzgGkySBdlM4detEx/mh5A7tBDrdcIjW.zSFBnztiYGI2"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Loch Lomond"], ["created_at", 2016-11-20 12:40:26 UTC], ["updated_at", 2016-11-20 12:40:26 UTC], ["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 4]]
+  Rendered pictures/index.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.3ms)
+Started GET "/pictures/new" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+Started POST "/pictures" for 127.0.0.1 at 2016-11-20 12:40:26 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "picture"=>{"description"=>"Loch Hope", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fcbe98b0b20 @tempfile=#<Tempfile:/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/RackMultipart20161120-35879-frnipi.jpg>, @original_filename="photo.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"photo.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 184582\r\n">}, "commit"=>"Upload Picture"}
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1q5qk3z.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-l8o54h.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-l8o54h.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-l8o54h.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/9a05bcc024aca572a695778112c271eb20161120-35879-1vdxsbi'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-l8o54h.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-l8o54h.jpg[0]'
+Command :: convert '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-l8o54h.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/9a05bcc024aca572a695778112c271eb20161120-35879-na51db'
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+Command :: file -b --mime '/var/folders/q7/7fcbt6811bjd5z9syzvrcjwr0000gn/T/5ae0c1c8a5260bc7b6648f6fbd115c3520161120-35879-1nj74ma.jpg'
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["description", "Loch Hope"], ["created_at", 2016-11-20 12:40:27 UTC], ["updated_at", 2016-11-20 12:40:27 UTC], ["image_file_name", "photo.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 184582], ["image_updated_at", 2016-11-20 12:40:26 UTC]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/pictures
+Completed 302 Found in 262ms (ActiveRecord: 0.7ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:27 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 5]]
+  Rendered pictures/index.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 18ms (Views: 15.6ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "asda@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "rick"], ["email", "asda@example.com"], ["created_at", 2016-11-20 12:40:27 UTC], ["updated_at", 2016-11-20 12:40:27 UTC], ["password_digest", "$2a$04$wNPuimBJL5ioCTFS5Woc2uBB5YPZZXhv/esVGlbFYewNr/g4VbwUW"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Loch Lomond"], ["created_at", 2016-11-20 12:40:27 UTC], ["updated_at", 2016-11-20 12:40:27 UTC], ["user_id", 2]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:27 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 6]]
+  Rendered pictures/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.8ms)
+Started GET "/pictures/6" for 127.0.0.1 at 2016-11-20 12:40:27 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 0.2ms)
+Started GET "/pictures" for 127.0.0.1 at 2016-11-20 12:40:27 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mComment Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."picture_id" = $1[0m  [["picture_id", 6]]
+  Rendered pictures/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/signup" for 127.0.0.1 at 2016-11-20 12:40:27 +0000
+Processing by UsersController#new as HTML
+Completed 406 Not Acceptable in 50ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", " "], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "USER@foo.COM"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "A_US-ER@foo.bar.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "first.last@foo.jp"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "alice+bob@baz.cn"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example,com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user_at_foo.org"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user.name@example."], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "foo@bar_baz.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "foo@bar+baz.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "foo@bar..com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Example User"], ["email", "user@example.com"], ["created_at", 2016-11-20 12:40:27 UTC], ["updated_at", 2016-11-20 12:40:27 UTC], ["password_digest", "$2a$04$KUF.6uRbPYiR56EJU/.8U.gnJhFQ7TROsA5BnPqWfubtp5CisVLPC"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "USER@EXAMPLE.COM"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "Foo@ExAMPle.CoM"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Example User"], ["email", "foo@example.com"], ["created_at", 2016-11-20 12:40:27 UTC], ["updated_at", 2016-11-20 12:40:27 UTC], ["password_digest", "$2a$04$Rw33ZaKLY4v5XVDvLdjM5etZJ2cEjo16O/F2/kbVzHfV8rZ/3Z35m"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
