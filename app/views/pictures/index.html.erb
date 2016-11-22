@@ -1,0 +1,10 @@
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <%= image_tag picture.image.url(:medium) %>
+    <p><%= link_to picture.description, picture_path(picture)%></p>
+    <p><%= link_to "Leave Comment", new_picture_comment_path(picture)%></p>
+  <% end %>
+<% else %>
+  No pictures yet
+<% end %>
+<%= link_to "Add a picture", new_picture_path %>
