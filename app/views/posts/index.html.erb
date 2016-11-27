@@ -1,0 +1,37 @@
+<div class="title">
+    <span style="font-size:30px;">List of Posts
+        <a href="/posts/new" , style="display:inline-block;" , class="btn btn-success">Add a post</a>
+    </span>
+</div>
+<% if @posts.any? %>
+<div class='posts-wrapper row'>
+    <% @posts.reverse.each do |post| %>
+    <div class='post'>
+        <div class='post-head'>
+            <div class="username">
+                <p>Posted by <%= post.user.username %></p>
+            </div>
+        </div>
+        <div class='image center-block'>
+            <%= link_to post_path(post) do %>
+            <%= image_tag post.image.url(:medium), class: "img-responsive" %>
+            <% end %>
+            <div class="name">
+                <%= post.name %>
+            </div>
+            <% if current_user.id == post.user.id %>
+            <div class="buttons">
+                <%= link_to 'Edit', edit_post_path(post) %>
+                |
+                <%= link_to 'Delete', post_path(post), method: :delete %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+    <% end %>
+</div>
+<% else %>
+<p>
+    No posts yet
+</p>
+<% end %>
