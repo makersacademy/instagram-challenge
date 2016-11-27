@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :pictures
+  validates :user_name, presence: true, uniqueness: true, length: { minimum: 4, maximum: 16 }
+
+  has_many :pictures, dependent: :destroy
   has_many :comments
   has_many :commented_pictures, through: :comments, source: :picture
   devise :database_authenticatable, :registerable,

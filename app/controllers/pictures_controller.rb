@@ -1,7 +1,8 @@
 class PicturesController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
-
+  before_action :owned_post, only: [:edit, :update, :destroy]
+  
   def index
     @pictures = Picture.all
   end
@@ -46,5 +47,12 @@ private
 
   def picture_params
     params.require(:picture).permit(:image, :caption, :user_id)
+  end
+
+  def owned_post
+    unless current_user == @post.user
+      flash[:alert] = "That post doesn't belong to you!"
+      redirect_to root_path
+    end
   end
 end

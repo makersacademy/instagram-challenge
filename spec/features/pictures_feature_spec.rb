@@ -37,7 +37,7 @@ feature 'pictures' do
   context 'pictures have been added' do
     before do
       @user = create(:user)
-      @picture = create(:picture)
+      @picture = attach_file "Image", "spec/files/pictures/picture.jpg"
     end
     scenario 'displays the pictures' do
       visit '/'

@@ -8,13 +8,20 @@
       <% if picture.comments.any? %>
         <% picture.comments.each do |comment| %>
           <p><%= comment.comment_text %></p>
+          <% if comment.user == current_user %>
+            <%= link_to "Delete", picture_comment_path(picture, comment), method: :delete %>
+          <% end %>
         <% end %>
       <% end %>
-      <%= link_to "Comment", new_picture_comment_path(picture) %>
+      <%= form_for [picture, picture.comments.new] do |f| %>
+        <%= f.text_field :comment_text, placeholder: 'Add a comment' %>
+        <%= f.submit 'Comment' %>
+      <% end %><br>
   </div>
   <% end %>
 <% else %>
   <h1>No pictures yet :(</h1>
 <% end %>
-
+<% if user_signed_in? %>
 <%= link_to "Post a picture", new_picture_path %>
+<% end %>
