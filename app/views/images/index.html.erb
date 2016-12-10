@@ -1,0 +1,41 @@
+<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+<% if @images.any? %>
+  <ul>
+    <% @images.reverse.each do |image| %>
+      <ul class="post">
+        <%= image_tag image.image.url(:large) %>
+        <% if image.belongs_to_user?(current_user) %>
+        <p><%= link_to 'Edit', edit_image_path(image) %></p>
+        <p><%= link_to 'Delete', image_path(image), method: :delete %>
+          <% else %>
+          <p></p>
+          <% end %>
+          <p id="caption">
+            <%= image.caption %>
+          </p>
+          <p class="likescount">
+        <%= link_to 'Like', image_likes_path(image), class: 'likes-link' %>
+        <i class="em em-heart"></i>
+        <span class='likes_count'><%= image.likes.count %> </span> <%= 'Likes'.pluralize(image.likes.count) %>
+      </p>
+
+          <% if image.comments.any? %>
+            <p id="comments">
+              <ul>
+              <% image.comments.each do |comment| %>
+                <ul>
+                <%= comment.comments %>
+                </ul>
+              <% end %>
+            </ul>
+          </p>
+          <% else %>
+            <p> </p>
+          <% end %>
+        <%= link_to 'Add a comment...', new_image_comment_path(image) %>
+      </ul>
+    <% end %>
+  </ul>
+<% else %>
+  No images yet
+<% end %>

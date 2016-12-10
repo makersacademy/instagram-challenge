@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<link href="/style.css" type="text/css" rel="stylesheet">
+<html>
+<head>
+  <title>InstagramChallenge</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+  <% if user_signed_in? %>
+    <div id="newimage">
+      <a href='images/new'>Add your image here!</a>
+    </div>
+    <h1>Instagram</h1>
+    <div id="logout">
+      <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+    </div>
+  <% end %>
+</header>
+
+  <p class="notice"><%= notice %></p>
+  <!-- <p class="alert"><%= alert %></p> -->
+<%= yield %>
+
+</body>
+</html>
