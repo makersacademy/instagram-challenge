@@ -1,24 +1,41 @@
-# README
+# Instagram Clone (Rails)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repo is a clone of Instagram built using Rails.
 
-Things you may want to cover:
+### Running Makstagram
 
-* Ruby version
+To use this app, fork and clone the repo.
 
-* System dependencies
+Run bundle to update Gemfile.lock:
+```  
+bundle
+```
+Run your local server from the command-line:
 
-* Configuration
+```
+rackup
+```
+And visit your local server address:
+```
+localhost:9292/
+```
 
-* Database creation
+### Testing
+Makstagram is unit tested using rspec and feature tested using Capybara. Run the tests in the root of the directory from the command-line:
+```
+rspec
+```
 
-* Database initialization
+### Built With
+* [Rails](http://rubyonrails.org/) - a Ruby web application framework.
 
-* How to run the test suite
+### Technologies used
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Rails
+* Active Record
+* HTML5
+* CSS3/Pure
+* Git
+* Rspec
+* Capybara
+* Bcrypt
