@@ -1,23 +1,41 @@
-Instagram Challenge
-===================
+# Instagram Clone (Rails)
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This repo is a clone of Instagram built using Rails.
 
-Task
------
+### Running Makstagram
 
-Build Instagram: Simple huh!
+To use this app, fork and clone the repo.
 
-Bonus if you can write your own set of sensible user stories!
+Run bundle to update Gemfile.lock:
+```  
+bundle
+```
+Run your local server from the command-line:
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+```
+rackup
+```
+And visit your local server address:
+```
+localhost:9292/
+```
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+### Testing
+Makstagram is unit tested using rspec and feature tested using Capybara. Run the tests in the root of the directory from the command-line:
+```
+rspec
+```
 
-Bonus if you can add filters!
+### Built With
+* [Rails](http://rubyonrails.org/) - a Ruby web application framework.
+
+### Technologies used
+
+* Rails
+* Active Record
+* HTML5
+* CSS3/Pure
+* Git
+* Rspec
+* Capybara
+* Bcrypt
