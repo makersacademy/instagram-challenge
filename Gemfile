@@ -4,6 +4,8 @@ gem 'devise'
 gem 'paperclip'
 gem 'shoulda'
 gem 'rspec-collection_matchers'
+gem 'bootstrap-sass', '~> 3.3.7'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'

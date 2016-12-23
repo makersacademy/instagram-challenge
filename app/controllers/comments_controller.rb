@@ -18,11 +18,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @picture = Picture.find(params[:picture_id])
-    @comment = @picture.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:success] = "Comment deleted :("
-    redirect_to picture_path(@picture)
+    redirect_to :back
   end
 
 private

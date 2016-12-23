@@ -1,23 +1,25 @@
+<div class="pic-feed">
 <% if @pictures.any? %>
-  <% @pictures.each do |picture| %>
-  <div id='image_div'>
+  <% @pictures.reverse.each do |picture| %>
+  <div id='picture_<%= picture.id%>', class="picture_image">
+    <div class="pic_header">
+      <%= picture.user.user_name %><br>
+      <%= picture.created_at.strftime("%d %b %Y %H:%M") %>
+    </div>
     <%= link_to picture_path(picture) do %>
-      <%= image_tag picture.image.url(:medium) %>
+      <%= image_tag picture.image.url %>
     <% end %>
       <p><%= picture.caption%></p>
-      <% if picture.comments.any? %>
-        <% picture.comments.each do |comment| %>
-          <p><%= comment.comment_text %></p>
-          <% if comment.user == current_user %>
-            <%= link_to "Delete", picture_comment_path(picture, comment), method: :delete %>
-          <% end %>
-        <% end %>
-      <% end %>
+
+      <div id='picture_<%= picture.id%>_comments', class="picture_comments">
+        <%= render picture.comments %>
+      </div>
+
       <%= form_for [picture, picture.comments.new] do |f| %>
         <%= f.text_field :comment_text, placeholder: 'Add a comment' %>
         <%= f.submit 'Comment' %>
       <% end %><br>
-  </div>
+</div>
   <% end %>
 <% else %>
   <h1>No pictures yet :(</h1>
@@ -25,3 +27,4 @@
 <% if user_signed_in? %>
 <%= link_to "Post a picture", new_picture_path %>
 <% end %>
+</div>

@@ -1,20 +1,23 @@
-<%= image_tag @picture.image.url(:medium) %>
-<p><%= @picture.caption %></p>
-<% if @picture.comments.any? %>
-  <% @picture.comments.each do |comment| %>
-    <p><%= comment.comment_text %></p>
-    <% if comment.user == current_user %>
-      <%= link_to "Delete", picture_comment_path(@picture, comment), method: :delete %>
+
+<div id="post_<%= @picture.id %>">
+  <div class="image_feed">
+  <div class="image">
+    <%= image_tag @picture.image.url %>
+  </div>
+  <p><%= @picture.caption %></p>
+  <div id="comments">
+    <%= render @picture.comments %>
+  </div>
+  <%= form_for [@picture, @picture.comments.new], remote: true do |f| %>
+  <%= f.text_field :comment_text, placeholder: 'Add a comment' %>
+  <%= f.submit 'Comment' %>
+  <% if current_user == nil %>
+    <p>You need to sign in to comment on pictures</p>
+  <% else current_user.id == @picture.user_id %>
+    <p><%= link_to "Edit Caption", edit_picture_path(@picture) %></p>
+    <p><%= link_to "Delete Picture", picture_path(@picture), method: :delete %></p>
     <% end %>
   <% end %>
-<% end %>
-  <%= form_for [@picture, @picture.comments.new], remote: true do |f| %>
-    <%= f.text_field :comment_text, placeholder: 'Add a comment' %>
-    <%= f.submit 'Comment' %>
-  <% end %>
-<% if current_user == nil %>
-  <p>You need to sign in to comment on pictures</p>
-<% else current_user.id == @picture.user_id %>
-  <p><%= link_to "Edit Caption", edit_picture_path(@picture) %></p>
-  <p><%= link_to "Delete Picture", picture_path(@picture), method: :delete %></p>
-<% end %>
+</div>
+
+</div>

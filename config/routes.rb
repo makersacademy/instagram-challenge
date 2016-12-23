@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 
   root 'pictures#index'
 
-  resources :pictures do
+  resources :pictures, shallow: true do
     resources :comments
   end
+
+  resources :users
+
+  get ':user_name', to: 'profiles#show', as: :profile
+
 end
