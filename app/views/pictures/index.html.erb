@@ -5,11 +5,25 @@
     <div class="pic_header">
       <%= picture.user.user_name %><br>
       <%= picture.created_at.strftime("%d %b %Y %H:%M") %>
+      <% if current_user == picture.user %>
+        <div class="edit_and_delete_posts">
+          <div class="dropdown div-inline">
+            <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Edit Post", edit_picture_url(picture) %></li>
+              <li><%= link_to "Delete Post", picture_path(picture), method: :delete %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
     </div>
     <%= link_to picture_path(picture) do %>
       <%= image_tag picture.image.url %>
     <% end %>
       <p><%= picture.caption%></p>
+
+
 
       <div id='picture_<%= picture.id%>_comments', class="picture_comments">
         <%= render picture.comments %>
@@ -19,12 +33,10 @@
         <%= f.text_field :comment_text, placeholder: 'Add a comment' %>
         <%= f.submit 'Comment' %>
       <% end %><br>
+
 </div>
   <% end %>
 <% else %>
   <h1>No pictures yet :(</h1>
-<% end %>
-<% if user_signed_in? %>
-<%= link_to "Post a picture", new_picture_path %>
 <% end %>
 </div>
