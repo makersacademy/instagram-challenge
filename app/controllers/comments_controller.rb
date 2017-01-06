@@ -9,12 +9,27 @@ class CommentsController < ApplicationController
 
   def create
     @picture = Picture.find(params[:picture_id])
-    @comment = @picture.build_comment(comment_params, current_user)
-    if @comment.save
-      redirect_to :back
-    else
-      render :new
+    @comment = @picture.comments.create(comment_params)
+    @comment.user = current_user
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_back(fallback_location: pictures_path(@picture))}
+        format.js
+      else
+        format.html { render :action => "new" }
+        format.js
+      end
     end
+  end
+
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    @comment.update(comment_params)
+    redirect_to pictures_path
   end
 
   def destroy

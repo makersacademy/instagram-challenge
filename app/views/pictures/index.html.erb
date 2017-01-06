@@ -3,33 +3,29 @@
   <% @pictures.reverse.each do |picture| %>
   <div id='picture_<%= picture.id%>', class="picture_image">
     <div class="pic_header">
-      <%= picture.user.user_name %><br>
-      <%= picture.created_at.strftime("%d %b %Y %H:%M") %>
-      <% if current_user == picture.user %>
-        <div class="edit_and_delete_posts">
-          <div class="dropdown div-inline">
-            <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Edit Post", edit_picture_url(picture) %></li>
-              <li><%= link_to "Delete Post", picture_path(picture), method: :delete %></li>
-            </ul>
-          </div>
-        </div>
-      <% end %>
+      <div class="profile_pic">
+        <%= link_to profile_path(picture.user.user_name) do %>
+          <%= image_tag picture.user.image.url(:thumb) %>
+        <% end %>
+      </div>
+      <div class="user_details">
+        <span id="picture_user_name"><%= picture.user.user_name %><br></span>
+        <%= picture.created_at.strftime("%d %b %Y %H:%M") %>
+      </div>
     </div>
     <%= link_to picture_path(picture) do %>
-      <%= image_tag picture.image.url %>
+      <%= image_tag picture.image.url, class: "pic_image" %>
     <% end %>
       <p><%= picture.caption%></p>
 
-
+      <%= link_to "Edit Post", edit_picture_url(picture) %> |
+      <%= link_to "Delete Post", picture_path(picture), method: :delete %>
 
       <div id='picture_<%= picture.id%>_comments', class="picture_comments">
         <%= render picture.comments %>
       </div>
 
-      <%= form_for [picture, picture.comments.new] do |f| %>
+      <%= form_for [picture, picture.comments.new], remote: true do |f| %>
         <%= f.text_field :comment_text, placeholder: 'Add a comment' %>
         <%= f.submit 'Comment' %>
       <% end %><br>

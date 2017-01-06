@@ -1,6 +1,13 @@
 <div id="comment">
-    <span class="comment_user"><%= comment.user.user_name %></span><span>: <%= comment.comment_text %></span>
-    <% if comment.user == current_user %>
-      <%= link_to "Delete", comment_path(comment), method: :delete %>
-    <% end %>
+    <span class="comment_user"><%= comment.user.user_name %></span><span class="comment_text">: <%= comment.comment_text %></span>
+    <div class="comment_options">
+      <% if comment.user == current_user %>
+        <%= link_to edit_comment_path(comment) do %>
+          <span class="glyphicon glyphicon-pencil gi-2x" data-toggle="popover" data-trigger="hover" data-content="Edit"></span>
+        <% end %>
+        <%= link_to comment_path(comment), method: :delete do %>
+          <span class="glyphicon glyphicon-trash gi-2x" data-toggle="popover" data-trigger="hover" data-content="Delete"></span>
+        <% end %>
+      <% end %>
+    </div>
 </div>

@@ -1,27 +1,37 @@
 
-<div id="post_<%= @picture.id %>">
+<div id="picture_<%= @picture.id %>">
   <div class="image_feed">
     <div class="pic_header">
-      <%= @picture.user.user_name %><br>
-      <%= @picture.created_at.strftime("%d %b %Y %H:%M") %>
+      <div class="profile_pic">
+        <%= link_to profile_path(@picture.user.user_name) do %>
+          <%= image_tag @picture.user.image.url(:thumb) %>
+        <% end %>
+      </div>
+      <div class="user_details">
+        <span id="picture_user_name"><%= @picture.user.user_name %><br></span>
+        <%= @picture.created_at.strftime("%d %b %Y %H:%M") %>
     </div>
-  <div class="image">
-    <%= image_tag @picture.image.url %>
+    </div>
+
+    <div class="image">
+      <%= image_tag @picture.image.url  %>
+    </div>
+    <div>
+      <%= link_to "Edit Post", edit_picture_url(@picture) %> |
+      <%= link_to "Delete Post", picture_path(@picture), method: :delete %>
+    </div>
+    <p><%= @picture.caption %></p>
+
+    <div id='picture_<%= @picture.id%>_comments', class="picture_comments">
+      <%= render @picture.comments %>
+    </div>
+
+    <%= form_for [@picture, @picture.comments.new], remote: true do |f| %>
+      <%= f.text_field :comment_text, placeholder: 'Add a comment' %>
+      <%= f.submit 'Comment' %>
+    <% end %>
   </div>
-  <p><%= @picture.caption %></p>
-  <div id="comments">
-    <%= render @picture.comments %>
-  </div>
-  <%= form_for [@picture, @picture.comments.new], remote: true do |f| %>
-  <%= f.text_field :comment_text, placeholder: 'Add a comment' %>
-  <%= f.submit 'Comment' %>
   <% if current_user == nil %>
     <p>You need to sign in to comment on pictures</p>
-  <% else current_user.id == @picture.user_id %>
-    <p><%= link_to "Edit Caption", edit_picture_path(@picture) %></p>
-    <p><%= link_to "Delete Picture", picture_path(@picture), method: :delete %></p>
-    <% end %>
   <% end %>
-</div>
-
 </div>
