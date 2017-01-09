@@ -17,21 +17,26 @@
       <%= image_tag @picture.image.url  %>
     </div>
     <div>
-      <%= link_to "Edit Post", edit_picture_url(@picture) %> |
-      <%= link_to "Delete Post", picture_path(@picture), method: :delete %>
+      <% if (current_user == @picture.user) %>
+        <%= link_to "Edit Post", edit_picture_url(@picture) %> |
+        <%= link_to "Delete Post", picture_path(@picture), method: :delete %>
+      <% end %>
     </div>
-    <p><%= @picture.caption %></p>
-
+    <div class="caption">
+      <p><%= @picture.caption %></p>
+    </div>
     <div id='picture_<%= @picture.id%>_comments', class="picture_comments">
       <%= render @picture.comments %>
     </div>
 
-    <%= form_for [@picture, @picture.comments.new], remote: true do |f| %>
-      <%= f.text_field :comment_text, placeholder: 'Add a comment' %>
-      <%= f.submit 'Comment' %>
+    <% if current_user == nil %>
+      <p><%= link_to "Sign in to comment", new_user_session_url %></p>
+    <% else %>
+      <%= form_for [@picture, @picture.comments.new], remote: true do |f| %>
+        <%= f.text_field :comment_text, placeholder: 'Add a comment' %>
+        <%= f.submit 'Comment' %>
+      <% end %>
     <% end %>
+
   </div>
-  <% if current_user == nil %>
-    <p>You need to sign in to comment on pictures</p>
-  <% end %>
 </div>

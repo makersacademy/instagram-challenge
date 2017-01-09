@@ -16,19 +16,27 @@
     <%= link_to picture_path(picture) do %>
       <%= image_tag picture.image.url, class: "pic_image" %>
     <% end %>
+    <div class="caption">
       <p><%= picture.caption%></p>
-
-      <%= link_to "Edit Post", edit_picture_url(picture) %> |
-      <%= link_to "Delete Post", picture_path(picture), method: :delete %>
+    </div>
+      <% if current_user == picture.user %>
+        <%= link_to "Edit Post", edit_picture_url(picture) %> |
+        <%= link_to "Delete Post", picture_path(picture), method: :delete %>
+      <% end %>
 
       <div id='picture_<%= picture.id%>_comments', class="picture_comments">
         <%= render picture.comments %>
       </div>
 
-      <%= form_for [picture, picture.comments.new], remote: true do |f| %>
-        <%= f.text_field :comment_text, placeholder: 'Add a comment' %>
-        <%= f.submit 'Comment' %>
-      <% end %><br>
+
+      <% if current_user == nil %>
+        <p><%= link_to "Sign in to comment", new_user_session_url %></p>
+      <% else %>
+        <%= form_for [picture, picture.comments.new], remote: true do |f| %>
+          <%= f.text_field :comment_text, placeholder: 'Add a comment' %>
+          <%= f.submit 'Comment' %>
+        <% end %><br>
+      <% end %>
 
 </div>
   <% end %>
