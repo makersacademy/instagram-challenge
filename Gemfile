@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'devise'
 gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 gem 'shoulda'
 gem 'rspec-collection_matchers'
 gem 'bootstrap-sass', '~> 3.3.7'
