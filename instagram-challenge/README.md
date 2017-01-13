@@ -54,6 +54,10 @@ As a user,
 So that no one can tamper with my posts
 I want to be the only one who can edit a post
 
+As a user,
+So that I can rectify a mistake
+I want to be able to un-like a post I have previously liked
+
 ```
 
 This README would normally document whatever steps are necessary to get the
