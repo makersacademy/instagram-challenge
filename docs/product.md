@@ -65,3 +65,11 @@ So that I know how many people like my photos,
 I only want to be able to like a photo once
 
 ---
+
+As a user,
+So that I can be descriptive about my thoughts and feelings a particular photo,
+I want to be able to comment on a particular photo
+
+As a user,
+So that I can retract my comment,
+I want to be able to delete a comment I've made.
