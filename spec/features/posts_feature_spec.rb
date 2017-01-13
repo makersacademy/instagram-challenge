@@ -32,5 +32,35 @@ feature 'posts' do
       expect(page).to have_content 'Beautiful day'
       expect(page).to have_css("img[src*='snow_and_sun.jpg']")
     end
+
   end
+
+  context 'editing posts' do
+
+    scenario 'lets users edit their posts' do
+      add_post
+      click_link 'image'
+      click_link 'Edit post'
+      fill_in 'Caption', with: 'edited post'
+      page.attach_file('post[image]', Rails.root + 'spec/fixtures/beach.jpg')
+      click_button "Edit"
+      expect(page).to have_content 'edited post'
+      expect(page).to have_css("img[src*='beach.jpg']")
+    end
+
+  end
+
+  context 'deleting posts' do
+
+    scenario 'lets user delete their posts' do
+      add_post
+      click_link 'image'
+      click_link 'Delete post'
+      expect(current_path).to eq '/posts'
+      expect(page).not_to have_content 'Beautiful day'
+      expect(page).not_to have_css("img[src*='snow_and_sun.jpg']")
+    end
+
+  end
+
 end
