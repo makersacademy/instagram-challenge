@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.create(photo_params)
-    redirect_to '/photos'
+    redirect_to photos_path
   end
 
   def show
@@ -30,7 +30,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     @photo.destroy
     flash[:notice] = 'Photo deleted successfully'
-    redirect_to '/photos'
+    redirect_to photos_path
   end
 
   private

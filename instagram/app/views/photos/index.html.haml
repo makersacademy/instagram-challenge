@@ -2,6 +2,11 @@
   - @photos.each do |photo|
     = image_tag photo.image.url(:medium)
     %h2= link_to photo.caption, photo_path(photo)
+    - if photo.comments.any?
+      - photo.comments.each do |comment|
+        %p #{comment.thoughts}
+    - else
+      %p No one has commented yet...
 - else
   %h1 No one has posted any photos yet...
 
