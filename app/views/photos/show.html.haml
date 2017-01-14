@@ -1,2 +1,7 @@
 = image_tag @photo.image.url(:medium)
+
+= link_to "Add comment", new_photo_comment_path(@photo)
+- if @comments.all.any?
+  - @comments.each do |comment|
+    %p= comment.text
 = link_to "Delete photo", photo_path, method: :delete
