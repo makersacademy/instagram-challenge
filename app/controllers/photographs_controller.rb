@@ -1,16 +1,18 @@
 class PhotographsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @photographs = Photograph.all
   end
 
   def new
-    @photograph = Photograph.new
+      @photograph = Photograph.new
   end
 
   def create
-    Photograph.create(photograph_params)
-    redirect_to '/photographs'
+      Photograph.create(photograph_params)
+      redirect_to '/photographs'
   end
 
   def destroy

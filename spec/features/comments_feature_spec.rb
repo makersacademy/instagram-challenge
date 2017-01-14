@@ -1,15 +1,39 @@
 require 'rails_helper'
+require 'web_helpers'
 
 feature 'commenting' do
+
   before {Photograph.create description: 'description'}
 
-  scenario 'allows users to leave a comment using a form' do
-    visit '/photographs'
-    click_link 'Leave Comment'
-    fill_in "Description", with: 'amazing'
-    click_button 'submit'
+  context 'user is logged in' do
 
-    expect(current_path).to eq '/photographs'
-    expect(page).to have_content('amazing')
+    before do
+      sign_up("test@gmail.com", "password")
+    end
+
+    scenario 'allows users to leave a comment using a form' do
+      visit '/'
+      click_link 'Leave Comment'
+      fill_in "Description", with: 'amazing'
+      click_button 'submit'
+
+      expect(current_path).to eq '/photographs'
+      expect(page).to have_content('amazing')
+    end
+
+
+
   end
+
+  context 'user is not logged in' do
+
+    scenario 'cannot leave a comment' do
+      visit '/'
+      expect(page).not_to have_link 'Leave Comment'
+    end
+
+  end
+
+
+
 end

@@ -1,11 +1,17 @@
+
 <% if @photographs.any? %>
  <% @photographs.each do |photograph| %>
     <%= photograph.description  %><br>
-    <%= link_to "Delete post", photograph_path(photograph), method: :delete %><br>
+
+    <%if current_user %>
+      <%= link_to "Delete post", photograph_path(photograph), method: :delete %><br>
+    <%end%>
     <% photograph.comments.each do |comment|%>
         <%= comment.description%> <br>
       <%end%>
-      <%= link_to "Leave Comment", new_photograph_comment_path(photograph)%><br>
+      <%if user_signed_in? %>
+        <%= link_to "Leave Comment", new_photograph_comment_path(photograph)%><br>
+      <% end %>
     <% end %>
 <% else %>
   <h1>No posts yet</h1>
