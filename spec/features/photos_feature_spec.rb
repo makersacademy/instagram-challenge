@@ -46,7 +46,7 @@ feature 'photos' do
       click_button('Sign up')
       visit('/')
       click_link('Posh Coffee')
-      expect{ click_link('Delete') }.not_to change{Photo.count}
+      expect(page).not_to have_content('Delete')
     end
   end
 

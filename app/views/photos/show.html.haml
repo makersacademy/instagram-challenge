@@ -1,4 +1,5 @@
 %h2= @photo.name
-= image_tag @photo.image.url(:medium),:id => "show-photo" 
-= link_to "Rename", edit_photo_path(@photo)
-= link_to "Delete", photo_path(@photo), method: :delete
+= image_tag @photo.image.url(:medium),:id => "show-photo"
+- if @photo.user_id == current_user.id
+  = link_to "Rename", edit_photo_path(@photo)
+  = link_to "Delete", photo_path(@photo), method: :delete
