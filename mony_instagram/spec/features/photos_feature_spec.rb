@@ -21,4 +21,15 @@ feature 'photos' do
     end
   end
 
+  context 'creating photos' do
+    scenario 'prompts user to fill out a form, then displays the new photo' do
+      visit('/photos')
+      click_link('Add a photo')
+      fill_in('Caption', with: 'A perfect belated birthday moment!')
+      click_button('Create Photo')
+      expect(page).to have_content 'A perfect belated birthday moment!'
+      expect(current_path).to eq '/photos'
+    end
+  end
+
 end
