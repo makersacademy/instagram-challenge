@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml'
 gem 'paperclip'
 gem 'devise'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug', platform: :mri
