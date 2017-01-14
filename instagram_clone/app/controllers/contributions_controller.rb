@@ -5,5 +5,14 @@ class ContributionsController < ApplicationController
 
   def new
   end
-  
+
+  def create
+    Contribution.create(contribution_params)
+    redirect_to '/contributions'
+  end
+
+  def contribution_params
+    params.require(:contribution).permit(:comment)
+  end
+
 end
