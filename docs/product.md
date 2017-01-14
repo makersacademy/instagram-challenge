@@ -22,6 +22,10 @@ So that I can take down a photo if I want,
 I want to be able to delete a photo
 
 As a user,
+To preserve my artistic integrity,
+I don't want anyone else to be able to rename or delete my photos
+
+As a user,
 So that I can see if this site is cool,
 I want to be able to see photos without having to sign up
 ---
@@ -45,9 +49,6 @@ I want to be able to sign out
 ---
 
 ## TODO
-As a user,
-To preserve my artistic integrity,
-I don't want anyone else to be able to rename or delete my photos
 
 ---
 
