@@ -10,7 +10,6 @@ feature 'posts' do
   end
 
   context 'posts have been added' do
-
     before do
       new_post = create(:post, caption: "My breakfast")
     end

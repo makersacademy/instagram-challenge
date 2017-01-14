@@ -13,4 +13,5 @@ feature 'editing posts' do
     click_button 'save changes'
     expect(page).to have_content 'Burritos are life'
   end
+
 end
