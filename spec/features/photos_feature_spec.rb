@@ -48,4 +48,19 @@ feature 'photos' do
 
   end
 
+  context 'editing photos' do
+
+    let!(:photo){ Photo.create(name: 'My adorable cat') }
+
+    it 'should allow a user to rename a photo' do
+      visit '/photos'
+      click_link('Edit My adorable cat')
+      fill_in 'Name', with: 'A scruffy little cat'
+      click_button 'Update Photo'
+      expect(page).to have_content 'A scruffy little cat'
+      expect(current_path).to eq "/photos/#{photo.id}"
+    end
+
+  end
+
 end
