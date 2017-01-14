@@ -54,4 +54,15 @@ feature 'photos' do
       expect(page).not_to have_content 'My Lunch'
     end
   end
+  context 'deleting photos' do
+    scenario 'deletes a photo when user clicks delete link' do
+      post_photo
+      photo = Photo.find_by(caption: 'My Lunch')
+      visit "/photos/#{photo.id}"
+      click_link 'Delete photo'
+      expect(current_path).to eq '/photos'
+      expect(page).to have_content 'Photo deleted successfully'
+      expect(page).not_to have_content 'My Lunch'
+    end
+  end
 end
