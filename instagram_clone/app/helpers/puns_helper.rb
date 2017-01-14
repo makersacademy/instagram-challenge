@@ -1,0 +1,2 @@
+module PunsHelper
+end

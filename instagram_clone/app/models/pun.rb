@@ -1,0 +1,2 @@
+class Pun < ApplicationRecord
+end
