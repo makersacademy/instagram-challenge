@@ -6,6 +6,9 @@ git_source(:github) do |repo_name|
 end
 
 gem 'paperclip'
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'envyable'
 
 gem 'haml'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
