@@ -39,27 +39,27 @@ feature 'restaurants' do
   #     end
   # end
 
-  # <img src="/system/pictures/images/000/000/001/medium/12237150_1660612320873215_497599594_n.jpg?1484400621" alt="12237150 1660612320873215 497599594 n">
-
-  # /html/body/a/img
-
-  # html/body/a
-
-  # a.picture:nth-child(1) > img:nth-child(1)
-
   context 'editing posts' do
-    before { create_picture }
     scenario 'let a user edit a post' do
+      create_picture
       visit '/pictures'
-      # find(:css, 'a.picture:nth-child(1) > img:nth-child(1)').click
-      # find_by_id("12237150 1660612320873215 497599594 n")[:alt].click
-      # find(:xpath, "html/body/a/..").click
       click_link '1'
-      click_link 'Edit Picture'
+      click_link 'Edit'
       fill_in 'picture_caption', with: 'Cute cat'
-      click_button 'Update Picture'
+      click_button 'Done'
       expect(page).to have_content('Cute cat')
       expect(page).not_to have_content('This is my cat')
+    end
+  end
+
+  context 'deleting pictures' do
+    scenario 'removes a picture when a user clicks a delete link' do
+      create_picture
+      visit '/pictures'
+      click_link '1'
+      click_link 'Delete'
+      expect(page).not_to have_content 'This is my cat'
+      expect(page).to have_content 'This post has been deleted'
     end
   end
 end
