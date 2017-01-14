@@ -36,7 +36,7 @@ feature 'photos' do
 
       scenario 'lets user edit their post' do
         visit('/photos')
-        click_link('Edit Caption')
+        click_link('Edit')
         fill_in 'Caption', with: 'This has been edited'
         click_button('Update Photo')
         expect(page).to have_content('This has been edited')

@@ -2,9 +2,9 @@
 %html
   %head
     %title YelpClone
+    = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
-    = csrf_meta_tags
 
   %body
     %nav.navbar.navbar-default
@@ -17,11 +17,15 @@
           .navbar-brand= link_to "MakersGram", photos_path
         .collapse.navbar-collapse#bs-navbar-collapse-1
           %ul.nav.navbar-nav.navbar-right
-            %li
-              = link_to "Post a Photo", new_photo_path
-            %li
-              = link_to "Login", '#'
-            %li
-              = link_to "Register", '#'
+            - if user_signed_in?
+              %li
+                = link_to "Logout", destroy_user_session_path, method: :delete
+            - else
+              %li
+                = link_to "Post a Photo", new_photo_path
+              %li
+                = link_to "Login", new_user_session_path
+              %li
+                = link_to "Register", new_user_registration_path
   = notice
   = yield
