@@ -17,10 +17,20 @@ class PunsController < ApplicationController
     @pun = Pun.find(params[:id])
   end
 
+  def edit
+    @pun = Pun.find(params[:id])
+  end
+
+  def update
+  @pun = Pun.find(params[:id])
+  @pun.update(pun_params)
+  redirect_to '/puns'
+end
+
   private
 
   def pun_params
-    params.require(:pun).permit(:name)
+    params.require(:pun).permit(:name, :description)
   end
 
 end
