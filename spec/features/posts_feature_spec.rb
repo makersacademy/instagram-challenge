@@ -5,7 +5,7 @@ feature 'posts' do
     scenario 'should display a prompt to add a post' do
       visit '/posts'
       expect(page).to have_content 'No posts yet'
-      expect(page).to have_link 'Make a new post'
+      expect(page).to have_link 'New post'
     end
   end
 
