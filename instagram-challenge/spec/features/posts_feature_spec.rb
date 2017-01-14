@@ -18,9 +18,11 @@ feature 'Posts' do
     visit '/posts'
     click_link "Post a new photo"
     fill_in "Description", with: "Loving life"
+    attach_file("post_image", "#{Rails.root}/spec/beach.jpg")
     click_button "Create Post"
     expect(current_path).to eq '/posts'
     expect(page).to have_content "Loving life"
   end
+
 
 end

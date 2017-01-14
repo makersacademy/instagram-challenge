@@ -5,11 +5,11 @@ class PostsController < ApplicationController
   end
 
   def new
-
+    @post = Post.new
   end
 
   def create
-    Post.create(permitted_params)
+    @post = Post.create(permitted_params)
     redirect_to posts_path
   end
 
