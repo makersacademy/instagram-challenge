@@ -13,6 +13,10 @@ class PunsController < ApplicationController
     redirect_to '/puns'
   end
 
+  def show
+    @pun = Pun.find(params[:id])
+  end
+
   private
 
   def pun_params

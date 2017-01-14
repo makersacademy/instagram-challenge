@@ -1,7 +1,16 @@
-- if @puns.any?
-  - @puns.each do |pun|
-    %h2= pun.name
-- else
-  No puns yet
+%div
+.container.jumbotron
+  %h1 Puns
+  .panel
+  - if @puns.any?
+    - @puns.each do |pun|
+      %h3= link_to pun.name, pun_path(pun)
+  - else
+    No puns yet
+%div
+  .well
+    %a(href='/puns/new')
+      %h4 Add a pun
 
-%a(href='/puns/new') Add a pun
+%div
+=image_tag 'could.jpg'

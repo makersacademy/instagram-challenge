@@ -22,13 +22,23 @@ feature 'puns' do
   end
 
   context 'creating puns' do
-  scenario 'prompts user to fill out a form, then displays the new pun' do
-    visit '/puns'
-    click_link 'Add a pun'
-    fill_in 'Name', with: 'Pun1'
-    click_button 'Create Pun'
-    expect(page).to have_content 'Pun1'
-    expect(current_path).to eq '/puns'
+    scenario 'prompts user to fill out a form, then displays the new pun' do
+      visit '/puns'
+      click_link 'Add a pun'
+      fill_in 'Name', with: 'Pun1'
+      click_button 'Create Pun'
+      expect(page).to have_content 'Pun1'
+      expect(current_path).to eq '/puns'
+    end
   end
-end
+
+  context 'viewing puns' do
+    let!(:pun1) {Pun.create(name: 'Pun1') }
+    scenario 'lets user view a restaurant' do
+      visit '/puns'
+      click_link 'Pun1'
+      expect(page).to have_content 'Pun1'
+      expect(current_path).to eq "/puns#{pun1.id}"
+    end
+  end
 end
