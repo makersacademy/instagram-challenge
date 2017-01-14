@@ -50,8 +50,6 @@ I want to be able to sign out
 
 ## TODO
 
----
-
 As a user,
 So that I can show my love,
 I want to be able to 'like' photos
