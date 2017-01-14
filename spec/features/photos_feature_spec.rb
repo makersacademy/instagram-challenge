@@ -42,7 +42,7 @@ feature 'photos' do
     end
   end
 
-  context 'changing descriptions' do
+  context 'changing photos' do
     before { Photo.create description: "A fun trip to the beach!", id: 1 }
 
     scenario "let a user edit the description for a photo" do
@@ -54,6 +54,18 @@ feature 'photos' do
       click_link "A terrible trip with terrible people"
       expect(page).to have_content "A terrible trip with terrible people"
       expect(current_path).to eq '/photos/1'
+    end
+  end
+
+  context "deleting photos" do
+
+    before { Photo.create description: "A fun trip to the beach!", id: 1 }
+    scenario 'deletes a photo' do
+      visit '/photos'
+      click_link "A fun trip to the beach!"
+      click_link "Delete photo"
+      expect(page).not_to have_content "A fun trip to the beach!"
+      expect(page).to have_content "Photo deleted successfully"
     end
   end
 end
