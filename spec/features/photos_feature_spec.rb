@@ -10,6 +10,7 @@ feature 'photos' do
   end
 
   context 'a photo has been added' do
+
     before do
       add_photo
     end
@@ -20,19 +21,29 @@ feature 'photos' do
       expect(page).to have_content('Travelling')
       expect(page).not_to have_content('No photos have been posted!')
     end
-  end
 
-  context 'deleting a photo' do
-    before do
-      add_photo
+    context 'deleting a post' do
+
+      scenario 'removes a photo when a user clicks a delete link' do
+        visit('/photos')
+        click_link 'Delete Photo'
+        expect(page).to have_content('No photos have been posted!')
+        expect(page).not_to have_content('Travelling')
+      end
     end
 
-    scenario 'removes a photo when a user clicks a delete button' do
-      visit('/photos')
-      click_link 'Delete Photo'
-      expect(page).to have_content('No photos have been posted!')
-      expect(page).not_to have_content('Travelling')
+    context 'editing a post' do
+
+      scenario 'lets user edit their post' do
+        visit('/photos')
+        click_link('Edit Caption')
+        fill_in 'Caption', with: 'This has been edited'
+        click_button('Update Photo')
+        expect(page).to have_content('This has been edited')
+        expect(page).not_to have_content('Travelling')
+      end
     end
+
   end
 
 end
