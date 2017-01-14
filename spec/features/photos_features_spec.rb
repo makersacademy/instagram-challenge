@@ -32,4 +32,15 @@ feature 'photos' do
     end
   end
 
+  context 'viewing individual photo posts' do
+    let!(:test_photo){ Photo.create(title: 'Test photo') }
+    scenario 'lets a user view a photo post' do
+      visit '/photos'
+      click_link 'Test photo'
+      expect(page).to have_content 'Test photo'
+      expect(current_path).to eq "/photos/#{test_photo.id}"
+    end
+  end
+
+
 end
