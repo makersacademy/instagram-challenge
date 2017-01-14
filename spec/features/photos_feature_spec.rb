@@ -30,6 +30,7 @@ feature 'photos' do
       visit '/photos'
       click_link 'Posh Coffee'
       expect(page).to have_content 'Posh Coffee'
+      expect(page).to have_css 'img#show-photo'
       expect(current_path).to eq "/photos/#{@photo.id}"
     end
   end
