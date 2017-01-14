@@ -10,6 +10,8 @@ end
 gem 'rails', '~> 5.0.1'
 # Use Haml as markup language in views
 gem 'haml'
+# Paperclip to add images
+gem 'paperclip'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server

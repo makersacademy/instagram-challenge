@@ -9,15 +9,14 @@ feature 'images' do
     end
   end
 
-  context 'images have been added' do
-    before do
-      Image.create(title: 'Flower')
-    end
-
-    scenario 'display images' do
+  context 'an image can be uploaded' do
+    scenario 'a creates an image post' do
       visit '/images'
+      click_link 'Add an image'
+      fill_in 'Title', with: "Flower"
+      attach_file("image_image", Rails.root + "spec/features/files/flower.jpg")
+      click_button 'Upload Image'
       expect(page).to have_content('Flower')
-      expect(page).not_to have_content('No Images Yet!')
     end
   end
 end
