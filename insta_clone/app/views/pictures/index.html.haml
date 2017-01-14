@@ -1,1 +1,9 @@
-No pictures yet
+- if @pictures.any?
+  - @pictures.each do |picture|
+    %p=picture.user.email
+    %p=picture.location
+    %p=image_tag picture.image.url(:medium)
+    %p=picture.caption
+    %p= link_to "Delete", picture_path(picture), method: :delete
+- else
+  No pictures yet
