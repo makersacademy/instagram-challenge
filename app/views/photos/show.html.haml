@@ -1,6 +1,8 @@
 = image_tag @photo.image.url(:medium)
 
-= link_to "Add comment", new_photo_comment_path(@photo)
+=form_for [@photo, @new_comment] do |f|
+  = f.text_area :text
+  = f.submit 'Leave comment'
 - if @comments.all.any?
   - @comments.each do |comment|
     %p= comment.text
