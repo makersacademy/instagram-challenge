@@ -14,11 +14,7 @@ feature 'photos' do
   context 'photos have been added' do
     before do
       sign_up
-      visit '/photos'
-      click_link('Add a photo')
-      fill_in 'Name', with: 'Posh Coffee'
-      attach_file("photo[image]", Rails.root + "spec/fixtures/coffee.jpg")
-      click_button('Create Photo')
+      upload_coffee_photo
     end
 
     it 'should display the photos' do
@@ -54,11 +50,7 @@ feature 'photos' do
 
     before do
       sign_up
-      visit '/photos'
-      click_link('Add a photo')
-      fill_in 'Name', with: 'My adorable cat'
-      attach_file("photo[image]", Rails.root + "spec/fixtures/cat.jpg")
-      click_button('Create Photo')
+      upload_cat_photo
     end
 
     it 'should allow a user to rename a photo' do
