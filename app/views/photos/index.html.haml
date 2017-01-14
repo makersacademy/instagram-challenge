@@ -1,8 +1,11 @@
 - if @photos.any?
-  - @photos.each do |photo|
-    = image_tag photo.image.url(:medium)
-    %h2= link_to photo.name, photo_path(photo)
+  %div{:id => "photos"}
+    - @photos.each do |photo|
+      = image_tag photo.image.url(:medium)
+      %h2= link_to photo.name, photo_path(photo)
 - else
-  %h2 No photos yet
+  %div{:id => "no-photos-notice"}
+    %h2 No photos yet
 
-= link_to "Add a photo", new_photo_path
+%div{:id => "add-photo"}
+  = link_to "Add a photo", new_photo_path
