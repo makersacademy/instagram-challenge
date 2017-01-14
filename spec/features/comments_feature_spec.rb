@@ -7,7 +7,6 @@ feature 'reviewing' do
     click_link 'Add a comment'
     fill_in 'Thoughts', with: 'Cute!'
     click_button 'Done'
-    p current_path
     expect(page).to have_content('Cute!')
   end
 end
