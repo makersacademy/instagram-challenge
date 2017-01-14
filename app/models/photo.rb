@@ -3,4 +3,6 @@ class Photo < ApplicationRecord
   validates :image, attachment_presence: true
   validates :name, presence: true
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+
+  belongs_to :user
 end
