@@ -9,4 +9,14 @@ feature 'posts' do
     end
   end
 
+  context 'posts have been added' do
+    before do
+      Post.create(caption:"My breakfast")
+    end
+    scenario 'posts are displayed' do
+      visit '/posts'
+      expect(page).to have_content "My breakfast"
+    end
+  end
+
 end
