@@ -1,3 +1,8 @@
-No photos yet!
+- if @photos.all.any?
+  - @photos.each do |photo|
+    = link_to photo_path(photo) do
+      = image_tag photo.image.url(:medium), class: "photo"
+- else
+  %h1 No photos yet!
 
-%a(href='#') Upload a photo
+= link_to "Upload a photo", new_photo_path
