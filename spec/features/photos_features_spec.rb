@@ -42,5 +42,19 @@ feature 'photos' do
     end
   end
 
+  context 'editing photo posts' do
+    before { Photo.create title: 'Test photo', description: 'This is a test', id: 1 }
+    scenario 'let a user edit a photo post' do
+      visit '/photos'
+      click_link 'Edit Test photo'
+      fill_in 'Title', with: 'No longer a test photo'
+      fill_in 'Description', with: 'This is not a test'
+      click_button 'Update Photo'
+      click_link 'No longer a test photo'
+      expect(page).to have_content 'No longer a test photo'
+      expect(page).to have_content 'This is not a test'
+      expect(current_path).to eq '/photos/1'
+    end
+  end
 
 end
