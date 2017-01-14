@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @photo = Photo.all
   end
@@ -33,7 +35,7 @@ class PhotosController < ApplicationController
   def show
   @photo = Photo.find(params[:id])
   end
-    
+
   private
   def photos_params
     params.require(:photo).permit(:image, :caption)
