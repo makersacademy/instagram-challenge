@@ -62,4 +62,14 @@ feature 'restaurants' do
       expect(page).to have_content 'This post has been deleted'
     end
   end
+
+  context 'an invalid picture' do
+    scenario 'user tries to create post without uploading an image' do
+      visit '/pictures'
+      click_link 'Add a picture'
+      fill_in 'picture_caption', with: 'This is my cat'
+      click_button 'Share'
+      expect(page).to have_content('You must select a picture!')
+    end
+  end
 end

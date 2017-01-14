@@ -9,7 +9,12 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.create(picture_params)
-    redirect_to '/pictures'
+    if @picture.save
+      redirect_to pictures_path
+    else
+      flash[:notice] = 'You must select a picture!'
+      render 'new'
+    end
   end
 
   def show
