@@ -40,4 +40,18 @@ feature 'photos' do
       expect(current_path).to eq "/photos/#{photo.id}"
     end
   end
+
+  context 'editing captions' do
+    scenario 'clicking edit lets you edit your caption' do
+      post_photo
+      photo = Photo.find_by(caption: 'My Lunch')
+      visit "/photos/#{photo.id}"
+      click_link 'Edit'
+      fill_in 'Caption', with: 'My disgusting lunch'
+      click_button 'Update caption'
+      expect(current_path).to eq "/photos/#{photo.id}"
+      expect(page).to have_content 'My disgusting lunch'
+      expect(page).not_to have_content 'My Lunch'
+    end
+  end
 end
