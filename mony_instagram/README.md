@@ -1,24 +1,28 @@
-# README
+Instagram Challenge
+===================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+User story
+-------
+As a person,
+So that I can use the social media,
+I'd like to sign up.
 
-Things you may want to cover:
+As a person who has Facebook account,
+So that I can use the social media,
+I'd like to log in with my Facebook account.
 
-* Ruby version
+As a user of the social media,
+So that nobody can post on my behalf,
+I'd like to sign out.
 
-* System dependencies
+As a user of the social media,
+So that I can view my pictures,
+I'd like to post pictures in my account.
 
-* Configuration
+As a user,
+When I see a picture,
+I'd like to post comments the picture.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+As a user,
+When I see a picture,
+I'd like to click like on a picture.
