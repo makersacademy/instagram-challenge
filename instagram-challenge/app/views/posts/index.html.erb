@@ -1,7 +1,21 @@
 <% if @posts.any? %>
+
   <% @posts.each do |post| %>
     <p> <%= post.description %> <p>
+
+    <% if post.comments.any? %>
+      <ul>
+      <% post.comments.all.each do |comment| %>
+        <p><%= comment.comment %></p>
+      <% end %>
+      </ul>
+    <% end %>
+
+    <p> <%= link_to "Comment", new_post_comment_path(post) %></p>
+
   <% end %>
+
+
 <% else %>
   <p> No Posts Yet </p>
 <% end %>

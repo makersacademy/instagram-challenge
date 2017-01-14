@@ -9,13 +9,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(permitted_params)
+    @post = Post.create(permitted_posts_params)
     redirect_to posts_path
   end
 
   private
 
-  def permitted_params
+  def permitted_posts_params
     params.require(:post).permit(:description)
   end
 
