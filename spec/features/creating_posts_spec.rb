@@ -11,4 +11,12 @@ feature 'Creating posts' do
     expect(page).to have_content('Burritos are a mans best friend')
     expect(page).to have_css("img[src*='burrito.jpg']")
   end
+
+  scenario 'user must add photos to posts' do
+    visit '/posts'
+    click_link 'New post'
+    fill_in 'Caption', with: 'Burritos are a mans best friend'
+    click_button 'Create post'
+    expect(page).to have_content "Post not saved. You must have and image and a caption."
+  end
 end

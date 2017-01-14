@@ -11,7 +11,7 @@ feature 'posts' do
 
   context 'posts have been added' do
     before do
-      Post.create(caption:"My breakfast")
+      new_post = create(:post, caption: "My breakfast")
     end
     scenario 'posts are displayed' do
       visit '/posts'
