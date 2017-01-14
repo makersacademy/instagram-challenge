@@ -35,6 +35,19 @@ feature 'photos' do
       expect(page).to have_css 'img#show-photo'
       expect(current_path).to eq "/photos/#{@photo.id}"
     end
+
+    it 'should not allow another user to edit a particular photo' do
+      click_link('Sign out')
+      visit('/')
+      click_link('Sign up')
+      fill_in('Email', with: 'an@other.com')
+      fill_in('Password', with: 'another')
+      fill_in('Password confirmation', with: 'another')
+      click_button('Sign up')
+      visit('/')
+      click_link('Posh Coffee')
+      expect{ click_link('Delete') }.not_to change{Photo.count}
+    end
   end
 
   context 'editing & deleting photos' do

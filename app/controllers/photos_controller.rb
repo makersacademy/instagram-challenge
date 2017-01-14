@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
+  before_action :photo_belongs_to_current_user?, :only => [:edit, :update, :destroy]
 
   def index
     @photos = Photo.all
@@ -27,17 +28,14 @@ class PhotosController < ApplicationController
   end
 
   def edit
-    @photo = Photo.find(params[:id])
   end
 
   def update
-    @photo = Photo.find(params[:id])
     @photo.update(photo_params)
     redirect_to photo_path(@photo)
   end
 
   def destroy
-    @photo = Photo.find(params[:id])
     @photo.destroy
     flash[:notice] = "Photo deleted"
     redirect_to photos_path
@@ -47,6 +45,14 @@ class PhotosController < ApplicationController
 
   def photo_params
     params.require(:photo).permit(:name, :image)
+  end
+
+  def photo_belongs_to_current_user?
+    @photo = Photo.find(params[:id])
+    if current_user.id != @photo.user_id
+      flash[:notice] = "Cannot edit or delete a photo you did not create"
+      redirect_to root_path
+    end
   end
 
 end
