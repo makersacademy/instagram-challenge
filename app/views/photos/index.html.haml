@@ -2,6 +2,9 @@
   - @photos.each do |photo|
     = link_to photo.title, photo_path(photo)
     %p= photo.description
+    - photo.comments.each do |comment|
+      %p= comment.thoughts
+    = link_to "Comment on #{photo.title}", new_photo_comment_path(photo)
     = link_to "Edit #{photo.title}", edit_photo_path(photo)
     = link_to "Delete #{photo.title}", photo_path(photo), method: :delete
 - else
