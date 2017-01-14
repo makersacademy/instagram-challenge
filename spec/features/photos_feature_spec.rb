@@ -31,4 +31,14 @@ feature 'photos' do
       expect(current_path).to eq '/photos'
     end
   end
+
+  context 'viewing photos' do
+    let!(:photo) { Photo.create(description: 'A fun trip to the beach!')}
+
+    scenario 'lets a user view a photo in full size' do
+      visit '/photos'
+      click_link 'A fun trip to the beach!'
+      expect(page).to have_content "A fun trip to the beach!"
+    end
+  end
 end
