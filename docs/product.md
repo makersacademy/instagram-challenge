@@ -49,6 +49,7 @@ As a user,
 To preserve my artistic integrity,
 I don't want anyone else to be able to rename or delete my photos
 
+---
 
 As a user,
 So that I can show my love,
