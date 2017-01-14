@@ -11,13 +11,48 @@ Instructions
 
 Task
 -----
-
-Build Instagram: Simple huh!
-
-Bonus if you can write your own set of sensible user stories!
-
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+```
+As an potential customer
+In order to become a user
+I want to be able to sign up to the site
+```
+```
+As an potential customer
+In order to become a user and avoid filling out a form
+I want to be able to sign up to the site using my Facebook account
+```
+```
+As a user
+In order to use the site
+I want to be able to log into the site
+```
+```
+As a user
+In order to avoid filling out a form
+I want to be able to log into the site using my Facebook account
+```
+```
+As a user
+In order to get value out of the site
+I want to be able to add pictures
+```
+```
+As a signed in user
+In order to get value out of the site
+I want to be able to see pictures on the site
+```
+```
+As a user
+In order to interact with my pictures
+I want it to be possible to add a comment  
+```
+```
+As a user
+In order to interact with my pictures
+I want it to be possible to like a picture
+```
+```
+As a user
+In order to prevent other people from using my profile
+I want to be able to log out
+```
