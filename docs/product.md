@@ -42,13 +42,13 @@ As a signed-up user,
 So that I can carry on using IC,
 I want to be able to sign in
 
+As a user with a Facebook account,
+So that I can start using IC with minimum hassle,
+I want to be able to sign in with my Facebook account
+
 As a signed-up user,
 So that noone else can use my IC account,
 I want to be able to sign out
-
-As a signed-up user,
-So that I have a nuclear option,
-I want to be able to delete my account, and all the data associated with it.
 
 ---
 
