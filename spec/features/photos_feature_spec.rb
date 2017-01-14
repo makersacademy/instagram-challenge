@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'web_helpers'
 
 feature 'photos' do
 
@@ -12,6 +13,7 @@ feature 'photos' do
 
   context 'photos have been added' do
     before do
+      sign_up
       visit '/photos'
       click_link('Add a photo')
       fill_in 'Name', with: 'Posh Coffee'
@@ -38,6 +40,7 @@ feature 'photos' do
   context 'editing & deleting photos' do
 
     before do
+      sign_up
       visit '/photos'
       click_link('Add a photo')
       fill_in 'Name', with: 'My adorable cat'
