@@ -1,23 +1,26 @@
+
 <% if @posts.any? %>
 
   <% @posts.each do |post| %>
+  <div class="post">
+    <%= image_tag post.image.url(:medium) %>
     <p> <%= post.description %> <p>
-
+    <p> <%= link_to "Comment", new_post_comment_path(post) %></p>
     <% if post.comments.any? %>
       <ul>
       <% post.comments.all.each do |comment| %>
-        <p><%= comment.comment %></p>
+        <li><%= comment.comment %></li>
       <% end %>
       </ul>
     <% end %>
 
-    <p> <%= link_to "Comment", new_post_comment_path(post) %></p>
-
+  </div>
   <% end %>
 
 
 <% else %>
   <p> No Posts Yet </p>
 <% end %>
+
 
 <%= link_to "Post a new photo", new_post_path %>
