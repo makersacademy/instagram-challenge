@@ -39,11 +39,27 @@ feature 'restaurants' do
   #     end
   # end
 
-  # context 'editing posts' do
-  #   before { create_picture }
-  #   scenario 'let a user edit a post' do
-  #     visit '/pictures'
-  #     click_link 'Edit Picture'
-  #   end
-  # end
+  # <img src="/system/pictures/images/000/000/001/medium/12237150_1660612320873215_497599594_n.jpg?1484400621" alt="12237150 1660612320873215 497599594 n">
+
+  # /html/body/a/img
+
+  # html/body/a
+
+  # a.picture:nth-child(1) > img:nth-child(1)
+
+  context 'editing posts' do
+    before { create_picture }
+    scenario 'let a user edit a post' do
+      visit '/pictures'
+      # find(:css, 'a.picture:nth-child(1) > img:nth-child(1)').click
+      # find_by_id("12237150 1660612320873215 497599594 n")[:alt].click
+      # find(:xpath, "html/body/a/..").click
+      click_link '1'
+      click_link 'Edit Picture'
+      fill_in 'picture_caption', with: 'Cute cat'
+      click_button 'Update Picture'
+      expect(page).to have_content('Cute cat')
+      expect(page).not_to have_content('This is my cat')
+    end
+  end
 end
