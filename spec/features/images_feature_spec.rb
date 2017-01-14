@@ -19,4 +19,17 @@ feature 'images' do
       expect(page).to have_content('Flower')
     end
   end
+
+  context 'an image can be deleted' do
+    scenario 'a user clicks the delete image button to remove image post and image' do
+      visit '/images'
+      click_link 'Add an image'
+      fill_in 'Title', with: "Flower"
+      attach_file("image_image", Rails.root + "spec/features/files/flower.jpg")
+      click_button 'Upload Image'
+      click_link 'Delete Image'
+      expect(page).not_to have_content('Flower')
+    end
+  end
+
 end
