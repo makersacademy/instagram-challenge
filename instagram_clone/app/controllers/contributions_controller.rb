@@ -4,6 +4,7 @@ class ContributionsController < ApplicationController
   end
 
   def new
+    @contribution = Contribution.new
   end
 
   def create
@@ -12,7 +13,7 @@ class ContributionsController < ApplicationController
   end
 
   def contribution_params
-    params.require(:contribution).permit(:comment)
+    params.require(:contribution).permit(:image, :comment)
   end
 
 end
