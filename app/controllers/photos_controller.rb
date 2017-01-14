@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    Photo.create(photos_params)
+    Photo.create(photo_params)
     redirect_to '/photos'
   end
 
@@ -15,9 +15,19 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
   end
 
+  def edit
+    @photo = Photo.find(params[:id])
+  end
+
+  def update
+    @photo = Photo.find(params[:id])
+    @photo.update(photo_params)
+    redirect_to '/photos'
+  end
+
   private
 
-  def photos_params
+  def photo_params
     params.require(:photo).permit(:description, :image)
   end
 
