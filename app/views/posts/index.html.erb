@@ -1,7 +1,11 @@
-<% if Post.all.any? %>
-  <% Post.all.each do |post| %>
-    <%= image_tag(post.image.url(:medium), size: "400x400") %>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+
+    <%= link_to post, id:("image-"+post.id.to_s) do %>
+      <%= image_tag(post.image.url(:medium), size: "400x400") %>
+    <% end %>
     <h3><%= post.caption %></h3>
+
   <% end %>
 <% else %>
   <h1>No posts yet</h1>

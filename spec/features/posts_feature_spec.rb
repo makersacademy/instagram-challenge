@@ -10,12 +10,19 @@ feature 'posts' do
   end
 
   context 'posts have been added' do
+
     before do
       new_post = create(:post, caption: "My breakfast")
     end
+
     scenario 'posts are displayed' do
       visit '/posts'
       expect(page).to have_content "My breakfast"
+    end
+
+    scenario 'viewing an individual post' do
+      visit '/posts'
+      click_link 'image-1'
     end
   end
 
