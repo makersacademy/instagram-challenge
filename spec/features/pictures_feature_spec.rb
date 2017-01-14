@@ -8,4 +8,16 @@ feature 'restaurants' do
       expect(page).to have_link 'Add a picture'
     end
   end
+
+  context 'pictures have been added' do
+    before do
+      Picture.create(caption: 'This is my cat')
+    end
+
+    scenario 'display pictures' do
+      visit '/pictures'
+      expect(page).to have_content('This is my cat')
+      expect(page).not_to have_content('No pictures yet')
+    end
+  end
 end
