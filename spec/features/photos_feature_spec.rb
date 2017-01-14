@@ -44,6 +44,18 @@ feature 'photos' do
       end
     end
 
+    context 'viewing a single post' do
+
+      scenario 'lets a user click on an image to view that post' do
+        add_second_photo
+        visit('/photos')
+        find(:css, "img[src*='another']").click
+        expect(page).to have_css("img[src*='another']")
+        expect(page).to have_content('Another photo')
+        expect(page).not_to have_content("Travelling")
+      end
+    end
+
   end
 
 end

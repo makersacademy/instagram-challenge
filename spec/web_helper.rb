@@ -5,6 +5,13 @@ def add_photo
   click_button('Create Photo')
 end
 
+def add_second_photo
+  visit('/photos/new')
+  fill_in 'Caption', with: 'Another photo'
+  attach_file("photo_image", Rails.root + "spec/fixtures/another.jpg")
+  click_button('Create Photo')
+end
+
 def sign_up
   visit('/')
   click_link('Register')
