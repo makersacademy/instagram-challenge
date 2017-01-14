@@ -1,6 +1,17 @@
 # Instagram Clone
 
 ## DONE
+As a user,
+So that I can identify a photo without looking at it,
+I want to be able to name a photo
+
+As a user,
+So that I correct things if I make a mistake,
+I want to be able to rename a photo
+
+As a user,
+So that I can take down a photo if I want,
+I want to be able to delete a photo
 
 ## TODO
 
@@ -13,14 +24,6 @@ So that other people can see one of my photos,
 I want to be able to see a particular photo
 
 As a user,
-So that I can identify a photo without looking at it,
-I want to be able to name a photo
-
-As a user,
-So that I correct things if I make a mistake,
-I want to be able to rename a photo
-
-As a user,
 To preserve my artistic integrity,
 I don't want anyone else to be able to rename or delete my photos
 
@@ -28,9 +31,6 @@ As a user,
 So that I can see if this site is cool,
 I want to be able to see photos without having to sign up
 
-As a user,
-So that I can take down a photo if I want,
-I want to be able to delete a photo
 
 ---
 

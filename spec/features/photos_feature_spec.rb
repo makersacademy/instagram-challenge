@@ -63,4 +63,16 @@ feature 'photos' do
 
   end
 
+  context 'deleting photos' do
+
+    let!(:photo){ Photo.create(name: 'My adorable cat') }
+
+    it 'should allow a user to delete a photo' do
+      visit '/photos'
+      expect{ click_link('Delete My adorable cat') }.to change{Photo.count}.by(-1)
+      expect(page).to_not have_content 'Delete My adorable cat'
+      expect(page).to have_content 'Photo deleted'
+    end
+  end
+
 end
