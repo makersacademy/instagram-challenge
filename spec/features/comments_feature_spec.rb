@@ -8,7 +8,11 @@ feature 'commenting' do
   end
 
   scenario "allows users to leave a comment on a photo" do
-
+    visit('/photos')
+    click_link('Comment')
+    fill_in 'Comment:', with: "Lookin' good"
+    click_button('Leave comment')
+    expect(page).to have_content("Looking' good")
   end
 
 end
