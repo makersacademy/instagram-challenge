@@ -1,11 +1,11 @@
-require 'rails-helper'
+require 'rails_helper'
 
 feature "Pictures" do
 
   context "user should be able to upload pictures" do
 
     scenario do
-      visit '/pictures/'
+      visit '/pictures'
       expect(page).to have_content "Add a new pik"
       click_link "Add a new pik"
       page.attach_file('image_upload', Rails.root + '/spec/features/test.png')

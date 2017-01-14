@@ -31,9 +31,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'carrierwave', '~> 1.0'
+gem 'haml'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -52,7 +54,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
-  
+
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
