@@ -3,7 +3,7 @@ Rails.application.routes.draw do
        sessions: 'users/sessions',
        registrations: 'users/registrations'
      }
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  # root to: "user#index"
+  resources :pictures
+  root to: "pictures#index"
 
 end
