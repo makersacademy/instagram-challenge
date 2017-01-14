@@ -4,6 +4,7 @@ feature 'Creating posts' do
   scenario 'a user can create a post' do
     visit '/posts'
     click_link 'New post'
+    expect(page.current_path).to eq '/posts/new'
     fill_in 'Caption', with: 'Burritos are a mans best friend'
     attach_file('Image', 'spec/files/images/burrito.jpg')
     click_button 'Create post'
