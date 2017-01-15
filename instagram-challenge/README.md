@@ -58,6 +58,10 @@ So that I can rectify a mistake
 I want to be able to un-like a post I have previously liked
 ```
 
+###Outstanding Steps
+* Deploy on Heroku
+* Store images on AWS
+
 ###Installation
 1. Fork this repository
 2. Run `bundle install` to get all required gems
