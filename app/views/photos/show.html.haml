@@ -6,7 +6,8 @@
   = link_to "Rename", edit_photo_path(@photo)
   = link_to "Delete", photo_path(@photo), method: :delete
 
-- if @photo.comments.any?
+- if @comments.any?
   %h3 Comments:
   - @photo.comments.each do |comment|
+    %h4= comment.user.email + " on " + comment.created_at.strftime("%e %b %Y")
     %p= comment.text
