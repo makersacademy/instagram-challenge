@@ -19,6 +19,7 @@ feature 'photos' do
       expect(page).to have_content('A perfect belated birthday moment!')
       expect(page).not_to have_content('No photos yet')
     end
+
   end
 
   context 'creating photos' do
@@ -31,5 +32,14 @@ feature 'photos' do
       expect(current_path).to eq '/photos'
     end
   end
+
+  # context 'viewing photos' do
+  #   let!(:sunset){ Photo.create(caption: 'A beautifull sunset') }
+  #
+  #   scenario 'let a user view a photo ' do
+  #     visit '/photos'
+  #     click_link '
+  #   end
+  # end
 
 end

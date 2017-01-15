@@ -11,12 +11,13 @@ class PhotosController < ApplicationController
   def create
     Photo.create!(photo_params)
     redirect_to '/photos'
+
   end
 
   private
 
   def photo_params
-    params.require(:photo).permit(:caption)
+    params.require(:photo).permit(:caption, :insta_photo, :insta_photo_cache)
   end
 
 end
