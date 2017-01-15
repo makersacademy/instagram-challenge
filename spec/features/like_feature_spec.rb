@@ -24,7 +24,6 @@ feature 'likes' do
       visit '/'
       click_link("#{@photo.name}")
       click_link('Like')
-      # require "pry"; binding.pry
       expect{ click_link('Unlike') }.to change{Like.count}.by -1
     end
 
