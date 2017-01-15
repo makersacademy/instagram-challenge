@@ -8,4 +8,8 @@ class LikesController < ApplicationController
     redirect_to "/photos/#{@photo.id}"
   end
 
+  def has_liked?(photo)
+    liked_photos.include? photo
+  end
+
 end

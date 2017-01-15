@@ -22,4 +22,9 @@ feature 'liking a photo' do
     expect(page).to have_content('2 Likes')
   end
 
+  scenario 'a user cannot like a photo more than once' do
+    click_button 'Like'
+    expect(page).not_to have_selector(:link_or_button, 'Like')
+  end
+
 end

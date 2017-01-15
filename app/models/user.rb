@@ -2,6 +2,8 @@ class User < ApplicationRecord
 
   has_many :comments
   has_many :photos
+  has_many :liked_photos, through: :likes, source: :photo
+  has_many :likes
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -17,5 +19,9 @@ class User < ApplicationRecord
     # uncomment the line below to skip the confirmation emails.
     # user.skip_confirmation!
     end
+  end
+
+  def has_liked?(photo)
+    liked_photos.include? photo
   end
 end
