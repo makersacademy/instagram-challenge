@@ -32,4 +32,17 @@ feature 'posts' do
       expect(current_path).to eq '/posts'
     end
   end
+
+  context 'viewing posts' do
+
+    let!(:cake){ Post.create(caption:'Cake') }
+
+    scenario 'lets a user view a post' do
+      visit '/posts'
+      click_link 'Cake'
+      expect(page).to have_content 'Cake'
+      expect(current_path).to eq "/posts/#{cake.id}"
+    end
+
+  end
 end
