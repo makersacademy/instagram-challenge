@@ -5,3 +5,11 @@ def add_post
   attach_file("post_image", "#{Rails.root}/spec/beach.jpg")
   click_button "Create Post"
 end
+
+def sign_up
+  visit '/users/sign_up'
+  fill_in "Email", with: "test@test.com"
+  fill_in "Password", with: "testingiscool"
+  fill_in "Password confirmation", with: "testingiscool"
+  click_button "Sign up"
+end

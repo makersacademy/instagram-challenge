@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Comments' do
 
   scenario "User can add a comment to a photo" do
-    visit '/posts'
+    sign_up
     add_post
     click_link "Comment"
     fill_in "Add a comment", with: "Beautiful"
