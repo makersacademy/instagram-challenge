@@ -46,6 +46,14 @@ feature 'photos' do
       expect(page).not_to have_css "img[src*='sunrise.jpg']"
     end
 
+    scenario 'user cannot delete another users photo' do
+      add_photo
+      click_link "Sign out"
+      sign_up2
+      click_photo
+      expect(page).not_to have_selector(:link_or_button, 'Delete photo')
+    end
+
     scenario 'flash message appears' do
       add_photo
       find(".photo").click

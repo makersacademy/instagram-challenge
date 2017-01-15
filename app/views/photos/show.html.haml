@@ -11,4 +11,6 @@
 - if @comments.all.any?
   - @comments.each do |comment|
     %p= comment.text
-= link_to "Delete photo", photo_path, method: :delete
+
+-if current_user.id == @photo.user_id
+  = link_to "Delete photo", photo_path, method: :delete
