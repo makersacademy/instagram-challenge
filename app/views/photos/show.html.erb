@@ -3,4 +3,10 @@
 <%= link_to "Edit photo", edit_photo_path(@photo) %>
 <%= link_to "Delete photo", photo_path(@photo), method: :delete %>
 <hr>
+<% if @photo.comments.any? %>
+  <% @photo.comments.all.each do |comment| %>
+      <%= comment.remarks %>
+      <br>
+      <% end %>
+  <% end %>
   <%= link_to "Add comment", new_photo_comment_path(@photo) %>
