@@ -8,6 +8,10 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
+
+gem 'omniauth-facebook'
+gem 'envyable'
+
 # Use Haml as markup language in views
 gem 'haml'
 # Paperclip to add images
