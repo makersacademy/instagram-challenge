@@ -27,12 +27,23 @@ feature 'contributions' do
     scenario 'prompts user to fill out a form, then displays the new contribution' do
       visit '/contributions'
       click_link 'Add a contribution'
-      attach_file 'Image', @image
+      # attach_file 'Image', @image
       fill_in 'Comment', with: 'A black cat'
       click_button 'Create Contribution'
       expect(page).to have_content 'A black cat'
-      expect(page).to have_selector("img")
+      # expect(page).to have_selector("img")
       expect(current_path).to eq '/contributions'
+    end
+  end
+
+  context 'display contributions indivisually' do
+    let!(:contribution){ Contribution.create(comment: 'A black cat') }
+
+    scenario 'lets a user view a contribution' do
+      visit '/contributions'
+      click_link 'view all'
+      expect(page).to have_content 'A black cat'
+      expect(current_path).to eq "/contributions/#{contribution.id}"
     end
   end
 

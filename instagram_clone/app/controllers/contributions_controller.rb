@@ -12,6 +12,10 @@ class ContributionsController < ApplicationController
     redirect_to '/contributions'
   end
 
+  def show
+    @contribution = Contribution.find(params[:id])
+  end
+
   def contribution_params
     params.require(:contribution).permit(:image, :comment)
   end
