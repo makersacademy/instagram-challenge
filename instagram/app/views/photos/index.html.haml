@@ -2,6 +2,7 @@
   - @photos.each do |photo|
     = image_tag photo.image.url(:medium)
     %h2= link_to photo.caption, photo_path(photo)
+    %p= pluralize photo.likes.count, 'like'
     - if photo.comments.any?
       - photo.comments.each do |comment|
         %p #{comment.thoughts}

@@ -6,6 +6,7 @@ class Photo < ApplicationRecord
 
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   def build_with_user(attributes = {}, user)
     attributes[:user] ||= user
