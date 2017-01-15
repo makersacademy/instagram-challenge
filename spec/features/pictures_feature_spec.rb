@@ -16,7 +16,7 @@ feature "pictures" do
 
 
   context "no pictures have been added" do
-    scenario "should display a prompt to add a picture" do
+    scenario "I want to see a prompt to add a picture" do
       visit "/pictures"
         expect(page).to have_content("No pictures yet")
         expect(page).to have_link("Add a picture")
@@ -27,7 +27,7 @@ feature "pictures" do
     before do
       add_picture(picture_1)
     end
-    scenario "display pictures" do
+    scenario "I want to see pictures" do
       visit '/pictures'
       expect(page).to have_content("where do tests go?")
       expect(page).not_to have_content("No pictures yet")
@@ -36,7 +36,7 @@ feature "pictures" do
   end
 
   context "adding pictures" do
-    scenario "prompts user to fill out a form, then displays the pictures" do
+    scenario "I want to add a picture, then see it" do
       add_picture(picture_1)
       expect(current_path).to eq '/pictures'
       expect(page).to have_content "where do tests go?"
@@ -49,7 +49,7 @@ feature "pictures" do
       add_picture(picture_1)
       add_picture(picture_2)
     end
-    scenario "lets a user view a picture" do
+    scenario "I want to view a picture on individual page" do
       visit '/pictures'
       click_link("Test2")
       expect(page).not_to have_content("where do tests go?")
@@ -61,7 +61,7 @@ feature "pictures" do
     before do
       add_picture(picture_2)
     end
-    scenario "lets user edit a picture description" do
+    scenario "I want to edit a picture description" do
       visit '/pictures'
       click_link("Test2")
       click_link("Edit")
@@ -73,14 +73,13 @@ feature "pictures" do
   end
 
   context "deleting pictures" do
-    scenario "lets user delete a picture", :js => true do
+    scenario "I want to delete a picture", :js => true do
       visit '/pictures'
       add_picture(picture_2)
       click_link("Test2")
       click_link("Delete")
       page.driver.browser.switch_to.alert.accept
-
-
+      expect(page).to have_content "Picture has been deleted succesfully"
       expect(page).to have_content "No pictures yet"
       expect(page).not_to have_content "Friendship is magic!"
     end
