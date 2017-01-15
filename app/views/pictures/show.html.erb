@@ -1,5 +1,6 @@
 
 <%= image_tag @picture.image.url(:medium) %>
+<p> Added by: <%= @picture.user.email %></p>
 <p><%= @picture.description%></p>
   <% if @picture.belongs_to?(current_user) %>
     <%= link_to "Edit", edit_picture_path(@picture) %>
@@ -15,7 +16,7 @@
   <% if comment.belongs_to?(current_user) %>
     <%= link_to 'x', picture_comment_path(@picture, comment), method: :delete %>
   <% end %>
-  <%= comment.content %></p>
+  <%= comment.user.email %> said: <%= comment.content %></p>
 <% end %>
 
 <% if current_user %>
