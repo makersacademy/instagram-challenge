@@ -18,6 +18,7 @@ feature 'User can sign in and out' do
     before do
       visit('/')
       click_link('Sign up')
+      fill_in ('Username'), with: 'amanda'
       fill_in('Email', with: 'test@test.com')
       fill_in('Password', with: '123456')
       fill_in('Password confirmation', with: '123456')
