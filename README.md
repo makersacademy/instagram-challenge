@@ -1,23 +1,33 @@
-Instagram Challenge
-===================
+# Punstagram Challenge
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Instagram: but with puns! A picture uploading app with options for commenting and signing up/siging in (even via Facebook as well).
 
-Task
------
+## How to use the app
 
-Build Instagram: Simple huh!
+* In the terminal, git clone https://github.com/Unicornelia/instagram-challenge.
+* In the terminal, cd instagram-challenge.
+* In the terminal, create your databases by running the bin/rake db:create command.
+* In the terminal, migrate your databases by running the bin/rake db:migrate command.
 
-Bonus if you can write your own set of sensible user stories!
+If you would like to have functionality that allows a user to sign in using facebook, please create a 'config/env.yml' file and navigate to 'https://developers.facebook.com/' and log in. After creating a facebook login product add your API key values to the 'env.yml' file being sure to name the key the same as displayed in the 'config/secrets.yml' file.
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+* In the terminal, run the rails server by running the bin/rails s command.
+* Navigate to http://localhost:3000/ in the browser.
+* Enjoy using the app.
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## Technologies Used
+- Ruby on Rails framework
+- envyable gem was used to help hide sensitive information
+- devise gem was used to create the user model with a lot of in built functionality
+- omniauth-facebook gem was used to allow third-party authentication with facebook
+- paperclip gem for uploading pictures
+- interface is created using haml and css
 
-Bonus if you can add filters!
+## Instructions for Running the Tests
+
+* In the terminal, cd instagram-challenge.
+* run rspec command
+
+## Interface
+
+![Interface](/images/punstagram.png)
