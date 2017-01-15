@@ -26,6 +26,13 @@ class ContributionsController < ApplicationController
     redirect_to '/contributions'
   end
 
+  def destroy
+    @contribution = Contribution.find(params[:id])
+    @contribution.destroy
+    flash[:notice] = 'Deleted'
+    redirect_to '/contributions'
+  end
+
   def contribution_params
     params.require(:contribution).permit(:image, :comment)
   end

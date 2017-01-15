@@ -60,4 +60,14 @@ feature 'contributions' do
     end
   end
 
+  context 'deleting contributions' do
+    before { Contribution.create(comment: 'A black cat')}
+    scenario 'let a user delete a contribution' do
+      visit '/contributions'
+      click_link 'delete'
+      expect(page).not_to have_content 'A black cat'
+      expect(page).to have_content 'Deleted'
+    end
+  end
+
 end
