@@ -1,10 +1,14 @@
 - if @images.any?
   - @images.each do |image|
-    = image.title
-    = image_tag image.image.url(:thumb)
+    %a{:href => image_path(image)}
+      %img{:src => image.image.url(:thumb), :id =>image.id}
+      %p
+      =image.title
+      %p
     = link_to "Delete Image", image_path(image), method: :delete
 
 - else
   No Images Yet!
-
+%br
+%br
 %a(href='images/new') Add an image

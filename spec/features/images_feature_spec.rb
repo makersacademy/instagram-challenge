@@ -7,26 +7,26 @@ feature 'images' do
       expect(page).to have_content "No Images Yet!"
       expect(page).to have_link 'Add an image'
     end
+
+    scenario 'and image can be viewed' do
+      add_image
+      click_link ('Flower')
+      expect(page).to have_content('Flower')
+      expect(page).to have_content('Add a comment')
+    end
+
   end
 
   context 'an image can be uploaded' do
     scenario 'a creates an image post' do
-      visit '/images'
-      click_link 'Add an image'
-      fill_in 'Title', with: "Flower"
-      attach_file("image_image", Rails.root + "spec/features/files/flower.jpg")
-      click_button 'Upload Image'
+      add_image
       expect(page).to have_content('Flower')
     end
   end
 
   context 'an image can be deleted' do
     scenario 'a user clicks the delete image button to remove image post and image' do
-      visit '/images'
-      click_link 'Add an image'
-      fill_in 'Title', with: "Flower"
-      attach_file("image_image", Rails.root + "spec/features/files/flower.jpg")
-      click_button 'Upload Image'
+      add_image
       click_link 'Delete Image'
       expect(page).not_to have_content('Flower')
     end
