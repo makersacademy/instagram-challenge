@@ -1,6 +1,70 @@
 Instagram Challenge
 ===================
 
+User stories
+
+
+Adding a photo
+
+1
+As a photo owner that would like to post my photo to the world,
+I can view a page where photos will appear.
+
+2
+As a photo owner that would like to post my photo to the world,
+I can upload an image to my index page.
+
+3
+As a photo owner that would like to post my photo to the world,
+I can delete an image on my index page.
+
+4
+As a photo viewer I can look at all of the photos on the instagram site.
+
+
+User accounts
+
+1
+As a photo owner I can log into my account with a username and email.
+
+2
+As a photo owner I can log into my account with facebook.
+
+3
+As a photo owner I can log out of my account with facebook.
+
+4
+As a photo owner I can add and delete photos when I am logged into my account.
+
+
+Adding a comment
+
+1
+As a photo owner that would like to share my photos with the world,
+Once I am logged in I can add a comment to my photos.
+
+2
+Once I am logged in I can edit comments for my photos.
+I cannot edit comments when logged out.
+
+3
+Once I am logged in I can delete comments for my photos.
+I cannot delete comments when I am logged out
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Instructions
 -------
 * Challenge time: one weekend
