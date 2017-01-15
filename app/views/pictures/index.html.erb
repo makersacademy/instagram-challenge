@@ -1,11 +1,14 @@
+<%= link_to 'Add a picture', new_picture_path %>
 <% if @pictures.length == 0 %>
   <h2>No pictures have been added yet</h2>
 <% else %>
- <%  @pictures.each do |picture| %>
-  <div id='img'>
-    <%= image_tag picture.image.url(:medium)%>
-  </div>
- <% end %>
+  <% @pictures.reverse.each do |picture|  %>
+    <ul>
+      <li>
+         <div id='img'>
+           <%= image_tag picture.image.url(:medium)%>
+         </div>
+       </li>
+     </ul>
+  <% end %>
 <% end %>
-
-<%= link_to 'Add a picture', new_picture_path %>
