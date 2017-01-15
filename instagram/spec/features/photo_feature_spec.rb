@@ -4,7 +4,7 @@ feature 'photos' do
   before do
     sign_up
   end
-  
+
   context 'no photos have been added' do
     scenario 'should display a prompt to add a photo' do
       visit '/photos'
@@ -68,5 +68,14 @@ feature 'photos' do
       expect(page).to have_content 'Photo deleted successfully'
       expect(page).not_to have_content 'My Lunch'
     end
+    scenario "you cannot delete someone else's photos" do
+      post_photo
+      click_link 'Sign out'
+      sign_up(email: 'test@test.com')
+      click_link 'My Lunch'
+      click_link 'Delete photo'
+      expect(page).to have_content "You can't delete someone else's photo!"
+    end
   end
+
 end

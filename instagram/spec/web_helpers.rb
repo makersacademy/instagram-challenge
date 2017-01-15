@@ -6,11 +6,11 @@ def post_photo
   click_button 'Post'
 end
 
-def sign_up
+def sign_up(email: 'george@example.com', password: '123456')
   visit '/'
   click_link 'Sign up'
-  fill_in 'Email', with: 'george@example.com'
-  fill_in 'Password', with: '123456'
-  fill_in 'Password confirmation', with: '123456'
+  fill_in 'Email', with: email
+  fill_in 'Password', with: password
+  fill_in 'Password confirmation', with: password
   click_button 'Sign up'
 end
