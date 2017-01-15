@@ -7,14 +7,14 @@ feature 'liking post' do
     add_comment
   end
 
-  scenario 'a user can like a post, which updates the post like count' do
+  scenario 'a user can like a post, which updates the post like count', js: true do
     visit '/posts'
     click_link 'image'
     click_link 'Like'
     expect(page).to have_content('1 Like')
   end
 
-  scenario 'a post gets multiple likes' do
+  scenario 'a post gets multiple likes', js: true do
     visit '/posts'
     click_link 'image'
     click_link 'Like'
@@ -25,5 +25,5 @@ feature 'liking post' do
     click_link 'Like'
     expect(page).to have_content('2 Likes')
   end
-  
+
 end
