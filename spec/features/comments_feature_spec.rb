@@ -11,6 +11,16 @@ feature 'commenting' do
     expect(page).to have_content('Cute!')
   end
 
+  scenario 'a comment is displayed with the username of the user who posted it' do
+    sign_up
+    create_picture
+    click_link '1'
+    click_link 'add a comment'
+    fill_in 'Thoughts', with: 'Cute!'
+    click_button 'done'
+    expect(page).to have_content ('amanda | Cute!')
+  end
+
   context 'deleting comments' do
     scenario 'allows users to delete their comment' do
       sign_up
