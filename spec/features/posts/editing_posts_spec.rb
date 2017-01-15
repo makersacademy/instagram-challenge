@@ -2,8 +2,11 @@ require 'rails_helper'
 
 feature 'editing posts' do
 
+  let(:user) { create(:user) }
+  
   before do
-    new_post = create(:post, caption: "My breakfast")
+    login_as(user, :scope => :user)
+    new_post = create(:post, caption: "My breakfast", user_id: user.id)
   end
 
   scenario 'posts can be edited' do

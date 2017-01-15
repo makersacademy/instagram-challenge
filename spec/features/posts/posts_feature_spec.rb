@@ -1,7 +1,13 @@
 require 'rails_helper'
 
 feature 'posts' do
+
+  let(:user) { create(:user) }
+  
   context 'no posts have been added' do
+    before do
+      login_as(user, :scope => :user)
+    end
     scenario 'should display a prompt to add a post' do
       visit '/posts'
       expect(page).to have_content 'No posts yet'
@@ -11,7 +17,8 @@ feature 'posts' do
 
   context 'posts have been added' do
     before do
-      new_post = create(:post, caption: "My breakfast")
+      login_as(user, :scope => :user)
+      new_post = create(:post, caption: "My breakfast", user_id: user.id)
     end
 
     scenario 'posts are displayed' do

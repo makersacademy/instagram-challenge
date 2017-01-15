@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :login
+  has_many :posts, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -16,9 +17,9 @@ class User < ApplicationRecord
      end
   end
 
-  validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
+  validates :username, :presence => true, :uniqueness => { :case_sensitive => false },
+  length: { minimum: 5, maximum: 16 }
   validate :validate_username
-
   def validate_username
     if User.where(email: username).exists?
       errors.add(:username, :invalid)

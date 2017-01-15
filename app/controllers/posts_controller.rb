@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  # before_action :authenticate_user!, :except => [:index, :show]
+  before_action :authenticate_user!, :except => [:index, :show]
 
   def index
     @posts = Post.all
@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:notice] = "Post saved. Thank you."
       redirect_to @post
