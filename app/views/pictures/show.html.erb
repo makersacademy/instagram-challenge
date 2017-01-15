@@ -1,12 +1,13 @@
 <%= image_tag(@picture.image.url(:medium)) %>
 <p> <%= @picture.caption %> </h2>
-<%= link_to 'Edit', edit_picture_path(@picture) %>
-<%= link_to 'Delete', picture_path(@picture), method: :delete %>
+<%= link_to 'edit', edit_picture_path(@picture) %>
+<%= link_to 'delete', picture_path(@picture), method: :delete %>
 <%= link_to '😻', picture_likes_path(@picture), class: 'likes-link' %>
 <span class="likes_count"> <%= @picture.likes.count %> </span> <%= 'like'.pluralize(@picture.likes.count) %>
-<%= link_to 'Add a comment', new_picture_comment_path(@picture) %>
+<%= link_to 'add a comment', new_picture_comment_path(@picture) %>
 <% if @picture.comments.any? %>
   <% @picture.comments.each do |comment| %>
     <p><%= comment.thoughts %></p>
+    <%= link_to 'delete comment', picture_comment_path(@picture, comment), method: :delete %>
   <% end %>
 <% end %>

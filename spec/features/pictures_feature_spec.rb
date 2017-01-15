@@ -5,7 +5,7 @@ feature 'restaurants' do
     scenario 'should display a prompt to add a picture' do
       visit '/pictures'
       expect(page).to have_content 'No pictures yet'
-      expect(page).to have_link 'Add a picture'
+      expect(page).to have_link 'add a picture'
     end
   end
 
@@ -44,9 +44,9 @@ feature 'restaurants' do
       create_picture
       visit '/pictures'
       click_link '1'
-      click_link 'Edit'
+      click_link 'edit'
       fill_in 'picture_caption', with: 'Cute cat'
-      click_button 'Done'
+      click_button 'done'
       expect(page).to have_content('Cute cat')
       expect(page).not_to have_content('This is my cat')
     end
@@ -58,7 +58,7 @@ feature 'restaurants' do
       create_picture
       visit '/pictures'
       click_link '1'
-      click_link 'Delete'
+      click_link 'delete'
       expect(page).not_to have_content 'This is my cat'
       expect(page).to have_content 'This post has been deleted'
     end
@@ -68,9 +68,9 @@ feature 'restaurants' do
     scenario 'user tries to create post without uploading an image' do
       sign_up
       visit '/pictures'
-      click_link 'Add a picture'
+      click_link 'add a picture'
       fill_in 'picture_caption', with: 'This is my cat'
-      click_button 'Share'
+      click_button 'share'
       expect(page).to have_content('You must select a picture!')
     end
   end

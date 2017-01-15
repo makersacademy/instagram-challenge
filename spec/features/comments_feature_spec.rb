@@ -1,13 +1,27 @@
 require 'rails_helper'
 
-feature 'reviewing' do
+feature 'commenting' do
   scenario 'allows users to comment on a picture' do
     sign_up
     create_picture
     click_link '1'
-    click_link 'Add a comment'
+    click_link 'add a comment'
     fill_in 'Thoughts', with: 'Cute!'
-    click_button 'Done'
+    click_button 'done'
     expect(page).to have_content('Cute!')
+  end
+
+  context 'deleting comments' do
+    scenario 'allows users to delete their comment' do
+      sign_up
+      create_picture
+      click_link '1'
+      click_link 'add a comment'
+      fill_in 'Thoughts', with: 'Cute!'
+      click_button 'done'
+      click_link 'delete comment'
+      expect(page).to have_content('comment deleted')
+      expect(page).not_to have_content('Cute!')
+    end
   end
 end
