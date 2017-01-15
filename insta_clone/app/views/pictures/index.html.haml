@@ -1,9 +1,28 @@
 - if @pictures.any?
-  - @pictures.each do |picture|
-    %p=picture.user.email
-    %p=picture.location
-    %p=image_tag picture.image.url(:medium)
-    %p=picture.caption
-    %p= link_to "Delete", picture_path(picture), method: :delete
+  %ul{:class => "pictures"}
+    - @pictures.each do |picture|
+      %li{:class => "post"}
+        %p{:class => %w(username title)}=picture.user.email.split('@').first
+        %p{:class => %w(location)}=picture.location
+        %p=image_tag picture.image.url(:medium)
+        %p.likes
+          = link_to "Like", picture_likes_path(picture), class: 'likes-link'
+          %span.likes_count= picture.likes.count
+          = 'like'.pluralize picture.likes.count
+        %p.caption
+          - if picture.caption != ""
+            %span{:class => "username"}= picture.user.email.split('@').first
+            = picture.caption
+        %p.comment
+          - if picture.comments.any?
+            %ul{:class => "comments"}
+              - picture.comments.each do |comment|
+                %li{:class => "individual-comment"}
+                  %span{:class => "username"}= comment.user.email.split('@').first
+                  = comment.comment
+          - else
+            No comments yet
+        %p{:class => %w(link)}= link_to "Add a comment", new_picture_comment_path(picture)
+        %p{:class => %w(link)}= link_to "Delete", picture_path(picture), method: :delete
 - else
   No pictures yet

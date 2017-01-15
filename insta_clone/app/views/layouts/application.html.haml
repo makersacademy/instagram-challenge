@@ -6,12 +6,20 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %p.notice= notice
-    %p.alert= alert
-    - if user_signed_in?
-      = link_to "Sign out", destroy_user_session_path, method: :delete
-    - else
-      = link_to "Sign up", new_user_registration_path
-      = link_to "Sign in", new_user_session_path
-    = link_to "Upload a picture", new_picture_path
-    = yield
+    .menu-container
+      %ul{:class => "menu"}
+        %li{:id => "logo"} Instagram
+        - if user_signed_in?
+          %li{:class => "menu-list"}
+            = link_to "Sign out", destroy_user_session_path, method: :delete
+        - else
+          %li{:class => "menu-list"}
+            = link_to "Sign up", new_user_registration_path
+          %li{:class => "menu-list"}
+            = link_to "Sign in", new_user_session_path
+        %li{:class => "menu-list", :id => "upload"}
+          = link_to "Upload a picture", new_picture_path
+    .container
+      %p.notice= notice
+      %p.alert= alert
+      = yield

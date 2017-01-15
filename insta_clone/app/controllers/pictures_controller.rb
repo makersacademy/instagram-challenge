@@ -14,8 +14,14 @@ class PicturesController < ApplicationController
 
   def create
     user = current_user
-    user.pictures.create(picture_params)
-    redirect_to '/pictures'
+    @picture = user.pictures.create(picture_params)
+
+    if @picture.save
+      redirect_to '/pictures'
+    else
+      flash[:notice] = 'You must upload a picture'
+      render :new
+    end
   end
 
   def destroy

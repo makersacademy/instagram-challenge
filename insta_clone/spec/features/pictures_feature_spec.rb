@@ -36,9 +36,10 @@ feature 'pictures' do
     scenario 'prompts user to fill out form and display picture' do
       sign_up
       upload_picture
-      expect(page).to have_content('test@example.com')
+      expect(page).to have_content('test')
       expect(page).to have_content('Test caption')
       expect(page).to have_content('London')
+      expect(page).to have_css("img[src*='test-image']")
       expect(current_path).to eq('/pictures')
     end
   end
