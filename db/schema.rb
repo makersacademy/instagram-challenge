@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115155235) do
+ActiveRecord::Schema.define(version: 20170115155613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 20170115155235) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["picture_id"], name: "index_likes_on_picture_id", using: :btree
+  end
+
+  create_table "picture_hashtags", force: :cascade do |t|
+    t.integer "picture_id"
+    t.integer "hashtag_id"
+    t.index ["hashtag_id"], name: "index_picture_hashtags_on_hashtag_id", using: :btree
+    t.index ["picture_id"], name: "index_picture_hashtags_on_picture_id", using: :btree
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -74,5 +81,7 @@ ActiveRecord::Schema.define(version: 20170115155235) do
   add_foreign_key "comments", "pictures"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "pictures"
+  add_foreign_key "picture_hashtags", "hashtags"
+  add_foreign_key "picture_hashtags", "pictures"
   add_foreign_key "pictures", "users"
 end

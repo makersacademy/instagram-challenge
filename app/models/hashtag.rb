@@ -1,2 +1,0 @@
-class Hashtag < ApplicationRecord
-end

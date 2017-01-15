@@ -9,15 +9,22 @@
   </head>
 
   <body>
-    <%= notice %>
+    <div id='nav'>
+      <h1>InstaCat</h1>
+      <div id='sign-in-out-links'>
+        <% if user_signed_in? %>
+          <%= link_to 'sign out', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'sign in', new_user_session_path %>
+          <%= link_to 'sign up', new_user_registration_path %>
+          <%= link_to 'sign in with facebook', user_facebook_omniauth_authorize_path %>
+        <% end %>
+      </div>
+    </div>
     <br>
-    <% if user_signed_in? %>
-      <%= link_to 'sign out', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'sign in', new_user_session_path %>
-      <%= link_to 'sign up', new_user_registration_path %>
-      <%= link_to 'sign in with facebook', user_facebook_omniauth_authorize_path %>
-    <% end %>
-    <%= yield %>
+    <%= notice %>
+    <div id='container'>
+      <%= yield %>
+    </div>
   </body>
 </html>

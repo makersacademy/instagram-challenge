@@ -18,7 +18,7 @@ feature 'commenting' do
     click_link 'add a comment'
     fill_in 'Thoughts', with: 'Cute!'
     click_button 'done'
-    expect(page).to have_content ('amanda | Cute!')
+    expect(page).to have_content ('amanda // Cute!')
   end
 
   context 'deleting comments' do
