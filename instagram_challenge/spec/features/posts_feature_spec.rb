@@ -59,4 +59,17 @@ feature 'posts' do
     end
   end
 
+  context 'deleting posts' do
+
+    before { Post.create caption: 'Cake' }
+
+    scenario 'removes a post when a user clicks a delete link' do
+      visit '/posts'
+      click_link 'Delete Cake'
+      expect(page).not_to have_content 'Cake'
+      expect(page).to have_content 'Post deleted successfully'
+    end
+
+  end
+
 end
