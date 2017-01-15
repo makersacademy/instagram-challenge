@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'reviewing' do
   scenario 'allows users to comment on a picture' do
+    sign_up
     create_picture
     click_link '1'
     click_link 'Add a comment'

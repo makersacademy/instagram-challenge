@@ -10,11 +10,9 @@ feature 'restaurants' do
   end
 
   context 'pictures have been added' do
-    before do
-      create_picture
-    end
-
     scenario 'display pictures' do
+      sign_up
+      create_picture
       visit '/pictures'
       expect(page).to have_content('This is my cat')
       expect(page).not_to have_content('No pictures yet')
@@ -23,6 +21,7 @@ feature 'restaurants' do
 
   context 'posting pictures' do
     scenario 'user uploads images and writes caption, then the post is displayed' do
+      sign_up
       create_picture
       page.has_image?(src: './public/cat.png', alt: 'picture')
       expect(page).to have_content('This is my cat')
@@ -41,6 +40,7 @@ feature 'restaurants' do
 
   context 'editing posts' do
     scenario 'let a user edit a post' do
+      sign_up
       create_picture
       visit '/pictures'
       click_link '1'
@@ -54,6 +54,7 @@ feature 'restaurants' do
 
   context 'deleting pictures' do
     scenario 'removes a picture when a user clicks a delete link' do
+      sign_up
       create_picture
       visit '/pictures'
       click_link '1'
@@ -65,6 +66,7 @@ feature 'restaurants' do
 
   context 'an invalid picture' do
     scenario 'user tries to create post without uploading an image' do
+      sign_up
       visit '/pictures'
       click_link 'Add a picture'
       fill_in 'picture_caption', with: 'This is my cat'
