@@ -28,7 +28,7 @@ require 'rails_helper'
       expect(page).not_to have_content("No pictures to display")
       expect(page).to have_content("Quote 1")
       expect(page).to have_css 'img#show-picture'
-      expect(current_path).to eq("/pictures/3")
+      expect(current_path).to eq("/pictures/4")
     end
   end
 
@@ -39,7 +39,7 @@ require 'rails_helper'
       click_link("Quote 1")
       expect(page).not_to have_content("No pictures to display")
       expect(page).to have_css 'img#show-picture'
-      expect(current_path).to eq("/pictures/4")
+      expect(current_path).to eq("/pictures/5")
     end
   end
 

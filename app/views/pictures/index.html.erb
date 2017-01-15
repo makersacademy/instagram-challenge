@@ -8,9 +8,13 @@
   <%= link_to "Edit #{picture.name}", edit_picture_path(picture) %>
   <%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete  %>
   <%= link_to "Comment on #{picture.name}", new_picture_comment_path(picture) %>
+  <%= link_to "Like picture", picture_likes_path(picture), method: :post%>
+  <%= pluralize picture.likes.count, 'like' %>
   <% end %>
 <% else %>
 No pictures to display
 <% end  %>
+
+
 
 <a href="/pictures/new">Add a picture</a>
