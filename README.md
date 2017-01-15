@@ -1,10 +1,10 @@
 Instagram Challenge
 ===================
 
-##User stories##
+##User stories
 
 
-Adding a photo
+####Adding a photo
 
 1
 As a photo owner that would like to post my photo to the world,
@@ -22,7 +22,7 @@ I can delete an image on my index page.
 As a photo viewer I can look at all of the photos on the instagram site.
 
 
-User accounts
+####User accounts
 
 1
 As a photo owner I can log into my account with a username and email.
@@ -31,7 +31,7 @@ As a photo owner I can log into my account with a username and email.
 As a photo owner I can add and delete photos when I am logged into my account.
 
 
-Adding a comment
+####Adding a comment
 
 1
 As a photo owner that would like to share my photos with the world,
@@ -46,7 +46,7 @@ Once I am logged in I can delete comments for my photos.
 I cannot delete comments when I am logged out
 
 
-Adding a like
+####Adding a like
 
 1
 As a photo viewer, I can add a like to another person's photo.
@@ -56,9 +56,57 @@ As a photo viewer, I can remove a like from another person's photo.
 
 
 
+##Installing this application
+
+Clone this repo: https://github.com/simonconway1979/instagram-challenge.git
+
+Run: bundle install
+This will change to the correct version of Ruby and install the required gems.
+
+Start the rails server: bin/rails server
+
+In your browser follow this address:
+http://localhost:3000/photos
+
+This should start the app in your browser.
 
 
-Current position
+##Current position
+
+1
+At localhost/photos I have added an index form to display photos and descriptions.
+
+2
+The user can click Add photo and they are taken to a form that allows them to select a photo and write a description.
+
+3
+Photos and descriptions that are added are shown on the index page.
+
+4
+The user can edit a photo and description by clicking edit.
+
+5
+The user can delete an entry.
+
+6
+The user can log in and log out of the application.
+
+7
+There is validation on creating a new entry. The user must write a description.
+
+
+
+####Not yet completed
+
+1
+I tried to deploy to Heroko but this failed and I ran out of time to find out why.
+
+2
+The user log in and out is not connected to the ability to post.
+
+3
+The user cannot like someone else's picture.
+
 
 
 
