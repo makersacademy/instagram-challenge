@@ -2,6 +2,8 @@
 <%  if @pictures.any? %>
   <% @pictures.each do |picture| %>
     <%= link_to( image_tag(picture.image.url(:medium)), picture_path(picture), :class=>'picture', :id=>'1') %>
+    <%= link_to '😻', picture_likes_path(picture), method: :post %>
+    <p> <%= pluralize picture.likes.count, 'likes' %> </p>
     <p> <%= picture.caption %> </h2>
       <br>
   <% end %>
