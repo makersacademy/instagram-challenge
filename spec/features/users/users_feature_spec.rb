@@ -4,8 +4,8 @@ feature "User can sign in and out" do
   context "user not signed in and on the homepage" do
     it "should see a 'sign in' link and a 'sign up' link" do
       visit('/')
-      expect(page).to have_link('Sign in')
-      expect(page).to have_link('Sign up')
+      expect(page).to have_link('Log in')
+      expect(page).to have_link('Register')
     end
 
     it "should not see 'sign out' link" do
@@ -17,9 +17,10 @@ feature "User can sign in and out" do
   context "user signed in on the homepage" do
     before do
       visit('/')
-      click_link('Sign up')
+      click_link('Register')
       fill_in('Email', with: 'test@example.com')
-      fill_in('Password', with: 'testtest')
+      fill_in('Username', with: 'test1234')
+      fill_in('user_password', with: 'testtest')
       fill_in('Password confirmation', with: 'testtest')
       click_button('Sign up')
     end
@@ -31,8 +32,8 @@ feature "User can sign in and out" do
 
     it "should not see a 'sign in' link and a 'sign up' link" do
       visit('/')
-      expect(page).not_to have_link('Sign in')
-      expect(page).not_to have_link('Sign up')
+      expect(page).not_to have_link('Log in')
+      expect(page).not_to have_link('Register')
     end
   end
 end
