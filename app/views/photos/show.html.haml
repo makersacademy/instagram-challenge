@@ -1,12 +1,13 @@
 %h2= @photo.name
 = image_tag @photo.image.url(:medium),:id => "show-photo"
 %p= pluralize(@likes, 'Like')
-= link_to "New Comment", new_photo_comment_path(@photo)
-= link_to "Like", new_photo_like_path(@photo)
 
-- if @photo.user_id == current_user.id
-  = link_to "Rename", edit_photo_path(@photo)
-  = link_to "Delete", photo_path(@photo), method: :delete
+- if current_user
+  = link_to "New Comment", new_photo_comment_path(@photo)
+  = link_to "Like", new_photo_like_path(@photo)
+  - if @photo.user_id == current_user.id
+    = link_to "Rename", edit_photo_path(@photo)
+    = link_to "Delete", photo_path(@photo), method: :delete
 
 - if @comments.any?
   %h3 Comments:
