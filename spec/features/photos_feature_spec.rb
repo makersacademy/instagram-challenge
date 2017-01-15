@@ -23,13 +23,15 @@ feature 'photos' do
   end
 
 
-  context 'Creating a photo' do
+  context 'Adding a photo' do
     scenario 'Prompts the user to fill out a form, then displays the image decription' do
       visit '/photos'
       click_link 'Add photo'
       fill_in 'Description', with: 'Amsterdam photo'
+      attach_file 'Picture', Rails.root.join('spec/images/old-man1.jpg')
       click_button 'Create Photo'
       expect(page).to have_content('Amsterdam photo')
+      expect(page).to have_css 'img.uploaded-pic'
       expect(page).not_to have_content('No photos uploaded yet')
     end
 
