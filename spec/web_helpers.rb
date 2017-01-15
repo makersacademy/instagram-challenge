@@ -10,6 +10,7 @@ end
 def create_post(description)
   click_link 'Add a post'
   fill_in 'Description', with: description
+  attach_file("Image", Rails.root + "public/images/thumb/missing.png")
   click_button 'Create Photograph'
 end
 

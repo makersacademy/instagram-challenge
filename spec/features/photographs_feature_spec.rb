@@ -25,6 +25,7 @@ feature 'photographs' do
       scenario 'displays photographs' do
         visit '/photographs'
         expect(page).to have_content('description')
+        expect(page).to have_css("img[src*='missing.png']")
         expect(page).not_to have_content('No posts yet')
       end
     end
