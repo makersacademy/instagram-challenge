@@ -19,6 +19,15 @@ feature 'likes' do
       expect(current_path).to eq "/photos/#{@photo.id}"
     end
 
+    it 'should only let you like a photo once' do
+      @photo = Photo.find_by(name:"Posh Coffee")
+      visit '/'
+      click_link("#{@photo.name}")
+      click_link('Like')
+      expect{ click_link('Like') }.to_not change{Like.count}
+      expect(current_path).to eq "/photos/#{@photo.id}"
+    end
+
   end
 
 end
