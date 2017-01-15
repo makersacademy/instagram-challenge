@@ -9,6 +9,11 @@ feature "pictures" do
     description: "where do tests go?"
   }
 
+  picture_2 = {
+    filepath: "./spec/assets/test2.jpg",
+    description: "Friendship is magic!"
+  }
+
 
   context "no pictures have been added" do
     scenario "should display a prompt to add a picture" do
@@ -40,8 +45,15 @@ feature "pictures" do
   end
 
   context "viewing pictures" do
+    before do
+      add_picture(picture_1)
+      add_picture(picture_2)
+    end
     scenario "lets a user view a picture" do
-
+      visit '/pictures'
+      click_link("Test2")
+      expect(page).not_to have_content("where do tests go?")
+      expect(page).to have_content("Friendship is magic!")
     end
   end
 end
