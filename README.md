@@ -2,16 +2,16 @@
 ===================
 
 ### Instructions
--------
+
 Weekend project - build an Instagram clone using Rails
 
 ### How to use
--------
+
 * Clone this repo, and run `bundle install` in the project directory
 * Run `bin/rails s` to start the server and visit `http://localhost:3000`
 
 ### User Stories
--------
+
 ```
 As a user,
 so that I can showcase my cat to the world,
@@ -97,7 +97,7 @@ I'd like to be able to edit and delete comments
 ```
 
 ### Screenshots
--------
+
 ![Imgur](http://i.imgur.com/aiFfByh.png)
 ![Imgur](http://i.imgur.com/JtsIKkh.png)
 ![Imgur](http://i.imgur.com/AfWhkqB.png)
@@ -105,7 +105,7 @@ I'd like to be able to edit and delete comments
 
 
 ### Technologies used
--------
+
 * Ruby 2.3.1
 * Rails 5.0.1
 * JavaScript
@@ -113,7 +113,7 @@ I'd like to be able to edit and delete comments
 * Capybara
 
 ### To do
--------
+
 * There is a problem with Facebook login missing a template
 * 'Likes' work in the pictures index but not in the single picture view
 * Need to host images on AWS instead of saving to database
