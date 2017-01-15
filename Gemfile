@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Devise is a flexible authentication solution for Rails based on Warden. Read more: https://github.com/plataformatec/devise
 gem 'devise'
+gem 'omniauth-facebook'
+gem 'envyable'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
