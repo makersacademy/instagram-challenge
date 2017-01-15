@@ -1,4 +1,19 @@
-### Instagram challenge
+### Instagram Challenge [![Build Status](https://travis-ci.org/TudorTacal/instagram-challenge.svg?branch=master)](https://travis-ci.org/TudorTacal/instagram-challenge)
+
+This project represents the eight weekend challenge whilst at **Makers Academy** web development bootcamp.
+
+It represents a copy after **Makers-Instagram**.
+
+## Installation and use
+
+
+## Technologies used
+
+* **Ruby** as language.
+* **Postgresql** as database.
+* **Ruby on Rails** as a framework for fast development.
+* **Rspec and Capybara** for testing.
+* **HTML and CSS3** for styling.
 
 ## User stories
 
