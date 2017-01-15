@@ -11,7 +11,8 @@ feature 'photos' do
 
   context 'photos have been added' do
     before do
-      Photo.create(description: 'A fun trip to the beach!')
+      sign_up
+      upload_photo
     end
 
     scenario 'display photos' do
@@ -23,6 +24,7 @@ feature 'photos' do
 
   context 'uploading a photo' do
     scenario 'prompts user to fill in a description (for now), then desplays it' do
+      sign_up
       visit '/photos'
       click_link 'Add a photo!'
       fill_in 'Description', with: "A fun trip to the beach!"
@@ -43,7 +45,10 @@ feature 'photos' do
   end
 
   context 'changing photos' do
-    before { Photo.create description: "A fun trip to the beach!", id: 1 }
+    before do
+      sign_up
+      upload_photo
+    end
 
     scenario "let a user edit the description for a photo" do
       visit '/photos'
@@ -53,13 +58,16 @@ feature 'photos' do
       click_button "Update photo"
       click_link "A terrible trip with terrible people"
       expect(page).to have_content "A terrible trip with terrible people"
-      expect(current_path).to eq '/photos/1'
+
     end
   end
 
   context "deleting photos" do
 
-    before { Photo.create description: "A fun trip to the beach!", id: 1 }
+    before do
+      sign_up
+      upload_photo
+    end
     scenario 'deletes a photo' do
       visit '/photos'
       click_link "A fun trip to the beach!"
