@@ -47,4 +47,17 @@ feature 'contributions' do
     end
   end
 
+  context 'editing contributions' do
+    before { Contribution.create(comment: 'A black cat', id:1)}
+    scenario 'let a user edit a contribution' do
+      visit '/contributions'
+      click_link 'edit'
+      fill_in 'Comment', with: 'I met a really beautiful black cat in Portugal'
+      click_button 'Save'
+      click_link 'view all'
+      expect(page).to have_content 'I met a really beautiful black cat in Portugal'
+      expect(current_path).to eq '/contributions/1'
+    end
+  end
+
 end

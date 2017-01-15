@@ -16,6 +16,16 @@ class ContributionsController < ApplicationController
     @contribution = Contribution.find(params[:id])
   end
 
+  def edit
+    @contribution = Contribution.find(params[:id])
+  end
+
+  def update
+    @contribution = Contribution.find(params[:id])
+    @contribution.update(contribution_params)
+    redirect_to '/contributions'
+  end
+
   def contribution_params
     params.require(:contribution).permit(:image, :comment)
   end
