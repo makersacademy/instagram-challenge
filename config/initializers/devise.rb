@@ -8,6 +8,12 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '082350e11ece261a382a0ee3300c8500420481bab30c612fec44d4e4329ba5b3ae295a3bf14208fa9dd973ff3fa0b422a2bb5109700cdbe2ad6f1af6cf09fcfb'
 
+  config.authentication_keys = [ :login ]
+  config.scoped_views = true
+  config.reset_password_keys = [ :username ]
+  config.confirmation_keys = [ :username ]
+  config.omniauth :facebook, ENV['app_id'], ENV['app_secret']
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
@@ -26,10 +32,6 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/active_record'
 
-  config.authentication_keys = [ :login ]
-  config.scoped_views = true
-  config.reset_password_keys = [ :username ]
-  config.confirmation_keys = [ :username ]
 
 
   # ==> Configuration for any authentication mechanism
