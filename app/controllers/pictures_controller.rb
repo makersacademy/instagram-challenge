@@ -21,11 +21,22 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params[:id])
   end
 
-  def destroy
+  def edit
     @picture = Picture.find(params[:id])
-    @picture.destroy
-    redirect_to(picture_url)
   end
+
+  def update
+    @picture = Picture.find(params[:id])
+    @picture.update(params_image)
+
+    redirect_to("/pictures")
+  end
+
+  # def destroy
+  #   @picture = Picture.find(params[:id])
+  #   @picture.destroy
+  #   redirect_to(picture_url)
+  # end
 
   private
 
@@ -33,24 +44,4 @@ class PicturesController < ApplicationController
     params.require(:picture).permit(:image, :name)
   end
 
-  end
-  # def index
-  #   @pictures = Picture.all
-  # end
-  #
-  # def new
-  #   @picture = Picture.new
-  # end
-  #
-  # def create
-  #   @picture = Picture.create(params_image)
-  #   redirect_to "/pictures"
-  # end
-  #
-  # def show
-  #   @picture = Picture.find(params[:id])
-  # end
-  #
-
-
-# end
+end

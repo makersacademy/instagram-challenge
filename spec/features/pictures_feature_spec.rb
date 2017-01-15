@@ -43,7 +43,7 @@ require 'rails_helper'
     end
   end
 
-  context "pictures page" do
+  context "show all pictures" do
     scenario "I want to be able to got back to the pictures page from the full view page" do
       upload_image
       visit("/pictures")
@@ -54,4 +54,19 @@ require 'rails_helper'
       expect(current_path).to eq("/pictures")
     end
   end
+
+  context "update pictures" do
+    scenario "I want to be able to update my pictures and name" do
+      upload_image
+      visit("/pictures")
+      click_link("Edit Quote 1")
+      fill_in("Name", with: "Travel Quote")
+      attach_file("picture[image]", Rails.root + "spec/fixtures/travel.jpeg")
+      click_button("Upload")
+
+      expect(page).to have_css 'img#show-thumbnail'
+      expect(current_path).to eq("/pictures")
+    end
+  end
+
 end
