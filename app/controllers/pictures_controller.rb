@@ -10,9 +10,13 @@ class PicturesController < ApplicationController
 
 
   def create
-    user = current_user
-    @picture = user.pictures.create(picture_params)
-    redirect_to pictures_path
+    user = current_user if current_user
+    if user
+      @picture = user.pictures.create(picture_params)
+      redirect_to pictures_path
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   private

@@ -10,9 +10,7 @@ feature 'pictures' do
     end
 
     scenario 'it can add a picture' do
-      click_link 'Add a picture'
-      page.attach_file('picture_image', Rails.root + 'spec/assets/test_picture.jpg')
-      click_button 'Upload picture'
+      add_picture
       expect(page).to have_css("img[src*='test_picture.jpg']")
     end
   end

@@ -3,7 +3,11 @@ Rails.application.routes.draw do
        sessions: 'users/sessions',
        registrations: 'users/registrations'
      }
-  resources :pictures
+  resources :pictures, shallow: true do
+    resources :comments do
+      
+    end
+  end
   root to: "pictures#index"
 
 end

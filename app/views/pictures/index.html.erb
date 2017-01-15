@@ -7,6 +7,10 @@
       <li>
          <div id='img'>
            <%= image_tag picture.image.url(:medium)%>
+           <% picture.comments.each do |comment| %>
+             <p><%= comment.description %></p>
+           <% end %>
+           <%= link_to 'Add comment', new_picture_comment_path(picture) %>
          </div>
        </li>
      </ul>
