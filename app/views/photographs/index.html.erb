@@ -6,6 +6,8 @@
     <%if current_user == photograph.user %>
       <%= link_to "Delete post", photograph_path(photograph), method: :delete %><br>
     <%end%>
+    <p><%= pluralize photograph.likes.count, 'Like' %></p>
+    <%= link_to "Like post", new_photograph_like_path(photograph)%>
     <% photograph.comments.each do |comment|%>
         <br><%= comment.description%>
         <%if current_user == comment.user%>
