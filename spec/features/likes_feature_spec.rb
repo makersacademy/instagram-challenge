@@ -9,8 +9,17 @@ feature 'liking a photo' do
   end
 
   scenario 'a user can like a photo, and updates the like count' do
-    click_link 'Like'
+    click_button 'Like'
     expect(page).to have_content('1 Like')
+  end
+
+  scenario 'two users can like a photo, and updates the like count' do
+    click_button 'Like'
+    click_link 'Sign out'
+    sign_up2
+    click_photo
+    click_button 'Like'
+    expect(page).to have_content('2 Likes')
   end
 
 end

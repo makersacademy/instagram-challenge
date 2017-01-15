@@ -18,6 +18,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     @comments = @photo.comments.all
     @new_comment = Comment.new
+    @new_like = Like.new
   end
 
   def destroy

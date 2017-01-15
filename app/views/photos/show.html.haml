@@ -1,6 +1,9 @@
 = image_tag @photo.image.url(:medium)
 
-=form_for [@photo, @new_comment] do |f|
+%p= pluralize @photo.likes.count, 'Like'
+= form_for [@photo, @new_like] do |f|
+  = f.submit 'Like'
+= form_for [@photo, @new_comment] do |f|
   = f.text_area :text
   = f.submit 'Leave comment'
 - if @comments.all.any?
