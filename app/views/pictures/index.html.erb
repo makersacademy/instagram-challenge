@@ -1,11 +1,12 @@
 <% if @pictures.any? %>
 <% @pictures.each do |picture| %>
 <%= link_to picture.name, picture_path(picture) %>
-<%= picture.title %>
-  <%= link_to picture do %>
-    <%= image_tag picture.image.url(:thumb), id: "show-thumbnail" %>
-  <% end %>
-<%= link_to "Edit #{picture.name}", edit_picture_path(picture) %>
+  <%= picture.title %>
+    <%= link_to picture do %>
+      <%= image_tag picture.image.url(:thumb), id: "show-thumbnail" %>
+    <% end %>
+  <%= link_to "Edit #{picture.name}", edit_picture_path(picture) %>
+  <%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete  %>
   <% end %>
 <% else %>
 No pictures to display

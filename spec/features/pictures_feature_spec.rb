@@ -55,7 +55,7 @@ require 'rails_helper'
     end
   end
 
-  context "update pictures" do
+  context "Update pictures" do
     scenario "I want to be able to update my pictures and name" do
       upload_image
       visit("/pictures")
@@ -69,4 +69,15 @@ require 'rails_helper'
     end
   end
 
+  context "Delete picture" do
+    scenario "I want to be able to delete a picture on my page" do
+      upload_image
+      visit("/pictures")
+      click_link("Delete Quote 1")
+
+      expect(page).to have_content("Picture deleted successfully")
+      expect(page).to have_content("No pictures to display")
+      expect(page).to have_link("Add a picture")
+    end
+  end 
 end
