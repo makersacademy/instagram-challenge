@@ -37,9 +37,10 @@ feature 'photos' do
       visit '/photos'
       click_link 'Add photo'
       fill_in 'Description', with: ''
-      cick_button 'Create Photo'
+      click_button 'Create Photo'
       expect(page).to have_content('Please add a description')
     end
+  end
 
   context 'Reading a photo' do
 

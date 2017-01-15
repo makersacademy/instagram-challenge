@@ -1,3 +1,15 @@
+<% if @photo.errors.any? %>
+  <section id="errors">
+    <p> <%= pluralize(@photo.errors.count, "error") %> prevented this photo form saving </p>
+    <ul>
+      <%= @photo.errors.full_messages.each do |message| %>
+        <li><%= message %>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
+
 <%= form_for @photo do |f| %>
   <%= f.label :description %>
   <%= f.text_field :description %>
