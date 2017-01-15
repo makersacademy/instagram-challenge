@@ -32,7 +32,14 @@ feature 'photos' do
       expect(page).to have_content('Amsterdam photo')
       expect(page).not_to have_content('No photos uploaded yet')
     end
-  end
+
+    scenario 'Photo is not created if there is no description added' do
+      visit '/photos'
+      click_link 'Add photo'
+      fill_in 'Description', with: ''
+      cick_button 'Create Photo'
+      expect(page).to have_content('Please add a description')
+    end
 
   context 'Reading a photo' do
 
@@ -61,7 +68,7 @@ feature 'photos' do
 
   context 'Deleting a photo' do
 
-    before { Photo.create desciption: 'House photo'}
+    before { Photo.create description: 'House photo'}
 
     scenario 'let a user delete a photo' do
       visit 'photos'
@@ -70,7 +77,7 @@ feature 'photos' do
       expect(page).to have_content 'Photo deleted successfully'
     end
   end
-  
+
 
 
 end
