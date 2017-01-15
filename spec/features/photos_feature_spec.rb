@@ -5,7 +5,7 @@ feature 'photos' do
 
   context 'no photos have been added' do
     it 'should display a prompt to add a photo' do
-      visit '/photos'
+      visit '/'
       expect(page).to have_content 'No photos yet'
       expect(page).to have_content 'Add a photo'
     end
