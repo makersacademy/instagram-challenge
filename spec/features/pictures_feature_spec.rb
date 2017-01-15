@@ -48,4 +48,19 @@ context 'viewing pictures' do
   end
 
 end
+
+context 'deleting pictures' do
+
+  scenario 'removes a picture when a user clicks a delete link' do
+    visit '/pictures'
+    click_link 'Add a picture'
+    fill_in 'Caption', with: 'Hebrides'
+    page.attach_file('picture_image', Rails.root + 'IMG_4016.jpg')
+     click_button 'Create Picture'
+    click_link 'Delete Hebrides'
+    expect(page).not_to have_content 'Hebrides'
+    expect(page).to have_content 'Picture deleted successfully'
+  end
+
+end
 end

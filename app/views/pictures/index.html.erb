@@ -2,6 +2,12 @@
   <% @pictures.each do |picture| %>
     <h2> <%= link_to picture.caption, picture_path(picture) %>  </h2>
       <%= image_tag picture.image.url(:thumb) %>
+      <%= link_to "Delete #{picture.caption}", picture_path(picture), method: :delete %>
+      <%= link_to "Comment on #{picture.caption}", new_picture_comment_path(picture)%>
+      <% picture.comments.each do |comment| %>
+      <br><%= comment.thoughts %><br>
+      <% end %>
+
   <% end %>
 <% else %>
   No pictures yet
