@@ -8,7 +8,7 @@ The repository was forked from: https://github.com/makersacademy/instagram-chall
 
 ## Installation and use
 
-1. The site is online on [**Heroku**](https://makers-instagram.herokuapp.com/)
+1. The site is online on **Heroku**(www.heroku.com), click the link to see it in action https://makers-instagram.herokuapp.com/
 2. To check locally download or copy the repository.
 3. Next comes ```bundle install```
 3. Run the command ```rails s``` and open **localhost:3000** in the browser.
@@ -16,7 +16,7 @@ The repository was forked from: https://github.com/makersacademy/instagram-chall
 
 ## Screenshots
 
-* [First Page]()
+* [First Page](https://s27.postimg.org/e0luljhv7/Screen_Shot_2017_01_15_at_21_34_11.png)
 
 ## Technologies used
 
@@ -35,7 +35,7 @@ The repository was forked from: https://github.com/makersacademy/instagram-chall
 * Beautiful styling for the forms.
 
 ## User stories
-
+```
 As a user
 So I can share memories with my friends
 I would like to post a picture on the wall.
@@ -47,6 +47,6 @@ I would like to post a comment to a picture.
 As a user
 So I can show my appreciation
 I would like to endorse a picture with a "Like".
-
+```
 ## Contact
 tudor.tacal@gmail.com
