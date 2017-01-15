@@ -41,6 +41,10 @@ class PicturesController < ApplicationController
 
   def destroy
     @picture = Picture.find(params[:id])
+    unless @picture.belongs_to?(current_user)
+      flash[:alert] = "Naughty! You can only delete your own pictures!"
+      redirect_to "/pictures"
+    end
     @picture.destroy
     flash[:notice] = "Picture has been deleted succesfully"
     redirect_to '/pictures'

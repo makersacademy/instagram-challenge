@@ -104,7 +104,7 @@ feature "pictures" do
     end
   end
 
-  xcontext "deleting pictures" do
+  context "deleting pictures" do
     scenario "I want to delete a picture", :js => true do
       visit "/"
       sign_up(user_1)
