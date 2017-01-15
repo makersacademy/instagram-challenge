@@ -63,5 +63,6 @@ gem "fog-aws"
 # env variables
 gem 'envyable'
 
-# devise
+# log in
 gem 'devise'
+gem 'omniauth-facebook'
