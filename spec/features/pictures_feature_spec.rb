@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'pictures', :type => :feature  do
 
+	include WebHelpers
+
 	context "no pictures have been added" do
 
 		scenario "should display a prompt to add a photo" do
@@ -27,6 +29,7 @@ RSpec.feature 'pictures', :type => :feature  do
 	context "creating pictures" do
 
 		scenario "prompts a user to fill out a form, then displays the new picture" do
+			sign_up
 			visit "/pictures"
 			click_link "Add a Picture"
 			fill_in "Name", with: "Baby Hippo"
@@ -37,6 +40,7 @@ RSpec.feature 'pictures', :type => :feature  do
 		end
 
 		scenario "user cannot create a picture without a name" do
+			sign_up
 			visit "/pictures"
 			click_link "Add a Picture"
 			click_button "Add Picture"
@@ -66,6 +70,7 @@ RSpec.feature 'pictures', :type => :feature  do
 		end
 
 		scenario "lets a user edit a picture" do
+			sign_up
 			visit "/pictures"
 			click_link "Baby Hippo"
 			click_link "Edit Picture"
@@ -85,6 +90,7 @@ RSpec.feature 'pictures', :type => :feature  do
 		end
 
 		scenario "lets a user delete a picture" do
+			sign_up
 			visit "/pictures"
 			click_link "Baby Hippo"
 			click_link "Delete Picture"
