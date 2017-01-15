@@ -7,14 +7,16 @@
 <p><%= comment.content %></p>
 <% end %>
 
-<ul class="form">
-  <%= form_for [@picture, @comment] do |f| %>
-  <li>
-    <%= f.label :content, "Add Comment" %>
-    <%= f.text_area :content %>
-  </li>
-  <li>
-    <%= f.submit "Submit" %>
-  </li>
-  <% end %>
-</ul>
+<% if current_user %>
+  <ul class="form">
+    <%= form_for [@picture, @comment] do |f| %>
+    <li>
+      <%= f.label :content, "Add Comment" %>
+      <%= f.text_area :content %>
+    </li>
+    <li>
+      <%= f.submit "Submit" %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>

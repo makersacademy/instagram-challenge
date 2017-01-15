@@ -27,4 +27,11 @@ feature "commenting" do
     expect(page).to have_content("Such lovely bricks!")
   end
 
+  scenario "I need to be signed in to comment" do
+    click_link "Sign out"
+    visit '/pictures'
+    click_link("Test2")
+    expect(page).not_to have_content "Add Comment"
+  end
+
 end

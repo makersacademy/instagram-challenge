@@ -48,6 +48,7 @@ feature "pictures" do
       add_picture(picture_1)
       expect(current_path).to eq '/pictures'
       expect(page).to have_content "where do tests go?"
+      expect(page).to have_content "Your picture has been added."
       expect(page).to have_css("img[src*='test1']")
     end
 
