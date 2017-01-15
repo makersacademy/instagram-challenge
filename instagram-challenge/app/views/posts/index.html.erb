@@ -3,16 +3,23 @@
 
   <% @posts.each do |post| %>
   <div class="post">
+    <p class="name"><b><%= post.user.email %></b></p>
     <%= image_tag post.image.url(:medium) %>
     <p class="description"> <%= post.description %> <p>
-    <p class="like"> <%= link_to "Like", post_likes_path(post), method: :post %>
-    <span><%= pluralize post.likes.count, 'like' %></span></p>
-    <p class="comment"> <%= link_to "Comment", new_post_comment_path(post) %></p>
+    <div>
+      <%= link_to image_tag("heart.png", class: "heart"), post_likes_path(post), class: 'like' %>
+      <span class="like_count"><%= post.likes.count %></span> <%= 'like'.pluralize(post.likes.count) %>
+    </div>
     <% if post.comments.any? %>
       <% post.comments.all.each do |comment| %>
         <p><%= comment.comment %></p>
       <% end %>
-    <% end %>
+    <% end %></p>
+
+    <div class="add_comment">
+      <%= link_to image_tag("comment_bubble.png", class: "comment_bubble"), new_post_comment_path(post), class: 'comments' %>
+      <span> Add a comment... </span>
+    </div>
 
   </div>
   <% end %>

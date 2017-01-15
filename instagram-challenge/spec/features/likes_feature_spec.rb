@@ -6,9 +6,9 @@ feature 'Likes' do
     post = Post.create({description: "Image", user: user})
   end
 
-  scenario "A user can like a post, which updates the like counter" do
+  scenario "A user can like a post, which updates the like counter", js:true do
     visit '/posts'
-    click_link "Like"
+    find(".like").click
     expect(page).to have_content "1 like"
   end
 

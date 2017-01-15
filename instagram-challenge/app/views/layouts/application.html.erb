@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 
   </head>
 
@@ -14,14 +15,22 @@
 
     <div class="header">
 
-      <% if user_signed_in? %>
-        <%= link_to "Sign Out", destroy_user_session_path %>
-        <%= link_to "Post a new photo", new_post_path %>
-      <% else %>
-        <%= link_to "Sign In", new_user_session_path %>
-        <%= link_to "Register", new_user_registration_path %>
-      <% end %>
+      <h1 class="logo"><a href="/posts">Instagramdenee</a></h1>
 
+      <div class="auth">
+        <% if user_signed_in? %>
+          <%= link_to "Sign Out", destroy_user_session_path %>
+          <br>
+          <%= link_to "Post a new photo", new_post_path %>
+        <% else %>
+          <%= link_to "Sign In", new_user_session_path %>
+          <%= link_to "Register", new_user_registration_path %>
+        <% end %>
+      </div>
+
+    </div>
+
+    <div class="flash">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
