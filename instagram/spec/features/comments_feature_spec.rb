@@ -14,4 +14,6 @@ feature 'commenting' do
     expect(current_path).to eq '/photos'
     expect(page).to have_content 'Looks disgusting'
   end
+
+
 end

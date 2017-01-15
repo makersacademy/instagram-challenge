@@ -19,6 +19,17 @@ feature 'user can sign in and out' do
       expect(page).not_to have_content "Caption"
       expect(page).to have_content "Log in"
     end
+
+    it 'should not be able to post a comment' do
+      sign_up
+      post_photo
+      click_link 'Sign out'
+      visit '/'
+      click_link 'My Lunch'
+      click_link 'Comment'
+      expect(page).not_to have_content "Thoughts"
+      expect(page).to have_content "Log in"
+    end
   end
 
   context 'user signed in on homepage' do
