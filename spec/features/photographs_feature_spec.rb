@@ -19,7 +19,7 @@ feature 'photographs' do
 
     context 'photographs have been added' do
       before do
-        Photograph.create(description: 'description')
+        create_post('description')
       end
 
       scenario 'displays photographs' do
@@ -32,16 +32,24 @@ feature 'photographs' do
     context 'creating a photograph' do
       scenario 'prompts the user to fill out a form, then displays the new restaurant' do
         visit '/photographs'
-        click_link 'Add a post'
-        fill_in 'Description', with: 'description'
-        click_button 'Create Photograph'
+        create_post("description")
         expect(page).to have_content('description')
         expect(current_path).to eq '/photographs'
       end
     end
 
     context 'deleting a post' do
-      before {Photograph.create(description: "description")}
+
+      scenario 'only if it belongs to the user' do
+        visit '/'
+        create_post("description")
+        click_link 'Sign out'
+        sign_up("test1@gmail.com", "password")
+        expect(page).not_to have_link("Delete post")
+      end
+
+
+      before {create_post("description")}
 
       scenario 'removes a post when a user clicks a delete link' do
         visit '/photographs'
@@ -49,6 +57,8 @@ feature 'photographs' do
         expect(page).not_to have_content 'description'
         expect(page).to have_content 'Post deleted succesfully'
       end
+
+
     end
 
   end

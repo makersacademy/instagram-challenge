@@ -1,3 +1,8 @@
 class Photograph < ApplicationRecord
-  has_many :comments, dependent: :destroy
+  has_many :comments,
+      -> {extending WithUserAssociationExtension},
+      dependent: :destroy
+
+  belongs_to :user
+
 end

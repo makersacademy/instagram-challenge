@@ -6,6 +6,10 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook]
 
 
+  has_many :comments, dependent: :destroy
+  has_many :photographs, dependent: :destroy
+
+
 
 
   def self.from_omniauth(auth)

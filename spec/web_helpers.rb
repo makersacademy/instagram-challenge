@@ -6,3 +6,15 @@ def sign_up(email,password)
   fill_in 'Password confirmation', with: password
   click_button 'Sign up'
 end
+
+def create_post(description)
+  click_link 'Add a post'
+  fill_in 'Description', with: description
+  click_button 'Create Photograph'
+end
+
+def leave_comment(comment)
+  click_link 'Leave Comment'
+  fill_in "Description", with: comment
+  click_button 'submit'
+end
