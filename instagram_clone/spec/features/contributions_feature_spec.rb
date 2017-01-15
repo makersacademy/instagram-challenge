@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'web_helper'
 
 feature 'contributions' do
   context 'no contributions have been added' do
@@ -25,6 +26,7 @@ feature 'contributions' do
       @image  = fixture_path + "/test_image.jpg"
     end
     scenario 'prompts user to fill out a form, then displays the new contribution' do
+      sign_up
       visit '/contributions'
       click_link 'Add a contribution'
       # attach_file 'Image', @image
@@ -50,6 +52,7 @@ feature 'contributions' do
   context 'editing contributions' do
     before { Contribution.create(comment: 'A black cat', id:1)}
     scenario 'let a user edit a contribution' do
+      sign_up
       visit '/contributions'
       click_link 'edit'
       fill_in 'Comment', with: 'I met a really beautiful black cat in Portugal'
@@ -63,6 +66,7 @@ feature 'contributions' do
   context 'deleting contributions' do
     before { Contribution.create(comment: 'A black cat')}
     scenario 'let a user delete a contribution' do
+      sign_up
       visit '/contributions'
       click_link 'delete'
       expect(page).not_to have_content 'A black cat'

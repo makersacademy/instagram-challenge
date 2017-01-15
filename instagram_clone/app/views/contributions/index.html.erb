@@ -2,7 +2,7 @@
   <% @all_contributions.reverse_each do |contribution| %>
     <%= image_tag contribution.image.url(:medium) %>
     <br>
-    <%= contribution.created_at %>
+    <%= contribution.created_at.strftime("%I:%M%p %Y-%m-%d") %>
     <br>
     <%= link_to 'view all', contribution_path(contribution) %>&nbsp;&nbsp;&nbsp;
     <%= link_to 'edit', edit_contribution_path(contribution) %>&nbsp;&nbsp;&nbsp;
@@ -14,8 +14,11 @@
     <% if contribution.comments.any? %>
       <% contribution.comments.each do |comment| %>
         <%= comment.comment %>
+        <br>
       <% end %>
     <% end %>
+  <br>
+  <br>
   <% end %>
 <% else %>
   No contributions yet

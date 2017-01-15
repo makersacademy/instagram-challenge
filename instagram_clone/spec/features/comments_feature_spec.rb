@@ -1,7 +1,12 @@
 require 'rails_helper'
+require 'web_helper'
 
 feature 'commenting' do
-  before { Contribution.create comment: 'A black cat' }
+  before do
+    sign_up
+    create_contribution
+  end
+
   scenario 'allows users to leave comments using a form' do
     visit '/contributions'
     click_link 'comment'
