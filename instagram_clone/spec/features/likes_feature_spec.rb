@@ -14,7 +14,7 @@ describe 'likeing comtirbutions' do
 
   it 'a user can like a contribution, which updates the like count', js: true do
     visit '/contributions'
-    click_link '+'
+    click_link '♡'
     expect(page).to have_content('1 like')
   end
 end
