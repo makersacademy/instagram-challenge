@@ -10,23 +10,36 @@ require 'rails_helper'
     end
   end
 
-  # context "viewing a picture" do
-  #   Picture.create(image: )
-  #   scenario "I want to display picture" do
-  #     visit("/pictures")
-  # end
+  context "viewing a picture" do
 
-  context "adding pictures" do
-  
-    scenario "I to to be able to add a picture" do
+    scenario "I want to display a thumbnail picture" do
+      upload_image
       visit("/pictures")
-      click_link("Add a picture")
 
-
-      expect(page).to have_content("Image")
-      expect(current_path).to eq("/pictures/new")
+      expect(page).not_to have_content("No pictures to display")
+      expect(page).to have_css 'img#show-thumbnail'
     end
   end
 
+  context "adding pictures" do
 
+    scenario "I want to to be able to add a picture" do
+      upload_image
+      expect(page).not_to have_content("No pictures to display")
+      expect(page).to have_content("Quote 1")
+      expect(page).to have_css 'img#show-picture'
+      expect(current_path).to eq("/pictures/2")
+    end
+  end
+
+  context "displaying full view pictures" do
+    scenario "I want to see full view of my picture" do
+      upload_image
+      visit("/pictures")
+      click_link("Quote 1")
+      expect(page).not_to have_content("No pictures to display")
+      expect(page).to have_css 'img#show-picture'
+      expect(current_path).to eq("/pictures/3")
+    end
+  end
 end

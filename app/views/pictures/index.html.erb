@@ -1,3 +1,13 @@
+<% if @pictures.any? %>
+<% @pictures.each do |picture| %>
+<%= link_to picture.name, picture_path(picture) %>
+<%= picture.title %>
+  <%= link_to picture do %>
+    <%= image_tag picture.image.url(:thumb), id: "show-thumbnail" %>
+  <% end %>
+  <% end %>
+<% else %>
 No pictures to display
+<% end  %>
 
 <a href="/pictures/new">Add a picture</a>
