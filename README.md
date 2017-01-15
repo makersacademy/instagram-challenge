@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Instagram Weekend Challenge
+I made this project individually as a weekend challenge at Makers Academy course.  
 
-Things you may want to cover:
+How to use?  
 
-* Ruby version
+- clone this repo
+####in your terminal:  
+- run bundle install
+- run bin/rails db:create  
+- run bin/rake db:migrate  
+- enter rspec to run tests
+####to open website:
+- run bin/rails s to start a server  
+- go to localhost:3000  
+- enjoy!
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby version: ruby 2.3.1p112, Rails 5.0.1
