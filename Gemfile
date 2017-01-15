@@ -50,6 +50,8 @@ group :test do
   gem 'capybara'
   gem 'capybara-extensions'
   gem 'rspec-collection_matchers'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :development do
