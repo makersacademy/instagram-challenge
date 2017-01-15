@@ -9,6 +9,7 @@ gem 'paperclip'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'envyable'
+gem 'aws-sdk', '~> 2.3'
 
 gem 'haml'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -1,6 +1,24 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+
+  PAPERCLIP_STORAGE_OPTIONS = {:storage => :s3,
+                              :s3_credentials => "#{Rails.root}/config/s3.yml",
+                              :path => "/:style/:filename"}
+
+  config.paperclip_defaults = {
+  storage: :s3,
+  s3_credentials: {
+    bucket: ENV.fetch('S3_BUCKET_NAME'),
+    access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+    secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
+    s3_region: ENV.fetch('AWS_REGION'),
+  },
+  url: 'javagrammy.s3.amazonaws.com',
+  path: '/:class/:attachment/:id_partition/:style/:filename',
+  s3_host_name: 's3-eu-west-2.amazonaws.com',
+  }
+
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
