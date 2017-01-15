@@ -6,7 +6,9 @@
     - @post.comments.each do |comment|
       %p= comment.comments
       %p= pluralize comment.likes.count, 'Like'
-      = link_to 'Like', comment_likes_path(comment), method: :post
+      = link_to 'Like', comment_likes_path(comment), method: :post, class: 'likes-link'
+      -# %span.likes_count= comment.likes.count
+      -# = 'like'.pluralize comment.likes.count
       - if @user.comments.include?(comment)
         = link_to 'Delete comment', comment_path(comment), method: :delete
     = link_to 'Comment', new_post_comment_path(@post)
