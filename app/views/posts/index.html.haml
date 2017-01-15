@@ -1,0 +1,12 @@
+!!!
+%html
+  %body
+    - if @posts.any?
+      - @posts.each do |post|
+        %div{:class => 'home-page'}
+          = link_to( image_tag(post.image.url(:thumb)), post_path(post), :id =>'image')
+          %h2{:class => 'caption'}= post.caption
+    - else
+      No posts yet
+
+    = link_to 'Add a post', new_post_path
