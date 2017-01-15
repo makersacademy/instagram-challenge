@@ -23,7 +23,7 @@ feature 'photos' do
   end
 
 
-  context 'Creating a restaurant' do
+  context 'Creating a photo' do
     scenario 'Prompts the user to fill out a form, then displays the image decription' do
       visit '/photos'
       click_link 'Add photo'
@@ -34,7 +34,7 @@ feature 'photos' do
     end
   end
 
-  context 'Reading a restaurant' do
+  context 'Reading a photo' do
 
     let!(:first_photo){ Photo.create(description:'Beach photo') }
 
@@ -46,7 +46,31 @@ feature 'photos' do
     end
   end
 
+  context 'Editing a photo' do
 
+    before { Photo.create description: 'House photo'}
+
+    scenario 'let a user edit a photo' do
+      visit '/photos'
+      click_link 'Edit House photo'
+      fill_in 'Description', with: 'Garden photo'
+      click_button 'Update Photo'
+      expect(page).to have_content 'Garden photo'
+    end
+  end
+
+  context 'Deleting a photo' do
+
+    before { Photo.create desciption: 'House photo'}
+
+    scenario 'let a user delete a photo' do
+      visit 'photos'
+      click_link 'Delete House photo'
+      expect(page).not_to have_content 'House photo'
+      expect(page).to have_content 'Photo deleted successfully'
+    end
+  end
+  
 
 
 end
