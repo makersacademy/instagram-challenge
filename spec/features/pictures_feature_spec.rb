@@ -35,4 +35,18 @@ RSpec.feature 'pictures', :type => :feature  do
 			expect(current_path).to eq '/pictures'
 		end
 	end
+
+	context "viewing pictures" do
+
+		before do
+			@picture = Picture.create(name: "Baby Hippo")
+		end
+
+		scenario "lets a user view a picture" do
+			visit '/pictures'
+			click_link "Baby Hippo"
+			expect(page).to have_content "Baby Hippo"
+			expect(current_path).to eq "/pictures/#{@picture.id}"
+		end
+	end
 end
