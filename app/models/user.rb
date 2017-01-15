@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :photographs, dependent: :destroy
+  has_many :likes
+  has_many :liked_photographs, through: :likes, source: :photograph
 
 
 
@@ -17,6 +19,10 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
     end
+  end
+
+  def has_liked?(photograph)
+    liked_photographs.include? photograph
   end
 
 end
