@@ -35,8 +35,10 @@ feature 'photos' do
   end
 
   context 'viewing photos' do
-    let!(:photo) { Photo.create(description: 'A fun trip to the beach!')}
-
+    before do
+      sign_up
+      upload_photo
+    end
     scenario 'lets a user view a photo in full size' do
       visit '/photos'
       click_link 'A fun trip to the beach!'
