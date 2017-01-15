@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   get 'contributions' => 'contributions#index'
 
   resources :contributions do
-    resources :comments
+    resources :comments do
+    end
+    resources :likes do
+    end
   end
 
 end
