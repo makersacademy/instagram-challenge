@@ -1,5 +1,8 @@
 class PicturesController < ApplicationController
 
+	# has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
+	# validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+	
 	before_action :authenticate_user!, :except => [:index, :show]
 
 	def index
@@ -43,7 +46,7 @@ class PicturesController < ApplicationController
 	private
 
 		def picture_params
-			params.require(:picture).permit(:name, :description)
+			params.require(:picture).permit(:image, :name, :description)
 		end
 
 end
