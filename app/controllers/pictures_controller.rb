@@ -1,7 +1,6 @@
 class PicturesController < ApplicationController
 
   def index
-    @user = Picture.last.user
     @pictures = Picture.all
   end
 

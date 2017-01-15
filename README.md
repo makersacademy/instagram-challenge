@@ -2,7 +2,7 @@
 
 This project represents the eight weekend challenge whilst at **Makers Academy** web development bootcamp.
 
-**Makers-Instagram** is a web app and it basically replicates some of the features of the popular **Instagram** application.
+**Makers-Instagram** is a web app and it basically replicates some of the features of the popular **Instagram** application. It's just at **MVP** stage but it looks and behaves quite good for a weekend's work.
 
 The repository was forked from: https://github.com/makersacademy/instagram-challenge
 
@@ -26,6 +26,7 @@ The repository was forked from: https://github.com/makersacademy/instagram-chall
 * **Rspec and Capybara** for testing.
 * **HTML and CSS3** for styling.
 * **AWS S3** for hosting the images.
+* **Devise** for user management.
 
 ## To implement
 

@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20170115161732) do
     t.datetime "image_updated_at"
     t.integer  "user_id"
     t.integer  "like_id"
+    t.text     "decription"
     t.text     "description"
     t.index ["like_id"], name: "index_pictures_on_like_id", using: :btree
     t.index ["user_id"], name: "index_pictures_on_user_id", using: :btree
