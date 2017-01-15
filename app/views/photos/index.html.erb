@@ -1,3 +1,11 @@
-No photos uploaded yet
-<br></br>
-<a href='#'>Add a photo</a>
+
+<% if @photos.any? %>
+  <% @photos.each do |photo| %>
+    <h2><%= link_to photo.description, photo_path(photo) %></h2>
+  <% end %>
+<% else %>
+  <h2>No photos uploaded yet</h2>
+  <br></br>
+<% end %>
+
+<a href="/photos/new">Add photo</a>
