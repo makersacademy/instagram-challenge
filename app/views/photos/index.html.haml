@@ -2,6 +2,8 @@
   - @photos.each do |photo|
     %h3= link_to photo.title, photo_path(photo)
     %p= photo.description
+    = link_to "Like #{photo.title}", photo_likes_path(photo), method: :post
+    %p= pluralize photo.likes.count, 'like'
     - photo.comments.each do |comment|
       %p= comment.thoughts
     = link_to "Comment on #{photo.title}", new_photo_comment_path(photo)
