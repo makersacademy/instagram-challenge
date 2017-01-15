@@ -14,12 +14,14 @@
             |
             = comment.content
             - if comment.user == current_user
-              = link_to "Delete Comment", photo_comment_path(@photo, comment), method: :delete, data: { confirm: "Are you sure?" }
+              = link_to photo_comment_path(@photo, comment), method: :delete, data: { confirm: "Are you sure?" } do
+                %span(class="glyphicon glyphicon-remove delete-comment")
             .br
-        = form_for [@photo, @photo.comments.new] do |f|
-          = f.text_field :content, placeholder: 'Add a comment...'
-          = f.button :submit
-        - if @photo.user.id == current_user.id
+        - if current_user
+          = form_for [@photo, @photo.comments.new] do |f|
+            = f.text_field :content, placeholder: 'Add a comment...'
+            = f.button :submit
+        - if current_user && @photo.user.id == current_user.id
           |
           = link_to "Delete", photo_path(@photo), method: :delete, data: { confirm: "Are you sure you would like to delete this photo?" }
           |

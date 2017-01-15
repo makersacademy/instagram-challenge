@@ -17,12 +17,15 @@
                 |
                 = comment.content
                 - if comment.user == current_user
-                  = link_to "Delete Comment", photo_comment_path(photo, comment), method: :delete, data: { confirm: "Are you sure?" }
+                  = link_to photo_comment_path(photo, comment), method: :delete, data: { confirm: "Are you sure?" } do
+                    %span(class="glyphicon glyphicon-remove delete-comment")
+
                 .br
             - if photo.comments[3]
               = link_to "...", photo_path(photo)
-            = form_for [photo, photo.comments.new] do |f|
-              = f.text_field :content, placeholder: 'Add a comment...'
-              = f.button :submit
+            - if current_user
+              = form_for [photo, photo.comments.new] do |f|
+                = f.text_field :content, placeholder: 'Add a comment...'
+                = f.button :submit
   - else
     %h1 No photos have been posted!
