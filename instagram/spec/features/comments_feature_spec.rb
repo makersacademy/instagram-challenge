@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 feature 'commenting' do
+
   before do
     sign_up
     post_photo
   end
+
   scenario 'allows users to post comments on photos using a form' do
     visit '/photos'
     click_link 'My Lunch'
@@ -15,5 +17,11 @@ feature 'commenting' do
     expect(page).to have_content 'Looks disgusting'
   end
 
-
+  scenario 'cannot post an empty comment' do
+    visit '/photos'
+    click_link 'My Lunch'
+    click_link 'Comment'
+    click_button 'Post'
+    expect(page).to have_content 'Thoughts'
+  end
 end

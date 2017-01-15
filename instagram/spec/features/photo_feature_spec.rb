@@ -31,6 +31,11 @@ feature 'photos' do
       expect(page).to have_content 'My Lunch'
       expect(current_path).to eq photos_path
     end
+    scenario 'cannot submit a post without a photo' do
+      click_link 'Post a photo'
+      click_button 'Post'
+      expect(page).to have_content 'Caption'
+    end
   end
 
   context 'viewing photos' do
