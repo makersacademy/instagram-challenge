@@ -5,6 +5,10 @@
     %p= @post.caption
     - @post.comments.each do |comment|
       %p= comment.comments
+      - if @user.comments.include?(comment)
+        = link_to 'Delete comment', post_comment_path(@post, comment), method: :delete
     = link_to 'Comment', new_post_comment_path(@post)
-    = link_to 'Edit post', edit_post_path(@post)
-    = link_to 'Delete post', post_path(@post), method: :delete
+    - if @user
+      - if @user.posts.include?(@post)
+        = link_to 'Edit post', edit_post_path(@post)
+        = link_to 'Delete post', post_path(@post), method: :delete
