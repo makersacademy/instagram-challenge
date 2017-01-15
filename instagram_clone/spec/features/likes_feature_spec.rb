@@ -6,7 +6,7 @@ describe 'likeing comtirbutions' do
     @image  = fixture_path + "/test_image.jpg"
     sign_up
     visit '/contributions'
-    click_link 'Add a contribution'
+    click_link '+'
     attach_file 'Image', @image
     fill_in 'Comment', with: 'A black cat'
     click_button 'Create Contribution'

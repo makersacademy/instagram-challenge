@@ -18,12 +18,20 @@ def sign_up_2
   click_button('Sign up')
 end
 
+def sign_in
+  visit('/')
+  click_link('Sign in')
+  fill_in('Email', with: 'test@example.com')
+  fill_in('Password', with: 'testtest')
+  click_button('Log in')
+end
+
 def sign_out
   click_link('Sign out')
 end
 
 def create_contribution
-  click_link('Add a contribution')
+  click_link('+')
   fill_in('Comment', with: 'A black cat')
   click_button('Create Contribution')
 end

@@ -1,30 +1,32 @@
+<%= link_to '+', new_contribution_path, :style=>'  font-weight:400; font-size:50px; color: #000000; text-decoration:none; text-align:right' %>
 <% if @all_contributions.any? %>
   <% @all_contributions.reverse_each do |contribution| %>
-    <h4><%= contribution.user.username %></h4>
-    <%= image_tag contribution.image.url(:medium) %>
-    <br>
-    <%= contribution.created_at.strftime("%I:%M%p %d-%b-%Y") %>
-    <br>
-    <%= link_to "♡", contribution_likes_path(contribution), class: 'likes-link' %>
-     <span class="likes_count"> <%= contribution.likes.count %> </span> <%= 'like'.pluralize(contribution.likes.count) %>&nbsp;&nbsp;&nbsp;
-    <%= link_to 'view all', contribution_path(contribution) %>&nbsp;&nbsp;&nbsp;
-    <%= link_to 'edit', edit_contribution_path(contribution) %>&nbsp;&nbsp;&nbsp;
-    <%= link_to 'delete', contribution_path(contribution), method: :delete %>&nbsp;&nbsp;&nbsp;
-    <%= link_to 'comment', new_contribution_comment_path(contribution) %>
-    <br>
-    <%= contribution.comment %>
-    <br>
-    <% if contribution.comments.any? %>
-      <% contribution.comments.each do |comment| %>
-        <span class='username'><%= comment.user.username%></span>&nbsp;&nbsp;&nbsp;<%= comment.comment %>
-        <br>
+    <div class='contribution'>
+        <div class='pos-left'>Posted by <%= contribution.user.username %></div>
+        <div class="pos-right"><%= contribution.created_at.strftime("%I:%M%p %d-%b-%Y") %></div>
+      <br>
+      <%= image_tag contribution.image.url(:medium) %><br>
+      <%= contribution.comment %>
+      <hr>
+      <%= link_to "♡", contribution_likes_path(contribution), class: 'likes-link' %>
+       <span class="likes_count"> <%= contribution.likes.count %> </span> <%= 'like'.pluralize(contribution.likes.count) %>&nbsp;&nbsp;&nbsp;
+      <%= link_to 'add comment', new_contribution_comment_path(contribution) %>&nbsp;&nbsp;&nbsp;
+      <% if current_user == contribution.user %>
+        <%= link_to 'view all', contribution_path(contribution) %>&nbsp;&nbsp;&nbsp;
+        <%= link_to 'edit', edit_contribution_path(contribution) %>&nbsp;&nbsp;&nbsp;
+        <%= link_to 'delete', contribution_path(contribution), method: :delete %>
       <% end %>
-    <% end %>
-  <br>
-  <br>
+      <br>
+      <% if contribution.comments.any? %>
+        <br>
+        <% contribution.comments.each do |comment| %>
+          <span class='username'><%= comment.user.username%></span>&nbsp;&nbsp;&nbsp;<%= comment.comment %>
+          <br>
+        <% end %>
+      <% end %>
+    </div>
+    <br>
   <% end %>
 <% else %>
   No contributions yet
 <% end %>
-<br>
-<%= link_to 'Add a contribution', new_contribution_path %>

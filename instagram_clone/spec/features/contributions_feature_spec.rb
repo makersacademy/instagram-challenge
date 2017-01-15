@@ -6,7 +6,7 @@ feature 'contributions' do
     scenario 'should display a prompt to add a contribution' do
       visit '/contributions'
       expect(page).to have_content 'No contributions yet'
-      expect(page).to have_link 'Add a contribution'
+      expect(page).to have_link '+'
     end
   end
 
@@ -30,7 +30,7 @@ feature 'contributions' do
     scenario 'prompts user to fill out a form, then displays the new contribution' do
       sign_up
       visit '/contributions'
-      click_link 'Add a contribution'
+      click_link '+'
       attach_file 'Image', @image
       fill_in 'Comment', with: 'A black cat'
       click_button 'Create Contribution'
@@ -42,10 +42,11 @@ feature 'contributions' do
   end
 
   context 'display contributions indivisually' do
-    let!(:user){ User.create(email: 'test@test.com', username: 'TEST', password: '12345678', password_confirmation: '12345678')}
+    let!(:user){ User.create(email: 'test@example.com', username: 'TEST', password: 'testtest', password_confirmation: 'testtest')}
     let!(:contribution){ Contribution.create(comment: 'A black cat', user_id: user.id) }
 
     scenario 'lets a user view a contribution' do
+      sign_in
       visit '/contributions'
       click_link 'view all'
       expect(page).to have_content 'A black cat'
