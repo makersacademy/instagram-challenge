@@ -18,5 +18,6 @@ require 'rails_helper'
         expect(page).not_to have_link("Sign up")
         expect(page).not_to have_link("Sign in")
       end
+      
   end
 end
