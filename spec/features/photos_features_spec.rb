@@ -30,6 +30,16 @@ feature 'photos' do
       expect(page).to have_content 'Test photo'
       expect(current_path).to eq '/photos'
     end
+    context 'an invalid photo post' do
+      scenario 'does not let you submit a title that is too short' do
+        visit '/photos'
+        click_link 'Add a photo'
+        fill_in 'Title', with: 'Te'
+        click_button 'Create Photo'
+        expect(page).not_to have_css 'h3', text: 'Te'
+        expect(page).to have_content 'error'
+      end
+    end
   end
 
   context 'viewing individual photo posts' do
