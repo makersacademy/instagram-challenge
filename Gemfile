@@ -62,3 +62,6 @@ gem "fog-aws"
 
 # env variables
 gem 'envyable'
+
+# devise
+gem 'devise'
