@@ -1,0 +1,10 @@
+<p><%= @picture.name %></p>
+<p><%= @picture.description %></p>
+<% if @picture.comments.any? %>
+	<% @picture.comments.each do |comment| %>
+		<%= comment.thoughts %>
+	<% end %>
+<% end %>
+<%= link_to "Add Comment", new_picture_comment_path(@picture) %>
+<%= link_to "Edit Picture", edit_picture_path(@picture) %>
+<%= link_to "Delete Picture", picture_path(@picture), method: :delete %>
