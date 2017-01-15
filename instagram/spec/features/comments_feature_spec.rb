@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'commenting' do
   before do
+    sign_up
     post_photo
   end
   scenario 'allows users to post comments on photos using a form' do

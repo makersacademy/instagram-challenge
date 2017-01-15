@@ -12,16 +12,18 @@ feature 'user can sign in and out' do
       visit '/'
       expect(page).not_to have_link 'Sign out'
     end
+
+    it 'should not be able to post a photo' do
+      visit '/'
+      click_link 'Post a photo'
+      expect(page).not_to have_content "Caption"
+      expect(page).to have_content "Log in"
+    end
   end
 
   context 'user signed in on homepage' do
     before do
-      visit('/')
-      click_link('Sign up')
-      fill_in('Email', with: 'george@example.com')
-      fill_in('Password', with: '123456')
-      fill_in('Password confirmation', with: '123456')
-      click_button('Sign up')
+      sign_up
     end
 
     it 'should see a sign out link' do
