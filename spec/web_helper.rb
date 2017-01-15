@@ -20,3 +20,21 @@ def sign_up
   fill_in('Password confirmation', with: 'testtest')
   click_button('Sign up')
 end
+
+def add_comment
+  fill_in "comment_content", with: "nice"
+  click_button 'submit'
+end
+
+def sign_out
+  click_link("Logout")
+end
+
+def another_sign_up
+  visit('/')
+  click_link('Register')
+  fill_in('Email', with: 'test2@example.com')
+  fill_in('Password', with: 'testtest')
+  fill_in('Password confirmation', with: 'testtest')
+  click_button('Sign up')
+end

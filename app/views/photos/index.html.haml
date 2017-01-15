@@ -9,19 +9,18 @@
           =link_to (image_tag photo.image.url(:medium)), photo_path(photo)
           %p.caption
             =photo.caption
-            |
-            = link_to "Delete", photo_path(photo), method: :delete
-            |
-            = link_to "Edit", edit_photo_path(photo)
+
             .br
             - if photo.comments
-              - photo.comments.each do |comment|
+              - photo.comments[0..2].each do |comment|
                 = link_to comment.user.email, "#"
                 |
                 = comment.content
                 - if comment.user == current_user
                   = link_to "Delete Comment", photo_comment_path(photo, comment), method: :delete, data: { confirm: "Are you sure?" }
                 .br
+            - if photo.comments[3]
+              = link_to "...", photo_path(photo)
             = form_for [photo, photo.comments.new] do |f|
               = f.text_field :content, placeholder: 'Add a comment...'
               = f.button :submit

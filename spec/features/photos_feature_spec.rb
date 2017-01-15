@@ -18,6 +18,7 @@ feature 'photos' do
 
     before do
       add_photo
+      @photo_id = Photo.first.id
     end
 
     scenario 'should display the photo caption and photo' do
@@ -30,7 +31,7 @@ feature 'photos' do
     context 'deleting a post' do
 
       scenario 'removes a photo when a user clicks a delete link' do
-        visit('/photos')
+        visit("/photos/#{@photo_id}")
         click_link 'Delete'
         expect(page).to have_content('No photos have been posted!')
         expect(page).not_to have_content('Travelling')
@@ -39,14 +40,20 @@ feature 'photos' do
 
     context 'editing a post' do
 
-      scenario 'lets user edit their post' do
-        visit('/photos')
+      scenario 'lets user edit their own post' do
+        visit("/photos/#{@photo_id}")
         click_link('Edit')
         fill_in 'Caption', with: 'This has been edited'
         click_button('Update Photo')
         expect(page).to have_content('This has been edited')
         expect(page).not_to have_content('Travelling')
       end
+
+      # scenario 'should not be able to edit another users post' do
+      #   visit("photos/#{@photo_id}/edit")
+      #   # expect(page).to have_content("You can't edit another users' photos!")
+      #   expect(current_path).to eq "/photos"
+      # end
     end
 
     context 'viewing a single post' do

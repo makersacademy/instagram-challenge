@@ -2,10 +2,27 @@
   .post
     .post-head
       .name
-        Username
+        =@photo.user.email
     .text-center
       = image_tag @photo.image.url(:medium)
       %p.caption
         =@photo.caption
         .br
-        = link_to "Back", photos_path
+        - if @photo.comments
+          - @photo.comments.each do |comment|
+            = link_to comment.user.email, "#"
+            |
+            = comment.content
+            - if comment.user == current_user
+              = link_to "Delete Comment", photo_comment_path(@photo, comment), method: :delete, data: { confirm: "Are you sure?" }
+            .br
+        = form_for [@photo, @photo.comments.new] do |f|
+          = f.text_field :content, placeholder: 'Add a comment...'
+          = f.button :submit
+        - if @photo.user.id == current_user.id
+          |
+          = link_to "Delete", photo_path(@photo), method: :delete, data: { confirm: "Are you sure you would like to delete this photo?" }
+          |
+          = link_to "Edit", edit_photo_path(@photo)
+          |
+        = link_to "Go back", photos_path

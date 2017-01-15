@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
 
     if @comment.save
-      redirect_to :back
+      redirect_back(fallback_location: '/photos')
     else
       render root_path
     end
