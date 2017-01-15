@@ -7,15 +7,18 @@
 <div id='timeline'>
   <% @pictures.reverse.each do |picture|  %>
     <ul class='list'>
-      <li>
+      <li class='list-elements'>
          <div id='img'>
            <%= image_tag picture.image.url(:medium)%>
-           <p><%= link_to 'Like', picture_likes_path(picture), method: :post %><p>
-           <p><%= pluralize picture.likes.count, 'Like' %></p>
-           <p><%= link_to 'Add comment', new_picture_comment_path(picture)%></p>
-           <% picture.comments.each do |comment| %>
-             <p><%= comment.description %></p>
-           <% end %>
+           <div id='attributes'>
+             <p ><span style='font-weight: bold;'><%= @user.username %></span> <%= picture.description %>
+               <% picture.comments.each do |comment| %>
+               <p><span style='font-weight: bold;'><%= comment.user.username %></span> <%= comment.description %></p>
+               <% end %>
+             <p><%= pluralize picture.likes.count, 'Like' %></p>
+             <p style='float: right; margin: auto; padding: 5px;'><%= link_to 'Like', picture_likes_path(picture), method: :post %><p>
+             <p style='margin: auto; padding: 5px;'><%= link_to 'Add comment', new_picture_comment_path(picture)%></p>
+            </div>
          </div>
        </li>
      </ul>
