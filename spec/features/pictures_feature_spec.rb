@@ -30,6 +30,7 @@ RSpec.feature 'pictures', :type => :feature  do
 			visit '/pictures'
 			click_link "Add a Picture"
 			fill_in "Name", with: "Baby Hippo"
+			fill_in "Description", with: "Saw this today, so cute!"
 			click_button "Add Picture"
 			expect(page).to have_content "Baby Hippo"
 			expect(current_path).to eq '/pictures'
