@@ -11,5 +11,4 @@ describe 'likeing comtirbutions' do
     click_link '+'
     expect(page).to have_content('1 like')
   end
-
 end
