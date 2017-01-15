@@ -14,6 +14,10 @@ gem 'haml'
 gem 'devise'
 gem 'envyable'
 gem 'omniauth-facebook'
+gem 'rspec-collection_matchers'
+gem 'paperclip'
+#amazon web services
+gem 'aws-sdk', '< 2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'

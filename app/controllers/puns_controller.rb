@@ -30,7 +30,7 @@ class PunsController < ApplicationController
     @pun.update(pun_params)
     redirect_to '/puns'
   end
-  
+
   def edit
     @pun = Pun.find(params[:id])
     unless @pun.belongs_to_user?(current_user)
@@ -55,6 +55,6 @@ class PunsController < ApplicationController
   private
 
   def pun_params
-    params.require(:pun).permit(:name, :description)
+    params.require(:pun).permit(:name, :description, :image)
   end
 end

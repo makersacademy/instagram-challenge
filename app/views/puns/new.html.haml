@@ -8,12 +8,11 @@
       - @pun.errors.full_messages.each do |message|
         %li= message
 
-%div
 .bg-primary
-  %fieldset
-  = form_for @pun do |f|
-    %h3= f.label :name
-    %h3= f.text_field :name
-    %h3= f.label :description
-    %h3= f.text_area :description
-    %h3= f.submit
+  = form_for @pun, html: {multipart: true} do |f|
+    %h4= f.label :name
+    %h4= f.text_field :name
+    %h4= f.label :description
+    %h4= f.text_area :description
+    %h4= f.file_field :image
+    %h4= f.submit
