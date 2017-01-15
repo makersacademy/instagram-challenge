@@ -68,6 +68,15 @@ feature 'restaurants' do
       expect(page).not_to have_content 'This is my cat'
       expect(page).to have_content 'this post has been deleted'
     end
+
+    scenario 'users cannot delete pictures belonging to other users' do
+      sign_up
+      create_picture
+      click_link 'sign out'
+      sign_up_second_user
+      click_link '1'
+      expect(page).not_to have_link('delete')
+    end
   end
 
   context 'an invalid picture' do

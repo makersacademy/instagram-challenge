@@ -15,3 +15,13 @@ def sign_up
   fill_in('Password confirmation', with: '123456')
   click_button('sign up')
 end
+
+def sign_up_second_user
+  visit('/')
+  click_link('sign up')
+  fill_in ('Username'), with: 'lionel'
+  fill_in('Email', with: 'lionel@cat.com')
+  fill_in('Password', with: '123456')
+  fill_in('Password confirmation', with: '123456')
+  click_button('sign up')
+end

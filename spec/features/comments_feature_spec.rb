@@ -23,5 +23,18 @@ feature 'commenting' do
       expect(page).to have_content('comment deleted')
       expect(page).not_to have_content('Cute!')
     end
+
+    scenario 'users cannot delete comments belonging to other users' do
+      sign_up
+      create_picture
+      click_link '1'
+      click_link 'add a comment'
+      fill_in 'Thoughts', with: 'Cute!'
+      click_button 'done'
+      click_link 'sign out'
+      sign_up_second_user
+      click_link '1'
+      expect(page).not_to have_link('delete comment')
+    end
   end
 end
