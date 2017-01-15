@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'commenting', :type => :feature  do
 
+	include WebHelpers
+
 	context "creating comments" do
 
 		before do
@@ -9,6 +11,7 @@ RSpec.feature 'commenting', :type => :feature  do
 		end
 
 		scenario "user can leave a comment on a picture" do
+			sign_up
 			visit "/pictures"
 			click_link "Baby Hippo"
 			click_link "Add Comment"
