@@ -18,9 +18,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @photo = Photo.find(params[:id])
+    @comment = Comment.find(params[:photo_id])
     @comment.destroy
-    redirect_to root_path
+    redirect_to photo_path(@photo)
   end
 
   private
