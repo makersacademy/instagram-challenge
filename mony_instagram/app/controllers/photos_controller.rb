@@ -13,7 +13,6 @@ class PhotosController < ApplicationController
   def create
     @user = User.find(current_user.id)
     @photo = @user.photos.new(photo_params)
-    require 'pry'; binding.pry
     if @photo.save
       redirect_to photos_path
     else
