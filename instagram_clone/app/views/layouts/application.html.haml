@@ -1,11 +1,22 @@
 !!! 5
 %html
   %head
-    %title Pin Board
+    %title Instagram Clone
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = csrf_meta_tags
   %body
+    %nav.navbar.navbar-default
+      .container
+        .navbar-logo= link_to "Instagram_Clone", root_path
+
+        - if user.signed_in?
+          %ul.nav.navbar-nav.navbar-right
+            %li= link_to "New Photo", new_pin_path
+            %li= link_to "Account Settings", edit_user_registration_path
+            %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+
+
     - flash.each do |name, msg|
       = content_tag :div, msg, class: "alert alert-content"
 
