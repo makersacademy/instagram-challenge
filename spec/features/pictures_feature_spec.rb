@@ -9,6 +9,11 @@ feature "pictures" do
     password: 'seventhheaven'
   }
 
+  user_2 = {
+    email: 'pinkie@pie.me',
+    password: 'cookiez'
+  }
+
   picture_1 = {
     filepath: "./spec/assets/test1.jpg",
     description: "where do tests go?"
@@ -88,9 +93,18 @@ feature "pictures" do
       expect(page).to have_content("Team Brick!")
       expect(page).not_to have_content("Friendship is magic!")
     end
+
+    scenario "I want my pictures to only be edited by me" do
+      click_link("Sign out")
+      sign_up(user_2)
+      visit "/pictures/#{Picture.first.id}/edit"
+      expect(current_path).to eq "/pictures"
+      message = "Naughty! You can only edit your own pictures!"
+      expect(page).to have_content(message)
+    end
   end
 
-  context "deleting pictures" do
+  xcontext "deleting pictures" do
     scenario "I want to delete a picture", :js => true do
       visit "/"
       sign_up(user_1)

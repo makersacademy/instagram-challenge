@@ -27,6 +27,10 @@ class PicturesController < ApplicationController
 
   def edit
     @picture = Picture.find(params[:id])
+    unless @picture.belongs_to?(current_user)
+      flash[:alert] = "Naughty! You can only edit your own pictures!"
+      redirect_to "/pictures"
+    end
   end
 
   def update
