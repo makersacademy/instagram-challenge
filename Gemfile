@@ -60,6 +60,7 @@ group :test do
   gem 'capybara'
   gem 'pry'
   gem 'database_cleaner'
+  gem 'selenium-webdriver'
 end
 
 
