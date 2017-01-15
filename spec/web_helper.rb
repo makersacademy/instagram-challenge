@@ -14,3 +14,11 @@ def sign_up
   fill_in("Password confirmation", with: "123456")
   click_button("Sign up")
 end
+
+def add_comment
+  upload_image
+  visit("/pictures")
+  click_link("Comment on Quote 1")
+  fill_in("Comment", with: "Nice Quote")
+  click_button("Add comment")
+end
