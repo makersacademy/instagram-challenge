@@ -1,14 +1,12 @@
 class PicturesController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @pictures = Picture.all
   end
 
   def new
-    unless current_user
-      flash[:alert] = "You have to be signed in to add a picture"
-      redirect_to '/users/sign_in'
-    end
     @picture = Picture.new
   end
 

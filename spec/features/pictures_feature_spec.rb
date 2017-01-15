@@ -54,7 +54,7 @@ feature "pictures" do
     scenario "I want to only add pictures when signed in" do
       visit '/pictures/new'
       expect(current_path).to eq '/users/sign_in'
-      message = "You have to be signed in to add a picture"
+      message = "You need to sign in or sign up before continuing."
       expect(page).to have_content(message)
     end
   end
