@@ -13,4 +13,9 @@ class Picture < ApplicationRecord
     comment
   end
 
+  def build_like(attributes = {} ,user)
+    like = likes.build(attributes)
+    like.user = user
+    like
+  end
 end

@@ -7,6 +7,8 @@
       <li>
          <div id='img'>
            <%= image_tag picture.image.url(:medium)%>
+           <%= pluralize picture.likes.count, 'Like' %>
+           <%= link_to 'Like', picture_likes_path(picture), method: :post %>
            <% picture.comments.each do |comment| %>
              <p><%= comment.description %></p>
            <% end %>

@@ -4,9 +4,8 @@ Rails.application.routes.draw do
        registrations: 'users/registrations'
      }
   resources :pictures, shallow: true do
-    resources :comments do
-      
-    end
+    resources :comments
+    resources :likes
   end
   root to: "pictures#index"
 
