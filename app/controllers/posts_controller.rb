@@ -43,13 +43,21 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:notice] = 'Your post has been deleted'
+    if user_owns_post?
+      @post.destroy
+      flash[:notice] = 'Your post has been deleted.'
+    else
+      flash[:alert] = 'Post cannot be deleted. You did not create it.'
+    end
     redirect_to '/'
   end
 
 
   private
+
+  def user_owns_post?
+    @post.user == current_user
+  end
 
   def post_params
     params.require(:post).permit(:caption, :image)

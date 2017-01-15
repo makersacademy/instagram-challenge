@@ -3,12 +3,12 @@ require 'rails_helper.rb'
 feature 'Creating posts' do
 
   let(:user) { create(:user) }
-  
+
   before do
     login_as(user, :scope => :user)
   end
 
-  scenario 'a user can create a post' do
+  scenario 'a logged in user can create a post' do
     visit '/posts'
     click_link 'New post'
     expect(page.current_path).to eq '/posts/new'
