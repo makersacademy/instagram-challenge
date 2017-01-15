@@ -16,7 +16,7 @@ The repository was forked from: https://github.com/makersacademy/instagram-chall
 
 ## Screenshots
 
-* [First Page](https://s27.postimg.org/e0luljhv7/Screen_Shot_2017_01_15_at_21_34_11.png)
+* ![First Page](https://s27.postimg.org/e0luljhv7/Screen_Shot_2017_01_15_at_21_34_11.png)
 
 ## Technologies used
 
