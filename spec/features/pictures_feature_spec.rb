@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'restaurants' do
+feature 'pictures' do
   context 'no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
       visit '/pictures'
@@ -16,6 +16,16 @@ feature 'restaurants' do
       visit '/pictures'
       expect(page).to have_content('This is my cat')
       expect(page).not_to have_content('no pictures yet')
+    end
+
+    scenario 'users cannot show picture on own page unless signed in' do
+      sign_up
+      create_picture
+      click_link 'sign out'
+      visit '/pictures'
+      click_link '1'
+      expect(page).not_to have_content('This is my cat')
+      expect(page).to have_content('sign in')
     end
   end
 

@@ -1,11 +1,18 @@
-<a href='pictures/new'>add a picture!</a>
+<a href='pictures/new' id='add'>add a picture!</a>
 <%  if @pictures.any? %>
   <% @pictures.each do |picture| %>
-    <%= picture.user.username %>
-    <%= link_to( image_tag(picture.image.url(:medium)), picture_path(picture), :class=>'picture', :id=>'1') %>
-    <%= link_to '😻', picture_likes_path(picture), class: 'likes-link' %>
-    <span class="likes_count"> <%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>
-    <p> <%= picture.caption %> </h2>
+    <div class='each-picture'>
+      <p class='pic-username'><%= picture.user.username %></p>
+      <%= link_to( image_tag(picture.image.url(:medium)), picture_path(picture), :class=>'picture', :id=>'1', class: 'pic-image') %>
+      <br>
+      <div class='pic-info'>
+        <div class='likes'><%= link_to '😻', picture_likes_path(picture), class: 'likes-link' %>
+        <span class="likes_count"> <%= picture.likes.count %> </span>
+        <%= 'like'.pluralize(picture.likes.count) %></div>
+        <br>
+        <p class='pic-caption'> <%= h truncate(picture.caption, :length => 40) %> </h2>
+    </div>
+  </div>
       <br>
   <% end %>
     <% else %>
