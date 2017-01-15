@@ -5,9 +5,11 @@
       %p
       =image.title
       %p
-    %p= pluralize image.likes.count, 'like'
-    = link_to "Like Image", image_likes_path(image)
-    = link_to "Delete Image", image_path(image), method: :delete
+    -# %p= pluralize image.likes.count, 'like'
+    = link_to "Like Image", image_likes_path(image), class: 'likes-link'
+    %span.likes_count= image.likes.count
+    = 'like'.pluralize image.likes.count
+    %p= link_to "Delete Image", image_path(image), method: :delete
     %br
 - else
   No Images Yet!
