@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
+    @photo = Photo.create_user.photos.build(photo_params)
 
     if @photo.save
       redirect_to @photo, notice: "Photo submitted"
@@ -27,6 +27,11 @@ class PhotosController < ApplicationController
   end
 
   def update
+    if @photo.update(photo_params)
+      redirect_to @photo, "Photo was updated"
+    else
+      render 'edit'
+    end
   end
 
   def destroy
