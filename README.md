@@ -1,7 +1,7 @@
 Instagram Challenge
 ===================
 
-User stories
+##User stories##
 
 
 Adding a photo
@@ -28,12 +28,6 @@ User accounts
 As a photo owner I can log into my account with a username and email.
 
 2
-As a photo owner I can log into my account with facebook.
-
-3
-As a photo owner I can log out of my account with facebook.
-
-4
 As a photo owner I can add and delete photos when I am logged into my account.
 
 
@@ -61,6 +55,10 @@ As a photo viewer, I can add a like to another person's photo.
 As a photo viewer, I can remove a like from another person's photo.
 
 
+
+
+
+Current position
 
 
 
