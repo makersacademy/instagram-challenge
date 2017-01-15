@@ -2,6 +2,15 @@ class PhotosController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
 
+  before_action :require_permission, :only => [:edit, :destroy]
+
+  def require_permission
+    if current_user != Photo.find(params[:id]).user
+      flash[:notice] = "You can't delete someone else's photo!"
+      redirect_to root_path
+    end
+  end
+
   def index
     @photos = Photo.all
   end
@@ -11,8 +20,13 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.create(photo_params)
-    redirect_to photos_path
+    @user = current_user
+    @photo = @user.photos.create(photo_params)
+    if @photo.save
+      redirect_to photos_path
+    else
+      render 'new'
+    end
   end
 
   def show

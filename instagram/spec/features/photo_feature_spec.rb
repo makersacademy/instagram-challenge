@@ -14,7 +14,7 @@ feature 'photos' do
   end
   context 'photos have been added' do
     before do
-      Photo.create(caption: 'My Lunch')
+      post_photo
     end
 
     scenario 'display pictures' do
