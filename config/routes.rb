@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'posts' => 'posts#index'
   root "posts#index"
-  resources :posts do
-    resources :comments
+
+  resources :posts, shallow: true do
+    resources :comments do
+      resources :likes
+    end
   end
+
 end

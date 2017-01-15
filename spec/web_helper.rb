@@ -23,3 +23,11 @@ def sign_up2
   fill_in 'Password confirmation', with: 'donkey'
   click_button 'Sign up'
 end
+
+def add_comment
+  visit '/posts'
+  click_link 'image'
+  click_link 'Comment'
+  fill_in 'Comments', with: 'Nice!'
+  click_button 'Comment'
+end

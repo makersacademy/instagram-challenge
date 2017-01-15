@@ -5,8 +5,10 @@
     %p= @post.caption
     - @post.comments.each do |comment|
       %p= comment.comments
+      %p= pluralize comment.likes.count, 'Like'
+      = link_to 'Like', comment_likes_path(comment), method: :post
       - if @user.comments.include?(comment)
-        = link_to 'Delete comment', post_comment_path(@post, comment), method: :delete
+        = link_to 'Delete comment', comment_path(comment), method: :delete
     = link_to 'Comment', new_post_comment_path(@post)
     - if @user
       - if @user.posts.include?(@post)
