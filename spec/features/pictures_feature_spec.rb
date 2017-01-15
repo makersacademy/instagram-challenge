@@ -35,6 +35,13 @@ RSpec.feature 'pictures', :type => :feature  do
 			expect(page).to have_content "Baby Hippo"
 			expect(current_path).to eq '/pictures'
 		end
+
+		scenario "user cannot create a picture without a name" do
+			visit "/pictures"
+			click_link "Add a Picture"
+			click_button "Add Picture"
+			expect(page).to have_content "Name can't be blank"
+		end
 	end
 
 	context "viewing pictures" do
