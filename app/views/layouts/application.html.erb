@@ -9,9 +9,20 @@
   </head>
 
   <body>
-    <div id="logo">
-      <h1> L'Instagramme </h1>
-      <h3> C'est la vie, in pictures! </h3>
+    <div id="pagetop">
+      <div id="logo">
+        <h1><a class="nav-link" href="/">L'Instagramme</a></h1>
+        <h4> C'est la vie, in pictures! </h4>
+      </div>
+      <div id ="navbar"><ul id="navbar-list">
+        <% if current_user %>
+          <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Add a picture", new_picture_path, class: "nav-link" %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Sign in", new_user_session_path, class: "nav-link" %></li>
+        <% end %>
+      </ul></div>
     </div>
     <br>
 

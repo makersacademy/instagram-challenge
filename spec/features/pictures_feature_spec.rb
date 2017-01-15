@@ -4,6 +4,11 @@ feature "pictures" do
 
   include Helpers
 
+  user_1 = {
+    email: 'rainbowdash@c9.io',
+    password: 'seventhheaven'
+  }
+
   picture_1 = {
     filepath: "./spec/assets/test1.jpg",
     description: "where do tests go?"
@@ -17,14 +22,16 @@ feature "pictures" do
 
   context "no pictures have been added" do
     scenario "I want to see a prompt to add a picture" do
+      sign_up(user_1)
       visit "/pictures"
-        expect(page).to have_content("No pictures yet")
-        expect(page).to have_link("Add a picture")
+      expect(page).to have_content("No pictures yet")
+      expect(page).to have_link("Add a picture")
     end
   end
 
   context "pictures have been added" do
     before do
+      sign_up(user_1)
       add_picture(picture_1)
     end
     scenario "I want to see pictures" do
@@ -37,15 +44,24 @@ feature "pictures" do
 
   context "adding pictures" do
     scenario "I want to add a picture, then see it" do
+      sign_up(user_1)
       add_picture(picture_1)
       expect(current_path).to eq '/pictures'
       expect(page).to have_content "where do tests go?"
       expect(page).to have_css("img[src*='test1']")
     end
+
+    scenario "I want to only add pictures when signed in" do
+      visit '/pictures/new'
+      expect(current_path).to eq '/users/sign_in'
+      message = "You have to be signed in to add a picture"
+      expect(page).to have_content(message)
+    end
   end
 
   context "viewing pictures" do
     before do
+      sign_up(user_1)
       add_picture(picture_1)
       add_picture(picture_2)
     end
@@ -59,6 +75,7 @@ feature "pictures" do
 
   context "editing pictures" do
     before do
+      sign_up(user_1)
       add_picture(picture_2)
     end
     scenario "I want to edit a picture description" do
@@ -74,7 +91,8 @@ feature "pictures" do
 
   context "deleting pictures" do
     scenario "I want to delete a picture", :js => true do
-      visit '/pictures'
+      visit "/"
+      sign_up(user_1)
       add_picture(picture_2)
       click_link("Test2")
       click_link("Delete")

@@ -3,12 +3,18 @@ require 'rails_helper'
 feature "commenting" do
   include Helpers
 
+  user_1 = {
+    email: 'rainbowdash@c9.io',
+    password: 'seventhheaven'
+  }
+
   picture_2 = {
     filepath: "./spec/assets/test2.jpg",
     description: "where do tests go?"
   }
 
   before do
+    sign_up(user_1)
     add_picture(picture_2)
   end
 
