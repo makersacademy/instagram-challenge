@@ -22,4 +22,15 @@ feature 'photos' do
     end
   end
 
+  context 'creating photos' do
+    scenario 'prompts user to add their photo with a caption, then displays the photo' do
+      visit '/photos'
+      click_link 'Add a photo'
+      fill_in 'Caption', with: 'My cat is fluffy'
+      click_button 'Create Photo'
+      expect(page).to have_content 'My cat is fluffy'
+      expect(current_path).to eq '/photos'
+    end
+  end
+
 end
