@@ -40,14 +40,34 @@ RSpec.feature 'pictures', :type => :feature  do
 	context "viewing pictures" do
 
 		before do
-			@picture = Picture.create(name: "Baby Hippo")
+			Picture.create(name: "Baby Hippo", description: "Saw this today, so cute!", id: 1)
 		end
 
 		scenario "lets a user view a picture" do
 			visit '/pictures'
 			click_link "Baby Hippo"
 			expect(page).to have_content "Baby Hippo"
-			expect(current_path).to eq "/pictures/#{@picture.id}"
+			expect(page).to have_content "Saw this today, so cute!"
+			expect(current_path).to eq "/pictures/1"
+		end
+	end
+
+	context "editing pictures" do
+
+		before do
+			Picture.create(name: "Baby Hippo", description: "Saw this today, so cute!", id: 1)
+		end
+
+		scenario "lets a user edit a picture" do
+			visit '/pictures'
+			click_link "Baby Hippo"
+			click_link "Edit Picture"
+			fill_in "Name", with: "Shaved Guinea Pig"
+			fill_in "Description", with: "I thought this was a baby hippo, oops!"
+			click_button "Update Picture"
+			expect(current_path).to eq "/pictures/1"
+			expect(page).to have_content "Shaved Guinea Pig"
+			expect(page).to have_content "I thought this was a baby hippo, oops!"
 		end
 	end
 end
