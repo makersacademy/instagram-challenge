@@ -26,6 +26,7 @@ class PhotosController < ApplicationController
   def show
     @photo = Photo.find(params[:id])
     @comments = @photo.comments
+    @likes = @photo.likes.count
   end
 
   def edit

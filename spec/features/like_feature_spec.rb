@@ -14,7 +14,7 @@ feature 'likes' do
       @photo = Photo.find_by(name:"Posh Coffee")
       visit '/'
       click_link("#{@photo.name}")
-      expect{ click_button('Like') }.to change{Like.count}.by(1)
+      click_link('Like')
       expect(page).to have_content("1 Like")
       expect(current_path).to eq "/photos/#{@photo.id}"
     end
