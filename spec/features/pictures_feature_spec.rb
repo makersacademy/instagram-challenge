@@ -56,4 +56,19 @@ feature "pictures" do
       expect(page).to have_content("Friendship is magic!")
     end
   end
+
+  context "editing pictures" do
+    before do
+      add_picture(picture_2)
+    end
+    scenario "lets user edit a picture description" do
+      visit '/pictures'
+      click_link("Test2")
+      click_link("Edit")
+      fill_in "Description", with: "Team Brick!"
+      click_button "Update"
+      expect(page).to have_content("Team Brick!")
+      expect(page).not_to have_content("Friendship is magic!")
+    end
+  end
 end
