@@ -94,7 +94,14 @@ feature "pictures" do
       expect(page).not_to have_content("Friendship is magic!")
     end
 
-    scenario "I want my pictures to only be edited by me" do
+    scenario "I want my pictures to only be edited by me - view" do
+      click_link("Sign out")
+      sign_up(user_2)
+      click_link("Test2")
+      expect(page).not_to have_link("Edit")
+    end
+
+    scenario "I want my pictures to only be edited by me - controller" do
       click_link("Sign out")
       sign_up(user_2)
       visit "/pictures/#{Picture.first.id}/edit"
@@ -105,6 +112,16 @@ feature "pictures" do
   end
 
   context "deleting pictures" do
+    scenario "I want my pictures to only be deleted by me - view" do
+      visit "/"
+      sign_up(user_1)
+      add_picture(picture_2)
+      click_link("Sign out")
+      sign_up(user_2)
+      click_link("Test2")
+      expect(page).not_to have_link("Delete")
+    end
+    
     scenario "I want to delete a picture", :js => true do
       visit "/"
       sign_up(user_1)

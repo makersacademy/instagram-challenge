@@ -1,8 +1,10 @@
 
 <%= image_tag @picture.image.url(:medium) %>
 <p><%= @picture.description%></p>
+<% if @picture.belongs_to?(current_user) %>
 <%= link_to "Edit", edit_picture_path(@picture) %>
 <%= link_to 'Delete', picture_path(@picture), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
 <% @picture.comments.each do |comment| %>
 <p><%= comment.content %></p>
 <% end %>
