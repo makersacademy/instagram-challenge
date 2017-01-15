@@ -2,12 +2,20 @@
   <% @all_contributions.reverse_each do |contribution| %>
     <%= image_tag contribution.image.url(:medium) %>
     <br>
-    <%= contribution.comment %>
+    <%= contribution.created_at %>
     <br>
     <%= link_to 'view all', contribution_path(contribution) %>&nbsp;&nbsp;&nbsp;
     <%= link_to 'edit', edit_contribution_path(contribution) %>&nbsp;&nbsp;&nbsp;
-    <%= link_to 'delete', contribution_path(contribution), method: :delete %>
+    <%= link_to 'delete', contribution_path(contribution), method: :delete %>&nbsp;&nbsp;&nbsp;
+    <%= link_to 'comment', new_contribution_comment_path(contribution) %>
     <br>
+    <%= contribution.comment %>
+    <br>
+    <% if contribution.comments.any? %>
+      <% contribution.comments.each do |comment| %>
+        <%= comment.comment %>
+      <% end %>
+    <% end %>
   <% end %>
 <% else %>
   No contributions yet
