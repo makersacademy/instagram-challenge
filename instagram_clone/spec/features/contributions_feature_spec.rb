@@ -12,7 +12,8 @@ feature 'contributions' do
 
   context 'contributions have been added' do
     before do
-      Contribution.create(comment: 'A black cat')
+      sign_up
+      create_contribution
     end
 
     scenario 'display contributions' do
@@ -29,17 +30,19 @@ feature 'contributions' do
       sign_up
       visit '/contributions'
       click_link 'Add a contribution'
-      # attach_file 'Image', @image
+      attach_file 'Image', @image
       fill_in 'Comment', with: 'A black cat'
       click_button 'Create Contribution'
       expect(page).to have_content 'A black cat'
-      # expect(page).to have_selector("img")
+      expect(page).to have_selector("img")
       expect(current_path).to eq '/contributions'
+      click_link 'delete'
     end
   end
 
   context 'display contributions indivisually' do
-    let!(:contribution){ Contribution.create(comment: 'A black cat') }
+    let!(:user){ User.create(email: 'test@test.com', username: 'TEST', password: '12345678', password_confirmation: '12345678')}
+    let!(:contribution){ Contribution.create(comment: 'A black cat', user_id: user.id) }
 
     scenario 'lets a user view a contribution' do
       visit '/contributions'
@@ -50,9 +53,12 @@ feature 'contributions' do
   end
 
   context 'editing contributions' do
-    before { Contribution.create(comment: 'A black cat', id:1)}
-    scenario 'let a user edit a contribution' do
+    before do
       sign_up
+      user = User.find_by(email: 'test@example.com')
+      Contribution.create(comment: 'A black cat', id:1, user_id: user.id )
+    end
+    scenario 'let a user edit a contribution' do
       visit '/contributions'
       click_link 'edit'
       fill_in 'Comment', with: 'I met a really beautiful black cat in Portugal'
@@ -64,9 +70,12 @@ feature 'contributions' do
   end
 
   context 'deleting contributions' do
-    before { Contribution.create(comment: 'A black cat')}
-    scenario 'let a user delete a contribution' do
+    before do
       sign_up
+      user = User.find_by(email: 'test@example.com')
+      Contribution.create(comment: 'A black cat', id:1, user_id: user.id )
+    end
+    scenario 'let a user delete a contribution' do
       visit '/contributions'
       click_link 'delete'
       expect(page).not_to have_content 'A black cat'

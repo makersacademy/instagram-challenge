@@ -16,5 +16,6 @@ describe 'likeing comtirbutions' do
     visit '/contributions'
     click_link '♡'
     expect(page).to have_content('1 like')
+    click_link 'delete'
   end
 end

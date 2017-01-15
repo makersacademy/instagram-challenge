@@ -11,7 +11,10 @@ class ContributionsController < ApplicationController
   end
 
   def create
-    Contribution.create(contribution_params)
+    @user = current_user
+    contribution = Contribution.create(contribution_params)
+    contribution.user_id = @user.id
+    contribution.save
     redirect_to '/contributions'
   end
 
