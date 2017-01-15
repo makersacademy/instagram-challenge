@@ -33,13 +33,4 @@ feature 'photos' do
     end
   end
 
-  # context 'viewing photos' do
-  #   let!(:sunset){ Photo.create(caption: 'A beautifull sunset') }
-  #
-  #   scenario 'let a user view a photo ' do
-  #     visit '/photos'
-  #     click_link '
-  #   end
-  # end
-
 end
