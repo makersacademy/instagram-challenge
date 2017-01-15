@@ -4,14 +4,14 @@
   <% @posts.each do |post| %>
   <div class="post">
     <%= image_tag post.image.url(:medium) %>
-    <p> <%= post.description %> <p>
-    <p> <%= link_to "Comment", new_post_comment_path(post) %></p>
+    <p class="description"> <%= post.description %> <p>
+    <p class="like"> <%= link_to "Like", post_likes_path(post), method: :post %>
+    <span><%= pluralize post.likes.count, 'like' %></span></p>
+    <p class="comment"> <%= link_to "Comment", new_post_comment_path(post) %></p>
     <% if post.comments.any? %>
-      <ul>
       <% post.comments.all.each do |comment| %>
-        <li><%= comment.comment %></li>
+        <p><%= comment.comment %></p>
       <% end %>
-      </ul>
     <% end %>
 
   </div>
