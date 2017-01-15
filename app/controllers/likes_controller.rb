@@ -1,19 +1,29 @@
 class LikesController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :find_photo
 
   def new
-    @photo = Photo.find(params[:photo_id])
     @like = Like.new
     create
   end
 
   def create
-    photo = Photo.find(params[:photo_id])
-    like = photo.likes.new()
+    like = @photo.likes.new()
     like.user = current_user
     like.save
-    redirect_to photo_path(photo)
+    redirect_to photo_path(@photo)
+  end
+
+  def destroy
+    like = @photo.likes.detect { |like| like.user == current_user }
+    like.destroy
+    redirect_to photo_path(@photo)
+  end
+
+  private
+
+  def find_photo
+    @photo = Photo.find(params[:photo_id])
   end
 
 end

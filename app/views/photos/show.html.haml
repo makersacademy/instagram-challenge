@@ -4,7 +4,10 @@
 
 - if current_user
   = link_to "New Comment", new_photo_comment_path(@photo)
-  = link_to "Like", new_photo_like_path(@photo)
+  - if current_user.liked_photos.include?(@photo)
+    = link_to "Unlike", photo_like_path(@photo), method: :delete
+  - else
+    = link_to "Like", new_photo_like_path(@photo)
   - if @photo.user_id == current_user.id
     = link_to "Rename", edit_photo_path(@photo)
     = link_to "Delete", photo_path(@photo), method: :delete
