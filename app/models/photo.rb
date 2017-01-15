@@ -1,5 +1,5 @@
 class Photo < ApplicationRecord
 
-  validates :description, length: { minimum: 1}
+  validates :description, presence: true
 
 end

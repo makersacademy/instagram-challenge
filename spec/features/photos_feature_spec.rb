@@ -38,7 +38,7 @@ feature 'photos' do
       click_link 'Add photo'
       fill_in 'Description', with: ''
       click_button 'Create Photo'
-      expect(page).to have_content('Please add a description')
+      expect(page).to have_content("Description can't be blank")
     end
   end
 
