@@ -5,6 +5,11 @@
     <%= link_to "Edit", edit_picture_path(@picture) %>
     <%= link_to 'Delete', picture_path(@picture), method: :delete, data: {confirm: "Are you sure?"} %>
   <% end %>
+  <% if @picture.instagratifications.length == 0 %>
+  No ♥ :<
+  <% else %>
+    <%= @picture.instagratifications.length %> ♥
+  <% end %>
 <% @picture.comments.each do |comment| %>
 <p>
   <% if comment.belongs_to?(current_user) %>
@@ -14,6 +19,7 @@
 <% end %>
 
 <% if current_user %>
+<%= link_to "♡", picture_instagratifications_path(@picture), method: :post %>
   <ul class="form">
     <%= form_for [@picture, @comment] do |f| %>
     <li>
