@@ -49,11 +49,13 @@ feature 'photos' do
         expect(page).not_to have_content('Travelling')
       end
 
-      # scenario 'should not be able to edit another users post' do
-      #   visit("photos/#{@photo_id}/edit")
-      #   # expect(page).to have_content("You can't edit another users' photos!")
-      #   expect(current_path).to eq "/photos"
-      # end
+      scenario 'should not be able to edit another users post' do
+        sign_out
+        another_sign_up
+        visit("photos/#{@photo_id}/edit")
+        expect(page).to have_content("You can't edit another users' photos!")
+        expect(current_path).to eq "/photos"
+      end
     end
 
     context 'viewing a single post' do

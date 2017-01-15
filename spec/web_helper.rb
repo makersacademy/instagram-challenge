@@ -22,8 +22,10 @@ def sign_up
 end
 
 def add_comment
+  photo_id = Photo.first.id
   fill_in "comment_content", with: "nice"
-  click_button 'submit'
+  find("comment_content").native.send_keys :enter
+  # click_button 'submit'
 end
 
 def sign_out

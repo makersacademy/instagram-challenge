@@ -5,6 +5,7 @@ feature 'commenting' do
   before do
     sign_up
     add_photo
+    save_and_open_page
     add_comment
   end
 

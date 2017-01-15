@@ -1,30 +1,35 @@
-.posts-wrapper.row
+.posts-wrapper
   .post
     .post-head
-      .name
+      .user-name
         =@photo.user.email
     .text-center
       = image_tag @photo.image.url(:medium)
-      %p.caption
-        =@photo.caption
-        .br
-        - if @photo.comments
-          - @photo.comments.each do |comment|
-            = link_to comment.user.email, "#"
-            |
-            = comment.content
-            - if comment.user == current_user
-              = link_to photo_comment_path(@photo, comment), method: :delete, data: { confirm: "Are you sure?" } do
-                %span(class="glyphicon glyphicon-remove delete-comment")
+      .post-botton
+        .caption
+          .caption-content
+            =@photo.caption
+          .comments{id: "comments#{@photo.id}"}
+            - if @photo.comments
+              - @photo.comments.each do |comment|
+                = link_to comment.user.email, "#"
+                |
+                = comment.content
+                - if comment.user == current_user
+                  = link_to photo_comment_path(@photo, comment), method: :delete, data: { confirm: "Are you sure?" } do
+                    %span(class="glyphicon glyphicon-remove delete-comment")
+                .br
+      .comment-like-form.row
+        .like-button.col-sm-1
+          %span(class="glyphicon glyphicon-heart-empty")
+        .comment-form.col-sm-11
+          - if current_user
+            = form_for [@photo, @photo.comments.build] do |f|
+              = f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{@photo.id}"
+          - if current_user && @photo.user.id == current_user.id
             .br
-        - if current_user
-          = form_for [@photo, @photo.comments.new] do |f|
-            = f.text_field :content, placeholder: 'Add a comment...'
-            = f.button :submit
-        - if current_user && @photo.user.id == current_user.id
-          |
-          = link_to "Delete", photo_path(@photo), method: :delete, data: { confirm: "Are you sure you would like to delete this photo?" }
-          |
-          = link_to "Edit", edit_photo_path(@photo)
-          |
-        = link_to "Go back", photos_path
+            = link_to "Delete", photo_path(@photo), method: :delete, data: { confirm: "Are you sure you would like to delete this photo?" }
+            |
+            = link_to "Edit", edit_photo_path(@photo)
+            |
+          = link_to "Go back", photos_path
