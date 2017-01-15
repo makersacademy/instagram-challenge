@@ -7,12 +7,18 @@ class PhotosController < ApplicationController
   end
 
   def new
-    @photo = Photo.new
+    @photo = current_user.photos.build
   end
 
   def create
-    Photo.create(photos_params)
-    redirect_to photos_path
+    @photo = current_user.photos.build(photos_params)
+
+    if @photo.save
+      redirect_to photos_path
+    else
+      flash[:alert] = "Your new photo could not be posted. Please check the form."
+      render :new
+    end
   end
 
   def destroy

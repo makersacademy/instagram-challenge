@@ -5,6 +5,8 @@ feature 'commenting' do
   before do
     sign_up
     add_photo
+    save_and_open_page
+    require 'pry'; binding.pry
     fill_in "comment_content", with: "nice"
     click_button 'submit'
   end

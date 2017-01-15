@@ -5,7 +5,7 @@ feature 'photos' do
   before do
     sign_up
   end
-  
+
   context 'no photos have been added' do
     scenario 'should display a prompt to post a photo' do
       visit('/photos')
@@ -62,6 +62,13 @@ feature 'photos' do
         # # expect(page).to have_content('Another photo')
         # # expect(page).not_to have_content("Travelling")
         # expect(current_path).to eq "photos/#{photo_id}"
+      end
+    end
+
+    context 'can see who posted the photo' do
+      scenario 'users email is attached to the post' do
+        add_second_photo
+        expect(page).to have_content 'test@example.com'
       end
     end
 
