@@ -16,7 +16,6 @@ feature 'comments' do
       click_link('New Comment')
       fill_in 'comment[text]', with: "That looks lovely! Where did you get it?"
       click_button("Create Comment")
-      # require "pry"; binding.pry
       expect(page).to have_content("Comments")
       expect(page).to have_content("Posh Coffee")
       expect(current_path).to eq "/photos/#{@photo.id}"
