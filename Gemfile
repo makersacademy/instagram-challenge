@@ -39,6 +39,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'paperclip'
 # Easy forms
 gem 'simple_form'
+# User authentication
+gem 'devise'
 
 
 group :development, :test do
