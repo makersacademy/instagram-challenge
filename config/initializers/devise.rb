@@ -16,6 +16,12 @@ Devise.setup do |config|
 
   config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"]
 
+  OmniAuth.config.logger = Rails.logger
+  Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"]
+  end
+
+
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
