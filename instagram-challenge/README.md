@@ -56,6 +56,10 @@ I want to be the only one who can edit a post
 As a user,
 So that I can rectify a mistake
 I want to be able to un-like a post I have previously liked
+
+As a user,
+So that I can avoid a lengthy registration process
+I want to be able to log in with facebook
 ```
 
 ###Outstanding Steps
