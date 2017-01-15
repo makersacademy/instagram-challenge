@@ -31,13 +31,18 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    if @post.save
-      flash[:notice] = 'Thanks. Your changes have been saved.'
-      redirect_to '/'
+    if user_owns_post?
+      @post.update(post_params)
+      if @post.save
+        flash[:notice] = 'Thanks. Your changes have been saved.'
+        redirect_to '/'
+      else
+        flash[:alert] = "Your changes could not be made."
+        render 'edit'
+      end
     else
-      flash[:alert] = "Your changes could not be made."
-      render 'edit'
+      flash[:alert] = 'You cannot edit a post you did not create.'
+      redirect_to '/'
     end
   end
 
