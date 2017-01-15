@@ -22,13 +22,6 @@ class CommentsController < ApplicationController
     redirect_to image_path(@comment.image_id)
   end
 
-  # def destroy
-  #   @review = Review.find (params[:id])
-  #   @review.destroy
-  #   flash[:notice] = 'Review deleted successfully'
-  #   redirect_to restaurant_path(@review.restaurant_id)
-  # end
-
   private
 
   def comment_params
