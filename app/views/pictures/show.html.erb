@@ -19,7 +19,12 @@
 <% end %>
 
 <% if current_user %>
-<%= link_to "♡", picture_instagratifications_path(@picture), method: :post %>
+  <% user_loved = current_user.instagratifications & @picture.instagratifications %>
+  <% if user_loved != [] %>
+    <%= link_to "♥", picture_instagratification_path(@picture, user_loved[0]), method: :delete %>
+  <% else %>
+    <%= link_to "♡", picture_instagratifications_path(@picture), method: :post %>
+  <% end %>
   <ul class="form">
     <%= form_for [@picture, @comment] do |f| %>
     <li>

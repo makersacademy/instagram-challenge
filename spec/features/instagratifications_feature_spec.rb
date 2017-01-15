@@ -34,7 +34,16 @@ feature "instagratifications" do
       expect(page).to have_content("1 ♥")
       expect(Instagratification.all.length).to eq 1
     end
+
+    scenario "I can only add one instagratification" do
+      visit '/pictures'
+      click_link("Test1")
+      click_link("♡")
+      expect(page).not_to have_content("♡")
+    end
   end
 
-
+  context "rescinding instagratifications :<" do
+    #tbc
+  end
 end
