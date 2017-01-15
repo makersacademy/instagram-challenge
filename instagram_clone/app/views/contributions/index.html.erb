@@ -1,8 +1,9 @@
 <% if @all_contributions.any? %>
   <% @all_contributions.reverse_each do |contribution| %>
+    <h4><%= contribution.user.username %></h4>
     <%= image_tag contribution.image.url(:medium) %>
     <br>
-    <%= contribution.user_id %><%= contribution.created_at.strftime("%I:%M%p %Y-%m-%d") %>
+    <%= contribution.created_at.strftime("%I:%M%p %d-%b-%Y") %>
     <br>
     <%= link_to "♡", contribution_likes_path(contribution), class: 'likes-link' %>
      <span class="likes_count"> <%= contribution.likes.count %> </span> <%= 'like'.pluralize(contribution.likes.count) %>&nbsp;&nbsp;&nbsp;

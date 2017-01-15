@@ -18,6 +18,7 @@ feature 'contributions' do
 
     scenario 'display contributions' do
       visit '/contributions'
+      expect(page).to have_content 'TEST'
       expect(page).to have_content 'A black cat'
     end
   end
