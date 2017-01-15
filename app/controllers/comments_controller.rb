@@ -9,6 +9,18 @@ class CommentsController < ApplicationController
     redirect_to "/pictures/#{params[:picture_id]}?id=#{params[:picture_id]}"
   end
 
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    unless @comment.belongs_to?(current_user)
+      flash[:alert] = "Naughty! You can only delete your own pictures!"
+      redirect_to "/pictures"
+    end
+    @comment.destroy
+    flash[:notice] = "Comment deleted succesfully"
+    redirect_to '/pictures'
+  end
+
   private
 
   def comment_params

@@ -121,8 +121,8 @@ feature "pictures" do
       click_link("Test2")
       expect(page).not_to have_link("Delete")
     end
-    
-    scenario "I want to delete a picture", :js => true do
+
+    xscenario "I want to delete a picture", :js => true do
       visit "/"
       sign_up(user_1)
       add_picture(picture_2)
