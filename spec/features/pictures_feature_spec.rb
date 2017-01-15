@@ -23,4 +23,16 @@ RSpec.feature 'pictures', :type => :feature  do
 			expect(page).not_to have_content "Oh noes, there are no pictures yet!"
 		end
 	end
+
+	context "creating pictures" do
+
+		scenario "prompts a user to fill out a form, then displays the new picture" do
+			visit '/pictures'
+			click_link "Add a Picture"
+			fill_in "Name", with: "Baby Hippo"
+			click_button "Add Picture"
+			expect(page).to have_content "Baby Hippo"
+			expect(current_path).to eq '/pictures'
+		end
+	end
 end
