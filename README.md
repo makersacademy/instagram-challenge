@@ -52,6 +52,14 @@ Once I am logged in I can delete comments for my photos.
 I cannot delete comments when I am logged out
 
 
+Adding a like
+
+1
+As a photo viewer, I can add a like to another person's photo.
+
+2
+As a photo viewer, I can remove a like from another person's photo.
+
 
 
 
