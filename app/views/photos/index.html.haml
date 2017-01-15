@@ -1,8 +1,14 @@
 - if @photos.all.any?
   - @photos.each do |photo|
     = link_to photo_path(photo) do
-      = image_tag photo.image.url(:medium), class: "photo"
+      %section.container
+        .image
+          = image_tag photo.image.url(:medium), class: "photo"
+        .likes
+          = pluralize photo.likes.count, 'like'
+        - if photo.comments.all.any?
+          - photo.comments.each do |comment|
+            .comments
+              %p= comment.text
 - else
   %h1 No photos yet!
-
-= link_to "Upload a photo", new_photo_path
