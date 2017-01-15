@@ -4,7 +4,7 @@ feature 'restaurants' do
   context 'no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
       visit '/pictures'
-      expect(page).to have_content 'No pictures yet'
+      expect(page).to have_content 'no pictures yet'
       expect(page).to have_link 'add a picture'
     end
   end
@@ -15,7 +15,7 @@ feature 'restaurants' do
       create_picture
       visit '/pictures'
       expect(page).to have_content('This is my cat')
-      expect(page).not_to have_content('No pictures yet')
+      expect(page).not_to have_content('no pictures yet')
     end
   end
 
@@ -60,7 +60,7 @@ feature 'restaurants' do
       click_link '1'
       click_link 'delete'
       expect(page).not_to have_content 'This is my cat'
-      expect(page).to have_content 'This post has been deleted'
+      expect(page).to have_content 'this post has been deleted'
     end
   end
 
@@ -71,7 +71,7 @@ feature 'restaurants' do
       click_link 'add a picture'
       fill_in 'picture_caption', with: 'This is my cat'
       click_button 'share'
-      expect(page).to have_content('You must select a picture!')
+      expect(page).to have_content('you must select a picture!')
     end
   end
 end

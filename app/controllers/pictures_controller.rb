@@ -14,7 +14,7 @@ class PicturesController < ApplicationController
     if @picture.save
       redirect_to pictures_path
     else
-      flash[:notice] = 'You must select a picture!'
+      flash[:notice] = 'you must select a picture!'
       render 'new'
     end
   end
@@ -37,7 +37,7 @@ class PicturesController < ApplicationController
   def destroy
     @picture = Picture.find(params[:id])
     @picture.destroy
-    flash[:notice] = 'This post has been deleted'
+    flash[:notice] = 'this post has been deleted'
     redirect_to '/pictures'
   end
 
