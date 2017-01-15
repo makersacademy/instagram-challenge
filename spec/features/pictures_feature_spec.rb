@@ -26,6 +26,12 @@ feature 'restaurants' do
       page.has_image?(src: './public/cat.png', alt: 'picture')
       expect(page).to have_content('This is my cat')
     end
+
+    scenario 'username is displayed with each picture' do
+      sign_up
+      create_picture
+      expect(page).to have_content('amanda')
+    end
   end
 
   # context 'viewing posts' do

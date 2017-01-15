@@ -1,6 +1,6 @@
 <%= image_tag(@picture.image.url(:medium)) %>
 <p> <%= @picture.caption %> </h2>
-<% if current_user %>
+<% if @picture.user.id == current_user.id %>
   <%= link_to 'edit', edit_picture_path(@picture) %>
   <%= link_to 'delete', picture_path(@picture), method: :delete %>
 <% end %>
@@ -12,7 +12,7 @@
 <% if @picture.comments.any? %>
   <% @picture.comments.each do |comment| %>
     <p><%= comment.thoughts %></p>
-    <% if current_user %>
+    <% if comment.user.id == current_user.id %>
       <%= link_to 'delete comment', picture_comment_path(@picture, comment), method: :delete %>
     <% end %>
   <% end %>
