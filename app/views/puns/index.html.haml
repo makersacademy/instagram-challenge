@@ -1,0 +1,23 @@
+%div
+.jumbotron
+  %h2 Puns
+  .panel
+  - if @puns.any?
+    - @puns.each do |pun|
+      %div
+      .well
+        .col-md.4
+          %p= link_to pun.name, pun_path(pun)
+        .col-md.4
+          %p= link_to "Edit #{pun.name}", edit_pun_path(pun)
+        .col-md.4
+          %p= link_to "Delete #{pun.name}", pun_path(pun), method: :delete
+  - else
+    No puns yet
+%div
+  .well
+    %a(href='/puns/new')
+      %h4 Add a pun
+
+%div
+=image_tag 'could.jpg'
