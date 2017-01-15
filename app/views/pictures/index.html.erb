@@ -1,20 +1,24 @@
-<%= link_to 'Add a picture', new_picture_path %>
+<div id='picture'>
+  <%= link_to 'Add a picture', new_picture_path %>
+</div>
 <% if @pictures.length == 0 %>
   <h2>No pictures have been added yet</h2>
 <% else %>
+<div id='timeline'>
   <% @pictures.reverse.each do |picture|  %>
-    <ul>
+    <ul class='list'>
       <li>
          <div id='img'>
            <%= image_tag picture.image.url(:medium)%>
-           <%= pluralize picture.likes.count, 'Like' %>
-           <%= link_to 'Like', picture_likes_path(picture), method: :post %>
+           <p><%= link_to 'Like', picture_likes_path(picture), method: :post %><p>
+           <p><%= pluralize picture.likes.count, 'Like' %></p>
+           <p><%= link_to 'Add comment', new_picture_comment_path(picture)%></p>
            <% picture.comments.each do |comment| %>
              <p><%= comment.description %></p>
            <% end %>
-           <%= link_to 'Add comment', new_picture_comment_path(picture) %>
          </div>
        </li>
      </ul>
   <% end %>
+</div>
 <% end %>

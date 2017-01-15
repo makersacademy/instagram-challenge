@@ -10,5 +10,10 @@ feature 'Liking pictures' do
       click_link 'Like'
       expect(page).to have_content '1 Like'
     end
+    scenario 'it should only allow 1 like per picture' do
+      click_link 'Like'
+      click_link 'Like'
+      expect(page).to have_content 'You can give a maxium of 1 Like to a picture.'
+    end
   end
 end

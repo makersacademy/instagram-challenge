@@ -8,7 +8,6 @@ class PicturesController < ApplicationController
     @picture = Picture.new
   end
 
-
   def create
     user = current_user if current_user
     if user
