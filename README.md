@@ -98,10 +98,10 @@ I'd like to be able to edit and delete comments
 
 ### Screenshots
 
-![Imgur](http://i.imgur.com/aiFfByh.png)
-![Imgur](http://i.imgur.com/JtsIKkh.png)
-![Imgur](http://i.imgur.com/AfWhkqB.png)
-![Imgur](http://i.imgur.com/Op1puzp.png)
+![Imgur](http://i.imgur.com/aiFfByh.png =200x)
+![Imgur](http://i.imgur.com/JtsIKkh.png =200x)
+![Imgur](http://i.imgur.com/AfWhkqB.png =200x)
+![Imgur](http://i.imgur.com/Op1puzp.png =200x)
 
 
 ### Technologies used
