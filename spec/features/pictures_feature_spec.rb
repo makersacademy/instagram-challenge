@@ -42,4 +42,16 @@ require 'rails_helper'
       expect(current_path).to eq("/pictures/3")
     end
   end
+
+  context "pictures page" do
+    scenario "I want to be able to got back to the pictures page from the full view page" do
+      upload_image
+      visit("/pictures")
+      click_link("Quote 1")
+      click_link("All Pictures")
+
+      expect(page).to have_css 'img#show-thumbnail'
+      expect(current_path).to eq("/pictures")
+    end
+  end
 end
