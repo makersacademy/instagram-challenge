@@ -2,6 +2,10 @@ require 'rails_helper'
 
 feature 'photos' do
 
+  before do
+    sign_up
+  end
+
   context 'no photos have been added' do
 
     scenario 'should display a prompt to upload a photo' do

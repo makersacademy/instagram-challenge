@@ -2,6 +2,10 @@ require 'rails_helper'
 
 feature 'commenting photos' do
 
+  before do
+    sign_up
+  end
+
   scenario 'user can leave comments on photo' do
     add_photo
     click_photo
