@@ -11,14 +11,17 @@
 
   %body
     .navbar.nav
-      %h2
-        %a{:href => "/puns"} Home
-        %a{:href => "https://github.com/Unicornelia"} About
-        - if user_signed_in?
-          = link_to "Sign out", destroy_user_session_path, method: :delete
-        - else
-          = link_to "Sign in", new_user_session_path
-          = link_to "Sign up", new_user_registration_path
+      %h1
+        %a{:href => "/puns"} << Home >>
+        %a{:href => "https://github.com/Unicornelia"} << About >>
+        %div
+          .nav-right
+            - if user_signed_in?
+              = link_to "Sign out", destroy_user_session_path, method: :delete
+            - else
+              = link_to "Sign in", new_user_session_path
+              = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
+              = link_to "Sign up", new_user_registration_path
 
   %div
     %h2
