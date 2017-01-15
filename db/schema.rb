@@ -25,24 +25,11 @@ ActiveRecord::Schema.define(version: 20170115155613) do
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
-  create_table "hashtags", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "likes", force: :cascade do |t|
     t.integer  "picture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["picture_id"], name: "index_likes_on_picture_id", using: :btree
-  end
-
-  create_table "picture_hashtags", force: :cascade do |t|
-    t.integer "picture_id"
-    t.integer "hashtag_id"
-    t.index ["hashtag_id"], name: "index_picture_hashtags_on_hashtag_id", using: :btree
-    t.index ["picture_id"], name: "index_picture_hashtags_on_picture_id", using: :btree
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -81,7 +68,5 @@ ActiveRecord::Schema.define(version: 20170115155613) do
   add_foreign_key "comments", "pictures"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "pictures"
-  add_foreign_key "picture_hashtags", "hashtags"
-  add_foreign_key "picture_hashtags", "pictures"
   add_foreign_key "pictures", "users"
 end
