@@ -43,6 +43,20 @@ feature 'posts' do
       expect(page).to have_content 'Cake'
       expect(current_path).to eq "/posts/#{cake.id}"
     end
-
   end
+
+  context 'editing posts' do
+
+    before { Post.create caption: 'Cake', id: 1 }
+    scenario 'let a user edit a post' do
+      visit '/posts'
+      click_link 'Edit Cake'
+      fill_in 'Caption', with: 'Good cake'
+      click_button 'Update Post'
+      click_link 'Good cake'
+      expect(page).to have_content 'Good cake'
+      expect(current_path).to eq '/posts/1'
+    end
+  end
+
 end
