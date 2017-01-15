@@ -11,20 +11,24 @@
   </head>
 
   <body class="centerMiddle">
-    <div class='pos-box'>
-      <div class='pos-left-title'>NanoGram</div>
-      <div class='pos-right'>
+    <table width='320px' height='70px'>
+      <tr height='10px'>
+        <th align='left' valign='bottom' class='title'>
+          <%= link_to 'NanoGram', contributions_path %>
+        </th>
+        <th align='right' valign='bottom'>
         <% if user_signed_in? %>
-          <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+          <%= link_to image_tag('/assets/account.png', { width:'24px', height:'24px', border:'0', alt:'Account'})%>
+          <%= link_to image_tag('/assets/log_out.png', { width:'24px', height:'24px', border:'0', alt:'Log out'}), destroy_user_session_path, method: :delete %>
         <% else %>
-          <%= link_to 'Sign in', new_user_session_path %>
-          <%= link_to 'Sign up', new_user_registration_path %>
+          <%= link_to image_tag('/assets/log_in.png', { width:'24px', height:'24px', border:'0', alt:'Log in'}), new_user_session_path %>
         <% end %>
-      </div>
-    </div>
+        </th>
+      </tr>
+    </table>
 
-    <p><%= notice %></p>
-    <p><%= alert %></p>
+    <p class='notice'><%= notice %></p>
+    <!-- <p><%= alert %></p> -->
     <%= yield %>
   </body>
 </html>

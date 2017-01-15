@@ -1,5 +1,6 @@
 def sign_up
   visit('/')
+  click_link('Log in')
   click_link('Sign up')
   fill_in('Email', with: 'test@example.com')
   fill_in('Username', with: 'TEST')
@@ -10,6 +11,7 @@ end
 
 def sign_up_2
   visit('/')
+  click_link('Log in')
   click_link('Sign up')
   fill_in('Email', with: 'test1@example.com')
   fill_in('Username', with: 'ANOTHER')
@@ -20,14 +22,14 @@ end
 
 def sign_in
   visit('/')
-  click_link('Sign in')
+  click_link('Log in')
   fill_in('Email', with: 'test@example.com')
   fill_in('Password', with: 'testtest')
   click_button('Log in')
 end
 
 def sign_out
-  click_link('Sign out')
+  click_link('Log out')
 end
 
 def create_contribution
