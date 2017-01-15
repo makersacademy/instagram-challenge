@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
-  has_many :pictures
-  has_many :comments
+  has_many :pictures, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
