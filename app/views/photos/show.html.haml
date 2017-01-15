@@ -17,3 +17,5 @@
   - @photo.comments.each do |comment|
     %h4= comment.user.email + " on " + comment.created_at.strftime("%e %b %Y")
     %p= comment.text
+    - if comment.user == current_user
+      = link_to "Delete Comment", photo_comment_path(comment), method: :delete
