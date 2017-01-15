@@ -3,3 +3,18 @@
 <p><%= @picture.description%></p>
 <%= link_to "Edit", edit_picture_path(@picture) %>
 <%= link_to 'Delete', picture_path(@picture), method: :delete, data: {confirm: "Are you sure?"} %>
+<% @picture.comments.each do |comment| %>
+<p><%= comment.content %></p>
+<% end %>
+
+<ul class="form">
+  <%= form_for [@picture, @comment] do |f| %>
+  <li>
+    <%= f.label :content, "Add Comment" %>
+    <%= f.text_area :content %>
+  </li>
+  <li>
+    <%= f.submit "Submit" %>
+  </li>
+  <% end %>
+</ul>
