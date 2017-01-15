@@ -55,4 +55,16 @@ feature 'puns' do
       expect(current_path).to eq '/puns/1'
     end
   end
+
+  context 'deleting puns' do
+
+    before { Pun.create name: 'Pun for the weak', description: 'Very funny' }
+    scenario 'removes pun when a user clicks delete pun' do
+      visit '/puns'
+      click_link 'Delete Pun for the weak'
+      expect(page).not_to have_content 'Delete Pun for the weak'
+      expect(page).to have_content 'Pun deleted successfully'
+    end
+
+  end
 end

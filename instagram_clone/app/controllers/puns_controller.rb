@@ -25,7 +25,14 @@ class PunsController < ApplicationController
   @pun = Pun.find(params[:id])
   @pun.update(pun_params)
   redirect_to '/puns'
-end
+  end
+
+  def destroy
+  @pun = Pun.find(params[:id])
+  @pun.destroy
+  flash[:notice] = 'Pun deleted successfully'
+  redirect_to '/puns'
+  end
 
   private
 
