@@ -13,3 +13,11 @@ def sign_up
   fill_in "Password confirmation", with: "testingiscool"
   click_button "Sign up"
 end
+
+def sign_up2
+  visit '/users/sign_up'
+  fill_in "Email", with: "test2@test.com"
+  fill_in "Password", with: "testingstuff"
+  fill_in "Password confirmation", with: "testingstuff"
+  click_button "Sign up"
+end

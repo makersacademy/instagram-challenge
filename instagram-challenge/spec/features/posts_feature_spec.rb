@@ -25,5 +25,23 @@ feature 'Posts' do
     expect(page).to have_css("img")
   end
 
+  scenario 'Delete a photo' do
+    sign_up
+    add_post
+    visit '/posts'
+    find(".remove").click
+    expect(current_path).to eq '/posts'
+    expect(page).not_to have_content "Beach life"
+  end
+
+  scenario "Delete a photo only if you posted it" do
+    sign_up
+    add_post
+    click_link "Sign Out"
+    sign_up2
+    visit '/posts'
+    find(".remove").click
+    expect(page).to have_content "Only creator can delete post"
+  end
 
 end

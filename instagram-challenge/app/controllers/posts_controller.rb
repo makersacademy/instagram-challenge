@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index]
+  before_action :check_post_belongs_to_current_user, :only => [:edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -21,10 +22,24 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
+  end
+
   private
 
   def permitted_posts_params
     params.require(:post).permit(:description, :image)
+  end
+
+  def check_post_belongs_to_current_user
+    @post = Post.find(params[:id])
+    if @post.user.id != current_user.id
+      flash[:notice] = "Only creator can delete post"
+      redirect_to root_path
+    end
   end
 
 end
