@@ -71,4 +71,18 @@ feature "pictures" do
       expect(page).not_to have_content("Friendship is magic!")
     end
   end
+
+  context "deleting pictures" do
+    scenario "lets user delete a picture", :js => true do
+      visit '/pictures'
+      add_picture(picture_2)
+      click_link("Test2")
+      click_link("Delete")
+      page.driver.browser.switch_to.alert.accept
+
+
+      expect(page).to have_content "No pictures yet"
+      expect(page).not_to have_content "Friendship is magic!"
+    end
+  end
 end
