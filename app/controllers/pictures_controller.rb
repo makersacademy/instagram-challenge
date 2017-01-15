@@ -1,5 +1,8 @@
 class PicturesController < ApplicationController
 
+before_action :authenticate_user!, :except => [:index, :show]
+
+
   def index
     @pictures = Picture.all
   end
@@ -10,13 +13,14 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
+    @picture.user = current_user
     if @picture.save
       redirect_to pictures_path
     else
       render 'new'
     end
   end
-  
+
   def show
     @picture = Picture.find(params[:id])
   end
@@ -29,7 +33,7 @@ class PicturesController < ApplicationController
   end
 
   def picture_params
-    params.require(:picture).permit(:caption, :image)
+    params.require(:picture).permit(:caption, :image, :comment)
   end
 
 end
