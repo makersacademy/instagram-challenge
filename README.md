@@ -11,8 +11,10 @@ The repository was forked from: https://github.com/makersacademy/instagram-chall
 1. The site is online on **Heroku**(www.heroku.com), click the link to see it in action https://makers-instagram.herokuapp.com/
 2. To check locally download or copy the repository.
 3. Next comes ```bundle install```
-3. Run the command ```rails s``` and open **localhost:3000** in the browser.
-4. To run the tests type ```rspec```.
+4. ```bin/rake db:create```
+5. ```bin/rake db:migrate```
+6. Run the command ```rails s``` and open **localhost:3000** in the browser.
+7. To run the tests type ```rspec```.
 
 ## Screenshots
 
