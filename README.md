@@ -39,7 +39,25 @@ Settings to use
 ## User Stories
 
 ```
-user story
+As a person
+So that I can post photos with a comment on NanoGram as me
+I want to sign up for NanoGram
+
+As a person
+So that I can avoid others posting photos on NanoGram as me
+I want to log out of NanoGram
+
+As a person
+So that I can let people know what I am doing  
+I want to post a photo with a comment to NanoGram
+
+As a person
+So that I can see friend's photos
+I want to see all photos in reverse chronological order
+
+As a person
+So that I can better appreciate the context of a photo
+I want to see the time at which it was made
 ```
 
 ## API
