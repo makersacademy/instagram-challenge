@@ -19,7 +19,7 @@ How to Install:
 -----
 * Clone this repo https://github.com/louisaspicer/
 * Run `bundle` to install the gems
-* Run `bin/rake db:create to create the database
+* Run `bin/rake db:create` to create the database
 * Run `bin/rake db:migrate` to migrate the database
 * Run `bin/rails s` to kickstart the server
 * Go to http://localhost:3000 to see the fully-functioning app
