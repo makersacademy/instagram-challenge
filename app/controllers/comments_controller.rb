@@ -18,8 +18,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @photo = Photo.find(params[:id])
-    @comment = Comment.find(params[:photo_id])
+    p params
+    @photo = Photo.find(params[:photo_id])
+    @comment = current_user.comments.find(params[:id])
     @comment.destroy
     redirect_to photo_path(@photo)
   end
@@ -27,7 +28,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:text, :photo_id, :id)
+    params.require(:comment).permit(:text, :id, :photo_id)
   end
 
 end
