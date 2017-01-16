@@ -9,7 +9,6 @@ class PicturesController < ApplicationController
   end
 
   def create
-    # user = User.find(current_user.id)
     @picture = Picture.create(params_image)
     if @picture.save
       redirect_to(@picture, :notice => 'Photo was successfully created.')
