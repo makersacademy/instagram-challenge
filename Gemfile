@@ -30,7 +30,6 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'omniauth-facebook'
-
 gem 'envyable'
 
 gem 'paperclip'
@@ -60,6 +59,8 @@ group :test do
   gem 'shoulda'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

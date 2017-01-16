@@ -1,0 +1,15 @@
+- if @photos.any?
+  - @photos.each do |photo|
+    = link_to(image_tag(photo.image.url(:medium)), photo_path(photo), :id => 'image')
+    %h2= photo.caption
+    = link_to 'Like', photo_likes_path(photo), method: :post
+    %p= pluralize photo.likes.count, 'like'
+    - if photo.comments.any?
+      - photo.comments.each do |comment|
+        %p #{comment.thoughts}
+    - else
+      %p No one has commented yet...
+- else
+  %h1 No one has posted any photos yet...
+
+=link_to "Post a photo", new_photo_path
