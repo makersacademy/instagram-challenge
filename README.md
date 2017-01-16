@@ -1,24 +1,64 @@
-# README
+Instagram Clone
+=================
+This is an Instagram clone built in Rails. It is the week 8 homework challenge at Makers Academy.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![screen shot](public/Screenshot 2017-01-16 09.45.19.png)
 
-Things you may want to cover:
+Features
+----------
+* User can sign up
+* Post a picture
+* Comment on a picture
+* Like a picture
+* Uses AJAX to update likes without page refresh
 
-* Ruby version
+Usage
+---------
+### Run
+```
+git clone git@github.com:cjcoops/instagram-challenge.git
+cd instagram-challenge
+rake db:create
+rails/bin s
+```
+Visit http://localhost:3000/
 
-* System dependencies
+### Test
+```
+git clone git@github.com:cjcoops/instagram-challenge.git
+cd instagram-challenge
+rake db:create
+rspec
+```
 
-* Configuration
+Technologies Used
+----------
 
-* Database creation
+* Rails
+* Jquery
+* Devise
+* Paperclip
 
-* Database initialization
+#### Testing
+* Rspec
+* Capybara
 
-* How to run the test suite
+Project
+----------------
+#### Objectives
+Objectives objectives objectives
 
-* Services (job queues, cache servers, search engines, etc.)
+#### Motivations
+Objectives objectives objectives
 
-* Deployment instructions
+#### Thinking
+Objectives objectives objectives
 
-* ...
+#### Design
+Objectives objectives objectives
+
+#### Issues
+Objectives objectives objectives
+
+#### Alternatives
+Objectives objectives objectives
