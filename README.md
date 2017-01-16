@@ -114,7 +114,6 @@ I'd like to be able to edit and delete comments
 
 ### To do
 
-* There is a problem with Facebook login missing a template
 * 'Likes' work in the pictures index but not in the single picture view
 * Need to host images on AWS instead of saving to database
 * Deploy to Heroku
