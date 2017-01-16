@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstagramClone</title>
+    <%= csrf_meta_tags %>
+    <meta charset="UTF-8">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
+  </head>
+
+  <body class="centerMiddle">
+    <table width='350px' height='70px'>
+      <tr height='10px'>
+        <th align='left' valign='bottom' class='title'>
+          <%= link_to 'NanoGram', contributions_path %>
+        </th>
+        <th align='right' valign='bottom'>
+        <% if user_signed_in? %>
+          <%= link_to image_tag('/assets/account.png', { width:'24px', height:'24px', border:'0', alt:'Account'})%>
+          <%= link_to image_tag('/assets/log_out.png', { width:'24px', height:'24px', border:'0', alt:'Log out'}), destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to image_tag('/assets/log_in.png', { width:'24px', height:'24px', border:'0', alt:'Log in'}), new_user_session_path %>
+        <% end %>
+        </th>
+      </tr>
+    </table>
+
+    <p class='notice'><%= notice %></p>
+    <!-- <p><%= alert %></p> -->
+    <%= yield %>
+  </body>
+</html>
