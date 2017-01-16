@@ -1,0 +1,37 @@
+
+
+- if @photo.any?
+  - @photo.each do |photo|
+    .posts-wrapper
+      .post
+        .post-head
+          .thumb-img
+          .user-name
+            =photo.user.email
+        .text-center
+          =link_to (image_tag photo.image.url(:medium)), photo_path(photo)
+          .post-botton
+            .caption
+              .caption-content
+                =photo.caption
+              .comments{id: "comments#{photo.id}"}
+                - if photo.comments
+                  - photo.comments[0..2].each do |comment|
+                    = link_to comment.user.email, "#"
+                    |
+                    = comment.content
+                    - if comment.user == current_user
+                      = link_to photo_comment_path(photo, comment), method: :delete, data: { confirm: "Are you sure?" } do
+                        %span(class="glyphicon glyphicon-remove delete-comment")
+                    .br
+                - if photo.comments[3]
+                  = link_to "...", photo_path(photo)
+          .comment-like-form.row
+            .like-button.col-sm-1
+              %span(class="glyphicon glyphicon-heart-empty")
+            .comment-form.col-sm-11
+              - if current_user
+                = form_for [photo, photo.comments.build] do |f|
+                  = f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{photo.id}"
+- else
+  %h1 No photos have been posted!

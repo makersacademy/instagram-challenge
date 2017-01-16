@@ -1,0 +1,22 @@
+-# .posts-wrapper.row
+-#   .post
+-#     .post-head
+-#       .name
+-#         Username
+-#     .image.center-block
+-#       =image_tag photo.image.url(:medium))
+-#       %p.caption
+-#         =photo.caption
+-#     = link_to "Delete Photo", photo_path(photo), method: :delete
+.form-wrapper
+  .text-center
+    = image_tag @photo.image.url(:medium)
+
+.form-wrapper
+  = simple_form_for @photo, html: { class: 'form-horizontal', multipart: true } do |f|
+    .form-group.text-center
+      = f.input :caption
+    .form-group.text-center
+      = f.button :submit, class: 'btn-success'
+    .text-center
+      = link_to "Cancel", photos_path

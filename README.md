@@ -1,23 +1,109 @@
-Instagram Challenge
-===================
+Weekend Challenge 8 - Instagram Challenge
+=================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Instagram-inspired app.
+Deployed on Heroku:  
+https://louisa-makersgram.herokuapp.com/
 
-Task
+![alt text](./app/assets/images/louisa-makersgram.png "Louisa's MakersGram")
+
+Functionality:
 -----
+* Users can register with an email and password
+* Users can sign in with their facebook account (locally, as below)
+* Users can upload a photo with a caption
+* Users can edit and delete their own photos
+* Users can comment on each others photos
 
-Build Instagram: Simple huh!
+How to Install:
+-----
+* Clone this repo https://github.com/louisaspicer/
+* Run `bundle` to install the gems
+* Run `bin/rake db:create` to create the database
+* Run `bin/rake db:migrate` to migrate the database
+* Run `bin/rails s` to kickstart the server
+* Go to http://localhost:3000 to see the fully-functioning app
 
-Bonus if you can write your own set of sensible user stories!
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+Improvements to be made:
+-----
+* Fix Heroku Facebook login - only works on local server
+* Use AJAX for commenting
+* Refactor code into partials
+* Add 'likes' functionality
+* Add 'followers'
+* Host photos on Amazon Web Services
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+User Stories:
+-----
+```
+As a User,
+So that I can post photos,
+I would like to be able to sign up
+```
+```
+As a User,
+So that it's easier to sign up
+I would like to be able to log in with my Facebook account
+```
+```
+As a User,
+So that I can show other users my favourite pictures,
+I would like to be able to upload a photo
+```
+```
+As a User,
+So that I can describe my photo,
+I would like to be able to add a caption
+```
+```
+As a User,
+So that I'm not worried if I upload the wrong photo,
+I would like to be able to delete my photo
+```
+```
+As a User,
+So that I can let other users know what I think,
+I would like to be able to leave comments
+```
+```
+As a User,
+So that I can see all the comments on a photo,
+I would like to be able to view a single photo on a page
+```
+```
+As a User,
+So that I can change the caption if I need to,
+I would like to be able to edit my own photo
+```
+```
+As a User,
+So that my photos are safe,
+Only I should be able to edit and delete my photos
+```
 
-Bonus if you can add filters!
+#### Yet to be implemented:
+```
+As a User,
+So that I can easily show my appreciation for a photo,
+I would like to be able to click a 'like' button
+```
+```
+As a User,
+So that I can see how many likes my photo has,
+I would like it to display the number under my photo
+```
+
+```
+As a User,
+So that I can see all the pictures I have posted,
+I would like to have a profile page
+```
+```
+As a User,
+So that I can choose what photos are on my homepage,
+I would like to be able to 'follow' other users
+```
+
+## Authors
+[Louisa Spicer](https://github.com/louisaspicer)

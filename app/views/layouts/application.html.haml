@@ -1,0 +1,37 @@
+!!!
+%html
+  %head
+    %title YelpClone
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+
+  %body
+    %nav.navbar.navbar-default
+      .navbar-container
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => "#bs-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Toggle Navigation
+            %span.icon-bar
+            %span.icon-bar
+          -# .navbar-brand= link_to image_tag("/assets/images/camera.png", size: "40x40"), photos_path
+          .navbar-brand= link_to "MakersGram", photos_path
+
+        .collapse.navbar-collapse#bs-navbar-collapse-1
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              %li
+                = link_to "Logout", destroy_user_session_path, method: :delete
+              %li
+                = link_to "Post a Photo", new_photo_path
+            - else
+              %li
+                = link_to "Login", new_user_session_path
+              %li
+                = link_to "Register", new_user_registration_path
+              %li
+                = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
+
+  = notice
+  = alert
+  = yield
