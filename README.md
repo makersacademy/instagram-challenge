@@ -23,7 +23,7 @@ For tests
 - Rspec
 - Capybara
 - Database Cleaner
-
+- poltergeist
 
 Settings to use
 -------
@@ -35,6 +35,15 @@ Settings to use
 6. Run this command```bin/rake db:migrate```
 7. Run this command```bin/rails s```
 9. Open your internet browser and type in ```localhost:3000```
+
+if you are going to run tests, you should run this command
+```
+brew install phantomjs
+```
+and
+```
+rspec
+```
 
 ## User Stories
 
