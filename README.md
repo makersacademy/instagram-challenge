@@ -60,6 +60,10 @@ I want to be able to un-like a post I have previously liked
 As a user,
 So that I can avoid a lengthy registration process
 I want to be able to log in with facebook
+
+As a user,
+So that my posts aren't spammed
+I want to be able to limit users to one 'like'
 ```
 
 ###Outstanding Steps
@@ -72,6 +76,7 @@ I want to be able to log in with facebook
 3. `brew install phantomjs` to ensure JavaScript tests can be run
 4. Run `rake db:create` to create required databases
 5. Run `rake db:migrate` to ensure databases are properly set up
+6. If you would like to run in Production, navigate in your browser to `http://instagramdenee.herokuapp.com/`
 
 ###How to Use
 1. Run command `rails s` in command line to open web app locally
