@@ -1,16 +1,20 @@
-<% if @pictures.any? %>
+<div class='content'>
+  <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
+  <div class='each-picture'>
     <h2> <%= link_to picture.caption, picture_path(picture) %>  </h2>
-      <%= image_tag picture.image.url(:thumb) %>
-      <%= link_to "Delete #{picture.caption}", picture_path(picture), method: :delete %>
-      <%= link_to "Comment on #{picture.caption}", new_picture_comment_path(picture)%>
-      <% picture.comments.each do |comment| %>
-      <br><%= comment.thoughts %><br>
-      <% end %>
+
+    <p>  <%= image_tag picture.image.url(:medium) %></p>
+    <p>  <%= link_to "Delete #{picture.caption}", picture_path(picture), method: :delete %> </p>
+    <p>  <h3><%= link_to "🙌", picture_likes_path(picture), class: 'likes-link'%>
+      <span class='likes_count'><%= picture.likes.count %></span> <%= 'like'.pluralize(picture.likes.count) %> </p>
+    <p>  <%= link_to "Comment on #{picture.caption}", new_picture_comment_path(picture)%> </p>
+
+      </div>
 
   <% end %>
 <% else %>
-  No pictures yet
+<p>  No pictures yet </p>
 <% end %>
-
-<a href='pictures/new'>Add a picture</a>
+<p> <a href='pictures/new'>Add a picture</a> </p>
+</div>

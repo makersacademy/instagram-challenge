@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'pictures' => 'pictures#index'
   root "pictures#index"
   resources :pictures do
-  resources :comments
-end
+    resources :comments
+    resources :likes
+
+  end
+
 end

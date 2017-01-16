@@ -15,6 +15,8 @@ end
 
 gem 'paperclip'
 gem 'devise'
+gem 'poltergeist'
+gem 'database_cleaner'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'

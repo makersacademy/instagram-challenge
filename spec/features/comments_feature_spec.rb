@@ -17,6 +17,7 @@ feature 'commenting' do
      click_link 'Comment on Hebrides'
      fill_in "Thoughts", with: "lovely picture"
      click_button 'Leave Comment'
+     click_link 'Hebrides'
      expect(page).to have_content('lovely picture')
   end
 
