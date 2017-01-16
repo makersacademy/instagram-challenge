@@ -4,23 +4,23 @@ I have created an Instagram Clone, which is a popular web application that allow
 
 ## How to Use the App
 
-- In the terminal, ```git clone https://github.com/DarkChocLatte/instagram-challenge```.
+1. In the terminal, ```git clone https://github.com/DarkChocLatte/instagram-challenge```.
 
-- In the terminal, cd into ```instagram_clone```.
+2. In the terminal, cd into ```instagram_clone```.
 
-- Run ```bundle install``` on your terminal if you already have bundle installed. Otherwise run ```gem install bundle``` prior.
+3. Run ```bundle install``` on your terminal if you already have bundle installed. Otherwise run ```gem install bundle``` prior.
 
-- In the terminal, create your databases by running the ```bin/rake db:create``` command.
+4. In the terminal, create your databases by running the ```bin/rake db:create``` command.
 
-- In the terminal, migrate your databases by running the ```bin/rake db:migrate``` command.
+5. In the terminal, migrate your databases by running the ```bin/rake db:migrate``` command.
 
-- Download and install image magick on your system following the instructions at http://www.imagemagick.org/script/index.php. Find out where the utility is installed using the ```/usr/local/bin/convert``` command. More detailed instructions are available at https://github.com/thoughtbot/paperclip.
+6. Download and install image magick on your system following the instructions at http://www.imagemagick.org/script/index.php. Find out where the utility is installed using the ```/usr/local/bin/convert``` command. More detailed instructions are available at https://github.com/thoughtbot/paperclip.
 
-###### Be sure to integrate with your environment - preferably through the PATH variable, or by changing your config/environments/development.rb
+* Be sure to integrate with your environment - preferably through the PATH variable, or by changing your config/environments/development.rb
 
-- In the terminal, run the rails server by running the ```bin/rails s``` command.
+7. In the terminal, run the rails server by running the ```bin/rails s``` command.
 
-- Navigate to http://localhost:3000/ in the browser
+8. Navigate to http://localhost:3000/ in the browser
 
 ## How to Run the Test Suite
 
