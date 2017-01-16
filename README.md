@@ -53,3 +53,15 @@ Project
 ----------------
 #### Objectives
 * Practice using the Rails framework to build a full stack web app
+
+#### Challenges
+* Updating likes count using AJAX without page refresh
+* Applying styling using HAML
+
+#### Further work
+* Make use of nested attributes
+* Avoid generating unnecessary routes using resources in routes.rb
+* Add usernames for users
+* Facebook login and Omniauth authentication
+* Use partials for user management links
+* Consider Demeter violations
