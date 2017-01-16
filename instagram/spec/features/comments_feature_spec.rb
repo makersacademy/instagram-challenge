@@ -5,12 +5,11 @@ feature 'commenting' do
   before do
     sign_up
     post_photo
+    click_link 'image'
+    click_link 'Comment'
   end
 
   scenario 'allows users to post comments on photos using a form' do
-    visit '/photos'
-    click_link 'My Lunch'
-    click_link 'Comment'
     fill_in 'Thoughts', with: 'Looks disgusting'
     click_button 'Post'
     expect(current_path).to eq '/photos'
@@ -18,9 +17,6 @@ feature 'commenting' do
   end
 
   scenario 'cannot post an empty comment' do
-    visit '/photos'
-    click_link 'My Lunch'
-    click_link 'Comment'
     click_button 'Post'
     expect(page).to have_content 'Thoughts'
   end

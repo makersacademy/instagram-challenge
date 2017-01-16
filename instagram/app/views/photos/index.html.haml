@@ -1,7 +1,7 @@
 - if @photos.any?
   - @photos.each do |photo|
-    = image_tag photo.image.url(:medium)
-    %h2= link_to photo.caption, photo_path(photo)
+    = link_to(image_tag(photo.image.url(:medium)), photo_path(photo), :id => 'image')
+    %h2= photo.caption
     = link_to 'Like', photo_likes_path(photo), method: :post
     %p= pluralize photo.likes.count, 'like'
     - if photo.comments.any?

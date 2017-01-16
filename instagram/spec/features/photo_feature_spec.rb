@@ -39,11 +39,10 @@ feature 'photos' do
   end
 
   context 'viewing photos' do
-    scenario 'clicking a caption takes you to an individual page' do
+    scenario 'clicking a photo takes you to an individual page' do
       post_photo
       photo = Photo.find_by(caption: 'My Lunch')
-      visit '/photos'
-      click_link 'My Lunch'
+      click_link 'image'
       expect(page).to have_css("img[src*='my_lunch']")
       expect(page).to have_content "My Lunch"
       expect(current_path).to eq "/photos/#{photo.id}"
@@ -54,7 +53,7 @@ feature 'photos' do
     scenario 'clicking edit lets you edit your caption' do
       post_photo
       photo = Photo.find_by(caption: 'My Lunch')
-      visit "/photos/#{photo.id}"
+      click_link 'image'
       click_link 'Edit'
       fill_in 'Caption', with: 'My disgusting lunch'
       click_button 'Update caption'
@@ -67,7 +66,7 @@ feature 'photos' do
     scenario 'deletes a photo when user clicks delete link' do
       post_photo
       photo = Photo.find_by(caption: 'My Lunch')
-      visit "/photos/#{photo.id}"
+      click_link 'image'
       click_link 'Delete photo'
       expect(current_path).to eq '/photos'
       expect(page).to have_content 'Photo deleted successfully'
@@ -77,7 +76,7 @@ feature 'photos' do
       post_photo
       click_link 'Sign out'
       sign_up(email: 'test@test.com')
-      click_link 'My Lunch'
+      click_link 'image'
       click_link 'Delete photo'
       expect(page).to have_content "You can't delete someone else's photo!"
     end
