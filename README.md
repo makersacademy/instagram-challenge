@@ -16,7 +16,7 @@ I have created an Instagram Clone, which is a popular web application that allow
 
 6. Download and install image magick on your system following the instructions at http://www.imagemagick.org/script/index.php. Find out where the utility is installed using the ```/usr/local/bin/convert``` command. More detailed instructions are available at https://github.com/thoughtbot/paperclip.
 
-* Be sure to integrate with your environment - preferably through the PATH variable, or by changing your config/environments/development.rb
+    * Be sure to integrate with your environment - preferably through the PATH variable, or by changing your config/environments/development.rb
 
 7. In the terminal, run the rails server by running the ```bin/rails s``` command.
 
