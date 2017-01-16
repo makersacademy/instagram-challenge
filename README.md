@@ -1,23 +1,46 @@
 Instagram Challenge
 ===================
 
-Instructions
+This is Makers Academy weekend challenges in week8.
+
+![NanoGram](https://github.com/fenglish/images/blob/master/NanoGram_home.png)
+
+## Project overview
+
+
+Technology for this App
 -------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+- Ruby on rails
+- CSS
+- HTML
+- Javascript
+- devise
 
-Task
------
+For storing data
+- Postgres
 
-Build Instagram: Simple huh!
+For tests
+- Rspec
+- Capybara
+- Database Cleaner
 
-Bonus if you can write your own set of sensible user stories!
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+Settings to use
+-------
+1. Clone this repository to your local
+2. Open your terminal
+3. Move into the folder which you cloned
+4. Run this command```bundle install```
+5. Run this command```bin/rake db:create```
+6. Run this command```bin/rake db:migrate```
+7. Run this command```bin/rails s```
+9. Open your internet browser and type in ```localhost:3000```
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## User Stories
 
-Bonus if you can add filters!
+```
+user story
+```
+
+## API
+#### ...
