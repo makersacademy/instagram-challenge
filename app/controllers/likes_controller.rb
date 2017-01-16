@@ -8,9 +8,7 @@ class LikesController < ApplicationController
   end
 
   def create
-    like = @photo.likes.new()
-    like.user = current_user
-    like.save
+    like = @photo.likes.create_with_user({}, current_user)
     redirect_to photo_path(@photo)
   end
 

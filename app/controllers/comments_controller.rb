@@ -8,20 +8,18 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @photo = Photo.find(params[:photo_id])
-    @comment = Comment.new(comment_params)
-    @comment.photo = @photo
-    @comment.user = current_user
-    if @comment.save
-      redirect_to photo_path(@photo)
+    photo = Photo.find(params[:photo_id])
+    comment = photo.comments.build_with_user(comment_params, current_user)
+    if comment.save
+      redirect_to photo_path(photo)
     end
   end
 
   def destroy
-    @photo = Photo.find(params[:photo_id])
-    @comment = current_user.comments.find(params[:id])
-    @comment.destroy
-    redirect_to photo_path(@photo)
+    photo = Photo.find(params[:photo_id])
+    comment = current_user.comments.find(params[:id])
+    comment.destroy
+    redirect_to photo_path(photo)
   end
 
   private
