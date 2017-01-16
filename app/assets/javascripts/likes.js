@@ -1,12 +1,16 @@
 $(document).ready(function() {
 
-  $('.likes-link').on('click', function(event){
-      event.preventDefault();
+  var incrementLike = function(response) {
+    likeCount.text(response.new_like_count)
+  }
 
-      likeCount = $(this).siblings('.likes_count');
+  var handleClick = function(event) {
+    event.preventDefault();
+    likeCount = $(this).siblings('.likes_count');
+    $.post(this.href, incrementLike);
+  }
 
-      $.post(this.href, function(response){
-        likeCount.text(response.new_like_count);
-    })
-  })
+ $('.likes-link').on('click', handleClick);
+
+
 })
