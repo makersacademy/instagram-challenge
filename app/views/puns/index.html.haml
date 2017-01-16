@@ -4,22 +4,15 @@
   .panel
   - if @puns.any?
     - @puns.each do |pun|
-      %div
       .well
-        .col-md.6
-          = link_to pun.name, pun_path(pun)
-        .col-md.4
-          = image_tag pun.image.url(:thumb)
-        .col-md.2
-          = link_to "Edit #{pun.name}", edit_pun_path(pun)
-        .col-md.2
-          = link_to "Delete #{pun.name}", pun_path(pun), method: :delete
+        = image_tag pun.image.url(:thumb)
+        %h3= link_to pun.name, pun_path(pun)
+        %h3= link_to "Comment on #{pun.name}", new_pun_comment_path(pun)
+        %h3= link_to "Edit #{pun.name}", edit_pun_path(pun)
+        %h3= link_to "Delete #{pun.name}", pun_path(pun), method: :delete
   - else
     No puns yet
 %div
   .well
     %a(href='/puns/new')
       %h3 Add a pun
-
-%div
-=image_tag 'could.jpg'

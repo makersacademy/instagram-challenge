@@ -10,19 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115192048) do
+ActiveRecord::Schema.define(version: 20170116110332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.text     "message"
+    t.text     "thoughts"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "pun_id"
-    t.integer  "user_id"
     t.index ["pun_id"], name: "index_comments_on_pun_id", using: :btree
-    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "puns", force: :cascade do |t|
@@ -61,7 +59,6 @@ ActiveRecord::Schema.define(version: 20170115192048) do
   end
 
   add_foreign_key "comments", "puns"
-  add_foreign_key "comments", "users"
   add_foreign_key "puns", "users"
   add_foreign_key "users", "puns"
 end
