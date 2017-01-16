@@ -11,17 +11,24 @@ Features
 * Comment on a picture
 * Like a picture
 * Uses AJAX to update likes without page refresh
+* Production environment stores images on AWS
+
+Heroku
+--------
+Visit the site on [Heroku](https://insta-clone-474.herokuapp.com/)
 
 Usage
 ---------
 ### Run
+
+First do the following:
 ```
 git clone git@github.com:cjcoops/instagram-challenge.git
 cd instagram-challenge
 rake db:create
 rails/bin s
 ```
-Visit http://localhost:3000/
+Then visit http://localhost:3000/
 
 ### Test
 ```
@@ -42,23 +49,9 @@ Technologies Used
 #### Testing
 * Rspec
 * Capybara
+* Poltergeist
 
 Project
 ----------------
 #### Objectives
-Objectives objectives objectives
-
-#### Motivations
-Objectives objectives objectives
-
-#### Thinking
-Objectives objectives objectives
-
-#### Design
-Objectives objectives objectives
-
-#### Issues
-Objectives objectives objectives
-
-#### Alternatives
-Objectives objectives objectives
+* Practice using the Rails framework to build a full stack web app
