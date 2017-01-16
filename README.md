@@ -2,11 +2,17 @@
 
 ## Instructions
 
-`git clone git@github.com:mikehurl/instagram-challenge.git` (via SSH)   
-or   
-`git clone https://github.com/mikehurl/instagram-challenge.git` (via HTTPS).   
-`bundle` from the project directory, then `bin/rails s`.   
-Visit `http://localhost:3000` in your browser.
+### Via SSH
+
+* `git clone git@github.com:mikehurl/instagram-challenge.git`
+* `bundle` from the project directory, then `bin/rails s`.
+* Visit `http://localhost:3000` in your browser.
+
+### Via HTTPS
+
+* `git clone https://github.com/mikehurl/instagram-challenge.git`
+* `bundle` from the project directory, then `bin/rails s`.
+* Visit `http://localhost:3000` in your browser.
 
 ### Brief
 
