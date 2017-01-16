@@ -33,6 +33,10 @@ As a user,
 So that I can see if this site is cool,
 I want to be able to see photos without having to sign up
 
+```
+
+```
+
 As a person,
 So that I can start using CloneStagram,
 I want to be able to sign up
@@ -48,6 +52,10 @@ I want to be able to sign in with my Facebook account
 As a signed-up user,
 So that noone else can use my CloneStagram account,
 I want to be able to sign out
+
+```
+
+```
 
 As a user,
 So that I can show my love,
@@ -68,6 +76,7 @@ I want to be able to comment on a particular photo
 As a user,
 So that I can retract my comment,
 I want to be able to delete a comment I've made.
+
 ```
 
 ## Approach
