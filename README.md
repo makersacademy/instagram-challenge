@@ -10,7 +10,9 @@ Ruby on rails v5.0.1
 ### Configuration
 * fork/clone this repo
 * cd into project folder
+* run `bundle` to install dependencies
 * run `bin/rake db:create` to create database
+* run `bin/rake db:migrate` to build associations
 * run `bin/rails s` to start the server
 * You can run the test suite with `rspec`
 
