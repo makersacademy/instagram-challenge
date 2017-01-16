@@ -14,6 +14,7 @@ Ruby on rails v5.0.1
 * run `bin/rake db:create` to create database
 * run `bin/rake db:migrate` to build associations
 * run `bin/rails s` to start the server
+* Visit http://localhost:3000 to see the app
 * You can run the test suite with `rspec`
 
 ### Screenshots
