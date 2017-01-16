@@ -127,14 +127,14 @@ Download or clone this repo to your computer. When in the project directory, run
 
 ## Getting Started
 
-This application uses [envyable](https://github.com/philnash/envyable) to set environment variables. You will need to create a Facebook application to use with this app, and set the following two variables in `env.yml`:
+This application uses [envyable](https://github.com/philnash/envyable) to set environment variables. You will need to create a Facebook application to use with this app, and set the following two variables in an `env.yml` file in the config directory, which you will need to create:
 
 ```
 CLONESTA_APP_ID: "<YOUR FB APP ID>"
 CLONESTA_APP_SECRET: "<YOUR FB APP SECRET>"
 ```
 
-The `env.yml` file in the config directory - this file should be excluded from Git tracking, but make extra sure.
+This file should be excluded from Git tracking, but make extra sure.
 
 Run `bin/rails s` in the project directory and then visit `http://localhost:3000` in your preferred browser. When you have signed up for an account, you're ready to start uploading, liking, and commenting on photos!
 
