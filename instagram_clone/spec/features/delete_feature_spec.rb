@@ -1,6 +1,7 @@
 feature 'Delete' do
   context 'When a user visits the show photo page' do
     before do
+      sign_in
       create_a_photo
       visit('/')
       click_link('testphoto')

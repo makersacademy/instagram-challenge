@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'index' do
   context 'When a user visits the index page' do
     before do
+      sign_in
       create_a_photo
       visit('/')
     end

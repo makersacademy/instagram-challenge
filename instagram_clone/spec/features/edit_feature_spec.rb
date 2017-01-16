@@ -1,6 +1,7 @@
 feature 'index' do
   context 'When a user visits the show photo page' do
     before do
+      sign_in
       create_a_photo
       visit('/')
       click_link('testphoto')
@@ -13,6 +14,7 @@ feature 'index' do
 
   context 'When a user clicks the edit link' do
     before do
+      sign_in
       create_a_photo
       visit('/')
       click_link('testphoto')
