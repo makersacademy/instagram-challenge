@@ -8,7 +8,7 @@ Instructions
 * Clone the repository
 * Run ```bundle ```
 * Run ```rake db:migrate```
-* Type ```bin/rails s``` to exit psql
+* Type ```bin/rails s``` 
 * In a browser, navigate to ```localhost:3000```
 * You will have a clean slate, so sign up with as many users as you like,  post whatever you like, and like and comment away!
 
