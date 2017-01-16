@@ -4,6 +4,6 @@ class LikesController < ApplicationController
     @photo = Photo.find(params[:photo_id])
     @like = @photo.likes.new(user_id: current_user.id)
     @like.save
-    redirect_to photos_path
+    render json: { new_like_count: @photo.likes.count }
   end
 end

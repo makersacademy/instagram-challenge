@@ -7,10 +7,9 @@ feature 'liking photos' do
     post_photo
   end
 
-  scenario 'clicking like adds one like' do
+  scenario 'clicking like adds one like', js: true do
     visit '/photos'
     click_link 'Like'
-    visit '/photos'
     expect(page).to have_content('1 like')
   end
 end
