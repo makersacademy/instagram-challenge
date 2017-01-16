@@ -24,19 +24,19 @@ I have created an Instagram Clone, which is a popular web application that allow
 
 ## Technologies Used
 
-- App uses        - Ruby on Rails framework.
+- App uses            - Ruby on Rails framework.
 
-- devise          - used to create our user model with a lot of in built functionality.
+- devise gem          - used to create our user model with a lot of in built functionality.
 
-- bootstrap-sass  - used to help speed up page styling with built in customisable templates.
+- bootstrap-sass gem  - used to help speed up page styling with built in customisable templates.
 
-- simple_form     - used to help speed up the creation of forms.
+- simple_form gem     - used to help speed up the creation of forms.
 
-- paperclip gem   - used to allow image upload functionality on the app.
+- paperclip gem       - used to allow image upload functionality on the app.
 
-- masonry-rails   - used to create page transitions on the app.
+- masonry-rails gem   - used to create page transitions on the app.
 
-- acts_as_votable - used to allow user voting functionality.
+- acts_as_votable gem - used to allow user voting functionality.
 
 ## Challenges
 
