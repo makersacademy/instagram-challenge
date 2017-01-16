@@ -8,5 +8,6 @@ feature 'show' do
       expect(page).to have_content('testphoto')
       expect(page).to have_content('describedtest')
     end
+
   end
 end
