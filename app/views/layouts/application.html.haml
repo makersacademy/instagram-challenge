@@ -10,22 +10,21 @@
     %link(href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet")
 
   %body
-    .navbar.nav
-      %h1
-        %a{:href => "/puns"} << Home >>
-        %a{:href => "https://github.com/Unicornelia"} << About >>
-        %div
-          .nav-right
-            - if user_signed_in?
-              = link_to "Sign out", destroy_user_session_path, method: :delete
-            - else
-              = link_to "Sign in", new_user_session_path
-              = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
-              = link_to "Sign up", new_user_registration_path
+    %nav.navbar.navbar-default
+      .container
+        %ul.nav.navbar.navbar-right
+          %li= link_to 'Punstagram', root_path
+          %li=link_to 'About', "https://github.com/Unicornelia"
+        - if user_signed_in?
+          %ul.nav.navbar.navbar-left
+            %li= link_to "Sign out", destroy_user_session_path, method: :delete
+        - else
+          %ul.nav.navbar.navbar-left
+            %li= link_to "Sign in", new_user_session_path
+            %li= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
+            %li= link_to "Sign up", new_user_registration_path
 
-  %div
-    %h2
-    .notice
-      = notice
-      = alert
+.container
+  = notice
+  = alert
   = yield

@@ -16,6 +16,7 @@ gem 'envyable'
 gem 'omniauth-facebook'
 gem 'rspec-collection_matchers'
 gem 'paperclip'
+gem 'bootstrap-sass'
 #amazon web services
 gem 'aws-sdk', '< 2.0'
 
