@@ -10,6 +10,7 @@ feature 'liking photos' do
   scenario 'clicking like adds one like' do
     visit '/photos'
     click_link 'Like'
+    visit '/photos'
     expect(page).to have_content('1 like')
   end
 end
