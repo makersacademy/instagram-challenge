@@ -1,0 +1,26 @@
+#photo_show.row
+  .col-md-8.col-md-offset-2
+    .panel.panel-default
+      .panel-body
+        %h1= @photo.title
+      .panel-heading.photo_image
+        = image_tag(@photo.image.url(:medium))
+      .panel-body
+        %p.description= @photo.description
+        Submitted by:
+        %p= @photo.user.email
+      .panel-footer
+        .row
+          .col-md-6
+            %p.user
+            Submitted by
+            = @photo.user.email
+          .col-md-6
+            .btn-group.pull-right
+              = link_to like_photo_path(@photo), method: :put, class: "btn btn-default", id: "like-btn" do
+                %span.glyphicon.glyphicon-heart
+                  =@photo.get_likes.size
+              = link_to "Back", root_path, class: "btn btn-default"
+              - if user_signed_in?
+                = link_to "Edit", edit_photo_path, class: "btn btn-default"
+                = link_to "Delete", photo_path, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-default"
