@@ -1,7 +1,8 @@
 class LikesController < ApplicationController
 
   # def index
-  #   redirect_to picture_path(@picture)
+  #   picture = Picture.find(params[:picture_id])
+  #   redirect_to picture_path(picture)
   # end
 
   def create
