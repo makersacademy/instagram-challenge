@@ -1,24 +1,27 @@
-# README
+# Instagram Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on rails v5.0.1
 
-Things you may want to cover:
+##### System dependencies
+ - Paperclip
+ - Devise
+ - Simple form
 
-* Ruby version
+##### Configuration
+* fork/clone this repo
+* cd into project folder
+* run `bin/rake db:create` to create database
+* run `bin/rails s` to start the server
+* You can run the test suite with `rspec`
 
-* System dependencies
+##### Screenshots
+[Post page](http://i.imgur.com/WO5uXtk.png)
 
-* Configuration
+[Home feed](http://i.imgur.com/WO5uXtk.png)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##### To do
+* Implement likes
+* User feeds
+* Styling
+* Image uploads to amazon web services
+* Deploy to heroku
