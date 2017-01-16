@@ -71,7 +71,7 @@ I want to be able to delete a comment I've made.
 ```
 
 ## Approach
-This application is written in [Rails 5.0.1](https://rubygems.org/gems/rails/versions/5.0.1) and [Ruby 2.4.0](http://ruby-doc.org/core-2.4.0/) and consists of the following classes:
+This application is written in [Rails 5.0.1](https://rubygems.org/gems/rails/versions/5.0.1) and consists of the following classes:
 
 * Photo - holds an image, belongs to a user, has many likes and comments
 * Users - uploads photos, likes and comments on photos
@@ -117,6 +117,16 @@ Finally, at present all images are saved to the `/public/system/photos` folder. 
 Download or clone this repo to your computer. When in the project directory, run `bundle install`. This requires you to have the [bundler](https://bundler.io/) gem already installed (see link).
 
 ## Getting Started
+
+This application uses [envyable](https://github.com/philnash/envyable) to set environment variables. You will need to create a Facebook application to use with this app, and set the following two variables in `env.yml`:
+
+```
+CLONESTA_APP_ID: "<YOUR FB APP ID>"
+CLONESTA_APP_SECRET: "<YOUR FB APP SECRET>"
+```
+
+The `env.yml` file in the config directory - this file should be excluded from Git tracking, but make extra sure.
+
 Run `bin/rails s` in the project directory and then visit `http://localhost:3000` in your preferred browser. When you have signed up for an account, you're ready to start uploading, liking, and commenting on photos!
 
 ## Authors
