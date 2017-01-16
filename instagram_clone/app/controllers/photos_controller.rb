@@ -29,7 +29,7 @@ class PhotosController < ApplicationController
 
   def update
     if @photo.update(photo_params)
-      redirect_to @photo, "Photo was updated"
+      redirect_to @photo, notice: "Photo was updated"
     else
       render 'edit'
     end
@@ -43,7 +43,7 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:title, :description)
+    params.require(:photo).permit(:title, :description, :image)
   end
 
   def find_photo
