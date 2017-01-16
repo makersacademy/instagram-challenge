@@ -4,10 +4,21 @@ require 'web_helpers'
 feature 'photos' do
 
   context 'no photos have been added' do
+
     scenario 'should display a prompt to add a photos' do
       visit '/photos'
       expect(page).to have_content 'No photos yet'
       expect(page).to have_link 'Add a photo'
+    end
+
+    scenario "User can add an image " do
+      sign_up
+      visit '/photos'
+      click_link 'Add a photo'
+      fill_in 'Title', with: 'Test photo'
+      page.attach_file('photo_image', Rails.root + './public/system/photos/images/000/000/001/original/AN-government-contracts.png')
+      click_button 'Create Photo'
+      expect(page).to have_css("img[src*='AN-government-contracts.png']")
     end
 
   end

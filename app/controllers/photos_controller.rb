@@ -45,7 +45,7 @@ before_action :authenticate_user!, :except => [:index, :show]
   private
 
   def photo_params
-    params.require(:photo).permit(:title, :description)
+    params.require(:photo).permit(:image, :title, :description)
   end
 
 end

@@ -4,7 +4,9 @@ class User < ApplicationRecord
          :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :photos
+
   has_many :comments
+  
   has_many :commented_photos, through: :comments, source: :photo
 
   def self.new_with_session(params, session)

@@ -1,6 +1,7 @@
 - if @photos.any?
   - @photos.each do |photo|
     %h3= link_to photo.title, photo_path(photo)
+    = image_tag photo.image.url(:thumb)
     %p= photo.description
     = link_to "Like #{photo.title}", photo_likes_path(photo), class: 'likes-link'
     %span.likes_count= photo.likes.count
