@@ -1,0 +1,15 @@
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+
+    <h3><%= post.user.username %></h3> 
+    <%= link_to post, id:("image-"+post.id.to_s) do %>
+      <%= image_tag(post.image.url(:medium), size: "400x400") %>
+    <% end %>
+    <h3><%= post.caption %></h3>
+
+  <% end %>
+<% else %>
+  <h1>No posts yet</h1>
+<% end %>
+
+<%= link_to "New post", new_post_path %>

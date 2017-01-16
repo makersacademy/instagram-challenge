@@ -1,0 +1,17 @@
+<%= image_tag(@post.image.url(:medium), size: "400x400") %>
+<h3><%= @post.caption %></h3>
+
+<ul><% @post.comments.all.each do |comment| %>
+      <li><p><b><%="@#{comment.user.username}"%></b><%=" #{comment.text}"%></p></li>
+    <% end %></ul>
+
+
+<%= simple_form_for [@post, @post.comments.new] do |f| %>
+  <%= f.input :text, label: false, placeholder: "Add a comment", html: { id: :comment_text } %>
+  <%= f.button :submit, 'save' %>
+<% end %>
+
+
+<%= link_to "edit post", edit_post_path %>
+<%= link_to "delete post", post_path, method: :delete %>
+<%= link_to "back", root_path %>
