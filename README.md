@@ -14,6 +14,10 @@ I have created an Instagram Clone, which is a popular web application that allow
 
 - In the terminal, migrate your databases by running the ```bin/rake db:migrate``` command.
 
+- Download and install image magick on your system following the instructions at http://www.imagemagick.org/script/index.php. Find out where the utility is installed using the ```/usr/local/bin/convert``` command. More detailed instructions are available at https://github.com/thoughtbot/paperclip.
+
+###### Be sure to integrate with your environment - preferably through the PATH variable, or by changing your config/environments/development.rb
+
 - In the terminal, run the rails server by running the ```bin/rails s``` command.
 
 - Navigate to http://localhost:3000/ in the browser
