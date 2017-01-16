@@ -20,21 +20,19 @@ Visit the site on [Heroku](https://insta-clone-474.herokuapp.com/)
 Usage
 ---------
 ### Run
-
-First do the following:
 ```
 git clone git@github.com:cjcoops/instagram-challenge.git
 cd instagram-challenge
-rake db:create
+rake db:setup
 rails/bin s
+open http://localhost:3000/
 ```
-Then visit http://localhost:3000/
 
 ### Test
 ```
 git clone git@github.com:cjcoops/instagram-challenge.git
 cd instagram-challenge
-rake db:create
+rake db:setup
 rspec
 ```
 
