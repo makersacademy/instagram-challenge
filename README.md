@@ -1,23 +1,55 @@
-Instagram Challenge
-===================
+### Instagram Challenge [![Build Status](https://travis-ci.org/TudorTacal/instagram-challenge.svg?branch=master)](https://travis-ci.org/TudorTacal/instagram-challenge)
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This project represents the eight weekend challenge whilst at **Makers Academy** web development bootcamp.
 
-Task
------
+**Makers-Instagram** is a web app and it basically replicates some of the features of the popular **Instagram** application. It's just at **MVP** stage but it looks and behaves quite good for a weekend's work.
 
-Build Instagram: Simple huh!
+The repository was forked from: https://github.com/makersacademy/instagram-challenge
 
-Bonus if you can write your own set of sensible user stories!
+## Installation and use
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+1. The site is online on **Heroku**(www.heroku.com), click the link to see it in action https://makers-instagram.herokuapp.com/
+2. To check locally download or copy the repository.
+3. Next comes ```bundle install```
+4. ```bin/rake db:create```
+5. ```bin/rake db:migrate```
+6. Run the command ```rails s``` and open **localhost:3000** in the browser.
+7. To run the tests type ```rspec```.
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## Screenshots
 
-Bonus if you can add filters!
+![First Page](https://s27.postimg.org/e0luljhv7/Screen_Shot_2017_01_15_at_21_34_11.png)
+
+## Technologies used
+
+* **Ruby** as language.
+* **Postgresql** as database.
+* **Ruby on Rails** as a framework for fast development.
+* **Rspec and Capybara** for testing.
+* **HTML and CSS3** for styling.
+* **AWS S3** for hosting the images.
+* **Devise** for user management.
+
+## To implement
+
+* Various edge cases.
+* **Ajax** request for the likes so we get rid of page refresh.
+* **Facebook** authentication.
+* Beautiful styling for the forms.
+
+## User stories
+```
+As a user
+So I can share memories with my friends
+I would like to post a picture on the wall.
+
+As a user
+So I can share my thoughts with my friends
+I would like to post a comment to a picture.
+
+As a user
+So I can show my appreciation
+I would like to endorse a picture with a "Like".
+```
+## Contact
+tudor.tacal@gmail.com

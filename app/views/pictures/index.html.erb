@@ -1,0 +1,28 @@
+<div id='picture'>
+  <%= link_to 'Add a picture', new_picture_path %>
+</div>
+<% if @pictures.length == 0 %>
+  <h2>No pictures have been added yet</h2>
+<% else %>
+<div id='timeline'>
+  <% @pictures.reverse.each do |picture|  %>
+    <ul class='list'>
+      <li class='list-elements'>
+         <div id='img'>
+           <%= image_tag picture.image.url(:medium)%>
+           <div id='attributes'>
+               <p><%= picture.description %></p>
+
+               <% picture.comments.each do |comment| %>
+               <p><span style='font-weight: bold;'><%= comment.user.username %></span> <%= comment.description %></p>
+               <% end %>
+             <p><%= pluralize picture.likes.count, 'Like' %></p>
+             <p style='float: right; margin: auto; padding: 5px;'><%= link_to 'Like', picture_likes_path(picture), method: :post %><p>
+             <p style='margin: auto; padding: 5px;'><%= link_to 'Add comment', new_picture_comment_path(picture)%></p>
+            </div>
+         </div>
+       </li>
+     </ul>
+  <% end %>
+</div>
+<% end %>
