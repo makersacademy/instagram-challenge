@@ -66,10 +66,6 @@ So that my posts aren't spammed
 I want to be able to limit users to one 'like'
 ```
 
-###Outstanding Steps
-* Deploy on Heroku
-* Store images on AWS
-
 ###Installation
 1. Fork this repository
 2. Run `bundle install` to get all required gems
