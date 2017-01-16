@@ -5,8 +5,8 @@ class User < ApplicationRecord
   has_many :liked_photos, through: :likes, source: :photo
   has_many :likes
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
+  devise :database_authenticatable,
+         :registerable, :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
   def self.from_omniauth(auth)
@@ -19,6 +19,14 @@ class User < ApplicationRecord
     # uncomment the line below to skip the confirmation emails.
     # user.skip_confirmation!
     end
+  end
+
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
   end
 
   def has_liked?(photo)
