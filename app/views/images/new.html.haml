@@ -1,3 +1,12 @@
+- if @image.errors.any?
+	%section#errors
+	%h2
+		= pluralize @image.errors.count, "error"
+		prohibited this image from being saved:
+	%ul
+		- @image.errors.full_messages.each do |message|
+			%li= message
+
 = form_for @image, html: {multipart: true} do |f|
 	= f.label :title
 	= f.text_field :title

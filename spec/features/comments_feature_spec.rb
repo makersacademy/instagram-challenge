@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 feature 'commment' do
+  before (:each) do
+    sign_up
+  end
 
   context 'leaving a comment' do
     scenario 'no comments have been left yet' do

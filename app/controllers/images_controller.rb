@@ -1,4 +1,6 @@
 class ImagesController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @images = Image.all
   end
@@ -8,7 +10,8 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.new(image_params)
+    user = current_user
+    @image = user.images.new(image_params)
     if @image.save
       redirect_to images_path
     else
@@ -17,7 +20,8 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    @image = Image.find(params[:id])
+    user = current_user
+    @image = user.images.find(params[:id])
     @image.image = nil
     @image.save
     @image.destroy

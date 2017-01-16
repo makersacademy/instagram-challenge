@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 feature 'images' do
+  before (:each) do
+    sign_up
+  end
+  
   context 'no images have been added' do
     scenario 'Site shows when it has no images' do
       visit '/images'
