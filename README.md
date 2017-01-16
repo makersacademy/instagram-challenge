@@ -73,10 +73,10 @@ I want to be able to delete a comment I've made.
 ## Approach
 This application is written in [Rails 5.0.1](https://rubygems.org/gems/rails/versions/5.0.1) and consists of the following classes:
 
-* Photo - holds an image, belongs to a user, has many likes and comments
-* Users - uploads photos, likes and comments on photos
-* Comments - short text statements about photos
-* Likes - belongs to a user and a photo; summed per photo to show how popular it is
+* Photo - holds an image, belongs to a user, has many likes and comments. Comment and Like are dependent upon Photo.
+* User - uploads photos, likes and comments on photos
+* Comment - short text statements about photos
+* Like - belongs to a user and a photo; summed per photo to show how popular it is
 
 The application is tested at the unit level in [RSpec for Rails](https://github.com/rspec/rspec-rails) with associations and validations tested in [shoulda](https://github.com/thoughtbot/shoulda). It is feature tested in [Capybara](https://github.com/teamcapybara/capybara). Two images have been provided in `spec/fixtures` to test uploads.
 
