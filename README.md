@@ -1,23 +1,89 @@
-Instagram Challenge
-===================
+# Instagram Challenge
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+###Objective
+The aim of this project is to create a simple instagram clone that allows users to post photos, comment and like photos
 
-Task
------
+### User Stories
 
-Build Instagram: Simple huh!
+```
+As a user,
+So that I can share my photos with others
+I want to post a picture
 
-Bonus if you can write your own set of sensible user stories!
+As a user,
+So that I can share my thoughts on a photo with others
+I want to post a comment
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+As a user,
+So that I can share my appreciation on a photo with others
+I want to like a picture
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a user,
+So that I can see photos others have shared
+I want to view pictures
 
-Bonus if you can add filters!
+As a user,
+So that I can see comments against photos others have shared
+I want to view comments
+
+As a user,
+So that I can see appreciations for photos others have shared
+I want to view likes
+
+As a user,
+So that no one can pretend they are me
+I want to be able to sign up for my own account
+
+As a user,
+So that no one can use my account without my permission
+I want to be able to sign out of my account
+
+As a user,
+So that I can start using the site
+I want to be able to register for an account
+
+As a user,
+So that I can avoid a lengthy registration process
+I want to be able to log in with facebook
+
+As a user,
+So that no one can tamper with my posts
+I want to be the only one who can delete a post
+```
+
+###Additional User Stories (to be implemented)
+```
+As a user,
+So that no one can tamper with my posts
+I want to be the only one who can edit a post
+
+As a user,
+So that I can rectify a mistake
+I want to be able to un-like a post I have previously liked
+
+As a user,
+So that my posts aren't spammed
+I want to be able to limit users to one 'like'
+```
+
+###Installation
+1. Fork this repository
+2. Run `bundle install` to get all required gems
+3. Run `rake db:create` to create required databases
+4. Run `rake db:migrate` to ensure databases are properly set up
+
+###How to Use
+1. Run command `rails s` in command line to open web app locally
+2. Visit `localhost:3000` to get browsing
+3. Users can sign up / register using links on the right in order to use the app
+4. Click 'Post a new photo' to add a post
+5. Click the heart icon to 'like' a post
+6. Click 'Sign Out' to sign out at any point
+
+###Technologies
+* Ruby on Rails
+* PostgreSQL
+* RSpec
+* Capybara
+* HTML & CSS
+* Haml

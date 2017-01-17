@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstagramChallenge</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <li>
+      <h2 id="title"><%= link_to "Javagram", photos_path %></h2>
+      <% if user_signed_in? %>
+        <div id="nav">
+          <%= link_to "Upload a photo", new_photo_path %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        </div>
+      <% else %>
+        <div id="nav">
+          <%= link_to "Sign in |", new_user_session_path %>
+          <%= link_to " Sign up |" , new_user_registration_path %>
+          <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+        </div>
+      <% end %>
+    </li>
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
+    <%= yield %>
+  </body>
+</html>

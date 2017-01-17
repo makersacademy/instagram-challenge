@@ -1,0 +1,15 @@
+- if @photos.all.any?
+  - @photos.each do |photo|
+    = link_to photo_path(photo) do
+      %section.container
+        .photo
+          .image
+            = image_tag photo.image.url(:medium), class: "photo"
+          .likes
+            = pluralize photo.likes.count, 'like'
+          - if photo.comments.all.any?
+            - photo.comments.each do |comment|
+              .comments
+                %p= User.find(comment.user_id).username.to_s + " " + comment.text.to_s
+- else
+  %h1 No photos yet!
