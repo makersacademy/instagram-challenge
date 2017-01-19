@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
 
+[![Build Status](https://travis-ci.org/KPobeeNorris/Instagram-challenge.svg?branch=master)](https://travis-ci.org/KPobeeNorris/Instagram-challenge)
+
 Instructions
 -------
 * Clone repo: https://github.com/KPobeeNorris/instagram-challenge.git
