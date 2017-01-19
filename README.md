@@ -8,8 +8,9 @@ Instructions
   * Note: you may need to start postgresql by typing: brew services start postgresql
 * First install this gem: gem install pg -- --with-pg-config=/usr/local/bin/pg_config
 * Bundle install
-* To build the database type: bin/rake db:create; you may also need to include: bin/rake db:create RAILS_ENV=test if it errors
+* To build the database type: bin/rake db:create; you may also need to include: bin/rake db:create RAILS_ENV=test if it errors when trying to run Rspec
 * Complete the database migration by typing: bin/rake db:migrate
+* You can run the app by typing: bin/rails s and going to localhost:3000 in the internet application of your choice
 
 AWS
 -----
