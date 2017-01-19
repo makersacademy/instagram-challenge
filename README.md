@@ -5,7 +5,11 @@ Instructions
 -------
 * Clone repo: https://github.com/KPobeeNorris/instagram-challenge.git
 * Brew install postgresql (if not already installed)
+  * Note: you may need to start postgresql by typing: brew services start postgresql
+* First install this gem: gem install pg -- --with-pg-config=/usr/local/bin/pg_config
 * Bundle install
+* To build the database type: bin/rake db:create; you may also need to include: bin/rake db:create RAILS_ENV=test if it errors
+* Complete the database migration by typing: bin/rake db:migrate
 
 AWS
 -----
@@ -20,6 +24,7 @@ This application uses AWS services, specifically the s3 bucket for storing the i
   AWS_SECRET_ACCESS_KEY=your info here
   AWS_REGION=your info here
   ```
+
 General information
 -----
 
