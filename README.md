@@ -37,9 +37,11 @@ General information
 Task
 -----
 
-Build Instagram.
+Build Instagram - in a weekend, and designed on the user stories below.
 
-This weekend I also tried attempted to include CSS and styling for the first time!  It isn't the flashiest site, but I'm really proud of what I managed in a short time!
+This weekend challenge is a solo effort and is a Rails app.  I was able to include and implement the omniauth-facebook gem, which was a success as the previous few days of trying this on another app had caused many problems.  It does work, I have used my own Facebook account to check it, but as yet I haven't made the app live on Facebook so it doesn't work for members of the public yet.  
+
+I also attempted to include CSS and styling for the first time; up until this point in the course I had been focused on creating apps/projects that worked rather than looked good, but didn't do anything.  I am aware that this isn't the flashiest site, but I'm really proud of what I managed in such a short timeframe, and my first use of CSS!  One highlight would be that certain menu items that scroll down the page as you do, saving you having to scroll all the way back up to the top to use them.
 
 User stories
 ----
