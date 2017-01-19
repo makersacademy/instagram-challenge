@@ -4,8 +4,8 @@ Instagram Challenge
 Instructions
 -------
 * Clone repo: https://github.com/KPobeeNorris/instagram-challenge.git
-* Bundle install
 * Brew install postgresql (if not already installed)
+* Bundle install
 
 AWS
 -----
@@ -23,9 +23,8 @@ This application uses AWS services, specifically the s3 bucket for storing the i
 General information
 -----
 
-* Gems incl. paperclip, aws, rails 4.2.7
-* App has been deployed to Heroku.
-* App has Facebook log in included, but not set for public access yet.
+* App has been deployed to Heroku and the site can be visited at: https://gonna-post-yall.herokuapp.com/
+* App has an option to log in via Facebook, but it hasn't been set to public yet so only open to those designated as devs on the Facebook developer site.
 
 Task
 -----
