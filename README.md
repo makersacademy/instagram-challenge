@@ -5,8 +5,26 @@ Instructions
 -------
 * Clone repo: https://github.com/KPobeeNorris/instagram-challenge.git
 * Bundle install
+* Brew install postgresql (if not already installed)
+
+AWS
+-----
+This application uses AWS services, specifically the s3 bucket for storing the images users upload to the site.  You will need to:
+* Create an AWS account
+* Navigate to the S3 section and create a bucket
+* Create a .env file at the root of the project, and add this to the .gitignore file to keep your data from being made public
+* In the .env file you will need to include the following information from your AWS account:
+  ```
+  S3_BUCKET_NAME=your info here
+  AWS_ACCESS_KEY_ID=your info here
+  AWS_SECRET_ACCESS_KEY=your info here
+  AWS_REGION=your info here
+  ```
+General information
+-----
+
 * Gems incl. paperclip, aws, rails 4.2.7
-* App has been deployed to Heroku, but issues with images not saving to AWS as yet.
+* App has been deployed to Heroku.
 * App has Facebook log in included, but not set for public access yet.
 
 Task
