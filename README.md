@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
 
+[Instructions](#instructions) | [AWS](#aws) | [Facebook Login](#facebook-login) | [General information](#general-information) | [Task](#Task) | [User Stories](#user-stories) |
+
 [![Build Status](https://travis-ci.org/KPobeeNorris/Instagram-challenge.svg?branch=master)](https://travis-ci.org/KPobeeNorris/Instagram-challenge)
 
 Instructions
@@ -21,12 +23,20 @@ This application uses AWS services, specifically the s3 bucket for storing the i
 * Navigate to the S3 section and create a bucket
 * Create a .env file at the root of the project, and add this to the .gitignore file to keep your data from being made public
 * In the .env file you will need to include the following information from your AWS account:
-  ```
-  S3_BUCKET_NAME=your info here
-  AWS_ACCESS_KEY_ID=your info here
-  AWS_SECRET_ACCESS_KEY=your info here
-  AWS_REGION=your info here
-  ```
+  * S3_BUCKET_NAME=your info here
+  * AWS_ACCESS_KEY_ID=your info here
+  * AWS_SECRET_ACCESS_KEY=your info here
+  * AWS_REGION=your info here
+
+
+Facebook Login
+-----
+This app has been set up so that users can login/be authenticated via Facebook.  In order for this to work in your version please complete the following:
+* Create a Facebook developer account
+* Follow the instructions to create a new app.
+* Once this is done you will need to add the following information to the .env file:
+  * FACEBOOK_APP_ID=your info here
+  * FACEBOOK_APP_SECRET=your info here
 
 General information
 -----
