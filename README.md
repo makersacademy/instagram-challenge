@@ -34,7 +34,7 @@ Facebook Login
 -----
 This app has been set up so that users can login/be authenticated via Facebook.  In order for this to work in your version please complete the following:
 * Create a Facebook developer account
-* Follow the instructions to create a new app.
+* Follow the instructions to create a new app and make sure you specify the website you are using for the project
 * Once this is done you will need to add the following information to the .env file:
   * FACEBOOK_APP_ID=your info here
   * FACEBOOK_APP_SECRET=your info here
