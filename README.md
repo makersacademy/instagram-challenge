@@ -10,6 +10,7 @@ Instructions
 * Clone repo: https://github.com/KPobeeNorris/instagram-challenge.git
 * Brew install postgresql (if not already installed)
   * Note: you may need to start postgresql by typing: brew services start postgresql
+* Brew install imagemagick (if not already installed)
 * First install this gem: gem install pg -- --with-pg-config=/usr/local/bin/pg_config
 * Bundle install
 * To build the database type: bin/rake db:create; you may also need to include: bin/rake db:create RAILS_ENV=test if it errors when trying to run Rspec
