@@ -1,7 +1,7 @@
 Instagram Challenge
 ===================
 
-[Instructions](#instructions) | [AWS](#aws) | [Facebook Login](#facebook-login) | [General information](#general-information) | [Task](#Task) | [User Stories](#user-stories) |
+[Instructions](#instructions) | [AWS](#aws) | [Facebook Login](#facebook-login) | [General information](#general-information) | [Task](#task) | [User Stories](#user-stories) |
 
 [![Build Status](https://travis-ci.org/KPobeeNorris/Instagram-challenge.svg?branch=master)](https://travis-ci.org/KPobeeNorris/Instagram-challenge)
 
