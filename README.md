@@ -1,7 +1,8 @@
-Instagram Challenge
+# Instagram Challenge
+## Weekend Challenge
+### Week Eight
 =================
-Completed by Dan Pelensky
-15 January 2017
+Completed 15 January 2017
 
 Instructions
 *****
