@@ -1,0 +1,15 @@
+<% if @photos.any?  %>
+  <% @photos.each do |photo| %>
+  <%= link_to image_tag(photo.image.url(:thumb)), photo_path(photo) %>
+  <br>
+  <%= link_to photo.description, photo_path(photo) %>
+  <br>
+  <%= link_to "Like photo", photo_likes_path(photo), method: :post %>
+  <%= pluralize photo.likes.count, 'like' %>
+    <br>
+  <% end %>
+<% else %>
+  <p>No photos yet</p>
+<% end %>
+<br>
+<a href="/photos/new">Add a photo!</a>

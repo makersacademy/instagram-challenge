@@ -1,0 +1,15 @@
+<%= image_tag @photo.image.url(:medium) %>
+<p><%= @photo.description %></p>
+<%= link_to "Edit photo", edit_photo_path(@photo) %>
+<%= link_to "Delete photo", photo_path(@photo), method: :delete %>
+<hr>
+<% if @photo.comments.any? %>
+  <% @photo.comments.all.each do |comment| %>
+      <%= comment.remarks %>
+      <br>
+      <% end %>
+  <% end %>
+  <%= link_to "Like photo", photo_likes_path(@photo), method: :post %>
+  <%= pluralize @photo.likes.count, 'like' %>
+    <br>
+  <%= link_to "Add comment", new_photo_comment_path(@photo) %>
