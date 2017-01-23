@@ -1,7 +1,7 @@
 Instagram Challenge
 ===================
 
-[Instructions](#instructions) | [AWS](#aws) | [Facebook Login](#facebook-login) | [General information](#general-information) | [Task](#Task) | [User Stories](#user-stories) |
+[Instructions](#instructions) | [AWS](#aws) | [Facebook Login](#facebook-login) | [General information](#general-information) | [Task](#task) | [User Stories](#user-stories) |
 
 [![Build Status](https://travis-ci.org/KPobeeNorris/Instagram-challenge.svg?branch=master)](https://travis-ci.org/KPobeeNorris/Instagram-challenge)
 
@@ -10,6 +10,7 @@ Instructions
 * Clone repo: https://github.com/KPobeeNorris/instagram-challenge.git
 * Brew install postgresql (if not already installed)
   * Note: you may need to start postgresql by typing: brew services start postgresql
+* Brew install imagemagick (if not already installed)
 * First install this gem: gem install pg -- --with-pg-config=/usr/local/bin/pg_config
 * Bundle install
 * To build the database type: bin/rake db:create; you may also need to include: bin/rake db:create RAILS_ENV=test if it errors when trying to run Rspec
@@ -34,7 +35,7 @@ Facebook Login
 -----
 This app has been set up so that users can login/be authenticated via Facebook.  In order for this to work in your version please complete the following:
 * Create a Facebook developer account
-* Follow the instructions to create a new app.
+* Follow the instructions to create a new app and make sure you specify the website you are using for the project
 * Once this is done you will need to add the following information to the .env file:
   * FACEBOOK_APP_ID=your info here
   * FACEBOOK_APP_SECRET=your info here
