@@ -14,7 +14,8 @@ Instructions
 * Bundle install
 * To build the database type: bin/rake db:create; you may also need to include: bin/rake db:create RAILS_ENV=test if it errors when trying to run Rspec
 * Complete the database migration by typing: bin/rake db:migrate
-* You can run the app by typing: bin/rails s and going to localhost:3000 in the internet application of your choice
+* You can run the app by typing: bin/rails s and navigating to localhost:3000 in the browser of your choice
+* You can see the tests written, and evidence of them all passing, by typing rspec into the command line.  At the time of writing this readme there are 16 passing tests for this application.  
 
 AWS
 -----
@@ -43,6 +44,8 @@ General information
 
 * App has been deployed to Heroku and the site can be visited at: https://gonna-post-yall.herokuapp.com/
 * App has an option to log in via Facebook, but it hasn't been set to public yet so only open to those designated as devs on the Facebook developer site.
+
+![instaclone](https://cloud.githubusercontent.com/assets/20423761/22203600/cb95c914-e165-11e6-9174-49eadc2cc750.png)
 
 Task
 -----
