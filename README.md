@@ -10,7 +10,7 @@ How to use?
 - run bundle install
 - run bin/rails db:create  
 - run bin/rake db:migrate  
-- enter rspec to run tests
+- enter rspec to run tests  
 ####to open website:
 - run bin/rails s to start a server  
 - go to localhost:3000  
