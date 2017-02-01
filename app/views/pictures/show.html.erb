@@ -1,0 +1,40 @@
+
+<%= image_tag @picture.image.url(:medium) %>
+<p> Added by: <%= @picture.user.email %></p>
+<p><%= @picture.description%></p>
+  <% if @picture.belongs_to?(current_user) %>
+    <%= link_to "Edit", edit_picture_path(@picture) %>
+    <%= link_to 'Delete', picture_path(@picture), method: :delete, data: {confirm: "Are you sure?"} %>
+  <% end %>
+  <% if @picture.instagratifications.length == 0 %>
+  No ♥ :<
+  <% else %>
+    <%= @picture.instagratifications.length %> ♥
+  <% end %>
+<% @picture.comments.each do |comment| %>
+<p>
+  <% if comment.belongs_to?(current_user) %>
+    <%= link_to 'x', picture_comment_path(@picture, comment), method: :delete %>
+  <% end %>
+  <%= comment.user.email %> said: <%= comment.content %></p>
+<% end %>
+
+<% if current_user %>
+  <% user_loved = current_user.instagratifications & @picture.instagratifications %>
+  <% if user_loved != [] %>
+    <%= link_to "♥", picture_instagratification_path(@picture, user_loved[0]), method: :delete %>
+  <% else %>
+    <%= link_to "♡", picture_instagratifications_path(@picture), method: :post %>
+  <% end %>
+  <ul class="form">
+    <%= form_for [@picture, @comment] do |f| %>
+    <li>
+      <%= f.label :content, "Add Comment" %>
+      <%= f.text_area :content %>
+    </li>
+    <li>
+      <%= f.submit "Submit" %>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
