@@ -5,13 +5,14 @@ I made this project individually as a weekend challenge at Makers Academy course
 
 How to use?  
 
-- clone this repo
-####in your terminal:  
+First, clone this repo.  
+#### Then, in your terminal:
 - run bundle install
 - run bin/rails db:create  
 - run bin/rake db:migrate  
 - enter rspec to run tests  
-####to open website:
+
+#### To open website:
 - run bin/rails s to start a server  
 - go to localhost:3000  
 - enjoy!
