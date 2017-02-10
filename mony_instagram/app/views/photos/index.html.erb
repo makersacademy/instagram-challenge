@@ -3,6 +3,16 @@
   <% @photos.each do |photo| %>
     <img src="<%=photo.insta_photo.url%>" height="300" width="350">
     <p> <%= photo.caption %> </p>
+    <% if photo.comments.any? %>
+      <% photo.comments.each do |comment|%>
+        <p> <%= comment %> </p>
+      <% end %>
+    <% end %>
+    <%= form_tag(controller: "comments", action: "/photos/:photo_id/comments", method: "post") %>
+      <%= f.label :message %>
+      <%= f.text_field :message %>
+      <%= f.submit %>
+    <% end %>
   <% end %>
 <% else %>
   No photos yet
