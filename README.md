@@ -99,7 +99,9 @@ I'd like to be able to edit and delete my own comments
 ### Screenshots
 
 ![Imgur](http://i.imgur.com/K0WDff9.png)
+------------
 ![Imgur](http://i.imgur.com/FnvrMg4.png)
+------------
 ![Imgur](http://i.imgur.com/gUvI82n.png)
 
 
