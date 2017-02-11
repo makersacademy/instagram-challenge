@@ -7,13 +7,13 @@ Weekend project - build an Instagram clone using Rails
 
 ### How to use
 
-* Clone this repo, and run `bundle install` in the project directory
+* Clone this repo, and run `bundle install` and `brew install imagemagick` in the project directory
 * Run `bin/rails s` to start the server and visit `http://localhost:3000`
 
 ### User Stories
 
 ```
-As a user,
+As a cat owner,
 so that I can showcase my cat to the world,
 I would like to create an account for him on InstaCat
 ```
@@ -93,15 +93,14 @@ I'd like to be able to click on a picture and see it on it's own page
 ```
 As a user,
 in case I accidentally leave an embarrassing comment on someone's cat picture,
-I'd like to be able to edit and delete comments
+I'd like to be able to edit and delete my own comments
 ```
 
 ### Screenshots
 
-![Imgur](http://i.imgur.com/aiFfByh.png =100x)
-![Imgur](http://i.imgur.com/JtsIKkh.png =100x)
-![Imgur](http://i.imgur.com/AfWhkqB.png =100x)
-![Imgur](http://i.imgur.com/Op1puzp.png =100x)
+![Imgur](http://i.imgur.com/K0WDff9.png)
+![Imgur](http://i.imgur.com/FnvrMg4.png)
+![Imgur](http://i.imgur.com/gUvI82n.png)
 
 
 ### Technologies used
