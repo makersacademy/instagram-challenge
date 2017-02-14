@@ -1,5 +1,9 @@
 # Instagram Challenge
 
+A simple instagram clone built over a weekend using Ruby on Rails.
+
+Users can create an account, upload photos, comment on others, and like a post.
+
 # User stories
 
 ```
@@ -28,31 +32,18 @@ So I can show my appreciation for other people's snaps
 I can like pictures
 
 ```
-
-# Task
-
-Build Instagram: Simple huh!
-
-Bonus if you can write your own set of sensible user stories!
-
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to initialize a Rails app in the current directory.
-
-Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
 # Installation
 
-To install Georgestagram (setting up your database and running tests), type the below into your command line:
+To install Georgestagram, follow these instructions:
 
-```
-$ git clone git@github.com:gweaton/instagram-challenge.git
-$ cd instagram-challenge
-$ rake db:setup
-$ rspec
-```
+ - Fork this repo
+ - Clone it to your local machine by running `$ git clone git@github.com:[USERNAME]/instagram-challenge.git`
+ - Navigate to your instagram-challenge directory
+ - Run `bundle install`
+ - Run `rake db:setup` to set up your local database
+ - Run `rspec` to run all the tests.
 
-To run Georgestagram, type the following:
+To run Georgestagram, type the following in your command line:
 ```
 $ rake db:seed
 $ bin/rails server
@@ -65,7 +56,7 @@ You can upload and delete photos, and add comments and likes to individual photo
 
   - Ruby on Rails
   - HAML
-  - ActiveRecord (for databases)
+  - ActiveRecord
   - Devise (for sign up/sign in functionality)
   - Omniauth (for login through Facebook)
   - Paperclip (for uploading photos)
@@ -75,3 +66,5 @@ You can upload and delete photos, and add comments and likes to individual photo
   - Using AJAX and Jquery to update likes in real-time.
   - CSS styling
   - Filters on photos
+  - Uploading to AWS
+  - Deploying to Heroku
