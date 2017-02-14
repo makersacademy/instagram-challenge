@@ -46,4 +46,22 @@ Instructions and Installation
 
 3. You will need to build the database on your local system. ```bin/rails db:create```
 
-4. Enter ```rspec``` to run all the feature and unit tests.
+4. Then run ```bin/rails db:migrate```
+
+5. Enter ```rspec``` to run all the feature and unit tests.
+
+
+Screenshots
+===========
+
+Signing up.
+
+![alt tag](./Screen Shot 2017-02-14 at 20.13.26.png)
+
+Signing in.
+
+![alt tag](./Screen Shot 2017-02-14 at 20.18.04.png)
+
+Viewing pictures.
+
+![alt tag](./Screen Shot 2017-02-14 at 20.15.19.png)
