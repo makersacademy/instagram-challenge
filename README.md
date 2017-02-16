@@ -115,6 +115,6 @@ I'd like to be able to edit and delete my own comments
 
 ### To do
 
-* 'Likes' work in the pictures index but not in the single picture view
+* 'Likes' works in the pictures index but not properly in the single picture view
 * Need to host images on AWS instead of saving to database
 * Deploy to Heroku
