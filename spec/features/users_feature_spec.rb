@@ -16,9 +16,7 @@ feature 'user can sign in and out' do
     end
 
     it 'should not be able to post a photo' do
-      click_link 'Post a photo'
-      expect(page).not_to have_content "Caption"
-      expect(page).to have_content "Log in"
+      expect(page).not_to have_content "Post a photo"
     end
 
     it 'should not be able to post a comment' do
