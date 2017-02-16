@@ -1,0 +1,41 @@
+<div class='content'>
+<div id='single-pic'>
+  <p class='pic-username'><%= @picture.user.username.downcase %></p>
+  <%= image_tag(@picture.image.url(:medium)) %>
+  <div id='likes-and-edit'>
+  <div id='single-pic-likes'>
+    <%= link_to '😻', picture_likes_path(@picture), class: 'likes-link' %>
+    <span class="likes_count"> <%= @picture.likes.count %> </span> <%= 'like'.pluralize(@picture.likes.count) %>
+  </div>
+  <div id='edit-delete'>
+    <% if @picture.user.id == current_user.id %>
+    <%= link_to 'edit', edit_picture_path(@picture) %>
+    <%= link_to 'delete', picture_path(@picture), method: :delete %>
+    <% end %>
+  </div>
+</div>
+  <br>
+  <p id='single-pic-caption'> <%= @picture.caption %> </p>
+    <br>
+  <br>
+  <div id='commenting'>
+    <div id='add-comment'>
+      <% if current_user %>
+        <%= link_to 'add a comment', new_picture_comment_path(@picture) %>
+      <% end %>
+    </div>
+    <br>
+    <br>
+    <div id="all-comments">
+      <% if @picture.comments.any? %>
+        <% @picture.comments.each do |comment| %>
+          <p class='each-comment'> <%= comment.user.username %> says: <%= comment.thoughts %></p>
+          <% if comment.user.id == current_user.id %>
+            <%= link_to 'delete comment', picture_comment_path(@picture, comment), method: :delete %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

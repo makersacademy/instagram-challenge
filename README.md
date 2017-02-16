@@ -1,23 +1,120 @@
-Instagram Challenge
+# InstaCat
 ===================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+### Instructions
 
-Task
------
+Weekend project - build an Instagram clone using Rails
 
-Build Instagram: Simple huh!
+### How to use
 
-Bonus if you can write your own set of sensible user stories!
+* Clone this repo, and run `bundle install` and `brew install imagemagick` in the project directory
+* Run `bin/rails s` to start the server and visit `http://localhost:3000`
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+### User Stories
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+```
+As a cat owner,
+so that I can showcase my cat to the world,
+I would like to create an account for him on InstaCat
+```
 
-Bonus if you can add filters!
+```
+As a user who also uses Facebook,
+so that I can save time,
+I'd like to be able to sign in with my Facebook account
+```
+
+```
+As a user,
+so that I can show off about my cat,
+I'd like to be able to upload a picture of him to InstaCat
+```
+
+```
+As a user,
+so that I can show off my sense of humour,
+I'd like to be able to write a caption for my cat picture
+```
+
+```
+As a user,
+in case I make mistakes when writing my captions,
+I'd like to be able to edit my own captions
+```
+
+```
+As a user,
+so that I can remove any pictures that did not receive enough likes,
+I'd like to be able to delete my pictures
+```
+
+```
+As a user,
+so that I can see my picture as well as those of other users,
+I'd like to be able to scroll through all the pictures that have been posted
+```
+
+```
+As a user,
+so that I don't have to scroll through the same photos repeatedly,
+I'd like the most recent photos to be displayed first
+```
+
+```
+As a user,
+so that I know who has posted a photo,
+I'd like to see their username displayed with their photo
+```
+
+```
+As a user,
+so that I can appreciate other peoples cats,
+I'd like to be able to 'like' their pictures and see the like count updated in real time
+```
+
+```
+As a user,
+so that I know other people appreciate my cat pictures
+I'd like to be able to see how many 'likes' my picture has received
+```
+
+```
+As a user,
+so that I can let people know their cat is cute,
+I'd like to be able to comment on a picture
+```
+
+```
+As a user,
+so that I can see the full caption and comments for a picture
+I'd like to be able to click on a picture and see it on it's own page
+```
+
+```
+As a user,
+in case I accidentally leave an embarrassing comment on someone's cat picture,
+I'd like to be able to edit and delete my own comments
+```
+
+### Screenshots
+
+![Imgur](http://i.imgur.com/K0WDff9.png)
+------------
+![Imgur](http://i.imgur.com/FnvrMg4.png)
+------------
+![Imgur](http://i.imgur.com/gUvI82n.png)
+
+
+### Technologies used
+
+* Ruby 2.3.1
+* Rails 5.0.1
+* JavaScript
+* Rspec
+* Capybara
+
+### To do
+
+* 'Likes' works in the pictures index but not properly in the single picture view
+* Need to host images on AWS instead of saving to database
+* Deploy to Heroku
