@@ -1,15 +1,17 @@
 - if @photos.any?
-  - @photos.each do |photo|
-    = link_to(image_tag(photo.image.url(:medium)), photo_path(photo), :id => 'image')
-    %h2= photo.caption
-    = link_to 'Like', photo_likes_path(photo), class: 'likes-link'
-    %span.likes_count= photo.likes.count
-    = 'like'.pluralize photo.likes.count
-    - if photo.comments.any?
-      - photo.comments.each do |comment|
-        %p #{comment.thoughts}
-    - else
-      %p No one has commented yet...
+  %ul.photo-list
+    - @photos.each do |photo|
+      %li.post
+        .photo= link_to(image_tag(photo.image.url(:medium)), photo_path(photo), :id => 'image')
+        %h2= photo.caption
+        = link_to 'Like', photo_likes_path(photo), class: 'likes-link'
+        %span.likes_count= photo.likes.count
+        = 'like'.pluralize photo.likes.count
+        - if photo.comments.any?
+          - photo.comments.each do |comment|
+            %p #{comment.thoughts}
+        - else
+          %p No one has commented yet...
 - else
   %h1 No one has posted any photos yet...
 
