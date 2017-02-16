@@ -7,11 +7,16 @@
     = csrf_meta_tags
 
   %body
+    %ul#navbar
+      - if user_signed_in?
+        %li.navlink
+          = link_to "Sign out", destroy_user_session_path, method: :delete
+      - else
+        %li.navlink
+          = link_to "Sign in", new_user_session_path
+        %li.navlink
+          = link_to "Sign up", new_user_registration_path
+        %li.navlink
+          = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
     = notice
-    - if user_signed_in?
-      = link_to "Sign out", destroy_user_session_path, method: :delete
-    - else
-      = link_to "Sign in", new_user_session_path
-      = link_to "Sign up", new_user_registration_path
-      = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
     = yield
