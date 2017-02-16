@@ -1,8 +1,10 @@
-# Instagram Challenge
+# Georgestagram
 
-A simple instagram clone built over a weekend using Ruby on Rails.
+A simple Instagram clone built over a weekend using Ruby on Rails.
 
 Users can create an account, upload photos, comment on others, and like a post.
+
+![A screenshot of the app](/screenshots/demo.png)
 
 # User stories
 
@@ -63,8 +65,7 @@ You can upload and delete photos, and add comments and likes to individual photo
 
 # Still to come
 
-  - Using AJAX and Jquery to update likes in real-time.
-  - CSS styling
+  - Further CSS styling
   - Filters on photos
   - Uploading to AWS
   - Deploying to Heroku
