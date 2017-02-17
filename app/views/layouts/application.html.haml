@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %title Georgestagram
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    %ul#navbar
+      %li.navlink#left
+        = link_to "Georgestagram", root_path
+      .right
+      - if user_signed_in?
+        %li.navlink
+          = link_to "Sign out", destroy_user_session_path, method: :delete
+        %li.navlink
+          = link_to "Post a photo", new_photo_path
+      - else
+        %li.navlink
+          = link_to "Sign in", new_user_session_path
+        %li.navlink
+          = link_to "Sign up", new_user_registration_path
+        %li.navlink
+          = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
+    = notice
+    = yield
