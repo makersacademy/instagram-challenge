@@ -1,23 +1,68 @@
-Instagram Challenge
-===================
+### Instagram Challenge
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This project is a simple clone of Instagram using Rails. I built it over 2 days.
 
-Task
------
+Screenshots
+===========
 
-Build Instagram: Simple huh!
+Signing up.
 
-Bonus if you can write your own set of sensible user stories!
+![alt tag](./Screen Shot 2017-02-14 at 20.13.26.png)
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+Signing in.
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+![alt tag](./Screen Shot 2017-02-14 at 20.18.04.png)
 
-Bonus if you can add filters!
+Viewing pictures.
+
+![alt tag](./Screen Shot 2017-02-14 at 20.15.19.png)
+
+Approach and Technologies used
+==============================
+
+* Ruby on Rails
+* Feature testing using capybara, unit testing using RSpec.
+* Postgres SQL for database.
+
+
+Instructions and Installation
+=============================
+
+1. Fork and clone this repo
+
+2. Run ```bundle``` to add all the necessary gemfiles to your system.
+
+3. You will need to build the database on your local system. ```bin/rails db:create```
+
+4. Then run ```bin/rails db:migrate```
+
+5. Enter ```rspec``` to run all the feature and unit tests.
+
+User Stories
+============
+```
+As a user
+So people can see my photos
+I want to be able to upload my photos
+
+As a user
+So I can add some context to my photos
+I want to be able to add a description to my photos
+
+As a user
+So I can follow my friends on social media
+I want to be able to log in with Facebook
+
+As a user
+So I can see another user's photos
+I want to be able to follow another users
+
+As a user
+So I can appreciate another photo
+I want to be able to like a photo
+
+As a user
+So I can give my feedback about another photo
+I want to be able to comment on a photo
+
+```
