@@ -1,4 +1,4 @@
-# Instagram Challenge
+### Instagram Challenge
 
 This project is a simple clone of Instagram using Rails. I built it over 2 days.
 
