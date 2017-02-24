@@ -1,23 +1,51 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This is a weekend project we had been given at the end of our first Ruby on Rails week.
 
-Task
+Feature
+-------
+* user sign up / in / out
+* user post pic
+* user like
+* user comment
+
+User Story
 -----
 
-Build Instagram: Simple huh!
-
-Bonus if you can write your own set of sensible user stories!
-
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+USER STORY 1  
+As a user,  
+So to create my profile,  
+I want to sign up  
+CRITERIA:  
+- fields email & password  
+- both required  
+- email is unique  
+  
+USER STORY 2  
+As a user,  
+So to access my profile,  
+I want to sign in  
+CRITERIA:  
+- fields email & password  
+  
+USER STORY 3  
+As a user,  
+So to not let strangers use my profile,  
+I want to sign out  
+  
+USER STORY 4  
+As a user,  
+So to inform world about my pleasant life,  
+I want to share a pictures  
+CRITERIA:  
+- picture must be a picture!  
+- pictures max size 640x480  
+- all users can see any user picture  
+  
+USER STORY 5  
+As a user,  
+So to encourage other users in their pleasant life,  
+I want to endorse them by clicking a Like button on their pictures  
+CRITERIA:  
+- owner and all other user can like pictures
