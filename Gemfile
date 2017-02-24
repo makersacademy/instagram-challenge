@@ -13,6 +13,8 @@ gem 'rails', '~> 5.0.1'
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -34,8 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'haml-rails'
-gem 'bootstrap', '~> 4.0.0.alpha6'
-gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'paperclip'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
