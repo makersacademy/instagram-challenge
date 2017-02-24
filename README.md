@@ -1,6 +1,24 @@
 Instagram Challenge
 ===================
 
+```
+As a user,
+So that I can use the site in my own way
+I need to be able to sign up for an account
+
+As a user,
+So that I can show my friends what I am eating
+I want to be able to post pictures to the website
+
+As a user,
+So that I can show my appreciation of a picture
+I want to be able to like others' pictures
+
+As a user,
+So that I interact with my the community
+I want to be able to comment on others' pictures
+```
+
 Instructions
 -------
 * Challenge time: one weekend
