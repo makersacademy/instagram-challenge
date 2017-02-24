@@ -9,6 +9,44 @@ Instructions
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday morning
 
+## User Stories
+
+```
+As a visitor,
+I want to be able to sign up for Instaflash,
+So I can use the services of the site
+```
+
+```
+As a visitor or a user,
+I want to be able to see all images recently uploaded to Instaflash,
+So I can look for images that interest me
+```
+
+```
+As a user,
+I want to be able to upload an image to Instaflash,
+So that I can share it with others
+```
+
+```
+As a user,
+I want to be able to give my image a name and description,
+So I can provide information about it to others
+```
+
+```
+As a user,
+I want to be able to comment on an image,
+So I can communicate with other users
+```
+
+```
+As a user,
+I want to be able to like an image,
+So I can convey my enjoyment to the user who posted it
+```
+
 Task
 -----
 
