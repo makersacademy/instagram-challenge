@@ -1,6 +1,85 @@
 Instagram Challenge
 ===================
 
+User Stories
+-----
+
+```
+As a user
+So that I can have an Instagram account
+I want to be able to sign up, sign in and out
+
+As a user
+So that I can have my personal Instagram account
+I want to be able to sign up with a unique nickname
+
+As a photographer wannabe
+So that I can share my pictures
+I want to be able to upload my pictures
+
+As a photographer wannabe
+So that I can give my pictures a context
+I want to be able to add a description to a picture
+
+As a photo-lover
+So that I can delight myself with good pictures
+I want to be able to see others' pictures on my homepage
+
+As a photo-lover
+So that people can find the pictures I am more interested in
+I want to be able to search by keywords
+
+As a photo-lover
+So that I can select who's pics I wanna see
+I want to be able to follow specific users
+
+As a photo-lover
+So that I can express my appreciation to others
+I want to be able to like others' pictures
+
+As a photographer wannabe
+So that I can see my work is appreciated
+I want to see the number of likes a picture receives
+
+As a photo-lover
+So that I can express my appreciation to others
+I want to be able to comment others' pictures
+
+As a photographer wannabe
+So that I can hear people's feedback
+I want to be able to read their comments
+```
+
+Nice To Have
+-----
+
+```
+
+As a user
+So that I can sign up/in faster
+I want to be able to login with facebook (twitter, etc.)
+
+As a photographer wannabe
+So that I can make my pictures better
+I want to be able to apply filters
+
+As a user
+So that I can communicate to others
+I want to be able to mention people by their nickname
+
+As a user
+So that I can communicate to others
+I want to be able to receive a notification when someone mentions me
+
+As a photographer wannabe
+So that people can find my picture following a specific hashtag (e.g. #AllYouCanEatMakersChallenge)
+I want to be able to add hashtags
+
+As a photo-lover
+So that I can find pictures associated to a specific hashtag (e.g. #AllYouCanEatMakersChallenge)
+I want to be able to search by hashtag
+```
+
 Instructions
 -------
 * Challenge time: one weekend
