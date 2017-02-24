@@ -39,6 +39,13 @@ So I can let others know I like their images
 I want to be able to like an image
 ```
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## <a name="Install">Installation</a>
+* To clone the repo
+```shell
+$ git clone https://github.com/adrianeyre/instagram-challenge
+$ cd instagram-challenge
+```
 
-Bonus if you can add filters!
+## <a name="Shots">Screen Shots</a>
+
+## <a name="Heroku">Live on Heroku</a>
