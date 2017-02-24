@@ -59,6 +59,9 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'rspec-collection_matchers'
+  gem 'shoulda'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 gem 'devise'
 gem 'omniauth-facebook'
