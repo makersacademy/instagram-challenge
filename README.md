@@ -23,7 +23,7 @@ I want to be able to 'like' a posted image
 So that the user gets a good feeling
 
 As a user
-I want to be able to add comments to an image
+I want to be able to add and read comments on an image
 So that we can get bantz going
 
 As an owner
@@ -37,11 +37,11 @@ So that images can be filtered on topics
 Steps to get the application up and running
 =============================================
 
-Things you may want to cover:
-
-* Rails gem 5.0.1 (ruby 2.3.0-p0) Rails Version 3.7.1
+* Rails gem 5.0.1 (ruby 2.3.0-p0)
 
 * System dependencies
+
+To download:
 
 * ```sh
 $ git clone git@github.com:[USERNAME]/instagram-challenge.git
@@ -52,7 +52,7 @@ $ rspec
 
 To run app:
 
-```sh
+* ```sh
 $ rake db:seed
 $ rails s
 $ open http://localhost:3000
