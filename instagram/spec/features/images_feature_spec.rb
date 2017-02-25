@@ -38,6 +38,7 @@ feature 'images' do
         visit '/images'
         click_link 'Add a image'
         fill_in 'Caption', with: 'kfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkf'
+        attach_file "Image", "public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg"
         click_button 'Create Image'
         expect(page).not_to have_content 'kfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkf'
         expect(page).to have_content 'error'
@@ -47,12 +48,13 @@ feature 'images' do
 
   context 'viewing images' do
 
-    let!(:test1){ Image.create(caption:'Test') }
+    let!(:test1){ Image.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg')) }
 
     scenario 'lets a user view a image' do
      visit '/images'
      click_link 'Test'
      expect(page).to have_content 'Test'
+     expect(page).to have_css("img[src*='AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg']")
      expect(current_path).to eq "/images/#{test1.id}"
     end
 
@@ -60,7 +62,7 @@ feature 'images' do
 
   context 'editing images' do
 
-    before { Image.create caption: 'Test', id: 1 }
+    before { Image.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'), id: 1) }
     scenario 'let a user edit a image' do
       visit '/images'
       click_link 'Edit Caption'
@@ -68,18 +70,20 @@ feature 'images' do
       click_button 'Update Image'
       click_link 'Test1'
       expect(page).to have_content 'Test1'
+      expect(page).to have_css("img[src*='AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg']")
       expect(current_path).to eq '/images/1'
     end
   end
 
   context 'deleting images' do
 
-    before { Image.create caption: 'Test'}
+    before { Image.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg')) }
 
     scenario 'removes a image when a user clicks a delete link' do
       visit '/images'
       click_link 'Delete'
       expect(page).not_to have_content 'Test'
+      expect(page).not_to have_css("img[src*='AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg']")
       expect(page).to have_content 'Image deleted successfully'
     end
 
