@@ -39,4 +39,4 @@ My pictures should have an option to be commented
 2- Database structure
 
 ![Instagram Database Schema]
-(https://www.dropbox.com/s/6oxryvq9urv127u/Instagram_DB_Schema.jpg?dl=0)
+(https://github.com/BasileKoko/instagram-challenge/blob/master/Instagram_DB_Schema.jpg)
