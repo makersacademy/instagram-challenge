@@ -33,4 +33,17 @@ require 'rails_helper'
         end
     end
 
+    context 'viewing posts' do
+
+      let!(:post){ Post.create(name:'Nice Picture') }
+
+    scenario 'lets a user view a post' do
+      visit '/posts'
+      click_link 'Nice Picture'
+      expect(page).to have_content 'Nice Picture'
+      expect(current_path).to eq "/posts/#{post.id}"
+    end
+
+end
+
   end
