@@ -1,12 +1,9 @@
-- if image.comments.any?
-  %ul
-  - image.comments.each do |comment|
-    %p= comment.text
-- else
-  %p No comments yet!
+%ul{id: "image_#{image.id}_comments"}
+  - if image.comments.any?
+    - image.comments.each do |comment|
+      %li= comment.text
 - if current_user
-  = form_tag(image_comments_path(image), method: 'get') do
+  = form_tag('#', method: 'get') do
     .form-group.row
-      = text_field_tag(:text, 'Enter your comment here', class: 'col-12 form-control new-comment-field')
-    .form-group.row
-      = submit_tag('Post comment', class: 'btn-primary add-new-comment')
+      = text_field_tag(:comment_text, 'Enter your comment here', class: 'col-12 form-control new-comment-field')
+      = link_to('Post comment', image_comments_path(image), class: 'btn-primary add-new-comment')

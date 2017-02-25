@@ -51,7 +51,13 @@ feature 'FEATURE: Comments' do
         expect(page).to have_selector('.add-new-comment')
       end
 
+      scenario 'can enter a new comment and see it on the screen', js: true do
+        sign_up
+        visit('/')
+        fill_in :comment_text, with: 'Test comment'
+        click_link('Post comment')
+        expect(page).to have_content 'Test comment'
+      end
     end
-
   end
 end
