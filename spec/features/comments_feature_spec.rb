@@ -7,6 +7,17 @@ feature 'FEATURE: Comments' do
   let(:image_file_jpeg) { File.new('spec/fixture/test_rabbits.jpeg') }
   let(:comment_text) { 'Those rabbits look particularly cheeky.' }
 
+  context 'no comments yet added' do
+    before do
+      test_user = create_test_user
+      test_image = test_user.images.create(title: image_title, description: image_desc, image_file: image_file_jpeg)
+    end
+    scenario 'See a no comments message' do
+      visit('/')
+      expect(page).to have_content('No comments yet')
+    end
+  end
+
   context 'viewing comments on home page' do
 
     before do
@@ -35,6 +46,13 @@ feature 'FEATURE: Comments' do
           expect(page).to have_content('PhotoN3rd')
         end
       end
+      context '"no comments yet" message' do
+        scenario 'no longer visible' do
+          visit('/')
+          expect(page).not_to have_content('No comments yet')
+        end
+      end
+
     end
   end
 
@@ -57,7 +75,7 @@ feature 'FEATURE: Comments' do
         expect(page).to have_selector('.add-new-comment')
       end
 
-      scenario 'can enter a new comment and see it on the screen, listed alongside the username', js: true do
+      scenario 'can enter a first comment and see it on the screen, listed alongside the username', js: true do
         sign_up
         visit('/')
         fill_in :comment_text, with: 'Test comment'
@@ -66,9 +84,19 @@ feature 'FEATURE: Comments' do
           expect(page).to have_content 'Test comment'
           expect(page).to have_content 'PhotoN3rd'
         end
-
       end
-
+      scenario 'On creation of first commment, "No comments yet" message is removed', js: true do
+        sign_up
+        visit('/')
+        fill_in :comment_text, with: 'Test comment'
+        find(:css, '.add-new-comment').trigger("click")
+        within("#main_container") do
+          expect(page).not_to have_content 'No comments yet'
+        end
+      end
+      xscenario 'Comment input field resets to "Type commment here" after submission', js: true do
+        
+      end
     end
   end
 end
