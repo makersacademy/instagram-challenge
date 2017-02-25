@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 feature 'post' do
-  context 'no posts have yet been created' do
+  context 'index when no posts have yet been created' do
     scenario 'should have a prompt to add a post' do
-      visit '/posts'
+      visit('/posts')
       expect(page).to have_content('No posts to display')
       expect(page).to have_link('Add a post')
     end
   end
 
-  context 'a post has been added' do
+  context 'index when a post has been added' do
     before do
       Post.create(description: 'my lovely photo')
     end
@@ -20,4 +20,17 @@ feature 'post' do
       expect(page).not_to have_content('No posts to display')
     end
   end
+
+  context 'adding a post' do
+    scenario 'requires user to fill form, then displays the post on the index page' do
+      visit('/posts')
+      click_link('Add a post')
+      fill_in 'Description', with: 'What a lovely photo'
+      click_button('Create Post')
+      expect(current_path).to eq('/posts')
+      expect(page).to have_content('What a lovely photo')
+      expect(page).not_to have_content('No posts to display')
+    end
+  end
+
 end
