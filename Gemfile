@@ -36,7 +36,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'devise'
 gem 'omniauth-facebook'
-gem 'paperclip'
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem 'aws-sdk', '< 2.0'
 
 group :test do
   gem 'rspec-rails'
