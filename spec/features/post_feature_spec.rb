@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 feature 'post' do
-  context 'index when no posts have yet been created' do
-    scenario 'should have a prompt to add a post' do
+  context 'when no posts have yet been created' do
+    scenario 'index should have a prompt to add a post' do
       visit('/posts')
       expect(page).to have_content('No posts to display')
       expect(page).to have_link('Add a post')
@@ -34,7 +34,6 @@ feature 'post' do
   end
 
   context 'a user can view a post' do
-
     let!(:post) { Post.create(description: 'my lovely photo') }
 
     scenario 'by clicking on the post' do
@@ -43,6 +42,32 @@ feature 'post' do
       expect(page).to have_content('my lovely photo')
       expect(current_path).to eq ("/posts/#{post.id}")
     end
-  end  
+  end
+
+  context 'a user can edit a post' do
+    before { Post.create(description: 'my lovely photo', id: 1)}
+
+    scenario 'by clicking the edit post link' do
+      visit('/posts')
+      click_link('Edit')
+      fill_in 'Description', with: 'my brilliant photo'
+      click_button('Update Post')
+      click_link('my brilliant photo')
+      expect(page).to have_content 'my brilliant photo'
+      expect(page).not_to have_content 'my lovely photo'
+      expect(current_path).to eq('/posts/1')
+    end
+  end
+
+  context 'a user can delete a post' do
+    before { Post.create(description: 'my lovely photo') }
+
+    scenario 'by clicking the delete post link' do
+      visit('/posts')
+      click_link('Delete')
+      expect(page).not_to have_content('my lovely photo')
+      expect(page).to have_content('No posts to display')
+    end
+  end
 
 end

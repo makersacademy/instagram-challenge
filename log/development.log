@@ -390,3 +390,105 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 59ms (Views: 54.4ms | ActiveRecord: 3.1ms)
 
 
+Started GET "/posts" for 127.0.0.1 at 2017-02-25 13:36:10 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (3.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (33.7ms)
+Completed 200 OK in 900ms (Views: 854.7ms | ActiveRecord: 17.9ms)
+
+
+Started GET "/posts/1/edit" for 127.0.0.1 at 2017-02-25 13:36:13 +0000
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (2.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/edit.html.erb within layouts/application (55.3ms)
+Completed 200 OK in 213ms (Views: 189.8ms | ActiveRecord: 6.6ms)
+
+
+Started PATCH "/posts/1" for 127.0.0.1 at 2017-02-25 13:36:20 +0000
+Processing by PostsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vnEDxd3YfSJIPTUdNrd0QVxlx5ZcUZZDVb/sBdERKIvIF8FXaDnlYha06d1tUcGz4tWt3yJ2fpMFv3bq/WGz7A==", "post"=>{"description"=>"What a super photo"}, "commit"=>"Update Post", "id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "posts" SET "description" = $1, "updated_at" = $2 WHERE "posts"."id" = $3[0m  [["description", "What a super photo"], ["updated_at", 2017-02-25 13:36:20 UTC], ["id", 1]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 19ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-02-25 13:36:21 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 69ms (Views: 65.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-02-25 13:36:34 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 56ms (Views: 51.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2017-02-25 13:36:36 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 70ms (Views: 67.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-02-25 13:42:44 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (4.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (41.5ms)
+Completed 200 OK in 772ms (Views: 729.5ms | ActiveRecord: 6.1ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2017-02-25 13:42:57 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"73VqvpyJwVg+rTIkHAMfBCI8/v+simWXTlB51RB0OlJtu9pa7su5k61Kta9wgXb8w359hyAm+SqSMjWP9AcFRw==", "post"=>{"description"=>"A fucking shitty photo of some grim old cunt"}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("description", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["description", "A fucking shitty photo of some grim old cunt"], ["created_at", 2017-02-25 13:42:57 UTC], ["updated_at", 2017-02-25 13:42:57 UTC]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 15ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-02-25 13:42:57 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 75ms (Views: 71.8ms | ActiveRecord: 2.6ms)
+
+
+Started DELETE "/posts/3" for 127.0.0.1 at 2017-02-25 13:43:03 +0000
+Processing by PostsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"fbVXvGgaa7uwS36JvHmyou75E3UN7PubMFgxMUBhJEVJGdTtCUnqRk8EgI3PafsYgaYw25roqLTqLFvAbtfrQg==", "id"=>"3"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 3]]
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 13ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-02-25 13:43:03 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 70ms (Views: 66.4ms | ActiveRecord: 2.3ms)
+
+
