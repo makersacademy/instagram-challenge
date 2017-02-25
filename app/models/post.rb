@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
 
+  has_many :comments, dependent: :destroy
+
   validates :image, presence: true
 
   has_attached_file :image, :styles => { :medium => "640x" }, :default_url => "/images/:style/missing.png"

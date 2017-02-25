@@ -2,7 +2,11 @@
   <% @posts.each do |post| %>
     <%= image_tag post.image.url(:thumb) %>
     <p><%= post.description %></p>
+    <% post.comments.each do |comment| %>
+      <%= comment.comment %>
+    <% end %>  
     <%= link_to "Delete", post_path(post), method: :delete %>
+    <%= link_to "Add a comment", new_post_comment_path(post) %>
   <% end %>
 <% else %>
   <p>There are no posts yet!</p>
