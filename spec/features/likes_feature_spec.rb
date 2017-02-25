@@ -59,10 +59,32 @@ feature 'FEATURE: Likes' do
           end
         end
       end
-
-
     end
 
+  end
 
+  context 'creating likes' do
+    before do
+      test_user = create_test_user
+      test_image = test_user.images.create(title: image_title, description: image_desc, image_file: image_file_jpeg)
+    end
+
+    context 'not signed in' do
+      scenario 'cannot select to add a like' do
+        visit('/')
+        expect(page).not_to have_selector('.add-new-like')
+      end
+    end
+
+    context 'signed in' do
+      scenario 'can click to add a new like', js: true do
+        sign_up
+        visit('/')
+        find(:css, '.add-new-like').click
+        within(".likes-container") do
+          expect(page).to have_content '1'
+        end
+      end
+    end
   end
 end

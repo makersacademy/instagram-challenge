@@ -1,2 +1,12 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+$(document).ready(function() {
+
+  $('.add-new-like').on('click', function(event){
+      event.preventDefault();
+
+      var likesCount = $(this).siblings('.likes-count');
+
+      $.post(this.href, function(response){
+        likesCount.text(response.new_likes_count);
+    })
+  })
+})
