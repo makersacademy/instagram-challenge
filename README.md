@@ -1,23 +1,71 @@
-Instagram Challenge
-===================
-
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-Build Instagram: Simple huh!
-
-Bonus if you can write your own set of sensible user stories!
-
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters!
+User stories
+============
+As a User
+I want to register/sign up
+So that I can log in without entering details each time
+
+As a signed in User
+I want to post a thumbnail-sized image
+So that I can communicate with my followers in pictures
+
+As a signed in user
+I want to add or edit an image title
+So that I can give more information   
+
+As a user browsing to the home page
+I want to see a list of uploaded thumbnails
+So that users can click through to see full-sized images
+
+As a user
+I want to be able to 'like' a posted image
+So that the user gets a good feeling
+
+As a user
+I want to be able to add comments to an image
+So that we can get bantz going
+
+As an owner
+I want the images to be hosted on S3(AWS)
+So that security and availability are managed by AWS
+
+As a user
+I want to be able to add tags
+So that images can be filtered on topics
+
+Steps to get the application up and running
+=============================================
+
+Things you may want to cover:
+
+* Rails gem 5.0.1 (ruby 2.3.0-p0) Rails Version 3.7.1
+
+* System dependencies
+
+* ```sh
+$ git clone git@github.com:[USERNAME]/instagram-challenge.git
+$ cd instagram-challenge
+$ rake db:setup
+$ rspec
+```
+
+To run app:
+
+```sh
+$ rake db:seed
+$ rails s
+$ open http://localhost:3000
+```
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
