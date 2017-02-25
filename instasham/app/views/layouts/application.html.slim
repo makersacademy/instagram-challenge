@@ -4,10 +4,25 @@ html
     title
       | Instasham
     = csrf_meta_tags
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css"
+    link rel="stylesheet" href="/lib/assets/skeleton/css/normalize.css"
+    link rel="stylesheet" href="/lib/assets/skeleton/css/skeleton.css"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     header
-      h1 
-        | Instasham
+      .topbar
+        h1
+          | Instasham
+        .notices
+          p.notice = notice
+          p.alert = alert
+        .links
+          - if user_signed_in?
+            = link_to "Logout", destroy_user_session_path, method: :destroy, class: "user-links"
+          -else
+            = link_to "Sign up", new_user_registration_path, class: "user-links"
+            = link_to "Login", new_user_session_path, class: "user-links"
+          
     = yield
