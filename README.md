@@ -112,12 +112,12 @@ type `http://localhost:3000` into your web browser
 
 ## <a name="Shots">Screen Shots</a>
 ### Main Page
-[![Screenshot](https://raw.githubusercontent.com/adrianeyre/yelp/master/images/screenshot1.png)](https://raw.githubusercontent.com/adrianeyre/yelp/master/images/screenshot1.png "Screen Shot 1")
+[![Screenshot](https://raw.githubusercontent.com/adrianeyre/instagram-challenge/master/images/screenshot1.png)](https://raw.githubusercontent.com/adrianeyre/instagram-challenge/master/images/screenshot1.png "Screen Shot 1")
 
 ### Sign up
-[![Screenshot](https://raw.githubusercontent.com/adrianeyre/yelp/master/images/screenshot2.png)](https://raw.githubusercontent.com/adrianeyre/yelp/master/images/screenshot2.png "Screen Shot 2")
+[![Screenshot](https://raw.githubusercontent.com/adrianeyre/instagram-challenge/master/images/screenshot2.png)](https://raw.githubusercontent.com/adrianeyre/instagram-challenge/master/images/screenshot2.png "Screen Shot 2")
 
 ### Sign in
-[![Screenshot](https://raw.githubusercontent.com/adrianeyre/yelp/master/images/screenshot3.png)](https://raw.githubusercontent.com/adrianeyre/yelp/master/images/screenshot3.png "Screen Shot 3")
+[![Screenshot](https://raw.githubusercontent.com/adrianeyre/instagram-challenge/master/images/screenshot3.png)](https://raw.githubusercontent.com/adrianeyre/instagram-challenge/master/images/screenshot3.png "Screen Shot 3")
 
 ## <a name="Heroku">Live on Heroku</a>
