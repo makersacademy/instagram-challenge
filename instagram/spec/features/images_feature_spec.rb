@@ -11,7 +11,7 @@ feature 'images' do
 
   context 'images have been added' do
     before do
-      Image.create(name: 'Test')
+      Image.create(caption: 'Test')
     end
 
     scenario 'display images' do
@@ -25,23 +25,50 @@ feature 'images' do
     scenario 'prompts user to fill out a form, then displays the new image' do
       visit '/images'
       click_link 'Add a image'
-      fill_in 'Name', with: 'Test'
+      fill_in 'Caption', with: 'Test'
       click_button 'Create Image'
       expect(page).to have_content 'Test'
       expect(current_path).to eq '/images'
     end
   end
 
-  context 'viewing restaurants' do
+  context 'viewing images' do
 
-  let!(:test1){ Image.create(name:'Test') }
+    let!(:test1){ Image.create(caption:'Test') }
 
-  scenario 'lets a user view a restaurant' do
-   visit '/restaurants'
-   click_link 'Test'
-   expect(page).to have_content 'Test'
-   expect(current_path).to eq "/images/#{test1.id}"
+    scenario 'lets a user view a image' do
+     visit '/images'
+     click_link 'Test'
+     expect(page).to have_content 'Test'
+     expect(current_path).to eq "/images/#{test1.id}"
+    end
+
   end
 
-end
+  context 'editing images' do
+
+    before { Image.create caption: 'Test', id: 1 }
+    scenario 'let a user edit a image' do
+      visit '/images'
+      click_link 'Edit Caption'
+      fill_in 'Caption', with: 'Test1'
+      click_button 'Update Image'
+      click_link 'Test1'
+      expect(page).to have_content 'Test1'
+      expect(current_path).to eq '/images/1'
+    end
+  end
+
+  context 'deleting images' do
+
+    before { Image.create caption: 'Test'}
+
+    scenario 'removes a image when a user clicks a delete link' do
+      visit '/images'
+      click_link 'Delete'
+      expect(page).not_to have_content 'Test'
+      expect(page).to have_content 'Image deleted successfully'
+    end
+
+  end
 end
