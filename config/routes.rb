@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :images
+  resources :images do
+    resources :comments
+  end
 
   root "images#index"
 
