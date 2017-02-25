@@ -6,7 +6,7 @@ $(document).ready(function() {
 
       $.post(this.href, { "comment_text": commentText }, function(response){
         var imageId = response.image_id;
-        var commentHTML = "<li>"+response.user_name+": "+response.new_comment_text+"</li>";
+        var commentHTML = "<li><span class=\"user-name\">"+response.user_name+": </span>"+response.new_comment_text+"</li>";
         $("#image_"+imageId+"_comments").append(commentHTML);
     })
   })
