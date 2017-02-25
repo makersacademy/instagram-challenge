@@ -7,12 +7,12 @@
          <h3><%= @post.caption %></h3>
          <p>Posted by <%= @post.user.email %> on <%= @post.created_at %></p>
          <p>
-            <%= link_to "Like", post_likes_path(@post), method: :post %>
+            <%= link_to "Like", post_likes_path(@post), method: :post, :class => "btn btn-default" %>
             <%= form_for [@post, @comment] do |f| %>
-              <%= f.text_area :content %>
+              <%= f.text_field :content %>
               <%= f.hidden_field :user_id, :value => current_user.id%>
               <%= f.hidden_field :post_id, :value => @post.id%>
-              <%= f.submit 'Enter' %>
+              <%= f.submit 'Enter', :class => "btn btn-default" %>
             <% end %>
          </p>
     </div>
