@@ -1,1 +1,13 @@
+<% if user_signed_in? %>
+  <%= link_to "Add post", new_user_post_path(current_user) %>
 
+  <% if Post.all.any? %>
+    <% Post.all.each do |post| %>
+      <h2><%= post.caption %></h2>
+      <p>Posted by <%= post.user.email %> on <%= post.created_at %></p>
+    <% end %>
+  <% else %>
+    <h1>No restaurants yet</h1>
+  <% end %>
+
+<% end %>
