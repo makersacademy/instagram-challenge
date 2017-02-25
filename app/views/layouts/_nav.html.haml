@@ -1,0 +1,17 @@
+%nav.navbar.navbar-toggleable-md.navbar-inverse.bg-inverse.py-3
+  %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  %a.navbar-brand{:href => "/"}
+    Instaflash
+  #navbarNav.collapse.navbar-collapse.justify-content-end
+    %ul.navbar-nav
+      - if user_signed_in?
+        %li.nav-item
+          = link_to 'Add New Image', new_image_path, id: 'add_new_image', class: 'nav-link btn btn-primary mx-1'
+        %li.nav-item
+          = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-link btn btn-primary mx-1'
+      - else
+        %li.nav-item
+          = link_to "Sign in", new_user_session_path, class: 'nav-link btn btn-primary mx-1'
+        %li.nav-item
+          = link_to "Sign out", new_user_registration_path, class: 'nav-link btn btn-primary mx-1'
