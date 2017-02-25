@@ -11,6 +11,7 @@ Capybara.javascript_driver = :poltergeist
 require 'database_cleaner'
 
 require 'features/helpers/image_helpers.rb'
+require 'features/helpers/user_helpers.rb'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -38,6 +39,7 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.include ImageHelpers
+  config.include UserHelpers
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
