@@ -1,6 +1,10 @@
 Instagram Challenge
 ===================
 
+Try Instapics
+-----
+Online on [Heroku](http://www.heroku.com/): https://makers-instapics.herokuapp.com
+
 User Stories
 -----
 
