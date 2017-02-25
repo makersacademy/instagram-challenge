@@ -1,0 +1,2 @@
+class Instapic < ApplicationRecord
+end

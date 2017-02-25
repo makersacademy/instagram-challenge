@@ -2,9 +2,9 @@ require 'rails_helper'
 
 feature 'User' do
   context 'A user wants to sign up on the main page' do
-    scenario 'user can sign up filling a form' do
+    xscenario 'user can sign up filling a form' do
       visit '/'
-      fill_in 'Nickname', with: 'Jenny'
+      fill_in 'Nickname', with: 'MakerJenny'
       fill_in 'email', with: 'jenny@makers.com'
       fill_in 'password', with: '12345'
       fill_in 'password confirmation', with: '12345'
