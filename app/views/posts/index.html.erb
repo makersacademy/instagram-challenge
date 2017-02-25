@@ -2,6 +2,7 @@
   <% if @posts.any? %>
     <% @posts.each do |post| %>
       <div class = "col-sm-4">
+        <%= link_to post_path(post) do %>
           <div class = "thumbnail">
             <%= image_tag post.image.url %>
           </div>
@@ -9,10 +10,8 @@
              <h3><%= post.caption %></h3>
              <p>Posted by <%= post.user.email %> on <%= post.created_at %></p>
              <p>Likes: <%= post.likes.count %>
-             <p>
-                <%= link_to "View", post_path(post) %>
-             </p>
           </div>
+          <% end %>
        </div>
     <% end %>
   <% end %>

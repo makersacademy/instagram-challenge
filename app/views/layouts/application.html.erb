@@ -21,20 +21,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Instagram</a>
+          <a class="navbar-brand" href="/">
+            <%= image_tag(root_url + "instagram-logo.jpg", size: "30x30") %> | <span class="brand">Instagram</span>
+          </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <% if user_signed_in? %>
-              <li><%= link_to "Profile", user_path(current_user) %></li>
-            <% end %>
-          </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="notice"><%= notice %></p></li>
             <li class="alert"><%= alert %></p></li>
             <% if user_signed_in? %>
+              <li><%= link_to "Profile", user_path(current_user) %></li>
               <li><%= link_to "Add post", new_user_post_path(current_user) %></li>
               <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
             <% else %>

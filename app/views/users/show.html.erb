@@ -1,6 +1,17 @@
-<h1><%= @user.email %></h1>
+<section class="user-header">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1><%= @user.email %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h3><%= pluralize @user.posts.count, 'post' %></h3>
+    </div>
+  </div>
+</section>
 
-<h3>Your latest posts:</h3>
+<div class="container">
 
 <% if user_signed_in? %>
   <% if @user.posts.any? %>
@@ -13,11 +24,10 @@
              <h3><%= post.caption %></h3>
              <p>Posted by <%= post.user.email %> on <%= post.created_at %></p>
              <p>Likes: <%= post.likes.count %>
-             <p>
-                <%= link_to "View", post_path(post) %>
-             </p>
           </div>
        </div>
     <% end %>
   <% end %>
 <% end %>
+
+</div>
