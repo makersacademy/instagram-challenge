@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'web_helper'
 
 feature 'post' do
   context 'when no posts have yet been created' do
@@ -23,6 +24,8 @@ feature 'post' do
 
   context 'a user can add a post' do
     scenario 'by filling in a form, then the post displays on the index page' do
+      create_user
+      sign_in
       visit('/posts')
       click_link('Add a post')
       fill_in 'Description', with: 'What a lovely photo'
@@ -48,6 +51,8 @@ feature 'post' do
     before { Post.create(description: 'my lovely photo', id: 1)}
 
     scenario 'by clicking the edit post link' do
+      create_user
+      sign_in
       visit('/posts')
       click_link('Edit')
       fill_in 'Description', with: 'my brilliant photo'
@@ -63,6 +68,8 @@ feature 'post' do
     before { Post.create(description: 'my lovely photo') }
 
     scenario 'by clicking the delete post link' do
+      create_user
+      sign_in
       visit('/posts')
       click_link('Delete')
       expect(page).not_to have_content('my lovely photo')

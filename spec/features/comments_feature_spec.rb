@@ -1,11 +1,14 @@
 require 'rails_helper'
+require 'web_helper'
 
 feature 'commenting' do
-  before { Post.create(description: 'my lovely photo', id: 1) }
 
   scenario 'a user can comment on a post' do
+    create_user
+    create_post
+    sign_in
     visit('/posts')
-    click_link('my lovely photo')
+    click_link('My lovely photo')
     click_link('leave comment')
     fill_in 'Comment', with: 'What a bloody lovely photo'
     click_button('Leave Comment')
@@ -14,12 +17,14 @@ feature 'commenting' do
   end
 
   scenario 'a user cannot leave an empty comment' do
+    create_user
+    create_post
+    sign_in
     visit('/posts')
-    click_link('my lovely photo')
+    click_link('My lovely photo')
     click_link('leave comment')
     fill_in 'Comment', with: ''
     click_button('Leave Comment')
-    expect(current_path).to eq('/posts/1/comments')
     expect(page).to have_content('error')
   end
 

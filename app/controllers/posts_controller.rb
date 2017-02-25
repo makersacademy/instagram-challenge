@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
 
   def index
     @posts = Post.all
@@ -17,8 +18,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
-    redirect_to('/posts')
+    @post = current_user.posts.build(post_params)
+    if @post.save
+      redirect_to posts_path
+    else
+      render 'new'
+    end
+  #   Post.create(description: post_params["description"], user_id: current_user.id)
+  #   redirect_to('/posts')
   end
 
   def update
