@@ -38,3 +38,13 @@ feature "FEATURE: User can sign in and out" do
     end
   end
 end
+
+feature 'FEATURE: Sign up' do
+  context 'validations' do
+    scenario 'can sign up with a username' do
+      sign_up(user_name: 'tt')
+      expect(page).to have_content('User name is too short (minimum is 6 characters)')
+    end
+  end
+
+end
