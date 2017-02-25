@@ -11,7 +11,7 @@ feature 'Dogs' do
 
   context 'posts have been added' do
     before do
-      Post.create(name: 'Poppy')
+      Post.create(title: 'Poppy')
     end
     scenario 'display posts' do
       visit '/posts'

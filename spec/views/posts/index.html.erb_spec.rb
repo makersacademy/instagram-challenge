@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "posts/index.html.erb", type: :view do
-  it "renders expected template" do
+pending  it "displays post details" do
+    assign(:post, Post.new(title: 'Poppy'))
     render
-  expect(rendered).to match /HTML/
+    render.should contain('Poppy')
   end
 end
