@@ -30,6 +30,17 @@ feature 'images' do
       expect(page).to have_content 'Test'
       expect(current_path).to eq '/images'
     end
+
+    context 'an invalid image' do
+      scenario 'does not let you submit a caption that is too long' do
+        visit '/images'
+        click_link 'Add a image'
+        fill_in 'Caption', with: 'kfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkf'
+        click_button 'Create Image'
+        expect(page).not_to have_content 'kfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkfkf'
+        expect(page).to have_content 'error'
+      end
+    end
   end
 
   context 'viewing images' do
