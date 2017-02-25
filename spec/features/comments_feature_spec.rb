@@ -20,14 +20,20 @@ feature 'FEATURE: Comments' do
     context 'not signed in' do
       scenario 'can see comments' do
         visit('/')
-        expect(page).to have_content(comment_text)
+        within('ul') do
+          expect(page).to have_content(comment_text)
+          expect(page).to have_content('PhotoN3rd')
+        end  
       end
     end
     context 'signed in' do
       scenario 'can see comments' do
         sign_up
         visit('/')
-        expect(page).to have_content(comment_text)
+        within('ul') do
+          expect(page).to have_content(comment_text)
+          expect(page).to have_content('PhotoN3rd')
+        end
       end
     end
   end
@@ -51,13 +57,18 @@ feature 'FEATURE: Comments' do
         expect(page).to have_selector('.add-new-comment')
       end
 
-      scenario 'can enter a new comment and see it on the screen', js: true do
+      scenario 'can enter a new comment and see it on the screen, listed alongside the username', js: true do
         sign_up
         visit('/')
         fill_in :comment_text, with: 'Test comment'
         click_link('Post comment')
-        expect(page).to have_content 'Test comment'
+        within("ul") do
+          expect(page).to have_content 'Test comment'
+          expect(page).to have_content 'PhotoN3rd'
+        end
+
       end
+
     end
   end
 end
