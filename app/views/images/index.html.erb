@@ -2,6 +2,18 @@
   <% @images.all.each do |image| %>
     <h2>Image ID: <%= image.id %></h2>
     <%= link_to "Delete", image_path(image), method: :delete %>
+    <%= link_to "Comment", new_image_comment_path(image) %><br>
+
+    <% @comments = comments_for_image(image.id) %>
+    <% if @comments.any? %>
+      <br>Comments<br>
+      <% @comments.each do |comment| %>
+        <li>
+          Comment: <%= comment.comments %>
+        </li>
+      <% end %>
+    <% end %>
+
   <% end %>
 <% else %>
   <h1>No images yet</h1>
