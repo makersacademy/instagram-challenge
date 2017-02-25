@@ -1,26 +1,31 @@
 <% if @images.all.any? %>
   <% @images.all.each do |image| %>
-    <h2>Image ID: <%= image.id %></h2>
+    <div class="row">
+      <div class="center-block" style="width:650px;background-color:#ccc;">
+        <% @user = image_username(image.user_id) %>
+        
+        <% if image.image.url != "" %>
+          <center>
+            <%=link_to image_tag(image.image.url(:original)), image.image.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+          </center>
+        <% end %>
 
-    <% if image.image.url != "" %>
-        <h2><%=link_to image_tag(image.image.url(:original)), image.image.url(:original), :popup=>['original_image', 'height=700,width=900'] %></h2>
-    <% end %>
+        <% if user_signed_in? %><%= link_to "Like", image_likes_path(image), class: 'likes-link' %> -<%end%>
+        <span class="likes_count"> <%= image.likes.count %> </span> <%= 'like'.pluralize(image.likes.count) %><br>
 
-    <% if user_signed_in? %><%= link_to "Like", image_likes_path(image), class: 'likes-link' %> -<%end%>
-    <span class="likes_count"> <%= image.likes.count %> </span> <%= 'like'.pluralize(image.likes.count) %><br>
-
-    <%= link_to "Delete", image_path(image), method: :delete %>
-    <%= link_to "Comment", new_image_comment_path(image) %><br>
-    <% @comments = comments_for_image(image.id) %>
-    <% if @comments.any? %>
-      <br>Comments<br>
-      <% @comments.each do |comment| %>
-        <li>
-          <%= comment.comments %>
-        </li>
-      <% end %>
-    <% end %>
-
+        <%= link_to "Delete", image_path(image), method: :delete %>
+        <%= link_to "Comment", new_image_comment_path(image) %><br>
+        <% @comments = comments_for_image(image.id) %>
+        <% if @comments.any? %>
+          <br>Comments<br>
+          <% @comments.each do |comment| %>
+            <li>
+              <%= comment.comments %>
+            </li>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
   <% end %>
 <% else %>
   <h1>No images yet</h1>

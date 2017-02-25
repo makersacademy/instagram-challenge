@@ -14,8 +14,9 @@ feature 'images' do
     end
 
     scenario 'prompts user to fill out a form, then displays the new image' do
-      visit '/'
+      visit '/images'
       click_link 'Add an image'
+      attach_file('image_image', "public/img/original/missing.png")
       click_button 'Create Image'
       expect(current_path).to eq '/images'
     end

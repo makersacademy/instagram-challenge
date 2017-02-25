@@ -1,5 +1,8 @@
 def create_new_image()
   Image.create()
+  # visit '/images'
+  # click_link 'Add an image'
+  # click_button 'Create Image'
 end
 
 def sign_up(email='test@example.com', username="test",

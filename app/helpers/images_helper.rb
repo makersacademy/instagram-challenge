@@ -4,4 +4,7 @@ module ImagesHelper
     Comment.where(:image_id=>id)
   end
 
+  def image_username(id)
+    p User.where(:id=>id)
+  end
 end

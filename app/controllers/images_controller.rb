@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
 
   def index
-    @images = Image.all
+    @images = Image.order('id DESC').all
   end
 
   def new
@@ -26,7 +26,7 @@ class ImagesController < ApplicationController
   private
 
   def image_params
-    params.permit(:image)
-    # params.require(:image).permit(:image)
+    # params.permit(:image)
+    params.require(:image).permit(:image)
   end
 end
