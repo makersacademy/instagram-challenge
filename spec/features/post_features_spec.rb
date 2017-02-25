@@ -12,4 +12,18 @@ feature 'posts' do
       expect(page).to have_content 'There are no posts yet!'
     end
   end
+
+  context 'posts have been added' do
+    before do
+      create_post
+    end
+
+    scenario 'displaying posts' do
+      visit '/posts'
+      expect(page).to have_content 'I love summer'
+      expect(page).not_to have_content 'There are no posts yet!'
+    end
+  end
+
+
 end
