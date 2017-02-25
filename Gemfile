@@ -63,6 +63,7 @@ group :development, :test do
   gem "paperclip", '~> 5.0'
   gem 'aws-sdk', '~> 2.0'
   gem 'shoulda'
+  gem 'factory_girl_rails'
 end
 
 group :development do

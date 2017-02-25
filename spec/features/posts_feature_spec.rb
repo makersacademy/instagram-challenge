@@ -12,6 +12,10 @@ feature 'Posts' do
       expect(page).to have_link 'Add a post'
     end
     
-    
+    scenario 'prompts user to fill out a form, then displays the new post' do
+      create_post
+      expect(page).to have_css("img[src*='google-test-framework.png']")
+      expect(current_path).to eq "/posts"
+    end
   end
 end

@@ -1,16 +1,18 @@
 class PictureUploader < CarrierWave::Uploader::Base
 
-  include Cloudinary::CarrierWave
+  include Cloudinary::CarrierWave unless Rails.env.test?
 
   process :convert => 'png'
   process :tags => ['post_picture']
   
-  version :standard do
-    process :resize_to_fill => [100, 150, :north]
-  end
+  unless Rails.env.test?
   
-  version :thumbnail do
-    resize_to_fit(50, 50)
+    version :standard do
+      process :resize_to_fill => [100, 150, :north]
+    end
+    
+    version :thumbnail do
+      resize_to_fit(50, 50)
+    end
   end
-
 end
