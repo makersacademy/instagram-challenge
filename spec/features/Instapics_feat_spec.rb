@@ -5,7 +5,7 @@ feature 'Instapics' do
     scenario 'pictures can be uploaded and shared with description filling up a form' do
       visit '/instapics'
       click_button 'Share Pic!'
-      # page.attach_file('image', Rails.root + 'app/assets/images/7-hull.jpg')
+      page.attach_file('instapic_image', Rails.root + 'app/assets/images/brunch.png')
       fill_in 'Description', with: 'Brunch for dinner!'
       click_button 'Share now'
       expect(current_path).to eq '/instapics'

@@ -16,7 +16,7 @@ class InstapicsController < ApplicationController
 private
 
   def instapic_params
-    params.require(:instapic).permit(:description)
+    params.require(:instapic).permit(:description, :image)
   end
 
 end
