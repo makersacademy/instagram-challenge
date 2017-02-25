@@ -3050,3 +3050,90 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 98ms (Views: 85.9ms | ActiveRecord: 10.1ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-02-25 20:43:16 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (3.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (3.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 646ms (Views: 627.8ms | ActiveRecord: 8.8ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-02-25 20:43:19 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"QNpL/zCObHOVynvCF+CSZnIiBNHhk8d4qsjSL/XQCi362K2/lFnsY+PCVy+DbLzumhnTK5IqjOuwupQCxV7K9w=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 32ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-25 20:43:19 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (43.7ms)
+Completed 200 OK in 111ms (Views: 109.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-02-25 20:43:20 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (5.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 75ms (Views: 73.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-02-25 20:43:27 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FcL4nVrnS7mjT6R3dwRB1vmfm4SaTshAbQiBlts1czzmj5/SHOMdCOQTbK2vQ7F+1vVjOoRfnw6sncejvevWWg==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (4.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (11.0ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", 2017-02-25 20:43:27 UTC], ["last_sign_in_at", 2017-02-25 19:46:54 UTC], ["sign_in_count", 4], ["updated_at", 2017-02-25 20:43:27 UTC], ["id", 3]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 391ms (ActiveRecord: 18.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-25 20:43:27 +0000
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 84ms (Views: 81.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-02-25 20:43:30 +0000
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 163ms (Views: 155.3ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2017-02-25 20:43:36 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hjJoZkRlrkMfv9JCuV1AwDEnnlIh847GL0PoDdRGxb2NZax6EMO8zgyeBEoufSAx5JI4MvZjFIi9YGqgxu6aqA==", "post"=>{"description"=>"Buzzing photo"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "posts" ("description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "Buzzing photo"], ["created_at", 2017-02-25 20:43:36 UTC], ["updated_at", 2017-02-25 20:43:36 UTC], ["user_id", 3]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 50ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-02-25 20:43:36 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (16.0ms)
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Completed 200 OK in 92ms (Views: 84.9ms | ActiveRecord: 6.2ms)
+
+

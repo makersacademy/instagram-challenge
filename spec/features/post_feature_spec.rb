@@ -11,13 +11,13 @@ feature 'post' do
   end
 
   context 'when a post has been added' do
-    before do
-      Post.create(description: 'my lovely photo')
-    end
 
     scenario 'should display the post in the index' do
+      create_user
+      create_post
+      sign_in
       visit '/posts'
-      expect(page).to have_content('my lovely photo')
+      expect(page).to have_content('My lovely photo')
       expect(page).not_to have_content('No posts to display')
     end
   end
@@ -37,21 +37,23 @@ feature 'post' do
   end
 
   context 'a user can view a post' do
-    let!(:post) { Post.create(description: 'my lovely photo') }
 
     scenario 'by clicking on the post' do
+      create_user
+      create_post
+      sign_in
       visit('/posts')
-      click_link('my lovely photo')
-      expect(page).to have_content('my lovely photo')
-      expect(current_path).to eq ("/posts/#{post.id}")
+      click_link('My lovely photo')
+      expect(page).to have_content('My lovely photo')
+      expect(current_path).to eq ("/posts/1")
     end
   end
 
   context 'a user can edit a post' do
-    before { Post.create(description: 'my lovely photo', id: 1)}
 
     scenario 'by clicking the edit post link' do
       create_user
+      create_post
       sign_in
       visit('/posts')
       click_link('Edit')
@@ -59,16 +61,16 @@ feature 'post' do
       click_button('Update Post')
       click_link('my brilliant photo')
       expect(page).to have_content 'my brilliant photo'
-      expect(page).not_to have_content 'my lovely photo'
+      expect(page).not_to have_content 'My lovely photo'
       expect(current_path).to eq('/posts/1')
     end
   end
 
   context 'a user can delete a post' do
-    before { Post.create(description: 'my lovely photo') }
 
     scenario 'by clicking the delete post link' do
       create_user
+      create_post
       sign_in
       visit('/posts')
       click_link('Delete')
