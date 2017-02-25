@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'User' do
   context 'can sign up on the main page' do
-    scenario 'user can sign up filling a form' do
+    scenario 'can sign up filling a form' do
       visit '/'
       click_button 'Join Instapic!'
       # fill_in 'nickname', with: 'MakerJenny'

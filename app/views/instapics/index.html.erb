@@ -1,8 +1,10 @@
+<%= button_to "Share Pic!", new_instapic_path, :method => :get %>
 
 <% if @instapics.all.any? %>
   <% @instapics.all.each do |pic| %>
-    <%= image_tag pic.image.url(:medium) %>
-    <h4><%= pic.description %></h4>
+    <%= (@users.find(pic.user_id)).email %><br />
+    <%= image_tag pic.image.url(:medium) %><br />
+    <p><%= pic.description %></p>
   <% end %>
 <% else %>
   <h2> No pics here! Why don't you share something?</h2>

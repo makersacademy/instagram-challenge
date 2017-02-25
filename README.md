@@ -9,7 +9,7 @@ User Stories
 -----
 
 ```
-As a user
+As a user | DONE
 So that I can have an Instagram account
 I want to be able to sign up, sign in and out
 
@@ -17,15 +17,19 @@ As a user
 So that I can have my personal Instagram account
 I want to be able to sign up with a unique nickname
 
-As a photographer wannabe
+As a photographer wannabe | DONE
 So that I can share my pictures
 I want to be able to upload my pictures
 
-As a photographer wannabe
+As a photographer wannabe | DONE
 So that I can give my pictures a context
 I want to be able to add a description to a picture
 
-As a photo-lover
+As a photographer wannabe
+So that people knows I am the artist behind my pics
+I want to see my nickname on top of my picture
+
+As a photo-lover | DONE
 So that I can delight myself with good pictures
 I want to be able to see others' pictures on my homepage
 
@@ -58,6 +62,10 @@ Nice To Have
 -----
 
 ```
+As a user
+So that I can see more recent pictures first
+I want to be see the latest picture always on top of my feed
+
 As a photographer wannabe
 So that I can delete pics I regret sharing
 I want to be able to delete pics

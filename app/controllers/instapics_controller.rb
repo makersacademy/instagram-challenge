@@ -2,6 +2,7 @@ class InstapicsController < ApplicationController
 
   def index
     @instapics = Instapic.all
+    @users = User.all
   end
 
   def new
@@ -9,7 +10,7 @@ class InstapicsController < ApplicationController
   end
 
   def create
-    @instapic = Instapic.create(instapic_params)
+    @instapic = current_user.instapics.create(instapic_params)
     redirect_to instapics_path
   end
 
