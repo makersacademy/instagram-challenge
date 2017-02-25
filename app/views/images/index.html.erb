@@ -19,9 +19,12 @@
           <span class="glyphicon glyphicon-heart-empty"></span>
           <% if user_signed_in? %><%= link_to "Like", image_likes_path(image), class: 'likes-link' %> -<%end%>
           <span class="likes_count"> <%= image.likes.count %> </span> <%= 'like'.pluralize(image.likes.count) %><br>
-
-          <%= link_to "Delete", image_path(image), method: :delete %> |
-          <%= link_to "Comment", new_image_comment_path(image) %><br>
+          <% if user_signed_in? %>
+            <% if current_user.id == image.user_id %>
+              <%= link_to "Delete", image_path(image), method: :delete %> |
+            <% end %>
+            <%= link_to "Comment", new_image_comment_path(image) %><br>
+          <% end %>
         </center>
 
         <% @comments = comments_for_image(image.id) %>
