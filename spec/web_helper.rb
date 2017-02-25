@@ -10,3 +10,8 @@ def sign_up(email='test@example.com', password='testtest', cpassword='testtest')
   fill_in('Password confirmation', with: cpassword)
   click_button('Sign up')
 end
+
+def like_image()
+  visit '/images'
+  click_link 'Like'
+end
