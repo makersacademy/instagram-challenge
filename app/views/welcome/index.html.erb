@@ -1,14 +1,23 @@
 <% if user_signed_in? %>
   <%= link_to "Add post", new_user_post_path(current_user) %>
-
+  <hr>
   <% if Post.all.any? %>
     <% Post.all.each do |post| %>
-      <%= image_tag post.image.url(:thumb) %>
-      <h2><%= post.caption %></h2>
-      <p>Posted by <%= post.user.email %> on <%= post.created_at %></p>
+      <div class = "col-sm-4">
+          <div class = "thumbnail">
+            <%= image_tag post.image.url %>
+          </div>
+          <div class = "caption">
+             <h3><%= post.caption %></h3>
+             <p>Posted by <%= post.user.email %> on <%= post.created_at %></p>
+             <p>
+                <a href = "#" class = "btn btn-primary" role = "button">Like</a>
+                <a href = "#" class = "btn btn-default" role = "button">Delete</a>
+             </p>
+
+          </div>
+       </div>
     <% end %>
-  <% else %>
-    <h1>No restaurants yet</h1>
   <% end %>
 
 <% end %>
