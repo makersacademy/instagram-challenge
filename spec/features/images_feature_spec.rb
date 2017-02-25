@@ -29,4 +29,21 @@ feature 'FEATURE: Images' do
     end
   end
 
+  context 'creating images' do
+
+    scenario 'can access a create image form from the home page' do
+      visit('/')
+      click_link('add_new_image')
+      expect(current_path).to eq '/images/new'
+    end
+
+    scenario 'can submit a new image' do
+      visit('/')
+      submit_test_image
+      image_element = find('img')
+      expect(image_element['src']).to include('test_rabbits')
+    end
+
+  end
+
 end
