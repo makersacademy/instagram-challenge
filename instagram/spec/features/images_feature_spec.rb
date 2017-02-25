@@ -26,9 +26,22 @@ feature 'images' do
       visit '/images'
       click_link 'Add a image'
       fill_in 'Name', with: 'Test'
-      click_button 'Upload Image'
+      click_button 'Create Image'
       expect(page).to have_content 'Test'
       expect(current_path).to eq '/images'
     end
   end
+
+  context 'viewing restaurants' do
+
+  let!(:test1){ Image.create(name:'Test') }
+
+  scenario 'lets a user view a restaurant' do
+   visit '/restaurants'
+   click_link 'Test'
+   expect(page).to have_content 'Test'
+   expect(current_path).to eq "/images/#{test1.id}"
+  end
+
+end
 end
