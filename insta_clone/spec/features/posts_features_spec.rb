@@ -22,4 +22,15 @@ require 'rails_helper'
         end
     end
 
+    context 'creating posts' do
+        scenario 'prompts user to fill out a form, then displays the new post' do
+            visit '/posts'
+            click_link 'Add a post'
+            fill_in 'Name', with: 'Nice Picture'
+            click_button 'Create Post'
+            expect(page).to have_content 'Nice Picture'
+            expect(current_path).to eq '/posts'
+        end
+    end
+
   end
