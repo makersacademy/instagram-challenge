@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   
-  resources :posts
+  resources :posts do
+    member do
+      patch :like_post
+    end
+  end
   
   get 'posts' => 'posts#index'
   get '/' => 'posts#index'

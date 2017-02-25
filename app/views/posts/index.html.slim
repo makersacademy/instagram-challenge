@@ -1,8 +1,16 @@
 - if @posts.any?
   - @posts.each do |post|
     article.posts
-      .post-picture
-        img src="#{post.picture}"
+      - if post.picture?
+        .post-picture
+          img src="#{post.picture}"
+        .like
+          = pluralize(post.likes, "Like", "Likes")
+          - @post = post
+          = form_for @post, url: like_post_post_path(@post.id), method: :patch do |f|
+            = f.hidden_field :likes
+            = f.hidden_field :id
+            = f.submit "Like"
 - else
   h2 No posts yet :(...
 - if user_signed_in?

@@ -25,7 +25,13 @@ class PostsController < ApplicationController
     end
   end
   
+  def like_post
+    @post = Post.find(params[:id])
+    @post.increment!(:likes)
+    redirect_to '/posts'
+  end
+  
   def post_params
-    params.require(:post).permit(:picture)
+    params.require(:post).permit(:picture, :picture_cache)
   end
 end
