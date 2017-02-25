@@ -1,7 +1,22 @@
-- if Post.all.any?
-  - Post.all.each do |post|
-    h2 = post.caption
+- if @post.any?
+  - @post.each do |post|
+    article
+      .image
+      .caption = post.caption
+      .comments
+        - if post.comments.count == 0
+          | No comments yet...
+        - else
+          ul
+            - post.comments.each do |comment|
+              li 
+                = comment.content
+      - if user_signed_in?
+        .new-comment
+          = form_for [post, @comment] do |f|
+            = f.text_field :content, placeholder: "Add a comment"
+            = f.submit
 - else
   h2 No posts yet!
-br
-= link_to 'Add a post', new_post_path, class: "links-new-post"
+- if user_signed_in?
+  = link_to 'Add a post', new_post_path, class: "links-new-post"

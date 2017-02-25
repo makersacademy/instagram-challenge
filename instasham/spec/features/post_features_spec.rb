@@ -1,6 +1,7 @@
 feature 'Post' do
   context 'no posts have been added' do
-    scenario 'should display a prompt to add a post' do
+    scenario 'should display a prompt to add a post when logged in' do
+      sign_up
       visit '/posts'
       expect(page).to have_content 'No posts yet'
       expect(page).to have_link 'Add a post'
@@ -8,22 +9,25 @@ feature 'Post' do
   end
   context 'posts have been added' do
     before do
-      Post.create(caption: 'My new sneeks!')
+      sign_up
+      create_post
     end
 
     scenario 'display posts' do
       visit '/posts'
-      expect(page).to have_content('My new sneeks!')
+      expect(page).to have_content('Love my new trainers!')
       expect(page).not_to have_content('No posts yet')
     end
   end
   context 'creating posts' do
+    scenario 'user cannot post if they are not signed in' do
+      visit '/'
+      expect(page).not_to have_link 'Add a post'
+    end
     scenario 'prompts user to fill out a form, then displays the new post' do
-      visit '/posts'
-      click_link 'Add a post'
-      fill_in 'Caption', with: 'My new sneeks!'
-      click_button 'Create Post'
-      expect(page).to have_content 'My new sneeks!'
+      sign_up
+      create_post
+      expect(page).to have_content 'Love my new trainers!'
       expect(current_path).to eq '/posts'
     end
   end
