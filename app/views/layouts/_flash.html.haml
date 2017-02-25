@@ -1,0 +1,6 @@
+- flash.each do |key, value|
+  - if value.respond_to?(:each)
+    - value.each do |message|
+      .alert{ class: "alert-#{flash_class(key)}", role: "alert" }= message
+  - else
+    .alert{ class: "alert-#{flash_class(key)}", role: "alert" }= value
