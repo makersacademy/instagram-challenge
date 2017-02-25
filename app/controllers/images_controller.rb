@@ -11,7 +11,7 @@ class ImagesController < ApplicationController
 
   def create
     # @image = Image.create(image_params)
-    @image = Image.create()
+    @image = Image.create(user_id: current_user.id)
     redirect_to '/images'
   end
 
