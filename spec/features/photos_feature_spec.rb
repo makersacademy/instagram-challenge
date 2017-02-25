@@ -14,7 +14,7 @@ feature "photos" do
       visit photos_path
       click_link "Add Photo"
       attach_file :photo_image, "./spec/images/coffee.jpg"
-      fill_in "Description", with: "Morning coffee"
+      fill_in "Caption", with: "Morning coffee"
       click_button "Post"
 
       expect(current_path).to eq photos_path
