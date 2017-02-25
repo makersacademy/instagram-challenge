@@ -1,1 +1,11 @@
 <p><%= @post.description %></p>
+<%= link_to "leave comment", new_post_comment_path(@post) %>
+
+<h3>Comments</h3>
+<% if @post.comments.any? %>
+  <% @post.comments.each do |comment| %>
+    <ul>
+      <li><%= comment.body %></li>
+    </ul>
+  <% end %>
+<% end %>
