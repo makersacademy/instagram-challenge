@@ -2,6 +2,7 @@ class Image < ApplicationRecord
 
   belongs_to :user
   has_many :comments, -> { extending WithUserAssociationExtension }, dependent: :destroy
+  has_many :likes, -> { extending WithUserAssociationExtension }, dependent: :destroy
 
   validates :title, length: { minimum: 3 }
   validates :description, presence: true

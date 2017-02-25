@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :images, shallow: true do
     resources :comments
+    resources :likes
   end
 
   root "images#index"

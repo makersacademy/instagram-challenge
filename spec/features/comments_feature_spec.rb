@@ -23,7 +23,7 @@ feature 'FEATURE: Comments' do
         within('ul') do
           expect(page).to have_content(comment_text)
           expect(page).to have_content('PhotoN3rd')
-        end  
+        end
       end
     end
     context 'signed in' do
