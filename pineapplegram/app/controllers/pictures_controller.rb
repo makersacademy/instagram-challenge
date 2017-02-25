@@ -5,7 +5,7 @@ class PicturesController < ApplicationController
   end
 
   def show
-    @pictures = Picture.all
+    @pictures = Picture.find(params[:id])
   end
 
   def new
@@ -20,7 +20,7 @@ class PicturesController < ApplicationController
   private
 
   def picture_params
-    params.require(:picture).permit([:description, :image])
+    params.require(:picture).permit([:description, :image, :pineapples])
   end
 
 end

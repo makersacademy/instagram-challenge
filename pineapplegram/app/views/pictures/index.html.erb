@@ -1,7 +1,10 @@
 <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
+    <%= image_tag picture.image.url(:medium) %>
+    <%= link_to picture.description, picture_path(picture) %>
     <h2><%= picture.description %></h2>
-    <%= image_tag picture.image.url(:thumb) %>
+    <h2> Pinapples: <%= picture.pineapples %></h2>
+    <button>Like<% picture.pineapples += 1 %></button>
     <% end %>
   <% else %>
     <h1>no posts yet</h1>
