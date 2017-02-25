@@ -18,10 +18,6 @@ As a visitor
 So that I can use the services other than seeing all recently uploaded images,
 I want to be able to sign up for the Coffeegram account
 
-As a user
-So that I can have my personal Instagram account
-I want to be able to sign up with a unique nickname
-
 As a coffee lover
 So that I can share my favourite coffee places with others
 I want to be able to upload my pictures
@@ -31,7 +27,7 @@ So that I can share my feelings about each place,
 I want to be able to add a description to a picture
 
 As a coffee lover
-So that I can show my my enjoyment to the user who posted it
+So that I can show my enjoyment to the user who posted it
 I want to be able to like a picture
 
 As a coffee lover
@@ -49,8 +45,8 @@ Further advancements
 
 ```
 
-As a user
-So that I can sign up faster
+As a time-pressed user
+So that I can avoid typing up my password yet again
 I want to be able to login with Facebook account
 
 As a coffee and beauty lover
@@ -58,7 +54,7 @@ So that other feel amazing while visiting my website
 I want to be able to style it beautifully
 
 As a coffee lover
-So that I can see most popular places,
+So that I can see most popular places
 I want to see the number of likes each picture receives
 ```
 
