@@ -11,7 +11,8 @@ feature 'posts' do
 
   context 'posts have been added' do
     before do
-      Post.create(description: 'Holiday')
+      @user = User.create(email: 'ben@ben.com', password: 'ben123')
+      @posts = Post.create(description: 'Holiday', user: @user)
     end
 
     scenario 'display posts' do
@@ -23,6 +24,7 @@ feature 'posts' do
 
   context 'creating posts' do
     scenario 'prompts user to fill out a form, then displays the new post' do
+      signup_and_in
       visit '/posts'
       click_link 'Add a post'
       fill_in 'Description', with: 'Holiday'
@@ -33,20 +35,29 @@ feature 'posts' do
   end
 
   context 'viewing posts' do
-    let!(:holiday){ Post.create(description: 'Holiday') }
+    before do
+      @user = User.create(email: 'ben@ben.com', password: 'ben123')
+      @posts = Post.create(description: 'Holiday', user: @user)
+    end
 
     scenario 'lets a user view a post' do
       visit '/posts'
       click_link 'Holiday'
       expect(page).to have_content 'Holiday'
-      expect(current_path).to eq "/posts/#{holiday.id}"
+      expect(current_path).to eq "/posts/#{@posts.id}"
     end
   end
 
   context 'deleting posts' do
-    before { Post.create description: 'Holiday' }
+    before do
+      @user = User.create(email: 'test@example.com', password: 'test123')
+      @post = Post.create(description: 'Holiday', user: @user)
+      sign_in
+    end
 
     scenario 'removes a post when a user clicks a delete link' do
+      p @user
+      p @post
       visit '/posts'
       click_link 'Delete Holiday'
       expect(page).not_to have_content 'Holiday'

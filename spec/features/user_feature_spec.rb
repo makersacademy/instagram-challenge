@@ -15,18 +15,17 @@ feature 'User can sign in and out' do
   end
 
   context "user signed in on the homepage" do
-    # before do
-    #   signup_and_in
-    # end
+    before do
+      signup_and_in
+    end
 
     it "should see 'sign out' link" do
-      signup_and_in
-      visit('/posts')
+      visit('/')
       expect(page).to have_link('Sign out')
     end
 
     it "should not see a 'sign in' link and a 'sign up' link" do
-      signup_and_in
+      visit('/')
       expect(page).not_to have_link('Sign in')
       expect(page).not_to have_link('Sign up')
     end
