@@ -10,7 +10,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to '/posts'
+    if @post.save
+      redirect_to '/posts'
+    else
+      flash[:alert] = 'You need an image to post'
+      render :new
+    end
   end
 
   def destroy

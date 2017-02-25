@@ -17,18 +17,21 @@ feature 'posts' do
     end
   end
 
-  context 'posts have been added' do
-    before do
+  context 'creating posts' do
+    scenario 'are then displayed on /posts' do
       create_post
-    end
-
-    scenario 'displaying posts' do
       expect(page).to have_css 'img'
       expect(page).to have_content 'I love the sun'
       expect(page).not_to have_content 'There are no posts yet!'
       expect(current_path).to eq '/posts'
     end
+
+    scenario 'post cannot be created without an image' do
+      create_post_without_image
+      expect(page).to have_content 'You need an image to post'
+    end
   end
+
 
   context 'posts have been deleted' do
     before do
