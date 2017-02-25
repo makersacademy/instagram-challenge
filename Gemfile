@@ -36,13 +36,14 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'paperclip'
 
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda'
   gem 'poltergeist'
-  gem 'database_cleaner'  
+  gem 'database_cleaner'
 end
 
 group :development, :test do
