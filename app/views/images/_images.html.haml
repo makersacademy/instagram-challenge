@@ -1,6 +1,10 @@
 - @images.each do |image|
-  %h4= image.title
-  %p= image.description
-  = image_tag image.image_file.url(:medium)
-  = render partial: 'comments', locals: { image: image }
-  = render partial: 'likes', locals: { image: image }
+  .row.justify-content-center
+    .col-12.col-md-6
+      %h5= image.title
+      = image_tag image.image_file.url(:large), class: 'img-fluid'
+      %p= image.description
+    .col-12.col-md-2
+      = render partial: 'comments', locals: { image: image }
+    .col-12.col-md-8
+      = render partial: 'likes', locals: { image: image }

@@ -20,7 +20,7 @@ feature 'FEATURE: Comments' do
     context 'not signed in' do
       scenario 'can see comments' do
         visit('/')
-        within('ul') do
+        within("#main_container") do
           expect(page).to have_content(comment_text)
           expect(page).to have_content('PhotoN3rd')
         end
@@ -30,7 +30,7 @@ feature 'FEATURE: Comments' do
       scenario 'can see comments' do
         sign_up
         visit('/')
-        within('ul') do
+        within("#main_container") do
           expect(page).to have_content(comment_text)
           expect(page).to have_content('PhotoN3rd')
         end
@@ -61,8 +61,8 @@ feature 'FEATURE: Comments' do
         sign_up
         visit('/')
         fill_in :comment_text, with: 'Test comment'
-        click_link('Post comment')
-        within("ul") do
+        find(:css, '.add-new-comment').trigger("click")
+        within("#main_container") do
           expect(page).to have_content 'Test comment'
           expect(page).to have_content 'PhotoN3rd'
         end
