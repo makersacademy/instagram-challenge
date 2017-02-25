@@ -2,6 +2,10 @@
   <% @images.all.each do |image| %>
     <h2>Image ID: <%= image.id %></h2>
 
+    <% if image.image.url != "" %>
+        <h2><%=link_to image_tag(image.image.url(:original)), image.image.url(:original), :popup=>['original_image', 'height=700,width=900'] %></h2>
+    <% end %>
+
     <% if user_signed_in? %><%= link_to "Like", image_likes_path(image), class: 'likes-link' %> -<%end%>
     <span class="likes_count"> <%= image.likes.count %> </span> <%= 'like'.pluralize(image.likes.count) %><br>
 
