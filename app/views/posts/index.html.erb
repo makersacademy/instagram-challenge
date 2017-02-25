@@ -10,6 +10,11 @@
              <h3><%= post.caption %></h3>
              <p>Posted by <%= post.user.email %> on <%= post.created_at %></p>
              <p>Likes: <%= post.likes.count %>
+            <% if post.comments.any? %>
+              <% post.comments.each do |comment| %>
+                <p><b><%= comment.user.email %></b> <%= comment.content %>
+              <% end %>
+            <% end %>
           </div>
           <% end %>
        </div>

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts do
-    resources :likes
+    resources :likes, :comments
   end
 
   root to: "posts#index"
