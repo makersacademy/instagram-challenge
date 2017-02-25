@@ -13,4 +13,14 @@ feature 'commenting' do
     expect(page).to have_content('What a bloody lovely photo')
   end
 
+  scenario 'a user cannot leave an empty comment' do
+    visit('/posts')
+    click_link('my lovely photo')
+    click_link('leave comment')
+    fill_in 'Comment', with: ''
+    click_button('Leave Comment')
+    expect(current_path).to eq('/posts/1/comments')
+    expect(page).to have_content('error')
+  end
+
 end
