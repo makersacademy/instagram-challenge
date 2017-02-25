@@ -1842,3 +1842,159 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 115ms (Views: 109.1ms | ActiveRecord: 5.4ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8531350794571747170);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddOmniauthToUsers (20170225171636)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mALTER TABLE "users" ADD "provider" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "uid" character varying[0m
+  [1m[35mSQL (4.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170225171636"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (4.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8531350794571747170)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 127.0.0.1 at 2017-02-25 17:28:53 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (3.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (36.8ms)
+Completed 200 OK in 700ms (Views: 684.1ms | ActiveRecord: 3.7ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-02-25 17:28:55 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"60iL3Vli9Ltwrwle0DHhLWj7QAevG3Y1s/5nbiEbwnisvgI8eGY/egEUL6Gb2DeKOQTOdEoAnyEsdQID09MT9w=="}
+  [1m[36mUser Load (7.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 55ms (ActiveRecord: 7.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-25 17:28:56 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (69.7ms)
+Completed 200 OK in 197ms (Views: 194.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2017-02-25 17:28:57 +0000
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2017-02-25 17:28:57 +0000
+Started GET "/users/auth/facebook/callback?code=AQDrx2FbW-4ibz-5BBQ15DPA7zxMIrIQ0fZzaHEGwPXprTF25gJJ5HmySbq-mEPzCCaeq5gE50-tYS_AzU1xk4CL_IzFjOgPpmigCzTD3dIkrLwsx1KTOZvFOGOH6l7MVTip-mYdoLU1umAabenpp9f3QQz95bolkpXt1IVJKrZhPBmJgofOwukjYDQchYZ_LHtEh_23puQBCZxpbvXNlFLnQVXGLRnusQk01DGb-t9k40Mb7vUE6I-Cyic7anx5BcLqvKsyL20kNN0vSaMbWWd-l2b149VGFpisYMKEuZVOGLulrDiHcE_esy6sgmhOctY&state=cedd8b3a980198b605d3c8140035ec78cb4460543a176445" for 127.0.0.1 at 2017-02-25 17:29:04 +0000
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQDrx2FbW-4ibz-5BBQ15DPA7zxMIrIQ0fZzaHEGwPXprTF25gJJ5HmySbq-mEPzCCaeq5gE50-tYS_AzU1xk4CL_IzFjOgPpmigCzTD3dIkrLwsx1KTOZvFOGOH6l7MVTip-mYdoLU1umAabenpp9f3QQz95bolkpXt1IVJKrZhPBmJgofOwukjYDQchYZ_LHtEh_23puQBCZxpbvXNlFLnQVXGLRnusQk01DGb-t9k40Mb7vUE6I-Cyic7anx5BcLqvKsyL20kNN0vSaMbWWd-l2b149VGFpisYMKEuZVOGLulrDiHcE_esy6sgmhOctY", "state"=>"cedd8b3a980198b605d3c8140035ec78cb4460543a176445"}
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "facebook"], ["uid", "10100536837153681"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 363ms (ActiveRecord: 3.4ms)
+
+
+  
+NoMethodError (undefined method `name=' for #<User:0x007f10682647b8>):
+  
+app/models/user.rb:12:in `block in from_omniauth'
+app/models/user.rb:9:in `from_omniauth'
+app/controllers/users/omniauth_callbacks_controller.rb:4:in `facebook'
+  Rendering /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.8ms)
+  Rendering /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (75.8ms)
+Started GET "/YS_AzU1xk4CL_IzFjOgPpmigCzTD3dIkrLwsx1KTOZvFOGOH6l7MVTip-mYdoLU1umAabenpp9f3QQz95bolkpXt1IVJKrZhPBmJgofOwukjYDQchYZ_LHtEh_23puQBCZxpbvXNlFLnQVXGLRnusQk01DGb-t9k40Mb7vUE6I-Cyic7anx5BcLqvKsyL20kNN0vSaMbWWd-l2b149VGFpisYMKEuZVOGLulrDiHcE_esy6sgmhOctY&state=cedd8b3a980198b605d3c8140035ec78cb4460543a176445" for 127.0.0.1 at 2017-02-25 17:29:34 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/YS_AzU1xk4CL_IzFjOgPpmigCzTD3dIkrLwsx1KTOZvFOGOH6l7MVTip-mYdoLU1umAabenpp9f3QQz95bolkpXt1IVJKrZhPBmJgofOwukjYDQchYZ_LHtEh_23puQBCZxpbvXNlFLnQVXGLRnusQk01DGb-t9k40Mb7vUE6I-Cyic7anx5BcLqvKsyL20kNN0vSaMbWWd-l2b149VGFpisYMKEuZVOGLulrDiHcE_esy6sgmhOctY&state=cedd8b3a980198b605d3c8140035ec78cb4460543a176445"):
+  
+actionpack (5.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.1) lib/rails/engine.rb:522:in `call'
+puma (3.7.1) lib/puma/configuration.rb:232:in `call'
+puma (3.7.1) lib/puma/server.rb:578:in `handle_request'
+puma (3.7.1) lib/puma/server.rb:415:in `process_client'
+puma (3.7.1) lib/puma/server.rb:275:in `block in run'
+puma (3.7.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered collection of /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/routes/_route.html.erb [35 times] (27.8ms)
+  Rendered /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.3ms)
+  Rendering /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/sam/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (99.9ms)
+Started GET "/" for 127.0.0.1 at 2017-02-25 17:29:38 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 164ms (Views: 118.3ms | ActiveRecord: 11.3ms)
+
+
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2017-02-25 17:29:40 +0000
+Started GET "/users/auth/facebook" for 127.0.0.1 at 2017-02-25 17:29:40 +0000
+Started GET "/users/auth/facebook/callback?code=AQAA-RG3GiEN6xibFHUiQLRNUcUb_IvAjoDBjRP7n6rO-eVpD-CE5bHZimKFSKjpiZiVlzn_r1mRcdHuFrCv0B8iEAE4x3xsEb-W1Uq-xZIw29Y5pLC5UyHEzy_c4aXHPuryduqXqcl9dbmhZ6UU3t8jE72g3u14SNvPlplb7jrPRtYjymkn5kkUXtgbJs_B6EN7_nGGaUD4lkOBTqGuimhmI-HMX5juTZ34G12zKzHPalAq64K-PSIAIWzZqXh8tW0_hncRtIL03AJjCTYPROfVG4yOaa7zlWVcB26FP6V8KA9MXUKplc_lYKhENKw6vcQ&state=e6f3f96c5bb44063cefe82ef2a47b2c6a1e7d4241f3f039e" for 127.0.0.1 at 2017-02-25 17:29:40 +0000
+Processing by Users::OmniauthCallbacksController#facebook as HTML
+  Parameters: {"code"=>"AQAA-RG3GiEN6xibFHUiQLRNUcUb_IvAjoDBjRP7n6rO-eVpD-CE5bHZimKFSKjpiZiVlzn_r1mRcdHuFrCv0B8iEAE4x3xsEb-W1Uq-xZIw29Y5pLC5UyHEzy_c4aXHPuryduqXqcl9dbmhZ6UU3t8jE72g3u14SNvPlplb7jrPRtYjymkn5kkUXtgbJs_B6EN7_nGGaUD4lkOBTqGuimhmI-HMX5juTZ34G12zKzHPalAq64K-PSIAIWzZqXh8tW0_hncRtIL03AJjCTYPROfVG4yOaa7zlWVcB26FP6V8KA9MXUKplc_lYKhENKw6vcQ", "state"=>"e6f3f96c5bb44063cefe82ef2a47b2c6a1e7d4241f3f039e"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."provider" = $1 AND "users"."uid" = $2 ORDER BY "users"."id" ASC LIMIT $3[0m  [["provider", "facebook"], ["uid", "10100536837153681"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (5.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sj49@kent.ac.uk"], ["LIMIT", 1]]
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "provider", "uid") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "sj49@kent.ac.uk"], ["encrypted_password", "$2a$11$pN3JxSD47ms5.TT/JAia9OYhL96r8tlL92Jr3HEL3yhZpKT4bsidC"], ["created_at", 2017-02-25 17:29:41 UTC], ["updated_at", 2017-02-25 17:29:41 UTC], ["provider", "facebook"], ["uid", "10100536837153681"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2017-02-25 17:29:41 UTC], ["last_sign_in_at", 2017-02-25 17:29:41 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", 2017-02-25 17:29:41 UTC], ["id", 2]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 365ms (ActiveRecord: 14.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-25 17:29:41 +0000
+  [1m[36mUser Load (6.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 95ms (Views: 89.2ms | ActiveRecord: 2.5ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-02-25 17:29:47 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"tfTORCQjLYCvMPhxf+Owx7B91UDckGeo8rJyzh+HpLWeFOiGMzTMvq62EYRqva1sIf0T536WzxqIYNbDJgdW3w=="}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 4.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-25 17:29:47 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 89ms (Views: 87.8ms | ActiveRecord: 0.0ms)
+
+
