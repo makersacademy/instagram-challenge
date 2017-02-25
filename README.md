@@ -11,7 +11,7 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 Bonus if you can add filters!
 
 **My Solution**
-The rails project I have built resides in the folder instagram.
+The rails project I have built resides in the folder InstagramApp.
 
 1- User stories
 
