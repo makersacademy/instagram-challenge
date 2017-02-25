@@ -1,4 +1,5 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  attr_accessor :username
 
   def facebook
     # You need to implement the method below in your model (e.g. app/models/user.rb)
@@ -16,5 +17,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def failure
     redirect_to root_path
   end
-  
+
+  private
+
+  # def sign_up_params
+  #   params.require(:user).permit(:email, :user_name, :password,
+  #   :password_confirmation)
+  # end
+  #
+  # def account_update_params
+  #   params.require(:user).permit(:email, :user_name, :password,
+  #   :password_confirmation, :current_password)
+  # end
+
 end
