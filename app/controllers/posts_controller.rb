@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = current_user.posts
+    @posts = Post.all
   end
 
   def new
@@ -13,6 +13,10 @@ class PostsController < ApplicationController
     @user = current_user
     @user.posts.create(post_params)
     redirect_to '/'
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   private
