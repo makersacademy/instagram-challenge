@@ -1,0 +1,12 @@
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+  <%= link_to post.description, post_path(post) %>
+  <%= image_tag post.image.url(:thumb) %>
+  <%= link_to "Edit #{post.description}", edit_post_path(post) %>
+  <%= link_to "Delete #{post.description}", post_path(post), method: :delete %>
+  <% end %>
+<% else %>
+  No posts yet
+<% end %>
+
+<a href='posts/new'>Add a post</a>
