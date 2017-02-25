@@ -2,3 +2,9 @@
   %h4= image.title
   %p= image.description
   = image_tag image.image_file.url(:medium)
+  - if image.comments.any?
+    %ul
+    - image.comments.each do |comment|
+      %p= comment.text
+  - else
+    %p No comments yet!

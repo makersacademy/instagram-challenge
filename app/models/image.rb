@@ -1,6 +1,7 @@
 class Image < ApplicationRecord
 
   belongs_to :user
+  has_many :comments
 
   validates :title, length: { minimum: 3 }
   validates :description, presence: true
