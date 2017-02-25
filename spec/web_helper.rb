@@ -1,8 +1,11 @@
 def create_new_image()
-  Image.create()
-  # visit '/images'
-  # click_link 'Add an image'
-  # click_button 'Create Image'
+  # Image.create()
+
+  visit '/images'
+  click_link 'Add an image'
+  attach_file('image_image', "public/img/original/missing.png")
+  click_button 'Create Image'
+  expect(current_path).to eq '/images'
 end
 
 def sign_up(email='test@example.com', username="test",
