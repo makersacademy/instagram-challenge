@@ -4,6 +4,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+gem 'aws-sdk', '< 2.0'
 gem 'dotenv-rails', groups: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -37,7 +38,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
-gem 'aws-sdk', '< 2.0'
 
 group :test do
   gem 'rspec-rails'
