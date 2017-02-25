@@ -1,2 +1,10 @@
-no images yet
-<a href='#'>Add an image</a>
+<% if @images.all.any? %>
+  <% @images.all.each do |image| %>
+    <h2>Image ID: <%= image.id %></h2>
+    <%= link_to "Delete", image_path(image), method: :delete %>
+  <% end %>
+<% else %>
+  <h1>No images yet</h1>
+<% end %>
+
+<br><br><br><a href="/images/new">Add an image</a>
