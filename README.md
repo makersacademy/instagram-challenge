@@ -37,7 +37,3 @@ So that my pictures can receive comments
 My pictures should have an option to be commented
 ```
 
-2- Database structure
-
-![Instagram Database Schema]
-(https://github.com/BasileKoko/instagram-challenge/blob/master/Instagram_DB_Schema.jpg)
