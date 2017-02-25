@@ -32,5 +32,26 @@ feature 'FEATURE: Comments' do
     end
   end
 
+  context 'creating comments' do
+    before do
+      test_user = create_test_user
+      test_image = test_user.images.create(title: image_title, description: image_desc, image_file: image_file_jpeg)
+    end
 
+    context 'not signed in' do
+      scenario 'cannot select to add a comment' do
+        visit('/')
+        expect(page).not_to have_selector('.add-new-comment')
+      end
+    end
+    context 'signed in' do
+      scenario 'can select to add a comment' do
+        sign_up
+        visit('/')
+        expect(page).to have_selector('.add-new-comment')
+      end
+
+    end
+
+  end
 end
