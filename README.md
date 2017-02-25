@@ -1,5 +1,5 @@
 # Instagram Challenge
-#### Technologies: Ruby, Rspec, Rails, Postgres, SQL, Heroku
+#### Technologies: Ruby, Javascript, Rspec, Rails, Postgres, SQL, Heroku, Facebook, AWS
 ### [Makers Academy] (http://www.makersacademy.com) - Week 8 Solo Weekend Project
 
 ## Index
