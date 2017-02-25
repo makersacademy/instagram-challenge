@@ -9,7 +9,7 @@ feature 'post' do
     end
   end
 
-  context 'index when a post has been added' do
+  context 'when a post has been added' do
     before do
       Post.create(description: 'my lovely photo')
     end
@@ -21,8 +21,8 @@ feature 'post' do
     end
   end
 
-  context 'adding a post' do
-    scenario 'requires user to fill form, then displays the post on the index page' do
+  context 'a user can add a post' do
+    scenario 'by filling in a form, then the post displays on the index page' do
       visit('/posts')
       click_link('Add a post')
       fill_in 'Description', with: 'What a lovely photo'
@@ -32,5 +32,17 @@ feature 'post' do
       expect(page).not_to have_content('No posts to display')
     end
   end
+
+  context 'a user can view a post' do
+
+    let!(:post) { Post.create(description: 'my lovely photo') }
+
+    scenario 'by clicking on the post' do
+      visit('/posts')
+      click_link('my lovely photo')
+      expect(page).to have_content('my lovely photo')
+      expect(current_path).to eq ("/posts/#{post.id}")
+    end
+  end  
 
 end
