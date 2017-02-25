@@ -1,3 +1,14 @@
+<% if @posts.errors.any? %>
+  <section id="errors" >
+    <h2> <%= pluralize(@posts.errors.count, "error") %> prohibited this post from being saved: </h2>
+    <ul>
+      <% @posts.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
 <%= form_for @posts, html: {multipart: true} do |f| %>
   <%= f.label :description %>
   <%= f.text_field :description %>

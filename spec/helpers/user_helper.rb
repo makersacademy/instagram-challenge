@@ -1,5 +1,5 @@
 def signup_and_in
-  visit('/')
+  visit('/posts')
   click_link('Sign up')
   fill_in('Email', with: 'test@example.com')
   fill_in('Password', with: 'testtest')
@@ -8,7 +8,7 @@ def signup_and_in
 end
 
 def sign_in
-  visit('/')
+  visit('/posts')
   click_link('Sign in')
   fill_in('Email', with: 'test@test.com')
   fill_in('Password', with: 'test123')
