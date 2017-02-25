@@ -1,7 +1,11 @@
 require 'rails_helper'
+require 'web_helper'
 
 feature 'comments' do
-  before { Image.create() }
+  before do
+    sign_up
+    create_new_image
+  end
 
   scenario 'allows users to leave a comment using a form' do
      visit '/images'
