@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
   def index
-    # raise 'Wassaaaap from the index'
+    @posts = Post.all
   end
 end
