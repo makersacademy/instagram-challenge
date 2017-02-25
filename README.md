@@ -10,7 +10,7 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
-** My solution**
+**My Solution**
 
 1- User stories
 
