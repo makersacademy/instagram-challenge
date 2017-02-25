@@ -19,11 +19,11 @@ feature 'posts' do
     end
 
     scenario 'displaying posts' do
-      visit '/posts'
+      expect(page).to have_css 'img'
       expect(page).to have_content 'I love summer'
       expect(page).not_to have_content 'There are no posts yet!'
+      expect(current_path).to eq '/posts'
     end
   end
-
 
 end
