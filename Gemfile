@@ -14,6 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
 gem 'aws-sdk', '< 2.0'
+gem 'devise'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'

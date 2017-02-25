@@ -58,6 +58,13 @@ Nice To Have
 -----
 
 ```
+As a photographer wannabe
+So that I can delete pics I regret sharing
+I want to be able to delete pics
+
+As a photographer wannabe
+So that I can correct grammar mistakes
+I want to be able to edit a pic's description
 
 As a user
 So that I can sign up/in faster
