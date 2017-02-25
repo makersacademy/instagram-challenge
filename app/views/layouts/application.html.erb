@@ -27,9 +27,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="#">Profile</a></li>
+            <% if user_signed_in? %>
+              <li><%= link_to "Profile", user_posts_path(current_user.id) %></li>
+            <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li class="notice"><%= notice %></p></li>
+            <li class="alert"><%= alert %></p></li>
             <% if user_signed_in? %>
               <li><%= link_to "Add post", new_user_post_path(current_user) %></li>
               <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
@@ -41,10 +45,6 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
     <%= yield %>
   </body>
 </html>

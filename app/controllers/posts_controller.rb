@@ -1,5 +1,9 @@
 class PostsController < ApplicationController
 
+  def index
+    @posts = current_user.posts
+  end
+
   def new
     @user = current_user
     @post = Post.new
