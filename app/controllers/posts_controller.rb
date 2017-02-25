@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @current_user = current_user
   end
 
   def show
@@ -24,28 +25,51 @@ class PostsController < ApplicationController
     else
       render 'new'
     end
-  #   Post.create(description: post_params["description"], user_id: current_user.id)
-  #   redirect_to('/posts')
   end
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-
-    redirect_to('/posts')
+    if !users_post?(@post)
+      flash[:notice] = 'error'
+      redirect_to '/posts'
+    else
+      @post.update(post_params)
+      redirect_to('/posts')
+    end
   end
 
   def destroy
+
+  if users_restaurant?(@restaurant)
+    @restaurant.destroy
+    flash[:notice] = "Restaurant deleted successfully"
+    redirect_to '/restaurants'
+  else
+    flash[:notice] = "error"
+    redirect_to '/restaurants'
+  end
+end
+
+  def destroy
     @post = Post.find(params[:id])
-    @post.delete
-    flash[:notice] = 'Post deleted'
-    redirect_to('/posts')
+    if users_post?(@post)
+      @post.destroy
+      flash[:notice] = 'Post deleted'
+      redirect_to('/posts')
+    else
+      flash[:notice] = "error"
+      redirect_to '/posts'
+    end
   end
 
   private
 
   def post_params
     params.require(:post).permit(:description)
+  end
+
+  def users_post?(post)
+    post.user_id == current_user.id
   end
 
 end

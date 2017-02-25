@@ -2,10 +2,14 @@ def create_user
   User.create(email: 'test@test.com', password: 'password', id: 1)
 end
 
-def sign_in
+def create_user_two
+  User.create(email: 'test2@test.com', password: 'password', id: 2)
+end
+
+def sign_in(email= 'test@test.com', password= 'password')
   visit('/')
-  fill_in('Email', with: 'test@test.com')
-  fill_in('Password', with: 'password')
+  fill_in('Email', with: email)
+  fill_in('Password', with: password)
   click_button('Log in')
 end
 

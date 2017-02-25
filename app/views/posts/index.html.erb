@@ -3,8 +3,10 @@
     <ul>
       <li>
         <%= link_to post.description, post_path(post) %>
-        <%= link_to 'Edit', edit_post_path(post) %>
-        <%= link_to 'Delete', post_path(post), method: :delete %>
+        <% if @current_user.id == post.user_id %>
+          <%= link_to 'Edit', edit_post_path(post) %>
+          <%= link_to 'Delete', post_path(post), method: :delete %>
+        <% end %>
       </li>
     </ul>
   <% end %>

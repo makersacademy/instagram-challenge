@@ -64,6 +64,16 @@ feature 'post' do
       expect(page).not_to have_content 'My lovely photo'
       expect(current_path).to eq('/posts/1')
     end
+
+    scenario 'unless it was created by another user' do
+      create_user
+      create_post
+      create_user_two
+      sign_in('test2@test.com', 'password')
+      visit '/posts'
+      expect(page).not_to have_link('Edit')
+    end
+
   end
 
   context 'a user can delete a post' do
@@ -77,6 +87,16 @@ feature 'post' do
       expect(page).not_to have_content('my lovely photo')
       expect(page).to have_content('No posts to display')
     end
+
+    scenario 'unless it was created by another user' do
+      create_user
+      create_post
+      create_user_two
+      sign_in('test2@test.com', 'password')
+      visit '/posts'
+      expect(page).not_to have_link('Delete')
+    end
+
   end
 
 end
