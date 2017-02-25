@@ -4,4 +4,5 @@ class Image < ApplicationRecord
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   validates :caption, length: { maximum: 200 }
+  # validates :image, uniqueness: true
 end

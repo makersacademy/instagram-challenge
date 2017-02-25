@@ -10,12 +10,12 @@ feature 'images' do
   end
 
   context 'images have been added' do
-    before do
-      Image.create(caption: 'Test')
-    end
-
     scenario 'display images' do
       visit '/images'
+      click_link 'Add a image'
+      fill_in 'Caption', with: 'Test'
+      attach_file "Image", "public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg"
+      click_button 'Create Image'
       expect(page).to have_content('Test')
       expect(page).not_to have_content('No images yet')
     end
@@ -26,8 +26,10 @@ feature 'images' do
       visit '/images'
       click_link 'Add a image'
       fill_in 'Caption', with: 'Test'
+      attach_file "Image", "public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg"
       click_button 'Create Image'
       expect(page).to have_content 'Test'
+      expect(page).to have_css("img[src*='AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg']")
       expect(current_path).to eq '/images'
     end
 
