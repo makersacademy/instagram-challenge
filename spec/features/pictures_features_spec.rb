@@ -4,20 +4,31 @@ feature 'pictures' do
   context 'no pictures have been added' do
     scenario 'should diplay a prompt to upload a picture' do
       visit '/pictures'
-      expect(page).to have_content 'No pictures yet'
-      expect(page).to have_link 'Upload a picture'
+      expect(page).to have_content 'No pictures posted'
+      expect(page).to have_link 'Post a picture'
     end
   end
 
   context 'pictures have been added' do
     before do
-      Picture.create(description: 'picture')
+      Picture.create(description: 'description')
     end
 
     scenario 'display pictures' do
       visit pictures_path
-      expect(page).to have_content('picture')
-      expect(page).not_to have_content('No pictures yet')
+      expect(page).to have_content('description')
+      expect(page).not_to have_content('No pictures posted')
+    end
+  end
+
+  context 'creating picture posts' do
+    scenario 'prompts user to fill out a form, then displays the new picture post' do
+      visit pictures_path
+      click_link 'Post a picture'
+      fill_in 'Description', with: 'description'
+      click_button 'Create Picture'
+      expect(page).to have_content 'description'
+      expect(current_path).to eq '/pictures'
     end
   end
 end
