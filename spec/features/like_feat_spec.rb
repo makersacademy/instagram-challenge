@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Like' do
 
   context 'likes on pictures' do
-    scenario 'pictures can receive likes' do
+    scenario 'pictures can receive likes that are then displayed', js: true do
       visit '/'
       click_button 'Join Instapic!'
       fill_in 'user_nickname', with: 'MakerJenny'

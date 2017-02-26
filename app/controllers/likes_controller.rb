@@ -1,13 +1,13 @@
 class LikesController < ApplicationController
 
-  def new
+  def index
     self.create
   end
 
   def create
     @instapic = Instapic.find(params[:instapic_id])
     @instapic.likes.create
-    redirect_to instapics_path
+    render json: { new_like_count: @instapic.likes.count }
   end
 
 end

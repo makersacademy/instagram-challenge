@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.5'
 group :test do
   gem 'capybara'
   gem 'rspec-rails'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 

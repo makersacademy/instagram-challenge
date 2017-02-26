@@ -4,8 +4,8 @@
   <% @instapics.all.each do |pic| %>
     <%= (@users.find(pic.user_id)).nickname %><br />
     <%= image_tag pic.image.url(:medium) %><br />
-    <%= link_to "Like", new_instapic_like_path(:instapic_id => pic.id) %>
-    <p><%= pluralize pic.likes.count, 'like' %></p>
+    <%= link_to "Like", instapic_likes_path(pic), class: 'like'%>
+    <span class='likes-count'><%= pic.likes.count %></span><%= ' like'.pluralize(pic.likes.count) %>
     <p><%= pic.description %></p>
   <% end %>
 <% else %>
