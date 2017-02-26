@@ -1,9 +1,7 @@
 class ImageUploader < CarrierWave::Uploader::Base
-  require_relative 'image_helpers'
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  include ImageHelper
 
   # Choose what kind of storage to use for this uploader:
   storage :file
