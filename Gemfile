@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'travis'
 gem 'aws-sdk', '< 2.0'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'devise'
