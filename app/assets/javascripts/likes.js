@@ -15,5 +15,4 @@ var attachLikesHandler = function() {
   });
 };
 
-// $(document).ready(attachLikesHandler);
 $(document).on("turbolinks:load", attachLikesHandler);

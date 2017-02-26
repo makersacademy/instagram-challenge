@@ -26,10 +26,11 @@ feature 'FEATURE: Images' do
       image_element = find('img')
       expect(image_element['src']).to include('test_rabbits')
     end
-    scenario 'can see image title and description' do
+    scenario 'can see image title, description and username' do
       visit('/')
       expect(page).to have_content(image_title)
       expect(page).to have_content(image_desc)
+      expect(page).to have_content('PhotoN3rd')
     end
   end
 
