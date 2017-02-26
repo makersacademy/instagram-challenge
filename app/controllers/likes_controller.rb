@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
 
   def index
-    self.create
+    create
   end
 
   def create
