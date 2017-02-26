@@ -6,4 +6,12 @@ module WebHelper
     fill_in 'Password', with: password
     click_button 'Log in'
   end
+
+  def add_post(file_path, caption)
+    visit '/'
+    click_link 'Add post'
+    attach_file 'Image', Rails.root.join(file_path)
+    fill_in 'Caption', with: caption
+    click_button 'Post'
+  end
 end
