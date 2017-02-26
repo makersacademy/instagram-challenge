@@ -15,8 +15,8 @@ I want to add or edit an image description
 So that I can give more information   
 
 As a user browsing to the home page
-I want to see a list of uploaded thumbnails
-So that users can click through to see full-sized images
+I want to see a list of thumbnails and comments
+So that users can read more about the images
 
 As a user
 I want to be able to 'like' a posted image
