@@ -29,6 +29,7 @@ class PicturesController < ApplicationController
   end
 
   def edit
+    @users = User.all
     @picture = Picture.find(params[:id])
   end
 

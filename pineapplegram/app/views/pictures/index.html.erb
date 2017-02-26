@@ -1,30 +1,32 @@
 <% if @pictures.any? %>
-  <% @pictures.sort.each do |picture| %>
-    <table style="padding-left: 35%;">
+  <% @pictures.sort.reverse.each do |picture| %>
+    <table id="picture_info">
       <tr>
-        <th style="text-align: left;">author
-        <th>profile pic
+        <th id="left_table">author
+        <th id="right_table">profile pic
       </tr>
+    </table>
+      <div id="xy">
+        <%= image_tag picture.image.url(:medium) %>
+      </div>
+    <table id="picture_info">
       <tr>
-        <th style="padding-left: 5%;"><%= image_tag picture.image.url(:medium) %>
-      </tr>
-      <tr>
-        <th><%= form_for picture, html: {multipart: true} do |f| %>
+        <th id="left_table"><%= form_for picture, html: {multipart: true} do |f| %>
             <%= f.hidden_field :pineapples, :value => (picture.pineapples + 1) %>
             <h3 style="text-align: left;"><%= f.submit ''%>&#127821;</h3>
 
-        <th><h3><%= link_to "Comment", new_picture_comment_path(picture)%></h3>
+        <th id="right_table"><h3><%= link_to "Comment", new_picture_comment_path(picture)%></h3>
             <% end %>
       </tr>
       <tr>
-        <th style="text-align: left;"><h3><%= link_to "#{picture.description}", edit_picture_path(picture)%></h3>
-        <th><h3>&#127821; * <%=  picture.pineapples %></h3>
+        <th id="left_table"><h3><%= link_to "#{picture.description}", edit_picture_path(picture)%></h3>
+        <th id="right_table"><h3>&#127821; * <%=  picture.pineapples %></h3>
       </tr>
       <tr>
         <% if picture.comments.any? %>
-          <% picture.comments.sort.each do |comment| %>
-          <th style="text-align: left;"><h3><%=(@users.find("#{comment.user_id}")).email%>:</h3>
-          <th><h3 style="font-weight: normal;"><%=  comment.text %></h3>
+          <% picture.comments.sort.reverse.each do |comment| %>
+          <th id="left_table"><h3><%=(@users.find("#{comment.user_id}")).email%>:</h3>
+          <th id="right_table"><h3 style="font-weight: normal;"><%=  comment.text %></h3>
       </tr>
             <% end %>
           <% end %>
