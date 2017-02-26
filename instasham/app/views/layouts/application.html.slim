@@ -6,22 +6,27 @@ html
     = csrf_meta_tags
     meta name="viewport" content="width=device-width, initial-scale=1"
     link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css"
-    link rel="stylesheet" href="/lib/assets/skeleton/css/normalize.css"
-    link rel="stylesheet" href="/lib/assets/skeleton/css/skeleton.css"
+    link rel="stylesheet" href="lib/assets/skeleton/css/normalize.css"
+    link rel="stylesheet" href="lib/assets/skeleton/css/skeleton.css"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-      nav.topbar
-        h1
-          | Instasham
-        .notices
-          p.notice = notice
-          p.alert = alert
-        .links
-          - if user_signed_in?
-            = link_to "Log out", destroy_user_session_path, method: :delete, class: "user-links"
-            / = link_to "Profile", destroy_user_session_path, method: :delete, class: "user-links"
-          -else
-            = link_to "Sign up", new_user_registration_path, class: "user-links"
-            = link_to "Log in", new_user_session_path, class: "user-links"  
-    = yield
+    nav.topbar
+      .notice
+        p.notice = notice
+        p.alert = alert
+      .container
+        .row.inline.right
+          .eight.columns
+            h1
+              | Instasham
+          .four.columns.u-pull-right
+            .links.inline
+              - if user_signed_in?
+                = link_to "Log out", destroy_user_session_path, method: :delete, class: "user-links logout-link inline"
+              -else
+                = link_to "Sign up", new_user_registration_path, class: "user-links sign-up-link inline"
+                = link_to "Log in", new_user_session_path, class: "user-links sign-in-link inline"
+    .container
+      .row
+        = yield

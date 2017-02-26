@@ -1,8 +1,10 @@
 FactoryGirl.define do
+  sequence :user_id do |n|
+    n
+  end
  factory :post do
-    caption "Love my new trainers!"
-    after :create do |b|
-      b.update_column(:image, "/spec/fixtures/avatar.jpg")
-    end
+    image File.open('spec/fixtures/avatar.jpg')
+    caption "Itsa me, Mario!"
+    user_id
   end
 end
