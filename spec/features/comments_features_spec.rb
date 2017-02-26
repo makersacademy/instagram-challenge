@@ -1,9 +1,13 @@
 require 'rails_helper'
 
 feature 'Adding Comments' do
+  let(:post_description) { "I love the sun" }
+  let(:post_file_jpeg) { File.new('spec/photo1.jpg') }
+
   before do
-    sign_up
-    create_post
+    @user = User.create(email: 'test@test.com', password: 'test123')
+    @post = @user.posts.create(image: post_file_jpeg, description: post_description)
+    sign_in
   end
 
   scenario 'allows users to leave a comment using a form' do

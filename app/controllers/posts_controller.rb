@@ -10,7 +10,8 @@ before_action :authenticate_user!, :except => [:index]
   end
 
   def create
-    @post = Post.create(post_params)
+    @user = current_user
+    @post = @user.posts.new(post_params)
     if @post.save
       redirect_to '/posts'
     else
