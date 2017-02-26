@@ -64,4 +64,21 @@ feature 'photos' do
       expect(page).to have_content 'An exciting test description'
     end
   end
+
+  context 'deleting entries' do
+    before do
+      visit '/'
+      click_link 'Add a photo'
+      fill_in 'Description', with: 'Another test description'
+      page.attach_file("photo_image", Rails.root + 'app/assets/images/burger_king.jpg')
+      click_button 'Add Photo'
+    end
+
+    scenario 'user can delete a photo' do
+      visit '/'
+      click_link 'Delete Photo'
+      expect(page).not_to have_content 'Another test description'
+      expect(page).to have_content 'Photo deleted'
+    end
+  end
 end
