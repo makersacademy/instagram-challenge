@@ -8,7 +8,7 @@ feature 'commenting' do
     create_post
     sign_in
     visit('/posts')
-    click_link('My lovely photo')
+    first(:xpath, "//a[@href='/posts/1']").click
     click_link('leave comment')
     fill_in 'Comment', with: 'What a bloody lovely photo'
     click_button('Leave Comment')
@@ -21,7 +21,7 @@ feature 'commenting' do
     create_post
     sign_in
     visit('/posts')
-    click_link('My lovely photo')
+    first(:xpath, "//a[@href='/posts/1']").click
     click_link('leave comment')
     fill_in 'Comment', with: ''
     click_button('Leave Comment')

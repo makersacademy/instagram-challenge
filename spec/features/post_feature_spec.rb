@@ -17,7 +17,7 @@ feature 'post' do
       create_post
       sign_in
       visit '/posts'
-      expect(page).to have_content('My lovely photo')
+      expect(page).to have_css('.post_box')
       expect(page).not_to have_content('No posts to display')
     end
   end
@@ -31,7 +31,7 @@ feature 'post' do
       fill_in 'Description', with: 'What a lovely photo'
       click_button('Create Post')
       expect(current_path).to eq('/posts')
-      expect(page).to have_content('What a lovely photo')
+      expect(page).to have_css('.post_box')
       expect(page).not_to have_content('No posts to display')
     end
   end
@@ -43,7 +43,7 @@ feature 'post' do
       create_post
       sign_in
       visit('/posts')
-      click_link('My lovely photo')
+      first(:xpath, "//a[@href='/posts/1']").click
       expect(page).to have_content('My lovely photo')
       expect(current_path).to eq ("/posts/1")
     end
@@ -59,7 +59,7 @@ feature 'post' do
       click_link('Edit')
       fill_in 'Description', with: 'my brilliant photo'
       click_button('Update Post')
-      click_link('my brilliant photo')
+      first(:xpath, "//a[@href='/posts/1']").click
       expect(page).to have_content 'my brilliant photo'
       expect(page).not_to have_content 'My lovely photo'
       expect(current_path).to eq('/posts/1')
