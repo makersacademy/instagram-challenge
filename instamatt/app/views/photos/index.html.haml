@@ -3,10 +3,15 @@
     %p= photo.description
     =link_to image_tag(photo.image.url(:medium)), photo_path(photo)
     -if user_signed_in?
+      %li
+        =link_to "Like", photo_likes_path(photo), class: 'likes-link'
+        %span.likes_count= photo.likes.count
+        ='like'.pluralize(photo.likes.count)
       -if current_user.id == photo.user_id
         =link_to "Edit description", edit_photo_path(photo)
         =link_to "Delete Photo", photo_path(photo), method: :delete
     =link_to "Add Comment", new_photo_comment_path(photo)
+
     -photo.comments.each do |comment|
       %li
         #{comment.description}
