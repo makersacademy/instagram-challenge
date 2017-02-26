@@ -8,12 +8,23 @@
 
   </head>
   <body>
+
+    <nav.links>
+      <% if !user_signed_in? %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "session-link", id: "sign_up"%>
+        <%= link_to "Log In", new_user_session_path, class: "session-link", id: "login"%>
+      <% else %>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "session-link")%>
+      <% end %>
+    </nav>
+
     <% if notice %>
       <p class="notice"><%= notice %></p>
     <% end %>
     <% if alert %>
       <p class="alert"><%= alert %></p>
     <% end %>
+
     <%= yield %>
   </body>
 </html>

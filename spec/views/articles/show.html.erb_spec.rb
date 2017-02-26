@@ -2,8 +2,13 @@ require 'rails_helper'
 
 RSpec.describe "articles/show", type: :view do
   before(:each) do
+    @user = User.create!({
+      :email => 'user@test.com',
+      :password => 'please',
+      :password_confirmation => 'please'
+    })
     @article = assign(:article, Article.create!(
-      :description => "Description"
+      :description => "Description", user_id: User.last.id
     ))
   end
 
