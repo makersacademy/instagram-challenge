@@ -5,7 +5,7 @@ feature 'Comment' do
       create_post
       sign_out
       visit '/posts'
-      expect(page).not_to have_button 'Create Comment'
+      expect(page).not_to have_button 'Comment'
     end
   end
   context 'user is logged in' do

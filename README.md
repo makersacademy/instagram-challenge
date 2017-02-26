@@ -3,20 +3,36 @@ Instagram Challenge
 
 ```
 As a user,
-So that I can use the site in my own way
-I need to be able to sign up for an account
+So that I can use the site securely
+I need to be able to sign up for an account securely
+
+As a user,
+So that I can have an online identity
+I need to be able to add a profile picture to my account
+
+As a user,
+So that nobody else uses my account
+I need to be able to sign out of my account
+
+As a user,
+So that I can use the site again
+I need to be able to sign back in to my account
 
 As a user,
 So that I can show my friends what I am eating
 I want to be able to post pictures to the website
 
 As a user,
-So that I can show my appreciation of a picture
-I want to be able to like others' pictures
+So that I can show my appreciation of a posts
+I want to be able to like others' posts
 
 As a user,
 So that I interact with my the community
-I want to be able to comment on others' pictures
+I want to be able to comment on others' posts
+
+As a user,
+So that I can make my pictures look funky
+I want to be able to apply filters to my post's pictures
 ```
 
 Instructions
