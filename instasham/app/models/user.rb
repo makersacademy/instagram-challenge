@@ -3,6 +3,13 @@ class User < ApplicationRecord
   has_many :comments
   acts_as_voter
 
+  mount_uploader :avatar, AvatarUploader
+
+  # attr_accessible :email, :password, :remember_me, :avatar, :avatar_cache, :remove_avatar
+
+  # validates_presence_of   :avatar
+  validates_integrity_of  :avatar
+  validates_processing_of :avatar
   validates_presence_of :username
   validates :username, uniqueness: true, length: { maximum: 30,
     too_long: "%{count} characters is the maximum allowed" }

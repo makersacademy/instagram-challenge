@@ -12,6 +12,12 @@ feature "User can Log in and out" do
     end
   end
 
+  context 'user sign up' do
+    scenario 'user can sign up for an account' do
+      expect{sign_up}.to change{User.count}.by(1)
+    end
+  end
+
   context "user signed in on the homepage" do
     before do
       sign_up
