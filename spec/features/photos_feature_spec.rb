@@ -32,6 +32,18 @@ feature "photos" do
     end
   end
 
+  context "editing a photo\'s caption" do
+    scenario "allows user to update it" do
+      photo = FactoryGirl.create(:photo)
+      visit photos_path
+      click_link "Edit"
+      fill_in "Caption", with: "Morning glory"
+      click_button "Save"
+      expect(page).to have_content "Morning glory"
+      expect(current_path).to eq photos_path
+    end
+  end
+
 
 
 
