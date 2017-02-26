@@ -15,4 +15,10 @@ feature 'Editing posts works' do
     expect(page).to have_content('Post\'s been updated, yo.')
     expect(page).to have_content('Editing this caption, because why not?')
   end
+
+  scenario "won't update a post without an image" do
+    attach_file('Image', 'spec/files/images/archive.zip')
+    click_button 'Update Post'
+    expect(page).to have_content('Only a pic file works here, bro.')
+  end
 end
