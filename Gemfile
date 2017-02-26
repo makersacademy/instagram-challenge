@@ -35,6 +35,7 @@ group :test do
   gem 'capybara'
   gem 'shoulda'
   gem 'timecop'
+  gem 'orderly'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
