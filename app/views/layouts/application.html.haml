@@ -1,12 +1,29 @@
-!!!
+!!! 5
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title InstagramChallenge
-    =csrf_meta_tags
-    =stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    =javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %title Instagram Clone v.0.1
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
   %body
-    -flash.each do |name, msg|
-      =content_tag :div, msg, class: [:alert, alert_for(name)]
-    =yield
+    %nav.navbar.navbar-default
+      .navbar-container
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => "#bs-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Toggle Navigation
+            %span.icon-bar
+            %span.icon-bar
+          .navbar-brand= link_to "Instagram Clone v.0.1", root_path
+        .collapse.navbar-collapse#bs-navbar-collapse-1
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              = link_to "New Post", new_post_path
+            %li
+              = link_to "Login", '#'
+            %li
+              = link_to "Register", '#'
+
+    .container
+      -flash.each do |name, msg|
+        = content_tag :div, msg, class: [:alert, alert_for(name)]
+      = yield
