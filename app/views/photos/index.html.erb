@@ -1,2 +1,26 @@
-No photos have been posted yet!
-<a href='#'>Post a new photo</a>
+<% if @photos.any? %>
+  <% @photos.each do |photo| %><br/>
+    <h2><%= photo.caption %></h2>
+    <div class="posts-wrapper">
+      <div class="post">
+        <div class="post-head">
+          <div class="thumb-img"></div>
+          </div>
+          <div class="text-center">
+            <%= link_to (image_tag photo.image.url(:medium)), photo_path(photo) %>
+            <div class="post-botton">
+              <div class="caption">
+                <div class="caption-content">
+                  <%= photo.caption %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+<% else %>
+  <h1>No photos have been posted yet!</h1>
+<% end %>
+
+<a href='/photos/new'>Post a new photo</a>

@@ -8,8 +8,9 @@ def sign_up(email: 'test@example.com', password: 'testtest', password_confirmati
 end
 
 def upload_photo
-  click_link 'Upload a photo'
+  visit '/photos'
+  click_link 'Post a new photo'
   fill_in 'Caption', with: 'Cooking!'
-  attach_file 'image', Rails.root + 'spec/fixtures/test.jpg'
-  click_button 'Upload photo'
+  attach_file 'photo_image', Rails.root + 'spec/fixtures/test.jpg'
+  click_button 'Upload your photo'
 end

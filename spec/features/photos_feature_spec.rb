@@ -6,14 +6,15 @@ feature 'photos' do
     scenario 'should display a prompt to add a photo' do
       visit '/photos'
       expect(page).to have_content('No photos have been posted yet!')
+      save_and_open_page
       expect(page).to have_link('Post a new photo')
     end
   end
 
   context 'photos have been added' do
     before do
-      # upload_photo
-      Photo.create(name: 'test')
+      upload_photo
+      @photo_id = Photo.first.id
     end
 
     scenario 'display photos' do
