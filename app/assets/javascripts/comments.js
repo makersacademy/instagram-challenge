@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  $(".comments-list").perfectScrollbar();
+
   var resetCommentField = function(thisElement){
     $(thisElement).siblings('.new-comment-field').val('Type a comment here…');
   };
@@ -11,6 +13,7 @@ $(document).ready(function() {
 
       addComment(imageId, commentHTML);
       removeNoCommentsMessage(imageId);
+      scrollToBottom(imageId);
     });
   };
 
@@ -26,6 +29,13 @@ $(document).ready(function() {
     if ($("#image_"+imageId+"_comments").has($(".no-comments-message"))) {
       $("#image_"+imageId+"_comments > .no-comments-message").remove();
     }
+  };
+
+  var scrollToBottom = function(imageId){
+    var commentsList = $("#image_"+imageId+"_comments");
+    console.log(commentsList);
+    console.log(commentsList.prop('scrollHeight'));
+    commentsList.scrollTop(commentsList.prop("scrollHeight"))
   };
 
   $('.add-new-comment').on('click', function(event){

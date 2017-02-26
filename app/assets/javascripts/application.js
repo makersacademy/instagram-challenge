@@ -14,5 +14,6 @@
 //= require tether
 //= require bootstrap
 //= require jquery_ujs
+//= require perfect-scrollbar
 //= require turbolinks
 //= require_tree .
