@@ -7,6 +7,7 @@ feature 'posts' do
 
   context 'no posts have been added' do
     scenario 'should display a link to add a post' do
+      sign_up
       visit '/posts'
       expect(page).to have_link 'Create a post'
     end
@@ -45,9 +46,18 @@ feature 'posts' do
 
     scenario 'removes a post when a user clicks a delete link' do
       visit '/posts'
-      click_link 'Delete'
+      find(".remove").click
       expect(page).not_to have_content 'I love the sun'
       expect(page).to have_content 'Post deleted successfully'
+    end
+
+    scenario 'removes a post when a user clicks a delete link' do
+      sign_out
+      sign_up_two
+      visit '/posts'
+      expect(page).not_to have_css(".remove")
+      expect(page).to have_content 'I love the sun'
+      expect(page).not_to have_content 'Post deleted successfully'
     end
   end
 

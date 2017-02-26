@@ -1,15 +1,31 @@
 <% if @posts.any? %>
-  <% @posts.each do |post| %>
-    <%= image_tag post.image.url(:thumb) %>
-    <p><%= post.description %></p>
-    <% post.comments.each do |comment| %>
-      <%= comment.comment %>
-    <% end %>  
-    <%= link_to "Delete", post_path(post), method: :delete %>
-    <%= link_to "Add a comment", new_post_comment_path(post) %>
+
+  <% @posts.reverse.each do |post| %>
+  <div class="post">
+    <% if post.user == current_user %>
+      <%= link_to image_tag("trash.png", class: "trash"), post_path(post), method: :delete, class: 'remove' %>
+    <% end %>
+    <p class="name"><%= post.user.email.split("@")[0] %></p>
+    <%= image_tag post.image.url(:medium) %>
+    <span class="description"><b><%= post.user.email.split("@")[0] %></b> <%= post.description %></span>
+
+
+    <div class="comments">
+      <% if post.comments.any? %>
+        <% post.comments.all.each do |comment| %>
+          <span><b><%= comment.user.email.split("@")[0] %></b> <%= comment.comment %></span>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="add-comment">
+      <%= link_to image_tag("comment_bubble.png", class: "comment_bubble"), new_post_comment_path(post), class: 'comments' %>
+      <span class="text"> Add a comment... </span>
+    </div>
+
+  </div>
   <% end %>
+
 <% else %>
   <p>There are no posts yet!</p>
 <% end %>
-
-<a href='/posts/new'>Create a post</a>

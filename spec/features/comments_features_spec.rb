@@ -12,7 +12,7 @@ feature 'Adding Comments' do
 
   scenario 'allows users to leave a comment using a form' do
      visit '/posts'
-     click_link 'Add a comment'
+     click_link 'Comment'
      fill_in "Comment", with: "nice pic!"
      click_button 'Submit'
 
