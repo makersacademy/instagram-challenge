@@ -18,6 +18,10 @@ feature 'posts' do
   end
 
   context 'creating posts' do
+    before do
+      sign_up
+    end
+
     scenario 'are then displayed on /posts' do
       create_post
       expect(page).to have_css 'img'
@@ -35,6 +39,7 @@ feature 'posts' do
 
   context 'posts have been deleted' do
     before do
+      sign_up
       create_post
     end
 
