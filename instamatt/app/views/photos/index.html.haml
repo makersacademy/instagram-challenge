@@ -2,8 +2,10 @@
   -@photos.each do |photo|
     %p= photo.description
     =link_to image_tag(photo.image.url(:medium)), photo_path(photo)
-    =link_to "Edit description", edit_photo_path(photo)
-    =link_to "Delete Photo", photo_path(photo), method: :delete
+    -if user_signed_in?
+      -if current_user.id == photo.user_id
+        =link_to "Edit description", edit_photo_path(photo)
+        =link_to "Delete Photo", photo_path(photo), method: :delete
     =link_to "Add Comment", new_photo_comment_path(photo)
     -photo.comments.each do |comment|
       %li

@@ -1,4 +1,6 @@
 class PhotosController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @photos = Photo.all
   end
@@ -8,7 +10,9 @@ class PhotosController < ApplicationController
   end
 
   def create
-    Photo.create(photo_params)
+    Photo.create(description: photo_params["description"],
+                image: photo_params["image"],
+                user_id: current_user.id)
     redirect_to '/'
   end
 
@@ -36,6 +40,6 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:description, :image)
+    params.require(:photo).permit(:description, :image, :user_id)
   end
 end
