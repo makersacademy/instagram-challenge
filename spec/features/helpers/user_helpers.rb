@@ -14,7 +14,7 @@ module UserHelpers
     click_link('Sign out')
   end
 
-  def create_test_user
-    User.create(email: 'test@test.com', password: 'testtest', password_confirmation: 'testtest', user_name: 'PhotoN3rd')
+  def create_test_user(email: 'test@test.com')
+    User.create(email: email, password: 'testtest', password_confirmation: 'testtest', user_name: 'PhotoN3rd')
   end
 end

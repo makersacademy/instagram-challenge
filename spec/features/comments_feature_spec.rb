@@ -57,29 +57,43 @@ feature 'FEATURE: Comments' do
   end
 
   context 'creating comments' do
-    before do
-      test_user = create_test_user
-      test_image = test_user.images.create(title: image_title, description: image_desc, image_file: image_file_jpeg)
-    end
 
     context 'not signed in' do
+      before do
+        test_user = create_test_user
+        test_image = test_user.images.create(title: image_title, description: image_desc, image_file: image_file_jpeg)
+      end
       scenario 'cannot select to add a comment' do
         visit('/')
         expect(page).not_to have_selector('.add-new-comment')
       end
     end
     context 'signed in' do
-      scenario 'can select to add a comment' do
+      before(:each) do
+        test_user = create_test_user
+        test_image = test_user.images.create(title: image_title, description: image_desc, image_file: image_file_jpeg)
+      end
+      scenario 'can select to add a comment', js: true do
         sign_up
         visit('/')
         expect(page).to have_selector('.add-new-comment')
       end
 
-      scenario 'can enter a first comment and see it on the screen, listed alongside the username', js: true do
+      scenario 'can CLICK submit first comment and see it on the screen', js: true do
         sign_up
         visit('/')
         fill_in :comment_text, with: 'Test comment'
-        find(:css, '.add-new-comment').trigger("click")
+        click_link('Post')
+        within("#main_container") do
+          expect(page).to have_content 'Test comment'
+          expect(page).to have_content 'PhotoN3rd'
+        end
+      end
+      scenario 'can PRESS ENTER submit a first comment and see it on the screen', js: true do
+        sign_up
+        visit('/')
+        fill_in :comment_text, with: "Test comment"
+        find('.new-comment-field').native.send_keys :enter
         within("#main_container") do
           expect(page).to have_content 'Test comment'
           expect(page).to have_content 'PhotoN3rd'
@@ -89,13 +103,26 @@ feature 'FEATURE: Comments' do
         sign_up
         visit('/')
         fill_in :comment_text, with: 'Test comment'
-        find(:css, '.add-new-comment').trigger("click")
+        click_link('Post')
         within("#main_container") do
           expect(page).not_to have_content 'No comments yet'
         end
       end
-      xscenario 'Comment input field resets to "Type commment here" after submission', js: true do
-        
+      scenario 'Comment input field text goes blank when field is clicked', js: true do
+        sign_up
+        visit('/')
+        field = find_field(:comment_text)
+        field.trigger("click")
+        expect(field.value).to eq ''
+      end
+      scenario 'Comment input field resets to "Type commment here" after submission', js: true do
+        sign_up
+        visit('/')
+        fill_in :comment_text, with: 'Test comment'
+        click_link('Post')
+        expect(page).not_to have_content 'No comments yet'
+        field = find_field(:comment_text)
+        expect(field.value).to eq 'Type a comment here…'
       end
     end
   end

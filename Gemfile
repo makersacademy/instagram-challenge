@@ -61,7 +61,7 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'capybara'
+  gem 'capybara', '>= 2.7.1'
   gem 'rspec-collection_matchers'
   gem 'shoulda'
   gem 'poltergeist'

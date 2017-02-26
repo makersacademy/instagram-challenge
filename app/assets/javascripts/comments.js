@@ -1,18 +1,54 @@
 $(document).ready(function() {
 
+  var resetCommentField = function(thisElement){
+    $(thisElement).siblings('.new-comment-field').val('Type a comment here…');
+  };
+
+  var postComment = function(thisElement, commentText){
+    $.post(thisElement.href, { "comment_text": commentText }, function(response){
+      imageId = response.image_id;
+      var commentHTML = createCommentHTML(response);
+
+      addComment(imageId, commentHTML);
+      removeNoCommentsMessage(imageId);
+    });
+  };
+
+  var createCommentHTML = function(response){
+    return "<li><span class=\"user-name\">"+response.user_name+": </span>"+response.new_comment_text+"</li>";
+  };
+
+  var addComment = function(imageId, commentHTML){
+    $("#image_"+imageId+"_comments").append(commentHTML);
+  };
+
+  var removeNoCommentsMessage = function(imageId){
+    if ($("#image_"+imageId+"_comments").has($(".no-comments-message"))) {
+      $("#image_"+imageId+"_comments > .no-comments-message").remove();
+    }
+  };
+
   $('.add-new-comment').on('click', function(event){
       event.preventDefault();
-      var commentText = $(this).siblings('.new-comment-field').val();
+      var thisElement = this;
+      var commentText = $(thisElement).siblings('.new-comment-field').val();
       var imageId = "";
 
-      $.post(this.href, { "comment_text": commentText }, function(response){
-        imageId = response.image_id;
-        var commentHTML = "<li><span class=\"user-name\">"+response.user_name+": </span>"+response.new_comment_text+"</li>";
-        $("#image_"+imageId+"_comments").append(commentHTML);
+      resetCommentField(thisElement);
+      postComment(thisElement, commentText);
+  });
 
-        if ($("#image_"+imageId+"_comments").has($(".no-comments-message"))) {
-          $("#image_"+imageId+"_comments > .no-comments-message").remove();
-        }
-      });
+  $('.new-comment-form').on('keydown keypress', function(event){
+      if(event.keyCode == 13){
+        event.preventDefault();
+        $(this).find('.add-new-comment').trigger('click');
+        $(this).find('.new-comment-field').blur();
+      }
+  });
+
+  $('.new-comment-field').on('click', function(){
+    if ($(this).val() === 'Type a comment here…') {
+      $(this).val('');
+    }
   });
 });
