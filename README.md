@@ -7,11 +7,11 @@ I want to register/sign up
 So that I can log in without entering details each time
 
 As a signed in User
-I want to post a thumbnail-sized image
+I want to post a thumbnail-sized image with title
 So that I can communicate with my followers in pictures
 
 As a signed in user
-I want to add or edit an image title
+I want to add or edit an image description
 So that I can give more information   
 
 As a user browsing to the home page
