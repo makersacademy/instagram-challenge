@@ -88,4 +88,18 @@ context 'editing posts' do
 
 end
 
+context 'deleting posts' do
+       before do
+         Post.create(name: 'Nice Picture',
+                  image: File.new(Rails.root + 'app/assets/images/post.png'))
+       end
+
+       scenario 'users can delete a post' do
+         visit '/posts'
+         click_link 'Delete'
+         expect(page).to have_content 'Post deleted successfully'
+         expect(page).not_to have_content 'Nice Picture'
+       end
+end
+
 end
