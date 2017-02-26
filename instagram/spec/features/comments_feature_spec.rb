@@ -1,11 +1,17 @@
 require 'rails_helper'
+require_relative '../helpers/sign_helpers'
 
 feature 'comments' do
 
-  context 'no comments have been added' do
-    before {Image.create(caption:'test1', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'))}
+  before do
+    signup1
+    @user = User.find_by_email("test@example.com")
+  end
 
-    scenario 'should display a prompt to add a image' do
+  context 'no comments have been added' do
+
+    scenario 'should display a prompt to add a comment' do
+      @user.images.create(caption:'test1', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'))
       visit '/images'
       click_link 'test1'
       expect(page).to have_content 'No comments yet'
@@ -14,7 +20,7 @@ feature 'comments' do
   end
 
   context 'comments have been added' do
-    let!(:test1){ Image.create(caption:'test1', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'), id: 1)}
+    let!(:test1){ @user.images.create(caption:'test1', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'), id: 1)}
 
     scenario 'allows users to leave a comment using a form' do
        visit '/images'

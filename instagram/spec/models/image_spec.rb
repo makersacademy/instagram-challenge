@@ -12,4 +12,6 @@ describe Image, type: :model do
     expect(image).to have(1).error_on(:image)
   end
 
+  it { should belong_to :user}
+
 end

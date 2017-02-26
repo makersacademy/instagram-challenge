@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 feature 'images' do
+
+  before do
+    signup1
+    @user = User.find_by_email('test@example.com')
+  end
   context 'no images have been added' do
     scenario 'should display a prompt to add a image' do
       visit '/images'
@@ -48,7 +53,7 @@ feature 'images' do
 
   context 'viewing images' do
 
-    let!(:test1){ Image.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg')) }
+    let!(:test1){ @user.images.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg')) }
 
     scenario 'lets a user view a image' do
      visit '/images'
@@ -62,7 +67,7 @@ feature 'images' do
 
   context 'editing images' do
 
-    before { Image.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'), id: 1) }
+    before { @user.images.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'), id: 1) }
     scenario 'let a user edit a image' do
       visit '/images'
       click_link 'Edit Caption'
@@ -77,7 +82,7 @@ feature 'images' do
 
   context 'deleting images' do
 
-    before { Image.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg')) }
+    before { @user.images.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg')) }
 
     scenario 'removes a image when a user clicks a delete link' do
       visit '/images'
