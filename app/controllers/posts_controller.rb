@@ -1,18 +1,25 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  # before_action :owned_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   # for writing to database
   def create
-    @post = Post.create(post_params)
-    redirect_to posts_path
+    @post = current_user.posts.build(post_params)
+
+    if @post.save
+      redirect_to posts_path
+    else
+      p "post couldn't be created"
+      render :new
+    end
   end
 
   def show
@@ -41,4 +48,9 @@ class PostsController < ApplicationController
     params.require(:post).permit(:image, :caption)
   end
 
+  def owned_post
+    unless current_user == @post.user
+      p "Nacho post"
+    end
+  end
 end
