@@ -6,18 +6,29 @@
   <%= creator_email(@article) %> <br>
   <%= image_tag @article.image.url(:original) %>
 </p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
-<br>
-<% @article.comments.all.each do |comment| %>
-  <article.comment>
-    <%= creator_email(comment) %>
-    <%= comment.body %>
-  </article>
-  <br>
+<% if owner?(@article) %>
+  <%= link_to 'Edit', edit_article_path(@article) %> |
 <% end %>
 
+<%= link_to 'Back', articles_path %>
+<br>
+<tbody>
+<% @article.comments.all.each do |comment| %>
+  <article.comment>
+    <tr>
+      <td><%= creator_email(comment) %></td>
+      <td><%= comment.body %></td>
+      <% if owner?(comment) %>
+        <td><%= link_to "Edit comment", edit_article_comment_path(@article.id, comment.id), class: "edit-review"%></td>
+        <td><%= link_to "delete comment", article_comment_path(@article.id, comment.id), method: :delete, class: "delete-review"%></td>
+      <% end %>
+    </tr>
+  </article>
+</tbody>
+<br>
+<% end %>
+
+
 <% if user_signed_in? %>
-  <%= link_to "post comment", new_article_comment_path(@article), class: "comment_Links"%>
+<%= link_to "post comment", new_article_comment_path(@article), class: "comment_Links"%>
 <% end %>

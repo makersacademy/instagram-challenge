@@ -18,18 +18,28 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update
+    @comment.update(article_params)
+    flash[:notice] = 'comment edited successfully'
+    redirect_to articles_path
+  end
+  def destroy
+    @comment.destroy
+    flash[:notice] = 'comment deleted successfully'
+    redirect_to articles_path
+  end
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
-    def set_article
-      @article = Article.find(params[:article_id])
-    end
+  def set_article
+    @article = Article.find(params[:article_id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def article_params
-      params.require(:comment).permit(:body)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def article_params
+    params.require(:comment).permit(:body)
+  end
 end
