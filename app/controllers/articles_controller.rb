@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 
   include ArticlesHelper
 
+  include Rails.application.routes.url_helpers
 
   # GET /articles
   # GET /articles.json
@@ -36,7 +37,7 @@ class ArticlesController < ApplicationController
         #format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
+        #format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -9,3 +9,15 @@
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
+<br>
+<% @article.comments.all.each do |comment| %>
+  <article.comment>
+    <%= creator_email(comment) %>
+    <%= comment.body %>
+  </article>
+  <br>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= link_to "post comment", new_article_comment_path(@article), class: "comment_Links"%>
+<% end %>

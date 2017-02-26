@@ -1,4 +1,5 @@
 Rails.application.configure do
+  Dotenv.load
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -46,9 +47,11 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-  
+
   config.paperclip_defaults = {
     :storage => :s3,
+    :s3_region => ENV['AWS_REGION'],
+    :s3_host_name => "s3-#{ENV['AWS_REGION']}.amazonaws.com",
     :s3_credentials => {
       :bucket => ENV['S3_BUCKET_NAME'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
