@@ -67,5 +67,5 @@ var attachCommentsHandler = function() {
   });
 };
 
-$(document).ready(attachCommentsHandler);
+// $(document).ready(attachCommentsHandler);
 $(document).on("turbolinks:load", attachCommentsHandler);
