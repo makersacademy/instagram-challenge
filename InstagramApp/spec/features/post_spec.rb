@@ -22,7 +22,7 @@ feature 'Post' do
 
   context 'creating posts' do
   scenario 'prompts user to fill out a form, then displays the new post' do
-    visit '/posts'
+    sign_up
     click_link 'Add post'
     fill_in 'Title', with: 'POST1'
     click_button 'Create Post'
@@ -34,6 +34,7 @@ end
     let!(:post){ Post.create(title:'POST1') }
     scenario 'lets a user view a post' do
      visit '/posts'
+     sign_up
      click_link 'View Post'
      expect(page).to have_content 'POST1'
      expect(current_path).to eq "/posts/#{post.id}"
@@ -44,6 +45,7 @@ end
   before { Post.create title: 'POST1', content: 'Week1 post', id: 1 }
     scenario 'let a user edit a post' do
       visit '/posts'
+      sign_up
       click_link 'Edit Post'
       fill_in 'Title', with: 'POST2'
       fill_in 'Content', with: 'Week2 post'
@@ -60,6 +62,7 @@ end
 
     scenario 'removes a post when a user clicks a delete link' do
       visit '/posts'
+      sign_up
       click_link 'Delete Post'
       expect(page).not_to have_content 'POST1'
       expect(page).to have_content 'Post deleted successfully'
