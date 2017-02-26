@@ -40,6 +40,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'haml-rails'
 gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
 gem 'perfect-scrollbar-rails'
 gem 'material_icons'
 # Use Capistrano for deployment
