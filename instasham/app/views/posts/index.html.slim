@@ -3,6 +3,14 @@
     article
       .image
       .caption = post.caption
+      .likes
+        - if post.likes.count == 0
+          | No likes yet...
+        - else
+          = pluralize(post.likes.count, 'like')
+        - if user_signed_in?
+          = form_for [post, @like] do |f|
+            = f.submit
       .comments
         - if post.comments.count == 0
           | No comments yet...
