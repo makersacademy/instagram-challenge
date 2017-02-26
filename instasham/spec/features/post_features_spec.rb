@@ -18,15 +18,17 @@ feature 'Post' do
       expect(page).to have_content 'Love my new trainers!'
       expect(current_path).to eq '/posts'
     end
-    # it "creates a new post with a test image" do
-    #   post = FactoryGirl.create(:post)
-    #   visit new_post_path
-    #   attach_file_for_direct_upload("#{Rails.root}/spec/support/images/avatar.jpg")
-    #   upload_directly(ImageUploader.new, "Upload Image")
-    #   fill_in "Caption", :with => post.caption
-    #   click_button "Create Post"
-    #   page.should have_content("Post was successfully created.")
-    # end
+    it "user can create a post with an image" do
+      sign_up
+      visit new_post_path
+      visit '/'
+      click_link 'Add a post'
+      fill_in("Caption", with: "This is me!")
+      page.attach_file('post_image', Rails.root + 'spec/fixtures/avatar.jpg')
+      click_button 'Create Post'
+      expect(page).to have_content("This is me!")
+      expect(page).to have_xpath("//img[contains(@src,'image.jpg')]")
+    end
   end
   context 'posts have been added' do
     before do

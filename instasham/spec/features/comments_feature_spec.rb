@@ -5,18 +5,10 @@ feature 'Comment' do
       create_post
       sign_out
       visit '/posts'
-      expect(page).to have_content 'No comments yet...'
       expect(page).not_to have_button 'Create Comment'
     end
   end
   context 'user is logged in' do
-    scenario 'posts with no comments display the message "no comments yet"' do
-      sign_up
-      create_post
-      visit '/posts'
-      expect(page).to have_content 'No comments yet...'
-      expect(page).to have_button 'Create Comment'
-    end
     scenario 'user can comment on a post' do
       sign_up
       create_post

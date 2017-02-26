@@ -1,30 +1,30 @@
 - if @post.any?
   - @post.each do |post|
     article
-      .post-title
-        p = "#{post.user.username} #{time_ago_in_words(post.created_at)} ago"
+      header.post-title
+        = "#{post.user.username} #{time_ago_in_words(post.created_at)}"
       .image
-        img src=post.image
-      .caption 
+        img src="#{post.image}" alt="#{post.caption}"
+      .caption
           = post.caption
-      .likes
+      .interactions
         = pluralize(post.get_upvotes.size, 'like')
       - if user_signed_in?
-        .like
+        section.like
           = link_to 'Like', like_post_path(post), method: :put
-      .comments
-        - if post.comments.size == 0
-          | No comments yet...
-        - else
-          ul
-            - post.comments.each do |comment|
-              li 
-                = comment.content
-      - if user_signed_in?
-        .new-comment
-          = form_for [post, @comment] do |f|
-            = f.text_field :content, placeholder: "Add a comment"
-            = f.submit
+        section.comments
+          - if post.comments.count == 0
+            | No comments yet...
+          - else
+            ul
+              - post.comments.each do |comment|
+                li 
+                  = comment.content
+          - if user_signed_in?
+            section.new-comment
+              = form_for [post, @comment] do |f|
+                = f.text_field :content, placeholder: "Add a comment"
+                = f.submit
 - else
   h2 No posts yet!
 - if user_signed_in?

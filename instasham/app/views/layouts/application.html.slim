@@ -11,8 +11,7 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    header
-      .topbar
+      nav.topbar
         h1
           | Instasham
         .notices
@@ -21,6 +20,7 @@ html
         .links
           - if user_signed_in?
             = link_to "Log out", destroy_user_session_path, method: :delete, class: "user-links"
+            / = link_to "Profile", destroy_user_session_path, method: :delete, class: "user-links"
           -else
             = link_to "Sign up", new_user_registration_path, class: "user-links"
             = link_to "Log in", new_user_session_path, class: "user-links"  
