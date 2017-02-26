@@ -10,4 +10,8 @@ class Image < ApplicationRecord
   validates_attachment :image_file, presence: true,
                        content_type: { :content_type => ["image/jpeg", "image/jpg", "image/png"]}
 
+  def liked_by_current_user?(current_user)
+    likes.where(user_id: current_user.id).exists?
+  end
+
 end

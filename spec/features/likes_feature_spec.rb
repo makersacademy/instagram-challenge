@@ -85,6 +85,38 @@ feature 'FEATURE: Likes' do
           expect(page).to have_content '1'
         end
       end
+      scenario 'cannot like more than once', js: true do
+        sign_up
+        visit('/')
+        find(:css, '.add-new-like').click
+        wait_for_ajax
+        find(:css, '.add-new-like').click
+        wait_for_ajax
+        within(".likes-container") do
+          expect(page).to have_content '1'
+        end
+      end
+      scenario 'like icon changes to show when already liked image', js: true do
+        sign_up
+        visit('/')
+        find(:css, '.add-new-like').click
+        wait_for_ajax
+        within(".image-container") do
+          expect(page).not_to have_content 'favorite_border'
+          expect(page).to have_content 'favorite'
+        end
+      end
+      scenario 'on page load, like icon is already changed if image already liked', js: true do
+        sign_up
+        visit('/')
+        find(:css, '.add-new-like').click
+        wait_for_ajax
+        visit('/')
+        within(".image-container") do
+          expect(page).not_to have_content 'favorite_border'
+          expect(page).to have_content 'favorite'
+        end
+      end
     end
   end
 end
