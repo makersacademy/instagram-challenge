@@ -19,4 +19,15 @@ feature 'photos' do
       expect(page).to_not have_content 'No photos have been added - why not be the first?'
     end
   end
+
+  context 'adding photos' do
+    scenario 'user can add a photo description' do
+      visit '/'
+      click_link 'Add a photo'
+      fill_in 'Description', with: 'Another test description'
+      click_button 'Add Photo'
+      expect(page).to have_content 'Another test description'
+      expect(page.current_path).to eq '/'
+    end
+  end
 end
