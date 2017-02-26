@@ -41,6 +41,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
 gem 'paperclip'
 gem 'perfect-scrollbar-rails'
+gem 'material_icons'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

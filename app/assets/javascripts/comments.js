@@ -33,8 +33,6 @@ $(document).ready(function() {
 
   var scrollToBottom = function(imageId){
     var commentsList = $("#image_"+imageId+"_comments");
-    console.log(commentsList);
-    console.log(commentsList.prop('scrollHeight'));
     commentsList.scrollTop(commentsList.prop("scrollHeight"))
   };
 
