@@ -7,11 +7,15 @@ class User < ApplicationRecord
   validates :username, length: { minimum: 6 }
 
   has_many :pictures, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :commented_pictures, through: :comments, source: :picture
 
   def owns?(picture)
     pictures.include? picture
   end
+
+  # def find_username(id)
+  #   return comments.users.select{|user| user.id == id}.first.username
+  # end
 
 end

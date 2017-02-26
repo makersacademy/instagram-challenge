@@ -4,7 +4,7 @@ feature 'pictures' do
   context 'no pictures have been added' do
     scenario 'should diplay a prompt to upload a picture' do
       sign_up
-      # visit '/pictures'
+      visit '/pictures'
       expect(page).to have_content 'No pictures posted'
       expect(page).to have_link 'Post a picture'
     end
@@ -13,10 +13,11 @@ feature 'pictures' do
   context 'creating picture posts' do
     scenario 'prompts user to fill out a form, then displays the new picture post' do
       sign_up
+      visit "/pictures"
       click_link 'Post a picture'
-      fill_in 'Description', with: 'description'
-      click_button 'Create Picture'
-      expect(page).to have_content 'description'
+      fill_in 'Description', with: 'Description'
+      click_button 'Post a picture'
+      expect(page).to have_content 'Description'
       expect(current_path).to eq '/pictures'
     end
   end
@@ -28,8 +29,8 @@ feature 'pictures' do
     end
 
     scenario 'display pictures' do
-      visit pictures_path
-      expect(page).to have_content('description')
+      visit "/pictures"
+      expect(page).to have_content("Description")
       expect(page).not_to have_content('No pictures posted')
     end
 
@@ -37,7 +38,7 @@ feature 'pictures' do
     scenario 'removes a picture when a user clicks a delete link' do
       visit pictures_path
       click_link 'Delete description'
-      expect(page).not_to have_content 'description'
+      expect(page).not_to have_content 'Description'
       # expect(page).to have_content 'Restaurant deleted successfully'
     end
   end

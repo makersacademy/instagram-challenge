@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_action :authenticate_user!
+  #  before_action :authenticate_user! :except => [:destroy]
 
   def new
     @picture = Picture.find(params[:picture_id])
@@ -8,14 +8,23 @@ class CommentsController < ApplicationController
   end
 
   def create
-    picture = Picture.find(params[:picture_id])
-    picture.comments.create(review_params)
+    @picture = Picture.find(params[:picture_id])
+    @comment = @picture.comments.create_with_user(comments_params, current_user)
     redirect_to pictures_path
   end
 
+  # def destroy
+  #   @comment = Comment.find(params[:id])
+  #   @comment.destroy
+  #   if @comment.user_id == current_user.id
+  #     @comment.destroy
+  #   end
+  #   redirect_to pictures_path
+  # end
+
 private
 
-  def review_params
+  def comments_params
     params.require(:comment).permit(:thoughts)
   end
 
