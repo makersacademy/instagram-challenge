@@ -32,5 +32,20 @@ feature 'comments' do
        expect(current_path).to eq "/images/#{test1.id}"
        expect(page).to have_content('so so')
     end
+
+    scenario 'allows users to leave multiple comments using a form' do
+       visit '/images'
+       click_link 'test1'
+       click_link 'Comment'
+       fill_in "Comment", with: "so so"
+       click_button 'Leave Comment'
+       click_link 'Comment'
+       fill_in "Comment", with: "yeaha"
+       click_button 'Leave Comment'
+
+       expect(current_path).to eq "/images/#{test1.id}"
+       expect(page).to have_content('so so')
+       expect(page).to have_content('yeaha')
+    end
   end
 end
