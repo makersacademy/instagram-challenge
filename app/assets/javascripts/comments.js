@@ -51,4 +51,10 @@ $(document).ready(function() {
       $(this).val('');
     }
   });
+
+  $('.new-comment-field').on('focusout', function(){
+    if ($(this).val() === '') {
+      $(this).val('Type a comment here…');
+    }
+  });
 });
