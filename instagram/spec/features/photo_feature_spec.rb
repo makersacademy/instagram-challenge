@@ -28,5 +28,24 @@ end
       expect(current_path).to eq '/photos'
     end
   end
+  context 'viewing photos' do
+    let!(:cool){ Photo.create(comment:'cool') }
+  scenario 'lets a user view a photo' do
+     visit '/photos'
+     click_link 'cool'
+     expect(page).to have_content 'cool'
+     expect(current_path).to eq "/photos/#{cool.id}"
+    end
+  end
+  context 'deleting photos' do
+    before { Photo.create(comment: 'cool')}
+  scenario 'removes a photo when a user clicks a delete link' do
+    visit '/photos'
+    click_link 'Delete cool'
+    expect(page).not_to have_content 'cool'
+    expect(page).to have_content 'Photo deleted successfully'
+  end
+
+end
 
 end

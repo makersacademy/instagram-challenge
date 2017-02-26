@@ -1,10 +1,14 @@
 <% if @photos.any? %>
   <% @photos.each do |photo| %>
-    <h2> <%= photo.comment %> </h2>
+    <h2> <%= link_to photo.comment, photo_path(photo) %> </h2>
     <%= image_tag photo.image.url(:thumb) %>
+    <%= link_to "Delete #{photo.comment}", photo_path(photo), method: :delete %>
+    <%= link_to "Review #{photo.comment}", new_photo_review_path(photo) %>
   <% end %>
 <% else %>
   No photos yet
 <% end %>
-
+<div>
+  <br>
 <a href='/photos/new'>Add a photo</a>
+</div>
