@@ -1,4 +1,4 @@
-require 'rails_helper.rb'
+require 'rails_helper'
 
 feature 'Creating posts works' do
   scenario 'via form that provides image and caption' do
