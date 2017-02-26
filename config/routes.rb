@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+  
   resources :posts do
     resources :comments
     resources :likes

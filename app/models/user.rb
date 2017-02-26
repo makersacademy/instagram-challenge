@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes
+  has_many :liked_posts, through: :likes, source: :post
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -24,6 +26,10 @@ class User < ApplicationRecord
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  def has_liked?(post)
+    liked_posts.include?(post)
   end
 
 end

@@ -4,8 +4,10 @@
       <li>
         <%= image_tag post.image.url(:thumb) %>
         <%= link_to post.description, post_path(post) %>
-        <%= link_to "Like", post_likes_path(post), class: 'likes-link' %>
-      <span class="likes_count"> <%= post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
+        <% if !@current_user.has_liked?(post) %>
+          <%= link_to "Like", post_likes_path(post), class: 'likes-link' %>
+        <% end %>
+        <span class="likes_count"> <%= post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
 
         <% if @current_user.id == post.user_id %>
           <%= link_to 'Edit', edit_post_path(post) %>

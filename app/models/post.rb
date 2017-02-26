@@ -11,4 +11,10 @@ class Post < ApplicationRecord
    comment
  end
 
+ def build_like(user)
+  like = likes.build
+  like.user = user
+  like
+end
+
 end
