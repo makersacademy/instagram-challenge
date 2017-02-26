@@ -5,10 +5,9 @@ feature "commenting" do
 
   scenario "allows users to leave comments on pictures using a special forms" do
     visit pictures_path
-    click_link "Leave comment"
-    fill_in "Thoughts", with: "Beautiful!"
-    click_button "Submit Comment"
+    add_comment("Beautiful!")
     expect(current_path).to eq '/pictures'
     expect(page).to have_content('Beautiful!')
   end
+
 end
