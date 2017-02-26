@@ -2,8 +2,9 @@ require 'rails_helper'
 
 feature 'Editing posts works' do
   background do
-    post = create(:post)
-    visit '/'
+    user = create :user
+    post = create :post
+    sign_in_with user
     find(:xpath, "//a/img[@alt='Sample 02']/..").click
     click_link 'Edit Post'
   end

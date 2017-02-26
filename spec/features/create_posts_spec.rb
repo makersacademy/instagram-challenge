@@ -2,13 +2,9 @@ require 'rails_helper'
 
 feature 'Creating posts works' do
   background do
+    user = create :user
+    sign_in_with user
     visit '/'
-    click_link 'Register'
-    fill_in 'User name', with: 'johndoe'
-    fill_in 'Email', with: 'johndoe@internet.com'
-    fill_in 'Password', with: 'testtest', match: :first
-    fill_in 'Password confirmation', with: 'testtest'
-    click_button 'Sign up'
     click_link 'New Post'
   end
 

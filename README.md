@@ -37,6 +37,10 @@ As a User,
 So that only I can use this puny clone as myself,
 I want to sign in and sign out.
 
+As a User,
+So that others are envious of me,
+I want to be able to use the site only if I have signed in.
+
 ...
 
 (to be continued)
@@ -53,6 +57,7 @@ I want to sign in and sign out.
 * paperclip
 * factory_girl_rails
 * bootstrap-sass
+* devise
 
 ## How To Download and Run the App
 
@@ -77,8 +82,8 @@ Then visit http://localhost:3000.
     - Learned to use simple_form.
     - Styled with bootstrap-sass.
 2. __Users__
-  * ...
-    - ...
+  * TDD-driven development of user functionalities (sign up, sign in, sign out).
+    - Used devise for user management (including its own, automatically generated views).
 
 ## Issues
 

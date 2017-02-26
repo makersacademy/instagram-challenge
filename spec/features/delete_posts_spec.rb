@@ -2,8 +2,9 @@ require 'rails_helper'
 
 feature 'Deleting posts works' do
   background do
+    user = create(:user)
     post = create(:post, caption: 'This is what I do instead of working.')
-    visit '/'
+    sign_in_with user
     find(:xpath, "//a/img[@alt='Sample 02']/..").click
   end
 
