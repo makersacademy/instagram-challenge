@@ -12,22 +12,19 @@
 </section>
 
 <div class="container">
+  <div class="user-photos">
 
-<% if user_signed_in? %>
-  <% if @posts.any? %>
-    <% @posts.each do |post| %>
-      <div class = "col-sm-4">
-          <div class = "thumbnail">
-            <%= image_tag post.image.url %>
-          </div>
-          <div class = "caption">
-             <h3><%= post.caption %></h3>
-             <p>Posted by <%= post.user.email %> on <%= post.created_at %></p>
-             <p><b><%= pluralize post.likes.count, 'like' %></b></p>
-          </div>
-       </div>
+  <% if user_signed_in? %>
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
+        <div class = "col-sm-4">
+            <div class="image-profile" style="height: 350px; width: 350px; background-image: url(<%= post.image.url %>);"></div>
+
+            <p><b><%= pluralize post.likes.count, 'like' %></b></p>
+         </div>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
 
+  </div>
 </div>
