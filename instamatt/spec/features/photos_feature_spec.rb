@@ -32,7 +32,6 @@ feature 'photos' do
   end
 
   context 'viewing photos' do
-
       before do
         visit '/'
         click_link 'Add a photo'
@@ -44,6 +43,25 @@ feature 'photos' do
         visit '/'
         find(:xpath, "//a/img[@alt='Burger king']/..").click
         expect(page.current_path).to eq "/photos/#{Photo.first[:id]}"
+    end
+  end
+
+  context 'editing entries' do
+    before do
+      visit '/'
+      click_link 'Add a photo'
+      fill_in 'Description', with: 'Another test description'
+      page.attach_file("photo_image", Rails.root + 'app/assets/images/burger_king.jpg')
+      click_button 'Add Photo'
+    end
+
+    scenario 'user can edit the DESCRIPTION of a photo' do
+      visit '/'
+      click_link 'Edit description'
+      fill_in 'Description', with: 'An exciting test description'
+      click_button 'Update Photo'
+      find(:xpath, "//a/img[@alt='Burger king']/..").click
+      expect(page).to have_content 'An exciting test description'
     end
   end
 end
