@@ -2,8 +2,6 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   acts_as_voter
-  has_many :likes
-  has_many :liked_posts, :through => :likes, :source => :post
 
   validates_presence_of :username
   validates :username, uniqueness: true, length: { maximum: 30,
