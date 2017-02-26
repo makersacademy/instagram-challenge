@@ -28,9 +28,6 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    # @post.update(post_params)
-    # flash[:success] = 'Post\'s been updated, yo.'
-    # redirect_to(post_path(@post))
     if @post.update(post_params)
       flash[:success] = 'Post\'s been updated, yo.'
       redirect_to(post_path(@post))
@@ -38,6 +35,13 @@ class PostsController < ApplicationController
       flash[:alert] = 'Only a pic file works here, bro.'
       render :edit
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:alert] = 'Post\'s been deleted, phew!'
+    redirect_to posts_path
   end
 
   private
