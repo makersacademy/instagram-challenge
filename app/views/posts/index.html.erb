@@ -1,23 +1,23 @@
 <% if user_signed_in? %>
   <% if @posts.any? %>
     <% @posts.each do |post| %>
-      <div class = "col-sm-4">
+
+      <div class = "col-sm-6 col-sm-offset-3">
         <%= link_to post_path(post) do %>
-          <div class = "thumbnail">
-            <%= image_tag post.image.url %>
-          </div>
-          <div class = "caption">
-             <h3><%= post.caption %></h3>
-             <p>Posted by <%= post.user.email %> on <%= post.created_at %></p>
-             <p><b><%= pluralize post.likes.count, 'like' %></b></p>
-            <% if post.comments.any? %>
-              <% post.comments.each do |comment| %>
-                <p><b><%= comment.user.email %></b> <%= comment.content %>
+            <p class="image-name"><b><%= post.user.email %></b></p>
+            <p class="image-time"><b><%= post.created_at.strftime("%d %B, %Y") %></b></p>
+            <div class = "thumbnail">
+              <%= image_tag post.image.url %>
+
+              <p class="image-likes"><b><%= pluralize post.likes.count, 'like' %></b></p>
+              <% if post.comments.any? %>
+                <% post.comments.each do |comment| %>
+                  <p class="image-comment"><b><%= comment.user.email %></b> <%= comment.content %>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
-          <% end %>
-       </div>
+            </div>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
 <% end %>
