@@ -40,33 +40,4 @@ end
      expect(current_path).to eq "/posts/#{post.id}"
     end
   end
-
-  context 'editing post' do
-  before { Post.create title: 'POST1', content: 'Week1 post', id: 1 }
-    scenario 'let a user edit a post' do
-      visit '/posts'
-      sign_up
-      click_link 'Edit Post'
-      fill_in 'Title', with: 'POST2'
-      fill_in 'Content', with: 'Week2 post'
-      click_button 'Update Post'
-      expect(page).to have_content 'POST2'
-      visit '/posts/1'
-      expect(page).to have_content 'Week2 post'
-      expect(current_path).to eq '/posts/1'
-    end
-  end
-  context 'deleting post' do
-
-  before { Post.create title: 'Post1', content: 'Week1 post' }
-
-    scenario 'removes a post when a user clicks a delete link' do
-      visit '/posts'
-      sign_up
-      click_link 'Delete Post'
-      expect(page).not_to have_content 'POST1'
-      expect(page).to have_content 'Post deleted successfully'
-    end
-
-end
 end

@@ -74,3 +74,9 @@ def sign_in
   fill_in 'Password', with: '1234567'
   click_button 'Log in'
 end
+def create_post
+  sign_up
+  click_link "Add post"
+  fill_in 'Title', with: 'POST1'
+  click_button 'Create post'
+end
