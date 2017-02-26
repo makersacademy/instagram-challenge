@@ -1,21 +1,43 @@
 <% if @pictures.any? %>
   <% @pictures.sort.each do |picture| %>
-    <%= image_tag picture.image.url(:medium) %>
-    <h2><%= link_to "#{picture.description}", edit_picture_path(picture)%></h2>
-    <h2>pineapples * <%=  picture.pineapples %></h2>
-    <% if picture.comments.any? %>
-      <% picture.comments.sort.each do |comment| %>
-        <h3>-<%=  comment.text %></h3>
-      <% end %>
-    <% end %>
-    <%= form_for picture, html: {multipart: true} do |f| %>
-      <%= f.hidden_field :pineapples, :value => (picture.pineapples + 1) %>
-      <%= f.submit "Like"%>
-    <% end %>
-    <h3><%= link_to "Comment", new_picture_comment_path(picture)%></h3>
-    <br>
-    <% end %>
+    <table style="padding-left: 35%;">
+      <tr>
+        <th style="text-align: left;">author
+        <th>profile pic
+      </tr>
+      <tr>
+        <th style="padding-left: 5%;"><%= image_tag picture.image.url(:medium) %>
+      </tr>
+      <tr>
+        <th><%= form_for picture, html: {multipart: true} do |f| %>
+            <%= f.hidden_field :pineapples, :value => (picture.pineapples + 1) %>
+            <h3 style="text-align: left;"><%= f.submit ''%>&#127821;</h3>
 
-  <% else %>
-    <h1>no posts yet</h1>
+        <th><h3><%= link_to "Comment", new_picture_comment_path(picture)%></h3>
+            <% end %>
+      </tr>
+      <tr>
+        <th style="text-align: left;"><h3><%= link_to "#{picture.description}", edit_picture_path(picture)%></h3>
+        <th><h3>&#127821; * <%=  picture.pineapples %></h3>
+      </tr>
+      <tr>
+        <% if picture.comments.any? %>
+          <% picture.comments.sort.each do |comment| %>
+          <th style="text-align: left;"><h3><%=(@users.find("#{comment.user_id}")).email%>:</h3>
+          <th><h3 style="font-weight: normal;"><%=  comment.text %></h3>
+      </tr>
+            <% end %>
+          <% end %>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  <% end %>
+
+
+<% else %>
+  <h1>no posts yet</h1>
 <% end %>

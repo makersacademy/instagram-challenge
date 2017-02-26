@@ -3,6 +3,7 @@ class PicturesController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
 
   def index
+    @users = User.all
     @pictures = Picture.all
   end
 
@@ -11,16 +12,17 @@ class PicturesController < ApplicationController
   end
 
   def new
+    @user = current_user
     @pictures = Picture.new
   end
 
   def create
+    @user = current_user
     Picture.create(picture_params)
     redirect_to '/pictures'
   end
 
   def update
-    @user = current_user
     @picture = Picture.find(params[:id])
     @picture.update(picture_params)
     redirect_to '/pictures'
