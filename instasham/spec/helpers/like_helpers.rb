@@ -1,4 +1,4 @@
 def create_like
   visit '/posts'
-  click_button 'Create Like'
+  click_link 'Like'
 end

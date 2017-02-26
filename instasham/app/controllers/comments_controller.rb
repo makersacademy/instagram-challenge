@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     post = Post.find(params[:post_id])
     post.comments.build(comment_params.merge(user_id: current_user.id))
     post.save
-    redirect_to posts_path
+    redirect_back(fallback_location: root_path)
   end
 
   private

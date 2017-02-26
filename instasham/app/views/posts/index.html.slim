@@ -1,18 +1,18 @@
 - if @post.any?
   - @post.each do |post|
     article
+      .post-title
+        p = "#{post.user.username} #{time_ago_in_words(post.created_at)} ago"
       .image
-      .caption = post.caption
+      .caption 
+          = post.caption
       .likes
-        - if post.likes.count == 0
-          | No likes yet...
-        - else
-          = pluralize(post.likes.count, 'like')
-        - if user_signed_in?
-          = form_for [post, @like] do |f|
-            = f.submit
+        = pluralize(post.get_upvotes.size, 'like')
+      - if user_signed_in?
+        .like
+          = link_to 'Like', like_post_path(post), method: :put
       .comments
-        - if post.comments.count == 0
+        - if post.comments.size == 0
           | No comments yet...
         - else
           ul

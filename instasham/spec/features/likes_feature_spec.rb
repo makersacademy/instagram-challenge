@@ -5,8 +5,8 @@ feature 'Like' do
       create_post
       sign_out
       visit '/posts'
-      expect(page).to have_content 'No likes yet...'
-      expect(page).not_to have_button 'Create like'
+      expect(page).to have_content '0 likes'
+      expect(page).not_to have_link 'Like'
     end
   end
   context 'user is logged in' do
@@ -14,13 +14,13 @@ feature 'Like' do
       sign_up
       create_post
       visit '/posts'
-      expect(page).to have_content 'No likes yet...'
-      expect(page).to have_button 'Create Like'
+      expect(page).to have_content '0 likes'
+      expect(page).to have_link 'Like'
     end
     scenario 'user can like a post' do
       sign_up
       create_post
-      expect{create_like}.to change{Like.count}.by(1)
+      expect{create_like}.to change{Post.first.get_upvotes.size}.by(1)
     end
     scenario 'user can see amount of likes on a post' do
       sign_up
