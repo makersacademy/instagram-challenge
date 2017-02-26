@@ -3,6 +3,10 @@ Coffeegram
 
  an Instagram clone that provides a platform for users to post and comment on photos of their favourite coffee places
 
+ Available at:
+ -----
+ https://coffeegrambyedyta.herokuapp.com/
+
 Features :star2:
 --------------
 * Post a photo with a status;
