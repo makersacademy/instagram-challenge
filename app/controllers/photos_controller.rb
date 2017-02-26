@@ -1,11 +1,13 @@
 class PhotosController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @photos = Photo.all.reverse
   end
 
   def new
-    @photo = Photo.new
+   @photo = Photo.new
   end
 
   def create
@@ -23,14 +25,14 @@ class PhotosController < ApplicationController
 
   def update
     photo = Photo.find(params[:id])
-    photo.update(photo_params)
+    photo.update(photo_params) if photo.belong_to?(current_user)
     redirect_to photos_path
   end
 
   def destroy
     photo = Photo.find(params[:id])
-    photo.destroy
-    flash[:notice] = "Successfully deleted the photo!"
+    photo.destroy if photo.belong_to?(current_user)
+    # flash[:notice] = "Successfully deleted the photo!"
     redirect_to photos_path
   end
 

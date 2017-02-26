@@ -3,6 +3,6 @@ include ActionDispatch::TestProcess
 FactoryGirl.define do
    factory :comment do
     thoughts { Faker::Hipster.sentence }
-    association :photo
+    association :photo_id
    end
  end
