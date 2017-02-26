@@ -1,5 +1,5 @@
 
-# Instagram Clone
+# Instagram Clone ![Travis CI](https://travis-ci.org/sliute/instagram-challenge.svg?branch=master)
 
 ## Task
 
