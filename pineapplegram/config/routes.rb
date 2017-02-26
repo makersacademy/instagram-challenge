@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root :to => 'pictures#index'
-  devise_for :users
-
+  devise_for :users, :controllers => { registrations: 'registrations' }
+  
   resource :users do
-     resource :pictures 
+     resource :pictures
    end
 
   resources :pictures do
