@@ -1,7 +1,19 @@
+
+
 - if @pictures.any?
   - @pictures.each do |picture|
     %h3= picture.description
+    - if picture.comments.any?
+      - picture.comments.each do |comment|
+        %p= "#{comment.thoughts}"
+
+    %h3= link_to "Leave comment", new_picture_comment_path(picture)
+    %p= link_to "Delete #{picture.description}", picture_path(picture), method: :delete
+
 - else
   No pictures posted
 
-%a(href='pictures/new') Post a picture
+%div= link_to "Post a picture", 'pictures/new', :class => "post_link"
+-# <%= image_tag( 'image_name.png', style: 'height: 25px; width: 200px; position: absolute' ) %>
+
+-# @user.username
