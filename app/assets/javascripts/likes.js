@@ -1,4 +1,4 @@
-$(document).ready(function() {
+var attachLikesHandler = function() {
 
   var toggleLikeIcon = function(imageId){
     $("#image_"+imageId+"_likes_icon").text('favorite').addClass('liked');
@@ -11,6 +11,9 @@ $(document).ready(function() {
         var likesCount = $("#image_"+response.image_id+" .likes-count");
         likesCount.text(response.new_likes_count);
         toggleLikeIcon(response.image_id);
-    })
-  })
-})
+    });
+  });
+};
+
+$(document).ready(attachLikesHandler);
+$(document).on("turbolinks:load", attachLikesHandler);

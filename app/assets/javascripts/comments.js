@@ -1,4 +1,4 @@
-$(document).ready(function() {
+var attachCommentsHandler = function() {
 
   $(".comments-list").perfectScrollbar();
 
@@ -65,4 +65,7 @@ $(document).ready(function() {
       $(this).val('Type a comment here…');
     }
   });
-});
+};
+
+$(document).ready(attachCommentsHandler);
+$(document).on("turbolinks:load", attachCommentsHandler);
