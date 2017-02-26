@@ -6,9 +6,10 @@
     - if picture.comments.any?
       - picture.comments.each do |comment|
         %p= "#{comment.thoughts}"
-    %h3= link_to "Leave comment", new_picture_comment_path(picture)
-
-    %a= link_to "Delete #{picture.description}", picture_path(picture), method: :delete
+    - if current_user
+      %h3= link_to "Leave comment", new_picture_comment_path(picture)
+      - if current_user.present? && current_user.owns?(picture)
+        %a= link_to "Delete #{picture.description}", picture_path(picture), method: :delete
 
 - else
   No pictures posted

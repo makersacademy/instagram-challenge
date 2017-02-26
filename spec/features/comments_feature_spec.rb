@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 feature "commenting" do
-  before {Picture.create description: "description"}
-
+  before {sign_up
+    @picture = @user.pictures.create(description: 'description')
+  }
   scenario "allows users to leave comments on pictures using a special forms" do
     visit pictures_path
     add_comment("Beautiful!")
