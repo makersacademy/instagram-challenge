@@ -18,4 +18,15 @@ feature 'photos' do
     expect(page).not_to have_content('No photos yet')
   end
 end
+  context 'creating photos' do
+  scenario 'prompts user to add photo and comment, then displays the new photo' do
+      visit '/photos'
+      click_link 'Add a photo'
+      fill_in 'Comment', with: 'cool stuff'
+      click_button 'Create Photo'
+      expect(page).to have_content 'cool stuff'
+      expect(current_path).to eq '/photos'
+    end
+  end
+
 end
