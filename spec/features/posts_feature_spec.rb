@@ -50,14 +50,12 @@ feature 'posts' do
 
   context 'deleting posts' do
     before do
-      @user = User.create(email: 'test@example.com', password: 'test123')
-      @post = Post.create(description: 'Holiday', user: @user)
+      user = User.create(email: 'test@example.com', password: 'test123')
+      post = Post.create(description: 'Holiday', user: user)
       sign_in
     end
 
     scenario 'removes a post when a user clicks a delete link' do
-      p @user
-      p @post
       visit '/posts'
       click_link 'Delete Holiday'
       expect(page).not_to have_content 'Holiday'
