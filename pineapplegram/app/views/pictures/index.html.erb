@@ -1,9 +1,19 @@
 <% if @pictures.any? %>
-  <% @pictures.each do |picture| %>
+  <% @pictures.sort.each do |picture| %>
     <%= image_tag picture.image.url(:medium) %>
-    <%= link_to picture.description, picture_path(picture)%>
-    <h2><%=  picture.description %></h2>
+    <h2><%= link_to "#{picture.description}", edit_picture_path(picture)%></h2>
     <h2>pineapples * <%=  picture.pineapples %></h2>
+    <% if picture.comments.any? %>
+      <% picture.comments.sort.each do |comment| %>
+        <h3>-<%=  comment.text %></h3>
+      <% end %>
+    <% end %>
+    <%= form_for picture, html: {multipart: true} do |f| %>
+      <%= f.hidden_field :pineapples, :value => (picture.pineapples + 1) %>
+      <%= f.submit "Like"%>
+    <% end %>
+    <h3><%= link_to "Comment", new_picture_comment_path(picture)%></h3>
+    <br>
     <% end %>
 
   <% else %>

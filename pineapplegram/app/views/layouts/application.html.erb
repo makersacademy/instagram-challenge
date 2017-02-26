@@ -9,8 +9,36 @@
   </head>
 
   <body>
+    <script>{
+  document.body.style.backgroundColor = "#009900";
+  //document.body.style.backgroundImage = "url('https://s-media-cache-ak0.pinimg.com/originals/5f/9c/02/5f9c0220fd4a6ab8e614f0cbc69c313a.png')";
+}</script>
+    <header>
+      <div id="home">
+        <table>
+          <tr>
+            <th><h1><%= link_to "PineappleGram", root_path %></h1>
+            <th style="padding-left: 850px;"><% if user_signed_in? %><h1 id="edit-profile"><%= link_to "Edit Profile", edit_user_registration_path %><%end%></h1>
+          </tr>
+          <tr>
+            <th><% if user_signed_in? %>
+                  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+                  <%= link_to "New post", new_picture_path %>
+                <% else %>
+                  <%= link_to "Sign in", new_user_session_path %>
+                  <%= link_to "Sign up", new_user_registration_path %>
+                <% end %>
+            <th style="padding-left: 850px;"><p class="notice"><%= notice %></p>
+                <p class="alert"><%= alert %></p>
+          </tr>
+        </table>
+
+        <br><br>
+      </div>
+    </header>
+
     <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+
   </body>
 </html>
