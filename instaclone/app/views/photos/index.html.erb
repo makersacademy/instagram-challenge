@@ -1,7 +1,12 @@
 <% if @photos.any? %>
   <% @photos.each do |photo| %>
+  <h4> <%= photo.caption %> </h4>
+  <%= photo.comments if photo.comments.length > 0 %>
+
     <h2> <%= link_to "View #{photo.caption}", photo_path(photo) %> </h2>
+    <%= link_to "Comment on #{photo.caption}", new_photo_comment_path(photo) %>
     <%= link_to "Edit #{photo.caption}", edit_photo_path(photo) %>
+    <%= link_to "Delete #{photo.caption}", photo_path(photo), method: :delete %>
   <% end %>
 <% else %>
   No photos yet

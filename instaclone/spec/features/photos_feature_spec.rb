@@ -46,11 +46,21 @@ feature 'photos' do
         visit '/photos'
         click_link 'Edit surfing'
         fill_in 'Caption', with: 'surfinG'
-        save_and_open_page
         click_button 'Update Photo'
         click_link 'View surfinG'
         expect(page).to have_content 'surfinG'
         expect(current_path).to eq "/photos/#{@surfing.id}"
+      end
+    end
+
+    context 'deleting photos' do
+
+      before { Photo.create caption: 'myImage' }
+      scenario 'removes a photo when a user clicks a delete link' do
+        visit '/photos'
+        click_link 'Delete myImage'
+        expect(page).not_to have_content 'myImage'
+        expect(page).to have_content 'Photo deleted successfully'
       end
     end
   end
