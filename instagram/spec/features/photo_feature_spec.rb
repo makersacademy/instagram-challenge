@@ -18,6 +18,15 @@ feature 'photos' do
     expect(page).not_to have_content('No photos yet')
   end
 end
+  before do
+      visit('/')
+      click_link('Sign up')
+      fill_in('Email', with: 'test@example.com')
+      fill_in('Password', with: 'testtest')
+      fill_in('Password confirmation', with: 'testtest')
+      click_button('Sign up')
+    end
+    
   context 'creating photos' do
   scenario 'prompts user to add photo and comment, then displays the new photo' do
       visit '/photos'
@@ -38,7 +47,7 @@ end
     end
   end
   context 'deleting photos' do
-    before { Photo.create(comment: 'cool')}
+    before { Photo.create comment: 'cool'}
   scenario 'removes a photo when a user clicks a delete link' do
     visit '/photos'
     click_link 'Delete cool'

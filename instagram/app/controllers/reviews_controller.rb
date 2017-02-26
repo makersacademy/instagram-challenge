@@ -1,4 +1,7 @@
 class ReviewsController < ApplicationController
+
+  before_action :authenticate_user!
+
   def new
     @photo = Photo.find(params[:photo_id])
     @review = Review.new
