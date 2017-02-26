@@ -23,7 +23,7 @@ I want to be able to 'like' a posted image
 So that the user gets a good feeling
 
 As a user
-I want to be able to add and read comments on an image
+I want to be able to add comments on an image
 So that we can get bantz going
 
 As an owner

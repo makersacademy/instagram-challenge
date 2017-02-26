@@ -15,6 +15,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    p @post
+    @comments = Comment.where(:post_id=>params[:id])
+    p @comments
   end
 
   def edit
@@ -24,7 +27,13 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
+    redirect_to '/posts'
+  end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = 'Post deleted successfully'
     redirect_to '/posts'
   end
 

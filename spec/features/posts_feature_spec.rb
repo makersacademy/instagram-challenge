@@ -4,8 +4,12 @@ feature 'Dogs' do
   context 'no posts have been added' do
     scenario 'should display a prompt to post a photo' do
       visit 'posts/index'
-      expect(page).to have_content 'No dogs yet'
       expect(page).to have_link 'Post a photo'
+    end
+
+    scenario 'should tell user there are no dogs to view' do
+      visit 'posts/index'
+      expect(page).to have_content 'No dogs yet'
     end
   end
 
@@ -45,4 +49,15 @@ end
       expect(page).to have_content 'gentle giant'
       expect(current_path).to eq '/posts/1'
     end
+  end
+
+  context 'deleting dogs' do
+     before { Post.create title: 'Poppy', desc: "Mellow retriever" }
+
+     scenario 'removes a post when a user clicks a delete link' do
+       visit '/posts'
+       click_link 'Delete Poppy'
+       expect(page).not_to have_content 'Poppy'
+       expect(page).to have_content 'Post deleted successfully'
+     end
   end

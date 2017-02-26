@@ -1,0 +1,2 @@
+class Woof < ApplicationRecord
+end

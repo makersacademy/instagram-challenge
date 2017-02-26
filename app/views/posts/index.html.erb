@@ -2,14 +2,17 @@
 <html>
 <head>
 </head>
-<h1>Post an image</h1>
-<a href="posts/new"> Post a photo</a>
+<h2>Post an image</h2>
+<h2><a href="posts/new"> Post a photo</a><h2><br>
 
 
 <% if @posts.any? %>
   <% @posts.each do |post| %> -->
      <%= link_to post.title, post_path(post) %>
-     <%= link_to "Edit #{post.title}", edit_post_path(post) %>
+     <%= link_to "Edit #{post.title}", edit_post_path(post) %><br>
+     <%= link_to "Delete #{post.title}", post_path(post), method: :delete %><br>
+     <%= link_to "Comment on #{post.title}", new_post_comment_path(post) %><br>
+     <%= link_to "Woof! #{post.title}", new_post_woof_path(post) %><br>
   <% end %>
 <% else %>
   <h2>No dogs yet</h2>
