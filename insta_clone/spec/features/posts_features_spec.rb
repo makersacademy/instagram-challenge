@@ -23,6 +23,7 @@ feature 'posts' do
     context 'creating posts' do
         scenario 'prompts user to fill out a form, then displays the new post' do
             visit '/posts'
+            sign_up
             click_link 'Add a post'
             fill_in 'Name', with: 'Nice Picture'
             page.attach_file('post_image', Rails.root + 'app/assets/images/post.png')
@@ -49,6 +50,7 @@ feature 'posts' do
     context 'uploading a picture' do
         scenario 'user can add a picture to the post' do
             visit '/posts'
+            sign_up
             click_link 'Add a post'
             fill_in 'Name', with: 'Nice Picture'
             page.attach_file('post_image', Rails.root + 'app/assets/images/post.png')
@@ -61,6 +63,7 @@ feature 'posts' do
     context 'invalid posts' do
         scenario 'users must add an image' do
             visit '/posts'
+            sign_up
             click_link 'Add a post'
             fill_in 'Name', with: 'Nice Picture'
             click_button 'Create Post'
@@ -78,6 +81,7 @@ context 'editing posts' do
 
   scenario 'let a user edit a post' do
     visit '/posts'
+    sign_up
     click_link 'Edit'
     fill_in 'Name', with: 'Night Out'
     click_button 'Update'
@@ -96,6 +100,7 @@ context 'deleting posts' do
 
        scenario 'users can delete a post' do
          visit '/posts'
+         sign_up
          click_link 'Delete'
          expect(page).to have_content 'Post deleted successfully'
          expect(page).not_to have_content 'Nice Picture'
