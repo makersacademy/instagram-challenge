@@ -2,13 +2,15 @@
 <% if @posts.any? %>
     <% @posts.each do |post| %>
     <ul>
-        <li>
-          <%= post.title.upcase%> <br>
-          <% if user_signed_in? %>
-          <%= link_to "View Post", post_path(post) %> <br>
-          <%= link_to "Edit Post", edit_post_path(post) %> <br>
-          <%= link_to "Comment Post", new_post_comment_path(post)%> <br>
-          <%= link_to "Delete Post", post_path(post), method: :delete %> <br>
+      <li>
+      <%= post.title.upcase%> <br>
+      <% if user_signed_in? %>
+        <%= link_to "View Post", post_path(post) %> <br>
+        <%= link_to "Comment Post", new_post_comment_path(post)%> <br>
+          <%if current_user.id == post.user_id %>
+            <%= link_to "Edit Post", edit_post_path(post) %> <br>
+            <%= link_to "Delete Post", post_path(post), method: :delete %>
+          <%end%>
       <% end %>
     </li>
   </ul>
