@@ -1,38 +1,42 @@
 .posts.twelve.columns
   - if @post.any?
     - @post.each do |post|
-      article
+      article.post
         header.post-title
-          span.avatar
+          .avatar
             - if post.user.avatar.file.exists?
-              img src=post.user.avatar.thumb
-          span.username
+              img.avatar src=post.user.avatar.thumb
+          .username
             = post.user.username
-          span.time
+          .time
             = time_ago_in_words(post.created_at)
         .image
-          img src="#{post.image}" alt="#{post.caption}"
-        .caption
-            = post.caption
+          img src="#{post.image.send(post.color_filter)}" alt="#{post.caption}"
         .interactions
-          = pluralize(post.get_upvotes.size, 'like')
-        - if user_signed_in?
-          section.like
-            = link_to 'Like', like_post_path(post), method: :put
-          section.comments
-            - if post.comments.count == 0
-              | No comments yet...
-            - else
-              ul
-                - post.comments.each do |comment|
-                  li 
-                    = comment.content
+          .likes
+            = pluralize(post.get_upvotes.size, 'like')
+          .caption
+            p
+              span.name
+                strong = post.user.username
+              span.caption-content
+                = post.caption          
+            section
+              - if post.comments.count == 0
+                | No comments yet...
+              - else
+                ul.comments
+                  - post.comments.each do |comment|
+                    li
+                      span.name
+                        strong = comment.user.username
+                      span.caption-content
+                        = comment.content
             - if user_signed_in?
               section.new-comment
+                = link_to "Like", like_post_path(post), method: :put
                 = form_for [post, @comment] do |f|
-                  = f.text_field :content, placeholder: "Add a comment"
-                  = f.submit
+                  = f.text_field :content, placeholder: "Add a comment . . ."
+                  = f.submit "Comment", class: "submit-comment"
   - else
     h2 No posts yet!
-  - if user_signed_in?
-    = link_to 'Add a post', new_post_path, class: "links-new-post"

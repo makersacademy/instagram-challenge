@@ -4,6 +4,7 @@ FactoryGirl.define do
   end
  factory :post do
     image File.open('spec/fixtures/avatar.jpg')
+    color_filter "Kelvin"
     caption "Itsa me, Mario!"
     user_id
   end
