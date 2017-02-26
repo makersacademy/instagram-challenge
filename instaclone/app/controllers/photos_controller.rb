@@ -9,8 +9,12 @@ class PhotosController < ApplicationController
   end
 
   def create
-    Photo.create(photo_params)
-    redirect_to '/photos'
+    @photo = Photo.new(photo_params)
+    if @photo.save
+      redirect_to '/photos'
+    else
+      render 'new'
+    end
   end
 
   def show
