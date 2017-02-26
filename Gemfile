@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'haml'
+gem 'devise'
 gem 'bootstrap-sass'
 gem 'paperclip'
 gem 'simple_form'
