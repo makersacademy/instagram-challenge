@@ -3,9 +3,9 @@ FactoryGirl.define do
     n
   end
  factory :post do
-    image File.open('spec/fixtures/avatar.jpg')
-    color_filter "Gotham"
-    caption "Itsa me, Mario!"
+    image File.open('spec/fixtures/test-image.jpg')
+    color_filter "None"
+    caption "Stunning!"
     user_id
   end
 end
