@@ -40,7 +40,7 @@ feature "photos" do
       # photo = FactoryGirl.create(:photo)
       # visit photos_path
       visit_index
-      click_link "Edit"
+      find(".edit-status").click_link "Edit"
       fill_in "Caption", with: "Morning glory"
       click_button "Save"
       expect(page).to have_content "Morning glory"

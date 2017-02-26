@@ -3,22 +3,24 @@
  </a>
  <p><%= photo.caption %></p>
 
- <%= link_to "Edit", edit_photo_path(photo) %>
- <%= link_to "Delete", photo_path(photo), method: :delete %>
+ <div class="edit-status">
+   <%= link_to "Edit Comment", edit_photo_path(photo) %>
+ </div>
 
  <% if photo.comments.any? %>
    <% photo.comments.each do |comment| %>
      <ul>
        <%= comment.thoughts %>
+       <div class="delete-comment">
+         <%= link_to "Delete comment", comment_path(comment), method: :delete %>
+       </div>
      </ul>
    <% end %>
  <% end %>
 
- <h4>Add a comment:</h4>
  <%= form_for([photo, photo.comments.build]) do |f| %>
    <p>
-     <%= f.label :thoughts %><br>
-     <%= f.text_field :thoughts %>
+     <%= f.text_field :thoughts, placeholder: "Share your thoughts" %>
    </p>
    <p>
      <%= f.label :likes %>
@@ -29,4 +31,7 @@
    </p>
  <% end %>
 
- <%= link_to 'Back', photos_path %>
+
+<%= link_to "Delete Photo", photo_path(photo), method: :delete %>
+<br />
+<br />
