@@ -13,7 +13,7 @@ As a user | DONE
 So that I can have an Instagram account
 I want to be able to sign up, sign in and out
 
-As a user
+As a user | DONE
 So that I can have my personal Instagram account
 I want to be able to sign up with a unique nickname
 
@@ -25,21 +25,13 @@ As a photographer wannabe | DONE
 So that I can give my pictures a context
 I want to be able to add a description to a picture
 
-As a photographer wannabe
+As a photographer wannabe | DONE
 So that people knows I am the artist behind my pics
 I want to see my nickname on top of my picture
 
 As a photo-lover | DONE
 So that I can delight myself with good pictures
 I want to be able to see others' pictures on my homepage
-
-As a photo-lover
-So that people can find the pictures I am more interested in
-I want to be able to search by keywords
-
-As a photo-lover
-So that I can select who's pics I wanna see
-I want to be able to follow specific users
 
 As a photo-lover
 So that I can express my appreciation to others
@@ -53,9 +45,18 @@ As a photo-lover
 So that I can express my appreciation to others
 I want to be able to comment others' pictures
 
-As a photographer wannabe
-So that I can hear people's feedback
-I want to be able to read their comments
+As a user
+So that I can hear people's opinion
+I want to be able to see comments to pictures
+
+As a photo-lover
+So that people can find the pictures I am more interested in
+I want to be able to search by keywords
+
+As a photo-lover
+So that I can select who's pics I wanna see
+I want to be able to follow specific users
+
 ```
 
 Nice To Have

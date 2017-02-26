@@ -5,7 +5,7 @@ feature 'User' do
     scenario 'can sign up filling a form' do
       visit '/'
       click_button 'Join Instapic!'
-      # fill_in 'nickname', with: 'MakerJenny'
+      fill_in 'user_nickname', with: 'MakerJenny'
       fill_in 'user_email', with: 'jenny@makers.com'
       fill_in 'user_password', with: '123456'
       fill_in 'user_password_confirmation', with: '123456'
@@ -18,7 +18,7 @@ feature 'User' do
     scenario 'can log out' do
       visit '/'
       click_button 'Join Instapic!'
-      # fill_in 'nickname', with: 'MakerJenny'
+      fill_in 'user_nickname', with: 'MakerJenny'
       fill_in 'user_email', with: 'jenny@makers.com'
       fill_in 'user_password', with: '123456'
       fill_in 'user_password_confirmation', with: '123456'
