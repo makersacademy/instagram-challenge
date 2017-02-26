@@ -10,4 +10,12 @@ feature 'Creating posts works' do
     expect(page).to have_content('nomnom')
     expect(page).to have_css("img[src*='sample_01.jpg']")
   end
+
+  scenario 'and the image is compulsory' do
+    visit '/'
+    click_link 'New Post'
+    fill_in 'Caption', with: "This is a no-image post."
+    click_button 'Create Post'
+    expect(page).to have_content('Nope. Nope. You must provide an image!')
+  end
 end
