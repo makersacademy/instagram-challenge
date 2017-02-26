@@ -99,4 +99,24 @@ feature 'post' do
 
   end
 
+  context 'uploaded image' do
+    scenario 'will be the image selected by the user' do
+      create_user
+      sign_in
+      click_link 'Add a post'
+      attach_file('Image', '/home/sam/projects/instagram-challenge/public/images/medium/test.jpg')
+      fill_in 'Description', with: 'my brilliant photo'
+      click_button('Create Post')
+      expect(page).to have_css("img[src*='test.jpg']")
+    end
+
+    scenario 'will be a placeholder image if no other is provided' do
+      create_user
+      post = Post.create(description: 'no image here', id: 1, user_id: 1)
+      expect(post.image.url).to eq('/images/original/missing.png')
+    end
+  end
+
+
+
 end

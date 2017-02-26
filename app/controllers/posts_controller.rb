@@ -39,16 +39,15 @@ class PostsController < ApplicationController
   end
 
   def destroy
-
-  if users_restaurant?(@restaurant)
-    @restaurant.destroy
-    flash[:notice] = "Restaurant deleted successfully"
-    redirect_to '/restaurants'
-  else
-    flash[:notice] = "error"
-    redirect_to '/restaurants'
+    if users_restaurant?(@restaurant)
+      @restaurant.destroy
+      flash[:notice] = "Restaurant deleted successfully"
+      redirect_to '/restaurants'
+    else
+      flash[:notice] = "error"
+      redirect_to '/restaurants'
+    end
   end
-end
 
   def destroy
     @post = Post.find(params[:id])
@@ -65,7 +64,7 @@ end
   private
 
   def post_params
-    params.require(:post).permit(:description)
+    params.require(:post).permit(:image, :description)
   end
 
   def users_post?(post)
