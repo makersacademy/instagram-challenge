@@ -10,7 +10,6 @@ class CommentsController < ApplicationController
   def create
     @picture = Picture.find(params[:picture_id])
     @comment = @picture.comments.create(comment_params)
-    p @comment.errors.full_messages
     if @comment.save
       redirect_to '/pictures'
     else
