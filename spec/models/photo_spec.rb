@@ -5,11 +5,11 @@ require "rails_helper"
 
    it { is_expected.to belong_to :user }
 
-   describe "#belong_to" do
-     it "returns true if a photo belongs to the current user" do
+   describe "#created_by" do
+     it "returns true if a photo was added by the current user" do
        user = FactoryGirl.create(:user)
        photo = FactoryGirl.create(:photo, user: user)
-       expect(photo.belong_to?(user)).to eq true
+       expect(photo.created_by?(user)).to eq true
      end
    end
  end

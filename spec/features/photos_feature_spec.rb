@@ -25,6 +25,12 @@ feature "photos" do
       expect(current_path).to eq photos_path
       expect(page).to have_content "Morning coffee"
     end
+
+    scenario "guest has to sign in before adding a photo" do
+       visit photos_path
+       click_link "Add Photo"
+       expect(current_path).to eq new_user_session_path
+    end
   end
 
   context 'viewing photos' do

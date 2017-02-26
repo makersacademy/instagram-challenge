@@ -3,7 +3,7 @@
  </a>
  <p><%= photo.caption %></p>
 
- <% if user_signed_in? && photo.belong_to?(current_user) %>
+ <% if user_signed_in? && photo.created_by?(current_user) %>
    <div class="edit-status">
      <%= link_to "Edit Photo", edit_photo_path(photo) %>
    </div>
@@ -21,6 +21,7 @@
    <% end %>
  <% end %>
 
+ <% if user_signed_in? %>
  <%= form_for([photo, photo.comments.new]) do |f| %>
    <p>
      <%= f.text_field :thoughts, placeholder: "Share your thoughts" %>
@@ -32,4 +33,5 @@
    <p>
      <%= f.submit 'Leave Comment' %>
    </p>
+ <% end %>
  <% end %>

@@ -3,13 +3,14 @@
   <head>
     <title>Coffegram</title>
     <%= csrf_meta_tags %>
-
+    <link href="https://fonts.googleapis.com/css?family=Enriqueta|Kaushan+Script|Lobster|Tangerine:700" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <h1>Your CoffeeGram</h1>
+    <%= render "/layouts/navbar" %>
+    <section class="container">
     <!-- Load Facebook SDK for JavaScript -->
 
     <script>
@@ -44,16 +45,16 @@
     </script>
 
 
-    <% if user_signed_in? %>
+    <!-- <% if user_signed_in? %>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
       Welcome <%= current_user.username %>
     <% else %>
       <%= link_to "Sign in", new_user_session_path %>
       <%= link_to "Sign up", new_user_registration_path %>
-    <% end %>
+    <% end %> -->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-
+  </section>
   </body>
 </html>
