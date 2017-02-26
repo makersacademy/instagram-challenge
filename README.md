@@ -33,11 +33,11 @@ As a photo-lover | DONE
 So that I can delight myself with good pictures
 I want to be able to see others' pictures on my homepage
 
-As a photo-lover
+As a photo-lover | DONE
 So that I can express my appreciation to others
 I want to be able to like others' pictures
 
-As a photographer wannabe
+As a photographer wannabe | DONE
 So that I can see my work is appreciated
 I want to see the number of likes a picture receives
 

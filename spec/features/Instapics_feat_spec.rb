@@ -36,4 +36,5 @@ feature 'Instapics' do
     end
 
   end
+
 end
