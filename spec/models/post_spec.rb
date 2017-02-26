@@ -41,4 +41,5 @@ describe Post, type: :model do
   it 'should have many comments' do
     should have_many :comments
   end
+  
 end

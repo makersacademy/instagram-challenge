@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe User, type: :model do
+
   it 'should have an email' do
     @user = User.create(email: "kmhicks92@gmail.com", password: "123456", password_confirmation: "123456")
     expect(@user.email).to eq("kmhicks92@gmail.com")
@@ -24,4 +25,5 @@ describe User, type: :model do
     @user = User.create(email: "kmhicks92@gmail.com", password: "123456", password_confirmation: "456123")
     expect(@user).to_not be_valid
   end
+  
 end
