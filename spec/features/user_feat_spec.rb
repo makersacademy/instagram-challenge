@@ -29,4 +29,28 @@ feature 'User' do
       expect(page).to have_button('Log in')
     end
   end
+
+  context 'sign up with a nickname' do
+    scenario 'must choose a nickname at sign up' do
+      visit '/'
+      click_button 'Join Instapic!'
+      fill_in 'user_nickname', with: 'MakerJenny'
+      fill_in 'user_email', with: 'jenny@makers.com'
+      fill_in 'user_password', with: '123456'
+      fill_in 'user_password_confirmation', with: '123456'
+      click_button('Sign up')
+      expect(page).to have_content('MakerJenny')
+    end
+
+    scenario 'cannot sign up without nickname' do
+      visit '/'
+      click_button 'Join Instapic!'
+      fill_in 'user_nickname', with: ''
+      fill_in 'user_email', with: 'jenny@makers.com'
+      fill_in 'user_password', with: '123456'
+      fill_in 'user_password_confirmation', with: '123456'
+      click_button('Sign up')
+      expect(page).to have_content 'error'
+    end
+  end
 end
