@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     if post.save
       redirect_to posts_path
     else
-      render new_post
+      redirect_back(fallback_location: new_post_url)
     end
   end
 
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:caption)
+    params.require(:post).permit(:caption, :image, :image_cache)
   end
 
 end
