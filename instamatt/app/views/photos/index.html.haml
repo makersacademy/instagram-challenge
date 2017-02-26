@@ -4,6 +4,10 @@
     =link_to image_tag(photo.image.url(:medium)), photo_path(photo)
     =link_to "Edit description", edit_photo_path(photo)
     =link_to "Delete Photo", photo_path(photo), method: :delete
+    =link_to "Add Comment", new_photo_comment_path(photo)
+    -photo.comments.each do |comment|
+      %li
+        #{comment.description}
 -else
   No photos have been added - why not be the first?
 
