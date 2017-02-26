@@ -30,4 +30,20 @@ feature 'photos' do
       expect(page.current_path).to eq '/'
     end
   end
+
+  context 'viewing photos' do
+
+      before do
+        visit '/'
+        click_link 'Add a photo'
+        fill_in 'Description', with: 'Another test description'
+        page.attach_file("photo_image", Rails.root + 'app/assets/images/burger_king.jpg')
+        click_button 'Add Photo'
+      end
+      scenario 'user can see a full display of photo and description' do
+        visit '/'
+        find(:xpath, "//a/img[@alt='Burger king']/..").click
+        expect(page.current_path).to eq "/photos/#{Photo.first[:id]}"
+    end
+  end
 end
