@@ -1,5 +1,6 @@
 Instagram Challenge
 ===================
+James Turner
 
 Instructions
 -------
