@@ -19,7 +19,6 @@ Interface
 -----------
 
 ![snap1](./public/interface1.png)
-![snap2](./public/interface2.png)
 
 User Stories
 -----
