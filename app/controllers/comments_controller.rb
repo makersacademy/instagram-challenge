@@ -16,18 +16,18 @@ class CommentsController < ApplicationController
         format.html { render :new }
       end
     end
-    redirect_to articles_path
   end
 
   def update
     @comment.update(article_params)
     flash[:notice] = 'comment edited successfully'
-    redirect_to articles_path
+    redirect_to @article
   end
+
   def destroy
     @comment.destroy
     flash[:notice] = 'comment deleted successfully'
-    redirect_to articles_path
+    redirect_to @article
   end
   private
   # Use callbacks to share common setup or constraints between actions.
