@@ -1,4 +1,4 @@
-Coffeegram
+Coffeegram               [![Build Status](https://travis-ci.org/edytawrobel/instagram-challenge.svg?branch=master)](https://travis-ci.org/edytawrobel/instagram-challenge)
 ===================
 
  an Instagram clone that provides a platform for users to post and comment on photos of their favourite coffee places
