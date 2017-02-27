@@ -7,7 +7,7 @@ class LikesController < ApplicationController
   def create
     @instapic = Instapic.find(params[:instapic_id])
     @instapic.likes.create
-    render json: { new_like_count: @instapic.likes.count }
+    render json: { newLikeCount: @instapic.likes.count }
   end
 
 end
