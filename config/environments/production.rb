@@ -75,15 +75,18 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_credentials => {
-      :bucket => ENV['S3_BUCKET_NAME'],
-      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-      #EU (London)
+
+    config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_region => ENV['AWS_REGION'],
+      :s3_host_name => "s3-#{ENV['AWS_REGION']}.amazonaws.com",
+      :s3_credentials => {
+        :bucket => ENV['S3_BUCKET_NAME'],
+        :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+        :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+      }
     }
-  }
+
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
