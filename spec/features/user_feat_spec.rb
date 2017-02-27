@@ -3,26 +3,14 @@ require 'rails_helper'
 feature 'User' do
   context 'can sign up on the main page' do
     scenario 'can sign up filling a form' do
-      visit '/'
-      click_button 'Join Instapic!'
-      fill_in 'user_nickname', with: 'MakerJenny'
-      fill_in 'user_email', with: 'jenny@makers.com'
-      fill_in 'user_password', with: '123456'
-      fill_in 'user_password_confirmation', with: '123456'
-      click_button('Sign up')
+      sign_up
       expect(page).to have_button('Log out')
       expect(page).not_to have_button('Sign up')
       expect(page).not_to have_button('Log in')
     end
 
     scenario 'can log out' do
-      visit '/'
-      click_button 'Join Instapic!'
-      fill_in 'user_nickname', with: 'MakerJenny'
-      fill_in 'user_email', with: 'jenny@makers.com'
-      fill_in 'user_password', with: '123456'
-      fill_in 'user_password_confirmation', with: '123456'
-      click_button('Sign up')
+      sign_up
       expect(current_path).to eq '/'
       click_button('Log out')
       expect(page).to have_button('Join Instapic!')
@@ -31,17 +19,6 @@ feature 'User' do
   end
 
   context 'sign up with a nickname' do
-    scenario 'must choose a nickname at sign up' do
-      visit '/'
-      click_button 'Join Instapic!'
-      fill_in 'user_nickname', with: 'MakerJenny'
-      fill_in 'user_email', with: 'jenny@makers.com'
-      fill_in 'user_password', with: '123456'
-      fill_in 'user_password_confirmation', with: '123456'
-      click_button('Sign up')
-      expect(page).to have_content('MakerJenny')
-    end
-
     scenario 'cannot sign up without nickname' do
       visit '/'
       click_button 'Join Instapic!'
