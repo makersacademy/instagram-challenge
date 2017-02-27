@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   include ArticlesHelper
-
+  include LikeHelper
   include Rails.application.routes.url_helpers
 
   # GET /articles
@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
       if @article.update(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
       else
-        format.html { render :edit }        
+        format.html { render :edit }
       end
     end
   end

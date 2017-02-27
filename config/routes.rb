@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
   resources :comments
+  resources :likes
   resources :articles do
     resources :comments
   end
   resources :articles
 
   devise_for :users
+
   root to: "articles#index"
 
 
