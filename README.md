@@ -56,6 +56,6 @@ visit the page in your browser: http://localhost:3000
 
 ## Screenshots
 
-![Instasham - Homepage](public/img/homepage.png)
+![Instasham - Homepage](public/img/home.png)
 ![Instasham - Log in](public/img/log-in.png)
 ![Instasham - Add a post](public/img/add-post.png)
