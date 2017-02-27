@@ -7,7 +7,7 @@ feature 'liking posts' do
     signup_and_in
   end
 
-  scenario 'a user can like a post, which updates the like count', js: true do
+  xscenario 'a user can like a post, which updates the like count', js: true do
     visit '/posts'
     click_link "Like #{@posts.description}"
     expect(page).to have_content('1 like')
