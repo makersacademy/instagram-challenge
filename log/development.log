@@ -24921,3 +24921,100 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 228ms (Views: 212.6ms | ActiveRecord: 8.0ms)
 
 
+Started GET "/posts/new" for 127.0.0.1 at 2017-02-27 08:53:40 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/sam/projects/instagram-challenge/app/models/post.rb:5)
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (97.0ms)
+  Rendered posts/new.html.erb within layouts/application (110.3ms)
+Completed 200 OK in 1393ms (Views: 1254.9ms | ActiveRecord: 15.4ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2017-02-27 08:53:49 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Zv24g6lCxEF2VKEinzbDWupgLWc0fA9Ibzo+/9+ghMoGpE/RGGXRXJO8uO8agUusMb4HvVrZp0CErwB8067eoQ==", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x000000050dfc50 @tempfile=#<Tempfile:/tmp/RackMultipart20170227-19214-dj1ood.jpg>, @original_filename="cat.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"cat.jpg\"\r\nContent-Type: image/jpeg\r\n">, "description"=>"cat"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d077f244def8a70e5ea758bd8352fcd820170227-19214-1uuxoau.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d077f244def8a70e5ea758bd8352fcd820170227-19214-1uuxoau.jpg[0]'
+Command :: convert '/tmp/d077f244def8a70e5ea758bd8352fcd820170227-19214-1uuxoau.jpg[0]' -auto-orient -resize "370x370>" '/tmp/3f40d499016234c9630c51816aec5c2b20170227-19214-20mmk5'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d077f244def8a70e5ea758bd8352fcd820170227-19214-1uuxoau.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d077f244def8a70e5ea758bd8352fcd820170227-19214-1uuxoau.jpg[0]'
+Command :: convert '/tmp/d077f244def8a70e5ea758bd8352fcd820170227-19214-1uuxoau.jpg[0]' -auto-orient -resize "170x170>" '/tmp/3f40d499016234c9630c51816aec5c2b20170227-19214-1xuf84c'
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/tmp/d077f244def8a70e5ea758bd8352fcd820170227-19214-1cxxq7d.jpg'
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("description", "created_at", "updated_at", "user_id", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["description", "cat"], ["created_at", 2017-02-27 08:53:49 UTC], ["updated_at", 2017-02-27 08:53:49 UTC], ["user_id", 1], ["image_file_name", "cat.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 30119], ["image_updated_at", 2017-02-27 08:53:49 UTC]]
+[paperclip] saving /posts/images/000/000/022/original/cat.jpg
+[AWS S3 200 1.365411 0 retries] put_object(:acl=>:public_read,:bucket_name=>"pictureappbucket",:content_length=>30119,:content_type=>"image/jpeg",:data=>Paperclip::UploadedFileAdapter: cat.jpg,:key=>"posts/images/000/000/022/original/cat.jpg")  
+
+[paperclip] saving /posts/images/000/000/022/medium/cat.jpg
+[AWS S3 200 0.508024 0 retries] put_object(:acl=>:public_read,:bucket_name=>"pictureappbucket",:content_length=>31597,:content_type=>"image/jpeg",:data=>Paperclip::FileAdapter: 3f40d499016234c9630c51816aec5c2b20170227-19214-20mmk5,:key=>"posts/images/000/000/022/medium/cat.jpg")  
+
+[paperclip] saving /posts/images/000/000/022/thumb/cat.jpg
+[AWS S3 200 0.582011 0 retries] put_object(:acl=>:public_read,:bucket_name=>"pictureappbucket",:content_length=>14761,:content_type=>"image/jpeg",:data=>Paperclip::FileAdapter: 3f40d499016234c9630c51816aec5c2b20170227-19214-1xuf84c,:key=>"posts/images/000/000/022/thumb/cat.jpg")  
+
+  [1m[35m (4.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 3278ms (ActiveRecord: 8.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-02-27 08:53:52 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mPost Exists (7.3ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" INNER JOIN "likes" ON "posts"."id" = "likes"."post_id" WHERE "likes"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 19], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 19]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 19]]
+  [1m[36mPost Exists (3.2ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" INNER JOIN "likes" ON "posts"."id" = "likes"."post_id" WHERE "likes"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 20], ["LIMIT", 1]]
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 20]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 20]]
+  [1m[36mPost Exists (7.1ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" INNER JOIN "likes" ON "posts"."id" = "likes"."post_id" WHERE "likes"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 21], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  [1m[36mPost Exists (2.0ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" INNER JOIN "likes" ON "posts"."id" = "likes"."post_id" WHERE "likes"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 22], ["LIMIT", 1]]
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  Rendered posts/index.html.erb within layouts/application (139.0ms)
+Completed 200 OK in 249ms (Views: 199.3ms | ActiveRecord: 37.8ms)
+
+
+Started GET "/posts/22" for 127.0.0.1 at 2017-02-27 08:53:55 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" INNER JOIN "likes" ON "posts"."id" = "likes"."post_id" WHERE "likes"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  [1m[36mComment Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "comments" WHERE "comments"."post_id" = $1 LIMIT $2[0m  [["post_id", 22], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (47.4ms)
+Completed 200 OK in 182ms (Views: 154.0ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-02-27 08:54:03 +0000
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts"[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mPost Exists (4.3ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" INNER JOIN "likes" ON "posts"."id" = "likes"."post_id" WHERE "likes"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 19], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 19]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 19]]
+  [1m[36mPost Exists (2.4ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" INNER JOIN "likes" ON "posts"."id" = "likes"."post_id" WHERE "likes"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 20], ["LIMIT", 1]]
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 20]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 20]]
+  [1m[36mPost Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" INNER JOIN "likes" ON "posts"."id" = "likes"."post_id" WHERE "likes"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 21], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 21]]
+  [1m[36mPost Exists (3.3ms)[0m  [1m[34mSELECT  1 AS one FROM "posts" INNER JOIN "likes" ON "posts"."id" = "likes"."post_id" WHERE "likes"."user_id" = $1 AND "posts"."id" = $2 LIMIT $3[0m  [["user_id", 1], ["id", 22], ["LIMIT", 1]]
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 22]]
+  Rendered posts/index.html.erb within layouts/application (56.5ms)
+Completed 200 OK in 167ms (Views: 148.4ms | ActiveRecord: 17.5ms)
+
+
