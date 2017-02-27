@@ -1,23 +1,52 @@
-Instagram Challenge
-===================
+# README
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This is still a work in progress. In its current state it is possible to,
 
-Task
------
+* Add a new photo including a caption
+* Photos are displayed via the index view
+* Photos can be clicked on to see in show view
 
-Build Instagram: Simple huh!
+The following error is still being returned,
 
-Bonus if you can write your own set of sensible user stories!
+```
+1) photos photos have been added viewing photos lets a user view a photo
+     Failure/Error: expect(current_path).to eq 'photos/#{@photo.id}'
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+       expected: "photos/\#{@photo.id}"
+            got: "/photos"
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+       (compared using ==)
+```
+And I have not yet identified the reason why the images (thumbs on index/and original in show) are not being displayed correctly.
 
-Bonus if you can add filters!
+The following functionality is yet to be completed.
+
+* User login via OmniAuth
+* Association of User and Photo/caption
+* The possibility of adding comments to photos
+* Editing of posts
+* Liking of posts
+* Upload to Heroku
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version ruby version 2.3.3
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
