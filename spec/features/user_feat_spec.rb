@@ -30,4 +30,14 @@ feature 'User' do
       expect(page).to have_content 'error'
     end
   end
+
+  context 'like pictures' do
+    xscenario 'cannot like a pic more than once', js: true do
+      sign_up
+      share_instapic
+      click_link 'Like'
+      click_link 'Like'
+      expect(page).to have_content '1 like'
+    end
+  end
 end
