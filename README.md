@@ -7,12 +7,19 @@ Coffeegram
  -----
  https://coffeegrambyedyta.herokuapp.com/
 
+
 Features :star2:
 --------------
 * Post a photo with a status;
 * User can edit the status or delete their photo;
 * User can comment on a photo;
 * User can like a photo.
+
+Interface
+-----------
+
+![snap1](./public/interface1.png)
+![snap2](./public/interface2.png)
 
 User Stories
 -----

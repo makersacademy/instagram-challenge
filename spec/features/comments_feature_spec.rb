@@ -13,7 +13,7 @@ feature "adding comments" do
       user_sign_in(user)
       visit photos_path
       fill_in :comment_thoughts, with: comment.thoughts
-      click_button "Leave Comment"
+      click_button "Comment"
       expect(page).to have_content comment.thoughts
     end
 

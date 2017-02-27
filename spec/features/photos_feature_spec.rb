@@ -3,7 +3,7 @@ require "rails_helper"
 feature "photos" do
   include Helpers
 
-  context "no photos have been added" do
+  xcontext "no photos have been added" do
     scenario "displays a prompt to add a photos" do
     visit photos_path
     expect(page).to have_content "No photos yet"
@@ -27,9 +27,14 @@ feature "photos" do
     end
 
     scenario "guest has to sign in before adding a photo" do
-       visit photos_path
+       visit '/'
+       click_link('Sign in')
+       fill_in :user_email, with: user.email
+       fill_in :user_password, with: user.password
+       click_button "Log in"
        click_link "Add Photo"
-       expect(current_path).to eq new_user_session_path
+
+       expect(current_path).to eq '/photos/new'
     end
   end
 
