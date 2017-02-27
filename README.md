@@ -46,10 +46,11 @@ $ cd instagram-challenge
 $ gem install bundler
 $ bundle
 $ bin/rake db:create
+$ bin/rails db:environment:set RAILS_ENV=development
 $ bin/rake db:schema:load
 $ bin/rails server
 
-visit the page in your browser: http://localhost:3000
+visit the following page in your browser: http://localhost:3000
 ```
 
 ### [Or view a demo of the app on Heroku](http://robs-instasham.herokuapp.com/)
