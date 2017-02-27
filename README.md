@@ -1,23 +1,23 @@
 Instagram Challenge
 ===================
 
-Instructions
+This is the current build of my Instagram-inspired website. The basic functionality
+is in place, although there are some additional features yet to be added. Namely:
+
+* Visual formatting
+* "Follow" functionality, with only photos from followed users appearing on a timeline.
+* Ability to add comment on /photos page, and have the display update via JQuery.
+* Profile page with a user's uploaded photos.
+* Edit/update password and user details.
+* User profile photo.
+
+Installation Instructions
 -------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
-
-Build Instagram: Simple huh!
-
-Bonus if you can write your own set of sensible user stories!
-
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+* Clone this repo.
+* Enter the cloned repo and run ```bundle install```
+* Open terminal and open psql. i.e. ```psql postgres```
+* Create a database for test. i.e. ```CREATE DATABASE instamatt_test```
+* Create a database for development. i.e. ```CREATE DATABASE instamatt_development```
+* Exit psql - ```\q``` - and migrate the database - ```rake db:migrate```
+* In browser, go to http://localhost:3000
+* From this page, you can sign up, sign in, add a photo or view existing photos.
