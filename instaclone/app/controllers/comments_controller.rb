@@ -7,8 +7,17 @@ class CommentsController < ApplicationController
 
   def create
     @photo = Photo.find(params[:photo_id])
-    @photo.comments.create(comment_params)
-    redirect_to "/photos/#{@photo.id}"
+    @comment = @photo.build_with_user comment_params, current_user
+    if @comment.save
+      redirect_to "/photos/#{@photo.id}"
+    else
+      if @comment.errors[:user]
+        redirect_to '/photos', alert: 'You have already commented on this photo'
+      else
+        render :new
+      # some error handling goes here!
+      end
+    end
   end
 
   private

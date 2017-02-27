@@ -1,14 +1,21 @@
 class User < ApplicationRecord
-
-  has_many :photos, dependent: :destroy
-  has_many :comments, dependent: :destroy
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-       :recoverable, :rememberable, :trackable, :validatable,
-       :omniauthable, :omniauth_providers => [:facebook]
-       
+           :recoverable, :rememberable, :trackable, :validatable,
+           :omniauthable, :omniauth_providers => [:facebook]
+
+  has_many :photos, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :commented_photos, through: :comments, source: :photos
+
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+
+ def has_commented?(photo)
+   commented_photos.include? photo
+ end
+
  def self.new_with_session(params, session)
    super.tap do |user|
      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
