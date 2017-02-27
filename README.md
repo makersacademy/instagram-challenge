@@ -1,6 +1,10 @@
 Instagram Challenge
 ===================
 
+"Instasham" is an Instagram clone built on Rails for the [Makers Academy][http://www.makersacademy.com/ "Makers Academy"] week 8, weekend challenge.
+
+### Implemented User Stories
+
 ```
 As a user,
 So that I can use the site securely
@@ -32,26 +36,26 @@ I want to be able to comment on others' posts
 
 As a user,
 So that I can make my pictures look funky
-I want to be able to apply filters to my post's pictures
+I want to be able to apply colour filters to my post's pictures
 ```
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Instructions for use
+```
+$ git clone https://github.com/treborb/instagram-challenge.git
+$ cd instagram-challenge
+$ gem install bundler
+$ bundle
+$ bin/rake db:create
+$ bin/rake db:schema:load
+$ bin/rails server
 
-Task
------
+visit the page in your browser: http://localhost:3000
+```
 
-Build Instagram: Simple huh!
+### [Or view a demo of the app on Heroku][http://robs-instasham.herokuapp.com/]
 
-Bonus if you can write your own set of sensible user stories!
+## Screenshots
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+![Instasham - Homepage](public/img/homepage.png)
+![Instasham - Log in](public/img/log-in.png)
+![Instasham - Add a post](public/img/add-post.png)
