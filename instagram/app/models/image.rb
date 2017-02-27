@@ -9,11 +9,4 @@ class Image < ApplicationRecord
 
   validates :caption, length: { maximum: 200 }
   validates :image, attachment_presence: true
-
-  # def update_like_count(image)
-  #   like = image.Like.create()
-  #   like = Like.find(image.image_id)
-  #   like.increment(:count)
-  # end
-
 end
