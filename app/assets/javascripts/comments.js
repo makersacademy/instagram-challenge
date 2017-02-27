@@ -8,12 +8,14 @@ var attachCommentsHandler = function() {
 
   var postComment = function(thisElement, commentText){
     $.post(thisElement.href, { "comment_text": commentText }, function(response){
-      imageId = response.image_id;
-      var commentHTML = createCommentHTML(response);
+      if (response.comment_saved === true) {
+        imageId = response.image_id;
+        var commentHTML = createCommentHTML(response);
 
-      addComment(imageId, commentHTML);
-      removeNoCommentsMessage(imageId);
-      scrollToBottom(imageId);
+        addComment(imageId, commentHTML);
+        removeNoCommentsMessage(imageId);
+        scrollToBottom(imageId);
+      }
     });
   };
 

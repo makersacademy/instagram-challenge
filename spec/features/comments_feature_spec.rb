@@ -124,6 +124,25 @@ feature 'FEATURE: Comments' do
         field = find_field(:comment_text)
         expect(field.value).to eq 'Type a comment here…'
       end
+      scenario 'Cannot submit a blank comment', js: true do
+        sign_up
+        visit('/')
+        click_link('Post')
+        within(".comments-list") do
+          expect(page).not_to have_content 'Test comment'
+          expect(page).not_to have_content 'PhotoN3rd'
+        end
+      end
+      scenario 'Cannot submit a comment which = "Type a comment here…"', js: true do
+        sign_up
+        visit('/')
+        fill_in :comment_text, with: 'Type a comment here…'
+        click_link('Post')
+        within(".comments-list") do
+          expect(page).not_to have_content 'Test comment'
+          expect(page).not_to have_content 'PhotoN3rd'
+        end
+      end
     end
   end
 end
