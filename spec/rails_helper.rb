@@ -9,6 +9,7 @@ require 'capybara/rails'
 require 'helpers/user_helper.rb'
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
+# Capybara.raise_server_errors = false
 require 'support/database_cleaner'
 
 # Add additional requires below this line. Rails is not loaded until this point!
