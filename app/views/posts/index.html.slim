@@ -1,0 +1,25 @@
+- if @posts.any?
+  article.posts
+    - @posts.each do |post|
+        section.post
+          - if post.picture?
+            .post-picture
+              = image_tag(post.picture_url(:default))
+            section.comments
+              - if post.comments.any?
+                - post.comments.all.each do |comment|
+                  .comment
+                    = "#{comment.user.username} said '#{comment.content}'"
+            .comment-link
+              = link_to "Comment", new_post_comment_path(post)
+            .like
+              = pluralize(post.likes, "Like", "Likes")
+              = form_for post, url: like_post_post_path(post.id), method: :patch do |f|
+                = f.hidden_field :likes
+                = f.hidden_field :id
+                = f.submit "Like"
+            
+              
+            
+- else
+  h2 No posts yet :(...
