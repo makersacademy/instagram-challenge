@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @article.description %> <br>
+  <%= creator_email(@article) %> <br>
+  <%= image_tag @article.image.url(:original) %>
+</p>
+<% if owner?(@article) %>
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+<% end %>
+<%= link_to 'Back', articles_path %>
+<br>
+
+<% if user_has_liked?(@article) %>
+  like this? <%#TODO, make these links %>
+<% else %>
+  unlike this
+<% end %>
+
+<%= likes %>
+
+<tbody>
+<% @article.comments.all.each do |comment| %>
+  <article.comment>
+    <tr>
+      <td><%= creator_email(comment) %></td>
+      <td><%= comment.body %></td>
+      <% if owner?(comment) %>
+        <td><%= link_to "Edit comment", edit_article_comment_path(@article.id, comment.id), class: "edit-review"%></td>
+        <td><%= link_to "delete comment", article_comment_path(@article.id, comment.id), method: :delete, class: "delete-review"%></td>
+      <% end %>
+    </tr>
+  </article>
+</tbody>
+<br>
+<% end %>
+
+
+<% if user_signed_in? %>
+<%= link_to "post comment", new_article_comment_path(@article), class: "comment_Links"%>
+<% end %>

@@ -1,5 +1,7 @@
 Instagram Challenge
 ===================
+James Turner
+https://desolate-wave-51395.herokuapp.com/
 
 Instructions
 -------
@@ -21,3 +23,4 @@ As usual please start by forking this repo. After cloning your fork and cd'ing i
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
 Bonus if you can add filters!
+#TODO, proper readme
