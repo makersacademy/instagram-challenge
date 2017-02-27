@@ -1,23 +1,53 @@
-Instagram Challenge
-===================
+### Once logged in
+##### Posting images
+```
+I want to be able to upload images from my device to my feed
+I want to be able to add tags to each image I post
+I want to be able to add a description to each image I post
+I want to be able to edit images I have uploaded
+I want to be able to delete images I have uploaded
+I want to be able to delete comments I have made
+I want each image to receive comments from any user including me
+```
+##### Viewing images
+```
+I want to view a feed of all images posted on the app
+I want to be able to view a feed displaying only the images posted by a certain user
+I want to be able to search for and view a feed of images by tags
+I want to be able to choose to follow certain users and then view a personalised feed of images they have posted
+```
+##### Account management
+```
+I want to be able to create an account
+I want to be able to log in using Facebook
+I want to be able to remove my Facebook account from the app
+I want to be able to sign out
+I want to be able to delete my account
+```
+----
+#### Outline of approach:
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+MVP1
+* Create Rails app
+* User account creation, login, logout
+* User can add an image with description and tags
+* Homepage is a feed of all uploaded images with username and first 50char of description
 
-Task
------
+MVP2
+* Click on an image to view its own page with description, comments
+* Any user can comment on an image
+* Facebook account integration
 
-Build Instagram: Simple huh!
+MVP3
+* Can search images by tag and view in a feed (Bookmark challenge)
+* Can follow users
+* Homepage displays personalised feed from those you follow
+----
+Some details about running the app:
+* Ruby version: 2.2.6
 
-Bonus if you can write your own set of sensible user stories!
+* Database creation - rails initialised with postgreSQL, also using Devise, omniauth. You'll probably need to do a rake db:migrate.
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+* To run the app, clone the repository and cd into /instaclone/instaclone. Run ```bin/rails s``` on the command line, and go to http://localhost:3000/photos in your browser.
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+* How to run the test suite - cd into instaclone, and run rspec from the command line.
