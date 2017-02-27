@@ -1,7 +1,7 @@
 <%= button_to "Share Pic!", new_instapic_path, :method => :get %>
 
-<% if @instapics.all.any? %>
-  <% @instapics.all.each do |pic| %>
+<% if @instapics.any? %>
+  <% @instapics.each do |pic| %>
     <%= (@users.find(pic.user_id)).nickname %><br />
     <%= image_tag pic.image.url(:medium) %><br />
     <p><%= link_to "Like", instapic_likes_path(:instapic_id => pic.id), class: 'like'%>

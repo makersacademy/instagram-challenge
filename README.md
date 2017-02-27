@@ -63,7 +63,7 @@ Nice To Have
 -----
 
 ```
-As a user
+As a user | DONE
 So that I can see more recent pictures first
 I want to be see the latest picture always on top of my feed
 

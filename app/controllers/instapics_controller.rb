@@ -1,7 +1,7 @@
 class InstapicsController < ApplicationController
 
   def index
-    @instapics = Instapic.all
+    @instapics = Instapic.all.reverse
     @users = User.all
   end
 
