@@ -1,12 +1,16 @@
 %p= @image.caption
 = image_tag @image.image.url(:medium)
 %br
+= link_to "Like", new_image_like_path(@image)
+- if @image.likes
+  = @image.likes.count
+%br
 %ul
-  - if @image.comments.all.any?
-    - @image.comments.each do |comment|
-      %li
-        = comment.comment
-  - else
-    No comments yet
+- if @image.comments.all.any?
+  - @image.comments.each do |comment|
+    %li
+      = comment.comment
+- else
+  No comments yet
 %br
 = link_to "Comment", new_image_comment_path(@image)
