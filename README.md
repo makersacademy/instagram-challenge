@@ -1,23 +1,97 @@
-Instagram Challenge
+Coffeegram               [![Build Status](https://travis-ci.org/edytawrobel/instagram-challenge.svg?branch=master)](https://travis-ci.org/edytawrobel/instagram-challenge)
 ===================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+ an Instagram clone that provides a platform for users to post and comment on photos of their favourite coffee places
 
-Task
+ Available at:
+ -----
+ https://coffeegrambyedyta.herokuapp.com/
+
+
+Features :star2:
+--------------
+* Post a photo with a status;
+* User can edit the status or delete their photo;
+* User can comment on a photo;
+* User can like a photo.
+
+Interface
+-----------
+
+![snap1](./public/interface1.png)
+
+User Stories
 -----
 
-Build Instagram: Simple huh!
+```
+As a visitor
+So that I can use the services other than seeing all recently uploaded images,
+I want to be able to sign up for the Coffeegram account
 
-Bonus if you can write your own set of sensible user stories!
+As a coffee lover
+So that I can share my favourite coffee places with others
+I want to be able to upload my pictures
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+As a coffee lover
+So that I can share my feelings about each place,
+I want to be able to add a description to a picture
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a coffee lover
+So that I can show my enjoyment to the user who posted it
+I want to be able to like a picture
 
-Bonus if you can add filters!
+As a coffee lover
+So that I can express my opinion,
+I want to be able to comment on other users' pictures
+
+As a coffee lover
+So that I other users' can share their opinion,
+I want to be able to receive their feedback in a form of comments
+
+```
+
+Further advancements
+-----
+
+```
+
+As a time-pressed user
+So that I can avoid typing up my password yet again
+I want to be able to login with Facebook account
+
+As a coffee and beauty lover
+So that other feel amazing while visiting my website
+I want to be able to style it beautifully
+
+As a coffee lover
+So that I can see most popular places
+I want to see the number of likes each picture receives
+```
+
+How to use Coffeegram :page_with_curl:
+-------------------------------------
+
+To install and use locally:
+```
+$ git clone git@github.com:edytawrobel/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle
+$ rake db:create
+$ rake db:migrate
+$ rails s
+```
+Then open your browser, visit `http://localhost:3000`.
+
+Testing :white_check_mark:
+---------
+This project is test-driven with RSpec-Capybara. To run all the tests, simply run `rspec` in your terminal.
+
+Tools used
+-----------
+* Ruby on Rails
+* RSpec-Capybara
+* Active Record
+* Devise
+* Paperclip
+* Factory Girl
+* AWS S3

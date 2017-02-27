@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coffegram</title>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Enriqueta|Kaushan+Script|Lobster|Tangerine:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amiko|Droid+Serif|Inconsolata|Muli|Sansita|Titillium+Web" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render "/layouts/navbar" %>
+    <section class="container">
+    <!-- Load Facebook SDK for JavaScript -->
+
+    <script>
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1463319767055520',
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+  //      <!-- Your like button code to add on a new photos page -->
+  // <div class="fb-like"
+  //   data-href="http://www.your-domain.com/your-page.html"
+  //   data-layout="standard"
+  //   data-action="like"
+  //   data-show-faces="true">
+  // </div>
+
+  // <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-numposts="5"></div>
+
+    </script>
+
+
+    <!-- <% if user_signed_in? %>
+      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      Welcome <%= current_user.username %>
+    <% else %>
+      <%= link_to "Sign in", new_user_session_path %>
+      <%= link_to "Sign up", new_user_registration_path %>
+    <% end %> -->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </section>
+  </body>
+</html>

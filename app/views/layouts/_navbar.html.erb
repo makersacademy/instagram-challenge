@@ -1,0 +1,29 @@
+<nav>
+  <div id="nav-elements">
+    <div class="nav-inline" id="coffeegram">
+      <%=link_to "Coffeegram", photos_path %>
+    </div>
+    <!-- <div class="nav-inline">
+      <%= link_to "Add Photo", new_photo_path %>
+    </div> -->
+
+    <% if user_signed_in? %>
+      <div class="nav-inline">
+        Welcome <%= current_user.username %>
+      </div>
+      <div class="nav-inline">
+        <%= link_to "Add Photo", new_photo_path %>
+      </div>
+      <div class="nav-inline">
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      </div>
+    <% else %>
+      <div class="nav-inline">
+        <%= link_to "Sign in", new_user_session_path %>
+      </div>
+      <div class="nav-inline">
+        <%= link_to "Sign up", new_user_registration_path %>
+      </div>
+    <% end %>
+  </div>
+</nav>
