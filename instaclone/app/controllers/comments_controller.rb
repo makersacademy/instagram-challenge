@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def new
     @photo = Photo.find(params[:photo_id])
     @comment = Comment.new
   end
-
 
   def create
     @photo = Photo.find(params[:photo_id])
@@ -20,6 +21,13 @@ class CommentsController < ApplicationController
       # some error handling goes here!
       end
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:photo_id])
+    @comment.destroy
+    flash[:notice] = 'Comment deleted successfully'
+    redirect_to '/photos'
   end
 
   private
