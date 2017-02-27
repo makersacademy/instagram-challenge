@@ -8,9 +8,9 @@
 # 10.times do
 #   FactoryGirl.create(:user)
 # end
-require 'database_cleaner'
-DatabaseCleaner.strategy = :truncation
-DatabaseCleaner.clean
+# require 'database_cleaner'
+# DatabaseCleaner.strategy = :truncation
+# DatabaseCleaner.clean
 
 FactoryGirl.create_list(:user, 10)
 FactoryGirl.create_list(:post, 10)
