@@ -1,7 +1,7 @@
 Instagram Challenge
 ===================
 
-"Instasham" is an Instagram clone built on Rails for the [Makers Academy][http://www.makersacademy.com/ "Makers Academy"] week 8, weekend challenge.
+"Instasham" is an Instagram clone built on Rails for the [Makers Academy](http://www.makersacademy.com/ "Makers Academy") week 8, weekend challenge.
 
 ### Implemented User Stories
 
@@ -52,7 +52,7 @@ $ bin/rails server
 visit the page in your browser: http://localhost:3000
 ```
 
-### [Or view a demo of the app on Heroku][http://robs-instasham.herokuapp.com/]
+### [Or view a demo of the app on Heroku](http://robs-instasham.herokuapp.com/)
 
 ## Screenshots
 
