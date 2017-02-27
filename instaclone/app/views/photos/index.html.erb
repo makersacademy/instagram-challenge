@@ -1,8 +1,9 @@
 <% if @photos.any? %>
   <% @photos.each do |photo| %>
-  <h4> <%= photo.caption %> </h4>
   <p class="image-time"><%= photo.created_at.strftime("%d %m %Y %H:%M:%S") %></p>
-  <%= photo.comments.first.thoughts if photo.comments.length > 0 %>
+  <%= image_tag photo.image.url(:thumb) %>
+  <h4> <%= photo.caption %> </h4>
+  <h6><%= photo.comments.first.thoughts if photo.comments.length > 0 %></h6>
 
     <h2> <%= link_to "View #{photo.caption}", photo_path(photo) %> </h2>
     <%= link_to "Comment on #{photo.caption}", new_photo_comment_path(photo) %>
