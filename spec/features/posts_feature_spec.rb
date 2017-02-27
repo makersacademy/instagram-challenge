@@ -47,6 +47,7 @@ end
   context 'editing dogs' do
     before { Post.create title: 'Poppy', desc: "Mellow retriever", id: 1}
     scenario 'let a user edit a post description' do
+      sign_up
       visit '/posts'
       click_link 'Edit Poppy'
       fill_in 'Title', with: 'Alphi'
@@ -63,6 +64,7 @@ end
      before { Post.create title: 'Poppy', desc: "Mellow retriever" }
 
      scenario 'removes a post when a user clicks a delete link' do
+       sign_up
        visit '/posts'
        click_link 'Delete Poppy'
        expect(page).not_to have_content 'Poppy'

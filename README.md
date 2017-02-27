@@ -15,7 +15,7 @@ I want to post a thumbnail-sized image with title
 So that I can communicate with my followers in pictures
 
 As a signed in user
-I want to add or edit an image description
+I want to add or edit my image description
 So that I can give more information   
 
 As a user browsing to the home page
@@ -23,30 +23,33 @@ I want to see a list of thumbnails and comments
 So that users can read more about the images
 
 As a user
-I want to be able to 'like' a posted image
-So that the user gets a good feeling
-
-As a user
 I want to be able to add comments on an image
 So that we can get bantz going
 
-As an owner
+As a user
+I want to be able to 'like' a posted image
+So that the user gets a good feeling
+
+
+_As an owner
 I want the images to be hosted on S3(AWS)
 So that security and availability are managed by AWS
 
+As an owner
+I want the pages to have a coherent look
+So that this is an appealing and trusted site
+
 As a user
 I want to be able to add tags
-So that images can be filtered on topics
+So that images can be filtered on topics_
 
 Steps to get the application up and running
 =============================================
 
-* Rails gem 5.0.1 (ruby 2.3.0-p0)
+* Rails gem 5.0.1 (ruby 2.3.0-p0) - for full list type ```gem list``
 
-* System dependencies
-
+* Deployment instructions
 To download:
-
 * ```sh
 $ git clone git@github.com:[USERNAME]/instagram-challenge.git
 $ cd instagram-challenge
@@ -55,21 +58,17 @@ $ rspec
 ```
 
 To run app:
-
 * ```sh
 $ rake db:seed
 $ rails s
 $ open http://localhost:3000
 ```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
 * How to run the test suite
+At command-line run ```rspec
+e.g.
+Olwens-MBP:instagram-challenge DOE$ rspec
+```
 
 * Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+describe heroku, postgresql

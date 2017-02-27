@@ -4,6 +4,7 @@ feature 'commenting' do
   before { Post.create title: 'Poppy'}
 
   scenario 'allows user to add a comment on a post' do
+    sign_up
     visit '/posts'
     click_link 'Comment'
     fill_in "Thoughts", with: "woof!"
@@ -12,6 +13,7 @@ feature 'commenting' do
   end
 
   scenario 'comments are displayed on /posts' do
+    sign_up
     visit '/posts'
     click_link 'Comment'
     fill_in "Thoughts", with: "woof..woof!"
