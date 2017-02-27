@@ -1,23 +1,79 @@
-Instagram Challenge
-===================
+# Instagam Challenge: InstaTAM
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This project is a simple Instagram clone, allowing users to sign up or sign in via facebook, post photos, comment and like photos.
 
-Task
------
+## User Stories
 
-Build Instagram: Simple huh!
+```
+As an InstaTAM user,
+So that I can post my photos
+I want to be able to sign up for an account
 
-Bonus if you can write your own set of sensible user stories!
+As an InstaTAM user,
+So that I can link my social media accounts
+I want to be able to sign up for an account through Facebook
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+As an InstaTAM user,
+So that I can post my photos
+I want to be able to sign into my account
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As an InstaTAM user,
+So that nobody can post photos as me
+I want to be able to sign out of my account
 
-Bonus if you can add filters!
+As an InstaTAM user,
+So that I can share my photos with other users
+I want to be able to post photos with captions
+
+As an InstaTAM user,
+So that I can share my thoughts on other photos
+I want to be able to post a comment
+
+As an InstaTAM user,
+So that I can follow other users
+I want to be able to view their posts
+
+As an InstaTAM user,
+So that I can follow other users
+I want to be able to view the comments on their posts
+
+As an InstaTAM user,
+So that nobody can tamper with my account
+I want to be the only person able to delete my own posts
+```
+
+## Additional Users Stories to follow
+
+```
+As an InstaTAM user,
+So that I can share appreciations for other users' photos
+I want to be able to like their posts
+
+As an InstaTAM user,
+So that I can see appreciations for photos others have shared
+I want to be able to view the number of likes
+
+As an InstaTAM user,
+So that I keep track of likes on the posts
+I want to be able to only like a post once
+
+As an InstaTAM user,
+In case I like a picture by accident
+I want to be able to unlike a post
+
+```
+
+## Installation and Usage
+
+* Fork and clone this repository
+* Run `bundle install`
+* Run `rake db:create` followed by `rake db:migrate` to create and set up required databases
+* Type `rails s` into the command line to start up the local server
+* Visit `localhost:3000` to use the app. Begin by signing up.
+
+## Technologies
+
+* Ruby on the Rails
+* Postgresql
+* RSpec and Capybara
+* HTML and CSS
