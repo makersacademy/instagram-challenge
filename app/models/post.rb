@@ -9,5 +9,7 @@ class Post < ApplicationRecord
   validates_presence_of   :image
   validates_integrity_of  :image
   validates_processing_of :image
+  validates :caption, length: { maximum: 140,
+    too_long: "%{count} characters is the maximum allowed for a caption" }
 
 end
