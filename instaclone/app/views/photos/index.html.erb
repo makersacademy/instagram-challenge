@@ -1,7 +1,7 @@
 <% if @photos.any? %>
   <% @photos.each do |photo| %>
   <h4> <%= photo.caption %> </h4>
-  <%= photo.comments.all if photo.comments.length > 0 %>
+  <%= photo.comments.first.thoughts if photo.comments.length > 0 %>
 
     <h2> <%= link_to "View #{photo.caption}", photo_path(photo) %> </h2>
     <%= link_to "Comment on #{photo.caption}", new_photo_comment_path(photo) %>

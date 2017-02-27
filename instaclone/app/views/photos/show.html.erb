@@ -1,2 +1,13 @@
 <p><%= @photo.caption %></p>
-<p><%= @photo.comments.all if @photo.comments.length > 0 %><p>
+<p>Comments:</p>
+<% @photo.comments.each do |comment| %>
+  <p><%= comment.thoughts %></p>
+  <%= link_to "Delete comment", photo_comment_path(comment), method: :delete %>
+<% end %>
+
+<%= link_to "Comment on #{@photo.caption}", new_photo_comment_path(@photo) %>
+
+<%= link_to "Delete #{@photo.caption}", photo_path(@photo), method: :delete %>
+<%= link_to "Edit #{@photo.caption}", edit_photo_path(@photo) %>
+
+<a href='/photos'>Return to feed</a>

@@ -5,9 +5,11 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
+
   def create
     @photo = Photo.find(params[:photo_id])
-    @comment = @photo.build_with_user comment_params, current_user
+    @comment = @photo.comments.new(comment_params)
+    @comment.user = current_user
     if @comment.save
       redirect_to "/photos/#{@photo.id}"
     else
