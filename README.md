@@ -1,4 +1,8 @@
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+
+ BUILD STATUS: ![alt text]https://travis-ci.org/olwend/instagram-challenge.svg?branch=master
+
+The challenge is to build Instagram using Rails.
+This needs **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
 User stories
 ============

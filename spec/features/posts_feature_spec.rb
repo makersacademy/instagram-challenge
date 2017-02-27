@@ -11,17 +11,25 @@ feature 'Dogs' do
       visit 'posts/index'
       expect(page).to have_content 'No dogs yet'
     end
+end
+
   end
 
   context 'posts have been added' do
     before do
       Post.create(title: 'Poppy')
+      Post.create(title: 'Freddie')
     end
     scenario 'display posts' do
       visit '/posts'
       expect(page).to have_content('Poppy')
       expect(page).not_to have_content('No dogs yet')
     end
+    xscenario 'cannot be added if already a post with that title' do
+      visit '/posts'
+      post = Post.create(title: 'Freddie')
+      expect(page).to have_content('Freddie')
+      expect(post).to have_content(error)
   end
 end
   context 'viewing dogs' do
