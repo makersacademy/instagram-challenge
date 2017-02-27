@@ -6,3 +6,9 @@ def sign_up
   fill_in('Password confirmation', with: 'testtest')
   click_button('Sign up')
 end
+
+def upload_pic
+  visit "/pictures/new"
+  attach_file('picture[image]', Rails.root + 'spec/features/capy-little-large.jpg')
+  click_button "Share Pic"
+end
