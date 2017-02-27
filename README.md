@@ -1,15 +1,13 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+### Makers Academy Week 8 Weekend Challenge - Ruby on Rails
+
+The app is deployed to Heroku, [click here to have a look.](http://rkclark-instaflash.herokuapp.com/)
 
 ## User Stories
+
+The application fulfils the following user stories:
 
 ```
 As a visitor,
@@ -47,15 +45,54 @@ I want to be able to like an image,
 So I can convey my enjoyment to the user who posted it
 ```
 
-Task
------
+## Project Management
 
-Build Instagram: Simple huh!
+I created a project to [manage my work in Taiga](https://tree.taiga.io/project/rkclark-instaflash/).
 
-Bonus if you can write your own set of sensible user stories!
+I created two sprints; an initial MVP to fulfil the user stories and then a further sprint to implement 'nice to haves' and styling.
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+## Technologies Used
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+**Framework**
 
-Bonus if you can add filters!
+- Ruby on Rails 5.0.1
+- Devise for User model
+- Haml for view template engine
+- Paperclip for image handling
+
+**Database**
+
+- Postgresql
+
+**Testing**
+- RSpec
+- Capybara
+- Poltergeist
+- Database Cleaner
+
+**External Services**
+- Amazon Web Services S3 for image hosting
+
+## Installation and Usage
+
+*Requires Amazon Web Services S3 account*
+
+- Create a new AWS S3 Bucket
+- Clone this repo
+- Run `bundle install` in project root directory
+- Create a `.env` file in the project root containing the following environment variables:
+```
+S3_BUCKET_NAME --> Your AWS Bucket name
+AWS_ACCESS_KEY_ID --> Your AWS Access Key
+AWS_SECRET_ACCESS_KEY --> Your AWS Secret Acesss Key
+AWS_REGION --> Your AWS Region, e.g. 'eu-west-2'
+AWS_HOST_NAME --> Your AWS Host Name, e.g. s3.eu-west-2.amazonaws.com
+```
+- Run `bin/rake db:create` to create databases
+- Run `bin/rake db:migrate` to run database migrations
+- Run `bin/rails s` to run the rails server
+- Open `http://localhost:3000` to view the app
+
+### Running the Tests
+
+Run `rspec` in the project root directory
