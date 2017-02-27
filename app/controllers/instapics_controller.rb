@@ -1,5 +1,7 @@
 class InstapicsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @instapics = Instapic.all.reverse
     @users = User.all
