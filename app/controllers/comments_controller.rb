@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
         format.html { render :new }
       end
     end
+    redirect_to articles_path
   end
 
   def update
