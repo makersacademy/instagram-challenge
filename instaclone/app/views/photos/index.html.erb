@@ -1,0 +1,17 @@
+<% if @photos.any? %>
+  <% @photos.each do |photo| %>
+  <p class="image-time"><%= photo.created_at.strftime("%d %m %Y %H:%M:%S") %></p>
+  <%= image_tag photo.image.url(:thumb) %>
+  <h4> <%= photo.caption %> </h4>
+  <h6><%= photo.comments.first.thoughts if photo.comments.length > 0 %></h6>
+
+    <h2> <%= link_to "View #{photo.caption}", photo_path(photo) %> </h2>
+    <%= link_to "Comment on #{photo.caption}", new_photo_comment_path(photo) %>
+    <%= link_to "Edit #{photo.caption}", edit_photo_path(photo) %>
+    <%= link_to "Delete #{photo.caption}", photo_path(photo), method: :delete %>
+  <% end %>
+<% else %>
+  No photos yet
+<% end %>
+
+<a href='/photos/new'>Add a photo</a>
