@@ -5,9 +5,11 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+
 gem 'carrierwave', '~> 1.0'
 gem 'carrierwave_direct'
-gem 'fog-aws'
+gem 'fog'
 gem 'mini_magick'
 
 gem "font-awesome-rails"
