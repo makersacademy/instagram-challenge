@@ -13,11 +13,7 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
     @photo.user = current_user
-    if @photo.save
-      redirect_to '/photos'
-    else
-      render 'new'
-    end
+    redirect_to '/photos'
   end
 
   def show
