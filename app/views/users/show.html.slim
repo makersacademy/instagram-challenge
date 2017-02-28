@@ -1,0 +1,16 @@
+.container-large
+  .row.space
+    .user
+      header.user-header
+        .four.columns.center
+          img.avatar-large src=@user.avatar.thumb
+        .eight.columns
+          h3 = @user.username
+          p.stats = pluralize(@user.posts.count, "post")
+          - if @user == current_user
+            = link_to "Edit my profile", edit_user_registration_path, class: "user-links"
+      .twelve.columns
+        - @user.posts.each_slice(3) do |group|
+          .three-posts
+            - group.each do |post|
+              img.small-post src=post.image
