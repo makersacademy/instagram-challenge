@@ -37,36 +37,36 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process resize_to_fit: [640, 640]
+  process resize_to_fill: [640, 640]
 
   version :None do
     process :quality => 70
-    process resize_to_fit: [640, 640]
+    process resize_to_fill: [640, 640]
   end
 
   version :Toaster do
     process :toaster_filter
-    process resize_to_fit: [640, 640]
+    process resize_to_fill: [640, 640]
   end
 
   version :Lomo do
     process :lomo_filter
-    process resize_to_fit: [640, 640]
+    process resize_to_fill: [640, 640]
   end
 
   version :Kelvin do
     process :kelvin_filter
-    process resize_to_fit: [640, 640]
+    process resize_to_fill: [640, 640]
   end
 
   version :Colortone do
     process :colortone_filter
-    process resize_to_fit: [640, 640]
+    process resize_to_fill: [640, 640]
   end
 
   version :Gotham do
     process :gotham_filter
-    process resize_to_fit: [640, 640]
+    process resize_to_fill: [640, 640]
   end
 
   # version :strip do
