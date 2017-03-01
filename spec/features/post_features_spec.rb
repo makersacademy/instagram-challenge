@@ -9,7 +9,7 @@ feature 'Posts' do
       @time_first = Timecop.freeze(Time.local(2017, 2, 25, 12, 0, 0))
       @time_last  = Timecop.freeze(Time.local(2017, 2, 26, 12, 0, 0))
 
-      @user = User.create(email: "kmhicks92@gmail.com",
+      @user = User.create(email: "khicks@test.com",
                       password: "123456",
                       password_confirmation: "123456")
 
@@ -25,25 +25,25 @@ feature 'Posts' do
     end
 
     scenario 'appear with image' do
-      sign_in("kmhicks92@gmail.com", "123456")
+      sign_in("khicks@test.com", "123456")
       visit '/'
       expect(page).to have_css("img")
     end
 
     scenario 'appear with user email' do
-      sign_in("kmhicks92@gmail.com", "123456")
+      sign_in("khicks@test.com", "123456")
       visit '/'
-      expect(page).to have_content("kmhicks92@gmail.com")
+      expect(page).to have_content("khicks@test.com")
     end
 
     scenario 'appear with timestamp' do
-      sign_in("kmhicks92@gmail.com", "123456")
+      sign_in("khicks@test.com", "123456")
       visit '/'
       expect(page).to have_content("25 February, 2017")
     end
 
     scenario 'appear in reverse chronological order' do
-      sign_in("kmhicks92@gmail.com", "123456")
+      sign_in("khicks@test.com", "123456")
       visit '/'
       expect("26 February, 2017").to appear_before("25 February, 2017")
     end
@@ -54,7 +54,7 @@ feature 'Posts' do
       @time_first = Timecop.freeze(Time.local(2017, 2, 25, 12, 0, 0))
       @time_last  = Timecop.freeze(Time.local(2017, 2, 26, 12, 0, 0))
 
-      @user = User.create(email: "kmhicks92@gmail.com",
+      @user = User.create(email: "khicks@test.com",
                       password: "123456",
                       password_confirmation: "123456")
 
@@ -70,21 +70,21 @@ feature 'Posts' do
     end
 
     scenario 'have a like button' do
-      sign_in("kmhicks92@gmail.com", "123456")
+      sign_in("khicks@test.com", "123456")
       visit '/'
       page.first(".post-link").click
       expect(page).to have_selector(:link_or_button, 'Like')
     end
 
     scenario 'have a comment button' do
-      sign_in("kmhicks92@gmail.com", "123456")
+      sign_in("khicks@test.com", "123456")
       visit '/'
       page.first(".post-link").click
       expect(page).to have_selector(:link_or_button, 'Comment')
     end
 
     scenario 'show the caption' do
-      sign_in("kmhicks92@gmail.com", "123456")
+      sign_in("khicks@test.com", "123456")
       visit '/'
       page.first(".post-link").click
       expect(page).to have_content("And another!")
@@ -96,27 +96,27 @@ feature 'Posts' do
     before(:each) do
       @time = Timecop.freeze(Time.local(2017, 2, 25, 12, 0, 0))
 
-      @user = User.create(email: "kmhicks92@gmail.com",
+      @user = User.create(email: "khicks@test.com",
                       password: "123456",
                       password_confirmation: "123456")
     end
 
     scenario 'should have a field for image selection' do
-      sign_in("kmhicks92@gmail.com", "123456")
+      sign_in("khicks@test.com", "123456")
       visit '/'
       click_link 'Add post'
       expect(page).to have_field "Image"
     end
 
     scenario 'should have a field for entering caption' do
-      sign_in("kmhicks92@gmail.com", "123456")
+      sign_in("khicks@test.com", "123456")
       visit '/'
       click_link 'Add post'
       expect(page).to have_field "Caption"
     end
 
     scenario 'should be added to the database' do
-      sign_in("kmhicks92@gmail.com", "123456")
+      sign_in("khicks@test.com", "123456")
       visit '/'
       expect { add_post("spec/assets/test_canyon.jpg", "Beautiful photo!") }.to change{ Post.count }.by(1)
     end

@@ -12,7 +12,7 @@ describe Comment, type: :model do
   end
 
   it 'should have content' do
-    @user = User.create(email: "kmhicks92@gmail.com",
+    @user = User.create(email: "khicks@test.com",
                     password: "123456",
                     password_confirmation: "123456")
 

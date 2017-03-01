@@ -8,7 +8,7 @@ feature 'Likes' do
     before(:each) do
       @time = Timecop.freeze(Time.local(2017, 2, 25, 12, 0, 0))
 
-      @user_one = User.create(email: "kmhicks92@gmail.com",
+      @user_one = User.create(email: "khicks@test.com",
                       password: "123456",
                       password_confirmation: "123456")
 
@@ -23,7 +23,7 @@ feature 'Likes' do
     end
 
     scenario 'appear with post' do
-      sign_in("kmhicks92@gmail.com", "123456")
+      sign_in("khicks@test.com", "123456")
       visit '/'
       expect(page).to have_content "0 likes"
     end
@@ -41,7 +41,7 @@ feature 'Likes' do
     before(:each) do
       @time = Timecop.freeze(Time.local(2017, 2, 25, 12, 0, 0))
 
-      @user_one = User.create(email: "kmhicks92@gmail.com",
+      @user_one = User.create(email: "khicks@test.com",
                       password: "123456",
                       password_confirmation: "123456")
 
@@ -63,7 +63,7 @@ feature 'Likes' do
     end
 
     scenario 'cannot be added if user likes own post' do
-      sign_in("kmhicks92@gmail.com", "123456")
+      sign_in("khicks@test.com", "123456")
       visit '/'
       page.first(".post-link").click
       click_link 'Like'

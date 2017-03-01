@@ -8,7 +8,7 @@ describe Post, type: :model do
 
     @time = Timecop.freeze(Time.local(2017, 2, 26, 12, 0, 0))
 
-    @user = User.create(email: "kmhicks92@gmail.com",
+    @user = User.create(email: "khicks@test.com",
                     password: "123456",
                     password_confirmation: "123456")
 

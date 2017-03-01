@@ -22,7 +22,7 @@ feature 'Users' do
     before do
       visit '/'
       click_link 'Sign up'
-      fill_in 'Email', with: 'kmhicks92@gmail.com'
+      fill_in 'Email', with: 'khicks@test.com'
       fill_in 'Password', with: 'testtest'
       fill_in 'Password confirmation', with: 'testtest'
       click_button 'Sign up'
@@ -48,7 +48,7 @@ feature 'Users' do
     before do
       visit '/'
       click_link 'Sign up'
-      fill_in 'Email', with: 'kmhicks92@gmail.com'
+      fill_in 'Email', with: 'khicks@test.com'
       fill_in 'Password', with: 'testtest'
       fill_in 'Password confirmation', with: 'testtest'
       click_button 'Sign up'
@@ -57,7 +57,7 @@ feature 'Users' do
     scenario 'should see their email' do
       visit '/'
       click_link 'Profile'
-      expect(page).to have_content 'kmhicks92@gmail.com'
+      expect(page).to have_content 'khicks@test.com'
     end
   end
 end

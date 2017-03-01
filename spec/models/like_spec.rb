@@ -12,7 +12,7 @@ describe Like, type: :model do
   end
 
   it 'is not valid if user likes own post' do
-    @user = User.create(email: "kmhicks92@gmail.com",
+    @user = User.create(email: "khicks@test.com",
                     password: "123456",
                     password_confirmation: "123456")
 
@@ -27,7 +27,7 @@ describe Like, type: :model do
   end
 
   it 'is is not valid if user has already liked post' do
-    @user_one = User.create(email: "kmhicks92@gmail.com",
+    @user_one = User.create(email: "khicks@test.com",
                     password: "123456",
                     password_confirmation: "123456")
 
