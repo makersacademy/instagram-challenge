@@ -7,16 +7,17 @@
     = image.created_at.strftime('%d-%m-%Y')
     %br
     = image_tag image.image.url(:medium)
+    - if image.user == @user
+      %h4= link_to image.caption, image_path(image)
+    - else
+      %br
+      = image.caption
     %br
     - if image.likes == 1
       = image.likes.count.to_s + " like"
     - if image.likes
       = image.likes.count.to_s + " likes"
     = link_to "Like", image_likes_path(image), method: :post
-    - if image.user == @user
-      %h4= link_to image.caption, image_path(image)
-    - else
-      = image.caption
     %ul
     - if image.comments.all.any?
       - image.comments.each do |comment|
