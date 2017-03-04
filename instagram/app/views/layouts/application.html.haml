@@ -6,12 +6,19 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    "https://fonts.googleapis.com/css?family=Pacifico"
   %body
+  %div#main-container.container
+  %div.row
   - if user_signed_in?
+    -# %div.col-xs-9
+    = link_to "Add a image", new_image_path(current_user)
     = link_to "Sign out", destroy_user_session_path, method: :delete
   - else
     = link_to "Sign in", new_user_session_path
     = link_to "Sign up", new_user_registration_path
   %p.notice= notice
   %p.alert= alert
+  %div.row
+  %div.col-xs-9
   = yield
