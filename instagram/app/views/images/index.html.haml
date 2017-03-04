@@ -1,10 +1,27 @@
 - if @images.any?
   - @images.each do |image|
-    %h2= link_to image.caption, image_path(image)
-    = image_tag image.image.url(:thumb)
-    = image.created_at
-    = link_to "Edit Caption", edit_image_path(image)
-    = link_to "Delete", image_path(image), method: :delete
+    = @users.find_by_id(image.user_id).email
+    = image.created_at.strftime('%d-%m-%Y')
+    %br
+    = image_tag image.image.url(:medium)
+    %br
+    = link_to "Like", image_likes_path(image), method: :post
+    - if image.likes
+      = image.likes.count
+    - if image.user == @user
+      %h4= link_to image.caption, image_path(image)
+    - else
+      %h4= image.caption
+    %ul
+    - if image.comments.all.any?
+      - image.comments.each do |comment|
+        %li
+          = comment.comment
+    - else
+      No comments yet
+    %br
+    = link_to "Comment", new_image_comment_path(image)
+
 - else
   No images yet
 %a(href='/images/new') Add a image

@@ -24,6 +24,16 @@ feature 'images' do
       expect(page).to have_content('Test')
       expect(page).not_to have_content('No images yet')
     end
+
+    scenario 'images have a username' do
+      visit '/images'
+      click_link 'Add a image'
+      fill_in 'Caption', with: 'Test'
+      attach_file "Image", "public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg"
+      click_button 'Create Image'
+      expect(page).to have_content('test@example.com')
+      expect(page).not_to have_content('No images yet')
+    end
   end
 
   context 'creating images' do
@@ -51,46 +61,66 @@ feature 'images' do
     end
   end
 
-  context 'viewing images' do
+  context 'user who created images is signed in' do
+    context 'viewing images' do
 
-    let!(:test1){ @user.images.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg')) }
+      let!(:test1){ @user.images.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg')) }
 
-    scenario 'lets a user view a image' do
-     visit '/images'
-     click_link 'Test'
-     expect(page).to have_content 'Test'
-     expect(page).to have_css("img[src*='AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg']")
-     expect(current_path).to eq "/images/#{test1.id}"
+      scenario 'lets a user view a image' do
+       visit '/images'
+       click_link 'Test'
+       expect(page).to have_content 'Test'
+       expect(page).to have_css("img[src*='AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg']")
+       expect(current_path).to eq "/images/#{test1.id}"
+      end
+
+    end
+
+    context 'editing images' do
+
+      before { @user.images.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'), id: 1) }
+      scenario 'let a user edit a image' do
+        visit '/images'
+        click_link 'Test'
+        click_link 'Edit Caption'
+        fill_in 'Caption', with: 'Test1'
+        click_button 'Update Image'
+        click_link 'Test1'
+        expect(page).to have_content 'Test1'
+        expect(page).to have_css("img[src*='AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg']")
+        expect(current_path).to eq '/images/1'
+      end
+    end
+
+    context 'deleting images' do
+
+      before { @user.images.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg')) }
+
+      scenario 'removes a image when a user clicks a delete link' do
+        visit '/images'
+        click_link 'Test'
+        click_link 'Delete'
+        expect(page).not_to have_content 'Test'
+        expect(page).not_to have_css("img[src*='AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg']")
+        expect(page).to have_content 'Image deleted successfully'
+      end
     end
 
   end
 
-  context 'editing images' do
+  context 'different user who created images is signed in' do
+    context 'viewing images' do
 
-    before { @user.images.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'), id: 1) }
-    scenario 'let a user edit a image' do
-      visit '/images'
-      click_link 'Edit Caption'
-      fill_in 'Caption', with: 'Test1'
-      click_button 'Update Image'
-      click_link 'Test1'
-      expect(page).to have_content 'Test1'
-      expect(page).to have_css("img[src*='AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg']")
-      expect(current_path).to eq '/images/1'
+      let!(:test1){ @user.images.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg')) }
+
+      scenario 'does not let a user view a image' do
+        click_link 'Sign out'
+        signup2
+        visit '/images'
+        expect(page).not_to have_link 'Test'
+        expect(page).to have_css("img[src*='AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg']")
+      end
+
     end
-  end
-
-  context 'deleting images' do
-
-    before { @user.images.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg')) }
-
-    scenario 'removes a image when a user clicks a delete link' do
-      visit '/images'
-      click_link 'Delete'
-      expect(page).not_to have_content 'Test'
-      expect(page).not_to have_css("img[src*='AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg']")
-      expect(page).to have_content 'Image deleted successfully'
-    end
-
   end
 end

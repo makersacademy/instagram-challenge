@@ -1,8 +1,10 @@
 class ImagesController < ApplicationController
-  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :authenticate_user!, :except => [:index]
 
   def index
     @images = Image.all
+    @users = User.all
+    @user = current_user
   end
 
   def new
@@ -20,8 +22,13 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @image = Image.find(params[:id])
+    if current_user.id == Image.find(params[:id]).user_id
+      @user = current_user
+      @image = Image.find(params[:id])
+    else
+      flash[:alert] = 'Cannot edit'
+      redirect_to images_path
+    end
   end
 
   def edit
