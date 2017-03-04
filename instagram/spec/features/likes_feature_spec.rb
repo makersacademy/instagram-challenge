@@ -15,10 +15,7 @@ feature 'Likes' do
                       password: "123456",
                       password_confirmation: "123456")
 
-      @image = Image.create(user_id: @user_one.id,
-                      caption: "Beautiful photo!",
-                      image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'),
-                      created_at: @time)
+      @image = @user_one.images.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'))
     end
 
     scenario 'appear with image' do
@@ -30,7 +27,6 @@ feature 'Likes' do
     scenario 'appear with correct pluralisation' do
       signup1
       visit '/'
-      # page.first(".image-link").click
       click_link 'Like'
       expect(page).to have_content "1 like"
     end
@@ -48,33 +44,27 @@ feature 'Likes' do
                       password: "123456",
                       password_confirmation: "123456")
 
-      @image = Image.create(user_id: @user_one.id,
-                      caption: "Beautiful photo!",
-                      image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'),
-                      created_at: @time)
+      @image = @user_two.images.create(caption:'Test', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'))
     end
 
     scenario 'can be added' do
-      sign_in("maggie_a_hicks@hotmail.com", "123456")
       visit '/'
-      page.first(".image-link").click
+      sign_in("mitch@gmail.com", "123456")
+      visit '/'
       expect { click_link 'Like' }.to change{ Like.count }.by(1)
     end
 
     scenario 'cannot be added if user likes own image' do
-      sign_in("kmhicks92@gmail.com", "123456")
+      sign_in("example@hotmail.com", "123456")
       visit '/'
-      page.first(".image-link").click
       click_link 'Like'
       expect(page).to have_content("You cannot like your own image")
     end
 
     scenario 'cannot be added if user has already liked image' do
-      sign_in("maggie_a_hicks@hotmail.com", "123456")
+      sign_in("mitch@gmail.com", "123456")
       visit '/'
-      page.first(".image-link").click
       click_link 'Like'
-      page.first(".image-link").click
       click_link 'Like'
       expect(page).to have_content("You cannot like a image more than once")
     end

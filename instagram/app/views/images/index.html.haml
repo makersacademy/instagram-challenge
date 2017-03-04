@@ -1,3 +1,5 @@
+%a(href='/images/new') Add a image
+%p
 - if @images.any?
   - @images.each do |image|
     = @users.find_by_id(image.user_id).email
@@ -5,17 +7,20 @@
     %br
     = image_tag image.image.url(:medium)
     %br
-    = link_to "Like", image_likes_path(image), method: :post
+    - if image.likes == 1
+      = image.likes.count.to_s + " like"
     - if image.likes
-      = image.likes.count
+      = image.likes.count.to_s + " likes"
+    = link_to "Like", image_likes_path(image), method: :post
     - if image.user == @user
       %h4= link_to image.caption, image_path(image)
     - else
-      %h4= image.caption
+      = image.caption
     %ul
     - if image.comments.all.any?
       - image.comments.each do |comment|
         %li
+          = @users.find_by_id(comment.user_id).email + ':'
           = comment.comment
     - else
       No comments yet
@@ -24,4 +29,3 @@
 
 - else
   No images yet
-%a(href='/images/new') Add a image

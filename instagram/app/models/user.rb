@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :images
   has_many :comments, dependent: :destroy
   has_many :commented_images, through: :comments, source: :image
+  has_many :liked_images, through: :likes, source: :image
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
@@ -20,4 +21,8 @@ class User < ApplicationRecord
        end
      end
    end
+
+   def has_liked?(image)
+    liked_images.include? image
+  end
 end

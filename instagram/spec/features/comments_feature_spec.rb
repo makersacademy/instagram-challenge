@@ -13,7 +13,6 @@ feature 'comments' do
     scenario 'should display a prompt to add a comment' do
       @user.images.create(caption:'test1', image: File.new(Rails.root + 'public/system/images/images/000/000/001/original/AAEAAQAAAAAAAAjkAAAAJDY3MmYxNjQ2LWJhNjQtNGUzZC05OTNlLTFiNWEyOGE0ZjMxOQ.jpg'))
       visit '/images'
-      click_link 'test1'
       expect(page).to have_content 'No comments yet'
       expect(page).to have_link 'Comment'
     end
@@ -24,18 +23,15 @@ feature 'comments' do
 
     scenario 'allows users to leave a comment using a form' do
        visit '/images'
-       click_link 'test1'
        click_link 'Comment'
        fill_in "Comment", with: "so so"
        click_button 'Leave Comment'
-
-       expect(current_path).to eq "/images/#{test1.id}"
+       expect(current_path).to eq "/images"
        expect(page).to have_content('so so')
     end
 
     scenario 'allows users to leave multiple comments using a form' do
        visit '/images'
-       click_link 'test1'
        click_link 'Comment'
        fill_in "Comment", with: "so so"
        click_button 'Leave Comment'
@@ -43,7 +39,7 @@ feature 'comments' do
        fill_in "Comment", with: "yeaha"
        click_button 'Leave Comment'
 
-       expect(current_path).to eq "/images/#{test1.id}"
+       expect(current_path).to eq "/images"
        expect(page).to have_content('so so')
        expect(page).to have_content('yeaha')
     end

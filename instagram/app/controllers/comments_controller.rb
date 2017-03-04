@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @image = Image.find(params[:image_id])
     @comment = @image.comments.build_with_user(comment_params, current_user)
     @comment.save
-    redirect_to image_path(@image)
+    redirect_to images_path
   end
 
   private
