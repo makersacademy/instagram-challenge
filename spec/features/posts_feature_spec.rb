@@ -58,6 +58,22 @@ end
       expect(page).to have_content 'gentle giant'
       expect(current_path).to eq '/posts/1'
     end
+
+    scenario 'user can only edit their own post' do
+      sign_up2
+      visit '/posts'
+      click_link 'Edit Poppy'
+      expect(page).to have_content 'You cannot edit another user\'s post'
+      sign_out
+      sign_up
+      visit '/posts'
+      click_link 'Edit Poppy'
+      fill_in 'post_desc', with: 'Countess of Ketton'
+      click_button 'Update Post'
+      click_link 'Poppy'
+      expect(page).to have_content 'Countess of Ketton'
+      expect(current_path).to eq '/posts/1'
+    end
   end
 
   context 'deleting dogs' do
@@ -69,5 +85,12 @@ end
        click_link 'Delete Poppy'
        expect(page).not_to have_content 'Poppy'
        expect(page).to have_content 'Post deleted successfully'
+     end
+
+     scenario 'cannot delete another users post' do
+       sign_up2
+       click_link 'Delete Poppy'
+       expect(page).to have_content 'You cannot delete another user\'s post'
+
      end
   end

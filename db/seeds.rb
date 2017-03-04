@@ -6,5 +6,26 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-posts = Post.create([{ title: 'Poppy' }, { title: 'Conker' }, { title: 'Freddie'}])
-#   Character.create(name: 'Luke', movie: movies.first)
+user = User.create! :email => 'doglover@gmail.com', :password => 'topsecret', :password_confirmation => 'topsecret'
+
+posts = Post.create([{:id => 1, title: 'Poppy', desc:'Genteel bouncy lovingx lab'},
+  {:id => 2, title: 'Conker', desc:'Chocolate labette always busy'},
+  {:id => 3, title: 'Freddie', desc:'Collie incarnation of Lord Snooty'},
+  {:id => 4, title: 'DeeDee', desc:'Foxy Jack Russell with attitude'},
+  {:id => 5, title: 'Alphi', desc:'Lord Ribblesdale'},
+  {:id => 6, title: 'Merlin', desc:'Black lab teen hooligan'}])
+
+
+comments = Comment.create([{ thoughts:'Great toy fetcher',post_id: 1},
+    { thoughts:'Dependable',post_id: 2},
+    { thoughts:'Strong',post_id: 2},
+    { thoughts:'Handsome',post_id: 3},
+    { thoughts:'Quirky',post_id: 3},
+    { thoughts:'Clever',post_id: 3},
+    { thoughts:'She\'s in charge',post_id: 4},
+    { thoughts:'She\'s been here before',post_id: 4},
+    { thoughts:'He\'s so comfy',post_id: 5},
+    { thoughts:'Noble hound',post_id: 5},
+    { thoughts:'Ain\'t nobody going to keep me down!',post_id: 6},
+    { thoughts:'Ain\'t nobody going to keep me down!',post_id: 6}
+    ])

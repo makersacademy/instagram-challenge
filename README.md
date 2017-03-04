@@ -6,40 +6,40 @@ This needs **users** who can post **pictures**, write **comments** on pictures a
 
 User stories
 ============
-As a User
+* As a User
 I want to register/sign up
 So that I can log in without entering details each time
 
-As a signed in User
+* As a signed in User
 I want to post a thumbnail-sized image with title
 So that I can communicate with my followers in pictures
 
-As a signed in user
+* As a signed in user
 I want to add or edit my image description
 So that I can give more information   
 
-As a user browsing to the home page
+* As a user browsing to the home page
 I want to see a list of thumbnails and comments
 So that users can read more about the images
 
-As a user
+* As a user
 I want to be able to add comments on an image
 So that we can get bantz going
 
-As a user
+* As a user
 I want to be able to 'like' a posted image
 So that the user gets a good feeling
 
 
-_As an owner
+* _As an owner
 I want the images to be hosted on S3(AWS)
-So that security and availability are managed by AWS
+So that security and availability are managed by AWS_
 
-As an owner
+* _As an owner
 I want the pages to have a coherent look
-So that this is an appealing and trusted site
+So that this is an appealing and trusted site_
 
-As a user
+* _As a user
 I want to be able to add tags
 So that images can be filtered on topics_
 
