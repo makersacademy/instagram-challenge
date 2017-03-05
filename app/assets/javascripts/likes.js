@@ -1,5 +1,3 @@
-  alert('this is working!')
-
 $(document).ready(function() {
 
   $('.likes-link').on('click', function(event){
