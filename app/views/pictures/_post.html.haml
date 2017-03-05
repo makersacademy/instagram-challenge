@@ -1,0 +1,26 @@
+.posts-wrapper
+  .post
+    .post-head
+      .thumb-img
+      .user-name
+        =picture.user.username
+    .image.center-block
+      =image_tag picture.image.url(:medium), class:'img-responsive'
+    .post-bottom
+      .caption
+        .user-name
+          = picture.user.username
+        = picture.description
+      - if picture.comments.any?
+        - picture.comments.each do |comment|
+          .comment
+            .user-name
+              = comment.user.username
+            .comment-content
+              = comment.thoughts
+      .comment-form
+        = form_for [picture, picture.comments.new] do |f|
+          = f.text_field :thoughts, placeholder: "Add a comment here..."
+
+      - if current_user.present? && current_user.owns?(picture)
+        %a= link_to "Delete", picture_path(picture), method: :delete

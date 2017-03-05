@@ -3,34 +3,14 @@
   %head
   %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
   %title InstagramChallenge
+  %link{:href => "https://fonts.googleapis.com/css?family=Lato|Roboto+Slab", :rel => "stylesheet"}/
   = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   = csrf_meta_tags
 
 
   %body
-    %nav.navbar.navbar-default
-      .navbar-container
-        .navbar-header
-          %button.navbar-toggle.collapsed{"data-target" => "#bs-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
-            %span.sr-only Toggle Navigation
-            %span.icon-bar
-            %span.icon-bar
-          .navbar-brand= link_to "Instagram", root_path
-        .collapse.navbar-collapse#bs-navbar-collapse-1
-          %ul.nav.navbar-nav.navbar-right
-            %li
-              = link_to "Post a picture", new_picture_path
-            %li
-            - if user_signed_in?
-              %current_user= "Logged in as"
-              %strong= current_user.username
-              = link_to "Log out", destroy_user_session_path, method: :delete
-            - else
-              %li
-                = link_to "Log in", new_user_session_path
-              %li
-                = link_to "Register", new_user_registration_path
+    = render 'layouts/navbar'
 
   .notice
     %p= notice

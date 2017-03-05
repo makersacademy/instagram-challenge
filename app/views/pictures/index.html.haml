@@ -3,26 +3,7 @@
 - if @pictures.any?
   .posts-wrapper.row
   - @pictures.each do |picture|
-    .post
-      .post-head
-        .name
-          =picture.find_username(picture.user_id)
-      .image.center-block
-        =image_tag picture.image.url(:medium), class:'img-responsive'
-      %p.description
-        =picture.description
-      - if picture.comments.any?
-        - picture.comments.each do |comment|
-          %p= "#{comment.find_username(comment.user_id)}: #{comment.thoughts}"
-      - if current_user
-        = form_for [picture, picture.comments.new] do |f|
-          = f.label :thoughts
-          = f.text_field :thoughts, placeholder: "Add a comment here..."
-          = f.submit 'Comment', class: 'btn btn-default'
-
-      - if current_user.present? && current_user.owns?(picture)
-        %a= link_to "Delete #{picture.description}", picture_path(picture), method: :delete
-
+    = render 'post', picture: picture
 - else
   No pictures posted
 
