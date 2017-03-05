@@ -1,23 +1,28 @@
-describe 'comments' do
-  describe 'build_with_user' do
+require "rails_helper"
 
-    let(:user) { User.create email: 'test@test.com' }
-    let(:picture) { Picture.create description: 'Test' }
-    let(:comments_params) { {thoughts: 'nice'} }
+describe Picture, type: :model do
 
-    subject(:comment) { picture.comments.build_with_user(comments_params, user) }
+  let(:image_desc) { "I am a description" }
+  let(:image_file_jpeg) { File.new('spec/features/Mountains.jpg') }
 
-    it 'is not valid with no image' do
-      test_image = Image.new(title: image_title, description: image_desc, image_file: '')
-      expect(test_image).to have(1).error_on(:image_file)
+  context 'associations' do
+   it { is_expected.to belong_to(:user) }
+   it { is_expected.to have_many(:comments).dependent(:destroy) }
+  end
+
+  context 'validations' do
+    it 'is not valid with a description less than two chars' do
+      test_image = Picture.new(description: "a", image: image_file_jpeg)
       expect(test_image).not_to be_valid
     end
-    it 'builds a comment' do
-      expect(comment).to be_a Comment
+    it 'is not valid with a blank desc' do
+      test_image = Picture.new( description: '', image: image_file_jpeg)
+      expect(test_image).not_to be_valid
+    end
+    it 'is not valid with no image' do
+      test_image = Picture.new(description: image_desc, image: '')
+      expect(test_image).not_to be_valid
     end
 
-    it 'builds a comment associated with the specified user' do
-      expect(comment.user).to eq user
-    end
   end
 end

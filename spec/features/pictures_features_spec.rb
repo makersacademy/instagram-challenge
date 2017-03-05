@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'pictures' do
 
   let(:picture_desc) { "Test" }
-  let(:pic_file_jpeg) { File.new('/files/sunset.jpeg') }
+  let(:image_file_jpeg) { File.new('spec/features/Mountains.jpg') }
   let(:comment_thoughts) {"Nice"}
 
   context 'no pictures have been added' do
@@ -30,19 +30,19 @@ feature 'pictures' do
   context 'pictures have been added by a user' do
     before do
       sign_up
-      @picture = @user.pictures.create(description: 'description')
+      @picture = @user.pictures.create(description: picture_desc, image: image_file_jpeg)
     end
 
     scenario 'display pictures' do
       visit "/pictures"
-      expect(page).to have_content("Description")
+      expect(page).to have_content("Test")
       expect(page).not_to have_content('No pictures posted')
     end
 
 
     scenario 'removes a picture when a user clicks a delete link' do
       visit pictures_path
-      click_link 'Delete description'
+      click_link 'Delete'
       expect(page).not_to have_content 'Description'
       # expect(page).to have_content 'Restaurant deleted successfully'
     end

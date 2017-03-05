@@ -25,7 +25,8 @@
           %span(class="glyphicon glyphicon-heart-empty")
         .comment-form.col-sm-11
           = form_for [picture, picture.comments.new] do |f|
+            = f.label :thoughts
             = f.text_field :thoughts, placeholder: "Add a comment here..."
-
+            = f.submit 'Comment'
       - if current_user.present? && current_user.owns?(picture)
         %a= link_to "Delete", picture_path(picture), method: :delete
