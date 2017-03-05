@@ -1,5 +1,5 @@
 
- BUILD STATUS: ![alt text]https://travis-ci.org/olwend/instagram-challenge.svg?branch=master
+ BUILD STATUS: ![travis-ci](https://travis-ci.org/olwend/instagram-challenge.svg?branch=master)
 
 The challenge is to build Instagram using Rails.
 This needs **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
@@ -72,3 +72,7 @@ Olwens-MBP:instagram-challenge DOE$ rspec
 
 * Services (job queues, cache servers, search engines, etc.)
 describe heroku, postgresql
+
+Domain model
+============
+![Models and associations](https://github.comolwend/instagram-challenge/blob/master/gram_models.jpg)
