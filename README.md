@@ -1,5 +1,5 @@
 
-# Instagram Clone ![Travis CI](https://travis-ci.org/sliute/instagram-challenge.svg?branch=master)
+# Instagram Clone ![Travis CI](https://travis-ci.org/sliute/instagram-challenge.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/github/sliute/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/sliute/instagram-challenge?branch=master)
 
 ## Task
 
@@ -71,7 +71,7 @@ $ bin/rake db:create
 $ bin/rake db:migrate
 $ bin/rails s
 ```
-Then visit http://localhost:3000.
+Then visit [localhost:3000](http://localhost:3000).
 
 ## Progress
 
