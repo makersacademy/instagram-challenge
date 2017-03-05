@@ -15,7 +15,7 @@ I want to post a thumbnail-sized image with title
 So that I can communicate with my followers in pictures
 
 * As a signed in user
-I want to add or edit my image description
+I want to add an image description
 So that I can give more information   
 
 * As a signed in user

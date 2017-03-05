@@ -13,19 +13,17 @@ before_action :authenticate_user!, :except => [:index, :show]
     desc: post_params["description"],
     user_id: current_user.id)
     p current_user.id
-
       if @post.save
         redirect_to posts_path
       else
-        render 'new'
+        flash[:notice] = 'Error :Post not created'
+        redirect_to posts_path
       end
   end
 
   def show
     @post = Post.find(params[:id])
-    p @post
     @comments = Comment.where(:post_id=>params[:id])
-    p @comments
   end
 
   def edit
