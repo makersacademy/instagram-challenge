@@ -7,13 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.create! :email => 'doglover@gmail.com', :password => 'topsecret', :password_confirmation => 'topsecret'
-
-posts = Post.create([{:id => 1, title: 'Poppy', desc:'Genteel bouncy lovingx lab'},
-  {:id => 2, title: 'Conker', desc:'Chocolate labette always busy'},
-  {:id => 3, title: 'Freddie', desc:'Collie incarnation of Lord Snooty'},
-  {:id => 4, title: 'DeeDee', desc:'Foxy Jack Russell with attitude'},
-  {:id => 5, title: 'Alphi', desc:'Lord Ribblesdale'},
-  {:id => 6, title: 'Merlin', desc:'Black lab teen hooligan'}])
+user1 = User.create! :email => "aa@bb.com", :password => 'topsecret', :password_confirmation => 'topsecret'
+posts = Post.create([{:id => 1, title: 'Poppy', desc:'Genteel bouncy lovingx lab',user_id: 1},
+  {:id => 2, title: 'Conker', desc:'Chocolate labette always busy',user_id: 1},
+  {:id => 3, title: 'Freddie', desc:'Collie incarnation of Lord Snooty',user_id: 1},
+  {:id => 4, title: 'DeeDee', desc:'Foxy Jack Russell with attitude',user_id: 1},
+  {:id => 5, title: 'Alphi', desc:'Lord Ribblesdale',user_id: 2},
+  {:id => 6, title: 'Merlin', desc:'Black lab teen hooligan',user_id: 2}])
 
 
 comments = Comment.create([{ thoughts:'Great toy fetcher',post_id: 1},

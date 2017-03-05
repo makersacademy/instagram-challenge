@@ -5,4 +5,10 @@ class Post < ApplicationRecord
   has_many :woofs, dependent: :destroy
   validates :title, presence: true
   validates :title, uniqueness: true
+
+  def build_comment(attributes = {}, user)
+    attributes[:user] ||= user
+    comments.build(attributes)
+  end
+
 end
