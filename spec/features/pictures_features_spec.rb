@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 feature 'pictures' do
+
+  let(:picture_desc) { "Test" }
+  let(:pic_file_jpeg) { File.new('/files/sunset.jpeg') }
+  let(:comment_thoughts) {"Nice"}
+
   context 'no pictures have been added' do
     scenario 'should diplay a prompt to upload a picture' do
       sign_up

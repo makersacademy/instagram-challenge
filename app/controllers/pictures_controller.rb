@@ -3,7 +3,7 @@ class PicturesController < ApplicationController
   before_action :authenticate_user!, :except => [:index]
 
   def index
-    @pictures = Picture.all
+    @pictures = Picture.all.reverse
   end
 
   def new
