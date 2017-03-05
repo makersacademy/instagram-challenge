@@ -9,8 +9,16 @@ before_action :authenticate_user!, :except => [:index, :show]
   end
 
   def create
-    @post = Post.create(post_params)
-    redirect_to '/posts'
+    @post = Post.new(title: post_params["title"],
+    desc: post_params["description"],
+    user_id: current_user.id)
+    p current_user.id
+
+      if @post.save
+        redirect_to posts_path
+      else
+        render 'new'
+      end
   end
 
   def show
@@ -27,18 +35,23 @@ before_action :authenticate_user!, :except => [:index, :show]
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to '/posts'
+    redirect_to posts_path
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = 'Post deleted successfully'
-    redirect_to '/posts'
+    redirect_to posts_path
   end
+
+  private
 
   def post_params
-    params.require(:post).permit(:title, :desc)
+    params.require(:post).permit(:title, :desc, :user_id)
   end
 
+  def comments_for_post(id)
+    @comments = Comment.where(:post_id=>id)
+  end
 end

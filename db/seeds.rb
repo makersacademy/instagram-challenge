@@ -8,7 +8,7 @@
 
 user = User.create! :email => 'doglover@gmail.com', :password => 'topsecret', :password_confirmation => 'topsecret'
 user1 = User.create! :email => "aa@bb.com", :password => 'topsecret', :password_confirmation => 'topsecret'
-posts = Post.create([{:id => 1, title: 'Poppy', desc:'Genteel bouncy lovingx lab',user_id: 1},
+posts = Post.create([{:id => 1, title: 'Poppy', desc:'Genteel bouncy loving lab',user_id: 1},
   {:id => 2, title: 'Conker', desc:'Chocolate labette always busy',user_id: 1},
   {:id => 3, title: 'Freddie', desc:'Collie incarnation of Lord Snooty',user_id: 1},
   {:id => 4, title: 'DeeDee', desc:'Foxy Jack Russell with attitude',user_id: 1},

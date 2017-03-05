@@ -19,7 +19,7 @@ I want to add or edit my image description
 So that I can give more information   
 
 * As a signed in user
-I want to delete my image 
+I want to delete my image
 So that I can keep it up to date and remove images I dont like  
 
 * As a user browsing to the home page
@@ -47,6 +47,8 @@ So that this is an appealing and trusted site_
 I want to be able to add tags
 So that images can be filtered on topics_
 
+I built incrementally, first setting up and passing tests for posts and comments independent of signed in user. This confirmed my model. Then I added the user constraints and used TDD, adding extra tests and fixing the tests now failing by addressing the user constraints in Create, update and delete methods.
+
 Domain model
 ============
 ![Models and associations](https://github.com/olwend/instagram-challenge/blob/master/gram_models.jpg)
@@ -73,11 +75,10 @@ $ open http://localhost:3000
 ```
 
 * How to run the test suite
-At command-line run 
+At command-line run
 ```rspec
 e.g.
 Olwens-MBP:instagram-challenge DOE$ rspec ```
 
 * Services (job queues, cache servers, search engines, etc.)
 describe heroku, postgresql
-
