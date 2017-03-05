@@ -18,13 +18,17 @@ So that I can communicate with my followers in pictures
 I want to add or edit my image description
 So that I can give more information   
 
+* As a signed in user
+I want to delete my image 
+So that I can keep it up to date and remove images I dont like  
+
 * As a user browsing to the home page
 I want to see a list of thumbnails and comments
 So that users can read more about the images
 
-* As a user
-I want to be able to add comments on an image
-So that we can get bantz going
+* As a signed in user
+I want to be able to add comments attributable to me on an image
+So that people know my views and we can get bantz going
 
 * As a user
 I want to be able to 'like' a posted image
@@ -42,6 +46,10 @@ So that this is an appealing and trusted site_
 * _As a user
 I want to be able to add tags
 So that images can be filtered on topics_
+
+Domain model
+============
+![Models and associations](https://github.comolwend/instagram-challenge/blob/master/gram_models.jpg)
 
 Steps to get the application up and running
 =============================================
@@ -65,14 +73,11 @@ $ open http://localhost:3000
 ```
 
 * How to run the test suite
-At command-line run ```rspec
+At command-line run 
+```rspec
 e.g.
-Olwens-MBP:instagram-challenge DOE$ rspec
-```
+Olwens-MBP:instagram-challenge DOE$ rspec ```
 
 * Services (job queues, cache servers, search engines, etc.)
 describe heroku, postgresql
 
-Domain model
-============
-![Models and associations](https://github.comolwend/instagram-challenge/blob/master/gram_models.jpg)
