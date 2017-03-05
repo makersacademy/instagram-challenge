@@ -1,5 +1,5 @@
 
- BUILD STATUS: ![travis-ci](https://travis-ci.org/olwend/instagram-challenge.svg?branch=master)
+ BUILD STATUS: ![alt-text](https://travis-ci.org/olwend/instagram-challenge.svg?branch=master)
 
 The challenge is to build Instagram using Rails.
 This needs **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
@@ -49,7 +49,7 @@ So that images can be filtered on topics_
 
 Domain model
 ============
-![Models and associations](https://github.comolwend/instagram-challenge/blob/master/gram_models.jpg)
+![Models and associations](https://github.com/olwend/instagram-challenge/blob/master/gram_models.jpg)
 
 Steps to get the application up and running
 =============================================
