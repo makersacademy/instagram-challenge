@@ -33,6 +33,7 @@ before_action :authenticate_user!, :except => [:index, :show]
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
+    flash[:notice] = 'Post has been updated'
     redirect_to posts_path
   end
 
