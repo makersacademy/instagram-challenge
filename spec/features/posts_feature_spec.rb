@@ -57,7 +57,7 @@ context 'viewing dogs' do
     p Post.last.id
     click_link 'Freddie'
     expect(page).to have_content 'Freddie'
-    expect(current_path.last(3)).to eq((Post.last.id).to_s)
+    expect(current_path.last(1)).to eq((Post.last.id).to_s)
   end
 end
 
@@ -76,7 +76,7 @@ context 'editing dogs' do
       click_link 'Alphi'
       expect(page).to have_content 'Alphi'
       expect(page).to have_content 'gentle giant'
-      expect(current_path.last(3)).to eq((Post.last.id).to_s)
+      expect(current_path.last(1)).to eq((Post.last.id).to_s)
     end
   end
 
