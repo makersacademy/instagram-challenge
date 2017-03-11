@@ -1,9 +1,36 @@
-Instagram Challenge
-===================
+# Instagram Challenge
 
-"Instasham" is an Instagram clone built on Rails for the [Makers Academy](http://www.makersacademy.com/ "Makers Academy") week 8, weekend challenge.
+## [Makers Academy](http://www.makersacademy.com) - Week 8 - Solo Weekend Challenge
 
-### Implemented User Stories
+## Technologies
+[Ruby](https://www.ruby-lang.org/en/)
+
+[Ruby on Rails v5.0.1](http://rubyonrails.org/)
+
+[PostgreSQL](https://www.postgresql.org/)
+
+[Slim Template](http://slim-lang.com/)
+
+## Jump To
+* [User Stories](#user-stories)
+* [Game Rules](#rules)
+* [Installation](#install)
+* [Usage](#usage)
+* [Tests](#tests)
+* [Heroku Demo](#demo)
+* [Screenshots](#screenshots)
+
+## The Brief
+
+Build Instagram: Simple huh!
+
+Bonus if you can write your own set of sensible user stories!
+
+Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture. Style it like Instagram's website (or more awesome).
+
+Bonus if you can add image filters!
+
+## <a name="user-stories">User Stories</a>
 
 ```
 As a user,
@@ -39,24 +66,36 @@ So that I can make my pictures look funky
 I want to be able to apply colour filters to my post's pictures
 ```
 
-Instructions for use
-```
+## <a name="install">Installation</a>
+You will need to have [PostgreSQL](https://www.postgresql.org/) installed before proceeding with the below installation instructions.
+```ruby
 $ git clone https://github.com/treborb/instagram-challenge.git
 $ cd instagram-challenge
+$ rvm 2.3.3
 $ gem install bundler
 $ bundle
 $ bin/rake db:create
 $ bin/rails db:environment:set RAILS_ENV=development
 $ bin/rake db:schema:load
-$ bin/rails server
-
-visit the following page in your browser: http://localhost:3000
 ```
 
-### [Or view a demo of the app on Heroku](http://robs-instasham.herokuapp.com/)
+## <a name="usage">Usage</a>
+Follow the installation instructions above, then:
+```sh
+$ bin/rails server
+$ open http://localhost:3000
+```
 
-## Screenshots
+## <a name="tests">Running the tests</a>
+```sh
+$ rspec
+```
 
-![Instasham - Homepage](public/img/home.png)
-![Instasham - Log in](public/img/log-in.png)
-![Instasham - Add a post](public/img/add-post.png)
+## <a name="demo">[Heroku Demo](http://robs-instasham.herokuapp.com/)</a>
+Click on the link above to see a live demo
+
+## <a name="screenshots">Screenshots</a>
+
+![Instasham - Homepage](http://0127599070f05b20f2ae-cf41a704c6c093350fcb8a1fb943b3e5.r25.cf5.rackcdn.com/github-readme-images/instasham/home.png)
+![Instasham - Log in](http://0127599070f05b20f2ae-cf41a704c6c093350fcb8a1fb943b3e5.r25.cf5.rackcdn.com/github-readme-images/instasham/log-in.png)
+![Instasham - Add a post](http://0127599070f05b20f2ae-cf41a704c6c093350fcb8a1fb943b3e5.r25.cf5.rackcdn.com/github-readme-images/instasham/add-post.png)

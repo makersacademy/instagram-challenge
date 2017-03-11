@@ -1,44 +1,44 @@
 .container
   .row.space
     .posts.twelve.columns
-    - if @post.any?
-      - @post.reverse.each do |post|
-        article.post
-          header.post-title
-            .avatar
-              - if post.user.avatar
-                img.avatar src=post.user.avatar.thumb
-            .username
-              = link_to post.user.username, user_path(post.user.id)
-            .time
-              = time_ago_in_words(post.created_at)
-          .image
-            img src="#{post.image.send(post.color_filter)}" alt="#{post.caption}"
-          .interactions
-            .likes
-              = pluralize(post.get_upvotes.size, 'like')
-            .caption
-              p
-                span.name
-                  strong = post.user.username
-                span.caption-content
-                  = post.caption
-              section
-                - if post.comments.count == 0
-                  | No comments yet...
-                - else
-                  ul.comments
-                    - post.comments.each do |comment|
-                      li
-                        span.name
-                          strong = comment.user.username
-                        span.caption-content
-                          = comment.content
-              - if user_signed_in?
-                section.new-comment
-                  = link_to "Like", like_post_path(post), method: :put
-                  = form_for [post, @comment] do |f|
-                    = f.text_field :content, maxlength: 140, placeholder: "Add a comment . . ."
-                    = f.submit "Comment", class: "submit-comment"
-    - else
-      h2 No posts yet!
+      - if @post.any?
+        - @post.reverse.each do |post|
+          article.post
+            header.post-title
+              .avatar
+                - if post.user.avatar
+                  img.avatar src=post.user.avatar.thumb
+              .username
+                = link_to post.user.username, user_path(post.user.id)
+              .time
+                = time_ago_in_words(post.created_at)
+            .image
+              img src="#{post.image.send(post.color_filter)}" alt="#{post.caption}"
+            .interactions
+              .likes
+                = pluralize(post.get_upvotes.size, 'like')
+              .caption
+                p
+                  span.name
+                    strong = post.user.username
+                  span.caption-content
+                    = post.caption
+                section
+                  - if post.comments.count == 0
+                    | No comments yet...
+                  - else
+                    ul.comments
+                      - post.comments.each do |comment|
+                        li
+                          span.name
+                            strong = comment.user.username
+                          span.caption-content
+                            = comment.content
+                - if user_signed_in?
+                  section.new-comment
+                    = link_to "Like", like_post_path(post), method: :put
+                    = form_for [post, @comment] do |f|
+                      = f.text_field :content, maxlength: 140, placeholder: "Add a comment . . ."
+                      = f.submit "Comment", class: "submit-comment"
+      - else
+        h2 No posts yet!
