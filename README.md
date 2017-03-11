@@ -6,13 +6,10 @@
 ## [Makers Academy](http://www.makersacademy.com) - Week 8 - Solo Weekend Challenge
 
 ## Technologies
-[Ruby v2.3.3](https://www.ruby-lang.org/en/)
-
-[Ruby on Rails v5.0.1](http://rubyonrails.org/)
-
-[PostgreSQL](https://www.postgresql.org/)
-
-[Slim Template](http://slim-lang.com/)
+* [Ruby v2.3.3](https://www.ruby-lang.org/en/)
+* [Ruby on Rails v5.0.1](http://rubyonrails.org/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [Slim Template](http://slim-lang.com/)
 
 ## Jump To
 * [User Stories](#user-stories)
