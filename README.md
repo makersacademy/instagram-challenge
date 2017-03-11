@@ -10,6 +10,8 @@
 * [Ruby on Rails v5.0.1](http://rubyonrails.org/)
 * [PostgreSQL](https://www.postgresql.org/)
 * [Slim Template](http://slim-lang.com/)
+* [Rspec](http://rspec.info/)
+* [Capybara](https://github.com/teamcapybara/capybara)
 
 ## Jump To
 * [User Stories](#user-stories)
