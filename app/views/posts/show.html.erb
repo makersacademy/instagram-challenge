@@ -1,0 +1,48 @@
+<div class='show-left'>
+
+  <div class='show-box'>
+    <div class='big-photo'>
+      <%= image_tag @post.image.url(:medium) %>
+    </div>
+    <div class='show-text'>
+      <p><%= @post.description %></p>
+    </div>
+  </div>
+
+</div>
+
+<div class='show-right'>
+
+  <div class='post-it show'>
+    <h3>Photo by <%= @post.user.email %></h3>
+    <% if !@current_user.has_liked?(@post) %>
+      <%= link_to "Like", post_likes_path(@post), class: 'likes-link' %>
+    <% end %>
+    <span class="likes_count"><p><%= @post.likes.count %></span><%= ' like'.pluralize(@post.likes.count) %></p>
+    <%= link_to "leave comment", new_post_comment_path(@post) %>
+  </div>
+
+  <h3>Comments</h3>
+
+
+
+
+  <% if @post.comments.any? %>
+    <% @post.comments.each do |comment| %>
+      <ul style='list-style: none'>
+        <li>
+          <div class="dialogbox">
+            <div class="body">
+              <div class="message">
+                <strong><%= comment.user.email %></strong>:<br>
+                <%= comment.body %>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    <% end %>
+  <% end %>
+
+
+</div>

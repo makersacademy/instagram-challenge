@@ -1,0 +1,16 @@
+<% if @comment.errors.any? %>
+  <section id='errors'>
+    <h3> <%= pluralize(@comment.errors.count, "error") %> stopped comment from saving </h3>
+    <ul>
+      <% @comment.errors.full_messages.each do |error| %>
+        <li> <%= error %> </li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.label :body, 'Comment: ' %>
+  <%= f.text_area :body %>
+  <%= f.submit 'Leave Comment' %>
+<% end %>

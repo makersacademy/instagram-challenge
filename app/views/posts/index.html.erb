@@ -1,0 +1,35 @@
+  <div class='index_left'>
+    <div class='post-it index'>
+      <h3>Welcome to PhotoShack</h3>
+      <%= link_to "Add a post", new_post_path %>
+    </div>
+  </div>
+  <div class = 'index_right'>
+    <% if @posts.any? %>
+      <ul style='list-style: none'>
+        <% @posts.each do |post| %>
+
+          <div class = 'post_box'>
+            <li>
+              <%= link_to post_path(post) do %>
+              <div class='photo'><%= image_tag post.image.url(:thumb) %></div>
+              <% end %>
+              <div class = 'post_options' >
+                <% if !@current_user.has_liked?(post) %>
+                  <%= link_to "Like", post_likes_path(post), class: 'likes-link' %>
+                <% end %>
+                <span class="likes_count"> <%= post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
+
+                <% if @current_user.id == post.user_id %>
+                  <%= link_to 'Edit', edit_post_path(post) %>
+                  <%= link_to 'Delete', post_path(post), method: :delete %>
+                <% end %>
+              </div>
+            </li>
+          </div>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No posts to display</p>
+    <% end %>
+  </div>

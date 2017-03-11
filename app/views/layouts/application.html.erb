@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstagramClone</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'data' %>
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+  </head>
+
+  <body "data-no-turbolink">
+
+    <div class='header'>
+  <div class='header-links'>
+          <% if user_signed_in? %>
+            <%= link_to "Home", posts_path %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            Welcome to PhotoShack <%=current_user.email%>
+          <% else %>
+        <%= link_to "Sign in", new_user_session_path %>
+        <%= link_to "Sign up", new_user_registration_path %>
+        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+      <% end %>
+    </div>
+
+    </div>
+    <div class='content'>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+  </body>
+</html>
