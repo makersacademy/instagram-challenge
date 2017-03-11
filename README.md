@@ -13,7 +13,6 @@
 
 ## Jump To
 * [User Stories](#user-stories)
-* [Game Rules](#rules)
 * [Installation](#install)
 * [Usage](#usage)
 * [Tests](#tests)
