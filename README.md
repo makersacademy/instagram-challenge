@@ -113,4 +113,4 @@ AWS_REGION=
 ```shell
 $ bin/rails server
 ```
-Open your broweser, and naviagate to `localhost:3000`
+Open your broweser, and navigate to `localhost:3000`
