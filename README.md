@@ -7,7 +7,7 @@
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
 ## Outline
-
+The final Makers Academy solo weekend challenge was to build a light-weight clone of Instagram on Rails.  The main challenge I faced in building this app was working out how to test for image uploads using Capybara.  As well as implementing user authentication using the [devise](https://github.com/plataformatec/devise) and [OmniAuth](https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview) gems, I alos learned how to host data using Amazon Web Services in order to allow for larger number numbers of images being uploaded.
 
 ## Screenshots
 #### Log In Screen
