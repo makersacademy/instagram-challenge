@@ -1,9 +1,13 @@
 # Instagram Challenge
 
+[![Build Status](https://travis-ci.org/treborb/instagram-challenge.svg?branch=master)](https://travis-ci.org/treborb/instagram-challenge)
+
+[![codecov](https://codecov.io/gh/treborb/instagram-challenge/branch/master/graph/badge.svg)](https://codecov.io/gh/treborb/instagram-challenge)
+
 ## [Makers Academy](http://www.makersacademy.com) - Week 8 - Solo Weekend Challenge
 
 ## Technologies
-[Ruby](https://www.ruby-lang.org/en/)
+[Ruby v2.3.3](https://www.ruby-lang.org/en/)
 
 [Ruby on Rails v5.0.1](http://rubyonrails.org/)
 
