@@ -1,7 +1,6 @@
 # Instagram Challenge
 
 [![Build Status](https://travis-ci.org/treborb/instagram-challenge.svg?branch=master)](https://travis-ci.org/treborb/instagram-challenge)
-
 [![codecov](https://codecov.io/gh/treborb/instagram-challenge/branch/master/graph/badge.svg)](https://codecov.io/gh/treborb/instagram-challenge)
 
 ## [Makers Academy](http://www.makersacademy.com) - Week 8 - Solo Weekend Challenge
