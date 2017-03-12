@@ -31,7 +31,7 @@ describe Like, type: :model do
                     password: "123456",
                     password_confirmation: "123456")
 
-    @user_two = User.create(email: "maggie_a_hicks@hotmail.com",
+    @user_two = User.create(email: "maggie_a_hicks@test.com",
                     password: "123456",
                     password_confirmation: "123456")
 

@@ -12,7 +12,7 @@ feature 'Likes' do
                       password: "123456",
                       password_confirmation: "123456")
 
-      @user_two = User.create(email: "maggie_a_hicks@hotmail.com",
+      @user_two = User.create(email: "maggie_a_hicks@test.com",
                       password: "123456",
                       password_confirmation: "123456")
 
@@ -29,7 +29,7 @@ feature 'Likes' do
     end
 
     scenario 'appear with correct pluralisation' do
-      sign_in("maggie_a_hicks@hotmail.com", "123456")
+      sign_in("maggie_a_hicks@test.com", "123456")
       visit '/'
       page.first(".post-link").click
       click_link 'Like'
@@ -45,7 +45,7 @@ feature 'Likes' do
                       password: "123456",
                       password_confirmation: "123456")
 
-      @user_two = User.create(email: "maggie_a_hicks@hotmail.com",
+      @user_two = User.create(email: "maggie_a_hicks@test.com",
                       password: "123456",
                       password_confirmation: "123456")
 
@@ -56,7 +56,7 @@ feature 'Likes' do
     end
 
     scenario 'can be added' do
-      sign_in("maggie_a_hicks@hotmail.com", "123456")
+      sign_in("maggie_a_hicks@test.com", "123456")
       visit '/'
       page.first(".post-link").click
       expect { click_link 'Like' }.to change{ Like.count }.by(1)
@@ -71,7 +71,7 @@ feature 'Likes' do
     end
 
     scenario 'cannot be added if user has already liked post' do
-      sign_in("maggie_a_hicks@hotmail.com", "123456")
+      sign_in("maggie_a_hicks@test.com", "123456")
       visit '/'
       page.first(".post-link").click
       click_link 'Like'

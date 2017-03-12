@@ -14,4 +14,10 @@ module WebHelper
     fill_in 'Caption', with: caption
     click_button 'Post'
   end
+
+  def add_comment(comment)
+    click_link "Comment"
+    fill_in "comment_content", with: comment
+    click_button "Enter"
+  end
 end
