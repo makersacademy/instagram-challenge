@@ -3,6 +3,7 @@
 
 The challenge is to build Instagram using Rails.
 This needs **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+I decided to use a dog theme, or owners to share images of dogs in their locale. I built incrementally, first setting up and passing tests for posts and comments independent of signed in user. This confirmed my model. I then added the user constraints and using TDD, fixed tests now failing due to new user constraints. I added extra tests for the user constraints in Create, update and delete methods.
 
 User stories
 ============
@@ -38,7 +39,8 @@ So that people know my views and we can get bantz going
 I want to be able to 'like' a posted image  
 So that the user gets a good feeling  
 
-
+WIP
+---
 * _As an owner  
 I want the images to be hosted on S3(AWS)  
 So that security and availability are managed by AWS_  
@@ -50,8 +52,6 @@ So that this is an appealing and trusted site_
 * _As a user
 I want to be able to add tags
 So that images can be filtered on topics_
-
-I built incrementally, first setting up and passing tests for posts and comments independent of signed in user. This confirmed my model. Then I added the user constraints and used TDD, adding extra tests and fixing the tests now failing by addressing the user constraints in Create, update and delete methods.
 
 Domain model
 ============
