@@ -1,6 +1,7 @@
 # Instagram Challenge
 ### Makers Academy Weekend Challenge No.8
 
+[![Build Status](https://travis-ci.org/KatHicks/instagram-challenge.svg?branch=master)](https://travis-ci.org/KatHicks/instagram-challenge)
 
 ### Instructions
 
