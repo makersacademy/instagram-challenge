@@ -10,7 +10,7 @@ As usual, we were given from the end of the day on Friday until 9am on Monday to
 
 As the final weekend challenge, we were given minimal direction.
 
-Instructions read:
+Instructions:
 
 > Build Instagram: simple huh!
 
