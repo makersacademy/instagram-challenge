@@ -1,24 +1,55 @@
-# README
+# Instagram Challenge
+### Makers Academy Weekend Challenge No.8
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+### Instructions
 
-* Ruby version
+As usual, we were given from the end of the day on Friday until 9am on Monday to complete the challenge.
 
-* System dependencies
+### Task
 
-* Configuration
+As the final weekend challenge, we were given minimal direction.
 
-* Database creation
+Instructions read:
 
-* Database initialization
+> Build Instagram: simple huh!
 
-* How to run the test suite
+> Bonus if you can write your own set of sensible user stories!
 
-* Services (job queues, cache servers, search engines, etc.)
+> As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to initialize a Rails app in the current directory.
 
-* Deployment instructions
+> Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture. Style it like Instagram's website (or more awesome).
 
-* ...
+> Bonus if you can add filters!
+
+### Using my application
+
+* Clone the repository and navigate inside the folder on your command line
+* Run `$ bundle` to install all the dependencies from the Gemfile into your repository
+* Run `$ bin/rake db:create` to create the development and tests databases needed for the app
+* Run `$ bin/rake db:migrate` to get the database tables configured according to the schema
+* Run `$ bin/rails server` and then navigate to `http://localhost:3000` to view the app locally in the browser
+* You will need to sign up to access the full functionality of the app
+* If you'd like to run the tests, run `$ rspec` in the command line to see formatted documentation
+
+### Dependencies
+
+* Written using **Ruby 2.3.3** and the **Ruby on Rails** web framework
+* Tested using **RSpec** and **Capybara**
+* Built on a **PostgreSQL** database using **ActiveRecord** as the ORM
+* Used various gems for the tests:
+  * **Timecop** to mock time
+  * **Orderly** to test the order of content on a page
+  * **Shoulda** to test the database associations
+* Used **Paperclip** for the upload of images
+* Used **Devise** to create secure user accounts
+
+### Steps in my development process
+
+* **Setting up Rails**
+  * Started off by initialising a Rails app in the repository
+
+### Ideas for extension
+
+* **Use AJAX for like functionality**
+  * Currently page needs to be reloaded for new likes to appear
