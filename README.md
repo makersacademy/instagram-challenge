@@ -68,7 +68,9 @@ I want to be able to apply colour filters to my post's pictures
 ```
 
 ## <a name="install">Installation</a>
+
 You will need to have [PostgreSQL](https://www.postgresql.org/) installed before proceeding with the below installation instructions.
+
 ```ruby
 $ git clone https://github.com/treborb/instagram-challenge.git
 $ cd instagram-challenge
@@ -81,13 +83,16 @@ $ bin/rake db:schema:load
 ```
 
 ## <a name="usage">Usage</a>
+
 Follow the installation instructions above, then:
+
 ```sh
 $ bin/rails server
 $ open http://localhost:3000
 ```
 
 ## <a name="tests">Running the tests</a>
+
 ```sh
 $ rspec
 ```
@@ -98,5 +103,7 @@ Click on the link above to see a live demo
 ## <a name="screenshots">Screenshots</a>
 
 ![Instasham - Homepage](http://0127599070f05b20f2ae-cf41a704c6c093350fcb8a1fb943b3e5.r25.cf5.rackcdn.com/github-readme-images/instasham/home.png)
+
 ![Instasham - Log in](http://0127599070f05b20f2ae-cf41a704c6c093350fcb8a1fb943b3e5.r25.cf5.rackcdn.com/github-readme-images/instasham/log-in.png)
+
 ![Instasham - Add a post](http://0127599070f05b20f2ae-cf41a704c6c093350fcb8a1fb943b3e5.r25.cf5.rackcdn.com/github-readme-images/instasham/add-post.png)
