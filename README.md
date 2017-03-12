@@ -1,23 +1,23 @@
-Instagram Challenge
-===================
+## Instagram challenge
+by Ben Vaughan-Jones
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-Task
------
+### Instructions
 
 Build Instagram: Simple huh!
 
-Bonus if you can write your own set of sensible user stories!
+### User stories
+```
+- As a user, I would like to be able sign-up, so that I can see posts
+- As a user, I would like to sign-in, so I that I can post to the website
+- As a user, I would like to post images, so that I can show off my food
+- As a user, I would like to be able to edit my post, incase I make a mistake
+- As a user, I would like to delete my post, so I can remove the post
+- As a user, I would like to like other peoples posts, so I can show my love for their pictures of food
+```
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+### Thoughs
+- I really enjoyed this challenge, it was complex and required quite a bit of planning, especially in regards to the associations.
+- I had quite a bit of difficulty with the likes function, it would be implementing it locally but when running the tests, the tests would fail.
+- The project still requires a bit of logic and validation being applied
+- I will be coming back to this project to add styling with Boostrap and CSS.
+- I would also like to deploy the application to Heroku once stylised and applying validation
