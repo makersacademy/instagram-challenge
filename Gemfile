@@ -18,6 +18,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'coveralls', require: false
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -36,7 +37,6 @@ group :test do
   gem 'shoulda'
   gem 'timecop'
   gem 'orderly'
-  gem 'coveralls', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
