@@ -36,6 +36,7 @@ group :test do
   gem 'shoulda'
   gem 'timecop'
   gem 'orderly'
+  gem 'coveralls', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
