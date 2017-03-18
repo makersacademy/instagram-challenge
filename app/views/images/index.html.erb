@@ -1,0 +1,46 @@
+<% if @images.all.any? %>
+  <% @images.all.each do |image| %>
+    <div class="image-wrapper" style="width:30%; display:inline-block; margin-left:2%; margin-top:2%">
+      <div class="image_box" style="width:95%">
+        <% @user = image_username(image.user_id) %>
+        <div class="image_header">
+          <center><h4>
+            <%= @user.username %> posted <%= time_ago_in_words image.created_at %> ago
+          </h4></center>
+        </div>
+        <% if image.image.url != "" %>
+          <div class="image center-block">
+            <center>
+              <%=link_to image_tag(image.image.url(:medium)), image.image.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+            </center>
+          </div>
+        <% end %>
+        <center>
+          <span class="glyphicon glyphicon-heart-empty"></span>
+          <% if user_signed_in? %><%= link_to "Like", image_likes_path(image), class: 'likes-link' %> -<%end%>
+          <span class="likes_count"> <%= image.likes.count %> </span> <%= 'like'.pluralize(image.likes.count) %><br>
+          <% if user_signed_in? %>
+            <% if current_user.id == image.user_id %>
+              <%= link_to "Delete", image_path(image), method: :delete %> |
+            <% end %>
+            <%= link_to "Comment", new_image_comment_path(image) %><br>
+          <% end %>
+        </center>
+
+        <% @comments = comments_for_image(image.id) %>
+        <% if @comments.any? %>
+          <br><center><h4>Comments</center></h4>
+          <% @comments.each do |comment| %>
+            <div>
+              <% @user = image_username(image.user_id) %>
+              <b><%= @user.username%>:</b> <%= comment.comments %>
+            </div>
+          <% end %>
+        <% end %>
+      <br>
+    </div>
+  </div>
+  <% end %>
+<% else %>
+  <h1>No images yet</h1>
+<% end %>
