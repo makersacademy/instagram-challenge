@@ -1,14 +1,14 @@
 # Instagram Challenge
 #### Technologies: Ruby, Javascript, Rspec, Rails, Postgres, SQL, Heroku, Facebook, AWS
-### [Makers Academy] (http://www.makersacademy.com) - Week 8 Solo Weekend Project
+### [Makers Academy](http://www.makersacademy.com) - Week 8 Solo Weekend Project
 
 ## Index
-* [User Stories] (#Stories)
-* [Gems Used] (#GEMS)
-* [Installation] (#Install)
-* [Usage] (#Usage)
-* [Screen Shots] (#Shots)
-* [Use live on Heroku] (#Heroku)
+* [User Stories](#Stories)
+* [Gems Used](#GEMS)
+* [Installation](#Install)
+* [Usage](#Usage)
+* [Screen Shots](#Shots)
+* [Use live on Heroku](#Heroku)
 
 ## Challenege
 
@@ -130,4 +130,5 @@ type `http://localhost:3000` into your web browser
 [![Screenshot](https://raw.githubusercontent.com/adrianeyre/instagram-challenge/master/images/screenshot3.png)](https://raw.githubusercontent.com/adrianeyre/instagram-challenge/master/images/screenshot3.png "Screen Shot 3")
 
 ## <a name="Heroku">Live on Heroku</a>
-[Use Live on Heroku] (https://adrianeyre-instagram.herokuapp.com)
+
+[![heroku-48](https://raw.githubusercontent.com/adrianeyre/codewars/master/Ruby/Authored/heroku.png)](https://adrianeyre-instagram.herokuapp.com) [Use on Heroku](https://adrianeyre-instagram.herokuapp.com)
