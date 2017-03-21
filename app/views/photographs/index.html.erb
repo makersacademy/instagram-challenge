@@ -1,7 +1,7 @@
 
 <% if @photographs.any? %>
  <% @photographs.each do |photograph| %>
-    <br><%= photograph.user.email %>: <%= photograph.description  %>
+    <br><%= photograph.user.name %>: <%= photograph.description  %>
     <%if current_user == photograph.user %>
       <%= link_to "Delete post", photograph_path(photograph), method: :delete %><br>
     <%end%>
@@ -16,7 +16,7 @@
 
 
     <% photograph.comments.each do |comment|%>
-        <br><%= comment.user.email %>:<%= comment.description%>
+        <br><%= comment.user.name %>:<%= comment.description%>
         <%if current_user == comment.user%>
           <%= link_to "Delete comment", photograph_comment_path(photograph, comment), method: :delete%><br>
         <%end%>

@@ -1,7 +1,8 @@
-def sign_up(email,password)
+def sign_up(email,password,username)
   visit('/')
   click_link 'Sign up'
   fill_in 'Email', with: email
+  fill_in 'name', with: username
   fill_in 'Password', with: password
   fill_in 'Password confirmation', with: password
   click_button 'Sign up'

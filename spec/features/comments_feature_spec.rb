@@ -6,7 +6,7 @@ feature 'commenting' do
   context 'user is logged in' do
 
     before do
-      sign_up("test@gmail.com", "password")
+      sign_up("test@gmail.com", "password","username")
       create_post_with_image("description")
       visit '/'
       leave_comment("amazing")
@@ -34,7 +34,7 @@ feature 'commenting' do
       scenario 'user cannot delete another user\'s comment' do
         visit '/'
         click_link 'Sign out'
-        sign_up("test2@gmail.com","password")
+        sign_up("test2@gmail.com","password", "username_2")
         expect(page).not_to have_link('Delete comment')
       end
 

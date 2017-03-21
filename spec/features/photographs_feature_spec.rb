@@ -6,7 +6,7 @@ feature 'photographs' do
   context 'a user is signed in' do
 
     before do
-      sign_up("test@gmail.com","password")
+      sign_up("test@gmail.com","password","username")
     end
 
     context 'no photographs have been added' do
@@ -54,7 +54,7 @@ feature 'photographs' do
 
       scenario 'only if it belongs to the user' do
         click_link 'Sign out'
-        sign_up("test1@gmail.com", "password")
+        sign_up("test1@gmail.com", "password","username")
         expect(page).not_to have_link("Delete post")
       end
 

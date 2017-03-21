@@ -21,10 +21,12 @@ Devise.setup do |config|
   config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
 
   config.reset_password_within = 6.hours
-  
+
   config.sign_out_via = :delete
 
+  config.scoped_views = true
+
   # ==> OmniAuth
-  config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"]
+  config.omniauth :facebook, ENV["FB_APP_ID"], ENV["FB_APP_SECRET"], secure_image_url: true
 
 end

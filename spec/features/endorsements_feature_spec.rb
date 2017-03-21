@@ -3,7 +3,7 @@ require 'web_helpers'
 
 feature 'liking posts' do
   before do
-    sign_up("test@gmail.com", "password")
+    sign_up("test@gmail.com", "password", "username")
     create_post_with_image("description")
     visit '/photographs'
     click_link 'Like post'
@@ -15,7 +15,7 @@ feature 'liking posts' do
 
   scenario 'another user can like a post, which updates the post endorsement count' do
     click_link 'Sign out'
-    sign_up("test2@gmail.com", "password")
+    sign_up("test2@gmail.com", "password", "username_2")
     visit '/photographs'
     click_link 'Like post'
     expect(page).to have_content('2 Likes')
