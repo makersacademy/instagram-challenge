@@ -18,22 +18,28 @@ feature 'photographs' do
     end
 
     context 'photographs have been added' do
-      before do
-        create_post('description')
-      end
 
-      scenario 'displays photographs' do
+      scenario 'user does not attach a photograph' do
+        create_post_without_image('description')
         visit '/photographs'
         expect(page).to have_content('description')
         expect(page).to have_css("img[src*='missing.png']")
         expect(page).not_to have_content('No posts yet')
       end
+
+      scenario 'user attaches photograph' do
+        create_post_with_image('description')
+        visit '/photographs'
+        expect(page).not_to have_css("img[src*='missing.png']")
+        expect(page).to have_css("img[src*='hello_world.jpg']")
+      end
+
     end
 
     context 'creating a photograph' do
       scenario 'prompts the user to fill out a form, then displays the new restaurant' do
         visit '/photographs'
-        create_post("description")
+        create_post_with_image("description")
         expect(page).to have_content('description')
         expect(current_path).to eq '/photographs'
       end
@@ -43,7 +49,7 @@ feature 'photographs' do
 
       before do
         visit '/'
-        create_post("description")
+        create_post_with_image("description")
       end
 
       scenario 'only if it belongs to the user' do
@@ -63,10 +69,7 @@ feature 'photographs' do
         expect(page).not_to have_content 'description'
         expect(page).to have_content 'Post deleted succesfully'
       end
-
-
     end
-
   end
 
   context 'a user is not signed in' do
@@ -76,7 +79,5 @@ feature 'photographs' do
         click_link 'Add a post'
         expect(current_path).to eq '/users/sign_in'
       end
-
   end
-
 end

@@ -46,7 +46,6 @@ feature 'User can edit their profile' do
       visit('/')
       expect(page).not_to have_link('Edit profile')
     end
-
   end
 
   context 'User signed in and on the home page' do
@@ -63,6 +62,5 @@ feature 'User can edit their profile' do
       visit('/')
       expect(page).to have_link('Edit profile')
     end
-    
   end
 end

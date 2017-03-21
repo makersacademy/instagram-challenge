@@ -3,12 +3,11 @@ require 'web_helpers'
 
 feature 'commenting' do
 
-
   context 'user is logged in' do
 
     before do
       sign_up("test@gmail.com", "password")
-      create_post("description")
+      create_post_with_image("description")
       visit '/'
       leave_comment("amazing")
     end
@@ -46,11 +45,6 @@ feature 'commenting' do
         expect(page).to have_content 'Comment deleted successfully'
       end
     end
-
-
-
-
-
   end
 
   context 'user is not logged in' do
@@ -61,7 +55,5 @@ feature 'commenting' do
     end
 
   end
-
-
 
 end

@@ -4,7 +4,7 @@ require 'web_helpers'
 feature 'liking posts' do
   before do
     sign_up("test@gmail.com", "password")
-    create_post("description")
+    create_post_with_image("description")
     visit '/photographs'
     click_link 'Like post'
   end

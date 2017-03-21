@@ -7,10 +7,16 @@ def sign_up(email,password)
   click_button 'Sign up'
 end
 
-def create_post(description)
+def create_post_with_image(description)
   click_link 'Add a post'
   fill_in 'Description', with: description
-  attach_file("Image", Rails.root + "public/images/thumb/missing.png")
+  attach_file("Image", Rails.root + "public/images/thumb/hello_world.jpg")
+  click_button 'Create Photograph'
+end
+
+def create_post_without_image(description)
+  click_link 'Add a post'
+  fill_in 'Description', with: description
   click_button 'Create Photograph'
 end
 
