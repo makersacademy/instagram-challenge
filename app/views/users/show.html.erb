@@ -1,0 +1,30 @@
+<section class="user-header">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1><%= @user.email %></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h3><%= pluralize @user.posts.count, 'post' %></h3>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="user-photos">
+
+  <% if user_signed_in? %>
+    <% if @posts.any? %>
+      <% @posts.each do |post| %>
+        <div class = "col-sm-4">
+            <div class="image-profile" style="height: 350px; width: 350px; background-image: url(<%= post.image.url %>);"></div>
+
+            <p><b><%= pluralize post.likes.count, 'like' %></b></p>
+         </div>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  </div>
+</div>

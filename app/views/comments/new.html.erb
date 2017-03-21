@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+  <div class = "col-sm-6 col-sm-offset-3">
+    <p class="image-name"><b><%= @post.user.email %></b></p>
+    <p class="image-time"><b><%= @post.created_at.strftime("%d %B, %Y") %></b></p>
+    <div class = "thumbnail">
+      <%= image_tag @post.image.url %>
+      <h4 class="image-caption"><%= @post.caption %></h4>
+      <p class="image-buttons">
+         <%= link_to "Like", post_likes_path(@post), method: :post, :class => "btn btn-default" %>
+         <%= form_for [@post, @comment] do |f| %>
+           <%= f.text_field :content %>
+           <%= f.hidden_field :user_id, :value => current_user.id%>
+           <%= f.hidden_field :post_id, :value => @post.id%>
+           <%= f.submit 'Enter', :class => "btn btn-default" %>
+         <% end %>
+      </p>
+    </div>
+
+<% end %>

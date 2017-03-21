@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+  <div class = "col-sm-6 col-sm-offset-3">
+      <p class="image-name"><b><%= @post.user.email %></b></p>
+      <p class="image-time"><b><%= @post.created_at.strftime("%d %B, %Y") %></b></p>
+      <div class = "thumbnail">
+        <%= image_tag @post.image.url %>
+        <p class="image-caption"><b><%= @post.user.email%></b> <%= @post.caption %></h4>
+        <p class="image-buttons">
+           <%= link_to "Like", post_likes_path(@post), method: :post, :class => "btn btn-default" %>
+           <%= link_to "Comment", new_post_comment_path(@post), :class => "btn btn-default" %>
+        </p>
+      </div>
+   </div>
+<% end %>
