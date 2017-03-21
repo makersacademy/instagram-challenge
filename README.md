@@ -51,4 +51,4 @@ Instructions and Installation
 
 Heroku url
 ===========
-You can see app [here](https://instaounze.herokuapp.com/)
+You can see the app [here](https://instaounze.herokuapp.com/)
