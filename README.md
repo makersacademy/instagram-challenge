@@ -36,7 +36,6 @@ Approach and Technologies used
 * Feature testing using capybara, unit testing using RSpec.
 * Postgres SQL for database.
 
-
 Instructions and Installation
 =============================
 
@@ -49,3 +48,7 @@ Instructions and Installation
 4. Enter ```rspec``` to run all the feature and unit tests.
 
 5. Run the server with ```bin/rails server``` and visit the local host address to view the app.
+
+Heroku url
+===========
+You can see app [here](https://instaounze.herokuapp.com/)
