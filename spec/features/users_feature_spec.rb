@@ -63,5 +63,6 @@ feature 'User can edit their profile' do
       visit('/')
       expect(page).to have_link('Edit profile')
     end
+    
   end
 end

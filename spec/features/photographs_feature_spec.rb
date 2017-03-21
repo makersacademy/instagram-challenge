@@ -41,19 +41,24 @@ feature 'photographs' do
 
     context 'deleting a post' do
 
-      scenario 'only if it belongs to the user' do
+      before do
         visit '/'
         create_post("description")
+      end
+
+      scenario 'only if it belongs to the user' do
         click_link 'Sign out'
         sign_up("test1@gmail.com", "password")
         expect(page).not_to have_link("Delete post")
       end
 
-
-      before {create_post("description")}
+      scenario 'only if logged in' do
+        click_link 'Sign out'
+        visit '/'
+        expect(page).not_to have_link("Delete post")
+      end
 
       scenario 'removes a post when a user clicks a delete link' do
-        visit '/photographs'
         click_link 'Delete post'
         expect(page).not_to have_content 'description'
         expect(page).to have_content 'Post deleted succesfully'
@@ -72,20 +77,6 @@ feature 'photographs' do
         expect(current_path).to eq '/users/sign_in'
       end
 
-    context 'deleting a post' do
-      before {Photograph.create(description: "description")}
-
-      scenario 'should not display link to delete post if not logged in' do
-        visit '/photographs'
-        expect(page).not_to have_link 'Delete post'
-      end
-    end
-
   end
-
-
-
-
-
 
 end

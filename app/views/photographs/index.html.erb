@@ -1,16 +1,22 @@
 
 <% if @photographs.any? %>
  <% @photographs.each do |photograph| %>
-    <%= photograph.description  %><br>
-    <%= image_tag photograph.image.url(:thumb) %><br>
-
+    <br><%= photograph.user.email %>: <%= photograph.description  %>
     <%if current_user == photograph.user %>
       <%= link_to "Delete post", photograph_path(photograph), method: :delete %><br>
     <%end%>
+
+    <br><%= image_tag photograph.image.url(:thumb) %><br>
+
+
     <p><%= pluralize photograph.likes.count, 'Like' %></p>
-    <%= link_to "Like post", new_photograph_like_path(photograph)%>
+    <%= link_to "Like post", new_photograph_like_path(photograph)%><br>
+
+    <p><%= pluralize photograph.comments.count, 'Comment' %></p>
+
+
     <% photograph.comments.each do |comment|%>
-        <br><%= comment.description%>
+        <br><%= comment.user.email %>:<%= comment.description%>
         <%if current_user == comment.user%>
           <%= link_to "Delete comment", photograph_comment_path(photograph, comment), method: :delete%><br>
         <%end%>

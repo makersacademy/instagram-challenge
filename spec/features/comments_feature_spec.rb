@@ -27,12 +27,23 @@ feature 'commenting' do
         expect(page).to have_link('Delete comment')
       end
 
+      scenario 'user cannot delete their comment when logged out' do
+        click_link 'Sign out'
+        expect(page).not_to have_link('Delete comment')
+      end
+
       scenario 'user cannot delete another user\'s comment' do
         visit '/'
         click_link 'Sign out'
         sign_up("test2@gmail.com","password")
         expect(page).not_to have_link('Delete comment')
+      end
 
+      scenario 'removes the comment from the post' do
+        visit '/'
+        click_link 'Delete comment'
+        expect(page).not_to have_content 'amazing'
+        expect(page).to have_content 'Comment deleted successfully'
       end
     end
 

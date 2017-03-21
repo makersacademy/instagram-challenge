@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def new
     @photograph = Photograph.find(params[:photograph_id])
     @comment = Comment.new
@@ -14,6 +16,13 @@ class CommentsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    flash[:notice] = 'Comment deleted successfully'
+    redirect_to '/'
   end
 
   private
