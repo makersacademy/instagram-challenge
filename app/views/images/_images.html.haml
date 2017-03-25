@@ -1,0 +1,17 @@
+.row.justify-content-center
+  .col-12.col-sm-10.col-md-8
+    - @images.reverse.each do |image|
+      .row.justify-content-center.image-container.no-gutters.my-4{ id: "image_#{image.id}" }
+        .col-12.image-div.text-center
+          = image_tag image.image_file.url(:large), class: 'img-fluid'
+        .col-12.pt-1.px-2
+          .row.no-gutters
+            %h5.col-8= image.title
+            .col-4.text-right.d-flex.align-content-center.justify-content-end
+              %i.material-icons.md-24 face
+              %span.pl-1= image.user.user_name
+        .col-12.px-2
+          %p.image-description.pt-1= image.description
+          = render partial: 'likes', locals: { image: image }
+          %hr
+          = render partial: 'comments', locals: { image: image }

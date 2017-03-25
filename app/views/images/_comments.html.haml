@@ -1,0 +1,19 @@
+%ul{id: "image_#{image.id}_comments", class: 'comments-list'}
+  - if image.comments.any?
+    - image.comments.each do |comment|
+      %li
+        %span.user-name= "#{comment.user.user_name}: "
+        = comment.text
+  - else
+    %p.text-center.no-comments-message No comments yet!
+%hr
+- if current_user
+  = form_tag('#', method: 'get', class: 'new-comment-form') do
+    .form-group.row.no-gutters.justify-content-center
+      = link_to image_likes_path(image), class: 'add-new-like col-12 col-sm-auto px-2' do
+        - if image.liked_by_current_user?(current_user)
+          %i.material-icons.md-36.liked{ id: "image_#{image.id}_likes_icon" } favorite
+        - else
+          %i.material-icons.md-36{ id: "image_#{image.id}_likes_icon" } favorite_border
+      = text_field_tag(:comment_text, 'Type a comment here…', class: 'col form-control new-comment-field px-1')
+      = link_to('Post', image_comments_path(image), class: 'col-12 col-sm-auto btn btn-primary add-new-comment px-2')

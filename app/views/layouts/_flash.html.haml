@@ -1,0 +1,7 @@
+.row.justify-content-center
+  - flash.each do |key, value|
+    - if value.respond_to?(:each)
+      - value.each do |message|
+        .alert.col-12.col-md-6.my-1{ class: "alert-#{flash_class(key)} mx-1", role: "alert" }= message
+    - else
+      .alert.col-12.col-md-6.my-1{ class: "alert-#{flash_class(key)} mx-1", role: "alert" }= value
