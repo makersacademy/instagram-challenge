@@ -1,34 +1,39 @@
-
-<% if @photographs.any? %>
- <% @photographs.each do |photograph| %>
-    <br><%= photograph.user.name %>: <%= photograph.description  %>
-    <%if current_user == photograph.user %>
-      <%= link_to "Delete post", photograph_path(photograph), method: :delete %><br>
-    <%end%>
-
-    <br><%= image_tag photograph.image.url(:thumb) %><br>
-
-
-    <p><%= pluralize photograph.likes.count, 'Like' %></p>
-    <%= link_to "Like post", new_photograph_like_path(photograph)%><br>
-
-    <p><%= pluralize photograph.comments.count, 'Comment' %></p>
-
-
-    <% photograph.comments.each do |comment|%>
-        <br><%= comment.user.name %>:<%= comment.description%>
-        <%if current_user == comment.user%>
-          <%= link_to "Delete comment", photograph_comment_path(photograph, comment), method: :delete%><br>
-        <%end%>
-      <%end%>
-      <%if user_signed_in? %>
-        <br><%= link_to "Leave Comment", new_photograph_comment_path(photograph)%><br>
-      <% end %>
-    <% end %>
-<% else %>
-  <h1>No posts yet</h1>
-<% end %>
-
-
-
-<a href="photographs/new">Add a post</a>
+<section class="instagram-wrap">
+  <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="instagram-content">
+                    <h3>Latest Photos</h3>
+                    <div class="row photos-wrap">
+                    <!-- Instafeed target div -->
+                    <div id="instafeed"></div>
+                    <!-- The following HTML will be our template inside instafeed -->
+                    <% if @photographs.any? %>
+                    <% @photographs.each do |photograph| %>
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="photo-box">
+                            <div class="description"><strong><%=photograph.user.name%></strong> </div>
+                            <div class="image-wrap">
+                                <img src="<%= photograph.image.url(:thumb)%>">
+                                <div class="likes"><%=photograph.likes.count%> Likes</div>
+                                <div class="comments"><%=photograph.comments.count%> Comments </div>
+                            </div>
+                            <div class="description">
+                                <%= photograph.description%>
+                                <div class="date">September 16, 2014</div>
+                                <%if user_signed_in? %>
+                                  <%= link_to "Leave Comment", new_photograph_comment_path(photograph)%><br>
+                                  <%= link_to "Like post", new_photograph_like_path(photograph)%>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <%end%>
+                    <%end%>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="photographs/new">Add a post</a>
+</section>
