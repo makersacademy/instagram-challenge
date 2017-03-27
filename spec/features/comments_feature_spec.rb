@@ -20,8 +20,9 @@ feature "Feature: commenting" do
 
     scenario 'does not allow users to leave a comment using a form when not signed in' do
       click_link('Log out')
-      expect(page).not_to have_content('Leave comment')
+      expect(page).not_to have_button('Comment')
     end
+
   end
 
 
