@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  respond_to :html, :js
+
   def index
     @post = Post.all
     @comment = Comment.new
@@ -20,8 +22,22 @@ class PostsController < ApplicationController
 
   def upvote
     @post = Post.find(params[:id])
-    @post.upvote_by current_user
-    redirect_back(fallback_location: root_path)
+    @post.liked_by current_user
+    if request.xhr?
+      render json: { count: @post.get_upvotes.size, id: params[:id] }
+    else
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    @post.unliked_by current_user
+    if request.xhr?
+      render json: { count: @post.get_upvotes.size, id: params[:id] }
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
