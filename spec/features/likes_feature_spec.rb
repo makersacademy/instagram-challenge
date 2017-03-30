@@ -6,7 +6,7 @@ feature 'Like' do
       sign_out
       visit '/posts'
       expect(page).to have_content '0 likes'
-      expect(page).not_to have_link "like-post-#{Post.first.id}"
+      expect(page).not_to have_button "like-post-#{Post.first.id}"
     end
   end
   context 'user is logged in' do
@@ -15,7 +15,7 @@ feature 'Like' do
       create_post
       visit '/posts'
       expect(page).to have_content '0 likes'
-      expect(page).to have_link "like-post-#{Post.first.id}"
+      expect(page).to have_button "like-post-#{Post.first.id}"
     end
     scenario 'user can like a post' do
       sign_up

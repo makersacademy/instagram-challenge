@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.liked_by current_user
     if request.xhr?
-      render json: { count: @post.get_upvotes.size, id: params[:id] }
+      render json: { id: params[:id] }
     else
       redirect_back(fallback_location: root_path)
     end
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.unliked_by current_user
     if request.xhr?
-      render json: { count: @post.get_upvotes.size, id: params[:id] }
+      render json: { id: params[:id] }
     else
       redirect_back(fallback_location: root_path)
     end
