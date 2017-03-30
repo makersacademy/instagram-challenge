@@ -38,10 +38,10 @@
                   section.new-comment
                     - if current_user.voted_up_on? post
                       - icon = "fa-heart"
-                      = link_to raw("<i class='fa #{icon}' aria-hidden='true'></i>"), dislike_post_path(post), name: "Like", class: "like", method: :put, remote: true
+                      = link_to raw("<i class='fa #{icon}' aria-hidden='true'></i>"), dislike_post_path(post), id: "like-post-#{post.id}", class: "like", method: :put, remote: true
                     - else
                       - icon = "fa-heart-o"
-                      = link_to raw("<i class='fa #{icon}' aria-hidden='true'></i>"), like_post_path(post), name: "Like", class: "like", method: :put, remote: true
+                      = link_to raw("<i class='fa #{icon}' aria-hidden='true'></i>"), like_post_path(post), id: "like-post-#{post.id}", class: "like", method: :put, remote: true
                     = form_for [post, @comment] do |f|
                       = f.text_field :content, maxlength: 140, placeholder: "Add a comment . . ."
                       = f.submit "Comment", class: "submit-comment"
