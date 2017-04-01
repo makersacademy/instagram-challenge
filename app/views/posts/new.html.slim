@@ -1,0 +1,14 @@
+.container
+  .row.space
+    .forms.twelve.columns
+      h2 Add a post
+      = form_for @post do |f|
+        = f.label :image do
+          = f.file_field :image
+        = f.label :color_filter do
+          p Choose a filter
+          = f.select :color_filter, %w(None Toaster Lomo Kelvin Colortone Gotham).sort, selected: "None"
+        = f.hidden_field :image_cache
+        = f.label :caption
+        = f.text_field :caption, maxlength: 140
+        = f.submit

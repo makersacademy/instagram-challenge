@@ -1,0 +1,31 @@
+.container
+  .row.space
+    .forms.twelve.columns
+      h2
+        | Sign up
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        .field
+          = f.label :username
+          = f.text_field :username, autofocus: true, class: "wide"
+        .field
+          = f.label :email
+          = f.email_field :email, autofocus: true, class: "wide"
+        .field
+          = f.label :password
+          - if @minimum_password_length
+            em
+              | (
+              = @minimum_password_length
+              |  characters minimum)
+          = f.password_field :password, autocomplete: "off", class: "wide"
+        .field
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, autocomplete: "off", class: "wide"
+        .field
+          = f.label "Profile picture"
+          = f.file_field :avatar 
+          = f.hidden_field :avatar_cache
+        .actions
+          = f.submit "Sign up"
+      = render "devise/shared/links"
