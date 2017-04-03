@@ -1,4 +1,7 @@
-# Instagram Challenge
+# Instagram Challenge - Makers Academy Weekend Challenge for Week 8
+
+[![Build Status](https://travis-ci.org/varvarra/instagram-challenge.svg?branch=master)](https://travis-ci.org/varvarra/instagram-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/varvarra/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/varvarra/instagram-challenge?branch=master)
 
 Challenge time: one weekend
 
