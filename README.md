@@ -38,12 +38,6 @@ Each picture has **comments** and **likes**, represented by their own models. Ea
 
 - used Bootstrap to style my website
 
-### Installation
-
-
-### Testing framework
-
-This project was tested using Rspec and Capybara.  In order to run and view the tests, run ``$ rspec`` from the command line.
 
 ## User Stories
 
