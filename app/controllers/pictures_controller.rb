@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
 
+  before_action :set_picture, only: [:destroy, :like]
   before_action :authenticate_user!, :except => [:index]
 
   def index
@@ -20,7 +21,6 @@ class PicturesController < ApplicationController
   end
 
   def destroy
-    @picture = Picture.find(params[:id])
     if @picture.user_id == current_user.id
       @picture.destroy
     else
@@ -30,7 +30,7 @@ class PicturesController < ApplicationController
   end
 
   def like
-    if @post.liked_by current_user
+    if @picture.liked_by current_user
       respond_to do |format|
         format.html { redirect_to :back }
         format.js
@@ -40,8 +40,12 @@ class PicturesController < ApplicationController
 
   private
 
+  def set_picture
+    @picture = Picture.find(params[:id])
+  end
+
   def picture_params
    params.require(:picture).permit(:description, :image)
- end
+  end
 
 end
