@@ -29,6 +29,15 @@ class PicturesController < ApplicationController
     redirect_to '/pictures'
   end
 
+  def like
+    if @post.liked_by current_user
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+      end
+    end
+  end
+
   private
 
   def picture_params

@@ -1,4 +1,5 @@
 class Picture < ApplicationRecord
+  acts_as_votable
 
   validates :image, presence: true
   validates :description, length: { minimum: 2 }

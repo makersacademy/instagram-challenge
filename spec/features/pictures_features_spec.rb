@@ -34,7 +34,7 @@ feature 'pictures' do
     end
 
     scenario 'display pictures' do
-      visit "/pictures"
+      visit pictures_path
       expect(page).to have_content("Test")
       expect(page).not_to have_content('No pictures posted')
     end
@@ -46,6 +46,13 @@ feature 'pictures' do
       expect(page).not_to have_content 'Description'
       # expect(page).to have_content 'Restaurant deleted successfully'
     end
+
+    scenario 'a user can like a picture, which updates the picture like count' do
+      visit pictures_path
+      page.find('.glyphicon glyphicon-heart-empty').click
+      expect(page).to have_content('1 like')
+    end
+
   end
 
 end
