@@ -12,7 +12,7 @@ feature 'Feature: likes' do
 
     end
 
-      scenario 'can click to add a new like' do
+      scenario 'can click to add a new like, which increments the likes count',  js: true do
         visit pictures_path
         find(:css, '.add-new-like').click
         within(".like-button") do
