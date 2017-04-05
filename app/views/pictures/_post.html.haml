@@ -21,10 +21,8 @@
               .comment-content
                 = comment.thoughts
       .comment-like-form.row
-        .col-sm-1
-        =link_to '', like_picture_path(picture.id), remote: true,
-                                              id: "like_#{picture.id}",
-                                              class: "glyphicon glyphicon-heart-empty"
+        .like-button.col-sm-1
+          %span(class="glyphicon glyphicon-heart-empty")
         .comment-form.col-sm-11
           - if current_user.present?
             = form_for [picture, picture.comments.new] do |f|
