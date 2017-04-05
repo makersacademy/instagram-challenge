@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :commented_pictures, through: :comments, source: :picture
 
+  has_many :likes
+  
   def owns?(picture)
     pictures.include? picture
   end
