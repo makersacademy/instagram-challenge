@@ -32,16 +32,6 @@ Within the root of the directory, run `$ rspec` to see the results of the tests 
 - Uses Devise for User Sign up and Log in
 
 
-## Approach
-
-- In the very beginning I decided to have **picture** model to represent each post, with description and image as its properties.
-Each picture has **comments** and **likes**, represented by their own models. Each picture also belongs to a **user**, created with the help of devise gem.  
-
-- I have built a schema based on this domain model and rails' embedded configurations helped me doing that.
-
-- used Bootstrap to style my website
-
-
 ## User Stories
 
 ```
@@ -66,3 +56,17 @@ Each picture has **comments** and **likes**, represented by their own models. Ea
   So that I can interact with other users
   I want to be able to leave 'likes' on their pictures
 ```
+
+## Approach
+
+- In the very beginning I decided to have **picture** model to represent each post, with description and image as its properties.
+Each picture has **comments** and **likes**, represented by their own models. Each picture also belongs to a **user**, created with the help of devise gem.  
+
+- I have built a schema based on this domain model
+
+## Refleciton
+
+If I had a chance to start the project from the beginning, I would work more on the following:
+- would use `factory_girl` gem as a factory of objects for my tests. Unfortunately I've learnt about this gem quite late to change my tests. Otherwise, the tests would look more more concise, neat, easier to implement
+
+- would change the name of the 'Picture' model to the 'Post' model.
