@@ -23,9 +23,10 @@
       .comment-like-form.row
         .like-button.col-sm-1
           = link_to "#", class: "add-new-like col-12 col-sm-auto px-2" do
-            %i.material-icons.md-36.liked{ id: "picture_#{picture.id}_likes_icon" } Like
+            %i.glyphicon.glyphicon-heart-empty  Like
+        .likes
           %span.likes_count= picture.likes.count
-          = 'like'.pluralize picture.likes.count
+          ='like'.pluralize picture.likes.count
         .comment-form.col-sm-11
           - if current_user.present?
             = form_for [picture, picture.comments.new] do |f|
