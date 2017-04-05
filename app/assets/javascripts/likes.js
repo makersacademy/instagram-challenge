@@ -7,6 +7,7 @@ $(document).ready(function() {
 
       $.post(this.href, function(response){
         likesCount.text(response.new_likes_count);
-    })
-  })
-})
+
+    });
+  });
+});
