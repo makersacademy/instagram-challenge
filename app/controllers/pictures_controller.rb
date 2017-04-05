@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
 
-  before_action :set_picture, only: [:destroy, :like]
+  before_action :set_picture, only: [:destroy]
   before_action :authenticate_user!, :except => [:index]
 
   def index
@@ -29,14 +29,6 @@ class PicturesController < ApplicationController
     redirect_to '/pictures'
   end
 
-  def like
-    if @picture.liked_by current_user
-      respond_to do |format|
-        format.html { redirect_to :back }
-        format.js
-      end
-    end
-  end
 
   private
 

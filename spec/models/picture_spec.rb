@@ -23,6 +23,16 @@ describe Picture, type: :model do
       test_image = Picture.new(description: image_desc, image: '')
       expect(test_image).not_to be_valid
     end
-
   end
+
+  # context "likes" do
+  #   let(:user) { User.create(email: 'test@test.com', password: 'testtest', password_confirmation: 'testtest', username: 'varvara')
+  #   }
+  #   let(:picture) { user.pictures.create(description: image_desc, image: image_file_jpeg)}
+  #
+  #   it "has no likes" do
+  #     picture.like
+  #     expect
+  #   end
+  # end
 end

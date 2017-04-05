@@ -1,5 +1,4 @@
 class Picture < ApplicationRecord
-  acts_as_votable
 
   validates :image, presence: true
   validates :description, length: { minimum: 2 }
@@ -11,6 +10,7 @@ class Picture < ApplicationRecord
       -> { extending WithUserAssociationExtension },
       dependent: :destroy
 
+  has_many :likes
   belongs_to :user
 
   def find_username(id)
