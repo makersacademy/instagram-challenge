@@ -20,15 +20,19 @@
                 = comment.user.username
               .comment-content
                 = comment.thoughts
-      .comment-like-form.row
-        .like-button.col-sm-1
-          =link_to picture_likes_path(picture), class: "add-new-like col-12 col-sm-auto px-2" do
-            %i.glyphicon.glyphicon-heart-empty
-        .likes
-          %span.likes_count= picture.likes.count
-          ='like'.pluralize picture.likes.count
-        .comment-form.col-sm-11
-          - if current_user.present?
+      - if current_user.present?
+        .comment-like-form.row
+          .likes
+            .like-button.col-sm-1
+              =link_to picture_likes_path(picture), class: "add-new-like col-12 col-sm-auto px-2" do
+                - if picture.liked_by_user?(current_user)
+                  %i.glyphicon.glyphicon-heart{ id: "picture_#{picture.id}_likes_icon"}
+                -else
+                  %i.glyphicon.glyphicon-heart-empty{ id: "picture_#{picture.id}_likes_icon"}
+
+            %span.likes_count= picture.likes.count
+            ='like'.pluralize picture.likes.count
+          .comment-form.col-sm-11
             = form_for [picture, picture.comments.new] do |f|
               = f.label :thoughts
               = f.text_field :thoughts, placeholder: "Add a comment here..."
