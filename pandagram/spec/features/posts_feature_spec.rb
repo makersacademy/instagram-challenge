@@ -10,9 +10,7 @@ feature 'posts' do
   end
 
   context 'restaurants have been added' do
-    before do
-      Post.create(description: 'Test post')
-    end
+    before { Post.create(description: 'Test post') }
 
     scenario 'display posts' do
       visit '/posts'
@@ -29,6 +27,20 @@ end
       click_button 'Create Post'
       expect(page).to have_content 'First Post'
       expect(page).not_to have_content 'No posts yet'
+      expect(current_path).to eq '/posts'
+    end
+  end
+
+  context 'editing restaurants' do
+    before { Post.create description: 'Hello' }
+
+    scenario 'let a user edit a description' do
+      visit '/posts'
+      click_link 'Edit'
+      fill_in 'Description', with: 'Goodbye'
+      click_button 'Update Post'
+      expect(page).to have_content 'Goodbye'
+      expect(page).not_to have_content 'Hello'
       expect(current_path).to eq '/posts'
     end
   end

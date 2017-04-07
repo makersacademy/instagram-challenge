@@ -1,9 +1,8 @@
+<a href='/posts/new'>Add a post</a>
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-    <h1> <%= post.description %> </h1>
+    <p class='post'> <%= post.created_at.strftime("Posted on %m/%d/%Y") %> | <%= post.description %> <span class='right'><%= link_to "Edit", edit_post_path(post) %></span></p>
   <% end %>
 <% else %>
   <h2>No posts yet</h2>
 <% end %>
-
-<a href='/posts/new'>Add a post</a>
