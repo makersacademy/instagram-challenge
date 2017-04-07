@@ -1,7 +1,7 @@
 # Instagram Challenge - Makers Weekend Challenge
-===================
 
 ## MVP
+
 ```As a user,
 In order to enjoy Instagram,
 I want to be able to sign up.
