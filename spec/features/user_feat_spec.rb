@@ -32,7 +32,7 @@ feature 'User' do
   end
 
   context 'like pictures' do
-    xscenario 'cannot like a pic more than once', js: true do
+    scenario 'cannot like a pic more than once', js: true do
       sign_up
       share_instapic
       click_link 'Like'
