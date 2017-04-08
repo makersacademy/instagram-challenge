@@ -8,6 +8,7 @@ class Photo < ActiveRecord::Base
       content_type: { content_type: /\Aimage\/.*\z/ }
 
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
 
 end

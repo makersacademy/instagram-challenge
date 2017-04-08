@@ -5,11 +5,16 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     @photos = Photo.all
+    @like = Like.new
+    @comment = Comment.new
   end
 
   # GET /photos/1
   # GET /photos/1.json
   def show
+    @photo = Photo.find(params[:id])
+    @like = Like.new
+    @comment = Comment.new
   end
 
   # GET /photos/new
