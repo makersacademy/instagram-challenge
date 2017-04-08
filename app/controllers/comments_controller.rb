@@ -7,8 +7,13 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @post.comments.create(comment_params)
-    redirect_to posts_path 
+    @comment = @post.comments.create(comment_params)
+    if @comment.valid?
+      redirect_to posts_path
+    else
+      flash[:notice] = 'Sorry! your comment must be more than 3 letters long'
+      render 'new'
+    end
   end
 
   private

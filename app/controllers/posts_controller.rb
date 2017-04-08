@@ -13,6 +13,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path
     else
+      flash[:notice] = 'Sorry! the post was not created'
       render 'new'
     end
   end
