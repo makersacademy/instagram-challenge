@@ -26,6 +26,13 @@ feature 'liking a post' do
       click_link "♡"
       expect(page).to have_content '♥ 1 like'
     end
+
+    scenario 'a user cannot like a post more than once', js: true do
+      visit '/posts'
+      click_link "♡"
+      expect(page).to have_content '♥ 1 like'
+      expect(page).not_to have_link("♡")
+    end
   end
 
 end
