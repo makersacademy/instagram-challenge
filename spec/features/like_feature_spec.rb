@@ -19,7 +19,7 @@ feature 'Feature: likes' do
       scenario 'can click to add a new like, which increments the likes count',  js: true do
         visit pictures_path
         find(:css, '.add-new-like').click
-        within(".likes") do
+        within(".comment-like-form") do
           expect(page).to have_content '1 like'
         end
       end
