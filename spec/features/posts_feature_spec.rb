@@ -54,9 +54,9 @@ feature 'Posts' do
       expect(page).to have_content 'Destroy'
       click_link 'Sign Out'
       visit '/'
-      # second_user_sign_up
-      # expect(page).not_to have_content 'Edit'
-      # expect(page).not_to have_content 'Destroy'
+      second_user_sign_up
+      expect(page).not_to have_content 'Edit'
+      expect(page).not_to have_content 'Destroy'
     end
   end
 end
