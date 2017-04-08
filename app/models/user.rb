@@ -11,7 +11,8 @@ class User < ApplicationRecord
   has_many :commented_pictures, through: :comments, source: :picture
 
   has_many :likes
-  
+  has_many :liked_pictures, through: :likes, source: :picture
+
   def owns?(picture)
     pictures.include? picture
   end
