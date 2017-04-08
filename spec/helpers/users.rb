@@ -9,7 +9,7 @@ module UserHelpers
 
   def user_sign_up(email = 'test@example.com', password = 'testtest', password_confirmation = 'testtest')
     visit('/')
-    click_link('Sign up')
+    click_link('Register')
     fill_in('Email', with: email)
     fill_in('Password', with: password)
     fill_in('Password confirmation', with: password_confirmation)
