@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, :except => [:index]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all
-    @users = User.all
-    @user = current_user
+      @posts = Post.all
+      @users = User.all
+      @user = current_user
   end
 
   # GET /posts/1

@@ -54,7 +54,8 @@ feature 'Posts' do
     scenario 'Users must sign up to use Instagram' do
       visit '/'
       expect(page).to have_content 'Sign In'
-      expect(page).not_to have_content 'New Post'
+      click_link 'New Post'
+      expect(page).to have_content 'You need to sign in or sign up before continuing.'
     end
   end
 end
