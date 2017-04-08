@@ -12,7 +12,7 @@ feature 'posts' do
 
   context 'posts have been added' do
     before do
-      Post.create(caption: 'Driving along the Amalfi coast')
+      Post.create(caption: 'Driving along the Amalfi coast', image: "https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/7569/SITours/private-tour-amalfi-coast-from-sorrento-in-sorrento-288314.jpg")
     end
 
     scenario 'display posts' do
@@ -20,8 +20,18 @@ feature 'posts' do
       expect(page).to have_content('Driving along the Amalfi coast')
       expect(page).not_to have_content('No posts yet')
     end
-end
+  end
 
-
+  context 'creating a post' do
+    scenario 'prompts user to fill out a form, then displays the new restaurant' do
+      visit '/posts'
+      click_link 'Add a post'
+      fill_in 'Caption', with: 'Beautiful fabrics in India'
+      page.attach_file('post[image]', Rails.root + 'spec/Fixtures/mumbaimarket.jpg')
+      click_button 'Create Post'
+      expect(page).to have_content 'Beautiful fabrics in India'
+      expect(current_path).to eq '/posts'
+    end
+  end
 
 end
