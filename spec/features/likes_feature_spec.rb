@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 feature 'likes' do
+
+  before do
+    sign_up
+  end
+
   before { Photo.create caption: 'BBQ' }
 
   scenario 'like button is available on index page' do

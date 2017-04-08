@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 feature 'photos' do
+
+  before do
+    sign_up
+  end
+
   context 'no photos have been added' do
     scenario 'should display a button to upload a photo' do
       visit '/photos'
@@ -11,12 +16,12 @@ feature 'photos' do
 
   context 'photos have been added' do
   before do
-    Photo.create(caption: "It's sunny!")
+    add_photo
   end
 
     scenario 'display photos' do
       visit '/photos'
-      expect(page).to have_content("It's sunny!")
+      expect(page).to have_content("Sunny :)")
       expect(page).not_to have_content('No photos yet')
     end
   end
@@ -34,7 +39,9 @@ feature 'photos' do
 
   context 'editing restaurants' do
 
-    before { Photo.create caption: 'Sunny :)', location: 'Hyde Park' }
+    before do
+      add_photo
+    end
 
     scenario 'let a user edit a photo' do
       visit '/photos'
@@ -49,7 +56,9 @@ feature 'photos' do
 
   context 'deleting photos' do
 
-  before { Photo.create caption: 'Sunny :)', location: 'Hyde Park' }
+    before do
+      add_photo
+    end
 
     scenario 'removes a photo when a user clicks a delete link' do
       visit '/photos'

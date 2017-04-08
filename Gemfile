@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'shoulda', '~> 3.5'
+  gem 'database_cleaner'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
