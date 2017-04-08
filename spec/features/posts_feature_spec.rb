@@ -12,7 +12,8 @@ feature 'posts' do
 
   end
 
-  context 'posts can be added' do
+
+  context 'creating posts' do
     before do
       add_new_post
     end
@@ -20,6 +21,23 @@ feature 'posts' do
     scenario 'display posts' do
       expect(page).to have_content 'Delicious home made food'
       expect(page).not_to have_content 'No posts yet'
+    end
+
+  end
+
+  context 'editing posts' do
+    before do
+      add_new_post
+    end
+
+    scenario 'let a user edit a post' do
+      visit '/posts'
+      click_link 'Edit'
+      attach_file('post_image', File.absolute_path('/Users/ashwinimani/Pictures/indian_food.jpg'))
+      fill_in 'Description', with: 'Delicious home made indian food'
+      click_button 'Update Post'
+      expect(page).to have_content 'Delicious home made indian food'
+      expect(page).not_to have_content 'Delicious home made food'
     end
 
   end
