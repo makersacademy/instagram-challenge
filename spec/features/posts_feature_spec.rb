@@ -44,5 +44,19 @@ feature 'Posts' do
       visit '/'
       expect(page).to have_content "#{user.id}"
     end
+
+    scenario 'Users can only edit and delete their own pictures' do
+      visit '/'
+      user_sign_up
+      create_new_post
+      visit '/'
+      expect(page).to have_content 'Edit'
+      expect(page).to have_content 'Destroy'
+      click_link 'Sign Out'
+      visit '/'
+      # second_user_sign_up
+      # expect(page).not_to have_content 'Edit'
+      # expect(page).not_to have_content 'Destroy'
+    end
   end
 end

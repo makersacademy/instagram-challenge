@@ -1,27 +1,31 @@
 <% if user_signed_in? %>
-  <li>
+<li>
   Welcome <%= @user.username %> - <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
-  </li>
+</li>
 <% else %>
-  <li>
+<li>
   <%= link_to 'Sign Up', new_user_registration_path  %> / <%= link_to 'Sign In', new_user_session_path  %>
-  </li>
+</li>
 <% end %>
 
 <h1>Listing Posts</h1>
 <div id="content">
   <% @posts.each do |post| %>
   <b><%= post.user_id %></b><p>
-  <a href="posts/<%= post.id%>"><img id="picture_and_caption" src="<%= post.picture %>"></a><p>
-    <blockquote>
-      <%= post.caption %>
-    </blockquote><p>
-      <%= link_to 'Show', post %>
-      <%= link_to 'Edit', edit_post_path(post) %>
-      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <p>
+    <a href="posts/<%= post.id%>"><img id="picture_and_caption" src="<%= post.picture %>"></a><p>
+      <blockquote>
+        <%= post.caption %>
+      </blockquote><p>
+        <%= link_to 'Show', post %>
+      <% if user_signed_in? %>
+      <% if current_user.id == post.user_id %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>
-    </div>
-    <br>
+      <% end %>
+        <p>
+          <% end %>
+        </div>
+        <br>
 
-    <%= link_to 'New Post', new_post_path %>
+        <%= link_to 'New Post', new_post_path %>
