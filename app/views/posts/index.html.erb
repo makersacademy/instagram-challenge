@@ -1,10 +1,16 @@
 <% if @posts.any? %>
+<div class="posts-wrapper">
   <% @posts.each do |post| %>
-    <%= image_tag post.image.url(:medium) %> 
-    <h2> <%= post.caption %> </h2>
+  <div class="post">
+    <div class="post-head">
+      <h4 class="name"> Vicky Roberts </h4>
+      <p class="location"> London </p>
+    </div>
+    <div class="image"><%= image_tag post.image.url(:medium), class:"img-responsive" %></div>
+    <p class="caption"> <%= post.caption %> </p>
+  </div>
   <% end %>
+</div>
 <% else %>
   No posts yet
 <% end %>
-
-<a href='/posts/new'>Add a post</a>
