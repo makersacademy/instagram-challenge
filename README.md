@@ -1,23 +1,65 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 Task
 -----
 
-Build Instagram: Simple huh!
-
-Bonus if you can write your own set of sensible user stories!
-
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters!
+## User stories
+
+MVP:
+
+```
+As a user
+So I can show my friends the cool things I've done
+I want to be able to post pictures
+
+As a user
+So I can see what my friends are up to
+I would like to see a stream of their photos
+
+As a user
+So I can let my friends know what I think
+I want to be able to leave comments on pictures
+
+As a user
+So I can see how popular my pictures are
+I would like other users to be able to like them
+```
+
+Version 2
+
+```
+As a user
+So I can control what is posted to my page
+I would like to sign in and out
+
+As a user
+So the stats aren't skewed
+I want people to only be able to like a photo once
+
+As a user
+So people can see all my photos in one place
+I would like a profile page with clickable thumbnail photos
+
+As a system maintainer
+So I can monitor what the site is being used for
+I want only registered users to be able to post photos/comments
+```
+
+Version 3
+
+```
+As a user
+For convenience
+I would like to be able to sign in with Facebook
+
+As a user
+So I can make my photos look better
+I want to be able to add filters
+
+As a user
+To enhance my experience
+I would like the website to look good
+```
