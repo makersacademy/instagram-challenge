@@ -1,7 +1,7 @@
 # Instagram Challenge - Makers Academy Weekend Challenge for Week 8
 
-[![Build Status](https://travis-ci.org/varvarra/instagram-challenge.svg?branch=master)](https://travis-ci.org/varvarra/instagram-challenge)
-[![Coverage Status](https://coveralls.io/repos/github/varvarra/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/varvarra/instagram-challenge?branch=master)
+<!-- [![Build Status](https://travis-ci.org/varvarra/instagram-challenge.svg?branch=master)](https://travis-ci.org/varvarra/instagram-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/varvarra/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/varvarra/instagram-challenge?branch=master) -->
 
 Challenge time: one weekend
 
@@ -15,6 +15,7 @@ The challenge was to build Instagram using Rails. An app should have users who c
 - Install all the dependencies by running the command ``$ bundle`` in the root directory
 
 - Download PostgreSQL (if you do not already have it installed)
+- `brew install imagemagick`
 - Within the command line, run `$ bin/rake db:create` and then `$ bin/rake db:migrate`
 - Run the app using the command `$ bin/rails server`
 - Go to localhost:3000 in rout browser to view and interact with the app
