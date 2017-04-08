@@ -11,8 +11,8 @@ describe Comment, type: :model do
     expect(@comment).to belong_to :post
   end
 
-  # it 'belongs to user' do
-  #   expect(@comment).to belong_to :user
-  # end
+  it 'belongs to user' do
+    expect(@comment).to belong_to :user
+  end
 
 end
