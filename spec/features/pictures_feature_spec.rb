@@ -9,10 +9,20 @@ feature 'pictures' do
     end
   end
 
-  context 'picture location has been added' do
+  context 'picture image and location has been added' do
     before do
-      p Picture.create(location: 'London')
+      Picture.create(location: 'London')
+      @image = { :image => File.open(File.join(Rails.root, 'spec', 'fixtures', 'image.jpeg')) }
     end
+
+    # unsure how to write test testing paperclip upload
+
+    # scenario 'displays image' do
+    #   visit '/pictures'
+    #   p @image
+    #   Picture.create :image => File.open(File.join(Rails.root, 'spec', 'fixtures', 'image.jpeg'))
+    #   expect(page).to have_xpath(":image=>#<File:/Users/ChristosMAC/Github/Makers/Week 8/instagram-challenge/spec/fixtures/image.jpeg>")
+    # end
 
     scenario 'display picture location' do
       visit '/pictures'
