@@ -6,7 +6,7 @@ feature 'posts' do
     scenario 'should display a prompt to add a post' do
       visit '/posts'
       expect(page).to have_content 'No posts yet'
-      expect(page).to have_link 'Add a post'
+      expect(page).to have_link 'Add Post'
     end
   end
 
@@ -25,7 +25,7 @@ feature 'posts' do
   context 'creating a post' do
     scenario 'prompts user to fill out a form, then displays the new restaurant' do
       visit '/posts'
-      click_link 'Add a post'
+      click_link 'Add Post'
       fill_in 'Caption', with: 'Beautiful fabrics in India'
       page.attach_file('post[image]', Rails.root + 'spec/Fixtures/mumbaimarket.jpg')
       click_button 'Create Post'
@@ -33,5 +33,19 @@ feature 'posts' do
       expect(current_path).to eq '/posts'
     end
   end
+
+  context 'viewing restaurants' do
+
+    let!(:post){ Post.create(caption: 'Driving along the Amalfi coast', image: "https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/7569/SITours/private-tour-amalfi-coast-from-sorrento-in-sorrento-288314.jpg") }
+
+      scenario 'lets a user view a post' do
+        visit '/posts'
+        find('img').click
+        expect(page).to have_content 'Driving along the Amalfi coast'
+        expect(current_path).to eq "/posts/#{post.id}"
+      end
+
+  end
+
 
 end
