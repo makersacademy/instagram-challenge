@@ -57,6 +57,7 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'rspec-collection_matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

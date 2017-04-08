@@ -31,6 +31,7 @@ feature 'posts' do
   end
 
   context 'creating a post' do
+
     scenario 'prompts user to fill out a form, then displays the new restaurant' do
       visit '/posts'
       click_link 'Add Post'
@@ -40,6 +41,17 @@ feature 'posts' do
       expect(page).to have_content 'Beautiful fabrics in India'
       expect(current_path).to eq '/posts'
     end
+
+    scenario 'does not let you submit a post without an image' do
+      visit '/posts'
+      click_link 'Add Post'
+      fill_in 'Caption', with: 'Beautiful fabrics in India'
+      page.attach_file('post[image]', Rails.root + 'spec/Fixtures/mumbaimarket.pdf')
+      click_button 'Create Post'
+      expect(page).not_to have_content 'Beautiful fabrics in India'
+      expect(page).to have_content 'error'
+    end
+
   end
 
   context 'editing restaurants' do
@@ -63,7 +75,7 @@ feature 'posts' do
       visit '/posts'
       click_link 'Delete'
       expect(page).not_to have_content 'Driving along the Amalfi coast'
-      expect(page).to have_content 'Restaurant deleted successfully'
+      expect(page).to have_content 'Post deleted successfully'
     end
 
   end
