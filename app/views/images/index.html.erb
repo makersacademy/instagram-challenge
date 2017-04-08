@@ -17,10 +17,12 @@
       <tr>
         <td><%= image.image %></td>
         <td><%= image.description %></td>
-        <td><%= image.user %></td>
+        <td><%= image.user.email %></td>
         <td><%= link_to 'Show', image %></td>
+        <% if image.user == current_user %>
         <td><%= link_to 'Edit', edit_image_path(image) %></td>
         <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
