@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
+    current_user.comments << @comment
     if @comment.valid?
       redirect_to posts_path
     else

@@ -2,7 +2,8 @@ class LikesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @post.likes.create
+    @like = @post.likes.create
+    current_user.likes << @like
     render json: {new_like_count: @post.likes.count}
   end
 
