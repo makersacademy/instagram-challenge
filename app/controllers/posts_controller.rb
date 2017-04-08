@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index]
+
   def index
     @posts = Post.all
   end
@@ -9,8 +11,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    if @post.save
+    @post = current_user.posts.create(post_params)
+    if @post.valid?
       redirect_to posts_path
     else
       flash[:notice] = 'Sorry! the post was not created'
