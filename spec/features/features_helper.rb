@@ -1,4 +1,5 @@
 def user_sign_up
+  visit '/'
   click_link 'Sign Up'
   fill_in :user_username, with: 'test1'
   fill_in :user_email, with: 'test@example.com'
@@ -8,6 +9,7 @@ def user_sign_up
 end
 
 def create_new_post
+  visit '/'
   click_link 'New Post'
   fill_in 'post_picture', with: 'http://photodoto.com/wp-content/uploads/2014/09/1-instagram-tips-for-photography-business.jpg'
   fill_in 'post_caption', with: 'A lovely photo from my holiday'
