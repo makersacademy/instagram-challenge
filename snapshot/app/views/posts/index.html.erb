@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
   <title>Snapshot</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <a href='/posts/new'>New Post</a>
+</head>
+<body>
+  <a href='/posts/new'>New Post</a>
+
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+    <% p post %>
+     <%= image_tag(post.image.url(:medium)) %>
+     <%= post.caption %>
+     <% end %>
+  <% else %>
     <h2>OMG, there are no photos yet!</h2>
+  <% end %>
 
-    <%= yield %>
+  <%= yield %>
 
-  </body>
+</body>
 </html>
