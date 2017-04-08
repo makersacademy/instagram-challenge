@@ -7,4 +7,14 @@ feature 'creating posts' do
     end
   end
 
+    scenario 'can create a post' do
+      visit '/posts'
+      click_link 'New Post'
+      # click_link 'Choose File'
+      attach_file('Image', "spec/images/NPG.jpg")
+      fill_in 'Caption', with: 'Lovely lovely art #nationalportraitgallery'
+      click_button 'Create Post'
+      expect(page).to have_content('#nationalportraitgallery')
+      expect(page).to have_css("img[src*='NPG.jpg']")
+    end
 end
