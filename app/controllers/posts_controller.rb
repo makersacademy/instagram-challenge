@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @users = User.all
     @user = current_user
   end
 
@@ -68,6 +69,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:picture, :caption)
+      params.require(:post).permit(:picture, :caption, :user_id).merge(user: current_user)
     end
 end
