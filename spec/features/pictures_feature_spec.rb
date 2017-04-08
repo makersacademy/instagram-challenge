@@ -11,7 +11,7 @@ feature 'pictures' do
 
   context 'picture image and location has been added' do
     before do
-      Picture.create(location: 'London')
+      Picture.create(description: 'London')
       @image = { :image => File.open(File.join(Rails.root, 'spec', 'fixtures', 'image.jpeg')) }
     end
 
@@ -24,7 +24,7 @@ feature 'pictures' do
     #   expect(page).to have_xpath(":image=>#<File:/Users/ChristosMAC/Github/Makers/Week 8/instagram-challenge/spec/fixtures/image.jpeg>")
     # end
 
-    scenario 'display picture location' do
+    scenario 'display picture description' do
       visit '/pictures'
       expect(page).to have_content('London')
       expect(page).to_not have_content('No pictures yet')
