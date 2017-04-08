@@ -1,2 +1,25 @@
-No pictures yet
-<a href='#'>Add a picture</a>
+<% if @pictures.empty? %>
+  No pictures yet
+  <a href='#'>Add a picture</a>
+
+  <p id="notice"><%= notice %></p>
+<% else %>
+  <h1>Pictures</h1>
+
+  <table>
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @pictures.each do |pic| %>
+          <tr>
+            <td><%= pic.location %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+<% end %>
