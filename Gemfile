@@ -23,6 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 # Use Paperclip for image uploads and resizing
 gem "paperclip", "~> 5.0.0"
 
+gem 'devise'
 
 
 # Use jquery as the JavaScript library
