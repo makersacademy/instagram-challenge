@@ -10,12 +10,20 @@ feature 'posts' do
     end
   end
 
-  context 'posts have been added' do
-    before do
-      Post.create(caption: 'Driving along the Amalfi coast', image: "https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/7569/SITours/private-tour-amalfi-coast-from-sorrento-in-sorrento-288314.jpg")
-    end
+  context 'viewing posts' do
 
+      scenario 'lets a user view a post' do
+        post = Post.create(caption: 'Driving along the Amalfi coast', image: "https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/7569/SITours/private-tour-amalfi-coast-from-sorrento-in-sorrento-288314.jpg")
+        visit '/posts'
+        find('img').click
+        expect(page).to have_content 'Driving along the Amalfi coast'
+      end
+
+  end
+
+  context 'posts have been added' do
     scenario 'display posts' do
+      Post.create(caption: 'Driving along the Amalfi coast', image: "https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/7569/SITours/private-tour-amalfi-coast-from-sorrento-in-sorrento-288314.jpg")
       visit '/posts'
       expect(page).to have_content('Driving along the Amalfi coast')
       expect(page).not_to have_content('No posts yet')
@@ -34,18 +42,32 @@ feature 'posts' do
     end
   end
 
-  context 'viewing restaurants' do
+  context 'editing restaurants' do
 
-    let!(:post){ Post.create(caption: 'Driving along the Amalfi coast', image: "https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/7569/SITours/private-tour-amalfi-coast-from-sorrento-in-sorrento-288314.jpg") }
-
-      scenario 'lets a user view a post' do
-        visit '/posts'
-        find('img').click
-        expect(page).to have_content 'Driving along the Amalfi coast'
-        expect(current_path).to eq "/posts/#{post.id}"
-      end
+    scenario 'let a user edit a post' do
+      Post.create(caption: 'Driving along the Amalfi coast', image: "https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/7569/SITours/private-tour-amalfi-coast-from-sorrento-in-sorrento-288314.jpg")
+      visit '/posts'
+      click_link 'Edit'
+      fill_in 'Caption', with: 'Positano by night'
+      click_button 'Update'
+      expect(page).to have_content 'Positano by night'
+      expect(page).not_to have_content 'Driving along the Amalfi coast'
+    end
 
   end
+
+  context 'deleting restaurants' do
+
+    scenario 'removes a post when a user clicks delete' do
+      Post.create(caption: 'Driving along the Amalfi coast', image: "https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/7569/SITours/private-tour-amalfi-coast-from-sorrento-in-sorrento-288314.jpg")
+      visit '/posts'
+      click_link 'Delete'
+      expect(page).not_to have_content 'Driving along the Amalfi coast'
+      expect(page).to have_content 'Restaurant deleted successfully'
+    end
+
+  end
+
 
 
 end
