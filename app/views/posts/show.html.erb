@@ -1,14 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= @post.picture %>
-</p>
-
-<p>
-  <strong>Caption:</strong>
-  <%= @post.caption %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
+
+<div id="content">
+  <b><%= (User.find(@post.user_id)).username %></b><p>
+    <img id="picture_and_caption" src="<%= @post.picture %>"><p>
+
+      <blockquote>
+        <%= @post.caption %>
+      </blockquote><p>
+
+      <% @post.comments.each do |comment| %>
+      <%= (User.find(comment.user_id)).username %>: <%= comment.comment %><br>
+      <% end %>
+
+      <%= link_to 'Comment', new_comment_path(post_id: @post.id) %>
+      <% if user_signed_in? %>
+      <% if current_user.id == @post.user_id %>
+        <p><%= link_to 'Edit', edit_post_path(@post) %> |
+        <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      <% end %>
+        <p>
+        <br>

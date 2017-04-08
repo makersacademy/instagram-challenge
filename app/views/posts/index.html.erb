@@ -11,7 +11,7 @@
 <h1>Listing Posts</h1>
 <div id="content">
   <% @posts.each do |post| %>
-  <b><%= post.user_id %></b><p>
+  <b><%= (User.find(post.user_id)).username %></b><p>
     <a href="posts/<%= post.id%>"><img id="picture_and_caption" src="<%= post.picture %>"></a><p>
 
       <blockquote>
@@ -19,7 +19,7 @@
       </blockquote><p>
 
       <% post.comments.each do |comment| %>
-      Username to come: <%= comment.comment %><br>
+      <%= (User.find(comment.user_id)).username %>: <%= comment.comment %><br>
       <% end %>
 
       <%= link_to 'Comment', new_comment_path(post_id: post.id) %>
