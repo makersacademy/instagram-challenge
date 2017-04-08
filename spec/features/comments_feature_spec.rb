@@ -28,6 +28,18 @@ feature 'Comments' do
       expect(page).to have_content 'Love this photo'
       expect(page).to have_content 'test1'
     end
+
+    scenario 'Usernames on comments are links to profile pages' do
+      visit '/'
+      click_link 'Comment'
+      fill_in 'comment_comment', with: 'Love this photo'
+      click_button 'Create Comment'
+      visit '/'
+      within(".comment") do
+        click_link("test1")
+      end
+      expect(page).to have_content 'A lovely photo from my holiday'
+    end
   end
 
   context 'Only Users can fully use Instagram' do

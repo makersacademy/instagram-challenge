@@ -15,11 +15,11 @@
       <blockquote>
         <%= post.caption %>
       </blockquote><p>
-
+        <div class='comment'>
       <% post.comments.each do |comment| %>
-      <%= (User.find(comment.user_id)).username %>: <%= comment.comment %><br>
+      <a href="users/<%=comment.user_id%>"><%= (User.find(comment.user_id)).username %></a>: <%= comment.comment %><br>
       <% end %>
-
+    </div>
       <%= link_to 'Comment', new_comment_path(post_id: post.id) %>
       <% if user_signed_in? %>
       <% if current_user.id == post.user_id %>
