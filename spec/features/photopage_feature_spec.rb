@@ -13,7 +13,8 @@ feature 'photos' do
     before do
       Post.create(caption: 'first post')
     end
-    scenario 'display pictures' do
+    scenario 'displays the caption' do
+      visit '/posts'
       expect(page).to have_content 'first post'
     end
   end
