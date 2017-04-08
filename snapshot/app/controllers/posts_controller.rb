@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @post = Post.all
+    @posts = Post.all
   end
 
   def new
@@ -10,8 +10,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    # redirects to the newly created post
-    redirect_to @post
+    if @post.save
+      # redirects to the newly created post
+      redirect_to @post
+    else
+      render 'new'
+    end
   end
 
   def show

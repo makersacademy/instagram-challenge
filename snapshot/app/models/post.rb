@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  # validation for image input
+  validates :image, presence: true
   # Next three lines are for Paperlip
   has_attached_file :image
   # Resizes image to 640px wide. Allows for taller images.

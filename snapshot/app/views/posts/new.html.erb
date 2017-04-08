@@ -3,3 +3,14 @@
   <%= f.input :caption %>
   <%= f.submit %>
 <% end %>
+
+<% if @post.errors.any? %>
+  <section id="errors">
+    <h2> <%= pluralize(@post.errors.count, "error") %> prohibited this image from being saved: </h2>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
