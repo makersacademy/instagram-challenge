@@ -42,4 +42,18 @@ feature 'posts' do
 
   end
 
+  context 'deleting posts' do
+    before do
+      add_new_post
+    end
+
+    scenario 'let user edit a post' do
+      visit '/posts'
+      click_link 'Delete'
+      expect(page).not_to have_content 'Delicious home made food'
+      expect(page).not_to have_xpath("//img[contains(@src,'indian_food.jpg')]")
+      expect(page).to have_content 'Post deleted successfully'
+    end
+  end
+
 end
