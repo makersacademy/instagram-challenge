@@ -1,6 +1,11 @@
 feature 'Posts' do
   context 'Users can post to Instagram' do
 
+    before(:each) do
+      visit '/'
+      user_sign_up
+    end
+
   scenario 'Users can post pictures to Instagram' do
     visit '/'
     click_link 'New Post'
