@@ -69,4 +69,17 @@ feature 'Users' do
       expect(page).not_to have_content 'Sign Up'
     end
   end
+
+  context 'Users have profiles' do
+    scenario 'User profiles display all their pictures' do
+      visit '/'
+      user_sign_up
+      visit '/'
+      create_new_post
+      visit '/'
+      click_link 'test1'
+      expect(page).to have_content "Test1's Profile"
+      expect(page).to have_content 'A lovely photo from my holiday'
+    end
+  end
 end
