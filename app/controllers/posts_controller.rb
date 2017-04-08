@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     @posts = Post.all
     @users = User.all
     @user = current_user
+    @likes = Like.all
   end
 
   def show

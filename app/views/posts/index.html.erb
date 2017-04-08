@@ -27,7 +27,14 @@
     <% end %>
  </div>
 
-    <%= link_to 'Comment', new_comment_path(post_id: post.id) %><%= link_to 'Like', new_like_path(post_id: post.id) %>
+    <%= link_to 'Comment', new_comment_path(post_id: post.id) %>
+
+    <% if @likes.where(user_id: current_user).blank? %>
+      <%= link_to 'Like', new_like_path(post_id: post.id, user_id: current_user) %>
+    <% else %>
+      <%= link_to 'Like', root_path %>
+  <%  end %>
+
       <% if user_signed_in? %>
       <% if current_user.id == post.user_id %>
         <p><%= link_to 'Edit', edit_post_path(post) %> |

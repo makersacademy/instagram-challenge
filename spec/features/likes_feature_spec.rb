@@ -7,5 +7,15 @@ feature 'Likes' do
       click_link 'Like'
       expect(page).to have_content '1 Like'
     end
+
+    scenario 'Users can only like posts once' do
+      user_sign_up
+      create_new_post
+      visit '/'
+      click_link 'Like'
+      click_link 'Like'
+      click_link 'Like'
+      expect(page).to have_content '1 Like'
+    end
   end
 end
