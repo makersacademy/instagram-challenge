@@ -13,7 +13,7 @@ feature 'Users' do
     end
   end
 
-  context 'Users must provide the correct information' do
+  context 'Users must provide the correct information when signing up' do
 
     before(:each) do
       visit '/'
@@ -50,6 +50,23 @@ feature 'Users' do
       click_button 'Sign up'
       expect(page).to have_content 'Username has already been taken'
       expect(page).not_to have_content 'test1'
+    end
+  end
+
+  context 'Registered users' do
+    scenario 'Can sign in to Instagram' do
+      visit '/'
+      user_sign_up
+      click_link 'Sign Out'
+      visit '/'
+      click_link 'Sign In'
+      fill_in :user_username, with: 'test1'
+      fill_in :user_email, with: 'test@example.com'
+      fill_in :user_password, with: 'password123'
+      click_button 'Log in'
+      expect(page).to have_content 'test1'
+      expect(page).to have_content 'Sign Out'
+      expect(page).not_to have_content 'Sign Up'
     end
   end
 end
