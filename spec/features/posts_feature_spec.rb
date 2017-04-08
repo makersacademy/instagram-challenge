@@ -12,4 +12,16 @@ feature 'posts' do
 
   end
 
+  context 'posts can be added' do
+    before do
+      add_new_post
+    end
+
+    scenario 'display posts' do
+      expect(page).to have_content 'Delicious home made food'
+      expect(page).not_to have_content 'No posts yet'
+    end
+
+  end
+
 end
