@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :posts, shallow: true do
+  resources :posts do
     resources :likes
+    resources :comments
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
