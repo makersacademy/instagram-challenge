@@ -28,8 +28,8 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
-        format.json { render :show, status: :created, location: @photo }
+        format.html { redirect_to '/photos', notice: 'Photo was successfully posted.' }
+        format.json { render :index, status: :created, location: @photo }
       else
         format.html { render :new }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     respond_to do |format|
-      format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
+      format.html { redirect_to photos_url, notice: 'Photo deleted successfully' }
       format.json { head :no_content }
     end
   end

@@ -13,7 +13,11 @@ MVP:
 ```
 As a user
 So I can show my friends the cool things I've done
-I want to be able to post pictures
+I want to be able to post photos
+
+As a user
+So I can change my mind about a photo I posted
+I want to be able to delete and edit my photos
 
 As a user
 So I can see what my friends are up to
@@ -21,10 +25,10 @@ I would like to see a stream of their photos
 
 As a user
 So I can let my friends know what I think
-I want to be able to leave comments on pictures
+I want to be able to leave comments on photos
 
 As a user
-So I can see how popular my pictures are
+So I can see how popular my photos are
 I would like other users to be able to like them
 ```
 
