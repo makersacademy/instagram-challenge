@@ -7,6 +7,9 @@
 
     <% if current_user %>
       <%= link_to "Comment", new_post_comment_path(post) %>
+    <% end %>
+
+    <% if current_user && !current_user.liked_post?(post)%>
       <%= link_to "♡", post_likes_path(post), class: 'likes-link' %>
     <% end %>
     <span class="likes_count"><%="♥ "%><%=post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
