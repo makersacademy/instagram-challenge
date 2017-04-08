@@ -49,6 +49,7 @@ end
 gem "paperclip", "~> 5.0.0"
 gem 'poltergeist'
 gem 'database_cleaner'
+gem 'devise'
 
 # gem for tests
 
