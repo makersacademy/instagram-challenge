@@ -15,12 +15,19 @@
     <% if @photos.any? %>
     <% @photos.each do |photo| %>
       <tr>
-        <td><%= image_tag photo.image.url(:medium) %></td>
+        <td><%=  image_tag photo.image.url(:medium)  %></td>
         <td><%= photo.caption %></td>
         <td><%= photo.location %></td>
         <td><%= link_to 'Show', photo %></td>
         <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
         <td><%= link_to 'Delete', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td> <div id="comments_wrapper">
+          <%= link_to 'Comment', new_photo_comment_path(photo) %>
+            <% photo.comments.each do |comment|%>
+            <p> <%= comment.content %> <p>
+              <% end %>
+
+        </div></td>
       </tr>
     <% end %>
     <% else %>
