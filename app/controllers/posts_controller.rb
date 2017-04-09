@@ -1,19 +1,23 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @posts = Post.all
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def create
-    @post = Post.new(post_params)
+    p params
+    @post = current_user.posts.build(post_params)
     # @post.user_id = current_user.id
     if @post.save
       redirect_to posts_path
     else
+      flash[:notice] = "Post failed - please try again."
       render 'new'
     end
   end
@@ -27,16 +31,26 @@ class PostsController < ApplicationController
   end
 
   def update
-  @post = Post.find(params[:id])
-  @post.update(post_params)
-  redirect_to '/posts'
+    @post = Post.find(params[:id])
+    if current_user.id == @post.user_id
+      @post.update(post_params)
+      redirect_to '/posts'
+    else
+      flash[:notice] = "You don't have permission to edit this post."
+      render 'edit'
+    end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:notice] = 'Post deleted successfully'
-    redirect_to '/posts'
+    if current_user.id == @post.user_id
+      @post.destroy
+      flash[:notice] = 'Post deleted successfully'
+      redirect_to '/posts'
+    else
+      flash[:notice] = "You don't have permission to delete this post."
+      render 'edit'
+    end
   end
 
 
@@ -45,7 +59,5 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:image, :caption)
   end
-
-
 
 end

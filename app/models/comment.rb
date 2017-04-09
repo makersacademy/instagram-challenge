@@ -1,3 +1,5 @@
 class Comment < ApplicationRecord
-  validates_length_of :comment, :maximum => 140
+  belongs_to :user
+  belongs_to :post
+  validates_length_of :content, :maximum => 140
 end
