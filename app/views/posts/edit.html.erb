@@ -1,7 +1,14 @@
-
-    <h4> Edit post </h4>
+<div class="posts-wrapper">
+  <div class="post">
+    <div class="post-head">
+      <p style="display:inline-block;float:right"><%= link_to "Cancel", posts_path %>
+      <h4 class="name"> <%= @post.user_id %></h4>
+      <p class="location"> London </p>
+    </div>
+    <div class="image"><%= link_to image_tag(@post.image.url(:medium), alt: @post.caption, class:"img-responsive"), post_path(@post) %></div>
     <%= form_for @post, html: {multipart: true} do |f| %>
       <%= f.label :caption %>
       <%= f.text_field :caption %><br>
       <%= f.submit %>
     <% end %>
+  </div>

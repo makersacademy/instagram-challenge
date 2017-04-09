@@ -5,17 +5,17 @@
     <div class="post-head">
       <p style="display:inline-block;float:right"><%= link_to "Edit", edit_post_path(post) %>
       <%= link_to "Delete", post_path(post), method: :delete %></p>
-      <h4 class="name"> Vicky Roberts </h4>
-      <p class="location"> London </p>
+      <h4 class="name"> <%= post.user.username %></h4>
+      <p class="location"> <%= request.location.city %> </p>
     </div>
     <div class="image"><%= link_to image_tag(post.image.url(:medium), alt: post.caption, class:"img-responsive"), post_path(post) %></div>
     <p class="caption"> <%= post.caption %> </p>
     <%= link_to "Leave Comment", new_post_comment_path(post) %>
     <% post.comments.each do |comment| %>
-    <br><%= comment.comment %>  <span style="color:grey; font-size:0.8em"><%= comment.created_at.strftime("%H:%M, %A %e %b") %></span>
+    <br><span id="comment-name"><%= comment.user.username  %></span>
+    <%= comment.content  %>  <span style="color:grey; font-size:0.8em"><%= comment.created_at.strftime("%H:%M, %A %e %b") %></span>
     <% end %>
   </div>
-
   <% end %>
 </div>
 <% else %>
