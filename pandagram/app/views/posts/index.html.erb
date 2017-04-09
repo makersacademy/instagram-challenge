@@ -3,7 +3,7 @@
   <% @posts.each do |post| %>
     <div class='post'>
     <p><%= post.created_at.strftime("Posted on %m/%d/%Y") %> | <%= post.description %> <span class='right'><%= link_to "Edit", edit_post_path(post) %></span></p>
-      <img src='https://unsplash.it/500/500' />
+      <%= image_tag post.image.url(:medium) %>
       <%= link_to "Leave a comment", new_post_comment_path(post) %>
       <ul>
         <% post.comments.each do |comment| %>
