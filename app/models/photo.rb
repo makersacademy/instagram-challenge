@@ -15,5 +15,9 @@ class Photo < ActiveRecord::Base
     User.find(self.user_id).username
   end
 
+  def liked_by?(user)
+    like = Like.find_by(photo_id: self.id)
+    !!like && user.id === like.user_id
+  end
 
 end

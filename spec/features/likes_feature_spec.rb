@@ -19,4 +19,11 @@ feature 'likes' do
      expect(page).to have_content('Likes: 1')
   end
 
+  scenario 'clicking like button twice will unlike the photo' do
+     visit '/photos'
+     click_button 'Like'
+     expect(page).to have_content('Likes: 1')
+     expect(page).not_to have_button('Like')
+  end
+
 end

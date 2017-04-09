@@ -7,8 +7,13 @@ class LikesController < ApplicationController
 
   def create
     @photo = Photo.find(params[:photo_id])
-    like = @photo.likes.create(:photo_id => :photo_id)
+    like = @photo.likes.create(:photo_id => @photo.id, :user_id => current_user.id)
+    p like
     redirect_to "/photos"
+  end
+
+  def destroy
+    @like.destroy
   end
 
   private
