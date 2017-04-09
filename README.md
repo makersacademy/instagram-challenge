@@ -1,5 +1,13 @@
 # Instagram Challenge - Makers Weekend Challenge
 
+## Task
+
+Build Instagram: Simple huh!
+
+Bonus if you can write your own set of sensible user stories!
+
+## My User Stories
+
 ## MVP
 
 ```
@@ -58,3 +66,13 @@ I want to be able to log in using Facebook.
 As a user,
 In order to enjoy photos of other people’s food,
 I want to be able to see a another user’s profile/Instagram feed.
+```
+
+## How to Run
+
+- Clone this repo and ` cd instagram-challenge `
+- Run `gem install bundle` (if required) and `bundle install`
+- Create local databases using `rake db:create`
+- Run database migration `rake db:migrate`
+- Run rails server `rails s`
+- On your browser, go to localhost:3000 to enjoy my mock-Instagram
