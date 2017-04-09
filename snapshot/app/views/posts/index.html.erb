@@ -1,35 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Snapshot</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <a href='/posts/new'>New Post</a>
-
-  <% if @posts.any? %>
-    <% @posts.each do |post| %>
-    <% p post %>
-     <%= image_tag(post.image.url(:medium)) %>
-     <%= post.caption %>
-     <% end %>
-  <% else %>
-    <h2>OMG, there are no photos yet!</h2>
-  <% end %>
-
-  <% if user_signed_in? %>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-  <% else %>
-  <%= link_to "Sign in", new_user_session_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
-  <% end %>
-
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-  <%= yield %>
-
-</body>
-</html>
+<div class="container">
+  <div class="row">
+    <div class="post-wrapper">
+      <% if @posts.any? %>
+      <% @posts.each do |post| %>
+      <div class="post">
+        <div class="post-head">
+          Name<!-- username to go in here and maybe time?-->
+        </div>
+      </div>
+      <div class="image center-block">
+        <%= image_tag(post.image.url(:medium)) %>
+        <p class="caption">
+          <%= post.caption %>
+        </p>
+      </div>
+      <% end %>
+      <% else %>
+        <div class="no-photos"
+          <h2>OMG, there are no photos yet!</h2>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
