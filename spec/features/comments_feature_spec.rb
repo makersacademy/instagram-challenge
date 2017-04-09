@@ -23,7 +23,7 @@ feature 'commenting' do
 
     scenario 'let user state his opinion' do
       add_new_comment('mouth watering')
-      expect(current_path).to eq '/posts'
+      visit('/posts')
       expect(page).to have_content 'mouth watering'
     end
 
