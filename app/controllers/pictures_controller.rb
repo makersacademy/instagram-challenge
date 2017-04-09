@@ -12,6 +12,7 @@ class PicturesController < ApplicationController
   def create
     # @picture = Picture.create(picture_params)
     @picture = current_user.pictures.build(picture_params)
+    # Tag.create(tag_params)
 
     if @picture.save
       flash[:success] = "Picture successfully added"
@@ -38,4 +39,8 @@ class PicturesController < ApplicationController
   def picture_params
     params.require(:picture).permit(:description, :image)
   end
+
+  # def tag_params
+  #   params.require(:tag).permit(:name)
+  # end
 end
