@@ -10,7 +10,7 @@ end
 
 def add_photo
   visit('/')
-  click_link 'Post a photo'
+  click_link("Post a photo")
   fill_in 'Caption', with: 'Sunny :)'
   fill_in 'Location', with: 'Hyde Park'
   click_button 'Post photo'
