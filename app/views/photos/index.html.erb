@@ -1,7 +1,13 @@
 <% if @photos.all.any? %>
    <% @photos.all.each do |photo| %>
-     <%= image_tag photo.image.url(:original) %>
-     <p><%= photo.caption %></p>
+      <ul>
+        <a href="<%= photo_path(photo) %>" class="image">
+          <%= image_tag photo.image.url(:large) %>
+        </a>
+       <p><%= photo.caption %></p>
+       <%= link_to "Edit", edit_photo_path(photo) %>
+       <%= link_to "Display", photo_path(photo) %>
+      </ul>
    <% end %>
  <% else %>
    <h1>No photos yet!</h1>
