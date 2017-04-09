@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users
  root "pictures#index"
   get 'pictures' => 'pictures#index'
   resources :pictures do
   resources :comments
+  member do
+  put "like" => "picture#like"
+  end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
