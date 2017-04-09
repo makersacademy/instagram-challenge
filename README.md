@@ -2,7 +2,8 @@
 
 ## MVP
 
-```As a user,
+```
+As a user,
 In order to enjoy Instagram,
 I want to be able to sign up.
 
@@ -21,7 +22,8 @@ I want to be able to see all my photos on my profile page.
 
 ## V1
 
-```As a user,
+```
+As a user,
 In order for me to make any changes to my Instagram profile,
 I want to be able to edit and delete my photos.
 
