@@ -1,4 +1,9 @@
 <h1><%=@picture.title%></h1>
 <h2><%= link_to 'Edit title', edit_picture_path(@picture) %><h2>
+<h2><%= link_to 'Add comment', new_picture_comment_path(@picture) %><h2>
 <h2><%= link_to 'Delete post', picture_path(@picture), method: :delete %><h2>
 <%=image_tag("pictures/#{@picture.filename}")%>
+<p> Comments: </p>
+<% @picture.comments.all.each do |comment|%>
+  <h2><%=comment.thoughts%></h2>
+  <%end%>

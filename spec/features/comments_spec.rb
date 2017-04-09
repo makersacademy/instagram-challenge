@@ -7,9 +7,9 @@ context ' allows a user to leave a comment' do
   end
   scenario ' a user can fill in a form to leave a comment' do
    visit '/pictures'
-   click_link ' cute dog'
+   click_link 'cute dog'
    click_link 'Add comment'
-   fill_in 'comment', with: 'Aw cute'
+   fill_in 'Thoughts', with: 'Aw cute'
    click_button 'Save comment'
    expect(page).to have_content('Aw cute')
   end
