@@ -1,5 +1,7 @@
 
-<%= link_to 'Post a photo', new_photo_path %>
+<%= link_to new_photo_path do %>
+  <i class="fa fa-camera"></i>
+<% end %>
 
 <% if @photos.any? %>
 <% @photos.each do |photo| %>
@@ -19,8 +21,12 @@
       </div>
     </div>
     <div id="img-actions">
-      <%= link_to 'Edit', edit_photo_path(photo) %>
-      <%= link_to 'Delete', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to edit_photo_path(photo) do %>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to photo, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+      <% end %>
     </div>
 
   </div>
@@ -42,6 +48,8 @@
         <div id="likes-wrapper">
           <% if !@photo.liked_by? current_user %>
             <%= render :partial => 'likes/form' %>
+          <% else %>
+            <i class="fa fa-heart" id="liked-icon" aria-hidden="true"></i>
           <% end %>
           Likes: <%= photo.likes.count %>
         </div>
@@ -52,5 +60,6 @@
     <% else %>
     <h1>No photos yet</h1>
     <% end %>
+
 
     <br>
