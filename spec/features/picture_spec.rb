@@ -27,6 +27,42 @@ context "creating a form"  do
     fill_in 'Filename', with: 'dogthinkstock.jpg'
     click_button 'Create Picture'
     expect(page).to have_content('cute dog')
+    # expect(page).to have_xpath("//img[contains(@src,'assets/pictures/dogthinkstock.jpg')]")
+  end
+end
+
+context "viewing the picture" do
+  let!(:dog){Picture.create(title: 'Dog', filename: 'dogthinkstock.jpg')}
+  scenario "lets a user view the picture's page" do
+    visit "/pictures"
+    click_link'Dog'
+    expect(page).to have_content('Dog')
+    expect(current_path).to eq "/pictures/#{dog.id}"
+  end
+end
+context "editing the title of a picture" do
+  before do
+    Picture.create(title: 'cute dog', filename: 'dogthinkstock.jpg')
+  end
+  scenario " lets the user rename their picture" do
+    visit "/pictures"
+    click_link 'cute dog'
+    click_link 'Edit title'
+    fill_in 'Title', with: 'doggie'
+    click_button 'Submit change'
+    expect(page).to have_content('doggie')
+  end
+end
+context 'deleting a post' do
+  before do
+    Picture.create(title: 'cute dog', filename: 'dogthinkstock.jpg')
+  end
+  scenario 'allowing a user to delete the image and title they posted' do
+    visit"/pictures"
+    click_link 'cute dog'
+    click_link 'Delete post'
+    expect(page).not_to have_content('cute dog')
+    expect(page).to have_content('Deleted post')
   end
 end
 end
