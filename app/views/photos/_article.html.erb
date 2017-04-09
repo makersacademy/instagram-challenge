@@ -1,0 +1,33 @@
+<a href="<%= photo_path(photo) %>" class="image">
+   <%= image_tag photo.image.url(:large) %>
+ </a>
+ <p><%= photo.caption %></p>
+
+ <%= link_to "Edit", edit_photo_path(photo) %>
+ <%= link_to "Display", photo_path(photo) %>
+ <%= link_to "Delete", photo_path(photo), method: :delete %>
+
+ <% if photo.comments.any? %>
+   <% photo.comments.each do |comment| %>
+     <ul>
+       <%= comment.thoughts %>
+     </ul>
+   <% end %>
+ <% end %>
+
+ <h4>Add a comment:</h4>
+ <%= form_for([photo, photo.comments.build]) do |f| %>
+   <p>
+     <%= f.label :thoughts %><br>
+     <%= f.text_field :thoughts %>
+   </p>
+   <p>
+     <%= f.label :likes %>
+     <%= f.select :likes, (1..5) %>
+   </p>
+   <p>
+     <%= f.submit 'Leave Comment' %>
+   </p>
+ <% end %>
+
+ <%= link_to 'Back', photos_path %>
