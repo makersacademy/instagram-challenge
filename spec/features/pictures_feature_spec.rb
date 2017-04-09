@@ -9,24 +9,48 @@ feature 'pictures' do
     end
   end
 
-  context 'picture image and location has been added' do
+  # def signed_in_as_a_valid_user
+  #   @user ||= User.create :user
+  #   sign_in @user # method from devise:TestHelpers
+  #   post_via_redirect user_session_path, 'user[email]' => @user.email, 'user[password]' => @user.password
+  # end
+
+
+  context 'Signing Up' do
     before do
-      Picture.create(description: 'London')
-      @image = { :image => File.open(File.join(Rails.root, 'spec', 'fixtures', 'image.jpeg')) }
+      visit('/')
+      click_link('Sign up')
+      fill_in('Email', with: 'test@example.com')
+      fill_in('Password', with: 'testtest')
+      fill_in('Password confirmation', with: 'testtest')
+      click_button('Sign up')
+      # @pictures = Picture.create(image: File.new('spec/fixtures/image.jpeg'), description: 'London')
+
+      #  Picture.create(description: 'London')
+
+      # @pictures = Picture.all
+      # p @pictures.image = File.new('spec/fixtures/image.jpeg')
+        # p @pictures.description
+      # p @pictures.image
+      # p @image = { :image => File.open(File.join(Rails.root, 'spec', 'fixtures', 'image.jpeg')) }
     end
 
     # unsure how to write test testing paperclip upload
 
     # scenario 'displays image' do
     #   visit '/pictures'
-    #   p @image
-    #   Picture.create :image => File.open(File.join(Rails.root, 'spec', 'fixtures', 'image.jpeg'))
-    #   expect(page).to have_xpath(":image=>#<File:/Users/ChristosMAC/Github/Makers/Week 8/instagram-challenge/spec/fixtures/image.jpeg>")
+    #   p @pictures.image_file_name
+    #   # Picture.create :image => File.open(File.join(Rails.root, 'spec', 'fixtures', 'image.jpeg'))
+    #   expect().to validate_attachment_presence :@pictures.image
+    #   #  it { should have_attached_file(:image) }
     # end
 
     scenario 'display picture description' do
-      visit '/pictures'
-      expect(page).to have_content('London')
+      visit '/'
+      click_link 'Add a picture'
+      fill_in('Description', with: "This is my test" )
+      click_button('Create Picture')
+      expect(page).to have_content('This is my test')
       expect(page).to_not have_content('No pictures yet')
     end
   end
