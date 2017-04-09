@@ -41,7 +41,6 @@ gem 'omniauth-facebook'
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
-
 end
 
 group :development, :test do
