@@ -1,4 +1,4 @@
-
+<div class="main-container">
 <%= link_to new_photo_path do %>
   <i class="fa fa-camera"></i>
 <% end %>
@@ -6,10 +6,16 @@
 <% if @photos.any? %>
 <% @photos.each do |photo| %>
 
+
+
 <div id="post-container">
 
-
-
+<strong><%= photo.get_username %></strong>
+at
+<i class="fa fa-map-marker" aria-hidden="true"></i>
+<div id="img-location">
+  <%= photo.location %>
+</div>
   <div id="img-container">
     <%= link_to (image_tag photo.image.url(:medium)), photo_path(photo), id: "img" %>
     <div id="img-info">
@@ -31,12 +37,19 @@
 
   </div>
 
-  <div id="img-location">
-    <%= photo.location %>
-  </div>
+
 
   <div id="likes-comments-container">
     <% @photo = photo %>
+
+    <div id="likes-wrapper">
+      <% if !@photo.liked_by? current_user %>
+        <%= render :partial => 'likes/form' %>
+      <% else %>
+        <i class="fa fa-heart" id="liked-icon" aria-hidden="true"></i>
+      <% end %>
+      Likes: <%= photo.likes.count %>
+    </div>
     <%= render :partial => 'comments/form' %>
 
     <div id="comments-wrapper">
@@ -45,14 +58,7 @@
       <% end %>
     </div>
 
-        <div id="likes-wrapper">
-          <% if !@photo.liked_by? current_user %>
-            <%= render :partial => 'likes/form' %>
-          <% else %>
-            <i class="fa fa-heart" id="liked-icon" aria-hidden="true"></i>
-          <% end %>
-          Likes: <%= photo.likes.count %>
-        </div>
+
       </div>
     </div>
 
@@ -61,5 +67,4 @@
     <h1>No photos yet</h1>
     <% end %>
 
-
-    <br>
+</div>
