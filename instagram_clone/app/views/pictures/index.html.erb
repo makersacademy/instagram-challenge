@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+  <%if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+  <ul>
+    <li><%= link_to image_tag(picture.image.thumb('64x64!').url), picture_path(picture) %></li>
+  </ul>
+  <% end %>
+  <% else %>
+    <h3>There are no images to display</h3>
+  <% end %>
+    <p><a href="pictures/new">Add picture</a></p>
+  <% else %>
+    <p>You must be signed in to create images</p>
+  <% end %>

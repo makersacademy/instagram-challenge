@@ -23,4 +23,10 @@ feature "Users" do
       expect(page).to have_content("Signed in successfully.")
     end
   end
+  context "access permissions" do
+    scenario "only work if users are signed in" do
+      visit '/'
+      expect(page).not_to have_content("Add picture")
+    end
+  end
 end
