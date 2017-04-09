@@ -4,9 +4,8 @@ feature 'likes' do
 
   before do
     sign_up
+    add_photo
   end
-
-  before { Photo.create caption: 'BBQ' }
 
   scenario 'like button is available on index page' do
      visit '/photos'

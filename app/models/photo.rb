@@ -11,6 +11,9 @@ class Photo < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   belongs_to :user
 
+  def get_username
+    User.find(self.user_id).username
+  end
 
 
 end

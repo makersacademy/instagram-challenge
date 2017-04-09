@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'photos' do
 
-  before do
+  before :each do
     sign_up
   end
 
@@ -15,33 +15,27 @@ feature 'photos' do
   end
 
   context 'photos have been added' do
-  before do
+  before :each do
     add_photo
   end
 
     scenario 'display photos' do
       visit '/photos'
       expect(page).to have_content("Sunny :)")
+      expect(page).to have_content("hello123")
       expect(page).not_to have_content('No photos yet')
     end
-  end
+
 
   context 'posting photos' do
     scenario 'allows user to upload photo, then displays photo' do
-      visit '/photos'
-      click_link 'Post a photo'
-      fill_in 'Caption', with: 'Sunny :)'
-      click_button 'Post photo'
+      add_photo
       expect(page).to have_content 'Sunny :)'
       expect(current_path).to eq '/photos'
     end
   end
 
   context 'editing restaurants' do
-
-    before do
-      add_photo
-    end
 
     scenario 'let a user edit a photo' do
       visit '/photos'
@@ -55,11 +49,7 @@ feature 'photos' do
   end
 
   context 'deleting photos' do
-
-    before do
-      add_photo
-    end
-
+    
     scenario 'removes a photo when a user clicks a delete link' do
       visit '/photos'
       click_link 'Delete'
@@ -67,4 +57,5 @@ feature 'photos' do
       expect(page).to have_content 'Photo deleted successfully'
     end
   end
+end
 end

@@ -40,6 +40,10 @@ So I can control what is posted to my page
 I would like to sign in and out
 
 As a user
+So I know who is posting what
+I want to see the name of the poster with each post and comment
+
+As a user
 So the stats aren't skewed
 I want people to only be able to like a photo once
 

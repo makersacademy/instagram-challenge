@@ -4,10 +4,8 @@ feature 'commenting' do
 
   before do
     sign_up
+    add_photo
   end
-
-  before { Photo.create caption: 'Yum' }
-
 
   scenario "has a button to create a comment" do
     visit '/photos'
