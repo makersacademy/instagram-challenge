@@ -11,5 +11,6 @@ def create_new_post
   visit '/posts'
   click_link 'New Post'
   fill_in 'Caption', with: 'Caption content'
+  attach_file('post_image', 'spec/spec_photo.jpg')
   click_button 'Create Post'
 end
