@@ -2,9 +2,15 @@
 <% if @posts.any? %>
  <% @posts.each do |p| %>
  <ul>
-   <li><%= image_tag p.image.url(:medium) %><br />
+   <li><%= image_tag p.image.url(:medium) %></br>
    <%= p.comment %></br>
-   <%= p.created_at.strftime("Posted on %m/%d/%y at %I:%M%p") %></li>
+   <%= p.created_at.strftime("Posted on %m/%d/%y at %I:%M%p") %></br>
+   <% @comments.each do |comment| %>
+    <ul>
+      <li><%= comment.user_comments %></li>
+    </ul>
+   <% end %>
+   <%= link_to "New comment", new_post_comment_path(p.id) %></li>
  </ul>
  <% end %>
 <% else %>

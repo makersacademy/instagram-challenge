@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  
+  has_many :comments, dependent: :destroy
   has_attached_file :image,
                     :storage => :cloudinary,
                     styles: { medium: "300x300>" },
