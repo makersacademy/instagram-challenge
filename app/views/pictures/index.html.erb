@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+<p><%= link_to 'Post a picture', new_picture_path %></p>
+  <% if @pictures.any? %>
+    <% @pictures.each do |picture| %>
+    <div class="post">
+        <!-- <td><%= picture.name %></td> -->
+        <% if picture.address %>
+          <h5><%= picture.address %><h5>
+        <% end %>
+        <%= image_tag picture.image.url(:large) %>
+        <!-- <td><%= picture.postDateTime %></td>
+        <td><%= picture.latitude %></td>
+        <td><%= picture.longitude %></td> -->
+        <!-- <td><%= link_to 'Show', picture %></td>
+        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+      </div>
+    <% end %>
+    <% else %>
+    No pictures yet
+    <% end %>

@@ -52,6 +52,10 @@ As a time pressed user
 So that I can quickly appreciate a picture
 I want to be able to like a picture
 
+As a heavy user
+So that I can remember which pictures I have liked
+I want to be able to see all the pictures I have liked
+
 As a fancy user
 So that I can make my picture look better than it actually was
 I want to be able to apply filters to my picture

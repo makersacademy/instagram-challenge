@@ -1,5 +1,13 @@
 source 'https://rubygems.org'
 
+#Paperclip
+gem "paperclip", "~> 5.0.0"
+
+#Geocoder
+gem 'geocoder'
+
+# Exfir
+gem 'exifr'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.8'
