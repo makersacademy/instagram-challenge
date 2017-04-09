@@ -10,5 +10,5 @@ var likesHandler = function() {
     });
   });
 };
-
+$(document).ready(likesHandler);
 $(document).on("turbolinks:load", likesHandler);
