@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  belongs_to :user
   # validation for image input
   validates :image, presence: true
   # Next three lines are for Paperlip
