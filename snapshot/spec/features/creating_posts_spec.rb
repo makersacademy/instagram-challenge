@@ -24,6 +24,7 @@ feature 'creating posts' do
   end
 
   it 'needs an image to create a post' do
+    sign_up
     visit '/posts/new'
     fill_in 'Caption', with: 'Lovely lovely art #nationalportraitgallery'
     click_button 'Create Post'
