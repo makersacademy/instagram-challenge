@@ -1,46 +1,55 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Photo stream</h1>
+<%= link_to 'Post a photo', new_photo_path %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Caption</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% if @photos.any? %>
+<% @photos.each do |photo| %>
 
-  <tbody>
-    <% if @photos.any? %>
-    <% @photos.each do |photo| %>
-      <tr>
-        <td><%= link_to (image_tag photo.image.url(:medium)), photo_path(photo) %></td>
-        <td><%= photo.caption %></td>
-        <td><%= photo.location %></td>
-        <td><%= photo.get_username %></td>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-        <td><%= link_to 'Delete', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td> <div id="comments_wrapper">
-          <% @photo = photo %>
+<div id="post-container">
+
+
+
+  <div id="img-container">
+    <%= link_to (image_tag photo.image.url(:medium)), photo_path(photo), id: "img" %>
+    <div id="img-info">
+      <div id="user-info">
+        <%= photo.get_username %>
+      </div>
+      <div id="img-caption">
+        <%= photo.caption %>
+      </div>
+    </div>
+    <div id="img-actions">
+      <%= link_to 'Edit', edit_photo_path(photo) %>
+      <%= link_to 'Delete', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+
+  </div>
+
+  <div id="img-location">
+    <%= photo.location %>
+  </div>
+
+  <div id="likes-comments-container">
+    <% @photo = photo %>
+    <%= render :partial => 'comments/form' %>
+
+    <div id="comments-wrapper">
+      <% photo.comments.each do |comment|%>
+        <strong> <%= comment.get_username %></strong> <%= comment.content %> <br>
+      <% end %>
+    </div>
+
+        <div id="likes-wrapper">
           <%= render :partial => 'likes/new' %>
           Likes: <%= photo.likes.count %>
-          <%= render :partial => 'comments/form' %>
-          <%= link_to 'Comment', new_photo_comment_path(photo) %>
-            <% photo.comments.each do |comment|%>
-            <p> <%= comment.content %> <p>
-            <p> <%= comment.get_username %> <p>
-              <% end %>
+        </div>
+      </div>
+    </div>
 
-        </div></td>
-      </tr>
     <% end %>
     <% else %>
-      <h1>No photos yet</h1>
+    <h1>No photos yet</h1>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'Post a photo', new_photo_path %>
+    <br>

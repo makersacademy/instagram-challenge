@@ -9,12 +9,11 @@ feature 'commenting' do
 
   scenario "has a button to create a comment" do
     visit '/photos'
-    expect(page).to have_link('Comment')
+    expect(page).to have_button('Post comment')
   end
 
   scenario 'allows users to leave a comment on a photo' do
      visit '/photos'
-     click_link 'Comment'
      fill_in "comment_content", with: "Nice pic!"
      click_button 'Post comment'
      expect(current_path).to eq '/photos'
