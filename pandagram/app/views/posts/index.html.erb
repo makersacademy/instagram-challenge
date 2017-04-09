@@ -4,6 +4,12 @@
     <div class='post'>
     <p><%= post.created_at.strftime("Posted on %m/%d/%Y") %> | <%= post.description %> <span class='right'><%= link_to "Edit", edit_post_path(post) %></span></p>
       <img src='https://unsplash.it/500/500' />
+      <%= link_to "Leave a comment", new_post_comment_path(post) %>
+      <ul>
+        <% post.comments.each do |comment| %>
+        <li><%= comment.user_comment %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 <% else %>
