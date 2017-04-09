@@ -8,6 +8,13 @@ Rails.application.routes.draw do
   # get 'pictures' => 'pictures#index'
   resources :pictures
 
+  resources :pictures do
+    resources :comments
+  end
+
+  # link_to 'Comment', new_picture_comment_path(@comment)
+
+
   root to: "pictures#index"
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -24,14 +24,14 @@ feature 'pictures' do
       fill_in('Password', with: 'testtest')
       fill_in('Password confirmation', with: 'testtest')
       click_button('Sign up')
-      # @pictures = Picture.create(image: File.new('spec/fixtures/image.jpeg'), description: 'London')
+      @pictures = Picture.create(image: File.new('spec/fixtures/image.jpeg'), description: 'London')
 
       #  Picture.create(description: 'London')
 
       # @pictures = Picture.all
       # p @pictures.image = File.new('spec/fixtures/image.jpeg')
         # p @pictures.description
-      # p @pictures.image
+      #  p @pictures.image
       # p @image = { :image => File.open(File.join(Rails.root, 'spec', 'fixtures', 'image.jpeg')) }
     end
 
@@ -39,10 +39,8 @@ feature 'pictures' do
 
     # scenario 'displays image' do
     #   visit '/pictures'
-    #   p @pictures.image_file_name
     #   # Picture.create :image => File.open(File.join(Rails.root, 'spec', 'fixtures', 'image.jpeg'))
-    #   expect().to validate_attachment_presence :@pictures.image
-    #   #  it { should have_attached_file(:image) }
+    #   expect(page).to have_css("img[src*='imagename.jpg']")
     # end
 
     scenario 'display picture description' do

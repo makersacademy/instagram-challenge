@@ -1,28 +1,34 @@
+<html class='page'>
+  <head>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+  </head>
+  <body>
+
+
 <% if @pictures.empty? %>
   No pictures yet
   <a href='pictures/new'>Add a picture</a>
-
-  <!-- <p id="notice"><%= notice %></p> -->
 <% else %>
+<div class="big_div">
+
   <h1>Pictures</h1>
   <a href='pictures/new'>Add a picture</a>
 
   <table>
       <thead>
         <tr>
-          <th>Description</th>
           <th colspan="3"></th>
         </tr>
       </thead>
 
-
-      <tbody>
         <% @pictures.each do |pic| %>
-          <tr>
-            <td><%=image_tag pic.image(:medium) %></td>
-            <td><%= pic.description %></td>
-          </tr>
+          <li><b class="title"><%= link_to pic.description, picture_path(pic)%></li>
+          <li><b class='title'><%= link_to "Edit", edit_picture_path(pic)%></b></li>
+
+          <li><img class="property_image" <%= image_tag pic.image(:medium) %>></li>
         <% end %>
-      </tbody>
+      </div>
+    </body>
   </table>
 <% end %>

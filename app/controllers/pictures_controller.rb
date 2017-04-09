@@ -1,4 +1,5 @@
 class PicturesController < ApplicationController
+  # before_action :set_picture, only: [:show, :edit, :update, :destroy]
   def index
     @pictures = Picture.all
   end
@@ -7,6 +8,22 @@ class PicturesController < ApplicationController
     # @picture = Picture.new
     @picture = current_user.pictures.build
     # p current_user.id
+  end
+
+  def show
+    @picture = Picture.find(params[:id])
+  end
+
+  def edit
+    @picture = Picture.find(params[:id])
+    @picture.update(picture_params)
+    redirect_to '/pictures'
+  end
+
+  def update
+    # @picture = Picture.find(params[:id])
+    # @picture.update(picture_params)
+    # redirect_to '/pictures'
   end
 
   def create
@@ -36,11 +53,15 @@ class PicturesController < ApplicationController
 
   # can use this to only permit certain parameters
 
+  # def set_picture
+  #   @picture = Picture.find(params[:id])
+  # end
+
   def picture_params
     params.require(:picture).permit(:description, :image)
   end
 
-  # def tag_params
-  #   params.require(:tag).permit(:name)
+  # def edit_params
+  #   params.permit(:picture)
   # end
 end
