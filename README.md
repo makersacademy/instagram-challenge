@@ -4,10 +4,6 @@
 
 Build Instagram: Simple huh!
 
-Bonus if you can write your own set of sensible user stories!
-
-## My User Stories
-
 ## MVP
 
 ```
