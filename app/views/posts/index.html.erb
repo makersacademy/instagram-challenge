@@ -1,9 +1,14 @@
-<% if Post.all.any? %>
- <% Post.all.each do |p| %>
-  <p><%=p.comment %></p>
+<h1>Instagram feed</h1>
+<% if @posts.any? %>
+ <% @posts.each do |p| %>
+ <ul>
+   <li><%= image_tag p.image.url(:medium) %><br />
+   <%= p.comment %></br>
+   <%= p.created_at.strftime("Posted on %m/%d/%y at %I:%M%p") %></li>
+ </ul>
  <% end %>
 <% else %>
   <h1>No posts yet</h1>
 <% end %>
 
-<a href='#'>Add a post</a>
+<a href='/posts/new'>Add a post</a>
