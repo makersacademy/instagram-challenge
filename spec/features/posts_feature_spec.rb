@@ -4,22 +4,20 @@ feature 'Posts' do
     before(:each) do
       visit '/'
       user_sign_up
+      visit '/'
     end
 
     scenario 'Users can post pictures to Instagram' do
-      visit '/'
       click_link 'New Post'
       attach_file 'post_pics', "spec/asset_specs/photos/photo.jpg"
-      fill_in 'post_picture', with: 'http://photodoto.com/wp-content/uploads/2014/09/1-instagram-tips-for-photography-business.jpg'
       click_button 'Create Post'
       expect(page).to have_content 'Post was successfully created.'
       expect(page).to have_selector("img")
     end
 
     scenario 'Users can post captions with their pictures to Instagram' do
-      visit '/'
       click_link 'New Post'
-      fill_in 'post_picture', with: 'http://photodoto.com/wp-content/uploads/2014/09/1-instagram-tips-for-photography-business.jpg'
+      attach_file 'post_pics', "spec/asset_specs/photos/photo.jpg"
       fill_in 'post_caption', with: 'A lovely photo from my holiday'
       click_button 'Create Post'
       expect(page).to have_content 'Post was successfully created.'
@@ -27,7 +25,6 @@ feature 'Posts' do
     end
 
     scenario 'Username is shown with a user picture' do
-      visit '/'
       create_new_post
       visit '/'
       expect(page).to have_content "test1"
@@ -36,7 +33,6 @@ feature 'Posts' do
 
   context 'Only Users can make changes to their posts' do
     scenario 'Users can only edit and delete their own pictures' do
-      visit '/'
       user_sign_up
       create_new_post
       visit '/'

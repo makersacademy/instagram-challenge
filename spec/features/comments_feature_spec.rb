@@ -5,23 +5,20 @@ feature 'Comments' do
       visit '/'
       user_sign_up
       create_new_post
+      visit '/'
     end
 
     scenario 'Users can leave comments on any post' do
-      visit '/'
       click_link 'Comment'
       fill_in 'comment_comment', with: 'Love this photo'
       click_button 'Create Comment'
-      visit '/'
       expect(page).to have_content 'Love this photo'
     end
 
     scenario 'Usernames are shown with a user comment' do
-      visit '/'
       click_link 'Comment'
       fill_in 'comment_comment', with: 'Love this photo'
       click_button 'Create Comment'
-      visit '/'
       click_link 'Sign Out'
       second_user_sign_up
       visit '/'
@@ -30,11 +27,9 @@ feature 'Comments' do
     end
 
     scenario 'Usernames on comments are links to profile pages' do
-      visit '/'
       click_link 'Comment'
       fill_in 'comment_comment', with: 'Love this photo'
       click_button 'Create Comment'
-      visit '/'
       within(".comment") do
         click_link("test1")
       end
