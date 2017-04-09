@@ -30,7 +30,7 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.create(photo_params)
+    @photo = Photo.new(photo_params)
     @photo.user_id = current_user.id
     @photo.save
     redirect_to '/photos'
