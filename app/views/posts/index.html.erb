@@ -11,23 +11,25 @@
       <% end %>
         <span class="likes_count"><%="♥ "%><%=post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
 
-
         <% if current_user %>
           <%= link_to "Comment", new_post_comment_path(post) %>
         <% end %>
-
 
         <% if current_user && current_user.id == post.user_id%>
           <%= link_to "Edit", edit_post_path(post) %>
           <%= link_to "Delete", post_path(post), method: :delete %>
         <% end %>
 
-
-        <%post.comments.each do |comment|%>
-            <ul>
+        <ul class="commentlist">
+          <%post.comments.each do |comment|%>
               <li><%= comment.opinions %></li>
-            </ul>
-        <%end%>
+            <%end%>
+        </ul>
+
+        <% if current_user %>
+          <textarea col="50", rows="1", class="opinion", placeholder="Add comment here"></textarea>
+          <%= link_to "💬", post_comments_path(post), class: 'postcomments'%>
+        <% end %>
 
       </li>
     </ul>
