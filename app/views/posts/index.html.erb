@@ -1,17 +1,13 @@
-<% if user_signed_in? %>
-<li>
-  Welcome <%= @user.username %> - <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
-</li>
-<% else %>
-<li>
-  <%= link_to 'Sign Up', new_user_registration_path  %> / <%= link_to 'Sign In', new_user_session_path  %>
-</li>
-<% end %>
 <div id="content">
   <div class="post">
     <% @posts.each do |post| %>
     <b><a href="users/<%=post.user_id%>"><%= (User.find(post.user_id)).username %></a></b><p>
     <a href="posts/<%= post.id%>"><img id="picture_and_caption" src="<%= post.pics.url %>"></a><p>
+      <% if (@likes.where(post_id: post.id, user_id: current_user).blank?) %>
+        <%= link_to image_tag("https://image.flaticon.com/icons/svg/149/149217.svg", :height => '30px'), new_like_path(post_id: post.id, user_id: current_user) %>
+      <% else %>
+       <%= image_tag("https://image.flaticon.com/icons/svg/148/148836.svg", :height => '30px') %>
+      <%  end %>
 
     <blockquote>
       <%= post.caption %>

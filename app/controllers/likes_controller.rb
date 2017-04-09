@@ -9,7 +9,8 @@ class LikesController < ApplicationController
       if @like.save
         redirect_to root_url
       else
-        p 'something else'
+        format.html { render :new }
+        format.json { render json: @like.errors, status: :unprocessable_entity }
     end
   end
 

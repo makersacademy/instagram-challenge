@@ -14,9 +14,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="user_welcome">
+    <% if user_signed_in? %>
+      user: <%= current_user.username %> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path %>
+      <%= link_to "Sign Up", new_user_registration_path %>
+      <% end %>
+    </div>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <div id="insta"><img src="https://image.flaticon.com/icons/svg/75/75665.svg" width="100px">Instagram</div><p>
+
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   <%= yield %>
 
 </body>

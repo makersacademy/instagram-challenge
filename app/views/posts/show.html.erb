@@ -1,16 +1,18 @@
 <%= link_to 'Back', posts_path %>
 
 <div id="content">
-  <b><%= (User.find(@post.user_id)).username %></b><p>
-    <img id="picture_and_caption" src="<%= @post.pics.url %>"><p>
-
+  <b><a href="../users/<%=@post.user_id%>"><%= (User.find(@post.user_id)).username %></a></b><p>
+      <img id="picture_and_caption" src="<%= @post.pics.url %>"><p>
 
       <blockquote>
         <%= @post.caption %>
       </blockquote><p>
+      <div class='likes'>
+         <%= @post.likes.count %> Likes
+      </div>
 
       <% @post.comments.each do |comment| %>
-      <%= (User.find(comment.user_id)).username %>: <%= comment.comment %><br>
+      <a href="../users/<%=comment.user_id%>"><%= (User.find(comment.user_id)).username %></a>: <%= comment.comment %><br>
       <% end %>
 
       <%= link_to 'Comment', new_comment_path(post_id: @post.id) %>

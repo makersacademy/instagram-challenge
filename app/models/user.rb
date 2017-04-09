@@ -2,10 +2,20 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :comments
   has_many :likes
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
+
+  validates :username,
+            :presence => true,
+            :uniqueness => {
+            :case_sensitive => false
+              }
+
+  validate :validate_username
+
+  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
+
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -20,15 +30,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  validates :username,
-  :presence => true,
-  :uniqueness => {
-    :case_sensitive => false
-  }
-
-  validate :validate_username
-
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
   def validate_username
     if User.where(email: username).exists?
