@@ -1,7 +1,19 @@
-Rails.application.routes.draw do
 
-  devise_for :users
-  resources :photos
+  Rails.application.routes.draw do
+
+    root "photos#index"
+
+    devise_for :users
+
+    # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    #avoids deep nesting as it builds routes with the minimal amounnt of information, balances between descriptive routes and deep nesting
+    resources :photos, shallow: true do
+      resources :comments
+    end
+
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -56,4 +68,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
