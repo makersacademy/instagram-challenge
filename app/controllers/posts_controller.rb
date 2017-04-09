@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @likes = Like.all
   end
 
   def new

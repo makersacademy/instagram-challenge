@@ -3,7 +3,8 @@
 <head>
   <title>InstagramChallenge</title>
   <!-- Google Font :) -->
-<link href="https://fonts.googleapis.com/css?family=Varela" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=ABeeZee" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Damion" rel="stylesheet">
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -14,20 +15,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div id="user_welcome">
-    <% if user_signed_in? %>
-      user: <%= current_user.username %> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign In", new_user_session_path %>
-      <%= link_to "Sign Up", new_user_registration_path %>
-      <% end %>
-    </div>
+  <div id="header">
+    <div id="user_welcome">
+      <% if user_signed_in? %>
+        signed in as <%= current_user.username %> - <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path %> -
+        <%= link_to "Sign Up", new_user_registration_path %>
+        <% end %>
+      </div>
+    <div id="insta"><img src="https://image.flaticon.com/icons/svg/75/75665.svg" width="50px"> <%=link_to 'Instagram', root_url %></div><p>
+  </div>
 
-  <div id="insta"><img src="https://image.flaticon.com/icons/svg/75/75665.svg" width="100px">Instagram</div><p>
-
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
   <%= yield %>
 
 </body>

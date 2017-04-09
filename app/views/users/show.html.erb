@@ -1,7 +1,17 @@
-<h1><%= (@user.username).capitalize %>'s Profile</h1>
-<center>
-<% @user_posts.each do |post| %>
-<a href="posts/<%= post.id%>"><img src="<%= post.picture %>"></a><p>
-<blockquote><%= post.caption %></blockquote><p>
+<div id="content">
+  <h1><%= (@user.username).capitalize %>'s Profile</h1>
+  <div class="post">
+    <% @user_posts.each do |post| %>
+<img id="picture_and_caption" src="<%= post.pics.url %>"><p>
+  <div id='likes'>
+    <% if (@likes.where(post_id: post.id, user_id: current_user).blank?) %>
+      <%= link_to image_tag("https://image.flaticon.com/icons/svg/149/149217.svg", height: '30px', alt: 'new', class: 'blank_like'), new_like_path(post_id: post.id, user_id: current_user) %>
+    <% else %>
+      <%= image_tag("https://image.flaticon.com/icons/svg/148/148836.svg", :height => '30px', class: 'red_like') %>
+    <%  end %>
+    <%= post.likes.count %> Likes
+ </div>
+  <blockquote><%= post.caption %></blockquote><p>
+  </div>
 <% end %>
-</center>
+</div>
