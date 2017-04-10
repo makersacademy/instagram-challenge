@@ -23,11 +23,11 @@ Means this feature is an option extra if I had time.
 * Only signed in users can upload or delete images
 * Only signed in users can view images
 * Each user can only delete their own images
-..- Each user can only edit their own images
+- Each user can only edit their own images
 * Users can comment on images
-..- A user can edit or delete their own comment
+- A user can edit or delete their own comment
 * Users can like images
-..- A user can unlike an image they have liked
+- A user can unlike an image they have liked
 * Users can only like an image once
 * Users can make multiple comments
 
