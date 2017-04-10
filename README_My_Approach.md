@@ -18,13 +18,9 @@ I want to be able to login
 
 ```
 
-Things to be updated soon:
-
 * Ruby version used is 2.2.3 and Rails version is 4.2.8
 
 * System dependencies - rspec-rails, capybara, shoulda, devise, database_cleaner, poltergeist, paperclip
-
-* Configuration
 
 * Database creation - ```bin/rails db:create```
 
@@ -33,13 +29,9 @@ Things to be updated soon:
 * How to run the test suite - ``` rspec```
 
 ### instructions on running the app and tests
-- ```
-git clone https://github.com/AAMani5/instagram-challenge.git
-```
+- ```git clone https://github.com/AAMani5/instagram-challenge.git```
 
-- ```
-cd instagram-challenge
-```
+- ```cd instagram-challenge```
 
 - to run tests ``` rspec ```
 
