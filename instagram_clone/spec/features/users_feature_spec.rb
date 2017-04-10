@@ -28,5 +28,12 @@ feature "Users" do
       visit '/'
       expect(page).not_to have_content("Add picture")
     end
+    scenario "only allow owner of image to delete image" do
+      sign_up
+      add_image
+      click_link 'Sign out'
+      sign_up("test2@test.com", "password1")
+      expect(page).not_to have_content("Delete image")
+    end
   end
 end

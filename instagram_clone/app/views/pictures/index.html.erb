@@ -1,9 +1,13 @@
 <% if user_signed_in? %>
-  <%if @pictures.any? %>
+  <% if @pictures.any? %>
   <% @pictures.each do |picture| %>
-  <ul>
-    <li><%= link_to image_tag(picture.image.thumb('64x64!').url), picture_path(picture) %></li>
-  </ul>
+    <p><%= picture.user.email.split('@').first %></p>
+    <%= link_to image_tag(picture.image.thumb('300x300#').url), new_picture_comment_path(picture), title: picture.image_name %>
+    <p><span data-like-count><%= picture.likes.count %></span> <%= link_to "Like", picture_likes_path(picture), remote: true, method: :post  %>
+    <%= link_to "Comment", new_picture_comment_path(picture) %></p>
+    <% if picture.user == current_user %>
+      <p><%= link_to "Delete picture", picture_path(picture), method: :delete %></p>
+    <% end %>
   <% end %>
   <% else %>
     <h3>There are no images to display</h3>

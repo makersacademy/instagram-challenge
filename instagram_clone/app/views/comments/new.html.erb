@@ -1,0 +1,14 @@
+<%= image_tag @picture.image.thumb('800x800').url if @picture.image_stored? %>
+
+<% @picture.comments.each do |comment| %>
+  <p><%= comment.user.email.split('@').first %>
+    <br/>
+    <%= comment.text %></p>
+    <% end %>
+
+<%=form_for [@picture, @comment] do |f| %>
+  <%= f.text_area :text %>
+  <p><%= f.submit %></p>
+<% end %>
+
+<a href="/">Back</a>
