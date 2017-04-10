@@ -1,23 +1,37 @@
 Instagram Challenge
 ===================
 
-Instructions
+### Created an Instagram Clone in 2 two days, as part of the Makers Academy Weekend Challenge 
+
+# Instructions
+```
 -------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Clone this repository
+* Change directory into the folder 'instagram'
+* Run bundle install to install all gems and dependencies
+* Run bin/rake db:create to create the databases needed
+* Run bin/rake db:migrate to run database migrations, migrate all changes
+* Run bin/rails s to launch the app on the server and type in http://localhost:3000
+```
 
-Task
------
+## Below are screenshots displaying the functionality of the app.
 
-Build Instagram: Simple huh!
+``` Here is the front page of the website ```
 
-Bonus if you can write your own set of sensible user stories!
+![alt tag](https://github.com/JohnChangUK/instagram-challenge/blob/master/Front%20Page.png)
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+``` When you lick on a picture, this is what is displayed ```
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+![alt tag](https://github.com/JohnChangUK/instagram-challenge/blob/master/Picture.png)
 
-Bonus if you can add filters!
+``` When editing settings ```
+
+![alt tag](https://github.com/JohnChangUK/instagram-challenge/blob/master/Edit%20User.png)
+
+``` Posting an Image ```
+
+![alt tag](https://github.com/JohnChangUK/instagram-challenge/blob/master/Post%20Image.png)
+
+``` Once signed out ```
+
+![alt tag](https://github.com/JohnChangUK/instagram-challenge/blob/master/Sign%20Out.png)
