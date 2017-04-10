@@ -14,7 +14,6 @@ class PicturesController < ApplicationController
     @picture.user_id = current_user.id
     @picture.save
     flash[:notice] = "Image uploaded successfully."
-    p @picture.id
     redirect_to pictures_path
   end
 
