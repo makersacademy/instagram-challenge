@@ -6,7 +6,8 @@ feature 'commenting', focus: true do
   scenario 'allows users to leave a comment using a form' do
      visit '/posts'
      click_link 'Comment'
-     fill_in 'Comment', with: 'so so'
+     expect(current_path).to eq '/posts/1/comments/new'
+     fill_in 'comment_thoughts', with: 'so so'
      click_button 'Leave Comment'
 
      expect(current_path).to eq '/posts/1'
