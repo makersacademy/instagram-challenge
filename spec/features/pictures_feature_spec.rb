@@ -16,7 +16,7 @@ feature 'pictures' do
       attach_file('picture[image]', File.absolute_path('./spec/test_images/cat.jpg'))
       click_button 'Create Picture'
       expect(page).to have_css("img[@alt=Cat]")
-      expect(page).to have_content("Newark Rd, Lincoln LN6 9JP, UK")
+      expect(page).to have_content("Lincolnshire, GB")
     end
   end
 
