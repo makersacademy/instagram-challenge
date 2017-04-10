@@ -35,7 +35,7 @@ I want to be able to login
 
 - to run tests ``` rspec ```
 
-- to visit website ``` bin/rails s ``` or type ``` http://localhost:3000/ ``` on Google Chrome
+- to visit website ``` bin/rails s ``` and type ``` http://localhost:3000/ ``` on Google Chrome
 
 ### Further user stores to work on:
 
