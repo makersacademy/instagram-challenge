@@ -14,10 +14,11 @@
 
   <tbody>
     <% @images.each do |image| %>
-      <tr>
-        <td><%= image.image %></td>
+      <tr><% if @image %>
+        <td><%= image_tag @image.photo.url(:standard) %></td>
         <td><%= image.description %></td>
         <td><%= image.user.email %></td>
+        <%end%>
         <td><%= link_to 'Show', image %></td>
         <% if image.user == current_user %>
         <td><%= link_to 'Edit', edit_image_path(image) %></td>
