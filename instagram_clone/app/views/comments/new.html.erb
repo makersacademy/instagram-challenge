@@ -1,9 +1,8 @@
-<%= image_tag @picture.image.thumb('800x800').url if @picture.image_stored? %>
+<%= image_tag @picture.image.thumb('600x600').url if @picture.image_stored? %>
 
 <% @picture.comments.each do |comment| %>
-  <p><%= comment.user.email.split('@').first %>
-    <br/>
-    <%= comment.text %></p>
+  <p id="username-comment"><%= comment.user.email.split('@').first %></p>
+    <p id="comment-text"><%= comment.text %></p>
     <% end %>
 
 <%=form_for [@picture, @comment] do |f| %>
