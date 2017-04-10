@@ -16,25 +16,39 @@ As a User,
 So that I can use services provided by instagram-challenge
 I want to be able to login
 
-As a User,
-So that I can amend the look of my pictures
-I want to be able to use filters 
 ```
 
 Things to be updated soon:
 
-* Ruby version
+* Ruby version used is 2.2.3 and Rails version is 4.2.8
 
-* System dependencies
+* System dependencies - rspec-rails, capybara, shoulda, devise, database_cleaner, poltergeist, paperclip
 
 * Configuration
 
-* Database creation
+* Database creation - ```bin/rails db:create```
 
-* Database initialization
+* Database migration - ```bin/rails db:migrate```
 
-* How to run the test suite
+* How to run the test suite - ``` rspec```
 
-* Services (job queues, cache servers, search engines, etc.)
+### instructions on running the app and tests
+- ```
+git clone https://github.com/AAMani5/instagram-challenge.git
+```
 
-* Deployment instructions
+- ```
+cd instagram-challenge
+```
+
+- to run tests ``` rspec ```
+
+- to visit website ``` bin/rails s ``` or type ``` http://localhost:3000/ ``` on Google Chrome
+
+### Further user stores to work on:
+
+```
+As a User,
+So that I can amend the look of my pictures
+I want to be able to use filters
+```
