@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>InstagramClone</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <% if user_signed_in? %>
-    <%= "Welcome #{current_user.email.split('@').first}" %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <div id="welcome"><%= "Welcome #{current_user.email.split('@').first}" %></div>
+    <div id="sign-out"<%= link_to "Sign out", destroy_user_session_path, method: :delete %></div>
   <% else %>
-    <%= link_to "Sign in", new_user_session_path %>
-    <%= link_to "Sign up", new_user_registration_path %>
+    <div id="sign-in"><%= link_to "Sign in", new_user_session_path %></div>
+    <div id="sign-up"><%= link_to "Sign up", new_user_registration_path %></div>
   <% end %>
 
   <p class="notice"><%= notice %></p>
