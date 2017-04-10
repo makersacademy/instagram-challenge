@@ -11,10 +11,10 @@ To run (I think, no time to test):
 * bin/rails s
 * go to localhost:3000 in your browser
 
-This is the list I had for tests:
+##This is the list I had for tests:
 *- Means this feature is an option extra if I had time.
 
-## Feature tests
+### Feature tests
 
 Users can sign up
 Users can sign in
@@ -30,7 +30,7 @@ Users can like images
 Users can only like an image once
 Users can make multiple comments
 
-## Unit Tests
+### Unit Tests
 Users can only upload images (restrict format?)
 Users have many pictures
 Pictures belong to users
