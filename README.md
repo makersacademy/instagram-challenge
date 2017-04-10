@@ -7,6 +7,7 @@ Instagram Challenge
 ```
 -------
 * Clone this repository
+* Change directory into 'Instagram'
 * Run bundle install to install all gems and dependencies
 * Run bin/rake db:create to create the databases needed
 * Run bin/rake db:migrate to run database migrations, migrate all changes
