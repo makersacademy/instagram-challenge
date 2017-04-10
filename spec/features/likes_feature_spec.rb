@@ -4,7 +4,7 @@ feature 'liking a post' do
 
   context 'visitor to the website' do
     before do
-      @post = Post.create(image:File.new('/Users/ashwinimani/Pictures/indian_food.jpg'), description: 'delicious')
+      @post = Post.create(image:File.new('spec/helpers/indian_food.jpg'), description: 'delicious')
     end
 
     scenario 'will not be able to like posts' do

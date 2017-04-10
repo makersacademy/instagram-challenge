@@ -22,7 +22,7 @@ feature 'posts' do
 
     context 'user not signed in' do
       before do
-        @post = Post.create(image:File.new('/Users/ashwinimani/Pictures/indian_food.jpg'), description: 'delicious')
+        @post = Post.create(image:File.new('spec/helpers/indian_food.jpg'), description: 'delicious')
       end
       scenario 'link not available' do
         visit '/posts'
@@ -34,7 +34,7 @@ feature 'posts' do
     context 'user signed but not creator' do
       before do
         user_sign_up
-        @post = Post.create(image:File.new('/Users/ashwinimani/Pictures/indian_food.jpg'), description: 'delicious')
+        @post = Post.create(image:File.new('spec/helpers/indian_food.jpg'), description: 'delicious')
       end
       scenario 'link not available' do
         visit '/posts'
@@ -52,7 +52,7 @@ feature 'posts' do
       scenario 'let creator edit a post' do
         visit '/posts'
         click_link 'Edit'
-        attach_file('post_image', File.absolute_path('/Users/ashwinimani/Pictures/indian_food.jpg'))
+        attach_file('post_image', 'spec/helpers/indian_food.jpg')
         fill_in 'Description', with: 'Delicious home made indian food'
         click_button 'Update Post'
         expect(page).to have_content 'Delicious home made indian food'
@@ -67,7 +67,7 @@ feature 'posts' do
 
     context 'user not signed in' do
       before do
-        @post = Post.create(image:File.new('/Users/ashwinimani/Pictures/indian_food.jpg'), description: 'delicious')
+        @post = Post.create(image:File.new('spec/helpers/indian_food.jpg'), description: 'delicious')
       end
       scenario 'link not available' do
         visit '/posts'
@@ -79,7 +79,7 @@ feature 'posts' do
     context 'user signed in but not the creator' do
       before do
         user_sign_up
-        @post = Post.create(image:File.new('/Users/ashwinimani/Pictures/indian_food.jpg'), description: 'delicious')
+        @post = Post.create(image:File.new('spec/helpers/indian_food.jpg'), description: 'delicious')
       end
       scenario 'link not available' do
         visit '/posts'
