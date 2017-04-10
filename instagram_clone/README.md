@@ -13,34 +13,34 @@ To run (I think, no time to test):
 
 ## This is the list I had for tests:
 
-*- Means this feature is an option extra if I had time.
+Means this feature is an option extra if I had time.
 
 ### Feature tests
 
-Users can sign up
-Users can sign in
-Users can sign out
-Only signed in users can upload or delete images
-Only signed in users can view images
-Each user can only delete their own images
-*Each user can only edit their own images
-Users can comment on images
-*A user can edit or delete their own comment
-Users can like images
-*A user can unlike an image they have liked
-Users can only like an image once
-Users can make multiple comments
+* Users can sign up
+* Users can sign in
+* Users can sign out
+* Only signed in users can upload or delete images
+* Only signed in users can view images
+* Each user can only delete their own images
+..* Each user can only edit their own images
+* Users can comment on images
+..* A user can edit or delete their own comment
+* Users can like images
+..* A user can unlike an image they have liked
+* Users can only like an image once
+* Users can make multiple comments
 
 ### Unit Tests
-Users can only upload images (restrict format?)
-Users have many pictures
-Pictures belong to users
-Pictures have many comments
-Comments have one picture
-Pictures have many likes
-Likes have one picture
-Comments belong to users
-Likes belong to users
+* Users can only upload images (restrict format?)
+* Users have many pictures
+* Pictures belong to users
+* Pictures have many comments
+* Comments have one picture
+* Pictures have many likes
+* Likes have one picture
+* Comments belong to users
+* Likes belong to users
 
 I used Ruby 2.3.3 and Rails 4.2.6 with a postgresql database and RSpec and Capybara for testing.
 
