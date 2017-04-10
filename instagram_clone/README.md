@@ -11,7 +11,8 @@ To run (I think, no time to test):
 * bin/rails s
 * go to localhost:3000 in your browser
 
-##This is the list I had for tests:
+## This is the list I had for tests:
+
 *- Means this feature is an option extra if I had time.
 
 ### Feature tests
