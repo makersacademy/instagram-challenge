@@ -24,7 +24,11 @@ gem 'coffee-rails', '~> 4.2'
 gem "paperclip", "~> 5.0.0"
 
 gem 'devise'
-
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'geocoder'
+gem "mini_magick"
+gem 'acts_as_votable', '~> 0.10.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

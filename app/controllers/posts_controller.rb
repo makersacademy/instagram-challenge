@@ -1,3 +1,5 @@
+require "mini_magick"
+
 class PostsController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
@@ -11,9 +13,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    p params
     @post = current_user.posts.build(post_params)
-    # @post.user_id = current_user.id
     if @post.save
       redirect_to posts_path
     else
@@ -38,6 +38,16 @@ class PostsController < ApplicationController
     else
       flash[:notice] = "You don't have permission to edit this post."
       render 'edit'
+    end
+  end
+
+  def like
+    @post = Post.find(params[:id])
+    if @post.liked_by current_user
+          respond_to do |format|
+            format.html { redirect_to :back }
+            format.js
+          end
     end
   end
 

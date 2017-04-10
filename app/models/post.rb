@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  acts_as_votable
   validates :user_id, presence: true
 
   belongs_to :user
@@ -12,7 +13,7 @@ class Post < ApplicationRecord
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def getLocation
-    
+
   end
 
 end

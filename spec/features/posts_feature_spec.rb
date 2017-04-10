@@ -13,19 +13,21 @@ feature 'posts' do
   context 'viewing posts' do
 
       scenario 'lets a user view a post' do
-        post = Post.create(caption: 'Driving along the Amalfi coast', image: "https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/7569/SITours/private-tour-amalfi-coast-from-sorrento-in-sorrento-288314.jpg")
+        signup
+        add_post
         visit '/posts'
-        find('img').click
-        expect(page).to have_content 'Driving along the Amalfi coast'
+        find(".img-responsive").click
+        expect(page).to have_content 'Some caption for the image goes here.'
       end
 
   end
 
   context 'posts have been added' do
     scenario 'display posts' do
-      Post.create(caption: 'Driving along the Amalfi coast', image: "https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/7569/SITours/private-tour-amalfi-coast-from-sorrento-in-sorrento-288314.jpg")
+      signup
+      add_post
       visit '/posts'
-      expect(page).to have_content('Driving along the Amalfi coast')
+      expect(page).to have_content('Some caption for the image goes here.')
       expect(page).not_to have_content('No posts yet')
     end
   end
@@ -33,21 +35,22 @@ feature 'posts' do
   context 'creating a post' do
 
     scenario 'prompts user to fill out a form, then displays the new restaurant' do
-      visit '/posts'
+      signup
       click_link 'Add Post'
-      fill_in 'Caption', with: 'Beautiful fabrics in India'
+      fill_in 'post_caption', with: 'Beautiful fabrics in India'
       page.attach_file('post[image]', Rails.root + 'spec/Fixtures/mumbaimarket.jpg')
-      click_button 'Create Post'
+      click_button 'submit'
       expect(page).to have_content 'Beautiful fabrics in India'
       expect(current_path).to eq '/posts'
     end
 
     scenario 'does not let you submit a post without an image' do
       visit '/posts'
+      signup
       click_link 'Add Post'
-      fill_in 'Caption', with: 'Beautiful fabrics in India'
-      page.attach_file('post[image]', Rails.root + 'spec/Fixtures/mumbaimarket.pdf')
-      click_button 'Create Post'
+      fill_in 'post_caption', with: 'Beautiful fabrics in India'
+      # page.attach_file('post[image]', Rails.root + 'spec/Fixtures/mumbaimarket.pdf')
+      click_button 'submit'
       expect(page).not_to have_content 'Beautiful fabrics in India'
       expect(page).to have_content 'error'
     end
@@ -57,13 +60,13 @@ feature 'posts' do
   context 'editing restaurants' do
 
     scenario 'let a user edit a post' do
-      Post.create(caption: 'Driving along the Amalfi coast', image: "https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/7569/SITours/private-tour-amalfi-coast-from-sorrento-in-sorrento-288314.jpg")
-      visit '/posts'
+      signup
+      add_post
       click_link 'Edit'
-      fill_in 'Caption', with: 'Positano by night'
+      fill_in 'post_caption', with: 'Positano by night'
       click_button 'Update'
       expect(page).to have_content 'Positano by night'
-      expect(page).not_to have_content 'Driving along the Amalfi coast'
+      expect(page).not_to have_content 'Some caption for the image goes here.'
     end
 
   end
@@ -71,10 +74,10 @@ feature 'posts' do
   context 'deleting restaurants' do
 
     scenario 'removes a post when a user clicks delete' do
-      Post.create(caption: 'Driving along the Amalfi coast', image: "https://cache-graphicslib.viator.com/graphicslib/thumbs674x446/7569/SITours/private-tour-amalfi-coast-from-sorrento-in-sorrento-288314.jpg")
-      visit '/posts'
+      signup
+      add_post
       click_link 'Delete'
-      expect(page).not_to have_content 'Driving along the Amalfi coast'
+      expect(page).not_to have_content 'Some caption for the image goes here.'
       expect(page).to have_content 'Post deleted successfully'
     end
 
