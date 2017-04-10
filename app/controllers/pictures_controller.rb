@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [:index]
   include PicturesHelper
   # GET /pictures
   # GET /pictures.json
@@ -68,6 +69,6 @@ class PicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
-      params.require(:picture).permit(:name, :image, :postDateTime, :latitude, :longitude, :city)
+      params.require(:picture).permit(:description, :image, :postDateTime, :latitude, :longitude, :city)
     end
 end

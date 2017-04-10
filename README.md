@@ -24,6 +24,7 @@ Bonus if you can add filters!
 
 **User Stories**
 ==============
+```
 As a user
 So that I can use the site
 I want to be able to sign up
@@ -59,3 +60,4 @@ I want to be able to see all the pictures I have liked
 As a fancy user
 So that I can make my picture look better than it actually was
 I want to be able to apply filters to my picture
+```

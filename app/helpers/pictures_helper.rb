@@ -6,6 +6,6 @@ module PicturesHelper
       params[:latitude] = @latitude
       params[:longitude] = @longitude
     end
-    Picture.new(params)
+      current_user.pictures.new(params)
   end
 end

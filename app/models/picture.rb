@@ -3,4 +3,11 @@ class Picture < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode
+  belongs_to :user
+  has_many :likes,
+    -> { extending WithUserAssociationExtension },
+    dependent: :destroy
+  has_many :comments,
+    -> { extending WithUserAssociationExtension },
+    dependent: :destroy
 end
