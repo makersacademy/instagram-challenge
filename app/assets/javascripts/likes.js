@@ -5,7 +5,6 @@ var likesHandler = function() {
 
       $.post(this.href, function(response){
         var likesCount = $("#picture_"+response.picture_id+" .likes_count");
-
         likesCount.text(response.new_likes_count);
     });
   });

@@ -12,18 +12,17 @@ feature 'Feature: likes' do
     end
 
 
-    # 
-    # context 'signed in' do
-    #
-    #   scenario 'can click to add a new like, which increments the likes count',  js: true do
-    #     visit pictures_path
-    #     find(:css, '.add-new-like').click
-    #     visit '/'
-    #     within('.likes') do
-    #        expect(page).to have_content('1')
-    #      end
-    #   end
-    # end
+
+    context 'signed in' do
+
+      scenario 'can click to add a new like, which increments the likes count',  js: true do
+        visit pictures_path
+        find(:css, '.add-new-like').click
+        within('.likes') do
+           expect(page).to have_content('1')
+         end
+      end
+    end
 
     context 'not signed in' do
       scenario 'cannot select to add a like' do
