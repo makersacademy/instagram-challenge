@@ -8,14 +8,21 @@ class PostsController < ApplicationController
       @post = current_user.posts.build
     end
 
-    def create
-      @post = current_user.posts.build(post_params)
+  def create
+    @post = current_user.posts.build(post_params)
     if @post.save
       # redirects to the newly created post
       redirect_to @post
     else
       render 'new'
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = 'Post deleted successfully'
+    redirect_to '/posts'
   end
 
   def show

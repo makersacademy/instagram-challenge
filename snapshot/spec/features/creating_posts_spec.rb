@@ -20,6 +20,7 @@ feature 'creating posts' do
     sign_up
     add_post
     expect(page).to have_content('#nationalportraitgallery')
+    # img[src*=''] is the css selector.
     expect(page).to have_css("img[src*='NPG.jpg']")
   end
 
