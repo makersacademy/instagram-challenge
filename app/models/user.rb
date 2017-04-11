@@ -1,7 +1,5 @@
 class User < ApplicationRecord
   has_many :instapics, dependent: :destroy
-  # has_many :likes
-  has_many :liked_instapics, through: :likes, source: :instapic
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
