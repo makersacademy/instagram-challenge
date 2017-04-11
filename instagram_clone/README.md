@@ -6,7 +6,7 @@ Visit this repo to see deployed app: https://github.com/allthatilk/immstagram_he
 
 ## This is the list I had for tests:
 
-*Means this feature is an option extra if I had time.
+*Means this feature is an optional extra if I had time.
 
 ### Feature tests
 
