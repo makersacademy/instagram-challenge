@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
 
+## See the README inside the app folder for info on my progress
+
 Instructions
 -------
 * Challenge time: one weekend
