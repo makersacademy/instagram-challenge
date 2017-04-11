@@ -2,14 +2,7 @@
 
 I started off by loosely going through what user stories I'd want. This turned into a list of feature and unit tests. I didn't do any unit tests in the end due to time constraints as I stupidly deleted all my work by accident (don't code tired) for Saturday and had to do everything in one day.
 
-To run (I think, no time to test):
-* clone this repo
-* cd instragram_clone
-* bundle
-* bin/rake db:create instagram_clone_development
-* bin/rake db:migrate
-* bin/rails s
-* go to localhost:3000 in your browser
+Visit this repo to see deployed app: https://github.com/allthatilk/immstagram_heroku
 
 ## This is the list I had for tests:
 
@@ -48,8 +41,15 @@ I used Dragonfly for the image uploading as it seemed like a very fast and effic
 
 ## Things I would add if I had more time:
 * Image validation
-* Usernames
+* Proper usernames (atm it just uses your email before the @)
 * Unclicking your like
 * Image filters
 * Image editing
-* Pretty styling
+* Have Like button change depending on number of likes to be correctly pluralised
+
+## Things I would change if I had time
+* Use AJAX instead of page refreshes
+* Have a show/hide button instead of password confirmation
+* Tidy up the way the app routes
+* Tidy up the CSS with classes and JQuery
+
