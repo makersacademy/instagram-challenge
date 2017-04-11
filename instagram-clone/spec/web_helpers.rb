@@ -22,3 +22,10 @@ def upload_post
   fill_in('Description', with: 'Beautiful view')
   click_button('Create Post')
 end
+
+def upload_post_without_image
+  visit('/')
+  click_link('Create a post')
+  fill_in('Description', with: 'Beautiful view')
+  click_button('Create Post')
+end

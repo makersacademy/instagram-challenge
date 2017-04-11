@@ -21,8 +21,14 @@ feature 'posts' do
       expect(page).to_not have_content 'There are no posts yet'
       expect(current_path).to eq '/posts'
     end
-  end
 
+
+  scenario 'post cannot be created without an image' do
+    sign_up
+    upload_post_without_image
+    expect(page).to have_content 'You need an image to post'
+    end
+  end
 
 
   context 'deleting posts' do

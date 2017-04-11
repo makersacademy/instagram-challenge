@@ -10,17 +10,20 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to '/posts'
+    if @post.save
+      redirect_to '/posts'
+    else
+      flash[:alert] = 'You need an image to post'
+      render :new
+    end
   end
 
   def destroy
-     @post = Post.find(params[:id])
-     @post.destroy
-     flash[:notice] = 'Post deleted successfully'
-     redirect_to '/posts'
-   end
-
-
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = 'Post deleted successfully'
+    redirect_to '/posts'
+  end
 
   private
 
