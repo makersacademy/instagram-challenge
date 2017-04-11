@@ -21,4 +21,18 @@ feature 'posts' do
     end
   end
 
+
+
+  context 'deleting posts' do
+
+    scenario 'removes a restaurant when a user clicks a delete link' do
+      upload_post
+      visit '/posts'
+      click_link 'Delete'
+      expect(page).not_to have_content 'Beautiful view'
+      expect(page).to have_content 'Post deleted successfully'
+    end
+
+  end
+
 end
