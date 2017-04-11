@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+  <% if @pictures.any? %>
+  <ul id="index-list">
+  <% @pictures.each do |picture| %>
+      <li><p id="username-thumb"><%= picture.user.email.split('@').first %></p>
+      <%= link_to image_tag(picture.image.thumb('300x300#').url), new_picture_comment_path(picture), title: picture.image_name %>
+      <p><span data-like-count><%= picture.likes.count %></span>
+      <span><%= link_to "Like", picture_likes_path(picture), remote: true, method: :post %></span>
+      <span><%= link_to "Comment", new_picture_comment_path(picture) %></span>
+      <% if picture.user == current_user %>
+        <span><%= link_to "Delete picture", picture_path(picture), method: :delete %></span></p>
+      <% end %></li>
+  <% end %>
+  </ul>
+  <% else %>
+    <h3>There are no images to display</h3>
+  <% end %>
+    <p><a id="new-image" href="pictures/new">Add picture</a></p>
+  <% else %>
+    <p>You must be signed in to create images</p>
+  <% end %>
