@@ -10,10 +10,13 @@ feature 'posts' do
     end
   end
 
+
   context 'create posts' do
     scenario 'prompt user to fill out a form, then displays the new post' do
       upload_post
+      expect(page).to have_css 'img'
       expect(page).to have_content 'Beautiful view'
+      expect(page).to_not have_content 'There are no posts yet'
       expect(current_path).to eq '/posts'
     end
   end
