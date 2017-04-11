@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instapics!</title>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if user_signed_in? %>
+      <h3><%= current_user.nickname %></h3>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= button_to "Log in", new_user_session_path, method: :get %>
+      <%= button_to "Join Instapic!", new_user_registration_path, method: :get %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
