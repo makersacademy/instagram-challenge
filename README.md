@@ -14,6 +14,23 @@ Instagram Challenge
 * Run bin/rails s to launch the app on the server and type in http://localhost:3000
 ```
 
+## Technologies Used
+- Ruby on Rails
+- Devise: Used for the User Model
+- Paperclip: Used for handling the images
+- Erb: - Used as the Template Engine
+- Postgresql: Used as the Database
+- Rspec, Capybara: Used for testing
+
+## Prerequisites
+- Rails 4 (Earliest version)
+
+## How to use it on command line
+ - ``` git clone https://github.com/AAMani5/ajab-chat.git ```
+ - ``` cd ajab-chat ```
+ - ``` npm install ```
+ - ``` node app.js ```
+ - ``` visit http://localhost:3000/ ```
 ## Below are screenshots displaying the functionality of the app.
 
 ``` Here is the front page of the website ```
