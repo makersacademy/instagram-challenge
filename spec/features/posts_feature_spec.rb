@@ -32,9 +32,4 @@ feature 'posts' do
     end
   end
 
-#need to test for showing single post
-#need to test for editing post
-
-
-
 end
