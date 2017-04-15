@@ -2,8 +2,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @comments = Comment.where(params[:post_id])
-
   end
 
   def new
