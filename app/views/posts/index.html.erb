@@ -1,0 +1,39 @@
+<% if @posts.any? %>
+<% @posts.each do |post|%>
+<ul>
+  <li>
+    <span id="img"><%= image_tag post.image.url(:medium) %></span><br>
+    <span id="description"><%= post.description%></span>
+
+      <tr>
+      <% if current_user && !current_user.liked_post?(post)%>
+        <%= link_to "♡", post_likes_path(post), class: 'likes-link' %>
+      <% end %>
+        <span class="likes_count"><%="♥ "%><%=post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
+
+        <% if current_user %>
+          <%= link_to "Comment", new_post_comment_path(post) %>
+        <% end %>
+
+        <% if current_user && current_user.id == post.user_id%>
+          <%= link_to "Edit", edit_post_path(post) %>
+          <%= link_to "Delete", post_path(post), method: :delete %>
+        <% end %>
+
+        <ul class="commentlist">
+          <%post.comments.each do |comment|%>
+              <li><%= comment.opinions %></li>
+            <%end%>
+        </ul>
+
+        <% if current_user %>
+          <textarea col="50", rows="1", class="opinion", placeholder="Add comment here"></textarea>
+          <%= link_to "💬", post_comments_path(post), class: 'postcomments'%>
+        <% end %>
+
+      </li>
+    </ul>
+    <% end %>
+<% else %>
+No posts yet
+<% end %>
