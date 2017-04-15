@@ -25,12 +25,6 @@ Instagram Challenge
 ## Prerequisites
 - Rails 4 (Earliest version)
 
-## How to use it on command line
- - ``` git clone https://github.com/AAMani5/ajab-chat.git ```
- - ``` cd ajab-chat ```
- - ``` npm install ```
- - ``` node app.js ```
- - ``` visit http://localhost:3000/ ```
 ## Below are screenshots displaying the functionality of the app.
 
 ``` Here is the front page of the website ```
