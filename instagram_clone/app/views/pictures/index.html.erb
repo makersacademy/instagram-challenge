@@ -1,0 +1,30 @@
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <%= link_to picture.name, picture_path(picture) %>
+    <%= link_to "Edit #{picture.name}", edit_picture_path(picture) %>
+    <%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %>
+    <%= link_to "Review", new_picture_review_path(picture) %>
+
+    <% if picture.reviews.any? %>
+      <ul>
+        <% picture.reviews.each do |review| %>
+          <li>
+            <%= review.thoughts %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No reviews.</p>
+      
+<%= image_tag picture.image.url(:thumb) %>
+  <% end %>
+<% end %>
+<% else %>
+ <p> No pictures added yet</p>
+ <% end %>
+
+<%= notice %>
+<%= yield %>
+
+<%= link_to "Add a picture", new_picture_path %>
+<!-- <a href='#'>Add a picture</a> -->
