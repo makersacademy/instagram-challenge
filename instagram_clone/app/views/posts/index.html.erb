@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<table>
+  <thead>
+  </thead>
+
+  <tbody>
+    <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <tr>
+        <td ><%= link_to image_tag(post.image.url(:thumb)), post, id: "show_image" %></td>
+        <td><%= post.caption %></td>
+    <% end %>
+    <% else %>
+    <h2>No posts yet!</h2>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
