@@ -1,5 +1,8 @@
 Instagram Challenge
 ===================
+Created Petagram 
+Heroku hosted at 
+https://petagram.herokuapp.com
 
 Instructions
 -------

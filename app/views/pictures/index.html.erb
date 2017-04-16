@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Pictures</h1>
+
+<table>
+  <thead>
+    <tr>
+    <th>Image</th>
+      <th>Description</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pictures.each do |picture| %>
+      <tr>
+        <td><%= image_tag picture.image.url(:medium) %></td>
+        <td><%= picture.description %></td>
+        <td><%= picture.user.email if picture.user %></td>
+        <td><%= link_to 'Show', picture %></td>
+        <% if picture.user == current_user %>
+        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Picture', new_picture_path %>
