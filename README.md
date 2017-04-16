@@ -11,7 +11,7 @@ Features
 - A user can edit a pic
 - A user can delete a pic
 - A user can comment on a pic
-- A user can like a pic (I didn't get to this part and would be a possible future improvement)
+- A user can like a pic 
 
 Usage
 -----
@@ -21,4 +21,10 @@ Usage
 - Visit http://localhost:3000
 - Sign up to be able to post
 
+![alt tag](https://github.com/Noora-q/instagram-challenge/blob/master/Screen%20Shot%202017-04-16%20at%2016.15.13.png)
+![alt tag](https://github.com/Noora-q/instagram-challenge/blob/master/Screen%20Shot%202017-04-16%20at%2016.15.31.png)
 
+Things I want to complete in the future:
+- Adding likes (I didn't get to complete that feature)
+- Better/more styling, room for improvement there
+- Adding filters feature
