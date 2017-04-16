@@ -1,3 +1,9 @@
+Not finished.
+I have some god functionalities working and so far all my tests go green, but I want to change a few things and have questiosn for teachers on these matters so looking forward to a 1-to-1 catch-up with teachers.
+
+
+
+
 Instagram Challenge
 ===================
 

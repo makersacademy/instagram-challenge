@@ -1,0 +1,26 @@
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <h2><%= link_to picture.name, picture_path(picture) %></h2>
+    <%= image_tag picture.image.url(:medium) %><br>
+    
+    <%= link_to "Edit #{picture.name}", edit_picture_path(picture) %>
+    <%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %>
+    <%= link_to 'Add a comment', new_picture_comment_path(picture)%>
+    <%= link_to 'like this', picture_likes_path(picture), method: :post %>
+    <%= pluralize(picture.likes.count, "like") %>
+
+    <h3>Comments for <%= picture.name %></h3>
+    <% if picture.comments.any? %>
+      <% picture.comments.each do |comment| %>
+        <h3><%= comment.thoughts %></h3>
+      <% end %>
+    <% end %>
+<!--     Ask Spike. I want to leave a comment on a picture without any page redirection / Tried for 2 hours. Didnt work -->
+    <% end %>
+  <% else %>
+  No pictures yet!<br><br>
+<% end %>
+
+<%= notice %>
+<%= yield %><br><br>
+<a href='/pictures/new'>Add a picture</a>
