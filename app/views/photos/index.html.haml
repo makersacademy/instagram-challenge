@@ -1,0 +1,27 @@
+.col-md-6.col-md-offset-3
+  #photos.transitions-enabled.row
+    - if @photos.any?
+      - @photos.each do |photo|
+        .box.panel.panel-default
+          .panel-heading.photo_image
+            %p.user= photo.user.user_name
+          .panel-body
+            = link_to (image_tag photo.image.url), photo_path(photo)
+            %p.caption= photo.caption
+            %span.glyphicon.glyphicon-heart
+            = pluralize photo.likes.count, 'likes'
+          .panel-footer.text.center
+            .row
+              .col-md-6
+                .btn-group.pull-left.text-align
+                  - if photo.user == current_user
+                    = link_to 'Edit photo', edit_photo_path(photo)
+                    = link_to 'Delete photo', photo_path(photo), method: :delete
+                  = link_to photo_likes_path(photo), method: :post, class: 'btn btn-default', id: 'like' do
+                    %span.glyphicon.glyphicon-heart.center
+                    -# = link_to 'Comment', new_photo_comment_path(photo)
+                  -# if @photo.comments.any?
+                  -#   - @photo.comments.each do |comment|
+                  -#     = photo.content
+    - else
+      %h2 No photos uploaded yet!

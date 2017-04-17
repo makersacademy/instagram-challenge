@@ -1,0 +1,14 @@
+%nav.navbar-inverse
+  .container
+    .navbar-brand= link_to image_tag('logo_camara.png', alt: 'Brand'), root_path
+
+    -if user_signed_in?
+      %ul.nav.navbar-nav.navbar-left
+        %li= link_to "Upload photo", new_photo_path
+        %li= link_to "Sign out", destroy_user_session_path, method: :delete
+
+    -else
+      %ul.nav.navbar-nav.navbar-justify
+        %li= link_to "Sign up", new_user_registration_path
+        %li= link_to "Sign in", new_user_session_path
+        %li= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)

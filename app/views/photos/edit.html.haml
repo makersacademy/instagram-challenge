@@ -1,0 +1,13 @@
+#edit_page.col-md-8.col-md-offset-2
+  .row
+    .panel.panel-default
+      .panel-heading
+        %h1 Fix Photo
+      .panel-body
+        .current_image
+          = image_tag @photo.image.url(:medium)
+        = form_for @photo, html: { class: 'form-horizontal', multipart: true } do |f|
+          =f.file_field :image
+          =f.label :caption
+          =f.text_field :caption
+          =f.submit 'Update photo'

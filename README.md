@@ -21,3 +21,44 @@ As usual please start by forking this repo. After cloning your fork and cd'ing i
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
 Bonus if you can add filters!
+
+Installation Instructions
+------------------------------------------------------------------------
+Clone from github and move into directory. Install dependencies by running
+bundle.
+
+$ git clone git@github.com:danielagaleote/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle
+
+Create the database and carry out migrations
+$ bin/rake db:create
+$ bin/rake db:migrate
+
+Run the app
+$ bin/rails s
+
+Open the app at http://localhost:3000/ 
+
+User stories
+------------------------------------------------------------------------
+As a user so that I can share my life with my friends, I want to
+be able to upload photos
+
+As a user to protect me from my clumsiness, I want to be able to
+edit and delete the photos that I have uploaded
+
+As a user for social validation, I want my friends to be able
+to view my photos
+
+As a user to protect my property, I want to be the only one able
+to delete my photos
+
+As a user to protect my property, I want to be the only one able
+to edit my photos
+
+As the web owner to protect user's privacy I want user to have to
+sign in before viewing photos
+
+As a user to make sign up faster, I want to be able to sign in using
+email or through facebook
