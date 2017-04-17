@@ -1,0 +1,26 @@
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <h2><%= link_to picture.name, picture_path(picture) %></h2>
+    <h3>Comments for <%= picture.name %></h3>
+      <% if picture.comments.any? %>
+        <ul>
+          <% picture.comments.each do |comment| %>
+            <li>
+              <%= comment.comments %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No Comments.</p>
+      <% end %>
+    <%= link_to "Edit #{picture.name}", edit_picture_path(picture) %>
+    <%= link_to "Delete #{picture.name}", picture_path(picture), method: :delete %>
+    <%= link_to "Comment on #{picture.name}", new_picture_comment_path(picture) %>
+    <%= image_tag picture.image(:thumb) %>
+  <% end %>
+<% else %>
+  <h1>No pictures yet!</h1>
+<% end %>
+
+<a href='/pictures/new'> Add a picture</a>
+

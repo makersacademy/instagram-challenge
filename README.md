@@ -1,3 +1,29 @@
+Instructions to run Instragram Challenge
+========================================
+* bundle install
+* Create .env file with appropriate settings for
+  * S3_BUCKET_NAME
+  * AWS_ACCESS_KEY_ID
+  * AWS_SECRET_ACCESS_KEY
+* bin/rails server
+
+Current Status of Instagram Challenge
+=====================================
+
+The features implemented so far are
+* users can add pictures
+* write comments about picture
+
+Below are attached the screen shots of the application:
+
+![No pictures](public/images/1_no_pictures.png)
+![Add picture](public/images/2_add_picture.png)
+![Picture added](public/images/3_picture_added.png)
+![Add comment](public/images/4_add_comment.png)
+![Show comment](public/images/5_show_comments.png)
+![Add Image](public/images/6_add_picture_image.png)
+![Pictures](public/images/7_pictures.png)
+
 Instagram Challenge
 ===================
 
