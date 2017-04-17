@@ -1,0 +1,10 @@
+- if @pictures.any?
+  %ul
+    - @pictures.each do |picture|
+      %li
+      =link_to picture.name, picture_path(picture)
+      =image_tag picture.image.url(:thumb)
+      =link_to 'Delete picture', picture_path(picture), method: :delete
+- else
+  %h2 No pictures yet!
+%p= link_to "Add a picture", new_picture_path
