@@ -1,0 +1,39 @@
+<% if @images.all.any? %>
+  <% @images.all.each do |image| %>
+    <h4><%= image.user.username %></h4>
+    <h4><%= image.created_at.strftime "%H:%M | %d-%m-%Y" %></h4>
+    <%= link_to image_path(image) do %>
+      <%= image_tag image.upload.url(:medium) %>
+    <% end %>
+    <h3><%= image.caption %></h3>
+    <p><%= pluralize image.likes.count, 'likes' %></p>
+    <h3>Comments</h3>
+    <% if image.comments.any? %>
+      <ul>
+        <% image.comments.reverse[0..2].each do |comment| %>
+          <li>
+            <%= comment.message %>
+            -
+            <%= comment.user.username %>
+            -
+            <%= comment.created_at.strftime "%H:%M | %d-%m-%Y" %>
+          </li>
+        <% end %>
+        <% if image.comments.length > 3 %>
+          <%= link_to image_path(image) do %>
+            <li>Read <%= image.comments.length - 3 %> more comment/s...</li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= form_for [image, @comment] do |f| %>
+    <%= f.label :message %>
+    <%= f.text_area :message %>
+    <%= f.submit 'Leave Comment' %>
+  <% end %>
+<% end %>
+<% else %>
+  <h1>No images yet</h1>
+<% end %>
+
+<a href=<%= new_image_path %>>Upload an image</a>
