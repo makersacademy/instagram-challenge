@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InstagramClone</title>
+</head>
+
+<body>
+  <% if @pictures.any? %>
+    <% @pictures.each do |picture| %>
+      <p><b><%= picture.user.email.split('@')[0] %></b>    <%= picture.created_at %></p>
+      <p><%= image_tag picture.image.url(:medium) %></p>
+      <% if current_user && current_user.has_liked?(picture) %>
+        <%= link_to 'Unlike', picture_like_path(current_user, picture), method: :delete %>
+      <% else %>
+        <%= link_to 'Like', picture_likes_path(current_user, picture), method: :post %>
+      <% end %>
+      <%= pluralize picture.likes.count, 'like' %>
+      <ul><% picture.comments.each do |comment| %>
+        <li><b><%= comment.user.email.split('@')[0] %></b> <%= comment.message %></li>
+        <% end %>
+      </ul>
+      <%= link_to 'Comment', new_picture_comment_path(picture) %>
+    <% end %>
+  <% else %>
+    <h2>No pictures yet</h2>
+  <% end %>
+
+  <h2><%= link_to('Add a picture', new_picture_path) %></h2>
+</body>
+</html>
