@@ -1,0 +1,14 @@
+= @photo.title
+%br
+= image_tag @photo.image.url(:medium)
+= link_to 'Edit', edit_photo_path(@photo)
+= link_to 'Delete', photo_path(@photo), method: :delete
+= link_to 'Comment', new_photo_comment_path(@photo)
+
+- if @photo.comments.any?
+  %ul
+    - @photo.comments.each do |comment|
+      %li
+        = comment.thoughts
+- else
+  %p No comments
