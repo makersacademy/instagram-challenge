@@ -1,0 +1,14 @@
+<% if @photos.any? %>
+  <div class="row">
+    <% @photos.each do |photo| %>
+      <div class="col-sm-4 col-sm-4">
+        <div class="caption">
+          <h2><%= photo.description %></h2>
+        </div>
+        <%= link_to image_tag(photo.image.url(:medium), class: "thumbnail"), photo_path(photo) %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No photos yet!</p>
+<% end %>

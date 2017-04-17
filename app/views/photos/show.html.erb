@@ -1,0 +1,37 @@
+<p><%= @photo.description %></p>
+<%= image_tag(@photo.image.url(:large)) %>
+
+<p>Uploaded by <%= @photo.find_username %> <%= created_since(@photo.created_at) %></p>
+
+<p><%= pluralize @photo.likes.count, 'like' %></p>
+
+<% if @photo.likes.find_by(user_id: current_user.id).nil? %>
+ <p><%= link_to "Like", photo_likes_path(@photo), class: "button", method: :post %></p>
+<% else %>
+ <p><%= link_to "Unlike", photo_like_path(@photo, @photo.likes), class: "button", method: :delete %></p>
+<% end %>
+
+
+<h3>Comments for <%= @photo.description %></h3>
+
+<% if @photo.comments.any? %>
+  <ul>
+    <% @photo.comments.each do |comment| %>
+      <li>
+        <%= comment.contents %>
+        Created by <%= comment.find_username %> <%= created_since(comment.created_at) %>
+        <% if comment.created_by?(current_user) %>
+          <%= link_to "Delete Comment", photo_comment_path(@photo, comment), method: :delete %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No comments.</p>
+<% end %>
+
+<%= form_for [@photo, @comment] do |f| %>
+  <%= f.label :comments, class: "form label" %>
+  <%= f.text_area :contents, class: "form" %>
+  <%= f.submit "Comment", class: "form" %>
+<% end %>

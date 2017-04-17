@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>InstagramChallenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag 'custom', 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  </head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <%= link_to "Homepage", root_path, class: "navbar-brand" %>
+      <% if user_signed_in? %>
+      <ul class="nav navbar-nav pull-right">
+        <li><%= link_to "Upload a photo", new_photo_path, class: "btn" %></li>
+        <li><%= link_to "My profile", user_path(current_user), class: "btn" %></li>
+        <li><%= link_to "Sign out", destroy_user_session_path, class: "btn", method: :delete %></li>
+      </ul>
+      <% else %>
+      <ul class="nav navbar-nav pull-right">
+        <li><%= link_to "Sign in", new_user_session_path, class: "btn" %></li>
+        <li><%= link_to "Sign up", new_user_registration_path, class: "btn" %></li>
+      </ul>
+    <% end %>
+  </nav>
+  <div class="container">
+    <%= render 'layouts/messages' %>
+  </div>
+  <%= yield %>
+</body>
+</html>
