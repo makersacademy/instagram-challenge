@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <article>
+      <span><%= image_tag @picture.picture.url(:medium), class: "uploaded-pic" %></span>
+      <p><%= @picture.description %></p>
+      <% if @picture.user == @user %>
+        <%= link_to 'Edit', edit_picture_path(@picture) %>
+        <%= link_to 'Delete', picture_path(@picture), method: :delete %>
+      <% end %>
+      <%= link_to 'Comment', new_picture_comment_path(@picture) %>
+    </article>
+    <p>
+      <h3>Comments</h3>
+      <% if @picture.comments.any? %>
+        <ul>
+          <% @picture.comments.each do |comment| %>
+            <li>
+              <%= comment.comment %>,    <i><%= comment.created_at %></i>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= "No comments :(" %>
+      <% end %>
+    </p>
+  </body>
+</html>

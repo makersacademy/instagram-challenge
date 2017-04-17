@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Leave a comment</title>
+  </head>
+  <body>
+    <h2>Add a comment</h2>
+    <% if @comment.errors.any? %>
+      <section class="panel panel-danger" id="errors" >
+        <div class="panel-heading"><%= pluralize(@comment.errors.count, 'error') %> prohibited this comment from being added:</div>
+        <ul class="panel-body">
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
+    <div class="field form-group">
+      <%= form_for [@picture, @comment] do |f| %>
+        <%= f.label :comment %><br />
+        <%= f.text_area :comment, class: "form-control" %><br />
+        <%= f.submit 'Post', class: "btn btn-default" %>
+      <% end %>
+    </div>
+  </body>
+</html>

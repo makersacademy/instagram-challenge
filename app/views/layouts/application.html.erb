@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InstagramChallenge</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <h1><%= link_to 'Instagram', pictures_path, class: "navbar-header" %></h1>
+    <%= link_to "Upload picture", new_picture_path, class: "btn btn-default upload" %>
+    <% if user_signed_in? %>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "btn btn-default user-manage" %>
+    <% else %>
+      <%= link_to 'Sign in', new_user_session_path, class: "btn btn-default user-manage" %>
+      <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-default user-manage" %>
+    <% end %>
+  </nav>
+
+<div class="container">
+  <%= render 'layouts/messages' %>
+  <%= yield %>
+</div>
+
+</body>
+</html>

@@ -1,3 +1,9 @@
+[![Codeship Status for leggsimon/instagram-challenge](https://codeship.com/projects/2cb54010-3160-0133-e0ee-0a744e9a501a/status?branch=master)](https://codeship.com/projects/99699)
+
+[![Code Climate](https://codeclimate.com/github/leggsimon/instagram-challenge/badges/gpa.svg)](https://codeclimate.com/github/leggsimon/instagram-challenge)
+
+[![Test Coverage](https://codeclimate.com/github/leggsimon/instagram-challenge/badges/coverage.svg)](https://codeclimate.com/github/leggsimon/instagram-challenge/coverage)
+
 Instagram Challenge
 ===================
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Upload a picture</title>
+  </head>
+  <body>
+    <h2>Upload a picture</h2>
+
+    <% if @picture.errors.any? %>
+      <section class="alert alert-danger" id="errors" >
+
+        <a href="#" data-dismiss="alert" class="close">×</a>
+
+        <h4><%= pluralize(@picture.errors.count, 'error') %> prohibited this picture from being added:</h4>
+
+        <ul>
+          <% @picture.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+
+      </section>
+    <% end %>
+
+    <div class="field form-group">
+      <%= form_for @picture, html: {multipart: true} do |f| %>
+        <%= f.label :description, 'Description' %><br />
+        <%= f.text_field :description, class: "form-control" %><br />
+        <%= f.label :picture, 'Picture' %><br />
+        <%= f.file_field :picture, class: "form-control" %><br />
+        <%= f.submit 'Upload picture', class: "btn btn-default" %>
+      <% end %>
+    </div
+  </body>
+</html>
