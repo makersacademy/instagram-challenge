@@ -1,0 +1,21 @@
+<% if @pictures.all.any? %>
+  <% @pictures.all.each do |picture| %>
+    <%= link_to picture.image, picture_path(picture) %>
+    <%= image_tag picture.image_url.url(:thumb) %>
+    <h2><%= picture.description %></h2>
+    <%= link_to "Edit Picture", edit_picture_path(picture) %>
+    <%= link_to "Delete Picture", picture_path(picture), method: :delete %>
+    <%= link_to "Like Picture", new_picture_like_path(picture) %>
+    <% if picture.likes.any? %>
+      <h3> Likes: <%= picture.likes.count %></h3>
+    <% else %>
+      <h3> Likes: 0</h3>
+    <% end %>
+
+  <% end %>
+
+<% else %>
+  <h1>No pictures yet</h1>
+<% end %>
+
+<a href="/pictures/new">Add a picture</a>
