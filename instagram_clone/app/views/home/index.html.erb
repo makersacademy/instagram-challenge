@@ -1,0 +1,20 @@
+<h1> Welcome </h1>
+
+<% if user_signed_in? %>
+  <h3> Welcome <%= @user.email %> </h3>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <%= link_to "Upload image", new_picture_path %>
+  <br>
+  <% if @pictures.any? %>
+    <% @pictures.each do |picture| %>
+      Picture Tag: <%= picture.tag %>
+      <br>
+       <a href="<%= picture_path(picture) %>"> <%= image_tag picture.image.url %> </a>
+      <br>
+    <% end %>
+  <% end %>
+<% else %>
+  <h3> Please log in to start posting your photos </h3>
+  <%= link_to "Sign in", new_user_session_path %>
+  <%= link_to "Sign up", new_user_registration_path %>
+<% end %>
