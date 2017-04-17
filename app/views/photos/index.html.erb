@@ -1,0 +1,84 @@
+
+<%= form_for @photo, html: {multipart: true, :id => "addPhotoForm"} do |f| %>
+  <%= f.text_area :description, :placeholder => "Add description for your photo here...." %>
+  <br>
+  <br>
+  <%= f.file_field :image %>
+  <%= f.submit :value => "Add photo" %>
+<% end %>
+
+
+<% if @photos.any? %>
+  <% Photo.all.reverse.each do |photo| %>
+  <section id="post">
+  	<div id="postHeader">
+  	<h2 id="userName"><%= photo.user.email %></h2>
+  	<h2 id="createdAt"><%= time_ago_in_words(photo.created_at).gsub('about','') + ' ago' %></h2>
+  	</div>
+
+    	<%= link_to image_tag(photo.image.url, :id => "photo"), photo_path(photo) %>
+
+    <div id="postFooter">
+    <div id="likeCounter"><%= photo.likes.count %> Likes </div>
+    <% if current_user %>
+  
+<%= form_for [photo, @like] do |f| %>
+  <%= f.submit 'Like', :id => "likeButton" %>
+<% end %>
+
+    <% end %>
+    <p> <span id="userNameDescription"><%= photo.user.email %></span>
+    <span id="photoDescription"><%= photo.description %></span></p>
+    <!-- <img src="<%= photo.picture %>"> -->
+			<div id="comments">
+			<% if photo.comments.any? %>
+			  <ul>
+			    <% photo.comments.reverse.each do |comment| %>
+			      <li>
+			        <span id="commentUsername">
+			        <%= comment.user.email %></span>
+			        <%= comment.comment %>
+			      </li>
+			    <% end %>
+			  </ul>
+			<% else %>
+			  <p>No comments yet :(</p>
+			<% end %>
+			</div>
+
+		<% if current_user && current_user.id == photo.user_id %>
+    <div id="deletePhoto">
+    <%= link_to "Delete", photo_path(photo), method: :delete %>
+    </div>
+  	<% end %>
+
+  	<% if current_user %>
+  	<div id="commentPhoto">
+    	<%= link_to "Comment", new_photo_comment_path(photo) %>
+    </div>
+    <% end %>
+
+    <% if current_user %>
+    		<%= form_for [photo, @comment], html: {:id => "someId"} do |f| %>
+<!-- 		  <%= f.label :comment %> -->
+		  <%= f.text_field :comment, :placeholder => "Add a comment", :id => 'addComment' %>
+		  <%= f.submit '>', :id => "addCommentSubmit" %>
+		<% end %>
+
+		
+
+
+		<% end %>
+
+
+		</section>
+
+  <% end %>
+
+  </div>
+
+<% else %>
+  <h1>No photos yet</h1>
+
+<% end %>
+

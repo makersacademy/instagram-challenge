@@ -1,0 +1,19 @@
+<div id="container">
+<% if @comment.errors.any? %>
+  <section id="errors" >
+    <h2> <%= pluralize(@comment.errors.count, "error") %> Comment cannot be blank </h2>
+    <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
+<%= form_for [@photo, @comment] do |f| %>
+  <%= f.label :comment %>
+  <%= f.text_area :comment %>
+  <%= f.submit 'Leave Comment' %>
+<% end %>
+
+</div>
