@@ -1,0 +1,16 @@
+<% if @posts.all.any? %>
+  <% @posts.all.each do |post| %>
+    <div class="panel panel-default">
+      <h2><%= post.name %></h2>
+      <%= post.description %>
+      <%= link_to "Edit #{post.name}", edit_post_path(post) %><br>
+      <%= link_to "Delete #{post.name}", post_path(post), method: :delete %>
+      <br>
+      <%= image_tag post.image.url(:medium) %>
+      <br>
+    </div>
+  <% end %>
+<% else %>
+  <h1>No posts yet!</h1>
+
+<% end %>
