@@ -1,0 +1,13 @@
+<% if @pictures.any? %>
+  <% @pictures.reverse.each do |picture| %>
+    <h2> <%= picture.caption %> </h2>
+    <%= link_to image_tag(picture.image.url(:medium)), picture_path(picture.id) %>
+      <% if current_user %>
+        <% if current_user.id == picture.user_id %>
+        <%= link_to "Delete picture", picture_path(picture), method: :delete %>
+        <% end %>
+      <% end %>
+    <% end %>
+<% else %>
+"No pictures yet"
+<% end %>
