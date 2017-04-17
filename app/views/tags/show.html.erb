@@ -1,0 +1,27 @@
+<% @tag.photos.each do |photo| %>
+
+  <h3><%= photo.title %></h3>
+
+  <% photo.tags.each do |tag| %>
+    <div style='display: inline-block'>
+      <%= link_to tag.phrase, "/tags/#{tag.id}/photos" %>
+    </div>
+  <% end %></br>
+
+  <%= link_to image_tag(photo.image.url :medium), photo_path(photo) %><br/>
+  <%= link_to photo.user.email, "/users/#{photo.user_id}/photos" %>
+
+  <% if photo.photo_likes.present? %>
+    <%= pluralize photo.photo_likes.count, 'like' %><br/>
+  <% end %><br/>
+
+  <% if photo.comments.present? %>
+    Comments:
+    <% photo.comments.each do |comment| %>
+    <div>
+      <%= comment.content %>
+    </div>
+    <% end %>
+  <% end %>
+
+<% end %>

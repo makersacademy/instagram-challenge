@@ -1,0 +1,46 @@
+<% if @photos.empty? %>
+  No photo yet; Please add a photo.
+
+<% else %>
+  <% @photos.each_with_index do |photo, i| %>
+    <div id="photo<%=i%>">
+
+      <h3><%= photo.title %></h3>
+
+      <% photo.tags.each_with_index do |tag, j| %>
+        <div id="photo<%=i%>tag<%=j%>" style='display: inline-block'>
+          <%= link_to tag.phrase, "/tags/#{tag.id}/photos" %>
+        </div>
+      <% end %></br>
+
+      <%= link_to image_tag(photo.image.url :medium), photo_path(photo) %><br/>
+      <%= link_to photo.user.email, "/users/#{photo.user_id}/photos" %>
+      <%= link_to 'Comment', new_photo_comment_path(photo) %>
+      <%= link_to 'Like', photo_photo_likes_path(photo), method: :post %>
+
+      <% if photo.photo_likes.present? %>
+        <%= pluralize photo.photo_likes.count, 'like' %><br/>
+      <% end %><br/>
+
+      <% if photo.comments.present? %>
+        Comments:
+        <% photo.comments.each_with_index do |comment, k| %>
+          <div id="photo<%=i%>comment<%=k%>">
+            <%= comment.content %>
+            <%= link_to 'Like comment', photo_comment_comment_likes_path(photo, comment), method: :post %>
+            <% if comment.comment_likes.present? %>
+              <%= pluralize comment.comment_likes.count, 'like' %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if photo.user == current_user %>
+        <%= link_to 'Delete photo', photo_path(photo), method: :delete %>
+      <% end %>
+
+    </div>
+  <% end %>
+<% end %><br/>
+
+<%= link_to 'Add photo', new_photo_path %>

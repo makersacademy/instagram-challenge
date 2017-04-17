@@ -1,0 +1,18 @@
+<h3><%= @photo.title %></h3>
+
+<% @photo.tags.each do |tag| %>
+  <div style='display: inline-block'><%= tag.phrase %></div>
+<% end %></br>
+
+<%= image_tag @photo.image.url :original %><br/>
+<%= link_to @photo.user.email, "/users/#{@photo.user_id}/photos" %>
+
+<%= pluralize @photo.photo_likes.count, 'like' %><br/>
+
+<% if @photo.comments.present? %>
+  Comments:<br/>
+  <% @photo.comments.each do |comment| %>
+    <%= comment.content %><br/>
+  <% end %>
+
+<% end %>
