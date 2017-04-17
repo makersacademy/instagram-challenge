@@ -1,0 +1,18 @@
+%h3=link_to  "Add a photo", new_photo_path
+
+- if @photos.any?
+  %h1 Sweet Sweet Photos!!
+  - @photos.each do |photo|
+    = link_to image_tag( photo.image.url(:medium)), photo_path(photo)
+    = link_to "Add a comment", new_photo_comment_path(photo)
+
+    - if photo.comments.any?
+      %ul
+        - photo.comments.each do |comment|
+          %li
+            = comment.thoughts
+    - else
+      %p No comments
+
+- else
+  %h1 No photos yet!
