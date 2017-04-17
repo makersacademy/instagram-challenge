@@ -1,0 +1,17 @@
+<%if current_user%>
+  <%=link_to "Add new picture", new_picture_path%>
+<%end%><br><br><br>
+<%if @pictures.any?%>
+  <%@pictures.each do |picture|%>
+  <%=link_to "#{picture.title}", picture_path(picture)%><br>
+    <%= image_tag picture.image.url(:medium), :class =>'image'%><br>
+    <%= link_to "Delete #{picture.title}", picture_path(picture), method: :delete%><br>
+    <%= link_to "comment", new_picture_comment_path(picture)%><br>
+
+    <%picture.comments.each do |comment|%>
+      <%=comment.thought%><br><br>
+    <%end%>
+  <%end%>
+  <%else%>
+    No pictures yet
+<%end%> 
