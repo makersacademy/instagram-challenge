@@ -1,0 +1,28 @@
+%nav.navbar.navbar-default
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{:href => "/"}
+        = image_tag "Instagram_Logo_Large.png" , :class => "brand"
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %form.navbar-form.navbar-left{:role => "search"}
+        %input#search.form-control{:placeholder => "Search", :type => "text"}/
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li
+            = link_to 'Add an Image', new_image_path()
+          %li
+            = link_to "#{current_user.email}", user_session_path
+          %li
+            = link_to "Sign out", destroy_user_session_path, method: :delete
+        - else
+          %li
+            = link_to "Sign in", new_user_session_path
+          %li
+            = link_to "Sign up", new_user_registration_path
