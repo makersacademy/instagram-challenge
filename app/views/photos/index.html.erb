@@ -1,0 +1,42 @@
+<div id='wrapper'>
+<div id='main'>
+  <h1 id = 'logo'>Instagram</h2>
+
+<% if @photos.any? %>
+  <% @photos.each do |photo| %>
+  <div class = 'photo'>
+    <p id = 'title'><strong>Title:<%= link_to photo.title, photo_path(photo) %></strong></p>
+    <p id = 'image'><%= image_tag photo.image.url(:medium) %></p>
+    <p id = 'description'><strong>Descripton: </strong><%= photo.description %></p>
+    <p><%= pluralize photo.likes.count, 'like' %>
+    <strong><%= link_to 'Like',  photo_likes_path(photo), method: :post %></p></strong>
+  </div>
+  <% if photo.comments.any? %>
+    <% photo.comments.each do |comment| %>
+      <p id='comment'>- <%= comment.comments %></p>
+      <% if user_signed_in?  && comment.user_id == current_user.id %>
+      <p id='delete_comment'><%= link_to "Delete Comment", comment_path(comment), method: :delete %></p>
+      <br>
+      <% end %>
+      <% end %>
+  <% else %>
+    <p> No comments yet </p>
+  <% end %>
+  <% if current_user %>
+    <% if current_user.id == photo.user_id %>
+    <p id='delete_photo'><%= link_to "Delete this photo", photo_path(photo), method: :delete %></p>
+    <% end %>
+    <p id = 'new_comment'><%= link_to "Comment on this photo", new_photo_comment_path(photo) %></p>
+  <% end %>
+  <br>
+
+  <% end %>
+<% else %>
+  No photos yet
+<% end %>
+
+<br>
+<%= link_to "Add a photo", new_photo_path %>
+
+</div>
+</div>
