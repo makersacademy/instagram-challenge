@@ -1,0 +1,29 @@
+- if @pictures.any?
+  - @pictures.each do |picture|
+    %h2= link_to picture.title, picture_path(picture)
+    = image_tag picture.image.url(:thumb)
+    %h3
+      Comment for
+      = picture.title
+
+    - if picture.comments.any?
+      %ul
+        - picture.comments.each do |comment|
+          %li
+            = comment.comments
+    - else
+      %p No comments yet
+    = link_to "Edit #{picture.title}", edit_picture_path(picture)
+    = link_to "Delete #{picture.title}", picture_path(picture), method: :delete
+    = link_to "Comment on #{picture.title}", new_picture_comment_path(picture)
+    = link_to "Like", picture_likes_path(picture), class: 'likes-link'
+    %span.likes_count= picture.likes.count
+    = 'like'.pluralize picture.likes.count
+- else
+  No pictures yet!
+
+<br/>
+<br/>
+<br/>
+
+= link_to "Click here to add a picture!", new_picture_path
