@@ -1,0 +1,30 @@
+<% if @photos.any? %>
+  <% @photos.reverse.each do |p| %>
+    <%= link_to image_tag(p.image.url(:medium), id: "imageNo#{p.id}"),photo_path(p) %>
+    <% if p.user == current_user %>
+    <%= link_to 'Edit caption', edit_photo_path(p) %>
+    <%= link_to 'Delete photo', photo_path(p), method: :delete %>
+    <% end %>
+    <p><%= p.caption %></p>
+    <% if p.comments.any? %>
+      <p> Comments: </p>
+      <ul>
+        <% p.comments.each do |c| %>
+          <li>
+            <%= c.thoughts %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p> No Comments </p>
+    <% end %>
+    <% if current_user %>
+      <%= link_to 'Leave comment', new_photo_comment_path(p) %>
+  <% end %>
+  <% end %>
+<% else %>
+  No photos yet :(
+<% end %>
+<% if current_user %>
+<%= link_to 'Upload Photo', new_photo_path %>
+<% end %>
