@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title InstaClone
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    %link{:href => "http://fonts.googleapis.com/css?family=Lato:400,700", :rel => "stylesheet", :type => "text/css"}/
+  %body
+    = render 'layouts/navbar'
+
+  -flash.each do |name, msg|
+    = content_tag :div, msg, class: [:alert, alert_for(name)]
+
+  = notice
+  = alert
+  = yield
