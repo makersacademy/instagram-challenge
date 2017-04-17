@@ -1,0 +1,30 @@
+<h1> Instafun </h1>
+ <a href='/pictures/new'> Add a picture</a><br>
+  <% if @pictures.any? %>
+        <% @pictures.all.each do |picture| %>
+        <%= picture.user.email %><br>
+        <%= image_tag picture.image.url, {:width => "500", :height => "500"}%><br>
+        <%= picture.description%><br>
+         <%= link_to "Like", picture_likes_path(picture), class: 'likes-link' %><br>
+          <span class="likes_count"> <%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>
+        <p> Comments </p>
+          <% if picture.comments.any? %>
+            <ul>
+             <% picture.comments.each do |comment| %>
+             <li>
+              <%= comment.thoughts %>   <%= comment.user.email%>
+              </li>
+              <% end %>
+              </ul>
+            <% else %>
+          <h3> No comments yet.</h3>
+       <% end %>
+          <% if user_signed_in? %>
+           <%= link_to "Comment picture", new_picture_comment_path(picture) %><br>
+           <%= link_to "Edit description", edit_picture_path(picture) %><br>
+          <%= link_to "Delete picture", picture_path(picture), method: :delete %><br>
+          <% end %>
+     <% end%>
+  <% else %>
+  <h1>No pictures added yet</h1>
+<% end %>
