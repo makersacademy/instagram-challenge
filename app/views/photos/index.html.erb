@@ -1,0 +1,18 @@
+
+  <% Photo.all.each do |photo| %>
+  <h2>
+    <%= link_to "#{photo.title}", photo_path(photo) %>
+      <%= pluralize photo.votes_for.size, 'like' %>
+    <%if current_user %>
+    <%= link_to "Add Comment", new_photo_comment_path(photo) %>
+  <% end %>
+  <br>
+
+    <%= image_tag photo.image.url(:medium) %>
+  <br>
+
+  </h2>
+  <br>
+  <br>
+  <br>
+  <% end %>

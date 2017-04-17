@@ -1,0 +1,58 @@
+<h1>
+  <%= @photo.title %>
+</h1>
+<br>
+  <%= image_tag @photo.image.url(:medium) %>
+
+  <div class="actions">
+    <h4>
+    <% if current_user %>
+     <% if current_user.liked? @photo%>
+         <%= link_to unlike_photo_path(@photo), method: :put, remote: true, class: "btn btn-default" do %>
+         <i class="fa fa-thumbs-o-up {color: blue;}"></i>
+         <br>
+         <div class ="unlike">
+           unlike
+         </div>
+         <% end %>
+      <%= pluralize @photo.votes_for.size, 'like' %>
+     <% else %>
+        <%= link_to like_photo_path(@photo), method: :put, remote: true, class: "btn btn-default" do %>
+          <i class="fa fa-thumbs-o-down"></i>like
+        <% end %>
+     <% end %>
+    <% end %>
+   </h4>
+  </div>
+
+
+
+
+
+    <% if current_user %>
+  <h3>
+
+  <%= link_to "Add Comment", new_photo_comment_path(@photo) %>
+  <br>
+      <% if @photo.comments.any? %>
+        <% @photo.comments.order('created_at DESC').each do |comment| %>
+
+  <br>
+  </h3>
+  <h4>
+        <%= time_ago_in_words(comment.created_at) + ' ' + "ago" %>
+        <%= "Created by #{comment.user_id}"%>
+</h4>
+<h3>
+        <%= comment.comment %>
+</h3>
+    <br>
+    <h4>
+        <% if comment.user_id == current_user.id %>
+          <td><%= link_to 'Edit', edit_comment_path %></td>
+          <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </h4>
+        <% end %>
+      <% end %>
+    <% end %>
+<% end %>
