@@ -1,0 +1,42 @@
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <br>
+    <%= picture.user.email%>
+    <br>
+    <h3>
+      <%= image_tag picture.image.url('medium') %>
+      <br>
+      <%= picture.description %>
+    </h3>
+    <p>
+      <%= pluralize picture.likes.count, 'like' %>
+      <%= link_to 'Like', new_picture_like_path(picture) %>
+      <%= link_to 'Comment', new_picture_comment_path(picture) %>
+      <%= link_to 'Edit', edit_picture_path(picture) %>
+      <%= link_to 'Delete', picture_path(picture), method: :delete %>
+    </p>
+    <% if picture.comments.any? %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+          <li>
+            <%= comment.user.email %> <%= comment.comment %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments</p>
+    <% end %>
+  <% end %>
+<% else %>
+  No pictures yet
+  <br/>
+<% end %>
+<% if user_signed_in? %>
+  <%= link_to 'Add a picture', new_picture_path %>
+<% else %>
+  <%= link_to 'Sign up', new_user_registration_path %>
+  <br/>
+  <%= link_to 'Sign in', new_user_session_path %>
+  <br/>
+  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+<% end %>

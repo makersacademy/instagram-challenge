@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>InstagramChallenge</title>
+    <%= stylesheet_link_tag 'application', media: 'all',
+    'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <% if user_signed_in? %>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+    <% end %>
+    <%= alert %>
+    <%= notice %>
+    <br>
+    <div class="col-md-6 col-md-offset-3 text-center">
+      <div class = 'wrap'>
+        <div class = 'inner'>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
