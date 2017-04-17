@@ -1,0 +1,21 @@
+
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <h2> <%= post.description %> </h2>
+         <%= image_tag(post.image.url(:thumb)) %>
+
+
+    <% if current_user && post.user_id == current_user.id %>
+    <%= link_to "Edit post", edit_post_path(post) %>
+    <% end %>
+
+    <% if current_user && post.user_id == current_user.id %>
+    <%= link_to "Delete post", post_path(post), method: :delete %>
+    <% end %>
+
+  <% end %>
+<% else %>
+  No posts yet!
+<% end %>
+
+<%= link_to "Add post", new_post_path %>
