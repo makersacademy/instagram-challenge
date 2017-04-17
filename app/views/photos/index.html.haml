@@ -1,0 +1,10 @@
+- if @photos.all.any?
+  - @photos.all.each do |photo|
+    = link_to photo.name, photo_path(photo)
+    %h2= photo.name
+    = image_tag photo.image.url(:thumb)
+    %p= photo.description
+- else
+  %h1 No photos yet
+
+%a(href='/photos/new') Post a photo
