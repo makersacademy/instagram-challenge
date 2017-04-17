@@ -1,0 +1,38 @@
+<h2>Instagram posts</h2>
+  <%= link_to 'Add Post', new_post_path, class: 'btn btn-primary' %>
+<% if @posts.all.any? %>
+  <div class='row'>
+    <div class="col-md-6 col-md-offset-3 thumbnail">
+      <% @posts.all.each do |post| %>
+        <%= link_to image_tag(post.image.url(:medium)), post_path(post) %>
+        <br>
+        <%= link_to post.description, post_path(post) %>
+        <br>
+        <br>
+        <h3>Comments: </h3>
+        <% if post.comments.any? %>
+          <ul>
+            <% post.comments.each do |comment| %>
+            <li>
+              <%= comment.thoughts %>
+            </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>No comments</p>
+        <% end %>
+        <% if post.user == current_user %>
+          <%= link_to 'Delete Post', post_path(post), method: :delete, class: 'btn btn-danger' %>
+          <%= link_to 'Edit Post', edit_post_path(post), class: 'btn btn-success' %>
+        <% end %>
+        <% if user_signed_in? %>
+          <%= link_to 'Add Comment', new_post_comment_path(post), class: 'btn btn-success' %>
+        <% end %>
+    </div>
+      <% end %>
+<% else %>
+        <h2> No Instagram posts availiable </h2>
+<% end %>
+    </div>
+    <br>
+    <br>
