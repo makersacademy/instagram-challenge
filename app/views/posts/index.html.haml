@@ -1,0 +1,20 @@
+- if @posts.any?
+  - @posts.reverse.each do |post|
+    = image_tag post.image.url(:medium)
+    %h2= "user#{post.user_id}"
+    %h2= link_to post.text, post_path(post)
+    = link_to "Delete post", post_path(post), method: :delete
+    = link_to "Reply to post: #{post.text}", new_post_comment_path(post)
+    - if post.comments.any?
+      %p Comments:
+      %ul
+        - post.comments.each do |comment|
+          %li
+            = comment.text
+    - else
+      %p No comments
+
+- else
+  %h1 No posts yet!
+
+= link_to "Make a post", new_post_path
