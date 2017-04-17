@@ -1,0 +1,29 @@
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <h2><%= picture.name %></h2> 
+    Likes: <%= picture.likes.count %><br><br>
+    <%= link_to "view", picture_path(picture) %>
+    <%= link_to "delete", picture_path(picture), method: :delete %>
+    <%= link_to "edit", edit_picture_path(picture) %>
+    <%= link_to "like", picture_likes_path(picture), method: :post %>
+    <%= link_to "comment", new_picture_comment_path(picture) %><br><br>
+    <%= image_tag picture.avatar.url(:medium) %><br>
+    <br>
+    <h3>Comments for <%= picture.name %></h3>
+    <% if picture.comments.any? %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+          <li>
+            <%= "#{comment.thoughts} (#{comment.user.email})" %>
+            <%= link_to "delete comment", "/pictures/#{picture.id}/comments/#{comment.id}" , method: :delete %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments.</p>
+    <% end %>
+  <% end %>
+<% else %>
+  No pictures yet
+<% end %>
+<a href='/pictures/new'>Add a picture</a>
