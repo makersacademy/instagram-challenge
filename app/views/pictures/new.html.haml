@@ -1,0 +1,13 @@
+- if @picture.errors.any?
+  %section#errors
+    %h2
+      = pluralize @picture.errors.count, "error"
+      prohibited this picture from being saved:
+    %ul
+      - @picture.errors.full_messages.each do |message|
+        %li= message
+= form_for @picture, html: {multipart: true} do |f|
+  = f.file_field :image
+  = f.label :description
+  = f.text_area :description
+  = f.submit
