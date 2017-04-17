@@ -1,0 +1,21 @@
+<% if Picture.all.any? %>
+  <% Picture.all.each do |picture| %>
+    <%= image_tag picture.image.url(:medium) %>
+    <% if picture.comments.any? %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+          <li>
+            <%= comment.message %>
+          </li>
+        <% end %>
+      </ul>
+      <% end %>
+    <%= link_to "Like", picture_likes_path(picture), class: 'likes-link' %>
+    <span class="likes_count"> <%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>
+    <%= link_to 'Add a comment', new_picture_comment_path(picture) %>
+  <% end %>
+<% else %>
+  <h1>No pictures yet</h1>
+<% end %>
+
+<%= link_to 'Add a picture', new_picture_path %>
