@@ -2,7 +2,21 @@
 
 ## Task
 
-Build Instagram: Simple huh!
+Makers Weekend Challenge to build an Instagram clone using Ruby on Rails. All user stories and design my own. I really enjoyed this challenge and regularly diagrammed the design and database relationships. I was proud to achieve all but 1 of my user stories.
+
+## Technologies
+
+### Framework
+
+- Rails 4.2.8
+- Devise for User Model
+
+### Database
+- Postgresql
+
+### Testing
+- RSpec
+- Capybara
 
 ## MVP
 
@@ -72,3 +86,8 @@ I want to be able to see a another user’s profile/Instagram feed.
 - Run database migration `rake db:migrate`
 - Run rails server `rails s`
 - On your browser, go to localhost:3000 to enjoy my mock-Instagram
+
+## Challenges
+
+- Testing the integration of gems (eg. Devise)
+- 'Unliking' posts (routing correctly to delete values from another controller/database table)
