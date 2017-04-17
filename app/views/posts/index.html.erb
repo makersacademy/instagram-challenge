@@ -1,0 +1,24 @@
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <h2><%= link_to post.description, post_path(post) %></h2>
+    <h3>Comments:
+      <p><%= post.description %></p></h3>
+    <% if post.comments.any? %>
+      <ul>
+        <% post.comments.each do |comment| %>
+          <li>
+            <%= comment.comment %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments.</p>
+    <% end %>
+    <p><%= link_to "Delete post", post_path(post), method: :delete %></p>
+    <p><%= link_to "Comment on post", new_post_comment_path(post) %></p>
+  <% end %>
+<% else %>
+  <h1>No posts yet</h1>
+<% end %>
+
+<a href="/posts/new">Add a post</a>
