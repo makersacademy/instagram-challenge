@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InstagramChallenge</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Instagram-Challenge</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse navbar-right">
+        <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign in", new_user_session_path %></li>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
+            <% end %>
+        </ul>
+      </div><!--/.navbar-collapse -->
+    </div>
+  </nav>
+
+
+  <div class="center">
+    <%= notice %>
+  </div>
+  <div class="center">
+    <%= yield %>
+  </div>
+  <% if user_signed_in? %>
+    <%= render 'partials/post_picture' %>
+  <% end %>
+  <div id=footer>
+    <p>&copy; 2015 by Rajeev, when at Makers Academy.</p>
+  </div>
+</body>
+</html>
