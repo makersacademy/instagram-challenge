@@ -1,0 +1,24 @@
+<div class="text-center">
+  <%= image_tag @post.image.url(:medium) %>
+</div>
+<div class="form-wrapper">
+  <%= form_for @post, html: { class: 'form-horizontal', multipart: true } do |f| %>
+    <div class="form-group">
+      <%= f.file_field :image %>
+    </div>
+    <div class="form-group text-center">
+      <%= f.label :caption %>
+      <%= f.text_field :caption %>
+    </div>
+    <div class="form-group text-center">
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
+<div class="text-center edit-links">
+  <%= link_to "Cancel", posts_path %>
+  <% if @post.user.id == current_user.id %>
+    <%= link_to "Edit", edit_post_path(@post) %>
+    <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %>
+  <% end %>
+</div>
