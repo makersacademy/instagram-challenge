@@ -1,0 +1,16 @@
+<% if @comment.errors.any? %>
+  <section id='errors' >
+    <h2> <%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved: </h2>
+    <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
+<%= form_for [@picture, @comment] do |f| %>
+  <%= f.label :comments %>
+  <%= f.text_area :comments %>
+  <%= f.submit 'Leave your comment' %>
+<% end %>

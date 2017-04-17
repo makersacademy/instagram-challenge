@@ -1,0 +1,18 @@
+<% if @picture.errors.any? %>
+  <section id='errors' >
+    <h2> <%= pluralize(@picture.errors.count, "error") %> prohibited this picture from being saved: </h2>
+    <ul>
+      <% @picture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
+<%= form_for @picture, html: { multipart: true } do |f| %>
+  <%= f.label :image, "Image" %>
+  <%= f.file_field :image %>
+  <%= f.label :descr, 'Description' %>
+  <%= f.text_field :descr %>
+  <%= f.submit 'Upload your picture' %>
+<% end %>

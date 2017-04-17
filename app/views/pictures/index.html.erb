@@ -1,0 +1,31 @@
+
+<h1 class="title"> Instaglam </h1>
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <div class="pictures col-md-4"><%= image_tag picture.image.url(:medium) %>
+    <%= link_to "Delete #{picture.descr}", picture_path(picture), method: :delete %>
+    <%= link_to "Edit #{picture.descr}", edit_picture_path(picture) %>
+    <%= link_to "Comment on #{picture.descr}", new_picture_comment_path(picture) %>
+
+    <%= link_to "Like", picture_likes_path(picture), class: 'likes-link' %>
+    <span class='likes_count'> <%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %></div>
+
+    <div class="comments"<h5><%= picture.descr %> comments</h5>
+    <% if picture.comments.any? %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+          <li>
+            <h3><%= comment.comments %></h3>
+            <%= link_to "Delete comment for #{picture.descr}", picture_comment_path(picture, comment), method: :delete %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments</p>
+    <% end %>
+  <% end %></div>
+<% else %>
+  <h1> No pictures yet! </h1>
+<% end %>
+
+<%= link_to 'Upload a picture', new_picture_path %>
