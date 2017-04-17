@@ -1,0 +1,25 @@
+<div id="add">
+  <%= link_to " Add Post", new_post_path %>
+</div>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+  <div id="post">
+    <h3><%= link_to post.name, post_path(post) %></h3>
+    <img>
+    <%= image_tag post.image.url(:thumb) %>
+  </img>
+  <div id='control'>
+    <%= link_to "Edit", edit_post_path(post) %>
+    <%= link_to "Delete", post_path(post), method: :delete %>
+    <%= link_to "Comment", new_post_comment_path(post) %>
+
+    <% if post.comments.any? %>
+    	<%= link_to pluralize(post.comments.count, 'Comment'), post_path(post) %>
+    	<% end %>
+  </div>
+</div>
+  <% end %>
+<% else %>
+  <h1>No Posts yet!</h1>
+<% end %>
+
