@@ -1,0 +1,36 @@
+<% if @posts.any? %>
+  <% @posts.each do |post|  %>
+    <li class="post">
+      <h2><%= post.caption %></h2>
+      <%= image_tag post.image.url(:thumb) %>
+
+      <div class="likes_and_unlikes">
+        <%= render partial: "posts/likes_and_unlikes", :locals => { post: post, current_user: current_user } %>
+      </div>
+
+      <span class="likes_count"> <%= post.likes.count %> </span> <%= 'like'.pluralize(post.likes.count) %>
+
+      <% if post.comments.any? %>
+        <ul>
+          <% post.comments.each do |comment| %>
+          <li>
+            <%= comment.thoughts %>
+          </li>
+          <%= link_to "Delete Comment", post_comment_path(post, comment), method: :delete %>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No comments</p>
+      <% end %>
+
+      <%= link_to "Delete Post", post_path(post), method: :delete %>
+      <%= link_to "Edit Caption", edit_post_path(post) %>
+      <%= link_to "Add Comment", new_post_comment_path(post) %>
+    </li>
+  <% end %>
+
+<% else %>
+  No posts have been added
+<% end %>
+
+<%= link_to 'Add a post', new_post_path %>
