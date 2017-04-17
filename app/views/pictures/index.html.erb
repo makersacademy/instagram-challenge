@@ -1,0 +1,32 @@
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <h2> <%= picture.caption %> </h2>
+    <% if picture.image_file_name %>
+      <%= image_tag picture.image.url(:blur) %>
+    <% end %>
+    <%= link_to "Edit #{picture.caption}", edit_picture_path(picture) %>
+    <%= link_to "Comment #{picture.caption}", new_picture_comment_path(picture) %>
+
+  <h3>Comments for <%= picture.caption %></h3>
+
+    <% if picture.comments.any? %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+          <li>
+            <%= comment.comment %>
+            <%= link_to "Like", comment_likes_path(comment), class: 'likes-link' %>
+           <span class="likes_count"> <%= comment.likes.count %> </span> <%= 'like'.pluralize(comment.likes.count) %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments.</p>
+    <% end %>
+
+  <% end %>
+
+<% else %>
+  No pictures yet
+<% end %>
+
+<a href='pictures/new'>Add a picture</a>
