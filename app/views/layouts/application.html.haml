@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", :rel => "stylesheet"}
+    %title InstagramClone
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    - if current_user
+      %section#header_menu
+        %div.col-md-12
+          %div#welcome
+            %a{:href => "/"} Welcome, #{current_user.email}
+    - if user_signed_in?
+      = link_to "Sign out", destroy_user_session_path, method: :delete
+    - else
+      = link_to "Sign in", new_user_session_path
+      = link_to "Sign up", new_user_registration_path
+      = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
+
+    %p.notice= notice
+    %p.alert= alert
+
+    =yield
+
+
+

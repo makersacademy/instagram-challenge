@@ -1,0 +1,38 @@
+!!!
+%head
+  %meta(charset="UTF-8")
+
+%body
+  %section.photo_page.col-md-6.col-md-offset-3
+    - if @photos.any?
+      - @photos.each do |photo|
+        = image_tag photo.image.url(:medium), class: 'photo'
+        %p= link_to photo.title, photo_path(photo)
+        - if current_user && current_user.id == photo.user_id
+          = link_to 'Edit', edit_photo_path(photo)
+          = link_to 'Delete', photo_path(photo), method: :delete
+        = link_to 'Comment', new_photo_comment_path(photo)
+        - if user_signed_in?
+          %div
+            = link_to "Like", photo_likes_path(photo), class: 'likes-link'
+            %span.likes_count= photo.likes.count
+            %span.likes_pluralisation= 'like'.pluralize(photo.likes.count)
+
+        - if photo.comments.any?
+          %ul
+            - photo.comments.each do |comment|
+              %li
+                = comment.thoughts
+                - if current_user && current_user.id == comment.user_id
+                  = link_to "Delete comment", photo_comment_path(photo, comment), method: :delete
+
+        - else
+          %p No comments
+
+
+    - else
+      No images yet
+
+
+  %a(href=new_photo_path) Upload a new photo
+
