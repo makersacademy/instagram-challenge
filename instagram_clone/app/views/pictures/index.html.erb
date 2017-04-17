@@ -1,0 +1,40 @@
+<% if @pictures.any? %>
+  <% @pictures.each do |picture| %>
+    <h2><%= link_to picture.title, picture_path(picture) %></h2>
+    <h5><%= link_to "Comment on #{picture.title}", new_picture_comment_path(picture)%></h5>
+    <p><%= image_tag picture.image.url(:thumb) %></p>
+    <%= link_to "Like", picture_likes_path(picture), class: 'likes-link' %>
+    <span class="likes_count"> <%= picture.likes.count %> </span> <%= 'like'.pluralize(picture.likes.count) %>
+
+    <% if current_user %>
+      <% if (picture.user_id == current_user.id) %>
+        <h5><%= link_to "Edit #{picture.title}", edit_picture_path(picture) %></h5>
+        <h5><%= link_to "Delete #{picture.title}", picture_path(picture), method: :delete %></h5>
+      <% end %>
+    <% end %>
+
+
+    <h3>Comments</h3>
+
+    <% if picture.comments.any? %>
+      <ul>
+        <% picture.comments.each do |comment| %>
+          <li>
+            <%= comment.comments %>
+            <% if current_user %>
+              <% if (comment.user_id == current_user.id)%>
+                <%= link_to "Delete review", picture_comment_path(picture, comment), method: :delete %>
+              <% end %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No comments</p>
+    <% end %>
+  <% end %>
+<% else %>
+  <h1>No pictures yet</h1>
+<% end %>
+
+<%= link_to "Add a picture", new_picture_path %>
