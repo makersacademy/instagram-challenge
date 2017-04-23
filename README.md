@@ -1,4 +1,4 @@
-#Instagram Challenge
+# Instagram Challenge
 
 This project is a clone of Instagram.
 
@@ -9,7 +9,7 @@ The goal was to enhance my knowledge of Rails and introduce some more advanced c
 * Many-to-many relationships in Rails (with tagging)
 * Twitter Bootstrap
 
-###User Stories
+### User Stories
 ````
 As a User
 So that I can use the site
@@ -40,7 +40,7 @@ So that I can share my thoughts on other users photos
 I want to be able to post a comment
 ````
 
-###Future Developments:
+### Future Developments:
 
 ````
 As a user,
@@ -94,5 +94,7 @@ rspec
 ````
 
 ###Technologies Used
+````
 * Ruby, Rails, HTML, CSS, Devise, Paperclip, Heroku, Postgres
 * Tested with: RSpec and Capybara
+````
