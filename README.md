@@ -93,7 +93,7 @@ To run tests:
 rspec
 ````
 
-###Technologies Used
+### Technologies Used
 ````
 * Ruby, Rails, HTML, CSS, Devise, Paperclip, Heroku, Postgres
 * Tested with: RSpec and Capybara
