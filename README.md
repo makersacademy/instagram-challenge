@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/varvarra/instagram-challenge.svg?branch=master)](https://travis-ci.org/varvarra/instagram-challenge)
 [![Coverage Status](https://coveralls.io/repos/github/varvarra/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/varvarra/instagram-challenge?branch=master)
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
 
 Challenge time: one weekend
 
@@ -12,11 +13,11 @@ The challenge was to build Instagram using Rails. An app should have users who c
 
 - Download the source code using ``$ git clone``
 - Navigate into the root of the directory using ``$ cd instagram-challenge``
-- Install all the dependencies by running the command ``$ bundle`` in the root directory
+- Install all the dependencies by running the command ``$ bundle install`` in the root directory
 
 - Download PostgreSQL (if you do not already have it installed)
 - `brew install imagemagick` for uploading pictures
-- `brew install phantomjs` 
+- `brew install phantomjs`
 - Within the command line, run `$ bin/rake db:create` and then `$ bin/rake db:migrate`
 - Run the app using the command `$ bin/rails server`
 - Go to localhost:3000 in rout browser to view and interact with the app
