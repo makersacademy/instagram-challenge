@@ -19,6 +19,7 @@ gem 'shoulda'
 gem 'paperclip'
 
 gem 'pg', '~> 0.18'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -45,6 +46,8 @@ gem 'byebug', platform: :mri
 
 gem 'poltergeist'
 gem 'database_cleaner'
+
+gem 'dotenv-rails'
 
 
 group :development do
