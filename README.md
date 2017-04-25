@@ -8,6 +8,9 @@ Challenge time: one weekend
 
 The challenge was to build Instagram using Rails. An app should have users who can post pictures, write comments on pictures and like a picture.
 
+## Try using 'Enjoy-instagram'
+
+Online on https://enjoy-instagram.herokuapp.com/
 
 ## Using this application
 
