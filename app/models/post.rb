@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   has_and_belongs_to_many :tags
+  has_many :likes
   has_many :comments, dependent: :destroy
   validates :image, presence: true
 

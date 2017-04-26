@@ -10,6 +10,12 @@
     <% end %>
     <%= link_to "Add a comment", new_post_comment_path(post) %>
     <%= link_to "Delete", post_path(post), method: :delete %>
+    <%= post.likes.count %>
+    <%= form_for [post, post.likes.build] do |f| %>
+      <%= submit_tag("Like")%>
+
+    <% end %>
+
   <% end %>
 <% else %>
   <h1>There are no posts yet!</h1>
