@@ -38,11 +38,7 @@ I want to be able to post a photo with multiple tags
 As a user
 So that I can share my thoughts on other users photos
 I want to be able to post a comment
-````
 
-### Future Developments:
-
-````
 As a user,
 So that I can share appreciations for other users' photos
 I want to be able to like their posts
@@ -50,7 +46,11 @@ I want to be able to like their posts
 As a user,
 So that I can see appreciations for photos others have shared
 I want to be able to view the number of likes
+````
 
+### Future Developments:
+
+````
 As a user,
 So that I keep track of likes on the posts
 I want to be able to only like a post once
