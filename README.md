@@ -20,10 +20,10 @@ Online on https://enjoy-instagram.herokuapp.com/
 
 - Download PostgreSQL (if you do not already have it installed)
 - `brew install imagemagick` for uploading pictures
-- `brew install phantomjs`
+- `brew install phantomjs` for testing js ajax calls
 - Within the command line, run `$ bin/rake db:create` and then `$ bin/rake db:migrate`
 - Run the app using the command `$ bin/rails server`
-- Go to localhost:3000 in rout browser to view and interact with the app
+- Go to localhost:3000 in the route of a browser to view and interact with the app
 
 ## Running the tests
 
@@ -36,6 +36,7 @@ Within the root of the directory, run `$ rspec` to see the results of the tests 
 - Tested using RSpec and Capybara
 - Uses Paperclip gem for uploading pictures
 - Uses Devise for User Sign up and Log in
+- Use AWS to store the pictures on S3 Bucket
 
 
 ## User Stories
@@ -65,8 +66,8 @@ Within the root of the directory, run `$ rspec` to see the results of the tests 
 
 ## Approach
 
-- In the very beginning I decided to have **picture** model to represent each post, with description and image as its properties.
-Each picture has **comments** and **likes**, represented by their own models. Each picture also belongs to a **user**, created with the help of devise gem.  
+- In the very beginning I decided to have a **picture** model to represent each post, with a description and an image as its properties.
+Each picture has **comments** and **likes**, which in turn are represented by their own models. Each picture also belongs to a **user**, created with the help of *devise* gem.  
 
 - I have built a schema based on this domain model
 
@@ -76,3 +77,4 @@ If I had a chance to start the project from the beginning, I would work more on 
 - would use `factory_girl` gem as a factory of objects for my tests. Unfortunately I've learnt about this gem quite late to change my tests. Otherwise, the tests would look more more concise, neat, easier to implement
 
 - would change the name of the 'Picture' model to the 'Post' model.
+- further styling and building a profile for every user like on a real instagram
