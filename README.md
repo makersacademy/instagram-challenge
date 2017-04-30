@@ -1,23 +1,80 @@
-Instagram Challenge
-===================
+# Instagram Challenge - Makers Academy Weekend Challenge for Week 8
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+[![Build Status](https://travis-ci.org/varvarra/instagram-challenge.svg?branch=master)](https://travis-ci.org/varvarra/instagram-challenge)
+[![Coverage Status](https://coveralls.io/repos/github/varvarra/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/varvarra/instagram-challenge?branch=master)
+[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/codeclimate)
 
-Task
------
+Challenge time: one weekend
 
-Build Instagram: Simple huh!
+The challenge was to build Instagram using Rails. An app should have users who can post pictures, write comments on pictures and like a picture.
 
-Bonus if you can write your own set of sensible user stories!
+## Try using 'Enjoy-instagram'
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+Online on https://enjoy-instagram.herokuapp.com/
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## Using this application
 
-Bonus if you can add filters!
+- Download the source code using ``$ git clone``
+- Navigate into the root of the directory using ``$ cd instagram-challenge``
+- Install all the dependencies by running the command ``$ bundle install`` in the root directory
+
+- Download PostgreSQL (if you do not already have it installed)
+- `brew install imagemagick` for uploading pictures
+- `brew install phantomjs` for testing js ajax calls
+- Within the command line, run `$ bin/rake db:create` and then `$ bin/rake db:migrate`
+- Run the app using the command `$ bin/rails server`
+- Go to localhost:3000 in the route of a browser to view and interact with the app
+
+## Running the tests
+
+Within the root of the directory, run `$ rspec` to see the results of the tests in the command line
+
+## Dependencies
+
+- Application written in Ruby 2.3.3 and built using Ruby on Rails
+- Based on a PostgreSQL database with ActiveRecord as the ORM
+- Tested using RSpec and Capybara
+- Uses Paperclip gem for uploading pictures
+- Uses Devise for User Sign up and Log in
+- Use AWS to store the pictures on S3 Bucket
+
+
+## User Stories
+
+```
+  As a user
+  So that I post pictures
+  I need to register and log in to the website
+```
+```
+  As a user
+  So that I can post pictures
+  I want to be able to upload a picture
+```
+
+```
+  As a user
+  So that I can interact with other users
+  I want to be able to leave comments on their pictures
+```
+
+```
+  As a user
+  So that I can interact with other users
+  I want to be able to leave 'likes' on their pictures
+```
+
+## Approach
+
+- In the very beginning I decided to have a **picture** model to represent each post, with a description and an image as its properties.
+Each picture has **comments** and **likes**, which in turn are represented by their own models. Each picture also belongs to a **user**, created with the help of *devise* gem.  
+
+- I have built a schema based on this domain model
+
+## Refleciton
+
+If I had a chance to start the project from the beginning, I would work more on the following:
+- would use `factory_girl` gem as a factory of objects for my tests. Unfortunately I've learnt about this gem quite late to change my tests. Otherwise, the tests would look more more concise, neat, easier to implement
+
+- would change the name of the 'Picture' model to the 'Post' model.
+- further styling and building a profile for every user like on a real instagram

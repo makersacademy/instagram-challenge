@@ -1,0 +1,39 @@
+.posts-wrapper{ id: "picture_#{picture.id}" }
+  .post
+    .post-head
+      .thumb-img
+      .user-name
+        =picture.user.username
+    .image.center-block
+      =image_tag picture.image.url(:medium), class:'img-responsive'
+    .post-bottom
+      .caption
+        .caption-content
+          .user-name
+            = picture.user.username
+          = picture.description
+      .comments{id: "comments_#{picture.id}"}
+        - if picture.comments.any?
+          - picture.comments.each do |comment|
+            .comment
+              .user-name
+                = comment.user.username
+              .comment-content
+                = comment.thoughts
+      - if current_user.present?
+        .comment-like-form.row
+          .likes
+            .like-button.col-sm-1
+              =link_to picture_likes_path(picture), class: "add-new-like col-12 col-sm-auto px-2" do
+                - if picture.liked_by_user?(current_user)
+                  %i.glyphicon.glyphicon-heart{ id: "picture_#{picture.id}_likes_icon"}
+                -else
+                  %i.glyphicon.glyphicon-heart-empty{ id: "picture_#{picture.id}_likes_icon"}
+            = render partial: 'likes', locals: { picture: picture }
+          .comment-form.col-sm-11
+            = form_for [picture, picture.comments.new] do |f|
+              = f.label :thoughts
+              = f.text_field :thoughts, placeholder: "Add a comment here..."
+              = f.submit 'Comment'
+      - if current_user.present? && current_user.owns?(picture)
+        %a= link_to "Delete", picture_path(picture), method: :delete
