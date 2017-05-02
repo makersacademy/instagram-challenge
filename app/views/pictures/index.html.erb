@@ -1,0 +1,25 @@
+<p><%= link_to 'Post a picture', new_picture_path %></p>
+  <% if @pictures.any? %>
+    <% @pictures.each do |picture| %>
+    <div class="post">
+      <%= picture.user.email %>
+        <% if picture.city %>
+          <h5><%= "#{picture.city}, #{picture.country}" %></h5>
+        <% end %>
+        <%= image_tag picture.image.url(:large) %></br>
+        <%= picture.description %>
+        <% if current_user %>
+        <%= link_to 'Comment', new_picture_comment_path(picture) %>
+        <% if current_user.owns?(picture) %>
+          <%= link_to 'Edit', edit_picture_path(picture) %>
+          <%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <% end %>
+        <% picture.comments.each do |comment| %>
+          <h5><b><%= comment.user.email %>: </b><%= comment.content %></h5>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+  No pictures yet
+  <% end %>

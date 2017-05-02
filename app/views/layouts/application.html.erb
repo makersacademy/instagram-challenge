@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Picto</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+</head>
+<body>
+<div class="nav-bar">
+  <div class="logo">
+    <%=image_tag "logo.png"%>
+  </div>
+  <!-- <div class="upload">
+    <%=image_tag "upload.png" %>
+  </div> -->
+  <div class="title-heading">
+    <h1>Picto</h1>
+  </div>
+</div>
+<p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% else %>
+  <%= link_to "Sign in", new_user_session_path %>
+  <%= link_to "Sign up", new_user_registration_path %>
+<% end %>
+<%= yield %>
+
+</body>
+</html>
