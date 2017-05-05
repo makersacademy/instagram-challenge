@@ -50,6 +50,12 @@ I would like to be able to 'like' a fellow users post
 As a WeeBroochMate user
 So I can share with visually impaired folk
 I would like to add some alt text to my post
+
+BONUS
+
+As a WeeBroochMate user
+I would like to be able to be able to add filters to my pictures
+So that my brooches look even better than real life
 ```
 
 ## Instructions
