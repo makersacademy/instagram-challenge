@@ -1,15 +1,66 @@
-Instagram Challenge
-===================
+#Instagram Challenge
 
-Instructions
--------
+##User Stories
+
+```
+As a WeeBroochMate user
+I would like to be able to upload a picture of a brooch
+So everyone can admire how amazing it is
+
+As a WeeBroochMate user
+I would like to sign up as a user
+So I can have my own unique account
+
+As a WeeBroochMate user
+I would like to sign in with a password
+So I can keep my lovely posts secure
+
+As a WeeBroochMate user
+I would like to sign out
+So that my brooch account is safe
+
+As a WeeBroochMate user
+I would like to post a description with my brooch
+So that I can tell everyone how wonderful it is
+
+As a WeeBroochMate user
+I would like to have my name appear with my post
+So that everyone knows I'm the owner of an amazing brooch
+
+As a WeeBroochMate user
+I would like people to be able to comment on my post
+So that they can tell me how wonderful my brooches admire
+
+As a WeeBroochMate user
+I would like to be able to delete my post
+So if a brooch falls out of favour it is gone!
+
+As a WeeBroochMate user
+So I can find out how much others love my brooches
+I would like them to be able to comment on my post
+
+As a WeeBroochMate user
+So I can communicate with people who comment
+I would like to be able to post numerous comments on my posts
+
+As a WeeBroochMate user
+So I can share the love
+I would like to be able to 'like' a fellow users post
+
+As a WeeBroochMate user
+So I can share with visually impaired folk
+I would like to add some alt text to my post
+```
+
+##Instructions
+
 * Challenge time: one weekend
 * Feel free to use Google, your notes, books, etc., but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**
 * You must submit a pull request to this repo with your code by 9am Monday morning
 
-Task
+##Task
 -----
 
 Build Instagram: Simple huh!
