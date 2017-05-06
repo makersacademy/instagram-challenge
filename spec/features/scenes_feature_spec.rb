@@ -21,4 +21,15 @@ context 'scenes have been added' do
   end
 end
 
+context 'creating scenes' do
+  scenario 'prompts user to fill out a form, then displays the new scene' do
+    visit '/scenes'
+    click_link 'Add a scene'
+    fill_in 'Title', with: 'Waves'
+    click_button 'Create Scene'
+    expect(page).to have_content 'Waves'
+    expect(current_path).to eq '/scenes'
+  end
+end
+
 end
