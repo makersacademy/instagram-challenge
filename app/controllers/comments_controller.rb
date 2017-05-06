@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to posts_path
     else
+      flash[:notice] = 'Comment field must not be empty'
       render :new
     end
   end
