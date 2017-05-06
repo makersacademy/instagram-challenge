@@ -11,12 +11,12 @@ feature 'posts' do
 
   context 'posts have been added' do
     before do
-      Post.create(image: Rails.root + "spec/fixtures/cat.png", description: 'Lovely')
+      Post.create(image: File.open("#{Rails.root}/spec/fixtures/cat.png"), description: 'Lovely')
     end
 
     scenario 'display posts' do
       visit posts_path
-      expect(page).to have_content(Rails.root + "spec/fixtures/file.pdf")
+      expect(page).to have_content("#{Rails.root}/spec/fixtures/cat.png")
       expect(page).to have_content('Lovely')
       expect(page).not_to have_content('No posts yet')
     end
