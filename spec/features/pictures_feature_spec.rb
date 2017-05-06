@@ -22,13 +22,21 @@ feature 'pictures' do
       expect(current_path).to eq '/pictures'
     end
 
-    scenario 'user can view picture on separate page' do
+    # scenario 'user can view picture on separate page' do
+    #   Picture.create(caption: 'sally')
+    #   picture = Picture.first
+    #   visit '/pictures'
+    #   click_link "#{picture.caption}"
+    #   expect(current_path).to eq "/restaurants/#{picture.id}"
+    #   expect(page).to have_content 'sally'
+    # end
+
+    scenario 'user can delete pictures' do
       Picture.create(caption: 'sally')
-      picture = Picture.first
       visit '/pictures'
-      click_link "#{picture.caption}"
-      expect(current_path).to eq "/restaurants/#{picture.id}"
-      expect(page).to have_content 'sally'
+      click_link 'delete this picture'
+      expect(page).not_to have_content 'sally'
+      expect(page).to have_content 'picture deleted'
     end
 
 end
