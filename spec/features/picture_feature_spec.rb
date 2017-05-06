@@ -58,4 +58,17 @@ feature 'pictures' do
       expect(current_path).to eq "/pictures/#{Picture.last.id}"
     end
   end
+
+  context 'deleting pictures' do
+    before do
+      create_picture
+    end
+
+    scenario 'removes a picture when user clicks delete link' do
+      visit root_path
+      click_link 'Delete Me'
+      expect(page).not_to have_content 'Me'
+      expect(page).to have_content 'Picture deleted successfully'
+    end
+  end
 end
