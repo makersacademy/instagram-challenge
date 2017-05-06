@@ -22,9 +22,13 @@
         <div id='pic-add-comment'>
           <%= link_to "Comment", new_picture_comment_path(picture) %>
         </div>
-        <div id='pic-delete'>
-          <%= link_to "Delete", picture_path(picture), method: :delete %>
-        </div>
+        <% unless current_user.nil? %>
+          <% if picture.user_id == current_user.id %>
+            <div id='pic-delete'>
+              <%= link_to "Delete", picture_path(picture), method: :delete %>
+            </div>
+          <% end %>
+        <% end %>
       </div>
 
     <% end %>

@@ -58,8 +58,7 @@ feature 'pictures' do
     scenario 'cannot delete a picture unless they created it' do
       click_link 'Sign out'
       sign_up(email: "philip@test.com")
-      click_link 'Delete'
-      expect(page).not_to have_content 'Picture deleted successfully'
+      expect(page).not_to have_content 'Delete'
       expect(page).to have_content 'Just a fan enjoying the game'
     end
   end
