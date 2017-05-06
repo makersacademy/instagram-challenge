@@ -16,7 +16,7 @@ feature 'pictures' do
     scenario 'user can share a picture' do
       visit '/pictures'
       click_link 'share a picture'
-      fill_in 'Caption', with: 'sally'
+      fill_in 'caption', with: 'sally'
       click_button 'share picture'
       expect(page).to have_content 'sally'
       expect(current_path).to eq '/pictures'
