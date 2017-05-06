@@ -9,7 +9,6 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -22,6 +21,9 @@ gem 'pry'
 
 gem 'timecop'
 
+gem 'paperclip'
+
+gem 'pg', '~> 0.18'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -37,7 +39,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :test do
+  gem 'rspec-collection_matchers'
   gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+  gem 'shoulda'
+  gem 'database_cleaner'
 end
 
 group :development, :test do
