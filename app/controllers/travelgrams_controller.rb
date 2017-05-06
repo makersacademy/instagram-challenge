@@ -1,4 +1,6 @@
 class TravelgramsController < ApplicationController
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @adventures = Travelgram.all
   end
@@ -9,6 +11,8 @@ class TravelgramsController < ApplicationController
 
   def create
     @adventure = Travelgram.create(travelgram_params)
+    @adventure.user = current_user
+    # require 'pry';binding.pry
     if @adventure.save
       redirect_to '/travelgrams'
     else
@@ -21,11 +25,11 @@ class TravelgramsController < ApplicationController
   end
 
   def edit
-    @adventure = Travelgram.find(params[:id])
+    @adventure = current_user.travelgrams.find(params[:id])
   end
 
   def update
-    @adventure = Travelgram.find(params[:id])
+    @adventure = current_user.travelgrams.find(params[:id])
     @adventure.update(travelgram_params)
     redirect_to '/travelgrams'
   end

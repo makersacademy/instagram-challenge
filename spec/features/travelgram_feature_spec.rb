@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 feature 'travelgram' do
+  before do
+    User.create(email: "user@name.com", password: 'password', password_confirmation: 'password')
+    visit '/'
+    click_link 'Sign in'
+    fill_in 'Email', with: "user@name.com"
+    fill_in 'Password', with: 'password'
+    click_button 'Log in'
+  end
+
   context 'no posts have been added' do
     scenario 'should display a prompt to add a post' do
       visit '/travelgrams'
@@ -11,7 +20,8 @@ feature 'travelgram' do
 
   context 'adventures have been added' do
     before do
-      Travelgram.create(name: 'Bali trip')
+      user = User.first
+      user.travelgrams.create(name: 'Bali trip')
     end
 
     scenario 'Display adventures' do
@@ -45,7 +55,8 @@ feature 'travelgram' do
 
   context 'viewing adventures' do
     before do
-      adventure = Travelgram.create(name: 'Bali')
+      user = User.first
+      user.travelgrams.create(name: 'Bali trip')
     end
 
     scenario 'lets a user view an adventure' do
@@ -58,7 +69,8 @@ feature 'travelgram' do
 
   context 'editing adventures' do
     before do
-      Travelgram.create(name: 'Bali', description: 'Breathtaking', id: 1)
+      user = User.first
+      user.travelgrams.create(name: 'Bali trip')
     end
 
     scenario 'let a user edit an adventure' do
@@ -70,13 +82,14 @@ feature 'travelgram' do
       click_link 'Bali trip'
       expect(page).to have_content 'Bali trip'
       expect(page).to have_content 'Loved it'
-      expect(current_path).to eq '/travelgrams/1'
+      expect(current_path).to eq "/#{Travelgram.last.id}"
     end
   end
 
   context 'deleting adventures' do
     before do
-      Travelgram.create(name: 'Bali', description: 'Breathtaking', id: 1)
+      user = User.first
+      user.travelgrams.create(name: 'Bali trip')
     end
 
     scenario 'removes an adventure when a user clicks a delete link' do
