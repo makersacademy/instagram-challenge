@@ -1,3 +1,11 @@
 <div class='container'>
-  <h3>No photos to display yet</h3>
+  <a href='/photos/new'>Add a photo</a>
+  <% if @photos.any? %>
+    <% @photos.each do |photo| %>
+      <h4><%= photo.created_at.strftime("%d/%m/%Y %H:%M") %></h4>
+      <h2><<%= link_to photo.caption, photo_path(photo) %></h2>
+    <% end %>
+  <% else %>
+    <h3>No photos to display yet</h3>
+  <% end %>
 </div>
