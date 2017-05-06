@@ -15,7 +15,6 @@ As a user,
 So I can use the application,
 I want to be able to sign out.
 
-
 #### User story 4
 As a user,
 So I can post pictures,
