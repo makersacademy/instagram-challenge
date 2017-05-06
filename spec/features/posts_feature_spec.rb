@@ -16,7 +16,7 @@ feature 'posts' do
 
     scenario 'display posts' do
       visit posts_path
-      expect(page).to have_css('img', text: "cat.png")
+      expect(page).to have_css("img[src*= 'cat.png']")
       expect(page).to have_content('Lovely')
       expect(page).not_to have_content('No posts yet')
     end
@@ -27,7 +27,7 @@ feature 'posts' do
       visit posts_path
       click_link('Add a post')
       fill_in 'Description', with: 'Lovely'
-      click_button('Choose file')
+      attach_file('post_image', Rails.root + "spec/fixtures/cat.png")
       click_button('Create Post')
       expect(page).to have_content('Lovely')
       expect(current_path).to eq posts_path
@@ -43,6 +43,17 @@ feature 'posts' do
       click_link('Nice')
       expect(page).to have_content('Nice')
       expect(current_path).to eq post_path(description)
+    end
+  end
+
+  context 'deleting posts' do
+    before { Post.create description: "Nice", image:  File.open("#{Rails.root}/spec/fixtures/cat.png")}
+
+    scenario 'deletes post when delete is clicked' do
+      visit posts_path
+      click_link 'Delete post'
+      expect(page).not_to have_content('Nice')
+      expect(page).to have_content('Post deleted successfully')
     end
   end
 end
