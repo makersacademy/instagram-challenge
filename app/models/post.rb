@@ -1,4 +1,4 @@
 class Post < ApplicationRecord
-
   
+
 end
