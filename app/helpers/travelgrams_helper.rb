@@ -1,0 +1,2 @@
+module TravelgramsHelper
+end

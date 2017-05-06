@@ -1,2 +1,0 @@
-class Adventure < ApplicationRecord
-end

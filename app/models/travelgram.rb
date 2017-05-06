@@ -1,0 +1,2 @@
+class Travelgram < ApplicationRecord
+end
