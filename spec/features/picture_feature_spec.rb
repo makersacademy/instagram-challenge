@@ -32,6 +32,17 @@ feature 'pictures' do
       expect(page).to have_content 'Me'
       expect(current_path).to eq '/pictures'
     end
+
+    context 'an invalid picture' do
+    scenario 'does not let you submit a name that is too short' do
+      visit '/pictures'
+      click_link 'Add a picture'
+      fill_in 'Name', with: 'A'
+      click_button 'Upload picture'
+      expect(page).not_to have_css 'h2', text: 'A'
+      expect(page).to have_content 'error'
+    end
+  end
   end
 
   context 'viewing pictures' do
