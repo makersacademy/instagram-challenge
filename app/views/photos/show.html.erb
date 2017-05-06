@@ -1,8 +1,27 @@
 <div class='container'>
-  <h4><%= @photo.created_at.strftime("%d/%m/%Y %H:%M") %></h4>
-  <h4><%= @photo.location %></h4>
-  <h2><%= @photo.caption%></h2>
-  <%= image_tag @photo.image.url(:medium) %>
-  <%= link_to 'Update Photo', edit_photo_path(@photo) %>
-  <%= link_to 'Delete Photo', photo_path(@photo), method: :delete %>
+  <div class='photo'>
+    <h4><%= @photo.created_at.strftime("%d/%m/%Y %H:%M") %></h4>
+    <h4><%= @photo.location %></h4>
+    <h2><%= @photo.caption%></h2>
+    <%= image_tag @photo.image.url(:medium) %>
+  </div>
+  <div class='photo-options'>
+    <%= link_to 'Update Photo', edit_photo_path(@photo) %>
+    <%= link_to 'Delete Photo', photo_path(@photo), method: :delete %>
+  </div>
+  <div class='comments'>
+    <%= form_for [@photo, @comment] do |f| %>
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+      <%= f.submit 'Leave Comment' %>
+    <% end %>
+    <% if @comments.any? %>
+      <% @comments.each do |comment| %>
+      <div class='comments'>
+        <%= comment.content %>
+      </div>
+      <% end %>
+    <% end %>
+    
+  </div>
 </div>
