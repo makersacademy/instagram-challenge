@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'haml'
 gem 'pry'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 
 group :test do
   gem 'rspec-rails'
