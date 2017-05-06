@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  has_many :comments, dependent: :destroy
+
   def upvote
     if self.likes
       self.likes += 1
