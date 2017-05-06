@@ -9,9 +9,21 @@ feature 'posts' do
     end
   end
 
+  context 'username' do
+    scenario 'username should be displayed with post' do
+      visit posts_path
+      sign_up('saucy@cat.com')
+      create_post
+      expect(page).to have_content('pixel')
+    end
+  end
+
   context 'posts have been added' do
     before do
-      Post.create(image: File.open("#{Rails.root}/spec/fixtures/cat.png"), description: 'Lovely', user: User.new)
+      Post.create(image: File.open("#{Rails.root}/spec/fixtures/cat.png"), description: 'Lovely', user: User.create(username: 'cat',
+                                              email: 'cat@meow.com',
+                                              password: 'meowmeow',
+                                              password_confirmation: 'meowmeow'))
     end
 
     scenario 'display posts' do
@@ -35,7 +47,10 @@ feature 'posts' do
 
   context 'viewing posts' do
 
-    let!(:description){Post.create(description:'Nice', user: User.new)}
+    let!(:description){Post.create(description:'Nice', user: User.create(username: 'cat',
+                email: 'cat@meow.com',
+                password: 'meowmeow',
+                password_confirmation: 'meowmeow'))}
 
     scenario 'lets user view post' do
       visit posts_path

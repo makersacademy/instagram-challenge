@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 feature 'commenting' do
-  before { Post.create description: "Nice", image:  File.open("#{Rails.root}/spec/fixtures/cat.png"), user: User.new }
+  before { Post.create description: "Nice", image:  File.open("#{Rails.root}/spec/fixtures/cat.png"), user: User.create(
+              username: 'cat',
+              email: 'cat@meow.com',
+              password: 'meowmeow',
+              password_confirmation: 'meowmeow') }
 
   scenario 'allows users to comment using form' do
     visit posts_path

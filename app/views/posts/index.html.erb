@@ -1,8 +1,10 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
+    <%= post.user.username %>
     <%= image_tag post.image.url(:medium) %>
     <p><%= link_to post.description, post_path(post) %></p>
     <% post.comments.each do |text| %>
+    <%= text.user.username %>
     <%= text.comment %></br>
     <% end %>
     <% if current_user %>

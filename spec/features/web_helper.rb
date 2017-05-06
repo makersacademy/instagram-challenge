@@ -1,4 +1,5 @@
 def sign_up(email)
+  visit posts_path
   click_link 'Sign up'
   fill_in 'Username', with: 'pixel'
   fill_in 'Email', with: email
