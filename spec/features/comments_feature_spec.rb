@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'comments' do
-  before { Picture.create caption: 'sally' }
+  before { Picture.create caption: 'sally', user: User.new }
 
   scenario 'users can comment on a picture' do
      visit '/pictures'
