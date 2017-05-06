@@ -22,4 +22,13 @@ feature 'pictures' do
       expect(current_path).to eq '/pictures'
     end
 
+    scenario 'user can view picture on separate page' do
+      Picture.create(caption: 'sally')
+      picture = Picture.first
+      visit '/pictures'
+      click_link "#{picture.caption}"
+      expect(current_path).to eq "/restaurants/#{picture.id}"
+      expect(page).to have_content 'sally'
+    end
+
 end
