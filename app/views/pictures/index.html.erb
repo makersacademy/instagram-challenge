@@ -10,6 +10,18 @@
         <div id='pic-itself'>
           <img src="<%=picture.url%>" alt="<%=picture.title%>" style="width:300px;height:300px;">
         </div>
+        <div id='pic-comments'>
+          <% unless picture.comments.empty? %>
+            <% picture.comments.each do |comment| %>
+              <div id='pic-each-comment'>
+                <%= comment.thoughts %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div id='pic-add-comment'>
+          <%= link_to "Comment", new_picture_comment_path(picture) %>
+        </div>
         <div id='pic-delete'>
           <%= link_to "Delete", picture_path(picture), method: :delete %>
         </div>
