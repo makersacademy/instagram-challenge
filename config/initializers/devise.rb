@@ -7,6 +7,10 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '5149244dc3da30f141947d329e84aa21fc1dbd9723d484ca7a0bff751b809f4afbc9797638beeb864510efbd8586631f0989a214129bc3543840c5e9a65c13b5'
+  require './facebook_api_key'
+
+  config.omniauth :facebook, "1670001329969084", FACEBOOK_APP_SECRET,
+  callback_url: 'http://localhost:3000/users/auth/facebook/callback'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -35,7 +39,6 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
   # config.authentication_keys = [:email]
-
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
   # find_for_authentication method and considered in your model lookup. For instance,

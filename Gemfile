@@ -6,6 +6,8 @@ git_source(:github) do |repo_name|
 end
 
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
+gem 'omniauth-facebook'
+gem 'pry'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
 # Use postgresql as the database for Active Record
