@@ -60,7 +60,7 @@ feature 'photos' do
 
     scenario 'lets a user view a photo' do
       upload_photo
-      visit '/photos'
+      visit '/'
       click_link 'Avocado and Scrambled eggs #Living'
       expect(page).to have_content 'Avocado and Scrambled eggs #Living'
       expect(page).to have_content '06/05/2017 14:00'
