@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <meta charset="utf-8">
     <title>Instagram</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign in", new_user_session_path %>
-      <%= link_to "Sign up", new_user_registration_path %>
-    <% end %>
+    <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href='/pads'>
+                <img alt="Brand" src="https://image.flaticon.com/icons/svg/174/174855.svg">
+              </a>
+              <p class="navbar-text">Instagram</p>
+            </div>
+
+            <ul class='nav navbar-nav navbar-right'>
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to "Sign out", destroy_user_session_path, method: :delete, :class => "btn btn-default navbar-btn" %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "Sign in", new_user_session_path, :class => "btn btn-default navbar-btn" %>
+                </li>
+                <li>
+                  <%= link_to "Sign up", new_user_registration_path, :class => "btn btn-default navbar-btn" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </nav>
     <%= notice %>
     <%= yield %>
   </body>
