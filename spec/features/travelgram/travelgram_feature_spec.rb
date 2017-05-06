@@ -31,4 +31,17 @@ feature 'travelgram' do
       expect(current_path).to eq '/travelgrams'
     end
   end
+
+  context 'viewing adventures' do
+    before do
+      adventure = Travelgram.create(name: 'Bali')
+    end
+
+    scenario 'lets a user view an adventure' do
+      visit '/travelgrams'
+      click_link 'Bali'
+      expect(page).to have_content 'Bali'
+      expect(current_path).to eq "/travelgrams/#{Travelgram.last.id}"
+    end
+  end
 end

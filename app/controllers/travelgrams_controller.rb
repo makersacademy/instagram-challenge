@@ -12,6 +12,10 @@ class TravelgramsController < ApplicationController
     redirect_to '/travelgrams'
   end
 
+  def show
+    @adventure = Travelgram.find(params[:id])
+  end
+
   def travelgram_params
     params.require(:travelgram).permit(:name)
   end

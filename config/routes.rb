@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get 'travelgram' => 'travelgram#index'
+  get 'travelgrams' => 'travelgrams#index'
   resources :travelgrams
 end
