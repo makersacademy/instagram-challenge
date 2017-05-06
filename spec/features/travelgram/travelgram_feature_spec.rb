@@ -8,4 +8,16 @@ feature 'travelgram' do
       expect(page).to have_link 'Share Adventure'
     end
   end
+
+  context 'Adventures have been added' do
+    before do
+      Adventure.create(name: 'Bali trip')
+    end
+
+    scenario 'Display adventures' do
+      visit 'travelgram'
+      expect(page).to have_content('Bali trip')
+      expect(page).not_to have_content('Start posting!')
+    end
+  end
 end
