@@ -8,7 +8,7 @@ feature 'pictures' do
     end
 
     scenario 'show all pictures' do
-      Picture.create(caption: 'sally')
+      Picture.create(caption: 'sally', user: User.new)
       visit '/pictures'
       expect(page).to have_content('sally')
     end
@@ -32,7 +32,7 @@ feature 'pictures' do
     # end
 
     scenario 'user can delete pictures' do
-      Picture.create(caption: 'sally')
+      Picture.create(caption: 'sally', user: User.new)
       visit '/pictures'
       click_link 'delete this picture'
       expect(page).not_to have_content 'sally'
