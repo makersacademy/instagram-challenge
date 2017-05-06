@@ -7,17 +7,19 @@ feature 'pictures' do
       expect(page).to have_link 'share a picture'
     end
 
-    context 'pictures have been added' do
-      
-      before do
-        Picture.create(caption: 'sally')
-      end
+    scenario 'show all pictures' do
+      Picture.create(caption: 'sally')
+      visit '/pictures'
+      expect(page).to have_content('sally')
+    end
 
-      scenario 'show all pictures' do
-        visit '/pictures'
-        expect(page).to have_content('sally')
-      end
-
+    scenario 'user can share a picture' do
+      visit '/pictures'
+      click_link 'share a picture'
+      fill_in 'Caption', with: 'sally'
+      click_button 'Create Picture'
+      expect(page).to have_content 'sally'
+      expect(current_path).to eq '/pictures'
     end
 
 end
