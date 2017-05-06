@@ -13,7 +13,7 @@ end
 
 def add_photo
   click_link ('Share an experience')
-  attach_file('Image', Rails.root + '/spec/fixtures/wolf_creek.jpg')
+  attach_file('Image', Rails.root + 'spec/fixtures/wolf_creek.jpg')
   fill_in "Description", with: "Heavan for powder hounds"
   click_button 'Post experience'
 end
