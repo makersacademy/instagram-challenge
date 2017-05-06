@@ -27,6 +27,15 @@ class TravelgramsController < ApplicationController
     redirect_to '/travelgrams'
   end
 
+  def destroy
+    @adventure = Travelgram.find(params[:id])
+    @adventure.destroy
+    flash[:notice] = "Adventure deleted successfully"
+    redirect_to '/travelgrams'
+  end
+
+  private
+
   def travelgram_params
     params.require(:travelgram).permit(:name, :description)
   end

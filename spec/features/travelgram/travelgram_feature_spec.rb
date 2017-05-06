@@ -62,4 +62,17 @@ feature 'travelgram' do
       expect(current_path).to eq '/travelgrams/1'
     end
   end
+
+  context 'deleting adventures' do
+    before do
+      Travelgram.create(name: 'Bali', description: 'Breathtaking', id: 1)
+    end
+
+    scenario 'removes an adventure when a user clicks a delete link' do
+      visit 'travelgrams'
+      click_link 'Delete Bali'
+      expect(page).not_to have_content 'Bali'
+      expect(page).to have_content 'Adventure deleted successfully'
+    end
+  end
 end
