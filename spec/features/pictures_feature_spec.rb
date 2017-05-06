@@ -39,4 +39,16 @@ feature 'pictures' do
       expect(page).to have_content 'picture deleted'
     end
 
+    scenario 'can see who posted a picture' do
+      visit '/users/sign_up'
+      fill_in 'email', with: 'kate@kate.com'
+      fill_in 'password', with: '123456'
+      fill_in 'password confirmation', with: '123456'
+      click_button 'sign up'
+      click_link 'share a picture'
+      fill_in 'caption', with: 'sally'
+      click_button 'share picture'
+      expect(page).to have_content 'kate@kate.com'
+    end
+
 end
