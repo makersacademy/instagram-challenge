@@ -70,4 +70,14 @@ feature 'photos' do
       expect(page).not_to have_content 'Avocado and Scrambled eggs #Living'
     end
   end
+
+  context 'deleting photos'
+
+  scenario 'removes a photo when a user clicks a delete link' do
+    upload_photo
+    visit '/photos/1'
+    click_link 'Delete Photo'
+    expect(page).not_to have_content 'Avocado and Scrambled eggs #Living'
+    expect(page).to have_content 'Photo deleted successfully'
+  end
 end
