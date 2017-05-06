@@ -5,7 +5,7 @@ feature 'comments' do
 
   scenario 'users can comment on a picture' do
      visit '/pictures'
-     fill_in 'Opinion', with: 'lovexxx'
+     fill_in 'any thoughts?', with: 'lovexxx'
      click_button 'comment'
 
      expect(current_path).to eq '/pictures'
