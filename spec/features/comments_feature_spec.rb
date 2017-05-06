@@ -9,10 +9,13 @@ feature 'commenting' do
     visit '/travelgrams'
     click_link 'Bali'
     click_link 'Comment'
+
     fill_in 'Thoughts', with: 'looks amazing!'
+
     click_button 'Done'
     expect(current_path).to eq '/travelgrams/1'
     expect(page).to have_content 'looks amazing!'
   end
+
 end
 

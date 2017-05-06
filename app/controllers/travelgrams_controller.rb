@@ -23,7 +23,6 @@ class TravelgramsController < ApplicationController
   def update
     @adventure = Travelgram.find(params[:id])
     @adventure.update(travelgram_params)
-
     redirect_to '/travelgrams'
   end
 

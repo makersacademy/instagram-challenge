@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   def new
     @adventure = Travelgram.find(params[:travelgram_id])
     @comments = Comment.new
+
   end
 
   def create
@@ -16,5 +17,3 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:thoughts)
   end
 end
-
-
