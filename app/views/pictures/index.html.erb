@@ -1,47 +1,52 @@
-<% if @pictures.any? %>
-
-  <div id='all-pics'>
-    <% @pictures.each do |picture| %>
-
-      <div id='each-pic'>
-        <div id='pic-title'>
-          <h2><%= link_to picture.title, picture_path(picture) %></h2>
-        </div>
-        <div id='pic-itself'>
-          <img src="<%=picture.url%>" alt="<%=picture.title%>" style="width:300px;height:300px;">
-        </div>
-        <div id='pic-comments'>
-          <% unless picture.comments.empty? %>
-            <% picture.comments.each do |comment| %>
-              <div id='pic-each-comment'>
-                <%= comment.thoughts %>
+<div class='container'>
+  <div class="row">
+    <div class="col-sm-12">
+      <% if @pictures.any? %>
+        <div class="container" id='all-pics'>
+          <div class="row">
+            <% @pictures.each do |picture| %>
+              <div class="col-sm-4" id='each-pic'>
+                <div id='pic-title'>
+                  <h2><%= link_to picture.title, picture_path(picture) %></h2>
+                </div>
+                <div id='pic-itself'>
+                  <img src="<%=picture.url%>" alt="<%=picture.title%>" style="width:100%">
+                </div>
+                <div id='pic-comments'>
+                  <% unless picture.comments.empty? %>
+                    <% picture.comments.each do |comment| %>
+                      <div id='pic-each-comment'>
+                        <%= comment.thoughts %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div id='pic-add-comment'>
+                  <%= link_to "Comment", new_picture_comment_path(picture) %>
+                </div>
+                <% unless current_user.nil? %>
+                  <% if picture.user_id == current_user.id %>
+                    <div id='pic-delete'>
+                      <%= link_to "Delete", picture_path(picture), method: :delete %>
+                    </div>
+                  <% end %>
+                <% end %>
               </div>
             <% end %>
-          <% end %>
+          </div>
         </div>
-        <div id='pic-add-comment'>
-          <%= link_to "Comment", new_picture_comment_path(picture) %>
+      <% else %>
+        <div class="container" id='no-pics'>
+          <div class="row">
+            <h2>No pictures yet</h2>
+          </div>
         </div>
-        <% unless current_user.nil? %>
-          <% if picture.user_id == current_user.id %>
-            <div id='pic-delete'>
-              <%= link_to "Delete", picture_path(picture), method: :delete %>
-            </div>
-          <% end %>
-        <% end %>
+      <% end %>
+      <div class="container" id='add-a-pic'>
+        <div class="row">
+          <a href='/pictures/new'>Add a picture</a>
+        </div>
       </div>
-
-    <% end %>
+    </div>
   </div>
-
-<% else %>
-
-  <div id='no-pics'>
-    <h2>No pictures yet</h2>
-  </div>
-
-<% end %>
-
-<div id='add-a-pic'>
-  <a href='/pictures/new'>Add a picture</a>
 </div>
