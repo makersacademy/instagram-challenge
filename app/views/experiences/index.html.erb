@@ -1,2 +1,9 @@
-<p>No experiences yet</p>
-<%= link_to "Share an experience", new_experience_path %>
+<% if @experiences.any? %>
+  <% @experiences.each do |experience| %>
+    <%= image_tag experience.image.url(:medium) %>
+    <%= experience.description %>
+  <% end %>
+<% else %>
+  <p>No experiences yet</p>
+  <%= link_to "Share an experience", new_experience_path %>
+<% end %>

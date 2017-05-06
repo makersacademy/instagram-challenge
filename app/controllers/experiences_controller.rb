@@ -1,6 +1,6 @@
 class ExperiencesController < ApplicationController
   def index
-    @experience = Experience.all
+    @experiences = Experience.all
   end
 
   def new
@@ -9,6 +9,11 @@ class ExperiencesController < ApplicationController
 
   def create
     @experience = Experience.new(experience_params)
+    if @experience.save
+      redirect_to '/'
+    else
+      render 'new'
+    end
   end
 
   private
