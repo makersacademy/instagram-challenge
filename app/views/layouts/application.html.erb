@@ -2,20 +2,25 @@
 <html>
 <head>
   <title>InstagramClone</title>
-  <h1>Instagram<h2>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Dancing+Script:700' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 <div class="nav">
+  <%=image_tag("instagram.png", alt: "instragram",:width => 35, :height => 35)%>
+  <h1>Instagram</h1>
+</div>
+
+<div class="sign_out">
   <% if user_signed_in? %>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete %></a>
 
   <% else %>
-  <a class="sign_in"><%= link_to "Sign in", new_user_session_path %></a>
   <a class="sign_up"><%= link_to "Sign up", new_user_registration_path %></a>
+  <a class="sign_in"><%= link_to "Sign in", new_user_session_path %></a>
 
 <% end %>
 </div>
