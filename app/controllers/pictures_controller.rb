@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
+  before_action :require_permission, :only => [:destroy]
 
   def index
     @pictures = Picture.all
@@ -11,11 +12,11 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.new(picture_params)
     if @picture.save
       redirect_to pictures_path
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -34,5 +35,11 @@ class PicturesController < ApplicationController
 
   def picture_params
     params.require(:picture).permit(:title, :url)
+  end
+
+  def require_permission
+    if current_user.id != Picture.find(params[:id]).user_id
+      redirect_to '/'
+    end
   end
 end

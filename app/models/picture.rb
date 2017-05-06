@@ -1,5 +1,12 @@
 class Picture < ApplicationRecord
+
+  belongs_to :user
   has_many :comments, dependent: :destroy
 
-  validates_format_of :url, :with => URI::regexp(%w(http https))
+  def build_comment(comment_params, user)
+    comment = user.comments.new(comment_params)
+    comment.update(picture_id: self.id)
+    comment
+  end
+
 end
