@@ -1,11 +1,31 @@
 <% if @pictures.any? %>
-  <% @pictures.each do |picture| %>
-    <h2><%= link_to picture.title, picture_path(picture) %></h2>
-    <img src="<%=picture.url%>" alt="<%=picture.title%>" style="width:300px;height:300px;">
-    <%= link_to "Delete", picture_path(picture), method: :delete %>
-  <% end %>
+
+  <div id='all-pics'>
+    <% @pictures.each do |picture| %>
+
+      <div id='each-pic'>
+        <div id='pic-title'>
+          <h2><%= link_to picture.title, picture_path(picture) %></h2>
+        </div>
+        <div id='pic-itself'>
+          <img src="<%=picture.url%>" alt="<%=picture.title%>" style="width:300px;height:300px;">
+        </div>
+        <div id='pic-delete'>
+          <%= link_to "Delete", picture_path(picture), method: :delete %>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+
 <% else %>
-  <h2>No pictures yet</h2>
+
+  <div id='no-pics'>
+    <h2>No pictures yet</h2>
+  </div>
+
 <% end %>
 
-<a href='/pictures/new'>Add a picture</a>
+<div id='add-a-pic'>
+  <a href='/pictures/new'>Add a picture</a>
+</div>
