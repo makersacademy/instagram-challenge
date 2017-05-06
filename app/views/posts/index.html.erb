@@ -1,10 +1,12 @@
 <% if Post.all.any? %>
   <% Post.all.each do |post| %>
-    <h2><%= post.description %></h2>
-    <%= post.image %>
+  <%= image_tag post.image.url(:medium) %>
+  <p><%= link_to post.description, post_path(post) %></p>
+
+
   <% end %>
 <% else %>
   <h1>No posts yet</h1>
 <% end %>
 
-<a href="#">Add a post</a>
+<%= link_to 'Add a post', new_post_path %>
