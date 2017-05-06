@@ -13,3 +13,9 @@ def create_post
   attach_file('post_image', Rails.root + "spec/fixtures/cat.png")
   click_button('Create Post')
 end
+
+def leave_comment(text)
+  click_link('Comment')
+  fill_in('Comment', with: text)
+  click_button('Leave comment')
+end

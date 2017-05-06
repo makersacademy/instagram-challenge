@@ -2,6 +2,9 @@
   <% @posts.each do |post| %>
     <%= image_tag post.image.url(:medium) %>
     <p><%= link_to post.description, post_path(post) %></p>
+    <% post.comments.each do |text| %>
+    <%= text.comment %></br>
+    <% end %>
     <% if current_user %>
       <%= link_to 'Comment', new_post_comment_path(post) %>
       <% if current_user == post.user %>
