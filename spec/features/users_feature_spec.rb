@@ -38,5 +38,9 @@ feature 'users' do
       click_link 'Sign up'
       expect {sign_up(email:'emmpak@makers.com') }.not_to change {User.count}
     end
+
+    scenario 'should not be able to registe without a username' do
+      expect {sign_up(username:'') }.not_to change {User.count}
+    end
   end
 end
