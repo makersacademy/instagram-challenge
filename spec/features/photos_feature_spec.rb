@@ -34,8 +34,10 @@ feature 'photos' do
       visit '/photos'
       click_link 'Add a photo'
       fill_in 'Caption', with: 'Avocado and Scrambled eggs #Living'
+      fill_in 'Location', with: 'Somewhere pretentious'
       click_button 'Upload Photo'
       expect(page).to have_content 'Avocado and Scrambled eggs #Living'
+      expect(page).to have_content 'Somewhere pretentious'
       expect(page).to have_content '06/05/2017 14:00'
       expect(current_path).to eq '/photos'
     end
@@ -50,6 +52,22 @@ feature 'photos' do
       expect(page).to have_content 'Avocado and Scrambled eggs #Living'
       expect(page).to have_content '06/05/2017 14:00'
       expect(current_path).to eq "/photos/#{Photo.last.id}"
+    end
+  end
+
+  context 'editing photos' do
+
+    scenario 'let a user update a photo' do
+      upload_photo
+      visit '/photos/1'
+      click_link 'Update Photo'
+      fill_in 'Caption', with: 'Yummy Breakfast #HealthQueen'
+      fill_in 'Location', with: 'Somewhere even more pretentious'
+      click_button 'Update Photo'
+      visit '/photos'
+      expect(page).to have_content 'Yummy Breakfast #HealthQueen'
+      expect(page).to have_content 'Somewhere even more pretentious'
+      expect(page).not_to have_content 'Avocado and Scrambled eggs #Living'
     end
   end
 end
