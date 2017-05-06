@@ -8,4 +8,17 @@ feature 'photos' do
       expect(page).to have_link 'Share an experience'
     end
   end
+
+  context 'user not signed in' do
+    before do
+      sign_up
+      add_photo
+    end
+    scenario 'can see uploaded photos' do
+      expect(page).to have_css 'img'
+      expect(page).to have_content 'axeman'
+      expect(page).not_to have content 'No photos yet'
+      expect(current_path).to eq '/'
+    end
+  end
 end
