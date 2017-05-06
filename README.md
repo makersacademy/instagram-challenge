@@ -1,4 +1,4 @@
-# Instagram challenge
+# Instagram challenge :camera:
 
 ### User Stories
 
