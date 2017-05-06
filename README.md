@@ -1,6 +1,44 @@
 Instagram Challenge
 ===================
 
+User Stories
+-------------
+```
+As a turtle
+So that I can post pictures,
+I can sign in to Turtlegram.
+```
+```
+As a turtle
+So that I can document my turtle life,
+I can post pictures to a feed.
+```
+```
+As a turtle
+So that all my photos are saved in one place,
+I can see all my pictures in chronological order.
+```
+```
+As a turtle
+So that I can see how my friends are,
+I can see all their photos in a feed.
+```
+```
+As a turtle
+So that I can keep in touch with my friends,
+I can like their pictures.
+```
+```
+As a turtle
+So that I can keep in touch with my friends,
+I can leave comments on their pictures.
+```
+```
+As a turtle
+So that I can make my friends jealous
+I can add filters to my photos
+```
+
 Instructions
 -------
 * Challenge time: one weekend
