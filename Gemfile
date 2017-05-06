@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
+gem "dotenv-rails", groups: [:development, :test]
 gem 'haml'
 gem 'pry'
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
+gem 'omniauth-facebook'
 
 group :test do
   gem 'rspec-rails'
