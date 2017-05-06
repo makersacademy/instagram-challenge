@@ -1,5 +1,15 @@
 <div class='container'>
   <h2>Show the world your breakfast!</h2>
+  <% if @photo.errors.any? %>
+    <section id='errors'>
+      <h3><%= pluralize(@photo.errors.count, "error") %> prohibited this restaurant from being saved: </h3>
+      <ul>
+        <% @photo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
     <%= form_for @photo, html: {multipart: true} do |f| %>
       <%= f.label :caption %>
       <%= f.text_field :caption %>

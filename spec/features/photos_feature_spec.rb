@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'photos' do
   context 'no photos have been added' do
+
     scenario 'should display a prompt to add a photo' do
       visit '/photos'
       expect(page).to have_content 'No photos to display yet'
@@ -39,6 +40,19 @@ feature 'photos' do
       expect(page).to have_content '06/05/2017 14:00'
       expect(page).to have_css 'img'
       expect(current_path).to eq '/photos'
+    end
+
+    context 'incorrectly' do
+
+      scenario 'does not let you sumbit a photo without uploading a file' do
+        visit '/photos'
+        click_link 'Add a photo'
+        fill_in 'Caption', with: 'Avocado and Scrambled eggs #Living'
+        fill_in 'Location', with: 'Somewhere pretentious'
+        click_button 'Upload Photo'
+        expect(page).not_to have_content 'Avocado and Scrambled eggs #Living'
+        expect(page).to have_content 'error'
+      end
     end
   end
 
