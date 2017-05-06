@@ -16,7 +16,18 @@ class TravelgramsController < ApplicationController
     @adventure = Travelgram.find(params[:id])
   end
 
+  def edit
+    @adventure = Travelgram.find(params[:id])
+  end
+
+  def update
+    @adventure = Travelgram.find(params[:id])
+    @adventure.update(travelgram_params)
+
+    redirect_to '/travelgrams'
+  end
+
   def travelgram_params
-    params.require(:travelgram).permit(:name)
+    params.require(:travelgram).permit(:name, :description)
   end
 end
