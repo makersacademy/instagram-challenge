@@ -47,7 +47,7 @@ feature 'posts' do
 
   context 'viewing posts' do
 
-    let!(:description){Post.create(description:'Nice', user: User.create(username: 'cat',
+    let!(:description){Post.create(description:'Nice', image:  File.open("#{Rails.root}/spec/fixtures/cat.png"), user: User.create(username: 'cat',
                 email: 'cat@meow.com',
                 password: 'meowmeow',
                 password_confirmation: 'meowmeow'))}
