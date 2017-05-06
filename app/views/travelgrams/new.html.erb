@@ -1,3 +1,13 @@
+<% if @adventure.errors.any? %>
+  <section id="errors">
+    <h5><%= pluralize(@adventure.errors.count, "error") %> prohibited this adventure from being saved: </h5>
+    <ul>
+      <% @adventure.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
 <%= form_for @adventure do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>

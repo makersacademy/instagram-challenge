@@ -9,7 +9,11 @@ class TravelgramsController < ApplicationController
 
   def create
     @adventure = Travelgram.create(travelgram_params)
-    redirect_to '/travelgrams'
+    if @adventure.save
+      redirect_to '/travelgrams'
+    else
+      render 'new'
+    end
   end
 
   def show

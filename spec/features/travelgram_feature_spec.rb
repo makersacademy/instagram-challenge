@@ -30,6 +30,17 @@ feature 'travelgram' do
       expect(page).to have_content 'Bali trip'
       expect(current_path).to eq '/travelgrams'
     end
+
+    context 'an invalid adventure' do
+      scenario 'does not let you submit a name that is too short' do
+        visit 'travelgrams'
+        click_link 'Share Adventure'
+        fill_in 'Name', with: 'Ba'
+        click_button 'Share'
+        expect(page).not_to have_css 'h2', text: 'Ba'
+        expect(page).to have_content 'error'
+      end
+    end
   end
 
   context 'viewing adventures' do
