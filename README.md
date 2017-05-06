@@ -1,3 +1,5 @@
+![Travis CI](https://travis-ci.org/kittysquee/instagram-challenge.svg?branch=master)
+
 # Instagram Challenge
 
 ## User Stories
