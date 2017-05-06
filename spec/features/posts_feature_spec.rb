@@ -11,7 +11,7 @@ feature 'posts' do
 
   context 'posts have been added' do
     before do
-      Post.create(image: File.open("#{Rails.root}/spec/fixtures/cat.png"), description: 'Lovely')
+      Post.create(image: File.open("#{Rails.root}/spec/fixtures/cat.png"), description: 'Lovely', user: User.new)
     end
 
     scenario 'display posts' do
@@ -23,20 +23,19 @@ feature 'posts' do
   end
 
   context 'creating posts' do
-    scenario 'promts user to fill out form, then displays post' do
+    scenario 'prompts user to fill out form, then displays post' do
       visit posts_path
-      click_link('Add a post')
-      fill_in 'Description', with: 'Lovely'
-      attach_file('post_image', Rails.root + "spec/fixtures/cat.png")
-      click_button('Create Post')
-      expect(page).to have_content('Lovely')
+      sign_up('cat@cat.com')
+      create_post
+      expect(page).to have_content('Nice')
+      expect(page).to have_css("img[src*= 'cat.png']")
       expect(current_path).to eq posts_path
     end
   end
 
   context 'viewing posts' do
 
-    let!(:description){Post.create(description:'Nice')}
+    let!(:description){Post.create(description:'Nice', user: User.new)}
 
     scenario 'lets user view post' do
       visit posts_path
@@ -51,9 +50,20 @@ feature 'posts' do
 
     scenario 'deletes post when delete is clicked' do
       visit posts_path
+      sign_up('mrmeow@cat.com')
+      create_post
       click_link 'Delete post'
       expect(page).not_to have_content('Nice')
       expect(page).to have_content('Post deleted successfully')
+    end
+
+    scenario 'only user who made post can delete it' do
+      visit posts_path
+      sign_up('kitty@cat.com')
+      create_post
+      click_link 'Sign out'
+      sign_up('purr@cat.com')
+      expect(page).to_not have_content 'Delete post'
     end
   end
 end
