@@ -17,7 +17,7 @@ feature 'pictures' do
       visit '/pictures'
       click_link 'share a picture'
       fill_in 'Caption', with: 'sally'
-      click_button 'Create Picture'
+      click_button 'share picture'
       expect(page).to have_content 'sally'
       expect(current_path).to eq '/pictures'
     end
