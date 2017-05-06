@@ -1,5 +1,7 @@
 %h2= @picture.name
 %h2= @picture.description
-
+- @picture.comments.each do |comment|
+  %p= comment.thoughts
+%h2= link_to "Leave comment on '#{@picture.name}'"
 %h4= link_to "Edit #{@picture.name}", edit_picture_path(@picture)
 %h4= link_to "Delete #{@picture.name}", picture_path(@picture), method: :delete
