@@ -1,11 +1,13 @@
-<% if Post.all.any? %>
-  <% Post.all.each do |post| %>
-  <%= image_tag post.image.url(:medium) %>
-  <p><%= link_to post.description, post_path(post) %></p>
-  <%= link_to 'Delete post', post_path(post), method: :delete %>
-  <%= link_to 'Comment', new_post_comment_path %>
-
-
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <%= image_tag post.image.url(:medium) %>
+    <p><%= link_to post.description, post_path(post) %></p>
+    <% if current_user %>
+      <%= link_to 'Comment', new_post_comment_path(post) %>
+      <% if current_user == post.user %>
+        <%= link_to 'Delete post', post_path(post), method: :delete %>
+      <% end %>
+    <% end %>
   <% end %>
 <% else %>
   <h1>No posts yet</h1>
