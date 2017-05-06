@@ -1,4 +1,5 @@
 class ExperiencesController < ApplicationController
+
   def index
     @experiences = Experience.all
   end
@@ -8,7 +9,7 @@ class ExperiencesController < ApplicationController
   end
 
   def create
-    @experience = Experience.new(experience_params)
+    @experience = current_user.experiences.new(experience_params)
     if @experience.save
       redirect_to '/'
     else

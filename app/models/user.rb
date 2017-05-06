@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :experiences
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,5 +14,5 @@ class User < ApplicationRecord
     false
   end
 
-  
+
 end

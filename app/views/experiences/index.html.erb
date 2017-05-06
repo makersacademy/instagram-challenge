@@ -1,9 +1,13 @@
 <% if @experiences.any? %>
   <% @experiences.each do |experience| %>
+    <%= experience.user.username %>
     <%= image_tag experience.image.url(:medium) %>
     <%= experience.description %>
   <% end %>
 <% else %>
   <p>No experiences yet</p>
-  <%= link_to "Share an experience", new_experience_path %>
+<% end %>
+
+<% if user_signed_in? %>
+  <p><%= link_to "Share an experience", new_experience_path %></p>
 <% end %>
