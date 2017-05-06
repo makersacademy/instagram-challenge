@@ -15,3 +15,4 @@ feature 'commenting' do
     expect(page).to have_content 'looks amazing!'
   end
 end
+
