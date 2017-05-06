@@ -10,11 +10,9 @@ RSpec.describe Picture, type: :model do
   end
 
   it 'is not valid unless it has a unique name' do
-    # user = User.create(email: "dog@dog.com", password: 'password123')
-    # user.pictures.create(name: "Moe's tavern")
-    # picture = user.pictures.new(name: "Moe's tavern")
-    Picture.create(name: "Selfie")
-    picture = Picture.new(name: "Selfie")
+    user = User.create(email: "dog@dog.com", password: 'password123')
+    user.pictures.create(name: "Selfie")
+    picture = user.pictures.new(name: "Selfie")
     expect(picture).to have(1).error_on(:name)
   end
 

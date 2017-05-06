@@ -12,6 +12,7 @@ feature 'pictures' do
 
   context 'pictures have been added' do
     before do
+      sign_up
       create_picture
     end
 
@@ -24,6 +25,7 @@ feature 'pictures' do
 
   context 'creating pictures' do
     scenario 'prompts user to fill out a form, then displays the new picture' do
+      sign_up
       visit '/pictures'
       click_link 'Add a picture'
       fill_in 'Name', with: 'Me'
@@ -35,6 +37,7 @@ feature 'pictures' do
 
     context 'an invalid picture' do
     scenario 'does not let you submit a name that is too short' do
+      sign_up
       visit '/pictures'
       click_link 'Add a picture'
       fill_in 'Name', with: 'A'
@@ -47,6 +50,7 @@ feature 'pictures' do
 
   context 'viewing pictures' do
     scenario 'lets a user view a picture' do
+      sign_up
       create_picture
       click_link 'Me'
       expect(page).to have_content 'A picture of me'
@@ -56,6 +60,7 @@ feature 'pictures' do
 
   context 'editing pictures' do
     scenario 'let a user edit a pictures description' do
+      sign_up
       create_picture
       visit root_path
       click_link 'Me'
@@ -72,6 +77,7 @@ feature 'pictures' do
 
   context 'deleting pictures' do
     before do
+      sign_up
       create_picture
     end
 
