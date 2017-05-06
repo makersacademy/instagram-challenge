@@ -33,7 +33,7 @@ So that they can tell me how wonderful my brooches admire
 
 As a WeeBroochMate user
 I would like to be able to delete my post
-So if a brooch falls out of favour it is gone!
+So if a brooch falls out of favor it is gone!
 
 As a WeeBroochMate user
 So I can find out how much others love my brooches
@@ -48,8 +48,16 @@ So I can share the love
 I would like to be able to 'like' a fellow users post
 
 As a WeeBroochMate user
+So everyone can know when I posted my brooch
+I would like to have the time and date displayed
+
+As a WeeBroochMate user
 So I can share with visually impaired folk
 I would like to add some alt text to my post
+
+As a WeeBroochMate user
+So everyone can know the brooch belongs to me
+I would like to have my name displayed alongside my post comment
 
 BONUS
 
