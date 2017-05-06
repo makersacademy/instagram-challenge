@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'haml'
+gem 'paperclip'
 
 group :test do
   gem 'rspec-rails'
