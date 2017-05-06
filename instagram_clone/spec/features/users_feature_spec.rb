@@ -10,6 +10,10 @@ feature 'User' do
         expect(page).to have_link("Sign in")
         expect(page).to have_link("Sign up")
       end
+      it 'should see a flash message when successfully signed in' do
+        sign_in
+        expect(page).to have_content("Signed in successfully")
+      end
       it 'should not see "Sign out" link on homepage' do
         visit('/')
         expect(page).not_to have_link("Sign out")
@@ -18,23 +22,14 @@ feature 'User' do
 
     context 'user signed in' do
       it 'should not see "Sign up" and "Sign in" links on homepage' do
-        visit('/')
-        click_link('Sign up')
-        fill_in('Email', with: "mail@magnusholm.com")
-        fill_in('Password', with: "123banana")
-        fill_in('Password confirmation', with: "123banana")
-        click_button('Sign up')
+        sign_up
         expect(page).not_to have_link("Sign in")
         expect(page).not_to have_link("Sign up")
       end
 
       it 'should be redirected back to homepage after clicking "Sign out"' do
         visit('/')
-        click_link('Sign up')
-        fill_in('Email', with: "mail@magnusholm.com")
-        fill_in('Password', with: "123banana")
-        fill_in('Password confirmation', with: "123banana")
-        click_button('Sign up')
+        sign_up
         click_link('Sign out')
         expect(page).to have_current_path('/')
       end

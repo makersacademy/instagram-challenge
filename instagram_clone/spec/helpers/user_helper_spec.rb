@@ -8,3 +8,13 @@ require 'rails_helper'
     fill_in('Password confirmation', with: "123banana")
     click_button('Sign up')
   end
+
+  def sign_in
+    visit('/')
+    sign_up
+    click_link('Sign out')
+    click_link('Sign in')
+    fill_in('Email', with: "mail@magnusholm.com")
+    fill_in('Password', with: "123banana")
+    click_button('Log in')
+  end 

@@ -14,12 +14,7 @@ describe 'Post' do
 
   context 'create new post' do
     scenario 'displays a create new post -form if user is logged in' do
-      visit('/')
-      click_link('Sign up')
-      fill_in('Email', with: "mail@magnusholm.com")
-      fill_in('Password', with: "123banana")
-      fill_in('Password confirmation', with: "123banana")
-      click_button('Sign up')
+      sign_up
       click_link('New post')
       expect(page).to have_current_path('/posts/new')
     end
