@@ -8,4 +8,13 @@ feature 'turtlegrams' do
       expect(page).to have_content 'Add a turtlegram'
     end
   end
+
+  context 'turtlegrams have been added' do
+    before {Turtlegram.create(caption: 'Shelly')}
+      scenario 'displays a turtlegram on a feed' do
+      visit '/turtlegrams'
+      expect(page).to have_content('Shelly')
+      expect(page).not_to have_content('No turtlegrams yet')
+    end
+  end
 end

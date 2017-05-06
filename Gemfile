@@ -7,6 +7,9 @@ end
 
 gem 'pry'
 
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 4.3'
+
 group :test do
   gem 'rspec-rails'
   gem 'capybara'
