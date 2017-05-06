@@ -16,7 +16,8 @@ feature 'pictures' do
     end
 
     scenario 'show all pictures' do
-      Picture.create(caption: 'sally', user: User.new)
+      User.create(email: 'kate@kate.com', password: '123456', password_confirmation: '123456')
+      Picture.create(caption: 'sally', user: User.first)
       visit '/pictures'
       expect(page).to have_content('sally')
     end
@@ -40,7 +41,8 @@ feature 'pictures' do
     # end
 
     scenario 'user can delete pictures' do
-      Picture.create(caption: 'sally', user: User.new)
+      User.create(email: 'kate@kate.com', password: '123456', password_confirmation: '123456')
+      Picture.create(caption: 'sally', user: User.first)
       visit '/pictures'
       click_link 'delete this picture'
       expect(page).not_to have_content 'sally'
