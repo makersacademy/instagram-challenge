@@ -46,6 +46,8 @@ group :test do
   gem 'capybara'
   gem 'rspec-collection_matchers'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'poltergeist'
+  gem 'database_cleaner'
 end
 
 group :development do
