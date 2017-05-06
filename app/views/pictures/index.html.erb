@@ -1,9 +1,21 @@
-<a href='/pictures/new'>share a picture</a>
+<div>
+  <a href='/pictures/new'>share a picture</a>
+<div>
 
 <div>
-<% Picture.all.each do |picture| %>
-  <a href='/pictures/<%=picture.id%>'><p><%= image_tag picture.image.url(:medium) %></p></a>
-  <p><%= picture.caption %></p>
-  <p><%= link_to "delete this picture", picture_path(picture), method: :delete %></p>
-<% end %>
+  <% Picture.all.each do |picture| %>
+    <a href='/pictures/<%=picture.id%>'><p><%= image_tag picture.image.url(:medium) %></p></a>
+    <p><%= picture.caption %></p>
+    <p><%= link_to "delete this picture", picture_path(picture), method: :delete %></p>
+    <% picture.comments.each do |comment| %>
+      <p><%= comment.opinion %></p>
+    <% end %>
+    <p>
+      <%= form_for [picture, Comment.new] do |f| %>
+        <%= f.label :opinion %>
+        <%= f.text_area :opinion %>
+        <%= f.submit 'comment' %>
+      <% end %>
+    </p>
+  <% end %>
 </div>
