@@ -13,9 +13,13 @@ feature 'turtlegrams' do
   context 'turtlegrams have been added' do
     before {Turtlegram.create(caption: 'Shelly', image: File.new(File.join(Rails.root,"public/uploads/turtlegram/image/1/turtle.jpg")))}
       scenario 'displays a turtlegram on a feed' do
-      visit '/turtlegrams'
-      expect(page).to have_content('Shelly')
-      expect(page).not_to have_content('No turtlegrams yet')
-    end
+        visit '/turtlegrams'
+        expect(page).to have_content('Shelly')
+        expect(page).not_to have_content('No turtlegrams yet')
+      end
+
+      # scenario "lets a turtle view another turtle's turtlegrams" do
+
+
   end
 end
