@@ -1,4 +1,9 @@
 <p><%=image_tag(@picture.image.url(:thumb))%></p>
 <p><%= @picture.status %></p>
+<% @picture.comments.each do |comment| %>
+<br> <%= comment.thoughts %>
+<% end %>
+<br>
 <%= link_to "Edit", edit_picture_path(@picture) %>
 <%= link_to "Delete", picture_path(@picture), method: :delete %>
+<%= link_to "Comment", new_picture_comment_path(@picture) %>

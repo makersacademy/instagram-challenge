@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507102322) do
+ActiveRecord::Schema.define(version: 20170507153603) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text "thoughts"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    # t.integer "pictures_id"
+    t.integer "picture_id"
+    t.index ["picture_id"], name: "index_comments_on_picture_id"
+    # t.index ["pictures_id"], name: "index_comments_on_pictures_id"
+
+    add_foreign_key "comments", "pictures"
+
+  end
 
   create_table "pictures", force: :cascade do |t|
     t.string "status"
