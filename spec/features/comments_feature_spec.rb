@@ -4,11 +4,7 @@ feature 'comments' do
   before do
     User.create(email: 'kate@kate.com', password: '123456', password_confirmation: '123456')
     Picture.create(caption: 'sally', user: User.first)
-    visit '/users/sign_up'
-    fill_in 'email', with: 'sylvia@sylvia.com'
-    fill_in 'password', with: '123456'
-    fill_in 'password confirmation', with: '123456'
-    click_button 'sign up'
+    sign_up('sylvia@sylvia.com')
   end
 
   scenario 'users can comment on a picture' do

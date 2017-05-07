@@ -3,11 +3,7 @@ require 'rails_helper'
 feature 'pictures' do
 
     before do
-      visit '/users/sign_up'
-      fill_in 'email', with: 'kate@kate.com'
-      fill_in 'password', with: '123456'
-      fill_in 'password confirmation', with: '123456'
-      click_button 'sign up'
+      sign_up
     end
 
     scenario 'link for adding pictures' do
@@ -23,10 +19,10 @@ feature 'pictures' do
     end
 
     scenario 'user can share a picture' do
-      # visit '/pictures'
-      click_link 'share a picture'
-      fill_in 'caption', with: 'sally'
-      click_button 'share picture'
+      # click_link 'share a picture'
+      # fill_in 'caption', with: 'sally'
+      # click_button 'share picture'
+      share_picture
       expect(page).to have_content 'sally'
       expect(current_path).to eq '/pictures'
     end

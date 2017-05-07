@@ -3,12 +3,14 @@
 <div>
 
 <div>
-  <% Picture.all.each do |picture| %>
+  <% Picture.all.reverse.each do |picture| %>
     <p><%= picture.user.email %>:</p>
     <a href='/pictures/<%=picture.id%>'><p><%= image_tag picture.image.url(:medium) %></p></a>
     <p><%= picture.caption %></p>
-    <% if picture.likes.count > 0 %>
-      <p><%= picture.likes.count %> likes</p>
+    <% if picture.likes.count == 1 %>
+      <p><%= picture.likes.count %> like </p>
+    <% elsif picture.likes.count > 0 %>
+      <p><%= picture.likes.count %> likes </p>
     <% end %>
     <p><%= link_to 'like', new_picture_like_path(picture)%>
     <p><%= link_to "delete this picture", picture_path(picture), method: :delete %></p>
