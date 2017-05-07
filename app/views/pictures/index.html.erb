@@ -30,19 +30,21 @@
     <% end %>
 
     <% if current_user && current_user == picture.user %>
-      <p><%= link_to "delete this picture", picture_path(picture), method: :delete %></p>
+      <p id='delete_picture'><%= link_to "delete this picture", picture_path(picture), method: :delete %></p></br>
     <% end %>
 
-    <% picture.comments.each do |comment| %>
-      <p><%= comment.user.email %> commented: <%= comment.opinion %></p>
-    <% end %>
+    <div id='picture_comments'>
+      <% picture.comments.each do |comment| %>
+        <p><%= comment.user.email %> commented: </br> <%= comment.opinion %></p>
+      <% end %>
 
-    <% if current_user %>
-        <%= form_for [picture, @comment] do |f| %>
-          <p><%= f.text_area :opinion, cols: '45', rows: '3' %></p>
-          <p><%= f.submit 'comment', class:'insta_button' %></p>
-        <% end %>
-    <% end %>
+      <% if current_user %>
+          <%= form_for [picture, @comment] do |f| %>
+            <p><%= f.text_area :opinion, cols: '50', rows: '3' %></p>
+            <p><%= f.submit 'comment', class:'insta_button' %></p>
+          <% end %>
+      <% end %>
+    </div></br>
 
   <% end %>
 
