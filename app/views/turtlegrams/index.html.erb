@@ -2,17 +2,32 @@
   <a href='/turtlegrams/new'>Add a turtlegram</a>
   <% if Turtlegram.all.any? %>
   <% Turtlegram.all.reverse.each do |turtlegram| %>
-  <p id ='user'>
-    Posted by: <strong><%= link_to turtlegram.user.email, user_path(turtlegram.user.id) %></strong>
+  <p>
+    <div id='owner'>
+    <strong>Posted by: <%= link_to turtlegram.user.email, user_path(turtlegram.user.id) %></strong>
+  </div>
   </p>
   <p>
     <div id='post'>
     <%= image_tag turtlegram.image.url unless turtlegram.image.blank? %>
   </div>
   </p>
-  <p id='caption'>
+  <p>
+    <div id='caption'>
     <%= turtlegram.caption %>
+    </div>
+    <div id='comment'>
+    <%= link_to "Add comment", new_turtlegram_comment_path(turtlegram) %>
+    </div>
+    <div id='comment'>
+    <%= link_to "All comments", turtlegram_path(turtlegram) %>
+    </div>
   </p>
+  <% if current_user == turtlegram.user %>
+  <div id='edit'>
+  <%= link_to "Edit turtlegram", edit_turtlegram_path(turtlegram) %>
+  </div>
+  <% end %>
   <% end %>
 <% else %>
   <h1>No turtlegrams yet</h1>

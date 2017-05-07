@@ -37,5 +37,22 @@ feature 'turtlegrams' do
         expect(page).to have_content("viv@viv.com's turtlegrams")
         expect(current_path).to eq "/users/1"
       end
-  end
+    end
+
+    context 'editing turtlegrams' do
+      before do
+        vivien = User.create(email: 'viv@viv.com', password: '123456', id: 1)
+        Turtlegram.create(caption: 'Shelly', image: File.new(File.join(Rails.root,"public/uploads/turtlegram/image/1/turtle.jpg")), user: vivien, id: 2)
+      end
+    scenario 'lets a turtle edit their own turtlegram' do
+      click_link('Sign out')
+      click_link('Sign in')
+      fill_in('Email', with: 'viv@viv.com')
+      fill_in('Password', with: '123456')
+      click_button('Log in')
+      click_link('Edit turtlegram')
+      expect(page).to have_content 'Shelly'
+      expect(current_path).to eq '/turtlegrams/2/edit'
+    end
+    end
 end

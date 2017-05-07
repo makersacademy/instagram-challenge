@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'turtlegrams' => 'turtlegrams#index'
   resources :users
   get 'users/:id' => 'users#show'
-  resources :turtlegrams
+  resources :turtlegrams do
+    resources :comments
+  end
 
   root 'turtlegrams#index'
 end

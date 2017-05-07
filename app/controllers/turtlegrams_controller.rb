@@ -16,8 +16,18 @@ class TurtlegramsController < ApplicationController
     end
   end
 
+  def edit
+    @turtlegram = Turtlegram.find(params[:id])
+  end
+
+  def update
+    @turtlegram = Turtlegram.find(params[:id])
+    @turtlegram.update(turtlegram_params)
+    redirect_to '/turtlegrams'
+  end
+
   def show
-  
+    @turtlegram = Turtlegram.find(params[:id])
   end
 
   private
