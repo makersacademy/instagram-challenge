@@ -38,6 +38,7 @@ group :test do
   gem 'rspec-collection_matchers'
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem 'pry'
+  gem 'database_cleaner'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

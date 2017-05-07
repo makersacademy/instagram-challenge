@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :pictures do
+
+  resources :pictures, shallow: true do
+    resources :endorsements
     resources :comments
   end
 

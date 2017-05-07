@@ -1,6 +1,6 @@
 module PictureHelpers
 
-  def create_picture(name: 'Me', description: 'A picture of me')
+  def create_picture(name: 'Me', description: 'A picture of Ruan')
     visit root_path
     click_link 'Add a picture'
     fill_in 'Name', with: name

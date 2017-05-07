@@ -2,6 +2,7 @@ class Picture < ApplicationRecord
   has_many :comments,
       -> { extending WithUserAssociationExtension },
       dependent: :destroy
+  has_many :endorsements
 
   belongs_to :user
   has_attached_file :image, :styles => { :medium => "600x500>", :thumb => "100x83>" }, :default_url => "/images/:style/missing.png"

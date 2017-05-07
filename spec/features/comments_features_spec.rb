@@ -8,7 +8,7 @@ feature 'commenting' do
 
   scenario 'allows user to leave a comment' do
     visit root_path
-    click_link "Leave comment on 'Me'"
+    click_link "Comment"
     fill_in "comment[thoughts]", with: 'Looking good!'
     click_button 'Leave comment'
 
