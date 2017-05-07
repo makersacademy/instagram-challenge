@@ -61,8 +61,8 @@ feature 'travelgram' do
 
     scenario 'lets a user view an adventure' do
       visit '/travelgrams'
-      click_link 'Bali'
-      expect(page).to have_content 'Bali'
+      click_link 'Bali trip'
+      expect(page).to have_content 'Bali trip'
       expect(current_path).to eq "/travelgrams/#{Travelgram.last.id}"
     end
   end
@@ -82,7 +82,7 @@ feature 'travelgram' do
       click_link 'Bali trip'
       expect(page).to have_content 'Bali trip'
       expect(page).to have_content 'Loved it'
-      expect(current_path).to eq "/#{Travelgram.last.id}"
+      expect(current_path).to eq "/travelgrams/#{Travelgram.last.id}"
     end
   end
 

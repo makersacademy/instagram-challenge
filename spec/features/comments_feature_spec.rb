@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 feature 'commenting' do
-  before do
-    Travelgram.create(name: 'Bali', description: 'Breathtaking', id: 1)
-  end
+  before { Travelgram.create name: 'Bali', user: User.new }
 
   scenario 'allows users to comment on an adventure using a form' do
+    visit '/travelgrams'
+    sign_up('test@test.com')
     visit '/travelgrams'
     click_link 'Bali'
     click_link 'Comment'
@@ -13,7 +13,7 @@ feature 'commenting' do
     fill_in 'Thoughts', with: 'looks amazing!'
 
     click_button 'Done'
-    expect(current_path).to eq '/travelgrams/1'
+
     expect(page).to have_content 'looks amazing!'
   end
 
