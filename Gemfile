@@ -32,7 +32,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'bootstrap-sass' 
+gem 'bootstrap-sass'
+gem 'devise', git: 'https://github.com/gogovan/devise.git', branch: 'rails-5.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
