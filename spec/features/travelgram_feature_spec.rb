@@ -76,7 +76,7 @@ feature 'travelgram' do
     scenario 'let a user edit an adventure' do
       visit '/travelgrams'
       click_link 'Bali trip'
-      click_link 'Edit Bali'
+      click_link 'edit'
       fill_in 'Name', with: 'Bali trip'
       fill_in 'Description', with: 'Loved it'
       click_button 'Share'
@@ -96,7 +96,7 @@ feature 'travelgram' do
     scenario 'removes an adventure when a user clicks a delete link' do
       visit 'travelgrams'
       click_link 'Bali trip'
-      click_link 'Delete Bali'
+      click_link 'delete'
       expect(page).not_to have_content 'Bali'
       expect(page).to have_content 'Adventure deleted successfully'
     end

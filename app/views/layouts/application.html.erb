@@ -17,20 +17,20 @@
 
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-      <% if user_signed_in? %>
         <div class="logo">
-          <img src="<%= image_path('logo.png') %>">
-          <h1>.travelgram</h1>
+          <a href="<%= travelgrams_path %>"><img src="<%= image_path('logo.png') %>"></a>
+          <a href="<%= travelgrams_path %>"><h1>.travelgram</h1></a>
         </div>
         <div class="nav-items">
-          <h5><%= current_user.email %></h5>
-          <h5><%= link_to "Sign out", destroy_user_session_path, method: :delete %></h5>
+          <% if user_signed_in? %>
+            <h5><%= current_user.email %></h5>
+            <h5><%= link_to "Sign out", destroy_user_session_path, method: :delete %></h5>
+          <% else %>
+            <%= link_to "Sign in", new_user_session_path %>
+            <%= link_to "Sign up", new_user_registration_path %>
+            <a href="<%= user_facebook_omniauth_authorize_path %>"><img src="<%= image_path('fblogin.png') %>"></a>
+          <% end %>
         </div>
-      <% else %>
-        <%= link_to "Sign in", new_user_session_path %>
-        <%= link_to "Sign up", new_user_registration_path %>
-        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
-      <% end %>
 
     </div>
 

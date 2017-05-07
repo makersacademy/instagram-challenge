@@ -36,7 +36,7 @@ class TravelgramsController < ApplicationController
   def destroy
     @adventure = Travelgram.find(params[:id])
     @adventure.destroy
-    flash[:notice] = "Adventure deleted successfully"
+    flash.now[:notice] = "Adventure deleted successfully"
     redirect_to '/travelgrams'
   end
 

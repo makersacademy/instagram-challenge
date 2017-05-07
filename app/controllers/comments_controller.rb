@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     if @comments.save
       redirect_to "/travelgrams/#{@adventure.id}"
     else
-      if @comments.errors[:user]
+      if @comments.errors.now[:user]
         redirect_to '/travelgrams', alert: 'You have already commented on this adventure'
       else
         render 'new'
