@@ -26,6 +26,8 @@ feature 'experiences' do
       click_link('', :href => "#{experience_path(Experience.last)}")
       expect(current_path).to eq "/experiences/#{Experience.last.id}"
       expect(page).to have_content "Heavan for powder hounds"
+      expect(page).to have_content "axeman"
+      expect(page).to have_css "img"
     end
 
     scenario "cannot see the 'post an experience' button" do
