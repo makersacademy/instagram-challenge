@@ -29,15 +29,21 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
             <li>
               <%= link_to "New Post", new_post_path %>
             </li>
+            <li>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+            </li>
+            <% else %>
             <li>
               <%= link_to "Sign in", '/users/sign_in' %>
             </li>
             <li>
               <%= link_to "Sign up", '/users/sign_up' %>
             </li>
+            <% end %>
           </ul>
         </div>
       </div>

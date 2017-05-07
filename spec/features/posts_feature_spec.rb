@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 feature 'Posts' do
+
+  before do
+    User.create(email: 'test@test.com', password: 'password', password_confirmation: 'password')
+    visit '/'
+    click_link 'Sign in'
+    fill_in 'Email', with: 'test@test.com'
+    fill_in 'Password', with: 'password'
+    click_button 'Log in'
+  end
+
   context 'No posts have been created' do
     scenario 'Should display a prompt to create a post' do
       visit root_path
@@ -11,7 +21,8 @@ feature 'Posts' do
 
   context 'Post has been added' do
     before do
-      Post.create(image: File.new(Rails.root + 'spec/fixtures/images/freedom-beach.jpg'), caption: 'Cool')
+      user = User.first
+      user.posts.create(image: File.new(Rails.root + 'spec/fixtures/images/freedom-beach.jpg'), caption: 'Cool')
     end
     scenario 'Should show post' do
       visit root_path
