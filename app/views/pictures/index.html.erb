@@ -1,10 +1,10 @@
-<div>
+<div class='pictures'>
   <% if current_user %>
     <a href='/pictures/new'>share a picture</a>
   <% end %>
-<div>
+</div>
 
-<div>
+<div class='pictures'>
 
   <% Picture.all.reverse.each do |picture| %>
 
@@ -19,7 +19,10 @@
     <% end %>
 
     <% if current_user %>
-      <p><%= link_to 'like', new_picture_like_path(picture)%>
+      <%= form_for [picture, Like.new] do |f| %>
+        <p><%= f.submit 'like', class:'comment_button' %></p>
+      <% end %>
+      <!-- <p><%= link_to 'like', new_picture_like_path(picture)%> -->
     <% end %>
 
     <% if current_user && current_user == picture.user %>
@@ -31,13 +34,10 @@
     <% end %>
 
     <% if current_user %>
-      <p>
         <%= form_for [picture, @comment] do |f| %>
-          <%= f.label :opinion, 'any thoughts?' %></br>
-          <%= f.text_area :opinion %>
-          <%= f.submit 'comment' %>
+          <p><%= f.text_area :opinion %></p>
+          <p><%= f.submit 'comment', class:'comment_button' %></p>
         <% end %>
-      </p>
     <% end %>
 
   <% end %>
