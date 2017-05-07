@@ -60,10 +60,11 @@ feature 'posts' do
                 password: 'meowmeow',
                 password_confirmation: 'meowmeow'))}
 
-    scenario 'lets user view post' do
+    scenario 'lets user view individual post' do
       visit posts_path
+      find(".img_link").click
       expect(page).to have_content('Nice')
-      expect(current_path).to eq posts_path
+      expect(current_path).to eq post_path(description)
     end
   end
 
