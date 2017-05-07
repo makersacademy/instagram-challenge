@@ -1,17 +1,40 @@
-  <%= image_tag @adventure.image.url(:medium) %>
-<p><%= @adventure.name %></p>
-<% if current_user %>
-  <% if current_user == @adventure.user %>
-    <p><%= link_to "Edit #{@adventure.name}", edit_travelgram_path(@adventure)%></p>
-    <p><%= link_to "Delete #{@adventure.name}", travelgram_path(@adventure), method: :delete %></p>
-  <% end %>
-<% end %>
+  <div class="content-wrapper">
+  <div class="container show-adventure-container">
+    <div class="row">
+      <div class="col-lg-6 image-column">
+        <div class="content">
+          <%= image_tag @adventure.image.url(:medium) %>
+        </div>
 
- <p><%= @adventure.description %></p>
-     <h4>Comments:</h4>
-     <p><% @adventure.comments.each do |c| %></p>
-     <p><%= c.thoughts %></p>
-     <p><%= c.user %></p>
+      </div>
+      <div class="col-lg-6 details-column">
+      <div class="section-details">
+        <img src="<%= image_path('profile.png') %>">
+        <h6><strong>@<%= @adventure.user.email %></strong></h6>
+      </div>
+      <div class="section-actions">
+        <p><%= @adventure.name %>:  <%= @adventure.description %></p>
+        <% if current_user %>
+          <% if current_user == @adventure.user %>
+            <ul>
+              <li class="first-action"><%= link_to "edit", edit_travelgram_path(@adventure)%></li>
+              <li class="second-action"><%= link_to "delete", travelgram_path(@adventure), method: :delete %></li>
+            </ul>
+          <% end %>
         <% end %>
- <p><%= link_to "Comment", new_travelgram_comment_path(@adventure) %>
+
+      </div>
+        <div class="section-comments">
+            <h4>Comments:</h4>
+            <p><% @adventure.comments.each do |c| %></p>
+            <p><strong>@<%= c.user.email %></strong> <%= c.thoughts %></p>
+          <% end %>
+        <% if current_user != @adventure.user %>
+          <p><%= link_to "Comment", new_travelgram_comment_path(@adventure), :class => "btn custom-button" %>
+        <% end %>
+
+      </div>
+  </div>
+  </div>
+
 
