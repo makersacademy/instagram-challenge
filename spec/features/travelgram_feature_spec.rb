@@ -78,7 +78,7 @@ feature 'travelgram' do
       click_link 'Edit Bali'
       fill_in 'Name', with: 'Bali trip'
       fill_in 'Description', with: 'Loved it'
-      click_button 'Update adventure'
+      click_button 'Share'
       click_link 'Bali trip'
       expect(page).to have_content 'Bali trip'
       expect(page).to have_content 'Loved it'
