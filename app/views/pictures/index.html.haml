@@ -3,16 +3,17 @@
   %ul.centered
     - if @pictures.any?
       - @pictures.each do |picture|
-        = image_tag picture.image.url(:medium)
-        .post-info
-          %h2= link_to picture.name + ":", picture_path(picture)
-          %h2= picture.description
-        .leave-comment= link_to "Leave comment on '#{picture.name}'", new_picture_comment_path(picture)
-        - if picture.user == current_user
-          .pic-admin
-            = link_to "Edit #{picture.name}", edit_picture_path(picture)
-            = link_to "Delete #{picture.name}", picture_path(picture), method: :delete
-          - picture.comments.each do |comment|
-            .comments= comment.thoughts
+        .posts
+          = image_tag picture.image.url(:medium)
+          .post-info
+            %h2= link_to picture.name + ":", picture_path(picture)
+            %h2= picture.description
+          .leave-comment= link_to "Leave comment on '#{picture.name}'", new_picture_comment_path(picture)
+          - if picture.user == current_user
+            .pic-admin
+              = link_to "Edit #{picture.name}", edit_picture_path(picture)
+              = link_to "Delete #{picture.name}", picture_path(picture), method: :delete
+            - picture.comments.each do |comment|
+              .comments= comment.thoughts
     - else
       %p No pictures yet
