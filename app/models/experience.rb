@@ -5,7 +5,7 @@ class Experience < ApplicationRecord
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   validates :image, attachment_presence: true
 
-  def chronological
-    Experience.all.reverse
+  def self.chronological
+    self.all.reverse
   end
 end

@@ -23,12 +23,12 @@ describe Experience, type: :model do
     end
   end
 
-  describe '#chronological' do
+  describe '.chronological' do
     it 'orders the experiences in chronological order' do
       user = create_user
       first_post = Experience.create(image: File.new("#{Rails.root}/spec/fixtures/wolf_creek.jpg"), user_id: user.id)
       second_post = Experience.create(image: File.new("#{Rails.root}/spec/fixtures/san_juan.jpg"), user_id: user.id)
-      expect(experience.chronological).to eq [second_post, first_post]
+      expect(described_class.chronological).to eq [second_post, first_post]
     end
   end
 end
