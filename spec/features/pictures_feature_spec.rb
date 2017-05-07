@@ -52,4 +52,14 @@ end
       expect(page).not_to have_content '#PrayforCarrotTown after rabbit carrot burglary'
     end
   end
+
+  context 'deleting picture' do
+  let!(:couplegoals){ Picture.create(status: "Love snuggling up with ma girlfriend in our new treehouse! #couplegoals" ) }
+  scenario 'removes a picture when a hamster clicks delete link' do
+    visit "/pictures/#{couplegoals.id}"
+    click_link "Delete Love snuggling up with ma girlfriend in our new treehouse! #couplegoals"
+    expect(page).not_to have_content 'Love snuggling up with ma girlfriend in our new treehouse! #couplegoals'
+    expect(page).to have_content 'Picture deleted successfully'
+    end
+  end
 end
