@@ -19,4 +19,15 @@ feature 'pictures' do
     expect(page).not_to have_content 'No pictures added yet'
     end
   end
+
+  context 'posting pictures' do
+    scenario 'prompts user to post image with status, then display image' do
+      visit '/pictures'
+      click_link 'Add a picture'
+      fill_in 'Status', with: 'Good 10 mile run in the wheel last night #BeachBod2017 #feelinggood'
+      click_button 'Create Picture'
+      expect(page).to have_content 'Good 10 mile run in the wheel last night #BeachBod2017 #feelinggood'
+      expect(current_path).to eq '/pictures'
+    end
+  end
 end
