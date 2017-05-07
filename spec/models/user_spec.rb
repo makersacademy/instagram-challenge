@@ -1,5 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
+describe User, type: :model do
+
+  context 'associations' do
+    it 'should have one to many association with adventures' do
+      should have_many(:travelgrams)
+    end
+
+    it { is_expected.to have_many :commented_travelgrams }
+  end
+
+
 end
