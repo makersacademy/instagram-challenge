@@ -12,7 +12,6 @@ class TravelgramsController < ApplicationController
   def create
     @adventure = Travelgram.create(travelgram_params)
     @adventure.user = current_user
-    # require 'pry';binding.pry
     if @adventure.save
       redirect_to '/travelgrams'
     else

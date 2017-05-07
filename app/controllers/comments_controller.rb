@@ -7,8 +7,18 @@ class CommentsController < ApplicationController
 
   def create
     @adventure = Travelgram.find(params[:travelgram_id])
-    @adventure.comments.create(comments_params)
-    redirect_to "/travelgrams/#{@adventure.id}"
+    @comments = @adventure.build_comment(comments_params, current_user)
+    # require 'pry';binding.pry
+
+    if @comments.save
+      redirect_to "/travelgrams/#{@adventure.id}"
+    else
+      if @comments.errors[:user]
+        redirect_to '/travelgrams', alert: 'You have already commented on this adventure'
+      else
+        render 'new'
+      end
+    end
   end
 
   private

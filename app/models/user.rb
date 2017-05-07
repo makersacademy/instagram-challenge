@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :travelgrams
+  has_many :comments
+  has_many :commented_travelgrams, through: :comments, source: :travelgram
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
