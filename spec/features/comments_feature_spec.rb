@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'commenting' do
   before do
+    sign_up
     upload_photo
   end
 

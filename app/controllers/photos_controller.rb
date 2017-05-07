@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 
+  before_action :authenticate_user!, :except => [:index, :show]
+
   def index
     @photos = Photo.all
   end
@@ -18,6 +20,7 @@ class PhotosController < ApplicationController
   end
 
   def show
+    @user = current_user
     @photo = Photo.find(params[:id])
     @comment = Comment.new
     @comments = @photo.comments.all

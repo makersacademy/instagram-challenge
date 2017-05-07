@@ -5,10 +5,12 @@
     <h2><%= @photo.caption%></h2>
     <%= image_tag @photo.image.url(:medium) %>
   </div>
-  <div class='photo-options'>
-    <%= link_to 'Update Photo', edit_photo_path(@photo) %>
-    <%= link_to 'Delete Photo', photo_path(@photo), method: :delete %>
-  </div>
+  <% if @user != nil %>
+    <div class='photo-options'>
+      <%= link_to 'Update Photo', edit_photo_path(@photo) %>
+      <%= link_to 'Delete Photo', photo_path(@photo), method: :delete %>
+    </div>
+  <% end %>
   <div class='comments'>
     <%= form_for [@photo, @comment] do |f| %>
       <%= f.label :content %>
@@ -22,6 +24,6 @@
       </div>
       <% end %>
     <% end %>
-    
+
   </div>
 </div>
