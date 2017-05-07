@@ -11,6 +11,10 @@ group :test do
 end
 gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'erubis', '~> 2.7'
+gem 'cloudinary'
+gem 'carrierwave'
+gem 'pry'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
