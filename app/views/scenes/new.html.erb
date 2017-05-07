@@ -1,3 +1,14 @@
+<% if @scene.errors.any? %>
+  <section id="errors" >
+    <h2> <%= pluralize(@scene.errors.count, "error") %> prohibited this restaurant from being saved: </h2>
+    <ul>
+      <% @scene.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
 <%= form_for @scene do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>

@@ -8,8 +8,12 @@ class ScenesController < ApplicationController
   end
 
   def create
-    @scene = Scene.create(scene_params)
-    redirect_to '/scenes'
+    @scene = Scene.new(scene_params)
+    if @scene.save
+      redirect_to '/scenes'
+    else
+      render 'new'
+    end
   end
 
   def show

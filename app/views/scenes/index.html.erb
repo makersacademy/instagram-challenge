@@ -1,14 +1,24 @@
-<% if @scenes.any? %>
-  <% @scenes.each do |scene| %>
-    <%= link_to scene.title, scene_path(scene) %>
-    <%= link_to "Edit #{scene.title}", edit_scene_path(scene) %>
-    <%= link_to "Delete #{scene.title}", scene_path(scene), method: :delete %>
-    <%= link_to "Comment", new_scene_comment_path(scene) %>
-  <% end %>
-<% else %>
+<% if @scenes.empty? %>
   <h1>No scenes yet</h1>
 <% end %>
 
-<!-- <a href="#">Add a scene</a> -->
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+
+<% if @scenes.any? %>
+  <% @scenes.each do |scene| %>
+    <tr>
+      <td><%= link_to scene.title, scene_path(scene) %></td>
+      <td><%= link_to "Edit #{scene.title}", edit_scene_path(scene) %></td>
+      <td><%= link_to "Delete #{scene.title}", scene_path(scene), method: :delete %></td>
+      <td><%= link_to "Comment", new_scene_comment_path(scene) %></td>
+    <% end %>
+  </tr>
+<% end %>
+
+</table>
+
 
 <%= link_to 'Add a scene', new_scene_path %>
