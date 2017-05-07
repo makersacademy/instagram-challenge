@@ -11,7 +11,7 @@ feature 'pictures' do
     end
 
     scenario 'link for adding pictures' do
-      visit '/pictures'
+      # visit '/pictures'
       expect(page).to have_link 'share a picture'
     end
 
@@ -23,7 +23,7 @@ feature 'pictures' do
     end
 
     scenario 'user can share a picture' do
-      visit '/pictures'
+      # visit '/pictures'
       click_link 'share a picture'
       fill_in 'caption', with: 'sally'
       click_button 'share picture'

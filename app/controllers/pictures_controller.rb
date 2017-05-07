@@ -2,6 +2,7 @@ class PicturesController < ApplicationController
 
   def index
     @pictures = Picture.all
+    @comment = Comment.new
   end
 
   def new
