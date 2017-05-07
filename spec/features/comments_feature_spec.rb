@@ -14,6 +14,13 @@ feature 'commenting' do
     expect(current_path).to eq posts_path
     expect(page).to have_content('Lovely')
   end
+
+  scenario 'username appears with comment' do
+    visit posts_path
+    sign_up('pixel@bmo.com')
+    leave_comment('Noice')
+    expect(page).to have_content('pixel')
+  end
 end
 
 feature 'comments' do

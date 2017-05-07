@@ -1,6 +1,7 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-    <%= post.user.username %>
+    <strong><%= post.user.username %></strong>
+    <%= distance_of_time_in_words(Time.now, post.created_at) %> ago
     <%= image_tag post.image.url(:medium) %>
 
     <%= link_to 'Like', post_likes_path(post), class: 'likes-link' %>
@@ -8,9 +9,7 @@
     <%= 'like'.pluralize(post.likes.count) %>
 
 
-
-
-    <p><%= link_to post.description, post_path(post) %></p>
+    <p><strong><%= post.user.username %></strong> <%= post.description %></p>
     <% post.comments.each do |text| %>
     <%= text.user.username %>
     <%= text.comment %></br>

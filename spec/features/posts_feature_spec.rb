@@ -62,9 +62,8 @@ feature 'posts' do
 
     scenario 'lets user view post' do
       visit posts_path
-      click_link('Nice')
       expect(page).to have_content('Nice')
-      expect(current_path).to eq post_path(description)
+      expect(current_path).to eq posts_path
     end
   end
 

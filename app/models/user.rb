@@ -10,7 +10,6 @@ class User < ApplicationRecord
             :uniqueness => {
             :case_sensitive => false
             }
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
   def login=(login)
     @login = login
@@ -33,7 +32,7 @@ class User < ApplicationRecord
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email
     user.password = Devise.friendly_token[0,20]
-    user.username = auth.info.name   # I am assuming this is how I add the user name???
+    user.username = auth.info.name # I am assuming this is how I add the user name???
     end
   end
 end
