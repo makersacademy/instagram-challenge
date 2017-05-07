@@ -43,6 +43,6 @@ class TravelgramsController < ApplicationController
   private
 
   def travelgram_params
-    params.require(:travelgram).permit(:name, :description)
+    params.require(:travelgram).permit(:name, :description, :image)
   end
 end

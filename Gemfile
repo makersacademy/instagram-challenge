@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'pry'
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 gem 'omniauth-facebook'
+gem 'paperclip'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
