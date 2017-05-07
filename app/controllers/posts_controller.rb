@@ -9,8 +9,13 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
-    redirect_to root_path
+
+    if @post.save
+      redirect_to root_path
+    else
+      flash.keep[:alert] = "Error creating post. Please try again."
+      redirect_to new_post_path
+    end
   end
 
   def show
