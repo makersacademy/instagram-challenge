@@ -31,7 +31,7 @@ feature 'photos' do
     context 'photos have been added' do
 
       scenario 'display photos' do
-        visit '/photos'
+        visit '/'
         expect(page).to have_content('Avocado and Scrambled eggs #Living')
         expect(page).not_to have_content('No photos yet')
       end
@@ -45,6 +45,7 @@ feature 'photos' do
         expect(page).to have_content 'Avocado and Scrambled eggs #Living'
         expect(page).to have_content '06/05/2017 14:00'
         expect(page).to have_css 'img'
+        expect(page).to have_content '0 likes'
         expect(current_path).to eq "/photos/#{Photo.last.id}"
       end
     end
@@ -71,7 +72,7 @@ feature 'photos' do
     context 'uploading photos' do
 
       scenario 'prompts user to fill out form, then displays the new photo' do
-        visit '/photos'
+        visit '/'
         click_link 'Add a photo'
         fill_in 'Caption', with: 'Avocado and Scrambled eggs #Living'
         fill_in 'Location', with: 'Somewhere pretentious'

@@ -4,6 +4,8 @@
     <h4><%= @photo.location %></h4>
     <h2><%= @photo.caption%></h2>
     <%= image_tag @photo.image.url(:medium) %>
+    <h4><%= pluralize(@photo.likes.count, 'like')%></h4>
+    <button><%= link_to 'Like Photo', new_photo_like_path(@photo) %></button>
   </div>
   <% if @user.id == @photo.user_id %>
     <div class='photo-options'>
