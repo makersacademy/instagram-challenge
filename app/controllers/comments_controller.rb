@@ -6,13 +6,13 @@ class CommentsController < ApplicationController
 
   def create
     @photo = Photo.find(params[:photo_id])
-    @photo.comments.create(comment_parms)
+    @comment = @photo.create_comment(comment_params, current_user)
     redirect_to "/photos/#{@photo.id}"
   end
 
   private
 
-  def comment_parms
+  def comment_params
     params.require(:comment).permit(:content)
   end
 end

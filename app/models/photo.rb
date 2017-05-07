@@ -7,4 +7,9 @@ class Photo < ApplicationRecord
   validates :image, presence: true
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
+  def create_comment(comment_params, user)
+    comment = user.comments.new(comment_params)
+    comment.update(photo_id: self.id)
+    comment.save
+  end
 end
