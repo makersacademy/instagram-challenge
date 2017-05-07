@@ -12,3 +12,14 @@ def share_picture(caption = 'sally')
   fill_in 'caption', with: caption
   click_button 'share picture'
 end
+
+def add_comment(thoughts = 'lovexxx')
+  visit '/pictures'
+  fill_in 'any thoughts?', with: thoughts
+  click_button 'comment'
+end
+
+def create_picture_with_user(email = 'kate@kate.com', caption = 'sally')
+  User.create(email: email, password: '123456', password_confirmation: '123456')
+  Picture.create(caption: caption, user: User.first)
+end
