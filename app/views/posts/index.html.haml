@@ -2,6 +2,7 @@
   %a.button(href='/posts/new') Add a post
 - if @posts.all.any?
   - @posts.all.each do |post|
+    - comment = post.comments.first
     %div.info[post]
       %div.image
         %img{:src => post.image}
@@ -11,7 +12,7 @@
         - if post.likes
           %a= "#{post.likes} likes"
       %div.comment
-        = post.comments.first.content
+        = comments.content if comment
 - else
   No posts yet
 
