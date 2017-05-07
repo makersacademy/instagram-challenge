@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative 'picture-helper'
 
 feature 'pictures' do
   context 'no images have been added' do
@@ -28,6 +29,14 @@ feature 'pictures' do
       click_button 'Create Picture'
       expect(page).to have_content 'Good 10 mile run in the wheel last night #BeachBod2017 #feelinggood'
       expect(current_path).to eq '/pictures'
+    end
+  end
+
+  context 'viewing pictures' do
+    scenario 'lets a user see a picture' do
+    add_picture
+    expect(page).to have_content "nomnom"
+    expect(current_path).to eq "/pictures/#{nomnom.id}"
     end
   end
 end

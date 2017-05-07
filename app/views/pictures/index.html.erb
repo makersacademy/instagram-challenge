@@ -1,12 +1,10 @@
-
 <title>Hamstagram</title>
 <head>
 <h1>Welcome to Hamstagram!</h1>
 </head>
 <% if @pictures.all.any? %>
 <% @pictures.all.each do |picture| %>
-<h3><%=picture.status %> </h3>
-<%= image_tag picture.image.url(:thumb) %>
+<%= link_to image_tag(picture.image.url(:thumb)), picture_path(picture) %>
 <% end %>
 <% else %>
 <h1>No pictures added yet</h1>
