@@ -349,7 +349,7 @@ Simple view components like sign in should be moved into partials and called in 
 <% end %>
 
 <% if user_signed_in? %>
-  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+  <%= link_to 'sign out', destroy_user_session_path, method: :delete %>
 <% end %>
 ```
 
@@ -406,7 +406,7 @@ can be replaced with:
 <% end %>
 ```
 
-This is a sensible step because we are encapsulating the set of variables that this partial depends on.  The render operation is now self documenting in that it is describing the set of variables that need to be made available for its use. 
+This is a sensible step because we are encapsulating the set of variables that this partial depends on.  The render operation is now self documenting in that it is describing the set of variables that need to be made available for its use.
 
 ### Law of Demeter Violations
 
