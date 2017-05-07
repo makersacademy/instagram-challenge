@@ -8,4 +8,18 @@
   <div class="created-at">
 Created at: <%= @post.created_at %>
   </div>
+  <div class="comments-title">
+    Comments
+  </div>
+  <div class="comments">
+    <% @post.comments.each do |comment| %>
+    <%= comment.text %>
+    <%= comment.created_at %>
+    <% end %>
+  </div>
+<% if current_user %>
+  <div>
+    <%= link_to "Comment", new_post_comment_path(@post)  %>
+  </div>
+<% end %>
 </div>

@@ -4,8 +4,12 @@ class PostsController < ApplicationController
   end
 
   def new
-    @user = current_user
-    @post = Post.new
+    if current_user
+      @user = current_user
+      @post = Post.new
+    else
+      redirect_to new_user_registration_path
+    end
   end
 
   def create
@@ -23,6 +27,13 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = "Post deleted successfully"
+    redirect_to root_path
   end
 
   private

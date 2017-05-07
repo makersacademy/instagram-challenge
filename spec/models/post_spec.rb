@@ -31,5 +31,23 @@ RSpec.describe Post, type: :model do
     end
   end
 
+  describe 'Comments' do
+    describe 'build_with_user' do
+      let(:user) { User.create email: 'test@test.test' }
+      let(:post) { Post.create image: File.new(Rails.root + 'spec/fixtures/images/freedom-beach.jpg'), caption: 'Cool'}
+      let(:comment_params) { {text: 'average'} }
+
+      subject(:comment) { post.comments.build_with_user(comment_params, user) }
+
+      it 'builds a comment' do
+        expect(comment).to be_a Comment
+      end
+
+      it 'builds a comment associated with the user' do
+        expect(comment.user).to eq user
+      end
+    end
+  end
+
 
 end
