@@ -7,6 +7,7 @@ end
 
 gem 'pry'
 
+gem 'database_cleaner', git: 'git@github.com:DatabaseCleaner/database_cleaner.git'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 
