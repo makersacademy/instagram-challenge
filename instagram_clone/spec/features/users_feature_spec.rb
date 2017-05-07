@@ -26,6 +26,11 @@ feature 'User' do
         expect(page).not_to have_link("Sign in")
         expect(page).not_to have_link("Sign up")
       end
+      it 'should see a flash message when signed out' do
+        sign_in
+        click_link("Sign out")
+        expect(page).to have_content("Signed out successfully")
+      end
 
       it 'should be redirected back to homepage after clicking "Sign out"' do
         visit('/')
