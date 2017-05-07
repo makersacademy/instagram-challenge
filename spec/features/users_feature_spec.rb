@@ -12,6 +12,16 @@ feature 'users' do
       visit '/'
       expect(page).not_to have_link 'Sign out'
     end
+
+    scenario 'should see an error when trying to register with an existing username' do
+      sign_up
+      click_link 'Sign out'
+      click_link 'Sign up'
+      sign_up
+      expect(page).to have_content 'Username has already been taken'
+      expect(page).to have_content 'Email has already been taken'
+      expect(current_path).to eq '/users'
+    end
   end
 
   context 'user signed in on the home page' do
@@ -28,19 +38,6 @@ feature 'users' do
       visit '/'
       expect(page).not_to have_link 'Sign in'
       expect(page).not_to have_link 'Sign up'
-    end
-  end
-
-  context 'user validations at sign up' do
-    scenario 'should not be able to sign up with an existing username' do
-      sign_up
-      click_link 'Sign out'
-      click_link 'Sign up'
-      expect {sign_up(email:'emmpak@makers.com') }.not_to change {User.count}
-    end
-
-    scenario 'should not be able to registe without a username' do
-      expect {sign_up(username:'') }.not_to change {User.count}
     end
   end
 end

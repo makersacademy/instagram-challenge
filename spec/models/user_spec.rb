@@ -16,6 +16,9 @@ describe User, type: :model do
     end
 
     it 'should not be able to register without a username' do
+      user = create_user(username: '')
+      expect(user).to have(1).error_on(:username)
+      expect(user).not_to be_valid
       expect {create_user(username:'') }.not_to change {User.count}
     end
   end
