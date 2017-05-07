@@ -100,7 +100,7 @@ feature 'photos' do
 
     context 'editing photos' do
 
-      scenario 'let a user update a photo' do
+      scenario 'lets the owner update a photo' do
         upload_photo
         visit "/photos/#{Photo.last.id}"
         click_link 'Update Photo'
@@ -112,16 +112,32 @@ feature 'photos' do
         expect(page).to have_content 'Somewhere even more pretentious'
         expect(page).not_to have_content 'Avocado and Scrambled eggs #Living'
       end
+
+      scenario 'cannot edit photo unless owner' do
+        upload_photo
+        click_link 'Sign out'
+        sign_up(email: 'visitor@test.com')
+        visit "/photos/#{Photo.last.id}"
+        expect(page).not_to have_link 'Update Photo'
+      end
     end
 
-    context 'deleting photos'do
+    context 'deleting photos' do
 
-      scenario 'removes a photo when a user clicks a delete link' do
+      scenario 'removes a photo when owner clicks a delete link' do
         upload_photo
         visit "/photos/#{Photo.last.id}"
         click_link 'Delete Photo'
         expect(page).not_to have_content 'Avocado and Scrambled eggs #Living'
         expect(page).to have_content 'Photo deleted successfully'
+      end
+
+      scenario 'cannot delete photo unless owner' do
+        upload_photo
+        click_link 'Sign out'
+        sign_up(email: 'visitor@test.com')
+        visit "/photos/#{Photo.last.id}"
+        expect(page).not_to have_link 'Delete Photo'
       end
 
     end

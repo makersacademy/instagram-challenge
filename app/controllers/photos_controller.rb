@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
+  before_action :require_permission, :only => [:edit, :destroy]
 
   def index
     @photos = Photo.all
@@ -11,7 +12,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
+    @photo = current_user.photos.new(photo_params)
     if @photo.save
       redirect_to '/photos'
     else
@@ -20,7 +21,7 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = current_user || User.new
     @photo = Photo.find(params[:id])
     @comment = Comment.new
     @comments = @photo.comments.all
@@ -48,5 +49,11 @@ class PhotosController < ApplicationController
 
   def photo_params
     params.require(:photo).permit(:caption, :location, :image)
+  end
+
+  def require_permission
+    if current_user.id != Photo.find(params[:id]).user_id
+      redirect_to '/'
+    end
   end
 end
