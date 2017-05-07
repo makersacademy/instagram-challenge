@@ -1,3 +1,14 @@
+<% if @experience.errors.any? %>
+  <section id='errors'>
+    <h2><%= pluralize(@experience.errors.count, 'error')%> prohibited this experience to be saved:</h2>
+    <ul>
+      <% @experience.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+<% end %>
+</section>
+
 <%= form_for @experience, html: {multipart: true} do |f| %>
   <%= f.label :image %>
   <%= f.file_field :image %>
