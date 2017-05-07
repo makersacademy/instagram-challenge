@@ -43,4 +43,18 @@ context 'viewing scenes' do
   end
 end
 
+context 'editing scenes' do
+  before { Scene.create title: 'Tree', id: 1 }
+
+  scenario "let a user edit a scene's title" do
+    visit '/scenes'
+    click_link 'Edit Tree'
+    fill_in 'Title', with: 'Birch'
+    click_button 'Update Scene'
+    click_link 'Birch'
+    expect(page).to have_content 'Birch'
+    expect(current_path).to eq '/scenes/1'
+  end
+end
+
 end

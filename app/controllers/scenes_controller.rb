@@ -16,6 +16,16 @@ class ScenesController < ApplicationController
     @scene = Scene.find(params[:id])
   end
 
+  def edit
+    @scene = Scene.find(params[:id])
+  end
+
+  def update
+    @scene = Scene.find(params[:id])
+    @scene.update(scene_params)
+    redirect_to '/scenes'
+  end
+
   private
   def scene_params
     params.require(:scene).permit(:title)
