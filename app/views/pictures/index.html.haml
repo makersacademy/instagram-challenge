@@ -1,14 +1,16 @@
-- if @pictures.any?
-  - @pictures.each do |picture|
-    %h2= link_to picture.name, picture_path(picture)
-    %h2= picture.description
-    %h2= link_to "Leave comment on '#{picture.name}'", new_picture_comment_path(picture)
-    - if picture.user == current_user
-      %h4= link_to "Edit #{picture.name}", edit_picture_path(picture)
-      %h4= link_to "Delete #{picture.name}", picture_path(picture), method: :delete
-    - picture.comments.each do |comment|
-      %p= comment.thoughts
-- else
-  %p No pictures yet
+%a.add-pic(href=new_picture_path) Add a picture
 
-%a(href=new_picture_path) Add a picture
+%ul.centered
+  - if @pictures.any?
+    - @pictures.each do |picture|
+      %h2= link_to picture.name, picture_path(picture)
+      %h2= picture.description
+      %h4= link_to "Leave comment on '#{picture.name}'", new_picture_comment_path(picture)
+      - if picture.user == current_user
+        .pic-admin
+          = link_to "Edit #{picture.name}", edit_picture_path(picture)
+          = link_to "Delete #{picture.name}", picture_path(picture), method: :delete
+      - picture.comments.each do |comment|
+        %p= comment.thoughts
+  - else
+    %p No pictures yet
