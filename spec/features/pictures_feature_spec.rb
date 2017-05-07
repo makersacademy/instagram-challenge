@@ -9,34 +9,47 @@ feature 'pictures' do
     expect(page).to have_link 'Add a picture'
     end
   end
+end
 
   context 'show pictures' do
-    before do
-      Picture.create(status: 'Broccoli is my favourite!')
-    end
+    let!(:nomnom){ Picture.create(status:'Broccoli is my favourite!') }
     scenario 'show pictures' do
-    visit '/pictures'
+    visit "/pictures/#{nomnom.id}"
     expect(page).to have_content 'Broccoli is my favourite!'
-    expect(page).not_to have_content 'No pictures added yet'
     end
-  end
 
   context 'posting pictures' do
+    let!(:exercise){ Picture.create(status:'Good 10 mile run in the wheel last night #BeachBod2017 #feelinggood') }
     scenario 'prompts user to post image with status, then display image' do
       visit '/pictures'
       click_link 'Add a picture'
       fill_in 'Status', with: 'Good 10 mile run in the wheel last night #BeachBod2017 #feelinggood'
       click_button 'Create Picture'
-      expect(page).to have_content 'Good 10 mile run in the wheel last night #BeachBod2017 #feelinggood'
       expect(current_path).to eq '/pictures'
+      visit "/pictures/#{exercise.id}"
+      expect(page).to have_content 'Good 10 mile run in the wheel last night #BeachBod2017 #feelinggood'
     end
   end
 
   context 'viewing pictures' do
+    let!(:nomnom){ Picture.create(status: "I love sweetcorn, can't get enough! #sweetcornsundays") }
     scenario 'lets a user see a picture' do
-    add_picture
-    expect(page).to have_content "nomnom"
-    expect(current_path).to eq "/pictures/#{nomnom.id}"
+    visit "/pictures/#{nomnom.id}"
+    expect(page).to have_content "I love sweetcorn, can't get enough!"
+    end
+  end
+
+  context 'editing status' do
+      let!(:nuts){ Picture.create(status: "#PrayforCarrotTown after rabbit carrot burglary") }
+      scenario 'let a user edit a status' do
+      visit '/pictures'
+      visit "/pictures/#{nuts.id}"
+      click_link 'Edit #PrayforCarrotTown after rabbit carrot burglary'
+      fill_in 'Status', with: '100 Carrots found hidden in rabbit hole!'
+      click_button 'Update Picture'
+      visit "/pictures/#{nuts.id}"
+      expect(page).to have_content '100 Carrots found hidden in rabbit hole!'
+      expect(page).not_to have_content '#PrayforCarrotTown after rabbit carrot burglary'
     end
   end
 end
