@@ -1,5 +1,12 @@
+  <%= image_tag @adventure.image.url(:medium) %>
+<p><%= @adventure.name %></p>
+<% if current_user %>
+  <% if current_user == @adventure.user %>
+    <p><%= link_to "Edit #{@adventure.name}", edit_travelgram_path(@adventure)%></p>
+    <p><%= link_to "Delete #{@adventure.name}", travelgram_path(@adventure), method: :delete %></p>
+  <% end %>
+<% end %>
 
- <p><%= @adventure.name %></p>
  <p><%= @adventure.description %></p>
      <h4>Comments:</h4>
      <p><% @adventure.comments.each do |c| %></p>

@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
   def create
     @adventure = Travelgram.find(params[:travelgram_id])
     @comments = @adventure.build_comment(comments_params, current_user)
-    # require 'pry';binding.pry
 
     if @comments.save
       redirect_to "/travelgrams/#{@adventure.id}"

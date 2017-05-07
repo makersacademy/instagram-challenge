@@ -1,29 +1,33 @@
-<div class="row">
+<div class ="row">
   <div class="container">
-    <%= link_to 'Share Adventure', new_travelgram_path %>
 
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="content-wrapper">
+    <div class="share-adventure">
+      <h4><%= link_to 'Share adventure', new_travelgram_path %><i class="fa fa-chevron-right" aria-hidden="true"></i></h4>
+    </div>
 
     <% if @adventures.any? %>
-    <div class="col-md-4">
+
       <% @adventures.each do |adventure| %>
-
-        <%= image_tag adventure.image.url(:thumb) %>
-
-        <h2><%= link_to adventure.name, travelgram_path(adventure) %></h2>
-
-        <% if current_user %>
-
-          <% if current_user == adventure.user %>
-
-            <p><%= link_to "Edit #{adventure.name}", edit_travelgram_path(adventure)%></p>
-
-            <p><%= link_to "Delete #{adventure.name}", travelgram_path(adventure), method: :delete %></p>
-          <% end %>
-        <% end %>
+      <div class="col-md-4">
+        <a href="<%= travelgram_path(adventure) %>" class="s">
+          <div class="adventure-image">
+            <%= image_tag adventure.image.url(:thumb) %>
+          </div>
+          <div class="name-overlay">
+            <h4><%= adventure.name %></h4>
+          </div>
+        </a>
+      </div>
       <% end %>
-    </div>
     <% else %>
       <h1>Start posting!</h1>
     <% end %>
+    </div>
   </div>
 </div>

@@ -14,7 +14,7 @@ feature 'travelgram' do
     scenario 'should display a prompt to add a post' do
       visit '/travelgrams'
       expect(page).to have_content 'Start posting!'
-      expect(page).to have_link 'Share Adventure'
+      expect(page).to have_link 'Share adventure'
     end
   end
 
@@ -34,7 +34,7 @@ feature 'travelgram' do
   context 'creating adventures' do
     scenario 'prompts user to fill out a form, then displays new adventure' do
       visit '/travelgrams'
-      click_link 'Share Adventure'
+      click_link 'Share adventure'
       fill_in 'Name', with: 'Bali trip'
       click_button 'Share'
       expect(page).to have_content 'Bali trip'
@@ -44,7 +44,7 @@ feature 'travelgram' do
     context 'an invalid adventure' do
       scenario 'does not let you submit a name that is too short' do
         visit 'travelgrams'
-        click_link 'Share Adventure'
+        click_link 'Share adventure'
         fill_in 'Name', with: 'Ba'
         click_button 'Share'
         expect(page).not_to have_css 'h2', text: 'Ba'
@@ -75,6 +75,7 @@ feature 'travelgram' do
 
     scenario 'let a user edit an adventure' do
       visit '/travelgrams'
+      click_link 'Bali trip'
       click_link 'Edit Bali'
       fill_in 'Name', with: 'Bali trip'
       fill_in 'Description', with: 'Loved it'
@@ -94,6 +95,7 @@ feature 'travelgram' do
 
     scenario 'removes an adventure when a user clicks a delete link' do
       visit 'travelgrams'
+      click_link 'Bali trip'
       click_link 'Delete Bali'
       expect(page).not_to have_content 'Bali'
       expect(page).to have_content 'Adventure deleted successfully'
