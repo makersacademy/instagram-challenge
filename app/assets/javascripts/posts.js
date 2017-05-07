@@ -16,3 +16,4 @@ $(function() {
     console.log(files);
   });
 });
+console.log("hi");
