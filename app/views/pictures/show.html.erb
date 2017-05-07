@@ -7,25 +7,33 @@
       <div id='single-pic'>
         <img src="<%=@picture.url%>" alt="<%=@picture.title%>" class="center-block" style="width:600px;height:600px;">
       </div><br />
-      <div id='pic-comments'>
-        <% unless @picture.comments.empty? %>
-          <% @picture.comments.each do |comment| %>
-            <div class="text-center" id='pic-each-comment'>
-              <%= comment.thoughts %>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="text-center" id='pic-add-comment'>
-        <%= link_to "Comment", new_picture_comment_path(@picture) %>
-      </div>
-      <% unless current_user.nil? %>
-        <% if @picture.user_id == current_user.id %>
-          <div class="text-center" id='pic-delete'>
-            <%= link_to "Delete", picture_path(@picture), method: :delete %>
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+          <div id='pic-comments'>
+            <% unless @picture.comments.empty? %>
+              <% @picture.comments.each do |comment| %>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <%= comment.thoughts %>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
           </div>
-        <% end %>
-      <% end %>
+          <div class="text-center" id='pic-add-comment'>
+            <%= link_to "Comment", new_picture_comment_path(@picture), :class => "btn btn-primary" %>
+          </div><br />
+          <% unless current_user.nil? %>
+            <% if @picture.user_id == current_user.id %>
+              <div class="text-center" id='pic-delete'>
+                <%= link_to "Delete", picture_path(@picture), method: :delete, :class => "btn btn-danger" %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
     </div>
   </div>
 </div>
