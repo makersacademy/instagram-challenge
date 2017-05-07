@@ -22,10 +22,4 @@ describe User, type: :model do
       expect {create_user(username:'') }.not_to change {User.count}
     end
   end
-
-  describe '#chronological' do
-    it 'orders the experiences in chronological order' do
-      
-    end
-  end
 end

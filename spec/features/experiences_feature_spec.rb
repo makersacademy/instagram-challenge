@@ -21,7 +21,14 @@ feature 'experiences' do
       expect(page).not_to have_content 'No experiences yet'
     end
 
-    scenario "guest cannot see the 'post an experience' button" do
+    scenario 'can view a specific experience' do
+      # page.find("img[@alt='Wolf creek']").click
+      click_link('', :href => "#{experience_path(Experience.last)}")
+      expect(current_path).to eq "/experiences/#{Experience.last.id}"
+      expect(page).to have_content "Heavan for powder hounds"
+    end
+
+    scenario "cannot see the 'post an experience' button" do
       expect(page).not_to have_link "Share an experience"
     end
 

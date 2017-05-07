@@ -1,8 +1,12 @@
 <% if @experiences.any? %>
   <% @experiences.each do |experience| %>
-    <%= experience.user.username %>
-    <%= image_tag experience.image.url(:medium) %>
-    <%= experience.description %>
+    <div class='experience'>
+      <%= experience.user.username %>
+      <a href="<%= experience_path(experience) %>">
+        <div class='experience-image'> <%= image_tag experience.image.url(:medium) %> </div>
+      </a>
+      <%= experience.description %>
+    </div>
   <% end %>
 <% else %>
   <p>No experiences yet</p>
