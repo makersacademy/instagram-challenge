@@ -1,0 +1,28 @@
+%div
+  %a.button(href='/posts/new') Add a post
+- if @posts.all.any?
+  - @posts.all.each do |post|
+    - comment = post.comments.first
+    %div.info[post]
+      %div.image
+        %img{:src => post.image}
+      %div.options
+        = link_to "Add a comment...", new_post_comment_path(post)
+      %div.likes
+        - if post.likes
+          %a= "#{post.likes} likes"
+      %div.comment
+        = comments.content if comment
+- else
+  No posts yet
+
+
+
+
+
+
+-# %div.comments
+-#   = form_for @comment do |f|
+-#     = f.label :content
+-#     = f.text_area :content
+-#     = f.submit 'Add a comment...'
