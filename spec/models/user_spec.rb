@@ -1,18 +1,22 @@
+require 'rails_helper'
+
 describe User, type: :model do
   describe 'Associations' do
     it { should have_many(:experiences) }
   end
-end
 
-# context 'user validations at sign up' do
-#   scenario 'should not be able to sign up with an existing username' do
-#     sign_up
-#     click_link 'Sign out'
-#     click_link 'Sign up'
-#     expect {sign_up(email:'emmpak@makers.com') }.not_to change {User.count}
-#   end
-#
-#   scenario 'should not be able to registe without a username' do
-#     expect {sign_up(username:'') }.not_to change {User.count}
-#   end
-# end
+  describe 'Database Table' do
+    it { is_expected.to have_db_column(:username).of_type(:string) }
+  end
+
+  describe 'Validations' do
+    it 'should not be able to sign up with a username that alreay exists' do
+      create_user
+      expect {create_user(email:'emmpak@makers.com') }.not_to change {User.count}
+    end
+
+    it 'should not be able to register without a username' do
+      expect {create_user(username:'') }.not_to change {User.count}
+    end
+  end
+end
