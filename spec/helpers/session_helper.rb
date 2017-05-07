@@ -22,4 +22,11 @@ module SessionHelper
     click_link('Sign out')
   end
 
+  def new_post(description: 'this is a description')
+    click_link('New Post')
+    fill_in('Description', with: description)
+    click_button('Create Post')
+  end
+
+
 end
