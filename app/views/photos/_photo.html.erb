@@ -4,6 +4,10 @@
   </div>
   <div class="media-body">
     <h4 class="media-heading"><%= photo.caption %></h4>
+    <% photo.comments.each do |x| %><div>
+      <ol><%= x.thoughts %></ol></div>
+    <%end%>
+    <%= link_to "Leave a Comment", new_photo_comment_path(photo) %>
     <%= link_to 'Remove', photo_path(photo), class: 'btn btn-danger', method: :delete, data: {confirm: 'Are you sure?'} %>
   </div>
 </div>

@@ -1,4 +1,5 @@
 class Photo < ApplicationRecord
+  has_many :comments, dependent: :destroy
   has_attached_file :image,
                     styles: { thumb: ["300x300#", :jpg],
                               original: ['500x500>', :jpg] },
