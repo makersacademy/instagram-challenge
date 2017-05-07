@@ -1,23 +1,31 @@
-Instagram Challenge
-===================
+# README
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Your challenge is to build Instagram using Rails. You'll need users who can post pictures, write comments on pictures and like a picture. Style it like Instagram's website (or more awesome).
 
-Task
------
+as a user,
+so that I can use instagram,
+i need to be able to sign up
 
-Build Instagram: Simple huh!
+as a user,
+so that i dont have to sign in every time,
+i need to be able to sign in
 
-Bonus if you can write your own set of sensible user stories!
+as a user,
+so that i can ensure security,
+i need to be able to sign out
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+as a signed in user,
+so i can get gramming,
+i need to be able to post pictures
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+as a user,
+so i can let other people know what i think about their photos,
+i need to be able to comment on their photos
 
-Bonus if you can add filters!
+as a user,
+so i can let other users know if i like their photo,
+i need to be able to like their photos
+
+as a user,
+so instagram is nice to use,
+it needs to be styled nicely
