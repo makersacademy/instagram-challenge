@@ -1,7 +1,12 @@
-%h2= @picture.name
-%h2= @picture.description
-- @picture.comments.each do |comment|
-  %p= comment.thoughts
-%h2= link_to "Leave comment on '#{@picture.name}'"
-%h4= link_to "Edit #{@picture.name}", edit_picture_path(@picture)
-%h4= link_to "Delete #{@picture.name}", picture_path(@picture), method: :delete
+.centered
+  %h2= + "User: "+ @picture.user.email
+  %h2= @picture.name + ":"
+  %h2= @picture.description
+  = image_tag @picture.image.url(:medium)
+  %h2= link_to "Leave comment on '#{@picture.name}'"
+  - if @picture.user == current_user
+    .pic-admin
+      = link_to "Edit #{@picture.name}", edit_picture_path(@picture)
+      = link_to "Delete #{@picture.name}", picture_path(@picture), method: :delete
+  - @picture.comments.each do |comment|
+    %p= comment.thoughts

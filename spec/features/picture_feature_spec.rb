@@ -66,7 +66,7 @@ feature 'pictures' do
       click_link 'Me'
       click_link 'Edit Me'
       fill_in 'Description', with: 'A great selfie'
-      click_button 'Update post'
+      click_button 'Upload picture'
 
       click_link 'Me'
       expect(page).to have_content 'A great selfie'
