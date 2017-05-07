@@ -1,12 +1,29 @@
-<% if @adventures.any? %>
-  <% @adventures.each do |adventure| %>
-    <h2><%= link_to adventure.name, travelgram_path(adventure) %></h2>
-    <p><%= link_to "Edit #{adventure.name}", edit_travelgram_path(adventure)%></p>
-    <p><%= link_to "Delete #{adventure.name}", travelgram_path(adventure), method: :delete %></p>
-    <p><%= image_tag adventure.image.url(:thumb) %>
-  <% end %>
-<% else %>
-  <h1>Start posting!</h1>
-<% end %>
+<div class="row">
+  <div class="container">
+    <%= link_to 'Share Adventure', new_travelgram_path %>
 
-<%= link_to 'Share Adventure', new_travelgram_path %>
+
+    <% if @adventures.any? %>
+    <div class="col-md-4">
+      <% @adventures.each do |adventure| %>
+
+        <%= image_tag adventure.image.url(:thumb) %>
+
+        <h2><%= link_to adventure.name, travelgram_path(adventure) %></h2>
+
+        <% if current_user %>
+
+          <% if current_user == adventure.user %>
+
+            <p><%= link_to "Edit #{adventure.name}", edit_travelgram_path(adventure)%></p>
+
+            <p><%= link_to "Delete #{adventure.name}", travelgram_path(adventure), method: :delete %></p>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <% else %>
+      <h1>Start posting!</h1>
+    <% end %>
+  </div>
+</div>
