@@ -4,6 +4,7 @@ class PicturesController < ApplicationController
   def index
     @pictures = Picture.all
     @comment = Comment.new
+    @like = Like.new
   end
 
   def new
@@ -27,7 +28,7 @@ class PicturesController < ApplicationController
       picture.destroy
       flash[:notice] = 'picture deleted'
       redirect_to '/pictures'
-    end 
+    end
   end
 
   def picture_params

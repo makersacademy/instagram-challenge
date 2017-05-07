@@ -1,28 +1,32 @@
-<div class='pictures'>
+
   <% if current_user %>
-    <a href='/pictures/new'>share a picture</a>
+    <a href='/pictures/new'><div class='pictures' id='share_picture'>share a picture</div></a></br>
   <% end %>
-</div>
+
 
 <div class='pictures'>
 
   <% Picture.all.reverse.each do |picture| %>
 
-    <p><%= picture.user.email %>:</p>
-    <a href='/pictures/<%=picture.id%>'><p><%= image_tag picture.image.url(:medium) %></p></a>
-    <p><%= picture.caption %></p>
+    <div id='photo_frame'>
+      <p><%= picture.user.email %>:</p>
+        <div id='photo'>
+          <a href='/pictures/<%=picture.id%>'><p><%= image_tag picture.image.url(:medium) %></p></a>
+          <p>'<%= picture.caption %>'</p>
+      </div>
 
-    <% if picture.likes.count == 1 %>
-      <p><%= picture.likes.count %> like </p>
-    <% elsif picture.likes.count > 0 %>
-      <p><%= picture.likes.count %> likes </p>
-    <% end %>
+      <% if picture.likes.count == 1 %>
+        <p><%= picture.likes.count %> like </p>
+      <% elsif picture.likes.count > 0 %>
+        <p><%= picture.likes.count %> likes </p>
+      <% end %>
+
+    </div>
 
     <% if current_user %>
-      <%= form_for [picture, Like.new] do |f| %>
-        <p><%= f.submit 'like', class:'comment_button' %></p>
+      <%= form_for [picture, @like] do |f| %>
+        <p><%= f.submit 'like', class:'insta_button' %></p>
       <% end %>
-      <!-- <p><%= link_to 'like', new_picture_like_path(picture)%> -->
     <% end %>
 
     <% if current_user && current_user == picture.user %>
@@ -35,8 +39,8 @@
 
     <% if current_user %>
         <%= form_for [picture, @comment] do |f| %>
-          <p><%= f.text_area :opinion %></p>
-          <p><%= f.submit 'comment', class:'comment_button' %></p>
+          <p><%= f.text_area :opinion, cols: '45', rows: '3' %></p>
+          <p><%= f.submit 'comment', class:'insta_button' %></p>
         <% end %>
     <% end %>
 
