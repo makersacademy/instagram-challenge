@@ -26,6 +26,13 @@ class ScenesController < ApplicationController
     redirect_to '/scenes'
   end
 
+  def destroy
+    @scene = Scene.find(params[:id])
+    @scene.destroy
+    flash[:notice] = "Scene deleted successfully"
+    redirect_to '/scenes'
+  end
+
   private
   def scene_params
     params.require(:scene).permit(:title)

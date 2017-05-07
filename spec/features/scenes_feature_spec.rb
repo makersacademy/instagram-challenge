@@ -57,4 +57,15 @@ context 'editing scenes' do
   end
 end
 
+context 'deleting scenes' do
+  before { Scene.create title: 'Fire' }
+
+  scenario 'removes a scene when a user clicks a delete link' do
+    visit '/scenes'
+    click_link 'Delete Fire'
+    expect(page).not_to have_content 'Fire'
+    expect(page).to have_content 'Scene deleted successfully'
+  end
+end
+
 end
