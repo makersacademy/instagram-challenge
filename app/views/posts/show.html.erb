@@ -1,2 +1,7 @@
 <%= image_tag @post.image.url(:medium) %>
-<p><%= @post.description %></p>
+<p><strong><%= @post.user.username %></strong> <%= @post.description %></p>
+<%= distance_of_time_in_words(Time.now, @post.created_at) %> ago
+<% @post.comments.each do |text| %>
+  <strong><%= text.user.username %></strong>
+  <%= text.comment %></br>
+<% end %>
