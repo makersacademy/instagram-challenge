@@ -12,6 +12,10 @@ class ScenesController < ApplicationController
     redirect_to '/scenes'
   end
 
+  def show
+    @scene = Scene.find(params[:id])
+  end
+
   private
   def scene_params
     params.require(:scene).permit(:title)

@@ -17,7 +17,7 @@ context 'scenes have been added' do
   scenario 'display scenes' do
     visit '/scenes'
     expect(page).to have_content('Sunset')
-    expect(page).not_to have_content('No restaurants yet')
+    expect(page).not_to have_content('No scenes yet')
   end
 end
 
@@ -29,6 +29,17 @@ context 'creating scenes' do
     click_button 'Create Scene'
     expect(page).to have_content 'Waves'
     expect(current_path).to eq '/scenes'
+  end
+end
+
+context 'viewing scenes' do
+  let!(:waves){ Scene.create(title:'Waves') }
+
+  scenario 'lets a user view a scene' do
+    visit '/scenes'
+    click_link 'Waves'
+    expect(page).to have_content 'Waves'
+    expect(current_path).to eq "/scenes/#{waves.id}"
   end
 end
 
