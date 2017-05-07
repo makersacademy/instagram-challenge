@@ -6,31 +6,9 @@
           <div class="row">
             <% @pictures.each do |picture| %>
               <div class="col-sm-4" id='each-pic'>
-                <div class="text-center" id='pic-title'>
-                  <h2><%= link_to picture.title, picture_path(picture) %></h2>
-                </div>
                 <div id='pic-itself'>
-                  <img src="<%=picture.url%>" alt="<%=picture.title%>" style="width:100%">
+                  <%= link_to image_tag(picture.url, :style => "width:100%"), picture_path(picture) %>
                 </div>
-                <div id='pic-comments'>
-                  <% unless picture.comments.empty? %>
-                    <% picture.comments.each do |comment| %>
-                      <div class="text-center" id='pic-each-comment'>
-                        <%= comment.thoughts %>
-                      </div>
-                    <% end %>
-                  <% end %>
-                </div>
-                <div class="text-center" id='pic-add-comment'>
-                  <%= link_to "Comment", new_picture_comment_path(picture) %>
-                </div>
-                <% unless current_user.nil? %>
-                  <% if picture.user_id == current_user.id %>
-                    <div class="text-center" id='pic-delete'>
-                      <%= link_to "Delete", picture_path(picture), method: :delete %>
-                    </div>
-                  <% end %>
-                <% end %>
               </div>
             <% end %>
           </div>

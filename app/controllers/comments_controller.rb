@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment = @picture.build_comment(comment_params, current_user)
 
     if @comment.save
-      redirect_to '/pictures'
+      redirect_to "/pictures/#{Picture.last.id}"
     else
       if @comment.errors[:user]
         redirect_to pictures_path, notice: 'You have already commented on this picture'
