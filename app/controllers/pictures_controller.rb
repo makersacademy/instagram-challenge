@@ -10,11 +10,12 @@ class PicturesController < ApplicationController
   end
 
   def create
-    # require 'pry'; binding.pry
-    picture = Picture.new(picture_params)
-    picture.user = current_user
-    picture.save
-    redirect_to '/pictures'
+    picture = current_user.pictures.new(picture_params)
+    # picture = Picture.new(picture_params)
+    # picture.user = current_user
+    if picture.save
+      redirect_to '/pictures'
+    end
   end
 
   def show
