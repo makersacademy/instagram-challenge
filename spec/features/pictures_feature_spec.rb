@@ -44,7 +44,7 @@ end
       scenario 'let a user edit a status' do
       visit '/pictures'
       visit "/pictures/#{nuts.id}"
-      click_link 'Edit #PrayforCarrotTown after rabbit carrot burglary'
+      click_link 'Edit'
       fill_in 'Status', with: '100 Carrots found hidden in rabbit hole!'
       click_button 'Update Picture'
       visit "/pictures/#{nuts.id}"
@@ -57,7 +57,7 @@ end
   let!(:couplegoals){ Picture.create(status: "Love snuggling up with ma girlfriend in our new treehouse! #couplegoals" ) }
   scenario 'removes a picture when a hamster clicks delete link' do
     visit "/pictures/#{couplegoals.id}"
-    click_link "Delete Love snuggling up with ma girlfriend in our new treehouse! #couplegoals"
+    click_link "Delete"
     expect(page).not_to have_content 'Love snuggling up with ma girlfriend in our new treehouse! #couplegoals'
     expect(page).to have_content 'Picture deleted successfully'
     end
