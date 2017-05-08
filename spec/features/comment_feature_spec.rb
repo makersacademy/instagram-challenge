@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'commenting' do
-  before { Restaurant.create name: 'KFC' }
+  before { Photo.create caption: 'KFC' }
 
   scenario 'allows users to leave a comment using a form' do
      visit '/photos'
