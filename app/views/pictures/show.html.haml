@@ -1,0 +1,16 @@
+.main-container
+  .posts
+    %h2= @picture.user.email
+    = image_tag @picture.image.url(:medium)
+    .post-info
+      %h2= @picture.name + ":"
+      %h2= @picture.description
+    .leave-comment= link_to "Comment"
+    - if @picture.user == current_user
+      .pic-admin
+        = link_to "Edit", edit_picture_path(@picture)
+        = link_to "Delete", picture_path(@picture), method: :delete
+    - @picture.comments.each do |comment|
+      .comments
+        = comment.thoughts
+        = " - " + comment.user.email

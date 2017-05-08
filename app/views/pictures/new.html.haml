@@ -1,0 +1,10 @@
+.main-container
+  - if @picture.errors.any?
+    %section#errors
+      %h2
+        = pluralize @picture.errors.count, "error"
+        prohibited this picture from being saved:
+      %ul
+        - @picture.errors.full_messages.each do | message |
+          %li= message
+  = render "form"
