@@ -4,6 +4,9 @@ Build Instagram using Rails. Users will be able to post **pictures**, write **co
 
 Bonus if you can write your own set of sensible user stories!
 
+![main](https://raw.githubusercontent.com/j-rods/instagram-challenge/master/app/assets/images/main.png)
+![comments](https://raw.githubusercontent.com/j-rods/instagram-challenge/master/app/assets/images/comments.png)
+
 ## Technologies used
 
 * Ruby 2.4
