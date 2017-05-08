@@ -17,7 +17,6 @@ feature 'commenting' do
      click_link 'Add comment'
      fill_in "Thoughts", with: "What a lovely shell you have"
      click_button 'Leave comment'
-     click_link 'All comments'
      expect(current_path).to eq '/turtlegrams/2'
      expect(page).to have_content "What a lovely shell you have"
     end
