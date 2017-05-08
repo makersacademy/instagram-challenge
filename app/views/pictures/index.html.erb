@@ -25,9 +25,9 @@
         <% end %>
       </a>
 
-    </div>
+    </div></br>
 
-    <% if current_user %>
+    <% if current_user && current_user != picture.user && !current_user.has_liked?(picture) %>
       <%= form_for [picture, @like] do |f| %>
         <p><%= f.submit 'like', class:'insta_button' %></p>
       <% end %>
