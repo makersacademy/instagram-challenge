@@ -25,13 +25,13 @@
 
       </div>
         <div class="section-comments">
+        <% if current_user != @adventure.user %>
+          <p><%= link_to "Comment", new_travelgram_comment_path(@adventure), :class => "btn custom-button" %>
+        <% end %>
             <h4>Comments:</h4>
             <p><% @adventure.comments.each do |c| %></p>
             <p><strong>@<%= c.user.email %></strong> <%= c.thoughts %></p>
           <% end %>
-        <% if current_user != @adventure.user %>
-          <p><%= link_to "Comment", new_travelgram_comment_path(@adventure), :class => "btn custom-button" %>
-        <% end %>
 
       </div>
   </div>
