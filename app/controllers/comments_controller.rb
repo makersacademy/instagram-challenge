@@ -8,9 +8,7 @@ class CommentsController < ApplicationController
     @scene = Scene.find(params[:scene_id])
     @comment = @scene.comments.create(comment_params)
 
-    # if @comment.save
-      redirect_to scenes_path
-    # end
+    redirect_to "/scenes/#{params[:scene_id]}"
   end
 
   private

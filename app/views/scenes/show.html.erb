@@ -1,5 +1,8 @@
 <%= image_tag @scene.image.url(:large) %>
 <p> <%= @scene.title %> </p>
+<%= link_to "Edit #{@scene.title}", edit_scene_path(@scene) %>
+<%= link_to "Delete #{@scene.title}", scene_path(@scene), method: :delete %>
+<%= link_to "Comment", new_scene_comment_path(@scene) %>
 
 <table>
   <% @scene.comments.each do |comment| %>
@@ -9,4 +12,4 @@
   </tr>
 </table>
 
-<%= link_to 'Back', :back %>
+<%= link_to 'Back', scenes_path %>
