@@ -15,7 +15,7 @@ end
 
 def add_comment(thoughts = 'lovexxx')
   visit '/pictures'
-  fill_in 'any thoughts?', with: thoughts
+  fill_in 'comments_box', with: thoughts
   click_button 'comment'
 end
 

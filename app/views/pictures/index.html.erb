@@ -17,6 +17,8 @@
 
       <% if picture.likes.count == 1 %>
         <p><%= picture.likes.count %> like </p>
+      <% elsif picture.likes.count == 0 %>
+        <p>0 likes so far</p>
       <% elsif picture.likes.count > 0 %>
         <p><%= picture.likes.count %> likes </p>
       <% end %>
@@ -40,7 +42,7 @@
 
       <% if current_user %>
           <%= form_for [picture, @comment] do |f| %>
-            <p><%= f.text_area :opinion, cols: '50', rows: '3' %></p>
+            <p><%= f.text_area :opinion, cols: '50', rows: '3', id: 'comments_box'%></p>
             <p><%= f.submit 'comment', class:'insta_button' %></p>
           <% end %>
       <% end %>
