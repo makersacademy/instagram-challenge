@@ -16,3 +16,8 @@ def upload_photo
   attach_file('choose-file', Rails.root + "spec/fixtures/rick-astley.jpg")
   click_button 'Upload Photo'
 end
+
+def leave_comment(text)
+  fill_in "Content", with: text
+  click_button 'Comment'
+end

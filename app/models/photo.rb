@@ -13,4 +13,10 @@ class Photo < ApplicationRecord
     comment.update(photo_id: self.id)
     comment.save
   end
+
+  def new_like(user)
+    like = user.likes.new
+    like.update(photo_id: self.id)
+    like.save
+  end
 end

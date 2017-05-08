@@ -24,10 +24,6 @@ class PhotosController < ApplicationController
     @user = current_user || User.new
     @photo = Photo.find(params[:id])
     @comment = Comment.new
-    # if @photo.comments.any?
-    #   @comments = User.find(@photo.comments.first.user_id)
-    #   require 'pry'; binding.pry
-    # end
   end
 
   def edit

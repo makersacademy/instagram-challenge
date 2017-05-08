@@ -4,16 +4,20 @@ class User < ApplicationRecord
   attr_accessor :username
   has_many :photos, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :photos_commented_on, through: :comments, source: :photo, dependent: :destroy
+  has_many :likes
+  has_many :liked_photos, through: :likes, source: :photo, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  validates :username, presence: true
+
   def self.from_omniauth(auth)
    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
      user.email = auth.info.email
      user.password = Devise.friendly_token[0,20]
+     user.username = auth.info.name
    end
   end
 
@@ -23,10 +27,6 @@ class User < ApplicationRecord
         user.email = data['email'] if user.email.blank?
       end
     end
-  end
-
-  def has_commented?(photo)
-    photos_commented_on.include?(photo)
   end
 
 end
