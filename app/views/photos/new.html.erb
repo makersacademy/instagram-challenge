@@ -11,12 +11,17 @@
     </section>
   <% end %>
     <%= form_for @photo, html: {multipart: true} do |f| %>
-      <%= f.label :caption %>
-      <%= f.text_field :caption %>
-      <%= f.label :location %>
-      <%= f.text_field :location %>
-      <%= f.label :image %>
-      <%= f.file_field :image %>
-      <%= f.submit 'Upload Photo'%>
+      <div class='field'>
+        <%= f.text_field :caption, placeholder: 'Caption' %>
+      </div>
+      <div class='field'>
+        <%= f.text_field :location, placeholder: 'Location', id: 'location' %>
+      </div>
+      <div class='action'>
+        <%= f.file_field :image, id: 'choose-file'%>
+      </div>
+      <div class='action'>
+        <%= f.submit 'Upload Photo', class: 'photo-btn'%>
+      </div>
     <% end %>
 </div>

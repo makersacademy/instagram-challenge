@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  attr_accessor :username
   has_many :photos, dependent: :destroy
   has_many :comments, dependent: :destroy
-  
+  has_many :photos_commented_on, through: :comments, source: :photo, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -22,6 +23,10 @@ class User < ApplicationRecord
         user.email = data['email'] if user.email.blank?
       end
     end
+  end
+
+  def has_commented?(photo)
+    photos_commented_on.include?(photo)
   end
 
 end

@@ -32,7 +32,7 @@ feature 'photos' do
 
       scenario 'display photos' do
         visit '/'
-        expect(page).to have_content('Avocado and Scrambled eggs #Living')
+        expect(page).to have_css('img')
         expect(page).not_to have_content('No photos yet')
       end
     end
@@ -41,7 +41,7 @@ feature 'photos' do
 
       scenario 'lets a user view a photo' do
         visit '/'
-        click_link 'Avocado and Scrambled eggs #Living'
+        click_link('', href: "#{photo_path(Photo.last)}")
         expect(page).to have_content 'Avocado and Scrambled eggs #Living'
         expect(page).to have_content '06/05/2017 14:00'
         expect(page).to have_css 'img'
@@ -52,14 +52,14 @@ feature 'photos' do
 
     context 'editing photos' do
       scenario 'cannot update photos' do
-        click_link 'Avocado and Scrambled eggs #Living'
+        click_link('', href: "#{photo_path(Photo.last)}")
         expect(page).not_to have_link 'Update Photo'
       end
     end
 
     context 'deleting photos' do
       scenario 'cannot delete photos' do
-        click_link 'Avocado and Scrambled eggs #Living'
+        click_link('', href: "#{photo_path(Photo.last)}")
         expect(page).not_to have_link 'Delete Photo'
       end
     end
@@ -76,13 +76,14 @@ feature 'photos' do
         click_link 'Add a photo'
         fill_in 'Caption', with: 'Avocado and Scrambled eggs #Living'
         fill_in 'Location', with: 'Somewhere pretentious'
-        attach_file('Image', Rails.root + "spec/fixtures/rick-astley.jpg")
+        attach_file('choose-file', Rails.root + "spec/fixtures/rick-astley.jpg")
         click_button 'Upload Photo'
+        click_link('', href: "#{photo_path(Photo.last)}")
         expect(page).to have_content 'Avocado and Scrambled eggs #Living'
         expect(page).to have_content 'Somewhere pretentious'
         expect(page).to have_content '06/05/2017 14:00'
         expect(page).to have_css 'img'
-        expect(current_path).to eq '/photos'
+        expect(current_path).to eq "/photos/#{Photo.last.id}"
       end
 
       context 'incorrectly' do
@@ -108,7 +109,7 @@ feature 'photos' do
         fill_in 'Caption', with: 'Yummy Breakfast #HealthQueen'
         fill_in 'Location', with: 'Somewhere even more pretentious'
         click_button 'Update Photo'
-        visit '/photos'
+        click_link('', href: "#{photo_path(Photo.last)}")
         expect(page).to have_content 'Yummy Breakfast #HealthQueen'
         expect(page).to have_content 'Somewhere even more pretentious'
         expect(page).not_to have_content 'Avocado and Scrambled eggs #Living'
@@ -136,7 +137,7 @@ feature 'photos' do
       scenario 'cannot delete photo unless owner' do
         upload_photo
         click_link 'Sign out'
-        sign_up(email: 'visitor@test.com')
+        sign_up(username: 'visitor', email: 'visitor@test.com')
         visit "/photos/#{Photo.last.id}"
         expect(page).not_to have_link 'Delete Photo'
       end

@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <meta charset="utf-8">
     <title>BlundellGram</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Montserrat|Pacifico|Rammetto+One" rel="stylesheet">
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', new_user_session_path %>
-      <%= link_to 'Sign in with Facebook', user_facebook_omniauth_authorize_path %>
-      <%= link_to 'Sign up', new_user_registration_path %>
-    <% end %>
+    <div class='nav-bar'><div>
+      <div class='navspan'></div>
+        <a id='logo' href='/'><span class='nav-branding'>BlundellGram<img href='/' src='https://image.flaticon.com/icons/png/512/252/252343.png'></span></a>
+        <span class='nav-btns'>
+          <a href='/photos/new'>Add a photo</a>
+          <% if user_signed_in? %>
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to 'Sign in', new_user_session_path %>
+            <%= link_to 'Sign in with Facebook', user_facebook_omniauth_authorize_path %>
+            <%= link_to 'Sign up', new_user_registration_path %>
+          <% end %>
+        </span>
+      </div>
+    </div>
 
-    <%= notice %>
+    <div class='notices'><%= notice %></div>
     <%= yield %>
   </body>
 </html>

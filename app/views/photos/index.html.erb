@@ -1,13 +1,21 @@
 <div class='container'>
-  <a href='/photos/new'>Add a photo</a>
-  <% if @photos.any? %>
-    <% @photos.each do |photo| %>
-      <h4><%= photo.created_at.strftime("%d/%m/%Y %H:%M") %></h4>
-      <h4><%= photo.location %></h4>
-      <h2><%= link_to photo.caption, photo_path(photo) %></h2>
-      <%= image_tag photo.image.url(:thumb) %>
-    <% end %>
-  <% else %>
-    <h3>No photos to display yet</h3>
-  <% end %>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <% if @photos.any? %>
+        <div class='photo-feed'>
+          <div class='row'>
+            <% @photos.each do |photo| %>
+              <div class='col-sm-4' id='individual-photo'>
+                <div>
+                  <%= link_to image_tag(photo.image.url,  style: "width:100%"), photo_path(photo)%>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <h3>No photos to display yet</h3>
+      <% end %>
+    </div>
+  </div>
 </div>

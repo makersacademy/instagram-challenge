@@ -9,7 +9,7 @@ feature 'commenting' do
   scenario 'allows user to leave a comment using a form' do
     visit "/photos/#{Photo.last.id}"
     fill_in "Content", with: "Stunning!"
-    click_button 'Leave Comment'
+    click_button 'Comment'
     expect(page).to have_content 'Stunning!'
     expect(current_path).to eq "/photos/#{Photo.last.id}"
   end

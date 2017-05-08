@@ -1,11 +1,12 @@
 <div class='container'>
   <div class='photo'>
-    <h4><%= @photo.created_at.strftime("%d/%m/%Y %H:%M") %></h4>
-    <h4><%= @photo.location %></h4>
+    <h2><%= @user.username %>
     <h2><%= @photo.caption%></h2>
-    <%= image_tag @photo.image.url(:medium) %>
+    <%= image_tag @photo.image.url(:medium) %></br>
+    <span><%= @photo.created_at.strftime("%d/%m/%Y %H:%M") %>
+    <%= @photo.location %></span>
     <h4><%= pluralize(@photo.likes.count, 'like')%></h4>
-    <button><%= link_to 'Like Photo', new_photo_like_path(@photo) %></button>
+    <%= link_to 'Like Photo', new_photo_like_path(@photo), id: 'like-btn' %>
   </div>
   <% if @user.id == @photo.user_id %>
     <div class='photo-options'>
@@ -13,19 +14,22 @@
       <%= link_to 'Delete Photo', photo_path(@photo), method: :delete %>
     </div>
   <% end %>
-  <div class='comments'>
-    <%= form_for [@photo, @comment] do |f| %>
-      <%= f.label :content %>
-      <%= f.text_area :content %>
-      <%= f.submit 'Leave Comment' %>
-    <% end %>
-    <% if @photo.comments.any? %>
-      <% @photo.comments.each do |comment| %>
-      <div class='comments'>
-        <%= comment.content %>
-      </div>
+  <div class='comments-container'>
+    <div class='comments'>
+      <% if @photo.comments.any? %>
+      <h4 id='comments-heading'>Comments</h4>
+        <% @photo.comments.each do |comment| %>
+          <div class='each-comment'>
+            <%= comment.content %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-
+    </div>
+    <div class='comment-form'>
+      <%= form_for [@photo, @comment] do |f| %>
+      <%= f.text_area :content, rows:'3', cols:'35', placeholder: 'Leave a comment...', id:'Content' %></br>
+      <%= f.submit 'Comment' %>
+      <% end %>
+    </div>
   </div>
 </div>
