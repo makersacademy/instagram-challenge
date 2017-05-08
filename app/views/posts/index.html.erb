@@ -1,14 +1,15 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-    <strong><%= post.user.username %></strong>
+    <div class="name_time"><strong><%= post.user.username %></strong>
     <%= distance_of_time_in_words(Time.now, post.created_at) %> ago
+  </div>
       <%= link_to post_path(post), class: "img_link" do %>
         <%= image_tag post.image.url(:medium), class: post.filter, alt: post.description %>
       <% end %>
-    <%= link_to 'Like', perform_post_likes_path(post), class: 'likes-link', data:{post_id: post.id} %>
+    <div class="likes"><%= link_to 'Like', perform_post_likes_path(post), class: 'likes-link', data:{post_id: post.id} %>
     <span class="likes_count" id="like_number<%= post.id %>"><%= post.likes.count %></span>
     <%= 'like'.pluralize(post.likes.count) %>
-
+  </div>
 
     <p><strong><%= post.user.username %></strong> <%= post.description %></p>
     <% post.comments.each do |text| %>
