@@ -3,11 +3,7 @@ class LikesController < ApplicationController
 
   def create
     picture = Picture.find(params[:picture_id])
-    if current_user.has_liked?(picture)
-      flash[:notice] = 'you have already liked this picture'
-    elsif current_user == picture.user
-      flash[:notice] = "you can't like your own picture"
-    else
+    unless current_user.has_liked?(picture) || current_user == picture.user
       like = picture.build_like(current_user)
       like.save
       redirect_to pictures_path
