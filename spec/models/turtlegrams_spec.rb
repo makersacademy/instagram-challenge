@@ -7,12 +7,12 @@ describe Turtlegram, type: :model do
   end
 
   describe 'comments' do
-    describe '#build_with_user' do
+    describe '#create_comment' do
       let(:user) {User.create email: 'test@test.com'}
       let(:turtlegram) {Turtlegram.create(caption: 'Shelly')}
       let(:comment_params) { {thoughts: 'such a lovely shell'} }
 
-      subject(:comment) { turtlegram.comments.build_with_user(comment_params, user) }
+      subject(:comment) { turtlegram.create_comment(comment_params, user) }
       it 'builds a comment' do
         expect(comment).to be_a Comment
       end

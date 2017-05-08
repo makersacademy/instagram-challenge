@@ -6,10 +6,11 @@ class CommentsController < ApplicationController
   end
 
   def create
+    # require'pry';binding.pry
     @turtlegram = Turtlegram.find(params[:turtlegram_id])
-    @comment = @turtlegram.comments.build_with_user(comment_params, current_user)
-  
-    redirect_to '/turtlegrams'
+    @comment = @turtlegram.create_comment(comment_params, current_user)
+
+    redirect_to "/turtlegrams/#{@turtlegram.id}"
   end
 
   private
