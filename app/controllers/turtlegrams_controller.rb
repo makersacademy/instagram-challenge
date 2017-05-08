@@ -30,6 +30,13 @@ class TurtlegramsController < ApplicationController
     @turtlegram = Turtlegram.find(params[:id])
   end
 
+  def destroy
+    @turtlegram = Turtlegram.find(params[:id])
+    @turtlegram.destroy
+    flash[:notice] = "Turtlegram deleted successfully"
+    redirect_to '/turtlegrams'
+  end
+
   private
 
   def turtlegram_params

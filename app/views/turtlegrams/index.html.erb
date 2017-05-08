@@ -16,17 +16,24 @@
     <div id='caption'>
     <%= turtlegram.caption %>
     </div>
-    <div id='comment'>
+    <table>
+      <tr>
+    <th><div id='comment'>
     <%= link_to "Add comment", new_turtlegram_comment_path(turtlegram) %>
-    </div>
-    <div id='comment'>
+  </div></th>
+    <th><div id='comment'>
     <%= link_to "All comments", turtlegram_path(turtlegram) %>
-    </div>
+  </div></th>
   </p>
   <% if current_user == turtlegram.user %>
-  <div id='edit'>
-  <%= link_to "Edit turtlegram", edit_turtlegram_path(turtlegram) %>
-  </div>
+  <th><div id='edit'>
+    <%= link_to "Edit turtlegram", edit_turtlegram_path(turtlegram) %>
+</div></th>
+  <th><div id='delete'>
+    <%= link_to "Delete turtlegram", turtlegram_path(turtlegram), method: :delete %>
+  </div></th>
+  <tr>
+</table>
   <% end %>
   <% end %>
 <% else %>

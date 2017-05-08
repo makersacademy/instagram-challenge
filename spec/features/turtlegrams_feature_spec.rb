@@ -22,7 +22,7 @@ feature 'turtlegrams' do
   context 'turtlegrams have been added' do
     before do
       vivien = User.create(email: 'viv@viv.com', password: '123456', id: 1)
-      Turtlegram.create(caption: 'Shelly', image: File.new(File.join(Rails.root,"public/uploads/turtlegram/image/1/turtle.jpg")), user: vivien)
+      Turtlegram.create(caption: 'Shelly', image: File.new(File.join(Rails.root,"public/uploads/turtle.jpg")), user: vivien, id: 2)
     end
       scenario 'displays a turtlegram on a feed with caption and turtle email' do
         visit '/turtlegrams'
@@ -42,7 +42,7 @@ feature 'turtlegrams' do
     context 'editing turtlegrams' do
       before do
         vivien = User.create(email: 'viv@viv.com', password: '123456', id: 1)
-        Turtlegram.create(caption: 'Shelly', image: File.new(File.join(Rails.root,"public/uploads/turtlegram/image/1/turtle.jpg")), user: vivien, id: 2)
+        Turtlegram.create(caption: 'Shelly', image: File.new(File.join(Rails.root,"public/uploads/turtle.jpg")), user: vivien, id: 2)
       end
     scenario 'lets a turtle edit their own turtlegram' do
       click_link('Sign out')
@@ -55,4 +55,23 @@ feature 'turtlegrams' do
       expect(current_path).to eq '/turtlegrams/2/edit'
     end
     end
+
+    context 'deleting turtlegrams' do
+      before do
+        vivien = User.create(email: 'viv@viv.com', password: '123456', id: 1)
+        Turtlegram.create(caption: 'Shelly', image: File.new(File.join(Rails.root,"public/uploads/turtle.jpg")), user: vivien, id: 2)
+      end
+    scenario 'deletes a turtlegram when a turtle clicks a delete link' do
+      visit '/'
+      click_link('Sign out')
+      click_link('Sign in')
+      fill_in('Email', with: 'viv@viv.com')
+      fill_in('Password', with: '123456')
+      click_button('Log in')
+      click_link('Delete turtlegram')
+      expect(page).not_to have_content 'Shelly'
+      expect(page).to have_content 'Turtlegram deleted successfully'
+    end
+  end
+
 end
