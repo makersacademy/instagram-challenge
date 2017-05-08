@@ -1,0 +1,13 @@
+- if @gif.errors.any?
+  %section#errors
+    %h2
+      = pluralize @restaurant.errors.count, "error"
+      stopped you from making a sweet gif:
+    %ul
+      - @gif.error.full_messages.each do |message|
+        %li= message
+
+= form_for @gif do |f|
+  = f.label :generator
+  = f.text_field :generator
+  = f.submit
