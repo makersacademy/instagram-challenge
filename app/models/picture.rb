@@ -11,4 +11,8 @@ class Picture < ApplicationRecord
     comments.build(comment_params)
   end
 
+  def build_like(user)
+    likes.build(user: user)
+  end
+
 end

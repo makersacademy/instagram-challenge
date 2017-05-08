@@ -3,10 +3,10 @@ class LikesController < ApplicationController
 
   def create
     picture = Picture.find(params[:picture_id])
-    like = picture.likes.new
-    like.user = current_user
-    like.save
-    redirect_to pictures_path
+    like = picture.build_like(current_user)
+    if like.save
+      redirect_to pictures_path
+    end
   end
 
 end
