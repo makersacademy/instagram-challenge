@@ -21,3 +21,12 @@ Bonus if you can write your own set of sensible user stories!
 * HTML5
 * CSS3
 
+## To install:
+
+* Fork this repo & clone to your machine.
+* Make sure to have Ruby *2.4.1* installed for this application.
+* Make sure to have the latest Rails *5.1.0*
+* Run bundler to install gems. (You may also need to bundle update)
+* Run RSpec to view or test drive new features.
+* Run *rails s* and type in browser your localhost address *localhost:3000* to start using the application.
+
