@@ -1,11 +1,18 @@
 <center>
-    <%= @turtlegram.caption %>
+  <div id='caption'>
+    Caption: <strong><%= @turtlegram.caption %></strong>
+  </div>
+  </br>
   <div id=post>
     <%= image_tag @turtlegram.image.url unless @turtlegram.image.blank? %>
   </div>
     <h1> Comments </h1>
     <% @turtlegram.comments.each do |comment| %>
+    <div id='thoughts'>
     <strong><%= comment.thoughts %></strong>
-    written by: <%= comment.user.email %></br>
+    written by: <%= comment.user.email %></div></br>
      <% end %>
+     <table>
+       <th><%= link_to "Back", turtlegrams_path %></th>
+    </table>
   </center>
