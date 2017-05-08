@@ -1,0 +1,21 @@
+<% if @scenes.empty? %>
+  <h1>No scenes yet</h1>
+<% end %>
+
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+
+<% if @scenes.any? %>
+  <% @scenes.each do |scene| %>
+    <tr>
+      <td><%= link_to (image_tag scene.image.url(:medium)), scene_path(scene) %></td>
+    <% end %>
+  </tr>
+<% end %>
+
+</table>
+
+
+<%= link_to 'Add a scene', new_scene_path %>
