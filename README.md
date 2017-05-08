@@ -95,6 +95,6 @@ rspec
 
 ### Technologies Used
 ````
-* Ruby, Rails, HTML, CSS, Devise, Paperclip, Heroku, Postgres
+* Ruby, Rails, HTML, CSS, Devise, Paperclip, Postgres
 * Tested with: RSpec and Capybara
 ````
