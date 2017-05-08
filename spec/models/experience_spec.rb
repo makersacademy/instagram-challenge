@@ -4,7 +4,8 @@ describe Experience, type: :model do
   subject(:experience) { described_class.new }
 
   describe 'Associations' do
-    it { should belong_to(:user) }
+    it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_many(:comments) }
   end
 
   describe 'Database Table' do

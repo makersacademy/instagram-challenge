@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe User, type: :model do
   describe 'Associations' do
-    it { should have_many(:experiences) }
+    it { is_expected.to have_many(:experiences) }
+    it { is_expected.to have_many(:comments) }
   end
 
   describe 'Database Table' do

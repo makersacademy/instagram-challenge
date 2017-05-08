@@ -12,7 +12,7 @@ feature 'experiences' do
   context 'user not signed in' do
     before do
       sign_up
-      add_photo
+      add_experience
       click_link "Sign out"
     end
 
@@ -43,22 +43,22 @@ feature 'experiences' do
   context 'signed in user' do
     before do
       sign_up
-      add_photo
+      add_experience
     end
 
-    scenario 'can share an experience' do
-      expect(page).to have_css 'img'
-      expect(page).to have_content 'axeman'
-      expect(page).to have_link 'Share an experience'
-    end
-
-    context 'experience validations' do
+    context 'sharing an experience' do
       scenario 'user cannot submit an experience without uploading a photo' do
         click_link 'Share an experience'
         fill_in 'Description', with: 'No image'
         click_button 'Post experience'
         expect(page).not_to have_content 'No image'
         expect(page).to have_content 'error'
+      end
+
+      scenario 'can share an experience' do
+        expect(page).to have_css 'img'
+        expect(page).to have_content 'axeman'
+        expect(page).to have_link 'Share an experience'
       end
     end
   end

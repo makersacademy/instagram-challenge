@@ -11,7 +11,7 @@ def sign_up(username: 'axeman',
   click_button 'Sign up'
 end
 
-def add_photo
+def add_experience
   click_link ('Share an experience')
   attach_file('Image', Rails.root + 'spec/fixtures/wolf_creek.jpg')
   fill_in "Description", with: "Heavan for powder hounds"
