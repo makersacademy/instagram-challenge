@@ -20,13 +20,14 @@ Bonus if you can write your own set of sensible user stories!
 * Paperclip
 * HTML5
 * CSS3
+* Heroku
+* Amazon web server s3
 
 ## To install:
 
 * Fork this repo & clone to your machine.
 * Make sure to have Ruby *2.4.1* installed for this application.
 * Make sure to have the latest Rails *5.1.0*
-* Run bundler to install gems. (You may also need to bundle update)
-* Run RSpec to view or test drive new features.
+* Run bundle install to set up the gems from the Gemfile. (You may also need to bundle update).
 * Run *rails s* and type in browser your localhost address *localhost:3000* to start using the application.
 
