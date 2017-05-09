@@ -13,3 +13,4 @@ class Travelgram < ApplicationRecord
     comments.new(comments_params)
   end
 end
+
