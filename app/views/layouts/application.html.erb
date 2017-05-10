@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/png" href="<%= image_path('favicon.ico') %>"/>
+    <title>Travelgram</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="nav">
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+        <div class="logo">
+          <a href="<%= travelgrams_path %>"><img src="<%= image_path('logo.png') %>"></a>
+          <a href="<%= travelgrams_path %>"><h1>.travelgram</h1></a>
+        </div>
+        <div class="nav-items">
+          <% if user_signed_in? %>
+            <h5><%= current_user.email %></h5>
+            <h5><%= link_to "Sign out", destroy_user_session_path, method: :delete %></h5>
+          <% else %>
+            <%= link_to "Sign in", new_user_session_path %>
+            <%= link_to "Sign up", new_user_registration_path %>
+            <a href="<%= user_facebook_omniauth_authorize_path %>"><img src="<%= image_path('fblogin.png') %>"></a>
+          <% end %>
+        </div>
+
+    </div>
+<!--     <div class="footer">
+      <p>©2017 jrods</p>
+    </div> -->
+
+
+
+    <%= yield %>
+  </body>
+  <footer>
+  </footer>
+</html>

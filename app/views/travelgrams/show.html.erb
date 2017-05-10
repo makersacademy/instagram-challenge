@@ -1,0 +1,42 @@
+  <div class="content-wrapper">
+  <div class="container show-adventure-container">
+    <div class="row">
+      <div class="col-lg-6 image-column">
+        <div class="content-container">
+          <div class="content">
+            <%= image_tag @adventure.image.url(:medium) %>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-lg-6 details-column">
+      <div class="section-details">
+        <img src="<%= image_path('profile.png') %>">
+        <h6><strong><%= @adventure.user.email %></strong></h6>
+      </div>
+      <div class="section-actions">
+        <p><%= @adventure.name %>:  <%= @adventure.description %></p>
+        <% if current_user %>
+          <% if current_user == @adventure.user %>
+            <ul>
+              <li class="first-action"><%= link_to "edit", edit_travelgram_path(@adventure)%></li>
+              <li class="second-action"><%= link_to "delete", travelgram_path(@adventure), method: :delete %></li>
+            </ul>
+          <% end %>
+        <% end %>
+
+      </div>
+        <div class="section-comments">
+        <% if current_user != @adventure.user %>
+          <p><%= link_to "Comment", new_travelgram_comment_path(@adventure), :class => "btn custom-button" %>
+        <% end %>
+            <h4>Comments:</h4>
+            <p><% @adventure.comments.each do |c| %></p>
+            <p><strong><%= c.user.email %><i class="fa fa-chevron-right" aria-hidden="true"></i></strong> <%= c.thoughts %></p>
+          <% end %>
+
+      </div>
+  </div>
+  </div>
+
+

@@ -1,0 +1,33 @@
+<div class ="row">
+  <div class="container">
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="content-wrapper">
+    <div class="share-adventure">
+      <h4><%= link_to 'Share adventure', new_travelgram_path %><i class="fa fa-chevron-right" aria-hidden="true"></i></h4>
+    </div>
+
+    <% if @adventures.any? %>
+
+      <% @adventures.reverse_each do |adventure| %>
+      <div class="col-md-4">
+        <a href="<%= travelgram_path(adventure) %>" class="s">
+          <div class="adventure-image">
+            <%= image_tag adventure.image.url(:thumb) %>
+          </div>
+          <div class="name-overlay">
+            <h4><%= adventure.name %></h4>
+          </div>
+        </a>
+      </div>
+      <% end %>
+    <% else %>
+      <h1>Start posting!</h1>
+    <% end %>
+    </div>
+  </div>
+</div>
