@@ -7,10 +7,9 @@ feature 'deleting posts' do
 
   scenario 'removes a post when a user clicks a delete link' do
     visit '/posts'
-    click on post
+    post_link = find(:xpath, "//a[contains(@href,'/posts/1')]")
+    post_link.click
     click_link 'Delete'
-    expect(page).not_to have_content ''
-    expect(page).to have_content 'Restaurant deleted successfully'
+    expect(page).to have_content 'Post deleted successfully'
   end
-
 end
