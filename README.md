@@ -20,3 +20,14 @@ To run the tests
 - cd into the Snapshot directory
 - If you haven't already, run ``` rake db:setup ```
 - Run ``` rspec ```
+
+### Screenshots
+
+
+![alt text](/snapshot/screenshot/home-page.jpg?raw=true "Home Page")
+
+
+![alt text](/snapshot/screenshot/image-upload.jpg?raw=true "Image Upload")
+
+
+![alt text](/snapshot/screenshot/image-upload-show.jpg?raw=true "Image Upload - Success")
