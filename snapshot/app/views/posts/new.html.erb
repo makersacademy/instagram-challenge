@@ -1,0 +1,17 @@
+<div class="form-wrapper"><%= simple_form_for @post do |f| %>
+  <%= f.input :image %>
+  <%= f.input :caption %>
+  <%= f.submit %>
+<% end %>
+</div>
+
+<% if @post.errors.any? %>
+  <section id="errors">
+    <h2> <%= pluralize(@post.errors.count, "error") %> prohibited this image from being saved: </h2>
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
