@@ -1,0 +1,25 @@
+<div class='container'>
+  <div class="row">
+    <div class="col-sm-12">
+      <% if @pictures.any? %>
+        <div class="container" id='all-pics'>
+          <div class="row">
+            <% @pictures.each do |picture| %>
+              <div class="col-sm-4" id='each-pic'>
+                <div id='pic-itself'>
+                  <%= link_to image_tag(picture.url, :style => "width:100%"), picture_path(picture) %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <div class="container" id='no-pics'>
+          <div class="row">
+            <h2 class="text-center">No pictures yet</h2>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
