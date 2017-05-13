@@ -5,7 +5,7 @@ describe 'Myphotos' do
     scenario 'displays current users photos' do
       sign_up
       upload_photo
-      expect(current_path).to eq "/photos/#{Photo.last.id}"
+      expect(current_path).to eq "/posts/#{Post.last.id}"
     end
   end
-end 
+end

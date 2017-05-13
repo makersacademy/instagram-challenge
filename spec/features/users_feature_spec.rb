@@ -18,6 +18,10 @@ feature 'User' do
         visit('/')
         expect(page).not_to have_link("Sign out")
       end
+      it 'can not add photo' do
+        visit('/')
+        expect(page).not_to have_link('New post')
+      end 
     end
 
     context 'user signed in' do
