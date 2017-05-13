@@ -1,4 +1,4 @@
-# Instagram challenge :camera:
+# :camera: :milky_way: GalaxyGram :milky_way: :camera:
 
 ### User Stories
 
@@ -13,11 +13,15 @@ So that I can contextualise my posts
 I would like to add a description to my photos
 
 As a user
+So that I can fix my mistakes
+I would like to delete my posts
+
+As a user
 So that I can add my input
 I would like to write comments on photos
 
 As a user
-So that I can show I like a photo
+So that I can show my appreciation
 I would like to be able to like a picture
 ```
 
@@ -58,7 +62,7 @@ I would like to be able to delete the posts I have created
 
 ```
 
-## To get started:
+## Deployment:
 
 * Install Homebrew: ``ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"``
 * Install Ruby Version Manager: ``\curl -L https://get.rvm.io | bash -s stable``
@@ -74,7 +78,4 @@ I would like to be able to delete the posts I have created
 * Database initialisation
 
 * Running the test suite:
-
-* Services (job queues, cache servers, search engines, etc.)
-
-## Deployment instructions
+`$ rspec`
