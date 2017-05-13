@@ -17,4 +17,4 @@ require 'rails_helper'
     fill_in('Email', with: "mail@magnusholm.com")
     fill_in('Password', with: "123banana")
     click_button('Log in')
-  end 
+  end

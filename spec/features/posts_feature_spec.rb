@@ -21,8 +21,8 @@ describe 'Post' do
     scenario 'displays a success message on the post page after uploading image' do
       sign_up
       click_link('New post')
-      attach_file('Image', Rails.root + 'spec/images/monkeyselfie.jpeg')
       fill_in('Description', with: 'hi')
+      attach_file('Image', Rails.root + 'spec/images/monkeyselfie.jpeg')
       click_button('Create Post')
       expect(page).to have_content('Success')
       # expect(page).to have_xpath('//img[@src="/spec/images/monkeyselfie.jpeg"]')
