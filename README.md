@@ -4,6 +4,8 @@ BlundellGram
 
 A Rails web application cloning the wonders of Instagram, AKA a space that allows users to upload, comment, and like photos.
 
+You can start uploading pictures of your avocado filled adventures right this second! https://blundellgram.herokuapp.com/
+
 ![Home](http://i.imgur.com/bjcOE6R.png)
 
 Setup
