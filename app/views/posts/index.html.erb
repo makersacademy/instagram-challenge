@@ -11,9 +11,9 @@
     <%= 'like'.pluralize(post.likes.count) %>
   </div>
 
-    <p><strong><%= post.user.username %></strong> <%= post.description %></p>
+    <p><strong><%= link_to post.user.username, user_path(post.user) %></strong> <%= post.description %></p>
     <% post.comments.each do |text| %>
-    <%= text.user.username %>
+    <%= link_to text.user.username, user_path(text.user) %>
     <%= text.comment %></br>
     <% end %>
     <% if current_user %>
@@ -26,5 +26,3 @@
 <% else %>
   <h1>No posts yet</h1>
 <% end %>
-
-<%= link_to 'Add a post', new_post_path %>
