@@ -1,0 +1,32 @@
+<head>
+<h1>Welcome to Hamstagram!</h1>
+<style type="text/css">
+    .clear{
+        clear:both;
+    }
+    #grid{
+        width: 600px;
+    }
+    .grid-element{
+        width:200px;
+        float:left;
+    }
+</style>
+</head>
+<body>
+<div id="grid">
+<% if @pictures.all.any? %>
+<% @pictures.all.each do |picture| %>
+<div class="grid-element"> <%= link_to image_tag(picture.image.url(:thumb)), picture_path(picture) %></div>
+<% end %>
+</div>
+<% else %>
+<h1>No pictures added yet</h1>
+<% end %>
+<br>
+<br>
+
+
+<p><div class ="topcorner"><a href='/pictures/new'>Add a picture</a></div></p>
+<div class="clear"></div>
+</body>

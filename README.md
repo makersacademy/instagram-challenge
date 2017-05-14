@@ -1,23 +1,27 @@
-Instagram Challenge
-===================
+# Instagram Challenge
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+#### Welcome to Hamstagram!
 
-Task
------
+This application is a simplified version of Instagram for hamsters. It allows you to create an account, sign in / sign out and post images with a status and hashtag/s which will appear on the homepage. Other users will be able to interact with this image through commenting and liking the photo. A great tool for all hamsters to share moments through a social network!
 
-Build Instagram: Simple huh!
+### Technologies:
+- Ruby on Rails (version 5.1)
+- HTML/CSS
+- Databases (postgresql)
 
-Bonus if you can write your own set of sensible user stories!
+### Key features:
+- Sign in / out
+- Post images with a status from your account
+- Image will be displayed in a grid on the homepage
+- Other users can comment and like your image
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+### Deployment instructions:
+1. Navigate to your projects directory
+2. Run ```git clone https://github.com/connie-reinholdsson/takeaway-challenge.git```
+3. Run ```cd instagram-challenge```
+4. Run ```rake db:migrate``` to create the databases
+5. Run `bin/rails s`
+6. Navigate to the webpage 'localhost:3000/pictures'
+7. Follow the instructions to use the application.
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+Enjoy!
