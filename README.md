@@ -1,24 +1,7 @@
-# README
+* Instagram style website using rails.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Users can post pictures, and like or comment on pictures posted by other users.
 
-Things you may want to cover:
+<img width="860" alt="screen shot 2017-05-14 at 17 10 44" src="https://cloud.githubusercontent.com/assets/25392162/26035717/890168c8-38c8-11e7-93e6-44e6c2d93f57.png">
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<img width="858" alt="screen shot 2017-05-14 at 17 11 32" src="https://cloud.githubusercontent.com/assets/25392162/26035718/8bb8421c-38c8-11e7-987c-2029c9b7eb07.png">
