@@ -1,24 +1,22 @@
-# README
+# Instagram Challenge
+## Weekend Challenge
+### Week Eight
+_____________________
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project done 6. - 7. May 2017
+_____________________
 
-Things you may want to cover:
+Instructions:
+*****
+* Clone the repository
+* Run `bundle install`
+* Run `rake db:migrate`
+* Type ```bin/rails s```
+* In your browser, navigate to `localhost:3000`
+* Feel free to sign up, upload photos, comment and like!
 
-* Ruby version
 
-* System dependencies
+The Task as described:
+-------
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Write an Instagram clone in Rails. Time: one weekend. 
