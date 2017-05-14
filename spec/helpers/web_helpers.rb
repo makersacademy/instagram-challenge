@@ -1,6 +1,6 @@
 def sign_up(username: 'Rick_Never_Gives_Up', email: 'test@test.com', password: 123456)
   visit '/'
-  click_link 'Sign up'
+  click_link 'Sign Up'
   fill_in 'Username', with: username
   fill_in 'Email', with: email
   fill_in 'Password', with: password
@@ -10,7 +10,7 @@ end
 
 def upload_photo
   visit '/'
-  click_link 'Add a photo'
+  click_link 'Add Photo'
   fill_in 'Caption', with: 'Avocado and Scrambled eggs #Living'
   fill_in 'Location', with: 'Somewhere pretentious'
   attach_file('choose-file', Rails.root + "spec/fixtures/rick-astley.jpg")

@@ -1,10 +1,16 @@
 <div class='container'>
   <div class='photo'>
-    <h2><%= @photo.caption%></h2>
-    <%= image_tag @photo.image.url(:medium) %></br>
-    <span><%= @photo.created_at.strftime("%d/%m/%Y %H:%M") %>
-    <%= @photo.location %></span>
-    <h4><%= pluralize(@photo.likes.count, 'like')%></h4>
+    <h2 id='caption'><%= @photo.caption%></h2>
+    <%= image_tag @photo.image.url, id:'photo-original' %></br>
+    <span id=photo-deets><img src='https://image.flaticon.com/icons/svg/149/149071.svg' id='icons'>
+    <% if @photo.username %>
+      <%= @photo.username %>
+    <% else %>
+      <%= @photo.email.split("@")[0] %>
+    <% end %>
+    <span id=photo-deets><img src='https://image.flaticon.com/icons/svg/148/148932.svg' id='icons'> <%= distance_of_time_in_words(Time.now, @photo.created_at) %> ago</span>
+    <span id=photo-deets><img src='https://image.flaticon.com/icons/svg/174/174249.svg' id='icons'> <%= @photo.location %></span>
+    <span> <h3><%= pluralize(@photo.likes.count, 'like')%></h3><img src='https://image.flaticon.com/icons/svg/179/179655.svg' id='icons'></span>
     <%= link_to 'Like Photo', new_photo_like_path(@photo), id: 'like-btn' %>
   </div>
   <% if @user.id == @photo.user_id %>
@@ -19,7 +25,12 @@
       <h4 id='comments-heading'>Comments</h4>
         <% @photo.comments.each do |comment| %>
           <div class='each-comment'>
-            <%= comment.content %>
+              <% if comment.username %>
+                <span id='commenter'><%= comment.username %>: </span>
+              <% else %>
+                <span id='commenter'><%= comment.email.split("@")[0] %>: </span>
+              <% end %>
+              <span id=comment-content><%= comment.content %></span>
           </div>
         <% end %>
       <% end %>

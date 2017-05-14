@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  attr_accessor :username
+
   has_many :photos, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes

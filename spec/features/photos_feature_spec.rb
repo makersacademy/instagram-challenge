@@ -6,7 +6,7 @@ feature 'photos' do
     scenario 'should display a prompt to add a photo' do
       visit '/photos'
       expect(page).to have_content 'No photos to display yet'
-      expect(page).to have_link 'Add a photo'
+      expect(page).to have_link 'Add Photo'
     end
   end
 
@@ -18,14 +18,14 @@ feature 'photos' do
 
     scenario 'so cannot upload a photo' do
       visit '/'
-      click_link 'Add a photo'
+      click_link 'Add Photo'
       expect(current_path).to eq '/users/sign_in'
     end
 
     before do
       sign_up
       upload_photo
-      click_link 'Sign out'
+      click_link 'Sign Out'
     end
 
     context 'photos have been added' do
@@ -43,7 +43,7 @@ feature 'photos' do
         visit '/'
         click_link('', href: "#{photo_path(Photo.last)}")
         expect(page).to have_content 'Avocado and Scrambled eggs #Living'
-        expect(page).to have_content '06/05/2017 14:00'
+        expect(page).to have_content 'less than a minute ago'
         expect(page).to have_css 'img'
         expect(page).to have_content '0 likes'
         expect(current_path).to eq "/photos/#{Photo.last.id}"
@@ -73,7 +73,7 @@ feature 'photos' do
 
       scenario 'prompts user to fill out form, then displays the new photo' do
         visit '/'
-        click_link 'Add a photo'
+        click_link 'Add Photo'
         fill_in 'Caption', with: 'Avocado and Scrambled eggs #Living'
         fill_in 'Location', with: 'Somewhere pretentious'
         attach_file('choose-file', Rails.root + "spec/fixtures/rick-astley.jpg")
@@ -81,7 +81,7 @@ feature 'photos' do
         click_link('', href: "#{photo_path(Photo.last)}")
         expect(page).to have_content 'Avocado and Scrambled eggs #Living'
         expect(page).to have_content 'Somewhere pretentious'
-        expect(page).to have_content '06/05/2017 14:00'
+        expect(page).to have_content 'less than a minute ago'
         expect(page).to have_css 'img'
         expect(current_path).to eq "/photos/#{Photo.last.id}"
       end
@@ -90,7 +90,7 @@ feature 'photos' do
 
         scenario 'does not let you sumbit a photo without uploading a file' do
           visit '/photos'
-          click_link 'Add a photo'
+          click_link 'Add Photo'
           fill_in 'Caption', with: 'Avocado and Scrambled eggs #Living'
           fill_in 'Location', with: 'Somewhere pretentious'
           click_button 'Upload Photo'
@@ -117,8 +117,8 @@ feature 'photos' do
 
       scenario 'cannot edit photo unless owner' do
         upload_photo
-        click_link 'Sign out'
-        sign_up(email: 'visitor@test.com')
+        click_link 'Sign Out'
+        sign_up(username: 'visitor99', email: 'visitor@test.com')
         visit "/photos/#{Photo.last.id}"
         expect(page).not_to have_link 'Update Photo'
       end
@@ -136,7 +136,7 @@ feature 'photos' do
 
       scenario 'cannot delete photo unless owner' do
         upload_photo
-        click_link 'Sign out'
+        click_link 'Sign Out'
         sign_up(username: 'visitor', email: 'visitor@test.com')
         visit "/photos/#{Photo.last.id}"
         expect(page).not_to have_link 'Delete Photo'
