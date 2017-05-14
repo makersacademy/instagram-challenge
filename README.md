@@ -21,7 +21,7 @@ This application is a simplified version of Instagram for hamsters. It allows yo
 3. Run ```cd instagram-challenge```
 4. Run ```rake db:migrate``` to create the databases
 5. Run `bin/rails s`
-6. Navigate to the webpage 'localhost:3000/photos'
-7. Use the application
+6. Navigate to the webpage 'localhost:3000/pictures'
+7. Follow the instructions to use the application.
 
 Enjoy!
