@@ -6,6 +6,7 @@ def sign_up(email)
   fill_in 'Password', with: 'purrpurr'
   fill_in 'Password confirmation', with: 'purrpurr'
   click_button 'Sign up'
+  @signed_up_user = User.find_by_email(email)
 end
 
 def create_post

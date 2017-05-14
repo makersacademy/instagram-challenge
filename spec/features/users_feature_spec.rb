@@ -54,8 +54,9 @@ feature 'user can sign in and out' do
     it 'will show all users posts in one place' do
       sign_up('toby@toby.com')
       visit root_path
-      click_link('pixel')
-      expect(current_path).to eq user_path
+      create_post
+      click_link('pixel', match: :first)
+      expect(current_path).to eq user_path(@signed_up_user)
     end
   end
 end

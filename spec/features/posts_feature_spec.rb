@@ -4,6 +4,7 @@ feature 'posts' do
   context 'no posts have been added' do
     scenario 'should display prompt add a post' do
       visit posts_path
+      sign_up("splorcy@spicy.com")
       expect(page).to have_content 'No posts yet'
       expect(page).to have_link 'Add a post'
     end
