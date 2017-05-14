@@ -17,15 +17,15 @@ Note: you have to create an account and log in to be able to post gifs!
 Screenshots
 -----
 
-###Home Page
+1. Home Page
 
 ![Screen shot of Home page](https://github.com/AlexJukes/instagram-challenge/blob/master/images/Screen%20Shot%202017-05-14%20at%2018.43.19.png?raw=true)
 
-###Generator
+2. Generator
 
 ![Screen shot of generator form](https://github.com/AlexJukes/instagram-challenge/blob/master/images/Screen%20Shot%202017-05-14%20at%2018.29.26.png?raw=true)
 
-###New Post
+3. New Post
 
 ![Updated Home Page](https://github.com/AlexJukes/instagram-challenge/blob/master/images/Screen%20Shot%202017-05-14%20at%2018.29.38.png?raw=true)
 
