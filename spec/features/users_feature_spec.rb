@@ -49,4 +49,13 @@ feature 'user can sign in and out' do
       expect(current_path).to eq root_path
     end
   end
+
+  context 'user can see all their own posts' do
+    it 'will show all users posts in one place' do
+      sign_up('toby@toby.com')
+      visit root_path
+      click_link('pixel')
+      expect(current_path).to eq user_path
+    end
+  end
 end
