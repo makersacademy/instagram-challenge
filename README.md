@@ -19,7 +19,7 @@ Screenshots
 
 ###Home Page
 
-![Screen shot of Home page](https://github.com/AlexJukes/instagram-challenge/blob/master/images/Screen%20Shot%202017-05-14%20at%2018.28.01.png?raw=true)
+![Screen shot of Home page](https://github.com/AlexJukes/instagram-challenge/blob/master/images/Screen%20Shot%202017-05-14%20at%2018.43.19.png?raw=true)
 
 ###Generator
 
