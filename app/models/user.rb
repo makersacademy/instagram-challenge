@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  attr_accessor :login
+
   has_many :posts
   has_many :comments
   has_many :likes
@@ -11,14 +14,6 @@ class User < ApplicationRecord
             :uniqueness => {
             :case_sensitive => false
             }
-
-  def login=(login)
-    @login = login
-  end
-
-  def login
-    @login || self.username || self.email
-  end
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

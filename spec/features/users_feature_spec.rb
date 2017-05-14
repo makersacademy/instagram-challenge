@@ -36,4 +36,17 @@ feature 'user can sign in and out' do
       expect(page).not_to have_link('Sign up')
     end
   end
+
+  context "user can sign up, sign out and then in again" do
+    it 'will be signed in' do
+      sign_up("bmo@bmo.com")
+      click_link('Sign out')
+      visit root_path
+      click_link('Sign in')
+      fill_in('Login', with: 'bmo@bmo.com')
+      fill_in('Password', with: 'purrpurr')
+      click_button('Log in')
+      expect(current_path).to eq root_path
+    end
+  end
 end
