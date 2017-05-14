@@ -1,23 +1,7 @@
-Instagram Challenge
-===================
+* Instagram style website using rails.
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* Users can post pictures, and like or comment on pictures posted by other users.
 
-Task
------
+<img width="860" alt="screen shot 2017-05-14 at 17 10 44" src="https://cloud.githubusercontent.com/assets/25392162/26035717/890168c8-38c8-11e7-93e6-44e6c2d93f57.png">
 
-Build Instagram: Simple huh!
-
-Bonus if you can write your own set of sensible user stories!
-
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+<img width="858" alt="screen shot 2017-05-14 at 17 11 32" src="https://cloud.githubusercontent.com/assets/25392162/26035718/8bb8421c-38c8-11e7-987c-2029c9b7eb07.png">

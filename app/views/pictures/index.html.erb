@@ -1,0 +1,54 @@
+
+  <% if current_user %>
+    <a href='/pictures/new'><div class='pictures' id='share_picture'>share a picture</div></a></br>
+  <% end %>
+
+<div class='pictures'>
+
+  <% Picture.all.reverse.each do |picture| %>
+
+    <div id='photo_frame'>
+      <p><%= picture.user.email %>:</p>
+        <div id='photo'>
+          <a href='/pictures/<%=picture.id%>'><p><%= image_tag picture.image.url(:medium) %></p></a>
+          <p>'<%= picture.caption %>'</p>
+      </div>
+
+      <a href='/pictures/<%=picture.id%>/likes'>
+        <% if picture.likes.count == 1 %>
+          <p><%= picture.likes.count %> like </p>
+        <% elsif picture.likes.count == 0 %>
+          <p>0 likes so far</p>
+        <% elsif picture.likes.count > 0 %>
+          <p><%= picture.likes.count %> likes </p>
+        <% end %>
+      </a>
+
+    </div></br>
+
+    <% if current_user && current_user != picture.user && !current_user.has_liked?(picture) %>
+      <%= form_for [picture, @like] do |f| %>
+        <p><%= f.submit 'like', class:'insta_button' %></p>
+      <% end %>
+    <% end %>
+
+    <% if current_user && current_user == picture.user %>
+      <p id='delete_picture'><%= link_to "delete this picture", picture_path(picture), method: :delete %></p></br>
+    <% end %>
+
+    <div id='picture_comments'>
+      <% picture.comments.each do |comment| %>
+        <p><%= comment.user.email %> commented: </br> <%= comment.opinion %></p>
+      <% end %>
+
+      <% if current_user %>
+          <%= form_for [picture, @comment] do |f| %>
+            <p><%= f.text_area :opinion, cols: '50', rows: '3', id: 'comments_box'%></p>
+            <p><%= f.submit 'comment', class:'insta_button' %></p>
+          <% end %>
+      <% end %>
+    </div></br>
+
+  <% end %>
+
+</div>
