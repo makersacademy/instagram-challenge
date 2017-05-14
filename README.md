@@ -1,23 +1,43 @@
-Instagram Challenge
+Instagif
 ===================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+A Rails web application that uses the GIPHY API.
 
-Task
+Instagif allows users to generate gifs based on a word or phrase of their choice, which is then displayed on a public stream.
+
+Setup
+------
+
+Download or clone repo, open the instagif folder and run `bundle install`.
+
+Run `rake db:migrate` to create the databases, then run `rails s` and visit `localhost:3000` on your browser to begin instagif-ing!
+
+Note: you have to create an account and log in to be able to post gifs!
+
+Screenshots
 -----
 
-Build Instagram: Simple huh!
+1. Home Page
 
-Bonus if you can write your own set of sensible user stories!
+![Screen shot of Home page](https://github.com/AlexJukes/instagram-challenge/blob/master/images/Screen%20Shot%202017-05-14%20at%2018.43.19.png?raw=true)
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+2. Generator
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+![Screen shot of generator form](https://github.com/AlexJukes/instagram-challenge/blob/master/images/Screen%20Shot%202017-05-14%20at%2018.29.26.png?raw=true)
 
-Bonus if you can add filters!
+3. New Post
+
+![Updated Home Page](https://github.com/AlexJukes/instagram-challenge/blob/master/images/Screen%20Shot%202017-05-14%20at%2018.29.38.png?raw=true)
+
+Known Issues
+-----
+
+- App crashes if GIPHY returns no results from search.
+
+- Further styling needed, especially on individual post pages.
+
+- Asynchronous loading of comments not yet implemented.
+
+- Comments do not belong to users who made them.
+
+- Comments do not have a time of posting associated with them.

@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %title InstaGif
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+    %body
+      %img.logo(src='http:////i.imgur.com/tjIk4XX.jpg')
+      - if user_signed_in?
+        %div.session_links
+          = link_to "Sign out", destroy_user_session_path, class: 'session_btn', method: :delete
+      - else
+        %div.session_links
+          = link_to "Sign in", new_user_session_path, class: 'session_btn'
+          = link_to "Sign up", new_user_registration_path, class: 'sign_btn'
+      = notice
+      = alert
+      = yield

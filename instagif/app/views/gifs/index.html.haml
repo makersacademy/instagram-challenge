@@ -1,0 +1,18 @@
+%div.create
+  = link_to 'Give a gif', new_gif_path, class: 'button'
+
+- if @gifs.any?
+  - @gifs.each do |gif|
+    %content
+
+      %div.gif[gif]
+        %div.gif_image
+          %a(href="/gifs/#{gif.id}")
+            %img{src: "#{gif.url}", id:"#{gif.id}"}
+        %div.gif_title
+          %header
+          = gif.generator.capitalize
+
+- else
+  No gifs yet!
+
