@@ -20,4 +20,12 @@ feature 'liking content' do
       expect(page).to have_content '1 like'
     end
   end
+
+  scenario 'cannot like photo if not signed in' do
+    click_link 'Sign Out'
+    click_link('', href: "#{photo_path(Photo.last)}")
+    click_link 'Like Photo'
+    expect(page).not_to have_content '0 likes'
+    expect(current_path).to eq '/users/sign_in'
+  end
 end
