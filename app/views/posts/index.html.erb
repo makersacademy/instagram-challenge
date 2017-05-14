@@ -9,19 +9,52 @@
 </head>
 
 <body>
-  <div class ="container">
-      <% @posts.each do |x| %>
-      <br>
-      <div class="posts">
-        <%= image_tag x.image.url(:medium) %>
-      </div>
-      <br>
-      <%= x.description %>
-      <br>
-      <%= link_to "Leave comment", new_post_comment_path(x) %>
-      <% end %>
+  <div class="container">
+        <% if @posts.any? %>
+          <% @posts.reverse_each do |post| %>
+
+          <div class="row">
+            <div class="col-md-3">
+            </div>
+              <div class="col-md-6">
+                <div class="img-fluid">
+                  <%= image_tag post.image.url, class: "img-fluid" %>
+                </div>
+                  <%= post.description %>
+                <%= link_to "Leave comment", new_post_comment_path(post) %>
+              </div>
+              <div class="col-md-3">
+              </div>
+          </div>
+
+          <hr>
+
+          <% end %>
+        <% end %>
+
+        <!-- <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="#">1</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">2</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        </ul> -->
 
   </div>
+
   <script src="js/scripts.js"></script>
 </body>
 </html>
