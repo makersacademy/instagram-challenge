@@ -1,6 +1,6 @@
 <% if @posts.any? %>
   <% @posts.each do |post| %>
-    <div class="name_time"><strong><%= link_to post.user.username, user_path(post.user) %></strong>
+    <div class="name_time"><p><strong><%= link_to post.user.username, user_path(post.user) %></strong>
     <%= distance_of_time_in_words(Time.now, post.created_at) %> ago
   </div>
       <%= link_to post_path(post), class: "img_link" do %>
@@ -19,7 +19,7 @@
     <% if current_user %>
       <%= link_to 'Comment', new_post_comment_path(post) %>
       <% if current_user == post.user || current_user.admin? %>
-        <%= link_to 'Delete post', post_path(post), method: :delete %>
+        <%= link_to 'Delete post', post_path(post), method: :delete %></p>
       <% end %>
     <% end %>
   <% end %>
