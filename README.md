@@ -1,6 +1,6 @@
 BlundellGram
 ============
-![Travis CI](https://travis-ci.org/Simba14/instagram-challenge.svg?branch=master)
+![Travis CI](https://travis-ci.org/Simba14/BlundellGram.svg?branch=master)
 
 A Rails web application cloning the wonders of Instagram, AKA a space that allows users to upload, comment, and like photos.
 
