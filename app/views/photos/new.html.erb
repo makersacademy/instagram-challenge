@@ -1,0 +1,27 @@
+<div class='container'>
+  <h2>Show the world your breakfast!</h2>
+  <% if @photo.errors.any? %>
+    <section id='errors'>
+      <h3><%= pluralize(@photo.errors.count, "error") %> prohibited this restaurant from being saved: </h3>
+      <ul>
+        <% @photo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+    <%= form_for @photo, html: {multipart: true} do |f| %>
+      <div class='field'>
+        <%= f.text_field :caption, placeholder: 'Caption' %>
+      </div>
+      <div class='field'>
+        <%= f.text_field :location, placeholder: 'Location', id: 'location' %>
+      </div>
+      <div class='action'>
+        <%= f.file_field :image, id: 'choose-file'%>
+      </div>
+      <div class='action'>
+        <%= f.submit 'Upload Photo', class: 'photo-btn'%>
+      </div>
+    <% end %>
+</div>
