@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature 'leavign comments' do
+feature 'leaving comments' do
   context ' allows a user to leave a comment' do
     before do
       Picture.create(title: 'cute dog', filename: 'dogthinkstock.jpg')
