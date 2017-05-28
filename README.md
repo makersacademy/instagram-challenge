@@ -1,23 +1,57 @@
-Instagram Challenge
-===================
+Chitter Challenge
+=================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+# Introduction
+I undertook this project to learn Rails. Through this project, I learnt how to create a Rails project, to create users with Devise, handling file uploads with Paperclip, and I even got to work with Bootstrap a little bit.
 
-Task
------
+This is a very simple clone of Instagram, which allows users to upload photos and comment on them.
 
-Build Instagram: Simple huh!
+This project helped me better understand relational databases.
 
-Bonus if you can write your own set of sensible user stories!
+Here are the user stories provided for functionality:
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
+```
+As a user
+So that I can post my photos on Chillgram
+I want to sign up
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a user
+So that I can revist Chillgram
+I want to log in
 
-Bonus if you can add filters!
+As a user
+So that I can stop others uploading to my account
+I want to log out
+
+As a user
+So that my friends can see my excellent photography skills
+I want to upload a photo
+
+As a user
+So that I can give a bit more flavour to my photos
+I want to add a caption
+
+As a user
+So that I can show my appreciation for people's photos
+I want to add a comment
+
+As a user
+So that I can enjoy the site even more
+I want a cool interface
+
+As a user
+So that I can see a bunch of photos
+I want to see them in reverse chronological order
+```
+## Approach
+
+In order to solve this, I used the following:
+
+1. **Test-driven development:** I used Capybara and RSpec to test-drive the development of this site.
+
+2. **Domain-modelling:** I listed all of the nouns and verbs involved in each user story, turned them into objects and messages, and implemented them.
+
+3. **Refactoring:** I continuously refactored my code along the way.
+
+## How to run
+[Visit it here on Heroku](https://vast-caverns-81887.herokuapp.com/)

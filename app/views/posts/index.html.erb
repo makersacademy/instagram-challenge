@@ -1,0 +1,33 @@
+<div class="post-index">
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <div class="post">
+      <div class="img-responsive">
+        <%= image_tag post.image %>
+      </div>
+      <div>
+        <%= post.caption %>
+      </div>
+      <div class="created-at">
+        <%= link_to "View detail", post_path(post)  %>
+      </div>
+      <% if post.user == current_user %>
+      <div>
+        <%= link_to "Delete post", post_path(post), method: :delete %>
+      </div>
+
+      <% end %>
+  </div>
+  <div class="post-divider">
+  </div>
+  <% end %>
+<% else %>
+
+<h2>No posts yet</h2>
+<% if current_user %>
+<h3><a href="posts/new">Create post</a></h3>
+<% else %>
+<%= link_to "Sign up", new_user_registration_path  %>
+<% end %>
+<% end %>
+</div>
