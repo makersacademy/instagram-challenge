@@ -68,14 +68,5 @@ I would like to be able to delete the posts I have created
 * Install Ruby Version Manager: ``\curl -L https://get.rvm.io | bash -s stable``
 * Install Ruby 2.4.0 or above: ``rvm use ruby --install 2.4.0``
 * Install Rails 5.1.0 or above: ``$ gem install rails``
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialisation
-
 * Running the test suite:
 `$ rspec`
