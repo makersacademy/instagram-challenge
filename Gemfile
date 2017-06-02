@@ -50,6 +50,8 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec-rails', '~> 3.5'
   gem 'rake'
+  gem "rubocop", "0.48.1"
+  gem "rubocop-rails"
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
