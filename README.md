@@ -1,23 +1,51 @@
 Instagram Challenge
 ===================
 
-Instructions
--------
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Instagram clone using Rails. Users can post pictures, write comments and like pictures.
 
-Task
------
+Technologies
+-----------
 
-Build Instagram: Simple huh!
+Ruby on Rails, RSpec, PostgreSQL, Devise, Paperclip]
 
-Bonus if you can write your own set of sensible user stories!
+User
+-------------
+````
+$ git clone https://github.com/sophieklm/instagram.git
+$ cd Instagram
+$ bundle install
+$ rails server
+````
 
-As usual please start by forking this repo. After cloning your fork and cd'ing into it, you'll need to [initialize a Rails app in the current directory](http://blog.jasonmeridth.com/posts/create-rails-application-in-current-directory/).
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+User stories
+--------
+`````````````
+As a user
+So that I can be part of a photo sharing community
+I want to be able to create an account
 
-Bonus if you can add filters!
+As a user
+So that I can ensure no one else posts photos as me
+I want to be able to sign in and out
+
+As a user
+So that I can share my photos
+I want to be able to upload an image to the site
+
+As a user
+So that I can interact with others
+I want to be able to comment on a photo
+
+As a user
+So that I can show that I like a photo
+I want to be able to 'like' a photo
+
+As a user
+So that I can see pictures I have shared
+I want to have a profile page
+
+As a user
+So that I can exaggerate how good my photography skills are
+I want to be able to add a filter to an image
+`````````
