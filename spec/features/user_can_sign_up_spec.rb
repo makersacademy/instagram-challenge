@@ -1,5 +1,4 @@
-require 'spec_helper'
-require 'helpers/user_helper'
+require 'rails_helper'
 
 RSpec.feature "Sessions",  type: :feature do
 

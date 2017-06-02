@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 def sign_up(username = "user", email = "example@example.com", password = "password")
   visit "/users/sign_up"
