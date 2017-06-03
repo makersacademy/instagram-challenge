@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe PhotosController, type: :controller do
 
+  let(:user) { create(:user) }
+  let(:photo) { create(:photo) }
+
   # This should return the minimal set of attributes required to create a valid
   # Photo. As you add validations to Photo, be sure to
   # adjust the attributes here as well.
@@ -20,7 +23,7 @@ RSpec.describe PhotosController, type: :controller do
 
   describe "GET #index" do
     it "returns a success response" do
-      photo = Photo.create! valid_attributes
+      sign_in(user)
       get :index, params: { image: photo.image, description: photo.description }, session: valid_session
       expect(response).to be_success
     end
@@ -28,7 +31,7 @@ RSpec.describe PhotosController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      photo = Photo.create! valid_attributes
+      sign_in(user)
       get :show, params: {id: photo.to_param}, session: valid_session
       expect(response).to be_success
     end
@@ -43,7 +46,7 @@ RSpec.describe PhotosController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      photo = Photo.create! valid_attributes
+      sign_in(user)
       get :edit, params: {id: photo.to_param}, session: valid_session
       expect(response).to be_success
     end
@@ -52,12 +55,14 @@ RSpec.describe PhotosController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Photo" do
-        expect {
-          post :create, params: {photo: valid_attributes}, session: valid_session
+        sign_in(user)
+        expect { FactoryGirl.create(:photo)
+          #post :create, params: {photo: valid_attributes}, session: valid_session
         }.to change(Photo, :count).by(1)
       end
 
       it "redirects to the created photo" do
+        sign_in(user)
         post :create, params: {photo: valid_attributes}, session: valid_session
         expect(response).to redirect_to(Photo.last)
       end
@@ -65,6 +70,7 @@ RSpec.describe PhotosController, type: :controller do
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
+        sign_in(user)
         post :create, params: {photo: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
@@ -78,14 +84,14 @@ RSpec.describe PhotosController, type: :controller do
       }
 
       it "updates the requested photo" do
-        photo = Photo.create! valid_attributes
+        sign_in(user)
         put :update, params: {id: photo.to_param, photo: new_attributes}, session: valid_session
         photo.reload
         expect(photo.description).to eq "new description"
       end
 
       it "redirects to the photo" do
-        photo = Photo.create! valid_attributes
+        sign_in(user)
         put :update, params: {id: photo.to_param, photo: valid_attributes}, session: valid_session
         expect(response).to redirect_to(photo)
       end
@@ -93,7 +99,7 @@ RSpec.describe PhotosController, type: :controller do
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        photo = Photo.create! valid_attributes
+        sign_in(user)
         put :update, params: {id: photo.to_param, photo: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
@@ -102,14 +108,15 @@ RSpec.describe PhotosController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested photo" do
-      photo = Photo.create! valid_attributes
+      sign_in(user)
+      photo = FactoryGirl.create(:photo)
       expect {
         delete :destroy, params: {id: photo.to_param}, session: valid_session
       }.to change(Photo, :count).by(-1)
     end
 
     it "redirects to the photos list" do
-      photo = Photo.create! valid_attributes
+      sign_in(user)
       delete :destroy, params: {id: photo.to_param}, session: valid_session
       expect(response).to redirect_to(root_url)
     end

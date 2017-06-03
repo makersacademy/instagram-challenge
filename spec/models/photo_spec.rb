@@ -7,4 +7,6 @@ RSpec.describe Photo, type: :model do
     expect(photo.description).to eq("MyText")
   end
 
+  it{ should belong_to(:user) }
+
 end
