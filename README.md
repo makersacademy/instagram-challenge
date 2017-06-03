@@ -21,4 +21,14 @@ Things you may want to cover:
 
 * Deployment instructions
 
+* Specs
+- User can sign up
+- User can sign in
+- User can sign out
+- User can post photo
+- User can see all photos
+- User can heart photo
+- User can comment on photos
+
+
 * ...
