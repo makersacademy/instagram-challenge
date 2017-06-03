@@ -20,13 +20,19 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Project name</a>
+        <%= link_to "Instagram Home", root_path, class: 'navbar-brand' %>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+
+      <% if current_user %>
+      <li><%= link_to "Logout", '/logout' %></li>
+      <% else %>
+      <li><%= link_to "Sign Up", users_new_path %></li>
+      <li><%= link_to "Sign In", sessions_new_path %></li>
+      <% end %>
+
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -40,18 +46,28 @@
             </ul>
           </li>
         </ul>
+
         <ul class="nav navbar-nav navbar-right">
           <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
-          <li><a href="../navbar-static-top/">Static top</a></li>
-          <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+          <li><a href="#">Static top</a></li>
+          <li><a href="#">Fixed top</a></li>
         </ul>
       </div><!--/.nav-collapse -->
+
+      <% if current_user %>
+      Signed in as <%= current_user.name %>
+      <% end %>
+
+      <p>Current User Count: <%= User.count %><p>
+
     </div><!--/.container-fluid -->
   </nav>
 
 
 
   <div class="container">
+
+
 
     <%= yield %>
 

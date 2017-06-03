@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+password = (0...8).map { (65 + rand(26)).chr }.join
+User.create(name: "John Doe", email: "johndoe@email.com", password: password)
+
+password = (0...8).map { (65 + rand(26)).chr }.join
+User.create(name: "Steve Smith", email: "stevesmith@email.com", password: password)
+
+password = (0...8).map { (65 + rand(26)).chr }.join
+User.create(name: "Haley Smith", email: "haleysmith@email.com", password: password)
+
+password = (0...8).map { (65 + rand(26)).chr }.join
+User.create(name: "Francine Smith", email: "francine smith@email.com", password: password)
