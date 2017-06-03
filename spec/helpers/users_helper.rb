@@ -6,3 +6,10 @@ def sign_up
   fill_in 'user[password]', with: 'password'
   click_on 'Sign up'
 end
+
+def user_makes_post
+  visit "/posts"
+  click_link "New post"
+  fill_in "Caption", with: "Hello, world!"
+  click_button "Submit"
+end

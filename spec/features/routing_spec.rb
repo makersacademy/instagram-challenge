@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'factory_girl_rails'
 
 RSpec.feature "Routing", type: :feature do
   scenario "Can only visit wall when signed in" do

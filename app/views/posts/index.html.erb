@@ -5,5 +5,7 @@
 <% end %>
 
 <% @posts.each do |post| %>
-  <p><%= post.caption %></p>
+  <p><%= User.find(post.user_id).username %> says: <%= post.caption %></p>
+  <%= image_tag post.image_url.to_s, height: Post::IMAGE_HEIGHT %>
+  <br />
 <% end %>
