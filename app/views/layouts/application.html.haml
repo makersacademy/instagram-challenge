@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title InstagramChallenge
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    = link_to "Global Posts", posts_path
+    - if user_signed_in?
+      = link_to "Sign out", destroy_user_session_path, method: :delete
+      = link_to "My Profile", profile_path(current_user.profile)
+      = link_to "New Post", new_profile_post_path(current_user.profile)
+    - else
+      = link_to "Sign in", new_user_session_path
+      = link_to "Sign up", new_user_registration_path
+    %p.notice= notice
+    %p.alert= alert
+    = yield
