@@ -38,6 +38,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop', '0.48.1'
   gem 'rubocop-rails'
+  gem 'capybara', '~> 2.13'
+  gem 'spring-commands-rspec'
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :development do
