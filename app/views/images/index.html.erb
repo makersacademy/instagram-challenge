@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<title> Shotwall </title>
+<body>
+<% if current_user %>
+<h3>Shotwall</h3>
+<h4>Lastest Metal shots:</h4>
+<b>
+<% Image.all.each do |image| %>
+<br>
+<p>
+<img style="float:left;" src="<%=formatted_image_url(image)%>" />
+Title: <%= image.title %><br>
+Description: <%= image.description %><br>
+Headbanger: <%= image.user.email %><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</p>
+<br>
+<% end %>
+<% else %>
+<p>Please Sign up or Log in to check out and share the latest metal shots!</p>
+<% end %>
+
+</body>
+</html>
