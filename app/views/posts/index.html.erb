@@ -8,4 +8,10 @@
   <p><%= User.find(post.user_id).username %> says: <%= post.caption %></p>
   <%= image_tag post.image_url.to_s, height: Post::IMAGE_HEIGHT %>
   <br />
+  <%= form_tag("/likes", method: "post") do %>
+    <%= hidden_field_tag(:user_id, current_user.id) %>
+    <%= hidden_field_tag(:post_id, post.id) %>
+    <% already_liked = post.likes.any?{ |like| like.user_id == current_user.id } %>
+    <%= submit_tag "Like (#{post.likes.count})", :disabled => already_liked %>
+  <% end %>
 <% end %>
