@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
+    p "Post is:", @post
     redirect_to posts_url
   end
 
@@ -15,6 +16,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:message, :image, :user_id)
+    params.require(:post).permit(:caption, :image, :user_id)
   end
 end
