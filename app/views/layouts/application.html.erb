@@ -67,6 +67,26 @@
 
   <div class="container">
 
+    <ul>
+
+      <% if flash[:message] %>
+        <%= flash[:message] %>
+      <% end %>
+
+      <% if @user && @user.errors.full_messages.any? %>
+      <% @user.errors.full_messages.count %>
+      <% end %>
+
+
+      <% if @user && @user.errors.full_messages.any? %>
+    <% @user.errors.full_messages.each do |error_message| %>
+      <%= error_message %> <br />
+    <% end %>
+  <% end %>
+
+
+    </ul>
+
 
 
     <%= yield %>

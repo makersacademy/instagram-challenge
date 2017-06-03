@@ -16,4 +16,13 @@ password = (0...8).map { (65 + rand(26)).chr }.join
 User.create(name: "Haley Smith", email: "haleysmith@email.com", password: password)
 
 password = (0...8).map { (65 + rand(26)).chr }.join
-User.create(name: "Francine Smith", email: "francine smith@email.com", password: password)
+User.create(name: "Francine Smith", email: "francinesmith@email.com", password: password)
+
+password = (0...8).map { (65 + rand(26)).chr }.join
+User.create(name: "Roger Smith", email: "rodersmith@email.com", password: password)
+
+password = (0...8).map { (65 + rand(26)).chr }.join
+User.create(name: "Peter Griffin", email: "petergriffin@email.com", password: password)
+
+password = (0...8).map { (65 + rand(26)).chr }.join
+User.create(name: "Peter Griffin", email: "jeffsmith@email.com", password: password)

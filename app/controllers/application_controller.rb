@@ -15,9 +15,11 @@ class ApplicationController < ActionController::Base
     user = User.find_by(email: email)
     if user && user.authenticate(password)
       session[:user_id] = user.id
-      redirect_to '/'
+      flash[:message] = "Welcome #{user.name} you are now signed in!"
+      redirect_to root_path
     else
-      redirect_to sessions_new_path
+      flash[:message] = "Your details were not recognized please try again"
+      render 'sessions/new'
     end
   end
 

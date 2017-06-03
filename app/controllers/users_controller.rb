@@ -7,9 +7,10 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to '/'
+      flash[:message] = "Welcome to Instagram #{@user.name} you are now signed up!"
+      redirect_to root_path
     else
-      redirect_to users_new_path
+      render 'users/new'
     end
   end
 
