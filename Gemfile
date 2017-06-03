@@ -32,6 +32,7 @@ gem 'paperclip'
 gem 'pg'
 gem 'rails-helper'
 gem 'rspec-rails'
+gem 'simple_form'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
