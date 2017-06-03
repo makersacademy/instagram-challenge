@@ -5,7 +5,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "50x50>" }, default_url: "noface_image.jpg"
   validates :username, :presence => true, :uniqueness => true
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
