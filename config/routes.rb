@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   constraints Clearance::Constraints::SignedOut.new do
     root to: "clearance/users#new"
+    get '/posts' => "clearance/users#new"
   end
 
   constraints Clearance::Constraints::SignedIn.new do
