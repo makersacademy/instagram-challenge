@@ -15,3 +15,10 @@ def log_in(username = "user", email = "example@example.com", password = "passwor
   fill_in 'user_password',  with: password
   click_button 'Log in'
 end
+
+def upload_photo(description = "Description")
+  visit "/photos/new"
+  page.attach_file(:photo_image, Rails.root + "spec/fixtures/files/rubber_duck.jpg")
+  fill_in :photo_description, with: description
+  click_on "Create Photo"
+end
