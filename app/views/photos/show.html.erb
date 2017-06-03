@@ -1,8 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+  <p><strong><%= @photo.user.username %>:</strong></p>
   <p><%= image_tag(@photo.image_url.to_s) %></p>
 
-  <p><%= @photo.description %></p>
+  <p><strong><%= @photo.user.username %>:</strong> <%= @photo.description %></p>
 
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<% if current_user && @photo.user_id == current_user.id %>
+<%= link_to 'Edit', edit_photo_path(@photo) %> | <% end %>
 <%= link_to 'Back', root_url %>
