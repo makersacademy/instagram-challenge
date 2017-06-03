@@ -37,3 +37,19 @@ gem "rubocop-rails"
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
+
+### User Stories
+
+```
+as an egotist
+so i can show the world my life
+i'd like to post pictures online
+
+as a lonely individual
+so i can feel less starved of social interaction
+i'd like to 'like' photos of other peoples' lives
+
+as a lonely individual
+so i can feel less starved of social interaction
+i'd like to comment on photos of other peoples' lives
+```
