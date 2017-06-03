@@ -12,7 +12,7 @@ RSpec.feature "Sessions", type: :feature do
     sign_up
     click_link('Log Out')
     log_in
-    page.should have_content("Logged in as example@starfleet.com.")
+    page.should have_content("Welcome, Deanna.")
   end
 
   scenario "user can sign out", :type => :feature do
