@@ -1,0 +1,21 @@
+<html class='page'>
+<p id="notice"><%= notice %></p>
+
+  <div class='bigDiv'>
+    <% @posts.each do |post| %>
+      <div class='smallDiv'>
+        <%= User.find_by_id(post.user_id).email %>:</br>
+        <%= image_tag post.image.url(:medium) %></br>
+        <%= post.description %></br>
+        <%= link_to 'Show', post %>
+        <% if user_signed_in? %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<br>
+
+<%= link_to 'New Post', new_post_path %>
+</html>

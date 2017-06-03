@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InstagramApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class='topBar'>
+<% if user_signed_in? %>
+    <p class='Immstagram'>Immstagram</p>
+      <button class='button' style='display: inline; float: right; transform: translate(10%, -50%)'>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+      </button>
+      <label style='font-size: 20px; display: inline; float: right;'>Logged in as: <%= current_user.email %></label>
+  <% else %>
+  <p class='Immstagram'>Immstagram</p>
+    <button class='button' style='display: inline; float: right; transform: translate(10%, -50%)'>
+      <%= link_to('Login', new_user_session_path)  %>
+    </button>
+  <% end %>
+  </br><%= notice %>
+  <p class="alert"><%= alert %></p>
+</div>
+<%= yield %>
+
+</body>
+</html>
