@@ -9,6 +9,12 @@ class PicsController < ApplicationController
 
   def create
     @pic = Pic.new(pic_params)
+
+    if @pic.save
+      redirect_to @pic, notice: "Picture was posted succesfully"
+    else
+      render "new"
+    end 
   end
 
   private
