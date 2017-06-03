@@ -14,3 +14,8 @@ def log_in(email = "example@starfleet.com")
   fill_in 'user_password', :with => 'password'
   click_button 'Log In'
 end
+
+def sign_out(email = 'example@starfleet.com')
+  sign_up
+  click_link 'Log Out'
+end

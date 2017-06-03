@@ -15,4 +15,9 @@ RSpec.feature "Sessions", type: :feature do
     page.should have_content("Logged in as example@starfleet.com.")
   end
 
+  scenario "user can sign out", :type => :feature do
+    sign_out
+    page.should have_content("You need to sign in or sign up before continuing.")
+  end
+
 end
