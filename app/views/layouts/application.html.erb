@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>InstagramChallenge</title>
+    <title>Davestagram</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <div>
+      <% if current_user %>
+        <li style="float:right"><%= link_to 'Log Out',  destroy_user_session_path, method: :delete %></li>
+      <% end %>
+      <% if !current_user %>
+        <li style="float:right"><a href="/users/sign_in">Log In</a></li>
+        <li style="float:right"><a href="/users/sign_up">Sign Up</a></li>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
