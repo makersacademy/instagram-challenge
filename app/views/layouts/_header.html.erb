@@ -1,0 +1,27 @@
+<header>
+  <nav>
+    <a href = "/">
+      <img src= 'ADD IMAGE HERE' class = 'nav-logo'>
+    </a>
+    <ul>
+      <div>
+        <li><a href="/">Home</a></li>
+        <% if user_signed_in? %>
+        <li>
+          Logged in as <strong><%= current_user.email %></strong>.</li>
+          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'link-to' %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'link-to'  %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'link-to'  %>
+          <%= link_to "Login", new_user_session_path, :class => 'link-to'  %>
+        <% end %>
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+      </div>
+    </ul>
+  <nav>
+</header>
