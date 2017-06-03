@@ -7,6 +7,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'carrierwave'
 gem 'devise'
 gem "font-awesome-rails"
 gem 'jquery-rails'

@@ -6,7 +6,7 @@ Instagram clone using Rails. Users can post pictures, write comments and like pi
 Technologies
 -----------
 
-Ruby on Rails, RSpec, PostgreSQL, Devise, Paperclip]
+Ruby on Rails, RSpec, PostgreSQL, Devise, CarrierWave.
 
 User
 -------------
