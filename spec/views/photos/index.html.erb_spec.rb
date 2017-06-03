@@ -2,16 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "photos/index", type: :view do
   before(:each) do
-    assign(:photos, [
-      Photo.create!(
-        :description => "MyText",
-        :image => "Image"
-      ),
-      Photo.create!(
-        :description => "MyText",
-        :image => "Image"
-      )
-    ])
+    assign(:photos, [create(:photo), create(:photo)])
   end
 
   xit "renders a list of photos" do

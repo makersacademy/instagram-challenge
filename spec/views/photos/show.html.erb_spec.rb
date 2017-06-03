@@ -11,6 +11,6 @@ RSpec.describe "photos/show", type: :view do
   it "renders attributes in <p>" do
     render
     expect(rendered).to match(/MyText/)
-    expect(rendered).to match(/Image/)
+    expect(rendered).to match(/img src/)
   end
 end
