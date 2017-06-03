@@ -7,8 +7,14 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     @image.user_id = current_user.id
-    @image.save
-    redict_to root_path
+    if @image.save
+      redirect_to root_path
+      puts "saved"
+    else
+      redirect_to root_path
+    end
+
+
   end
 
   private
