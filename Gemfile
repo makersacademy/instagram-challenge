@@ -39,6 +39,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem "paperclip", "~> 5.0.0"
 end
 
 group :production do
