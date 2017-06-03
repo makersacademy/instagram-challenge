@@ -27,7 +27,8 @@ Remember to proceed in small steps! Getting confused? Make the steps even smalle
 
 ## Code Quality
 
-For linting, copy the .rubocop.yml from the AceBook challenge. You'll need these gems:
+For linting, you can use the `.rubocop.yml` in this repository (or your own!).
+You'll need these gems:
 
 ```ruby
 gem "rubocop", "0.48.1"
