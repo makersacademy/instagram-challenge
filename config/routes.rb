@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   resources :photos
   resources :widgets
   devise_for :users, :controllers => { registrations: 'registrations'}
+
+
   get 'welcome/index'
 
-  root 'welcome#index'
+  root 'photos#index'
 
   root 'home#index'
 
