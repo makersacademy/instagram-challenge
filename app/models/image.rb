@@ -3,4 +3,5 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => ['image/jpg', 'image/jpeg', 'image/png']
 
   belongs_to :user
+  has_many :comments
 end
