@@ -36,6 +36,7 @@ gem 'paperclip', '~> 5.1.0'
 gem 'aws-sdk', '~> 2.9.29'
 gem 'figaro', '~> 1.1.1'
 gem 'devise', '~> 4.3.0'
+gem 'travis', '~> 1.8.8'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
