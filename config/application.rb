@@ -11,6 +11,11 @@ module InstagramChallenge
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
+    config.generators do |g|
+      g.test_framework   :rspec, :fixture => true, :views => false
+      g.integration_tool :rspec, :fixture => true, :views => true
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

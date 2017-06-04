@@ -17,7 +17,7 @@ class PicsController < ApplicationController
     @pic = current_user.pics.build(pic_params)
 
     if @pic.save
-      redirect_to @pic, notice: "Yepp! Picture was posted succesfully"
+      redirect_to @pic, notice: "Picture was posted succesfully"
     else
       render "new"
     end
@@ -28,7 +28,7 @@ class PicsController < ApplicationController
 
   def update
     if @pic.update(pic_params)
-      redirect_to @pic, notice: "Super! The picture was updated!"
+      redirect_to @pic, notice: "The picture was updated!"
     else
       render "edit"
     end
