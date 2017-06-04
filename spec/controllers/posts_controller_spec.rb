@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PostsController, type: :controller do
+RSpec.describe PostsController do
 
   describe "GET #new" do
     it "returns http success" do
