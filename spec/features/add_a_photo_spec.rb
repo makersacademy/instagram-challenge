@@ -4,9 +4,10 @@ RSpec.feature 'Photos', type: :feature do
   scenario 'user adds a photo' do
     visit '/photos'
     click_on 'Post Photo'
-    fill_in 'photo_title', with: 'Medieval Lion'
-    page.attach_file('photo_image', Rails.root + 'app/assets/images/lion.jpg')
+    fill_in 'photo_title', with: '55 Bar'
+    page.attach_file('photo_image', Rails.root + 'app/assets/images/55-bar.jpg')
     click_on 'Upload'
-    expect(page).to have_content 'Medieval Lion'
+    #expect(page).to have_xpath("//img[@src='//s3.amazonaws.com/instagram-clone-photos/photos/images/*']")
+    expect(page).to have_content '55 Bar'
   end
 end
