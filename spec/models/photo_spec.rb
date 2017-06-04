@@ -8,5 +8,6 @@ RSpec.describe Photo, type: :model do
   end
 
   it{ should belong_to(:user) }
+  it{ should have_many(:comments)}
 
 end

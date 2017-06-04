@@ -1,15 +1,22 @@
 <table class="table text-centered">
   <tbody>
     <% @photos.reverse.each do |photo| %>
+    <% @photo = photo %>
       <tr>
         <td><strong><%= photo.user.username %></strong></td>
       </tr>
         <td><%= image_tag(photo.image_url.to_s) %></td>
       <tr>
-        <td><%= link_to 'Show', photo %></td>
+        <td><%= photo.description %></td>
       </tr>
       <tr>
-        <td><%= photo.description %></td>
+        <td><%= render photo.comments %></td>
+      </tr>
+      <tr>
+        <td><%= render 'comments/form' %></td>
+      </tr>
+      <tr>
+        <td><%= link_to 'Show More', photo %></td>
       </tr>
     <% end %>
   </tbody>
