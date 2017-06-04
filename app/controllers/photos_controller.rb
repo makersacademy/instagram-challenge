@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @photos = Photo.all
+    @photos = Photo.all.reverse
   end
 
   def new
@@ -19,6 +19,7 @@ class PhotosController < ApplicationController
   def edit
     @photo = Photo.find(params[:id])
     @photo.liked_by current_user
+    redirect_to photos_url
   end
 
   private
