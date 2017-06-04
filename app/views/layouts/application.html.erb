@@ -6,16 +6,31 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet">
   </head>
 
   <body>
-    <% if signed_in? %>
-      Signed in as: <%= current_user.username %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-      <%= link_to 'My Profile', "/users/#{current_user.id}" %>
-    <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
-    <% end %>
+    <nav class='navbar'>
+      <div class='nav-left-container'>
+        <%= link_to image_tag("logo.png", class: 'logo'), root_path %>
+        <h1 class='brand-name'>Exchangeagram</h1>
+      </div>
+      <div class='nav-right-container'>
+        <% if signed_in? %>
+          <%= button_to 'Sign out', sign_out_path, class: 'nav-btn', method: :delete %>
+          <%= link_to "/users/#{current_user.id}" do %>
+          <div class='nav-user'>
+            <span class='nav-username'><%= current_user.username %></span>
+            <%= image_tag(current_user.picture_url, size: User::PROFILE_PIC_SIZES[:nav], class: 'nav-profile-pic') unless current_user.picture.blank? %>
+          </div>
+          <% end %>
+        <% else %>
+          <%= button_to 'Sign up', sign_up_path, class: 'nav-btn', method: :get %>
+          <%= button_to 'Sign in', sign_in_path, class: 'nav-btn', method: :get %>
+        <% end %>
+      </div>
+    </nav>
+    <br />
 
     <div id="flash">
       <% flash.each do |key, value| %>
