@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
-
+<center>
 <h1>Photos</h1>
 
 <table>
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
-        <td><%= image_tag photo.image.url(:medium) %></td>
-        <td><%= photo.title %></td>
-        <td><%= button_to 'Edit', photo, method: :get, class: 'button' %></td>
+        <td><%= link_to image_tag(photo.image.url(:medium)), photo %></td>
       </tr>
     <% end %>
   </tbody>
@@ -17,3 +15,4 @@
 <br>
 
 <%= button_to('New Photo', { action: 'new' }, method: :get, class: 'button')%>
+</center>
