@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Photos', type: :feature do
   scenario 'user adds a photo' do
     allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true)
-    visit '/photos'
+    sign_up
     click_on 'Post Photo'
     fill_in 'photo_title', with: '55 Bar'
     page.attach_file('photo_image', Rails.root + 'app/assets/images/55-bar.jpg')
