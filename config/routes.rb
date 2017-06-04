@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :photos
   resources :widgets
   devise_for :users, :controllers => { registrations: 'registrations'}
   get 'welcome/index'
