@@ -26,5 +26,7 @@ def add_photo
   visit "/photos"
   click_button "New Photo"
   fill_in "Title", :with => "Instagram Logo"
+  File.exist?(Rails.root + 'app/assets/images/instagram-logo.jpg')
+  attach_file("photo[image]", Rails.root + 'app/assets/images/instagram-logo.jpg')
   click_button "Create Photo"
 end
