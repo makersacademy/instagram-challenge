@@ -9,16 +9,16 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+
   end
 
   def show
+    @posts = Post.all
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:message)
+    params.require(:post).permit(:picture, :description)
   end
-  
 end
