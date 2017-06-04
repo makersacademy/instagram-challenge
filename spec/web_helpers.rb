@@ -25,5 +25,7 @@ end
 def add_photo
   sign_up
   visit "/photos"
-  click_on "Add Photo"
+  click_button "New Photo"
+  fill_in "Title", :with => "Instagram Logo"
+  click_button "Create Photo"
 end
