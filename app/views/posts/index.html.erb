@@ -1,27 +1,48 @@
-<h1>Posts Go Here</h1>
+
+<div class='main-page-container'>
+  <% @posts.order(created_at: :desc).each do |post| %>
+
+    <div class='post-container'>
+
+      <div class='caption-container brand-font'>
+        <span class='centered post-caption'><%= post.caption %></span>
+      </div>
+
+      <div class='post-image'>
+        <%= image_tag post.image_url.to_s, height: Post::IMAGE_HEIGHT, class: post.filter %>
+      </div>
+
+      <br />
+
+      <div class='post-footer-info'>
+        <%= form_tag("/likes", method: "post") do %>
+          <%= hidden_field_tag(:user_id, current_user.id) %>
+          <%= hidden_field_tag(:post_id, post.id) %>
+          <% already_liked = post.likes.any?{ |like| like.user_id == current_user.id } %>
+          <%= button_tag type: 'submit', disabled: already_liked, class: "like-button float-right", id: "register-button" do %>
+            <i class="fa fa-heart" aria-hidden="true"></i> <%= post.likes.count %>
+          <% end %>
+          <span class='float-left post-username brand-font'><%= User.find(post.user_id).username %> -- <%= date(post) %></span>
+        <% end %>
+      </div>
+
+      <div class='comments-container'>
+        <% post.comments.each do |comment| %>
+          <p><span class='bold'><%= comment.user.name %>:</span> <%= comment.body %></p>
+        <% end %>
+      </div>
+
+      <div class='comment-form'>
+        <%= form_for([post, post.comments.build]) do |comment| %>
+          <%= comment.hidden_field(:user_id, value: current_user.id) %>
+          <%= comment.text_field :body, class: 'comment-input', placeholder: 'Add a comment... ✏️' %>
+        <% end %>
+      </div>
+
+    </div>
+  <% end %>
+</div>
 
 <%= link_to new_post_path, id: "new-posts" do %>
-  New post
-<% end %>
-
-<% @posts.order(created_at: :desc).each do |post| %>
-  <p><%= User.find(post.user_id).username %> says: <%= post.caption %></p>
-  <%= image_tag post.image_url.to_s, height: Post::IMAGE_HEIGHT, class: post.filter %>
-  <br />
-  <%= form_tag("/likes", method: "post") do %>
-    <%= hidden_field_tag(:user_id, current_user.id) %>
-    <%= hidden_field_tag(:post_id, post.id) %>
-    <% already_liked = post.likes.any?{ |like| like.user_id == current_user.id } %>
-    <%= submit_tag "Like (#{post.likes.count})", :disabled => already_liked %>
-  <% end %>
-
-  <% post.comments.each do |comment| %>
-    <p> <%= comment.user.name %>: <%= comment.body %></p>
-  <% end %>
-
-  <%= form_for([post, post.comments.build]) do |comment| %>
-    <%= comment.hidden_field(:user_id, value: current_user.id) %>
-    <%= comment.text_field :body, placeholder: 'Write a comment... ✏️' %>
-    <%= comment.submit %>
-  <% end %>
+New post
 <% end %>
