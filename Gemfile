@@ -9,7 +9,6 @@ end
 gem 'aws-sdk'
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'carrierwave'
-gem 'carrierwave-aws'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'fog-aws'

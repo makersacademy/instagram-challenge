@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-  before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
+  #before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
 
   # GET /photos
   # GET /photos.json
@@ -25,7 +25,7 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new({ image: photo_params[:image], description: photo_params[:descrption] })
+    @photo = Photo.new(photo_params)
     @photo.user_id = current_user.id
 
     respond_to do |format|
@@ -74,8 +74,8 @@ class PhotosController < ApplicationController
       params.require(:photo).permit(:description, :image)
     end
 
-    def set_s3_direct_post
-      @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
-    end
+    # def set_s3_direct_post
+    #   @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
+    # end
 
 end
