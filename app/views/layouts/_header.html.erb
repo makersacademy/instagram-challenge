@@ -6,15 +6,14 @@
     <ul>
       <div>
         <li><a href="/">Home</a></li>
-        <% if current_user %>
-        <li><a href="/users/show">Profile</a></li>
-        <% end %>
         <li><a href="/users">Users</a></li>
         <li><a href="/posts">Posts</a></li>
-        <li><a href="/photos">Photos</a></li>
         <li><a id="groups" href="/groups">Groups</a></li>
         <% if current_user %>
         <li style="float:right"><%= link_to 'Sign Out',  destroy_user_session_path, method: :delete %></li>
+        <% end %>
+        <% if current_user %>
+        <li style="float:right"><a href="/users/show">Profile</a></li>
         <% end %>
         <% if !current_user %>
         <li style="float:right"><a href="/users/sign_in">Log In</a></li>
