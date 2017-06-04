@@ -1,4 +1,5 @@
 class Picture < ApplicationRecord
+  acts_as_votable
   has_many :comments
 
   has_attached_file :image, styles: {unique: "300x300" }
