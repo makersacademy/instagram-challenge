@@ -26,9 +26,9 @@
         <ul class="nav navbar-nav">
 
           <% if current_user %>
-            <li>
-              <%= link_to 'Logout', logout_path, method: 'delete' %>
-            </li>
+            <li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
+              <li><%= link_to 'My Profile', user_path(current_user) %></li>
+
             <% else %>
               <li>
                 <%= link_to "Sign Up", new_user_path %>
@@ -54,25 +54,21 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Static top</a></li>
-          <li><a href="#">Fixed top</a></li>
+          <li class="active"><a href="#">Current User Count: <%= User.count %></span></a></li>
+          <li><a href="#"><% if current_user %>
+            Signed in as
+            <%= current_user.name %>
+              <% end %></a></li>
+
         </ul>
       </div>
       <!--/.nav-collapse -->
 
-      <% if current_user %>
-        Signed in as
-        <%= current_user.name %>
-          <% end %>
 
-            <p>Current User Count: <%= User.count %><p>
 
     </div>
     <!--/.container-fluid -->
   </nav>
-
-
 
   <div class="container">
     <ul>
