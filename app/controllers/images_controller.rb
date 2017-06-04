@@ -9,7 +9,6 @@ class ImagesController < ApplicationController
     @image.user_id = current_user.id
     if @image.save
       redirect_to root_path
-      puts "saved"
     else
       redirect_to root_path
     end

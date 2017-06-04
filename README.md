@@ -1,24 +1,27 @@
-# README
+# Instagram replica challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I created a replica of the Instagram App which I called Metalshot as its directed towards a niche of users, Metal music listeners and players.
 
-Things you may want to cover:
+On Metalshot a user has to sign up/log in to have access to the Shotwall, where every user's uploaded photos are shown. User can post pictures and fill in the 'Title' and 'Description' fields. Once posted, if they go to the Shotwall they'll see their picture published along with their username, title, description, and time/date of the upload. Anyone subscribed can like (only once) and comment shots.
 
-* Ruby version
+To upload images, I have used the gem Paperclip which, combined with an external storage service such as Amazon S3, enabled me to store the images uploaded on production into an S3 bucket. The App has been deployed to Heroku at the following address:
 
-* System dependencies
+https://guarded-brook-32059.herokuapp.com/images
 
-* Configuration
+Installation
+-----------
 
-* Database creation
+Clone repository:
+```
+$ git clone git@github.com:enonnai/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle install
+$ rails/bin server
+```
 
-* Database initialization
+To run the RSpec tests from inside the project folder do:
+`bundle exec rspec`
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Screenshots
+----------
+![Screenshot](http://i.imgur.com/)
