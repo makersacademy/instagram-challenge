@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>InstagramChallenge</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Instagram Challenge</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+
+  <div class="container">
+    <div class="navbar">
+      <ul>
+        <li>
+          <%= link_to 'Instagram Challenge', root_path %>
+        </li>
+        <%- if current_user %>
+        <li>
+          <%= link_to "New Post", new_post_path %>
+        </li>
+        <li>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+        </li>
+        <% else %>
+        <li>
+          <%= link_to "Login", new_user_session_path %>
+        </li>
+        <li>
+          <%= link_to "Sign Up", new_user_registration_path %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  
+  <%= yield %>
+</body>
 </html>
