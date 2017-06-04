@@ -6,17 +6,20 @@ Instagram clone using Rails. Users can post pictures, write comments and like pi
 Technologies
 -----------
 
-Ruby on Rails, RSpec, PostgreSQL, Devise, CarrierWave.
+Ruby on Rails, RSpec, PostgreSQL, Devise, CarrierWave, AWS.
 
-User
+Use
 -------------
+
+This application uses fog storage on AWS buckets for development and production and file storage for testing.
+Environment vars can be set up using figaro.
+
 ````
 $ git clone https://github.com/sophieklm/instagram.git
 $ cd Instagram
 $ bundle install
 $ rails server
 ````
-
 
 User stories
 --------
