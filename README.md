@@ -21,6 +21,15 @@ Still to be implemented:
 * Looks nice on mobile devices
 <img width="200" alt="mobile devices screenshot" src="https://cloud.githubusercontent.com/assets/24992029/26763306/b5baaee8-4948-11e7-96b6-3aa5ced65404.PNG">
 
+#### Installation
+```
+git clone https://github.com/adamjohnsnow/instagram-challenge.git
+cd instagram-challenge
+bundle install
+rails db:create db:migrate
+rails s
+```
+
 #### Technologies used
 
 * Rails framework
