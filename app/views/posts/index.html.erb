@@ -8,6 +8,7 @@
 <div class='main-page-container'>
 
   <% @posts.order(created_at: :desc).each do |post| %>
+    <% user = User.find(post.user_id) %>
     <div class='post-container'>
 
       <div class='caption-container brand-font'>
@@ -28,13 +29,15 @@
           <%= button_tag type: 'submit', disabled: already_liked, class: "like-button float-right", id: "like-button" do %>
             <i class="fa fa-heart" aria-hidden="true"></i> <%= post.likes.count %>
           <% end %>
-          <span class='float-left post-username brand-font'><%= User.find(post.user_id).username %> -- <%= date(post) %></span>
+          <span class='float-left post-username brand-font'>
+            <%= link_user_name(user) %> -- <%= date(post) %>
+          </span>
         <% end %>
       </div>
 
       <div class='comments-container'>
         <% post.comments.each do |comment| %>
-          <p><span class='bold'><%= comment.user.name %>:</span> <%= comment.body %></p>
+          <p><span class='bold'><%= link_user_name(comment.user) %>:</span> <%= comment.body %></p>
         <% end %>
       </div>
 
