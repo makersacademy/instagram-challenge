@@ -21,3 +21,9 @@ def sign_out(email = 'dtroi@starfleet.com')
   sign_up
   click_link 'Log Out'
 end
+
+def add_photo
+  sign_up
+  visit "/photos"
+  click_on "Add Photo"
+end

@@ -3,7 +3,14 @@ require 'web_helpers'
 
 
 RSpec.feature "Sessions", type: :feature do
-  scenario "signs up the user", :type => :feature do
+  scenario "user can sign up via sign_up page", :type => :feature do
+    sign_up
+    page.should have_content("Welcome to Instagram!")
+  end
+
+  scenario "user can sign up via sign_in page", :type => :feature do
+    visit '/users/sign_in'
+    click_button 'Sign Up'
     sign_up
     page.should have_content("Welcome to Instagram!")
   end
