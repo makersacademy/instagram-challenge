@@ -3,14 +3,18 @@
     <% @photos.reverse.each do |photo| %>
     <% @photo = photo %>
       <tr>
-        <td><strong><%= photo.user.username %></strong> at <%= photo.local_time_stamp %> <%= photo.local_date_stamp %> <%= link_to 'Show', photo %></td>
+        <td><strong><%= photo.user.username %></strong> at <%= photo.local_time_stamp %> <%= photo.local_date_stamp %></td>
       </tr>
         <td><%= image_tag(photo.image_url.to_s) %></td>
       <tr>
         <td><%= photo.description %></td>
       </tr>
       <tr>
-        <td><%= render photo.comments %></td>
+        <td><% photo.comments.limit(2).each do |comment| %>
+          <p><strong><%= comment.user.username %></strong>: <%= comment.body %></p>
+          <% end %>
+          <%= link_to 'Show More', photo %>
+        </td>
       </tr>
       <% if current_user %>
       <tr>
