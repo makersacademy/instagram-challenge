@@ -1,29 +1,29 @@
 !!! 5
 %html
 %head
-  %title Instagramm
+  %title Instagram
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
 
 %body
-  -flash.each do |name, msg|
-    =content_tag :div, msg, class: "alert alert-info"
+  %nav.navbar.navbar-inverse
+    .container
+      .navbar-brand= link_to "Instagram", root_path
 
-  = yield
+      - if user_signed_in?
+        %ul.nav.navbar-nav.navbar-left
+          %li= link_to "Create new picture", new_pic_path
+          %li= link_to "Settings", edit_user_registration_path
+          %li= link_to "Sign Out", destroy_user_session_path, method: :delete
 
--# <!DOCTYPE html>
--# <html>
--#   <head>
--#     <title>InstagramChallenge</title>
--#     <%= csrf_meta_tags %>
--#
--#     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
--#     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
--#     <link href="https://startbootstrap.com/template-overviews/grayscale/css/grayscale.min.css" rel="stylesheet">
--#
--#   </head>
--#   <body>
--#     <%= yield %>
--#   </body>
--# </html>
+      - else
+        %ul.nav.navbar-nav.navbar-left
+          %li= link_to "Sign Up", new_user_registration_path
+          %li= link_to "Log In", new_user_session_path
+
+  .container
+    -flash.each do |name, msg|
+      =content_tag :div, msg, class: "alert alert-info"
+
+    = yield
