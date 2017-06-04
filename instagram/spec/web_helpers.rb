@@ -22,3 +22,10 @@ def change_password
   fill_in('Current password', :with => 'password')
   click_button 'Update'
 end
+
+def upload_photo
+  visit '/photos'
+  click_link 'New Photo'
+  page.attach_file('photo_image', './app/assets/images/instagram.jpg')
+  click_button 'Create Photo'
+end
