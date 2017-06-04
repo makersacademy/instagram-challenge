@@ -21,7 +21,7 @@ Bonus if you can add filters!
 ## Installation Instructions
 
 ```sh
-$ git clone git@github.com:[USERNAME]/instagram-challenge.git
+$ git clone git@github.com:chrisjmit/instagram-challenge.git
 $ cd instagram-challenge
 $ rake db:setup
 $ rspec
