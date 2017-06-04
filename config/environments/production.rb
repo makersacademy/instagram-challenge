@@ -93,11 +93,16 @@ Rails.application.configure do
       access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
       secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
       s3_region: ENV.fetch('AWS_REGION'),
-      :s3_host_name => "s3-eu-west-2.amazonaws.com",
-      :url => ":s3_host_name",
+      s3_host_name: "s3-eu-west-2.amazonaws.com",
+      url: ":s3_host_name",
     }
   }
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  ActionMailer::Base.smtp_settings = { address: "smtp.gmail.com",
+    port: 587, authentication: plain, domain: 'gmail.com',
+    user_name: 'insteadgram@gmail.com', password: 'makersacademy' }
+
 end

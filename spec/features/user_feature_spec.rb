@@ -30,5 +30,4 @@ RSpec.describe "welcome/index.html.erb", type: :feature do
     expect(page).to have_xpath("//img[contains(@src,'IMG_0655.JPG')]")
   end
 
-
 end
