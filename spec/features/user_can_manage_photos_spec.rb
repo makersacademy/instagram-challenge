@@ -6,6 +6,7 @@ RSpec.feature "Photos", type: :feature do
     sign_up
     add_photo
     expect(page).to have_content("Instagram Logo")
+    expect(page).to have_css("img[src*='instagram-logo.jpg']")
   end
 
   scenario "user edits a photo", type: :feature do
