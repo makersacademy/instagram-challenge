@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'acts_as_votable'
 gem 'aws-sdk'
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'carrierwave'
