@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 
-
+gem 'aws-sdk', '~> 2.3'
 gem 'devise'
 gem 'paperclip'
 gem 'pg'
