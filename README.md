@@ -16,7 +16,7 @@ Still to be implemented:
 
 #### Successes
 
-* Deployed to Heroku insteadgram.herokuapp.com
+* [Deployed to Heroku](http://insteadgram.herokuapp.com)
 * Nice little custom favicon too
 * Looks nice on mobile devices
 <img width="200" alt="mobile devices screenshot" src="https://cloud.githubusercontent.com/assets/24992029/26763306/b5baaee8-4948-11e7-96b6-3aa5ced65404.PNG">
