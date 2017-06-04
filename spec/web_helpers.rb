@@ -23,7 +23,6 @@ def sign_out(email = 'dtroi@starfleet.com')
 end
 
 def add_photo
-  sign_up
   visit "/photos"
   click_button "New Photo"
   fill_in "Title", :with => "Instagram Logo"

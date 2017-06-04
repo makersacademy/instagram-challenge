@@ -3,11 +3,13 @@ require 'web_helpers'
 
 RSpec.feature "Photos", type: :feature do
   scenario "user adds a photo", :type => :feature do
+    sign_up
     add_photo
     expect(page).to have_content("Instagram Logo")
   end
 
   scenario "user edits a photo", type: :feature do
+    sign_up
     add_photo
     visit '/photos'
     click_button 'Edit'
@@ -18,6 +20,7 @@ RSpec.feature "Photos", type: :feature do
   end
 
   scenario "user deletes a photo", type: :feature do
+    sign_up
     add_photo
     visit '/photos'
     click_button 'Edit'
