@@ -14,4 +14,14 @@
     <% already_liked = post.likes.any?{ |like| like.user_id == current_user.id } %>
     <%= submit_tag "Like (#{post.likes.count})", :disabled => already_liked %>
   <% end %>
+
+  <% post.comments.each do |comment| %>
+    <p> <%= comment.user.name %>: <%= comment.body %></p>
+  <% end %>
+
+  <%= form_for([post, post.comments.build]) do |comment| %>
+    <%= comment.hidden_field(:user_id, value: current_user.id) %>
+    <%= comment.text_field :body, placeholder: 'Write a comment... ✏️', class: 'comment-input-box float-left' %>
+    <%= comment.submit class: 'hidden' %>
+  <% end %>
 <% end %>
