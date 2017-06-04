@@ -6,7 +6,11 @@ New picture
 <br>
 <br>
 
-<% @pictures.each do |picture| %>
+<% @pictures.reverse.each do |picture| %>
   <%= picture.title %><br>
   <%= image_tag picture.image.url (:unique)%> <br>
+  <p><%=picture.comments.count%> comments </p>
+  <%= render picture.comments%>
+  <p>Add a comment:</p>
+  <%= render 'comments/form'%>
 <% end %>

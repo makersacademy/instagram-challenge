@@ -1,14 +1,16 @@
-<%= form_for([@picture, @picture.comments.build]) do |f|%>
-<p>
-  <%= f.label :commenter %>
-</p>
-<p>
-  <%= f. label :body %><br>
-  <%= f.text_area :body %>
-</p>
-<br>
-<p>
-  <%= f.submit %>
-</p>
+<% @pictures.each do |picture| %>
+  <%= form_for([picture, picture.comments.build]) do |f|%>
+  <p>
+    <%= f.label :commenter %>
+    <%= f.text_field :commenter%>
+  </p>
+  <p>
+    <%= f. label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <%end%>
 
 <%end%>

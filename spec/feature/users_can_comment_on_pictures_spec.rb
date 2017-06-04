@@ -5,7 +5,7 @@ RSpec.feature "Comment", type: :feature do
     create_account
     visit "/pictures"
     click_on "New picture"
-    fill_in 'new_picture', with: "Kids"
+    fill_in 'picture_title', with: "Kids"
     click_button "Upload Picture"
     expect(page).to have_content("Add a comment:")
     fill_in "Commenter",with: "Ana"
