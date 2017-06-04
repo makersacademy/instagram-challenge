@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def show
   end
 
-  def updae
+  def update
   end
 
   def destroy

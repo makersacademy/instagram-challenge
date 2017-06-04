@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
 
-  get 'posts/index'
-
-  get 'posts/show'
-
-  get 'posts/updae'
-
-  get 'posts/destroy'
+  # get 'posts/index'
+  #
+  # get 'posts/show'
+  #
+  # get 'posts/updae'
+  #
+  # get 'posts/destroy'
 
   root to: 'home#index'
 
   resources :users
   resources :sessions
+  resources :posts
 
   delete 'logout' => 'sessions#destroy'
 

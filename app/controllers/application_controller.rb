@@ -22,5 +22,4 @@ class ApplicationController < ActionController::Base
       render 'sessions/new'
     end
   end
-
 end

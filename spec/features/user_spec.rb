@@ -1,6 +1,5 @@
 require 'capybara/rails'
 
-
 feature '' do
   scenario '' do
     visit '/'
