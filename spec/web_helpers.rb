@@ -16,3 +16,9 @@ def log_in(email = 'example@example.com')
   fill_in 'user_password', with: 'password'
   click_button 'Log in'
 end
+
+def create_a_post(text)
+  click_button "New Post"
+  fill_in "Body", with: text
+  click_button "Post"
+end
