@@ -1,9 +1,29 @@
 <h1>Welcome to Insteadgram</h1>
 
 <% @posts.order(created_at: :desc).each do |post| %>
-  <p>
-    <%= image_tag post.user.avatar.url(:thumb) %> <%= post.user.username %><br />
+
+  <div>
+    <%= image_tag post.user.avatar.url(:thumb) %> <%= post.user.username %>
+  </div>
+
+  <div>
     <%= image_tag post.image.to_s, height: Post::IMAGE_HEIGHT %><br />
     <%= post.caption %>
-  </p>
+  </div>
+
+  <div>
+    <% post.comments.each do |comment| %>
+      <p>
+        <%= image_tag comment.user.avatar.url(:comment) %>
+        <strong><%= comment.user.username %></strong> said: <%= comment.comment %></p>
+    <% end %>
+  </div>
+
+  <%= form_for @comment do |f| %>
+      <%= f.text_field :comment, placeholder: 'write a comment...'%>
+      <%= f.hidden_field(:user_id, value: current_user.id) %>
+      <%= f.hidden_field(:post_id, value: post.id) %>
+      <%= f.button :submit %>
+  <% end %>
+
 <% end %>

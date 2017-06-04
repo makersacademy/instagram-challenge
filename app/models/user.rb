@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "50x50>" }, default_url: "noface_image.jpg"
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "60x60>", comment: "30x30>" }, default_url: "noface_image.jpg"
   validates :username, :presence => true, :uniqueness => true
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
