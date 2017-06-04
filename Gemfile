@@ -20,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use Devise for signup/log/in/out
 gem 'devise'
 # use Sass Bootstrap for styling
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -44,6 +44,7 @@ group :development, :test do
   gem 'rake'
   gem 'rspec-rails', '~> 3.5'
   gem 'rubocop', "0.48.1"
+  gem 'rubocop-rails'
   gem 'selenium-webdriver'
 end
 
