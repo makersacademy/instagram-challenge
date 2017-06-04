@@ -1,0 +1,21 @@
+<nav class='navbar'>
+  <div class='nav-left-container'>
+    <%= link_to image_tag("logo.png", class: 'logo'), root_path %>
+    <h1 class='brand-name'>Exchangeagram</h1>
+  </div>
+  <div class='nav-right-container'>
+    <% if signed_in? %>
+      <%= button_to 'Sign out', sign_out_path, class: 'clear-btn float-right', method: :delete %>
+      <%= link_to "/users/#{current_user.id}" do %>
+      <div class='nav-user'>
+        <span class='nav-username'><%= current_user.username %></span>
+        <%= image_tag(current_user.picture_url, size: User::PROFILE_PIC_SIZES[:nav], class: 'nav-profile-pic') unless current_user.picture.blank? %>
+      </div>
+      <% end %>
+    <% else %>
+      <%= button_to 'Sign up', sign_up_path, id: 'sign-up', class: 'clear-btn float-right', method: :get %>
+      <%= button_to 'Sign in', sign_in_path, class: 'clear-btn float-right', method: :get %>
+    <% end %>
+  </div>
+</nav>
+<br />
