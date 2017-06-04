@@ -1,5 +1,6 @@
 Exchangeagram
 ===================
+[![Build Status](https://travis-ci.org/TimRobinson1/instagram-challenge.svg?branch=master)](https://travis-ci.org/TimRobinson1/instagram-challenge)
 
 Have you ever wanted to be able to instantly share images with your friends, on the line?
 Well now you can!  With... Exchangeagram!
