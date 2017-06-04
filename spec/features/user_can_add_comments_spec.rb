@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "User",  type: :feature do
+RSpec.feature "Comments",  type: :feature do
 
   scenario "can see profile page", type: :feature do
     sign_up(username = "Sophie")
