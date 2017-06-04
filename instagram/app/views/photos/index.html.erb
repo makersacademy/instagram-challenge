@@ -14,10 +14,9 @@
       <tr><% @photo = photo %>
         <td><%= image_tag photo.image.url(:medium) %></td>
         <td>Posted by: <%= photo.user.email %></td>
-        <td><%= link_to 'Show', photo %></td>
-        <td><%= link_to 'Delete?', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <span><%= render partial: 'likes/form', locals: {likeable: @photo} %></span>
+        <%= render 'comments/form' %>
       </tr>
-      <span><%= render partial: 'likes/form', locals: {likeable: @photo} %></span>
     <% end %>
   </tbody>
 </table>
