@@ -3,27 +3,39 @@
   <head>
     <title>Insteadgram</title>
     <%= csrf_meta_tags %>
-
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-    <p>
-      <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.username %></strong>.
-        <%= image_tag current_user.avatar.url(:thumb) %>
-        <%= link_to "Post new picture", new_post_path %> |
-        <%= link_to "Edit profile", edit_user_registration_path %> |
-        <%= link_to "Logout", destroy_user_session_path %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path %> |
-        <%= link_to "Login", new_user_session_path %>
-      <% end %>
+  <header class="gradient">
+
+      <table class="center">
+        <tr>
+          <th class="logo" rowspan="2"><h1>Insteadgram</h1></th>
+          <th width="20%"></th>
+          <th>
+            <% if user_signed_in? %>
+              Logged in as <strong><%= current_user.username %></strong>.<br />
+              <%= link_to "Edit profile", edit_user_registration_path %> |
+              <%= link_to "Logout", destroy_user_session_path %>
+            <% else %>
+              <%= link_to "Sign up", new_user_registration_path %> |
+              <%= link_to "Login", new_user_session_path %>
+            <% end %>
+          </th>
+          <% if user_signed_in? %>
+          <th rowspan="2"><%= image_tag current_user.avatar.url(:thumb) %></th>
+          <% end %>
+        </tr>
+      </table>
+
     </p>
+
   </header>
 
   <body>
+    <div class="top-padding"></div>
 
     <% if notice %>
       <p><%= notice %></p>
@@ -31,6 +43,7 @@
     <% if alert %>
       <p><%= alert %></p>
     <% end %>
+
 
     <%= yield %>
   </body>

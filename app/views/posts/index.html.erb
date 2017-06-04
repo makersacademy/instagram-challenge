@@ -1,4 +1,11 @@
-<h1>Welcome to Insteadgram</h1>
+<h3>Post a new picture
+<%= form_for @post do |f| %>
+    <%= f.file_field :image %>
+    <%= f.text_field :caption, placeholder: 'write a caption...'%>
+    <%= f.hidden_field(:user_id, value: current_user.id) %>
+    <%= f.button :submit %>
+<% end %>
+</h3>
 
 <% @posts.order(created_at: :desc).each do |post| %>
 
