@@ -3,21 +3,24 @@
   <head>
     <title>Davestagram</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="navbar navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+                <%= link_to "Davestagram", root_url, class: "navbar-brand" %>
+            </div>
+        </div>
+    </nav>
+    <br>
     <div>
-      <% if current_user %>
-        <li style="float:right"><%= link_to 'Log Out',  destroy_user_session_path, method: :delete %></li>
-      <% end %>
-      <% if !current_user %>
-        <li style="float:right"><a href="/users/sign_in">Log In</a></li>
-        <li style="float:right"><a href="/users/sign_up">Sign Up</a></li>
-      <% end %>
+      <%= yield %>
     </div>
-    <%= yield %>
   </body>
 </html>
