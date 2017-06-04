@@ -12,21 +12,20 @@
   <% Image.all.each do |image| %>
   <br>
   <p>
-    <img style="float:left;" src="<%=formatted_image_url(image)%>"/>
+    <img style="float:left;" src="<%= image.image.url(:medium) %>"/>
+    <strong>Added by:
+    </strong><em><%= image.user.email %> - </em><%= image.image_updated_at.strftime("%d-%m-%Y @ %H:%M") %><br>
     <strong>Title:
     </strong>
     <%= image.title %><br>
     <strong>Description:
     </strong>
     <%= image.description %><br>
-    <strong>Added by:
-    </strong><em><%= image.user.email %></em> - <%= image.image_updated_at.strftime("%d-%m-%Y, %H:%M") %><br>
     <h5>☠ Comments:</h5>
     <% image.comments.each do |comment| %>
     <div>
       <strong><%= comment.user.email %></strong>:<br>
       "<%= comment.body %>"
-      <!-- <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p> -->
     </div>
     <% end %>
     <%= render partial: 'comments/form', locals: { user: current_user, image: image }%>

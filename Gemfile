@@ -8,13 +8,15 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'aws-sdk', '~> 2.9.29'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 gem "rubocop", "0.48.1"
 gem "rubocop-rails"
-gem "paperclip", "~> 5.0.0"
+gem "paperclip", "~> 5.1.0"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

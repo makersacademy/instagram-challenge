@@ -27,5 +27,19 @@ module Metalshot
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.paperclip_defaults = {
+      storage: :s3,
+      s3_storage_class: :REDUCED_REDUNDANCY,
+      s3_region: "eu-west-2",
+      s3_protocol: "https",
+      url: ":s3_domain_url",
+      path: "#{Rails.env}/:id/:basename.:style.:extension",
+      s3_credentials: {
+        bucket: ENV["BUCKET_NAME"],
+        access_key_id: ENV["ACCESS_KEY_ID"],
+        secret_access_key: ENV["SECRET_ACCESS_KEY"],
+      }
+    }
   end
 end
