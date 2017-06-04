@@ -1,10 +1,20 @@
-<h1>Profile Page</h1>
+<div class='profile-container'>
+  <%= image_tag @user.picture_url, class: 'float-left profile-pic', size: User::PROFILE_PIC_SIZES[:medium] unless @user.picture.blank? %>
+  <p class='profile-info'>
+    <span class='bold profile-title'>Username:</span> <%= @user.username %>
+    <span class='bold profile-title inline-info'>Joined:</span> <%= date_joined(@user) %>
+  </p>
+  <p class='profile-info'><span class='bold profile-title'>Real Name:</span> <%= @user.name %></p>
+  <p class='profile-info'>
+    <span class='bold profile-title'>Posts:</span> <%= @user.posts.count %>
+    <span class='bold profile-title'>Likes:</span> <%= @user.likes.count %>
+  </p>
 
-<%= image_tag @user.picture_url, size: User::PROFILE_PIC_SIZES[:medium] unless @user.picture.blank? %>
-<p>Username: <%= @user.username %></p>
-<p>Name: <%= @user.name %></p>
+</div>
 
-<h1 class='brand-font centered my-posts-header'>My Posts:</h1>
+<div class='clear'></div>
+
+<h1 class='brand-font centered my-posts-header'><%= @user.username %>'s Posts:</h1>
 <div class='main-page-container'>
 
   <% @user.posts.order(created_at: :desc).each do |post| %>
@@ -48,24 +58,4 @@
     </div>
   <% end %>
 </div>
-<% @user.posts.order(created_at: :desc).each do |post| %>
-  <p><%= @user.username %> says: <%= post.caption %></p>
-  <%= image_tag post.image_url.to_s, height: Post::IMAGE_HEIGHT, class: post.filter %>
-  <br />
-  <%= form_tag("/likes", method: "post") do %>
-    <%= hidden_field_tag(:user_id, current_user.id) %>
-    <%= hidden_field_tag(:post_id, post.id) %>
-    <% already_liked = post.likes.any?{ |like| like.user_id == current_user.id } %>
-    <%= submit_tag "Like (#{post.likes.count})", :disabled => already_liked %>
-  <% end %>
-
-  <% post.comments.each do |comment| %>
-    <p><%= comment.user.name %>: <%= comment.body %></p>
-  <% end %>
-
-  <%= form_for([post, post.comments.build]) do |comment| %>
-    <%= comment.hidden_field(:user_id, value: current_user.id) %>
-    <%= comment.text_field :body, placeholder: 'Write a comment... ✏️' %>
-    <%= comment.submit %>
-  <% end %>
-<% end %>
+<br />
