@@ -10,12 +10,12 @@ RSpec.feature 'Like', type: :feature do
 
   scenario 'User can like photos' do
     click_on 'Like'
-    expect(page).to have_content('Likes: 1')
+    expect(page).to have_content('1 likes')
   end
 
   scenario 'User can like a post only once' do
     click_on 'Like'
     click_on 'Like'
-    expect(page).not_to have_content('Likes: 2')
+    expect(page).not_to have_content('2 likes')
   end
 end
