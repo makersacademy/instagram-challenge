@@ -4,7 +4,7 @@ def sign_up
   fill_in 'user[name]', with: 'Admin'
   fill_in 'user[email]', with: 'admin@exchangeagram.com'
   fill_in 'user[password]', with: 'password'
-  click_on 'Sign up'
+  find('.submit-field input').click
 end
 
 def user_makes_post
