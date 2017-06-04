@@ -6,7 +6,7 @@
 
 <% @posts.order(created_at: :desc).each do |post| %>
   <p><%= User.find(post.user_id).username %> says: <%= post.caption %></p>
-  <%= image_tag post.image_url.to_s, height: Post::IMAGE_HEIGHT %>
+  <%= image_tag post.image_url.to_s, height: Post::IMAGE_HEIGHT, class: post.filter %>
   <br />
   <%= form_tag("/likes", method: "post") do %>
     <%= hidden_field_tag(:user_id, current_user.id) %>

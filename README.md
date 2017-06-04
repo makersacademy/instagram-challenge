@@ -29,4 +29,8 @@ I want to comment on pictures.
 As a user,
 So that I can pretend that my life looks cooler than it actually is,
 I want to add photo filters to my pictures.
+
+As a user,
+So that I can recommend Exchangeagram to my friends,
+I want a stylish user interface.
 ```
