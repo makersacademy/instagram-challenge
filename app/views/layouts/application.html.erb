@@ -16,11 +16,30 @@
                 </button>
                 <%= link_to "Davestagram", root_url, class: "navbar-brand" %>
             </div>
+            <div class="nav navbar-nav">
+              <li>
+                <%= link_to "New Post", new_post_path %>
+              </li>
+              <% if current_user %>
+              <li>
+                <%= link_to "Log Out", destroy_user_session_path %>
+              </li>
+              <% else %>
+              <li>
+                <%= link_to "Log In", new_user_session_path %>
+              </li>
+              <li>
+                <%= link_to "Sign Up", new_user_registration_path %>
+              </li>
+              <% end %>
+            </div>
         </div>
     </nav>
-    <br>
-    <div>
-      <%= yield %>
+    <div class="col-lg-12 text-center">
+      <br>
+      <div>
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
