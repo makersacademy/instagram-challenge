@@ -1,37 +1,49 @@
 <%= form_for @post, html: { class: 'new-user', multipart: true } do |form| %>
-  <%= form.label :caption %>
 
-  <%= form.text_area :caption %>
-  <%= form.hidden_field(:user_id, value: current_user.id) %>
+  <div class='image-upload-container float-left'>
+    <h2 class='centered form-header brand-font'>Caption</h2>
+    <%= form.text_field :caption, class: :centered, id: :caption %>
+    <%= form.hidden_field(:user_id, value: current_user.id) %>
 
-  <%= form.file_field :image %>
+    <%= form.file_field :image, class: :centered %>
+  </div>
 
-  <%= form.label :none %>
-  <%= form.radio_button :filter, 'none', checked: 'checked' %>
+  <div class='filters-container float-right'>
+    <div class='centered'>
+      <h2 class='centered form-header brand-font'>Super-Necessary Filters!</h2>
+      <%= form.label :none, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'none', checked: 'checked' %>
 
-  <%= form.label :sepia %>
-  <%= form.radio_button :filter, 'sepia' %>
+      <%= form.label :sepia, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'sepia' %>
 
-  <%= form.label :super_bright %>
-  <%= form.radio_button :filter, 'super_bright' %>
+      <%= form.label :super_bright, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'super_bright' %>
 
-  <%= form.label :greyscale %>
-  <%= form.radio_button :filter, 'greyscale' %>
+      <br />
 
-  <%= form.label :blur %>
-  <%= form.radio_button :filter, 'blur' %>
+      <%= form.label :greyscale, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'greyscale' %>
 
-  <%= form.label :invert %>
-  <%= form.radio_button :filter, 'invert' %>
+      <%= form.label :blur, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'blur' %>
 
-  <%= form.label :saturate %>
-  <%= form.radio_button :filter, 'saturate' %>
+      <%= form.label :invert, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'invert' %>
 
-  <%= form.label :contrast %>
-  <%= form.radio_button :filter, 'contrast' %>
+      <br />
 
-  <%= form.label :colourise! %>
-  <%= form.radio_button :filter, 'colourise' %>
+      <%= form.label :saturate, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'saturate' %>
 
-  <%= form.submit "Submit" %>
+      <%= form.label :contrast, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'contrast' %>
+
+      <%= form.label :colourise!, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'colourise' %>
+    </div>
+
+    <%= form.submit "Post picture!", id: 'post', class: 'centered clear-btn send-post-btn' %>
+  </div>
+
 <% end %>

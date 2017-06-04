@@ -10,6 +10,6 @@ end
 def user_makes_post
   visit "/posts"
   find('#new-post').click
-  fill_in "Caption", with: "Hello, world!"
-  click_button "Submit"
+  fill_in :caption, with: "Hello, world!"
+  click_button "Post picture!"
 end
