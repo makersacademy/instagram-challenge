@@ -1,13 +1,16 @@
-  <p><strong><%= @photo.user.username %>:</strong></p>
+  <p><strong><%= @photo.user.username %>:</strong> at <%= @photo.local_time_stamp %> <%= @photo.local_date_stamp %>
+    <% if current_user && @photo.user_id == current_user.id %>
+    <%= link_to 'Edit', edit_photo_path(@photo) %>
+    <% end %>
+  </p>
   <p><%= image_tag(@photo.image_url.to_s) %></p>
 
   <% if @photo.description %>
-  <!-- <p><strong><%= @photo.user.username %>:</strong>  -->
     <p><%= @photo.description %></p>
   <% end %>
+  
+<%= render @photo.comments %>
 
-<% if current_user && @photo.user_id == current_user.id %>
-<%= link_to 'Edit', edit_photo_path(@photo) %> | <% end %>
 <%= link_to 'Back', root_url %>
 
 <% if current_user%>

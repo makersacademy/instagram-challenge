@@ -60,6 +60,7 @@ group :development, :test do
   gem "rubocop-rails"
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
+  gem 'timecop'
 end
 
 group :development do
