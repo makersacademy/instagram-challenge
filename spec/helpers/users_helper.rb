@@ -9,7 +9,7 @@ end
 
 def user_makes_post
   visit "/posts"
-  click_link "New post"
+  find('#new-post').click
   fill_in "Caption", with: "Hello, world!"
   click_button "Submit"
 end

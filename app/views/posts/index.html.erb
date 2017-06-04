@@ -1,11 +1,17 @@
-
+<div class='side-page-container'>
+  <div class='sticky-user-box'>
+    <%= button_to new_post_path, id: 'new-post', class: 'clear-btn centered post-btn', method: :get do %>
+      New Post <i class="fa fa-pencil" aria-hidden="true"></i>
+    <% end %>
+  </div>
+</div>
 <div class='main-page-container'>
-  <% @posts.order(created_at: :desc).each do |post| %>
 
+  <% @posts.order(created_at: :desc).each do |post| %>
     <div class='post-container'>
 
       <div class='caption-container brand-font'>
-        <span class='centered post-caption'><%= post.caption %></span>
+        <span class='centered'><%= post.caption %></span>
       </div>
 
       <div class='post-image'>
@@ -19,7 +25,7 @@
           <%= hidden_field_tag(:user_id, current_user.id) %>
           <%= hidden_field_tag(:post_id, post.id) %>
           <% already_liked = post.likes.any?{ |like| like.user_id == current_user.id } %>
-          <%= button_tag type: 'submit', disabled: already_liked, class: "like-button float-right", id: "register-button" do %>
+          <%= button_tag type: 'submit', disabled: already_liked, class: "like-button float-right", id: "like-button" do %>
             <i class="fa fa-heart" aria-hidden="true"></i> <%= post.likes.count %>
           <% end %>
           <span class='float-left post-username brand-font'><%= User.find(post.user_id).username %> -- <%= date(post) %></span>
@@ -42,7 +48,3 @@
     </div>
   <% end %>
 </div>
-
-<%= link_to new_post_path, id: "new-posts" do %>
-New post
-<% end %>
