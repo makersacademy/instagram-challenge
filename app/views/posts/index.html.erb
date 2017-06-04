@@ -1,19 +1,32 @@
 <p id="notice"><%= notice %></p>
 
+<h4><%= link_to 'New Post', new_post_path %></h4>
+
 <table>
   <tbody>
     <% @posts.each do |post| %>
         <tr><h4><%= post.title %></h4></tr>
         <tr><%= link_to image_tag(post.image.url(:large)), post.image.url %></tr><br><br>
         <tr><%= post.body %></tr><br><br>
-        <tr><%= link_to 'Show', post %></tr><nbsp>
-        <tr><%= link_to 'Edit', edit_post_path(post) %></tr><nbsp>
-        <tr><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></tr>
-      <br><br>
+        <tr>Posted: <%= post.created_at %></tr><br>
+
+        <%= link_to like_post_path(post), method: :put do %>
+          Upvote
+          <%= post.get_upvotes.size %>
+        <% end %><br>
+        <%= link_to dislike_post_path(post), method: :put do %>
+          Downvote
+          <%= post.get_downvotes.size %>
+        <% end %>
+
+        <ul style="float:right">
+          <%= link_to 'Show', post %></tr><nbsp>
+          <%= link_to 'Edit', edit_post_path(post) %><nbsp>
+          <%= link_to 'Remove', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </ul>
+        <br><br>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Post', new_post_path %>
