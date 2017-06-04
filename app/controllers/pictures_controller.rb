@@ -14,6 +14,11 @@ class PicturesController < ApplicationController
     redirect_to pictures_url
   end
 
+  def show
+    @picture = Picture.find(params[:id])
+    redirect_to pictures_url
+  end
+
   def upvote
   @picture = Picture.find(params[:id])
   @picture.upvote_by current_user
