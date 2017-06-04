@@ -5,6 +5,8 @@
       <%= f.file_field :image , class: "myButton" %>
       <%= f.text_field :caption, placeholder: 'write a caption...'%>
       <%= f.hidden_field(:user_id, value: current_user.id) %>
+      <%= f.label :filter %>
+      <%= f.select :filter, ['none', 'greyscale', 'bluish', 'pinkish', 'invert'] %>
       <%= f.button :submit , class: "myButton" %>
   <% end %>
 </div>
@@ -15,7 +17,7 @@
     <%= image_tag post.user.avatar.url(:thumb) %><%= post.user.username %>
   </div>
 
-    <%= image_tag post.image.to_s, height: Post::IMAGE_HEIGHT %><br />
+    <%= image_tag post.image.to_s, class: post.filter, height: Post::IMAGE_HEIGHT %><br />
 
   <div>
     <h3><%= post.caption %></h3>

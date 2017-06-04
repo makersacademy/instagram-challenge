@@ -10,11 +10,12 @@
 * User can make a post with a picture and a caption
 * Users can make comments on pictures
 * User can edit profile
+* Filters can be applied
 
 Still to be implemented:
 * Users can 'like' posts
-* Filters
 * More feature testing
+* Filters cause images to appear over the header
 
 #### Successes
 
@@ -29,3 +30,7 @@ Still to be implemented:
 * Paperclip/ImageMagick for image processing
 * AWS S3 for cloud storage
 * Devise for user authentication
+
+#### Acknowledgements
+
+* Thanks to Elaine Osbourne for the filter tips
