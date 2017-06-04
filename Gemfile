@@ -32,6 +32,8 @@ gem 'paperclip'
 gem 'pg'
 gem 'rails-helper'
 gem 'rspec-rails'
+gem "rubocop", "0.48.1"
+gem "rubocop-rails"
 gem 'simple_form'
 
 # Use Capistrano for deployment
