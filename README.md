@@ -13,6 +13,7 @@
 
 Still to be implemented:
 * Users can 'like' posts
+* Filters
 * More feature testing
 
 #### Successes
@@ -20,7 +21,7 @@ Still to be implemented:
 * Deployed to Heroku insteadgram.herokuapp.com
 * Nice little custom favicon too
 * Looks nice on mobile devices
-![img_0706](https://cloud.githubusercontent.com/assets/24992029/26763306/b5baaee8-4948-11e7-96b6-3aa5ced65404.PNG)
+<img width="300" alt="mobile devices screenshot" src="https://cloud.githubusercontent.com/assets/24992029/26763306/b5baaee8-4948-11e7-96b6-3aa5ced65404.PNG">
 
 #### Technologies used
 
