@@ -16,7 +16,7 @@ RSpec.feature "Photos", type: :feature do
     click_button 'Edit'
     click_button 'Edit'
     fill_in 'Title', with: 'Edited title'
-    click_button "Create Photo"
+    click_button "Add Photo"
     expect(page).to have_content("Edited title")
   end
 
