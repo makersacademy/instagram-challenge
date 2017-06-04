@@ -16,6 +16,11 @@ class PhotosController < ApplicationController
   def show
   end
 
+  def edit
+    @photo = Photo.find(params[:id])
+    @photo.liked_by current_user
+  end
+
   private
 
   def photo_params

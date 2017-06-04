@@ -6,4 +6,5 @@ class Photo < ApplicationRecord
   def local_time_stamp
     self.created_at.localtime.strftime('%H:%M, %d/%m/%Y')
   end
+  acts_as_votable
 end

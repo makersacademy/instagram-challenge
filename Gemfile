@@ -37,6 +37,7 @@ gem 'aws-sdk', '~> 2.9.29'
 gem 'figaro', '~> 1.1.1'
 gem 'devise', '~> 4.3.0'
 gem 'travis', '~> 1.8.8'
+gem 'acts_as_votable', '~> 0.10.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
