@@ -1,11 +1,12 @@
-<h1>Posts Go Here</h1>
+<h1>Profile Page</h1>
 
-<%= link_to new_post_path, id: "new-posts" do %>
-  New post
-<% end %>
+<%= image_tag @user.picture_url, size: User::PROFILE_PIC_SIZES[:medium] unless @user.picture.blank? %>
+<p>Username: <%= @user.username %></p>
+<p>Name: <%= @user.name %></p>
 
-<% @posts.order(created_at: :desc).each do |post| %>
-  <p><%= User.find(post.user_id).username %> says: <%= post.caption %></p>
+<h1>My Posts:</h1>
+<% @user.posts.order(created_at: :desc).each do |post| %>
+  <p><%= @user.username %> says: <%= post.caption %></p>
   <%= image_tag post.image_url.to_s, height: Post::IMAGE_HEIGHT %>
   <br />
   <%= form_tag("/likes", method: "post") do %>

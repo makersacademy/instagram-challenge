@@ -14,6 +14,10 @@ class UsersController < Clearance::UsersController
     render template: "users/new"
   end
 
+  def profile
+    @user = User.find(params[:id])
+  end
+
   def create
     @user = user_from_params
 
@@ -65,6 +69,6 @@ class UsersController < Clearance::UsersController
   end
 
   def permit_params
-    params.require(:user).permit(:name, :username, :email, :password)
+    params.require(:user).permit(:name, :username, :email, :password, :picture)
   end
 end

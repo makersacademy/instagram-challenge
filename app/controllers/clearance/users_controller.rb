@@ -51,12 +51,14 @@ class Clearance::UsersController < ApplicationController
     password = user_params.delete(:password)
     name = user_params.delete(:name)
     username = user_params.delete(:username)
+    picture = user_params.delete(:picture)
 
     Clearance.configuration.user_model.new(user_params).tap do |user|
       user.email = email
       user.password = password
       user.name = name
       user.username = username
+      user.picture = picture
     end
   end
 
@@ -65,6 +67,6 @@ class Clearance::UsersController < ApplicationController
   end
 
   def permit_params
-    params.require(:user).permit(:name, :username, :email, :password)
+    params.require(:user).permit(:name, :username, :email, :password, :picture)
   end
 end
