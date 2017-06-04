@@ -1,4 +1,5 @@
-require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+require './app/uploaders/avatar_uploader'
 
 class User < ApplicationRecord
   has_secure_password

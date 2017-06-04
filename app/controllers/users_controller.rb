@@ -24,6 +24,9 @@ class UsersController < ApplicationController
 
   def update
     current_user.avatar = params[:user][:picture]
+    current_user.save
+    p current_user
+    redirect_to root_path
   end
 
   def user_params

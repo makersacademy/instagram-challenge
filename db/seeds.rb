@@ -25,4 +25,7 @@ password = (0...8).map { (65 + rand(26)).chr }.join
 User.create(name: "Peter Griffin", email: "petergriffin@email.com", password: password)
 
 password = (0...8).map { (65 + rand(26)).chr }.join
-User.create(name: "Peter Griffin", email: "jeffsmith@email.com", password: password)
+User.create(name: "Jeff Smith", email: "jeffsmith@email.com", password: password)
+
+password = 'secret123'
+User.create(name: "Test User", email: "testuser@email.com", password: password)
