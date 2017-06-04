@@ -9,6 +9,14 @@ New picture
 <% @pictures.reverse.each do |picture| %>
   <%= picture.title %><br>
   <%= image_tag picture.image.url (:unique)%> <br>
+  <%= link_to like_picture_path(picture), method: :put do %>
+    Upvote
+    <%= picture.get_upvotes.size %>
+  <% end %>
+  <%= link_to dislike_picture_path(picture), method: :put do %>
+    Downvote
+    <%= picture.get_downvotes.size %>
+  <% end %>
   <p><%=picture.comments.count%> comments </p>
   <%= render picture.comments%>
   <p>Add a comment:</p>
