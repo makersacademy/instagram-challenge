@@ -3,7 +3,10 @@
   <p><strong><%= @photo.user.username %>:</strong></p>
   <p><%= image_tag(@photo.image_url.to_s) %></p>
 
-  <p><strong><%= @photo.user.username %>:</strong> <%= @photo.description %></p>
+  <% if @photo.description %>
+  <!-- <p><strong><%= @photo.user.username %>:</strong>  -->
+    <p><%= @photo.description %></p>
+  <% end %>
 
 <% if current_user && @photo.user_id == current_user.id %>
 <%= link_to 'Edit', edit_photo_path(@photo) %> | <% end %>

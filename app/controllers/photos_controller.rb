@@ -25,7 +25,7 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(photo_params)
+    @photo = Photo.new({ image: photo_params[:image], description: photo_params[:descrption] })
     @photo.user_id = current_user.id
 
     respond_to do |format|
@@ -77,4 +77,5 @@ class PhotosController < ApplicationController
     def set_s3_direct_post
       @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
     end
+
 end
