@@ -2,12 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'Photos', type: :feature do
   scenario 'user adds a photo' do
-    allow_any_instance_of(Paperclip::Attachment).to receive(:save).and_return(true)
     sign_up
-    click_on 'Post Photo'
-    fill_in 'photo_title', with: '55 Bar'
-    page.attach_file('photo_image', Rails.root + 'app/assets/images/55-bar.jpg')
-    click_on 'Upload'
+    post_photo
     expect(page).to have_content '55 Bar'
     expect(page).to have_content "Added by chase@ph.com at #{Time.now.strftime('%H:%M, %d/%m/%Y')}"
     expect(page).to have_css('img')
