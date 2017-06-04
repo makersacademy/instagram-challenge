@@ -24,7 +24,11 @@
   <div class="comments">
       <% post.comments.each do |comment| %>
         <div class="comment">
-          <%= image_tag comment.user.avatar.url(:comment) %>
+          <% if comment.user.avatar.url == "noface_image.jpg" %>
+            <img src="tiny_noface_image.jpg">
+          <% else %>
+            <%= image_tag comment.user.avatar.url(:comment) %>
+          <% end %>
           <strong><%= comment.user.username %></strong> said: <%= comment.comment %></p>
         </div>
       <% end %>
