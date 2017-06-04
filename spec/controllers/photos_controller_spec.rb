@@ -39,6 +39,7 @@ RSpec.describe PhotosController, type: :controller do
 
   describe "GET #new" do
     it "returns a success response" do
+      sign_in(user)
       get :new, params: {}, session: valid_session
       expect(response).to be_success
     end
@@ -46,6 +47,8 @@ RSpec.describe PhotosController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
+      photo = create(:photo)
+      user = photo.user
       sign_in(user)
       get :edit, params: {id: photo.to_param}, session: valid_session
       expect(response).to be_success
@@ -84,6 +87,8 @@ RSpec.describe PhotosController, type: :controller do
       }
 
       it "updates the requested photo" do
+        photo = create(:photo)
+        user = photo.user
         sign_in(user)
         put :update, params: {id: photo.to_param, photo: new_attributes}, session: valid_session
         photo.reload
@@ -91,6 +96,8 @@ RSpec.describe PhotosController, type: :controller do
       end
 
       it "redirects to the photo" do
+        photo = create(:photo)
+        user = photo.user
         sign_in(user)
         put :update, params: {id: photo.to_param, photo: valid_attributes}, session: valid_session
         expect(response).to redirect_to(photo)
@@ -110,6 +117,8 @@ RSpec.describe PhotosController, type: :controller do
     it "destroys the requested photo" do
       sign_in(user)
       photo = FactoryGirl.create(:photo)
+      user = photo.user
+      sign_in(user)
       expect {
         delete :destroy, params: {id: photo.to_param}, session: valid_session
       }.to change(Photo, :count).by(-1)
