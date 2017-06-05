@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+
   get 'welcome/index'
+
+  #resources :users, :only => [:show]
+  match 'users/:id' => 'users#show', via: :get
 
   resources :pictures do
     resources :comments

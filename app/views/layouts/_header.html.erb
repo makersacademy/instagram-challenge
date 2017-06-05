@@ -1,20 +1,27 @@
 <header>
   <nav>
-    <a href = "/">
-     <img src='http://www.auto-web-traffic.com/aimages/instagram-bot.jpg' class='nav-logo'>
-   </a>
-   <ul class = 'menu'>
-     <div>
-       <% if current_user %>
-       <li><a href="/users/index">Profile</a></li>
-       <% end %>
-       <li><a href="/pictures">Gallery</a></li>
-       <% if current_user %>
-       <li><%= link_to 'Log Out',  destroy_user_session_path, method: :delete %></li>
-       <% end %>
-       <li><a href="/users/sign_in">Log In</a></li>
-       <li><a href="/users/sign_up">Sign Up</a></li>
-     </div>
-   </ul>
+    <a href="/">
+      <img src='http://www.auto-web-traffic.com/aimages/instagram-bot.jpg' class='nav-logo'>
+    </a>
+    <ul class='menu'>
+      <div>
+        <% if current_user %>
+        <p>Wecome,
+          <%=current_user.email%>!</p>
+        <li>
+          <a href="/pictures">Gallery</a>
+        </li>
+        <% end %>
+        <% if current_user %>
+        <li><%= link_to 'Log Out',  destroy_user_session_path, method: :delete %></li>
+        <% end %>
+        <li>
+          <a href="/users/sign_in">Log In</a>
+        </li>
+        <li>
+          <a href="/users/sign_up">Sign Up</a>
+        </li>
+      </div>
+    </ul>
   </nav>
 </header>

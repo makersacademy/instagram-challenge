@@ -3,10 +3,7 @@ require 'rails_helper'
 RSpec.feature "Comment", type: :feature do
   scenario "Can comment on pictures" do
     create_account
-    visit "/pictures"
-    click_on "New picture"
-    fill_in 'picture_title', with: "Kids"
-    click_button "Upload Picture"
+    upload_photo
     expect(page).to have_content("Add a comment:")
     fill_in "Commenter",with: "Ana"
     fill_in "Body", with: "Awesome picture!"
