@@ -1,24 +1,10 @@
-# README
+# Instagram Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Built over a weekend, this Rails app aims to clone the basic functionality of Instagram. To run it:
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Clone this repository
+- Run `bundle install`
+- Run `rake db:migrate`
+- Run `bin/rails s`
+- Navigate to `localhost:3000` in your favourite browser
+- Enjoy the instagram clone!
