@@ -15,7 +15,7 @@ RSpec.describe CommentsController, type: :controller do
       end
 
       xit "redirects to the photo index" do
-        post :create, params: {comment: valid_attributes}
+        post :create, params: { comment: valid_attributes }
         expect(response).to redirect_to('/')
       end
     end

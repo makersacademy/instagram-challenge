@@ -1,16 +1,24 @@
-  <p><strong><%= @photo.user.username %>:</strong> at <%= @photo.local_time_stamp %> <%= @photo.local_date_stamp %>
-    <% if current_user && @photo.user_id == current_user.id %>
-    <%= link_to 'Edit', edit_photo_path(@photo) %>
-    <% end %>
-  </p>
-  <p><%= image_tag(@photo.image_url.to_s) %></p>
-
-  <% if @photo.description %>
-    <p><%= @photo.description %></p>
+<p>
+  <strong><%= @photo.user.username %>:</strong>
+  at
+  <%= @photo.local_time_stamp %>
+  <%= @photo.local_date_stamp %>
+  <% if current_user && @photo.user_id == current_user.id %>
+  <%= link_to 'Edit', edit_photo_path(@photo) %>
   <% end %>
+</p>
+<p><%= image_tag(@photo.image_url.to_s) %></p>
 
-  <p><%= render partial: 'likes/form', locals: { likeable: @photo } %></p>
-  <p><strong><%= @photo.get_likes.size %></strong> likes </br></p>
+<% if @photo.description %>
+<p><%= @photo.description %></p>
+<% end %>
+
+<p><%= render partial: 'likes/form', locals: { likeable: @photo } %></p>
+<p>
+  <strong><%= @photo.get_likes.size %></strong>
+  likes
+</br>
+</p>
 
 <%= render @photo.comments %>
 

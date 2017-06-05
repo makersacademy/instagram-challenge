@@ -1,31 +1,32 @@
 <%= form_with(model: photo, local: true) do |form| %>
-  <% if photo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+<% if photo.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(photo.errors.count, "error") %>
+    prohibited this photo from being saved:</h2>
 
-      <ul>
-      <% photo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% photo.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="form-group">
-        <strong><%= form.label :image %></strong>
-        <div class="form-contol">
-        <%= form.file_field :image, required: true, id: :photo_image, class: "col-md-2 col-md-offset-8" %>
-      </div>
+<div class="form-group">
+  <strong><%= form.label :image %></strong>
+  <div class="form-contol">
+    <%= form.file_field :image, required: true, id: :photo_image, class: "" %>
   </div>
+</div>
 
-  <div class="form-group">
-      <strong><%= form.label :description %></strong>
-      <div class="form-contol">
-      <%= form.text_area :description, id: :photo_description, class: "col-md-4 col-md-offset-4" %>
-    </div>
+<div class="form-group">
+  <strong><%= form.label :description %></strong>
+  <div class="form-contol">
+    <%= form.text_area :description, id: :photo_description, class: "col-md-4" %>
   </div>
+</div>
 
-  <div class="actions btn-group">
-    <%= form.submit "Create Photo", class: "btn btn-info btn-xs" %>
-  </div>
+<div class="actions btn-group">
+  <%= form.submit "Create Photo", class: "btn btn-info btn-xs" %>
+</div>
 <% end %>

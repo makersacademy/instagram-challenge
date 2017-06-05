@@ -32,7 +32,7 @@ RSpec.describe PhotosController, type: :controller do
   describe "GET #show" do
     it "returns a success response" do
       sign_in(user)
-      get :show, params: {id: photo.to_param}, session: valid_session
+      get :show, params: { id: photo.to_param }, session: valid_session
       expect(response).to be_success
     end
   end
@@ -50,7 +50,7 @@ RSpec.describe PhotosController, type: :controller do
       photo = create(:photo)
       user = photo.user
       sign_in(user)
-      get :edit, params: {id: photo.to_param}, session: valid_session
+      get :edit, params: { id: photo.to_param }, session: valid_session
       expect(response).to be_success
     end
   end
@@ -66,7 +66,7 @@ RSpec.describe PhotosController, type: :controller do
 
       xit "redirects to the created photo" do
         sign_in(user)
-        post :create, params: {photo: valid_attributes}, session: valid_session
+        post :create, params: { photo: valid_attributes }, session: valid_session
         expect(response).to redirect_to(Photo.last)
       end
     end
@@ -90,7 +90,7 @@ RSpec.describe PhotosController, type: :controller do
         photo = create(:photo)
         user = photo.user
         sign_in(user)
-        put :update, params: {id: photo.to_param, photo: new_attributes}, session: valid_session
+        put :update, params: { id: photo.to_param, photo: new_attributes }, session: valid_session
         photo.reload
         expect(photo.description).to eq "new description"
       end
@@ -99,7 +99,7 @@ RSpec.describe PhotosController, type: :controller do
         photo = create(:photo)
         user = photo.user
         sign_in(user)
-        put :update, params: {id: photo.to_param, photo: valid_attributes}, session: valid_session
+        put :update, params: { id: photo.to_param, photo: valid_attributes }, session: valid_session
         expect(response).to redirect_to(photo)
       end
     end
@@ -120,13 +120,13 @@ RSpec.describe PhotosController, type: :controller do
       user = photo.user
       sign_in(user)
       expect {
-        delete :destroy, params: {id: photo.to_param}, session: valid_session
+        delete :destroy, params: { id: photo.to_param }, session: valid_session
       }.to change(Photo, :count).by(-1)
     end
 
     it "redirects to the photos list" do
       sign_in(user)
-      delete :destroy, params: {id: photo.to_param}, session: valid_session
+      delete :destroy, params: { id: photo.to_param }, session: valid_session
       expect(response).to redirect_to(root_url)
     end
   end

@@ -1,5 +1,4 @@
 module DateTimePresenter
-
   def print_time_stamp(datetime)
     datetime.strftime('%H:%M')
   end
@@ -15,5 +14,4 @@ module DateTimePresenter
   def local_date_stamp
     print_date_stamp(self.created_at.localtime)
   end
-
 end
