@@ -8,5 +8,6 @@ RSpec.describe User, type: :model do
   end
 
   it{ should have_many(:photos) }
+  it{ should have_many(:comments) }
 
 end

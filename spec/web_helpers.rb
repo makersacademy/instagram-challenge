@@ -22,3 +22,9 @@ def upload_photo(description = "Description")
   fill_in :photo_description, with: description
   click_on "Create Photo"
 end
+
+def add_comment(comment = "Comment")
+  visit "/photos"
+  fill_in "comment", with: comment
+  click_on "Add Comment"
+end
