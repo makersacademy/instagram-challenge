@@ -8,6 +8,8 @@ Technologies
 
 Ruby on Rails, RSpec, PostgreSQL, Devise, CarrierWave, AWS.
 
+![Screenshot](https://raw.github.com/sophieklm/instagram/master/img/chitter_screenshot.png)
+
 Use
 -------------
 
@@ -18,7 +20,10 @@ Environment vars can be set up using figaro.
 $ git clone https://github.com/sophieklm/instagram.git
 $ cd Instagram
 $ bundle install
+$ rake db:setup
+$ rspec
 $ rails server
+$ open http://localhost:3000
 ````
 
 User stories
