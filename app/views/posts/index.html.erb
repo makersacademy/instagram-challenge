@@ -1,8 +1,11 @@
-<% @posts.reverse.each do |post| %>
-  <ul id='post_list'>
-    <li id='single_post'>
+<% @posts.order(created_at: :desc).each do |post| %>
+  <div class='post'>
+    <div>
       <strong><%= post.user.first_name %>:</strong><br>
-      <%= post.body %>
-    </li>
-  </ul>
+    </div>
+    <div>
+      <%= image_tag post.image.url(:large) %>
+    </div>
+    <%= post.body %>
+  </div>
 <% end %>
