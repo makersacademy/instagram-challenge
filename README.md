@@ -1,34 +1,44 @@
-# README
+# Instagram
+by Paula Muldoon (Makers Academy remote April 2017 cohort)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### About
+I spent one weekend creating this clone of Instagram.
 
-Things you may want to cover:
+---
 
-* Ruby version
+## Run locally
+View the repository [here](https://github.com/pmuldoon86/instagram-challenge) on GitHub
 
-* System dependencies
+Clone the repo. Then:
 
-* Configuration
+```bash
+bundle install
+bin/rails db:create
+bin/rails db:migrate
+```
+#### To run the tests
+```bash
+bundle exec rspec
+```
 
-* Database creation
+### To view in browser
+```bash
+bin/rails server
+```
+Then start the server at localhost:3000
 
-* Database initialization
+---
+## Processes
+* TDD
 
-* How to run the test suite
+---
+## Technologies used
 
-* Services (job queues, cache servers, search engines, etc.)
+* [Ruby 2.4.0](https://www.ruby-lang.org/en/) as the main back-end language
+* [Rails 5.1.1](http://rubyonrails.org/) for the framework
+* [PostgreSQL](https://www.postgresql.org/) for handling databases
+* Vanilla CSS and Chrome DevTools to inspect the real Instagram's styling
+* Git for version managing
 
-* Deployment instructions
-
-* Specs
-- User can sign up
-- User can sign in
-- User can sign out
-- User can post photo
-- User can see all photos
-- User can heart photo
-- User can comment on photos
-
-
-* ...
+## Images
+Images currently stored in the repo owing to verification issues with Amazon Web Services and simply not enough time to move them elsewhere.
