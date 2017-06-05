@@ -17,6 +17,24 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
+
+## Installation Instructions
+
+```sh
+$ git clone git@github.com:chrisjmit/instagram-challenge.git
+$ cd instagram-challenge
+$ rake db:setup
+$ rspec
+```
+
+To run app:
+
+```sh
+$ rake db:seed
+$ rails s
+$ open http://localhost:3000
+```
+
 ## How to start
 
 1. Produce some stories, break them down into tasks, and estimate
