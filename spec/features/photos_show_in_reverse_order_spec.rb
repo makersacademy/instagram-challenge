@@ -3,7 +3,7 @@ require './app/models/photo'
 require 'orderly'
 
 feature 'photos show most recent first' do
-  scenario 'one can see a posts starting with the latest' do
+  scenario 'when photos are submitted' do
     sign_up
     upload_photo(description = "first photo")
     upload_photo(description = "second photo")

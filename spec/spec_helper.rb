@@ -23,6 +23,8 @@ require 'support/form_helpers'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  include ActionDispatch::TestProcess
+  
   config.before(:suite) do
     DatabaseCleaner[:active_record].strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
