@@ -1,40 +1,47 @@
-Instagram Challenge
+Exchangeagram
 ===================
+[![Build Status](https://travis-ci.org/TimRobinson1/instagram-challenge.svg?branch=master)](https://travis-ci.org/TimRobinson1/instagram-challenge)
 
-## Instructions
+Have you ever wanted to be able to instantly share images with your friends, on the line?
+Well now you can!  With... Exchangeagram!
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+[Let Exchangeagram CEO Vince Vaughn explain it to you!](https://www.youtube.com/watch?v=CewJ-ihIqaM)
 
-## Task
+## User Stories
 
-Build Instagram: Simple huh!
+```
+As a user,
+So that I can join Exchangeagram,
+I would like to be able to sign up.
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a user,
+So that I can continue to check out activity on Exchangeagram,
+I would like to sign in again to my account.
 
-Bonus if you can add filters!
+As a user,
+So that I can share pictures with my friends,
+I want to upload pictures to Exchangeagram.
 
-## How to start
+As a user,
+So that I can show my appreciation of pictures,
+I want to like other users' photos.
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+As a user,
+So that I can talk about my favourite pictures,
+I want to comment on pictures.
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+As a user,
+So that I can pretend that my life looks cooler than it actually is,
+I want to add photo filters to my pictures.
 
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+As a user,
+So that I can recommend Exchangeagram to my friends,
+I want a stylish user interface.
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## How to use
+* First, clone the repo to your local machine by running ```git clone https://github.com/TimRobinson1/instagram-challenge.git```
+* Run ```bundle install``` to install the necessary gem dependencies.
+* Setup a local database by running ```bin/rails db:create``` then ```bin/rails db:migrate```
+* Run the tests with ```bundle exec rspec``` to ensure working order.
+* Finally, run ```bin/rails server``` to host your local server at ```localhost:3000```

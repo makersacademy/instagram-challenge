@@ -1,0 +1,49 @@
+<%= form_for @post, html: { class: 'new-user', multipart: true } do |form| %>
+
+  <div class='image-upload-container float-left'>
+    <h2 class='centered form-header brand-font'>Caption</h2>
+    <%= form.text_field :caption, class: :centered, id: :caption %>
+    <%= form.hidden_field(:user_id, value: current_user.id) %>
+
+    <%= form.file_field :image, class: :centered %>
+  </div>
+
+  <div class='filters-container float-right'>
+    <div class='centered'>
+      <h2 class='centered form-header brand-font'>Super-Necessary Filters!</h2>
+      <%= form.label :none, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'none', checked: 'checked', id: :none %>
+
+      <%= form.label :sepia, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'sepia', id: :sepia %>
+
+      <%= form.label :super_bright, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'super_bright', id: 'super-bright' %>
+
+      <br />
+
+      <%= form.label :greyscale, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'greyscale', id: :greyscale %>
+
+      <%= form.label :blur, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'blur', id: :blur %>
+
+      <%= form.label :invert, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'invert', id: :invert %>
+
+      <br />
+
+      <%= form.label :saturate, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'saturate', id: :saturate %>
+
+      <%= form.label :contrast, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'contrast', id: :contrast %>
+
+      <%= form.label :colourise!, class: 'filter-label' %>
+      <%= form.radio_button :filter, 'colourise', id: :colourise %>
+    </div>
+
+    <%= form.submit "Post picture!", id: 'post', class: 'centered clear-btn send-post-btn' %>
+  </div>
+
+<% end %>
