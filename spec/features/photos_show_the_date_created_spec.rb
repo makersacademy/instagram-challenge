@@ -3,7 +3,7 @@ require './app/models/photo'
 
 feature 'photos show the date they were created' do
   before do
-    Timecop.freeze(Time.local(2017,06,05,10,0,0))
+    Timecop.freeze(Time.local(2017, 06, 05, 10, 0, 0))
   end
   scenario 'on the photo index' do
     sign_up

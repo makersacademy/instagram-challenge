@@ -7,9 +7,8 @@ RSpec.describe Photo, type: :model do
     expect(photo.description).to eq("MyText")
   end
 
-  it{ should belong_to(:user) }
-  it{ should have_many(:comments)}
-
+  it { should belong_to(:user) }
+  it { should have_many(:comments) }
 
   it 'has a formatted time and date' do
     photo = create(:photo)

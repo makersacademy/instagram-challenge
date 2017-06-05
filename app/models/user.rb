@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :photos
-  has_many :comments, :through => :photos
+  has_many :comments, through: :photos
   acts_as_voter
 end

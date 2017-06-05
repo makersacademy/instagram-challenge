@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
     expect(user.valid?).to be(true)
   end
 
-  it{ should have_many(:photos) }
-  it{ should have_many(:comments) }
+  it { should have_many(:photos) }
+  it { should have_many(:comments) }
 
 end
