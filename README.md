@@ -1,5 +1,35 @@
 Instagram Challenge
 ===================
+##Instagram challenge  
+
+#Clone the repo
+#bundle install
+#rails db:create
+#rails db:migrate
+
+#Tehnologies
+
+Ruby version: 2.4.0
+Database: postgresql (pg)
+Rails version: 5.1.1
+Linter: Rubocop/ Rubocop-rails
+Testing: RSpec-Rails / Capybara
+
+#Dependencies:
+
+-Paperclip
+-Devise
+-Simple form
+-masonry-rails
+-acts_as_votable
+-coffee-rails
+# Functionality
+
+-# user can sign up, sign in, sign out
+-# user can add photo, comment, edit, upload, like a photo
+
+- The functionality of the app is working properly , I was blocked by writing
+- any test because of the error : "Ambiguous match, found 2 elements matching xpath "/html"".
 
 ## Instructions
 
