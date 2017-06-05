@@ -8,7 +8,7 @@ Technologies
 
 Ruby on Rails, RSpec, PostgreSQL, Devise, CarrierWave, AWS.
 
-![Screenshot](https://raw.github.com/sophieklm/instagram/master/img/chitter_screenshot.png)
+![Screenshot](https://raw.github.com/sophieklm/instagram/master/img/instasham.png)
 
 Use
 -------------
