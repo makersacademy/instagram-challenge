@@ -10,13 +10,13 @@
   </thead>
 
   <tbody>
+    <% if current_user %>
     <% @photos.each do |photo| %>
       <tr><% @photo = photo %>
         <td><%= image_tag photo.image.url(:medium) %></td>
         <td>Posted by: <%= photo.user.email %></td>
-        <span><%= render partial: 'likes/form', locals: {likeable: @photo} %></span>
-        <%= render 'comments/form' %>
-      </tr>
+        <td><%= render partial: 'likes/form', locals: {likeable: @photo} %></td>
+      <td><%= render 'comments/form' %></td>
     <% end %>
   </tbody>
 </table>
@@ -24,3 +24,4 @@
 <br>
 
 <%= link_to 'New Photo', new_photo_path %>
+<% end %>
