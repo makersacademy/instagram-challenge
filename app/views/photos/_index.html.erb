@@ -1,15 +1,25 @@
 <% @photos.reverse.each do |photo| %>
 <% @photo = photo %>
-    <p><strong><%= link_to photo.user.username,  photo.user %></strong> at <%= photo.local_time_stamp %> <%= photo.local_date_stamp %></p>
-    <p><%= image_tag(photo.image_url.to_s) %></p>
-    <p><%= photo.description %></p>
-    <p><%= render partial: 'likes/form', locals: { likeable: @photo } %></p>
-    <p><strong><%= @photo.get_likes.size %></strong> likes </br></p>
-    <% photo.comments.limit(2).each do |comment| %>
-      <p><strong><%= comment.user.username %></strong>: <%= comment.body %></p>
-      <% end %>
-      <%= link_to 'Show More', photo %>
-  <% if current_user %>
-  <%= render 'comments/form' %>
-  <% end %>
+<p>
+  <strong><%= link_to photo.user.username,  photo.user %></strong>
+  at
+  <%= photo.local_time_stamp %>
+  <%= photo.local_date_stamp %></p>
+<p><%= image_tag(photo.image_url.to_s) %></p>
+<p><%= photo.description %></p>
+<p><%= render partial: 'likes/form', locals: { likeable: @photo } %></p>
+<p>
+  <strong><%= @photo.get_likes.size %></strong>
+  likes
+</br>
+</p>
+<% photo.comments.limit(2).each do |comment| %>
+<p>
+<strong><%= comment.user.username %></strong>:
+<%= comment.body %></p>
+<% end %>
+<%= link_to 'Show More', photo %>
+<% if current_user %>
+<%= render 'comments/form' %>
+<% end %>
 <% end %>
