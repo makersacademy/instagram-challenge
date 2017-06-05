@@ -12,9 +12,9 @@ RSpec.describe PhotosController, type: :controller do
     { image: "photo", description: "description" }
   }
 
-  let(:invalid_attributes) {
-    { image: " " }
-  }
+  # let(:invalid_attributes) {
+  #   { image: "" }
+  # }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -68,13 +68,13 @@ RSpec.describe PhotosController, type: :controller do
       end
     end
 
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
-        sign_in(user)
-        post :create, params: {photo: invalid_attributes}, session: valid_session
-        expect(response).to be_success
-      end
-    end
+    # context "with invalid params" do
+    #   it "returns a success response (i.e. to display the 'new' template)" do
+    #     sign_in(user)
+    #     post :create, params: {photo: invalid_attributes}, session: valid_session
+    #     expect(response).to be_success
+    #   end
+    # end
   end
 
   describe "PUT #update" do
@@ -97,13 +97,13 @@ RSpec.describe PhotosController, type: :controller do
       end
     end
 
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        sign_in(user)
-        put :update, params: {id: photo.to_param, photo: invalid_attributes}, session: valid_session
-        expect(response).to be_success
-      end
-    end
+    # context "with invalid params" do
+    #   it "returns a success response (i.e. to display the 'edit' template)" do
+    #     sign_in(user)
+    #     put :update, params: {id: photo.to_param, photo: invalid_attributes}, session: valid_session
+    #     expect(response).to be_success
+    #   end
+    # end
   end
 
   describe "DELETE #destroy" do

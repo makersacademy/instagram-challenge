@@ -6,10 +6,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'aws-sdk'
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'carrierwave'
 gem 'devise'
+gem 'figaro'
 gem 'font-awesome-rails'
+gem 'fog-aws'
 gem 'jquery-rails'
 gem 'mini_magick'
 gem 'orderly'
