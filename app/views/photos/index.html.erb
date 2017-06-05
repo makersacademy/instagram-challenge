@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<% if @user != nil %>
+  <% username = @user[:username] %>
+<% end %>
+
+<h1> Welcome to InstagramApp <%= username %></h1>
+
+
+<h2> Photos </h2>
+
+<%= link_to new_photos_path do %>
+Add photo
+<% end %>
+
+<% @photos.each do |photo| %>
+  <p>
+  <%= photo.title %><br>
+  <%= image_tag photo.image.url (:med) %>
+</p>
+<% end %>
