@@ -1,40 +1,60 @@
-Instagram Challenge
-===================
+Instagram
+===
 
-## Instructions
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+### A Ruby on Rails application, mimicking the features of Instagram. Users can sign up and upload Photos to the feed.
+### Built using Devise for User management, and Acts as Votable to aid creating the 'Like' feature. To upload Photos the app uses the Paperclip gem and ImageMagick
 
-## Task
+#### User stories:
 
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+```
+As a social network User
+So that I can access the feed on Instagram, start upload Photos, and like other Users Photo's
+I would like to sign up to Instagram
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+```
+As a social network User
+So that I can share Photos with my friends
+I would like to upload Photos to Instagram's feed
+```
+
+```
+As a social network User
+So that I can see who has posted the Photos
+I would like to see the Photos author alongside the Photo
+```
+
+```
+As a social network User
+So that I can let my friends know that I enjoy their Photos
+I would like to click a 'Like' button on to like their Post
+```
+```
+As a social network User
+So that I can talk to my friends about their Photos
+I would like to comment on Photos uploaded to Instagram
+```
+
+
+#### Installation
+You will need Install ImageMagick locally on your machine to be able to upload Photos
+```
+Clone this repo
+brew install imagemagick
+bundle install
+```
+You will need to migrate the databases locally on your machine
+```
+bin/rails db:create
+bin/rails db:migrate
+```
+Run test with:
+```
+rspec
+```
+Start Instagram-ming!
+```
+bin/rails server
+# go to localhost:3000 in the browser
+```
