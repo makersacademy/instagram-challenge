@@ -2468,3 +2468,79 @@ Completed 500 Internal Server Error in 13ms (ActiveRecord: 1.4ms)
 Paperclip::Errors::MissingRequiredValidatorError (Paperclip::Errors::MissingRequiredValidatorError):
   
 app/controllers/photos_controller.rb:12:in `create'
+Started POST "/photos" for 127.0.0.1 at 2017-06-05 10:55:58 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EIESV/IRz8tJ+Qx8QHvfcFNsYZlbIg7nBwws49cvgO/bFPWQoYx0ObuOutDECz4QrgsS3NdRwk9+yrMaSqlWhg==", "photo"=>{"title"=>"Cute Kittie", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f8cf5533d90 @tempfile=#<Tempfile:/tmp/RackMultipart20170605-6455-1e8oww0.jpg>, @original_filename="cat.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"cat.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Upload"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Command :: file -b --mime '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-fvtdgy.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ivd60c.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ivd60c.jpg[0]'
+Command :: convert '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ivd60c.jpg[0]' -auto-orient -resize "64x64" '/tmp/ba597c92b7fab8bf8adb626eb835a70020170605-6455-dx3ikw'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ivd60c.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ivd60c.jpg[0]'
+Command :: convert '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ivd60c.jpg[0]' -auto-orient -resize "100x100" '/tmp/ba597c92b7fab8bf8adb626eb835a70020170605-6455-1knu3xo'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ivd60c.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ivd60c.jpg[0]'
+Command :: convert '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ivd60c.jpg[0]' -auto-orient -resize "200x200" '/tmp/ba597c92b7fab8bf8adb626eb835a70020170605-6455-10vuxu5'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-jnjg0h.jpg'
+  [1m[35mSQL (36.0ms)[0m  [1m[32mINSERT INTO "photos" ("title", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Cute Kittie"], ["image_file_name", "cat.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 6328], ["image_updated_at", "2017-06-05 09:55:58.835631"], ["created_at", "2017-06-05 09:56:00.213540"], ["updated_at", "2017-06-05 09:56:00.213540"]]
+  [1m[35m (45.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 2473ms (ActiveRecord: 126.4ms)
+
+
+  
+NameError (undefined local variable or method `photos_urls' for #<PhotosController:0x007f8cf553a618>
+Did you mean?  photos_url):
+  
+app/controllers/photos_controller.rb:13:in `create'
+Started POST "/photos" for 127.0.0.1 at 2017-06-05 10:56:51 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EIESV/IRz8tJ+Qx8QHvfcFNsYZlbIg7nBwws49cvgO/bFPWQoYx0ObuOutDECz4QrgsS3NdRwk9+yrMaSqlWhg==", "photo"=>{"title"=>"Cute Kittie", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f8cf5b4ec20 @tempfile=#<Tempfile:/tmp/RackMultipart20170605-6455-oq9vzq.jpg>, @original_filename="cat.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"photo[image]\"; filename=\"cat.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Upload"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Command :: file -b --mime '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1x6zr63.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ewuzl9.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ewuzl9.jpg[0]'
+Command :: convert '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ewuzl9.jpg[0]' -auto-orient -resize "64x64" '/tmp/9e574e11901d86741dcb8ca47f92af8920170605-6455-5jf2g7'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ewuzl9.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ewuzl9.jpg[0]'
+Command :: convert '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ewuzl9.jpg[0]' -auto-orient -resize "100x100" '/tmp/9e574e11901d86741dcb8ca47f92af8920170605-6455-14sbg35'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ewuzl9.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ewuzl9.jpg[0]'
+Command :: convert '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-1ewuzl9.jpg[0]' -auto-orient -resize "200x200" '/tmp/9e574e11901d86741dcb8ca47f92af8920170605-6455-1vaxhbx'
+  [1m[35m (15.8ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/tmp/d077f244def8a70e5ea758bd8352fcd820170605-6455-156yr6b.jpg'
+  [1m[35mSQL (4.4ms)[0m  [1m[32mINSERT INTO "photos" ("title", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Cute Kittie"], ["image_file_name", "cat.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 6328], ["image_updated_at", "2017-06-05 09:56:52.542075"], ["created_at", "2017-06-05 09:56:53.270113"], ["updated_at", "2017-06-05 09:56:53.270113"]]
+  [1m[35m (67.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/photos
+Completed 302 Found in 1175ms (ActiveRecord: 147.1ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2017-06-05 10:56:53 +0100
+Processing by PhotosController#index as HTML
+  Rendering photos/index.html.erb within layouts/application
+  [1m[36mPhoto Load (1.4ms)[0m  [1m[34mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (21.8ms)
+  Rendered layouts/_header.html.erb (1.6ms) [cache miss]
+Completed 200 OK in 236ms (Views: 229.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2017-06-05 10:57:40 +0100
+Processing by PhotosController#index as HTML
+  Rendering photos/index.html.erb within layouts/application
+  [1m[36mPhoto Load (3.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (28.0ms)
+  Rendered layouts/_header.html.erb (1.5ms) [cache miss]
+Completed 200 OK in 194ms (Views: 181.3ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2017-06-05 10:59:07 +0100
+Processing by PhotosController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering photos/index.html.erb within layouts/application
+  [1m[36mPhoto Load (1.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos"[0m
+  Rendered photos/index.html.erb within layouts/application (61.2ms)
+  Rendered layouts/_header.html.erb (1.1ms) [cache miss]
+Completed 200 OK in 247ms (Views: 143.4ms | ActiveRecord: 41.2ms)
+
+

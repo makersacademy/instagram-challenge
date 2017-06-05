@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   def index
+    @user = current_user
     @photos = Photo.all
   end
 
@@ -10,7 +11,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.create(photo_params)
-    redirect_to photos_urls
+    redirect_to photos_url
   end
 
   private
