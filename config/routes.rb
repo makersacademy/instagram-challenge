@@ -7,4 +7,5 @@ Rails.application.routes.draw do
       resources :comments
   end
   get '*path' => redirect('/')
+  match :like, to: 'likes#create', as: :like, via: :post
 end

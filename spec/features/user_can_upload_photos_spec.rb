@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "User",  type: :feature do
+RSpec.feature "Photos",  type: :feature do
 
   scenario "can see an upload button when signed in", type: :feature do
     sign_up
