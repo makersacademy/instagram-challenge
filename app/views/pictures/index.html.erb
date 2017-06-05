@@ -3,25 +3,24 @@
 <%= link_to new_picture_path do%>
 New picture
 <%end%>
-<br>
-<br>
-
 <% @pictures.reverse.each do |picture| %>
   <% @picture = picture %>
-  <%= picture.title %><br>
-  <%= image_tag picture.image.url (:unique)%><br>
-  <%= link_to like_picture_path(picture), method: :put do %>
-    Upvote
-    <%= picture.get_upvotes.size %>
-  <% end %>
-  <%= link_to dislike_picture_path(picture), method: :put do %>
-    Downvote
-    <%= picture.get_downvotes.size %>
-  <% end %>
-  <p><%=picture.comments.count%>
-    comments
-  </p>
-  <%= render picture.comments%>
-  <p>Add a comment:</p>
-  <%= render 'comments/form'%>
+      <h3><%= picture.title %></h3>
+        <a href = 'picture_path'>
+          <%= image_tag picture.image.url (:unique)%>
+        </a>
+      <%= link_to like_picture_path(picture), method: :put do %>
+        Upvote
+        <%= picture.get_upvotes.size %>
+      <% end %>
+      <%= link_to dislike_picture_path(picture), method: :put do %>
+        Downvote
+        <%= picture.get_downvotes.size %>
+      <% end %>
+    <p><%=picture.comments.count%>
+      comments
+    </p>
+      <%= render picture.comments%>
+    <p>Add a comment:</p>
+      <%= render 'comments/form'%>
   <% end %>
