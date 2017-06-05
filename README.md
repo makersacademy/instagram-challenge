@@ -8,6 +8,11 @@ To upload images, I have used the gem Paperclip which, combined with an external
 
 https://guarded-brook-32059.herokuapp.com/images
 
+Technologies used
+-----------
+Ruby, Ruby on Rails, RSpec, Postgresql, Devise, Paperclip, AWS, Amazon S3 buckets.
+
+
 Installation
 -----------
 
@@ -18,6 +23,9 @@ $ cd instagram-challenge
 $ bundle install
 $ rails/bin server
 ```
+You also need to set up your local database:
+`bin/rails db:create`
+`bin/rails db:migrate`
 
 To run the RSpec tests from inside the project folder do:
 `bundle exec rspec`
