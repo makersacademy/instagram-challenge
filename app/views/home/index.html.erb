@@ -6,4 +6,10 @@
 <p><%= user.name %> <%= user.created_at.strftime("%F") %>
   <%= link_to "View #{user.name}", user_path(user) %><p>
 <p><img src="<%= user.avatar unless user.avatar.nil? %>"></p>
+
+  <% user.posts.each do |post| %>
+   <img src="<%= post.avatar %>">
+   <%= post.text %>
+  <% end %>
+
 <% end %>

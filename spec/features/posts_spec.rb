@@ -10,15 +10,13 @@ feature 'Making posts' do
 
   scenario 'is possible by registered users' do
     sign_up
-    # # click_link 'New Post'
-    # expect(current_path).to eq new_post_path
-    # fill_in 'text', with: 'My favourite actor Muldoon'
-    # attach_file('ok', File.absolute_path('/Users/Jaiye/Desktop/Muldoon.png'))
     click_link 'My Profile'
-    attach_file("user_picture", Rails.root + "public/uploads/user/avatar/8/Muldoon.png")
-    click_button 'Upload Photo'
+    fill_in 'post_text', with: 'A great big Triceratops for my post'
+    attach_file("post_avatar", Rails.root + "public/uploads/user/avatar/8/Triceratops.jpg")
+    click_button 'Upload Post'
     expect(current_path).to eq root_path
-    expect(page).to have_xpath("//img[contains(@src,'Muldoon.png')]")
+    expect(page).to have_content 'A great big Triceratops for my post'
+    expect(page).to have_xpath("//img[contains(@src,'Triceratops.jpg')]")
   end
 
 end

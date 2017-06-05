@@ -12,7 +12,7 @@ feature 'Uploading profile avatars' do
     sign_up
     click_link 'My Profile'
     attach_file("user_picture", Rails.root + "public/uploads/user/avatar/8/Muldoon.png")
-    click_button 'Upload Photo'
+    click_button 'Upload Avatar'
     expect(current_path).to eq root_path
     expect(page).to have_xpath("//img[contains(@src,'Muldoon.png')]")
   end
