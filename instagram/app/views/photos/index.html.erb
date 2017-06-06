@@ -15,6 +15,9 @@
       <tr><% @photo = photo %>
         <td><%= image_tag photo.image.url(:medium) %></td>
         <td>Posted by: <%= photo.user.email %></td>
+        <td><% photo.comments.each do |comment| %></td>
+        <td><%= comment.content %></td>
+        <% end %>
         <td><%= render partial: 'likes/form', locals: {likeable: @photo} %></td>
       <td><%= render 'comments/form' %></td>
     <% end %>

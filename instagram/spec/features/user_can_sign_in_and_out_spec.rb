@@ -13,7 +13,6 @@ RSpec.feature 'Sessions', type: :feature do
     click_link 'Logout'
     login
     expect(page).to have_content('Logged in as example@email.com')
-    expect(page).to have_content('Signed in successfully.')
   end
 
 end
