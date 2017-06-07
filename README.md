@@ -4,6 +4,8 @@ Installation:
 ```
 git clone https://github.com/anaalta/instagram-challenge
 bundle install
+db:create
+db:migrate
 bin/rails server
 ```
 
