@@ -16,16 +16,16 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
-    @photo.user_id = current_user.id
+    photo = Photo.new(photo_params)
+    photo.user_id = current_user.id
 
     respond_to do |format|
-      if @photo.save
+      if  photo.save
         format.html { redirect_to photos_url, notice: 'Photo was successfully created.' }
-        format.json { render :show, status: :created, location: @photo }
+        format.json { render :show, status: :created, location: photo }
       else
         format.html { render :new }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
+        format.json { render json: photo.errors, status: :unprocessable_entity }
       end
     end
 
