@@ -62,11 +62,20 @@ I would like to be able to delete the posts I have created
 
 ```
 
-## Deployment:
+## Local installation and deployment instructions
+### Setting up the project
+* Install Homebrew: `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+* Install Ruby Version Manager: `\curl -L https://get.rvm.io | bash -s stable`
+* Install Ruby 2.4.0 or above: `rvm use ruby --install 2.4.0`
+* Install Rails 5.1.0 or above: `gem install rails`
+* Install postgresql: `brew install postgresql`
+* Install bundler: `gem install bundler`
+* Install the gems: `bundle install && bundle update`
+* Install Image Magic: `brew install imagemagick`
 
-* Install Homebrew: ``ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"``
-* Install Ruby Version Manager: ``\curl -L https://get.rvm.io | bash -s stable``
-* Install Ruby 2.4.0 or above: ``rvm use ruby --install 2.4.0``
-* Install Rails 5.1.0 or above: ``$ gem install rails``
-* Running the test suite:
-`$ rspec`
+### Creating the databases
+* Start postgresql: `brew services start postgresql`
+* Create the databases: `rake db:create`
+
+### Running the test suite
+* Running RSpec: `$ rspec`
