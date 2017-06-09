@@ -1,3 +1,5 @@
+* Makers Academy weekend 8 challenge, worked on independently.
+
 * Instagram style website built using Ruby on Rails.
 
 * Users can post pictures, and like or comment on pictures posted by other users.
