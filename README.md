@@ -1,4 +1,4 @@
-* Instagram style website using rails.
+* Instagram style website built using Ruby on Rails.
 
 * Users can post pictures, and like or comment on pictures posted by other users.
 
