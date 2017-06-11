@@ -18,3 +18,5 @@ RSpec.feature "Sessions",  type: :feature do
     expect(page).to have_content("Signed out successfully.")
   end
 end
+
+# expect(page).to have_selector("img[src=#{path}]")

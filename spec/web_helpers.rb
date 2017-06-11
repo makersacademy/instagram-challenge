@@ -37,3 +37,11 @@ def sign_out
   click_on("Sign up")
   click_on "Sign Out"
 end
+
+def add_picture
+  click_on("Create new picture")
+  attach_file("Image", Rails.root + 'app/assets/images/sunset.jpg')
+  fill_in "Title", with: "Picture"
+  fill_in "Description", with: "New picture"
+  click_on("Create Pic")
+end
