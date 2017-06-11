@@ -1,10 +1,22 @@
 
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/sofia" type="text/css"/>
+<style>
+.images {display:none;
+position: relative;
+left: 188.5px;
+bottom: 350px;
+-ms-transform: rotate(4.15deg);
+-webkit-transform: rotate(4.15deg);
+transform: rotate(4.15deg);}
+</style>
+<body class="container login">
+<div id="login_box" >
+  <div class="col-sm-2 col-sm-offset-7" style="border: 3px black solid; width: 300px;">
 
-
-<div id="login_box">
-  <div class="col-sm-2 col-sm-offset-7" style="border: 3px black solid;">
-
-    <center><h2 id='login_text'>Log in</h2></center>
+    <center><h1 id='login_text' >Instagram</h1></center>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
@@ -31,17 +43,37 @@
   </div>
 
   <div id="forgot_password">
-    <div class="col-sm-2 col-sm-offset-7" style="border: 3px black solid;">
+    <div class="col-sm-2 col-sm-offset-7" style="border: 3px black solid; width: 300px;">
       <center><%= render "devise/shared/links" %></center>
     </div>
   </div>
 
 
 
-  <div id="images" >
-  <img src= "http://eskipaper.com/images/cool-aerial-view-wallpaper-1.jpg" style="width:188px; height:300px;">
-  <img src= "https://www.cutestpaw.com/wp-content/uploads/2011/11/Miss-You-My-Love.jpg" style="width:188px; height:300px;">
-  <img src= "https://cdn.thedesigninspiration.com/wp-content/uploads/2010/05/animals/042.jpg" style="width:185px; height:300px;" >
-  <img src= "https://s-media-cache-ak0.pinimg.com/736x/14/9d/29/149d2980d18143da308bd4451c939882.jpg"style="width:190px; height:300px;">
-  <img src= "https://i.redd.it/qh713wbo4r8y.jpg" style="width:188px; height:300px;">
+<div class="w3-content w3-section" >
+  <img class="images" src= "http://eskipaper.com/images/cool-aerial-view-wallpaper-1.jpg" style="width:190px; height:300px;">
+  <img  class="images" src= "https://www.cutestpaw.com/wp-content/uploads/2011/11/Miss-You-My-Love.jpg" style="width:190px; height:300px;">
+  <img class="images" src= "https://cdn.thedesigninspiration.com/wp-content/uploads/2010/05/animals/042.jpg" style="width:190px; height:300px;" >
+  <img class="images" src= "https://s-media-cache-ak0.pinimg.com/736x/14/9d/29/149d2980d18143da308bd4451c939882.jpg"style="width:189px; height:300px;">
+  <img class="images" src= "https://i.redd.it/qh713wbo4r8y.jpg" style="width:188px; height:300px;">
   </div>
+
+  <script>
+  var indexNumber = 0;
+  slideShow();
+
+  function slideShow(){
+    var i;
+    var x = document.getElementsByClassName("images");
+    for(i=0; i < x.length; i++){
+    x[i].style.display = "none";
+    }
+    indexNumber++;
+    if (indexNumber > x.length) {indexNumber = 1}
+      x[indexNumber-1].style.display = "block";
+      setTimeout(slideShow, 5000);
+  }
+  </script>
+
+</body>
+  </html>
