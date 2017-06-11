@@ -1,17 +1,20 @@
-require 'spec_helper'
+require 'web_helpers'
 require 'rails_helper'
-
 
 RSpec.feature "Sessions",  type: :feature do
 
   scenario "signs up the user", :type => :feature do
-    email = 'exemple@email.com'
-    visit '/users/sign_up'
-    fill_in "Email", :with => email
-    fill_in("user[password]", with: '123456')
-    fill_in("user[password_confirmation]", with: '123456')
-    click_on("Sign up")
+    sign_up
     expect(page).to have_content("Welcome! You have signed up successfully.")
   end
 
+  scenario "user can sign in", :type => :feature do
+    sign_in
+    expect(page).to have_content("Signed in successfully.")
+  end
+
+  scenario "user can sign out", :type => :feature do
+    sign_out
+    expect(page).to have_content("Signed out successfully.")
+  end
 end
