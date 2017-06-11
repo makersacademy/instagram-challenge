@@ -17,4 +17,11 @@ RSpec.feature "Creating new pictures ",  type: :feature do
     click_on("Update Pic")
     expect(page).to have_content("Picture edited")
   end
+
+  scenario "User can edit a photo", :type => :feature do
+    sign_up
+    add_picture
+    click_on("Delete")
+    expect(page).not_to have_content("sunset.jpg")
+  end
 end
