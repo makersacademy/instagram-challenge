@@ -1,29 +1,76 @@
-<h2>Sign up</h2>
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/sofia" type="text/css"/>
+<style>
+.images {display:none;
+position: relative;
+left: 188.5px;
+bottom: 335px;
+-ms-transform: rotate(4.15deg);
+-webkit-transform: rotate(4.15deg);
+transform: rotate(4.15deg);}
+</style>
+
+<body class=" container sign_up">
+  <div id="sign_up_box" >
+    <div class="col-sm-2 col-sm-offset-7" style="border: 3px black solid; width: 300px;">
+
+<center><h1 id="sign_up_text">Sign up</h1>
+
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="field" id="email">
+
+    <%= f.email_field :email, autofocus: true, :placeholder => "Email address"%>
+  </div><br>
+
+  <div class="field" id= "password">
+    <%= f.password_field :password, autocomplete: "off", :placeholder => "Password" %>
+  </div><br>
+
+  <div class="field" id="password_confirmation">
+    <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder =>"Password confirmation" %>
+  </div><br>
+
+  <div class="actions" >
+    <%= f.submit "Sign up", :id=>"sign_up_button"%>
+  </div>
+<% end %></center><br>
+</div>
+</div>
+
+<div id="login">
+<div class="col-sm-2 col-sm-offset-7" style="border: 3px black solid; width: 300px;">
+<center><p> Have an account?<%= render "devise/shared/links" %></p></center>
+</div>
+</div>
+<div class="w3-content w3-section" >
+  <img class="images" src= "http://eskipaper.com/images/cool-aerial-view-wallpaper-1.jpg" style="width:190px; height:300px;">
+  <img  class="images" src= "https://www.cutestpaw.com/wp-content/uploads/2011/11/Miss-You-My-Love.jpg" style="width:190px; height:300px;">
+  <img class="images" src= "https://cdn.thedesigninspiration.com/wp-content/uploads/2010/05/animals/042.jpg" style="width:190px; height:300px;" >
+  <img class="images" src= "https://s-media-cache-ak0.pinimg.com/736x/14/9d/29/149d2980d18143da308bd4451c939882.jpg"style="width:189px; height:300px;">
+  <img class="images" src= "https://i.redd.it/qh713wbo4r8y.jpg" style="width:188px; height:300px;">
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+  <script>
+  var indexNumber = 0;
+  slideShow();
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  function slideShow(){
+    var i;
+    var x = document.getElementsByClassName("images");
+    for(i=0; i < x.length; i++){
+    x[i].style.display = "none";
+    }
+    indexNumber++;
+    if (indexNumber > x.length) {indexNumber = 1}
+      x[indexNumber-1].style.display = "block";
+      setTimeout(slideShow, 5000);
+  }
+  </script>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</body>
+  </html>
