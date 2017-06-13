@@ -1,4 +1,6 @@
-* Makers Academy weekend 8 challenge, worked on independently.
+* Makers Academy weekend 8 challenge.
+
+* Solo project.
 
 * Instagram style website built using Ruby on Rails.
 
