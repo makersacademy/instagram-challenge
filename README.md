@@ -35,4 +35,4 @@ To run the RSpec tests from inside the project folder do:
 
 Screenshots
 ----------
-![Screenshot](http://i.imgur.com/bgLnBzv.png)
+![Screenshot](http://i.imgur.com/rNXnJGH.png)
