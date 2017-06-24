@@ -1,40 +1,38 @@
-Instagram Challenge
-===================
+# Instagram challenge
 
-## Instructions
+As a weekend challenge at Makers Academy, over two days I created a replica of Instagram. I called 'Metalshot' as it is targeted to specific users, that is, metal music fans.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Functionality
+----------
 
-## Task
+A user has to sign up/log in to have access to the Shotwall, where every user's uploaded photos are shown. User can post pictures and fill in the 'Title' and 'Description' fields. Once posted, if they go to the Shotwall they'll see their picture published along with their username, title, description, and time/date of the upload. Anyone subscribed can like (only once) and comment shots.
 
-Build Instagram: Simple huh!
+Technologies used
+-----------
+Ruby, Ruby on Rails, RSpec, Postgresql, Devise, Paperclip, AWS, Amazon S3 buckets.
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+To upload images, I have used the gem Paperclip which, combined with an external storage service such as Amazon S3, enabled me to store the images uploaded on production into an S3 bucket. The App has been deployed to Heroku at the following address:
 
-Bonus if you can add filters!
+https://guarded-brook-32059.herokuapp.com/images
 
-## How to start
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+Installation
+-----------
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+Clone repository:
 ```
+$ git clone git@github.com:enonnai/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle install
+$ rails/bin server
+```
+You also need to set up your local database:
+`bin/rails db:create`
+`bin/rails db:migrate`
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+To run the RSpec tests from inside the project folder do:
+`bundle exec rspec`
+
+Screenshots
+----------
+![Screenshot](http://i.imgur.com/rNXnJGH.png)

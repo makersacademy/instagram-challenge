@@ -1,0 +1,41 @@
+
+<% if current_user %>
+  <h3>Shotwall</h3>
+  <br>
+  <%= button_to 'Add your shot', { action: 'new', controller: 'images' }, method: :get, class: 'button' %>
+  <br>
+  <h4>Latest Metal shots:</h4>
+  <% Image.all.each do |image| %>
+  <br>
+  <p>
+    <img style="float:left;" src="<%= image.image.url(:medium) %>"/>
+    <strong>Added by:
+    </strong><em><%= image.user.email %> - </em><%= image.created_at.strftime("%d-%m-%Y @ %H:%M") %><br>
+    <strong>Title:
+    </strong>
+    <%= image.title %><br>
+    <strong>Description:
+    </strong>
+    <%= image.description %><br>
+    <%= render partial: 'likes/form', locals: { likeable: image } %>
+    <h5>☠ Comments:</h5>
+    <% image.comments.each do |comment| %>
+    <div>
+      <strong><%= comment.user.email %></strong> on <%= comment.created_at.strftime("%d-%m @ %H:%M") %> said:<br>
+      "<%= comment.body %>"
+    </div>
+    <% end %>
+    <%= render partial: 'comments/form', locals: { user: current_user, image: image }%>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+  </p>
+  <br>
+  <% end %>
+<% else %>
+  <p>Please Sign up or Log in to check out the latest metal shots!</p>
+  <% end %>
