@@ -1,4 +1,4 @@
-# Instagram replica challenge
+# Instagram challenge
 
 As a weekend challenge at Makers Academy, over two days I created a replica of Instagram. I called 'Metalshot' as it is targeted to specific users, that is, metal music fans.
 
