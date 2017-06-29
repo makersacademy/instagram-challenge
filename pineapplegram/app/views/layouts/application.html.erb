@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pineapplegram</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div id="home">
+        <table style="width:100%">
+          <tr>
+            <th><h1>&#127821;<%= link_to "Gram", root_path %></h1>
+            <th><h1 style="font-size:250%; margin:-20px">&#127821;</h1>
+            <th id="edit_profile"><% if user_signed_in? %><h1 id="edit-profile"><%= link_to "Edit Profile", edit_user_registration_path %><%end%></h1>
+          </tr>
+          <tr>
+            <th><% if user_signed_in? %>
+                  <%= link_to "Sign out", destroy_user_session_path, method: :delete %><br>
+                  <%= link_to "New post", new_picture_path %>
+                <% else %>
+                  <%= link_to "Sign in", new_user_session_path %>
+                  <%= link_to "Sign up", new_user_registration_path %>
+                <% end %>
+            <th style="padding-left: 850px;"><p class="notice"><%= notice %></p>
+                                            <p class="alert"><%= alert %></p>
+          </tr>
+        </table>
+
+        <br><br>
+      </div>
+    </header>
+
+    <%= yield %>
+
+
+  </body>
+</html>
