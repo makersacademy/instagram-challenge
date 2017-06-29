@@ -1,0 +1,37 @@
+<a href="<%= photo_path(photo) %>" class="image">
+   <%= image_tag photo.image.url(:large) %>
+ </a>
+ <p><%= photo.caption %></p>
+
+ <div class="edit-status">
+   <%= link_to "Edit Comment", edit_photo_path(photo) %>
+ </div>
+
+ <% if photo.comments.any? %>
+   <% photo.comments.each do |comment| %>
+     <ul>
+       <%= comment.thoughts %>
+       <div class="delete-comment">
+         <%= link_to "Delete comment", comment_path(comment), method: :delete %>
+       </div>
+     </ul>
+   <% end %>
+ <% end %>
+
+ <%= form_for([photo, photo.comments.build]) do |f| %>
+   <p>
+     <%= f.text_field :thoughts, placeholder: "Share your thoughts" %>
+   </p>
+   <p>
+     <%= f.label :likes %>
+     <%= f.select :likes, (1..5) %>
+   </p>
+   <p>
+     <%= f.submit 'Leave Comment' %>
+   </p>
+ <% end %>
+
+
+<%= link_to "Delete Photo", photo_path(photo), method: :delete %>
+<br />
+<br />
