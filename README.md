@@ -1,5 +1,8 @@
-Instagram Challenge
-===================
+### Instagram Challenge
+
+Instabann  
+===========  
+[![Build Status](https://travis-ci.org/bannastre/instagram-challenge.svg?branch=master)](https://travis-ci.org/bannastre/instagram-challenge)
 
 ## Instructions
 
