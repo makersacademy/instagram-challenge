@@ -1,24 +1,45 @@
-# README
+# Instagram Challenge
+## Makers Week 8 Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### What it is
 
-Things you may want to cover:
+An attempt to recreate Instagram using Ruby on Rails.
 
-* Ruby version
+### My approach
 
-* System dependencies
+Not sure yet!
 
-* Configuration
+### Am I Quite Worried About My Ability to Complete This Challenge?
 
-* Database creation
+Yes.
 
-* Database initialization
+### User Stories
+```
+As a user,
+so that I can share my photographs with the strangers of the internet,
+I would like to be able to upload and display a photograph.
+```
 
-* How to run the test suite
+```
+As a user,
+so that I can look at other users' photos,
+I would like to be able to see a feed of uploaded images.
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+As a user,
+So that I can post photos and comments as me,
+I would like to be able to sign up for an account.
+```
 
-* Deployment instructions
+```
+As a user,
+So that I can impose my opinions on a wide audience,
+I would like to be able to comment on photos.
+```
 
-* ...
+```
+As a user,
+So that I do not have to actually type to signal my approval,
+I would like to be able to 'like' a photo.
+```
