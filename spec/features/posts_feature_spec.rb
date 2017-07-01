@@ -34,4 +34,13 @@ feature 'posts' do
     end
   end
 
+  context 'without image' do
+    scenario 'does not allow user to create a post without image' do
+      visit '/'
+      click_link 'Add Post'
+      click_button 'Create Post'
+      expect(page).to have_content 'error'
+    end
+  end 
+
 end
