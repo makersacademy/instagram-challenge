@@ -3,17 +3,14 @@ require 'rails_helper'
 feature 'posts' do
 
   context 'no posts available' do
-
     scenario 'should display a link to add a post' do
       visit ('/')
       expect(page).to have_content('No posts available')
       expect(page).to have_content('Add Post')
     end
-
   end
 
   context 'posts have been added' do
-
     before do
       Post.create(description: 'My fantastic dinner')
     end
@@ -23,7 +20,6 @@ feature 'posts' do
       expect(page).to have_content('My fantastic dinner')
       expect(page).not_to have_content('No posts available')
     end
-
   end
 
   context 'create posts' do
@@ -36,7 +32,6 @@ feature 'posts' do
       expect(page).to have_content 'My fantastic dinner'
       expect(current_path).to eq '/'
     end
-    
   end
 
 end
