@@ -2,8 +2,13 @@
   - @posts.each do |post|
     %p= post.description
     = image_tag post.image(:thumb)
-
 - else
   %h1 No posts available
-
-= link_to 'Add Post', new_post_path
+.add-post
+  = link_to 'Add Post', new_post_path
+.user-actions
+  - if user_signed_in?
+    = link_to 'Sign out', destroy_user_session_path, method: :delete
+  - else
+    = link_to 'Sign in', new_user_session_path
+    = link_to 'Sign up', new_user_registration_path
