@@ -1,6 +1,29 @@
-<h1>Photos:</h1>
-
 
 <!-- http://t.wallpaperweb.org/wallpaper/nature/1600x1200/Half_Dome_From_Olmstead_Point_Yosemite_National_Park_California.jpg -->
 
-<img src="<%= @photo.photo_file %>" alt="<%= @photo.name %>">
+<div class="container">
+
+  <div class="photo_header">
+    <h3><%= @photo.name %></h3>
+  </div>
+
+  <div class="photo_container">
+    <img class="photo" src="<%= @photo.photo_file %>" alt="<%= @photo.name %>">
+  </div>
+
+  <div class="comment_container">
+    <%= form_for ([@photo, @photo.comments.build])  do |f| %>
+    <h2>Comments:</h2>
+      <p>
+        <%= f.label :text %></br>
+        <%= f.text_area :text %></br>
+        <%= f.submit %>
+      </p>
+    <% end %>
+
+    <% @photo.comments.reverse.each do |comment| %>
+      <p><%= comment.text %></p>
+    <% end %>
+  </div>
+
+</div>
