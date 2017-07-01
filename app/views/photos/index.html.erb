@@ -2,15 +2,22 @@
 
 <ul id="photos">
   <% @photos.each do |photo| %>
+    <li>
 
-    <li> <p><%= photo.name %></p>
+      <div class="container">
 
-      <div class="" id="photo_id_<%= photo.id %>">
-        <img src="<%= photo.photo_file %>" alt="<%= photo.name %>">
-      </div>
+        <div class="photo_header">
+          <p><%= photo.name %></p>
+        </div>
 
-      <div class="" id="photo_comments_<%= photo.id %>">
-        <%= button_to "Comment", photo_path(photo.id), method: :get %>
+        <div class="photo_container" id="photo_id_<%= photo.id %>">
+          <img class="photo" src="<%= photo.photo_file %>" alt="<%= photo.name %>">
+        </div>
+
+        <div class="comment_container" id="photo_comments_<%= photo.id %>">
+          <%= button_to "Comment", photo_path(photo.id), method: :get %>
+        </div>
+
       </div>
 
     </li>
