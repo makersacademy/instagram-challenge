@@ -37,6 +37,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
+  gem 'factory_girl_rails'
   # RSpec & fix for rb-fsevent
   gem 'rspec-rails', '~> 3.5'
   gem "rb-fsevent", "0.9.8"
