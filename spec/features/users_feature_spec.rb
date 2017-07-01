@@ -4,7 +4,7 @@ feature 'user can sign in and sign out' do
   context 'user not signed in' do
     it 'should see the sign in link' do
       visit '/'
-      expect(page).to have_link 'Sign in'
+      expect(page).to have_button 'Log in'
       expect(page).to have_link 'Sign up'
     end
 
