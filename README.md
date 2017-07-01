@@ -7,6 +7,7 @@ A profound exploration of human social dynamics cunningly disguised as a website
 
 - Clone this repository
 - Navigate to the newly cloned directory via your command line
+- ```bundle install```
 - ```rails server```
 - Visit localhost:3000
 - Make all your friends jealous of your life-style by pretending that photo you just posted was a candid shot of you enjoying life and not your twentieth attempt to hide the void inside behind vintage filters and flattering angles.
