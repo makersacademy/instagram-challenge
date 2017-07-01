@@ -31,7 +31,9 @@ Since the structure of my program is likely to change during development I will 
 
 I found it important to get the core functionality of Simstagram working before exploring it's presentation so front end functionality has been left till last. 
 
-<!--![Domain Model](https://github.com/michaelbjacobson/makersbnb/blob/writing-the-readme/beautifulpeople.png)-->
+## Domain Model
+
+![Domain Model](https://github.com/SiAshbery/simstagram/blob/master/Images/Simstagram_Data_Model.png)
 
 ## Known Issues/TODOs
 
