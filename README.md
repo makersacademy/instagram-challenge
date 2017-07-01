@@ -10,7 +10,7 @@ A profound exploration of human social dynamics cunningly disguised as a website
 - ```rails server```
 - Visit localhost:3000
 - Make all your friends jealous of your life-style by pretending that photo you just posted was a candid shot of you enjoying life and not your twentieth attempt to hide the void inside behind vintage filters and flattering angles.
--Alternatively you can visit [heokuapp link here]
+- Alternatively you can visit [heokuapp link here]
 
 
 ## Aims For This Project:
@@ -31,11 +31,14 @@ Since the structure of my program is likely to change during development I will 
 
 I found it important to get the core functionality of Simstagram working before exploring it's presentation so front end functionality has been left till last. 
 
-![Domain Model](https://github.com/michaelbjacobson/makersbnb/blob/writing-the-readme/beautifulpeople.png)
+<!--![Domain Model](https://github.com/michaelbjacobson/makersbnb/blob/writing-the-readme/beautifulpeople.png)-->
 
 ## Known Issues/TODOs
 
 - Build Simstagram
+
+## Acknowledgement
+- Thanks to Jenny Wem (https://github.com/wemmm) for showing me how to write a good README
 
 ## Other Matters
 
