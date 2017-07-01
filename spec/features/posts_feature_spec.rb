@@ -12,7 +12,7 @@ feature 'posts' do
 
   context 'posts have been added' do
     before do
-      Post.create(description: 'My fantastic dinner')
+      create_post
     end
 
     scenario 'display posts' do
@@ -25,11 +25,9 @@ feature 'posts' do
   context 'create posts' do
 
     scenario 'user fills a form to create a post and then displays the post' do
-      visit '/'
-      click_link 'Add Post'
-      fill_in 'Description', with: 'My fantastic dinner'
-      click_button 'Create Post'
+      create_post
       expect(page).to have_content 'My fantastic dinner'
+      expect(page).to have_xpath("//img[contains(@src,'image-post.jpg')]")
       expect(current_path).to eq '/'
     end
   end
@@ -43,4 +41,12 @@ feature 'posts' do
     end
   end 
 
+end
+
+def create_post
+  visit '/'
+  click_link 'Add Post'
+  fill_in 'Description', with: 'My fantastic dinner'
+  attach_file('Image', Rails.root + 'spec/support/fixtures/image-post.jpg')
+  click_button 'Create Post'
 end
