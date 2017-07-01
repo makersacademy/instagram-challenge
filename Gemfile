@@ -26,6 +26,13 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
+
+# Haml templating engine
+gem 'haml'
+
+# Paperclip (for image uploads)
+gem 'paperclip', '~> 5.0.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -37,6 +44,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'rspec-collection_matchers'
+  gem 'factory_girl_rails'
 end
 
 group :development do
