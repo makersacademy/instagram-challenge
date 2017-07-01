@@ -28,6 +28,11 @@ feature 'posts' do
       expect(page).to have_content('My fantastic dinner')
       expect(page).not_to have_content('No posts available')
     end
+
+    scenario 'display username' do
+      visit '/'
+      expect(page).to have_content('Posted by: testuser')
+    end
   end
 
   context 'create posts' do
