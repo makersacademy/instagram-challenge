@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  include WithUserAssociationExtension
+  
+  belongs_to :user
   has_attached_file :image,
     styles: { large: "750x750>", thumb: "508x508>" },
     default_url: "/images/:style/missing.png"
