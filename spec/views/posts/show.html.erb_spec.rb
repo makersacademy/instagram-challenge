@@ -2,11 +2,13 @@ require 'rails_helper'
 
 RSpec.describe "posts/show", type: :view do
   before(:each) do
+    user = User.create({email: "test@mail.com", password: "password"})
     @post = assign(:post, Post.create!(
       :name => "Name",
       :title => "Title",
       :content => "MyText",
-      :picture => "Picture"
+      :picture => "Picture",
+      :user_id => user.id
     ))
   end
 

@@ -34,8 +34,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem "clearance"
 gem "rb-fsevent", "0.9.8"
+gem 'rails-controller-testing'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails'
 end
 
 group :development, :test do
