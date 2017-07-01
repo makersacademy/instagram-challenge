@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 # README
+=======
+>>>>>>> origin/master
 Instagram Challenge
 ===================
 
@@ -39,6 +42,7 @@ gem "rubocop-rails"
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
+<<<<<<< HEAD
 
 
 =========================================
@@ -62,3 +66,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+=======
+>>>>>>> origin/master
