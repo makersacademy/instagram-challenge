@@ -3,6 +3,12 @@ require 'rails_helper'
 feature 'posts' do
 
   context 'no posts available' do
+
+    before do
+      create(:user)
+      authenticate_user
+    end
+
     scenario 'should display a link to add a post' do
       visit ('/')
       expect(page).to have_content('No posts available')
@@ -12,6 +18,8 @@ feature 'posts' do
 
   context 'posts have been added' do
     before do
+      create(:user)
+      authenticate_user
       create_post
     end
 
@@ -20,9 +28,18 @@ feature 'posts' do
       expect(page).to have_content('My fantastic dinner')
       expect(page).not_to have_content('No posts available')
     end
+
+    scenario 'display username' do
+      visit '/'
+      expect(page).to have_content('Posted by: testuser')
+    end
   end
 
   context 'create posts' do
+    before do
+      create(:user)
+      authenticate_user
+    end
 
     scenario 'user fills a form to create a post and then displays the post' do
       create_post
@@ -33,6 +50,11 @@ feature 'posts' do
   end
 
   context 'without image' do
+    before do
+      create(:user)
+      authenticate_user
+    end
+
     scenario 'does not allow user to create a post without image' do
       visit '/'
       click_link 'Add Post'
@@ -49,4 +71,11 @@ def create_post
   fill_in 'Description', with: 'My fantastic dinner'
   attach_file('Image', Rails.root + 'spec/support/fixtures/image-post.jpg')
   click_button 'Create Post'
+end
+
+def authenticate_user
+  visit '/'
+  fill_in 'Email', with: 'test@test.com'
+  fill_in 'Password', with: 'testing'
+  click_button 'Log in'
 end

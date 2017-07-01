@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.create_with_user(post_params, current_user)
     if @post.save
       redirect_to root_path
     else
