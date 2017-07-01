@@ -39,7 +39,7 @@ feature 'posts' do
       click_button 'Create Post'
       expect(page).to have_content 'error'
     end
-  end 
+  end
 
 end
 

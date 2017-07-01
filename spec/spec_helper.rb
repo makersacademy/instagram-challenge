@@ -29,7 +29,7 @@ RSpec.configure do |config|
   end
 
   # Delete the test_files after the test suite runs
-  
+
   config.after(:suite) do
     FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
   end
