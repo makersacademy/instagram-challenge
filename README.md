@@ -30,6 +30,11 @@ I want to be able to delete photos I've uploaded.
 
 As a user,
 So that I can take back comments I made when drunk,
-I want to be able to delete comments. 
+I want to be able to delete comments.
 
 ```
+
+## Tech Stack
+* Ruby on Rails
+* Carrierwave
+* Clearance
