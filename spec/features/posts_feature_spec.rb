@@ -26,4 +26,17 @@ feature 'posts' do
 
   end
 
+  context 'create posts' do
+
+    scenario 'user fills a form to create a post and then displays the post' do
+      visit '/'
+      click_link 'Add Post'
+      fill_in 'Description', with: 'My fantastic dinner'
+      click_button 'Create Post'
+      expect(page).to have_content 'My fantastic dinner'
+      expect(current_path).to eq '/'
+    end
+    
+  end
+
 end
