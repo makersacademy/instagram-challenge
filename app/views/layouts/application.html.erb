@@ -28,20 +28,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <%= link_to "Estagram", root_url, class: "navbar-brand" %>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">About</a>
+                      <%= link_to "New Post", new_post_url %>
+                    </li>
+          
+                    <% if signed_in? %>
+                      Signed in as: <%= current_user.email %>
+                      <%= button_to 'Logout', sign_out_path, method: :delete %>
+                    <% else %>
+                    <li>
+                      <%= link_to 'Login', sign_in_path %>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                      <%= link_to 'Register', sign_up_path %>
                     </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
+                    <% end %>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -62,12 +68,6 @@
     </div>
     <!-- /.container -->
     
-    <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
-    <% end %>
 
     <div id="flash">
       <% flash.each do |key, value| %>
