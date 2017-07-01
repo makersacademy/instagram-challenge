@@ -38,8 +38,10 @@
                     </li>
           
                     <% if signed_in? %>
-                      Signed in as: <%= current_user.email %>
-                      <%= button_to 'Logout', sign_out_path, method: :delete %>
+                    <li>
+                      <%= link_to 'Logout', sign_out_path, method: :delete %>
+                    </li>
+                  <span> Welcome: <%= current_user.email %> </span>
                     <% else %>
                     <li>
                       <%= link_to 'Login', sign_in_path %>
@@ -60,20 +62,19 @@
 
         <div class="row">
             <div class="col-lg-12 text-center">
-              <%= yield %>
+                <div id="flash">
+                    <% flash.each do |key, value| %>
+                      <div class="flash <%= key %>"><%= value %></div>
+                    <% end %>
+                </div>
+                <%= yield %>
             </div>
         </div>
         <!-- /.row -->
 
     </div>
     <!-- /.container -->
-    
-
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
-    </div>
+  
     
 
   </body>
