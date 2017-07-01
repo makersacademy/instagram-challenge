@@ -8,6 +8,7 @@ require 'rspec/rails'
 require "clearance/rspec"
 require "support/features/clearance_helpers"
 require "helpers/photos_helpers"
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
