@@ -6,16 +6,19 @@
 </head>
 <body>
 
-  <%= form_for @post, html: { multipart: true } do |f| %>
-  <%= link_to image_tag(@post.image.url(:med)), @post.image.url %>
-  <% validates :avatar, :attachment_presence => true %>
-
-  <%= f.label :title %>
-  <%= f.text_field :title %>:<br />
-
-  <%= f.submit "Upload picture"%>
+  <%= form_for @post do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Add an image' %>
+  </div>
   <% end %>
-
 
 </body>
 </html>
