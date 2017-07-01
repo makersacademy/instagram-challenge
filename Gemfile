@@ -41,6 +41,9 @@ group :development, :test do
   gem "rubocop", "0.48.1"
   gem "rubocop-rails"
   gem 'selenium-webdriver'
+  gem 'orderly'
+  gem 'rspec'
+  gem 'rspec-rails'
 end
 
 group :development do
