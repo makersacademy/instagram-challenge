@@ -40,7 +40,7 @@ gem 'carrierwave', '~> 1.0'
 # Use Clearance for Email and Password Authentication
 gem 'clearance'
 # Use Factory Girl to help creating tests for Clearance
-gem 'factory_girl'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -49,6 +49,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.5'
+  # Use Factory Girl to help creating tests for Clearance
+  gem 'factory_girl_rails'
 end
 
 group :development do
