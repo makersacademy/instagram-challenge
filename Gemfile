@@ -38,6 +38,7 @@ gem 'rails-controller-testing'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+gem "twitter-bootstrap-rails"
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'

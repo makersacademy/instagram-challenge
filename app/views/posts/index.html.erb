@@ -1,23 +1,12 @@
 
-<h1>Posts</h1>
+<h1>What are other people sharing</h1>
 
-<table>
-  <tbody>
+<center>
     <% @posts.each do |post| %>
-      <tr id="<%=post.id.to_s%>"
+      <div id='<%=post.id.to_s%>'>
+         <div class='post-link'><%= link_to( image_tag(post.picture.url), post) %></div>
 
-          <a href="/posts/<%=post.id.to_s%>">
-            <%if post.picture? %>
-              <%= image_tag post.picture.url%>
-            <% else %>
-              No image available
-            <% end %>
-          </a>
-      </tr>
     <% end %>
-  </tbody>
-</table>
-
+</div>
+</center>
 <br>
-
-<%= link_to 'New Post', new_post_path %>
