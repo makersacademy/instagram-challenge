@@ -18,6 +18,7 @@ The challenge is to build Instagram using Rails.
 - Haml
 - HTML, Sass
 - Travis CI
+- Amazon S3 (for image hosting)
 
 ## Do you want to give it a try ?
 - Clone this repository
