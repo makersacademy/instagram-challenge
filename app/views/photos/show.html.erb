@@ -3,27 +3,27 @@
 
 <div class="container">
 
-  <div class="photo_header">
-    <h3><%= @photo.name %></h3>
-  </div>
-
   <div class="photo_container">
-    <img class="photo" src="<%= @photo.photo_file %>" alt="<%= @photo.name %>">
-  </div>
+    <div class="photo_header">
+      <p><%= @photo.name %></p>
+    </div>
+
+    <div class="photo_body" id="photo_id_<%= @photo.id %>">
+      <img class="photo_body" src="<%= @photo.photo_file %>" alt="<%= @photo.name %>">
+    </div>
 
   <div class="comment_container">
-    <%= form_for ([@photo, @photo.comments.build])  do |f| %>
-    <h2>Comments:</h2>
-      <p>
-        <%= f.label :text %></br>
-        <%= f.text_area :text %></br>
-        <%= f.submit %>
-      </p>
-    <% end %>
-
-    <% @photo.comments.reverse.each do |comment| %>
-      <p><%= comment.text %></p>
-    <% end %>
+    <div class="comment_header">
+      <%= form_for ([@photo, @photo.comments.build])  do |f| %>
+        <%= f.text_area :text, class: 'comment_box', name:'Text' %></br>
+        <%= f.submit class: "btn btn-primary btn-sm" %>
+      <% end %>
+    </div>
+    <div class="comment_body">
+      <% @photo.comments.reverse.each do |comment| %>
+        <p><%= comment.text %></p>
+      <% end %>
+    </div>
   </div>
 
 </div>

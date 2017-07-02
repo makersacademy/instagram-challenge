@@ -18,7 +18,7 @@
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
               <span class="sr-only">Toggle navigation</span>
             </button>
-            <a class="navbar-brand" href="/posts">Instabann</a>
+            <a class="navbar-brand" href="/photos">Instabann</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -29,10 +29,12 @@
             <ul class="nav navbar-nav navbar-right">
               <% if signed_in? %>
                 <p class="navbar-text">Welcome <%= current_user.email %></a></p>
+              <% end %>
               <li>
+                <% if signed_in? %>
                   <%= button_to 'Sign out', sign_out_path, method: :delete, :class => "btn btn-default navbar-btn" %>
                 <% else %>
-                  <%= link_to 'Sign in', sign_in_path %>
+                  <%= button_to 'Sign in', photos_path, :class => "btn btn-default navbar-btn" %>
                 <% end %>
               </li>
             </ul>
