@@ -8,6 +8,11 @@ RSpec.feature "Post a Photo", type: :feature do
     expect(page).to have_xpath("//img[contains(@src,'test_image.png')]")
   end
 
+   scenario "Can't submit a file that's not an image" do
+    post_image("text", "test.txt")
+    expect(page).not_to have_content("Text")
+  end
+
   scenario "Can't submit photo without title" do
     sign_up
     visit("/")
