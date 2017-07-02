@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :photo do
     name "MyString"
-    photo_file "MyString"
+    image "MyString"
     string "MyString"
   end
 end

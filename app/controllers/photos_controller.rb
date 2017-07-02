@@ -22,6 +22,6 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:name, :photo_file)
+    params.require(:photo).permit(:name, :image, :remove_image, :image_cache, :remote_image_url)
   end
 end
