@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 
 <p>
@@ -10,6 +10,15 @@
   <strong>Picture:</strong>
    <%= image_tag @post.picture.url if @post.picture? %>
   <br> Comments
+
+<% if @post.liked_by(current_user) %>
+<%= button_to "Unlike", post_like_path(@post.id, @post.find_likes(current_user)), method: :delete, class: "like_button" %>
+ <% else %>
+ <%= button_to "Like", post_likes_path(@post.id), class: "like_button" %>
+  <% end %>
+
+likes count: <%= @count %>
+
 
 <ul>
 <% @comments.each do |comment| %>
@@ -28,6 +37,3 @@
 
   <%= form.submit "Submit" %>
 <% end %>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>

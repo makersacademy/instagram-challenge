@@ -1,26 +1,18 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Content</th>
-      <th>Picture</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @posts.each do |post| %>
-      <tr id=<%=post.id.to_s%>>
-        <td><%= User.find(post.user_id).email %></td>
-        <td><%= post.content %></td>
-        <td>  <%= image_tag post.picture.url if post.picture? %>td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr id="<%=post.id.to_s%>"
+
+          <a href="/posts/<%=post.id.to_s%>">
+            <%if post.picture? %>
+              <%= image_tag post.picture.url%>
+            <% else %>
+              No image available
+            <% end %>
+          </a>
       </tr>
     <% end %>
   </tbody>
