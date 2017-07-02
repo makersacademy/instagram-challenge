@@ -65,6 +65,7 @@ group :development do
   # Rubocop is a static code analyzer
   gem 'rubocop', '0.48.1'
   gem 'rubocop-rails'
+  gem 'rails_real_favicon'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
