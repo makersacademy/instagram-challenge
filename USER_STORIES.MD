@@ -12,7 +12,7 @@ I want to be able to sign in
 
 ```
 As a user
-So I can avoid other people using my account
+So I can secure my account
 I want to be able to sign out
 ```
 
@@ -20,6 +20,18 @@ I want to be able to sign out
 As a user
 So I can share my art
 I want to be able to display my photos on Simstagram
+```
+
+```
+As an admin
+So Simstagram is always visually interesting
+I want to stop people making posts without images
+```
+
+```
+As a user
+So I'm always riding the zeitgeist
+I want to see a list of photos from newest to oldest
 ```
 
 ```
