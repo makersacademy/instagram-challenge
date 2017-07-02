@@ -239,3 +239,61 @@ Processing by Clearance::SessionsController#new as HTML
 Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4399411627241260770);[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4399411627241260770)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-07-02 22:30:24 +0100
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WelcomeController#show as HTML
+  Rendering welcome/show.html.erb within layouts/application
+  Rendered welcome/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 183ms (Views: 175.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2017-07-02 22:30:26 +0100
+Processing by Clearance::SessionsController#new as HTML
+  Rendering /Users/ro/.rvm/gems/ruby-2.4.0/gems/clearance-1.16.0/app/views/sessions/new.html.erb within layouts/application
+  Rendered /Users/ro/.rvm/gems/ruby-2.4.0/gems/clearance-1.16.0/app/views/sessions/_form.html.erb (6.4ms)
+  Rendered /Users/ro/.rvm/gems/ruby-2.4.0/gems/clearance-1.16.0/app/views/sessions/new.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 40ms (Views: 39.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2017-07-02 22:30:37 +0100
+Processing by Clearance::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "session"=>{"email"=>"test1@test.com", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@test.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 107ms (ActiveRecord: 9.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-02 22:30:37 +0100
+Processing by WelcomeController#show as HTML
+  Rendering welcome/show.html.erb within layouts/application
+  Rendered welcome/show.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "9ff7e8d9292c395d442e1786dfe364fd6fc49011"], ["LIMIT", 1]]
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/sign_out" for 127.0.0.1 at 2017-07-02 22:30:42 +0100
+Processing by Clearance::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "9ff7e8d9292c395d442e1786dfe364fd6fc49011"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_token", "7b799d6d3c6393d79212dfce305c92b126a245c5"], ["updated_at", "2017-07-02 21:30:42.117099"], ["id", 1]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 6ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2017-07-02 22:30:42 +0100
+Processing by Clearance::SessionsController#new as HTML
+  Rendering /Users/ro/.rvm/gems/ruby-2.4.0/gems/clearance-1.16.0/app/views/sessions/new.html.erb within layouts/application
+  Rendered /Users/ro/.rvm/gems/ruby-2.4.0/gems/clearance-1.16.0/app/views/sessions/_form.html.erb (1.4ms)
+  Rendered /Users/ro/.rvm/gems/ruby-2.4.0/gems/clearance-1.16.0/app/views/sessions/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 20ms (Views: 19.9ms | ActiveRecord: 0.0ms)
+
+
