@@ -6,6 +6,12 @@ module Features
       click_button I18n.t("helpers.submit.password.submit")
     end
 
+    def create_user
+      password = "password"
+      username = "username"
+      user = FactoryGirl.create(:user, username: username, password: password)
+    end
+
     def sign_in
       password = "password"
       username = "username"

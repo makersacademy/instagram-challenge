@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
 
-  post = Post.create(caption: 'Lorem Ipsum', image: 'img.jpeg')
+  password = "password"
+  username = "username"
+  user = FactoryGirl.create(:user, username: username, password: password)
+  post = user.posts.create(caption: 'Lorem Ipsum', image: 'img.jpeg')
   comment = post.comments.create(body: 'Lorem Ipsum')
 
   it 'should have a body' do
