@@ -10,6 +10,7 @@ RSpec.describe "posts/show", type: :view do
       :picture => "Picture",
       :user_id => user.id
     ))
+    @comments = @post.comments
   end
 
   it "renders attributes in <p>" do
