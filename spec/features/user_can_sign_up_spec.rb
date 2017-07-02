@@ -12,4 +12,19 @@ RSpec.feature "User Signup", type: :feature do
     expect(current_path).to eq("/users/new")
   end
 
+  scenario "Can't sign up without a name" do
+    sign_up(nil, "test@email.com", "password", "wrongpassword")
+    expect(current_path).to eq("/users/new")
+  end
+
+  scenario "Can't sign up without an email" do
+    sign_up("Test_User", nil, "password", "wrongpassword")
+    expect(current_path).to eq("/users/new")
+  end
+
+  scenario "Can't sign up without a password" do
+    sign_up("Test_User", "test@email.com", nil, nil)
+    expect(current_path).to eq("/users/new")
+  end
+
 end

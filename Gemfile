@@ -44,10 +44,12 @@ group :development, :test do
   gem 'selenium-webdriver'
   #Testing framework for rails
   gem 'rspec-rails', '~> 3.5'
-  # 
+  # Fixtures
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'rails-controller-testing'
+  # Tests Order of Items on page
+  gem 'orderly'
 end
 
 group :development do
