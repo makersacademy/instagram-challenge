@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'clearance'
+gem 'bulma-rails'
+gem 'font-awesome-rails'
 
 
 group :development, :test do
