@@ -8,7 +8,8 @@ module Features
 
     def sign_in
       password = "password"
-      user = FactoryGirl.create(:user, password: password)
+      username = "username"
+      user = FactoryGirl.create(:user, username: username, password: password)
       sign_in_with user.email, password
     end
 
@@ -23,10 +24,11 @@ module Features
       click_button I18n.t("layouts.application.sign_out")
     end
 
-    def sign_up_with(email, password)
+    def sign_up_with(email, password, username)
       visit sign_up_path
       fill_in "user_email", with: email
       fill_in "user_password", with: password
+      fill_in "user_username", with: username
       click_button I18n.t("helpers.submit.user.create")
     end
 
