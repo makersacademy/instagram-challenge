@@ -1,10 +1,7 @@
 class PicturesController < ApplicationController
 
   def show
-    @pictures = Picture.all.map do |pic|
-      pic.comments << Comment.new({body: "comment1", commenter: "Charlotte"})
-      pic
-    end
+    @pictures = Picture.all
     render :index
   end
 

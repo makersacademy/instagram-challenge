@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get '/', to: "pictures#show"
   get '/new', to: "pictures#new"
   post '/new', to: "pictures#create"
+  post '/new_comment', to: "comments#create"
 end

@@ -14,11 +14,17 @@
     </li>
 
     <h3>Comments</h3>
-    <% picture.comments.each do |comment| %>
-    <p>
-      <p><%= comment.body %></p>
-    </p>
-    <% end %>
+        <% picture.comments.each do |comment| %>
+          <p><%= comment.body %></p>
+        <% end %>
+
+    <h3>Add Comment</h3>
+        <%= form_for([picture, picture.comments.build], url: "/new_comment") do |form| %>
+          <%= form.hidden_field(:picture_id, {:value => picture.id}) %>
+          <%= form.label(:body, "comment:") %>
+          <%= form.text_field(:body) %>
+          <%= form.submit("Add your comment") %>
+        <% end %>
     <% end %>
   </ul>
 </body>
