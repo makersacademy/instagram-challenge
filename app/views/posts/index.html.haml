@@ -15,5 +15,9 @@
               .post-comments
                 %span.post-user #{comment.user.username} 
                 %span.post-comment #{comment.message}
+          = form_for [post, post.comments.build], :html => { :class => "form-inline post-comment-form" } do |f|
+            .form-group
+            = f.text_area :message, placeholder: 'Add a comment...', class: 'form-control post-comment-input'
+            = f.submit 'Comment', class: 'btn btn-default btn-comment-submit'
     - else
       %h1 No posts available
