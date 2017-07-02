@@ -34,7 +34,7 @@ I spent a lot of my first day of this trying to get Rails set up with all the ap
 
 The above shows the first semi presentable version, with no functions other than signing up and logging in. I also added a log out functionality because probably nobody wants to be logged in permanently, then I started to add the Post model. 
 
-I found the Post model a lot harder to work with for a few reasons: firstly, it depended on the User model and secondly I was using sqlite3 rather than my usual postgresql. After an extremely long time spent trying to get posts added to the database, I then had to make sure that the carrierwave gem was installed properly, and then figured out how to get pictures to appear.
+I found the Post model a lot harder to work with for a few reasons: firstly, it depended on the User model and secondly I was using sqlite3 rather than my usual postgresql. After an extremely long time spent trying to get posts added to the database, I then had to make sure that the carrierwave gem was installed properly, and eventually figured out how to get pictures to appear.
 
 ![Mid Vaporgram](https://github.com/wemmm/instagram-challenge/blob/master/app/assets/images/vaporgram2.png)
 
@@ -48,15 +48,18 @@ Then I made it look even worse.
 
 - Controller tests.
 
-- I would like to add show routes for posts and users. 
+- I would like to add show routes for posts and users (basically a comments page and a user profile).
 
-- I am quite happy with my progress so far! It's pretty solid so I think extending the code to add some or all of these features is pretty doable.
+- I am quite happy with my progress on this one! It's pretty solid so I think extending the code to add some or all of these features is pretty doable.
 
 ### Do I Understand Rails?
 
 Much, much better than I did two days ago.
 
 ### User Stories
+
+Here are the user stories I generated before starting work on the project:
+
 ```
 As a user,
 so that I can share my photos with the strangers of the internet,
@@ -103,4 +106,5 @@ I would like the choice to add a filter to my photos.
 
 - Questionable a e s t h e t i c 
 - Currently incompatible with Heroku due to sqlite3
+- CSS is a bit glitchy but perhaps that is a feature?
 
