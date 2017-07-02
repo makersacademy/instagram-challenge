@@ -1,4 +1,4 @@
-#Incomplete:
+# Incomplete:
 
 ```
 As a user
@@ -30,7 +30,7 @@ So I can simulate artistic ability
 I want to add filters to my photos
 ```
 
-#Complete:
+# Complete:
 
 ```
 As a person
