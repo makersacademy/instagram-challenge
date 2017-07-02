@@ -2,6 +2,7 @@
 
 <% if signed_in? %>
   <%= current_user.email %>
+  <%= button_to "Post Photo", new_post_path, method: :get %>
   <%= button_to "Sign out", sign_out_path, method: :delete %>
 <% else %>
   <%= link_to "Sign in", sign_in_path %>
@@ -18,18 +19,19 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 <%post.comments.each do |comment|%>
-<%=comment.commenter%><br>
+<%=comment.commenter%>:
 <%=comment.body%><br>
 <%end%>
 
 <h2>Add a comment:</h2>
 <%= form_for([post, post.comments.build]) do |f| %>
   <div class="field">
-    <%= f.label :commenter %><br />
-    <%= f.text_field :commenter %>
+    <!-- <%= f.label :commenter %><br /> -->
+    <!-- <%= current_user.email %><br -->
+    <!-- <%= f.text_field :commenter %> -->
   </div>
   <div class="field">
-    <%= f.label :body %><br />
+    <!-- <%= f.label :body %><br /> -->
     <%= f.text_area :body %>
   </div>
   <div class="actions">
