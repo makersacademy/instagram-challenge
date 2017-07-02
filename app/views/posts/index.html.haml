@@ -1,15 +1,10 @@
-- if @posts.any?
-  - @posts.each do |post|
-    %p= post.description
-    = image_tag post.image(:thumb)
-    %p Posted by: #{post.user.username}
-- else
-  %h1 No posts available
-.add-post
-  = link_to 'Add Post', new_post_path
-.user-actions
-  - if user_signed_in?
-    = link_to 'Sign out', destroy_user_session_path, method: :delete
-  - else
-    = link_to 'Sign in', new_user_session_path
-    = link_to 'Sign up', new_user_registration_path
+.container
+  .row.post-list
+    - if @posts.any?
+      - @posts.each do |post|
+        .post
+          %p.post-author Posted by: #{post.user.username}
+          = image_tag post.image(:large), class: 'post-image'
+          %p.post-description= post.description
+    - else
+      %h1 No posts available

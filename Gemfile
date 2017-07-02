@@ -36,6 +36,10 @@ gem 'paperclip', '~> 5.0.0'
 # Authentication
 gem 'devise'
 
+# Bootstrap
+gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 3.3.6'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -61,6 +65,7 @@ group :development do
   # Rubocop is a static code analyzer
   gem 'rubocop', '0.48.1'
   gem 'rubocop-rails'
+  gem 'rails_real_favicon'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -1,14 +1,18 @@
-- if @post.errors.any?
-  %section#errors
-    %h2
-      = pluralize @post.errors.count, 'error'
-      don't allow this post to be saved:
-    %ul
-      - @post.errors.full_messages.each do |message|
-        %li= message
-= form_for @post, html: { multipart: true } do |f|
-  = f.label :image
-  = f.file_field :image
-  = f.label :description
-  = f.text_field :description
-  = f.submit
+.container
+  %h1 Add Post
+  - if @post.errors.any?
+    %section#errors
+      %h2
+        = pluralize @post.errors.count, 'error'
+        don't allow this post to be saved:
+      %ul
+        - @post.errors.full_messages.each do |message|
+          %li= message
+  = form_for @post, html: { multipart: true } do |f|
+    .form-group
+      = f.label :image
+      = f.file_field :image, class: 'form-control'
+    .form-group
+      = f.label :description
+      = f.text_field :description, class: 'form-control'
+    = f.submit 'Create Post', class: 'btn btn-default'
