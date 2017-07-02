@@ -1,3 +1,50 @@
+# README
+
+Week8 Weekend Challenge: Building Instagram.
+
+## User Stories
+
+```
+
+As a user
+So that I can post pictures in my name
+I want to be able to create an account with email, username and password
+
+As a user
+So that I can use the site safely
+I want to be able to sign in and out
+
+As a user
+So that I can express my inner Hipster
+I want to be able to post photos on Hipstagram with a description
+
+As a user
+So that I can show which photos I like
+I want to be able to like posted photos on Hipstagram
+
+As a user
+So that I can express my thoughts on photos
+I want to be able to comment on posted photos
+
+As a user
+So that I have good feeling when visiting Hipstagram
+I want the site to have a appealing design.
+
+```
+
+## Stack:
+
+- Ruby on Rails
+- PostgreSQL
+- HTML
+- CSS
+
+
+
+
+
+Original Instructions:
+
 Instagram Challenge
 ===================
 
