@@ -6,12 +6,12 @@ RSpec.describe "posts/index", type: :view do
     assign(:posts, [
       Post.create!(
         :content => "MyText",
-        :picture => "Picture",
+        :picture => "https://pbs.twimg.com/profile_images/3087236754/91e379b7e0006d38ee0526946a38a1ea_400x400.png",
         :user_id => user.id
       ),
       Post.create!(
         :content => "MyText",
-        :picture => "Picture",
+        :picture => "https://pbs.twimg.com/profile_images/3087236754/91e379b7e0006d38ee0526946a38a1ea_400x400.png",
         :user_id => user.id
       )
     ])
@@ -20,6 +20,5 @@ RSpec.describe "posts/index", type: :view do
   it "renders a list of posts" do
     render
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => "Picture".to_s, :count => 2
   end
 end
