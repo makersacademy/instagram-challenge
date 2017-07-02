@@ -59,16 +59,16 @@ Bonus if you can add filters!
 My Approach
 ----
 - **Card wall & estimation** - I started the project by creating a Trello card wall of the different User stories, including an estimation using the Makers points scale on the time it would take to complete.
-![Imgur](http://imgur.com/a/WSSBq)
-![Imgur](http://imgur.com/a/LiuNh)
+![Imgur](http://i.imgur.com/2JsqWGW.png)
+![Imgur](http://i.imgur.com/h6Isxms.png)
 - **Users can post a picture** - I started my project by with the most useful feature the MVP could achieve: that a user could post pictures.I used [Paperclip](https://github.com/thoughtbot/paperclip) as my file attachment manager of choice.
-![Imgur](http://imgur.com/a/gCFtu)
+![Imgur](http://i.imgur.com/QQxW9kW.png)
 The Picture model has two key properties: a description, and an image.
 - **Users can post comments** - I then built the next most useful feature: allowing users to add comments to posts. I did this by generating a new Comment model that belonged to the Picture model.
-![Imgur](http://imgur.com/a/8QS8C)
+![Imgur](http://i.imgur.com/GYg0M49.png)
 - **Users must be signed in to use Innstagram** - After completing two of the core features and having an MVP that met most of the requirements, I then included [Clearance](https://github.com/thoughtbot/clearance) as my rails authentication of choice. Before users can upload a picture or comment they must be signed up, or signed in.
-![Imgur](http://imgur.com/a/rkxz5)
-![Imgur](http://imgur.com/a/b6Q8y)
+![Imgur](http://i.imgur.com/po4w7y4.png)
+![Imgur](http://i.imgur.com/6GJ5NNY.png)
 
 Challenges
 ----
