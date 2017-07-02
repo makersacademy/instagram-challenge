@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def show
-
+    @post = Post.first
   end
 
   private
