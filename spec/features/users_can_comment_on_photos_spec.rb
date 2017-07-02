@@ -8,7 +8,6 @@ RSpec.feature "User can comment on photos" do
     visit photos_url
     click_button 'Comment'
     expect(current_path).to match("/photos/#{@photo.id}")
-    save_and_open_page
     fill_in 'Text', with: 'Lovely photo!'
     click_button 'Create Comment'
     expect(page).to have_content('Lovely photo!')
