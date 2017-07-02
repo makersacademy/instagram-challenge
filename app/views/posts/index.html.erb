@@ -12,6 +12,11 @@
 <%=post.caption%><br>
 <%= button_to "Like", post_likes_url(post), method: :post %>
 <%= Like.where(post_id: post.id).length%>
+<%@like = Like.find_by(post_id: post.id, user_id: current_user.id)%>
+
+<% if flash[:post_id].to_i == post.id %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
 <%post.comments.each do |comment|%>
 <%=comment.commenter%><br>
 <%=comment.body%><br>
