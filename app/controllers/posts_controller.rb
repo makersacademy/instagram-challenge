@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :require_login, only: [:create, :new]
+  before_action :require_login, only: [:create, :new, :show]
+  before_action :owner_of_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -41,5 +42,12 @@ class PostsController < ApplicationController
   def set_post
     @post = Post.find(params[:id])
   end
+
+  def owner_of_post
+  unless current_user == @post.user
+    flash[:alert] = "You can't modify a post that's not yours"
+    redirect_to root_path
+  end
+end
 
 end

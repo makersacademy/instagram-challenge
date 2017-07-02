@@ -15,5 +15,6 @@ RSpec.describe Comment, type: :model do
   it 'should have the ID of parent post' do
     expect(comment.post_id).to eq(post.id)
   end
+# 
 
 end
