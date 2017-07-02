@@ -56,6 +56,50 @@ Your challenge is to build Instagram using Rails. You'll need users who can post
 
 Bonus if you can add filters!
 
+My User stories
+----
+```
+As a User
+So that I can share my life
+I want to post a picture
+```
+
+```
+As a User
+So that I can see the latest pictures
+I want pictures to appear in chronological order
+```
+
+```
+As a User
+So that I can be social
+I want to leave comments on pictures
+```
+
+```
+As a User
+So that I can show when I enjoy a picture
+I want to like a picture
+```
+
+```
+As a User
+So that I can see how popular pictures are
+I want to see the number of likes a picture has
+```
+
+```
+As a User
+So that I can easily use Instagram
+I want to have clear navigation options
+```
+
+```
+As a User
+So that I can improve my pictures
+I want to use filters
+```
+
 My Approach
 ----
 - **Card wall & estimation** - I started the project by creating a Trello card wall of the different User stories, including an estimation using the Makers points scale on the time it would take to complete.
