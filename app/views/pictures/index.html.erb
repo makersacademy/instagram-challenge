@@ -5,14 +5,21 @@
 </head>
 
 <body>
-<ul>
-<% @pictures.each do |picture| %>
-  <li>
+  <ul>
+    <% @pictures.each do |picture| %>
+    <li>
       Description: <%= picture.description %><br>
-       <%= image_tag picture.image.url(:medium) %><br>
+      <%= image_tag picture.image.url(:medium) %><br>
       <br>
-  </li>
-<% end %>
-</ul>
+    </li>
+
+    <h3>Comments</h3>
+    <% picture.comments.each do |comment| %>
+    <p>
+      <p><%= comment.body %></p>
+    </p>
+    <% end %>
+    <% end %>
+  </ul>
 </body>
 </html>
