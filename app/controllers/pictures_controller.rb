@@ -6,5 +6,10 @@ class PicturesController < ApplicationController
     render :index
   end
 
+  def new
+    @picture = Picture.new
+    render :new
+  end
+  
 
 end
