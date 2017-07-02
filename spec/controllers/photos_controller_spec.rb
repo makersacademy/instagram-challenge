@@ -2,6 +2,7 @@ require 'rails_helper'
 require_relative './helpers/photos_controller_helpers_spec'
 
 RSpec.describe PhotosController, type: :controller do
+    
     before(:each) do
         @new_photo = create(:photo)
     end
@@ -54,6 +55,7 @@ RSpec.describe PhotosController, type: :controller do
             get :show, params: { id: @new_photo.id }
             expect(assigns(:photo)).to eq(@new_photo)
         end
+
     end
 
     describe "POST Create" do
@@ -72,7 +74,7 @@ RSpec.describe PhotosController, type: :controller do
             post :create, params: { photo: {title: "New Photo", image_file: upload_file  } }
             expect(assigns(:photo)).to eq(most_recent_photo)
         end
-        
+
     end
 
 end
