@@ -37,6 +37,7 @@ gem 'paperclip', '~> 5.0.0'
 gem 'devise'
 
 # Bootstrap
+gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 # Use ActiveModel has_secure_password
