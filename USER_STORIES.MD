@@ -1,3 +1,37 @@
+#Incomplete:
+
+```
+As a user
+So I can express my feelings
+I want to be able to comment on a photo
+```
+
+```
+As a user
+So I can quickly show my appreciation
+I want to be able to like a photo
+```
+
+```
+As a fickle user
+So I can rescind my approval
+I want to be able to unlike a photo
+```
+
+```
+As a user
+So I can show the world how wonderful and artistic I am
+I want a profile page with all my photos
+```
+
+```
+As a creatively bankrupt user
+So I can simulate artistic ability
+I want to add filters to my photos
+```
+
+#Complete:
+
 ```
 As a person
 So I can use Simstagram to it's fullest
@@ -38,34 +72,4 @@ I want to stop people making posts without images
 As a user
 So I'm always riding the zeitgeist
 I want to see a list of photos from newest to oldest
-```
-
-```
-As a user
-So I can express my feelings
-I want to be able to comment on a photo
-```
-
-```
-As a user
-So I can quickly show my appreciation
-I want to be able to like a photo
-```
-
-```
-As a fickle user
-So I can rescind my approval
-I want to be able to unlike a photo
-```
-
-```
-As a user
-So I can show the world how wonderful and artistic I am
-I want a profile page with all my photos
-```
-
-```
-As a creatively bankrupt user
-So I can simulate artistic ability
-I want to add filters to my photos
 ```
