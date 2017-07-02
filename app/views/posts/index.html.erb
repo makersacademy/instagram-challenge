@@ -1,0 +1,9 @@
+<%= button_to 'New Post', new_post_path, method: :get %><br>
+
+<% @posts.reverse_each do |post| %>
+    <%= image_tag(post.photo) %>
+    By <%= post.user.email %>
+      <%= simple_format(post.caption) %><br><br>
+    <%= post.created_at.strftime("%d/%m/%Y %H:%M") %>
+    <%= link_to 'Show', post_path(post)%>
+<% end %>

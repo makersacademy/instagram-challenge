@@ -2,12 +2,13 @@ require "rails_helper"
 
 RSpec.feature 'Picture Post' do
   scenario 'User can post a picture' do
+    sign_in
     visit '/posts/new'
-    click_button 'Upload a Photo'
-    fill_in 'photo_pajh', with: 'image/path/route'
-    fill_in 'Caption'
-    click_button 'Upload'
-    expect(current_path).to be '/posts'
-    expect(page).to contain 'image'
+    attach_file('post_photo', Rails.root + "public/images/infiltration_cat.jpg")
+    fill_in 'post_caption', with: 'Day 47: Meerkats Infiltrated'
+    click_button 'Submit'
+    expect(current_path).to eq '/posts'
+    expect(page).to have_content 'Day 47: Meerkats Infiltrated'
+    expect(page).to have_xpath("//img[contains(@src,'infiltration_cat.jpg')]")
   end
 end
