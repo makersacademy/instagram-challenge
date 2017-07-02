@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 
+    before_action :authorize, only: [:create, :new]
+
     def new
     end
 

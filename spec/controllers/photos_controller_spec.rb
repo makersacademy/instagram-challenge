@@ -5,6 +5,8 @@ RSpec.describe PhotosController, type: :controller do
     
     before(:each) do
         @new_photo = create(:photo)
+        @user = create(:user)
+        session[:user_id] = @user.id
     end
 
     describe "GET index" do

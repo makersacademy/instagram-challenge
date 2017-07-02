@@ -28,4 +28,12 @@ RSpec.feature "Post a Photo", type: :feature do
     expect(page).to have_content("New Photo")
     expect(page).to have_xpath("//img[contains(@src,'test_image.png')]")
   end
+
+  scenario "Can't post photo unless logged in" do
+    log_out
+    visit("/")
+    expect(page).not_to have_content("New Photo")
+    visit("photos/new")
+    expect(current_path).to eq("/")
+  end
 end

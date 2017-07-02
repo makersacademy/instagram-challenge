@@ -16,6 +16,7 @@
 RSpec.configure do |config|
   require 'factory_girl_rails'
   require 'test_helpers/photo_helpers_spec'
+  require 'test_helpers/user_helpers_spec'
 
   config.after(:each) do
     if Rails.env.test? || Rails.env.cucumber?

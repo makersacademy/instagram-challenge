@@ -3,4 +3,12 @@ Rails.application.routes.draw do
   resources :photos
 
   root 'photos#index'
+
+  get  '/session/new' => 'sessions#new'
+  post '/session/new' => 'sessions#create'
+  get  '/session/destroy' => 'sessions#destroy'
+
+  get  '/users/new' => 'users#new'
+  post '/users' => 'users#create'
+
 end

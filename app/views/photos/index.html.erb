@@ -1,5 +1,11 @@
-<h1> Welcome to Simstagram! </h1>
-<%= button_to 'New Photo', new_photo_path, method: :get %><br>
+<% if current_user %>
+    <h1> Welcome to Simstagram <%= current_user.display_name %>! </h1>
+    <%= button_to 'New Photo', new_photo_path, method: :get %><br>
+<% else %>
+    <h1> Welcome to Simstagram! </h1>
+    <%= button_to 'Sign Up', '/users/new', method: :get %><br>
+    <%= button_to 'Log In', '/session/new', method: :get %><br>
+<% end %>
 
 <%if @photos.any? %>
     <% @photos.each do |photo|%>

@@ -1,12 +1,15 @@
-RSpec.feature "Post a Photo", type: :feature do
+require_relative './helpers/photo_feature_helpers_spec'
 
-  scenario "Can submit a photo and view it" do
-    visit("/")
-    click_button ("New Photo")
-    fill_in "photo_title", with: "New Photo"
-    attach_file("photo_image_file", Rails.root + "spec/support/images/test_image.png")
-    click_button "Save Photo"
-    expect(page).to have_content("New Photo")
-    expect(page).to have_xpath("//img[contains(@src,'test_image.png')]")
+RSpec.feature "User Signup", type: :feature do
+
+  scenario "Users can Sign Up" do
+    sign_up
+    expect(page).to have_content("Welcome to Simstagram Test_User!")
   end
+
+  scenario "Can't sign up if password doesn't match confirmation" do
+    sign_up("Test_User", "test@email.com", "password", "wrongpassword")
+    expect(current_path).to eq("/users/new")
+  end
+
 end

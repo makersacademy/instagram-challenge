@@ -39,6 +39,7 @@ I found it important to get the core functionality of Simstagram working before 
 ## Known Issues/TODOs
 
 - Build Simstagram
+- Tests for Session Controller are all currently pending untill I can      research how best to approach them
 
 ## Acknowledgement
 - Thanks to Jenny Wem (https://github.com/wemmm) for showing me how to write a good README
