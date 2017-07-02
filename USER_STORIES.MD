@@ -23,6 +23,12 @@ I want to be able to display my photos on Simstagram
 ```
 
 ```
+As a user
+So I know who to praise for their work
+I want every photo to show the owners user name
+```
+
+```
 As an admin
 So Simstagram is always visually interesting
 I want to stop people making posts without images
