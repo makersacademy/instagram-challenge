@@ -1,6 +1,7 @@
 <% if current_user %>
     <h1> Welcome to Simstagram <%= current_user.display_name %>! </h1>
     <%= button_to 'New Photo', new_photo_path, method: :get %><br>
+    <%= button_to 'Log Out', '/session/destroy', method: :get %><br>
 <% else %>
     <h1> Welcome to Simstagram! </h1>
     <%= button_to 'Sign Up', '/users/new', method: :get %><br>
@@ -11,7 +12,7 @@
     <% @photos.each do |photo|%>
         <ul>
             <li id="<%= photo.id %>">
-                <%= photo.title %><br>
+                <%= photo.title %> by <%= photo.user.display_name %><br>
                 <img src="<%= photo.image_file_url%>"  width="600"</img>
                 <%= link_to 'Show', photo_path(photo)%>
             </li>

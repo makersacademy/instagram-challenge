@@ -4,8 +4,8 @@ require_relative './helpers/photos_controller_helpers_spec'
 RSpec.describe PhotosController, type: :controller do
     
     before(:each) do
-        @new_photo = create(:photo)
         @user = create(:user)
+        @user.photos.create({title: "New Photo", image_file: upload_file  })
         session[:user_id] = @user.id
     end
 
@@ -23,7 +23,7 @@ RSpec.describe PhotosController, type: :controller do
         
         it "assigns @photos" do
             get :index
-            expect(assigns(:photos)).to eq([@new_photo])
+            expect(assigns(:photos)).to eq([@user.photos[0]])
         end
     end
 
@@ -44,18 +44,18 @@ RSpec.describe PhotosController, type: :controller do
     describe "GET show" do
 
         it "has a 200 status code" do
-            get :show, params: { id: @new_photo.id }
+            get :show, params: { id: @user.photos[0].id }
             expect(response.status).to eq(200)
         end
 
         it "renders the show template" do
-            get :show, params: { id: @new_photo.id }
+            get :show, params: { id: @user.photos[0].id }
             expect(response).to render_template("show")
         end
         
         it "assigns @photo" do
-            get :show, params: { id: @new_photo.id }
-            expect(assigns(:photo)).to eq(@new_photo)
+            get :show, params: { id: @user.photos[0].id }
+            expect(assigns(:photo)).to eq(@user.photos[0])
         end
 
     end

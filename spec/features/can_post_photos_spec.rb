@@ -36,4 +36,9 @@ RSpec.feature "Post a Photo", type: :feature do
     visit("photos/new")
     expect(current_path).to eq("/")
   end
+
+  scenario "Can see user name on photo" do
+    post_image
+    expect(page).to have_content("New Photo by Test_User")
+  end
 end

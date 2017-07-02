@@ -12,4 +12,9 @@ RSpec.describe Photo, type: :model do
   it "Has a file_location" do
     expect(@photo.image_file.filename).to eq "test_image.png"
   end
+
+  it "Has a user" do
+    expect(@photo.user.display_name).to eq "Test_User"
+  end
+
 end
