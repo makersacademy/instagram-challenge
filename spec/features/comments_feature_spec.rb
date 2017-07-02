@@ -2,11 +2,11 @@ require 'rails_helper'
 
 feature 'commenting' do
   before do
-      create(:user)
-      authenticate_user
-      create_post
+    create(:user)
+    authenticate_user
+    create_post
   end
-  
+
   scenario 'allows user to leave a comment on a post' do
     visit '/'
     click_link 'Comment'
