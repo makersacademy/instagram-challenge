@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     # resources :likes
   end
 
-  resources :users
+  resources :users do
+
+  end
 
 end
