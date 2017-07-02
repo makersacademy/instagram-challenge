@@ -1,8 +1,7 @@
 class PicturesController < ApplicationController
 
   def show
-    @pictures = []
-    3.times { |number| @pictures << Picture.new({description: "My pic #{number}" }) }
+    @pictures = Picture.all
     render :index
   end
 
@@ -12,9 +11,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-    saved_pic = Picture.create(picture_params).save
-    puts "THIS IS THE SAVED PIC"
-    puts saved_pic
+    Picture.create(picture_params).save
     redirect_to action: "show"
   end
 
