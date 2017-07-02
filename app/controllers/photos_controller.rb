@@ -1,6 +1,4 @@
 class PhotosController < ApplicationController
-    def index
-    end
 
     def new
     end
@@ -13,7 +11,7 @@ class PhotosController < ApplicationController
     end
 
     def index
-        @photos= Photo.all
+        @photos = Photo.all
     end
 
     def show
