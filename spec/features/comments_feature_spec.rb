@@ -9,9 +9,8 @@ feature 'commenting' do
 
   scenario 'allows user to leave a comment on a post' do
     visit '/'
-    click_link 'Comment'
-    fill_in 'Message', with: 'I love it!'
-    click_button 'Send'
+    fill_in 'comment[message]', with: 'I love it!'
+    click_button 'Comment'
     expect(current_path).to eq '/'
     expect(page).to have_content 'I love it!'
   end

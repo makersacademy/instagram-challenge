@@ -5,12 +5,19 @@
         .post
           %p.post-author Posted by: #{post.user.username}
           = image_tag post.image.url(:large), class: 'post-image'
-          %p.post-description= post.description
+          .post-add-comment
+            = link_to icon('comment-o'), new_post_comment_path(post), class: 'btn-comment'
+          .post-description
+            %span.post-user #{post.user.username} 
+            %span.post-comment #{post.description}
           - if post.comments.any?
             - post.comments.each do |comment|
-              .post-comment
-                %p #{comment.user.username} - #{comment.message}
-          .post-add-comment
-            = link_to 'Comment', new_post_comment_path(post), class: 'btn btn-default btn-comment'
+              .post-comments
+                %span.post-user #{comment.user.username} 
+                %span.post-comment #{comment.message}
+          = form_for [post, post.comments.build], :html => { :class => "form-inline post-comment-form" } do |f|
+            .form-group
+            = f.text_area :message, placeholder: 'Add a comment...', class: 'form-control post-comment-input'
+            = f.submit 'Comment', class: 'btn btn-default btn-comment-submit'
     - else
       %h1 No posts available
