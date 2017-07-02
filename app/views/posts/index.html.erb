@@ -1,0 +1,42 @@
+<h1>Welcome to Quickgram!</h1>
+
+<% if signed_in? %>
+  <%= current_user.email %>
+  <%= button_to "Post Photo", new_post_path, method: :get %>
+  <%= button_to "Sign out", sign_out_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign in", sign_in_path %>
+<% end %>
+
+<%@posts.each do |post|%>
+<%=image_tag(post.image)%><br>
+<%=post.caption%><br>
+<%= button_to "Like", post_likes_url(post), method: :post %>
+<%= Like.where(post_id: post.id).length%>
+<%@like = Like.find_by(post_id: post.id, user_id: current_user.id)%>
+
+<% if flash[:post_id].to_i == post.id %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+<%post.comments.each do |comment|%>
+<%=comment.commenter%>:
+<%=comment.body%><br>
+<%end%>
+
+<h2>Add a comment:</h2>
+<%= form_for([post, post.comments.build]) do |f| %>
+  <div class="field">
+    <!-- <%= f.label :commenter %><br /> -->
+    <!-- <%= current_user.email %><br -->
+    <!-- <%= f.text_field :commenter %> -->
+  </div>
+  <div class="field">
+    <!-- <%= f.label :body %><br /> -->
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%end%>
