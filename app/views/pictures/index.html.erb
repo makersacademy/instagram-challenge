@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <title>Instagram | Share your snaps!</title>
+</head>
+
+<body>
+  <div class="signed_in">
+    <% if signed_in? %>
+    <%= current_user.email %>
+    <%= button_to "Sign out", sign_out_path, method: :delete %>
+    <% else %>
+    <%= link_to "Sign in", sign_in_path %>
+    <% end %>
+
+  <ul>
+    <% @pictures.each do |picture| %>
+    <li>
+      Description: <%= picture.description %><br>
+      <%= image_tag picture.image.url(:medium) %><br>
+      <br>
+    </li>
+
+    <h3>Comments</h3>
+        <% picture.comments.each do |comment| %>
+          <p><%= comment.body %></p>
+        <% end %>
+
+    <h3>Add Comment</h3>
+        <%= form_for([picture, picture.comments.build]) do |form| %>
+          <%= form.hidden_field(:picture_id, {:value => picture.id}) %>
+          <%= form.label(:body, "comment:") %>
+          <%= form.text_field(:body) %>
+          <%= form.submit("Add your comment") %>
+        <% end %>
+    <% end %>
+  </ul>
+</body>
+</html>
