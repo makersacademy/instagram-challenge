@@ -2,9 +2,8 @@ class PicturesController < ApplicationController
 
   before_action :require_login
 
-  def show
+  def index
     @pictures = Picture.all
-    render :index
   end
 
   def new

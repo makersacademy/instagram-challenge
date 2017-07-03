@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @picture = Picture.find(comment_params[:picture_id])
     @comment = @picture.comments.create(comment_params)
 
-    redirect_to "/"
+    redirect_to root_path
   end
 
   private
