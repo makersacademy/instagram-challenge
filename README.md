@@ -38,3 +38,14 @@ I want to be able to delete comments.
 * Ruby on Rails
 * Carrierwave
 * Clearance
+
+## Pending Features (stay tuned)
+* Likes on posts
+* Following users for curated Hipsta-feed
+* Tags on posts
+* Search through feed based on Tags
+* 'Explore' section to see all users' posts
+* Biography and profile picture on user profile
+* Image preview for new post upload
+* Filters for pictures
+* Set up Travis CI

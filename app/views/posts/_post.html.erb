@@ -3,7 +3,7 @@
     <div class="post-head">
       <div class="thumb-img"></div>
       <div class="user-name">
-        <%= link_to post.user.username, user_path(post.user)%>
+        <%= link_to post.user.username, profile_path(post.user.username) %>
       </div>
       <div class="time-ago">
         <%= time_ago_in_words post.created_at %>
@@ -15,7 +15,7 @@
     <div class="post-bottom">
       <div class="caption">
         <div class="user-name">
-          <%= post.user.username %>
+          <%= link_to post.user.username, profile_path(post.user.username) %>
         </div>
         <%= post.caption %>
       </div>
@@ -23,7 +23,7 @@
         <% post.comments.each do |comment| %>
           <div class="comment">
             <div class="user-name">
-              <%= comment.user.username %>
+              <%= link_to comment.user.username, profile_path(comment.user.username) %>
             </div>
             <div class="comment-content">
               <%= comment.body %>
