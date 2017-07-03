@@ -7,6 +7,7 @@ end
 
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'carrierwave', '~> 1.1.0'
+gem 'mini_magick'
 gem 'rails', '~> 5.1.2'
 gem 'sqlite3'
 gem 'puma', '~> 3.7'
