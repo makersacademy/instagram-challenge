@@ -4,4 +4,30 @@
 
 <p><%= @post.description %></p>
 
+<div class="comments-section">
+  <div class="comments-display">
+    <% @comments.each do |comment| %>
+      <div class="comment">
+        <% commenter = User.find(comment.user_id).email %>
+        <p><%= commenter %> says:</p>
+        <p><%= comment.body %></p>
+      </div>
+    <% end %>
+  </div>
+  <div class="comments-adding">
+    <h3>Add a comment:</h3>
+    <%= form_for [@post, @post.comments.build] do |form| %>
+      <div class="form-group">
+        <%= form.label :comment %>
+        <%= form.text_field :body %>
+      </div>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+
+
+
+</div>
 <%= link_to "Back", posts_path %>
