@@ -14,7 +14,12 @@ class PostsController < ApplicationController
   def create
     @user = current_user
     @post = @user.posts.create(post_params)
-    redirect_to posts_url
+    if @post.save
+      redirect_to posts_url
+    else
+      flash[:error] = "Your new post couldn't be created!  Please try again."
+      redirect_to new_post_path
+    end
   end
 
   def show
