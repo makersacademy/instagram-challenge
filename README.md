@@ -1,40 +1,49 @@
-Instagram Challenge
-===================
+# Simstagram by Simon Ashbery
+## What is it?
 
-## Instructions
+A profound exploration of human social dynamics cunningly disguised as a website for posting pictures of your food.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## How Does it Work?
 
-## Task
+- Clone this repository
+- Navigate to the newly cloned directory via your command line
+- ```bundle install```
+- ```rails server```
+- Visit localhost:3000
+- Make all your friends jealous of your life-style by pretending that photo you just posted was a candid shot of you enjoying life and not your twentieth attempt to hide the void inside behind vintage filters and flattering angles.
+- Alternatively you can visit [heokuapp link here]
 
-Build Instagram: Simple huh!
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## Aims For This Project:
 
-Bonus if you can add filters!
+- Better understand the process of working with a framework such as Rails
+- Adhere to SOLID design principles
+- Test early, Test often, Test thoroughly
+- Present the product with a beautiful and dynamic frontend
 
-## How to start
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+## My Approach
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+My understanding of working with a web application framework is that it incentivises one to perform tasks using a tightly defined and formalised methodology.
 
-## Code Quality
+Therefore I have opted to carefully model and diagram Simstagram in order to have a clear idea of each step required to build it's features and then to research how best to achieve those steps in Rails.
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+Since the structure of my program is likely to change during development I will keep my digrams up to date in order to chart it's evolution and the progression of my thinking.
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
+I found it important to get the core functionality of Simstagram working before exploring it's presentation so front end functionality has been left till last. 
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## Domain Model
+
+![Domain Model](https://github.com/SiAshbery/simstagram/blob/master/Images/Simstagram_Data_Model.png)
+
+## Known Issues/TODOs
+
+- Build Simstagram
+- Tests for Session Controller are all currently pending untill I can      research how best to approach them
+
+## Acknowledgement
+- Thanks to Jenny Wem (https://github.com/wemmm) for showing me how to write a good README
+
+## Other Matters
+
+- Vaporwave is dead, long live Vaporwave
