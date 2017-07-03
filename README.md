@@ -116,6 +116,7 @@ The Picture model has two key properties: a description, and an image.
 
 Challenges
 ----
+- **Blog post** - As I found this task so challenging, I wrote a [blog post](https://medium.com/@charlottebrf/makers-academy-day-51-8cf8bb67004e) about where I went wrong and what I've learnt in the process.
 - **Users can post a picture** - I experienced some difficulty with my initial Picture controller & routing with Paperclip. I spent a lot of time troubleshooting and on the second day, I took the decision that it would be better to start again from scratch with the project. Whilst, this meant I lost some time and therefore didn't get to the Likes feature I felt overall this helped me create cleaner code as I struggled to get visibility on my application given the sheer volume of files created by Rails throughout my amendments.
 - **Testing** - Whilst working with my first feature I encountered difficulty configuring Rspec & Capybara. I restarted my project from scratch & tried to fix this to make sure I had feature & unit tests for all my features. In the end I wasn't able to get this working, and so took the decision to at least keep building features to enhance my knowledge of rails. This goes against the TDD principles I've learnt at Makers, and it's something that I wish I could have resolved before submitting.
 
