@@ -47,4 +47,3 @@ I found it important to get the core functionality of Simstagram working before 
 ## Other Matters
 
 - Vaporwave is dead, long live Vaporwave
-
