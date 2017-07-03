@@ -4,4 +4,15 @@
 
 <p><%= @post.description %></p>
 
+<div class="comments-section">
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <% commenter = User.find(comment.user_id).username %>
+      <p><%= commenter %> says:</p>
+      <p><%= comment.body %></p>
+    </div>
+
+
+  <% end %>
+</div>
 <%= link_to "Back", posts_path %>
