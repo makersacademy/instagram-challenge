@@ -1008,3 +1008,114 @@ Migrating to AddAttachmentImageToPosts (20170703063444)
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4399411627241260770)[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/posts" for 127.0.0.1 at 2017-07-03 07:40:06 +0100
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "cc25b63918054154d059b2ab525ecace39d03fcf"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 257ms (Views: 203.9ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-07-03 07:40:07 +0100
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "cc25b63918054154d059b2ab525ecace39d03fcf"], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 6.1ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    10:   </div>
+    11: <% end %>
+    12: 
+    13: <%= form_for @recipe, html: { multipart: true } do |form| %>
+    14: 
+    15:   <div class="form-group">
+    16:     <%= form.label :image %>
+  
+app/views/posts/new.html.erb:13:in `_app_views_posts_new_html_erb___1596643232488046276_70309357884840'
+Started GET "/posts/new" for 127.0.0.1 at 2017-07-03 07:40:17 +0100
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "cc25b63918054154d059b2ab525ecace39d03fcf"], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 30ms (Views: 26.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-07-03 07:41:32 +0100
+Processing by PostsController#new as HTML
+Started GET "/posts" for 127.0.0.1 at 2017-07-03 07:41:42 +0100
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "cc25b63918054154d059b2ab525ecace39d03fcf"], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 34ms (Views: 13.8ms | ActiveRecord: 0.4ms)
+
+
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "cc25b63918054154d059b2ab525ecace39d03fcf"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 38ms (Views: 21.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2017-07-03 07:41:57 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007fe45896be70 @tempfile=#<Tempfile:/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/RackMultipart20170703-36677-ppf1v7.jpg>, @original_filename="dachshund-puppies-07.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"dachshund-puppies-07.jpg\"\r\nContent-Type: image/jpeg\r\n">, "title"=>"Dog1", "description"=>"Dogs...."}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "cc25b63918054154d059b2ab525ecace39d03fcf"], ["LIMIT", 1]]
+Command :: file -b --mime '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/a80b8bf16d6e91b167669c0367663c9020170703-36677-sai7p4.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/a80b8bf16d6e91b167669c0367663c9020170703-36677-11dkugt.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/a80b8bf16d6e91b167669c0367663c9020170703-36677-11dkugt.jpg[0]'
+Command :: convert '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/a80b8bf16d6e91b167669c0367663c9020170703-36677-11dkugt.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/d3ba44520b88767e41717c75e1bd056320170703-36677-1g38vge'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/a80b8bf16d6e91b167669c0367663c9020170703-36677-11dkugt.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/a80b8bf16d6e91b167669c0367663c9020170703-36677-11dkugt.jpg[0]'
+Command :: convert '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/a80b8bf16d6e91b167669c0367663c9020170703-36677-11dkugt.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/d3ba44520b88767e41717c75e1bd056320170703-36677-1ximfw7'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/a80b8bf16d6e91b167669c0367663c9020170703-36677-4kmqyq.jpg'
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "description", "user_id", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Dog1"], ["description", "Dogs...."], ["user_id", 1], ["image_file_name", "dachshund-puppies-07.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 85992], ["image_updated_at", "2017-07-03 06:41:57.597832"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts/4
+Completed 302 Found in 238ms (ActiveRecord: 7.7ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2017-07-03 07:41:57 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "cc25b63918054154d059b2ab525ecace39d03fcf"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 19ms (Views: 13.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-03 07:42:05 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "cc25b63918054154d059b2ab525ecace39d03fcf"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 20ms (Views: 16.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2017-07-03 07:44:01 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "cc25b63918054154d059b2ab525ecace39d03fcf"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 23ms (Views: 16.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-03 07:44:10 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "cc25b63918054154d059b2ab525ecace39d03fcf"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 19ms (Views: 16.2ms | ActiveRecord: 0.6ms)
+
+
