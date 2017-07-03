@@ -5,7 +5,7 @@ RSpec.feature "New posts", type: :feature do
     sign_in
     click_on "Add new"
     fill_in "Title", with: "Hello, world!"
-    click_button "submit"
+    click_button "Upload"
     expect(page).to have_content("Hello, world!")
   end
 end
