@@ -8,6 +8,8 @@
       <%= image_tag post.image.url(:thumb) %>
       <h3><%= link_to post.title, post_path(post) %></h3>
       <p><%= post.description %></p>
+      <p> Likes: <%= Like.where(post_id: post.id).size  %> </p>
+      <%= link_to 'Like', post_likes_path(post), method: :post %>
     </div>
   <% end %>
 </div>
