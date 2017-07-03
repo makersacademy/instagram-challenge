@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
   </head>
 
   <body>
@@ -18,25 +19,23 @@
             <span class="icon-bar"></span>
           </button>
           <div class="navbar-brand">
-            <%= link_to "Hipstagram", root_path %>
+            <%= link_to "hipstagram", root_path %>
           </div>
         </div>
       <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "New Post", new_post_path %></li>
-          <li><%= link_to "Login", '#' %></li>
-          <li><%= link_to "Register", '#' %></li>
+          <% if signed_in? %>
+            <li><%= link_to "New Post", new_post_path %></li>
+            <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
+            <% else %>
+            <li><%= link_to 'Login', sign_in_path %></li>
+            <li><%= link_to "Register", sign_up_path %></li>
+            <% end %>
         </ul>
       </div>
       </div>
     </nav>
 
-<% if signed_in? %>
-      Signed in as: <%= current_user.email %>
-      <%= button_to 'Sign out', sign_out_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign in', sign_in_path %>
-    <% end %>
 
     <div id="flash">
       <% flash.each do |key, value| %>

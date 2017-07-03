@@ -14,6 +14,11 @@ class Clearance::UsersController < ApplicationController
     render template: "users/new"
   end
 
+  def show
+    @user = User.find(params[:id])
+    render template: "users/show"
+  end
+
   def create
     @user = user_from_params
 
@@ -23,6 +28,15 @@ class Clearance::UsersController < ApplicationController
     else
       render template: "users/new"
     end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @post.update(post_params)
   end
 
   private
