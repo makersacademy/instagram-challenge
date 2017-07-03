@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "welcome#show"
+  root to: "posts#index"
 
   resources :posts
 end
