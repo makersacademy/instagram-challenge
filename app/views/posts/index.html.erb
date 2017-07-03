@@ -5,7 +5,7 @@
         welcome to
       </h2>
       <h1 class="title">
-        Imago
+        Imāgo
       </h1>
     </div>
   </div>
@@ -13,33 +13,68 @@
 
 
 <section class="section">
+<div class="columns is-mobile">
+<div class="column"></div>
+<div class="column is-6">
 
-<%= button_to "Add new", new_post_path, method: :get, id: "add_new" %>
+<p class="field">
+  <a class="button is-primary" href="<%= new_post_path %>">
+    <span class="icon">
+      <i class="fa fa-camera-retro"></i>
+    </span>
+    <span>Add new</span>
+  </a>
+</p>
 
 <% @posts.each do |post| %>
-  <div class="box">
-    <article class="media">
-      <figure class="media-left">
-        <p class="image is-64x64">
-          <img src="http://bulma.io/images/placeholders/128x128.png">
-        </p>
-      </figure>
-      <div class="media-content">
-        <div class="content">
-          <p>
-            <strong><%= post.user_email %></strong> <small><%= post.created_at %></small>
-            <br>
-            <%= post.title %>
-          </p>
-        </div>
-        <nav class="level is-mobile">
-          <div class="level-left">
-            <a class="level-item">
-              <span class="icon is-small"><i class="fa fa-heart"></i></span>
-            </a>
-          </div>
-        </nav>
-      </div>
-    </article>
+<div class="card">
+  <div class="card-image">
+    <figure class="image">
+    <% if post.photo? %>
+      <%= image_tag post.photo_url, alt: "Image" %>
+    <% else %>
+      <%= image_tag 'Trollface.png' %>
+    <% end %>
+    </figure>
   </div>
+
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="http://bulma.io/images/placeholders/96x96.png" alt="Image">
+        </figure>
+      </div>
+      <div class="media-content">
+        <p>
+          <strong><%= post.user_email %></strong>
+        </p>
+      </div>
+    </div>
+
+    <div class="content">
+      <%= post.title %>
+      <br>
+    </div>
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <a class="level-item">
+          <span class="icon"><i class="fa fa-heart"></i></span>
+        </a>
+        <a class="level-item">
+          <span class="icon"><i class="fa fa-comment-o"></i></span>
+        </a>
+      </div>
+      <div class="level-right">
+        <small><%= time_ago_in_words(post.created_at) %> ago</small>
+      </div>
+    </nav>
+  </div>
+</div>
+</br>
+</br>
 <% end %>
+</div>
+<div class="column"></div>
+</div>
+</section>
