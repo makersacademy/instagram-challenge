@@ -1,11 +1,34 @@
 <div class="show_post">
 
-<h3>h e l l o</h3>
+<br>
 <img src="<%= @post.photo %>">
 <%= simple_format(@post.text) %>
-Posted by
-<%= link_to "#{@post.user.name}", @post.user %>
-<br>
+<p>Posted by
+<%= link_to "#{@post.user.name}", @post.user %></p>
 <br>
 
+<h3>Comments</h3>
+<ul>
+<% @post.comments.each do |comment| %>
+<li>
+  <%= comment.content %>
+</li>
+<br>
+<% end %>
+</ul>
+
+<p>Add a comment:</p>
+<% if current_user %>
+  <%= form_for([@post, @post.comments.build]) do |form| %>
+    <p>
+      <%= form.text_area :content %>
+    </p>
+
+    <p>
+      <%= form.submit "Post comment" %>
+    </p>
+  <% end %>
+<% else %>
+  <p>Please <%= link_to "sign up", new_user_path %> to comment on a post!</p>
+<% end %>
 </div>
