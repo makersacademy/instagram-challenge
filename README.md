@@ -27,7 +27,7 @@ Then visit localhost:3000/users/new in your browser!
 
 ### News and Such
 
-4/6- Now has a rudimentary comment system!
+4/6- Now has a rudimentary comment system! Images are also changed to a uniform width when uploaded.
 
 ### My approach
 
@@ -97,6 +97,7 @@ I would like to be able to 'like' a photo.
 As a user who has done something regrettable,
 So that I can hope the internet will forget,
 I would like to be able to edit and delete posts.
+```
 
 ```
 As a user with excellent taste,
