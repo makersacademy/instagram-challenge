@@ -1,9 +1,10 @@
 <h1><%= @post.title %></h1>
 
-<%= image_tag @post.image.url(:medium) %>
+<%= image_tag @post.image.url(:large) %>
 
 <p><%= @post.description %></p>
-
+<p> Likes: <%= Like.where(post_id: @post.id).size  %> </p>
+<%= link_to 'Like', post_likes_path(@post), method: :post %>
 <div class="comments-section">
   <div class="comments-display">
     <% @comments.each do |comment| %>
