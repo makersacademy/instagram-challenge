@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :require_login, only: [:create, :new]
 
   def new
     @comment = Comment.new
@@ -8,12 +9,11 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
-
     if @comment.save
       redirect_to root_path
     else
-      flash[:alert] = "Could not make comment. Try again"
-      render root_path
+      flash[:error] = "Could not make comment. Try again"
+      redirect_to root_path
     end
   end
 
@@ -29,4 +29,5 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:body)
   end
+
  end

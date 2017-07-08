@@ -49,10 +49,10 @@ class PostsController < ApplicationController
   end
 
   def owner_of_post
-  unless current_user == @post.user
-    flash[:alert] = "You can't modify a post that's not yours"
-    redirect_to root_path
+    unless current_user == @post.user
+      flash[:alert] = "You can't modify a post that's not yours"
+      redirect_to root_path
+    end
   end
-end
 
 end
