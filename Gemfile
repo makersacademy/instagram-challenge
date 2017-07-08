@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'clearance', '~> 1.15'
 gem 'paperclip',"~> 5.0.0"
 gem 'bootstrap-sass'
+gem "font-awesome-rails"
 
 
 group :development, :test do
