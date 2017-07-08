@@ -5,4 +5,15 @@ RSpec.feature "User as a profile picture", type: :feature do
     visit sign_up_path
     expect(page).to have_field 'user_profile_picture'
   end
+
+  scenario "User can upload a picture when signin up" do
+    visit sign_up_path
+    fill_in "Username", with: "test_user"
+    fill_in "Email", with: "test@mail.com"
+    fill_in "Password", with: "password"
+    attach_file('user_profile_picture', Rails.root + "spec/factories/Trollface.png")
+    click_button "Sign up"
+    expect(page).to have_xpath("//img[contains(@src,'Trollface.png')]")
+  end
 end
+
