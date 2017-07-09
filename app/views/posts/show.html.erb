@@ -4,6 +4,7 @@
   <%= image_tag @post.image.url(:large) %>
 </div>
 <div class="col-md-3 image-contents">
+  <p>posted by <%= @user.username %></p>
   <p><%= @post.description %></p>
   <p> Likes: <%= Like.where(post_id: @post.id).size  %> </p>
   <%= link_to 'Like', post_likes_path(@post), method: :post %>
@@ -13,7 +14,7 @@
     <div class="comments-display">
       <% @comments.each do |comment| %>
         <div class="comment">
-          <% commenter = User.find(comment.user_id).email %>
+          <% commenter = User.find(comment.user_id).username %>
           <p><%= commenter %> says:</p>
           <p><%= comment.body %></p>
         </div>

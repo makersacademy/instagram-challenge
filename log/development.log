@@ -19664,3 +19664,256 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 76ms (Views: 54.9ms | ActiveRecord: 5.2ms)
 
 
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:52:33 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (18.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (23.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 180ms (Views: 134.9ms | ActiveRecord: 20.6ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2017-07-09 23:52:58 +0100
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "comment"=>{"body"=>"Hello!"}, "commit"=>"Comment", "post_id"=>"1"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (21.5ms)[0m  [1m[32mINSERT INTO "comments" ("body", "post_id", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["body", "Hello!"], ["post_id", 1], ["user_id", 5]]
+  [1m[35m (100.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 133ms (ActiveRecord: 123.2ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:52:58 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (6.1ms)
+  Rendered shared/_navbar.html.erb (0.9ms)
+Completed 200 OK in 50ms (Views: 45.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:54:06 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (6.4ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 59ms (Views: 54.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 23:54:14 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.5ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 48ms (Views: 44.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:54:15 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (2.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (7.7ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 60ms (Views: 51.6ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:58:56 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (13.0ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 80ms (Views: 47.4ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 23:58:59 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.2ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 51ms (Views: 47.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:59:00 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (5.8ms)
+  Rendered shared/_navbar.html.erb (0.9ms)
+Completed 200 OK in 60ms (Views: 55.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:59:56 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (4.8ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 55ms (Views: 50.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-10 00:00:05 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.3ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 48ms (Views: 44.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2017-07-10 00:00:06 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  Rendered posts/show.html.erb within layouts/application (4.7ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 55ms (Views: 49.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-10 00:00:08 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.7ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 47ms (Views: 42.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-07-10 00:00:09 +0100
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (6.3ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 51ms (Views: 45.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2017-07-10 00:00:22 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007ffca1435738 @tempfile=#<Tempfile:/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/RackMultipart20170710-75780-1ms2eto.jpg>, @original_filename="The-stages-of-puppy-growth.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"The-stages-of-puppy-growth.jpg\"\r\nContent-Type: image/jpeg\r\n">, "title"=>"Dog again", "description"=>"Dog"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+Command :: file -b --mime '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1peouxx.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]'
+Command :: convert '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]' -auto-orient -resize "x600" -crop "600x600+263+0" +repage '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/4286d6dafc09f9b29be2a2542ab4129920170710-75780-eyu1z3'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]'
+Command :: convert '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]' -auto-orient -resize "x300" -crop "300x300+131+0" +repage '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/4286d6dafc09f9b29be2a2542ab4129920170710-75780-1p7oker'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]'
+Command :: convert '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]' -auto-orient -resize "x100" -crop "100x100+43+0" +repage '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/4286d6dafc09f9b29be2a2542ab4129920170710-75780-1uhimku'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-14ivl6v.jpg'
+  [1m[35mSQL (7.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "description", "user_id", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Dog again"], ["description", "Dog"], ["user_id", 5], ["image_file_name", "The-stages-of-puppy-growth.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 65259], ["image_updated_at", "2017-07-09 23:00:22.081342"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts/9
+Completed 302 Found in 390ms (ActiveRecord: 13.8ms)
+
+
+Started GET "/posts/9" for 127.0.0.1 at 2017-07-10 00:00:22 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 9]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 9]]
+  Rendered posts/show.html.erb within layouts/application (4.3ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 88ms (Views: 82.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-10 00:00:36 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.5ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 46ms (Views: 42.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2017-07-10 00:01:08 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  Rendered posts/show.html.erb within layouts/application (5.0ms)
+  Rendered shared/_navbar.html.erb (0.9ms)
+Completed 200 OK in 49ms (Views: 44.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-10 00:01:11 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 53ms (Views: 43.8ms | ActiveRecord: 0.6ms)
+
+
