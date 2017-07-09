@@ -19,4 +19,3 @@ RSpec.feature "User has a profile picture", type: :feature do
     end
   end
 end
-

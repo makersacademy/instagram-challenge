@@ -59,7 +59,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-
   # Clean up carrierwave picture folder after tests
   config.after(:each) do
     if Rails.env.test? || Rails.env.cucumber?
