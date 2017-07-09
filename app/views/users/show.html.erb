@@ -1,0 +1,15 @@
+<h1> <%= @user.username %>'s Profile </h1>
+
+<% @userposts.reverse.each do |post| %>
+  <% if @userposts.index(post)%3 == 0 %>
+    <div class="row">
+  <% end %>
+      <div class="post">
+        <div class="col-md-4">
+          <%= link_to image_tag(post.image.url(:medium), class: "img-responsive") , post_path(post) %>
+        </div>
+      </div>
+  <% if @userposts.index(post)%3 == 2 %>
+    </div>
+  <% end %>
+<% end %>
