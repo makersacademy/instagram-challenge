@@ -1,5 +1,6 @@
-Instagram Challenge
+Hipstagram
 ===================
+A far more pretentious clone of Instagram for the true-hipster on you. Only pictures with something avocado, anything, beautiful beards/braces or drinks in jam jars allowed. 
 
 ## User stories
 
@@ -38,6 +39,7 @@ I want to be able to delete comments.
 * Ruby on Rails
 * Carrierwave
 * Clearance
+* Factory Girl Rails
 
 ## Pending Features (stay tuned)
 * Likes on posts
@@ -45,7 +47,8 @@ I want to be able to delete comments.
 * Tags on posts
 * Search through feed based on Tags
 * 'Explore' section to see all users' posts
-* Biography and profile picture on user profile
+* ~~Biography~~ and profile picture on user profile
 * Image preview for new post upload
 * Filters for pictures
 * Set up Travis CI
+* Deploy to Heroku
