@@ -50,11 +50,14 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
+  gem 'codeclimate-test-reporter', require: false
   gem 'factory_girl_rails'
   gem 'selenium-webdriver'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
-  gem 'rubocop'
-  gem 'rubocop-rails'
+  gem 'rubocop', require: false
+  gem 'simplecov', require: false
+  gem 'simplecov-console', require: false
 end
 
 group :development do
