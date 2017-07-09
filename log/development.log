@@ -18599,3 +18599,1321 @@ Processing by Clearance::UsersController#new as HTML
 Completed 200 OK in 63ms (Views: 62.0ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4399411627241260770);[0m
+  [1m[35m (7.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUsernameToUsers (20170709172156)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (27.8ms)[0m  [1m[35mALTER TABLE "users" ADD "username" character varying[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170709172156"]]
+  [1m[35m (52.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(4399411627241260770)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/sign_in" for 127.0.0.1 at 2017-07-09 18:25:22 +0100
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Clearance::SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/_form.html.erb (20.5ms)
+  Rendered sessions/new.html.erb within layouts/application (25.6ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 392ms (Views: 385.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2017-07-09 18:25:31 +0100
+Processing by Clearance::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "session"=>{"email"=>"test1@test.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (8.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@test.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 131ms (ActiveRecord: 17.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-09 18:25:31 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "2d30670d442a7db91d329cab83b3592fab9dfaac"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (26.2ms)
+  Rendered shared/_navbar.html.erb (1.2ms)
+Completed 200 OK in 107ms (Views: 88.1ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:29:38 +0100
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "2d30670d442a7db91d329cab83b3592fab9dfaac"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (13.0ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 407ms (Views: 352.1ms | ActiveRecord: 12.2ms)
+
+
+Started DELETE "/sign_out" for 127.0.0.1 at 2017-07-09 18:29:40 +0100
+Processing by Clearance::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "2d30670d442a7db91d329cab83b3592fab9dfaac"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (12.0ms)[0m  [1m[33mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["updated_at", "2017-07-09 17:29:40.774281"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 26ms (ActiveRecord: 17.5ms)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2017-07-09 18:29:40 +0100
+Processing by Clearance::SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/_form.html.erb (12.8ms)
+  Rendered sessions/new.html.erb within layouts/application (14.4ms)
+  Rendered shared/_navbar.html.erb (7.5ms)
+Completed 200 OK in 70ms (Views: 69.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2017-07-09 18:29:43 +0100
+Processing by Clearance::UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (0.6ms)
+  Rendered users/new.html.erb within layouts/application (3.2ms)
+  Rendered shared/_navbar.html.erb (0.4ms)
+Completed 200 OK in 51ms (Views: 50.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-07-09 18:29:51 +0100
+Processing by Clearance::UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test3@test.com", "password"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test3@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "email", "encrypted_password", "remember_token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", "2017-07-09 17:29:51.559606"], ["updated_at", "2017-07-09 17:29:51.559606"], ["email", "test3@test.com"], ["encrypted_password", "$2a$10$5L./qKbhQo.piEEu5oBPbuttRMH7zMGv3qKViwISr9daGICcC2x62"], ["remember_token", "a579e30775981f1b49e787412fc06b40bcfb7ccd"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 87ms (ActiveRecord: 6.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-09 18:29:51 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "a579e30775981f1b49e787412fc06b40bcfb7ccd"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 49ms (Views: 46.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:29:59 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "a579e30775981f1b49e787412fc06b40bcfb7ccd"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 65ms (Views: 60.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 18:30:00 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "a579e30775981f1b49e787412fc06b40bcfb7ccd"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (5.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (32.2ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 93ms (Views: 67.0ms | ActiveRecord: 11.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:32:23 +0100
+  
+ArgumentError (Invalid route name, already in use: 'sign_in' 
+You may have defined two routes with the same name using the `:as` option, or you may be overriding a route already defined by a resource with the same naming. For the latter, you can restrict the routes created with `resources` as explained here: 
+http://guides.rubyonrails.org/routing.html#restricting-the-routes-created):
+  
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:576:in `add_route'
+actionpack (5.1.2) lib/action_dispatch/routing/mapper.rb:1908:in `add_route'
+actionpack (5.1.2) lib/action_dispatch/routing/mapper.rb:1879:in `decomposed_match'
+actionpack (5.1.2) lib/action_dispatch/routing/mapper.rb:1843:in `block in map_match'
+actionpack (5.1.2) lib/action_dispatch/routing/mapper.rb:1837:in `each'
+actionpack (5.1.2) lib/action_dispatch/routing/mapper.rb:1837:in `map_match'
+actionpack (5.1.2) lib/action_dispatch/routing/mapper.rb:1585:in `match'
+actionpack (5.1.2) lib/action_dispatch/routing/mapper.rb:718:in `map_method'
+actionpack (5.1.2) lib/action_dispatch/routing/mapper.rb:679:in `get'
+clearance (1.16.0) config/routes.rb:19:in `block in <top (required)>'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:424:in `instance_exec'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:424:in `eval_block'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:406:in `draw'
+clearance (1.16.0) config/routes.rb:2:in `<top (required)>'
+activesupport (5.1.2) lib/active_support/dependencies.rb:286:in `load'
+activesupport (5.1.2) lib/active_support/dependencies.rb:286:in `block in load'
+activesupport (5.1.2) lib/active_support/dependencies.rb:258:in `load_dependency'
+activesupport (5.1.2) lib/active_support/dependencies.rb:286:in `load'
+railties (5.1.2) lib/rails/application/routes_reloader.rb:55:in `block in load_paths'
+railties (5.1.2) lib/rails/application/routes_reloader.rb:55:in `each'
+railties (5.1.2) lib/rails/application/routes_reloader.rb:55:in `load_paths'
+railties (5.1.2) lib/rails/application/routes_reloader.rb:18:in `reload!'
+railties (5.1.2) lib/rails/application/routes_reloader.rb:41:in `block in updater'
+activesupport (5.1.2) lib/active_support/file_update_checker.rb:81:in `execute'
+railties (5.1.2) lib/rails/application/routes_reloader.rb:25:in `execute'
+railties (5.1.2) lib/rails/application/finisher.rb:141:in `block (2 levels) in <module:Finisher>'
+activesupport (5.1.2) lib/active_support/callbacks.rb:413:in `instance_exec'
+activesupport (5.1.2) lib/active_support/callbacks.rb:413:in `block in make_lambda'
+activesupport (5.1.2) lib/active_support/callbacks.rb:197:in `block (2 levels) in halting'
+activesupport (5.1.2) lib/active_support/callbacks.rb:601:in `block (2 levels) in default_terminator'
+activesupport (5.1.2) lib/active_support/callbacks.rb:600:in `catch'
+activesupport (5.1.2) lib/active_support/callbacks.rb:600:in `block in default_terminator'
+activesupport (5.1.2) lib/active_support/callbacks.rb:198:in `block in halting'
+activesupport (5.1.2) lib/active_support/callbacks.rb:507:in `block in invoke_before'
+activesupport (5.1.2) lib/active_support/callbacks.rb:507:in `each'
+activesupport (5.1.2) lib/active_support/callbacks.rb:507:in `invoke_before'
+activesupport (5.1.2) lib/active_support/callbacks.rb:130:in `run_callbacks'
+activesupport (5.1.2) lib/active_support/execution_wrapper.rb:108:in `run!'
+activesupport (5.1.2) lib/active_support/reloader.rb:113:in `run!'
+activesupport (5.1.2) lib/active_support/execution_wrapper.rb:70:in `block in run!'
+activesupport (5.1.2) lib/active_support/execution_wrapper.rb:67:in `tap'
+activesupport (5.1.2) lib/active_support/execution_wrapper.rb:67:in `run!'
+activesupport (5.1.2) lib/active_support/reloader.rb:59:in `run!'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:10:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 18:33:22 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "a579e30775981f1b49e787412fc06b40bcfb7ccd"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (24.8ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 79ms (Views: 60.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:33:24 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "a579e30775981f1b49e787412fc06b40bcfb7ccd"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.4ms)
+  Rendered shared/_navbar.html.erb (0.9ms)
+Completed 200 OK in 48ms (Views: 43.9ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/sign_out" for 127.0.0.1 at 2017-07-09 18:33:27 +0100
+Processing by Clearance::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "a579e30775981f1b49e787412fc06b40bcfb7ccd"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_token", "516395d3718f5f2f137ac1c961550e69eb758175"], ["updated_at", "2017-07-09 17:33:27.657456"], ["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 5ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2017-07-09 18:33:27 +0100
+Processing by Clearance::SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/_form.html.erb (1.0ms)
+  Rendered sessions/new.html.erb within layouts/application (2.3ms)
+  Rendered shared/_navbar.html.erb (0.4ms)
+Completed 200 OK in 43ms (Views: 43.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2017-07-09 18:33:29 +0100
+Processing by Clearance::UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (0.4ms)
+  Rendered users/new.html.erb within layouts/application (2.5ms)
+  Rendered shared/_navbar.html.erb (0.4ms)
+Completed 200 OK in 49ms (Views: 47.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2017-07-09 18:33:32 +0100
+Processing by Clearance::SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/_form.html.erb (1.4ms)
+  Rendered sessions/new.html.erb within layouts/application (3.8ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 48ms (Views: 47.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2017-07-09 18:33:39 +0100
+Processing by Clearance::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "session"=>{"email"=>"test1@test.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@test.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 67ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-09 18:33:39 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.4ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 42ms (Views: 38.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 18:33:40 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (5.8ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 49ms (Views: 43.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/posts/6" for 127.0.0.1 at 2017-07-09 18:33:42 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 6]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 6]]
+  Rendered posts/show.html.erb within layouts/application (4.2ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 46ms (Views: 41.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:34:41 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.6ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 52ms (Views: 47.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 18:34:42 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (5.9ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 55ms (Views: 49.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:34:44 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.1ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 48ms (Views: 44.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/5" for 127.0.0.1 at 2017-07-09 18:34:45 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 5]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 5]]
+  Rendered posts/show.html.erb within layouts/application (6.7ms)
+  Rendered shared/_navbar.html.erb (1.4ms)
+Completed 200 OK in 67ms (Views: 61.9ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/posts/5/comments" for 127.0.0.1 at 2017-07-09 18:34:49 +0100
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "comment"=>{"body"=>"Test hello"}, "commit"=>"Comment", "post_id"=>"5"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (18.6ms)[0m  [1m[32mINSERT INTO "comments" ("body", "post_id", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["body", "Test hello"], ["post_id", 5], ["user_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts/5
+Completed 302 Found in 27ms (ActiveRecord: 19.8ms)
+
+
+Started GET "/posts/5" for 127.0.0.1 at 2017-07-09 18:34:49 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 5]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 5]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (4.4ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 46ms (Views: 41.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:34:52 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.2ms)
+  Rendered shared/_navbar.html.erb (1.1ms)
+Completed 200 OK in 54ms (Views: 50.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/8" for 127.0.0.1 at 2017-07-09 18:34:54 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 8]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 8]]
+  Rendered posts/show.html.erb within layouts/application (4.2ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 47ms (Views: 43.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/posts/8/likes" for 127.0.0.1 at 2017-07-09 18:34:55 +0100
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post_id"=>"8"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 1], ["post_id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["post_id", 8], ["user_id", 1], ["created_at", "2017-07-09 17:34:55.678314"], ["updated_at", "2017-07-09 17:34:55.678314"]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 21ms (ActiveRecord: 9.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:34:55 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.3ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 55ms (Views: 51.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/8" for 127.0.0.1 at 2017-07-09 18:34:57 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 8]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 8]]
+  Rendered posts/show.html.erb within layouts/application (4.6ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 48ms (Views: 43.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:34:58 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (5.3ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 63ms (Views: 58.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/7" for 127.0.0.1 at 2017-07-09 18:35:06 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 7]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 7]]
+  Rendered posts/show.html.erb within layouts/application (4.3ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 52ms (Views: 48.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:35:07 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (5.3ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 51ms (Views: 47.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:35:09 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (6.2ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 55ms (Views: 51.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-07-09 18:35:12 +0100
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (5.0ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 47ms (Views: 40.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:35:23 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.3ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 46ms (Views: 42.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:36:21 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.4ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 43ms (Views: 40.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 18:36:22 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (5.2ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 50ms (Views: 45.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:36:23 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.4ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 63ms (Views: 59.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/5" for 127.0.0.1 at 2017-07-09 18:36:24 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 5]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 5]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (5.6ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 49ms (Views: 44.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:36:25 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 58ms (Views: 53.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2017-07-09 18:36:25 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  Rendered posts/show.html.erb within layouts/application (3.9ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 48ms (Views: 43.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:36:26 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (6.3ms)
+Completed 200 OK in 59ms (Views: 55.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 18:39:34 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 42ms (Views: 39.2ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/sign_out" for 127.0.0.1 at 2017-07-09 18:39:37 +0100
+Processing by Clearance::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "f309911b5ad4933cbdf3e0649812991cae0a59fe"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_token", "030abc1473c196b5208a10d4894f5c6d04a48045"], ["updated_at", "2017-07-09 17:39:37.395449"], ["id", 1]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 6ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2017-07-09 18:39:37 +0100
+Processing by Clearance::SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/_form.html.erb (1.1ms)
+  Rendered sessions/new.html.erb within layouts/application (2.7ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 46ms (Views: 45.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2017-07-09 18:39:38 +0100
+Processing by Clearance::UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (0.7ms)
+  Rendered users/new.html.erb within layouts/application (3.5ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 42ms (Views: 41.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2017-07-09 18:39:46 +0100
+Processing by Clearance::UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (0.6ms)
+  Rendered users/new.html.erb within layouts/application (3.0ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 44ms (Views: 43.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-07-09 18:41:51 +0100
+Processing by Clearance::UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test4@test.com", "username"=>"test4", "password"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+activemodel (5.1.2) lib/active_model/forbidden_attributes_protection.rb:21:in `sanitize_for_mass_assignment'
+activemodel (5.1.2) lib/active_model/attribute_assignment.rb:33:in `assign_attributes'
+activerecord (5.1.2) lib/active_record/core.rb:337:in `initialize'
+activerecord (5.1.2) lib/active_record/inheritance.rb:66:in `new'
+activerecord (5.1.2) lib/active_record/inheritance.rb:66:in `new'
+clearance (1.16.0) app/controllers/clearance/users_controller.rb:52:in `user_from_params'
+clearance (1.16.0) app/controllers/clearance/users_controller.rb:18:in `create'
+actionpack (5.1.2) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.2) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.2) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.2) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.2) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.2) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.2) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.2) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.2) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.2) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.2) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.2) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.2) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+clearance (1.16.0) lib/clearance/rack_session.rb:23:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2017-07-09 18:42:51 +0100
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-07-09 18:42:55 +0100
+Processing by PostsController#index as HTML
+Redirected to http://localhost:3000/sign_in
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2017-07-09 18:42:55 +0100
+Processing by Clearance::SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/_form.html.erb (1.8ms)
+  Rendered sessions/new.html.erb within layouts/application (3.6ms)
+  Rendered shared/_navbar.html.erb (0.4ms)
+Completed 200 OK in 316ms (Views: 315.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/session" for 127.0.0.1 at 2017-07-09 18:43:04 +0100
+Processing by Clearance::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "session"=>{"email"=>"test1@test.com", "password"=>"[FILTERED]"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@test.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 117ms (ActiveRecord: 15.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-09 18:43:04 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "030abc1473c196b5208a10d4894f5c6d04a48045"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (17.9ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 68ms (Views: 54.2ms | ActiveRecord: 2.9ms)
+
+
+Started DELETE "/sign_out" for 127.0.0.1 at 2017-07-09 18:43:06 +0100
+Processing by Clearance::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "030abc1473c196b5208a10d4894f5c6d04a48045"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_token", "903d6b4f5c170e788739a42156f3f56b976270a7"], ["updated_at", "2017-07-09 17:43:06.506728"], ["id", 1]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 7ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2017-07-09 18:43:06 +0100
+Processing by Clearance::SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/_form.html.erb (1.0ms)
+  Rendered sessions/new.html.erb within layouts/application (2.4ms)
+  Rendered shared/_navbar.html.erb (0.4ms)
+Completed 200 OK in 59ms (Views: 59.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2017-07-09 18:47:09 +0100
+Processing by Clearance::UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (0.5ms)
+  Rendered users/new.html.erb within layouts/application (3.0ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 67ms (Views: 55.3ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-07-09 18:47:16 +0100
+Processing by Clearance::UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"Test5@test.com", "username"=>"", "password"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+activemodel (5.1.2) lib/active_model/forbidden_attributes_protection.rb:21:in `sanitize_for_mass_assignment'
+activemodel (5.1.2) lib/active_model/attribute_assignment.rb:33:in `assign_attributes'
+activerecord (5.1.2) lib/active_record/core.rb:337:in `initialize'
+activerecord (5.1.2) lib/active_record/inheritance.rb:66:in `new'
+activerecord (5.1.2) lib/active_record/inheritance.rb:66:in `new'
+clearance (1.16.0) app/controllers/clearance/users_controller.rb:52:in `user_from_params'
+clearance (1.16.0) app/controllers/clearance/users_controller.rb:18:in `create'
+actionpack (5.1.2) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.2) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.2) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.2) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.2) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.2) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.2) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.2) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.2) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.2) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.2) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.2) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.2) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+clearance (1.16.0) lib/clearance/rack_session.rb:23:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/users" for 127.0.0.1 at 2017-07-09 18:47:36 +0100
+Processing by Clearance::UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"Test5@test.com", "username"=>"", "password"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+activemodel (5.1.2) lib/active_model/forbidden_attributes_protection.rb:21:in `sanitize_for_mass_assignment'
+activemodel (5.1.2) lib/active_model/attribute_assignment.rb:33:in `assign_attributes'
+activerecord (5.1.2) lib/active_record/core.rb:337:in `initialize'
+activerecord (5.1.2) lib/active_record/inheritance.rb:66:in `new'
+activerecord (5.1.2) lib/active_record/inheritance.rb:66:in `new'
+clearance (1.16.0) app/controllers/clearance/users_controller.rb:52:in `user_from_params'
+clearance (1.16.0) app/controllers/clearance/users_controller.rb:18:in `create'
+actionpack (5.1.2) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.1.2) lib/abstract_controller/base.rb:186:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.1.2) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.1.2) lib/active_support/callbacks.rb:131:in `run_callbacks'
+actionpack (5.1.2) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.2) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.2) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.2) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.2) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.2) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.2) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.2) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.2) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+clearance (1.16.0) lib/clearance/rack_session.rb:23:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/users" for 127.0.0.1 at 2017-07-09 18:51:09 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"Test5@test.com", "username"=>"", "password"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test5@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "email", "encrypted_password", "remember_token", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2017-07-09 17:51:09.869319"], ["updated_at", "2017-07-09 17:51:09.869319"], ["email", "test5@test.com"], ["encrypted_password", "$2a$10$/XBreIS.2J/uwb9QOsfns.gY.oyb7xaLZPymNuuKzFQzOXpXNBhVO"], ["remember_token", "77af8386fcf4b05eaf2117b9abc86f2094f708c4"], ["username", ""]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 91ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-09 18:51:09 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "77af8386fcf4b05eaf2117b9abc86f2094f708c4"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (11.9ms)
+  Rendered shared/_navbar.html.erb (0.9ms)
+Completed 200 OK in 66ms (Views: 51.9ms | ActiveRecord: 3.2ms)
+
+
+Started DELETE "/sign_out" for 127.0.0.1 at 2017-07-09 18:51:11 +0100
+Processing by Clearance::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "77af8386fcf4b05eaf2117b9abc86f2094f708c4"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[33mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_token", "98ea2b9ced0d7abe613094f9a11028a6d884534c"], ["updated_at", "2017-07-09 17:51:11.574095"], ["id", 4]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 10ms (ActiveRecord: 6.5ms)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2017-07-09 18:51:11 +0100
+Processing by Clearance::SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/_form.html.erb (1.3ms)
+  Rendered sessions/new.html.erb within layouts/application (3.0ms)
+  Rendered shared/_navbar.html.erb (0.4ms)
+Completed 200 OK in 43ms (Views: 42.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2017-07-09 18:51:13 +0100
+Processing by Clearance::UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (0.9ms)
+  Rendered users/new.html.erb within layouts/application (5.4ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 54ms (Views: 53.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-07-09 18:51:22 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"Test5@test.com", "username"=>"test5", "password"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test5@test.com"], ["LIMIT", 1]]
+  [1m[35m (2.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (0.6ms)
+  Rendered users/new.html.erb within layouts/application (2.9ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+Completed 200 OK in 117ms (Views: 46.1ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-07-09 18:51:29 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test6@test.com", "username"=>"test6", "password"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test6@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("created_at", "updated_at", "email", "encrypted_password", "remember_token", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", "2017-07-09 17:51:29.180461"], ["updated_at", "2017-07-09 17:51:29.180461"], ["email", "test6@test.com"], ["encrypted_password", "$2a$10$ajI7mW92RNCdMnvU884Ph.K1Nt8I8IulH/YIMuxmf5z9PDWytowte"], ["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["username", "test6"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 70ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-07-09 18:51:29 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.8ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 49ms (Views: 46.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 18:51:31 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (22.3ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 76ms (Views: 54.9ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:52:33 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (18.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (23.0ms)
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 180ms (Views: 134.9ms | ActiveRecord: 20.6ms)
+
+
+Started POST "/posts/1/comments" for 127.0.0.1 at 2017-07-09 23:52:58 +0100
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "comment"=>{"body"=>"Hello!"}, "commit"=>"Comment", "post_id"=>"1"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (21.5ms)[0m  [1m[32mINSERT INTO "comments" ("body", "post_id", "user_id") VALUES ($1, $2, $3) RETURNING "id"[0m  [["body", "Hello!"], ["post_id", 1], ["user_id", 5]]
+  [1m[35m (100.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 133ms (ActiveRecord: 123.2ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:52:58 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (6.1ms)
+  Rendered shared/_navbar.html.erb (0.9ms)
+Completed 200 OK in 50ms (Views: 45.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:54:06 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (6.4ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 59ms (Views: 54.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 23:54:14 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.5ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 48ms (Views: 44.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:54:15 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (2.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (7.7ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 60ms (Views: 51.6ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:58:56 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (13.0ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 80ms (Views: 47.4ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-09 23:58:59 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.2ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 51ms (Views: 47.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:59:00 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (5.8ms)
+  Rendered shared/_navbar.html.erb (0.9ms)
+Completed 200 OK in 60ms (Views: 55.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2017-07-09 23:59:56 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (4.8ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 55ms (Views: 50.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-10 00:00:05 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.3ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 48ms (Views: 44.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2017-07-10 00:00:06 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  Rendered posts/show.html.erb within layouts/application (4.7ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 55ms (Views: 49.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-10 00:00:08 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.7ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 47ms (Views: 42.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2017-07-10 00:00:09 +0100
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (6.3ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 51ms (Views: 45.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2017-07-10 00:00:22 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"[FILTERED]", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007ffca1435738 @tempfile=#<Tempfile:/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/RackMultipart20170710-75780-1ms2eto.jpg>, @original_filename="The-stages-of-puppy-growth.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"The-stages-of-puppy-growth.jpg\"\r\nContent-Type: image/jpeg\r\n">, "title"=>"Dog again", "description"=>"Dog"}, "commit"=>"Create Post"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+Command :: file -b --mime '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1peouxx.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]'
+Command :: convert '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]' -auto-orient -resize "x600" -crop "600x600+263+0" +repage '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/4286d6dafc09f9b29be2a2542ab4129920170710-75780-eyu1z3'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]'
+Command :: convert '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]' -auto-orient -resize "x300" -crop "300x300+131+0" +repage '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/4286d6dafc09f9b29be2a2542ab4129920170710-75780-1p7oker'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]'
+Command :: convert '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-1rhs2di.jpg[0]' -auto-orient -resize "x100" -crop "100x100+43+0" +repage '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/4286d6dafc09f9b29be2a2542ab4129920170710-75780-1uhimku'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/var/folders/3q/xf63jbfx53gd21t168f7fc680000gp/T/806bd8d08ca02b7cd2425175e53ba61020170710-75780-14ivl6v.jpg'
+  [1m[35mSQL (7.0ms)[0m  [1m[32mINSERT INTO "posts" ("title", "description", "user_id", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "Dog again"], ["description", "Dog"], ["user_id", 5], ["image_file_name", "The-stages-of-puppy-growth.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 65259], ["image_updated_at", "2017-07-09 23:00:22.081342"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts/9
+Completed 302 Found in 390ms (ActiveRecord: 13.8ms)
+
+
+Started GET "/posts/9" for 127.0.0.1 at 2017-07-10 00:00:22 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 9]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 9]]
+  Rendered posts/show.html.erb within layouts/application (4.3ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 88ms (Views: 82.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-10 00:00:36 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.5ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 46ms (Views: 42.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/2" for 127.0.0.1 at 2017-07-10 00:01:08 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 2]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 2]]
+  Rendered posts/show.html.erb within layouts/application (5.0ms)
+  Rendered shared/_navbar.html.erb (0.9ms)
+Completed 200 OK in 49ms (Views: 44.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2017-07-10 00:01:11 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "3a2b293e17411f9f1c4143c66a08e8187b710082"], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+  Rendered shared/_navbar.html.erb (0.6ms)
+Completed 200 OK in 53ms (Views: 43.8ms | ActiveRecord: 0.6ms)
+
+
