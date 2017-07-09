@@ -38,7 +38,11 @@
     <div class="media">
       <div class="media-left">
         <figure class="image is-48x48">
-          <%= image_tag post.user.profile_picture, class: "profile-picture" %>
+          <% if post.user.profile_picture? %>
+            <%= image_tag post.user.profile_picture, class: "profile-picture" %>
+          <% else %>
+            <%= image_tag 'Trollface.png' %>
+          <% end %>
         </figure>
       </div>
       <div class="media-content">
@@ -55,14 +59,26 @@
         <a class="level-item">
           <span class="icon"><i class="fa fa-heart"></i></span>
         </a>
-        <a class="level-item">
-          <span class="icon"><i class="fa fa-comment-o"></i></span>
-        </a>
       </div>
       <div class="level-right">
         <small><%= time_ago_in_words(post.created_at) %> ago</small>
       </div>
     </nav>
+  </div>
+
+  <div class="card-content">
+    <div class="field has-addons">
+      <p class="control is-expanded">
+        <input class="input" type="text" name="comment" placeholder="Add a comment">
+      </p>
+      <p class="control">
+        <a class="button is-info">
+          <span class="icon">
+            <i class="fa fa-check"></i>
+          </span>
+        </a>
+      </p>
+    </div>
   </div>
 </div>
 </br>
