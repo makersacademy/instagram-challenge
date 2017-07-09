@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hipstagram</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="navbar-container">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" data-target="#bs-navbar-collapse-1" data-toggle="collapse" type="button">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand">
+            <%= link_to "hipstagram", root_path %>
+          </div>
+        </div>
+      <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <% if signed_in? %>
+            <li><%= link_to new_post_path do %>
+              <span class="glyphicon glyphicon-film"></span>
+            <% end %></li>
+            <li><%= link_to profile_path(current_user.username) do %>
+              <span class="glyphicon glyphicon-user"></span>
+            <% end %></li>
+            <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
+            <% else %>
+            <li><%= link_to 'Login', sign_in_path %></li>
+            <li><%= link_to "Register", sign_up_path %></li>
+            <% end %>
+        </ul>
+      </div>
+      </div>
+    </nav>
+
+
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+
+    <%= yield %>
+  </body>
+</html>
