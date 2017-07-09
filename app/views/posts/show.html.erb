@@ -4,7 +4,7 @@
   <%= image_tag @post.image.url(:large) %>
 </div>
 <div class="col-md-3 image-contents">
-  <p>posted by <%= @user.username %></p>
+  <p>posted by <%= link_to "#{@user.username}", user_path(@user) %></p>
   <p><%= @post.description %></p>
   <p> Likes: <%= Like.where(post_id: @post.id).size  %> </p>
   <%= link_to 'Like', post_likes_path(@post), method: :post %>
