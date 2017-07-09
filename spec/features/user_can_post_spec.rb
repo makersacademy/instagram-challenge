@@ -15,8 +15,20 @@ RSpec.feature "New posts", type: :feature do
     click_on "Add new"
     fill_in "Title", with: "Hello, world!"
     click_button "Upload"
-    within '.card' do
+    within ".card" do
       expect(page.find('.title').text).to eq user.username
+    end
+  end
+
+  scenario "Can submit post and see author profile picture" do
+    user = create(:user)
+    visit posts_url(as: user)
+    click_on "Add new"
+    fill_in "Title", with: "Hello, world!"
+    click_button "Upload"
+
+    within ".card .media-left" do
+      expect(page).to have_css "img[src*='Trollface.png']"
     end
   end
 end
