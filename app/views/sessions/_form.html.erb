@@ -1,0 +1,33 @@
+<%= form_for :session, url: session_path do |form| %>
+  <div class="field">
+    <%= form.label :email, class: "label" %>
+    <p class="control has-icons-left">
+      <%= form.text_field :email, type: 'email', class: "input", placeholder: "Email" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-envelope"></i>
+      </span>
+    </p>
+  </div>
+  <div class="field">
+    <%= form.label :password, class: "label" %>
+    <p class="control has-icons-left">
+      <%= form.password_field :password, class: "input", placeholder: "Password" %>
+      <span class="icon is-small is-left">
+        <i class="fa fa-lock"></i>
+      </span>
+    </p>
+  </div>
+
+  <div class="field">
+    <p class="control">
+      <%= form.submit class: "button is-success" %>
+    </p>
+  </div>
+
+  <div class="other-links">
+    <% if Clearance.configuration.allow_sign_up? %>
+      <%= link_to t(".sign_up"), sign_up_path %>
+    <% end %>
+    <%= link_to t(".forgot_password"), new_password_path %>
+  </div>
+<% end %>
