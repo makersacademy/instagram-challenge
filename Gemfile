@@ -56,7 +56,6 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'rspec-rails'
   gem 'rubocop', require: false
-  gem 'rubocop-rails', require: false
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
 end
