@@ -5,6 +5,7 @@ RSpec.feature "New posts", type: :feature do
     sign_in
     click_on "Add new"
     fill_in "Title", with: "Hello, world!"
+    attach_file('post_photo', Rails.root + "spec/factories/Trollface.png")
     click_button "Upload"
     expect(page).to have_content "Hello, world!"
   end
@@ -14,6 +15,7 @@ RSpec.feature "New posts", type: :feature do
     visit posts_url(as: user)
     click_on "Add new"
     fill_in "Title", with: "Hello, world!"
+    attach_file('post_photo', Rails.root + "spec/factories/Trollface.png")
     click_button "Upload"
     within ".card" do
       expect(page.find('.title').text).to eq user.username
@@ -25,6 +27,7 @@ RSpec.feature "New posts", type: :feature do
     visit posts_url(as: user)
     click_on "Add new"
     fill_in "Title", with: "Hello, world!"
+    attach_file('post_photo', Rails.root + "spec/factories/Trollface.png")
     click_button "Upload"
 
     within ".card .media-left" do

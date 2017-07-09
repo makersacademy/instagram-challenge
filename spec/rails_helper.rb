@@ -6,7 +6,6 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
-
 require "clearance/rspec"
 require 'support/factory_girl'
 require "support/features/clearance_helpers"
@@ -31,6 +30,7 @@ require "support/features/clearance_helpers"
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
