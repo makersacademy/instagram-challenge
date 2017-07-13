@@ -35,11 +35,8 @@ ActiveRecord::Schema.define(version: 20170709231441) do
 
   create_table "posts", force: :cascade do |t|
     t.text "description", null: false
+    t.string "image", null: false
     t.bigint "user_id", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
