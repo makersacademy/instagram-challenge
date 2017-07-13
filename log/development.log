@@ -22676,3 +22676,33 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 49ms (Views: 44.1ms | ActiveRecord: 0.8ms)
 
 
+Started GET "/posts" for 127.0.0.1 at 2017-07-13 17:17:47 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "8a2fff9ddfb45e9d728abf1d9241b8ffbd93b41d"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (4.4ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 55ms (Views: 50.2ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/sign_out" for 127.0.0.1 at 2017-07-13 17:20:08 +0100
+Processing by Clearance::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."remember_token" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["remember_token", "8a2fff9ddfb45e9d728abf1d9241b8ffbd93b41d"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (5.9ms)[0m  [1m[33mUPDATE "users" SET "remember_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_token", "23dff1896ecd1dd9aeb7f4f8d9103293c059bd42"], ["updated_at", "2017-07-13 16:20:08.994995"], ["id", 1]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/sign_in
+Completed 302 Found in 17ms (ActiveRecord: 12.5ms)
+
+
+Started GET "/sign_in" for 127.0.0.1 at 2017-07-13 17:20:09 +0100
+Processing by Clearance::SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/_form.html.erb (6.3ms)
+  Rendered sessions/new.html.erb within layouts/application (8.3ms)
+  Rendered shared/_navbar.html.erb (0.4ms)
+Completed 200 OK in 49ms (Views: 48.9ms | ActiveRecord: 0.0ms)
+
+
