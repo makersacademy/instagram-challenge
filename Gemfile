@@ -17,9 +17,14 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'clearance', '~> 1.15'
-gem 'paperclip',"~> 5.0.0"
+gem 'paperclip','~> 5.0.0'
 gem 'bootstrap-sass'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+gem 'figaro'
+gem 'unf'
 
 
 group :development, :test do
