@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :require_login
 
   def index
-    @posts = Post.all
+    @posts = Post.all.reverse
   end
 
   def show
