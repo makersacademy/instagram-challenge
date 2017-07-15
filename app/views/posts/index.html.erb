@@ -1,0 +1,20 @@
+<div class="user_status">
+<% if current_user %>
+  <h3>Hello <%= current_user.name %></h3>
+<% end %>
+<% @posts.reverse.each do |post| %>
+  <div id=<%= post.id %> >
+  <img src="<%= post.photo %>">
+  <%= simple_format(post.text) %>
+  Posted by
+  <%= link_to "#{post.user.name}", post.user %>
+
+  <%= post.created_at.strftime('at %R on %d/%m/%y') %>
+  <br>
+  <%= link_to post_path(post) do %>t h o u g h t s ?<% end %>
+  <br>
+  <br>
+  <br>
+  <% end %>
+</div>
+</div>
