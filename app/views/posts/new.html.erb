@@ -1,0 +1,33 @@
+<h1>New Post</h1>
+
+<% if @errors.present? %>
+  <div class="errors">
+    <ul>
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @post do |form| %>
+
+  <div class="form-group">
+    <%= form.label :image %>
+    <br>
+    <%= form.file_field :image %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <br>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Create Post", class: 'btn btn-default' %>
+  </div>
+<% end %>
+
+<br>
+<%= link_to "Back", posts_path %>

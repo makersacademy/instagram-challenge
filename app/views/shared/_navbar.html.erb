@@ -1,0 +1,39 @@
+<% if signed_in? %>
+  <header>
+
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/posts">
+              <i class="fa fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a class="navbar-brand" href="/posts">Hipstagram</a>
+         </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+
+           </ul>
+
+           <ul class="nav navbar-nav navbar-right">
+               <form class="navbar-form navbar-left" method="GET" action="/posts/new">
+                <li><%= button_to 'Post a picture', new_post_path, method: :get, class: 'btn btn-default'  %></li>
+               </form>
+               <li><%= link_to "Your profile | Signed in as: #{current_user.username}", user_path(current_user) %></li>
+               <li>  <%= link_to 'Sign out', sign_out_path, method: :delete %> </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+
+       </div><!-- /.container-fluid -->
+     </nav>
+  </header>
+<% end %>
