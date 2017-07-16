@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root to: "posts#index"
 
-  resources :posts
+  resources :posts do
+    resource :comments
+  end
 
   # Clearance user routes
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
