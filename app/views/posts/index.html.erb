@@ -38,11 +38,15 @@
     <div class="media">
       <div class="media-left">
         <figure class="image is-48x48">
-          <%= image_tag post.user.profile_picture, class: "profile-picture" %>
+          <% if post.user.profile_picture? %>
+            <%= image_tag post.user.profile_picture, class: "profile-picture" %>
+          <% else %>
+            <%= image_tag 'Trollface.png' %>
+          <% end %>
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-4"><%= post.user_username %></p>
+        <p class="title is-4"><strong><%= post.author_username %></strong></p>
       </div>
     </div>
 
@@ -50,19 +54,40 @@
       <%= post.title %>
       <br>
     </div>
+
+    <div class="content comments">
+      <% post.comments.each do |comment| %>
+        <strong><%= comment.author_username %></strong>
+        <%= comment.message %>
+        </br>
+      <% end %>
+    </div>
+
     <nav class="level is-mobile">
       <div class="level-left">
         <a class="level-item">
           <span class="icon"><i class="fa fa-heart"></i></span>
-        </a>
-        <a class="level-item">
-          <span class="icon"><i class="fa fa-comment-o"></i></span>
         </a>
       </div>
       <div class="level-right">
         <small><%= time_ago_in_words(post.created_at) %> ago</small>
       </div>
     </nav>
+  </div>
+
+  <div class="card-content">
+    <%= form_for [post, Comment.new] do |form| %>
+      <div class="field has-addons">
+        <p class="control is-expanded">
+          <%= form.text_field :message, class: "input", required: "true", placeholder: "Add a comment" %>
+          <%= form.hidden_field :user_id, value: current_user.id %>
+        </p>
+
+        <p class="control">
+          <%= form.submit :comment, class: "button is-info submit-comment" %>
+        </p>
+      </div>
+    <% end %>
   </div>
 </div>
 </br>

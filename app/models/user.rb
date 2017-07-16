@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   include Clearance::User
   has_many :posts
+  has_many :comments
 
   mount_uploader :profile_picture, ProfilePictureUploader
 
