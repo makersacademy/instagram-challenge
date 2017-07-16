@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :photo, presence: true
 
-  def user_username
+  def author_username
     User.find(user_id).username
   end
 end

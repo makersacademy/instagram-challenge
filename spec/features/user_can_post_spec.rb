@@ -29,8 +29,7 @@ RSpec.feature "New posts", type: :feature do
 
   it "has a comment field" do
     sign_in_and_post
-    save_and_open_page
-    expect(page).to have_field "comment"
+    expect(page).to have_field "comment_message"
   end
 
 end
