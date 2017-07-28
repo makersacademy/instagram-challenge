@@ -1,4 +1,4 @@
 class User < ApplicationRecord
   has_many :pictures
-  has_many :comments
+  # removed the comments
 end
