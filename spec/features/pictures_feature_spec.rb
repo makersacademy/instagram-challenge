@@ -10,7 +10,6 @@ feature 'pictures' do
   end
 
   context 'pictures have been added' do
-
     before do
       Picture.create(caption: 'Another selfie!')
     end
@@ -43,4 +42,18 @@ feature 'pictures' do
     end
   end
 
+  context 'editing pictures' do
+    before do
+      Picture.create(caption: 'Another selfie!')
+    end
+
+    it 'allows user to edit a picture' do
+      visit '/pictures'
+      click_link 'Edit Picture'
+      fill_in 'Caption', with: 'Still a selfie'
+      click_button 'Update Picture'
+      expect(page).to have_content 'Still a selfie'
+      expect(current_path).to eq '/pictures'
+    end
+  end
 end
