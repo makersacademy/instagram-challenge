@@ -22,4 +22,25 @@ feature 'pictures' do
     end
   end
 
+  context 'adding pictures' do
+    it 'asks user to add a caption to their picture' do
+      visit '/pictures'
+      click_link 'Add a picture'
+      fill_in 'Caption', with: 'Another picture of Tower Bridge'
+      click_button 'Create Picture'
+      expect(page).to have_content 'Another picture of Tower Bridge'
+      expect(current_path).to eq '/pictures'
+    end
+  end
+
+  context 'viewing pictures' do
+    let!(:picture) { Picture.create(caption: 'Another picture of cats')}
+    scenario 'shows the caption for the individual picture' do
+      visit '/pictures'
+      click_link 'Another picture of cats'
+      expect(page).to have_content 'Another picture of cats'
+      expect(current_path).to eq("/pictures/#{picture.id}")
+    end
+  end
+
 end
