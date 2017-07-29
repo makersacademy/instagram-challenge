@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
   has_many :pictures
-  # removed the comments
+
+  validates :username, presence: true
+
 end
