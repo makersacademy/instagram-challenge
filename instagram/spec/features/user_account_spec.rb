@@ -62,8 +62,6 @@ end
         log_in(email: "fail@gmail.com")
         expect(page).to have_content("Invalid Email or password")
       end
-
-
     end
 
 

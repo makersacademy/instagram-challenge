@@ -20,6 +20,12 @@ class PicturesController < ApplicationController
     end
   end
 
+  def destroy
+    Picture.find(params[:id]).destroy
+    flash[:notice] = "Picture gone!"
+    redirect_to current_user
+  end
+
   private
 
   def pic_params
