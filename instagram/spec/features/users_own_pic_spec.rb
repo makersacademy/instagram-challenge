@@ -19,10 +19,12 @@ RSpec.feature "User Pictures", type: :feature do
     expect(page).to_not have_content("hashtag") # this might be too generic.
   end
 
-  # scenario "user can view a single picture" do
-  #   visit 'users/show'
-  #   click_on 'View picture'
-  #   expect()
-  # end
+  scenario "user can view a single picture" do
+    User.first.pictures.create(caption: "pictwo").save
+    visit 'users/show'
+    click_on 'View Picture 2'
+    expect(page).to have_content("pictwo")
+    expect(page).to_not have_content("hashtag")
+  end
 
 end

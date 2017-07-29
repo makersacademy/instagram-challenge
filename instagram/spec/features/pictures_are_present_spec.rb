@@ -11,7 +11,7 @@ RSpec.feature "Pictures", type: :feature do
       visit '/'
       sign_up
       User.first.pictures.create(caption: "hashtag").save
-      User.first.pictures.create(caption: "secondhashtag").save
+      User.first.pictures.create(caption: "pictwo").save
     end
 
     context "index" do
@@ -19,12 +19,19 @@ RSpec.feature "Pictures", type: :feature do
     scenario "should display them" do
       visit '/'
       expect(page).to have_content("hashtag")
-      expect(page).to have_content("secondhashtag")
+      expect(page).to have_content("pictwo")
     end
 
     scenario "in reverse chrono order" do
         visit '/'
-        expect('secondhashtag').to appear_before('hashtag')
+        expect('pictwo').to appear_before('hashtag')
+    end
+
+    scenario "pics can be viewed individually" do
+        visit '/'
+        click_on "View Picture 2"
+        expect(page).to have_content("pictwo")
+        expect(page).to_not have_content("secondhashtag")
     end
 
   end
