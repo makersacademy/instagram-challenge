@@ -7,3 +7,10 @@ def sign_up(username: "jking", email: "jking@gmail.com", password: "123456", pas
   fill_in 'user_password_confirmation', with: password_confirmation
   click_button 'Sign up'
 end
+
+def log_in(email: "jking@gmail.com", password: "123456")
+  click_on "Sign In"
+  fill_in 'user_email', with: email
+  fill_in 'user_password', with: password
+  click_button "Log in"
+end
