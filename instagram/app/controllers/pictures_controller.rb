@@ -24,6 +24,16 @@ class PicturesController < ApplicationController
     end
   end
 
+  def edit
+    @picture = Picture.find(params[:id])
+  end
+
+  def update
+    Picture.find(params[:id]).update(pic_params)
+    flash[:notice] = "Picture edited!"
+    redirect_to current_user
+  end
+
   def destroy
     Picture.find(params[:id]).destroy
     flash[:notice] = "Picture gone!"

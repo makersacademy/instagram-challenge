@@ -27,4 +27,13 @@ RSpec.feature "User Pictures", type: :feature do
     expect(page).to_not have_content("hashtag")
   end
 
+  scenario "user can edit a picture" do
+    visit 'users/show'
+    click_on 'Edit Picture 1'
+    fill_in 'picture_caption', with: "Change me"
+    click_on "Update"
+    expect(page).to have_content("Picture edited!")
+  end
+
+
 end
