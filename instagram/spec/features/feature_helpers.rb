@@ -8,9 +8,17 @@ def sign_up(username: "jking", email: "jking@gmail.com", password: "123456", pas
   click_button 'Sign up'
 end
 
+def sign_out
+  click_on "Sign Out"
+end
+
 def log_in(email: "jking@gmail.com", password: "123456")
   click_on "Sign In"
   fill_in 'user_email', with: email
   fill_in 'user_password', with: password
   click_button "Log in"
+end
+
+
+def create_pic()
 end

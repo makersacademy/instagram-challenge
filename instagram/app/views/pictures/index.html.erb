@@ -7,7 +7,13 @@
   <%= picture.caption %>
   <%= picture.created_at %>
   <%= link_to "View Picture #{picture.id}", picture_url(picture) %>
+  <% if !picture.comments.empty? %>
+    <% picture.comments.reverse.each do |comment| %>
+      <%= comment.content %>
+      <% end %>
+ <% end %>
 <% end %>
 <% end %>
+
 
 <%= link_to "Post Picture", new_picture_url %>

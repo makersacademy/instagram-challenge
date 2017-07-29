@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :pictures
+  has_many :pictures, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true, length: { maximum: 50 }
 
