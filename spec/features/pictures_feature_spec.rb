@@ -56,4 +56,17 @@ feature 'pictures' do
       expect(current_path).to eq '/pictures'
     end
   end
+
+  context 'deleting pictures' do
+    before do
+      Picture.create(caption: 'Another selfie!')
+    end
+
+    it 'allows user to delete a picture' do
+      visit '/pictures'
+      click_link 'Delete Picture'
+      expect(page).not_to have_content 'Another selfie!'
+      expect(page).to have_content 'Picture deleted successfully'
+    end
+  end
 end
