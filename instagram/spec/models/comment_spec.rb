@@ -20,10 +20,10 @@ RSpec.describe Comment, type: :model do
     end
   end
 
-  describe Comment.new(content: "Ur soo VaINn") do
+  describe Comment.new(content: "H8ers gunna H8") do
 
     context "so that flame wars are likely"
-    it { is_expected.to have_attributes(:content => "Ur soo VaINn") }
+    it { is_expected.to have_attributes(:content => "H8ers gunna H8") }
 
   end
 end
