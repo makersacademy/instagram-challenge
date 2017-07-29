@@ -13,9 +13,9 @@ RSpec.describe Picture, type: :model do
     it { is_expected.to validate_presence_of(:user_id)}
   end
 
-  describe Picture.new(caption: "selfie number 4364") do
+  describe Picture.new(caption: "selfie ad infinitum") do
     context "to make pics more descriptive" do
-      it { is_expected.to have_attributes(:caption => "selfie number 4364") }
+      it { is_expected.to have_attributes(:caption => "selfie ad infinitum") }
     end
   end
 
