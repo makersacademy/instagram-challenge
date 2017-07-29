@@ -3,7 +3,7 @@ Instagram Challenge
 
 ## User stories
 
-As a user:
+```As a user:
 
 So that I can share photos
 I want to be able to upload pictures
