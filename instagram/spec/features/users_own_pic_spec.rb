@@ -23,6 +23,7 @@ RSpec.feature "User's personal pictures", type: :feature do
     create_pic(caption: "pictwo")
     click_on 'View Picture 2'
     expect(page).to have_content("pictwo")
+    expect(page).to have_css("img[src*='surf']")
     expect(page).to_not have_content("hashtag")
   end
 
@@ -32,6 +33,16 @@ RSpec.feature "User's personal pictures", type: :feature do
     click_on "Update"
     expect(page).to have_content("Picture edited!")
   end
+
+  context "invalid submission" do
+    scenario "user submits pic without file" do
+    click_on "Post Picture"
+    fill_in "picture_caption", with: "bad submission"
+    click_on "Post"
+    expect(page).not_to have_content("bad submissions")
+    expect(page).to have_content "Image can't be blank"
+  end
+end
 
 
 end

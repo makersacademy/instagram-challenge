@@ -20,6 +20,7 @@ RSpec.feature "Pictures", type: :feature do
       visit '/'
       expect(page).to have_content("hashtag")
       expect(page).to have_content("pictwo")
+      expect(page).to have_css "img[src*='surf']"
     end
 
     scenario "and they will be in reverse chronological order" do
@@ -32,6 +33,7 @@ RSpec.feature "Pictures", type: :feature do
         click_on "View Picture 2"
         expect(page).to have_content("pictwo")
         expect(page).to_not have_content("hashtag")
+        expect(page).to have_css("img[src*='surf']")
     end
   end
 end

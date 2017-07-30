@@ -19,7 +19,7 @@ class PicturesController < ApplicationController
     if @picture.save
       redirect_to pictures_url
     else
-      flash[:error].keep = pic.errors.full_messages
+      flash[:notice] = @picture.errors.full_messages
       redirect_to new_picture_url
     end
   end
@@ -43,6 +43,6 @@ class PicturesController < ApplicationController
   private
 
   def pic_params
-    params.require(:picture).permit(:caption)
+    params.require(:picture).permit(:image, :caption)
   end
 end

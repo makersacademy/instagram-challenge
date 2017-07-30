@@ -23,6 +23,7 @@ end
 def create_pic(caption: "test caption")
   click_on "Post Picture"
   fill_in "picture_caption", with: caption
+  page.attach_file('picture_image', Rails.root + 'public/images/surf.jpg')
   click_on "Post"
 end
 

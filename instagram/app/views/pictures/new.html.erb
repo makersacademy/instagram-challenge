@@ -1,7 +1,15 @@
 
 
-<%= form_for @picture do |form| %>
+<%= form_for @picture, html: { class: 'form-horizontal', multipart: true } do |form| %>
+  <%= form.label :image %>
+  <%= form.file_field :image %>
   <%= form.label :caption %>
   <%= form.text_field :caption %>
   <%= form.submit "Post" %>
 <% end %>
+
+ <% if flash[:notice] %>
+    <% @picture.errors.full_messages.each do |msg| %>
+    <p> <%= msg %> </p>
+   <% end %>
+  <% end %>
