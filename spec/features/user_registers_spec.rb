@@ -30,7 +30,7 @@ feature 'user registers' do
   scenario 'with wrong password confirmation' do
     visit "/"
     click_link "Sign up"
-    expect { sign_up(password: "1234567", password_confirmation: "1234568") }.to_not change{ User.count } 
+    expect { sign_up(password: "1234567", password_confirmation: "1234568") }.to_not change{ User.count }
     expect(current_path).to eq(user_registration_path)
     expect(page).to have_content("Password confirmation doesn't match Password")
   end
