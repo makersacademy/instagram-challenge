@@ -7,7 +7,7 @@ feature 'user registers' do
     click_link "Sign up"
     expect(current_path).to eq(new_user_registration_path)
     expect { sign_up }.to change{ User.count }.by(1)
-    expect(current_path).to eq "/"
+    expect(current_path).to eq "/users/1"
     expect(page).to have_content("Welcome Mimi")
   end
 

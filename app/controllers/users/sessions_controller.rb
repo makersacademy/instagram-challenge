@@ -6,9 +6,14 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
+  def after_sign_in_path_for(resource)
+    "/users/#{resource.id}"
+  end
+
   # POST /resource/sign_in
   # def create
   #   super
+  #   redirect_to "/users/#{current_user.id}"
   # end
 
   # DELETE /resource/sign_out
