@@ -29,7 +29,7 @@ RSpec.feature "User's personal pictures", type: :feature do
   end
 
   scenario "user can edit a picture" do
-    click_on 'Edit Picture 1'
+    click_on 'Edit Picture'
     fill_in 'picture_caption', with: "Change me"
     click_on "Update"
     expect(page).to have_content("Picture edited!")

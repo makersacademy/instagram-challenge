@@ -7,7 +7,7 @@ RSpec.feature "User sign-up", type: :feature do
     scenario "they can reach a signup form" do
       visit '/'
       click_on "Sign Up"
-      expect(page).to have_content("Sign up form")
+      expect(page).to have_content("Sign up")
     end
   end
 

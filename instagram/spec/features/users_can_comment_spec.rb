@@ -43,7 +43,7 @@ RSpec.feature "User commenting", type: :feature do
       leave_comment
       sign_out
       expect(page).to have_content("a selfie a day keeps contentment at bay")
-      expect(page).to have_content("Comment left by: jking")
+      expect(page).to have_content("Left by: jking")
     end
 
   end

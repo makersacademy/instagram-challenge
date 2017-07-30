@@ -15,7 +15,7 @@ end
 def log_in(email: "jking@gmail.com", password: "123456")
   click_on "Sign In"
   fill_in 'user_email', with: email
-  fill_in 'user_password', with: password
+  fill_in 'password_confirmation', with: password
   click_button "Log in"
 end
 
