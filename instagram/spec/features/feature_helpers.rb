@@ -20,5 +20,14 @@ def log_in(email: "jking@gmail.com", password: "123456")
 end
 
 
-def create_pic()
+def create_pic(caption: "test caption")
+  click_on "Post Picture"
+  fill_in "picture_caption", with: caption
+  click_on "Post"
+end
+
+def leave_comment(comment: "a selfie a day keeps contentment at bay")
+  click_on "Leave a comment"
+  fill_in "comment_content", with: comment
+  click_on "Comment"
 end

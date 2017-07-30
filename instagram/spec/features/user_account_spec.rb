@@ -1,64 +1,65 @@
 
 require "rails_helper"
 
-RSpec.feature "User sign up", type: :feature do
+RSpec.feature "User sign-up", type: :feature do
 
- context "when user not signup or -in" do
-    scenario "User can access signup form" do
+ context "when user hasn't signedup or -in" do
+    scenario "they can reach a signup form" do
       visit '/'
       click_on "Sign Up"
       expect(page).to have_content("Sign up form")
     end
   end
 
-  context "when user not signup or -in" do
-  scenario "User can signup successfully" do
+  scenario "and they can signup successfully" do
     visit '/'
     sign_up
     expect(page).to have_content("Welcome! You have signed up successfully")
   end
-  end
 
-  # return to provide more comp error checks
+  # Return to write better error checks
 
-  scenario "User receives error flash on failed sign up" do
+  context "when user enters incorrect signup details" do
+  scenario "they get a descriptive error flash" do
     visit '/'
     sign_up(password_confirmation: "12345")
     expect(page).to have_content("error prohibited this user from being saved")
   end
+end
 
-  context "when already logged in" do
-
-  scenario "User should not see signup or -in on home page" do
+  context "when the user is logged in" do
+  scenario "they won't see a signup or signin link" do
     visit '/'
     sign_up
     expect(page).to_not have_content("Sign Up")
     expect(page).to_not have_content("Sign In")
   end
-
 end
 
    feature "User sign in", type: :feature do
 
-    scenario "Sign in form is accessible" do
+     context "when user is unregistered or logged out" do
+    scenario "a sign-in form can be reached" do
       visit '/'
       click_on "Sign In"
       expect(page).to have_content('Log in form')
     end
+  end
 
-    context "when user has an account" do
-      scenario "they can log in successfully" do
+    context "when user is properly registered" do
+
+      before do
         visit '/'
         sign_up
         click_on "Sign Out"
+      end
+
+      scenario "they can log in" do
         log_in
         expect(page).to have_content("Signed in successfully")
       end
 
-      scenario "user will receive errors on failed sign_in" do
-        visit '/'
-        sign_up
-        click_on "Sign Out"
+      scenario "and they get a descriptive error flash on failure here" do
         log_in(email: "fail@gmail.com")
         expect(page).to have_content("Invalid Email or password")
       end
@@ -72,15 +73,16 @@ end
 
   context "when user is logged in" do
 
-   scenario "sign out is visable" do
-     visit '/'
-     sign_up
+    before do
+      visit '/'
+      sign_up
+    end
+
+   scenario "a sign out link is visable" do
      expect(page).to have_content("Sign Out")
    end
 
    scenario "user can log out" do
-     visit '/'
-     sign_up
      click_on "Sign Out"
      expect(page).to have_content("Sign In")
    end

@@ -3,42 +3,31 @@ require "rails_helper"
 
 RSpec.feature "User commenting", type: :feature do
 
+  before do
+    visit '/'
+    sign_up
+    create_pic
+  end
+
   context "when user is signed in" do
 
-    before do
-      visit '/'
-      sign_up
-      User.first.pictures.create(caption: "hashtag").save
-    end
-
-    scenario "individual pics will have comment forms" do
-      visit '/'
+    scenario "they can view comment forms on individual pics" do
       click_on "View Picture 1"
       expect(page).to have_content("Leave a comment")
     end
 
-
-    scenario "users can leave a comment on another's users post" do
-      visit '/'
-      sign_out
-      sign_up(username: "anon", email: "anon@gmail.com", password: "654321", password_confirmation: "654321")
-      User.find(2).pictures.create(caption: "anon").save
+    scenario "and they can create a comment there" do
       click_on "View Picture 1"
-      fill_in "comment_content", with: "a selfie a day keeps contentment at bay"
-      click_on "Comment"
+      leave_comment
       expect(page).to have_content("Comment saved!")
     end
 
   end
 
-  context "when user is not signed in" do
-    before do
-      visit '/'
-      sign_up
-      User.first.pictures.create(caption: "hashtag").save
+  context "when user is not registered or signed in" do
+
+    scenario "comment forms are missing" do
       sign_out
-    end
-    scenario "comment forms will be hidden" do
       visit '/'
       click_on "View Picture 1"
       expect(page).to_not have_content("Leave a comment")
