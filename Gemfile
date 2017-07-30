@@ -9,6 +9,7 @@ gem 'carrierwave', '~> 1.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Use postgresql as the database for Active Record
+gem 'devise'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'pg', '~> 0.18'
 # Use Puma as the app server

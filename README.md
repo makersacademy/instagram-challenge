@@ -1,10 +1,6 @@
 Instagram Challenge
 ===================
 
-## Task
-
-Build Instagram: Simple huh!
-
 ** User stories **
 
 ```

@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  resources :pictures
+  devise_for :users
+
+  resources :users do
+    resources :pictures
+  end
+  
 end
