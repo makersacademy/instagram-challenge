@@ -1,14 +1,13 @@
 
-<h1>Pictures#show</h1>
-<p>Find me in app/views/pictures/show.html.erb</p>
 
+<div class="row">
+    <div class="col-md-12 text-center">
+      <%= image_tag @picture.image.url(:medium) %>
+      <p> Caption: <%= @picture.caption %> </p>
+      <p> Created at: <%= @picture.created_at %> </p>
+    </div>
 
-<%= image_tag @picture.image.url(:medium) %>
-
-<p> Caption: <%= @picture.caption %> </p>
-  <p> Created at: <%= @picture.created_at %> </p>
-
-
-<% if user_signed_in? %>
-<%= link_to "Leave a comment", new_picture_comment_url(@picture) %>
-<% end %>
+    <% if user_signed_in? %>
+      <%= link_to "Leave a comment", new_picture_comment_url(@picture) %>
+    <% end %>
+</div>

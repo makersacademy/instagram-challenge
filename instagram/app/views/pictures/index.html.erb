@@ -1,26 +1,32 @@
 
-<h1>Pictures#index</h1>
-<p>Find me in app/views/pictures/index.html.erb</p>
-
-<% if !@pictures.empty? %>
-<% @pictures.reverse.each do |picture| %>
-
-<div> <%= link_to picture_path(picture) do %>
-      <%= image_tag picture.image.url(:thumb), class: "image" %>
-    <% end %>
+<div class="row">
+   <div class="col-md-12 text-center">
+      <h1> All Pictures </h1>
+   </div>
+   <div class="col-md-2"></div>
+   <div class="col-md-8 text-center">
+      <article>
+         <% if !@pictures.empty? %>
+           <% @pictures.reverse.each do |picture| %>
+         <div class="panel-default">
+            <div> <%= link_to picture_path(picture) do %>
+               <%= image_tag picture.image.url(:thumb), class: "image" %>
+            <% end %>
+            </div>
+              <div class="panel-body">
+                 <p> Caption:  <%= picture.caption %> </p>
+                 <p> Created at:  <%= picture.created_at %> </p>
+                 <% if !picture.comments.empty? %>
+                   <% picture.comments.reverse.each do |comment| %>
+                      <p> Comment:  <%= comment.content %> </p>
+                      <p> Comment left by: <%= comment.picture.user.username %> </p>
+                  <% end %>
+              <% end %>
+          <% end %>
+       <% end %>
+            </div>
+         </div>
+      </article>
+      <%= link_to "Post Picture", new_picture_url %>
+   </div>
 </div>
-<p> Caption:  <%= picture.caption %> </p>
-<p> Created at:  <%= picture.created_at %> </p>
-
-  <% if !picture.comments.empty? %>
-    <% picture.comments.reverse.each do |comment| %>
-    <p> Comment:  <%= comment.content %> </p>
-      <p> Comment left by: <%= comment.picture.user.username %> </p>
-      <% end %>
- <% end %>
-<% end %>
-<% end %>
-
-
-
-<%= link_to "Post Picture", new_picture_url %>
