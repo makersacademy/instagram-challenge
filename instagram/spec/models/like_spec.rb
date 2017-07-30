@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Like, type: :model do
   it { is_expected.to be }
 
-  describe "assoc" do
+  describe "associations" do
     it { is_expected.to belong_to(:picture)}
   end
 
