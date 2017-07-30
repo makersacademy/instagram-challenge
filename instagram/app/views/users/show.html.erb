@@ -8,9 +8,12 @@
   <%= image_tag picture.image.url(:thumb) %>
   <%= picture.caption %>
   <%= picture.created_at %>
+
+<% if @user.id == current_user.id %>
   <%= link_to "Delete Picture", picture_url(picture), method: :delete %>
-  <%= link_to "View Picture #{picture.id}", picture_url(picture) %>
   <%= link_to "Edit Picture #{picture.id}", edit_picture_url(picture) %>
+<% end %>
+  <%= link_to "View Picture #{picture.id}", picture_url(picture) %>
   <% if !picture.comments.empty? %>
     <% picture.comments.reverse.each do |comment| %>
       <%= comment.content %>
@@ -20,4 +23,6 @@
 <%end%>
 
 
+<% if @user.id == current_user.id %>
 <%= link_to "Post Picture", new_picture_url %>
+<% end %>

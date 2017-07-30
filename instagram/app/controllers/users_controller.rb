@@ -3,7 +3,12 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @user = User.find(current_user.id)
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+      render :show
+    else
+      redirect_to pictures_url
+    end
   end
 
 end

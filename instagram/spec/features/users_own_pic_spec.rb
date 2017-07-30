@@ -10,7 +10,7 @@ RSpec.feature "User's personal pictures", type: :feature do
     visit '/'
     sign_up
     create_pic
-    visit 'users/show'
+    visit 'users/1'
   end
 
   scenario "user can delete their own pictures" do
@@ -32,6 +32,16 @@ RSpec.feature "User's personal pictures", type: :feature do
     fill_in 'picture_caption', with: "Change me"
     click_on "Update"
     expect(page).to have_content("Picture edited!")
+  end
+
+  context "if another user wants to edit or delete your picture" do
+    scenario "they cannot" do
+      sign_out
+      sign_up(username: "anon", email: "anon@gmail.com", password: "654321", password_confirmation: "654321")
+      visit "/users/1"
+      expect(page).to_not have_content("Delete Picture")
+      expect(page).to_not have_content("Edit Picture")
+    end
   end
 
   context "invalid submission" do

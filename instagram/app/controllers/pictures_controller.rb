@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :your_picture, only: [:edit, :update, :destroy]
 
   def index
     @pictures = Picture.all
@@ -45,4 +46,13 @@ class PicturesController < ApplicationController
   def pic_params
     params.require(:picture).permit(:image, :caption)
   end
+
+  def your_picture
+    @picture = Picture.find(params[:id])
+    unless current_user.id == @picture.user.id
+      flash[:alert] = "That picture isn't yours!"
+      redirect_to current_user
+    end
+  end
+
 end
