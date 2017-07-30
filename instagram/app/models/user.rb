@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :pictures, dependent: :destroy
+  has_many :filters
+  has_many :tags, through: :filters
 
   validates :username, presence: true, uniqueness: true, length: { maximum: 50 }
 
