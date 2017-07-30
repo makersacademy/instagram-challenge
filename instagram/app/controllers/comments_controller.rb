@@ -8,14 +8,13 @@ class CommentsController < ApplicationController
 
   def create
     @picture = Picture.find(params[:picture_id])
-    @comment = @picture.comments.create(comment_params)
-    if @comment.save
+    if @picture.comments.build(comment_params).save
        flash[:success] = "Comment saved!"
        redirect_to current_user
     else
        flash[:alert] = "Unable to save comment"
        redirect_to current_user
-     end
+    end
   end
 
   private

@@ -15,8 +15,8 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @pic = User.find(current_user.id).pictures.new(pic_params)
-    if @pic.save
+    @picture = User.find(current_user.id).pictures.build(pic_params)
+    if @picture.save
       redirect_to pictures_url
     else
       flash[:error].keep = pic.errors.full_messages
