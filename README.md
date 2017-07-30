@@ -1,6 +1,18 @@
 Instagram Challenge
 ===================
 
+## User Stories
+```
+As a User,
+So that I can share what I'm doing with the world,
+I want to be able to upload a picture.
+```
+```
+As a User,
+So that I can see what everyone is doing,
+I want to be able to view an uploaded picture.
+```
+
 ## Instructions
 
 * Challenge time: one weekend
