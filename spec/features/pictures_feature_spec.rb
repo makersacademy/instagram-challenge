@@ -11,7 +11,7 @@ feature 'pictures' do
 
   context 'pictures have been added' do
     before do
-      Picture.create(caption: 'Another selfie!')
+      Picture.create(caption: 'Another selfie!', image: 'https://static.pexels.com/photos/126407/pexels-photo-126407.jpeg')
     end
 
     it 'should display the added picture' do
@@ -22,18 +22,22 @@ feature 'pictures' do
   end
 
   context 'adding pictures' do
+    before do
+      Picture.create(caption: 'Another selfie!', image: 'https://static.pexels.com/photos/126407/pexels-photo-126407.jpeg')
+    end
+
     it 'asks user to add a caption to their picture' do
       visit '/pictures'
       click_link 'Add a picture'
-      fill_in 'Caption', with: 'Another picture of Tower Bridge'
+      fill_in 'Caption', with: 'Another selfie!'
       click_button 'Create Picture'
-      expect(page).to have_content 'Another picture of Tower Bridge'
+      expect(page).to have_content 'Another selfie!'
       expect(current_path).to eq '/pictures'
     end
   end
 
   context 'viewing pictures' do
-    let!(:picture) { Picture.create(caption: 'Another picture of cats')}
+    let!(:picture) { Picture.create(caption: 'Another picture of cats', image: 'https://static.pexels.com/photos/126407/pexels-photo-126407.jpeg')}
     scenario 'shows the caption for the individual picture' do
       visit '/pictures'
       click_link 'Another picture of cats'
@@ -44,7 +48,7 @@ feature 'pictures' do
 
   context 'editing pictures' do
     before do
-      Picture.create(caption: 'Another selfie!')
+      Picture.create(caption: 'Another selfie!', image: 'https://static.pexels.com/photos/126407/pexels-photo-126407.jpeg')
     end
 
     it 'allows user to edit a picture' do
@@ -59,7 +63,7 @@ feature 'pictures' do
 
   context 'deleting pictures' do
     before do
-      Picture.create(caption: 'Another selfie!')
+      Picture.create(caption: 'Another selfie!', image: 'https://static.pexels.com/photos/126407/pexels-photo-126407.jpeg')
     end
 
     it 'allows user to delete a picture' do

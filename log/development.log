@@ -626,3 +626,604 @@ Processing by PicturesController#index as HTML
 Completed 200 OK in 41ms (Views: 35.8ms | ActiveRecord: 0.4ms)
 
 
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (115.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "instagram_clone_development"[0m
+  [1m[35m (118.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "instagram_clone_test"[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2036747462362729725);[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePictures (20170727204739)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "pictures" ("id" bigserial primary key, "caption" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170727204739"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-07-30 14:43:19.662510"], ["updated_at", "2017-07-30 14:43:19.662510"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2036747462362729725)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users" for 127.0.0.1 at 2017-07-30 16:19:47 +0100
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant UsersController):
+  
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.2) lib/action_dispatch/http/request.rb:82:in `controller_class'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/new" for 127.0.0.1 at 2017-07-30 16:20:02 +0100
+  
+ActionController::RoutingError (uninitialized constant UsersController):
+  
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.2) lib/action_dispatch/http/request.rb:82:in `controller_class'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/new" for 127.0.0.1 at 2017-07-30 17:18:59 +0100
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant UsersController):
+  
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.2) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.2) lib/action_dispatch/http/request.rb:82:in `controller_class'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/pictures" for 127.0.0.1 at 2017-07-30 17:19:07 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered pictures/index.html.erb within layouts/application (19.1ms)
+Completed 200 OK in 264ms (Views: 242.2ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-07-30 17:19:09 +0100
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 47ms (Views: 27.2ms | ActiveRecord: 4.2ms)
+
+
+Started POST "/pictures" for 127.0.0.1 at 2017-07-30 17:19:14 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hWhwAw7QcP6zBnJul90umR+ItOP0IhtNEgjgJUUtv44M3acU/hpRF8PyufWrQ5REveUAXA6TFYImycrfElJhHg==", "picture"=>{"caption"=>"Space"}, "commit"=>"Create Picture"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "pictures" ("caption", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["caption", "Space"], ["created_at", "2017-07-30 16:19:14.200047"], ["updated_at", "2017-07-30 16:19:14.200047"]]
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 12ms (ActiveRecord: 7.5ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-07-30 17:19:14 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 25ms (Views: 22.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-07-30 17:19:16 +0100
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 40ms (Views: 30.6ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/pictures/1" for 127.0.0.1 at 2017-07-30 17:19:18 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"qKniLZeA/NZGQjbxLkHvJCR+u+k0/s8iHJZVeFvMwfVMIgzaikOLBQO9P+NOuzhIDaNsGnFX6gtxSVj9kAapVw==", "id"=>"1"}
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 5ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-07-30 17:19:18 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered pictures/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 26ms (Views: 22.6ms | ActiveRecord: 0.3ms)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (116.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "instagram_clone_development"[0m
+  [1m[35m (116.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "instagram_clone_test"[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2036747462362729725);[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePictures (20170727204739)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "pictures" ("id" bigserial primary key, "caption" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170727204739"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-07-30 16:47:03.766486"], ["updated_at", "2017-07-30 16:47:03.766486"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2036747462362729725)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (12.9ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2036747462362729725);[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20170730165629)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (42.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170730165629"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentImageToPictures (20170730171616)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2036747462362729725)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2036747462362729725);[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAttachmentImageToPictures (20170730171616)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2036747462362729725)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (117.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "instagram_clone_development"[0m
+  [1m[35m (116.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "instagram_clone_test"[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2036747462362729725);[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePictures (20170727204739)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "pictures" ("id" bigserial primary key, "caption" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170727204739"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUsers (20170730165629)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170730165629"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentImageToPictures (20170730171616)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2036747462362729725)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2036747462362729725);[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAttachmentImageToPictures (20170730171616)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "pictures" ADD "image_file_name" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "pictures" ADD "image_content_type" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "pictures" ADD "image_file_size" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "pictures" ADD "image_updated_at" timestamp[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170730171616"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-07-30 17:28:20.497598"], ["updated_at", "2017-07-30 17:28:20.497598"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2036747462362729725)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-07-30 18:35:11 +0100
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/Simon/.rvm/gems/ruby-2.4.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/Simon/.rvm/gems/ruby-2.4.0/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb (3.2ms)
+Completed 200 OK in 25ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-07-30 18:35:16 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered pictures/index.html.erb within layouts/application (19.1ms)
+Completed 200 OK in 323ms (Views: 303.2ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-07-30 18:35:18 +0100
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 53ms (Views: 33.6ms | ActiveRecord: 4.5ms)
+
+
+Started POST "/pictures" for 127.0.0.1 at 2017-07-30 18:35:35 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ddXrJX+2AWGX5M2I4BMKECo0zBGSFsicWNSMFVSrDWCMxSqzncj6Be6iiADCMJxOnQACRJfstDHYsHV6ks23Nw==", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007ff78ec14728 @tempfile=#<Tempfile:/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/RackMultipart20170730-1442-p5akwu.jpg>, @original_filename="Simon Hempenstall MA profile.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"Simon Hempenstall MA profile.jpg\"\r\nContent-Type: image/jpeg\r\n">, "caption"=>"Me!"}, "commit"=>"Create Picture"}
+Command :: file -b --mime '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/1f0b464679831b2586e13b5e1108f4d920170730-1442-56cgfs.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/6b4f0f8941854dd807c4834d80560f7620170730-1442-14kl71c.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/6b4f0f8941854dd807c4834d80560f7620170730-1442-14kl71c.jpg[0]'
+Command :: convert '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/6b4f0f8941854dd807c4834d80560f7620170730-1442-14kl71c.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/20b070e4df87cf42482eade9027faf2720170730-1442-19jd1z3'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/6b4f0f8941854dd807c4834d80560f7620170730-1442-14kl71c.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/6b4f0f8941854dd807c4834d80560f7620170730-1442-14kl71c.jpg[0]'
+Command :: convert '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/6b4f0f8941854dd807c4834d80560f7620170730-1442-14kl71c.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/20b070e4df87cf42482eade9027faf2720170730-1442-s216ec'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/1f0b464679831b2586e13b5e1108f4d920170730-1442-ooydex.jpg'
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "pictures" ("caption", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "Me!"], ["created_at", "2017-07-30 17:35:35.938598"], ["updated_at", "2017-07-30 17:35:35.938598"], ["image_file_name", "Simon_Hempenstall_MA_profile.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 855643], ["image_updated_at", "2017-07-30 17:35:35.028318"]]
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 944ms (ActiveRecord: 7.5ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-07-30 18:35:35 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 41ms (Views: 38.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/pictures/1/edit" for 127.0.0.1 at 2017-07-30 18:35:41 +0100
+Processing by PicturesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (1.0ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/edit.html.erb within layouts/application
+  Rendered pictures/edit.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 51ms (Views: 36.7ms | ActiveRecord: 2.1ms)
+
+
+Started PATCH "/pictures/1" for 127.0.0.1 at 2017-07-30 18:35:46 +0100
+Processing by PicturesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QK2xo7CiPMhkEnVuyOwy5AwopqYu92pfuGNvXPmiliQTd4TJRD6UlKktQ0YfCo+i2FyikmbsoPvHzHXDNS1+xw==", "picture"=>{"caption"=>"Me! 2"}, "commit"=>"Update Picture", "id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "pictures" SET "caption" = $1, "updated_at" = $2 WHERE "pictures"."id" = $3[0m  [["caption", "Me! 2"], ["updated_at", "2017-07-30 17:35:46.219147"], ["id", 1]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 15ms (ActiveRecord: 7.6ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-07-30 18:35:46 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 30ms (Views: 27.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/pictures/1/edit" for 127.0.0.1 at 2017-07-30 18:35:48 +0100
+Processing by PicturesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/edit.html.erb within layouts/application
+  Rendered pictures/edit.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 40ms (Views: 34.2ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/pictures/1" for 127.0.0.1 at 2017-07-30 18:35:51 +0100
+Processing by PicturesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ldx7DyE9TKqXs+u8IWi842d/FeJDIELNUpKRYK4soDh+Bk5l1aHk9lqM3ZT2jgGlswsR1gs7iGktPYv/YqNI2w==", "picture"=>{"caption"=>"Me! 2"}, "commit"=>"Update Picture", "id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 7ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-07-30 18:35:51 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 36ms (Views: 33.5ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/pictures/1" for 127.0.0.1 at 2017-07-30 18:35:53 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zDukSNV3QFPnaAmoLBEKeDElEAHNoHMzog/fB9gw2akJFwhf4T7ZysAbQWkOx7N6/UZwzye5HwUO0MvvJ4NTvA==", "id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 1]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /Users/Simon/Projects/weekend_challenges/instagram-challenge/public/system/pictures/images/000/000/001/original/Simon_Hempenstall_MA_profile.jpg
+[paperclip] deleting /Users/Simon/Projects/weekend_challenges/instagram-challenge/public/system/pictures/images/000/000/001/medium/Simon_Hempenstall_MA_profile.jpg
+[paperclip] deleting /Users/Simon/Projects/weekend_challenges/instagram-challenge/public/system/pictures/images/000/000/001/thumb/Simon_Hempenstall_MA_profile.jpg
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 13ms (ActiveRecord: 6.9ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-07-30 18:35:53 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered pictures/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 47ms (Views: 44.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-07-30 18:35:55 +0100
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 32ms (Views: 27.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/pictures" for 127.0.0.1 at 2017-07-30 18:36:31 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5MTTBla1DPeKYAlOO3JshV7bBgp7wgLmZ/Bmp1Laj7sd1BKQtMv3k/MmTMYZUfrb6e/IX344fkvnlJ/IlLw17A==", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007ff7892e7998 @tempfile=#<Tempfile:/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/RackMultipart20170730-1442-1d9ifcp.jpg>, @original_filename="Simon Hempenstall MA profile.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"Simon Hempenstall MA profile.jpg\"\r\nContent-Type: image/jpeg\r\n">, "caption"=>"Me again"}, "commit"=>"Create Picture"}
+Command :: file -b --mime '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/1f0b464679831b2586e13b5e1108f4d920170730-1442-1xxt6e6.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/6b4f0f8941854dd807c4834d80560f7620170730-1442-1qd9k7b.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/6b4f0f8941854dd807c4834d80560f7620170730-1442-1qd9k7b.jpg[0]'
+Command :: convert '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/6b4f0f8941854dd807c4834d80560f7620170730-1442-1qd9k7b.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/eeb8ccc85bac22bfec2c6fd88c4ba30920170730-1442-zyb090'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/6b4f0f8941854dd807c4834d80560f7620170730-1442-1qd9k7b.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/6b4f0f8941854dd807c4834d80560f7620170730-1442-1qd9k7b.jpg[0]'
+Command :: convert '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/6b4f0f8941854dd807c4834d80560f7620170730-1442-1qd9k7b.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/eeb8ccc85bac22bfec2c6fd88c4ba30920170730-1442-d5ywhk'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/1f0b464679831b2586e13b5e1108f4d920170730-1442-tct23y.jpg'
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "pictures" ("caption", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "Me again"], ["created_at", "2017-07-30 17:36:32.655794"], ["updated_at", "2017-07-30 17:36:32.655794"], ["image_file_name", "Simon_Hempenstall_MA_profile.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 855643], ["image_updated_at", "2017-07-30 17:36:31.796281"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 878ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-07-30 18:36:32 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 28ms (Views: 25.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-07-30 18:36:37 +0100
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 33ms (Views: 28.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/pictures" for 127.0.0.1 at 2017-07-30 18:36:48 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gNb0q8Gl51JZUCgEVvrAALUhQfXnBhyepUyu8611hSl5xjU9I9scNiAWbYx02VZeAhWPoOL8YDMlKFecaxM/fg==", "picture"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x007ff78c2f0860 @tempfile=#<Tempfile:/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/RackMultipart20170730-1442-qby0bj.jpg>, @original_filename="Simon_Holland.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"Simon_Holland.jpg\"\r\nContent-Type: image/jpeg\r\n">, "caption"=>"Another of me!"}, "commit"=>"Create Picture"}
+Command :: file -b --mime '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/d830c41b3a4ba4fd7efbad978a6c612420170730-1442-1w0t9rv.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/d830c41b3a4ba4fd7efbad978a6c612420170730-1442-1tpp5o6.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/d830c41b3a4ba4fd7efbad978a6c612420170730-1442-1tpp5o6.jpg[0]'
+Command :: convert '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/d830c41b3a4ba4fd7efbad978a6c612420170730-1442-1tpp5o6.jpg[0]' -auto-orient -resize "300x300>" '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/4811759d8b7fcb465903bb7f2bc4ab7c20170730-1442-1tyjl21'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/d830c41b3a4ba4fd7efbad978a6c612420170730-1442-1tpp5o6.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/d830c41b3a4ba4fd7efbad978a6c612420170730-1442-1tpp5o6.jpg[0]'
+Command :: convert '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/d830c41b3a4ba4fd7efbad978a6c612420170730-1442-1tpp5o6.jpg[0]' -auto-orient -resize "100x100>" '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/4811759d8b7fcb465903bb7f2bc4ab7c20170730-1442-1noc077'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/var/folders/80/2n_zn2dj77scbg8qlw7l2l5h0000gn/T/d830c41b3a4ba4fd7efbad978a6c612420170730-1442-1vjhd0b.jpg'
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "pictures" ("caption", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "Another of me!"], ["created_at", "2017-07-30 17:36:49.093938"], ["updated_at", "2017-07-30 17:36:49.093938"], ["image_file_name", "Simon_Holland.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 28622], ["image_updated_at", "2017-07-30 17:36:48.941681"]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 190ms (ActiveRecord: 7.1ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-07-30 18:36:49 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 28ms (Views: 25.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/pictures/2" for 127.0.0.1 at 2017-07-30 18:37:30 +0100
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 38ms (Views: 32.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/pictures/3" for 127.0.0.1 at 2017-07-30 18:37:34 +0100
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPicture Load (1.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 32ms (Views: 26.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-07-30 18:43:34 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 25ms (Views: 22.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/pictures/2" for 127.0.0.1 at 2017-07-30 18:43:37 +0100
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPicture Load (0.8ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 31ms (Views: 25.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/pictures/3" for 127.0.0.1 at 2017-07-30 18:43:39 +0100
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPicture Load (1.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 32ms (Views: 25.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-07-30 18:45:09 +0100
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 253ms (Views: 210.7ms | ActiveRecord: 5.8ms)
+
+
+Started POST "/pictures" for 127.0.0.1 at 2017-07-30 18:45:15 +0100
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8Ve58NH9ot6mTJfvCP4iasMu6Huwav3KKpfHsIzKixwIR3hmM4NZut8K0mcq3bQ0dBomLrWQgWeq8z7fSqwxSw==", "picture"=>{"caption"=>"Test"}, "commit"=>"Create Picture"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 16ms (ActiveRecord: 5.9ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-07-30 18:45:15 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 28ms (Views: 25.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-07-30 18:48:26 +0100
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (19.3ms)
+Completed 200 OK in 260ms (Views: 221.7ms | ActiveRecord: 4.3ms)
+
+
