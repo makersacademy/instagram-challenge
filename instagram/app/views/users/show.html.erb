@@ -6,7 +6,7 @@
 
   <div class="col-md-12 text-center">
      <% if @user.id == current_user.id %>
-         <h1> Your Pictures </h1>
+         <h1 id="pic-head"> Your Pictures </h1>
      <% else %>
          <h1> <%= @user.username %>'s Pictures </h1>
      <% end %>
@@ -27,18 +27,17 @@
 
         <div class="panel-body">
 
-           <p> Caption: <%= picture.caption %> </p>
-           <p> Created at: <%= picture.created_at %> </p>
+           <p id="pic-normal"> Caption: <%= picture.caption %> </p>
+           <p id="pic-normal"> Created at: <%= picture.created_at %> </p>
 
            <% if @user.id == current_user.id %>
-           <%= link_to "Delete Picture", picture_url(picture), method: :delete %>
-           <%= link_to "Edit Picture #{picture.id}", edit_picture_url(picture) %>
+           <p id="edit-pic"> <%= link_to "Delete Picture", picture_url(picture), method: :delete %> </p>
+           <p id="edit-pic"> <%= link_to "Edit Picture", edit_picture_url(picture) %> </p>
            <% end %>
 
            <% if !picture.comments.empty? %>
            <% picture.comments.reverse.each do |comment| %>
-               <p> Comment: <%= comment.content %> </p>
-               <p> Comment left by: <%= comment.picture.user.username %> </p>
+               <p id="pic-details"> Comment: <%= comment.content %>.   Left by: <%= comment.picture.user.username %> </p>
            <% end %>
           <% end %>
 
@@ -51,7 +50,7 @@
      </article>
 
      <% if @user.id == current_user.id %>
-       <%= link_to "Post Picture", new_picture_url %>
+    <p  id="edit-pic">   <%= link_to "Post Picture", new_picture_url %> </p>
      <% end %>
 
   </div>

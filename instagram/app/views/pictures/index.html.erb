@@ -1,7 +1,7 @@
 
 <div class="row">
    <div class="col-md-12 text-center">
-      <h1> All Pictures </h1>
+      <h1 id="pic-head"> All Pictures </h1>
    </div>
    <div class="col-md-2"></div>
    <div class="col-md-8 text-center">
@@ -10,16 +10,15 @@
            <% @pictures.reverse.each do |picture| %>
          <div class="panel-default">
             <div> <%= link_to picture_path(picture) do %>
-               <%= image_tag picture.image.url(:thumb), class: "image" %>
+              <div> <%= image_tag picture.image.url(:thumb), class: "image" %> </div>
             <% end %>
             </div>
               <div class="panel-body">
-                 <p> Caption:  <%= picture.caption %> </p>
-                 <p> Created at:  <%= picture.created_at %> </p>
+                 <p id="pic-normal"> Caption:  <%= picture.caption %> </p>
+                 <p id="pic-normal"> Created at:  <%= picture.created_at %> </p>
                  <% if !picture.comments.empty? %>
                    <% picture.comments.reverse.each do |comment| %>
-                      <p> Comment:  <%= comment.content %> </p>
-                      <p> Comment left by: <%= comment.picture.user.username %> </p>
+                         <p> Comment: <%= comment.content %>.   Left by: <%= comment.picture.user.username %> </p>
                   <% end %>
               <% end %>
           <% end %>
