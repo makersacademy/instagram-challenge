@@ -18,6 +18,11 @@ def add_post(post_title: "first post", post_link: "http://i.imgur.com/0tJPjzf.jp
   click_button('Create Post')
 end
 
+def add_comment(message: "Amazing")
+  fill_in(:comment_message, with: message)
+  click_button('Create Comment')
+end
+
 def sign_up_and_add_post
   visit "/"
   click_link "Sign up"
