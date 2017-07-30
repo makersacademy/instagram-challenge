@@ -1,10 +1,10 @@
 Instagram Challenge
 ===================
 
-** Features **
+**Features**
   * [ ] Users can post pictures
 
-** User stories **
+**User stories**
 
 ```
 As a user,
