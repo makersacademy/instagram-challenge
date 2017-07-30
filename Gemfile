@@ -45,6 +45,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'timecop'
   gem 'orderly'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
 group :development do

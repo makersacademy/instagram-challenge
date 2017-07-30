@@ -1,0 +1,17 @@
+<p>
+  <%= post.title %>
+</p>
+
+<p>
+  <img src="<%= post.link %>" />
+</p>
+
+<% if post.comments.any? %>
+  <% post.comments.each do |comment| %>
+    <%= comment.message %><br>
+  <% end %>
+<% end %>
+
+<% if current_user %>
+<%= link_to 'Add a comment', "/users/#{post.user_id}/posts/#{post.id}/comments/new" %><br>
+<% end %>

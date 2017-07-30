@@ -1,7 +1,21 @@
 <% if  user_signed_in? %>
-<p> Welcome <%= current_user.name %> </p><br>
+
+  <p> Welcome <%= current_user.name %> </p><br>
+
+  <%= link_to 'Add a post', "/users/#{current_user.id}/posts/new" %> <br>
   <%= link_to 'Log out', destroy_user_session_path, method: :delete  %>
+
 <% else %>
+
   <%= link_to 'Sign up', new_user_registration_path %> <br>
   <%= link_to 'Log in', new_user_session_path %>
+<% end %>
+
+<% if @user %>
+<% if @user == current_user %>
+<h2>Your posts</h2>
+<% else %>
+<h2><%= @user.name%> posts</h2>
+<% end %>
+<%= render @user.posts %>
 <% end %>
