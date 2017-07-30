@@ -1,6 +1,9 @@
 Instagram Challenge
 ===================
 
+** Features **
+  * [ ] Users can post pictures
+
 ** User stories **
 
 ```
@@ -39,5 +42,12 @@ To run app:
 ```sh
 $ rake db:seed
 $ rails s
-$ open http://localhost:3000
+$ open http://localhost:3000/users
 ```
+
+## Next steps
+- Link thumbnails in users/:id/pictures to the specific picture page to see them in full size with the description.
+- Implement comments feature
+- Implement likes feature
+- Beautify the app
+- Implement filters
