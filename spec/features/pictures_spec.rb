@@ -8,4 +8,13 @@ feature 'pictures' do
       expect(page).to have_link 'Add picture'
     end
   end
+
+  context 'a picture has been added' do
+    scenario 'should display the date in which the picture has been uploaded' do
+      visit '/pictures/new'
+      click_on 'Share'
+      expect(page).to have_content 'Posted'
+    end
+  end
+
 end

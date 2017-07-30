@@ -34,14 +34,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :test do
-  gem 'database_cleaner'
-end
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'rspec-rails'
 end
 
