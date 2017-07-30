@@ -11,17 +11,18 @@
     <% end %>
 </div>
 
-  <%= picture.caption %>
-  <%= picture.created_at %>
+<p> Caption: <%= picture.caption %> </p>
+  <p> Created at: <%= picture.created_at %> </p>
 
 <% if @user.id == current_user.id %>
   <%= link_to "Delete Picture", picture_url(picture), method: :delete %>
   <%= link_to "Edit Picture #{picture.id}", edit_picture_url(picture) %>
 <% end %>
-  
+
   <% if !picture.comments.empty? %>
     <% picture.comments.reverse.each do |comment| %>
-      <%= comment.content %>
+      <p> Comment: <%= comment.content %> </p>
+      <p> Comment left by: <%= comment.picture.user.username %> </p>
       <% end %>
  <% end %>
 <% end %>

@@ -35,6 +35,17 @@ RSpec.feature "User commenting", type: :feature do
       find("a[href='/pictures/#{@picture.id}']").click
       expect(page).to_not have_content("Leave a comment")
     end
+
+    scenario "but non-registered users can see comments and their owners" do
+      visit '/'
+      @picture = Picture.first
+      find("a[href='/pictures/#{@picture.id}']").click
+      leave_comment
+      sign_out
+      expect(page).to have_content("a selfie a day keeps contentment at bay")
+      expect(page).to have_content("Comment left by: jking")
+    end
+
   end
 
 

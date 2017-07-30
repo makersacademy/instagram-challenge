@@ -28,6 +28,7 @@ RSpec.feature "Pictures", type: :feature do
         expect('pictwo').to appear_before('hashtag')
     end
 
+
     scenario "and the pictures can be viewed individually" do
         visit '/'
         @picture = Picture.first
