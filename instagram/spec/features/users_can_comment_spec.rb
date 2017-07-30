@@ -12,12 +12,14 @@ RSpec.feature "User commenting", type: :feature do
   context "when user is signed in" do
 
     scenario "they can view comment forms on individual pics" do
-      click_on "View Picture 1"
+      @picture = Picture.first
+      find("a[href='/pictures/#{@picture.id}']").click
       expect(page).to have_content("Leave a comment")
     end
 
     scenario "and they can create a comment there" do
-      click_on "View Picture 1"
+      @picture = Picture.first
+      find("a[href='/pictures/#{@picture.id}']").click
       leave_comment
       expect(page).to have_content("Comment saved!")
     end
@@ -29,11 +31,12 @@ RSpec.feature "User commenting", type: :feature do
     scenario "comment forms are missing" do
       sign_out
       visit '/'
-      click_on "View Picture 1"
+      @picture = Picture.first
+      find("a[href='/pictures/#{@picture.id}']").click
       expect(page).to_not have_content("Leave a comment")
     end
   end
 
-  
+
 
 end

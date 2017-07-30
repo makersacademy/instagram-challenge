@@ -21,7 +21,8 @@ RSpec.feature "User's personal pictures", type: :feature do
 
   scenario "user can view a single picture" do
     create_pic(caption: "pictwo")
-    click_on 'View Picture 2'
+    @picture = Picture.all[1]
+    find("a[href='/pictures/#{@picture.id}']").click
     expect(page).to have_content("pictwo")
     expect(page).to have_css("img[src*='surf']")
     expect(page).to_not have_content("hashtag")

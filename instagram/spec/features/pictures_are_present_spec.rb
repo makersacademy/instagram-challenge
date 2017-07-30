@@ -30,9 +30,10 @@ RSpec.feature "Pictures", type: :feature do
 
     scenario "and the pictures can be viewed individually" do
         visit '/'
-        click_on "View Picture 2"
-        expect(page).to have_content("pictwo")
-        expect(page).to_not have_content("hashtag")
+        @picture = Picture.first
+        find("a[href='/pictures/#{@picture.id}']").click
+        expect(page).to have_content("hashtag")
+        expect(page).to_not have_content("pictwo")
         expect(page).to have_css("img[src*='surf']")
     end
   end

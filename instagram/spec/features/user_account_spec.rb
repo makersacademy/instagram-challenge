@@ -59,6 +59,11 @@ end
         expect(page).to have_content("Signed in successfully")
       end
 
+      scenario "and there email is displayed to them after" do
+        log_in
+        expect(page).to have_content("jking@gmail.com")
+      end
+
       scenario "and they get a descriptive error flash on failure here" do
         log_in(email: "fail@gmail.com")
         expect(page).to have_content("Invalid Email or password")

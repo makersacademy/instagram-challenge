@@ -5,7 +5,12 @@
 
 <% if !@user.pictures.empty? %>
 <% @user.pictures.reverse.each do |picture| %>
-  <%= image_tag picture.image.url(:thumb) %>
+
+<div> <%= link_to picture_path(picture) do %>
+      <%= image_tag picture.image.url(:thumb), class: "image" %>
+    <% end %>
+</div>
+
   <%= picture.caption %>
   <%= picture.created_at %>
 
@@ -13,7 +18,7 @@
   <%= link_to "Delete Picture", picture_url(picture), method: :delete %>
   <%= link_to "Edit Picture #{picture.id}", edit_picture_url(picture) %>
 <% end %>
-  <%= link_to "View Picture #{picture.id}", picture_url(picture) %>
+  
   <% if !picture.comments.empty? %>
     <% picture.comments.reverse.each do |comment| %>
       <%= comment.content %>
