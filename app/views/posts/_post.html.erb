@@ -1,17 +1,35 @@
-<p>
-  <%= post.title %>
-</p>
 
-<p>
-  <img src="<%= post.link %>" />
-</p>
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
 
-<% if post.comments.any? %>
-  <% post.comments.each do |comment| %>
-    <%= comment.message %><br>
-  <% end %>
-<% end %>
+    <div class="panel-group">
+      <div class="panel panel-default">
 
-<% if current_user %>
-<%= link_to 'Add a comment', "/users/#{post.user_id}/posts/#{post.id}/comments/new" %><br>
-<% end %>
+        <div class="panel-heading">
+          <h3><%= post.title %></h3> </div>
+
+          <div class="panel-body">
+            <img src="<%= post.link %>" /></div>
+
+            <div class="panel-footer">
+
+              <% if current_user %>
+              <%= link_to 'Add a comment', "/users/#{post.user_id}/posts/#{post.id}/comments/new" %><br>
+
+              <% if post.comments.any? %>
+              <ul class="list-group">
+                <% post.comments.each do |comment| %>
+                <li class="list-group-item"><%= comment.message %></li>
+              </ul>
+
+              <% end %>
+              <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3"></div>
+      </div>
+    </div>
