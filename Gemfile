@@ -22,6 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 # File upload and resizing
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
+gem 'fog', '~> 1.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
