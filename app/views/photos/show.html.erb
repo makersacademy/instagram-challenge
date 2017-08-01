@@ -1,0 +1,29 @@
+
+<!-- http://t.wallpaperweb.org/wallpaper/nature/1600x1200/Half_Dome_From_Olmstead_Point_Yosemite_National_Park_California.jpg -->
+
+<div class="container">
+
+  <div class="photo_container">
+    <div class="photo_header">
+      <p><%= @photo.name %></p>
+    </div>
+
+    <div class="photo_body" id="photo_id_<%= @photo.id %>">
+      <img class="photo_body" src="<%= @photo.image %>" alt="<%= @photo.name %>">
+    </div>
+
+  <div class="comment_container">
+    <div class="comment_header">
+      <%= form_for ([@photo, @photo.comments.build])  do |f| %>
+        <%= f.text_area :text, id: "Text" %></br>
+        <%= f.submit class: "btn btn-primary btn-sm" %>
+      <% end %>
+    </div>
+    <div class="comment_body">
+      <% @photo.comments.reverse.each do |comment| %>
+        <p><%= comment.text %></p>
+      <% end %>
+    </div>
+  </div>
+
+</div>
