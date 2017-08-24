@@ -25,6 +25,7 @@ gem 'mini_magick'
 
 # AWS S3 Datastorage
 gem 'aws-sdk', '~> 2'
+gem 'fog', '~> 1.0.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
