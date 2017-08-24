@@ -1,0 +1,29 @@
+<div id="photos">
+  <% @photos.each do |photo| %>
+      <div class="container">
+
+        <div class="photo_container">
+          <div class="photo_header">
+            <p><%= photo.name %></p>
+          </div>
+
+          <div class="photo_body" id="photo_id_<%= photo.id %>">
+            <img class="photo_body" src="<%= photo.image %>" alt="<%= photo.name %>">
+          </div>
+
+          <div class="comment_container" id="photo_comments_<%= photo.id %>">
+            <div class="comment_header">
+              <%= button_to "Comment", photo, method: :get, :class => "btn btn-primary btn-xs" %>
+            </div>
+            <div class="comment_body">
+              <% photo.comments.reverse.each do |comment| %>
+                <p><%= comment.text %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class="spacer"></div>
+      </div>
+  <% end %>
+</div>
