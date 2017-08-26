@@ -32,7 +32,17 @@ RSpec.feature "Photo pages" do
   end
 
   it "allows users to like photos" do
-    click_link "Like"
+    within ".photo-likes" do
+      find('input[name="commit"]').click
+    end
+    expect(page).to have_content "1 like"
+  end
+
+  it "does not allow users to like a photo more than once" do
+    within ".photo-likes" do
+      find('input[name="commit"]').click
+    end
+    expect(page).not_to have_content "2 likes"
     expect(page).to have_content "1 like"
   end
 end

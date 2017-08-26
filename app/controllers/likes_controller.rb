@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
+  respond_to :html, :js
 
   def create
     @photo = Photo.find(params[:photo_id])

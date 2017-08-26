@@ -1,6 +1,12 @@
 <% if user_signed_in? %>
-  <li><%= link_to('Profile', profile_path(current_user.username)) %></li>
-  <li><%= link_to('Edit your details', edit_user_registration_path) %></li>
+  <%= link_to profile_path(current_user.username) do %>
+    <li>Profile</li>
+  <% end %>
+  <%= link_to edit_user_registration_path do %>
+    <li>Edit your details</li>
+  <% end %>
 <% else %>
-  <li><%= link_to('Register', new_user_registration_path)  %></li>
+  <%= link_to new_user_registration_path do %>
+    <li>Register</li>
+  <% end %>
 <% end %>
