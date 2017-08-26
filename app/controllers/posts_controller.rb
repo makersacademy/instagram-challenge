@@ -12,7 +12,9 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  private
+
   def post_params
-    params.require(:post).permit(:description)
+    params.require(:post).permit(:picture, :description)
   end
 end
