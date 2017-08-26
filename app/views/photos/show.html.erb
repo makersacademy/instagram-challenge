@@ -15,6 +15,10 @@
       <% end %>
       <%= comment.text %></li>
     <% end %>
+    <section class="photo-likes">
+      <%= link_to 'Like', photo_likes_path(@photo), method: :post, data: { id: @photo.id } %> |
+      <%= pluralize(@photo.likes.count, "like") %>
+    </section>
     <%= form_for([@photo, @photo.comments.build]) do |form| %>
           <%= form.text_area :text %>
           <%= form.text_field :user_id, value: current_user.id, type: "hidden" %>

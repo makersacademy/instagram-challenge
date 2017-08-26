@@ -1,4 +1,4 @@
-RSpec.feature do
+RSpec.feature "Photo pages" do
   before do
     sign_up
     upload
@@ -29,5 +29,10 @@ RSpec.feature do
     click_button "Add comment"
     click_link "@dangermouse:"
     expect(page).to have_current_path "/profiles/dangermouse"
+  end
+
+  it "allows users to like photos" do
+    click_link "Like"
+    expect(page).to have_content "1 like"
   end
 end
