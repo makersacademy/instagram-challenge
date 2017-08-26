@@ -1,9 +1,4 @@
 RSpec.feature "Homepage" do
-  it "shows the app name" do
-    visit "/"
-    expect(page).to have_content "YNSTAGRAM"
-  end
-
   it "has a link to upload a photo" do
     visit "/"
     click_link("Upload")

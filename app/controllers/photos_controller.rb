@@ -3,6 +3,10 @@ class PhotosController < ApplicationController
     @photos = Photo.all.reverse
   end
 
+  def show
+    @photo = Photo.find(params[:id])
+  end
+
   def new
     @photo = Photo.new
   end
