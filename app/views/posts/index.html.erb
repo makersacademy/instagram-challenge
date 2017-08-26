@@ -1,19 +1,41 @@
-<h1>Instagram</h1>
+<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div id='post-<%= post.id %>' class="post card">
 
-<%= link_to "New Post", new_post_path %>
+        <div class="post_head card-header">
+          <span class="float_left">
+            [username]
+          </span>
+          <span class="float_right">
+            [date]
+          </span>
+          <br>
+        </div>
 
-<% @posts.each do |post| %>
-  <div id="post<% post.id %>" class="post">
-    <%= image_tag post.image.url(:medium) %><br>
-    <%= post.caption %>
-    <div class="like">
-        <%= form_for(@like, url: post_likes_path(post)) do |form| %>
-        <%= form.hidden_field :post_id, :value => post.id %>
-        <%= form.submit "Like", class: "button", name: "Like" %>
-        <% end %>
-    </div>
-    <div class="likes">
-        <%= post.likes.count %>
-    </div><br>
+        <div class="card-block post-image">
+          <%= image_tag post.image.url(:medium) %>
+        </div>
+
+        <div class="card-block post-caption">
+          <h3><%= post.caption %></h3>
+        </div>
+
+        <div class="card-footer">
+          <div class="post-interaction">
+            <div class="like float_left">
+                <%= form_for(@like, url: post_likes_path(post)) do |form| %>
+                <%= form.hidden_field :post_id, :value => post.id %>
+                <%= form.submit "Like", class: "button", name: "Like" %>
+                <% end %>
+            </div>
+            <div class="likes float_right">
+              <%= post.likes.count %> likes
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

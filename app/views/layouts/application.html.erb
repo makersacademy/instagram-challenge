@@ -2,16 +2,35 @@
 <html>
   <head>
     <title>Instagram</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet">
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
+
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <!-- <img src="/assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+    <%= link_to "INSTAGRAM", root_path, class: "navbar-brand" %>
+    <%= link_to "New Post", new_post_path %>
+    <%= form_for(:session, html: {class: "form-inline"}) do |f| %>
+      <%= f.label :email %><br />
+      <%= f.email_field :email, :class => "form-control mr-sm-2 email", autofocus: true %>
+      <%= f.label :password %><br />
+      <%= f.password_field :password, :class => "form-control mr-sm-2 password", autocomplete: "off" %>
+      <%= f.submit "Log in", :class => "btn my-2 my-sm-0 logIn" %>
+    <% end %>
+  </nav>
 
   <body>
     <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: "alert_for(name)" %>
+    <%= content_tag :div, msg, class: "alert alert-danger" %>
     <% end %>
+
     <%= yield %>
+
   </body>
 </html>
