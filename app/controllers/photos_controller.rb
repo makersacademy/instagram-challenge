@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-    def index
+  def index
     @photos = Photo.all.reverse
   end
 
@@ -8,8 +8,8 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
-
+    @user = current_user
+    @photo = @user.photos.new(photo_params)
     if @photo.save
       redirect_to photos_path, notice: 'Photo was successfully uploaded.'
     else
