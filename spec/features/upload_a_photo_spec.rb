@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Photos", :type => :feature do
+RSpec.feature "Photos" do
   it "has a page for uploading a new photo" do
     visit "/photos/new"
     expect(page).to have_content "Upload a photo to Ynstagram"
@@ -12,6 +12,5 @@ RSpec.describe "Photos", :type => :feature do
     attach_file("Image", Rails.root + "spec/fixtures/chess.JPG")
     click_button("Upload")
     expect(page).to have_css("img[src*='chess.JPG']")
-    expect(page).to have_content "Emily plays chess!"
   end
 end
