@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-  def long_ago
+  def time_ago
     second_difference = (Time.now - created_at).floor
     minute_difference = second_difference / 60
     hour_difference = minute_difference / 60
