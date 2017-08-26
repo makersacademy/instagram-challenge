@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @photos = Photo.all.reverse
   end
@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
     @user = current_user
     @photo = @user.photos.new(photo_params)
     if @photo.save
-      redirect_to photos_path, notice: 'Photo was successfully uploaded.'
+      redirect_to profile_path(@user), notice: 'Photo was successfully uploaded.'
     else
       render action: 'new'
     end

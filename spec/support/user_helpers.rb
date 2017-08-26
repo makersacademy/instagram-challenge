@@ -5,7 +5,7 @@ module UserHelpers
     fill_in 'user_email' , with: "danger@mouse.com"
     fill_in 'user_password', with: "penfoldshush"
     fill_in 'user_password_confirmation', with: "penfoldshush"
-    click_button 'Sign up'
+    click_button('Sign up')
   end
 
   def logout

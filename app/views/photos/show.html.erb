@@ -4,8 +4,21 @@
   </section>
   <section class="show-photo-box">
     <%= link_to profile_path(@photo.user) do %>
-    <h3>@<%= @photo.user.username %></h3>
+      <h3>@<%= @photo.user.username %></h3>
     <% end %>
     <p><%= @photo.description %></p>
+    <ul class="photo-comments">
+    <% @photo.comments.each do |comment| %>
+      <li>
+      <%= link_to profile_path(comment.user) do %>
+        <strong>@<%= comment.user.username %>:</strong>
+      <% end %>
+      <%= comment.text %></li>
+    <% end %>
+    <%= form_for([@photo, @photo.comments.build]) do |form| %>
+          <%= form.text_area :text %>
+          <%= form.text_field :user_id, value: current_user.id, type: "hidden" %>
+          <%= form.submit "Add comment" %>
+      <% end %>
   </section>
 </section>
