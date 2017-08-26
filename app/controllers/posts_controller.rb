@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   def index
+    @posts = Post.all.reverse
+    @like = Like.new
   end
 
   def new
@@ -8,11 +10,13 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to @post
-  end
-
-  def show
-    @post = Post.find(params[:id])
+    if @post.save
+      flash[:success] = "Your post has been created."
+      redirect_to posts_url
+    else
+      flash[:alert] = "You need an image to create a post."
+      render :new
+    end
   end
 
   private

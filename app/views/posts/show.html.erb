@@ -1,2 +1,14 @@
-<%= image_tag @post.image.url(:medium) %>
-<%= @post.caption %>
+<% post = @post %>
+<div id="post<% post.id %>" class="post">
+  <%= image_tag post.image.url(:medium) %><br>
+  <%= post.caption %>
+  <div class="like">
+      <%= form_for(@like, url: post_likes_path(post)) do |form| %>
+      <%= form.hidden_field :post_id, :value => post.id %>
+      <%= form.submit "Like", class: "button", name: "Like" %>
+      <% end %>
+  </div>
+  <div class="likes">
+      <%= post.likes.count post.like_word %>
+  </div><br>
+</div>
