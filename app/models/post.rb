@@ -29,7 +29,7 @@ class Post < ApplicationRecord
       else
         return "#{minute_difference} minutes ago"
       end
-    elsif second_difference > 0
+    elsif second_difference >= 0
       if second_difference < 5
         return "just now"
       else

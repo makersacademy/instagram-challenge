@@ -3,7 +3,8 @@ require 'rails_helper.rb'
 feature 'Creating likes' do
   scenario 'User can like a post' do
     visit '/'
-    click_link 'New Post'
+    find('#newpost').click
+    p page.current_path
     attach_file('post[image]', "spec/files/images/test.jpg")
     fill_in 'post[caption]', with: 'testing #test'
     click_button 'submit'
