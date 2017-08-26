@@ -1,41 +1,38 @@
-<div class="container">
+<% @posts.each do |post| %>
   <div class="row">
-    <% @posts.each do |post| %>
-      <div id='post-<%= post.id %>' class="post card">
+    <div id='post-<%= post.id %>' class="post card">
 
-        <div class="post_head card-header">
-          <span class="float_left">
-            [username]
-          </span>
-          <span class="float_right">
-            [date]
-          </span>
-          <br>
-        </div>
+      <div class="post_head card-header">
+        <span class="float_left">
+          [username]
+        </span>
+        <span class="float_right">
+          <%= post.long_ago %>
+        </span>
+        <br>
+      </div>
 
-        <div class="card-block post-image">
-          <%= image_tag post.image.url(:medium) %>
-        </div>
+      <div class="card-block post-image">
+        <%= image_tag post.image.url(:medium) %>
+      </div>
 
-        <div class="card-block post-caption">
-          <h3><%= post.caption %></h3>
-        </div>
+      <div class="card-block post-caption">
+        <h3><%= post.caption %></h3>
+      </div>
 
-        <div class="card-footer">
-          <div class="post-interaction">
-            <div class="like float_left">
-                <%= form_for(@like, url: post_likes_path(post)) do |form| %>
-                <%= form.hidden_field :post_id, :value => post.id %>
-                <%= form.submit "Like", class: "button", name: "Like" %>
-                <% end %>
-            </div>
-            <div class="likes float_right">
-              <%= post.likes.count %> likes
-            </div>
+      <div class="card-footer">
+        <div class="post-interaction">
+          <div class="like float_left">
+              <%= form_for(@like, url: post_likes_path(post)) do |form| %>
+              <%= form.hidden_field :post_id, :value => post.id %>
+              <%= form.submit "Like", class: "button", name: "Like" %>
+              <% end %>
+          </div>
+          <div class="likes float_right">
+            <%= post.likes.count %> likes
           </div>
         </div>
-
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>

@@ -15,10 +15,12 @@
   <nav class="navbar navbar-light bg-light justify-content-between">
     <!-- <img src="/assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> -->
     <%= link_to "INSTAGRAM", root_path, class: "navbar-brand" %>
-    <%= link_to "New Post", new_post_path %>
+    <%= link_to (octicon "cloud-upload", :height => 40), new_post_path %>
+
+    <%=  %>
     <%= form_for(:session, html: {class: "form-inline"}) do |f| %>
       <%= f.label :email %><br />
-      <%= f.email_field :email, :class => "form-control mr-sm-2 email", autofocus: true %>
+      <%= f.email_field :email, :class => "form-control mr-sm-2 email", autofocus: false %>
       <%= f.label :password %><br />
       <%= f.password_field :password, :class => "form-control mr-sm-2 password", autocomplete: "off" %>
       <%= f.submit "Log in", :class => "btn my-2 my-sm-0 logIn" %>
@@ -26,11 +28,13 @@
   </nav>
 
   <body>
+    <div class="container">
+      <div class="row">
     <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: "alert alert-danger" %>
+    <%= content_tag :div, msg, class: "alert alert-success" %>
     <% end %>
-
+      </div>
     <%= yield %>
-
+    </div>
   </body>
 </html>
