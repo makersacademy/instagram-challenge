@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  def index
+    def index
     @photos = Photo.all.reverse
   end
 

@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'paperclip', github: "thoughtbot/paperclip", ref: "c38bb31"
 gem 'aws-sdk'
 gem 'travis'
+gem 'devise'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -42,6 +43,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.5'
+  gem 'dotenv-rails'
 end
 
 group :development do

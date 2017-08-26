@@ -1,6 +1,8 @@
-require 'rails_helper'
-
 RSpec.feature "Photos" do
+  before do
+    sign_up
+  end
+
   it "has a page for uploading a new photo" do
     visit "/photos/new"
     expect(page).to have_content "Upload a photo to Ynstagram"
