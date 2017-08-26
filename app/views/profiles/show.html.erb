@@ -1,0 +1,27 @@
+<section class="section">
+  <section class="row">
+    <section class="col">
+      <h3>@<%= @user.username %></h3>
+    </section>
+  </section>
+  <section class="row">
+    <section class="col-">
+      <strong><%= @user.photos.count %></strong> photos
+    </section>
+    <section class="col-">
+      <strong>5</strong> followers
+    </section>
+    <section class="col-">
+      <strong>10</strong> following
+    </section>
+  </section>
+  <section class="photo-grid">
+    <% @user.photos.each do |photo| %>
+      <section class="single-photo">
+        <%= link_to photo_path(photo) do %>
+          <%= image_tag photo.image.url %>
+        <% end %>
+      </section>
+    <% end %>
+  </section>
+</section>

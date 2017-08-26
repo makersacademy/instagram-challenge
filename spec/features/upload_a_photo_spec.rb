@@ -15,4 +15,10 @@ RSpec.feature "Photos" do
     click_button("Upload")
     expect(page).to have_css("img[src*='chess.JPG']")
   end
+
+  it "prevents uploads by users who are not logged in" do
+    logout
+    visit "/photos/new"
+    expect(page).to have_content "You need to sign in or sign up before continuing"
+  end
 end
