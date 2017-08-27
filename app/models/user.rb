@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :posts
+  has_many :comments, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   mount_uploader :avatar, AvatarUploader

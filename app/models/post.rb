@@ -4,6 +4,10 @@ class Post < ApplicationRecord
   validates_processing_of :picture
   validate :picture_size_validation
 
+  belongs_to :user
+  validates :user_id, presence: true
+  has_many :comments, dependent: :destroy
+
   def self.reverse_order
     all.reverse
   end
