@@ -44,6 +44,10 @@ RSpec.describe PhotosController, type: :controller do
       expect(response).to have_http_status(302)
       expect(Photo.count).to eq(1)
     end
+
+    it "redirects back to #new if the photo is invalid" do
+      expect(post :create, params: { photo: { description: "Emily", image: "" } }).to render_template 'new'
+    end
   end
 
   describe "PATCH" do

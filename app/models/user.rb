@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def to_param
     username
   end
+
+  def self.followed_users(user)
+    User.all.select { |u| u.followers.include? user }
+  end
 end

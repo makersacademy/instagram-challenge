@@ -24,4 +24,11 @@ RSpec.feature "Homepage" do
     click_link("Profile")
     expect(page).to have_current_path "/profiles/dangermouse"
   end
+
+  it "has a link to the user's feed" do
+    sign_up
+    visit "/"
+    click_link("Feed")
+    expect(page).to have_current_path "/feed/dangermouse"
+  end
 end

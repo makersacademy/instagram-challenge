@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :likes
   end
 
+  resources :feed
   resources :profiles
   resources :followers
 

@@ -1,0 +1,21 @@
+<section>
+  <section class="feed-header">
+    <h4>Following:</h4>
+    <ul>
+      <% User.followed_users(@user).each do |user| %>
+        <%= link_to profile_path(user) do %>
+          <li><strong>@<%= user.username %></strong></li>
+        <% end %>
+      <% end %>
+    </ul
+  </section>
+  <section class="photo-grid">
+    <% following_photos(@user).reverse.each do |photo| %>
+      <section class="single-photo">
+        <%= link_to photo_path(photo) do %>
+          <%= image_tag photo.image.url %>
+        <% end %>
+      </section>
+    <% end %>
+  </section>
+</section>

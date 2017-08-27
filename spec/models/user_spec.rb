@@ -33,4 +33,16 @@ describe User do
       expect(user.to_param).to eq "dangermouse"
     end
   end
+
+  describe "#followed_users" do
+    let(:penfold) { create(:user, email: "penfold@mouse.com") }
+
+    before do
+      penfold.followers << user
+    end
+
+    it "returns the users a user is following" do
+      expect(User.followed_users(user)).to include penfold
+    end
+  end
 end
