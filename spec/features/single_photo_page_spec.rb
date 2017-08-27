@@ -3,9 +3,7 @@ RSpec.feature "Photo pages" do
     sign_up
     upload
     visit "/"
-    within(".photo-grid") do
-      first("a").click
-    end
+    click_first_photo
   end
 
   it "shows a single photo" do

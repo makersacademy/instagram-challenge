@@ -1,0 +1,10 @@
+<% if @photo.user == current_user %>
+  <section class="photo-admin">
+    <%= button_to "", edit_photo_path(@photo), class: "edit", method: :get %>
+    <%= form_for photo_path(@photo), method: :delete, html: {class: "delete"} do |form| %>
+      <%= form.submit "", data: { confirm: "Are you sure?" } %>
+    <% end %>
+  </section>
+<% else %>
+  <section></section>
+<% end %>
