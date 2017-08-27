@@ -23,7 +23,7 @@ RSpec.configure do |config|
   config.include ControllerMacros, :type => :controller
 
   config.after(:suite) do
-    FileUtils.rm_rf(Dir["#{Rails.root}/public/system/test"])
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/system/photos"])
   end
 
   # rspec-expectations config goes here. You can use an alternate
