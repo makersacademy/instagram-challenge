@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/kitkat119/instagram-challenge.svg?branch=master)
+
 Instagram Challenge
 ===================
 
