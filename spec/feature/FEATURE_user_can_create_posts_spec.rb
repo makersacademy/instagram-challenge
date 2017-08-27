@@ -1,6 +1,12 @@
 require 'rails_helper.rb'
 
 feature 'Creating posts' do
+  let!(:user) { create(:user) }
+
+  before do
+    login(user)
+  end
+
   scenario 'User can create a post' do
     visit '/'
     find('#newpost').click

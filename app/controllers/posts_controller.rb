@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @posts = Post.all.reverse
+    @post = Post.new
     @like = Like.new
   end
 
@@ -9,8 +12,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params)
-    if @post.save
+    post = Post.new(post_params)
+    current_user.posts << post
+    if post.save
       flash[:success] = "Your post has been created."
       redirect_to posts_url
     else
@@ -22,6 +26,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:caption, :image)
+    params.require(:post).permit(:caption, :image, :user_id)
   end
 end

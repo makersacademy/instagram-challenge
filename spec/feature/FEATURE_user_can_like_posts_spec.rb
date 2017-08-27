@@ -1,6 +1,12 @@
 require 'rails_helper.rb'
 
 feature 'Creating likes' do
+  let!(:user) { create(:user) }
+
+  before do
+    login(user)
+  end
+  
   scenario 'User can like a post' do
     visit '/'
     find('#newpost').click

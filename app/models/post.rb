@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   has_many :likes
+  # belongs_to :user
   validates :image, presence: true
 
   has_attached_file :image, styles: { :medium => "640x640#" }
