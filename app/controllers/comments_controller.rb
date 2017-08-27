@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_post
 
   def create
-    @comment = @posts.comments.create(comment_params)
+    @comment = Comment.create(comment_params)
     @comment.user_id = current_user.id
     redirect_to posts_url
   end

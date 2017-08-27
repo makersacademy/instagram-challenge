@@ -8,10 +8,9 @@ class Post < ApplicationRecord
   validates :user_id, presence: true
   has_many :comments, dependent: :destroy
 
-  def self.reverse_order
-    all.reverse
+  def posted_at
+      created_at.localtime.strftime("%H:%M (%d/%m/%y)")
   end
-
 
   private
     def picture_size_validation
