@@ -1,9 +1,13 @@
 require 'rails_helper'
 
-def sign_up(email: 'fred@example.com',
-             password: '123456',
-             password_confirmation: '123456')
+def sign_up(first_name: 'Fred',
+            last_name: 'Test',
+            email: 'fred@example.com',
+            password: '123456',
+            password_confirmation: '123456')
   visit '/users/sign_up'
+  fill_in 'user_first_name', with: first_name
+  fill_in 'user_last_name', with: last_name
   fill_in 'user_email' , with: email
   fill_in 'user_password', with: password
   fill_in 'user_password_confirmation', with: password_confirmation
@@ -48,5 +52,16 @@ RSpec.feature "Signout", type: :feature do
     sign_up
     click_link 'Logout'
     expect(page).to have_content("Signed out successfully.")
+  end
+end
+
+RSpec.feature "Edit", type: :feature do
+  scenario "User can edit details about her/himself" do
+    sign_up
+    click_link 'Edit registration'
+    fill_in 'user_first_name', with: 'Test'
+    fill_in 'user_current_password', with: '123456'
+    click_button 'Update'
+    expect(page).to have_content("Your account has been updated successfully.")
   end
 end

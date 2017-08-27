@@ -13,7 +13,7 @@ end
 
 def create_new_post(title: "Hello, world")
   visit "/posts"
-  click_link "New post"
+  click_link "Create new post"
   fill_in "Title", with: title
   attach_file 'Picture', Rails.root.join('spec/images/test.jpg')
   click_button "Submit"
