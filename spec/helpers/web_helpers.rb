@@ -2,6 +2,7 @@ def sign_up
   visit '/'
   click_link 'Sign up'
   fill_in 'user_email', with: test_email
+  fill_in 'user_username', with: test_username
   fill_in 'user_password', with: test_password
   fill_in 'user_password_confirmation', with: test_password
   click_button 'Sign up'
@@ -20,4 +21,8 @@ end
 
 def test_password
   '123456'
+end
+
+def test_username
+  'JohtSmith2017'
 end
