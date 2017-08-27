@@ -1,4 +1,5 @@
 require 'rails_helper.rb'
+require 'spec_helper.rb'
 
 feature 'Sign Up' do
 
