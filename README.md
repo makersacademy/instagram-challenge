@@ -15,10 +15,10 @@ Bonus if you can add filters!
 
 Text on how to use goes here
 
-# Database Design
+### Database Design
 
 ![Image](http://i.imgur.com/k17AeCi.png)
 
-# UI Design
+### UI Design
 
 Text on how Octogram has been designed goes here
