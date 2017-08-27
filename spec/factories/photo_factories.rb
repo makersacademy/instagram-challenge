@@ -5,7 +5,7 @@ FactoryGirl.define do
     user
   end
 
-  factory :like do |like|
+  factory :like do
     photo
     user
   end
