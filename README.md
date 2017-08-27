@@ -35,6 +35,17 @@ So that I can make my kitties look their best
 I want to be able to apply a filter to my pictures
 ```
 
+To run the app locally:
+
+```bash
+git clone https://github.com/kitkat119/instagram-challenge
+cd instagram-challenge
+bundle install
+bin/rails db:create
+bin/rails db:migrate
+bin/rails server #  localhost:3000
+```
+
 ## Instructions
 
 * Challenge time: one weekend
