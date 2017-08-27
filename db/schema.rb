@@ -53,13 +53,6 @@ ActiveRecord::Schema.define(version: 20170826224613) do
     t.index ["user_id"], name: "index_user_followers_on_user_id"
   end
 
-  create_table "user_followings", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "following_id"
-    t.index ["following_id"], name: "index_user_followings_on_following_id"
-    t.index ["user_id"], name: "index_user_followings_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

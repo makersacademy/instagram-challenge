@@ -3,12 +3,11 @@ module UserHelpers
               email: "danger@mouse.com",
               password: "penfoldshush",
               password_confirmation: "penfoldshush")
-    visit "/users/sign_up"
-    fill_in 'user_username', with: username
-    fill_in 'user_email' , with: email
-    fill_in 'user_password', with: password
-    fill_in 'user_password_confirmation', with: password_confirmation
-    click_button('Sign up')
+    user = create(:user, username: username,
+                  email: email,
+                  password: password,
+                  password_confirmation: password_confirmation)
+    sign_in(email: user.email, password: user.password)
   end
 
   def logout
@@ -17,6 +16,7 @@ module UserHelpers
 
   def sign_in(email: "danger@mouse.com",
               password: "penfoldshush")
+    visit "/"
     click_link("Login")
     fill_in 'user_email' , with: email
     fill_in 'user_password', with: password

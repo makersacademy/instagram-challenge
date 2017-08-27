@@ -10,12 +10,12 @@ RSpec.feature "Photo pages" do
 
   it "shows a single photo" do
     expect(page).to have_content "@dangermouse"
-    expect(page).to have_content "Emily plays chess!"
+    expect(page).to have_content "Emily plays chess"
   end
 
   it "links to the user's profile" do
     click_link "@dangermouse"
-    expect(page).to have_current_path "/profiles/dangermouse"
+    expect(page.current_path == "/profiles/dangermouse").to eq true
   end
 
   it "allows users to comment on photos" do

@@ -1,13 +1,14 @@
 class User < ApplicationRecord
-  has_many :photos
-  has_many :comments
-  has_many :likes
+  has_many :photos, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   has_and_belongs_to_many :followers,
               class_name: "User",
               join_table: :user_followers,
               foreign_key: :user_id,
-              association_foreign_key: :follower_id
+              association_foreign_key: :follower_id,
+              dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
