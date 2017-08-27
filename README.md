@@ -9,6 +9,10 @@ So that I can be part of the Kittygram community
 I want to be able to sign up as a user
 
 As a user
+So that I can let other users know who I am
+I want to be able to add a username, bio and profile pic
+
+As a user
 So that I can show off about my amazing cats
 I want to be able to post a picture
 
@@ -22,7 +26,7 @@ I want to be able to like a picture
 
 As a user
 So that I can enjoy using Kittygram
-I want the website to be styled lnicely, maybe like Instagram
+I want the website to be styled nicely, maybe like Instagram
 
 As a user
 So that I can make my kitties look their best

@@ -41,6 +41,15 @@
     <%= f.text_field :bio, maxlength: 200, class: "form-control" %>
   </div>
   </br>
+  <% if current_user.avatar.url.present? %>
+    <%= image_tag(current_user.avatar.url) %>
+    <%= f.label :remove_avatar do %>
+      <%= f.check_box :remove_avatar %>
+    <% end %>
+  <% end %>
+  <%= f.file_field :avatar %>
+  <%= f.hidden_field :avatar_cache %>
+  </br>
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
