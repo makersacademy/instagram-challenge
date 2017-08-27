@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Posts', type: :feature do
+  before do
+    sign_up
+  end
+
   scenario 'Provides a link to make a new post' do
     visit '/posts'
     click_link 'New Post'

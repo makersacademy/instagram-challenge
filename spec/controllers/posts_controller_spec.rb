@@ -10,5 +10,4 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     get new_post_url
     assert_response :success
   end
-
 end
