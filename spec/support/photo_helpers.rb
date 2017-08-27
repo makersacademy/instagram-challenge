@@ -1,6 +1,7 @@
 module PhotoHelpers
   def upload
-    create(:photo, user: User.first)
+    photo = create(:photo, user: User.first)
+    photo.tags << create(:tag)
   end
 
   def click_first_photo

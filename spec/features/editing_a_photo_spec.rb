@@ -23,6 +23,16 @@ RSpec.feature "Editing photos" do
     expect(page).to have_content "Emily is a chessmaster"
   end
 
+  it "allows the user to edit the photo's tags" do
+    within ".photo-admin" do
+      first(:button).click
+    end
+    fill_in "Tags", with: "catstagram"
+    click_button "Edit"
+    expect(page).to have_no_content "#catsofynstagram"
+    expect(page).to have_content "#catstagram"
+  end
+
   it "does not show an edit button to other users" do
     logout
     sign_up(username: "penfold",

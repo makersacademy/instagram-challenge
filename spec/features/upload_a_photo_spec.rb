@@ -7,7 +7,7 @@ RSpec.feature "Photos" do
     visit "/photos/new"
     fill_in("Description", with: "Emily plays chess!")
     attach_file("Image", Rails.root + "spec/fixtures/chess.JPG")
-    click_button("Upload")
+    click_button("Upload") 
     expect(page).to have_css("img[src*='chess.JPG']")
   end
 
@@ -15,5 +15,15 @@ RSpec.feature "Photos" do
     logout
     visit "/photos/new"
     expect(page).to have_content "You need to sign in or sign up before continuing"
+  end
+
+  it "allows users to tag their photos" do
+    visit "/photos/new"
+    attach_file("Image", Rails.root + "spec/fixtures/chess.JPG")
+    fill_in("Description", with: "Emily plays chess!")
+    fill_in("Tags", with: "cats catsofynstagram")
+    click_button("Upload")
+    click_first_photo
+    expect(page).to have_content("#cats #catsofynstagram")
   end
 end

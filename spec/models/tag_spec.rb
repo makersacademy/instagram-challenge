@@ -11,4 +11,12 @@ describe Tag do
     tag.text = "cats of ynstagram"
     expect(tag).not_to be_valid
   end
+
+  describe "#to_param" do
+    it "returns a Tag's text" do
+      tag.text = "catsofynstagram"
+      tag.save
+      expect(tag.to_param).to eq "catsofynstagram"
+    end
+  end
 end

@@ -4,4 +4,8 @@ class Tag < ApplicationRecord
   validates :text, presence: true,
                     format: { with: /\A\S+\z/,
                     message: "tags must not have spaces" }
+                    
+  def to_param
+    text
+  end
 end
