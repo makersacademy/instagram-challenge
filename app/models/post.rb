@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  belongs_to :user
+
+  validates :user_id, presence: true
   validates :image, attachment_presence: true
 
   has_attached_file :image, styles: { :medium => '400px' }
@@ -7,5 +10,5 @@ class Post < ApplicationRecord
   def self.reverse_order
     all.reverse
   end
-  
+
 end
