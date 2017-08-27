@@ -4,7 +4,7 @@
 
       <div class="post_head card-header">
         <span class="float_left">
-          [username]
+          <%= post.user.username %>
         </span>
         <span class="float_right">
           <%= post.time_ago %>
@@ -16,24 +16,40 @@
         <%= image_tag post.image.url(:medium) %>
       </div>
 
-      <div class="card-block post-caption">
-        <h3><%= post.caption %></h3>
-      </div>
-
-      <div class="card-footer">
-        <div class="post-interaction">
-          <div class="like float_left">
-              <%= form_for(@like, url: post_likes_path(post)) do |form| %>
-              <%= form.hidden_field :post_id, :value => post.id %>
-              <%= form.hidden_field :user_id, :value => current_user.id %>
-              <%= form.submit "Like", class: "button", name: "Like" %>
-              <% end %>
-          </div>
-          <div class="likes float_right">
-            <%= post.likes.count %> likes
-          </div>
+      <div class="card-block post-interaction">
+        <div class="like float_left">
+            <%= form_for(@like, url: post_likes_path(post)) do |form| %>
+            <%= form.hidden_field :post_id, :value => post.id %>
+            <%= form.hidden_field :user_id, :value => current_user.id %>
+            <%= form.submit "Like", class: "button", name: "Like" %>
+            <% end %>
+        </div>
+        <div class="likes float_right">
+          <%= post.likes.count %> likes
         </div>
       </div>
+
+      <div class="card-block">
+        <div class="post-caption">
+          <b><%= post.user.username %></b> <%= post.caption %><br>
+          <% post.comments.each do |comment| %>
+            <b><%= comment.user.username %></b> <%= comment.body %><br>
+          <% end %>
+        </div>
+
+        <hr>
+      </div>
+
+      <div class="comment_form">
+        <%= form_for [post, @comment] do |form| %>
+          <div class="form-group">
+            <%= form.text_field :body, class: "comment_form", placeholder: "Add comment..." %>
+            <%= form.hidden_field :post_id, value: post.id %>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+          </div>
+        <% end %>
+      </div>
+
     </div>
   </div>
 <% end %>

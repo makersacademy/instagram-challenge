@@ -16,7 +16,9 @@
     <!-- <img src="/assets/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> -->
     <%= link_to "INSTAGRAM", root_path, class: "navbar-brand" %>
 
-    <%= link_to (octicon "cloud-upload", :height => 40), new_post_path, id: "newpost" %>
+    <% if current_user %>
+      <%= link_to (octicon "cloud-upload", :height => 40), new_post_path, id: "newpost" %>
+    <% end %>
 
     <% if current_user %>
       <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn my-2 my-sm-0", id: "sign_out" %>
@@ -34,9 +36,9 @@
   <body>
     <div class="container">
       <div class="row">
-    <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: "alert alert-success" %>
-    <% end %>
+        <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: "alert alert-success" %>
+        <% end %>
       </div>
     <%= yield %>
     </div>

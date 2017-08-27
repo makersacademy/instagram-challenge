@@ -15,5 +15,6 @@ feature 'Creating posts' do
     click_button 'submit'
     expect(page).to have_content('testing #test')
     expect(page).to have_css("img[src*='test.jpg']")
+    expect(page).to have_content("Tester")
   end
 end
