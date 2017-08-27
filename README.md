@@ -1,6 +1,6 @@
 Ynstagram
 ===================
-[![Build Status](https://travis-ci.org/i-hardy/instagram-challenge.svg?branch=master)](https://travis-ci.org/i-hardy/instagram-challenge) | [![Code Climate](https://codeclimate.com/github/i-hardy/instagram-challenge/badges/gpa.svg)](https://codeclimate.com/github/i-hardy/instagram-challenge) | [![Test Coverage](https://codeclimate.com/github/i-hardy/instagram-challenge/badges/coverage.svg)](https://codeclimate.com/github/i-hardy/instagram-challenge/coverage)
+[![Build Status](https://travis-ci.org/i-hardy/instagram-challenge.svg?branch=master)](https://travis-ci.org/i-hardy/instagram-challenge) [![Code Climate](https://codeclimate.com/github/i-hardy/instagram-challenge/badges/gpa.svg)](https://codeclimate.com/github/i-hardy/instagram-challenge) [![Test Coverage](https://codeclimate.com/github/i-hardy/instagram-challenge/badges/coverage.svg)](https://codeclimate.com/github/i-hardy/instagram-challenge/coverage)
 
 ## About
 
