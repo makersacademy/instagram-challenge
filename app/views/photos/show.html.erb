@@ -7,17 +7,20 @@
       <h3>@<%= @photo.user.username %></h3>
     <% end %>
     <p><%= @photo.description %></p>
-    <%= render 'comments' %>
-    <section class="photo-likes">
-      <%= form_for([@photo, @photo.likes.build], remote: true, method: :post) do |form| %>
-          <%= form.submit "" %>
-      <% end %>
-      <p><%= render 'likes' %></p>
-    </section>
-      <%= form_for([@photo, @photo.comments.build], remote: true, method: :post) do |form| %>
-          <%= form.text_area :text %>
+    <section class="photo-comments"><%= render 'comments' %></section>
+    <section class="base">
+      <section class="photo-likes">
+        <%= form_for([@photo, @photo.likes.build], remote: true, method: :post) do |form| %>
+            <%= form.submit "" %>
+        <% end %>
+        <p><%= render 'likes' %></p>
+      </section>
+      <section class="photo-comment-form">
+        <%= form_for([@photo, @photo.comments.build], remote: true, method: :post) do |form| %>
           <%= form.text_field :user_id, value: current_user.id, type: "hidden" %>
-          <%= form.submit "Add comment" %>
-      <% end %>
+          <%= form.text_area :text %><%= form.submit "..." %>
+        <% end %>
+      </section>
+    </section>
   </section>
 </section>

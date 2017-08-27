@@ -1,18 +1,23 @@
-<section class="section">
-  <section class="row">
-    <section class="col">
-      <h3>@<%= @user.username %></h3>
+<section>
+  <section class="profile-header">
+    <section class="row">
+      <section class="col">
+        <h3>@<%= @user.username %></h3>
+      </section>
+      <section class="col-">
+        <%= render 'following' %>
+      </section>
     </section>
-  </section>
-  <section class="row">
-    <section class="col-">
-      <strong><%= @user.photos.count %></strong> photos
-    </section>
-    <section class="col-">
-      <strong>5</strong> followers
-    </section>
-    <section class="col-">
-      <strong>10</strong> following
+    <section class="row">
+      <section class="col-">
+        <strong><%= @user.photos.count %></strong> photos
+      </section>
+      <section class="col-">
+        <strong><%= @user.followers.count %></strong> <%= simple_pluralize(@user.followers.count, "follower") %>
+      </section>
+      <section class="col-">
+        <strong><%= followings(@user) %></strong> following
+      </section>
     </section>
   </section>
   <section class="photo-grid">

@@ -1,0 +1,11 @@
+<% if current_user_following(@user) %>
+  <%= form_for :follow, url: follower_path, method: :delete do |form| %>
+    <%= form.text_field :user_id, value: @user.id, type: "hidden" %>
+    <%= form.submit "Unfollow" %>
+  <% end %>
+<% else %>
+  <%= form_for :follow, url: followers_path do |form| %>
+    <%= form.text_field :user_id, value: @user.id, type: "hidden" %>
+    <%= form.submit "Follow" %>
+  <% end %>
+<% end %>
