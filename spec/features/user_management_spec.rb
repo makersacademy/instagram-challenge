@@ -51,12 +51,12 @@ RSpec.feature "Signout", type: :feature do
   scenario "User can sign out" do
     sign_up
     click_link 'Logout'
-    expect(page).to have_content("Signed out successfully.")
+    expect(page).to have_content("You need to sign in or sign up before continuing.")
   end
 end
 
 RSpec.feature "Edit", type: :feature do
-  scenario "User can edit details about her/himself" do
+  scenario "Users can edit their details" do
     sign_up
     click_link 'Edit registration'
     fill_in 'user_first_name', with: 'Test'

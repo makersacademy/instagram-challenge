@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Creating posts", type: :feature do
   scenario "posts are created with pictures and displayed in reverse order with title and timestamp" do
+    sign_up
     create_new_post
     create_new_post(title: "This is the second post")
     create_new_post(title: "This is the most recent post")
