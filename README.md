@@ -39,6 +39,45 @@ You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
 
+Features:
+-------
+
+```
+
+As a User
+So that I can let people know what I am doing  
+I want to post a photo with a caption on instagram
+
+As a User
+So that I can see what others are saying  
+I want to see all posts in reverse chronological order
+
+As a User
+So that I can better appreciate the context of a post
+I want to see the time at which it was made
+
+As a User
+So that I can post messages on instagram as me
+I want to sign up for instagram
+
+As a User
+So that only I can post messages on instagram as me
+I want to log in to instagram
+
+As a User
+So that I can avoid others posting messages on instagram as me
+I want to log out of instagram
+
+As a User
+So that I can that share my opinion on a post
+I want to be able to like a post
+
+As a User
+So that I can that share my opinion on a post
+I want to be able to make a comment on a post
+
+```
+
 # README
 
 This README would normally document whatever steps are necessary to get the
