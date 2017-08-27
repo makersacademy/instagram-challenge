@@ -18,9 +18,9 @@ require_relative "./support/controller_macros"
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  config.include UserHelpers, :type => :feature
-  config.include PhotoHelpers, :type => :feature
-  config.include ControllerMacros, :type => :controller
+  config.include UserHelpers, type: :feature
+  config.include PhotoHelpers, type: :feature
+  config.include ControllerMacros, type: :controller
 
   config.after(:suite) do
     FileUtils.rm_rf(Dir["#{Rails.root}/public/system/photos"])

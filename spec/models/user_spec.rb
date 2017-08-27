@@ -22,7 +22,7 @@ describe User do
   end
 
   it "deletes follower associations on destruction" do
-    followee =create(:user, email: "penfold@mouse.com")
+    followee = create(:user, email: "penfold@mouse.com")
     followee.followers << user
     user.destroy
     expect(followee.followers.count).to eq 0
