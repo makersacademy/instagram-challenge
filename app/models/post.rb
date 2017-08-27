@@ -39,4 +39,8 @@ class Post < ApplicationRecord
       end
     end
   end
+
+  def liked? (current_user)
+    likes.all.map { |like| like.user_id }.include?(current_user.id)
+  end
 end

@@ -1,7 +1,6 @@
 <% @posts.each do |post| %>
   <div class="row">
-    <div id='post-<%= post.id %>' class="post card">
-
+    <div id='post-<%= post.id %>' class="post card center-block">
       <div class="post_head card-header">
         <span class="float_left">
           <%= post.user.username %>
@@ -13,16 +12,25 @@
       </div>
 
       <div class="card-block post-image">
-        <%= image_tag post.image.url(:medium) %>
+        <%= image_tag post.image.url(:medium), class: "img-fluid" %>
       </div>
 
       <div class="card-block post-interaction">
         <div class="like float_left">
+          <% if post.liked?(current_user) %>
+            <%= form_for(@like, url: post_like_url(post, current_user), method: "delete") do |form| %>
+            <%= form.hidden_field :post_id, :value => post.id %>
+            <%= form.hidden_field :user_id, :value => current_user.id %>
+            <%= form.submit "Like", type: "image", src: asset_path('full-heart.svg'), class: "like", name: "Like" %>
+            <% end %>
+          <% else %>
             <%= form_for(@like, url: post_likes_path(post)) do |form| %>
             <%= form.hidden_field :post_id, :value => post.id %>
             <%= form.hidden_field :user_id, :value => current_user.id %>
-            <%= form.submit "Like", class: "button", name: "Like" %>
+            <%= form.submit "Like", type: "image", src: asset_path('empty-heart.svg'), class: "like", name: "Like" %>
             <% end %>
+          <% end %>
+
         </div>
         <div class="likes float_right">
           <%= post.likes.count %> likes
@@ -36,18 +44,19 @@
             <b><%= comment.user.username %></b> <%= comment.body %><br>
           <% end %>
         </div>
-
         <hr>
       </div>
 
-      <div class="comment_form">
-        <%= form_for [post, @comment] do |form| %>
-          <div class="form-group">
-            <%= form.text_field :body, class: "comment_form", placeholder: "Add comment..." %>
-            <%= form.hidden_field :post_id, value: post.id %>
-            <%= form.hidden_field :user_id, value: current_user.id %>
-          </div>
-        <% end %>
+      <div class="card-block">
+        <div class="comment_form">
+          <%= form_for [post, @comment] do |form| %>
+            <div class="form-group">
+              <%= form.text_field :body, class: "comment_form", placeholder: "Add comment..." %>
+              <%= form.hidden_field :post_id, value: post.id %>
+              <%= form.hidden_field :user_id, value: current_user.id %>
+            </div>
+          <% end %>
+        </div>
       </div>
 
     </div>
