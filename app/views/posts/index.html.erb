@@ -1,0 +1,74 @@
+<% @posts.each do |post| %>
+  <div class="row">
+    <div id='post-<%= post.id %>' class="post card center-block">
+      <div class="post_head card-header">
+        <span class="float_left">
+          <%= post.user.username %>
+        </span>
+        <span class="float_right">
+          <%= post.time_ago %>
+        </span>
+        <br>
+      </div>
+
+      <div class="card-block post-image">
+        <%= image_tag post.image.url(:medium), class: "img-fluid" %>
+      </div>
+
+      <div class="card-block post-interaction">
+        <div class="like float_left">
+          <% if post.liked?(current_user) %>
+            <%= form_for(@like, url: post_like_url(post, current_user), method: "delete") do |form| %>
+            <%= form.hidden_field :post_id, :value => post.id %>
+            <%= form.hidden_field :user_id, :value => current_user.id %>
+            <%= form.submit "Like", type: "image", src: asset_path('full-heart.svg'), id: ("like" + String(post.id)) %>
+            <% end %>
+            <%= form_for(@like, url: post_likes_path(post)) do |form| %>
+            <%= form.hidden_field :post_id, :value => post.id %>
+            <%= form.hidden_field :user_id, :value => current_user.id %>
+            <%= form.submit "Like", type: "image", src: asset_path('empty-heart.svg'), id: ("unlike" + String(post.id)), class: "hide" %>
+            <% end %>
+          <% else %>
+            <%= form_for(@like, url: post_like_url(post, current_user), method: "delete") do |form| %>
+            <%= form.hidden_field :post_id, :value => post.id %>
+            <%= form.hidden_field :user_id, :value => current_user.id %>
+            <%= form.submit "Like", type: "image", src: asset_path('full-heart.svg'), id: ("like" + String(post.id)), class: "hide" %>
+            <% end %>
+            <%= form_for(@like, url: post_likes_path(post)) do |form| %>
+            <%= form.hidden_field :post_id, :value => post.id %>
+            <%= form.hidden_field :user_id, :value => current_user.id %>
+            <%= form.submit "Like", type: "image", src: asset_path('empty-heart.svg'), id: ("unlike" + String(post.id)) %>
+            <% end %>
+          <% end %>
+
+        </div>
+        <div class="likes float_right">
+          <p id="likes<%= post.id %>"><%= post.likes.count %> likes</p>
+        </div>
+      </div>
+
+      <div class="card-block">
+        <div class="post-caption">
+          <b><%= post.user.username %></b> <%= post.caption %><br>
+          <% post.comments.each do |comment| %>
+            <b><%= comment.user.username %></b> <%= comment.body %><br>
+          <% end %>
+        </div>
+        <hr>
+      </div>
+
+      <div class="card-block">
+        <div class="comment_form">
+          <%= form_for [post, @comment] do |form| %>
+            <div class="form-group">
+              <%= form.text_field :body, class: "comment_form", placeholder: "Add comment..." %>
+              <%= form.hidden_field :post_id, value: post.id %>
+              <%= form.hidden_field :user_id, value: current_user.id %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<% end %>
