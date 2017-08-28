@@ -9,7 +9,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
+    flash[:success] = "Your post has been created!"
     redirect_to posts_url
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   private
