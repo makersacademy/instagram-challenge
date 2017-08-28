@@ -1,2 +1,22 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<ul class='posts-index'>
+    <% @posts.each do |post| %>
+      <li>
+        <section>
+          <p>
+            User Name
+          </p>
+        </section>
+        <p>
+          <%= post.title %>
+        </p>
+
+        <p>
+          <%= post.created_at.localtime.strftime('%d-%b-%Y %I:%M:%S %p') %>
+        </p>
+      </li>
+    <% end %>
+</ul>
+
+<%= link_to new_post_path do %>
+  New post
+<% end %>
