@@ -23,6 +23,9 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'devise'
 gem 'jquery-rails'
+gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk', '~> 2.3'
+gem 'dotenv-rails', :groups => [:development, :test]
 
 group :test do
   gem 'launchy'
