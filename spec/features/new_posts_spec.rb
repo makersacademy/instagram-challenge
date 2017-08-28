@@ -16,7 +16,7 @@ RSpec.feature 'New Posts', type: :feature do
   end
 
   context 'A user has not logged in' do
-    scenario 'The user is asked to sign up or log in' do
+    scenario 'The user is asked to sign in or sign up' do
       visit '/posts/new'
       expect(page).not_to have_button('Save Post')
       expect(page).to have_content('You need to sign in or sign up before continuing.')
