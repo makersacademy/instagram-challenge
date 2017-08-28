@@ -16,6 +16,15 @@ RSpec.feature "Signup", type: :feature do
   end
 end
 
+RSpec.feature "Signin", type: :feature do
+  scenario "User can sign in" do
+    sign_up
+    click_link "Logout"
+    sign_in
+    expect(page).to have_content("Signed in successfully.")
+  end
+end
+
 RSpec.feature "Signout", type: :feature do
   scenario "User can sign out" do
     sign_up
