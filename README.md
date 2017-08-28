@@ -15,7 +15,7 @@ I've taken a design-led approach to this project.
 * Starting with creating user stories to understand which features needed be built, I then designed the database and the relationships within it.
 * Setting up the test suite was the next logical step, including the necessary gems for
 
-# User Stories
+### User Stories
 
 **Epic | User Authentication**
 ```
@@ -38,17 +38,17 @@ I would like to be able to login
 ```
 As an existing user
 So that I can share my #yolo moments with the world
-I would like to be to post an image
+I would like to post an image
 ```
 ```
 As an existing user
 So that I can bask in the glory of my photographic greatness
-I would like to be view the images that I have posted
+I would like to view the images that I have posted
 ```
 ```
 As an existing user
 So that I can see gives my eyes a feast of visual delights
-I would like to be view other people's images
+I would like to view other people's images
 ```
 
 **Epic | Posting Comments on Images**
@@ -60,7 +60,7 @@ I would like to post a comment on it
 ```
 As an existing user
 So that I can view what others think of my image
-I would like to view the comments left on it 
+I would like to view the comments left on it
 ```
 
 
@@ -68,7 +68,7 @@ I would like to view the comments left on it
 ```
 As an existing user
 So that I can show my appreciation for the visual feast
-I would like to be like other people's images
+I want to like other people's images
 ```
 ```
 As an existing user
