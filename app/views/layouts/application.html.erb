@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instagram</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet">
+
+    <%= csrf_meta_tags %>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <%= link_to "INSTAGRAM", root_path, class: "navbar-brand" %>
+    <% if current_user %>
+      Logged in as <strong><%= current_user.user_name %></strong>.
+      <%= button_to "New Post", new_post_path, method: :get, class: "btn my-2 my-sm-0" %>
+      <%= button_to "Edit your profile", edit_user_registration_path, method: :get, class: "btn my-2 my-sm-0" %>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "btn my-2 my-sm-0" %>
+    <% else %>
+      <%= button_to "Sign up", new_user_registration_path, class: "btn my-2 my-sm-0" %>
+      <%= button_to "Log in", new_user_session_path, :class => "btn my-2 my-sm-0" %>
+    <% end %>
+  </nav>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<h1> Posts</h1>
+<% @posts.each do |post| %>
+  <div class= "post-container">
+    <div id="post<%= post.id %>" class="post">
+      <header>
+        <p><%= post.user.user_name %><p>
+        <p><%= time_ago_in_words post.created_at%></p>
+      </header>
+      <%= link_to (image_tag(post.image.url(:medium))), post_path(post) %>
+      <p><%= post.caption %></p>
+    </div>
+
+    <% if post.comments %>
+      <p> Comments </p>
+      <% post.comments.each do |comment| %>
+        <div id="comment<%=post.id%>">
+          <span> <%= comment.user.user_name%>: </span>
+          <span> <%= comment.content%> </span>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div class="comment-form" id="comment-form<%= post.id %>">
+      <%= form_for [post, post.comments.new] do |f| %>
+        <%= f.text_field :content, placeholder: 'Add a comment...' %>
+        <%= f.submit 'Submit' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
