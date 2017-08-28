@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/funmia/instagram-challenge.svg?branch=master)
+
 Instagram Challenge
 ===================
 
