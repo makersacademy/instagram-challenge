@@ -22,6 +22,9 @@ A user can view the number of likes on a post
 
 ## Instructions
 
+production:
+http://tobstagram.herokuapp.com/
+
 development:
 ```
 bundle install
