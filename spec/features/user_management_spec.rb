@@ -6,4 +6,8 @@ RSpec.feature "Signup", type: :feature do
     expect(page).to have_content("Welcome! You have signed up successfully.")
     expect(User.first.email).to eq 'john@smith.com'
   end
+
+  scenario 'matching password confirmation is required' do
+    expect { sign_up(password_confirmation: 'wrong') }.not_to change(User, :count)
+  end
 end
