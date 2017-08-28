@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PostHelpers
   def make_a_post(picture: Rails.root.join('spec/images/humming_birds.png'),
                   description: 'Humming birds taking a bath')

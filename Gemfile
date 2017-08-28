@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -40,6 +42,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'launchy'
   gem 'rspec-rails', '~> 3.5'
+  gem 'rubocop-rails'
   gem 'selenium-webdriver'
 end
 
@@ -57,3 +60,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'devise'
+gem 'jquery-rails'

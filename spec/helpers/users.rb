@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module UserHelpers
   def sign_up(email: 'natgeo@natgeo.com',
               user_name: 'natgeo',

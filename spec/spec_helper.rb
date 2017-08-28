@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ENV['RAILS_ENV'] ||= 'test'
 
 require_relative './helpers/posts'
@@ -19,9 +21,9 @@ require_relative './helpers/comments'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  config.include PostHelpers, :type => :feature
-  config.include UserHelpers, :type => :feature
-  config.include CommentHelpers, :type => :feature
+  config.include PostHelpers, type: :feature
+  config.include UserHelpers, type: :feature
+  config.include CommentHelpers, type: :feature
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
