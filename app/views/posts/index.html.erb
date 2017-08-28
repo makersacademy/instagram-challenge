@@ -2,7 +2,7 @@
 <div class="container"
 <% @posts.each do |post| %>
 <div class='align-left'>
-<%= link_to post.user.username, post.user %></br>
+<%= link_to post.user.username, user_path(post.user_id) %></br>
 </div>
 <div class="align-right">
           posted at: <%= post.posted_at %>
@@ -12,7 +12,7 @@
 <%= post.caption %>
 </br>
 </br>
-<p class='comment-title'>Comments:</p>
+<p class='comment-title'>Comments</p>
 <div class="comments" id="comments<%= post.id %>">
   <% post.comments.each do |comment| %>
     <p class="comment_user"> <%= link_to comment.user.username, comment.user %>:<span class="comment__body"> <%= comment.content %></span></p>

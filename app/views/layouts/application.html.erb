@@ -8,13 +8,13 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-  <nav class="navbar navbar-default justify-content-between">
+  <nav class="navbar navbar-custom justify-content-between">
     <a class="navbar-brand" href="/">K I T T Y G R A M</a>
     <div class="container-fluid">
 
       <ul class="nav navbar-nav navbar-left">
         <% if user_signed_in? %>
-          <strong><%= current_user.username %> <%= image_tag(current_user.avatar.url(:thumb)) %></strong></br></br>
+          <strong><%= current_user.username %> <%= image_tag(current_user.avatar.url(:thumb)) if current_user.avatar.present? %></strong></br></br>
           <% end %>
       </ul>
      <ul class="nav navbar-nav navbar-right">
@@ -22,7 +22,7 @@
        <li><%= link_to "My profile", user_path(current_user) %></li>
          <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
          <li><%= link_to "Create post", new_post_path %></li>
-         <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+         <li><%= link_to "Log out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
        <% else %>
      <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
      <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>

@@ -7,3 +7,11 @@ def sign_up
   fill_in 'user_bio', with: "Test bio"
   click_button 'Sign up'
 end
+
+def create_post
+  sign_up
+  visit "/posts"
+  click_link "Create post"
+  fill_in "post_caption", with: "Testing1"
+  click_button "Submit"
+end
