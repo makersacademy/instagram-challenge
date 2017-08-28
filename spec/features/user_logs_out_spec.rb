@@ -1,6 +1,4 @@
 require 'rails_helper.rb'
-require 'spec_helper.rb'
-require 'helpers/user_helper.rb'
 
 feature 'Log Out' do
   scenario 'user can log out' do

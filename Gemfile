@@ -48,6 +48,8 @@ group :development, :test do
   gem "rubocop-rails"
   gem 'factory_girl_rails'
   gem 'database_cleaner'
+  gem 'simplecov'
+  gem 'simplecov-console'
 end
 
 group :development do
