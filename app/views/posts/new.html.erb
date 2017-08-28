@@ -1,20 +1,18 @@
+<div class="container">
+  <%= form_for [@user, @post], url: posts_path, html: { multipart: true } do |f| %>
+    <div class="field">
+      <%= f.label :image %><br />
+      <%= f.file_field :image %>
+    </div>
 
-<%= form_for [@user, @post] do |f| %>
-  <div class="field">
-    <%= form_tag({action: :upload}, multipart: true) do %>
-    <%= file_field_tag 'imagepath' %>
+    <div class="field">
+      <%= f.label :caption %><br />
+      <%= f.text_field :caption %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Post" %>
+    </div>
+
   <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :caption %><br />
-    <%= f.text_field :caption %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Post" %>
-  </div>
-<% end %>
-
-t.text :imagepath
-t.string :caption
+</div>
