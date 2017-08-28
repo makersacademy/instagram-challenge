@@ -1,14 +1,6 @@
 Instagram Challenge
 ===================
 
-## Instructions
-
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 ## Task
 
 Build Instagram: Simple huh!
@@ -16,14 +8,6 @@ Build Instagram: Simple huh!
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
 Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
 
 ## Code Quality
 
@@ -34,10 +18,6 @@ You'll need these gems:
 gem "rubocop", "0.48.1"
 gem "rubocop-rails"
 ```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
 
 Features:
 -------
@@ -77,28 +57,30 @@ So that I can that share my opinion on a post
 I want to be able to make a comment on a post
 
 ```
+# How to set up the app locally:
 
-# README
+```bash
+git clone git@github.com:funmia/instagram-challenge.git
+cd instagram-challenge
+bundle install
+bin/rails db:create
+bin/rails db:migrate
+bin/rails server #  localhost:3000
+```
+## Tests
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```bash
+bin/rails db:migrate RAILS_ENV=test # Ensure your test environment is updated
+bundle exec rspec # Runs the whole test suite
+bundle exec rspec path/to/spec_file # Runs a single spec
+```
 
-Things you may want to cover:
+# Dependencies
 
-* Ruby version
+- Paperclip: A file attachment library for ActiveRecord. This was used for the image upload functionality of the app. Visit [Paperclip](https://github.com/thoughtbot/paperclip) documentation for more information.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ brew install imagemagick
+$ gem 'paperclip', '~> 4.1'
+$ bundle install
+```
