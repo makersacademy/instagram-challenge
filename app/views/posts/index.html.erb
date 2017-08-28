@@ -27,11 +27,24 @@
         	  <%= form.hidden_field :post_id, :value => post.id %>
             <%= form.hidden_field :user_id, :value => current_user.id %>
         	  <%= form.submit "Like" %>
-        	<% end %><br>
+        	<% end %>
 
           <span class='posts-index-post-likes'>
-            <%= pluralize(Like.where(post_id: post.id).count, "like") %> |
-          </span>
+            <%= pluralize(Like.where(post_id: post.id).count, "like") %>
+          </span><br>
+
+          <div class="comment__body">
+            <% post.comments.each do |comment| %>
+                <%= simple_format(comment.message) %>
+            <% end %>
+          </div>
+
+          <%= form_for [post, @comment] do |form| %>
+            <%= form.label :comment %>
+            <%= form.text_area :message, :rows =>1, style: 'width:100%;' %>
+            <%= form.hidden_field :post_id, value: post.id %>
+            <%= form.submit "Submit" %>
+          <% end %>
 
       </li>
     <% end %>

@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get 'pictures' => 'pictures#index'
   resources :pictures
   resources :posts do
+    resources :comments
     resources :likes
   end
-  
+
   resources :users
   root 'posts#index'
 end
