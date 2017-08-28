@@ -1,7 +1,14 @@
-<%= form_for @post, url: {controller: "posts", action: "create"} do |form| %>
-  <%= label(:caption, "Caption:") %><br>
-  <%= form.text_field(:caption, :required => true) %><br>
-  <%= label(:image, "Image:") %><br>
-  <%= form.file_field(:image, :required => true) %><br>
-  <%= form.submit :submit %>
-<% end %>
+<div class="row">
+  <div class="jumbotron">
+    <p class="lead">Add a picture!</p>
+    <p class="small">(don't forget the caption)</p>
+    <hr class="my-4">
+    <%= form_for @post, url: {controller: "posts", action: "create"} do |form| %>
+      <%= label(:image, "Image:") %><br>
+      <%= form.file_field(:image, :required => true, class: "form-control") %><br>
+      <%= label(:caption, "Caption:") %><br>
+      <%= form.text_field(:caption, :required => true, class: "form-control") %><br>
+      <%= form.submit "submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
