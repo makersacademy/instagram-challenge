@@ -4,7 +4,8 @@ Makersgram
 
 ## About
 
-A weekend challenge at Makers Academy. The task was to build a minimalist Instagram clone using Rails. In this up users can sign-up, login, post photos and comments.
+A weekend challenge at Makers Academy. The task was to build a minimalist Instagram clone using Rails. In this up users can sign-up, login, post photos and comment on each others posts.
+
 Try this app on Heroku: http://makersgram.herokuapp.com
 
 
