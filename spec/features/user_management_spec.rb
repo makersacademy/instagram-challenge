@@ -35,31 +35,31 @@ RSpec.feature "Signup", type: :feature do
     expect { sign_up(email: 'wrong') }.not_to change(User, :count)
   end
 end
-#
-# RSpec.feature "Signin", type: :feature do
-#   scenario "User can sign in" do
-#     sign_up
-#     click_link "Logout"
-#     sign_in
-#     expect(page).to have_content("Signed in successfully.")
-#   end
-# end
-#
-# RSpec.feature "Signout", type: :feature do
-#   scenario "User can sign out" do
-#     sign_up
-#     click_link 'Logout'
-#     expect(page).to have_content("Login You need to sign in or sign up before continuing")
-#   end
-# end
-#
-# RSpec.feature "Edit", type: :feature do
-#   scenario "User can edit details about her/himself" do
-#     sign_up
-#     click_link 'Edit registration'
-#     fill_in 'user_first_name', with: 'Test'
-#     fill_in 'user_current_password', with: '456789'
-#     click_button 'Update'
-#     expect(page).to have_content("Your account has been updated successfully.")
-#   end
-# end
+
+RSpec.feature "Signin", type: :feature do
+  scenario "User can sign in" do
+    sign_up
+    click_link "Logout"
+    sign_in
+    expect(page).to have_content("Signed in successfully.")
+  end
+end
+
+RSpec.feature "Signout", type: :feature do
+  scenario "User can sign out" do
+    sign_up
+    click_link 'Logout'
+    expect(page).to have_content("Login You need to sign in or sign up before continuing")
+  end
+end
+
+RSpec.feature "Edit", type: :feature do
+  scenario "User can edit details about her/himself" do
+    sign_up
+    click_link 'Edit registration'
+    fill_in 'user_username', with: 'Test'
+    fill_in 'user_current_password', with: '456789'
+    click_button 'Update'
+    expect(page).to have_content("Your account has been updated successfully.")
+  end
+end

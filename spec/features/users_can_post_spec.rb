@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Feed", type: :feature do
   scenario "Can submit posts and view them" do
+    sign_up
     visit "/posts"
     click_link "New post"
     fill_in "Title", with: "Hello, world!"
@@ -12,6 +13,7 @@ end
 
 RSpec.feature "Timeline", type: :feature do
   scenario "posts are displayed in reverse order with message and timestamp" do
+    sign_up
     create_new_post
     create_new_post(title: "There is not enough time to do all the nothing we want to do")
     create_new_post(title: "Oooh! What does THAT button do?")
