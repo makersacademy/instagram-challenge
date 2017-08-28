@@ -13,7 +13,7 @@ feature 'Creating likes' do
     attach_file('post[image]', "spec/files/images/test.jpg")
     fill_in 'post[caption]', with: 'testing #test'
     click_button 'submit'
-    click_button 'Like'
+    find('#unlike3').click
     visit '/'
     expect(page).to have_content('1 like')
   end

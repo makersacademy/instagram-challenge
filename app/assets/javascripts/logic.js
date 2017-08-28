@@ -9,6 +9,7 @@
     eventListener: function() {
       var self = this;
       window.addEventListener("submit", function(event){
+        // event.preventDefault();
         var idnumber = (event.target.lastElementChild.id).replace(/\D/g,'');
         var likeid = "like" + idnumber;
         var unlikeid = "unlike" + idnumber;

@@ -21,3 +21,19 @@ A user can view the number of likes on a post
 ```
 
 ## Instructions
+
+development:
+```
+bundle install
+bin/rails db:create
+bin/rails db:migrate
+bin/rails server
+```
+
+test:
+```
+bundle install
+bin/rails db:create
+bin/rails db:migrate RAILS_ENV=test
+bundle exec rspec
+```
