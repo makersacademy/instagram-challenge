@@ -27,6 +27,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+#Authenticationm system
+gem 'devise'
 # Easily automate repetitive tasks, quickly deploy applications, and proactively manage servers, on-premise or in the cloud
 gem 'foreman'
 # Use Redis adapter to run Action Cable in production
