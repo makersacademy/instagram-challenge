@@ -12,8 +12,11 @@ Bonus if you can add filters!
 ## My Solution
 
 I've taken a design-led approach to this project.
-* Starting with creating user stories to understand which features needed be built, I then designed the database and the relationships within it.
-* Setting up the test suite was the next logical step, including the necessary gems for
+* I started by creating user stories to understand which features needed be built
+* I then designed the database and the relationships within it (see diagram below).
+* Setting up the test suite was the next logical step, including the necessary gems for cleaning the database, creating factories and so on.
+* I started building features using feature specs, following the RED-GREEN-REFACTOR process to develop the models, controllers and views.
+
 
 ### User Stories
 
@@ -94,4 +97,29 @@ Text on how Octogram has been designed goes here
 
 # How To Use
 
-Text on how to use goes here
+The project is currently a work in progress, and will be finished at a later date.
+
+To view the current progress run the following in your terminal:
+
+Step 1: Clone this repo
+```
+git clone git@github.com:annalaise/instagram-challenge.git
+```
+
+Step 2: Run the tests
+```
+bundle install
+bin/rails db:create
+bin/rails db:migrate
+bundle exec rspec
+```
+
+Step 3: Run the app locally
+```
+bundle install
+bin/rails db:create
+bin/rails db:migrate
+rails s
+```
+
+**The app will be shipped to production (heroku) asap**
