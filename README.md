@@ -27,6 +27,8 @@ Further development options
 
 * use AJAX to update likes and comments rather than refreshing the page
 
+* allow comments to be made in Profile page
+
 * improve CSS styling
 
 * add search functionality  
