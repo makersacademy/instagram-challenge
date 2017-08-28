@@ -1,29 +1,35 @@
 <% @posts.each do |post| %>
-<div class="post_div">
-  <div class="post_head_div">
-    <div class="body_copy bold"><%= post.user.username %></div>
-  </div>
-  <div class="post_image_div">
-    <img class="image" sizes="(max-width: 767px) 100vw, 538px" src="<%= post.image.url(:large) %>">
-  </div>
-  <div class="post_badges_div">
-    <a class="like_link w-inline-block" href="#"></a>
-  </div>
-  <div class="post_comments_div">
-    <% if !post.description.empty? %>
-    <div class="comment_div">
-      <div class="body_copy"><span class="body_copy bold"><%= post.user.username %> </span> <%= post.description %></div>
+  <div class="post_div">
+    <div class="post_head_div">
+      <div class="body_copy bold"><%= post.user.username %></div>
     </div>
-    <% end %>
-    <div class="comment_div">
-      <div class="body_copy"><span class="body_copy bold">Dude</span> It feels surreal and disorienting when you finally get to a view you've been itching to see for years.</div>
+    <div class="post_image_div">
+      <img class="image" sizes="(max-width: 767px) 100vw, 538px" src="<%= post.image.url(:large) %>">
     </div>
-    <div class="form_comments w-form">
-      <form data-name="Email Form" id="email-form" name="email-form">
-        <input class="text_field w-input" data-name="Name" id="name" maxlength="256" name="name" placeholder="Add comment" type="text">
-        <input class="button w-button" data-wait="Please wait..." type="submit" value="Comment">
-      </form>
+    <div class="post_badges_div">
+      <a class="like_link w-inline-block" href="#"></a>
+    </div>
+    <div class="post_comments_div">
+      <% if !post.description.empty? %>
+      <div class="comment_div">
+        <div class="body_copy"><span class="body_copy bold"><%= post.user.username %> </span> <%= post.description %></div>
+      </div>
+      <% end %>
+      <% if post.comments.any? %>
+        <% post.comments.each do |comment| %>
+          <div class="comment_div">
+            <div class="body_copy"><span class="body_copy bold"><%= comment.user.username %></span> <%= comment.message %></div>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="form_comments w-form">
+        <%= form_for [post, post.comments.build] do |form| %>
+          <%= form.text_area :message, class: "text_field w-input" %>
+          <%= form.hidden_field :post_id, value: post.id %>
+          <%= form.hidden_field :user_id, value: current_user.id %>
+          <%= form.submit "Comment", class: "button w-button" %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 <% end %>

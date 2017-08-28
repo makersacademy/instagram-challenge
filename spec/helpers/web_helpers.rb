@@ -15,6 +15,14 @@ def log_in
   click_button 'Log in'
 end
 
+def create_post
+  visit '/'
+  click_link 'New'
+  fill_in 'Description', with: 'I can haz rails?'
+  attach_file 'post_image', "#{Rails.root}/spec/support/fixtures/test_image.png"
+  click_button 'Create post'
+end
+
 def test_email
   'john@smith.com'
 end
