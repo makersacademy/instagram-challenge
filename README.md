@@ -1,40 +1,34 @@
 Instagram Challenge
 ===================
 
-## Instructions
+## About
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+An instagram clone built using Rails and tested with Rspec. Users can post pictures, write comments on pictures and like a picture.
 
-## Task
+User management is implemented with Devise and pictures are uploaded to Amazon S3 by Paperclip. The app is hosted by Heroku and can be viewed here:
 
-Build Instagram: Simple huh!
+https://bensinstagram.herokuapp.com/
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## How to use
 
-Bonus if you can add filters!
+Heroku at the link above or to run locally:
 
-## How to start
+git clone https://github.com/BDCraven/instagram-challenge.git
+bundle install
+rails db:migrate
+rails server
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+Visit 'localhost:3000'
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+Further development options
+---------
 
-## Code Quality
+* add user name to comments
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+* use AJAX to update likes and comments rather than refreshing the page
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
+* improve CSS styling
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+* add search functionality  
+
+* add default landing page to be shown when no user is logged in
