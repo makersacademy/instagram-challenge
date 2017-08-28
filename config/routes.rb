@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :feed
   resources :profiles
   resources :followers
+  resources :tags
 
   root 'photos#index'
 end

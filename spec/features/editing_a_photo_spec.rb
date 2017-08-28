@@ -27,7 +27,7 @@ RSpec.feature "Editing photos" do
     within ".photo-admin" do
       first(:button).click
     end
-    fill_in "Tags", with: "catstagram"
+    fill_in "photo_tags", with: "catstagram"
     click_button "Edit"
     expect(page).to have_no_content "#catsofynstagram"
     expect(page).to have_content "#catstagram"

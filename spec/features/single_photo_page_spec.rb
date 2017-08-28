@@ -43,4 +43,9 @@ RSpec.feature "Photo pages" do
     expect(page).to have_no_content "2 likes"
     expect(page).to have_content "1 like"
   end
+
+  it "links to individual tag pages" do
+    click_link "#catsofynstagram"
+    expect(current_path).to eq "/tags/catsofynstagram" 
+  end
 end
