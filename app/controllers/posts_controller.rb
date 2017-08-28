@@ -12,11 +12,6 @@ class PostsController < ApplicationController
     current_user.posts << post
     current_user.save
     redirect_to root_path
-    # if current_user.save
-    #   redirect_to root_path
-    # else
-    #   render 'new'
-    # end
   end
 
   private
