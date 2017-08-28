@@ -47,7 +47,7 @@ I would like to view the images that I have posted
 ```
 ```
 As an existing user
-So that I can see gives my eyes a feast of visual delights
+So that I can give my eyes a feast of visual delights
 I would like to view other people's images
 ```
 
