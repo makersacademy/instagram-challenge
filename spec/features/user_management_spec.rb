@@ -15,3 +15,11 @@ RSpec.feature "Signup", type: :feature do
     expect { sign_up(email: 'wrong') }.not_to change(User, :count)
   end
 end
+
+RSpec.feature "Signout", type: :feature do
+  scenario "User can sign out" do
+    sign_up
+    click_link 'Logout'
+    expect(page).to have_content("Signed out successfully.")
+  end
+end
