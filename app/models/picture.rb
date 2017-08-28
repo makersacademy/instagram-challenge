@@ -1,6 +1,6 @@
 class Picture < ApplicationRecord
   has_attached_file :image,
-    styles: { thumb: '300x300>' },
+    styles: { thumb: '300x300' },
     storage: :s3,
     s3_credentials: {
       bucket: 'bens-instagram-clone',

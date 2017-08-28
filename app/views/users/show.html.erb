@@ -17,9 +17,15 @@
         <%= post.created_at.localtime.strftime('%d-%b-%Y %I:%M:%S %p') %>
       </p>
       <span class='posts-index-post-likes'>
-        <%= pluralize(Like.where(post_id: post.id).count, "like") %> |
-        <%= link_to 'Comments', post_path(post) %>
+        <%= pluralize(Like.where(post_id: post.id).count, "like") %>
       </span>
+
+      <div class="comment__body">
+        <% post.comments.each do |comment| %>
+            <%= simple_format(comment.message) %>
+        <% end %>
+      </div>
+
     </li>
     <% end %>
 </ul>
