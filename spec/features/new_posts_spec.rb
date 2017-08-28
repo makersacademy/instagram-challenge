@@ -10,6 +10,7 @@ RSpec.feature 'New Posts', type: :feature do
       make_a_post
       expect(current_path).to eq('/posts')
       expect(page.status_code).to eq(200)
+      expect(page.find('.posts-index-userName')).to have_content('natgeo')
       expect(page).to have_css 'img.posts-index-picture'
       expect(page).to have_content('Humming birds taking a bath')
     end
