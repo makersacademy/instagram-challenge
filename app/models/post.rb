@@ -3,4 +3,5 @@ class Post < ApplicationRecord
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\z/
   has_many :comments
   belongs_to :user
+  delegate :user_name, to: :user
 end
