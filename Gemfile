@@ -10,7 +10,7 @@ end
 gem 'rails', '~> 5.1.3'
 # Use Paperclip for image upload
 gem 'paperclip', '~> 4.1'
-gem 'aws-sdk', '~> 2.3'
+gem 'aws-sdk', '< 2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
