@@ -6,7 +6,7 @@ feature 'Creating likes' do
   before do
     login(user)
   end
-  
+
   scenario 'User can like a post' do
     visit '/'
     find('#newpost').click
@@ -14,6 +14,7 @@ feature 'Creating likes' do
     fill_in 'post[caption]', with: 'testing #test'
     click_button 'submit'
     click_button 'Like'
+    visit '/'
     expect(page).to have_content('1 like')
   end
 end
