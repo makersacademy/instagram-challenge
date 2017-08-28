@@ -1,0 +1,51 @@
+
+<p class='new-post-link'>
+  <%= link_to new_post_path do %>
+    Create new post
+  <% end %>
+</p>
+
+<ul class='posts-index-posts'>
+    <% @posts.each do |post| %>
+      <li class='posts-index-post'>
+        <section class='posts-index-post-horizontal'>
+          <p class="posts-index-post-user-name">
+            <%= post.user.first_name %>
+            <%= post.user.last_name %>
+          </p>
+        </section>
+        <p class='posts-index-post-title'>
+          <%= post.title %>
+        </p>
+        <%= image_tag post.picture.url, class: 'uploaded-pic' %>
+
+        <p class="posts-index-post-timestamp">
+          <%= post.created_at.localtime.strftime('%d-%b-%Y %I:%M:%S %p') %>
+        </p>
+
+          <%= form_for(@like, url: post_likes_path(post)) do |form| %>
+        	  <%= form.hidden_field :post_id, :value => post.id %>
+            <%= form.hidden_field :user_id, :value => current_user.id %>
+        	  <%= form.submit "Like" %>
+        	<% end %>
+
+          <span class='posts-index-post-likes'>
+            <%= pluralize(Like.where(post_id: post.id).count, "like") %>
+          </span><br>
+
+          <div class="comment__body">
+            <% post.comments.each do |comment| %>
+                <%= simple_format(comment.message) %>
+            <% end %>
+          </div>
+
+          <%= form_for [post, @comment] do |form| %>
+            <%= form.label :comment %>
+            <%= form.text_area :message, :rows =>1, style: 'width:100%;' %>
+            <%= form.hidden_field :post_id, value: post.id %>
+            <%= form.submit "Submit" %>
+          <% end %>
+
+      </li>
+    <% end %>
+</ul>

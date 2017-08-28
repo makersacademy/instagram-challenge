@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstagramChallenge</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <header>
+
+    <nav class="navbar navbar-fixed-top" >
+      <div class="container-fluid">
+        <h3>Instagram Challenge</h3>
+        <form class="navbar-form">
+          <div class="input-group" >
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+        </form>
+
+          <ul class="hmenu">
+            <%= render 'devise/menu/registration_items' %>
+            <%= render 'devise/menu/login_items' %>
+            <li>
+              <% if current_user %>
+                <%= link_to 'Profile', user_path(current_user), class: 'profile_link' %>
+                <%= link_to 'Home', posts_url, class: 'home_link' %>
+              <% end %>
+          </ul>
+      </div>
+    </nav>
+    </header>
+    <section id='main'>
+
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    <%= yield %>
+  </section>
+  </body>
+</html>
