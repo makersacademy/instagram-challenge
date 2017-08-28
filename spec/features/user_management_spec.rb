@@ -10,4 +10,8 @@ RSpec.feature "Signup", type: :feature do
   scenario 'matching password confirmation is required' do
     expect { sign_up(password_confirmation: 'wrong') }.not_to change(User, :count)
   end
+
+  scenario 'email matches conventions for email' do
+    expect { sign_up(email: 'wrong') }.not_to change(User, :count)
+  end
 end
