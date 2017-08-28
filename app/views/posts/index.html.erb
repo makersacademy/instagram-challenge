@@ -21,19 +21,19 @@
             <%= form_for(@like, url: post_like_url(post, current_user), method: "delete") do |form| %>
             <%= form.hidden_field :post_id, :value => post.id %>
             <%= form.hidden_field :user_id, :value => current_user.id %>
-            <%= form.submit "Like", type: "image", src: asset_path('full-heart.svg'), class: "like", name: "Like" %>
+            <%= form.submit "Like", type: "image", src: asset_path('full-heart.svg'), id: ("like" + String(post.id)) %>
             <% end %>
           <% else %>
             <%= form_for(@like, url: post_likes_path(post)) do |form| %>
             <%= form.hidden_field :post_id, :value => post.id %>
             <%= form.hidden_field :user_id, :value => current_user.id %>
-            <%= form.submit "Like", type: "image", src: asset_path('empty-heart.svg'), class: "like", name: "Like" %>
+            <%= form.submit "Like", type: "image", src: asset_path('empty-heart.svg'), id: ("like" + String(post.id)) %>
             <% end %>
           <% end %>
 
         </div>
         <div class="likes float_right">
-          <%= post.likes.count %> likes
+          <p id="likes<%= post.id %>"><%= post.likes.count %> likes</p>
         </div>
       </div>
 
