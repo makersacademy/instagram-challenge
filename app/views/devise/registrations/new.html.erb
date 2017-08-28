@@ -1,34 +1,60 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<div class="post_div">
+  <div class="h1_div">
+    <div class="h1">Sign up</div>
   </div>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.email_field :username, autofocus: true %>
+  <div class="post_comments_div">
+    <div class="form_comments w-form">
+
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="text_field w-input" >
+          <%= f.label :email, class: "w-form-label" %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="text_field w-input" >
+          <%= f.label :username %><br />
+          <%= f.email_field :username, autofocus: true %>
+        </div>
+
+        <div class="text_field w-input" >
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="text_field w-input" >
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        <div class="button w-button">
+          <%= f.submit "Sign up" %>
+        </div>
+      <% end %>
+
+
+      <form id="email-form" name="email-form">
+        <input class="text_field w-input" id="name" maxlength="256" name="name" placeholder="Add comment" type="text">
+        <input class="text_field w-input" id="name-2" maxlength="256" name="name-2" placeholder="Add comment" type="text">
+        <div class="checkbox_field w-checkbox">
+          <input class="checkbox w-checkbox-input" id="checkbox" name="checkbox" type="checkbox">
+          <label class="w-form-label" for="checkbox">Remember me
+          </label>
+        </div>
+        <input class="button w-button" type="submit" value="Log in">
+      </form>
+
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+  <a class="form_link" href="#">Sign up</a>
+  <a class="form_link" href="#">Forgot your password?</a></div>
+</div>
 
 <%= render "devise/shared/links" %>
