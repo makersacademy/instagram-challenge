@@ -116,9 +116,6 @@ bundle exec rspec
 
 Step 3: Run the app locally
 ```
-bundle install
-bin/rails db:create
-bin/rails db:migrate
 rails s
 ```
 
