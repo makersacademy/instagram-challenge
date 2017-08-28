@@ -5,5 +5,5 @@ class UsersController < ApplicationController
     @posts = @user.posts.reverse
     render 'users/show'
   end
-  
+
 end

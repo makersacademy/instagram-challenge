@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.reverse
+    @like = Like.new
   end
 
   def new

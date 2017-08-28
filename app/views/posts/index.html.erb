@@ -23,6 +23,17 @@
         <p class="posts-index-post-timestamp">
           <%= post.created_at.localtime.strftime('%d-%b-%Y %I:%M:%S %p') %>
         </p>
+
+          <%= form_for(@like, url: post_likes_path(post)) do |form| %>
+        	  <%= form.hidden_field :post_id, :value => post.id %>
+            <%= form.hidden_field :user_id, :value => current_user.id %>
+        	  <%= form.submit "Like" %>
+        	<% end %><br>
+
+          <span class='posts-index-post-likes'>
+            <%= pluralize(Like.where(post_id: post.id).count, "like") %> |
+          </span>
+
       </li>
     <% end %>
 </ul>
