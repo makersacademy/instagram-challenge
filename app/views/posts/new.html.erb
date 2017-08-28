@@ -1,0 +1,20 @@
+
+<%= form_for [@user, @post] do |f| %>
+  <div class="field">
+    <%= form_tag({action: :upload}, multipart: true) do %>
+    <%= file_field_tag 'imagepath' %>
+  <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :caption %><br />
+    <%= f.text_field :caption %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Post" %>
+  </div>
+<% end %>
+
+t.text :imagepath
+t.string :caption

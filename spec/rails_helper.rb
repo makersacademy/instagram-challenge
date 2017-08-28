@@ -7,6 +7,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rails'
+require 'factory_girl_rails'
 require 'database_cleaner'
 require 'simplecov'
 require 'simplecov-console'
@@ -23,8 +24,8 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-    config.include FactoryGirl::Syntax::Methods
 
+  config.include FactoryGirl::Syntax::Methods
 
   config.use_transactional_fixtures = true
 
