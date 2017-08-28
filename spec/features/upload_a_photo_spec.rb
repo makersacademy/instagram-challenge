@@ -17,11 +17,12 @@ RSpec.feature "Photos" do
     expect(page).to have_content "You need to sign in or sign up before continuing"
   end
 
-  it "allows users to tag their photos" do
+  it "allows users to tag and add a filter to their photos" do
     visit "/photos/new"
     attach_file("Image", Rails.root + "spec/fixtures/chess.JPG")
     fill_in("Description", with: "Emily plays chess!")
     fill_in("photo_tags", with: "cats catsofynstagram")
+    choose("photo_filter_lomo")
     click_button("Upload")
     click_first_photo
     expect(page).to have_content("#cats #catsofynstagram")

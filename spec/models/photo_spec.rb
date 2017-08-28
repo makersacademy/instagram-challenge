@@ -26,4 +26,17 @@ describe Photo do
     photo.destroy
     expect(Comment.count).to eq 0
   end
+
+  describe "#return_filter" do
+    it "returns nil if the filter is none or nil" do
+      photo.save
+      expect(photo.return_filter).to be_nil
+    end
+
+    it "returns any other filters as a symbol" do
+      photo.filter = "lomo"
+      photo.save
+      expect(photo.return_filter).to eq :lomo
+    end
+  end
 end
