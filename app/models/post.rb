@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  belongs_to :user
   has_many :comments
   has_many :likes
   has_attached_file :image, styles: {

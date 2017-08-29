@@ -8,9 +8,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    # user = User.find(current_user.id)
-    # user.posts.create(post_params)
-    @post = Post.new(post_params)
+    user = User.find(current_user.id)
+    @post = user.posts.create(post_params)
 
     if @post.save
       redirect_to posts_url, notice: 'Image was successfully posted.'

@@ -4,7 +4,7 @@ RSpec.feature "Feed", type: :feature do
   scenario "Can submit posts and view them" do
     sign_up
     create_new_post
-    expect(page).to have_content("Hello, world!")
+    expect(page.find('.posts-index li:first-child')).to have_content("Hello, world")
   end
 end
 
