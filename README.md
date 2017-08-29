@@ -3,7 +3,8 @@
 <p align="center">
   <img src="./public/images/instagram.png"/>
 </p>
----
+
+
 
 ### About
 An Instagram clone where a user can post pictures which can be commented and liked by other users.
