@@ -1,24 +1,40 @@
-# README
+Instagram Challenge
+---
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project implements the following functionalities
+* An Instagram user can post a picture with a description
+* An Instagram user can comment on a picture
+* An Instagram user can like a picture
+* A post displays the following
+  * username of the user who made the post
+  * a picture
+  * time when the post was made as a function of 'time ago'
+  * number of times a post has been liked
+  * comments made on the post
+* A user can sign up with email, user name and password
+* A user can log in
+* A user can log out
+* Helpful notices and error messages
+* Possibly more user management features that came with devise but haven't been tested
 
-Things you may want to cover:
 
-* Ruby version
+Instructions
+---
 
-* System dependencies
+```
+$ git clone https://github.com/aballal/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle install
+$ brew install imagemagick
+$ rake db:setup
+$ bin/rails s
+$ open http://localhost:3000
+```
 
-* Configuration
+`$ rspec` for tests
 
-* Database creation
 
-* Database initialization
+Screenshots
+---
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Screenshot](app/assets/images/instagram-challenge.png)
