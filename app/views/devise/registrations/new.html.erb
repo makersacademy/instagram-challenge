@@ -1,0 +1,44 @@
+<div class="post_div">
+  <div class="h1_div">
+    <div class="h1">Sign up</div>
+  </div>
+
+  <div class="post_comments_div">
+    <div class="form_comments w-form">
+
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div>
+          <%= f.label :email, class: "w-form-label" %><br />
+          <%= f.email_field :email, autofocus: true, class: 'text_field w-input' %>
+        </div>
+
+        <div>
+          <%= f.label :username, class: "w-form-label" %><br />
+          <%= f.text_field :username, class: 'text_field w-input' %>
+        </div>
+
+        <div>
+          <%= f.label :password, class: "w-form-label" %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off", class: 'text_field w-input' %>
+        </div>
+
+        <div>
+          <%= f.label :password_confirmation, class: "w-form-label" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: 'text_field w-input'  %>
+        </div>
+
+        <div>
+          <%= f.submit "Sign up", class: 'button w-button' %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+  <%= render "devise/shared/links" %>
+</div>
