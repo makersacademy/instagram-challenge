@@ -6,11 +6,8 @@ class CommentsController < ApplicationController
     p comment_params
     @post = Post.find(params[:post_id])
     @comment = Comment.new(comment_params)
-    @comment.save
     @post.comments << @comment
-    @comment.save
     @post.save
-
     redirect_to root_path
   end
 
