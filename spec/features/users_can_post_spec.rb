@@ -3,10 +3,7 @@ require 'rails_helper'
 RSpec.feature "Feed", type: :feature do
   scenario "Can submit posts and view them" do
     sign_up
-    visit "/posts"
-    click_link "New post"
-    fill_in "Title", with: "Hello, world!"
-    click_button "Submit"
+    create_new_post
     expect(page).to have_content("Hello, world!")
   end
 end
@@ -26,5 +23,6 @@ def create_new_post(title: "Hello, world")
   visit "/posts"
   click_link "New post"
   fill_in "Title", with: title
+  page.attach_file('post_image', Rails.root + 'spec/fixtures/files/test.png')
   click_button "Submit"
 end

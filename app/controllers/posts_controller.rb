@@ -10,8 +10,13 @@ class PostsController < ApplicationController
   def create
     # user = User.find(current_user.id)
     # user.posts.create(post_params)
-    @post = Post.create(post_params)
-    redirect_to posts_url
+    @post = Post.new(post_params)
+
+    if @post.save
+      redirect_to posts_url, notice: 'Image was successfully posted.'
+    else
+      render action: 'new'
+    end
   end
 
   def show
@@ -26,6 +31,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title)
+    params.require(:post).permit(:image, :title)
   end
 end
