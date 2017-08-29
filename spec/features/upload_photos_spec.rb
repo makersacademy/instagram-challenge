@@ -1,4 +1,4 @@
-feature 'Photo' do
+RSpec.feature 'Photo', type: :feature  do
   it 'can create a photo' do
     visit 'photos/new'
     attach_file('photo_image', Rails.root + 'spec/files/test.png', visible: false)
