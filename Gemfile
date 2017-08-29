@@ -61,3 +61,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'devise'
 gem 'jquery-rails'
+gem 'websocket-rails'
