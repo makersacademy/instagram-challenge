@@ -1,0 +1,42 @@
+
+<div id="picture_<%= @picture.id %>">
+  <div class="image_feed">
+    <div class="pic_header">
+      <div class="profile_pic">
+        <%= link_to profile_path(@picture.user.user_name) do %>
+          <%= image_tag @picture.user.image.url(:thumb) %>
+        <% end %>
+      </div>
+      <div class="user_details">
+        <span id="picture_user_name"><%= @picture.user.user_name %><br></span>
+        <%= @picture.created_at.strftime("%d %b %Y %H:%M") %>
+    </div>
+    </div>
+
+    <div class="image">
+      <%= image_tag @picture.image.url  %>
+    </div>
+    <div>
+      <% if (current_user == @picture.user) %>
+        <%= link_to "Edit Post", edit_picture_url(@picture) %> |
+        <%= link_to "Delete Post", picture_path(@picture), method: :delete %>
+      <% end %>
+    </div>
+    <div class="caption">
+      <p><%= @picture.caption %></p>
+    </div>
+    <div id='picture_<%= @picture.id%>_comments', class="picture_comments">
+      <%= render @picture.comments %>
+    </div>
+
+    <% if current_user == nil %>
+      <p><%= link_to "Sign in to comment", new_user_session_url %></p>
+    <% else %>
+      <%= form_for [@picture, @picture.comments.new], remote: true do |f| %>
+        <%= f.text_field :comment_text, placeholder: 'Add a comment' %>
+        <%= f.submit 'Comment' %>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>

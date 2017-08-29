@@ -1,0 +1,27 @@
+<div class="profile">
+
+  <div class="user_profile">
+    <div class="profile_pic">
+      <%= image_tag @user.image.url(:profile) %>
+    </div>
+    <div class="user_details_profile">
+      <h1><%= @user.user_name %></h1>
+      <% if current_user == @user %>
+        <span><%= link_to "Edit Profile", edit_user_registration_path(@user)%></span>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="picture_row row">
+    <% @user.pictures.each do |picture| %>
+      <div class="picture_div panel panel-default col-md-4">
+        <div class="panel-body product_image">
+            <%= link_to picture_path(picture) do %>
+              <%= image_tag picture.image.url %>
+            <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
