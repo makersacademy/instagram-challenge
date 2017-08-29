@@ -54,7 +54,7 @@ end
 RSpec.feature "Edit", type: :feature do
   scenario "User can edit details about her/himself" do
     sign_up
-    click_link 'Edit registration'
+    click_link 'Edit Account |'
     fill_in 'user_username', with: 'Test'
     fill_in 'user_current_password', with: '456789'
     click_button 'Update'

@@ -1,18 +1,14 @@
-<ul class='posts-index'>
+<ul class='posts-index-posts'>
     <% @posts.each do |post| %>
-      <li>
-        <section>
-          <p>
-            <%= current_user.username %>
+      <li class='posts-index-post'>
+        <section class='posts-index-post-horizontal'>
+          <p class="posts-index-post-user-name">
+            <strong><%= current_user.username %></strong>
           </p>
         </section>
-        <p class='posts-body'>
-          <%= image_tag post.image.url(:square) %>
+        <p class='posts-index-post-message'>
+          <%= image_tag post.image.url(:square) %><br>
           <%= post.title %>
-        </p>
-
-        <p>
-          <%= post.created_at.localtime.strftime('%d-%b-%Y %I:%M:%S %p') %>
         </p>
         <p>
           <span class='posts-index-post-likes' id="like-<%= post.id %>">
@@ -20,6 +16,9 @@
           </span>
           <%= link_to 'Like', post_likes_path(post), remote: true, method: :post, class: "like-link", data: { id: post.id } %>
           <%= link_to 'Comment', post_path(post) %>
+        </p>
+        <p class="posts-index-post-timestamp">
+          <%= post.created_at.localtime.strftime('%d-%b-%Y %I:%M:%S %p') %>
         </p>
       </li>
     <% end %>
