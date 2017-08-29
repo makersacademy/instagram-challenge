@@ -1,40 +1,65 @@
-Instagram Challenge
-===================
+# Instagram Challenge
+---
+<p align="center">
+  <img src="./public/images/instagram.png"/>
+</p>
 
-## Instructions
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
-## Task
+### About
+An Instagram clone where a user can post pictures which can be commented and liked by other users.
 
-Build Instagram: Simple huh!
+---
+### Visit the site on Heroku
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters!
+### Or run locally
 
-## How to start
+Clone the repo. Then:
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+```
+$ bundle install
+$ bin/rails db:create
+$ bin/rails db:migrate
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+### To run the tests
+
+```
+bash bundle exec rspec
+```
+
+### To connect the photo hosting service on AWS S3
+* install imagemagick (for Mac run `brew install imagemagick` for Windows use the [binary release](http://www.imagemagick.org/script/binary-releases.php#windows)
+* create .env file in your project root
+* populate the following variables with your own S3 credentials:
+
+```
+BUCKET_NAME=<your_bucket_name>
+ACCESS_KEY_ID=<your_access_key_id>
+SECRET_ACCESS_KEY=<your_secret_access_key>
+AWS_REGION=<your_aws_region>
+```
+
+### To view in browser
+```
+$ bin/rails server
+```
+This will start the server at localhost:3000
+
+---
+### Technologies used
+* [Ruby](https://www.ruby-lang.org/en/) as the main back-end language
+* [Rails](http://rubyonrails.org/) for the framework
+* [Travis CI](https://travis-ci.org/)
+* [PostgreSQL](https://www.postgresql.org/) for handling databases
+* [GitHub](https://github.com/makersacademy/acebook-remote-july-2017) for storing our work
+* [AWS S3](https://aws.amazon.com/) for photo storage
+* [Heroku](https://acebook-remote-july.herokuapp.com/
+) for hosting the website
+* [RuboCop](https://github.com/bbatsov/rubocop) for linting
+* CSS to make it look pretty
+* Git for version managing
+
+### Author
+Costas Kiteou, _Makers Student_  - **Remote Cohort July 2017**
