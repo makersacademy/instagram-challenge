@@ -1,5 +1,9 @@
 # Instagram Challenge
 ---
+<p align="center">
+  <img src="./public/images/instagram.png"/>
+</p>
+---
 
 ### About
 An Instagram clone where a user can post pictures which can be commented and liked by other users.
@@ -53,7 +57,7 @@ This will start the server at localhost:3000
 * [Heroku](https://acebook-remote-july.herokuapp.com/
 ) for hosting the website
 * [RuboCop](https://github.com/bbatsov/rubocop) for linting
-* CSS and Bootstrap to make it look pretty
+* CSS to make it look pretty
 * Git for version managing
 
 ### Author
