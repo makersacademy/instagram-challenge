@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 def sign_up(username: 'Barney',
             email: 'barney@barney.com',
             password: '456789',

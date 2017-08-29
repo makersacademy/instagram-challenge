@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.feature "Comments", type: :feature do
   scenario "Can submit comments on a post" do
     sign_up

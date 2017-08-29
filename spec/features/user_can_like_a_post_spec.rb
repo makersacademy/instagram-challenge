@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.feature "Likes", type: :feature do
   scenario "Can like a post" do
     sign_up
