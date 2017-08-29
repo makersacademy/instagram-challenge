@@ -1,15 +1,7 @@
 Instagram Challenge
 ===================
 
-## Instructions
-
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-## Task
+## The Task
 
 Build Instagram: Simple huh!
 
@@ -17,24 +9,114 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
-## How to start
+## My Solution
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+I've taken a design-led approach to this project.
+* I started by creating user stories to understand which features needed be built
+* I then designed the database and the relationships within it (see diagram below).
+* Setting up the test suite was the next logical step, including the necessary gems for cleaning the database, creating factories and so on.
+* I started building features using feature specs, following the RED-GREEN-REFACTOR process to develop the models, controllers and views.
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
 
-## Code Quality
+### User Stories
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+**Epic | User Authentication**
+```
+As a prospective new user
+So that I can create an Octogram account
+I would like to be able to easily sign up
+```
+```
+As an existing user
+So that I can keep my details secure
+I would like to be able to log out
+```
+```
+As an existing user
+So that I can revisit the images I have posted
+I would like to be able to login
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+**Epic | Images**
+```
+As an existing user
+So that I can share my #yolo moments with the world
+I would like to post an image
+```
+```
+As an existing user
+So that I can bask in the glory of my photographic greatness
+I would like to view the images that I have posted
+```
+```
+As an existing user
+So that I can give my eyes a feast of visual delights
+I would like to view other people's images
+```
+
+**Epic | Posting Comments on Images**
+```
+As an existing user
+So that I can share my thoughts on an image
+I would like to post a comment on it
+```
+```
+As an existing user
+So that I can view what others think of my image
+I would like to view the comments left on it
+```
+
+
+**Epic | Liking Images**
+```
+As an existing user
+So that I can show my appreciation for the visual feast
+I want to like other people's images
+```
+```
+As an existing user
+So that I can see how popular my images are
+I would like to view each image's likes
+```
+
+### Database Design
+
+![Image](http://i.imgur.com/k17AeCi.png)
+
+### UI Design
+
+Text on how Octogram has been designed goes here
+
+### Technology
+
+* **Application:** Rails 5.1.3
+* **Testing:** Rspec, Capybara, Database Cleaner, SimpleCov, FactoryGirl, RuboCop
+* **Database:** Postgresql, ORM: ActiveRecord
+* **User Authentication:** Devise
+* **Front End:** ERB, Bootstrap 4, HTML, CSS, JavaScript, JQuery
+
+# How To Use
+
+The project is currently a work in progress, and will be finished at a later date.
+
+To view the current progress run the following in your terminal:
+
+Step 1: Clone this repo
+```
+git clone git@github.com:annalaise/instagram-challenge.git
+```
+
+Step 2: Run the tests
+```
+bundle install
+bin/rails db:create
+bin/rails db:migrate
+bundle exec rspec
+```
+
+Step 3: Run the app locally
+```
+rails s
+```
+
+**The app will be shipped to production (heroku) asap**

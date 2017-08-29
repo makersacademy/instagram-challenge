@@ -1,0 +1,61 @@
+<div class="container">
+  <div id='post-<%= @post.id %>' class="post card">
+    <div class="post_head card-header">
+      <span class="post_head_user">
+        <%= @post.user.username %>
+      </span>
+      <span class="post_head_date">
+        <%= @post.posted_at %>
+      </span>
+      <br>
+    </div>
+    <div class="post_img card-block">
+      <img class="img-fluid img-thumbnail" src="<%= @post.image(:medium) %>" alt="Card image cap">
+      <p class="card-text"><%= @post.caption %></p>
+    </div>
+
+    <div class="post__interactions card-block">
+      <hr>
+      <div class="like" id="likes">
+        <span class="badge badge-info"><%= @post.like_count %> <%= @post.like %></span>
+      </div>
+      <button type="button" class="comment-count btn btn-outline-info" data-toggle="collapse" data-target="#collapseComments<%= @post.id %>" aria-expanded="true" aria-controls="collapseComments<%= @post.id %>"><%= Comment.where(post_id: @post.id).count %> comments</button>
+    </div>
+
+    <div class="collapse show" id="collapseComments<%= @post.id %>">
+      <% @post.comments.each do |comment| %>
+        <div class="comment__body card">
+          <div class="comment__text card-block">
+            <p class="comment_user"><%= comment.user.username %>:<span class="comment__body"><%= comment.comment_text %></span></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="post__footer card-footer">
+      <div class="like">
+      <%= form_for(@like, url: post_likes_path(@post)) do |form| %>
+      <%= form.hidden_field :post_id, :value => @post.id %>
+      <%= form.hidden_field :user_id, :value => current_user.id %>
+      <%= form.submit "Like", class: "btn btn-secondary" %>
+      <% end %>
+      </div>
+      <button type="button" class="comment-count btn btn-info" data-toggle="collapse" data-target="#collapseAddComment<%= @post.id %>" aria-expanded="false" aria-controls="collapseAddComment<%= @post.id %>">Comment</button>
+    </div>
+
+    <div class="collapse show" id="collapseAddComment<%= @post.id %>">
+      <div class="comment__entry card-block">
+        <div class="comment__form">
+          <%= form_for [@post, @comment] do |form| %>
+            <div class="form-group">
+              <%= form.text_area :comment_text, class: "form-control"%>
+              <%= form.hidden_field :post_id, value: @post.id %>
+              <%= form.hidden_field :user_id, value: current_user.id %>
+              <%= form.submit "Post", class: "commentbutton btn btn-info" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
