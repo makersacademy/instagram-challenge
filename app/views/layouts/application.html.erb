@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>f-stop</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+        <div id="nav-container" class="container"
+
+          <nav class="d-flex justify-content-between align-items-center">
+
+              <div id="nav-alerts" class="">
+                <p class="notice"><%= notice %></p>
+                <p class="alert"><%= alert %></p>
+              </div>
+
+              <div class="d-flex justify-content-around">
+                <% if user_signed_in? %>
+                    <div class="">
+                      <%= link_to('','/', class:'glyphicon glyphicon-user white', title: 'add a picture') %>
+                    </div>
+                    <div class="">
+                      <%= link_to('', new_picture_path, class:'glyphicon glyphicon-plus white', title: 'add a picture') %>
+                    </div>
+                    <div class="">
+                      <%= button_to('Logout', destroy_user_session_path, method: :delete, class:'btn btn-primary btn-xs') %>
+                    </div>
+                <% else %>
+                    <% unless controller_name == "sessions" || controller_name == "registrations" %>
+                      <%= button_to('Login', new_user_session_path, method: :get, class:'btn btn-primary btn-xs')  %>
+                    <% end %>
+                <% end %>
+              </div>
+
+          </nav>
+        </div>
+      </div>
+
+    <div class='container'>
+      <main class="container col-xs-10 col-xs-offset-1">
+        <%= yield %>
+      </main>
+    </div>
+  </body>
+</html>
