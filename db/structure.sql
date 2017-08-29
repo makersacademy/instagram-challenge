@@ -18,7 +18,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
 
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+--  COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
 SET search_path = public, pg_catalog;
@@ -48,7 +48,7 @@ CREATE TABLE photos (
     name character varying,
     description text,
     picture character varying,
-    users_id bigint,
+    user_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -172,7 +172,7 @@ ALTER TABLE ONLY users
 -- Name: index_photos_on_users_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_photos_on_users_id ON photos USING btree (users_id);
+CREATE INDEX index_photos_on_user_id ON photos USING btree (user_id);
 
 
 --
@@ -194,7 +194,7 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (re
 --
 
 ALTER TABLE ONLY photos
-    ADD CONSTRAINT fk_rails_50e0bf1170 FOREIGN KEY (users_id) REFERENCES users(id);
+    ADD CONSTRAINT fk_rails_50e0bf1170 FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --
@@ -206,5 +206,3 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20170828203408'),
 ('20170829002254');
-
-
