@@ -1,6 +1,5 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.paperclip_defaults = {
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -97,7 +96,7 @@ Rails.application.configure do
       secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
       s3_region: ENV.fetch('AWS_REGION'),
       :s3_host_name => "s3-eu-west-2.amazonaws.com",
-      :url => ":s3_host_name",               
+      :url => ":s3_host_name",
     }
   }
 end
