@@ -1,40 +1,40 @@
 Instagram Challenge
-===================
+---
 
-## Instructions
+This project implements the following functionalities
+* An Instagram user can post a picture with a description
+* An Instagram user can comment on a picture
+* An Instagram user can like a picture
+* A post displays the following
+  * username of the user who made the post
+  * a picture
+  * time when the post was made as a function of 'time ago'
+  * number of times a post has been liked
+  * comments made on the post
+* A user can sign up with email, user name and password
+* A user can log in
+* A user can log out
+* Helpful notices and error messages
+* Possibly more user management features that came with devise but haven't been tested
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
-## Task
+Instructions
+---
 
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+```
+$ git clone https://github.com/aballal/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle install
+$ brew install imagemagick
+$ rake db:setup
+$ bin/rails s
+$ open http://localhost:3000
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+`$ rspec` for tests
+
+
+Screenshots
+---
+
+![Screenshot](app/assets/images/instagram-challenge.png)
