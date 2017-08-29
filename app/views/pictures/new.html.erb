@@ -1,0 +1,41 @@
+
+<div class="row">
+
+<div class="col-md-12 text-center">
+   <h1 id="pic-head"> Post a pic </h1>
+</div>
+
+<div class="row">
+   <div class="col-md-3"></div>
+   <div class="col-md-6">
+
+      <div class='form-wrapper text-center'>
+         <%= form_for @picture, html: { class: 'form-horizontal', multipart: true } do |form| %>
+
+         <div id="pick-pic" class='form-group text-center'>
+            <%= form.file_field :image %>
+         </div>
+
+         <div class='form-group text-center '>
+            <%= form.text_field :caption, placeholder: "         Insert wit here", class: 'textbox text-align' %>
+         </div>
+
+         <!-- <div class='form-group text-center'>
+        <%= form.text_field :tags, placeholder: 'seperated tags with commas please', class: 'textbox' %>
+        </div> -->
+        <div class='form-group text-center'>
+
+         <div class='form-group text-center '>
+           <span id="leave">  <%= form.submit "Post", class: 'btn btn-link', id: "leave" %> </span>
+            <% end %>
+         </div>
+
+      </div>
+      <% if flash[:alert] %>
+        <% @picture.errors.full_messages.each do |msg| %>
+          <p> <%= msg %> </p>
+        <% end %>
+      <% end %>
+      <div class="col-md-3"></div>
+   </div>
+</div>

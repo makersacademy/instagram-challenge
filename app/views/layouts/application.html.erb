@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Instagram</title>
+      <style>
+        #right {
+          margin-top: 15px;
+        }
+        #right-two {
+          margin-top: 0px;
+        }
+
+      </style>
+      <%= csrf_meta_tags %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'true' %>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   </head>
+   <body>
+      <nav class="navbar navbar-default">
+         <div class="container-fluid">
+            <div class="navbar-header">
+               <%= link_to 'Instagram', root_path, class: 'navbar-brand' %>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+               <ul class="nav navbar-nav">
+                  <li class="active"><%= link_to 'Home', root_path %></li>
+                  <li class="dropdown">
+                  </li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                  <% if !user_signed_in? %>
+                    <li> <%= link_to "Sign Up", new_user_registration_url %> </li>
+                    <li> <%= link_to "Sign In", user_session_url %> </li>
+                  <% else %>
+                    <li><%= link_to 'Your page', current_user %></li>
+                    <li id="right" class='text-center'> Current user: <%= current_user.email %> </li>
+                    <li id="right-two"> <%= link_to "Sign Out", destroy_user_session_url, :method => :delete %> </li>
+                  </li>
+                  <% end %>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <p class="notice text-center"><%= notice %></p>
+      <p class="alert text-center"> <%= alert %></p>
+      <div class="container">
+         <%= yield %>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,36 @@
+
+<div class='form-wrapper'>
+
+  <div class="text-center">
+    <h2>Log in form</h2>
+   </div>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<div class='form-group text-center'>
+    <%= f.email_field :email, placeholder: 'Email', autofocus: true, class: 'textbox' %>
+  </div>
+
+  <div class='form-group text-center'>
+    <%= f.password_field :password_confirmation,  placeholder: 'Password', autocomplete: "off", class: 'textbox'  %>
+  </div>
+
+<div class='form-group text-center'>
+  <% if devise_mapping.rememberable? -%>
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+  <% end %>
+  </div>
+
+<div class='form-group text-center'>
+  <div class="actions">
+    <%= f.submit "Log in", class: 'btn btn-link' %>
+  </div>
+</div>
+<% end %>
+
+<div class='form-group text-center'>
+<%= render "users/shared/links" %>
+  </div>
+
+</div>

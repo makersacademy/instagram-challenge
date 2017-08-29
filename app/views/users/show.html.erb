@@ -1,0 +1,56 @@
+
+<% if !flash[:success].nil? %>
+  <%= flash[:success] %>
+<% end %>
+<div class="row">
+
+  <div class="col-md-12 text-center">
+     <% if @user.id == current_user.id %>
+         <h1 id="pic-head"> Your Pictures </h1>
+     <% else %>
+         <h1> <%= @user.username %>'s Pictures </h1>
+     <% end %>
+  </div>
+
+<div class="col-md-2"></div>
+  <div class="col-md-8 text-center">
+
+     </article>
+     <% if !@user.pictures.empty? %>
+
+      <% @user.pictures.reverse.each do |picture| %>
+        <div class="panel-default">
+        <div> <%= link_to picture_path(picture) do %>
+           <%= image_tag picture.image.url(:thumb), class: "image" %>
+        <% end %>
+        </div>
+
+        <div class="panel-body">
+
+           <p id="pic-normal"> Caption: <%= picture.caption %> </p>
+           <p id="pic-normal"> Created at: <%= picture.created_at %> </p>
+
+           <% if @user.id == current_user.id %>
+           <p id="edit-pic"> <%= link_to "Delete Picture", picture_url(picture), method: :delete %> </p>
+           <p id="edit-pic"> <%= link_to "Edit Picture", edit_picture_url(picture) %> </p>
+           <% end %>
+
+           <% if !picture.comments.empty? %>
+           <% picture.comments.reverse.each do |comment| %>
+               <p id="pic-details"> Comment: <%= comment.content %>.   Left by: <%= comment.picture.user.username %> </p>
+           <% end %>
+          <% end %>
+
+        <% end %>
+      <% end %>
+
+        </div>
+     </div>
+
+     </article>
+
+     <% if @user.id == current_user.id %>
+    <p  id="edit-pic">   <%= link_to "Post Picture", new_picture_url %> </p>
+     <% end %>
+
+  </div>
