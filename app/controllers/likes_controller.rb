@@ -2,21 +2,16 @@ class LikesController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
 
-  def new
+  def create
     @photograph = Photograph.find(params[:photograph_id])
     @like = current_user.likes.new
     @photograph.likes << @like
     @like.save
+  end
 
-    if @like.save
-      redirect_to photographs_path
-    else
-      if @like.errors[:user]
-        redirect_to photographs_path, alert: 'You have already liked this post'
-      else
-        render :new
-      end
-    end
+  def destroy
+    @photograph = Photograph.find(params[:photograph_id])
+    redirect_to '/'
   end
 
 end

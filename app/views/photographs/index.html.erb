@@ -15,7 +15,7 @@
                             <div class="description"><strong><%=photograph.user.name%></strong> </div>
                             <div class="image-wrap">
                                 <img src="<%= photograph.image.url(:thumb)%>">
-                                <div class="likes"><%=photograph.likes.count%> Likes</div>
+                                <div class="likes" id="likes-<%= photograph.id %>"><%=photograph.likes.count%> Likes</div>
                                 <div class="comments"><%=photograph.comments.count%> Comments </div>
                             </div>
                             <div class="description">
@@ -23,7 +23,9 @@
                                 <div class="date">September 16, 2014</div>
                                 <%if user_signed_in? %>
                                   <%= link_to "Leave Comment", new_photograph_comment_path(photograph)%><br>
-                                  <%= link_to "Like post", new_photograph_like_path(photograph)%>
+                                  <div id="like-<%= photograph.id %>">
+                                    <%= link_to "Like post", photograph_likes_path(photograph), remote:true, method: :post %>
+                                  </div>
                                 <% end %>
                             </div>
                         </div>
