@@ -31,8 +31,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem "rubocop", "0.48.1"
 gem "rubocop-rails"
-gem 'simplecov', :require => false, :group => :test
-gem 'simplecov-console'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -44,6 +42,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.6'
+  gem 'simplecov', :require => false
+  gem 'simplecov-console', require: false
 end
 
 group :development do
