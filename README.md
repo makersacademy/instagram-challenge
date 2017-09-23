@@ -1,29 +1,43 @@
-Instagram Challenge
+InstaPanda
 ===================
 
-## Instructions
+## About
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This web app takes inspiration from Instagram, so it allows a user to sign up, sign in and share pictures.
+You can find the website here: [InstaPanda](http://instapanda.herokuapp.com)
 
-## Task
+## User Stories
 
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+```
+As a User
+So I can be part of the community
+I want to be able to sign up to InstaPanda
+```
+```
+As a User
+So I can start to post on InstaPanda
+I ant to be able to sign in
+```
+```
+As a User
+So I can close my user session on InstaPanda
+I want to be able to sign out
+```
+```
+As a User
+so I can share my photos
+I want to be able to post pictures
+```
+```
+As a User
+So I can express myself
+I want to be able to write comments
+```
+```
+As a User
+So I can express my opinion on a photo
+I want to be able to like a picture
+```
 
 ## Code Quality
 
