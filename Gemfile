@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem "rubocop", "0.48.1"
 gem "rubocop-rails"
+gem "paperclip", "~> 5.0.0"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -47,6 +48,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'simplecov', :require => false
   gem 'simplecov-console', require: false
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do
