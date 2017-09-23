@@ -19,6 +19,16 @@ Rails.application.configure do
   # `config/secrets.yml.key`.
   config.read_encrypted_secrets = true
 
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV.fetch('instapanda'),
+      access_key_id: ENV.fetch('AKIAI2WVFZDMEIZM7RLQ'),
+      secret_access_key: ENV.fetch('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'),
+      s3_region: ENV.fetch('EU'),
+    }
+  }
+
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?

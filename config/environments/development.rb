@@ -14,6 +14,16 @@ Rails.application.configure do
 
   Paperclip.options[:command_path] = "/usr/local/bin/"
 
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV.fetch('instapanda'),
+      access_key_id: ENV.fetch('AKIAI2WVFZDMEIZM7RLQ'),
+      secret_access_key: ENV.fetch('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'),
+      s3_region: ENV.fetch('EU'),
+    }
+  }
+
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
