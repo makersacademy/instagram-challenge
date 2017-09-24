@@ -17,10 +17,10 @@ Rails.application.configure do
   config.paperclip_defaults = {
     storage: :s3,
     s3_credentials: {
-      bucket: ENV.fetch('instapanda'),
-      access_key_id: ENV.fetch('AKIAI2WVFZDMEIZM7RLQ'),
-      secret_access_key: ENV.fetch('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'),
-      s3_region: ENV.fetch('EU'),
+      bucket: ENV.fetch('S3_BUCKET_NAME'),
+      access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+      secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
+      s3_region: ENV.fetch('AWS_REGION'),
     }
   }
 
