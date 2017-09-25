@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'pictures' do
   context 'no pictures have been added' do
     scenario 'should display a prompt to add a picture' do
-      visit '/pictures'
+      sign_up
       expect(page).to have_content 'No pictures yet'
       expect(page).to have_link 'Add a picture'
     end
@@ -27,7 +27,7 @@ feature 'pictures' do
     end
 
     it 'asks user to add a caption to their picture' do
-      visit '/pictures'
+      sign_up
       click_link 'Add a picture'
       fill_in 'Caption', with: 'Another selfie!'
       click_button 'Create Picture'
@@ -52,7 +52,7 @@ feature 'pictures' do
     end
 
     it 'allows user to edit a picture' do
-      visit '/pictures'
+      sign_up
       click_link 'Edit Picture'
       fill_in 'Caption', with: 'Still a selfie'
       click_button 'Update Picture'
@@ -67,7 +67,7 @@ feature 'pictures' do
     end
 
     it 'allows user to delete a picture' do
-      visit '/pictures'
+      sign_up
       click_link 'Delete Picture'
       expect(page).not_to have_content 'Another selfie!'
       expect(page).to have_content 'Picture deleted successfully'
