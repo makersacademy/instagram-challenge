@@ -1,0 +1,27 @@
+<%= form_with(model: snap, local: true, html: { multipart: true }) do |form| %>
+  <% if snap.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(snap.errors.count, "error") %> prohibited this snap from being saved:</h2>
+
+      <ul>
+      <% snap.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image, id: :snap_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :caption %>
+    <%= form.text_field :caption, id: :snap_caption %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

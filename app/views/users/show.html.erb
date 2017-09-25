@@ -1,0 +1,49 @@
+<h1><%= @user.email %> </h1>
+<p>Find me in app/views/users/show.html.erb</p>
+
+<div class="container">
+  <h1 class="h1 container">Snaps</h1>
+
+  <ul class="container">
+      <lh colspan="3"></lh>
+
+    <% @snaps.each do |snap| %>
+      <li>
+        <p><td><%= image_tag snap.image.url(:medium) %><td></p>
+        <p class="caption h5"><td><%= snap.caption %></td></p>
+        <span><%= snap.get_upvotes.size %> like this</span>
+        <p/>
+        <% unless (current_user.nil?) %>
+          <%= link_to like_snap_path(snap), method: :put do %>
+            <button class="btn-success small" name="likeSnap<%=snap.id %>">Like</button>
+          <% end %>
+          <%= link_to unlike_snap_path(snap), method: :put do %>
+            <button class="btn-danger small" name="unlikeSnap<%=snap.id %>">Unlike</button>
+          <% end %>
+        <% end %>
+
+        <p><td>Posted by: <%= snap.snap_user %></td> at
+        <%= "#{snap.created_at.strftime("%H:%M, %d %b %Y")}"%></p>
+        <td><%= link_to 'Show more', snap %></td><br><br>
+
+        <p><strong>Comments:</strong></p>
+          <p><% snap.comments.each do |comment| %>
+            <p><%= comment.user.email %>:
+            <%= comment.content %>
+            <% if !(current_user.nil?) && (current_user.email == snap.snap_user) %>
+              <%= link_to 'Delete comment',[comment.snap, comment], method: :delete %>
+            <% end %></p>
+          <% end %>
+        </p>
+
+        <% if !(current_user.nil?) && (current_user.email == snap.snap_user) %>
+          <td><%= link_to 'Delete Snap', snap, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </li>
+      <br>
+    <% end %>
+
+  </ul>
+</div>
+
+<br>
