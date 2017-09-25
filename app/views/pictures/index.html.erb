@@ -3,8 +3,10 @@
 <% @pictures.all.each do |picture| %>
 <br><%= image_tag picture.image.url(:thumb) %>
 <h3><%= link_to picture.caption, picture_path(picture) %></h3>
-<%= link_to "Edit Picture", edit_picture_path(picture) %>
-<%= link_to "Delete Picture", picture_path(picture), method: :delete %>
+<% if current_user %>
+  <%= link_to "Edit Picture", edit_picture_path(picture) %>
+  <%= link_to "Delete Picture", picture_path(picture), method: :delete %>
+  <% end %>
 <% end %>
 
 <% else %>

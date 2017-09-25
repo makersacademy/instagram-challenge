@@ -51,6 +51,11 @@ feature 'pictures' do
       Picture.create(caption: 'Another selfie!', image: 'https://static.pexels.com/photos/126407/pexels-photo-126407.jpeg')
     end
 
+    it 'can only be edited by a logged in user' do
+      visit '/pictures'
+      expect(page).not_to(have_link('Edit picture'))
+    end
+
     it 'allows user to edit a picture' do
       sign_up
       click_link 'Edit Picture'
@@ -64,6 +69,11 @@ feature 'pictures' do
   context 'deleting pictures' do
     before do
       Picture.create(caption: 'Another selfie!', image: 'https://static.pexels.com/photos/126407/pexels-photo-126407.jpeg')
+    end
+
+    it 'can only be deleted by a logged in user' do
+      visit '/pictures'
+      expect(page).not_to(have_link('Edit picture'))
     end
 
     it 'allows user to delete a picture' do
