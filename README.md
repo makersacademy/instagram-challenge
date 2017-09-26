@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
 
+Makers Academy weekend challenge to build a light-weight clone of Instagram in Ruby, using the Rails framework.
+
 ## User stories
 
 ```
@@ -24,6 +26,12 @@ I want to be able to sign up for an account
 So that my photos are secure
 I want to be able to sign in and out
 
-So that I can share my thoughts
-I want to be able to post comments on pictures
 ```
+
+## How to use ## 
+
+1. Fork & clone this repo
+2. Run bundle
+3. Run rackup -p 9292
+4. Using a browser navigate to: localhost:9292
+5. Create a new account and start sharing your pictures. 
