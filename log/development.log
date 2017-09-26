@@ -6529,3 +6529,154 @@ Processing by PicturesController#index as HTML
 Completed 200 OK in 36ms (Views: 32.2ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/users/sign_in" for ::1 at 2017-09-26 15:20:37 +0100
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (38.5ms)
+Completed 200 OK in 378ms (Views: 328.8ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/pictures" for ::1 at 2017-09-26 15:20:40 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (23.5ms)
+Completed 200 OK in 58ms (Views: 48.8ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-09-26 15:20:43 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 63ms (Views: 60.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2017-09-26 15:20:45 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lYJ1J9GNRa5ZfQR9ENG8Bcwe4M4dp+sJqPk9hoizUERNxVR0+yTUpynmLuEK5E52N/nc4iQv/bBGxNxwnZCGdw==", "user"=>{"email"=>"simon@simon.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "simon@simon.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-09-26 14:20:45.503338"], ["last_sign_in_at", "2017-09-26 14:09:40.998020"], ["sign_in_count", 21], ["updated_at", "2017-09-26 14:20:45.504639"], ["id", 1]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:9292/
+Completed 302 Found in 181ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/" for ::1 at 2017-09-26 15:20:45 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered pictures/index.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 35ms (Views: 31.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/pictures/8/edit" for ::1 at 2017-09-26 15:20:48 +0100
+Processing by PicturesController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering pictures/edit.html.erb within layouts/application
+  Rendered pictures/edit.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 56ms (Views: 48.4ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/pictures/8" for ::1 at 2017-09-26 15:21:04 +0100
+Processing by PicturesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"w8GTn/U8Z2fpEqOBh6WS6ZAk08G/3R+O1sNIqRWzDeZ7nXdlGLMEq+PqcIVQHi1+VShVTxY9dDh8eJGRW4Rgpg==", "id"=>"8"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "pictures" WHERE "pictures"."id" = $1[0m  [["id", 8]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /Users/Simon/Projects/weekend_challenges/instagram-challenge/public/system/pictures/images/000/000/008/original/EP_cover_with_logo.jpg
+[paperclip] deleting /Users/Simon/Projects/weekend_challenges/instagram-challenge/public/system/pictures/images/000/000/008/medium/EP_cover_with_logo.jpg
+[paperclip] deleting /Users/Simon/Projects/weekend_challenges/instagram-challenge/public/system/pictures/images/000/000/008/thumb/EP_cover_with_logo.jpg
+Redirected to http://localhost:9292/pictures
+Completed 302 Found in 9ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/pictures" for ::1 at 2017-09-26 15:21:04 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered pictures/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 32ms (Views: 29.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/pictures" for ::1 at 2017-09-26 15:21:07 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered pictures/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 41ms (Views: 38.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/pictures/9/edit" for ::1 at 2017-09-26 15:21:20 +0100
+Processing by PicturesController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pictures/edit.html.erb within layouts/application
+  Rendered pictures/edit.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 32ms (Views: 27.5ms | ActiveRecord: 0.6ms)
+
+
+Started PATCH "/pictures/9" for ::1 at 2017-09-26 15:21:25 +0100
+Processing by PicturesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tLItFVjlohP3SHCpjLQp6wPuDNIsIcGr+On0nMXuy2O6KFg9y2K1TrnA90kl4B6OXqIHe0QBSHUu0QZMK/sIkQ==", "picture"=>{"caption"=>"safgasg"}, "commit"=>"Update Picture", "id"=>"9"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:9292/pictures
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/pictures" for ::1 at 2017-09-26 15:21:25 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered pictures/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 44ms (Views: 40.2ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2017-09-26 15:21:32 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"R4ubu9j1xd50aOIH15/oFmEjNKq93Y1Qt8HPTHOVMpj/139BNXqmEn6QMQMAJFeBpC+yJBQ95uYdehZ0PaJf2A=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:9292/
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2017-09-26 15:21:32 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 42ms (Views: 39.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2017-09-26 15:21:35 +0100
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "pictures" LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 44ms (Views: 41.2ms | ActiveRecord: 0.5ms)
+
+
