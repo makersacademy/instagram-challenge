@@ -4,8 +4,12 @@
 <br><%= image_tag picture.image.url(:thumb) %>
 <h3><%= link_to picture.caption, picture_path(picture) %></h3>
 <% if current_user %>
-  <%= link_to "Edit Picture", edit_picture_path(picture) %>
-  <%= link_to "Delete Picture", picture_path(picture), method: :delete %>
+<!-- <form action="edit.html.erb" method="post"> -->
+<button type="submit" class="btn btn-info"><%= link_to "Edit Picture", edit_picture_path(picture) %></button>
+<!-- </form><br> -->
+<!-- <form action="pictures/index.html.erb" method="post"> -->
+  <button type="submit" class="btn btn-info"><%= link_to "Delete Picture", picture_path(picture), method: :delete %></button>
+<!-- </form> -->
   <% end %>
 <% end %>
 
@@ -16,5 +20,7 @@
 <% end %>
 <br></br>
 <% if current_user %>
-  <%= link_to "Add a picture", new_picture_path %>
+  <form action="/pictures/new" method="get">
+  <button type="submit" class="btn btn-primary"><%= link_to "Add a picture",new_picture_path %></button>
+</form>
 <% end %>
