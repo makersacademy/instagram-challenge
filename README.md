@@ -1,40 +1,37 @@
 Instagram Challenge
 ===================
 
-## Instructions
+Makers Academy weekend challenge to build a light-weight clone of Instagram in Ruby, using the Rails framework.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## User stories
 
-## Task
+```
+As a user:
 
-Build Instagram: Simple huh!
+So that I can share photos
+I want to be able to upload pictures
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+So that I can include text with my photos
+I want to be able to add captions to pictures
 
-Bonus if you can add filters!
+So that I can make changes to my shared photos
+I want to be able to update picture captions
 
-## How to start
+So that I can remove photos I no longer want to share
+I want to be able to delete pictures and their captions 
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+So that my photos are all in one place
+I want to be able to sign up for an account
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+So that my photos are secure
+I want to be able to sign in and out
 
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## How to use ## 
+
+1. Fork & clone this repo
+2. Run bundle
+3. Run rackup -p 9292
+4. Using a browser navigate to: localhost:9292
+5. Create a new account and start sharing your pictures. 

@@ -1,0 +1,20 @@
+<% if @pictures.any? %>
+
+<% @pictures.all.each do |picture| %>
+  <br><%= image_tag picture.image.url(:thumb) %>
+  <h3><%= link_to picture.caption, picture_path(picture) %></h3>
+<% if current_user %>
+    <button type="submit" class="btn btn-info"><%= link_to "Edit Picture", edit_picture_path(picture) %></button>
+    <button type="submit" class="btn btn-info"><%= link_to "Delete Picture", picture_path(picture), method: :delete %></button>
+  <% end %>
+<% end %>
+<% else %>
+<h3>No pictures yet</h3>
+<% end %>
+<br></br>
+
+<% if current_user %>
+  <form action="/pictures/new" method="get">
+  <button type="submit" class="btn btn-primary"><%= link_to "Add a picture",new_picture_path %></button>
+</form>
+<% end %>
