@@ -27,6 +27,15 @@ bin/rails server
 ```
 bundle exec rspec
 ```
+
+##### Tech Stack
+* Ruby on Rails
+* Devise
+* Factory Girl
+* Carrierwave
+* PostgreSQL
+* Rspec
+
 ### User Stories
 
 ```
@@ -60,11 +69,3 @@ As a user
 So that I can make my kitties look their best
 I want to be able to apply a filter to my pictures
 ```
-
-##### Tech Stack
-* Ruby on Rails
-* Devise
-* Factory Girl
-* Carrierwave
-* PostgreSQL
-* Rspec 
