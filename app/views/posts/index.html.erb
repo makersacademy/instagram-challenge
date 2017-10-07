@@ -1,0 +1,35 @@
+
+<div class="container"
+<% @posts.each do |post| %>
+<div class='align-left'>
+<%= link_to post.user.username, user_path(post.user_id) %></br>
+</div>
+<div class="align-right">
+          posted at: <%= post.posted_at %>
+</div>
+<%= image_tag post.picture_url, :width => 700 if post.picture.present? %>
+</br>
+<%= post.caption %>
+</br>
+</br>
+<p class='comment-title'>Comments</p>
+<div class="comments" id="comments<%= post.id %>">
+  <% post.comments.each do |comment| %>
+    <p class="comment_user"> <%= link_to comment.user.username, comment.user %>:<span class="comment__body"> <%= comment.content %></span></p>
+  <% end %>
+</div>
+
+<div class="comment__entry card-block">
+  <div class="comment__form">
+    <%= form_for [post, @comment] do |form| %>
+      <div class="form-group">
+        <%= form.label :comment, "New comment" %>
+        <%= form.text_area :content %>
+        <%= form.hidden_field :post_id, value: post.id %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+        <%= form.submit "Submit" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% end %>

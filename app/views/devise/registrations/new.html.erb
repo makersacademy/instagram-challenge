@@ -1,0 +1,47 @@
+<h2>Create your Kittygram Account</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+          <%= f.label :username %><br />
+          <%= f.text_field :username, autofocus: true, class: "form-control" %>
+        </div>
+
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :bio %> <em><%= '(200 characters maximum)'%></em><br />
+    <%= f.text_field :bio, maxlength: 200, class: "form-control" %>
+  </div>
+</br>
+<h5>Add a profile picture:</h5>
+  <div class="field">
+   <%= f.label :avatar do %>
+     <%= f.file_field :avatar %>
+     <%= f.hidden_field :avatar_cache %>
+   <% end %>
+ </div>
+ </br>
+  <div class="form-group">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
