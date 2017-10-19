@@ -1,0 +1,97 @@
+<section class="hero is-primary">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h2 class="subtitle">
+        welcome to
+      </h2>
+      <h1 class="title">
+        Imāgo
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+<div class="column is-half is-offset-3">
+<p class="field">
+  <a class="button is-primary" href="<%= new_post_path %>">
+    <span class="icon">
+      <i class="fa fa-camera-retro"></i>
+    </span>
+    <span>Add new</span>
+  </a>
+</p>
+
+<% @posts.each do |post| %>
+<div class="card">
+  <div class="card-image">
+    <figure class="image">
+    <% if post.photo? %>
+      <%= image_tag post.photo, alt: "Image" %>
+    <% else %>
+      <%= image_tag 'Trollface.png' %>
+    <% end %>
+    </figure>
+  </div>
+
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-48x48">
+          <% if post.user.profile_picture? %>
+            <%= image_tag post.user.profile_picture, class: "profile-picture" %>
+          <% else %>
+            <%= image_tag 'Trollface.png' %>
+          <% end %>
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4"><strong><%= post.author_username %></strong></p>
+      </div>
+    </div>
+
+    <div class="content">
+      <%= post.title %>
+      <br>
+    </div>
+
+    <div class="content comments">
+      <% post.comments.each do |comment| %>
+        <strong><%= comment.author_username %></strong>
+        <%= comment.message %>
+        </br>
+      <% end %>
+    </div>
+
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <a class="level-item">
+          <span class="icon"><i class="fa fa-heart"></i></span>
+        </a>
+      </div>
+      <div class="level-right">
+        <small><%= time_ago_in_words(post.created_at) %> ago</small>
+      </div>
+    </nav>
+  </div>
+
+  <div class="card-content">
+    <%= form_for [post, Comment.new] do |form| %>
+      <div class="field has-addons">
+        <p class="control is-expanded">
+          <%= form.text_field :message, class: "input", required: "true", placeholder: "Add a comment" %>
+          <%= form.hidden_field :user_id, value: current_user.id %>
+        </p>
+
+        <p class="control">
+          <%= form.submit :comment, class: "button is-info submit-comment" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>
+</br>
+</br>
+<% end %>
+</div>
+</section>
