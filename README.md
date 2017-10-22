@@ -1,3 +1,27 @@
+##User stories
+
+* As a user, so that I can post my selfies, I need a page where I can post pictures to
+
+* As a user, so that I can be harassed online by strangers, I need a space underneath my photo where comments about me and my life choices can be written
+
+* As a user, so that I can gratify my ego, I need a button associated with each picture that counts how many times people pressed that button while thinking of me
+
+
+##Project Breakdown
+
+* Initiate all the necessary thingamibobs needed for rails (20 mins) - DONE
+* Figure out how rails recalls images from a folder (20 mins) [test by printing them to a page] - DONE
+* Store image addresses in a database and recall addresses from command line (20 mins) - DONE
+* Recall a single image from the database on a View page (30 mins) [test by printing to index] - DONE
+* Format page so that all images are recalled in vertically  scrollable way with placeholders for further functions below (20 mins) [test by printing to index]
+* Research how ruby on rails can store images to a folder and its location to database (30 mins) - DONE
+* Add button to store image to folder and location to database (30 mins) - DONE
+* Add an integer field to database that can be changed by submitting a form that updates it with whatever is entered (20 mins) - DONE
+* Refactor that to a single button which +1 to that integer, and that integer is zero by default (30 mins) - DONE
+* Create Users (60 mins)
+
+
+
 Instagram Challenge
 ===================
 
