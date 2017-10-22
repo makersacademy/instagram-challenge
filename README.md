@@ -18,7 +18,7 @@
 * Add button to store image to folder and location to database (30 mins) - DONE
 * Add an integer field to database that can be changed by submitting a form that updates it with whatever is entered (20 mins) - DONE
 * Refactor that to a single button which +1 to that integer, and that integer is zero by default (30 mins) - DONE
-* Create Users (60 mins)
+* Create Users (60 mins) - DONE
 
 
 
