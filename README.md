@@ -1,3 +1,18 @@
+##How to Use
+
+- Navigate to instagrandma-challenge in command line
+- Run bundle (or 'rundle' as the kids call it - you might want to alias that)
+- run $bin/rails server
+- Open localhost:3000
+- Navigate to /feed
+- Submit a photo in the form at the top; see it appear below; click the Like button to make likes appear
+
+##Tech Used
+
+- Ruby On Rails for framework
+- Rspec-rails for testing (run rspec to see tests)
+
+
 ##User stories
 
 * As a user, so that I can post my selfies, I need a page where I can post pictures to
@@ -19,6 +34,7 @@
 * Add an integer field to database that can be changed by submitting a form that updates it with whatever is entered (20 mins) - DONE
 * Refactor that to a single button which +1 to that integer, and that integer is zero by default (30 mins) - DONE
 * Create Users (60 mins) - DONE
+* Get repo working - DONE
 
 
 

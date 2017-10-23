@@ -3,6 +3,6 @@ class Image < ApplicationRecord
   validates_attachment_content_type :snappysnap, content_type: /\Aimage\/.*\z/
 
   validates :title, presence: true
-  validates :location, presence: true
+  # validates :location, presence: true
   validates :snappysnap, presence: true
 end
