@@ -7,8 +7,6 @@ def index
   @new_image = Image.new
 end
 
-$like_counter = 0
-
  def like_image
    @image = Image.find(params[:id])
    likes_array = @image.likes.to_a

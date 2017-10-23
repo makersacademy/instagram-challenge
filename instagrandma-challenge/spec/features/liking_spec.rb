@@ -15,10 +15,10 @@ feature 'clicking a like button' do
   scenario 'makes a number of likes appear' do
     make_doggo
     within find_by_id('image_box_for_1') do
-      expect{ click_button('Like') }.to change{Image.all[0].likes}.from(0).to(1)
+      expect{ click_button('Like') }.to change{Image.all[0].likes}.from([]).to(['tansaku@gmail.com'])
     end
 
-    expect(page).to have_content('1 Likes')
+    expect(page).to have_content('Liked by tansaku@gmail.com')
 
   end
 end
