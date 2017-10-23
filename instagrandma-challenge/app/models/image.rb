@@ -5,4 +5,6 @@ class Image < ApplicationRecord
   validates :title, presence: true
   # validates :location, presence: true
   validates :snappysnap, presence: true
+
+  serialize :likes, Array
 end

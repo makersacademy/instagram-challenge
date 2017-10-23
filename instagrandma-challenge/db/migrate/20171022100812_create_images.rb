@@ -3,7 +3,7 @@ class CreateImages < ActiveRecord::Migration[5.1]
     create_table :images do |t|
       t.string :title
       t.text :location
-      t.integer :likes, :default => 0
+      t.text :likes
       t.timestamps
     end
   end

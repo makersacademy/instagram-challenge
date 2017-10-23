@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <%= form.label :likes %><br>
-  <%= form.text_area :likes %>
-</p>
-
-<p>
   <%= form.label :snappysnap %><br>
   <%= form.file_field :snappysnap %>
 </p>
@@ -26,7 +21,7 @@
     <div id=<%="image_box_for_#{image.id}"%>
         <div id="image-itself"><td><%=image_tag image.snappysnap.url(:large) if image.snappysnap.exists?%></div>
         <div id='image-title'><%= image.title %></div>
-        <div id='image-likes'><td><%=image.likes%> Likes</div>
+        <div id='image-likes'><td><%="Liked by #{image.likes.join(", ")} " if image.likes != [] %></div>
         <div id=<%="image_id_#{image.id}_like_button"%>>
         <%= button_to "Like", { action: 'like_image', id: image.id }, method: :post %></div>
       </div>

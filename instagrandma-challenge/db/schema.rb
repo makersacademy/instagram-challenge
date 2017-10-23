@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20171022191034) do
   create_table "images", force: :cascade do |t|
     t.string "title"
     t.text "location"
-    t.integer "likes", default: 0
+    t.text "likes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "snappysnap_file_name"
