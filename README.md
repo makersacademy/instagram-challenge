@@ -39,16 +39,14 @@ So I can express my opinion on a photo
 I want to be able to like a picture
 ```
 
-## Code Quality
+## Technologies
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+* Ruby, Rails 5.1.4
+* AWS for image storage
+* Heroku for deployment
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+## To clone this repository
+
 ```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+$ git clone https://github.com/rolandosorbelli/instagram-challenge.git
+```

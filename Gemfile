@@ -37,6 +37,7 @@ gem "rubocop-rails"
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk', '~> 2.3'
 gem 'figaro'
+gem 'acts_as_commentable_with_threading'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
