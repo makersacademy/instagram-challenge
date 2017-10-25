@@ -1,0 +1,15 @@
+<h1>All Posts</h1>
+
+<% @posts.reverse.each do |post| %>
+<h3> <%= post.title %> </h3>
+<%= image_tag post.image_url.to_s %><br>
+<p> <%= post.description %> </p>
+<%= link_to "See this post", post_path(post) %><br>
+<br>
+<%= link_to 'Edit', edit_post_path(post) %><br>
+<%= link_to 'Delete post', post_path(post),
+    method: :delete,
+    data: { confirm: 'Are you sure?' } %><br>
+    <br>
+<% end %>
+<%= link_to 'New post', new_post_path %>

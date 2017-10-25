@@ -1,40 +1,38 @@
-Instagram Challenge
-===================
+My approach
+===========
 
-## Instructions
+This is an attempt to build an Instagram clone. It has been built using
+TDD principles. The design process has been guided by the user stories
+visible below.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+# Technologies used
 
-## Task
+- Ruby on Rails
+- Active Record
+- SQLite
+- CarrierWave
+- Rspec
 
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+# User stories
 ```
+- As a user,
+  So I can show off my photography skills to the world,
+  I want to be able to post an photo.
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+- As a user,
+  So I can see everyone else's photos,
+  I want to be able to see a page with all photos listed in reverse
+  chronological order.
+
+- As a user,
+  so I can let others know that I like their photos,
+  I want to be able to leave 'likes' on photos.
+
+- As a user,
+  So that I can share my thoughts,
+  I want to be able to comment on other photos.
+
+- As a user,
+  so that I can be part of the notsoinstagram community,
+  I want to be able to sign up.
+```
