@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Instagram Challenge
+===================
 
-Things you may want to cover:
+## Task
 
-* Ruby version
+Build Instagram.
 
-* System dependencies
+Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-* Configuration
+Bonus if you can add filters!
 
-* Database creation
+## Technologies used
 
-* Database initialization
+1. Ruby on Rails
+2. HTML
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Code Quality
 
-* Deployment instructions
+For linting, used the `.rubocop.yml` in this repository (or your own!).
+Gems used:
 
-* ...
+```ruby
+gem "rubocop", "0.48.1"
+gem "rubocop-rails"
+```
