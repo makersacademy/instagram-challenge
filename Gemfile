@@ -7,6 +7,8 @@ end
 
 gem 'carrierwave', '~> 1.0'
 gem 'devise'
+gem 'file_validators'
+gem 'mini_magick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
