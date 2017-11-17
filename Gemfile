@@ -7,7 +7,9 @@ end
 
 gem 'carrierwave', '~> 1.0'
 gem 'devise'
+gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
 gem 'file_validators'
+gem 'fog-aws'
 gem 'mini_magick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'

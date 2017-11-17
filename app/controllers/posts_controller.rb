@@ -13,6 +13,7 @@ def new
   @post = Post.new
 end
 def create
+  p ENV['thing']
   @post = current_user.posts.create(post_params)
   if @post.save
     redirect_to posts_path
@@ -34,7 +35,7 @@ def edit
 
 private
 def post_params
-  params.require(:post).permit(:caption, :image)
+  params.require(:post).permit(:caption, :image, :image_cache)
 end
 def set_current_post
   @post = Post.find(params[:id])
