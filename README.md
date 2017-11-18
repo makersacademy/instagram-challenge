@@ -1,6 +1,28 @@
 Instagram Challenge
 ===================
 
+## My Aims for this Challenge
+
+* To set up a working rails application.
+
+* To be able to understand what each main file and folder does and how they interact.
+
+* To be able to set up a functioning database.
+
+* To be able to add things to the database and then retrieve them.
+
+* To be able to have a user interface which is also able to display user data.
+
+* To be able to navigate around a small website.
+
+* To consolidate the information covered in this week's challenge.
+
+* To gain confidence with Rails.
+
+## User Stories
+
+* As a user, So that I can share pictures on the internet, I want to be able to upload an image and then view it online.  
+
 ## Instructions
 
 * Challenge time: one weekend
