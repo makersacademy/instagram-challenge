@@ -7,6 +7,11 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'therubyracer'
+gem 'devise'
+gem 'omniauth'
+
+
 gem 'file_validators'
 gem 'mini_magick'
 gem 'carrierwave', '~> 1.0'
