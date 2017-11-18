@@ -5,8 +5,16 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Login
+gem 'therubyracer'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-digitalocean'
+
+# Images and Storage
 gem 'carrierwave-google-storage'
 gem 'carrierwave', '~> 0.7'
+
 # Linter
 gem "rubocop", "0.48.1"
 gem "rubocop-rails"
