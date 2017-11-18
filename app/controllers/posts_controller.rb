@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     if @post.destroy
       flash[:success] = 'Post Deleted'
       redirect_to posts_path
-  end
+    end
   end
 
   private
