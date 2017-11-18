@@ -6,6 +6,7 @@ class PinsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @pin = Pin.find(params[:id])
   end
 
@@ -21,8 +22,6 @@ class PinsController < ApplicationController
 
     respond_to do |format|
       if @pin.save
-        p "@@@@@@@@@@@@"
-        p @pin
         ImageUploader.new.store!(params[:pin][:image])
         format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
         format.json { render :show, status: :created, location: @pin }
