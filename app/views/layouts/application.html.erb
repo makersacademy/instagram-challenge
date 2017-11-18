@@ -9,6 +9,28 @@
   </head>
 
   <body>
+  <div id="menu"> 
+  <div class="menu_element">
+        <a href="/">All Moofagram Posts</a>
+      </div>
+    <% if user_signed_in? %>
+      <div class="menu_element">
+        <a href="posts/new">Upload an Image</a>
+      </div>
+      <div class="menu_element">
+        <%= link_to('Log Out', destroy_user_session_path, method: :delete) %>
+      </div>
+    <% else %>
+      <div class="menu_element">
+        <%= link_to('Log In', new_user_session_path) %>
+      </div>
+      <div class="menu_element">
+        <%= link_to('Create an account', new_user_registration_path)  %>
+      </div>
+    <% end %>
+  </div>
+
+
        <div class="notice"><%= notice %></div>
        <div class="alert"><%= alert %></div>
     <%= yield %>

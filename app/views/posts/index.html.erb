@@ -1,3 +1,19 @@
 <% @posts.each do |post| %>
-  <div class="post"><%= post %></div>
+  <div class="post">
+    <div class="uploader"> <%= link_to post.user.email.to_s, 'user/'+post.user_id.to_s+'/posts' %> </div>
+    <div class="photo"><img width="80%" src="<%= post.photo %>"></div>
+    <div class="description"><%= post.description %></div>
+    <div class="likes"> likes: <%= post.likes.count %></div>
+    <div class="comments_count"><%= link_to 'comments: ' +  post.comments.count.to_s , post_path(post) %></div>
+    <%if LikesHelper::enableLike?(post, current_user)%>
+      <%= form_with(model: [ post, post.likes.build ]) do |form| %>
+        <%= form.submit "Like!", id: 'likebtn' + post.id.to_s%>
+     <% end %>
+    <% end %>
+  
+  </div>
+  
+  
+
+
 <% end %>
