@@ -1,11 +1,13 @@
 
 
-class ImageUploader < CarrierWave::Uploader::Base
-include CarrierWave::MiniMagick
+# frozen_string_literal: true
 
-version :thumb do
+class ImageUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
+
+  version :thumb do
     process resize_to_fill: [350, 350]
-end
+  end
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -18,6 +20,14 @@ end
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads"
+  end
+
+  def extension_whitelist
+    %w(jpg jpeg gif png)
+  end
+
+  def content_type_whitelist
+    /image\//
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -51,5 +61,4 @@ end
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end
