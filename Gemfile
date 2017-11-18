@@ -47,6 +47,7 @@ group :development, :test do
   gem "rubocop", "0.48.1"
   gem "rubocop-rails"
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do

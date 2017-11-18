@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Post, :type => :model do
-  it "is truthy" do
-    expect(Post.new.return_true).to eq true
-  end
-  end
+RSpec.describe Post, type: :model do
+  it { should validate_presence_of(:image) }
+  it { should validate_presence_of(:caption) }
+end
