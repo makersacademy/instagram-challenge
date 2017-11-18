@@ -1,22 +1,13 @@
-<div id="header">
-  <h1>pinstagram</h1>
-  <p id="links">
-  <%= link_to 'Pin An Image', new_pin_path %>
-  </p>
-</div>
-
-<p id='notice'><%= notice %></p>
-
+<div id="pins-container">
   <% @pins.each do |pin| %>
     <div id='pin'>
-      <div id='caption'>
-          <%= pin.caption %>
-      </div>
       <div id='center-cropped' style="background-image: url('<%= pin.image %>');">
-        <img src='<%= pin.image %>'>
+      <a href="pins/<%= pin.id %>"><img src='<%= pin.image %>'></a>
+      </div>
+      <div id='caption'>
+        <span><%= pin.caption %></span>
       </div>
     </div>
-    <%= link_to 'Show', pin %></td>
-    <br>
   <% end %>
+</div>
 
