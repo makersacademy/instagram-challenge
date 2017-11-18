@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update]
 
@@ -24,6 +26,12 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_url
+  end
+
   def update
     if @post.update_attributes(post_params)
       redirect_to post_path(@post)
@@ -35,7 +43,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image)
+    params.require(:post).permit(:title, :body, :image, :remove_image, :image_cache)
   end
 
   def set_post
