@@ -15,9 +15,12 @@ class PinsController < ApplicationController
 
   def create
     @pin = Pin.new(pin_params)
+    image = "https://storage.googleapis.com/pinstagram/uploads/#{params[:pin][:image].original_filename}"
+    @pin.image = image
 
     respond_to do |format|
       if @pin.save
+        ImageUploader.new.store!(params[:pin][:image])
         format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
         format.json { render :show, status: :created, location: @pin }
       else
