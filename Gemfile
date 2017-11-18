@@ -7,8 +7,6 @@ end
 
 gem 'carrierwave-google-storage'
 gem 'carrierwave', '~> 0.7'
-gem 'paperclip', '~> 4.2'
-gem 'simple_form'
 # Linter
 gem "rubocop", "0.48.1"
 gem "rubocop-rails"
