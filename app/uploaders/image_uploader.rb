@@ -16,8 +16,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :web do
     version :thumb    do process resize_to_fit: [32, 32] end
-    version :preview  do process resize_to_fit: [128, 128] end
-    version :full     do process resize_to_fit: [1024, 768] end
+    version :preview  do process resize_to_fit: [600, 600] end
+    version :full     do process resize_to_fit: [1080, 1080] end
   end
 
   # store! nil's the cache_id after it finishes so we need to remember it for deletion
