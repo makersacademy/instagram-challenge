@@ -10,10 +10,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      ImageUploader.new.store!(params[:image])
-      redirect_to posts_path
+      flash[:success] = 'Your post has been created.'
+      redirect_to @post
     else
-      p @post.errors
+      flash[:alert] = 'Image is required to post!'
       render 'new'
     end
     # @post = Post.create(post_params)

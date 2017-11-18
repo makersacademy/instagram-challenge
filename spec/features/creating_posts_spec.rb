@@ -10,4 +10,12 @@ feature 'Creating posts' do
     expect(page).to have_content('Test photo post 1')
     expect(page).to have_css("img[src*='test_img_1.jpg']")
   end
+
+  it 'needs an image to create a post' do
+    visit '/'
+    click_link 'New Post'
+    fill_in 'text', with: 'Test photo post 1'
+    click_button 'Create Post'
+    expect(page).to have_content('Image is required to post!')
+  end
 end
