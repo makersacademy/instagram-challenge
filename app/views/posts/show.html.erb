@@ -6,4 +6,36 @@
 
 <p><%= @post.body %></p>
 
-<p><%= link_to 'Edit', edit_post_path(@post) %></p>
+<h2>Comments</h2>
+
+<%= render @post.comments %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+<p>
+  <%= f.label :commenter %><br>
+  <%= f.text_field :commenter %>
+</p>
+<p>
+  <%= f.label :body %><br>
+  <%= f.text_area :body %>
+</p>
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
+
+<p>
+<% p @post %>
+</p>
+<p>
+  <% p  "*****" %>
+  </p>
+  <p>
+    <% p @post.comments %>
+    </p>
+    <p>
+      <% p  "*****"  %>
+      </p>
+
+      <p><%= link_to 'Edit', edit_post_path(@post) %></p>
