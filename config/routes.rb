@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'users/new'
+
   devise_for :users
   resources :posts
   root to: 'posts#index'
