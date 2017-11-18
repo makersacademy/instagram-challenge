@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'paperclip', '~> 4.2'
+gem 'simple_form'
 # Linter
 gem "rubocop", "0.48.1"
 gem "rubocop-rails"
