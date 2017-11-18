@@ -15,9 +15,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   version :web do
-    version :thumb    do process :resize_to_fit => [32, 32] end
-    version :preview  do process :resize_to_fit => [128, 128] end
-    version :full     do process :resize_to_fit => [1024, 768] end
+    version :thumb    do process resize_to_fit: [32, 32] end
+    version :preview  do process resize_to_fit: [128, 128] end
+    version :full     do process resize_to_fit: [1024, 768] end
   end
 
   # store! nil's the cache_id after it finishes so we need to remember it for deletion
@@ -31,6 +31,4 @@ class ImageUploader < CarrierWave::Uploader::Base
       FileUtils.rm_rf(File.join(root, cache_dir, @cache_id_was))
     end
   end
-
 end
-

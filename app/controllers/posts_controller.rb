@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   def index
   end
 
@@ -16,8 +15,6 @@ class PostsController < ApplicationController
       flash[:alert] = 'Image is required to post!'
       render 'new'
     end
-    # @post = Post.create(post_params)
-    # redirect_to posts_path
   end
 
   def show
@@ -30,5 +27,4 @@ class PostsController < ApplicationController
   def post_params
     params.permit(:text, :image)
   end
-
 end

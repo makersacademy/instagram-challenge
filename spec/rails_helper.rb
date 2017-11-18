@@ -30,7 +30,6 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
 
-
   config.after(:all) do
     # Get rid of the linked images
     if Rails.env.test? || Rails.env.cucumber?
