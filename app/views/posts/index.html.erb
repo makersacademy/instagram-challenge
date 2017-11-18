@@ -1,5 +1,30 @@
 <h1>Posts</h1>
 
-<%= link_to 'Add post', new_post_path %>
+<h1>Listing Posts</h1>
+<div class="">
+  <%= link_to "New post", new_post_path %>
+</div>
 
-<%= render @posts %>
+
+<div class="container">
+
+  <% @posts.each do |post| %>
+
+    <div class="grid">
+
+      <%= post.title %>
+      <%= post.body %>
+      <div class="item">
+        <%= image_tag post.image %>
+      </div>
+
+      <%= link_to "Show", post %>
+      <%= link_to "Edit", edit_post_path(post) %>
+
+    </div>
+
+  <% end %>
+
+</div>
+
+<br>
