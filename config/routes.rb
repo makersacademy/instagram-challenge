@@ -9,12 +9,14 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'user_posts/index'
  
 
   resources :posts, only: %i[index show] do
     resources :likes, only: %i[index show]
     resources :comments, only: %i[index show]
   end
+
 
   root 'posts#index'
 

@@ -3,6 +3,12 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def users_posts
+
+    @posts = Post.where(user_id: 1)
+
+  end
+
   def new
     @post = Post.new
  

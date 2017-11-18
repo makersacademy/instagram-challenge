@@ -1,0 +1,2 @@
+module UserPostsHelper
+end
