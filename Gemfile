@@ -33,8 +33,9 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'simple_form'
-gem 'paperclip', '~> 4.2'
+gem 'paperclip'
 gem 'pg'
+
 # gem "factory_girl_rails"
 
 group :development, :test do
@@ -45,6 +46,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_bot_rails'
+  gem 'pry'
+  gem 'launchy'
 end
 
 group :development do

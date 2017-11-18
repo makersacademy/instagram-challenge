@@ -1,12 +1,9 @@
 require 'rails_helper.rb'
+require 'web_helper'
 
 feature 'Creating posts' do
   scenario 'can create a post' do
-    visit '/'
-    click_link 'New Post'
-    attach_file('Image', 'spec/files/images/foodart.jpg')
-    fill_in 'Caption', with: 'amazing #foodart'
-    click_button 'Create Post'
+    create_post
     expect(page).to have_content('#foodart')
     expect(page).to have_css("img[src*='foodart.jpg']")
   end
