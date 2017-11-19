@@ -3,7 +3,7 @@
      <div class="uploader"> <%= link_to post.user.email.to_s, user_posts_index_path(:user => post.user_id) %> </div>
     <div class="photo"><img width="80%" src="<%= post.photo %>"></div>
     <div class="description"><%= post.description %></div>
-    <div class="likes"> likes: <%= post.likes.count %></div>
+    <div class="likes"> <%= link_to 'likes: ' + post.likes.count.to_s, post_likes_path(:post_id => post.id)  %>   </div>
       <%= form_with(model: [ post, post.likes.build ], local: true) do |form| %>
         <%= form.submit "Like!", id: 'likebtn' + post.id.to_s, :disabled => !LikesHelper::enableLike?(post, current_user)%>
       <% end %>

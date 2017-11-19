@@ -1,20 +1,25 @@
 class LikesController < ApplicationController
   def create
-    p params
     @post = Post.find(params[:post_id])
+    @like = Like.where(post_id: @post.id, user_id: current_user.id)
+
+    if !@like.empty?
+      @like[0].destroy
+      redirect_to request.referrer
+      return
+    end
+
     @like = @post.likes.create(post_id: params[:post_id], user_id: current_user.id)
     redirect_to request.referrer
   end
 
-  def destroy
+  def index
+    @users= []
     @post = Post.find(params[:post_id])
-    @like = @post.likes.where(post_id: params[:post_id], user_id: current_user.id)
-    @like.destroy
-    redirect_to request.referrer
+    @like = Like.where(post_id: @post.id)
+    @like.each do |like|
+      @users << User.find(like.user_id)
+    end
   end
 
-  private
-  def like_params
-    params.require(:like).permit(:user_id, :post_id)
-  end
 end

@@ -3,6 +3,6 @@ module LikesHelper
     if user.nil?
       return false
     end
-    Like.where(post_id: post.id, user_id: user.id).empty?
+     true
   end
 end
