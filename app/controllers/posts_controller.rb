@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
 before_action :set_current_post, only: [:show, :edit, :update]
 
 def index
@@ -12,8 +13,8 @@ end
 def new
   @post = Post.new
 end
+
 def create
-  p ENV['thing']
   @post = current_user.posts.create(post_params)
   if @post.save
     redirect_to posts_path
@@ -23,10 +24,10 @@ def create
 end
 
 def edit
- end
+end
 
- def update
-   if @post.update_attributes(post_params)
+def update
+  if @post.update_attributes(post_params)
      redirect_to post_path(@post)
    else
      render :edit
@@ -34,10 +35,13 @@ def edit
  end
 
 private
-def post_params
-  params.require(:post).permit(:caption, :image, :image_cache)
-end
-def set_current_post
-  @post = Post.find(params[:id])
-end
+
+  def post_params
+    params.require(:post).permit(:caption, :image, :image_cache)
+  end
+
+  def set_current_post
+    @post = Post.find(params[:id])
+  end
+
 end
