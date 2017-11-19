@@ -10,12 +10,15 @@
   <% @posts.each do |post| %>
     <div class="grid">
 
+      <h2 >
+        <p class="fig_caption"><%= link_to post.title, post %></p><br>
+        <h5 class="">
+          Submitted
+          <%= time_ago_in_words(post.created_at) %>
+          ago by
+          <%= post.user.email %>
+        </h5>
 
-      <h2 class="fig_caption"><%= link_to post.title, post %><br>
-        Submitted
-        <%= time_ago_in_words(post.created_at) %>
-        ago by
-        <%= post.user.email %>
       </h2>
       <div >
         <figure class="item w3-container">
@@ -54,14 +57,17 @@
 
 </div>
 <script type="text/javascript">
-(function() {
-    var list, index, element, filename;
-    list = document.getElementsByClassName('attr-value');
-    for (index = 0; index < list.length; ++index) {
-        element = list[index];
-        filename = element.innerHTML.toLowerCase().replace(/ /g, '-').replace(/([^0-9a-z-])/g,'');
-        element.innerHTML = "<img src='http://www.example.com/" + filename + ".jpg'>";
-    }
+(function () {
+  var list,
+    index,
+    element,
+    filename;
+  list = document.getElementsByClassName('attr-value');
+  for (index = 0; index < list.length; ++index) {
+    element = list[index];
+    filename = element.innerHTML.toLowerCase().replace(/ /g, '-').replace(/([^0-9a-z-])/g, '');
+    element.innerHTML = "<img src='http://www.example.com/" + filename + ".jpg'>";
+  }
 })();
 </script>
 <br>
