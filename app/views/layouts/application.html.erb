@@ -9,36 +9,40 @@
   </head>
 
   <body>
-    <nav >
-      <div>
-        <h1>Instagram</h1>
-      </div>
-      <p class="navbar-text pull-right">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
         <% if user_signed_in? %>
-          Logged in as
-          <strong><%= current_user.email %></strong>.
-          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
-          |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %>
-          |
-          <%= link_to "Login", new_user_session_path, :class => 'navbar-link' %>
-        <% end %>
-      </p>
+          <div class="username">
+            Logged in as:
+            <%= current_user.email %>
+          </div>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
+                </li>
+                <li>
+                  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+                </li>
+              <% else %>
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %>
+                </li>
+                <li>
+                  <%= link_to "Login", new_user_session_path, :class => 'navbar-link' %>
+                </li>
+              <% end %>
+            </ul>
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Instagram</a>
+        </div>
+      </div>
     </nav>
-
-    <%=flash.each do |name, msg|%>
-    <%= content_tag :div, msg, class: [:alert, alert_for(name)]%>
-  <% end %>
-
-  <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
-
-  <%= yield %>
-</body>
+    <div class="container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+      <% end %>
+    </div>
+    <%= yield %>
+  </body>
 </html>
