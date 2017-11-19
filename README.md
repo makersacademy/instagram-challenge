@@ -36,3 +36,5 @@ You will then need to go to your local browser on port 3000, http://localhost:30
 
 
 - I have not managed to find a solution to prevent the page from going to the top when we click on "like" or "dislike". I have tried to use preventDefault with JavaScript, but no luck there.
+
+- I have installed the rspec gem but I have not run any tests. 
