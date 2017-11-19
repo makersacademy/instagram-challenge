@@ -10,5 +10,9 @@ testjinn = Picture.create(image: File.open(File.join(Rails.root + 'app/assets/im
       expect(testjinn.caption).to eq "Test Jinn Picture"
     end
 
+    it ('an image from a file') do
+      expect(testjinn.image.filename).to eq "dancing-jinn-satans.jpg"
+    end
+
   end
 end
