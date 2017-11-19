@@ -5,31 +5,44 @@
   </head>
 
   <body>
-    <div class="greets">
-    <h1>Welcome!</h1>
-    <h2>Start sharing...<br></h2>
-  </div>
-    <div class="container text-center">
-      <div class=" welcome-wrapper row">
-        <div class="welcome">
+    <% if user_signed_in? %>
+      <div class="greets">
+        <h1>Welcome!</h1>
+        <h2>Start sharing...<br></h2>
+      </div>
+      <div class="container text-center">
+        <div class=" welcome-wrapper row">
+          <div class="welcome">
             <h3>start making memories</h3>
-            <% if user_signed_in? %>
             <div>
-            <form class="toposts" action='/posts' method='get'>
-              <input type="submit" value="create and view posts">
-            </form>
+              <form class="toposts" action='/posts' method='get'>
+                <input type="submit" value="create and view posts">
+              </form>
+            </div>
           </div>
         </div>
-        <% else %>
-            <form class="new1" action='/users/sign_up' method='get'>
-              <input type="submit" value="create a new account">
-            </form>
+      </div>
+    <% else %>
+      <div class="greets">
+        <h1>Welcome new User!</h1>
+        <h2>Start sharing...<br></h2>
+      </div>
+      <div class="container text-center">
+        <div class=" welcome-wrapper row">
+          <div class="welcome">
+            <h3>start making memories</h3>
+            <div>
+              <form class="new1" action='/users/sign_up' method='get'>
+                <input type="submit" value="create a new account">
+              </form>
               <form class="new2" action='/users/sign_in' method='get'>
                 <input type="submit" value="go to your account">
               </form>
             </div>
           </div>
+        </div>
+      </div>
         <% end %>
 
-  </body>
-</html>
+      </body>
+    </html>
