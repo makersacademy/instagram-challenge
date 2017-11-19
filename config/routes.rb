@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome/index'
+  # resources :photos
+  resources :user
 
   root 'welcome#index'
 
