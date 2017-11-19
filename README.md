@@ -1,40 +1,32 @@
 Instagram Challenge
 ===================
 
-## Instructions
-
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 ## Task
 
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+This repository contains a Makers Academy home assignment. The challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
 Bonus if you can add filters!
 
-## How to start
+## How to get started
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+On your terminal command, clone this repo and update the gems with the following command :
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+```
+git clone git@github.com:Pablo123GitHub/instagram-challenge.git
+cd instagram-challenge
+bundle install
+rails server
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+The above last command will fire up your local browser on port 3000, so you can go to http://localhost:3000/ to start using this rails app.
+
+
+## Technology used
+
+- Rails 5.1
+- Ruby
+- Rubocop for linting
+- Rspec for testing
+
+
+## How this app could be improved ?
