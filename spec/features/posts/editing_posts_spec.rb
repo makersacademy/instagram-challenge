@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'Edit post' do
   background do
+    sign_in_as_valid_user
     post = create(:post)
     visit '/'
     find(:xpath, "//a[contains(@href,'posts/#{post.id}')]").click
