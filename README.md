@@ -18,11 +18,12 @@ Find the app at: https://pin-stagram-app.herokuapp.com
 
 ## Approach
 
-* Due to a difficult week leading up to this challenge I was less familiar with Rails than I would have liked so instead of TDD I decided to explore the possibilities of leading development with experimentation and live feature testing. This is not an ideal process and one that I do not intend on repeating but I did enjoy myself nonetheless. 
-
-* I wanted to link my file storage to a cloud service and through research found that it was a toss up between Amazon and Google. I choose to use Google as I have previously encountered AWS with my Alexa App.
-
-* My main goal with the app was to have full functionality as dictated by Makers but to add my own styling using pure CSS and HTML. I have been consistently pushing myself to learn as much as possible without using libraries up to this point and I think it's given me a good grounding. I am looking forward to using libraries in the future.
+* CRC Cards and Diagramming
+* Using Rails CLI commands to build pin controller, models and views
+* Integrating file storage with Google Cloud Services
+* Implementing Devise to authenticate users and build user model, controller and views
+* Adding comments and likes to pin model
+* Styling using pure HTML and CSS
 
 ## Functionality
 
