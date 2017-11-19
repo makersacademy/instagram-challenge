@@ -9,16 +9,16 @@ Bonus if you can add filters!
 
 ## How to get started
 
-On your terminal command, clone this repo and update the gems with the following command :
+Clone this repo and update the gems with the following command (terminal)
 
 ```
-git clone git@github.com:Pablo123GitHub/instagram-challenge.git
-cd instagram-challenge
-bundle install
-rails server
+- git clone - git@github.com:Pablo123GitHub/instagram-challenge.git
+- cd instagram-challenge
+- bundle install
+- rails server
 ```
 
-The above last command will fire up your local browser on port 3000, so you can go to http://localhost:3000/ to start using this rails app.
+You will then need to go to your local browser on port 3000, http://localhost:3000/ to start using the app.
 
 
 ## Technology used
@@ -30,6 +30,6 @@ The above last command will fire up your local browser on port 3000, so you can 
 
 ## How this app could be improved ?
 
-- When I add a new comment I would like to fill the commenter field automatically. In order to do this, I should add a username to the User model (I currently only have email), and then I could make use of this name to fill it out automatically.
+- When I add a new comment (for a post) I would like to fill the commenter field automatically. In order to do this, I should have a username in my User model (I currently only have email), and then I could make use of this name to fill out this field automatically.
 
-- I have use the acts_as_votable gem to create the Upvote/Downvote feature ...but maybe I could have my own "Like" model which would have  been more of a challenge, as this model would have to interact with the User, the Post, and the Comment model in order to make sure that the votes are being correctly accounted for.
+- I have installed the acts_as_votable gem to create the Upvote/Downvote feature ...but maybe I could have built my own "Like" model which would have  been more of a challenge, as this model would have had to interact with the User, the Post, and the Comment model in order to make sure that the "likes" are being correctly accounted for.
