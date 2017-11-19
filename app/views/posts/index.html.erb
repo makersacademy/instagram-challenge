@@ -1,45 +1,67 @@
-<h1>Posts</h1>
+<h1>
+  Instagram Challenge</h1>
 
-<h1>Listing Posts</h1>
-<div class="">
-  <%= link_to "New post", new_post_path %>
+<div class="new_post button">
+  <%= link_to "Add a new Picture", new_post_path %>
 </div>
 
-<div class="container">
+<div class="container w3-card">
 
   <% @posts.each do |post| %>
     <div class="grid">
-      <h4><%= link_to post.title, post %><br>
+
+
+      <h2 class="fig_caption"><%= link_to post.title, post %><br>
         Submitted
         <%= time_ago_in_words(post.created_at) %>
         ago by
         <%= post.user.email %>
-      </h4>
-      <%= post.body %>
+      </h2>
+      <div >
+        <figure class="item w3-container">
+          <%= image_tag post.image %>
+        </figure>
+        <figcaption>
+          <div class="fig_caption_parent">
+            <div class="fig_caption">
+              <%= link_to "Show", post %>
+            </div>
+            <div class="fig_caption">
+              <% if user_signed_in? && current_user.id == post.user_id  %>
+                <%= link_to "Edit", edit_post_path(post) %>
+                <%= link_to 'Delete', post, :method => :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </div>
 
-      <div class="item">
-        <%= image_tag post.image %>
+            <div class="like-dislike fig_caption">
+              <%= link_to like_post_path(post), method: :put do %>
+              Like
+              <%= post.get_upvotes.size %>
+            <% end %>
+
+            <%= link_to dislike_post_path(post), method: :put do %>
+            Dislike
+            <%= post.get_downvotes.size %>
+          <% end %>
+        </div>
       </div>
-
-      <%= link_to "Show", post %>
-      <% if user_signed_in? && current_user.id == post.user_id  %>
-        <%= link_to "Edit", edit_post_path(post) %>
-        <%= link_to 'Delete', post, :method => :delete, data: { confirm: "Are you sure?" } %>
-      <% end %>
-    </div>
-
-    <%= link_to like_post_path(post), method: :put do %>
-    Upvote
-    <%= post.get_upvotes.size %>
-  <% end %>
-
-  <%= link_to dislike_post_path(post), method: :put do %>
-  Downvote
-  <%= post.get_downvotes.size %>
-<% end %>
+    </figcaption>
+    <br>
+    <br>
+  </div>
 
 <% end %>
 
 </div>
-
+<script type="text/javascript">
+(function() {
+    var list, index, element, filename;
+    list = document.getElementsByClassName('attr-value');
+    for (index = 0; index < list.length; ++index) {
+        element = list[index];
+        filename = element.innerHTML.toLowerCase().replace(/ /g, '-').replace(/([^0-9a-z-])/g,'');
+        element.innerHTML = "<img src='http://www.example.com/" + filename + ".jpg'>";
+    }
+})();
+</script>
 <br>
