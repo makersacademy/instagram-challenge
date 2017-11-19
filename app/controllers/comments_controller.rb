@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     Comment.create(post_id: params[:post_id], text: params[:comment][:text], user_id: current_user.id)
     redirect_to request.referrer
   end
+  
   def show
   end
 
