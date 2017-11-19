@@ -1,0 +1,22 @@
+ <div class="uploader"> <%= @post.user.email.to_s %> </div>
+    <div class="photo"><img width="80%" src="<%= @post.photo %>"></div>
+    <div class="description"><%= @post.description %></div>
+    <div class="likes"> likes: <%= @post.likes.count %></div>
+      <%= form_with(model: [ @post, @post.likes.build ], local: true) do |form| %>
+        <%= form.submit "Like!", id: 'likebtn' + @post.id.to_s, :disabled => !LikesHelper::enableLike?(@post, current_user)%>
+      <% end %>
+      <div class="comments_count"> <%= post.comments.count %></div>
+
+
+
+
+<%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
