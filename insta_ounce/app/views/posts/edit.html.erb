@@ -1,0 +1,17 @@
+<h1> Your Current Post</h1>
+
+ <div>
+   <%= image_tag @post.image.url(:medium) %>
+   <%= @post.caption %>
+</div>
+
+<div>
+  <%= simple_form_for @post do |f| %>
+  <%= f.input :image %>
+  <%= f.input :caption %>
+  <%= f.button :submit %>
+  <% end %>
+</div>
+
+<%= link_to "Cancel", posts_path %>
+<%= link_to "Delete Post", post_path(@post), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %>
