@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-  before_action :set_pin, only: [:show]
+  before_action :set_pin, only: [:show, :like]
 
   def index
     @pins = Pin.all
@@ -27,6 +27,12 @@ class PinsController < ApplicationController
         format.html { render :new }
         format.json { render json: @pin.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def like
+    if @pin.liked_by current_user
+      redirect_back
     end
   end
 

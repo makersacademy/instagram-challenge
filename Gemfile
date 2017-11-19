@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Likes
+gem 'acts_as_votable', '~> 0.10.0'
+
 # Login
 gem 'therubyracer'
 gem 'devise'

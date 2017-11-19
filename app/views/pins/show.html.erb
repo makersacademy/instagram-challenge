@@ -3,6 +3,10 @@
  <%= @pin.user.email %></p>
   <div id='pin-single'>
     <%=image_tag("pin.png", :style => "vertical-align: top;margin-top:-20px;margin-left:-10px;height: 40px;position:absolute")%>
+    <div style="vertical-align: top;margin-left:460px;height: 40px;position:absolute">
+    <%= link_to image_tag("thumbs-up.png", :style => "height:40px;"), like_pin_path(@pin.id), remote: true, id: "like_#{@pin.id}"%>
+    <%= render 'layouts/likes' %>
+    </div>
     <div id='center-cropped-single' style="background-image: url('<%= @pin.image %>');">
     <a href="<%= pins_path %>"><img src='<%= @pin.image %>'></a>
     </div>
