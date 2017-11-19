@@ -26,7 +26,10 @@ The above last command will fire up your local browser on port 3000, so you can 
 - Rails 5.1
 - Ruby
 - Rubocop for linting
-- Rspec for testing
 
 
 ## How this app could be improved ?
+
+- When I add a new comment I would like to fill the commenter field automatically. In order to do this, I should add a username to the User model (I currently only have email), and then I could make use of this name to fill it out automatically.
+
+- I have use the acts_as_votable gem to create the Upvote/Downvote feature ...but maybe I could have my own "Like" model which would have  been more of a challenge, as this model would have to interact with the User, the Post, and the Comment model in order to make sure that the votes are being correctly accounted for.
