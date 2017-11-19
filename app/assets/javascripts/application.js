@@ -16,3 +16,11 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function () {
+
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+
+});
