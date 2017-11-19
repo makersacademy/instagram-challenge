@@ -41,6 +41,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'selenium-webdriver'
+  # adds user authentication functionality
+  gem 'devise', '~> 4.2'
 end
 
 group :test do
