@@ -7,6 +7,11 @@ module ValidUserRequestHelper
     @user
   end
 
+  def sign_in_as_user(user)
+    page.driver.post user_session_path, user: { email: user.email, password: user.password }
+    user
+  end
+
   def create_user
     @user ||= create(:user)
   end
