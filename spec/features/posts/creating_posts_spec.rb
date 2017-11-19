@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'Creating posts' do
   background do
+    sign_in_as_valid_user
     visit '/'
     click_link 'New Post'
     fill_in 'text', with: 'Test photo post 1'
