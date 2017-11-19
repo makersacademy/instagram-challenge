@@ -35,6 +35,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'simple_form'
 gem 'paperclip'
 gem 'pg'
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'devise'
 
 # gem "factory_girl_rails"
 

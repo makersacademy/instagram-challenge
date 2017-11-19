@@ -1,14 +1,21 @@
-<h1>Instagram</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
 
-<%= link_to "New Post", new_post_path %>
+  <body>
 
-<% @posts.each do |post| %>
-<p>
-    <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %><br>
-    <%= post.caption %><br>
-    <%= link_to 'Edit Post', edit_post_path(post) %><br>
-    <%= link_to 'Delete Post', post_path(post),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-  </p>
-<% end %>
+    <%= link_to "New Post", new_post_path %>
+
+    <% @posts.each do |post| %>
+      <p>
+        <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %><br>
+        <%= post.caption %><br>
+        <%= link_to 'Edit Post', edit_post_path(post) %><br>
+        <%= link_to 'Delete Post', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </p>
+    <% end %>
+
+  </body>
+</html>
