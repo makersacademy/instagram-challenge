@@ -1,19 +1,16 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.all.reverse
   end
 
   def users_posts
-
     @posts = Post.where(user_id: 1)
-
   end
 
   def new
     @post = Post.new
- 
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -29,11 +26,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-
   private
-    def post_params
-      params.require(:post).permit(:location, :description, :photo)
-    end
-
-
+  def post_params
+    params.require(:post).permit(:location, :description, :photo)
+  end
 end
