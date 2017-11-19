@@ -1,9 +1,10 @@
-<%= form_with scope: :picture, local: true do |form| %>
+<%= form_with model: @picture, local: true do |form| %>
+
   <% if @picture.errors.any? %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@picture.errors.count, "error") %>
-        prohibited this picture from being saved:
+        <%= pluralize(@picture.errors.count, "error") %> prohibited
+        this picture from being saved:
       </h2>
       <ul>
         <% @picture.errors.full_messages.each do |msg| %>
@@ -26,6 +27,5 @@
   <p>
     <%= form.submit %>
   </p>
-<% end %>
 
-<%= link_to 'Back', pictures_path %>
+<% end %>
