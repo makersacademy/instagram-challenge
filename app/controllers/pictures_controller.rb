@@ -24,6 +24,15 @@ class PicturesController < ApplicationController
     end
   end
 
+  def update
+    @picture = Picture.find(params[:id])
+
+    if @picture.update(article_params)
+      redirect_to @picture
+    else
+      render 'edit'
+    end
+
 private
   def picture_params
     params.require(:picture).permit(:title, :text)
