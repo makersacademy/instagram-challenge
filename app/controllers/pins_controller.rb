@@ -16,8 +16,7 @@ class PinsController < ApplicationController
 
   def create
     @pin = Pin.new(pin_params)
-    image = "https://storage.googleapis.com/pinstagram/uploads/#{params[:pin][:image].original_filename}"
-    @pin.image = image
+    @pin.image = "https://storage.googleapis.com/pinstagram/uploads/#{params[:pin][:image].original_filename}"
     @pin.user_id = current_user.id
 
     respond_to do |format|
