@@ -10,6 +10,7 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
+    @comments = Comment.where(picture_id: @picture).order("created_at DESC")
   end
 
   # GET /pictures/new
