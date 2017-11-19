@@ -4,14 +4,42 @@
     <title>InstagramChallenge</title>
     <%= csrf_meta_tags %>
 
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  <nav class="navbar navbar-expand-md fixed-top navbar-dark" style="background-color: #365a80;">
+    <div class="navbar-brand d-flex mx-auto"><i class="fa fa-camera-retro"></i>  <%= link_to 'Pictagram', root_path %></div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse dual-collapse navbar-right" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <%= link_to 'New Post', new_post_path, { :class => 'nav-link' } %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Login', '#', { :class => 'nav-link' } %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Register', '#', { :class => 'nav-link' } %>
+        </li>
+      </ul>
+      <!--<form class="form-inline mt-2 mt-md-0">-->
+        <!--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
+        <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+      <!--</form>-->
+    </div>
+  </nav>
+  <main role="main" class="container main-window">
     <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: [:alert, alert(name)] %>
+        <%= content_tag :div, msg, class: [:alert, alert(name)] %>
     <% end %>
     <%= yield %>
+  </main>
+
   </body>
 </html>
