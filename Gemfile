@@ -15,6 +15,7 @@ gem 'omniauth'
 gem 'omniauth-digitalocean'
 
 # Images and Storage
+gem 'googleauth'
 gem 'carrierwave-google-storage'
 gem 'carrierwave', '~> 0.7'
 
