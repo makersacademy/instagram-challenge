@@ -23,6 +23,8 @@ Instagram Challenge
 
 * As a user, So that I can share pictures on the internet, I want to be able to upload an image and then view it online.  
 
+* As a user, so that I can change my submissions, I want to be able to edit a submission.
+
 ## Instructions
 
 * Challenge time: one weekend
