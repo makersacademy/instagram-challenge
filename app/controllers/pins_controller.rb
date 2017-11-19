@@ -7,7 +7,6 @@ class PinsController < ApplicationController
 
   def show
     @user = current_user
-    @pin = Pin.find(params[:id])
   end
 
   def new
