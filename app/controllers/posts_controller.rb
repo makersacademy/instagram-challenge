@@ -12,9 +12,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    p "current_user"
-    p current_user
-    p user_signed_in?
   end
 
   def create
@@ -42,6 +39,18 @@ class PostsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def upvote
+    @post = Post.find(params[:id])
+    @post.upvote_by current_user
+    redirect_back(fallback_location: root_path)
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    @post.downvote_by current_user
+    redirect_back(fallback_location: root_path)
   end
 
   private

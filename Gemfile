@@ -11,7 +11,7 @@ gem 'therubyracer'
 gem 'devise'
 gem 'omniauth'
 
-
+gem 'acts_as_votable', '~> 0.11.1'
 gem 'file_validators'
 gem 'mini_magick'
 gem 'carrierwave', '~> 1.0'
