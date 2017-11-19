@@ -32,7 +32,7 @@ class PinsController < ApplicationController
 
   def like
     if @pin.liked_by current_user
-      redirect_back
+      redirect_to @pin
     end
   end
 
