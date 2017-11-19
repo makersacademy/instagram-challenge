@@ -37,6 +37,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'database_cleaner'
+  
   gem "rubocop", "0.48.1"
   gem "rubocop-rails"
   gem 'rspec-rails'

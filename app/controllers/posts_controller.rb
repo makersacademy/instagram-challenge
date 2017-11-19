@@ -3,12 +3,6 @@ class PostsController < ApplicationController
     @posts = Post.all.reverse
   end
 
-  # def users_posts
-  #   p "*&^%$%^&*&^%%^&*&^%$£$%^&*&^%$%^&^%$%^&^%"
-  #   @posts = Post.where(user_id: 1)
-  #   p @posts
-  # end
-
   def new
     @post = Post.new
   end

@@ -10,11 +10,12 @@ Rails.application.routes.draw do
   end
 
   get 'user_posts/index'
+  get 'followers/index'
 
   resources :users do
     resources :followers
   end
- 
+  
   resources :posts, only: %i[index show] do
     resources :likes, only: %i[index show]
     resources :comments, only: %i[index show]

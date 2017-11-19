@@ -8,9 +8,9 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  describe '#users_posts' do
+  describe '#new' do
     it 'responds with success' do
-      get :users_posts
+      get :new
       expect(response).to be_success
     end
   end
