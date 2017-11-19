@@ -22,7 +22,7 @@ Find the app at: https://pin-stagram-app.herokuapp.com
 
 * I wanted to link my file storage to a cloud service and through research found that it was a toss up between Amazon and Google. I choose to use Google as I have previously encountered AWS with my Alexa App.
 
-* My main goal with the app was to have full functionality as dictated by Makers but to add my own styling using pure CSS an HTML. I have been consistently pushing myself to learn as much as possible without using libraries up to this point and I think it's given me a good grounding. I am looking forward to using libraries in the future.
+* My main goal with the app was to have full functionality as dictated by Makers but to add my own styling using pure CSS and HTML. I have been consistently pushing myself to learn as much as possible without using libraries up to this point and I think it's given me a good grounding. I am looking forward to using libraries in the future.
 
 ## Functionality
 
