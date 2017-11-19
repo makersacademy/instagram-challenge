@@ -1,0 +1,13 @@
+<h2>Comments</h2> 
+  <% if @pin.comments %>
+    <% @pin.comments.each do |comment| %>
+      <p id="comment"><%= comment.content %><span class="sub"><%= comment.user.email %></span></p>
+      <% if comment.user == current_user %>
+        <%= link_to("Delete", pin_comment_path(@pin, comment), method: :delete, data: { confirm: "Are you sure?" }) %><p><br>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= form_for [@pin, @pin.comments.new] do |form| %>
+    <p>Add a comment</p>
+    <%= form.text_field :content %>
+  <% end %>
