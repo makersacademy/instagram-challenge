@@ -10,4 +10,12 @@ feature "Creating a new post" do
     expect(page).to have_content('#weekend')
     expect(page).to have_css("img[src*='happy_puppy.jpg']")
   end
+
+  it 'needs an image to create a post' do
+    visit '/'
+    click_link 'New Post'
+    fill_in 'Caption', with: 'something witty #weekend'
+    click_button 'Create Post'
+    expect(page).to have_content('You must add an image.')
+  end
 end
