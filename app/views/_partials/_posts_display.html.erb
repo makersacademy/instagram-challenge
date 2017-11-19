@@ -9,5 +9,10 @@
       <% end %>
     <div class="comments_count"><%= link_to 'comments: ' +  post.comments.count.to_s , post_path(post) %></div>
       
+      <%   if current_user && current_user.id == post.user_id %>
+            <%= link_to 'Edit', edit_post_path(post), method: :get %>
+            <%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } %>
+          <% end %>
+
   </div>
 <% end %>
