@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   resources :pictures do
     resources :comments
+    member do
+      put "like" => "posts#vote"
+    end
   end
+
   get 'welcome/index'
 
   root 'welcome#index'

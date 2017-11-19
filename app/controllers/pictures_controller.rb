@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController
-  before_action :set_picture, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_picture, only: [:show, :edit, :update, :destroy, :vote]
+  before_action :authenticate_user!, except: [:index, :show, :vote]
+  respond_to :js, :json, :html
 
   # GET /pictures
   # GET /pictures.json
@@ -53,6 +54,13 @@ class PicturesController < ApplicationController
     end
   end
 
+  def vote
+    if !current_user.liked? @picture
+      @picture.liked_by current_user
+    elsif current_user.liked? @picture
+      @picture.unliked_by current_user
+    end
+  end
   # DELETE /pictures/1
   # DELETE /pictures/1.json
   def destroy

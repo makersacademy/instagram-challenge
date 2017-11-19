@@ -1,16 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong></strong>
-  <%= image_tag @picture.image %>
-</p>
+  <p>
+    <strong></strong>
+    <%= image_tag @picture.image %>
+  </p>
 
-<p>
-  <strong></strong>
-  <%= @picture.caption %>
-</p>
+  <p>
+    <strong></strong>
+    <%= @picture.caption %>
+  </p>
 
-<%= render 'comments/comment' %>
+  <%= link_to like_picture_path(@picture), class:"like-btn", method: :put, remote: :true do %>
+    <div>
+      <span><p><i class = "fa fa-heart-o fa-3x"></i></p></span>
+    </div>
+  <% end %>
+
+      <span class="likes-count"> <%= @picture.get_upvotes.size %> </span>
+
+  <%= render 'comments/comment' %>
 
 <%= link_to 'Edit', edit_picture_path(@picture) %> |
 <%= link_to 'Back', pictures_path %>
