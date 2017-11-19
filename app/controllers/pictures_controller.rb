@@ -32,7 +32,8 @@ class PicturesController < ApplicationController
     else
       render 'edit'
     end
-
+  end
+  
 private
   def picture_params
     params.require(:picture).permit(:title, :text)
