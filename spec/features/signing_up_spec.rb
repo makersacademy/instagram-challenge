@@ -21,7 +21,6 @@ feature 'User can sign up' do
 
     it 'should see a sign out link' do
       visit '/'
-      p page
       expect(page).to have_link 'Log Out'
       expect(page).not_to have_link 'Log In'
     end
