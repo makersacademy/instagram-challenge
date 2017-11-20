@@ -5,6 +5,9 @@ A web app which allows the user to:
 * Create an account
 * Upload photos
 * Edit captions on photos
+* See all posts on the homepage
+
+![Screenshot](https://i.imgur.com/cnal5s5.png)
 
 ## Technologies Used
 
@@ -12,6 +15,7 @@ A web app which allows the user to:
 * Rails 5.1.4 - web framework
 * HTML, CSS - front-end
 * Amazon Web Services S3 - image hosting
+* RSpec,Capybara - testing
 
 ## Directory Structure
 
@@ -227,7 +231,6 @@ $ bin/rails server
 Open a web browser and enter `localhost:3000`.
 
 ### Running the Test Suite
-
 
 ```
 $ rspec
