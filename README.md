@@ -1,13 +1,53 @@
 Instagram Challenge
 ===================
 
-## Instructions
+## User Stories
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+```
+As a user,
+So that I can display my pictures,
+I want to be able create a new post
+```
+```
+As a user,
+So that I can describe my picture,
+I want to be able to add text to my picture post
+```
+```
+As a user,
+So that I can update or change my post,
+I want to be able to edit my post
+```
+```
+As a user,
+So that I can remove my post,
+I want to be able to delete a post
+```
+```
+As a new user,
+So that I can start using site,
+I want to be able to sign up for an account
+```
+```
+As a user,
+So I can keep track of my account activity,
+I want to be able to sign in to my account
+```
+```
+As a user,
+So that I know when I am logged in,
+I want my login to be indicated somewhere on the page
+```
+```
+As a user,
+So that I do not leave my account logged in,
+I want to see a log out option somewhere on the page
+```
+```
+As a user,
+So that it is clear which posts are mine,
+I want my username to be displayed as part of my post
+```
 
 ## Task
 
