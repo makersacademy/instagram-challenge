@@ -1,23 +1,12 @@
-<div class="posts-wrapper row">
-  <div class="post">
-    <div class="post-head">
-      Austin Rowsell
+<%= render 'post', post: @post %>
+<% if @post.user.id == current_user.id %>
+    <div class="text-center edit-links">
+      <%= link_to "Cancel", posts_path %>
+      |
+      <%= link_to "Edit Post", edit_post_path(@post) %>
     </div>
-    <div class="image center-block">
-      <%= link_to (image_tag @post.image.url(:web, :full), class: 'img-responsive'), post_path(@post) %>
+<% else %>
+    <div class="text-center edit-links">
+      <%= link_to "Cancel", posts_path %>
     </div>
-    <p class="post-text"><%= @post.text %></p>
-
-  </div>
-  <% if @post.user.id == current_user.id %>
-      <div class="text-center edit-links">
-        <%= link_to "Cancel", posts_path %>
-        |
-        <%= link_to "Edit Post", edit_post_path(@post) %>
-      </div>
-  <% else %>
-      <div class="text-center edit-links">
-        <%= link_to "Cancel", posts_path %>
-      </div>
-  <% end %>
-</div>
+<% end %>
