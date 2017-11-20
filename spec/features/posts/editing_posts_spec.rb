@@ -27,8 +27,8 @@ end
 
 feature 'Edit another users post' do
   background do
-    user_1 = create(:user, email:'test1@test.com', user_name: 'testuser1')
-    user_2 = create(:user, email:'test2@test.com', user_name: 'testuser2')
+    user_1 = create(:user, email: 'test1@test.com', user_name: 'testuser1')
+    user_2 = create(:user, email: 'test2@test.com', user_name: 'testuser2')
     post = create(:post, user_id: user_1.id)
     sign_in_as_user(user_2)
     visit "/posts/#{post.id}/edit"

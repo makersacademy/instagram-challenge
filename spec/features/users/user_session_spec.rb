@@ -12,7 +12,6 @@ feature 'Signing in a user' do
     click_button 'Log in'
     expect(page).to have_content('Signed in successfully.')
   end
-
 end
 
 feature 'Signing out a user' do
@@ -28,5 +27,4 @@ feature 'Signing out a user' do
     click_link('Sign Out')
     expect(page).to have_content('You need to sign in or sign up before continuing.')
   end
-
 end

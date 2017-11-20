@@ -15,9 +15,4 @@ feature 'Creating comments' do
     # expect(page).to have_content('Great post')
     expect(page).to have_content("#{user.user_name.capitalize}: Great post")
   end
-
-  # it 'needs an image to create a post' do
-  #   click_button 'Create Post'
-  #   expect(page).to have_content('Something is wrong with your form!')
-  # end
 end

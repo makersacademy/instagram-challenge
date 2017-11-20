@@ -38,20 +38,20 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   private
 
-  def mogrify(options = {})
-    manipulate! do |img|
-      img.format("png") do |c|
-        c.fuzz        "3%"
-        c.trim
-        c.rotate      "#{options[:rotate]}" if options.has_key?(:rotate)
-        c.resize      "#{options[:resolution]}>" if options.has_key?(:resolution)
-        c.resize      "#{options[:resolution]}<" if options.has_key?(:resolution)
-        c.push        '+profile'
-        c.+           "!xmp,*"
-        c.profile     "#{Rails.root}/lib/color_profiles/sRGB_v4_ICC_preference_displayclass.icc"
-        c.colorspace  "sRGB"
-      end
-      img
-    end
-  end
+  # def mogrify(options = {})
+  #   manipulate! do |img|
+  #     img.format("png") do |c|
+  #       c.fuzz        "3%"
+  #       c.trim
+  #       c.rotate      "#{options[:rotate]}" if options.has_key?(:rotate)
+  #       c.resize      "#{options[:resolution]}>" if options.has_key?(:resolution)
+  #       c.resize      "#{options[:resolution]}<" if options.has_key?(:resolution)
+  #       c.push        '+profile'
+  #       c.+           "!xmp,*"
+  #       c.profile     "#{Rails.root}/lib/color_profiles/sRGB_v4_ICC_preference_displayclass.icc"
+  #       c.colorspace  "sRGB"
+  #     end
+  #     img
+  #   end
+  # end
 end
