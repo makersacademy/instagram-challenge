@@ -1,0 +1,11 @@
+<div class="post-container">
+  <%= image_tag post.image, class: "post-image" %>
+  <div class="post-footer">
+    <span class="post-author"><%= User.find(post.user_id).email %></span>
+    <span class="post-caption">: <%= post.caption %></span>
+    <span class="post-options">
+    <%= link_to 'Edit', edit_post_path(post) if current_user.id == post.user_id %> |
+    <%= link_to '...', post_path(post) %>
+    </span>
+  </div>
+</div>
