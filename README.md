@@ -5,6 +5,12 @@ Pinstagram
 
 Find the app at: https://pin-stagram-app.herokuapp.com
 
+<img src="app/assets/images/index.png" width="65%%"><br>
+
+<img src="app/assets/images/pin.png" width="65%"><br>
+
+<img src="app/assets/images/login.png" width="65%">
+
 ## Technology Used
 
 *  Ruby on Rails
