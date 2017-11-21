@@ -26,6 +26,7 @@ Find the app at: https://pin-stagram-app.herokuapp.com
 
 * CRC Cards and Diagramming
 * Using Rails CLI commands to build pin controller, models and views
+* Setting up PostgreSQL to persist data
 * Integrating file storage with Google Cloud Services
 * Implementing Devise to authenticate users and build user model, controller and views
 * Adding comments and likes to pin model
