@@ -1,4 +1,4 @@
-Instagram Challenge
+Instagram Challenge 📸🙆🏻
 ===================
 
 This weekend's challenge was to recreate Instagram using Ruby on Rails.
