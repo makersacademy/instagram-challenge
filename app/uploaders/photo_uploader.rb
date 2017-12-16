@@ -1,4 +1,7 @@
 class PhotoUploader < CarrierWave::Uploader::Base
+  def extension_whitelist
+    %w(jpg jpeg gif png)
+  end
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
