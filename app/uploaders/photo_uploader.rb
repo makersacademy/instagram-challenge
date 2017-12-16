@@ -2,7 +2,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
 
-  process resize_to_fit: [800, 800]
+  process resize_to_fit: [500, 500]
 
   storage :fog
 
