@@ -1,14 +1,36 @@
-<h3>All Posts</h3>
-
-<div class="">
   <% @posts.reverse.each do |post| %>
-    <div><%= image_tag post.image_url(:thumb).to_s %></div>
-    <div><%= post.caption %></div>
-    <div><%= link_to 'Show', post_path(post) %></div>
-    <div><%= link_to 'Edit', edit_post_path(post) %></div>
-    <div><%= link_to 'Destroy', post_path(post),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-sm-6 above-pic"><strong>@testperson: </strong><%= post.caption %></div>
+        <div class="col-sm-6 text-right above-pic"><strong>Written: </strong>In December</div>
+      </div>
+        <div class="text-center image"><%= image_tag post.image_url(:thumb).to_s %></div>
+      <div class="comments">
+        <% post.comments.each do |comment| %>
+          <p><strong>@anotheruser: </strong><%= comment.body %></p>
+        <% end %>
+      </div>
+
+        <div onmouseenter="toggleCommentForm(this.id)" id='<%= post.id %>'>
+          <p>Leave a comment</p>
+          <div class="comment-form"  id='commentForm<%= post.id %>'>
+            <%= form_with(model: [post, post.comments.build], local: true) do |form| %>
+              <p>
+                <%= form.label :body %>
+                <%= form.text_field :body %>
+                <%= form.hidden_field :post_id, value: post.id %>
+              </p>
+              <%= form.submit %>
+            <% end %>
+          </div>
+        </div>
+
+      <p><%= link_to 'Show', post_path(post) %></p>
+      <p><%= link_to 'Edit', edit_post_path(post) %></p>
+      <p><%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
     </div>
+
   <% end %>
-</div>
