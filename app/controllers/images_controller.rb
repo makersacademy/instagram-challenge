@@ -1,6 +1,5 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
-  has_many :comments
 
   # GET /images
   # GET /images.json
@@ -11,6 +10,8 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    @images = Image.find(params[:id])
+    @comment = Comment.new(:images_id => @images)
   end
 
   # GET /images/new

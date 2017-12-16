@@ -1,6 +1,5 @@
 class Image < ApplicationRecord
-  # validates_presence_of :imageurl
-
+  has_many :comments 
   mount_uploader :imageurl, ImageUploaderUploader
 
 end
