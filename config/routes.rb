@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :photos
+  resources :photos do
+    resources :comments do
+
+    end
+  end
 
 end
