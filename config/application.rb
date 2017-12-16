@@ -26,6 +26,8 @@ module InstagramChallenge
     # -- all .rb files in that directory are automatically loaded.
 
     # Don't generate system test files.
+    config.generators.stylesheets = false
+    config.generators.javascript_engine = :js
     config.generators.system_tests = nil
   end
 end
