@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "posts/new.html.erb" do
-  describe 'when opening the page' do
+  describe 'when creating a new post' do
 
     before(:each) do
       visit('/posts/new')
