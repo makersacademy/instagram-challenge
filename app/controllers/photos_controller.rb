@@ -8,8 +8,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
-    p @photo.save!
-    p @photo.photo.url
+    @photo.save!
   end
 
   private
