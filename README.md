@@ -1,40 +1,53 @@
-Instagram Challenge
+[![Build Status](https://travis-ci.org/haletothewood/Pinstagram.svg?branch=master)](https://travis-ci.org/haletothewood/Pinstagram)
+
+Pinstagram
 ===================
 
-## Instructions
+Find the app at: https://pin-stagram-app.herokuapp.com
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+<img src="app/assets/images/index.png" width="65%%"><br>
 
-## Task
+<img src="app/assets/images/pin.png" width="65%"><br>
 
-Build Instagram: Simple huh!
+<img src="app/assets/images/login.png" width="65%">
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## Technology Used
 
-Bonus if you can add filters!
+*  Ruby on Rails
+*  Rspec
+*  Capybara
+*  Devise
+*  Postgresql
+*  Carrierwave
+*  Google Cloud Storage
+*  Heroku
 
-## How to start
+## Approach
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+* CRC Cards and Diagramming
+* Using Rails CLI commands to build pin controller, models and views
+* Setting up PostgreSQL to persist data
+* Integrating file storage with Google Cloud Services
+* Implementing Devise to authenticate users and build user model, controller and views
+* Adding comments and likes to pin model
+* Styling using pure HTML and CSS
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+## Functionality
 
-## Code Quality
+A user can:
+* Log In/Log Out and Sign Up
+* Pin An image
+* Comment on an image
+* Delete a comment
+* Like an image
+* See how many likes an image has
+* See if you have liked an image
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+## Future Possibilities
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+* AJAX
+* Unlike an image
+* Follow another user
+* Tag a user in a comment
+* Filter pins by likes/own images/followed etc
+* Adding photo filters
