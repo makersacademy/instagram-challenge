@@ -12,6 +12,10 @@ class PhotosController < ApplicationController
     render 'index'
   end
 
+  def show
+    
+  end
+
   private
 
   def photo_params
