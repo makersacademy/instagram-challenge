@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'testing infrastructure' do
   scenario 'testing infrastructure is working' do
     visit '/'
