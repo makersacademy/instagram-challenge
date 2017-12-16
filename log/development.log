@@ -2088,3 +2088,160 @@ Processing by ImagesController#index as HTML
 Completed 200 OK in 186ms (Views: 161.4ms | ActiveRecord: 8.1ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-12-16 12:44:39 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ImagesController#index as HTML
+  Rendering images/index.html.erb within layouts/application
+  [1m[36mImage Load (0.7ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+  Rendered images/index.html.erb within layouts/application (19.2ms)
+Completed 200 OK in 185ms (Views: 164.0ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/images/1/edit" for 127.0.0.1 at 2017-12-16 12:44:41 +0000
+Processing by ImagesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering images/edit.html.erb within layouts/application
+  Rendered images/_form.html.erb (21.3ms)
+  Rendered images/edit.html.erb within layouts/application (24.6ms)
+Completed 200 OK in 72ms (Views: 41.9ms | ActiveRecord: 14.5ms)
+
+
+Started PATCH "/images/1" for 127.0.0.1 at 2017-12-16 12:44:45 +0000
+Processing by ImagesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yqas7CxJ1I8Fi24vzRsw+n5s5uXq0bbUMjO5q2yvb9XU5pDkAW9gI31iRHLO+8uIVgeYtekmyu6/FoyiYULdjg==", "image"=>{"caption"=>"Hello "}, "commit"=>"Update Image", "id"=>"1"}
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (18.8ms)[0m  [1m[33mUPDATE "images" SET "caption" = $1, "updated_at" = $2 WHERE "images"."id" = $3[0m  [["caption", "Hello "], ["updated_at", "2017-12-16 12:44:45.526791"], ["id", 1]]
+DEPRECATION WARNING: The behavior of `changed_attributes` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_changes.transform_values(&:first)` instead. (called from block in update at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:44)
+DEPRECATION WARNING: The behavior of `changes` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_changes` instead. (called from block in update at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:44)
+DEPRECATION WARNING: The behavior of `changed` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_changes.keys` instead. (called from block in update at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:44)
+DEPRECATION WARNING: The behavior of `attribute_change` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute` instead. (called from block in update at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:44)
+DEPRECATION WARNING: The behavior of `attribute_changed?` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute?` instead. (called from block in update at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:44)
+DEPRECATION WARNING: The behavior of `attribute_change` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute` instead. (called from block in update at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:44)
+DEPRECATION WARNING: The behavior of `attribute_changed?` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute?` instead. (called from block in update at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:44)
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/images/1
+Completed 302 Found in 39ms (ActiveRecord: 20.6ms)
+
+
+Started GET "/images/1" for 127.0.0.1 at 2017-12-16 12:44:45 +0000
+Processing by ImagesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering images/show.html.erb within layouts/application
+  Rendered images/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 28ms (Views: 25.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/images" for 127.0.0.1 at 2017-12-16 12:44:47 +0000
+Processing by ImagesController#index as HTML
+  Rendering images/index.html.erb within layouts/application
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+  Rendered images/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 28ms (Views: 25.5ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/images/1" for 127.0.0.1 at 2017-12-16 12:44:52 +0000
+Processing by ImagesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"DOr7j81gqAGWKqL0u/cXZWdnHXuwVx7ySIHsY0youhzIVB4cFb2sQ9KzkiXYyDLTu49XnzS2TjUNyb4Io5+Dhg==", "id"=>"1"}
+  [1m[36mImage Load (0.5ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "images" WHERE "images"."id" = $1[0m  [["id", 1]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/images
+Completed 302 Found in 14ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/images" for 127.0.0.1 at 2017-12-16 12:44:52 +0000
+Processing by ImagesController#index as HTML
+  Rendering images/index.html.erb within layouts/application
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+  Rendered images/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 33ms (Views: 29.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/images" for 127.0.0.1 at 2017-12-16 12:46:34 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ImagesController#index as HTML
+  Rendering images/index.html.erb within layouts/application
+  [1m[36mImage Load (0.5ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+  Rendered images/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 157ms (Views: 143.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/images/new" for 127.0.0.1 at 2017-12-16 12:46:37 +0000
+Processing by ImagesController#new as HTML
+  Rendering images/new.html.erb within layouts/application
+  Rendered images/_form.html.erb (16.4ms)
+  Rendered images/new.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 69ms (Views: 37.6ms | ActiveRecord: 15.7ms)
+
+
+Started POST "/images" for 127.0.0.1 at 2017-12-16 12:46:43 +0000
+Processing by ImagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gWvcdltkVmcNS9x7cnUGST17RzwCSI+uHtLixvxR4mIW/g1/SGCrUzgBf+ORb3cdGGOHT4IZpX/DRfZUwo86Yw==", "image"=>{"caption"=>"judge judy ", "imageurl"=>#<ActionDispatch::Http::UploadedFile:0x007fde38008ed0 @tempfile=#<Tempfile:/var/folders/6t/50dtl20n0mb6vblqjh2g13p00000gn/T/RackMultipart20171216-9040-1lf5bof.gif>, @original_filename="giphy (8).gif", @content_type="image/gif", @headers="Content-Disposition: form-data; name=\"image[imageurl]\"; filename=\"giphy (8).gif\"\r\nContent-Type: image/gif\r\n">}, "commit"=>"Create Image"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "images" ("caption", "imageurl", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["caption", "judge judy "], ["imageurl", "giphy__8_.gif"], ["created_at", "2017-12-16 12:46:43.608879"], ["updated_at", "2017-12-16 12:46:43.608879"]]
+DEPRECATION WARNING: The behavior of `changed_attributes` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_changes.transform_values(&:first)` instead. (called from block in create at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:30)
+DEPRECATION WARNING: The behavior of `changes` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_changes` instead. (called from block in create at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:30)
+DEPRECATION WARNING: The behavior of `changed` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_changes.keys` instead. (called from block in create at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:30)
+DEPRECATION WARNING: The behavior of `attribute_change` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute` instead. (called from block in create at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:30)
+DEPRECATION WARNING: The behavior of `attribute_changed?` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute?` instead. (called from block in create at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:30)
+DEPRECATION WARNING: The behavior of `attribute_change` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute` instead. (called from block in create at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:30)
+DEPRECATION WARNING: The behavior of `attribute_changed?` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute?` instead. (called from block in create at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:30)
+DEPRECATION WARNING: The behavior of `attribute_change` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute` instead. (called from block in create at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:30)
+DEPRECATION WARNING: The behavior of `attribute_changed?` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute?` instead. (called from block in create at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:30)
+DEPRECATION WARNING: The behavior of `attribute_change` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute` instead. (called from block in create at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:30)
+DEPRECATION WARNING: The behavior of `attribute_changed?` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute?` instead. (called from block in create at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:30)
+DEPRECATION WARNING: The behavior of `attribute_change` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute` instead. (called from block in create at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:30)
+DEPRECATION WARNING: The behavior of `attribute_changed?` inside of after callbacks will be changing in the next version of Rails. The new return value will reflect the behavior of calling the method after `save` returned (e.g. the opposite of what it returns now). To maintain the current behavior, use `saved_change_to_attribute?` instead. (called from block in create at /Users/macintosh/Desktop/Projects/weekendchallenges/instagram-challenge/app/controllers/images_controller.rb:30)
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/images/2
+Completed 302 Found in 20ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/images/2" for 127.0.0.1 at 2017-12-16 12:46:43 +0000
+Processing by ImagesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering images/show.html.erb within layouts/application
+  Rendered images/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 31ms (Views: 21.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/images" for 127.0.0.1 at 2017-12-16 12:47:35 +0000
+Processing by ImagesController#index as HTML
+  Rendering images/index.html.erb within layouts/application
+  [1m[36mImage Load (0.7ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+  Rendered images/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 35ms (Views: 30.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/images/2" for 127.0.0.1 at 2017-12-16 12:47:37 +0000
+Processing by ImagesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering images/show.html.erb within layouts/application
+  Rendered images/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 33ms (Views: 27.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-16 14:25:51 +0000
+  [1m[35m (7.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ImagesController#index as HTML
+  Rendering images/index.html.erb within layouts/application
+  [1m[36mImage Load (1.0ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+  Rendered images/index.html.erb within layouts/application (23.5ms)
+Completed 200 OK in 236ms (Views: 211.6ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/images/2" for 127.0.0.1 at 2017-12-16 14:25:55 +0000
+Processing by ImagesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mImage Load (0.9ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering images/show.html.erb within layouts/application
+  Rendered images/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 53ms (Views: 19.9ms | ActiveRecord: 12.4ms)
+
+
