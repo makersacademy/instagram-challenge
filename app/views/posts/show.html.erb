@@ -1,0 +1,36 @@
+
+ <div class="uploader"> <%= @post.user.email.to_s %> </div>
+<%   if current_user && current_user.id == @post.user_id %>
+  <%= link_to 'Edit', edit_post_path(@post), method: :get %>
+  <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure you want to delete this post?' } %>
+<% end %>
+<div class="photo"><img src="<%= @post.photo %>"></div>
+<div class="description"><%= @post.description %></div>
+    <div class="likes"> <%= link_to 'likes: ' + @post.likes.count.to_s, post_likes_path(:post_id => @post.id)  %>   </div>
+  <%= form_with(model: [ @post, @post.likes.build ], local: true) do |form| %>
+    <%= form.submit "Like!", id: 'likebtn' + @post.id.to_s, :disabled => !current_user %>
+  <% end %>
+  <div class="comments_count"> <%= pluralize(@post.comments.count, "comment") %> </div>
+
+<div class="comments"> 
+  <%@post.comments.each do |comment|%>
+  <div class="comment">
+  <div class="author"><%= link_to User.find(comment.user_id).email.to_s, user_posts_index_path(:user => comment.user_id) %></div>
+  <div class="comment-text"> <%= comment.text %> </div>
+  <%   if current_user && current_user.id == comment.user_id %>
+    <%= link_to 'Edit', edit_post_comment_path(comment), method: :get %>
+    <%= link_to 'Delete', post_comment_path(comment), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' } %>
+  <% end %>
+  </div>
+  <% end %>
+</div>
+<%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+
+  <p>
+    <%= form.label :Comment %><br>
+    <%= form.text_area :text %>
+  </p>
+  <p>
+    <%= form.submit "Post comment"%>
+  </p>
+<% end %>
