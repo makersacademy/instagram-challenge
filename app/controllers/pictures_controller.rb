@@ -17,6 +17,10 @@ skip_before_action :verify_authenticity_token
     end
   end
 
+  def show
+    @picture = Picture.find(params[:id])
+  end
+
   private
 
   def picture_params
