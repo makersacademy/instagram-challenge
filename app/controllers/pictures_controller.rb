@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
   before_action :authenticate_user!
   def index
-    @pictures = Picture.all
+    @pictures = Picture.all.order('created_at DESC')
   end
 
   def show
@@ -24,7 +24,7 @@ class PicturesController < ApplicationController
 
   def edit
   end
-  
+
   def delete
   end
 

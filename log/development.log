@@ -2788,3 +2788,42 @@ Processing by PicturesController#index as HTML
 Completed 200 OK in 86ms (Views: 44.7ms | ActiveRecord: 24.5ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-12-17 15:21:47 +0000
+  [1m[35m (6.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (2.6ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures" ORDER BY created_at DESC[0m
+  Rendered pictures/index.html.erb within layouts/application (26.2ms)
+Completed 200 OK in 370ms (Views: 285.2ms | ActiveRecord: 25.4ms)
+
+
+Started GET "/users/1/pictures/new" for 127.0.0.1 at 2017-12-17 15:21:59 +0000
+Processing by PicturesController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/new.html.erb within layouts/application (22.9ms)
+Completed 200 OK in 80ms (Views: 50.5ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/pictures" for 127.0.0.1 at 2017-12-17 15:22:16 +0000
+Processing by PicturesController#create as JS
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wJzgRv3Z/oYttlD2oZVX5I59Sr6GaVAi28qxRyf4aT2Bg8ErL8iavcJkpEkBv8Yb+zSzLHk+sslqFhtKIqKGlQ==", "picture"=>{"caption"=>"Amelast", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f8f54cf7cc8 @tempfile=#<Tempfile:/var/folders/zv/lkvmmy0d1cg9rk1clkcqt7kr0000gn/T/RackMultipart20171217-24017-1qy90ao.jpg>, @original_filename="DSC01205 copy.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"DSC01205 copy.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Post", "user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (13.8ms)[0m  [1m[32mINSERT INTO "pictures" ("caption", "created_at", "updated_at", "image", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["caption", "Amelast"], ["created_at", "2017-12-17 15:22:16.623059"], ["updated_at", "2017-12-17 15:22:16.623059"], ["image", "DSC01205_copy.jpg"], ["user_id", 1]]
+  [1m[35m (12.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 200 OK in 51ms (ActiveRecord: 26.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 15:22:16 +0000
+Processing by PicturesController#index as HTML
+  [1m[36mUser Load (13.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (5.6ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures" ORDER BY created_at DESC[0m
+  Rendered pictures/index.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 81ms (Views: 55.7ms | ActiveRecord: 18.8ms)
+
+
