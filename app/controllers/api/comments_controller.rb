@@ -5,7 +5,6 @@ module Api
     end
 
     def index
-      p params
       render :json => { comments: photo.comments }
     end
 
