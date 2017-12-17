@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'Openning the insta_posts#new page' do
 
   before(:each) do
+    sign_up_user
     visit('/insta_posts/new')
   end
 

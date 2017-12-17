@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'Openning the insta_posts#show page' do
   before(:each) do
+    sign_up_user
     create_post
     create_second_post
   end

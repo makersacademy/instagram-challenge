@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'Openning the welcome#index page' do
 
   before(:each) do
+    sign_up_user
     visit('/')
   end
 

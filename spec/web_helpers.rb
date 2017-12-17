@@ -1,3 +1,12 @@
+def sign_up_user
+  visit('/users/sign_up')
+  fill_in(id: 'user_name', with: 'test')
+  fill_in(id: 'user_email', with: 'test@test.test')
+  fill_in(id: 'user_password', with: 'test@test.test')
+  fill_in(id: 'user_password_confirmation', with: 'test@test.test')
+  click_button('Sign up')
+end
+
 def create_post
   visit('/insta_posts/new')
   fill_in('insta_post[title]', with: 'generic title')
