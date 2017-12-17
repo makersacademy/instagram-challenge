@@ -23,9 +23,7 @@ feature 'Openning the insta_posts#new page' do
   end
 
   scenario 'it creates a new post' do
-    fill_in('insta_post[title]', with: 'generic title')
-    fill_in('insta_post[description]', with: 'generic description')
-    click_button('Save Insta post')
+    create_post
     expect(page).to have_content("Title: generic title")
     expect(page).to have_content("Description: generic description")
   end
