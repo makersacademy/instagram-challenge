@@ -26,4 +26,9 @@ Rails.application.routes.draw do
 
   end
 
+
+    resources :images, only: [:new, :create] do
+
+    end
+
 end

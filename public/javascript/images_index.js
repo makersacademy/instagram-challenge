@@ -18,8 +18,8 @@ var number_of_likes = 0
         })
         $('#image-' + image.id).append('<p>' + number_of_likes + ' likes</p>')
         $('#image-' + image.id).append('<div id=reactions-' + image.id + '></div>')
-        $('#reactions-' + image.id).append("<form id='reaction' class= "+ image.id + " method='post' action='/reactions'><input id='id' type='hidden' name= image_id value='" + image.id + "'><input id='comment' type='text' name='comment'><input id='submit' type='submit' value='submit'></form>")
-        $('#reactions-' + image.id).append("<form id='like' class= "+ image.id + " method='post' action='/likes'><input id='id' type='hidden' name= image_id value='" + image.id + "'><input id='like' type='hidden' value='1' name='like'><input id='submit' type='submit' value='like'></form>")
+        $('#reactions-' + image.id).append("<form id='reaction' class= "+ image.id + " method='post' action='/reactions' data-remote=true><input id='id' type='hidden' name= image_id value='" + image.id + "'><input id='comment' type='text' name='comment'><input id='submit' type='submit' value='submit'></form>")
+        $('#reactions-' + image.id).append("<form id='like' class= "+ image.id + " method='post' action='/likes' data-remote=true><input id='id' type='hidden' name= image_id value='" + image.id + "'><input id='like' type='hidden' value='1' name='like'><input id='submit' type='submit' value='like'></form>")
 
       })
   });
