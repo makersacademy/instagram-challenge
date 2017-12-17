@@ -6,7 +6,7 @@ feature 'Openning the insta_posts#new page' do
     visit('/insta_posts/new')
   end
 
-  scenario 'it have a message' do
+  scenario 'it has a message' do
     expect(page).to have_content('Create a new post')
   end
 
@@ -26,8 +26,8 @@ feature 'Openning the insta_posts#new page' do
     fill_in('insta_post[title]', with: 'generic title')
     fill_in('insta_post[description]', with: 'generic description')
     click_button('Save Insta post')
-    expect(page).to have_content("Hey look at this: generic title")
-    expect(page).to have_content("With this: generic title")
+    expect(page).to have_content("Title: generic title")
+    expect(page).to have_content("Description: generic description")
   end
 
 end
