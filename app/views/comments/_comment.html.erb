@@ -10,7 +10,9 @@
   </p>
 
   <p>
-    <%= button_to 'Delete Comment', [comment.insta_post, comment],
+    <%= if user_signed_in? && current_user.id == comment.user_id
+    button_to 'Delete Comment', [comment.insta_post, comment],
                  method: :delete,
-                 data: { confirm: 'Are you sure?' } %>
+                 data: { confirm: 'Are you sure?' }
+                 end %>
   </p>
