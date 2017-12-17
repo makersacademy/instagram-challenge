@@ -120,3 +120,1304 @@ Migrating to CreateComments (20171217102825)
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8350704865120313745)[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-12-17 11:57:38 +0000
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 419ms (Views: 362.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-12-17 11:57:42 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/_form.html.erb (24.9ms)
+  Rendered pictures/new.html.erb within layouts/application (28.8ms)
+Completed 200 OK in 133ms (Views: 62.5ms | ActiveRecord: 21.6ms)
+
+
+Started POST "/pictures" for 127.0.0.1 at 2017-12-17 11:57:55 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"U2dUW4eJQBQZDPpfEylrUygbsTqiZIlCCfB+MSnK7LdmD+IFitHKOA5rSe3FiqNe1dtqWSH2sgv8Htku1h/Jkg==", "picture"=>{"description"=>"first", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007ffcd526da98 @tempfile=#<Tempfile:/var/folders/ym/k_lxszm15gj_np_k7yhtpt4r0000gn/T/RackMultipart20171217-12662-vw4m7h.jpg>, @original_filename="wave.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"wave.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Picture"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "first"], ["image", "prh2kdgc95id1hgthkdt.jpg"], ["created_at", "2017-12-17 11:57:55.109130"], ["updated_at", "2017-12-17 11:57:55.109130"]]
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "pictures" SET "image" = 'image/upload/v1513511875/prh2kdgc95id1hgthkdt.jpg' WHERE "pictures"."id" = $1[0m  [["id", 1]]
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 993ms (ActiveRecord: 10.9ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 11:57:56 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.8ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 85ms (Views: 77.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 11:57:58 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 89ms (Views: 45.1ms | ActiveRecord: 17.3ms)
+
+
+Started GET "/pictures/1/comments" for 127.0.0.1 at 2017-12-17 11:58:14 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/pictures/1/comments"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/comments" for 127.0.0.1 at 2017-12-17 11:58:23 +0000
+Processing by CommentsController#index as HTML
+  Rendering comments/index.html.erb within layouts/application
+  Rendered comments/index.html.erb within layouts/application (8.1ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: <h1>Comments</h1>
+    2: <%= link_to 'Add Comment', new_comment_path%>
+    3: <% @comment.each do |comment| %>
+    4:    <ul>
+    5:      <div class="content">
+    6:       <%= comment.content %>
+  
+app/views/comments/index.html.erb:3:in `_app_views_comments_index_html_erb___861453502148003703_70361975114740'
+Started GET "/comments" for 127.0.0.1 at 2017-12-17 11:58:43 +0000
+Processing by CommentsController#index as HTML
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 67ms (Views: 55.2ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/comments/new" for 127.0.0.1 at 2017-12-17 11:58:46 +0000
+Processing by CommentsController#new as HTML
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (4.4ms)
+  Rendered comments/new.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 99ms (Views: 53.7ms | ActiveRecord: 27.0ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2017-12-17 11:58:53 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"80yYola56oh2PikpfJ4OMBxGqevbiItOxssnB3cdJTlpKMw2ZQTZcC1ZDFGNxH4mPcLCFELen9U9tiYc45EpLw==", "comment"=>{"content"=>"a"}, "commit"=>"Create Comment"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (4.4ms)
+  Rendered comments/new.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 95ms (Views: 70.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2017-12-17 11:59:08 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"C5s8b18SfvAhS0z/ENmAlvYmszTKnGKuHH4YSQQlp+QccXGeh7NxJWyOM0Ww5iu/mEtnisuchzJ3tZbHpWXFCw==", "comment"=>{"content"=>"a"}, "commit"=>"Create Comment"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (5.0ms)
+  Rendered comments/new.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 79ms (Views: 71.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/comments" for 127.0.0.1 at 2017-12-17 11:59:31 +0000
+Processing by CommentsController#index as HTML
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (2.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (11.2ms)
+Completed 200 OK in 95ms (Views: 81.5ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/comments/new" for 127.0.0.1 at 2017-12-17 11:59:33 +0000
+Processing by CommentsController#new as HTML
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (4.5ms)
+  Rendered comments/new.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 110ms (Views: 59.4ms | ActiveRecord: 28.7ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2017-12-17 11:59:35 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"E4kvLAPpaHXxdN9wUH2y32Jt75T6OsXZgco2imWLCVaJ7Xu4MFRbjaoT+gihJ8LJQ+mEa2Ns0UJ6tzeR8QcFQA==", "comment"=>{"content"=>"a"}, "commit"=>"Create Comment"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (3.2ms)
+  Rendered comments/new.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 88ms (Views: 67.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/comments" for 127.0.0.1 at 2017-12-17 11:59:52 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CommentsController#index as HTML
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 283ms (Views: 252.0ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/comments/new" for 127.0.0.1 at 2017-12-17 11:59:55 +0000
+Processing by CommentsController#new as HTML
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (24.7ms)
+  Rendered comments/new.html.erb within layouts/application (28.7ms)
+Completed 200 OK in 132ms (Views: 60.4ms | ActiveRecord: 20.9ms)
+
+
+Started POST "/comments" for 127.0.0.1 at 2017-12-17 11:59:57 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cBDEjjOtd8NuqzpKKE14b2UVh9ym59BHIdo6VHcm45rqdJAaABBEOzXMHzLZFwh5RJHsIz+xxNzapztP46rvjA==", "comment"=>{"content"=>"a"}, "commit"=>"Create Comment"}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (2.1ms)
+  Rendered comments/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 103ms (Views: 53.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 12:07:12 +0000
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.9ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 340ms (Views: 287.5ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 12:07:15 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.8ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 132ms (Views: 58.9ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/pictures/1/comments" for 127.0.0.1 at 2017-12-17 12:07:24 +0000
+Processing by CommentsController#index as HTML
+  Parameters: {"picture_id"=>"1"}
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  Rendered comments/index.html.erb within layouts/application (416.9ms)
+Completed 500 Internal Server Error in 445ms (ActiveRecord: 21.6ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_comment_path' for #<#<Class:0x00007ff78d2f1e58>:0x00007ff78d2f0260>
+Did you mean?  new_picture_path):
+    1: <h1>Comments</h1>
+    2: <%= link_to 'Add Comment', new_comment_path%>
+    3: <% @comments.each do |comment| %>
+    4:    <ul>
+    5:      <div class="content">
+  
+app/views/comments/index.html.erb:2:in `_app_views_comments_index_html_erb__934958444776282806_70350601163760'
+Started GET "/" for 127.0.0.1 at 2017-12-17 12:13:07 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (1.0ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (54.0ms)
+Completed 200 OK in 378ms (Views: 313.5ms | ActiveRecord: 12.1ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 12:13:11 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 14.5ms)
+
+
+  
+NoMethodError (undefined method `comments' for #<Class:0x00007fc7c12e1ec8>):
+  
+app/controllers/pictures_controller.rb:22:in `show'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "comments" ("picture_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["picture_id", 1], ["content", "nothing"], ["created_at", "2017-12-17 12:25:13.836316"], ["updated_at", "2017-12-17 12:25:13.836316"]]
+  [1m[35m (10.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPicture Load (0.8ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+Started GET "/" for 127.0.0.1 at 2017-12-17 12:26:51 +0000
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.9ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (45.2ms)
+Completed 200 OK in 338ms (Views: 291.5ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 12:26:53 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 83ms (ActiveRecord: 15.4ms)
+
+
+  
+NoMethodError (undefined method `comments' for #<Class:0x00007febc0ea0408>):
+  
+app/controllers/pictures_controller.rb:22:in `show'
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 12:27:15 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  Rendered pictures/show.html.erb within layouts/application (441.0ms)
+Completed 500 Internal Server Error in 508ms (ActiveRecord: 8.4ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_comment_path' for #<#<Class:0x00007febbedb4208>:0x00007febc1a2cc40>
+Did you mean?  new_picture_path):
+     7: </div>
+     8: <div class="comment">
+     9:   <h1>Comments</h1>
+    10:     <%= link_to 'Add Comment', new_comment_path%>
+    11:     <% @comments.each do |comment| %>
+    12:       <ul>
+    13:         <div class="content">
+  
+app/views/pictures/show.html.erb:10:in `_app_views_pictures_show_html_erb__1697230535001053214_70325248042440'
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 12:28:08 +0000
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  Rendered pictures/show.html.erb within layouts/application (409.7ms)
+Completed 500 Internal Server Error in 503ms (ActiveRecord: 13.9ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_comment_path' for #<#<Class:0x00007f82c5240c08>:0x00007f82c5222d20>
+Did you mean?  new_picture_path):
+     7: </div>
+     8: <div class="comment">
+     9:   <h1>Comments</h1>
+    10:     <!-- <%= link_to 'Add Comment', new_comment_path%> -->
+    11:     <% @comments.each do |comment| %>
+    12:       <ul>
+    13:         <div class="content">
+  
+app/views/pictures/show.html.erb:10:in `_app_views_pictures_show_html_erb__3372899815687785727_70099814990060'
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 12:28:25 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.9ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (77.5ms)
+Completed 200 OK in 470ms (Views: 450.8ms | ActiveRecord: 11.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 12:28:27 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 65ms (Views: 57.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 12:28:31 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 111ms (Views: 84.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/pictures/1/comments" for 127.0.0.1 at 2017-12-17 12:32:36 +0000
+Processing by CommentsController#index as HTML
+  Parameters: {"picture_id"=>"1"}
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  Rendered comments/index.html.erb within layouts/application (353.6ms)
+Completed 500 Internal Server Error in 370ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_comment_path' for #<#<Class:0x00007f82c82fb910>:0x00007f82c82f9d18>
+Did you mean?  new_picture_path):
+    1: <h1>Comments</h1>
+    2: <%= link_to 'Add Comment', new_comment_path%>
+    3: <% @comments.each do |comment| %>
+    4:    <ul>
+    5:      <div class="content">
+  
+app/views/comments/index.html.erb:2:in `_app_views_comments_index_html_erb__3804452602821515910_70099798927300'
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 13:45:32 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (33.4ms)
+Completed 200 OK in 309ms (Views: 270.1ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 13:45:33 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 46ms (Views: 35.9ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 13:45:35 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (2.1ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  Rendered pictures/show.html.erb within layouts/application (330.5ms)
+Completed 500 Internal Server Error in 404ms (ActiveRecord: 18.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_comment_path' for #<#<Class:0x00007fdad97093b8>:0x00007fdae0964188>
+Did you mean?  new_picture_path):
+     5: 
+     6:   <%= image_tag(@picture.image.url(:detail), alt: 'Image') if @picture.image? %>
+     7: </div>
+     8: <%= link_to 'Add comment', new_comment_path%>
+     9: <div class="comment">
+    10:   <h1>Comments</h1>
+    11: 
+  
+app/views/pictures/show.html.erb:8:in `_app_views_pictures_show_html_erb__3193201689386739897_70289023772180'
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 13:48:48 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  Rendered pictures/show.html.erb within layouts/application (183.6ms)
+Completed 500 Internal Server Error in 261ms (ActiveRecord: 11.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `comments_path' for #<#<Class:0x00007f8c53ebb2e8>:0x00007f8c53e9b6c8>
+Did you mean?  font_path):
+     5: 
+     6:   <%= image_tag(@picture.image.url(:detail), alt: 'Image') if @picture.image? %>
+     7: </div>
+     8: <%= link_to 'Add comment', @comment%>
+     9: <div class="comment">
+    10:   <h1>Comments</h1>
+    11: 
+  
+app/views/pictures/show.html.erb:8:in `_app_views_pictures_show_html_erb__4523320389460344166_70120340078880'
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 13:51:47 +0000
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 13:51:57 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 307ms (Views: 286.0ms | ActiveRecord: 0.7ms)
+
+
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 54ms (Views: 37.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 13:51:59 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (1.9ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (21.6ms)
+Completed 200 OK in 73ms (Views: 39.0ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/comment/new" for 127.0.0.1 at 2017-12-17 13:52:04 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/comment/new"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 13:52:20 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (1.7ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 38ms (Views: 30.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/comments/new" for 127.0.0.1 at 2017-12-17 13:52:23 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/comments/new"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 13:53:05 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 37ms (Views: 31.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/pictures/picture/1/comments/new" for 127.0.0.1 at 2017-12-17 13:53:07 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/pictures/picture/1/comments/new"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 13:53:12 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 39ms (Views: 31.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/pictures/picture/1/comments/new" for 127.0.0.1 at 2017-12-17 13:53:22 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/pictures/picture/1/comments/new"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 13:53:28 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 53ms (Views: 45.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 13:53:43 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 41ms (Views: 33.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/comments/new" for 127.0.0.1 at 2017-12-17 13:53:45 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/comments/new"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 13:53:47 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 38ms (Views: 29.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 13:53:58 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 37ms (Views: 32.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/pictures/comments/new" for 127.0.0.1 at 2017-12-17 13:53:59 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/pictures/comments/new"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 13:54:02 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 46ms (Views: 38.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 13:54:13 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 38ms (Views: 30.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/pictures/1/comments/new" for 127.0.0.1 at 2017-12-17 13:54:15 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"picture_id"=>"1"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (159.3ms)
+  Rendered comments/new.html.erb within layouts/application (164.9ms)
+Completed 500 Internal Server Error in 189ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `comments_path' for #<#<Class:0x00007f8c56f93398>:0x00007f8c56f917a0>
+Did you mean?  font_path):
+    1: <%= form_for post do |f|%>
+    2: <div>
+    3:   <%= f.label :content%>
+    4:   <%= f.text_area :content%>
+  
+app/views/comments/_form.html.erb:1:in `_app_views_comments__form_html_erb___2822050656264374213_70120365625840'
+app/views/comments/new.html.erb:2:in `_app_views_comments_new_html_erb__1498614560594835541_70120365661860'
+Started GET "/pictures/1/comments" for 127.0.0.1 at 2017-12-17 14:06:53 +0000
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CommentsController#index as HTML
+  Parameters: {"picture_id"=>"1"}
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 14:06:54 +0000
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mComment Load (39.7ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mComment Load (1.5ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT $1[0m  [["LIMIT", 11]]
+  Rendered comments/index.html.erb within layouts/application (521.7ms)
+Completed 500 Internal Server Error in 566ms (ActiveRecord: 49.7ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_comment_path' for #<#<Class:0x00007faef11e0418>:0x00007faef11c1900>
+Did you mean?  new_picture_path):
+    1: <h1>Comments</h1>
+    2: <%= link_to 'Add Comment', new_comment_path%>
+    3: <% @comments.each do |comment| %>
+    4:    <ul>
+    5:      <div class="content">
+  
+app/views/comments/index.html.erb:2:in `_app_views_comments_index_html_erb__2397782676871282181_70194673162840'
+  [1m[36mPicture Load (83.7ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (340.4ms)
+Started GET "/" for 127.0.0.1 at 2017-12-17 14:06:55 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+Completed 200 OK in 1304ms (Views: 995.1ms | ActiveRecord: 284.0ms)
+
+
+  [1m[36mPicture Load (1.0ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (34.7ms)
+Completed 200 OK in 87ms (Views: 66.6ms | ActiveRecord: 16.3ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 14:06:56 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.8ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  [1m[36mCACHE Comment Load (0.0ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."picture_id" = $1 LIMIT $2[0m  [["picture_id", 1], ["LIMIT", 11]]
+  Rendered pictures/show.html.erb within layouts/application (314.6ms)
+Completed 500 Internal Server Error in 365ms (ActiveRecord: 8.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_picture_comment' for #<#<Class:0x00007faef34748d0>:0x00007faef3efd158>
+Did you mean?  new_picture_comment_url
+               new_picture_comment_path):
+     5: 
+     6:   <%= image_tag(@picture.image.url(:detail), alt: 'Image') if @picture.image? %>
+     7: </div>
+     8: <%= link_to 'Add comment', new_picture_comment %>
+     9: <div class="comment">
+    10:   <h1>Comments</h1>
+    11: 
+  
+app/views/pictures/show.html.erb:8:in `_app_views_pictures_show_html_erb__366182941365592462_70194696809940'
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 14:07:21 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (4.6ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"comments", :id=>"1"}, missing required keys: [:picture_id]):
+     5: 
+     6:   <%= image_tag(@picture.image.url(:detail), alt: 'Image') if @picture.image? %>
+     7: </div>
+     8: <%= link_to 'Add comment', new_picture_comment_path %>
+     9: <div class="comment">
+    10:   <h1>Comments</h1>
+    11: 
+  
+app/views/pictures/show.html.erb:8:in `_app_views_pictures_show_html_erb__366182941365592462_70194669874780'
+Started GET "/" for 127.0.0.1 at 2017-12-17 14:07:34 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 42ms (Views: 37.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 14:07:40 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (4.4ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"comments", :id=>"1"}, missing required keys: [:picture_id]):
+     5: 
+     6:   <%= image_tag(@picture.image.url(:detail), alt: 'Image') if @picture.image? %>
+     7: </div>
+     8: <%= link_to 'Add comment', new_picture_comment_path %>
+     9: <div class="comment">
+    10:   <h1>Comments</h1>
+    11: 
+  
+app/views/pictures/show.html.erb:8:in `_app_views_pictures_show_html_erb__366182941365592462_70194718091640'
+Started GET "/" for 127.0.0.1 at 2017-12-17 14:08:34 +0000
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.9ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (35.8ms)
+Completed 200 OK in 318ms (Views: 277.4ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 14:08:37 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (6.0ms)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 8.3ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"comments", :id=>"1"}, missing required keys: [:picture_id]):
+     5: 
+     6:   <%= image_tag(@picture.image.url(:detail), alt: 'Image') if @picture.image? %>
+     7: </div>
+     8: <%= link_to 'Add comment', new_picture_comment_path %>
+     9: <div class="comment">
+    10:   <h1>Comments</h1>
+    11: 
+  
+app/views/pictures/show.html.erb:8:in `_app_views_pictures_show_html_erb__1913576106054640325_70180089640900'
+Started GET "/" for 127.0.0.1 at 2017-12-17 14:09:36 +0000
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.8ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (39.3ms)
+Completed 200 OK in 338ms (Views: 288.7ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 14:09:38 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  Rendered pictures/show.html.erb within layouts/application (6.7ms)
+Completed 500 Internal Server Error in 78ms (ActiveRecord: 8.1ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"comments", :id=>"1"}, missing required keys: [:picture_id]):
+     5: 
+     6:   <%= image_tag(@picture.image.url(:detail), alt: 'Image') if @picture.image? %>
+     7: </div>
+     8: <%= link_to 'Add comment', new_picture_comment_path %>
+     9: <div class="comment">
+    10:   <h1>Comments</h1>
+    11: 
+  
+app/views/pictures/show.html.erb:8:in `_app_views_pictures_show_html_erb__4260252278050370586_70137546457640'
+Started GET "/" for 127.0.0.1 at 2017-12-17 17:12:54 +0000
+  [1m[35m (7.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (36.3ms)
+Completed 200 OK in 306ms (Views: 265.3ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 17:12:57 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (324.6ms)
+Completed 500 Internal Server Error in 414ms (ActiveRecord: 14.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `post' for #<#<Class:0x00007f868633bb98>:0x00007f8689808060>):
+    21: <div class="add-comment">
+    22:   <h1>Add Comment</h1>
+    23: 
+    24:   <%= form_for post do |f|%>
+    25:   <div>
+    26:     <%= f.label :content%>
+    27:     <%= f.text_area :content%>
+  
+app/views/pictures/show.html.erb:24:in `_app_views_pictures_show_html_erb___3064513309871667989_70107904623960'
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 17:24:41 +0000
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (32.4ms)
+Completed 200 OK in 299ms (Views: 258.9ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-12-17 17:24:45 +0000
+Processing by PicturesController#new as HTML
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/_form.html.erb (27.4ms)
+  Rendered pictures/new.html.erb within layouts/application (33.9ms)
+Completed 200 OK in 70ms (Views: 62.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/pictures" for 127.0.0.1 at 2017-12-17 17:25:00 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6s5qVcPUFtPTWur9CHaZiaMQmyb3NSyKMn/KIAj/OsnfptwLzoyc/8Q9WU/e1VGEXtBARXSnF8PHkW0/9yof7A==", "picture"=>{"description"=>"second", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fb67faebd10 @tempfile=#<Tempfile:/var/folders/ym/k_lxszm15gj_np_k7yhtpt4r0000gn/T/RackMultipart20171217-16696-1yqyvg3.jpeg>, @original_filename="pexels-photo-248797.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"pexels-photo-248797.jpeg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Picture"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "image", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", "second"], ["image", "rhshnfu1nomwxmu3b4ml.jpeg"], ["created_at", "2017-12-17 17:25:00.866977"], ["updated_at", "2017-12-17 17:25:00.866977"]]
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "pictures" SET "image" = 'image/upload/v1513531504/rhshnfu1nomwxmu3b4ml.jpg' WHERE "pictures"."id" = $1[0m  [["id", 2]]
+  [1m[35m (7.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 3815ms (ActiveRecord: 15.7ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 17:25:04 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 37ms (Views: 32.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 19:55:45 +0000
+  [1m[35m (7.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.8ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 329ms (Views: 278.2ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 19:55:49 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (350.1ms)
+Completed 500 Internal Server Error in 457ms (ActiveRecord: 23.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `post' for #<#<Class:0x00007fac4038ea98>:0x00007fac40608d50>):
+    21: <div class="add-comment">
+    22:   <h1>Add Comment</h1>
+    23: 
+    24:   <%= form_for post do |f|%>
+    25:   <div>
+    26:     <%= f.label :content%>
+    27:     <%= f.text_area :content%>
+  
+app/views/pictures/show.html.erb:24:in `_app_views_pictures_show_html_erb__1989578303832212543_70188895587280'
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 19:56:36 +0000
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered pictures/show.html.erb within layouts/application (333.6ms)
+Completed 500 Internal Server Error in 430ms (ActiveRecord: 12.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `comment' for #<#<Class:0x00007fae5592ca60>:0x00007fae57abb820>
+Did you mean?  @comments):
+    21: <div class="add-comment">
+    22:   <h1>Add Comment</h1>
+    23: 
+    24:   <%= form_for comment do |f|%>
+    25:   <div>
+    26:     <%= f.label :content%>
+    27:     <%= f.text_area :content%>
+  
+app/views/pictures/show.html.erb:24:in `_app_views_pictures_show_html_erb__2412522943369687053_70193368366880'
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 20:39:05 +0000
+  [1m[35m (7.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.9ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (44.1ms)
+Completed 200 OK in 320ms (Views: 275.8ms | ActiveRecord: 10.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 20:39:06 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 58ms (Views: 43.5ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 20:39:08 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered collection of comments/_comment.html.erb [1 times] (0.4ms)
+  Rendered comments/_form.html.erb (21.8ms)
+  Rendered pictures/show.html.erb within layouts/application (52.3ms)
+Completed 200 OK in 119ms (Views: 67.5ms | ActiveRecord: 9.0ms)
+
+
+Started POST "/pictures/1/comments" for 127.0.0.1 at 2017-12-17 20:39:18 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sUc1WVc72cQ1GE9DC9kvcJUQ7RI5U+3CF3YLOnSFBrgiBvZ27lQk5CcuxHdrOkCL7U3dszgvFZZGStpASUaWxw==", "comment"=>{"content"=>"hello"}, "commit"=>"Create Comment", "picture_id"=>"1"}
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (7.0ms)[0m  [1m[32mINSERT INTO "comments" ("picture_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["picture_id", 1], ["content", "hello"], ["created_at", "2017-12-17 20:39:18.728606"], ["updated_at", "2017-12-17 20:39:18.728606"]]
+  [1m[35m (7.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 141ms (ActiveRecord: 14.7ms)
+
+
+  
+NoMethodError (undefined method `post_path' for #<CommentsController:0x00007fc0a17d5c58>
+Did you mean?  root_path):
+  
+app/controllers/comments_controller.rb:7:in `create'
+Started GET "/" for 127.0.0.1 at 2017-12-17 20:40:02 +0000
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (33.6ms)
+Completed 200 OK in 309ms (Views: 264.2ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 20:40:05 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered collection of comments/_comment.html.erb [2 times] (0.5ms)
+  Rendered comments/_form.html.erb (20.2ms)
+  Rendered pictures/show.html.erb within layouts/application (51.5ms)
+Completed 200 OK in 138ms (Views: 69.0ms | ActiveRecord: 14.8ms)
+
+
+Started POST "/pictures/1/comments" for 127.0.0.1 at 2017-12-17 20:40:11 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hI9tElXuhm0lJw1BE4H4t/EYyWHNnMlR8wC/lI+DLQ0Xzq497IF7TTcRhnVzYpdMiUX5wMzgMQWiPG7uskC9cg==", "comment"=>{"content"=>"sd"}, "commit"=>"Create Comment", "picture_id"=>"1"}
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "comments" ("picture_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["picture_id", 1], ["content", "sd"], ["created_at", "2017-12-17 20:40:11.901335"], ["updated_at", "2017-12-17 20:40:11.901335"]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 15ms (ActiveRecord: 7.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 20:40:11 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 33ms (Views: 27.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 20:40:15 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (4.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered collection of comments/_comment.html.erb [3 times] (0.6ms)
+  Rendered comments/_form.html.erb (3.2ms)
+  Rendered pictures/show.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 69ms (Views: 49.9ms | ActiveRecord: 5.2ms)
+
+
+Started POST "/pictures/1/comments" for 127.0.0.1 at 2017-12-17 20:40:50 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4MrY4yfjltEEnVV4hehPH9V4M3/IdKdhV0P86yA0H4pzixvMnoxr8Rar3kzlCyDkrSUD3skIXzUGfy2RHfeP9Q==", "comment"=>{"content"=>"nice pic\r\n"}, "commit"=>"Create Comment", "picture_id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "comments" ("picture_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["picture_id", 1], ["content", "nice pic\r\n"], ["created_at", "2017-12-17 20:40:50.861201"], ["updated_at", "2017-12-17 20:40:50.861201"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 12ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 20:40:50 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 31ms (Views: 27.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 20:40:52 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered collection of comments/_comment.html.erb [4 times] (0.5ms)
+  Rendered comments/_form.html.erb (2.0ms)
+  Rendered pictures/show.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 60ms (Views: 43.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 20:41:38 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (33.6ms)
+Completed 200 OK in 286ms (Views: 245.8ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 20:41:40 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered collection of comments/_comment.html.erb [4 times] (0.5ms)
+  Rendered comments/_form.html.erb (20.9ms)
+  Rendered pictures/show.html.erb within layouts/application (51.0ms)
+Completed 200 OK in 143ms (Views: 69.5ms | ActiveRecord: 22.0ms)
+
+
+Started POST "/pictures/1/comments" for 127.0.0.1 at 2017-12-17 20:41:43 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sEk8vbE+DUBwfE+xKdOIUCIBPNIJOincsqi6KF+HmWkjCP+SCFHwYGJKxIVJMOerWlwMcwhG0YjjlGtSYkQJFg==", "comment"=>{"content"=>"saf"}, "commit"=>"Create Comment", "picture_id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "comments" ("picture_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["picture_id", 1], ["content", "saf"], ["created_at", "2017-12-17 20:41:43.232553"], ["updated_at", "2017-12-17 20:41:43.232553"]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures/1
+Completed 302 Found in 18ms (ActiveRecord: 9.7ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 20:41:43 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered collection of comments/_comment.html.erb [5 times] (0.5ms)
+  Rendered comments/_form.html.erb (2.1ms)
+  Rendered pictures/show.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 42ms (Views: 36.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 20:54:08 +0000
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (31.1ms)
+Completed 200 OK in 257ms (Views: 227.4ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 20:54:09 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (23.4ms)
+Completed 200 OK in 55ms (Views: 39.1ms | ActiveRecord: 11.7ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 20:54:11 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered comments/_form.html.erb (15.9ms)
+  Rendered pictures/show.html.erb within layouts/application (42.9ms)
+Completed 200 OK in 104ms (Views: 58.2ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/pictures/1/comments" for 127.0.0.1 at 2017-12-17 20:54:21 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"trOVSG/zLgNfIZwf38otj2rui0fXSXnyCXpmVkR35Ssl8lZn1pzTI00XFyu/KUJ0ErO75tY1gaZYRrcsebR1VA==", "comment"=>{"content"=>"as"}, "commit"=>"Create Comment", "picture_id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "comments" ("picture_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["picture_id", 1], ["content", "as"], ["created_at", "2017-12-17 20:54:21.022964"], ["updated_at", "2017-12-17 20:54:21.022964"]]
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures/1
+Completed 302 Found in 16ms (ActiveRecord: 8.3ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 20:54:21 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered comments/_form.html.erb (2.4ms)
+  Rendered pictures/show.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 38ms (Views: 32.2ms | ActiveRecord: 0.9ms)
+
+
