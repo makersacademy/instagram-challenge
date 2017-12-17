@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :userapi do
+    resources :profiles, only: [:index] do
+    end
+  end
+
     post 'api/reactions'
 
 
@@ -27,8 +32,10 @@ Rails.application.routes.draw do
   end
 
 
-    resources :images, only: [:new, :create] do
+  resources :images, only: [:new, :create] do
 
-    end
+  end
+
+  resources :profiles, only: [:show]
 
 end
