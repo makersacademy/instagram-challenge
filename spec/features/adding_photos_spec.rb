@@ -8,6 +8,7 @@ feature 'Add photos to Instagram' do
   end
 
   scenario 'Add photo takes to index page' do
+    sign_up
     add_photo
     expect(page).to have_current_path('/photos')
   end

@@ -5,6 +5,7 @@ class Photo < ApplicationRecord
 
   has_many :likes
   has_many :comments
+  belongs_to :user
 
   def add_image_url
     update(image_url: self.photo.url(:medium))

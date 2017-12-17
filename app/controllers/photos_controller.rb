@@ -3,8 +3,8 @@ class PhotosController < ApplicationController
   end
 
   def create
-    new_photo = Photo.create(photo_params)
-    new_photo.add_image_url
+    current_user.photos.create(photo_params)
+    current_user.photos.last.add_image_url
     render :index
   end
 
