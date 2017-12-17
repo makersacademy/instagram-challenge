@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
   def index
-    p current_user  
+    p current_user
     @posts = Post.all
   end
 
   def new
+    redirect_to '/users/sign_in' unless user_signed_in?
     @post = Post.new
   end
 
@@ -47,6 +48,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:caption, :image)
+    params.require(:post).permit(:caption, :image, :user_id)
   end
 end
