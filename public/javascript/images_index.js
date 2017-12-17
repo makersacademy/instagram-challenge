@@ -1,5 +1,5 @@
 $(document).ready(function(){
-var number_of_likes = 0
+
 
   $.get("/api/images", function(data){
       data.images.forEach(function(image){

@@ -1,10 +1,10 @@
 class Userapi::ProfilesController < ApplicationController
   def index
   user = User.find(current_user.id)
-  images = Image.find_by(user_id: current_user.id)
-  image_id = images.id
-  reactions = Reaction.where(image_id: image_id)
-  likes = Like.where(image_id: image_id)
-  render :json => { images: images, reactions: reactions, likes: likes, user: user }
+  users = User.all
+  images = Image.where(user_id: current_user.id)
+  reactions = Reaction.all
+  likes = Like.all
+  render :json => { images: images, reactions: reactions, likes: likes, user: user, users: users }
   end
 end
