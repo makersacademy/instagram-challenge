@@ -1,0 +1,23 @@
+<center>
+<p id="notice"><%= notice %></p>
+
+<h1>Instagram Clone Posts</h1></br>
+
+  <body>
+    <% @ideas.each do |idea| %>
+      <tr>
+        <td>
+          <%= image_tag(idea.picture_url(:thumb)) if idea.picture.present? %></td></br>
+        <td><strong><%= idea.name %></td></strong></br>
+        <td><%= idea.description %></td></br> |
+        <td><%= link_to 'Show', idea %> | </td>
+        <td><%= link_to 'Edit', edit_idea_path(idea) %> |</td>
+        <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>  |</br>
+      </tr></br></br>
+    <% end %>
+  </body>
+
+<br>
+
+<%= link_to 'New Post', new_idea_path %>
+</center>

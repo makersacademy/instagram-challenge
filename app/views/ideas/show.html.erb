@@ -1,0 +1,30 @@
+
+<center>
+  <p>
+    <%= image_tag(@idea.picture_url(:thumb)) if @idea.picture.present? %>
+  <p>
+    <strong>Name:</strong>
+    <%= @idea.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong></br>
+    <%= @idea.description %>
+  </p></br>
+
+  <h5>Comments</h5>
+  <% @comments.each do |comment| %>
+    <div>
+      <strong><%= comment.user_name %></strong>
+      <br>
+      <p><%= comment.body %></p>
+      <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </div>
+  <% end %>
+  <%= render partial: 'comments/form', locals: { comment: @comment } %>
+</p>
+
+<%= link_to 'Edit', edit_idea_path(@idea) %> |
+<%= link_to 'Destroy', @idea, data: { confirm: 'Are you sure you want to delete the post?'}, method: :delete %> |
+<%= link_to 'Back', ideas_path %>
+</center>
