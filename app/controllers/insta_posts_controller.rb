@@ -43,6 +43,6 @@ class InstaPostsController < ApplicationController
 private
 
   def post_params
-    params[:insta_post].permit(:title, :description)
+    params[:insta_post].permit(:title, :description, :image)
   end
 end
