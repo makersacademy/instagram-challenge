@@ -1,6 +1,49 @@
 Instagram Challenge
 ===================
 
+User Stories
+
+```
+As a trendy user
+I want to upload cool images
+So that I can share my inspiration
+```
+```
+As a trendy user
+I want to add message after each image
+So that I can make the posts meaningful
+```
+
+```
+As a trendy and neat user
+I want to edit my posts: update and delete them
+So that I can keep my postings tidy
+```
+
+```
+As a curious user
+I want to see  other users comments of my postings
+So that I know their thoughts on my posts.
+```
+
+```
+As a curious user
+I want to see other users postings
+So that I can get more inspiration
+```
+
+```
+As a selective user
+I want to follow only the users I choose
+So that I get inspired by relevant postings.
+```
+
+```
+As a trendy user
+I want to add filter to my images
+So that I can create a feeling with my posts.
+```
+
 ## Instructions
 
 * Challenge time: one weekend
