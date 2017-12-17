@@ -17,10 +17,14 @@
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
 
-
-<%= button_to 'Edit', edit_insta_post_path, method: :get %>
-<%= button_to 'Delete', insta_post_path,
-            method: :delete,
-            data: { confirm: 'Are you sure?' } %>
+<%= if user_signed_in? && current_user.id == @insta_post.user_id
+button_to 'Edit', edit_insta_post_path, method: :get
+ end %>
+ <%= if user_signed_in? && current_user.id == @insta_post.user_id
+ button_to 'Edit', edit_insta_post_path, method: :get
+ button_to 'Delete', insta_post_path,
+             method: :delete,
+             data: { confirm: 'Are you sure?' }
+  end %>
 
 <%= button_to "Back", insta_posts_path, method: :get %>
