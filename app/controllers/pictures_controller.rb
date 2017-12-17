@@ -39,7 +39,7 @@ class PicturesController < ApplicationController
   def destroy
     @picture = Picture.find(params[:id])
     @picture.destroy
-    flash[:notice] = "Subject '#{@picture.caption}' destroyed successfully."
+    flash[:notice] = "'#{@picture.caption}' destroyed successfully."
     redirect_to root_path
   end
 
@@ -49,6 +49,7 @@ class PicturesController < ApplicationController
   end
 
   def restrict_to_user
+    @picture = Picture.find(params[:id])
     unless current_user == @picture.user
       flash[:alert] = "You have not posted this picture"
       redirect_to root_path
