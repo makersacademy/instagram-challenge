@@ -9,6 +9,21 @@
   </head>
 
   <body>
+    <% if user_signed_in?%>
+      <%= button_to 'Sign out', destroy_user_session_path,
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+      <% elsif !user_signed_in? && controller_name == 'registrations' %>
+        <%= button_to 'Sign in', new_user_session_path, method: :get %>
+      <% elsif !user_signed_in? && controller_name == 'sessions' %>
+        <%= button_to 'Sign up', new_user_registration_path, method: :get %>
+      <% else %>
+          <%= button_to 'Sign in', new_user_session_path, method: :get %>
+          <%= button_to 'Sign up', new_user_registration_path, method: :get %>
+      <% end %>
+      
     <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   </body>
 </html>
