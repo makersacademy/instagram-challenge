@@ -10,7 +10,7 @@ User can sign up to post pictures. An user can only delete the photos that he/sh
 
 ![Post](/images/post_picture.png)
 
-### Delete only picture that have been posted by the user
+### Delete only pictures that have been posted by the user
 
 ![Delete](/images/delete_user_photo.png)
 
