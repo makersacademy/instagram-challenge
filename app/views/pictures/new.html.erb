@@ -1,17 +1,14 @@
-<div class="pictures new">
-  <h2>Add photo</h2>
-
-  <%= form_for(@picture) do |f| %>
-    <tr>
-      <th><%= f.label(:caption) %></th>
-      <td><%= f.text_field(:caption) %></td>
-    </tr>
-    <tr>
-      <th><%= f.label(:photo) %></th>
-      <td><%= f.file_field(:photo) %></td>
-    </tr>
+  <h1>Add photo</h2>
+  <%= form_with scope: :picture, url: pictures_path do |f| %>
+    <div>
+      <%= f.label :caption %>
+      <%= f.text_field :caption %>
+    </div>
+    <div>
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+    </div>
     <div class="form-buttons">
       <%= f.submit("Create Post") %>
     </div>
   <% end %>
-</div>
