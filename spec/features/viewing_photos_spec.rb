@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 feature 'View photos', js: true do
   scenario 'Photo index page has added photos' do
     create(:photo)
