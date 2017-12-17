@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :pictures
+
+  resources :users do
+    resources :pictures
+  end
 
   root 'pictures#index'
 

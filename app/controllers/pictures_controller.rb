@@ -8,15 +8,16 @@ class PicturesController < ApplicationController
   end
 
   def new
-    @picture = Picture.new()
+    @picture = current_user.pictures.new
   end
 
   def create
-    @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.new(picture_params)
     if @picture.save
       flash[:notice] = "Post created successfully."
-      redirect_to(pictures_path)
+      redirect_to root_path
     else
+      flash[:alert] = "Your new post was not created"
       render('new')
     end
   end
