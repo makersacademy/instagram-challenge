@@ -3,6 +3,7 @@ class Api::ImagesController < ApplicationController
     images = Image.all
     reactions = Reaction.all
     likes = Like.all
-    render :json => { images: images, reactions: reactions, likes: likes }
+    users = User.all
+    render :json => { images: images, reactions: reactions, likes: likes, users: users }
   end
 end

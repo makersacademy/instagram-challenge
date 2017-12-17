@@ -9,7 +9,11 @@ var number_of_likes = 0
         $('#image-' + image.id).append('<img src=' + image.avatar.url+ '>')
         data.reactions.forEach(function(reaction){
           if(reaction.image_id == image.id){
-            $('#image-' + image.id).append('<p>' + reaction.comment + '</p>')
+            data.users.forEach(function(user){
+              if(user.id == reaction.user_id){
+                $('#image-' + image.id).append("<p id='reaction'>" + reaction.comment + "- " + user.name + "</p>")
+              }
+            })
           }
         })
         data.likes.forEach(function(like){
