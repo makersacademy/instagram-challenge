@@ -7,6 +7,17 @@
         <div class="col-sm-6 text-right above-pic"><strong>Written: </strong><%= post.created_at %></div>
       </div>
         <div class="text-center image"><%= image_tag post.image_url(:thumb).to_s %></div>
+
+        <%= link_to like_post_path(post), method: :put do %>
+          Upvote
+          <%= post.get_upvotes.size %>
+        <% end %>
+
+        <%= link_to dislike_post_path(post), method: :put do %>
+          Downvote
+          <%= post.get_downvotes.size %>
+        <% end %>
+
       <div class="comments">
         <% post.comments.each do |comment| %>
           <p><strong>@<%= comment.user.email.split('@')[0] %>: </strong><%= comment.body %></p>
