@@ -3,14 +3,13 @@
     <div class="container-fluid">
 
       <div class="row">
-        <% p post.user %>
         <div class="col-sm-6 above-pic"><strong>@<%= post.user.email.split('@')[0] %>: </strong><%= post.caption %></div>
-        <div class="col-sm-6 text-right above-pic"><strong>Written: </strong>In December</div>
+        <div class="col-sm-6 text-right above-pic"><strong>Written: </strong><%= post.created_at %></div>
       </div>
         <div class="text-center image"><%= image_tag post.image_url(:thumb).to_s %></div>
       <div class="comments">
         <% post.comments.each do |comment| %>
-          <p><strong>@anotheruser: </strong><%= comment.body %></p>
+          <p><strong>@<%= comment.user.email.split('@')[0] %>: </strong><%= comment.body %></p>
         <% end %>
       </div>
         <% if current_user %>
@@ -22,6 +21,7 @@
                   <%= form.label :body %>
                   <%= form.text_field :body %>
                   <%= form.hidden_field :post_id, value: post.id %>
+                  <%= form.hidden_field :user_id, value: current_user.id %>
                 </p>
                 <%= form.submit %>
               <% end %>
