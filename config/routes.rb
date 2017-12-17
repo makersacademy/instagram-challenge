@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  get 'api/index'
-
-  namespace :apicontroller do
-    resources :images, only: [:index, :show] do
-
-      end
-    end
 
   resources :comments
   resources :images
