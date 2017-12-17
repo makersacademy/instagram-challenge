@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :photos, only: [:index, :show] do
-
+      resources :comments do
+        
+      end
     end
   end
 
