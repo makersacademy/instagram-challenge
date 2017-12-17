@@ -1,0 +1,30 @@
+<br><%= @insta_post.name %><br>
+<%= image_tag(@insta_post.image_url(:scale).to_s) %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @insta_post.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @insta_post.description %>
+</p>
+
+<h2>Comments</h2>
+<%= render @insta_post.comments %>
+
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+<%= if user_signed_in? && current_user.id == @insta_post.user_id
+button_to 'Edit', edit_insta_post_path, method: :get
+ end %>
+ <%= if user_signed_in? && current_user.id == @insta_post.user_id
+ button_to 'Delete', insta_post_path,
+             method: :delete,
+             data: { confirm: 'Are you sure?' }
+  end %>
+
+<%= button_to "Back", insta_posts_path, method: :get %>

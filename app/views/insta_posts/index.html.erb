@@ -1,0 +1,12 @@
+<h1>See all the post</h1>
+
+  <% if user_signed_in? %>
+  <%= button_to 'New post', new_insta_post_path, method: :get %>
+  <% end %>
+
+  <% @insta_post.each do |insta_post| %>
+      <%= insta_post.name %><br>
+      <%= link_to (image_tag(insta_post.image_url(:thumb).to_s)), insta_post_path(insta_post) %><br>
+      <%= insta_post.title %><br>
+      <%= insta_post.description %> <br><br>
+  <% end %>

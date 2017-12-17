@@ -1,0 +1,18 @@
+
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+
+  <p>
+    <%= if user_signed_in? && current_user.id == comment.user_id
+    button_to 'Delete Comment', [comment.insta_post, comment],
+                 method: :delete,
+                 data: { confirm: 'Are you sure?' }
+                 end %>
+  </p>

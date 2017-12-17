@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+  <%= form_with(model: [ @insta_post, @insta_post.comments.build ], local: true) do |form| %>
+    <p>
+      <%= form.hidden_field :commenter, value: current_user.name %>
+    </p>
+    <p>
+      <%= form.label :Comment %><br>
+      <%= form.text_area :body %>
+    </p>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+<% end %>
