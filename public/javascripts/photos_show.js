@@ -4,6 +4,9 @@ $(document).ready(function() {
   $.get('/api/photos/' + id, function(photo) {
     singlePhotoDiv.append('<img class="each-photo" src="' + photo.photo.photo.url + '">')
     singlePhotoDiv.append('<h3>' + photo.photo.description + '</h3>')
+    singlePhotoDiv.append('<p> Likes: <span id="likes-number">' + photo.photo.likes + '</span></p>')
+    singlePhotoDiv.append('<button id="like-button"><span id="like-button-text">Like</span></button>')
+    likeButtonPostRequest();
   })
 
   $.get('/api/photos/' + id + '/comments', function(comments) {
@@ -14,6 +17,7 @@ $(document).ready(function() {
 
   createCommentForm();
 
+
   $('#comment-form').on("submit", function(event) {
     var value = $('#comment-body').val();
     $('#comments').append('<p>' + value + '</p>');
@@ -22,6 +26,31 @@ $(document).ready(function() {
     $.post('/photos/' + id + '/comments', {body: value}, function() {
     })
   })
+
+  var liking = true;
+
+  function likeButtonPostRequest() {
+    $('#like-button').click(function() {
+      var value = $('#likes-number').html();
+      if (liking) {
+        $('#likes-number').html(Number(value) + 1);
+        $.post('/photos/' + id + '/likes', function() {
+        })
+        $('#like-button-text').html('Unlike');
+        liking = !liking;
+      } else {
+        $('#likes-number').html(Number(value) - 1);
+        $.ajax({
+          url: '/photos/' + id + '/likes/1',
+          type: 'DELETE',
+          success: function() {}
+        });
+        $('#like-button-text').html('Like');
+        liking = !liking;
+      }
+    })
+  }
+
 
   function createCommentForm() {
     $('#form').append('<form id="comment-form"></form>');
