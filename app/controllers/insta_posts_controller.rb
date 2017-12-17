@@ -1,4 +1,5 @@
 class InstaPostsController < ApplicationController
+
   def index
     @insta_post = InstaPost.all
   end
@@ -8,6 +9,7 @@ class InstaPostsController < ApplicationController
   end
 
   def new
+    InstaPost.new
   end
 
   def edit
