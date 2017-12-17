@@ -8,15 +8,21 @@
       </div>
         <div class="text-center image"><%= image_tag post.image_url(:thumb).to_s %></div>
 
-        <%= link_to like_post_path(post), method: :put do %>
-          Upvote
-          <%= post.get_upvotes.size %>
+        <% if current_user %>
+          <%= link_to like_post_path(post), method: :put do %>
+            <i class="likes fa fa-thumbs-up" aria-hidden="true"></i>
+          <% end %>
         <% end %>
 
-        <%= link_to dislike_post_path(post), method: :put do %>
-          Downvote
-          <%= post.get_downvotes.size %>
+        <p><%= post.get_upvotes.size %> likes</p>
+
+        <!-- <% if current_user %>
+          <%= link_to dislike_post_path(post), method: :put do %>
+            <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+          <% end %>
         <% end %>
+
+        <%= post.get_downvotes.size %> -->
 
       <div class="comments">
         <% post.comments.each do |comment| %>
@@ -24,8 +30,8 @@
         <% end %>
       </div>
         <% if current_user %>
-          <div onmouseenter="toggleCommentForm(this.id)" id='<%= post.id %>'>
-            <p>Leave a comment</p>
+          <div onclick="toggleCommentForm(this.id)" id='<%= post.id %>'>
+            <p>Leave a comment <i class="fa fa-arrow-down" aria-hidden="true"></i></p>
             <div class="comment-form"  id='commentForm<%= post.id %>'>
               <%= form_with(model: [post, post.comments.build], local: true) do |form| %>
                 <p>
@@ -40,9 +46,12 @@
           </div>
         <% end %>
 
-      <p><%= link_to 'Show', post_path(post) %></p>
-      <p><%= link_to 'Edit', edit_post_path(post) %></p>
-      <p><%= link_to 'Destroy', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <% if current_user %>
+        <% if post.user_id == current_user.id %>
+          <p><%= link_to 'Update', edit_post_path(post) %></p>
+          <p><%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <% end %>
+      <% end %>
 
     </div>
 

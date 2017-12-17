@@ -1,32 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InstagramChallenge</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
   </head>
 
   <style>
     body {
-      background-color: #fffbdd;
+      background-color: #efefef;
     }
-  </style>
-  <body>
-    <% if current_user %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-    <% else %>
-      Click here to <%= link_to "Login", new_user_session_url %>
-    <% end %>
 
-    <div class="text-center">
-      <h1>INSTRAGAM</h1>
+    h1 {
+      font-family: 'Pangolin', cursive;
+      font-size: 50px;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+  </style>
+
+  <body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 text-center title">
+        <h1><a class="heading" href="/posts">INSTRAGAM</a></h1>
+      </div>
     </div>
+    <div class="row">
+
+      <% if current_user %>
+        <div class="col-sm-3 col-sm-offset-3 text-center">
+          <p class="user-nav">Logged in as <%= current_user.email.split('@')[0] %></p>
+        </div>
+        <div class="col-sm-3 text-center">
+          <p class="user-nav"><i class="fa fa-sign-out" aria-hidden="true"></i> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></p>
+        </div>
+        <% else %>
+        <div class="col-sm-12 text-center">
+          <p class="user-nav"><i class="fa fa-sign-in" aria-hidden="true"></i> <%= link_to "Login", new_user_session_url %></p>
+        </div>
+        <% end %>
+    </div>
+  </div>
     <%= yield %>
-    TEST
   </body>
+  <script src="https://use.fontawesome.com/88efe31d50.js"></script>
 
   <script type="text/javascript">
     function toggleCommentForm(id) {
