@@ -18,4 +18,12 @@ Rails.application.routes.draw do
 
   end
 
+  resources :users, only: [:new, :create] do
+
+  end
+
+  resources :sessions, only: [:new, :create, :destroy] do
+
+  end
+
 end
