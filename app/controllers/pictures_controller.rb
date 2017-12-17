@@ -22,8 +22,12 @@ skip_before_action :verify_authenticity_token
   end
 
   def show
+    if current_user
     @picture = Picture.find(params[:id])
     @comments = @picture.comments
+  else
+    redirect_to new_user_registration_path
+  end
   end
 
   private
