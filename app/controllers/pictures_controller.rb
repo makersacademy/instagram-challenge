@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-
+skip_before_action :verify_authenticity_token
   def index
     @pictures = Picture.all
   end
@@ -11,7 +11,7 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(picture_params)
     if @picture.save
-      redirect_to picture_path
+      redirect_to pictures_path
     else
       render :new
     end

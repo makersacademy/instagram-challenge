@@ -1,2 +1,14 @@
 <h1>Pictures</h1>
 <%= link_to 'Add Picture', new_picture_path%>
+<% @pictures.each do |picture| %>
+   <ul>
+     <div class="description">
+      <%= picture.description %>
+     </div>
+     <div class="image">
+       <!-- <img src=<%= picture.image %> -->
+       <%= image_tag(picture.image.url(:thumbnail), alt: 'Image') if picture.image? %>
+
+     </div>
+   </ul>
+  <% end %>
