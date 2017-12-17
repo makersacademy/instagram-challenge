@@ -28,4 +28,16 @@ feature 'Openning the insta_posts#new page' do
     expect(page).to have_content("Description: generic description")
   end
 
+  scenario 'it does not create new post without title' do
+    try_creating_post_with_no_title
+    expect(page).to have_content('Create a new post')
+    expect(page).not_to have_content("Title: second title")
+    expect(page).not_to have_content("Description: second description")
+  end
+
+  scenario 'it throws an error when creating post with no title' do
+    try_creating_post_with_no_title
+    expect(page).to have_content("Title can't be blank")
+  end
+
 end

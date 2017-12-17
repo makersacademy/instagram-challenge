@@ -1,6 +1,21 @@
 <h1>Create a new post</h1>
 
 <%= form_with scope: :insta_post,url: insta_posts_path, local: true do |form| %>
+
+<% if @insta_post && @insta_post.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@insta_post.errors.count, "error") %> prohibited
+    this post from being saved:
+  </h2>
+  <ul>
+    <% @insta_post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
   <p>
     <%= form.label :title %><br>
     <%= form.text_field :title %>
