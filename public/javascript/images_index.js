@@ -3,17 +3,18 @@ var number_of_likes = 0
 
   $.get("/api/images", function(data){
       data.images.forEach(function(image){
-        $('#images').append('<div id=image-' + image.id + '></div>')
+        var number_of_likes = 0
+        $('#images').prepend('<div id=image-' + image.id + '></div>')
         $('#image-' + image.id).append('<h4>' + image.name + '</h4>')
         $('#image-' + image.id).append('<img src=' + image.avatar.url+ '>')
-        data.likes.forEach(function(like){
-          if(like.image_id == image.id){
-              number_of_likes ++
-          }
-        })
         data.reactions.forEach(function(reaction){
           if(reaction.image_id == image.id){
             $('#image-' + image.id).append('<p>' + reaction.comment + '</p>')
+          }
+        })
+        data.likes.forEach(function(like){
+          if(like.image_id == image.id){
+              number_of_likes ++
           }
         })
         $('#image-' + image.id).append('<p>' + number_of_likes + ' likes</p>')
