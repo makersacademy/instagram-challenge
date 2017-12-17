@@ -9,9 +9,16 @@
   </head>
 
   <body>
-  <div class='singup_in'>
-    <a href="/users/new"><button class="session-button" type="button" value="Sign up">Sign Up</button></a>
-    <a href="/sessions/new"><button class="session-button" type="button" value="Sign in">Sign In</button></a>
+  <div class='signup_in'>
+    <% if logged_in? %>
+      <form action="/sessions/<%=current_user.id%>" method="post" data-remote=true>
+        <input type="hidden" value="delete" name="_method">
+        <input class="session-button" type="submit" value="Sign Out">
+      </form>
+    <% else %>
+      <a href="/users/new"><button class="session-button" type="button" value="Sign up">Sign Up</button></a>
+      <a href="/sessions/new"><button class="session-button" type="button" value="Sign in">Sign In</button></a>
+    <% end %>
   </div>
     <%= yield %>
   </body>

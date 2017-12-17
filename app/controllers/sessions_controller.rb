@@ -9,12 +9,12 @@ def create
       session[:user_id] = user.id
       redirect_to '/'
     else
-      redirect_to '/login'
+      redirect_to '/sessions/new'
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to '/login'
+    redirect_to '/'
   end
 end
