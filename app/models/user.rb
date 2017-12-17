@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :images
   has_many :reactions
   has_many :likes
+  has_one :profile
 end
