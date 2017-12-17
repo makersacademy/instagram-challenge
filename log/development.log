@@ -1421,3 +1421,429 @@ Processing by PicturesController#show as HTML
 Completed 200 OK in 38ms (Views: 32.2ms | ActiveRecord: 0.9ms)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8350704865120313745)[0m
+  [1m[35m (7.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20171217212207)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (30.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171217212207"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8350704865120313745)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-12-17 21:24:00 +0000
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (43.6ms)
+Completed 200 OK in 371ms (Views: 315.4ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-12-17 21:24:38 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (38.5ms)
+Completed 200 OK in 102ms (Views: 77.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-12-17 21:24:45 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.4ms)
+Completed 200 OK in 45ms (Views: 42.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/password/new" for 127.0.0.1 at 2017-12-17 21:24:51 +0000
+Processing by Devise::PasswordsController#new as HTML
+  Rendering devise/passwords/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/passwords/new.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 55ms (Views: 43.3ms | ActiveRecord: 0.0ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8350704865120313745)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdToPictures (20171217212928)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (24.5ms)[0m  [1m[35mALTER TABLE "pictures" ADD "user_id" integer[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171217212928"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8350704865120313745)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-12-17 21:33:29 +0000
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.8ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (54.0ms)
+Completed 200 OK in 423ms (Views: 382.0ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-12-17 21:33:33 +0000
+Processing by PicturesController#new as HTML
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `pictures' for nil:NilClass):
+  
+app/controllers/pictures_controller.rb:9:in `new'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8350704865120313745)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8350704865120313745)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 21:34:39 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (38.1ms)
+Completed 200 OK in 475ms (Views: 436.3ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-12-17 21:34:45 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (36.0ms)
+Completed 200 OK in 92ms (Views: 67.4ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-12-17 21:34:59 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oDCtG26so/Eeo+MzBcwQmVEe/B0sVEsyk9/TOMXPt2u32uDqtg2sJFNmnIml87uwP3Mooy1Urq74FF22ZI/VhA==", "user"=>{"email"=>"asdfjlasdf@s.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (14.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdfjlasdf@s.com"], ["LIMIT", 1]]
+  [1m[35mSQL (7.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "asdfjlasdf@s.com"], ["encrypted_password", "$2a$11$93FecQB/cuo.vW6iRURmEeUSYRqDfS1J8CG/lhBVCr5mGYZR1SUGe"], ["created_at", "2017-12-17 21:34:59.859658"], ["updated_at", "2017-12-17 21:34:59.859658"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2017-12-17 21:34:59.870704"], ["last_sign_in_at", "2017-12-17 21:34:59.870704"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2017-12-17 21:34:59.871625"], ["id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 227ms (ActiveRecord: 25.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 21:34:59 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 34ms (Views: 30.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-12-17 21:35:06 +0000
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/_form.html.erb (4.3ms)
+  Rendered pictures/new.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 78ms (Views: 33.0ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/pictures/1" for 127.0.0.1 at 2017-12-17 21:35:12 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 1]]
+  Rendered comments/_form.html.erb (4.2ms)
+  Rendered pictures/show.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 87ms (Views: 43.9ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-12-17 21:35:36 +0000
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 21:35:36 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 33ms (Views: 30.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-12-17 21:36:05 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oDCtG26so/Eeo+MzBcwQmVEe/B0sVEsyk9/TOMXPt2u32uDqtg2sJFNmnIml87uwP3Mooy1Urq74FF22ZI/VhA==", "user"=>{"email"=>"asdf@sadf.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 21:36:05 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 33ms (Views: 29.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-12-17 21:36:13 +0000
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/_form.html.erb (1.8ms)
+  Rendered pictures/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 53ms (Views: 39.2ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/pictures" for 127.0.0.1 at 2017-12-17 21:36:22 +0000
+Processing by PicturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"thoXPKTTO1VmiWuJHfIHShnf2bs1J9g/G4i23cRV5NeDcqFiqYuxeXHu2DvLUc9H5B8C2La143buZhHCO4DB8g==", "picture"=>{"description"=>"", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fef943dfe60 @tempfile=#<Tempfile:/var/folders/ym/k_lxszm15gj_np_k7yhtpt4r0000gn/T/RackMultipart20171217-20503-4810xg.jpeg>, @original_filename="pexels-photo-248797.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[image]\"; filename=\"pexels-photo-248797.jpeg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Create Picture"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "pictures" ("description", "image", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["description", ""], ["image", "u9wzq2ts47bftxodmpdv.jpeg"], ["created_at", "2017-12-17 21:36:22.857990"], ["updated_at", "2017-12-17 21:36:22.857990"], ["user_id", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "pictures" SET "image" = 'image/upload/v1513546587/u9wzq2ts47bftxodmpdv.jpg' WHERE "pictures"."id" = $1[0m  [["id", 3]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures
+Completed 302 Found in 5118ms (ActiveRecord: 8.6ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 21:36:27 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 44ms (Views: 40.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/pictures/3" for 127.0.0.1 at 2017-12-17 21:36:33 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered comments/_form.html.erb (2.3ms)
+  Rendered pictures/show.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 63ms (Views: 46.9ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/pictures/3/comments" for 127.0.0.1 at 2017-12-17 21:36:38 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"d0uJc1uvvtZfVovGnlBp7wLm1NMwndQkvYZSM/kgWTuDv8ffV/L6QjS2rqbcEaAeGlkuoYeIxM0pdVUTfSsmgQ==", "comment"=>{"content"=>"hello "}, "commit"=>"Create Comment", "picture_id"=>"3"}
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("picture_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["picture_id", 3], ["content", "hello "], ["created_at", "2017-12-17 21:36:38.872498"], ["updated_at", "2017-12-17 21:36:38.872498"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures/3
+Completed 302 Found in 13ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/pictures/3" for 127.0.0.1 at 2017-12-17 21:36:38 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered comments/_form.html.erb (2.0ms)
+  Rendered pictures/show.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 39ms (Views: 34.9ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/pictures/3/comments" for 127.0.0.1 at 2017-12-17 21:36:51 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bCLd9rB5iaBauL9XdLssgqMSKMC9YOb//hIX93KeHEd7yJAHaNiGdRd9wO3UhIerzX/8frxgA2OV2Zl5095+qA==", "comment"=>{"content"=>"you like it"}, "commit"=>"Create Comment", "picture_id"=>"3"}
+  [1m[36mPicture Load (1.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("picture_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["picture_id", 3], ["content", "you like it"], ["created_at", "2017-12-17 21:36:51.254980"], ["updated_at", "2017-12-17 21:36:51.254980"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/pictures/3
+Completed 302 Found in 12ms (ActiveRecord: 4.1ms)
+
+
+Started GET "/pictures/3" for 127.0.0.1 at 2017-12-17 21:36:51 +0000
+Processing by PicturesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPicture Load (1.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pictures/show.html.erb within layouts/application
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."picture_id" = $1[0m  [["picture_id", 3]]
+  Rendered comments/_form.html.erb (2.0ms)
+  Rendered pictures/show.html.erb within layouts/application (9.3ms)
+Completed 200 OK in 46ms (Views: 37.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 21:37:06 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 47ms (Views: 41.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 21:47:26 +0000
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (54.8ms)
+Completed 200 OK in 462ms (Views: 399.6ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/pictures" for 127.0.0.1 at 2017-12-17 21:47:31 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.3ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 46ms (Views: 39.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-12-17 21:47:34 +0000
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (12.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/_form.html.erb (28.1ms)
+  Rendered pictures/new.html.erb within layouts/application (32.1ms)
+Completed 200 OK in 129ms (Views: 58.4ms | ActiveRecord: 23.0ms)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-12-17 21:48:14 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/sign_out" for 127.0.0.1 at 2017-12-17 21:48:45 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/users/sign_out"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.11.0) lib/puma/configuration.rb:225:in `call'
+puma (3.11.0) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.0) lib/puma/server.rb:438:in `process_client'
+puma (3.11.0) lib/puma/server.rb:302:in `block in run'
+puma (3.11.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-12-17 21:48:51 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 50ms (Views: 43.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-12-17 21:48:53 +0000
+Processing by PicturesController#new as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering pictures/new.html.erb within layouts/application
+  Rendered pictures/_form.html.erb (3.0ms)
+  Rendered pictures/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 59ms (Views: 39.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 21:49:33 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (1.1ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (61.1ms)
+Completed 200 OK in 402ms (Views: 347.0ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-12-17 21:49:35 +0000
+Processing by PicturesController#new as HTML
+Redirected to http://localhost:3000/users/sign_up
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-12-17 21:49:35 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 36ms (ActiveRecord: 5.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 21:49:35 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 34ms (Views: 30.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/pictures/new" for 127.0.0.1 at 2017-12-17 21:49:39 +0000
+Processing by PicturesController#new as HTML
+Redirected to http://localhost:3000/users/sign_up
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2017-12-17 21:49:39 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-12-17 21:49:39 +0000
+Processing by PicturesController#index as HTML
+  Rendering pictures/index.html.erb within layouts/application
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures"[0m
+  Rendered pictures/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 34ms (Views: 29.7ms | ActiveRecord: 0.4ms)
+
+
