@@ -32,6 +32,14 @@ class InstaPostsController < ApplicationController
     end
   end
 
+  def destroy
+    p InstaPost.find(params[:id])
+    @insta_post = InstaPost.find(params[:id])
+    @insta_post.destroy
+
+    redirect_to insta_posts_path
+  end
+
 private
 
   def post_params

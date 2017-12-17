@@ -16,4 +16,10 @@ feature 'Openning the insta_posts#show page' do
     expect(page).to have_content('generic title')
     expect(page).to have_content('second description')
   end
+
+  scenario 'it has a button that can delete post' do
+    click_button(value: 'Delete')
+    expect(page).to have_content('generic title')
+    expect(page).not_to have_content('second description')
+  end
 end
