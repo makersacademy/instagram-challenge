@@ -10,11 +10,8 @@
   </head>
 
   <body>
-    <nav class="navi" id="navi">
+    <ul class="navi" id="navi">
       <% if user_signed_in? %>
-        <li>
-          Welcome <%= current_user.email %>
-        </li>
         <li>
           <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
         </li>
@@ -24,9 +21,12 @@
         <li>
           <%= link_to('Post', new_user_picture_path(current_user.id)) %>
         </li>
+        <li>
+          Welcome <%= current_user.email %>
+        </li>
       <% end %>
 
-    </nav>
+    </ul>
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
