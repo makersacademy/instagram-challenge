@@ -21,6 +21,7 @@ gem "paperclip"
 # Use jquery for javascript
 gem 'jquery-rails'
 gem 'factory_bot_rails'
+gem 'devise'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
