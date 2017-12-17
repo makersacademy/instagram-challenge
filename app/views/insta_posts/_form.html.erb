@@ -1,0 +1,31 @@
+<%= form_with model: @insta_post, local: true do |form| %>
+
+  <% if @insta_post && @insta_post.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@insta_post.errors.count, "error") %> prohibited
+        this insta_post from being saved:
+      </h2>
+      <ul>
+        <% @insta_post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
