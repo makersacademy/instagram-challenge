@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   protect_from_forgery with: :null_session
 
   def create
-    photo.comments.create(body: params[:comment][:body])
+    photo.comments.create(body: params[:body])
     200
   end
 

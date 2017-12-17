@@ -14,13 +14,17 @@ $(document).ready(function() {
 
   createCommentForm();
 
-  $('#comment-form').on("submit", function() {
+  $('#comment-form').on("submit", function(event) {
     var value = $('#comment-body').val();
     $('#comments').append('<p>' + value + '</p>');
+    event.preventDefault();
+    $('#comment-body').val('');
+    $.post('/photos/' + id + '/comments', {body: value}, function() {
+    })
   })
 
   function createCommentForm() {
-    $('#form').append('<form id="comment-form" action="/photos/' + id + '/comments" method="POST"></form>');
+    $('#form').append('<form id="comment-form"></form>');
     $('#comment-form').append('<input id="comment-body" type="text" name="comment[body]">');
     $('#comment-form').append('<input id="submit-button" type="submit" value="Submit">');
   }
