@@ -20,6 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 gem "paperclip"
 # Use jquery for javascript
 gem 'jquery-rails'
+gem 'factory_bot_rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -47,6 +48,10 @@ group :test do
   gem 'rspec-rails'
   # Use capybara for feature tests
   gem 'capybara'
+  gem 'database_cleaner'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
 group :development do

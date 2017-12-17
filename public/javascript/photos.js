@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#photos-index-content').append('<p>YAY!</p>')
+  $('#photos-index-content').append('YAY!')
 
   $.get("api/photos", function(data) {
     data.photos.forEach(function(photo){

@@ -3,7 +3,8 @@ class PhotosController < ApplicationController
   end
 
   def create
-    Photo.create(photo_params)
+    new_photo = Photo.create(photo_params)
+    new_photo.add_image_url
     render :index
   end
 
@@ -14,7 +15,7 @@ class PhotosController < ApplicationController
 private
 
   def photo_params
-    params.require(:photo).permit(:photo)
+    params.require(:photo).permit(:photo, :title, :description)
   end
 
 end
