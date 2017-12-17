@@ -5,7 +5,7 @@ var number_of_likes = 0
       data.images.forEach(function(image){
         $('#images').append('<div id=image-' + image.id + '></div>')
         $('#image-' + image.id).append('<h4>' + image.name + '</h4>')
-        $('#image-' + image.id).append('<img src=' + image.url + '>')
+        $('#image-' + image.id).append('<img src=' + image.avatar.url+ '>')
         data.likes.forEach(function(like){
           if(like.image_id == image.id){
               number_of_likes ++

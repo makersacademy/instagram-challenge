@@ -1,7 +1,18 @@
 <h1>Add new image</h1>
 
-<form action='/images' method='post' id='new_image' data-remote=true>
+<!-- <form action='/images' method='post' id='new_image' data-remote=true>
   <input type='text' name='name' placeholder='Say something about photo'>
   <input type='text' name='url' placeholder='url'>
+  <input type='file' name='avatar' placeholder='image'>
   <input type='submit' value='Post!'>
-</form>
+</form> -->
+
+<div class="image_upload">
+  <%= form_for :image, url: '/images', html: { multipart: true } do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :image %>
+    <%= f.file_field :avatar %>
+    <%= f.submit "Post", class: "btn btn-primary" %>
+  <% end %>
+</div>
