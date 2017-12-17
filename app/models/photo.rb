@@ -7,7 +7,7 @@ class Photo < ApplicationRecord
   has_many :comments
 
   def add_image_url
-    update(image_url: self.photo.url)
+    update(image_url: self.photo.url(:medium))
   end
 
 end
