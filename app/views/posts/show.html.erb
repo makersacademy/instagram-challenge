@@ -1,17 +1,35 @@
-
 <p>
   <strong>ID:</strong>
   <%= @post.id %>
 </p>
-
 <p>
   <strong>Text:</strong>
   <%= @post.text %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %>
-<br>
+
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+  <p>
+    <strong><%= comment.id %>:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+
+<h3>Add a comment:</h3>
+<%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Edit', edit_post_path(@post) %><br>
 <%= link_to 'Delete', post_path(@post), method: :delete,
-        data: { confirm: 'Are you sure' } %>
-<br>
+        data: { confirm: 'Are you sure' } %><br>
 <%= link_to 'Back', posts_path %>
