@@ -2,10 +2,13 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   def index
     @posts = Post.all
+    @users = User.all
+    p @users.find(3).name
   end
 
   def show
     @post = Post.find(params[:id])
+    @user = User.all
   end
 
   def new
