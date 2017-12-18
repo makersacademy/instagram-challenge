@@ -17,14 +17,14 @@
       <td><%= image_tag(post.image_url(:thumb).to_s) %></td>
       <td><%= post.text %></td>
 
-      <td><%= link_to 'Show', post_path(post) %></td>
-      <td><%= link_to 'Edit', edit_post_path(post) %></td>
-      <td><%= link_to 'Delete', post_path(post), method: :delete,
-              data: { confirm: 'Are you sure' } %></td>
+      <td><%= button_to 'Show', post_path(post), method: :get %></td>
+      <td><%= if user_signed_in? && current_user.id == post.user_id
+                button_to 'Edit', edit_post_path(post)
+              end %></td>
+      <td><%= if user_signed_in? && current_user.id == post.user_id
+                button_to 'Delete', post_path(post), method: :delete,
+                data: { confirm: 'Are you sure' }
+              end %></td>
     </tr>
   <% end %>
 </table>
-
-<% @posts.each do |post| %>
-
-<% end %>

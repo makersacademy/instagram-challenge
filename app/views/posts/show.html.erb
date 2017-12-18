@@ -17,8 +17,11 @@
 <h3>Add a comment:</h3>
 <%= render 'comments/form' %>
 
-
-<%= link_to 'Edit', edit_post_path(@post) %><br>
-<%= link_to 'Delete', post_path(@post), method: :delete,
-        data: { confirm: 'Are you sure' } %><br>
+<%= if user_signed_in? && current_user.id == @post.user_id
+      button_to 'Edit', edit_post_path(@post), method: :get
+    end %><br>
+<%= if user_signed_in? && current_user.id == @post.user_id
+      button_to 'Delete', post_path(@post), method: :delete,
+      data: { confirm: 'Are you sure' }
+    end %><br>
 <%= link_to 'Back', posts_path %>

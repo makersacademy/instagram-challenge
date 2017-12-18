@@ -3,12 +3,14 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @users = User.all
+    @comments = Comment.all
     p @users.find(3).name
   end
 
   def show
     @post = Post.find(params[:id])
     @user = User.all
+    @comment = Comment.all
   end
 
   def new

@@ -1,6 +1,8 @@
 <p>
-  <strong><%= @user.find(@post.user_id).name %>:</strong>
+  <strong><%= @user.find(comment.user_id).name %>:</strong>
   <%= comment.body %>
-  <%= link_to 'Delete Comment', [comment.post, comment], method: :delete,
-              data: { confirm: 'Are you sure' } %><br>
+  <%= if user_signed_in? && current_user.id == comment.user_id
+        button_to 'Delete Comment', [comment.post, comment], method: :delete,
+        data: { confirm: 'Are you sure' }
+      end %>
 </p>
