@@ -8,8 +8,11 @@ module Api
 
     def create
       photo = Photo.find_by(id: photo_id)
-      photo.likes << Like.new
+      like = Like.new
+      photo.likes << like
+      current_user.likes << like
       photo.save
+      current_user.save
       redirect_to "/"
     end
 

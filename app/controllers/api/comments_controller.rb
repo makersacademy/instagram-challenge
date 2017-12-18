@@ -8,8 +8,11 @@ module Api
 
     def create
       photo = Photo.find_by(id: photo_id)
-      photo.comments << Comment.new(text: params[:text])
+      comment = Comment.new(text: params[:text])
+      photo.comments << comment
+      current_user.comments << comment
       photo.save
+      current_user.save
       redirect_to "/"
     end
 
