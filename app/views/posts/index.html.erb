@@ -1,0 +1,30 @@
+<%= link_to 'Welcome Page', controller: 'welcome' %>
+<br><br>
+<%= link_to 'New Post', new_post_path, method: :get %>
+
+<h1>All Posts</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Image</th>
+    <th>Text</th>
+  </tr>
+
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= @users.find(post.user_id).name %></td>
+      <td><%= image_tag(post.image_url(:thumb).to_s) %></td>
+      <td><%= post.text %></td>
+
+      <td><%= button_to 'Show', post_path(post), method: :get %></td>
+      <td><%= if user_signed_in? && current_user.id == post.user_id
+                button_to 'Edit', edit_post_path(post)
+              end %></td>
+      <td><%= if user_signed_in? && current_user.id == post.user_id
+                button_to 'Delete', post_path(post), method: :delete,
+                data: { confirm: 'Are you sure' }
+              end %></td>
+    </tr>
+  <% end %>
+</table>

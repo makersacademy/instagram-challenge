@@ -1,0 +1,27 @@
+<p>
+  <strong><%= @user.find(@post.user_id).name %></strong>
+</p>
+<p>
+  <%= image_tag(@post.image_url(:thumb).to_s) %>
+</p>
+<p>
+  <strong>Text:</strong>
+  <%= @post.text %>
+</p>
+
+
+<h2>Comments</h2>
+<%= render @post.comments %>
+
+
+<h3>Add a comment:</h3>
+<%= render 'comments/form' %>
+
+<%= if user_signed_in? && current_user.id == @post.user_id
+      button_to 'Edit', edit_post_path(@post), method: :get
+    end %><br>
+<%= if user_signed_in? && current_user.id == @post.user_id
+      button_to 'Delete', post_path(@post), method: :delete,
+      data: { confirm: 'Are you sure' }
+    end %><br>
+<%= link_to 'Back', posts_path %>
