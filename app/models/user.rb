@@ -3,4 +3,5 @@ class User < ApplicationRecord
   :trackable, :validatable
 
   has_many :pictures
+  has_many :comments, dependent: :destroy
 end

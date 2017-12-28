@@ -6,7 +6,7 @@ class PicturesController < ApplicationController
   end
 
   def show
-     @picture = Picture.find(params[:id])
+     @picture = Picture.find(params[:format])
   end
 
   def new
@@ -25,11 +25,9 @@ class PicturesController < ApplicationController
   end
 
   def edit
-    @picture = Picture.find(params[:id])
   end
 
   def update
-    @picture = Picture.find(params[:id])
   end
 
   def delete
