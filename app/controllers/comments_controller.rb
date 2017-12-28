@@ -10,7 +10,9 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.save
       flash[:success] = "Your added a comment to the picture"
-      redirect_back fallback_location: root_path
+      b= "/pictures/id.#{params[:picture_id]}"
+      redirect_to (b)
+
     else
       flash[:alert] = "Check your comment, something went wrong"
       render('new')
