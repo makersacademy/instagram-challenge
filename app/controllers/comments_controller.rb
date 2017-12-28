@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment = @picture.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      flash[:success] = "Your added a comment to the picture"
+      flash[:notice] = "Comment created successfully."
       b= "/pictures/id.#{params[:picture_id]}"
       redirect_to (b)
 
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = @picture.comments.find(params[:id])
     @comment.destroy
-    flash[:success] = "Comment has been deleted"
+    flash[:notice] = "Comment has been deleted."
     redirect_to root_path
   end
 
