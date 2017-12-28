@@ -10,16 +10,21 @@
     <% if @picture.user.id == current_user.id %>
       <%= link_to "Delete Photo", picture_path(@picture), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %>
     <% end %>
-  </div>
-  <div class="comment" id="comment">
     <%= link_to('Add comment', new_picture_comment_path(@picture.id)) %>
   </div>
+  <div class="comment" id="comment">
+
+  </div>
   <div class="comments" id="comments">
+    Comments
     <% if @picture.comments %>
       <% @picture.comments.each do |comment| %>
         <div class="comm" id="comm">
           <%= comment.content %>
           by <%= comment.user.email %>
+          <% if comment.user == current_user %>
+            <%= link_to "Delete", picture_comment_path(@picture,comment), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" } %>
+          <% end %>
         </div>
       <% end %>
     <% end %>

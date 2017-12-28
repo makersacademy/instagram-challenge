@@ -20,10 +20,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @picture = Picture.find(params[:picture_id])
     @comment = @picture.comments.find(params[:id])
     @comment.destroy
     flash[:notice] = "Comment has been deleted."
-    redirect_to root_path
+    redirect_back fallback_location: root_path
   end
 
   private
