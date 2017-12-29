@@ -30,6 +30,12 @@ class PicturesController < ApplicationController
   def update
   end
 
+  def upvote
+  @picture = Picture.find(params[:id])
+  @picture.upvote_by current_user
+  redirect_to root_path
+  end
+
   def delete
     @picture = Picture.find(params[:id])
   end
