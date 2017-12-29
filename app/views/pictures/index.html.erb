@@ -5,13 +5,11 @@
     <div class="post" id="post">
       <%= link_to image_tag(picture.image.url, class: 'post-img', alt: 'Photo'), picture_path(:id,picture.id) if picture.image? %>
       <div class="caption">
-        <h2 class="caption"><%= picture.caption %></h2>
+        <h2><strong><%= picture.caption %></strong> by <%= picture.user.email %></h2>
       </div>
-      <div class="email">
-        <%= picture.user.email %>
+      <div class="actions">
         <%= link_to like_picture_path(picture), method: :put do %>
-          ♡
-          <%= picture.get_upvotes.size %>
+          ♥️ <%= picture.get_upvotes.size %>
         <% end %>
       </div>
     </div>

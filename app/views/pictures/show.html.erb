@@ -1,33 +1,27 @@
-<div class="post" id="post">
+<div class="single-post">
   <%= image_tag(@picture.image.url, class: 'post-img', alt: 'Photo') %>
-  <div class="caption" id="caption">
-    <h2 class="caption"><%= @picture.caption %></h2>
+  <div class="caption">
+    <h2><strong><%= @picture.caption %></strong> by <%= @picture.user.email %></h2>
   </div>
-  <div class="email" id="email">
-    <%= @picture.user.email %>
+  <div class="actions">
     <%= link_to like_picture_path(@picture), method: :put do %>
-      ♡
-      <%= @picture.get_upvotes.size %>
+      ♥️ <%= @picture.get_upvotes.size %>
     <% end %>
-  </div>
-  <div class="edit" id="edit">
+    <%= link_to('🗨️', new_picture_comment_path(@picture.id)) %>
     <% if @picture.user.id == current_user.id %>
-      <%= link_to "Delete Photo", picture_path(@picture), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %>
+      <%= link_to "Delete", picture_path(@picture), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %>
     <% end %>
-    <%= link_to('Add comment', new_picture_comment_path(@picture.id)) %>
   </div>
-  <div class="comment" id="comment">
 
-  </div>
-  <div class="comments" id="comments">
-    Comments
+  <div class="comments">
+    <strong>Comments</strong>
     <% if @picture.comments %>
       <% @picture.comments.each do |comment| %>
-        <div class="comm" id="comm">
+        <div class="comm">
           <%= comment.content %>
-          by <%= comment.user.email %>
+          <span class="grey">by <%= comment.user.email %></span>
           <% if comment.user == current_user %>
-            <%= link_to "Delete", picture_comment_path(@picture,comment), method: :delete, data: { confirm: "Are you sure you want to delete this comment?" } %>
+            <%= link_to "❌", picture_comment_path(@picture,comment), method: :delete, class: "delete-comment", data: { confirm: "Are you sure you want to delete this comment?" } %>
           <% end %>
         </div>
       <% end %>
