@@ -48,6 +48,7 @@ group :development, :test do
   gem 'headless'
   gem 'capybara'
   gem 'poltergeist'
+  gem 'shoulda-matchers', '~> 3.0'
 end
 
 group :development do
