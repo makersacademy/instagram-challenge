@@ -1,21 +1,17 @@
 # Momentgram
-
 Momentgram represents the implementation of Makers Academy weekend challenge of recreating Instagram using Ruby on Rails.
 
 ## Approach
 I started this challenge by thinking what functionality the MPV should have, followed by creating the user stories. The MVP was designed to have the following functionalities: posting and deleting picture (model picture), user can sign-up, login and logout(model user). After that I had expanded the MVP, by adding comments and likes.
 
 ## Setup
-
-$ git clone  https://github.com/gabrielabud/instagram-challenge.git
-$ bundle install
-$ bin/rails db:setup
-$ bin/rails s
+- $ git clone  https://github.com/gabrielabud/instagram-challenge.git
+- $ bundle install
+- $ bin/rails db:setup
+- $ bin/rails s
 
 ## User Stories
-
 The following user stories have been implemented.
-
 ```
 As an user
 so that I can use Momentgram for the first time
@@ -48,18 +44,16 @@ I'd like to be able to delete comments
 As an user
 So that I can give feedback on images
 I'd like to be able to like photos
-
-
 ```
 
 ## Further improvements
-  If I had more time, I would have also added the following:
-    - filter pictures by tag;
-    - a user page, where only the user's pictures are shown;
-    - the option to follow users and only see their posts;
-    - features tests, which I did not approach;
-    - API;
-    - deployment to Heroku;
+If I had more time, I would have also added the following:
+- filter pictures by tag;
+- a user page, where only the user's pictures are shown;
+- the option to follow users and only see their posts;
+- features tests, which I did not approach;
+- API;
+- deployment to Heroku;
 
 ## Home page
 ![Homepage](/images/home.png)
