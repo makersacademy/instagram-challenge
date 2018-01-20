@@ -9,7 +9,6 @@ feature 'Posting' do
   scenario 'Posts can be liked' do
     visit '/posts'
     create_post
-    visit '/posts'
     click_on 'Like'
     expect(page).to have_content '1 Like'
   end

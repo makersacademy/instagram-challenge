@@ -28,13 +28,14 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       if @like.save
-        format.html { redirect_to @like, notice: 'Like was successfully created.' }
+        format.html { redirect_to post_url(@like.post_id), notice: 'Like was successfully created.' }
         format.json { render :show, status: :created, location: @like }
       else
         format.html { render :new }
         format.json { render json: @like.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /likes/1
