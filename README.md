@@ -1,40 +1,39 @@
 Instagram Challenge
 ===================
 
-## Instructions
+## User Stories
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-## Task
-
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
 ```
+As a user
+So that other people can see what I am doing
+I want to be able to post pictures
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+As a user
+So that people know what is the context of the picture
+I want to be able to add a caption and location
+
+As a user
+So that I can see what other people are doing
+I want to see all pictures in reverse chronological order
+
+As a user
+So that I can see where the pictures were taken
+I want to see the locations
+
+As a user
+So that I will be able to use Instagram
+I want to sign up with email and password
+
+As a user
+So that I will be able to come back without signing up again
+I want to be able to log in and log out
+
+As a user
+So that I can tell people I like their pictures
+I want to be able to click on the like button
+
+As a user
+So that I can tell people what I think about their pictures
+I want to be able to write comments on pictures
+
+```
