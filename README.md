@@ -30,11 +30,6 @@ You will then need to go to your local browser on port 3000, http://localhost:30
 
 ## How this app could be improved ?
 
-- When I add a new comment (for a post) I would like to fill the commenter field automatically. In order to do this, I should have a username in my User model (I currently only have email), and then I could make use of this name to fill out this field automatically.
-
 - I have installed the acts_as_votable gem to create the Upvote/Downvote feature ...but maybe I could have built my own "Like" model which would have  been more of a challenge, as this model would have had to interact with the User, the Post, and the Comment model in order to make sure that the "likes" are being correctly accounted for.
 
-
 - I have not managed to find a solution to prevent the page from going to the top when we click on "like" or "dislike". I have tried to use preventDefault with JavaScript, but no luck there.
-
-- I have installed the rspec gem but I have not run any tests. 
