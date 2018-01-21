@@ -1,5 +1,5 @@
 class Photo < ApplicationRecord
-  has_many :comments
+  has_many :comments, dependent: :delete_all
   has_attached_file :image, styles: { 
     large: "600x600",
     medium: "300x300>",
