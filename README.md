@@ -64,7 +64,7 @@ so that I can use Instagram easily,
 I would like to have a fun interface.
 ```
 
-Bonus Feature
+***Bonus Feature***
 
 ```
 As a User,
