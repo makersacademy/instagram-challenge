@@ -1,4 +1,16 @@
-
-<%= image_tag(@post.image.url(:medium)) %>
-<br>
-<%= @post.caption %>
+<div class="posts-wrapper row">
+  <div class="post">
+    <div class="img center-block">
+      <%= image_tag(@post.image.url(:medium)) %>
+    </div>
+    <div class="caption">
+      <%= @post.caption %>
+    </div>
+    <div class="text-center">
+      <%= link_to 'Cancel', posts_path %>
+      <%= link_to 'Delete', post_path(@post),
+          method: :delete,
+          data: { confirm: 'Are you sure?'} %>
+    </div>
+  </div>
+</div>
