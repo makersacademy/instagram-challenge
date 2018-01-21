@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20180121162430) do
 
   create_table "photos", force: :cascade do |t|
     t.text "description"
-    t.integer "likes"
+    t.integer "likes", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_file_name"
