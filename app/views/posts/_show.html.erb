@@ -1,0 +1,36 @@
+<% @posts.each { |post| %>
+<td>
+  <%= post.user_id %>
+  <p>
+    <strong>Image:</strong>
+    <%= link_to image_tag(post.image.url(:med)), post.image.url %>
+  </p>
+
+  <p>
+    <strong>Desc:</strong>
+    <%= post.desc %>
+  </p>
+
+  <p>
+    <%= post.likes.count %>
+    <% if post.likes.count == 1 %>
+      Like
+    <% else %>
+      Likes
+    <% end %>
+  </p>
+
+  <p>
+    <% post.comments.each { |comment| %>
+      <%= comment.content %>
+      <br>
+    <%}%>
+  </p>
+
+  <%= render 'comments/form', comment: @comment, post: post %>
+  <%= link_to 'Edit', edit_post_path(post) %>
+  <%= button_to 'Like', likes_path, params: {like: { post_id: post.id, user_id: current_user.id }}%>
+  <%= button_to 'Delete', post_path(post), method: :delete %>
+</td>
+
+<%}%>

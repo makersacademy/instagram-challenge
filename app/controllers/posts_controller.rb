@@ -1,12 +1,16 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :comment, only: [:show]
+  before_action :comment, only: [:show, :index]
 
   # GET /posts
   # GET /posts.json
   def index
-    redirect_to new_user_session_path if !current_user
-    @posts = Post.all
+    if !current_user
+      redirect_to new_user_session_path
+      return
+    end
+    user_id = user_params ? user_params : current_user.id
+    @posts = Post.where(user_id: user_id)
   end
 
   # GET /posts/1
@@ -30,7 +34,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to posts_url, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -76,5 +80,9 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:image, :desc, :user_id)
+    end
+
+    def user_params
+      params.require(:user).permit(:user_id) if params[:user]
     end
 end

@@ -28,7 +28,7 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       if @like.save
-        format.html { redirect_to post_url(@like.post_id), notice: 'Like was successfully created.' }
+        format.html { redirect_to request.referrer, notice: 'Like was successfully created.' }
         format.json { render :show, status: :created, location: @like }
       else
         format.html { render :new }
