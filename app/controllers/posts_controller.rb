@@ -8,7 +8,13 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to @post
+    if @post.save
+      flash[:success] = "Your image has been succesfully posted!"
+      redirect_to @post
+    else
+      flash[:alert] = "You cannot post without uploading an image."
+      render :new
+    end
   end
 
   def show
