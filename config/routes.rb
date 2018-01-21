@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'posts#index'
+  root 'photos#index'
 
-  resources :posts
+  resources :photos
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
