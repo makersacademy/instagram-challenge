@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  get 'picture/index'
+  get 'pictures/index'
+
+  get 'pictures/new'
+
+
   resources :pictures
 
-  root 'picture#index'
+  root 'pictures#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
