@@ -20,4 +20,12 @@ feature "Post" do
     expect(page).not_to have_css("img[src*='greatview']")
   end
 
+  scenario "User can delete a post" do
+    visit post_path(post)
+    click_link('Edit')
+    fill_in 'post[caption]', with: "test caption 2"
+    click_on 'Post'
+    expect(page).to have_content "test caption 2"
+  end
+
 end
