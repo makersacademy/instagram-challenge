@@ -32,6 +32,7 @@ class PostsController < ApplicationController
       flash[:success] = "Post updated"
       redirect_to post_path(@post)
     else
+      flash[:alert] = "Error: Please upload an image file."
       render "edit"
     end
   end
