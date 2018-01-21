@@ -6,5 +6,7 @@ RSpec.configure do |config|
   end
   config.after(:each) do
     DatabaseCleaner.clean
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/system/posts/images/000"])
   end
+
 end

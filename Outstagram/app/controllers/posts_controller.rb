@@ -21,8 +21,9 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  def view
-    @post = Post.first(id: params[:id])
+  def show
+    p params[:id]
+    p @post = Post.find(params[:id])
   end
 
   private
