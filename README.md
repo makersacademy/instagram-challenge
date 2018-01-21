@@ -1,6 +1,42 @@
 Instagram Challenge
 ===================
 
+
+```
+As a User
+I can upload photos
+So they can be viewed on my timeline
+
+As a User
+I can like a photo
+So people can see that I admire the photo
+
+As a User
+I want to be able to leave comments on a photo
+So others can see what I think of the photo
+
+As a User
+I can remove a photo that I uploaded
+So that other can't see it anymore
+
+As a User
+I can remove a comment that I posted
+So that other can't see it anymore
+
+As a User
+I can sign up
+So that others can see that I have posted a photo
+
+As a User
+I can sign up
+So that I can comment on photos as myself
+
+As a User
+I can sign out
+So that other cannot post photos or comments as me
+```
+
+
 ## Instructions
 
 * Challenge time: one weekend
