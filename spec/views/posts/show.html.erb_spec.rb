@@ -6,6 +6,7 @@ RSpec.describe "posts/show", type: :view do
       :image => "",
       :desc => "MyText"
     ))
+    @comment = Comment.new
   end
 
   it "renders attributes in <p>" do
