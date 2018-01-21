@@ -16,4 +16,8 @@ module Helpers
     click_on 'Create Post'
   end
 
+  def create_comment(comment: comment)
+    fill_in "comment[comment]", with: comment
+    click_on "Create Comment"
+  end
 end

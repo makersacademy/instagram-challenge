@@ -9,5 +9,13 @@
     <%= @post.caption %>
     <%= link_to "Edit", edit_post_path(@post) %>
     <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Do you really want to delete this post?" } %>
+
+    <% if @post.comments.count > 0 %>
+      <h2>Comments</h2>
+      <%= render @post.comments.select(&:persisted?) %>
+    <% end %>
+
+    <%= render "comments/form" %>
+
   </body>
 </html>
