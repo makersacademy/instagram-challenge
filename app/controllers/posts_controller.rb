@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :comment, only: [:show]
-  
+
   # GET /posts
   # GET /posts.json
   def index
+    redirect_to new_user_session_path if !current_user
     @posts = Post.all
   end
 
@@ -74,6 +75,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:image, :desc)
+      params.require(:post).permit(:image, :desc, :user_id)
     end
 end
