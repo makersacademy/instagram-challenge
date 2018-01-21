@@ -9,6 +9,7 @@ gem "rubocop", "0.48.1"
 gem "rubocop-rails"
 gem 'rails-erb-lint'
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
@@ -45,6 +46,7 @@ group:test do
 
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'selenium-webdriver'
   gem 'capybara'
 
 end
