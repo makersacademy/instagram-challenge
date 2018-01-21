@@ -1,12 +1,12 @@
-def sign_up
+def sign_up email: 'test@test.test', first_name: 'Tester', last_name: 'McTesterford', password: 'passyword'
   visit 'users/sign_up'
 
 
-  fill_in 'Email', with: 'test@test.test'
-  fill_in 'First name', with: 'Tester'
-  fill_in 'Last name', with: 'McTesterford'
-  fill_in 'Password', with: 'passyword'
-  fill_in 'Password confirmation', with: 'passyword'
+  fill_in 'Email', with: email
+  fill_in 'First name', with: first_name
+  fill_in 'Last name', with: last_name
+  fill_in 'Password', with: password
+  fill_in 'Password confirmation', with: password
   click_on 'Sign up'
 end
 
