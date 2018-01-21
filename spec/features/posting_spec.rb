@@ -24,7 +24,7 @@ feature 'Posts' do
   scenario '- multiple can be posted/displayed' do
     sign_up
     3.times { create_post }
-    expect(page).to have_selector('td', count: 3)
+    expect(Post.count).to eq 3
   end
 
 end
