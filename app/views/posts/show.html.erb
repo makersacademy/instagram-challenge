@@ -1,17 +1,26 @@
 <div class="posts-wrapper row">
   <div class="post">
+    <div class="user-name">
+      <%= @post.user.user_name %>
+    </div>
     <div class="img center-block">
       <%= image_tag(@post.image.url(:medium)) %>
     </div>
     <div class="caption">
       <%= @post.caption %>
     </div>
-    <div class="text-center edit-links">
-      <%= link_to 'Back', posts_path %>
-      <%= link_to 'Delete', post_path(@post),
-          method: :delete,
-          data: { confirm: 'Are you sure?'} %>
-      <%= link_to 'Edit', edit_post_path(@post) %>
-    </div>
+    <% if @post.user.id == current_user.id %>
+      <div class="text-center edit-links">
+        <%= link_to 'Back', posts_path %>
+        <%= link_to 'Delete', post_path(@post),
+            method: :delete,
+            data: { confirm: 'Are you sure?'} %>
+        <%= link_to 'Edit', edit_post_path(@post) %>
+      </div>
+    <% else %>
+      <div class="text-center edit-links">
+        <%= link_to 'Back', posts_path %>
+      </div>
+    <% end %>
   </div>
 </div>

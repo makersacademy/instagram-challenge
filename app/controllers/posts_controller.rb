@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  
+  before_action :owned_post, only: [:edit, :update, :destroy]
+
   def index
     @posts = Post.all
   end
@@ -10,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def edit
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "Your post has been created!"
       redirect_to post_path(@post)
@@ -48,5 +49,12 @@ class PostsController < ApplicationController
   private
     def post_params
       params.require(:post).permit(:image, :caption)
+    end
+
+    def owned_post
+      unless current_user == @post.user
+        flash[:alert] = "You don't have authority to edit or delete."
+        redirect_to root_path
+      end
     end
 end
