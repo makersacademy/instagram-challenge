@@ -18,7 +18,16 @@
     Likes
   <% end %>
 </p>
+<br>
 
+<p>
+  <% @post.comments.each { |comment| %>
+    <%= comment.content %>
+    <br>
+  <%}%>
+<br>
+
+<%= render 'comments/form', comment: @comment %>
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
-<%= button_to 'Like', likes_path, params: {post: { post_id: @post.id }}%>
+<%= button_to 'Like', likes_path, params: {like: { post_id: @post.id }}%>

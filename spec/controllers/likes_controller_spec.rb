@@ -41,37 +41,6 @@ RSpec.describe LikesController, type: :controller do
   # LikesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "returns a success response" do
-      like = Like.create! valid_attributes
-      get :index, params: {}, session: valid_session
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET #show" do
-    it "returns a success response" do
-      like = Like.create! valid_attributes
-      get :show, params: {id: like.to_param}, session: valid_session
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET #new" do
-    it "returns a success response" do
-      get :new, params: {}, session: valid_session
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET #edit" do
-    it "returns a success response" do
-      like = Like.create! valid_attributes
-      get :edit, params: {id: like.to_param}, session: valid_session
-      expect(response).to be_success
-    end
-  end
-
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Like" do
@@ -79,45 +48,11 @@ RSpec.describe LikesController, type: :controller do
           post :create, params: {like: valid_attributes}, session: valid_session
         }.to change(Like, :count).by(1)
       end
-
-      it "redirects to the created like" do
-        post :create, params: {like: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Like.last)
-      end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
         post :create, params: {like: invalid_attributes}, session: valid_session
-        expect(response).to be_success
-      end
-    end
-  end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested like" do
-        like = Like.create! valid_attributes
-        put :update, params: {id: like.to_param, like: new_attributes}, session: valid_session
-        like.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "redirects to the like" do
-        like = Like.create! valid_attributes
-        put :update, params: {id: like.to_param, like: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(like)
-      end
-    end
-
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        like = Like.create! valid_attributes
-        put :update, params: {id: like.to_param, like: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
     end
