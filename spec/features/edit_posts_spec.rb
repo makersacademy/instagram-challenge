@@ -4,7 +4,6 @@ RSpec.feature "Editing posts", type: :feature do
   scenario "Posts can be edited" do
     create_crepe_post
     visit "/"
-    save_and_open_page
     find(:xpath, "//a[contains(@href,'posts/1')]").click
     click_link "Edit"
     fill_in "post[caption]", with: "I love crepes"
