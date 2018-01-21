@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  belongs_to :user
+  
+  validates :user_id, presence: true
   validates :image, attachment_presence: true
 
   has_attached_file :image, styles: { medium: "400x400"}, default_url: "/images/:style/missing.png"
