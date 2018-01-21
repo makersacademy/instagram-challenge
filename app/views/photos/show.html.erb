@@ -5,3 +5,23 @@
 <%= @photo.description %>
 <button> <%= @photo.likes%> </button>
 
+  <h2>Comments</h2>
+  <% @photo.comments.each do |comment| %>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  <% end %>
+
+
+
+
+<h1>Added a Comment</h1>
+
+<%= form_with(model: [ @photo, @photo.comments.build ]) do |form| %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
