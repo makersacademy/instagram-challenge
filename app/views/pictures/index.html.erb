@@ -1,0 +1,35 @@
+<head>
+<link rel="stylesheet" type="text/css" href="../stylesheets/pictures.css">
+</head>
+<body id="bg1">
+  <%= render 'banner' %>
+
+  <div class="box0">
+    <div class="box00">
+      <br>
+      <ul style="list-style-type:none;">
+        <% @pictures.each do |picture| %>
+         <li class="boxB">
+           <div> <%= image_tag(picture.image) %></div>
+           <div> <%= picture.description %></div>
+           <div>
+             <% picture.comments.each do|comment| %>
+               <%= comment.body %><br>
+             <%end%>
+           </div>
+         </li>
+         <%=form_with(model:[picture, picture.comments.build], local: true) do |form| %>
+         <%=form.text_area :body %>
+        <%=form.submit %>
+        <%end%>
+         <br>
+         <br>
+         <% end%>
+      </ul>
+      <div class="boxC">
+      <%= link_to 'Add picture', new_picture_path %>
+      </div>
+      <br>
+    </div>
+  </div>
+</body>
