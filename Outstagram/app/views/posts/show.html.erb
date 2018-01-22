@@ -3,7 +3,8 @@
 <%= image_tag @post.image.url(:large) %> <br>
 <%= @post.caption %> <br>
 <% if @post.user == current_user %>
-<p><%= button_to 'Edit', edit_post_path(@post), method: :get  %></p>
+<p><%= button_to 'Edit', edit_post_path(@post), method: :get  %>
+	<%= button_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% end %>
 <p>Comments: </p>
 <% @post.comments.each do |comment| %>
