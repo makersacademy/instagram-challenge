@@ -6,7 +6,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
-  process resize_to_fill: [150, 150]
+  process resize_to_fill: [200, 200]
 
 
 
@@ -58,6 +58,4 @@ class ImageUploader < CarrierWave::Uploader::Base
   #     model.width, model.height = ::MiniMagick::Image.open(file.file)[:dimensions]
   #   end
   # end
-
-
 end
