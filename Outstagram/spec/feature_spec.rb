@@ -20,6 +20,23 @@ feature 'create image posts' do
     expect(page).to have_content 'MY CAPTIONNN!!!'
     expect(page).to have_css "img[src*='angery.jpg']"
   end
+  scenario 'users can edit their posts' do
+    sign_up
+    submit_post
+    click_on 'View'
+    click_on 'Edit'
+    fill_in 'Caption', with: 'NEEEWWWW CCAAAAPTION!!!'
+    click_on 'Submit'
+    expect(page).to have_content 'NEEEWWWW CCAAAAPTION!!!'
+  end
+  scenario "users can't edit other users' posts" do
+    sign_up
+    submit_post
+    click_on 'Sign Out'
+    sign_up email: 'test2@test.test'
+    click_on 'View'
+    expect(page).not_to have_button 'Edit'
+  end
 end
 
 feature 'view posts' do
@@ -41,7 +58,7 @@ feature 'commenting' do
     sign_up email: 'test2@test.test'
     click_on 'View'
     fill_in 'Comment', with: 'AAHHH LAAKES THAAAS!'
-    click_on 'Submit comment'
+    click_on 'Post Comment'
     expect(page).to have_content 'AAHHH LAAKES THAAAS!'
   end
 end

@@ -22,10 +22,25 @@ class PostsController < ApplicationController
   end
 
   def show
-    p params[:id]
-    p @post = Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    respond_to do |format|
+      if @post.save
+        format.html {redirect_to '/posts'}
+      else
+        format.html {render :edit}
+      end
+    end
+  end
+  
   private
 
   def post_params
