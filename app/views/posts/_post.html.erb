@@ -19,14 +19,13 @@
         <% post.comments.each do |comment| %>
           <div id="comment">
             <div class="user-name">
-              <%= comment.user.user-name %>
+              <%= comment.user.user_name %>
             </div>
             <div class="comment-content">
               <%= comment.content %>
             </div>
             <% if comment.user == current_user %>
-              <%= link_to 'Delete', post_comments_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
-              <span class="glyphicon glyphicon-remove delete-comment"></span>
+              <%= link_to 'Delete', post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
             <% end %>
           </div>
         <% end %>
