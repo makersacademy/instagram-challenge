@@ -1,39 +1,42 @@
-<h1>Show</h1>
-<div></div>
-<%= image_tag @photo.image(:medium) %>
-
-
-  <%= button_to 'Delete Photo', @photo,
-      method: :delete,
-      data: { confirm: 'Are you sure you want to delete this photo?' } %>
-
-<%= @photo.description %>
-<button> <%= @photo.likes%> </button>
-<div>
-  <h2>Comments</h2>
-  <% @photo.comments.each do |comment| %>
-    <%= comment.body %>
-
-    <%= button_to 'Destroy Comment', [comment.photo, comment],
+<div class="card" style="width: 38rem;">
+    <div class="card-header" style="text-align: left">
+      <img src="https://image.flaticon.com/icons/png/512/23/23228.png" 
+          width="30" height="30" class="d-inline-block align-top"><strong>User Icon</strong>
+    </div>
+    <%= image_tag @photo.image(:medium), class: "card-img-top" %>
+    <div class="card-body">
+      <p class="card-text"> <%= @photo.description %> </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"> <strong>Likes<%= @photo.likes %> </strong></li>
+      <li class="list-group-item">
+        <%= button_to 'Delete Photo', @photo, class: "btn btn-danger",
+          method: :delete,
+          data: { confirm: 'Are you sure you want to delete this photo?' } %>
+      </li>
+    </ul>
+    <div class="card-body">
+      <h2>Comments</h2>
+      <% @photo.comments.each do |comment| %>
+        <%= comment.body %>
+        <%= button_to 'X', [comment.photo, comment], class: "btn btn-danger",
                method: :delete,
                data: { confirm: 'Are you sure?' } %>
-               
-  <% end %>
+      <% end %>
+    </div>
 </div>
 
-</div>
 
+
+<br><br>
 
 <div>
-  <h1>Added a Comment</h1>
+  <h2>Added a Comment</h2>
 
   <%= form_with(model: [ @photo, @photo.comments.build ]) do |form| %>
-    <p>
-      <%= form.label :body %><br>
-      <%= form.text_area :body %>
-    </p>
-    <p>
-      <%= form.submit %>
-    </p>
+      <%= form.text_field :body, placeholder: "Add a comment...", class: "form-control" %>
+    <br>
+      <button types="submit" class="btn btn-success">Create comment</button>
+    
   <% end %>
 </div>

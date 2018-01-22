@@ -1,17 +1,20 @@
-<h1>Index</h1>
-
-<table>
-  <tr>
-    <th>Image</th>
-    <th>Description</th>
-  </tr>
- 
-  <% @photos.each do |photo| %>
-    <tr>
-      <td><%= image_tag photo.image(:medium) %></td>
-      <td><%= photo.description %></td>
-      <td><%= photo.likes %></td>
-      <td><%= link_to 'Show', photo_path(photo) %></td>
-    </tr>
-  <% end %>
-</table>
+<% @photos.each do |photo| %>
+  <div class="card" style="width: 38rem; margin-bottom: 1em;">
+    <div class="card-header">
+      User Icon
+    </div>
+    <%= image_tag photo.image(:medium), class: "card-img-top" %>
+    <div class="card-body">
+      <p class="card-text"> <%= photo.description %> </p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Heart_icon_red_hollow.svg/1000px-Heart_icon_red_hollow.svg.png" width="30" height="30">
+      </li>
+      <li class="list-group-item"> <strong>Likes <%= photo.likes %></strong> </li>
+    </ul>
+    <div class="card-body">
+      <%= link_to 'Show', photo_path(photo), class: "card-link" %>
+    </div>
+  </div>
+<% end %>
