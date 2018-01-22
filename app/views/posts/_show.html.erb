@@ -1,0 +1,30 @@
+<% @posts.each { |post| %>
+  <div id="post<%=post.id%>" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="photo-box">
+      <div class="image-wrap">
+        <img src= "<%= post.image.url(:large)%>">
+        <div class="likes">
+          <%= post.likes.count %>
+          <% if post.likes.count == 1 %>
+            Like
+          <% else %>
+            Likes
+          <% end %>
+        </div>
+      </div>
+      <div class="description">
+        <%= post.desc %>
+      </div>
+      <div id="comments">
+        <% post.comments.each { |comment| %>
+          <%= comment.content %>
+          <br>
+        <%}%>
+      </div>
+      <%= render 'comments/form', comment: @comment, post: post %>
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= button_to 'Like', likes_path, params: {like: { post_id: post.id, user_id: current_user.id }}%>
+      <%= button_to 'Delete', post_path(post), method: :delete %>
+    </div>
+  </div>
+<%}%>
