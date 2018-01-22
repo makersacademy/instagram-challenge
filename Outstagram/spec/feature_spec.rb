@@ -29,6 +29,7 @@ feature 'create image posts' do
     click_on 'Submit'
     expect(page).to have_content 'NEEEWWWW CCAAAAPTION!!!'
   end
+
   scenario "users can't edit other users' posts" do
     sign_up
     submit_post
