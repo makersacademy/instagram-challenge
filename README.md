@@ -12,6 +12,12 @@ This project has been build by primarily using the following technologies:
 * Ruby
 * Rails
 
+## Pending Work
+* Implement User SignIn / SignOut
+* Implement Like / Comment of photos
+* Implement filter
+* IMPLEMENT TESTING. Current project had NO TESTING
+
 
 
 ## User Stories
