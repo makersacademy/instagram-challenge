@@ -34,6 +34,7 @@ gem "rubocop-rails"
 gem 'simple_form'
 gem 'paperclip', '~> 5.0.0'
 gem 'database_cleaner'
+gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
