@@ -33,6 +33,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'simple_form'
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem "paperclip", "~> 5.0.0"
+gem "devise"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -42,11 +47,6 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.7'
   gem 'factory_bot_rails'
-  gem 'simple_form'
-  gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
-  gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-  gem "paperclip", "~> 5.0.0"
-  gem "devise"
 end
 
 group :development do
