@@ -1,5 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe Comment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Post, type: :model do
+  let!(:comment) { create(:comment) }
+  describe "Comment" do
+    it {is_expected.to be}
+
+    it "is a valid comment" do
+      expect(comment).to be_valid
+    end
+  end
 end
