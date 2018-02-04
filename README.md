@@ -72,6 +72,5 @@ $ brew install imagemagick
 $ gem 'paperclip'
 $ bundle install
 ```
-
-### What to do next?
-Some of the feature tests failed after the recent implementations. If given more time, I would like to dig into it.
+### Live on Heroku
+[Demo on Heroku](https://xin-instagram.herokuapp.com/users/sign_in)
