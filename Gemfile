@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -32,11 +32,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'simple_form'
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-gem "paperclip", "~> 5.0.0"
-gem "devise"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -46,6 +42,12 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.7'
   gem 'factory_bot_rails'
+  gem 'sqlite3'
+  gem 'simple_form'
+  gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+  gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+  gem "paperclip", "~> 5.0.0"
+  gem "devise"
 end
 
 group :development do
