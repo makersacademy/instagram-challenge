@@ -1,7 +1,15 @@
 Instagram Challenge
 ===================
 
-## User Stories
+## Task
+
+Build Instagram
+
+Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+
+Bonus if you can add filters!
+
+### User stories
 
 ```
 As a user
@@ -37,3 +45,33 @@ So that I can tell people what I think about their pictures
 I want to be able to write comments on pictures
 
 ```
+## Set up:
+
+```bash
+git clone git@github.com:Xin00163/instagram-challenge.git
+cd instagram-challenge
+bundle install
+bin/rails db:create
+bin/rails db:migrate
+bin/rails server #  localhost:3000
+```
+### Tests
+
+```bash
+bin/rails db:migrate RAILS_ENV=test # Ensure your test environment is updated
+bundle exec rspec # Runs the whole test suite
+bundle exec rspec path/to/spec_file # Runs a single spec
+```
+
+### Dependencies
+
+- Paperclip: A file attachment library for ActiveRecord. This was used for the image upload functionality of the app. Visit [Paperclip](https://github.com/thoughtbot/paperclip) documentation for more information.
+
+```
+$ brew install imagemagick
+$ gem 'paperclip'
+$ bundle install
+```
+
+### What to do next?
+Some of the feature tests failed after the recent implementations. If given more time, I would like to dig into it.
