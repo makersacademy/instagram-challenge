@@ -75,5 +75,5 @@ $ bundle install
 ### Live on Heroku
 [Demo on Heroku](https://xin-instagram.herokuapp.com/users/sign_in)
 
-### Looks like this:
-[Homepage](https://i.imgur.com/CgZgddE.png)
+### Screenshots
+## ![Home Page](https://i.imgur.com/CgZgddE.png)
