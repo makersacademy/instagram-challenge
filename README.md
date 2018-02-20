@@ -6,6 +6,32 @@ Instagram Challenge
 Makers Academy week 8's weekend challenge consists of building Instagram using Rails.
 **users** can post **pictures**, write **comments** on pictures and **like** a picture.
 
+## Setup and running
+
+Clone the repo on the command line:
+```
+$ git clone https://github.com/Albion31/instagram-challenge.git
+$ cd instagram-challenge
+```
+
+Install bundle and run it to install dependencies
+```
+$ gem install bundler
+$ bundle install
+```
+
+Create and migrate the database
+```
+$ rake db:setup
+$ rake db:migrate
+```
+Run the app
+```
+$ rails s
+Go to http://localhost:3000 on your browser
+```
+
+
 ## User Stories
 
 **_Step 1 - MVP_**
@@ -40,7 +66,7 @@ So that I can see what I have posted
 I want to be able to see them all on my page
 ```
 
-## Instructions
+
 
 
 ## Author
