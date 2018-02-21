@@ -56,6 +56,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # For clean code
+  gem 'factory_bot_rails'
   gem 'rubocop', '0.48.1'
   gem 'rubocop-rails'
 end
