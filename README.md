@@ -4,7 +4,10 @@ Instagram Challenge
 ## Task
 
 Makers Academy week 8's weekend challenge consists of building Instagram using Rails.
-**users** can post **pictures**, write **comments** on pictures and **like** a picture.
+**users** can post **pictures** and write **comments** on pictures.
+
+## Reflection
+I have not had the chance to implement the like function yet and working on the look of the page with CSS but this is something I will look at completing shortly.
 
 ## Setup and running
 
