@@ -19,6 +19,6 @@ feature 'Creating posts' do
     click_button 'Create Post'
     expect(page).to have_content('Why would you not attach a picture?')
     expect(page).not_to have_css("img[src*='1.jpeg']")
-    expect(current_path).to eq '/posts/new'
+    expect(current_path).to eq '/posts'
   end
 end
