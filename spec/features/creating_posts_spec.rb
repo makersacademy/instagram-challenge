@@ -1,7 +1,7 @@
 require 'rails_helper.rb'
 
 feature 'Creating posts' do
-  before do
+  background do
     visit '/'
     click_link 'New Post'
   end
