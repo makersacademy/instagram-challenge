@@ -1,40 +1,79 @@
+![USEDPOST](https://img.shields.io/badge/USES-HTML-blue.svg?style=for-the-badge) ![USEDPOST](https://img.shields.io/badge/USES-GIT-orange.svg?style=for-the-badge) ![USEDPOST](https://img.shields.io/badge/USES-Ruby-red.svg?style=for-the-badge)
+![USEDPOST](https://img.shields.io/badge/USES-Rails-ff0000.svg?style=for-the-badge)
+
 Instagram Challenge
 ===================
 
-## Instructions
+## Project overview
+Build an Instagram-like application using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Technologies
+This project has been build by primarily using the following technologies:
+* Ruby
+* Rails
 
-## Task
+## Pending Work
+* Implement User SignIn / SignOut
+* Implement Like / Comment of photos
+* Implement filter
+* IMPLEMENT TESTING. Current project had NO TESTING
 
-Build Instagram: Simple huh!
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters!
+## User Stories
 
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+```
+As a User,
+so that I can update others on my life,
+I would like to upload my photos on Instagram.
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+```
+As a User,
+so that I can communicate the context of the photo,
+I would like to write comments for uploaded photos.
+```
+
+```
+As a User,
+so that I can check up on my friends,
+I would like to scroll through all photos on Instagram.
+```
+
+```
+As a user
+So that I can show people I like their pictures,
+I want to be able to click on the like button.
+```
+
+```
+As a user
+So that I can tell people why I like their pictures,
+I want to be able to add commnets to pictures.
+```
+
+```
+As a User,
+so that I can use Instagram,
+I would like to register for an account.
+```
+
+```
+As a User,
+so that no one else can access my Instagram account,
+I would like to be able to log in and log out.
+```
+
+```
+As a User,
+so that I can use Instagram easily,
+I would like to have a fun interface.
+```
+
+***Bonus Feature***
+
+```
+As a User,
+so that I can enhance my photos,
+I would like to add a filter.
+```
