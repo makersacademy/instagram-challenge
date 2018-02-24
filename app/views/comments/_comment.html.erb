@@ -1,0 +1,16 @@
+<p>
+  <strong>Comment:</strong>
+  <%= comment.body %>
+</p>
+
+<p>
+  <i>by <%= User.find(comment.user_id).email %></i>
+</p>
+
+<p>
+  <% if user_signed_in? && current_user.id == comment.user_id %>
+    <%= link_to 'Delete', post_comment_path(comment),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</p>

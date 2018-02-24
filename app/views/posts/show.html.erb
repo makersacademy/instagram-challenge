@@ -10,4 +10,16 @@
   <%= @post.description %>
 </p>
 
+<% if @post.comments.any? %>
+  <h2>Comments</h2>
+  <%= render @post.comments %>
+<% end %>
+
+<% if user_signed_in? && current_user.id != @post.user_id %>
+  <% unless @post.comments.any? {|comment| comment.user_id == current_user.id} %>
+    <h2>Add a comment:</h2>
+    <%= render 'comments/form' %>
+  <% end %>
+<% end %>
+
 <%= link_to 'Back', posts_path %>

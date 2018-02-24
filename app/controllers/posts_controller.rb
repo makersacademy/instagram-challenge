@@ -44,7 +44,7 @@ end
 
   private
   def post_params
-  params.require(:post).permit(:description)
+  params.require(:post).permit(:description, :user_id)
   end
 
 end
