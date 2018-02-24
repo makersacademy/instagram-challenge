@@ -21,10 +21,10 @@ feature 'User signup' do
     expect(page).to have_content("can't be blank")
   end
 
-  scenario 'requires a user name to be more than 4 characters' do
+  scenario 'requires a user name to be more than 5 characters' do
     fill_in 'Username', with: 'A'
 
     click_button 'Sign up'
-    expect(page).to have_content('minimum is 4 characters')
+    expect(page).to have_content('minimum is 5 characters')
   end
 end
