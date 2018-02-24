@@ -5,7 +5,7 @@ feature 'Deleting posts' do
     user = create(:user)
     create(:post, description: 'Not my photo #yolo', user_id: user.id)
     sign_in user
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    find(:xpath, "//a[contains(@href,'posts/1')]", match: :prefer_exact).click
     click_link 'Edit Post'
   end
 

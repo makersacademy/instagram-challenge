@@ -12,7 +12,7 @@ feature 'Editing posts' do
   end
 
   scenario 'Can edit a post' do
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    find(:xpath, "//a[contains(@href,'posts/1')]", match: :prefer_exact).click
 
     expect(page).to have_content('Edit Post')
 
@@ -38,7 +38,7 @@ feature 'Editing posts' do
   end
 
   scenario 'user tries to upload something that is not an image' do
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    find(:xpath, "//a[contains(@href,'posts/1')]", match: :prefer_exact).click
     click_link 'Edit Post'
     attach_file('Image', 'spec/images/wrong.zip')
     click_button 'Update Post'
