@@ -2,7 +2,8 @@ require 'rails_helper.rb'
 
 feature 'Creating posts' do
   background do
-    visit '/'
+    user = create(:user)
+    sign_in user
     click_link 'New Post'
   end
 
