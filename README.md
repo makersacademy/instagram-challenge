@@ -17,7 +17,7 @@ I wanted to understand rails more so I started doing a tutorial on how to build 
 
 I have set myself 3 targets for this challenge
   
-   - Add some cool functionalities that arn't on Instagram - (points for correct guesses, and user rankings)
+   - Add some cool functionalities that arn't on Instagram - (points for correct guesses, and user rankings) - to challenge my understanding of rails. And beat instagram. 
    - Break jobs down into smaller issues and focusing at passing each at a time
    - Following the pomodoro cycle, to test out if this is a more efficient way of using my time. 
    
