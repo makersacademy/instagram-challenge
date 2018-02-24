@@ -1,10 +1,10 @@
-<%= image_tag @post.image.url(:medium) %>
-<%= @post.description %>
-<%= @post.user.username %>
-<% if @post.user.id == current_user.id %>
-  <%= link_to 'Back', posts_path %>
-  |
-  <%= link_to 'Edit Post', edit_post_path(@post) %>
-<% else %>
-  <%= link_to 'Back', posts_path %>
-<% end %>
+<%= render 'post', post: @post %>
+<div class="text-center edit-links">
+  <% if @post.user.id == current_user.id %>
+    <%= link_to 'Back', posts_path %>
+    |
+    <%= link_to 'Edit Post', edit_post_path(@post) %>
+  <% else %>
+    <%= link_to 'Back', posts_path %>
+  <% end %>
+</div>
