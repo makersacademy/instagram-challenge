@@ -3300,3 +3300,74 @@ ActionController::ParameterMissing (param is missing or the value is empty: comm
   
 app/controllers/comments_controller.rb:75:in `comment_params'
 app/controllers/comments_controller.rb:28:in `create'
+Started GET "/" for 127.0.0.1 at 2018-02-24 03:25:04 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (90.3ms)
+Completed 200 OK in 535ms (Views: 439.1ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/posts/5" for 127.0.0.1 at 2018-02-24 03:25:10 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 58ms (Views: 51.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/5/comments" for 127.0.0.1 at 2018-02-24 03:25:20 +0000
+Processing by CommentsController#index as HTML
+  Parameters: {"post_id"=>"5"}
+  Rendering comments/index.html.erb within layouts/application
+  [1m[36mComment Load (1.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  Rendered comments/index.html.erb within layouts/application (313.8ms)
+Completed 401 Unauthorized in 329ms (ActiveRecord: 2.5ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_comment_path' for #<#<Class:0x007fd77cfacb10>:0x007fd77d499380>
+Did you mean?  new_post_path):
+    28: 
+    29: <br>
+    30: 
+    31: <%= link_to 'New Comment', new_comment_path %>
+  
+app/views/comments/index.html.erb:31:in `_app_views_comments_index_html_erb__415519104756388539_70281745754580'
+Started GET "/posts/5/comments/new" for 127.0.0.1 at 2018-02-24 03:25:46 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"5"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (33.1ms)
+  Rendered comments/new.html.erb within layouts/application (37.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+Completed 200 OK in 110ms (Views: 93.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/posts/5/comments" for 127.0.0.1 at 2018-02-24 03:26:10 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IGmtCr+eLlE+izb8TkbpPmzppETF8Rvrrp2FGT6gDAaBO5oLJ3IRewz2K4li7NiWsv0UJXIv4XtEhNqJzgD6ng==", "comment"=>{"body"=>"bn"}, "commit"=>"Create Comment", "post_id"=>"5"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "comments" ("body", "post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "bn"], ["post_id", 5], ["user_id", 8], ["created_at", "2018-02-24 03:26:10.751785"], ["updated_at", "2018-02-24 03:26:10.751785"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to 
+Completed 401 Unauthorized in 353ms (ActiveRecord: 2.8ms)
+
+
+  
+NoMethodError (undefined method `comment_url' for #<CommentsController:0x007fd77d409aa0>):
+  
+app/controllers/comments_controller.rb:34:in `block (2 levels) in create'
+app/controllers/comments_controller.rb:32:in `create'
