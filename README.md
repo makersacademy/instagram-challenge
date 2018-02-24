@@ -23,7 +23,7 @@ I have set myself 3 targets for this challenge
    
 As usual I am following TDD, with Capybara and Rspec, but I am going to be focusing on making sure that I don't over test. I sometimes have produced..alot of tests that often overlap or are unclear to users. So I have focused on writing user stories, issues and planning my structure with tests in mind to make sure I produce a throughoutly tested product, that is done so efficiently. 
 
-## User stories <a name= "scenario"></a>
+## User stories <a name= "stories"></a>
 
 ### MVP
 
@@ -54,7 +54,7 @@ I want to be able to have a link to my username when I guess.
 
 
 
-## Extention <a name= "extention"></a>
+## Development points <a name= "extention"></a>
 
 We will see
 
