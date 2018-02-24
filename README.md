@@ -32,25 +32,25 @@ As a keen describer
 So that I can show off my sick drawing skills
 I want to be able to upload a picture with some helpful hints 
 ```
--[ ] Done
+- [ ] Done
 ```
 As a keen guesser 
 So that I can show of my awesome guessing skills 
 I want to be able to make a guess on someones picture.
 ```
--[ ] Done
+- [ ] Done
 ```
 As a keen describer 
 So that I can get credit for my awesome drawing skills 
 I want my cool image to have a link to my username
 ```
--[ ] Done
+- [ ] Done
 ```
 As a keen guesser 
 So that I can show of my awesome guessing skills 
 I want to be able to have a link to my username when I guess.
 ```
--[ ] Done
+- [ ] Done
 
 
 
