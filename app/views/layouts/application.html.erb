@@ -10,10 +10,12 @@
 
   <body>
     <nav>
-    <% unless current_page?(user_session_path) || current_page?(new_user_registration_path) || current_page?(new_user_password_path) %>
-      <%=  render 'devise/menu/login_items'  %>
-    <% end %>
-  </nav>
+      <%= link_to('Home', posts_path) %> |
+      <%= link_to('New Post', new_post_path) %> |
+      <% unless current_page?(user_session_path) || current_page?(new_user_registration_path) || current_page?(new_user_password_path) %>
+        <%=  render 'devise/menu/login_items'  %>
+      <% end %>
+    </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
