@@ -1,8 +1,8 @@
 require 'spec_helper.rb'
 require 'rails_helper.rb'
 
-feature 'User account' do
-  scenario 'user can sign up for account' do
+feature 'User posts' do
+  pending scenario 'user can create a post with image and caption' do
     #sign up
     visit '/'
     click_link 'Login'
@@ -15,7 +15,7 @@ feature 'User account' do
     #create post
     click_link 'New Post'
     fill_in 'Caption', with: 'my first post on vanity '
-    fill_in 'Image', with: 'selfie.jpg'
+    attach_file('Image', Rails.root + 'spec/fixtures/apple-touch-icon.png', make_visible: true)
     click_button 'Upload'
     expect(page).to have_content('my first post on vanity')
   end
