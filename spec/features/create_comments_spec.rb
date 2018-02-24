@@ -9,6 +9,6 @@ feature 'Creating Comments' do
     fill_in 'comment[content]', with: 'this is sublime'
     click_button 'Leave Comment'
 
-    expect(page).to have_css("div.comments#{post.id}", text: 'this is sublime')
+    expect(page).to have_css("div#comments#{post.id}", text: 'this is sublime')
   end
 end
