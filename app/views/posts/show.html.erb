@@ -10,11 +10,14 @@
   <p>
     <%= @post.description %>
   </p>
-  <p>
+
+  <% if get_owner(@post.user_id) == current_user %>
+    <p>
       <%= link_to "Remove", post_path(@post),
-      method: :delete,
-      data: { confirm: 'Are you sure?' } %> |
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %> |
       <%= link_to "Edit", edit_post_path(@post) %>
-  </p>
+    </p>
+  <% end %>
 
 <%= link_to 'Back', posts_path %>

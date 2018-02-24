@@ -11,4 +11,13 @@ feature 'Editing posts' do
     click_button 'Update Post'
     expect(page).to have_content "Totally different description"
   end
+
+  scenario 'cannot see links to edit a post if not owner' do
+    sign_up('owner@example.com')
+    create_post
+    sign_out
+    sign_up('visitor@example.com')
+    click_on 'View post'
+    expect(page).not_to have_content 'Edit'
+  end
 end

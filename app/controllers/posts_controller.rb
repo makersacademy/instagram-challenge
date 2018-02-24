@@ -30,16 +30,24 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(post_params)
-      redirect_to @post
+    if User.find(@post.user_id) == current_user
+      if @post.update(post_params)
+        redirect_to @post
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      flash[:notice] = "You may not edit this post"
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
+    if User.find(@post.user_id) == current_user
+      @post.destroy
+    else
+      flash[:notice] = "You may not delete this post"
+    end
     redirect_to posts_path
   end
 
