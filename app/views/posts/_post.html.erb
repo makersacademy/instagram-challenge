@@ -25,14 +25,39 @@
           </div>
           <%= post.description %>
         </div>
-        <div class="comments" id="comments_<%= post.id %>"></div>
+        <div class="comments" id="comments_<%= post.id %>">
+           <% if post.comments %>
+            <% post.comments.each do |comment| %>
+              <div class="comment" id="comments_<%= post.id %>" >
+                <div class="user-name">
+                  <%= comment.user.username %>
+                </div>
+                <div class="comment-content">
+                  <%= comment.content %>
+                </div>
+                <% if comment.user == current_user %>
+                  <%= link_to 'Delete', post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="comment-like-form row">
       <div class="like-button col-sm-1">
         <span class="glyphicon glyphicon-heart-empty"></span>
       </div>
-      <div class="comment-form col-sm-11"></div>
+      <div class="comment-form col-sm-11">
+        <%= form_for [post, post.comments.new] do |f| %>
+          <%= f.text_field :content, placeholder: 'Make you mum proud, say something nice...',
+                                     class: "comment_content",
+                                     id: "comment_content_#{post.id}",
+                                     data: { post_id: "#{post.id}",
+                                     value: "#{post.comments.count}" } %>
+          <%= f.submit 'Leave Comment', class: 'comment-submit-button' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
