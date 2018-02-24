@@ -12,6 +12,9 @@ gem 'eslint-rails'
 gem 'ruumba'
 gem 'devise'
 gem 'warden', '~> 1.2', '>= 1.2.7'
+gem 'haml'
+gem 'simple_form'
+gem "paperclip", "~> 5.2.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
@@ -47,6 +50,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
 	gem 'rspec-rails', '~> 3.7'
   gem 'selenium-webdriver'
+	gem 'factory_bot_rails'
 end
 
 group :development do
