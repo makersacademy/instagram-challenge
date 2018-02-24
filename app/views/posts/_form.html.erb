@@ -1,0 +1,25 @@
+<%= form_with model: @post, local: true do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h4> Please check the
+        <%= pluralize(@post.errors.count, "error") %> below:
+      </h4>
+      <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :description %>
+    <%= form.text_area( :description, cols: 40, rows: 10) %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
