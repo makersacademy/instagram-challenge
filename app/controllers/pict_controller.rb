@@ -1,0 +1,2 @@
+class PictController < ApplicationController
+end
