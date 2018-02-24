@@ -32,7 +32,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'fog-aws'
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
