@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<ul>
+  <li>
+    <div class="post-username">
+      <strong>User:</strong>
+      <%= @post.user.username %>
+    </div>
+  </li>
+  <li>
+    <div class="post-image">
+      <strong>Image:</strong>
+      <%= image_tag @post.image.url %>
+    </div>
+  </li>
+  <li>
+    <div class="post-caption">
+      <strong>Caption:</strong>
+      <%= @post.caption %>
+    </div>
+  </li>
+</ul>
+
+<% if current_user.id == @post.user_id %>
+<%= link_to 'Edit', edit_post_path(@post) %>
+<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<% end %>
+<%= link_to 'Back', posts_path %>
