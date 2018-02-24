@@ -9,11 +9,14 @@ feature 'Editing posts' do
     create(:post, user_id: user.id)
     create(:post, user_id: user.id + 1)
     sign_in user
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
-    click_link 'Edit Post'
   end
 
   scenario 'Can edit a post' do
+    find(:xpath, "//a[contains(@href,'posts/1')]").click
+
+    expect(page).to have_content('Edit Post')
+
+    click_link 'Edit Post'
     fill_in 'Description', with: 'This is probably a mistake'
     click_button 'Update Post'
 
@@ -35,6 +38,8 @@ feature 'Editing posts' do
   end
 
   scenario 'user tries to upload something that is not an image' do
+    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    click_link 'Edit Post'
     attach_file('Image', 'spec/images/wrong.zip')
     click_button 'Update Post'
 
