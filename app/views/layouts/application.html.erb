@@ -9,12 +9,8 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
-    <% end %>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Architectagram</a>
+      <%= link_to "Architectagram", root_path, { :class => "navbar-brand" } %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -27,9 +23,30 @@
           <li class="nav-item">
             <%= link_to "New Post", new_post_path, { :class => "nav-link" } %>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Account
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <% if user_signed_in? %>
+                <%= link_to "Logout", destroy_user_session_path, { method: :delete, :class => "dropdown-item" } %>
+              <% else %>
+                <%= link_to "Login", new_user_session_path, { :class => "dropdown-item" }  %>
+              <% end %>
+              <% if user_signed_in? %>
+                <%= link_to "Edit registration", edit_user_registration_path, { :class => "dropdown-item" } %>
+              <% else %>
+                <%= link_to "Register", new_user_registration_path, { :class => "dropdown-item" }  %>
+              <% end %>
+            </div>
+          </li>
         </ul>
       </div>
+
     </nav>
+    <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+    <% end %>
 
     <%= yield %>
   </body>
