@@ -58,4 +58,18 @@ RSpec.describe PostsController, type: :controller do
         end
       end
     end
+
+    describe 'DELETE destroy' do
+      it "deletes the contact" do
+        post = create(:post, id: 3)
+        expect{
+          delete :destroy, params: { id: post.id }
+        }.to change(Post,:count).by(-1)
+      end
+      it "redirects to contacts#index" do
+        post = create(:post, id: 3)
+        delete :destroy, params: { id: post1.id }
+        expect(response).to redirect_to posts_url
+      end
+    end
 end
