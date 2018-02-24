@@ -7,7 +7,7 @@ RSpec.describe "Creating posts", :type => :feature do
   feature 'Editing posts' do
     scenario 'can edit a post' do
       visit '/'
-      find(:xpath, "//a[contains(@href,'posts/7')]").click
+      find(:xpath, "//a[contains(@href,'posts/1')]").click
       click_link 'Update post'
 
       fill_in 'post[comment]', with: 'Not my fave cat'
@@ -19,7 +19,7 @@ RSpec.describe "Creating posts", :type => :feature do
 
     scenario 'can not add a file that is not an image' do
       visit '/'
-      find(:xpath, "//a[contains(@href,'posts/7')]").click
+      find(:xpath, "//a[contains(@href,'posts/1')]").click
       click_link 'Update post'
 
       attach_file 'post[avatar]', Rails.root.join('spec/images/cat.rb')
@@ -33,7 +33,7 @@ RSpec.describe "Creating posts", :type => :feature do
 
     scenario 'user can delete posts' do
       visit '/'
-      find(:xpath, "//a[contains(@href,'posts/7')]").click
+      find(:xpath, "//a[contains(@href,'posts/1')]").click
       click_link 'Update post'
 
       click_link 'Delete Post'

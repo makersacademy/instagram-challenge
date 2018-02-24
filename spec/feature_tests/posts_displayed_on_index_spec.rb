@@ -10,8 +10,8 @@ RSpec.describe "Displaying posts", :type => :feature do
       expect(page).to have_content('My Fave Cat')
     end
     scenario 'displays multiple posts' do
-      post_two = create(:post, comment: "Post two")
-      post_three = create(:post, comment: "Post three")
+      post_two = create(:post, comment: "Post two", id: 2)
+      post_three = create(:post, comment: "Post three", id:3)
 
       visit '/'
       expect(page).to have_css("img[src*='cat.jpg']")
@@ -20,11 +20,11 @@ RSpec.describe "Displaying posts", :type => :feature do
       expect(page).to have_content('Post three')
     end
   end
-  
+
   feature 'can view individual posts' do
     scenario 'click on post' do
       visit '/'
-      find(:xpath, "//a[contains(@href,'posts/5')]").click
+      find(:xpath, "//a[contains(@href,'posts/1')]").click
       expect(page.current_path).to eq(post_path(@post))
     end
   end

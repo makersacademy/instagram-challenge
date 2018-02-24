@@ -17,13 +17,18 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
-## How to start
+## User Stories
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+* As a user, so I can advertise my life, I would like to be able to post a picture
+* As a user, so I can explain my picture choices, I would like to be able to add a caption to a picture
+* As a user, so I can feedback on peoples pictures, I want to be able to add a comment to picture posts
+* As a user, so people know I posted the picture, I want my username to be added to my post
+* As a user, so I can save time, I want to be able to login in using my existing social media account details
+* As a user, so I really get the Instagram feel, I want the webpage to look like Instagram
+* As a user, so I can save time, I want to be able to add a like to a picture
+* As a user, so I can add a category to my picture, I want to be able to add a hashtag
+* As a user, so I can search for similar pictures, I want to be able to filter pictures by hashtag
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
 
 ## Code Quality
 
