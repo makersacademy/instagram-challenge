@@ -13,6 +13,7 @@ feature 'Creating posts' do
     click_button 'Create Post'
     expect(page).to have_content('#expensivegreenhouse')
     expect(page).to have_css("img[src*='1.jpeg']")
+    expect(page).to have_content('JoeBlogs')
   end
 
   scenario 'a post must have a picture attched to it' do
