@@ -1,0 +1,28 @@
+<%= form_for @post, html: {multipart: true} do |form| %>
+
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        Ya got <%= pluralize(@post.errors.count, "error") %> bbz:
+      </h2>
+      <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.file_field :avatar %>
+  </p>
+
+  <p>
+    <%= form.label :comment %><br>
+    <%= form.text_field :comment %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+  <% end %>
