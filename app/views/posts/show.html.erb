@@ -15,4 +15,14 @@
     <%= render 'comments/form' %>
   <% end %>
 
+  <% if @post.likes.any? %>
+    <h2>Likes</h2>
+    <%= render @post.likes %>
+  <% end %>
+
+  <% if user_signed_in?%>
+      <h2>Add a like:</h2>
+      <%= render 'likes/form' %>
+    <% end %>
+
   <%= link_to 'Back', posts_path %>

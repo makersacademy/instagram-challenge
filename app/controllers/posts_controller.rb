@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    # @likes_average = likes_rating(@post)
   end
 
   def new
@@ -46,5 +47,9 @@ end
   def post_params
   params.require(:post).permit(:description, :user_id)
   end
+
+  def likes_rating(post)
+	 post.likes.empty? ? "No likes yet!" : post.likes(:number)
+	end
 
 end
