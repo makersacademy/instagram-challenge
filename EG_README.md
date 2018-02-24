@@ -22,7 +22,7 @@ Based on my understanding of the application, I have created the following User 
 
 ```  
 As a user
-I wantto sign-up to an image focused social media site
+I want to sign-up to an image focused social media site
 So that I can share my images with other users
 ```
 
@@ -50,4 +50,19 @@ I want to be able to "like" images
 So that other users can see which images are my favourites
 ```
 
+## **Installation Instructions**
 
+```
+git clone https://github.com/Gleoman/Instagram-Challenge.git
+bundle install
+```
+
+## **Dependecies**
+
+```
+* Devise
+* CarrierWave
+* FOG
+```
+
+## **Screenshots**
