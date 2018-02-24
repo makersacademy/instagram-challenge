@@ -1317,3 +1317,1121 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "posts" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.9ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'fakestagram_test'[0m
+  [1m[35m (17.6ms)[0m  [1m[35mTRUNCATE TABLE "public"."posts" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "posts" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:04:17 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 160ms (Views: 149.6ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:04:17 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 25ms (Views: 10.3ms | ActiveRecord: 3.7ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:04:17 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fd687941140 @tempfile=#<Tempfile:/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-12613-8f6rpe.jpg>, @original_filename="cat.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[avatar]\"; filename=\"cat.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 7417627\r\n">, "comment"=>"My fave cat"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-12613-8f6rpe.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12613-yrlxgx.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12613-yrlxgx.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12613-1wwoz14.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12613-1wwoz14.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12613-yrlxgx.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12613-yrlxgx.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12613-yrlxgx.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/0ed1800a2c7e1c13beaff79747f5192020180224-12613-jwmuvt'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/0ed1800a2c7e1c13beaff79747f5192020180224-12613-jwmuvt to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/f1ca1ec24f9609bb1d8ca07cf8b7c2ea20180224-12613-cvl6rj
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12613-yrlxgx.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12613-ouytqw.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12613-ouytqw.jpg'
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "My fave cat"], ["created_at", "2018-02-24 10:04:19.507754"], ["updated_at", "2018-02-24 10:04:19.507754"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:04:17.756669"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/posts/1
+Completed 302 Found in 1764ms (ActiveRecord: 1.6ms)
+Started GET "/posts/1" for 127.0.0.1 at 2018-02-24 10:04:19 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 10ms (Views: 3.0ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:04:19 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:04:19 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:04:19 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 8ms (Views: 3.2ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:04:19 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:04:19 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:04:19 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:04:19 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "posts" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.5ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (1.0ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'fakestagram_test'[0m
+  [1m[35m (5.0ms)[0m  [1m[35mTRUNCATE TABLE "public"."posts" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "posts" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:04:37 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 132ms (Views: 123.7ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:04:37 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 24ms (Views: 10.3ms | ActiveRecord: 3.4ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:04:38 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f836ab82a28 @tempfile=#<Tempfile:/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-12654-y0csy2.jpg>, @original_filename="cat.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[avatar]\"; filename=\"cat.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 7417627\r\n">, "comment"=>"My fave cat"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-12654-y0csy2.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12654-9k0qoh.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12654-9k0qoh.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12654-12gcrir.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12654-12gcrir.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12654-9k0qoh.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12654-9k0qoh.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12654-9k0qoh.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/865136a878cc5cf912f27a8a556bcf4d20180224-12654-ob44lc'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/865136a878cc5cf912f27a8a556bcf4d20180224-12654-ob44lc to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/535ebec208e0f300e69fa22a3c8c956420180224-12654-gqa3z6
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12654-9k0qoh.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12654-1ga8bqa.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12654-1ga8bqa.jpg'
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "My fave cat"], ["created_at", "2018-02-24 10:04:39.902021"], ["updated_at", "2018-02-24 10:04:39.902021"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:04:38.054235"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/posts/1
+Completed 302 Found in 1860ms (ActiveRecord: 1.5ms)
+Started GET "/posts/1" for 127.0.0.1 at 2018-02-24 10:04:39 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 9ms (Views: 2.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:04:39 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:04:39 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:04:39 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:04:39 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:04:39 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:04:40 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:04:40 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "posts" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'fakestagram_test'[0m
+  [1m[35m (5.9ms)[0m  [1m[35mTRUNCATE TABLE "public"."posts" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "posts" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:11:36 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 173ms (Views: 164.3ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:11:37 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 24ms (Views: 9.1ms | ActiveRecord: 4.7ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:11:37 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f914d489168 @tempfile=#<Tempfile:/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-12965-utelzx.jpg>, @original_filename="cat.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[avatar]\"; filename=\"cat.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 7417627\r\n">, "comment"=>"My fave cat"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-12965-utelzx.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12965-1moo6mr.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12965-1moo6mr.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12965-78j8cq.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12965-78j8cq.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12965-1moo6mr.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12965-1moo6mr.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12965-1moo6mr.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/12ac868a374cc1330fa46d57f880450720180224-12965-19x8m9k'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/12ac868a374cc1330fa46d57f880450720180224-12965-19x8m9k to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/27a97d844fc5a1951bdd9e26d527506720180224-12965-1u0typy
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12965-1moo6mr.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12965-mmdjjg.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-12965-mmdjjg.jpg'
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "My fave cat"], ["created_at", "2018-02-24 10:11:38.936168"], ["updated_at", "2018-02-24 10:11:38.936168"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:11:37.193842"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/posts/1
+Completed 302 Found in 1757ms (ActiveRecord: 1.7ms)
+Started GET "/posts/1" for 127.0.0.1 at 2018-02-24 10:11:38 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 10ms (Views: 2.8ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:11:38 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:11:38 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:11:38 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:11:38 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:11:38 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:11:39 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:11:39 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "posts" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'fakestagram_test'[0m
+  [1m[35m (5.0ms)[0m  [1m[35mTRUNCATE TABLE "public"."posts" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "posts" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:16:00 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 154ms (Views: 143.9ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:16:00 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 26ms (Views: 9.6ms | ActiveRecord: 4.8ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:16:00 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007ff4f207f938 @tempfile=#<Tempfile:/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-13189-rudvnv.jpg>, @original_filename="cat.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[avatar]\"; filename=\"cat.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 7417627\r\n">, "comment"=>"My fave cat"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-13189-rudvnv.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13189-1yazost.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13189-1yazost.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13189-inwac6.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13189-inwac6.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13189-1yazost.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13189-1yazost.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13189-1yazost.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/0e76fca9d3dadd0454ba9146c6e66f3d20180224-13189-vq85fa'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/0e76fca9d3dadd0454ba9146c6e66f3d20180224-13189-vq85fa to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/9c31655718771fba9c9a25c5c3fe184b20180224-13189-16ernb5
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13189-1yazost.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13189-116t3kf.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13189-116t3kf.jpg'
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "My fave cat"], ["created_at", "2018-02-24 10:16:02.026462"], ["updated_at", "2018-02-24 10:16:02.026462"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:16:00.281166"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/posts/1
+Completed 302 Found in 1758ms (ActiveRecord: 1.6ms)
+Started GET "/posts/1" for 127.0.0.1 at 2018-02-24 10:16:02 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 9ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:16:02 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:16:02 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:16:02 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:16:02 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:16:02 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:16:02 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 5ms (Views: 1.8ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:16:02 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "posts" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'fakestagram_test'[0m
+  [1m[35m (6.0ms)[0m  [1m[35mTRUNCATE TABLE "public"."posts" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "posts" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/cat.jpg20180224-13477-1igbn0.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-1ngznob.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-1ngznob.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-1h09in6.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-1h09in6.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-1ngznob.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-1ngznob.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-1ngznob.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/fee11d348a64d687e53395dc1ba9db5620180224-13477-3cph5t'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/fee11d348a64d687e53395dc1ba9db5620180224-13477-3cph5t to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/4970a5575acb3f65e852832ffbb84fb120180224-13477-f1jizg
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-1ngznob.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-19rzlzi.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-19rzlzi.jpg'
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "My Fave Cat"], ["created_at", "2018-02-24 10:26:58.294753"], ["updated_at", "2018-02-24 10:26:58.294753"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:26:56.494770"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:26:58 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 159ms (Views: 146.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:26:58 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:26:58 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:26:58 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fbb0908fb58 @tempfile=#<Tempfile:/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-13477-w9dm1j.jpg>, @original_filename="cat.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[avatar]\"; filename=\"cat.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 7417627\r\n">, "comment"=>"My fave cat"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-13477-w9dm1j.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-e8fgt7.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-e8fgt7.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-1azwgze.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-1azwgze.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-e8fgt7.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-e8fgt7.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-e8fgt7.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/49eac1a1921e950979952c7d9d87407a20180224-13477-sflkwv'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/49eac1a1921e950979952c7d9d87407a20180224-13477-sflkwv to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/1cd059546f0abb6ee279a1d60f46bfe220180224-13477-5tf3yr
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-e8fgt7.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-vvwyle.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13477-vvwyle.jpg'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "My fave cat"], ["created_at", "2018-02-24 10:27:00.317183"], ["updated_at", "2018-02-24 10:27:00.317183"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:26:58.575339"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/posts/2
+Completed 302 Found in 1751ms (ActiveRecord: 1.1ms)
+Started GET "/posts/2" for 127.0.0.1 at 2018-02-24 10:27:00 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 10ms (Views: 2.9ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:27:00 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:27:00 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:27:00 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:27:00 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:27:00 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:27:00 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:27:00 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "posts" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'fakestagram_test'[0m
+  [1m[35m (4.9ms)[0m  [1m[35mTRUNCATE TABLE "public"."posts" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "posts" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/cat.jpg20180224-13535-ymo939.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-135tgjl.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-135tgjl.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-46y1bl.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-46y1bl.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-135tgjl.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-135tgjl.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-135tgjl.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/b371eee09e2e2738bd6f0803e66a17d220180224-13535-1b4rlxf'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/b371eee09e2e2738bd6f0803e66a17d220180224-13535-1b4rlxf to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/27c16eb2a400e2eaca6cdf1ac7e39c4920180224-13535-hsgw0
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-135tgjl.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-1r61k62.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-1r61k62.jpg'
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "My Fave Cat"], ["created_at", "2018-02-24 10:27:36.227962"], ["updated_at", "2018-02-24 10:27:36.227962"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:27:34.347885"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:27:36 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 198ms (Views: 187.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:27:36 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:27:36 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 14ms (Views: 12.2ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:27:36 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fe4270d0530 @tempfile=#<Tempfile:/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-13535-ocy7ja.jpg>, @original_filename="cat.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[avatar]\"; filename=\"cat.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 7417627\r\n">, "comment"=>"My fave cat"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-13535-ocy7ja.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-1fqwes0.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-1fqwes0.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-ngvtl.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-ngvtl.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-1fqwes0.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-1fqwes0.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-1fqwes0.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/26b5cf82a3e3674a554ec4ab4041a7df20180224-13535-1qfcimo'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/26b5cf82a3e3674a554ec4ab4041a7df20180224-13535-1qfcimo to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/03446f75414bb614a34efb32a3da17d720180224-13535-fk5tkn
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-1fqwes0.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-72dolw.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13535-72dolw.jpg'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "My fave cat"], ["created_at", "2018-02-24 10:27:38.559148"], ["updated_at", "2018-02-24 10:27:38.559148"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:27:36.617046"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/posts/2
+Completed 302 Found in 1964ms (ActiveRecord: 1.1ms)
+Started GET "/posts/2" for 127.0.0.1 at 2018-02-24 10:27:38 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 10ms (Views: 2.8ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:27:38 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:27:38 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:27:38 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 6ms (Views: 2.9ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:27:38 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:27:38 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:27:38 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:27:38 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "posts" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'fakestagram_test'[0m
+  [1m[35m (5.1ms)[0m  [1m[35mTRUNCATE TABLE "public"."posts" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "posts" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/cat.jpg20180224-13871-1u3mzny.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-oo3j61.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-oo3j61.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-1sosoia.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-1sosoia.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-oo3j61.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-oo3j61.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-oo3j61.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/a9192b4cebfd8b3ff5f031230f8da7b620180224-13871-bcwc6n'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/a9192b4cebfd8b3ff5f031230f8da7b620180224-13871-bcwc6n to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/c8d922439c62fd177c37e9b07282665420180224-13871-vej3l4
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-oo3j61.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-1sjx11o.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-1sjx11o.jpg'
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "My Fave Cat"], ["created_at", "2018-02-24 10:38:59.054192"], ["updated_at", "2018-02-24 10:38:59.054192"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:38:57.282413"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:38:59 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 157ms (Views: 147.6ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:38:59 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:38:59 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 15ms (Views: 11.1ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:38:59 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fbedb2524d8 @tempfile=#<Tempfile:/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-13871-achf8z.jpg>, @original_filename="cat.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[avatar]\"; filename=\"cat.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 7417627\r\n">, "comment"=>"My fave cat"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-13871-achf8z.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-zoan4f.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-zoan4f.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-dmzwpb.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-dmzwpb.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-zoan4f.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-zoan4f.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-zoan4f.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/dea873df037c54b7dedeaf40fc7a02f020180224-13871-lmgc1x'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/dea873df037c54b7dedeaf40fc7a02f020180224-13871-lmgc1x to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/ba35e820539ec360bf3059f3ff97c08920180224-13871-16e2xgr
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-zoan4f.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-ho5ven.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13871-ho5ven.jpg'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "My fave cat"], ["created_at", "2018-02-24 10:39:01.098703"], ["updated_at", "2018-02-24 10:39:01.098703"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:38:59.335009"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/posts/2
+Completed 302 Found in 1773ms (ActiveRecord: 1.0ms)
+Started GET "/posts/2" for 127.0.0.1 at 2018-02-24 10:39:01 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 9ms (Views: 3.4ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:39:01 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.2ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:39:01 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2ms (Views: 2.1ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:39:01 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 8ms (Views: 4.0ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:39:01 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:39:01 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:39:01 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:39:01 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL;ALTER TABLE "posts" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.4ms)[0m  [1m[34m          SELECT schemaname || '.' || tablename
+          FROM pg_tables
+          WHERE
+            tablename !~ '_prt_' AND
+             tablename <> 'schema_migrations'  AND tablename <> 'ar_internal_metadata'  AND
+            schemaname = ANY (current_schemas(false))
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mselect table_name from information_schema.views where table_schema = 'fakestagram_test'[0m
+  [1m[35m (6.5ms)[0m  [1m[35mTRUNCATE TABLE "public"."posts" RESTART IDENTITY CASCADE;[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL;ALTER TABLE "posts" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/cat.jpg20180224-13965-1xz52ec.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-4a8egz.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-4a8egz.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-suxmmy.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-suxmmy.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-4a8egz.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-4a8egz.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-4a8egz.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/99b3a255468f0841710dd541e337460b20180224-13965-weait5'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/99b3a255468f0841710dd541e337460b20180224-13965-weait5 to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/13a652afa47da6cc3467f23a1d681f4d20180224-13965-lr603f
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-4a8egz.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-dw23h5.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-dw23h5.jpg'
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "My Fave Cat"], ["created_at", "2018-02-24 10:41:13.573262"], ["updated_at", "2018-02-24 10:41:13.573262"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:41:11.848925"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:41:13 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 183ms (Views: 171.1ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/cat.jpg20180224-13965-1xz52ec.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-177tepk.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-177tepk.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1rvxxua.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1rvxxua.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-177tepk.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-177tepk.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-177tepk.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/9f6d9093fd3059f71a9a1ee56cdfbae920180224-13965-1cq5ji0'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/9f6d9093fd3059f71a9a1ee56cdfbae920180224-13965-1cq5ji0 to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/5521f556cc5a1d87956bbc546e01749e20180224-13965-u0wjxu
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-177tepk.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1it86ve.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1it86ve.jpg'
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "My Fave Cat"], ["created_at", "2018-02-24 10:41:15.540937"], ["updated_at", "2018-02-24 10:41:15.540937"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:41:13.777242"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/cat.jpg20180224-13965-1xz52ec.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-73z5qy.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-73z5qy.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-iwclir.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-iwclir.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-73z5qy.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-73z5qy.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-73z5qy.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/a684877fb4359254110340d327db9e3420180224-13965-oj3tso'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/a684877fb4359254110340d327db9e3420180224-13965-oj3tso to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/3ec39c0db23e4a6240655369011e5fc220180224-13965-rptk56
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-73z5qy.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1oyxotw.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1oyxotw.jpg'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "Post two"], ["created_at", "2018-02-24 10:41:17.262078"], ["updated_at", "2018-02-24 10:41:17.262078"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:41:15.552263"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/cat.jpg20180224-13965-1xz52ec.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-14sxhz7.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-14sxhz7.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-86uppo.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-86uppo.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-14sxhz7.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-14sxhz7.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-14sxhz7.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/62cd4c7b45dd3e7b8cdc34f18df4a98820180224-13965-bu0s40'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/62cd4c7b45dd3e7b8cdc34f18df4a98820180224-13965-bu0s40 to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/ac2e9ffaf5defa48b03be29d4f42882920180224-13965-iucp77
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-14sxhz7.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-thhqz8.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-thhqz8.jpg'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "Post three"], ["created_at", "2018-02-24 10:41:19.004959"], ["updated_at", "2018-02-24 10:41:19.004959"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:41:17.269179"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:41:19 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:41:19 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:41:19 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 22ms (Views: 18.9ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:41:19 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f81bf36b5a8 @tempfile=#<Tempfile:/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-13965-h3hcmu.jpg>, @original_filename="cat.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[avatar]\"; filename=\"cat.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 7417627\r\n">, "comment"=>"My fave cat"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-13965-h3hcmu.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1clcyhf.jpg
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1clcyhf.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1jiqf3s.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1jiqf3s.jpg'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1clcyhf.jpg[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1clcyhf.jpg[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1clcyhf.jpg[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/8ba10bd960a3ff09fc596d5da1aff8c020180224-13965-1r51bpn'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/8ba10bd960a3ff09fc596d5da1aff8c020180224-13965-1r51bpn to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/b47764d5602fa31180987954b4933d5c20180224-13965-1mz7j30
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-1clcyhf.jpg to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-f6fy6z.jpg
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/d077f244def8a70e5ea758bd8352fcd820180224-13965-f6fy6z.jpg'
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "My fave cat"], ["created_at", "2018-02-24 10:41:20.965504"], ["updated_at", "2018-02-24 10:41:20.965504"], ["avatar_file_name", "cat.jpg"], ["avatar_content_type", "image/jpeg"], ["avatar_file_size", 7417627], ["avatar_updated_at", "2018-02-24 10:41:19.200284"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_2[0m
+Redirected to http://www.example.com/posts/5
+Completed 302 Found in 1775ms (ActiveRecord: 1.1ms)
+Started GET "/posts/5" for 127.0.0.1 at 2018-02-24 10:41:20 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 9ms (Views: 2.8ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:41:20 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:41:20 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:41:21 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:41:21 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 10:41:21 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 10:41:21 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"comment"=>"My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat, My fave cat, My fave cat,My fave cat, My fave cat, My fave cat, My fave cat"}, "commit"=>"Create Post"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_2[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_2[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 10:41:21 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
