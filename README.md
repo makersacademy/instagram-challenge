@@ -53,6 +53,12 @@ I want to be able to have a link to my username when I guess.
 - [ ] Done
 
 
+### Extras
+1) Way of approving right and wrong answers
+2) Way of getting points when you get the right answer
+3) User holds onto those points 
+4) Looks nice
+5) Add difficulty ratings based on time unanswered (incentives attempts on old images too)
 
 ## Development points <a name= "extention"></a>
 
