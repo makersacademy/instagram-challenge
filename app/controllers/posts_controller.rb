@@ -42,6 +42,15 @@ class PostsController < ApplicationController
       end
     end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to @post, notice: 'Got dat deleted 4 u princess' }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   def post_params

@@ -20,6 +20,6 @@ RSpec.describe Post, type: :model do
   end
 
   # it 'is not valid with a non image file upload' do
-  #    post2 =build(:post, avatar: Rack::Test::UploadedFile.new(Rails.root +'spec/images/cat.doc', 'image/doc'))
+  #    post2 =build(:post, avatar: Rails.root.join('spec/images/cat.rb'))
   # end
 end
