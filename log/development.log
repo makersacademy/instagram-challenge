@@ -895,3 +895,114 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 29ms (Views: 18.5ms | ActiveRecord: 0.5ms)
 
 
+  [1m[35mSQL (6.8ms)[0m  [1m[31mDELETE FROM "posts"[0m
+Started GET "/" for 127.0.0.1 at 2018-02-24 08:54:11 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 162ms (Views: 153.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 08:54:14 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (17.1ms)
+Completed 200 OK in 83ms (Views: 41.3ms | ActiveRecord: 12.2ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 08:54:21 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"z7zn/HSSPN+z0KSQgAjubYmaMAQ56EzC3j9eUW0csA4ZghX2ImhRpesQNh1umVX9YBJMG28Oom8tIDjfJf8pPA==", "post"=>{"avatar"=>#<ActionDispatch::Http::UploadedFile:0x007fc335b61f20 @tempfile=#<Tempfile:/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-10336-1ys7ivo.png>, @original_filename="Screen Shot 2018-02-20 at 07.53.27.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"post[avatar]\"; filename=\"Screen Shot 2018-02-20 at 07.53.27.png\"\r\nContent-Type: image/png\r\n">, "comment"=>"Hello"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/RackMultipart20180224-10336-1ys7ivo.png to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/2cb4adf3797a16ea094927190778923920180224-10336-1f0db4b.png
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/2cb4adf3797a16ea094927190778923920180224-10336-1f0db4b.png to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/a669e3a811395ed6978a5fc3a92619ad20180224-10336-1y5ooo6.png
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/a669e3a811395ed6978a5fc3a92619ad20180224-10336-1y5ooo6.png'
+Command :: PATH=/usr/local/bin/:$PATH; identify -format '%wx%h,%[exif:orientation]' '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/2cb4adf3797a16ea094927190778923920180224-10336-1f0db4b.png[0]' 2>/dev/null
+Command :: PATH=/usr/local/bin/:$PATH; identify -format %m '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/2cb4adf3797a16ea094927190778923920180224-10336-1f0db4b.png[0]'
+Command :: PATH=/usr/local/bin/:$PATH; convert '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/2cb4adf3797a16ea094927190778923920180224-10336-1f0db4b.png[0]' -auto-orient -resize "20x20" '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/c20a3e0cf6b996253a25818b795d92b220180224-10336-btqoiy'
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/c20a3e0cf6b996253a25818b795d92b220180224-10336-btqoiy to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/83dc1b2886b4ae1fd7603fecf32406bd20180224-10336-1v8p0wx
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[paperclip] Trying to link /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/2cb4adf3797a16ea094927190778923920180224-10336-1f0db4b.png to /var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/a669e3a811395ed6978a5fc3a92619ad20180224-10336-fyeycm.png
+Command :: PATH=/usr/local/bin/:$PATH; file -b --mime '/var/folders/_n/zd44yl1119n7wmn1zr31r4380000gn/T/a669e3a811395ed6978a5fc3a92619ad20180224-10336-fyeycm.png'
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("comment", "created_at", "updated_at", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["comment", "Hello"], ["created_at", "2018-02-24 08:54:21.550273"], ["updated_at", "2018-02-24 08:54:21.550273"], ["avatar_file_name", "Screen_Shot_2018-02-20_at_07.53.27.png"], ["avatar_content_type", "image/png"], ["avatar_file_size", 2126845], ["avatar_updated_at", "2018-02-24 08:54:21.183473"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/posts/7
+Completed 302 Found in 386ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/posts/7" for 127.0.0.1 at 2018-02-24 08:54:21 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 30ms (Views: 17.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/system/posts/avatars/000/000/007/%7Bposts=%3E%22uploaded-pic%22%7D/Screen_Shot_2018-02-20_at_07.53.27.png?1519462461" for 127.0.0.1 at 2018-02-24 08:54:21 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/system/posts/avatars/000/000/007/%7Bposts=%3E%22uploaded-pic%22%7D/Screen_Shot_2018-02-20_at_07.53.27.png"):
+  
+actionpack (5.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.5) lib/rails/engine.rb:522:in `call'
+puma (3.11.2) lib/puma/configuration.rb:225:in `call'
+puma (3.11.2) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.2) lib/puma/server.rb:438:in `process_client'
+puma (3.11.2) lib/puma/server.rb:302:in `block in run'
+puma (3.11.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/posts/7" for 127.0.0.1 at 2018-02-24 08:54:47 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 31ms (Views: 25.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/7" for 127.0.0.1 at 2018-02-24 08:55:07 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 34ms (Views: 30.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/7" for 127.0.0.1 at 2018-02-24 08:55:12 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 35ms (Views: 32.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/7" for 127.0.0.1 at 2018-02-24 08:55:17 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 28ms (Views: 24.6ms | ActiveRecord: 0.2ms)
+
+
