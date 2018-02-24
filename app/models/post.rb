@@ -1,10 +1,12 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :comments
 
   mount_uploader :image, ImageUploader
 
   validates_processing_of :image
   validate :image_size_validation
+
 
 private
   def image_size_validation

@@ -2618,3 +2618,685 @@ Processing by PostsController#new as HTML
 Completed 200 OK in 147ms (Views: 124.9ms | ActiveRecord: 0.3ms)
 
 
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateComments (20180224011847)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "post_id" integer, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_2fd19c0db7"
+FOREIGN KEY ("post_id")
+  REFERENCES "posts" ("id")
+, CONSTRAINT "fk_rails_03de2dc08c"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_post_id" ON "comments" ("post_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180224011847"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_post_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_posts_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_posts_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for 127.0.0.1 at 2018-02-24 01:29:04 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (49.3ms)
+Completed 200 OK in 463ms (Views: 385.0ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/posts/5" for 127.0.0.1 at 2018-02-24 01:29:18 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 55ms (Views: 47.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/5/comments/new" for 127.0.0.1 at 2018-02-24 01:29:38 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/posts/5/comments/new"):
+  
+actionpack (5.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.5) lib/rails/engine.rb:522:in `call'
+puma (3.11.2) lib/puma/configuration.rb:225:in `call'
+puma (3.11.2) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.2) lib/puma/server.rb:438:in `process_client'
+puma (3.11.2) lib/puma/server.rb:302:in `block in run'
+puma (3.11.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/posts/5/comment/new" for 127.0.0.1 at 2018-02-24 01:29:43 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/posts/5/comment/new"):
+  
+actionpack (5.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.5) lib/rails/engine.rb:522:in `call'
+puma (3.11.2) lib/puma/configuration.rb:225:in `call'
+puma (3.11.2) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.2) lib/puma/server.rb:438:in `process_client'
+puma (3.11.2) lib/puma/server.rb:302:in `block in run'
+puma (3.11.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/posts/5/comments/new" for 127.0.0.1 at 2018-02-24 01:29:47 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/posts/5/comments/new"):
+  
+actionpack (5.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.5) lib/rails/engine.rb:522:in `call'
+puma (3.11.2) lib/puma/configuration.rb:225:in `call'
+puma (3.11.2) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.2) lib/puma/server.rb:438:in `process_client'
+puma (3.11.2) lib/puma/server.rb:302:in `block in run'
+puma (3.11.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/post/comments/new" for 127.0.0.1 at 2018-02-24 01:31:55 +0000
+Processing by CommentsController#new as HTML
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (171.6ms)
+  Rendered comments/new.html.erb within layouts/application (176.3ms)
+Completed 401 Unauthorized in 217ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `comments_path' for #<#<Class:0x007fb8823cfe28>:0x007fb8823ce190>
+Did you mean?  font_path):
+    1: <%= form_with(model: comment, local: true) do |form| %>
+    2:   <% if comment.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+  
+app/views/comments/_form.html.erb:1:in `_app_views_comments__form_html_erb___17963396211548716_70215207119180'
+app/views/comments/new.html.erb:3:in `_app_views_comments_new_html_erb___3129845072402209281_70215218037640'
+Started GET "/post/comments/new" for 127.0.0.1 at 2018-02-24 01:36:48 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/post/comments/new"):
+  
+actionpack (5.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.5) lib/rails/engine.rb:522:in `call'
+puma (3.11.2) lib/puma/configuration.rb:225:in `call'
+puma (3.11.2) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.2) lib/puma/server.rb:438:in `process_client'
+puma (3.11.2) lib/puma/server.rb:302:in `block in run'
+puma (3.11.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/post/1/comments/new" for 127.0.0.1 at 2018-02-24 01:36:54 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/post/1/comments/new"):
+  
+actionpack (5.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.5) lib/rails/engine.rb:522:in `call'
+puma (3.11.2) lib/puma/configuration.rb:225:in `call'
+puma (3.11.2) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.2) lib/puma/server.rb:438:in `process_client'
+puma (3.11.2) lib/puma/server.rb:302:in `block in run'
+puma (3.11.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/post/1/comment/new" for 127.0.0.1 at 2018-02-24 01:36:58 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/post/1/comment/new"):
+  
+actionpack (5.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.5) lib/rails/engine.rb:522:in `call'
+puma (3.11.2) lib/puma/configuration.rb:225:in `call'
+puma (3.11.2) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.2) lib/puma/server.rb:438:in `process_client'
+puma (3.11.2) lib/puma/server.rb:302:in `block in run'
+puma (3.11.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/posts/1/comment/new" for 127.0.0.1 at 2018-02-24 01:37:24 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/posts/1/comment/new"):
+  
+actionpack (5.1.5) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/method_override.rb:22:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.5) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.5) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.5) lib/rails/engine.rb:522:in `call'
+puma (3.11.2) lib/puma/configuration.rb:225:in `call'
+puma (3.11.2) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.2) lib/puma/server.rb:438:in `process_client'
+puma (3.11.2) lib/puma/server.rb:302:in `block in run'
+puma (3.11.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/posts/1/comments/new" for 127.0.0.1 at 2018-02-24 01:37:29 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"1"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (122.2ms)
+  Rendered comments/new.html.erb within layouts/application (124.9ms)
+Completed 401 Unauthorized in 168ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `comments_path' for #<#<Class:0x007ff96a6bb848>:0x007ff96a6b3b70>
+Did you mean?  font_path):
+    1: <%= form_with(model: comment, local: true) do |form| %>
+    2:   <% if comment.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+  
+app/views/comments/_form.html.erb:1:in `_app_views_comments__form_html_erb__2622611117482541246_70354598680880'
+app/views/comments/new.html.erb:3:in `_app_views_comments_new_html_erb___4215049934360817459_70354604530300'
+Started GET "/posts/1/comments/new" for 127.0.0.1 at 2018-02-24 01:52:10 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"1"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (6.8ms)
+  Rendered comments/new.html.erb within layouts/application (10.8ms)
+Completed 401 Unauthorized in 68ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `comments' for nil:NilClass):
+    1: <%= form_with(model: [@post, @post.comments.build], local: true) do |form| %>
+    2:   <% if comment.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+  
+app/views/comments/_form.html.erb:1:in `_app_views_comments__form_html_erb__2622611117482541246_70354604695460'
+app/views/comments/new.html.erb:3:in `_app_views_comments_new_html_erb___4215049934360817459_70354598643660'
+Started GET "/posts/1/comments/new" for 127.0.0.1 at 2018-02-24 01:56:32 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"1"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (9.2ms)
+  Rendered comments/new.html.erb within layouts/application (12.4ms)
+Completed 401 Unauthorized in 60ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `comments' for nil:NilClass):
+    1: <%= form_with(model: [@post, @post.comments.build], local: true) do |form| %>
+    2:   <% if comment.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+  
+app/views/comments/_form.html.erb:1:in `_app_views_comments__form_html_erb__2126417963982230970_70349018519620'
+app/views/comments/new.html.erb:3:in `_app_views_comments_new_html_erb___1675493522435299609_70348988820340'
+Started GET "/posts/1/" for 127.0.0.1 at 2018-02-24 01:56:57 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 15ms (ActiveRecord: 1.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=1):
+  
+app/controllers/posts_controller.rb:70:in `set_post'
+Started GET "/posts/2" for 127.0.0.1 at 2018-02-24 01:57:06 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=2):
+  
+app/controllers/posts_controller.rb:70:in `set_post'
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/" for 127.0.0.1 at 2018-02-24 01:58:22 +0000
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (51.5ms)
+Completed 200 OK in 395ms (Views: 327.9ms | ActiveRecord: 5.1ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-02-24 01:58:25 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"o+M4f6qO1HzciiLiFxV8jT/nWQ8KY5rv5hn2EFm36Z6EmDT+7Sg/TnEJnYcQ+siR5Qe3RbbSVOWYSNvM4IXsjw=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 30ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-24 01:58:25 +0000
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 17ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-02-24 01:58:25 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (1.9ms)
+  Rendered users/sessions/new.html.erb within layouts/application (22.6ms)
+Completed 200 OK in 81ms (Views: 79.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-02-24 01:58:33 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (2.2ms)
+  Rendered users/registrations/new.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 53ms (Views: 50.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-02-24 01:58:55 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1CJrBIQO3Wmupev6He2tk/BWyqPz/DtlyUm3aqQI59Q+1A8CRgl+rB7V6uF0q9PvdwkM62m/ePb9ibuhx1Muwg==", "user"=>{"username"=>"upsa", "email"=>"upsa@bitcoin.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "upsa@bitcoin.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES (?, ?, ?, ?, ?)[0m  [["email", "upsa@bitcoin.com"], ["encrypted_password", "$2a$11$qCIF6UT8545JAmRPzfylWO.CQl8qgX4G1T0tdbreg/oaxDPqW/MNW"], ["created_at", "2018-02-24 01:58:55.571938"], ["updated_at", "2018-02-24 01:58:55.571938"], ["username", "upsa"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", "2018-02-24 01:58:55.577161"], ["last_sign_in_at", "2018-02-24 01:58:55.577161"], ["current_sign_in_ip", "127.0.0.1"], ["last_sign_in_ip", "127.0.0.1"], ["updated_at", "2018-02-24 01:58:55.578490"], ["id", 8]]
+  [1m[35m (2.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 231ms (ActiveRecord: 5.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-24 01:58:55 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered posts/index.html.erb within layouts/application (16.3ms)
+Completed 200 OK in 84ms (Views: 77.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2018-02-24 01:58:59 +0000
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (6.5ms)
+  Rendered posts/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 70ms (Views: 45.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2018-02-24 01:59:12 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ynUZ55yrYwOB27TTu9SzTmBv81wUQWldmjeIkaKMST1hdVo6ETIXKhB//MZFDr9Xk/hgVwZg1vy+J2Z85LWO6Q==", "post"=>{"caption"=>"MY BESTEST POST", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fdc6064d0e0 @tempfile=#<Tempfile:/var/folders/cc/s4t6c90j5j92wrtx1gl3drf00000gn/T/RackMultipart20180224-7183-10ge1kn.png>, @original_filename="slider.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"slider.png\"\r\nContent-Type: image/png\r\n">}, "commit"=>"Upload"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("caption", "image", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["caption", "MY BESTEST POST"], ["image", "slider.png"], ["user_id", 8], ["created_at", "2018-02-24 01:59:12.886964"], ["updated_at", "2018-02-24 01:59:12.886964"]]
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts/6
+Completed 302 Found in 18ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/posts/6" for 127.0.0.1 at 2018-02-24 01:59:12 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered posts/show.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 54ms (Views: 48.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/6/comments/new" for 127.0.0.1 at 2018-02-24 01:59:28 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"6"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (5.1ms)
+  Rendered comments/new.html.erb within layouts/application (10.5ms)
+Completed 401 Unauthorized in 33ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `comments' for nil:NilClass):
+    1: <%= form_with(model: [@post, @post.comments.build], local: true) do |form| %>
+    2:   <% if comment.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+  
+app/views/comments/_form.html.erb:1:in `_app_views_comments__form_html_erb___3764742325559557477_70292210610080'
+app/views/comments/new.html.erb:3:in `_app_views_comments_new_html_erb___2733430830101259656_70292240199360'
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY "posts"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPost Load (2.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" ORDER BY "posts"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/posts/6/comments/new" for 127.0.0.1 at 2018-02-24 02:02:30 +0000
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"6"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (150.0ms)
+  Rendered comments/new.html.erb within layouts/application (154.2ms)
+Completed 401 Unauthorized in 199ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `comments_path' for #<#<Class:0x007f81958ed500>:0x007f81930a2bb8>
+Did you mean?  font_path):
+    1: <%= form_with(model: comment, local: true) do |form| %>
+    2:   <% if comment.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+  
+app/views/comments/_form.html.erb:1:in `_app_views_comments__form_html_erb___2973151902065221210_70097268531740'
+app/views/comments/new.html.erb:3:in `_app_views_comments_new_html_erb__3749522788634525222_70097268341360'
+Started GET "/posts/6/comments/new" for 127.0.0.1 at 2018-02-24 02:09:04 +0000
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"6"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (145.7ms)
+  Rendered comments/new.html.erb within layouts/application (149.2ms)
+Completed 401 Unauthorized in 198ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `comments_path' for #<#<Class:0x007f98df985628>:0x007f98dc7ab120>
+Did you mean?  font_path):
+    1: <%= form_with(model: [@post, @comment], local: true) do |form| %>
+    2:   <% if comment.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+  
+app/views/comments/_form.html.erb:1:in `_app_views_comments__form_html_erb___2699801420054649893_70147255521720'
+app/views/comments/new.html.erb:3:in `_app_views_comments_new_html_erb__3058739803878634917_70147281531520'
+Started GET "/posts/6/comments/new" for 127.0.0.1 at 2018-02-24 02:19:50 +0000
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"6"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (279.0ms)
+  Rendered comments/new.html.erb within layouts/application (282.2ms)
+Completed 401 Unauthorized in 340ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `post_comments' for #<#<Class:0x007ff69538b3f8>:0x007ff693a961b8>
+Did you mean?  post_comments_url
+               post_comment_url):
+    1: <%= form_with(url: post_comments, local: true) do |form| %>
+    2:   <% if comment.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+  
+app/views/comments/_form.html.erb:1:in `_app_views_comments__form_html_erb___1156159084053286112_70348493870460'
+app/views/comments/new.html.erb:3:in `_app_views_comments_new_html_erb__3099384196709896151_70348520982680'
+Started GET "/posts/6/comments/new" for 127.0.0.1 at 2018-02-24 02:20:29 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"6"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (33.9ms)
+  Rendered comments/new.html.erb within layouts/application (277.0ms)
+Completed 401 Unauthorized in 293ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `comments_path' for #<#<Class:0x007ff69538b3f8>:0x007ff691e21960>
+Did you mean?  font_path):
+    2: 
+    3: <%= render 'form', comment: @comment %>
+    4: 
+    5: <%= link_to 'Back', comments_path %>
+  
+app/views/comments/new.html.erb:5:in `_app_views_comments_new_html_erb__3099384196709896151_70348493101920'
+Started GET "/posts/6/comments/new" for 127.0.0.1 at 2018-02-24 02:21:19 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"6"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (4.9ms)
+  Rendered comments/new.html.erb within layouts/application (7.8ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+Completed 200 OK in 320ms (Views: 317.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts/6/comments/new" for 127.0.0.1 at 2018-02-24 02:28:03 +0000
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"6"}
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/_form.html.erb (24.3ms)
+  Rendered comments/new.html.erb within layouts/application (31.5ms)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+Completed 200 OK in 694ms (Views: 495.3ms | ActiveRecord: 10.1ms)
+
+
+Started POST "/posts/6/comments" for 127.0.0.1 at 2018-02-24 02:28:18 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VeETuQgVFxLcsKgCSliR3mAX7sZAX7gqzZUY1h38GyH0syS4kPkoOO7NtXdm8qB2vgNep/eBQronjEdG7VztuQ==", "body"=>"woooo", "post_id"=>"6", "user_id"=>"", "commit"=>"Save "}
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+Completed 401 Unauthorized in 223ms (ActiveRecord: 2.8ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: comment):
+  
+app/controllers/comments_controller.rb:75:in `comment_params'
+app/controllers/comments_controller.rb:28:in `create'
+Started POST "/posts/6/comments" for 127.0.0.1 at 2018-02-24 02:29:34 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VeETuQgVFxLcsKgCSliR3mAX7sZAX7gqzZUY1h38GyH0syS4kPkoOO7NtXdm8qB2vgNep/eBQronjEdG7VztuQ==", "body"=>"woooo", "post_id"=>"6", "user_id"=>"", "commit"=>"Save "}
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+Completed 401 Unauthorized in 334ms (ActiveRecord: 28.0ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: comment):
+  
+app/controllers/comments_controller.rb:75:in `comment_params'
+app/controllers/comments_controller.rb:28:in `create'
+Started POST "/posts/6/comments" for 127.0.0.1 at 2018-02-24 02:30:36 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VeETuQgVFxLcsKgCSliR3mAX7sZAX7gqzZUY1h38GyH0syS4kPkoOO7NtXdm8qB2vgNep/eBQronjEdG7VztuQ==", "body"=>"woooo", "post_id"=>"6", "user_id"=>"", "commit"=>"Save "}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: comment):
+  
+app/controllers/comments_controller.rb:75:in `comment_params'
+app/controllers/comments_controller.rb:28:in `create'
+Started POST "/posts/6/comments" for 127.0.0.1 at 2018-02-24 02:30:59 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VeETuQgVFxLcsKgCSliR3mAX7sZAX7gqzZUY1h38GyH0syS4kPkoOO7NtXdm8qB2vgNep/eBQronjEdG7VztuQ==", "body"=>"woooo", "post_id"=>"6", "user_id"=>"", "commit"=>"Save "}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+Completed 401 Unauthorized in 12ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: comment):
+  
+app/controllers/comments_controller.rb:75:in `comment_params'
+app/controllers/comments_controller.rb:28:in `create'
+Started POST "/posts/6/comments" for 127.0.0.1 at 2018-02-24 02:32:31 +0000
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VeETuQgVFxLcsKgCSliR3mAX7sZAX7gqzZUY1h38GyH0syS4kPkoOO7NtXdm8qB2vgNep/eBQronjEdG7VztuQ==", "body"=>"woooo", "post_id"=>"6", "user_id"=>"", "commit"=>"Save "}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+Completed 401 Unauthorized in 10ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: comment):
+  
+app/controllers/comments_controller.rb:75:in `comment_params'
+app/controllers/comments_controller.rb:28:in `create'
