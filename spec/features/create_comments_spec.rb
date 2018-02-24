@@ -6,8 +6,8 @@ feature 'Creating Comments' do
     post = create(:post, user_id: user.id)
     sign_in user
     visit '/'
-    fill_in 'Comment', with: 'this is sublime'
-    click_button 'Submit'
+    fill_in 'comment[content]', with: 'this is sublime'
+    click_button 'Leave Comment'
 
     expect(page).to have_css("div.comments#{post.id}", text: 'this is sublime')
   end
