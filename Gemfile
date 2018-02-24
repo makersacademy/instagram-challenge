@@ -15,6 +15,8 @@ gem 'warden', '~> 1.2', '>= 1.2.7'
 gem 'haml'
 gem 'simple_form'
 gem "paperclip", "~> 5.2.1"
+gem 'bootstrap-sass', '~> 3.3.5'
+gem 'jquery-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
