@@ -3,8 +3,8 @@ Instagram Challenge
 
 Maker's Academy weekend challenge to recreate a popular app that allows a user to post pictures of their brunch.
 
-The app is deployed on heroku at https://powerful-fortress-65722.herokuapp.com/
-Uploaded images are hosted on Amazon S3
+The app is deployed on heroku at https://powerful-fortress-65722.herokuapp.com/.
+Uploaded images are hosted on Amazon S3.
 
 Requirements 
 -------
@@ -20,6 +20,13 @@ All gem requirements can be installed by installing the bundler gem (`gem instal
 #### Using the deployed app on heroku: 
 + None
 
+Technologies used
+-------
+
+- Rails
+- Carrierwave (to handle uploading of files)
+- Fog (to handle storage of files in S3)
+- Devise (to handle user authentication)
 
 User Stories implemented
 -------
@@ -46,7 +53,7 @@ Instructions
 
 #### Using the deployed app on heroku: 
 
-+ Visit the webpage: https://infinite-river-43450.herokuapp.com
++ Visit the webpage: https://powerful-fortress-65722.herokuapp.com/
 
 #### Once the app is launched:
 
