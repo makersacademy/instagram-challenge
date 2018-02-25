@@ -1,5 +1,7 @@
 class PictsController < ApplicationController
-  before_action :find_pict, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
+  before_action  :find_pict, only: [:show, :edit, :update, :destroy]
+
   def index
     @picts = Pict.all
   end
