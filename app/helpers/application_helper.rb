@@ -6,6 +6,6 @@ module ApplicationHelper
       :alert => 'alert-warning',
       :notice => 'alert-info'
 
-    }[flash_type.to_sym] || flash_type.to_s
+    } [flash_type.to_sym] || flash_type.to_s
   end
 end

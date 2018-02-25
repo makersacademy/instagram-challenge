@@ -17,13 +17,14 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml'
 gem 'simple_form'
 gem "paperclip", "~> 5.2.1"
+gem 'factory_bot_rails'
 
 group :development, :test do
 gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails'
-  gem 'factory_bot_rails'
+
 end
 
 group :development do
