@@ -48,7 +48,7 @@ As a keen describer
 So I can feel like the site cares and remembers me
 I would like to store my login
 ```
-- [ ] Done
+- [x] Done
 
 ```
 As a keen guesser
