@@ -23,7 +23,7 @@ I have set myself 3 targets for this challenge
    - Break jobs down into smaller issues and focusing at passing each at a time
    - Following the pomodoro cycle, to test out if this is a more efficient way of using my time.
 
-As usual I am following TDD, with Capybara and Rspec, but I am going to be focusing on making sure that I don't over test. I sometimes have produced..alot of tests that often overlap or are unclear to users. So I have focused on writing user stories, issues and planning my structure with tests in mind to make sure I produce a throughoutly tested product, that is done so efficiently. 
+As usual I am following TDD, with Capybara and Rspec, but I am going to be focusing on making sure that I don't over test. I sometimes have produced..alot of tests that often overlap or are unclear to users. So I have focused on writing user stories, issues and planning my structure with tests in mind to make sure I produce a throughoutly tested product, that is done so efficiently.
 
 ## User stories <a name= "stories"></a>
 
@@ -34,7 +34,7 @@ As a keen describer
 So that I can show off my sick drawing skills
 I want to be able to upload a picture with some helpful hints
 ```
-- [ ] Done
+- [x] Done
 ```
 As a keen guesser
 So that I can show of my awesome guessing skills
