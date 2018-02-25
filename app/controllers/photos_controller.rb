@@ -4,6 +4,11 @@ class PhotosController < ApplicationController
   end
 
   def new
+    if current_user == nil
+      flash[:notice] = "You must be logged in to add a photo!"
+      redirect_to new_user_session_path
+    end
+
     @photo = Photo.new
   end
 
@@ -32,6 +37,6 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit(:title, :image)
+    params.require(:photo).permit(:title, :image, :user_id)
   end
 end
