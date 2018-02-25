@@ -26,4 +26,15 @@ feature 'Deleting comments' do
     expect(page).to have_content('second comment')
     expect(page).to_not have_css('#delete-2')
   end
+
+  scenario 'user cannot delete a comment not belonging to them via urls' do
+   visit '/'
+
+   expect(page).to have_content('second comment')
+
+   page.driver.submit :delete, "posts/1/comments/2", {}
+
+   expect(page).to have_content('MyText')
+   expect(page).to have_content('second comment')
+ end
 end
