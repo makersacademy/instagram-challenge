@@ -11,6 +11,7 @@ feature 'add a pict' do
     click_button 'Add Pict'
     expect(page).to have_content 'We do it all the time'
     expect(page).to have_content 'Successfully added Pict'
+    expect(page).to have_content 'What could this be?'
     expect(page).to have_css('img[src*="code_clue.jpg"]')
   end
 end
