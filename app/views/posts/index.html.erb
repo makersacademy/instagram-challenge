@@ -9,16 +9,16 @@
       </div>
     <% end %>
     <p><%= post.description %></p>
-    <p>Posted by <%= User.find(post.user_id).email %> at <%= post.created_at %> <%= link_to 'View post', post_path(post) %></p>
+    <p>Posted by <strong><%= User.find(post.user_id).email.split("@")[0] %></strong> at <%= post.created_at %> <%= link_to "View post", post_path(post), id: "view-post-#{post.id}" %></p>
 
     <!-- Show up to 3 comments if there are any -->
     <% if post.comments.length > 0 %>
       <ul>
-      <% post.comments.first(3).each do |comment| %>
-        <li><%= comment.body %></li>
+      <% post.comments.last(3).each do |comment| %>
+        <li><strong><%= get_owner(comment.user_id).email.split("@")[0] %></strong> <%= comment.body %></li>
       <% end %>
       <% if post.comments.length > 3 %>
-      <%= link_to 'View all comments', post_path(post) %>
+        <li><%= link_to "View all comments", post_path(post) %></li>
       <% end %>  
       </ul>
     <% end %>
@@ -27,8 +27,8 @@
     <% if current_user %>
     <p>
       <%= form_with(model: [post, post.comments.build], local: true) do |form| %>
-      <%= form.text_field :body %>
-      <%= form.submit 'Comment' %>
+      <%= form.text_field :body, id: "comment-body-on-post-#{post.id}" %>
+      <%= form.submit "Comment", id: "submit-comment-on-post-#{post.id}" %>
       <% end %>
     </p>
     <% end %>

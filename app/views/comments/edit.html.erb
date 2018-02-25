@@ -1,0 +1,22 @@
+<%= form_with model: @comment, url: [@post, @comment], local: true do |form| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2> Please check the
+        <%= pluralize(@comment.errors.count, "error") %> below:
+      </h2>
+      <ul>
+        <% @comment.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= form.text_field :body, value: @comment.body, id: 'comment-body' %>
+  </p>
+  <p>
+    <%= form.submit 'Update comment' %>
+  </p>
+<% end %>

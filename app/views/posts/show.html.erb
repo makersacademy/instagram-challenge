@@ -16,16 +16,26 @@
     <p>
       <%= link_to "Remove", post_path(@post),
         method: :delete,
-        data: { confirm: 'Are you sure?' } %> |
-      <%= link_to "Edit", edit_post_path(@post) %>
+        id: "delete-post-#{@post.id}",
+        data: { confirm: "Are you sure?" } %> |
+      <%= link_to "Edit", edit_post_path(@post), id: "edit-post-#{@post.id}" %>
     </p>
   <% end %>
 
   <!-- Show comments if there are any -->
   <% if @post.comments.length > 0 %>
-    <ul>
+    <ul id = "comments-list">
     <% @post.comments.each do |comment| %>
-      <li><%= comment.body %></li>
+      <li>
+        <strong><%= get_owner(comment.user_id).email.split("@")[0] %></strong> <%= comment.body %>
+        <% if get_owner(comment.user_id) == current_user %>
+          <%= link_to "Remove comment", post_comment_path(@post.id, comment.id),
+            method: :delete,
+            id: "delete-comment-#{comment.id}",
+            data: { confirm: "Are you sure?" } %> |
+          <%= link_to "Edit", edit_post_comment_path(@post.id, comment.id), id: "edit-comment-#{comment.id}" %>
+        <% end %>
+      </li>
     <% end %>
     </ul>
   <% end %>
@@ -34,10 +44,10 @@
   <% if current_user %>
   <p>
     <%= form_with(model: [@post, @post.comments.build], local: true) do |form| %>
-    <%= form.text_field :body %>
-    <%= form.submit 'Comment' %>
+    <%= form.text_field :body, id: "comment-body-on-post-#{@post.id}" %>
+    <%= form.submit "Comment", id: "submit-comment-on-post-#{@post.id}" %>
     <% end %>
   </p>
   <% end %>
 
-<%= link_to 'Back', posts_path %>
+<%= link_to "Back", posts_path %>
