@@ -19,6 +19,12 @@ feature 'login' do
    scenario 'lets me logout' do
      click_link 'Logout'
      expect(page).to have_content 'You\'ve logged out, see you again for more Pictogram soon!'
+     expect(page).not_to have_content 'Logout'
    end
+
+   scenario 'I can login to user account' do
+      click_link 'Logout'
+   end
+
 
 end
