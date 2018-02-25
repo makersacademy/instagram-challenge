@@ -4,7 +4,6 @@ class PictsController < ApplicationController
   end
 
   def show
-    p flash[:success]
     @pict = Pict.find(params[:id])
   end
 
@@ -20,6 +19,17 @@ class PictsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def update
+    @pict = Pict.find(params[:id])
+    @pict.update(pict_params)
+    flash[:success] = 'Successfully changed Pict'
+    redirect_to @pict
+  end
+
+  def edit
+    @pict = Pict.find(params[:id])
   end
 
   def destroy
