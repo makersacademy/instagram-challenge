@@ -18581,3 +18581,655 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 100ms (Views: 93.0ms | ActiveRecord: 2.2ms)
 
 
+Started GET "/posts/2" for 127.0.0.1 at 2018-02-25 13:22:40 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (2.0ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_many_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE Like Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.5ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered collection of likes/_like.html.erb [3 times] (11.8ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 2]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered collection of comments/_comment.html.erb [1 times] (2.3ms)
+  Rendered comments/_form.html.erb (2.5ms)
+  Rendered likes/_form.html.erb (2.1ms)
+  Rendered posts/show.html.erb within layouts/application (44.0ms)
+  Rendered devise/menu/_registration_items.html.erb (0.8ms)
+  Rendered devise/menu/_login_items.html.erb (0.6ms)
+Completed 200 OK in 177ms (Views: 169.6ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:22:43 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  Rendered posts/index.html.erb within layouts/application (21.5ms)
+  Rendered devise/menu/_registration_items.html.erb (0.6ms)
+  Rendered devise/menu/_login_items.html.erb (0.5ms)
+Completed 200 OK in 89ms (Views: 78.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:22:46 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  Rendered posts/index.html.erb within layouts/application (22.4ms)
+  Rendered devise/menu/_registration_items.html.erb (0.8ms)
+  Rendered devise/menu/_login_items.html.erb (0.7ms)
+Completed 200 OK in 91ms (Views: 81.1ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-02-25 13:23:04 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (2.0ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_many_hearts.html.erb (0.5ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Like Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered collection of likes/_like.html.erb [2 times] (7.1ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered collection of comments/_comment.html.erb [2 times] (1.6ms)
+  Rendered comments/_form.html.erb (2.3ms)
+  Rendered likes/_form.html.erb (2.7ms)
+  Rendered posts/show.html.erb within layouts/application (40.5ms)
+  Rendered devise/menu/_registration_items.html.erb (0.6ms)
+  Rendered devise/menu/_login_items.html.erb (0.7ms)
+Completed 200 OK in 102ms (Views: 86.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-02-25 13:23:19 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (1.9ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_many_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Like Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered collection of likes/_like.html.erb [2 times] (7.2ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered collection of comments/_comment.html.erb [2 times] (1.7ms)
+  Rendered comments/_form.html.erb (2.3ms)
+  Rendered likes/_form.html.erb (2.4ms)
+  Rendered posts/show.html.erb within layouts/application (38.1ms)
+  Rendered devise/menu/_registration_items.html.erb (0.7ms)
+  Rendered devise/menu/_login_items.html.erb (0.9ms)
+Completed 200 OK in 115ms (Views: 108.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:23:20 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  Rendered posts/index.html.erb within layouts/application (22.2ms)
+  Rendered devise/menu/_registration_items.html.erb (0.7ms)
+  Rendered devise/menu/_login_items.html.erb (0.7ms)
+Completed 200 OK in 86ms (Views: 77.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:23:43 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  Rendered posts/index.html.erb within layouts/application (21.8ms)
+  Rendered devise/menu/_registration_items.html.erb (1.3ms)
+  Rendered devise/menu/_login_items.html.erb (0.8ms)
+Completed 200 OK in 78ms (Views: 71.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:23:58 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.5ms)
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  Rendered posts/index.html.erb within layouts/application (21.7ms)
+  Rendered devise/menu/_registration_items.html.erb (1.0ms)
+  Rendered devise/menu/_login_items.html.erb (1.2ms)
+Completed 200 OK in 82ms (Views: 73.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:24:01 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  Rendered posts/index.html.erb within layouts/application (24.3ms)
+  Rendered devise/menu/_registration_items.html.erb (0.6ms)
+  Rendered devise/menu/_login_items.html.erb (0.6ms)
+Completed 200 OK in 94ms (Views: 83.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:24:02 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.5ms)
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  Rendered posts/index.html.erb within layouts/application (25.6ms)
+  Rendered devise/menu/_registration_items.html.erb (0.6ms)
+  Rendered devise/menu/_login_items.html.erb (0.7ms)
+Completed 200 OK in 112ms (Views: 99.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-02-25 13:24:04 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (1.9ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_many_hearts.html.erb (0.3ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Like Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered collection of likes/_like.html.erb [2 times] (8.2ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered collection of comments/_comment.html.erb [2 times] (1.6ms)
+  Rendered comments/_form.html.erb (2.8ms)
+  Rendered likes/_form.html.erb (2.3ms)
+  Rendered posts/show.html.erb within layouts/application (39.5ms)
+  Rendered devise/menu/_registration_items.html.erb (0.6ms)
+  Rendered devise/menu/_login_items.html.erb (0.9ms)
+Completed 200 OK in 113ms (Views: 99.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:24:06 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.6ms)
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  Rendered posts/index.html.erb within layouts/application (25.6ms)
+  Rendered devise/menu/_registration_items.html.erb (0.7ms)
+  Rendered devise/menu/_login_items.html.erb (0.7ms)
+Completed 200 OK in 101ms (Views: 88.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:24:54 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  Rendered posts/index.html.erb within layouts/application (22.6ms)
+  Rendered devise/menu/_registration_items.html.erb (0.6ms)
+  Rendered devise/menu/_login_items.html.erb (0.7ms)
+Completed 200 OK in 92ms (Views: 84.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-02-25 13:24:57 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (1.6ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_many_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE Like Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered collection of likes/_like.html.erb [2 times] (7.9ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered collection of comments/_comment.html.erb [2 times] (1.8ms)
+  Rendered comments/_form.html.erb (2.2ms)
+  Rendered likes/_form.html.erb (2.3ms)
+  Rendered posts/show.html.erb within layouts/application (40.1ms)
+  Rendered devise/menu/_registration_items.html.erb (0.6ms)
+  Rendered devise/menu/_login_items.html.erb (1.0ms)
+Completed 200 OK in 106ms (Views: 89.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:25:36 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  Rendered posts/index.html.erb within layouts/application (22.4ms)
+  Rendered devise/menu/_registration_items.html.erb (0.6ms)
+  Rendered devise/menu/_login_items.html.erb (0.6ms)
+Completed 200 OK in 98ms (Views: 87.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2018-02-25 13:25:41 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (2.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_many_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Like Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered collection of likes/_like.html.erb [5 times] (15.9ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered collection of comments/_comment.html.erb [3 times] (2.1ms)
+  Rendered comments/_form.html.erb (2.4ms)
+  Rendered likes/_form.html.erb (2.6ms)
+  Rendered posts/show.html.erb within layouts/application (48.4ms)
+  Rendered devise/menu/_registration_items.html.erb (0.6ms)
+  Rendered devise/menu/_login_items.html.erb (0.5ms)
+Completed 200 OK in 103ms (Views: 91.3ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2018-02-25 13:27:47 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (2.0ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_many_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Like Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.3ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered collection of likes/_like.html.erb [5 times] (18.1ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered collection of comments/_comment.html.erb [3 times] (2.2ms)
+  Rendered comments/_form.html.erb (2.6ms)
+  Rendered likes/_form.html.erb (2.3ms)
+  Rendered posts/show.html.erb within layouts/application (51.0ms)
+  Rendered devise/menu/_registration_items.html.erb (0.6ms)
+  Rendered devise/menu/_login_items.html.erb (3.0ms)
+Completed 401 Unauthorized in 127ms (ActiveRecord: 2.7ms)
+
+
+  
+SyntaxError (/Users/Alexy/Projects/week8/instagram-challenge/app/views/devise/menu/_login_items.html.erb:11: syntax error, unexpected tFID, expecting keyword_then or ';' or '\n'
+ed_in? == true user_signed_in? == false  
+                              ^
+/Users/Alexy/Projects/week8/instagram-challenge/app/views/devise/menu/_login_items.html.erb:15: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/devise/menu/_login_items.html.erb:11: syntax error, unexpected tFID, expecting keyword_then or ';' or '\n'
+app/views/devise/menu/_login_items.html.erb:15: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__409752461117436438_70189836615140'
+Started GET "/posts/1" for 127.0.0.1 at 2018-02-25 13:28:10 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (2.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_many_hearts.html.erb (0.6ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE Like Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered collection of likes/_like.html.erb [5 times] (17.4ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered collection of comments/_comment.html.erb [3 times] (2.3ms)
+  Rendered comments/_form.html.erb (3.0ms)
+  Rendered likes/_form.html.erb (2.6ms)
+  Rendered posts/show.html.erb within layouts/application (51.6ms)
+  Rendered devise/menu/_registration_items.html.erb (0.8ms)
+  Rendered devise/menu/_login_items.html.erb (0.7ms)
+Completed 200 OK in 123ms (Views: 116.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:28:12 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  Rendered posts/index.html.erb within layouts/application (21.9ms)
+  Rendered devise/menu/_registration_items.html.erb (0.6ms)
+  Rendered devise/menu/_login_items.html.erb (0.8ms)
+Completed 200 OK in 90ms (Views: 78.6ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:28:13 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  Rendered posts/index.html.erb within layouts/application (21.9ms)
+  Rendered devise/menu/_registration_items.html.erb (1.0ms)
+  Rendered devise/menu/_login_items.html.erb (1.3ms)
+Completed 200 OK in 113ms (Views: 101.1ms | ActiveRecord: 2.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-02-25 13:28:26 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"tp80pizmaG9YRdMy7Tyrxxx9kxba7k/uue4A9bV3gSSG0w0hLoSgsjQI4y/rqOhXGHrWGbg1G9IoFFIF7g5XLQ=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-02-25 13:28:26 +0000
+Processing by WelcomeController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-02-25 13:28:26 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/Alexy/.rvm/gems/ruby-2.4.1/gems/devise-4.4.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/Alexy/.rvm/gems/ruby-2.4.1/gems/devise-4.4.1/app/views/devise/shared/_links.html.erb (1.2ms)
+  Rendered /Users/Alexy/.rvm/gems/ruby-2.4.1/gems/devise-4.4.1/app/views/devise/sessions/new.html.erb within layouts/application (8.6ms)
+  Rendered devise/menu/_registration_items.html.erb (0.7ms)
+  Rendered devise/menu/_login_items.html.erb (0.7ms)
+Completed 200 OK in 62ms (Views: 61.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:28:31 +0000
+Processing by PostsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-02-25 13:28:31 +0000
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/Alexy/.rvm/gems/ruby-2.4.1/gems/devise-4.4.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/Alexy/.rvm/gems/ruby-2.4.1/gems/devise-4.4.1/app/views/devise/shared/_links.html.erb (1.2ms)
+  Rendered /Users/Alexy/.rvm/gems/ruby-2.4.1/gems/devise-4.4.1/app/views/devise/sessions/new.html.erb within layouts/application (8.9ms)
+  Rendered devise/menu/_registration_items.html.erb (0.7ms)
+  Rendered devise/menu/_login_items.html.erb (0.7ms)
+Completed 200 OK in 65ms (Views: 62.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-02-25 13:28:35 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tH1wQHzH+7IGEPN83o0bP4EiUaPRD3mrAOj+ImZTwz1id5rF7X50EXCDQfBYsFdk0vQruouMvfCtk6YdPbTc3A==", "user"=>{"email"=>"a@yahoo.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "a@yahoo.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", "2018-02-25 13:28:35.238213"], ["sign_in_count", 2], ["updated_at", "2018-02-25 13:28:35.239414"], ["id", 4]]
+  [1m[35m (19.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 219ms (ActiveRecord: 20.6ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-02-25 13:28:35 +0000
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 1]]
+  Rendered likes/_hearts.html.erb (0.6ms)
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 2]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  [1m[36mLike Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  [1m[36mLike Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 4]]
+  Rendered likes/_hearts.html.erb (0.1ms)
+  Rendered posts/index.html.erb within layouts/application (39.2ms)
+  Rendered devise/menu/_registration_items.html.erb (0.6ms)
+  Rendered devise/menu/_login_items.html.erb (0.6ms)
+Completed 200 OK in 110ms (Views: 95.8ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2018-02-25 13:28:37 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (2.1ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT SUM("likes"."number") FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_many_hearts.html.erb (0.4ms)
+  [1m[36mLike Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Like Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."post_id" = ? LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ?[0m  [["post_id", 3]]
+  Rendered likes/_hearts.html.erb (0.4ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered likes/_hearts.html.erb (0.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered collection of likes/_like.html.erb [2 times] (8.2ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 3]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered collection of comments/_comment.html.erb [1 times] (1.3ms)
+  Rendered comments/_form.html.erb (2.6ms)
+  Rendered likes/_form.html.erb (1.9ms)
+  Rendered posts/show.html.erb within layouts/application (38.5ms)
+  Rendered devise/menu/_registration_items.html.erb (0.6ms)
+  Rendered devise/menu/_login_items.html.erb (1.1ms)
+Completed 200 OK in 109ms (Views: 100.8ms | ActiveRecord: 1.9ms)
+
+
