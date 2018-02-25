@@ -1,23 +1,36 @@
 <h1>Post</h1>
 <%= render @post %>
-
 <% if user_signed_in? && current_user.id == @post.user_id %>
   <%= link_to 'Edit', edit_post_path(@post) %>
 <%end%>
+<h1>
+<%= @post.likes.sum(:number) %>
+<% 1.times { -%> <%= render '/likes/many_hearts' %> <% } -%></h1>
 
-<% if @post.comments.any? %>
-  <h2>Comments</h2>
-  <%= render @post.comments %>
+
+<% if @post.likes.any? || @post.comments.any? %>
+<table>
+  <tr>
+    <th><h2>Likes</h2></th>
+    <th><h2>Comments</h2></th>
+  </tr>
+<% if @post.likes.any? %>
+<table>
+  <tr>
+    <td><%= render @post.likes %></td>
+    <td><%= render @post.comments %></td>
+  </tr>
+</table>
 <% end %>
+
+
+
+<% end %>
+</table>
 
 <% if user_signed_in?%>
     <h2>Add a comment:</h2>
     <%= render 'comments/form' %>
-  <% end %>
-
-  <% if @post.likes.any? %>
-    <h2>Likes</h2>
-    <%= render @post.likes %>
   <% end %>
 
   <% if user_signed_in?%>
