@@ -1,10 +1,10 @@
 class PictsController < ApplicationController
+  before_action :find_pict, only: [:show, :edit, :update, :destroy]
   def index
     @picts = Pict.all
   end
 
   def show
-    @pict = Pict.find(params[:id])
   end
 
   def new
@@ -22,7 +22,6 @@ class PictsController < ApplicationController
   end
 
   def update
-    @pict = Pict.find(params[:id])
     if @pict.update(pict_params)
     flash[:success] = 'Successfully changed Pict'
     redirect_to @pict
@@ -32,11 +31,9 @@ class PictsController < ApplicationController
   end
 
   def edit
-    @pict = Pict.find(params[:id])
   end
 
   def destroy
-    @pict =Pict.find(params[:id])
     @pict.delete
     flash[:success] = 'Pict Destroyed'
     redirect_to picts_path
@@ -46,6 +43,10 @@ class PictsController < ApplicationController
 
    def pict_params
     params.require(:pict).permit(:image, :title, :answer, :hints)
-  end
+   end
+
+   def find_pict
+     @pict = Pict.find(params[:id])
+   end
 
 end
