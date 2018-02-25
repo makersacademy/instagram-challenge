@@ -8,27 +8,39 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "Home", posts_path, { :class => "nav-link" } %>
+          <%= link_to posts_path, { :class => "nav-link" } do %>
+            <%= fa_icon "home" %> Home
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "New Post", new_post_path, { :class => "nav-link" } %>
+          <%= link_to new_post_path, { :class => "nav-link" } do %>
+            <%= fa_icon "plus" %> New Post
+          <% end  %>
         </li>
       <% end %>
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Account
+          <%= fa_icon "bars" %> Account
         </a>
         <% if user_signed_in? %>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <%= link_to "Logout", destroy_user_session_path, { method: :delete, :class => "dropdown-item" } %>
-          <%= link_to "Settings", edit_user_registration_path, { :class => "dropdown-item" } %>
+          <%= link_to destroy_user_session_path, { method: :delete, :class => "dropdown-item" } do %>
+            <%= fa_icon "sign-out" %> Logout
+          <% end %>
+          <%= link_to edit_user_registration_path, { :class => "dropdown-item" } do %>
+            <%= fa_icon "cogs" %> Settings
+          <% end %>
         </div>
         <% else %>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <%= link_to "Login", new_user_session_path, { :class => "dropdown-item" } %>
-            <%= link_to "Register", new_user_registration_path, { :class => "dropdown-item" } %>
+            <%= link_to new_user_session_path, { :class => "dropdown-item" } do %>
+              <%= fa_icon "sign-in" %> Login
+            <% end %>
+            <%= link_to new_user_registration_path, { :class => "dropdown-item" } do %>
+              <%= fa_icon "user-plus" %> Register
+            <% end %>
           </div>
         <% end %>
       </li>

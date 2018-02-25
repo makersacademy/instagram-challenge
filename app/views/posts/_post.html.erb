@@ -3,9 +3,11 @@
     <div class="post-head">
       <div class="thumb-img"></div>
       <div class="user-name">
+        <%= fa_icon "user" %>
         <%= post.user.username %>
       </div>
       <div class="time-ago">
+        <%= fa_icon "calendar" %>
         <%= time_ago_in_words post.created_at %> ago
       </div>
     </div>
@@ -14,6 +16,7 @@
     </div>
     <div class="text-center edit-links">
       <% if post.user.id == current_user.id %>
+        <%= fa_icon "edit" %>
         <%= link_to 'Edit Post', edit_post_path(post) %>
       <% end %>
     </div>
@@ -21,6 +24,7 @@
       <div class="description">
         <div class="description-content">
           <div class="user-name">
+            <%= fa_icon "user" %>
             <%= post.user.username %>
           </div>
           <%= post.description %>
@@ -33,17 +37,17 @@
       </div>
     </div>
     <div class="comment-like-form row">
-      <div class="like-button col-sm-1">
-        <span class="glyphicon glyphicon-heart-empty"></span>
+      <div class="comment-form col-sm-1">
+        <%= fa_icon "comment" %>
       </div>
       <div class="comment-form col-sm-11">
         <%= form_for([post, post.comments.build], remote: true) do |f| %>
           <%= f.text_field :content, placeholder: 'Make you mum proud, say something nice...',
-                                     class: "comment_content",
-                                     id: "comment_content_#{post.id}",
-                                     data: { post_id: "#{post.id}",
-                                     value: "#{post.comments.count}" } %>
-          <%= f.submit 'Leave Comment', class: 'comment-submit-button' %>
+            class: "comment_content col-sm-8",
+            id: "comment_content_#{post.id}",
+            data: { post_id: "#{post.id}",
+            value: "#{post.comments.count}" } %>
+          <%= f.submit 'Comment', class: 'comment-submit-button col-sm-3' %>
         <% end %>
       </div>
     </div>

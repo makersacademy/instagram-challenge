@@ -7,7 +7,7 @@ feature 'Creating Comments' do
     sign_in user
     visit '/'
     fill_in 'comment[content]', with: 'this is sublime'
-    click_button 'Leave Comment'
+    click_button 'Comment'
 
     expect(page).to have_css("div#comments#{post.id}", text: 'this is sublime')
   end
