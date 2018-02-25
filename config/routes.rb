@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :posts do
-    resources :comments, :likes
+    resources :comments, :likes, :image
   end
 
   root 'welcome#index'

@@ -45,7 +45,7 @@ end
 
   private
   def post_params
-  params.require(:post).permit(:description, :user_id)
+  params.require(:post).permit(:description, :user_id, :image)
   end
 
   def likes_rating(post)

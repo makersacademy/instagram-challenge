@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180224224855) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "number"
+    t.integer "number", limit: 2
     t.integer "post_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180224224855) do
 
   create_table "posts", force: :cascade do |t|
     t.string "description"
+    t.text "image"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

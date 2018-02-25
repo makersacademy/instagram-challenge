@@ -1,4 +1,4 @@
-<%= form_with model: @post, local: true do |form| %>
+<%= form_with model: @post, html: { multipart: true }, local: true do |form| %>
 
 <% if @post.errors.any? %>
    <div id="error_explanation">
@@ -18,6 +18,10 @@
   <p>
     <%= form.label :description %><br>
     <%= form.text_field :description %>
+    <div class="field">
+    <%= form.label :image %><br>
+    <%= form.file_field :image %>
+  </div>
     <%= form.hidden_field :user_id, :value => current_user.id %>
   </p>
 
