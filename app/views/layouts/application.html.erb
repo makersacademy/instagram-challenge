@@ -9,6 +9,10 @@
   </head>
 
   <body>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+    <% end %>
+    
     <ul class="hmenu">
       <%= render 'devise/menu/registration_items' %>
       <%= render 'devise/menu/login_items' %>
@@ -16,8 +20,6 @@
     <%= yield %>
   </body>
 
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
-  <% end %>
+
 
 </html>
