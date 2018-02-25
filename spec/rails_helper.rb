@@ -5,13 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
-
 # Add additional requires below this line. Rails is not loaded until this point!
-require 'capybara'
-require 'capybara/rails'
-require 'capybara/rspec'
-require_relative 'features/helper'
-
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -60,23 +54,4 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-end
-
-RSpec.configure do |config|
- # Everything in this block runs once before all the tests run
- config.before(:suite) do
-   DatabaseCleaner.strategy = :transaction
-   DatabaseCleaner.clean_with(:truncation)
- end
-
- # Everything in this block runs once before each individual test
- config.before(:each) do
-   DatabaseCleaner.start
- end
-
- # Everything in this block runs once after each individual test
- config.after(:each) do
-   DatabaseCleaner.clean
- end
-
 end
