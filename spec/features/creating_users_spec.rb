@@ -18,4 +18,14 @@ feature 'Creating users' do
     click_button 'Sign up'
     expect(page).to have_content "Email can't be blank"
   end
+
+  scenario 'cant register without a password' do
+    visit('/')
+    click_link 'Register'
+    fill_in 'Email', with: 'lewis@gmail.confirmation'
+    fill_in 'Password', with: ''
+    fill_in 'Password confirmation', with: ''
+    click_button 'Sign up'
+    expect(page).to have_content "Password can't be blank"
+  end
 end
