@@ -11,7 +11,7 @@ In order to build my understanding of rails I have created this project without 
 
 I have attempted to write controller and model tests, but given more time I would work on this. I have mainly implemented the app using feature testing.
 
-Given more time I would increase functionality. I would improve my controller and model tests, and gain further insight into these areas. Whilst I have feature tests the testing needs to be improved for greater test coverage of the features of the app. The feature test I have could also be refactored to remove duplication. 
+Given more time I would increase functionality. I would improve my controller and model tests, and gain further insight into these areas. Whilst I have feature tests the testing needs to be improved for greater test coverage of the features of the app. The feature test I have could also be refactored to remove duplication.
 
 I have had a focus on learning rails basics, so I am aware improvements are needed in the convention, and there are areas of the tests and code base which could by improved with helper methods.
 
@@ -38,7 +38,7 @@ I have had a focus on learning rails basics, so I am aware improvements are need
 
 ## What it looks like
 
-![alt text](https://i.imgur.com/6G91oUU.jpg)
+![alt text](https://i.imgur.com/6G91oUU.jpg), ![alt text](https://i.imgur.com/bN1EzTu.png)
 
 ## Functionality implemented
 * User sign in and out
