@@ -25,4 +25,13 @@ feature 'add a pict' do
     expect(page).to have_content 'You need a title! (Don\'t forget a question mark)'
     expect(page).not_to have_content 'Successfully added Pict'
   end
+
+  scenario 'add an image, but don\'t put a question mark on the title' do
+    attach_file('pict[image]', 'spec/docs/images/code_clue.jpg')
+    fill_in :Title, with: 'What could this be'
+    click_button 'Add Pict'
+    expect(page).to have_content "Errors, see below"
+    expect(page).to have_content "Title needs a question mark at the end"
+    expect(page).not_to have_content 'Successfully added Pict'
+  end
 end
