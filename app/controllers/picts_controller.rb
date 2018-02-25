@@ -4,6 +4,7 @@ class PictsController < ApplicationController
   end
 
   def show
+    p flash[:success]
     @pict = Pict.find(params[:id])
   end
 
@@ -17,9 +18,15 @@ class PictsController < ApplicationController
       flash[:success] = 'Successfully added Pict'
       redirect_to @pict
     else
-      p @pict.errors.messages
       render :new
     end
+  end
+
+  def destroy
+    @pict =Pict.find(params[:id])
+    @pict.delete
+    flash[:success] = 'Pict Destroyed'
+    redirect_to picts_path
   end
 
   private
