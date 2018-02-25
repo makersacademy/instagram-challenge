@@ -9,6 +9,8 @@ require 'capybara'
 require 'capybara/rspec'
 require 'database_cleaner'
 require './spec/helpers/web_helpers'
+include Warden::Test::Helpers
+Warden.test_mode!
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
