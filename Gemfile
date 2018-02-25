@@ -18,6 +18,7 @@ gem 'haml'
 gem 'simple_form'
 gem "paperclip", "~> 5.2.1"
 gem 'factory_bot_rails'
+gem 'devise'
 
 group :development, :test do
 gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
