@@ -6,7 +6,6 @@ feature 'edit and destroy picts' do
   end
 
   scenario 'edit the hint and title of a pict' do
-    save_and_open_page
     page.all(:link, 'Edit Pict')[1].click
     fill_in :Hint, with: 'This is a better clue'
     fill_in :Title, with: 'I like it now?'
@@ -27,13 +26,12 @@ feature 'edit and destroy picts' do
   end
 
 
-  # scenario 'get told you cannot change a picts title to remove the ?' do
-  #   page.all(:link, 'Edit pict')[1].click
-  #   fill_in :Title, with: 'I like it now'
-  #   click_button 'Change Pict'
-  #   expect(page).to have_content 'Successfully changed pict'
-  #   expect(page).to have_content "Errors, see below"
-  #   expect(page).to have_content "Title needs a question mark at the end"
-  #   expect(page).not_to have_content 'Successfully changed Pict'
-  # end
+  scenario 'get told you cannot change a picts title to remove the ?' do
+    page.all(:link, 'Edit Pict')[1].click
+    fill_in :Title, with: 'I like it now'
+    click_button 'Change Pict'
+    expect(page).to have_content "Errors, see below"
+    expect(page).to have_content "Title needs a question mark at the end"
+    expect(page).not_to have_content 'Successfully changed Pict'
+  end
 end

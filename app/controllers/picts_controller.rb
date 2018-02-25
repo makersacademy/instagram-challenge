@@ -23,9 +23,12 @@ class PictsController < ApplicationController
 
   def update
     @pict = Pict.find(params[:id])
-    @pict.update(pict_params)
+    if @pict.update(pict_params)
     flash[:success] = 'Successfully changed Pict'
     redirect_to @pict
+    else
+    render :edit
+    end
   end
 
   def edit
