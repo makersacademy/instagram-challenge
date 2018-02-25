@@ -16,7 +16,8 @@ Instagram Challenge
 
 ## User Stories:
 
-```As a user
+```
+As a user
 So I can be part of instagram community
 I want to be able to register.
 
