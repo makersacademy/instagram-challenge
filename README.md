@@ -7,4 +7,4 @@ This is a partial weekend challenge (MVP) [registering and sign in/out with Devi
 This project taught me about the Request - response cycle diagram (get /pictures), MVC diagram
 I used command line rails to generate a view, a controller, a model, and add routes | rake db:migrate.
 
-One important rails command I used was rails generate scaffold NAMEOFMODEK. Scaffold in Rais being a full set of model, database migration for that model, controller to manipulate it, views to view and manipulate the data, and a test suite for each of the above.
+One important rails command I used was rails generate scaffold NAME_OF_MODEL. Scaffold in Rais being a full set of model, database migration for that model, controller to manipulate it, views to view and manipulate the data, and a test suite for each of the above.
