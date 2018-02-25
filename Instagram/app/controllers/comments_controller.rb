@@ -6,6 +6,15 @@ class CommentsController < ApplicationController
     redirect_to picture_path(@picture)
   end
 
+
+  def destroy
+    @picture = Picture.find(params[:picture_id])
+    @comment = @picture.comments.find(params[:id])
+    @comment.destroy
+    redirect_to article_path(@picture)
+  end
+
+
   private
     def comment_params
       params.require(:comment).permit(:commenter, :body)
