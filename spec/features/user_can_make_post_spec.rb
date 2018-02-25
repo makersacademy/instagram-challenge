@@ -1,22 +1,25 @@
-require 'spec_helper.rb'
 require 'rails_helper.rb'
 
 feature 'User posts' do
-  pending scenario 'user can create a post with image and caption' do
-    #sign up
-    visit '/'
-    click_link 'Login'
-    click_link 'Sign up'
-    fill_in 'Username', with: 'satoshi'
-    fill_in 'Email', with: 'sam@msn.com'
-    fill_in 'Password', with: 'capybara'
-    fill_in 'Password confirmation', with: 'capybara'
-    click_button 'Sign up'
-    #create post
+
+  before(:each) do
+    sign_up
+  end
+
+  scenario 'user can create a post with image and caption' do
     click_link 'New Post'
     fill_in 'Caption', with: 'my first post on vanity '
-    attach_file('Image', Rails.root + 'spec/fixtures/apple-touch-icon.png', make_visible: true)
+    attach_file('post_image', Rails.root + 'spec/fixtures/apple-touch-icon.png', make_visible: true)
     click_button 'Upload'
     expect(page).to have_content('my first post on vanity')
+  end
+
+  scenario 'user can edit post' do
+    visit '/'
+    create_post
+    click_link 'Edit'
+    fill_in 'Caption', with: 'changed my mind'
+    click_button 'Upload'
+    expect(page).to have_content('changed my mind')
   end
 end

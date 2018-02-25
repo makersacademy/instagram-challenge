@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Feed</h1>
-
-    <% @posts.each do |post| %>
+<% @posts.each do |post| %>
+  <div class="individual-post">
     <ul>
       <li>
-        <div class="post-username">
-          <strong>User:</strong>
-          <%= post.user.username %>
+        <div class="p-padding post-username">
+          <strong><%= post.user.username %></strong>
         </div>
       </li>
       <li>
@@ -16,14 +15,24 @@
         </div>
       </li>
       <li>
-        <div class="post-caption">
-          <strong>Caption:</strong>
+        <div class="p-padding post-caption">
+          <strong><%= post.user.username %>:</strong>
           <%= post.caption %>
         </div>
       </li>
+      <div class="p-padding post-comments">
+        <ul>
+          <% post.comments.each do |comment| %>
+            <li>
+              <strong>@<%=comment.user.username%></strong>:
+              <%=comment.body%></li>
+          <% end %>
+        </ul>
       <li><%= link_to 'View', post %></li>
-    </ul>
-    <% end %>
+    </div>
+  </ul>
+</div>
+<% end %>
 
 <br>
 

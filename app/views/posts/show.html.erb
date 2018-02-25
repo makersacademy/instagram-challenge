@@ -20,23 +20,25 @@
   </li>
 </ul>
 
-  <div class="post-comments">
-    <strong>Comments</strong>
-    <ul>
+<div class="post-comments">
+  <strong>Comments</strong>
+  <ul>
     <% @post.comments.each do |comment| %>
-      <li><strong>@<%=comment.user.username%></strong>: <%=comment.body%></li>
+      <li>
+        <strong>@<%=comment.user.username%></strong>:
+        <%=comment.body%></li>
     <% end %>
-    </ul>
-  </div>
+  </ul>
+</div>
 
 <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+<p>
+  <%= form.label :body %><br>
+  <%= form.text_area :body, id: 'comment_body' %>
+</p>
+<p>
+  <%= form.submit %>
+</p>
 <% end %>
 
 <% if current_user.id == @post.user_id %>

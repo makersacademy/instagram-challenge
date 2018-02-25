@@ -1,27 +1,28 @@
 <%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<% if post.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(post.errors.count, "error") %>
+      prohibited this post from being saved:</h2>
 
-      <ul>
+    <ul>
       <% post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :caption %>
-    <%= form.text_area :caption, id: :post_caption %>
+    </ul>
   </div>
+<% end %>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
-  </div>
+<div class="field">
+  <%= form.label :caption %>
+  <%= form.text_area :caption, id: :post_caption %>
+</div>
 
-  <div class="actions">
-    <%= form.submit 'Upload'%>
-  </div>
+<div class="field">
+  <%= form.label :image %>
+  <%= form.file_field :image, id: 'post_image' %>
+</div>
+
+<div class="actions">
+  <%= form.submit 'Upload'%>
+</div>
 <% end %>
