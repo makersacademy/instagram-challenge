@@ -1,4 +1,4 @@
-class PictController < ApplicationController
+class PictsController < ApplicationController
   def index
   end
 

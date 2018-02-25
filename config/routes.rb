@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :pict
+  resources :picts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'pict#index'
+  root 'picts#index'
 end
