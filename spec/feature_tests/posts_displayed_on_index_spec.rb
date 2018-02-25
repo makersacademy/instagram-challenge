@@ -1,7 +1,13 @@
 require 'rails_helper'
 RSpec.describe "Displaying posts", :type => :feature do
-  before(:each) do
-    @post = create(:post)
+
+  before do
+    user = User.create email: 'test@gmail.com', password: '12345678', password_confirmation: '12345678'
+    login_as user
+  end
+
+  before do
+    @post = create(:post, id: 3)
   end
 
   feature 'index displays list of posts' do
@@ -10,9 +16,10 @@ RSpec.describe "Displaying posts", :type => :feature do
       expect(page).to have_css("img[src*='cat.jpg']")
       expect(page).to have_content('My Fave Cat')
     end
+
     scenario 'displays multiple posts' do
-      post_two = create(:post, comment: "Post two", id: 2)
-      post_three = create(:post, comment: "Post three", id:3)
+      add_post('Post two', Rails.root.join('spec/images/cat.jpg'))
+      add_post('Post three', Rails.root.join('spec/images/cat.jpg'))
 
       visit '/'
       expect(page).to have_css("img[src*='cat.jpg']")
@@ -25,8 +32,14 @@ RSpec.describe "Displaying posts", :type => :feature do
   feature 'can view individual posts' do
     scenario 'click on post' do
       visit '/'
-      find(:xpath, "//a[contains(@href,'posts/1')]").click
+      find(:xpath, "//a[contains(@href,'posts/3')]").click
       expect(page.current_path).to eq(post_path(@post))
+    end
+  end
+  feature 'post diplays email of user who added post' do
+    scenario 'post added' do
+      visit('/')
+      expect(page).to have_content 'test@123gmail.com'
     end
   end
 end

@@ -1,8 +1,10 @@
 require 'rails_helper'
 RSpec.describe "Editing posts", :type => :feature do
 
-  before(:all) do
+  before do
     @post = create(:post)
+    user = User.create email: 'test@gmail.com', password: '12345678', password_confirmation: '12345678'
+    login_as user
   end
 
   feature 'Editing posts' do
@@ -34,6 +36,14 @@ RSpec.describe "Editing posts", :type => :feature do
       click_link 'Delete Post'
       expect(page).to have_content('Got dat deleted 4 u princess')
       expect(page).to_not have_content("My Fave Cat")
+    end
+    scenario 'deleting post with comments deletes all comments' do
+      add_comment("Cool Cat")
+      add_comment("Really? Not cool")
+      expect(Comment.count).to eq 2
+      show_post_to_update
+      click_link 'Delete Post'
+      expect(Comment.count).to eq 0
     end
   end
 end

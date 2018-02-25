@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  belongs_to :user
   has_many :comments, dependent: :destroy
 
   has_attached_file :avatar, styles: { medium: "20x20" }, default_url: "/images/:style/missing.png"

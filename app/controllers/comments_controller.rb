@@ -1,15 +1,22 @@
 class CommentsController < ApplicationController
   before_action :set_post, only: [:create, :destroy, :edit]
+  before_action :authenticate_user!, :except => [:show]
 
   def create
-    @comment = @post.comments.create(comment_params)
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.new(comment_params)
+    @comment.user_id = current_user.id
+    @post.save
     redirect_to post_path(@post)
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to post_path(@post)
+    respond_to do |format|
+      format.html { redirect_to post_path(@post), notice: 'Got dat deleted 4 u princess' }
+      format.json { head :no_content }
+    end
   end
 
   def update

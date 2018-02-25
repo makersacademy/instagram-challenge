@@ -1,9 +1,17 @@
-<h2> *** Fabulous Feed *** </h2>
+<div class="row">
     <% @posts.each do |post| %>
-      <div class="row text-center">
-          <%= link_to image_tag(post.avatar.url), post %>
-        </div>
-        <div class="caption">
-          <%= post.comment %>
-        <div>
-    <% end %>
+      <div class="caption">
+      <%= post.comment %> posted by <%= post.user.email %>
+      <div>
+    </div>
+    <div class='center-block'>
+      <%= link_to image_tag(post.avatar.url), post %>
+    </div>
+    <div class='comments'>
+    <% post.comments.each do |comment| %>
+        <%= comment.user.email %>: <%= comment.body %><br>
+        <% end %>
+      </div>
+    </div>
+<% end %>
+</div>

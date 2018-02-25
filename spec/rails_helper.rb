@@ -10,6 +10,7 @@ require 'capybara/rspec'
 require 'database_cleaner'
 require './spec/helpers/web_helpers'
 include Warden::Test::Helpers
+
 Warden.test_mode!
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -41,6 +42,7 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

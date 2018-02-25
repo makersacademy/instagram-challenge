@@ -2,19 +2,24 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
 
-    let(:post1) { create(:post, id: 2) }
+  before do
+    user = User.create email: 'tester@gmail.com', password: '12345678', password_confirmation: '12345678'
+    login_as user
+  end
+
+    let(:post1) { create(:post) }
 
   it "is valid with valid attributes" do
     expect(post1).to be_valid
   end
 
   it "is not valid without a avatar" do
-    post2 = build(:post, avatar: nil, id: 3)
+    post2 = build(:post, avatar: nil)
     expect(post2).to_not be_valid
   end
 
   it 'is not valid with a comment over 100 char' do
-    post2 = build(:post, comment: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', id: 4)
+    post2 = build(:post, comment: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     expect(post2).to_not be_valid
   end
 
