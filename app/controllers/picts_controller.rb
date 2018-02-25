@@ -12,9 +12,12 @@ class PictsController < ApplicationController
 
   def create
     @pict = Pict.create(pict_params)
-    flash[:success] = 'Successfully added Pict'
-    p @pict.errors.messages
-    redirect_to @pict
+    if @pict.save
+      flash[:success] = 'Successfully added Pict'
+      redirect_to @pict
+    else
+      render :new
+    end
   end
 
   private
@@ -22,4 +25,5 @@ class PictsController < ApplicationController
    def pict_params
     params.require(:pict).permit(:image, :title, :answer, :hints)
   end
+
 end
