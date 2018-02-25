@@ -26,6 +26,8 @@ gem 'simple_form'
 gem 'paperclip', '~> 5.2.1'
 # For users
 gem 'devise'
+# For comments
+gem 'kaminari'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
