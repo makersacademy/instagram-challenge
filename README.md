@@ -38,7 +38,17 @@ I have had a focus on learning rails basics, so I am aware improvements are need
 
 ## What it looks like
 
-![alt text](https://i.imgur.com/O6C1tnr.jpg)
+![alt text](https://i.imgur.com/6G91oUU.jpg)
+
+## Functionality implemented
+* User sign in and out
+* User can post pictures
+* User can add caption
+* Users can comment on posted pictures
+* Pictures can be edited
+* Comments can be edited
+* Users can only view feeds, users have to sign in for extra functionality
+* User emails displayed for comments / posts 
 
 ## User Stories
 
