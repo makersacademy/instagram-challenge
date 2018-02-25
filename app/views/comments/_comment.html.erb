@@ -6,6 +6,8 @@
     <%= comment.content %>
   </div>
   <% if comment.user == current_user %>
-    <%= link_to 'Delete', post_comment_path(post, comment), method: :delete, remote: true, id: "delete-#{comment.id}", data: { confirm: "Are you sure?" } %>
+    <%= link_to post_comment_path(post, comment), method: :delete, remote: true, id: "delete-#{comment.id}", data: { confirm: "Are you sure?" } do %>
+      <%= fa_icon "times" %>
+    <% end %>
   <% end %>
 </div>
