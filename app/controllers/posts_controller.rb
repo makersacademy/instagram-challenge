@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to @post, notice: 'Got dat deleted 4 u princess' }
+      format.html { redirect_to posts_path, notice: 'Got dat deleted 4 u princess' }
       format.json { head :no_content }
     end
   end

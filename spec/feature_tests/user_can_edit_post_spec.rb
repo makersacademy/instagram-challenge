@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe "Creating posts", :type => :feature do
+RSpec.describe "Editing posts", :type => :feature do
 
   before(:all) do
     @post = create(:post)
@@ -7,9 +7,7 @@ RSpec.describe "Creating posts", :type => :feature do
 
   feature 'Editing posts' do
     scenario 'can edit a post' do
-      visit '/'
-      find(:xpath, "//a[contains(@href,'posts/1')]").click
-      click_link 'Update post'
+      show_post_to_update
 
       fill_in 'post[comment]', with: 'Not my fave cat'
       click_button 'Update Post'
@@ -19,9 +17,7 @@ RSpec.describe "Creating posts", :type => :feature do
     end
 
     scenario 'can not add a file that is not an image' do
-      visit '/'
-      find(:xpath, "//a[contains(@href,'posts/1')]").click
-      click_link 'Update post'
+      show_post_to_update
 
       attach_file 'post[avatar]', Rails.root.join('spec/images/cat.rb')
       click_button 'Update Post'
@@ -33,9 +29,7 @@ RSpec.describe "Creating posts", :type => :feature do
     end
 
     scenario 'user can delete posts' do
-      visit '/'
-      find(:xpath, "//a[contains(@href,'posts/1')]").click
-      click_link 'Update post'
+      show_post_to_update
 
       click_link 'Delete Post'
       expect(page).to have_content('Got dat deleted 4 u princess')
