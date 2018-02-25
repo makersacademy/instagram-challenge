@@ -1,5 +1,6 @@
 class PictsController < ApplicationController
   def index
+    @picts = Pict.all
   end
 
   def show
@@ -16,7 +17,7 @@ class PictsController < ApplicationController
       flash[:success] = 'Successfully added Pict'
       redirect_to @pict
     else
-      p @pict.errors.messages 
+      p @pict.errors.messages
       render :new
     end
   end

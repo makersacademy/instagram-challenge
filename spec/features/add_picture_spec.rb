@@ -20,9 +20,19 @@ feature 'add a pict' do
   end
 
   scenario 'add an image, but don\'t put a question mark on the title' do
-      add_pict('What could this be', 'We do it all the time', 'TDD' )
+    add_pict('What could this be', 'We do it all the time', 'TDD' )
     expect(page).to have_content "Errors, see below"
     expect(page).to have_content "Title needs a question mark at the end"
     expect(page).not_to have_content 'Successfully added Pict'
+  end
+
+  scenario 'add multiple picts, and see on main feed' do
+    add_pict('What could this be?', 'We do it all the time', 'TDD' )
+    add_pict('What will this be?', 'Its very important...', 'TDD' )
+    click_link 'To the Pict feed!'
+    expect(page).to have_content 'What could this be?'
+    expect(page).to have_content 'What will this be?'
+    expect(page).not_to have_content 'We do it all the time'
+    expect(page).to have_css('img[src*="code_clue.jpg"]')
   end
 end
