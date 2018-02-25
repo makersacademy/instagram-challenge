@@ -16,4 +16,6 @@ RSpec.describe Comment, type: :model do
     expect(comment2).to_not be_valid
   end
 
+   it {is_expected.to belong_to :user}
+
 end

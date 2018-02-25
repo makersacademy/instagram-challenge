@@ -1,26 +1,44 @@
 Instagram Challenge
 ===================
 
-## Instructions
+[![Build Status](https://travis-ci.org/Leigan0/instagram-challenge.svg?branch=master)](https://travis-ci.org/Leigan0/instagram-challenge)
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This is my first solo app created using the Rails framework, completed over a weekend.
 
-##
-* Controller tests - wrote these - not added for puts - is relevant as per feature tests?
-* Model tests
-* Feature tests
+I have attempted to recreate the basic functionality of instagram using a rails framework. I have aimed to completed the challenge following TDD process.
 
-## Task
+In order to build my understanding of rails I have created this project without using the scaffold command to help my learning of the framework.
 
-Build Instagram: Simple huh!
+I have attempted to write controller and model tests, but given more time I would work on this. I have mainly implemented the app using feature testing.
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Given more time I would increase functionality. I would improve my controller and model tests, and gain further insight into these areas. Whilst I have feature tests the testing needs to be improved for greater test coverage of the features of the app.
 
-Bonus if you can add filters!
+I have had a focus on learning rails basics, so I am aware improvements are needed in the convention, and there are areas of the tests and code base which could by improved with helper methods.
+
+## Getting started
+
+* Git clone https://github.com/Leigan0/instagram-challenge.git
+* cd to repo
+* bundle
+* To start server - bin/rails s
+* Navigate to http://localhost:3000/
+
+
+## Technologies used
+* Rails
+* Ruby
+* HTML
+* CSS
+* Devise
+* Bootstrap Framework
+* Paperclip
+* Rspec
+* Capybara
+* Factory bot
+
+## What it looks like
+
+![alt text](https://i.imgur.com/O6C1tnr.jpg)
 
 ## User Stories
 
@@ -33,18 +51,3 @@ Bonus if you can add filters!
 * As a user, so I can save time, I want to be able to add a like to a picture
 * As a user, so I can add a category to my picture, I want to be able to add a hashtag
 * As a user, so I can search for similar pictures, I want to be able to filter pictures by hashtag
-
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!

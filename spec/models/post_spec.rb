@@ -23,6 +23,10 @@ RSpec.describe Post, type: :model do
     expect(post2).to_not be_valid
   end
 
+  it{is_expected.to belong_to :user}
+  it{is_expected.to have_many :comments}
+  it{is_expected.to respond_to :user_id}
+
   # it 'is not valid with a non image file upload' do
   #    post2 =build(:post, avatar: 'spec/images/cat.rb')
   #    expect(post2).to_not be_valid
