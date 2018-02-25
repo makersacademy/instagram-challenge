@@ -1,53 +1,65 @@
 
 <h2>Post</h2>
-  <p>
-    <% if @post.image? %>
-      <div>
-        <%= image_tag @post.image.url %>
-      </div>
-    <% end %>
-  </p>
-  <p>
-    <%= @post.description %>
-  </p>
-
-  <!-- Show controls to edit/delete if user owns post -->
-<% if get_user_by_id(@post.user_id) == current_user %>
-    <p>
-      <%= link_to "Remove", post_path(@post),
-        method: :delete,
-        id: "delete-post-#{@post.id}",
-        data: { confirm: "Are you sure?" } %> |
-      <%= link_to "Edit", edit_post_path(@post), id: "edit-post-#{@post.id}" %>
-    </p>
+<p>
+  <% if @post.image? %>
+    <div>
+      <%= image_tag @post.image.url %>
+    </div>
   <% end %>
+</p>
+<p>
+  <%= @post.description %>
+</p>
 
-  <!-- Show comments if there are any -->
-  <% if @post.comments.length > 0 %>
-    <ul id = "comments-list">
-    <% @post.comments.each do |comment| %>
-      <li>
+<!-- Show controls to edit/delete if user owns post -->
+<% if get_user_by_id(@post.user_id) == current_user %>
+  <p>
+    <%= link_to "Remove", post_path(@post),
+      method: :delete,
+      id: "delete-post-#{@post.id}",
+      data: { confirm: "Are you sure?" } %> |
+    <%= link_to "Edit", edit_post_path(@post), id: "edit-post-#{@post.id}" %>
+  </p>
+<% end %>
+
+<!-- Show number of likes and link to like post -->
+<p>
+  <%= person_count(@post.likes.count) %> this 
+ <% if current_user %>
+    <% if current_user_has_liked_post(@post) %>
+      <%= link_to "Unlike", post_like_path(@post.id, get_like(@post)), method: :delete, id: "delete-like-#{get_like(@post).id}" %>
+    <% else %>
+      <%= link_to "Like", post_likes_path(@post.id), method: :post, id: "like-post-#{@post.id}" %>
+    <% end %>
+  <% end %>
+</p>
+
+<!-- Show comments if there are any -->
+<% if @post.comments.length > 0 %>
+  <ul id = "comments-list">
+  <% @post.comments.each do |comment| %>
+    <li>
       <strong><%= get_username_by_id(comment.user_id) %></strong> <%= comment.body %>
       <% if get_user_by_id(comment.user_id) == current_user %>
-          <%= link_to "Remove comment", post_comment_path(@post.id, comment.id),
-            method: :delete,
-            id: "delete-comment-#{comment.id}",
-            data: { confirm: "Are you sure?" } %> |
-          <%= link_to "Edit", edit_post_comment_path(@post.id, comment.id), id: "edit-comment-#{comment.id}" %>
-        <% end %>
-      </li>
-    <% end %>
-    </ul>
+        <%= link_to "Remove comment", post_comment_path(@post.id, comment.id),
+          method: :delete,
+          id: "delete-comment-#{comment.id}",
+          data: { confirm: "Are you sure?" } %> |
+        <%= link_to "Edit", edit_post_comment_path(@post.id, comment.id), id: "edit-comment-#{comment.id}" %>
+      <% end %>
+    </li>
   <% end %>
+  </ul>
+<% end %>
 
-  <!-- Show comment form if viewer is logged in -->
-  <% if current_user %>
-  <p>
-    <%= form_with(model: [@post, @post.comments.build], local: true) do |form| %>
-    <%= form.text_field :body, id: "comment-body-on-post-#{@post.id}" %>
-    <%= form.submit "Comment", id: "submit-comment-on-post-#{@post.id}" %>
-    <% end %>
-  </p>
+<!-- Show comment form if viewer is logged in -->
+<% if current_user %>
+<p>
+  <%= form_with(model: [@post, @post.comments.build], local: true) do |form| %>
+  <%= form.text_field :body, id: "comment-body-on-post-#{@post.id}" %>
+  <%= form.submit "Comment", id: "submit-comment-on-post-#{@post.id}" %>
   <% end %>
+</p>
+<% end %>
 
 <%= link_to "Back", posts_path %>
