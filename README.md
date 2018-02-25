@@ -38,7 +38,8 @@ I have had a focus on learning rails basics, so I am aware improvements are need
 
 ## What it looks like
 
-![alt text](https://i.imgur.com/6G91oUU.jpg), ![alt text](https://i.imgur.com/bN1EzTu.png)
+![alt text](https://i.imgur.com/6G91oUU.jpg)
+![alt text](https://i.imgur.com/V1SNV8Z.png)
 
 ## Functionality implemented
 * User sign in and out
