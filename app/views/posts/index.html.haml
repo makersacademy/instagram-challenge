@@ -3,8 +3,20 @@
 = link_to "New Post", new_post_path
 
 
--@posts.each do |post|
-  %tr
-    %p=image_tag post.image.url(:medium)
-    =post.description
-    = link_to "View Post", post_path(post)
+-# -@posts.each do |post|
+-#   %tr
+-#     %p=image_tag post.image.url(:medium)
+-#     =post.description
+-#     = link_to "View Post", post_path(post)
+
+
+.posts-wrapper.row
+  -@posts.each do |post|
+    .post
+      .post-head
+        .name
+          
+      .image.center-block
+        =link_to (image_tag post.image.url(:medium), class: 'img-responsive'), post_path(post)
+      %p.caption
+        =post.description
