@@ -21,8 +21,10 @@ class CommentsController < ApplicationController
 
     if @comment.user_id == current_user.id
       @comment.destroy
-      flash[:success] = 'Comment deleted'
-      redirect_to root_path
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     else
       flash[:alert] = 'That comment doesn\'t belong to you!'
       redirect_to root_path
