@@ -9,8 +9,30 @@
       </div>
     <% end %>
     <p><%= post.description %></p>
-    <p>Posted by <%= User.find(post.user_id).email %> at <%= post.created_at %></p>
-    <p><%= link_to 'View post', post_path(post) %></p>
+    <p>Posted by <%= User.find(post.user_id).email %> at <%= post.created_at %> <%= link_to 'View post', post_path(post) %></p>
+
+    <!-- Show up to 3 comments if there are any -->
+    <% if post.comments.length > 0 %>
+      <ul>
+      <% post.comments.first(3).each do |comment| %>
+        <li><%= comment.body %></li>
+      <% end %>
+      <% if post.comments.length > 3 %>
+      <%= link_to 'View all comments', post_path(post) %>
+      <% end %>  
+      </ul>
+    <% end %>
+
+    <!-- Show comment form if viewer is logged in -->
+    <% if current_user %>
+    <p>
+      <%= form_with(model: [post, post.comments.build], local: true) do |form| %>
+      <%= form.text_field :body %>
+      <%= form.submit 'Comment' %>
+      <% end %>
+    </p>
+    <% end %>
+
     <hr>
   </li>
 <% end %>
