@@ -15,5 +15,6 @@ feature 'Creating a post' do
     fill_in 'Description', with: 'An Image'
     click_button 'Create Post'
     expect(page).not_to have_content('An Image')
+    expect(page).to have_content('You must select a picture to post')
   end
 end
