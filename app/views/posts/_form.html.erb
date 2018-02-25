@@ -1,0 +1,31 @@
+<%= form_with model: @post, html: { multipart: true }, local: true do |form| %>
+
+<% if @post.errors.any? %>
+   <div id="error_explanation">
+     <h2>
+       <%= pluralize(@post.errors.count, "error") %> prohibited
+       this post from being saved:
+     </h2>
+     <ul>
+       <% @post.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+     </ul>
+   </div>
+ <% end %>
+
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_field :description %>
+    <div class="field">
+    <%= form.label :image %><br>
+    <%= form.file_field :image %>
+  </div>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+  </p>
+
+  <p>
+    <%= form.submit :Share %>
+  </p>
+<% end %>
