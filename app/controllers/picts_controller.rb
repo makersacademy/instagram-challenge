@@ -13,6 +13,7 @@ class PictsController < ApplicationController
   def create
     @pict = Pict.create(pict_params)
     flash[:success] = 'Successfully added Pict'
+    p @pict.errors.messages
     redirect_to @pict
   end
 
