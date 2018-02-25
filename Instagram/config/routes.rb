@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pets
   devise_for :users
   get 'homepage/index'
   resources :pictures do
