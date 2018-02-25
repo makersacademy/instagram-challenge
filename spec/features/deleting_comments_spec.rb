@@ -6,6 +6,7 @@ feature 'Deleting comments' do
     user2 = create(:user, id: 2, email: 'example@email.com', username: 'sampleuser')
     post = create :post
     comment = create(:comment, user_id: user2.id, post_id: post.id)
+    comment2 = create(:comment, id: 2, post_id: post.id, content: 'second comment')
     sign_in user2
   end
 
@@ -17,5 +18,12 @@ feature 'Deleting comments' do
     click_link 'delete-1'
 
     expect(page).to_not have_content('MyText')
+  end
+
+  scenario 'user cannot delete a comment not belonging to them' do
+    visit '/'
+
+    expect(page).to have_content('second comment')
+    expect(page).to_not have_css('#delete-2')
   end
 end
