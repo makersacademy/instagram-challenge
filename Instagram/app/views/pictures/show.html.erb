@@ -1,41 +1,20 @@
 <body style="background-color:pink;">
-<p>
-  <strong>Title:</strong>
-  <%= @picture.name_of_picture %>
-</p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @picture.description_of_picture %>
-</p>
-
-<h2>Comments</h2>
-<% @picture.comments.each do |comment| %>
   <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
+    <strong>Name of picture:</strong>
+    <%= @picture.name_of_picture %>
   </p>
 
   <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
+    <strong>Description of picture:</strong>
+    <%= @picture.description_of_picture %>
   </p>
-<% end %>
 
-<h2>Add a comment:</h2>
-<%= form_with(model: [ @picture, @picture.comments.build ], local: true) do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+  <h2>Comments</h2>
+  <%= render @picture.comments %>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form' %>
+
+  <%= link_to 'Edit', edit_picture_path(@picture) %> |
+  <%= link_to 'Back', pictures_path %>
