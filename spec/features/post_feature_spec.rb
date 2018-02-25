@@ -1,4 +1,13 @@
 feature 'Creating a post' do
+  before do
+    visit('/')
+    click_link 'Register'
+    fill_in 'Email', with: 'lewis@gmail.com'
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+    click_button 'Sign up'
+  end
+
   scenario 'User can create a post' do
     visit ('/')
     click_link 'New Post'
