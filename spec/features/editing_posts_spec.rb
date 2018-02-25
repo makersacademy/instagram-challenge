@@ -17,7 +17,7 @@ feature 'Editing posts' do
     expect(page).to have_content('Edit Post')
 
     click_link 'Edit Post'
-    fill_in 'Description', with: 'This is probably a mistake'
+    fill_in 'post_description', with: 'This is probably a mistake'
     click_button 'Update Post'
 
     expect(page).to have_content('Post updated')
@@ -40,7 +40,7 @@ feature 'Editing posts' do
   scenario 'user tries to upload something that is not an image' do
     find(:xpath, "//a[contains(@href,'posts/1')]", match: :prefer_exact).click
     click_link 'Edit Post'
-    attach_file('Image', 'spec/images/wrong.zip')
+    attach_file('post_image', 'spec/images/wrong.zip')
     click_button 'Update Post'
 
     expect(page).to have_content('Something is wrong with your form!')
