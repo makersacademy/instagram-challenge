@@ -28,4 +28,22 @@ feature 'Creating users' do
     click_button 'Sign up'
     expect(page).to have_content "Password can't be blank"
   end
+  scenario 'password must be more than 6 characters' do
+    visit('/')
+    click_link 'Register'
+    fill_in 'Email', with: 'lewis@gmail.confirmation'
+    fill_in 'Password', with: 'test1'
+    fill_in 'Password confirmation', with: 'test1'
+    click_button 'Sign up'
+    expect(page).to have_content "Password is too short"
+  end
+  scenario 'password confirmation must match' do
+    visit('/')
+    click_link 'Register'
+    fill_in 'Email', with: 'lewis@gmail.confirmation'
+    fill_in 'Password', with: 'testing1'
+    fill_in 'Password confirmation', with: 'testing2'
+    click_button 'Sign up'
+    expect(page).to have_content "Password confirmation doesn't match"
+  end
 end
