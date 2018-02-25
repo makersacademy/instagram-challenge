@@ -1,24 +1,9 @@
-# README
+#Instagram Challenge
+___
+This project is a clone of Instagram built using Ruby on Rails.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+It uses the gems simple_form and paperclip to manage posting and uploading images.
 
-Things you may want to cover:
+Capybara, rspec and factory bot are used for testing purposes.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+All CSS stolen from Instagram.
