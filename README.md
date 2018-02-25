@@ -35,6 +35,21 @@ So that I can show off my sick drawing skills
 I want to be able to upload a picture with some helpful hints
 ```
 - [x] Done
+
+```
+As a silly describer
+So that I can fix typos/mistakes in my questions
+I want to be able to change the hint and title
+```
+- [ ] Done
+
+```
+As a keen describer
+So I can feel like the site cares and remembers me
+I would like to store my login
+```
+- [ ] Done
+
 ```
 As a keen guesser
 So that I can show of my awesome guessing skills
