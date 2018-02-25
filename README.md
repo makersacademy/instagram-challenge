@@ -5,13 +5,13 @@ Instagram Challenge
 
 This is my first solo app created using the Rails framework, completed over a weekend.
 
-I have attempted to recreate the basic functionality of instagram using a rails framework. I have aimed to completed the challenge following TDD process.
+I have attempted to recreate the basic functionality of instagram using a rails framework. I have aimed to complete the challenge following TDD process.
 
 In order to build my understanding of rails I have created this project without using the scaffold command to help my learning of the framework.
 
 I have attempted to write controller and model tests, but given more time I would work on this. I have mainly implemented the app using feature testing.
 
-Given more time I would increase functionality. I would improve my controller and model tests, and gain further insight into these areas. Whilst I have feature tests the testing needs to be improved for greater test coverage of the features of the app.
+Given more time I would increase functionality. I would improve my controller and model tests, and gain further insight into these areas. Whilst I have feature tests the testing needs to be improved for greater test coverage of the features of the app. The feature test I have could also be refactored to remove duplication. 
 
 I have had a focus on learning rails basics, so I am aware improvements are needed in the convention, and there are areas of the tests and code base which could by improved with helper methods.
 
@@ -48,7 +48,7 @@ I have had a focus on learning rails basics, so I am aware improvements are need
 * Pictures can be edited
 * Comments can be edited
 * Users can only view feeds, users have to sign in for extra functionality
-* User emails displayed for comments / posts 
+* User emails displayed for comments / posts
 
 ## User Stories
 
