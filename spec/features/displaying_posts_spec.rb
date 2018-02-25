@@ -7,6 +7,6 @@ feature 'Index displays a list of posts' do
 
     expect(page).to have_content('Hello world!')
     expect(page).to have_content('another post')
-    expect(page).to have_css("img[src*='8.jpeg']")
+    expect(page).to have_css("img[src*='1.jpeg']")
   end
 end
