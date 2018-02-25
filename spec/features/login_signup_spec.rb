@@ -37,7 +37,7 @@ feature 'login' do
       expect(page).to have_content 'The Marvelous Picts Feed!'
    end
 
-   scenario 'I can\'t login with the same username' do
+   scenario 'I can\'t login with the same username or email' do
       click_link 'Logout'
       click_link 'Sign up'
       fill_in "user[user_name]", with: 'RomanSlayer'
