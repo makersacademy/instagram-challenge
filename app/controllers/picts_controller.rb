@@ -16,6 +16,7 @@ class PictsController < ApplicationController
       flash[:success] = 'Successfully added Pict'
       redirect_to @pict
     else
+      p @pict.errors.messages 
       render :new
     end
   end

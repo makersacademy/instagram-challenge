@@ -20,7 +20,9 @@ feature 'add a pict' do
 
   scenario 'try add a pict with no title or image... and fail' do
     click_button 'Add Pict'
-    expect(page).to have_content 'Error, you need to add an image'
+    expect(page).to have_content "Errors, see below"
+    expect(page).to have_content "You need to add an image"
+    expect(page).to have_content 'You need a title! (Don\'t forget a question mark)'
     expect(page).not_to have_content 'Successfully added Pict'
   end
 end
