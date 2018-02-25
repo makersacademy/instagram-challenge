@@ -10,3 +10,5 @@ I used command line rails to generate a view, a controller, a model, and add rou
 One important rails command I used was rails generate scaffold NAME_OF_MODEL. Scaffold in Rais being a full set of model, database migration for that model, controller to manipulate it, views to view and manipulate the data, and a test suite for each of the above.
 
 The gem carrierwave and Mini_Magick(to resize images) has been implemented in order to upload images from file. It can be accessed from the server URL http://localhost:3000/photos. Adjustments need to be made.
+
+For the photos to be uploaded, you must have ImageMagick installed on your machine. For Mac users this achieved by using: brew install imagemagick
