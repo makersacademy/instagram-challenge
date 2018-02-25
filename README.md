@@ -14,6 +14,18 @@ Instagram Challenge
 9. User can add a post with image, comment, like.
 10. When you want to end the server, return to your command line where the server is running and do ```ctrl + c```
 
+### Log in page
+![alt tag](https://github.com/AlexandraGF/instagram-challenge/blob/master/public/Login.png)
+
+### Listing the posts
+![alt tag](https://github.com/AlexandraGF/instagram-challenge/blob/master/public/list_posts.png)
+
+### Show a post
+![alt tag](https://github.com/AlexandraGF/instagram-challenge/blob/master/public/show_post.png)
+
+### Show another post
+![alt tag](https://github.com/AlexandraGF/instagram-challenge/blob/master/public/show_post2.png)
+
 ## User Stories:
 
 ```
