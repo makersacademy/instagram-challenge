@@ -1,3 +1,4 @@
+require 'rails_helper'
 RSpec.describe "Creating posts", :type => :feature do
   feature 'Add post' do
     scenario "User adds a post and post is displayed" do

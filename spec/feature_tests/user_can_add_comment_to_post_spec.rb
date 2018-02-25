@@ -1,3 +1,4 @@
+require 'rails_helper'
 RSpec.describe "Creating comments", :type => :feature do
   before() do
     @post = create(:post)

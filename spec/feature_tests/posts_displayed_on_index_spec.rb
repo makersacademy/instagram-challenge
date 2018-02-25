@@ -1,3 +1,4 @@
+require 'rails_helper'
 RSpec.describe "Displaying posts", :type => :feature do
   before(:each) do
     @post = create(:post)

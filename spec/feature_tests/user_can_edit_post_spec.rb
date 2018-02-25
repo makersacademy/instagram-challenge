@@ -1,3 +1,4 @@
+require 'rails_helper'
 RSpec.describe "Creating posts", :type => :feature do
 
   before(:all) do
