@@ -49,7 +49,12 @@ So I can feel like the site cares and remembers me
 I would like to store my login
 ```
 - [x] Done
-
+```
+As a keen owner
+So that I can make sure people sign up to our site to use
+I would like to prevent people from seeing anything but the pict feed if not logged in
+```
+- [x] Done
 ```
 As a keen guesser
 So that I can show of my awesome guessing skills
