@@ -19,17 +19,18 @@ feature 'login' do
       expect(page).to have_content 'Logout'
    end
 
-   scenario 'lets me logout' do
+   scenario 'lets me logout and changes nav bar' do
      click_link 'Logout'
      expect(page).to have_content 'You\'ve logged out, see you again for more Pictogram soon!'
      expect(page).not_to have_content 'Logout'
-
+     expect(page).to have_content 'Sign up'
+     expect(page).to have_content 'Login'
    end
 
    scenario 'I can login to user account' do
       click_link 'Logout'
-      click_link 'Log in'
-      expect(page).to have_content 'Welcome back to the best website ever! Pictogram to your hearts content!'
+      # click_link 'Log in'
+      # expect(page).to have_content 'Welcome back to the best website ever! Pictogram to your hearts content!'
       expect(page).to have_content 'The Marvelous Picts Feed!'
    end
 
