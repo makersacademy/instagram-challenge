@@ -7,21 +7,13 @@ RSpec.describe "User can sign in", :type => :feature do
 
   feature 'user can sign in' do
     scenario 'user gives correct details' do
-      visit('/')
-      click_link 'Login'
-      fill_in 'user[email]', with: '123test@gmail.com'
-      fill_in 'user[password]', with:'123456'
-      click_button 'Log in'
+      user_sign_in('123test@gmail.com', '123456')
       expect(page).to have_content 'Signed in successfully.'
     end
   end
   feature 'user cannot sign in' do
     scenario 'user gives incorrect details' do
-      visit('/')
-      click_link 'Login'
-      fill_in 'user[email]', with: '123test@gmail.com'
-      fill_in 'user[password]', with:'123456123'
-      click_button 'Log in'
+      user_sign_in('123test@gmail.com','123')
       expect(page.current_path).to eq '/users/sign_in'
     end
   end

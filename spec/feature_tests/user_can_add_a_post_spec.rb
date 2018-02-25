@@ -1,6 +1,11 @@
 require 'rails_helper'
 RSpec.describe "Creating posts", :type => :feature do
   feature 'Add post' do
+    scenario 'User can not add a post if not signed in' do
+      add_post('My fave cat', Rails.root.join('spec/images/cat.jpg'))
+      expect(page).to have_content "Please sign in"
+    end
+    
     scenario "User adds a post and post is displayed" do
       add_post('My fave cat', Rails.root.join('spec/images/cat.jpg'))
       expect(page).to have_css("img[src*='cat.jpg']")

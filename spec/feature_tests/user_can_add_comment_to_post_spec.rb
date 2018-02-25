@@ -4,6 +4,10 @@ RSpec.describe "Creating comments", :type => :feature do
     @post = create(:post)
   end
   feature 'Adding a comment' do
+    scenario ' user cannot add comment if not signed in' do
+      add_comment("Cool Cat")
+      expect(page).to have_content "Please sign in"
+    end
     scenario 'can add comment to a post' do
       add_comment("Cool Cat")
       expect(page).to have_content "Cool Cat"
