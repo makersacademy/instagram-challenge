@@ -14,7 +14,7 @@ feature 'Editing posts' do
   scenario 'can remove a post' do
     visit ('/posts/1')
     click_link 'Edit Post'
-    click_link 'Delete Post'
+    click_button 'Destroy'
     expect(page).to_not have_content('Testing')
   end
 end
