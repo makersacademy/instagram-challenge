@@ -29,8 +29,11 @@ feature 'login' do
 
    scenario 'I can login to user account' do
       click_link 'Logout'
-      # click_link 'Log in'
-      # expect(page).to have_content 'Welcome back to the best website ever! Pictogram to your hearts content!'
+      click_link 'Login'
+      fill_in 'user[email]', with: 'roman_slayer@gmail.com'
+      fill_in "user[password]", with: 'killtheromans'
+      click_button 'Log in'
+      expect(page).to have_content 'Welcome back to the best website ever! Pictogram to your hearts content!'
       expect(page).to have_content 'The Marvelous Picts Feed!'
    end
 
