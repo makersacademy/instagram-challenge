@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 feature 'add a pict' do
+   background do
+     sign_up('roman_slayer@gmail.com', 'RomanSlayer')
+   end
+   
   scenario 'add a cool pict' do
     add_pict('What could this be?', 'We do it all the time', 'TDD' )
     expect(page).to have_content 'We do it all the time'

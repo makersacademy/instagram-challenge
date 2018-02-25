@@ -1,5 +1,6 @@
 feature 'edit and destroy picts' do
   background do
+    sign_up('roman_slayer@gmail.com', 'RomanSlayer')
     add_pict('I love this pict?', 'I will keep this', 'Great' )
     add_pict('I hate this pict?', 'This is a rubbish clue', 'Stupid' )
     click_link 'To the Pict feed!'

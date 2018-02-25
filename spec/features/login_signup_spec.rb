@@ -2,13 +2,7 @@ require 'rails_helper'
 
 feature 'login' do
     background do
-      visit '/'
-      click_link 'Sign up'
-      fill_in "user[user_name]", with: 'RomanSlayer'
-      fill_in 'Email', with: 'roman_slayer@gmail.com'
-      fill_in "user[password]", with: 'killtheromans'
-      fill_in "user[password_confirmation]", with: 'killtheromans'
-      click_button 'Sign up'
+      sign_up('roman_slayer@gmail.com', 'RomanSlayer')
     end
 
    scenario 'Lets me signup and changes nav bar accordingly' do
@@ -40,15 +34,18 @@ feature 'login' do
    scenario 'I can\'t login with the same username or email' do
       click_link 'Logout'
       click_link 'Sign up'
-      fill_in "user[user_name]", with: 'RomanSlayer'
-      fill_in 'Email', with: 'roman_slayer@gmail.com'
-      fill_in "user[password]", with: 'killtheromans'
-      fill_in "user[password_confirmation]", with: 'killtheromans'
-      click_button 'Sign up'
+      sign_up('roman_slayer@gmail.com', 'RomanSlayer')
       expect(page).to have_content 'Account with email already exists, why not try logging in instead?'
       expect(page).to have_content 'Username already taken'
       expect(page).not_to have_content 'Successfully signed up to the best website ever! Good choice :)'
       expect(page).not_to have_content 'The Marvelous Picts Feed!'
+   end
+
+   scenario 'You cannot go onto new post if you\' not logged in' do
+      click_link 'Logout'
+      click_link 'New Pict'
+      expect(page).to have_content 'Cannot do that without signing up...or logging in...'
+      expect(page).not_to have_content ' Add a new Pict!'
    end
 
 end
