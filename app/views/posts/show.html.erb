@@ -12,7 +12,7 @@
   </p>
 
   <!-- Show controls to edit/delete if user owns post -->
-  <% if get_owner(@post.user_id) == current_user %>
+<% if get_user_by_id(@post.user_id) == current_user %>
     <p>
       <%= link_to "Remove", post_path(@post),
         method: :delete,
@@ -27,8 +27,8 @@
     <ul id = "comments-list">
     <% @post.comments.each do |comment| %>
       <li>
-        <strong><%= get_owner(comment.user_id).email.split("@")[0] %></strong> <%= comment.body %>
-        <% if get_owner(comment.user_id) == current_user %>
+      <strong><%= get_username_by_id(comment.user_id) %></strong> <%= comment.body %>
+      <% if get_user_by_id(comment.user_id) == current_user %>
           <%= link_to "Remove comment", post_comment_path(@post.id, comment.id),
             method: :delete,
             id: "delete-comment-#{comment.id}",

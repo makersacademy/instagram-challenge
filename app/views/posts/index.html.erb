@@ -9,13 +9,14 @@
       </div>
     <% end %>
     <p><%= post.description %></p>
-    <p>Posted by <strong><%= User.find(post.user_id).email.split("@")[0] %></strong> at <%= post.created_at %> <%= link_to "View post", post_path(post), id: "view-post-#{post.id}" %></p>
+    <p>Posted by <strong><%= User.find(post.user_id).email.split("@")[0] %></strong> at <%= post.created_at %> </p>
+    <p><%= link_to "View post", post_path(post), id: "view-post-#{post.id}" %></p>
 
     <!-- Show up to 3 comments if there are any -->
     <% if post.comments.length > 0 %>
       <ul>
       <% post.comments.last(3).each do |comment| %>
-        <li><strong><%= get_owner(comment.user_id).email.split("@")[0] %></strong> <%= comment.body %></li>
+        <li><strong><%= get_username_by_id(comment.user_id) %></strong> <%= comment.body %></li>
       <% end %>
       <% if post.comments.length > 3 %>
         <li><%= link_to "View all comments", post_path(post) %></li>
