@@ -41,7 +41,7 @@ As a silly describer
 So that I can fix typos/mistakes in my questions
 I want to be able to change the hint and title
 ```
-- [ ] Done
+- [x] Done
 
 ```
 As a keen describer
