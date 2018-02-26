@@ -8,7 +8,6 @@ RSpec.describe PostsController, type: :controller do
   end
 
   let(:post1) { create(:post) }
-  let(:post2) { create(:invalid_post) }
 
   describe "GET#index" do
     it 'populates an array of posts' do
@@ -40,16 +39,15 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "POST create" do
-    # context 'valid post created' do
-    #   it 'creates a new post' do
-    #     params = { :comment=>"My Fave Cat", :avatar=> Rack::Test::UploadedFile.new(Rails.root + 'spec/images/cat.jpg', 'image/jpg'), :user_id => User.last.id }
-    #     expect {
-    #       post :create, params: { post: params }
-    #       }.to change(Post, :count).by(1)
-    #   end
-    # end
-    # not sure why this isnt passing
-    
+    context 'valid post created' do
+      it 'creates a new post' do
+        params = attributes_for(:post)
+        expect {
+          post :create, params: { post: params }
+          }.to change(Post, :count).by(1)
+      end
+    end
+
     context 'invalid post created' do
       it 'does not save new post' do
         params = { :comment=>"My Fave Cat", :avatar=> nil }

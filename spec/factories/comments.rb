@@ -3,5 +3,6 @@ FactoryBot.define do
     id 1
     body "MyText"
     post
+    user
   end
 end
