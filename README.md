@@ -56,17 +56,18 @@ I would like to prevent people from seeing anything but the pict feed if not log
 ```
 - [x] Done
 ```
+As a keen describer
+So that I can get credit for my awesome drawing skills
+I want my cool image to have a link to my username
+```
+- [x] Done
+```
 As a keen guesser
 So that I can show of my awesome guessing skills
 I want to be able to make a guess on someones picture.
 ```
 - [ ] Done
-```
-As a keen describer
-So that I can get credit for my awesome drawing skills
-I want my cool image to have a link to my username
-```
-- [ ] Done
+
 ```
 As a keen guesser
 So that I can show of my awesome guessing skills
