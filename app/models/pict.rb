@@ -7,6 +7,8 @@ class Pict < ApplicationRecord
   validates_attachment_content_type :image, :content_type =>
     /\Aimage\/.*\Z/
 
+  belongs_to :user
+
   private
     def has_question_mark
        errors.add(:title, "Title needs a question mark at the end") unless title[-1] == '?'
