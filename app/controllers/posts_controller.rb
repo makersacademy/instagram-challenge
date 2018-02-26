@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
 
+  belongs_to :user
+
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @posts = Post.all
