@@ -10,11 +10,11 @@ class PictsController < ApplicationController
   end
 
   def new
-    @pict = Pict.new
+    @pict = current_user.picts.build
   end
 
   def create
-    @pict = Pict.create(pict_params)
+    @pict = current_user.picts.build(pict_params)
     if @pict.save
       flash[:success] = 'Successfully added Pict'
       redirect_to @pict
