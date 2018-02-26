@@ -4,6 +4,8 @@ feature 'add many picts' do
   background do
     sign_up('roman_slayer@gmail.com', 'RomanSlayer')
     add_pict('What could this be?', 'We do it all the time', 'TDD' )
+    click_link 'Logout'
+    sign_up('centurian@grmail.com', 'PictDestroyer')
     add_pict('What will this be?', 'Its very important...', 'TDD' )
     click_link 'To the Pict feed!'
   end
@@ -21,5 +23,10 @@ feature 'add many picts' do
     expect(page).to have_content 'Its very important...'
     expect(page).not_to have_content 'TDD'
     expect(page).not_to have_content 'Who could this be?'
+  end
+
+  scenario 'expect to see the username of the maker' do
+        expect(page).to have_content 'RomanSlayer'
+        expect(page).to have_content 'PictDestroyer'
   end
 end
