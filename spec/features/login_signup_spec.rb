@@ -41,11 +41,4 @@ feature 'login' do
       expect(page).not_to have_content 'The Marvelous Picts Feed!'
    end
 
-   scenario 'You cannot go onto new post if you\' not logged in' do
-      click_link 'Logout'
-      click_link 'New Pict'
-      expect(page).to have_content 'Cannot do that without signing up...or logging in...'
-      expect(page).not_to have_content ' Add a new Pict!'
-   end
-
 end
