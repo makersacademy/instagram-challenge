@@ -26,7 +26,7 @@ feature 'add many picts' do
   end
 
   scenario 'expect to see the username of the maker' do
-        expect(page).to have_content 'RomanSlayer'
-        expect(page).to have_content 'PictDestroyer'
+    expect(page).to have_content 'RomanSlayer'
+    expect(page).to have_content 'PictDestroyer'
   end
 end
