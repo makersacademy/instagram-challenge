@@ -1,7 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  has_many :posts, dependent: :destroy
-
   private
 
   def sign_up_params
