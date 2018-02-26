@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<ul>
+  <li>
+    <div class="post-username">
+      <strong>User:</strong>
+      <%= @post.user.username %>
+    </div>
+  </li>
+  <li>
+    <div class="post-image">
+      <%= image_tag @post.image.url %>
+    </div>
+  </li>
+  <li>
+    <div class="post-caption">
+      <strong>Caption:</strong>
+      <%= @post.caption %>
+    </div>
+  </li>
+</ul>
+
+<div class="post-comments">
+  <strong>Comments</strong>
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li>
+        <strong>@<%=comment.user.username%></strong>:
+        <%=comment.body%></li>
+    <% end %>
+  </ul>
+</div>
+
+<%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+<p>
+  <%= form.label :body %><br>
+  <%= form.text_area :body, id: 'comment_body' %>
+</p>
+<p>
+  <%= form.submit %>
+</p>
+<% end %>
+
+<% if current_user.id == @post.user_id %>
+<%= link_to 'Edit', edit_post_path(@post) %>
+<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<%= link_to 'Back', posts_path %>

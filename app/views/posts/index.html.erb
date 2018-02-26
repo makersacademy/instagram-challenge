@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Feed</h1>
+<% @posts.each do |post| %>
+  <div class="individual-post">
+    <ul>
+      <li>
+        <div class="p-padding post-username">
+          <strong><%= post.user.username %></strong>
+        </div>
+      </li>
+      <li>
+        <div class="post-image">
+          <%= image_tag post.image.url %>
+        </div>
+      </li>
+      <li>
+        <div class="p-padding post-caption">
+          <strong><%= post.user.username %>:</strong>
+          <%= post.caption %>
+        </div>
+      </li>
+      <div class="p-padding post-comments">
+        <ul>
+          <% post.comments.each do |comment| %>
+            <li>
+              <strong>@<%=comment.user.username%></strong>:
+              <%=comment.body%></li>
+          <% end %>
+        </ul>
+      <li><%= link_to 'View', post %></li>
+    </div>
+  </ul>
+</div>
+<% end %>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
