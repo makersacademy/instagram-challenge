@@ -34,3 +34,8 @@ def user_sign_up(email, password, password_confirmation)
   fill_in 'user[password_confirmation]', with: password_confirmation
   click_button 'Sign up'
 end
+
+def login
+  user = User.create email: 'test@gmail.com', password: '12345678', password_confirmation: '12345678'
+  login_as user
+end

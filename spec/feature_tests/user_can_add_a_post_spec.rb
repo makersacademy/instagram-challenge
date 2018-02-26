@@ -1,5 +1,6 @@
 require 'rails_helper'
 RSpec.describe "Creating posts", :type => :feature do
+  
   feature 'Add post' do
     scenario 'User can not add a post if not signed in' do
       visit '/'
@@ -11,8 +12,7 @@ RSpec.describe "Creating posts", :type => :feature do
 
   feature 'Add post' do
     before do
-      user = User.create email: 'test@gmail.com', password: '12345678', password_confirmation: '12345678'
-      login_as user
+      login
     end
 
     scenario "User adds a post and post is displayed" do

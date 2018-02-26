@@ -3,8 +3,7 @@ RSpec.describe "Editing posts", :type => :feature do
 
   before do
     @post = create(:post)
-    user = User.create email: 'test@gmail.com', password: '12345678', password_confirmation: '12345678'
-    login_as user
+    login
   end
 
   feature 'Editing posts' do

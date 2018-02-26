@@ -2,12 +2,8 @@ require 'rails_helper'
 RSpec.describe "Displaying posts", :type => :feature do
 
   before do
-    user = User.create email: 'test@gmail.com', password: '12345678', password_confirmation: '12345678'
-    login_as user
-  end
-
-  before do
-    @post = create(:post, id: 3)
+    login
+    @post = create(:post)
   end
 
   feature 'index displays list of posts' do
@@ -32,10 +28,11 @@ RSpec.describe "Displaying posts", :type => :feature do
   feature 'can view individual posts' do
     scenario 'click on post' do
       visit '/'
-      find(:xpath, "//a[contains(@href,'posts/3')]").click
+      find(:xpath, "//a[contains(@href,'posts/1')]").click
       expect(page.current_path).to eq(post_path(@post))
     end
   end
+  
   feature 'post diplays email of user who added post' do
     scenario 'post added' do
       visit('/')

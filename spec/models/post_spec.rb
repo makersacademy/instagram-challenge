@@ -28,7 +28,7 @@ RSpec.describe Post, type: :model do
   it{is_expected.to respond_to :user_id}
 
   # it 'is not valid with a non image file upload' do
-  #    post2 =build(:post, avatar: 'spec/images/cat.rb')
+  #    post2 =build(:post, avatar: Rails.root.join('spec/images/cat.rb'))
   #    expect(post2).to_not be_valid
   # end
 end

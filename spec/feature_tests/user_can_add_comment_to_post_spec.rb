@@ -7,9 +7,7 @@ RSpec.describe "Creating comments", :type => :feature do
 
   feature 'Adding a comment' do
     scenario ' user cannot add comment if not signed in' do
-      visit '/'
-      find(:xpath, "//a[contains(@href,'posts/1')]").click
-      click_button 'Create Comment'
+      add_comment("hey")
       expect(page.current_path).to eq '/users/sign_in'
     end
   end
@@ -17,8 +15,7 @@ RSpec.describe "Creating comments", :type => :feature do
   feature 'Adding a comment' do
 
     before do
-      user = User.create email: 'test@gmail.com', password: '12345678', password_confirmation: '12345678'
-      login_as user
+      login
     end
 
     scenario 'can add comment to a post' do
