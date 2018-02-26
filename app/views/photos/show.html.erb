@@ -3,7 +3,7 @@
 <%= image_tag(@photo.image.url) %>
 
 <p>
-  posted by <%= User.find(current_user.id).email %>
+  posted by <%= User.find(@photo.user_id).email %>
 </p>
 
 <p>
@@ -11,3 +11,27 @@
     <%= link_to 'Remove', photo_path(@photo), method: :delete, data: {confirm: 'Are you sure?'} %>
   <% end %>
 </p>
+
+<% @photo.comments.each do |comment| %>
+  <p>
+    <strong>from: <%= User.find(comment.user_id).email %></strong>
+  </p>
+
+  <p>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+<% if user_signed_in? %>
+  <h2>Add a comment:</h2>
+  <%= form_with(model: [ @photo, @photo.comments.build ], local: true) do |form| %>
+    <p>
+      <%= form.label :body %><br>
+      <%= form.text_area :body %>
+    </p>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
+<% end %>

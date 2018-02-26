@@ -7,20 +7,23 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+    <body>
+      <div class="container">
+        <div class="nav">
+          <%= link_to('Home', root_path) %>
+          <%= render 'devise/menu/login_items' %>
+          <%= render 'devise/menu/registration_items' %>
+          <%= link_to('Add Photo', new_photo_path) %>
+        </div>
 
-  <body>
-    <%= link_to('Home', root_path) %>
-    <%= render 'devise/menu/login_items' %>
-    <%= render 'devise/menu/registration_items' %>
-    <%= link_to('Add Photo', new_photo_path) %>
+        <% if flash[:notice] %>
+          <h3 class="notice"><%= flash[:notice] %></h3>
+        <% end %>
 
-    <% if flash[:notice] %>
-      <h3 class="notice"><%= flash[:notice] %></h3>
-    <% end %>
-
-    <% if flash[:alert] %>
-      <h3 class="notice"><%= flash[:alert] %></h3>
-    <% end %>
-    <%= yield %>
-  </body>
+        <% if flash[:alert] %>
+          <h3 class="notice"><%= flash[:alert] %></h3>
+        <% end %>
+        <%= yield %>
+      </div>
+    </body>
 </html>
