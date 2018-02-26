@@ -7,5 +7,7 @@
 </p>
 
 <p>
-  <%= link_to 'Remove', photo_path(@photo), method: :delete, data: {confirm: 'Are you sure?'} %>
+  <% if user_signed_in? && current_user.id == @photo.user_id %>
+    <%= link_to 'Remove', photo_path(@photo), method: :delete, data: {confirm: 'Are you sure?'} %>
+  <% end %>
 </p>
