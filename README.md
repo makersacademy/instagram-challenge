@@ -47,8 +47,8 @@ Instructions
 
 #### Running locally for development:
 
-- Launch the site: run `rackup` in the project root folder
-- Navigate to  http://localhost:9292 in your browser
+- Launch the site: run `rails server` in the project root folder
+- Navigate to  http://localhost:3000 in your browser
 
 
 #### Using the deployed app on heroku: 
