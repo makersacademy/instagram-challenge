@@ -1,0 +1,18 @@
+<h1>Instagrat!</h1>
+
+<p class="media">
+  <% @photos.each do |photo| %>
+      <p class="media-body">
+        <h4><%= photo.title %></h4>
+      </p>
+      <p class="media-left">
+        <%= link_to image_tag(photo.image.url, class: 'media-object'), photo_path(photo), target: '_blank' %>
+      </p>
+      <p>posted by <%= User.find(photo.user_id).email %></p>
+      <p>
+        <% if user_signed_in? && current_user.id == photo.user_id %>
+          <%= link_to 'Remove', photo_path(photo), method: :delete, data: {confirm: 'Are you sure?'} %>
+        <% end %>
+      </p>
+  <% end %>
+</p>

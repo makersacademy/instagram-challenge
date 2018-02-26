@@ -1,0 +1,34 @@
+<h1>Upload Photo</h1>
+
+<%= form_for @photo, html: { multipart: true } do |f| %>
+  <% if @photo.errors.any? %>
+    <p id="error_explanation">
+      <h2>
+        <%= "#{pluralize(@photo.errors.count, "error")} prohibited this photo from being saved:" %>
+      </h2>
+      <ul>
+        <% @photo.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+          <% end %>
+      </ul>
+    </p>
+  <% end %>
+
+  <p class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </p>
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
+  <p class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: 'form-control' %>
+  </p>
+
+  <p class="form-group">
+    <%= f.submit 'Upload Photo', class: 'btn btn-default' %>
+  </p>
+<% end %>
