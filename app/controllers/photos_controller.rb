@@ -3,6 +3,10 @@ class PhotosController < ApplicationController
     @photos = Photo.order('created_at')
   end
 
+  def show
+		@photo = Photo.find(params[:id])
+  end
+
   def new
     if current_user == nil
       flash[:notice] = "You must be logged in to add a photo!"
