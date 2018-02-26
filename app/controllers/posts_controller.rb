@@ -33,8 +33,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    p "POST HERE"
-    p @post
     redirect_to posts_path
   end
 
