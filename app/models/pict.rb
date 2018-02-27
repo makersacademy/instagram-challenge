@@ -12,6 +12,7 @@ class Pict < ApplicationRecord
 
   private
     def has_question_mark
+        return false if title.nil?  
        errors.add(:title, "Title needs a question mark at the end") unless title[-1] == '?'
     end
 
