@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fakestagram</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+  <nav class = "navbar navbar-inverse" role='navigation'>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand"><%= link_to image_tag("https://www.thesun.co.uk/wp-content/uploads/2017/12/fabulous_logo_colour.png?h=160", alt: "Brand"), posts_path, :class=>'navbar-brand' %></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <ul class="nav navbar-nav">
+            <li> <a> <%= link_to 'Posts Feed', posts_path %> </a></li>
+            <li><a> <%= link_to 'New post', new_post_path %></a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a> <%= render 'devise/menu/login_items' %> <span class="glyphicon glyphicon-user"></span> </a></li>
+            <li><a> <%= render 'devise/menu/registration_items' %> <span class="glyphicon glyphicon-log-in"></span> </a></li>
+          </ul>
+        </nav>
+
+
+    <div class="error_explanation">
+    <% if flash[:error].present? %>
+      <p class='flash-error'><%= flash[:error] %></p>
+    <% end %>
+    <% if flash[:notice].present? %>
+      <p class='flash-notice'><%= flash[:notice] %></p>
+    <% end %>
+  </div>
+    <%= yield %>
+  </body>
+</html>
