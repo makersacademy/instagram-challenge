@@ -1,6 +1,6 @@
 class PictsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  before_action  :find_pict, only: [:show, :edit, :update, :destroy]
+  before_action :find_pict, only: [:show, :edit, :update, :destroy]
 
   def index
     @picts = Pict.all
@@ -25,10 +25,10 @@ class PictsController < ApplicationController
 
   def update
     if @pict.update(pict_params)
-    flash[:success] = 'Successfully changed Pict'
-    redirect_to @pict
+      flash[:success] = 'Successfully changed Pict'
+      redirect_to @pict
     else
-    render :edit
+      render :edit
     end
   end
 
@@ -43,12 +43,11 @@ class PictsController < ApplicationController
 
   private
 
-   def pict_params
+  def pict_params
     params.require(:pict).permit(:image, :title, :answer, :hints)
-   end
+  end
 
-   def find_pict
-     @pict = Pict.find(params[:id])
-   end
-
+  def find_pict
+    @pict = Pict.find(params[:id])
+  end
 end

@@ -3,10 +3,10 @@ require 'rails_helper'
 feature 'add many picts' do
   background do
     sign_up('roman_slayer@gmail.com', 'RomanSlayer')
-    add_pict('What could this be?', 'We do it all the time', 'TDD' )
+    add_pict('What could this be?', 'We do it all the time', 'TDD')
     click_link 'Logout'
     sign_up('centurian@grmail.com', 'PictDestroyer')
-    add_pict('What will this be?', 'Its very important...', 'TDD' )
+    add_pict('What will this be?', 'Its very important...', 'TDD')
     click_link 'To the Pict feed!'
   end
 
