@@ -64,7 +64,10 @@ User Stories implemented
 - Users can like and unlike posts
 
 
-To do
+To do / possible extension work
 -------
 
 - Styling
+- Add user profile page, which shows all posts by that user
+- Add user profile pictures / bio info
+- Add hashtags & search by hashtag
