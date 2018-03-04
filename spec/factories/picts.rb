@@ -3,5 +3,6 @@ FactoryBot.define do
     title "MyString"
     hints "MyString"
     answer "MyString"
+    image "MyString"
   end
 end
