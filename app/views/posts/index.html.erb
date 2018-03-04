@@ -23,7 +23,20 @@
       <tr>
         <td><%= post.description %></td>
       </tr>
-      <tr>
+      <post id="post">
+        <td><%= link_to 'Show', post %></td>
+        <tr>
+          <% if user_signed_in? && current_user.id == post.user_id %>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        </tr>
+
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <% if user_signed_in? %>
+          <tr>
+          </post>
+        <td><%= link_to "Comment", new_comment_path(post_id: post.id) %></td>
+
         <% post.comments.each do |comment| %>
         <tr>
           <td><%= comment.body %>
@@ -31,15 +44,11 @@
         </tr>
         <% end %>
       </tr>
-      <tr>
-        <td><%= link_to 'Comment', new_comment_path %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
 </section>
+
 
 <!-- <%= link_to 'New Post', new_post_path %> -->
