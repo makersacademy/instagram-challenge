@@ -22,10 +22,9 @@ RSpec.describe Pict, type: :model do
     expect(pict).to_not be_valid
   end
 
-  it 'is not valid without a title' do
+  it 'is not valid without a picture' do
     user = build_stubbed(:user)
-    picture = fixture_file_upload 'spec/docs/images/code_clue.jpg'
-    pict = Pict.new(title: nil, image: picture, user: user)
+    pict = Pict.new(title: nil, user: user)
     expect(pict).to_not be_valid
   end
 
