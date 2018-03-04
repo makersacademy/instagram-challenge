@@ -6,8 +6,13 @@ RSpec.describe Pict, type: :model do
   let(:title) { 'hello?' }
   subject(:pict) {described_class.new(title: title, image: picture, user: user)}
 
-  it 'is valid with picture, title and user' do
+  it 'is valid with just a picture, title and user' do
     expect(pict).to be_valid
+  end
+
+  it 'also has an answer attribute' do
+    pict.answer = 'the truth'
+    expect(pict).to have_attributes(:answer => 'the truth')
   end
 
   it 'is not valid without a title' do
