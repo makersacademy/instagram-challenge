@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
 
   it 'Should have a username attribute' do
     user = User.new(user_name: 'PictPict')
-    expect(user).to have_attributes(:user_name => 'PictPict')
+    expect(user).to have_attributes(user_name: 'PictPict')
   end
 
   it 'Should be valid with a username, email and password' do

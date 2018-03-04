@@ -10,7 +10,6 @@ require 'capybara/rspec'
 require 'features/pict_helper'
 require 'features/login_helper'
 
-
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

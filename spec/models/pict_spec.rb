@@ -4,7 +4,7 @@ RSpec.describe Pict, type: :model do
   let(:user) { build_stubbed(:user) }
   let(:picture) { fixture_file_upload 'spec/docs/images/code_clue.jpg' }
   let(:title) { 'hello?' }
-  subject(:pict) {described_class.new(title: title, image: picture, user: user)}
+  subject(:pict) { described_class.new(title: title, image: picture, user: user) }
 
   it 'is valid with just a picture, title and user' do
     expect(pict).to be_valid
@@ -12,12 +12,12 @@ RSpec.describe Pict, type: :model do
 
   it 'also has an answer attribute' do
     pict.answer = 'the truth'
-    expect(pict).to have_attributes(:answer => 'the truth')
+    expect(pict).to have_attributes(answer: 'the truth')
   end
 
   it 'also has a hint attribute' do
     pict.hints = 'you can do it!'
-    expect(pict).to have_attributes(:hints => 'you can do it!')
+    expect(pict).to have_attributes(hints: 'you can do it!')
   end
 
   it 'is not valid without a title' do
