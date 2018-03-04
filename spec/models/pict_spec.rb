@@ -15,6 +15,11 @@ RSpec.describe Pict, type: :model do
     expect(pict).to have_attributes(:answer => 'the truth')
   end
 
+  it 'also has a hint attribute' do
+    pict.hints = 'you can do it!'
+    expect(pict).to have_attributes(:hints => 'you can do it!')
+  end
+
   it 'is not valid without a title' do
     pict.title = nil
     expect(pict).to_not be_valid
