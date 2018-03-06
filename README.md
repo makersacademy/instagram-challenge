@@ -1,26 +1,50 @@
-# README
+Instagram Challenge
+==================
 
-Long story short, I have 4 versions locally but had issues pushing to github so eventually deleted the repo fork and slowly am pulling the code back into a local repo that can push to github.  Sigh.
+Brief Summary of Approach
+-------
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I followed the same approach we used in the week, in order to build Jennstagram.  Rails does most of the work, so the important role for me is simply working out what the next steps are in logic and how to implement them.  
 
-Things you may want to cover:
+Points for development:
+* ensure full test coverage with rspec
+* add fully connected comments facility
+* add like button
+* deploy to heroku
 
-* Ruby version
+Instructions
+-------
 
-* System dependencies
+* Clone this repository
+* cd jennstagram
+* Run the command 'bundle' in the project directory to ensure you have all the gems
+* bin/rails automigrate
+* bin/rails s (navigate to localhost:3000 in your choice of browser)
 
-* Configuration
+User stories
+--------
+```
+As a user
+So that I can share my life with the world
+I would like to post a photo with a caption
 
-* Database creation
+As a user
+So that I can have ownership over my posts
+I would like to create an account and sign in
 
-* Database initialization
+As a user
+So that I can tell others how cool their life is
+I would like to comment on their posts
 
-* How to run the test suite
+As a user
+So that I can encourage my friends
+I would like to like their posts
+```
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Technologies Used:
+--------
+* RSpec
+* Rails
+* Active Record
+* Devise (for user accounts)
+* bcrypt (for password encryption)
