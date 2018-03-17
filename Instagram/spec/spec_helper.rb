@@ -12,6 +12,16 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../config/environment", __FILE__)
+require 'rspec/rails'
+require 'rake'
+
+# Add this to load Capybara integration:
+require 'capybara/rspec'
+require 'capybara/rails'
+
+Capybara.ignore_hidden_elements = false
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
