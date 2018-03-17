@@ -28,3 +28,8 @@ def sign_up_user_2
   fill_in 'Password confirmation', with: "iLoveLint"
   click_button "Sign up"
 end
+
+def create_comment
+  fill_in "comment[body]", with: "I really like this piece of lint"
+  click_button "Save comment"
+end

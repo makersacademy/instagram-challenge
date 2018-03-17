@@ -1,5 +1,4 @@
 class PicturesController < ApplicationController
-
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def index
@@ -32,5 +31,4 @@ class PicturesController < ApplicationController
   def picture_params
     params.require(:picture).permit(:url)
   end
-
 end
