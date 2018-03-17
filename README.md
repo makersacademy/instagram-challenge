@@ -58,6 +58,10 @@ you to mistakes or mishaps!
   I would like to be able to click a sign out button and be signed out
 
   As a user
+  So I can see who owns some lint
+  I want to see the user's email address displayed by each picture
+
+  As a user
   So I can voice my opinions about lint
   I would like to be able to comment on pictures
 

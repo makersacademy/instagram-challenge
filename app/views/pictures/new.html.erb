@@ -1,6 +1,12 @@
 <%= render "shared/user_details_header" %>
 <h1>Post your lint</h1>
-
+<% if @picture.errors.any? %>
+  <ol>
+    <% @picture.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ol>
+<% end %>
 <%= form_with scope: :picture, url: pictures_path, local: true do |form| %>
   <p>
     <%= form.label :url %>

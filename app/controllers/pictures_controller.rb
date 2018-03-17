@@ -1,19 +1,21 @@
 class PicturesController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create, :destroy]
 
   def index
     @pictures = Picture.all
   end
 
   def new
+    @picture = Picture.new
   end
 
   def create
-    @picture = Picture.new(picture_params)
-
-    @picture.save
-    redirect_to @picture
+    p params
+    p current_user
+    @picture = current_user.pictures.new(picture_params)
+    p @picture
+    @picture.save ? redirect_to(@picture) : render('new')
   end
 
   def show
