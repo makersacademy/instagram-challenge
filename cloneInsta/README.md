@@ -1,10 +1,24 @@
 # README
 
+# Instructions
+
 Fork this repo
+
+Move into cloneInsta
+```
+cd cloneInsta
+```
+
+Run bundle
+```
+bundle install
+```
+
+
 <!-- This README would normally document whatever steps are necessary to get the
 application up and running. -->
 
-#Prerequisites
+# Prerequisites
 
 * Fork this repo
 
