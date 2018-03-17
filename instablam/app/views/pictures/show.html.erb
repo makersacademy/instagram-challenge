@@ -1,11 +1,27 @@
 <p>
-  <strong>Title:</strong>
   <%= @picture.title %>
 </p>
 <p>
-  <strong>Image:</strong>
-  <%= @picture.picture_url %>
+  <img src="<%= @picture.picture_url %>" height="150px" width="150px">
 </p>
+
+<h2>Comments:</h2>
+<% @picture.comments.each do |comment| %>
+<p>
+  <%= comment.body %>
+</p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_with(model: [ @picture, @picture.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_picture_path(@picture) %>
 <%= link_to 'Destroy', picture_path(@picture),
