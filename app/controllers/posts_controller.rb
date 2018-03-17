@@ -1,16 +1,13 @@
 class PostsController < ApplicationController
 
 def index
-
+  @post = Post.all
 end
 
 def show
-
   @post = Post.find(params[:id])
   # each of the images will be unique so you need a .find method
   # for it to display it needs to grab the ID of the post.
-
-
 end
 
 
