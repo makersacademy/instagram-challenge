@@ -1,4 +1,4 @@
-feature 'Sign up' do
+feature 'Add photo button visibility' do
 
   before(:each) do
     User.delete_all
