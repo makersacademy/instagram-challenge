@@ -20,8 +20,10 @@ So that I can indicate that I enjoyed a posted picture
 I want to be able to like it
 ```
 
-*Then, I worked on the Domain Modelling. To achieve my MVP for this challenge I would need four models:
-**Users** that can post **pictures** and pictures that can have **comments** and **likes**
+* Then, I worked on the Domain Modelling. To achieve my MVP for this challenge I would need four models:
+Users that can post **pictures** and pictures that can have **comments** and **likes**
+
+* I decided to focus on the MVP leaving the User Registration & Authentication for the end.
 
 Development:
 
