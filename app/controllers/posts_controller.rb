@@ -10,7 +10,6 @@ def show
   # for it to display it needs to grab the ID of the post.
 end
 
-
 def new
   @post = Post.new
 end

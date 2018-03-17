@@ -1,12 +1,19 @@
 <h1>Hello Joshagram'ers</h1>
 
 <% @post.each do |post| %>
-    <%= image_tag post.image.url(:medium) %>
+    <div class="row">
+      <%= link_to post_path(post) do %>
+          <%= image_tag(post.image.url(:medium)) %>
+            <% end %>
+
     <!--need an <"image_tag ... .url"> otherwise a string of the route of the image will be displayed-->
     <!-- (medium) passed on the end as when we set up the image we specified the medium value, so that is where it will go... -->
     <!-- medium relates to the post.rb file where the paperclip gem makes medium the assigner of the image parameters on the page-->
     <!-- which are in this case "300x300>"-->
-    <br>
+
+      <!-- wrapped the title around the paragraph tag so that it would come under the images -->
+      <p>
     <%= post.title %>
-    <br>
+      </p>
+    </div>
 <% end %>
