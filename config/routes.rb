@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   get 'welcome/index'
 
-  resources :pictures
+  resources :pictures do
+    resources :comments
+  end
 
   root to: 'welcome#index'
 
