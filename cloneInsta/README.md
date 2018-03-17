@@ -23,9 +23,6 @@ application up and running. -->
 * Fork this repo
 
 * Ruby version 2.5.0
-```
- 2.5.0
-```
 
 * System dependencies
 
