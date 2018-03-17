@@ -42,6 +42,10 @@ you to mistakes or mishaps!
   I would like to be able to add a picture to the website
 
   As a user
+  So I can remove a picture from Lintstagram
+  I would like to be able to click a delete button on the show page of a picture
+
+  As a user
   So I can voice my opinions about lint
   I would like to be able to comment on pictures
 

@@ -1,5 +1,9 @@
 class PicturesController < ApplicationController
 
+  def index
+    @pictures = Picture.all
+  end
+
   def new
   end
 
@@ -12,6 +16,13 @@ class PicturesController < ApplicationController
 
   def show
     @picture = Picture.find(params[:id])
+  end
+
+  def destroy
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+
+    redirect_to pictures_path
   end
 
   private
