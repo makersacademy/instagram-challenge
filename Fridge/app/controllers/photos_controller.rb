@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
     parametry[:user_id] = user.id
     @photo = Photo.new(parametry)
     if @photo.save
-      flash[:notice] = "Photo has been saved"
+      flash[:notice] = "Thank you #{user.username} for adding a photo"
       user.photos << @photo
       redirect_to '/photos'
     else
