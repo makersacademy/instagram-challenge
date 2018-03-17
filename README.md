@@ -1,3 +1,44 @@
+README Edit: My approach and code review
+=================
+
+My approach
+------
+Pre-code:
+* First, I divided the whole challenge into User Stories to achieve my MVP:
+
+```
+As a user
+So that I can share my moments with others
+I want to be able to post pictures
+
+As a user
+So that I can give my opinion about pictures
+I want to be able to write comments
+
+As a user
+So that I can indicate that I enjoyed a posted picture
+I want to be able to like it
+```
+
+*Then, I worked on the Domain Modelling. To achieve my MVP for this challenge I would need four models:
+**Users** that can post **pictures** and pictures that can have **comments** and **likes**
+
+Development:
+
+Next focus
+------
+[TBC]
+
+Personal code review
+------
+[TBC]
+
+Screenshots
+------
+[TBC]
+
+
+
 Instagram Challenge
 ===================
 
