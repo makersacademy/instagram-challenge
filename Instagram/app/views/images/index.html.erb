@@ -1,7 +1,28 @@
-<a href='/images/new'><button>Add an image</button></a>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
 
-<% for image in @images do %>
-  <p><%= image.user %></p>
-  <%= link_to(image_tag(image.image.url(:med)), image_path(image)) %>
-  <p><%= image.caption %></p>
-<% end %>
+    <a href='/images/new'><button>Add an image</button></a>
+
+    <table class="image_table">
+      <% counter = 1 %>
+      <tr>
+      <% for image in @images do %>
+        <% if counter % 3 != 0 %>
+          <td><%= link_to(image_tag(image.image.url(:med)), image_path(image)) %></td>
+          <% counter += 1 %>
+        <% else %>
+        <td><%= link_to(image_tag(image.image.url(:med)), image_path(image)) %></td>
+        <% counter += 1 %>
+      </tr><tr>
+        <% end %>
+      <% end %>
+      </tr>
+    </table>
+
+  </body>
+</html>
