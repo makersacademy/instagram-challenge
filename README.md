@@ -35,7 +35,7 @@ you to mistakes or mishaps!
 ```
   As a user
   So I can view images of lint
-  I would like to be able to visit lintstgram and see the images which have been posted
+  I would like to be able to visit lintstagram and see the images which have been posted
 
   As a user
   So I can add my picture of lint

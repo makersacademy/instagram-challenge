@@ -1,6 +1,6 @@
 def sign_up
   visit '/'
-  click_link 'sign_up'
+  click_link 'Sign up'
   fill_in 'Email', with: "lint@lint.com"
   fill_in 'Password', with: "iLoveLint"
   fill_in 'Password confirmation', with: "iLoveLint"

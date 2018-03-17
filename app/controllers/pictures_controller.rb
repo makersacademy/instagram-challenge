@@ -11,10 +11,8 @@ class PicturesController < ApplicationController
   end
 
   def create
-    p params
-    p current_user
     @picture = current_user.pictures.new(picture_params)
-    p @picture
+
     @picture.save ? redirect_to(@picture) : render('new')
   end
 
