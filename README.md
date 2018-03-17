@@ -27,14 +27,58 @@ Remember to proceed in small steps! Getting confused? Make the steps even smalle
 
 ## Code Quality
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
+
+## User stories
+```
+  As a user
+  So I can view images of lint
+  I would like to be able to visit lintstgram and see the images which have been posted
+
+  As a user
+  So I can add my picture of lint
+  I would like to be able to upload a picture to the website
+
+  As a user
+  So I can voice my opinions about lint
+  I would like to be able to comment on pictures
+
+  As a user
+  So I can silently approve of specific pictures
+  I would like to be able to 'like' pictures
+
+  As a user
+  So I can create an account
+  I would like to be able to click a login button on the homepage
+
+  As a user
+  So I can log in to my account once it has been created
+  I would like to be able to click a sign in button on the homepage
+
+  As a signed in user
+  So I can sign out
+  I would like to be able to click a sign out button and be signed out
+```
+
+#### Structure
+User:
+- Fields
+  - Username
+  - Email address
+  - Password
+- Has many Pictures
+- Has many Comments
+
+Picture:
+- Fields
+  - Image
+- Belongs to User
+- Has many Comments
+
+Comment:
+- Fields
+  - Body
+- Belongs to User
+- Belongs to Picture
