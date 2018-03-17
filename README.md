@@ -22,10 +22,23 @@ I want to be able to like it
 
 * Then, I worked on the Domain Modelling. To achieve my MVP for this challenge I would need four models:
 Users that can post **pictures** and pictures that can have **comments** and **likes**
+* I wrote down the specific attributes my models would need and also the relations among them:
+```
+Pictures (can have many comments and likes)
+- pic:string
+- description: string
+
+Comments (belong to a specific picture)
+- comment:string
+
+Likes (belong to a specific picture)
+- number_of_likes:integer
+```
 
 * I decided to focus on the MVP leaving the User Registration & Authentication for the end.
 
 Development:
+* I started by creating the Picture model. I switched the Rails ENV to 'test' and wrote feature tests to make sure the user can add pictures and see them on the index for pictures.
 
 Next focus
 ------
