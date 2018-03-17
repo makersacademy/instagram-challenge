@@ -46,14 +46,6 @@ you to mistakes or mishaps!
   I would like to be able to click a delete button on the show page of a picture
 
   As a user
-  So I can voice my opinions about lint
-  I would like to be able to comment on pictures
-
-  As a user
-  So I can silently approve of specific pictures
-  I would like to be able to 'like' pictures
-
-  As a user
   So I can create an account
   I would like to be able to click a login button on the homepage
 
@@ -64,6 +56,14 @@ you to mistakes or mishaps!
   As a signed in user
   So I can sign out
   I would like to be able to click a sign out button and be signed out
+
+  As a user
+  So I can voice my opinions about lint
+  I would like to be able to comment on pictures
+
+  As a user
+  So I can silently approve of specific pictures
+  I would like to be able to 'like' pictures
 ```
 
 #### Structure
