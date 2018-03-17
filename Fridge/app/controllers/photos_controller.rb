@@ -9,9 +9,13 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
+    user = User.find(session["warden.user.user.key"][0][0])
+    parametry = photo_params
+    parametry[:user_id] = user.id
+    @photo = Photo.new(parametry)
     if @photo.save
       flash[:notice] = "Photo has been saved"
+      user.photos << @photo
       redirect_to '/photos'
     else
       flash[:notice] = "Please add the description"
