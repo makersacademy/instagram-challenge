@@ -1,4 +1,4 @@
-require 'rails_helper.rb'
+require 'rails_helper'
 
 feature 'Welcome page' do
   scenario 'User is encouraged to add pictures' do

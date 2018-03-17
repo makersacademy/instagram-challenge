@@ -95,4 +95,7 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+
+  # Creating a before hook with a picture to avoid hardcoding it as strings
+  # to be expected in the browser view
 end

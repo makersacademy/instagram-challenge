@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180317103127) do
+ActiveRecord::Schema.define(version: 20180317184708) do
 
   create_table "pictures", force: :cascade do |t|
-    t.string "pic"
+    t.string "link"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
