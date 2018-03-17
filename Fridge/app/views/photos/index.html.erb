@@ -16,8 +16,15 @@
     <h1> <%= user.username %> </h1>
     <div class="image"><%= image_tag photo.image.url(:medium), :class => "image_img" %> <br> </div>
     <p1> <%= photo.description %> <br> </p1>
-</div>
+  </div>
+  <%= form_for @like, url: '/likes' do |form| %>
+    <%= hidden_field_tag :user_id, user.id %>
+    <%= hidden_field_tag :photo_id, photo.id %>
+    <%= form.submit %>
+  <% end %>
 <% end %>
+
+
 </div>
 
 <%= render 'head_and_foot/footer' %>

@@ -1,6 +1,7 @@
 class Photo < ApplicationRecord
 
   belongs_to :user
+  has_many :likes
 
   validates :description, presence: true
 

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :photos
+  resources :likes
+
 
   get '/' => 'photos#index'
 

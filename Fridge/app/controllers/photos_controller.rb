@@ -2,6 +2,7 @@ class PhotosController < ApplicationController
 
   def index
     @photos = Photo.all
+    @like = Like.new
   end
 
   def new
