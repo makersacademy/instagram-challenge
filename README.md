@@ -39,7 +39,7 @@ you to mistakes or mishaps!
 
   As a user
   So I can add my picture of lint
-  I would like to be able to upload a picture to the website
+  I would like to be able to add a picture to the website
 
   As a user
   So I can voice my opinions about lint
