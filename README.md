@@ -35,7 +35,7 @@ you to mistakes or mishaps!
 ```
   As a user
   So I can view images of lint
-  I would like to be able to visit lintstagram and see the images which have been posted
+  I would like to be able to visit Lintstagram and see the images which have been posted
 
   As a user
   So I can add my picture of lint
@@ -44,6 +44,10 @@ you to mistakes or mishaps!
   As a user
   So I can remove a picture from Lintstagram
   I would like to be able to click a delete button on the show page of a picture
+
+  As a user
+  So my picture is safe
+  I want no other user to be able to delete it
 
   As a user
   So I can create an account
@@ -64,6 +68,14 @@ you to mistakes or mishaps!
   As a user
   So I can voice my opinions about lint
   I would like to be able to comment on pictures
+
+  As a user
+  So I can change my mind
+  I want to be able to delete a comment I have made
+
+  As a user,
+  So my comment is safe,
+  I want no other user to delete it
 
   As a user
   So I can silently approve of specific pictures

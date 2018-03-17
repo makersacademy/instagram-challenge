@@ -1,7 +1,35 @@
 <%= render "shared/user_details_header" %>
 
+<p>Posted by <%= @picture.user.email %></p>
 <img src="<%= @picture.url %>">
-<%= link_to "De-lint", picture_path(@picture),
-    method: :delete,
-    data: {confirm: "Are you sure you want to delete this lint?"}%>
+<% if current_user == @picture.user %>
+  <%= link_to "De-lint", picture_path(@picture),
+      method: :delete,
+      data: {confirm: "Are you sure you want to delete this lint?"}%>
+<% end %>
 <%= link_to "Back", pictures_path %>
+
+<h2>Comments:</h2>
+
+<%= form_with model: [@picture, @picture.comments.build], local: true do |form| %>
+  <p>
+    <%= form.label :body, 'Your Comment' %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit "Save comment" %>
+  </p>
+<% end %>
+
+<% @picture.comments.each do |comment| %>
+  <% if comment.errors.any? %>
+    <% comment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ol>
+  <% end %>
+  <% if comment.valid? %>
+    <p><%= comment.user.email %> commented:</p>
+    <p><%= comment.body %></p>
+  <% end %>
+<% end %>
