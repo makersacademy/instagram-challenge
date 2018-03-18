@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   get 'welcome/index'
 
-  resources :pictures do
-    resources :comments
-    resources :likes
+  resources :pictures, except: [:edit, :update] do
+    resources :comments, only: [:create, :new, :destroy]
+    resources :likes, only: [:create, :new, :destroy]
   end
 
   root to: 'welcome#index'
