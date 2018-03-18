@@ -4,6 +4,6 @@ feature 'Input is validated' do
     fill_in :"picture[url]", with: ''
     fill_in :"picture[comment]", with: "It won't work"
     click_button 'Save Picture'
-    expect(page).to have_content "errors prohibited"
+    expect(page).to have_content "error prohibited"
   end
 end
