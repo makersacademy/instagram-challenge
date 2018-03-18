@@ -11,11 +11,15 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new(image_params)
-    p @image.errors.messages
-    if @image.save
+    @image.save
+    if @image.errors.empty?
       redirect_to @image
     else
-      flash[:notice] = "Oops, looks like you missed something"
+      messages = ""
+      @image.errors.full_messages.each do |message|
+        messages += message
+      end
+      flash[:notice] = messages
       render :new
     end
   end

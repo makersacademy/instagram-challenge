@@ -3,4 +3,6 @@ class Image < ApplicationRecord
   validates_attachment :image, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png"] }
   has_many :comments
   validates :caption, presence: true
+  validates :image, presence: true
+  validates :user, presence: true
 end
