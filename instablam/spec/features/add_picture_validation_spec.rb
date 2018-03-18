@@ -2,8 +2,6 @@ feature "Validating adding pictures" do
   scenario "Error if both fields left blank" do
     sign_up
     visit '/pictures/new'
-    fill_in :"picture[title]", with: ""
-    fill_in :"picture[picture_url]", with: ""
     click_button "Create Picture"
     expect(page).to have_content("prohibited")
   end
@@ -11,17 +9,15 @@ feature "Validating adding pictures" do
   scenario "Error if title field left blank" do
     sign_up
     visit '/pictures/new'
-    fill_in :"picture[title]", with: ""
-    fill_in :"picture[picture_url]", with: ""
+    page.attach_file("picture[image]", Rails.root + 'app/assets/images/sloth.jpg')
     click_button "Create Picture"
     expect(page).to have_content("prohibited")
   end
 
-  scenario "Error if picture_url field left blank" do
+  scenario "Error if image field left blank" do
     sign_up
     visit '/pictures/new'
-    fill_in :"picture[title]", with: ""
-    fill_in :"picture[picture_url]", with: ""
+    fill_in :"picture[title]", with: "New Title"
     click_button "Create Picture"
     expect(page).to have_content("prohibited")
   end

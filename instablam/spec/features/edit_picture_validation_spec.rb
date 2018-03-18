@@ -4,7 +4,6 @@ feature "Validating editing pictures" do
     create_new_picture
     click_link "Edit"
     fill_in "picture[title]", with: ""
-    fill_in "picture[picture_url]", with: ""
     click_on "Update Picture"
     expect(page).to have_content("prohibited")
   end
@@ -13,8 +12,8 @@ feature "Validating editing pictures" do
     sign_up
     create_new_picture
     click_link "Edit"
-    fill_in "picture[title]", with: "New Title"
-    fill_in "picture[picture_url]", with: ""
+    fill_in "picture[title]", with: ""
+    page.attach_file("picture[image]", Rails.root + 'app/assets/images/sloth.jpg')
     click_on "Update Picture"
     expect(page).to have_content("prohibited")
   end
@@ -23,8 +22,7 @@ feature "Validating editing pictures" do
     sign_up
     create_new_picture
     click_link "Edit"
-    fill_in "picture[title]", with: ""
-    fill_in "picture[picture_url]", with: "New link"
+    fill_in "picture[title]", with: "New Title"
     click_on "Update Picture"
     expect(page).to have_content("prohibited")
   end
