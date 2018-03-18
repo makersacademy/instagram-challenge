@@ -43,15 +43,15 @@ feature 'form validations', js: true do
     find("img[src*='Lemur.jpg']").click
     fill_in 'comment[commenter]', with: 'Bob'
     click_button 'submit'
-    expect(page).to have_content('Commenter can\'t be blank')
+    expect(page).to have_content('Comment can\'t be blank')
   end
 
-  scenario 'user tries to add a ncomment without their name' do
+  scenario 'user tries to add a comment without their name' do
     add_an_image_of_lemur
     find("img[src*='Lemur.jpg']").click
     fill_in 'comment[comment]', with: 'Love this picture!'
     click_button 'submit'
-    expect(page).to have_content('Comment can\'t be blank')
+    expect(page).to have_content('Commenter can\'t be blank')
   end
 
 end

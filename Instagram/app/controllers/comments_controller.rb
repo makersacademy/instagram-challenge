@@ -4,7 +4,16 @@ class CommentsController < ApplicationController
     image = Image.find(params[:image_id])
     comment = image.comments.new(comment_params)
     comment.save
-    redirect_to image
+    if comment.errors.messages.empty?
+      redirect_to image
+    else
+      messages = ""
+      comment.errors.full_messages.each do |message|
+        messages += message
+      end
+      flash[:notice] = messages
+      redirect_to image
+    end
   end
 
   private
