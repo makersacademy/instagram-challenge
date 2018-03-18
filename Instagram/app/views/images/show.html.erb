@@ -16,5 +16,20 @@
       </div>
 
     </div>
+
+  <%= form_for([@image, Comment.new]) do |form| %>
+    <p><%= form.label :comment %></p>
+    <p><%= form.text_area :comment %></p>
+    <p><%= form.label :commenter %></p>
+    <p><%= form.text_field :commenter %></p>
+    <%= form.submit 'submit' %>
+  <% end  %>
+
+  <% if @image.comments %>
+    <% for comment in @image.comments do %>
+      <%= comment.commenter %>:
+      <%= comment.comment %>
+    <% end %>
+  <% end %>
   </body>
 </html>
