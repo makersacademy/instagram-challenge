@@ -1,42 +1,53 @@
-<img src="<%= @picture.url %>">
-<% if @picture.likes.map(&:user).include? current_user %>
-  <% like = @picture.likes.find { |like| like.user = current_user} %>
-  <%= button_to "Unlike", [like.picture, like], method: :delete %>
-<% else %>
-  <%= button_to "Like", [@picture, @picture.likes.build] %>
-<% end %>
-
-<p>Liked by <%= pluralize @picture.likes.count, "user" %></p>
-<% if current_user == @picture.user %>
-  <%= link_to "De-lint", picture_path(@picture), method: :delete, data: {confirm: "Are you sure you want to delete this lint?"}%>
-<% end %>
-<%= link_to "Back", pictures_path %>
-
-<h2>Comments:</h2>
-
-<%= form_with model: [@picture, @picture.comments.build], local: true do |form| %>
-  <p>
-    <%= form.label :body, 'Your Comment' %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit "Save comment" %>
-  </p>
-<% end %>
-
-<% @picture.comments.each do |comment| %>
-  <% if comment.errors.any? %>
-    <% comment.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ol>
+<div class="post-container">
+  <p class="post-title">Posted by <strong><%= @picture.user.email %></strong></p>
+  <img src="<%= @picture.url %>" class="image">
+  <% if @picture.likes.map(&:user).include? current_user %>
+    <% like = @picture.likes.find { |like| like.user = current_user} %>
+    <%= button_to "Unlike", [like.picture, like], method: :delete %>
+  <% else %>
+    <%= button_to "Like", [@picture, @picture.likes.build] %>
   <% end %>
-  <% if comment.valid? %>
-    <p><%= comment.user.email %>
-      commented:</p>
-    <p><%= comment.body %></p>
-    <% if comment.user == current_user %>
-      <%= link_to "Delete comment", [comment.picture, comment], method: :delete, data: {confirm: "Are you sure you want to delete this comment?"}%>
-    <% end %>
+
+  <p>Liked by <%= pluralize @picture.likes.count, "user" %></p>
+  <% if current_user == @picture.user %>
+    <%= link_to "De-lint", picture_path(@picture), method: :delete, data: {confirm: "Are you sure you want to delete this lint?"}%>
   <% end %>
-<% end %>
+  <%= link_to "Back", pictures_path %>
+  <div class="comment-section-container">
+    <h2>Comments:</h2>
+
+    <%= form_with model: [@picture, @picture.comments.build], local: true do |form| %>
+      <p>
+        <%= form.label :body, 'Your Comment' %><br>
+        <%= form.text_area :body %>
+      </p>
+      <p>
+        <%= form.submit "Save comment" %>
+      </p>
+    <% end %>
+
+    <% @picture.comments.each do |comment| %>
+      <% if comment.errors.any? %>
+        <ol>
+          <% comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ol>
+      <% end %>
+      <div class="comments-container">
+        <% if comment.valid? %>
+          <div class="single-comment-container">
+            <p><strong><%= comment.user.email %></strong></p>
+            <p class="comment-body"><%= comment.body %></p>
+            <% if comment.user == current_user %>
+              <%= link_to "Delete comment", [comment.picture, comment],
+                  method: :delete,
+                  class: "delete-comment",
+                  data: {confirm: "Are you sure you want to delete this comment?"}%>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
