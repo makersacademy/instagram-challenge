@@ -35,6 +35,19 @@ class ImagesController < ApplicationController
     @image = Image.find params[:id]
   end
 
+  def destroy
+    @image = Image.find params[:id]
+    @image.destroy
+    @images = Image.paginate(page: params[:page])
+    if @images.length == 0
+      last_page = 1
+    else
+      last_page = (@images.length.to_f/9).ceil
+    end
+    url = '/images?page=' + last_page.to_s
+    redirect_to url
+  end
+
   private
 
   def image_params
