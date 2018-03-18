@@ -12,8 +12,11 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     @image.save
+    @images = Image.paginate(page: params[:page])
+      last_page = (@images.length.to_f/9).ceil
+    url = '/images?page=' + last_page.to_s
     if @image.errors.empty?
-      redirect_to images_url
+      redirect_to url
     else
       messages = ""
       @image.errors.full_messages.each do |message|

@@ -1,3 +1,5 @@
+require './spec/support/web_helpers'
+
 feature 'add new image', js: true do
 
   scenario 'user fills in form to add image' do
@@ -12,5 +14,5 @@ feature 'add new image', js: true do
     add_an_image_of_lemur
     expect(page).to have_css("img[src*='Lemur.jpg']")
   end
-  
+
 end
