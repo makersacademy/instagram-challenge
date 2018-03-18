@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 feature 'Welcome page' do
-  scenario 'User is encouraged to add pictures' do
-    visit '/pictures'
-    expect(page).to have_content 'Post a picture and start getting likes!'
+  scenario 'User is warmly welcomed' do
+    visit welcome_index_path
+    expect(page).to have_content 'Welcome to Finchstagram!'
   end
 end
