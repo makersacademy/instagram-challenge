@@ -1,9 +1,5 @@
 class LikesController < ApplicationController
 
-  def self.all
-    return Likes.all
-  end
-
   def create
     @like = Like.new(like_params)
     if @like.save

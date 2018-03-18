@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
     if session["warden.user.user.key"] != nil
       @current_user = User.find(session["warden.user.user.key"][0][0])
     else
-      @cuttent_user = nil
+      @current_user = nil
     end
     @photos = Photo.all
     @like = Like.new
