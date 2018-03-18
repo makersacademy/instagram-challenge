@@ -90,16 +90,15 @@ I want to be able to have a link to my username when I guess.
 
 
 ## Setup <a name= "Setup"></a>
--------
-TBC
 
-## How to play <a name= "Play"></a>
-
-### Basic Rules
-
-- You upload an image, a hint to anything really
-- People guess the answer
-- You tell them if its right or wrong
+First make sure you have Rails and Ruby installed. 
+1) Copy the repository and load the gems
+```git clone https://github.com/Tagrand/instagram-challenge```
+```bundle install```
+2) Run the server 
+```bin/rails server```
+3) Go to localhost:3000
+4) Login and Enjoy!
 
 ## Technologies used  <a name= "Technologies"></a>
   - Ruby
