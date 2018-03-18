@@ -14,6 +14,7 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 $ git clone git@github.com:MatthewBurstein/Lintstagram.git
 $ cd lintstagram
 $ bundle install
+$ rails db:migrate
 $ rake db:seed
 $ rails server
 Now visit http://localhost:3000/ and check out the lint.
