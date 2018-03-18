@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :pictures
   has_many :comments
+  has_many :likes
 end
