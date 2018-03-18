@@ -17,9 +17,13 @@ class ImagesController < ApplicationController
     else
       messages = ""
       @image.errors.full_messages.each do |message|
-        messages += message
+        if message.include? 'Image is invalid'
+          flash[:notice] = 'Incorrect file type, please use .jpg or .png'
+        else
+          messages += message
+          flash[:notice] = messages
+        end
       end
-      flash[:notice] = messages
       render :new
     end
   end

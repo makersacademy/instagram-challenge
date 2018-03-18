@@ -26,4 +26,14 @@ feature 'form validations', js: true do
     expect(page).to have_content("Image can't be blank")
   end
 
+  scenario 'user tries to add a new image with an invalid file type' do
+    visit '/images'
+    click_button 'Add an image'
+    attach_file('image[image]', Rails.root + "app/assets/images/Untitled.pages")
+    fill_in 'image[user]', with: 'Hannah', visible: false
+    fill_in 'image[caption]', with: 'Grumpy Capybara'
+    click_button 'Create Image'
+    expect(page).to have_content("Incorrect file type, please use .jpg or .png")
+  end
+
 end
