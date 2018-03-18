@@ -10,5 +10,5 @@ class Picture < ApplicationRecord
   validates :title, presence: true
   validates_attachment :image, presence: true,
   content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] },
-  size: { in: 0..500.kilobytes }
+  size: { in: 0..1000.kilobytes }
 end
