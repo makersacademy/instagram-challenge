@@ -13,6 +13,7 @@
 </p>
 <% end %>
 
+<% if current_user != @picture.user %>
 <h2>Add a comment:</h2>
 <%= form_with(model: [ @picture, @picture.comments.build ], local: true) do |form| %>
   <p>
@@ -23,9 +24,12 @@
     <%= form.submit %>
   </p>
 <% end %>
+<% end %>
 
+<% if current_user == @picture.user %>
 <%= link_to 'Edit', edit_picture_path(@picture) %>
 <%= link_to 'Destroy', picture_path(@picture),
     method: :delete,
     data: { confirm: 'Are you sure?' } %>
+<% end %>
 <%= link_to 'Back', pictures_path %>

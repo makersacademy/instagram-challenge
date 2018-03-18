@@ -13,3 +13,12 @@ def sign_up
   fill_in :"user[password_confirmation]", with: "jimjim"
   click_button "Sign up"
 end
+
+def sign_up_bob
+  visit '/'
+  click_link "Sign Up"
+  fill_in :"user[email]", with: "bob@bob.bob"
+  fill_in :"user[password]", with: "bobbob"
+  fill_in :"user[password_confirmation]", with: "bobbob"
+  click_button "Sign up"
+end

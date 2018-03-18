@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180318155404) do
+ActiveRecord::Schema.define(version: 20180318162132) do
 
   create_table "comments", force: :cascade do |t|
     t.string "body"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20180318155404) do
 
   create_table "pictures", force: :cascade do |t|
     t.string "title"
-    t.string "picture_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_file_name"
