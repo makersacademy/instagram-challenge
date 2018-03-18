@@ -15,6 +15,22 @@
 </p>
 <% end %>
 
+<% if @picture.comments.last != nil %>
+<% if @picture.comments.last.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@picture.comments.last.errors.count, "error") %> prohibited
+      this picture from being saved:
+    </h2>
+    <ul>
+      <% @picture.comments.last.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<% end %>
+
 <% if current_user != @picture.user %>
 <h2>Add a comment:</h2>
 <%= form_with(model: [ @picture, @picture.comments.build ], local: true) do |form| %>
