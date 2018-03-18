@@ -8,6 +8,27 @@
   <%= @post.description %>
 </p>
 
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+  <% if comment.valid? %>
+    <p>
+      <strong>User:</strong>
+      <%= comment.user %>
+    </p>
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.body %>
+    </p>
+    <p>
+      <%= link_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  <% end %>
+<% end %>
+
+<h2>Post a comment:</h2>
+
+<%= render 'comments/form' %>
+
 <%= link_to 'Edit', edit_post_path(@post) %>
 <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', posts_path %>
