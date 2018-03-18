@@ -1,6 +1,6 @@
 feature 'Post picture' do
   scenario 'users can enter url of image with a comment' do
-    visit '/'
+    visit '/pictures/new'
     fill_in :"picture[url]", with: 'https://i.imgur.com/B8p2zl0.jpg'
     fill_in :"picture[comment]", with: 'coooool cat'
     click_button 'Submit'
