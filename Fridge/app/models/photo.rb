@@ -9,13 +9,17 @@ class Photo < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   def count_likes
-    counter = 0
-    for i in 0...Like.all.count do
-      if Like.all[i].photo_id == this.id then
-        counter += 1
-      end
-    end
-    return counter
+    Like.where("photo_id = #{self.id}").count
+
+  #   Like.find(:photo_id: self.if)
+  #   counter = 0
+  #   for i in 0...Like.all.count do
+  #     if Like.all[i].photo_id == self.id then
+  #       counter += 1
+  #     end
+  #   end
+  #   return counter
+  # end
   end
 
 end
