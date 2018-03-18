@@ -1,8 +1,11 @@
 
-[Scenario](#scenario) | [Approach](#approach) | [User Stories](#stories) | [Development points](#extention) | [Setup](#Setup)| [Play](#Play) | [Technologies](#Technologies)
 
-~~Instagram Challenge~~ Pictogram
-===================
+<h2 align="center"> Pictogram </h2>
+<h3 align="center"> Combining the excitement of Instagram and Pictionary in one place! </h3>
+
+ <p align="center">  <a href='#scenario'>Scenario</a> |  <a href='#approach'>Approach</a>   |   <a href='#reflections'>Reflections</a> |
+ <a href='#user_story'> User Stories</a> |  <a href='#setup'>Setup</a>   |   <a href='#tech'>Tech</a>
+   
 
 *Note this is a site for drawing pictures and guessing what the pictures are of.* **Not** *a site for pictogram enthusiasts.
 Apologies for any disappointment caused, but why not stay, and make some pictionary clues that use pictograms (e.g. 4 weddings and a funeral?!)*
@@ -25,7 +28,17 @@ I have set myself 3 targets for this challenge
 
 As usual I am following TDD, with Capybara and Rspec, but I am going to be focusing on making sure that I don't over test. I sometimes have produced..alot of tests that often overlap or are unclear to users. So I have focused on writing user stories, issues and planning my structure with tests in mind to make sure I produce a throughoutly tested product, that is done so efficiently.
 
-## User stories <a name= "stories"></a>
+## Reflections <a name= "reflections"></a>
+
+#### With more time I would have:
+
+1) Added a way of approving right and wrong answers
+2) Added a points functionality when you get the right answer and ranked users
+3)  Worked more on styling, maybe a more handwritten look (like pictures drawn in pictionary)
+4) Add difficulty ratings based on time unanswered (incentives attempts on old images too)
+
+
+## User stories <a name= "user_story"></a>
 
 ### MVP
 
@@ -75,17 +88,6 @@ I want to be able to have a link to my username when I guess.
 ```
 - [ ] Done
 
-
-### Extras
-1) Way of approving right and wrong answers
-2) Way of getting points when you get the right answer
-3) User holds onto those points
-4) Looks nice
-5) Add difficulty ratings based on time unanswered (incentives attempts on old images too)
-
-## Development points <a name= "extention"></a>
-
-We will see
 
 ## Setup <a name= "Setup"></a>
 -------
