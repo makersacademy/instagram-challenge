@@ -33,6 +33,7 @@ It was intended as a Flickr clone and was developed as a weekend project to get 
 * Posts can have comments, which are displayed in reverse chronological order and include User who posted the comment, Body and Created_at
 ![Alt text](/docs/readme_pics/comments_top.png?raw=true "Comments top")
 ![Alt text](/docs/readme_pics/comments_bottom.png?raw=true "Comments bottom")
+
 ## Approach
 
 * Diagrammed the MVC and made sure to structure classes/models before starting to write the code.
