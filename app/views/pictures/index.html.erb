@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pictures</h1>
+
+<table>
+  <% n = 1 %>
+  <tbody>
+    <% @pictures.each do |picture| %>
+      <tr>
+        <h2> <%= 'Beautiful Photo Numero: ' + n.to_s%> </h2>
+        <h3> <%= picture.description %> </h3>
+        <%=link_to picture_path(picture.id) do %>
+        <%= image_tag picture.imgURL %>
+        <% end %>
+      </tr>
+
+      <% n += 1 %>
+      <div>
+      <%= link_to 'Show', picture %>
+      <% if user_signed_in? && current_user.id == picture.user_id %>
+        | <%= link_to 'Edit', edit_picture_path(picture) %> |
+        <%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Comment</th>
+          <th></th>
+          <th></th>
+        </tr>
+      <% @comments = picture.comments %>
+
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.name %></td>
+          <td><%= comment.comment %></td>
+          <% if user_signed_in? && current_user.id == comment.user_id %>
+            <td><%= link_to 'Edit', edit_picture_comment_path(comment.picture, comment) %></td>
+            <td><%= link_to 'Delete', [comment.picture, comment], :confirm => 'Are you sure?', :method => :delete %></td>
+          <% end %>
+        </tr>
+      <% end %>
+      </table>
+
+      <h2><%= link_to 'Add Comment', new_picture_comment_path(picture) %>
+      </h2>
+    <div class="">
+      ----------------------------
+    </div>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<h1><%= link_to 'Add New Picture', new_picture_path %>
+</h1>

@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h2> <%= @picture.description %> </h2>
+  <td> <img src=<%= @picture.imgURL %> alt=""> </td>
+  <div class="">
+    <% if user_signed_in? && current_user.id == @picture.user_id %>
+      <%= link_to 'Edit', edit_picture_path(@picture) %> |
+      <%= link_to 'Delete', @picture, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+</p>
+
+<p>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Comment</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% n = 0 %>
+  <% @comments = @picture.comments %>
+  <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.name %></td>
+      <td><%= comment.comment %></td>
+            <% n += 1 %>
+      <% if user_signed_in? && current_user.id == comment.user_id %>
+      <td id=<%= n.to_s %>><%= link_to 'Edit', edit_picture_comment_path(comment.picture, comment) %></td>
+      <td id=<%= 'd' + n.to_s %>><%= link_to 'Delete', [comment.picture, comment], :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </table>
+</p>
+<h2><%= link_to 'Add Comment', new_picture_comment_path(@picture) %>
+</h2>
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Back To All Pictures', pictures_path %>
