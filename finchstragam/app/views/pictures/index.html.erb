@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<p id="alert" style="color: red;"><%= alert %></p>
 
 <h1>Pictures</h1>
 
@@ -19,7 +20,7 @@
         <td><%= image_tag(picture.link) %></td>
         <td><%= picture.description %></td>
         <td><%= link_to 'Show', picture %></td>
-        <% if current_user.id == picture[:user_id] %>
+        <% if current_user && current_user.id == picture[:user_id] %>
           <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
         <% end %>
         <td><%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>

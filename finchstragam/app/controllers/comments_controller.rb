@@ -29,7 +29,8 @@ class CommentsController < ApplicationController
     @params = comment_params
     @params[:user_id] = current_user.id
     @picture = Picture.find(params['picture_id'])
-    @comment = @picture.comments.new(@params)
+
+    @comment = current_user.pictures.find(@picture.id).comments.new(@params)
 
     respond_to do |format|
       if @comment.save

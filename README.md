@@ -50,8 +50,8 @@ Development:
 Users (can have many pictures)
 - devise gem
 
-Likes (belong to a specific picture)
-- number_of_likes:integer
+Likes (belong to a specific picture and to a specific user)
+- a picture cannot be liked twice by the same user, checking uniqueness
 ```
 
 Development:
@@ -62,7 +62,7 @@ Development:
 
 Next focus
 ------
-[TBC]
+* Same as I did for the Like model, I would refactor the Comment one and get rid of the scaffold there, there are a bunch of controller methods that I am not using at all for that one, therefore it makes more sense to have searate methods maybe inside the Pictures controller.
 
 Personal code review
 ------

@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :pictures do
-    resources :comments, :likes
+    post 'like' => 'pictures#like'
+    delete 'unlike' => 'pictures#unlike'
+    resources :comments
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

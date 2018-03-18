@@ -14,6 +14,8 @@ class PicturesController < ApplicationController
   def show
     @pictures = Picture.find(params['id'])
     @comments = @pictures.comments
+
+    @liked = Like.where({'user_id': current_user}).where('picture_id': @picture.id).nil?
   end
 
   # GET /pictures/new
@@ -23,14 +25,13 @@ class PicturesController < ApplicationController
 
   # GET /pictures/1/edit
   def edit
+    check_user
   end
 
   # POST /pictures
   # POST /pictures.json
   def create
-    @params = picture_params
-    @params[:user_id] = current_user.id
-    @picture = Picture.new(@params)
+    @picture = current_user.pictures.new(picture_params)
 
     respond_to do |format|
       if @picture.save
@@ -67,6 +68,32 @@ class PicturesController < ApplicationController
     end
   end
 
+  # POST /pictures/:id/like
+  def like
+    @picture = Picture.find(params['picture_id'])
+    @like = @picture.likes.new({'user_id': current_user.id})
+
+    begin
+      redirect_to @picture, notice: 'You liked this picture!' if @like.save
+    rescue => exception
+      redirect_to @picture, alert: 'You already like this picture, do not be greedy!'
+    end
+
+    # Like.where('user_id', 1).where('photo_id', 1)
+    # .exist() // Si devuelve true es que le ha dado like, si devuelve false, que no
+  end
+
+  # DELETE /pictures/:id/unlike
+  def unlike
+    @picture = Picture.find(params['picture_id'])
+    @like = Like.where({'user_id': current_user}).where('picture_id': @picture.id)
+
+    # if @like != nil
+      @like.destroy
+      redirect_to @picture, notice: "You unlinked this picture!"
+    # end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_picture
@@ -76,5 +103,11 @@ class PicturesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def picture_params
       params.require(:picture).permit(:link, :description)
+    end
+
+    def check_user
+      if current_user.id != @picture[:user_id]
+        redirect_to pictures_path, alert: 'You shall not pass'
+      end
     end
 end
