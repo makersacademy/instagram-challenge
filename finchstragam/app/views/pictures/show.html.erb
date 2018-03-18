@@ -21,5 +21,7 @@
 <br>
 
 <%= link_to 'Add Comment', new_picture_comment_path(@picture) %> |
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<% if current_user.id == @picture[:user_id] %>
+  <%= link_to 'Edit', edit_picture_path(@picture) %> |
+<% end %>
 <%= link_to 'Back', pictures_path %>
