@@ -5,7 +5,7 @@ module YourHelper
     attach_file('image[image]', Rails.root + "app/assets/images/Capybara.jpg")
     fill_in 'image[user]', with: 'Hannah', visible: false
     fill_in 'image[caption]', with: 'Grumpy Capybara'
-    click_button 'Create Image'
+    click_button 'Add image'
   end
 
   def add_an_image_of_lemur
@@ -14,7 +14,7 @@ module YourHelper
     attach_file('image[image]', Rails.root + "app/assets/images/Lemur.jpg")
     fill_in 'image[user]', with: 'Hannah', visible: false
     fill_in 'image[caption]', with: 'Grumpy Lemur'
-    click_button 'Create Image'
+    click_button 'Add image'
   end
 end
 

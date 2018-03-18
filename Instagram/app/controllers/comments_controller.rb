@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     else
       messages = ""
       comment.errors.full_messages.each do |message|
-        messages += message
+        messages += message + " "
       end
       flash[:notice] = messages
       redirect_to image
