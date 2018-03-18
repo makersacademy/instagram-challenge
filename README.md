@@ -39,7 +39,7 @@ Testing
 - RSpec
 
 ## Continuation
-Had I would be keen to work on:
+Had I more time, I would be keen to work on:
 - Improving the styling across the app, especially making it responsive and improving accessibility
 - Allowing users to upload their own images of lint rather than only use images hosted elsewhere
 - Add more information to user accounts, especially a profile picture to be displayed alongside their name.
