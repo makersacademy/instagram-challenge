@@ -12,6 +12,13 @@ class LikesController < ApplicationController
   def new
   end
 
+  def destroy
+    @picture = Picture.find(params[:picture_id])
+    @like = Like.find(params[:id])
+    @like.destroy
+    redirect_to picture_path(@picture)
+  end
+
   private
 
   def like_params
