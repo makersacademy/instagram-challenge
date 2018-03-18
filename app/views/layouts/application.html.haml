@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Instagram
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    -if notice
+      %p.alert.alert-success
+        = notice
+    -if alert
+      %p.alert.alert-danger
+        = alert
+    = yield
+
+    %p.navbar-text.pull-right
+      -if user_signed_in?
+        Logged in as
+        %strong
+          = current_user.email
+        = link_to 'Edit Profile', edit_user_registration_path, :class => 'navbar-link'
+        = link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'navbar-link'
+      -else
+        = link_to 'Sign up', new_user_registration_path, :class => 'navbar-link'
+        = link_to 'log in', new_user_session_path, :class => 'navbar-link'
