@@ -52,10 +52,10 @@
 
   Outstanding questions from the exercise:
   ---------
+  * By creating a rails project in the repo, it created Git submodules. How do these work in practice / should I have somehow structured it differently to avoid git submodules. I forced the addition of files and removal of the submodule as it was clear this wasn't pushing correctly and I didn't have time to research how to effectively use submodules. I lost my commit history as a result. 
   * How do the in-built rails tests work for rendering forms etc/ are these tests things that I should aim to have for my applications, or are they over kill?
   * I know I can improve my tests and test coverage - what should be the next step priorities for testing beyond the ones I have?
   * How do you write a test to check an image has been loaded in and shown?
-  * By creating a rails project in the repo, it created Git submodules. How do these work in practice / should I have somehow structured it differently to avoid git submodules
   * How secure is my application (any obvious ways of subverting the user authentication I created?)
   * Discuss use of scaffolds
   * What other core rails features exist beyond the ones I have used (scaffolds/ generations/ path helpers)
