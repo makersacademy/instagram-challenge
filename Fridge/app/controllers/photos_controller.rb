@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
 
   def index
+    @current_user = User.find(session["warden.user.user.key"][0][0])
     @photos = Photo.all
     @like = Like.new
   end
