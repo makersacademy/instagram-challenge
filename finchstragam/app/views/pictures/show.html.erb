@@ -21,7 +21,7 @@
 
 <br>
 
-<% if @liked %>
+<% if !@liked %>
   <form action="/pictures/<%= @picture.id %>/like" method="POST">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <button type="submit">Like!</button>
@@ -29,6 +29,7 @@
 <% else %>
   <form action="/pictures/<%= @picture.id %>/unlike" method="POST">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="hidden" name="_method" value="delete">
     <button type="delete">Unlike!</button>
   <form>
 <% end %>

@@ -15,7 +15,7 @@ class PicturesController < ApplicationController
     @pictures = Picture.find(params['id'])
     @comments = @pictures.comments
 
-    @liked = Like.where({'user_id': current_user}).where('picture_id': @picture.id).nil?
+    @liked = Like.where({'user_id': current_user.id}).where('picture_id': @picture.id).present?
   end
 
   # GET /pictures/new
@@ -88,10 +88,8 @@ class PicturesController < ApplicationController
     @picture = Picture.find(params['picture_id'])
     @like = Like.where({'user_id': current_user}).where('picture_id': @picture.id)
 
-    # if @like != nil
-      @like.destroy
-      redirect_to @picture, notice: "You unlinked this picture!"
-    # end
+    Like.delete(@like)
+    redirect_to @picture, notice: "You unliked this picture!"
   end
 
   private
