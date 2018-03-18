@@ -13,7 +13,7 @@ feature 'Adding comments' do
     click_on 'Submit'
     expect(current_path).to eq('/photos')
     expect(page.status_code).to eq(200)
-    expect(page).to have_content('testusername wrote: test comment')
+    expect(page).to have_content('testusername test comment')
   end
   scenario 'Not logged in user doesnt see the add comment form' do
     visit('/')
