@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'Adding likes' do
 
-
   scenario 'Number of likes is increasing' do
     sign_up
     upload_photo
