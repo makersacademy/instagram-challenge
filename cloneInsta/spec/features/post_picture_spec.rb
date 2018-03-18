@@ -3,7 +3,7 @@ feature 'Post picture' do
     visit '/pictures/new'
     fill_in :"picture[url]", with: 'https://i.imgur.com/B8p2zl0.jpg'
     fill_in :"picture[comment]", with: 'coooool cat'
-    click_button 'Submit'
+    click_button 'Save Picture'
     expect(page).to have_xpath "//img[@src='https://i.imgur.com/B8p2zl0.jpg']"
     expect(page).to have_content "coooool cat"
   end
