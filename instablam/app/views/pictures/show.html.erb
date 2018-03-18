@@ -42,6 +42,13 @@
     <%= form.submit %>
   </p>
 <% end %>
+
+<%= form_with(model: [@picture, @picture.likes.build ], local: true) do |form| %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <%= hidden_field_tag :picture_id, @picture.id %>
+  <%= form.submit 'Like' %>
+<% end %>
+
 <% end %>
 
 <% if current_user == @picture.user %>
@@ -50,11 +57,5 @@
 <% end %>
 
 <%= link_to 'Back', pictures_path %>
-
-<%= form_with(model: [@picture, @picture.likes.build ], local: true) do |form| %>
-  <%= hidden_field_tag :user_id, current_user.id %>
-  <%= hidden_field_tag :picture_id, @picture.id %>
-  <%= form.submit 'Like' %>
-<% end %>
 
 <p><%= pluralize(@picture.likes.count, "like") %></p>

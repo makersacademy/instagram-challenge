@@ -5,7 +5,7 @@ class Picture < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_attached_file :image, styles: { small: "100x100", medium: "200x200", large: "300x300" }
+  has_attached_file :image
 
   validates :title, presence: true
   validates_attachment :image, presence: true,
