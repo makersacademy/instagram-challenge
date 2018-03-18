@@ -13,7 +13,7 @@ class ImagesController < ApplicationController
     @image = Image.new(image_params)
     @image.save
     if @image.errors.empty?
-      redirect_to @image
+      redirect_to images_url
     else
       messages = ""
       @image.errors.full_messages.each do |message|

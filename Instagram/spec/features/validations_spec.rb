@@ -1,3 +1,5 @@
+require './spec/support/web_helpers'
+
 feature 'form validations', js: true do
   scenario 'user tries to add a new image without a caption' do
     visit '/images'
@@ -34,6 +36,22 @@ feature 'form validations', js: true do
     fill_in 'image[caption]', with: 'Grumpy Capybara'
     click_button 'Create Image'
     expect(page).to have_content("Incorrect file type, please use .jpg or .png")
+  end
+
+  scenario 'user tries to add a comment without text' do
+    add_an_image_of_lemur
+    find("img[src*='Lemur.jpg']").click
+    fill_in 'comment[commenter]', with: 'Bob'
+    click_button 'submit'
+    expect(page).to have_content('Commenter can\'t be blank')
+  end
+
+  scenario 'user tries to add a ncomment without their name' do
+    add_an_image_of_lemur
+    find("img[src*='Lemur.jpg']").click
+    fill_in 'comment[comment]', with: 'Love this picture!'
+    click_button 'submit'
+    expect(page).to have_content('Comment can\'t be blank')
   end
 
 end
