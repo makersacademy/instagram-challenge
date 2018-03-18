@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
     else
       @current_user = nil
     end
-    @photos = Photo.all
+    @photos = Photo.all.reverse
     @like = Like.new
     @comment = Comment.new
   end
