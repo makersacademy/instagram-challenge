@@ -1,18 +1,14 @@
+require 'rails_helper'
+
 feature 'Adding likes' do
 
-  before(:each) do
-    User.delete_all
-  end
 
   scenario 'Number of likes is increasing' do
-    visit('/')
-    click_on('Register')
-    fill_in('user[username]', :with => 'testusername')
-    fill_in('user[email]', :with => 'email@email.com')
-    fill_in('user[password]', :with => 'password')
-    fill_in('user[password_confirmation]', :with => 'password')
-    click_on('Sign up')
+    sign_up
+    upload_photo
     click_on('Like')
-    expect(page).to have_content('1')
+    expect(current_path).to eq('/photos')
+    expect(page.status_code).to eq(200)
+    expect(page.all('.like_count')[0]).to have_content('1')
+    end
   end
-end

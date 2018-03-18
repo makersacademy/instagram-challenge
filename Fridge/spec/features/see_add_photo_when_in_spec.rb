@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 feature 'Add photo button visibility' do
 
   before(:each) do
@@ -5,24 +7,12 @@ feature 'Add photo button visibility' do
   end
 
   scenario 'Signed up user sees the add photo button' do
-    visit('/')
-    click_on('Register')
-    fill_in('user[username]', :with => 'testusername')
-    fill_in('user[email]', :with => 'email@email.com')
-    fill_in('user[password]', :with => 'password')
-    fill_in('user[password_confirmation]', :with => 'password')
-    click_on('Sign up')
+    sign_up
     expect(page).to have_content('Add Photo')
   end
 
   scenario 'Logged in user sees the add photo button' do
-    visit('/')
-    click_on('Register')
-    fill_in('user[username]', :with => 'testusername')
-    fill_in('user[email]', :with => 'email@email.com')
-    fill_in('user[password]', :with => 'password')
-    fill_in('user[password_confirmation]', :with => 'password')
-    click_on('Sign up')
+    sign_up
     click_on('Logout')
     click_on('Login')
     fill_in('user[email]', :with => 'email@email.com')
