@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :photos
   resources :likes
+  resources :comments
 
 
   get '/' => 'photos#index'

@@ -8,6 +8,7 @@ class PhotosController < ApplicationController
     end
     @photos = Photo.all
     @like = Like.new
+    @comment = Comment.new
   end
 
   def new
