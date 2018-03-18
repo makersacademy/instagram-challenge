@@ -1,6 +1,6 @@
 Lintstagram
 ===================
-A home for anyone who is enthusiastic about photos of lint.
+A home for anyone who is enthusiastic about photos of lint. Built over the course of a single weekend.
 
 ## Task
 
