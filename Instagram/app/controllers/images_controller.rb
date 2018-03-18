@@ -11,8 +11,13 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.new(image_params)
-    @image.save
-    redirect_to @image
+    p @image.errors.messages
+    if @image.save
+      redirect_to @image
+    else
+      flash[:notice] = "Oops, looks like you missed something"
+      render :new
+    end
   end
 
   def show
