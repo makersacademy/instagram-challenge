@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
 
   def index
     # @images = Image.all
-    @images = Image.all.paginate(:page => params[:page], :per_page => 6)
+    @images = Image.all.paginate(:page => params[:page], :per_page => 9)
   end
 
   def new
