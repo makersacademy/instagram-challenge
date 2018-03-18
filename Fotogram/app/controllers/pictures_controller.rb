@@ -1,5 +1,4 @@
 class PicturesController < ApplicationController
-
   def index
   end
 
@@ -16,6 +15,4 @@ class PicturesController < ApplicationController
   def pic_params
     params.require(:pictures).permit(:title, :description)
   end
-
-
 end
