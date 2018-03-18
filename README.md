@@ -58,21 +58,41 @@ Development:
 * I implemented the Devise gem to handle authentication, which made me change my tests and add new helpers to make them more readable.
 * I also modified the DB Schema with the new relations and kept updating it until Likes were added.
 
-
-
 Next focus
 ------
 * Same as I did for the Like model, I would refactor the Comment one and get rid of the scaffold there, there are a bunch of controller methods that I am not using at all for that one, therefore it makes more sense to have searate methods maybe inside the Pictures controller.
+* I would need to focus on the tests, they were passing at some point and I found myself doing DDT instead of TDD. I honestly prioritised getting a sense of how Rails work this week rather than following a TDD approach. I was carefully testing all my moves with the help of RailsPanel in Chrome though.
+* Some more CSS would be also a good idea to work on, but it was not a priority for me at all.
 
 Personal code review
 ------
 * I could have probably started the challenge with the authentication, as everything is based on it. Anonymous users should not have access to posting pictures, commenting on them or even liking them, so it makes sense to start from the User.
+* I am sort of satisfied as I prioritised learning about nested relations within models and different types of requests. Also about the general architecture within Rails.
 
+* Overall, I feel like a better planning could have helped me getting the challenge done faster and in a better way.
+
+Tech Stack
+------
+* Ruby on Rails
+* RSpec
+* Devise
+* Sqlite3
+* RailsPanel
+
+How to run
+------
+* Install Rails if you haven't yet, run `$ gem install rails`
+* Fork & Clone the repo
+* Run `$ bundle install` from the project directory
+* Migrate the Database by running `$ rails db:migrate`
+* Start the server: `$ rails s`
 
 Screenshots
 ------
-[TBC]
+![News](/finchstragam/public/screenshot.png?raw=true)
 
+===================
+===================
 
 
 Instagram Challenge
