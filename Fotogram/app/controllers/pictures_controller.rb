@@ -2,6 +2,7 @@ class PicturesController < ApplicationController
   before_action :find_pic, only: [:show, :edit, :update, :destroy]
 
   def index
+    @pictures = Picture.all.order("created_at DESC")
   end
 
   def show
@@ -21,6 +22,11 @@ class PicturesController < ApplicationController
     end
   end
 
+  def destroy
+    @picture.destroy
+    redirect_to root_path
+  end
+
   private
 
   def pic_params
@@ -28,6 +34,6 @@ class PicturesController < ApplicationController
   end
 
   def find_pic
-    @picture = Picture.find(params[:id]) 
+    @picture = Picture.find(params[:id])
   end
 end
