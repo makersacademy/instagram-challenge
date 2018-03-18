@@ -31,6 +31,13 @@
   <% end  %>
 
 </div>
+<br>
+<%= link_to 'Delete image', image_path(@image), :method => :delete, data: {:confirm => "Are you sure?"} %>
+
+<%= form_for([@image, Heart.new]) do |form| %>
+  <%= form.submit 'Heart' %>
+<% end  %>
+<%= @image.hearts.count %>
 </div>
 
 <div class="comments">
@@ -46,7 +53,6 @@
 
 </div>
 
-<%= link_to 'Delete image', image_path(@image), :method => :delete, data: {:confirm => "Are you sure?"} %>
 
   </body>
 </html>
