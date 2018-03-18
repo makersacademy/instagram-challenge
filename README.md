@@ -7,35 +7,35 @@
  <a href='#user_story'> User Stories</a> |  <a href='#setup'>Setup</a>   |   <a href='#tech'>Tech</a>
    
 
-*Note this is a site for drawing pictures and guessing what the pictures are of.* **Not** *a site for pictogram enthusiasts.
-Apologies for any disappointment caused, but why not stay, and make some pictionary clues that use pictograms (e.g. 4 weddings and a funeral?!)*
+*Note this is a site for drawing pictures and guessing what the pictures are of.* **Not** *a site for pictogram enthusiasts. Apologies for any disappointment caused.*
 
 ## Scenario <a name= "scenario"></a>
 
-Instagram is meant to be quite good. You get to upload pictures, comment with your friends, and have a great time. ~~But it lacks a competative element, so its no fun really.~~ *Rephrase* Though some may argue that Instagram itself has some underlying competition, there are no formal rules. And as Monica from friends says 'Rules are good, they help control the fun!' An ideology that I also subscribe to.
+Instagram is meant to be quite good. You get to upload pictures, comment with your friends, and have a great time. But it lacks a competative element, or at least, it lacks any formal rules, so its no fun really. And as Monica from friends says 'Rules are good, they help control the fun!' An ideology that I fully subscribe to.
 
-So here it is. Pictogram! A combination of Pictionary and Instagram. You upload your pictures (you could hand draw or them or why not try out doing [https://www.draw.io](https://www.draw.io/) for more internet based fun! You upload your pictures, and your friends (or random strangers) guess what you've drawn.
+So here it is. Pictogram! A combination of Pictionary and Instagram. First you have to signup as a member. You then can upload your pictures (which hint to a film, book etc) or guess the answers to other members. You can add hints if you like, or let them muddle through on their own. It's up to you.
 
 ## Approach <a name= "approach"></a>
 
-I wanted to understand rails more so I started doing a tutorial on how to build Instagram with rails (a funny coincidence). You can see that here[](). The tutorial is excellent and is here[](). I learnt alot from this, about rails and some useful gems, but I didn't want to use it as my actual project and wanted to go totally tutorial free (off the rails...) This product uses some skills I learnt, but requires me to reapply them in new contexts, which will challenge and test my understanding.
+I wanted to understand rails more so I started doing a [tutorial on how to build Instagram with rails](https://www.devwalks.com/lets-build-instagram-in-rails-part-1/) (a funny coincidence). The tutorial is excellent and I would reccomend it to anyone learning rails. But I didn't want to use it as my actual project and wanted to go totally tutorial free (off the rails...) So I started the project again, using the skills I learnt but with a slightly different product to test my understanding by making me reapply these skills  in new contexts.
 
-I have set myself 3 targets for this challenge
+One big change this time, is after doing the [bowling challenge](https://github.com/Tagrand/bowling-challenge) I decided to try building one feature at a time. If you want to see my reasoning why, have a look [here](https://github.com/Tagrand/bowling-challenge#reflections). 
 
+#### Targets
+
+   - Build one feature at a time (I broke these down into user stories, which I then tracked. See below).
    - Add some cool functionalities that arn't on Instagram - (points for correct guesses, and user rankings) - to challenge my understanding of rails. And beat instagram.
-   - Break jobs down into smaller issues and focusing at passing each at a time
+   - Avoid overtesting, just focus on core functions and edge cases, not every scenario. This came from feedback by a Makers coach. 
    - Following the pomodoro cycle, to test out if this is a more efficient way of using my time.
-
-As usual I am following TDD, with Capybara and Rspec, but I am going to be focusing on making sure that I don't over test. I sometimes have produced..alot of tests that often overlap or are unclear to users. So I have focused on writing user stories, issues and planning my structure with tests in mind to make sure I produce a throughoutly tested product, that is done so efficiently.
 
 ## Reflections <a name= "reflections"></a>
 
 #### With more time I would have:
 
-1) Added a way of approving right and wrong answers
-2) Added a points functionality when you get the right answer and ranked users
-3)  Worked more on styling, maybe a more handwritten look (like pictures drawn in pictionary)
-4) Add difficulty ratings based on time unanswered (incentives attempts on old images too)
+- Added a way of approving right and wrong answers
+- Added a points functionality when you get the right answer and ranked users
+- Worked more on styling, maybe a more handwritten look (like pictures drawn in pictionary)
+- Add difficulty ratings based on time unanswered (incentives attempts on old images too)
 
 
 ## User stories <a name= "user_story"></a>
