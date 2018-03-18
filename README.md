@@ -56,8 +56,6 @@ Likes (belong to a specific picture)
 
 Development:
 * I implemented the Devise gem to handle authentication, which made me change my tests and add new helpers to make them more readable.
-* I also thought more carefully about the whole design, but now I was sure this would be the last big change that would happen as the parent will be the user and it is easier to accommodate more children than changing the parent I realised.
-
 
 
 Next focus
