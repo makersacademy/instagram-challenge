@@ -11,11 +11,12 @@
 ### How to run it
 
 1. Clone this repo;
-2. Run ```bundle``` to install all the gems;
-3. Run ```rake db:migrate``` to generate the necessary databases. *If you are having problems with running ```rake db:migrate``` try running ```bin/rake db:migrate```*;
-4. Run ```rails server```;
-5. Visit localhost:3000;
-6. Enjoy.
+2. Run ```gem bundle install```
+3. Run ```bundle``` to install all the gems;
+4. Run ```rake db:migrate``` to generate the necessary databases. *If you are having problems with running ```rake db:migrate``` try running ```bin/rake db:migrate```*;
+5. Run ```rails server```;
+6. Visit localhost:3000;
+7. Enjoy.
 
 ### Features
 
