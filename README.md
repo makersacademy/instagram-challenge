@@ -1,13 +1,4 @@
-Instagram Challenge
-===================
-
-## Instructions
-
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+# Instagram Challenge
 
 ## Task
 
@@ -17,24 +8,29 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
-## How to start
+## How to use
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+```
+bundle install
+rails db:migrate
+rails s
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## My Approach
+
+I began by diagramming how the databases would link together, as I realised that there would be many relationships between tables.
+
+From there I drew up an MVP, deciding this would just be an application that a user can upload a picture to and then see the picture on the home page, along with all other posted pictures.
+
+After the MVP was complete, I moved on to being able to get users to sign up and authenticated. I used devise, and had this up and running quite quickly.
+
+I then tried to get the User table and Picture table linked together, and have it so that pictures are linked to the user who posted them.
+
+But this is where I started to struggle. I find it incredibly hard to get visibility on what information rails wants, and how to get it once I do know. Querying the database and getting visibility on table relationships and whether they are set up correctly is difficult for me, and I don't exactly know how to go about it.
+
+I really struggle with not knowing what rails is doing in the background of all these processes, and don't understand what info the views need as soon as I nest routes and try and link tables.
+
+Key questions:
+
+* How do I get better visibility in rails?
+* How do I link multiple tables together? Multiple has_many relationships?
