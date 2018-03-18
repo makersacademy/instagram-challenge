@@ -18,12 +18,4 @@ feature "Validating editing pictures" do
     expect(page).to have_content("prohibited")
   end
 
-  scenario "Error if url field left blank" do
-    sign_up
-    create_new_picture
-    click_link "Edit"
-    fill_in "picture[title]", with: "New Title"
-    click_on "Update Picture"
-    expect(page).to have_content("prohibited")
-  end
 end
