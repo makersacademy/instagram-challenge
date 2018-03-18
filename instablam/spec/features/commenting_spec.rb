@@ -1,5 +1,6 @@
 feature "Comment on pictures" do
   scenario "Users can comment on a picture" do
+    sign_up
     create_new_picture
     fill_in "comment[body]", with: "Comment!"
     click_on "Create Comment"

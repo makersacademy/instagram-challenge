@@ -1,5 +1,6 @@
 feature "Validating editing pictures" do
   scenario "Error if both fields left blank" do
+    sign_up
     create_new_picture
     click_link "Edit"
     fill_in "picture[title]", with: ""
@@ -9,6 +10,7 @@ feature "Validating editing pictures" do
   end
 
   scenario "Error if title field left blank" do
+    sign_up
     create_new_picture
     click_link "Edit"
     fill_in "picture[title]", with: "New Title"
@@ -18,6 +20,7 @@ feature "Validating editing pictures" do
   end
 
   scenario "Error if url field left blank" do
+    sign_up
     create_new_picture
     click_link "Edit"
     fill_in "picture[title]", with: ""

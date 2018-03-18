@@ -1,5 +1,6 @@
 feature "Edit pictures" do
   scenario "Users can edit a picture" do
+    sign_up
     create_new_picture
     click_link "Edit"
     fill_in "picture[title]", with: "Edited Picture"
