@@ -1,19 +1,19 @@
 module YourHelper
-  def add_an_image_of_capybara
+  def add_an_image_of_giraffe
     visit '/images'
     click_button 'Add an image'
-    attach_file('image[image]', Rails.root + "app/assets/images/Capybara.jpg")
+    attach_file('image[image]', Rails.root + "app/assets/images/Giraffe_CC.jpg")
     fill_in 'image[user]', with: 'Hannah', visible: false
-    fill_in 'image[caption]', with: 'Grumpy Capybara'
+    fill_in 'image[caption]', with: 'Giraffe'
     click_button 'Add image'
   end
 
-  def add_an_image_of_lemur
+  def add_an_image_of_alpaca
     visit '/images'
     click_button 'Add an image'
-    attach_file('image[image]', Rails.root + "app/assets/images/Lemur.jpg")
+    attach_file('image[image]', Rails.root + "app/assets/images/Alpaca_CC.jpeg")
     fill_in 'image[user]', with: 'Hannah', visible: false
-    fill_in 'image[caption]', with: 'Grumpy Lemur'
+    fill_in 'image[caption]', with: 'Alpaca'
     click_button 'Add image'
   end
 end

@@ -2,8 +2,8 @@ require './spec/support/web_helpers.rb'
 
 feature 'add comment', js: true do
   scenario 'user adds a comment to a picture' do
-    add_an_image_of_lemur
-    find("img[src*='Lemur.jpg']").click
+    add_an_image_of_giraffe
+    find("img[src*='Giraffe_CC.jpg']").click
     fill_in 'comment[comment]', with: 'Love this picture!'
     fill_in 'comment[commenter]', with: 'Bob'
     click_button('submit')
