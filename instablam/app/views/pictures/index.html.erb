@@ -1,22 +1,16 @@
-<% if current_user %>
-<%= link_to 'Add Picture', new_picture_path %>
-<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-<% end %>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Picture</th>
-  </tr>
-
-  <% @pictures.each do |picture| %>
-    <tr>
-      <td><%= picture.title %></td>
-      <td>
-        <a href="<%= "#{picture_path(picture)}"%>">
-          <img src="<%= picture.image %>" height="150px" width="150px">
-        </a>
-      </td>
-    </tr>
+  <% if current_user %>
+    <%= link_to 'Add Picture', new_picture_path, class: 'add' %><br>
   <% end %>
-</table>
+
+<div class="main-container">
+  <% @pictures.each do |picture| %>
+    <div class="picture-container">
+
+      <a href="<%= "#{picture_path(picture)}"%>">
+        <div class="image-container">
+          <img src="<%= picture.image %>" alt="<%= picture.title %>" class="picture-image">
+        </div>
+      </a>
+    </div>
+  <% end %>
+</div>
