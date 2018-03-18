@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :pictures
   root "pictures#index"
+  resources :pictures
+  devise_for :users, controllers: {
+        sessions: 'users/sessions'
+      }
 end
