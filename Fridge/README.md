@@ -1,24 +1,26 @@
-# README
+# Fridge - Instagram Clone for food.
+## Share your food online, where people can admire it, but only you can eat it
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Technology:
 
-Things you may want to cover:
+Programing language: Ruby;
+Framework: Rails, Paperclip, Devise;
+Testing: Capybara;
+Front-end: CSS, HTML.
 
-* Ruby version
+### How to run it
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+1. Clone this repo
+2. Run ```bundle``` to install all the gems
+3. Run ```rake db:migrate``` to generate the necessary databases. *If you are having problems with running ```rake db:migrate``` try running ```bin/rake db:migrate```*
+4. Run ```rails server```
+5. Visit localhost:3000
 
 * ...
+
+### Features
+1) Sign up, Log in, Log out
+2) Check out the pictures
+3) Add photos when logged in
+4) Comment photos when logged in
+5) Like photos when logged in
