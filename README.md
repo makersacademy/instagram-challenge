@@ -1,13 +1,6 @@
-Instagram Challenge
+Lintstagram
 ===================
-
-## Instructions
-
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+A home for anyone who is enthusiastic about photos of lint.
 
 ## Task
 
@@ -15,90 +8,109 @@ Build Instagram: Simple huh!
 
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters!
+## To use
 
-## How to start
+```
+$ git clone git@github.com:MatthewBurstein/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle install
+$ rake db:seed
+$ rails server
+Now visit http://localhost:3000/ and check out the lint.
+```
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+## Methodology
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+I broke the task down into user stories which I organised into groups, the first of which was an mvp, and subsequently what felt like complete features.
 
-## Code Quality
+Having done that, I set about building the app using the Rails tools we have learnt over the previous week. I followed TDD practices by beginning with a feature test for each feature and then solving error messages until the feature was complete.
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+Once the primary business logic was in place, I removed all unused routes and prepared seeds for the database so that it can be used 'out of the box' by anyone who wishes to.
+
+Finally, I worked on styling the app and tidying up any loose ends.
+
+## Technologies
+- Ruby on Rails
+- Devise
+- HTML/CSS
+
+Testing
+- Capybara
+- RSpec
+
+## Continuation
+Had I would be keen to work on:
+- Improving the styling across the app, especially making it responsive and improving accessibility
+- Allowing users to upload their own images of lint rather than only use images hosted elsewhere
+- Add more information to user accounts, especially a profile picture to be displayed alongside their name.
 
 ## User stories
+
+MVP
 ```
   As a user
   So I can view images of lint
-  I would like to be able to visit Lintstagram and see the images which have been posted
+  I would like to visit Lintstagram and see the images which have been posted
 
   As a user
   So I can add my picture of lint
-  I would like to be able to add a picture to the website
+  I would like to add a picture to the website
 
   As a user
   So I can remove a picture from Lintstagram
-  I would like to be able to click a delete button on the show page of a picture
+  I would like to click a delete button on the show page of a picture
+```
 
-  As a user
-  So my picture is safe
-  I want no other user to be able to delete it
-
+Second feature: Users
+```
   As a user
   So I can create an account
-  I would like to be able to click a login button on the homepage
+  I would like to click a sign up button at the top of the screen
 
   As a user
   So I can log in to my account once it has been created
-  I would like to be able to click a sign in button on the homepage
+  I would like to click a sign in button on the homepage
+
+  As a user
+  So my picture is safe
+  I would like no other user to be able to delete it
 
   As a signed in user
   So I can sign out
-  I would like to be able to click a sign out button and be signed out
+  I would like to click a sign out button and be signed out
 
   As a user
   So I can see who owns some lint
-  I want to see the user's email address displayed by each picture
+  I would like to see the user's email address displayed by each picture
+```
 
+Third feature: Comments
+```
   As a user
   So I can voice my opinions about lint
-  I would like to be able to comment on pictures
+  I would like to comment on pictures
 
   As a user
   So I can change my mind
-  I want to be able to delete a comment I have made
+  I would like to delete a comment I have made
 
   As a user,
   So my comment is safe,
-  I want no other user to delete it
-
-  As a user
-  So I can silently approve of specific pictures
-  I would like to be able to 'like' pictures
+  I would like no other user to be able to delete it
 ```
 
-#### Structure
-User:
-- Fields
-  - Username
-  - Email address
-  - Password
-- Has many Pictures
-- Has many Comments
+Fourth feature: Likes
 
-Picture:
-- Fields
-  - Image
-- Belongs to User
-- Has many Comments
+```
+  As a user
+  So I can express approval of approve of specific pictures
+  I would like to 'like' pictures
 
-Comment:
-- Fields
-  - Body
-- Belongs to User
-- Belongs to Picture
+  As a user
+  So I know the system is fair
+  I would like to not be able to like a picture I have already liked
+
+  As a user
+  So I can I change my mind
+  I would like to unlike a picture
+```
