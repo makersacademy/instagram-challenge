@@ -1,6 +1,8 @@
 class Picture < ApplicationRecord
 
-  has_many :comments
+  belongs_to :user
+
+  has_many :comments, dependent: :destroy
 
   has_attached_file :image, styles: { small: "100x100", medium: "200x200", large: "300x300" }
 
