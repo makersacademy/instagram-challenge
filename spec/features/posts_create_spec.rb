@@ -10,6 +10,6 @@ feature 'Create a post' do
   scenario "Displays an error message when new post is invalid" do
     create_invalid_post
     expect(page).not_to have_content("what a terrible picture")
-    expect(page).to have_content("Description can't be blank")
+    expect(page).to have_content("Photo can't be blank")
   end
 end
