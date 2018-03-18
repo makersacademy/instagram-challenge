@@ -7,18 +7,21 @@ class PicturesController < ApplicationController
   end
 
   def new
+    p params
   end
 
   def show
-    @picture = Picture.find(params[:id])
-    p @picture.image
+    @user = User.find(params[:id])
+    @picture = @user.pictures.find(params[:id])
   end
 
   def create
     p params
-    @picture = Picture.new(picture_params)
+    @user = User.find(params[:user_id])
+    @picture = @user.pictures.create(picture_params)
     @picture.save
-    redirect_to @picture
+
+    redirect_to user_picture_path(@user)
   end
 
   private
