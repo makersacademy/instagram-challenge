@@ -23,6 +23,8 @@ gem 'paperclip', '~> 6.0'
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 
+gem 'font-awesome-rails'
+
 gem 'simple_form', '~> 3.5', '>= 3.5.1'
 
 # Use CoffeeScript for .coffee assets and views
