@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature 'delete a post' do
-  scenario 'removes post from database' do
+feature 'Update a post' do
+  scenario 'edits post in database' do
     create_new_post
     click_link 'Edit'
     fill_in :"post[photo]", with: "https://i.imgur.com/rE8X4ir.jpg"

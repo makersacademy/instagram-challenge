@@ -1,0 +1,33 @@
+ 
+<% if @post.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@post.comments.last.errors.count, "error") %> prohibited
+      this comment from being saved:
+    </h2>
+    <ul>
+      <% @post.comment.last.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<h2>Add a comment:</h2> 
+<%= form_with (model: [ @post, @post.reviews.build ], local: true) do |form| %>
+ 
+  <p>
+    <%= form.label :user %><br>
+    <%= form.text_field :user %>
+  </p>
+ 
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_field :body %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>

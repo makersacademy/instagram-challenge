@@ -11,3 +11,9 @@ def create_invalid_post
   fill_in :"post[description]", with: "what a terrible picture"
   click_button "Create Post"
 end
+
+def create_new_comment
+  fill_in 'comment[user]', with: 'carlos@example.com'
+  fill_in 'comment[body]', with: 'This picture is great!'
+  click_on 'Create Comment'
+end 
