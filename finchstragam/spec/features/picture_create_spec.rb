@@ -6,7 +6,8 @@ feature 'Post a picture' do
 
     create_valid_picture
 
-    expect(page).to have_content picture[:link]
+    # expect(page).to have_css("img[src*=" + picture[:link] + "]")
+    expect(page).to have_css("img[src*='https://cdn.pixabay.com/photo/2017/08/12/19/01/walk-2635038_960_720.jpg']")
     expect(page).to have_content picture[:description]
   end
 

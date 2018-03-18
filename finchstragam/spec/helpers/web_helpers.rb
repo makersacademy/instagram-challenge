@@ -7,10 +7,14 @@ def create_picture
   }
 end
 
+def create_comment
+  comment = 'Linda foto'
+end
+
 def create_valid_picture
   picture = create_picture
 
-  visit '/pictures/new'
+  visit new_picture_path
   fill_in :"picture[link]", with: picture[:link]
   fill_in :"picture[description]", with: picture[:description]
   click_on "Create Picture"
@@ -19,8 +23,17 @@ end
 def create_invalid_picture
   picture = create_picture
 
-  visit '/pictures/new'
+  visit new_picture_path
   fill_in :"picture[link]", with: picture[:link]
   fill_in :"picture[description]", with: ""
   click_on "Create Picture"
+end
+
+def create_valid_comment
+  comment = create_comment
+
+  click_on 'Add Comment'
+
+  fill_in :"comment[comment]", with: comment
+  click_on 'Create Comment'
 end

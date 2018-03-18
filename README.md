@@ -4,9 +4,13 @@ README Edit: My approach and code review
 My approach
 ------
 Pre-code:
-* First, I divided the whole challenge into User Stories to achieve my MVP:
+* First, I divided the whole challenge into User Stories:
 
 ```
+As a web surfer
+So that I can start using Finchstagram
+I want to be able to register and log in
+
 As a user
 So that I can share my moments with others
 I want to be able to post pictures
@@ -20,25 +24,36 @@ So that I can indicate that I enjoyed a posted picture
 I want to be able to like it
 ```
 
-* Then, I worked on the Domain Modelling. To achieve my MVP for this challenge I would need four models:
-Users that can post **pictures** and pictures that can have **comments** and **likes**
+* Then, I worked on the Domain Modelling. To achieve my MVP for this challenge I would need two models:
+Users that can post **pictures** and pictures that can have **comments** and likes
 * I wrote down the specific attributes my models would need and also the relations among them:
+
+**MVP**
+
 ```
-Pictures (can have many comments and likes)
+Pictures (can have many comments)
 - pic:string
 - description: string
 
 Comments (belong to a specific picture)
 - comment:string
-
-Likes (belong to a specific picture)
-- number_of_likes:integer
 ```
 
-* I decided to focus on the MVP leaving the User Registration & Authentication for the end.
-
 Development:
-* I started by creating the Picture model. I switched the Rails ENV to 'test' and wrote feature tests to make sure the user can add pictures and see them on the index for pictures.
+* I started by creating the Picture model. First, I wrote feature tests for the whole CRUD to make sure the user can add pictures and see them on the index, delete and update them.
+* Then, I created the Comment model and tested it.
+
+
+**MVP 2**
+
+```
+Users (can have many pictures)
+
+[TBC]
+
+```
+
+
 
 Next focus
 ------
@@ -46,7 +61,7 @@ Next focus
 
 Personal code review
 ------
-[TBC]
+* I could have probably started the challenge with the authentication, as everything is based on it. Anonymous users should not have access to posting pictures, commenting on them or even liking them.
 
 Screenshots
 ------

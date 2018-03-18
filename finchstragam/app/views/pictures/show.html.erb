@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Link:</strong>
-  <%= @picture.link %>
+  <%= image_tag(@picture.link) %>
 </p>
 
 <p>
@@ -10,5 +9,17 @@
   <%= @picture.description %>
 </p>
 
+<br>
+<h3>Comments:</h3>
+
+<p>
+  <% @comments.each do |comment| %>
+    <p><%= comment.comment %></p>
+  <% end %>
+</p>
+
+<br>
+
+<%= link_to 'Add Comment', new_picture_comment_path(@picture) %> |
 <%= link_to 'Edit', edit_picture_path(@picture) %> |
 <%= link_to 'Back', pictures_path %>
