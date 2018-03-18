@@ -7,7 +7,7 @@
  <a href='#user_story'> User Stories</a> |  <a href='#setup'>Setup</a>   |   <a href='#tech'>Tech</a>
    
 
-*Note this is a site for drawing pictures and guessing what the pictures are of.* **Not** *a site for pictogram enthusiasts. Apologies for any disappointment caused.*
+<p align="center">*Note this is a site for drawing pictures and guessing what the pictures are of.* **Not** *a site for pictogram enthusiasts. Apologies for any disappointment caused.*</p>
 
 ## Scenario <a name= "scenario"></a>
 
