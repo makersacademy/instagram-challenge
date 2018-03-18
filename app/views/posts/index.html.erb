@@ -1,0 +1,21 @@
+<div class="posts-wrapper">
+  <% @posts.reverse.each do |post| %>
+    <div class="post">
+      <div class="post-head">
+        <%= post.user.user_name %>
+      </div>
+      <div class="image">
+        <%= link_to image_tag(post.image.url(:medium)), post_path(post) %><br>
+      </div>
+      <div class="caption">
+        <%= post.caption %><br>
+      </div>
+      <div class="edit-links">
+        <% if post.user.id = current_user.id %>
+          <%=link_to "Edit Post", edit_post_path(post)%>
+        <% end %>
+      </div>
+
+    </div>
+  <% end %>
+</div>
