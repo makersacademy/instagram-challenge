@@ -9,7 +9,7 @@
 </p>
 
 <h2>Comments</h2>
-<% @post.comments.each do |comment| %>
+<% @post.comments.reverse.each do |comment| %>
   <% if comment.valid? %>
     <p>
       <strong>User:</strong>
@@ -18,6 +18,10 @@
     <p>
       <strong>Comment:</strong>
       <%= comment.body %>
+    </p>
+    <p>
+      <strong>Created at:</strong>
+      <%= comment.created_at %>
     </p>
     <p>
       <%= link_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
