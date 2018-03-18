@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :photos
   has_many :likes
+  has_many :comments
 
   validates :username, presence: true
 
