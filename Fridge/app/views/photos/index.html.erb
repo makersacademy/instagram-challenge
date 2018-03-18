@@ -16,14 +16,23 @@
     <h1> <%= user.username %> </h1>
     <div class="image"><%= image_tag photo.image.url(:medium), :class => "image_img" %> <br> </div>
     <p1> <%= photo.description %> <br> </p1>
-  </div>
+
   <%= form_for @like, url: '/likes' do |form| %>
     <%= hidden_field_tag :user_id, @current_user.id %>
     <%= hidden_field_tag :photo_id, photo.id %>
-    <%= form.submit %>
+    <%= form.submit 'Like'%>
   <% end %>
-<% end %>
 
+  <% counter = 0 %>
+  <% for i in 0...Like.all.count do %>
+    <% if Like.all[i].photo_id == photo.id then %>
+      <% counter += 1 %>
+    <% end %>
+  <% end %>
+  <%= counter %>
+
+  </div>
+<% end %>
 
 </div>
 
