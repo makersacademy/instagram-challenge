@@ -19,7 +19,8 @@
         Posted by <%= @image.user %>
       </div>
 
-    </div>
+
+    <div class="image_form">
 
   <%= form_for([@image, Comment.new]) do |form| %>
     <p><%= form.label :comment %></p>
@@ -29,11 +30,20 @@
     <%= form.submit 'submit' %>
   <% end  %>
 
+</div>
+</div>
+
+<div class="comments">
+
+  <h2>Comments</h2>
+
   <% if @image.comments %>
     <% for comment in @image.comments do %>
-      <%= comment.commenter %>:
-      <%= comment.comment %>
+      <%= comment.comment %> - <em><%= comment.commenter %></em>
+      <br>
     <% end %>
   <% end %>
+
+</div>
   </body>
 </html>
