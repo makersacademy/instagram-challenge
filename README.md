@@ -11,8 +11,8 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 ## To use
 
 ```
-$ git clone git@github.com:MatthewBurstein/instagram-challenge.git
-$ cd instagram-challenge
+$ git clone git@github.com:MatthewBurstein/Lintstagram.git
+$ cd lintstagram
 $ bundle install
 $ rake db:seed
 $ rails server
@@ -21,9 +21,9 @@ Now visit http://localhost:3000/ and check out the lint.
 
 ## Methodology
 
-I broke the task down into user stories which I organised into groups, the first of which was an mvp, and subsequently what felt like complete features.
+I broke the task down into user stories which I organised into groups, the first of which was an mvp, while subsequent groups constituted complete features.
 
-Having done that, I set about building the app using the Rails tools we have learnt over the previous week. I followed TDD practices by beginning with a feature test for each feature and then solving error messages until the feature was complete.
+Having done that, I set about building the app using the Rails tools we have learnt over the previous week. I followed TDD practices by beginning each user story with a feature test and then solving error messages until the story was complete.
 
 Once the primary business logic was in place, I removed all unused routes and prepared seeds for the database so that it can be used 'out of the box' by anyone who wishes to.
 
