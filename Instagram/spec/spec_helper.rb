@@ -20,8 +20,10 @@ require 'rake'
 # Add this to load Capybara integration:
 require 'capybara/rspec'
 require 'capybara/rails'
+require 'capybara/poltergeist'
 
 Capybara.ignore_hidden_elements = false
+Capybara.javascript_driver = :poltergeist
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
 
