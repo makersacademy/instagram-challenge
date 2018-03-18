@@ -12,7 +12,7 @@ class ImagesController < ApplicationController
   def create
     @image = Image.new(image_params)
     @image.save
-    redirect_to images_url
+    redirect_to @image
   end
 
   def show
