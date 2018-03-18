@@ -17,13 +17,15 @@
     <div class="image"><%= image_tag photo.image.url(:medium), :class => "image_img" %> <br> </div>
     <p1> <%= photo.description %> <br> </p1>
 
+<% if @current_user != nil %>
   <%= form_for @like, url: '/likes' do |form| %>
     <%= hidden_field_tag :user_id, @current_user.id %>
     <%= hidden_field_tag :photo_id, photo.id %>
     <%= form.submit 'Like'%>
   <% end %>
+<% end %>
 
-  <%= photo.count_likes %>
+<%= photo.count_likes %>
 
   </div>
 <% end %>
