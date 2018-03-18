@@ -21,13 +21,18 @@ require 'rake'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
 
 Capybara.ignore_hidden_elements = false
 Capybara.javascript_driver = :poltergeist
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
 
-
+  config.before(:each) do
+    DatabaseCleaner.clean
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
