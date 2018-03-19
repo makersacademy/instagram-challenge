@@ -15,11 +15,16 @@ def new
 end
 
 def create
-  @post = Post.new(post_params)
-  if @post.save
-    redirect_to @post # @post being the homepage
+
+  if @post = Post.create(post_params)
+    flash[:success] = "Your post has been submitted!"
+    # when using these flash messages you need to do two other things.
+    # 1. Create a container for them in the html so that there is somewhere for them to be flashed.
+    # 2.
+    redirect_to posts_path # @post being the homepage
   else
-    render 'new' # if it doesnt save (aka if the formats are incorrect or something else wrong with database etc then it redirects to the same page so they can resubmit the form again as it will go to the new method (Post.new))
+    flash.now[:alert] = "Your post unfortunately was not submitted. Please check the form"
+    render :new # if it doesnt save (aka if the formats are incorrect or something else wrong with database etc then it redirects to the same page so they can resubmit the form again as it will go to the new method (Post.new))
     # 'render' used rather than redirect because redirect causes the server to issue another request, meanwhile render does it in the same request
   end
 end
