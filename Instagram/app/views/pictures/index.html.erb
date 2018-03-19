@@ -1,0 +1,22 @@
+<body style="background-color:yellow;">
+<h1>Listing instagram pictures</h1>
+<%= link_to 'New picture', new_picture_path %>
+<table>
+  <tr>
+    <th>Name of picture</th>
+    <th>Description of picture</th>
+    <th colspan="3"></th>
+  </tr>
+
+  <% @pictures.each do |picture| %>
+    <tr>
+      <td><%= picture.name_of_picture %></td>
+      <td><%= picture.description_of_picture %></td>
+      <td><%= link_to 'Show instagram picture', picture_path(picture) %></td>
+      <td><%= link_to 'Edit instragram picture', edit_picture_path(picture) %></td>
+      <td><%= link_to 'Remove instagram picture', picture_path(picture),
+              method: :delete,
+              data: { confirm: 'Are you sure you want to remove this instagram picture?' } %></td>
+    </tr>
+  <% end %>
+</table>

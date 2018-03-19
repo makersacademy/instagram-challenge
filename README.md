@@ -1,40 +1,14 @@
-Instagram Challenge
-===================
+To begin using this App please go to http://localhost:3000/users/sign_up. (created using gem devise).
+To essential steps are required to run the rails server and open the app. Please follow these steps first:
+$ bundle install
+$ bin/rails db:setup
 
-## Instructions
+This is a partial weekend challenge (MVP) [registering and sign in/out with Devise, adding, deleting, viewing and updating photos].
+This project taught me about the Request - response cycle diagram (get /pictures), MVC diagram
+I used command line rails to generate a view, a controller, a model, and add routes | rake db:migrate.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+One important rails command I used was rails generate scaffold NAME_OF_MODEL. Scaffold in Rais being a full set of model, database migration for that model, controller to manipulate it, views to view and manipulate the data, and a test suite for each of the above.
 
-## Task
+The gem carrierwave and Mini_Magick(to resize images) has been implemented in order to upload images from file. It can be accessed from the server URL http://localhost:3000/photos. Adjustments need to be made.
 
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+For the photos to be uploaded, you must have ImageMagick installed on your machine. For Mac users this achieved by using: brew install imagemagick
