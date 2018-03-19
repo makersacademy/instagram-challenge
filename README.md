@@ -25,4 +25,8 @@ Still To Do
 
 How to use
 -----
-TBC
+- Clone the repo
+- `$ cd instagram-challenge/Instagram`
+- `$ bundle install`
+- `$ rails server`
+- Go to localhost:3000 in your browser
