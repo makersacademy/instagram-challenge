@@ -10,7 +10,7 @@
 - Install dependencies (command line - bundle install)
 - Migrate database (command line - rails db:migrate RAILS_ENV=development)
 - Run the server (command line - rails s )
-- Vist the app on localhost:3000
+- Visit the app on localhost:3000
 ```
 ## Technologies Used
 ```
