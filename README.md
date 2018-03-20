@@ -1,6 +1,6 @@
 ## Instagram Challenge
 
-##Posts page
+## Posts page
 
 ![Alt text](public/README_Img/posts.png)
 
