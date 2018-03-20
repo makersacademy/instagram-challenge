@@ -92,7 +92,7 @@ I want to be able to have a link to my username when I guess.
 - [ ] Done
 
 
-## Setup <a name= "Setup"></a>
+## Setup <a name= "setup"></a>
 
 First make sure you have Rails and Ruby installed. 
 1) Copy the repository and load the gems
@@ -103,7 +103,7 @@ First make sure you have Rails and Ruby installed.
 3) Go to localhost:3000
 4) Login and Enjoy!
 
-## Technologies used  <a name= "Technologies"></a>
+## Technologies used  <a name= "tech"></a>
   - Ruby
   - RSpec
   - HTML
