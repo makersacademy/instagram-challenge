@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     else
       flash[:notice] = "You may not delete this comment"
     end
-    redirect_to post_path(@post)
+    redirect_to posts_url
   end
 
   private

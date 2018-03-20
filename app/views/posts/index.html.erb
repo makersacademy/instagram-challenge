@@ -30,15 +30,20 @@
         </p>
 
         <% if post.comments.length > 0 %>
-          <ul>
           <% post.comments.last(3).each do |comment| %>
-            <li><strong><%= get_username_by_id(comment.user_id) %></strong> <%= comment.body %></li>
-          <% end %>
+            <strong><%= get_username_by_id(comment.user_id) %></strong> 
+            <%= comment.body %>
+            <% if get_user_by_id(comment.user_id) == current_user %>
+              <%= link_to "x", post_comment_path(post.id, comment.id),
+                method: :delete,
+                id: "delete-comment-#{comment.id}",
+                data: { confirm: "Delete this comment?" } %>
+              <% end %>
+            <% end %>
           <% if post.comments.length > 3 %>
-            ...
-            <li><%= link_to "View all comments", post_path(post) %></li>
+            ...<br/>
+            <%= link_to "View all comments", post_path(post) %>
           <% end %>  
-          </ul>
         <% end %>
 
         <% if current_user %>
