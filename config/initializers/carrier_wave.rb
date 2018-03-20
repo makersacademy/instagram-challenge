@@ -17,8 +17,8 @@ CarrierWave.configure do |config|
       config.fog_directory = 'railstagram'
 
     when 'development'
-      config.storage = :fog
-      config.fog_directory = 'railstagram'
+      config.storage = :file
+      config.enable_processing = false
 
     when 'test'
       config.storage = :file
