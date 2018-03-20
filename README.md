@@ -1,5 +1,7 @@
 ## Instagram Challenge
 
+Makers Academy weekend challenge to build Instagram clone
+
 ## Posts page
 
 ![Alt text](public/README_Img/posts.png)
