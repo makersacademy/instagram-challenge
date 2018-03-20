@@ -75,6 +75,8 @@ So that I can get credit for my awesome drawing skills
 I want my cool image to have a link to my username
 ```
 - [x] Done
+
+### Extra
 ```
 As a keen guesser
 So that I can show of my awesome guessing skills
