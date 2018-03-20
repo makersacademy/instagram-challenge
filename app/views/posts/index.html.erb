@@ -1,42 +1,55 @@
-<h2>Railstagram feed</h2>
+<div class="posts-wrapper row">
+  <% @posts.each do |post| %>
 
-<ul id="posts">
-<% @posts.each do |post| %>
-  <li>
-    <% if post.image? %>
-      <div>
-        <%= image_tag post.image.url %>
+    <div class="post">
+      <div class="post-head">
+        <div class="name"><%= User.find(post.user_id).email.split("@")[0] %></div>
       </div>
-    <% end %>
-    <p><%= post.description %></p>
-    <p>Posted by <strong><%= User.find(post.user_id).email.split("@")[0] %></strong> at <%= post.created_at %> </p>
-    <p><%= post.likes.count%> people like this </p>
-    <p><%= link_to "View post", post_path(post), id: "view-post-#{post.id}" %></p>
 
-    <!-- Show up to 3 comments if there are any -->
-    <% if post.comments.length > 0 %>
-      <ul>
-      <% post.comments.last(3).each do |comment| %>
-        <li><strong><%= get_username_by_id(comment.user_id) %></strong> <%= comment.body %></li>
+      <% if post.image? %>
+        <div class="image-block">
+          <%= image_tag post.image.url, class: "image-centred" %>
+        </div>
       <% end %>
-      <% if post.comments.length > 3 %>
-        ...
-        <li><%= link_to "View all comments", post_path(post) %></li>
-      <% end %>  
-      </ul>
-    <% end %>
 
-    <!-- Show comment form if viewer is logged in -->
-    <% if current_user %>
-    <p><ul><li>
-      <%= form_with(model: [post, post.comments.build], local: true) do |form| %>
-      <%= form.text_field :body, id: "comment-body-on-post-#{post.id}" %>
-      <%= form.submit "Comment", id: "submit-comment-on-post-#{post.id}" %>
-      <% end %>
-    </li></ul></p>
-    <% end %>
+      <div class="caption">
+        <% if current_user %>
+          <% if current_user_has_liked_post(post) %>
+          <%= link_to "Unlike", post_like_path(post.id, get_like(post)), method: :delete, id: "delete-like-#{get_like(post).id}" %>
+          <% else %>
+            <%= link_to "Like", post_likes_path(post.id), method: :post, id: "like-post-#{post.id}" %>
+          <% end %>
+        <% end %>
 
-    <hr>
-  </li>
-<% end %>
-</ul>
+        <p class="like-count">
+          <strong><%= post.likes.count%> likes</strong>
+        </p>
+
+        <p>
+          <%= post.description %>
+        </p>
+
+        <% if post.comments.length > 0 %>
+          <ul>
+          <% post.comments.last(3).each do |comment| %>
+            <li><strong><%= get_username_by_id(comment.user_id) %></strong> <%= comment.body %></li>
+          <% end %>
+          <% if post.comments.length > 3 %>
+            ...
+            <li><%= link_to "View all comments", post_path(post) %></li>
+          <% end %>  
+          </ul>
+        <% end %>
+
+        <% if current_user %>
+          <p>
+            <%= form_with(model: [post, post.comments.build], local: true) do |form| %>
+            <%= form.text_field :body, id: "comment-body-on-post-#{post.id}" %>
+            <%= form.submit "Comment", id: "submit-comment-on-post-#{post.id}" %>
+            <% end %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
