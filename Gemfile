@@ -34,6 +34,11 @@ gem 'fog-aws'
 gem 'figaro'
 # Use minimagick to process images
 gem 'mini_magick'
+# Use bootsrap for CSS styling
+gem 'bootstrap-sass', '~> 3.3.7'
+# Bootstrap depends on JQuery
+gem 'jquery-rails'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
