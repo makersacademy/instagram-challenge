@@ -4,7 +4,7 @@
 <h3 align="center"> Combining the excitement of Instagram and Pictionary in one place! </h3>
 
  <p align="center">  <a href='#scenario'>Scenario</a> |  <a href='#approach'>Approach</a>   |   <a href='#reflections'>Reflections</a> |
- <a href='#user_story'> User Stories</a> |  <a href='#setup'>Setup</a>   |   <a href='#tech'>Tech</a>
+ <a href='#user_story'> User Stories</a> |  <a href='#setup'>Setup</a>   |   <a href='#tech'>Tech</a> </p>
    
 
 <p align="center"><i>Note this is a site for drawing pictures and guessing what the pictures are of.</i> <b>Not</b> <i>a site for pictogram enthusiasts. Apologies for any disappointment caused.</i></p>
@@ -22,13 +22,14 @@ I wanted to understand rails more so I started doing a [tutorial on how to build
 One big change this time, is after doing the [bowling challenge](https://github.com/Tagrand/bowling-challenge) I decided to try building one feature at a time. If you want to see my reasoning why, have a look [here](https://github.com/Tagrand/bowling-challenge#reflections). 
 
 #### Targets
-
-   - Build one feature at a time (I broke these down into user stories, which I then tracked. See below).
+  *Written before I started the challenge* 
+   - Build one feature at a time (I broke these down into user stories, which I then tracked - <a href='#user_story'> see below </a>).
    - Add some cool functionalities that arn't on Instagram - (points for correct guesses, and user rankings) - to challenge my understanding of rails. And beat instagram.
    - Avoid overtesting, just focus on core functions and edge cases, not every scenario. This came from feedback by a Makers coach. 
    - Following the pomodoro cycle, to test out if this is a more efficient way of using my time.
 
 ## Reflections <a name= "reflections"></a>
+*Written during and after the challenge*
 
 #### With more time I would have:
 
