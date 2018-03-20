@@ -5,8 +5,7 @@ class LikesController < ApplicationController
     @like = @post.likes.new
     @like.user_id = current_user.id
     @like.save
-    flash[:notice] = "You liked this post!"
-    redirect_to @post
+    redirect_to posts_url
   end
 
   def destroy
@@ -17,7 +16,7 @@ class LikesController < ApplicationController
     else
       flash[:notice] = "You may not delete this like"
     end
-    redirect_to post_path(@post)
+    redirect_to posts_url
   end
 
 end
