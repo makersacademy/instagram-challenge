@@ -44,7 +44,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'database_cleaner'
+  gem 'database_cleaner', '~> 1.6.1'
 end
 
 group :development do
