@@ -15,7 +15,7 @@ CarrierWave.configure do |config|
   config.fog_directory  = ENV['S3_BUCKET_NAME']                                   # required
   config.cache_dir      = "#{Rails.root}/tmp/uploads"   # For Heroku
   config.fog_public     = false
-  config.s3_access_policy = :public_read
+  # config.s3_access_policy = :public_read
   config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" } # optional, defaults to {}
 
 
