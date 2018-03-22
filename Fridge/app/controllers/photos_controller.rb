@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
 
   def index
     if session["warden.user.user.key"] != nil
-      @current_user = User.find(session["warden.user.user.key"][0][0])
+      @current_user = User.find_by_id(session["warden.user.user.key"][0][0])
     else
       @current_user = nil
     end
@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    user = User.find(session["warden.user.user.key"][0][0])
+    user = User.find_by_id(session["warden.user.user.key"][0][0])
     parametry = photo_params
     parametry[:user_id] = user.id
     @photo = Photo.new(parametry)
