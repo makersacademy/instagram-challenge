@@ -59,7 +59,7 @@ User Stories implemented
 - Users can register with the site, and log in/out
 - Users can post images with a description and see these appear in the feed
 - Users can edit or delete their own posts
-- Users can comment on other people's posts (or their own), either from the feed or the post itself
+- Users can comment on other people's posts (or their own)
 - Users can edit or delete their own comments
 - Users can like and unlike posts
 
@@ -67,8 +67,10 @@ User Stories implemented
 To do / possible extension work
 -------
 
+- ~~Styling~~
+- Make adding/deleting ~~comments~~ + likes AJAX, so user doesn't lose place in feed
+- Get tests working with Javascript
 - Add real usernames
-- Make adding/deleting comments + likes AJAX, so user doesn't lose place in feed
 - Add user profile page, which shows all posts by that user
 - Add user profile pictures / bio info
 - Add hashtags & search by hashtag
