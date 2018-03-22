@@ -4,8 +4,11 @@ Instagram Challenge
 Maker's Academy weekend challenge to recreate a popular app that allows a user to post pictures of their brunch.
 
 The app is deployed on heroku at https://powerful-fortress-65722.herokuapp.com/.
+
 Uploaded images are hosted on Amazon S3, since heroku doesn't support permanent storage of files.
 
+
+![screenshot](images/screenshot.png)
 
 Technologies used
 -------
