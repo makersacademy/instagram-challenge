@@ -5,18 +5,20 @@
 
 * Programing language: Ruby;
 * Framework: Rails, Paperclip, Devise;
+* Database: Postgres;
 * Testing: Capybara;
 * Front-end: CSS, HTML.
 
 ### How to run it
 
 1. Clone this repo;
-2. Run ```gem bundle install```
+2. Run ```gem install bundler```
 3. Run ```bundle``` to install all the gems;
-4. Run ```rake db:migrate``` to generate the necessary databases. *If you are having problems with running ```rake db:migrate``` try running ```bin/rake db:migrate```*;
-5. Run ```rails server```;
-6. Visit localhost:3000;
-7. Enjoy.
+4. Run ```rake db:create```
+5. Run ```rake db:migrate``` to generate the necessary databases. *If you are having problems with running ```rake db:migrate``` try running ```bin/rake db:migrate```*;
+6. Run ```rails server```;
+7. Visit localhost:3000;
+8. Enjoy.
 
 ### Features
 
