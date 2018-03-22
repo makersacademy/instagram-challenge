@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to posts_url
+      redirect_to posts_path
     else
       render 'new'
     end
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if User.find(@post.user_id) == current_user
       if @post.update(post_params)
-        redirect_to @post
+        redirect_to posts_path
       else
         render 'edit'
       end
