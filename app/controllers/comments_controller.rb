@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.js { render 'update_comments'}
-  end
+    end
   end
 
   def update
@@ -31,10 +31,16 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     if User.find(@comment.user_id) == current_user
       @comment.destroy
+      respond_to do |format|
+        format.html { redirect_to posts_url }
+        format.js { render 'update_comments'}
+      end
     else
-      flash[:notice] = "You may not delete this comment"
+      respond_to do |format|
+        format.html { redirect_to posts_url }
+        format.js { render "alert('You may not delete this comment');"}
+      end
     end
-    redirect_to posts_url
   end
 
   private
