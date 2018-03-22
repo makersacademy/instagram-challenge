@@ -22,4 +22,6 @@ Makers Academy weekend challenge to build Instagram clone
 - Mini_magick
 - Rspec/Capybara
 - PostgreSQL
+- Amazon S3
+- Fog
 ```
