@@ -67,7 +67,8 @@ User Stories implemented
 To do / possible extension work
 -------
 
-- Styling
+- Add real usernames
+- Make adding/deleting comments + likes AJAX, so user doesn't lose place in feed
 - Add user profile page, which shows all posts by that user
 - Add user profile pictures / bio info
 - Add hashtags & search by hashtag
