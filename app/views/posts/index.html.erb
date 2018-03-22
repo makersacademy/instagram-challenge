@@ -40,7 +40,7 @@
         </p>
 
         <% if post.comments.length > 0 %>
-          <% post.comments.last(3).each do |comment| %>
+          <% post.comments.each do |comment| %>
             <strong><%= get_username_by_id(comment.user_id) %></strong> 
             <%= comment.body %>
             <% if get_user_by_id(comment.user_id) == current_user %>
@@ -50,10 +50,6 @@
                 data: { confirm: "Delete this comment?" } %>
               <% end %>
             <% end %>
-          <% if post.comments.length > 3 %>
-            ...<br/>
-            <%= link_to "View all comments", post_path(post) %>
-          <% end %>  
         <% end %>
 
         <% if current_user %>
