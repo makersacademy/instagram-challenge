@@ -5,7 +5,10 @@ class LikesController < ApplicationController
     @like = @post.likes.new
     @like.user_id = current_user.id
     @like.save
-    redirect_to posts_url
+    respond_to do |format|
+      format.html { redirect_to posts_url }
+      format.js { render 'update_likes'}
+    end
   end
 
   def destroy
@@ -13,10 +16,16 @@ class LikesController < ApplicationController
     @like = @post.likes.find(params[:id])
     if User.find(@like.user_id) == current_user
       @like.destroy
+      respond_to do |format|
+        format.html { redirect_to posts_url }
+        format.js { render 'update_likes'}
+      end
     else
-      flash[:notice] = "You may not delete this like"
+      respond_to do |format|
+        format.html { redirect_to posts_url }
+        format.js { render "alert('You may not delete this comment');"}
+      end
     end
-    redirect_to posts_url
   end
 
 end

@@ -23,16 +23,12 @@
       <% end %>
 
       <div class="caption">
-        <% if current_user %>
-          <% if current_user_has_liked_post(post) %>
-          <%= link_to "💔", post_like_path(post.id, get_like(post)), method: :delete, id: "delete-like-#{get_like(post).id}" %>
-          <% else %>
-            <%= link_to "❤️", post_likes_path(post.id), method: :post, id: "like-post-#{post.id}" %>
-          <% end %>
-        <% end %>
+        <div id="post-<%= post.id %>-like-button">
+          <%= render 'like_button', post: post %>
+        </div>
 
         <p class="like-count">
-          <strong><%= post.likes.count%> likes</strong>
+          <span id="post-<%= post.id %>-like-count"><%= post.likes.count %></span> likes
         </p>
 
         <p>
