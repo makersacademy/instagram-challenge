@@ -60,15 +60,16 @@ User Stories implemented
 - Users can post images with a description and see these appear in the feed
 - Users can edit or delete their own posts
 - Users can comment on other people's posts (or their own)
-- Users can edit or delete their own comments
+- Users can delete their own comments
 - Users can like and unlike posts
+- Users don't lose their place in the feed when liking/unliking or adding/removing comments (no page reloads)
 
 
 To do / possible extension work
 -------
 
 - ~~Styling~~
-- Make adding/deleting ~~comments~~ + likes AJAX, so user doesn't lose place in feed
+- ~~Make adding/deleting comments + likes AJAX, so user doesn't lose place in feed~~
 - Get tests working with Javascript
 - Add real usernames
 - Add user profile page, which shows all posts by that user
