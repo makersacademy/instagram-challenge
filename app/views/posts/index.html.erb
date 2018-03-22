@@ -5,6 +5,15 @@
     <div class="post">
       <div class="post-head">
         <div class="name"><%= User.find(post.user_id).email.split("@")[0] %></div>
+        <% if get_user_by_id(post.user_id) == current_user %>
+        <div class="edit-links">
+          <%= link_to "Edit", edit_post_path(post), id: "edit-post-#{post.id}" %> | 
+          <%= link_to "Remove", post_path(post),
+            method: :delete,
+            id: "delete-post-#{post.id}",
+            data: { confirm: "Are you sure?" } %> 
+        </div>
+        <% end %>
       </div>
 
       <% if post.image? %>
