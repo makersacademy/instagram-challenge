@@ -10,7 +10,10 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.user_id = current_user.id
     @comment.save
-    redirect_to posts_url
+    respond_to do |format|
+      format.html { redirect_to posts_url }
+      format.js { render 'update_comments'}
+  end
   end
 
   def update
