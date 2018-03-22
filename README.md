@@ -1,6 +1,7 @@
 ## Instagram Challenge
 
 Makers Academy weekend challenge to build Instagram clone
+* Visit the site on "https://reenz-instagram.herokuapp.com/"
 
 ## Posts page
 
@@ -20,5 +21,5 @@ Makers Academy weekend challenge to build Instagram clone
 - Carrierwave
 - Mini_magick
 - Rspec/Capybara
-- SQLite3
+- PostgreSQL
 ```
