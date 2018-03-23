@@ -1,0 +1,29 @@
+<div class="posts-wrapper row">
+<% @post.each do |post| %>
+    <div class="post">
+      <div class="post-head">
+        <div class="name">
+        @Username
+      </div>
+    </div>
+      <div class="image center-block">
+      <%= link_to post_path(post) do %>
+          <%= image_tag(post.image.url(:medium), class: 'img-responsive') %>
+            <!-- 'img-responsive is so that the image will fit the screen of any device that renders the page'-->
+            <% end %>
+      </div>
+      <p class="title">
+        <%= post.title %>
+      </p>
+      </div>
+  <% end %>
+  </div>
+
+
+    <!--need an <"image_tag ... .url"> otherwise a string of the route of the image will be displayed-->
+    <!-- (medium) passed on the end as when we set up the image we specified the medium value, so that is where it will go... -->
+    <!-- medium relates to the post.rb file where the paperclip gem makes medium the assigner of the image parameters on the page-->
+    <!-- which are in this case "300x300>"-->
+
+      <!-- wrapped the title around the paragraph tag so that it would come under the images -->
+
