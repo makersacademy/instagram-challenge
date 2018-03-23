@@ -21,6 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem "paperclip", "~> 5.2.1"
+gem "aws-sdk", "~> 2.3"
 gem 'devise'
 
 # Use CoffeeScript for .coffee assets and views
