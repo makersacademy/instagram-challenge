@@ -79,13 +79,21 @@ Tech Stack
 * Sqlite3
 * RailsPanel
 
-How to run
+How to run the app
 ------
 * Install Rails if you haven't yet, run `$ gem install rails`
 * Fork & Clone the repo
 * Run `$ bundle install` from the project directory
 * Migrate the Database by running `$ rails db:migrate`
 * Start the server: `$ rails s`
+
+How to run the tests
+------
+* Run `$ rspec spec/features -fd` from the project directory
+
+* Note: I used a web_helpers.rb file to abstract repeated bits to run the different feature tests, for example: signing-up, creating a picture (valid and invalid) and creating a comment (valid and invalid)
+* If you are curious to see how I did it without harcoding user input into the tests directly, take a look at the files under finchstragam/spec/features and also at finchstragam/spec/helpers/web_helpers.rb
+* The rest of the test directories/files were created using a Rails generator
 
 Screenshots
 ------
