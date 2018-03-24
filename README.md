@@ -61,7 +61,8 @@ Development:
 Next focus
 ------
 * Same as I did for the Like model, I would refactor the Comment one and get rid of the scaffold there, there are a bunch of controller methods that I am not using at all for that one, therefore it makes more sense to have searate methods maybe inside the Pictures controller.
-* I would need to focus on the tests, they were passing at some point and I found myself doing DDT instead of TDD. I honestly prioritised getting a sense of how Rails work this week rather than following a TDD approach. I was carefully testing all my moves with the help of RailsPanel in Chrome though.
+* I would need to think about adding some more tests. For example, I haven't tested the log-in functionality because with Devise, signing-up means logging-in as well automatically, the session is there and therefore I am relying on the gem working, rather than seeing if the functionality has a specific behaviour.
+I honestly prioritised getting a sense of how Rails work this week rather than following a TDD approach. I was carefully testing all my moves with the help of RailsPanel in Chrome though.
 * Some more CSS would be also a good idea to work on, but it was not a priority for me at all.
 
 Personal code review
@@ -70,6 +71,7 @@ Personal code review
 * I am sort of satisfied as I prioritised learning about nested relations within models and different types of requests. Also about the general architecture within Rails.
 
 * Overall, I feel like a better planning could have helped me getting the challenge done faster and in a better way.
+* Finally, something really important to consider is the **Complexity** of whatever is being done at some point in the project, the brain cannot hold everything and make connections with everything if I start jumping rather than breaking down the processes into small chunks. I consider this to be one of my weaknesses sometimes, and definitely something I need to work on.
 
 Tech Stack
 ------
