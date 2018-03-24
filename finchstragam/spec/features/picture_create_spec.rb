@@ -4,6 +4,7 @@ feature 'Post a picture' do
   scenario 'displays posted picture along with description' do
     picture = create_picture
 
+    sign_up
     create_valid_picture
 
     # expect(page).to have_css("img[src*=" + picture[:link] + "]")
@@ -14,6 +15,7 @@ feature 'Post a picture' do
   scenario 'raises error when a required field is empty' do
     picture = create_picture
 
+    sign_up
     create_invalid_picture
 
     expect(page).not_to have_content picture[:link]

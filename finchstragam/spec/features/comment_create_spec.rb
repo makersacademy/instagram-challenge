@@ -5,6 +5,7 @@ feature 'Add comment for a picture' do
     picture = create_picture
     comment = create_comment
 
+    sign_up
     create_valid_picture
     create_valid_comment
 

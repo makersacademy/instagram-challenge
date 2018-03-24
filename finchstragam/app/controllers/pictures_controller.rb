@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
-  before_action :authenticate_user!, :except => [:index]
+  before_action :authenticate_user!, except: [:index]
 
   # GET /pictures
   # GET /pictures.json
@@ -15,7 +15,7 @@ class PicturesController < ApplicationController
     @pictures = Picture.find(params['id'])
     @comments = @pictures.comments
 
-    @liked = Like.where({'user_id': current_user.id}).where('picture_id': @picture.id).present?
+    @liked = Like.where({ 'user_id': current_user.id }).where('picture_id': @picture.id).present?
   end
 
   # GET /pictures/new
@@ -71,7 +71,7 @@ class PicturesController < ApplicationController
   # POST /pictures/:id/like
   def like
     @picture = Picture.find(params['picture_id'])
-    @like = @picture.likes.new({'user_id': current_user.id})
+    @like = @picture.likes.new({ 'user_id': current_user.id })
 
     begin
       redirect_to @picture, notice: 'You liked this picture!' if @like.save
@@ -86,26 +86,26 @@ class PicturesController < ApplicationController
   # DELETE /pictures/:id/unlike
   def unlike
     @picture = Picture.find(params['picture_id'])
-    @like = Like.where({'user_id': current_user}).where('picture_id': @picture.id)
+    @like = Like.where({ 'user_id': current_user }).where('picture_id': @picture.id)
 
     Like.delete(@like)
     redirect_to @picture, notice: "You unliked this picture!"
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_picture
-      @picture = Picture.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_picture
+    @picture = Picture.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def picture_params
-      params.require(:picture).permit(:link, :description)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def picture_params
+    params.require(:picture).permit(:link, :description)
+  end
 
-    def check_user
-      if current_user.id != @picture[:user_id]
-        redirect_to pictures_path, alert: 'You shall not pass'
-      end
+  def check_user
+    if current_user.id != @picture[:user_id]
+      redirect_to pictures_path, alert: 'You shall not pass'
     end
+  end
 end
