@@ -1,10 +1,13 @@
 # README
 
+### Solo Challenge: Having learned Ruby on Rails in 5 days, build an Instagram-style full-stack website in 1 day.
+
+![alt text](Instawham_Gif.gif)
+
 # Steps to run the program
 * In the terminal:
   * 'bundle install': to use bundler to install all gem dependencies
   * rails db:migrate
-  * if you want starting dummy data: 'rails db:seed'
   * 'rails server' to start the server
   * In your browser, visit localhost:3000
 
@@ -52,7 +55,7 @@
 
   Outstanding questions from the exercise:
   ---------
-  * By creating a rails project in the repo, it created Git submodules. How do these work in practice / should I have somehow structured it differently to avoid git submodules. I forced the addition of files and removal of the submodule as it was clear this wasn't pushing correctly and I didn't have time to research how to effectively use submodules. I lost my commit history as a result. 
+  * By creating a rails project in the repo, it created Git submodules. How do these work in practice / should I have somehow structured it differently to avoid git submodules. I forced the addition of files and removal of the submodule as it was clear this wasn't pushing correctly and I didn't have time to research how to effectively use submodules. I lost my commit history as a result.
   * How do the in-built rails tests work for rendering forms etc/ are these tests things that I should aim to have for my applications, or are they over kill?
   * I know I can improve my tests and test coverage - what should be the next step priorities for testing beyond the ones I have?
   * How do you write a test to check an image has been loaded in and shown?
