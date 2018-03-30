@@ -2,7 +2,7 @@
 
 ### Solo Challenge: Having learned Ruby on Rails in 5 days, build an Instagram-style full-stack website in 1 day.
 
-![alt text](Instawham_Gif.gif)
+<img src="Instawham_Gif.gif" width="100%" height="100%" />
 
 # Steps to run the program
 * In the terminal:
