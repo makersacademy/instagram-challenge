@@ -5,6 +5,8 @@
 <img src="Instawham_Gif.gif" width="100%" height="100%" />
 
 # Steps to run the program
+* View the deployed app at: https://instawham.herokuapp.com/
+[![Heroku](https://cloud.githubusercontent.com/assets/12953472/18688266/701982fc-7f7b-11e6-8971-5f1e03f554b7.png)](https://instawham.herokuapp.com/)
 * In the terminal:
   * 'bundle install': to use bundler to install all gem dependencies
   * rails db:migrate
