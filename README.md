@@ -1,40 +1,49 @@
 Instagram Challenge
 ===================
 
-## Instructions
+This challenge was to build my own version of Instagram using Rails. I decided to build instagram
+which was made entirely of strange looking pictures of me and my face. Aptly named...Joshagram.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
 
-## Task
+## Context
 
-Build Instagram: Simple huh!
+Challenge time: one weekend
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+What I focused on:
 
-Bonus if you can add filters!
+1. Users can post and caption pictures
+2. Users can login and registration
+3. Users can enjoy the user experience (sleek interface)
 
-## How to start
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+## How I approached this challenge
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+I decided that my MVP was what I outlined above. The third bullet point wouldn't usually be included in 
+peoples MVP but I wanted to devote a significant portion of my time to CSS. Prior projects have looked more
+like Microsoft Word as I have focused on pure functionality. As much as that is all well and good, I felt
+that I needed to learn and practise some core CSS. I also wanted to learn bootstrap and paperclip gem usage
+and have some cool CSS features like on hover buttons and navigation bars!
 
-## Code Quality
+Alas, after deciding on the aforementioned MVP, I worked on them in number order. It made most sense to me
+to firstly work out the pages I'll need to create with rails. These would be the index page where posts
+are viewed and a submission page where the pictures are submitted. After this, I worked on having relationships
+between tables of data. Most importantly between user accounts and the pictures they submit. Finally, I spent
+a significant amount of time on formatting the pages. 
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
+## How to use
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+1. Clone the repo
+2. Run 'rails s'
+3. Type 'localhost:3000' in your browser
+4. Enjoy !
+
+
+## Running the tests
+
+Simply run rspec in the terminal !
+
+
+## Authors
+
+Joshua Holloway
