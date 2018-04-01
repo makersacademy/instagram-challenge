@@ -44,6 +44,15 @@ a significant amount of time on formatting the pages.
 Simply run rspec in the terminal !
 
 
+## Future improvements
+
+In the future I would like to revisit the project to implement the proceeding features:
+
+1. Users can like photos
+2. Users can comment on pictures
+
+
+
 ## Authors
 
 Joshua Holloway
