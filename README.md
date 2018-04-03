@@ -27,3 +27,13 @@
 3) Add photos when logged in;
 4) Comment photos when logged in;
 5) Like photos when logged in.
+
+### Screenshots
+
+Big screen
+
+![See image](/images/img1.png)
+
+Mobile
+
+![See image](/images/img2.png)
