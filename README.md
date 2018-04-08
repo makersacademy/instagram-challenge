@@ -1,19 +1,11 @@
 Fotogram Challenge
 ===================
 
-## Instructions
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-## Task
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+The goal in this challenge is to build an Instagram clone using Ruby on Rails, so the user can post pictures and rate them. 
 
 ## User Stories:
+----------------
 
 ```
 As a user
@@ -38,20 +30,36 @@ I want to be able to Sign up
 
 ```
 
+## Getting started
+-------------------
 
-## Code Quality
+### Installation
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+Clone the program to your local directory
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
+ $git clone https://github.com/jennymarin1989/instagram-challenge.git
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+Install gem and dependencies
+
+ $bundle install
+
+Run the app
+
+ $rails s
+ $open http://localhost:3000 
+
+## Build with
+--------------
+- Rails 5.1.5
+- PostgreSQL
+- devise
+- Paperclip
+
+## Tested with
+--------------
+-Rspec
+-Capybara
+
 
 ## Author
 
