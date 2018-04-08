@@ -37,16 +37,16 @@ I want to be able to Sign up
 
 Clone the program to your local directory
 
- $git clone https://github.com/jennymarin1989/instagram-challenge.git
+ - $git clone https://github.com/jennymarin1989/instagram-challenge.git
 
 Install gem and dependencies
 
- $bundle install
+ - $bundle install
 
 Run the app
 
- $rails s
- $open http://localhost:3000 
+ - $rails s
+ - $open http://localhost:3000 
 
 ## Build with
 
