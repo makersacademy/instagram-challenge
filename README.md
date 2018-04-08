@@ -1,5 +1,6 @@
 # Fridge - Instagram Clone for food.
-Share your food online, where people can admire it, but only you can eat it
+A ruby on rails application created as a weekend challange at the 9th weekend of Makers Academy.
+Add, comment and like photos.
 
 ### Technology used:
 
