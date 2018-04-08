@@ -5,7 +5,7 @@ Fotogram Challenge
 The goal in this challenge is to build an Instagram clone using Ruby on Rails, so the user can post pictures and rate them. 
 
 ## User Stories:
-----------------
+
 
 ```
 As a user
@@ -31,7 +31,7 @@ I want to be able to Sign up
 ```
 
 ## Getting started
--------------------
+
 
 ### Installation
 
@@ -49,16 +49,16 @@ Run the app
  $open http://localhost:3000 
 
 ## Build with
---------------
+
 - Rails 5.1.5
 - PostgreSQL
 - devise
 - Paperclip
 
 ## Tested with
---------------
--Rspec
--Capybara
+
+- Rspec
+- Capybara
 
 
 ## Author
