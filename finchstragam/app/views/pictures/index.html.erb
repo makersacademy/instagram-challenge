@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<p id="alert" style="color: red;"><%= alert %></p>
+
+<h1>Pictures</h1>
+
+<h3>Post a picture and start getting likes!</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Link</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pictures.each do |picture| %>
+      <tr>
+        <td><%= image_tag(picture.link) %></td>
+        <td><%= picture.description %></td>
+        <td><%= link_to 'Show', picture %></td>
+        <% if current_user && current_user.id == picture[:user_id] %>
+          <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+        <% end %>
+        <td><%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Picture', new_picture_path %>
+
+<br>
+<br>
+<br>
+
+<% unless current_user %>
+  <form action="/users/sign_up">
+    <input id="sign-up" type="submit" value="Sign up">
+  </form>
+
+  <p>Already registered? <a href="/users/sign_in">Log in!</a></p>
+<% else %>
+  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+<% end %>

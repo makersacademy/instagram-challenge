@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Welcome to Finchstagram!</h1>
+
+<h2>Become part of this awesome community!</h2>
+
+<a href="/pictures">Explore Finchstagram!</a>
+
+<br>
+<br>
+
+<% unless current_user %>
+  <form action="/users/sign_up">
+    <input id="sign-up" type="submit" value="Sign up">
+  </form>
+
+  <p>Already registered? <a href="/users/sign_in">Log in!</a></p>
+<% else %>
+  <%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+<% end %>

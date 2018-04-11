@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+<p id="alert" style="color: red;"><%= alert %></p>
+
+<p>
+  <%= image_tag(@picture.link) %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @picture.description %>
+</p>
+
+<br>
+<h3>Comments:</h3>
+
+<p>
+  <% @comments.each do |comment| %>
+    <p><%= comment.comment %></p>
+  <% end %>
+</p>
+
+<br>
+
+<% if !@liked %>
+  <form action="/pictures/<%= @picture.id %>/like" method="POST">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <button type="submit">Like!</button>
+  </form>
+<% else %>
+  <form action="/pictures/<%= @picture.id %>/unlike" method="POST">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="hidden" name="_method" value="delete">
+    <button type="delete">Unlike!</button>
+  <form>
+<% end %>
+
+<br>
+<br>
+
+<%= link_to 'Add Comment', new_picture_comment_path(@picture) %> |
+<% if current_user && current_user.id == @picture[:user_id] %>
+  <%= link_to 'Edit', edit_picture_path(@picture) %> |
+<% end %>
+<%= link_to 'Back', pictures_path %>
