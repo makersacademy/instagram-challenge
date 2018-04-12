@@ -2,6 +2,8 @@
 A ruby on rails application created as a weekend challange at the 9th weekend of Makers Academy.
 Add, comment and like photos.
 
+I welcome you to read a [Gist](https://gist.github.com/Kotauror/e044f24404054fdb4883e000208c8190) on the most interesting problems that I've encountered during this task.
+
 ### Technology used:
 
 * Programing language: Ruby;
