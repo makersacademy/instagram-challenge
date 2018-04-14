@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+    @photos = Photo.all.order('created_at')
   end
 
   # GET /photos/1
@@ -26,15 +26,13 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
 
-    respond_to do |format|
-      if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
-        format.json { render :show, status: :created, location: @photo }
-      else
-        format.html { render :new }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
-    end
+    #respond_to do |format|
+      # if @photo.save
+         redirect_to @photo, notice: 'Photo was successfully created.'
+      # else
+      #   render :new
+      # end
+    #end
   end
 
   # PATCH/PUT /photos/1
@@ -69,6 +67,6 @@ class PhotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:caption, :user_id)
+      params.require(:photo).permit(:caption, :user_id, :upload_file)
     end
 end
