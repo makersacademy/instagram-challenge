@@ -1,8 +1,13 @@
 Idstergram
 ===================
 
-## Introduction
+**Your New Basic Urge**
 
+## Introduction
+Idstergram is a web app where self-important ego-maniacs can convene to share and revel in their bloated sense of self-worth.
+
+
+## Online Access and Local Set Up
 The app has been deployed via Heroku in Staging and Production environments.
 * Staging: https://idstergram-staging.herokuapp.com
 * Production: https://idstergram.herokuapp.com
@@ -16,7 +21,17 @@ To set up local Testing and Development environments on your computer, do the fo
 6. Boot the local server: `rails server`
 7. Visit the localhost from your browser (usually http://localhost:3000)
 
-## Task
+
+## Userstories
+
+These can be found [here](Userstories.md).
+
+
+## Project Planning
+Trello card wall here: https://trello.com/b/OFIqEzS4/idstergram
+
+
+## Original Task Description
 
 Build Instagram: Simple huh!
 
