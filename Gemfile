@@ -4,7 +4,8 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
+# To test paperclip model data for validation
+gem 'paperclip-rack', require: 'paperclip/rack'
 # Paperclip ruby gem for using images and other media in posts
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 # Gem for Rails contrller testing

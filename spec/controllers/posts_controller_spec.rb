@@ -10,4 +10,11 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+  describe 'POST new post' do
+    it "creates a new post" do
+      post :create, params: { post: { caption: "Test Moment :)" } }
+      expect(Post.all.count).to eq(1)
+    end
+  end
+
 end
