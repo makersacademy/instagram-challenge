@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180414152325) do
+ActiveRecord::Schema.define(version: 20180414155819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 20180414152325) do
     t.string "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "moment_file_name"
+    t.string "moment_content_type"
+    t.integer "moment_file_size"
+    t.datetime "moment_updated_at"
   end
 
 end

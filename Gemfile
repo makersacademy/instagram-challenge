@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Paperclip ruby gem for using images and other media in posts
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 # Gem for Rails contrller testing
 gem 'rails-controller-testing'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
