@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe PostsController, type: :controller do
   before(:example) { get :index }
   describe "GET #index" do
