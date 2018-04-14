@@ -10,6 +10,12 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+  describe 'GET #new' do
+    it "instantiates a new instance" do
+      expect(subject.new).to be_a_new(Post)
+    end
+  end
+
   describe 'POST new post' do
     it "creates a new post" do
       post :create, params: { post: { caption: "Test Moment :)" } }
