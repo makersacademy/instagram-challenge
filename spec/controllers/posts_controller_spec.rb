@@ -23,4 +23,12 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+  describe 'POST delete post' do
+    it "deletes a post" do
+      post :create, params: { post: { caption: "Test Moment :)" } }
+      post :destroy, params: { id: Post.last.id }
+      expect(Post.all.count).to eq(0)
+    end
+  end
+
 end
