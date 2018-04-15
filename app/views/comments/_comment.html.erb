@@ -1,0 +1,10 @@
+<%= render 'comments/form' %>
+
+<%  @post.comments.sort_by { |x| x.created_at || 0}.reverse.each do |comment| %>
+  <div><%= comment.content %> <%= '-' if (comment.content)%> <%= User.find(comment.user_id).username if (comment.user_id)  %></div>
+  <% if current_user == comment.user %>
+    <%= link_to 'Delete comment', [comment.post, comment],
+      method: :delete,
+      data: { confirm: 'Are you sure?' } if (comment.content)%>
+  <% end %>
+<% end %>

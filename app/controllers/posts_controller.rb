@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_post, only: [:show, :edit, :update, :destroy, :post_owner]
+  before_action :post_owner, only: [:destroy]
 
   def index
     @posts = Post.all
@@ -9,8 +11,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def show
+  end
+
   def edit
-    @post = Post.find(params[:id])
   end
 
   def create
@@ -25,15 +29,12 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
     @post.update(post_params)
     redirect_to posts_path
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @user = User.find(current_user.id)
-
     @post.destroy
 
     redirect_to posts_path
@@ -43,6 +44,16 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:photo, :desc).merge(user_id: current_user.id)
+    end
+
+    def find_post
+      @post = Post.find(params[:id])
+    end
+
+    def post_owner
+      unless current_user.id == @post.user_id
+        flash[:notice] = "This is not your post"
+      end
     end
 
 end

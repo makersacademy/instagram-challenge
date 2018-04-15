@@ -1,0 +1,23 @@
+<div>
+
+  <p>
+    <h4><%= @post.created_at.strftime("%a %e %b %H:%M") %></h4>
+    <div><%= User.find(@post.user_id).username if (@post.user_id)  %></div>
+  </p>
+
+  <img src="<%= @post.photo %>" style="height:200px;width:200px;">
+
+  <p>
+    <h3><%= @post.desc %></h3>
+  </p>
+
+</div>
+
+<span><%= link_to 'Edit', edit_post_path(@post) %></span>
+<span><%= link_to 'Delete', post_path(@post),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></span>
+
+<%= render 'comments/comment' %>
+
+<span><%= link_to 'Back', posts_path %></span>

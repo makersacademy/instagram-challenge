@@ -5,11 +5,17 @@ def add_post
   click_button "Save Post"
 end
 
-def sign_up
+def sign_up(name = "testname")
   visit "/users/sign_up"
-  fill_in "user[username]", with: "testname"
+  fill_in "user[username]", with: name
   fill_in "user[email]", with: "test@test.com"
   fill_in "user[password]", with: "testtest"
   fill_in "user[password_confirmation]", with: "testtest"
   click_button "Sign up"
+end
+
+def add_comment
+  click_link "View Comments"
+  fill_in "comment[content]", with: 'New comment'
+  click_button "Create Comment"
 end
