@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.feature "Adding photo", type: :feature do
-  scenario "Can add a photo with a description" do
+RSpec.feature "Show username", type: :feature do
+  scenario "Posts show the username" do
     sign_up
     add_post
-    expect(page).not_to have_content("drayson.g@mac.com")
+    expect(page).to have_content("testname")
   end
 end
