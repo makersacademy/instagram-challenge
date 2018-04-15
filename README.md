@@ -19,6 +19,15 @@ and other users usernames attached to their pictures.
 ```
 **User Journey / Story 3**
 ```
+Non-signed in user cannot access
+```
+```
+As a user with a life outside of !nstagram with some privacy concerns,
+So that I can ensure that only signed-up fellow users can view and interact with my photos,
+I would like non-users not to be able to access the site.
+```
+**User Journey / Story 4**
+```
 Second user signs in and likes a picture from first user
 ```
 ```
@@ -26,8 +35,16 @@ As a user and amateur photographer,
 So that I can see which of my pictures are considered good,
 I would like users to be able to tag each others photos as 'liked'.
 ```
-
-**User Journey / Story 4**
+**User Journey / Story 5**
+```
+User cannot like one photo more than once
+```
+```
+As a user and amateur photographer,
+So that I have a more accurate measure of which of my pictures are considered good,
+I would like users to be only able to tag a  photos as 'liked' once.
+```
+**User Journey / Story 6**
 ```
 Any user signs in and comments on a picture from another user
 ```
@@ -37,15 +54,7 @@ So that our photos can become a conversation,
 I would like users to be able add comments to each others photos.
 ```
 
-**User Journey / Story 5**
-```
-Non-signed in user cannot access
-```
-```
-As a user with a life outside of !nstagram with some privacy concerns,
-So that I can ensure that only signed-up fellow users can view and interact with my photos,
-I would like non-users not to be able to access the site.
-```
+
 
 Instagram Challenge
 ===================
