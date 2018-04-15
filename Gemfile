@@ -9,6 +9,7 @@ gem "rmagick", "2.16.0"
 gem "paperclip", "~> 6.0.0"
 gem 'simple_form'
 gem "factory_bot_rails", "~> 4.0"
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
