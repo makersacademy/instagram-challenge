@@ -6,11 +6,15 @@
 <% @posts.each do |post| %>
   <div>
     <br>
+    <%= image_tag(post.image.url(:medium)) %>
+    <br>
+    <%= post.description %>
+    <%= post.created_at %>
+    <span><%= link_to 'Edit', edit_post_path(post) %>
+    </span>
     <span><%= link_to 'Delete', post_path(post),
       method: :delete,
       data: { confirm: 'Are you sure?' } %>
     </span>
-    <%= image_tag(post.image.url(:medium)) %>
-    <%= post.description %>
 </li>
-<% end %>
+<% end.reverse %>
