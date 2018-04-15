@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Show username", type: :feature do
-  scenario "Posts show the username" do
+RSpec.feature "Cannot click edit/delete", type: :feature do
+  scenario "Cannot click edit/delete" do
     sign_up
     add_post
     click_link "Logout"

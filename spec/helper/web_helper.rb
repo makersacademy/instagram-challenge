@@ -15,7 +15,7 @@ def sign_up(name = "testname")
 end
 
 def add_comment
-  click_link "View Comments"
+  click_link "Beautiful sunset"
   fill_in "comment[content]", with: 'New comment'
   click_button "Create Comment"
 end

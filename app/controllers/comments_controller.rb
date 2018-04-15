@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   before_action :find_post
-  before_action :find_comment, only: [:destroy, :comment_owner]
-  before_action :comment_owner, only: [:destroy]
+  before_action :find_comment, only: [:destroy]
 
 
   def create
@@ -13,7 +12,11 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    if current_user.id != @comment.user_id
+      flash[:notice] = "This is not your comment"
+    else
+      @comment.destroy
+    end
     redirect_to post_path(@post)
   end
 
@@ -25,12 +28,6 @@ class CommentsController < ApplicationController
 
   def find_comment
     @comment = @post.comments.find(params[:id])
-  end
-
-  def comment_owner
-    unless current_user.id == @comment.user_id
-      flash[:notice] = "This is not your comment"
-    end
   end
 
 end

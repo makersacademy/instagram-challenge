@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Deleting post", type: :feature do
-  scenario "Can delete a post" do
+RSpec.feature "Can add a comment", type: :feature do
+  scenario "Can add a comment" do
     sign_up
     add_post
     add_comment
