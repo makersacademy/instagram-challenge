@@ -40,6 +40,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.5'
+  gem "factory_bot_rails", "~> 4.0"
+  gem 'ffaker'
 end
 
 group :development do
