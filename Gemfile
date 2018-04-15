@@ -35,6 +35,12 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Paperclip for file upload
 gem "paperclip", "~> 6.0.0"
 
+# Amazon S3 bucket for cloud file storage
+gem 'aws-sdk-s3'
+gem 'aws-sdk'
+
+# Envyable to manage ENV VARS
+gem 'envyable'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
