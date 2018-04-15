@@ -1,8 +1,15 @@
-
-<%= link_to "New Post", new_post_path %>
+<div>
+  <span><%= link_to "New Post", new_post_path %>
+  </span>
+</div>
 
 <% @posts.each do |post| %>
   <div>
+    <br>
+    <span><%= link_to 'Delete', post_path(post),
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %>
+    </span>
     <%= image_tag(post.image.url(:medium)) %>
     <%= post.description %>
 </li>
