@@ -1,0 +1,20 @@
+<h1> Hello, world!<h1>
+
+  <ul>
+    <% @posts.sort_by { |x| x.created_at }.reverse.each do |post| %>
+      <li>
+        <span><%= post.created_at.strftime("%a %e %b %H:%M") %></span>
+        <div><img src="<%= post.photo %>" style="height:200px;width:200px;"></br>
+        <%= post.desc %> </div>
+        <span><%= link_to 'Edit', edit_post_path(post) %></span>
+        <span><%= link_to 'Delete', post_path(post),
+          method: :delete,
+          data: { confirm: 'Are you sure?' } %></span>
+      </li>
+
+    <% end %>
+  </ul>
+
+<%= link_to new_post_path do %>
+  <p>New post</p>
+<% end %>
