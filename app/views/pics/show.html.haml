@@ -14,6 +14,10 @@
               = @pic.user.email
           .col.md-6
             .btn-group.pull-right
+              = link_to like_pic_path(@pic), method: :put, class: "btn btn-default" do
+                %span.glyphicon.glyphicon-thumbs-up
+                = @pic.get_upvotes.size
+
               - if user_signed_in?
                 = link_to "Edit", edit_pic_path, class: "btn btn-info"
                 = link_to "Delete", pic_path, method: :delete, data: { confirm: "Sure?"}, class: "btn btn-danger"

@@ -37,6 +37,7 @@ gem 'devise', '~> 4.2'
 gem 'jquery-rails'
 gem 'paperclip', '~> 4.2.0'
 gem 'masonry-rails', '~> 0.2.4'
+gem 'acts_as_votable', '~> 0.10.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
