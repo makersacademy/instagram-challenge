@@ -61,6 +61,8 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'simplecov'
+  gem 'rubocop'
+  gem 'pry'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
