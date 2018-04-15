@@ -1,0 +1,83 @@
+<%= render 'head_and_foot/head' %>
+
+<div class="top_menu">
+  <% if @current_user != nil %>
+    <div class="username">
+      <%= @current_user.username %>
+    </div>
+  <% end %>
+  <%= render 'devise/menu/registration' %>
+  <%= render 'devise/menu/login' %>
+  <%= render 'devise/menu/addphoto' %>
+</div>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<div class="foto_grid">
+  <% for photo in @photos do %>
+    <div class="single_photo_obj">
+
+      <% user = User.find(photo.user_id) %>
+        <h1>
+          <%= user.username %>
+        </h1>
+        <div class="image"><%= image_tag photo.image.url(:medium), :class => "image_img" %>
+          <br>
+        </div>
+        <p1>
+          <%= photo.description %>
+          <br>
+        </p1>
+        <p2>
+          Created at:
+          <%= photo.created_at %>
+          <br>
+        </p2>
+
+        <div class="new_like">
+          <% if @current_user != nil %>
+            <%= form_for @like, url: '/likes' do |form| %>
+            <%= hidden_field_tag :user_id, @current_user.id %>
+            <%= hidden_field_tag :photo_id, photo.id %>
+            <%= form.submit '❤️', :class => "heart_button"%>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="like_count">
+        <%= photo.count_likes %>
+        like<% if photo.count_likes != 1 %>s
+        <%end%>
+      </div>
+
+      <div class="comments">
+        <% comments = Comment.where("photo_id = #{photo.id}") %>
+          <% comments.each do |comment| %>
+            <% user = User.find(comment.user_id) %>
+              <div class="username_wrote"><%= user.username %>
+              </div>
+              <div class="comment_text">
+                <%= comment.content %>
+              </div>
+              <br>
+            <% end %>
+          </div>
+
+          <img src="/images/line.png" class="grey_line">
+
+          <div class="new_comment">
+            <% if @current_user != nil %>
+              <%= form_for @comment, url: '/comments' do |form| %>
+              <%= form.text_field :content, :class => "comment_field", :placeholder => "Add a comment..." %>
+              <%= hidden_field_tag :user_id, @current_user.id %>
+              <%= hidden_field_tag :photo_id, photo.id %>
+              <%= form.submit 'Submit', :class => "submit_comment_button"%>
+            <% end %>
+          <% end %>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+
+  <%= render 'head_and_foot/footer' %>

@@ -1,40 +1,47 @@
-Instagram Challenge
-===================
+# Fridge - Instagram Clone for food.
+A ruby on rails application created as a weekend challange at the 9th weekend of Makers Academy.
+Add, comment and like photos.
 
-## Instructions
+I welcome you to read a [Gist](https://gist.github.com/Kotauror/e044f24404054fdb4883e000208c8190) on the most interesting problems that I've encountered during this task.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+### Technology used:
 
-## Task
+* Programing language: Ruby;
+* Framework: Rails, Paperclip, Devise;
+* Database: Postgres;
+* Testing: Capybara;
+* Front-end: CSS, HTML;
+* Deployed using: Heroku, Amazon Cloud Services.
 
-Build Instagram: Simple huh!
+### How to run it
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Online:
+1. Go to http://photo-fridge.herokuapp.com/
 
-Bonus if you can add filters!
+Locally:
+1. Clone this repo;
+2. Run ```gem install bundler```
+3. Run ```bundle``` to install all the gems;
+4. Run ```rake db:create```
+5. Run ```rake db:migrate``` to generate the necessary databases. *If you are having problems with running ```rake db:migrate``` try running ```bin/rake db:migrate```*;
+6. Run ```rails server```;
+7. Visit localhost:3000;
+8. Enjoy.
 
-## How to start
+### Features
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+1) See the pictures, comments and likes;
+2) Sign up, Log in, Log out;
+3) Add photos when logged in;
+4) Comment photos when logged in;
+5) Like photos when logged in;
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+### Screenshots
 
-## Code Quality
+Big screen
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+![See image](/images/img1.png)
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
+Mobile
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+![See image](/images/img2.png)
