@@ -7,6 +7,12 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <% if user_signed_in? %>
+    <%= button_to('Account', edit_user_registration_path, {method: :get, id: 'banner_btn'}) %>
+  <% else %>
+    <%= button_to('Register', new_user_registration_path, {method: :get, id: 'banner_btn'}) %>
+  <% end %>
+
 
   <body>
     <%= yield %>
