@@ -22,7 +22,6 @@
       <ul>
         <li class="category">Website</li>
         <li><%= link_to "Home", root_path %></li>
-        <li>About</li>
       </ul>
       <ul>
         <li class="category">Social</li>
@@ -31,17 +30,22 @@
         <li><a href = 'https://medium.com/@alex__code'>Medium</a></li>
         <li><a href = 'https://github.com/xelAhcratiPsavilO'>Github</a></li>
       </ul>
-      <p class="sign_in">Admin Login</p>
+
+      <% if !user_signed_in? %>
+        <p class="sign_in">Admin Login</p>
+      <% end %>
     </div>
 
     <div id="main_content">
   		<div id="header">
   				<p><%= link_to "All posts", posts_path %></p>
 
+        <% if user_signed_in? %>
   				<div class="buttons">
   					<button class="button"><%= link_to "New Post", new_post_path %></button>
   					<button class="button"><%= link_to 'Logout', destroy_user_session_path, method: :delete %></button>
   				</div>
+        <% end %>
   		</div>
 
   		<% flash.each do |name, msg| %>
