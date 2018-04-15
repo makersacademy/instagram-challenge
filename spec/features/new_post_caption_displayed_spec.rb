@@ -1,9 +1,8 @@
+require_relative '../helpers/custom_feature_helper'
+
 RSpec.feature "Experience", type: :feature do
   scenario "Displays post caption" do
-    visit('/posts/')
-    click_link 'NEW MOMENT'
-    fill_in 'post[caption]', with: 'Test Caption :)'
-    click_button 'SHARE MOMENT'
+    create_post
     expect(page).to have_content('Test Caption :)')
   end
 end
