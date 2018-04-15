@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 feature 'Creating posts' do
+
+  background do
+  user = create :user
+  sign_in_with user
+end
+
   scenario 'can create a post' do
     visit '/'
     click_link 'New Post'

@@ -22,7 +22,7 @@ feature 'Creating a new user' do
     fill_in 'Password confirmation', with: 'itsMyLife99'
 
     click_button 'Sign up'
-    expect(page).to have_content("You need a username to start trolling.")
+    expect(page).to have_content("can't be blank.")
   end
 
   scenario 'requires a username to be longer than 4 characters' do
