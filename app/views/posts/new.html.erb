@@ -3,6 +3,16 @@
   <h1>New Post</h1>
 
   <%= form_for :post, url: posts_path do |f| %>
+    <% if @post.errors.any? %>
+      <div id="errors">
+        <h2><%= pluralize(@post.errors.count, "error") %> prevented this post from saving</h2>
+          <ul>
+            <% @post.errors.full_messages.each do |msg|%>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+      </div>
+    <% end %>
     <p>
       <%= f.label :title %><br>
       <%= f.text_field :title %>
@@ -17,4 +27,5 @@
       <%= f.submit %>
     </p>
   <% end %>
+
 </div>
