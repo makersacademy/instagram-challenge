@@ -37,11 +37,11 @@
         <div class="col-md-4">
           <h4><%= post.created_at.strftime("%a %e %b %H:%M") %></h4>
           <h4><%= User.find(post.user_id).username if (post.user_id)  %></h4>
+          <%= link_to post_path(post) do %>
           <img src="<%= post.photo %>" style="height: 250px; width: 250px;">
           <div class="caption">
             <h3><%= post.desc %></h3>
             <h6><%= post.comments.count %> Comments</h6>
-            <span><%= link_to 'View Comments', post_path(post) %></span>
             <% if current_user == User.find(post.user_id) %>
               <span>| <%= link_to 'Edit', edit_post_path(post) %></span>
               <span>| <%= link_to 'Delete', post_path(post),
@@ -51,6 +51,7 @@
           </div>
 
         </div>
+        <% end %>
 
         <% end %>
       </div>
