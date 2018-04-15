@@ -1,6 +1,6 @@
 <h1>New Post</h1>
 
-<%= form_for @post, local: true do |form| %>
+<%= form_for @post, local: true, html: { multipart: true } do |form| %>
 
 <% if @post.errors.any? %>
   <div id="error_explanation">
@@ -15,6 +15,11 @@
     </ul>
   </div>
 <% end %>
+
+  <p>
+    <%= form.label :image %><br>
+    <%= form.file_field :image %>
+  </p>
 
   <p>
     <%= form.label :caption %><br>
