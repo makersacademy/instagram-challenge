@@ -13,17 +13,20 @@
       NEW MOMENT
     <% end %>
     <% @posts.reverse.each do |post| %>
-    <div id="post_image">
-      <%= image_tag(post.moment.url(:medium)) %>
-    </div>
-    <div id="post_caption">
-      <%= post.caption %>
-    </div>
-    </br>
-    <%= link_to 'EDIT CAPTION', edit_post_path(post.id) %>
-    <span>        </span>
-    <%= link_to 'DELETE MOMENT', post_path(post),
-                               method: :delete%>
-   <% end %>
+      <div id="post_image">
+        <%= image_tag(post.moment.url(:medium)) %>
+      </div>
+      <div id="post_caption">
+        <%= post.caption %>
+      </div>
+      <div id="post_likes">
+        ❤️ <%= post.likes.count %>
+      </div>
+      </br>
+      <%= link_to 'LIKE', post_likes_path(post), method: :post %>
+      </br>
+      <%= link_to 'EDIT CAPTION', edit_post_path(post.id) %>
+      <%= link_to 'DELETE MOMENT', post_path(post), method: :delete %>
+    <% end %>
   </body>
 </html>

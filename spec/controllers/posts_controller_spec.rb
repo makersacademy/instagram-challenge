@@ -11,7 +11,7 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe 'GET #new' do
-    it 'instantiates a new instance' do
+    it 'instantiates a new post instance' do
       expect(subject.new).to be_a_new(Post)
     end
   end
