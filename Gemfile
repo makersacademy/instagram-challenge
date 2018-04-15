@@ -48,6 +48,7 @@ group :development, :test do
   gem 'travis'
   gem 'travis-lint'
   gem 'pry'
+  gem 'rspec-core'
 end
 
 group :development do
