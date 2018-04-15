@@ -1,7 +1,7 @@
 require 'rails_helper'
 require_relative 'web_helpers'
 
-RSpec.feature "User posting", type: :feature do
+RSpec.feature "Liking posts", type: :feature do
 
   scenario "can like another users photo" do
     sign_up_test_user_1
@@ -15,7 +15,7 @@ RSpec.feature "User posting", type: :feature do
     end
     expect(find("div#post_0")).to have_text("1 \u2665")
   end
-  
+
   scenario "can only like a users photo once" do
     sign_up_test_user_1
     post_goat
