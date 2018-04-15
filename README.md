@@ -5,6 +5,9 @@ Instagram Challenge
 
 Find the app on Heroku: https://instagram-challenge-gdrayson.herokuapp.com
 
+heroku run rails db:migrate
+
+
 ## Task
 
 Build Instagram.
@@ -19,7 +22,8 @@ Bonus if you can add filters!
 ```
 As a user,
 So that I can share my photos,
-I want to post pictures```
+I want to post pictures
+```
 :white_check_mark:
 
 
@@ -41,6 +45,7 @@ I would like to sign up
 As a user,
 So that I can tell other users what I think of their photos,
 I would like to comment```
+:white_check_mark:
 
 ```
 As a user,
@@ -72,3 +77,4 @@ As a user,
 So that other users can't delete or edit my posts,
 I would like to be the only one that can edit/delete my posts
 ```
+:white_check_mark:
