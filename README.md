@@ -24,7 +24,7 @@ Second user signs in and likes a picture from first user
 ```
 As a user and amateur photographer,
 So that I can see which of my pictures are considered good,
-I would like users to be able to tag my photos as 'liked'.
+I would like users to be able to tag each others photos as 'liked'.
 ```
 
 **User Journey / Story 4**
