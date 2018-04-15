@@ -1,10 +1,22 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <h1>Pintagram</h1>
-  <%= @posts.each do |post| %>
-  <%= image_tag post.image.url(:medium) %>
-  <%= post.caption %>
+<div class="posts-wrapper row">
+  <% @posts.each do |post| %>
+    <div class="post">
+      <div class="post-head">
+        <div class="name">
+          Chiaki Mizuta
+        </div>
+      </div>
+      <div class="image center-block">
+        <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
+      </div>
+      <p class="caption">
+        <%= post.caption %>
+      </p>
+    </div>
   <% end %>
+</div>
 </body>
 </html>
