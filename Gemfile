@@ -66,6 +66,7 @@ group :test, :development do
   gem 'devise'
   gem 'travis'
   gem 'travis-lint'
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
