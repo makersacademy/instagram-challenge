@@ -35,6 +35,7 @@ gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'erubis', '~> 2.7'
 gem 'devise', '~> 4.2'
 gem 'jquery-rails'
+gem 'paperclip', '~> 4.2.0'
 
 
 # Use Capistrano for deployment
