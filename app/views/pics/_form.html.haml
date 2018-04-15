@@ -1,0 +1,16 @@
+= simple_form_for @pic, html: { multipart: true } do |f|
+  - if @pic.errors.any?
+    #errors
+      %h2
+      = pluralize(@pic.errors.count, "error")
+      prevented this Pic from saving
+      %ul
+        - @pic.errors.full_message.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.input :title, input_html: { class: 'form-control' }
+  .form-group
+    = f.input :description, input_html: { class: 'form-control' }
+
+  = f.button :submit, class: "btn btn-info"
