@@ -8,7 +8,7 @@ class Photo < ApplicationRecord
   has_attached_file :upload_file,
                     styles: { thumb: ['150x150#'],
                              original: ['500x500>'] }
-  validates_attachment_content_type :upload_file, content_type: /\Aimage\/.*\z/
-  # validates_attachment_file_name :image, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
-  # validates_attachment :image, :presence => true, :content_type => { :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'] }
+  validates_attachment_content_type :upload_file, content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']
+  validates :upload_file, presence: true
+  validates :caption, presence: true
 end
