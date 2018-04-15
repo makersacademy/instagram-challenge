@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    authenticate_user!
     @post = Post.new
   end
 
