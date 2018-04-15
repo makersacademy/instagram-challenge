@@ -9,7 +9,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to post_path(@post)
+      redirect_to post_path(@post)
+
   end
 
   def show
