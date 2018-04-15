@@ -13,6 +13,11 @@
     <%= button_to('Register', new_user_registration_path, {method: :get, id: 'banner_btn'}) %>
   <% end %>
 
+  <% if user_signed_in? %>
+    <%= button_to('Logout', destroy_user_session_path, {method: :delete, id: 'banner_btn'}) %>
+  <% else %>
+    <%= button_to('Login', new_user_session_path, {method: :get, id: 'banner_btn'}) %>
+  <% end %>
 
   <body>
     <%= yield %>
