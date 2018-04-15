@@ -2,11 +2,11 @@
 
 class Photo < ApplicationRecord
   # belongs_to :user
-  # has_many :likes, dependent: :destroy
+  has_many :likes, dependent: :destroy
   # has_many :comments, dependent: :destroy
 
   has_attached_file :upload_file,
-                    styles: { thumb: ['100x100#'],
+                    styles: { thumb: ['150x150#'],
                              original: ['500x500>'] }
   validates_attachment_content_type :upload_file, content_type: /\Aimage\/.*\z/
   # validates_attachment_file_name :image, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]

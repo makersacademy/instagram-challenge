@@ -17,16 +17,20 @@ ActiveRecord::Schema.define(version: 20180414140139) do
 
   create_table "comments", force: :cascade do |t|
     t.string "message"
+    t.bigint "photo_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["photo_id"], name: "index_comments_on_photo_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
+    t.bigint "photo_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["photo_id"], name: "index_likes_on_photo_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -53,7 +57,9 @@ ActiveRecord::Schema.define(version: 20180414140139) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "photos"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "photos"
   add_foreign_key "likes", "users"
   add_foreign_key "photos", "users"
 end

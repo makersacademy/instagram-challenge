@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   resources :photos do
-    resources :comments, :likes
+    resources :likes
   end
 
   resources :users
