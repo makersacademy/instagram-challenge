@@ -4,7 +4,7 @@ require_relative 'web_helpers'
 RSpec.feature "Signing Up and Signing In", type: :feature do
 
   scenario "new user signs up" do
-    sign_up_test_user
+    sign_up_test_user_1
     expect(page).to have_content "Test User"
   end
 
@@ -15,7 +15,7 @@ RSpec.feature "Signing Up and Signing In", type: :feature do
   end
 
   scenario "signed in user logs out" do
-    sign_up_test_user
+    sign_up_test_user_1
     click_link "Log Out"
     expect(page).to have_current_path("/")
   end
