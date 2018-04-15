@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'welcome/index'
+
+  devise_scope :user do
+    authenticated :user do
+      root to: 'posts#index'
+    end
+    unauthenticated :user do
+      root to: 'devise/registrations#new', as: :unauthenticated_root
+    end
+  end
 
   resources :posts
-
-  root 'welcome#index'
 end
