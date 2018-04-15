@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Adding photo", type: :feature do
-  scenario "Can add a photo with a description" do
+RSpec.feature "Deleting post", type: :feature do
+  scenario "Can delete a post" do
     sign_up
     add_post
     click_link "Delete"
