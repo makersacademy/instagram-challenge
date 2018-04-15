@@ -33,6 +33,10 @@ So that I can tell other users what I think of their photos,
 I would like to like a picture
 
 As a user,
+So that my posts can be identified as mine,
+I would like them to show my username
+
+As a user,
 So that I can change my photo or description,
 I would like to edit
 
