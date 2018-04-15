@@ -2,8 +2,9 @@
   <h1><%= current_user.username %></h1>
   <%= link_to 'Post a Photo', new_post_path %>
   <div id=gallery>
-    <% @posts.each do |post| %>
-    <div id=<%= "post_#{post.id}" %>>
+    <% @posts.each_with_index do |post, i| %>
+    <div id=<%= "post_#{i}" %>>
+      <h2><%= User.find(post.user_id).username %></h2>
       <img src=<%= post.image_url %>></img>
     </div>
     <% end %>
