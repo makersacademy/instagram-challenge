@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+
 <html>
   <head>
 
     <title>Alex Instagram</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Raleway:400,700' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
   </head>
@@ -14,22 +16,40 @@
     <div id="sidebar">
       <div id="logo">
         <%= link_to root_path do %>
-          <img class='x' src='/logo.png' alt='T' width=200 heigh=200 >
+          <img class='x' src='/logo.png' alt='T' width=100 heigh=100 >
         <% end %>
       </div>
       <ul>
         <li class="category">Website</li>
-        <li><%= link_to "Blog", root_path %></li>
+        <li><%= link_to "Home", root_path %></li>
         <li>About</li>
       </ul>
       <ul>
-        <li class="category">Social</li>        
+        <li class="category">Social</li>
         <li><a href = 'https://twitter.com/Alex__Code'>Twitter</a></li>
         <li><a href = 'https://www.youtube.com/channel/UCbb1jwj4txlERk4jBWWienw?view_as=subscriber'>Youtube</a></li>
         <li><a href = 'https://medium.com/@alex__code'>Medium</a></li>
         <li><a href = 'https://github.com/xelAhcratiPsavilO'>Github</a></li>
       </ul>
+      <p class="sign_in">Admin Login</p>
     </div>
+
+    <div id="main_content">
+  		<div id="header">
+  				<p>All Posts</p>
+
+  				<div class="buttons">
+  					<button class="button"><%= link_to "New Post", new_post_path %></button>
+  					<button class="button">Log Out</button>
+  				</div>
+  		</div>
+
+  		<% flash.each do |name, msg| %>
+  			<%= content_tag(:div, msg, class: "alert") %>
+  		<% end %>
+
+  		<%= yield %>
+  	</div>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
