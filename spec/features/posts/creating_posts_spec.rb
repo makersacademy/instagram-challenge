@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'Creating posts' do
-
   background do
   user = create :user
   sign_in_with user
@@ -14,6 +13,7 @@ end
     fill_in 'Caption', with: 'Me when I try to understand routes'
     click_button 'Create Post'
     expect(page).to have_content('Me when I try to understand routes')
+    expect(page).to have_css("img[src*='Brainslug']")
   end
 
   it 'requires an image to create a post' do
