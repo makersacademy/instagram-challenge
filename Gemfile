@@ -36,7 +36,7 @@ gem 'erubis', '~> 2.7'
 gem 'devise', '~> 4.2'
 gem 'jquery-rails'
 gem 'paperclip', '~> 4.2.0'
-
+gem 'masonry-rails', '~> 0.2.4'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
