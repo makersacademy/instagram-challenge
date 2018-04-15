@@ -13,4 +13,10 @@ RSpec.feature "Signing Up and Signing In", type: :feature do
     sign_in_test_user_2
     expect(page).to have_content "Test User 2"
   end
+
+  scenario "signed in user logs out" do
+    sign_up_test_user
+    click_link "Log Out"
+    expect(page).to have_current_path("/")
+  end
 end
