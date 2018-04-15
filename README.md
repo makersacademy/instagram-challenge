@@ -15,51 +15,42 @@ Bonus if you can add filters!
 
 ## User stories
 
-```
-As a user,
+
+`As a user,
 So that I can share my photos,
-I want to post pictures
+I want to post pictures` :white_check_mark:
 
-:white_check_mark:
 
-As a user,
+`As a user,
 So that I can be identified as me,
-I would like to have an account
+I would like to have an account`:white_check_mark:
 
-:white_check_mark:
-
-As a user,
+`As a user,
 So that I can create an account,
-I would like to sign up
-
+I would like to sign up`
 :white_check_mark:
 
-As a user,
+`As a user,
 So that I can tell other users what I think of their photos,
-I would like to comment
+I would like to comment`
 
-As a user,
+`As a user,
 So that I can tell other users what I think of their photos,
-I would like to like a picture
+I would like to like a picture`
 
-As a user,
+`As a user,
 So that my posts can be identified as mine,
-I would like them to show my username
+I would like them to show my username`
+:white_check_mark:
 
-As a user,
+`As a user,
 So that I can change my photo or description,
-I would like to edit
+I would like to edit`:white_check_mark:
 
-:white_check_mark:
-
-As a user,
+`As a user,
 So that I can delete my post,
-I would like to delete
+I would like to delete`:white_check_mark:
 
-:white_check_mark:
-
-As a user,
+`As a user,
 So that other users can't delete or edit my posts,
-I would like to be the only one that can edit/delete my posts
-
-```
+I would like to be the only one that can edit/delete my posts`
