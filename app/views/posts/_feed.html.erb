@@ -1,0 +1,9 @@
+<% @posts.reverse.each do |post| %>
+      <%= post.user_id %><br>
+      <%= link_to image_tag(post.image.url(:medium)), post_path(post) %><br>
+      <%= post.caption %><br>
+      <% if post.user_id = current_user.id %>
+        <%=link_to 'Edit Post', edit_post_path(post)%><br>
+        <%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: "Are you sure?" }%><br>
+      <% end %>
+<% end %>
