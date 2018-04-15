@@ -27,6 +27,25 @@
       </br>
       <%= link_to 'EDIT CAPTION', edit_post_path(post.id) %>
       <%= link_to 'DELETE MOMENT', post_path(post), method: :delete %>
+      </br>
+      </br>
+      <% post.comments.reverse.each do |comment| %>
+        <div id="all_comments">
+          <p> COMMENTS </p>
+          <%= comment.body %> </br>
+          <%= comment.created_at %>
+          </br>
+        </div>
+      <% end %>
+      <div id="comment_form">
+        <%= form_with(model: [ post, post.comments.build], local: true) do |form| %>
+          <%= form.text_area :body, cols: "20", rows: "5" %>
+          <br>
+          <%=form.submit "COMMENT"%>
+        <% end %>
+      </div>
+      </br>
+      </br>
     <% end %>
   </body>
 </html>
