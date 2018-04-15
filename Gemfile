@@ -8,7 +8,9 @@ end
 gem "rubocop", "0.48.1"
 gem "rubocop-rails"
 
-gem "pry"
+gem 'pry'
+
+gem 'devise'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
