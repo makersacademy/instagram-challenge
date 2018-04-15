@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 gem "rubocop", "0.48.1"
 gem "rubocop-rails"
 gem "devise"
+gem "factory_bot_rails", "~> 4.0"
+gem 'ffaker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
