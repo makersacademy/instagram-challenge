@@ -22,7 +22,16 @@ feature 'Creating a new user' do
     fill_in 'Password confirmation', with: 'itsMyLife99'
 
     click_button 'Sign up'
-    click_button 'Sign up'
     expect(page).to have_content("You need a username to start trolling.")
+  end
+
+  scenario 'requires a username to be longer than 4 characters' do
+    fill_in 'Username', with: 'jon'
+    fill_in 'Email', with: 'jonbonjovi@gmail.com'
+    fill_in 'Password', with: 'itsMyLife99', match: :first
+    fill_in 'Password confirmation', with: 'itsMyLife99'
+
+    click_button 'Sign up'
+    expect(page).to have_content('minimum is 4 characters')
   end
 end
