@@ -1,0 +1,12 @@
+<h1><%= @picture.title %></h1>
+<%= image_tag @picture.image.url(:medium) %>
+<h2><%= @picture.description %></h2>
+
+<h2>Pic by:</h2>
+<h4><%= @picture.user.email %></h4>
+
+<% if @picture.user == current_user %>
+  <h3><%= link_to "Delete", picture_path, method: :delete, data: { confirm: "Are you sure?"} %></h3>
+<% end %>
+
+<h3><%= link_to "Back", root_path %></h3>
