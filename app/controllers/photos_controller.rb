@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
 
   # GET /photos
   def index
-    @photos = Photo.all.order('created_at')
+    @photos = Photo.all.order('created_at DESC')
   end
 
   # GET /photos/1
@@ -45,12 +45,10 @@ class PhotosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_photo
       @photo = Photo.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
       params.require(:photo).permit(:caption, :user_id, :upload_file)
     end

@@ -3,22 +3,17 @@
 <h1>Photos</h1>
 
 <table>
-  <thead>
-    <tr>
-
-      <th>Photo</th>
-      <th>Caption</th>
-
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @photos.each do |photo| %>
       <tr>
-        <td><%= image_tag photo.upload_file.url(:thumb) %></td>
-        <td><%= photo.caption %></td>
-
+        <td colspan='3' style='text-align: center;'><%= image_tag photo.upload_file.url(:thumb) %></td>
+      </tr>
+      <tr>
+        <td colspan='3' style='text-align: left;'>
+          <%= photo.caption %>
+        </td>
+      </tr>
+      <tr>
         <td><%= link_to 'Show', photo %></td>
         <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
         <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
