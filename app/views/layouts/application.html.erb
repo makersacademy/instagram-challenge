@@ -34,9 +34,14 @@
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
-
-    <body>
+    <div class="container">
+      <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+      <% end %>
       <%= yield %>
-    </body>
+    </div>
+    <!-- <body>
+      <%= yield %>
+    </body> -->
 </nav>
 </html>
