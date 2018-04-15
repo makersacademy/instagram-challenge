@@ -9,8 +9,8 @@ RSpec.feature "Signing Up and Signing In", type: :feature do
   end
 
   scenario "existing user signs in" do
-    create_test_user2
-    sign_in_test_user2
+    create_test_user_2
+    sign_in_test_user_2
     expect(page).to have_content "Test User 2"
   end
 end
