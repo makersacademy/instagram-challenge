@@ -1,10 +1,12 @@
 <%= render 'post', post: @post %>
-<div class="text-center edit-links">
-  <% if @post.user.id == current_user.id %>
-    <%= link_to 'Cancel', posts_path %>
+<% if @post.user.id == current_user.id %>
+  <div class="text-center edit-links">
+    <%= link_to "Cancel", posts_path %>
     |
-    <%= link_to 'Edit Post', edit_post_path(@post) %>
-  <% else %>
-    <%= link_to 'Cancel', posts_path %>
-  <% end %>
-</div>
+    <%= link_to "Edit Post", edit_post_path(@post) %>
+  </div>
+<% else %>
+  <div class="text-center edit-links">
+    <%= link_to "Cancel", posts_path %>
+  </div>
+<% end %>
