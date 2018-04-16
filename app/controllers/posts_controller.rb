@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_post, only: [:show, :edit, :update, :destroy, :post_owner]
-  before_action :post_owner, only: [:destroy]
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :find_user, only: [:destroy]
 
   def index
     @posts = Post.all
@@ -34,8 +34,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(current_user.id)
-    @post.destroy
+    if (@user.id.to_i != @post.user_id.to_i)
+      flash[:notice] = "You can't delete this post"
+    else
+      @post.destroy
+    end
 
     redirect_to posts_path
   end
@@ -50,10 +53,8 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
-    def post_owner
-      unless current_user.id == @post.user_id
-        flash[:notice] = "This is not your post"
-      end
+    def find_user
+      @user = User.find(current_user.id)
     end
 
 end

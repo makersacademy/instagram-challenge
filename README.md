@@ -51,6 +51,7 @@ I would like to comment```
 As a user,
 So that I can tell other users what I think of their photos,
 I would like to like a picture```
+:white_check_mark:
 
 ```
 As a user,

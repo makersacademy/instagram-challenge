@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if current_user.id != @comment.user_id
+    if (current_user.id.to_i != @comment.user_id.to_i)
       flash[:notice] = "This is not your comment"
     else
       @comment.destroy

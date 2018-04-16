@@ -2,7 +2,7 @@ class LikesController < ApplicationController
   before_action :find_post
 
   def create
-    if (Like.where(user_id: current_user.id).exists?)
+    if (Like.where(user_id: current_user.id, post_id: params[:post_id]).exists?)
       flash[:notice] = "You have already liked"
     else
       @like = @post.likes.create(params[:like])

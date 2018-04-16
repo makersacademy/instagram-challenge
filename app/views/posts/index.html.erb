@@ -35,7 +35,7 @@
       <div class="row">
       <% @posts.sort_by { |x| x.created_at }.reverse.each do |post| %>
         <div class="col-md-4">
-          <h4><%= post.created_at.strftime("%a %e %b %H:%M") %></h4>
+          <h4><%= post.created_at.localtime.strftime("%a %e %b %H:%M") %></h4>
           <h4><%= User.find(post.user_id).username if (post.user_id)  %></h4>
           <%= link_to post_path(post) do %>
           <img src="<%= post.photo %>" style="height: 250px; width: 250px;">
