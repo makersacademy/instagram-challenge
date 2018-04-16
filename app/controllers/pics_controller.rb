@@ -41,7 +41,7 @@ class PicsController < ApplicationController
 
   def upvote
     @pic.upvote_by current_user
-    redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   private
