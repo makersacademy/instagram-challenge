@@ -20,4 +20,13 @@ RSpec.feature "User posting", type: :feature do
     click_button "Post"
     expect(find("div#post_0")).to have_text('Test User 1')
   end
+
+  scenario "can delete an image they posted" do
+    sign_up_test_user_1
+    post_goat
+    within("div#post_0") do
+      click_link "Delete"
+    end
+    expect(page).not_to have_css("img[src*='#{testImageURL}']")
+  end
 end
