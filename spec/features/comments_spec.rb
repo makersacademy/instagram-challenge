@@ -27,7 +27,7 @@ RSpec.feature "Commenting on posts", type: :feature do
       click_button "Create Comment"
     end
     within("div#comment_0") do
-      click_button "Delete"
+      click_link "Delete"
     end
     expect(find("div#post_0")).to have_text("Comments (0)")
   end

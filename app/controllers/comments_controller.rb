@@ -10,6 +10,11 @@ class CommentsController < ApplicationController
     redirect_to post_path(@post)
   end
 
+  def destroy
+    @post.comments.where(user_id: current_user.id).destroy_all
+    redirect_to posts_url
+  end
+
   private
     def find_post
       @post = Post.find(params[:post_id])
