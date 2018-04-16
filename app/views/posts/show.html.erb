@@ -1,0 +1,24 @@
+<body>
+  <h1><%= current_user.username %></h1>
+  <span>
+    <%= link_to 'Post a Photo', new_post_path %>
+    <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+  </span>
+  <%= link_to 'Back', posts_path %>
+  <div id="post">
+    <h2><%= User.find(@post.user_id).username %></h2>
+    <img src=<%= @post.image_url %>></img>
+    <h3> <%= "#{@post.likes.count} \u2665" %> </h3>
+  </div>
+  <div id="comments">
+    <%= render 'comments/form' %>
+    <h3> Comments </h3>
+    <% if @post.comments.count > 0 %>
+      <% @post.comments.each_with_index do |comment, i| %>
+      <div id="<%= "comment_#{i}" %>"><%= comment.body %> <%= '-' if (comment.body)%>
+        <i> <%= User.find(comment.user_id).username if (comment.user_id)  %></i>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</body>

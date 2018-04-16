@@ -4,9 +4,9 @@
     <%= link_to 'Post a Photo', new_post_path %>
     <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
   </span>
-  <div id=gallery>
+  <div id="gallery">
     <% @posts.each_with_index do |post, i| %>
-    <div id=<%= "post_#{i}" %>>
+    <div id="<%= "post_#{i}" %>">
       <h2><%= User.find(post.user_id).username %></h2>
       <img src=<%= post.image_url %>></img>
       <% pre_like = post.likes.find { |like| like.user_id == current_user.id } %>
@@ -15,6 +15,7 @@
       <% else %>
         <%= link_to 'Like', post_likes_path(post), method: :post %>
       <% end %>
+        <%= link_to "Comments (#{post.comments.count})", post_path(post) %>
       <h3> <%= "#{post.likes.count} \u2665" %> </h3>
     </div>
     <% end %>

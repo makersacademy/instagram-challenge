@@ -54,6 +54,16 @@ So that our photos can become a conversation,
 I would like users to be able add comments to each others photos.
 ```
 
+**User Journey / Story 7**
+```
+Any user can unlike photos, delete their comments, or delete their own pictures
+```
+```
+As a user who occasionally changes their mind,
+So that I can remove comments, photos or likes that I don't wish others to see anymore,
+I would like to be able to unlike photos and delete my comments and photos.
+```
+
 
 
 Instagram Challenge
