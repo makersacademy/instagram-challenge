@@ -38,6 +38,8 @@ gem 'jquery-rails'
 gem 'paperclip', '~> 4.2.0'
 gem 'masonry-rails', '~> 0.2.4'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'simplecov', require: false, group: :test
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -46,8 +48,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
+  gem 'rspec'
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec-rails', '~> 3.7'
 end
 
 group :development do
