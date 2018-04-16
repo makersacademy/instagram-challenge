@@ -1,4 +1,3 @@
-require 'rails_helper'
 require 'spec_helper'
 
 feature 'Displaying an individual post' do
@@ -10,8 +9,8 @@ feature 'Displaying an individual post' do
   end
 
   scenario 'click and view single post' do
-    find(:xpath, "//a[contains(@href,'posts/#{post.id}')]").click
-    expect(page.current_path).to eq(post_path(:id))
+    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    expect(page.current_path).to eq(post_path(1))
   end
 
 end

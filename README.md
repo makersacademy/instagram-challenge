@@ -54,8 +54,6 @@ I managed to implement the main features for posts (CRUD), along with some user 
 
 Had I stuck to my first approach using Carrierwave (and lots of scaffolding), I would have probably managed to implement more functionalities as the development would have been quicker. Nevertheless, I believe that the TDD approach - despite being more time consuming - significantly improved my understanding of Rails.
 
-***At the time of writing this README, there is an outstanding issue regarding a failing feature test `spec/features/posts/displaying_individual_posts_spec.rb`. I plan to discuss this with coaches and classmates and hopefully fix it.***
-
 **NB: the design is currently the same used by Devwalks**
 
 ### To do

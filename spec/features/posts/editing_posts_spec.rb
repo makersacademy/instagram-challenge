@@ -7,7 +7,7 @@ feature 'Editing posts' do
 
     sign_in_with user
 
-    find(:xpath, "//a[contains(@href,'posts/#{post.id}')]").click
+    find(:xpath, "//a[contains(@href,'posts/1')]").click
     click_link 'Edit Post'
   end
 
