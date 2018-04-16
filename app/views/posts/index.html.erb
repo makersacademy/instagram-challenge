@@ -17,9 +17,11 @@
         <%= link_to 'Like', post_likes_path(post), method: :post %>
       <% end %>
       <%= link_to "Comments (#{post.comments.count})", post_path(post) %>
-      <%= link_to 'Delete', post_path(post),
+      <% if post.user_id == current_user.id %>
+        <%= link_to 'Delete', post_path(post),
             method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+            data: { confirm: 'Are you sure?' } %>
+      <% end %>
       <h3> <%= "#{post.likes.count} \u2665" %> </h3>
     </div>
     <% end %>
