@@ -20,7 +20,7 @@ Bonus if you can add filters!
 
 ## How to use
 
-From the landing page you can either sign up, sign in or go straight to browsing images (you won't be able to add imges, comment on images or like images without being signed in).
+From the landing page you can either sign up, sign in or go straight to browsing images (you won't be able to add images, comment on images or like images without being signed in).
 
 ![alt text](images/landingpage.png "Landing page")
 
@@ -28,11 +28,11 @@ If you choose to sign up fill out your email address and password/password confi
 
 ![alt text](images/signup.png "Sign up")
 
-If you chose to sign in fill out your existing email and password and then click log in.
+If you chose to sign in fill out your existing email and password and then click Log in.
 
 ![alt text](images/signin.png "Sign In")
 
-From the main page you can see all uploaded images,and mouseover them to view the number of likes they have. From here you can click on Add Picture to upload a new image, or click on an image to view its page. You can get back to this page at anytime by clicking Instablam! in the navbar.
+From the main page you can see all uploaded images and mouseover them to view the number of likes they have. From here you can click on Add Picture to upload a new image, or click on an image to view its page. You can get back to this page at anytime by clicking Instablam! in the navbar.
 
 ![alt text](images/mainpage.png "Main Page")
 
@@ -40,7 +40,7 @@ From the add picture page you need to give your image a title and then select an
 
 ![alt text](images/addpicture.png "Add Picture")
 
-On an images page if you are the owner of the image you will be able to view the images comments and likes, but not comment or like an image yourself. You will be able to edit or delete your image from this page.
+On an images page if you are the owner of the image you will be able to view the images comments and likes, but not comment or like the image yourself. You will be able to edit or delete your image from this page.
 
 ![alt text](images/pictureowner.png "Picture Owner")
 
