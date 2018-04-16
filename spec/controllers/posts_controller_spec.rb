@@ -1,18 +1,34 @@
 RSpec.describe PostsController, type: :controller do
-  before(:example) { get :index }
+  before(:example) {}
+
+  before (:each) do
+    @user = User.create! (
+      {
+        username: 'testUser',
+        email: 'user@test.com',
+        password: 'password',
+        password_confirmation: 'password'
+      }
+    )
+    sign_in @user
+  end
+
   describe 'GET #index' do
     it 'returns http success status of 200 or ok' do
+      get :index
       expect(response).to have_http_status(:ok)
     end
 
     it 'renders the index view' do
+      get :index
       expect(response).to render_template('index')
     end
   end
 
   describe 'GET #new' do
-    it 'instantiates a new post instance' do
-      expect(subject.new).to be_a_new(Post)
+    it 'returns http success status of 200 or ok' do
+      get :new
+      expect(response).to have_http_status(200)
     end
   end
 

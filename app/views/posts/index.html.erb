@@ -6,11 +6,21 @@
     <title>Moments // Tell your story in pictures.</title>
   </head>
   <body>
+    <% if user_signed_in? %>
+      <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete %>
+      <p>@<%= current_user.username %> SIGNED IN</p>
+    <% else %>
+        <%= link_to 'SIGN UP', new_user_registration_path %>
+        <%= link_to 'SIGN IN', new_user_session_path %>
+    <% end %>
+    </br>
     <h1>MOMENTS</h1>
     </br>
     </br>
-    <%= link_to new_post_path do %>
-      NEW MOMENT
+    <% if user_signed_in? %>
+      <%= link_to new_post_path do %>
+        NEW MOMENT
+      <% end %>
     <% end %>
     <% @posts.reverse.each do |post| %>
       <div id="post_image">
@@ -21,10 +31,8 @@
         <%= post.caption %>
       </div>
       <div id="post_likes">
-        ❤️ <%= post.likes.count %>
+        ❤️ <%= post.likes.count %> <%= link_to 'LIKE', post_likes_path(post), method: :post %>
       </div>
-      </br>
-      <%= link_to 'LIKE', post_likes_path(post), method: :post %>
       </br>
       <%= link_to 'EDIT CAPTION', edit_post_path(post.id) %>
       <%= link_to 'DELETE MOMENT', post_path(post), method: :delete %>
@@ -40,13 +48,15 @@
           </br>
         </div>
       <% end %>
-      <div id="comment_form">
-        <%= form_with(model: [ post, post.comments.build], local: true) do |form| %>
-          <%= form.text_area :body, cols: "20", rows: "5" %>
-          <br>
-          <%=form.submit "COMMENT"%>
-        <% end %>
-      </div>
+      <% if user_signed_in? %>
+        <div id="comment_form">
+          <%= form_with(model: [ post, post.comments.build], local: true) do |form| %>
+            <%= form.text_area :body, cols: "20", rows: "5" %>
+            <br>
+            <%=form.submit "COMMENT"%>
+          <% end %>
+        </div>
+      <% end %>
       </br>
       </br>
     <% end %>

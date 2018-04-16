@@ -1,19 +1,20 @@
 class PostsController < ApplicationController
+  # before_action :authenticate_user!
   def index
     @posts = Post.all
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.new
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = current_user.posts.create(post_params)
     redirect_to posts_path
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.destroy
     flash[:success] = "Post Deleted"
     redirect_to posts_path

@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @post.comments.create(comment_params)
-    # @comment.save
     redirect_to posts_url
   end
 

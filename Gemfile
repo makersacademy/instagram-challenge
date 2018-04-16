@@ -4,6 +4,8 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+# Devise ruby gem  for ORM user authentification
+gem 'devise'
 # To test paperclip model data for validation
 gem 'paperclip-rack', require: 'paperclip/rack'
 # Paperclip ruby gem for using images and other media in posts
