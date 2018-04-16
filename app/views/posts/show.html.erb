@@ -17,6 +17,10 @@
       <% @post.comments.each_with_index do |comment, i| %>
       <div id="<%= "comment_#{i}" %>"><%= comment.body %> <%= '-' if (comment.body)%>
         <i> <%= User.find(comment.user_id).username if (comment.user_id)  %></i>
+        <br>
+        <% if comment.user_id == current_user.id %>
+          <%= link_to 'Delete', post_comment_path(@post, comment), method: :delete %>
+        <% end %>
       </div>
       <% end %>
     <% end %>

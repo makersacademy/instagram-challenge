@@ -8,6 +8,14 @@ def sign_up_test_user_1
   click_button "Sign up"
 end
 
+def sign_in_test_user_1
+  visit "/"
+  click_link "Log In"
+  fill_in "user[email]", with: "test1@test.com"
+  fill_in "user[password]", with: "testtest"
+  click_button "Log in"
+end
+
 def create_test_user_2
   User.create(email: "test2@test.com", password: "testtest", password_confirmation: "testtest", username: 'Test User 2')
 end
