@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ego Wall</h1>
+
+<table>
+  <tbody>
+    <% @photos.each do |photo| %>
+      <tr>
+        <td colspan='3' style='text-align: center;'><%= image_tag photo.upload_file.url(:thumb) %></td>
+      </tr>
+      <tr>
+        <td colspan='3' style='text-align: left;'>
+          <%= photo.caption %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= link_to 'View', photo %></td>
+        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
+        <td><%= link_to 'Crush', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Photo', new_photo_path %>
