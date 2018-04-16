@@ -22,6 +22,7 @@ RSpec.feature "User posting", type: :feature do
   end
 
   scenario "can delete an image they posted" do
+    testImageURL = "https://upload.wikimedia.org/wikipedia/commons/f/ff/Domestic_goat_kid_in_capeweed.jpg"
     sign_up_test_user_1
     post_goat
     within("div#post_0") do
