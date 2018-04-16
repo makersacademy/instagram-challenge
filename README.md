@@ -1,3 +1,23 @@
+# Instructions for use
+
+1. clone or download/extract repository, then run bundle install to install dependencies.
+
+2. Run tests with rspec.
+
+3. Run local server with rails server, then navigate to http://localhost:3000 in a web browser.
+
+4. Create a user profile (username, email, password) to access !nstagram.
+
+5. To post a picture, click on 'Post a Photo', then input the URL of the photo in the Image URL text field.
+
+6. To delete a picture you posted, click on the 'delete' link immediately below the picture. You cannot delete pictures you did not post.
+
+7. To like a picture, click on the 'like' link immediately below the picture. You cannot like a picture more than once. To unlike, simply click on the 'unlike' link immediately below the picture (nb you cannot unlike a picture you have not already liked).
+
+8. To comment on a picture, click on the 'Comments' link immediately below the picture, then fill in the text field with your comment, and click on 'create comment'.
+
+9. To delete a comment that you made, click on the 'delete' button immediately below the comment. You cannot delete comments you did not make.
+
 **User Journey / Story 1**
 ```
 User visits site and posts a picture
