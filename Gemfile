@@ -35,6 +35,9 @@ gem 'jbuilder', '~> 2.5'
 gem "rubocop", "0.48.1"
 gem "rubocop-rails"
 
+gem 'travis'
+gem 'travis-lint'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -45,8 +48,6 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'simplecov'
-  gem 'travis'
-  gem 'travis-lint'
   gem 'pry'
   gem 'rspec-core'
   gem 'rspec-rails', '~> 3.5'

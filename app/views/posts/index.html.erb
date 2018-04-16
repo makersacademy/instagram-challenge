@@ -8,13 +8,27 @@
     <br>
     <%= image_tag(post.image.url(:medium)) %>
     <br>
+    <% if user_signed_in? %>
+      <%= current_user.username + ": "%>
+    <% end %>
     <%= post.description %>
     <%= post.created_at %>
-    <span><%= link_to 'Edit', edit_post_path(post) %>
-    </span>
+
+    <span><%= link_to 'Edit', edit_post_path(post) %></span>
+
     <span><%= link_to 'Delete', post_path(post),
       method: :delete,
       data: { confirm: 'Are you sure?' } %>
     </span>
-</li>
+
+    <% @post = post %>
+    <ul>
+    <% post.comments.each do |comment| %>
+      <li><%= comment.content + "  "%>
+        <span><%= comment.created_at %></span>
+      </li>
+    <% end %>
+  </ul>
+    <%= render 'comments/form' %>
+ </div>
 <% end.reverse %>
