@@ -1,9 +1,28 @@
 <body>
-  <%= link_to 'Post a Photo', new_post_path %>
-  <div id=gallery>
-    <% @posts.each do |post| %>
-    <div id=<%= "post_#{post.id}" %>>
+  <h1><%= current_user.username %></h1>
+  <span>
+    <%= link_to 'Post a Photo', new_post_path %>
+    <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+  </span>
+  <div id="gallery">
+    <% @posts.each_with_index do |post, i| %>
+    <div id="<%= "post_#{i}" %>">
+      <h2><%= User.find(post.user_id).username %></h2>
       <img src=<%= post.image_url %>></img>
+      <br>
+      <% pre_like = post.likes.find { |like| like.user_id == current_user.id } %>
+      <% if pre_like %>
+        <%= link_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+      <% else %>
+        <%= link_to 'Like', post_likes_path(post), method: :post %>
+      <% end %>
+      <%= link_to "Comments (#{post.comments.count})", post_path(post) %>
+      <% if post.user_id == current_user.id %>
+        <%= link_to 'Delete', post_path(post),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      <h3> <%= "#{post.likes.count} \u2665" %> </h3>
     </div>
     <% end %>
   </div>
