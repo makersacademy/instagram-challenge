@@ -2,10 +2,9 @@ require 'rails_helper'
 
 feature 'Displaying a list of posts' do
   background do
-    first_post = create(:post, caption: 'This is the first post')
-    second_post = create(:post, caption: 'This is the second post')
-
     user = create :user
+    first_post = create(:post, caption: 'This is the first post', user_id: user.id)
+    second_post = create(:post, caption: 'This is the second post', user_id: user.id)
 
     sign_in_with user
   end

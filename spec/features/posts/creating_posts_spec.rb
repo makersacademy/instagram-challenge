@@ -14,6 +14,7 @@ end
     click_button 'Create Post'
     expect(page).to have_content('Me when I try to understand routes')
     expect(page).to have_css("img[src*='Brainslug']")
+    expect(page).to have_content('johndoe')
   end
 
   it 'requires an image to create a post' do
