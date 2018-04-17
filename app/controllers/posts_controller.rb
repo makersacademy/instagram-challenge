@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     Net::SCP.upload!("18.188.174.95", "ubuntu",
     file_path, "/var/www/html",
     ssh: { password: ENV["password"] })
-    FileUtils.rm(file_path)
+    FileUtils.rm_rf("#{Dir.pwd}" + "/public/system/posts/")
   end
 
   def destroy
