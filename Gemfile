@@ -4,6 +4,12 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+# Net SCP to SSH copy image files
+gem 'net-scp'
+# ENV varibales
+gem "figaro"
+# AWS S3 gem for static file storage
+gem 'aws-sdk', '~> 2.3'
 # Devise ruby gem  for ORM user authentification
 gem 'devise'
 # To test paperclip model data for validation

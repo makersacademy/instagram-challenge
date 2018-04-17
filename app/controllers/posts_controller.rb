@@ -1,3 +1,4 @@
+require 'net/scp'
 class PostsController < ApplicationController
   # before_action :authenticate_user!
   def index
@@ -11,6 +12,14 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.create(post_params)
     redirect_to posts_path
+
+    # upload our image to remote server
+    #ENV["pusher_app_id"]
+    file_path = "#{Dir.pwd}" + "/public" + "#{@post.moment.url(:medium).partition('?').first}"
+    Net::SCP.upload!("18.188.174.95", "ubuntu",
+    file_path, "/var/www/html",
+    :ssh => { :password => ENV["password"] })
+
   end
 
   def destroy
