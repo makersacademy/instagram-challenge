@@ -14,11 +14,12 @@ class PostsController < ApplicationController
     redirect_to posts_path
 
     # upload our image to remote server
-    #ENV["pusher_app_id"]
+    # ENV["pusher_app_id"]
     file_path = "#{Dir.pwd}" + "/public" + "#{@post.moment.url(:medium).partition('?').first}"
     Net::SCP.upload!("18.188.174.95", "ubuntu",
     file_path, "/var/www/html",
     ssh: { password: ENV["password"] })
+    FileUtils.rm(file_path)
   end
 
   def destroy
