@@ -18,8 +18,7 @@ class PostsController < ApplicationController
     file_path = "#{Dir.pwd}" + "/public" + "#{@post.moment.url(:medium).partition('?').first}"
     Net::SCP.upload!("18.188.174.95", "ubuntu",
     file_path, "/var/www/html",
-    :ssh => { :password => ENV["password"] })
-
+    ssh: { password: ENV["password"] })
   end
 
   def destroy
