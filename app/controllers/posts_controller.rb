@@ -20,6 +20,10 @@ class PostsController < ApplicationController
     file_path, "/var/www/html",
     ssh: { password: ENV["password"] })
     FileUtils.rm_rf("#{Dir.pwd}" + "/public/system/posts/")
+
+    Net::SSH.start('18.188.174.95', 'ubuntu', :password => ENV["password"]) do |ssh|
+      ssh.exec "chmod 444 /var/www/html/*"
+    end
   end
 
   def destroy
