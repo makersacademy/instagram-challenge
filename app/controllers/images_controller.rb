@@ -1,7 +1,6 @@
 class ImagesController < ApplicationController
 
   def index
-    # @images = Image.all
     @images = Image.all.paginate(:page => params[:page], :per_page => 9)
   end
 
@@ -13,7 +12,7 @@ class ImagesController < ApplicationController
     @image = Image.new(image_params)
     @image.save
     @images = Image.paginate(page: params[:page])
-      last_page = (@images.length.to_f/9).ceil
+    last_page = (@images.length.to_f/9).ceil
     url = '/images?page=' + last_page.to_s
     if @image.errors.empty?
       redirect_to url

@@ -1,6 +1,7 @@
 require './spec/support/web_helpers'
 
 feature 'form validations', js: true do
+  
   scenario 'user tries to add a new image without a caption' do
     visit '/images'
     click_button 'Add an image'

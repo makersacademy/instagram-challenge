@@ -6,54 +6,40 @@
     <title></title>
   </head>
   <body>
-
     <div class="notice">
       <%= notice %>
     </div>
-
     <div class="single_image_display">
-
       <img class="single_image" src="<%= @image.image.url %>">
       <div class="caption">
         <%= @image.caption %><br/>
         Posted by <%= @image.user %>
       </div>
-
-
-    <div class="image_form">
-
-  <%= form_for([@image, Comment.new]) do |form| %>
-    <p><%= form.label :comment %></p>
-    <p><%= form.text_area :comment %></p>
-    <p><%= form.label :commenter %></p>
-    <p><%= form.text_field :commenter %></p>
-    <%= form.submit 'submit' %>
-  <% end  %>
-
-</div>
-<br>
-<%= link_to 'Delete image', image_path(@image), :method => :delete, data: {:confirm => "Are you sure?"} %>
-<%= link_to 'Back', '/' %>
-
-<%= form_for([@image, Heart.new]) do |form| %>
-  <%= form.submit 'Heart' %>
-<% end  %>
-<%= @image.hearts.count %>
-</div>
-
-<div class="comments">
-
-  <h2>Comments</h2>
-
-  <% if @image.comments %>
-    <% for comment in @image.comments do %>
-      <%= comment.comment %> - <em><%= comment.commenter %></em>
+      <div class="image_form">
+        <%= form_for([@image, Comment.new]) do |form| %>
+          <p><%= form.label :comment %></p>
+          <p><%= form.text_area :comment %></p>
+          <p><%= form.label :commenter %></p>
+          <p><%= form.text_field :commenter %></p>
+          <%= form.submit 'submit' %>
+        <% end  %>
+      </div>
       <br>
-    <% end %>
-  <% end %>
-
-</div>
-
-
+      <%= link_to 'Delete image', image_path(@image), :method => :delete, data: {:confirm => "Are you sure?"} %>
+      <%= link_to 'Back', '/' %>
+      <%= form_for([@image, Heart.new]) do |form| %>
+        <%= form.submit 'Heart' %>
+      <% end  %>
+      <%= @image.hearts.count %>
+    </div>
+    <div class="comments">
+      <h2>Comments</h2>
+        <% if @image.comments %>
+          <% for comment in @image.comments do %>
+            <%= comment.comment %> - <em><%= comment.commenter %></em>
+            <br>
+          <% end %>
+        <% end %>
+    </div>
   </body>
 </html>

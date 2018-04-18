@@ -4,7 +4,7 @@ Instagram Challenge
 About
 ----
 
-This is the Week 8 Makers Acadmey Challenge, built in one weekend. The challenge was to build Instagram using Ruby on Rails. 
+This is the Week 8 Makers Academy Challenge, built in one weekend. The challenge was to build Instagram using Ruby on Rails.
 
 How to use
 -----
@@ -53,5 +53,3 @@ Due to the time constraints of this challenge, there were several features I wan
 - User can filter images based on number of comments, or number of likes
 - Only user who added picture is able to delete it
 - User can generate a list of images they've liked
-
-
