@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:success] = "You commented the hell out of that post!"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     else
       flash[:alert] = "Check the comment form, something went horribly wrong."
       render root_path
