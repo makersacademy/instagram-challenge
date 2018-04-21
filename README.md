@@ -38,3 +38,12 @@ gem "rubocop-rails"
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
+
+```
+User stories
+
+As a user
+So I can visit Instagram
+I want to post some pictures on it
+
+```
