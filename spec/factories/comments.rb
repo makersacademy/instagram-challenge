@@ -3,5 +3,6 @@ FactoryBot.define do
     user nil
     post nil
     content "MyText"
+    
   end
 end

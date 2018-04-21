@@ -9,7 +9,7 @@
     <div class="image center-block">
       <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
     </div>
-    <div class="post-bottom" id="comments#{post.id}">
+    <div class="post-bottom">
       <div class="caption">
         <div class="user-name">
           <%= post.user.username %>
@@ -18,7 +18,7 @@
       </div>
       <% if post.comments %>
         <% post.comments.each do |comment| %>
-          <div class="comment">
+          <div class="comment" id='<%="comment-#{post.id}"%>' >
             <div class="user-name">
               <%= comment.user.username %>
             </div>
@@ -26,6 +26,9 @@
               <%= comment.content %>
             </div>
           </div>
+          <% if comment.user == current_user %>
+             <%= link_to "Delete", post_comment_path(post, comment), method: :delete, id: "delete-#{comment.id}", class: "delete-comment" %>
+          <% end %>
         <% end %>
       <% end %>
     </div>

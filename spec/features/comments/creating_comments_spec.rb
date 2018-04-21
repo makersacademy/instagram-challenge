@@ -8,10 +8,9 @@ feature 'Creating comments' do
 
     visit '/'
 
-    save_and_open_page
     fill_in 'Add a comment...', with: 'test comment'
     click_button 'Submit'
-    expect(page).to have_css("div.post-bottom", text: 'test comment')
+    expect(page).to have_css("div#comment-#{post.id}", text: 'test comment')
 
   end
 end
