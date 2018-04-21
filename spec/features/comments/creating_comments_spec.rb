@@ -10,7 +10,8 @@ feature 'Creating comments' do
 
     fill_in 'Add a comment...', with: 'test comment'
     click_button 'Submit'
-    expect(page).to have_css("div#comment-#{post.id}", text: 'test comment')
+    binding.pry
+    expect(page).to have_css("div#comments_#{post.id}", text: 'test comment')
 
   end
 end
