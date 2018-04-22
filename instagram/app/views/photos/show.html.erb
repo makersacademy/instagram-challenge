@@ -1,19 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @photo.name %>
-</p>
+<div class="row">
+  <div class="col-md-9">
+    <%= image_tag(@photo.picture_url, width: '100%') if @photo.picture.present? %>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @photo.description %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-    <%= image_tag(@photo.picture_url, width: 600) if @photo.picture.present? %>
-</p>
-
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+  <div class="col-md-3">
+    <p><b>Name: </b><%= @photo.name %></p>
+    <p><b>Description: </b><%= @photo.description %></p>
+    <p>
+      <%= link_to 'Edit', edit_photo_path(@photo) %> |
+      <%= link_to 'Destroy', @photo, data: { confirm: 'Are you sure?' }, method: :delete %> |
+      <%= link_to 'Back', photos_path %>
+    </p>
+  </div>
+</div>
