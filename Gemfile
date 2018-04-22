@@ -39,6 +39,9 @@ group :development, :test do
   gem 'simplecov', require: false, group: :test
   gem "factory_bot_rails", "~> 4.0"
   gem 'ffaker'
+  gem 'chromedriver-helper'
+  gem 'capybara-selenium'
+  gem 'launchy'
 end
 
 group :development do
