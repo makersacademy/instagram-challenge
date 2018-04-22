@@ -1,17 +1,27 @@
 <p id="notice"><%= notice %></p>
-
+<h3> <%= @photo.name %> </h3>
 <div class="row">
   <div class="col-md-9">
+
     <%= image_tag(@photo.picture_url, width: '100%') if @photo.picture.present? %>
   </div>
-
   <div class="col-md-3">
     <p><b>Name: </b><%= @photo.name %></p>
     <p><b>Description: </b><%= @photo.description %></p>
     <p>
       <%= link_to 'Edit', edit_photo_path(@photo) %> |
+      <%= link_to 'Comment', new_comment_path %> |
       <%= link_to 'Destroy', @photo, data: { confirm: 'Are you sure?' }, method: :delete %> |
       <%= link_to 'Back', photos_path %>
     </p>
   </div>
+  <h3>Comments</h3>
+  <% @comments.each do |comment| %>
+    <div>
+      <strong><%= comment.user_name %></strong>
+      <br>
+      <p><%= comment.message %></p>
+      <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </div>
+  <% end %>
 </div>

@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /photos
   # GET /photos.json
   def index
@@ -10,6 +10,8 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
+    @comments = @photo.comments.all
+    @comment = @photo.comments.build
   end
 
   # GET /photos/new
