@@ -4,6 +4,8 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+# Boostrap-sass for page styling
+gem 'bootstrap-sass'
 # Google OAuth2 with Omni-auth
 gem 'omniauth-google-oauth2'
 # Net SCP to SSH copy image files

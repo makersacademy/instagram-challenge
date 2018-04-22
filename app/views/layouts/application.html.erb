@@ -11,6 +11,25 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <!-- Navigation Bar -->
+    <div class="container-fluid">
+      <nav id="nav_bar">
+        <ul class="list-inline">
+          <li><p><%= link_to 'HOME', posts_path %></p></li>
+          <% if user_signed_in? %>
+            <li><p><%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete %></p></li>
+          <% else %>
+            <li><p><%= link_to 'SIGN UP', new_user_registration_path %></p></li>
+            <li><p><%= link_to 'SIGN IN', new_user_session_path %></p></li>
+          <% end %>
+          <!-- <li><a href"#">Profile</a></li>
+          <li><a href"#">About</a></li> -->
+        </ul>
+      </nav>
+    </div>
+    <!-- Navigation Bar END -->
+
+    <%= yield %> <!-- render the posts -->
+
   </body>
 </html>
