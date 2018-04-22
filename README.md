@@ -46,4 +46,8 @@ As a user
 So I can visit Instagram
 I want to post some pictures on it
 
+As a user
+So I can visit the home page of Instagram
+I want to add comments to the pictures 
+
 ```
