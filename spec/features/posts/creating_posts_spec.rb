@@ -9,7 +9,7 @@ end
   scenario 'can create a post' do
     visit '/'
     click_link 'New Post'
-    attach_file('Image', 'spec/fixtures/images/Brainslug.jpg')
+    attach_file('post_image', 'spec/fixtures/images/Brainslug.jpg')
     fill_in 'Caption', with: 'Me when I try to understand routes'
     click_button 'Create Post'
     expect(page).to have_content('Me when I try to understand routes')

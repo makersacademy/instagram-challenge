@@ -41,7 +41,7 @@ feature 'Editing posts' do
   it 'requires an image to edit a post' do
     find(:xpath, "//a[contains(@href,'posts/1')]").click
     click_link 'Edit Post'
-    attach_file('Image', 'spec/fixtures/emptystuff.zip')
+    attach_file('post_image', 'spec/fixtures/emptystuff.zip')
     click_button 'Update Post'
 
     expect(page).to have_content("You can't troll Trollstagram: this isn't a picture!")
