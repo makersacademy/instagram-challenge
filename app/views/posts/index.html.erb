@@ -6,59 +6,64 @@
     <title>Moments // Tell your story in pictures.</title>
   </head>
   <body>
-    <% if user_signed_in? %>
-      <%= link_to 'SIGN OUT', destroy_user_session_path, method: :delete %>
-      <p>@<%= current_user.username %> SIGNED IN</p>
-    <% else %>
-        <%= link_to 'SIGN UP', new_user_registration_path %>
-        <%= link_to 'SIGN IN', new_user_session_path %>
-    <% end %>
-    </br>
-    <h1>MOMENTS</h1>
     </br>
     </br>
-    <% if user_signed_in? %>
-      <%= link_to new_post_path do %>
-        NEW MOMENT
-      <% end %>
-    <% end %>
-    <% @posts.reverse.each do |post| %>
-      <div id="post_image">
-        <%= image_tag("http://18.188.174.95/" + File.basename(post.moment.url.partition('?').first)) %>
-      </div>
-      <%= post.created_at.strftime("Posted on %a, %d %b %Y") %>
-      <div id="post_caption">
-        <%= post.caption %>
-      </div>
-      <div id="post_likes">
-        ❤️ <%= post.likes.count %> <%= link_to 'LIKE', post_likes_path(post), method: :post %>
-      </div>
-      </br>
-      <%= link_to 'EDIT CAPTION', edit_post_path(post.id) %>
-      <%= link_to 'DELETE MOMENT', post_path(post), method: :delete %>
-      </br>
-      </br>
-      <% post.comments.reverse.each do |comment| %>
-        <div id="all_comments">
-          <p> COMMENTS </p>
-          <%= comment.body %> </br>
-          <%= comment.created_at.strftime("Commented on %a, %d %b %Y") %>
-          </br>
-          <%= link_to 'DELETE COMMENT', post_comment_path(post, comment), method: :delete %>
-          </br>
-        </div>
-      <% end %>
+    <h1><strong>MOMENTS</strong></h1>
+    <div id="new_post_link">
       <% if user_signed_in? %>
-        <div id="comment_form">
-          <%= form_with(model: [ post, post.comments.build], local: true) do |form| %>
-            <%= form.text_area :body, cols: "20", rows: "5" %>
-            <br>
-            <%=form.submit "COMMENT"%>
+        <%= link_to new_post_path do %>
+          <h2>NEW MOMENT</h2>
+        <% end %>
+      <% end %>
+    </div>
+    </br>
+    </br>
+    </br>
+    <div id="all_posts">
+      <% @posts.reverse.each do |post| %>
+        <div id="single_post">
+          <div id="post_header">
+            <p class="align-right"><%= post.caption %></p>
+            </br>
+            <div id="post_likes">
+              <p class="align-right">❤️ <%= post.likes.count %> <%= link_to 'LIKE', post_likes_path(post), method: :post %></p>
+            </div>
+          </div>
+          </br>
+          <div id="post_image">
+              <%= image_tag("http://18.188.174.95/" + File.basename(post.moment.url.partition('?').first)) %>
+          </div>
+          <div id="post_time">
+            <%= post.created_at.strftime("Posted on %a, %d %b %Y") %>
+          </div>
+            </br>
+            <%= link_to 'EDIT CAPTION', edit_post_path(post.id) %>
+            <%= link_to 'DELETE MOMENT', post_path(post), method: :delete %>
+            </br>
+            </br>
+            <% post.comments.reverse.each do |comment| %>
+              <div id="all_comments">
+                <p> COMMENTS </p>
+                <%= comment.body %> </br>
+                <%= comment.created_at.strftime("Commented on %a, %d %b %Y") %>
+                </br>
+                <%= link_to 'DELETE COMMENT', post_comment_path(post, comment), method: :delete %>
+                </br>
+              </div>
           <% end %>
+          <% if user_signed_in? %>
+            <div id="comment_form">
+              <%= form_with(model: [ post, post.comments.build], local: true) do |form| %>
+                <%= form.text_area :body, cols: "50", rows: "2" %>
+                <br>
+                <%=form.submit "COMMENT"%>
+              <% end %>
+            </div>
+          <% end %>
+          </br>
+          </br>
         </div>
       <% end %>
-      </br>
-      </br>
-    <% end %>
+    </div>
   </body>
 </html>
