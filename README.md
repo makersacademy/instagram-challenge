@@ -21,6 +21,10 @@ Alternatively:
 ## Usage
 Simply sign up for an account and get posting.
 
+![Screenshot](images/screenshot_insta.png "Screenshot")
+
+![Screenshot2](images/screenshot_insta_signin.png "Screenshot2")
+
 ## User stories
 ```
 As a user,
