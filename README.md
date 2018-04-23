@@ -1,13 +1,27 @@
-Instagram Weekend Challenge
+Instagram Clone
 ===================
+## Description
+The challenge was to build an Instagram clone using Ruby on Rails as part of the Makers Academy course.
 
 ## Get started
 
-Find the app on Heroku: https://instagram-challenge-gdrayson.herokuapp.com
+You can find the app on [Heroku](https://instagram-challenge-gdrayson.herokuapp.com).
+
+Alternatively:
+1. Clone the repository
+2. Then, run:
+```bash
+> bundle install
+> bin/rails db:create
+> bin/rails db:migrate
+
+> bin/rails server
+```
+
+## Usage
+Simply sign up for an account and get posting.
 
 ## User stories
-
-
 ```
 As a user,
 So that I can share my photos,
