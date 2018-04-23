@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_post, only: [:show, :edit, :update, :destroy]
-  before_action :find_user, only: [:destroy]
 
   def index
     @posts = Post.all
@@ -19,27 +18,16 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-
-    if @post.save
-      redirect_to posts_url
-    else
-      render 'new'
-    end
-
+    redirect_to posts_url
   end
 
   def update
-    @post.update(post_params)
+    @post.update(post_params) if @post.owner?(current_user)
     redirect_to posts_path
   end
 
   def destroy
-    if (@user.id.to_i != @post.user_id.to_i)
-      flash[:notice] = "You can't delete this post"
-    else
-      @post.destroy
-    end
-
+    @post.destroy if @post.owner?(current_user)
     redirect_to posts_path
   end
 
@@ -51,10 +39,6 @@ class PostsController < ApplicationController
 
     def find_post
       @post = Post.find(params[:id])
-    end
-
-    def find_user
-      @user = User.find(current_user.id)
     end
 
 end

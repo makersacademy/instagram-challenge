@@ -4,16 +4,12 @@ class CommentsController < ApplicationController
 
 
   def create
-    @comment = @post.comments.create(comment_params)
+    @post.comments.create(comment_params)
     redirect_to post_path(@post)
   end
 
   def destroy
-    if (not_their_comment)
-      flash[:notice] = "This is not your comment"
-    else
-      @comment.destroy
-    end
+    @comment.destroy unless not_their_comment
     redirect_to post_path(@post)
   end
 
@@ -27,12 +23,12 @@ class CommentsController < ApplicationController
     current_user.id.to_i != @comment.user_id.to_i
   end
 
-  def comment_params
-    params[:comment].permit(:content).merge(user_id: current_user.id)
-  end
-
   def find_comment
     @comment = @post.comments.find(params[:id])
+  end
+
+  def comment_params
+    params[:comment].permit(:content).merge(user_id: current_user.id)
   end
 
 end

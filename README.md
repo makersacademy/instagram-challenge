@@ -1,5 +1,9 @@
 Instagram Clone
 ===================
+[![Maintainability](https://api.codeclimate.com/v1/badges/21d50bb9406933ceb8ad/maintainability)](https://codeclimate.com/github/GeorgeDrayson/instagram-challenge/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/21d50bb9406933ceb8ad/test_coverage)](https://codeclimate.com/github/GeorgeDrayson/instagram-challenge/test_coverage)
+
 ## Description
 The challenge was to build an Instagram clone using Ruby on Rails as part of the Makers Academy course.
 

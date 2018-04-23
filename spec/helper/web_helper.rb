@@ -5,10 +5,10 @@ def add_post
   click_button "Save Post"
 end
 
-def sign_up(name = "testname")
+def sign_up(name = "testname", email = "test@test.com")
   visit "/users/sign_up"
   fill_in "user[username]", with: name
-  fill_in "user[email]", with: "test@test.com"
+  fill_in "user[email]", with: email
   fill_in "user[password]", with: "testtest"
   fill_in "user[password_confirmation]", with: "testtest"
   click_button "Sign up"
