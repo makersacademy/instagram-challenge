@@ -12,7 +12,8 @@ end
 def create_img_post
   visit('/posts/')
   click_link 'NEW MOMENT'
-  attach_file("post-img", Rails.root + "spec/features/file.pdf")
+  attach_file("post-img", Rails.root + "spec/features/test.jpg")
+  click_button 'SHARE MOMENT'
 end
 
 def sign_up
