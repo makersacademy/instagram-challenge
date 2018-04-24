@@ -21,7 +21,19 @@ Alternatively:
 
 > bin/rails server
 ```
-
+## Running the tests
+```
+rspec
+```
+Code coverage:
+In the rspec you should get a value for the coverage. To get a more detailed analysis of the coverage, go into the coverage file:
+```
+cd coverage
+```
+Then:
+```
+open index.html
+```
 ## Usage
 Simply sign up for an account and get posting.
 
