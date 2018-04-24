@@ -1,10 +1,18 @@
 require 'rails_helper'
 
+# Create post with no image (only caption)
 def create_post
   visit('/posts/')
   click_link 'NEW MOMENT'
   fill_in 'post[caption]', with: 'Test Caption :)'
   click_button 'SHARE MOMENT'
+end
+
+# Create post with image and caption
+def create_img_post
+  visit('/posts/')
+  click_link 'NEW MOMENT'
+  attach_file("post-img", Rails.root + "spec/features/file.pdf")
 end
 
 def sign_up
