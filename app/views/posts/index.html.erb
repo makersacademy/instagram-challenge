@@ -37,8 +37,10 @@
             <%= post.created_at.strftime("Posted on %a, %d %b %Y") %>
           </div>
             </br>
-            <%= link_to 'EDIT CAPTION', edit_post_path(post.id) %>
-            <%= link_to 'DELETE MOMENT', post_path(post), method: :delete %>
+            <% if user_signed_in? %>
+              <%= link_to 'EDIT CAPTION', edit_post_path(post.id) %>
+              <%= link_to 'DELETE MOMENT', post_path(post), method: :delete %>
+            <% end %>
             </br>
             </br>
             <% post.comments.reverse.each do |comment| %>

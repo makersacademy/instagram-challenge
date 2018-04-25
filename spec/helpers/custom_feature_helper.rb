@@ -25,6 +25,10 @@ def sign_up
   click_button "Sign up"
 end
 
+def sign_out
+  click_link 'SIGN OUT'
+end
+
 def sign_in_with_google_oauth(service = :google_oauth2)
   visit "users/auth/#{service}"
 end
