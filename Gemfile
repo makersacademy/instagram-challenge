@@ -4,6 +4,8 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+# Acts As Votable for ActiveRecord models - unique user post likes
+gem 'acts_as_votable', '~> 0.11.1'
 # Boostrap-sass for page styling
 gem 'bootstrap-sass'
 # Google OAuth2 with Omni-auth
