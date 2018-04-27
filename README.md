@@ -38,6 +38,10 @@ As a Fotogram User
 So that I can give a opinion
 I want to be able to write a comment on a picture
 
+As a Fotogram User
+So that I can finish my session
+I want to be able to sign out
+
 ```
 
 ## Thoughts
