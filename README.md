@@ -1,8 +1,21 @@
 Fotogram Challenge
 ===================
 
-
 The goal in this challenge is to build an Instagram clone using Ruby on Rails, so the user can post pictures with title and brief description, can edit the post, save the post and rate them.
+
+<p>
+<img src="https://user-images.githubusercontent.com/29259526/39354501-9b9c7346-4a02-11e8-847b-63974fb31715.png" width="300" ="align-center">
+</p>
+
+<p>
+<img src="https://user-images.githubusercontent.com/29259526/39354603-c96270be-4a02-11e8-842e-4796b1575f4b.png" width="300" ="align-center">
+</p>
+
+<p>
+<img src="https://user-images.githubusercontent.com/29259526/39354702-10c84122-4a03-11e8-8151-093bdf9e4690.png" width="300" ="align-center">
+</p>
+
+
 
 ## User Stories:
 
