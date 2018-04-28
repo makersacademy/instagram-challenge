@@ -58,6 +58,5 @@ Had I stuck to my first approach using Carrierwave (and lots of scaffolding), I 
 
 ### To do
 - Complete user features
-- Implement comments
 - Implement likes
 - Improve design

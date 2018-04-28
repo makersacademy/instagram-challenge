@@ -35,6 +35,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.5'
+  gem 'rubocop'
+
   gem 'rubocop-rails'
   gem 'simplecov', require: false, group: :test
   gem "factory_bot_rails", "~> 4.0"
@@ -58,8 +60,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'simple_form'
 gem 'paperclip'
-gem 'rubocop'
-gem 'rubocop-rails'
 gem 'htmlbeautifier'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
@@ -67,3 +67,4 @@ gem 'devise'
 gem 'pry'
 gem 'turbolinks'
 gem 'kaminari'
+gem 'mini_magick'
