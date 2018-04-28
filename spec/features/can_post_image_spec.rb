@@ -1,4 +1,4 @@
-Tests that user can post image (using paperclip)
+# Tests that user can post image (using paperclip)
 RSpec.feature 'Experience', type: :feature do
   scenario 'Post image and caption' do
     sign_up
