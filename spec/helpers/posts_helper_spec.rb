@@ -28,6 +28,11 @@ RSpec.describe PostsHelper, type: :helper do
         allow(helper).to receive(:calculator).and_return(604801)
         expect(helper.get_time(1)).to eq("Posted 1 week ago")
       end
+
+      it "returns relative post time in weeks - singular" do
+        allow(helper).to receive(:calculator).and_return(31536001)
+        expect(helper.get_time(1)).to eq("Posted 1 year ago")
+      end
     end
   end
 end
