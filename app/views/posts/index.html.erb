@@ -38,7 +38,7 @@
             <p><%= get_time(post.created_at) %></p>
           </div>
             </br>
-            <% if user_signed_in? && post.user == current_user %>
+            <% if user_signed_in? && post.user === current_user %>
               <%= link_to 'EDIT CAPTION', edit_post_path(post.id) %>
               <%= link_to 'DELETE MOMENT', post_path(post), method: :delete %>
             <% end %>
@@ -50,7 +50,9 @@
                 <%= comment.body %> </br>
                 <%= comment.created_at.strftime("Commented on %a, %d %b %Y") %>
                 </br>
-                <%= link_to 'DELETE COMMENT', post_comment_path(post, comment), method: :delete %>
+                <% if user_signed_in? && comment.user === current_user %>
+                  <%= link_to 'DELETE COMMENT', post_comment_path(post, comment), method: :delete %>
+                <% end %>
                 </br>
               </div>
           <% end %>

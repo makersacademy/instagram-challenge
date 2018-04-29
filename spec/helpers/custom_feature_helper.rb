@@ -16,6 +16,11 @@ def create_img_post
   click_button 'SHARE MOMENT'
 end
 
+def create_comment
+  fill_in 'comment[body]', with: 'Test Comment!'
+  click_button 'COMMENT'
+end
+
 def sign_up
   visit "/users/sign_up"
   fill_in "user[username]", with: "testUser"

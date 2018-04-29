@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
-  before_action :set_post
+  before_action :set_post, except: [:upvote]
 
   def create
-    @comment = @post.comments.create(comment_params)
+    @comment = @post.comments.create(comment_params.merge(user_id: current_user.id))
     redirect_to posts_url
   end
 
