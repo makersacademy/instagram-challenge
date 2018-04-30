@@ -1,0 +1,14 @@
+<% if post.comments.length > 0 %>
+  <% post.comments.each do |comment| %>
+    <strong><%= get_username_by_id(comment.user_id) %></strong> 
+    <%= comment.body %>
+    <% if get_user_by_id(comment.user_id) == current_user %>
+      <%= link_to "x", post_comment_path(post.id, comment.id), 
+        remote: true, 
+        method: :delete,
+        id: "delete-comment-#{comment.id}",
+        data: { confirm: "Delete this comment?" } %>
+        <br/>
+      <% end %>
+    <% end %>
+<% end %>

@@ -1,0 +1,52 @@
+<div class="posts-wrapper row">
+  <% @posts.each do |post| %>
+
+    <div class="post">
+      <div class="post-head">
+        <div class="name"><%= User.find(post.user_id).email.split("@")[0] %></div>
+        <% if get_user_by_id(post.user_id) == current_user %>
+        <div class="edit-links">
+          <%= link_to "Edit", edit_post_path(post), id: "edit-post-#{post.id}" %> | 
+          <%= link_to "Remove", post_path(post),
+            method: :delete,
+            id: "delete-post-#{post.id}",
+            data: { confirm: "Are you sure?" } %> 
+        </div>
+        <% end %>
+      </div>
+
+      <% if post.image? %>
+        <div class="image-block">
+          <%= image_tag post.image.url, class: "image-centred" %>
+        </div>
+      <% end %>
+
+      <div class="caption">
+        <div id="post-<%= post.id %>-like-button">
+          <%= render 'like_button', post: post %>
+        </div>
+
+        <p class="like-count">
+          <span id="post-<%= post.id %>-like-count"><%= post.likes.count %></span> likes
+        </p>
+
+        <p>
+          <%= post.description %>
+        </p>
+
+        <div id="post-<%= post.id %>-comments">
+          <%= render 'comments', post: post %>
+        </div>
+
+        <% if current_user %>
+          <p>
+            <%= form_with(model: [post, post.comments.build]) do |form| %>
+            <%= form.text_field :body, id: "comment-body-on-post-#{post.id}" %>
+            <%= form.submit "Comment", id: "submit-comment-on-post-#{post.id}" %>
+            <% end %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

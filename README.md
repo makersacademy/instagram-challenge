@@ -1,40 +1,79 @@
 Instagram Challenge
-===================
+==================
 
-## Instructions
+Maker's Academy weekend challenge to recreate a popular app that allows a user to post pictures of their brunch.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+The app is deployed on heroku at https://powerful-fortress-65722.herokuapp.com/.
 
-## Task
+Uploaded images are hosted on Amazon S3, since heroku doesn't support permanent storage of files.
 
-Build Instagram: Simple huh!
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+![screenshot](images/screenshot.png)
 
-Bonus if you can add filters!
+Technologies used
+-------
 
-## How to start
+- Ruby on Rails
+- Heroku
+- Amazon S3
+- Carrierwave gem (to handle uploading of files)
+- Fog gem (to handle storage of files in S3)
+- Devise gem (to handle user authentication)
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+Requirements 
+-------
 
-## Code Quality
+#### Running locally for development:
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
++ PostgreSQL installed
++ A local postgres database named 'railstagram_development'
++ Rails >5.1
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
+All gem requirements can be installed by installing the bundler gem (`gem install bundle`) and then running `bundle install` in the project directory.
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+#### Using the deployed app on heroku: 
++ None
+
+
+Instructions
+-------
+
+#### Running locally for development:
+
+- Launch the site: run `rails server` in the project root folder
+- Navigate to  http://localhost:3000 in your browser
+
+#### Using the deployed app on heroku: 
+
++ Visit the webpage: https://powerful-fortress-65722.herokuapp.com/
+
+#### Once the app is launched:
+
++ You'll see the homepage with a feed of existing posts
++ Click 'Log in' button to log into your account to begin posting or commenting 
++ If you don't have an account, you'll see a button ('Sign up') which will allow you to register. Ensure you pick a unique username and email address.
++ Once you're signed in, post away!
+
+
+User Stories implemented
+-------
+
+- Users can register with the site, and log in/out
+- Users can post images with a description and see these appear in the feed
+- Users can edit or delete their own posts
+- Users can comment on other people's posts (or their own)
+- Users can delete their own comments
+- Users can like and unlike posts
+- Users don't lose their place in the feed when liking/unliking or adding/removing comments (no page reloads)
+
+
+To do / possible extension work
+-------
+
+- Get tests working with Javascript
+- Add real usernames
+- Add post time
+- Add user profile page, which shows all posts by that user
+- Add user profile pictures / bio info
+- Add hashtags & search by hashtag
