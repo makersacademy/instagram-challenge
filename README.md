@@ -47,3 +47,23 @@ On an images page if you are the owner of the image you will be able to view the
 If you are not the owner of an image you will be able to view the comments and likes on a picture, make a comment or like if you chose to. You can make mulitple comments on a picture but can only like it once.
 
 ![alt text](images/pictureguest.png "Picture Guest")
+
+## My approach
+
+* I began by diagramming the MVC and writing user stories for my app, setting myself a first MVP.
+* I then set up Rails and began to work towards my MVP using a TDD approach.
+* Once I had reached an MVP I would set myself a new one and work towards this.
+* I spent some time reseaching gems to use for this project (Devise, Paperclip).
+* I spent some time styling the main pages of my app.
+
+## Further work
+
+If I were to continue this project I would like to add:
+
+* Ability to delete or edit comments.
+* The ability to tag and filter images.
+* Order images by most/least likes.
+* Pagination
+* Paperclip and S3 integration.
+* Ablity for a user to only see images they have liked or commented on.
+* Finish styling all pages.
