@@ -14,6 +14,13 @@
        <h2> <%= msg %> </h2>
     <% end %>
 
+    <% if user_signed_in? %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete, :id => 'log_out'  %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
