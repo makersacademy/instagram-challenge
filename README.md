@@ -10,7 +10,7 @@ Taking the basic requirements listed by the challenge, I started planning by sti
 
 
 ---
-## Instructions
+## Makers Instructions
 
 * Challenge time: one weekend
 * Feel free to use Google, your notes, books, etc., but work on your own
