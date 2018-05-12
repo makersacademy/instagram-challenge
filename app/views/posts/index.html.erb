@@ -32,23 +32,23 @@
           </div>
           </br>
           <div id="post_image">
-              <%= image_tag("http://18.188.174.95/" + File.basename(post.moment.url.partition('?').first)) %>
+              <%= image_tag("http://#{ENV["CDN_IP"]}/posts/" + File.basename(post.moment.url.partition('?').first)) %>
           </div>
           <div id="post_time">
-            <p><%= get_time(post.created_at) %></p>
+            <p class="align-right"><%= get_time(post.created_at) %></p>
           </div>
-            </br>
             <% if user_signed_in? && post.user === current_user %>
-              <%= link_to 'EDIT CAPTION', edit_post_path(post.id) %>
-              <%= link_to 'DELETE MOMENT', post_path(post), method: :delete %>
+              <span class="align-left"><%= link_to 'EDIT CAPTION', edit_post_path(post.id) %></span>
+              <span>        </span>
+              <span class="align-left"><%= link_to 'DELETE MOMENT', post_path(post), method: :delete %></span>
             <% end %>
             </br>
             </br>
             <% post.comments.reverse.each do |comment| %>
               <div id="all_comments">
-                <p> COMMENTS </p>
-                <%= comment.body %> </br>
-                <p> COMMENT <%= get_time(comment.created_at) %> </p>
+                <p class="align-left" style="text-align: left;"> COMMENTS </br>
+                <%= comment.body %></br>
+                COMMENT <%= get_time(comment.created_at) %></p>
                 </br>
                 <% if user_signed_in? && comment.user === current_user %>
                   <%= link_to 'DELETE COMMENT', post_comment_path(post, comment), method: :delete %>

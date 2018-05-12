@@ -50,4 +50,8 @@ module PostsHelper
     return '' if simplest_number == 1
     's'
   end
+
+  def test_method
+    return "test method run"
+  end
 end
