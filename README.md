@@ -1,7 +1,16 @@
 Instagram Challenge
 ===================
 
-## Instructions
+Trello board: https://trello.com/b/JCj2gyyL/instagram-clone
+
+I have decided that I will be prioritising feature building over infrastructure setup (Travis CI/Heroku) as I want to get a deeper understanding of the concept of using an MVC framework such as rails.
+
+Taking the basic requirements listed by the challenge, I started planning by sticking the requirements onto the trello board. When I take on a feature to do, I then create cards based on what is needed to meet those requirements.
+
+
+
+---
+## Makers Instructions
 
 * Challenge time: one weekend
 * Feel free to use Google, your notes, books, etc., but work on your own
