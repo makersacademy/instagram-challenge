@@ -57,3 +57,93 @@ Processing by PhotosController#new as HTML
 Completed 200 OK in 77ms (Views: 58.4ms | ActiveRecord: 7.7ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-05-12 15:15:12 +0100
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/shihhanwang/.rvm/gems/ruby-2.4.1/gems/railties-5.2.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/shihhanwang/.rvm/gems/ruby-2.4.1/gems/railties-5.2.0/lib/rails/templates/rails/welcome/index.html.erb (5.4ms)
+Completed 200 OK in 33ms (Views: 11.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2018-05-12 15:15:21 +0100
+Processing by PhotosController#index as HTML
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Photo::ImageUploader):
+  
+app/models/photo.rb:2:in `<class:Photo>'
+app/models/photo.rb:1:in `<main>'
+app/controllers/photos_controller.rb:7:in `index'
+Started GET "/photos" for 127.0.0.1 at 2018-05-12 15:17:39 +0100
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/shihhanwang/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by PhotosController#index as HTML
+  Rendering photos/index.html.erb within layouts/application
+  [1m[36mPhoto Load (12.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos"[0m
+  ↳ app/views/photos/index.html.erb:15
+  Rendered photos/index.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 258ms (Views: 223.4ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/photos/new" for 127.0.0.1 at 2018-05-12 15:17:45 +0100
+Processing by PhotosController#new as HTML
+  Rendering photos/new.html.erb within layouts/application
+  Rendered photos/_form.html.erb (12.9ms)
+  Rendered photos/new.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 87ms (Views: 33.0ms | ActiveRecord: 44.6ms)
+
+
+Started POST "/photos" for 127.0.0.1 at 2018-05-12 15:18:49 +0100
+Processing by PhotosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ijobksecpu6r/7zBC3RxN7LK/mFcbU7spW1Vx1tDgUX/bOffN6xKqkMG6B6M9gHBUxS/uvYjK8B27mD1VDt0tA==", "photo"=>{"image"=>"https://s-media-cache-ak0.pinimg.com/originals/d7/8d/ba/d78dba98e3ff0360f86f652a251cea73.jpg", "description"=>"doggy"}, "commit"=>"Create Photo"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/photos_controller.rb:30
+  [1m[36mPhoto Create (26.5ms)[0m  [1m[32mINSERT INTO "photos" ("image", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["image", nil], ["description", "doggy"], ["created_at", "2018-05-12 14:18:49.293764"], ["updated_at", "2018-05-12 14:18:49.293764"]]
+  ↳ app/controllers/photos_controller.rb:30
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/photos_controller.rb:30
+Redirected to http://localhost:3000/photos/1
+Completed 302 Found in 37ms (ActiveRecord: 27.3ms)
+
+
+Started GET "/photos/1" for 127.0.0.1 at 2018-05-12 15:18:49 +0100
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPhoto Load (7.0ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photos_controller.rb:67
+  Rendering photos/show.html.erb within layouts/application
+  Rendered photos/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 50ms (Views: 32.6ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-12 15:20:48 +0100
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/shihhanwang/.rvm/gems/ruby-2.4.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by PhotosController#index as HTML
+  Rendering photos/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT "photos".* FROM "photos"[0m
+  ↳ app/views/photos/index.html.erb:15
+  Rendered photos/index.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 243ms (Views: 217.8ms | ActiveRecord: 9.2ms)
+
+
+Started GET "/photos/1" for 127.0.0.1 at 2018-05-12 15:20:52 +0100
+Processing by PhotosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT  "photos".* FROM "photos" WHERE "photos"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/photos_controller.rb:67
+  Rendering photos/show.html.erb within layouts/application
+  Rendered photos/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 31ms (Views: 20.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/photos" for 127.0.0.1 at 2018-05-12 15:20:54 +0100
+Processing by PhotosController#index as HTML
+  Rendering photos/index.html.erb within layouts/application
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos"[0m
+  ↳ app/views/photos/index.html.erb:15
+  Rendered photos/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 29ms (Views: 24.0ms | ActiveRecord: 0.3ms)
+
+
