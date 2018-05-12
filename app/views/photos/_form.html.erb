@@ -13,7 +13,12 @@
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.text_field :image %>
+    <%= form.file_field :image %>
+    <% if form.object.image? %>
+      <%= image_tag form.object.image.thumb.url %>
+      <%= form.label :remove_image %>
+      <%= form.check_box :remove_image %>
+    <% end %>
   </div>
 
   <div class="field">
