@@ -30,8 +30,8 @@ class PostsController < ApplicationController
 
       #remote_filepath = "#{pre_file_name[0]}.#{pre_file_name[2]}"
       initiate_scp(local_filepath, new_filename, "posts")
-      end
     end
+  end
 
   def destroy
     @post = current_user.posts.find(params[:id])

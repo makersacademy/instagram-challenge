@@ -34,8 +34,4 @@ module ApplicationHelper
     end
     return "#{pre_filename_to_check}.#{filename_extension_to_check}"
   end
-
-
-
-
 end
