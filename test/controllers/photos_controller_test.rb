@@ -3,6 +3,7 @@ require 'test_helper'
 class PhotosControllerTest < ActionDispatch::IntegrationTest
   setup do
     @photo = photos(:one)
+    @user = users(:one)
   end
 
   test "should get index" do
