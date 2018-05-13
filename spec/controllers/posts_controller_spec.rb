@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
   describe "POST create" do
-    it "redirects to home" do
+    it "redirects to home with status 302" do
       user = User.create(email: 'example@example', password: 123456)
       user.save
       
@@ -12,5 +12,5 @@ RSpec.describe PostsController, type: :controller do
       post :create, :params => {:post => {picture: '/uploads/123.jpg'}}
       expect(response).to have_http_status(:found)
     end
-  end
+  end 
 end

@@ -3,9 +3,12 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(picture_params)
     @post.picture = params[:post][:picture]
     
-    flash[:success] = "Picture created!" if @post.save
-  
-    redirect_to root_url
+    if @post.save
+       flash[:success] = "Picture created!"
+       redirect_to root_url
+    else 
+       redirect_to root_url, :status => 503
+    end
   end
 
   private
