@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_12_121031) do
+ActiveRecord::Schema.define(version: 2018_05_13_100835) do
+
+  create_table "grams", force: :cascade do |t|
+    t.string "attachment_type", default: "picture"
+    t.integer "attachment_id"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attachment_type", "attachment_id"], name: "index_grams_on_attachment_type_and_attachment_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
