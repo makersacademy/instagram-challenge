@@ -9,10 +9,8 @@
      <%= image_tag("#{post.picture.url}")%>
    </div>
    
-   <% latest_comments = post.comments[-3..-1]%>
-   <% latest_comments.each do |comment| %>
-      <p class='comment'> <%= "#{comment.user_name}: #{comment.body}" %> </p>
-   <% end %>
+   <% @post = post %>
+   <%= render 'shared/picture_comments'%>
 
    <%= form_for(@comment) do |f| %>
      <div class="field">
