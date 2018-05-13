@@ -3,12 +3,9 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(picture_params)
     @post.picture = params[:post][:picture]
     
-    if @post.save
-      flash[:success] = "Picture created!"
-      redirect_to root_url
-    else
-      render 'home/index'
-    end
+    flash[:success] = "Picture created!" if @post.save
+  
+    redirect_to root_url
   end
 
   private
