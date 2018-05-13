@@ -5,6 +5,7 @@ ruby '2.5.0'
 
 gem 'carrierwave', '~> 1.0'
 gem 'devise', '~> 4.2'
+gem "mini_magick"
 
 gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'
