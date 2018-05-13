@@ -6,7 +6,7 @@ class PicturesController < ApplicationController
       flash[:success] = "Picture created!"
       redirect_to root_url
     else
-      render 'static_pages/home'
+      render 'home/index'
     end
   end
 
