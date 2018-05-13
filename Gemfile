@@ -63,3 +63,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #Authentication solution generator
 gem 'devise'
+
+#Rspec
+group :development, :test do
+  gem 'rspec-rails', '~> 3.7'
+end
+
+#Paperclip for images
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
