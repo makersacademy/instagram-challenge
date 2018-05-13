@@ -1,40 +1,81 @@
-Instagram Challenge
+Instagram Clone
 ===================
+[![Maintainability](https://api.codeclimate.com/v1/badges/21d50bb9406933ceb8ad/maintainability)](https://codeclimate.com/github/GeorgeDrayson/instagram-challenge/maintainability)
 
-## Instructions
+[![Test Coverage](https://api.codeclimate.com/v1/badges/21d50bb9406933ceb8ad/test_coverage)](https://codeclimate.com/github/GeorgeDrayson/instagram-challenge/test_coverage)
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Description
+The challenge was to build an Instagram clone using Ruby on Rails as part of the Makers Academy course.
 
-## Task
+## Get started
 
-Build Instagram: Simple huh!
+You can find the app on [Heroku](https://instagram-challenge-gdrayson.herokuapp.com).
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Alternatively:
+1. Clone the repository
+2. Then, run:
+```bash
+> bundle install
+> bin/rails db:create
+> bin/rails db:migrate
 
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+> bin/rails server
 ```
+## Running the tests
+```
+rspec
+```
+Code coverage:
+In the rspec you should get a value for the coverage. To get a more detailed analysis of the coverage, go into the coverage file:
+```
+cd coverage
+```
+Then:
+```
+open index.html
+```
+## Usage
+Simply sign up for an account and get posting.
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+![Screenshot](images/screenshot_insta.png "Screenshot")
+
+![Screenshot2](images/screenshot_insta_signin.png "Screenshot2")
+
+## User stories
+```
+As a user,
+So that I can share my photos,
+I want to post pictures
+
+As a user,
+So that I can be identified as me,
+I would like to have an account
+
+As a user,
+So that I can create an account,
+I would like to sign up
+
+As a user,
+So that I can tell other users what I think of their photos,
+I would like to comment
+
+As a user,
+So that I can tell other users what I think of their photos,
+I would like to like a picture
+
+As a user,
+So that my posts can be identified as mine,
+I would like them to show my username
+
+As a user,
+So that I can change my photo or description,
+I would like to edit
+
+As a user,
+So that I can delete my post,
+I would like to delete
+
+As a user,
+So that other users can't delete or edit my posts,
+I would like to be the only one that can edit/delete my posts
+```
