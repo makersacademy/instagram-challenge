@@ -6,7 +6,7 @@ describe 'Displaying posts' do
     attach_file('Image', "spec/files/images/dog.jpg")
     fill_in 'Caption', with: 'This is post one'
     click_button 'Create Post'
-    click_link 'Index'
+    click_link 'Instogram'
   end
 
   feature 'Index displays a list of posts' do
@@ -16,7 +16,7 @@ describe 'Displaying posts' do
       attach_file('Image', "spec/files/images/dog.jpg")
       fill_in 'Caption', with: 'This is post two'
       click_button 'Create Post'
-      click_link 'Index'
+      click_link 'Instogram'
       expect(page).to have_content("This is post one")
       expect(page).to have_content("This is post two")
       expect(page).to have_css("img[src*='dog']")
@@ -24,7 +24,7 @@ describe 'Displaying posts' do
 
     scenario 'each post has a link to take you to that post' do
       visit '/'
-      click_link 'Show'
+      find(:xpath, "//a[contains(@href,'posts/1')]").click
       expect(page).to have_content("This is post one")
       expect(page).to have_css("img[src*='dog']")
     end
