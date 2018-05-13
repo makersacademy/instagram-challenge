@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(picture_params)
-    @post.avatar = params[:post][:avatar]
+    @post.picture = params[:post][:picture]
     
     if @post.save
       flash[:success] = "Picture created!"
