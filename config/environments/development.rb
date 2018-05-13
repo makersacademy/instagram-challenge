@@ -62,4 +62,8 @@ Rails.application.configure do
 
   #Peperclip
   Paperclip.options[:command_path] = "/usr/local/bin/"
+
+  config.paperclip_defaults = {
+    storage: :s3
+  }
 end

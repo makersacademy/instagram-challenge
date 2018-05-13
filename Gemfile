@@ -74,3 +74,6 @@ gem 'paperclip', git: "git://github.com/thoughtbot/paperclip.git"
 
 #Rails forms
 gem 'simple_form', git: "git://github.com/plataformatec/simple_form.git"
+
+#Amazone storage images
+gem 'aws-sdk-s3'
