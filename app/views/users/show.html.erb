@@ -1,0 +1,18 @@
+<h1>Users#show</h1>
+<p><%= @user.user_name %></p>
+
+<% @photos.each do |photo| %>
+  <%= link_to image_tag(photo.image.home.url), photo %>
+  <br/>
+  <%= photo.description %>
+  <br/>
+  <% if user_signed_in? && photo.user.id == current_user.id %>
+    <%= link_to 'Edit', edit_photo_path(photo) %>
+    <br/>
+    <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <br/>
+<% end %>
+
+<br/>
+<%= link_to 'Back', photos_path %>
