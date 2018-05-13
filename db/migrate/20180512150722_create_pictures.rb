@@ -1,11 +1,11 @@
 class CreatePictures < ActiveRecord::Migration[5.2]
   def change
-    create_table :pictures do |t|
-      t.text :link
+    create_table :posts do |t|
+      t.text :title
       t.references :user, foreign_key: true
 
       t.timestamps
     end
-    add_index :pictures, [:user_id, :created_at]
+    add_index :posts, [:user_id, :created_at]
   end
 end

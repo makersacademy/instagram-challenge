@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2018_05_13_092342) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "pictures", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.text "link"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -43,5 +43,5 @@ ActiveRecord::Schema.define(version: 2018_05_13_092342) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "pictures", "users"
+  add_foreign_key "posts", "users"
 end

@@ -1,5 +1,5 @@
-class AddAvatarToPictures < ActiveRecord::Migration[5.2]
+class AddAvatarToPosts < ActiveRecord::Migration[5.2]
   def change
-    add_column :pictures, :avatar, :string
+    add_column :posts, :avatar, :string
   end
 end
