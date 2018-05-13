@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.0'
 
+gem 'carrierwave', '~> 1.0'
 gem 'devise', '~> 4.2'
 
 gem 'rails', '~> 5.2.0'
@@ -18,6 +19,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  gem "binding_of_caller"
   gem 'better_errors', '~> 2.1', '>= 2.1.1'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'database_cleaner'
