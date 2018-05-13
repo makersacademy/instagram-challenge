@@ -1,5 +1,7 @@
 class GramsController < ApplicationController
   def new
-    # @gram = Grams.new
+  end
+
+  def create
   end
 end
