@@ -1,0 +1,26 @@
+<h1> Welcome to instagram! </h1>
+
+<% if user_signed_in? %>
+    <%= render 'shared/pictures_form' %>
+
+    <div class="news-feed">
+			
+			<% @picture_feed.each do |post| %>
+				<div class="posted-picture">
+					<p class="pic-title"> <%= %"#{post.user.email} : #{post.title}" %> </p>
+					<%= image_tag("#{post.picture.url}")%>
+			
+					<% @post = post %>
+					<%= render 'shared/picture_comments'%>
+
+					<%= form_for(@comment) do |f| %>
+						<div class="field">
+							<%= f.text_area :body, placeholder: "comment...." %>
+							<%= hidden_field(:comment, :post_id, :value => post.id) %>
+							<%= f.submit "Post", class: "btn btn-primary" %>
+						</div>
+				  </div>
+        <% end %>
+    <% end %>
+   </div>
+<% end %>
