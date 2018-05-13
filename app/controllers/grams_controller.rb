@@ -3,5 +3,6 @@ class GramsController < ApplicationController
   end
 
   def create
+    render plain: params[:gram].inspect
   end
 end
