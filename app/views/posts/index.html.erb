@@ -40,13 +40,12 @@
             <div id="post_time">
               <p class="align-right"><%= get_time(post.created_at) %></p>
             </div>
-              <% if user_signed_in? && post.user === current_user %>
-                <p class="align-left"><%= link_to 'EDIT CAPTION', edit_post_path(post.id) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p class="align-left"><%= link_to 'DELETE MOMENT', post_path(post), method: :delete %></p>
-              <% end %>
-              </br>
-              </br>
-          </div>
+            <% if user_signed_in? && post.user === current_user %>
+              <p class="align-left"><%= link_to 'EDIT CAPTION', edit_post_path(post.id) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p class="align-left"><%= link_to 'DELETE MOMENT', post_path(post), method: :delete %></p>
+            <% end %>
+            </br>
+            </br>
             <% post.comments.reverse.each do |comment| %>
               <div id="all_comments">
                 <p class="align-left" style="text-align: left;"> COMMENTS </br>
@@ -58,16 +57,16 @@
                 <% end %>
                 </br>
               </div>
-          <% end %>
-          <% if user_signed_in? %>
-            <div id="comment_form">
-              <%= form_with(model: [ post, post.comments.build], local: true) do |form| %>
-                <%= form.text_area :body, cols: "50", rows: "2" %>
-                <br>
-                <%=form.submit "COMMENT"%>
-              <% end %>
-            </div>
-          <% end %>
+            <% end %>
+            <% if user_signed_in? %>
+              <div id="comment_form" align="right">
+                <%= form_with(model: [ post, post.comments.build], local: true) do |form| %>
+                  <%= form.text_field :body, size: "35" %>
+                  <%=form.submit "COMMENT"%>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
           </br>
           </br>
         </div>
