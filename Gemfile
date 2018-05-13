@@ -70,4 +70,7 @@ group :development, :test do
 end
 
 #Paperclip for images
-gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'paperclip', git: "git://github.com/thoughtbot/paperclip.git"
+
+#Rails forms
+gem 'simple_form', git: "git://github.com/plataformatec/simple_form.git"
