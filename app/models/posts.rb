@@ -1,2 +1,0 @@
-class Posts < ApplicationRecord
-end
