@@ -31,6 +31,11 @@ Coverage: 93.7%
 Rubocop: `.rubocop.yml`
 
 
+## Moments MVC Model Diagram
+
+![Moments App MVC Diagram](./Moments_MVC_Diagram_May2018.png?raw=true "Moments MVC Model")
+
+
 ## Moments User Stories
 
 ```
@@ -70,4 +75,4 @@ I want to see the relative time when each post was posted.
 
 ## Reference and Assistance
 
-AWS EC2 assistance by Guy Edelstyn.
+AWS EC2 assistance by Guy Edelstyn (https://github.com/gedelstyn).
