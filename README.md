@@ -1,24 +1,5 @@
-# README
+Instagram clone! (Ruby on Rails project)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+You can clone this repo and run in your localhost. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This app is still unfinished and needs refactoring and adding more features.
