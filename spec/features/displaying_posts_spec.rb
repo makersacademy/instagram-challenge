@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Index displays a list of posts' do
   scenario 'the index displays correct created post information' do
     user = create(:user)
