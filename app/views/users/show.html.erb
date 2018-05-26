@@ -1,4 +1,3 @@
-<h1>Users#show</h1>
 <p><%= @user.user_name %></p>
 
 <% @photos.each do |photo| %>
@@ -12,6 +11,24 @@
     <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
   <br/>
+  <% if photo.comments %>
+    <% photo.comments.each do |c| %>
+      <hr>
+      <div id="comment">
+        <%= c.user.user_name.upcase %>
+        <%= c.content %>
+        <%if c.user == current_user %>
+          <%= link_to "Delete", photo_comment_path(photo, c), method: :delete %>
+        <%end%>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="form-control">
+  <%= form_for [photo, photo.comments.new ] do |f| %>
+    <%= f.text_field :content, placeholder: "Say something..." %>
+    <%= f.submit "submit", class: "btn btn-default" %>
+  <% end %>
+  </div>
 <% end %>
 
 <br/>
