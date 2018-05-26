@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :photos, dependent: :destroy
   has_many :comments, dependent: :destroy
-  
+  acts_as_voter
+
   validates :user_name, presence: true, length: { minimum: 4, maximum: 16 }
 
   devise :database_authenticatable, :registerable,
