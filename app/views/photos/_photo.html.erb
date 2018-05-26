@@ -1,0 +1,50 @@
+<h1><%= link_to photo.user.user_name.upcase, user_wall_url(photo.user.id) %></h1>
+<% if current_page?(photo_url(photo.id)) %>
+  <h2><%= link_to image_tag(photo.image.thumb.url), photo %></h2>
+<% else %>
+  <h2><%= link_to image_tag(photo.image.home.url), photo %></h2>
+<% end %>
+<h3><%= photo.description %></h3>
+
+
+<% if user_signed_in? && photo.user.id == current_user.id %>
+  <%= link_to 'Edit', edit_photo_path(photo) %>
+  <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<% if photo.comments %>
+  <% photo.comments.each do |c| %>
+    <hr>
+    <div id="comment">
+      <%= c.user.user_name.upcase %>
+      <%= c.content %>
+      <%if c.user == current_user %>
+        <%= link_to "Delete", photo_comment_path(photo, c), method: :delete %>
+      <%end%>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="form-control">
+  <%= form_for [photo, photo.comments.new ] do |f| %>
+    <%= f.text_field :content, placeholder: "Say something..." %>
+    <%= f.submit "submit", class: "btn btn-default" %>
+  <% end %>
+</div>
+
+<div>
+Likes: <%= photo.get_upvotes.size %>
+<br/>
+Liked By:
+<% photo.votes_for.up.by_type(User).voters.each do |voter| %>
+  <%= link_to voter.user_name, user_wall_url(voter.id)  %>
+<% end %>
+</div>
+
+<div>
+<% if current_user.liked? photo %>
+  <%= link_to 'Unlike', unlike_photo_path(photo), method: :put %>
+<% else %>
+  <%= link_to 'Like', like_photo_path(photo), method: :put %>
+<% end %>
+</div>

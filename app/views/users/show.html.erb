@@ -1,35 +1,12 @@
 <p><%= @user.user_name %></p>
 
 <% @photos.each do |photo| %>
-  <%= link_to image_tag(photo.image.home.url), photo %>
-  <br/>
-  <%= photo.description %>
-  <br/>
-  <% if user_signed_in? && photo.user.id == current_user.id %>
-    <%= link_to 'Edit', edit_photo_path(photo) %>
-    <br/>
-    <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
-  <br/>
-  <% if photo.comments %>
-    <% photo.comments.each do |c| %>
-      <hr>
-      <div id="comment">
-        <%= c.user.user_name.upcase %>
-        <%= c.content %>
-        <%if c.user == current_user %>
-          <%= link_to "Delete", photo_comment_path(photo, c), method: :delete %>
-        <%end%>
-      </div>
-    <% end %>
-  <% end %>
-  <div class="form-control">
-  <%= form_for [photo, photo.comments.new ] do |f| %>
-    <%= f.text_field :content, placeholder: "Say something..." %>
-    <%= f.submit "submit", class: "btn btn-default" %>
-  <% end %>
-  </div>
+
+  <%= render 'photos/photo', photo: photo %>
+
 <% end %>
 
 <br/>
+
 <%= link_to 'Back', photos_path %>
+<%= link_to 'New Photo', new_photo_path %>

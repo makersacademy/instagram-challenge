@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :update, :destroy, :like, :unlike]
   before_action :owned_photo, only: [:edit, :update, :destroy]
 
   # GET /photos
@@ -61,6 +61,18 @@ class PhotosController < ApplicationController
       format.html { redirect_to photos_url, notice: 'Photo was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def like
+    @photo = Photo.find(params[:id])
+    @photo.liked_by current_user
+    redirect_back(fallback_location: root_path)
+  end
+
+  def unlike
+    @photo = Photo.find(params[:id])
+    @photo.unliked_by current_user
+    redirect_back(fallback_location: root_path)
   end
 
   private
