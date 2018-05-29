@@ -1,3 +1,7 @@
+## To use:
+- clone this repo
+- cd instagram-challenge
+- rails s -e development
 ## My Approach
 This was obviously a huge task so the first thing I did was to break down the requirements into user stories.
 The first one being, "as a User so I can show off my photography skills to the world, I want to post a picture and see it displayed"
