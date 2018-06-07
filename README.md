@@ -1,40 +1,116 @@
-Instagram Challenge
-===================
 
-## Instructions
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+<h2 align="center"> Pictogram </h2>
+<h3 align="center"> Combining the excitement of Instagram and Pictionary in one place! </h3>
 
-## Task
+ <p align="center">  <a href='#scenario'>Scenario</a> |  <a href='#approach'>Approach</a>   |   <a href='#reflections'>Reflections</a> |
+ <a href='#user_story'> User Stories</a> |  <a href='#setup'>Setup</a>   |   <a href='#tech'>Tech</a> </p>
+   
 
-Build Instagram: Simple huh!
+<p align="center"><i>Note this is a site for drawing pictures and guessing what the pictures are of.</i> <b>Not</b> <i>a site for pictogram enthusiasts. Apologies for any disappointment caused.</i></p>
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## Scenario <a name= "scenario"></a>
 
-Bonus if you can add filters!
+Instagram is meant to be quite good. You get to upload pictures, comment with your friends, and have a great time. But it lacks a competative element, or at least, it lacks any formal rules, so its no fun really. And as Monica from friends says 'Rules are good, they help control the fun!' An ideology that I fully subscribe to.
 
-## How to start
+So here it is. Pictogram! A combination of Pictionary and Instagram. First you have to signup as a member. You then can upload your pictures (which hint to a film, book etc) or guess the answers to other members. You can add hints if you like, or let them muddle through on their own. It's up to you.
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+## Approach <a name= "approach"></a>
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+I wanted to understand rails more so I started doing a [tutorial on how to build Instagram with rails](https://www.devwalks.com/lets-build-instagram-in-rails-part-1/) (a funny coincidence). The tutorial is excellent and I would reccomend it to anyone learning rails. But I didn't want to use it as my actual project and wanted to go totally tutorial free (off the rails...) So I started the project again, using the skills I learnt but with a slightly different product to test my understanding by making me reapply these skills  in new contexts.
 
-## Code Quality
+One big change this time, is after doing the [bowling challenge](https://github.com/Tagrand/bowling-challenge) I decided to try building one feature at a time. If you want to see my reasoning why, have a look [here](https://github.com/Tagrand/bowling-challenge#reflections). 
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+#### Targets
+  *Written before I started the challenge* 
+   - Build one feature at a time (I broke these down into user stories, which I then tracked - <a href='#user_story'> see below </a>).
+   - Add some cool functionalities that arn't on Instagram - (points for correct guesses, and user rankings) - to challenge my understanding of rails. And beat instagram.
+   - Avoid overtesting, just focus on core functions and edge cases, not every scenario. This came from feedback by a Makers coach. 
+   - Following the pomodoro cycle, to test out if this is a more efficient way of using my time.
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+## Reflections <a name= "reflections"></a>
+*Written during and after the challenge*
+
+#### With more time I would have:
+
+- Added a way of approving right and wrong answers
+- Added a points functionality when you get the right answer and ranked users
+- Worked more on styling, maybe a more handwritten look (like pictures drawn in pictionary)
+- Add difficulty ratings based on time unanswered (incentives attempts on old images too)
+
+
+## User stories <a name= "user_story"></a>
+
+### MVP
+
 ```
+As a keen describer
+So that I can show off my sick drawing skills
+I want to be able to upload a picture with some helpful hints
+```
+- [x] Done
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+```
+As a silly describer
+So that I can fix typos/mistakes in my questions
+I want to be able to change the hint and title
+```
+- [x] Done
+
+```
+As a keen describer
+So I can feel like the site cares and remembers me
+I would like to store my login
+```
+- [x] Done
+```
+As a keen owner
+So that I can make sure people sign up to our site to use
+I would like to prevent people from seeing anything but the pict feed if not logged in
+```
+- [x] Done
+```
+As a keen describer
+So that I can get credit for my awesome drawing skills
+I want my cool image to have a link to my username
+```
+- [x] Done
+
+### Extra
+```
+As a keen guesser
+So that I can show of my awesome guessing skills
+I want to be able to make a guess on someones picture.
+```
+- [ ] Done
+
+```
+As a keen guesser
+So that I can show of my awesome guessing skills
+I want to be able to have a link to my username when I guess.
+```
+- [ ] Done
+
+
+## Setup <a name= "setup"></a>
+
+First make sure you have Rails and Ruby installed. 
+1) Copy the repository and load the gems
+```git clone https://github.com/Tagrand/instagram-challenge```
+```bundle install```
+2) Run the server 
+```bin/rails server```
+3) Go to localhost:3000
+4) Login and Enjoy!
+
+## Technologies used  <a name= "tech"></a>
+  - Ruby
+  - RSpec
+  - HTML
+  - CSS
+  - Rails
+  - Capybara
+
+## Acknowledgements
+
+Thanks to @MakersAcademy for providing the challenge, and as always, google, for continuing to listen to all my many questions.
