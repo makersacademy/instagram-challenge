@@ -1,12 +1,34 @@
-<h1>Eternagram</h1>
+<%= stylesheet_link_tag "posts_index.css" %>
 
-<%= form_for @post do |form| %>
-  <%= form.label :photo %>
-  <%= form.file_field :photo %>
+<body align="center">
 
-  <%= form.submit "Submit" %>
-<% end %>
+  <div class="topnav">
+    <h2>Eternagram</h2><br />
+    <a href="#">Log Out</a>
+    <a href="#">Profile</a>
+  </div>
 
-<% @posts.each do |post| %>
-  <p><%= image_tag(post.photo, :size => '260x180') %><p>
-<% end %>
+  <div id="website_name">
+    <h1>Eternagram</h1>
+  </div>
+
+  <%= form_for @post do |form| %>
+    <%= form.label :photo %>
+    <%= form.file_field :photo %>
+
+    <%= form.submit "Submit" %>
+  <% end %>
+
+<div class="container">
+  <div class="spacer">&nbsp;</div>
+
+  <% @posts.each do |post| %>
+    <div class="photos">
+      <%= image_tag(post.photo, :size => '260x180') %><br />
+    </div>
+  <% end %>
+
+  <div class="container">&nbsp;</div>
+</div>
+
+</body>
