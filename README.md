@@ -1,5 +1,5 @@
-Instagram Challenge
-===================
+Instagram Challenge - Eternagram
+================================
 
 ## Instructions
 
@@ -38,3 +38,31 @@ gem "rubocop-rails"
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
+
+## User Stories:
+
+```
+As a user,
+So that I can share the picture I have taken on Eternagram,
+I would like to be able to post a picture.
+
+As a user,
+So that I can show my appreciation of other pictures,
+I would like to be able to like a picture.
+
+As a user,
+So that I can tell someone what I think about their picture,
+I would like to be able to comment on a picture.
+
+As a user,
+So that I can post pictures on Eternagram,
+I would like to be able to sign up.
+
+As a user,
+So that I can post pictures as me,
+I would like to be able to sign in to Eternagram.
+
+As a user,
+So that others cannot post as me from my device,
+I would like to be able to sign out of Eternagram.
+```
