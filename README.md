@@ -1,40 +1,17 @@
-Instagram Challenge
-===================
+## To use:
+- clone this repo
+- cd instagram-challenge
+- rails s -e development
+## My Approach
+This was obviously a huge task so the first thing I did was to break down the requirements into user stories.
+The first one being, "as a User so I can show off my photography skills to the world, I want to post a picture and see it displayed"
+I then initialized a rails project which gave me easy access to the three tier architecture of a model, view and controller.
 
-## Instructions
+I then set up my spec files and created some routes through rails command 'resources'.
+Since I had looked at using the devise gem for handling User authentication, I decided instead to change the first user story to implement to "as a user who would like to show off my photography skills to the world, I would like to sign up and see a confirmation displayed"
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+After covering edge cases I implemented the second user story: as a user keen to show off my photography skills. When I log into the app I want to see an option to add a photo.
 
-## Task
-
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## To do:
+- Styling
+- CI
