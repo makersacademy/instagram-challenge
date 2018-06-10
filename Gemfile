@@ -14,9 +14,8 @@ gem 'simple_form'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-
-
-gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+gem 'acts_as_votable'
+gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 

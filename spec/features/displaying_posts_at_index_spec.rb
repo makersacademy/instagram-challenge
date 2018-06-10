@@ -11,7 +11,6 @@ feature "posts are displayed on the index page" do
     attach_file('post[image]', "spec/files/images/Kate.jpg")
     fill_in 'post[description]', with: 'me and my Bubba'
     click_button 'submit'
-    puts page.body
     expect(page).to have_content("me and my sweet kids")
     expect(page).to have_content("me and my Bubba")
     expect(page).to have_css("img[src*='mum']")

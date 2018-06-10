@@ -1,5 +1,8 @@
+<% if current_user != nil %>
 <h1>Welcome to Mummygram <%= current_user.name %></h1>
-
+<% else %>
+<h1> Welcome to Mummygram </h1>
+<% end %>
 
 <ul class="hmenu">
   <%= render 'devise/menu/registration_items' %>
@@ -11,10 +14,13 @@
 
 <% @posts.each do |post| %>
   <div class="single-picture">
-    <p id="username"><%= p User.find(post.user_id).name %></p>
+    <p id="username"><%= User.find(post.user_id).name %></p>
     <figure>
       <%= image_tag post.image.url(:medium) %>
       <figcaption><%= post.description %></figcaption>
     </figure>
+    <button><%= link_to like_post_path(post), method: :put do %>Like</button>
+    <%= post.get_upvotes.size %>
+    <% end %>
   </div>
 <% end %>

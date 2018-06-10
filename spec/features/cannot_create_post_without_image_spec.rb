@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 feature 'cannot create a post without image' do
   scenario 'must submit image to create a post' do
     sign_up_and_sign_in
