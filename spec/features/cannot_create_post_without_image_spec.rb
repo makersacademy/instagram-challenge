@@ -1,6 +1,6 @@
 feature 'cannot create a post without image' do
   scenario 'must submit image to create a post' do
-    visit '/'
+    sign_up_and_sign_in
     click_link 'New Post'
     fill_in 'post[description]', with: 'me and my sweet kids'
     click_button 'submit'

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'posting picture' do
   scenario 'can create a post with a picture' do
-    visit '/'
+    sign_up_and_sign_in
     click_link 'New Post'
     attach_file('post[image]', "spec/files/images/mum.jpeg")
     fill_in 'post[description]', with: 'me and my sweet kids'
