@@ -7,8 +7,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    if params[:post].blank?
-      flash[:failure] = 'You must select a valid photo!'
+    if params[:post][:photo].blank? || params[:post][:caption].blank?
+      flash[:failure] = 'You must have a valid photo AND caption!'
     else
       @post = current_user.posts.create(post_params)
     end
@@ -27,6 +27,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:photo)
+    params.require(:post).permit(:photo, :caption)
   end
 end

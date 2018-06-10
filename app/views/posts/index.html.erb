@@ -3,7 +3,7 @@
 <body align="center">
   <div class="topnav">
     <h2>Eternagram</h2><br />
-    <%= link_to('Log Out', destroy_user_session_path, method: :delete) %> 
+    <%= link_to('Log Out', destroy_user_session_path, method: :delete) %>
     <a href="#">Profile</a>
   </div>
 
@@ -17,22 +17,25 @@
   <%= form_for @post do |form| %>
     <%= form.label :photo %>
     <%= form.file_field :photo %>
+    <%= form.label :caption %>
+    <%= form.text_field :caption, maxlength: 20 %>
 
     <%= form.submit "Submit" %>
   <% end %>
 </div>
 
 <div class="container">
-  <div class="spacer">&nbsp;</div>
 
-  <% @posts.each do |post| %>
-    <div class="photos">
-      <p><%= (User.find_by(id: post.user_id)).username %></p><br />
-      <%= image_tag(post.photo, :size => '260x180') %><br />
-    </div>
-  <% end %>
+  <div class="grid">
+    <% @posts.each do |post| %>
+      <div class="photos">
+        <p><%= (User.find_by(id: post.user_id)).username %></p><br />
+        <%= image_tag(post.photo, :size => '260x180') %><br />
+        <p class="caption"><%= post.caption %></p><br />
+      </div>
+    <% end %>
+  </div>
 
-  <div class="spacer">&nbsp;</div>
 </div>
 
 </body>
