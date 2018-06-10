@@ -1,40 +1,80 @@
-Instagram Challenge
-===================
-
-## Instructions
-
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Instagram Challenge - Eternagram
+================================
 
 ## Task
 
-Build Instagram: Simple huh!
+Build Instagram:
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+This weekend challenge was to build Instagram using Rails. It required **users** who can post **pictures**, write **comments** on pictures and **like** a picture. The aim of this task was to practice the rails skills we acquired during week 8 of Makers Academy.
 
-Bonus if you can add filters!
+## Approach and Learning
 
-## How to start
+I began by creating a Trello board to organise my work flow, as I believed this task would consume much of my weekend (I wasn't wrong!). This helped break down all the seemingly huge tasks into smaller manageable tasks, and increased my productivity immensely.
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+I decided to use the Devise gem to handle my user sign up, log in, and log out functionality, a gem I had used in the previous week with my team. I also decided to use Active Storage for the photo uploading functionality, as it went hand in hand with Rails' Active Record.
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+I also used the gem Acts_as_votable for my like/unlike functionality, which while somewhat confusing, ended up being very useful, and will likely help me next week when I continue on my team project.
 
-## Code Quality
+Finally, I used factory_bot_rails to create objects for testing purposes.
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+I have managed to implement all the functionality apart from adding comments, however, when a user enters the site, they are prompted to sign in or sign up, after-which they are taken to the homepage where they can see all posts in reverse chronological order with the username of whoever posted them, a caption, and the number of likes.
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+I also added a 'profile' button to the header which takes a user to their profile page where only their specific posts are viewable.
+
+I decided not to add the edit and delete features this weekend as I wanted to focus more on the functionality that I had not covered during the course week, however I may add these, along with the comments, in the near future.
+
+I found TDD a difficult concept with Rails, often not knowing what to test, when, and if it was necessary. This is something I shall enquire about with the Makers coaches.
+
+## User Stories:
+
+```
+As a user,
+So that I can share the picture I have taken on Eternagram,
+I would like to be able to post a picture.
+
+As a user,
+So that I can show my appreciation of other pictures,
+I would like to be able to like a picture.
+
+As a user,
+So that I can tell someone what I think about their picture,
+I would like to be able to comment on a picture.
+
+As a user,
+So that I can post pictures on Eternagram,
+I would like to be able to sign up.
+
+As a user,
+So that I can post pictures as me,
+I would like to be able to sign in to Eternagram.
+
+As a user,
+So that others cannot post as me from my device,
+I would like to be able to sign out of Eternagram.
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## Instructions
+
+```
+Clone this repository
+```
+
+```
+Run $ bundle install
+```
+
+```
+Run $ rake db: create
+```
+
+```
+Run $ rake db: migrate
+```
+
+```
+Run $ rails s
+```
+
+```
+Open localhost:3000 in your browser
+```
