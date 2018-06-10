@@ -2,40 +2,18 @@
 <html>
 <body>
 
-<!-- <h1>Finstagram</h1>
-<p>Attempting to build a really good knock-off</p>
-
-<%= image_tag @post.image.url(:medium) %>
-<%= @post.caption %> -->
-
-<div class="posts-wrapper row">
-  <div class="post">
-    <div class="post-head">
-      <div class="name">
-        Dione
-      </div>
-    </div>
-    <div class="image center-block">
-      <%= image_tag @post.image.url(:medium) %>
-    </div>
-    <p class="caption">
-      <%= @post.caption %>
-    </p>
+  <%= render 'post', post: @post %>
+  <% if @post.user.id == current_user.id %>
     <div class="text-center edit-links">
-      <% if @post.user.id == current_user.id %>
-        <div class="text-center edit-links">
-          <%= link_to "Cancel", posts_path %>
-          |
-          <%= link_to "Edit Post", edit_post_path(@post) %>
-        </div>
-      <% else %>
-        <div class="text-center edit-links">
-          <%= link_to "Cancel", posts_path %>
-        </div>
-      <% end %>
+      <%= link_to "Cancel", posts_path %>
+      |
+      <%= link_to "Edit Post", edit_post_path(@post) %>
     </div>
-  </div>
-</div>
+  <% else %>
+    <div class="text-center edit-links">
+      <%= link_to "Cancel", posts_path %>
+    </div>
+  <% end %>
 
 </body>
 </html>
