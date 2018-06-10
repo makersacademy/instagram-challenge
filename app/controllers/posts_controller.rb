@@ -7,7 +7,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.create(post_params)
+    if params[:post].blank?
+      flash[:failure] = 'You must select a valid photo!'
+    else
+      @post = current_user.posts.create(post_params)
+    end
     redirect_to posts_url
   end
 
