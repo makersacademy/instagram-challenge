@@ -1,15 +1,15 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = Post.all.reverse
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.create
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = current_user.posts.create(post_params)
     if @post.save
       flash[:success] = "Post has been created"
       redirect_to posts_path
