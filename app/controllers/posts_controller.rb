@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  # before_action :set_post, only: [:edit, :update, :destroy, :upvote]
 
   def index
     @post = Post.new
@@ -23,6 +24,16 @@ class PostsController < ApplicationController
   end
 
   def update
+  end
+
+  def upvote
+    @post = Post.find(params[:id])
+    if current_user.liked? @post
+      @post.unliked_by current_user
+    else
+      @post.liked_by current_user
+    end
+    redirect_to posts_url
   end
 
   private

@@ -1,4 +1,6 @@
-<body>
+<%= stylesheet_link_tag "user_show.css" %>
+
+<body align="center">
   <div class="topnav">
     <h2>Eternagram</h2><br />
     <%= link_to('Log Out', destroy_user_session_path, method: :delete) %>
@@ -7,7 +9,23 @@
   <h1><%= @user.username %></h1>
   <p>This is the profile of <%= @user.username %></p>
 
-  <% @posts.each do |post| %>
-    <%= image_tag(post.photo, :size => '260x180') %><br />
-  <% end %>
+  <div class="container">
+
+    <div class="grid">
+      <% @posts.each do |post| %>
+        <div class="photos">
+          <%= image_tag(post.photo, :size => '260x180') %><br />
+          <p class="caption"><%= post.caption %></p><br />
+          <%= link_to like_post_path(post), class: "like", method: :put do %>
+            <button type="button" class="btn btn-info">
+            <span class="badge">Like <%= post.get_upvotes.size %></span>
+            </button>
+          <% end %>
+
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+
 </body>
