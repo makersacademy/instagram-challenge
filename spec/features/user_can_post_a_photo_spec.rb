@@ -4,6 +4,7 @@ RSpec.feature "homepage", type: :feature do
   scenario "Can submit photos and view them" do
     visit('/')
     click_link "Sign up"
+    fill_in "Username", with: 'Example'
     fill_in "Email", with: 'example@hotmail.com'
     fill_in "Password", with: '123456'
     fill_in "Password confirmation", with: '123456'
@@ -16,6 +17,7 @@ RSpec.feature "homepage", type: :feature do
   scenario "Submitting an image increases post count by 1" do
     visit('/')
     click_link "Sign up"
+    fill_in "Username", with: 'Example'
     fill_in "Email", with: 'example@hotmail.com'
     fill_in "Password", with: '123456'
     fill_in "Password confirmation", with: '123456'
