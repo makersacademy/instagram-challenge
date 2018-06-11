@@ -1,5 +1,27 @@
-<%= simple_form_for @post do |f| %>
+<!-- <%= simple_form_for @post do |f| %>
   <%= f.input :image %>
   <%= f.input :caption %>
   <%= f.button :submit %>
-<% end %>
+<% end %> -->
+
+
+<div class="form-wrapper">
+  <h2>Create a new post</h2>
+    <div class="form-group">
+      <%= simple_form_for @post do |f| %>
+      <div class="form-group">
+        <%= f.input :image%>
+        <%= f.hint 'Image must be added to submit post', class: 'warning'%>
+      </div>
+      <div class="form-group">
+        <%= f.input :caption, input_html: { class: 'form-control' }%>
+      </div>
+      <div class="form-group">
+        <%= f.button :submit, class: 'btn-success'%>
+      </div>
+      <div class="delete_link">
+        <%= link_to "Delete Post", post_path(@post), method: :delete, data: {confirm: "Are you sure you want to delete this post?"}%>
+      </div>
+      <% end %>
+    </div>
+</div>
