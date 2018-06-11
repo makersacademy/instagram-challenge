@@ -38,7 +38,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'rubocop'
 gem 'rubocop-rails'
-gem 'factory_bot_rails'
 gem 'simple_form'
 gem 'paperclip', '~> 6.0.0'
 gem 'bootstrap-sass', '~> 3.3.7'
@@ -65,6 +64,7 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'rspec-rails', '~> 3.7'
+  gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
