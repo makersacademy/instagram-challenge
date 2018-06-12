@@ -1,15 +1,19 @@
-<h2>Log in</h2>
-<div class="form-group">
+
+<div class="loginform">
+  <h2>Log in</h2>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <%= f.label :email %><br />
-  <input type="email" class="form-control" autofocus="autofocus" autocomplete="email" type="email" value="" name="user[email]" id="user_email">
-</div>
-<div class="form-group">
-  <div class="field">
-    <%= f.label :password %><br />
-    <input type="password" class="form-control" autocomplete="off" type="password" name="user[password]" id="user_password">
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <input type="email" class="form-control" autofocus="autofocus" autocomplete="email" value="" name="user[email]" id="user_email">
   </div>
-</div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :password %><br />
+      <input type="password" class="form-control" autocomplete="off" name="user[password]" id="user_password">
+    </div>
+  </div>
+
   <% if devise_mapping.rememberable? -%>
     <div class="field">
       <%= f.check_box :remember_me %>
@@ -17,18 +21,13 @@
     </div>
   <% end -%>
 
+  <div class="information">
+  <%= render "devise/shared/links" %>
+  </div>
+
   <div class="actions">
     <input type="submit" class="btn btn-primary" name="commit" value="Log in" data-disable-with="Log in">
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
-
-<form>
-
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :authenticate_user!
   before_action :set_photo, only: [:show, :edit, :update, :destroy, :like, :unlike]
   before_action :owned_photo, only: [:edit, :update, :destroy]
 
