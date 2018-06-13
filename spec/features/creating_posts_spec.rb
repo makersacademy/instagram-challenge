@@ -1,8 +1,17 @@
 require 'rails_helper.rb'
 
 feature 'Creating posts' do
-  scenario 'can create a post' do
+  before(:each) do
+    user = create(:user)
+
     visit '/'
+    click_link 'Login'
+    fill_in 'Email', with: 'test@test.com'
+    fill_in 'Password', with: 'password1'
+    click_button 'Log in'
+  end
+
+  scenario 'can create a post' do
     click_link 'New Post'
     attach_file('Image', "spec/files/images/dog.jpg")
     fill_in 'Caption', with: 'Just taking a nap #zzz'
