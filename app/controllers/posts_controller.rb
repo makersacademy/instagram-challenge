@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.create(post_params)
     if @post.save
       flash[:success] = "Your post has been created."
-      redirect_to @post
+      redirect_to posts_path
     else
       flash[:alert] = "Please ensure an image is posted"
       render :new
