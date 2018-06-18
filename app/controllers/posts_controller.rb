@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   before_action :owned_post, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all.order('created_at DESC').page(params[:page])
+    @posts = Post.all.order("created_at DESC").page(params[:page])
   end
 
   def new
@@ -17,10 +17,10 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      flash[:success] = 'Your post has been created.'
+      flash[:success] = "Your post has been created."
       redirect_to posts_path
     else
-      flash[:alert] = 'Why would you not attach a picture?'
+      flash[:alert] = "Why would you not attach a picture?"
       render :new
     end
   end
@@ -33,17 +33,17 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:success] = 'Post updated'
+      flash[:success] = "Post updated"
       redirect_to posts_path
     else
-      flash[:alert] = 'Something is wrong with your form!'
+      flash[:alert] = "Something is wrong with your form!"
       render :edit
     end
   end
 
   def destroy
     if @post.destroy
-      flash[:success] = 'Post deleted.'
+      flash[:success] = "Post deleted."
       redirect_to posts_path
     end
   end
@@ -59,7 +59,7 @@ private
 
   def owned_post
     unless current_user == @post.user
-      flash[:alert] = 'That post doesn\'t belong to you!'
+      flash[:alert] = "That post doesn't belong to you!"
       redirect_to root_path
     end
   end

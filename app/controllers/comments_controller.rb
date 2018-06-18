@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
         format.js
       end
     else
-      flash[:alert] = 'Please check the comment form.'
+      flash[:alert] = "Please check the comment form."
       render root_path
     end
   end
@@ -28,7 +28,7 @@ class CommentsController < ApplicationController
         format.js
       end
     else
-      flash[:alert] = 'That comment doesn\'t belong to you!'
+      flash[:alert] = "That comment doesn't belong to you!"
       redirect_to root_path
     end
   end

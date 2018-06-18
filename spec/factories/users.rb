@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :user do
-    username 'JoeBlogs'
-    email 'generic@someone.com'
-    password 'password'
+    username "JoeBlogs"
+    email "generic@someone.com"
+    password "password"
     id 1
   end
 end
