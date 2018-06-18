@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  before_action :owned_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -52,6 +53,14 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:caption, :image)
+  end
+
+  def owned_post
+    @post = Post.find(params[:id])
+    unless @post.user.id == current_user.id
+      flash[:alert] = "Unable to edit other users posts"
+      redirect_to root_path
+    end
   end
 
 end
