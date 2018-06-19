@@ -1,6 +1,6 @@
 require 'rails_helper.rb'
 
-feature 'Editing posts' do
+feature 'Commenting on posts' do
   background do
     user = create(:user)
     post_one = create(:post, user_id: user.id)

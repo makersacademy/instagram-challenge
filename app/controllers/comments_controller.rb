@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
   before_action :set_post
+  before_action :owned_comment, only: :destroy
 
   def create
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
 
     if @comment.save
-      flash[:success] = "You commented the hell out of that post!"
+      flash[:success] = "Comment added!"
       redirect_to root_path
     else
       flash[:alert] = "Check the comment form, something went horribly wrong."
@@ -30,5 +31,13 @@ class CommentsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:post_id])
+  end
+
+  def owned_comment
+    @comment = @post.comments.find(params[:id])
+    unless @comment.user_id == current_user.id
+      flash[:alert] = "Unable to remove other users comments"
+      redirect_to root_path
+    end
   end
 end
