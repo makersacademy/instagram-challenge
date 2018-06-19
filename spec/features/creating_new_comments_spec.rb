@@ -13,4 +13,13 @@ feature 'Editing posts' do
     click_button 'Post'
     expect(page).to have_content("Wow, what a great photo")
   end
+
+  scenario 'can add multiple comments on a post' do
+    fill_in 'comment[content]', with: "Nice picture"
+    click_button 'Post'
+    fill_in 'comment[content]', with: "Amazing shot!"
+    click_button 'Post'
+    expect(page).to have_content("Nice picture")
+    expect(page).to have_content("Amazing shot!")
+  end
 end
