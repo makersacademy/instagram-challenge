@@ -69,19 +69,7 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-To run the tests, whilst in the root folder of your application, run the following command:
-
-```ruby
-rspec
-```
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+To run the tests, whilst in the root folder of your application, enter the command ```rspec```
 
 ### And coding style tests
 
@@ -91,15 +79,12 @@ Explain what these tests test and why
 Give an example
 ```
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Ruby on Rails](http://rubyonrails.org/) - The web-application framework used
+* [Paperclip](https://github.com/thoughtbot/paperclip/) - File attachment management Ruby Gem
+* [Bootstrap](https://getbootstrap.com/) - Front end component library
+* [Simple Form](https://github.com/plataformatec/simple_form) - Form library for Ruby on Rails
 
 ## Contributing
 
