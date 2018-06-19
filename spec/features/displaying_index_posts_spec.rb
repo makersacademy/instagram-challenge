@@ -12,10 +12,6 @@ feature 'Displaying posts' do
 
 
   scenario 'the index displays the correct created post info' do
-    # click_link 'New Post'
-    # attach_file('Image', "spec/files/images/dog1.jpg")
-    # fill_in 'Caption', with: 'This is post two'
-    # click_button 'Create Post'
     expect(page).to have_content("This is post one")
     expect(page).to have_css("img[src*='dog']")
     expect(page).to have_content("This is post two")

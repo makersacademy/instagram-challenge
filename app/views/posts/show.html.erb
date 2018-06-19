@@ -1,13 +1,7 @@
-  <div class="posts-wrapper row">
-      <div class="post">
-        <div class="post-head">
-          <div class="name"><%= @post.user.username %></div>
-            <div class="image center-block"><%= image_tag @post.image.url(:medium) %>
-            </div>
-            <% if current_user.id == @post.user.id %>
-            <p class="edit_tag"><%= link_to 'Edit Post', edit_post_path %></p>
-            <% end %>
-            <p class="caption"><%= @post.caption %></p>
-        </div>
-      </div>
-  </div>
+<%= render 'post', post: @post %>
+
+<div class="text-center edit-links">
+  <% if current_user.id == @post.user.id %>
+    <p class="edit_tag"><%= link_to 'Edit Post', edit_post_path %></p>
+  <% end %>
+</div>
