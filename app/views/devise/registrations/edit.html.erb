@@ -1,0 +1,28 @@
+<div class="registration-bg">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md">
+        <div class="log-in panel">
+          <div class="panel-heading">
+            <h2>Account Settings</h2>
+          </div>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+            <div class="panel-body">
+              <%= f.input :username, required: true, label: false, placeholder: 'username' %>
+              <%= f.input :email, required: true, autofocus: true, label: false, placeholder: 'email address' %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
+              <%= f.input :password, autocomplete: "off", hint: "Keep password blank if you don't want to change it", required: false, label: false, placeholder: 'new password' %>
+              <%= f.input :password_confirmation, required: false, label: false, placeholder: 'confirm new password' %>
+              <%= f.input :current_password, hint: "Enter your current password to confirm any changes", required: true, label: false, placeholder: 'current password' %>
+              <%= f.button :submit, "Update", class: 'btn-lg btn-info btn-block' %>
+            </div>
+          <% end %>
+          <p><%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

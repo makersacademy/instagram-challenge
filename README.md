@@ -1,40 +1,38 @@
 Instagram Challenge
 ===================
 
+View the app [here](https://whispering-lake-52632.herokuapp.com/)!
+
+## About
+
+This is a simple Instagram clone built using Ruby on Rails. The implementation was inspired by [Devwalks](https://www.devwalks.com/), and has some of the basic features you might expect. These include: user signup, user sign in/out, user posts a picture with a description, user can comment on photos, responsive design. This app has been built from the ground up using a test-driven devlopment approach. Care was taken to consider some edge cases around the posting of comments and photos, to ensure a 'proper user experience'.
+
+As an extension, paperclip would be swapped for Amazon AWS so that image storage would persist (Heroku does not have persistant storage suitable for this app). Also, support for Omni Auth would be added to devise to make user signup even better!
+
+### Some Technologies/Gems Used
+
+- Rails
+- RSpec/Capybara
+- Rubocop
+- Heroku
+- Paperclip
+- Simpleform
+- Kaminari
+- SQLite3/PostgreSQL
+- Bootstrap/Font Awesome/jQuery
+- Factory Bot
+
+## Setup
+
+To have a look at the project locally:
+
+1. Clone the repository
+2. Change into the directory
+3. Run `rspec` for the tests*
+4. Run `bin/rails server` to view the site at http://localhost:3000*
+
+You may need to follow instructions given to setup and migrate any databases. Rails messages are very helpful, so this should not be a problem.
+
 ## Instructions
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-## Task
-
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+Follow the setup to run locally, or visit the app [here](https://whispering-lake-52632.herokuapp.com/).
