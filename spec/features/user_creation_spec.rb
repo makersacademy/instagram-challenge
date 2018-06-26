@@ -42,5 +42,30 @@ describe 'User' do
       click_button 'Sign up'
       expect(page).to have_content('is too long (maximum is 16 characters)')
     end
+
+    scenario 'password must be entered to create an account' do
+      fill_in 'Username', with: 'testuser1'
+      fill_in 'Email', with: 'email@icloud.com'
+      click_button 'Sign up'
+      expect(page).to have_content('can\'t be blank')
+    end
+
+    scenario 'password must be a minimum of 6 charachters' do
+      fill_in 'Username', with: 'testuser'
+      fill_in 'Email', with: 'email@icloud.com'
+      fill_in 'Password', with: '12'
+      fill_in 'Password Confirmation', with: '12'
+      click_button 'Sign up'
+      expect(page).to have_content('is too short (minimum is 6 characters)')
+    end
+
+    scenario 'password confirmation must match the original password' do
+      fill_in 'Username', with: 'testuser'
+      fill_in 'Email', with: 'email@icloud.com'
+      fill_in 'Password', with: 'pass12'
+      fill_in 'Password Confirmation', with: 'pass123'
+      click_button 'Sign up'
+      expect(page).to have_content('doesn\'t match Password')
+    end
   end
 end

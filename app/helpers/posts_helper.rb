@@ -1,11 +1,10 @@
 module PostsHelper
-
   def liked_post(post)
     if current_user.voted_for? post
-      return link_to '', unlike_post_path(post), remote: true, id: "like_#{post.id}",
+      link_to '', unlike_post_path(post), remote: true, id: "like_#{post.id}",
       class: "glyphicon glyphicon-heart"
     else
-      return link_to '', like_post_path(post), remote: true, id: "like_#{post.id}",
+      link_to '', like_post_path(post), remote: true, id: "like_#{post.id}",
       class: "like glyphicon glyphicon-heart-empty"
     end
   end
@@ -28,7 +27,7 @@ module PostsHelper
     end
   end
 
-  def count_likers(voters)
+  def count_likers(votes)
     vote_count = votes.size
     vote_count.to_s + ' likes'
   end
@@ -37,5 +36,4 @@ module PostsHelper
     return ' likes this' if votes.count > 1
     ' likes this'
   end
-
 end
