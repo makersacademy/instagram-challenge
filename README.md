@@ -34,6 +34,7 @@ rails s
 ```
 
 This will start the rails server
+
 ![Alt test](/app/assets/images/rails_server_sshot.png?raw=true "Rails Server")
 
 Navigate to http://localhost:3000 (or whichever port your server is running on) and the app will be up and running.
@@ -60,4 +61,4 @@ Registration page
 
 Main feed page
 
-![Alt test](/app/assets/images/feed_page?raw=true "Rails Server")
+![Alt test](/app/assets/images/feed_page.jpeg?raw=true "Main feed page")
