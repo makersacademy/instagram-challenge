@@ -7,7 +7,7 @@ feature 'Editing posts' do
 
     sign_in_with user
 
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    find(:xpath, "//a[contains(@href,'posts/1')]", match: :first).click
     click_link 'Edit Post'
   end
 
@@ -29,7 +29,7 @@ feature 'Editing posts' do
     click_link 'Log Out'
     user2 = create(:user, username: "Dave", email: 'as@email.com', password: "123456", password_confirmation: "123456", id: 2)
     sign_in_with user2
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    find(:xpath, "//a[contains(@href,'posts/1')]", match: :first).click
     expect(page).to_not have_content('Edit Post')
   end
 

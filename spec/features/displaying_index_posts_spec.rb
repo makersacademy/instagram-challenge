@@ -18,7 +18,7 @@ feature 'Displaying posts' do
   end
 
   scenario 'each post has a link to take you to that post' do
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    find(:xpath, "//a[contains(@href,'posts/1')]", match: :first).click
     expect(page).to have_content("This is post one")
     expect(page).to have_css("img[src*='dog']")
   end
