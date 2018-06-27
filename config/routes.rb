@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
   devise_for :users
   get '/:id/wall', to: 'users#show', as: :user_wall
   resources :photos do
@@ -9,5 +10,5 @@ Rails.application.routes.draw do
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "photos#index"
+  root to: "welcome#index"
 end

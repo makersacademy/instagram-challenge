@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-md navbar-light" style="background-color: #4b386a;">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+    </div>
+    <div class="mx-auto order-0">
+      <%- if user_signed_in? %>
+        <a class="navbar-brand font-bold" href="/photos">
+          <i class="fa fa-camera-retro" ></i>
+            InstagramCity
+        </a>
+      <% else %>
+        <a class="navbar-brand font-bold" href="#">
+          <i class="fa fa-camera-retro" ></i>
+            InstagramCity
+         </a>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+          <%- if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to '<i class="fa fa-user-circle" style="font-size:24px;color:rgb(255, 255, 255)"></i>'.html_safe, user_wall_path(current_user.id) %>
+            </i>
+            </li>
+            <li class="nav-item">
+              <%= link_to '<i class="fa fa-sign-out" style="font-size:24px;color:rgb(255, 255, 255)"></i>'.html_safe, destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <%- if controller_name != 'sessions' || controller_name != 'registrations'%>
+              <li class="nav-item">
+                <%= link_to "Sign up", new_user_registration_path %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Log in", new_user_session_path %>
+                <!-- <i class="fa fa-sign-in" style="font-size:20px;color:rgb(255, 255, 255)"></i> -->
+              </li>
+            <% end -%>
+          <% end -%>
+        </ul>
+    </div>
+</nav>

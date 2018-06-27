@@ -7,18 +7,16 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
-    <!-- #tmp -->
-    <%- if user_signed_in? %>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%- if controller_name != 'sessions' %>
-        <%= link_to 'Log in', new_user_session_path %>
-      <% end -%>
-    <% end %>
+    <%= render 'layouts/navbar' %>
     <p class="alert"><%= alert %></p>
+    <div class="container">
     <%= yield %>
+    </div>
   </body>
 </html>

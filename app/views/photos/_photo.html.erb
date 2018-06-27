@@ -1,15 +1,16 @@
-<h1><%= link_to photo.user.user_name.upcase, user_wall_url(photo.user.id) %></h1>
+<li class="col-3 js-collectable">
+<p class="name"><%= link_to photo.user.user_name.upcase, user_wall_url(photo.user.id) %></p>
 <% if current_page?(photo_url(photo.id)) %>
-  <h2><%= link_to image_tag(photo.image.thumb.url), photo %></h2>
+<%= link_to image_tag(photo.image.thumb.url), photo %>
 <% else %>
-  <h2><%= link_to image_tag(photo.image.home.url), photo %></h2>
+<%= link_to image_tag(photo.image.home.url), photo %>
 <% end %>
-<h3><%= photo.description %></h3>
+<%= photo.description %>
 
 
 <% if user_signed_in? && photo.user.id == current_user.id %>
   <%= link_to 'Edit', edit_photo_path(photo) %>
-  <%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Delete', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 
 <% if photo.comments %>
@@ -42,9 +43,13 @@ Liked By:
 </div>
 
 <div>
-<% if current_user.liked? photo %>
-  <%= link_to 'Unlike', unlike_photo_path(photo), method: :put %>
-<% else %>
-  <%= link_to 'Like', like_photo_path(photo), method: :put %>
+<% if user_signed_in? %>
+  <% if current_user.liked? photo %>
+    <%= link_to 'Unlike', unlike_photo_path(photo), method: :put %>
+  <% else %>
+    <%= link_to 'Like', like_photo_path(photo), method: :put %>
+  <% end %>
 <% end %>
 </div>
+
+</li>
