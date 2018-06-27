@@ -1,6 +1,21 @@
 Instagram Challenge
 ===================
 
+## Work in progress [latest update 13/05/2018]
+
+Complete:
+* user can sign up, sign in, and log out
+* all the users can see all the photos
+* all the users can see each user's photos in user's page
+* sign in user can create photos
+* sign in user can edit and delete the photo she/he created
+
+Unfinish:
+* CSS
+* user can comment on photos
+* deploy to Heroku
+
+
 ## Instructions
 
 * Challenge time: one weekend
