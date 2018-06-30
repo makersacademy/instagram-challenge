@@ -1,0 +1,44 @@
+<div class="posts-wrapper row">
+  <div class="post">
+    <div class="post-head">
+      <div class="user-name">
+        <%= post.user.user_name %>
+      </div>
+    </div>
+    <div class="img center-block">
+      <%= link_to (image_tag post.image.url(:medium)), post_path(post) %>
+    </div>
+    <div class="post-bottom">
+      <div class="caption">
+        <div class="user-name">
+          <%= post.user.user_name %>
+        </div>
+        <%= post.caption %>
+      </div>
+      <% if post.comments %>
+        <% post.comments.each do |comment| %>
+          <div id="comment">
+            <div class="user-name">
+              <%= comment.user.user_name %>
+            </div>
+            <div class="comment-content">
+              <%= comment.content %>
+            </div>
+            <% if comment.user == current_user %>
+              <%= link_to 'Delete', post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    <div class="comment-like-form row">
+      <div class="like-button col-sm-1">
+        <span class="glyphicon glyphicon-heart-empty"></span>
+      </div>
+      <div class="comment-form col-sm-11">
+        <%= form_for [post, post.comments.new] do |f| %>
+        <%= f.text_field :content %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
