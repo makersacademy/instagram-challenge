@@ -1,0 +1,33 @@
+<%= link_to 'All posts', posts_path %>
+<h1><%= @post.title %></h1>
+
+<!-- <%= image_tag(@post.image.url, alt: 'Image') if @post.image? %> -->
+<%= link_to(image_tag(@post.image.thumb.url, alt: 'Image'), @post.image.url, target: '_blank') if @post.image? %>
+
+<p><%= @post.body %></p>
+
+<h2>Comments</h2>
+
+<%= render @post.comments %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+<p>
+  <%= f.label :commenter %><br>
+  <%= f.text_field :commenter %>
+</p>
+<p>
+  <%= f.label :body %><br>
+  <%= f.text_area :body %>
+</p>
+
+<p>
+  <%= f.label :rating %><br>
+  <%= f.number_field :rating %>
+</p>
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
+
+<p><%= link_to 'Edit', edit_post_path(@post) %></p>

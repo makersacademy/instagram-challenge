@@ -1,0 +1,60 @@
+<h1>
+  Instagram Challenge</h1>
+
+<div class="new_post button">
+  <%= link_to "Add a new Picture", new_post_path %>
+</div>
+
+<div class="container w3-card">
+
+  <% @posts.each do |post| %>
+    <div class="grid">
+
+      <h2 >
+        <p class="fig_caption center"><%= link_to post.title, post %></p>
+        <h5 class="">
+          Submitted
+          <%= time_ago_in_words(post.created_at) %>
+          ago by
+          <%= post.user.email %>
+        </h5>
+
+      </h2>
+      <div >
+        <figure class="item w3-container">
+          <%= image_tag post.image %>
+        </figure>
+        <figcaption>
+          <div class="fig_caption_parent">
+            <div class="fig_caption">
+              <%= link_to "Show", post %>
+            </div>
+            <div class="fig_caption">
+              <% if user_signed_in? && current_user.id == post.user_id  %>
+                <%= link_to "Edit", edit_post_path(post) %>
+                <%= link_to 'Delete', post, :method => :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </div>
+
+            <div class="like-dislike fig_caption">
+              <%= link_to like_post_path(post), method: :put do %>
+              Like
+              <%= post.get_upvotes.size %>
+            <% end %>
+
+            <%= link_to dislike_post_path(post), method: :put do %>
+            Dislike
+            <%= post.get_downvotes.size %>
+          <% end %>
+        </div>
+      </div>
+    </figcaption>
+    <br>
+    <br>
+  </div>
+
+<% end %>
+
+</div>
+<br>
+<br>
