@@ -1,40 +1,74 @@
-Instagram Challenge
-===================
+# Momentgram
+Momentgram represents the implementation of Makers Academy weekend challenge of recreating Instagram using Ruby on Rails.
 
-## Instructions
+## Approach
+I started this challenge by thinking what functionality the MPV should have, followed by creating the user stories. The MVP was designed to have the following functionalities: posting and deleting picture (model picture), user can sign-up, login and logout(model user). After that I had expanded the MVP, by adding comments and likes.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Setup
+- $ git clone  https://github.com/gabrielabud/instagram-challenge.git
+- $ bundle install
+- $ bin/rails db:setup
+- $ bin/rails s
 
-## Task
+## User Stories
+The following user stories have been implemented.
+```
+As an user
+so that I can use Momentgram for the first time
+I'd like to have the option to sign-up
 
-Build Instagram: Simple huh!
+As an user
+so that I can use Momentgram
+I'd like to have the option to login
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As an user
+so that I prevent other from using my Momentgram's account
+I'd like to have the option to logout
 
-Bonus if you can add filters!
+As an user
+So that I can share moments captured on camera
+I'd like to upload pictures
 
-## How to start
+As an user
+So that I can reorganise the posts
+I'd like to delete the pictures I have uploaded
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+As an user
+So that I can communicate my thoughts on a picture
+I'd like to be able to write comments
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+As an user
+So that I can change my mind on a comment I just posted
+I'd like to be able to delete comments
 
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+As an user
+So that I can give feedback on images
+I'd like to be able to like photos
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## Further improvements
+If I had more time, I would have also added the following:
+- filter pictures by tag;
+- a user page, where only the user's pictures are shown;
+- the option to follow users and only see their posts;
+- features tests, which I did not approach;
+- API;
+- deployment to Heroku;
+
+## Home page
+![Homepage](/images/home.png)
+
+## Post picture
+![Post](/images/add_picture.png)
+
+## Delete only pictures that have been posted by the logged-in user
+![Delete](/images/delete_user_picture.png)
+
+## No delete option for pictures which don't belong to the logged-in user
+![NoDelete](/images/no_delete.png)
+
+## Comment and like pictures
+![CommentsLikes](/images/comments_likes.png)
+
+## Login
+![Login](/images/login.png)

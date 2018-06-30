@@ -1,0 +1,15 @@
+<h1>Momentgram!</h1>
+
+<div class="posts" id="posts">
+  <% @pictures.each do |picture| %>
+    <div class="post" id="post">
+      <%= link_to image_tag(picture.image.url, class: 'post-img', alt: 'Photo'), picture_path(:id,picture.id) if picture.image? %>
+      <div class="caption">
+        <h2 class="caption"><%= picture.caption %></h2>
+      </div>
+      <div class="email">
+        <%= picture.user.email %>
+      </div>
+    </div>
+  <% end %>
+</div>

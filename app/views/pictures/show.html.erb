@@ -1,0 +1,30 @@
+<div class="single-post">
+  <%= image_tag(@picture.image.url, class: 'post-img', alt: 'Photo') %>
+  <div class="caption">
+    <h2><strong><%= @picture.caption %></strong> by <%= @picture.user.email %></h2>
+  </div>
+  <div class="actions">
+    <%= link_to like_picture_path(@picture), method: :put do %>
+      ♥️ <%= @picture.get_upvotes.size %>
+    <% end %>
+    <%= link_to('🗨️', new_picture_comment_path(@picture.id)) %>
+    <% if @picture.user.id == current_user.id %>
+      <%= link_to "Delete", picture_path(@picture), method: :delete, data: { confirm: "Are you sure you want to delete this post?" } %>
+    <% end %>
+  </div>
+
+  <div class="comments">
+    <strong>Comments</strong>
+    <% if @picture.comments %>
+      <% @picture.comments.each do |comment| %>
+        <div class="comm">
+          <%= comment.content %>
+          <span class="grey">by <%= comment.user.email %></span>
+          <% if comment.user == current_user %>
+            <%= link_to "❌", picture_comment_path(@picture,comment), method: :delete, class: "delete-comment", data: { confirm: "Are you sure you want to delete this comment?" } %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
