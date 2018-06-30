@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instagram</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav>
+          <div class='navigation'>
+             <% if current_user %>
+             <%= link_to 'Posts', posts_path %>
+             <%= link_to 'Comments', comments_path %>
+             <%= link_to 'Log out', destroy_user_session_path, method: :delete, confirm: "Are you sure?" %>
+             <%= link_to 'New post', new_post_path %>
+             <% else %>
+             <%= link_to 'Sign up', new_user_registration_path %>
+             <%= link_to 'Log in', user_session_path %>
+             <% end %>
+          </div>
+        </nav>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>
