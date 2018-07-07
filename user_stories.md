@@ -50,6 +50,16 @@ As a user,
 So that I can share what's going on in my life,
 I can make a post
 
+MAIN USER STORIES
+
+As a user,
+So that I can express my approval,
+I can like a post
+
+As a user,
+So that I can let people know what I think of their posts,
+I can write comments on posts
+
 
 OTHER USER STORIES
 
@@ -61,9 +71,7 @@ As a user,
 So that I can keep my profile up to date,
 I can edit my profile
 
-As a user,
-So that I can express my approval,
-I can like a post
+
 
 As a user,
 So that I can
@@ -72,4 +80,4 @@ So that I can
 gems
 - acts_as_votable
 - devise
-- carrierwave 
+- carrierwave
