@@ -9,4 +9,16 @@ RSpec.feature "Posts", type: :feature do
     click_button "Create Post"
     expect(page).to have_content("Test text for message!")
   end
+
+  scenario "error if text is over 140 characters" do
+    sign_up_successfully
+
+    visit "/posts/new"
+    fill_in "Content", with: "This message is definitely over 140 characters. This message is
+      definitely over 140 characters. This message is definitely over 140 characters.
+      This message is definitely over 140 characters. This message is definitely over 140 characters.
+      This message is definitely over 140 characters."
+    click_button "Create Post"
+    expect(page).to have_content("Content is too long")
+  end
 end
