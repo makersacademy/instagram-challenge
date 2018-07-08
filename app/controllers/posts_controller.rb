@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @users = User.all
   end
 
   # GET /posts/1
@@ -24,10 +25,12 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @post.save
+        @post.image = params[:post][:image]
+        @post.save!
         format.html { redirect_to root_path, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -42,8 +45,6 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        @post.image = params[:post][:image]
-        @post.save!
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
