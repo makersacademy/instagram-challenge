@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Snappergram is a rebuild of Instagram using Ruby on Rails (5.1.6). User sign-up and validation is handled by the Devise gem. Image upload is handled by Paperclip. The app is set up to use an Sqlite database. 
 
-Things you may want to cover:
+#Tests
 
-* Ruby version
+First ```bundle install``` then run ```rspec``` from the command line to run the tests.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
