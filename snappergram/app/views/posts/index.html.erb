@@ -1,17 +1,37 @@
 <div class="posts-wrapper">
 
   <% @posts.each do |post| %>
-  <div class="post">
-    <div class="post-head">
-      <%= current_user.user_name %>
+    <div class="post">
+      <div class="post-head">
+        <%= post.user.user_name %>:
+        <p style="font-size: 10px;"><%= post.created_at.strftime("%m/%d/%Y") %>
+      </div>
+      <div class="image">
+        <%= link_to (image_tag post.image.url(:medium)), post_path(post) %>
+      </div>
+      <div class="caption">
+        <%= post.caption %>
+      </div>
+
+      <% if post.comments %>
+        <% post.comments.each do |comment| %>
+        <div class="comment">
+          <%= comment.user.user_name %>:
+          <%= comment.content %>
+          <% if comment.user == current_user %>
+            <%= link_to 'Delete', post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </div>
+        <% end %>
+      <% end %>
+
+      <div class="comment-form">
+        <%= form_for [post, post.comments.new] do |f| %>
+          <%= f.text_field :content, placeholder: 'Comment' %>
+        <% end %>
+      </div>
+
     </div>
-    <div class="image">
-      <%= link_to (image_tag post.image.url(:medium)), post_path(post) %>
-    </div>
-    <div class="caption">
-      <%= post.caption %>
-    </div>
-  </div>
   <% end %>
 
 </div>
