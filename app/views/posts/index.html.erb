@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<div class="card text-center" >
+  <% @posts.each do |post| %>
+  <%= image_tag post.image.url, :class => "post_image" if post.image? %>
+  <div class="card-body">
+    <h5 class="card-title"><%= @users.find(post.user_id).firstname %></h5>
+    <p class="card-text"><%= post.content %></p>
+    <p>
+      <%= button_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <p>
+  </div>
+  <% end %>
+</div>
+
+<div class="card text-center" >
+  <button type="button" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true">
+      <%= link_to 'New Post', new_post_path %>
+    </span>
+  </button>
+</div>
