@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'devise'
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
+gem 'bootstrap-sass'
+
 
 ruby '2.4.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
