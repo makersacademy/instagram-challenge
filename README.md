@@ -86,6 +86,9 @@ https://stackoverflow.com/questions/41910712/helper-devise-could-not-find-the-wa
 
 ### bootstrap
 1. rubytutorial adding bootstrap sectionr: https://www.railstutorial.org/book/filling_in_the_layout#sec-custom_css
+2. Cards: https://getbootstrap.com/docs/4.0/components/card/
+3. Navbar: https://www.w3schools.com/Bootstrap/bootstrap_navbar.asp
+
 ### Travis / CI / CD / heroku
 The page you were looking for does not exist (but does work locally) error:
   * Could be that I need to empty the database https://gist.github.com/zulhfreelancer/ea140d8ef9292fa9165e
