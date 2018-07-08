@@ -5,8 +5,8 @@ RSpec.feature "Posts", type: :feature do
     sign_up_successfully
 
     visit "/posts/new"
-    fill_in "Message", with: "Hello, world!"
-    click_button "Submit"
-    expect(page).to have_content("Hello, world!")
+    fill_in "Content", with: "Test text for message!"
+    click_button "Create Post"
+    expect(page).to have_content("Test text for message!")
   end
 end
