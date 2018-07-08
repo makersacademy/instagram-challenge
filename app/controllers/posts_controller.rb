@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /posts
   # GET /posts.json
   def index
@@ -28,6 +28,8 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        @post.image = params[:post][:image]
+        @post.save!
         format.html { redirect_to root_path, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -69,6 +71,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:content, :user_id)
+      params.require(:post).permit(:content, :user_id, :image)
     end
 end

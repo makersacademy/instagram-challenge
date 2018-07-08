@@ -10,6 +10,6 @@ RSpec.feature "User can upload an image with their post", type: :feature do
     click_button "Create Post"
 
     expect(page).to have_content("My cute little kitten!!!")
-    expect(page.find('.profile_pic')['src']).to have_content 'profile_pic_for_test.30.03.png'
+    expect(page.find('.post_image')['src']).to have_content 'pic_for_test.30.03.png'
   end
 end

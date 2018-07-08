@@ -4,7 +4,8 @@ RSpec.feature "Posts show on homepage", type: :feature do
   scenario "After user successfully makes a post" do
     sign_up_successfully
 
-    visit "/posts/new"
+    visit root_path
+    click_link 'New Post'
     fill_in "Content", with: "Test text for message!"
     click_button "Create Post"
 
