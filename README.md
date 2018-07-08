@@ -84,8 +84,8 @@ For uploading image:
 Devise could not find the `Warden::Proxy` instance on your request environment error:
 https://stackoverflow.com/questions/41910712/helper-devise-could-not-find-the-wardenproxy-instance-on-request-environmen
 
-
-
+### bootstrap
+1. rubytutorial adding bootstrap sectionr: https://www.railstutorial.org/book/filling_in_the_layout#sec-custom_css
 ### Travis / CI / CD / heroku
 The page you were looking for does not exist (but does work locally) error:
   * Could be that I need to empty the database https://gist.github.com/zulhfreelancer/ea140d8ef9292fa9165e
