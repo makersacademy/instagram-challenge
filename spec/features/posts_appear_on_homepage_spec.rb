@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Posts", type: :feature do
-  scenario "When user clicks the add post image" do
+RSpec.feature "Posts show on homepage", type: :feature do
+  scenario "After user successfully makes a post" do
     sign_up_successfully
 
     visit "/posts/new"
