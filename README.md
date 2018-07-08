@@ -63,6 +63,24 @@ TODO
 
 [This little bowling score checker.](http://www.bowlinggenius.com/)<br />
 
+
+Resources Used:
+
+For using Devise gem for login & authentication
+1. Documentation for devise: https://github.com/plataformatec/devise#strong-parameters
+2. Adding custom fields to devise registration: http://www.peoplecancode.com/tutorials/adding-custom-fields-to-devise
+3. Followed this guide for getting devise up and running: https://www.youtube.com/watch?v=rrC37eeMNIY
+
+For testing
+1. To stub authentication in controller spec:
+https://github.com/plataformatec/devise/wiki/How-To:-Stub-authentication-in-controller-specs
+
+For uploading image:
+1. CarrierWave gem: https://github.com/carrierwaveuploader/carrierwave
+2. I found this video useful, it does image upload without CarrierWave (to show you what carrierwave
+  automates) and then with it: https://www.youtube.com/watch?v=Q8wF9RrJhrY&t=1171s
+3. I found this guide useful: https://www.learnenough.com/course/ruby_on_rails_tutorial_4th_edition/user_microposts/micropost_images/basic_image_upload
+
 ## Skills I used creating thing project
 
 * TODO
