@@ -84,6 +84,8 @@ For uploading image:
 Devise could not find the `Warden::Proxy` instance on your request environment error:
 https://stackoverflow.com/questions/41910712/helper-devise-could-not-find-the-wardenproxy-instance-on-request-environmen
 
+### Travis / CI / CD
+Travis needs to make heroku needs to run db:migrate after deploying app: https://stackoverflow.com/questions/24566869/rails-app-works-locally-but-not-when-deployed-to-heroku
 
 ## Skills I used creating thing project
 
