@@ -10,8 +10,6 @@ RSpec.feature "User can sign up", type: :feature do
     fill_in "Password", with: "validPassword"
     fill_in "Password confirmation", with: "validPassword"
     click_button 'Sign up'
-    expect(page).to have_content("rgrgr")
-
     expect(page).to have_content("Sign Out")
   end
 end

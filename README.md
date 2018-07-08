@@ -81,6 +81,10 @@ For uploading image:
   automates) and then with it: https://www.youtube.com/watch?v=Q8wF9RrJhrY&t=1171s
 3. I found this guide useful: https://www.learnenough.com/course/ruby_on_rails_tutorial_4th_edition/user_microposts/micropost_images/basic_image_upload
 
+Devise could not find the `Warden::Proxy` instance on your request environment error:
+https://stackoverflow.com/questions/41910712/helper-devise-could-not-find-the-wardenproxy-instance-on-request-environmen
+
+
 ## Skills I used creating thing project
 
 * TODO
