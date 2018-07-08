@@ -1,6 +1,15 @@
 require 'rails_helper.rb'
 
 feature 'Creating posts' do
+  background do
+    visit "/users/sign_up"
+    fill_in "User name", with: "Gulliver"
+    fill_in "Email", with: "gulliver@mail.com"
+    fill_in 'user_password', with: "travels"
+    fill_in 'user_password_confirmation', with: "travels"
+    click_button "Sign up"
+  end
+
   scenario 'can create a post' do
     visit '/'
     click_link 'New Post'
