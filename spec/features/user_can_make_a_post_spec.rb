@@ -6,6 +6,7 @@ RSpec.feature "Posts", type: :feature do
 
     visit root_path
     click_link 'New Post'
+    attach_file('post[image]', 'pic_for_test.30.03.png')
     fill_in "Content", with: "Test text for message!"
     click_button "Create Post"
     expect(page).to have_content("Test text for message!")
@@ -16,6 +17,7 @@ RSpec.feature "Posts", type: :feature do
 
     visit root_path
     click_link 'New Post'
+    attach_file('post[image]', 'pic_for_test.30.03.png')
     fill_in "Content", with: "This message is definitely over 140 characters. This message is
       definitely over 140 characters. This message is definitely over 140 characters.
       This message is definitely over 140 characters. This message is definitely over 140 characters.

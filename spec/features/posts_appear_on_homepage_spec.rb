@@ -6,6 +6,7 @@ RSpec.feature "Posts show on homepage", type: :feature do
 
     visit root_path
     click_link 'New Post'
+    attach_file('post[image]', 'pic_for_test.30.03.png')
     fill_in "Content", with: "Test text for message!"
     click_button "Create Post"
 
