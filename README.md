@@ -137,6 +137,6 @@ The page you were looking for does not exist (but does work locally) error....<b
 3. Travis needs to make heroku needs to run db:migrate after deploying app: https://stackoverflow.com/questions/24566869/rails-app-works-locally-but-not-when-deployed-to-heroku
 
 __Bootstrap__
-1. Rubytutorial adding bootstrap section: https://www.railstutorial.org/book/filling_in_the_layout#sec-custom_css
+1. Adding bootstrap 4 to rails: https://github.com/twbs/bootstrap-rubygem
 2. Cards: https://getbootstrap.com/docs/4.0/components/card/
 3. Navbar: https://www.w3schools.com/Bootstrap/bootstrap_navbar.asp
