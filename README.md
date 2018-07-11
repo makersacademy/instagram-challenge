@@ -76,12 +76,20 @@ I can write comments on posts (medium)
 
 ```
 > bundle install
+> brew install minimagick
 > bin/rails db:create
 > bin/rails db:migrate
 
 > rake # Run the tests to ensure it works
 > bin/rails server # Start the server at localhost:3000
 ```
+## Running tests
+
+Run
+```
+rake
+```
+from the root directory
 
 ## Usage
 
@@ -104,12 +112,6 @@ It is deployed and you can use it at Heroku link: https://faldoinstagram.herokua
 
 * __Trello__ (for kanban style workflow)
 * __Balsamiq__ (for wireframing mockups)
-
-## Running tests
-
-Run
-``` rake ```
-from the root directory
 
 ## Credits
 
