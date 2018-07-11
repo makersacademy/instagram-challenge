@@ -22,7 +22,7 @@ Style it like Instagram's website (or more awesome).
 
 __I came up with the following user stories and mock up for my MVP:__
 
-<img src="/mvp_user_flow_sreenshot.40.30.png" />
+<img src="/app/assets/images/mvp_user_flow_sreenshot.40.30.png" />
 
 __And included the following user stories as part of the MVP:__
 ```

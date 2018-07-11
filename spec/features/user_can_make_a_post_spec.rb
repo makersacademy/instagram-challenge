@@ -3,26 +3,20 @@ require 'rails_helper'
 RSpec.feature "Posts", type: :feature do
   scenario "Can submit posts and view them" do
     sign_up_successfully
+    post_comment_and_picture("Test text for message!", "./app/assets/images/pic_for_test.30.03.png")
 
-    visit root_path
-    click_link 'New Post'
-    attach_file('post[image]', 'pic_for_test.30.03.png')
-    fill_in "Content", with: "Test text for message!"
-    click_button "Create Post"
     expect(page).to have_content("Test text for message!")
   end
 
   scenario "error if text is over 140 characters" do
-    sign_up_successfully
-
-    visit root_path
-    click_link 'New Post'
-    attach_file('post[image]', 'pic_for_test.30.03.png')
-    fill_in "Content", with: "This message is definitely over 140 characters. This message is
+    comment_over_140_chars = "This message is definitely over 140 characters. This message is
       definitely over 140 characters. This message is definitely over 140 characters.
       This message is definitely over 140 characters. This message is definitely over 140 characters.
       This message is definitely over 140 characters."
-    click_button "Create Post"
+
+    sign_up_successfully
+    post_comment_and_picture(comment_over_140_chars, "./app/assets/images/pic_for_test.30.03.png")
+
     expect(page).to have_content("Content is too long")
   end
 end
