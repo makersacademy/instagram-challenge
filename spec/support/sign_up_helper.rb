@@ -8,3 +8,10 @@ def sign_up_successfully
   fill_in "Password confirmation", with: "validPassword"
   click_button 'Sign up'
 end
+
+def post_comment_and_picture(comment, picture)
+  click_link 'New Post'
+  attach_file('post[image]', picture)
+  fill_in "Content", with: comment
+  click_button "Create Post"
+end

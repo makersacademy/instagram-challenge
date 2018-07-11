@@ -22,7 +22,7 @@ Style it like Instagram's website (or more awesome).
 
 __I came up with the following user stories and mock up for my MVP:__
 
-<img src="/mvp_user_flow_sreenshot.40.30.png" />
+<img src="/app/assets/images/mvp_user_flow_sreenshot.40.30.png" />
 
 __And included the following user stories as part of the MVP:__
 ```
@@ -76,12 +76,20 @@ I can write comments on posts (medium)
 
 ```
 > bundle install
+> brew install minimagick
 > bin/rails db:create
 > bin/rails db:migrate
 
 > rake # Run the tests to ensure it works
 > bin/rails server # Start the server at localhost:3000
 ```
+## Running tests
+
+Run
+```
+rake
+```
+from the root directory
 
 ## Usage
 
@@ -104,12 +112,6 @@ It is deployed and you can use it at Heroku link: https://faldoinstagram.herokua
 
 * __Trello__ (for kanban style workflow)
 * __Balsamiq__ (for wireframing mockups)
-
-## Running tests
-
-Run
-``` rake ```
-from the root directory
 
 ## Credits
 
