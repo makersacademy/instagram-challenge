@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instablam</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <ul class="topnav">
+      <li><%= link_to 'Instablam!', pictures_path %></li>
+      <% if current_user == nil %>
+        <li class="right"><%= link_to 'Log In', new_user_session_path %></li>
+        <li class="right"><%= link_to 'Register', new_user_registration_path %></li>
+      <% end %>
+
+      <% if current_user %>
+      <li><%= link_to 'Add Picture', new_picture_path, class: 'add' %></li>
+        <li class="right"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+      <% end %>
+    </ul>
+
+    <%= yield %>
+  </body>
+</html>
