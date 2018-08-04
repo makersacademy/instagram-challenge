@@ -1,40 +1,42 @@
-Instagram Challenge
-===================
+# Snappergram
 
-## Instructions
+Snappergram is a rebuild of Instagram using Ruby on Rails (5.1.6). User sign-up and validation is handled by the Devise gem. Image upload is handled by Paperclip. The app uses an Sqlite database.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Getting Started
 
-## Task
+To run the app on your machine, clone this repository, run `bundle install` to install the gems, run `rails db:create`, `rails db:migrate`, fire up the `rails server` and navigate to localhost:3000 in your browser.
 
-Build Instagram: Simple huh!
+To run the tests, first ```bundle install``` then run ```rspec``` from the command line to run the tests.
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## User Stories
 
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
 ```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+As a lover of images
+So I can share my pics with my pals online
+I want to be able to upload and view an image on Snappergram
+```
+```
+As a lover of images
+So I can save face when I make a cringey post while drunk
+I want to be able to edit my posts
+```
+```
+As a lover of images
+So I can share my images with the world
+I want to sign up for a Snappergram account
+```
+```
+As a lover of images
+So that others can't post images using my account
+I want to be able to log out
+```
+```
+As a lover of images
+So that I can access my Snappergram account
+I want to log in
+```
+```
+As a lover of images
+So that I can share my wisdom with other image lovers
+I can comment on posts
+```
