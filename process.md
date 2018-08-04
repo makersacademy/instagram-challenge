@@ -29,10 +29,12 @@ My photos are attributed to me.
 * Photos can be clicked on to view them larger.
 
 ## Tasks
+**Key:**  ❌ Blocked,  ➡️ In Progress,  ✅ Complete
+
 |Task|Acceptance Criteria|Time Allocated|Progress|Time Taken|
 |---|---|---|:-:|---|
 |Create process document|A markdown document is in the repo with user stories, MVP and task breakdown|30 mins|✅|30 mins   |
-|Generate new Rails project and set up.|Can view 'hello world' page. Rubocop is running. .gitignore file is setup.|30 mins|
-|Set up photo resource including routes and database|Database exists and photos can be added to the database via the terminal. Routes are set up and can be viewed via `rails routes`|1 hour|
-|Photos can be viewed via the browser.|The `/photos` route displays thumbnails of all currently uploaded photos.|30 mins
-|Photos can be uploaded via the browser.|A form is viewable at the `/photos/new` route, where you can upload a photo. This photo is stored in the database, and can be viewed at the `/photos` route.|1 hour|
+|Generate new Rails project and set up.|Can view 'hello world' page. Rubocop is running. .gitignore file is setup.|30 mins|➡️|
+|Set up photo resource including routes and database|Database exists and photos can be added to the database via the terminal. Routes are set up and can be viewed via `rails routes`|1 hour|❌|
+|Photos can be viewed via the browser.|The `/photos` route displays thumbnails of all currently uploaded photos.|30 mins|❌
+|Photos can be uploaded via the browser.|A form is viewable at the `/photos/new` route, where you can upload a photo. This photo is stored in the database, and can be viewed at the `/photos` route.|1 hour|❌
