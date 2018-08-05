@@ -1,40 +1,42 @@
-Instagram Challenge
-===================
+## instagram challenge
 
-## Instructions
+# PANORAMIX
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+*Love sharing images but hate squares? Panoramix is the place for you. Browse the finest wide format images and post your own for fellow enthousiast to enjoy.*
 
-## Task
+This app will let you upload images, like other people's images and receive likes on yours. It was built using Ruby on Rails over a weekend as part of the curriculum at the Makers Academy coding bootcamp.
 
-Build Instagram: Simple huh!
+## Setup
+Enter the following commands in your terminal:
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Clone the repository:
+`https://github.com/heuperman/instagram-challenge.git`
 
-Bonus if you can add filters!
+Install the required gems:
+`bundle install`
 
-## How to start
+## Usage
+Enter the following commands in your terminal:
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+Change into the main directory:
+`cd instagram-challenge`
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+Run the app:
+`rails server`
 
-## Code Quality
+*screenshot will go here*
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+Then open your browser, head to http://localhost:3000/ where you should find the page shown above. Then simply follow the instructions on the page.
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
+## Running tests
+This app comes with a full feature test and unit tests with 100% coverage (determined using the simplecov gem).
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+To run all available tests enter `rspec` in your terminal.
+
+## Built with
+Rails - as the web application development framework  
+Rspec, Capybara and Simplecov - as the testing frameworks
+
+## Authors
+The good people at [Makers Academy](https://makers.tech/) -- instructions  
+[Cornelis Heuperman](https://github.com/heuperman) -- tests, code and flavour text
