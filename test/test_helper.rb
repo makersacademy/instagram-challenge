@@ -1,4 +1,9 @@
 ENV['RAILS_ENV'] ||= 'test'
+require 'simplecov'
+require 'simplecov-console'
+SimpleCov.start
+SimpleCov.formatter = SimpleCov::Formatter::Console
+
 require_relative '../config/environment'
 require 'rails/test_help'
 
