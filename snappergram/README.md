@@ -2,8 +2,6 @@
 
 Snappergram is a rebuild of Instagram using Ruby on Rails (5.1.6). User sign-up and validation is handled by the Devise gem. Image upload is handled by Paperclip. The app uses an Sqlite database.
 
-![screenshot](https://github.com/n-ckr-ch-rds-n/snappergram/blob/master/snappergram/app/assets/images/Screen%20Shot.png)
-
 ## Getting Started
 
 To run the app on your machine, clone this repository, run `bundle install` to install the gems, run `rails db:create`, `rails db:migrate`, fire up the `rails server` and navigate to localhost:3000 in your browser.
