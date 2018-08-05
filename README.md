@@ -12,6 +12,9 @@ Enter the following commands in your terminal:
 Clone the repository:
 `https://github.com/heuperman/instagram-challenge.git`
 
+Install Imagemagick for image resizing:
+`brew install imagemagick`
+
 Install the required gems:
 `bundle install`
 
