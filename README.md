@@ -1,6 +1,6 @@
 Instagram Challenge
 ===================
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/3f397b67b5173e25e9a7/maintainability)](https://codeclimate.com/github/JohnForster/instagram-challenge/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/3f397b67b5173e25e9a7/test_coverage)](https://codeclimate.com/github/JohnForster/instagram-challenge/test_coverage)
 ## Instructions
 
 * Challenge time: one weekend
