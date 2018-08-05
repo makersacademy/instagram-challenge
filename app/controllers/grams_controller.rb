@@ -1,0 +1,2 @@
+class GramsController < ApplicationController
+end
