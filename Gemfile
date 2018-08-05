@@ -6,11 +6,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem "aws-sdk-s3", require: false
+gem "factory_bot_rails"
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'rails', '~> 5.2.0'
 gem 'rspec-core'
+gem 'rspec-rails'
 gem 'rubocop'
 gem 'rubocop-rails'
 gem 'rubocop-rails_config'
+gem 'simple_form'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
