@@ -1,40 +1,78 @@
-Instagram Challenge
-===================
+# Instasham
 
-## Instructions
+_Fed up with filters? Infuriated by influencers? Beaten by the bots?_ <b>
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+_Join **Instasham**, the photo-sharing site which will take you back to a simpler time._
 
-## Task
+___
 
-Build Instagram: Simple huh!
+## Summary
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Week 8 Makers Academy weekend project to develop an Instagram clone, which I'm calling Instasham.</br>
 
-Bonus if you can add filters!
+___
 
-## How to start
+## Credits
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+Developed solo by Elishka Flint.
+___
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+## Learning Outcomes
 
-## Code Quality
+### Topics Covered
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+* Ruby on Rails - routes, database migrations, using the Rails generator
+* Incorporating gems for functionality (Devise for users, CarrierWave and MiniMagick for image uploads)
+___
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+## Implement User Stories
+
 ```
+As a user,
+So that I post on Instasham,
+I would like to sign up for an account.
+```
+```
+As a user,
+So that I access my account on Instasham,
+I would like to be able to log in and out.
+```
+```
+As a user,
+So that I can share my pictures,
+I would like to be able to post a photo and comment to Instsham.
+```
+```
+As a user,
+So that I can curate my content,
+I would like to be able to update and delete my posts.
+```
+___
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## What I would do next
+
+* Fix routing - log in, sign up and post all redirect back to a basic landing page and posts are a further click away
+* Implement full test suite - my goal for this project was to explore in-built Rails features and gems in a finite amount of time (5 hours), therefore I took a decision not to TDD as I would with any other project
+* Create profiles and bios for each user
+* Add like and comment functionality
+* Create relationships between users so that users can have followers
+
+___
+
+## Technical
+
+### Tech/Frameworks Used
+
+Ruby on Rails
+
+### Launching the Application
+
+```
+$ git clone https://github.com/elishkaflint/instasham.git
+$ cd instasham
+$ bundle
+$ rake db:migrate
+$ rails s
+> Visit localhost
+```
+____
