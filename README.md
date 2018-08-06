@@ -7,6 +7,7 @@ Instagram Challenge
 * `bundle install`
 * `rails db:migrate`
 * `rails server`
+* Navigate to `localhost:3000/grams`
 
 ## Features (so far)
 * User sign up and log in.
