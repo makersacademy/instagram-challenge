@@ -1,0 +1,28 @@
+<div class="navigation">
+  <p><%= link_to "Instasham", posts_path %></p>
+  <% if @current_user %>
+    <p>Logged in as <%= @current_user.email %></p>
+    <p><%= link_to "Log Out", destroy_user_session_path, method: :delete %></p>
+  <% else %>
+    <p><%= link_to "Sign Up", new_user_registration_path %></p>
+    <p><%= link_to "Log In", new_user_session_path %></p>
+  <% end %>
+</div>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<% if @current_user %>
+  <%= link_to 'New Post', new_post_path %>
+<% end %>
+
+<ul><% @posts.each do |post| %>
+  <div class="post">
+    <div id="email"<li><%= post.user.email %></li></div>
+    <div id="content"><li><%= post.content %></li></div>
+    <li><%= image_tag post.image.url(:normal) unless post.image.blank? %></li>
+    <div id="timestamp"><li>Posted <%= time_ago_in_words(post.created_at) %> ago</li></div>
+    <li><%= link_to 'Show', post %> | <%= link_to 'Edit', edit_post_path(post) %> | <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  </div>
+<% end %></ul>
