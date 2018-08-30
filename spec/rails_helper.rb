@@ -2,9 +2,9 @@
 require 'simplecov'
 require 'simplecov-console'
 require 'spec_helper'
-require 'rspec/rails'
+
 require 'capybara/rspec'
-require 'capybara/rails'
+# require 'capybara/rails'
 
 
 ENV['RAILS_ENV'] ||= 'test'
