@@ -8,6 +8,8 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rubocop-rspec'
 gem 'rubocop-rails'
+gem 'carrierwave', '~> 1.0'
+gem "mini_magick"
 
 ruby '2.5.0'
 
