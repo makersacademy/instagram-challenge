@@ -5,5 +5,6 @@ class PostsController < ApplicationController
   end
 
   def new
+    @posts = Post.new
   end
 end
