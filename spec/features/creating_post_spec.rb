@@ -7,7 +7,7 @@ feature 'Creating Posts' do
     visit '/'
     click_link 'New post'
     attach_file('post_image', "./files/images/caffeine-coffee-cup-6347.jpg")
-    fill_in 'Caption', with: 'Java time #brew'
+    fill_in 'post_caption', with: 'Java time #brew'
     click_button 'Create Post'
     expect(page).to have_content('#brew')
     expect(page).to have_css("img[src*='caffeine-coffee-cup-6347.jpg']")

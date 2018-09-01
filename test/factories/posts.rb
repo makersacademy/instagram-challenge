@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :post do
-    caption "MyString"
+    caption { "MyString" }
   end
 end

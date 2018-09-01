@@ -1,6 +1,14 @@
 Instagram Challenge
 ===================
 
+
+Shout Outs:
+------
+I ran rails out of the box and didn't realise that the default was a SQLite setup. I really wanted Postgres so I could host on Heroku and for genral familiarity. This guide showed me [how to migrate from SQLite to Postgres](https://www.daveferrara1.com/ruby-in-rails-switch-from-sqlite3-to-postgres/) after I had actually started the project. Doh!
+
+Official Instructions
+------
+
 ## Instructions
 
 * Challenge time: one weekend
