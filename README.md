@@ -1,12 +1,19 @@
 Instagram Challenge
 ===================
+This is the solo weekend challenge at the end of week 8 of the Makers coding bootcamp. 
+Build Instagram on Rails!
 
+By the weekend of week 8, I had precisely 4 days experience of using Ruby on Rails.
+
+By the end of week 8 all Makers developers can:
+- use high-quality processes to build a project in a team
 
 Shout Outs:
 ------
-I ran rails out of the box and didn't realise that the default was a SQLite setup. I really wanted Postgres so I could host on Heroku and for genral familiarity. This guide showed me [how to migrate from SQLite to Postgres](https://www.daveferrara1.com/ruby-in-rails-switch-from-sqlite3-to-postgres/) after I had actually started the project. Doh!
+### For correcting post set-up mishaps
+1. I ran rails out of the box and didn't realise that the default was a SQLite setup. I really wanted Postgres so I could host on Heroku and for genral familiarity. This guide showed me [how to migrate from SQLite to Postgres](https://www.daveferrara1.com/ruby-in-rails-switch-from-sqlite3-to-postgres/) after I had actually started the project. Doh!
 
-Official Instructions
+Official Cahallenge Instructions
 ------
 
 ## Instructions
