@@ -10,6 +10,8 @@ class InstapostsController < ApplicationController
   # GET /instaposts/1
   # GET /instaposts/1.json
   def show
+    @comments = @instapost.comments.all
+    @comment = @instapost.comments.build
   end
 
   # GET /instaposts/new
