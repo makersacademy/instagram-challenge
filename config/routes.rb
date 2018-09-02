@@ -10,5 +10,12 @@ Rails.application.routes.draw do
       put "dislike", to: "instaposts#downvote"
     end
   end
+
+  resources :comments do 
+    member do
+      put "like", to: "comments#upvote"
+      put "dislike", to: "comments#downvote"
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
