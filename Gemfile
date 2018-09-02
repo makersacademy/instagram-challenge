@@ -82,3 +82,5 @@ gem "simple_form", "~> 4.0"
 gem "bootstrap-sass", "~> 3.3"
 
 gem "devise", "~> 4.5"
+
+gem "paperclip", "~> 6.1"
