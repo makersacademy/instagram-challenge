@@ -5,14 +5,16 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @users = User.all
   end
 
   def new
     @post = Post.new
+
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.merge(user_id: current_user.id))
     respond_to do |format|
       if @post.save
         @post.image = params[:post][:image]
