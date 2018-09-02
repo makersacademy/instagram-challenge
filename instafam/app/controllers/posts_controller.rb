@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc).all
   end
 
   def new
@@ -14,11 +14,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     if @post.save
       flash[:success] = "Successfully created post!"
       redirect_to post_path(@post)
     else
-      flash[:error] = @post.error.messages.full
+      flash[:error] = @post.errors.messages
       redirect_to new_post_path
     end
   end
@@ -33,7 +34,7 @@ class PostsController < ApplicationController
       flash[:success] = 'Post was successfully updated'
       redirect_to post_path(@post)
     else
-      flash[:error] = @post.error.messages.full
+      flash[:error] = @post.errors.messages
       redirect_to edit_post_path
     end
   end
@@ -44,9 +45,13 @@ class PostsController < ApplicationController
        flash[:success] = 'Post was successfully deleted'
        redirect_to root_path
      else
-       flash[:error] = @post.error.messages.full
+       flash[:error] = @post.errors.messages
        redirect_to post_path(@post)
      end
+  end
+
+  def mine
+    @posts = current_user.posts.order(created_at: :desc)
   end
 
   private

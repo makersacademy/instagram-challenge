@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
+  get '/my_posts' => 'posts#mine'
+
   resources :posts do
     resources :comments
   end
