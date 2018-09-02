@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Instaposts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Picture</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @instaposts.each do |instapost| %>
+      <tr>
+        <td><%= instapost.name %></td>
+        <td><%= instapost.description %></td>
+        <td><%= instapost.picture %></td>
+        <td><%= link_to 'Show', instapost %></td>
+        <td><%= link_to 'Edit', edit_instapost_path(instapost) %></td>
+        <td><%= link_to 'Destroy', instapost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Instapost', new_instapost_path %>
