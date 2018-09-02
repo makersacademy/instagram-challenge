@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show]
 
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc).all
     @users = User.all
   end
 
