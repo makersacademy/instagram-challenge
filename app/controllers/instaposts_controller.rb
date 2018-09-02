@@ -63,6 +63,20 @@ class InstapostsController < ApplicationController
     end
   end
 
+  def upvote 
+    :verify_authenticity_token
+    @instapost = Instapost.find(params[:id])
+    @instapost.upvote_by current_user
+    redirect_back(fallback_location: root_path)
+  end  
+  
+  def downvote
+    :verify_authenticity_token
+    @instapost = Instapost.find(params[:id])
+    @instapost.downvote_by current_user
+    redirect_back(fallback_location: root_path)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_instapost

@@ -9,6 +9,8 @@ gem 'rails', '~> 5.2.1'
 gem 'devise'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+# Like and unlike
+gem 'acts_as_votable', '~> 0.11.1'
 # Pic uploader
 gem 'carrierwave'
 # Use Puma as the app server

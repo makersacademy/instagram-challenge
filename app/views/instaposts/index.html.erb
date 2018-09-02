@@ -9,5 +9,14 @@
       <%= i.description %>
       <p><%= time_ago_in_words(i.created_at) %> ago</p>
     </div>
+    <%= link_to like_instapost_path(i), method: :put do %>
+      Upvote
+      <%= i.get_upvotes.size %>
+    <% end %>
+    
+    <%= link_to dislike_instapost_path(i), method: :put do %>
+      Downvote
+      <%= i.get_downvotes.size %>
+    <% end %>
   <% end %>
 </div>
