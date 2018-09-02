@@ -1,2 +1,13 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class='showPost centered'>
+  <strong><%= @post.username %></strong>
+  <br>
+  <div class='showImage'>
+    <%= image_tag(@post.image, style: 'width: 100%') %>
+  </div>
+  <br>
+  <%= @post.description %>
+  <br>
+  <% if current_user.username === @post.username %>
+  <%= link_to 'Edit', edit_post_path(@post) %> | <%= link_to 'Delete', @post, method: :delete, data: {confirm: "Are you sure you want to delete your post?"} %>
+  <% end %>
+</div>
