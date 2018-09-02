@@ -1,12 +1,13 @@
-<h1>Listing ideas</h1>
+<h1>InstaSpamPosts</h1>
 
 
 <div class="row">
-  <% @instaposts.each do |idea| %>
+  <% @instaposts.each do |i| %>
     <div class="col-lg-6">
-      <%= image_tag idea.picture_url, width: '100%' if idea.picture.present? %>
-      <h4><%= link_to idea.name, idea %></h4>
-      <%= idea.description %>
+      <%= image_tag i.picture_url, width: '100%' if i.picture.present? %>
+      <h4><%= link_to i.name, i %></h4>
+      <%= i.description %>
+      <p><%= time_ago_in_words(i.created_at) %> ago</p>
     </div>
   <% end %>
 </div>
