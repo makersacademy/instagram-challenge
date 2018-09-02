@@ -10,7 +10,8 @@ By the end of week 8 all Makers developers can:
 
 Screenshots
 -----
-Here's the log-in page due to the brilliance of Devise:
+Here's the log-in page due to the brilliance of Devise:  
+
 ![Log In](./files/images/log_in.png)
 
 ![Newsfeed](./files/images/index.png)
