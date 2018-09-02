@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-
   before_action :set_post, only: [:show]
 
   def index
@@ -13,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)  
+    @post = Post.new(post_params)
     respond_to do |format|
       if @post.save
         @post.image = params[:post][:image]
@@ -37,8 +36,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:image, :caption )
+    params.require(:post).permit(:image, :caption)
   end
-
-
 end
