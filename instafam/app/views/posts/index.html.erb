@@ -5,6 +5,8 @@
   <% @posts.each do |post| %>
     <div class='post'>
       <strong><%= post.username %></strong>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <small>posted <%= distance_of_time_in_words(post.created_at, Time.now) %> ago</small>
       <br>
       <div class='indexImage'>
         <%= link_to post_path(post) do %>
@@ -13,6 +15,10 @@
       </div>
       <br>
       <%= post.description %>
+      <br>
+      <%= link_to post_path(post) do %>
+        <%= post.comments.length %> comments
+      <% end %>
     </div>
   <% end %>
 </div>
