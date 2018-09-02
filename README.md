@@ -8,6 +8,15 @@ By the weekend of week 8, I had precisely 4 days experience of using Ruby on Rai
 By the end of week 8 all Makers developers can:
 - use high-quality processes to build a project in a team
 
+Screenshots
+-----
+Here's the log-in page due to the brilliance of Devise:
+![Log In](./files/images/log_in.png)
+
+![Newsfeed](./files/images/index.png)
+
+![Edit Post](./files/images/edit_post.png)
+
 Testing
 ----
 Rspec-Rails, Capybara, SimpleCov with FactoryBot to handle testing with Devise

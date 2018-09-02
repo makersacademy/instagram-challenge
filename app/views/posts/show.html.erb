@@ -1,17 +1,19 @@
-<section class="section">
-  <div class="container">
-    <div class="card-header">
-      <%= @post.user_username %>
-      <p> posted <%= time_ago_in_words(post.created_at) %> ago </p>
-    </div>
-    <span class="card-img-top">
-      <%= image_tag @post.image.square.url, :class => "post_image", :style => "width: 100%" %>
-    </span>
-    <div class="card-body">
-      <p class="card-text"><%= @post.caption %></p>
-    </div>
+<div class="card-header">
+  <%= @post.user_username %>
+  <p> posted <%= time_ago_in_words(@post.created_at) %> ago </p>
+</div>
+<span class="card-img-top">
+  <%= image_tag @post.image.square.url, :class => "post_image", :style => "width: 100%" %>
+</span>
+<div class="card-body">
+  <p class="card-text"><%= @post.caption %></p>
+</div>
 
-    <%= link_to 'Edit', edit_post_path(@post) %> |
-    <%= link_to 'Back', posts_path %>
-  </div>
-</section>
+<div>
+  <%= link_to edit_post_path(@post), class: 'btn btn-success' do %>
+    <span class="glyphicon glyphicon-plus"></span> Edit Post
+  <% end %>
+  <%= link_to posts_path, class: 'btn btn-success' do %>
+    <span class="glyphicon glyphicon-backward"></span> Back
+  <% end %>
+</div>
