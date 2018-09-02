@@ -1,29 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @instapost.name %>
-</p>
+<div class="row">
+  <div class="col-md-9">
+    <%= image_tag(@instapost.picture_url, width: '100%') if @instapost.picture.present? %>
+  </div>
 
-<p>
-  <strong>Tags:</strong>
-  <%= @instapost.description %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= image_tag(@instapost.picture_url, width: 600) if @instapost.picture.present? %>
-  <h3>Comments</h3>
-  <% @comments.each do |comment| %>
-    <div>
-      <strong><%= comment.user_name %></strong>
-      <br>
-      <p><%= comment.body %></p>
-      <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'No comment?' } %></p>
-    </div>
-  <% end %>
-<%= render partial: 'comments/form', locals: { comment: @comment } %>
-</p>
-
-<%= link_to 'Edit', edit_instapost_path(@instapost) %> |
-<%= link_to 'Back', instaposts_path %>
+  <div class="col-md-3">
+    <p><b>Title: </b><%= @instapost.name %></p>
+    <p><b>Tags: </b><%= @instapost.description %></p>
+    <p>
+      <%= link_to 'Edit', edit_instapost_path(@instapost) %> |
+      <%= link_to 'Destroy', @instapost, data: { confirm: 'Trash this spammy pic?' }, method: :delete %> |
+      <%= link_to 'Back', instaposts_path %>
+    </p>
+  </div>
+</div>
