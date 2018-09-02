@@ -1,32 +1,12 @@
-<p id="notice"><%= notice %></p>
+<h1>Listing ideas</h1>
 
-<h1>Instaposts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Tags</th>
-      <th>Picture</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @instaposts.each do |instapost| %>
-      <tr>
-        <td><%= instapost.name %></td>
-        <td><%= instapost.description %></td>
-        <%= image_tag instapost.picture_url, width: '100%' if instapost.picture.present? %>
-        <td><%= instapost.picture %></td>
-        <td><%= link_to 'Show', instapost %></td>
-        <td><%= link_to 'Edit', edit_instapost_path(instapost) %></td>
-        <td><%= link_to 'Destroy', instapost, method: :delete, data: { confirm: 'Trash this pic?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Instapost', new_instapost_path %>
+<div class="row">
+  <% @instaposts.each do |idea| %>
+    <div class="col-lg-6">
+      <%= image_tag idea.picture_url, width: '100%' if idea.picture.present? %>
+      <h4><%= link_to idea.name, idea %></h4>
+      <%= idea.description %>
+    </div>
+  <% end %>
+</div>
