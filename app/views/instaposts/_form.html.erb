@@ -1,7 +1,7 @@
 <%= form_with(model: instapost, local: true) do |form| %>
   <% if instapost.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(instapost.errors.count, "error") %> prohibited this instapost from being saved:</h2>
+      <p><%= pluralize(instapost.errors.count, "error") %> prohibited this instapost from being saved:</p>
 
       <ul>
       <% instapost.errors.full_messages.each do |message| %>
@@ -12,19 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label :title %><br/>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
+    <%= form.label :tags %><br/>
     <%= form.text_area :description %>
   </div>
 
   <div class="field">
-    <%= form.label :picture %>
+    <%= form.label :picture %><br/>
     <%= form.file_field :picture, id: :picture %>
   </div>
+  <br/>
 
   <div class="actions">
     <%= form.submit %>
