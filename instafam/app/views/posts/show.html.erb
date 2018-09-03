@@ -1,5 +1,5 @@
 <div class='showPost centered'>
-  <strong><%= @post.username %></strong>
+  <strong><%= User.find(@post.user_id).username %></strong>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <small>posted <%= distance_of_time_in_words(@post.created_at, Time.now) %> ago</small>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -16,7 +16,7 @@
   <div class='commentsConainer'>
     <% @post.comments.each do |comment| %>
       <div class='comment'>
-        <strong><%= comment.username %></strong>
+        <strong><%= User.find(comment.user_id).username %></strong>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <small>posted <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago</small><br>
         <%= comment.body %><br>
