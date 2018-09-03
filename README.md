@@ -1,31 +1,28 @@
-<<<<<<< HEAD
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-=======
-Instagram Challenge
+instaspam the 3rd
 ===================
+
+## User Stories:
+
+**1) People can sign up** 
+**2) Users can log in** 
+**3) Users can log out** 
+**4) Users can post pics**
+**5) Users can see pics** 
+**6) Users can like pics** 
+**7) Users can comments on pics** 
+**8) App looks nice** 
+**9) Filters!** 
+
+## Setup:
+
+- databases 
+- authentication gems 
+- picture uploaders 
+- AWS for file storage 
+- Travis CI 
+- Heroku deployment 
+
+
 
 ## Instructions
 
@@ -64,4 +61,3 @@ gem "rubocop-rails"
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
->>>>>>> bbefc529941e370f72b708e0e1135bf1740b40ca
