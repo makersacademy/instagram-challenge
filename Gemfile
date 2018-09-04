@@ -11,6 +11,7 @@ gem 'rubocop-rails'
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 gem 'devise'
+gem 'fog-aws'
 
 ruby '2.5.0'
 
