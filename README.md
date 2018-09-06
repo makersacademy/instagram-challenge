@@ -1,3 +1,5 @@
+Final solution hosted on Heroku - [whatapalavergram](https://whatapalavergram.herokuapp.com/)
+
 Instagram Challenge
 ===================
 This is the solo weekend challenge at the end of week 8 of the Makers coding bootcamp. 
@@ -23,6 +25,10 @@ Testing
 Rspec-Rails, Capybara, SimpleCov with FactoryBot to handle testing with Devise
 run `guard` for live (on-save) testing
 To view the coverage details `open ./coverage/index.html`
+
+Hosting
+----
+I hosted the incomplete but moderately functional instagram app on Heroku, mostly so I could challenge myslef with AWS S3 storage that I had struggled with previously. I was trying to recreate a debugging process that I had used to solve my problems in the Facebook clone challenge. Here the blog I finally wrote on [AWS debugging](https://medium.com/team-rof/setting-up-a-rails-app-to-run-production-in-heroku-saving-images-uploaded-via-carrierwave-into-aws-c1cc28b0d6a6).
 
 Shout Outs and other tips:
 ------
