@@ -1,5 +1,51 @@
+Final solution hosted on Heroku - [whatapalavergram](https://whatapalavergram.herokuapp.com/)
+
 Instagram Challenge
 ===================
+This is the solo weekend challenge at the end of week 8 of the Makers coding bootcamp. 
+Build Instagram on Rails!
+
+By the weekend of week 8, I had precisely 4 days experience of using Ruby on Rails.
+
+By the end of week 8 all Makers developers can:
+- use high-quality processes to build a project in a team
+
+Screenshots
+-----
+Here's the log-in page due to the brilliance of Devise:  
+
+![Log In](./files/images/log_in.png)
+
+![Newsfeed](./files/images/index.png)
+
+![Edit Post](./files/images/edit_post.png)
+
+Testing
+----
+Rspec-Rails, Capybara, SimpleCov with FactoryBot to handle testing with Devise
+run `guard` for live (on-save) testing
+To view the coverage details `open ./coverage/index.html`
+
+Hosting
+----
+I hosted the incomplete but moderately functional instagram app on Heroku, mostly so I could challenge myslef with AWS S3 storage that I had struggled with previously. I was trying to recreate a debugging process that I had used to solve my problems in the Facebook clone challenge. Here the blog I finally wrote on [AWS debugging](https://medium.com/team-rof/setting-up-a-rails-app-to-run-production-in-heroku-saving-images-uploaded-via-carrierwave-into-aws-c1cc28b0d6a6).
+
+Shout Outs and other tips:
+------
+### For correcting post set-up mishaps
+1. I ran rails out of the box and didn't realise that the default was a SQLite setup. I really wanted Postgres so I could host on Heroku and for genral familiarity. This guide showed me [how to migrate from SQLite to Postgres](https://www.daveferrara1.com/ruby-in-rails-switch-from-sqlite3-to-postgres/) after I had actually started the project. Doh!
+
+In future, set up your Rails projects with: `rails new my_app_name --database=postgresql`
+
+### Posthumous gitignore
+2. When you forget to add those irritating coverage files to your .gitignore file. This is what you want to run before your next commit: `git rm -r --cached ./coverge`
+
+### Testing with Devise
+3. Now this is where things get tricky. The moment Devise is installed all my feature tests start failing as you can't navigate anywhere without being a fully verified bona-vide user. This article walked me very gently through the maze of gems and terms like factory and warden and middleware and prevented me from saying "Who needs tests anyway?!"
+[Testing Rails with Devise](http://willschenk.com/setting-up-testing/)
+
+Official Challenge Instructions
+------
 
 ## Instructions
 
