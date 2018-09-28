@@ -1,0 +1,35 @@
+<div class='showPost centered'>
+  <strong><%= User.find(@post.user_id).username %></strong>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <small>posted <%= distance_of_time_in_words(@post.created_at, Time.now) %> ago</small>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <% if current_user.username === @post.username %>
+    <%= link_to 'Edit', edit_post_path(@post) %> | <%= link_to 'Delete', @post, method: :delete, data: {confirm: "Are you sure you want to delete your post?"} %>
+  <% end %>
+  <br>
+  <div class='showImage'>
+    <%= image_tag(@post.image, style: 'width: 100%') %>
+  </div>
+  <br>
+  <%= @post.description %>
+  <br>
+  <div class='commentsConainer'>
+    <% @post.comments.each do |comment| %>
+      <div class='comment'>
+        <strong><%= User.find(comment.user_id).username %></strong>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <small>posted <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago</small><br>
+        <%= comment.body %><br>
+        <!-- <% if current_user.username === comment.username %>
+          <%= link_to 'Edit', edit_post_comment_path(comment) %> | <%= link_to 'Delete', @comment, method: :delete, data: {confirm: "Are you sure you want to delete your comment?"} %>
+        <% end %> -->
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+    <%= form.text_area :body, placeholder: "Leave a comment" %>
+    <br>
+    <%= form.submit "Post Comment" %>
+  <% end %>
+</div>
