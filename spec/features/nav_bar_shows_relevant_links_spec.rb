@@ -35,5 +35,10 @@ RSpec.feature "NavBar", type: :feature do
     scenario "doesn't show the log in button" do
       expect(page).not_to have_content("SignUp")
     end
+
+    scenario "shows user's email" do
+      expect(page).to have_content("test@email.com")
+    end
   end
+
 end

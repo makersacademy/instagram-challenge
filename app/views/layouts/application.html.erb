@@ -19,8 +19,9 @@
       </a>
       <div id="nav-right">
         <% if user_signed_in? %>
-          <a><%= link_to "Log out", destroy_user_session_path, :method => :delete %></a>
+          <%= link_to current_user.email, user_posts_path(current_user)  %>
           <a href="posts/new">New Post</a>
+          <a><%= link_to "Log out", destroy_user_session_path, :method => :delete %></a>
         <% else %>
           <a href="users/sign_up">SignUp</a>
           <a href="users/sign_in">Login</a>
