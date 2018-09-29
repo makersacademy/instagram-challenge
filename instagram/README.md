@@ -1,24 +1,40 @@
-# README
+# Instagram Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## The Mission
+Build Instagram using Rails. 
 
-Things you may want to cover:
+## User Stories
 
-* Ruby version
+```
+As a user
+So that I can use the service
+I want to be able to sign up
+```
+```
+As a user
+So that I can share my images
+I want to be able to post a picture
+```
+```
+As a user
+So that I can interact with other users
+I want to be able to comment on other users' pictures
+```
+```
+As a user
+So that I can quickly give kudos for a picture
+I want to be able to like a picture
+```
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Domain Model
+```
+╔════════╗         ╔═════════════╗        ╔═══════╗
+║ Routes ║ ------> ║ Controllers ║ ---->  ║ Views ║
+╚════════╝         ╚═════════════╝        ╚═══════╝
+                          |
+                          |
+                      ╔════════╗
+                      ║ Models ║
+                      ╚════════╝
+```
