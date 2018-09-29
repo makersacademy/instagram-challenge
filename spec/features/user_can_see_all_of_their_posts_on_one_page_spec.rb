@@ -27,5 +27,12 @@ RSpec.feature "Profile Page", type: :feature do
     end
   end
   
+  describe "when a user clicks on the author of a post's handle" do
+    scenario "it take them to the author's profile page" do
+      click_link "fakeuser123"
+
+      expect(page).to have_content("fakeuser123")
+    end
+  end
   
 end
