@@ -57,6 +57,8 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 8080 } 
+
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "instagram_#{Rails.env}"
