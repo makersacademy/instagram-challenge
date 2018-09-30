@@ -5,4 +5,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get new_user_url
     assert_response :success
   end
+
+  test "POST /users/create" do
+    user = User.new
+    assert_not user.save
+  end
 end
