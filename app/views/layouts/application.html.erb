@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instagram</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link href="https://fonts.googleapis.com/css?family=Cookie|Roboto" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  </head>
+
+  <body>
+
+    <nav>
+      <a id="logo" href="/">
+        <i class="fab fa-instagram"></i>
+        <div id="title">Instagram</div>
+      </a>
+      <div id="nav-right">
+        <% if user_signed_in? %>
+          <%= link_to current_user.email, user_posts_path(current_user)  %>
+          <a href="posts/new">New Post</a>
+          <a><%= link_to "Log out", destroy_user_session_path, :method => :delete %></a>
+        <% else %>
+          <a href="users/sign_up">SignUp</a>
+          <a href="users/sign_in">Login</a>
+        <% end %>
+        
+        
+      </div>
+    </nav>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>

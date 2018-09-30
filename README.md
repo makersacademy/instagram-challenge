@@ -1,40 +1,76 @@
-Instagram Challenge
-===================
+# Instagram Challenge
 
-## Instructions
+## The Mission
+Build Instagram using Rails. 
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## How to Set-up
 
-## Task
-
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+Clone this repo and navigate to the directory: 
+```
+git clone https://github.com/EsamAl-Dabagh/instagram-challenge.git
+cd instagram-challenge
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+Install all the relevant dependencies:
+`bundle install`
+
+Set-up the database:
+`rake db:drop db:create db:migrate db:seed`
+
+## How to Use
+
+`rails server`
+
+Then navigate to `http://localhost:3000/` in your browser.
+
+## User Stories
+
+```
+As a user
+So that I can use the service
+I want to be able to sign up
+```
+```
+As a user
+So that I can share my images
+I want to be able to post a picture
+```
+```
+As a user
+So that I can keep up-to-date
+I want to be see pictures in reverse chronological order
+```
+```
+As a user
+So that I can quickly give kudos for a picture
+I want to be able to like a picture
+```
+
+
+## Domain Model
+```
+                 
+                 
+                 
+                   ╔═════════════════╗
+                   ║   CONTROLLERS   ║
+╔════════╗         ║                 ║          ╔═══════╗
+║ Routes ║ ------> ║     Users       ║ -------> ║ Views ║
+╚════════╝         ║     Posts       ║          ╚═══════╝
+                   ║     Likes       ║
+                   ╚═════════════════╝
+                            |
+                            |
+                      ╔════════════╗
+                      ║   MODELS   ║
+                      ║            ║
+                      ║   User     ║
+                      ║   Post     ║
+                      ║   Like     ║
+                      ╚════════════╝
+```
+
+## Testing
+Run tests from the command line using `rspec`. 
+* TDD'd using RSpec and Capybara.
+* Coverage = 100% (provided by SimpleCov)
