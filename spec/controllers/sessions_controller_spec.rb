@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.decribe SessionsController, type: :controller do
+RSpec.describe SessionsController, type: :controller do
   describe 'GET /new' do
     it 'responds with 200' do
       get :new
