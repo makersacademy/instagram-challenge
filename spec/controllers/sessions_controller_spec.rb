@@ -23,6 +23,11 @@ RSpec.describe SessionsController, type: :controller do
         post :create, params: { session: @session_params }
         expect(response).to redirect_to(welcome_images_url) 
       end
+
+      it 'adds user.id to the session' do
+        post :create, params: { session: @session_params }
+        expect(session[:user_id]).to be
+      end
     end
 
     describe 'when email and password do not match existing account' do
