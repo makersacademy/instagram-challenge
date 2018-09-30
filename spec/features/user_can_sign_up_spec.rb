@@ -9,6 +9,6 @@ RSpec.feature 'Registration', type: :feature do
     fill_in 'users_email', with: 'tess@tester.com'
     fill_in 'users_password', with: 'secure'
     click_button 'Save Users'
-    expect(page).to have_content('Enter log in details')
+    expect(page).to have_content('Welcome to Instagramm')
   end
 end
