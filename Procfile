@@ -1,2 +1,2 @@
-heroku run rake db:migrate
-heroku run rake db:create
+heroku rake db:migrate
+heroku rake db:create
