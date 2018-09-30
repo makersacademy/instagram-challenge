@@ -9,7 +9,7 @@
 
 ### User
 ```
-  Responsibility | Collaborator 
+| Responsibility | Collaborator |
 |-------------------------------|
 | Email          |              |
 | Id             |              |
@@ -30,7 +30,6 @@
 | Tags           |              |
 | Comments       |              |
 | Likes          |              |
-
 ```
 
 ### Comment
@@ -56,8 +55,8 @@
 ```
 | Responsibility         | Collaborator |
 |------------------------|--------------|
-| Text                   | Photo
-| Photo tag is for       |
+| Text                   | Photo        |
+| Photo tag is for       |              |
 ```
 
 
