@@ -36,13 +36,11 @@ As a user
 So I can created an account
 I want to be able to signup
 ```
-
 ```
 As a user
 So I can access my account
 I want to be able to login
 ```
-
 ```
 As a user
 So I can show off
