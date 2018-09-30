@@ -9,12 +9,19 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe 'POST /create' do
+    before(:each) do
+      @user_params = {first_name: 'Tess', 
+                      last_name: 'Tester', 
+                      email: 'tess@tester.com', 
+                      password: 'secure'}
+    end
+
     it 'responds with 200' do
-      post :create, params: { users: { first_name: 'Tess', 
-                                       last_name: 'Tester', 
-                                       email: 'tess@tester.com', 
-                                       password: 'secure'}
-                                     }
+      post :create, params: { users: @user_params}
+      expect(response).to redirect_to(welcome_home_url)
+    end
+    it 'creates a user account' do
+      post :create, params: { users: @user_params}
       expect(User.find_by(email: 'tess@tester.com')).to be
     end
   end
