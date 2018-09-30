@@ -3,10 +3,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
-gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
+
+gem 'carrierwave'
+gem 'devise'
+gem 'mini_magick'
+gem 'fog-aws'
+
 gem 'pg'
 # gem 'sqlite3'
 
@@ -49,8 +54,8 @@ group :development, :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.5'
-  gem 'simplecov'
-  gem 'simplecov-console'
+  # gem 'simplecov'
+  # gem 'simplecov-console'
   gem 'chromedriver-helper'
 end
 

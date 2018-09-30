@@ -38,7 +38,7 @@ RSpec.feature "User entry error returns", type: :feature do
     fill_in "user_login", with: "wrongname"
     fill_in "user_password", with: "123456"
     click_button "Sign in"
-    expect(page).to have_content("Invalid Login or password.")
+    expect(page).to have_content("Invalid user name or password.")
   end
 
   scenario "User enters invalid password" do
@@ -47,6 +47,6 @@ RSpec.feature "User entry error returns", type: :feature do
     fill_in "user_login", with: "MyName"
     fill_in "user_password", with: "1234567"
     click_button "Sign in"
-    expect(page).to have_content("Invalid Login or password.")
+    expect(page).to have_content("Invalid user name or password.")
   end
 end

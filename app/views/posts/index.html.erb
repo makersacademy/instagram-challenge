@@ -1,0 +1,12 @@
+<div align="center">
+<% @posts.reverse.each do |post| %>
+  <div class="form-control">
+  <p><%= image_tag(post.image.url, alt: 'Image') if post.image? %>
+  <p><%= simple_format(post.message) %></p>
+  <p><%= post.convert_time %></p>
+  <p><i>by <%= @users.find_by(id: post.user_id).username %></i></p>
+  <p id=<%= post.id %>></p>
+  </div>
+  <br />
+<% end %>
+</div>
