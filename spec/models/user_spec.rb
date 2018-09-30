@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  pending "find_first_by_auth_conditions"
+  pending "login"
 end
