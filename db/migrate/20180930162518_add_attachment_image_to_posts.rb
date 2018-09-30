@@ -8,4 +8,5 @@ class AddAttachmentImageToPosts < ActiveRecord::Migration[5.2]
   def self.down
     remove_attachment :posts, :image
   end
+
 end
