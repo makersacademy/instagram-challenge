@@ -8,7 +8,7 @@ RSpec.feature 'Registration', type: :feature do
     fill_in 'users_last_name', with: 'Tester'
     fill_in 'users_email', with: 'tess@tester.com'
     fill_in 'users_password', with: 'secure'
-    click_button 'Submit'
-    expect(page).to have_content('Hello Tess')
+    click_button 'Save Users'
+    expect(page).to have_content('Enter log in details')
   end
 end

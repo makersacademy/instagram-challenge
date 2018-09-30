@@ -8,14 +8,14 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  # describe 'POST /create' do
-  #   it 'responds with 200' do
-  #     post :create, params: { user: { first_name: 'Tess', 
-  #                                     last_name: 'Tester', 
-  #                                     email: 'tess@tester.com', 
-  #                                     password: 'secure'}
-  #                                   }
-  #     expect(Users.find_by(email: 'tess@test.com')).to be
-  #   end
-  # end
+  describe 'POST /create' do
+    it 'responds with 200' do
+      post :create, params: { users: { first_name: 'Tess', 
+                                       last_name: 'Tester', 
+                                       email: 'tess@tester.com', 
+                                       password: 'secure'}
+                                     }
+      expect(User.find_by(email: 'tess@tester.com')).to be
+    end
+  end
 end

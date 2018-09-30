@@ -5,6 +5,7 @@ ruby '2.5.1'
 
 gem "rubocop"
 gem "rubocop-rails_config"
+gem 'bcrypt', '~> 3.1.12'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
