@@ -17,7 +17,6 @@ class PostsController < ApplicationController
     @users = User.all
   end
 
-
   private
 
   def post_params

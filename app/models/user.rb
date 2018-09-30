@@ -15,7 +15,7 @@ class User < ApplicationRecord
   attr_writer :login
 
   def login
-    @login || self.username || self.email
+    @login || username || email
   end
 
   def self.find_first_by_auth_conditions(warden_conditions)
