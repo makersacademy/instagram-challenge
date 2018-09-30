@@ -11,4 +11,9 @@ class SessionsController < ApplicationController
       redirect_to new_session_url
     end
   end
+
+  def sign_out
+    session[:user_id] = nil
+    redirect_to welcome_home_url
+  end
 end
