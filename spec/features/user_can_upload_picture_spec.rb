@@ -16,7 +16,7 @@ RSpec.feature 'Upload Picture', type: :feature do
 
   scenario 'user uploads picture' do
     visit '/welcome/images'
-    attach_file('Upload Photo', Rails.root + 'spec/fixtures/test_upload.png')
+    attach_file('photo_upload', Rails.root + 'spec/fixtures/test_upload.png')
     click_button 'Upload'
     expect(page).to have_css("img[src*='environ-peeling-kuur.jpg']")
   end

@@ -7,5 +7,6 @@ class WelcomeController < ApplicationController
       redirect_to welcome_home_url 
     end
     @user = User.find_by(id: session[:user_id])
+    @photograph = Photograph.new
   end
 end
