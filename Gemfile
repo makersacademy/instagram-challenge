@@ -21,6 +21,10 @@ gem 'uglifier', '>= 1.3.0'
 # to upload images
 gem 'paperclip'
 
+gem 'bootstrap-sass'
+
+gem 'jquery-rails'
+
 # let’s you create active record objects to test against
 gem "factory_girl_rails", "~> 4.0"
 
