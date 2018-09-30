@@ -37,8 +37,8 @@ I want to be able to post a picture
 ```
 ```
 As a user
-So that I can interact with other users
-I want to be able to comment on other users' pictures
+So that I can keep up-to-date
+I want to be see pictures in reverse chronological order
 ```
 ```
 As a user
@@ -49,12 +49,28 @@ I want to be able to like a picture
 
 ## Domain Model
 ```
-╔════════╗         ╔═════════════╗        ╔═══════╗
-║ Routes ║ ------> ║ Controllers ║ ---->  ║ Views ║
-╚════════╝         ╚═════════════╝        ╚═══════╝
-                          |
-                          |
-                      ╔════════╗
-                      ║ Models ║
-                      ╚════════╝
+                 
+                 
+                 
+                   ╔═════════════════╗
+                   ║   CONTROLLERS   ║
+╔════════╗         ║                 ║          ╔═══════╗
+║ Routes ║ ------> ║     Users       ║ -------> ║ Views ║
+╚════════╝         ║     Posts       ║          ╚═══════╝
+                   ║     Likes       ║
+                   ╚═════════════════╝
+                            |
+                            |
+                      ╔════════════╗
+                      ║   MODELS   ║
+                      ║            ║
+                      ║   User     ║
+                      ║   Post     ║
+                      ║   Like     ║
+                      ╚════════════╝
 ```
+
+## Testing
+Run tests from the command line using `rspec`. 
+* TDD'd using RSpec and Capybara.
+* Coverage = 100% (provided by SimpleCov)
