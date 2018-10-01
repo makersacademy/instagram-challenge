@@ -1,40 +1,33 @@
-Instagram Challenge
-===================
+# Makers Instagram Challenge
 
-## Instructions
+A TDD project aiming to replicate (some of) Instagram!
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+### Features
 
-## Task
+* See all posts, select individual posts in detail view, upload an image
+* Flash alerts for validation (e.g. if no image attached when attempting to create post)
+* Basic image/caption posting using the Paperclip gem
+* Some feature tests using the (now-deprecated) FactoryGirl gem as well as Capybara
 
-Build Instagram: Simple huh!
+### Stack
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+* Ruby on Rails
+* HTML (with ERB)
+* Bootstrap and CSS
+* RSpec and Capybara (for feature tests) 
 
-Bonus if you can add filters!
+Heavily influenced by [this tutorial](https://www.devwalks.com/lets-build-instagram-test-driven-with-ruby-on-rails-part-1/)
 
-## How to start
+### What still needs doing?
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+* Edit, delete, comment on post, like a post
+* Sign up, log in, log out
+* Improve the layout (issues with some forms/buttons and css/bootstrap)
+* Get rid of the array of post data at the bottom of the posts page (where is this coming from?)
+* Finish the tutorial (and delete this sentence)
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+### How to get started
 
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+* clone the repo
+* bundle install
+* run rails s to start server, go to localhost:3000
