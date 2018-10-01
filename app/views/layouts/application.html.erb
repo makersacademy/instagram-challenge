@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstagramApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if current_user != nil %>
+    <div align="right">
+      <font color="red">
+        <i><b><%= current_user.username + "'s currently signed in" %></b></i>
+      </font>
+    </div>
+    <% end %>
+    <style>
+    body {background-image: url(paper-1990111_1920.jpg)}
+    </style>
+    <%= render partial: "shared/navbar" %>
+    <%= yield %>
+    <div align="center">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+  </body>
+</html>
