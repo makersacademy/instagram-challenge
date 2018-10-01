@@ -13,7 +13,7 @@ So that I can view photos of others
 I want to be able to view all posts
 ```
 ```
-As a user 
+As a user
 So that I can view the recent photos first
 I want the photos to be posted in reverse chronological order
 ```
@@ -47,7 +47,7 @@ I want to be able to give a photo a like
 ## Set-up
 
 Clone this repo:
- 
+
 ```
 git clone https://github.com/LondonJim/instagram-challenge.git
 ```
@@ -85,3 +85,8 @@ Then in your client enter `http://localhost:3000/`
 Heroku
 `https://pictogrammie.herokuapp.com`
 
+## Reflection
+
+This was my first individual use of rails and keeping track of all the connections between the routes/controllers/models/views was to begin with.  Using devise to control the user interactions was useful but I had to add some code which I still need to research to how it works. I did attach my AWS S3 server so the app can upload pictures to it but I still to get it to work, currently the Heroku deployment wipes the pictures every so often so they need to be held on externally.
+
+Testing was mainly feature testing with a few unit tests for methods added, I would have liked more time to investigate the use of methods added when some gems were integrated. 
