@@ -58,6 +58,8 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'rspec-rails', '~> 3.5'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
+  gem 'simplecov-console', require: false
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
