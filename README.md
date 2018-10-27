@@ -39,6 +39,7 @@ You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
 
+<<<<<<< HEAD
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -65,6 +66,8 @@ Things you may want to cover:
 * ...
 
 
+=======
+>>>>>>> 534c96160f45afda83d868115d82bc6b7a03727d
 ## User stories
 
 ````
