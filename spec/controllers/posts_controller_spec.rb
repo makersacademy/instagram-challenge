@@ -51,57 +51,11 @@ RSpec.describe PostsController, type: :controller do
     end
 
     it 'should delete own post' do
-        post :create, params: { post: { description: @post.description, image: @post.image,  user_id: @user.id  } }
-        new_post = Post.find_by(description: @post.description)
-        new_post_id = new_post.id
-        delete :destroy, params: { id: new_post_id }
-        expect(Post.find_by(id: new_post_id)).to be_nil
+      post :create, params: { post: { description: @post.description, image: @post.image,  user_id: @user.id  } }
+      new_post = Post.find_by(description: @post.description)
+      new_post_id = new_post.id
+      delete :destroy, params: { id: new_post_id }
+      expect(Post.find_by(id: new_post_id)).to be_nil
     end
   end
 end
-
-
-
-
-
-#   test "should get index" do
-#     get posts_url
-#     assert_response :success
-#   end
-#
-#   test "should get new" do
-#     get new_post_url
-#     assert_response :success
-#   end
-#
-#   test "should create post" do
-#     assert_difference('Post.count') do
-#       post posts_url, params: { post: { description: @post.description, image: @post.image, name: @post.name } }
-#     end
-#
-#     assert_redirected_to post_url(Post.last)
-#   end
-#
-#   test "should show post" do
-#     get post_url(@post)
-#     assert_response :success
-#   end
-#
-#   test "should get edit" do
-#     get edit_post_url(@post)
-#     assert_response :success
-#   end
-#
-#   test "should update post" do
-#     patch post_url(@post), params: { post: { description: @post.description, image: @post.image, name: @post.name } }
-#     assert_redirected_to post_url(@post)
-#   end
-#
-#   test "should destroy post" do
-#     assert_difference('Post.count', -1) do
-#       delete post_url(@post)
-#     end
-#
-#     assert_redirected_to posts_url
-#   end
-# end

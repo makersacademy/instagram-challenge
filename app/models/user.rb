@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :posts
   attr_writer :login
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
-
+  has_many :comments, dependent: :destroy
 
   def login
     @login || self.username || self.email

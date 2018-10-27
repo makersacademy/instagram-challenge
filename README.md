@@ -16,8 +16,8 @@
 - [x] User cannot delete someone else's post
 - [x] Pictures show date they were posted
 - [x] Pictures appear with newest first
-- [ ] User can comment on pictures
-- [ ] Comments show date they were posted
+- [x] User can comment on pictures
+- [x] Comments show date they were posted
 - [ ] User can like pictures
 - [ ] User cannot like more than once
 - [ ] User can have a profile with all their pictures

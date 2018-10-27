@@ -9,6 +9,7 @@ class Post < ApplicationRecord
   belongs_to :user, optional: true
   validates_processing_of :image
   validate :image_size_validation
+  has_many :comments, dependent: :destroy
 
   private
   def image_size_validation

@@ -25,5 +25,5 @@ RSpec.feature 'Edit Post', type: :feature do
     fill_in 'user_password_confirmation', with: '123456'
     click_on 'Sign up'
     expect(page).not_to have_selector(:link_or_button, 'Edit Post')
-   end
+  end
 end
