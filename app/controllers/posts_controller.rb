@@ -65,8 +65,8 @@ class PostsController < ApplicationController
   def likes
     @user = current_user
     @post = Post.find(params[:id])
-    @user.like!(@post)
-    redirect_to post_path
+    @user.toggle_like!(@post)
+    redirect_to post_path, notice: 'Changed your like.'
   end
 
   private

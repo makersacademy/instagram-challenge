@@ -8,7 +8,12 @@ class UsersController < ApplicationController
   def follow
     @user = current_user
     @follow_user = User.find(params[:id])
-    @user.follow!(@follow_user)
-    redirect_back fallback_location: root_path, notice: "Successfully followed."
+    if !@user.follows?(@follow_user)
+      @user.follow!(@follow_user)
+      redirect_back fallback_location: root_path, notice: "Successfully followed."
+    else
+      @user.unfollow!(@follow_user)
+      redirect_back fallback_location: root_path, notice: "Successfully unfollowed."
+    end
   end
 end

@@ -1,3 +1,7 @@
 <h3><%= @user.email %></h3>
 <p><%= @user.followers_count %></p>
-<p>Follow user <%= link_to 'Follow', follow_path(@user)%></p>
+<% if !current_user.follows?(@user)%>
+  <p>Follow user <%= link_to 'Follow', follow_path(@user)%></p>
+<% else %>
+  <p>Unfollow user <%= link_to 'Unfollow', follow_path(@user)%></p>
+<% end %>

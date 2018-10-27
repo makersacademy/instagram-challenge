@@ -12,7 +12,11 @@
 
 <p>
   <strong>Pentagram Like:</strong>
-  <%= link_to 'like', likes_path(@post) %>
+  <% if current_user.likes?(@post)  %>
+    <%= link_to 'unlike', likes_path(@post) %>
+  <% else %>
+    <%= link_to 'like', likes_path(@post) %>
+  <% end %>
   <%= @post.likers_count %>
 </p>
 
