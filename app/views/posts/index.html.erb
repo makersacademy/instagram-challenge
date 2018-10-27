@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Moments // Tell your story in pictures.</title>
+  </head>
+  <body>
+    </br>
+    </br>
+    <h1><strong>MOMENTS</strong></h1>
+    <div id="new_post_link">
+      <% if user_signed_in? %>
+        <%= link_to new_post_path do %>
+          <h2>POST NEW MOMENT</h2>
+        <% end %>
+      <% end %>
+    </div>
+    </br>
+    </br>
+    </br>
+    <div id="all_posts">
+      <% @posts.reverse.each do |post| %>
+        <div id="single_post">
+          <div id="post_header">
+            <p class="align-left"><%= image_tag post.user.avatar.url(:thumb), :class => "style_image" %>&nbsp;&nbsp;<%= post.user.username %> </p>
+            <p class="align-right"><%= post.caption %></p>
+            </br>
+            <div id="post_likes">
+              <p class="align-right">❤️ <%= post.get_upvotes.size %> <%= link_to 'LIKE', like_post_path(post), method: :put %></p>
+            </div>
+          </div>
+          </br>
+          <div id="post_image">
+              <%= image_tag("http://#{ENV["CDN_IP"]}/posts/" + File.basename(post.moment.url.partition('?').first)) %>
+          </div>
+
+
+          <div id="post_footer">
+            <div id="post_time">
+              <p class="align-right"><%= get_time(post.created_at) %></p>
+            </div>
+            <% if user_signed_in? && post.user === current_user %>
+              <p class="align-left"><%= link_to 'EDIT CAPTION', edit_post_path(post.id) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+              <p class="align-left"><%= link_to 'DELETE MOMENT', post_path(post), method: :delete %></p>
+            <% end %>
+            </br>
+            </br>
+            <% post.comments.reverse.each do |comment| %>
+              <div id="all_comments">
+                <p class="align-left" style="text-align: left;"> COMMENTS </br>
+                <%= comment.body %></br>
+                COMMENT <%= get_time(comment.created_at) %></p>
+                </br>
+                <% if user_signed_in? && comment.user === current_user %>
+                  <%= link_to 'DELETE COMMENT', post_comment_path(post, comment), method: :delete %>
+                <% end %>
+                </br>
+              </div>
+            <% end %>
+            <% if user_signed_in? %>
+              <div id="comment_form" align="right">
+                <%= form_with(model: [ post, post.comments.build], local: true) do |form| %>
+                  <%= form.text_field :body, size: "35" %>
+                  <%=form.submit "COMMENT"%>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          </br>
+          </br>
+        </div>
+      <% end %>
+    </div>
+  </body>
+</html>
