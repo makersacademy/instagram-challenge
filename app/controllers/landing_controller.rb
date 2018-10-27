@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-# The controller for the application
-class ApplicationController < ActionController::Base
-  include ApplicationHelper
+# The controller for the landing page
+class LandingController < ApplicationController
+  include LandingHelper
 
   def landing
     if user_signed_in?
