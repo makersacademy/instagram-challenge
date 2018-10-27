@@ -5,10 +5,19 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+# for user authentication
+gem 'devise'
+# Tests with rspec
 gem 'rspec'
+gem 'rspec-rails'
+# Lints code to make sure it looks great
 gem 'rubocop'
 gem "rubocop-rails_config"
+# Sets up tests and deployment on pass
 gem 'travis'
+# Use simplecov for test coverage
+gem 'simplecov', require: false, group: :test
+gem 'simplecov-console', require: false, group: :test
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use postgresql as the database for Active Record
