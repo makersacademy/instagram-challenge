@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 def sign_up
-  visit '/'
+  visit '/users/sign_in'
   click_link 'Sign up'
-  fill_in 'username',      with: 'testusername'
-  fill_in 'user_email',    with: 'test@test.com'
-  fill_in 'User_password', with: 'testpassword'
+  fill_in 'Username',              with: 'testusername'
+  fill_in 'user_email',            with: 'test@test.com'
+  fill_in 'Password',              with: 'testpassword'
+  fill_in 'Password confirmation', with: 'testpassword'
   click_button 'Sign up'
 end
