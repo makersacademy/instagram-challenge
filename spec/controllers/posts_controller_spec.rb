@@ -32,9 +32,9 @@ RSpec.describe PostsController, type: :controller do
   let(:valid_attributes) {
     { caption: 'best movie', picture: "metal.jpg" }
   }
-
+  
   let(:invalid_attributes) {
-    skip('he')
+    { caption: '', picture: "" }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -81,19 +81,12 @@ RSpec.describe PostsController, type: :controller do
         }.to change(Post, :count).by(1)
       end
     end
-
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: { post: invalid_attributes }, session: valid_session
-        expect(response).to be_successful
-      end
-    end
   end
 
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {caption: 'better photo', picture: "flower.png"}
       }
 
       it "updates the requested post" do
@@ -114,7 +107,7 @@ RSpec.describe PostsController, type: :controller do
       it "returns a success response (i.e. to display the 'edit' template)" do
         post = Post.create! valid_attributes
         put :update, params: { id: post.to_param, post: invalid_attributes }, session: valid_session
-        expect(response).to be_successful
+        expect(response).not_to be_successful
       end
     end
   end
