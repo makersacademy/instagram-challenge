@@ -6,6 +6,7 @@ RSpec.feature 'Log out', type: :feature do
   scenario 'Can Log out' do
     visit '/'
     click_on 'Sign up'
+    fill_in 'user_username', with: 'Casper'
     fill_in 'user_email', with: 'hello@world.com'
     fill_in 'user_password', with: '123456'
     fill_in 'user_password_confirmation', with: '123456'
