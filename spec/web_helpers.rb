@@ -8,9 +8,9 @@ def signup
 end
 
 def upload_image
-  visit '/image_posts'
-  click_link 'New Image Post'
-  fill_in 'Caption', with: 'my logo'
-  attach_file('Picture', Rails.root + "spec/fixtures/logo.png")
-  click_button('Create Image post')
+  click_link 'New Gram'
+  fill_in 'Caption', with: 'Easy Peasy'
+  attach_file('Image', Rails.root + "spec/fixtures/files/easy_peasy.jpg")
+  click_button 'Create Gram'
+  visit '/grams'
 end

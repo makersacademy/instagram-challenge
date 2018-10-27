@@ -1,6 +1,5 @@
 class GramsController < ApplicationController
-  before_action :authenticate_user!
-  # , :set_post, only: [:show, :edit, :update]
+  before_action :authenticate_user!, :set_post, only: [:show, :edit, :update]
 
   def index
     @grams = Gram.order('created_at DESC')
