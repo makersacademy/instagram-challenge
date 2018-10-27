@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative './helpers/web_helpers'
 require 'simplecov'
 require 'simplecov-console'
 SimpleCov.formatter = SimpleCov::Formatter::Console

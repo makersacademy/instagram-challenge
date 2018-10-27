@@ -2,7 +2,12 @@
 
 class LandingPageController < ApplicationController
   def index
-    @post = Post.new
-    @posts = Post.all
+    if user_signed_in?
+      @post = Post.new
+      @posts = Post.all
+      render :index
+    else
+      render :home
+    end
   end
 end
