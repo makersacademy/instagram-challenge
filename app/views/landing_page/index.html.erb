@@ -7,3 +7,10 @@
   <%= form.file_field :picture, id: :post_picture %>
   <%= form.submit 'Add Pentapost' %>
 <% end %>
+
+<% @posts.each do |post| %>
+<div>
+  <h4 class="caption"><%= post.caption %></h4>
+  <div class="photo"><%= image_tag(post.picture_url, width: 600) if post.picture.present? %></div>
+</div>
+<% end %>

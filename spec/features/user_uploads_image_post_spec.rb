@@ -8,7 +8,7 @@ feature "User Adds Pentapost" do
     fill_in "Caption", with: "Love Metal!"
     attach_file("Picture", Rails.root + "spec/fixtures/metal.png")
     click_on "Add Pentapost"
-    expect(page).to have_css '.caption h4', text: "Love Metal!"
-    expect(page).to have_css '.photo img'
+    expect(page).to have_css '.caption', text: "Love Metal!"
+    expect(page).to have_css '.photo'
   end
 end
