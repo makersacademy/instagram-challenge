@@ -1,12 +1,15 @@
-inherit_gem:
-  rubocop-rails:
-    - config/rails.yml
+inherit_from: .rubocop_todo.yml
 
-Style/StringLiterals:
-  Enabled: false
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - 'vendor/**/*'
+    - 'bin/*'
+    - config/initializers/devise.rb
+  TargetRubyVersion: 2.5
 
-Style/StringLiteralsInInterpolation:
-  Enabled: false
-
-Style/IndentationConsistency:
-  EnforcedStyle: normal
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
