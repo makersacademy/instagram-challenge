@@ -16,7 +16,7 @@ RSpec.feature 'Sign in', type: :feature do
     fill_in 'user_login', with: 'Casper'
     fill_in 'user_email', with: 'hello@world.com'
     fill_in 'user_password', with: '123456'
-  o  click_button 'Log in'
+    click_button 'Log in'
     expect(page).to have_content('Signed in successfully.')
   end
 end
