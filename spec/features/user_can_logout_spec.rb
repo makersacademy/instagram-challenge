@@ -6,7 +6,7 @@ RSpec.feature 'Log Out', type: :feature do
     sign_up_helper
   end
 
-  context 'An existing user' do
+  context 'A signed in user' do
     scenario 'can see a logout button' do
       expect(page).to have_selector('#log-out')
     end

@@ -16,14 +16,14 @@ RSpec.feature 'Sign up', type: :feature do
   end
 
   context 'User who hasn\'t signed up yet' do
-    scenario 'redirected to login/signup page if they are not signed up' do
+    scenario 'is redirected to login/signup page if they are not signed up' do
       visit('/images')
       expect(page).to have_current_path('/users/sign_in')
       expect(page).to have_selector('#user_email')
       expect(page).to have_selector('#user_password')
   end
 
-    scenario 'sees alert if not signed up and tries to view /images page' do
+    scenario 'sees alert if trying to view /images page + have not signedup' do
       visit('/images')
       expect(page).to have_current_path('/users/sign_in')
       expect(find('.alert')).to have_content('You need to sign in or sign up before continuing.')
