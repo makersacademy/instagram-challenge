@@ -46,7 +46,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'coveralls', require: false
   gem 'pry', require: false
-  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
   gem 'rspec-rails', '~> 3.5'
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false

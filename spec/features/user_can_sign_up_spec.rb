@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'rake'
 
 RSpec.feature 'Sign up', type: :feature do
-
   context 'User can sign up' do
     scenario 'shows sign-up page with email/password prompt' do
       visit('/')

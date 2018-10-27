@@ -6,7 +6,6 @@ RSpec.feature "Timeline", type: :feature do
   end
 
   context 'no images added yet' do
-
     scenario 'should show a link to add an image' do
       visit('/')
       expect(page).to have_content('No Images Added Yet')
