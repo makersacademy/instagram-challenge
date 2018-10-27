@@ -10,6 +10,6 @@ RSpec.feature 'Timeline', type: :feature do
 
   scenario 'Can visit website and Log in' do
     log_in
-    expect(page).to have_content('Signed in successfully.')
+    expect(page).to have_content('Welcome to Mintstagram!')
   end
 end
