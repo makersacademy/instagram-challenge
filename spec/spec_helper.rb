@@ -5,6 +5,7 @@ require 'simplecov-console'
 require 'timecop'
 require 'rake'
 require 'pry'
+require_relative './features/web_helpers.rb'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
   [

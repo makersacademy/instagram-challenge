@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature "Timeline", type: :feature do
+  before do
+    sign_up_helper
+  end
 
   context 'no images added yet' do
 
@@ -10,4 +13,4 @@ RSpec.feature "Timeline", type: :feature do
       expect(page).to have_selector(:link_or_button, 'Upload Image')
     end
   end
-end 
+end
