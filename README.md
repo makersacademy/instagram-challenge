@@ -3,6 +3,10 @@ Instagram Challenge
 [![Maintainability](https://api.codeclimate.com/v1/badges/65035458a1e5ace90e7e/maintainability)](https://codeclimate.com/github/Kharouk/instagram-challenge/maintainability)
 [![Build Status](https://travis-ci.org/Kharouk/instagram-challenge.svg?branch=master)](https://travis-ci.org/Kharouk/instagram-challenge)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/65035458a1e5ace90e7e/test_coverage)](https://codeclimate.com/github/Kharouk/instagram-challenge/test_coverage)
+[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg?label=Deployed-App&style=popout)](https://pentagram-app.herokuapp.com)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/cdnjs/cdnjs.svg?style=popout)](https://github.com/Kharouk/instagram-challenge/pulls)
+
+
 
 ## Instructions
 
