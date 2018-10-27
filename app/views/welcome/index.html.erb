@@ -1,4 +1,4 @@
-<h1>Instagram</h1>
+<h1>Spacagram</h1>
 
 <p class="navbar-text pull-right">
 <% if user_signed_in? %>
@@ -10,3 +10,15 @@
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
 </p>
+
+<% if user_signed_in? %>
+  <%= link_to 'New Post', new_post_path %><br>
+  <% @posts.each do |post| %>
+  <div id='post<%post.id %>'>
+    <%= image_tag(post.image.thumb.url, alt: 'Image') %><br>
+    <%= post.description %><br>
+    <%= link_to 'Edit', edit_post_path(post)%>
+    <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  <% end %>
+<% end %>

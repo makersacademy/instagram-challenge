@@ -1,0 +1,31 @@
+<%= form_for @post, html: { multipart: true } do |f| %>
+ <% if @post.errors.any? %>
+   <div id="error_explanation">
+     <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+     <ul>
+     <% @post.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
+     </ul>
+   </div>
+ <% end %>
+
+ <div class="field">
+   <%= f.label :description %><br>
+   <%= f.text_area :description %>
+ </div>
+ <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+    <!-- <% if f.object.image? %>
+      <%= image_tag f.object.image.thumb.url %>
+      <%= f.label :remove_image %>
+      <%= f.check_box :remove_image %> -->
+    <!-- <% end %> -->
+  </div>
+
+ <div class="actions">
+   <%= f.submit %>
+ </div>
+<% end %>
