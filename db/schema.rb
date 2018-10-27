@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_10_27_155428) do
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "likers_count", default: 0
+    t.integer "likers_count", default: 0er
   end
 
   create_table "users", force: :cascade do |t|
