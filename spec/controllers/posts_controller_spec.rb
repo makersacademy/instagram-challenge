@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
   before(:each) do
-    @user = build(:user)
+    @user = create(:user)
     sign_in @user
     @post = build(:post)
   end
@@ -18,13 +18,16 @@ RSpec.describe PostsController, type: :controller do
 
   describe "POST # new" do
     it "redirects to homepage" do
-      post :create, params: { post: { description: @post.description, image: @post.image } }
+      post :create, params: { post: { description: @post.description, image: @post.image,  user_id: @user.id } }
       expect(response).to redirect_to(welcome_index_url)
     end
 
     it "creates new post" do
-      post :create, params: { post: { description: @post.description, image: @post.image } }
+      post :create, params: { post: { description: @post.description, image: @post.image,  user_id: @user.id  } }
       expect(Post.find_by(description: @post.description)).to be
+      expect {
+          post :create, params: { post: { description: @post.description, image: @post.image,  user_id: @user.id } }
+        }.to change(Post, :count).by(1)
     end
   end
 
