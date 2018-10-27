@@ -13,3 +13,10 @@ end
 def sign_up_helper_correct
   sign_up_helper("test@test.com", "testname", "password")
 end
+
+def make_message(text)
+  visit('/')
+  click_on('Create post')
+  fill_in :message_text, with: text
+  click_on('Submit')
+end
