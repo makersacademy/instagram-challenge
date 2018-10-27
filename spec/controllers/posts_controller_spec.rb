@@ -32,7 +32,7 @@ RSpec.describe PostsController, type: :controller do
   let(:valid_attributes) {
     { caption: 'best movie', picture: "metal.jpg" }
   }
-  
+
   let(:invalid_attributes) {
     { caption: '', picture: "" }
   }
@@ -86,7 +86,7 @@ RSpec.describe PostsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        {caption: 'better photo', picture: "flower.png"}
+        { caption: 'better photo', picture: "flower.png" }
       }
 
       it "updates the requested post" do
