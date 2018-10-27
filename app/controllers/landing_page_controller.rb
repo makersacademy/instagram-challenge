@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class LandingPageController < ApplicationController
-  def home
+  def index
+    @post = Post.new
+    @posts = Post.all
   end
 end
