@@ -8,12 +8,16 @@
 - [x] User can sign up with email and username
 - [x] User can sign in
 - [x] User can sign out
-- [x]User can add picture
-- [ ]User can update their own pictures
-- [ ]Pictures show date they were posted
-- [ ]Pictures appear with newest first
-- [ ]User can comment on pictures
-- [ ]Comments show date they were posted
-- [ ]User can like pictures
-- [ ]User cannot like more than once
-- [ ]User can have a profile with all their pictures
+- [x] User can add picture
+- [X] User can see the username above the picture
+- [x] User can update pictures
+- [x] User cannot update someone else's post
+- [x] User can delete posts
+- [x] User cannot delete someone else's post
+- [x] Pictures show date they were posted
+- [x] Pictures appear with newest first
+- [ ] User can comment on pictures
+- [ ] Comments show date they were posted
+- [ ] User can like pictures
+- [ ] User cannot like more than once
+- [ ] User can have a profile with all their pictures

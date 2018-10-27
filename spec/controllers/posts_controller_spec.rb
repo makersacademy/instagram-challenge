@@ -49,6 +49,14 @@ RSpec.describe PostsController, type: :controller do
         id: "1"
       )
     end
+
+    it 'should delete own post' do
+        post :create, params: { post: { description: @post.description, image: @post.image,  user_id: @user.id  } }
+        new_post = Post.find_by(description: @post.description)
+        new_post_id = new_post.id
+        delete :destroy, params: { id: new_post_id }
+        expect(Post.find_by(id: new_post_id)).to be_nil
+    end
   end
 end
 

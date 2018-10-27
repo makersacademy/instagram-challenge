@@ -12,13 +12,17 @@
 </p>
 
 <% if user_signed_in? %>
-  <%= link_to 'New Post', new_post_path %><br>
+  <%= link_to 'New Post', new_post_path %><br><br>
   <% @posts.each do |post| %>
-  <div id='post<%post.id %>'>
+  <div id='post_<%=post.id %>'>
+    <strong><%=post.user.username %></strong><br>
     <%= image_tag(post.image.thumb.url, alt: 'Image') %><br>
     <%= post.description %><br>
-    <%= link_to 'Edit', edit_post_path(post)%>
+    <%= post.created_at.strftime('Posted at %I:%M%p, %d/%m/%Y') %><br>
+    <% if post.user_id == current_user.id %>
+    <%= link_to 'Edit Post', edit_post_path(post)%>
     <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%end%>
     </div>
   <% end %>
 <% end %>
