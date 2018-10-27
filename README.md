@@ -1,40 +1,23 @@
 Instagram Challenge
-===================
+======================
 
-## Instructions
+Completed this as eighth weekend challenge at Makers Academy([instagram-challenge](https://github.com/makersacademy/instagram-challenge)).
+This app is using Ruby on Rails to build Instagram that will allow the users to post pictures, write comments on pictures and like a picture. </br>
+**Home page**
+![Photos page](https://user-images.githubusercontent.com/36331920/41985462-42a8922a-7a2b-11e8-8dac-6592ee377071.png)
+**Sign up page**
+![Sign up page](https://user-images.githubusercontent.com/36331920/41985463-42c72604-7a2b-11e8-8f34-1b46cdd5c888.png)
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Setup
 
-## Task
+- Clone this repo, run:
+`git clone https://github.com/shihhanwang/Makers_Instagram.git`
+- Install all the dependencies, run: `bundle install`
+- Database setup
+  - run `rake db:create` to create the database on your local machine
+  - run `rake db:migrate` to apply latest database version
+ 
+## Usage
 
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+- After setting up, go to its root directory and run `rails s` to start the server
+- In your brower, you will be able to access it at `localhost:3000`
