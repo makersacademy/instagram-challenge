@@ -1,9 +1,7 @@
 require 'simplecov'
 require 'simplecov-console'
 SimpleCov.formatter = SimpleCov::Formatter::Console
-SimpleCov.start 'rails' do
-  add_filter '/spec/' # for rspec
-end
+SimpleCov.start
 
 SimpleCov.at_exit do
   SimpleCov.result.format!
