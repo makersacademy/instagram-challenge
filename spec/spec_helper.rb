@@ -12,6 +12,7 @@ SimpleCov.at_exit do
   SimpleCov.minimum_coverage_by_file 90
 end
 
+require_relative 'helpers/web_helpers'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

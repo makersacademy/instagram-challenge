@@ -1,9 +1,9 @@
 # frozen_string_literal: true
-
-# require './spec/helpers/web_helpers'
 require 'rails_helper'
 
-def register
-  sign_up
-  expect(page).to have_content('You have successfully signed up!')
+RSpec.feature 'Timeline', type: :feature do
+  scenario 'Can visit website and Sign up' do
+    sign_up
+    expect(page).to have_content('Welcome! You have signed up successfully.')
+  end
 end

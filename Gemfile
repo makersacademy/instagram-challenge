@@ -9,6 +9,8 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.1'
 # Use Postgresql as the database for Active Record
 gem 'pg'
+# Devise for signing in users
+gem 'devise'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -62,6 +64,7 @@ group :test do
   gem 'rubocop-rails'
   gem "simplecov"
   gem "simplecov-console"
+  gem "factory_bot"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
