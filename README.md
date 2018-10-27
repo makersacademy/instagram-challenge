@@ -1,6 +1,39 @@
 Instagram Challenge
 ===================
 
+## User Stories
+
+```
+As a photography lover
+So that I can share my photos
+I can sign up to Instasham
+```
+
+```
+As a photography lover
+So that I can share my photos whenever I want
+I can sign in and out of Instasham
+```
+
+```
+As a photography lover
+So that I can share my best photos
+I can post a picture to Instasham
+```
+
+```
+As a photography lover
+So that I can appreciate a good photo
+I can like a picture
+```
+
+```
+As a photography lover
+So that I can write what I appreciate about a good photo
+I can comment on a picture
+```
+
+
 ## Instructions
 
 * Challenge time: one weekend
