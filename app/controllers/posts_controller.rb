@@ -62,12 +62,14 @@ class PostsController < ApplicationController
     end
   end
 
+
   def likes
     @user = current_user
     @post = Post.find(params[:id])
     @user.toggle_like!(@post)
     redirect_to post_path, notice: 'Changed your like.'
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
