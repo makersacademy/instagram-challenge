@@ -60,9 +60,6 @@ group :test do
   gem 'chromedriver-helper'
   gem 'rspec-rails'
   gem 'rubocop-rails'
-  gem "shoulda"
-  gem "faker"
-  gem "factory_girl_rails"
   gem "simplecov"
   gem "simplecov-console"
 end
