@@ -42,3 +42,4 @@ you to mistakes or mishaps!
 Technologies used:
 ImageMagick
 Paperclip https://github.com/thoughtbot/paperclip
+Simple Form https://github.com/plataformatec/simple_form
