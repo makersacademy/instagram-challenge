@@ -13,8 +13,6 @@
 
  SimpleCov.at_exit do
   SimpleCov.result.format!
-  SimpleCov.minimum_coverage 95
-  SimpleCov.minimum_coverage_by_file 90
 end
 
  # Given that it is always loaded, you are encouraged to keep this file as
