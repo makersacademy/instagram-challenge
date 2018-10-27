@@ -34,12 +34,13 @@ class GramsController < ApplicationController
   end
 
   def users_grams
-  end 
+  end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :image)
+    image_params = params.require(:gram).permit(:caption, :image)
+    return image_params.merge({ user_id: current_user.id })
   end
 
   def set_post
