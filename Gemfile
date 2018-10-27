@@ -58,6 +58,8 @@ group :development do
 end
 
 group :test do
+  gem 'simplecov', require: false
+  gem 'timecop'
   gem 'launchy'
   gem 'database_cleaner'
   gem 'rspec'
