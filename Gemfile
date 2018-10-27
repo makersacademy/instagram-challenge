@@ -6,8 +6,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.0'
 # Add Devise to application for users
 gem 'devise'
-# Add carrierwave to be able to use uploader and upload images
+# Add carrierwave and mini_magick to be able to use uploader and upload images
 gem 'carrierwave'
+gem 'mini_magick', '~> 4.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # We can test rails controllers with this gem.
