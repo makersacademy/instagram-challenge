@@ -25,6 +25,11 @@
 - [x] User can follow another user
 - [x] User can unfollow another user
 
+To be done later:
+- [ ] User can add profile picture
+- [ ] User can send private messages to other users
+- [ ] User have to confirm their email address when signing up
+
 ## Technologies
 
 - rails
