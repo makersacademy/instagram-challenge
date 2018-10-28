@@ -25,7 +25,13 @@ I can sign up to Instasham
 ```
 As a photography lover
 So that I can share my photos whenever I want
-I can sign in and out of Instasham
+I can sign in to Instasham
+```
+
+```
+As a photography lover
+So that I can end my session
+I can log out of Instasham
 ```
 
 ```
