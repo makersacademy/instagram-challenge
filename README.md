@@ -18,6 +18,6 @@
 - [x] Pictures appear with newest first
 - [x] User can comment on pictures
 - [x] Comments show date they were posted
-- [ ] User can like pictures
-- [ ] User cannot like more than once
+- [x] User can like pictures
+- [x] User cannot like more than once
 - [ ] User can have a profile with all their pictures

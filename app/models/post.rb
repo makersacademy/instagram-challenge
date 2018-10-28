@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   validates_processing_of :image
   validate :image_size_validation
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   private
   def image_size_validation
