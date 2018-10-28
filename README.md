@@ -83,3 +83,9 @@ Run the rails server:
 $ bin/rails server
 ```
 Visit http://localhost:3000 to view in your web browser.
+
+## Trello Board Snippet
+
+Attaching my trello board to show what I still need to do for this project. First is to add comments and work on CSS!
+
+![Imgur](https://i.imgur.com/wy8Z16y.jpg)
