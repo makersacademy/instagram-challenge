@@ -1,13 +1,33 @@
 <%= form_for gram do |f| %>
   <div>
+    <script>
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+              $('#img_prev')
+                .attr('src', e.target.result)
+                .removeAttr('hidden')
+            };
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+    </script>
+  </div>
+  <div>
     <%= f.label :caption %>
     <%= f.text_field :caption %>
   </div>
 
   <div>
     <%= f.label :image %>
-    <%= f.file_field :image %>
+    <%= f.file_field :image, :onchange => 'readURL(this);' %>
   </div>
 
   <%= f.submit %>
+  <div>
+    <img id="img_prev" src="#" alt="your image" hidden/>
+  </div>
 <% end %>

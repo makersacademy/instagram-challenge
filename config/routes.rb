@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   end
   root to: redirect('/users/sign_in')
 
-  resources :grams
+  resources :grams do
+    resources :comments
+    resources :likes
+  end
   get 'my_grams', to: 'grams#users_grams'
 end
