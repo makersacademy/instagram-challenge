@@ -1,0 +1,33 @@
+language: ruby
+
+notifications:
+  - false
+  
+env:
+  global:
+    - CC_TEST_REPORTER_ID=$CODE_CLIMATE_TAG
+
+before_script:
+  - gem update --system
+  - gem install bundler
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+script:
+  - bundle install --jobs=3 --retry=3
+  - bundle exec bin/rails db:create
+  - bundle exec bin/rails db:migrate
+  - bundle exec rspec
+  - bundle exec rubocop
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: EKsv2AKAfXUyGbrHZeV8I4mGSsaExIol4/cZJtN0gz/0FR8esZqWY2O1E4Ibt9RHth9jogokw84RjF3oiox8WbCamDPKeufY9GNThsAp5Z6xabcZ8HRVmbbDnwrkh30BmxacX0uKUPHgBYqCx6OY4ctHm7i9/wh8rxjwSlg4NGmLiORt9Op/kxJbix0ul0dx7liMV0bs9p7iHlSz4jj1ZDy5QU7+NCqUiaE35lVS5UrO35AbMT0imm7Y6lyQAtxateSvvmfMpRYDQpll7KEl2CKqKmBlsntvSIdnkUdQf4lkNR1n3QRkuqhUXqigYptDhEXF2HKchuuuCtQ2e1A69D84Df5a/kB9Ru9I/AaMwPK9t6fHjz9DcOq2dDm2FMFrG2wuf6XXIu7OhTKi9rzfpOWpIu/hWjzeZb5PpdzusUIkPmn0C86MGuEippL3ZNX8la4ssSrwf6HFToi+TeDhy8SmdKIcse5yk/Ml58/F0NcfX6/fkEK37z3GBQdyWHAjRrlzajny+caW0rTVv9I2ksMLljBjqptggMnJ2wFcSE+qdkpSMs/kHqqKTgUIUpywgRzHC0kpfuQoFeY/XZDsMyJeEAMdpL1Rm7RQBv9WAKX1Eid5fGA8re5/VWPB0n0Hzg99GSvV6A4ZWJ9ypWKoRpoVpwQNTfjSJqMWtE6lCJY=
+  app: pentagram-app
+  on:
+    repo: Kharouk/instagram-challenge
