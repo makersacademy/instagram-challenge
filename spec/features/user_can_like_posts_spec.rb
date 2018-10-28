@@ -21,15 +21,15 @@ RSpec.feature 'Like Posts', type: :feature do
 
     scenario 'likes an image and the like count increases by one' do
       create_image("I want to like this image")
-      click_on('Like')
+      click_on('♥')
       expect(page).to have_content('1 Like')
     end
 
     scenario 'likes many images and the like count increases by many' do
       create_image("I want to like this image")
-      click_on('Like')
-      click_on('Like')
-      click_on('Like')
+      click_on('♥')
+      click_on('♥')
+      click_on('♥')
       expect(page).to have_content('3 Likes')
     end
   end
