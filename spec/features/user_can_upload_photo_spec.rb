@@ -20,6 +20,7 @@ RSpec.feature 'Upload Photo', type: :feature do
       attach_file('image[photo]', File.join(Rails.root + 'spec/fixtures/image.jpg'))
       fill_in 'image_caption', with: 'My second caption'
       click_on('Submit')
+      expect(page).to have_content('test@email.com\'s post:')
       expect(page).to have_content('My second caption')
       expect(page).to have_css("img[src*='image.jpg']")
     end

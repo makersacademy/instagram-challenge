@@ -18,8 +18,10 @@ RSpec.feature "Timeline", type: :feature do
       create_image('Test Caption')
     end
 
-    scenario 'User can view image caption ' do
+    scenario 'User can view image with caption ' do
       visit('/')
+      expect(page).to have_content('test@email.com\'s post:')
+      expect(page).to have_css("img[src*='image.jpg']")
       expect(page).to have_content('Caption: Test Caption')
     end
 
