@@ -15,6 +15,13 @@ RSpec.describe MessagesController, type: :controller do
     end
   end
 
+  describe 'GET /profile' do
+    it 'responds with 200' do
+      get :profile, params: {user_id: 1}
+      expect(response).to have_http_status(200)
+    end
+  end
+
   describe "POST /" do
     it "redirects to message index" do
       post :create, params: { user_id: 1, message: { text: "Hello, world!" } }

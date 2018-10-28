@@ -7,7 +7,25 @@
 Create post
 <% end %>
 
-<%= render 'layouts/timeline' %>
+<div class='timeline'>
+<% @messages.each do |message| %>
+  <div class='message-div' id=<%=message.id%>>
+    <%= link_to '@' + message.user.username, user_path(message.user.id), params: {id: message.user.id}, id: 'author' + message.id.to_s %>
+    <p class='message-text' id=text-<%=message.id%>><%=message.text%></p>
+    <p class='message-date' id=date-<%=message.id%>><%=message.format_date%></p>
+    <%= image_tag message.image, class: 'message-photo', id: 'photo-' + message.id.to_s %>
+  </div>
+
+  <div class='message-comment-list' id=comment-<%=message.id%>>
+    <% message.comments.each do |comment| %>
+    <div class='comment' id=comment-<%=comment.id%>>
+      <p><%=comment.text%></p>
+    </div>
+    <% end %>
+  </div>
+  <br>
+<% end %>
+</div>
 
 <br>
 <%= link_to '/' do%>
