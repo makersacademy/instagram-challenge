@@ -3,15 +3,17 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :message, only: :index
+  resources :messages, only: :index do
+    resources :comments
+  end
 
   resources :users do
-    get '/', to: 'message#profile'
-    resources :message
+    resources :messages
+    get '/', to: 'messages#profile'
   end
 
   authenticated :user do
-    root to: 'message#index'
+    root to: 'messages#index'
   end
 
   root to: redirect('/users/sign_in')

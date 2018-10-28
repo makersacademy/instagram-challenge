@@ -1,4 +1,4 @@
-class MessageController < ApplicationController
+class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
@@ -7,6 +7,7 @@ class MessageController < ApplicationController
 
   # adapt this to user#show
   def profile
+    @user = User.where(id: params[:user_id]).first
     @messages = Message.where(user_id: params[:user_id])
   end
 
@@ -20,6 +21,7 @@ class MessageController < ApplicationController
 
   def create
     @message = current_user.messages.create(message_params)
+    @message.image.attach(params[:message][:image])
     redirect_to message_index_path
   end
 
@@ -39,6 +41,6 @@ class MessageController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:text)
+    params.require(:message).permit(:text, :image)
   end
 end
