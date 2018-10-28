@@ -86,6 +86,6 @@ Visit http://localhost:3000 to view in your web browser.
 
 ## Trello Board Snippet
 
-Attaching my trello board to show what I still need to do for this project. First is to add comments and work on CSS!
+Attaching my Trello board to show what I still need to do for this project. First is to add comments to image posts and deploy to Heroku!
 
-![Imgur](https://i.imgur.com/wy8Z16y.jpg)
+![Imgur](https://i.imgur.com/7O3B1gV.jpg)
