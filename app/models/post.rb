@@ -3,7 +3,6 @@
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
 
-
 class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
   belongs_to :user, optional: true

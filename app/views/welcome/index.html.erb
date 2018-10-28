@@ -4,14 +4,14 @@
   <div id='post_<%=post.id %>'>
     <strong><%= link_to post.user.username, profile_path(post.user.username)%></strong><br>
     <%= image_tag(post.image.thumb.url, alt: 'Image') %><br>
-    <%= post.description %><br>
-    <%= post.created_at.strftime('Posted at %I:%M%p, %d/%m/%Y') %><br>
+   <font color='black'><%= post.description %></font><br>
+    <font color='black'><%= post.created_at.strftime('Posted at %I:%M%p, %d/%m/%Y') %></font><br>
     <% if post.user_id == current_user.id %>
     <%= link_to 'Edit Post', edit_post_path(post)%>
     <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
     <%end%>
-    <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
-    <%= post.comments.count %> <%= (post.comments.count) == 1 ? 'Comment' : 'Comments'%>
+  <font color='black'>  <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></font>
+    <font color='black'><%= post.comments.count %> <%= (post.comments.count) == 1 ? 'Comment' : 'Comments'%></font>
     <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
   <% if pre_like %>
     <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
@@ -21,9 +21,9 @@
 
     <% post.comments.each do |comment| %>
     <div id="comment_<%=comment.id %>">
-      <strong><%= comment.user.username %></strong>
-      <%= comment.body %><br>
-      <%= comment.created_at.strftime('Posted at %I:%M%p, %d/%m/%Y') %><br>
+    <font color='black'>  <strong><%= comment.user.username %></strong></font>
+    <font color='black'>  <%= comment.body %><br></font>
+    <font color='black'>  <%= comment.created_at.strftime('Posted at %I:%M%p, %d/%m/%Y') %></font><br>
     </div>
       <% end%>
     </div>

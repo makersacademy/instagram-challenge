@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:login]
   has_many :posts
@@ -20,23 +18,21 @@ class User < ApplicationRecord
 
  has_many :followers, through: :passive_relationships, source: :follower
 
-
  def follow(other_user)
    following << other_user
  end
 
-# Unfollows a user.
  def unfollow(other_user)
-  following.delete(other_user)
+   following.delete(other_user)
  end
 
-# Returns true if the current user is following the other user.
  def following?(other_user)
- following.include?(other_user)
+   following.include?(other_user)
  end
-  def login
-    @login || self.username || self.email
-  end
+
+ def login
+   @login || self.username || self.email
+ end
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
