@@ -12,4 +12,16 @@ RSpec.feature "Timeline", type: :feature do
       expect(page).to have_selector(:link_or_button, 'Upload Image')
     end
   end
+
+  context 'creating an image' do
+    before do
+      create_image('Test Caption')
+    end
+
+    scenario 'User can view image caption ' do
+      visit('/')
+      expect(page).to have_content('Test Caption')
+    end
+
+  end
 end

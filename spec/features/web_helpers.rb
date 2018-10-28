@@ -11,3 +11,10 @@ def log_in_helper(email, password)
   fill_in('user_password', with: password)
   click_on('Log in')
 end
+
+def create_image(caption)
+  visit '/'
+  click_link 'Upload Image'
+  fill_in 'Caption', with: caption
+  click_button 'Submit'
+end

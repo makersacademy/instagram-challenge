@@ -4,7 +4,16 @@
 
 <h1>Instasham</h1>
 
-<h2>No Images Added Yet</h2>
+<div class='timeline'>
+<% if @images.any? %>
+  <% @images.each do |image| %>
+    <div class='image-div' id=<%=image.id%>>
+      <p class='image-caption' id=<%=image.id%>>Caption: <%= image.caption %></p>
+    <% end %>
+<% else %>
+    <h2>No Images Added Yet</h2>
+  </div>
+<% end %>
 
 <%= link_to new_image_path do %>
   Upload Image
