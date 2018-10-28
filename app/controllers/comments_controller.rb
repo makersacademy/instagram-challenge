@@ -2,20 +2,20 @@
 
 # Controller for the comments
 class CommentsController < ApplicationController
-  before_action :find_post
+  before_action :find_gram
   include CommentsHelper
 
   def create
-    @post.comments.create(user_id: current_user.id,
-                          comment_text: params[:comment].values.join(''))
-    redirect_to post_url(@post)
+    @gram.comments.create(user_id: current_user.id,
+                          content: params[:comment].values.join(''))
+    redirect_to gram_url(@gram)
   end
 
   def show; end
 
   private
 
-  def find_post
-    @post = Post.find(params[:post_id])
+  def find_gram
+    @gram = Gram.find(params[:gram_id])
   end
 end

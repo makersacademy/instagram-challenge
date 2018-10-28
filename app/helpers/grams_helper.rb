@@ -13,10 +13,14 @@ module GramsHelper
   end
 
   def number_of_comments(gram)
-    Comment.where(gram_id: gram.id).count
+    all_comments(gram).count
   end
 
   def number_of_likes(gram)
     Like.where(gram_id: gram.id).count
+  end
+
+  def all_comments(gram)
+    Comment.where(gram_id: gram.id)
   end
 end

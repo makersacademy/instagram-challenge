@@ -1,12 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<div class='gram_container' id='<%"gram_container" + @gram.id.to_s %>'>
-<h3> Posted by <%= get_email_for_gram(@gram) %> </h3>
-<%= image_tag(@gram.image_url, width: 600) if @gram.image.present? %>
-<h3><%= truncate(@gram.caption, length: 150) %></h3>
-</div>
+<div class="container">
+  <div class="row">
 
-<% if gram_poster_logged_in(@gram) %>
-  <%= link_to 'Edit', edit_gram_path(@gram) %> |
-<% end %>
-<%= link_to 'Back', grams_path %>
+    <div class="col-lg-50" id='<%"gram_container" + @gram.id.to_s %>'>
+      <h3> Posted by <%= get_email_for_gram(@gram) %> </h3>
+      <%= image_tag(@gram.image_url, width: 600) if @gram.image.present? %>
+      <h3><%= truncate(@gram.caption, length: 150) %></h3>
+
+      <% if gram_poster_logged_in(@gram) %>
+        <%= link_to 'Edit', edit_gram_path(@gram) %> |
+      <% end %>
+      <%= link_to 'Back', grams_path %>
+    </div>
+
+    <div class ="col-lg-5">
+      <h3>Add a comment:</h3>
+      <%= render "comments/form" %>
+      <% all_comments(@gram).reverse.each do |comment| %>
+        <p> <%= comment.content %> </p>
+        <p> Commented by <%= comment.user_id %> <%= time_ago_in_words(comment.created_at || Time.now) %> ago. </p>
+        <hr>
+      <% end %>
+    </div>
+  </div>
+</div>

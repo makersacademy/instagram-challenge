@@ -1,7 +1,6 @@
 <!-- <h2><%= link_to gram.caption, gram_path(gram) %></h2> -->
 
-
-<div class='gram_container' id='<%"gram_container" + gram.id.to_s %>'>
+<div class="col-lg-6" id='<%"gram_container" + gram.id.to_s %>'>
 <h3> Posted by <%= get_email_for_gram(gram) %> </h3>
 <%= link_to gram_path(gram) do %>
   <%= image_tag(gram.image_url, width: 600) if gram.image.present? %>
@@ -11,6 +10,6 @@
 
   <p id='<%"gram_likes" + gram.id.to_s%>'><%=gram.likes.count %> <%= gram.likes.count == 1 ? 'Like' : 'Likes'%></p>
   <p id='<%"gram_comments" + gram.id.to_s %>'> <%= number_of_comments(gram) %> comments. </p>
-
+  <%= button_to 'Comments', gram_url(gram[:id]), method: :get %>
 </div>
 <hr>
