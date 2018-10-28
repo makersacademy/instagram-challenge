@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :messages, only: :index do
-    resources :comments
+    resources :likes, only: :create
+    resources :comments, only: [:new, :create]
   end
 
   resources :users do

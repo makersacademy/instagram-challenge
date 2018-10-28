@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature "Messages", type: :feature do
@@ -7,8 +9,12 @@ RSpec.feature "Messages", type: :feature do
     make_message("Test")
   end
 
-  scenario 'User can post messages onto the timeline' do
+  scenario 'User can post text onto the timeline' do
     expect(find('div#1.message-div')).to have_content("Test")
+  end
+
+  scenario 'User can post photos onto the timeline' do
+    expect(find('div#1.message-div')).to have_selector('img#photo-1.message-photo')
   end
 
   scenario 'Messages appear in reverse chronological order' do
