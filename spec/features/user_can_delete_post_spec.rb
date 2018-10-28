@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'helpers/user_helpers.rb'
-require 'helpers/post_helpers.rb'
+require 'helpers/web_helpers.rb'
 
 RSpec.feature 'Delete Post', type: :feature do
   scenario 'Can delete a post' do
