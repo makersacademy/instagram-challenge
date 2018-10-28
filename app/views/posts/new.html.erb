@@ -2,9 +2,12 @@
 <p>Find me in app/views/posts/new.html.erb</p>
 
 
-<%= form_for @post do |form| %>
-  <%= form.label :messages %>
-  <%= form.text_field :messages %>
+<%= form_for @post, html: { multipart:true } do |form| %>
 
-  <%= form.submit "Submit" %>
+  <%= form.label :messages %>
+  <%= form.text_field :messages, { required: true } %> <br>
+  <%= form.label :image %>
+  <%= form.file_field :image, { required: true } %>
+
+  <%= form.submit "Gram it!" %>
 <% end %>

@@ -13,13 +13,13 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <big><%= link_to "Instagram", posts_path, {:class => 'nav-link'} %></big>
+      <h2><%= link_to "Instagram", posts_path, {:class => 'nav-link'} %></h2>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item active"><h4>
             <%= link_to "new post", posts_new_path, {:class => 'nav-link'} %>
-          </li>
+          </h4></li>
 
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -27,7 +27,7 @@
             <% if user_signed_in? %>
             Logged in as <strong><%= current_user.email %></strong>.
             <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link', confirm: 'are you sure?'  %>
             <% else %>
             <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
             <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
