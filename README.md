@@ -92,6 +92,11 @@ So I can see when posts were created,
 I'd like to see the date and time they were posted.
 
 As a user,
+So I can stay updated to the latest information,
+I'd like to see my posts in reverse chronological order.
+_______________________________________________________________
+
+As a user,
 So I can tell my friends what I think of their pictures,
 I'd like the ability to leave comments on pictures.
 
@@ -110,7 +115,3 @@ I'd like to be able to see the amount of likes on a post.
 As a user,
 So I don't accidentally give someone too much approval,
 I'd like to be able to only like a post once.
-
-As a user,
-So I can stay updated to the latest information,
-I'd like to see my posts in reverse chronological order.

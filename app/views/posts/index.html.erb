@@ -1,22 +1,16 @@
 <h1>Posts</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Caption</th>
-      <th>Picture</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
-    <% @posts.each do |posts| %>
+    <% @posts.reverse.each do |posts| %>
       <tr>
         <td><%= posts.title %></td>
-        <td><%= image_tag posts.image_url, width: '50%' if posts.image.present? %></td>
+        <td><%= image_tag posts.image_url, width: '40%' if posts.image.present? %></td>
+        <td><%= posts.created_at.strftime('Posted at %I:%M%p, %d/%m/%Y') %></td>
         <td><%= link_to 'Show', posts %></td>
         <td><%= link_to 'Edit', edit_post_path(posts) %></td>
-        <td><%= link_to 'Destroy', posts, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', posts, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
