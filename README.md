@@ -1,40 +1,33 @@
-Instagram Challenge
-===================
+# README
 
-## Instructions
+Simple challenge, build instagram using Rails! Well it's some of the way there, there's more work I'd like to put into it but at the moment you can see the deployed site on Heroku here:
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+https://morning-lowlands-26385.herokuapp.com/
 
-## Task
+I have to admit this hasn't actually been TDD'ed, I know I'll get slammed for it if it gets code reviewed but oh well. I don't feel 100% like I'm sure what's going on with rails and I took this weekend challenge as a "Have a play with rails and some CSS and see what you can get done" which it seems to have done pretty well. I'm relatively pleased with the outcome, but intend to put more work into it as well.
 
-Build Instagram: Simple huh!
+## How to use
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+1. clone this repo
+2. move into the folder and run `bundle install`
+3a. create the databases using `db:create`
+3b. migrate the databases using `bin/rails db:migrate`
+4. start your server with the command `bin/rails s`
+5. visit localhost:3000
+6. sign up for an account
 
-Bonus if you can add filters!
+## Current Features
 
-## How to start
+- The application allows users to sign in/out through the magic of the 'devise' gem.
+- Users are able to post pictures with a short description through the magic of the 'paperclip' gem
+- Only users who sign in are allowed to see any pictures or post any pictures. Anyone not signed in will be returned to the login page and prompted to log in
+- Users are able to visit each picture they want and see the user who created it
+- Users are able to delete their photos if they no longer wish to have them there
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+## Stuff to do
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+- Add ability for users to comment on pictures (already partly done, databases are set up I just need to work out how to set the forms for comments up properly)
+- Add ability to like images
+- Add feature that shows the number of likes upon hovering over a photo
+- Add users profile page, showing list of all their photos. Include links to their profile page
+- Write Some Tests!
