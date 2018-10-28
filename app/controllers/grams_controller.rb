@@ -33,7 +33,9 @@ class GramsController < ApplicationController
     end
   end
 
-  def users_grams; end
+  def users_grams
+    @users_grams = Gram.where(user_id: current_user.id)
+  end
 
   private
 

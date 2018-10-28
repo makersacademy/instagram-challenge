@@ -6,7 +6,7 @@ class LandingController < ApplicationController
 
   def landing
     if user_signed_in?
-      @grams = Gram.all
+      @grams = Gram.all.reverse
       render 'grams/index'
     else
       render 'overview'
