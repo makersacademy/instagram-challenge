@@ -12,9 +12,22 @@ RSpec.describe PostsController, type: :controller do
   describe "POST /" do
     it "responds with 200" do
       post :create, params: { post: { image:  Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/D50_8772.jpg')), 'image/jpeg')} }
-      expect(response).to redirect_to(posts_url)
+      expect(response).to redirect_to(posts_path)
     end
   end
+
+    # it "creates a post" do
+    #   post :create, params: { post: { image:  Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/D50_8772.jpg')), 'image/jpeg')} }
+    #   expect(Post.find_by(image: Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/D50_8772.jpg')), 'image/jpeg') )).to be
+    # end
+
+  describe "GET /" do
+    it "responds with 200" do
+      get :index
+      expect(response).to have_http_status(200)
+    end
+  end
+
 
 end
 
