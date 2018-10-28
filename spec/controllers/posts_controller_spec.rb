@@ -26,7 +26,7 @@ RSpec.describe PostsController, type: :controller do
   #   user = User.all[0]
   #   Post.create(title: 'Hello, world!', image: 'image')
   #   expect(Post.find_by(message: 'Hello, world!')).to be
-# end
+  # end
 
   describe 'GET /' do
     it 'responds with 200' do
