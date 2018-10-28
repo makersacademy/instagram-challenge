@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
+  before(:each) do
+    user = double('user', id: 1)
+    allow(request.env['warden']).to receive(:authenticate!).and_return(user)
+    allow(controller).to receive(:current_user).and_return(user)
+  end
+
 
   describe "GET/new" do
     it "responds with 200" do
