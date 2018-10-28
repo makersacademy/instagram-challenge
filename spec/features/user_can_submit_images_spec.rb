@@ -9,7 +9,7 @@ RSpec.feature "Images page", type: :feature do
     fill_in "user_password_confirmation", with: "testpassword1234"
     click_button "Sign up"
     visit "/posts" #change this line?
-    expect(page).to have_content("Here are your lovely Posts!")
+    expect(page).to have_content("Here are your Posts...")
   end
 
 
@@ -23,7 +23,7 @@ RSpec.feature "Images page", type: :feature do
     attach_file('post_image', File.absolute_path('/Users/florencehapgood/Desktop/Projects/instagram-challenge/spec/D50_8772.jpg'))
     #fill_in "post_image", with: "D50_8772.jpg"
     click_button "Submit"
-    expect(page).to have_content("Here are your lovely Posts!")
+    expect(page).to have_content("Here are your Posts...")
     save_and_open_page
   end
 

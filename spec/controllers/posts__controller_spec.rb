@@ -22,10 +22,10 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-    it "creates a post" do
-      post :create, params: { post: { image:  Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/D50_8772.jpg')), 'image/jpeg'), caption: "hi"}}
-      expect(Post.find_by(caption: "hi")).to be
-    end
+    # it "creates a post" do
+    #   post :create, params: { post: { image:  Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/D50_8772.jpg')), 'image/jpeg'), caption: "hi"}}
+    #   expect(Post.find_by(caption: "hi")).to be
+    # end
 
   describe "GET /" do
     it "responds with 200" do
