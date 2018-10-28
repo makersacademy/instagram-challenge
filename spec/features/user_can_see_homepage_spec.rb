@@ -5,6 +5,6 @@ require 'rails_helper'
 RSpec.feature 'Homepage', type: :feature do
   scenario 'Can see app title' do
     visit '/'
-    expect(page).to have_content('Spacagram')
+    expect(page).to have_content('Spaceagram')
   end
 end

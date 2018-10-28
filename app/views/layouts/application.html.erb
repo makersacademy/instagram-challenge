@@ -1,41 +1,55 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
+    <title>Spaceagram</title>
+
     <%= csrf_meta_tags %>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-        <link href="https://fonts.googleapis.com/css?family=Lobster|Fira+Sans" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <%= csp_meta_tag %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
+
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/">
-          <title>Spacagram</title></a>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="max-width: 100%;">
+      <font size="16" color="white"><big><strong><%=  "Spaceagram"  %></strong></big></font>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% if user_signed_in? %>
+          <li class="nav-item active">
+            <font size="5"><%= link_to "Homepage", welcome_index_url, {:class => 'nav-link'} %></font>
+          </li>
+          <li class="nav-item active">
+
+            <font size="5"><%= link_to "Profile", profile_path(current_user.username), {:class => 'nav-link'} %></font>
+          </li>
+          <% end %>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+          <p class="navbar-text pull-right">
+            <% if user_signed_in? %>
+            <font size='3' color='white'> Logged in as <strong><%= current_user.email %></strong></font>
+            <font size='3' color='white'><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+            <font size='3' color='white'><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+            <% else %>
+            <font size='3' color='white'><%= link_to "Sign up!", new_user_registration_path, :class => 'navbar-link'  %> |
+            <font size='3' color='white'><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+            <% end %>
+          </p>
+        </form>
       </div>
     </nav>
-
     <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
+    <p class="alert alert-success"><%= notice %></p>
     <% end %>
     <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
+    <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 
-    <div class="container">
-      <%= yield %>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+    <%= yield %>
   </body>
 </html>

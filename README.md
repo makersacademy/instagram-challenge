@@ -21,7 +21,8 @@
 - [x] User can like pictures
 - [x] User cannot like more than once
 - [x] User can have a profile with all their pictures
-
+- [x] User can follow another user
+- [x] User can unfollow another user
 
 ## Technologies
 
