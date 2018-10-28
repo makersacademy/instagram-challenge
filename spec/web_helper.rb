@@ -18,5 +18,6 @@ def make_message(text)
   visit('/')
   click_on('Create post')
   fill_in :message_text, with: text
+  find('#message_image').attach_file(Rails.root + 'spec/fixtures/picture.jpeg')
   click_on('Submit')
 end
