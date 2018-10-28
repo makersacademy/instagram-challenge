@@ -24,6 +24,5 @@ RSpec.feature "Timeline", type: :feature do
       expect(page).to have_css("img[src*='image.jpg']")
       expect(page).to have_content('Caption: Test Caption')
     end
-
   end
 end

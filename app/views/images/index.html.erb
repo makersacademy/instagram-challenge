@@ -1,25 +1,31 @@
-<% if current_user %>
-<%= link_to('Logout', destroy_user_session_path, id: "log-out" , method: :delete) %>
-<% end %>
+<div class="nav">
+  <% if current_user %>
+  <%= link_to('Logout', destroy_user_session_path, id: "log-out" , method: :delete) %>
+  <% end %>
+  <%= link_to new_image_path do %>
+    Upload Image
+  <% end %>
+</div>
 
 <h1>Instasham</h1>
 
 <div class='timeline'>
 <% if @images.any? %>
   <% @images.each do |image| %>
-  <p class='user.id' id=<%=image.id%>><%= image.user.email %>'s post:</p>
-    <div class='image-div' id=<%=image.id%>>
+    <div class="post">
+      <p class='user-email' id=<%=image.id%>><%= image.user.email %>'s post:</p>
+      <div class='image-div' id=<%=image.id%>>
       <%= image_tag(image.photo_url.to_s, width: 300) %>
-      <p class='image-caption' id=<%=image.id%>>Caption: <%= image.caption %></p>
-      <p class='caption-edit'><%= link_to 'Edit Caption', edit_image_path(image) %></p>
-      <p class='like-count'><%= image.likes.count %> <%= (image.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-      <p class='like-button'><%= button_to 'Like', image_likes_path(image), id: "like-button", method: :post, params: {user_id: current_user.id, image_id: image.id } %></p>
-    <% end %>
+      </div>
+      <div class="caption-wrapper">
+        <p class='image-caption' id=<%=image.id%>>Caption: <%= image.caption %></p>
+        <p class='like-count'><%= image.likes.count %> <%= (image.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+        <%= button_to '♥', image_likes_path(image), id: "like-button", method: :post, params: {user_id: current_user.id, image_id: image.id } %>
+        <p class='caption-edit'><%= link_to 'Edit Caption', edit_image_path(image) %></p>
+      </div>
+    </div>
+  <% end %>
 <% else %>
     <h2>No Images Added Yet</h2>
   </div>
-<% end %>
-
-<%= link_to new_image_path do %>
-  Upload Image
 <% end %>
