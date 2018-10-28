@@ -15,28 +15,10 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new
   end
 
-  def show
-    @message = Message.find(params[:id])
-  end
-
   def create
     @message = current_user.messages.create(message_params)
     @message.image.attach(params[:message][:image])
-    redirect_to message_index_path
-  end
-
-  def edit
-    @message = current_user.messages.find(params[:id])
-  end
-
-  def update
-    @message = current_user.messages.find(params[:id])
-  end
-
-  def destroy
-    @message = Message.find(params[:id])
-    @message.destroy
-    redirect_to messages_url, notice: 'Your message has been deleted'
+    redirect_to messages_path
   end
 
   private
