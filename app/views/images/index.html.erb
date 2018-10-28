@@ -21,7 +21,9 @@
         <p class='image-caption' id=<%=image.id%>>Caption: <%= image.caption %></p>
         <p class='like-count'><%= image.likes.count %> <%= (image.likes.count) == 1 ? 'Like' : 'Likes'%></p>
         <%= button_to '♥', image_likes_path(image), id: "like-button", method: :post, params: {user_id: current_user.id, image_id: image.id } %>
-        <p class='caption-edit'><%= link_to 'Edit Caption', edit_image_path(image) %></p>
+        <% if current_user.id == image.user_id %>
+          <p class='caption-edit'><%= link_to 'Edit Caption', edit_image_path(image) %></p>
+        <% end %>
       </div>
     </div>
   <% end %>
