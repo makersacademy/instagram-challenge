@@ -2,11 +2,8 @@
 
 
 <div class='gram_container' id='<%"gram_container" + gram.id.to_s %>'>
-<p><%= truncate(gram.caption, length: 150) %></p>
-
-<% if gram.user_id == current_user.id %>
-<p><%= link_to 'Edit', edit_gram_path(gram) %></p>
-<% end %>
+<h3> Posted by <%= get_email_for_gram(gram) %> </h3>
 <%= image_tag(gram.image_url, width: 600) if gram.image.present? %>
+<h3><%= truncate(gram.caption, length: 150) %></h3>
 </div>
 <hr>

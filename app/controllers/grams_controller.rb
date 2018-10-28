@@ -6,6 +6,8 @@ class GramsController < ApplicationController
 
   def index
     @grams = Gram.order('created_at DESC')
+    @comments = Comment.all
+    @likes = Like.all
   end
 
   def show; end
@@ -16,25 +18,23 @@ class GramsController < ApplicationController
 
   def create
     @gram = Gram.new(post_params)
-    if @gram.save
-      redirect_to grams_path
-    else
-      render :new
-    end
+    @gram.save
+    redirect_to grams_path
   end
 
   def edit; end
 
   def update
-    if @gram.update_attributes(post_params)
-      redirect_to post_path(@gram)
-    else
-      render :edit
-    end
+    @gram.update_attributes(post_params)
+    redirect_to post_path(@gram)
   end
 
   def users_grams
-    @users_grams = Gram.where(user_id: current_user.id)
+    if user_signed_in?
+      @users_grams = Gram.where(user_id: current_user.id)
+    else
+      redirect_to '/'
+    end
   end
 
   private

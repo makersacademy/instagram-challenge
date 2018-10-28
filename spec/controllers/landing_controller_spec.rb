@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ApplicationController, type: :controller do
+RSpec.describe LandingController, type: :controller do
   describe 'GET #landing' do
     it 'returns http success' do
       get :landing

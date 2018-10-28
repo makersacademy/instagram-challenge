@@ -1,0 +1,12 @@
+<% @users_grams.reverse.each do |gram| %>
+  <div class='usergram' id="user + <%= gram.user_id.to_s + 'image' + gram.id.to_s %>" >
+    <%= image_tag(gram.image_url, width: 600) if gram.image.present? %>
+    <h2> <%= gram.caption %> </h2>
+    <%= link_to edit_gram_path(gram[:id]) do %>
+      Edit gram
+    <% end %>
+    <%= link_to gram_path(gram[:id]), method: :delete do %>
+      Delete gram
+    <% end %>
+  </div>
+<% end %>
