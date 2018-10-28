@@ -11,7 +11,9 @@
     <div class='image-div' id=<%=image.id%>>
       <%= image_tag(image.photo_url.to_s, width: 300) %>
       <p class='image-caption' id=<%=image.id%>>Caption: <%= image.caption %></p>
-        <p class='caption-edit'><%= link_to 'Edit Caption', edit_image_path(image) %></p>
+      <p class='caption-edit'><%= link_to 'Edit Caption', edit_image_path(image) %></p>
+      <p class='like-count'><%= image.likes.count %> <%= (image.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+      <p class='like-button'><%= button_to 'Like', image_likes_path(image), id: "like-button", method: :post, params: {user_id: current_user.id, image_id: image.id } %></p>
     <% end %>
 <% else %>
     <h2>No Images Added Yet</h2>
