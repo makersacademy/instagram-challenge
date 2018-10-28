@@ -7,5 +7,6 @@ RSpec.feature 'Upload', type: :feature do
     signup
     upload_image
     expect(page).to have_content('Easy Peasy')
+    click_link 'Logout'
   end
 end

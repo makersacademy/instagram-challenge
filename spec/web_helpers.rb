@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 def signup
-  visit '/users/sign_up'
+  visit '/'
+  click_link 'Sign Up'
   fill_in 'user_email', with: 'tests@mail.com'
   fill_in 'user_password', with: 'test123'
   fill_in 'user_password_confirmation', with: 'test123'

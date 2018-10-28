@@ -38,15 +38,15 @@ class GramsController < ApplicationController
   end
 
   def like
-		Like.create(gram_id: params[:id], user_id: current_user.id)
-		flash[:success] = "Like Counted!"
-		redirect_back(fallback_location: root_path)
-	end
+    Like.create(gram_id: params[:id], user_id: current_user.id)
+    flash[:success] = 'Like Counted!'
+    redirect_back(fallback_location: root_path)
+  end
 
   def unlike
     like = Like.where(gram_id: params[:id], user_id: current_user.id)[0]
     like.destroy
-    flash[:success] = "Unliked!"
+    flash[:success] = 'Unliked!'
     redirect_back(fallback_location: root_path)
   end
 

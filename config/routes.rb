@@ -11,11 +11,11 @@ Rails.application.routes.draw do
     resources :comments
     resources :likes
     member do
-  		post 'like'
-  	end
+      post 'like'
+    end
     member do
-  		post 'unlike'
-  	end
+      post 'unlike'
+    end
   end
   get 'my_grams', to: 'grams#users_grams'
 end

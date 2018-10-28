@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
+# The model for comments
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :gram
-
-  def get_email
-    User.find(user_id).email
-  end
 end

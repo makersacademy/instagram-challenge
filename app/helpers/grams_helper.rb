@@ -25,6 +25,7 @@ module GramsHelper
   end
 
   def user_liked?(gram)
-    Like.where(user_id: current_user.id, gram_id: gram.id).count > 0
+    return nil unless current_user
+    Like.where(user_id: current_user.id, gram_id: gram.id).count.positive?
   end
 end
