@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spaceagram</title>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag   'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="max-width: 100%;">
+      <font size="16" color="white"><big><strong><%=  "Spaceagram"  %></strong></big></font>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% if user_signed_in? %>
+          <li class="nav-item active">
+            <font size="5"><%= link_to "Homepage", welcome_index_url, {:class => 'nav-link'} %></font>
+          </li>
+          <li class="nav-item active">
+
+            <font size="5"><%= link_to "Profile", profile_path(current_user.username), {:class => 'nav-link'} %></font>
+          </li>
+          <% end %>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+          <p class="navbar-text pull-right">
+            <% if user_signed_in? %>
+            <font size='3' color='white'> Logged in as <strong><%= current_user.email %></strong></font>
+            <font size='3' color='white'><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+            <font size='3' color='white'><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+            <% else %>
+            <font size='3' color='white'><%= link_to "Sign up!", new_user_registration_path, :class => 'navbar-link'  %> |
+            <font size='3' color='white'><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+            <% end %>
+          </p>
+        </form>
+      </div>
+    </nav>
+    <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
+    <%= yield %>
+  </body>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+  <footer class="footer" style='position: fixed; bottom: 0px'>
+   <div class="container">
+     <style>
+      .footer {
+         position: fixed;
+         left: 0;
+         width: 100%;
+         color: Black;
+         text-align: right;
+      }
+    </style>
+        <span class="text-muted">Made by <a href="https://github.com/m-rcd">Marianne Rachid</a>.</span>
+   </div>
+ </footer>
+</html>

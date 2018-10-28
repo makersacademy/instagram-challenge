@@ -1,40 +1,38 @@
-Instagram Challenge
-===================
+[![Build Status](https://travis-ci.org/m-rcd/instagram-challenge.svg?branch=master)](https://travis-ci.org/m-rcd/instagram-challenge)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
+#  Spaceagram
 
-## Instructions
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Features
 
-## Task
+- [x] User can sign up with email and username
+- [x] User can sign in
+- [x] User can sign out
+- [x] User can add picture
+- [X] User can see the username above the picture
+- [x] User can update pictures
+- [x] User cannot update someone else's post
+- [x] User can delete posts
+- [x] User cannot delete someone else's post
+- [x] Pictures show date they were posted
+- [x] Pictures appear with newest first
+- [x] User can comment on pictures
+- [x] Comments show date they were posted
+- [x] User can like pictures
+- [x] User cannot like more than once
+- [x] User can have a profile with all their pictures
+- [x] User can follow another user
+- [x] User can unfollow another user
 
-Build Instagram: Simple huh!
+## Technologies
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+- rails
+- Postgres
+- carrierwave
+- miniMagik
+- Devise
+- Rspec
+- html
 
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+[Sign up!](https://spaceagram.herokuapp.com/)

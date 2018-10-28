@@ -1,0 +1,18 @@
+
+<h2><font color='black' ><%= @user.username %></font></h2><br>
+
+<%= render 'users/follow_form' if user_signed_in? %>
+
+<section class="stats">
+    <%= render 'shared/stats' %>
+</section>
+
+<% @posts.each do |post| %>
+<div id='post_<%=post.id %>'>
+<%= image_tag(post.image.thumb.url, alt: 'Image') %><br>
+<font color='black'><%= post.description %></font><br>
+<font color='black'><%= post.created_at.strftime('Posted at %I:%M%p, %d/%m/%Y') %></font><br>
+<font color='black'><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></font>
+<font color='black'><%= post.comments.count %> <%= (post.comments.count) == 1 ? 'Comment' : 'Comments'%></font>
+</div>
+<%end%>

@@ -1,0 +1,26 @@
+<%= form_for @post, html: { multipart: true } do |f| %>
+ <% if @post.errors.any? %>
+   <div id="error_explanation">
+     <font color='black'><h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2></font>
+
+     <ul>
+     <% @post.errors.full_messages.each do |message| %>
+       <font color='black'><li><%= message %></li></font>
+     <% end %>
+     </ul>
+   </div>
+ <% end %>
+
+ <div class="field">
+   <font color='black'><%= f.label :description %></font><br>
+   <%= f.text_area :description %>
+ </div>
+ <div class="field">
+  <font color='black'>  <%= f.label :image %></font><br>
+    <%= f.file_field :image %>
+  </div>
+
+ <div class="actions">
+   <%= f.submit %>
+ </div>
+<% end %>
