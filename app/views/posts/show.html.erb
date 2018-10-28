@@ -1,4 +1,8 @@
-<div class="individual-photos"><%= image_tag @post.image.url(:large) %>
+<div class="individual-photos">
+<% if current_user == @post.user %>
+<%= link_to 'delete',  @post,  method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<%= image_tag @post.image.url(:large) %>
 <h3><%= @post.messages %></h3>
-<small>Post by: <%= @post.user.email %></small>
+<small>Posted by: <%= @post.user.email %></small>
 </div>
