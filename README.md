@@ -35,4 +35,29 @@
 - Rspec
 - html
 
+### Instructions
+
+- Clone this [repo](https://github.com/m-rcd/instagram-challenge)
+- Go to project directory
+```
+cd instagram-challenge
+```
+- Install gems
+ ```
+  Bundle install
+  ```
+- Create database
+ ```
+  rake db:create
+  rake db:migrate
+  ```
+
+- Start server
+```
+bin/rails server
+```
+- Visit `localhost:3000`
+- Run `rspec` for the test
+
+
 [Sign up!](https://spaceagram.herokuapp.com/)
