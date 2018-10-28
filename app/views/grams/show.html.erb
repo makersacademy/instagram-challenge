@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Caption:</strong>
-  <%= @gram.caption %>
-</p>
+<div class='gram_container' id='<%"gram_container" + @gram.id.to_s %>'>
+<h3> Posted by <%= get_email_for_gram(@gram) %> </h3>
+<%= image_tag(@gram.image_url, width: 600) if @gram.image.present? %>
+<h3><%= truncate(@gram.caption, length: 150) %></h3>
+</div>
 
-<p>
-  <strong>Gram:</strong>
-  <%= image_tag(@gram.image_url, width: 600) if @gram.image.present? %>
-</p>
-
-<%= link_to 'Edit', edit_gram_post_path(@gram) %> |
-<%= link_to 'Back', gram_posts_path %>
+<% if gram_poster_logged_in(@gram) %>
+  <%= link_to 'Edit', edit_gram_path(@gram) %> |
+<% end %>
+<%= link_to 'Back', grams_path %>

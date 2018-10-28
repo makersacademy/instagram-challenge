@@ -3,7 +3,13 @@
 
 <div class='gram_container' id='<%"gram_container" + gram.id.to_s %>'>
 <h3> Posted by <%= get_email_for_gram(gram) %> </h3>
-<%= image_tag(gram.image_url, width: 600) if gram.image.present? %>
+<%= link_to gram_path(gram) do %>
+  <%= image_tag(gram.image_url, width: 600) if gram.image.present? %>
+<% end %>
 <h3><%= truncate(gram.caption, length: 150) %></h3>
+
+<p id='<%"gram_likes" + gram.id.to_s %>'> <%= number_of_likes(gram) %> likes. </p>
+<p id='<%"gram_comments" + gram.id.to_s %>'> <%= number_of_comments(gram) %> comments. </p>
+
 </div>
 <hr>
