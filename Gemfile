@@ -66,7 +66,7 @@ group :test do
   gem 'rubocop-rails'
   gem "simplecov"
   gem "simplecov-console"
-  gem "factory_bot"
+  gem "factory_bot_rails"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

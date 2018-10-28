@@ -3,6 +3,49 @@
   <head>
     <title>Mintstagram</title>
     <h1>Welcome to Mintstagram!</h1>
+    <header>
+  <% if current_user %>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="/posts">Mintstagram</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/posts/new">New Post</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/users/edit">Edit Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/sign_out" data-method="delete">Logout</a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+  <% else %>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="/posts">aceBook</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a id="loggedIn" class="nav-link" href="/users/sign_up">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign_in">Login</a>
+          </li>
+        </ul>
+        </div>
+    </nav>
+  <% end %>
+  </header>
+<body>
     <% if !user_signed_in? %>
     <h3>Please sign up or log in below:</h3>
     <% end%>
@@ -11,6 +54,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css' %>
+
   </head>
 
   <body>
@@ -23,6 +68,7 @@
   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
+
 </p>
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
