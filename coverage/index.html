@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-10-28T14:04:41+00:00">2018-10-28T14:04:41+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-10-28T17:48:15+00:00">2018-10-28T17:48:15+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,15 +25,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.16
+         1.19
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>26</b> files in total.
-    <b>126</b> relevant lines. 
-    <span class="green"><b>126</b> lines covered</span> and
+    <b>128</b> relevant lines. 
+    <span class="green"><b>128</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -67,7 +67,7 @@
         <td>11</td>
         <td>11</td>
         <td>0</td>
-        <td>2.0</td>
+        <td>2.3</td>
       </tr>
       
       <tr>
@@ -103,9 +103,9 @@
       <tr>
         <td class="strong"><a href="#b3c4910d82e73b61cc95c55daddb752635afae72" class="src_link" title="app/models/post.rb">app/models/post.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>4</td>
-        <td>2</td>
-        <td>2</td>
+        <td>9</td>
+        <td>3</td>
+        <td>3</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -113,9 +113,9 @@
       <tr>
         <td class="strong"><a href="#434541f945d95909ca9896b348e5c2b05e6c5e3e" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>6</td>
-        <td>2</td>
-        <td>2</td>
+        <td>7</td>
+        <td>3</td>
+        <td>3</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -446,7 +446,7 @@
         <li class="covered" data-hits="3" data-linenumber="12">
           <span class="hits">3</span>
           
-          <code class="ruby">    @post = Post.create(post_params)</code>
+          <code class="ruby">    @post = Post.create(image: post_params[:image], caption: post_params[:caption], user_id: current_user.id)</code>
         </li>
       
         <li class="covered" data-hits="3" data-linenumber="13">
@@ -485,8 +485,8 @@
           <code class="ruby">  def post_params</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="19">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="6" data-linenumber="19">
+          <span class="hits">6</span>
           
           <code class="ruby">    params.require(:post).permit(:image, :caption)</code>
         </li>
@@ -618,8 +618,8 @@
     <h3>app/models/post.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>2</b> relevant lines. 
-      <span class="green"><b>2</b> lines covered</span> and
+      <b>3</b> relevant lines. 
+      <span class="green"><b>3</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -639,13 +639,43 @@
           <code class="ruby">   has_one_attached :image</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="3">
+        <li class="covered" data-hits="1" data-linenumber="3">
+          <span class="hits">1</span>
+          
+          <code class="ruby">   belongs_to :user</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="4">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="4">
+        <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby">   # def user_email</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="6">
+          
+          
+          <code class="ruby">   #  user.email</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="7">
+          
+          
+          <code class="ruby">   # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="8">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby">end</code>
@@ -661,8 +691,8 @@
     <h3>app/models/user.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>2</b> relevant lines. 
-      <span class="green"><b>2</b> lines covered</span> and
+      <b>3</b> relevant lines. 
+      <span class="green"><b>3</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -676,31 +706,37 @@
           <code class="ruby">class User &lt; ApplicationRecord</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="2">
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  # Include default devise modules. Others available are:</code>
+          <code class="ruby">  has_many :posts</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="3">
           
           
+          <code class="ruby">  # Include default devise modules. Others available are:</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="4">
+          
+          
           <code class="ruby">  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="4">
+        <li class="covered" data-hits="1" data-linenumber="5">
           <span class="hits">1</span>
           
           <code class="ruby">  devise :database_authenticatable, :registerable,</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="5">
+        <li class="never" data-hits="" data-linenumber="6">
           
           
           <code class="ruby">         :recoverable, :rememberable, :validatable</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="6">
+        <li class="never" data-hits="" data-linenumber="7">
           
           
           <code class="ruby">end</code>
@@ -3965,7 +4001,7 @@
         <li class="covered" data-hits="1" data-linenumber="26">
           <span class="hits">1</span>
           
-          <code class="ruby">      post :create, params: { post: { image:  Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, &#39;/spec/D50_8772.jpg&#39;)), &#39;image/jpeg&#39;), caption: &quot;hi&quot;} }</code>
+          <code class="ruby">      post :create, params: { post: { image:  Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, &#39;/spec/D50_8772.jpg&#39;)), &#39;image/jpeg&#39;), caption: &quot;hi&quot;}}</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="27">
