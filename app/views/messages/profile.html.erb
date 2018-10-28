@@ -14,16 +14,21 @@ Create post
     <p class='message-text' id=text-<%=message.id%>><%=message.text%></p>
     <p class='message-date' id=date-<%=message.id%>><%=message.format_date%></p>
     <%= image_tag message.image, class: 'message-photo', id: 'photo-' + message.id.to_s %>
+
+    <p class='message-like-count' id=likes-<%=message.id%>><%=message.likes.size%><span class=emoji>&#x1F44D;</span></p>
+    <div class='message-comment-list' id=comment-<%=message.id%>>
+      <% message.comments.each do |comment| %>
+      <div class='comment' id=comment-<%=comment.id%>>
+        <%= link_to '@' + comment.user.username, user_path(comment.user.id), params: {id: comment.user.id}, id: 'author' + comment.id.to_s %>
+        <p><%=comment.text%></p>
+      </div>
+      <% end %>
+    </div>
   </div>
 
-  <div class='message-comment-list' id=comment-<%=message.id%>>
-    <% message.comments.each do |comment| %>
-    <div class='comment' id=comment-<%=comment.id%>>
-      <p><%=comment.text%></p>
-    </div>
-    <% end %>
-  </div>
   <br>
+  <%= button_to 'Like', message_likes_path(message.id), method: :post, id: "like-button", class: "like-button", params: {user_id: current_user.id, post_id: message.id } %>
+  <%= link_to 'Make Comment', new_message_comment_path(message.id)%>
 <% end %>
 </div>
 
