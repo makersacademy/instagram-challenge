@@ -15,6 +15,7 @@ end
 def create_image(caption)
   visit '/'
   click_link 'Upload Image'
+  attach_file('image[photo]', File.join(Rails.root + 'spec/fixtures/image.jpg'))
   fill_in 'Caption', with: caption
   click_button 'Submit'
 end

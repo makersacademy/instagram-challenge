@@ -13,14 +13,14 @@ RSpec.feature "Timeline", type: :feature do
     end
   end
 
-  context 'creating an image' do
+  context 'Images have been previously created' do
     before do
       create_image('Test Caption')
     end
 
     scenario 'User can view image caption ' do
       visit('/')
-      expect(page).to have_content('Test Caption')
+      expect(page).to have_content('Caption: Test Caption')
     end
 
   end

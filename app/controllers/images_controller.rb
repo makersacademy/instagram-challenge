@@ -5,10 +5,6 @@ class ImagesController < ApplicationController
     @images = Image.all.reverse
   end
 
-  # def show
-  #   @image = Image.find(params[:id])
-  # end
-
   def new
     @image = current_user.images.new
   end
@@ -18,9 +14,22 @@ class ImagesController < ApplicationController
     redirect_to images_url
   end
 
+  def edit
+    @image = current_user.images.find(params[:id])
+  end
+
+  def update
+    @image = current_user.images.find(params[:id])
+
+    @image.update(image_params)
+    flash[:notice] = 'Your caption has been updated'
+    redirect_to images_url
+  end
+
   private
 
   def image_params
     params.require(:image).permit(:caption, :photo)
   end
+
 end
