@@ -11,6 +11,8 @@ gem 'rails', '~> 5.2.1'
 gem 'pg'
 # Devise for signing in users
 gem 'devise'
+# Gem for uploading pictures
+gem 'carrierwave', '~> 1.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
