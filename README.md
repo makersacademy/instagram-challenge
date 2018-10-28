@@ -20,4 +20,14 @@
 - [x] Comments show date they were posted
 - [x] User can like pictures
 - [x] User cannot like more than once
-- [ ] User can have a profile with all their pictures
+- [x] User can have a profile with all their pictures
+
+
+## Technologies
+
+- rails
+- html
+- Postgres
+- carrierwave
+- miniMagik
+- Devise

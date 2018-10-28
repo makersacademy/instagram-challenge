@@ -4,7 +4,11 @@
 <h2> <%= @user.username %></h2><br>
 
 <% @posts.each do |post| %>
-  <%= image_tag(post.image.thumb.url, alt: 'Image') %><br>
-  <%= post.description %><br>
-  <%= post.created_at.strftime('Posted at %I:%M%p, %d/%m/%Y') %><br>
+<div id='post_<%=post.id %>'>
+<%= image_tag(post.image.thumb.url, alt: 'Image') %><br>
+<%= post.description %><br>
+<%= post.created_at.strftime('Posted at %I:%M%p, %d/%m/%Y') %><br>
+<%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
+<%= post.comments.count %> <%= (post.comments.count) == 1 ? 'Comment' : 'Comments'%>
+</div>
 <%end%>
