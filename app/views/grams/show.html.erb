@@ -11,7 +11,18 @@
       <% if gram_poster_logged_in(@gram) %>
         <%= link_to 'Edit', edit_gram_path(@gram) %> |
       <% end %>
-      <%= link_to 'Back', grams_path %>
+      <%= link_to 'Back', grams_path %> </br>
+      <% if user_liked?(@gram)%>
+        <%= link_to unlike_gram_path(@gram), method: 'post', remote: true do %>
+          <i class="fas fa-thumbs-down"></i>
+        <% end %>
+      <% else %>
+        <%= link_to like_gram_path(@gram), method: 'post', remote: true do %>
+          <i class="fas fa-thumbs-up"></i>
+        <% end %>
+      <% end %>
+      </span>
+      <span id="gram_<%= @gram.id %>_likes"><%= @gram.likes.size %></span> likes
     </div>
 
     <div class ="col-lg-5">
@@ -19,7 +30,7 @@
       <%= render "comments/form" %>
       <% all_comments(@gram).reverse.each do |comment| %>
         <p> <%= comment.content %> </p>
-        <p> Commented by <%= comment.user_id %> <%= time_ago_in_words(comment.created_at || Time.now) %> ago. </p>
+        <p> Commented by <%= get_comment_email(comment.user_id) %> <%= time_ago_in_words(comment.created_at || Time.now) %> ago. </p>
         <hr>
       <% end %>
     </div>

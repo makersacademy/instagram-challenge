@@ -26,7 +26,7 @@ class GramsController < ApplicationController
 
   def update
     @gram.update_attributes(post_params)
-    redirect_to post_path(@gram)
+    redirect_to gram_path
   end
 
   def users_grams
@@ -35,6 +35,19 @@ class GramsController < ApplicationController
     else
       redirect_to '/'
     end
+  end
+
+  def like
+		Like.create(gram_id: params[:id], user_id: current_user.id)
+		flash[:success] = "Like Counted!"
+		redirect_back(fallback_location: root_path)
+	end
+
+  def unlike
+    like = Like.where(gram_id: params[:id], user_id: current_user.id)[0]
+    like.destroy
+    flash[:success] = "Unliked!"
+    redirect_back(fallback_location: root_path)
   end
 
   private

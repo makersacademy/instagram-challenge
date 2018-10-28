@@ -1,5 +1,3 @@
-<!-- <h2><%= link_to gram.caption, gram_path(gram) %></h2> -->
-
 <div class="col-lg-6" id='<%"gram_container" + gram.id.to_s %>'>
 <h3> Posted by <%= get_email_for_gram(gram) %> </h3>
 <%= link_to gram_path(gram) do %>
@@ -7,8 +5,18 @@
 <% end %>
 <h3><%= truncate(gram.caption, length: 150) %></h3>
 
-
-  <p id='<%"gram_likes" + gram.id.to_s%>'><%=gram.likes.count %> <%= gram.likes.count == 1 ? 'Like' : 'Likes'%></p>
+  <span class="pull-right">
+  <% if user_liked?(gram)%>
+    <%= link_to unlike_gram_path(gram), method: 'post', remote: true do %>
+      <i class="fas fa-thumbs-down"></i>
+    <% end %>
+  <% else %>
+    <%= link_to like_gram_path(gram), method: 'post', remote: true do %>
+      <i class="fas fa-thumbs-up"></i>
+    <% end %>
+  <% end %>
+  </span>
+  <span id="gram_<%= gram.id %>_likes"><%= gram.likes.size %></span> likes
   <p id='<%"gram_comments" + gram.id.to_s %>'> <%= number_of_comments(gram) %> comments. </p>
   <%= button_to 'Comments', gram_url(gram[:id]), method: :get %>
 </div>

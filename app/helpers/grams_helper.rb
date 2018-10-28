@@ -23,4 +23,8 @@ module GramsHelper
   def all_comments(gram)
     Comment.where(gram_id: gram.id)
   end
+
+  def user_liked?(gram)
+    Like.where(user_id: current_user.id, gram_id: gram.id).count > 0
+  end
 end
