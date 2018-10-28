@@ -17,3 +17,13 @@ def log_in
   fill_in 'Password',              with: 'testpassword'
   click_button 'Log in'
 end
+
+def upload_image
+  sign_up
+  visit '/'
+  click_link 'Add post'
+  fill_in 'Title', with: 'test post'
+  fill_in 'Body',  with: 'test post'
+  attach_file('Image', Rails.root + 'spec/fixtures/logo.jpeg')
+  click_button 'Create Post'
+end
