@@ -20,9 +20,10 @@
       <div class="caption-wrapper">
         <p class='image-caption' id=<%=image.id%>><%= image.caption %></p>
         <p class='like-count'><%= image.likes.count %> <%= (image.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-        <%= button_to '♥', image_likes_path(image), id: "like-button", method: :post, params: {user_id: current_user.id, image_id: image.id } %>
+        <%= button_to '♥', image_likes_path(image), id: 'like-button', method: :post, params: {user_id: current_user.id, image_id: image.id } %>
         <% if current_user.id == image.user_id %>
           <p class='caption-edit'><%= link_to 'Edit Caption', edit_image_path(image) %></p>
+          <%= link_to 'Delete Post', image, :data => {:confirm => "Are you sure?"}, id: 'delete-link', :method => :delete %></p>
         <% end %>
       </div>
     </div>
