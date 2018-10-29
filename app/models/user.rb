@@ -3,9 +3,9 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:login]
-  has_many :posts
-  attr_writer :login
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
+  attr_writer :login
+  has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",

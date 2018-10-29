@@ -8,20 +8,24 @@ RSpec.describe User, type: :model do
     @user2 = create(:user_2)
   end
 
- it 'should start with both users not following each other' do
-   expect(@user.following?(@user2)).to be(false)
-   expect(@user2.following?(@user)).to be(false)
- end
+  it "should require a username" do
+    @user.username = nil
+    expect(@user).to_not be_valid
+  end
 
- it "should follow and unfollow a user" do
-   @user.follow(@user2)
-   expect(@user.following?(@user2)).to be(true)
- end
+   it 'should start with both users not following each other' do
+     expect(@user.following?(@user2)).to be(false)
+     expect(@user2.following?(@user)).to be(false)
+   end
+
+   it "should follow and unfollow a user" do
+     @user.follow(@user2)
+     expect(@user.following?(@user2)).to be(true)
+   end
 
   it "should unfollow a user" do
     @user.follow(@user2)
     @user.unfollow(@user2)
     expect(@user.following?(@user2)).to be(false)
   end
-
 end
