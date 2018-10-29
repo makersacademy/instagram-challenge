@@ -7,7 +7,6 @@ class PostsController < ApplicationController
     @post = Post.new(messages: user_params[:messages],
                     user_id: current_user.id,
                     image: user_params[:image])
-    puts @post.user_id
     if @post.save
       redirect_to posts_url
       flash[:success] = 'you have grammed your photo'
@@ -29,7 +28,8 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_url
+    
+     posts_url
   end
 
   private
