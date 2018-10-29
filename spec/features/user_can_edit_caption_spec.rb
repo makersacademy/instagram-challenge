@@ -1,5 +1,3 @@
-# <p class='post-edit'><%= link_to 'Edit Post', edit_post_path(post) %></p>
-
 require 'rails_helper'
 require 'rake'
 

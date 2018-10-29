@@ -22,7 +22,7 @@ RSpec.feature "Timeline", type: :feature do
       visit('/')
       expect(page).to have_content('test@email.com\'s post:')
       expect(page).to have_css("img[src*='image.jpg']")
-      expect(page).to have_content('Caption: Test Caption')
+      expect(page).to have_content('Test Caption')
     end
   end
 end
