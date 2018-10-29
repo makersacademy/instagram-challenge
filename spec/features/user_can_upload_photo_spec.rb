@@ -7,7 +7,6 @@ RSpec.feature 'Upload Photo', type: :feature do
   end
 
   context 'A signed in user' do
-
     scenario 'can view the page to upload an image' do
       click_on('Upload Image')
       expect(page).to have_content('Upload a new image')
@@ -25,5 +24,4 @@ RSpec.feature 'Upload Photo', type: :feature do
       expect(page).to have_css("img[src*='image.jpg']")
     end
   end
-
 end

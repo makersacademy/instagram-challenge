@@ -7,7 +7,6 @@ RSpec.feature 'Like Posts', type: :feature do
   end
 
   context 'A signed in user' do
-
     scenario 'Sees a like button for every image' do
       create_image('A good image')
       create_image('A great image!')
@@ -33,5 +32,4 @@ RSpec.feature 'Like Posts', type: :feature do
       expect(page).to have_content('3 Likes')
     end
   end
-
 end

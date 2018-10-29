@@ -7,7 +7,6 @@ RSpec.feature 'Edit Caption', type: :feature do
   end
 
   context 'A signed in user' do
-
     scenario 'can view edit caption page' do
       create_image('A lovely caption')
       click_on('Edit Caption')
