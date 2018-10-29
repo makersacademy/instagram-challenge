@@ -41,6 +41,26 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
+  describe 'PATCH' do
+    it 'updates posts' do
+      post :create, params: { post: { description: @post.description, image: @post.image,  user_id: @user.id  } }
+      post = Post.find_by(description: @post.description)
+      new_description = 'Hello'
+      patch :update, params: { post: { description: new_description, image: @post.image },id: post.id,  user_id: @user.id  }
+      updated_post = Post.find_by(description: new_description)
+      expect(updated_post.description).to eq(new_description)
+      expect(updated_post.id).to eq(post.id)
+    end
+
+    it 'redirects to welcome_index_url after successfull updating' do
+      post :create, params: { post: { description: @post.description, image: @post.image,  user_id: @user.id  } }
+      post = Post.find_by(description: @post.description)
+      new_description = 'Hello'
+      patch :update, params: { post: { description: new_description, image: @post.image },id: post.id,  user_id: @user.id  }
+      expect(response).to redirect_to(welcome_index_url)
+    end
+  end
+
   describe "DELETE #destroy" do
     it 'validate route DELETE /posts/:id to posts#destroy' do
       expect(delete: "/posts/1").to route_to(
