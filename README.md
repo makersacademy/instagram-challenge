@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/m-rcd/instagram-challenge.svg?branch=master)](https://travis-ci.org/m-rcd/instagram-challenge)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ba4c5799e9647f50ce5f/test_coverage)](https://codeclimate.com/github/m-rcd/instagram-challenge/test_coverage)
 #  Spaceagram
 
 
