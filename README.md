@@ -84,8 +84,22 @@ $ bin/rails server
 ```
 Visit http://localhost:3000 to view in your web browser.
 
+## Interface
+
+Sign up:
+
+![Imgur](https://i.imgur.com/AfMcIiC.png)
+
+Upload an image:
+
+![Imgur](https://i.imgur.com/5rfkSr3.png)
+
+Images feed:
+
+![Imgur](https://i.imgur.com/bArvILE.png)
+
 ## Trello Board Snippet
 
-Attaching my Trello board to show what I still need to do for this project. First is to add comments to image posts and deploy to Heroku!
+Attaching my Trello board to show what I would still like to do for this project. First is to add comments to image posts and deploy to Heroku!
 
-![Imgur](https://i.imgur.com/7O3B1gV.jpg)
+![Imgur](https://i.imgur.com/X28N831.png)
