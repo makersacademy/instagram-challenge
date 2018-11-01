@@ -66,3 +66,7 @@ bin/rails server
 
 
 [Sign up!](https://spaceagram.herokuapp.com/)
+
+## Diagram
+
+![Rails Diagram](rails-diagram.png)
