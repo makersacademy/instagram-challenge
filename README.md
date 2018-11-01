@@ -83,4 +83,4 @@ Run tests from the command line using `rspec`.
 * TDD'd using RSpec and Capybara.
 * Coverage = 100% (provided by SimpleCov)
 
-![Imgur](https://i.imgur.com/FXcLpHWl.png)
+![Imgur](https://i.imgur.com/HxkKE1U.png)
