@@ -49,9 +49,6 @@ I want to be able to like a picture
 
 ## Domain Model
 ```
-                 
-                 
-                 
                    ╔═════════════════╗
                    ║   CONTROLLERS   ║
 ╔════════╗         ║                 ║          ╔═══════╗
