@@ -23,6 +23,18 @@ Set-up the database:
 
 Then navigate to `http://localhost:3000/` in your browser.
 
+##### Browse a timeline of posts:
+![Imgur](https://i.imgur.com/QpyAbyC.png)
+
+##### Click on an author of a post to see all posts by that author:
+![Imgur](https://i.imgur.com/SlGdE0y.png)
+
+##### User can sign-up:
+![Imgur](https://i.imgur.com/V4np6Y9.png)
+
+##### A previously registered user can login:
+![Imgur](https://i.imgur.com/sKdzYCN.png)
+
 ## User Stories
 
 ```
@@ -45,7 +57,6 @@ As a user
 So that I can quickly give kudos for a picture
 I want to be able to like a picture
 ```
-
 
 ## Domain Model
 ```
@@ -71,3 +82,5 @@ I want to be able to like a picture
 Run tests from the command line using `rspec`. 
 * TDD'd using RSpec and Capybara.
 * Coverage = 100% (provided by SimpleCov)
+
+![Imgur](https://i.imgur.com/FXcLpHW.png)
