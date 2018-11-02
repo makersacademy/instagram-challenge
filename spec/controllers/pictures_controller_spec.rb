@@ -5,7 +5,6 @@ RSpec.describe PicturesController, type: :controller do
   before(:each) do
     user = User.create(username: "fakeUsername", email: "fake@person.com", password: "fakepassword")
     sign_in user
-
   end
 
   describe "GET /" do
