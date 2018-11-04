@@ -20,6 +20,7 @@ gem 'puma', '~> 3.7'
 gem 'rubocop', '~> 0.59.2', require: false
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'simple_form'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
