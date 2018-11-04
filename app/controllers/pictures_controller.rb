@@ -8,7 +8,7 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.create(picture_params)
-    redirect_to picture_url
+    redirect_to pictures_index_url
   end
 
   def index
