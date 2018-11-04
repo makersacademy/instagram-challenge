@@ -12,14 +12,14 @@ class PicturesController < ApplicationController
   end
 
   def index
-    @picture = Picture.all
+    @pictures = Picture.all
     @users = User.all
   end
 
   private
 
   def picture_params
-    params.require(:picture).permit(:image)
+    params.require(:picture).permit(:image, :caption)
   end
 
 end
