@@ -9,6 +9,12 @@ RSpec.describe PicturesController, type: :controller do
         expect(response).to have_http_status(302)
       end
     end
+    describe "GET /new" do
+      it "is redirected" do
+        get :new
+        expect(response).to have_http_status(302)
+      end
+    end
   end
 
   context "when signed in" do
@@ -20,6 +26,12 @@ RSpec.describe PicturesController, type: :controller do
     describe "GET /index" do
       it "is successful" do
         get :index
+        expect(response).to have_http_status(200)
+      end
+    end
+    describe "GET /new" do
+      it "is successful" do
+        get :new
         expect(response).to have_http_status(200)
       end
     end

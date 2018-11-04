@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
 
   before_action :authenticate_user!
-  
+
   def new
     @picture = Picture.new
   end
@@ -19,7 +19,7 @@ class PicturesController < ApplicationController
   private
 
   def picture_params
-    params.require(:picture).permit(:url)
+    params.require(:picture).permit(:image)
   end
-  
+
 end
