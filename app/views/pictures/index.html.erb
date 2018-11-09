@@ -3,15 +3,20 @@
     <div class="col-sm-8">
       <h2>Photos</h2>
          <% @pictures.each do |picture| %>
-           <ul>
-             <div>
-               <div class="col-sm pb-4">
-                 <%=image_tag picture.image.url(:medium)%>
-                 <br>
-                 <%= picture.caption %>
-               </div>
-             </div>
-           </ul>
+           <div class="col-sm pb-4">
+
+            <%=image_tag picture.image.url(:medium)%>
+            <%= picture.caption %>
+
+            <% liked = Like.find_by(picture_id: picture.id, user_id: current_user.id) %>
+
+            <%= link_to "/pictures/likes"(:picture_id => picture.id), :method => :post do %>
+
+              <%= liked ? 'Unlike' : 'Like' %>
+            <% end %>
+            <p><%=@likes.count(picture.id)%></p>
+
+           </div>
         <% end %>
     </div>
   </div>

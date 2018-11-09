@@ -14,6 +14,7 @@ class PicturesController < ApplicationController
   def index
     @pictures = Picture.all
     @users = User.all
+    @likes = Like.all
   end
 
   private
