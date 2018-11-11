@@ -14,6 +14,12 @@ Postgres
 
 SQL
 
+## Task
+
+Build Instagram: Simple huh!
+
+Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+
 ## User Stories
 
 ```
@@ -52,11 +58,9 @@ So that I can write what I appreciate about a good photo
 I can comment on a picture on Instasham
 ```
 
-## Task
+## Request / Response Cycle Diagram
 
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+![Imgur](https://i.imgur.com/zRYDyjs.jpg)
 
 ## Instructions
 
