@@ -60,7 +60,7 @@ I can comment on a picture on Instasham
 
 ## Request / Response Cycle Diagram
 
-![Imgur](https://i.imgur.com/zRYDyjs.jpg)
+![Imgur](https://i.imgur.com/FVCXdCS.jpg)
 
 ## Instructions
 
