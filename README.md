@@ -1,13 +1,18 @@
 Instagram Challenge
 ===================
 
-## Instructions
+[![Build Status](https://travis-ci.org/darciew/instagram-challenge.svg?branch=master)](https://travis-ci.org/darciew/instagram-challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/aff58ba264ca09d128c7/maintainability)](https://codeclimate.com/github/darciew/instagram-challenge/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/aff58ba264ca09d128c7/test_coverage)](https://codeclimate.com/github/darciew/instagram-challenge/test_coverage)
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Technologies
+Ruby
+
+Rails
+
+RSpec
+
+Postgres
+
+SQL
 
 ## Task
 
@@ -15,26 +20,90 @@ Build Instagram: Simple huh!
 
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters!
+## User Stories
 
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+```
+As a photography lover
+So that I can share my photos
+I can sign up to Instasham
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+```
+As a photography lover
+So that I can share my photos whenever I want
+I can sign in to Instasham
+```
+
+```
+As a photography lover
+So that I can end my session
+I can log out of Instasham
+```
+
+```
+As a photography lover
+So that I can share my best photos
+I can post a picture to Instasham
+```
+
+```
+As a photography lover
+So that I can appreciate a good photo
+I can like a picture on Instasham
+```
+
+```
+As a photography lover
+So that I can write what I appreciate about a good photo
+I can comment on a picture on Instasham
+```
+
+## Request / Response Cycle Diagram
+
+![Imgur](https://i.imgur.com/FVCXdCS.jpg)
+
+## Instructions
+
+Clone this repo:
+```
+$ git clone git@github.com:darciew/instagram-challenge.git
+$ cd instagram-challenge
+```
+
+Install gems:
+```
+$ bundle install
+```
+
+Create and migrate databases:
+
+```
+$ rake db:create
+$ rake db:migrate
+```
+
+Run the rails server:
+```
+$ bin/rails server
+```
+Visit http://localhost:3000 to view in your web browser.
+
+## Interface
+
+Sign up:
+
+![Imgur](https://i.imgur.com/AfMcIiC.png)
+
+Upload an image:
+
+![Imgur](https://i.imgur.com/5rfkSr3.png)
+
+Images feed:
+
+![Imgur](https://i.imgur.com/bArvILE.png)
+
+## Trello Board Snippet
+
+Attaching my Trello board to show what I would still like to do for this project. First is to add comments to image posts and deploy to Heroku!
+
+![Imgur](https://i.imgur.com/X28N831.png)
