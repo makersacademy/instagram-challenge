@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -54,7 +56,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'rspec'
-  gem 'rubocop'
+  gem "rubocop-rails"
   gem 'simplecov'
   gem 'simplecov-console'
   gem 'selenium-webdriver'
