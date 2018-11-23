@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'user#new'
-  resources :user
+  root 'users#new'
+  resources :users
 end
