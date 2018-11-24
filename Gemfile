@@ -7,6 +7,11 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'haml'
+gem 'haml-rails', "~> 1.0"
+gem 'simple_form'
+gem 'bootstrap'
+gem 'paperclip'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -22,13 +27,14 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
+gem "mini_magick"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
