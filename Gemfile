@@ -36,6 +36,8 @@ gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'carrierwave'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'rails-controller-testing'
@@ -54,6 +56,7 @@ group :development, :test do
   gem 'simplecov', '~> 0.16.1'
   gem 'simplecov-console', '~> 0.4.2'
   gem 'launchy'
+  gem 'pry'
 end
 
 group :development do

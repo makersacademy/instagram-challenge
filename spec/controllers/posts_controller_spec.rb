@@ -2,18 +2,18 @@
 
 require 'rails_helper'
 
-RSpec.describe PhotosController, type: :controller do
+RSpec.describe PostsController, type: :controller do
   describe "::create" do
     context "authenicated user" do
       before(:each) do
         sign_in FactoryBot.create(:user)
-        post :create
+        post :create, params: {post: {photo: 'Nice comment' }}
       end
-      it "should add a add photo to the database" do
-        expect(Photo.all.size).to eq 1
+      it "should add a add post to the database" do
+        expect(Post.all.size).to eq 1
       end
-      it "should redirect to photos#index" do
-        expect(response).to redirect_to '/photos'
+      it "should redirect to posts#index" do
+        expect(response).to redirect_to '/posts'
       end
     end
     context "unauthenicated user" do
@@ -29,7 +29,7 @@ RSpec.describe PhotosController, type: :controller do
         sign_in FactoryBot.create(:user)
         get :index
       end
-      it "should redirect to photos#index" do
+      it "should redirect to posts#index" do
         expect(response).to render_template(:index)
       end
     end
