@@ -11,6 +11,7 @@ gem 'haml'
 gem 'haml-rails', "~> 1.0"
 gem 'simple_form'
 gem 'bootstrap'
+gem 'paperclip'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
