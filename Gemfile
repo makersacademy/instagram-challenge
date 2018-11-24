@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -18,7 +20,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem 'pg'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -36,6 +38,7 @@ gem 'devise'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
@@ -43,6 +46,13 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem "rubocop"
   gem "rubocop-rails_config"
+  gem "factory_bot_rails", "~> 4.9"
+  gem "faker", "~> 1.9"
+  gem "database_cleaner", "~> 1.7"
+  gem "activesupport", "~> 5.1"
+  gem "timecop", "~> 0.9.1"
+  gem 'simplecov', '~> 0.16.1'
+  gem 'simplecov-console', '~> 0.4.2'
 end
 
 group :development do
