@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml'
 gem 'paperclip', '~> 4.2'
 gem 'simple_form'
+gem 'bootstrap-sass', '~> 3.3.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -44,6 +45,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
+  gem 'rubocop-rspec'
 end
 
 group :development do

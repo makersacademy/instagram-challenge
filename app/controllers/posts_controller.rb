@@ -10,10 +10,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
     if @post.save
-      flash[:success] = "Your post has been created."
+      flash[:success] = 'Your post has been created.'
       redirect_to @post
     else
-      flash[:alert] = "You need an image to post here!"
+      flash[:alert] = 'You need an image to post here!'
       render :new
     end
   end
