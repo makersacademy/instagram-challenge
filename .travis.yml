@@ -1,0 +1,21 @@
+language: ruby
+rvm:
+- 2.5.0
+
+services:
+- postgresql
+
+script:
+- bin/rails db:create
+- bin/rails db:migrate
+- bin/rails db:test:prepare
+- bundle exec rspec
+
+deploy:
+  provider: heroku
+  api_key: 3684d5f7-bc9a-4acd-ac69-c95fb43877fa
+  app: instagram-toddpla
+  run:
+    - bin/rails db:migrate
+  on:
+    branch: master
