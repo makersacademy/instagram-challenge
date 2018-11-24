@@ -53,6 +53,7 @@ group :development, :test do
   gem "timecop", "~> 0.9.1"
   gem 'simplecov', '~> 0.16.1'
   gem 'simplecov-console', '~> 0.4.2'
+  gem 'launchy'
 end
 
 group :development do
