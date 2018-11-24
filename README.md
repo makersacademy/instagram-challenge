@@ -5,7 +5,16 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+##How to run this app
+---------------------
+* First create the data Base
+``````
+rake db:create
+``````
+* Then migrate the tables
+```````
+rake db:migrate
+```````
 
 * System dependencies
 
