@@ -17,6 +17,11 @@ As a user,
 I want to sign out.
 ```
 
+```
+As a user,
+I want to edit my registration details.
+```
+
 ## Getting started
 
 * Ruby version
