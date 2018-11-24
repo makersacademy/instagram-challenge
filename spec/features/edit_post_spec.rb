@@ -11,6 +11,7 @@ feature 'Editing posts' do
   scenario 'Can edit a post' do
     fill_in 'Caption', with: "Oh god, you weren't meant to see this picture!"
     click_button 'Update Post'
+    expect(page).to have_content("Post successfully updated.")
     expect(page).to have_content("Oh god, you weren't meant to see this picture!")
   end
 end

@@ -15,6 +15,6 @@ feature 'Creating posts' do
     click_link 'New Post'
     fill_in 'Caption', with: "No picture because YOLO"
     click_button 'Create Post'
-    expect(page).to have_content('You need an image to post here!')
+    expect(page).to have_content('Your post could not be created, please check your form or try again later.')
   end
 end
