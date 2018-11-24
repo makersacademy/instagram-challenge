@@ -7,14 +7,26 @@ Things you may want to cover:
 
 ##How to run this app
 ---------------------
-* First create the data Base
+* Brew Install ImageMagick
+`````````
+$ brew install ImageMagick
+`````````
+* Bundle install gems
+`````````
+$ bundle install
+`````````
+* Create the data Base
 ``````
-rake db:create
+$ rake db:create
 ``````
 * Then migrate the tables
 ```````
-rake db:migrate
+$ rake db:migrate
 ```````
+* launch the server
+````
+$ rails s
+````
 
 * System dependencies
 
