@@ -1,9 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## User stories
 
-Things you may want to cover:
+```
+As a user,
+I want to sign up.
+```
+
+```
+As a user,
+I want to sign in.
+```
+
+```
+As a user,
+I want to sign out.
+```
+
+## Getting started
 
 * Ruby version
 
