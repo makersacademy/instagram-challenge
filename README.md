@@ -1,40 +1,50 @@
 Instagram Challenge
-===================
+================
 
-## Instructions
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
+provided by the [RailsApps Project](http://railsapps.github.io/).
 
-## Task
+Rails Composer is supported by developers who purchase our RailsApps tutorials.
 
-Build Instagram: Simple huh!
+Problems? Issues?
+-----------
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Need help? Ask on Stack Overflow with the tag 'railsapps.'
 
-Bonus if you can add filters!
+Your application contains diagnostics in the README file. Please provide a copy of the README file when reporting any issues.
 
-## How to start
+If the application doesn't work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
+and include the diagnostics.
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+Ruby on Rails
+-------------
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+This application requires:
 
-## Code Quality
+- Ruby 2.5.1
+- Rails 5.2.1
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
+Getting Started
+---------------
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+Documentation and Support
+-------------------------
+
+Issues
+-------------
+
+Similar Projects
+----------------
+
+Contributing
+------------
+
+Credits
+-------
+
+License
+-------
