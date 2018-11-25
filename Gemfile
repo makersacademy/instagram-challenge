@@ -28,6 +28,8 @@ gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'devise'
 gem 'html2haml'
+gem 'jquery-rails'
+gem 'jquery-turbolinks'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
