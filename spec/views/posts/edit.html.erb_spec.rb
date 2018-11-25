@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "posts/edit", type: :view do
   before(:each) do
+    User.create(username: 'username', email: 'user@user.com', password: 'pass123')
     @post = assign(:post, Post.create!(
       :description => "MyText",
-      :image => upload_helper
+      :image => upload_helper,
+      :user_id => 1
     ))
   end
 

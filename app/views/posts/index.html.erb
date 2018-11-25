@@ -15,16 +15,18 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.description %></td>
-        <%# <td><%= post.image %>
         <td><%= image_tag(post.image.preview.url) %></td>
         <td><%= link_to 'Show', post %></td>
+        <% if user_signed_in? %>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if user_signed_in? %>
 <%= link_to 'New Post', new_post_path %>
+<% end %>

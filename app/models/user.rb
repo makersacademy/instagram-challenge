@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          authentication_keys: { email: true, login: false }
 
+  has_many :posts
   validates_uniqueness_of :username
   validate :validate_username
 
