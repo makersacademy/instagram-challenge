@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.description %></td>
+        <td><%= image_tag(post.image.preview.url) %></td>
+        <td><%= link_to 'Show', post %></td>
+        <% if user_signed_in? %>
+          <% if current_user.id == post.user_id %>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if user_signed_in? %>
+<%= link_to 'New Post', new_post_path %>
+<% end %>
