@@ -12,4 +12,11 @@ feature 'Creating posts' do
     expect(page).to have_content('#NoFilter')
     expect(page).to have_css("img[src*='ArmyRyan.jpg']")
   end
+  scenario 'can not upload a post without img' do
+    visit '/'
+    click_link 'New Post'
+    fill_in 'Caption', with: "I'm not uploading no pic dude"
+    click_button 'Create Post'
+    expect(page).to have_content("can't be blank")
+  end
 end
