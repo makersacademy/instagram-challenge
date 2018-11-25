@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def sign_up
   visit '/'
   click_link 'Sign Up'
