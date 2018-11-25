@@ -1,4 +1,3 @@
-
 require 'rails_helper'
 
 feature 'editing posts' do

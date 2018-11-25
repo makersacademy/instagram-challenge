@@ -31,6 +31,6 @@ feature 'Creating a new user' do
     fill_in 'Password confirmation', with: 'lolmyspace'
 
     click_button 'Sign up'
-    expect(page).to have_content("minimum is 4 characters")
+    expect(page).to have_content('minimum is 4 characters')
   end
 end

@@ -4,9 +4,9 @@ feature 'Can see a list of posts on the index' do
   background do
     user = create :user
     post_one = create(:post, caption: 'This is post one',
-                            user_id: user.id)
+                             user_id: user.id)
     post_two = create(:post, caption: 'This is the second post',
-                            user_id: user.id)
+                             user_id: user.id)
 
     sign_in_with user
   end
