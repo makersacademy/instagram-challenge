@@ -9,6 +9,8 @@ class User < ApplicationRecord
          authentication_keys: { email: true, login: false }
 
   has_many :posts
+  has_many :comments
+
   validates_uniqueness_of :username
   validate :validate_username
 
