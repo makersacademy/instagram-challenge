@@ -1,4 +1,4 @@
-class PhotoController < ApplicationController
+class PostController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def new
@@ -15,12 +15,14 @@ class PhotoController < ApplicationController
       :link => @value['secure_url'],
       :caption => params[:caption]
     )
-    # @post = Post.new({
-    #   :link => @value['secure_url'],
-    #   :caption => params[:caption],
-    #   :user_id => params[:user_id]
-    #   })
     @post.save
-    redirect_to('/photo/index')
+    redirect_to('/post/index')
   end
+
+  def upvote
+  @post = Post.find(params[:post_id])
+  @post.upvote_by current_user
+  redirect_to('/post/index')
+end
+
 end

@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
+gem 'acts_as_votable', '~> 0.12.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'cloudinary', '~> 1.9.1'
 gem 'coffee-rails', '~> 4.2'
@@ -13,6 +14,7 @@ gem 'rails', '~> 5.2.1'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'will_paginate', '~> 3.1.0'
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end

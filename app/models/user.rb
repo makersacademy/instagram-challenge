@@ -3,4 +3,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :posts
   acts_as_commontator
+  acts_as_voter
 end
