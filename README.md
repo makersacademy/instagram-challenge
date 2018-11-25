@@ -1,6 +1,11 @@
 Instagram Challenge
 ===================
 
+## Usage
+* run `bin/rake db:migrate`
+* run `rails s`
+* visit http://localhost:3000
+
 ## Instructions
 
 * Challenge time: one weekend
