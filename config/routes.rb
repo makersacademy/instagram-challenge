@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'users#new'
-  resources :users
+  root to: 'pages#index'
+  devise_for :users
+  resources :pages
 end
