@@ -5,7 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'bootstrap-sass'
 gem 'devise'
+gem 'jquery-rails'
 gem 'rails', '~> 5.2.0'
 gem 'pg'
 gem 'puma', '~> 3.11'
