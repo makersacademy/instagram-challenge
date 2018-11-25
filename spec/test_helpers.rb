@@ -20,3 +20,19 @@ def user_sign_in
   fill_in "user[password]", with: "pword123"
   click_button "Log in"
 end
+
+def upload_image
+  Rails.root + "spec/fixtures/image.jpg"
+end
+
+def create_new_post
+  visit '/posts/new'
+  fill_in "post[description]", with: "My post desrciption"
+  attach_file("post[image]", upload_image)
+  click_button "Create Post"
+end
+
+def upload_helper
+  image_src = File.join(Rails.root, "/spec/fixtures/image.jpg")
+  File.new(image_src)
+end
