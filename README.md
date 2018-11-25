@@ -1,5 +1,8 @@
 Instagram Challenge
 ===================
+## Current situation
+* Not yet implemented likes or notifications
+* Trying (currently unsuccessfully) to implement jquery as a way to load new comments (or delete comments) automatically without rendering whole page again
 
 ## Usage
 * run `bin/rake db:migrate`
