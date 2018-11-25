@@ -1,29 +1,28 @@
 <h3>Posts</h3>
 
 <script>
-(function() {
-var sneaky = new ScrollSneak(location.hostname);
-document.getElementById('post').onclick = sneaky.sneak;
-})();
+  (function () {
+    var sneaky = new ScrollSneak(location.hostname);
+    document.getElementById('post').onclick = sneaky.sneak;
+  })();
 </script>
 <div class="images">
 
-        <% @posts.each do |post| %>
-        <div class="post">
-          <%= link_to post_like_path(post), method: :put do %>
-          🖤
-          <%= post.get_upvotes.size %>
-          <% end %>
-          <div class="post-image">
-            <img src='<%= post.link %>'></img>
-          </div>
-            <p><%= post.caption %></p>
-
-        <%= commontator_thread(post) %>
-        </div>
-
+  <% @posts.each do |post| %>
+    <div class="post">
+      <%= link_to post_like_path(post), method: :put do %>
+      🖤
+      <%= post.get_upvotes.size %>
     <% end %>
+    <div class="post-image">
+      <img src='<%= post.link %>'></img>
+    </div>
+    <p><%= post.caption %></p>
 
+    <%= commontator_thread(post) %>
+  </div>
+
+<% end %>
 
 </div>
 </div>
