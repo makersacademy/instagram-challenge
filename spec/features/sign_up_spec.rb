@@ -9,7 +9,7 @@ describe 'Sign up' do
     fill_in 'Email', with: 'caitlin@test.com'
     fill_in 'Password', with: 'caitlin123'
     click_button 'Sign Up'
-    expect(page).to have_content 'Hi Caitlin Cooling'
+    expect(page).to have_content 'Welcome!'
   end
 
   it "doesn't allow a user to sign up with invalid email" do
