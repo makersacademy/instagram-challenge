@@ -12,8 +12,9 @@ RSpec.feature 'Posting', type: :feature do
     expect(page).to have_content("Post was successfully created.")
   end
 
-  scenario "visitor can't post" do
-
+  scenario "visitors can't post" do
+    visit '/posts/new'
+    expect(page).to have_current_path('/users/sign_in')
   end
 
   scenario 'posting' do
