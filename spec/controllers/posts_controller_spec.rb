@@ -1,18 +1,19 @@
 # frozen_string_literal: true
-require 'pry'
 require 'rails_helper'
+require 'pry'
 
 RSpec.describe PostsController, type: :controller do
   describe "::create" do
-    let(:photo) {fixture_file_upload('files/uploads/bernard.jpg', 'image/jpeg')}
+    let(:photo_dir) {"files/uploads/capybara.jpg"}
+    let(:photo_full_dir) {Rails.root.join("spec","fixtures",photo_dir)}
+    let(:photo) {fixture_file_upload(photo_dir, 'image/jpeg')}
     context "authenicated user" do
       before(:each) do
         sign_in FactoryBot.create(:user)
-        binding.pry
         post :create, params: {post: {photo: photo }}
       end
-      it "adds a post to the database with " do
-        expect(Post.last.photo).to eq photo
+      it "adds a post to the database with correct photo" do
+        expect(Post.last.photo.read).to eq File.open(photo_full_dir, "rb") {|f| f.read}
       end
       it "should redirect to posts#index" do
         expect(response).to redirect_to '/posts'
