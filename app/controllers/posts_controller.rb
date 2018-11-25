@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'pry'
 
 class PostsController < ApplicationController
   before_action :authenticate_user!

@@ -1,7 +1,15 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+
   class Likeable < Module
+    """
+    accessible to all Models by inserting adding
+    reference to likes in Model
+    > has_many :likes, as: :likeable
+    then include the helper in the controller
+    > include ApplicationHelper::Likeable.new <Class>
+    """
 
     def initialize(likeable_class)
       @likeable_class = likeable_class
