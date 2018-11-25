@@ -1,9 +1,11 @@
 # frozen_string_literal: true
+require 'pry'
 
 class PostsController < ApplicationController
   before_action :authenticate_user!
 
   include ApplicationHelper::Likeable.new Post
+  include ApplicationHelper::Commentable.new Post
 
   def create
     @post = Post.create(post_params)
@@ -12,7 +14,7 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.includes(:comments).order(created_at: :desc)
   end
 
   private
@@ -22,3 +24,6 @@ class PostsController < ApplicationController
   end
 
 end
+
+# <%= render "likes/like_form", likeable: comment %>
+# <%= render "comments/form", commentable: comment %>

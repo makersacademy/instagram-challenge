@@ -1,4 +1,6 @@
-<%= form_for comment do |form| %>
-  <%= form.text_area :message %>
-  <%= form submit "Comment" %>
+<%= form_for [:comment, commentable], method: 'post', remote: true do |f| %>
+  <%= f.fields_for commentable.comments.new do |ff| %>
+    <%= ff.text_area :message %>
+  <% end %>
+  <%= f.submit "Comment" %>
 <% end %>

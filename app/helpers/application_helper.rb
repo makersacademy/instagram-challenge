@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'pry'
+
 module ApplicationHelper
 
   class Likeable < Module
@@ -34,6 +36,39 @@ module ApplicationHelper
               redirect_to posts_url
             end
             format.js { render :file => "/app/views/likes/like.js.erb" }
+          end
+        end
+      end
+    end
+  end
+
+  class Commentable < Module
+    """
+    accessible to all Models by inserting adding
+    reference to comments in Model
+    > has_many :comments, as: :commentable
+    then include the helper in the controller
+    > include ApplicationHelper::Commentable.new <Class>
+    """
+
+    def initialize(commentable_class)
+      @commentable_class = commentable_class
+    end
+
+    def included(base)
+      commentable_class = @commentable_class
+      base.class_eval do
+        define_method(:comment) do
+          @commentable = commentable_class.find(params[:id])
+          comment_params = params.require(commentable_class.name.downcase).require(:comment).permit(:message).merge(user: current_user).merge(commentable: @commentable)
+          @comment = Comment.create(comment_params)
+          flash = "Comment Added!"
+          respond_to do |format|
+            format.html do
+              flash[:notice] = flash
+              redirect_to posts_url
+            end
+            format.js { render :file => "/app/views/comments/comment.js.erb" }
           end
         end
       end

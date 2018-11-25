@@ -10,13 +10,14 @@ Rails.application.routes.draw do
 
   resources :posts do
     member do
+      post 'comment'
       post 'like'
     end
-    resources :comments do
-      member do
-        post 'like'
-      end
+  end
+  resources :comments do
+    member do
+      post 'comment'
+      post 'like'
     end
   end
-
 end

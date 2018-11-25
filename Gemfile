@@ -40,6 +40,7 @@ gem 'devise'
 # gem 'capistrano-rails', group: :development
 
 gem 'carrierwave'
+gem "bootstrap"
 
 group :development, :test do
   gem 'rspec-rails'

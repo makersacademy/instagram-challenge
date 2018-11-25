@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   include ApplicationHelper::Likeable.new Comment
+  include ApplicationHelper::Commentable.new Comment
 
   def create
     @comment = Comment.create(comment_params)
