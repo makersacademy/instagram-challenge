@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 include Warden::Test::Helpers
 Warden.test_mode!
 
@@ -6,7 +8,6 @@ Warden.test_mode!
 #   I want to delete my user profile
 #   So I can close my account
 feature 'User delete', :devise do
-
   after(:each) do
     Warden.test_reset!
   end
@@ -18,10 +19,9 @@ feature 'User delete', :devise do
   scenario 'user can delete own account' do
     # skip 'skip a slow test'
     user = FactoryBot.create(:user)
-    login_as(user, :scope => :user)
+    login_as(user, scope: :user)
     visit edit_user_registration_path(user)
     click_button 'Cancel my account'
     expect(page).to have_content I18n.t 'devise.registrations.destroyed'
   end
-
 end

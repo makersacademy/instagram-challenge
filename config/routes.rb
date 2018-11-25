@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   mount Commontator::Engine => '/commontator'
   get 'post/new'
@@ -7,7 +9,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   resources :posts do
-    put "like", to: "post#upvote"
-    put "dislike", to: "post#downvote"
+    put 'like', to: 'post#upvote'
+    put 'dislike', to: 'post#downvote'
   end
 end

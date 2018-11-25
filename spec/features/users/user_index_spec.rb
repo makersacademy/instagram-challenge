@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 include Warden::Test::Helpers
 Warden.test_mode!
 
@@ -6,7 +8,6 @@ Warden.test_mode!
 #   I want to see a list of users
 #   So I can see who has registered
 feature 'User index page', :devise do
-
   after(:each) do
     Warden.test_reset!
   end
@@ -21,5 +22,4 @@ feature 'User index page', :devise do
     visit users_path
     expect(page).to have_content user.name
   end
-
 end

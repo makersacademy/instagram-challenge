@@ -1,5 +1,6 @@
-describe User do
+# frozen_string_literal: true
 
+describe User do
   before(:each) { @user = create(:user) }
 
   subject { @user }
@@ -10,13 +11,12 @@ describe User do
 
   it { should respond_to(:name) }
 
-  it "#name returns a string" do
+  it '#name returns a string' do
     expect(@user.name).to match 'Test User'
   end
   it { should respond_to(:email) }
 
-  it "#email returns a string" do
+  it '#email returns a string' do
     expect(@user.email).to match 'test@example.com'
   end
-
 end

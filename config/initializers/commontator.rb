@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Change the settings below to suit your needs
 # All settings are initially set to their default values
 
@@ -23,9 +25,7 @@ Commontator.configure do |config|
   # through the view object (for example, view.flash)
   # However, the view does not include the main application's helpers
   # Default: ->(view) { '$("#error_explanation").remove();' }
-  config.javascript_proc = ->(view) { '$("#error_explanation").remove();' }
-
-
+  config.javascript_proc = ->(_view) { '$("#error_explanation").remove();' }
 
   # User (acts_as_commontator) Configuration
 
@@ -45,7 +45,7 @@ Commontator.configure do |config|
   # comments will become a hyperlink pointing to this path
   # The main application's routes can be accessed through the app_routes object
   # Default: ->(user, app_routes) { '' } (no link)
-  config.user_link_proc = ->(user, app_routes) { '' }
+  config.user_link_proc = ->(_user, _app_routes) { '' }
 
   # user_avatar_proc
   # Type: Proc
@@ -76,9 +76,7 @@ Commontator.configure do |config|
   # If the mailer argument is not nil, then Commontator intends to send an email to
   # the address returned; you can prevent it from being sent by returning a blank String
   # Default: ->(user, mailer) { user.try(:email) || '' }
-  config.user_email_proc = ->(user, mailer) { user.try(:email) || '' }
-
-
+  config.user_email_proc = ->(user, _mailer) { user.try(:email) || '' }
 
   # Thread/Commontable (acts_as_commontable) Configuration
 
@@ -100,7 +98,7 @@ Commontator.configure do |config|
   # Returns: a Boolean, true if and only if the user should be allowed to read that thread
   # Note: can be called with a user object that is nil (if they are not logged in)
   # Default: ->(thread, user) { true } (anyone can read any thread)
-  config.thread_read_proc = ->(thread, user) { true }
+  config.thread_read_proc = ->(_thread, _user) { true }
 
   # thread_moderator_proc
   # Type: Proc
@@ -108,7 +106,7 @@ Commontator.configure do |config|
   # Returns: a Boolean, true if and only if the user is a moderator for that thread
   # If you want global moderators, make this proc true for them regardless of thread
   # Default: ->(thread, user) { false } (no moderators)
-  config.thread_moderator_proc = ->(thread, user) { false }
+  config.thread_moderator_proc = ->(_thread, _user) { false }
 
   # comment_editing
   # Type: Symbol
@@ -161,7 +159,7 @@ Commontator.configure do |config|
   # pos is the number of likes, or the rating, or the reputation
   # neg is the number of dislikes, if applicable, or 0 otherwise
   # Default: ->(thread, pos, neg) { "%+d" % (pos - neg) }
-  config.vote_count_proc = ->(thread, pos, neg) { "%+d" % (pos - neg) }
+  config.vote_count_proc = ->(_thread, pos, neg) { format('%+d', (pos - neg)) }
 
   # comment_order
   # Type: Symbol
@@ -219,7 +217,7 @@ Commontator.configure do |config|
   # Default: ->(thread) {
   #   "no-reply@#{Rails.application.class.parent.to_s.downcase}.com"
   # }
-  config.email_from_proc = ->(thread) {
+  config.email_from_proc = ->(_thread) {
     "no-reply@#{Rails.application.class.parent.to_s.downcase}.com"
   }
 
@@ -232,7 +230,8 @@ Commontator.configure do |config|
   # Default: ->(thread) {
   #                   "#{thread.commontable.class.name} ##{thread.commontable.id}" }
   config.commontable_name_proc = ->(thread) {
-    "#{thread.commontable.class.name} ##{thread.commontable.id}" }
+    "#{thread.commontable.class.name} ##{thread.commontable.id}"
+  }
 
   # comment_url_proc
   # Type: Proc
@@ -278,7 +277,7 @@ Commontator.configure do |config|
   # Default: ->(current_user, query) {
   #   current_user.class.where('username LIKE ?', "#{query}%")
   # }
-  config.user_mentions_proc = ->(current_user, thread, query) {
+  config.user_mentions_proc = ->(current_user, _thread, query) {
     current_user.class.where('username LIKE ?', "#{query}%")
   }
 end
