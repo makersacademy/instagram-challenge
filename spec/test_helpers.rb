@@ -8,6 +8,16 @@ def user_sign_up
   click_button 'Sign up'
 end
 
+def user2_sign_up
+  visit '/'
+  click_link 'Sign up'
+  fill_in 'user[username]', with: 'username456'
+  fill_in 'user[email]', with: 'user2@user.com'
+  fill_in 'user[password]', with: 'pword123'
+  fill_in 'user[password_confirmation]', with: 'pword123'
+  click_button 'Sign up'
+end
+
 def user_sign_out
   visit '/'
   click_link 'Logout'

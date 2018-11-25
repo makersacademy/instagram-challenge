@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    redirect_to posts_url if current_user.id != @post.user_id
   end
 
   # POST /posts
