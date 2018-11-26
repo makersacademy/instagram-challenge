@@ -17,6 +17,7 @@ git clone https://github.com/toddpla/instagram-challenge
 cd instagram-challenge
 bin/rails db:create
 bin/rails db:migrate
+bundle install
 ```
 ## running the server
 ```sh
