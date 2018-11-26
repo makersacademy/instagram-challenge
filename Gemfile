@@ -11,6 +11,7 @@ gem 'sqlite3'
 gem 'haml'
 gem 'haml-rails', "~> 1.0"
 gem 'simple_form'
+gem 'bootstrap-sass'
 gem 'bootstrap'
 gem 'paperclip'
 # Use Puma as the app server
