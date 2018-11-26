@@ -6,13 +6,13 @@ class CommentsController < ApplicationController
   include ApplicationHelper::Likeable.new Comment
   include ApplicationHelper::Commentable.new Comment
 
-  def create
-    @comment = Comment.create(comment_params)
-  end
+  # def create
+  #   @comment = Comment.create(comment_params)
+  # end
 
-  private
+  # private
 
-  def comment_params
-    params.require(:comment).permit(:message).merge(user: current_user)
-  end
+  # def comment_params
+  #   params.require(:comment).permit(:message).merge(user: current_user)
+  # end
 end

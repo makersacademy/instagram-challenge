@@ -22,6 +22,3 @@ class PostsController < ApplicationController
     params.require(:post).permit(:photo).merge(user: current_user)
   end
 end
-
-# <%= render "likes/like_form", likeable: comment %>
-# <%= render "comments/form", commentable: comment %>

@@ -3,8 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
+  let (:user) { FactoryBot.create(:user) }
   describe "::create" do
-    let (:user) { FactoryBot.create(:user) }
     let(:photo_dir) { "files/uploads/capybara.jpg" }
     let(:photo_full_dir) { Rails.root.join("spec", "fixtures", photo_dir) }
     let(:photo) { fixture_file_upload(photo_dir, 'image/jpeg') }
@@ -30,7 +30,7 @@ RSpec.describe PostsController, type: :controller do
   describe "::index" do
     context "authenicated user" do
       before(:each) do
-        sign_in FactoryBot.create(:user)
+        sign_in user
         get :index
       end
       it "should redirect to posts#index" do
@@ -43,5 +43,24 @@ RSpec.describe PostsController, type: :controller do
         expect(response).to redirect_to '/users/sign_in'
       end
     end
+  end
+  describe "::comment" do
+    # context "authenicated user" do
+    #   let (:factory_post) { FactoryBot.create(:post, user: user) }
+    #   let (:comment_message) { "This is mock comment" }
+    #   before(:each) do
+    #     sign_in user
+    #     post :comment, params: { comment: { message: comment_message }, post: factory_post, user: user }
+    #   end
+    #   it "should redirect to posts#index" do
+    #     expect(response).to render_template(:index)
+    #   end
+    # end
+    # context "unauthenicated user" do
+    #   it "should redirect to login" do
+    #     post :comment
+    #     expect(response).to redirect_to '/users/sign_in'
+    #   end
+    # end
   end
 end
