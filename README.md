@@ -5,7 +5,7 @@ https://instagram-toddpla.herokuapp.com/
 
 |technologies|testing|build|host|
 |----------|:--------:|:--------:|:---------|
-|![rails](https://github.com/konpa/devicon/blob/master/icons/rails/rails-plain-wordmark.svg)![bootstrap](https://github.com/konpa/devicon/blob/master/icons/bootstrap/bootstrap-plain-wordmark.svg)|and andother one|![travis](https://github.com/konpa/devicon/blob/master/icons/travis/travis-plain.svg)|![heroku](https://github.com/konpa/devicon/blob/master/icons/heroku/heroku-plain-wordmark.svg)
+|![rails](https://github.com/konpa/devicon/blob/master/icons/rails/rails-plain-wordmark.svg)![bootstrap](https://github.com/konpa/devicon/blob/master/icons/bootstrap/bootstrap-plain-wordmark.svg)|rspec + capybara|![travis](https://github.com/konpa/devicon/blob/master/icons/travis/travis-plain.svg)|![heroku](https://github.com/konpa/devicon/blob/master/icons/heroku/heroku-plain-wordmark.svg)
 
 ## setup locally
 
