@@ -3,7 +3,6 @@
 require 'pry'
 
 module ApplicationHelper
-
   class Likeable < Module
     """
     accessible to all Models by inserting adding
@@ -22,7 +21,7 @@ module ApplicationHelper
       base.class_eval do
         define_method(:like) do
           @likeable = likeable_class.find(params[:id])
-          like = Like.find_by({likeable: @likeable, user: current_user})
+          like = Like.find_by(likeable: @likeable, user: current_user)
           if like
             like.destroy
             flash = "Like Removed!"
@@ -35,7 +34,7 @@ module ApplicationHelper
               flash[:notice] = flash
               redirect_to posts_url
             end
-            format.js { render :file => "/app/views/likes/like.js.erb" }
+            format.js { render file: "/app/views/likes/like.js.erb" }
           end
         end
       end
@@ -68,7 +67,7 @@ module ApplicationHelper
               flash[:notice] = flash
               redirect_to posts_url
             end
-            format.js { render :file => "/app/views/comments/comment.js.erb" }
+            format.js { render file: "/app/views/comments/comment.js.erb" }
           end
         end
       end

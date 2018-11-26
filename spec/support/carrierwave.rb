@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'carrierwave'
 require 'fileutils'
 
-carrierwave_template = Rails.root.join('spec','fixtures', 'files')
+carrierwave_template = Rails.root.join('spec', 'fixtures', 'files')
 carrierwave_root = Rails.root.join('spec', 'support', 'carrierwave')
 CarrierWave.configure do |config|
   config.root = carrierwave_root

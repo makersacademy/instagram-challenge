@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'pry'
 
 class PostsController < ApplicationController
@@ -22,7 +23,6 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:photo).merge(user: current_user)
   end
-
 end
 
 # <%= render "likes/like_form", likeable: comment %>
