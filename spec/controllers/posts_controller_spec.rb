@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'pry'
 
 RSpec.describe PostsController, type: :controller do
   describe "::create" do
