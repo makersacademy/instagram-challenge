@@ -1,5 +1,7 @@
 # instagram clone challenge
-week 8 challenge
+week 8 challenge at [Makers Academy](https://makers.tech/)
+
+https://instagram-toddpla.herokuapp.com/
 
 |technologies|testing|build|host|
 |----------|:--------:|:--------:|:---------|
