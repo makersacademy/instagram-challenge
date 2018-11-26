@@ -18,6 +18,11 @@ cd instagram-challenge
 bin/rails db:create
 bin/rails db:migrate
 ```
+## running the server
+```sh
+rails server
+```
+
 ## running the test suite
 
 ```sh
