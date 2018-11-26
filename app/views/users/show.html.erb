@@ -1,0 +1,26 @@
+<h3><%= @user.name if @user.name %></p>
+</h3>
+<div class="images">
+
+<% @user.posts.reverse_each do |post|%>
+</p>
+<div class="post">
+  <%= link_to post_like_path(post), method: :put do %>
+  🖤
+  <%= post.get_upvotes.size %>
+<% end %>
+
+<!-- <%= link_to post_dislike_path(post), method: :put do %> <%= post.get_downvotes.size %> <% end %> -->
+
+<img src='<%= post.link %>'></img>
+<p><%= post.caption %></p>
+
+<%= commontator_thread(post) %>
+</div>
+
+<% end %>
+</tbody>
+</table>
+
+</div>
+</div>

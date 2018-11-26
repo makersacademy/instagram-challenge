@@ -312,7 +312,7 @@ and can also be shortened to this:
 
 ```css
 banner {
-  background: url("Instagram.svg") no-repeat center;
+  background: url("camera_icon.png") no-repeat center;
   display: block;
   height: 220px;
   width: 1000px;
@@ -406,7 +406,7 @@ can be replaced with:
 <% end %>
 ```
 
-This is a sensible step because we are encapsulating the set of variables that this partial depends on.  The render operation is now self documenting in that it is describing the set of variables that need to be made available for its use. 
+This is a sensible step because we are encapsulating the set of variables that this partial depends on.  The render operation is now self documenting in that it is describing the set of variables that need to be made available for its use.
 
 ### Law of Demeter Violations
 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Postagramme" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Instagram Challenge" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag asset_path('camera_icon.png') %>
+  </head>
+  <body>
+    <header>
+      <banner>
+        <div class='logo'>
+          <%= image_tag("camera_icon.png", :alt => "Postagramme") %>
+        </div>
+      </banner>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </main>
+  </body>
+</html>
