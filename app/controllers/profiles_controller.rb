@@ -35,5 +35,5 @@ class ProfilesController < ApplicationController
 
   def set_user
     @user = User.find_by(user_name: params[:user_name])
-   end
+  end
 end

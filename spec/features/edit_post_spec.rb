@@ -14,14 +14,14 @@ feature 'editing posts' do
   end
 
   scenario 'can edit a post as the owner' do
-    click_link "LOAD MORE"
+    click_link 'LOAD MORE'
     find(:xpath, "//a[contains(@href,'posts/1')]").click
     expect(page).to have_content('Edit Post')
     click_link 'Edit Post'
     fill_in 'Add your caption', with: "Oh god, you weren't meant to see this picture!"
     click_button 'Update Post'
     expect(page).to have_content('Post successfully updated.')
-    click_link "LOAD MORE"
+    click_link 'LOAD MORE'
     expect(page).to have_content("Oh god, you weren't meant to see this picture!")
   end
 
@@ -37,7 +37,7 @@ feature 'editing posts' do
   end
 
   scenario "a post won't update without an attached image" do
-    click_link "LOAD MORE"
+    click_link 'LOAD MORE'
     find(:xpath, "//a[contains(@href,'posts/1')]").click
     click_link 'Edit Post'
     attach_file('post_image', 'spec/files/images/coffee.zip')

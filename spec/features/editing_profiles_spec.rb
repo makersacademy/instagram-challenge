@@ -21,7 +21,7 @@ feature 'editing user profiles' do
     attach_file('user_avatar', 'spec/files/images/avatar.jpg')
     fill_in 'user_bio', with: 'Its a me, mario'
     click_button 'Update Profile'
-    
+
     expect(page.current_path).to eq(profile_path('testusername'))
     expect(page).to have_css("img[src*='avatar']")
     expect(page).to have_content('Its a me, mario')

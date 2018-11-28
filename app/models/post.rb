@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  acts_as_votable
+
   validates :user_id, presence: true
   validates :image, presence: true
   belongs_to :user

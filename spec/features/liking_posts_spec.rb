@@ -15,6 +15,5 @@ feature 'liking posts' do
     expect(find('.post-likers')).to have_content('testusername')
   end
   scenario 'user can unlike a post' do
-
   end
 end
