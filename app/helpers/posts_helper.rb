@@ -12,6 +12,11 @@ module PostsHelper
     end
   end
 
+  def liked_post(post)
+    return 'glyphicon-heart' if current_user.voted_for? post
+    'glyphicon-heart-empty'
+  end
+
   private
 
   def like_plural(votes)

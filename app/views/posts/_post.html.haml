@@ -25,7 +25,7 @@
         .col-sm-1
           =link_to '', like_post_path(post.id), remote: true,
                                               id: "like_#{post.id}",
-                                              class: "glyphicon glyphicon-heart-empty"
+                                              class: "glyphicon #{liked_post post}"
         .comment-form.col-sm-11
           = form_for([post, post.comments.build], remote: true) do |f|
             = f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}", data: { post_id: "{post.id}", value: "#{post.comments.count}" }
