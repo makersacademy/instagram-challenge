@@ -9,10 +9,16 @@ feature 'Can see a list of posts on the index' do
                              user_id: user.id)
 
     sign_in_with user
+    # click_link 'LOAD MORE'
   end
-  scenario 'the index lists all posts' do
-    expect(page).to have_content('This is post one')
+  scenario 'the index lists the most recent post' do
+    # expect(page).to have_content('This is post one')
     expect(page).to have_content('This is the second post')
+    expect(page).to have_css("img[src*='coffee']")
+  end
+  scenario 'you press LOAD MORE to see another post' do
+    click_link 'LOAD MORE'
+    expect(page).to have_content('This is post one')
     expect(page).to have_css("img[src*='coffee']")
   end
 end
