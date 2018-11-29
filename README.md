@@ -1,7 +1,13 @@
 Instagram Challenge
 ===================
 ## Current situation
-* Not yet implemented likes or notifications
+* Can sign up/sign in/sign out
+* CRUD features
+* can delete and edit your own things, not other peoples
+* You have a user profile with a default picture
+* You can update your profile to have an avatar and a bio
+* likes/unlikes and comments automatically render
+* Based off instagram design
 
 ## Usage
 * run `bin/rake db:migrate`
