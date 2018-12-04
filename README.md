@@ -44,12 +44,24 @@ rails s
 Then visit http://localhost:3000/
 
 ## How it works
+
+#### Signing up
 <img width="939" alt="screenshot 2018-12-04 at 11 39 10" src="https://user-images.githubusercontent.com/41509062/49439903-392c9180-f7ba-11e8-97ac-fa77f7e9cfa1.png">
+
+#### Image feed
 <img width="942" alt="screenshot 2018-12-04 at 11 41 09" src="https://user-images.githubusercontent.com/41509062/49439904-392c9180-f7ba-11e8-8f58-7d9531c73d5d.png">
+
+#### Personal feed
 <img width="942" alt="screenshot 2018-12-04 at 11 41 22" src="https://user-images.githubusercontent.com/41509062/49439905-392c9180-f7ba-11e8-9b29-c7b8c362fe5a.png">
+
+#### Edit post
 <img width="943" alt="screenshot 2018-12-04 at 11 41 33" src="https://user-images.githubusercontent.com/41509062/49439906-39c52800-f7ba-11e8-9d93-d945d296101b.png">
-<img width="940" alt="screenshot 2018-12-04 at 11 41 54" src="https://user-images.githubusercontent.com/41509062/49439907-39c52800-f7ba-11e8-92ed-4f46e703b783.png">
+
+### Delete post
 <img width="941" alt="screenshot 2018-12-04 at 11 42 26" src="https://user-images.githubusercontent.com/41509062/49439909-39c52800-f7ba-11e8-98f2-d76690b1d005.png">
+
+#### Edit login details
+<img width="940" alt="screenshot 2018-12-04 at 11 41 54" src="https://user-images.githubusercontent.com/41509062/49439907-39c52800-f7ba-11e8-92ed-4f46e703b783.png">
 
 
 ## Running the tests
