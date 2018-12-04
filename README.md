@@ -1,12 +1,9 @@
-Instagram Challenge
-===================
+# Mintstagram
 
 [![Build Status](https://travis-ci.com/afaraone/final-project.svg?branch=master)](https://github.com/djstephenson7/instagram-challenge)
 [![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://github.com/djstephenson7/instagram-challenge)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/djstephenson7)
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://github.com/djstephenson7)
-
-# Mintstagram
 
 A clone of Instagram, with all of its features. Users can signup, login and post photos.
 
@@ -16,7 +13,7 @@ To get started, fork this repository. Open your terminal and navigate to the dir
 
 ### Prerequisites
 
-This application uses Ruby on Rails. Please make sure you have the latest version of Ruby by following the instructions [here](https://www.ruby-lang.org/en/documentation/installation/)
+This application uses Ruby on Rails. Please make sure you have the latest version of Ruby by following the instructions [here](https://www.ruby-lang.org/en/documentation/installation/).
 
 ### Installation
 
