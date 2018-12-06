@@ -1,4 +1,4 @@
 class Post < ApplicationRecord
   belongs_to :user
-  hans_many :photos
+  has_many :photos, dependent: :destroy #when post is deleted, photo is deleted as well.
 end
