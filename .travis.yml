@@ -1,15 +1,12 @@
 language: ruby
 env:
-  - DB=pgsql
-services:
-  - postgresql
+  - DB=psql
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rake
+  - RAILS_ENV=test bundle exec rake db:create db:migrate --trace
+  - bundle exec rspec
 before_script:
   - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database instagram_challenge_test;' -U postgres
+  - psql -c 'create database instagra-challenge_test;' -U postgres
 deploy:
   provider: heroku
   api_key:
