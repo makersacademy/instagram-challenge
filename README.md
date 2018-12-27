@@ -9,7 +9,7 @@ I would like to be able to sign up
 ```
 As a User
 So I can repeatedly use Christagram
-I would like to be able to log in and out
+I would like to be able to log in
 ```
 ```
 As a User
