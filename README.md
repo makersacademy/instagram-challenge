@@ -1,4 +1,7 @@
 # Christagram
+[![Build Status](https://travis-ci.org/chrisjgilbert/instagram-challenge.svg?branch=master)]
+
+[Building an Instagram clone using Rails](https://quiet-spire-51096.herokuapp.com/)
 
 ## User Stories    
 ```
@@ -9,7 +12,7 @@ I would like to be able to sign up
 ```
 As a User
 So I can repeatedly use Christagram
-I would like to be able to log in
+I would like to be able to log in and out
 ```
 ```
 As a User
