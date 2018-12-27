@@ -6,7 +6,7 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database instagram_challenge_test;' -U postgres
 script:
-  - RAILS_ENV=test bundle exec rake db:create db:migrate --trace
+  - bundle exec rake db:reset RAILS_ENV=test
   - bundle exec rspec
 deploy:
   provider: heroku
