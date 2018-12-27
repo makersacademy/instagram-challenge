@@ -1,14 +1,15 @@
 require 'rails_helper'
 
-describe "User Sign Up Page" do
-  it "displays sign up form" do
+RSpec.feature "User sign up", type: :feature do
+  scenario "User can sign up" do
     visit "/sign_up"
-    expect(page).to have_content("Sign Up")
-    expect(page).to have_content("First name")
-    expect(page).to have_content("Last name")
-    expect(page).to have_content("Username")
-    expect(page).to have_content("Email")
-    expect(page).to have_content("Password")
-    expect(page).to have_content("Password confirmation")
+    fill_in "user_first_name", with: 'test'
+    fill_in "user_last_name", with: 'user'
+    fill_in "user_username", with: 'test'
+    fill_in "user_email", with: 'test@email.com'
+    fill_in "user_password", with: 'password'
+    fill_in "user_password_confirmation", with: 'password'
+    click_button "Sign Up"
+    expect(current_path).to eq "/"
   end
 end
