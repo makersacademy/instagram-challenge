@@ -1,24 +1,18 @@
-# README
+# Christagram
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## User Stories    
+```
+As a User
+So I can join the Christagram community
+I would like to be able to sign up
+```
+```
+As a User
+So I can repeatedly use Christagram
+I would like to be able to log in and out
+```
+```
+As a User
+So that I can show off my selfies
+I would like to be able to post photos
+```
