@@ -19,7 +19,8 @@ RSpec.describe SessionsController, type: :controller do
 
   describe "GET #destroy" do
     it "returns http success" do
-      get :destroy, params: { id: 1 }
+      user = FactoryBot.create(:user)
+      get :destroy, params: { id: user.id }
       expect(response).to have_http_status(:success)
     end
   end
