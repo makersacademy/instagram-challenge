@@ -12,7 +12,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "GET #create" do
-    it "returns http success if user created" do
+    it "returns redirects to /posts if user created" do
       post :create, params: {
         user: {
           first_name: user.first_name,
