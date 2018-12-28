@@ -11,7 +11,7 @@ RSpec.feature "User sign out", type: :feature do
     click_link "Sign Out"
     expect(current_path).to eq "/posts"
     expect(page).not_to have_content "Hi, Joe!"
-    expect(page).to have_content "Sign In"
+    expect(page).to have_content "Sign Up"
   end
 
   scenario "User can sign in and then sign out" do
