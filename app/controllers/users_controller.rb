@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to posts_url
     else
-      render "new"
+      redirect_to sign_up_url
     end
   end
 

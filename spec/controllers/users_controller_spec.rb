@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
-  let(:user) { FactoryBot.create(:user) }
-
   describe "GET #new" do
     it "returns http success" do
       get :new
@@ -11,8 +9,9 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe "GET #create" do
-    xit "returns redirects to /posts if user created" do
+  describe "POST #create" do
+    it "returns redirects to /posts if user created" do
+      user = FactoryBot.build(:user)
       post :create, params: {
         user: {
           first_name: user.first_name,
@@ -22,17 +21,18 @@ RSpec.describe UsersController, type: :controller do
           password: user.password
         }
       }
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to posts_path
     end
 
     it "renders 'new' again if invalid params" do
+      user = FactoryBot.build(:user)
       post :create, params: {
         user: {
           first_name: user.first_name,
           last_name: user.last_name,
         }
       }
-      expect(response).to have_http_status(200)
+      expect(response).to redirect_to sign_up_url
     end
   end
 
