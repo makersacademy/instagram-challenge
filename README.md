@@ -1,5 +1,5 @@
 # Christagram
-[![Build Status](https://travis-ci.org/chrisjgilbert/instagram-challenge.svg?branch=master)
+![Build Status](https://travis-ci.org/chrisjgilbert/instagram-challenge.svg?branch=master)
 
 [An Instagram clone made with Rails deployed on Heroku](https://quiet-spire-51096.herokuapp.com/)
 
