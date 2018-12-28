@@ -19,9 +19,9 @@ RSpec.describe SessionsController, type: :controller do
 
   describe "GET #destroy" do
     it "returns http success" do
-      user = FactoryBot.create(:user)
-      get :destroy, params: { id: user.id }
-      expect(response).to have_http_status(:success)
+      user = FactoryBot.build(:user)
+      get :destroy, session: { id: user.id }
+      expect(response).to redirect_to posts_url
     end
   end
 
