@@ -24,6 +24,16 @@ RSpec.describe UsersController, type: :controller do
       }
       expect(response).to have_http_status(200)
     end
+
+    it "renders 'new' again if invalid params'" do
+      post :create, params: {
+        user: {
+          first_name: user.first_name,
+          last_name: user.last_name,
+        }
+      }
+      expect(response).to have_http_status(200)
+    end
   end
 
 end
