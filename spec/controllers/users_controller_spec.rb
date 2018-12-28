@@ -12,7 +12,7 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "GET #create" do
-    it "returns redirects to /posts if user created" do
+    xit "returns redirects to /posts if user created" do
       post :create, params: {
         user: {
           first_name: user.first_name,
@@ -22,10 +22,10 @@ RSpec.describe UsersController, type: :controller do
           password: user.password
         }
       }
-      expect(response).to have_http_status(200)
+      expect(response).to redirect_to root_path
     end
 
-    it "renders 'new' again if invalid params'" do
+    it "renders 'new' again if invalid params" do
       post :create, params: {
         user: {
           first_name: user.first_name,

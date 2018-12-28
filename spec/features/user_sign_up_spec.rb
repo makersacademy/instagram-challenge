@@ -10,6 +10,6 @@ RSpec.feature "User sign up", type: :feature do
     fill_in "user_password", with: 'password'
     fill_in "user_password_confirmation", with: 'password'
     click_button "Sign Up"
-    expect(current_path).to eq "/"
+    expect(current_path).to eq "/posts"
   end
 end
