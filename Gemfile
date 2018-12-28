@@ -29,7 +29,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Bootstrap
 gem "bootstrap_form", ">= 4.0.0"
-gem 'bootstrap'
+gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap-sass', '3.2.0.2'
 gem 'jquery-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
