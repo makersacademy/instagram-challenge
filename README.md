@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/leoncross/instagram-challenge.svg?branch=master)](https://travis-ci.com/leoncross/instagram-challenge)
 
+[![Coverage Status](https://coveralls.io/repos/github/leoncross/instagram-challenge/badge.svg)](https://coveralls.io/github/leoncross/instagram-challenge)
 ## User Stories
 
 As a socialite
