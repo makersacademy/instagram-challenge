@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/leoncross/instagram-challenge.svg?branch=master)](https://travis-ci.com/leoncross/instagram-challenge)
+
 ## User Stories
 
 As a socialite
