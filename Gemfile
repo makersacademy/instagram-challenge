@@ -32,6 +32,9 @@ gem "bootstrap_form", ">= 4.0.0"
 gem 'bootstrap', '~> 4.1.1'
 gem 'bootstrap-sass', '3.2.0.2'
 gem 'jquery-rails'
+
+# allows testing of template render in controller tests
+gem 'rails-controller-testing'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

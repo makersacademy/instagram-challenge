@@ -28,7 +28,7 @@ RSpec.describe UsersController, type: :controller do
       expect(user.email).to eq "joe@gmail.com"
     end
 
-    it "renders 'new' again if invalid params" do
+    it "redirects to sign up if invalid params" do
       invalid_post
       expect(response).to redirect_to sign_up_url
     end

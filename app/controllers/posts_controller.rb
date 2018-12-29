@@ -14,6 +14,16 @@ class PostsController < ApplicationController
     else
       render "new"
     end
+
+    def destroy
+      @post = Post.find_by(id: params[:id])
+        if @post
+          @post.destroy
+        else
+          return nil
+        end
+      render "index"
+    end
   end
 
   private
