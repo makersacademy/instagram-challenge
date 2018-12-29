@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'posts/index'
+  get 'posts/new'
   root "posts#index"
   get "sign_up" => "users#new", :as => "sign_up"
   get "sign_in" => "sessions#new", :as => "sign_in"
@@ -6,4 +8,5 @@ Rails.application.routes.draw do
   get "posts" => "posts#index", :as => "posts"
   resources :users
   resources :sessions
+  resources :posts
 end

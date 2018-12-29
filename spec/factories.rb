@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :post do
+    caption { "MyString" }
+  end
 
   factory :user do
     first_name { "Joe" }
