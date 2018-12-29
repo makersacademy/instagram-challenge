@@ -1,7 +1,7 @@
 language: ruby
 rvm:
  - 2.5
- 
+
 services:
 - postgresql
 
@@ -11,3 +11,6 @@ before script:
 script:
 - bin/rails db:create
 - bin/rails db:migrate
+- bundle exec rspec spec
+after_script:
+  - bundle exec rake coveralls:push
