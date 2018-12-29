@@ -1,6 +1,10 @@
 FactoryBot.define do
   factory :post do
-    caption { "MyString" }
+    caption { 'Test post' }
+
+    trait :with_image do
+      image { FilesTestHelper.png }
+    end
   end
 
   factory :user do
@@ -10,5 +14,4 @@ FactoryBot.define do
     email { "joe@gmail.com" }
     password { "password" }
   end
-
 end
