@@ -1,4 +1,3 @@
-=======
 Instagram Challenge
 ===================
 
@@ -39,4 +38,3 @@ gem "rubocop-rails"
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
->>>>>>> bbefc529941e370f72b708e0e1135bf1740b40ca
