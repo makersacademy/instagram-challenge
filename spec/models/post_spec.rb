@@ -17,6 +17,7 @@ RSpec.describe Post, type: :model do
     expect(subject).not_to be_valid
   end
 
+  # needs further investigation...
   xit "is not valid without image" do
     subject.caption = post.caption
     expect(subject).not_to be_valid

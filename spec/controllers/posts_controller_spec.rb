@@ -59,7 +59,7 @@ RSpec.describe PostsController, type: :controller do
 
     it "redirects to posts index" do
       delete_post
-      expect(response).to render_template "index"
+      expect(response).to redirect_to posts_url
     end
   end
 
