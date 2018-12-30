@@ -12,6 +12,6 @@ RSpec.feature "Post photo", type: :feature do
 
   scenario "User unable to post photo unless signed in" do
     visit "/posts"
-    expect(page).not_to have_content "New Post"
+    expect(page).not_to have_link "New Post"
   end
 end

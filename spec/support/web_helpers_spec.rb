@@ -22,7 +22,9 @@ end
 
 def post_photo
   visit "/posts"
-  click_link "New Post"
+  within ".navbar" do
+    click_link "New Post"
+  end
   expect(current_path).to eq "/posts/new"
   fill_in "Caption", with: "This is my photo caption"
   attach_file("Image", Rails.root + "spec/fixtures/photo1.png")
