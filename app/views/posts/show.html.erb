@@ -1,0 +1,52 @@
+<style>
+.center {
+  max-width: 500px;
+  margin: auto;
+}
+</style>
+
+<div class="center">
+  <div class="row h-100 ">
+    <div class="col-sm-12 my-auto" style="background:lightblue">
+      <br>
+
+      <div class="card center" style="width: 22rem;">
+    <div class="card-body align-self-center">
+      by: <%= @post.created_by %> <br><br>
+      <h5 class="card-title"><%= image_tag @post.image_url(:thumb) %></h5>
+      <p class="card-text">description: <%= @post.description %> <br>
+        posted: <%= localize(@post.created_at, :format => :short) %> <br>
+      </p>
+    </div>
+  </div>
+<br>
+
+<%= form_for [ @post, @comment ] do |f| %>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+    <%= f.hidden_field :created_by, :value => current_user.username %>
+    <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+</div>
+</div>
+
+<% @comments.each do |comment| %>
+
+
+<div class="list-group">
+  <a class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">Posted by: <%= comment.created_by %> </h5>
+      <small class="text-muted"><%= localize(comment.created_at, :format => :short) %></small>
+    </div>
+    <p class="mb-1"><%= comment.comment %></p>
+    <small class="text-muted">Donec id elit non mi porta.</small>
+  </a>
+</div>
+
+
+<br>
+<% end %>
