@@ -14,10 +14,10 @@
         <% @posts.each do |post| %>
         <div class="card center" style="width: 22rem;">
             <div class="card-body align-self-center">
-              by: <%= post.created_by %> <br><br>
-              <h5 class="card-title"><%= image_tag post.image_url(:thumb) %></h5>
-              <p class="card-text">description: <%= post.description %> <br>
-                posted: <%= localize(post.created_at, :format => :short) %> <br>
+              By: <%= post.created_by %> <br><br>
+              <a href="<%=post_path(post)%>" class="card-title"><%= image_tag post.image_url(:thumb) %></a>
+              <p class="card-text">Description: <%= post.description %> <br>
+                Posted on: <%= localize(post.created_at, :format => :short) %> <br>
                 <%= link_to 'Like'  %> -
                 <%= link_to 'Comment', post_path(post)  %> -
                 <%= link_to 'Delete', post_path(post), method: :delete,  data: { confirm: 'Are you sure?' }  %>
