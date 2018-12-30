@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-# before_action :authenticate_user!
+before_action :authenticate_user!
 
   def index
     @posts = Post.all
@@ -7,6 +7,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comments = Comment.where(params[:post_id])
   end
 
   def new
@@ -29,6 +31,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:image, :description)
+    params.require(:post).permit(:image, :description, :created_by)
   end
 end
