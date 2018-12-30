@@ -5,11 +5,7 @@ RSpec.feature "Post photo", type: :feature do
     user = FactoryBot.create(:user)
     sign_in(user)
     expect(current_path).to eq "/posts"
-    click_link "New Post"
-    expect(current_path).to eq "/posts/new"
-    fill_in "Caption", with: "This is my photo caption"
-    attach_file("Image", Rails.root + "spec/fixtures/photo1.png")
-    click_button "Post!"
+    post_photo
     expect(current_path).to eq "/posts"
     expect(page).to have_content "This is my photo caption"
   end

@@ -14,15 +14,15 @@ class PostsController < ApplicationController
     else
       render "new"
     end
+  end
 
-    def destroy
-      @post = Post.find_by(id: params[:id])
-        if @post
-          @post.destroy
-        else
-          return nil
-        end
-      render "index"
+  def destroy
+    @post = Post.find(params[:id])
+    if @post
+      @post.destroy
+      redirect_to posts_url
+    else
+      redirect_to posts_url
     end
   end
 

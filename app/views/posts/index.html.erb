@@ -1,28 +1,14 @@
-<% if @posts %>
-    <div class="container" id="card-gallery">
-      <% @posts.each do |post| %>
-        <div class="card mx-auto img-fluid" style="width: 40rem;">
-          <%= image_tag(post.image, class: "card-img-top") %>
-          <div class="card-body">
-            <h5 class="card-title"><%= post.caption %></h5>
-            <p class="card-text">Total likes: 0</p>
-            <a href="#" class="btn btn-primary">Comment</a>
-            <a href="#" class="btn btn-primary">Like</a>
-            <%= link_to 'Delete',
-                         post_path(post),
-                                     method: :delete,
-                                     data: { confirm: 'Are you sure?' } %>
-          </div>
-        </div>
-      <% end %>
+<div class="container" id="card-gallery">
+  <% @posts.each do |post| %>
+    <div class="card mx-auto img-fluid" style="width: 40rem;">
+      <%= image_tag(post.image, class: "card-img-top") %>
+      <div class="card-body">
+        <h5 class="card-title"><%= post.caption %></h5>
+        <p class="card-text">Total likes: 0</p>
+        <a href="#" class="btn btn-primary">Comment</a>
+        <a href="#" class="btn btn-primary">Like</a>
+        <%= link_to 'Delete', post_path(post), method: :delete %>
+      </div>
     </div>
-<% else %>
-  <div class="jumbotron jumbotron-fluid text-center">
-     <div class="container">
-      <h1 class="display-4">Oh no! There are currently no photos!</h1>
-      <p class="lead">
-        <%= link_to "Sign In", sign_in_path %> or <%= link_to "Sign Up", sign_up_path %> to add one!
-      </p>
-     </div>
-   </div>
-<% end %>
+  <% end %>
+</div>
