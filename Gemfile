@@ -5,6 +5,9 @@ ruby '2.5.1'
 gem 'devise'
 gem 'simplecov-shield'
 
+gem 'carrierwave'
+gem "mini_magick"
+
 # Use postgres as the database for Active Record
 gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
