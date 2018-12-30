@@ -12,7 +12,11 @@ RSpec.feature "Deleting photos", type: :feature do
   end
 
   scenario "A user who is not signed can't delete a photo" do
-    visit "/posts"
+    user = FactoryBot.create(:user)
+    sign_in(user)
+    post_photo
+    click_link "Sign Out"
+    expect(current_path).to eq "/posts"
     expect(page).not_to have_content "Delete"
   end
 end
