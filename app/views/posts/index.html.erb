@@ -1,13 +1,28 @@
 <%= render 'shared/nav' %>
 
-<h1>Listing all posts</h1>
+<style>
+.center {
+  max-width: 500px;
+  margin: auto;
+}
+</style>
 
-  <% @posts.each do |post| %>
-
-      IMAGE: <br>
-      <%= image_tag post.image_url(:thumb) %> <br>
-      DESCRIPTION: <br>
-      <%= post.description %> <br>
-      <%= link_to 'Delete', post_path(post), method: :delete,  data: { confirm: 'Are you sure?' }  %>
-      --------<br>
-  <% end %>
+<div class="center">
+  <div class="row h-100 ">
+    <div class="col-sm-12 my-auto" style="background:lightblue">
+      <h1>Listing all posts</h1>
+        <% @posts.each do |post| %>
+        <div class="card center" style="width: 22rem;">
+            <div class="card-body align-self-center">
+              <h5 class="card-title"><%= image_tag post.image_url(:thumb) %></h5>
+              <p class="card-text">description: <%= post.description %> <br>
+                <%= link_to 'Delete', post_path(post), method: :delete,  data: { confirm: 'Are you sure?' }  %>
+              </p>
+            </div>
+          </div>
+        <br>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

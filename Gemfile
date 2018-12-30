@@ -7,6 +7,10 @@ gem 'simplecov-shield'
 
 gem 'carrierwave'
 gem "mini_magick"
+gem 'bootstrap'
+gem 'jquery-rails'
+# gem 'turbolinks'
+
 
 # Use postgres as the database for Active Record
 gem 'pg'
