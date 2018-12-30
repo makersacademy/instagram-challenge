@@ -9,7 +9,7 @@ before_action :authenticate_user!
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = Comment.where(params[:post_id])
+    @comments = Comment.where(post_id: params[:id])
   end
 
   def new
