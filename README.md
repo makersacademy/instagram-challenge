@@ -2,7 +2,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/leoncross/instagram-challenge/badge.svg)](https://coveralls.io/github/leoncross/instagram-challenge)
 ## User Stories
-
+```
 As a socialite
 So I can share pictures with other people
 I would like to upload pictures
@@ -18,3 +18,4 @@ I would like people to comment on my pictures
 As a socialite
 So I can tell my friends how great their pictures look
 I would like to be able to comment on other peoples pictures
+```
