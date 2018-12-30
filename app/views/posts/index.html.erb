@@ -6,10 +6,12 @@
         <div class="card-body">
           <h5 class="card-title"><%= post.caption %> <span style="font-style: italic"><%= post.user.username %></span></h5>
           <p class="card-text">Total likes: 0</p>
-          <% if current_user %>
+          <% if current_user  %>
             <a href="#" class="btn btn-primary">Comment</a>
             <a href="#" class="btn btn-success">Like</a>
-            <%= link_to 'Delete', post_path(post), method: :delete, class: "btn btn-danger" %>
+            <% if current_user == post.user %>
+              <%= link_to 'Delete', post_path(post), method: :delete, class: "btn btn-danger" %>
+            <% end %>
           <% end %>
         </div>
       </div>
