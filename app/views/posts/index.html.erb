@@ -2,17 +2,12 @@
 
 <h1>Listing all posts</h1>
 
-<table>
-  <tr>
-    <th>url</th>
-    <th>description</th>
-    <th></th>
-  </tr>
-
   <% @posts.each do |post| %>
-    <tr>
-      <td><%= post.url %></td>
-      <td><%= post.description %></td>
-    </tr>
+
+      IMAGE: <br>
+      <%= image_tag post.image_url(:thumb) %> <br>
+      DESCRIPTION: <br>
+      <%= post.description %> <br>
+      <%= link_to 'Delete', post_path(post), method: :delete,  data: { confirm: 'Are you sure?' }  %>
+      --------<br>
   <% end %>
-</table>
