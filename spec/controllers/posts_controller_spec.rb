@@ -22,8 +22,10 @@ RSpec.describe PostsController, type: :controller do
   describe 'POST create' do
 
     let(:image) { FilesTestHelper.png }
+    let(:user) { FactoryBot.create(:user) }
 
     def create_post
+      allow(controller).to receive(:current_user).and_return(user)
       post :create, params: { post: { caption: 'Test post', image: image } }
     end
 
