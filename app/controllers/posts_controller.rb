@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
 before_action :authenticate_user!
 
+
+
   def index
     @posts = Post.all
 
@@ -29,9 +31,13 @@ before_action :authenticate_user!
     redirect_to posts_path
   end
 
-
   private
   def post_params
     params.require(:post).permit(:image, :description, :created_by)
   end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
 end

@@ -19,11 +19,15 @@
               <p class="card-text">Description: <%= post.description %> <br>
                 Posted on: <%= localize(post.created_at, :format => :short) %> <br>
                 <h6>Comments (<%= post.comments.size %>)</h6>
-                <h6>Likes (tbc)</h6><br>
-                <%= link_to 'Like'  %> -
+                <h6>Likes (<%= post.likes.size %>)</h6> <br>
+                <% pre_like = Like.find_by(user_id: current_user.id, post_id: post) %>
+                <% if pre_like %>
+                  <%= link_to 'Unlike', post_like_path(post, pre_like), method: :delete %> -
+                <% else %>
+                  <%= link_to 'Like', post_likes_path(post), method: :post %> -
+                <% end %>
                 <%= link_to 'Comment', post_path(post)  %> -
                 <%= link_to 'Delete', post_path(post), method: :delete,  data: { confirm: 'Are you sure?' }  %>
-
             </div>
           </div>
         <br>
