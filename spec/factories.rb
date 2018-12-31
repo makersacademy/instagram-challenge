@@ -1,8 +1,9 @@
 FactoryBot.define do
-  factory :like do
-    post { nil }
-    user { nil }
+
+  sequence :email do |n|
+    "person#{n}@example.com"
   end
+
   factory :post do
     association :user
     caption { 'Test post' }
@@ -16,7 +17,12 @@ FactoryBot.define do
     first_name { "Joe" }
     last_name { "Bloggs" }
     username { "JoeyB" }
-    email { "joe@gmail.com" }
+    email { generate :email }
     password { "password" }
+  end
+
+  factory :like do
+    user :factory => :user
+    post :factory => :post
   end
 end

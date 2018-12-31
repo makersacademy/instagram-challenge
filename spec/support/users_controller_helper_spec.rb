@@ -1,4 +1,4 @@
-def valid_post
+def valid_post_by(user)
   post :create, params: {
                         user: {
                           first_name: user.first_name,

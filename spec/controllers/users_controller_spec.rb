@@ -12,20 +12,20 @@ RSpec.describe UsersController, type: :controller do
 
   describe "POST #create" do
 
-    let(:user) { FactoryBot.build(:user) }
+    let(:dummy_user) { FactoryBot.build(:user) }
 
     it "returns redirects to /posts if user created" do
-      valid_post
+      valid_post_by(dummy_user)
       expect(response).to redirect_to posts_path
     end
 
     it "creates a new user account with valid attributes" do
-      expect { valid_post }.to change { User.count }.by(1)
+      expect { valid_post_by(dummy_user) }.to change { User.count }.by(1)
       user = User.last
-      expect(user.first_name).to eq "Joe"
-      expect(user.last_name).to eq "Bloggs"
-      expect(user.username).to eq "JoeyB"
-      expect(user.email).to eq "joe@gmail.com"
+      expect(user.first_name).to eq dummy_user.first_name
+      expect(user.last_name).to eq dummy_user.last_name
+      expect(user.username).to eq dummy_user.username
+      expect(user.email).to eq dummy_user.email
     end
 
     it "redirects to sign up if invalid params" do
