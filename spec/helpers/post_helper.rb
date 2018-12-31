@@ -1,4 +1,3 @@
-
 def upload_cat_picture
   click_link "New post"
   attach_file("Image", Rails.root + "spec/fixtures/files/Cat.jpg")
