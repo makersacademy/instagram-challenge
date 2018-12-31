@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :post do
+    association :user
     caption { 'Test post' }
 
     trait :with_image do
