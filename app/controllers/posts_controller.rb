@@ -1,14 +1,17 @@
 class PostsController < ApplicationController
 before_action :authenticate_user!
 
+
+
   def index
     @posts = Post.all
+
   end
 
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = Comment.where(params[:post_id])
+    @comments = Comment.where(post_id: params[:id])
   end
 
   def new
@@ -28,9 +31,13 @@ before_action :authenticate_user!
     redirect_to posts_path
   end
 
-
   private
   def post_params
     params.require(:post).permit(:image, :description, :created_by)
   end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
 end

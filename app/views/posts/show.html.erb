@@ -1,3 +1,5 @@
+<%= render 'shared/nav' %>
+
 <style>
 .center {
   max-width: 500px;
@@ -14,8 +16,8 @@
     <div class="card-body align-self-center">
       by: <%= @post.created_by %> <br><br>
       <h5 class="card-title"><%= image_tag @post.image_url(:thumb) %></h5>
-      <p class="card-text">description: <%= @post.description %> <br>
-        posted: <%= localize(@post.created_at, :format => :short) %> <br>
+      <p class="card-text">Description: <%= @post.description %> <br>
+        Posted: <%= localize(@post.created_at, :format => :short) %> <br>
       </p>
     </div>
   </div>
@@ -26,6 +28,8 @@
     <%= f.label :comment %><br>
     <%= f.text_area :comment %>
     <%= f.hidden_field :created_by, :value => current_user.username %>
+    <%= f.hidden_field :post_id, :value => @post.id %>
+
     <p>
     <%= f.submit %>
   </p>
