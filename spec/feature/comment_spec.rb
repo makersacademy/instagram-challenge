@@ -1,7 +1,7 @@
 require "helpers/authentication_helper"
 require "helpers/post_helper"
 
-feature "Create comment" do
+feature "Comments" do
   scenario "Can post comment" do
     sign_up_as_user_a
     upload_cat_picture
@@ -10,9 +10,7 @@ feature "Create comment" do
     click_button "submit"
     expect(page).to have_content("great picture!")
   end
-end
-feature "Delete comment" do
-  scenario "Can post comment" do
+  scenario "Can delete comment" do
     sign_up_as_user_a
     upload_cat_picture
     click_link "Comment"

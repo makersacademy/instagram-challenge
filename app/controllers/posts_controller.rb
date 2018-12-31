@@ -36,8 +36,4 @@ before_action :authenticate_user!
     params.require(:post).permit(:image, :description, :created_by)
   end
 
-  def set_post
-    @post = Post.find(params[:id])
-  end
-
 end
