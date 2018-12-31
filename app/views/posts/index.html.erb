@@ -10,16 +10,15 @@
 <div class="center">
   <div class="row h-100 ">
     <div class="col-sm-12 my-auto" style="background:lightblue">
-      <h1>Listing all posts</h1>
+      <h1 class= "d-flex justify-content-center">Posts</h1>
         <% @posts.each do |post| %>
         <div class="card center" style="width: 22rem;">
             <div class="card-body align-self-center">
-              By: <%= post.created_by %> <br><br>
+              <p class="card-text">Created by: <%= post.created_by %></p>
               <a href="<%=post_path(post)%>" class="card-title"><%= image_tag post.image_url(:thumb) %></a>
-              <p class="card-text">Description: <%= post.description %> <br>
-                Posted on: <%= localize(post.created_at, :format => :short) %> <br>
-                <h6>Comments (<%= post.comments.size %>)</h6>
-                <h6>Likes (<%= post.likes.size %>)</h6> <br>
+              <p class="text-center font-weight-light"> Comments (<%= post.comments.size %>) - Likes (<%= post.likes.size %>)</p>
+              <p class="card-text"><%= post.description %> <br>
+                <br>
                 <% pre_like = Like.find_by(user_id: current_user.id, post_id: post) %>
                 <% if pre_like %>
                   <%= link_to 'Unlike', post_like_path(post, pre_like), method: :delete %> -
@@ -28,6 +27,8 @@
                 <% end %>
                 <%= link_to 'Comment', post_path(post)  %> -
                 <%= link_to 'Delete', post_path(post), method: :delete,  data: { confirm: 'Are you sure?' }  %>
+                <p class="card-text text-right"><small class="text-muted text-right">Posted: <%= localize(post.created_at, :format => :short) %></small></p>
+
             </div>
           </div>
         <br>

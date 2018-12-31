@@ -1,14 +1,40 @@
-<%= form_with scope: :post, url: posts_path, local: true, html: { multipart: true } do |form| %>  <p>
-  <div class="field">
-    add an image....
-    <%= form.file_field :image %>
+
+
+<%= render 'shared/nav' %>
+
+<style>
+.center {
+  max-width: 500px;
+  margin: auto;
+}
+</style>
+
+
+
+<div class="center">
+  <div class="row h-100 ">
+    <div class="col-sm-12 my-auto" style="background:lightblue">
+<%= form_with scope: :post, url: posts_path, local: true, html: { multipart: true } do |f| %>  <p>
+
+
+  <div class="form-group">
+    <h1 class= "d-flex justify-content-center">Post an image</h1>
+    <br>
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
     </div>
+    <br>
     <p>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
+    <%= f.label :description %><br>
+    <textarea class="form-control" aria-label="With textarea" <%= f.text_area :description %> </textarea>
     </p>
-    <%= form.hidden_field :created_by, :value => current_user.username %>
+    <%= f.hidden_field :created_by, :value => current_user.username %>
     <p>
-    <%= form.submit %>
+      <center>
+    <%= f.submit "Upload"%>
+    </center>
   </p>
 <% end %>
+</div>
+</div>
+</div>

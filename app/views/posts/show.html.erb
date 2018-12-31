@@ -18,39 +18,49 @@
       <h5 class="card-title"><%= image_tag @post.image_url(:thumb) %></h5>
       <p class="card-text">Description: <%= @post.description %> <br>
         Posted: <%= localize(@post.created_at, :format => :short) %> <br>
-      </p>
+        <h6>Comments (<%= @post.comments.size %>)</h6>
+        <h6>Likes (<%= @post.likes.size %>)</h6> <br>
+        <% pre_like = Like.find_by(user_id: current_user.id, post_id: @post) %>
+        <% if pre_like %>
+          <%= link_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+        <% else %>
+          <%= link_to 'Like', post_likes_path(@post), method: :post %>
+        <% end %>
     </div>
   </div>
 <br>
+<h7 aria-label> Leave a comment: </h7>
 
 <%= form_for [ @post, @comment ] do |f| %>
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
-    <%= f.hidden_field :created_by, :value => current_user.username %>
-    <%= f.hidden_field :post_id, :value => @post.id %>
-
-    <p>
-    <%= f.submit %>
-  </p>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <button <% f.submit%> class="input-group-text" >submit</button>
+  </div>
+  <textarea class="form-control" aria-label="With textarea" <%= f.text_area :comment %> </textarea>
+  <%= f.hidden_field :created_by, :value => current_user.username %>
+  <%= f.hidden_field :post_id, :value => @post.id %>
+</div>
 <% end %>
+<br>
 </div>
 </div>
 
 <% @comments.each do |comment| %>
-
-
+<br>
 <div class="list-group">
   <a class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Posted by: <%= comment.created_by %> </h5>
-      <small class="text-muted"><%= localize(comment.created_at, :format => :short) %></small>
+      <h5 class="mb-1">Posted by: <%= comment.created_by %></h5>
+      <small class="text-muted"><%= localize(comment.created_at, :format => :short) %> </small>
     </div>
     <p class="mb-1"><%= comment.comment %></p>
-    <small class="text-muted">Donec id elit non mi porta.</small>
+    <small class="text-muted">Edit - Delete </small>
   </a>
 </div>
-
-
-<br>
 <% end %>
+</div
+<br>
+<br>
+<br>
+<br>
+<br>
