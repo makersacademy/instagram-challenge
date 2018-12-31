@@ -5,6 +5,12 @@
   max-width: 500px;
   margin: auto;
 }
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
 </style>
 
 <div class="center">
@@ -47,15 +53,19 @@
 
 <% @comments.each do |comment| %>
 <br>
-<div class="list-group">
-  <a class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Posted by: <%= comment.created_by %></h5>
-      <small class="text-muted"><%= localize(comment.created_at, :format => :short) %> </small>
-    </div>
-    <p class="mb-1"><%= comment.comment %></p>
-    <small class="text-muted">Edit - Delete </small>
-  </a>
+
+<div class="card">
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted alignleft"><%= comment.created_by %></h6>
+    <br>
+    <p class="card-text"><%= comment.comment %></p>
+
+    <a href="#"> <%= link_to 'Delete', post_comment_path(comment), method: :delete,  data: { confirm: 'Are you sure?' }, :class=>"small" %> -</a>
+    <a href="#"> <%= link_to 'Edit', post_comment_path(comment), :class=>"small" %></a>
+    <a class="small text-muted alignright"><%= localize(comment.created_at, :format => :short) %> </a>
+
+
+  </div>
 </div>
 <% end %>
 </div
