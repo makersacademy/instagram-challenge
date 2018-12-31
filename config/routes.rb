@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+  get 'likes/destroy'
   get 'posts/index'
   get 'posts/new'
   root "posts#index"
@@ -8,5 +10,7 @@ Rails.application.routes.draw do
   get "posts" => "posts#index", :as => "posts"
   resources :users
   resources :sessions
-  resources :posts
+  resources :posts do
+    resources :likes
+  end
 end
