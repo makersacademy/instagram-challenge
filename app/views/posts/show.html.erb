@@ -59,9 +59,11 @@
     <h6 class="card-subtitle mb-2 text-muted alignleft"><%= comment.created_by %></h6>
     <br>
     <p class="card-text"><%= comment.comment %></p>
-
+    <% if comment.created_by == current_user.username %>
     <a href="#"> <%= link_to 'Delete', post_comment_path(comment), method: :delete,  data: { confirm: 'Are you sure?' }, :class=>"small" %> -</a>
     <a href="#"> <%= link_to 'Edit', post_comment_path(comment), :class=>"small" %></a>
+    <% end %>
+
     <a class="small text-muted alignright"><%= localize(comment.created_at, :format => :short) %> </a>
 
 
