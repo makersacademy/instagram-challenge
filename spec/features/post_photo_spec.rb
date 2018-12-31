@@ -7,8 +7,7 @@ RSpec.feature "Post photo", type: :feature do
     expect(current_path).to eq "/posts"
     post_photo
     expect(current_path).to eq "/posts"
-    expect(page).to have_content "This is my photo caption"
-    expect(page).to have_content "by JoeyB"
+    expect(page).to have_content "This is my photo caption JoeyB"
   end
 
   scenario "User unable to post photo unless signed in" do
