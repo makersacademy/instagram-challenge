@@ -1,20 +1,31 @@
-[![Build Status](https://travis-ci.com/leoncross/instagram-challenge.svg?branch=master)](https://travis-ci.com/leoncross/instagram-challenge) [![Coverage Status](https://coveralls.io/repos/github/leoncross/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/leoncross/instagram-challenge?branch=master)
+[![Build Status](https://travis-ci.com/leoncross/instagram-challenge.svg?branch=master)](https://travis-ci.com/leoncross/instagram-challenge)[![Coverage Status](https://coveralls.io/repos/github/leoncross/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/leoncross/instagram-challenge?branch=master)
 
-## User Stories
+# Not So Instagram
+An instagram 'clone'. This was completed as part of a weekend challenege at Makers Academy.
+Features include:
+- Authentication (log in / log out etc.)
+- Post an image
+- Comment on an image (edit and delete functionality given to only comment creator)
+- Like and unlike an image
+
+Deployed at: https://notsoinstagram.herokuapp.com
+
+
+## Getting Started:
+
 ```
-As a socialite
-So I can share pictures with other people
-I would like to upload pictures
-
-As a socialite
-So I can see what my friends are up to
-I would like to see other peoples pictures
-
-As a socialite
-So my friends can tell me how awesome I am
-I would like people to comment on my pictures
-
-As a socialite
-So I can tell my friends how great their pictures look
-I would like to be able to comment on other peoples pictures
+fork / clone the repo
+$ bundle install
+$ rake db:migrate
+$ bin/rails server
 ```
+
+## Running the tests and checking test coverage:
+
+```
+$ rspec
+$ coveralls report
+```
+
+## Build with
+- Ruby on Rails
