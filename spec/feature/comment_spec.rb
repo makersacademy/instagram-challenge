@@ -27,8 +27,9 @@ feature "Comments" do
     fill_in "comment_comment", with: "great picture!"
     click_button "submit"
     expect(page).to have_content("great picture!")
+    click_link "Edit"
     fill_in "comment_comment", with: "I prefer dogs!"
-    click_button "submit"
+    click_button "Update"
     expect(page).to have_content("I prefer dogs!")
   end
 end
