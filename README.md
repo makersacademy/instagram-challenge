@@ -23,7 +23,7 @@ $ bin/rails server
 ## Running the tests and checking test coverage:
 
 ```
-$ rspec
+$ bundle exec rspec
 $ coveralls report
 ```
 
