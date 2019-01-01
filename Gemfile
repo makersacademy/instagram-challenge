@@ -10,6 +10,7 @@ gem "mini_magick"
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'rspec-rails', '~> 3.5'
+gem 'coveralls', require: false
 
 # Use postgres as the database for Active Record
 gem 'pg'
@@ -52,7 +53,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
-  gem 'coveralls', require: false
 end
 
 group :development do
