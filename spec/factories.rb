@@ -25,4 +25,5 @@ FactoryBot.define do
     user :factory => :user
     post :factory => :post
   end
+
 end

@@ -28,6 +28,8 @@ RSpec.describe LikesController, type: :controller do
     let!(:like) { FactoryBot.create(:like) }
 
     def delete_like
+      allow(Post).to receive(:find)
+      allow_any_instance_of(LikesController).to receive(:already_liked?).and_return(true)
       delete :destroy, params: { id: like.id }
     end
 
