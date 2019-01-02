@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :comments, :likes
   end
 
-  root 'welcome#index'
+  root 'posts#index'
 
 
 
