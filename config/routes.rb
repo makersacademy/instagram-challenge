@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :posts do
-    resources :likes
+    resources :likes, only: [:create, :destroy]
   end
 end

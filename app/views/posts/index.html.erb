@@ -8,8 +8,8 @@
           <p class="card-text">Total Likes: <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
           <% if current_user  %>
             <a href="#" class="btn btn-primary">Comment</a>
-            <% if user_already_liked_post?(current_user.id, post.id) %>
-              <%= link_to 'Unlike', post_likes_path(post), method: :destroy, class: "btn btn-success" %>
+            <% if user_already_likes_post?(post.id) %>
+              <%= link_to 'UnLike', post_like_path(post, find_like(post.id)), method: :delete, class: "btn btn-success" %>
             <% else %>
               <%= link_to 'Like', post_likes_path(post), method: :post, class: "btn btn-success" %>
             <% end %>

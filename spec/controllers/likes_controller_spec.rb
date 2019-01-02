@@ -3,10 +3,9 @@ require 'rails_helper'
 RSpec.describe LikesController, type: :controller do
 
   let(:dummy_post) { FactoryBot.create(:post) }
+  let(:user) { FactoryBot.create(:user) }
 
   describe "POST #create" do
-
-    let(:user) { FactoryBot.create(:user) }
 
     def create_like
       allow(Post).to receive(:find).and_return(dummy_post)
@@ -29,7 +28,6 @@ RSpec.describe LikesController, type: :controller do
     let!(:like) { FactoryBot.create(:like) }
 
     def delete_like
-      allow(Post).to receive(:find).and_return(dummy_post)
       delete :destroy, params: { id: like.id }
     end
 
