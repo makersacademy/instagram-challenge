@@ -12,10 +12,11 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    @like = Like.find(params[:id])
     if !(already_liked?)
       nil
     else
-      Like.find(params[:id]).destroy
+      @like.destroy
     end
     redirect_to posts_url
   end
