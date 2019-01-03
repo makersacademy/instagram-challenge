@@ -5,9 +5,10 @@ RSpec.feature "Like post", type: :feature do
     user = FactoryBot.create(:user)
     sign_in(user)
     post_photo
+    click_link "View Post"
     expect(page).to have_content "Like"
     click_link "Like"
-    expect(page).to have_content "Total Likes: 1"
+    expect(page).to have_content "Likes: 1"
     expect(page).to have_content "UnLike"
   end
 
@@ -15,9 +16,10 @@ RSpec.feature "Like post", type: :feature do
     user = FactoryBot.create(:user)
     sign_in(user)
     post_photo
+    click_link "View Post"
     click_link "Like"
-    expect(page).to have_content "Total Likes: 1"
+    expect(page).to have_content "Likes: 1"
     click_link "UnLike"
-    expect(page).to have_content "Total Likes: 0"
+    expect(page).to have_content "Likes: 0"
   end
 end
