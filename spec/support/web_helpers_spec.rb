@@ -30,3 +30,15 @@ def post_photo
   attach_file("Image", Rails.root + "spec/fixtures/photo1.png")
   click_button "Post!"
 end
+
+def sign_in_and_post_photo(user)
+  sign_in(user)
+  post_photo
+end
+
+def add_post_comment
+  within "#new_comment" do
+    fill_in "comment_body", with: "this is a great post"
+    click_button "Post!"
+  end
+end

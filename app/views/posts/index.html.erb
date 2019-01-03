@@ -1,17 +1,5 @@
 <% if there_are_posts? %>
-  <div class="container" id="card-gallery">
-    <% @posts.each do |post| %>
-      <div class="card mx-auto img-fluid" style="width: 40rem;">
-        <%= link_to image_tag(post.image, class: "card-img-top"), post_path(post) %>
-        <div class="card-body">
-          <h5 class="card-title"><%= post.caption %> <span style="font-style: italic"><%= post.user.username %></span></h5>
-          <p class="card-text">Likes: <%= post.likes.count %></p>
-          <p class="card-text">Comments: <%= post.comments.count %></p>
-          <%= link_to 'View Post', post_path(post), class: "btn btn-success" %>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <%= render partial: 'posts/posts' %>
 <% else %>
   <%= render partial: 'posts/no_posts' %>
 <% end %>
