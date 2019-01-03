@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.describe CommentsController, type: :controller do
 
   let(:dummy_post) { FactoryBot.create(:post) }
-  let(:user) { FactoryBot.create(:user) }
-  let(:comment) { FactoryBot.build(:comment) }
 
   describe "POST #create" do
+
+    let(:user) { FactoryBot.create(:user) }
+    let(:comment) { FactoryBot.build(:comment) }
 
     def create_comment
       allow(controller).to receive(:current_user).and_return(user)
@@ -24,9 +25,15 @@ RSpec.describe CommentsController, type: :controller do
   end
 
   describe "GET #destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
+
+    let!(:comment) { FactoryBot.create(:comment) }
+
+    def delete_comment
+      delete :destroy, params: { post_id: comment.post.id, id: comment.id }
+    end
+
+    it "deletes a like" do
+      expect { delete_comment }.to change { Comment.count }.by(-1)
     end
   end
 
