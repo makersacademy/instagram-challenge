@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :comment do
     body { "MyText" }
-    user { nil }
-    post { nil }
+    user :factory => :user
+    post :factory => :post
   end
 
   sequence :email do |n|

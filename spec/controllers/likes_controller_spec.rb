@@ -14,7 +14,7 @@ RSpec.describe LikesController, type: :controller do
     end
 
     it 'creates a like' do
-      expect { create_like }.to change{ Like.count }.by(1)
+      expect { create_like }.to change { Like.count }.by(1)
     end
 
     it 'redirects to posts url' do

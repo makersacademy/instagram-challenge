@@ -2,29 +2,8 @@
     <div class="card mx-auto img-fluid" style="width: 40rem;">
       <%= image_tag(@post.image, class: "card-img-top rounded") %>
       <div class="card-body">
-        <h2 class="card-title"><%= @post.caption %> <span style="font-style: italic"><%= @post.user.username %></span></h2>
-        <h5 class="card-text">Likes: <%= @post.likes.count %></h5>
-        <% if current_user  %>
-          <% if user_already_likes_post?(@post.id) %>
-            <%= link_to 'UnLike', post_like_path(@post, find_like(@post.id)), method: :delete, class: "btn btn-success" %>
-          <% else %>
-            <%= link_to 'Like', post_likes_path(@post), method: :post, class: "btn btn-success" %>
-          <% end %>
-          <% if current_user == @post.user %>
-            <%= link_to 'Delete', post_path(@post), method: :delete, class: "btn btn-danger" %>
-          <% end %>
-        <% end %>
-        <h3><%= @post.comments.count %> Comments</h3>
-        <% @post.comments.each do |comment| %>
-          <div>
-            <strong><%= comment.user.username %></strong>
-            <br>
-            <p><%= comment.body %></p>
-            <% if current_user %>
-            <p><%= link_to 'Delete', post_comment_path(@post, comment), method: :delete %></p>
-            <% end %>
-          </div>
-        <% end %>
+        <%= render partial: 'posts/body', locals: { post: @post } %>
+         <%= render partial: 'comments/post_comments', locals: { post: @post } %>
         <% if current_user %>
           <%= render partial: 'comments/form', locals: { comment: @comment } %>
         <% else %>

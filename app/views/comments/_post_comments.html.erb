@@ -1,0 +1,11 @@
+<h3><%= @post.comments.count %> Comments</h3>
+<% @post.comments.each do |comment| %>
+  <div>
+    <strong><%= comment.user.username %></strong>
+    <br>
+    <p><%= comment.body %></p>
+    <% if current_user == @post.user %>
+    <p><%= link_to 'Delete', post_comment_path(@post, comment), method: :delete %></p>
+    <% end %>
+  </div>
+<% end %>
