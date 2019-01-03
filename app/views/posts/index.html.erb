@@ -2,21 +2,12 @@
   <div class="container" id="card-gallery">
     <% @posts.each do |post| %>
       <div class="card mx-auto img-fluid" style="width: 40rem;">
-        <%= image_tag(post.image, class: "card-img-top") %>
+        <%= link_to image_tag(post.image, class: "card-img-top"), post_path(post) %>
         <div class="card-body">
           <h5 class="card-title"><%= post.caption %> <span style="font-style: italic"><%= post.user.username %></span></h5>
-          <p class="card-text">Total Likes: <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-          <% if current_user  %>
-            <a href="#" class="btn btn-primary">Comment</a>
-            <% if user_already_likes_post?(post.id) %>
-              <%= link_to 'UnLike', post_like_path(post, find_like(post.id)), method: :delete, class: "btn btn-success" %>
-            <% else %>
-              <%= link_to 'Like', post_likes_path(post), method: :post, class: "btn btn-success" %>
-            <% end %>
-            <% if current_user == post.user %>
-              <%= link_to 'Delete', post_path(post), method: :delete, class: "btn btn-danger" %>
-            <% end %>
-          <% end %>
+          <p class="card-text">Likes: <%= post.likes.count %></p>
+          <p class="card-text">Comments: <%= post.comments.count %></p>
+          <%= link_to 'View Post', post_path(post), class: "btn btn-success" %>
         </div>
       </div>
     <% end %>
