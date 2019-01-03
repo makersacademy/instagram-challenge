@@ -19,7 +19,7 @@ RSpec.describe LikesController, type: :controller do
 
     it 'redirects to posts url' do
       create_like
-      expect(response).to redirect_to posts_url
+      expect(response).to redirect_to post_path(dummy_post)
     end
   end
 
@@ -28,13 +28,18 @@ RSpec.describe LikesController, type: :controller do
     let!(:like) { FactoryBot.create(:like) }
 
     def delete_like
-      allow(Post).to receive(:find)
+      allow(Post).to receive(:find).and_return(dummy_post)
       allow_any_instance_of(LikesController).to receive(:already_liked?).and_return(true)
       delete :destroy, params: { id: like.id }
     end
 
     it "deletes a like" do
       expect { delete_like }.to change { Like.count }.by(-1)
+    end
+
+    it 'redirects to posts url' do
+      delete_like
+      expect(response).to redirect_to post_path(dummy_post)
     end
 
   end

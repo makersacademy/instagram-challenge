@@ -32,8 +32,13 @@ RSpec.describe CommentsController, type: :controller do
       delete :destroy, params: { post_id: comment.post.id, id: comment.id }
     end
 
-    it "deletes a like" do
+    it "deletes a comment" do
       expect { delete_comment }.to change { Comment.count }.by(-1)
+    end
+
+    it "redirects to post path" do
+      delete_comment
+      expect(response).to redirect_to post_path(comment.post.id)
     end
   end
 
