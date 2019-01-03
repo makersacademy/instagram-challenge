@@ -2,10 +2,10 @@
 <% @post.comments.each do |comment| %>
   <div>
     <strong><%= comment.user.username %></strong>
+    <% if current_user == @post.user %>
+    <em><%= link_to 'Delete', post_comment_path(@post, comment), method: :delete %></em>
+    <% end %>
     <br>
     <p><%= comment.body %></p>
-    <% if current_user == @post.user %>
-    <p><%= link_to 'Delete', post_comment_path(@post, comment), method: :delete %></p>
-    <% end %>
   </div>
 <% end %>
