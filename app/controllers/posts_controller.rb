@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   end
 
   def index
+    @posts = Post.all.order('posts.created_at DESC')
   end
 
   def show

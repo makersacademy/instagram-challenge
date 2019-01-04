@@ -1,2 +1,35 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h2>All Posts:</h2>
+
+<% @posts.each do |post| %>
+    <div>
+      <%= image_tag url_for(post.image) %>
+      <p><%= truncate(post.description) %></p>
+      <p>Posted by <%= post.user.email %> at <%= post.created_at %></p>
+      <a><%= link_to "View Full", post_path(post), :class => 'btn btn-info' %></a>
+    </div>
+<% end %>
+
+
+<style>
+    h1.title {
+      font-family: arial;
+      font-size: 50px;
+      color: #343a40;
+      padding: 20px;
+    }
+    h3 {
+      font-family: arial;
+      color: #343a40;
+      font-weight: bold;
+    }
+    p {
+      font-family: arial;
+      color: #343a40;
+    }
+    div.each-post {
+      margin: 10px;
+      padding: 40px;
+      border-radius: 10px;
+      background-color: lightgrey;
+    }
+  </style>
