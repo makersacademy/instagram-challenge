@@ -1,35 +1,25 @@
 <h2>All Posts:</h2>
 
 <% @posts.each do |post| %>
-    <div>
+    <div class="each-post col-lg-4 col-md-4 col-sm-6 col-xs-12" >
       <%= image_tag url_for(post.image) %>
       <p><%= truncate(post.description) %></p>
-      <p>Posted by <%= post.user.email %> at <%= post.created_at %></p>
-      <a><%= link_to "View Full", post_path(post), :class => 'btn btn-info' %></a>
+      <p>Posted by <%= post.user.email %> at <%= post.created_at.to_formatted_s(:short) %></p>
+      <a><%= link_to "View", post_path(post), :class => 'btn btn-info' %></a>
     </div>
 <% end %>
 
 
 <style>
-    h1.title {
-      font-family: arial;
-      font-size: 50px;
-      color: #343a40;
-      padding: 20px;
-    }
-    h3 {
-      font-family: arial;
-      color: #343a40;
-      font-weight: bold;
-    }
-    p {
-      font-family: arial;
-      color: #343a40;
-    }
-    div.each-post {
-      margin: 10px;
-      padding: 40px;
-      border-radius: 10px;
-      background-color: lightgrey;
-    }
-  </style>
+
+  div.each-post {
+    padding: 5px;
+    height: 400px;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 300px;
+  }
+
+</style>
