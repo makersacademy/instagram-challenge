@@ -38,6 +38,8 @@ gem 'rails-controller-testing'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
+# for validating active storage attachments
+gem 'activestorage-validator'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

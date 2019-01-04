@@ -5,11 +5,11 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, length: { in: 6..20 }
+  validates :password, confirmation: true, length: { in: 6..20 }
+  validates :password, confirmation: { case_sensitive: true }
 
-  validates_confirmation_of :password, :on => :create
   validates_uniqueness_of :email
 
   has_many :posts, dependent: :destroy

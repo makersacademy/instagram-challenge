@@ -6,6 +6,7 @@ class LikesController < ApplicationController
     if already_liked?
       nil
     else
+      flash[:success] = "You liked #{@post.user.first_name}'s post'!"
       @post.likes.create(user_id: current_user.id)
     end
     redirect_to post_path(@post)
@@ -16,6 +17,7 @@ class LikesController < ApplicationController
     if !(already_liked?)
       nil
     else
+      flash[:success] = "You unliked #{@post.user.first_name}'s post'!"
       @like.destroy
     end
     redirect_to post_path(@post)
