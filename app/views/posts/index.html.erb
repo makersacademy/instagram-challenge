@@ -5,6 +5,7 @@
       <%= image_tag url_for(post.image) %>
       <p><%= truncate(post.description) %></p>
       <p>Posted by <%= post.user.email %> at <%= post.created_at.to_formatted_s(:short) %></p>
+      <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
       <a><%= link_to "View", post_path(post), :class => 'btn btn-info' %></a>
     </div>
 <% end %>
@@ -14,7 +15,7 @@
 
   div.each-post {
     padding: 5px;
-    height: 400px;
+    height: 450px;
   }
 
   img {

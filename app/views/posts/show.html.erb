@@ -5,10 +5,16 @@
 <h4>Description:</h4>
 <%= @post.description %>
 <br><br>
+<p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+<br>
+<%= link_to 'Like', post_likes_path(@post),
+                                      method: :post,
+                                      :class => 'btn btn-success' %>
 <%= link_to "Delete", post_path(@post),
                                       method: :delete,
                                       data: { confirm: 'Are you sure?'},
                                       :class => 'btn btn-danger' %>
+
 
 <style>
 
