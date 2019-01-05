@@ -17,8 +17,25 @@
                                         data: { confirm: 'Are you sure?'},
                                         :class => 'btn btn-danger' %>
 <% end %>
+<hr>
 
+<h4>Comments:</h4>
+<% @post.comments.each do |comment| %>
+  <div class="">
+    <strong><%= comment.user.email %></strong>: <%= comment.body %>
+  </div>
+<% end %>
 
+<h4>Add Comment</h4>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area(:body, {:class => 'form-control'}) %>
+  </p>
+  <p>
+    <%= f.submit({:class => 'btn btn-default'}) %>
+  </p>
+<% end %>
 <style>
 
   img {
