@@ -1,12 +1,15 @@
-<h2>All Posts:</h2>
-<hr>
+<h2>All Your Zombie Pics in One Place:</h2>
+<hr class="top">
 <% @posts.each do |post| %>
     <div class="each-post col-lg-4 col-md-4 col-sm-6 col-xs-12" >
       <%= image_tag url_for(post.image) %>
-      <p><%= truncate(post.description) %></p>
-      <p>Posted by <%= post.user.email %> at <%= post.created_at.to_formatted_s(:short) %></p>
-      <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-      <a><%= link_to "View", post_path(post), :class => 'btn btn-info' %></a>
+      <div class="img-info">
+        <span><%= truncate(post.description) %></span>
+        <span class="likes"><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></span>
+
+        <p>Posted by <%= post.user.email %> at <%= post.created_at.to_formatted_s(:short) %></p>
+      </div>
+      <a><%= link_to "View", post_path(post), :class => 'view btn btn-info' %></a>
     </div>
 <% end %>
 
@@ -14,8 +17,12 @@
 <style>
 
   div.each-post {
+    /* margin: 2px; */
+    border: solid 5px;
+    border-color: #F1F1F1;
     padding: 5px;
-    height: 450px;
+    height: 410px;
+    background-color: white;
   }
 
   img {
@@ -24,6 +31,28 @@
     max-height: 300px;
     padding-bottom: 5px;
     margin: auto;
+  }
+
+  .img-info {
+    padding: 0px 5px 0px 5px;
+  }
+
+  .img-info .description {
+    float: left;
+  }
+
+  .img-info .likes {
+    float: right;
+  }
+
+  .view {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+  }
+
+  hr.top {
+    border: 1px dashed white;
   }
 
 </style>
