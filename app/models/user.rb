@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :password, confirmation: { case_sensitive: true }
 
   validates_uniqueness_of :email
+  validates_uniqueness_of :username
 
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy

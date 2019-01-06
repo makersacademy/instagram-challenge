@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
       flash[:success] = "Welcome back #{user.first_name}!"
       redirect_to posts_url
     else
-      flash[:unable] = "Sign in unsuccessful!"
-      redirect_to sign_in_url
+      flash[:danger] = "Sorry we don't recognise you!"
+      render "new"
     end
   end
 

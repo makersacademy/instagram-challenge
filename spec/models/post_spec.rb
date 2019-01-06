@@ -26,18 +26,17 @@ RSpec.describe Post, type: :model do
 
   it "is not valid without a user" do
     subject.caption = post.caption
-    subject.image = post.image
+    subject.image = image
     expect(subject).not_to be_valid
   end
 
   it "is not valid without a caption" do
     subject.user = user
-    subject.image = post.image
+    subject.image = image
     expect(subject).not_to be_valid
   end
 
-  # needs further investigation...
-  xit "is not valid without image" do
+  it "is not valid without image" do
     subject.user = user
     subject.caption = post.caption
     expect(subject).not_to be_valid

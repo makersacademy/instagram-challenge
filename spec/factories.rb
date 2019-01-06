@@ -9,19 +9,20 @@ FactoryBot.define do
     "person#{n}@example.com"
   end
 
+  sequence :username do |n|
+    "Joe#{n}"
+  end
+
   factory :post do
     association :user
     caption { 'Test post' }
-
-    trait :with_image do
-      image { FilesTestHelper.png }
-    end
+    image { FilesTestHelper.png }
   end
 
   factory :user do
     first_name { "Joe" }
     last_name { "Bloggs" }
-    username { "JoeyB" }
+    username { generate :username }
     email { generate :email }
     password { "password" }
   end

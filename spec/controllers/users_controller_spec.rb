@@ -30,7 +30,7 @@ RSpec.describe UsersController, type: :controller do
 
     it "redirects to sign up if invalid params" do
       invalid_post
-      expect(response).to redirect_to sign_up_url
+      expect(response).to render_template "new"
     end
 
     it "won't create an account if invalid params" do

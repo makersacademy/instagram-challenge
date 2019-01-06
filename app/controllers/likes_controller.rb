@@ -17,7 +17,7 @@ class LikesController < ApplicationController
     if !(already_liked?)
       nil
     else
-      flash[:success] = "You unliked #{@post.user.first_name}'s post'!"
+      flash[:warning] = "You unliked #{@post.user.first_name}'s post'!"
       @like.destroy
     end
     redirect_to post_path(@post)

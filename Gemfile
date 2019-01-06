@@ -36,7 +36,7 @@ gem 'jquery-rails'
 # allows testing of template render in controller tests
 gem 'rails-controller-testing'
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # for validating active storage attachments
 gem 'activestorage-validator'

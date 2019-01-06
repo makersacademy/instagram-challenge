@@ -19,7 +19,6 @@ class PostsController < ApplicationController
       flash[:success] = "Thanks for posting!"
       redirect_to posts_url
     else
-      flash[:danger] = "Post unsuccessful!"
       render "new"
     end
   end
