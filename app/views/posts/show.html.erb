@@ -1,11 +1,12 @@
 <!-- <h2>View Post</h2> -->
 <!-- <h4>Posted By: <%= @post.user.email %> </h4> -->
 <%= image_tag url_for(@post.image) %>
-<h4><i><%= @post.user.email %></i></h4>
+<h3><i><%= @post.user.email %></i></h3>
+<p><i><%= @post.created_at.to_formatted_s(:short) %></i></p><br>
 <h4>Description:</h4>
-<%= @post.description %>
+<p><%= @post.description %></p>
 <br>
-<h5><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></h5>
+<h5><span class="spaced glyphicon glyphicon-heart"></span><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></h5>
 
 <%= link_to 'Like', post_likes_path(@post),
                                       method: :post,
@@ -39,6 +40,7 @@
     <%= f.submit({:class => 'btn btn-default'}) %>
   </p>
 <% end %>
+
 <style>
 
   img {
@@ -49,8 +51,12 @@
     border: 2px dashed white;
   }
 
-  h2, h4, p {
+  p {
     color: grey;
+  }
+
+  .spaced {
+    padding-right: 4px;
   }
 
 </style>
