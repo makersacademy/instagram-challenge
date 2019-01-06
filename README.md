@@ -31,8 +31,8 @@
 > bin/rails db:migrate
 ```
 
-## Desktop View
-![Desktop view](public/desktop-view.png)
+## Desktop View   
+![Desktop view](public/desktop-view.png)   
 
-## Mobile View
-![Mobile view](public/mobile-view.png)
+## Mobile View   
+![Mobile view](public/mobile-view.png)   
