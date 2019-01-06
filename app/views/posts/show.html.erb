@@ -17,19 +17,18 @@
                                         data: { confirm: 'Are you sure?'},
                                         :class => 'btn btn-danger' %>
 <% end %>
-<hr>
-
+<hr class="top">
 <h4>Comments:</h4>
 <% @post.comments.each do |comment| %>
   <div class="">
     <strong><%= comment.user.email %></strong>: <%= comment.body %>
   </div>
 <% end %>
-
+<hr class="top">
 <h4>Add Comment</h4>
 <%= form_for([@post, @post.comments.build]) do |f| %>
   <p>
-    <%= f.label :body %><br>
+
     <%= f.text_area(:body, {:class => 'form-control'}) %>
   </p>
   <p>
@@ -40,6 +39,14 @@
 
   img {
     max-width: 100%;
+  }
+
+  hr.top {
+    border: 2px dashed white;
+  }
+
+  h2, h4, p {
+    color: grey;
   }
 
 </style>

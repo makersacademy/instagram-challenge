@@ -7,9 +7,10 @@
         <span><%= truncate(post.description) %></span>
         <span class="likes"><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></span>
 
-        <p>Posted by <%= post.user.email %> at <%= post.created_at.to_formatted_s(:short) %></p>
+        <p><i><%= post.user.email %> on <%= post.created_at.to_formatted_s(:short) %></i></p>
       </div>
       <a><%= link_to "View", post_path(post), :class => 'view btn btn-info' %></a>
+      <span class="comments"><%= post.comments.count %> <%= (post.comments.count) == 1 ? 'Comment' : 'Comments'%></span>
     </div>
 <% end %>
 
@@ -51,8 +52,18 @@
     bottom: 5px;
   }
 
+  .comments {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+  }
+
   hr.top {
-    border: 1px dashed white;
+    border: 2px dashed white;
+  }
+
+  h2, p, span {
+    color: grey;
   }
 
 </style>
