@@ -1,25 +1,30 @@
-# Christagram
+# ChristaGram
 ![Build Status](https://travis-ci.org/chrisjgilbert/instagram-challenge.svg?branch=master)
 
 [![Coverage Status](https://coveralls.io/repos/github/chrisjgilbert/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/chrisjgilbert/instagram-challenge?branch=master)
 
 [An Instagram clone made with Rails deployed on Heroku](https://quiet-spire-51096.herokuapp.com/)
 
-## How to use
+## How to use   
+* `git clone https://github.com/chrisjgilbert/instagram-challenge`   
+* `bundle` to install dependencies   
+* `rails s` to fire up the server on http://localhost:3000/    
 
-```bash
-> git clone https://github.com/chrisjgilbert/instagram-challenge
-> cd instagram-challenge
-> bundle install
-> bin/rails db:create
-> bin/rails db:migrate
+### Local db setup   
+* [Follow these instructions if you need to install Postgres](https://gist.github.com/ibraheem4/ce5ccd3e4d7a65589ce84f2a3b7c23a3)  
+* `bin/rails db:create`   
+* `bin/rails db:migrate`   
 
-> bundle exec rspec # to run the tests
-> rails s # Start the server at localhost:3000
-```
+### Run tests   
+* `bundle exec rspec`   
 
-To clean local database use
+### View test coverage   
+* `open coverage/index.html`   
 
+### Run rubocop   
+* `rubocop`   
+
+### To clean local database use   
 ```
 > bin/rails db:drop
 > bin/rails db:create
