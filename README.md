@@ -1,21 +1,27 @@
 # Christagram
 ![Build Status](https://travis-ci.org/chrisjgilbert/instagram-challenge.svg?branch=master)
 
+[![Coverage Status](https://coveralls.io/repos/github/chrisjgilbert/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/chrisjgilbert/instagram-challenge?branch=master)
+
 [An Instagram clone made with Rails deployed on Heroku](https://quiet-spire-51096.herokuapp.com/)
 
-## User Stories    
+## How to use
+
+```bash
+> git clone https://github.com/chrisjgilbert/instagram-challenge
+> cd instagram-challenge
+> bundle install
+> bin/rails db:create
+> bin/rails db:migrate
+
+> bundle exec rspec # to run the tests
+> rails s # Start the server at localhost:3000
 ```
-As a User
-So I can join the Christagram community
-I would like to be able to sign up
+
+To clean local database use
+
 ```
-```
-As a User
-So I can repeatedly use Christagram
-I would like to be able to log in and out
-```
-```
-As a User
-So that I can show off my selfies
-I would like to be able to post photos
+> bin/rails db:drop
+> bin/rails db:create
+> bin/rails db:migrate
 ```
