@@ -19,10 +19,14 @@
 <% end %>
 <hr class="top">
 <h4>Comments:</h4>
-<% @post.comments.each do |comment| %>
-  <div class="">
-    <i><strong><%= comment.user.email %></strong>: <%= comment.body %></i>
-  </div>
+<% if @post.comments.count > 0 %>
+  <% @post.comments.each do |comment| %>
+    <div class="">
+      <i><strong><%= comment.user.email %></strong>: <%= comment.body %></i>
+    </div>
+  <% end %>
+<% else %>
+  <p><i>no comments yet</i></p>
 <% end %>
 <hr class="top">
 <h4>Add Comment</h4>
