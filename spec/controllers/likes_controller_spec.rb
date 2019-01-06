@@ -13,11 +13,11 @@ RSpec.describe LikesController, type: :controller do
       post :create
     end
 
-    it 'creates a like' do
+    it "creates a like" do
       expect { create_like }.to change { Like.count }.by(1)
     end
 
-    it 'redirects to posts url' do
+    it "redirects to posts url" do
       create_like
       expect(response).to redirect_to post_path(dummy_post)
     end
@@ -36,7 +36,7 @@ RSpec.describe LikesController, type: :controller do
       expect { delete_like }.to change { Like.count }.by(-1)
     end
 
-    it 'redirects to posts url' do
+    it "redirects to posts url" do
       delete_like
       expect(response).to redirect_to post_path(dummy_post)
     end

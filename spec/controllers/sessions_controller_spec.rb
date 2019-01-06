@@ -11,17 +11,23 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   describe "POST #create" do
-    it "returns http success" do
+    it "redirects the user to posts index after successful sign in" do
       user = FactoryBot.create(:user)
       post :create, params: { email: user.email, password: user.password }
       expect(response).to redirect_to posts_url
     end
+
+    it "redirects renders the sign in template again if unsuccessful sign in" do
+      user = FactoryBot.build(:user)
+      post :create, params: { email: user.email, password: user.password }
+      expect(response).to render_template "new"
+    end
   end
 
   describe "GET #destroy" do
-    it "returns http success" do
+    it "redirects to posts index after sign out" do
       user = FactoryBot.build(:user)
-      get :destroy, session: { id: user.id }
+      delete :destroy, session: { id: user.id }
       expect(response).to redirect_to posts_url
     end
   end
