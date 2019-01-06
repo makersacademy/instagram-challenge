@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def sign_up(user)
   visit "/sign_up"
   within "#sign-up-form" do

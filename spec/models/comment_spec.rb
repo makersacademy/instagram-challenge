@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-
   it "has belongs to user" do
     comment = described_class.reflect_on_association(:user)
     expect(comment.macro).to eq :belongs_to
@@ -11,5 +12,4 @@ RSpec.describe Comment, type: :model do
     comment = described_class.reflect_on_association(:post)
     expect(comment.macro).to eq :belongs_to
   end
-
 end

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :comment do
     body { "MyText" }
-    user :factory => :user
-    post :factory => :post
+    user factory: :user
+    post factory: :post
   end
 
   sequence :email do |n|
@@ -28,8 +30,7 @@ FactoryBot.define do
   end
 
   factory :like do
-    user :factory => :user
-    post :factory => :post
+    user factory: :user
+    post factory: :post
   end
-
 end

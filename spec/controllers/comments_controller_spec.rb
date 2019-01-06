@@ -1,11 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
-
-  let!(:dummy_post) { FactoryBot.create(:post ) }
+  let!(:dummy_post) { FactoryBot.create(:post) }
 
   describe "POST #create" do
-
     let(:user) { FactoryBot.create(:user) }
     let(:comment) { FactoryBot.build(:comment) }
 
@@ -25,7 +25,6 @@ RSpec.describe CommentsController, type: :controller do
   end
 
   describe "GET #destroy" do
-
     let!(:comment) { FactoryBot.create(:comment) }
 
     def delete_comment
@@ -41,5 +40,4 @@ RSpec.describe CommentsController, type: :controller do
       expect(response).to redirect_to post_path(comment.post.id)
     end
   end
-
 end

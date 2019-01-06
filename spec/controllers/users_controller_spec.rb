@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require_relative '../support/users_controller_helper_spec.rb'
 
 RSpec.describe UsersController, type: :controller do
-
   describe "GET #new" do
     it "returns http success" do
       get :new
@@ -11,7 +12,6 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "POST #create" do
-
     let(:dummy_user) { FactoryBot.build(:user) }
 
     it "returns redirects to /posts if user created" do
@@ -37,5 +37,4 @@ RSpec.describe UsersController, type: :controller do
       expect { invalid_post }.not_to change { User.count }
     end
   end
-
 end

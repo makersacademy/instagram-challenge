@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module FilesTestHelper
   extend self
   extend ActionDispatch::TestProcess

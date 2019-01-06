@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature "Comment on post", type: :feature do
@@ -28,5 +30,4 @@ RSpec.feature "Comment on post", type: :feature do
     expect(page).to have_content "this is a great post"
     expect(page).to have_content "Delete"
   end
-
 end

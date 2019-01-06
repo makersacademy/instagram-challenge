@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def valid_post_by(user)
   post :create, params: {
                         user: {

@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe LikesController, type: :controller do
-
   let(:dummy_post) { FactoryBot.create(:post) }
   let(:user) { FactoryBot.create(:user) }
 
   describe "POST #create" do
-
     def create_like
       allow(Post).to receive(:find).and_return(dummy_post)
       allow(controller).to receive(:current_user).and_return(user)
@@ -24,7 +24,6 @@ RSpec.describe LikesController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-
     let!(:like) { FactoryBot.create(:like) }
 
     def delete_like
@@ -41,7 +40,5 @@ RSpec.describe LikesController, type: :controller do
       delete_like
       expect(response).to redirect_to post_path(dummy_post)
     end
-
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   helper_method :current_user, :there_are_posts?, :user_already_likes_post?, :find_like
 
@@ -18,7 +20,4 @@ class ApplicationController < ActionController::Base
   def find_like(post_id)
     Like.find_by(user_id: current_user.id, post_id: post_id)
   end
-
-
-
 end

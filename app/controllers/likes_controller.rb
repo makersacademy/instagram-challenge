@@ -1,5 +1,6 @@
-class LikesController < ApplicationController
+# frozen_string_literal: true
 
+class LikesController < ApplicationController
   before_action :find_post
 
   def create
@@ -33,5 +34,4 @@ class LikesController < ApplicationController
   def find_post
     @post = Post.find(params[:post_id])
   end
-
 end
