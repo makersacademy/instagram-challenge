@@ -1,0 +1,42 @@
+
+
+<style>
+.center {
+  max-width: 500px;
+  margin: auto;
+}
+</style>
+
+
+<div class="center">
+  <div class="row h-100 ">
+    <div class="col-sm-12 my-auto" style="background:lightblue">
+      <br>
+      <h1 class= "d-flex justify-content-center">InstaClone</h1>
+
+<% if user_signed_in? %>
+<%= render 'shared/nav' %>
+
+<h1>Welcome <%= current_user.username %></h1>
+
+<button><%= link_to 'Logout', destroy_user_session_path, method: :delete %></button>
+
+<% else %>
+
+
+<h3>Sign-in</h3>
+<%= form_for(:user, :url => session_path(:user)) do |f| %>
+  Email:<br>
+  <%= f.text_field :email %> <br>
+  Password:<br>
+  <%= f.password_field :password %> <br>
+  <%= f.check_box :remember_me %>
+  <%= f.label :remember_me %><br>
+  <%= f.submit 'Sign in' %><br>
+  <%= link_to "Forgot your password?", new_password_path(:user) %>
+<% end %>
+<br><br>
+<button><%= link_to "Sign up", new_user_registration_path%>
+<% end %>
+
+</div></div></div>
