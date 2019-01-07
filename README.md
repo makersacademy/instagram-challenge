@@ -1,6 +1,5 @@
 Zombigram
 =========
-
 An Instagram-like Rails app for posting, commenting and 'liking' pics of and about the walking dead!
 ---------
 ## Instructions
