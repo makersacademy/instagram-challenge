@@ -6,6 +6,8 @@ module FilesTestHelper
 
   def png_name; 'photo1.png' end
   def png; upload(png_name, 'image/png') end
+  def jpg_name; 'apple.jpg' end
+  def jpg; upload(jpg_name, 'image/jpg') end
 
   private
 
