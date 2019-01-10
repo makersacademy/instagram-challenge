@@ -3,7 +3,9 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/chrisjgilbert/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/chrisjgilbert/instagram-challenge?branch=master)
 
-[An Instagram clone made with Rails deployed on Heroku](https://quiet-spire-51096.herokuapp.com/)
+[An Instagram clone made with Rails deployed on Heroku](https://quiet-spire-51096.herokuapp.com/)   
+
+NOTE: files will be periodically deleted due to the current hosting plan!
 
 ## How to use   
 * `git clone https://github.com/chrisjgilbert/instagram-challenge`   
