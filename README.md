@@ -1,24 +1,26 @@
-# README
+# Makergram
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Makergram is a clone of Instagram using Rails. Users can post pictures, write comments on pictures and like a picture. 
 
-Things you may want to cover:
 
-* Ruby version
+# Installation  
 
-* System dependencies
+Begin by cloning this repository to your local machine. Then:
 
-* Configuration
+```bash
+> bundle install
+> bin/rails db:create
+> bin/rails db:migrate
+> bundle exec rspec # Run the tests to ensure it works
+> bin/rails server # Start the server at localhost:3000
+```
 
-* Database creation
+# Deployment with Heroku
 
-* Database initialization
+- Prerequite 
+  - heroku CLI
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+> heroku create
+> git push heroku master
+```
