@@ -78,3 +78,5 @@ gem "haml", "~> 5.0"
 gem "simple_form", "~> 4.1"
 
 gem "bootstrap-sass", "~> 3.2.0.2"
+
+gem "devise", "~> 4.5"
