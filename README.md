@@ -1,29 +1,57 @@
 Instagram Challenge
 ===================
 
-## Instructions
+## To run tests
+$ Bundle install 
+$ Rspec
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## To run lint
 
-## Task
+$ run rubocop in the terminal of the directory
 
-Build Instagram: Simple huh!
+## To run the app
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+$ run "rails s" in the terminal of the directory
 
-Bonus if you can add filters!
+## User stories 
+User stories: 
+```
+As a user, 
+So I can create an account,
+I want to be able to sign up.
 
-## How to start
+As a user, 
+So I can view images, 
+I want to be able to sign in.
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+As a user, 
+So I can make sure I can leave Instagram, 
+I want to be able to log out of Instagram.
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+As a user, 
+So I can make a post, 
+I want to be able to upload images/post pictures. 
+
+As an avid user, 
+So I can see my friend’s pictures, 
+I want to be able to view other users’ pictures.
+
+As a user,
+So I can get rid of my past, 
+I want to be able to delete past posts.
+
+As a fun user, 
+So I can add context to a picture, 
+I want to be able to update captions for posts.
+
+As a talkative user, 
+So I can tell how great my friends are, 
+I want to be able to comment on other users’ pictures.
+
+As a friendly user, 
+So I can let my friends know they are awesome, 
+I want to be able to like other peoples’ posts.
+```
 
 ## Code Quality
 
