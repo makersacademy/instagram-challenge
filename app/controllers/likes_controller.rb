@@ -15,6 +15,4 @@ class LikesController < ApplicationController
     end
   end
 
-  private
-
 end
