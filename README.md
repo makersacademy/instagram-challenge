@@ -1,6 +1,48 @@
 Instagram Challenge
 ===================
 
+## Initial User Stories
+
+```
+As an Outstagramme wannabe,
+So that I can get involved,
+I want to be able to sign up for an Outstagram account.
+
+
+As an Outstagrammer,
+So that I can make new posts,
+I want to be able to log in of the service.
+
+
+As an Outstagrammer,
+So that I can maintain some privacy,
+I want to be able to log out of the service.
+
+As an Outstagrammer,
+So that I can share my content,
+I want to be able to post a picture to Outstagram.
+
+As an Outstagrammer,
+So that I can give my posts connect,
+I want to be able to write a description with my picture.
+
+As an Outstagrammer,
+So that others can get an overview of my content,
+I want all my posts displayed as thumbnails on my profile.
+
+As an Outstagrammer,
+So that others can see my posts in detail,
+I want the thumbnails to link to the full post.
+
+As an Outstagrammer,
+So that I can engage in discussion,
+I want to be able to comment on other OG’s posts.
+
+As an Outstagrammer,
+So that I can see the popularity of my posts,
+I want to be able to have my posts liked.
+```
+
 ## Instructions
 
 * Challenge time: one weekend
