@@ -1,0 +1,19 @@
+language:
+- ruby
+rvm:
+- 2.5.0
+cache:
+- bundler
+services:
+- postgresql
+before_script:
+- psql -c 'create database manugram_test;' -U postgres
+before_install:
+- sudo apt-get install -y postgresql-server-dev-9.2
+script:
+- bin/rails db:create
+- bin/rails db:migrate
+- bundle exec rspec spec
+after_script:
+- bundle exec rake coveralls:push
+- rake db:migrate
