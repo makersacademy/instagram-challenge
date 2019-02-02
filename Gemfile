@@ -69,10 +69,12 @@ gem "rubocop", "~> 0.63.1"
 
 gem "rubocop-rails", "~> 1.5"
 
-gem "bootstrap", "~> 4.1"
+
 gem "sass", "~> 3.7"
 
 gem "haml", "~> 5.0"
 
-gem "simple", "~> 0.0.0"
-gem "form", "~> 0.0.0"
+
+gem "simple_form", "~> 4.1"
+
+gem "bootstrap-sass", "~> 3.2.0.2"
