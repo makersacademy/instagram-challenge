@@ -2,17 +2,20 @@ Instagram Challenge
 ===================
 
 ## To run tests
+```
 $ Bundle install 
+```
+```
 $ Rspec
-
+```
 ## To run lint
-
+```
 $ run rubocop in the terminal of the directory
-
+```
 ## To run the app
-
+```
 $ run "rails s" in the terminal of the directory
-
+```
 ## User stories 
 User stories: 
 ```
