@@ -1,5 +1,5 @@
-Instagram Challenge
-===================
+Instagram Challenge- Beatrice Courage Weekend Challenge
+========================================================
 
 ## Instructions
 
