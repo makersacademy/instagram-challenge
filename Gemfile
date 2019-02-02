@@ -82,3 +82,5 @@ gem "bootstrap-sass", "~> 3.2.0.2"
 gem "devise", "~> 4.5"
 
 gem "rake", "~> 12.3"
+
+gem "rspec", "~> 3.8"
