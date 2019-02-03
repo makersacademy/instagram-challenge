@@ -8,7 +8,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(paras)
-    redirect_to @post
+    if @post.save
+      create_success
+    else
+      create_failure
+    end
   end
 
   def show
@@ -19,5 +23,15 @@ class PostsController < ApplicationController
 
   def paras
     params.require(:post).permit(:caption, :image)
+  end
+  
+  def create_success
+    flash[:success] = "Your post has been successfully created"
+    redirect_to @post
+  end
+
+  def create_failure
+    flash[:alert] = "Please add an Image"
+    render :new
   end
 end

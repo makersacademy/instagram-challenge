@@ -432,3 +432,178 @@ Processing by PostsController#show as HTML
   Rendered posts/show.html.erb within layouts/application (1.6ms)
 Completed 200 OK in 11ms (Views: 4.0ms | ActiveRecord: 0.5ms)
   [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:14:17 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 170ms (Views: 163.4ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:14:17 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 37ms (Views: 20.7ms | ActiveRecord: 6.0ms)
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:14:18 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f874dbad200 @tempfile=#<Tempfile:/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-79690-1l73w57.jpg>, @original_filename="jackfruit.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"jackfruit.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 1612464\r\n">, "caption"=>"Jack in the Fruit"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-79690-1l73w57.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-79690-7ryyxn.jpg
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-79690-7ryyxn.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-79690-1vfmiyn.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-79690-1vfmiyn.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-79690-7ryyxn.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-79690-7ryyxn.jpg[0]'
+Command :: convert '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-79690-7ryyxn.jpg[0]' -auto-orient -resize "640" '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/9cfd9705162efdba45ab955ed3a1e1a820190203-79690-90jtwu'
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/9cfd9705162efdba45ab955ed3a1e1a820190203-79690-90jtwu to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/4458f7b4b341451764dc2020266af52120190203-79690-1vrdk5j
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-79690-7ryyxn.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-79690-hi4hx3.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-79690-hi4hx3.jpg'
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("caption", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "Jack in the Fruit"], ["created_at", "2019-02-03 15:14:19.047639"], ["updated_at", "2019-02-03 15:14:19.047639"], ["image_file_name", "jackfruit.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 1612464], ["image_updated_at", "2019-02-03 15:14:18.052479"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts/7
+Completed 302 Found in 1005ms (ActiveRecord: 1.2ms)
+Started GET "/posts/7" for 127.0.0.1 at 2019-02-03 15:14:19 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 12ms (Views: 4.2ms | ActiveRecord: 0.6ms)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:14:19 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:14:19 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:14:19 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"caption"=>"Jack in the Fruit"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (12.9ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts
+Completed 302 Found in 17ms (ActiveRecord: 13.1ms)
+Started GET "/posts" for 127.0.0.1 at 2019-02-03 15:14:19 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+  [1m[35m (2.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:17:59 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 166ms (Views: 159.7ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:17:59 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (22.6ms)
+Completed 200 OK in 45ms (Views: 23.9ms | ActiveRecord: 7.3ms)
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:17:59 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007fdf7bfbe818 @tempfile=#<Tempfile:/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-80864-e631ca.jpg>, @original_filename="jackfruit.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"jackfruit.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 1612464\r\n">, "caption"=>"Jack in the Fruit"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-80864-e631ca.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-80864-113ozs7.jpg
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-80864-113ozs7.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-80864-1bcuxbm.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-80864-1bcuxbm.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-80864-113ozs7.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-80864-113ozs7.jpg[0]'
+Command :: convert '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-80864-113ozs7.jpg[0]' -auto-orient -resize "640" '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/5cc7d4e2aac605cc014dec68906fddec20190203-80864-ktgl3n'
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/5cc7d4e2aac605cc014dec68906fddec20190203-80864-ktgl3n to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/df218592d680eac8113eace7a558855620190203-80864-rd8cjg
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-80864-113ozs7.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-80864-1h5ckvg.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-80864-1h5ckvg.jpg'
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("caption", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "Jack in the Fruit"], ["created_at", "2019-02-03 15:18:00.918677"], ["updated_at", "2019-02-03 15:18:00.918677"], ["image_file_name", "jackfruit.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 1612464], ["image_updated_at", "2019-02-03 15:17:59.902627"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 1044ms (ActiveRecord: 1.3ms)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:18:00 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:18:00 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:18:00 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"caption"=>"Jack in the Fruit"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 11ms (Views: 5.4ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:32:49 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 165ms (Views: 157.4ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:32:49 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 36ms (Views: 20.0ms | ActiveRecord: 6.4ms)
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:32:49 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007f9becc72e48 @tempfile=#<Tempfile:/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-85460-kaogmi.jpg>, @original_filename="jackfruit.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"jackfruit.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 1612464\r\n">, "caption"=>"Jack in the Fruit"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-85460-kaogmi.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-85460-j8pnup.jpg
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-85460-j8pnup.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-85460-bn5h57.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-85460-bn5h57.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-85460-j8pnup.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-85460-j8pnup.jpg[0]'
+Command :: convert '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-85460-j8pnup.jpg[0]' -auto-orient -resize "640" '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/37a829366c099dfdde644e3a5ae12be220190203-85460-t97jwo'
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/37a829366c099dfdde644e3a5ae12be220190203-85460-t97jwo to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/60b1913cf30fecffa726db9817b620e620190203-85460-11t703m
+  [1m[35m (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-85460-j8pnup.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-85460-1rz110a.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b4eb09d37b23b0cfa9c51d886d3e580420190203-85460-1rz110a.jpg'
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("caption", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "Jack in the Fruit"], ["created_at", "2019-02-03 15:32:50.719535"], ["updated_at", "2019-02-03 15:32:50.719535"], ["image_file_name", "jackfruit.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 1612464], ["image_updated_at", "2019-02-03 15:32:49.590361"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/posts/9
+Completed 302 Found in 1143ms (ActiveRecord: 1.5ms)
+Started GET "/posts/9" for 127.0.0.1 at 2019-02-03 15:32:50 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 15ms (Views: 4.2ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:32:50 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:32:50 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 21ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:32:50 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "post"=>{"caption"=>"Jack in the Fruit"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 10ms (Views: 5.1ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m

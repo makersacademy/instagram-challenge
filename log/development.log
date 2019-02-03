@@ -373,3 +373,529 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 64ms (Views: 59.3ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:10:33 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jacqueslaffy/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (29.3ms)
+Completed 200 OK in 366ms (Views: 328.4ms | ActiveRecord: 6.7ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:10:48 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7w0SWd2B2HiWOt2sVnYBlWyE5Z5uaSuhygvm9OHUcxAhuR/HBJ0NgnUQ7x36GD+zBN1/NEaGTmZ6PEmeFsekWQ==", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007fc5cfd42a00 @tempfile=#<Tempfile:/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-78613-1pbm7a4.jpg>, @original_filename="gaysguys.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"gaysguys.jpg\"\r\nContent-Type: image/jpeg\r\n">, "caption"=>"cute"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-78613-1pbm7a4.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-78613-1y0e4u2.jpg
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-78613-1y0e4u2.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-78613-1waeiv0.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-78613-1waeiv0.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-78613-1y0e4u2.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-78613-1y0e4u2.jpg[0]'
+Command :: convert '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-78613-1y0e4u2.jpg[0]' -auto-orient -resize "640" '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/d502f54d0709a35ba110b7d5ce409cbe20190203-78613-zmm3cm'
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/d502f54d0709a35ba110b7d5ce409cbe20190203-78613-zmm3cm to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b8ce8d2465c28a8d52969993ba1ff73820190203-78613-25ddra
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-78613-1y0e4u2.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-78613-29jszv.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-78613-29jszv.jpg'
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("caption", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "cute"], ["created_at", "2019-02-03 15:10:48.891721"], ["updated_at", "2019-02-03 15:10:48.891721"], ["image_file_name", "gaysguys.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 58911], ["image_updated_at", "2019-02-03 15:10:48.588805"]]
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:10
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 328ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2019-02-03 15:10:48 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:15
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 51ms (Views: 32.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:18:22 +0000
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jacqueslaffy/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 562ms (Views: 542.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:18:24 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (23.9ms)
+Completed 200 OK in 99ms (Views: 58.4ms | ActiveRecord: 14.5ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:18:29 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Lj3SNlgAi81ForReHRc5B9SNIca3/tKuLhfZK+HgHo7gid+ogRxeN6aIhu+xeQchvNS7bJ8Rt2meIHZBFvPJxw==", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007fa6032d7f48 @tempfile=#<Tempfile:/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-80996-1y1fofx.jpg>, @original_filename="gaysguys.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"gaysguys.jpg\"\r\nContent-Type: image/jpeg\r\n">, "caption"=>"124231"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-80996-1y1fofx.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1nxq926.jpg
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1nxq926.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-p885uf.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-p885uf.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1nxq926.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1nxq926.jpg[0]'
+Command :: convert '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1nxq926.jpg[0]' -auto-orient -resize "640" '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/6ef7b31d3b42c5942d03e146f2722f5320190203-80996-a63x5b'
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/6ef7b31d3b42c5942d03e146f2722f5320190203-80996-a63x5b to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/075018e1fb9146fdd3d43157d8725a5c20190203-80996-4pmwto
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1nxq926.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-zsmqxr.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-zsmqxr.jpg'
+  [1m[36mPost Create (1.4ms)[0m  [1m[32mINSERT INTO "posts" ("caption", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "124231"], ["created_at", "2019-02-03 15:18:30.189444"], ["updated_at", "2019-02-03 15:18:30.189444"], ["image_file_name", "gaysguys.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 58911], ["image_updated_at", "2019-02-03 15:18:29.895629"]]
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:11
+Completed 500 Internal Server Error in 610ms (ActiveRecord: 9.8ms)
+
+
+  
+NameError (undefined local variable or method `create_success' for #<PostsController:0x00007fa603aac020>
+Did you mean?  create_sucess):
+  
+app/controllers/posts_controller.rb:12:in `create'
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:18:50 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Lj3SNlgAi81ForReHRc5B9SNIca3/tKuLhfZK+HgHo7gid+ogRxeN6aIhu+xeQchvNS7bJ8Rt2meIHZBFvPJxw==", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007fa6022e77c8 @tempfile=#<Tempfile:/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-80996-8nzcv.jpg>, @original_filename="gaysguys.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"gaysguys.jpg\"\r\nContent-Type: image/jpeg\r\n">, "caption"=>"124231"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-80996-8nzcv.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-b1b6tl.jpg
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-b1b6tl.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-j3wgt1.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-j3wgt1.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-b1b6tl.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-b1b6tl.jpg[0]'
+Command :: convert '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-b1b6tl.jpg[0]' -auto-orient -resize "640" '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/71193d010df9f3a032bdce02585e2a9520190203-80996-4rpefs'
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/71193d010df9f3a032bdce02585e2a9520190203-80996-4rpefs to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/86950aafaa318f977ed21aa5c4b522eb20190203-80996-1izui57
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-b1b6tl.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1766co2.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1766co2.jpg'
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("caption", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "124231"], ["created_at", "2019-02-03 15:18:51.109780"], ["updated_at", "2019-02-03 15:18:51.109780"], ["image_file_name", "gaysguys.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 58911], ["image_updated_at", "2019-02-03 15:18:50.850791"]]
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:11
+Redirected to http://localhost:3000/posts/5
+Completed 302 Found in 310ms (ActiveRecord: 19.1ms)
+
+
+Started GET "/posts/5" for 127.0.0.1 at 2019-02-03 15:18:51 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 101ms (Views: 86.8ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:18:55 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aODHyS7r2sN19AXbgHDL/4E8euJs3HpbOC0cTts+jtcx/y1fBQ2F+Lr1/I3WNvfdBRWfp1V6LTkyWFoPY9U0Qg==", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007fa604a258d0 @tempfile=#<Tempfile:/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-80996-1m3s60n.jpg>, @original_filename="gaysguys.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"gaysguys.jpg\"\r\nContent-Type: image/jpeg\r\n">, "caption"=>"124231"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-80996-1m3s60n.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1oubhot.jpg
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1oubhot.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-13njvbc.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-13njvbc.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1oubhot.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1oubhot.jpg[0]'
+Command :: convert '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1oubhot.jpg[0]' -auto-orient -resize "640" '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/325c4ae776c4e4304d0799fd9ad0191a20190203-80996-4v00om'
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/325c4ae776c4e4304d0799fd9ad0191a20190203-80996-4v00om to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/d5d41e5817f9bb343d37291c977a505820190203-80996-kk2t3v
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1oubhot.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-b00ymy.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-b00ymy.jpg'
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("caption", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "124231"], ["created_at", "2019-02-03 15:18:56.084846"], ["updated_at", "2019-02-03 15:18:56.084846"], ["image_file_name", "gaysguys.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 58911], ["image_updated_at", "2019-02-03 15:18:55.806681"]]
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (12.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:11
+Redirected to http://localhost:3000/posts/6
+Completed 302 Found in 348ms (ActiveRecord: 21.3ms)
+
+
+Started GET "/posts/6" for 127.0.0.1 at 2019-02-03 15:18:56 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 63ms (Views: 57.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:18:59 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 60ms (Views: 53.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:19:01 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 96ms (Views: 90.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:19:06 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ml+WIY2h2mE+aVabwmOmCwcHlgHRZiB+gkBi4fMLZRL865u/VL0Pm91DZCpuDZgtb14Mq/mJRbkyd82LBBiyWw==", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007fa603c359a0 @tempfile=#<Tempfile:/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-80996-1hy27se.jpg>, @original_filename="gaysguys.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"gaysguys.jpg\"\r\nContent-Type: image/jpeg\r\n">, "caption"=>"122112"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-80996-1hy27se.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-atcxjq.jpg
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-atcxjq.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-958juv.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-958juv.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-atcxjq.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-atcxjq.jpg[0]'
+Command :: convert '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-atcxjq.jpg[0]' -auto-orient -resize "640" '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/a1538d1b72f5ffa664dbaaa8f439593d20190203-80996-oqw9sq'
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/a1538d1b72f5ffa664dbaaa8f439593d20190203-80996-oqw9sq to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/e3a049d8d14ada9e0f4011921d077cae20190203-80996-ddlgnl
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-atcxjq.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1ybqg2k.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/b5d59c2c2a34473a68dec2421726fecd20190203-80996-1ybqg2k.jpg'
+  [1m[36mPost Create (5.4ms)[0m  [1m[32mINSERT INTO "posts" ("caption", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "122112"], ["created_at", "2019-02-03 15:19:06.678745"], ["updated_at", "2019-02-03 15:19:06.678745"], ["image_file_name", "gaysguys.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 58911], ["image_updated_at", "2019-02-03 15:19:06.422095"]]
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:11
+Redirected to http://localhost:3000/posts/7
+Completed 302 Found in 291ms (ActiveRecord: 13.1ms)
+
+
+Started GET "/posts/7" for 127.0.0.1 at 2019-02-03 15:19:06 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 39ms (Views: 34.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:19:23 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 127ms (Views: 123.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:19:25 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (17.3ms)
+Completed 200 OK in 58ms (Views: 52.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:19:27 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NOfoZRf0GJNR489AExjT1Nw06Q4mqjw4kpRh8SGXtG36U+X7zujNabLJ/fG/du3ytG1zpA5FWf8io86b1oRjJA==", "post"=>{"caption"=>"121212"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (12.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:11
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 78ms (Views: 52.1ms | ActiveRecord: 12.9ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:19:28 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RHS3Q7v+mQwkFBMfAlk/dLhCqfVJEpFkLzxOEpKqUb8da13VkBjGN+sV6klUHwNWPGtMsHC0xgYlSQhTKkHrKg==", "post"=>{"caption"=>"121212"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:11
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 47ms (Views: 39.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:20:25 +0000
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jacqueslaffy/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 354ms (Views: 335.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:20:26 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (22.4ms)
+Completed 200 OK in 83ms (Views: 48.4ms | ActiveRecord: 14.9ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:20:30 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rO3Cd69h15P5GIfW+CXjQcaXK+quFofIyuR24R+C7NdiWc/pdn0CaRoytWdUS91nrs6xQIb54g9609mL6JE7ng==", "post"=>{"image"=>#<ActionDispatch::Http::UploadedFile:0x00007fb58fd8eef0 @tempfile=#<Tempfile:/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-81687-lg5b21.jpg>, @original_filename="bg-72da17f.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"bg-72da17f.jpg\"\r\nContent-Type: image/jpeg\r\n">, "caption"=>"121212"}, "commit"=>"Create Post"}
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/RackMultipart20190203-81687-lg5b21.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/89e489e60bc1537de999354402f27fa920190203-81687-1qrcopy.jpg
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/89e489e60bc1537de999354402f27fa920190203-81687-1qrcopy.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/89e489e60bc1537de999354402f27fa920190203-81687-1oytrb7.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/89e489e60bc1537de999354402f27fa920190203-81687-1oytrb7.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/89e489e60bc1537de999354402f27fa920190203-81687-1qrcopy.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/89e489e60bc1537de999354402f27fa920190203-81687-1qrcopy.jpg[0]'
+Command :: convert '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/89e489e60bc1537de999354402f27fa920190203-81687-1qrcopy.jpg[0]' -auto-orient -resize "640" '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/28232479eda37ae5f57537aacccda0b120190203-81687-1aic734'
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/28232479eda37ae5f57537aacccda0b120190203-81687-1aic734 to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/27bdaecc03719582a35a827949dfd73320190203-81687-z6dopj
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+[paperclip] Trying to link /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/89e489e60bc1537de999354402f27fa920190203-81687-1qrcopy.jpg to /var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/89e489e60bc1537de999354402f27fa920190203-81687-1tpxskd.jpg
+Command :: file -b --mime '/var/folders/y1/5w4ym_9d6t32g2tfcnysc89h0000gn/T/89e489e60bc1537de999354402f27fa920190203-81687-1tpxskd.jpg'
+  [1m[36mPost Create (1.0ms)[0m  [1m[32mINSERT INTO "posts" ("caption", "created_at", "updated_at", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["caption", "121212"], ["created_at", "2019-02-03 15:20:32.135909"], ["updated_at", "2019-02-03 15:20:32.135909"], ["image_file_name", "bg-72da17f.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 5820364], ["image_updated_at", "2019-02-03 15:20:30.567254"]]
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (9.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:11
+Redirected to http://localhost:3000/posts/8
+Completed 302 Found in 1606ms (ActiveRecord: 11.4ms)
+
+
+Started GET "/posts/8" for 127.0.0.1 at 2019-02-03 15:20:32 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:21
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 73ms (Views: 56.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:20:40 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 52ms (Views: 48.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:20:42 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 57ms (Views: 51.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:20:44 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Q+uAvSaMLHVoG7Yt58bToqhteUPu1zOBlEEhSVxKOjeNX40j/5D5j4sxhJxLqO2EwDTj6cY4VkYkdo4jq1ntfg==", "post"=>{"caption"=>"4211212"}, "commit"=>"Create Post"}
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:11
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 57ms (Views: 45.7ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:20:45 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+6RcuTe6W0kCWVSWYOtwfUYFXlTBFi9UgCNPQ5MC1Eyiu7YvHFwEcs1YrcA2rUxfwiy7EfiweDaKVgkCK+lu2Q==", "post"=>{"caption"=>"4211212"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:11
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 44ms (Views: 35.1ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:20:47 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IlugvTvYUb4At4T5eHp1e4AaMO6ITkNUezL4kbRyTkR7REorED4Ohc+2fa8uPElZBDPVq7HoFDZxR77QDJn00Q==", "post"=>{"caption"=>"4211212"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (2.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (4.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (14.7ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:11
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 84ms (Views: 54.6ms | ActiveRecord: 22.1ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:28:30 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eTI3Aa6Pc2TazrdhKjboLFJtEIOSvrSe599CGU7ssuggLd2XhWksXxXPTjd8cNQO1kT1xqsY4/ztqgRY9gcIfQ==", "post"=>{"caption"=>"4211212"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:11
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (15.6ms)
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 9.4ms)
+
+
+  
+SyntaxError (/Users/jacqueslaffy/Desktop/Projects/instagram-challenge/app/views/layouts/application.html.erb:14: syntax error, unexpected '<'
+    <%= content_tag :div, msg, cla...
+    ^
+/Users/jacqueslaffy/Desktop/Projects/instagram-challenge/app/views/layouts/application.html.erb:21: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+          ^~~~~~
+/Users/jacqueslaffy/Desktop/Projects/instagram-challenge/app/views/layouts/application.html.erb:23: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/layouts/application.html.erb:14: syntax error, unexpected '<'
+app/views/layouts/application.html.erb:21: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/layouts/application.html.erb:23: syntax error, unexpected keyword_end, expecting ')'
+app/controllers/posts_controller.rb:35:in `create_failure'
+app/controllers/posts_controller.rb:14:in `create'
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:29:01 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eTI3Aa6Pc2TazrdhKjboLFJtEIOSvrSe599CGU7ssuggLd2XhWksXxXPTjd8cNQO1kT1xqsY4/ztqgRY9gcIfQ==", "post"=>{"caption"=>"4211212"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:11
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (6.8ms)
+Completed 500 Internal Server Error in 234ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `alert_for' for #<#<Class:0x00007fb5905c0b28>:0x00007fb5903cd4b0>
+Did you mean?  alert):
+    11: 
+    12:   <body>
+    13:     <%= flash.each do |name, msg| %>
+    14:     <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+    15:     <% end %>
+    16:     <%= yield %>
+    17:   </body>
+  
+app/views/layouts/application.html.erb:14:in `block in _app_views_layouts_application_html_erb___3052401130412355498_70208903708000'
+app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___3052401130412355498_70208903708000'
+app/controllers/posts_controller.rb:35:in `create_failure'
+app/controllers/posts_controller.rb:14:in `create'
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:29:05 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 315ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `alert_for' for #<#<Class:0x00007fb5905c0b28>:0x00007fb5904daf10>
+Did you mean?  alert):
+    11: 
+    12:   <body>
+    13:     <%= flash.each do |name, msg| %>
+    14:     <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+    15:     <% end %>
+    16:     <%= yield %>
+    17:   </body>
+  
+app/views/layouts/application.html.erb:14:in `block in _app_views_layouts_application_html_erb___3052401130412355498_70208893392580'
+app/views/layouts/application.html.erb:13:in `_app_views_layouts_application_html_erb___3052401130412355498_70208893392580'
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:30:42 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 46ms (Views: 39.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:30:52 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 59ms (Views: 51.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-02-03 15:31:02 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 74ms (Views: 67.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:31:04 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 64ms (Views: 57.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:31:10 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dF96vYcbBVd4DjOMvyo73naRvvs0J7vzaPuHHrlIoOO663cjXgfQrZskAT0TRAX4HsgkURzI3jTYzCh0Tlt3qg==", "post"=>{"caption"=>"12122112"}, "commit"=>"Create Post"}
+  [1m[35m (3.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (2.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:11
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 52ms (Views: 36.4ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2019-02-03 15:32:36 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 41ms (Views: 38.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 15:32:38 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 90ms (Views: 86.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for 127.0.0.1 at 2019-02-03 15:32:40 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZO5xBxrWJPmlpV+OoL14hNMg0NBkAtPgk3Sish64eQGqWnyZw8rxA0aPbT8M00aiu3lKekztticjQw3Y6auuSA==", "post"=>{"caption"=>"1212"}, "commit"=>"Create Post"}
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (1.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:10
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:11
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:11
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 45ms (Views: 34.4ms | ActiveRecord: 2.7ms)
+
+
