@@ -84,3 +84,5 @@ gem "devise", "~> 4.5"
 gem "rake", "~> 12.3"
 
 gem "rspec", "~> 3.8"
+
+gem "jquery-rails", "~> 4.3"

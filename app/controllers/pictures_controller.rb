@@ -10,12 +10,13 @@ class PicturesController < ApplicationController
 
   #associated with the view file new.html.haml
   def new
-    @picture = Picture.new
+    #so that pictures are being build from the current user 
+    @picture = current_user.pictures.build
  end 
 
   #no view file - responsible for creating the component of a picture in the db
   def create
-    @picture = Picture.new(pic_params)
+    @picture = current_user.pictures.build(pic_params)
 
     if @picture.save
         redirect_to @picture, notice: "Yes pic posted!"
