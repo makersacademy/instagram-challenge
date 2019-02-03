@@ -38,6 +38,8 @@ User can delete a post
 * Ruby On Rails
 * Rspec - Testing Framework
 * Capybara - Testing Framework
+* Travis - Continuous integration
+* Heroku - Deployment (work in progress)
 
 ## :scroll: License
 
