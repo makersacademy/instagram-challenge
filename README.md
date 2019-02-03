@@ -1,4 +1,4 @@
-Instagram Challenge
+Instagram Clone
 ===================
 
 ## User stories
