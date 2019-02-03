@@ -9,11 +9,11 @@ class PicsController < ApplicationController
   end
 
   def new  # responsible for view files - have view file
-    @pic = Pic.new
+    @pic = current_user.pics.build
   end
 
   def create # only responible for changed made in the DB - no view files
-    @pic = Pic.new(pic_params)
+    @pic = current_user.pics.build(pic_params)
 
     if @pic.save
       redirect_to @pic, notice: "Yessss, it was posted!"
