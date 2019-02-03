@@ -44,3 +44,217 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 121ms (Views: 46.0ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(560711749012517445)[0m
+  ↳ bin/rails:9
+  [1m[35m (6.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreatePosts (20190203140445)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (39.0ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "caption" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190203140445_create_posts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (2.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190203140445"]]
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(560711749012517445)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for 127.0.0.1 at 2019-02-03 14:26:24 +0000
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jacqueslaffy/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 656ms (Views: 641.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/newpost" for 127.0.0.1 at 2019-02-03 14:26:26 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (158.1ms)
+Completed 500 Internal Server Error in 217ms (ActiveRecord: 31.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `posts_path' for #<#<Class:0x00007fdbd127d558>:0x00007fdbd630d770>
+Did you mean?  newpost_path):
+     5:   <title></title>
+     6: </head>
+     7: <body>
+     8:   <%= simple_form_for @post do |form| %>
+     9:     <%= form.input :image %>
+    10:     <%= form.input :caption %>
+    11:     <%= form.button "Submit" %>
+  
+app/views/posts/new.html.erb:8:in `_app_views_posts_new_html_erb___2331301509089415217_70291084046400'
+Started GET "/" for 127.0.0.1 at 2019-02-03 14:26:40 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 44ms (Views: 38.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/newpost" for 127.0.0.1 at 2019-02-03 14:28:16 +0000
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jacqueslaffy/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  
+ActionController::RoutingError (No route matches [GET] "/newpost"):
+  
+actionpack (5.2.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2019-02-03 14:29:16 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 300ms (Views: 291.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 14:29:18 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (40.9ms)
+Completed 500 Internal Server Error in 87ms (ActiveRecord: 15.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `image' for #<Post id: nil, caption: nil, created_at: nil, updated_at: nil>):
+     6: </head>
+     7: <body>
+     8:   <%= simple_form_for @post do |form| %>
+     9:     <%= form.input :image %>
+    10:     <%= form.input :caption %>
+    11:     <%= form.button "Submit" %>
+    12:   <% end %> 
+  
+app/views/posts/new.html.erb:9:in `block in _app_views_posts_new_html_erb__4385121715628632323_70092694828300'
+app/views/posts/new.html.erb:8:in `_app_views_posts_new_html_erb__4385121715628632323_70092694828300'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(560711749012517445)[0m
+  ↳ bin/rake:9
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rake:9
+Migrating to AddAttachmentImageToPosts (20190203144330)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rake:9
+  [1m[35m (18.0ms)[0m  [1m[35mALTER TABLE "posts" ADD "image_file_name" character varying[0m
+  ↳ db/migrate/20190203144330_add_attachment_image_to_posts.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "posts" ADD "image_content_type" character varying[0m
+  ↳ db/migrate/20190203144330_add_attachment_image_to_posts.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "posts" ADD "image_file_size" integer[0m
+  ↳ db/migrate/20190203144330_add_attachment_image_to_posts.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "posts" ADD "image_updated_at" timestamp[0m
+  ↳ db/migrate/20190203144330_add_attachment_image_to_posts.rb:4
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190203144330"]]
+  ↳ bin/rake:9
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rake:9
+  [1m[36mActiveRecord::InternalMetadata Load (6.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rake:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rake:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rake:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(560711749012517445)[0m
+  ↳ bin/rake:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rake:9
+Started GET "/" for 127.0.0.1 at 2019-02-03 14:46:06 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jacqueslaffy/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 379ms (Views: 364.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 14:46:08 +0000
+Processing by PostsController#new as HTML
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/jacqueslaffy/Desktop/Projects/instagram-challenge/app/models/post.rb:2: syntax error, unexpected ':', expecting keyword_end
+..._attached_file :image, :styles: { medium => "640x" }
+...                              ^):
+  
+app/models/post.rb:2: syntax error, unexpected ':', expecting keyword_end
+app/controllers/posts_controller.rb:6:in `new'
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 14:46:32 +0000
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jacqueslaffy/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#new as HTML
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 3.7ms)
+
+
+  
+NameError (undefined local variable or method `medium' for #<Class:0x00007fdce1e186b8>):
+  
+app/models/post.rb:2:in `<class:Post>'
+app/models/post.rb:1:in `<main>'
+app/controllers/posts_controller.rb:6:in `new'
+Started GET "/" for 127.0.0.1 at 2019-02-03 14:46:35 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 326ms (Views: 310.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 14:46:37 +0000
+Processing by PostsController#new as HTML
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `medium' for #<Class:0x00007fdce533b930>):
+  
+app/models/post.rb:2:in `<class:Post>'
+app/models/post.rb:1:in `<main>'
+app/controllers/posts_controller.rb:6:in `new'
+Started GET "/" for 127.0.0.1 at 2019-02-03 14:53:42 +0000
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/jacqueslaffy/.rvm/gems/ruby-2.5.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 650ms (Views: 620.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2019-02-03 14:53:44 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (37.1ms)
+Completed 200 OK in 125ms (Views: 80.8ms | ActiveRecord: 21.6ms)
+
+
