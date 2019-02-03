@@ -9,6 +9,30 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
+## How to Use
+
+Download files  
+```
+git clone https://github.com/learningtocode101/instagram-challenge.git
+```
+Install dependencies  
+```
+bundle install
+```
+Setup database  
+```
+rake db:create
+rake db:migrate
+```
+Start server
+```
+rails server
+```
+Visit app in browser
+```
+http://localhost:3000/
+```
+
 ## User Stories
 ```
 As a user interested in Instagram  
