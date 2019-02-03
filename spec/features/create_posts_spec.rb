@@ -1,4 +1,5 @@
 require 'rails_helper.rb'
+require 'web_helpers.rb'
 
 feature 'Creating posts' do
   scenario 'a logged in user can create a post' do
