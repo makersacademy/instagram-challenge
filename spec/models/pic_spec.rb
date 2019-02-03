@@ -15,13 +15,10 @@ RSpec.describe Pic, type: :model do
     expect(pic.description).to eq("Hello everyone, I hope the world is doing well.")
   end
 
-  # it 'Post is able to record the creation date' do
-  #   expect(post.created_at).to eq('2019-02-03 17:30:43.781661000')
-  # end
-
-  # it 'Post is able to be edited' do
-  #   post.update(message: 'how are you ?')
-  #   expect(post.message).to eq('how are you ?')
-  # end
+  it "Post is able to be edited" do
+    pic.update(title: "Hi", description:"How are you ?")
+    expect(pic.title).to eq("Hi")
+    expect(pic.description).to eq("How are you ?")
+  end
 
 end
