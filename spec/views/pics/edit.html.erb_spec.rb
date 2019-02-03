@@ -2,10 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "pics/edit", type: :view do
   before(:each) do
+    @user = User.create(email: "a@a.com", password: "abc123", id: 1)
     @pic = assign(:pic, Pic.create!(
       :title => "MyString",
       :description => "MyText",
-      :picture => "MyString"
+      :picture => "MyString",
+      :user_id => 1
     ))
   end
 
