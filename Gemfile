@@ -63,3 +63,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "rubocop", "~> 0.63.1"
 gem "rubocop-rails"
+gem 'haml'
+gem 'simple_form'
