@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get '/home', to: 'posts#home'
 
   resources :posts
+
+  resources :users, only: [:show]
   # root 'posts#home'
 end

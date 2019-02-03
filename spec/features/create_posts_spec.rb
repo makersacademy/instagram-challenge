@@ -17,7 +17,7 @@ feature 'Creating posts' do
   end
 
   scenario 'Adding image is required to create new post' do
-    visit '/'
+    sign_up_steps
     click_link 'New Post'
     fill_in 'Caption', with: 'Goldblum sunset dog'
     click_button 'Create Post'
