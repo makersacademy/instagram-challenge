@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe "insta/edit", type: :view do
   before(:each) do
     @instum = assign(:instum, Instum.create!(
-      :title => "MyString",
-      :caption => "MyText"
+                                title: "MyString",
+                                caption: "MyText"
     ))
   end
 
@@ -12,7 +14,6 @@ RSpec.describe "insta/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", instum_path(@instum), "post" do
-
       assert_select "input[name=?]", "instum[title]"
 
       assert_select "textarea[name=?]", "instum[caption]"
