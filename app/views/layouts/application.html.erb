@@ -10,9 +10,9 @@
 
   <body>
 
-    <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
-
     <%= yield %>
   </body>
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+  <% end %>
 </html>
