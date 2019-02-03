@@ -86,3 +86,9 @@ gem "rake", "~> 12.3"
 gem "rspec", "~> 3.8"
 
 gem "jquery-rails", "~> 4.3"
+
+
+
+gem "carrierwave", "~> 1.3"
+
+gem "mini_magick", "~> 4.9"

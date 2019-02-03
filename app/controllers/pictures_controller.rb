@@ -44,7 +44,7 @@ class PicturesController < ApplicationController
 
   private 
   def pic_params
-    params.require(:picture).permit(:title, :description)
+    params.require(:picture).permit(:title, :description, :image)
   end
 
   #this allows us to not define show/edit
