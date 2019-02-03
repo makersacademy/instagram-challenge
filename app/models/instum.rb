@@ -1,0 +1,2 @@
+class Instum < ApplicationRecord
+end
