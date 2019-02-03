@@ -1,14 +1,6 @@
 Instagram Challenge
 ===================
 
-## Instructions
-
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 ## Task
 
 Build Instagram: Simple huh!
@@ -17,24 +9,32 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
-## How to start
+## User Stories
+```
+As a user interested in Instagram  
+I would like to sign up to the app  
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+As user that already has an account  
+I would like to sign in to Instagram  
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+As a developer in charge of Instagram creation  
+So as to protect users privacy  
+I would like to allow users to only sign in with their account details  
+
+As a user of Instagram  
+So I can share my life in pictures  
+I would like to be able to post pictures of my cat etc.   
+
+As a user of Instagram  
+So others can have a say about my cats  
+I would like others commenting on my pictures  
+
+As a user of Instagram  
+So others can have a say about my cats  
+I would like if others can also like my pictures 
+```
 
 ## Code Quality
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+Maintained using `.rubocop.yml` in the repo.
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
