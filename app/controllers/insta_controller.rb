@@ -69,6 +69,6 @@ class InstaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instum_params
-      params.require(:instum).permit(:title, :caption)
+      params.require(:instum).permit(:title, :caption, :image)
     end
 end
