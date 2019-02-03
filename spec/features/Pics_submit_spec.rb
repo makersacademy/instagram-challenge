@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative 'web_helper'
 
 feature "Pic", type: :feature do
   scenario "Can submit pic and view them by reversed chronological order" do
@@ -23,6 +24,13 @@ feature "Pic", type: :feature do
     visit "/pics/1"
     click_link "Edit Pic"
     click_link "Cancel edition"
+    expect(page).to have_current_path("/")
+  end
+
+  scenario "Can delete a pic" do
+    pic2
+    visit "/pics/2"
+    click_link "Delete Pic"
     expect(page).to have_current_path("/")
   end
 
