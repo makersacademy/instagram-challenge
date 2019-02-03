@@ -7,14 +7,14 @@ RSpec.describe "pics/index", type: :view do
       Pic.create!(
         :title => "Title",
         :description => "MyText",
-        :picture => "Picture",
-        :user_id => 1
+        :picture_file_name => "testpic.jpg",
+        :user => @user
       ),
       Pic.create!(
         :title => "Title",
         :description => "MyText",
-        :picture => "Picture",
-        :user_id => 1
+        :picture_file_name => "testpic.jpg",
+        :user => @user
       )
     ])
   end
@@ -23,6 +23,6 @@ RSpec.describe "pics/index", type: :view do
     render
     assert_select "tr>td", :text => "Title".to_s, :count => 2
     assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => "Picture".to_s, :count => 2
+    assert_select "tr>td>img", :count => 2
   end
 end

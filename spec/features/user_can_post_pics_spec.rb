@@ -12,15 +12,12 @@ RSpec.feature "Timeline", type: :feature do
     visit "/pics"
     expect(page).to have_content("First pic")
     expect(page).to have_content("This is the first pic")
-    expect(page).to have_content("Pic")
   end
 
   scenario "Can visit the individual pic page and view the pic and edit button" do
     post_pic
     expect(page).to have_content("First pic")
     expect(page).to have_content("This is the first pic")
-    expect(page).to have_content("Pic")
-    page.should have_selector(:link_or_button, 'Edit')
   end
 
 end

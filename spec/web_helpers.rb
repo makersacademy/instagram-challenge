@@ -3,6 +3,6 @@ def post_pic
   click_link "New Pic"
   fill_in "Title", with: "First pic"
   fill_in "Description", with: "This is the first pic"
-  fill_in "Picture", with: "Pic"
+  find('form input[name="pic[picture]"]').set('./spec/testpic.jpeg')
   click_button "Create Pic"
 end

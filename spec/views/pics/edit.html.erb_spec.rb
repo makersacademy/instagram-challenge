@@ -6,8 +6,8 @@ RSpec.describe "pics/edit", type: :view do
     @pic = assign(:pic, Pic.create!(
       :title => "MyString",
       :description => "MyText",
-      :picture => "MyString",
-      :user_id => 1
+      :picture_file_name => "testpic.jpg",
+      :user => @user
     ))
   end
 

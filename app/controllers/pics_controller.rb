@@ -14,39 +14,35 @@ class PicsController < ApplicationController
 
   def create
     @pic = current_user.pics.build(pic_params)
-    respond_to do |format|
-      if @pic.save
-        format.html { redirect_to @pic, notice: 'Pic was successfully created.' }
-        # format.json { render :show, status: :created, location: @pic }
-      else
-        format.html { render :new }
-        # format.json { render json: @pic.errors, status: :unprocessable_entity }
-      end
-    end
+    if @pic.save
+      redirect_to @pic, notice: 'Pic was successfully created.'
+    else
+      render :new
+   end
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    respond_to do |format|
-      if @pic.update(pic_params)
-        format.html { redirect_to @pic, notice: 'Pic was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pic }
-      else
-        format.html { render :edit }
-        format.json { render json: @pic.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @pic.destroy
-    respond_to do |format|
-      format.html { redirect_to pics_url, notice: 'Pic was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def update
+  #   respond_to do |format|
+  #     if @pic.update(pic_params)
+  #       format.html { redirect_to @pic, notice: 'Pic was successfully updated.' }
+  #       format.json { render :show, status: :ok, location: @pic }
+  #     else
+  #       format.html { render :edit }
+  #       format.json { render json: @pic.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+  #
+  # def destroy
+  #   @pic.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to pics_url, notice: 'Pic was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
