@@ -9,11 +9,12 @@ Instagram Clone
 
 - This is still a very simplistic version, still to work on : 
 
-• Feature tests
-• Finish working on functionality to remove / edit pics (need to adjust the tests provided by scaffolding in the controller first) 
-• Navbar to help with the navigating
-• Maybe use carrierwave rather than paperclip since that has been deprecated
-• etc
+* Feature tests
+* Finish working on functionality to remove / edit pics (need to adjust the tests provided by scaffolding in the controller first) 
+* Navbar to help with the navigating
+* Maybe use carrierwave rather than paperclip since that has been deprecated
+* User being able to like pictures and comment on other people's pictures
+* etc
 
 ## User stories
 
@@ -59,6 +60,7 @@ I want to be able to like other users' pics.
 * run bundle
 * run rake db:create 
 * visit local host at 3000 
+* to run tests : rspec in main project folder
 
 ## Code Quality
 
