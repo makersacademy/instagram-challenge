@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Outstagram!</h1>
+
+    <% if user_signed_in? %>
+      <%= link_to "New Post", new_post_path %>
+    <% end %>
+    <br>
+
+    <% if user_signed_in? %>
+      <% @posts.reverse.each do |post| %>
+        <%= image_tag post.image.url(:medium) %>
+        <br>
+        <%= post.caption %>
+        <br>
+      <% end %>
+    <% end %>
+
+  </body>
+</html>

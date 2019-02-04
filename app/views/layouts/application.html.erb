@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Outstagram</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-light bg-light d-flex">
+      <div class="container">
+        <div class="logo">
+          <a class="navbar-brand" href="/">
+            Outstagram
+          </a>
+        </div>
+        <div class="m-auto">
+          <form class="form-inline search-form">
+            <input class="form-control mr-sm-2" type="search" placeholder="@search" aria-label="Search">
+          </form>
+        </div>
+        <div class="user-section">
+          <% if user_signed_in? %>
+            <a href="users#show" data-method="get">
+              <p> Currently logged in as <%= current_user.email %></p></a>
+              <br>
+                 <a href="<%= destroy_user_session_path%>" data-method="delete">
+                   Sign out </a>
+          <% else %>
+            <a href="<%= new_user_registration_path%>">
+              Sign up
+            </a>
+            <a href="<%= new_user_session_path %>">
+              Sign in
+            </a>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+    <% end %>
+
+    <%= yield %>
+  </body>
+
+</html>
