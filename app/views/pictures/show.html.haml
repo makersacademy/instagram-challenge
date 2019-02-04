@@ -14,11 +14,14 @@
             %p.user
               by
               = @picture.user.email
-
-      %br
-    
-    
-      = link_to "Back", root_path
-      = link_to "Edit", edit_picture_path
-      = link_to "Delete", picture_path, method: :delete, data: { confirm: "Are you sure you want to delete this photo?" } 
+            .col-md-12
+              .btn-group.pull-right
+                = link_to like_picture_path(@picture), method: :put, class: "btn  btn-default" do
+                  %span.glyphicon.glyphicon-thumbs-up
+                  = @picture.get_upvotes.size
+  
+                - if user_signed_in?
+                  = link_to "Back", root_path, class: "btn btn-info"
+                  = link_to "Edit", edit_picture_path, class: "btn btn-info"
+                  = link_to "Delete", picture_path, method: :delete, data: { confirm: "Are you sure you want to delete this photo?" }, class: "btn btn-danger"
 
