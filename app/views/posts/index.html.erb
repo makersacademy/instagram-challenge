@@ -11,5 +11,12 @@
       <%= link_to "New Post", new_post_path %>
     <% end %>
 
+    <% if user_signed_in? %>
+      <% @posts.reverse.each do |post| %>
+        <%= image_tag post.image.url(:medium) %>
+        <%= post.caption %>
+      <% end %>
+    <% end %>
+
   </body>
 </html>
