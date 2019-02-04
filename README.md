@@ -68,6 +68,7 @@ I want to be able to like other users' pics.
 * clone the repo 
 * run bundle
 * run rake db:create 
+* run rails s
 * visit local host at 3000 
 * to run tests : rspec in main project folder
 
