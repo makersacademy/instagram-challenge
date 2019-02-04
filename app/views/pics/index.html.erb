@@ -1,19 +1,19 @@
-<table>
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 pictures-show-container">
 
-  <tbody>
+    <div class="box">
+      <%= link_to 'New Pic', new_pic_path %><br>
+    </div>
+
     <% @pics.each do |pic| %>
-      <tr>
-        <td><%= pic.title %></td>
-        <td><%= pic.description %></td>
-        <td><%= image_tag pic.picture.url %></td>
-        <td><%= link_to 'Show', pic %></td>
-        <td><%= link_to 'Edit', edit_pic_path(pic) %></td>
-        <td><%= link_to 'Destroy', pic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <%= image_tag(pic.picture.url, class: "small-image", id: "small-image") if pic.picture.present?  %>
+    <div class="box">
+      <%= pic.title %><br>
+      <%= link_to 'Show', pic %>
+      <%= link_to 'Edit', edit_pic_path(pic) %>
+      <%= link_to 'Destroy', pic, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Pic', new_pic_path %>
+  </div>
+</div>

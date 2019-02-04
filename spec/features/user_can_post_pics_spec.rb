@@ -11,13 +11,15 @@ RSpec.feature "Timeline", type: :feature do
     post_pic
     visit "/pics"
     expect(page).to have_content("First pic")
-    expect(page).to have_content("This is the first pic")
+    # test the existance of the image
   end
 
-  scenario "Can visit the individual pic page and view the pic and edit button" do
+  scenario "Can visit the individual pic page from the index page" do
     post_pic
+    visit "/pics"
+    # click on the show to reach the individual pic page
     expect(page).to have_content("First pic")
-    expect(page).to have_content("This is the first pic")
+    # test the existance of the image
   end
 
 end
