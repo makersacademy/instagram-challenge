@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class PhotoControllerTest < ActionDispatch::IntegrationTest
@@ -10,5 +12,4 @@ class PhotoControllerTest < ActionDispatch::IntegrationTest
     get photo_store_url
     assert_response :success
   end
-
 end
