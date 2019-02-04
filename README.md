@@ -1,6 +1,52 @@
 Instagram Challenge
 ===================
 
+
+My attemp at Makers Academys Instagram Challenge. For a full description of the challenge, see 'APPENDIX' below.
+
+Instructions for users
+Note that you will need postgreSQL installed.
+
+```
+$ git clone github.com:jaywayawyaj/instagram-challenge.git 
+Navigate to instagram-challenge 
+$ bundle 
+$ createdb outstagram_development - creates a database 
+$ createdb outstagram_test- creates a database specifically for testing 
+$ rake db:migrate - creates tables in your development 
+$ rackup Visit 'http://localhost:3000/' in a web browser
+```
+
+## Usage
+
+Technologies used:
+
+Ruby
+Rails
+PostgreSQL
+ActiveRecord
+
+For Testing:
+
+RSpec Capybara
+
+Running tests:
+
+Run rspec
+
+93.85% test coverage.
+
+Linter: 
+Rubocop
+
+5 Offences
+
+### Notes
+
+Spent some time but not loads on the challenge. Nice functionality with homepage showing different content when you're logged in or not, profile page showing all of signed in users posts. 
+Mostly followed a TDD process (features, not units), but I threw in a little functionality at the end which I didn't test drive as I couldn't work out why one feature was failing for way too long and got frustrated.
+I would like to return to this project to add CSS, and also to make everything a little smoother - I didn't put much attention to detail in this weekend as I timeboxed the challenge for the weekend.
+
 ## Initial User Stories
 
 ```
