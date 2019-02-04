@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :pictures do 
     member do 
-      put "like", to: "picture#upvote"
+      put "like", to: "pictures#upvote"
     end
   end
 

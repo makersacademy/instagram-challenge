@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class PictureTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+# let!(:picture){title: "Pic1", description: "TestPic", image: }
+# it 'can load a new picture' do 
+# end 
+
 end
