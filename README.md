@@ -1,8 +1,14 @@
 Instagram Clone
 ===================
 
+Main feed 
+
 ![Main](https://github.com/AlinaGoaga/instagram-challenge/blob/master/app/assets/images/MainPagePic.jpeg)
+
+
+Show page
 ![Show](https://github.com/AlinaGoaga/instagram-challenge/blob/master/app/assets/images/ShowPagePic.jpeg)
+
 
 ## My approach
 
