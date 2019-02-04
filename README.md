@@ -7,7 +7,7 @@ Instagram Clone
 - Post a new picture with a description, title and image and see this in the main feed (title + image)
 - See the show page for an individual picture where the description can also be found
 
-- This is still a very simplistic version, still to work on : 
+This is still a very simplistic version, still to work on : 
 
 * Feature tests
 * Finish working on functionality to remove / edit pics (need to adjust the tests provided by scaffolding in the controller first) 
