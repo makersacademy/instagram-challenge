@@ -27,7 +27,7 @@ Dogstagram
 
 ## Demo
 * Login
-![](app/assets/images/Dostagram-Login.png)
+![](app/assets/images/Dogstagram-Login.png)
 
 * Homepage
 ![](app/assets/images/Dogstagram-Home.png)
