@@ -40,5 +40,5 @@ Dogstagram
 ## Built With
 
 ## Acknowledgements
-* [Conversion of sqlite to pg to allow deployment]https://www.daveferrara1.com/ruby-in-rails-switch-from-sqlite3-to-postgres/
+* [Conversion of sqlite to pg to allow deployment](https://www.daveferrara1.com/ruby-in-rails-switch-from-sqlite3-to-postgres/)
 
