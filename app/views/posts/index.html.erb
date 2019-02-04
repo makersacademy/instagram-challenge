@@ -1,7 +1,7 @@
 <table>
   <tbody>
-    <h2>Post</h2>
     <% @posts.each do |post| %>
+        <h2>Post</h2>
         <div style='width:300px; height:300px'><%= image_tag(post.photo, style:'width:60%') %></div>
         <h2>Caption</h2>
         <div><%= post.caption %></div>
@@ -12,7 +12,7 @@
         <%= link_to 'Edit', edit_post_path(post) %> /
         <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
-        <h3>Comments</h3>
+        <h4>Comments</h4>
         <% post.comments.each do |c| %>
         <div>
         <%= c.user(c.user_id) %>
@@ -20,14 +20,14 @@
         <% end %>
         </div>
         <div>
-          <h3>Add Comment</h3>
-          <%= form_for([post, post.comments.build]) do |f| %>
-          <%= f.label :comment %>
-          <br>
-          <%= f.text_area :body %>
-          <br>
-          <%= f.submit %>
-          <hr>
+          <% if current_user %>
+            <h4>Add Comment</h4>
+            <%= form_for([post, post.comments.build]) do |f| %>
+            <%= f.text_area :body %>
+            <br>
+            <%= f.submit %>
+            <hr>
+            <% end %>
           <% end %>
         </div>
     <% end %>
