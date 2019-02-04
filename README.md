@@ -1,6 +1,20 @@
 Instagram Clone
 ===================
 
+## My approach
+
+- At the moment the user can: sign up, in, out (devise was used for this)
+- Post a new picture with a description, title and image and see this in the main feed (title + image)
+- See the show page for an individual picture where the description can also be found
+
+- This is still a very simplistic version, still to work on : 
+
+• Feature tests
+• Finish working on functionality to remove / edit pics (need to adjust the tests provided by scaffolding in the controller first) 
+• Navbar to help with the navigating
+• Maybe use carrierwave rather than paperclip since that has been deprecated
+• etc
+
 ## User stories
 
 ```
@@ -42,15 +56,10 @@ I want to be able to like other users' pics.
 ## Instructions
 
 * clone the repo 
-* bundle
+* run bundle
 * run rake db:create 
-
-## Task
-
-Bonus if you can add filters!
+* visit local host at 3000 
 
 ## Code Quality
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+Rubocop is installed 
