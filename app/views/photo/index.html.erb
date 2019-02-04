@@ -1,2 +1,48 @@
-<h1>Photo#index</h1>
-<p>Find me in app/views/photo/index.html.erb</p>
+<h1 style="text-align: center">Makergram</h1>
+
+<div class="wrapper">
+
+    <form class="uploads" method="POST" action="/photo/store" enctype="multipart/form-data">
+        <%= token_tag %> 
+
+        <div class="form-group">
+            <label for="caption">Caption</label>
+            <input type="text" name="caption">
+        </div>
+        <div style="margin-left: 5px;">
+            <input type="file" name="image">
+        </div>
+        <div>
+            <input type="submit" value="Post">
+        </div>
+    </form>
+
+    <div class="images" id="post_section">
+        <% @posts.each do |post| %>
+            <div class="post">
+                    <div>
+                        <img class="post-image" src="<%= post.link %>">
+                    </div>
+                    <p class="post-caption"><%= post.caption %></p>
+            </div>
+        <% end %>
+    </div>
+    <script>
+    var channel = pusher.subscribe('posts-channel');
+    channel.bind('new-post', function(data) {
+        let post_link = data.link;
+        let post_caption = data.caption;
+
+        let div = document.getElementById('post_section');
+        let new_content = document.createElement("div");
+        new_content.innerHTML = `
+            <div class="post">
+                <div>
+                    <img class="post-image" src="${post_link}">
+                </div>
+                <p class="post-caption"> ${post_caption}</p>
+            </div>`;
+        div.insertBefore(new_content, div.firstChild);
+    });
+    </script>  
+</div>
