@@ -1,40 +1,44 @@
-Instagram Challenge
+Dogstagram
 ===================
 
-## Instructions
+## Description
+* Dogstagram is the latest instagram clone that allows our furry companions to post all of their favourite things. 
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Technologies Used
+* [Ruby on rails]()
+* [PostgresSQL]()
+* [Travis CI]()
+* [RSPEC]()
+* [Capybara]()
 
-## Task
+## Getting Started
+* `git clone https://github.com/CazaBelle/instagram-challenge.git`
+* `cd repo instagram-challenge`
+* `rake db:create`
+* `rake db:migrate`
+* `bin/rails server`
+* Navigate to localhost:3000 in your browser
+ 
+### Prerequisites
 
-Build Instagram: Simple huh!
+### Installing
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## Testing 
 
-Bonus if you can add filters!
+## Demo
+* Login
+![](app/assets/images/Dogstagram-Login.png)
 
-## How to start
+* Homepage
+![](app/assets/images/Dogstagram-Home.png)
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+* Picture View
+![](app/assets/images/Dogstagram-Pic-View.png)
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+## Deployment
 
-## Code Quality
+## Built With
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+## Acknowledgements
+* [Conversion of sqlite to pg to allow deployment](https://www.daveferrara1.com/ruby-in-rails-switch-from-sqlite3-to-postgres/)
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
