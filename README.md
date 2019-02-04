@@ -1,6 +1,9 @@
 Instagram Clone
 ===================
 
+![Main](https://github.com/AlinaGoaga/instagram-challenge/blob/master/app/assets/images/MainPagePic.jpeg)
+![Show](https://github.com/AlinaGoaga/instagram-challenge/blob/master/app/assets/images/ShowPagePic.jpeg)
+
 ## My approach
 
 - At the moment the user can: sign up, in, out (devise was used for this)
