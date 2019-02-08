@@ -25,7 +25,7 @@ class PicsController < ApplicationController
   def edit # responsible for view files - have view file
   end
 
-  def update # only responible for changed made in the DB - no view file
+  def update # only resposible for changed made in the DB - no view file
     if @pic.update(pic_params)
       redirect_to @pic, notice: "Congrats! Pic was updated!"
     else
