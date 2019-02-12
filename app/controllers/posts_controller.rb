@@ -15,14 +15,14 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /posts
   # POST /posts.json
   def create
-    @post = current_user.posts.build(post_params)
+    @post = Post.new(post_params)
     @post.user = current_user
+    @post.save
     respond_to do |format|
       if @post.save
         format.html { redirect_to :root, notice: 'Post was successfully created.' }
@@ -51,16 +51,16 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post.comments.each do |comment|
-      comment.destroy
-    end
+    # @post.comments.each do |comment|
+    #   comment.destroy
+    # end
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-
+  
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_post
