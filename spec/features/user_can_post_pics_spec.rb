@@ -4,7 +4,8 @@ require 'web_helpers'
 RSpec.feature "Timeline", type: :feature do
 
   before do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(User.new(id: 1))
+    @alice = User.create(email: "a@a.com", password: "abc123")
+    sign_in @alice
   end
 
   scenario "Can post pics and view them on the index page" do

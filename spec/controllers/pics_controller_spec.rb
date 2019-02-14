@@ -2,10 +2,9 @@ require 'rails_helper'
 
 RSpec.describe PicsController, type: :controller do
 
-  let(:logged_in_user) { User.create(email: "a@a.com", password: "abc123") }
-
   before do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(logged_in_user)
+    @alina = User.create(email: "a@a.com", password: "abc123")
+    sign_in @alina
   end
 
   describe "GET /new " do
@@ -16,11 +15,17 @@ RSpec.describe PicsController, type: :controller do
   end
 
   describe "POST /" do
-    it "creates a pic and redirects to the show page" do
+    it "redirects to the show page" do
       post :create, params: { pic: { title: "First pic", description: "This is the first pic", picture_file_name: "testpic.jpg" } }
       created_pic = Pic.find_by(title: "First pic")
-      expect(created_pic).to be
       expect(response).to redirect_to(pic_url(created_pic.id))
+    end
+
+    it "creates a pic" do
+      post :create, params: { pic: { title: "First pic", description: "This is the first pic", picture_file_name: "testpic.jpg" } }
+      created_pic = Pic.find_by(title: "First pic")
+      expect(created_pic.title).to eq("First pic")
+      expect(created_pic.description).to eq("This is the first pic")
     end
   end
 
@@ -31,4 +36,23 @@ RSpec.describe PicsController, type: :controller do
     end
   end
 
+  describe "EDIT /update" do
+    it "edits a pic" do
+      @pic = Pic.create(title: "First pic", description: "This is the first pic", picture_file_name: "testpic.jpg", user: @alina)
+      put :update, params: { id: @pic.id, pic: { title: 'Fist pic - updated' } }
+      expect(Pic.find_by(title: 'Fist pic - updated')).to be
+      put :update, params: { id: @pic.id, pic: { description: "This is the first pic - updated" } }
+      expect(Pic.find_by(description: "This is the first pic - updated")).to be
+    end
+  end
+
+  context 'when the user is not the owner of the pic' do
+    let(:pic_creator) { User.create(email: 't@t.com', password: 'password') }
+
+    it "does not update the pic" do
+      @pic = Pic.create(title: "First pic", description: "This is the first pic", picture_file_name: "testpic.jpg", user: pic_creator)
+      put :update, params: { id: @pic.id, pic: { title: 'Fist pic - updated' } }
+      expect(Pic.find_by(title: 'Fist pic - updated')).to be nil
+    end
+  end
 end
