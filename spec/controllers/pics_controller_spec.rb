@@ -55,4 +55,13 @@ RSpec.describe PicsController, type: :controller do
       expect(Pic.find_by(title: 'Fist pic - updated')).to be nil
     end
   end
+
+  describe "DELETE /destroy" do
+    it "deletes a pic" do
+      @pic = Pic.create(title: "First pic", description: "This is the first pic", picture_file_name: "testpic.jpg", user: @alina)
+      expect {
+        delete :destroy, params: { id: @pic.id }
+      }.to change(Pic, :count).by(-1)
+    end
+  end
 end

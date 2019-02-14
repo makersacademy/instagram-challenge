@@ -23,5 +23,6 @@ RSpec.describe "pics/index", type: :view do
     render
     assert_select "div.box", { :count => 2 }
     assert_select "div.box", { :count => 2, :title => "Test pic" }
+    assert_select "div.box", { :count => 2, :description => "Test Pic Body" }
   end
 end
