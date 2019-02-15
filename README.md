@@ -24,3 +24,7 @@ To run tests: `rspec`
 ### Signing in
 
 ### Posts
+
+### Likes
+
+### Comments 
