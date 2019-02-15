@@ -1,5 +1,5 @@
 # Instagram Challenge
-===================
+
 A weekend challenge to build a instagram clone using Ruby on Rails
 
 ## Getting started
