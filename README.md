@@ -1,65 +1,26 @@
-Instagram Challenge
+# Instagram Challenge
 ===================
+A weekend challenge to build a instagram clone using Ruby on Rails
 
-## Instructions
+## Getting started
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+1. Clone this repo `git clone git@github.com:anhuiyang/instagram-challenge`
+2. Change the directory `cd instagram-challenge`
+3. Install dependencies `bundle install`
+4. Create database `bin/rails db:create`
+5. Migrate tables `bin/rails db:migrate`
 
-## Task
+## Testing
 
-Build Instagram: Simple huh!
+To run tests: `rspec`
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## Usage
 
-Bonus if you can add filters!
+1. Start the server `bin/rails s`
+2. Navigate to this page [http://localhost:3000](http://localhost:3000)
 
-## How to start
+### Signing up
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+### Signing in
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
-
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Posts
