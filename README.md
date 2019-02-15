@@ -6,15 +6,13 @@ Instagram Clone
 - At the moment the user can: sign up, in, out (devise was used for this)
 - Post a new picture with a description, title and image and see this in the main feed (title + image)
 - See the show page for an individual picture where the description can also be found
+- Edit and delete the pictures that he's posted
 
-This is still a very simplistic version, still to work on :
+Coming up :
 
-* Feature tests
-* Finish working on functionality to remove / edit pics (need to adjust the tests provided by scaffolding in the controller first)
 * Navbar to help with the navigating
-* Maybe use carrierwave rather than paperclip since that has been deprecated
+* Replace paperclip with carrierwave since paperclip has been deprecated
 * User being able to like pictures and comment on other people's pictures
-* etc
 
 ## User stories
 
@@ -43,6 +41,18 @@ As an user,
 So that I can find out more about a specific image,
 I want to be able to click on it and see its description and author.
 ```
+```
+As an user,
+So that I can update my art,
+I want to be able to edit my pics.
+```
+```
+As an user,
+So that I can remove content that I do not want online anymore,
+I want to be able to delete my pics.
+```
+
+### To develop: 
 ```
 As a user,
 So that I can share my thoughts,
