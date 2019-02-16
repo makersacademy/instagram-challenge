@@ -57,7 +57,7 @@ I decided to prioritise our Minimum Viable Product by building my MVP as followi
 
 The MVP has been built from this mock-up:
 
-<!-- ![acebook-mockup](https://user-images.githubusercontent.com/43742795/52222653-ea73a480-289b-11e9-9f3a-b8ec15b4699a.png) -->
+![instagram_diagram](https://user-images.githubusercontent.com/43742795/52903775-78477c00-321a-11e9-8bc2-274349ed52ec.png)
 
 ### Tech stack ###
 
