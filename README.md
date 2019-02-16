@@ -1,4 +1,4 @@
-Instagram Clone
+Instagram Clone [![Build Status](https://travis-ci.com/AlinaGoaga/Picstagram.svg?branch=master)](https://travis-ci.com/AlinaGoaga/Picstagram) <a href="https://codeclimate.com/github/AlinaGoaga/Picstagram/maintainability"><img src="https://api.codeclimate.com/v1/badges/9fdacaf5ff530c68b90a/maintainability" /></a>
 ===================
 
 ## My approach
