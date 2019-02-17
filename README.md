@@ -11,6 +11,8 @@ Instagram Clone [![Build Status](https://travis-ci.com/AlinaGoaga/Picstagram.svg
 
 The app has also been deployed on [Heroku](https://sleepy-anchorage-79989.herokuapp.com/).
 
+![App screenshot](https://github.com/AlinaGoaga/Picstagram/blob/master/app/assets/images/picstagram.jpeg)
+
 ## My approach
 
 - At the moment the user can: sign up, in, out (devise was used for this)
