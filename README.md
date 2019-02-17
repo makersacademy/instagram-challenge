@@ -7,7 +7,7 @@ Instagram Clone [![Build Status](https://travis-ci.com/AlinaGoaga/Picstagram.svg
 * run bundle
 * run rake db:create
 * visit local host at 3000
-* to run tests : rspec in main project folder
+* to run tests : rspec in main project folder (the coverage is 97.7% at the moment)
 
 The app has also been deployed on [Heroku](https://sleepy-anchorage-79989.herokuapp.com/).
 
