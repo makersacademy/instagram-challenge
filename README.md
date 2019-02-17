@@ -1,6 +1,16 @@
 Instagram Clone [![Build Status](https://travis-ci.com/AlinaGoaga/Picstagram.svg?branch=master)](https://travis-ci.com/AlinaGoaga/Picstagram) <a href="https://codeclimate.com/github/AlinaGoaga/Picstagram/maintainability"><img src="https://api.codeclimate.com/v1/badges/9fdacaf5ff530c68b90a/maintainability" /></a>
 ===================
 
+## Usage and tests 
+
+* clone the repo
+* run bundle
+* run rake db:create
+* visit local host at 3000
+* to run tests : rspec in main project folder
+
+The app has also been deployed on [Heroku](https://sleepy-anchorage-79989.herokuapp.com/).
+
 ## My approach
 
 - At the moment the user can: sign up, in, out (devise was used for this)
@@ -63,14 +73,6 @@ As a user,
 So that I can show my appreciation,
 I want to be able to like other users' pics.
 ```
-
-## Instructions
-
-* clone the repo
-* run bundle
-* run rake db:create
-* visit local host at 3000
-* to run tests : rspec in main project folder
 
 ## Code Quality
 
