@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class LikesController < ApplicationController
-  before_action :find_post
+  before_action :find_post, only: [:create, :destroy]
 
   def create
     if already_liked?
