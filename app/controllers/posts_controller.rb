@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :find_post, only: [:show, :destroy]
   def index
     @posts = Post.order("created_at DESC")
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def new
@@ -25,7 +25,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     if @post
       @post.destroy
       flash[:success] = "Post deleted!"
@@ -40,5 +39,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:caption, :image)
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
   end
 end
