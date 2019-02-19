@@ -3,7 +3,7 @@
 class CommentsController < ApplicationController
   before_action :find_post, only: [:create, :destroy]
   def create
-    @comment = @post.comments.create(comment_params.merge(user_id: current_user.id))
+    @comment = @post.comments.create(comment_params.merge(post_id: @post.id, user_id: current_user.id))
     flash[:success] = "Comment added!"
     redirect_to post_path(@post)
   end
