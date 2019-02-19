@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :destroy]
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
   def index
     @posts = Post.order("created_at DESC")
   end
@@ -22,6 +22,14 @@ class PostsController < ApplicationController
     else
       render "new"
     end
+  end
+
+  def edit
+  end
+
+  def update
+    @post.update_attributes(post_params)
+    redirect_to post_path(@post)
   end
 
   def destroy

@@ -64,4 +64,13 @@ RSpec.describe PostsController, type: :controller do
       expect(response).to redirect_to posts_url
     end
   end
+
+  describe 'PATCH #update' do
+    let!(:post) { FactoryBot.create(:post) }
+    let(:image) { FilesTestHelper.png }
+    it 'returns HTTP success' do
+      patch :update, params: { id: post.id, post: { caption: 'updated post', image: image } }
+      expect(response).to redirect_to post_path(post)
+    end
+  end
 end
