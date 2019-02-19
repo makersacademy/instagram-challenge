@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def create_comment
   post :create, params: { post_id: dummy_post.id, comment: { body: comment.body  } }
 end

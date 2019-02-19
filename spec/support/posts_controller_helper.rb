@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def create_post
   post :create, params: { post: { caption: 'Test post', image: image } }
 end

@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.feature "Post photo", type: :feature do
-
   context "user signed in" do
     before do
       @user = FactoryBot.create(:user)
@@ -54,5 +53,4 @@ RSpec.feature "Post photo", type: :feature do
       expect(page).not_to have_link "New Post"
     end
   end
-
 end

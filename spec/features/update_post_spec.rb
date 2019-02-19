@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.feature "Update post", type: :feature do
@@ -15,5 +17,4 @@ RSpec.feature "Update post", type: :feature do
       expect(page).to have_content "Updated caption"
     end
   end
-
 end
