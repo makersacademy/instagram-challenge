@@ -44,3 +44,9 @@ def add_post_comment
     click_button "Post!"
   end
 end
+
+def within_navbar_click_new_post_link
+  within ".navbar" do
+    click_link "New Post"
+  end
+end

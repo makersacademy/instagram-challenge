@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require_relative '../support/web_helpers_spec'
 
 RSpec.feature "User sign out", type: :feature do
-  scenario "User can sign up and then sign out" do
+  before do
     user = FactoryBot.build(:user)
     sign_up(user)
+  end
+  scenario "User can sign up and then sign out" do
     expect(current_path).to eq "/posts"
     expect(page).not_to have_content "Sign Up"
     expect(page).to have_content "Hi, Joe!"
@@ -17,8 +18,6 @@ RSpec.feature "User sign out", type: :feature do
   end
 
   scenario "User can sign in and then sign out" do
-    user = FactoryBot.create(:user)
-    sign_in(user)
     expect(page).to have_content "Hi, Joe!"
     expect(page).not_to have_content "Sign In"
     click_link "Sign Out"

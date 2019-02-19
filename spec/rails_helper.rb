@@ -12,6 +12,7 @@ require 'rspec/rails'
 require 'simplecov'
 require 'support/factory_bot'
 require 'database_cleaner'
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -21,6 +22,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
