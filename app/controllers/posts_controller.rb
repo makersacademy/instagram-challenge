@@ -38,7 +38,7 @@ class PostsController < ApplicationController
       redirect_to posts_url
     else
       flash[:danger] = "Unable to delete post!"
-      redirect_to posts_url
+      render 'index'
     end
   end
 
