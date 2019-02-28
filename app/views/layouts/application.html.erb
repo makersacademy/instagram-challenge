@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>InstagramClone</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>InstagramClone</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Home</a>
+    <a class="navbar-brand" href="/pics/new">New pic</a>
+    <% if user_signed_in? %>
+    <a class="navbar-brand" href="/users/sign_out">Sign Out</a>
+    <% else %>
+    <a class="navbar-brand" href="/users/sign_in">Sign In</a>
+    <a class="navbar-brand" href="/users/sign_up">Sign Up</a>
+    <% end %>
+  </nav>
+
+  <div class="container">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
-  </head>
-
-  <body>
     <%= yield %>
-  </body>
+  </div>
+</body>
+
 </html>
