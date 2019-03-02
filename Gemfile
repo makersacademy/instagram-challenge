@@ -5,6 +5,8 @@ ruby '2.6.0'
 # Adding rubocop
 gem 'rubocop', '~> 0.65.0', require: false
 gem "rubocop-rails_config"
+# Adding rake
+gem 'rake'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
