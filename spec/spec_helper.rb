@@ -11,6 +11,14 @@
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
+require 'rake'
+
+rake = Rake.application
+rake.init
+rake.load_rakefile
+rake['db:test:prepare'].invoke
+rake['db:seed'].invoke
+
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
