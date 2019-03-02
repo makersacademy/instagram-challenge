@@ -53,3 +53,16 @@ As a user,
 so that I can leave the application,
 I want to be able to delete my account along with the content
 ```
+
+### Instructions to setup
+
+Locally clone this repo
+```
+> bundle install
+> bin/rails db:create
+> bin/rails db:migrate
+
+> bundle exec rspec
+> bin/rails server
+```
+You can then connect to http://localhost:3000
