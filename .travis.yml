@@ -1,16 +1,16 @@
-rvm: '2.6.0'
+rvm: 2.6.0
 cache: bundler
-
-script:
-  - bundle install && bin/rails db:create && bin/rails db:migrate && bundle exec rspec
-services:
-  — postgresql
-
+services: "— postgresql"
 before_script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
   - bundle exec rake assets:precompile
+script:
+  - bundle install && bin/rails db:create && bin/rails db:migrate && bundle exec rspec
 deploy:
   provider: heroku
   api_key:
-    secure: HWuY9wlVZTVWpmsTQIdX/SamP6HnM8K7WWySFCXYPxe+QG2cjS+D2hBDgR3WeioYZrybX4wocqrUnYONzsfe6RMO7i57DeRzc2OL72lZ8FroT9SiMCZhvMfczyJjzGAfuf/tdREBscz8K0kskor+xkgKdEeLS7K91qX2E634P+bpAc9hqm9n+2IJYoqHGCsIhnDxDgcvSvjA/x4Lk3PV/HuUZSwuQoR20wSqfCjznuXB3uAFPguCOzlCIDbxKI71WsdJU1faswUhNygz1jv4kzsU9W+USM4ud8zFhACFbZZT3ioFQnm2ZuDsCwAhjgd9605MrXaEjZnM6P5e9sOoDzwEd62WSlVcgfn2wGEPrYm945z/i45i5FRD11N78yVvaLyxyZvcB+cFKOE+7R0q2JeMNjyEFvPP4LbeatAtrQ0RHMAzWV2506s0vsSRZHrAWQzeCWM+DtFPWbVdogwcUZ+DC3u6AVY4hKPuOHoUhqqAuzhCtrD/iZ/KayNEmpn7lVIaoCpT36JaPV/W1HqeS4qvexmR+QGA8WF2965ZBzJAckA0c8j6I+uFtt3EHsHKi4s1xi0crhdiVkK3O20eZXbnZhM/qaHsV+HGwteU/gaCPNQeatjct3pZP2n1DVaAH3UIjHPu9bKWRH1/H7T8jyIs4wEXN9RFrN2ye2lUVwg=
+    secure: EOiQMxsh3q6gUIrCzwFjHdKRopoTegQtnQ1+6um8Q6FC8NcYqyiy6XG3ROit779xOaZD68qYNuOONC+dkLm9e7CHYeJPIy0lXvSILSRVk0tOiys3Op+Vg0CllodEB/fuZ04jTnxaj0IUMfItVMiMyciNUqW7zteYZXBsstb48M9BkJB7T2/6NVpztsF+4VSdSnkp4clFw75vbQiX1TAbzL8xHQQOW48FHgicgEyH5nryXIdfIDqxjJ3LDO+ZcB1PXZG6GKkKO0A3gS7PgowTfSvpp6sIDcHzJfEeH6KwbsLa2aFHyqiU3mR1wEGEbliYdaLJjdIgo+yvzcIWZvcLFKb8jahWb+C0LhAyqQNt6FAkN7VnijaOsMf9w5vIWFAVy9pzVPgRcRVsLnEAuSotaVRgs7Ni4pFxQm/KjiAmHd+XHN7BIpIZZumxUmoj+RW9+tAJggw3znQV5i8/h4tTEgRdzZ8lua3wjN/GQeVaKn/iVjRCkYVhSmesSld1jpRZVTfpD+/zYCicIUT5Of+7jW3J2WH0EM+SX1i/4+0wCkuIXS9lEomPrwwJOQAYNS9tmzCeDiBWPTyE02onWIw+J97+pErzbdjw318zBerNU4FziBIqCvVorQUoloc+9XJJLbRMy/HKue2Zaj5SQEAvDVGwVUj6U6efLcZIliQIAKI=
+  app: app-like-instagram
+  on:
+    repo: KrzysztofBalejko/instagram-challenge
