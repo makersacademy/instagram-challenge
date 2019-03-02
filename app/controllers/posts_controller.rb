@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
   end
 
   # GET /posts/1
@@ -24,10 +24,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    def create
-      p current_user.id
-      p params
-      Post.create(user_id: current_user.id, message: params[:post][:message])
+      post = Post.create(user_id: current_user.id, message: params[:post][:message], image: params[:post][:image])
+      p post.identify_image()
       redirect_to posts_url
     end
 
@@ -42,7 +40,7 @@ class PostsController < ApplicationController
     #     format.json { render json: @post.errors, status: :unprocessable_entity }
     #   end
     # end
-  end
+  # end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
@@ -76,6 +74,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:message, :user_id)
+      params.require(:post).permit(:message, :user_id, :image, :user_id)
     end
 end

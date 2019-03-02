@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "posts/edit", type: :view do
   before(:each) do
-    @post = assign(:post, Post.create!(message: "hello", user_id: 1))
+    @post = assign(:post, Post.create!(message: "hello", user_id: 1, image: Rails.root + 'spec/Unknown.jpg'))
   end
 
   it "renders the edit post form" do
