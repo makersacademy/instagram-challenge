@@ -2,9 +2,9 @@ rvm: '2.6.0'
 cache: bundler
 
 script:
-  - mkdir -p spec && bundle exec rspec spec
-  - bin/rake db:migrate RAILS_ENV=test
-  - bin/rake db:seed
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
 
 before_install:
   - sudo apt-get update -qq
