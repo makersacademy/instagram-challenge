@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order("created_at DESC")
   end
 
   # GET /posts/1
@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     Post.create({user_id: current_user.id, message: params[:post][:message]})
     redirect_to posts_url
 
-    
+
   end
 
   # PATCH/PUT /posts/1
