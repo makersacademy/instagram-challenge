@@ -57,6 +57,10 @@ So I can make my life look even better,
 I can use filters to change how my photos look.
 ```
 
+## Planning
+
+![layout diagram](docs/layout_diagram.png)
+
 ## Instructions
 
 * Challenge time: one weekend
