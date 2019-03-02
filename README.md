@@ -1,40 +1,59 @@
-Instagram Challenge
-===================
+# Instagram Challenge
 
-## Instructions
+[![Build Status](https://travis-ci.org/Estevenson1994/instagram-challenge.svg?branch=development)](https://travis-ci.org/Estevenson1994/instagram-challenge)
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+[![Maintainability](https://api.codeclimate.com/v1/badges/e7f9669ad5818bba1c08/maintainability)](https://codeclimate.com/github/Estevenson1994/instagram-challenge/maintainability)
 
-## Task
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e7f9669ad5818bba1c08/test_coverage)](https://codeclimate.com/github/Estevenson1994/instagram-challenge/test_coverage)
 
-Build Instagram: Simple huh!
+This is the [Makers Academy](https://makers.tech/) week 8 weekend challenge. The aim of this challenge was to build an instagram clone, instructions given can be found [here](https://github.com/makersacademy/instagram-challenge).
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## Tech used in this project:
 
-Bonus if you can add filters!
+- **Ruby on Rail** to build the backend
+- **RSpec** to test
+- **Capybara** to test
+- **Travis** for continuous integration
+- **Heroku** for deployment
 
-## How to start
+## Setting up
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+## User stories
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+The following user stories were implemented:
 
-## Code Quality
+```
+User can sign up
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+User can log in
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+User can log out
+
+User can see posts
+
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+- Ruby version
+
+- System dependencies
+
+- Configuration
+
+- Database creation
+
+- Database initialization
+
+- How to run the test suite
+
+- Services (job queues, cache servers, search engines, etc.)
+
+- Deployment instructions
+
+- ...
