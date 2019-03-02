@@ -1,3 +1,28 @@
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
 ## MVP user stories
 
 ```
@@ -28,12 +53,14 @@ I want to have a profile page showing only posts by me
 
 ### Task breakdown and estimation (in fibonnaci story points)
 
-Phase 1: starting Saturday 12.30. Total: 9.
+Phase 1: starting Saturday 12.30. Total: 13.
 
 Initialize rails project - 2
 Use devise gem to generate user relation and functions - 3
-Spike remaining database relations - 2
+Spike remaining database relations - 2 - this took much longer than expected
 Write tests for database relationships - 2
+Set up Travis via Github - 2
+Deploy on Heroku - 2
 
 ### Further stories
 
@@ -72,6 +99,14 @@ So that I can build my following and reputation
 I want my profile to display my followers and the number of them
 ```
 
+## To migrate database
+
+```bash
+> rake db:create
+> rake db:migrate
+> rake db:seed
+```
+
 ## Database schema
 
 Relations (tables):
@@ -87,7 +122,7 @@ Posts and Users have many Likes
 (All relations include time of creation and of updating)
 
 __Users__
-id, username, first_name, last_name, password_hash, profile_pic
+id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, [from here on not auto-generated] username, first_name, last_name, profile_pic_resource_id
 
 __Follows__
 id, user_id, followed_user_id
