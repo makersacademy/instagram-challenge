@@ -5,3 +5,12 @@ script:
   - bundle install && bin/rails db:create && bin/rails db:migrate && bundle exec rspec
 services:
   — postgresql
+
+before_script:
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+  - bundle exec rake assets:precompile
+deploy:
+  provider: heroku
+  api_key:
+    secure: "HWuY9wlVZTVWpmsTQIdX/SamP6HnM8K7WWySFCXYPxe+QG2cjS+D2hBDgR3WeioYZrybX4wocqrUnYONzsfe6RMO7i57DeRzc2OL72lZ8FroT9SiMCZhvMfczyJjzGAfuf/tdREBscz8K0kskor+xkgKdEeLS7K91qX2E634P+bpAc9hqm9n+2IJYoqHGCsIhnDxDgcvSvjA/x4Lk3PV/HuUZSwuQoR20wSqfCjznuXB3uAFPguCOzlCIDbxKI71WsdJU1faswUhNygz1jv4kzsU9W+USM4ud8zFhACFbZZT3ioFQnm2ZuDsCwAhjgd9605MrXaEjZnM6P5e9sOoDzwEd62WSlVcgfn2wGEPrYm945z/i45i5FRD11N78yVvaLyxyZvcB+cFKOE+7R0q2JeMNjyEFvPP4LbeatAtrQ0RHMAzWV2506s0vsSRZHrAWQzeCWM+DtFPWbVdogwcUZ+DC3u6AVY4hKPuOHoUhqqAuzhCtrD/iZ/KayNEmpn7lVIaoCpT36JaPV/W1HqeS4qvexmR+QGA8WF2965ZBzJAckA0c8j6I+uFtt3EHsHKi4s1xi0crhdiVkK3O20eZXbnZhM/qaHsV+HGwteU/gaCPNQeatjct3pZP2n1DVaAH3UIjHPu9bKWRH1/H7T8jyIs4wEXN9RFrN2ye2lUVwg="
