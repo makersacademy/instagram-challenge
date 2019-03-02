@@ -1,6 +1,14 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show, :comment, :update]
+
   def index
     @posts = Post.all
+  end
+
+  def show
+  end
+
+  def comment
   end
 
   def new
@@ -16,18 +24,22 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-    @post = Post.find(params[:id])
-  end
-
-  def comment
-    @post = Post.find(params[:id])
+  def update
+    if @post.update(post_params)
+      redirect_to @post, notice: 'Updated'
+    else
+      render :comment, alert: 'Not updated'
+    end
   end
 
   private
 
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :comment)
   end
 
 end
