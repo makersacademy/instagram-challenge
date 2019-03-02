@@ -1,5 +1,110 @@
-Instagram Challenge
-===================
+## MVP user stories
+
+```
+As a user
+So that I can access data relevant to me
+I want to be able to sign in
+
+As a user
+So that I can secure my data
+I want to be able to sign out
+
+As a user
+So that I can keep up with the world
+I want to view others' posts with pictures in the app
+
+As a user
+So that I can feel social
+I want to share posts in the app
+
+As a user
+So that I can revert mistakes
+I want to be able to delete posts
+
+As a user
+So that I can curate my brand
+I want to have a profile page showing only posts by me
+```
+
+### Task breakdown and estimation (in fibonnaci story points)
+
+Phase 1: starting Saturday 12.30. Total: 9.
+
+Initialize rails project - 2
+Use devise gem to generate user relation and functions - 3
+Spike remaining database relations - 2
+Write tests for database relationships - 2
+
+### Further stories
+
+```
+As a user
+So that I can interact with posts
+I want to comment on posts
+
+As a user
+So that I can understand my audience
+I want to see the comments on posts, with the names of the poster linked to their profile
+
+As a user
+So that I can revert mistakes
+I want to be able to delete comments
+
+As a user
+So that I can show appreciation
+I want to be able to 'like' posts
+
+As a user
+So that I can feel encouraged by my friends
+I want to be able to see who has liked my posts
+I want to be able to see how many people have liked each post
+
+As a user
+So that I can revert mistakes
+I want to be able to 'unlike' posts
+
+As a user
+So that I can curate my feed
+I want to be able to follow and unfollow other accounts
+
+As a user
+So that I can build my following and reputation
+I want my profile to display my followers and the number of them
+```
+
+## Database schema
+
+Relations (tables):
+
+Users Follows Posts Resources Comments Likes
+
+Users have many Follows
+Users have many Posts
+a Post has one Resource
+Posts and Users have many Comments
+Posts and Users have many Likes
+
+(All relations include time of creation and of updating)
+
+__Users__
+id, username, first_name, last_name, password_hash, profile_pic
+
+__Follows__
+id, user_id, followed_user_id
+
+__Posts__
+id, user_id, resource_id
+
+__Resources__
+id, post_id, location
+
+__Comments__
+id, post_id, user_id, message
+
+__Likes__
+id, post_id, user_id
+
+# Instagram Challenge
 
 ## Instructions
 
