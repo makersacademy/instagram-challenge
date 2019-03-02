@@ -1,21 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Lazygram</h1>
-<br>
-<%= link_to 'New Post', new_post_path %>
-<br>
-    <% @posts.each do |post| %>
-      <%= post.message %>
-      <%= post.user_id %>
-      <% post.hashtags.each do |hashtag| %>
-      <%= '#' + hashtag.name %>
-      <% end %>
-      <%= image_tag post.image, class: 'main-image' %>
-      <tr>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+<h1 class="text-center">AInstagram</h1>
 
+<div class="container page-top">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col">
+        <div class="card">
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.image.variant(resize: "500x600"), class: 'rounded mx-auto d-block'%>
+          <% end %>
+          <div class="card-footer">
+          <% post.hashtags.each do |hashtag| %>
+            <%= '#' + hashtag.name %>
+          <% end %>
+          </div>
+          <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-sm'%>
+     </div>
+     </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+     
+      
 
