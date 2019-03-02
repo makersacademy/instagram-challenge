@@ -14,6 +14,24 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'omniauth'
+require 'rake'
+require 'simplecov'
+require 'simplecov-console'
+
+rake = Rake.application
+rake.init
+rake.load_rakefile
+rake['db:test:prepare'].invoke
+rake['db:seed'].invoke
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::Console,
+])
+
+SimpleCov.start do
+  add_filter "spec/controllers/posts_controller_spec.rb"
+  add_filter "spec/rails_helper.rb"
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -29,7 +47,16 @@ RSpec.configure do |config|
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
-
+  OmniAuth.config.test_mode = true
+  omniauth_hash = { 'provider' => 'github',
+                    'uid' => '12345',
+                    'info' => {
+                      'name' => 'Test',
+                      'email' => 'test@ntestuser.com',
+                      'nickname' => 'TestNick'
+                  }
+  }
+  OmniAuth.config.add_mock(:github, omniauth_hash)
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
   config.mock_with :rspec do |mocks|
