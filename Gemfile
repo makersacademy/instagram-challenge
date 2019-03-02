@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
+# Adding simpleform
+gem 'simple_form'
 # Adding rubocop
 gem 'rubocop', '~> 0.65.0', require: false
 gem "rubocop-rails_config"
