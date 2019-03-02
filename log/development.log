@@ -304,3 +304,92 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 30ms (Views: 27.7ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2019-03-02 16:48:19 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/krzysztofbalejko/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 426ms (Views: 419.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-03-02 16:48:21 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.5ms)
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (18.2ms)
+Completed 200 OK in 57ms (Views: 31.1ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-02 16:48:28 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 30ms (Views: 28.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2019-03-02 16:48:31 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.9ms)
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 30ms (Views: 29.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2019-03-02 16:48:44 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZShp5MZFmLcpDVMPphJkwcAs2Hg1TaNLVxZveFSwvs0swCVaghi/53AWWaT26CdoGS3Z+YDtY1qe9opLOzqmlw==", "user"=>{"email"=>"chrisbalejko86@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/krzysztofbalejko/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "chrisbalejko86@gmail.com"], ["LIMIT", 1]]
+  ↳ /Users/krzysztofbalejko/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "chrisbalejko86@gmail.com"], ["encrypted_password", "$2a$11$bzzAUf5FRRF8.Kb9Y8.TvOWgZag4RlzsJTl3Rfk2G5w2SxLtpYzVO"], ["created_at", "2019-03-02 16:48:45.104886"], ["updated_at", "2019-03-02 16:48:45.104886"]]
+  ↳ /Users/krzysztofbalejko/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+  [1m[35m (17.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/krzysztofbalejko/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Redirected to http://0.0.0.0:3000/
+Completed 302 Found in 179ms (ActiveRecord: 19.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-03-02 16:48:45 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:3
+  Rendered home/index.html.erb within layouts/application (296.7ms)
+Completed 500 Internal Server Error in 301ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `posts_path' for #<#<Class:0x00007fa23b7b54f0>:0x00007fa23ce92600>
+Did you mean?  password_path):
+    4:   <h2><%= link_to "Sign Up", new_user_registration_path %></h2>
+    5:   <h2><%= link_to "Sign In", new_user_session_path %></h2>
+    6: <% else %>
+    7:   <%= link_to "Go to posts", posts_path %>
+    8: <% end %>
+  
+app/views/home/index.html.erb:7:in `_app_views_home_index_html_erb___3795125458729209881_70167391672080'
+Started GET "/" for 127.0.0.1 at 2019-03-02 17:01:49 +0000
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/krzysztofbalejko/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:3
+  Rendered home/index.html.erb within layouts/application (438.6ms)
+Completed 500 Internal Server Error in 449ms (ActiveRecord: 5.8ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `posts_path' for #<#<Class:0x00007fba8c09d708>:0x00007fba8c0cb798>
+Did you mean?  password_path):
+    4:   <h2><%= link_to "Sign Up", new_user_registration_path %></h2>
+    5:   <h2><%= link_to "Sign In", new_user_session_path %></h2>
+    6: <% else %>
+    7:   <%= link_to "Go to posts", posts_path %>
+    8: <% end %>
+  
+app/views/home/index.html.erb:7:in `_app_views_home_index_html_erb___1210908148707391471_70219595052900'
