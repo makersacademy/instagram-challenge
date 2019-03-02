@@ -25,7 +25,6 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
       post = Post.create(user_id: current_user.id, message: params[:post][:message], image: params[:post][:image])
-      p post.identify_image()
       redirect_to posts_url
     end
 

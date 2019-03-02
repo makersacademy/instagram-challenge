@@ -2,8 +2,7 @@ require 'aws-sdk'
 
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :post_to_hashtags
-  has_many :hashtags, through: :post_to_hashtags
+  has_and_belongs_to_many :hashtags
   has_one_attached :image
   validate :image_presence
   after_commit :populate_hashtags, on: :create
@@ -14,8 +13,7 @@ class Post < ApplicationRecord
 
   def populate_hashtags(hashtags=self.identify_image())
     hashtags.each do | label |
-      p label
-      Hashtag.create(name: label)
+      self.hashtags.create(name: label)
     end
   end
 
