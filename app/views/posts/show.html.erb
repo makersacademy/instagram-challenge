@@ -1,0 +1,14 @@
+<div class="container" id="card-gallery">
+    <div class="card mx-auto img-fluid" style="width: 40rem;">
+      <%= image_tag(@post.image, class: "card-img-top rounded") %>
+      <div class="card-body">
+        <%= render partial: 'posts/body', locals: { post: @post } %>
+         <%= render partial: 'comments/post_comments', locals: { post: @post } %>
+        <% if current_user %>
+          <%= render partial: 'comments/form', locals: { comment: @comment } %>
+        <% else %>
+          <%= link_to "Sign In", sign_in_path %> or <%= link_to "Sign Up", sign_up_path %> to comment!
+        <% end %>
+    </div>
+  </div>
+</div>

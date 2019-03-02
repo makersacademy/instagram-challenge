@@ -1,40 +1,40 @@
-Instagram Challenge
-===================
+# ChristaGram
+![Build Status](https://travis-ci.org/chrisjgilbert/instagram-challenge.svg?branch=master)
 
-## Instructions
+[![Coverage Status](https://coveralls.io/repos/github/chrisjgilbert/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/chrisjgilbert/instagram-challenge?branch=master)
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+[An Instagram clone made with Rails deployed on Heroku](https://quiet-spire-51096.herokuapp.com/)   
 
-## Task
+NOTE: files will be periodically deleted due to the current hosting plan!
 
-Build Instagram: Simple huh!
+## How to use   
+* `git clone https://github.com/chrisjgilbert/instagram-challenge`   
+* `bundle` to install dependencies   
+* `rails s` to fire up the server on http://localhost:3000/    
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+### Local db setup   
+* [Follow these instructions if you need to install Postgres](https://gist.github.com/ibraheem4/ce5ccd3e4d7a65589ce84f2a3b7c23a3)  
+* `bin/rails db:create`   
+* `bin/rails db:migrate`   
 
-Bonus if you can add filters!
+### Run tests   
+* `bundle exec rspec`   
 
-## How to start
+### View test coverage   
+* `open coverage/index.html`   
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+### Run rubocop   
+* `rubocop`   
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+### To clean local database use   
+```
+> bin/rails db:drop
+> bin/rails db:create
+> bin/rails db:migrate
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## Desktop View   
+![Desktop view](public/desktop-view.png)   
+
+## Mobile View   
+![Mobile view](public/mobile-view.png)   
