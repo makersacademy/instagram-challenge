@@ -17,10 +17,10 @@ class Post < ApplicationRecord
     end
   end
 
-  def identify_image(image=self.image.download)
+  def identify_image(image=self.image.download, client=Aws::Rekognition::Client)
     output =[]
     aws_connect('eu-west-1')
-    client = Aws::Rekognition::Client.new
+    client = client.new
     detector = client.detect_labels( image: { bytes: image } )
     detector.labels.each { |label| output.push(label.name) }
     return output

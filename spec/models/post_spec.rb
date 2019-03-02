@@ -3,8 +3,11 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   
   xit 'identifies image correctly' do
+    client = Aws::Rekognition::Client.new(stub_responses: true)
+    client.stub_responses(:detect_labels)
     post = Post.new()
-    expect(post.identify_image('spec/files/unknown.jpg')).to include "Frog"
+    p post.identify_image('spec/files/unknown.jpg', client)
+    expect(post.identify_image('spec/files/unknown.jpg', client)).to include "Frog"
   end
 
   it 'populates the hashtags correctly' do
