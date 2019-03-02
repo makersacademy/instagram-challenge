@@ -1,6 +1,62 @@
 Instagram Challenge
 ===================
 
+## User stories
+
+```
+As a user,
+So I can live vicariously,
+I can view posts containing photos.
+```
+
+```
+As a user,
+So I can share photos of my own,
+I can create posts.
+```
+
+```
+As a user,
+So my photos are safe,
+They should be associated with my account.
+```
+
+```
+As a user,
+So I can show my appreciation,
+I can like posts.
+```
+
+```
+As a user,
+So I can give my opinion,
+I can comment on posts.
+```
+
+```
+As a user,
+So I can change my mind,
+I can edit my posts.
+```
+
+```
+As a user,
+So I can remove embarrassing photos,
+I can delete my posts.
+```
+
+```
+As a user, 
+So I feel comfortable telling my friends about this website,
+It is attractively styled.
+```
+
+```
+As a user,
+So I can make my life look even better,
+I can use filters to change how my photos look.
+```
+
 ## Instructions
 
 * Challenge time: one weekend
