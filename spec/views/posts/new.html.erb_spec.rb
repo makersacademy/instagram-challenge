@@ -17,7 +17,7 @@ RSpec.describe "posts/new", type: :view do
 
       assert_select "input[name=?]", "post[caption]"
 
-      assert_select "input[name=?]", "post[user_id]"
+      assert_select "input[name=?]", "post[user_id]", false
     end
   end
 end
