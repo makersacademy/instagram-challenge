@@ -11,7 +11,7 @@ If the developers get bored of their photos they can apply filters to change the
 
 ## Production environment
 
-The application is deployed to Heroku at https://ai-nstagram.herokuapp.com
+The application is deployed to Heroku at https://ai-nstagram.herokuapp.com. As theres no persistent storage on Heroku you might see empty images so feel free to upload some to try out. I'm not going to use Amazon S3 for this as I've only got limited space there...
 
 ## Technologies used
 
