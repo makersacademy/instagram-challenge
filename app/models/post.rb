@@ -28,7 +28,7 @@ class Post < ApplicationRecord
 
   def aws_connect(region)
     Aws.config.update({
-    region: region, credentials: Aws::Credentials.new(Rails.application.credentials.aws[:access_key], Rails.application.credentials.aws[:secret_access_key])})
+    region: region, credentials: Aws::Credentials.new(Rails.application.credentials[Rails.env.to_sym][:aws][:access_key], Rails.application.credentials[Rails.env.to_sym][:aws][:secret_access_key])})
   end
 
 end
