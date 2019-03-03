@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/thielsen/instagram-challenge.svg?branch=master)](https://travis-ci.org/thielsen/instagram-challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/7258f325b151a1e93d8b/maintainability)](https://codeclimate.com/github/thielsen/instagram-challenge/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/7258f325b151a1e93d8b/test_coverage)](https://codeclimate.com/github/thielsen/instagram-challenge/test_coverage)
 
-AInstagram Challenge
+AInstagram
 ===================
 
 ## Summary
@@ -24,25 +24,36 @@ If the developers get bored of their photos they can apply filters to change the
 
 ## User Stories
 
+```
 As a busy developer
 So I don't waste time logging in
 I want to log in with my github account
-
+```
+```
 As a busy developer
 So I can show off my pictures
 I want to upload them to the website
-
+```
+```
 As a busy developer
 So I don't have to waste time writing comments
 I want my computer to automatically add appropriate comments
-
+```
+```
 As a busy developer
 If I realise I don't want a picture posted
 I want to be able to delete it
-
+```
+```
 As a bored developer
 Now that I think my photo isn't exciting
 I want to be able to change it with filters
+```
+## Database design
+
+![alt text](https://github.com/thielsen/instagram-challenge/blob/master/dbdesign.png "Logo Title Text 1")
+
+
 
 
 
