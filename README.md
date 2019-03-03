@@ -1,5 +1,6 @@
 # Instagram Challenge
----------------------
+
+**My weekend challenge was to build Instagram-like application using Ruby on Rails.**
 
 [![Build Status](https://travis-ci.org/KrzysztofBalejko/instagram-challenge.svg?branch=master)](https://travis-ci.org/KrzysztofBalejko/instagram-challenge)
 
@@ -41,6 +42,12 @@ git clone https://github.com/KrzysztofBalejko/instagram-challenge.git
 * CSS
 * Bootstrap / Bootswatch
 * Font awesome
+
+## This time I was focusing on:
+
+* CI/CD Pipeline ✓
+* Learning Rails ✓
+* UI & UX ✓
 
 ## My user stories:
 ```
