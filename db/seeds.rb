@@ -15,3 +15,12 @@ User.create([
                     email: 'bob@bob.com',
                     profile_pic: nil
                 }])
+
+post1 = Post.create(uri: 'I am the first seeded picture', user_id: 1)
+post1.picture.attach(io: File.open(Rails.root + 'app/assets/images/test1.jpg'), filename: 'test1.jpg')
+
+post2 = Post.create(uri: 'I am the second', user_id: 1)
+post2.picture.attach(io: File.open(Rails.root + 'app/assets/images/test2.jpg'), filename: 'test2.jpg')
+
+post3 = Post.create(uri: 'I am the third', user_id: 1)
+post3.picture.attach(io: File.open(Rails.root + 'app/assets/images/test3.jpg'), filename: 'test3.jpg')
