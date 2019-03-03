@@ -56,10 +56,15 @@ I want to have a profile page showing only posts by me
 Phase 1: starting Saturday 12.30. Total: 13.
 
 Initialize rails project - 2
+
 Use devise gem to generate user relation and functions - 3
-Spike remaining database relations - 2 - this took much longer than expected
+
+Spike remaining database relations - 2 - this took much longer than expected. FInished by 16.40 Saturday.
+
 Write tests for database relationships - 2
+
 Set up Travis via Github - 2
+
 Deploy on Heroku - 2
 
 ### Further stories
