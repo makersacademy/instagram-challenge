@@ -7,7 +7,7 @@
 <% end %>
 <% @posts.each do |post| %>
 <div class="post">
-    <%= image_tag(post.info_for_display[:resource_loc], class: "index") %>
+    <%= image_tag(post.image, class: "index") %>
     <p class="username">posted by <%= post.info_for_display[:username] %> on <%= post.created_at.strftime('%m/%d/%Y at %I:%M%p') %></p>
     <p><%= post.info_for_display[:likes].length %> likes</p>
     <p><%= link_to 'Show', post %></p>
@@ -16,8 +16,8 @@
     <ul>
       <% post.info_for_display[:likes].each_with_index do |like, i| %>
         <% if i < 3 %>
-          <li><%= @posts.find(like.user_id).info_for_display[:username] %></li>
-        <% elsif i == 4 %>
+          <li><%= like.username %></li>
+        <% elsif i == 3 %>
           <li>and <%=post.info_for_display[:likes].length - 3 %> others!</li>
         <% end %>
       <% end %>
