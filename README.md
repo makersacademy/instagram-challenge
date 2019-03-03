@@ -1,5 +1,6 @@
 Instagram Challenge
 ===================
+[![Build Status](https://travis-ci.com/RubyKobayashi/instagram-challenge.svg?branch=master)](https://travis-ci.com/RubyKobayashi/instagram-challenge)
 
 ## Instructions
 
@@ -38,3 +39,40 @@ gem "rubocop-rails"
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
+
+## User Stories - MVP
+
+Estimation 5
+```
+As a user,
+so I can have a secure account with all my pictures
+I'd like to be able to sign in and out
+```
+
+Estimation 3
+```
+As a user,
+so I can have a collection of photos
+I'd like to be able to post photos
+```
+
+Estimation 5
+```
+As a user,
+so I can see which photos of my friends I'd like to comment on,
+I'd like to be able to see their photos
+```
+
+Estimation 3
+```
+As a user,
+so I can show my online presence to my friends
+I'd like to be able to comment on their photos
+```
+
+Estimation 3
+```
+As a user,
+so I can show my friends which photos I like
+I'd like to be able to "like" their photos
+```
