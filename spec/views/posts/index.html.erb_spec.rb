@@ -11,15 +11,12 @@ RSpec.describe "posts/index", type: :view do
     post2 = Post.create(caption: 'I am the second', user_id: 1)
     post2.picture.attach(io: File.open(Rails.root + 'app/assets/images/test2.jpg'), filename: 'test2.jpg')
     assign(:posts, [post1, post2])
+
+    like = Like.create(user_id: @user.id, post_id: post1.id)
+    assign(:likes, like)
   end
 
   context "it renders a list of posts" do
-
-    it 'contains the text caption' do
-      render
-      assert_select "tr>td", text: "I am the first seeded picture".to_s, count: 1
-      assert_select "tr>td", text: "I am the second".to_s, count: 1
-    end
 
     it 'contains the uploaded images' do
       render
@@ -27,9 +24,9 @@ RSpec.describe "posts/index", type: :view do
       assert_select "tr>td>img:match('src', ?)", /test2.jpg/
     end
 
-    it 'contains the username of the uploader' do
+    it 'contains the number of likes' do
       render
-      assert_select "tr>td", text: 'bob', count: 2
+      assert_select "div.likes", 'Likes: 1'
     end
   end
 end
