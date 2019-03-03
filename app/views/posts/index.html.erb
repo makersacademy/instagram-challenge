@@ -1,28 +1,20 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Resource</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.user %></td>
-        <td><%= post.resource_id %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div>
+<% if !@posts %>
+<h2>Be the first to post something!</h2>
+<% end %>
+<% @posts.each do |post| %>
+<div class="post">
+    <%= image_tag(post.info_for_display[:resource_loc], class: "index") %>
+    <p class="username">posted by <%= post.info_for_display[:username] %> on <%= post.created_at.strftime('%m/%d/%Y at %I:%M%p') %></p>
+    <p><%= link_to 'Show', post %></p>
+    <p><%= link_to 'Edit', edit_post_path(post) %></p>
+    <p><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+</div>
+<% end %>
+</div>
 
 <br>
 

@@ -20,4 +20,4 @@ user_bob = User.create(
 bob_post = Post.create(user_id: user_bob.id, resource_id: '1')
 Comment.create(post_id: bob_post.id, user_id: user_bob.id, message: 'Great pic, me!')
 Like.create(post_id: bob_post.id, user_id: user_bob.id)
-Resource.create(post_id: bob_post.id, location: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/A_butterfly_feeding_on_the_tears_of_a_turtle_in_Ecuador.jpg/1920px-A_butterfly_feeding_on_the_tears_of_a_turtle_in_Ecuador.jpg')
+Resource.create(post_id: bob_post.id, location: 'tortoises.jpg')
