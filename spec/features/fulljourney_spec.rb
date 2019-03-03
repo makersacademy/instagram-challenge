@@ -11,7 +11,7 @@ RSpec.describe 'full journey' do
     expect(page).to have_content("You have signed up successfully")
     click_on("New Post")
     fill_in "post_message", with: "test message"
-    click_on "Submit"
+    click_on "Create Post"
     expect(page).to have_content("test message")
     click_on("Logout")
     expect(page).to have_content("You need to sign in or sign up before continuing")
