@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       redirect_to posts_path
     else
       if @post.errors.any?
-        @user.errors.each do |attribute, message|
+        @post.errors.each do |attribute, message|
           p attribute
           p message
           p ">>>>>>>>>ERROR<<<<<<<<<<"
