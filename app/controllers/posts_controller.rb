@@ -73,6 +73,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def add_like
+    user_id = params[:user_id]
+    post_id = params[:post_id]
+    Like.create(user_id: user_id, post_id: post_id)
+  end
+
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_post

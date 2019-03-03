@@ -3,7 +3,7 @@
 feature 'User Story 4 - Users can see likes', type: :feature do
   scenario 'Users see likes on posts' do
     log_in
-    expect(page).to have_content('Likes: 1', count: 1)
-    expect(page).to have_content('Likes: 2', count: 1)
+    expect(find("#like_count1")).to have_content('1', count: 1)
+    expect(find("#like_count2")).to have_content('2', count: 1)
   end
 end

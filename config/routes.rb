@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       registrations: 'registrations',
       sessions: 'users/sessions'
   }
+
+  post 'posts/add_like', to: 'posts#add_like'
+
   # root to: 'home#index'
   root to: 'posts#index'
   # get 'home/index'

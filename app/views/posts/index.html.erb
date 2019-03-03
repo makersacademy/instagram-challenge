@@ -12,8 +12,13 @@
         <td><%= image_tag post.picture.variant(resize: "400x400!") %></td>
       </tr>
     <tr>
-      <td><div class="likes">Likes: <%= post.likes.count %></div> <%= link_to 'Show', post %> <%= link_to 'Edit', edit_post_path(post) %>
-      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td>Likes: <div id="like_count<%= post.id %>"><%= post.likes.count %></div> <%= link_to 'Show', post %> <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <div class=likes, id="like-<%= post.id %>">
+      <%= button_to 'Like', post_path('add_like', user_id: current_user.id, post_id: post.id),
+                    onclick: "upVote(#{post.id})", id: "like_button#{post.id}"%>
+        </div>
+      </td>
     </tr>
     <% end %>
   </tbody>
