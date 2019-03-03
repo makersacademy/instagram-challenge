@@ -39,6 +39,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
+gem 'image_processing', '~> 1.2'
+gem "mini_magick"
 
 group :development, :test do
   # Adds support for Capybara system testing and selenium driver

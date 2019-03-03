@@ -15,3 +15,18 @@ User.create([
                     email: 'bob@bob.com',
                     profile_pic: nil
                 }])
+
+Post.create([
+                {
+                    uri: 'I am a fake URI',
+                    user_id: 1
+                },
+                {
+                    uri: 'I am a new URI',
+                    user_id: 1
+                }
+                ])
+
+post = Post.create(uri: 'I have a seeded picture', user_id: 1)
+puts
+post.picture.attach(io: File.open(Rails.root + 'app/assets/images/test.jpg'), filename: 'test.jpg')
