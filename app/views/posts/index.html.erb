@@ -12,10 +12,12 @@
     </p>
     <p>
       <%= link_to 'Show', post_path(post) %>
-      <%= link_to 'Edit', edit_post_path(post) %>
-      <%= link_to 'Delete', post_path(post), method: :delete, data: {
-        confirm: "Are you sure?"
-      } %>
+      <% if post.user.id == current_user.id %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Delete', post_path(post), method: :delete, data: {
+          confirm: "Are you sure?"
+        } %>
+      <% end %>
     </p>
   <% } %>
 </ul>
