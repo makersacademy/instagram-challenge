@@ -1,0 +1,23 @@
+<h1>Posts index</h1>
+<p>
+  <%= link_to 'create post', new_post_path %>
+</p>
+<ul>
+  <% @posts.each { |post| %>
+    <p>Created by: <%= post.user.email %></p>
+    <h1><%= post.title %></h1>
+    <%= image_tag(post.image) %>
+    <p>
+      <%= post.description %>
+    </p>
+    <p>
+      <%= link_to 'Show', post_path(post) %>
+      <% if post.user.id == current_user.id %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Delete', post_path(post), method: :delete, data: {
+          confirm: "Are you sure?"
+        } %>
+      <% end %>
+    </p>
+  <% } %>
+</ul>
