@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe "likes/show", type: :view do
@@ -5,8 +7,8 @@ RSpec.describe "likes/show", type: :view do
     user = User.find_by id: 1
     post = Post.create!(caption: "MyString", user: user)
     @like = assign(:like, Like.create!(
-      :post => post,
-      :user => user
+                            post: post,
+                            user: user
     ))
   end
 

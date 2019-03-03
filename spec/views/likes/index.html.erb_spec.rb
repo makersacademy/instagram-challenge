@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe "likes/index", type: :view do
@@ -22,4 +24,3 @@ RSpec.describe "likes/index", type: :view do
     end
   end
 end
-
