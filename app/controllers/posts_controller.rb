@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     # @post = current_user.posts.build
   end
@@ -12,11 +14,21 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:success] = "Your post has been created!"
+      p current_user.id
+      p "^^^Current user^^^"
       redirect_to posts_path
     else
+      if @post.errors.any?
+        @user.errors.each do |attribute, message|
+          p attribute
+          p message
+          p ">>>>>>>>>ERROR<<<<<<<<<<"
+        end
+      end
       flash[:alert] = "Your new post couldn't be created!  Please check the form."
       render :new
     end
+
   end
 
   def show
