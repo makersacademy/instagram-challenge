@@ -26,8 +26,6 @@ class PostsController < ApplicationController
   def create
     Post.create({user_id: current_user.id, message: params[:post][:message]})
     redirect_to posts_url
-
-
   end
 
   # PATCH/PUT /posts/1
@@ -62,6 +60,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.fetch(:post, {})
+      params.require(:post).permit(:message)
     end
 end
