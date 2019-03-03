@@ -35,6 +35,8 @@ SimpleCov.start do
   add_filter "spec/models/post_spec.rb"
   add_filter "spec/views/posts/index.html.erb_spec.rb"
   add_filter "spec/views/posts/show.html.erb_spec.rb"
+  add_filter "spec/features/upload_delete_post_spec.rb"
+  add_filter "spec/features/application_flow_spec.rb"
 end
 
 include ActionDispatch::TestProcess
