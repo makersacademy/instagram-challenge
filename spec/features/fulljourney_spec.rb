@@ -11,7 +11,9 @@ RSpec.describe 'full journey' do
     expect(page).to have_content("You have signed up successfully")
     click_on("New Post")
     fill_in "post_message", with: "test message"
+    page.attach_file("post_image", Rails.root + 'app/assets/images/imagename.jpg')
     click_on "Create Post"
+    expect(page.html).to include("imagename.jpg")
     expect(page).to have_content("test message")
     click_on("Logout")
     expect(page).to have_content("You need to sign in or sign up before continuing")
