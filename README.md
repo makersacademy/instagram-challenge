@@ -2,6 +2,10 @@
 
 Can't get Capybara to click the 'sign out' button/link.
 
+Don't know what the preferred/conventional way to prepare info for a view is (skinny controllers, sure, but what exactly am I meant to do in the model)
+
+Didn't have enough time to do all the features, let alone test driving and writing a readme
+
 # README
 
 This README would normally document whatever steps are necessary to get the
