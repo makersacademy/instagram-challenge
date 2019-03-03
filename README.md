@@ -9,6 +9,10 @@ AInstagram is a web application inspired by Instagram. Designed for busy develop
 
 If the developers get bored of their photos they can apply filters to change the look.
 
+## Production environment
+
+The application is deployed to Heroku at https://ai-nstagram.herokuapp.com
+
 ## Technologies used
 
 - Rails (Web framework)
@@ -53,6 +57,50 @@ I want to be able to change it with filters
 
 ![alt text](https://github.com/thielsen/instagram-challenge/blob/master/dbdesign.png "Logo Title Text 1")
 
+## Installation
+
+To install a development environment
+
+```
+clone this repo
+> bundle install
+> brew install imagemagick (assuming you are on a Mac)
+> bin/rails db:create
+> bin/rails db:migrate
+```
+API keys are needed for AWS and GitHub. Configuration here is beyone the scope of this document but instructions for each are here:
+
+https://docs.aws.amazon.com/rekognition/latest/dg/getting-started.html
+https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/
+
+Once the keys have been setup on your local machine:
+
+```
+EDITOR=vi bin/rails credentials:edit
+```
+
+And add the following to the credentials file:
+
+```
+development:
+  github:
+    client_id: <id>
+    client_secret: <secret>
+  aws:
+    access_key: <key>
+    secret_access_key: <key>
+```
+
+If you intend to run the application in CI and production deployment you should also add the equivalent for test: and production:
+
+Finally:
+
+```
+> bundle exec rspec # Confirm all green
+> bin/rails server
+```
+
+And connect to the application on https://localhost:3000
 
 
 
@@ -60,6 +108,12 @@ I want to be able to change it with filters
 
 
 
+
+
+
+
+
+---------------------------------------------------------------------
 
 ## Instructions
 
