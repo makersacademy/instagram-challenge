@@ -1,19 +1,14 @@
-rvm: '2.6.0'
+rvm: 2.6.0
 cache: bundler
-
 deploy:
   provider: heroku
   api_key:
-    secure: "GHBP0+5avhBrXh5yKibec1UFGn/ttb5M97/jVCzBdInOdMo/JFt/bT7QQMnqqx+J/GesFGu6REIDz7/WD8KO86nYV3eN9QRUogngLy+4gjz8XyWVKrP8pdqWqTz5xIZ6+7Vc4D/KPB9iaRxiyG9cSjrMH86NO15FAVq7GqjNzKbsdZuPD6iaSSUJcj91WRZEkJTwFYMNXxfByyNuDJJ5c5IDfC1j2kEeHOP3TehJVxK7dsMsLklUorEjX0ISpkkCXL5VD9iKBotn9IdA1J/pOxDzWaI/3pb5PxPO3mRA+TNjAd6wc8LKRPpFczILkKXWgUWJ4VcgC2faIF08SXB+OWS6lF+V8QiIaND9lW6e1nc/Fwk6VvbJB8p5+z8R5aOgqtawQQuVjkhOPTqWw/XWfk49/NuzevFInmNaFj2BHpFdtA1nwDK0+JOOidGdPhjcaSeBFr65LRnEc1oz6y9sCRPUE1CqErQFRYUmHxkr+lt76/37o86xQD0K2yOJ9fOHAEXri/VbyBK9Bq8FqanvgotjdxV+qrIAWKqyYnDUkjmQepjviiGjwsp+nEt/LUd2MAQVKNZyFc5lXH6o2hZQZbkaZ8lh8TEqB6Alc4nzYWaduTpgAoGXn1hU2Q+AwN5HApz9TmopVdE7KLdvYwHFMzPwwE7MkLzX7GIqU9rcifo="
-
+    secure: DX1OSkN/PkVsGfse6szb9Y0sGG941Vde+VZvAhCx7ICu+kO0SqK8SH5zFKhn6pcUAW3EZhEqZpKVP7FvmsFRTIOZqnayDctZu4rFdw0SPxMOBqewczKxf0npC7b+XsWALhlKI2pNaVGKqwuZl+bAt0i6l/m84PjHgC0CZFfxKovAOd9zeCdSSWqDQdVENcS7o606zdzTUqkbG9/Gi7UsL+8lNCDmYJKKVJxvbHJElqRExTx946vydmp99yiAFcyTSW9ipBtj+Upg+0xlu/JhJ0E9yQawqlg36R5jW/V+NGLxy63dmROXGEcnYTgx2JnsWdtd/vRc3etXA3/+E8sWIlq/iVsOyx6PLzI+BWyIJ1kUTV5PoJUB1ABJvQ7h1NIiRmZjeD5qRAdzKRC9JjFyFYYgC9zJsbzBUGDgnqCdNwa3+dWJqog/DLXJwTJwKZ2c90Tp7HkSRGOiUsp0aqhAereX+rLO7XL17aQUkQRA5Giq+O/2Dpifj6iw8zA/h92g24RthlfbniplCZX9TGzG0vDXwAq+ke49s5y9qOIWB9eRAjlPVTiE+cR5WXWTRQqHJHyj1f+wth3f7bA1SxVC+HOb++nFPgU9B+rlpMrN5TZ3SYnJ1r9vdPVOVXaBvGP9CcfGD9zOOq2nuonMIINmZxAj3e3WIr6V20xEeEE3p8A=
 script:
-  - mkdir -p spec && bundle exec rspec spec
-  - rake db:test:prepare
-
-
+- mkdir -p spec && bundle exec rspec spec
+- rake db:test:prepare
 before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq postgresql-server-dev-9.3
-
+- sudo apt-get update -qq
+- sudo apt-get install -qq postgresql-server-dev-9.3
 before_script:
-   - psql -c 'create database pgapp_test;' -U postgres
+- psql -c 'create database pgapp_test;' -U postgres
