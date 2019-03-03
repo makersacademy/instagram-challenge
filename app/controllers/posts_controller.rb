@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    Post.create({user_id: current_user.id, message: params[:post][:message][:image]})
+    Post.create({user_id: current_user.id, message: params[:post][:message], image: params[:post][:image]})
     redirect_to posts_url
   end
 
