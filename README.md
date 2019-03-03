@@ -1,5 +1,6 @@
 Instagram Challenge
 ===================
+[![Build Status](https://travis-ci.com/RubyKobayashi/instagram-challenge.svg?branch=master)](https://travis-ci.com/RubyKobayashi/instagram-challenge)
 
 ## Instructions
 
