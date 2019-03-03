@@ -70,8 +70,8 @@ clone this repo
 ```
 API keys are needed for AWS and GitHub. Configuration here is beyone the scope of this document but instructions for each are here:
 
-https://docs.aws.amazon.com/rekognition/latest/dg/getting-started.html
-https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/
+- https://docs.aws.amazon.com/rekognition/latest/dg/getting-started.html
+- https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/
 
 Once the keys have been setup on your local machine:
 
