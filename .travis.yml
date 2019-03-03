@@ -7,15 +7,11 @@ addons:
 
 script:
   - mkdir -p spec && bundle exec rspec spec
-  - bin/rake db:migrate RAILS_ENV=test
-  - bin/rake db:seed
+  - rake db:test:prepare
 
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq postgresql-server-dev-9.3
-
-before_script:
-   - bin/rake db:create
 
 after_success:
   - bundle exec codeclimate-test-reporter
