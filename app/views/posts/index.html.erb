@@ -8,7 +8,7 @@
 <% @posts.each do |post| %>
 <div class="post">
     <%= image_tag(post.image, class: "index") %>
-    <p class="username">posted by <%= post.info_for_display[:username] %> on <%= post.created_at.strftime('%m/%d/%Y at %I:%M%p') %></p>
+    <p class="username">posted by <%= link_to(post.info_for_display[:username], new_follow_url) %> on <%= post.created_at.strftime('%m/%d/%Y at %I:%M%p') %></p>
     <p><%= post.info_for_display[:likes].length %> likes</p>
     <p><%= link_to 'Show', post %></p>
     <%= button_to 'I like it!', {:controller => "likes", :action => "create", :like => { :user_id => current_user, :post_id=> post.id } } , :method=>:post %>
@@ -16,7 +16,7 @@
     <ul>
       <% post.info_for_display[:likes].each_with_index do |like, i| %>
         <% if i < 3 %>
-          <li><%= like.username %></li>
+          <li><%= link_to(like.username, new_follow_url) %></li>
         <% elsif i == 3 %>
           <li>and <%=post.info_for_display[:likes].length - 3 %> others!</li>
         <% end %>

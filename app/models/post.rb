@@ -8,9 +8,10 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   def info_for_display
-    { username: User.find(self.user_id).username,
+    { user: User.find(self.user_id),
+      username: User.find(self.user_id).username,
       comments: Comment.where({post_id: self.id}),
-      likes: Like.where({post_id: self.id}).to_a
+      likes: Like.where({post_id: self.id}).to_a,
     }
   end
 
