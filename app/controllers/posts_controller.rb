@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    # @post = current_user.posts.build
+    @post = current_user.posts.build
   end
 
   def index
@@ -10,12 +10,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params)
-
+    # @post = Post.create(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "Your post has been created!"
-      p current_user.id
-      p "^^^Current user^^^"
       redirect_to posts_path
     else
       if @post.errors.any?
