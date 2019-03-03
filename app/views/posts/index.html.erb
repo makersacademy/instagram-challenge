@@ -1,16 +1,27 @@
-<h1>See posts below</h1>
-
-<% @posts.each do |posts| %>
-  <p><%= posts.title %></p>
-  <p><%= posts.body %></p>
-  <p><%= posts.comment %></p>
-  <img src="<%= posts.pictures %>">
-  <p>
-    <%= link_to 'Show', posts %>
-    <%= link_to "Comment", comment_post_path(posts) %>
-    <input type="button" name="submit" value="Like">
-  </p>
-
-<% end %>
-
-<%= link_to "New Post", posts_new_path %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a style="font-size: 20px;" class="navbar-brand mx-auto" href="#">MESSAGES:</a>
+</nav>
+<div style="margin-top: 2rem;" class="container">
+  <div style="padding: 20px;" class="col-md-6 mx-auto">
+    <% @posts.each do |posts| %>
+      <div class="card mb-3">
+        <h3 class="card-header"><%= posts.title %></h3>
+        <div class="card-body">
+          <h5 class="card-title"><%= posts.body %></h5>
+        </div>
+        <img style="height: 300px; width: 100%; display: block;" src="<%= posts.pictures %>" alt="Card image">
+        <div class="card-body">
+          <p class="card-text"><%= posts.comment %></p>
+        </div>
+        <div style="padding: 10px;">
+          <p>
+            <%= link_to 'Show', posts, class:"btn btn-outline-primary btn-sm" %>
+            <%= link_to "Comment", comment_post_path(posts), class:"btn btn-outline-primary btn-sm" %>
+            <input type="button" name="submit" value="Like" class="btn btn-outline-primary btn-sm">
+          </p>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to "New Post", posts_new_path, class:"btn btn-outline-primary btn-block"%>
+  </div>
+</div>
