@@ -64,6 +64,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'rspec'
   gem 'rubocop'
+  gem 'rubocop-rails_config'
   gem 'shoulda-matchers'
 end
 
