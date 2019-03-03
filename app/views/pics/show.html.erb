@@ -1,12 +1,15 @@
-  <div class="show_container">
-    <p>
-      <%= image_tag(@pic.picture.url, class: "show-image") if @pic.picture.present?  %>
-    </p>
-    <div class="show_text">
-      <h2>Title:</h2>
-      <%= @pic.title %>
-      <h3>Description:</h3>
+<div class="pic-container">
+  <div class="pic-image">
+    <%= image_tag(@pic.picture.url, class: "pic-image__image") if @pic.picture.present? %>
+  </div>
+  <div class="pic-content">
+    <div class="pic-content-header">
+      <h3><%= @pic.title %></h3>
       <%= @pic.description %>
     </div>
-    <%= link_to 'Edit', edit_pic_path(@pic) %> 
+    <div class="pic-content-footer">
+      <%= link_to 'Edit', edit_pic_path(@pic) %>
+      <%= link_to 'Destroy', @pic, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
   </div>
+</div>
