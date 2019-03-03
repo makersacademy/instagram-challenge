@@ -49,7 +49,7 @@ so I can have a secure account with all my pictures
 I'd like to be able to sign in and out
 ```
 
-Estimation ß3
+Estimation 3
 ```
 As a user,
 so I can have a collection of photos
