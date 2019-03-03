@@ -127,7 +127,7 @@ Posts and Users have many Likes
 (All relations include time of creation and of updating)
 
 __Users__
-id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, [from here on not auto-generated] username, first_name, last_name, profile_pic_resource_id
+id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, [from here on not auto-generated] username, first_name, last_name, profile_pic
 
 __Follows__
 id, user_id, followed_user_id
