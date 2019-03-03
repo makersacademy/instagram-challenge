@@ -45,6 +45,7 @@ group :development, :test do
   gem "capybara"
   gem 'simplecov'
   gem 'simplecov-console'
+  gem 'codeclimate-test-reporter'
 end
 
 group :development do
