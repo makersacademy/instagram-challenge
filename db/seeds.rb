@@ -16,17 +16,11 @@ User.create([
                     profile_pic: nil
                 }])
 
-Post.create([
-                {
-                    uri: 'I am a fake URI',
-                    user_id: 1
-                },
-                {
-                    uri: 'I am a new URI',
-                    user_id: 1
-                }
-                ])
+post1 = Post.create(uri: 'I am the first seeded picture', user_id: 1)
+post1.picture.attach(io: File.open(Rails.root + 'app/assets/images/test1.jpg'), filename: 'test1.jpg')
 
-post = Post.create(uri: 'I have a seeded picture', user_id: 1)
-puts
-post.picture.attach(io: File.open(Rails.root + 'app/assets/images/test.jpg'), filename: 'test.jpg')
+post2 = Post.create(uri: 'I am the second', user_id: 1)
+post2.picture.attach(io: File.open(Rails.root + 'app/assets/images/test2.jpg'), filename: 'test2.jpg')
+
+post3 = Post.create(uri: 'I am the third', user_id: 1)
+post3.picture.attach(io: File.open(Rails.root + 'app/assets/images/test3.jpg'), filename: 'test3.jpg')
