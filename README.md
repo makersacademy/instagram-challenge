@@ -1,3 +1,25 @@
+README
+===================
+Setup 
+
+Check Ruby Version 
+Check Post Version 
+
+
+===================
+User Stories 
+
+```
+Users 
+
+Posts 
+
+Comments 
+
+Likes 
+
+```
+
 Instagram Challenge
 ===================
 
@@ -31,7 +53,7 @@ For linting, you can use the `.rubocop.yml` in this repository (or your own!).
 You'll need these gems:
 
 ```ruby
-gem "rubocop", "0.48.1"
+gem "rubocop"
 gem "rubocop-rails"
 ```
 
