@@ -4,23 +4,22 @@
 
 <table>
   <thead>
-    <tr>
-      <th>Uri</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
   </thead>
 
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.caption %></td>
-        <td><%= post.user.username %></td>
-        <td><%= image_tag url_for(post.picture) %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= image_tag post.picture.variant(resize: "400x400!") %></td>
       </tr>
+    <tr>
+      <td>Likes: <div id="like_count<%= post.id %>"><%= post.likes.count %></div> <%= link_to 'Show', post %> <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <div class=likes, id="like-<%= post.id %>">
+      <%= button_to 'Like', post_path('add_like', user_id: current_user.id, post_id: post.id),
+                    onclick: "upVote(#{post.id})", id: "like_button#{post.id}"%>
+        </div>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
@@ -28,3 +27,4 @@
 <br>
 
 <%= link_to 'New Post', new_post_path %>
+
