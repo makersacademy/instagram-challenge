@@ -21,8 +21,6 @@ require 'simplecov-console'
 rake = Rake.application
 rake.init
 rake.load_rakefile
-rake['db:create'].invoke
-rake['db:migrate'].invoke
 rake['db:test:prepare'].invoke
 rake['db:seed'].invoke
 
