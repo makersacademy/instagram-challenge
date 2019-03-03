@@ -11,6 +11,7 @@ RSpec.describe User, type: :model do
     password: 'fffffff',
     username: 'f',
     first_name: 'F',
-    last_name: 'Fson') }
+    last_name: 'Fson')
+  }
   it { should validate_uniqueness_of(:username) }
 end
