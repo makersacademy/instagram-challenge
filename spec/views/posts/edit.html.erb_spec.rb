@@ -6,7 +6,7 @@ RSpec.describe "posts/edit", type: :view do
   before(:each) do
     user = User.find_by id: 1
     @post = assign(:post, Post.create!(
-                            uri: "MyString",
+                            caption: "MyString",
                             user: user
     ))
   end
@@ -16,9 +16,9 @@ RSpec.describe "posts/edit", type: :view do
 
     assert_select "form[action=?][method=?]", post_path(@post), "post" do
 
-      assert_select "input[name=?]", "post[uri]"
+      assert_select "input[name=?]", "post[caption]"
 
-      assert_select "input[name=?]", "post[user_id]"
+      assert_select "input[name=?]", "post[user_id]", false
     end
   end
 end
