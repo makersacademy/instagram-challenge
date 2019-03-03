@@ -1,5 +1,52 @@
-Instagram Challenge
+AInstagram Challenge
 ===================
+
+## Summary
+
+AInstagram is a web application inspired by Instagram. Designed for busy developers who don't have time to think of usernames and passwords or to write comments on photos the app allows them to login with their GitHub accounts and post their photos. The app will automatically apply relevant comments based on the content of the photos using AI magic.
+
+If the developers get bored of their photos they can apply filters to change the look.
+
+## Technologies used
+
+- Rails (Web framework)
+- Postgreql (Database)
+- Devise (User authentication)
+- OmniAuth (GitHub API Authentication)
+- AWS Rekognition (Photo analysis)
+- ImageMagick (Photo manipulation)
+- Bootstrap (Styling)
+- RSpec/Capybara (TDD)
+- Travis (CI)
+- Heroku (CD)
+
+## User Stories
+
+As a busy developer
+So I don't waste time logging in
+I want to log in with my github account
+
+As a busy developer
+So I can show off my pictures
+I want to upload them to the website
+
+As a busy developer
+So I don't have to waste time writing comments
+I want my computer to automatically add appropriate comments
+
+As a busy developer
+If I realise I don't want a picture posted
+I want to be able to delete it
+
+As a bored developer
+Now that I think my photo isn't exciting
+I want to be able to change it with filters
+
+
+
+
+
+
 
 ## Instructions
 
