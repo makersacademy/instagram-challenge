@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    Post.create({user_id: current_user.id, message: params[:post][:message]})
+    Post.create({user_id: current_user.id, message: params[:post][:message][:image]})
     redirect_to posts_url
   end
 
@@ -60,6 +60,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:message)
+      params.require(:post).permit(:message, :image)
     end
 end
