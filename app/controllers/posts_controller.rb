@@ -21,6 +21,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    unless @post.user_id == current_user.id
+      redirect_to posts_url, notice: 'You do not have permission to edit this post.'
+    end
   end
 
   # POST /posts
@@ -43,11 +46,11 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
-      if @post.update(post_params)
+      if @post.update(post_params) && (@post.user_id == current_user.id)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
-        format.html { render :edit }
+        format.html { redirect_to posts_url, notice: 'You do not have permission to edit this post.' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
