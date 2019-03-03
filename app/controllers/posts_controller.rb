@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
+    @post = current_user.posts.build
   end
 
   def index
@@ -7,16 +10,23 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.save
-    if @post.errors.any?
-      @post.errors.each do |attribute, message|
-        p attribute
-        p message
-        p "ERRORRRRRRRR"
+    # @post = Post.create(post_params)
+    @post = current_user.posts.build(post_params)
+    if @post.save
+      flash[:success] = "Your post has been created!"
+      redirect_to posts_path
+    else
+      if @post.errors.any?
+        @user.errors.each do |attribute, message|
+          p attribute
+          p message
+          p ">>>>>>>>>ERROR<<<<<<<<<<"
+        end
       end
+      flash[:alert] = "Your new post couldn't be created!  Please check the form."
+      render :new
     end
-    redirect_to @post
+
   end
 
   def show
