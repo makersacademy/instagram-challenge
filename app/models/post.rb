@@ -10,7 +10,7 @@ class Post < ApplicationRecord
     { username: User.find(self.user_id).username,
       resource_loc: Resource.find(self.resource_id).location,
       comments: Comment.where({post_id: self.id}),
-      likes: Like.where({post_id: self.id})
+      likes: Like.where({post_id: self.id}).to_a
     }
   end
 

@@ -9,12 +9,26 @@
 <div class="post">
     <%= image_tag(post.info_for_display[:resource_loc], class: "index") %>
     <p class="username">posted by <%= post.info_for_display[:username] %> on <%= post.created_at.strftime('%m/%d/%Y at %I:%M%p') %></p>
+    <p><%= post.info_for_display[:likes].length %> likes</p>
     <p><%= link_to 'Show', post %></p>
+    <%= button_to 'I like it!', {:controller => "likes", :action => "create", :like => { :user_id => current_user, :post_id=> post.id } } , :method=>:post %>
+    <p>Likers:</p>
+    <ul>
+      <% post.info_for_display[:likes].each_with_index do |like, i| %>
+        <% if i < 3 %>
+          <li><%= @posts.find(like.user_id).info_for_display[:username] %></li>
+        <% elsif i == 4 %>
+          <li>and <%=post.info_for_display[:likes].length - 3 %> others!</li>
+        <% end %>
+      <% end %>
+    </ul>
+
     <p><%= link_to 'Edit', edit_post_path(post) %></p>
-    <p><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <p><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 </div>
 <% end %>
 </div>
+
 
 <br>
 
