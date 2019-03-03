@@ -14,7 +14,16 @@ User.create([
                     password: 'bbbbbb',
                     email: 'bob@bob.com',
                     profile_pic: nil
-                }])
+                },
+                {
+                    first_name: 'Sam',
+                    last_name: 'Sammy',
+                    username: 'sam',
+                    password: 'ssssss',
+                    email: 'sam@sam.com',
+                    profile_pic: nil
+                }
+            ])
 
 post1 = Post.create(caption: 'I am the first seeded picture', user_id: 1)
 post1.picture.attach(io: File.open(Rails.root + 'app/assets/images/test1.jpg'), filename: 'test1.jpg')
@@ -24,3 +33,8 @@ post2.picture.attach(io: File.open(Rails.root + 'app/assets/images/test2.jpg'), 
 
 post3 = Post.create(caption: 'I am the third', user_id: 1)
 post3.picture.attach(io: File.open(Rails.root + 'app/assets/images/test3.jpg'), filename: 'test3.jpg')
+
+Like.create(user_id: 1, post_id: 1)
+Like.create(user_id: 1, post_id: 2)
+Like.create(user_id: 2, post_id: 2)
+
