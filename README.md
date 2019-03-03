@@ -51,9 +51,9 @@ So that I can curate my brand
 I want to have a profile page showing only posts by me
 ```
 
-### Task breakdown and estimation (in fibonnaci story points)
+## Task breakdown and estimation (in fibonnaci story points)
 
-Phase 1: starting Saturday 12.30. Total: 13.
+### Phase 1: starting Saturday 12.30. Total: 13 story points. Took 6 hours.
 
 Initialize rails project - 2
 
@@ -63,9 +63,13 @@ Spike remaining database relations - 2 - this took much longer than expected. FI
 
 Write tests for database relationships - 2
 
-Set up Travis via Github - 2
+Set up Travis via Github - 2 - easier than expected
 
-Deploy on Heroku - 2
+Deploy on Heroku - 2 - this was much harder than expected
+
+### Phase 2: starting Sunday 16.00. Total: N story points. Took N hours.
+
+
 
 ### Further stories
 
@@ -143,6 +147,15 @@ id, post_id, user_id, message
 
 __Likes__
 id, post_id, user_id
+
+## How to deploy
+
+```bash
+> heroku run rake db:schema:load -a [name of your app]
+> heroku run rake db:structure:load -a [name of your app] (not sure of this line)
+> heroku run rake db:migrate -a [name of your app]
+> heroku run rake db:seed -a [name of your app]
+```
 
 # Instagram Challenge
 
