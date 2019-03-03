@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/thielsen/instagram-challenge.svg?branch=master)](https://travis-ci.org/thielsen/instagram-challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/7258f325b151a1e93d8b/maintainability)](https://codeclimate.com/github/thielsen/instagram-challenge/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/7258f325b151a1e93d8b/test_coverage)](https://codeclimate.com/github/thielsen/instagram-challenge/test_coverage)
+
 AInstagram Challenge
 ===================
 
