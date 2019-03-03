@@ -10,7 +10,7 @@ RSpec.describe 'full application test' do
     expect(page.body).to have_content("AInstagram")
     click_on 'New Post'
     expect(page.body).to have_content("Upload an image")
-    page.attach_file(Rails.root + 'spec/files/unknown.jpg')
+    page.attach_file(Rails.root + 'unknown.jpg')
     click_button 'Submit'
     expect(page.body).to have_content('#Frog')
     click_link 'deletepost'

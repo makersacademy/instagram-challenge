@@ -8,7 +8,7 @@ RSpec.describe 'full application test' do
     visit '/'
     click_on 'signin'
     click_on 'New Post'
-    page.attach_file(Rails.root + 'spec/files/unknown.jpg')
+    page.attach_file(Rails.root + 'unknown.jpg')
     click_button 'Submit'
     expect(page.body).to have_content('#Frog')
     click_link 'deletepost'

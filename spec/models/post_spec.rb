@@ -6,8 +6,8 @@ RSpec.describe Post, type: :model do
     client = Aws::Rekognition::Client.new(stub_responses: true)
     client.stub_responses(:detect_labels)
     post = Post.new()
-    p post.identify_image('spec/files/unknown.jpg', client)
-    expect(post.identify_image('spec/files/unknown.jpg', client)).to include "Frog"
+    p post.identify_image('unknown.jpg', client)
+    expect(post.identify_image('unknown.jpg', client)).to include "Frog"
   end
 
   xit 'populates the hashtags correctly' do

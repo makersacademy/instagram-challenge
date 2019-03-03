@@ -29,7 +29,7 @@ RSpec.describe PostsController, type: :controller do
   # Post. As you add validations to Post, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {user_id: 1, image: fixture_file_upload('spec/files/unknown.jpg')}
+    {user_id: 1, image: fixture_file_upload('unknown.jpg')}
   }
 
   let(:invalid_attributes) {
