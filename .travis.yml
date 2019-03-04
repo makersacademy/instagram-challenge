@@ -1,0 +1,26 @@
+language: ruby
+
+rvm:
+  - 2.6.0
+
+cache: bundler
+
+#addons:
+#  code_climate:
+#    repo_token: 87a1c82f8c7d2a1b6be55c726f83824e95b7cf4df73f3bcf182efbffc075845a
+
+install:
+  - bundle install
+
+services:
+  - postgresql
+
+script:
+  - bundle exec rubocop
+  - bin/rails db:create
+  - bin/rails db:migrate
+  - bin/rails db:seed
+  - bundle exec rspec spec
+
+#after_success:
+#  - bundle exec codeclimate-test-reporter
