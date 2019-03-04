@@ -6,12 +6,15 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    @comment = Comment.new
     @posts = Post.all
   end
 
   # GET /posts/1
   # GET /posts/1.json
-  def show; end
+  def show
+    @comment = Comment.new
+  end
 
   # GET /posts/new
   def new

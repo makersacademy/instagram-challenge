@@ -7,23 +7,60 @@
 <% end %>
 <% @posts.each do |post| %>
 <div class="post">
-    <%= image_tag(post.image, class: "index") %>
+    <%= link_to(image_tag(post.image, class: "index"), post, class: "image") %>
     <p class="username">posted by <%= link_to(post.info_for_display[:username], new_follow_url) %> on <%= post.created_at.strftime('%m/%d/%Y at %I:%M%p') %></p>
     <p><%= post.info_for_display[:likes].length %> likes</p>
-    <p><%= link_to 'Show', post %></p>
-    <%= button_to 'I like it!', {:controller => "likes", :action => "create", :like => { :user_id => current_user, :post_id=> post.id } } , :method=>:post %>
     <p>Likers:</p>
     <ul>
       <% post.info_for_display[:likes].each_with_index do |like, i| %>
         <% if i < 3 %>
-          <li><%= link_to(like.username, new_follow_url) %></li>
+          <li><%= link_to(like.username, "#{new_follow_url}?followed=#{like.user_id}") %>:<br />
         <% elsif i == 3 %>
-          <li>and <%=post.info_for_display[:likes].length - 3 %> others!</li>
+          <li>and <%= pluralize((post.info_for_display[:likes].length - 3), "other") %>!</li>
         <% end %>
       <% end %>
     </ul>
+    <%= button_to 'I like it!', {:controller => "likes", :action => "create", :like => { :user_id => current_user, :post_id=> post.id } }, :method=>:post %>
 
-    <p><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <div>Comments:<br />
+    <ul>
+      <% post.info_for_display[:comments].each_with_index do |comment, i| %>
+          <li><%= link_to(User.find(comment.user_id).username, "#{new_follow_url}?followed=#{comment.user_id}") %>:<br />
+            <%= comment.message %>
+          </li>
+      <% end %>
+    </ul>
+    </div>
+
+    Add a comment:
+
+    <%= form_with(model: @comment, local: true) do |form| %>
+      <% if @comment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+          <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= form.hidden_field :post_id, value: post.id %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+
+      <div class="field">
+        <%= form.label :message %>
+        <%= form.text_field :message %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+
+    <p><%= link_to 'Delete post', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 </div>
 <% end %>
 </div>

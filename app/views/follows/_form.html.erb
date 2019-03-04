@@ -11,16 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+  <h2>Are you sure you want to follow <%= "#{User.find(@followed).username}, aka #{User.find(@followed).first_name} #{User.find(@followed).last_name}" %>?</h2>
 
-  <div class="field">
-    <%= form.label :followed_user_id %>
-    <%= form.number_field :followed_user_id %>
-  </div>
-
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :followed_user_id, value: @followed %>
+  
   <div class="actions">
     <%= form.submit %>
   </div>
