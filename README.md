@@ -75,3 +75,6 @@ Locally clone this repo
 > bin/rails server
 ```
 You can then connect to http://localhost:3000
+
+### Deployment
+The production application is deployed on <a href="https://stormy-bayou-43269.herokuapp.com">Heroku</a>.
