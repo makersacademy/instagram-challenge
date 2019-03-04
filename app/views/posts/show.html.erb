@@ -1,0 +1,65 @@
+<a href="/posts" class="button"><button>Back home</button></a>
+
+<p id="notice"><%= notice %></p>
+
+<div class="post">
+
+  <div style="height:600px;width:auto">
+  <%= image_tag(@post.image, style: 'height:100%') %>
+  </div>
+
+    <p class="username">posted by <%= link_to(@post.info_for_display[:username], new_follow_url) %> on <%= @post.created_at.strftime('%m/%d/%Y at %I:%M%p') %></p>
+    <p><%= @post.info_for_display[:likes].length %> likes</p>
+    <%= button_to 'I like it!', {:controller => "likes", :action => "create", :like => { :user_id => current_user, :post_id=> @post.id }, back_to: @post } , :method=>:post %>
+    <% if @post.info_for_display[:likes] %>
+    <p>Likers:</p>
+    <ul>
+      <% @post.info_for_display[:likes].each_with_index do |like, i| %>
+        <% if i < 3 %>
+          <li><%= link_to(like.username, "#{new_follow_url}?followed=#{like.user_id}") %>:<br />
+        <% elsif i == 3 %>
+          <li>and <%= pluralize((@post.info_for_display[:likes].length - 3), "other") %>!</li>
+        <% end %>
+      <% end %>
+    </ul>
+    <% end %>
+    <div>Comments:<br />
+    <ul>
+      <% @post.info_for_display[:comments].each_with_index do |comment, i| %>
+          <li><%= link_to(User.find(comment.user_id).username, "#{new_follow_url}?followed=#{comment.user_id}") %>:<br />
+            <%= comment.message %>
+          </li>
+      <% end %>
+    </ul>
+    </div>
+    <p><%= link_to 'Delete post', @post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    Add a comment:
+
+    <%= form_with(model: @comment, local: true) do |form| %>
+      <% if @comment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+          <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <%= form.hidden_field :post_id, value: @post.id %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+
+      <div class="field">
+        <%= form.label :message %>
+        <%= form.text_field :message %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+
+    <%= link_to 'Edit post', edit_post_path(@post) %> |
+</div>

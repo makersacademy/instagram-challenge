@@ -1,0 +1,28 @@
+language: ruby
+
+rvm:
+ - 2.6.0
+
+env:
+
+before_install:
+
+install:
+  - bundle install
+
+services:
+  - postgresql
+
+before_script:
+  - rake db:create
+  - rake db:migrate
+  - rake db:seed
+
+script:
+  - bundle exec rspec
+
+after_success:
+
+after_failure:
+
+after_script:

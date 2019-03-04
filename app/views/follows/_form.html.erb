@@ -1,0 +1,22 @@
+<%= form_with(model: follow, local: true) do |form| %>
+  <% if follow.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(follow.errors.count, "error") %> prohibited this follow from being saved:</h2>
+
+      <ul>
+      <% follow.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h2>Are you sure you want to follow <%= "#{User.find(@followed).username}, aka #{User.find(@followed).first_name} #{User.find(@followed).last_name}" %>?</h2>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :followed_user_id, value: @followed %>
+  
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
