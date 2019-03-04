@@ -56,8 +56,12 @@ I want to be able to delete my account along with the content
 
 ## Approach
 
-This challenge helped me repeat few concepts ferom the week's learnings, such as **Rails** and the **gem Devise**, which handles user authentication.<br>
-The app is not complete and only allows authentication and posting sentences, as most of the challenge was spent getting familiar with Rails and setting up devise correctly.
+This challenge helped me repeat few concepts from the week's learnings, such as **Rails** and the **gem Devise**, which handles user authentication.<br>
+The app is not complete, however it allows authentication and posting one image per post, with a message.<br>
+Most of the challenge was spent getting familiar with Rails and setting up devise correctly.
+
+### Screenshot of main page
+<img src='https://github.com/Debora38/instagram-challenge/blob/master/app/assets/images/Screenshot%202019-03-03%20at%2022.30.57.png?raw=true' alt='main-page'>
 
 ### Instructions to setup
 
