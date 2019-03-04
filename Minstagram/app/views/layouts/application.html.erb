@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <title>Minstagram</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width:100%; position: fixed; z-index:1000;">
+
+      <a class="navbar-brand" style="color: white;">Minstagram -
+        <% if current_user %>
+          <%=current_user[:user_name]%> -
+          <%= link_to "Exit", destroy_user_session_path, method: :delete, style:"color:red;"%>
+          <span style="width: 100%;text-align: right; color:white; padding-right:5px;">
+            <% if current_user %>
+              <%= link_to "Add a new Minsta", new_post_path, style:"color:white;" %>
+            <% end %>
+          </span>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, style:"color:white;" %> - <%= link_to "Sign in", new_user_session_path, style:"color:white;" %>
+        <% end %>
+      </a>
+    </nav>
+
+    <!-- <p class="notice"><%= notice %></p> -->
+    <p class="alert"><%= alert %></p>
+    <div class="col-md-6 mx-auto card" style="text-align: center; margin-top: 70px;">
+    <%= yield %>
+    </div>
+  </body>
+</html>
