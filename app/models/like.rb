@@ -5,7 +5,7 @@ class Like < ApplicationRecord
   belongs_to :user
 
   def username
-    User.find(self.user_id).username
+    User.find(user_id).username
   end
 
 end

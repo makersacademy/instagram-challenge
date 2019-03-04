@@ -11,13 +11,13 @@
 # { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user_bob = User.create(
+User.create(
   email: 'bob@bob.com',
   password: 'bbbbbbb',
   username: 'bob',
   first_name: 'Bob',
   last_name: 'Bobson')
-user_jim = User.create(
+User.create(
   email: 'jim@jim.com',
   password: 'jjjjjjj',
   username: 'jim',
