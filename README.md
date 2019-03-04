@@ -1,4 +1,4 @@
-Deployed (here)[https://schminstagram.herokuapp.com/]!!
+Deployed [here](https://schminstagram.herokuapp.com/)!!
 
 Log in as bob@bob.com with password bbbbbbb, or sign up.
 
@@ -122,12 +122,20 @@ So that I can build my following and reputation
 I want my profile to display my followers and the number of them
 ```
 
-## To migrate database
+## To migrate database locally
 
 ```bash
 > rake db:create
 > rake db:migrate
 > rake db:seed
+```
+
+## To migrate database on Heroku terminal
+
+```bash
+> rake db:schema:load -a [name of your app]
+> rake db:migrate -a [name of your app]
+> rake db:seed -a [name of your app]
 ```
 
 ## Database schema
@@ -138,38 +146,26 @@ Users Follows Posts Resources Comments Likes
 
 Users have many Follows
 Users have many Posts
-a Post has one Resource
+a Post has one attached Image (in ActiveStorage)
 Posts and Users have many Comments
 Posts and Users have many Likes
 
 (All relations include time of creation and of updating)
 
 __Users__
-id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, [from here on not auto-generated] username, first_name, last_name, profile_pic
+id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, (from here on not auto-generated) username, first_name, last_name, profile_pic
 
 __Follows__
 id, user_id, followed_user_id
 
 __Posts__
-id, user_id, resource_id
-
-__Resources__
-id, post_id, location
+id, user_id
 
 __Comments__
 id, post_id, user_id, message
 
 __Likes__
 id, post_id, user_id
-
-## How to deploy
-
-```bash
-> heroku run rake db:schema:load -a [name of your app]
-> heroku run rake db:structure:load -a [name of your app] (not sure of this line)
-> heroku run rake db:migrate -a [name of your app]
-> heroku run rake db:seed -a [name of your app]
-```
 
 # Instagram Challenge
 
