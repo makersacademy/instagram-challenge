@@ -1,0 +1,48 @@
+<style>
+  .unique {
+    background-image: url(https://images.pexels.com/photos/1050822/pexels-photo-1050822.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+    background-color: orange;
+  }
+  #title {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    text-align: center; color: white;
+  }
+  #card {
+    border-radius: 10px;
+    border-bottom-right-radius: 120px;
+  }
+  #pictures {
+    height: 300px;
+    width: 100%;
+    display: block;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a style="font-size: 20px;" class="navbar-brand mx-auto" href="#">PHOTOS</a>
+</nav>
+<div style="margin-top: 2rem;" class="container">
+  <div style="padding: 20px;" class="col-md-6 mx-auto">
+    <% @posts.each do |posts| %>
+      <div id="card" class="card mb-3">
+        <h3 id="title" class="card-header bg-primary"><%= posts.title %></h3>
+        <div class="card-body">
+          <h5 class="card-title"><%= posts.body %></h5>
+        </div>
+        <img id="pictures" src="<%= posts.pictures %>" alt="Card image">
+        <div class="card-body">
+          <p class="card-text"><%= posts.comment %></p>
+        </div>
+        <div style="padding: 10px;">
+          <p>
+            <%= link_to 'Show', posts, class:"btn btn-outline-primary btn-sm" %>
+            <%= link_to "Comment", comment_post_path(posts), class:"btn btn-outline-primary btn-sm" %>
+            <input type="button" name="submit" value="Like" class="btn btn-outline-primary btn-sm">
+          </p>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to "New Post", posts_new_path, class:"btn btn-primary btn-block"%>
+  </div>
+</div>

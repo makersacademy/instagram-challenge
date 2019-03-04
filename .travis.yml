@@ -1,0 +1,25 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=c084bdc1b47209ccfbb4d9515856452c603b5f8e635f8add8520039ffe99a72b
+
+rvm: 2.6.0
+cache: bundler
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - bundle install && bin/rails db:create && bin/rails db:migrate && bundle exec rspec
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+services:
+  - postgresql
+deploy:
+  provider: heroku
+  api_key:
+    secure: EOiQMxsh3q6gUIrCzwFjHdKRopoTegQtnQ1+6um8Q6FC8NcYqyiy6XG3ROit779xOaZD68qYNuOONC+dkLm9e7CHYeJPIy0lXvSILSRVk0tOiys3Op+Vg0CllodEB/fuZ04jTnxaj0IUMfItVMiMyciNUqW7zteYZXBsstb48M9BkJB7T2/6NVpztsF+4VSdSnkp4clFw75vbQiX1TAbzL8xHQQOW48FHgicgEyH5nryXIdfIDqxjJ3LDO+ZcB1PXZG6GKkKO0A3gS7PgowTfSvpp6sIDcHzJfEeH6KwbsLa2aFHyqiU3mR1wEGEbliYdaLJjdIgo+yvzcIWZvcLFKb8jahWb+C0LhAyqQNt6FAkN7VnijaOsMf9w5vIWFAVy9pzVPgRcRVsLnEAuSotaVRgs7Ni4pFxQm/KjiAmHd+XHN7BIpIZZumxUmoj+RW9+tAJggw3znQV5i8/h4tTEgRdzZ8lua3wjN/GQeVaKn/iVjRCkYVhSmesSld1jpRZVTfpD+/zYCicIUT5Of+7jW3J2WH0EM+SX1i/4+0wCkuIXS9lEomPrwwJOQAYNS9tmzCeDiBWPTyE02onWIw+J97+pErzbdjw318zBerNU4FziBIqCvVorQUoloc+9XJJLbRMy/HKue2Zaj5SQEAvDVGwVUj6U6efLcZIliQIAKI=
+  app: app-like-instagram
+  on:
+    repo: KrzysztofBalejko/instagram-challenge
