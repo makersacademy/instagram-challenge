@@ -15,6 +15,7 @@ class FollowsController < ApplicationController
 
   # GET /follows/new
   def new
+    @followed = params[:followed]
     @follow = Follow.new
   end
 

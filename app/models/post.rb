@@ -10,7 +10,7 @@ class Post < ApplicationRecord
   def info_for_display
     { user: User.find(user_id),
       username: User.find(user_id).username,
-      comments: Comment.where({ post_id: id }),
+      comments: Comment.where({ post_id: id }).to_a,
       likes: Like.where({ post_id: id }).to_a,
     }
   end
