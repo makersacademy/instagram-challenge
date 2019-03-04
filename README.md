@@ -12,6 +12,21 @@ User Stories
 ```
 Users 
 
+As a user, 
+So I can create my account, 
+I want to sign up on a new session.
+
+As a user, 
+So I can find my account, 
+I want to sign in on my session.
+
+As a user, 
+So I can close my session, 
+I want to sign out on my session.
+
+As a user, 
+So I can find my account 
+
 Posts 
 
 Comments 
