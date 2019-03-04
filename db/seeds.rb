@@ -17,7 +17,9 @@ user_bob = User.create(
   username: 'bob',
   first_name: 'Bob',
   last_name: 'Bobson')
-bob_post = Post.create(user_id: user_bob.id, resource_id: '1')
-Comment.create(post_id: bob_post.id, user_id: user_bob.id, message: 'Great pic, me!')
-Like.create(post_id: bob_post.id, user_id: user_bob.id)
-Resource.create(post_id: bob_post.id, location: 'tortoises.jpg')
+user_jim = User.create(
+  email: 'jim@jim.com',
+  password: 'jjjjjjj',
+  username: 'jim',
+  first_name: 'Jim',
+  last_name: 'Jimson')
