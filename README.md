@@ -11,7 +11,7 @@ If the developers get bored of their photos they can apply filters to change the
 
 ## Production environment
 
-The application is deployed to Heroku at https://ai-nstagram.herokuapp.com. As theres no persistent storage on Heroku you might see empty images so feel free to upload some to try out. I'm not going to use Amazon S3 for this as I've only got limited space there...
+The application is deployed to Heroku at https://ai-nstagram.herokuapp.com. Although Heroku will timeout after inactivity I have set the application up to use an Amazon S3 bucket for the image storage so these will persist.
 
 ## Technologies used
 
@@ -19,7 +19,8 @@ The application is deployed to Heroku at https://ai-nstagram.herokuapp.com. As t
 - Postgreql (Database)
 - Devise (User authentication)
 - OmniAuth (GitHub API Authentication)
-- AWS Rekognition (Photo analysis)
+- Amazon AWS Rekognition (Photo analysis)
+- Amazon AWS S3 (Image storage)
 - ImageMagick (Photo manipulation)
 - Bootstrap (Styling)
 - RSpec/Capybara (TDD)
