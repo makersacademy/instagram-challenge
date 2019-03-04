@@ -1,6 +1,5 @@
 Instagram Challenge
 ===================
-[![Mar-04-2019-00-24-181.gif](https://i.postimg.cc/PrGVz5hJ/Mar-04-2019-00-24-181.gif)](https://postimg.cc/mhwSTRPW)
 
 ## Instructions
 
