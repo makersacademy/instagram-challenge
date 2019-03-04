@@ -55,7 +55,7 @@ I want to be able to change it with filters
 ```
 ## Database design
 
-![alt text](https://github.com/thielsen/instagram-challenge/blob/master/dbdesign.png "Logo Title Text 1")
+![alt text](https://github.com/thielsen/instagram-challenge/blob/master/dbdesign.png "")
 
 ## Installation
 
@@ -102,6 +102,15 @@ Finally:
 
 And connect to the application on https://localhost:3000
 
+## Using the App
+
+Login with your GitHub account. Once logged in click 'New Post' to add an image. It will appear and have relevant hashtags applied:
+
+![alt text](https://github.com/thielsen/instagram-challenge/blob/master/hashtags.png "")
+
+Click on an images to apply filter to it:
+
+![alt text](https://github.com/thielsen/instagram-challenge/blob/master/filters.png "")
 
 
 
