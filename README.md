@@ -1,3 +1,40 @@
+README
+===================
+Setup 
+
+Check Ruby Version 
+Check Post Version 
+
+
+===================
+User Stories 
+
+```
+Users 
+
+As a user, 
+So I can create my account, 
+I want to sign up on a new session.
+
+As a user, 
+So I can find my account, 
+I want to sign in on my session.
+
+As a user, 
+So I can close my session, 
+I want to sign out on my session.
+
+As a user, 
+So I can find my account 
+
+Posts 
+
+Comments 
+
+Likes 
+
+```
+
 Instagram Challenge
 ===================
 
@@ -31,7 +68,7 @@ For linting, you can use the `.rubocop.yml` in this repository (or your own!).
 You'll need these gems:
 
 ```ruby
-gem "rubocop", "0.48.1"
+gem "rubocop"
 gem "rubocop-rails"
 ```
 
