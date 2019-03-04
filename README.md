@@ -74,7 +74,11 @@ API keys are needed for AWS and GitHub. Configuration here is beyone the scope o
 - https://docs.aws.amazon.com/rekognition/latest/dg/getting-started.html
 - https://developer.github.com/apps/building-oauth-apps/authorizing-oauth-apps/
 
-Once the keys have been setup on your local machine:
+You will need to create an account in IAM with the following access rights:
+
+![alt text](https://github.com/thielsen/instagram-challenge/blob/master/aws_iam.png "")
+
+Once the keys have been setup run the following on your local machine:
 
 ```
 EDITOR=vi bin/rails credentials:edit
