@@ -26,8 +26,6 @@ class LikesController < ApplicationController
   def create
     @like = Like.new(like_params)
 
-    puts back_to
-
     respond_to do |format|
       if @like.save
         format.html { redirect_to back_to, notice: 'Thanks for the like :)' }
