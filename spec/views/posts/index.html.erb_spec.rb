@@ -14,6 +14,9 @@ RSpec.describe "posts/index", type: :view do
 
     like = Like.create(user_id: @user.id, post_id: post1.id)
     assign(:likes, like)
+
+    sign_in User.find_by_id(1)
+
   end
 
   context "it renders a list of posts" do
