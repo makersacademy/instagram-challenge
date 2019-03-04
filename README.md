@@ -2,6 +2,8 @@ Deployed (here)[https://schminstagram.herokuapp.com/]!!
 
 Log in as bob@bob.com with password bbbbbbb, or sign up.
 
+Designed in a style I call 'beautifugly'.
+
 ## problems encountered
 
 Can't get Capybara to click the 'sign out' button/link.
