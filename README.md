@@ -106,7 +106,7 @@ And connect to the application on https://localhost:3000
 
 Login with your GitHub account. Once logged in click 'New Post' to add an image. It will appear and have relevant hashtags applied:
 
-![alt text](https://github.com/thielsen/instagram-challenge/blob/master/hashtags.png "")
+![alt text](https://github.com/thielsen/instagram-challenge/blob/master/hashtag.png "")
 
 Click on an images to apply filter to it:
 
