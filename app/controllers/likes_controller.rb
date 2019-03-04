@@ -26,9 +26,11 @@ class LikesController < ApplicationController
   def create
     @like = Like.new(like_params)
 
+    puts back_to
+
     respond_to do |format|
       if @like.save
-        format.html { redirect_to posts_url, notice: 'Like was successfully created.' }
+        format.html { redirect_to back_to, notice: 'Thanks for the like :)' }
         format.json { render :show, status: :created, location: @like }
       else
         format.html { render :new }
@@ -71,5 +73,14 @@ class LikesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def like_params
     params.require(:like).permit(:post_id, :user_id)
+  end
+
+  # Keeps you on the same page you clicked 'like' from.
+  def back_to
+    if params[:back_to]
+      "/posts/#{params[:back_to]}"
+    else
+      posts_url
+    end
   end
 end

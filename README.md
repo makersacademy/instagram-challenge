@@ -1,3 +1,7 @@
+Deployed (here)[https://schminstagram.herokuapp.com/]!!
+
+Log in as bob@bob.com with password bbbbbbb, or sign up.
+
 ## problems encountered
 
 Can't get Capybara to click the 'sign out' button/link.
