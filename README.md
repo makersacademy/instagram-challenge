@@ -7,6 +7,7 @@ Instagram Challenge
 To build the app yourself, follow these steps:
 - Clone the repository
 - Install `postgresql` using appropriate instructions for your OS
+- Install 'imagemagick' using appropriate instructions for your OS (e.g. `brew install imagemagick`)
 - Execute `bundle install` in the root of the project folder to install required gems
 - Execute `rails db:create` and `rails db:migrate` in the project root to set up the required databases and tables. 
 - If you want some pre-seeded data, also run `rails db:seed`. Details of the accounts and posts created can be found in the `db/seed.rb` file.
