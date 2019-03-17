@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :find_post, only: [:edit, :update, :destroy]
   def index
     @posts = Post.order("created_at DESC")
   end
 
   def show
+    @post = Post.includes(comments: :user).find(params[:id])
   end
 
   def new
