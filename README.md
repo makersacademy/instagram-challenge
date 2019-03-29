@@ -1,4 +1,4 @@
-# Influenstagram
+# Influenstagram [![Build Status](https://travis-ci.org/acodeguy/influenstagram.svg?branch=master)](https://travis-ci.org/acodeguy/influenstagram)
 ## Where your fellow-humans masquerade as real people in order to get rich advertising crap you don't need or really want.
 
 ## Technologies
