@@ -1,4 +1,5 @@
-# README
+# Influenstagram
+## Where your fellow-humans masquerade as real people in order to get rich advertising crap you don't need or really want.
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
