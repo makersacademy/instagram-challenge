@@ -8,10 +8,8 @@
 
 ## Configuration
 
-## Database creation
+## Database creation & table creations
 Run ```rails db:create``` to create the database.
-
-## Database initialization
 Run ```rails db:migrate``` run all migrations which will create all necessary database tables.
 
 ## How to run the test suite
