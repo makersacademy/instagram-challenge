@@ -2,7 +2,7 @@ Instagram Challenge
 ===================
 
 #### project description: https://github.com/makersacademy/instagram-challenge
-#### To collaborate: 
+#### To collaborate:
 ```sh
 $ git clone git@github.com:dory1318/instagram-challenge.git
 $ cd instagram-challenge
