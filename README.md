@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Resources
+
+* https://devhints.io/devise
+* https://devhints.io/rails
