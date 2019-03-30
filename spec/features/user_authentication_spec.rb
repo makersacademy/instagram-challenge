@@ -27,4 +27,11 @@ feature 'Authentication:' do
     visit '/'
     expect(page).not_to have_content 'Sign out'
   end
+
+  scenario 'cannot see sign-in/up links if logged-in' do
+    sign_up_for_an_account
+    visit '/'
+    expect(page).not_to have_link 'Sign-up'
+    expect(page).not_to have_link 'Sign-in'
+  end
 end
