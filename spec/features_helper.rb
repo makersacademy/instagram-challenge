@@ -11,3 +11,9 @@ end
 def create_user_in_database
   User.create(email: 'user@example.com', password: 'password')
 end
+
+def post_an_image
+  visit '/posts/new'
+  attach_file 'post_image', './spec/images/mage.jpg'
+  click_button 'Submit Post'
+end
