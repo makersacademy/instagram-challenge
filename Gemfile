@@ -44,6 +44,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
   gem 'simplecov', '~> 0.12.0'
+  gem 'simplecov-console', require: false
   gem "rubocop", '~> 0.66.0', require: false
   gem 'rubocop-rails', '~> 1.5'
   gem 'rubocop-rails_config', '~> 0.4.4'
@@ -58,9 +59,12 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+gem 'rake'
+
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
+  gem 'coveralls', require: false
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
