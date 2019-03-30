@@ -22,4 +22,9 @@ feature 'Authentication:' do
     click_link 'Sign out'
     expect(page).to have_content 'Signed out successfully.'
   end
+
+  scenario 'cannot see Sign out link if logged-out' do
+    visit '/'
+    expect(page).not_to have_content 'Sign out'
+  end
 end
