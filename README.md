@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/dafuloth/instagram-challenge.svg?branch=master)](https://travis-ci.org/dafuloth/instagram-challenge)
+[![Build Status](https://travis-ci.org/dafuloth/instagram-challenge.svg?branch=master)](https://travis-ci.org/dafuloth/instagram-challenge) 
+[![Coverage Status](https://coveralls.io/repos/github/dafuloth/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/dafuloth/instagram-challenge?branch=master)
 
 # Instagram clone using Rails
 
