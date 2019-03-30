@@ -30,8 +30,6 @@ class PostsController < ApplicationController
     redirect_to '/posts'
     File.open(Rails.root.join('public', "#{post.image_url}"), 'r') do |f|
       File.delete(f)
-    else
-      p "UNABLE TO DELETE IMAGE FROM DISK"
     end
   end
 

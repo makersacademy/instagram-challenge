@@ -12,7 +12,8 @@ feature 'Posts:' do
   scenario 'can delete posts' do
     sign_up_for_an_account
     post_an_image
-    click_button 'Delete Post'
+    click_button 'Delete'
+    expect(page).not_to have_css '.image_post'
   end
 
 end
