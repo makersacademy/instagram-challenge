@@ -1,40 +1,80 @@
-Instagram Challenge
-===================
+# Instagram challenge - weekend 8
 
-## Instructions
+[![Build Status](https://travis-ci.org/Debora38/instagram-challenge.svg?branch=master)](https://travis-ci.org/Debora38/instagram-challenge)
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+### User stories
 
-## Task
+```
+As a user,
+so that I can join Instagram,
+I want to be able to sign up
 
-Build Instagram: Simple huh!
+As a user,
+so that I can personalise my account,
+I want to be able to choose a username
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a user,
+so that I can close the app,
+I want to be able to log out
 
-Bonus if you can add filters!
+As a user,
+so that I can re-open my same account,
+I want to be able to log in
 
-## How to start
+As a user,
+so that I can share my thoughts,
+I want to be able to post a message to the homepage
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+As a user,
+so that I can share my adventures,
+I want to be able to post pictures to the homepage
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+As a user,
+so that I can keep myself updated,
+I want to see the latest posts on top
 
-## Code Quality
+As a user,
+so that I can share my appreciation,
+I want to like the posts
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+As a user,
+so that I can change my mind,
+I want to be able to remove a like to a post
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+As a user,
+so that I can correct my posts,
+I want to be able to edit them
+
+As a user,
+so that I can change my mind,
+I want to be able to delete my posts
+
+As a user,
+so that I can leave the application,
+I want to be able to delete my account along with the content
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## Approach
+
+This challenge helped me repeat few concepts from the week's learnings, such as **Rails** and the **gem Devise**, which handles user authentication.<br>
+The app is not complete, however it allows authentication and posting one image per post, with a message.<br>
+Most of the challenge was spent getting familiar with Rails and setting up devise correctly.
+
+### Screenshot of main page
+<img src='https://github.com/Debora38/instagram-challenge/blob/master/app/assets/images/Screenshot%202019-03-03%20at%2022.30.57.png?raw=true' alt='main-page'>
+
+### Instructions to setup
+
+Locally clone this repo
+```
+> bundle install
+> bin/rails db:create
+> bin/rails db:migrate
+
+> bundle exec rspec
+> bin/rails server
+```
+You can then connect to http://localhost:3000
+
+### Deployment
+The production application is deployed on <a href="https://stormy-bayou-43269.herokuapp.com">Heroku</a>.
