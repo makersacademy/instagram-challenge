@@ -16,4 +16,10 @@ feature 'Authentication:' do
     click_button 'Log in'
     expect(page).to have_content 'Signed in successfully'
   end
+
+  scenario 'can sign-out of an account when signed-in' do
+    sign_up_for_an_account
+    click_link 'Sign out'
+    expect(page).to have_content 'Signed out successfully.'
+  end
 end
