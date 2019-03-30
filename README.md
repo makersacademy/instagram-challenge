@@ -37,6 +37,8 @@ The `simplecov` gem is used to measure test coverage and is invoked with each te
 
 This remote repo has `coverage` in `.gitignore` as coverage is being tracked by [Coveralls](https://coveralls.io/github/dafuloth/instagram-challenge).
 
+![Tracking coverage with Coveralls](./coverage.png)
+
 ## References
 
 
