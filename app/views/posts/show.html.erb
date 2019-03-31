@@ -1,3 +1,10 @@
 <div class="post">
   <img src="/<%= @post.image_url %>">
+  <p>Comments (<%= @post.comments.count %>)</p>
+  <p>
+    <%= form_with(model: [@post, @post.comments.build], local: true) do |form| %>
+      <%= form.text_field :body, required: true %>
+      <%= form.submit %>
+    <% end %>
+  </p>
 </div>
