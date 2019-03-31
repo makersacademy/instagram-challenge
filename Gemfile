@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.0'
 
 gem 'devise', '~> 4.2'
+gem 'rake'
 gem 'travis', '~> 1.8', '>= 1.8.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -58,8 +59,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-gem 'rake'
 
 group :test do
   # Adds support for Capybara system testing and selenium driver

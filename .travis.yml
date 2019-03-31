@@ -1,8 +1,15 @@
 addons:
   postgresql: 9.6
 
+env:
+  global:
+    - CC_TEST_REPORTER_ID=8e6369201882d69ae19e5b21e9c5d5eab3b84e09e23e485de45516d5f219452d
+
 before_script:
   - psql -c 'create database instagram_challenge_test;' -U postgres
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 
 language: ruby
 rvm:
@@ -14,3 +21,4 @@ script:
 
 after_script:
   - bundle exec rake coveralls:push
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
