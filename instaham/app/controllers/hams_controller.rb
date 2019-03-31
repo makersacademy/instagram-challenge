@@ -11,15 +11,16 @@ class HamsController < ApplicationController
   end
 
   def create
-    @ham = Ham.new(article_params)
+    @ham = Ham.new(ham_params.merge(user_id: current_user.id, username: current_user.username))
 
     @ham.save
     redirect_to hams_url
     # render plain: params[:ham].inspect
+    # "title"=>"asdf", "text"=>"sdfsdf"
   end
 
   private
-  def article_params
-    params.require(:ham).permit(:title, :text)
+  def ham_params
+    params.require(:ham).permit(:title, :text, :image)
   end
 end
