@@ -1,17 +1,24 @@
-Instagram Challenge
-===================
+# README
 
-## User Stories
-1. As a user, so that I can show how wonderful my life is,
-I would like to post pictures on grimstagram
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-2. As a user so that I can share my valuable opinion with the world,
-I would like to comment on picture on grimstagram
+Things you may want to cover:
 
-3. As a user so that other people can feel good about themselves,
-I would like to like other peoples pictures on grimstagram
+* Ruby version
 
-## Class Responsibility Collaborator Diagram
-In this repository with this README is the CRC diagram. 
-This shows the 2 classes, users and posts but I hahve extended it to provide information on the possible database tables.
+* System dependencies
 
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
