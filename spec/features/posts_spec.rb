@@ -39,4 +39,11 @@ feature 'Posts:' do
     click_button 'Un-like'
     expect(page).to have_content 'Likes: 0'
   end
+
+  scenario 'a post can be seen on its own page' do
+    sign_up_for_an_account
+    post_an_image
+    click_link 'Post detail'
+    expect(page).to have_css '.post'
+  end
 end

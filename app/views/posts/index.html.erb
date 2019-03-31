@@ -1,15 +1,15 @@
 <h1>Influenstagram</h1>
 
-<%if @posts %>
+<% if @posts %>
   <% @posts.each do |post| %>
     <div class="image_post">
       <img src="<%= post.image_url %>" />
-      <p>Posted on: <%= post.created_at.strftime('%d/%m/%Y at %H:%M:%S') %> | Likes: <%= post.likes.count %></p>
+      <p>Posted on: <%= post.created_at.strftime('%d/%m/%Y at %H:%M:%S') %> | Likes: <%= post.likes.count %> | <a href="/posts/<%= post.id %>">Post detail</a></p>
       <%= button_to 'Like', post_likes_path(post), method: :post %>
       <%= button_to 'Un-like', post_likes_path(post), method: :delete %>
       <%= button_to 'Delete', post_path(post), method: :delete %>
     </div>
   <% end %>
 <% else %>
-  <H3>No posts were found.</H3>
+  <h3>No posts were found.</h3>
 <% end %>
