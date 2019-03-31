@@ -30,4 +30,13 @@ feature 'Posts:' do
     click_button 'Like'
     expect(page).to have_content 'Likes: 1'
   end
+
+  scenario 'a user can un-like a post (once only)' do
+    sign_up_for_an_account
+    post_an_image
+    click_button 'Like'
+    expect(page).to have_content 'Likes: 1'
+    click_button 'Un-like'
+    expect(page).to have_content 'Likes: 0'
+  end
 end
