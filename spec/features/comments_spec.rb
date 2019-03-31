@@ -3,6 +3,10 @@ require 'features_helper'
 
 feature 'Comments' do
 
+  before(:all) do
+    Dir.mkdir 'public/posts' unless File.directory?('public/posts')
+  end
+
   scenario 'can add a comment to a post' do
     sign_up_for_an_account
     post_an_image
