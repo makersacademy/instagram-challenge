@@ -2,6 +2,10 @@
 ## Where your fellow-humans masquerade as real people in order to get rich advertising crap you don't need or really want.
 
 [See Influenstagram on Heroku](https://influenstagram.herokuapp.com)
+
+## Trello Board
+[Influenstagram on Trello](https://trello.com/b/AL9kxPmy/influenstagram)
+
 ## Technologies
 
 ## System dependencies
