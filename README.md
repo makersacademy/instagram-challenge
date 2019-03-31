@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/dafuloth/instagram-challenge.svg?branch=master)](https://travis-ci.org/dafuloth/instagram-challenge) 
 [![Coverage Status](https://coveralls.io/repos/github/dafuloth/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/dafuloth/instagram-challenge?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7dddaa400f33d854d758/maintainability)](https://codeclimate.com/github/dafuloth/instagram-challenge/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7dddaa400f33d854d758/test_coverage)](https://codeclimate.com/github/dafuloth/instagram-challenge/test_coverage)
 
 # Instagram clone using Rails
 
