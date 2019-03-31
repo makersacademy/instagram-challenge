@@ -12,14 +12,12 @@ class PostsController < ApplicationController
 
   def create
     uploaded_image = params[:post][:image]
-    timestamp = DateTime.now.strftime('%Y%m%d%H%M%S')
-    filename = "#{timestamp}-#{uploaded_image.original_filename}" 
-    file = File.open(Rails.root.join('public', 'posts', "#{filename}"), 'wb') do |file|
+    filename = "#{DateTime.now.strftime('%Y%m%d%H%M%S')}-#{uploaded_image.original_filename}" 
+    uploaded_file = File.open(Rails.root.join('public', 'posts', "#{filename}"), 'wb') do |file|
       file.write(uploaded_image.read)
     end
-    if file
-      @post = current_user.posts.create(image_url: "posts/#{filename}")
-    end
+
+    current_user.posts.create(image_url: "posts/#{filename}") if uploaded_file
 
     redirect_to posts_url
   end
