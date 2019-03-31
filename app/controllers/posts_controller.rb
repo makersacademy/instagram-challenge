@@ -24,6 +24,7 @@ class PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
+    post.likes.destroy_all
     post.destroy
     redirect_to '/posts'
     File.open(Rails.root.join('public', "#{post.image_url}"), 'r') do |f|
