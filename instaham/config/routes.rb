@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   resources :hams
 
-  root 'welcome#index'
+  root 'hams#index'
 end

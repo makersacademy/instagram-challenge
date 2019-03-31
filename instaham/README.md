@@ -1,5 +1,50 @@
 # README
 
+## user stories
+
+`As a developer
+so that users are prompted to authenticate
+I want to redirect anyone to authenticate if they try to use the app`
+
+`As a user
+so I can see the freshest hams
+I want to see hams posted in reverse chronological order`
+
+`As a user
+So I can post some hams
+I want to sign up to instaham`
+
+`As a user
+so I can see some hams
+I want to be redirected to the hams index page when I sign up`
+
+`As a user
+so I don't need to sign up every time
+I want to be able to log in`
+
+`As a user
+so I can see some hams
+I want to be redirected to the hams index page when I sign in`
+
+`As a user
+so I can show off my hams to others
+I want to be able to add a picture of a ham`
+
+`As a user
+so others know how great my hams are
+I want to give them a caption`
+
+`As a user
+so I can spread social gratification
+I want to be able to like someone else's ham`
+
+`As a user
+so I can tell people how much I like their ham
+I want to be able to comment on someone else's ham`
+
+
+# original
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
