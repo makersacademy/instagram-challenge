@@ -9,7 +9,8 @@ feature 'Authentication:' do
   end
 
   scenario 'can sign-in with a valid account' do
-    create_user_in_database
+    sign_up_for_an_account
+    log_out
     visit '/users/sign_in'
     fill_in 'user_email', with: 'user@example.com'
     fill_in 'user_password', with: 'password'

@@ -8,8 +8,8 @@ def sign_up_for_an_account
   click_button 'Sign up'
 end
 
-def create_user_in_database
-  User.create(email: 'user@example.com', password: 'password')
+def log_out
+  click_link 'Sign out'
 end
 
 def post_an_image
