@@ -1,24 +1,27 @@
 addons:
   postgresql: 9.6
-
 env:
   global:
-    - CC_TEST_REPORTER_ID=8e6369201882d69ae19e5b21e9c5d5eab3b84e09e23e485de45516d5f219452d
-
+  - CC_TEST_REPORTER_ID=8e6369201882d69ae19e5b21e9c5d5eab3b84e09e23e485de45516d5f219452d
 before_script:
-  - psql -c 'create database instagram_challenge_test;' -U postgres
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-
+- psql -c 'create database instagram_challenge_test;' -U postgres
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 language: ruby
 rvm:
-  - 2.6.0
-
+- 2.6.0
 script:
-  - bundle exec rails db:migrate RAILS_ENV=test
-  - bundle exec rake spec
-
+- bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rake spec
 after_script:
-  - bundle exec rake coveralls:push
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+- bundle exec rake coveralls:push
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
+deploy:
+  provider: heroku
+  api_key:
+    secure: TK2HSqewRAeE/hT09XRUBuQVpMKEMubozpS739ALgHmnsxkbmXIDwsaBUIVMfLnPiRGCM2+6S8tVV+Qu2uq3iIJ3HpOd+de5PBITaplvYqFt01l3bNZvpvXoxnJ1UGH3+xvegW3MMfG0AbHLbeegeYPN85NVr7PNm78OphXdi7t/Q0jd81u3cyNDvmNo8FJpQ7q4Rg/ZVdDjJQRJ2Z9WQZMyGdSsRbag2R3AU/jUo/fDRrx9maAnl+CRu+UCIkkxfBaJC3CiXWovhNK1qyfScIImpiu7eDZs2ZCMpLXL+KP1xvsFGLDKws8UVqxpE6MA7Dhx/EKXuGPvqFuiIKxppF8jOE57UPdy6plRNgYL2VDdaTSdD1G0lM3bRgIugm/8YR3QUKsIhpn4khUEegnNHE/s2MoR+D56iFom4NPsJLaoYKE2BU9cbxa9bJFwgZLys8dEZMrNgadS5eg5ghluaaWGibY7ZCL2r8z2g7rbUp5QKRoW5eqEQiVlkBAARiO14Y/Nl8r7ccWigpSltrRJacEZy7NABEJk5QApblWhoCacQO/QfsQaBw5vt4yjicdAUGhX1eQ0MsP0/8Z/e1h38dk4wi2TlX132w/DNWjdqPyaVFRgrybzVgdW2OWuQqJ7RfGKttgLLB8S1AMqbDwKnEBnZ5RABlFxSOQLTChI+wE=
+  app: dt-instaclonegram
+  on:
+    repo: dafuloth/instagram-challenge
