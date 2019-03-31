@@ -1,6 +1,6 @@
 class HamsController < ApplicationController
   def index
-    @hams = Ham.all
+    @hams = Ham.order("created_at desc").all
   end
 
   def show
@@ -14,7 +14,8 @@ class HamsController < ApplicationController
     @ham = Ham.new(article_params)
 
     @ham.save
-    redirect_to @ham
+    redirect_to hams_url
+    # render plain: params[:ham].inspect
   end
 
   private
