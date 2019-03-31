@@ -1,8 +1,11 @@
 <h1>Influenstagram</h1>
 
-<% @posts.each do |post| %>
-  <div class="image_post">
-    <img src="<%= post.image_url %>" />
-    <%= button_to 'Delete', post_path(post), method: :delete %>
-  </div>
+<%if @posts %>
+  <% @posts.each do |post| %>
+    <div class="image_post">
+      <img src="<%= post.image_url %>" />
+      <p>Posted on: <%= post.created_at.strftime('%d/%m/%Y at %H:%M:%S') %></p>
+      <%= button_to 'Delete', post_path(post), method: :delete %>
+    </div>
+  <% end %>
 <% end %>

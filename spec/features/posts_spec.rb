@@ -16,4 +16,9 @@ feature 'Posts:' do
     expect(page).not_to have_css '.image_post'
   end
 
+  scenario 'can see the date and time for a post' do
+    sign_up_for_an_account
+    post_an_image
+    expect(page).to have_content 'Posted on:'
+  end
 end
