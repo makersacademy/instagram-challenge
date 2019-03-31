@@ -1,0 +1,2 @@
+class Ham < ApplicationRecord
+end
