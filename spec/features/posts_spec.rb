@@ -2,6 +2,10 @@ require 'rails_helper'
 require 'features_helper'
 
 feature 'Posts:' do
+
+  before(:all) do
+    Dir.mkdir 'public/posts' unless File.directory?('public/posts')
+  end
   
   scenario 'can submit posts' do
     sign_up_for_an_account
