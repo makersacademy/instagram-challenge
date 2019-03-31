@@ -13,5 +13,6 @@ I would like to like other peoples pictures on grimstagram
 
 ## Class Responsibility Collaborator Diagram
 In this repository with this README is the CRC diagram. 
-This shows the 2 classes, users and posts but I hahve extended it to provide information on the possible database tables.
+This shows the 2 classes, users and posts but I have extended it to provide information on the possible database tables.
+
 
