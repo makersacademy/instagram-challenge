@@ -22,9 +22,11 @@ feature 'Posts:' do
     expect(page).to have_content 'Posted on:'
   end
 
-  scenario 'a user can like a post' do
+  scenario 'a user can like a post (once only)' do
     sign_up_for_an_account
     post_an_image
+    click_button 'Like'
+    expect(page).to have_content 'Likes: 1'
     click_button 'Like'
     expect(page).to have_content 'Likes: 1'
   end
