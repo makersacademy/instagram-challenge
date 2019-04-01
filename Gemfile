@@ -4,7 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.0'
 
 gem 'devise', '~> 4.2'
+gem 'file_validators', '~> 2.0', '>= 2.0.2'
+gem 'mini_magick', '~> 4.9', '>= 4.9.3'
 gem 'rake'
+gem 'simple_form', '~> 4.1'
 gem 'travis', '~> 1.8', '>= 1.8.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -44,10 +47,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
-  gem 'simplecov', '~> 0.12.0'
+  gem 'simplecov', '~> 0.12.0', require: false
   gem 'simplecov-console', require: false
   gem "rubocop", '~> 0.66.0', require: false
-  gem 'rubocop-rails', '~> 1.5'
+  # gem 'rubocop-rails', '~> 1.5'
   gem 'rubocop-rails_config', '~> 0.4.4'
 end
 
