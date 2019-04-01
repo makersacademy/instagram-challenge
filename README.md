@@ -53,10 +53,16 @@ Additionally, Code Climate has also been added to track code quality, or "mainta
 
 * Using free images from [Pixabay](https://pixabay.com/)
 
+## Helpful Gems
+
+* [Acts As Votable (aka Acts As Likeable)](https://github.com/ryanto/acts_as_votable)
+* [simple_form](https://github.com/plataformatec/simple_form)
+* [mini_magick](https://github.com/minimagick/minimagick)
+* [file_validators](https://github.com/musaffa/file_validators)
+
 ## Further reading
 
 * [Cheatsheet for Rails](https://devhints.io/rails)
 * [Cheatsheet for Devise](https://devhints.io/devise)
 * [Cheatsheet for Rake](https://devhints.io/rake)
 * [Getting Started on Heroku with Rails 5.x](https://devcenter.heroku.com/articles/getting-started-with-rails5)
-* [Acts As Votable (aka Acts As Likeable)](https://github.com/ryanto/acts_as_votable)

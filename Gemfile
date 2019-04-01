@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.0'
 
 gem 'devise', '~> 4.2'
+gem 'file_validators', '~> 2.0', '>= 2.0.2'
+gem 'mini_magick', '~> 4.9', '>= 4.9.3'
 gem 'rake'
 gem 'simple_form', '~> 4.1'
 gem 'travis', '~> 1.8', '>= 1.8.8'
