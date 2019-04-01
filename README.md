@@ -45,9 +45,14 @@ This remote repo has `coverage` in `.gitignore` as coverage is being tracked by 
 
 ![Tracking coverage with Coveralls](./coverage.png)
 
+## Code Quality
+
+Additionally, Code Climate has also been added to track code quality, or "maintainability" - it also tracks test coverage.
+
 ## Further reading
 
-* https://devhints.io/devise
-* https://devhints.io/rails
+* [Cheatsheet for Rails](https://devhints.io/rails)
+* [Cheatsheet for Devise](https://devhints.io/devise)
+* [Cheatsheet for Rake](https://devhints.io/rake)
 * [Getting Started on Heroku with Rails 5.x](https://devcenter.heroku.com/articles/getting-started-with-rails5)
 * [Acts As Votable (aka Acts As Likeable)](https://github.com/ryanto/acts_as_votable)
