@@ -5,6 +5,7 @@ ruby '2.6.0'
 
 gem 'devise', '~> 4.2'
 gem 'rake'
+gem 'simple_form', '~> 4.1'
 gem 'travis', '~> 1.8', '>= 1.8.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

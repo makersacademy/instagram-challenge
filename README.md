@@ -49,6 +49,10 @@ This remote repo has `coverage` in `.gitignore` as coverage is being tracked by 
 
 Additionally, Code Climate has also been added to track code quality, or "maintainability" - it also tracks test coverage.
 
+## Acknowledgements
+
+* Using free images from [Pixabay](https://pixabay.com/)
+
 ## Further reading
 
 * [Cheatsheet for Rails](https://devhints.io/rails)
