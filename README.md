@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dafuloth/instagram-challenge.svg?branch=master)](https://travis-ci.org/dafuloth/instagram-challenge) 
+[![Build Status](https://travis-ci.org/dafuloth/instagram-challenge.svg?branch=master)](https://travis-ci.org/dafuloth/instagram-challenge)
 [![Coverage Status](https://coveralls.io/repos/github/dafuloth/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/dafuloth/instagram-challenge?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7dddaa400f33d854d758/maintainability)](https://codeclimate.com/github/dafuloth/instagram-challenge/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7dddaa400f33d854d758/test_coverage)](https://codeclimate.com/github/dafuloth/instagram-challenge/test_coverage)
@@ -6,6 +6,10 @@
 # Instagram clone using Rails
 
 _Week 8 Weekend Challenge: [challenge README.md](./challenge_README.md)_
+
+[See the Heroku deployment](https://dt-instaclonegram.herokuapp.com/)
+
+![User Flow Diagram](./user_flow.svg)
 
 ## Ruby version
 
@@ -41,35 +45,9 @@ This remote repo has `coverage` in `.gitignore` as coverage is being tracked by 
 
 ![Tracking coverage with Coveralls](./coverage.png)
 
-## References
-
-
----
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-## Resources
+## Further reading
 
 * https://devhints.io/devise
 * https://devhints.io/rails
+* [Getting Started on Heroku with Rails 5.x](https://devcenter.heroku.com/articles/getting-started-with-rails5)
+* [Acts As Votable (aka Acts As Likeable)](https://github.com/ryanto/acts_as_votable)
