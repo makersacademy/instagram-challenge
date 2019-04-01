@@ -35,11 +35,13 @@ I want to be redirected to the hams index page when I sign in`
 so I can show off my hams to others
 I want to be able to add a picture of a ham`
 
-still to do:
-
 `As a user
 so my identity is more than just a number
 I want to sign up with a username`
+
+still to do:
+
+
 
 `As a user
 so people can see who posted my ham

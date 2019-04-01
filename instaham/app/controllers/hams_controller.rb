@@ -11,8 +11,8 @@ class HamsController < ApplicationController
   end
 
   def create
-    @ham = Ham.new(ham_params.merge(user_id: current_user.id, username: current_user.username))
-
+    @ham = Ham.new(ham_params.merge(user_id: current_user.id))
+    # @ham.username = current_user.username
     @ham.save
     redirect_to hams_url
     # render plain: params[:ham].inspect

@@ -1,4 +1,4 @@
-<h1>Showing all Hams</h1>
+<h1>Welcome to Instaham</h1>
 
 <div class="">
   <% @hams.each do |ham| %>
@@ -6,15 +6,19 @@
       <div class="">
         <%= ham.title %>
       </div>
-      <div class="">
-        <%= ham.text %>
-      </div>
       <div class="image">
-        <%= image_tag ham.image_url.to_s, :size => "260x180" if ham.image? %>
+        <%= link_to ham_path(ham) do %>
+          <%= image_tag ham.image_url.to_s, :size => "260x180" if ham.image? %>
+        <% end %>
       </div>
       <div class="">
-        <%= link_to 'Show', ham_path(ham) %>
+        <strong> User: <%= ham.user_id %></strong>
       </div>
     </div>
   <% end %>
+</div>
+
+<div class="">
+  <%= button_to "Post a new ham", new_ham_path, :id => "new-ham-btn",
+        :class => "btn btn-info", :method => :get %>
 </div>
