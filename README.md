@@ -7,7 +7,7 @@
 
 _Week 8 Weekend Challenge: [challenge README.md](./challenge_README.md)_
 
-[See the Heroku deployment](https://dt-instaclonegram.herokuapp.com/)
+Project is still a work in progress: [See the Heroku deployment](https://dt-instaclonegram.herokuapp.com/)
 
 ![User Flow Diagram](./user_flow.svg)
 
