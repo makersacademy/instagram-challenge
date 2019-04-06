@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.0'
 
+gem 'carrierwave', '~> 0.11.2'
 # Use Devise for user authentication
 gem 'devise', '~> 4.2'
 # Use postrgresql as the database for Active Record

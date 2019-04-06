@@ -10,6 +10,9 @@ before_install:
 - sudo apt-get install -qq postgresql-server-dev-9.3
 - gem update --system
 - gem install bundler
-before_script:
-- psql -c 'create database insta_test;' -U postgres
+script:
+- bundle exec rails db:create rails_ENV=test
+- bundle exec rails db:migrate rails_ENV=test
+# before_script:
+# - psql -c 'create database insta_test;' -U postgres
 # - psql -d instagram_test -c 'CREATE TABLE "posts" ("id" SERIAL PRIMARY KEY, "picture" OID, "created_at" TIMESTAMP, "updated_at" TIMESTAMP);'
