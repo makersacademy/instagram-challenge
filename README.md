@@ -2,7 +2,7 @@ Instagram Challenge
 ===================
 
 ## Instructions for use
-- The app is currently deployed at [Heroku](http://ch359-instagram.herokuapp.com)
+- The app is currently deployed at [Heroku](https://ch359-instagram.herokuapp.com) - note images may be broken as stored in temporary Heroku local storage.
 
 To build the app yourself, follow these steps:
 - Clone the repository
@@ -38,18 +38,6 @@ The following features are not implemented:
 - Comments
 - Filters for photos
 - Website is not designed or styled
-
-## Technical challenges
-
-Too many to list. Triggering javascript on a page to fire off methods in the controller within an erb file and the custom rails form syntax proved very time consuming.
-Testing was also particularly challenging:
-- I still need to understand more about the principles of testing controller, routes and views within Rails.
-- `Devise` testing: currently there are no tests of the User model, controller, routes or views as I decided to move on after spending some time on this.
-There are three problems in particular unresolved:
-- `spec/views/posts/index.html.erb_spec.rb`: This test was functioning ('mocking' the render of a page?) until I added javascript on the page which references `current_user` (a Devise method).
-    - My working hypothesis is that because the page isn't truly loaded, there is no session, therefore no `current_user` - how to avoid this?
-- `spec/requests/post_spec.rb`: Couldn't log in successfully, despite including `config.include Devise::Test::IntegrationHelpers, type: :request` in `rails_helper`.
-- `spec/features/user_can_like_posts_spec.rb`: After clicking the `like` button on `line 12`, the same lookup to the like counter fails. I have been unable to get visibility on the page in the second part of the test (wish I used Cypress!) - e.g. with `print page.html`. 
 
 ## Approach
 
