@@ -1,0 +1,22 @@
+lanugage: ruby
+
+rvm: '2.5.0'
+
+# safelist
+branches:
+  only:
+    - master
+    - travis
+
+addons:
+  postgresql: 9.6
+
+env:
+  - DB=pgsql
+
+before_script:
+  - bundle exec rake db:create
+
+script:
+  - bundle exec rake db:migrate RAILS_ENV=test
+  - bundle exec rspec
