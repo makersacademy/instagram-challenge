@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>InstagramClone</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Home</a>
+    <a class="navbar-brand" href="/pics/new">New pic</a>
+    <% if user_signed_in? %>
+    <a class="navbar-brand" href="/users/sign_out">Sign Out</a>
+    <% else %>
+    <a class="navbar-brand" href="/users/sign_in">Sign In</a>
+    <a class="navbar-brand" href="/users/sign_up">Sign Up</a>
+    <% end %>
+  </nav>
+
+  <div class="container">
+    <% if notice.present? %>
+    <p class="notice"><%= notice %></p>
+    <% elsif alert.present? %>
+    <p class="alert"><%= alert %></p>
+    <% end %>
+    <%= yield %>
+  </div>
+</body>
+
+</html>

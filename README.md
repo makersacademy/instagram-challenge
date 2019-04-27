@@ -1,40 +1,81 @@
-Instagram Challenge
+Instagram Clone [![Build Status](https://travis-ci.com/AlinaGoaga/Picstagram.svg?branch=master)](https://travis-ci.com/AlinaGoaga/Picstagram) <a href="https://codeclimate.com/github/AlinaGoaga/Picstagram/maintainability"><img src="https://api.codeclimate.com/v1/badges/9fdacaf5ff530c68b90a/maintainability" /></a>
 ===================
 
-## Instructions
+## Usage and tests 
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* clone the repo
+* run bundle
+* run rake db:create
+* visit local host at 3000
+* to run tests : rspec in main project folder (the coverage is 97.7% at the moment)
 
-## Task
+The app has also been deployed on [Heroku](https://sleepy-anchorage-79989.herokuapp.com/).
 
-Build Instagram: Simple huh!
+![App screenshot](https://github.com/AlinaGoaga/Picstagram/blob/master/app/assets/images/picstagram.jpeg)
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## My approach
 
-Bonus if you can add filters!
+- At the moment the user can: sign up, in, out (devise was used for this)
+- Post a new picture with a description, title and image and see this in the main feed (title + image)
+- See the show page for an individual picture where the description can also be found
+- Edit and delete the pictures that he's posted
 
-## How to start
+Coming up :
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+* Navbar to help with the navigating
+* Replace paperclip with carrierwave since paperclip has been deprecated
+* User being able to like pictures and comment on other people's pictures
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+## User stories
+
+```
+As a user,
+So that I can participate on the platform,
+I want to be able to sign up.
+```
+```
+As an user,
+So that my account stays safe,
+I want to be able to log in and log out.
+```
+```
+As an user,
+So that I can share my content,
+I want to be able to post a picture with a title, description and image.
+```
+```
+As an user,
+So that I can enjoy other people's art,
+I want all the images displayed on the main page.
+```
+```
+As an user,
+So that I can find out more about a specific image,
+I want to be able to click on it and see its description and author.
+```
+```
+As an user,
+So that I can update my art,
+I want to be able to edit my pics.
+```
+```
+As an user,
+So that I can remove content that I do not want online anymore,
+I want to be able to delete my pics.
+```
+
+### To develop: 
+```
+As a user,
+So that I can share my thoughts,
+I want to be able to comment on other users' pics.
+```
+```
+As a user,
+So that I can show my appreciation,
+I want to be able to like other users' pics.
+```
 
 ## Code Quality
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+Rubocop is installed
