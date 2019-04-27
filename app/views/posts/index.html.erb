@@ -1,5 +1,49 @@
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
-<h5>Pushed to stagging</h5>
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+<%= link_to 'New Post', new_post_path %>
+<br>
+
+
+  <% @posts.each do |post| %>
+
+    <div class="card text-center" style="max-width:30%; margin:10px auto" >
+
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-pills ">
+          <li class="nav-item mr-auto">
+             <p class="card-text">User: <%= post.user.first_name %></p>
+          </li>
+          <li class="nav-item">
+             <%= link_to 'Edit', edit_post_path(post) %>
+          </li>
+      
+          <li class="nav-item">
+            <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </li>
+        </ul>
+      </div>
+      
+     
+      <%= link_to(post) do%>
+        <%=image_tag post.image, height:'500px', class:'card-image img-fluid'%>
+      <%end%>
+      
+
+      <div class="card-body">
+        <p class="card-text"> Description: <%= post.description %></p>
+
+      </div>
+
+      <div class="card-footer">
+        <%= post.likes %>
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+
+  <%end%>
+
+
+
+
+
