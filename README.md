@@ -1,4 +1,6 @@
-![Travis](https://travis-ci.org/micosmin/instaclone.svg?branch=master)
+![Build status](https://travis-ci.org/micosmin/instaclone.svg?branch=master)
+![Coverage](/instagram/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/33b079577460f3ad758b/maintainability)](https://codeclimate.com/github/micosmin/instaclone/maintainability)
 
 # README
 
@@ -73,3 +75,11 @@ Moving apps from staging to production:
 - Services (job queues, cache servers, search engines, etc.)
 
 **Deployment instructions**
+
+**Contribute**
+
+1. Fork it ( https://github.com/micosmin/instaclone.git )
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -am 'Add some feature')
+4. Push to the branch (git push origin my-new-feature)
+5. Create a new Pull Request
