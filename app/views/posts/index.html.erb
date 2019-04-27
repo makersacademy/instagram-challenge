@@ -9,8 +9,11 @@
   <p><%= post.likes.count %></p>
   <%= button_to 'Like', likes_path(post.id), method: :post %>
   <% if post.comments %>
-  <% post.comments.each do |comment| %>
-    <p><%= comment.body %></p>
+    <% post.comments.each do |comment| %>
+      <p><%= comment.body %></p>
+      <% User.where(id: comment.user_id).each do |user| %>
+        <p><%= user.username %></p>
+      <% end %>
     <% end %>
   <% end %>
   <%= form_for [post, post.comments.new] do |form| %>
