@@ -14,7 +14,7 @@ RSpec.describe User do
   end
 
   it 'Should reject user with email longer than 250 characters' do
-    user = User.create( { username: 'Andy', email: "a" * 256 } )
+    user = User.create( { username: 'Andy', email: ("a" * 242) + '@testemail.com' } )
     expect(user.valid?).to eq false;
   end
 
@@ -23,8 +23,13 @@ RSpec.describe User do
     expect(user.valid?).to eq false;
   end
 
+  it 'Should reject user with non valid email format' do
+    user = User.create( { username: 'Andy', email: 'testtestmail.com' } )
+    expect(user.valid?).to eq false;
+  end
+
   it 'Should accept valid username and email' do
-    user = User.create( { username: 'Andy', email: 'test@testmail.com' } )
+    user = User.create( { username: 'Andy', email: 'test@estmail.com' } )
     expect(user.valid?).to eq true;
   end
 
