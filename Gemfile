@@ -9,6 +9,9 @@ gem 'rails', '~> 5.2.3'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+
+gem 'factory_bot_rails'
+gem 'devise'
 gem "rubocop", "0.53"
 gem "rubocop-rails_config"
 # Use SCSS for stylesheets
