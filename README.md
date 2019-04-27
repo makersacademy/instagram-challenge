@@ -1,5 +1,5 @@
 ![Build status](https://travis-ci.org/micosmin/instaclone.svg?branch=master)
-![Coverage](/instagram/badge.svg)
+![Coverage](https://github.com/micosmin/instaclone/blob/development/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/33b079577460f3ad758b/maintainability)](https://codeclimate.com/github/micosmin/instaclone/maintainability)
 
 # README
