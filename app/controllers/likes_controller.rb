@@ -1,9 +1,5 @@
 class LikesController < ApplicationController
 
-  def new
-    Like.new
-  end
-
   def create
     unless liked_by_user
       Like.create(user_id: current_user.id, post_id: params[:format])

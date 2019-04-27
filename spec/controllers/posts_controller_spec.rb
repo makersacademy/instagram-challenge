@@ -6,7 +6,7 @@ RSpec.describe PostsController, type: :controller do
   before do
     sign_in user
   end
-  
+
   describe "GET /new " do
     it "responds with 200" do
       get :new
@@ -16,7 +16,7 @@ RSpec.describe PostsController, type: :controller do
 
   describe "POST /" do
     it "responds with 200" do
-      post :create, params: { post: { message: "Hello, world!" } }
+      post :create, params: { post: { caption: "Hello, world!" } }
       expect(response).to redirect_to(posts_url)
     end
 
