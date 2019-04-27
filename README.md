@@ -2,7 +2,7 @@ InstaGran
 ===================
 
 [![Build Status](https://travis-ci.com/andrewmclelland23/instagram-challenge.svg?branch=master)](https://travis-ci.com/andrewmclelland23/instagram-challenge)
-[![Coverage Status](https://coveralls.io/repos/github/andrewmclelland23/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/andrewmclelland23/instagram-challenge?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/andrewmclelland23/instagram-challenge/badge.svg?branch=master&kill_cache=1)](https://coveralls.io/github/andrewmclelland23/instagram-challenge?branch=master&kill_cache=1)
 
 ## Description
 
