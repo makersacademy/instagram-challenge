@@ -28,9 +28,22 @@ RSpec.describe User do
     expect(user.valid?).to eq false;
   end
 
-  it 'Should accept valid username and email' do
-    user = User.create( { username: 'Andy', email: 'test@estmail.com' } )
+  it 'Should reject new user if email is not unique in users table' do
+    user = User.create( { username: 'Andy', email: 'test@testmail.com' } )
     expect(user.valid?).to eq true;
+    user2 = User.create( { username: 'Andy 2', email: 'test@testmail.com' } )
+    expect(user2.valid?).to eq false;
+  end
+
+  it 'Should accept valid username and email' do
+    user = User.create( { username: 'Andy', email: 'test@testmail.com' } )
+    expect(user.valid?).to eq true;
+  end
+
+  it 'Should downcase email addresses before storing in users table' do
+    user = User.create( { username: 'Andy', email: 'TEST@testmail.com' } )
+    user_from_table = User.find_by(username: 'Andy')
+    expect(user.email).to eq user_from_table.email
   end
 
 end
