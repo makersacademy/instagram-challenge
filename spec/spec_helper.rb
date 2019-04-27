@@ -12,6 +12,26 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
+require 'simplecov'
+require 'simplecov-console'
+require 'shields_badge'
+
+SimpleCov.start 'rails' do
+  add_filter 'app/channels/'
+  add_filter 'app/jobs/'
+  add_filter 'app/mailers/'
+  add_filter 'app/controllers/application_controller.rb'
+  add_filter  'app/helpers'
+  add_filter  'app/controllers/posts_controller.rb'
+  add_filter  'app/models/application_record.rb'
+end
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::ShieldsBadge,
+  SimpleCov::Formatter::Console,
+]
+
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
