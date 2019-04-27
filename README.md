@@ -54,12 +54,16 @@ test: feature test that post is visible after posted
 
 - user can write comments on pictures (any pictures), when signed in
 
+first run migrations for pictures
 test: feature test that comments appear after posted
 
 
 - user can like a picture, when signed in
 
 test: feature test that like increases after click is made by user
+
+
+
 
 
 ## Steps
@@ -73,12 +77,26 @@ test: feature test that like increases after click is made by user
 
 
 
+## What I didn't do (yet)
+- have error message shown if clicking on upload your image when no file is attached.
 
 
 
 
 
 
+## Code quality and test coverage
+- used rubocop --a
+
+- used simpleCov, excluded some files
+
+
+
+
+
+
+
+## Extra Makers instructions
 ## Code Quality
 
 For linting, you can use the `.rubocop.yml` in this repository (or your own!).
