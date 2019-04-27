@@ -25,7 +25,7 @@ RSpec.feature "Sign in", type: :feature do
     expect(page).to have_content("Welcome back to InstaCat!")
   end
 
-  scenario 'User redirected to index if not signed up' do
+  scenario 'User redirected to index if not signed in' do
     create_user_and_sign_up
     click_button("Sign out")
     visit '/posts'
@@ -34,5 +34,16 @@ RSpec.feature "Sign in", type: :feature do
     expect(page).to have_field("user_password")
     expect(page).to have_field("user_password_confirmation")
     expect(page).to have_button('Sign up')
+  end
+
+  scenario 'User redirected to posts page when signed in' do
+    create_user_and_sign_up
+    click_button("Sign out")
+    visit "/"
+    click_link("Sign in")
+    fill_in("user_email", with: "test@com")
+    fill_in("user_password", with: "password")
+    click_button("Sign in")
+    expect(page).to have_link("New post")
   end
 end
