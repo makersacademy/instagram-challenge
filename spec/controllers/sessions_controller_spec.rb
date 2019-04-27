@@ -22,4 +22,12 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
+  describe "DELETE #destroy" do
+    it "Removes a user from session if called" do
+      user = User.create({ username: 'andy', email: 'andy@tester.com', password: '123456', password_confirmation: '123456' })
+      post :create, params: { session: { email: 'andy@tester.com', password: '123456' } }
+      delete :destroy
+      expect(session[:user_id]).to eq nil
+    end
+  end
 end

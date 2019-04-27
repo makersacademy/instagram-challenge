@@ -13,4 +13,10 @@ class SessionsController < ApplicationController
       redirect_to '/login'
     end
   end
+
+  def destroy
+    sign_out
+    flash[:sign_out_success] = "You're now signed out"
+    redirect_to '/login'
+  end
 end
