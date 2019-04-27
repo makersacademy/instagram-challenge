@@ -14,7 +14,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
+  
   resources :likes
 
 end

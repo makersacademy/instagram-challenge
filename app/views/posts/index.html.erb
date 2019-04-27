@@ -6,6 +6,20 @@
   <p>@<%= post.user.username %></p>
   <p><%= image_tag post.image %></p>
   <p><%= post.caption %></p>
-  <p><%= post.likes.count %>
+  <p><%= post.likes.count %></p>
   <%= button_to 'Like', likes_path(post.id), method: :post %>
+  <% if post.comments %>
+  <% post.comments.each do |comment| %>
+    <p><%= comment.body %></p>
+    <% end %>
+  <% end %>
+  <%= form_for [post, post.comments.new] do |form| %>
+  <p>
+    <%= form.label :body, "What's new pussycat?" %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit 'Add'%>
+  </p>
+  <% end %>
 <% end %>

@@ -49,7 +49,13 @@ So that I can appreciate pictures of other people's cats
 I want to be able to 'like' pictures
 ```
 
-**Bonus**
+```
+As a user,
+So I know whose cat is whose,
+I want to see the username of the person who posted the picture
+```
+
+**Additional**
 ```
 As a user,
 So that I can change my opinion
@@ -74,13 +80,7 @@ So that I can respect my cat's privacy
 I want to be able to delete pictures
 ```
 
-```
-As a user,
-So I know whose cat is whose,
-I want to see the username of the person who posted the picture
-```
-
-## Acceptance criteria (excluding bonus user stories)
+## Acceptance criteria (excluding additional user stories)
 
 - User sign up
   - User can sign up from the index
@@ -110,3 +110,4 @@ I want to see the username of the person who posted the picture
 - Like pictures
   - On the pictures page, user can click on a 'like' button on any picture
   - The like counter increases each time a different user likes a picture
+  - A user can only like a picture once
