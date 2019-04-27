@@ -5,19 +5,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(extract_sign_up_params)
+    user = User.create(extract_params)
     if user.id
-      flash[:sign_up_success] = true
+      flash[:sign_up_success] = "Congratulations Gran, you're all signed up!"
       redirect_to posts_url
     else
-      flash[:failure] = true
+      flash[:sign_up_failure] = "Something wasn't right, try again!"
       redirect_to new_user_url
     end
   end
 
   private
 
-  def extract_sign_up_params
+  def extract_params
     post = params.require(:user)
     { username: post.require(:username),
       email: post.require(:email),
