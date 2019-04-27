@@ -25,6 +25,47 @@ Bonus if you can add filters!
 
 Remember to proceed in small steps! Getting confused? Make the steps even smaller.
 
+
+# Approach
+## User stories
+- user can sign up
+- user can sign in
+- user can sign out
+
+
+
+- user can post pictures, when signed in
+
+test: feature test that post is visible after posted
+
+
+- user can write comments on pictures (any pictures), when signed in
+
+test: feature test that comments appear after posted
+
+
+- user can like a picture, when signed in
+
+test: feature test that like increases after click is made by user
+
+
+## Steps
+
+- created user model, with devise
+
+
+
+- created post model (which uploads picture)
+
+
+
+
+
+
+
+
+
+
 ## Code Quality
 
 For linting, you can use the `.rubocop.yml` in this repository (or your own!).
