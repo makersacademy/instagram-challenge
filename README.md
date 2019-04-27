@@ -22,13 +22,13 @@ I want to be able to create an InstaCat account
 ```
 As a user,
 So that I can continue to see pictures
-I want to be able to login to InstaCat
+I want to be able to sign in to InstaCat
 ```
 
 ```
 As a user,
 So that my account details are secure
-I want to be able to logout of InstaCat
+I want to be able to sign in to InstaCat
 ```
 
 ```
@@ -89,15 +89,14 @@ I want to see the username of the person who posted the picture
   - User can only create an account with a valid email address
   - When a user signs up, they are redirected to the pictures page
   - When a user signs up, they see a success message
-- User login
-  - User can click on link to login from the index
-  - User is prompted to enter their email address and password to login
-  - User sees a success message on logging in
-  - User is redirected to login/sign up page if they try to visit another page when not logged in
-  - User is redirected to pictures page when logged in
-  - When a user logs in, they see a success message
+- User sign in
+  - User can click on link to sign in from the index
+  - User is prompted to enter their email address and password to sign in
+  - User sees a success message on signing in
+  - User is redirected to sign up page if they try to visit another page when not signed in
+  - User is redirected to pictures page when signed in
 - User sign out
-  - User can see a sign out button once logged in
+  - User can see a sign out button once signed in
   - User sees a success message on sign out
 - Post pictures
   - From the pictures page, user can click a button to find a picture to post
