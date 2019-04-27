@@ -28,9 +28,22 @@ Remember to proceed in small steps! Getting confused? Make the steps even smalle
 
 # Approach
 ## User stories
+
+### Part 1
 - user can sign up
+
+test: signed up interface with details appear after signed up
+
 - user can sign in
+
+test: signed up interface with details appear after sign in
+
 - user can sign out
+
+test: message signed out
+
+
+
 
 
 
