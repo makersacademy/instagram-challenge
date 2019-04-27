@@ -7,6 +7,10 @@ This is an Instagram clone built with Ruby on Rails for our weekend challenge in
 
 Users can sign-up, post pictures, write comments on pictures, and like pictures.
 
+## Database Creation
+
+## Database Initialisation
+
 ## Usage Instructions
 
 ## Testing Instructions
@@ -20,4 +24,3 @@ Users can sign-up, post pictures, write comments on pictures, and like pictures.
 ### Kanban
 
 ## Tech Stack
-
