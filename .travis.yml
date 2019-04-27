@@ -2,24 +2,26 @@ lanugage: ruby
 rvm: 2.5.0
 branches:
   only:
-    - '/.*/'
+  - "/.*/"
 before_install:
-  - gem update --system
-  - gem install bundler
+- gem update --system
+- gem install bundler
 addons:
   postgresql: 9.6
 env:
-  - DB=pgsql
+- DB=pgsql
 before_script:
-  - bundle exec rake db:create
+- bundle exec rake db:create
 script:
-  - bundle exec rake db:migrate RAILS_ENV=test
-  - bundle exec rspec
-
+- bundle exec rake db:migrate RAILS_ENV=test
+- bundle exec rspec
+matrix:
+  fast_finish: true
 deploy:
   provider: heroku
   api_key:
-    secure: CiQu+aQPuP/XPuuLndHhNsCSDuIvhH1yb8ZO08H7zV7bGfc4noT1Oc1mNhFYC8CKhe3eLMk7k0gDMyZVMIw7VPWedfCz0qPtvoN7V11h1dUizkr+1PhD6mNzIyaY0/4gkxVGTzKHUOWxC/CuvX0GkeKqgWQO6L/k67lPr4ryGwobSDRAT4OSFu8+y97RDN2gQnCrT3e4PjBJwkTvssf0p66915omzZ7wd3xqQbGhlw6qpelcnTcLhucxWrznj7pbpp1+CCbs0KVyvYqPup+lSUQMDO8UzGReVGW/WcRRmAbQdymZyPk76bxVg/FqNb8jE9KcAZphwYFQpsaUT7muA0nt53dKG00j/K9bNTWrajXOU/hTF5/JMhTP3wNrWXq77jvuuP0CqrxzbUdY7WSP8//BknuoUrQ3OWgG3TAgu0xoR8nuPb+3REcm48w39T9WyTwQ5PV7bzMvwyW3JU0DjkgQRx/DmxoDjB68nWpSJXBWJpkn7haqx4UDmuG61EaF+HnH5n/tvbdunYXNyqhOhN6Upz+/lP4AjGGQZLl8DQ0l+lr176CmL7sZuI9egp+z3Lc8cX+1Ic75m9GC13AKsTLGgj1BseGonlbGf4T1QZn9iP3/qvRNqzzgB6Y/4hXJBtn/LHVuZeti6uRsxjGxvniKrnpEKBKoyDXEm1wjwMo=
-  app: damp-shore-15175
+    secure: lMnZg7ZNB17DC1v06B/8XcPNK2Uotchqccn7f2nxGNpn7YLU4BiI9ZA7M1CxlA8vYLDJGP+tOfm9jeaaR7gj0OI2aGQjvRAgnwzcTYzNNgT2V69DREAwE0SxhgnP7ylYlLQRdoCS+oANqMVM/3pFH98QXDEzsuD3MJBBK47tL9mvo8NRt+q8ZXOTRewemhKyEqdNKk/3X5pfSDImh0WLF048a+d2agGe7q5X1byTG6d0j/4CB/mOXR9fDIAqWUOelTIquITOIRuBQdSNQBWLj+PKxO/bFrMLJ/v38CY2giqN8QnFqu+Fx+VYRv5CJEgegvPGAGJkKvKAM2yjUI3N/Om/6lE7fv4LMTdhCThBGbA+3IN5U3r8Dp8SPehPzRB6iaCg9bO6C14g3piBDRruZlLhe8LZ0KuifRl4HSbGNPNaI7LEsOZj9vJxHjqc0MWRkPII9sbCRuioowKYaevF+C4nZl/oYLVx7l2ldfliEZdr6aYbOsIskcdpWMq2tdGepuxqf0O780/M4YNiZkvKThrd8nYOahLZohvFfP9r3RrcLorjd6pgOQawjUs+dB5QIR+Q+8Sts3p4uPLNB3PK/ZXvcF6PaUtaLnWm5zoj1USctuRBqVYjEdYkIfIEkT422fmpMQ/jgSYONN8DoB7O7SHeZkP2CGFzig2ib5wFJeQ=
+  app: fast-plains-43428
   on:
     repo: micosmin/instaclone
+    branch: development
