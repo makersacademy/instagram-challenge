@@ -53,6 +53,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
+  gem 'coveralls', require: false
 end
 
 group :development do
