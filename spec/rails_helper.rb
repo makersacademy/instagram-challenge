@@ -8,9 +8,17 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 
-# SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-#   SimpleCov::Formatter::Console,
-#   ])
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  Coveralls::SimpleCov::Formatter,
+  SimpleCov::Formatter::Console
+  ])
+
+SimpleCov.start do
+  add_filter "app/helpers/"
+  add_filter "app/jobs/"
+  add_filter "app/mailers/"
+  add_filter "app/channels/"
+end
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
