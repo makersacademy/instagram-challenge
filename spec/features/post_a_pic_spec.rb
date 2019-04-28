@@ -10,4 +10,15 @@ RSpec.describe "Post a pic", type: :feature do
     visit "/pics/new"
     expect(page).to have_field "Image"
   end
+
+  it "Posting a pic redirects to the feed" do
+    visit "/pics/new"
+    attach_file("Image", Rails.root + "spec/fixtures/files/happy-face.png")
+    click_button "Save"
+    expect(page).to have_current_path("/feed")
+  end
+
+  it "After posting a pic the pic appears in the feed" do
+    # ??
+  end
 end

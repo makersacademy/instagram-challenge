@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get "/feed", to: "pics#index"
   get "/pics/new", to: "pics#new"
+  post "/pics/new", to: "pics#create"
 
   root "users#new"
 end
