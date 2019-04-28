@@ -21,9 +21,9 @@ I want to like and unlike pictures [2]
 
 ## Tasks to do and estimations
 
-**SETTING UP [0/8]**
+**SETTING UP [1/8]**
 
-1. Initialize a Rails project [1]
+1. **Initialize a Rails project [1]**
 2. Add linters [1]
 3. Deploy on Heroku [1]
 4. RSpec [2]
