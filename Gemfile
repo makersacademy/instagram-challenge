@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -20,12 +22,19 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+# Use devise for user authentication, sign-up and sign-in
+gem 'devise'
 # Use bootstrap for html and css
 gem 'bootstrap', '~> 4.1.1'
 # Use jQuery for bootstrap
 gem 'jquery-rails'
 # Use Font Awesome for logos
 gem 'font-awesome-rails'
+# Use rubocop for linting
+gem 'rubocop', require: false
+gem 'rubocop-rails_config'
+# Use rubocop for performance analysis
+gem 'rubocop-performance'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
