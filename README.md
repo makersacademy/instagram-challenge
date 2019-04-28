@@ -29,9 +29,11 @@ bundle install
 
 bundle update
 
-rake db:create
+rails db:create
 
-travis setup heroku
+rails db:migrate
+
+travis setup heroku if you want to deploy it there
 ```
 
 **Heroku setup**  
@@ -70,21 +72,14 @@ Moving apps from staging to production:
 
 `heroku pipelines:promote -r staging`
 
-**Database creation**
-
-`rake db:create`
-
-**Database initialization**
-
-`rake db:migrate`
-
 **How to run the test suite**
 
 `rspec`
 
-- Services (job queues, cache servers, search engines, etc.)
+## To use the app
 
-**Deployment instructions**
+Run `rails server`
+Go to `http://localhost:3000/`
 
 **Contribute**
 
