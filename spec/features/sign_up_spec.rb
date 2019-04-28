@@ -6,24 +6,29 @@ RSpec.describe "Sign up", type: :feature do
       visit "/"
     end
 
-    it "Has a username field" do
+    it "has a username field" do
       expect(page).to have_field "Username"
     end
 
-    it "Has an email field" do
-      expect(page).to have_field "Email address"
+    it "has an email field" do
+      expect(page).to have_field "Email"
     end
 
-    it "Has a password field" do
+    it "has a password field" do
       expect(page).to have_field "Password"
     end
 
-    it "Has a confirm password field" do
+    it "has a confirm password field" do
       expect(page).to have_field "Confirm password"
     end
 
-    it "Has a submit button" do
+    it "has a submit button" do
       expect(page).to have_button "Sign up"
     end
   end
+
+  # it "A user can sign up" do
+  #   sign_up
+  #   expect(page).to have_content "You have signed up succesfully"
+  # end
 end
