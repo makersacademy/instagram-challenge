@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "Commenting", type: :feature do
-  it "A picture in the feed has a comment field" do
+  it "Users can comment" do
     visit "/pics/new"
     attach_file("Image", Rails.root + "spec/fixtures/files/happy-face.png")
     click_button "Save"
-    expect(page).to have_field "Pass comment"
+    fill_in "Add a comment", with: "Wow nice pic"
+    click_button "Pass judgement"
+    expect(page).to have_content "Wow nice pic"
   end
 end
