@@ -44,4 +44,12 @@ describe 'Profile Features' do
     end
   end
 
+  feature 'Has an edit button' do
+    scenario 'on a profile page' do
+      sign_up_helper
+      click_on(id: 'profile_link')
+      expect(page).to have_css('.edit-profile')
+    end
+  end
+
 end
