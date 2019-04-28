@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.0'
 
+# Authentication gem
+gem 'devise'
 # Travis gem
 gem 'travis', '~> 1.8', '>= 1.8.9'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -32,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-gem 'mini_magick', '~> 4.8'
+# gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
