@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     end
   end 
 
+  resources :posts do 
+    resource :likes do 
+    end 
+  end  
+
   root 'posts#index'
 
 end

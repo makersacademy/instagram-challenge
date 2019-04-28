@@ -1,16 +1,22 @@
 <div class="container">
-<div class="col-md-4 px-0">
-<%= image_tag @post.image.url, class: "img-fluid"%>
-</div>
-<div>
-<center>
-<h2>Comments</h2>
-<% @post.comments.each do |x| %>
-<%= x.body %>
-</br>
-<% end %>
+  <center>
+  <div class="col-md-4 px-0">
+    <%= image_tag @post.image.url, class: "img-fluid"%>
+  </div>
 
+  <div>
+  <h2>Comments</h2>
+    <% @post.comments.each do |x| %>
+    <%= x.body %>
+    </br>
+    <% end %>
+    <%= link_to "New comment", new_post_comment_path(@post) %>
+  </div>
 
-<%= link_to "New comment", new_post_comment_path(@post) %>
-</center>
+  <div>
+  Likes: <%=@post.likes.count %> 
+  <%= button_to "Like", post_likes_path(@post), method: :post	%>
+  </div>
+
+  </center>
 </div>

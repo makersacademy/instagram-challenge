@@ -17,13 +17,15 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
-## How to start
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+## Setup instructions 
+- Run bundle
+- Run 'rails s' to start server
+- To run tests: run rspec in directory
+
+
+
 
 
 # Approach
@@ -46,7 +48,6 @@ test: message signed out
 
 
 
-
 - user can post pictures, when signed in
 
 test: feature test that post is visible after posted
@@ -62,7 +63,8 @@ test: feature test that comments appear after posted
 
 test: feature test that like increases after click is made by user
 
-
+- user can like a picture, when signed in
+test (feature): 
 
 
 
@@ -73,12 +75,22 @@ test: feature test that like increases after click is made by user
 
 
 - created post model (which uploads picture)
+beleongs to user
+
+
+- created comment model
+beleongs to user, post
+
+
+- created like model 
+beleongs to user, post
 
 
 
 
 ## What I didn't do (yet)
 - have error message shown if clicking on upload your image when no file is attached.
+- acecess control (only signed in users can post image, comment, like), or it gives an error
 
 
 

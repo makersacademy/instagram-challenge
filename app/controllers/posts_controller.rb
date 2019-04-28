@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_from_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:sucess] = 'image uploaded'
+      flash[:alert] = 'image uploaded'
     redirect_to root_path
     else 
       render :new, error: "Image wasn't posted"
