@@ -21,7 +21,10 @@ $(document).ready(function() {
       $(this).remove;
     });
   }, 1500);
-});
 
-// var notice_alert = document.getElementById("notice_alert")
-// notice_alert.addEventListener()
+  setTimeout(() => {
+    $('#notice_wrapper').fadeOut('slow', function() {
+      $(this).remove;
+    });
+  }, 1500);
+});
