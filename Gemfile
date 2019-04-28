@@ -5,8 +5,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.0'
 
-# Authentication gem
-gem 'devise'
 # Travis gem
 gem 'travis', '~> 1.8', '>= 1.8.9'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -55,6 +53,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'database_cleaner'
   gem 'devise'
+  gem 'yarn'
   gem 'rspec-rails', '~> 3.5'
   gem 'rubocop', require: false
   gem 'rubocop-performance'
