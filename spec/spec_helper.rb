@@ -24,6 +24,8 @@ SimpleCov.start 'rails' do
   add_filter  'app/helpers'
   add_filter  'app/controllers/posts_controller.rb'
   add_filter  'app/models/application_record.rb'
+  add_filter  '/spec/helpers'
+
 end
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[

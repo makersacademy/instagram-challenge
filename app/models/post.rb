@@ -6,10 +6,13 @@ class Post < ActiveRecord::Base
   has_many :likes
   # allows post.likes to be called
   mount_uploader :image, ImageUploader
-  validates_presence_of :image
+  validate :image_presence
   # has_one_attached :image
 
-
+  
+  def image_presence
+    errors[:image] << "should upload image" if image.size == 0.megabytes
+  end 
 
 
 end

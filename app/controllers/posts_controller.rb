@@ -13,21 +13,21 @@ class PostsController < ApplicationController
 
   def create 
   #  dont want a if statement here, is there a validate before_action in controller?
-    if params[:image]
-      @post = Post.new(post_from_params)
-      @post.user_id = current_user.id
-      if @post.save
-        flash[:alert] = 'image uploaded'
-      redirect_to root_path
-      else 
-        render :new, error: "Image wasn't posted"
-      end 
+    if params[:post].present?
+      # p params
+        @post = Post.new(post_from_params)
+        @post.user_id = current_user.id
+        if @post.save
+          flash[:alert] = 'image uploaded'
+        redirect_to root_path
+        else 
+          render :new, error: "Image wasn't posted"
+        end 
     else 
       flash[:alert]= "No image file selected for upload"
       redirect_to new_post_path
     end 
-  end
-
+  end 
 
   def show
     @post = Post.find(params[:id])
@@ -36,9 +36,6 @@ class PostsController < ApplicationController
 
   private
   def post_from_params
-    params.require(:post).permit(:image)
+      params.require(:post).permit(:image)
   end 
-
-
-
 end
