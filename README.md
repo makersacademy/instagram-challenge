@@ -21,12 +21,12 @@ I want to like and unlike pictures [2]
 
 ## Tasks to do and estimations
 
-**SETTING UP [1/8]**
+**SETTING UP [4/8]**
 
 1. **Initialize a Rails project [1]**
-2. Add linters [1]
+2. **Add a linter [1]**
 3. Deploy on Heroku [1]
-4. RSpec [2]
+4. **RSpec [2]**
 5. Add Travis CI [3]
 6. Make sure everything works!
 
@@ -47,3 +47,10 @@ I want to like and unlike pictures [2]
 13. Link to Posts [2]
 
 13. Make sure everything works!
+
+
+## Personal goals
+
+1. Improve estimation skills
+2. Learn how to deploy on Heroku
+3. Learn how to set up a Rails app
