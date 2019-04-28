@@ -2,6 +2,8 @@
 ![Coverage](https://github.com/micosmin/instaclone/blob/development/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/33b079577460f3ad758b/maintainability)](https://codeclimate.com/github/micosmin/instaclone/maintainability)
 
+Version 1.1
+
 # README
 
 Trello board link: https://trello.com/b/BhHxImVc/instragram

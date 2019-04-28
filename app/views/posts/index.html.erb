@@ -1,5 +1,116 @@
-<h2>Hello World</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
-<h5>Pushed to stagging</h5>
+
+<div id="page_name">
+<h1>Feed</h1>
+</div>
+
+<br>
+  <div style="max-width:45%; margin:10px auto" > 
+    <div class="input-group input-group-sm mb-3">
+
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">
+        <div class="image-cropper">
+
+        <% if user_signed_in?%>
+          <% if current_user.avatar.attached? == true %>
+            <%=image_tag current_user.avatar, class:"profile-pic"%>
+          <% else %>
+            <img src='<%= image_url("sparky.png")%>' class="profile-pic" />
+          <%end%>
+        <%else%>
+          <img src='<%= image_url("sparky.png")%>' class="profile-pic" />
+        <%end%>
+        </div>
+      </span>
+    </div>
+  
+    <input type="text" data-toggle="modal"  data-target="#myModal" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="What would you like to share?" >
+
+    </div>
+  </div>
+
+  <% @posts.each do |post| %>
+
+    <div class="card text-center" style="max-width:45%; margin:10px auto" >
+
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-pills ">
+          <li class="nav-item mr-auto">
+            <p class="card-text user">User: <%= post.user.first_name %></p>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to 'Edit', edit_post_path(post) %>
+          </li>
+      
+          <li class="nav-item">
+            <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </li>
+        </ul>
+      </div>
+      
+      <%= link_to(post) do%>
+        <%=image_tag post.image, height:'500px', class:'card-image img-fluid'%>
+      <%end%>
+      
+
+      <div class="card-body">
+        <p class="card-text description"> Description: <%= post.description.html_safe %></p>
+
+      </div>
+
+      <div class="card-footer">
+        <%= post.likes %>
+        <% time_diff = Time.now - post.created_at %>
+        <small class="text-muted"><%= Time.at(time_diff.to_i.abs).utc.strftime "%H:%M:%S" %></small>
+      </div>
+    </div>
+
+  <%end%>
+
+<%# Modal %>
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+      
+        <%post = Post.create%>
+        
+        <%= form_with(model: post, local: true) do |form| %>
+
+        <div class="modal-header">
+          <div class="actions ">
+            <%= form.submit%>
+          </div>
+        </div>
+        
+        <div class="modal-body">
+
+        <div class="form-group">
+         <%= form.text_area :description, :required => 'required', :placeholder => "What's happening", :class=> "form-control", :rows=>3%>
+        </div>
+
+        <div class="field image-upload">
+        <label for="file-input">
+
+        <img src='<%= asset_path("add_image.jpg")%>' />
+
+         </label>
+          <%= form.file_field :image, :required => 'required', :id => "file-input" %>
+        </div>
+
+        <%end%>
+
+        <p></p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

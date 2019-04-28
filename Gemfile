@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.0'
 
+gem 'devise'
 # Travis gem
 gem 'travis', '~> 1.8', '>= 1.8.9'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
