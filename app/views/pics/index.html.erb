@@ -5,20 +5,21 @@
 <div id="the-feed">
   <% @pics.each do |pic| %>
     <div class="pic">
-    <img src="<%= url_for(pic.image) %>" >
-    <div class="comments">
-      <% pic.comments.each do |comment| %>
-        <div class="a-comment">
-          <%= comment.body %>
-        </div>
-      <% end %>
-      <%= form_with(model: [ pic, pic.comments.build ], local: true) do |f| %>
-        <div class="comment-box">
-          <%= f.label :body, "Add a comment" %><br>
-          <%= f.text_field :body %>
-          <%= f.submit "Pass judgement" %>
-        </div>
-      <% end %>
+      <img src="<%= url_for(pic.image) %>" >
+      <div class="comments">
+        <% pic.comments.each do |comment| %>
+          <div class="a-comment">
+            <%= comment.body %>
+          </div>
+        <% end %>
+        <%= form_with(model: [ pic, pic.comments.build ], local: true) do |f| %>
+          <div class="comment-box">
+            <%= f.label :body, "Add a comment" %><br>
+            <%= f.text_field :body %>
+            <%= f.submit "Pass judgement" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
