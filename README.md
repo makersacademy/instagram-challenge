@@ -1,4 +1,5 @@
 # Instagram Challenge
+[![Build Status](https://travis-ci.com/m-budryte/instagram-challenge.svg?branch=master)](https://travis-ci.com/m-budryte/instagram-challenge)
 
 ## User Stories
 ```
