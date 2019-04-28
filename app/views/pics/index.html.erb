@@ -1,10 +1,17 @@
 <h2>The feed</h2>
 
-<%= link_to "Post a pic", pics_new_path %>
+<%= link_to "Post a pic", new_pic_path %>
 
 <div id="the-feed">
   <% @pics.each do |pic| %>
     <div class="pic">
     <img src="<%= url_for(pic.image) %>" >
+    <%= form_with(model: [ pic, pic.comments.build ], local: true) do |f| %>
+      <div class="comment-box">
+        <%= f.label :body, "Pass comment" %><br>
+        <%= f.text_field :body %>
+        <%= f.submit %>
+      </div>
+    <% end %>
   <% end %>
 </div>

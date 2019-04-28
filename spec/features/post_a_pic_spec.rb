@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Post a pic", type: :feature do
   it "The feed page has a 'post a pic' link" do
-    visit "/feed"
+    visit "/pics"
     expect(page).to have_link "Post a pic"
   end
 
@@ -15,7 +15,7 @@ RSpec.describe "Post a pic", type: :feature do
     visit "/pics/new"
     attach_file("Image", Rails.root + "spec/fixtures/files/happy-face.png")
     click_button "Save"
-    expect(page).to have_current_path("/feed")
+    expect(page).to have_current_path("/pics")
   end
 
   it "After posting a pic the pic appears in the feed" do

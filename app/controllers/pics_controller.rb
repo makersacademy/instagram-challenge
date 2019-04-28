@@ -10,7 +10,7 @@ class PicsController < ApplicationController
   def create
     pic = Pic.create(pic_params)
     if pic.save
-      redirect_to feed_path
+      redirect_to pics_path
     else
       render 'new'
     end
