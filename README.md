@@ -31,22 +31,22 @@ I want to like and unlike pictures [2]
 6. Make sure everything works!
 
 **POSTS [0/11]**
-6. Scaffold for Posts [1]
-7. Add 'add a picture' functionality [5]
-8. R and D functionality [3]
-9. Bootstrap [2]
+7. Scaffold for Posts [1]
+8. Add 'add a picture' functionality [5]
+9. R and D functionality [3]
+10. Bootstrap [2]
 
 **LIKES [0/2]**
-10. Add likes
-  "Like" [1]
-  "Unlike" [1]
+11. Add likes
+  - "Like" [1]
+  - "Unlike" [1]
 
 **COMMENTS [0/6]**
-11. Scaffold for Comments [1]
-12. CRUD [3]
-13. Link to Posts [2]
+12. Scaffold for Comments [1]
+13. CRUD [3]
+14. Link to Posts [2]
 
-13. Make sure everything works!
+15. Make sure everything works!
 
 
 ## Personal goals
