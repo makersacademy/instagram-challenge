@@ -6,7 +6,8 @@ class Post < ActiveRecord::Base
   has_many :likes
   # allows post.likes to be called
   mount_uploader :image, ImageUploader
-
+  validates_presence_of :image
+  # has_one_attached :image
 
 
 
