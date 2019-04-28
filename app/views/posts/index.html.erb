@@ -38,12 +38,24 @@
             <p class="card-text user">User: <%= post.user.first_name %></p>
           </li>
 
-          <li class="nav-item">
-            <%= link_to 'Edit', edit_post_path(post) %>
-          </li>
-      
-          <li class="nav-item">
-            <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <li>
+            
+          <div class="btn-group">
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </button>
+            
+            <div class="dropdown-menu dropdown-menu-right">
+              <button class="dropdown-item" type="button">
+              <%= link_to 'Edit', edit_post_path(post) %>
+              </button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" type="button">
+              <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </button>
+            </div>
+          </div>
+  
+
           </li>
         </ul>
       </div>
@@ -82,11 +94,11 @@
       <div class="card-footer d-flex flex-nowrap">
         <div class="mr-auto p-2">
           <% time_diff = Time.now - post.created_at %>
-          <small class="text-muted"><%= Time.at(time_diff.to_i.abs).utc.strftime "%H:%M:%S" %></small>
+          <p class="text-muted"><%= Time.at(time_diff.to_i.abs).utc.strftime "%H:%M:%S" %></p>
         </div>
 
         <div class="p-2">
-          <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          <a class="btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
             See all <%=post.comments.all.count%> comments
           </a>
         </div>
@@ -105,15 +117,21 @@
                 <% else %>
                   <img src='<%= image_url("sparky.png")%>' class="profile-pic-comment" />
                 <%end%>
-              <%else%>
+                <%else%>
                 <img src='<%= image_url("sparky.png")%>' class="profile-pic-comment" />
               <%end%>
               </div>
             </div>
-            <div class="p-2">
+            <div class=" mr-auto  p-2">
               <p><strong><%= c.user.first_name %></strong>&nbsp&nbsp<%= c.body %></p>
               <p><%= c.updated_at %></p>
             </div>
+            <% if current_user == c.user %>
+            <div class="p-2">
+            <%= link_to 'Edit', edit_comment_path(c), class: "btn" %>
+            <%= link_to 'Delete', c, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
+            </div>
+            <%end%>
           </div>
         <%end%>
       </div>
@@ -133,37 +151,39 @@
       <!-- Modal content-->
       <div class="modal-content">
       
-        <%post = Post.create%>
+      <%post = Post.create%>
         
-        <%= form_with(model: post, local: true) do |form| %>
-
-        <div class="modal-header">
-          <div class="actions ">
-            <%= form.submit%>
-          </div>
-        </div>
+      <%= form_with(model: post, local: true) do |form| %>
         
         <div class="modal-body ">
 
         <div class="form-group">
-        <%= form.text_area :description, :required => 'required', :placeholder => "What's happening", :class=> "form-control", :rows=>3%>
+
+          <%= form.text_area :description, :required => 'required', :placeholder => "What's happening", :class=> "form-control", :rows=>3%>
+        
         </div>
 
-        <div class="field image-upload">
-
-        <label for="file-input">
-
-        <img src='<%= asset_path("add_image.jpg")%>' />
-
-        </label>
-
-          <%= form.file_field :image, :required => 'required', :id => "file-input" %>
+        <div class="d-flex flex-nowrap">
+        <div class="p-2">
+          <div class="field image-upload">
+            
+            <label for="file-input">
+            <%# <img src='<%= asset_path("add_image.jpg")'/> %>
+            <%= form.file_field :image %>
+            </label>
+            
+          </div>
         </div>
 
-        <%end%>
-
-        <p></p>
+        <div class="p-2">
+          <div class="actions ">
+            <%= form.submit%>
+          </div>
         </div>
+        </div>
+      <%end%>
+
+      </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
