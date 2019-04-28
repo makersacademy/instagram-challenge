@@ -7,6 +7,7 @@ RSpec.describe "posts/index", type: :view do
 
   before(:each) do
     sign_in user
+    
     file = fixture_file_upload(Rails.root.join('public', 'download.png'), 'image/png')
 
     assign(:posts, [

@@ -4,8 +4,6 @@
 <h1>Feed</h1>
 </div>
 
-<%= link_to 'New Post', new_post_path %>
-
 <br>
   <div style="max-width:45%; margin:10px auto" > 
     <div class="input-group input-group-sm mb-3">
@@ -13,7 +11,16 @@
     <div class="input-group-prepend">
       <span class="input-group-text" id="inputGroup-sizing-default">
         <div class="image-cropper">
-        <%=image_tag current_user.avatar, class:"profile-pic"%>
+
+        <% if user_signed_in?%>
+          <% if current_user.avatar == true %>
+            <%=image_tag current_user.avatar, class:"profile-pic"%>
+          <% else %>
+            <img src='<%= image_url("sparky.png")%>' class="profile-pic" />
+          <%end%>
+        <%else%>
+          <img src='<%= image_url("sparky.png")%>' class="profile-pic" />
+        <%end%>
         </div>
       </span>
     </div>
@@ -49,13 +56,14 @@
       
 
       <div class="card-body">
-        <p class="card-text description"> Description: <%= post.description %></p>
+        <p class="card-text description"> Description: <%= post.description.html_safe %></p>
 
       </div>
 
       <div class="card-footer">
         <%= post.likes %>
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <% time_diff = Time.now - post.created_at %>
+        <small class="text-muted"><%= Time.at(time_diff.to_i.abs).utc.strftime "%H:%M:%S" %></small>
       </div>
     </div>
 
