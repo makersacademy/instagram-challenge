@@ -23,6 +23,6 @@ RSpec.feature "Comment", type: :feature do
     create_second_user_and_sign_up
     fill_in 'comment_body', with: 'Your cat is super cute'
     click_button 'Add'
-    expect(page).to have_content('secondtestuser')
+    expect(page).to have_content('@secondtestuser')
   end
 end

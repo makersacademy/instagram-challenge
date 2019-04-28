@@ -3819,3 +3819,171 @@ Processing by ActiveStorage::DiskController#show as JPEG
 Completed 304 Not Modified in 3ms (ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2019-04-28 11:48:49 +0100
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/student/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered layouts/_error.html.erb (0.6ms)
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (26.9ms)
+  Rendered devise/menu/_login_items.html.erb (0.6ms)
+Completed 200 OK in 279ms (Views: 235.9ms | ActiveRecord: 33.4ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-04-28 11:48:53 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.7ms)
+  Rendered devise/menu/_login_items.html.erb (0.4ms)
+Completed 200 OK in 25ms (Views: 23.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-04-28 11:48:57 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tCkTq1pNCUu2easD+mGZbKimoYyVcRLSz+NeNSq1SOjxF5ZZgSIqpOpLV4gu+5VNMBpscIDeT21xthkRXAYH0g==", "user"=>{"email"=>"amy_jordan@live.co.uk", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "amy_jordan@live.co.uk"], ["LIMIT", 1]]
+  ↳ /Users/student/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Completed 302 Found in 140ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/" for ::1 at 2019-04-28 11:48:58 +0100
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/student/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#index as HTML
+  [1m[36mPost Load (4.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:13
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mActiveStorage::Attachment Load (4.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:7
+  [1m[36mActiveStorage::Blob Load (1.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:7
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/index.html.erb:9
+  [1m[36mComment Load (2.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/index.html.erb:12
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/views/posts/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/views/posts/index.html.erb:14
+  Rendered posts/index.html.erb within layouts/application (95.1ms)
+  Rendered devise/menu/_login_items.html.erb (0.5ms)
+Completed 200 OK in 130ms (Views: 85.1ms | ActiveRecord: 30.9ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bcf921244211096a1bac7906da0e7d2b61ca081b/stanley.jpg" for ::1 at 2019-04-28 11:48:58 +0100
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--bcf921244211096a1bac7906da0e7d2b61ca081b", "filename"=>"stanley"}
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/student/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (1.9ms) [0m[34mGenerated URL for file at key: BVVR1g2n3VGoGqJFmB2DPuuM (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRbFpXVWpGbk1tNHpWa2R2UjNGS1JtMUNNa1JRZFhWTkJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljM1JoYm14bGVTNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNOMFlXNXNaWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDQtMjhUMTA6NTM6NTguMjQ5WiIsInB1ciI6ImJsb2Jfa2V5In19--4a4db31f47389456aecb5e90c4bfffa84506a472/stanley.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22stanley.jpg%22%3B+filename%2A%3DUTF-8%27%27stanley.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRbFpXVWpGbk1tNHpWa2R2UjNGS1JtMUNNa1JRZFhWTkJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljM1JoYm14bGVTNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNOMFlXNXNaWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDQtMjhUMTA6NTM6NTguMjQ5WiIsInB1ciI6ImJsb2Jfa2V5In19--4a4db31f47389456aecb5e90c4bfffa84506a472/stanley.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22stanley.jpg%22%3B+filename%2A%3DUTF-8%27%27stanley.jpg
+Completed 302 Found in 7ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRbFpXVWpGbk1tNHpWa2R2UjNGS1JtMUNNa1JRZFhWTkJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljM1JoYm14bGVTNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNOMFlXNXNaWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDQtMjhUMTA6NTM6NTguMjQ5WiIsInB1ciI6ImJsb2Jfa2V5In19--4a4db31f47389456aecb5e90c4bfffa84506a472/stanley.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22stanley.jpg%22%3B+filename%2A%3DUTF-8%27%27stanley.jpg" for ::1 at 2019-04-28 11:48:58 +0100
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"stanley.jpg\"; filename*=UTF-8''stanley.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRbFpXVWpGbk1tNHpWa2R2UjNGS1JtMUNNa1JRZFhWTkJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljM1JoYm14bGVTNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNOMFlXNXNaWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDQtMjhUMTA6NTM6NTguMjQ5WiIsInB1ciI6ImJsb2Jfa2V5In19--4a4db31f47389456aecb5e90c4bfffa84506a472", "filename"=>"stanley"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/likes.1" for ::1 at 2019-04-28 11:49:08 +0100
+Processing by LikesController#create as 
+  Parameters: {"authenticity_token"=>"sv7KqMTT6bnT6W9MX7bWBqJMq5RbDuFCgpCgr/PD5etltMlUegg+0d5SKzYqPgM0/WIIbmGhf7XznjF/i4CW7w=="}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/student/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mLike Exists (2.4ms)[0m  [1m[34mSELECT  1 AS one FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."post_id" = $2 LIMIT $3[0m  [["user_id", 2], ["post_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:13
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 45ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/posts" for ::1 at 2019-04-28 11:49:08 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/student/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:13
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:7
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/index.html.erb:9
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/index.html.erb:12
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/views/posts/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/views/posts/index.html.erb:14
+  Rendered posts/index.html.erb within layouts/application (9.9ms)
+  Rendered devise/menu/_login_items.html.erb (0.8ms)
+Completed 200 OK in 27ms (Views: 22.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRbFpXVWpGbk1tNHpWa2R2UjNGS1JtMUNNa1JRZFhWTkJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljM1JoYm14bGVTNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNOMFlXNXNaWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDQtMjhUMTA6NTM6NTguMjQ5WiIsInB1ciI6ImJsb2Jfa2V5In19--4a4db31f47389456aecb5e90c4bfffa84506a472/stanley.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22stanley.jpg%22%3B+filename%2A%3DUTF-8%27%27stanley.jpg" for ::1 at 2019-04-28 11:49:08 +0100
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"stanley.jpg\"; filename*=UTF-8''stanley.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRbFpXVWpGbk1tNHpWa2R2UjNGS1JtMUNNa1JRZFhWTkJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljM1JoYm14bGVTNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNOMFlXNXNaWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDQtMjhUMTA6NTM6NTguMjQ5WiIsInB1ciI6ImJsb2Jfa2V5In19--4a4db31f47389456aecb5e90c4bfffa84506a472", "filename"=>"stanley"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/posts/1/comments" for ::1 at 2019-04-28 11:49:18 +0100
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1gEGNJ/lVRG8/uueV1pnS+A/u62hqW/2lTWVAZLx9isBSwXIIT6CebFFr+Qi0rJ5vxEYV5sG8QHkOwTR6rKFLw==", "comment"=>{"body"=>"Alex is here"}, "commit"=>"Add", "post_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/student/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[36mComment Create (4.6ms)[0m  [1m[32mINSERT INTO "comments" ("post_id", "user_id", "created_at", "updated_at", "body") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["post_id", 1], ["user_id", 2], ["created_at", "2019-04-28 10:49:18.138891"], ["updated_at", "2019-04-28 10:49:18.138891"], ["body", "Alex is here"]]
+  ↳ app/controllers/comments_controller.rb:5
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:5
+Redirected to http://localhost:3000/posts
+Completed 302 Found in 16ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/posts" for ::1 at 2019-04-28 11:49:18 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/student/.rvm/gems/ruby-2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/controllers/posts_controller.rb:13
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:7
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:7
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/index.html.erb:9
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 1]]
+  ↳ app/views/posts/index.html.erb:12
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/views/posts/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/views/posts/index.html.erb:14
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/views/posts/index.html.erb:14
+  Rendered posts/index.html.erb within layouts/application (9.8ms)
+  Rendered devise/menu/_login_items.html.erb (0.6ms)
+Completed 200 OK in 28ms (Views: 22.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRbFpXVWpGbk1tNHpWa2R2UjNGS1JtMUNNa1JRZFhWTkJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljM1JoYm14bGVTNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNOMFlXNXNaWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDQtMjhUMTA6NTM6NTguMjQ5WiIsInB1ciI6ImJsb2Jfa2V5In19--4a4db31f47389456aecb5e90c4bfffa84506a472/stanley.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22stanley.jpg%22%3B+filename%2A%3DUTF-8%27%27stanley.jpg" for ::1 at 2019-04-28 11:49:18 +0100
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"stanley.jpg\"; filename*=UTF-8''stanley.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRRbFpXVWpGbk1tNHpWa2R2UjNGS1JtMUNNa1JRZFhWTkJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSkJhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljM1JoYm14bGVTNXFjR2NpT3lCbWFXeGxibUZ0WlNvOVZWUkdMVGduSjNOMFlXNXNaWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRPSIsImV4cCI6IjIwMTktMDQtMjhUMTA6NTM6NTguMjQ5WiIsInB1ciI6ImJsb2Jfa2V5In19--4a4db31f47389456aecb5e90c4bfffa84506a472", "filename"=>"stanley"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
