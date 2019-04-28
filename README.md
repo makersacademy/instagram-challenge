@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
 
+[![Build Status](https://travis-ci.org/amyj0rdan/instagram-challenge.svg?branch=master)](https://travis-ci.org/amyj0rdan/instagram-challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/616dd311f28ad8c5618d/maintainability)](https://codeclimate.com/github/amyj0rdan/instagram-challenge/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/616dd311f28ad8c5618d/test_coverage)](https://codeclimate.com/github/amyj0rdan/instagram-challenge/test_coverage)
+
 Week 8 weekend challenge from Makers Academy.
 
 ## Task

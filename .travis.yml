@@ -1,10 +1,21 @@
+env:
+  global:
+  - secure: UGX5AP2WTOX3KfTKpsNl3ox2ny99E1RcBzOfPF7S92DTPQvNOD0uGKzWT58GijLRDzNw2adj4/++tv2uH6QWBkZRGQ6oN2SjBp5sM0ADSNUnIrE2cNpAlcUol+EwvFyBysMZSXxVNmm1iA2GaXD7u7O81fW8Ev0wTVgxHTc8+kt8iKO68TfLel6ZA552eeIRK55QuYEjvM70LZ3HcaR/gZ6JizyI/37nnj73M8bgMyhDxpHEmfxhj8Vr3cSbcoHtrd21qmeKBcw2UEeOOFRTGjvpSxhXdyDHpcLVnUcvP40bJW6uqpgeSpt44c9aAz2MsGqOhU7k8lBReP8bokIaljpjeaDHASHBqAjIvLoj3JwQJgJ+mdw3jviI+wE4+7nWSyyfOtWVx57MeTsbHBK1Xc78toMWpzPR6GdgDVKmPCyFnZVvoslqdR5rK0Ri3zJcQ+yFGCX6z8wYGWuivTOix6b6SEpId+2/X0noiRK7+6TcZVCmPboVUxBnek9nEl3c9QZYUKgHxvR1kccloNg9prAi4p7ZOshfNFuYkzHHO/NM8qE5I6tT5lQWH18H9P4RIuB2KMfHSxTD0p5SkQJ9OErP5zQ93nlHptWDta+RqFzJ9G1JHqaUqPjffkwnJFk9dAUnTJR0bJBoRvj6OPX+ZnhMDWNFFEbfIhIGCesKyG4=
+
 language: ruby
 
-rvm: '2.6.0'
+rvm: 2.6.0
 
 before_script:
 - bundle exec rails db:create RAILS_ENV=test
 - bundle exec rails db:migrate RAILS_ENV=test
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 
 script:
 - bundle exec rspec
+
+after_script:
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
