@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 
 class Post < ActiveRecord::Base
@@ -9,10 +10,8 @@ class Post < ActiveRecord::Base
   validate :image_presence
   # has_one_attached :image
 
-  
+
   def image_presence
     errors[:image] << "should upload image" if image.size == 0.megabytes
-  end 
-
-
+  end
 end
