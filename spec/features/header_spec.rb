@@ -31,4 +31,11 @@ describe 'Header Features' do
     end
   end
 
+  feature 'Has profile link' do
+    scenario 'when signed in' do
+      sign_up_helper
+      expect(page).to have_css("#profile_link")
+    end
+  end
+
 end
