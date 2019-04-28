@@ -45,7 +45,7 @@ Push application to heroku app
 
 `git push heroku_app_name master`
 
-**Heroku pipelin**
+**Heroku pipeline**
 
 Check this website for setting up a pipeline in heroku
 https://devcenter.heroku.com/articles/pipelines
