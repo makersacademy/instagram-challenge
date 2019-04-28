@@ -7,17 +7,9 @@ Week 8 weekend challenge from Makers Academy.
 
 ## Task
 
-Build Instagram: Simple huh!
-
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters!
-
 ## Getting started
-
-## Getting started
-
-First, clone this repository. Then:
 
 ```bash
 > git clone https://github.com/amyj0rdan/instagram-challenge
@@ -38,6 +30,21 @@ First, clone this repository. Then:
 > bin/rails server # Start the server at localhost:3000
 ```
 
+## Screenshots
+
+#### Index page - sign up
+![sign_up](https://user-images.githubusercontent.com/45539085/56868434-49077500-69ea-11e9-96ce-1e5203314cfb.png)
+
+#### Sign in
+![sign_in](https://user-images.githubusercontent.com/45539085/56868475-b87d6480-69ea-11e9-9539-482a7ade0a2e.png)
+
+#### Posts index
+![posts_index](https://user-images.githubusercontent.com/45539085/56868480-c9c67100-69ea-11e9-868a-8b8bd21ecdbe.png)
+
+![posts_new_comment](https://user-images.githubusercontent.com/45539085/56868483-d9de5080-69ea-11e9-91e1-d8c9ac05c589.png)
+
+#### Add post
+![add_post](https://user-images.githubusercontent.com/45539085/56868491-eebae400-69ea-11e9-9920-35c9f206138b.png)
 
 ## User stories
 
