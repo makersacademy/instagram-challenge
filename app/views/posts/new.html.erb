@@ -1,2 +1,17 @@
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<%= flash[:post_failure] %>
+
+<% provide(:title, 'Upload a picture') %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@post) do |f| %>
+
+      <%= f.label :caption %>
+      <%= f.text_field :caption %>
+
+      <%= f.label :photo %>
+      <%= f.file_field :photo %>
+
+      <%= f.submit "Post" %>
+    <% end %>
+  </div>
+</div>
