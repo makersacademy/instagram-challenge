@@ -33,18 +33,18 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 ## Screenshots
 
 #### Index page - sign up
-![sign_up](https://user-images.githubusercontent.com/45539085/56868434-49077500-69ea-11e9-96ce-1e5203314cfb.png)
+<img src="https://user-images.githubusercontent.com/45539085/56868434-49077500-69ea-11e9-96ce-1e5203314cfb.png" alt="index-page" width=30%>
 
 #### Sign in
-![sign_in](https://user-images.githubusercontent.com/45539085/56868475-b87d6480-69ea-11e9-9539-482a7ade0a2e.png)
+<img src="https://user-images.githubusercontent.com/45539085/56868475-b87d6480-69ea-11e9-9539-482a7ade0a2e.png" alt="sign-in" width=30%>
 
 #### Posts index
-![posts_index](https://user-images.githubusercontent.com/45539085/56868480-c9c67100-69ea-11e9-868a-8b8bd21ecdbe.png)
+<img src="https://user-images.githubusercontent.com/45539085/56868480-c9c67100-69ea-11e9-868a-8b8bd21ecdbe.png" alt="posts-index" width=30%>
 
-![posts_new_comment](https://user-images.githubusercontent.com/45539085/56868483-d9de5080-69ea-11e9-91e1-d8c9ac05c589.png)
+<img src="https://user-images.githubusercontent.com/45539085/56868483-d9de5080-69ea-11e9-91e1-d8c9ac05c589.png" alt="post-comment" width=30%>
 
 #### Add post
-![add_post](https://user-images.githubusercontent.com/45539085/56868491-eebae400-69ea-11e9-9920-35c9f206138b.png)
+<img src="https://user-images.githubusercontent.com/45539085/56868491-eebae400-69ea-11e9-9920-35c9f206138b.png" alt="add-post" width=30%>
 
 ## User stories
 
