@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Footer features' do
+describe 'Footer Features' do
 
   feature 'Footer displays' do
     scenario 'on the homepage' do

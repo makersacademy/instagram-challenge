@@ -5,3 +5,10 @@ def sign_up_helper
   fill_in 'user_password_confirmation', with: '123456'
   click_button 'Sign up'
 end
+
+def sign_in_helper
+  visit 'users/sign_in'
+  fill_in 'user_email', with: 'test@test.com'
+  fill_in 'user_password', with: '123456'
+  click_button 'Log in'
+end

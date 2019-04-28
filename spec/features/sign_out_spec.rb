@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'Sign-out Feature' do
+describe 'Sign-out Features' do
 
   feature 'Redirects to home page' do
     scenario 'when clicking on logout icon' do
