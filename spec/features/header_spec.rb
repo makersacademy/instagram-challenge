@@ -10,3 +10,10 @@ feature 'Navigation bar displays' do
     expect(page).to have_content("Instaclone")
   end
 end
+
+feature 'Has login link' do
+  scenario 'in the navbar' do
+    visit "/home/index"
+    expect(page).to have_css("#sign_up_link")
+  end
+end

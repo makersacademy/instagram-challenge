@@ -3,7 +3,7 @@
 require "spec_helper"
 require 'rails_helper'
 
-feature 'Navigation bar displays' do
+feature 'Footer displays' do
   scenario 'on the homepage' do
     visit "/home/index"
     expect(page).to have_css("footer")
