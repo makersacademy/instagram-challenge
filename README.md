@@ -45,9 +45,7 @@ test: signed up interface with details appear after sign in
 test: message signed out
 
 
-
-
-
+Posting:
 - user can post pictures, when signed in
 
 test: feature test that post is visible after posted
@@ -69,7 +67,7 @@ test (feature):
 
 
 ## Steps
-
+1. Diagramic modelling
 - created user model, with devise
 
 
@@ -85,13 +83,30 @@ beleongs to user, post
 - created like model 
 beleongs to user, post
 
+2. Implemented testing of above user stories
+
+
+
+
+3. Access control 
+(only signed in users can post image, comment, like), or it gives an error)
+- devise before 
+
+Navbar:
+- when signed out: sign in and sign up available
+
+- when signed in: sign out availabe
+
+
+
 
 
 
 ## What I didn't do (yet)
 - have error message shown if clicking on upload your image when no file is attached.
-- acecess control (only signed in users can post image, comment, like), or it gives an error
+- acecess control 
 
+- same user cannot like a post more than once
 
 
 

@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+  # signed out user can see all comments of post, but need to sign in to post comment
 
 def new 
   # p 'hello'
   @comment = Comment.new
   @post = Post.find(params[:post_id])
-
 end 
 
 def create
