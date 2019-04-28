@@ -2,13 +2,23 @@
 ![Coverage](https://github.com/micosmin/instaclone/blob/development/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/33b079577460f3ad758b/maintainability)](https://codeclimate.com/github/micosmin/instaclone/maintainability)
 
-# README
+# Instagram Challenge
 
 Trello board link: https://trello.com/b/BhHxImVc/instragram
 
-Ruby version: 2.5.0
+## Description
 
-System dependencies
+Instagram clone built using Ruby on Rails
+Users can perform CRUD operations on their pictures
+Users can comment on other pictures
+Users can sign-up and log in to enable posting and commenting functionality
+
+## Technologies used
+
+Ruby version: 2.5.0
+Rails
+Rspec
+Javascript
 
 **Local development**
 
