@@ -1,40 +1,49 @@
-Instagram Challenge
-===================
+# Instagram Challenge
 
-## Instructions
-
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-## Task
-
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+## User Stories
+```
+As a user
+So I can indulge my narcissism
+I want to post pictures for everyone to see [11]
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+```
+As a user
+So I can express my extreme jealousy
+I want to leave comments under pictures [6]
+```
+
+```
+As a user
+So I can remind people of my existence
+I want to like and unlike pictures [2]
+```
+
+## Tasks to do and estimations
+
+**SETTING UP [0/8]**
+
+1. Initialize a Rails project [1]
+2. Add linters [1]
+3. Deploy on Heroku [1]
+4. RSpec [2]
+5. Add Travis CI [3]
+6. Make sure everything works!
+
+**POSTS [0/11]**
+6. Scaffold for Posts [1]
+7. Add 'add a picture' functionality [5]
+8. R and D functionality [3]
+9. Bootstrap [2]
+
+**LIKES [0/2]**
+10. Add likes
+  "Like" [1]
+  "Unlike" [1]
+
+**COMMENTS [0/6]**
+11. Scaffold for Comments [1]
+12. CRUD [3]
+13. Link to Posts [2]
+
+13. Make sure everything works!
