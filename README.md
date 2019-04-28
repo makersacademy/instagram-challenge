@@ -1,14 +1,6 @@
 Instagram Challenge
 ===================
 
-## Instructions
-
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 ## Task
 
 Build Instagram: Simple huh!
@@ -23,9 +15,6 @@ Bonus if you can add filters!
 - Run bundle
 - Run 'rails s' to start server
 - To run tests: run rspec in directory
-
-
-
 
 
 # Approach
@@ -83,7 +72,29 @@ beleongs to user, post
 - created like model 
 beleongs to user, post
 
+
+Diagram: 
+
+
+
+
+
+
+
+
+
+
+
 2. Implemented testing of above user stories
+- feature test as listed above
+
+
+2.1 Set up RESTFUL routes in routes.rb
+- Users
+- posts 
+- comments nested under posts
+- likes nested under psots
+
 
 
 
@@ -98,36 +109,36 @@ Navbar:
 - when signed in: sign out availabe
 
 
+General:
+- have error message shown if clicking on upload your image when no file is attached.
+
+
+##  Code quality and test coverage
+- used rubocop --a
+
+- used simpleCov, excluded some files
+- test coverage 95%, performed feature test of user stories above
+- did not test unit test of activerecord methods
+
+
+
+5. Bootstrap styling
+- responsive
+- images in columns
 
 
 
 
 ## What I didn't do (yet)
-- have error message shown if clicking on upload your image when no file is attached.
-- acecess control 
 
 - same user cannot like a post more than once
-
-
-
-
-
-## Code quality and test coverage
-- used rubocop --a
-
-- used simpleCov, excluded some files
-
-
-
-
 
 
 
 ## Extra Makers instructions
 ## Code Quality
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+For linting, used the `.rubocop.yml` in this repository 
 
 ```ruby
 gem "rubocop", "0.48.1"

@@ -3,7 +3,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   # signed out user can see index of posts, and individual posts
-
   def index
     @posts = Post.all
   end
