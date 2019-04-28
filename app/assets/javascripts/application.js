@@ -14,3 +14,17 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+  setTimeout(() => {
+    $('#notice_alert').fadeOut('slow', function() {
+      $(this).remove;
+    });
+  }, 1500);
+
+  setTimeout(() => {
+    $('#notice_wrapper').fadeOut('slow', function() {
+      $(this).remove;
+    });
+  }, 1500);
+});
