@@ -24,7 +24,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bootstrap', '~> 4.1.1'
 # Use jQuery for bootstrap
 gem 'jquery-rails'
-# Use CoffeeScript for .coffee assets and views 
+# Use Font Awesome for logos
+gem 'font-awesome-rails'
+# Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
@@ -44,6 +46,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+  gem 'rspec'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
