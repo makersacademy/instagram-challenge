@@ -1,28 +1,46 @@
 <%= link_to new_post_path do %>
   New post
 <% end %>
+<div class="container">
+  <% @posts.each do |post| %>
+  <div class="post">
+      <h2>@<%= post.user.username %></h2>
+        <div class="post-image">
+          <p><%= image_tag post.image %></p>
+        </div>
+      <p><%= post.caption %></p>
+      <div class="likes">
+        <div class="paw">
+          <p><%= image_tag("paw") %></p>
+        </div>
+        <p><%= post.likes.count %></p>
+        <p><%= button_to 'Like', likes_path(post.id), method: :post %></ br></p>
+      </div>
 
-<% @posts.each do |post| %>
-  <p>@<%= post.user.username %></p>
-  <p><%= image_tag post.image %></p>
-  <p><%= post.caption %></p>
-  <p><%= post.likes.count %></p>
-  <%= button_to 'Like', likes_path(post.id), method: :post %>
-  <% if post.comments %>
-    <% post.comments.each do |comment| %>
-      <p><%= comment.body %></p>
-      <% User.where(id: comment.user_id).each do |user| %>
-        <p>@<%= user.username %></p>
+      <% if post.comments %>
+        <% post.comments.each do |comment| %>
+          <div class="comment">
+            <% User.where(id: comment.user_id).each do |user| %>
+            <div class="comment-username">
+              <p>@<%= user.username %></p>
+            </div>
+
+            <% end %>
+            <p><%= comment.body %></p>
+          </div>
+          <% end %>
       <% end %>
-    <% end %>
+      <div class="form">
+        <%= form_for [post, post.comments.new] do |form| %>
+        <p>
+          <%= form.label :body, "What's new pussycat?" %><br />
+          <%= form.text_area :body %><br />
+        </p>
+        <p>
+          <%= form.submit 'Add'%><br />
+        </p>
+        <% end %>
+      </div>
+    </div>
   <% end %>
-  <%= form_for [post, post.comments.new] do |form| %>
-  <p>
-    <%= form.label :body, "What's new pussycat?" %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit 'Add'%>
-  </p>
-  <% end %>
-<% end %>
+</div>

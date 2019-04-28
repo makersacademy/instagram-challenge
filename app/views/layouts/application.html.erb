@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>InstaCat</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,11 +11,15 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <ul class="hmenu">
-      <%= render 'devise/menu/login_items' %>
-    </ul>
+    <% if notice %>
+        <div class="alert alert-success"><%= notice %></div>
+    <% end %>
+    <div class="page-header">
+      <h1>InstaCat</h1>
+      <div class="hmenu">
+        <%= render 'devise/menu/login_items' %>
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>
