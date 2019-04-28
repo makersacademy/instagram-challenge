@@ -1,9 +1,6 @@
 require 'rails_helper'
-require 'database_cleaner'
 
 RSpec.describe LikesController, type: :controller do
-  DatabaseCleaner.strategy = :truncation
-  DatabaseCleaner.clean
   let(:user) { FactoryBot.create(:user) }
   let(:post1) { FactoryBot.create(:post, user_id: user.id) }
 

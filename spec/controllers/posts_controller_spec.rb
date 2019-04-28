@@ -1,9 +1,6 @@
 require 'rails_helper'
-require 'database_cleaner'
 
 RSpec.describe PostsController, type: :controller do
-  DatabaseCleaner.strategy = :truncation
-  DatabaseCleaner.clean
   let(:user) { FactoryBot.create(:user) }
 
   before do
