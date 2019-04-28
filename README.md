@@ -31,8 +31,8 @@ I want to like and unlike pictures [2]
 5. **Add Travis CI [3]**
 6. Make sure everything works!
 
-**POSTS [0/11]**
-7. Scaffold for Posts [1]
+**POSTS [1/11]**
+7. **Scaffold for Posts [1]**
 8. Add 'add a picture' functionality [5]
 9. R and D functionality [3]
 10. Bootstrap [2]
