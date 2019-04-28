@@ -28,7 +28,9 @@ $(document).ready(function() {
     });
   }, 1500);
 
-  // $('#comment_logo').click(function() {
-  //   $('#addComment').modal('show');
-  // });
+  $('#like_logo').click(function() {
+    var element = $('#like').text();
+    console.log(element);
+    $('#like').text(parseInt(element) + 1);
+  });
 });
