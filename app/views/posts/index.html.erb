@@ -3,6 +3,8 @@
 </div>
 
 <br>
+
+   <% if user_signed_in?%>
   <div style="max-width:45%; margin:10px auto" > 
     <div class="input-group input-group-sm mb-3">
 
@@ -26,7 +28,9 @@
     <input type="text" data-toggle="modal"  data-target="#myModal" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="What would you like to share?" >
 
     </div>
+
   </div>
+  <%end%>
 
   <% @posts.each do |post| %>
 
@@ -39,7 +43,8 @@
           </li>
 
           <li>
-            
+
+          <% if user_signed_in? %>  
           <div class="btn-group">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             </button>
@@ -54,6 +59,7 @@
               </button>
             </div>
           </div>
+          <%end%>
   
 
           </li>
@@ -111,6 +117,7 @@
           <div class="d-flex flex-nowrap">
             <div class="p-2">
               <div class="image-cropper-comment">
+
               <% if user_signed_in?%>
                 <% if c.user.avatar.attached? == true %>
                   <%=image_tag c.user.avatar, class:"profile-pic-comment"%>
@@ -120,6 +127,7 @@
                 <%else%>
                 <img src='<%= image_url("sparky.png")%>' class="profile-pic-comment" />
               <%end%>
+
               </div>
             </div>
             <div class=" mr-auto  p-2">
@@ -132,6 +140,7 @@
             <%= link_to 'Delete', c, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
             </div>
             <%end%>
+
           </div>
         <%end%>
       </div>
@@ -143,7 +152,7 @@
 
 
 <%# Add Post Modal %>
-<div class="container">
+<div class="container-modal">
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
