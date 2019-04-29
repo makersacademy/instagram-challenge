@@ -1,4 +1,8 @@
+<div class="container-small">
+<span>Edit comment</span>
+
 <%= form_with(model: comment, local: true) do |form| %>
+<form>
   <% if comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -13,24 +17,30 @@
 
   <div class="field">
     <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, class:"form-control"%>
   </div>
   
   <%= form.hidden_field :post_id, value: "#{params[:post_id]}" %>
+  <%= form.hidden_field :user_id, value: "#{params[:user_id]}" %>
+  
+  <div class="actions">
+    <%= form.submit "Submit", class:"btn" %>
+    <%= link_to 'Back', posts_path, class:"btn" %>
+  </div>
 
-  <%= form.hidden_field :post_id, value: "#{params[:user_id]}" %>
-
-  <div class="field">
+  <div class="field" style="display: none;">
     <%= form.label :post_id %>
     <%= form.text_field :post_id %>
   </div>
 
-  <div class="field">
+  <div class="field" style="display: none;">
     <%= form.label :user_id %>
     <%= form.text_field :user_id %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
+</form>
+
+
+</div>
+
