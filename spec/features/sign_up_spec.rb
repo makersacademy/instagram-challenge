@@ -8,10 +8,6 @@ RSpec.describe "Sign up", type: :feature do
       visit "/"
     end
 
-    it "has a username field" do
-      expect(page).to have_field "Username"
-    end
-
     it "has an email field" do
       expect(page).to have_field "Email"
     end
@@ -21,7 +17,7 @@ RSpec.describe "Sign up", type: :feature do
     end
 
     it "has a confirm password field" do
-      expect(page).to have_field "Confirm password"
+      expect(page).to have_field "Password confirmation"
     end
 
     it "has a submit button" do

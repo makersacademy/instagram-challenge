@@ -3,6 +3,14 @@
 require 'rails_helper'
 
 RSpec.describe "Post a pic", type: :feature do
+  before do
+    visit "/"
+    fill_in "Email", with: "paul@paul.paul"
+    fill_in "Password", with: "password"
+    fill_in "Password confirmation", with: "password"
+    click_button "Sign up"
+  end
+
   it "The feed page has a 'post a pic' link" do
     visit "/pics"
     expect(page).to have_link "Post a pic"
