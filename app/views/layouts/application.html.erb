@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instaclone</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet">
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="container-header">
+      <nav class="navbar navbar-light bg-light d-flex">
+          <div class="logo">
+            <a class="navbar-brand" href="#">
+              <%= fa_stacked_icon "instagram inverse", base: "circle"%>
+              Instaclone
+            </a>
+          </div>
+          <div class="user-section">
+            <!-- Sign-up / Profile path -->
+            <% if user_signed_in? %>
+              <a class="icon" title="Profile" id="profile_link" href="<%= user_path(current_user)%>">
+                <i class="fa fa-user"></i>
+              </a
+            <% else %>
+              <a class="icon" title="Sign Up" id="sign_up_link" href="<%= new_user_registration_path%>">
+                <i class="fa fa-user-plus"></i>
+              </a>
+            <% end %>
+            <!-- Sign-in / Sign-out path -->
+            <% if user_signed_in? %>
+              <a class="icon" title="Logout" id="sign_out_link" href="<%= destroy_user_session_path%>" data-method="delete">
+                <i class="fa fa-sign-out"></i>
+              </a>
+            <% else %>
+              <a class="icon" title="Login" id="sign_in_link" href="<%= new_user_session_path%>">
+                <i class="fa fa-sign-in"></i>
+              </a>
+            <% end %>
+          </div>
+      </nav>
+    </header>
+
+    <!-- Main -->
+
+    <main class="container-main" style="min-height: 80vh;">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="container-footer">
+      <nav class="navbar d-flex">
+        <ul>
+          <li>ABOUT US</li>
+        </ul>
+        <p> © 2019 INSTACLONE </p>
+      </nav>
+    </footer>
+
+  </body>
+</html>

@@ -1,40 +1,46 @@
 Instagram Challenge
 ===================
 
-## Instructions
+## Description
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This is an Instagram clone built with Ruby on Rails for our weekend challenge in week 10 at Makers Academy.
 
-## Task
+Users can sign-up, post pictures, write comments on pictures, and like pictures.
 
-Build Instagram: Simple huh!
+## Database Creation
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## Database Initialisation
 
-Bonus if you can add filters!
+## Usage Instructions
 
-## How to start
+This project is incomplete. Only the sign-up, login, logout and profile edit paths are working. Everything else is hardcoded.
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+To run what there is:
+- `git clone https://github.com/saypop/instagram-challenge.git`
+- `cd instagram-challenge`
+- `bundle install`
+- `rails db:create`
+- `rails db:migrate`
+- `rails server`
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+## Testing Instructions
+- `rspec`
 
-## Code Quality
+## Planning and Process, User Stories, Kanban
+https://github.com/saypop/instagram-challenge/projects
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+### Modelling
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## Tech Stack
+- Ruby 2.5.0
+- Rails 5.2.0
+- HTML
+- CSS
+- Devise
+- Bootstrap 4.1.1
+- Font Awesome
+- PostGres
+- ActiveRecord
+- ActiveStorage
+
