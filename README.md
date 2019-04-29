@@ -2,15 +2,11 @@
 ![Coverage](https://github.com/micosmin/instaclone/blob/development/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/33b079577460f3ad758b/maintainability)](https://codeclimate.com/github/micosmin/instaclone/maintainability)
 
-<<<<<<< HEAD
-Version 1.1 - https://lit-river-61164.herokuapp.com/
+Version 1.2 - https://lit-river-61164.herokuapp.com/
 
 Pictures won't persist beyond the runtime of the Heroku dyno, as S3 not implemented yet.
 
 # README
-=======
-# Instagram Challenge
->>>>>>> release-1.2
 
 Trello board link: https://trello.com/b/BhHxImVc/instragram
 
