@@ -48,9 +48,13 @@ RSpec.describe CommentsController, type: :controller do
   # CommentsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before(:each) do
+    @comment = Comment.create! valid_attributes
+  end
+
   describe "GET #index" do
     it "returns a success response" do
-      Comment.create! valid_attributes
+      # Comment.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_successful
     end
@@ -58,8 +62,8 @@ RSpec.describe CommentsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      comment = Comment.create! valid_attributes
-      get :show, params: { id: comment.to_param }, session: valid_session
+      # comment = Comment.create! valid_attributes
+      get :show, params: { id: @comment.to_param }, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -73,8 +77,8 @@ RSpec.describe CommentsController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      comment = Comment.create! valid_attributes
-      get :edit, params: { id: comment.to_param }, session: valid_session
+      # comment = Comment.create! valid_attributes
+      get :edit, params: { id: @comment.to_param }, session: valid_session
       expect(response).to be_successful
     end
   end
