@@ -1,0 +1,39 @@
+<h2>The feed</h2>
+
+<%= link_to "Post a pic", new_pic_path %>
+
+<div id="the-feed">
+  <% @pics.each do |pic| %>
+    <div class="pic">
+      <div class="pic-poster">
+        <% if pic.user %>
+          This pic posted by <%= pic.user.email %>
+        <% else %>
+          This pic posted by unknown?!
+        <% end%>
+      </div>
+      <img src="<%= url_for(pic.image) %>" >
+      <div class="comments">
+        <% pic.comments.each do |comment| %>
+          <div class="a-comment">
+            <div class="comment-author">
+              <% if comment.user %>
+                This judgement was passed by <%= comment.user.email %>:
+              <% else %>
+                This judgement was passed by "the unknown poster":
+              <% end%>
+            </div>
+            <%= comment.body %>
+          </div>
+        <% end %>
+        <%= form_with(model: [ pic, pic.comments.build ], local: true) do |f| %>
+          <div class="comment-box">
+            <%= f.label :body, "Add a comment" %><br>
+            <%= f.text_field :body %>
+            <%= f.submit "Pass judgement" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
