@@ -5,10 +5,24 @@
 <div id="the-feed">
   <% @pics.each do |pic| %>
     <div class="pic">
+      <div class="pic-poster">
+        <% if pic.user %>
+          This pic posted by <%= pic.user.email %>
+        <% else %>
+          This pic posted by unknown?!
+        <% end%>
+      </div>
       <img src="<%= url_for(pic.image) %>" >
       <div class="comments">
         <% pic.comments.each do |comment| %>
           <div class="a-comment">
+            <div class="comment-author">
+              <% if comment.user %>
+                This judgement was passed by <%= comment.user.email %>:
+              <% else %>
+                This judgement was passed by "the unknown poster":
+              <% end%>
+            </div>
             <%= comment.body %>
           </div>
         <% end %>

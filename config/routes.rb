@@ -6,5 +6,14 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  root "users#new"
+  devise_scope :user do
+    unauthenticated do
+      root :to => 'devise/registrations#new'
+    end
+
+    authenticated do
+      root :to => 'pics#index'
+    end
+  end  
+
 end
