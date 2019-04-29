@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   def create
     pic = Pic.find(params[:pic_id])
-    comment = pic.comments.create!(comment_params.merge(user_id: current_user.id))
-    redirect_to  pics_path
+    pic.comments.create!(comment_params.merge(user_id: current_user.id))
+    redirect_to pics_path
   end
 
   private

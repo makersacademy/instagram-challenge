@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PicsController < ApplicationController
   def index
     authenticate_user!
@@ -22,7 +24,7 @@ class PicsController < ApplicationController
   end
 
   private
-  
+
   def pic_params
     params.require(:pic).permit(:image)
   end
