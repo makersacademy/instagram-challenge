@@ -36,7 +36,7 @@ RSpec.describe PostsController, type: :controller do
   end
 
   let(:invalid_attributes) do
-    sign_in user
+    # sign_in user
     return { description: "MyString", likes: 1, user: user }
   end
 
@@ -49,9 +49,12 @@ RSpec.describe PostsController, type: :controller do
 
   let(:user) { user = User.create(first_name: "john", last_name: "snow", email: 'test@test.com', password: "password", password_confirmation: "password") }
 
+  before(:each) do
+    @post = Post.create! valid_attributes
+  end
+
   describe "GET #index" do
     it "returns a success response" do
-      post = Post.create! valid_attributes
       get :index, session: valid_session
       expect(response).to be_successful
     end
@@ -59,15 +62,13 @@ RSpec.describe PostsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      post = Post.create! valid_attributes
-      get :show, params: { id: post.to_param }, session: valid_session
+      get :show, params: { id: @post.to_param }, session: valid_session
       expect(response).to be_successful
     end
   end
 
   describe "GET #new" do
     it "returns a success response" do
-      post = Post.create! valid_attributes
       get :new, params: {}, session: valid_session
       expect(response).to be_successful
     end
@@ -75,8 +76,7 @@ RSpec.describe PostsController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      post = Post.create! valid_attributes
-      get :edit, params: { id: post.to_param }, session: valid_session
+      get :edit, params: { id: @post.to_param }, session: valid_session
       expect(response).to be_successful
     end
   end
@@ -104,6 +104,10 @@ RSpec.describe PostsController, type: :controller do
   end
 
   describe "PUT #update" do
+    before(:each) do
+      @post = Post.create! valid_attributes
+    end
+
     context "with valid params" do
       let(:new_attributes) do
         sign_in user
@@ -118,32 +122,31 @@ RSpec.describe PostsController, type: :controller do
       end
 
       it "redirects to the post" do
-        post = Post.create! valid_attributes
-        put :update, params: { id: post.to_param, post: valid_attributes }, session: valid_session
+        put :update, params: { id: @post.to_param, post: valid_attributes }, session: valid_session
         expect(response).to redirect_to '/posts'
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        post = Post.create! valid_attributes
-        put :update, params: { id: post.to_param, post: invalid_attributes }, session: valid_session
+        put :update, params: { id: @post.to_param, post: invalid_attributes }, session: valid_session
         expect(response).not_to be_successful
       end
     end
   end
 
   describe "DELETE #destroy" do
+    before(:each) do
+      @post = Post.create! valid_attributes
+    end
     it "destroys the requested post" do
-      post = Post.create! valid_attributes
       expect do
-        delete :destroy, params: { id: post.to_param }, session: valid_session
+        delete :destroy, params: { id: @post.to_param }, session: valid_session
       end.to change(Post, :count).by(-1)
     end
 
     it "redirects to the posts list" do
-      post = Post.create! valid_attributes
-      delete :destroy, params: { id: post.to_param }, session: valid_session
+      delete :destroy, params: { id: @post.to_param }, session: valid_session
       expect(response).to redirect_to(posts_url)
     end
   end
