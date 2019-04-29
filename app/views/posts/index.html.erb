@@ -1,9 +1,10 @@
-
 <div id="page_name">
 <h1>Feed</h1>
 </div>
 
 <br>
+
+   <% if user_signed_in?%>
   <div style="max-width:45%; margin:10px auto" > 
     <div class="input-group input-group-sm mb-3">
 
@@ -27,11 +28,13 @@
     <input type="text" data-toggle="modal"  data-target="#myModal" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="What would you like to share?" >
 
     </div>
+
   </div>
+  <%end%>
 
   <% @posts.each do |post| %>
 
-    <div class="card text-center" style="max-width:45%; margin:10px auto" >
+    <div class="card text-center w-50" style="max-width:45%; max-height:50%; margin:10px auto" >
 
       <div class="card-header">
         <ul class="nav nav-pills card-header-pills ">
@@ -39,12 +42,28 @@
             <p class="card-text user">User: <%= post.user.first_name %></p>
           </li>
 
-          <li class="nav-item">
-            <%= link_to 'Edit', edit_post_path(post) %>
-          </li>
-      
-          <li class="nav-item">
-            <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <li>
+
+          <% if user_signed_in? %>  
+          <div class="btn-group">
+          <% if current_user == post.user %>
+            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </button>
+            
+            <div class="dropdown-menu dropdown-menu-right">
+              <button class="dropdown-item" type="button">
+              <%= link_to 'Edit', edit_post_path(post) %>
+              </button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" type="button">
+              <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </button>
+            </div>
+          </div>
+          <%end%>
+          <%end%>
+  
+
           </li>
         </ul>
       </div>
@@ -53,59 +72,134 @@
         <%=image_tag post.image, height:'500px', class:'card-image img-fluid'%>
       <%end%>
       
+      <div class="card-body d-flex align-items-start flex-column" style="height:10%;">
 
-      <div class="card-body">
-        <p class="card-text description"> Description: <%= post.description.html_safe %></p>
+        <div class="d-flex flex-nowrap">
 
+          <div class="mb-auto p-2 image-like">
+        
+          <img id="like_logo" src='<%= asset_path("like.png")%>'/>
+          
+          </div>
+
+          <div class="p-2 image-comment"> 
+          
+          <% if user_signed_in? %>
+
+            <%= link_to new_comment_path(post_id: post.id, user_id: current_user.id) do %>
+            <%= image_tag "comment.png"%>
+            <%end%>
+          <%end%>
+          </div>
+
+          <%# <div class="p-2"> 
+          <div id="like">0</div>
+          <div>likes</div>
+          </div> %>
+
+        </div>
+
+        <div class="card-text p-2">
+        <p class="description"> Description: <%= post.description.html_safe %></p>
+        </div>
       </div>
 
-      <div class="card-footer">
-        <%= post.likes %>
-        <% time_diff = Time.now - post.created_at %>
-        <small class="text-muted"><%= Time.at(time_diff.to_i.abs).utc.strftime "%H:%M:%S" %></small>
+      <div class="card-footer d-flex flex-nowrap">
+        <div class="mr-auto p-2">
+          <% time_diff = Time.now - post.created_at %>
+          <p class="text-muted"><%= Time.at(time_diff.to_i.abs).utc.strftime "%H:%M:%S" %></p>
+        </div>
+
+        <div class="p-2">
+          <a class="btn" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            See all <%=post.comments.all.count%> comments
+          </a>
+        </div>
+      </div>
+
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body text-left">
+
+        <% post.comments.all.each do |c|%>
+          <div class="d-flex flex-nowrap">
+            <div class="p-2">
+              <div class="image-cropper-comment">
+
+              <% if user_signed_in?%>
+                <% if c.user.avatar.attached? == true %>
+                  <%=image_tag c.user.avatar, class:"profile-pic-comment"%>
+                <% else %>
+                  <img src='<%= image_url("sparky.png")%>' class="profile-pic-comment" />
+                <%end%>
+                <%else%>
+                <img src='<%= image_url("sparky.png")%>' class="profile-pic-comment" />
+              <%end%>
+
+              </div>
+            </div>
+            <div class=" mr-auto  p-2">
+              <p><strong><%= c.user.first_name %></strong>&nbsp&nbsp<%= c.body %></p>
+              <p><%= c.updated_at %></p>
+            </div>
+            <% if current_user == c.user %>
+            <div class="p-2">
+            <%= link_to 'Edit', edit_comment_path(c), class: "btn" %>
+            <%= link_to 'Delete', c, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
+            </div>
+            <%end%>
+
+          </div>
+        <%end%>
+      </div>
       </div>
     </div>
-
+    </div>
+    
   <%end%>
 
-<%# Modal %>
-<div class="container">
+
+<%# Add Post Modal %>
+<div class="container-modal">
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
     
       <!-- Modal content-->
       <div class="modal-content">
       
-        <%post = Post.create%>
+      <%post = Post.create%>
         
-        <%= form_with(model: post, local: true) do |form| %>
+      <%= form_with(model: post, local: true) do |form| %>
+        
+        <div class="modal-body ">
 
-        <div class="modal-header">
+        <div class="form-group">
+
+          <%= form.text_area :description, :required => 'required', :placeholder => "What's happening", :class=> "form-control", :rows=>3%>
+        
+        </div>
+
+        <div class="d-flex flex-nowrap">
+        <div class="p-2">
+          <div class="field image-upload">
+            
+            <label for="file-input">
+            <%# <img src='<%= asset_path("add_image.jpg")'/> %>
+            <%= form.file_field :image %>
+            </label>
+            
+          </div>
+        </div>
+
+        <div class="p-2">
           <div class="actions ">
             <%= form.submit%>
           </div>
         </div>
-        
-        <div class="modal-body">
-
-        <div class="form-group">
-         <%= form.text_area :description, :required => 'required', :placeholder => "What's happening", :class=> "form-control", :rows=>3%>
         </div>
+      <%end%>
 
-        <div class="field image-upload">
-        <label for="file-input">
-
-        <img src='<%= asset_path("add_image.jpg")%>' />
-
-         </label>
-          <%= form.file_field :image, :required => 'required', :id => "file-input" %>
-        </div>
-
-        <%end%>
-
-        <p></p>
-        </div>
+      </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -114,3 +208,13 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+  
+

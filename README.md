@@ -2,17 +2,31 @@
 ![Coverage](https://github.com/micosmin/instaclone/blob/development/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/33b079577460f3ad758b/maintainability)](https://codeclimate.com/github/micosmin/instaclone/maintainability)
 
+<<<<<<< HEAD
 Version 1.1 - https://lit-river-61164.herokuapp.com/
 
 Pictures won't persist beyond the runtime of the Heroku dyno, as S3 not implemented yet.
 
 # README
+=======
+# Instagram Challenge
+>>>>>>> release-1.2
 
 Trello board link: https://trello.com/b/BhHxImVc/instragram
 
-Ruby version: 2.5.0
+## Description
 
-System dependencies
+Instagram clone built using Ruby on Rails
+Users can perform CRUD operations on their pictures
+Users can comment on other pictures
+Users can sign-up and log in to enable posting and commenting functionality
+
+## Technologies used
+
+Ruby version: 2.5.0
+Rails
+Rspec
+Javascript
 
 **Local development**
 
@@ -23,9 +37,11 @@ bundle install
 
 bundle update
 
-rake db:create
+rails db:create
 
-travis setup heroku
+rails db:migrate
+
+travis setup heroku if you want to deploy it there
 ```
 
 **Heroku setup**  
@@ -49,7 +65,7 @@ Push application to heroku app
 
 `git push heroku_app_name master`
 
-**Heroku pipelin**
+**Heroku pipeline**
 
 Check this website for setting up a pipeline in heroku
 https://devcenter.heroku.com/articles/pipelines
@@ -64,21 +80,14 @@ Moving apps from staging to production:
 
 `heroku pipelines:promote -r staging`
 
-**Database creation**
-
-`rake db:create`
-
-**Database initialization**
-
-`rake db:migrate`
-
 **How to run the test suite**
 
 `rspec`
 
-- Services (job queues, cache servers, search engines, etc.)
+## To use the app
 
-**Deployment instructions**
+Run `rails server`
+Go to `http://localhost:3000/`
 
 **Contribute**
 

@@ -1,13 +1,11 @@
-<h2>Sign up</h2>
+<div class="container">
+<span>Create Account</span>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :add_picture %><br />
-    <%= f.file_field :avatar %>
-  </div>
-  
+<form>
+
   <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name, autofocus: true, autocomplete: "First name", :required => 'required'%>
@@ -20,15 +18,13 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", type:"text" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+
+    <%= f.label :password %> 
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "#{@minimum_password_length} characters minimum"  %>
   </div>
 
   <div class="field">
@@ -36,9 +32,30 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="field">
+
+    <div class="d-flex flex-nowrap">
+      <div class="mr-auto p-2">
+      <%= f.label :add_picture %> 
+      </div>
+      
+      <div class="p-2">
+      <%= f.file_field :avatar %>
+      </div>
+    </div>
+
   </div>
+
+
+  <div class="actions">
+ <div class="d-flex justify-content-center">
+    <%= f.submit "Sign up", class:"btn" %>
+     <%= link_to 'Back', posts_path, class:"btn" %>
+    </div>
+ 
+  </div>
+
 <% end %>
 
-<%= render "devise/shared/links" %>
+</form>
+</div>

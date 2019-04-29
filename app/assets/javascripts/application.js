@@ -27,4 +27,10 @@ $(document).ready(function() {
       $(this).remove;
     });
   }, 1500);
+
+  $('#like_logo').click(function() {
+    var element = $('#like').text();
+    console.log(element);
+    $('#like').text(parseInt(element) + 1);
+  });
 });
