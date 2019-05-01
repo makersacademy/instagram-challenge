@@ -1,10 +1,13 @@
+### Makers software engineering bootcamp exercise - Ruby on Rails - Authentification with Devise - weekend challenge
+
+---
+
 README
 ===================
 Setup 
 
 Check Ruby Version 
 Check Post Version 
-
 
 ===================
 User Stories 
