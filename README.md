@@ -9,7 +9,7 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
-![](app/assets/images/screenshot1.png)
+![](app/assets/images/Screenshot1.png)
 
 
 ## Setup instructions 
