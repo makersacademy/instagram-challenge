@@ -9,6 +9,7 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
+![](app/assets/images/screenshot1.png)
 
 
 ## Setup instructions 
@@ -18,8 +19,6 @@ Bonus if you can add filters!
 
 
 # Approach
-
-
 
 ## User stories
 
@@ -60,6 +59,7 @@ test (feature):
 
 ## Steps
 1. Diagramic modelling
+Diagram:
 ![](app/assets/images/db.png)
 
 
@@ -77,17 +77,6 @@ beleongs to user, post
 
 - created like model 
 beleongs to user, post
-
-
-Diagram: 
-
-
-
-
-
-
-
-
 
 
 
