@@ -9,7 +9,6 @@ class LikesController < ApplicationController
     @like = Like.new
     @like.user_id = current_user.id
     @like.post_id = params[:post_id]
-
     if @like.save
       flash[:alert] = 'you have liked a post'
       redirect_to post_path(@post)

@@ -18,6 +18,9 @@ Bonus if you can add filters!
 
 
 # Approach
+
+
+
 ## User stories
 
 ### Part 1
@@ -57,6 +60,9 @@ test (feature):
 
 ## Steps
 1. Diagramic modelling
+![](app/assets/images/db.png)
+
+
 - created user model, with devise
 
 
@@ -135,16 +141,3 @@ General:
 
 
 
-## Extra Makers instructions
-## Code Quality
-
-For linting, used the `.rubocop.yml` in this repository 
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
