@@ -61,6 +61,7 @@ group :test do
 # SimpleCov will return test coverage when running RSpec in terminal
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
+  gem 'travis'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
