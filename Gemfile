@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.0'
+ruby '>=2.5.0'
 
 gem 'devise', '~> 4.2'
 gem 'file_validators', '~> 2.0', '>= 2.0.2'

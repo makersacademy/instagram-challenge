@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'pictures/index'
+  get 'pictures/index', to: 'pictures#index'
 
   resources :pictures
 

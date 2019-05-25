@@ -10,10 +10,10 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.create(post_params)
     if @picture.save
-      flash[:success] = "Picture post created."
+      flash[:success] = "Picture post created!"
       redirect_to pictures_path
     else
-      flash[:alert] = "Halt, you fiend! You need an image to post here!"
+      flash[:alert] = "You didn't upload anything!"
       render :new
     end
   end
