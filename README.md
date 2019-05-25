@@ -15,6 +15,7 @@ Database: Postgres
 Create database:
 
 rails db:create
+rails db:migrate
 
 Created database 'development_instagram'
 Created database 'test_instagram'
