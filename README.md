@@ -12,6 +12,13 @@ Ruby 2.6.0
 Rails 5.2.3
 Database: Postgres
 
+Create database:
+
+rails db:create
+
+Created database 'development_instagram'
+Created database 'test_instagram'
+
 ## Instructions
 
 * Challenge time: one weekend
