@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '>=2.5.0'
+ruby '>= 2.5.0'
+
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 
 gem 'devise', '~> 4.2'
 gem 'file_validators', '~> 2.0', '>= 2.0.2'
@@ -69,7 +71,9 @@ group :test do
   gem 'coveralls', require: false
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  # gem 'chromedriver-helper'
+  # deprecated 'chromedriver-helper':
+  gem 'webdrivers', '~> 3.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
