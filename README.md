@@ -1,6 +1,17 @@
 Instagram Challenge
 ===================
 
+Project set up approach
+
+gem install rails -v 5.2.3
+brew install postgresql
+
+Tech Stack :
+Backend-
+Ruby 2.6.0
+Rails 5.2.3
+Database: Postgres
+
 ## Instructions
 
 * Challenge time: one weekend
