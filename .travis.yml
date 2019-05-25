@@ -4,8 +4,13 @@ env:
   global:
   - CC_TEST_REPORTER_ID=8e6369201882d69ae19e5b21e9c5d5eab3b84e09e23e485de45516d5f219452d
 
+language: ruby
+cache: bundler
+rvm: 2.6.0
+
 before_install:
-- gem install bundler:2.0.1
+- gem update --system
+- gem install bundler
 
 before_script:
 - psql -c 'create database instagram_challenge_test;' -U postgres
@@ -13,9 +18,7 @@ before_script:
   > ./cc-test-reporter
 - chmod +x ./cc-test-reporter
 - "./cc-test-reporter before-build"
-language: ruby
-rvm:
-- 2.6.0
+
 script:
 - bundle exec rails db:migrate RAILS_ENV=test
 - bundle exec rake spec
