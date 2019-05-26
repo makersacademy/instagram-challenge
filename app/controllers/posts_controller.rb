@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @posts = Post.all
+    @posts = Post.all.reverse
   end
 
   def new
@@ -11,7 +11,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    if @post = Post.create(post_params)
+    @post = Post.create(post_params.merge(user_id: current_user.id))
+    if @post.save
       flash[:success] = "Your post has been created successfully"
       redirect_to posts_path
     else
