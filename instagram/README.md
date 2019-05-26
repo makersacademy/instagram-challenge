@@ -17,4 +17,4 @@ I would like to have an account.
 - bundle add ``bootstrap-sass``.
 - change ``application.css`` to ``application.scss``
 - Inside of ``application.scss``, add ``@import bootstrap-sprockets`` &  `` @import bootstrap``.
-- Inport all the other files you want to style to ``application.scss``.
+- Import all the other files you want to style to ``application.scss``.

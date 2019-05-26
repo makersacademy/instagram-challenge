@@ -51,7 +51,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'returns and error if password is blank' do
-      user.password = ""
+      user.password_digest = ""
       expect(user.valid?).to eq(false)
     end
 
