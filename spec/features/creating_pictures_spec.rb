@@ -15,7 +15,11 @@ feature 'Create new picture post' do
 
     fill_in 'Caption', with: 'Autumn colours are so pretty'
     click_button 'Create Picture Post'
+
+    expect(page).to have_content('Picture post created!')
+
     expect(page).to have_content('Autumn colours are so pretty')
     expect(page).to have_css("img[src*='road-1072823_1280.jpg']")
   end
+
 end

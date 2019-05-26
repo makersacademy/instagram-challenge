@@ -3,22 +3,18 @@ addons:
 env:
   global:
   - CC_TEST_REPORTER_ID=8e6369201882d69ae19e5b21e9c5d5eab3b84e09e23e485de45516d5f219452d
-
 language: ruby
 cache: bundler
 rvm: 2.6.0
-
 before_install:
 - gem update --system
 - gem install bundler
-
 before_script:
 - psql -c 'create database instagram_challenge_test;' -U postgres
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
   > ./cc-test-reporter
 - chmod +x ./cc-test-reporter
 - "./cc-test-reporter before-build"
-
 script:
 - bundle exec rails db:migrate RAILS_ENV=test
 - bundle exec rake spec
@@ -28,7 +24,7 @@ after_script:
 deploy:
   provider: heroku
   api_key:
-    secure: Pq4ilCqVSd2/xGZWmamXXL/yJxIKtmKtgPC13iYa8JqX1MR9gL4bVdRzi0SpPjFiquew95WOgugq+o40vSSck6wRsgv+ogaNe/7NjuU/XONr+TVV1UwCtAgCfwSDcjwPvllJ7qjbuAD8hoxiTBSKXLCM+IIJ+j1xquLaHO3as+m02o5+oSDiyf6St1Cnkxh29VOdiEIvQ2SenKRNRCGLfiO4NRXUdtFitXa+m70Jfg6d2FgLE59kybBT2H5hBxcBDz8tcqtqdGlP6ykRIpA2c3i9762Meqc3Q9188cv2eRBAosdzBB2cKGQKSA9Uc0RugOL9fa2goI0AA3ev3mRbGvQjkDAmJaxeJzH9b007NAh5Oj3EDRyN9hb7ZFfFOrrLcRJ7wIutzuvT4PjErkBB7T9J4ZYB6himW0C3YjdTVOAlqJC+Gm12DV5P3aEhLd9sm7oVsE7yxsoYBkDF36rdhYTsKBk4TXRY1oWfAI/afE9N9cOcy8JjHV0YqO9maB7NNlojBiihkaRHnpUW96NCepQlMlc2MmOgW8iPkKywogZ0Y3B+XKasQtvIqKzima7VtxrxLc/cqcPjrTdZ2HBwG+j0FIkfVvzDDKxdnh4sCXLFyybzrkXCMUUy/mc40jwhPe43ZsL4N5x6y3NQpRNgjob7xRc8cGWvfypLK/jEpDY=
+    secure: 0cgA9cNhBU8NRLP+ir+ibgjtva683DZa6aFARjl5ZhwNl3DMNG9l8HncdWFtp53Jc92TXfZG+sLzazLg9VrFjHfwcVHf5JqS5dgDkYE1n5OH5z5ZdnTOf3d69jxQiNrQqW8WiLldk63EKXticg+IB/Ie8NCqHABi8aGsEzWxVdVx9czt8yP5CGvlzmVVL0nF9+qBG+l1p3daxkgViMc4wBpSyXgzIeVlBYbJ8UQC031Pi2yvku7z/zzrCw6UAYkaOhjo2bwLA+TxO6IU/3lzTrw8cb2O9bVwEU6+9oCSR7wDs/bRCRQsus0+jtWT/QJr/9ZXF3YR7TE85yODAZtfOjXI3kzXDYtmnF/h0pAR8FVx0Ea9MyiWR003CtmepHkadA4I5r/UxvarZMOZbnjx7sFXSqS4BmEHUfz68cLt3ektccx8IY/o2NKTyz6n/3WuWGz6rAylgEXH6blHfObIpTuV6tBPDh+d1nsMJ2XvqsK6BCA1omX8GgZGUxPBPwoYPcBcfQRWlCwpqSYs9sD3iJ7/RCnjWmPM8iIFfYNeJCTo42J+8BoCKfikmHBAEMjq1jFZ3edZjQ+qE69HqkWvGPdlNU8cqbQ8Jh7mpY3CZyhNafQ1hg7zXhESbqJp7yEIPYNky6PW6FsdSqyOuN8i1IMBCgY2BKYmQu0a6+FQ9kg=
   app: dt-instaclonegram
   on:
     repo: dafuloth/instagram-challenge
