@@ -6,6 +6,6 @@ RSpec.describe 'Login', type: :feature do
     visit('/login')
     fill_in_detail_for_login
     click_button('Log In')
-    expect(page).to have_content('welcome back')
+    expect(page).to have_content('Sorry, your password was incorrect.')
   end
 end
