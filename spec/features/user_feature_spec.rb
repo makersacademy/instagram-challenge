@@ -13,14 +13,3 @@ feature 'Users can sign up' do
     expect(page).to have_content("Foodstagram")
   end
 end
-
-feature 'Users can log in' do
-  scenario 'user logs into their account' do
-    visit '/users/sign_in'
-    fill_in 'user_email', with: 'j@demo.com'
-    fill_in 'user_password', with: '123456'
-    click_button 'Log in'
-
-    expect(page).to have_content("Foodstagram")
-  end
-end
