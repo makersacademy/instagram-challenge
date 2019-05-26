@@ -39,3 +39,13 @@ As a user
 So that I can share my appreciation for food
 I would like to be able to like pictures.
 ```
+
+## Screenshots
+
+<div align="center">
+    <img src="Screenshot2.png" width="400px"</img>
+</div>
+
+<div align="center">
+    <img src="UploadScreenshot.png" width="600px"</img>
+</div>
