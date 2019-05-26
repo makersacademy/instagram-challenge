@@ -1,9 +1,9 @@
 Instagram Challenge
 ===================
 
-[![Build Status](https://travis-ci.org/jordantroberts/instagram.svg?branch=master)](https://travis-ci.org/jordantroberts/instagram)
+[![Build Status](https://travis-ci.org/jordantroberts/instagram.svg?branch=master)](https://travis-ci.org/jordantroberts/instagram)[![CodeCov](https://img.shields.io/codecov/c/github/jordantroberts/instagram.svg)](https://codecov.io/gh/jordantroberts/instagram)
 
-[![CodeCov](https://img.shields.io/codecov/c/github/jordantroberts/instagram.svg)](https://codecov.io/gh/jordantroberts/instagram)
+
 Week 8 weekend challenge: build an Instagram clone using Rails.
 
 ## Installing this app
