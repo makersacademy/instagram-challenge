@@ -53,7 +53,7 @@ group :development do
   gem 'simple_form'
   gem 'bootstrap-sass', '~> 3.3.5'
   gem 'jquery-rails'
-  gem 'aws-sdk', '~> 2.3'
+  gem 'aws-sdk',  '~> 2.3'
 
 end
 
