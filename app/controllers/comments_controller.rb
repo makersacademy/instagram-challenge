@@ -1,28 +1,13 @@
 class CommentsController < ApplicationController
 
-  before_action :set_post
-
-def create
-  @comment = @post.comments.build(comment_params)
-  @comment.user_id = current_user.id
-
-  if @comment.save
-    flash[:success] = "Comment saved"
+  def create
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.create(content: comment_params["content"], user_id: current_user.id)
     redirect_to posts_path
-  else
-    flash[:alert] = "Something went wrong - please try again"
-    render root_path
   end
-end
 
-private
-
-def comment_params
-  params.require(:comment).permit(:content)
-end
-
-def set_post
-  @post = Post.find(params[:post_id])
-end
-
-end
+  private
+    def comment_params
+      params.require(:comment).permit(:content)
+    end
+  end

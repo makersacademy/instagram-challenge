@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :posts
 
+  has_many :comments, dependent: :destroy
+
   validates :user_name, presence: true
 
   # Include default devise modules. Others available are:
