@@ -13,9 +13,9 @@ class PicturesController < ApplicationController
       flash[:success] = "Picture post created!"
       # redirect_to pictures_path
       redirect_to @picture
-    else
-      flash[:alert] = "You didn't upload anything!"
-      render :new
+    # else
+    #   flash[:alert] = "You didn't upload anything!"
+    #   render :new
     end
   end
 

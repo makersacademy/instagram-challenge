@@ -21,5 +21,4 @@ feature 'Create new picture post' do
     expect(page).to have_content('Autumn colours are so pretty')
     expect(page).to have_css("img[src*='road-1072823_1280.jpg']")
   end
-
 end
