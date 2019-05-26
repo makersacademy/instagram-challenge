@@ -9,8 +9,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params)
-    redirect_to posts_path
+    if @post = Post.create(post_params)
+      flash[:success] = "Your post has been created successfully"
+      redirect_to posts_path
+    else
+      flash.now[:alert] = "Your post wasn't uploaded. Please try again"
+      render :new
+      # if using render method change to flash.now
+    end
   end
 
   def show

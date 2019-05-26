@@ -54,6 +54,7 @@ group :development do
   gem 'bootstrap-sass', '~> 3.3.5'
   gem 'jquery-rails'
   gem 'aws-sdk',  '~> 2.3'
+  gem 'devise'
 
 end
 
