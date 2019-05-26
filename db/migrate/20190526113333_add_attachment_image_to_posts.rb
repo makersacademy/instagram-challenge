@@ -1,7 +1,7 @@
 class AddAttachmentImageToPosts < ActiveRecord::Migration[5.2]
   def self.up
     change_table :posts do |t|
-      t.attachment :image
+      t.has_attached_file :image
     end
   end
 
