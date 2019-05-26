@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
 
+[![Build Status](https://travis-ci.org/jordantroberts/instagram.svg?branch=master)](https://travis-ci.org/jordantroberts/instagram)
+
 ## Instructions
 
 * Challenge time: one weekend
