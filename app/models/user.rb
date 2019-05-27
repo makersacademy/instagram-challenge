@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
+  has_many :likes
+
   validates :user_name, presence: true
 
   # Include default devise modules. Others available are:

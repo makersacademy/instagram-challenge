@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :likes 
   end
   # It is common to have resources that are logically the children of other resources. Nested routes allow you to capture this in routes.
 end
