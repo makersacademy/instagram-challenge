@@ -1,0 +1,21 @@
+<div>
+  <div>
+    <% if flash[:alert]%>
+      <%flash[:alert].each do |each_alert|%>
+        <ul>
+          <%=each_alert%>
+        </ul>
+      <%end%>
+    <%end%>
+    <% if flash[:notice]%>
+      <span><%=flash[:notice]%></span>
+    <%end%>
+  </div>
+  <div class='form-container'>
+    <%=form_for :session, url: {action: "create"} do |f|%>
+      <%=f.text_field :email, placeholder: "Email" %>
+      <%=f.password_field :password, placeholder: "Password" %>
+      <%=f.submit "Log In" %>
+    <%end%>
+  </div>
+</div>

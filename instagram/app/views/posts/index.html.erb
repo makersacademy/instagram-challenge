@@ -1,0 +1,21 @@
+<%=render "shared/nav_bar"%>
+<div class="container">
+<%@post.each do |post|%>
+    <ul>
+      <div class='index-imgs'>
+        <%if post.avatar.attached?%>
+        <%=link_to post do %>
+          <%=image_tag(post.avatar, class: "index-images")%>
+        <%end%>
+        <%end%>
+        <div class="idexuser-box">
+          <%if current_user%>
+            <span><%=link_to post.user.username, post.user%><span>
+            <%else%>
+             <span>Posted By <%=post.user.username%><span>
+          <%end%>
+        </div>
+      </div>
+    <ul>
+<%end%>
+</div>
