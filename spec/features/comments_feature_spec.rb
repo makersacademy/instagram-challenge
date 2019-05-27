@@ -1,8 +1,5 @@
-
 require 'rails_helper'
 require 'web_helper'
-
-
 
 feature 'Users can comment on a post' do
   scenario 'user comments on a post' do

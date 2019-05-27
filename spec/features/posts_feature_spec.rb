@@ -1,7 +1,6 @@
 require 'rails_helper'
 require 'web_helper'
 
-
 feature 'Users can upload a post' do
   scenario 'user uploads a new picture' do
     create_new_user

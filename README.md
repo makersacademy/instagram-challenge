@@ -4,7 +4,7 @@ Instagram Challenge
 [![Build Status](https://travis-ci.org/jordantroberts/instagram.svg?branch=master)](https://travis-ci.org/jordantroberts/instagram)[![CodeCov](https://img.shields.io/codecov/c/github/jordantroberts/instagram.svg)](https://codecov.io/gh/jordantroberts/instagram)
 
 
-Week 8 weekend challenge: build an Instagram clone using Rails.
+Week 8 weekend challenge: build an Instagram clone using Rails. Instructions: you'll need users who can post pictures, write comments on pictures and like a picture. Style it like Instagram's website (or more awesome).
 
 ## Installing this app
 1. Clone this repo
@@ -16,6 +16,12 @@ Run `bundle exec rspec` from the command line
 
 ## Using this app
 Run `bin/rails server` and visit http://localhost:3000
+
+## Build Status
+
+All user stories have been implemented and an MVP achieved! :) Users can sign up from the index page, log in, upload pictures, comment on pictures and like pictures. I have taken into account certain edge cases such as they can only like a post once, and they cannot sign up with the same email address.
+
+If I had more time, I would like to focus on additional elements such as being able to unlike a post, or delete/update a comment. It would also be cool to build a user profile page for each user.
 
 ## User Stories
 
@@ -50,6 +56,14 @@ I would like to be able to like pictures.
 <div align="center">
     <img src="UploadScreenshot.png" width="800px"</img>
 </div>
+
+## What I learned from this challenge
+
+* I wanted to gain a deeper understanding of how the Rails MVC model works, which was my main reason for starting this challenge. As a result, I do have a better understanding of how Rails models, views and controllers interact with each other and the Rails routing process.
+* I have a better understanding of Active Record migrations, and features such as validations.
+* I learned how to utilise different tools such as `devise`
+* Practice with continuous integration tools such as Travis - how to set this up and use in my project.
+* More practice testing in a Rails project and using CodeCov to check my coverage.
 
 ## Acknowledgments
 - Jordan Roberts

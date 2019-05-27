@@ -1,7 +1,6 @@
 require 'rails_helper'
 require 'web_helper'
 
-
 feature 'Users can sign up' do
   scenario 'user signs up for new account' do
     visit '/users/sign_up'

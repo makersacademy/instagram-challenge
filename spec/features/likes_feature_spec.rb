@@ -1,7 +1,6 @@
 require 'rails_helper'
 require 'web_helper'
 
-
 feature 'Users can like a post' do
   scenario 'user likes on a post' do
     create_new_user
@@ -11,6 +10,7 @@ feature 'Users can like a post' do
     fill_in 'Caption', with: 'Caption'
     click_button('Create Post')
     click_button('Like')
+
     expect(page).to have_content("1 Like")
   end
 
@@ -23,6 +23,7 @@ feature 'Users can like a post' do
     click_button('Create Post')
     click_button('Like')
     click_button('Like')
+
     expect(page).to have_content("1 Like")
-  end 
+  end
 end
