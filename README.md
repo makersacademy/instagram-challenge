@@ -61,7 +61,7 @@ I would like to be able to like pictures.
 
 * I wanted to gain a deeper understanding of how the Rails MVC model works, which was my main reason for starting this challenge. As a result, I do have a better understanding of how Rails models, views and controllers interact with each other and the Rails routing process.
 * I have a better understanding of Active Record migrations, and features such as validations.
-* I learned how to utilise different tools such as `devise`
+* I learned how to utilise different tools such as `devise` and `paperclip` which I hadn't used before. 
 * Practice with continuous integration tools such as Travis - how to set this up and use in my project.
 * More practice testing in a Rails project and using CodeCov to check my coverage.
 
