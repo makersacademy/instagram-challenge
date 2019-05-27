@@ -13,4 +13,16 @@ feature 'Users can like a post' do
     click_button('Like')
     expect(page).to have_content("1 Like")
   end
+
+  scenario 'user cannot like the same post more than once' do
+    create_new_user
+    visit '/posts'
+    visit new_post_path
+    page.attach_file("post_image", Rails.root + 'spec/fixtures/Cookies.jpg')
+    fill_in 'Caption', with: 'Caption'
+    click_button('Create Post')
+    click_button('Like')
+    click_button('Like')
+    expect(page).to have_content("1 Like")
+  end 
 end
