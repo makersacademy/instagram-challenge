@@ -44,11 +44,11 @@ I would like to be able to like pictures.
 ## Screenshots
 
 <div align="center">
-    <img src="LatestScreenshot.png" width="600px"</img>
+    <img src="LatestScreenshot.png" width="800px"</img>
 </div>
 
 <div align="center">
-    <img src="UploadScreenshot.png" width="750px"</img>
+    <img src="UploadScreenshot.png" width="800px"</img>
 </div>
 
 ## Acknowledgments
