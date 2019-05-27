@@ -50,3 +50,8 @@ I would like to be able to like pictures.
 <div align="center">
     <img src="UploadScreenshot.png" width="600px"</img>
 </div>
+
+## Acknowledgments
+- Jordan Roberts
+- Makers Academy Challenge
+- For help with which gems to use and to get started, I referred to Chapters 1 and 2 of <a href="https://github.com/benwalks/Lets-Build-Instagram-Free-Book">this</a> tutorial when I got stuck. 

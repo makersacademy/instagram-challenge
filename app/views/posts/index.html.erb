@@ -1,7 +1,9 @@
 <center><h1>Foodstagram</h1></center>
 
 <div class="posts-wrapper row">
-
+  <% if flash[:notice]%>
+   <div><%=flash[:notice]%></div>
+   <%end%>
   <% @posts.each do |post| %>
     <div class="post">
       <div class="post-head">
@@ -30,13 +32,11 @@
             <%= comment.content %>
           </div>
         </div>
+      </div>
       <% end %>
     <% end %>
     <%= button_to 'Like', post_likes_path(post.id), method: :post %>
     <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-    <% if flash[:notice]%>
-     <div><%=flash[:notice]%></div>
-     <%end%>
 
 <div class="comment-form">
   <%= form_for [post, post.comments.new] do |f| %>
