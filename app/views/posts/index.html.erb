@@ -1,46 +1,47 @@
-<center><h1>Foodstagram</h1></center>
-
+<center>
+   <h1>Foodstagram</h1>
+</center>
 <div class="posts-wrapper row">
-  <% if flash[:notice]%>
-   <div><%=flash[:notice]%></div>
-   <%end%>
-  <% @posts.each do |post| %>
-    <div class="post">
-      <div class="post-head">
-        <div class="thumb-img"></div>
-          <div class="user-name">
-            <%= post.user.user_name unless post.user.blank? %>
-        </div>
+<% if flash[:notice]%>
+<div><%=flash[:notice]%></div>
+<%end%>
+<% @posts.each do |post| %>
+<div class="post">
+<div class="post-head">
+   <div class="thumb-img"></div>
+   <div class="user-name">
+      <%= post.user.user_name unless post.user.blank? %>
+   </div>
+</div>
+<div class="image center-block">
+   <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
+</div>
+<div class="post-bottom">
+   <div class="caption">
+      <div class="user-name">
+         <%= post.user.user_name unless post.user.blank? %>
       </div>
-    <div class="image center-block">
-      <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
-    </div>
-    <div class="post-bottom">
-      <div class="caption">
-        <div class="user-name">
-          <%= post.user.user_name unless post.user.blank? %>
-        </div>
-        <%= post.caption %>
+      <%= post.caption %>
+   </div>
+   <% if post.comments %>
+   <% post.comments.each do |comment| %>
+   <div class="comment">
+      <div class="user-name">
+         <%= comment.user.user_name %>
       </div>
-    <% if post.comments %>
-      <% post.comments.each do |comment| %>
-        <div class="comment">
-          <div class="user-name">
-            <%= comment.user.user_name %>
-          </div>
-          <div class="comment-content">
-            <%= comment.content %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-    <%= button_to 'Like', post_likes_path(post.id), method: :post %>
-    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-  </div>
+      <div class="comment-content">
+         <%= comment.content %>
+      </div>
+   </div>
+   <% end %>
+   <% end %>
+   <%= button_to 'Like', post_likes_path(post.id), method: :post %>
+   <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+</div>
 <div class="comment-form">
-  <%= form_for [post, post.comments.new] do |f| %>
-    <%= f.text_field :content, placeholder: 'Add a comment...' %>
-    <%= f.submit 'Add'%>
-    <% end %>
-  <% end %>
+   <%= form_for [post, post.comments.new] do |f| %>
+   <%= f.text_field :content, placeholder: 'Add a comment...' %>
+   <%= f.submit 'Add'%>
+   <% end %>
+   <% end %>
 </div>

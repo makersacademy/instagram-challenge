@@ -1,38 +1,38 @@
 <div class="posts-wrapper row">
-  <div class="post">
-    <div class="post-head">
-      <div class="user-name">
-        <%= @post.user.user_name unless @post.user.blank? %>
+   <div class="post">
+      <div class="post-head">
+         <div class="user-name">
+            <%= @post.user.user_name unless @post.user.blank? %>
+         </div>
       </div>
-    </div>
-    <div class="image center-block">
-      <%= image_tag @post.image.url(:medium) %>
-    </div>
-    <p class="caption">
-      <%= @post.caption %>
-    </p>
-    <% if @post.comments %>
+      <div class="image center-block">
+         <%= image_tag @post.image.url(:medium) %>
+      </div>
+      <p class="caption">
+         <%= @post.caption %>
+      </p>
+      <% if @post.comments %>
       <% @post.comments.each do |comment| %>
-        <div class="comment">
-          <div class="user-name">
+      <div class="comment">
+         <div class="user-name">
             <%= comment.user.user_name %>
-          </div>
-          <div class="comment-content">
+         </div>
+         <div class="comment-content">
             <%= comment.content %>
-          </div>
-        </div>
+         </div>
+      </div>
       <% end %>
-    <% end %>
-    <%= button_to 'Like', post_likes_path(@post.id), method: :post %>
-    <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-<div class="comment-form">
-  <%= form_for [@post, @post.comments.new] do |f| %>
-    <%= f.text_field :content, placeholder: 'Add a comment...' %>
-    <%= f.submit 'Add'%>
-  <% end %>
-</div>
-    <div class="text-center">
-      <%= link_to "Cancel", posts_path %>
-    </div>
-  </div>
+      <% end %>
+      <%= button_to 'Like', post_likes_path(@post.id), method: :post %>
+      <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+      <div class="comment-form">
+         <%= form_for [@post, @post.comments.new] do |f| %>
+         <%= f.text_field :content, placeholder: 'Add a comment...' %>
+         <%= f.submit 'Add'%>
+         <% end %>
+      </div>
+      <div class="text-center">
+         <%= link_to "Cancel", posts_path %>
+      </div>
+   </div>
 </div>
