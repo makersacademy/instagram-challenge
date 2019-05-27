@@ -44,7 +44,7 @@ I would like to be able to like pictures.
 ## Screenshots
 
 <div align="center">
-    <img src="Screenshot2.png" width="400px"</img>
+    <img src="LatestScreenshot.png" width="400px"</img>
 </div>
 
 <div align="center">
@@ -54,4 +54,4 @@ I would like to be able to like pictures.
 ## Acknowledgments
 - Jordan Roberts
 - Makers Academy Challenge
-- For help with which gems to use and to get started, I referred to Chapters 1 and 2 of <a href="https://github.com/benwalks/Lets-Build-Instagram-Free-Book">this</a> tutorial when I got stuck. 
+- For help with which gems to use and to get started, I referred to Chapters 1 and 2 of <a href="https://github.com/benwalks/Lets-Build-Instagram-Free-Book">this</a> tutorial when I got stuck.
