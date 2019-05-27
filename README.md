@@ -19,7 +19,7 @@ Makers Week 8. Instagram Challenge.
 
 - You should see this.
 
-<img width="1280" alt="Screen Shot 2019-05-27 at 14 34 09" src="https://user-images.githubusercontent.com/37377831/58423239-82381100-808c-11e9-915f-4ff97051bc0b.png">
+<img width="1280" alt="Screen Shot 2019-05-27 at 15 07 01" src="https://user-images.githubusercontent.com/37377831/58425206-258b2500-8091-11e9-8b2e-01c98e0f40d2.png">
 
 > Note this page will look different by the time I am done with the application.
 
