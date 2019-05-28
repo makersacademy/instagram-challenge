@@ -1,0 +1,15 @@
+language: ruby
+
+rvm: '2.6.3'
+
+before_install:
+- sudo apt-get update -qq
+- sudo apt-get install -qq postgresql-server-dev-9.3
+
+before_script:
+- bundle install
+- bin/rails db:create
+- bin/rails db:migrate
+
+script:
+- bundle exec rspec
