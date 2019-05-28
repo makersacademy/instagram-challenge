@@ -27,6 +27,7 @@ Ruby version: 2.5.0
 Rails
 Rspec
 Javascript
+Jasmine
 
 **Local development**
 
