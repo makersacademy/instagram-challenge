@@ -10,6 +10,10 @@ Pictures won't persist beyond the runtime of the Heroku dyno, as S3 not implemen
 
 Trello board link: https://trello.com/b/BhHxImVc/instragram
 
+## Request Response Cycle Diagram
+
+![Diagram](public/RequestResponseCycle.jpg)
+
 ## Description
 
 Instagram clone built using Ruby on Rails
