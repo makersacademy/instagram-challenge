@@ -1,32 +1,26 @@
 Instagram Challenge
 ===================
 
-Project set up approach
+## Progress/Status
+I spent the first part of my weekend working on the Instagram challenge using Ruby on Rails. I only gave myself around 5-6 hours of Saturday to do this due to other commitments, but I was happy with the progress I had made. Taking a look at the commit history I can evidence that I have been able to install rails on an application, create controller routes, create databases using Postgres, add a number of gems such as devise and pg, generate user model. In addition, I added rubocop, simplecov and travis CI to assist with checking the program, for example travis will build the program before deploying to ensure there are no breaks/mistakes in the code. I made it so once travis has built the program and all tests pass, the app will automatically deploy to Heroku. I spent quite a bit of time on this as I wanted to use what I had learned during the Acebook challenge and put into practice to be able to integrate GitHub, travis and heroku. This furthered my learning of the developers workflow, using git to create new branches off master, pull request and merge. By practicing the workflow I am equipping myself for long term growth as this will eventually become second nature. I started to run out of time on the challenge as there was other topics that I wanted to study and improve my skills on, therefore I completed the set up for the rails application and added a sign up feature but decided to move on to study for my process review.  The challenge was good practice from what I had learned the previous week when working on the Acebook project. I will attempt to move forward and work on the instagram app when I have free time.
 
-gem install rails -v 5.2.3
-brew install postgresql
+## Project set up approach
+
+gem install rails -v 5.2.3.
+brew install postgresql.
 
 Tech Stack :
 Backend-
-Ruby 2.6.0
-Rails 5.2.3
-Database: Postgres
+Ruby 2.6.0. 
+Rails 5.2.3. 
+Database: Postgres. 
 
 Create database:
+rails db:create. 
+rails db:migrate. 
 
-rails db:create
-rails db:migrate
-
-Created database 'development_instagram'
-Created database 'test_instagram'
-
-## Instructions
-
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Created database 'development_instagram'. 
+Created database 'test_instagram'. 
 
 ## Task
 
