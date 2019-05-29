@@ -39,7 +39,6 @@ feature 'Users can like a post' do
     expect(page).to have_content("Like")
   end
 
-
     scenario 'user can only unlike a post that they have liked' do
       create_new_user
       visit '/posts'

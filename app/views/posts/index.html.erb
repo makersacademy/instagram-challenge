@@ -31,6 +31,11 @@
       </div>
       <div class="comment-content">
          <%= comment.content %>
+         <div>
+           <% if comment.user == current_user %>
+            <%= button_to "Delete comment", post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </div>
       </div>
    </div>
    <% end %>
@@ -45,6 +50,11 @@
    <% end %>
    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
    <!-- The .count method returns the total count of all likes -->
+
+   <!-- post_like_path will handle the single like and it's going to trigger the "delete" action in controller.
+   post_likes_path will trigger the new action for creating a new like  -->
+
+   <!-- When you want to show or delete a particular resource then you will have to provide an :id for the resource so that the target resource can be found. -->
 </div>
 <div class="comment-form">
    <%= form_for [post, post.comments.new] do |f| %>
