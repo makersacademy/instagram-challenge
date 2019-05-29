@@ -12,3 +12,6 @@ end
 
 # resizing the image to accept Instagram normal - 640px wide.
 # validation set so that an image needs to be submitted in that form.
+
+
+# Used paperclip gem for images: remember to run 'bin/rails g paperclip post image' after installing paperclip 
