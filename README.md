@@ -1,7 +1,7 @@
 Instagram Challenge
 ===================
 
-[![Build Status](https://travis-ci.org/jordantroberts/instagram.svg?branch=master)](https://travis-ci.org/jordantroberts/Foodstagram)[![CodeCov](https://img.shields.io/codecov/c/github/jordantroberts/instagram.svg)](https://codecov.io/gh/jordantroberts/Foodstagram)
+[![Build Status](https://travis-ci.org/jordantroberts/Foodstagram.svg?branch=master)](https://travis-ci.org/jordantroberts/Foodstagram)[![CodeCov](https://img.shields.io/codecov/c/github/jordantroberts/Foodstagram.svg)](https://codecov.io/gh/jordantroberts/Foodstagram)
 
 
 Week 8 weekend challenge: build an Instagram clone using Rails. Instructions: you'll need users who can post pictures, write comments on pictures and like a picture. Style it like Instagram's website (or more awesome).
