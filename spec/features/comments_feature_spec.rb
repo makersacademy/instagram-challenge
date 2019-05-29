@@ -26,16 +26,43 @@ feature 'Users can comment on a post' do
     expect(page).to have_button("Delete comment")
   end
 
-    scenario 'comments are successfully deleted' do
-      create_new_user
-      visit '/posts'
-      visit new_post_path
-      page.attach_file("post_image", Rails.root + 'spec/fixtures/Cookies.jpg')
-      fill_in 'Caption', with: 'Caption'
-      click_button('Create Post')
-      fill_in 'comment_content', with: "new comment"
-      click_button "Add"
-      click_button "Delete comment"
-      expect(page).not_to have_content("new comment")
-    end
+  scenario 'comments are successfully deleted' do
+    create_new_user
+    visit '/posts'
+    visit new_post_path
+    page.attach_file("post_image", Rails.root + 'spec/fixtures/Cookies.jpg')
+    fill_in 'Caption', with: 'Caption'
+    click_button('Create Post')
+    fill_in 'comment_content', with: "new comment"
+    click_button "Add"
+    click_button "Delete comment"
+    expect(page).not_to have_content("new comment")
+  end
+
+  scenario 'edited comments display correctly' do
+    create_new_user
+    visit '/posts'
+    visit new_post_path
+    page.attach_file("post_image", Rails.root + 'spec/fixtures/Cookies.jpg')
+    fill_in 'Caption', with: 'Caption'
+    click_button('Create Post')
+    fill_in 'comment_content', with: "newer comment"
+    click_button "Add"
+    click_button "Edit Comment"
+    fill_in 'comment_content', with: "edited"
+    click_button "Update"
+    expect(page).to have_content("edited")
+  end
+
+  scenario 'users can only edit their comments' do
+    create_new_user
+    visit '/posts'
+    visit new_post_path
+    page.attach_file("post_image", Rails.root + 'spec/fixtures/Cookies.jpg')
+    fill_in 'Caption', with: 'Caption'
+    click_button('Create Post')
+    fill_in 'comment_content', with: "newer comment"
+    click_button "Add"
+    expect(page).to have_button("Edit Comment")
+  end
 end
