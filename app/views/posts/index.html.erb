@@ -1,0 +1,66 @@
+<center>
+   <h1>Foodstagram</h1>
+</center>
+<div class="posts-wrapper row">
+<% if flash[:notice]%>
+<div><%=flash[:notice]%></div>
+<%end%>
+<% @posts.each do |post| %>
+<div class="post">
+<div class="post-head">
+   <div class="thumb-img"></div>
+   <div class="user-name">
+      <%= post.user.user_name unless post.user.blank? %>
+   </div>
+</div>
+<div class="image center-block">
+   <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
+</div>
+<div class="post-bottom">
+   <div class="caption">
+      <div class="user-name">
+         <%= post.user.user_name unless post.user.blank? %>
+      </div>
+      <%= post.caption %>
+   </div>
+   <% if post.comments %>
+   <% post.comments.each do |comment| %>
+   <div class="comment">
+      <div class="user-name">
+         <%= comment.user.user_name %>
+      </div>
+      <div class="comment-content">
+         <%= comment.content %>
+         <div>
+           <% if comment.user == current_user %>
+            <%= button_to "Delete comment", post_comment_path(post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+            <%= button_to 'Edit Comment', edit_post_comment_path(post, comment), method: :get %>
+          <% end %>
+        </div>
+      </div>
+   </div>
+   <% end %>
+   <% end %>
+    <!-- Now add an unlike button and make sure it shows up if you click like:  -->
+   <% pre_like = post.likes.find { |like| like.user_id == current_user.id } %>
+   <% if pre_like %>
+   <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+   <%# When the user clicks delete, I pass in the post and the like, which it finds using find_post and find_like and then destroys the like. %>
+   <% else %>
+   <%= button_to 'Like', post_likes_path(post), method: :post %>
+   <% end %>
+   <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+   <!-- The .count method returns the total count of all likes -->
+
+   <!-- post_like_path will handle the single like and it's going to trigger the "delete" action in controller.
+   post_likes_path will trigger the new action for creating a new like  -->
+
+   <!-- When you want to show or delete a particular resource then you will have to provide an :id for the resource so that the target resource can be found. -->
+</div>
+<div class="comment-form">
+   <%= form_for [post, post.comments.new] do |f| %>
+   <%= f.text_field :content, placeholder: 'Add a comment...' %>
+   <%= f.submit 'Add'%>
+   <% end %>
+   <% end %>
+</div>
