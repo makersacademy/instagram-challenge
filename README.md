@@ -19,9 +19,9 @@ Run `bin/rails server` and visit http://localhost:3000
 
 ## Build Status
 
-All user stories have been implemented and an MVP achieved! :) Users can sign up from the index page, log in, upload pictures, comment on pictures and like pictures. I have taken into account certain edge cases such as they can only like a post once, and they cannot sign up with the same email address.
+All user stories have been implemented and an MVP achieved! :) Users can sign up from the index page, log in, upload pictures, comment on pictures, like and unlike pictures. I have taken into account certain edge cases such as they can only like a post once, and they cannot sign up with the same email address.
 
-If I had more time, I would like to focus on additional elements such as being able to unlike a post, or delete/update a comment. It would also be cool to build a user profile page for each user.
+If I had more time, I would like to focus on additional elements such as deleting or updating a comment. It would also be cool to build a user profile page for each user.
 
 ## User Stories
 
@@ -45,6 +45,10 @@ I would like to be able to comment on other pictures.
 As a user
 So that I can share my appreciation for food
 I would like to be able to like pictures.
+
+As a user
+So that I can change my mind
+I would like to be able to unlike pictures I have liked.
 ```
 
 ## Screenshots
@@ -69,4 +73,4 @@ I would like to be able to like pictures.
 - Jordan Roberts
 - Makers Academy Challenge
 - For help with which gems to use and to get started, I referred to Chapters 1 and 2 of <a href="https://github.com/benwalks/Lets-Build-Instagram-Free-Book">this</a> tutorial when I got stuck.
-- For the like and unlike function, I followed <a href="https://medium.com/full-taxx/how-to-add-likes-to-posts-in-rails-e81430101bc2">this</a> tutorial. 
+- For the like and unlike function, I followed <a href="https://medium.com/full-taxx/how-to-add-likes-to-posts-in-rails-e81430101bc2">this</a> tutorial.
