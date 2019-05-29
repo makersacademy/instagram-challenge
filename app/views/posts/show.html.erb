@@ -20,11 +20,23 @@
          <div class="comment-content">
             <%= comment.content %>
          </div>
+         <% if comment.user == current_user %>
+          <%= button_to "Delete comment", post_comment_path(@post, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= button_to 'Edit Comment', edit_post_comment_path(@post, comment), method: :get %>
+        <% end %>
       </div>
       <% end %>
       <% end %>
-      <%= button_to 'Like', post_likes_path(@post.id), method: :post %>
+      <% pre_like = @post.likes.find { |like| like.user_id == current_user.id } %>
+      <% if pre_like %>
+      <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+      <%# When the user clicks delete, I pass in the post and the like, which it finds using find_post and find_like and then destroys the like. %>
+      <% else %>
+      <%= button_to 'Like', post_likes_path(@post), method: :post %>
+      <% end %>
       <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+
+
       <div class="comment-form">
          <%= form_for [@post, @post.comments.new] do |f| %>
          <%= f.text_field :content, placeholder: 'Add a comment...' %>
