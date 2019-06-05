@@ -7,7 +7,13 @@
 
 _Week 8 Weekend Challenge: [challenge README.md](./challenge_README.md)_
 
-Project is still a work in progress: [See the Heroku deployment](https://dt-instaclonegram.herokuapp.com/)
+[See on Heroku](https://dt-instaclonegram.herokuapp.com/), but note **WARNING**: [Storage backend](https://devcenter.heroku.com/articles/active-storage-on-heroku) - e.g. Amazon S3 - is not currently implemented. Heroku filesystem is [ephemeral](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem), so any file uploads will very quickly be lost with dyno cycling.
+
+I started this project in the weekend between week 8 and week 9, during our [_Acebook_](https://github.com/dafuloth/acebook-bcds) group project. It demonstrates a CI/CD pipeline - i.e. when it is built by Travis CI and passes the tests, it is automatically deployed to Heroku.
+
+It doesn't look like much is happening here because this project was a sandbox for spiking and trying things out. I used it for experimenting and learning new things that I was able to bring to the group project.
+
+Also, I practiced my diagramming here:
 
 ![User Flow Diagram](./user_flow.svg)
 
