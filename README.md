@@ -17,6 +17,20 @@ Also, I practiced my diagramming here:
 
 ![User Flow Diagram](./user_flow.svg)
 
+## Feature Overview
+
+
+<div align="center">
+
+### Add a new picture post
+
+![Add a new picture post](./readme/instaclonegram-new.gif)
+
+### Most recent posts appear first
+
+![Most recent posts appear first](./readme/instaclonegram-list.gif)
+</div>
+
 ## Ruby version
 
 This Rails project was developed with Ruby 2.6.0.
@@ -53,7 +67,23 @@ This remote repo has `coverage` in `.gitignore` as coverage is being tracked by 
 
 ## Code Quality
 
-Additionally, Code Climate has also been added to track code quality, or "maintainability" - it also tracks test coverage.
+Additionally, Code Climate has also been added to track code quality, or "maintainability" - and with `SimpleCov` it also tracks test coverage.
+
+## Issues
+
+### `API request failed` during Travis CI deploy to Heroku
+
+`Message: Invalid credentials provided.`
+
+**Solution**: Refresh `api_key`
+
+```
+heroku login
+travis login
+
+travis encrypt $(heroku auth:token) --add deploy.api_key
+```
+Then commit and push the new .travis.yml
 
 ## Acknowledgements
 
