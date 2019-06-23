@@ -13,6 +13,7 @@ RSpec.feature 'Signing in', type: :feature do
     sign_in_user
     expect(current_path).not_to eq('/signin')
     expect(page).to have_content('You have signed in')
+    expect(page).to have_content('Post')
   end
 
   scenario 'Unsuccessfully signing in' do

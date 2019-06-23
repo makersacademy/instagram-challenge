@@ -7,13 +7,13 @@
   <body>
     <a href='/signout'>Sign Out</a>
     <%= flash[:notice] %>
-    <%= form_for Post.new do |form| %>
-        Description: <%= form.text_field :description %>
-        <br>
-        <%= form.file_field :image %>
-        <br>
-        <%= form.hidden_field :user_id, value: @user.id %>
-        <%= form.submit 'Create Post', class: 'btn btn-primary' %>
+    <a href='/posts/new'>Post</a>
+    <br>
+    <%= Post.where(user_id: @user.id).find_each do |post| %>
+      <br>
+      <p><%= image_tag post.image, class: 'main-image', height: '500px', width: '500px' %></p>
+      <br>
+      <%= post.description %>
     <% end %>
   </body>
 </html>
