@@ -7,5 +7,13 @@
   <body>
     <a href='/signout'>Sign Out</a>
     <%= flash[:notice] %>
+    <%= form_for Post.new do |form| %>
+        Description: <%= form.text_field :description %>
+        <br>
+        <%= form.file_field :image %>
+        <br>
+        <%= form.hidden_field :user_id, value: @user.id %>
+        <%= form.submit 'Create Post', class: 'btn btn-primary' %>
+    <% end %>
   </body>
 </html>
