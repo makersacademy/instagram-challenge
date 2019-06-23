@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  resources :widgets
-  resources :users
+  root 'users#index'
+  resources :users, :widgets
 end
