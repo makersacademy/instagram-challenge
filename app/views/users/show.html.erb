@@ -2,18 +2,21 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title><%= @user.name %>'s Images</title>
   </head>
   <body>
     <a href='/signout'>Sign Out</a>
-    <%= flash[:notice] %>
-    <a href='/posts/new'>Post</a>
     <br>
-    <%= Post.where(user_id: @user.id).find_each do |post| %>
+    <center>
+      <%= flash[:notice] %>
+      <a href='/posts/new'>Post</a>
       <br>
-      <p><%= image_tag post.image, class: 'main-image', height: '500px', width: '500px' %></p>
-      <br>
-      <%= post.description %>
-    <% end %>
+      <%= Post.where(user_id: @user.id).find_each do |post| %>
+        <br>
+        <p><%= image_tag post.image, class: 'main-image', height: '500px', width: '500px' %></p>
+        <br>
+        <%= post.description %>
+      <% end %>
+    </center>
   </body>
 </html>
