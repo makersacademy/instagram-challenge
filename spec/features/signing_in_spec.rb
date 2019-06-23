@@ -2,6 +2,12 @@ require 'rails_helper'
 require 'web_helpers'
 
 RSpec.feature 'Signing in', type: :feature do
+  scenario 'Index should have a Sign In link to /signin' do
+    visit '/'
+    click_link 'Sign In'
+    expect(current_path).to eq('/signin')
+  end
+
   scenario 'Successfully signing in' do
     sign_up_user
     visit '/signin'

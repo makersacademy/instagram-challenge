@@ -2,6 +2,12 @@ require 'rails_helper'
 require 'web_helpers'
 
 RSpec.feature 'Signing up', type: :feature do
+  scenario 'Index should have a Sign Up link to /user/new' do
+    visit '/'
+    click_link 'Sign Up'
+    expect(current_path).to eq('/users/new')
+  end
+
   scenario 'Signing up with suitable credentials' do
     sign_up_user
     expect(current_path).not_to eq('/users/new')

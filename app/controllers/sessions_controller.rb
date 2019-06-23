@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_email(params[:email])
+    p params
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:notice] = 'You have signed in'
