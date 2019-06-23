@@ -6,3 +6,10 @@ def sign_up_user
   fill_in 'user_password_confirmation', with: '123'
   click_button 'Sign Up'
 end
+
+def sign_in_user
+  visit '/signin'
+  fill_in 'email', with: 'test@test.com'
+  fill_in 'password', with: '123'
+  click_button 'Sign In'
+end
