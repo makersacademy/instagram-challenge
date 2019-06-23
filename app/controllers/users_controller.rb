@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'You have signed up'
       redirect_to '/'
     else
+      flash[:notice] = 'Passwords do not match'
       redirect_to new_user_path
     end
   end
