@@ -1,0 +1,46 @@
+<div class="container-small">
+<span>Edit comment</span>
+
+<%= form_with(model: comment, local: true) do |form| %>
+<form>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_area :body, class:"form-control"%>
+  </div>
+  
+  <%= form.hidden_field :post_id, value: "#{params[:post_id]}" %>
+  <%= form.hidden_field :user_id, value: "#{params[:user_id]}" %>
+  
+  <div class="actions">
+    <%= form.submit "Submit", class:"btn" %>
+    <%= link_to 'Back', posts_path, class:"btn" %>
+  </div>
+
+  <div class="field" style="display: none;">
+    <%= form.label :post_id %>
+    <%= form.text_field :post_id %>
+  </div>
+
+  <div class="field" style="display: none;">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+<% end %>
+</form>
+
+
+</div>
+
