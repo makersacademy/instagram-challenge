@@ -9,5 +9,6 @@ RSpec.feature 'Signing up', type: :feature do
     fill_in 'user_password_confirmation', with: '123'
     click_button 'Sign Up'
     expect(current_path).not_to eq('/users/new')
+    expect(page).to have_content('You have signed up')
   end
 end
