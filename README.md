@@ -12,6 +12,7 @@ RACHEL GRIFFITHS
 
 ##### WEB INTERFACE
 * Style it like Instagram's website (or more awesome!)
+* [Instagram Official] (https://www.instagram.com)
 
 ### TECHNOLOGIES
 ------------
@@ -36,6 +37,17 @@ RACHEL GRIFFITHS
 * RSpec - Testing Framework
 * Rubocop - Linter
 * SimpleCov - Test Coverage
+* Travis - CI
+
+### APPROACH
+------------
+1. Setup project file with required frameworks  
+
+2. Breakdown business logic provided into web   requirements
+
+3. Diagram instagram database:
+
+![Database](images/instagram_database_diagram.jpg)
 
 ### WEB REQUIREMENTS
 ------------
