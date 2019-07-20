@@ -90,6 +90,7 @@ Score: 100.0
 
 - [**Puma**](https://github.com/puma/puma) - a concurrent HTTP server that comes default with Rails
 - [**Rails** 5.2.3](https://rubyonrails.org/) - a server-side web application framework
+- [**RAKE** 12.3.2](https://github.com/ruby/rake) - a task and dependency manager for Ruby
 - [**RSpec Rails**](https://github.com/rspec/rspec-rails) - a DSL for testing Ruby on Rails
 - [**Rubocop Rails**](https://rubocop.readthedocs.io/en/stable/) - a static code analyzer and code formatter
 - [**Ruby** 6.2.3](https://www.ruby-lang.org/en/) - a dynamic, object oriented programming language
