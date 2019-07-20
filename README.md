@@ -37,15 +37,15 @@ $ rspec
 $ open PATH/coverage/index.html
 ```
 
-```shell
-X examples found.
-
-
-Finished in 0.00027 seconds (files took 0.15576 seconds to load)
-X examples, X failures
-
-Coverage report generated for RSpec to /--/coverage/index.html. 0 / 21 LOC (0.0%) covered.
-```
+>```shell
+>X examples found.
+>
+>
+>Finished in 0.00027 seconds (files took 0.15576 seconds to load)
+>X examples, X failures
+>
+>Coverage report generated for RSpec to /--/coverage/index.html. 0 / 21 LOC (0.0%) covered.
+>```
 
 ### Code Style
 
@@ -54,12 +54,12 @@ In the command line use `rubocop`:
 ```shell
 $ rubocop
 ```
-```shell
-Inspecting XX files
-........................................
-
-XX files inspected, no offenses detected
-```
+>```shell
+>Inspecting XX files
+>........................................
+>
+>XX files inspected, no offenses detected
+>```
 
 ### Code Quality
 
@@ -69,22 +69,22 @@ In the command line use `ruby critic` then direct your browser to the given URL:
 $ rubycritic
 $ open PATH/overview.html
 ```
-```shell
-running flay smells
-
-running flog smells
-..............................
-running reek smells
-..............................
-running complexity
-..............................
-running attributes
-..............................
-running churn
-..............................
-New critique at file:---/overview.html
-Score: 100.0
-```
+>```shell
+>running flay smells
+>
+>running flog smells
+>..............................
+>running reek smells
+>..............................
+>running complexity
+>..............................
+>running attributes
+>..............................
+>running churn
+>..............................
+>New critique at file:---/overview.html
+>Score: 100.0
+>```
 
 ## Tech Stack
 
