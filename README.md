@@ -23,6 +23,10 @@ Run `bundle exec rspec` from the command line
 Run `bin/rails server` and visit http://localhost:3000
 
 
+## On Heroku 
+
+https://arcane-badlands-50745.herokuapp.com/ 
+
 ---
 
 ## User Stories
