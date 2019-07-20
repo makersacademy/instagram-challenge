@@ -29,8 +29,10 @@ $ ruby bin/rails server
 
 - [**Puma**](https://github.com/puma/puma) - a concurrent HTTP server that comes default with Rails
 - [**Rails** 5.2.3](https://rubyonrails.org/) - a server-side web application framework
+- [**RSpec Rails**](https://github.com/rspec/rspec-rails) - a DSL for testing Ruby on Rails
 - [**Rubocop**](https://rubocop.readthedocs.io/en/stable/) - a static code analyzer and code formatter
 - [**Ruby** 6.2.3](https://www.ruby-lang.org/en/) - a dynamic, object oriented programming language
+- [**SimpleCov** 0.17.0](https://github.com/colszowka/simplecov) - a code coverage analysis tool for Ruby
 - [**SQLite** 3](https://www.sqlite.org/index.html) - a C-language library that implements a SQL database engine
 - [**Travis CI** 1.8.10](https://travis-ci.org/) - a continuous integration platform and deployment manager
 
@@ -38,7 +40,6 @@ $ ruby bin/rails server
 <!-- - [Heroku](https://www.heroku.com/) - a cloud platform service -->
 <!-- - [RubyCritic](https://github.com/whitesmith/rubycritic) - a code quality analysis tool for Ruby -->
 <!-- - [ScaffoLint](https://github.com/makersacademy/scaffolint) - a starting point for customising the Rubocop linter -->
-<!-- - [SimpleCov](https://github.com/colszowka/simplecov) - a code coverage analysis tool for Ruby -->
 
 
 ## Approach
