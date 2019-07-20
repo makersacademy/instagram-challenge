@@ -1,6 +1,86 @@
-# RACHEL GRIFFITHS
-----------
+RACHEL GRIFFITHS
+=================
 
+## CHALLENGE: INSTAGRAM
+------------
+
+##### BUSINESS LOGIC
+------------
+* USERS can post PICTURES
+* USERS can write COMMENTS on pictures
+* USERS can LIKE pictures
+
+##### WEB INTERFACE
+* Style it like Instagram's website (or more awesome!)
+
+### TECHNOLOGIES
+------------
+* Ruby On Rails - Web Application Framework
+
+### GETTING STARTED
+------------
+* Clone the following repo: git@github.com:rachjgriff/instagram-challenge.git
+* Run the following in your command line:
+
+```bash
+> bundle install
+> bin/rails db:create
+> bin/rails db:migrate
+
+> bundle exec rspec # Run the tests to ensure it works
+> bin/rails server # Start the server at localhost:3000
+```
+
+### TESTING
+------------
+* RSpec - Testing Framework
+* Rubocop - Linter
+* SimpleCov - Test Coverage
+
+### WEB REQUIREMENTS
+------------
+##### USERS
+- [ ] User can sign up with username, email address and password
+- [ ] User can sign in
+- [ ] User can sign out
+- [ ] User details are stored in a database
+- [ ] User is redirected to sign up/sign in page if not logged in
+
+  ###### CONFIRMATION
+  - [ ] User receives confirmation via webpage if successfully signed up
+  - [ ] User receives confirmation via webpage if successfully signed in
+
+  ###### SIGN UP FEEDBACK
+  - [ ] User receives feedback via webpage if sign up is unsuccessful due to invalid email
+  - [ ] User receives feedback via webpage if sign up is unsuccessful due to email already being taken
+  - [ ] User receives feedback via webpage if sign up is unsuccessful due to password criteria not met
+  - [ ] User receives feedback via webpage if sign up is unsuccessful due to password not matching password confirmation
+
+  ###### SIGN IN FEEDBACK
+  - [ ] User receives feedback via webpage if sign in is unsuccessful due to invalid email
+  - [ ] User receives feedback via webpage if sign in is unsuccessful due to email not being recognised
+  - [ ] User receives feedback via webpage if sign up is unsuccessful due to email and password combination is incorrect
+
+##### PICTURES
+- [ ] User can upload picture
+- [ ] User can delete picture
+- [ ] Pictures are stored in a datatbase against the user id (one-to-many relationship)
+- [ ] Pictures are displayed on a web page with the user's username against it
+
+##### COMMENTS
+- [ ] User can leave a comment against a picture
+- [ ] User can delete a comment
+- [ ] Pictures can have multiple comments against them from different users or the same user
+- [ ] Comments are stored in a database (one-to-many relationship)
+
+##### LIKES
+- [ ] User can 'like' a picture
+- [ ] User can 'unlike' a picture
+- [ ] Pictures can have multiple 'likes' against them from different users
+- [ ] Likes are stored in a database (one-to-many relationship)
+
+
+------------
 Instagram Challenge
 ===================
 
