@@ -1,6 +1,6 @@
 # Instagram Challenge
 
-> Challenge: Build Instagram using Rails.
+![Build Status](https://travis-ci.org/ruthmoog/instagram-challenge.svg?branch=master)
 
 This web app is a photo sharing site, where users can post pictures, write comments on pictures, and like pictures.
 
@@ -32,13 +32,14 @@ $ ruby bin/rails server
 - [**Rubocop**](https://rubocop.readthedocs.io/en/stable/) - a static code analyzer and code formatter
 - [**Ruby** 6.2.3](https://www.ruby-lang.org/en/) - a dynamic, object oriented programming language
 - [**SQLite** 3](https://www.sqlite.org/index.html) - a C-language library that implements a SQL database engine
+- [**Travis CI** 1.8.10](https://travis-ci.org/) - a continuous integration platform and deployment manager
 
 <!-- Potential Tech Stack tbc... -->
 <!-- - [Heroku](https://www.heroku.com/) - a cloud platform service -->
 <!-- - [RubyCritic](https://github.com/whitesmith/rubycritic) - a code quality analysis tool for Ruby -->
 <!-- - [ScaffoLint](https://github.com/makersacademy/scaffolint) - a starting point for customising the Rubocop linter -->
 <!-- - [SimpleCov](https://github.com/colszowka/simplecov) - a code coverage analysis tool for Ruby -->
-<!-- - [Travis CI](https://travis-ci.org/) - a continuous integration platform and deployment manager -->
+
 
 ## Approach
 
