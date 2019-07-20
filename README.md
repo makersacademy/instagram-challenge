@@ -8,7 +8,6 @@ Makers Academy Week 8 - Weekend challenge: build an Instagram clone using Rails
 ---
 ## Tech Stack
 
-
 ---
 
 ## Installing this app
@@ -56,3 +55,4 @@ As a user
 So that I can change my mind
 I would like to be able to unlike pictures I have liked.
 ```
+
