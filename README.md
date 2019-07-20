@@ -25,6 +25,67 @@ $ rails server
 $ ruby bin/rails server
 ```
 
+## Run the tests
+
+### Unit Tests, Feature Tests, and Code Coverage
+
+In the command line use `rspec` then direct your browser to the given URL or `open` from the command line:
+
+
+```shell
+$ rspec
+$ open PATH/coverage/index.html
+```
+
+```shell
+X examples found.
+
+
+Finished in 0.00027 seconds (files took 0.15576 seconds to load)
+X examples, X failures
+
+Coverage report generated for RSpec to /--/coverage/index.html. 0 / 21 LOC (0.0%) covered.
+```
+
+### Code Style
+
+In the command line use `rubocop`:
+
+```shell
+$ rubocop
+```
+```shell
+Inspecting XX files
+........................................
+
+XX files inspected, no offenses detected
+```
+
+### Code Quality
+
+In the command line use `ruby critic` then direct your browser to the given URL:
+
+```shell
+$ rubycritic
+$ open PATH/overview.html
+```
+```shell
+running flay smells
+
+running flog smells
+..............................
+running reek smells
+..............................
+running complexity
+..............................
+running attributes
+..............................
+running churn
+..............................
+New critique at file:---/overview.html
+Score: 100.0
+```
+
 ## Tech Stack
 
 - [**Puma**](https://github.com/puma/puma) - a concurrent HTTP server that comes default with Rails
@@ -32,15 +93,14 @@ $ ruby bin/rails server
 - [**RSpec Rails**](https://github.com/rspec/rspec-rails) - a DSL for testing Ruby on Rails
 - [**Rubocop Rails**](https://rubocop.readthedocs.io/en/stable/) - a static code analyzer and code formatter
 - [**Ruby** 6.2.3](https://www.ruby-lang.org/en/) - a dynamic, object oriented programming language
-- [**ScaffoLint**](https://github.com/makersacademy/scaffolint) - custom configuration for Rubocop
+- [**RubyCritic** 4.1.0](https://github.com/whitesmith/rubycritic) - a code quality analysis tool for Ruby
+- [**ScaffoLint**](https://github.com/makersacademy/scaffolint) - a starting point for customising the Rubocop linter
 - [**SimpleCov** 0.17.0](https://github.com/colszowka/simplecov) - a code coverage analysis tool for Ruby
 - [**SQLite** 3](https://www.sqlite.org/index.html) - a C-language library that implements a SQL database engine
 - [**Travis CI** 1.8.10](https://travis-ci.org/) - a continuous integration platform and deployment manager
 
 <!-- Potential Tech Stack tbc... -->
 <!-- - [Heroku](https://www.heroku.com/) - a cloud platform service -->
-<!-- - [RubyCritic](https://github.com/whitesmith/rubycritic) - a code quality analysis tool for Ruby -->
-<!-- - [ScaffoLint](https://github.com/makersacademy/scaffolint) - a starting point for customising the Rubocop linter -->
 
 
 ## Approach
