@@ -27,7 +27,7 @@ $ ruby bin/rails server
 
 ## Run the tests
 
-### Unit Tests, Feature Tests, and Code Coverage
+<!-- ### Unit Tests, Feature Tests, and Code Coverage
 
 In the command line use `rspec` then direct your browser to the given URL or `open` from the command line:
 
@@ -45,7 +45,7 @@ $ open PATH/coverage/index.html
 >X examples, X failures
 >
 >Coverage report generated for RSpec to /--/coverage/index.html. 0 / 21 LOC (0.0%) covered.
->```
+>``` -->
 
 ### Code Style
 
@@ -91,7 +91,6 @@ $ open PATH/overview.html
 - [**Puma**](https://github.com/puma/puma) - a concurrent HTTP server that comes default with Rails
 - [**Rails** 5.2.3](https://rubyonrails.org/) - a server-side web application framework
 - [**RAKE** 12.3.2](https://github.com/ruby/rake) - a task and dependency manager for Ruby
-- [**RSpec Rails**](https://github.com/rspec/rspec-rails) - a DSL for testing Ruby on Rails
 - [**Rubocop Rails**](https://rubocop.readthedocs.io/en/stable/) - a static code analyzer and code formatter
 - [**Ruby** 6.2.3](https://www.ruby-lang.org/en/) - a dynamic, object oriented programming language
 - [**RubyCritic** 4.1.0](https://github.com/whitesmith/rubycritic) - a code quality analysis tool for Ruby
@@ -102,6 +101,7 @@ $ open PATH/overview.html
 
 <!-- Potential Tech Stack tbc... -->
 <!-- - [Heroku](https://www.heroku.com/) - a cloud platform service -->
+<!-- - [**RSpec Rails**](https://github.com/rspec/rspec-rails) - a DSL for testing Ruby on Rails -->
 
 
 ## Approach
