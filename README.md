@@ -1,7 +1,7 @@
 Instagram Challenge
 ===================
 
-Enjoy it live on [https://fauxtagram.herokuapp.com/photo/index](https://fauxtagram.herokuapp.com/photo/index)
+Enjoy it live on [https://fauxtagram.herokuapp.com/photo/index](https://fauxtagram.herokuapp.com/)
 
 ## How tos:
 
@@ -13,7 +13,7 @@ Download or clone.
 
 Add your own Cloudinary credentials and replace the environment variables accordingly.
 
-`> bin/rails server` - starts the server. Open `http://localhost:3000/photo/index` in your browser to view.
+`> bin/rails server` - starts the server. Open `http://localhost:3000` in your browser to view.
 
 To run tests:  
 `> bundle exec rspec`  
@@ -26,6 +26,7 @@ To run tests:
 - [ ] As a discerning user, so that I'm not contributing to some shady business, I would like to sign up to Fauxtagram with authentication
 - [ ] As a user, so that I can become an influencer, I would like to see my username next to my posts
 - [ ] As an influencer, so that I can get sweet sponsorship deals, I would like my posts to be liked and show the # of likes
+- [ ] As a kind user, so that I can spread kindness, I would like to be able to heart posts I enjoy
 
 **nice to have**
 
@@ -40,6 +41,10 @@ To run tests:
 - [x] Add rubocop
 - [x] add instructions to README
 - [ ] first feature test
+
+## Known problems:
+- [ ] Dotenv .env file doesn't seem to be visible to cloudinary.yml 
+- [ ]
 
 ## Credits:
 
