@@ -25,7 +25,7 @@ To run tests:
 - [x] As a user, so that I can share my pictures, I would like to be able to post pictures
 - [ ] As a discerning user, so that I'm not contributing to some shady business, I would like to sign up to Fauxtagram with authentication
 - [ ] As a user, so that I can become an influencer, I would like to see my username next to my posts
-- [ ] As an influencer, so that I can get sweet sponsorship deals, I would like my posts to be liked and show the # of likes
+- [x] As an influencer, so that I can get sweet sponsorship deals, I would like my posts to be liked and show the # of likes
 - [ ] As a kind user, so that I can spread kindness, I would like to be able to heart posts I enjoy
 
 **nice to have**
@@ -57,3 +57,4 @@ In this challenge I used the following resources:
 - [previous week's Makers challenge repo](https://github.com/bengscott2/acebook-livewire)
 - [this tutorial on switching from the default sqlite to a PostGres db](https://www.daveferrara1.com/ruby-in-rails-switch-from-sqlite3-to-postgres/)
 - [this comment on how to schedule a database cleanup with DatabaseCleaner](https://gist.github.com/zulhfreelancer/ea140d8ef9292fa9165e#gistcomment-2813124)
+- [this CSS heart](https://codepen.io/Al-Yasa/pen/GNbVzr)
