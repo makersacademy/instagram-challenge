@@ -28,7 +28,7 @@ Run `bin/rails server` and visit http://localhost:3000
 
 ## On Heroku 
 
-https://obscure-reaches-81449.herokuapp.com/
+https://afternoon-headland-77014.herokuapp.com/
 
 ---
 
