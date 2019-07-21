@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# credit: Eliot Sykes https://gist.github.com/eliotsykes/6fc16f428d4e6bb9b32d
+
+# Run this script to deploy the app to Heroku.
+
+set -e
+
+# Push changes to Heroku
+git push heroku master
+
+# Run the database migrations
+heroku run rake db:migrate
+
+# Restart app to use database changes
+heroku restart
