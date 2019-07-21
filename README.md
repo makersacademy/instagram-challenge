@@ -1,5 +1,8 @@
 Instagram Challenge
 ===================
+
+Enjoy it live on [https://fauxtagram.herokuapp.com/photo/index](https://fauxtagram.herokuapp.com/photo/index)
+
 ## How tos:
 
 Download or clone.
@@ -7,6 +10,9 @@ Download or clone.
 `> bundle install`  
 `> bin/rails db:create`  
 `> bin/rails db:migrate`  
+
+Add your own Cloudinary credentials and replace the environment variables accordingly.
+
 `> bin/rails server` - starts the server. Open `http://localhost:3000/photo/index` in your browser to view.
 
 To run tests:  
@@ -16,7 +22,8 @@ To run tests:
 
 ## User stories
 
-- [ ] As a user, so that I can share my pictures, I would like to be able to sign up and post pictures
+- [x] As a user, so that I can share my pictures, I would like to be able to post pictures
+- [ ] As a discerning user, so that I'm not contributing to some shady business, I would like to sign up to Fauxtagram with authentication
 - [ ] As a user, so that I can become an influencer, I would like to see my username next to my posts
 - [ ] As an influencer, so that I can get sweet sponsorship deals, I would like my posts to be liked and show the # of likes
 
