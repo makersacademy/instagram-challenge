@@ -1,4 +1,5 @@
 require_relative 'boot'
+require 'dotenv'
 
 require 'rails/all'
 
@@ -6,7 +7,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-Dotenv::Railtie.load
+if ['development', 'test'].include? ENV['RAILS_ENV']
+  Dotenv::Railtie.load
+end
 
 HOSTNAME = ENV['HOSTNAME']
 

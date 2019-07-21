@@ -41,4 +41,4 @@ In this challenge I used the following resources:
 - [this tutorial](https://pusher.com/tutorials/photo-sharing-ruby-rails)
 - [this Eliot Sykes repo](https://gist.github.com/eliotsykes/6fc16f428d4e6bb9b32d)
 - [previous week's Makers challenge repo](https://github.com/bengscott2/acebook-livewire)
-
+- [this tutorial for switching from sqlite to a PG db](https://www.daveferrara1.com/ruby-in-rails-switch-from-sqlite3-to-postgres/)
