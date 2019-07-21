@@ -11,9 +11,13 @@ Makers Academy Week 8 - Weekend challenge: build an Instagram clone using Rails
 ---
 
 ## Installing this app
-1. Clone this repo
-2. Run `bundle install` from the command line
-3. Run `bin/rails db:create` and then `bin/rails db:migrate` from the command line
+
+```
+git clone https://github.com/petraartep/instagram-challenge
+bundle install
+bin/rails db:create
+bin/rails db:migrate
+```
 
 ## Testing this app
 Run `bundle exec rspec` from the command line
