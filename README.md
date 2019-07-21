@@ -1,13 +1,29 @@
 Instagram Challenge
 ===================
+## How tos:
 
-## Instructions
+Download or clone.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+`> bundle install`  
+`> bin/rails db:create`  
+`> bin/rails db:migrate`  
+`> bin/rails server` - starts the server. Open localhost:3000 in your browser to view.
+
+To run tests:
+`> bundle exec rspec`  
+`> bundle exec rubocop`  
+
+
+## User stories
+
+- [ ] As a user, so that I can share my pictures, I would like to be able to sign up and post pictures
+- [ ] As a user, so that I can become an influencer, I would like to see my username next to my posts
+- [ ] As an influencer, so that I can get sweet sponsorship deals, I would like my posts to be liked and show the # of likes
+
+**nice to have**
+
+- [ ] As an influencer, so that I can generate zeitgeist, I would like to have a comment section on all my posts
+- [ ] As a user, to save my time and sanity, I wand to be able to filter posts to see only those relevant to my interests
 
 ## Task
 
@@ -17,24 +33,13 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
-## How to start
+## Development todo: 
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+- [x] Produce some stories, break them down into tasks, and estimate
+- [x] Fork this repo, clone, etc
+- [x] Initialize a new rails project
+- [x] Add rubocop
+- [x] add instructions to README
+- [x] first feature test
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
 
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
