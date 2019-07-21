@@ -7,7 +7,7 @@ Download or clone.
 `> bundle install`  
 `> bin/rails db:create`  
 `> bin/rails db:migrate`  
-`> bin/rails server` - starts the server. Open localhost:3000 in your browser to view.
+`> bin/rails server` - starts the server. Open `http://localhost:3000/photo/index` in your browser to view.
 
 To run tests:  
 `> bundle exec rspec`  
