@@ -1,7 +1,7 @@
 Instagram Challenge
 ===================
 
-Enjoy it live on [https://fauxtagram.herokuapp.com/photo/index](https://fauxtagram.herokuapp.com/)
+Enjoy it live on [https://fauxtagram.herokuapp.com/](https://fauxtagram.herokuapp.com/)
 
 ## How tos:
 
