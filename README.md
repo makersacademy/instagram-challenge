@@ -9,7 +9,7 @@ Download or clone.
 `> bin/rails db:migrate`  
 `> bin/rails server` - starts the server. Open localhost:3000 in your browser to view.
 
-To run tests:
+To run tests:  
 `> bundle exec rspec`  
 `> bundle exec rubocop`  
 
@@ -23,15 +23,7 @@ To run tests:
 **nice to have**
 
 - [ ] As an influencer, so that I can generate zeitgeist, I would like to have a comment section on all my posts
-- [ ] As a user, to save my time and sanity, I wand to be able to filter posts to see only those relevant to my interests
-
-## Task
-
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+- [ ] As a user, to save my time and sanity, I want to be able to filter posts to see only those relevant to my interests
 
 ## Development todo: 
 
@@ -41,5 +33,3 @@ Bonus if you can add filters!
 - [x] Add rubocop
 - [x] add instructions to README
 - [x] first feature test
-
-
