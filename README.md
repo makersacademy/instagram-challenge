@@ -4,12 +4,25 @@
 
 This web app is a photo sharing site, where users can post pictures, write comments on pictures, and like pictures.
 
+I planned on testing this with RSpec but decided to try Rails' minitest, however I decided to spike the build rather than use TDD in order to learn more about Rails.
+
+Things I'd like to do:
+
+- complete the remaining spec requests (likes, comments, style)
+- add user authentication
+- include entry verification
+- refactor & review the code
+- remove unused files and folders created by Rails
+- write some tests with minitest
+- deploy!
+
 ## Installation
 
 In the command line use `bundle install` to download the gems needed to run the app:
 
 ```shell
 $ bundle install
+$ brew install imagemagick
 ```
 
 ## Run the app
@@ -88,6 +101,8 @@ $ open PATH/overview.html
 
 ## Tech Stack
 
+- [**CarrierWave**](https://github.com/carrierwaveuploader/carrierwave) - A file uploader for Ruby
+- [**MiniMagick**](https://github.com/minimagick/minimagick) - A ruby wrapper for ImageMagick for resizing images
 - [**Puma**](https://github.com/puma/puma) - a concurrent HTTP server that comes default with Rails
 - [**Rails** 5.2.3](https://rubyonrails.org/) - a server-side web application framework
 - [**RAKE** 12.3.2](https://github.com/ruby/rake) - a task and dependency manager for Ruby
@@ -101,8 +116,6 @@ $ open PATH/overview.html
 
 <!-- Potential Tech Stack tbc... -->
 <!-- - [Heroku](https://www.heroku.com/) - a cloud platform service -->
-<!-- - [**RSpec Rails**](https://github.com/rspec/rspec-rails) - a DSL for testing Ruby on Rails -->
-
 
 ## Approach
 
@@ -112,3 +125,10 @@ Kanban on [Trello](https://trello.com/b/f21BvAJa/instagram-challenge)
 
 ![Domain sequence chart](https://trello-attachments.s3.amazonaws.com/5d32e72429e832554cf3c83d/5d32e8d69b729414ded01254/e5a2d409d103cd627fa83ae4e7d29420/Screenshot_2019-07-20_at_14.56.14.png)
 ![Domain model diagram](https://trello-attachments.s3.amazonaws.com/5d32e8d69b729414ded01254/674x966/ecb578fcfc87f5d792931835d3cc0b06/Screenshot_2019-07-20_at_15.09.08.png)
+
+## References
+
+- [Instagram](https://www.instagram.com/)
+- [Getting Started with Rails](https://guides.rubyonrails.org/getting_started.html)
+- [Testing Rails Applications](https://guides.rubyonrails.org/testing.html)
+- [Rails Image Upload: Using CarrierWave in a Rails App](https://code.tutsplus.com/tutorials/rails-image-upload-using-carrierwave-in-a-rails-app--cms-25183)
