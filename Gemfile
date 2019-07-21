@@ -19,7 +19,7 @@ gem 'rubocop-rails'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 # Creates travis CI run test before merging
 gem 'travis', '~> 1.8.10'
 # Use Uglifier as compressor for JavaScript assets
