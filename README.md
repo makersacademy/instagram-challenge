@@ -32,4 +32,13 @@ To run tests:
 - [x] Initialize a new rails project
 - [x] Add rubocop
 - [x] add instructions to README
-- [x] first feature test
+- [ ] first feature test
+
+## Credits:
+
+In this challenge I used the following resources:
+
+- [this tutorial](https://pusher.com/tutorials/photo-sharing-ruby-rails)
+- [this Eliot Sykes repo](https://gist.github.com/eliotsykes/6fc16f428d4e6bb9b32d)
+- [previous week's Makers challenge repo](https://github.com/bengscott2/acebook-livewire)
+
