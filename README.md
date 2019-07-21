@@ -9,14 +9,17 @@ RACHEL GRIFFITHS
 * USERS can post PICTURES
 * USERS can write COMMENTS on pictures
 * USERS can LIKE pictures
+* USERS can filter pictures
 
 ##### WEB INTERFACE
 * Style it like Instagram's website (or more awesome!)
-* [Instagram Official] (https://www.instagram.com)
+* [Instagram Official](https://www.instagram.com)
 
 ### TECHNOLOGIES
 ------------
 * Ruby On Rails - Web Application Framework
+* Devise - Gem that builds user authentication functionality, creating sign up, sign in and sigh out features for Users
+
 
 ### GETTING STARTED
 ------------
@@ -43,11 +46,13 @@ RACHEL GRIFFITHS
 ------------
 1. Setup project file with required frameworks  
 
-2. Breakdown business logic provided into web   requirements
+2. Breakdown business logic provided into web requirements
 
 3. Diagram instagram database:
 
 ![Database](images/instagram_database_diagram.jpg)
+
+4. Use gem Devise to set up User functionality - use following article as a guide [Build Instagram by Ruby On Rails Part 1](https://medium.com/luanotes/build-instagram-by-ruby-on-rails-part-1-fef7837ee399)
 
 ### WEB REQUIREMENTS
 ------------
@@ -58,17 +63,17 @@ RACHEL GRIFFITHS
 - [ ] User details are stored in a database
 - [ ] User is redirected to sign up/sign in page if not logged in
 
-  ###### CONFIRMATION
+  ###### CONFIRMATION SIGN UP / SIGN IN FEEDBACK
   - [ ] User receives confirmation via webpage if successfully signed up
   - [ ] User receives confirmation via webpage if successfully signed in
 
-  ###### SIGN UP FEEDBACK
+  ###### INCORRECT SIGN UP FEEDBACK
   - [ ] User receives feedback via webpage if sign up is unsuccessful due to invalid email
   - [ ] User receives feedback via webpage if sign up is unsuccessful due to email already being taken
   - [ ] User receives feedback via webpage if sign up is unsuccessful due to password criteria not met
   - [ ] User receives feedback via webpage if sign up is unsuccessful due to password not matching password confirmation
 
-  ###### SIGN IN FEEDBACK
+  ###### INCORRECT SIGN IN FEEDBACK
   - [ ] User receives feedback via webpage if sign in is unsuccessful due to invalid email
   - [ ] User receives feedback via webpage if sign in is unsuccessful due to email not being recognised
   - [ ] User receives feedback via webpage if sign up is unsuccessful due to email and password combination is incorrect
@@ -76,7 +81,7 @@ RACHEL GRIFFITHS
 ##### PICTURES
 - [ ] User can upload picture
 - [ ] User can delete picture
-- [ ] Pictures are stored in a datatbase against the user id (one-to-many relationship)
+- [ ] Pictures are stored in a database against the user id (one-to-many relationship)
 - [ ] Pictures are displayed on a web page with the user's username against it
 
 ##### COMMENTS
