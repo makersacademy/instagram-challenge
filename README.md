@@ -41,10 +41,12 @@ To run tests:
 - [x] Add rubocop
 - [x] add instructions to README
 - [ ] first feature test
+- [ ] implement DatabaseCleaner scheduler
 
 ## Known problems:
 - [ ] Dotenv .env file doesn't seem to be visible to cloudinary.yml - something went wrong with the Dotenv setup and its subsequent removal to resolve deployment problems
-- [ ]
+- [ ] need to add DatabaseCleaner to sweep and mop across the production db as my cloud storage limit is laughably low
+- [ ] also on that note: figure out how to test photo upload, possibly with FactoryBot or mocks
 
 ## Credits:
 
@@ -54,3 +56,4 @@ In this challenge I used the following resources:
 - [this Eliot Sykes repo](https://gist.github.com/eliotsykes/6fc16f428d4e6bb9b32d)
 - [previous week's Makers challenge repo](https://github.com/bengscott2/acebook-livewire)
 - [this tutorial on switching from the default sqlite to a PostGres db](https://www.daveferrara1.com/ruby-in-rails-switch-from-sqlite3-to-postgres/)
+- [this comment on how to schedule a database cleanup with DatabaseCleaner](https://gist.github.com/zulhfreelancer/ea140d8ef9292fa9165e#gistcomment-2813124)
