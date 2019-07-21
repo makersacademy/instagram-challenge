@@ -3,10 +3,17 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-# Builds user authentication functionality, creating sign up, sign in and sigh out features for Users
+# Open source toolkit for developing with HTML, CSS, and JS
+gem 'bootstrap'
+# Builds user authentication functionality, creating sign up,
+# sign in and sigh out features for Users
 gem 'devise'
+# Provides the Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline
+gem 'font-awesome-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+# Bootstrap JavaScript depends on jQuery
+gem 'jquery-rails'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
