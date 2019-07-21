@@ -40,10 +40,12 @@ To run tests:
 - [x] Initialize a new rails project
 - [x] Add rubocop
 - [x] add instructions to README
-- [ ] first feature test
+- [x] first feature test
 - [ ] implement DatabaseCleaner scheduler
 
 ## Known problems:
+
+- [ ] testing is severly limited by the amount of cloud storage in my app; I have not had the time to implement factories to mock this, but this would be my next step
 - [ ] Dotenv .env file doesn't seem to be visible to cloudinary.yml - something went wrong with the Dotenv setup and its subsequent removal to resolve deployment problems
 - [ ] need to add DatabaseCleaner to sweep and mop across the production db as my cloud storage limit is laughably low
 - [ ] also on that note: figure out how to test photo upload, possibly with FactoryBot or mocks
