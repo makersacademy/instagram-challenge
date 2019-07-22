@@ -8,7 +8,8 @@ gem 'bootstrap'
 # Builds user authentication functionality, creating sign up,
 # sign in and sigh out features for Users
 gem 'devise'
-# Provides the Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline
+# Provides the Font-Awesome web fonts and stylesheets as a Rails engine
+# for use with the asset pipeline
 gem 'font-awesome-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'

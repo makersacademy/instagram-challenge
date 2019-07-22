@@ -3,6 +3,7 @@ RACHEL GRIFFITHS
 
 ## CHALLENGE: INSTAGRAM
 ------------
+* Build Instagram!
 
 ##### BUSINESS LOGIC
 ------------
@@ -17,9 +18,16 @@ RACHEL GRIFFITHS
 
 ### TECHNOLOGIES
 ------------
+
+##### BACKEND
 * Ruby On Rails - Web Application Framework
 * Devise - Gem that builds user authentication functionality, creating sign up, sign in and sigh out features for Users
+* Database: Postgres
 
+##### FRONTEND
+* HTML
+* CSS
+* Bootstrap
 
 ### GETTING STARTED
 ------------
@@ -42,18 +50,6 @@ RACHEL GRIFFITHS
 * SimpleCov - Test Coverage
 * Travis - CI
 
-### APPROACH
-------------
-1. Setup project file with required frameworks  
-
-2. Breakdown business logic provided into web requirements
-
-3. Diagram instagram database:
-
-![Database](images/instagram_database_diagram.jpg)
-
-4. Use gem Devise to set up User functionality - use following article as a guide [Build Instagram by Ruby On Rails Part 1](https://medium.com/luanotes/build-instagram-by-ruby-on-rails-part-1-fef7837ee399)
-
 ### WEB REQUIREMENTS
 ------------
 ##### USERS
@@ -62,6 +58,8 @@ RACHEL GRIFFITHS
 - [ ] User can sign out
 - [ ] User details are stored in a database
 - [ ] User is redirected to sign up/sign in page if not logged in
+- [ ] User can edit their profile
+- [ ] User can add a photo to their profile
 
   ###### CONFIRMATION SIGN UP / SIGN IN FEEDBACK
   - [ ] User receives confirmation via webpage if successfully signed up
@@ -96,6 +94,34 @@ RACHEL GRIFFITHS
 - [ ] Pictures can have multiple 'likes' against them from different users
 - [ ] Likes are stored in a database (one-to-many relationship)
 
+### APPROACH
+------------
+1. Setup project file with required frameworks  
+
+2. Breakdown business logic provided into web requirements
+
+3. Diagram instagram database:
+
+![Database](images/instagram_database_diagram.jpg)
+
+4. Follow the following article as a guide:[Build Instagram by Ruby On Rails Part 1](https://medium.com/luanotes/build-instagram-by-ruby-on-rails-part-1-fef7837ee399)
+
+  STEPS TAKEN SO FAR:
+  1. Install Rails
+  2. Create a new rails project
+  3. Bundle install
+  4. Create a homepage and set it to your index route
+  5. Configure database
+  6. Create database
+  7. Install bootstrap and set up styling sheets
+  8. Implement layout: Navigation bar, main content, footer
+  9. Install devise (setup user authentication)
+  10. Setup devise
+  11. Create User model
+
+### FOLLOW UP
+
+* Continue to work through the article to understand how Rails works
 
 ------------
 Instagram Challenge
