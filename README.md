@@ -1,40 +1,50 @@
-Instagram Challenge
-===================
+# Instagram App
 
-## Instructions
+For this challenge, I have developed an application which mimics Instagram. To gain more experience with new technology, I was supported by an online tutorial for some parts of the implementation.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Tech Stacks
 
-## Task
+* Back-end:
+    * Ruby 2.4
+    * Rails 5.2.x
+    * Database: Postgres
+    * Gems: Devise, Bootstrap
+    * Active Storage
 
-Build Instagram: Simple huh!
+* Front-end:
+    * HTML, CSS, JavaScript, JQuery
+    * Bootstrap
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+## How to install
 
-Bonus if you can add filters!
+* `git clone`
+* `bundle install`
+* `rails db:create`
+* `rails db:migrate`
 
-## How to start
+## How to run server
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+* `rails s`
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+## User Stories
 
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
 ```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+As a user,
+so that I can use the app,
+I would like to sign up via a registration page
+```
+```
+As a user,
+so that I can keep my account safe,
+I would like to log in securely
+```
+```
+As a user,
+so that people can view all of my pictures,
+I would like to have a profile page
+```
+```
+As a user,
+so that my pictures appear in newsfeeds,
+I would like to post my pictures
+```
