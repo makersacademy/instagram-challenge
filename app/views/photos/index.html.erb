@@ -2,33 +2,7 @@
  <meta charset='utf-8'>
 </head>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm">
-      <%= button_to 'New Photo', new_photo_path, method: :get, html: 'style="float: left;"' %>
-    </div>
-    <div class="col-sm">
-      <h1>Instadamn</h1>
-    </div>
-    <div class="col-sm">
-      <% if user_signed_in? %>
-
-        <%= "Logged in as: " %>
-        <%= link_to current_user.name, edit_user_registration_path %>
-        <%= button_to 'Log out', destroy_user_session_path, method: :delete, style: "float: right;" %>
-
-        <% else %>
-          <%= button_to 'Sign up', new_user_registration_path, method: :get, style: "float: right;" %>
-          <%= button_to 'Log in', new_user_session_path, method: :get, style: "float: right;" %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
 <body>
-  <div style="max-width: 1200px; margin: 0 auto; padding: 10px">
-
-  </div>
   <div class="container-fluid">
     <div class="row">
       <div class="col">
@@ -40,15 +14,16 @@
       <div class="col">
       </div>
       <div class="col">
-        <h2>All posts</h2>
+        <h3>All posts</h3>
         <% @photos.each do |photo| %>
             <%= image_tag(photo.image, :size => "180x180") if photo.image.attached?%>
             <br>
             <%= photo.caption %>
             <br>
             Posted by: <%= photo.user.name %>
-            <%= button_to 'Show/Comment', photo_path(photo), method: :get %>
-            <%= button_to "Like", photo_likes_url(photo), method: :post  %>
+            <%= button_to 'Show/Comment', photo_path(photo), method: :get, type: "button", class: "btn btn-dark" %>
+            <br>
+            <%= button_to "Like", photo_likes_url(photo), method: :post, type: "button", class: "btn btn-dark"  %>
             <br>
         <% end %>
       </div>

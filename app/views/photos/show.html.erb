@@ -1,59 +1,38 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm">
-      <%= button_to 'Home', photos_path, method: :get, html: 'style="float: left;"' %>
-      <%= button_to 'New Photo', new_photo_path, method: :get, html: 'style="float: left;"' %>
-    </div>
-    <div class="col-sm">
-      <h1>Instadamn</h1>
-    </div>
-    <div class="col-sm">
-      <% if user_signed_in? %>
-        <div style="float: right">
-          <%= "Logged in as: " %>
-          <%= link_to current_user.name, edit_user_registration_path, style: "float: right;" %>
-        </div>
-        <br>
-        <%= button_to 'Log out', destroy_user_session_path, method: :delete, style: "float: right;" %>
-
-        <% else %>
-          <%= button_to 'Sign up', new_user_registration_path, method: :get, style: "float: right;" %>
-          <%= button_to 'Log in', new_user_session_path, method: :get, style: "float: right;" %>
-      <% end %>    </div>
-  </div>
-</div>
-<p>
-  <%= image_tag(@photo.image, :size => "180x180") if @photo.image.attached?%>
-</p>
-<p>
-  <%= "Posted by: #{@photo.user.name}"%>
-</p>
-<p>
-  <strong>Caption:</strong>
-  <%= @photo.caption %>
-</p>
-<p>
-  <% if current_user == (@photo.user) %>
-  <%= link_to 'Delete', photo_path(@photo), method: :delete, data: { confirm: "Are you sure?"} %>
-  <%end%>
-</p>
-
-<%= button_to 'Like', photo_likes_url(@photo), method: :post  %>
-
-<strong>Likes</strong>
-<% @photo.likes.each do |like| %>
+<div class="container">
   <p>
-    <strong>Liked by:</strong>
-    <% @user = User.find(like.user_id) %>
-    <%= @user.name %>
+    <%= image_tag(@photo.image, :size => "180x180") if @photo.image.attached?%>
   </p>
-<% end %>
-<br>
-<strong>Comments</strong>
-<%= render @photo.comments %>
-<br>
-<strong>Add a comment:</strong>
-<%= render 'comments/form' %>
+  <p>
+    <%= "Posted by: #{@photo.user.name}"%>
+  </p>
+  <p>
+    <strong>Caption:</strong>
+    <%= @photo.caption %>
+  </p>
+  <p>
+    <% if current_user == (@photo.user) %>
+    <%= link_to 'Delete', photo_path(@photo), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-dark" %>
+    <%end%>
+  </p>
 
-<br>
-<%= button_to 'Back', photos_path, method: :get  %>
+  <%= button_to 'Like', photo_likes_url(@photo), method: :post, class: "btn btn-dark"  %>
+  <br>
+  <% @photo.likes.each do |like| %>
+    <p>
+      <strong>Liked by:</strong>
+      <% @user = User.find(like.user_id) %>
+      <%= @user.name %>
+    </p>
+  <% end %>
+  <br>
+  <% if @photo.comments.any? %>
+    <strong>Comments</strong>
+    <%= render @photo.comments %>
+  <% end %>
+    <br>
+  <strong>Add a comment:</strong>
+  <%= render 'comments/form' %>
+
+  <br>
+  <%= button_to 'Back', photos_path, method: :get, class: "btn btn-dark"  %>
+</div>

@@ -1,30 +1,31 @@
-<h1>Instadamn</h1>
-<h2>Add New Photo</h2>
+<div class="container">
+  <h3>Add New Photo</h3>
+  <br>
+  <% if @photo.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@photo.errors.count, "error") %> prohibited
+          this article from being saved:
+        </h2>
+        <ul>
+          <% @photo.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<% if @photo.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@photo.errors.count, "error") %> prohibited
-        this article from being saved:
-      </h2>
-      <ul>
-        <% @photo.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+  <%= form_with scope: :photo, url: photos_path, local: true do |form| %>
+
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+    <br><br>
+    <%= form.label :caption %>
+    <%= form.text_area :caption %>
+
+    <%= form.submit "Submit", class: "btn btn-dark" %>
+
   <% end %>
-
-<%= form_with scope: :photo, url: photos_path, local: true do |form| %>
-
-  <%= form.label :image %>
-  <%= form.file_field :image%>
-
-  <%= form.label :caption %>
-  <%= form.text_area :caption %>
-
-  <%= form.submit "Submit" %>
-
-<% end %>
-<br>
-<%= button_to 'Back', photos_path, method: :get  %>
+  <br>
+  <%= button_to 'Back', photos_path, method: :get, class: "btn btn-dark"  %>
+</div>
