@@ -1,12 +1,14 @@
 # Planning
 
 ## Day 1
-* Task 1 - set up rails project - 1hr
-* Task 2 - posting pictures 1/2 day
-* Task 3 - commenting on pictures 1/2 day
+* Task 1 - set up rails project - 1hr ✅
+* Task 2 - posting photos 1/2 day ✅
+* Task 3 - commenting on photos 1/2 day ✅
 
 
 ## Day 2
+* Task 4 - liking photos - 1-2hrs
+* Task 5 - Users/Sessions 3/4 day
 
 
 ## User stories for reference

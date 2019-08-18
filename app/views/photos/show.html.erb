@@ -1,10 +1,27 @@
+<h1>Instadamn</h1>
 <p>
-  <strong>Photo:</strong>
-  <%= image_tag(@photo.image, :size => "180x180") %>
-
+  <%= image_tag(@photo.image, :size => "180x180") if @photo.image.attached?%>
 </p>
 
 <p>
   <strong>Caption:</strong>
   <%= @photo.caption %>
 </p>
+<%= button_to 'Like', 'likes#create', method: :post  %>
+
+<h2>Likes</h2>
+<% @photo.likes.each do |like| %>
+  <p>
+    <strong>Liked by:</strong>
+    <%= like.liker %>
+  </p>
+<% end %>
+
+<h2>Comments</h2>
+<%= render @photo.comments %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+<br>
+<%= button_to 'Back', photos_path, method: :get  %>

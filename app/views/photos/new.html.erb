@@ -1,3 +1,20 @@
+<h1>Instadamn</h1>
+<h2>Add New Photo</h2>
+
+<% if @photo.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@photo.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @photo.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <%= form_with scope: :photo, url: photos_path, local: true do |form| %>
 
   <%= form.label :image %>
@@ -9,3 +26,5 @@
   <%= form.submit "Submit" %>
 
 <% end %>
+<br>
+<%= button_to 'Back', photos_path, method: :get  %>

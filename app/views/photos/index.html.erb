@@ -1,5 +1,6 @@
-
-<h1>All posts</h1>
+<h1>Instadamn</h1>
+<h2>All posts</h2>
+<%= button_to 'New Photo', new_photo_path, method: :get %>
 
 <table>
   <tr>
@@ -10,9 +11,9 @@
 
   <% @photos.each do |photo| %>
     <tr>
-      <td><%= image_tag(photo.image, :size => "180x180") %></td>
+      <td><%= image_tag(photo.image, :size => "180x180") if photo.image.attached?%></td>
       <td><%= photo.caption %></td>
-      <td><%= link_to 'Show', photo_path(photo) %></td>
+      <td><%= button_to 'Show', photo_path(photo), method: :get %></td>
     </tr>
   <% end %>
 </table>
