@@ -1,19 +1,34 @@
 <h1>Instadamn</h1>
+
+<% if user_signed_in? %>
+
+  <%= "Logged in as: " %>
+  <%= link_to current_user.name, edit_user_registration_path %>
+  <%= button_to 'Log out', destroy_user_session_path, method: :delete %>
+
+  <% else %>
+    <%= button_to 'Sign up', new_user_registration_path, method: :get %>
+    <%= button_to 'Log in', new_user_session_path, method: :get %>
+<% end %>
+
 <p>
   <%= image_tag(@photo.image, :size => "180x180") if @photo.image.attached?%>
 </p>
-
+<p>
+  <%= "Posted by: #{@photo.user.name}"%>
+</p>
 <p>
   <strong>Caption:</strong>
   <%= @photo.caption %>
 </p>
-<%= button_to 'Like', 'likes#create', method: :post  %>
+<%= button_to 'Like', photo_likes_url(@photo), method: :post  %>
 
 <h2>Likes</h2>
 <% @photo.likes.each do |like| %>
   <p>
     <strong>Liked by:</strong>
-    <%= like.liker %>
+    <% @user = User.find(like.user_id) %>
+    <%= @user.name %>
   </p>
 <% end %>
 

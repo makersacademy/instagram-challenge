@@ -1,5 +1,19 @@
 <h1>Instadamn</h1>
+
+<% if user_signed_in? %>
+
+  <%= "Logged in as: " %>
+  <%= link_to current_user.name, edit_user_registration_path %>
+  <%= button_to 'Log out', destroy_user_session_path, method: :delete %>
+
+  <% else %>
+    <%= button_to 'Sign up', new_user_registration_path, method: :get %>
+    <%= button_to 'Log in', new_user_session_path, method: :get %>
+<% end %>
+
 <h2>All posts</h2>
+
+
 <%= button_to 'New Photo', new_photo_path, method: :get %>
 
 <table>
@@ -13,7 +27,7 @@
     <tr>
       <td><%= image_tag(photo.image, :size => "180x180") if photo.image.attached?%></td>
       <td><%= photo.caption %></td>
-      <td><%= button_to 'Show', photo_path(photo), method: :get %></td>
-    </tr>
+      <td><%= button_to 'Show/Comment', photo_path(photo), method: :get %></td>
+      <td><%= button_to 'Like', photo_likes_url(photo), method: :post  %></td>
   <% end %>
 </table>
