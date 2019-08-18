@@ -3,6 +3,9 @@
 ## Project Description
 This is my attempt at the [Makers Academy Week 8 Weekend Challenge](https://github.com/makersacademy/instagram-challenge)
 
+## Note to reviewer
+I started using TDD at the outset but spent too long trying to work out how to do a capybara test for uploading an image to the website. Therefore, there are no tests to run. 
+
 ## How to install and run the project
 * Go to your command line/terminal
 * Clone this repository
