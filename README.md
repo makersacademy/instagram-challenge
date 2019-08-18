@@ -23,18 +23,12 @@ rails server
 ```
 * In your browser visit http://localhost:3000
 
-## How to run tests on the project
-* Having cloned the repo (see above), run:
-```
-rspec
-```
-
 ## Instructions on how to contribute to the project
 * Clone the repo (see above)
 * Submit a pull request on github.
 
 ## Approach to the project
-* The app was built with Ruby on Rails using TDD (Test Driven Development)
+* The app was built with Ruby on Rails
 
 ## User Stories
 
