@@ -73,3 +73,5 @@ gem 'cloudinary'
 gem "rubocop"
 gem "rubocop-rails"
 gem 'devise'
+gem 'bootstrap'
+gem 'jquery-rails'
