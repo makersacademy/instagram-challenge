@@ -1,3 +1,5 @@
+<% require_relative '../time_helper' %>
+
 <head>
  <meta charset='utf-8'>
 </head>
@@ -18,9 +20,13 @@
         <% @photos.each do |photo| %>
             <%= image_tag(photo.image, :size => "180x180") if photo.image.attached?%>
             <br>
+            <strong>
+              <%= photo.user.name %>
+            </strong> -
             <%= photo.caption %>
             <br>
-            Posted by: <%= photo.user.name %>
+            <%= time_since_post(photo) %>
+            <br><br>
             <%= button_to 'Show/Comment', photo_path(photo), method: :get, type: "button", class: "btn btn-dark" %>
             <br>
             <%= button_to "Like", photo_likes_url(photo), method: :post, type: "button", class: "btn btn-dark"  %>

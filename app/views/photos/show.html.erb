@@ -1,13 +1,14 @@
+<% require_relative '../time_helper' %>
+
 <div class="container">
   <p>
     <%= image_tag(@photo.image, :size => "180x180") if @photo.image.attached?%>
   </p>
   <p>
-    <%= "Posted by: #{@photo.user.name}"%>
-  </p>
-  <p>
-    <strong>Caption:</strong>
+    <strong><%= @photo.user.name%></strong> -
     <%= @photo.caption %>
+    <br>
+    <%= time_since_post(@photo) %>
   </p>
   <p>
     <% if current_user == (@photo.user) %>
