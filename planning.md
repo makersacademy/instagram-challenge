@@ -9,7 +9,7 @@
 ## Day 2
 * Task 4 - liking photos - 1-2hrs ✅
 * Task 5 - Users/Sessions - 3/4 day ✅
-* Task 6(if time) - bootstrap/styling - 2-3hrs
+* Task 6(if time) - bootstrap/styling - 2-3hrs ✅
 
 
 ## User stories for reference
