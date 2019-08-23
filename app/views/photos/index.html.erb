@@ -18,20 +18,20 @@
       <div class="col">
         <h3>All posts</h3>
         <% @photos.each do |photo| %>
-            <%= image_tag(photo.image, style:"object-fit:cover; width: 250px; height: 250px;") if photo.image.attached?%>
+            <%= image_tag(photo.image, style:"object-fit:cover; width: 250px; height: 250px; margin: 30px 0px 20px 0px") if photo.image.attached?%>
             <br>
             <strong>
               <%= photo.user.name %>
             </strong> -
             <%= photo.caption %>
             <br>
-            <%= time_since_post(photo) %>
-            <br><br>
-            <%= button_to 'Show/Comment', photo_path(photo), method: :get, type: "button", class: "btn btn-dark" %>
+            <div class="time-since"><%= time_since_post(photo) %></div>
             <br>
-            <%= button_to "Like", photo_likes_url(photo), method: :post, type: "button", class: "btn btn-dark"  %>
-            <br>
-        <% end %>
+            <div class="btn-group" role="group">
+              <%= button_to 'Show/Comment', photo_path(photo), method: :get, type: "button", class: "btn btn-dark" %>
+              <%= button_to "Like", photo_likes_url(photo), method: :post, type: "button", class: "btn btn-dark" %>
+            </div>
+          <% end %>
       </div>
       <div class="col">
       </div>

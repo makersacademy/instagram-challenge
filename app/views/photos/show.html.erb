@@ -4,12 +4,10 @@
   <p>
     <%= image_tag(@photo.image, style:"object-fit:cover; width: 250px; height: 250px;") if @photo.image.attached?%>
   </p>
-  <p>
     <strong><%= @photo.user.name%></strong> -
     <%= @photo.caption %>
     <br>
-    <%= time_since_post(@photo) %>
-  </p>
+    <div class="time-since"><%= time_since_post(@photo) %></div>
   <p>
     <% if current_user == (@photo.user) %>
     <%= link_to 'Delete', photo_path(@photo), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-dark" %>
