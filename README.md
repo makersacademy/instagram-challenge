@@ -1,40 +1,134 @@
-Instagram Challenge
-===================
+# Instagram Challenge
 
-## Instructions
+![Build Status](https://travis-ci.org/ruthmoog/instagram-challenge.svg?branch=master)
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+This web app is a photo sharing site, where users can post pictures, write comments on pictures, and like pictures.
 
-## Task
+I planned on testing this with RSpec but decided to try Rails' minitest, however I decided to spike the build rather than use TDD in order to learn more about Rails.
 
-Build Instagram: Simple huh!
+Things I'd like to do:
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+- complete the remaining spec requests (likes, comments, style)
+- add user authentication
+- include entry verification
+- refactor & review the code
+- remove unused files and folders created by Rails
+- write some tests with minitest
+- deploy!
 
-Bonus if you can add filters!
+## Installation
 
-## How to start
+In the command line use `bundle install` to download the gems needed to run the app:
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+```shell
+$ bundle install
+$ brew install imagemagick
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## Run the app
+
+Launch the server from the command line, then direct your browser to `localhost:3000` to use the app.
+
+- UNIX:
+```shell
+$ rails server
+```
+- Windows:
+```shell
+$ ruby bin/rails server
+```
+
+## Run the tests
+
+<!-- ### Unit Tests, Feature Tests, and Code Coverage
+
+In the command line use `rspec` then direct your browser to the given URL or `open` from the command line:
+
+
+```shell
+$ rspec
+$ open PATH/coverage/index.html
+```
+
+>```shell
+>X examples found.
+>
+>
+>Finished in 0.00027 seconds (files took 0.15576 seconds to load)
+>X examples, X failures
+>
+>Coverage report generated for RSpec to /--/coverage/index.html. 0 / 21 LOC (0.0%) covered.
+>``` -->
+
+### Code Style
+
+In the command line use `rubocop`:
+
+```shell
+$ rubocop
+```
+>```shell
+>Inspecting XX files
+>........................................
+>
+>XX files inspected, no offenses detected
+>```
+
+### Code Quality
+
+In the command line use `ruby critic` then direct your browser to the given URL:
+
+```shell
+$ rubycritic
+$ open PATH/overview.html
+```
+>```shell
+>running flay smells
+>
+>running flog smells
+>..............................
+>running reek smells
+>..............................
+>running complexity
+>..............................
+>running attributes
+>..............................
+>running churn
+>..............................
+>New critique at file:---/overview.html
+>Score: 100.0
+>```
+
+## Tech Stack
+
+- [**CarrierWave**](https://github.com/carrierwaveuploader/carrierwave) - A file uploader for Ruby
+- [**MiniMagick**](https://github.com/minimagick/minimagick) - A ruby wrapper for ImageMagick for resizing images
+- [**Puma**](https://github.com/puma/puma) - a concurrent HTTP server that comes default with Rails
+- [**Rails** 5.2.3](https://rubyonrails.org/) - a server-side web application framework
+- [**RAKE** 12.3.2](https://github.com/ruby/rake) - a task and dependency manager for Ruby
+- [**Rubocop Rails**](https://rubocop.readthedocs.io/en/stable/) - a static code analyzer and code formatter
+- [**Ruby** 6.2.3](https://www.ruby-lang.org/en/) - a dynamic, object oriented programming language
+- [**RubyCritic** 4.1.0](https://github.com/whitesmith/rubycritic) - a code quality analysis tool for Ruby
+- [**ScaffoLint**](https://github.com/makersacademy/scaffolint) - a starting point for customising the Rubocop linter
+- [**SimpleCov** 0.17.0](https://github.com/colszowka/simplecov) - a code coverage analysis tool for Ruby
+- [**SQLite** 3](https://www.sqlite.org/index.html) - a C-language library that implements a SQL database engine
+- [**Travis CI** 1.8.10](https://travis-ci.org/) - a continuous integration platform and deployment manager
+
+<!-- Potential Tech Stack tbc... -->
+<!-- - [Heroku](https://www.heroku.com/) - a cloud platform service -->
+
+## Approach
+
+Kanban on [Trello](https://trello.com/b/f21BvAJa/instagram-challenge)
+
+## Diagrams
+
+![Domain sequence chart](https://trello-attachments.s3.amazonaws.com/5d32e72429e832554cf3c83d/5d32e8d69b729414ded01254/e5a2d409d103cd627fa83ae4e7d29420/Screenshot_2019-07-20_at_14.56.14.png)
+![Domain model diagram](https://trello-attachments.s3.amazonaws.com/5d32e8d69b729414ded01254/674x966/ecb578fcfc87f5d792931835d3cc0b06/Screenshot_2019-07-20_at_15.09.08.png)
+
+## References
+
+- [Instagram](https://www.instagram.com/)
+- [Getting Started with Rails](https://guides.rubyonrails.org/getting_started.html)
+- [Testing Rails Applications](https://guides.rubyonrails.org/testing.html)
+- [Rails Image Upload: Using CarrierWave in a Rails App](https://code.tutsplus.com/tutorials/rails-image-upload-using-carrierwave-in-a-rails-app--cms-25183)
