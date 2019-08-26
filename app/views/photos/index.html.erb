@@ -1,0 +1,40 @@
+<% require_relative '../time_helper' %>
+
+<head>
+ <meta charset='utf-8'>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col">
+        <h3>All posts</h3>
+        <% @photos.each do |photo| %>
+            <%= image_tag(photo.image, style:"object-fit:cover; width: 250px; height: 250px; margin: 30px 0px 20px 0px") if photo.image.attached?%>
+            <br>
+            <strong>
+              <%= photo.user.name %>
+            </strong> -
+            <%= photo.caption %>
+            <br>
+            <div class="time-since"><%= time_since_post(photo) %></div>
+            <br>
+            <div class="btn-group" role="group">
+              <%= button_to 'Show/Comment', photo_path(photo), method: :get, type: "button", class: "btn btn-dark" %>
+              <%= button_to "Like", photo_likes_url(photo), method: :post, type: "button", class: "btn btn-dark" %>
+            </div>
+          <% end %>
+      </div>
+      <div class="col">
+      </div>
+    </div>
+  </div>
+</body>
