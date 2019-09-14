@@ -1,13 +1,35 @@
-Instagram Challenge
+Instagram Clone
 ===================
+###### A clone of instragram using the rails framework
 
-## Instructions
+#####Technology used
+- Rails
+- Tests - RSpec
+- Linter - Rubocop-rails
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## User Stories
+
+```
+As a user
+so I can create an account
+I would like to sign up
+
+As a user
+so I can start using the app
+I would like to login
+
+As a user
+so I can show everyone how great my life is
+I would like to post a photo to instagram
+
+As a user
+so I can talk to my friends
+I would like to write a comment on a picture
+
+As a user
+so I can show appreciation for a post
+I would like to LIKE a post
+```
 
 ## Task
 

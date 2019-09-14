@@ -57,3 +57,4 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "rubocop"
 gem "rubocop-rails"
 gem "rubocop-performance"
+gem "devise"
