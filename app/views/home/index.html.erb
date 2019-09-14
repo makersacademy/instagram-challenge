@@ -4,49 +4,52 @@
 <br>
 
 <div class="homepage">
-    <div class='form-upload'>
-        <%= form_for Post.new do |f| %>
-            <div class="form-group">
-                <%= f.text_field :description %>
-            </div>
-            <div class="form-group">
-                <%= f.file_field :image %>
-            </div>
-            <div class="form-group">
-                <%= f.text_field :user_id, value: current_user.id, class: 'd-none' %>
-            </div>
-            <br>
-            <div class="text-center">
-                <%= f.submit 'Create Post', class: 'btn btn-primary' %>
-            </div>
-            <% end %>
-    </div>
+    <%if current_user%>
+        <div class='form-upload'>
+            <%= form_for Post.new do |f| %>
+                <div class="form-group">
+                    <%= f.text_field :description %>
+                </div>
+                <div class="form-group">
+                    <%= f.file_field :image %>
+                </div>
+                <div class="form-group">
+                    <%= f.text_field :user_id, value: current_user.id, class: 'd-none' %>
+                </div>
+                <br>
+                <div class="text-center">
+                    <%= f.submit 'Create Post', class: 'btn btn-primary' %>
+                </div>
+                <% end %>
+        </div>
+        <%end%>
 
-
-
-
-
-
-    <div class="posts">
-        <% @posts.each do |post| %>
-            <section class="post">
-                <section class="post">
-                    <div class="user">
-                        <div class="avatar">
-                            <div class="avatar">
-                                <% if post.user.avatar.attached? %>
-                                    <%= image_tag post.user.avatar %>
-                                        <% end %>
+            <div class="posts">
+                <% @posts.each do |post| %>
+                    <section class="post">
+                        <section class="post">
+                            <div class="user">
+                                <div class="avatar">
+                                    <div class="avatar">
+                                        <% if post.user.avatar.attached? %>
+                                            <%= image_tag post.user.avatar %>
+                                                <% end %>
+                                    </div>
+                                </div>
+                                <%= link_to post.user.username, user_path(post.user), class: 'username' %>
                             </div>
-                        </div>
-                        <%= link_to post.user.username, user_path(post.user), class: 'username' %>
-                    </div>
-                    <%= image_tag post.image, class: 'main-image' %>
-                        <div class="description">
-                            <%= post.description %>
-                        </div>
-                </section>
-            </section>
-            <% end %>
-                <%= paginate @posts %>
-    </div>
+                            <%= image_tag post.image, class: 'main-image' %>
+                                <div class="description">
+                                    <% post.description.to_s.split(' ').each do |word| %>
+                                        <% if word.start_with?('#') %>
+                                            <%= link_to word, search_path(query: word) %>
+                                                <%else %>
+                                                    <%= word %>
+                                                        <%end %>
+                                                            <% end %>
+                                </div>
+                        </section>
+                    </section>
+                    <% end %>
+                        <%= paginate @posts %>
+            </div>
