@@ -11,41 +11,53 @@ Directory: instagram-challenge
 brew install yarn
 ```
 
-2. Initialised rails
+1. Initialised rails
 ```bash
 rails new . --database=postgresql --no-skip-gemfile --no-skip-git --skip-keeps --skip-action-mailer --skip-action-mailbox --skip-action-text --no-skip-active-record --no-skip-active-storage --no-skip-puma --skip-action-cable --skip-sprockets --skip-spring --skip-turbolinks --skip-test --skip-systemtest --skip-bootsnap --skip-webpack-install
 ```
 
-3. DB Creation because postgres
+1. DB Creation because postgres
 ```bash
 rails db:create
 ```
 
-4. Removed the webpacker gem from the Gemfile
+1. Removed the webpacker gem from the Gemfile
 
 
-5. Hello Rails!
+1. Hello Rails!
 ```bash
 rails server
 ```
 
-6. Setting up Rspec and capybara
+1. Setting up Rspec and capybara
 [Instructions](https://relishapp.com/rspec/rspec-rails/docs/gettingstarted)
 ```bash
 bundle add rspec-rails -g=development,test
 rails generate rspec:install
 bundle add capybara -g=development,test
 bundle add selenium-webdriver -g=development,test
-
 ```
 
+1. Added AWS gem
 
-7. Set up travis
+```bash
+bundle add aws-sdk
+```
+```bash
+EDITOR=nano rails credentials:edit
+
+
+1. Set up travis
 Made a .travis.yml file
 
-8. Set up heroku
+1. Set up heroku
 ```bash
 gem install travis
 travis encrypt $(heroku auth:token) --add deploy.api_key --pro
 ```
 
+
+
+1. Added Devise
+
+https://launchschool.com/blog/how-to-use-devise-in-rails-for-authentication
