@@ -45,7 +45,13 @@ bundle add aws-sdk
 ```
 ```bash
 EDITOR=nano rails credentials:edit
+```
 
+1. Set up active storage
+Requires another db migrate
+```bash
+rails active_storage:install
+```
 
 1. Set up travis
 Made a .travis.yml file
