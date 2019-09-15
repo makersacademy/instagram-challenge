@@ -10,6 +10,17 @@
   </head>
 
   <body>
+  <center>
+ <% if user_signed_in? %>
+    <%= button_to('Logout', destroy_user_session_path, method: :delete) %>
+    <% else %>
+    <%= button_to('Login', new_user_session_path) %>
+    <% end %>
+
+    <form action="/">
+        <button type='submit'>Home</button>
+    </form>
+</center>
     <%= yield %>
   </body>
 </html>
