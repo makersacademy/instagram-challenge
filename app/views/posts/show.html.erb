@@ -1,0 +1,29 @@
+<div class="post-show row">
+ <div class="col-md-8 basic-info">
+      <div class="user-wrapper">
+         <div class="user">
+         
+            <%= link_to @post.user.username, user_path(@post.user), class: 'username' %>
+        </div>
+   
+
+      </div>
+   
+
+    </div>
+  </div>
+    <div class="col-md-8">
+       
+   
+        <%=image_tag @post.image, class: 'image' %>
+       
+         <div class="delete">
+            <% if current_user.posts.exists?(@post.id) %>
+                <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+                    <% end %>
+        </div>
+    </div>
+         
+
+
+</div>
