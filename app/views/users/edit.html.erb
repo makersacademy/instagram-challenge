@@ -1,0 +1,77 @@
+<div class="user-edit-page">
+  <div class="actions">
+<div class="user-edit-page">
+  <div class="actions">
+    <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" data-toggle="pill" href="#v-pills-home" role="tab" aria-selected="true">Edit Profile</a>
+      <a class="nav-link" data-toggle="pill">Change Password</a>
+    </div>
+  </div>
+  <div class="details tab-content">
+    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+      <!-- Form edit profile -->
+    </div>
+  </div>
+</div>
+  </div>
+  
+ <div class="details">
+<%= form_with model: current_user, local: true, html: {class: "form-horizontal form-edit-user"} do |f| %>
+  <div class="form-group row">
+    <div class="col-sm-3 col-form-label">
+      <% if current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar, class: 'avatar' %>
+      <%end %>
+    </div>
+    <div class="col-sm-9">
+      <p class="username"><%=current_user.username %></p>
+    </div>
+  </div>
+     <div class="form-group row">
+                    <%= f.label :avatar, class: 'col-sm-3 col-form-label' %>
+                        <div class="col-sm-9">
+                            <%= f.file_field :avatar, class: 'form-control' %>
+                        </div>
+                </div>
+  <div class="form-group row">
+    <%= f.label :name, class: 'col-sm-3 col-form-label' %>
+    <div class="col-sm-9">
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :username, class: 'col-sm-3 col-form-label' %>
+    <div class="col-sm-9">
+      <%= f.text_field :username, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :website, class: 'col-sm-3 col-form-label' %>
+    <div class="col-sm-9">
+      <%= f.text_field :website, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :bio, class: 'col-sm-3 col-form-label' %>
+    <div class="col-sm-9">
+      <%= f.text_area :bio, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group row">
+    <%= f.label :email, class: 'col-sm-3 col-form-label' %>
+    <div class="col-sm-9">
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+  </div>
+  
+
+  <div class="form-group row">
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-9">
+      <%= f.submit "Submit", class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
+  </div>
+</div>
