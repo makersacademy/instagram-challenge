@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>InstagramChallenge</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+</head>
+
+<body>
+  <header>
+    <%= button_to root_path, method: :get do %> Home <% end %>
+    <% if signed_in? -%>
+    <%= button_to new_post_path, method: :get do %> New Post <% end %>
+    <%= button_to destroy_user_session_path,method: :delete do %> Sign Out <% end %>
+    <% else -%>
+    <%= button_to new_user_session_path, method: :get do %> Sign In <% end %>
+    <%= button_to new_user_registration_path, method: :get do %> Sign Up <% end %>
+    <% end -%>
+
+  </header>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <%= yield %>
+</body>
+
+</html>
