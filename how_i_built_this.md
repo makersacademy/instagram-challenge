@@ -16,6 +16,8 @@ brew install yarn
 rails new . --database=postgresql --no-skip-gemfile --no-skip-git --skip-keeps --skip-action-mailer --skip-action-mailbox --skip-action-text --no-skip-active-record --no-skip-active-storage --no-skip-puma --skip-action-cable --skip-sprockets --skip-spring --skip-turbolinks --skip-test --skip-systemtest --skip-bootsnap --skip-webpack-install
 ```
 
+NB somehoe forgot to add --skip-javascript  which is why it still had the webpacker gem .
+
 1. DB Creation because postgres
 ```bash
 rails db:create
