@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import Header from './Header'
+import Form from './form'
 
 class App extends React.Component {
   
@@ -41,7 +41,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header updateCurrentUser={this.updateCurrentUser}/>
+        <Form updateCurrentUser={this.updateCurrentUser}/>
       </div>
     )
   }

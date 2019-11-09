@@ -4,7 +4,7 @@ import Signup from './Signup'
 import Login from './Login'
 import Logout from './Logout'
 
-class Header extends React.Component {
+class Form extends React.Component {
 
   constructor(props) {
     super(props)
