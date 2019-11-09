@@ -34,7 +34,9 @@ group :development, :test do
   gem 'capybara', '>= 2.15'
   gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
   gem 'rspec-rails', '~> 4.0.0.beta2'
-  gem 'rubocop'
+  gem 'rubocop', '~> 0.76.0', require: false
+  gem "rubocop-rails_config"
+  gem 'travis'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
