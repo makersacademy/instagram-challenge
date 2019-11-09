@@ -28,7 +28,7 @@ class DecodeAuthenticationCommand < BaseCommand
     nil
   end
 
-  def authorisation_header
+  def authorization_header
     headers['Authorisation']
   end
 
