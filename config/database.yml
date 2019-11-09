@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: ollygram_development
+
+test:
+  <<: *default
+  database: ollygram_test
+
+production:
+  <<: *default
+  database: ollygram_production
+  username: ollygram
+  password: <%= ENV['PGAPP_DATABASE_PASSWORD'] %>
