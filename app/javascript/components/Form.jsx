@@ -8,9 +8,9 @@ class Form extends React.Component {
 
   constructor(props) {
     super(props)
-    if (this.props.currentUser == null) {
+    if (this.props.authToken == null) {
       this.state = {
-        page:"login"
+        page:"signup"
       } 
     } else {
       this.state = {
@@ -30,13 +30,13 @@ class Form extends React.Component {
     switch(this.state.page) {
       case "signup":
         return <Signup changePage={this.changePage}
-        updateCurrentUser={this.props.updateCurrentUser} />
+        updateAuthToken={this.props.updateAuthToken} />
       case "login":
         return <Login changePage={this.changePage}
-        updateCurrentUser={this.props.updateCurrentUser} />
+        updateAuthToken={this.props.updateAuthToken} />
       case "delete":
         return <Logout changePage={this.changePage}
-        updateCurrentUser={this.props.updateCurrentUser}/>
+        updateAuthToken={this.props.updateAuthToken}/>
     }
   }
 }

@@ -12,15 +12,16 @@ export default class Logout extends React.Component {
   handleLogout(e) {
     e.preventDefault()
     let that = this
-    axios.delete('/users/sign_out', {
-    })
-    .then(function(response){
-      console.log(response)
-      that.props.changePage("login")
-    })
-    .catch(function(error) {
-      console.log(error)
-    })
+    this.props.updateAuthToken(null)
+    this.props.changePage("login")
+    // axios.delete('/users/sign_out', {
+    // })
+    // .then(function(response){
+    //   console.log(response)
+    // })
+    // .catch(function(error) {
+    //   console.log(error)
+    // })
   }
 
   render() {

@@ -8,41 +8,41 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      currentUser: null
+      authToken: null
     }
-    this.updateCurrentUser = this.updateCurrentUser.bind(this)
+    this.updateAuthToken = this.updateAuthToken.bind(this)
   }
 
-  componentDidMount() {
-    let that = this
-    axios.get('/users/check_for_user', {
-    })
-    .then(function(response){
-      if(response.data.email){
-        that.setState({
-          currentUser: response.data.email
-        })
-      } else {
-        that.setState({
-          currentUser: null
-        })
-      }
-    })
-    .catch(function(error){
-      console.log(error)
-    })
-  }
+  // componentDidMount() {
+  //   let that = this
+  //   axios.get('/users/check_for_user', {
+  //   })
+  //   .then(function(response){
+  //     if(response.data.token){
+  //       that.setState({
+  //         authToken: response.data.token
+  //       })
+  //     } else {
+  //       that.setState({
+  //         authToken: null
+  //       })
+  //     }
+  //   })
+  //   .catch(function(error){
+  //     console.log(error)
+  //   })
+  // }
 
-  updateCurrentUser(email) {
+  updateAuthToken(token) {
     this.setState({
-      currentUser: email
+      authToken: token
     })
   }
-
+  
   render() {
     return (
       <div>
-        <Form updateCurrentUser={this.updateCurrentUser}/>
+        <Form updateAuthToken={this.updateAuthToken} />
       </div>
     )
   }

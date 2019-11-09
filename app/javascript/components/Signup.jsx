@@ -13,17 +13,21 @@ export default class Signup extends React.Component {
   handleSignup(e) {
     e.preventDefault()
     let that = this
-    axios.post('/users', {
-      user: {
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value,
-        password_confirmation: document.getElementById("password_confirmation").value
-      }
-    })
+    let params =  {
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+      password_confirmation: document.getElementById("password_confirmation").value
+    }
+    axios.post('/api/v1/users', params)
     .then(function(response) {
       console.log(response)
-      that.props.changePage("delete")
-      that.props.updateCurrentUser(email)
+      if(response.data.success) {
+        axios.post('/api/v1/auth', params)
+        .then(function(response) {
+          that.props.changePage("delete")
+          that.props.updateAuthToken(response.data.token)
+        })
+      }
     })
     .catch(function(error) {
       console.log(error)
@@ -35,8 +39,11 @@ export default class Signup extends React.Component {
       <div>
         <h2>Signup</h2>
         <form>
+          <label htmlFor="email">Email:</label>
           <input type="email" name="email" placeholder="Email" id="email"/>
+          <label htmlFor="password">Password:</label>
           <input type="password" placeholder="Password" name="password" id="password"/>
+          <label htmlFor="password_confirmation">Confirm Password:</label>
           <input type="password" placeholder="Confirm Password" name="password_confirmation" id="password_confirmation"/>
           <button onClick={this.handleSignup}>Sign up</button>
         </form>

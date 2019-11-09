@@ -12,8 +12,7 @@ export default class Login extends React.Component {
   handleLogin(e) {
     e.preventDefault()
     let that = this
-    let email = this.props.currentUser
-    axios.post('/users/sign_in', {
+    axios.post('/api/v1/auth', {
       user: {
         email: document.getElementById("email").value,
         password: document.getElementById("password").value,
@@ -22,7 +21,7 @@ export default class Login extends React.Component {
     .then(function(response) {
       console.log(response)
       that.props.changePage("delete")
-      that.props.updateCurrentUser(email)
+      that.props.updateAuthToken(response.data.token)
     })
     .catch(function(error) {
       console.log(error)
