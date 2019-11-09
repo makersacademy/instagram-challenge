@@ -1,0 +1,22 @@
+language: ruby
+rvm:
+- 2.6.3
+cache: bundler
+services: postgresql
+before_install:
+- gem update --system
+- gem install bundler
+script:
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+- bundle exec rubocop
+- bundle exec rspec spec
+deploy:
+  provider: s3
+  access_key_id: AKIAVJ5OBDAMYIXRNPHW
+  secret_access_key:
+    secure: SWZS9ubtKVMRpo2Se7omighkHpGM3bEXf0jETxOvP8jkmZlcQz4S3I/kxMimvvLOo7m+vki8qcal4JC5ghRPmr2JQEFdq3YpdnZoinRREnzuMM/ddTHpjW7bMOWf3klfsbXOeinv4/KXnUKojO9EGDlaQfYmcs3OzK8Csau5rtnZTgYEhL6bOheNqW8SXcCDn44wSP266hP7LGM1z3ODMwK/zc5WKslP6xXEn47tTkCW7qzDO1glCqY0i0qsj3/3aflx2CGn1+8+gcBdb0Z2+RZ/SWFjupw046iCFXLgeIDNOummEgzTXLDvhudHfl7nceQtnUoDbhA7GvwdNpsMhHResiAvXsRZCl7N4Pww/w1Y+j4cweCaZQBEsClp9pEona5N2sbYvYf6XJf4SrjVsOzvhVS2scRk1RBQWAeRIengcE/JTjtBiOP/1jmyasYk5/fsGTamJJnPu4G69JxuyEp4B35SN/BEMjXmp3a8t3eQ03hpIoH8C1g9QXqgrjfcv1WqMX8j68Qbz/MBeQKkq8ujZfSSj/Yh331jRUH1WwYX4x3XQPM/f6KqcLvzjb8U45zRD38ztsqqDv23sylmHK3q6niX/KzXtUc4bBBXGZEHA7PHk2rgLRYVxkRUUcin3d31obUE1E1vh7ounq5gAU0rWeELNOGecUAEthiEd1U=
+  bucket: kevstagram
+  acl: 'public_read'
+  on:
+    repo: kevindhanna/instagram-challenge
