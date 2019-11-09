@@ -1,5 +1,7 @@
-Instagram Challenge
+Ollygram – Like Instagram, but more awesome
 ===================
+
+[![Build Status](https://travis-ci.org/ollyholly/instagram-challenge.svg?branch=master)](https://travis-ci.org/ollyholly/instagram-challenge)
 
 ## Instructions
 
