@@ -17,7 +17,7 @@ gem 'rails', '~> 6.0.1'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'bootstrap', '~> 4.3.1'
 gem 'database_cleaner'
-gem 'font-awesome-sass', '~> 5.6.1'
+gem "font-awesome-rails"
 gem 'jquery-rails'
 gem 'sass-rails', '>= 6'
 gem 'simple_form', '~> 4.0.1'
