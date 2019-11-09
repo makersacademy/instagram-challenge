@@ -2,9 +2,17 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController, type: :controller do
   describe 'POST /' do
-    it 'redirects to user auth' do
+    it 'responds with success' do
       post :create, params: { email: 'user@email.com', password: 'password' }
-      expect(response).to have_http_status(302)
+
+      expect(response.parsed_body['success']).to eq true
+    end
+
+    it 'responds with failure' do
+      User.create(email: 'user@email.com', password: 'password')
+      post :create, params: { email: 'user@email.com', password: 'password' }
+
+      expect(response.parsed_body['failure']).to eq({ 'message' => 'Validation failed: Email has already been taken' })
     end
 
     it 'creates a user' do
