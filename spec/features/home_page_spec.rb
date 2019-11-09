@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.feature 'Home Page' do
   scenario 'shows the sign up form' do
-    visit '/'
+    visit root_url
+    
     expect(page).to have_content('Kevstagram')
     expect(page).to have_field('email')
     expect(page).to have_field('password')
