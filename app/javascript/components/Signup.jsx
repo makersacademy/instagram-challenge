@@ -16,7 +16,6 @@ export default class Signup extends React.Component {
     axios.post('/users', {
       user: {
         email: document.getElementById("email").value,
-        username: document.getElementById("username").value,
         password: document.getElementById("password").value,
         password_confirmation: document.getElementById("password_confirmation").value
       }
@@ -37,7 +36,6 @@ export default class Signup extends React.Component {
         <h2>Signup</h2>
         <form>
           <input type="email" name="email" placeholder="Email" id="email"/>
-          <input type="username" name="username" placeholder="Username" id="username"/>
           <input type="password" placeholder="Password" name="password" id="password"/>
           <input type="password" placeholder="Confirm Password" name="password_confirmation" id="password_confirmation"/>
           <button onClick={this.handleSignup}>Sign up</button>

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
-import Form from './form'
+import Form from './Form'
+import axios from 'axios'
 
 class App extends React.Component {
   
@@ -47,4 +48,4 @@ class App extends React.Component {
   }
 }
 
-export default Header
+export default App
