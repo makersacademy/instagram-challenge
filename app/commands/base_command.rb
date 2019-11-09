@@ -16,7 +16,7 @@ class BaseCommand
   end
 
   def errors
-    @errors || ActiveModel::Errors.new(self)
+    @errors ||= []
   end
 
   private

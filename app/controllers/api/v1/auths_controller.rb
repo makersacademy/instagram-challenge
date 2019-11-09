@@ -3,7 +3,6 @@ class Api::V1::AuthsController < ApplicationController
       
   def create
     token_command = AuthenticateUserCommand.call(*params.slice(:user, :password).values)
-    
     if token_command.success?
       render json: {token: token_command.result } 
     else
