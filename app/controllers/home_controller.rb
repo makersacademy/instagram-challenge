@@ -6,9 +6,8 @@ class HomeController < ApplicationController
       render 'devise/sessions/new'
     else
       @post = Post.new
-      @post_list = Post.all
+      @post_list = Post.all.reverse
       @comment = Comment.new
-      @comment_list = Comment.all
     end
   end
 end

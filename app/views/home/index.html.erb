@@ -3,6 +3,7 @@ Welcome to InstagramAPP!
 
 <%= form_for(@post, :html => { :method => :post }) do |f| %>
   <%= f.label "Insert Picture" %>
+  <%= f.text_field :message %>
   <%= f.file_field :picture %>
   <%= f.submit "Submit"%>
 <% end %>
@@ -10,6 +11,9 @@ Welcome to InstagramAPP!
 <br>
 <% @post_list.each do |post| %>
   <br>
+  <p>
+  <%= post.message %>
+  </p>
   <img width="400px" src="<%= rails_blob_url(post.picture) %>" alt="">
   <%= form_for([post, @comment], :html => { :method => :post }) do |f| %>
     <%= f.label "Add comment" %>
