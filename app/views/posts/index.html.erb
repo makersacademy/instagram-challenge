@@ -13,16 +13,21 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <img src="<%=(url_for(post.image))%>">
+        <td>
+          <img src="<%=(url_for(post.image))%>" width="150px", height="150px">
+        </td>
+        <td>
+          <%= User.where(id: post.user_id).first.username %><br>
+          <%= post.description %>
+        </td>
       </tr>
       <tr>
-        <td><%= post.description %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <tr>
-        <td><%= User.where(id: post.user_id).first.username %></td>
+        <td>
+          <%= link_to 'Show', post %>
+          <%= link_to 'Edit', edit_post_path(post) %>
+          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+
       </tr>
     <% end %>
   </tbody>
