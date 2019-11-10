@@ -11,6 +11,7 @@
       <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
   <%= link_to 'Back', posts_path %>
+  <%= render partial: 'likes/form', locals: { likeable: @post } %>
 
   <% @post.comments.each do |comment| %>
   <p class="comments">
@@ -23,6 +24,8 @@
         <%= f.submit "Delete Comment" %>
       <% end %>
     <% end %>
+    <%= render partial: 'likes/form', locals: { likeable: comment } %>
+
   <% end %>
 
   <%= form_for [@post, Comment.new] do |form| %>

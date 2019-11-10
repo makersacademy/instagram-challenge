@@ -6,5 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, password_length: 6..25
 
+ acts_as_voter
+
 
 end
