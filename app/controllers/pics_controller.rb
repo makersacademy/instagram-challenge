@@ -6,9 +6,6 @@ class PicsController < ApplicationController
   end
 
   def create
-    p user_signed_in?
-    p current_user
-    p current_user.id
     @pic = Pic.create(pic_params.merge(user_id: current_user.id))
     redirect_to pics_url
   end
@@ -37,11 +34,19 @@ class PicsController < ApplicationController
   end
 
   def upvote
-    
+    @pic.upvote_by current_user
+    respond_to do |format|
+      format.html { redirect_back fallback_location: pics_url }
+      format.js { render layout:false }
+    end
   end
 
   def downvote
-    
+    @pic.downvote_by current_user
+    respond_to do |format|
+      format.html { redirect_back fallback_location: pics_url }
+      format.js { render layout:false }
+    end
   end
 
   private

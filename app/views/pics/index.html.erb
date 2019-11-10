@@ -23,6 +23,29 @@
     <%= link_to "Edit", edit_pic_path(pic.id), method: :get %>
     <%= link_to "Delete", pic_path(pic.id), method: :delete %>
   <% end %>
+
+<div class="like">
+
+    <% if user_signed_in? %>
+      <% if current_user.voted_up_on? pic %>
+        <%= link_to unlike_pic_path(pic.id), method: :put, class: "unlike_pic" do %>
+          <span class="icon"><i class="fa fa-heart has-text-primary"></i></span>
+          <span>Like </span>
+        <% end %>
+          <span class="vote_count"><%= pic.get_upvotes.size %></span>
+      <% else %>
+        <%= link_to like_pic_path(pic.id), method: :put, class: "like_pic" do %>
+          <span class="icon"><i class="fa fa-heart"></i></span>
+          <span>Like </span>
+        <% end %>
+        <% if pic.get_upvotes.size > 0%>
+          <span class="vote_count"><%= pic.get_upvotes.size %></span>
+        <% end%>
+      <% end %>
+    <% end %>
+
+  </div>
+
 </div>
 <% end%>
 

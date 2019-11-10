@@ -1,10 +1,8 @@
-# Ollygram [![Build Status](https://travis-ci.org/ollyholly/instagram-challenge.svg?branch=master)](https://travis-ci.org/ollyholly/instagram-challenge)
-
+# Ollygram [![Build Status](https://travis-ci.org/ollyholly/instagram-challenge.svg?branch=master)](https://travis-ci.org/ollyholly/instagram-challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/c444147521bb50160a69/maintainability)](https://codeclimate.com/github/ollyholly/instagram-challenge/maintainability)
 
 ### _Just like Instagram, but more awesome_
 
 Try it yourself, visit 📸 [Ollygram](https://ollygram.herokuapp.com/ "Ollygram")
-
 
 ## Features
 
@@ -41,7 +39,6 @@ Try it yourself, visit 📸 [Ollygram](https://ollygram.herokuapp.com/ "Ollygram
 - User can see a feed of pics from all the accounts they follow
 - User can see a general feed from all the users
 
-
 ## How to use
 
 1. Clone this repo
@@ -60,7 +57,6 @@ bundle install
  rake db:setup
  rspec
 ```
-
 
 ## Tech stack
 
@@ -85,7 +81,6 @@ Deployment
 Travis CI
 Heroku
 ```
-
 
 ## Assignment instructions
 
