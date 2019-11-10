@@ -50,7 +50,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-  gem 'rspec-rails', '~> 3.5'
+  # http://jessehouse.com/blog/2019/06/19/actionview-template-error-wrong-number-of-arguments-given-2/
+  gem 'rspec-rails', '~> 4.0.0.beta3'
   gem 'rubocop'
 end
 

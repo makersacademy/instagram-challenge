@@ -2,7 +2,7 @@ Welcome to InstagramAPP!
 <br>
 
 <%= form_for(@post, :html => { :method => :post }) do |f| %>
-  <%= f.label "Insert Picture" %>
+  <%= f.label "Message" %>
   <%= f.text_field :message %>
   <%= f.file_field :picture %>
   <%= f.submit "Submit"%>
@@ -10,7 +10,7 @@ Welcome to InstagramAPP!
 
 <br>
 <% @post_list.each do |post| %>
-  <br>
+  <div class="post">
   <p>
   <%= post.message %>
   </p>
@@ -21,7 +21,9 @@ Welcome to InstagramAPP!
     <% else %>
       <%= form.submit 'Like'%>
     <% end %>
+    <div class="count-like">
     <%= post.get_upvotes.size %>
+    </div>
   <% end %>
 
   <%= form_for([post, @comment], :html => { :method => :post }) do |f| %>
@@ -33,5 +35,6 @@ Welcome to InstagramAPP!
   <% post.comments.each do |comment| %>
     <%= comment.message %>
   <% end %>
+  </div>
 <% end %>
 <br>
