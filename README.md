@@ -2,7 +2,8 @@ Instagram Challenge
 ===================
 
 ## Features
-- Users can sign up and log in
+- Users can sign up (username, email, password - encrypted)
+- Users can log in and out
 - Users can post pictures
 - Users can write comments on pictures
 - Users can like a picture.
