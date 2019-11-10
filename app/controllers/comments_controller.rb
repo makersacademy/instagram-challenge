@@ -1,14 +1,17 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment = Comment.new(params[:comment["content"]])
-    @comment.save
-    if @comment.save
-      flash[:notice] = "Comment has been created."
-      redirect_to pics_path
-    else
-      flash[:alert] = "Comment has not been created."
-    end
+    p comment_params
+    @comment = Comment.create(comment_params.merge(user_id: current_user.id))
+    p "DONE!!!!!!!!"
+    redirect_to pics_path
+    # @comment.save
+    # if @comment.save
+    #   flash[:notice] = "Comment has been created."
+    #   redirect_to pics_path
+    # else
+    #   flash[:alert] = "Comment has not been created."
+    # end
   end
 
   # def create
@@ -27,9 +30,7 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      new_par = params.require(:comment).permit(:content)
-      p new_par
-      new_par
+      params.require(:comment).permit(:content, :pic_id)
       # params.require(:comment).permit(:comment, :authenticity_token, :id, :commit)
     end
 end
