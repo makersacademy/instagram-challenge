@@ -16,11 +16,17 @@
    <%= comment.body %></p>
    <%= User.where(id: comment.user_id).first.username %>
    <%= comment.created_at.to_s(:long_ordinal) %>
+   <% if comment.user_id == current_user.id %>
+      <%= form_for([@post, comment], :html => { :method => :delete }) do |f| %>
+        <%= f.hidden_field :post_id, :value => @post.id %>
+        <%= f.submit "Delete Comment" %>
+      <% end %>
+    <% end %>
   <% end %>
 
   <%= form_for [@post, Comment.new] do |form| %>
     <%= form.text_field :body %>
-
+    <%= form.hidden_field :post_id, :value => @post.id %>
     <%= form.submit "Add comment" %>
   <% end %>
 </center>

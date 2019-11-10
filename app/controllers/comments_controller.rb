@@ -5,7 +5,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(comment_params)
-    redirect_to posts_url
+    redirect_to "/posts/#{params[:post_id]}"
+  end
+
+  def destroy
+    Comment.destroy(params[:id])
+    redirect_to "/posts/#{params[:post_id]}"
   end
 
   private
