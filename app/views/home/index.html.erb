@@ -11,6 +11,14 @@ Welcome to InstagramAPP!
 <% @post_list.each do |post| %>
   <br>
   <img width="400px" src="<%= rails_blob_url(post.picture) %>" alt="">
+  <%= form_for([post, @comment], :html => { :method => :post }) do |f| %>
+    <%= f.label "Add comment" %>
+    <%= f.text_field :message %>
+    <%= f.submit "Submit"%>
+  <% end %>
   <br>
+  <% post.comments.each do |comment| %>
+    <%= comment.message %>
+  <% end %>
 <% end %>
 <br>

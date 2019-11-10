@@ -7,6 +7,8 @@ class HomeController < ApplicationController
     else
       @post = Post.new
       @post_list = Post.all
+      @comment = Comment.new
+      @comment_list = Comment.all
     end
   end
 end

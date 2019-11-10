@@ -6,7 +6,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_param)
-    # @post.picture.attach(params[:picture])
     redirect_to '/'
   end
 
