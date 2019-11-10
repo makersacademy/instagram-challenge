@@ -3,8 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'autoprefixer-rails'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jwt'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.1'
+gem 'react-rails'
 # Use PG as the database
 gem 'pg'
 # Use Puma as the app server
@@ -20,7 +24,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -53,7 +57,8 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'cypress-rails'
+  gem 'rspec-rails', '~> 4.0.0.beta3'
   gem "rubocop"
   gem "rubocop-rails"
   gem 'travis'

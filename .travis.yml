@@ -1,16 +1,21 @@
 language: ruby
 rvm:
 - 2.6.3
-cache: bundler
+cache: 
+  bundler: true
+  yarn: true
 services: postgresql
 before_install:
 - gem update --system
 - gem install bundler
+- yarn
 script:
 - bundle exec rake db:create
 - bundle exec rake db:migrate
-- bundle exec rubocop
 - bundle exec rspec spec
+- bundle exec rake cypress:run
+- bundle exec rubocop
+- node_modules/.bin/eslint .
 deploy:
   provider: heroku
   app: kevstagram
