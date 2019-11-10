@@ -1,9 +1,13 @@
 <p id="notice"><%= notice %></p>
+<center>
+  <p>
+    <img src="<%=(url_for(@post.image))%>"><br>
+    <%= User.where(id: @post.user_id).first.username %><br>
+    <%= @post.description %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @post.description %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+  <% if @post.user_id == current_user.id %>
+    <%= link_to 'Edit', edit_post_path(@post) %>
+  <% end %>
+  <%= link_to 'Back', posts_path %>
+</center>
