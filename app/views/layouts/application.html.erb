@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>InstagramChallenge</title>
+    <title>Instagram Challenge</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <header>
+        <nav>
+          <div class="nav-wrapper">
+            <a href="/" class="center brand-logo">Instagram Clone</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="/posts">Posts</a></li>
+
+              <%= link_to 'Posts', posts_path, class: "btn waves-effect waves-light" %>
+              <%= link_to 'Sign Out', destroy_user_session_path, class: "btn waves-effect waves-light" %>
+              <li><a href="/users/sign_up">Sign Up</a></li>
+              <li><a href="/users/sign_in">Sign In</a></li>
+              <li><a href="/users/sign_out">Sign Out</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <%= yield %>
+    </div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
