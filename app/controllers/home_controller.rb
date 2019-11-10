@@ -2,10 +2,11 @@ class HomeController < ApplicationController
   skip_before_action :authenticate_user!, :only => [:index]
 
   def index
-    if current_user
-      :index
+    if !current_user
+      render 'devise/sessions/new'
     else
-      render 'devise/registrations/new'
+      @post = Post.new
+      @post_list = Post.all
     end
   end
 end

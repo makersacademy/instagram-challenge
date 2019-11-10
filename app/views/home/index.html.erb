@@ -1,1 +1,16 @@
-Hello
+Welcome to InstagramAPP!
+<br>
+
+<%= form_for(@post, :html => { :method => :post }) do |f| %>
+  <%= f.label "Insert Picture" %>
+  <%= f.file_field :picture %>
+  <%= f.submit "Submit"%>
+<% end %>
+
+<br>
+<% @post_list.each do |post| %>
+  <br>
+  <img width="400px" src="<%= rails_blob_url(post.picture) %>" alt="">
+  <br>
+<% end %>
+<br>
