@@ -6,6 +6,9 @@ class PicsController < ApplicationController
   end
 
   def create
+    p user_signed_in?
+    p current_user
+    p current_user.id
     @pic = Pic.create(pic_params.merge(user_id: current_user.id))
     redirect_to pics_url
   end
@@ -47,6 +50,6 @@ class PicsController < ApplicationController
     end
 
     def find_pic
-      @post = Pic.find(params[:id])
+      @pic = Pic.find(params[:id])
     end
 end

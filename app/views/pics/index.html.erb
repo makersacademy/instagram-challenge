@@ -1,2 +1,28 @@
 <h1>Pics#index</h1>
-<p>Find me in app/views/pics/index.html.erb</p>
+<%= link_to new_pic_path do %>
+  New pic
+<% end %>
+<% @pics.each do |pic| %>
+<div class="my-3 p-2 bg-light">
+  <%= image_tag(pic.image, style:"width:100%") %>
+<br>
+  <p>
+    <%= pic.title %>
+  </p>
+  <p>
+    <%= pic.description%>
+  </p>
+  <p>
+    <% @user = User.where(id: pic.user_id).first%>
+    <%= @user.username %>
+  </p>
+  <p>
+    <%= pic.created_at.strftime("%-d %b %Y at %H:%M")%>
+  </p>
+  <% if current_user.id == pic.user_id %>
+    <%= link_to "Edit", edit_pic_path(pic.id), method: :get %>
+    <%= link_to "Delete", pic_path(pic.id), method: :delete %>
+  <% end %>
+</div>
+<% end%>
+
