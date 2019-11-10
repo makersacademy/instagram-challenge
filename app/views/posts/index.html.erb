@@ -6,33 +6,33 @@
     <% @posts.each do |post| %>
 
        <div class="grid-item">
-    <table>
-      <thead>
-        <tr>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
+         <div class="grid-body">
+    <table width="100%">
+
 
       <tbody>
       <tr>
-        <td>
-          <img src="<%=(url_for(post.image))%>" width="150px", height="150px">
-        </td>
-        <td>
-          <%= User.where(id: post.user_id).first.username %><br>
-          <%= post.description %>
-        </td>
+        <td colspan="3">
+
+            <%= link_to post do %>
+              <%= image_tag "#{url_for(post.image)}", class: "post-image" %>
+            <% end %>
+            <td>
+
       </tr>
       <tr>
         <td>
-          <%= link_to 'Show', post %>
+          <%= post.user.username %><br>
         </td>
+
         <td>
           <%= render partial: 'likes/form', locals: { likeable: post } %>
         </td>
       </tr>
     </tbody>
+
   </table>
+  </div>
   </div>
     <% end %>
 
