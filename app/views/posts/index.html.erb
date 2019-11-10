@@ -31,7 +31,19 @@
         </td>
 
       </tr>
+      <% post.comments.each do |comment| %>
+     <p class="comments">
+       <%= comment.body %>
+     </p>
+     <% end %>
+
+     <%= form_for [post, Comment.new] do |form| %>
+       <%= form.text_field :body %>
+
+       <%= form.submit "Add comment" %>
+     <% end %>
     <% end %>
+
   </tbody>
 </table>
 
