@@ -24,7 +24,7 @@ class DecodeAuthenticationCommand < BaseCommand
   end
 
   def token
-    return authorisation_header.split(' ').last if authorization_header.present?
+    return authorization_header.split(' ').last if authorization_header.present?
 
     errors << { token: 'Missing Token' }
     nil
@@ -36,7 +36,7 @@ class DecodeAuthenticationCommand < BaseCommand
 
   def token_contents
     @token_contents ||= begin
-      decoded = JWTService.decode(token)
+      decoded = JwtService.decode(token)
       errors.add(:token, I18n.t('decode_authentication_command.token_expired')) unless decoded
       decoded
     end
