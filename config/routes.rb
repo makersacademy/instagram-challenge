@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  root to: "home#index"
+  root 'posts#index', as: 'home'
+
+
+  resources :posts do
+    resources :comments
+  end
 end
