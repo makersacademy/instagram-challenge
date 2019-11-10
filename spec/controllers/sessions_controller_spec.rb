@@ -9,4 +9,18 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
+  describe "GET #create" do
+    it "returns http redirect" do
+      get :create
+      expect(response).to have_http_status(:redirect)
+    end
+  end
+
+  describe "GET #destroy" do
+    it "returns http redirect" do
+      get :destroy
+      expect(response).to have_http_status(:redirect)
+    end
+  end
+
 end
