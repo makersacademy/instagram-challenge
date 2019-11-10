@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Instagram</title>
+  </head>
+  <body>
+    <p id="notice"><%= notice %></p>
+
+    <h1>Posts</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>ImageDescription</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.title %></td>
+            <td><%= post.image_description %></td>
+            <td><%= link_to 'Show', post %></td>
+            <td><%= link_to 'Edit', edit_post_path(post) %></td>
+            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+    <%= link_to 'New Post', new_post_path %>
+    <br>
+
+    <% if (User.any?) %>
+      <% if session[:user_id] %>
+        <%= User.find_by(id: session[:user_id]).username %>
+      <%end %>
+    <%end %> |
+    <a href="/logout">LogOut</a>
+  </body>
+</html>

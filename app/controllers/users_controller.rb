@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find_by(id: params[:id])
+    @post = Post.new
+    @posts = Post.all
   end
 
   # GET /users/new
@@ -16,22 +19,24 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find_by(id: params[:id])
   end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @user.save
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.valid?
+      session[:user_id] = @user.id
+      redirect_to "/users/#{session[:user_id]}"
+      flash.notice = "You have successfully signed up #{@user.username}"
+    else @user.invalid?
+      signup_error = @user.errors.messages.first.flatten.join(" ")
+      redirect_to '/signup', alert: signup_error
     end
+
   end
 
   # PATCH/PUT /users/1

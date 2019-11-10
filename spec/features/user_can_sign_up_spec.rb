@@ -5,7 +5,7 @@ feature "sign up", type: :feature do
 
   scenario "user signs up sucessfully" do
     signup_as_new_user("Josh")
-    expect(page).to have_content("User was successfully created.")
+    expect(page).to have_content("You have successfully signed up")
   end
 
   scenario "users creating account with duplicate username throws error message" do
