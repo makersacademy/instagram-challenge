@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
  end
 
  def configure_permitted_parameters
-   devise_parameter_sanitizer.permit(:sign_up, keys: [:forename, :surname])
-   #in keys list all the additional user input params you want to accept. 
+   devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+   #in keys list all the additional user input params you want to accept.
  end
 
 end
