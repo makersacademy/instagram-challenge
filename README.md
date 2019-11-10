@@ -1,6 +1,6 @@
 # Ollygram [![Build Status](https://travis-ci.org/ollyholly/instagram-challenge.svg?branch=master)](https://travis-ci.org/ollyholly/instagram-challenge)
 
-## _Just like Instagram, but more awesome_
+> ### _Just like Instagram, but more awesome_
 
 Try it yourself, visit 📸 [Ollygram](https://ollygram.herokuapp.com/ "Ollygram")
 
