@@ -10,7 +10,7 @@ RSpec.feature 'Comment' do
     log_in_test_user_2
     within('.new_comment') do
       fill_in ('comment[message]'), with: 'A comment'
-      click_button('Submit')
+      click_button('Add comment')
     end
     expect(page).to have_content 'A comment'
   end
