@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
-import Button from './Button/Button'
-import Input from './Input/Input'
+import { Link, Route, Switch } from 'react-router-dom';
+import Button from '../Button/Button'
+import Input from '../Input/Input'
 
 
 export default class Signup extends React.Component {
@@ -22,11 +23,9 @@ export default class Signup extends React.Component {
     }
     axios.post('/api/v1/users', params)
     .then(function(response) {
-      console.log(response)
       if(response.data.success) {
         axios.post('/api/v1/auth', params)
         .then(function(response) {
-          that.props.changePage("delete")
           that.props.updateAuthToken(response.data.token)
         })
       }
@@ -58,10 +57,11 @@ export default class Signup extends React.Component {
                   name='signup' />
 
         </form>
-        <Button handleClick={() => this.props.changePage("login")}
+        <Link to='/log_in'><Button
                 class='secondary' 
                 label='Log In'
                 name="login"/>
+        </Link>
       </div>
     )
   }

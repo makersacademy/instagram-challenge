@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
-import Button from './Button/Button'
-import Input from './Input/Input'
+import { Link, Route, Switch } from 'react-router-dom';
+import Button from '../Button/Button'
+import Input from '../Input/Input'
 
 export default class Login extends React.Component {
 
@@ -19,8 +20,6 @@ export default class Login extends React.Component {
       password: document.getElementById("password-input").value,
     })
     .then(function(response) {
-      console.log(response)
-      that.props.changePage("delete")
       that.props.updateAuthToken(response.data.token)
     })
     .catch(function(error) {
@@ -46,10 +45,11 @@ export default class Login extends React.Component {
                   class='primary'
                   label='Log In'/>
         </form>
-        <Button handleClick={() => this.props.changePage("signup")}
-                name='singup'
+        <Link to='/sign_up'>
+        <Button name='singup'
                 class='secondary'
                 label='Sign Up'/>
+        </Link>
       </div>
     )
   }
