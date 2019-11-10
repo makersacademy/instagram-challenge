@@ -1,40 +1,49 @@
-Welcome to InstagramAPP!
+<h1> Welcome to InstagramAPP! </h1>
 <br>
 
 <%= form_for(@post, :html => { :method => :post }) do |f| %>
-  <%= f.label "Message" %>
-  <%= f.text_field :message %>
-  <%= f.file_field :picture %>
-  <%= f.submit "Submit"%>
+<div class="form-row">
+  <div class="col">
+    <%= f.text_field :message, class: "form-control", placeholder: "Message" %>
+  </div>
+  <div class="col">
+    <%= f.file_field :picture, class: "form-control-file" %>
+  </div>
+  <div class="col">
+    <%= f.submit "Submit", class: "btn btn-primary"%>
+  </div>
+  </div>
 <% end %>
 
 <br>
 <% @post_list.each do |post| %>
-  <div class="post">
-  <p>
-  <%= post.message %>
-  </p>
-  <img width="400px" src="<%= rails_blob_url(post.picture) %>" alt="">
-  <%= form_with url: like_post_path(post), method: :put do |form| %>
-    <% if current_user.liked? post %>
-    <%= form.submit 'Dislike'%>
-    <% else %>
-      <%= form.submit 'Like'%>
-    <% end %>
-    <div class="count-like">
-    <%= post.get_upvotes.size %>
-    </div>
-  <% end %>
+  <div class="post card mx-auto mb-3" style="width: 30rem">
+    <img src="<%= rails_blob_url(post.picture) %>" class="card-img-top" alt="">
+    <div class="card-body">
+      <p class="card-text"><%= post.message %></p>
+      <%= form_with url: like_post_path(post), method: :put do |form| %>
+      <button type="submit" class="btn btn-primary">
+        <% if current_user.liked? post %>
+          Dislike
+        <% else %>
+          Like
+        <% end %>
+        <span class="count-like badge badge-light">
+        <%= post.get_upvotes.size %>
+        </span>
+      </button>
 
-  <%= form_for([post, @comment], :html => { :method => :post }) do |f| %>
-    <%= f.label "Add comment" %>
-    <%= f.text_field :message %>
-    <%= f.submit "Submit"%>
-  <% end %>
-  <br>
-  <% post.comments.each do |comment| %>
-    <%= comment.message %>
-  <% end %>
+      <% end %>
+
+      <%= form_for([post, @comment], :html => { :method => :post }) do |f| %>
+        <%= f.text_field :message %>
+        <%= f.submit "Add comment", class: "btn btn-primary"%>
+      <% end %>
+      <br>
+      <% post.comments.each do |comment| %>
+        <%= comment.message %>
+      <% end %>
+    </div>
   </div>
 <% end %>
 <br>
