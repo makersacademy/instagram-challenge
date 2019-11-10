@@ -9,28 +9,15 @@ class PostsController < ApplicationController
     redirect_to '/'
   end
 
-  # def like
-  #   @post = Post.find_by(params[:post_id])
-  #   if !current_user.voted_for? @post
-  #     @post.upvote_by current_user
-  #   else
-  #     @post.downvote_by current_user
-  #   end
-  #   redirect_to '/'
-  # end
-
-  def upvote
+  def like
     @post = Post.find(params[:id])
-    @post.upvote_by current_user
+    if !current_user.liked? @post
+      @post.upvote_by current_user
+    else
+      @post.downvote_by current_user
+    end
     redirect_to '/'
   end
-
-  def downvote
-    @post = Post.find(params[:id])
-    @post.downvote_by current_user
-    redirect_to '/'
-  end
-
 
   private
   def post_param

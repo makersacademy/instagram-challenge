@@ -15,14 +15,13 @@ Welcome to InstagramAPP!
   <%= post.message %>
   </p>
   <img width="400px" src="<%= rails_blob_url(post.picture) %>" alt="">
-  <%= link_to like_post_path(post), method: :put do %>
-    Upvote
+  <%= form_with url: like_post_path(post), method: :put do |form| %>
+    <% if current_user.liked? post %>
+    <%= form.submit 'Dislike'%>
+    <% else %>
+      <%= form.submit 'Like'%>
+    <% end %>
     <%= post.get_upvotes.size %>
-  <% end %>
-
-  <%= link_to dislike_post_path(post), method: :put do %>
-    Downvote
-    <%= post.get_downvotes.size %>
   <% end %>
 
   <%= form_for([post, @comment], :html => { :method => :post }) do |f| %>
