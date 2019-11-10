@@ -18,7 +18,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     it 'creates a user' do
       post :create, params: { email: 'user@email.com', password: 'password' }
 
-      expect(User.first.email).to eq 'user@email.com'
+      expect(User.find_by(email: 'user@email.com')).to be_a User
     end
   end
 end
