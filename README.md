@@ -1,35 +1,39 @@
-# Ollygram – Like Instagram, but more awesome
+# Ollygram [![Build Status](https://travis-ci.org/ollyholly/instagram-challenge.svg?branch=master)](https://travis-ci.org/ollyholly/instagram-challenge)
 
-[![Build Status](https://travis-ci.org/ollyholly/instagram-challenge.svg?branch=master)](https://travis-ci.org/ollyholly/instagram-challenge)
+## _Just like Instagram, but more awesome_
 
-Try it yourself, visit 📸 [Website link](https://ollygram.herokuapp.com/ "Ollygram")
+Try it yourself, visit 📸 [Ollygram](https://ollygram.herokuapp.com/ "Ollygram")
 
 ## Features
 
-Accounts
+#### Accounts
 
 - User can sign up
 - User can sign in
 - User can sign out
 - User will have unique username
 
-- Pics (pictures)
+#### Pics (pictures)
+
 - User can post, edit and delete pics
 - User can add and edit title and description to the pics
 - User can edit and delete only the pics they've posted
 
-- Comments
+#### Comments
+
 - User can comment on their and other users' pics
 - User can edit and delete their comments
 
-- Like
+#### Likes
+
 - User can like and unlike the pics
 
-- Profile
+#### Profile
+
 - User can see all the pics they've posted on their profile
 - User can visit other users' profiles
 
-Following
+#### Following
 
 - User can follow other users
 - User can see a feed of pics from all the accounts they follow
