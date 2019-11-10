@@ -1,10 +1,10 @@
-# Ollygram [![Build Status](https://travis-ci.org/ollyholly/instagram-challenge.svg?branch=master)](https://travis-ci.org/ollyholly/instagram-challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/c444147521bb50160a69/maintainability)](https://codeclimate.com/github/ollyholly/instagram-challenge/maintainability)
+# Ollygram [![Build Status](https://travis-ci.org/ollyholly/instagram-challenge.svg?branch=master)](https://travis-ci.org/ollyholly/instagram-challenge)
 
-### _Just like Instagram, but more awesome_
+### _🚧Under construction_
 
-Try it yourself, visit 📸 [Ollygram](https://ollygram.herokuapp.com/ "Ollygram")
+📸 [Website](https://ollygram.herokuapp.com/ "Ollygram")
 
-## Features
+## Available features
 
 #### Accounts
 
@@ -19,14 +19,16 @@ Try it yourself, visit 📸 [Ollygram](https://ollygram.herokuapp.com/ "Ollygram
 - User can add and edit title and description to the pics
 - User can edit and delete only the pics they've posted
 
+#### Likes
+
+- User can like and unlike the pics
+
+## 🚧 Still in development
+
 #### Comments
 
 - User can comment on their and other users' pics
 - User can edit and delete their comments
-
-#### Likes
-
-- User can like and unlike the pics
 
 #### Profile
 
