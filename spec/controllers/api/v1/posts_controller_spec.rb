@@ -33,13 +33,13 @@ RSpec.describe Api::V1::PostsController, type: :controller do
       get :show
 
       response_body = JSON.parse(response.body)
-
+      
       expect(response_body['posts'].first).to include 'id'
       expect(response_body['posts'].first).to include 'caption'
-      expect(response_body['posts'].first).to include('user_id')
+      expect(response_body['posts'].first).to include 'user_id'
     end
   end
-
+  
   describe 'POST / ' do
     before :each do
       my_headers = { 
@@ -48,9 +48,24 @@ RSpec.describe Api::V1::PostsController, type: :controller do
       }
       request.headers.merge!(my_headers)
     end
+    
     it 'returns 200' do
       post :create
       expect(response).to have_http_status(200)
+    end
+    
+    it 'creates a post' do
+      post :create, params: { post: { caption: 'Another Caption', url: 'https://www.google.com' } }
+      expect(Post.find_by(caption: 'Another Caption')).to be_a Post
+    end
+    
+    it 'returns the post JSON' do
+      post :create, params: { post: { caption: 'Another Caption', url: 'https://www.google.com' } }
+      response_body = JSON.parse(response.body)
+      
+      expect(response_body).to include 'id'
+      expect(response_body).to include 'caption'
+      expect(response_body).to include 'user_id'
     end
   end
 end

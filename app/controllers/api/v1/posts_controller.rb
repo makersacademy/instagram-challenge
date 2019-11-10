@@ -8,6 +8,17 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def create
-    render json: { success: {} }
+    begin
+      post = Post.create(post_params)
+      render json: post.to_json
+    rescue StandardError => e
+      render json: { failure: { message: e.message } }
+    end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:caption, :url).merge(user_id: @current_user.id)
   end
 end
