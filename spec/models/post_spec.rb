@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   before :each do
-    user = User.create(email: 'user@email.com', password: 'password')
-    Post.create(url: 'www.google.com', caption: 'A caption', user_id: user.id)
+    @user = User.create(email: 'user@email.com', password: 'password')
+    Post.create(url: 'www.google.com', caption: 'A caption', user_id: @user.id)
   end
   it 'knows its caption' do
     expect(Post.all.first.caption).to eq 'A caption'
@@ -14,6 +14,6 @@ RSpec.describe Post, type: :model do
   end
 
   it 'knows its user' do
-    expect(Post.all.first.user).to eq user
+    expect(Post.all.first.user).to eq @user
   end
 end
