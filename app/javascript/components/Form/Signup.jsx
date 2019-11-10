@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '../Button/Button'
 import Input from '../Input/Input'
 
@@ -16,8 +16,9 @@ export default class Signup extends React.Component {
   handleSignup(e) {
     e.preventDefault()
     let that = this
+    let email = document.getElementById("email-input").value
     let params =  {
-      email: document.getElementById("email-input").value,
+      email: email,
       password: document.getElementById("password-input").value,
       password_confirmation: document.getElementById("password_confirmation-input").value
     }
@@ -26,7 +27,7 @@ export default class Signup extends React.Component {
       if(response.data.success) {
         axios.post('/api/v1/auth', params)
         .then(function(response) {
-          that.props.updateAuthToken(response.data.token)
+          that.props.updateAuthToken(response.data.token, email)
         })
       }
     })
@@ -39,7 +40,7 @@ export default class Signup extends React.Component {
     return (
       <div>
         <h4>Sign Up</h4>
-        <form>
+        <form onSubmit={e => {e.preventDefault();}}>
           <div className='form-input'>
             <Input label="Email"
                    type="email"
@@ -48,19 +49,18 @@ export default class Signup extends React.Component {
                    type="password"
                    name="password" />
             <Input label="Password Confirmation"
-                   type="password_confirmation"
+                   type="password"
                    name="password_confirmation" />
           </div>
-          <Button handleClick={this.props.handleSignup}
+          <Button handleClick={this.handleSignup}
                   class='primary'
                   label='Sign Up'
                   name='signup' />
-
         </form>
-        <Link to='/log_in'><Button
-                class='secondary' 
-                label='Log In'
-                name="login"/>
+        <Link to='/log_in'>
+          <Button class='secondary' 
+                  label='Log In'
+                  name="login"/>
         </Link>
       </div>
     )

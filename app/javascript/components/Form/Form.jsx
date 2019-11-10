@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Signup from './Signup'
 import Login from './Login'
-import { Link, Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 
 class Form extends React.Component {

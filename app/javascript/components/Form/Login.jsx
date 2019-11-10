@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from '../Button/Button'
 import Input from '../Input/Input'
 
@@ -15,12 +15,14 @@ export default class Login extends React.Component {
   handleLogin(e) {
     e.preventDefault()
     let that = this
+    let email = document.getElementById("email-input").value
     axios.post('/api/v1/auth', {
-      email: document.getElementById("email-input").value,
+      email: email,
       password: document.getElementById("password-input").value,
     })
     .then(function(response) {
-      that.props.updateAuthToken(response.data.token)
+      console.log(atob(response.data.token.split('.')[1]))
+      that.props.updateAuthToken(response.data.token, email)
     })
     .catch(function(error) {
       console.log(error)
@@ -31,7 +33,7 @@ export default class Login extends React.Component {
     return (
       <div>
         <h4>Log in</h4>
-        <form>
+        <form onSubmit={e => {e.preventDefault();}}>
           <div className='form-input'>
             <Input label="Email"
                    type="email"
@@ -46,9 +48,9 @@ export default class Login extends React.Component {
                   label='Log In'/>
         </form>
         <Link to='/sign_up'>
-        <Button name='singup'
-                class='secondary'
-                label='Sign Up'/>
+          <Button name='singup'
+                  class='secondary'
+                  label='Sign Up'/>
         </Link>
       </div>
     )

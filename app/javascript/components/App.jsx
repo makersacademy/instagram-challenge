@@ -9,24 +9,28 @@ class App extends React.Component {
     super()
     this.state = {
       authToken: null,
+      currentUser: null
     }
     this.updateAuthToken = this.updateAuthToken.bind(this)
   }
 
-  updateAuthToken(token) {
+  updateAuthToken(token, email) {
     this.setState({
-      authToken: token
+      authToken: token,
+      currentUser: email,
     })
   }
   
   render() {
     return (
       <div>
-        <Header updateAuthToken={this.updateAuthToken}
+        <Header currentUser={this.currentUser}
+                updateAuthToken={this.updateAuthToken}
                 authToken={this.state.authToken}/>
                 
-        <Body updateAuthToken={this.updateAuthToken}
-                authToken={this.state.authToken}/>
+        <Body currentUser={this.state.currentUser}
+              updateAuthToken={this.updateAuthToken}
+              authToken={this.state.authToken}/>
       </div>
     )
   }

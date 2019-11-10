@@ -12,9 +12,7 @@ export default class Logout extends React.Component {
 
   handleLogout(e) {
     e.preventDefault()
-    let that = this
     this.props.updateAuthToken(null)
-    this.props.changePage("login")
   }
 
   render() {
