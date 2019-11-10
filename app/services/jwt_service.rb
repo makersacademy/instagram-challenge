@@ -10,6 +10,6 @@ class JwtService
                        algorithm: 'HS256')
     HashWithIndifferentAccess.new(body)
   rescue JWT::ExpiredSignature
-      nil
+    nil
   end
 end

@@ -1,4 +1,3 @@
-
 class NotAuthorizedException < StandardError; end
 
 module TokenAuthenticatable
@@ -9,7 +8,9 @@ module TokenAuthenticatable
 
     before_action :authenticate_user
 
-    rescue_from NotAuthorizedException, with: -> { render json: { error: 'Not Authorized' }, status: :unauthorized }
+    rescue_from NotAuthorizedException, with: -> {
+      render json: { error: 'Not Authorized' }, status: :unauthorized 
+    }
   end
 
   private_methods
