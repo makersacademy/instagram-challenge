@@ -24,6 +24,17 @@
     <%= link_to "Delete", pic_path(pic.id), method: :delete %>
   <% end %>
 
+<div>
+  <% p pic %>
+
+<% @pic = Pic.find_by(id: pic.id) %>
+  <%  @comments = @pic.comments.all %>
+<% render 'shared/comment' %>
+</div>
+<div>
+<%= render 'shared/comment_form' %>
+</div>
+
 <div class="like">
 
     <% if user_signed_in? %>

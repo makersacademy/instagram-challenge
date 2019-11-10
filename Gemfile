@@ -14,6 +14,7 @@ gem 'pg'
 gem 'puma', '~> 4.1'
 gem 'rails', '~> 6.0.1'
 
+gem 'acts_as_commentable'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'database_cleaner'
 gem "font-awesome-rails"
