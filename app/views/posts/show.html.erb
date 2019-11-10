@@ -10,4 +10,17 @@
     <%= link_to 'Edit', edit_post_path(@post) %>
   <% end %>
   <%= link_to 'Back', posts_path %>
+
+  <% @post.comments.each do |comment| %>
+  <p class="comments">
+   <%= comment.body %></p>
+   <%= User.where(id: comment.user_id).first.username %>
+   <%= comment.created_at.to_s(:long_ordinal) %>
+  <% end %>
+
+  <%= form_for [@post, Comment.new] do |form| %>
+    <%= form.text_field :body %>
+
+    <%= form.submit "Add comment" %>
+  <% end %>
 </center>

@@ -30,26 +30,7 @@
           <% end %>
         </td>
       </tr>
-    <tr>
-      <td>
-        <% post.comments.each do |comment| %>
-        <p class="comments">
-         <%= comment.body %></p>
-         <%= User.where(id: comment.user_id).first.username %>
-         <%= comment.created_at.to_s(:long_ordinal) %>
-        <% end %>
-      </td>
-    </tr><br>
-    <tr>
-      <td>
-        <%= form_for [post, Comment.new] do |form| %>
-          <%= form.text_field :body %>
-
-          <%= form.submit "Add comment" %>
-        <% end %>
-      </td>
     <% end %>
-    </tr>
 
   </tbody>
 </table>
