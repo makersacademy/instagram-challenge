@@ -16,7 +16,7 @@ class DecodeAuthenticationCommand < BaseCommand
 
   def user
     @user ||= User.find_by(id: decoded_id)
-    @user || errors.add(:token, I18n.t('decode_authentication_command.token_invalid')) && nil
+    @user || errors << { token: 'Invalid Token' }
   end
 
   def token_present?
@@ -26,7 +26,7 @@ class DecodeAuthenticationCommand < BaseCommand
   def token
     return authorisation_header.split(' ').last if authorization_header.present?
 
-    errors.add(:token, I18n.t('decode_authentication_command.token_missing'))
+    errors << { token: 'Missing Token' }
     nil
   end
 

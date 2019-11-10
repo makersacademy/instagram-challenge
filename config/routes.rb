@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resource :auth, only: %i[create]
       resource :users, only: %i[create]
+      resource :posts
     end
   end
 
