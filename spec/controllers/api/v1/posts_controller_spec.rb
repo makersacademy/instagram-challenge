@@ -39,4 +39,18 @@ RSpec.describe Api::V1::PostsController, type: :controller do
       expect(response_body['posts'].first).to include('user_id')
     end
   end
+
+  describe 'POST / ' do
+    before :each do
+      my_headers = { 
+        "ACCEPT": "application/json",
+        "Authorisation": @key
+      }
+      request.headers.merge!(my_headers)
+    end
+    it 'returns 200' do
+      post :create
+      expect(response).to have_http_status(200)
+    end
+  end
 end

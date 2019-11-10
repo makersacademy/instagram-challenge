@@ -6,4 +6,8 @@ class Api::V1::PostsController < ApplicationController
     end
     render json: result
   end
+
+  def create
+    render json: { success: {} }
+  end
 end
