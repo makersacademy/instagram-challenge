@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+import Button from './Button/Button'
+import Input from './Input/Input'
 
 
 export default class Signup extends React.Component {
@@ -14,9 +16,9 @@ export default class Signup extends React.Component {
     e.preventDefault()
     let that = this
     let params =  {
-      email: document.getElementById("email").value,
-      password: document.getElementById("password").value,
-      password_confirmation: document.getElementById("password_confirmation").value
+      email: document.getElementById("email-input").value,
+      password: document.getElementById("password-input").value,
+      password_confirmation: document.getElementById("password_confirmation-input").value
     }
     axios.post('/api/v1/users', params)
     .then(function(response) {
@@ -37,17 +39,29 @@ export default class Signup extends React.Component {
   render() {
     return (
       <div>
-        <h2>Signup</h2>
+        <h4>Sign Up</h4>
         <form>
-          <label htmlFor="email">Email:</label>
-          <input type="email" name="email" placeholder="Email" id="email"/>
-          <label htmlFor="password">Password:</label>
-          <input type="password" placeholder="Password" name="password" id="password"/>
-          <label htmlFor="password_confirmation">Confirm Password:</label>
-          <input type="password" placeholder="Confirm Password" name="password_confirmation" id="password_confirmation"/>
-          <button onClick={this.handleSignup}>Sign up</button>
+          <div className='form-input'>
+            <Input label="Email"
+                   type="email"
+                   name="email" />
+            <Input label="Password"
+                   type="password"
+                   name="password" />
+            <Input label="Password Confirmation"
+                   type="password_confirmation"
+                   name="password_confirmation" />
+          </div>
+          <Button handleClick={this.props.handleSignup}
+                  class='primary'
+                  label='Sign Up'
+                  name='signup' />
+
         </form>
-        <button onClick={() => this.props.changePage("login")}>Log in</button>
+        <Button handleClick={() => this.props.changePage("login")}
+                class='secondary' 
+                label='Log In'
+                name="login"/>
       </div>
     )
   }

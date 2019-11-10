@@ -2,36 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import Form from './Form'
 import axios from 'axios'
+import Header from './Header/Header';
 
 class App extends React.Component {
   
   constructor() {
     super()
     this.state = {
-      authToken: null
+      authToken: null,
+      page:"signup"
     }
+    this.changePage = this.changePage.bind(this)
     this.updateAuthToken = this.updateAuthToken.bind(this)
   }
 
-  // componentDidMount() {
-  //   let that = this
-  //   axios.get('/users/check_for_user', {
-  //   })
-  //   .then(function(response){
-  //     if(response.data.token){
-  //       that.setState({
-  //         authToken: response.data.token
-  //       })
-  //     } else {
-  //       that.setState({
-  //         authToken: null
-  //       })
-  //     }
-  //   })
-  //   .catch(function(error){
-  //     console.log(error)
-  //   })
-  // }
+  getAuthToken() {
+    return this.authToken
+  }
+
+  changePage(newPage) {
+    this.setState({
+      page: newPage
+    })
+  }
 
   updateAuthToken(token) {
     this.setState({
@@ -42,7 +35,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Form updateAuthToken={this.updateAuthToken} />
+        <Header updateAuthToken={this.updateAuthToken}
+                authToken={this.state.authToken}
+                changePage={this.changePage}
+                page={this.state.page}/>
+        <Form updateAuthToken={this.updateAuthToken}
+              authToken={this.state.authToken}
+              changePage={this.changePage}
+              page={this.state.page}/>
       </div>
     )
   }

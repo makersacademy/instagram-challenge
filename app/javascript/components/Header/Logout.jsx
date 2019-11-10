@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+import HeaderLink from './HeaderLink'
 
 
 export default class Logout extends React.Component {
@@ -14,19 +15,13 @@ export default class Logout extends React.Component {
     let that = this
     this.props.updateAuthToken(null)
     this.props.changePage("login")
-    // axios.delete('/users/sign_out', {
-    // })
-    // .then(function(response){
-    //   console.log(response)
-    // })
-    // .catch(function(error) {
-    //   console.log(error)
-    // })
   }
 
   render() {
     return (
-      <button onClick={this.handleLogout}>Sign out</button>
+      <HeaderLink handleClick={this.handleLogout}
+                  label='Sign Out'
+                  icon='log-out' />
     )
   }
 }

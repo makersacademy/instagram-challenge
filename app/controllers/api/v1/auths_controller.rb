@@ -9,5 +9,5 @@ class Api::V1::AuthsController < ApplicationController
       render json: { error: token_command.errors }, status: :unauthorized      
     end
   end
-  
+
 end

@@ -2,42 +2,36 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Signup from './Signup'
 import Login from './Login'
-import Logout from './Logout'
 
 class Form extends React.Component {
 
   constructor(props) {
     super(props)
-    if (this.props.authToken == null) {
-      this.state = {
-        page:"signup"
-      } 
-    } else {
-      this.state = {
-        page:"delete"
-      }
-    }
-    this.changePage = this.changePage.bind(this)
   }
 
-  changePage(newPage) {
-    this.setState({
-      page: newPage
-    })
+  renderForm() {
+    switch(this.props.page) {
+      case "signup":
+        return <Signup changePage={this.props.changePage}
+        updateAuthToken={this.props.updateAuthToken} />
+      case "login":
+        return <Login changePage={this.props.changePage}
+        updateAuthToken={this.props.updateAuthToken} />
+    }
   }
 
   render() {
-    switch(this.state.page) {
-      case "signup":
-        return <Signup changePage={this.changePage}
-        updateAuthToken={this.props.updateAuthToken} />
-      case "login":
-        return <Login changePage={this.changePage}
-        updateAuthToken={this.props.updateAuthToken} />
-      case "delete":
-        return <Logout changePage={this.changePage}
-        updateAuthToken={this.props.updateAuthToken}/>
-    }
+    return (
+      <div className='row'>
+        <div key='formColLeft' className='col-2'></div>
+        <div key='formColCentre' className='col'>
+          <div className='container login-signup'>
+          {this.renderForm()}
+          </div>
+        </div>
+        <div key='formColRight' className='col-2'></div>
+      </div>
+    )
   }
 }
 

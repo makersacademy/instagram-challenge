@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+import Button from './Button/Button'
+import Input from './Input/Input'
 
 export default class Login extends React.Component {
 
@@ -13,10 +15,8 @@ export default class Login extends React.Component {
     e.preventDefault()
     let that = this
     axios.post('/api/v1/auth', {
-      user: {
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value,
-      }
+      email: document.getElementById("email-input").value,
+      password: document.getElementById("password-input").value,
     })
     .then(function(response) {
       console.log(response)
@@ -31,13 +31,25 @@ export default class Login extends React.Component {
   render() {
     return (
       <div>
-        <h2>Log in</h2>
+        <h4>Log in</h4>
         <form>
-          <input type="email" name="email" placeholder="Email" id="email"/>
-          <input type="password" placeholder="Password" name="password" id="password"/>
-          <button onClick={this.handleLogin}>Log in</button>
+          <div className='form-input'>
+            <Input label="Email"
+                   type="email"
+                   name="email" />
+            <Input label="Password"
+                   type="password"
+                    name="password" />
+          </div>
+          <Button handleClick={this.handleLogin}
+                  name='login'
+                  class='primary'
+                  label='Log In'/>
         </form>
-        <button onClick={() => this.props.changePage("signup")}>Sign up</button>
+        <Button handleClick={() => this.props.changePage("signup")}
+                name='singup'
+                class='secondary'
+                label='Sign Up'/>
       </div>
     )
   }

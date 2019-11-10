@@ -57,6 +57,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'cypress-rails'
   gem 'rspec-rails', '~> 4.0.0.beta3'
   gem "rubocop"
   gem "rubocop-rails"
