@@ -29,20 +29,27 @@
             <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         </td>
-
       </tr>
-      <% post.comments.each do |comment| %>
-     <p class="comments">
-       <%= comment.body %>
-     </p>
-     <% end %>
+    <tr>
+      <td>
+        <% post.comments.each do |comment| %>
+        <p class="comments">
+         <%= comment.body %></p>
+         <%= User.where(id: comment.user_id).first.username %>
+         <%= comment.created_at.to_s(:long_ordinal) %>
+        <% end %>
+      </td>
+    </tr><br>
+    <tr>
+      <td>
+        <%= form_for [post, Comment.new] do |form| %>
+          <%= form.text_field :body %>
 
-     <%= form_for [post, Comment.new] do |form| %>
-       <%= form.text_field :body %>
-
-       <%= form.submit "Add comment" %>
-     <% end %>
+          <%= form.submit "Add comment" %>
+        <% end %>
+      </td>
     <% end %>
+    </tr>
 
   </tbody>
 </table>
