@@ -2,7 +2,7 @@ class Api::V1::PostsController < ApplicationController
   def show
     @posts = Post.all.reverse
     respond_to do |format|
-      format.json { render json: @posts, :include => {:user => {:only => [:id, :email] } } }
+      format.json { render json: @posts, :include => { :user => { :only => [:id, :email] } } }
     end
   end
 

@@ -33,10 +33,10 @@ RSpec.describe Api::V1::PostsController, type: :controller do
       get :show
 
       response_body = JSON.parse(response.body)
-      
-      expect(response_body['posts'].first).to include 'id'
-      expect(response_body['posts'].first).to include 'caption'
-      expect(response_body['posts'].first).to include 'user_id'
+
+      expect(response_body.first).to include 'id'
+      expect(response_body.first).to include 'caption'
+      expect(response_body.first).to include 'user_id'
     end
   end
   
@@ -62,7 +62,7 @@ RSpec.describe Api::V1::PostsController, type: :controller do
     it 'returns the post JSON' do
       post :create, params: { post: { caption: 'Another Caption', url: 'https://www.google.com' } }
       response_body = JSON.parse(response.body)
-      
+
       expect(response_body).to include 'id'
       expect(response_body).to include 'caption'
       expect(response_body).to include 'user_id'
