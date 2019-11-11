@@ -1,10 +1,9 @@
 class Api::V1::PostsController < ApplicationController
   def show
-    result = { posts: [] }
-    Post.all.each do |post| 
-      result[:posts].append(post.to_json)
+    @posts = Post.all.reverse
+    respond_to do |format|
+      format.json { render json: @posts, :include => {:user => {:only => [:id, :email] } } }
     end
-    render json: result
   end
 
   def create

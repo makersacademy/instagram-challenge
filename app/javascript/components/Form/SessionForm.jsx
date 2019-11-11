@@ -5,7 +5,7 @@ import Login from './Login'
 import { Route, Redirect } from 'react-router-dom';
 
 
-class Form extends React.Component {
+class SessionForm extends React.Component {
 
   constructor(props) {
     super(props)
@@ -19,7 +19,7 @@ class Form extends React.Component {
           <div className='row'>
           <div key='formColLeft' className='col-2'></div>
           <div key='formColCentre' className='col'>
-            <div className='container login-signup'>
+            <div className='container card login-signup'>
             <Redirect from='/' to='/sign_up'/>
             <Route exact={true} path="/sign_up" 
                   render={
@@ -41,4 +41,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form
+export default SessionForm
