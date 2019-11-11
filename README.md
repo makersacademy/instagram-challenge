@@ -1,40 +1,93 @@
-Instagram Challenge
-===================
+# Ollygram [![Build Status](https://travis-ci.org/ollyholly/instagram-challenge.svg?branch=master)](https://travis-ci.org/ollyholly/instagram-challenge)
 
-## Instructions
+### _🚧Under construction_
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+📸 [Website](https://ollygram.herokuapp.com/ "Ollygram")
 
-## Task
+## Available features
 
-Build Instagram: Simple huh!
+#### Accounts
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+- User can sign up
+- User can sign in
+- User can sign out
+- User will have unique username
 
-Bonus if you can add filters!
+#### Pics (pictures)
 
-## How to start
+- User can post, edit and delete pics
+- User can add and edit title and description to the pics
+- User can edit and delete only the pics they've posted
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+#### Likes
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+- User can like and unlike the pics
 
-## Code Quality
+## 🚧 Still in development
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+#### Comments
 
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+- User can comment on their and other users' pics
+- User can edit and delete their comments
+
+#### Profile
+
+- User can see all the pics they've posted on their profile
+- User can visit other users' profiles
+
+#### Following
+
+- User can follow other users
+- User can see a feed of pics from all the accounts they follow
+- User can see a general feed from all the users
+
+## How to use
+
+1. Clone this repo
+2. Install
+
+```
+bundle install
+ rake db:setup
+ rspec
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+3. Run the app
+
+```
+bundle install
+ rake db:setup
+ rspec
+```
+
+## Tech stack
+
+Back-end
+
+```
+  Ruby 2.6.3
+  Rails 6.0.0
+  Database: PostgreSQL
+```
+
+Front-end
+
+```
+  HTML, CSS, SCSS, Javascript, jQuery
+  Bootstrap
+```
+
+Deployment
+
+```
+Travis CI
+Heroku
+```
+
+## Assignment instructions
+
+- Challenge time: one weekend
+- Feel free to use Google, your notes, books, etc., but work on your own
+- If you refer to the solution of another coach or student, please put a link to that in your README
+- If you have a partial solution, **still check in a partial solution**
+- You must submit a pull request to this repo with your code by 9am Monday morning

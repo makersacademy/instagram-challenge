@@ -1,0 +1,62 @@
+<h1>Pics#index</h1>
+<%= link_to new_pic_path do %>
+  New pic
+<% end %>
+<% @pics.each do |pic| %>
+<div class="my-3 p-2 bg-light">
+  <%= image_tag(pic.image, style:"width:100%") %>
+<br>
+  <p>
+    <%= pic.title %>
+  </p>
+  <p>
+    <%= pic.description%>
+  </p>
+  <p>
+    <% @user = User.where(id: pic.user_id).first%>
+    <%= @user.username %>
+  </p>
+  <p>
+    <%= pic.created_at.strftime("%-d %b %Y at %H:%M")%>
+  </p>
+  <% if current_user.id == pic.user_id %>
+    <%= link_to "Edit", edit_pic_path(pic.id), method: :get %>
+    <%= link_to "Delete", pic_path(pic.id), method: :delete %>
+  <% end %>
+
+<div>
+  <% p pic %>
+
+<% @pic = Pic.find_by(id: pic.id) %>
+  <%  @comments = @pic.comments.all %>
+<% render 'shared/comment' %>
+</div>
+<div>
+<%= render 'shared/comment_form' %>
+</div>
+
+<div class="like">
+
+    <% if user_signed_in? %>
+      <% if current_user.voted_up_on? pic %>
+        <%= link_to unlike_pic_path(pic.id), method: :put, class: "unlike_pic" do %>
+          <span class="icon"><i class="fa fa-heart has-text-primary"></i></span>
+          <span>Like </span>
+        <% end %>
+          <span class="vote_count"><%= pic.get_upvotes.size %></span>
+      <% else %>
+        <%= link_to like_pic_path(pic.id), method: :put, class: "like_pic" do %>
+          <span class="icon"><i class="fa fa-heart"></i></span>
+          <span>Like </span>
+        <% end %>
+        <% if pic.get_upvotes.size > 0%>
+          <span class="vote_count"><%= pic.get_upvotes.size %></span>
+        <% end%>
+      <% end %>
+    <% end %>
+
+  </div>
+
+</div>
+<% end%>
+

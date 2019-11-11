@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ollygram</title>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha256-Md8eaeo67OiouuXAi8t/Xpd8t2+IaJezATVTWbZqSOw=" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
+<!-- Custom CSS -->
+    <%# <link rel="stylesheet" href="style.css"> %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-light bg-light d-flex">
+      <div class="container">
+        <div class="logo">
+          <a class="navbar-brand" href="#">
+            <%= fa_icon "camera-retro" %>
+            Ollygram
+          </a>
+        </div>
+        <div class="user-section">
+          <%# <a><i class="fa fa-compass"></i></a>
+          <a><i class="fa fa-heart"></i></a>
+          <a><i class="fa fa-user"></i></a> %>
+          <a class="badge badge-pill badge-secondary text-light" data-method="delete" href="/users/sign_out"
+                >Sign Out</a>
+        </div>
+      </div>
+    </nav>
+
+    <!--Main content-->
+    <main class="container py-1" style="min-height: 500px;">
+    <div class="row">
+    <div class=col>
+    <% if notice != nil %>
+      <p class="alert alert-warning"><%= notice %></p>
+    <% end %>
+    <% if alert != nil %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    </div>
+    </div>
+    <div class="row justify-content-center">
+       <div class="col-6">
+      <%= yield %>
+      </div>
+      </div>
+    </main>
+
+    <!--Footer-->
+    <footer class="container footer">
+  <p> © 2019 Ollygram </p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha256-98vAGjEDGN79TjHkYWVD4s87rvWkdWLHPs5MC3FvFX4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha256-xaF9RpdtRxzwYMWg4ldJoyPWqyDPCRD0Cv7YEEe6Ie8=" crossorigin="anonymous"></script>
+  </body>
+</html>
