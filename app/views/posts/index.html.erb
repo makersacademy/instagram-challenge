@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<div class="grid-container">
+    <% @posts.each do |post| %>
+
+       <div class="grid-item">
+         <div class="grid-body">
+    <table width="100%">
+
+
+      <tbody>
+      <tr>
+        <td colspan="3">
+
+            <%= link_to post do %>
+              <%= image_tag "#{url_for(post.image)}", class: "post-image" %>
+            <% end %>
+            <td>
+
+      </tr>
+      <tr>
+        <td>
+          <%= post.user.username %><br>
+        </td>
+
+        <td>
+          <%= render partial: 'likes/form', locals: { likeable: post } %>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+  </div>
+  </div>
+    <% end %>
+
+
+</div>
+
+<br>
