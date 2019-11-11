@@ -11,7 +11,7 @@ feature "sign up", type: :feature do
   scenario "users creating account with duplicate username throws error message" do
     signup_as_new_user("Josh")
     signup_as_new_user("Josh")
-    expect(current_path).to eq("/signup")
+    expect(current_path).to eq("/users")
     expect(page).to have_content("Username has already been taken")
   end
 
@@ -22,7 +22,7 @@ feature "sign up", type: :feature do
     fill_in "user[password]", with: "pas"
     fill_in "user[email]", with: "josh@gmail.com"
     click_button "Create Account"
-    expect(current_path).to eq("/signup")
+    expect(current_path).to eq("/users")
     expect(page).to have_content("too short")
   end
 
@@ -33,7 +33,7 @@ feature "sign up", type: :feature do
     fill_in "user[password]", with: "myverylongpassword"
     fill_in "user[email]", with: "josh@gmail.com"
     click_button "Create Account"
-    expect(current_path).to eq("/signup")
+    expect(current_path).to eq("/users")
     expect(page).to have_content("too long")
   end
 
