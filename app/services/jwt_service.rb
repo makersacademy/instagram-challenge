@@ -1,5 +1,9 @@
 class JwtService
   def self.encode(payload)
+    puts "IN JWT#Encode"
+    puts puts payload
+    puts Rails.application.secrets.secret_key_base
+    puts "IN JWT#Encode"
     JWT.encode(payload, Rails.application.secrets.secret_key_base, 'HS256')
   end
 

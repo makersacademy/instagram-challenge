@@ -4,6 +4,9 @@ class AuthenticateUserCommand < BaseCommand
   attr_reader :email, :password
 
   def initialize(email, password)
+    puts "IN authenticate#init"
+    puts email, password
+    puts "IN authenticate#init"
     @email = email
     @password = password
   end
