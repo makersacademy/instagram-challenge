@@ -4,18 +4,21 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
-    @post = Post.new
+    # @posts = Post.all
+    @posts = Post.all.with_attached_photo
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.new
+    @post.photo.attach(params[:photo])
   end
 
   # GET /posts/new
   def new
     @post = Post.new
+ 
   end
 
   # GET /posts/1/edit
@@ -26,7 +29,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     #@post = Post.new(post_params)
-    @post = Post.create(user_id: session[:user_id], title: post_params["title"], image_description: post_params["image_description"])
+    @post = Post.create(user_id: session[:user_id], title: post_params["title"], image_description: post_params["image_description"], photo: post_params["photo"])
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -37,6 +40,7 @@ class PostsController < ApplicationController
       end
     end
   end
+
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
@@ -70,6 +74,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :image_description)
+      params.require(:post).permit(:title, :image_description, :photo)
     end
 end
