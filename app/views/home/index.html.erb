@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Instagram</title>
+  </head>
+  <body>
+    <h1 style="text-align:center; margin-top:50px">Instagram</h1>
+    <p>Share your photos!</p>
+    <%= render template: "sessions/new" %>
+
+    <p">Don't have an account? Create one now!</p>
+    <form action="/users/new">
+      <input type="submit" value="Create Account" class="btn btn-info">
+    </form>
+
+    <br>
+    <% if (User.any?) %>
+      <% if session[:user_id] %>
+        <%= User.find_by(id: session[:user_id]).username %>
+      <%end %>
+    <%end %>
+
+    <br>
+
+    <a href="/logout">LogOut</a>
+
+  </body>
+</html>
