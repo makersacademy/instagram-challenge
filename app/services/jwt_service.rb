@@ -13,7 +13,7 @@ class JwtService
     nil
   end
 
-  private
+  private_methods
 
   def self.rails_master_key
     return Rails.application.secrets.secret_key_base unless ENV['RAILS_ENV'] == 'production'
