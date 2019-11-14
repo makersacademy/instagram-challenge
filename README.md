@@ -1,6 +1,27 @@
 Kevstagram
 ===================
 
+# Install
+`Ruby version 2.6.3`
+
+1. Clone Repo
+2. `bundle install`
+3. `yarn`
+
+# How to Use
+
+run `rails s` or push to your favourite PAAS provider
+
+Or you can see it running [here](https://kevstagram.herokuapp.com/sign_up)!
+
+# ToDo
+- Password / email validation and messaging on login / signup pages
+- edit and delete posts
+- CRUD comments
+- comment / post likes
+- image upload and storage
+- image processing / filters on upload
+
 # User Requirements
 
 ## Users
@@ -29,9 +50,3 @@ Kevstagram
 ## Likes
 * I'd like to be able to like pictures  
 * I'd like to be able to unlike pictures
-
-# Install
-
-# How to Use
-
-# Contribute
