@@ -1,5 +1,7 @@
 Instagram Challenge
 ===================
+![InstagramAPP](public/images/instagramApp1.png)
+![InstagramAPP](public/images/instagramApp2.png)
 
 ## Development
 I started the project setting up the database structure with the help of rails and devise for user management and authentication.
