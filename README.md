@@ -1,7 +1,22 @@
 Instagram Challenge
 ===================
 
-## Instructions
+## Development
+I started the project setting up the database structure with the help of rails and devise for user management and authentication.
+Then I implemented the feature to add message posts for a logged in user and add comment for each post.
+Only after that I implemented the feature to add pictures along with message and then the feature to add likes to each posts.
+
+## Start Application
+Clone the repo
+### To setup the project type in the command line
+`bundle install`
+`rake db:create`
+`rake db:migrate`
+### To run the application type in the command line
+`rackup`
+----------
+
+## Maker Instructions
 
 * Challenge time: one weekend
 * Feel free to use Google, your notes, books, etc., but work on your own
