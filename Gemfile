@@ -9,6 +9,7 @@ gem 'rails', '~> 5.2.1'
 gem 'sqlite3'
 # Use Puma as the app server
 gem 'bootstrap', '~> 4.1.1'
+gem 'devise'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'pg'
