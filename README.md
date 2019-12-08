@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my attempt at the Makers Academy Instagram challenge.
 
-Things you may want to cover:
+Here is what I managed to implement:
 
-* Ruby version
+- Users can sign up
+- Users can log in and out
+- Users can post pictures
+- Users can edit their profile page and upload an avatar
+- Users can delete their posts
 
-* System dependencies
+I didn't yet implement:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Comments on posts
+- Likes on posts
