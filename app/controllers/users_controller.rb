@@ -4,13 +4,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.email.downcase!
 
     if @user.save
       flash[:notice] = 'Signup successful'
-      redirect_to posts_path
+      redirect_to root_path
     else
-      flash[:notice] = 'Invalid signup information'
-      redirect_to new_user_path
+      flash.now.alert = 'Invalid signup information'
+      render :new
     end
   end
 
