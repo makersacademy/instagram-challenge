@@ -1,24 +1,20 @@
+<h1>binstagram!</h1>
+
 <%= link_to 'New post', new_post_path %>
 
-<h1>All posts</h1>
-
 <table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
-
   <% @posts.each do |post| %>
     <tr>
       <td>
-        <%= post.title %>
+        <%= post.caption %>
       </td>
-      <td>
-        <%= post.text %>
-      </td>
-      <td>
-        <%= link_to 'Show', post_path(post) %>
-      </td>
+    <tr>
+    <tr>
+      <% if post.image.attached? %>
+        <td>
+          <%= image_tag(post.image, :size => "260x180") %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>
