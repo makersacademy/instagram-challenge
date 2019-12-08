@@ -51,6 +51,11 @@ I want to be able to add a caption to my pictures
 To implement:  
 ```
 As a user  
+So I'm up to date with the latest trends and gossip  
+I want the most recent posts to be shown first  
+```
+```
+As a user  
 So it's clear who has the coolest bin  
 I want to be able to see who posted each picture  
 ```
