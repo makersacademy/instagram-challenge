@@ -13,7 +13,7 @@ Setup instructions and user stories are below.
 
 * Ruby version
 
-* System dependencies
+* System dependencies  
 run `bundle`
 
 * Configuration
