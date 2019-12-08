@@ -9,18 +9,18 @@
 
     <div class="col-md-8 basic-info">
       <div class="user-wrapper">
-        <h2 class="username">amy</h2>
+        <h2 class="username"><%= current_user.username %></h2>
         <a class="edit-profile" href="<%= edit_user_path(current_user) %>">
           <button>Edit Profile</button>
         </a>
       </div>
       <ul class="posts">
-        <li><span>12</span> posts</li>
+        <li><span><%= @posts.count %></span> posts</li>
         <li><span>195</span> followers</li>
         <li><span>345</span> following</li>
       </ul>
-      <h2 class="name">Amy B</h2>
-      <a class="website">my github</a>
+      <h2 class="name"><%= current_user.name %></h2>
+      <%=link_to current_user.website, current_user.website, class: 'website' %>
     </div>
   </div>
 
@@ -44,13 +44,9 @@
 </div>
 
 <div class="user-images">
-  <div class="wrapper">
-    <img src="/images/k1.jpg">
-  </div>
-  <div class="wrapper">
-    <img src="/images/k2.jpg">
-  </div>
-  <div class="wrapper">
-    <img src="/images/k3.jpg">
-  </div>
+  <% @posts.each do |post|%>
+    <div class="wrapper">
+      <%=image_tag post.image %>
+    </div>
+  <% end %>
 </div>

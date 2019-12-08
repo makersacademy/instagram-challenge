@@ -1687,3 +1687,1322 @@ Processing by UsersController#edit as HTML
 Completed 200 OK in 86ms (Views: 79.8ms | ActiveRecord: 0.9ms)
 
 
+Started GET "/users/1" for ::1 at 2019-12-07 20:16:03 +0000
+  [1m[35m (41.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (25.6ms)
+Completed 200 OK in 460ms (Views: 448.7ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:16:39 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 109ms (Views: 105.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/1/edit" for ::1 at 2019-12-07 20:16:41 +0000
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/edit.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/edit.html.erb:15
+  Rendered users/edit.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 68ms (Views: 61.8ms | ActiveRecord: 0.7ms)
+
+
+Started PATCH "/users/1" for ::1 at 2019-12-07 20:16:59 +0000
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Sj7poamAgdf5SXl2A46Nq+bn+JXVUDxuUiTDrX48YvcKFaAafcwtC/5hXql1kclwg+m67ZhVQH4EHBeLD7DJyA==", "user"=>{"name"=>"Amy", "username"=>"", "website"=>"https://github.com/amybalmforth/", "bio"=>"", "email"=>"amy.balmforth@gmail.com", "phone"=>"", "gender"=>"F"}, "commit"=>"Submit", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "website" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["website", "https://github.com/amybalmforth/"], ["updated_at", "2019-12-07 20:16:59.893545"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 11ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:16:59 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 54ms (Views: 50.5ms | ActiveRecord: 0.4ms)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(299057899280821275)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreatePosts (20191207201848)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (50.7ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "description" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191207201848_create_posts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191207201848"]]
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(299057899280821275)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(299057899280821275)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateActiveStorageTables (20191207202230)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (44.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191207202230_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/migrate/20191207202230_create_active_storage_tables.active_storage.rb:4
+  [1m[35m (52.6ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  ↳ db/migrate/20191207202230_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/migrate/20191207202230_create_active_storage_tables.active_storage.rb:16
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/migrate/20191207202230_create_active_storage_tables.active_storage.rb:16
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191207202230"]]
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(299057899280821275)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/users/sign_in" for ::1 at 2019-12-07 20:26:16 +0000
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 62ms (ActiveRecord: 5.2ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:26:16 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+Started GET "/users/sign_in" for ::1 at 2019-12-07 20:26:17 +0000
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by Devise::SessionsController#new as HTML
+  ↳ app/views/layouts/application.html.erb:30
+Completed 200 OK in 656ms (Views: 650.7ms | ActiveRecord: 2.2ms)
+
+
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 8ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:26:17 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (8.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:30
+Completed 200 OK in 120ms (Views: 107.8ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:26:17 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:30
+Completed 200 OK in 89ms (Views: 69.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:26:25 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:30
+Completed 200 OK in 60ms (Views: 55.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:26:27 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 64ms (Views: 60.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/edit" for ::1 at 2019-12-07 20:26:35 +0000
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/edit.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/edit.html.erb:15
+  Rendered users/edit.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 61ms (Views: 53.4ms | ActiveRecord: 0.7ms)
+
+
+Started PATCH "/users/1" for ::1 at 2019-12-07 20:26:42 +0000
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4Y3CM+9D3ZCTkF9UEApfj5ayPTVPPzGgeFtwPXjGaJ+hpouIOw9xTJS4eItmFRtU87x/TQI6TbAuY6QbCUrDoA==", "user"=>{"name"=>"Amy", "username"=>"maybe", "website"=>"https://github.com/amybalmforth/", "bio"=>"", "email"=>"amy.balmforth@gmail.com", "phone"=>"", "gender"=>"F"}, "commit"=>"Submit", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "username" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["username", "maybe"], ["updated_at", "2019-12-07 20:26:42.187113"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 11ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:26:42 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 64ms (Views: 61.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/edit" for ::1 at 2019-12-07 20:26:44 +0000
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6
+  Rendering users/edit.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/edit.html.erb:15
+  Rendered users/edit.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 64ms (Views: 58.0ms | ActiveRecord: 0.8ms)
+
+
+Started PATCH "/users/1" for ::1 at 2019-12-07 20:26:51 +0000
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TCoqDyGrP76HCwRbKNfDY0X1SKCpghNZMjetlsrqRAMMAWO09eeTYoAjI4ReyIe4IPsK2OSHb0lkD3mwu2bvPA==", "user"=>{"name"=>"Amy", "username"=>"amyb", "website"=>"https://github.com/amybalmforth/", "bio"=>"", "email"=>"amy.balmforth@gmail.com", "phone"=>"", "gender"=>"F"}, "commit"=>"Submit", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:10
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "username" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["username", "amyb"], ["updated_at", "2019-12-07 20:26:51.507018"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:10
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:10
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 10ms (ActiveRecord: 3.5ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:26:51 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 54ms (Views: 51.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:38:34 +0000
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (25.3ms)
+Completed 200 OK in 5749ms (Views: 5737.7ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:38:41 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 61ms (Views: 57.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:38:44 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 49ms (Views: 46.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:38:52 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 230ms (Views: 226.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-12-07 20:38:53 +0000
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:38:53 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  Rendered home/index.html.erb within layouts/application (27.5ms)
+Completed 200 OK in 130ms (Views: 121.1ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:38:54 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  Rendered home/index.html.erb within layouts/application (6.5ms)
+Started GET "/" for ::1 at 2019-12-07 20:38:54 +0000
+Completed 200 OK in 113ms (Views: 104.3ms | ActiveRecord: 2.1ms)
+
+
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  Rendered home/index.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 149ms (Views: 142.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:41:48 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 85ms (Views: 76.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-12-07 20:42:55 +0000
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:42:55 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  Rendered home/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 86ms (Views: 81.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-12-07 20:42:56 +0000
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:42:56 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  Rendered home/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 121ms (Views: 116.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:42:56 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  Rendered home/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 66ms (Views: 61.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:42:57 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  Rendered home/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 143ms (Views: 137.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/posts" for ::1 at 2019-12-07 20:43:06 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pYcEuoS/W4mPt0KNtiMsf8b83uKT9bUNqrWww7xthUsVETmwdxyZI1wNgbGCcpv9PzgpJES23lXzOgd2NXK42g==", "post"=>{"description"=>"", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007ffc5daed600 @tempfile=#<Tempfile:/var/folders/d9/jyfmfg8d22s484dhnt8zxt3h0000gn/T/RackMultipart20191207-42371-ua37hi.jpg>, @original_filename="robot.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"robot.jpg\"\r\nContent-Type: image/jpeg\r\n">, "user_id"=>"1"}, "commit"=>"Create Post"}
+[36m  Disk Storage (3.9ms) [0m[32mUploaded file to key: 9Bu7MujQ19eXziVQPyh8enQd (checksum: B2E1eCpw5WPoq6533pQs0A==)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mActiveStorage::Blob Create (45.0ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "9Bu7MujQ19eXziVQPyh8enQd"], ["filename", "robot.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 49033], ["checksum", "B2E1eCpw5WPoq6533pQs0A=="], ["created_at", "2019-12-07 20:43:07.152803"]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mPost Create (33.3ms)[0m  [1m[32mINSERT INTO "posts" ("description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", ""], ["user_id", 1], ["created_at", "2019-12-07 20:43:07.233168"], ["updated_at", "2019-12-07 20:43:07.233168"]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mActiveStorage::Attachment Create (4.9ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2019-12-07 20:43:07.270134"]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mPost Update (0.6ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1 WHERE "posts"."id" = $2[0m  [["updated_at", "2019-12-07 20:43:07.277083"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:4
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: cbcccd65-4401-4320-a2e9-f645de2459c2) to Async(default) with arguments: #<GlobalID:0x00007ffc6019e4c0 @uri=#<URI::GID gid://instagram/ActiveStorage::Blob/1>>
+Redirected to http://localhost:3000/
+Completed 302 Found in 388ms (ActiveRecord: 108.2ms)
+
+
+  [1m[36mActiveStorage::Blob Load (6.7ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbcccd65-4401-4320-a2e9-f645de2459c2] Performing ActiveStorage::AnalyzeJob (Job ID: cbcccd65-4401-4320-a2e9-f645de2459c2) from Async(default) with arguments: #<GlobalID:0x00007ffc5ac71498 @uri=#<URI::GID gid://instagram/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbcccd65-4401-4320-a2e9-f645de2459c2] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: 9Bu7MujQ19eXziVQPyh8enQd[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbcccd65-4401-4320-a2e9-f645de2459c2] Skipping image analysis because the mini_magick gem isn't installed
+Started GET "/" for ::1 at 2019-12-07 20:43:07 +0000
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbcccd65-4401-4320-a2e9-f645de2459c2]   [1m[35m (3.5ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbcccd65-4401-4320-a2e9-f645de2459c2]   ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by HomeController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbcccd65-4401-4320-a2e9-f645de2459c2]   [1m[36mActiveStorage::Blob Update (11.0ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+  Rendering home/index.html.erb within layouts/application
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbcccd65-4401-4320-a2e9-f645de2459c2]   ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbcccd65-4401-4320-a2e9-f645de2459c2]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/views/home/index.html.erb:9
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbcccd65-4401-4320-a2e9-f645de2459c2]   ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendered home/index.html.erb within layouts/application (8.1ms)
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cbcccd65-4401-4320-a2e9-f645de2459c2] Performed ActiveStorage::AnalyzeJob (Job ID: cbcccd65-4401-4320-a2e9-f645de2459c2) from Async(default) in 94.21ms
+Completed 200 OK in 122ms (Views: 115.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:43:10 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 55ms (Views: 51.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:43:14 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 86ms (Views: 81.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:43:17 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:12
+  Rendered users/show.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 69ms (Views: 65.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-12-07 20:43:18 +0000
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:43:18 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  Rendered home/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 55ms (Views: 49.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:43:18 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  Rendered home/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 58ms (Views: 54.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:43:18 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  Rendered home/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 83ms (Views: 76.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:44:51 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  Rendered home/index.html.erb within layouts/application (38.7ms)
+Completed 200 OK in 100ms (Views: 90.9ms | ActiveRecord: 6.3ms)
+
+
+Started POST "/posts" for ::1 at 2019-12-07 20:45:04 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jwsVAUi12jw7Y4/NmMJhiexWWc+dRQSvx5v/3mTnHOQ/nSgLuxYYlujZTPGsk9YLFZKuCUoGb/eeFEhr7fghdQ==", "post"=>{"description"=>"", "user_id"=>"1"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (40.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:4
+Redirected to http://localhost:3000/
+Completed 302 Found in 53ms (ActiveRecord: 42.7ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:45:04 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  Rendered home/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 56ms (Views: 53.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:52:35 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  [1m[36mPost Load (2.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:18
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  Rendered home/index.html.erb within layouts/application (120.3ms)
+Completed 200 OK in 4766ms (Views: 4736.3ms | ActiveRecord: 23.0ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704/robot.jpg" for ::1 at 2019-12-07 20:52:39 +0000
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704", "filename"=>"robot"}
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (4.6ms) [0m[34mGenerated URL for file at key: 9Bu7MujQ19eXziVQPyh8enQd (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMDo1NzozOS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--725f0adfe832ee0eb8feb274558a4bf4fb35075e/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMDo1NzozOS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--725f0adfe832ee0eb8feb274558a4bf4fb35075e/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg
+Completed 302 Found in 12ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMDo1NzozOS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--725f0adfe832ee0eb8feb274558a4bf4fb35075e/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:52:39 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMDo1NzozOS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--725f0adfe832ee0eb8feb274558a4bf4fb35075e", "filename"=>"robot"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:56:53 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:18
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  Rendered home/index.html.erb within layouts/application (71.0ms)
+Completed 200 OK in 130ms (Views: 106.1ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMDo1NzozOS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--725f0adfe832ee0eb8feb274558a4bf4fb35075e/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:56:53 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMDo1NzozOS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--725f0adfe832ee0eb8feb274558a4bf4fb35075e", "filename"=>"robot"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:56:56 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:18
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:47
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  Rendered users/show.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 83ms (Views: 69.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMDo1NzozOS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--725f0adfe832ee0eb8feb274558a4bf4fb35075e/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:56:56 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMDo1NzozOS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--725f0adfe832ee0eb8feb274558a4bf4fb35075e", "filename"=>"robot"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:57:08 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:18
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:47
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  Rendered users/show.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 72ms (Views: 65.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMDo1NzozOS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--725f0adfe832ee0eb8feb274558a4bf4fb35075e/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:57:09 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMDo1NzozOS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--725f0adfe832ee0eb8feb274558a4bf4fb35075e", "filename"=>"robot"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:57:09 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:18
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:47
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  Rendered users/show.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 72ms (Views: 65.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMDo1NzozOS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--725f0adfe832ee0eb8feb274558a4bf4fb35075e/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:57:09 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMDo1NzozOS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--725f0adfe832ee0eb8feb274558a4bf4fb35075e", "filename"=>"robot"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:57:17 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:18
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:47
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  Rendered users/show.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 126ms (Views: 117.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-12-07 20:57:17 +0000
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (36.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 40ms (ActiveRecord: 36.0ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:57:17 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:18
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  Rendered home/index.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 57ms (Views: 53.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704/robot.jpg" for ::1 at 2019-12-07 20:57:18 +0000
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704", "filename"=>"robot"}
+  [1m[36mActiveStorage::Blob Load (2.6ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: 9Bu7MujQ19eXziVQPyh8enQd (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjoxOC4yMTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--fd2fa3d4a9da69f8964876a55d05b7a4c845ec9d/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjoxOC4yMTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--fd2fa3d4a9da69f8964876a55d05b7a4c845ec9d/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg
+Completed 302 Found in 8ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjoxOC4yMTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--fd2fa3d4a9da69f8964876a55d05b7a4c845ec9d/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:57:18 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjoxOC4yMTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--fd2fa3d4a9da69f8964876a55d05b7a4c845ec9d", "filename"=>"robot"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:57:18 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:18
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  Rendered home/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 67ms (Views: 62.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjoxOC4yMTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--fd2fa3d4a9da69f8964876a55d05b7a4c845ec9d/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:57:18 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjoxOC4yMTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--fd2fa3d4a9da69f8964876a55d05b7a4c845ec9d", "filename"=>"robot"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:57:18 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (40.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  [1m[36mPost Load (13.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:18
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  Rendered home/index.html.erb within layouts/application (115.6ms)
+Completed 200 OK in 226ms (Views: 163.7ms | ActiveRecord: 56.8ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjoxOC4yMTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--fd2fa3d4a9da69f8964876a55d05b7a4c845ec9d/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:57:18 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjoxOC4yMTZaIiwicHVyIjoiYmxvYl9rZXkifX0=--fd2fa3d4a9da69f8964876a55d05b7a4c845ec9d", "filename"=>"robot"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for ::1 at 2019-12-07 20:57:23 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TzdF+Au957+nMGhEHUF79QOzZkBs9T2ZtZvTYxua4LX/oXjy+B4lFXSKq3gpEMx3+neRhru2VsHsFGTWkoXdJA==", "post"=>{"description"=>"", "user_id"=>"1"}, "commit"=>"Create Post"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:4
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:57:23 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  Rendered home/index.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 63ms (Views: 58.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704/robot.jpg" for ::1 at 2019-12-07 20:57:23 +0000
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704", "filename"=>"robot"}
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: 9Bu7MujQ19eXziVQPyh8enQd (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjoyMy40NjdaIiwicHVyIjoiYmxvYl9rZXkifX0=--ad03ce845a6af5739925a6792bd328f388654f2c/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjoyMy40NjdaIiwicHVyIjoiYmxvYl9rZXkifX0=--ad03ce845a6af5739925a6792bd328f388654f2c/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjoyMy40NjdaIiwicHVyIjoiYmxvYl9rZXkifX0=--ad03ce845a6af5739925a6792bd328f388654f2c/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:57:23 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjoyMy40NjdaIiwicHVyIjoiYmxvYl9rZXkifX0=--ad03ce845a6af5739925a6792bd328f388654f2c", "filename"=>"robot"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for ::1 at 2019-12-07 20:57:32 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NzQP5YBUJFNZN+OcanYGUSQ0qu9NfT+Vt9hAVu3jMvSHojLvc/fm+YqNIKBeJ7HT3fBdKZo+VM3uV/fjZPwPZQ==", "post"=>{"description"=>"", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007ffc59736470 @tempfile=#<Tempfile:/var/folders/d9/jyfmfg8d22s484dhnt8zxt3h0000gn/T/RackMultipart20191207-42371-14x5vf7.jpg>, @original_filename="k1.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"k1.jpg\"\r\nContent-Type: image/jpeg\r\n">, "user_id"=>"1"}, "commit"=>"Create Post"}
+[36m  Disk Storage (10.0ms) [0m[32mUploaded file to key: nN4WDUf2sU9eqWWS1K7GL3Mk (checksum: DBmT/2r+f9a+jv053O7e2A==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "nN4WDUf2sU9eqWWS1K7GL3Mk"], ["filename", "k1.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 35228], ["checksum", "DBmT/2r+f9a+jv053O7e2A=="], ["created_at", "2019-12-07 20:57:32.681299"]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (41.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", ""], ["user_id", 1], ["created_at", "2019-12-07 20:57:32.732204"], ["updated_at", "2019-12-07 20:57:32.732204"]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mActiveStorage::Attachment Create (0.8ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 2], ["blob_id", 2], ["created_at", "2019-12-07 20:57:32.734620"]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mPost Update (0.8ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1 WHERE "posts"."id" = $2[0m  [["updated_at", "2019-12-07 20:57:32.736957"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (39.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:4
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 6af2f474-4666-4d23-8d7c-bb4e28e4a858) to Async(default) with arguments: #<GlobalID:0x00007ffc62838a18 @uri=#<URI::GID gid://instagram/ActiveStorage::Blob/2>>
+Redirected to http://localhost:3000/
+Completed 302 Found in 132ms (ActiveRecord: 85.2ms)
+
+
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6af2f474-4666-4d23-8d7c-bb4e28e4a858] Performing ActiveStorage::AnalyzeJob (Job ID: 6af2f474-4666-4d23-8d7c-bb4e28e4a858) from Async(default) with arguments: #<GlobalID:0x00007ffc6281b9b8 @uri=#<URI::GID gid://instagram/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6af2f474-4666-4d23-8d7c-bb4e28e4a858] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: nN4WDUf2sU9eqWWS1K7GL3Mk[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6af2f474-4666-4d23-8d7c-bb4e28e4a858] Skipping image analysis because the mini_magick gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6af2f474-4666-4d23-8d7c-bb4e28e4a858]   [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6af2f474-4666-4d23-8d7c-bb4e28e4a858]   ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6af2f474-4666-4d23-8d7c-bb4e28e4a858]   [1m[36mActiveStorage::Blob Update (2.8ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6af2f474-4666-4d23-8d7c-bb4e28e4a858]   ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Started GET "/" for ::1 at 2019-12-07 20:57:32 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:18
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6af2f474-4666-4d23-8d7c-bb4e28e4a858]   [1m[35m (56.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6af2f474-4666-4d23-8d7c-bb4e28e4a858]   ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mActiveStorage::Attachment Load (7.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [6af2f474-4666-4d23-8d7c-bb4e28e4a858] Performed ActiveStorage::AnalyzeJob (Job ID: 6af2f474-4666-4d23-8d7c-bb4e28e4a858) from Async(default) in 69.85ms
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  Rendered home/index.html.erb within layouts/application (32.4ms)
+Completed 200 OK in 91ms (Views: 76.8ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de2b02dd6d2e2cd13a4e2795fd129e7ced8e4270/k1.jpg" for ::1 at 2019-12-07 20:57:32 +0000
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704/robot.jpg" for ::1 at 2019-12-07 20:57:32 +0000
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de2b02dd6d2e2cd13a4e2795fd129e7ced8e4270", "filename"=>"k1"}
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704", "filename"=>"robot"}
+  [1m[36mActiveStorage::Blob Load (6.1ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (2.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: nN4WDUf2sU9eqWWS1K7GL3Mk (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDI6MzIuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--e5603d893619a514fcf0e0da90f81d892ede136e/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg)[0m
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: 9Bu7MujQ19eXziVQPyh8enQd (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjozMi45NjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--88fd7cfbf6f602ad478120afef8b856be4e47d29/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDI6MzIuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--e5603d893619a514fcf0e0da90f81d892ede136e/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjozMi45NjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--88fd7cfbf6f602ad478120afef8b856be4e47d29/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg
+Completed 302 Found in 17ms (ActiveRecord: 6.1ms)
+
+
+Completed 302 Found in 13ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjozMi45NjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--88fd7cfbf6f602ad478120afef8b856be4e47d29/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:57:32 +0000
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDI6MzIuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--e5603d893619a514fcf0e0da90f81d892ede136e/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg" for ::1 at 2019-12-07 20:57:32 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjozMi45NjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--88fd7cfbf6f602ad478120afef8b856be4e47d29", "filename"=>"robot"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"k1.jpg\"; filename*=UTF-8''k1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDI6MzIuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--e5603d893619a514fcf0e0da90f81d892ede136e", "filename"=>"k1"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:57:38 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:18
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:47
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  Rendered users/show.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 64ms (Views: 55.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDI6MzIuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--e5603d893619a514fcf0e0da90f81d892ede136e/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg" for ::1 at 2019-12-07 20:57:39 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"k1.jpg\"; filename*=UTF-8''k1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDI6MzIuOTY0WiIsInB1ciI6ImJsb2Jfa2V5In19--e5603d893619a514fcf0e0da90f81d892ede136e", "filename"=>"k1"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704/robot.jpg" for ::1 at 2019-12-07 20:57:39 +0000
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704", "filename"=>"robot"}
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.9ms) [0m[34mGenerated URL for file at key: 9Bu7MujQ19eXziVQPyh8enQd (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjozOS4xMDJaIiwicHVyIjoiYmxvYl9rZXkifX0=--1d19c58ac5484afdcec997954d7af52e73a52bf3/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjozOS4xMDJaIiwicHVyIjoiYmxvYl9rZXkifX0=--1d19c58ac5484afdcec997954d7af52e73a52bf3/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg
+Completed 302 Found in 6ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjozOS4xMDJaIiwicHVyIjoiYmxvYl9rZXkifX0=--1d19c58ac5484afdcec997954d7af52e73a52bf3/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:57:39 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMjozOS4xMDJaIiwicHVyIjoiYmxvYl9rZXkifX0=--1d19c58ac5484afdcec997954d7af52e73a52bf3", "filename"=>"robot"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-12-07 20:58:25 +0000
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:58:25 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  Rendered home/index.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 83ms (Views: 78.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704/robot.jpg" for ::1 at 2019-12-07 20:58:25 +0000
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704", "filename"=>"robot"}
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de2b02dd6d2e2cd13a4e2795fd129e7ced8e4270/k1.jpg" for ::1 at 2019-12-07 20:58:25 +0000
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: 9Bu7MujQ19eXziVQPyh8enQd (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzoyNS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--0d8161f18139b9cce0f367b4746047f93d368359/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg)[0m
+Processing by ActiveStorage::BlobsController#show as JPEG
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzoyNS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--0d8161f18139b9cce0f367b4746047f93d368359/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de2b02dd6d2e2cd13a4e2795fd129e7ced8e4270", "filename"=>"k1"}
+Completed 302 Found in 6ms (ActiveRecord: 0.8ms)
+
+
+  [1m[36mActiveStorage::Blob Load (4.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: nN4WDUf2sU9eqWWS1K7GL3Mk (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MjUuOTkwWiIsInB1ciI6ImJsb2Jfa2V5In19--1c4be9bb171d12886c1a02a3cc92b67e4c4fe8f2/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MjUuOTkwWiIsInB1ciI6ImJsb2Jfa2V5In19--1c4be9bb171d12886c1a02a3cc92b67e4c4fe8f2/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg
+Completed 302 Found in 9ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-12-07 20:58:26 +0000
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:58:26 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  Rendered home/index.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 62ms (Views: 57.0ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MjUuOTkwWiIsInB1ciI6ImJsb2Jfa2V5In19--1c4be9bb171d12886c1a02a3cc92b67e4c4fe8f2/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg" for ::1 at 2019-12-07 20:58:26 +0000
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzoyNS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--0d8161f18139b9cce0f367b4746047f93d368359/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:58:26 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"k1.jpg\"; filename*=UTF-8''k1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MjUuOTkwWiIsInB1ciI6ImJsb2Jfa2V5In19--1c4be9bb171d12886c1a02a3cc92b67e4c4fe8f2", "filename"=>"k1"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzoyNS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--0d8161f18139b9cce0f367b4746047f93d368359", "filename"=>"robot"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:58:27 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:18
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  Rendered home/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 60ms (Views: 54.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MjUuOTkwWiIsInB1ciI6ImJsb2Jfa2V5In19--1c4be9bb171d12886c1a02a3cc92b67e4c4fe8f2/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg" for ::1 at 2019-12-07 20:58:27 +0000
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzoyNS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--0d8161f18139b9cce0f367b4746047f93d368359/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:58:27 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"k1.jpg\"; filename*=UTF-8''k1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MjUuOTkwWiIsInB1ciI6ImJsb2Jfa2V5In19--1c4be9bb171d12886c1a02a3cc92b67e4c4fe8f2", "filename"=>"k1"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzoyNS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--0d8161f18139b9cce0f367b4746047f93d368359", "filename"=>"robot"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2019-12-07 20:58:27 +0000
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:9
+  [1m[36mPost Load (1.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:18
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  Rendered home/index.html.erb within layouts/application (21.6ms)
+Completed 200 OK in 129ms (Views: 119.0ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MjUuOTkwWiIsInB1ciI6ImJsb2Jfa2V5In19--1c4be9bb171d12886c1a02a3cc92b67e4c4fe8f2/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg" for ::1 at 2019-12-07 20:58:27 +0000
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzoyNS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--0d8161f18139b9cce0f367b4746047f93d368359/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:58:27 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"k1.jpg\"; filename*=UTF-8''k1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MjUuOTkwWiIsInB1ciI6ImJsb2Jfa2V5In19--1c4be9bb171d12886c1a02a3cc92b67e4c4fe8f2", "filename"=>"k1"}
+Completed 200 OK in 5ms (ActiveRecord: 0.0ms)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzoyNS45ODBaIiwicHVyIjoiYmxvYl9rZXkifX0=--0d8161f18139b9cce0f367b4746047f93d368359", "filename"=>"robot"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/posts" for ::1 at 2019-12-07 20:58:38 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8zwGkQUNXb12lwWvBisywnHQeuwW8hA+snq0c0U1JppDqjub9q6fF6UtxpMyeoVAiBSNKsGxe2br9QPGzCobCw==", "post"=>{"description"=>"", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007ffc60665bc0 @tempfile=#<Tempfile:/var/folders/d9/jyfmfg8d22s484dhnt8zxt3h0000gn/T/RackMultipart20191207-42371-118iw5u.jpg>, @original_filename="k2.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"k2.jpg\"\r\nContent-Type: image/jpeg\r\n">, "user_id"=>"1"}, "commit"=>"Create Post"}
+[36m  Disk Storage (2.1ms) [0m[32mUploaded file to key: U5VBm1JCmpbwnAjtvT3eXhi4 (checksum: XJWs7OcWruIpzgHG46SEsQ==)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["key", "U5VBm1JCmpbwnAjtvT3eXhi4"], ["filename", "k2.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 63874], ["checksum", "XJWs7OcWruIpzgHG46SEsQ=="], ["created_at", "2019-12-07 20:58:38.913108"]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (43.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["description", ""], ["user_id", 1], ["created_at", "2019-12-07 20:58:38.973839"], ["updated_at", "2019-12-07 20:58:38.973839"]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 3], ["blob_id", 3], ["created_at", "2019-12-07 20:58:38.975797"]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[36mPost Update (0.4ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1 WHERE "posts"."id" = $2[0m  [["updated_at", "2019-12-07 20:58:38.977889"], ["id", 3]]
+  ↳ app/controllers/posts_controller.rb:4
+  [1m[35m (40.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:4
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 1875f5fe-9d1d-4152-9dfb-f5a4820aee6f) to Async(default) with arguments: #<GlobalID:0x00007ffc605a4fb0 @uri=#<URI::GID gid://instagram/ActiveStorage::Blob/3>>
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 302 Found in 117ms (ActiveRecord: 94.9ms)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1875f5fe-9d1d-4152-9dfb-f5a4820aee6f] Performing ActiveStorage::AnalyzeJob (Job ID: 1875f5fe-9d1d-4152-9dfb-f5a4820aee6f) from Async(default) with arguments: #<GlobalID:0x00007ffc6058dd38 @uri=#<URI::GID gid://instagram/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1875f5fe-9d1d-4152-9dfb-f5a4820aee6f] [36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: U5VBm1JCmpbwnAjtvT3eXhi4[0m
+Started GET "/" for ::1 at 2019-12-07 20:58:39 +0000
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1875f5fe-9d1d-4152-9dfb-f5a4820aee6f] Skipping image analysis because the mini_magick gem isn't installed
+Processing by HomeController#index as HTML
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1875f5fe-9d1d-4152-9dfb-f5a4820aee6f]   [1m[35m (3.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1875f5fe-9d1d-4152-9dfb-f5a4820aee6f]   ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1875f5fe-9d1d-4152-9dfb-f5a4820aee6f]   [1m[36mActiveStorage::Blob Update (12.7ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1875f5fe-9d1d-4152-9dfb-f5a4820aee6f]   ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  Rendering home/index.html.erb within layouts/application
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1875f5fe-9d1d-4152-9dfb-f5a4820aee6f]   [1m[35m (8.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1875f5fe-9d1d-4152-9dfb-f5a4820aee6f]   ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  ↳ app/views/home/index.html.erb:9
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1875f5fe-9d1d-4152-9dfb-f5a4820aee6f] Performed ActiveStorage::AnalyzeJob (Job ID: 1875f5fe-9d1d-4152-9dfb-f5a4820aee6f) from Async(default) in 59.93ms
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:18
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:23
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:26
+  Rendered home/index.html.erb within layouts/application (25.8ms)
+Completed 200 OK in 95ms (Views: 86.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3affbfbbd4599ce66c7f33c336ee50637f0b5f86/k2.jpg" for ::1 at 2019-12-07 20:58:39 +0000
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704/robot.jpg" for ::1 at 2019-12-07 20:58:39 +0000
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de2b02dd6d2e2cd13a4e2795fd129e7ced8e4270/k1.jpg" for ::1 at 2019-12-07 20:58:39 +0000
+Processing by ActiveStorage::BlobsController#show as JPEG
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3affbfbbd4599ce66c7f33c336ee50637f0b5f86", "filename"=>"k2"}
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704", "filename"=>"robot"}
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: 9Bu7MujQ19eXziVQPyh8enQd (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzozOS4yMjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--d2af45dd3783405122dc8affa8ffc3088d956ee7/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzozOS4yMjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--d2af45dd3783405122dc8affa8ffc3088d956ee7/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+  [1m[36mActiveStorage::Blob Load (5.5ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzozOS4yMjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--d2af45dd3783405122dc8affa8ffc3088d956ee7/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:58:39 +0000
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: U5VBm1JCmpbwnAjtvT3eXhi4 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWVFZXUW0weFNrTnRjR0ozYmtGcWRIWlVNMlZZYUdrMEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekl1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNaTVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MzkuMjQ1WiIsInB1ciI6ImJsb2Jfa2V5In19--1928eedeca357edd0a304892680131df562b72c9/k2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k2.jpg%22%3B+filename%2A%3DUTF-8%27%27k2.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWVFZXUW0weFNrTnRjR0ozYmtGcWRIWlVNMlZZYUdrMEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekl1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNaTVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MzkuMjQ1WiIsInB1ciI6ImJsb2Jfa2V5In19--1928eedeca357edd0a304892680131df562b72c9/k2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k2.jpg%22%3B+filename%2A%3DUTF-8%27%27k2.jpg
+Completed 302 Found in 24ms (ActiveRecord: 5.5ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWVFZXUW0weFNrTnRjR0ozYmtGcWRIWlVNMlZZYUdrMEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekl1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNaTVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MzkuMjQ1WiIsInB1ciI6ImJsb2Jfa2V5In19--1928eedeca357edd0a304892680131df562b72c9/k2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k2.jpg%22%3B+filename%2A%3DUTF-8%27%27k2.jpg" for ::1 at 2019-12-07 20:58:39 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzozOS4yMjZaIiwicHVyIjoiYmxvYl9rZXkifX0=--d2af45dd3783405122dc8affa8ffc3088d956ee7", "filename"=>"robot"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"k2.jpg\"; filename*=UTF-8''k2.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWVFZXUW0weFNrTnRjR0ozYmtGcWRIWlVNMlZZYUdrMEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekl1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNaTVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MzkuMjQ1WiIsInB1ciI6ImJsb2Jfa2V5In19--1928eedeca357edd0a304892680131df562b72c9", "filename"=>"k2"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de2b02dd6d2e2cd13a4e2795fd129e7ced8e4270", "filename"=>"k1"}
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: nN4WDUf2sU9eqWWS1K7GL3Mk (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MzkuMjg0WiIsInB1ciI6ImJsb2Jfa2V5In19--f4d9575c18215e672ff460853cb7e3525be1a2d6/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MzkuMjg0WiIsInB1ciI6ImJsb2Jfa2V5In19--f4d9575c18215e672ff460853cb7e3525be1a2d6/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg
+Completed 302 Found in 5ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MzkuMjg0WiIsInB1ciI6ImJsb2Jfa2V5In19--f4d9575c18215e672ff460853cb7e3525be1a2d6/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg" for ::1 at 2019-12-07 20:58:39 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"k1.jpg\"; filename*=UTF-8''k1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MzkuMjg0WiIsInB1ciI6ImJsb2Jfa2V5In19--f4d9575c18215e672ff460853cb7e3525be1a2d6", "filename"=>"k1"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for ::1 at 2019-12-07 20:58:43 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:3
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:18
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:47
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:49
+  Rendered users/show.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 71ms (Views: 59.2ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWVFZXUW0weFNrTnRjR0ozYmtGcWRIWlVNMlZZYUdrMEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekl1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNaTVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MzkuMjQ1WiIsInB1ciI6ImJsb2Jfa2V5In19--1928eedeca357edd0a304892680131df562b72c9/k2.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k2.jpg%22%3B+filename%2A%3DUTF-8%27%27k2.jpg" for ::1 at 2019-12-07 20:58:43 +0000
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704/robot.jpg" for ::1 at 2019-12-07 20:58:43 +0000
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de2b02dd6d2e2cd13a4e2795fd129e7ced8e4270/k1.jpg" for ::1 at 2019-12-07 20:58:43 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8a83c3f0781c5ef3a13af143cfe0ad24a927e704", "filename"=>"robot"}
+Processing by ActiveStorage::BlobsController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"k2.jpg\"; filename*=UTF-8''k2.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRWVFZXUW0weFNrTnRjR0ozYmtGcWRIWlVNMlZZYUdrMEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekl1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNaTVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6MzkuMjQ1WiIsInB1ciI6ImJsb2Jfa2V5In19--1928eedeca357edd0a304892680131df562b72c9", "filename"=>"k2"}
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--de2b02dd6d2e2cd13a4e2795fd129e7ced8e4270", "filename"=>"k1"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
+  [1m[36mActiveStorage::Blob Load (5.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.9ms) [0m[34mGenerated URL for file at key: 9Bu7MujQ19eXziVQPyh8enQd (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzo0My44MDhaIiwicHVyIjoiYmxvYl9rZXkifX0=--bba51808cbcbe46c8ba059011022eade88052927/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzo0My44MDhaIiwicHVyIjoiYmxvYl9rZXkifX0=--bba51808cbcbe46c8ba059011022eade88052927/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg
+Completed 302 Found in 10ms (ActiveRecord: 5.0ms)
+
+
+  [1m[36mActiveStorage::Blob Load (7.0ms)[0m  [1m[34mSELECT  "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ /Users/amybalmforth/.rvm/gems/ruby-2.4.2/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: nN4WDUf2sU9eqWWS1K7GL3Mk (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6NDMuODEyWiIsInB1ciI6ImJsb2Jfa2V5In19--717475193ded0f00b2727ecb7dea65583f5e5d1e/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6NDMuODEyWiIsInB1ciI6ImJsb2Jfa2V5In19--717475193ded0f00b2727ecb7dea65583f5e5d1e/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg
+Completed 302 Found in 12ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzo0My44MDhaIiwicHVyIjoiYmxvYl9rZXkifX0=--bba51808cbcbe46c8ba059011022eade88052927/robot.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22robot.jpg%22%3B+filename%2A%3DUTF-8%27%27robot.jpg" for ::1 at 2019-12-07 20:58:43 +0000
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6NDMuODEyWiIsInB1ciI6ImJsb2Jfa2V5In19--717475193ded0f00b2727ecb7dea65583f5e5d1e/k1.jpg?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22k1.jpg%22%3B+filename%2A%3DUTF-8%27%27k1.jpg" for ::1 at 2019-12-07 20:58:43 +0000
+Processing by ActiveStorage::DiskController#show as JPEG
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"k1.jpg\"; filename*=UTF-8''k1.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRiazQwVjBSVlpqSnpWVGxsY1ZkWFV6RkxOMGRNTTAxckJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTNhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlhekV1YW5Cbklqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHJNUzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkE9PSIsImV4cCI6IjIwMTktMTItMDdUMjE6MDM6NDMuODEyWiIsInB1ciI6ImJsb2Jfa2V5In19--717475193ded0f00b2727ecb7dea65583f5e5d1e", "filename"=>"k1"}
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"robot.jpg\"; filename*=UTF-8''robot.jpg", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRPVUoxTjAxMWFsRXhPV1ZZZW1sV1VWQjVhRGhsYmxGa0Jqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSTlhVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGljbTlpYjNRdWFuQm5JanNnWm1sc1pXNWhiV1VxUFZWVVJpMDRKeWR5YjJKdmRDNXFjR2NHT3daVU9oRmpiMjUwWlc1MFgzUjVjR1ZKSWc5cGJXRm5aUzlxY0dWbkJqc0dWQT09IiwiZXhwIjoiMjAxOS0xMi0wN1QyMTowMzo0My44MDhaIiwicHVyIjoiYmxvYl9rZXkifX0=--bba51808cbcbe46c8ba059011022eade88052927", "filename"=>"robot"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms)
+
+
