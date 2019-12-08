@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instagram</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-custom">
+      <div class="container">
+        <div class="logo">
+          <a class="navbar-brand" href="<%= root_path %>">
+            <%= fa_stacked_icon "heart"%>
+            winstagram
+          </a>
+        </div>
+        <div class="m-auto">
+          <form class="form-inline search-form">
+            <input class="form-control mr-sm-2" type="search" placeholder="THIS DOES NOTHING" aria-label="Search">
+          </form>
+        </div>
+        <div class="user-section">
+          <% if user_signed_in? %>
+            <a href="<%= user_path(current_user)%>">
+              <i class="fa fa-user"></i>
+            </a>
+          <% else %>
+            <a href="<%= new_user_session_path%>">
+              <i class="fa fa-sign-in"></i>
+            </a>
+          <% end %>
+          <a href="<%= destroy_user_session_path%>" data-method="delete"><i class="fa fa-sign-out"></i></a>
+        </div>
+      </div>
+    </nav>
+    <main class="container" style="min-height: 500px;">
+    <%= yield %>
+    </main>
+    <footer class="container footer">
+      <nav class="navbar d-flex">
+        <ul>
+          <li>MADE WITH LOVE <3
+          </li>
+        </ul>
+      <p>2019 WINSTAGRAM</p>
+      </nav>
+    </footer>
+
+  </body>
+</html>
