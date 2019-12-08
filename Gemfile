@@ -12,6 +12,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
+gem 'kaminari'
 gem 'pg'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

@@ -18,7 +18,11 @@
   <% @posts.each do |post| %>
     <section class="post">
       <div class="user">
-        AVATAR
+        <div class="avatar">
+          <% if post.user.avatar.attached? %>
+            <%= image_tag post.user.avatar %>
+          <% end %>
+        </div>
         <div class="username">
           <%= post.user.username %>
         </div>
@@ -29,4 +33,5 @@
       </div>
     </section>
   <% end %>
+  <%= paginate @posts %>
 </div>
