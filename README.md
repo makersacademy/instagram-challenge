@@ -1,26 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Challenge
 
-Things you may want to cover:
+This project was a weekend challenge completed as part of the Maker's Academy
+12-week bootcamp, to practice using Ruby on Rails.
+
+It's a basic Instagram clone - more detailed instructions are [here](https://github.com/emmavanoss/binstagram/blob/master/CHALLENGE.md).
+
+Setup instructions and user stories are below.
+
+## Setup
 
 * Ruby version
 
 * System dependencies
+run `bundle`
 
 * Configuration
 
-* Database creation
+* Database creation & initialization
 
 `rake db:create`  
 `rails active_record:install`  
 `rails db:migrate`  
 
-
-* Database initialization
-
-* How to run the test suite
+* Tests
 
 * Services (job queues, cache servers, search engines, etc.)
 
