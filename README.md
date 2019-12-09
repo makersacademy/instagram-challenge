@@ -52,6 +52,11 @@ As a user
 So I'm up to date with the latest trends and gossip  
 I want the most recent posts to be shown first  
 ```
+```
+As a site owner  
+To prevent spamming  
+I want only signed-in users to be able to make a post  
+```
 
 To implement:  
 ```

@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authorize, only: [:new]
+
   def index
     @posts = Post.all.order(created_at: :desc)
   end
