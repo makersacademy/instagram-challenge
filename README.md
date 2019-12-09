@@ -5,7 +5,7 @@
 This project was a weekend challenge completed as part of the Maker's Academy
 12-week bootcamp, to practice using Ruby on Rails.
 
-It's a basic Instagram clone - more detailed instructions are [here](https://github.com/emmavanoss/binstagram/blob/master/CHALLENGE.md).
+It's a basic Instagram clone - more detailed instructions are [here](https://github.com/emmavanoss/instagram-challenge/blob/master/CHALLENGE.md).  
 
 Setup instructions and user stories are below.
 
