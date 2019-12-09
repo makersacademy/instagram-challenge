@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Instafeed</h1>
+
+    <% @posts.each do |post| %>
+      <%= current_user.username %>
+      <br>
+      <%= image_tag post.image, :size => "200x150" %>
+      <br>
+      <%= post.caption %>
+      <br>
+      <%= link_to 'Show', post %>
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br>
+      <% post.comments.each do |c| %>
+      <p>
+        <%= p c.comment %>
+      </p>
+      <% end %>
+      <br>
+        <%= form_with(model: [post, post.comments.build ], local: true) do |form| %>
+        <p>
+          <%= form.label :add_comment %><br>
+          <%= form.text_area :comment %>
+        </p>
+        <p>
+          <%= form.submit %>
+        </p>
+        <% end %>
+    <% end %>
+<br>
+
+<%= link_to 'New Post', new_post_path %>

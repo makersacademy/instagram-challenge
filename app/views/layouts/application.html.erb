@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Natstagram</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+      <a class="navbar-brand" href="/">
+        <img src="http://www.myiconfinder.com/uploads/iconsets/256-256-0f9ef369db9a7421e1aabc6ba332b99f-emoticon.png" alt="logo" style="width:40px;">
+      </a>
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="posts/new">New post</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="users/sign_out">Sign out</a>
+        </li>
+        <% end %>
+      </ul>
+    </nav>
+
+    <%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+  </body>
+</html>
