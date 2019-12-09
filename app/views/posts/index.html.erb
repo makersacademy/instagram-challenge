@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1>Instafeed</h1>
 
 <table>
   <thead>
     <tr>
       <th>User</th>
+      <th>Photo</th>
       <th>Caption</th>
       <th colspan="3"></th>
     </tr>
@@ -15,6 +16,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.user_id %></td>
+        <td><%= image_tag post.image.variant(resize_to_limit: [400, 400]) %></td>
         <td><%= post.caption %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
