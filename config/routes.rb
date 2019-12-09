@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
   get 'binstagram/index'
 
   get '/login' => 'sessions#new'
