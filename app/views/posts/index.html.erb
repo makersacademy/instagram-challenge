@@ -1,0 +1,38 @@
+<table>
+  <tbody>
+    <% @posts.each do |post| %>
+        <h2>Post</h2>
+        <div id='postid_<%=post.id%>'style='width:300px; height:300px'><%= image_tag(post.photo, style:'width:60%') %></div>
+        <h4>Caption</h4>
+        <div><%= post.caption %></div>
+        <div>by <%= post.user.email %>
+             <%= post.updated_at %></div>
+        <br>
+        <%= Like.where(post_id: post.id).count %> /
+        <%= link_to "❤️", new_post_like_path(post) %> /
+        <% if post.user == current_user %>
+        <%= link_to 'Edit', edit_post_path(post) %> /
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <h4>Comments</h4>
+        <% post.comments.each do |c| %>
+        <div>
+        <%= c.user %>
+        <%= c.body %>
+        <% end %>
+        </div>
+        <div>
+          <% if current_user %>
+            <h4>Add Comment</h4>
+
+            <%= form_for [post, post.comments.build] do |f| %>
+            <%= f.text_area :body %>
+            <br>
+            <%= f.submit %>
+            <% end %>
+          <% end %>
+          <hr>
+        </div>
+    <% end %>
+  </tbody>
+</table>
