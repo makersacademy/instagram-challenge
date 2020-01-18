@@ -5,6 +5,9 @@
 <p>
   <%= User.find(@fatcat.user_id).email %>: <%= @fatcat.caption %>
 </p>
-
-<%= link_to 'Edit', edit_fatcat_path(@fatcat) %> |
+<% if signed_in? %>
+  <% if current_user.id == @fatcat.user_id %>
+    <%= link_to 'Edit', edit_fatcat_path(@fatcat) %> |
+  <% end %>
+<% end %>
 <%= link_to 'Back', fatcats_path %>

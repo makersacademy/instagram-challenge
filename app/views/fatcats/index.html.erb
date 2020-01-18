@@ -1,4 +1,6 @@
+<% if signed_in? %>
 <%= link_to 'New Fatcat', new_fatcat_path %>
+<% end %>
 
 <p id="notice"><%= notice %></p>
 
@@ -13,8 +15,12 @@
       </tr>
       <tr>
         <td><%= link_to 'Show', fatcat %></td>
-        <td><%= link_to 'Edit', edit_fatcat_path(fatcat) %></td>
-        <td><%= link_to 'Destroy', fatcat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if signed_in? %>
+          <% if current_user.id == fatcat.user_id %>
+            <td><%= link_to 'Edit', edit_fatcat_path(fatcat) %></td>
+            <td><%= link_to 'Destroy', fatcat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
