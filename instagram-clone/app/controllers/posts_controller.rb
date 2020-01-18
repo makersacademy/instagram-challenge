@@ -19,6 +19,11 @@ class PostsController < ApplicationController
     redirect_to "/users/#{session[:id]}"
   end
 
+  def destroy
+    Post.destroy(params[:id])
+    redirect_to "/users/#{session[:id]}"
+  end
+
   private
 
   def post_params
