@@ -1,0 +1,25 @@
+<%= link_to 'New Fatcat', new_fatcat_path %>
+
+<p id="notice"><%= notice %></p>
+
+
+<table>
+
+  <tbody>
+    <% @fatcats.each do |fatcat| %>
+      <th><%= image_tag(fatcat.image) %></th>
+      <tr>
+        <td><%= User.find(fatcat.user_id).email %>: <%= fatcat.caption %></td>
+      </tr>
+      <tr>
+        <td><%= link_to 'Show', fatcat %></td>
+        <td><%= link_to 'Edit', edit_fatcat_path(fatcat) %></td>
+        <td><%= link_to 'Destroy', fatcat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
