@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  resources :users
   resources :sessions
-  root 'sessions#index'
-  
   resources :posts
+
+  root 'sessions#index'
+
+  post 'users/new' => 'users#create'
 end
