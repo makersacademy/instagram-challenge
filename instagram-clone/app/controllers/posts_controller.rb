@@ -9,6 +9,16 @@ class PostsController < ApplicationController
     redirect_to "/users/#{session[:id]}" if new_post.save
   end
 
+  def edit
+    @post = Post.find params[:id]
+  end
+
+  def update
+    post = Post.find params[:id]
+    post.update({ description: params[:description] })
+    redirect_to "/users/#{session[:id]}"
+  end
+
   private
 
   def post_params
