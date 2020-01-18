@@ -12,10 +12,10 @@ RSpec.describe 'viewing posts', type: :feature do
     fill_in 'password', with: '1234icecream'
     click_on 'Log in'
 
-    expect(page).not_to have_css("img[src*='some-dog.jpg']")
+    expect(page).not_to have_css "img[src*='some-dog.jpg']"
     expect(page).not_to have_content '#dogs'
 
-    expect(page).to have_css("img[src*='avocado-on-toast.jpg']")
+    expect(page).to have_css "img[src*='avocado-on-toast.jpg']"
     expect(page).to have_content '#blessed'
 
     visit '/'
@@ -24,10 +24,10 @@ RSpec.describe 'viewing posts', type: :feature do
     fill_in 'password', with: '1234icecream'
     click_on 'Log in'
 
-    expect(page).to have_css("img[src*='some-dog.jpg']")
+    expect(page).to have_css "img[src*='some-dog.jpg']"
     expect(page).to have_content '#dogs'
 
-    expect(page).not_to have_css("img[src*='avocado-on-toast.jpg']")
+    expect(page).not_to have_css "img[src*='avocado-on-toast.jpg']"
     expect(page).not_to have_content '#blessed'
   end
 end
