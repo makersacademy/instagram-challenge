@@ -1,9 +1,7 @@
 class SessionsController < ApplicationController
-  def index
-  end
+  def index; end
 
-  def new
-  end
+  def new; end
 
   def create
     current_user = User.find_by({ email: params[:email] })
