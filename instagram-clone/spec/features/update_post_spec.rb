@@ -9,7 +9,7 @@ RSpec.describe 'updating the description of a post', type: :feature do
     fill_in 'description', with: '#blessed #newyearnewme #healthiswealth #avocados'
     click_on 'Update'
 
-    expect(page).to have_css("img[src*='avocado-on-toast.jpg']")
+    expect(page).to have_css "img[src*='avocado-on-toast.jpg']"
     expect(page).to have_content '#blessed #newyearnewme #healthiswealth #avocados'
   end
 
@@ -23,7 +23,7 @@ RSpec.describe 'updating the description of a post', type: :feature do
     fill_in 'description', with: '#dogs #bestboi #likeforlike #woof'
     click_on 'Update'
 
-    expect(page).to have_css("img[src*='some-dog.jpg']")
+    expect(page).to have_css "img[src*='some-dog.jpg']"
     expect(page).to have_content '#dogs #bestboi #likeforlike #woof'
   end
 end
