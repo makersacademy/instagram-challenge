@@ -1,6 +1,38 @@
 Instagram Challenge
 ===================
 
+## User Stories
+
+```
+As a user
+So I can join the community
+I would like to sign up
+```
+
+```
+As a user
+So I can post on my own account
+I would like to sign in
+```
+
+```
+As a user
+So I can share what is going on in my life
+I would like to post pictures
+```
+
+```
+As a user
+So I can create a discussion
+I would like to write comments on pictures
+```
+
+```
+As a user
+So I can show my appreciation
+I would like to be able to like pictures
+```
+
 ## Instructions
 
 * Challenge time: one weekend
