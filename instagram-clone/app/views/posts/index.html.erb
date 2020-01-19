@@ -1,4 +1,7 @@
 <h1>Main Feed</h1>
+
+<%= link_to 'New Post', '/posts/new' %>
+<%= link_to 'Profile', "/users/#{session[:id]}" %>
 <%= link_to 'Log out', "/sessions/#{session[:id]}", method: :delete %>
 
 <% if @posts %>
@@ -13,6 +16,35 @@
     <% if session[:id] == @user.id %>
       <%= link_to 'edit description', "/posts/#{post.id}/edit" %>
       <%= link_to 'delete', "/posts/#{post.id}", method: :delete %>
+    <% end %>
+
+    <%= 
+      likes = Like.where({ post_id: post.id})
+      first_user = User.find(likes[0].user_id).first_name if likes[0]
+      second_user = User.find(likes[1].user_id).first_name if likes[1]
+
+      if likes.any? { |like| like.user_id == session[:id] }
+        first_user = 'You'
+        other_likes = likes.select { |like| like.user_id != session[:id] }
+        second_user = User.find(other_likes[0].user_id).first_name if other_likes[0]
+      end
+      
+      case likes.length
+      when 0
+      when 1
+        "#{first_user} liked this post"
+      when 2
+        "#{first_user} and #{second_user} liked this post"
+      else
+        "#{first_user} and #{likes.length - 1} others liked this post"
+      end
+    %> 
+
+    <% @existing_like = Like.find_by({ user_id: session[:id], post_id: post.id }) %>
+    <% if @existing_like %>
+      <%= link_to 'Unlike', "/likes/#{@existing_like.id}", method: :delete %>
+    <% else %>
+      <%= link_to 'Like', "/likes/#{post.id}", method: :post %>
     <% end %>
 
     <% @comments.each do |comment| %>
