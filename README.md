@@ -31,3 +31,5 @@ I'd like to see posts displayed in chronological order
 * As a user,
 So that the posts won't all blur into one,
 I'd like to have line breakers on the page
+
+* Test, test
