@@ -2,11 +2,15 @@ class UsersController < ApplicationController
   def new; end
 
   def create
+    
     new_user = User.new user_params
 
-    if new_user.save
+    if validate_signup && new_user.save
       session[:id] = new_user.id
       redirect_to "/users/#{session[:id]}"
+    else
+      set_signup_error
+      redirect_back fallback_location: root_path
     end
   end
 
@@ -24,5 +28,19 @@ class UsersController < ApplicationController
       email: params[:email],
       password: params[:password],
     }
+  end
+
+  def validate_signup
+    params[:email] =~ URI::MailTo::EMAIL_REGEXP &&
+      params[:password] == params[:password_confirmation]
+  end
+
+  def set_signup_error
+    if User.find_by({ email: params[:email] })
+      session[:existing_email] = true
+      session[:doubled_email] = params[:email]
+    elsif !validate_signup
+      session[:invalid_signup] = true
+    end
   end
 end
