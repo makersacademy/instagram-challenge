@@ -18,6 +18,7 @@
       <% @comment_user = User.find(comment.user_id) %>
       <%= @comment_user.first_name %> ~ <%= comment.body %>
       <p>Posted on <%= comment.created_at.strftime '%d %b %Y at %H:%M'%></p>
+      <%= link_to 'delete comment', "/comments/#{comment.id}", method: :delete %>
     <% end %>
 
     <%= form_for :comment, url: "/comments" do |f| %>
