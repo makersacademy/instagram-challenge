@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :authorised, except: [:new, :create]
-
+  before_action :logged_in, only: [:index, :new, :create]
   def new; end
+
+  def index; end
 
   def create
     new_user = User.new user_params
@@ -23,12 +25,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    {
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      email: params[:email],
-      password: params[:password],
-    }
+    params.permit(:first_name, :last_name, :email, :password)
   end
 
   def validate_signup
@@ -47,5 +44,9 @@ class UsersController < ApplicationController
 
   def authorised
     redirect_to root_path unless session[:id]
+  end
+
+  def logged_in
+    redirect_to posts_path if session[:id]
   end
 end

@@ -28,6 +28,14 @@ def sign_up_elodie
   click_on 'Submit'
 end
 
+def log_in_elodie
+  visit '/'
+  click_on 'Log in'
+  fill_in 'email', with: 'elodie@example.com'
+  fill_in 'password', with: '1234icecream'
+  click_on 'Log in'
+end
+
 def sign_up_leina
   visit '/'
   click_on 'Sign up'
