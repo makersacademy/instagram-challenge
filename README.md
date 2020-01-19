@@ -1,40 +1,33 @@
-Instagram Challenge
-===================
+## User Stories
 
-## Instructions
+* As a user,
+so that I can use Finstagram,
+I would like to be able to sign up
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* As a user,
+so that I can win at social media,
+I would like to sign in to Finstagram
 
-## Task
+* As a user,
+so that I can show the world beautiful the world is,
+I want to share pictures of the world and all the things in it.
 
-Build Instagram: Simple huh!
+* As a user,
+so that I can quickly remove that embarrassing picture,
+I want to delete a post (picture or message?)
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+* As a user,
+so that I can change that average photo to an even better one,
+I would like to be able to edit posts,
 
-Bonus if you can add filters!
+* As a user,
+So that I can see when people posted pictures,
+I'd like to see the date and time displayed with each post
 
-## How to start
+* As a user,
+So that I can try to cling on some sense of time,
+I'd like to see posts displayed in chronological order
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+* As a user,
+So that the posts won't all blur into one,
+I'd like to have line breakers on the page
