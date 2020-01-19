@@ -38,3 +38,15 @@ gem "rubocop-rails"
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
+
+## steps
+
+```
+yarn install --check-files
+bundle
+rails db:create
+rails db:migrate
+
+bundle exec rspec
+rubocop
+```
