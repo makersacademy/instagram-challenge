@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authorised
+  
   def index
     @posts = Post.all
   end
@@ -34,5 +36,9 @@ class PostsController < ApplicationController
       description: params[:description],
       user_id: session[:id],
     }
+  end
+
+  def authorised
+    redirect_to root_path unless session[:id]
   end
 end

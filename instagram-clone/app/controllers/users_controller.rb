@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+  before_action :authorised, except: [:new, :create]
+
   def new; end
 
   def create
-    
     new_user = User.new user_params
 
     if validate_signup && new_user.save
@@ -42,5 +43,9 @@ class UsersController < ApplicationController
     elsif !validate_signup
       session[:invalid_signup] = true
     end
+  end
+
+  def authorised
+    redirect_to root_path unless session[:id]
   end
 end

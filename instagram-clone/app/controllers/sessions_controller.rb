@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :authorised, except: [:index, :new, :create]
+
   def index; end
 
   def new; end
@@ -17,5 +19,9 @@ class SessionsController < ApplicationController
   def destroy
     session.delete :id
     redirect_to root_path
+  end
+
+  def authorised
+    redirect_to root_path unless session[:id]
   end
 end
