@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstagramChallenge</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <section id="navbar">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+            <% if user_signed_in? %>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/posts">Posts</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/posts/new">Add new post</a>
+            </li>
+
+            <% end %>
+          </ul>
+
+          <ul class="navbar-nav nav-item my-2 my-lg-0">
+
+            <% if user_signed_in? %>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/">Signed in as: <%= current_user.username %></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" id='navbar_log_out' href="/users/sign_out" data-method='delete'>Log out</a>
+            </li>
+            
+            <% else %>
+
+            <li class="nav-item">
+              <a class="nav-link" id='navbar_sign_up' href="/users/sign_up">Sign up</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" id='navbar_log_in' href="/users/sign_in">Log in</a>
+            </li>
+
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </section>
+
+    <section id="mainbody">
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <%= yield %>
+
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
