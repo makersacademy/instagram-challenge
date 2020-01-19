@@ -7,4 +7,12 @@
   Password: <%= f.password_field :password, name: 'password' %><br />
   Confirm Password: <%= f.password_field :password_confirmation, name: 'password_confirmation' %><br />
   <%= f.submit :Submit, name: 'signup' %><br />
+
+  <% if session.delete :invalid_signup %>
+    <p>Invalid credentials, please try again</p>
+  <% end %>
+
+  <% if session.delete :existing_email %>
+    <p>The email <%= session[:doubled_email] %> is already in use</p>
+  <% end %>
 <% end %>
