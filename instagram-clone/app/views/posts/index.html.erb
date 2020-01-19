@@ -1,4 +1,5 @@
 <h1>Main Feed</h1>
+<%= link_to 'Log out', "/sessions/#{session[:id]}", method: :delete %>
 
 <% if @posts %>
   <% @posts.each.with_index do |post, i| %>
@@ -18,7 +19,10 @@
       <% @comment_user = User.find(comment.user_id) %>
       <%= @comment_user.first_name %> ~ <%= comment.body %>
       <p>Posted on <%= comment.created_at.strftime '%d %b %Y at %H:%M'%></p>
-      <%= link_to 'delete comment', "/comments/#{comment.id}", method: :delete %>
+
+      <% if [@user.id, @comment_user.id].include? session[:id] %>
+        <%= link_to 'delete comment', "/comments/#{comment.id}", method: :delete %>
+      <% end %>
     <% end %>
 
     <%= form_for :comment, url: "/comments" do |f| %>
