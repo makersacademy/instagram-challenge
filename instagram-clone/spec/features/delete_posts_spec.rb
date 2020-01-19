@@ -22,4 +22,12 @@ RSpec.describe 'deleting a post', type: :feature do
     click_on 'Home'
     expect(page).not_to have_content 'delete'
   end
+
+  it 'is not possible if the user is not the owner of the post' do
+    click_on 'Log out'
+
+    sign_up_elodie
+    click_on 'Home'
+    expect(page).not_to have_content 'delete'
+  end
 end
