@@ -8,14 +8,18 @@
 <table>
 
   <tbody>
-    <% @fatcats.each do |fatcat| %>
+    <% @fatcats.reverse.each do |fatcat| %>
       <th><%= image_tag(fatcat.image) %></th>
       <tr>
         <td><%= User.find(fatcat.user_id).email %>: <%= fatcat.caption %></td>
       </tr>
       <tr>
+        <td>Posted at <%= DateTime.parse(fatcat.created_at.to_s).strftime("%k:%M on %d %B %Y") %></td>
+      </tr>
+      <tr>
         <td><%= link_to 'Show', fatcat %></td>
         <% if signed_in? %>
+          <td><%= link_to 'Comment', new_comment_path %></td>
           <% if current_user.id == fatcat.user_id %>
             <td><%= link_to 'Edit', edit_fatcat_path(fatcat) %></td>
             <td><%= link_to 'Destroy', fatcat, method: :delete, data: { confirm: 'Are you sure?' } %></td>

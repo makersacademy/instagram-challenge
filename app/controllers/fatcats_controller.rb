@@ -10,6 +10,7 @@ class FatcatsController < ApplicationController
   # GET /fatcats/1
   # GET /fatcats/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /fatcats/new
