@@ -3,7 +3,7 @@ require_relative 'web_helpers'
 RSpec.describe 'logging in', type: :feature do
   before do
     sign_up_sam
-    visit '/'
+    click_on 'Log out'
     click_on 'Log in'
   end
 

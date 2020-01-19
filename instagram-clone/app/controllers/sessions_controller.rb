@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :authorised, except: [:index, :new, :create]
+  before_action :logged_in, only: [:index, :new, :create]
 
   def index; end
 
@@ -23,5 +24,9 @@ class SessionsController < ApplicationController
 
   def authorised
     redirect_to root_path unless session[:id]
+  end
+
+  def logged_in
+    redirect_to posts_path if session[:id]
   end
 end
