@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag(@fatcat.image) %>
+
+<p>
+  <%= User.find(@fatcat.user_id).email %>: <%= @fatcat.caption %><br>
+  Posted at <%= DateTime.parse(@fatcat.created_at.to_s).strftime("%k:%M on %d %B %Y") %>
+</p>
+<% if signed_in? %>
+  <% if current_user.id == @fatcat.user_id %>
+    <%= link_to 'Edit', edit_fatcat_path(@fatcat) %> |
+  <% end %>
+<% end %>
+<%= link_to 'Back', fatcats_path %>
+<% if signed_in? %>
+  
+  <%= form_with(model: @comment, local: true, url: comments_path) do |form| %>
+    <% if @comment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+        <ul>
+          <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= hidden_field_tag "comment[user_id]", "#{current_user.id}" %>
+    <%= hidden_field_tag "comment[fatcat_id]", @fatcat.id %>
+
+    <div class="field">
+      <%= form.text_area :message %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+<% end %>
+<% if Comment.all.length > 0 %>
+  <% Comment.where(fatcat_id: @fatcat.id).reverse.each do |comment| %>
+    <ul>
+      <li><%= User.find(comment.user_id).email %>: <%= comment.message %><br>
+      Posted at <%= DateTime.parse(comment.created_at.to_s).strftime("%k:%M on %d %B %Y") %></li>
+      <% if signed_in? %>
+        <% if current_user.id == comment.user_id %>
+          <%= link_to 'Edit', edit_comment_path(comment) %>
+          <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>
+

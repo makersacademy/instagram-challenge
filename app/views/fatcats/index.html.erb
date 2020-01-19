@@ -1,0 +1,57 @@
+<% if signed_in? %>
+<%= link_to 'New Fatcat', new_fatcat_path %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+
+<table>
+
+  <tbody>
+    <% @fatcats.reverse.each do |fatcat| %>
+      <th><%= image_tag(fatcat.image, :class => "fatcat")%></th>
+      <tr>
+        <td><%= User.find(fatcat.user_id).email %>: <%= fatcat.caption %></td>
+      </tr>
+      <tr>
+        <td>Posted at <%= DateTime.parse(fatcat.created_at.to_s).strftime("%k:%M on %d %B %Y") %></td>
+      </tr>
+      <tr>
+        <td>
+          <% if signed_in? %>
+            <% if Like.where(user_id: current_user.id, fatcat_id: fatcat.id).length == 0 %>
+              <%= form_with(model: @like, local: true, url: likes_path) do |like| %>
+              <%= hidden_field_tag "like[user_id]", current_user.id %>
+              <%= hidden_field_tag "like[fatcat_id]", fatcat.id %>
+              <%= like.submit 'Like' %>
+              <% end %>
+            <% else %>
+              <%= form_with(model: @like, local: true, :method => :delete, url: like_path({id: Like.where(user_id: current_user.id, fatcat_id: fatcat.id)[0].id})) do |like| %>
+              <%= hidden_field_tag "like[user_id]", current_user.id %>
+              <%= hidden_field_tag "like[fatcat_id]", fatcat.id %>
+              
+              <%= like.submit 'Unlike' %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </td>
+        <td class="likes">
+          <%= Like.where(fatcat_id: fatcat.id).length %> <i class="fas fa-thumbs-up"></i>
+        </td>
+      </tr>
+      <tr>
+        <td><%= link_to 'Show', fatcat %></td>
+        <% if signed_in? %>
+          <% if current_user.id == fatcat.user_id %>
+            <td><%= link_to 'Edit', edit_fatcat_path(fatcat) %></td>
+            <td><%= link_to 'Destroy', fatcat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
