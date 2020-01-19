@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:id])
+    @user = User.find(params[:id])
     @user_posts = Post.where({ user_id: @user.id })
   end
 

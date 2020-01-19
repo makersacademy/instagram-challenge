@@ -1,7 +1,12 @@
 <h1><%= @user.first_name %>'s feed</h1>
+
 <%= link_to 'New Post', '/posts/new' %>
 <%= link_to 'Log out', "/sessions/#{@user.id}", method: :delete %>
 <%= link_to 'Home', '/posts' %>
+
+<% if @user.id != session[:id] %>
+  <%= link_to 'Profile', "/users/#{session[:id]}" %>
+<% end %>
 
 <% if @user_posts %>
   <% @user_posts.each do |post| %>

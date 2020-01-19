@@ -21,7 +21,7 @@ RSpec.describe 'creating a post', type: :feature do
     scenario 'a user wants to see their name next to their posts' do
       click_on 'Home'
 
-      expect(page).to have_content 'posted by Sam Folo'
+      expect(page).to have_content 'posted by Sam'
     end
 
     describe 'posted at' do

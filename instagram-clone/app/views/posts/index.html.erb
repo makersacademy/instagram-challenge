@@ -11,7 +11,7 @@
 
     <p><%= image_tag(post.image) %></p>
     <p><%= post.description %></p>
-    <%= "posted by #{@user.first_name} #{@user.last_name} on #{post.created_at.strftime '%d %b %Y at %H:%M'}" %>
+    <%= "posted by" %> <%= link_to @user.first_name, "users/#{@user.id}" %> <%= "on #{post.created_at.strftime '%d %b %Y at %H:%M'}" %>
     
     <% if session[:id] == @user.id %>
       <%= link_to 'edit description', "/posts/#{post.id}/edit" %>
