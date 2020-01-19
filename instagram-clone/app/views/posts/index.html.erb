@@ -19,10 +19,13 @@
       likes = Like.where({ post_id: post.id})
       
       case likes.length
+      when 0
       when 1
-        "#{User.find(likes[0].user_id).first_name} liked your post"
+        "#{User.find(likes[0].user_id).first_name} liked this post"
       when 2
-        "#{User.find(likes[0].user_id).first_name} and #{User.find(likes[1].user_id).first_name} liked your post"
+        "#{User.find(likes[0].user_id).first_name} and #{User.find(likes[1].user_id).first_name} liked this post"
+      else
+        "#{User.find(likes[0].user_id).first_name} and #{likes.length - 1} others liked this post"
       end
     %> 
 

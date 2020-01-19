@@ -10,23 +10,37 @@ RSpec.describe 'liking a post', type: :feature do
   end
 
   scenario 'a user likes a post' do
-    expect(page).to have_content 'Elodie liked your post'
+    expect(page).to have_content 'Elodie liked this post'
   end
 
   scenario 'a user unlikes a post' do
     click_on 'Unlike'
 
     expect(page).to have_content 'Like'
-    expect(page).not_to have_content 'Elodie liked your post'
+    expect(page).not_to have_content 'Elodie liked this post'
   end
   
-  scenario 'two users like a post' do
-    click_on 'Log out'
+  describe 'multiple likes' do
+    before do
+      click_on 'Log out'
 
-    sign_up_leina
-    click_on 'Home'
-    click_on 'Like'
+      sign_up_leina
+      click_on 'Home'
+      click_on 'Like'
+    end
 
-    expect(page).to have_content 'Elodie and Leina liked your post'
+    scenario 'two users like a post' do
+      expect(page).to have_content 'Elodie and Leina liked this post'
+    end
+
+    scenario 'more than two users like a post' do
+      click_on 'Log out'
+
+      sign_up_emmanuel
+      click_on 'Home'
+      click_on 'Like'
+
+      expect(page).to have_content 'Elodie and 2 others liked this post'
+    end
   end
 end
