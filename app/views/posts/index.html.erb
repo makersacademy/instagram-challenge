@@ -1,0 +1,23 @@
+<div>
+  <h1>Viewing all posts</h1>
+</div>
+
+<div>
+  <%= button_to "New post", new_post_path, method: :get %>
+</div>
+
+<div>
+  <ul id="posts">
+    <% @posts.each do |post| %>
+      <li>
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="<%= post.image_url %>" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= post.text %></h5>
+            <%= button_to "New comment", new_post_comment_path(post.id), method: :get %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
