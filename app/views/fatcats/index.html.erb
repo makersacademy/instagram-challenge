@@ -17,6 +17,29 @@
         <td>Posted at <%= DateTime.parse(fatcat.created_at.to_s).strftime("%k:%M on %d %B %Y") %></td>
       </tr>
       <tr>
+        <td>
+          <% if signed_in? %>
+            <% if Like.where(user_id: current_user.id, fatcat_id: fatcat.id).length == 0 %>
+              <%= form_with(model: @like, local: true, url: likes_path) do |like| %>
+              <%= hidden_field_tag "like[user_id]", current_user.id %>
+              <%= hidden_field_tag "like[fatcat_id]", fatcat.id %>
+              <%= like.submit 'Like' %>
+              <% end %>
+            <% else %>
+              <%= form_with(model: @like, local: true, :method => :delete, url: like_path({id: Like.where(user_id: current_user.id, fatcat_id: fatcat.id)[0].id})) do |like| %>
+              <%= hidden_field_tag "like[user_id]", current_user.id %>
+              <%= hidden_field_tag "like[fatcat_id]", fatcat.id %>
+              
+              <%= like.submit 'Unlike' %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </td>
+        <td class="likes">
+          <%= Like.where(fatcat_id: fatcat.id).length %> <i class="fas fa-thumbs-up"></i>
+        </td>
+      </tr>
+      <tr>
         <td><%= link_to 'Show', fatcat %></td>
         <% if signed_in? %>
           <td><%= link_to 'Comment', new_comment_path %></td>

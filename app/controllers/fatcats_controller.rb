@@ -5,6 +5,7 @@ class FatcatsController < ApplicationController
   # GET /fatcats.json
   def index
     @fatcats = Fatcat.all
+    @like = Like.new
   end
 
   # GET /fatcats/1
