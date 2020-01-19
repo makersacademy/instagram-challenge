@@ -15,6 +15,18 @@
       <%= link_to 'delete', "/posts/#{post.id}", method: :delete %>
     <% end %>
 
+    <%= 
+      like = Like.all[0]
+      if like
+        User.find(like.user_id).first_name
+      end
+    %> liked your post
+
+    <%= form_for :like, url: "/likes" do |f| %>
+      <%= hidden_field_tag :post_id, post.id %>
+      <%= f.submit :Like, name: 'like' %><br />
+    <% end %>
+
     <% @comments.each do |comment| %>
       <% @comment_user = User.find(comment.user_id) %>
       <%= @comment_user.first_name %> ~ <%= comment.body %>
