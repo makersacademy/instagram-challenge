@@ -42,8 +42,8 @@ RSpec.describe 'creating a post', type: :feature do
       scenario 'a user wants to see the time their posts were created on the main feed' do
         click_on 'Home'
 
-        expect(page).to have_content "on #{now.strftime '%d %b %Y at %H:%M'}"
-        expect(page).to have_content "on #{ten_minutes_from_now.strftime '%d %b %Y at %H:%M'}"
+        expect(page).to have_content "posted by Sam #{now.strftime '%d %b %Y at %H:%M'}"
+        expect(page).to have_content "posted by Sam #{ten_minutes_from_now.strftime '%d %b %Y at %H:%M'}"
       end
     end
   end

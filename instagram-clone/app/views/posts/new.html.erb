@@ -1,11 +1,27 @@
-<h1>Create a new post</h1>
+<div id='navbar'>
+  <div id='leftlinks'>
+    <%= link_to 'Home', '/posts', class: 'navlink' %>
+    <%= link_to 'Profile', "/users/#{session[:id]}", class: 'navlink' %>
+  </div>
 
-<%= link_to 'Home', '/posts' %>
-<%= link_to 'Profile', "/users/#{session[:id]}" %>
-<%= link_to 'Log out', "/sessions/#{session[:id]}", method: :delete %>
+  <div id='rightlinks'>
+    <%= link_to 'Log out', "/sessions/#{session[:id]}", method: :delete, class: 'navlink' %>
+  </div>
+</div>
 
-<%= form_for :post do |f| %>
-  Image: <%= f.file_field :image, name: 'image' %><br />
-  Description: <%= f.text_field :description, name: 'description' %><br />
-  <%= f.submit :Share, name: 'share' %><br />
-<% end %>
+<div id='container' class='main-site'>
+  <div id='page'>
+    <div id='form-container'>
+      <h1 id='posts-heading', class='heading'>Create a new post</h1>
+
+      <%= form_for :post do |f| %>
+        <label class='file-container'>
+          <h2 id='file-upload-label'>Upload a file<h2>
+          <%= f.file_field :image, name: 'image', required: true, id: 'upload-image' %><br />
+        </label>
+        <%= f.text_area :description, name: 'description', required: true, id: 'add-post-description', placeholder: 'Add a description' %><br />
+        <%= f.submit :Share, name: 'share', id: 'upload-photo' %><br />
+      <% end %>
+    </div>
+  </div>
+</div>
