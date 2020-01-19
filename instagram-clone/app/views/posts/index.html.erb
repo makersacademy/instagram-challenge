@@ -1,16 +1,31 @@
 <h1>Main Feed</h1>
 
 <% if @posts %>
-  <% @posts.each do |post| %>
+  <% @posts.each.with_index do |post, i| %>
     <% @user = User.find(post.user_id) %>
+    <% @comments = Comment.where({ post_id: post.id }) %>
 
     <p><%= image_tag(post.image) %></p>
     <p><%= post.description %></p>
     <%= "posted by #{@user.first_name} #{@user.last_name} on #{post.created_at.strftime '%d %b %Y at %H:%M'}" %>
+    
     <% if session[:id] == @user.id %>
       <%= link_to 'edit description', "/posts/#{post.id}/edit" %>
       <%= link_to 'delete', "/posts/#{post.id}", method: :delete %>
     <% end %>
+
+    <% @comments.each do |comment| %>
+      <% @comment_user = User.find(comment.user_id) %>
+      <%= @comment_user.first_name %> ~ <%= comment.body %>
+      <p>Posted on <%= comment.created_at.strftime '%d %b %Y at %H:%M'%></p>
+    <% end %>
+
+    <%= form_for :comment, url: "/comments" do |f| %>
+      Leave a comment: <%= f.text_field :body, name: "body" %><br />
+      <%= hidden_field_tag :post_id, post.id %>
+      <%= f.submit :Post, name: 'post' %><br />
+    <% end %>
+
   <% end %>
 <% else %>
   <p>No posts in the world yet..</p>
