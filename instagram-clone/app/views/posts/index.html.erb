@@ -16,15 +16,21 @@
     <% end %>
 
     <%= 
-      like = Like.all[0]
-      "#{User.find(like.user_id).first_name} liked your post" if like
+      likes = Like.where({ post_id: post.id})
+      
+      case likes.length
+      when 1
+        "#{User.find(likes[0].user_id).first_name} liked your post"
+      when 2
+        "#{User.find(likes[0].user_id).first_name} and #{User.find(likes[1].user_id).first_name} liked your post"
+      end
     %> 
 
     <% @existing_like = Like.find_by({ user_id: session[:id] }) %>
     <% if @existing_like %>
       <%= link_to 'Unlike', "/likes/#{@existing_like.id}", method: :delete %>
     <% else %>
-      <%= link_to 'Like', '/likes', method: :post, post_id: post.id %>
+      <%= link_to 'Like', "/likes/#{post.id}", method: :post %>
     <% end %>
 
     <% @comments.each do |comment| %>

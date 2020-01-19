@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   post 'sessions/new' => 'sessions#create'
 
   post 'posts/new' => 'posts#create'
+
+  post 'likes/:id' => 'likes#create'
 end

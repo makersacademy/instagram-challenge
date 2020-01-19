@@ -19,4 +19,14 @@ RSpec.describe 'liking a post', type: :feature do
     expect(page).to have_content 'Like'
     expect(page).not_to have_content 'Elodie liked your post'
   end
+  
+  scenario 'two users like a post' do
+    click_on 'Log out'
+
+    sign_up_leina
+    click_on 'Home'
+    click_on 'Like'
+
+    expect(page).to have_content 'Elodie and Leina liked your post'
+  end
 end
