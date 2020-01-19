@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authorised
   
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc)
   end
 
   def new; end

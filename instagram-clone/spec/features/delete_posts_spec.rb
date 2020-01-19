@@ -6,7 +6,7 @@ RSpec.describe 'deleting a post', type: :feature do
 
   scenario 'a user wants to delete a post' do
     post_picture_of_dog
-    all('a', text: 'delete')[0].click
+    all('a', text: 'delete')[1].click
 
     expect(page).to have_css "img[src*='some-dog.jpg']"
     expect(page).to have_content '#dogs'
