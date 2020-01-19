@@ -17,14 +17,14 @@
 
     <%= 
       like = Like.all[0]
-      if like
-        User.find(like.user_id).first_name
-      end
-    %> liked your post
+      "#{User.find(like.user_id).first_name} liked your post" if like
+    %> 
 
-    <%= form_for :like, url: "/likes" do |f| %>
-      <%= hidden_field_tag :post_id, post.id %>
-      <%= f.submit :Like, name: 'like' %><br />
+    <% @existing_like = Like.find_by({ user_id: session[:id] }) %>
+    <% if @existing_like %>
+      <%= link_to 'Unlike', "/likes/#{@existing_like.id}", method: :delete %>
+    <% else %>
+      <%= link_to 'Like', '/likes', method: :post, post_id: post.id %>
     <% end %>
 
     <% @comments.each do |comment| %>
