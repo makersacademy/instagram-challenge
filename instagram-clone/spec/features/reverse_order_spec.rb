@@ -10,6 +10,6 @@ RSpec.describe 'reverse order', type: :feature do
     end
 
     # Dog post should be at the top of the feed
-    expect(page).to have_content "Log out Home\n#dogs"
+    expect(page).to have_content "Log out\nSam's feed\n#dogs"
   end
 end
