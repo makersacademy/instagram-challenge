@@ -1,0 +1,27 @@
+<div id='navbar'>
+  <div id='leftlinks'>
+    <%= link_to 'Home', '/posts', class: 'navlink' %>
+    <%= link_to 'Profile', "/users/#{session[:id]}", class: 'navlink' %>
+  </div>
+
+  <div id='rightlinks'>
+    <%= link_to 'Log out', "/sessions/#{session[:id]}", method: :delete, class: 'navlink' %>
+  </div>
+</div>
+
+<div id='container' class='main-site' style='background-color: transparent;'>
+  <div id='page'>
+    <div id='form-container'>
+      <h1 id='heading', class='heading' style='font-size: 85px;'>Create a new post</h1>
+
+      <%= form_for :post do |f| %>
+        <label class='file-container'>
+          <h2 id='file-upload-label'>Upload a file<h2>
+          <%= f.file_field :image, name: 'image', required: true, id: 'upload-image' %><br />
+        </label>
+        <%= f.text_area :description, name: 'description', required: true, id: 'add-post-description', placeholder: 'Add a description' %><br />
+        <%= f.submit :Share, name: 'share', id: 'upload-photo' %><br />
+      <% end %>
+    </div>
+  </div>
+</div>

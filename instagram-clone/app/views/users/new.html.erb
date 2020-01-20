@@ -1,0 +1,28 @@
+<div id='navbar'>
+  <div id='leftlinks'>
+    <%= link_to 'Home', '/', class: 'navlink' %>
+  </div>
+
+  <div id='rightlinks'></div>
+</div>
+
+<div id='container'>
+  <h1 id='heading' style='font-size: 80px;'>Join Pinstagram</h1>
+
+  <%= form_for :user do |f| %>
+    <%= f.text_field :first_name, name: 'first_name', required: true, class: 'sign-up-field', placeholder: 'First Name' %><br />
+    <%= f.text_field :last_name, name: 'last_name', required: true, class: 'sign-up-field', placeholder: 'Last Name' %><br />
+    <%= f.text_field :email, name: 'email', required: true, class: 'sign-up-field', placeholder: 'Email' %><br />
+    <%= f.password_field :password, name: 'password', required: true, class: 'sign-up-field', placeholder: 'Password' %><br />
+    <%= f.password_field :password_confirmation, name: 'password_confirmation', required: true, class: 'sign-up-field', placeholder: 'Confirm Password' %><br />
+    <%= f.submit :Submit, name: 'signup', id: 'sign-up-button' %><br />
+
+    <% if session.delete :invalid_signup %>
+      <p id='error-message'>Invalid credentials, please try again</p>
+    <% end %>
+
+    <% if session.delete :existing_email %>
+      <p>The email <%= session[:doubled_email] %> is already in use</p>
+    <% end %>
+  <% end %>
+</div>

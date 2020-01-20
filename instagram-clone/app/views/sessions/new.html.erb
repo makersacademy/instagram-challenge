@@ -1,0 +1,21 @@
+<div id='navbar'>
+  <div id='leftlinks'>
+    <%= link_to 'Home', '/', class: 'navlink' %>
+  </div>
+
+  <div id='rightlinks'></div>
+</div>
+
+<div id='container'>
+  <h1 id='heading' style='font-size: 80px;'>Welcome back</h1>
+
+  <%= form_for :session do |f| %>
+    <%= f.text_field :email, name: 'email', required: true, class: 'sign-up-field', placeholder: 'Email' %><br />
+    <%= f.password_field :password, name: 'password', required: true, class: 'sign-up-field', placeholder: 'Password' %><br />
+    <%= f.submit :'Log in', name: 'log_in', id: 'log-in-button' %><br />
+  <% end %>
+
+  <% if session.delete :invalid_login %>
+    <p id='error-message'>Invalid username or password</p>
+  <% end %>
+</div>
