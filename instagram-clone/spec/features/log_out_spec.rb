@@ -3,6 +3,6 @@ RSpec.describe 'logging out', type: :feature do
     sign_up_sam
     click_on 'Log out'
 
-    expect(page).to have_content 'Welcome to Instagram'
+    expect(page).to have_content 'Pinstagram'
   end
 end
