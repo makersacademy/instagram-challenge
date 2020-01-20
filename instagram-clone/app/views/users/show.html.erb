@@ -2,6 +2,9 @@
   <div id='leftlinks'>
     <%= link_to 'Home', '/posts', class: 'navlink' %>
     <%= link_to 'New Post', '/posts/new', class: 'navlink' %>
+    <% if @user.id != session[:id] %>
+      <%= link_to 'Profile', "/users/#{session[:id]}", class: 'navlink' %>
+    <% end %>
   </div>
 
   <div id='rightlinks'>
@@ -12,10 +15,6 @@
 <div id='container', class='main-site'>
   <div id='page'>
     <h1 id='page-heading' class='main-site-heading'><%= @user.first_name %>'s feed</h1>
-
-    <% if @user.id != session[:id] %>
-      <%= link_to 'Profile', "/users/#{session[:id]}" %>
-    <% end %>
 
     <% if @user_posts %>
       <% @user_posts.each do |post| %>
@@ -30,10 +29,12 @@
                 <%= "posted on #{post.created_at.strftime '%d %b %Y at %H:%M'}" %>
               </div>
 
-              <div class='image-controls'>
-                <%= link_to 'edit description', "/posts/#{post.id}/edit", class: 'post-control' %>
-                <%= link_to 'delete', "/posts/#{post.id}", method: :delete, class: 'post-control' %>
-              </div>
+              <% if session[:id] == @user.id %>
+                <div class='image-controls'>
+                  <%= link_to 'edit description', "/posts/#{post.id}/edit", class: 'post-control' %>
+                  <%= link_to 'delete', "/posts/#{post.id}", method: :delete, class: 'post-control' %>
+                </div>
+              <% end %>
             </div>
           </div>
 
