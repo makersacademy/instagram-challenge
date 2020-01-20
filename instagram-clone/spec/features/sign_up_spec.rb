@@ -55,6 +55,6 @@ RSpec.describe 'signing up', type: :feature do
     fill_in 'password_confirmation', with: '1234icecream'
     click_on 'Submit'
 
-    expect(page).to have_content 'Sign Up'
+    expect(page).to have_content 'Join Pinstagram'
   end
 end

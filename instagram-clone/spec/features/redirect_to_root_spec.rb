@@ -3,14 +3,14 @@ RSpec.describe 'an unidentified user', type: :feaature do
     visit '/posts'
 
     expect(page).to have_current_path '/'
-    expect(page).to have_content 'Welcome to Instagram'
+    expect(page).to have_content 'Pinstagram'
   end
 
   scenario 'they attempt to create a new post' do
     visit '/posts/new'
 
     expect(page).to have_current_path '/'
-    expect(page).to have_content 'Welcome to Instagram'
+    expect(page).to have_content 'Pinstagram'
   end
 
   scenario 'they attempt to sign up' do
@@ -29,10 +29,10 @@ RSpec.describe 'an unidentified user', type: :feaature do
     sign_up_sam
     sam = User.find_by({ email: 'sam@example.com' })
     click_on 'Log out'
-    
+
     visit "/users/#{sam.id}"
 
     expect(page).to have_current_path '/'
-    expect(page).to have_content 'Welcome to Instagram'
+    expect(page).to have_content 'Pinstagram'
   end
 end

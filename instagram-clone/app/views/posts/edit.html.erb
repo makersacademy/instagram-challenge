@@ -1,7 +1,25 @@
-<p>Editing</p>
+<div id='navbar'>
+  <div id='leftlinks'>
+    <%= link_to 'Home', '/posts', class: 'navlink' %>
+    <%= link_to 'Profile', "/users/#{session[:id]}", class: 'navlink' %>
+  </div>
 
-<p><%= image_tag(@post.image) %></p>
-<%= form_for :post, method: :patch, url: "/posts/#{@post.id}" do |f| %>
-  Description: <%= f.text_field :description, name: 'description', value: @post.description %><br />
-  <%= f.submit :Update, name: 'update' %><br />
-<% end %>
+  <div id='rightlinks'>
+    <%= link_to 'Log out', "/sessions/#{session[:id]}", method: :delete, class: 'navlink' %>
+  </div>
+</div>
+
+<div id='container' class='main-site' style='background-color: transparent;'>
+  <div id='page'>
+    <div id='form-container'>
+      <h1 id='heading', class='heading' style='font-size: 85px; margin-bottom: 0;'>Editing</h1>
+
+      <p><%= image_tag @post.image %></p>
+      <%= form_for :post, method: :patch, url: "/posts/#{@post.id}" do |f| %>
+        <%= f.label :description, 'Description', id: 'description-label' %><br/>
+        <%= f.text_area :description, name: 'description', required: true, id: 'add-post-description', value: @post.description %>
+        <%= f.submit :Update, name: 'update', id: 'update-description' %><br />
+      <% end %>
+    </div>
+  </div>
+</div>
