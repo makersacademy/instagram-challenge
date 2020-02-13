@@ -31,7 +31,7 @@ For linting, you can use the `.rubocop.yml` in this repository (or your own!).
 You'll need these gems:
 
 ```ruby
-gem "rubocop", "0.48.1"
+gem "rubocop", "0.79.0", require: false
 gem "rubocop-rails"
 ```
 
