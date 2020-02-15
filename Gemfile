@@ -33,6 +33,13 @@ gem 'devise'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'rspec-core', git: 'https://github.com/rspec/rspec-core'
+gem 'rspec-expectations', git: 'https://github.com/rspec/rspec-expectations'
+gem 'rspec-mocks', git: 'https://github.com/rspec/rspec-mocks'
+gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails'
+gem 'rspec-support', git: 'https://github.com/rspec/rspec-support'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -51,7 +58,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  gem 'rspec-rails'
+  # gem 'rspec-rails'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
