@@ -1,17 +1,23 @@
+<div class="posts-page-container">
+<div class="posts">
 <% @posts.each do |post| %>
   <div class="card">
+  <%= User.find(post.user_id).email %><br>
     <div id="post-img">
     <% if post.image.attached? %>
       <p><%= image_tag post.image.variant(resize_to_limit: [200, 200]), id: 'img'  %><br>
     <% end %>
     </div>
     <p><%= post.caption %><br>
-    Posted by <%= User.find(post.user_id).email %><br>
     <%= post.created_at.strftime("%m/%d/%Y, %H:%M") %>
     </p>
   </div>
 <% end %>
+</div>
 
-<%= link_to new_post_path do %>
-  New post
-<% end %>
+<div class="right-bar">
+<%= current_user.email %>
+<%= link_to new_post_path do %> New Post <% end %>
+</div>
+</div>
+
