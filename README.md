@@ -3,6 +3,7 @@
 Build a clone of Instagram using Rails. The program has **users** who can post **pictures**, write **comments** on pictures and **like** a picture.
 
 ## Getting Started
+```brew install imagemagick```
 
 ### 1. Run Bundle Install
 
@@ -34,7 +35,7 @@ $ bundle exec rspec
 ## Built With
 
 * Ruby on Rails
-* --
+* Devise (for user authentication)
 
 ## User Stories
 
