@@ -46,7 +46,7 @@ I want to post a picture to Finstagram
 
 As a User
 So that I can see what others are doing  
-I want to see posts from other people
+I want to see posts from other people (with when and who posted)
 
 As a User
 So that I can post to Finstagram as me
@@ -59,6 +59,10 @@ I want to log in to Finstagram
 As a User
 So that I can avoid others posting messages on Finstagram as me
 I want to log out of Finstagram
+
+As a User
+So that I can change my mind on what I show on Finstagram
+I want to be able to edit and delete my own posts
 
 As a User
 So I can interact with others on Finstagram
