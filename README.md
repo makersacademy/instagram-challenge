@@ -1,4 +1,75 @@
-Instagram Challenge
+# Instagram Challenge
+
+Build a clone of Instagram using Rails. The program has **users** who can post **pictures**, write **comments** on pictures and **like** a picture.
+
+## Getting Started
+
+### 1. Run Bundle Install
+
+### 2. Database Setup 
+
+## Running the program
+
+### Start Server
+
+```sh
+$ rails server
+```
+
+### View in Browser
+
+```
+localhost:3000
+```
+
+## Running the tests
+
+To run tests for this program, run:
+
+```
+$ bundle exec rspec
+```
+
+
+## Built With
+
+* Ruby on Rails
+* --
+
+## User Stories
+
+```
+
+As a User
+So that I can show people what I am doing  
+I want to post a picture to Finstagram
+
+As a User
+So that I can see what others are doing  
+I want to see posts from other people
+
+As a User
+So that I can post to Finstagram as me
+I want to sign up for Finstagram
+
+As a User
+So that only I can post pictures on Finstagram as me
+I want to log in to Finstagram
+
+As a User
+So that I can avoid others posting messages on Finstagram as me
+I want to log out of Finstagram
+
+As a User
+So I can interact with others on Finstagram
+I want to write comments on pictures
+
+As a user
+So I can show which pictures I like best
+I want to be able to like pictures on Finstagram
+
+```
+
 ===================
 
 ## Instructions
@@ -38,3 +109,4 @@ gem "rubocop-rails"
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
+
