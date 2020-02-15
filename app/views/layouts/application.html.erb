@@ -14,6 +14,17 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
+    <ul>
+    <li><a href='/'><i class="fa fa-paw fa-lg"></i></a></li>
+    <% if user_signed_in? %>
+      <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>        
+    <% else %>
+      <li><%= link_to('Login', new_user_session_path) %></li>   
+      <li><%= link_to "Sign Up", new_user_registration_path %></li> 
+    <% end %>
+    </ul>
+
+
     <%= yield %>
   </body>
 </html>
