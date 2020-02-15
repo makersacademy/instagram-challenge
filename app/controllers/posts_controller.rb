@@ -14,12 +14,13 @@ class PostsController < ApplicationController
   def index
     # authenticate_user
     @posts = Post.all
+    @posts.each {|post| p post.image }
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:caption)
+    params.require(:post).permit(:caption, :image)
   end
 
   # def authenticate_user
