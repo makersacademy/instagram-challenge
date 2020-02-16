@@ -14,7 +14,10 @@ class PostsController < ApplicationController
   def index
     # authenticate_user
     @posts = Post.all
-    @posts.each {|post| p post.image }
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   private

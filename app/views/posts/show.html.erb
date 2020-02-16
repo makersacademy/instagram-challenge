@@ -1,8 +1,32 @@
-<h1>Post:</h1>
 <p>
-  <strong>Caption:</strong>
-  <%= @post.caption %>
+<%= User.find(@post.user_id).email %><br>
 </p>
+<% if @post.image.attached? %>
+<p><%= image_tag @post.image.variant(resize_to_limit: [200, 200]), id: 'img'  %><br>
+<% end %>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+  <p>
+    <strong>By:</strong>
+    <%= User.find(comment.user_id).email %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+ 
+<h2>Add a comment:</h2>
+<%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+ 

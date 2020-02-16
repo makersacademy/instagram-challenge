@@ -26,6 +26,8 @@ gem "rubocop", "0.79.0", require: false
 gem "rubocop-rails"
 # Use devise for user authentication
 gem 'devise'
+#Use font-awesome-rails for sweet icons
+gem "font-awesome-rails"
 
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'

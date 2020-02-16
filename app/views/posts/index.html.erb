@@ -1,23 +1,62 @@
 <div class="posts-page-container">
-<div class="posts">
-<% @posts.each do |post| %>
-  <div class="card">
-  <%= User.find(post.user_id).email %><br>
-    <div id="post-img">
-    <% if post.image.attached? %>
-      <p><%= image_tag post.image.variant(resize_to_limit: [200, 200]), id: 'img'  %><br>
-    <% end %>
-    </div>
-    <p><%= post.caption %><br>
-    <%= post.created_at.strftime("%m/%d/%Y, %H:%M") %>
-    </p>
+  <div class="right-bar">
+    <%= current_user.email %>
+    <%= link_to new_post_path do %> New Post <% end %>
   </div>
-<% end %>
-</div>
 
-<div class="right-bar">
-<%= current_user.email %>
-<%= link_to new_post_path do %> New Post <% end %>
-</div>
-</div>
+  <div class="posts">
+    <% @posts.each do |post| %>
+      <div class="card">
+        <div id="post-user">
+          <%= User.find(post.user_id).email %>
+        </div>
 
+        <div id="post-img">
+          <% if post.image.attached? %>
+            <%= image_tag post.image.variant(resize_to_fill: [500, 500, { gravity: 'Center' }]), id: 'img'  %>
+          <% end %>
+        </div>
+
+        <div id="post-caption">
+          <div id='caption-user'>
+            <%= User.find(post.user_id).email %> 
+          </div>
+          <div id='caption-text'>
+            <%= post.caption %>
+          </div>
+        </div>
+
+        <div id='post-date'>
+          <%= post.created_at.strftime("%m/%d/%Y, %H:%M") %>
+        </div>
+
+        <div id='comments-container'>
+          <div id='comments'>
+            <% post.comments.each do |comment| %>
+              <div id='comment-single'>
+                  <div id='comment-user'>
+                    <%= User.find(comment.user_id).email %>
+                  </div>
+
+                  <div id='comment-text'>
+                    <%= comment.body %>
+                  </div>
+                </div>
+            <% end %>
+          </div> 
+
+          <div id='commments-add'>
+            <%= link_to "Add Comment", post_path(post)%>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div id='post-spacer'>
+      </div>
+
+    <% end %>
+  </div>
+
+</div>

@@ -7,7 +7,7 @@ RSpec.feature 'Timeline', type: :feature do
     sign_up
 
     visit '/posts'
-    click_link 'New post'
+    click_link 'New Post'
     fill_in 'Caption', with: 'Hello, world!'
     click_button 'Submit'
     expect(page).to have_content('Hello, world!')
@@ -19,7 +19,7 @@ RSpec.feature 'Timeline', type: :feature do
     sign_up
 
     visit '/posts'
-    click_link 'New post'
+    click_link 'New Post'
     page.attach_file("Image", Rails.root + 'app/assets/images/cat.png')
     fill_in 'Caption', with: 'Hello, world!'
     click_button 'Submit'
