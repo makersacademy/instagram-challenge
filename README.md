@@ -45,6 +45,19 @@ $ bundle exec rspec
 * Rspec (for testing)
 * Capybara (for testing)
 
+## Design Examples
+### Posts Page
+![Homepage](./public/screenshots/instagram_home.png)
+
+### Full Post
+![Full Post](./public/screenshots/instagram-full-post.png)
+
+### Add Comment
+![Add Comment](./public/screenshots/instagram-add-comment.png)
+
+### Log In
+![Log In](./public/screenshots/instagram-log-in.png)
+
 ## User Stories
 
 ```
