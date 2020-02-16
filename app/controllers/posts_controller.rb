@@ -21,15 +21,20 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-
-    redirect_to posts_url
+    if users_post(@post)
+      @post.destroy
+      redirect_to posts_url
+    end
   end
 
   private
 
   def post_params
     params.require(:post).permit(:caption, :image)
+  end
+
+  def users_post(post)
+    post.user_id == current_user.id
   end
 
 end

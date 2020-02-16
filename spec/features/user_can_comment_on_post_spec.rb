@@ -4,7 +4,7 @@ RSpec.feature 'Comment', type: :feature do
     new_post
     click_on 'Add Comment'
     fill_in 'comment[body]', with: 'First comment'
-    click_on 'Create Comment'
+    click_on 'Save'
     expect(page).to have_content('First comment')
   end
 end

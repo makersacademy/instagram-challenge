@@ -2,9 +2,13 @@
   <div class="posts">
     <% @posts.each do |post| %>
       <div class="card">
-        <div id="post-user">
-          <%= User.find(post.user_id).email %>
-          <%= link_to 'Delete', post, :method => :delete %>
+        <div id='card-top'>
+          <div id="post-user">
+            <%= User.find(post.user_id).email %>
+          </div>
+          <div id='delete-link'>
+            <%= link_to 'Delete', post, :method => :delete %>
+          </div>
         </div>
 
         <div id="post-img">
@@ -26,27 +30,24 @@
           <%= post.created_at.strftime("%m/%d/%Y, %H:%M") %>
         </div>
 
-        <div id='comments-container'>
-          <div id='comments'>
-            <% post.comments.each do |comment| %>
-              <div id='comment-single'>
-                  <div id='comment-user'>
-                    <%= User.find(comment.user_id).email %>
-                  </div>
-
-                  <div id='comment-text'>
-                    <%= comment.body %>
-                  </div>
+        <div id='post-comments'>
+          <% post.comments.each do |comment| %>
+            <div id='post-comment'>
+                <div id='post-comment-user'>
+                  <%= User.find(comment.user_id).email %>
                 </div>
-            <% end %>
-          </div> 
 
-          <div id='commments-add'>
+                <div id='post-comment-text'>
+                  <%= comment.body %>
+                </div>
+              </div>
+          <% end %>
+        </div> 
+
+          <div id='add-post-commment'>
             <%= link_to "Add Comment", post_path(post)%>
           </div>
 
-
-        </div>
       </div>
 
       <div id='post-spacer'>
