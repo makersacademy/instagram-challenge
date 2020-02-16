@@ -1,14 +1,10 @@
 <div class="posts-page-container">
-  <div class="right-bar">
-    <%= current_user.email %>
-    <%= link_to new_post_path do %> New Post <% end %>
-  </div>
-
   <div class="posts">
     <% @posts.each do |post| %>
       <div class="card">
         <div id="post-user">
           <%= User.find(post.user_id).email %>
+          <%= link_to 'Delete', post, :method => :delete %>
         </div>
 
         <div id="post-img">

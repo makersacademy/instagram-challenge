@@ -12,12 +12,18 @@ class PostsController < ApplicationController
   end
 
   def index
-    # authenticate_user
     @posts = Post.all
   end
 
   def show
     @post = Post.find(params[:id])
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    redirect_to posts_url
   end
 
   private
@@ -26,8 +32,5 @@ class PostsController < ApplicationController
     params.require(:post).permit(:caption, :image)
   end
 
-  # def authenticate_user
-  #   redirect_to '/' unless user_signed_in?
-  # end
 end
 
