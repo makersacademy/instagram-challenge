@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 gem "devise"
 gem "hpricot"
 gem "ruby_parser"
+gem "rubocop", "0.79.0", require: false
+gem "rubocop-rails"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -33,6 +35,10 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'capybara', '~> 2.13'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'selenium-webdriver'
+  gem 'simplecov', require: false
 end
 
 group :development do
@@ -44,13 +50,13 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
-end
+# group :test do
+#   # Adds support for Capybara system testing and selenium driver
+#   gem 'capybara', '>= 2.15'
+#   gem 'selenium-webdriver'
+#   # Easy installation and use of web drivers to run system tests with browsers
+#   gem 'webdrivers'
+# end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
