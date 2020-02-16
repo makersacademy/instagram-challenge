@@ -1,13 +1,19 @@
 # Instagram Challenge
 
-Build a clone of Instagram using Rails. The program has **users** who can post **pictures**, write **comments** on pictures and **like** a picture.
+Build a clone of Instagram using Rails. The program has **users** who can post **pictures**, and write **comments** on pictures.
 
 ## Getting Started
+
+```
+bundle install
+bin/rails db:create
+bin/rails db:migrate
+```
+
+### Active Storage Image Processing
+If you do not already have ImageMagick installed, run:
+
 ```brew install imagemagick```
-
-### 1. Run Bundle Install
-
-### 2. Database Setup 
 
 ## Running the program
 
@@ -31,11 +37,13 @@ To run tests for this program, run:
 $ bundle exec rspec
 ```
 
-
 ## Built With
 
-* Ruby on Rails
+* Ruby
+* Rails
 * Devise (for user authentication)
+* Rspec (for testing)
+* Capybara (for testing)
 
 ## User Stories
 
@@ -43,35 +51,31 @@ $ bundle exec rspec
 
 As a User
 So that I can show people what I am doing  
-I want to post a picture to Finstagram
+I want to post a picture to Instagram
 
 As a User
 So that I can see what others are doing  
-I want to see posts from other people (with when and who posted)
+I want to see posts from other people
 
 As a User
-So that I can post to Finstagram as me
-I want to sign up for Finstagram
+So that I can post to Instagram as me
+I want to sign up for Instagram
 
 As a User
-So that only I can post pictures on Finstagram as me
-I want to log in to Finstagram
+So that only I can post pictures on Instagram as me
+I want to log in to Instagram
 
 As a User
-So that I can avoid others posting messages on Finstagram as me
-I want to log out of Finstagram
+So that I can avoid others posting on Instagram as me
+I want to log out of Instagram
 
 As a User
-So that I can change my mind on what I show on Finstagram
+So that I can change my mind on what I show on Instagram
 I want to be able to edit and delete my own posts
 
 As a User
-So I can interact with others on Finstagram
-I want to write comments on pictures
-
-As a user
-So I can show which pictures I like best
-I want to be able to like pictures on Finstagram
+So I can interact with others on Instagram
+I want to write comments on posts
 
 ```
 
