@@ -12,7 +12,7 @@ RSpec.feature 'Timeline', type: :feature do
     click_button 'Submit'
     expect(page).to have_content('Hello, world!')
     expect(page).to have_content('test@email.com')
-    expect(page).to have_content(Time.now.strftime('%m/%d/%Y, %H:%M'))
+    expect(page).to have_content(Time.zone.now.strftime('%m/%d/%Y, %H:%M'))
   end
 
   scenario 'Can submit an image post' do
@@ -26,8 +26,7 @@ RSpec.feature 'Timeline', type: :feature do
     expect(page.find('#img')['src']).to have_content 'cat.png' 
     expect(page).to have_content('Hello, world!')
     expect(page).to have_content('test@email.com')
-    expect(page).to have_content(Time.now.strftime('%m/%d/%Y, %H:%M'))
+    expect(page).to have_content(Time.zone.now.strftime('%m/%d/%Y, %H:%M'))
   end
-
 
 end

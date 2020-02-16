@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Timeline', type: :feature do
   scenario 'User cannot delete other users posts' do
-    skip #Capybara/Rspec issue. Feature works. 
+    skip 'Capybara issue'
     sign_up
     new_post
     click_link 'Logout'
