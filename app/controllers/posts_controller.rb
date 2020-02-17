@@ -24,6 +24,9 @@ class PostsController < ApplicationController
     if users_post(@post)
       @post.destroy
       redirect_to posts_url
+    else
+      redirect_to posts_url
+      flash[:alert] = 'Nice try... not your post to delete'
     end
   end
 

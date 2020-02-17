@@ -6,7 +6,6 @@ RSpec.feature 'Timeline', type: :feature do
     new_post
     click_link 'Delete'
     expect(page).not_to have_content('Hello, world!')
-    expect(page).not_to have_content(Time.zone.now.strftime('%m/%d/%Y, %H:%M'))
-
+    expect(page).not_to have_content(Time.now.strftime('%m/%d/%Y, %H:%M'))
   end
 end
