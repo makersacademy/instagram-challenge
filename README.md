@@ -118,6 +118,6 @@ $ bundle exec rubocop
 ### Main Feed
 
 <div align="center">
-  <img src="images/Pinstagram-Scrolling.gif" height="1000px" hspace="60" />
-  <img src="images/Pinstagram-Leaving-a-comment.gif" height="1000px" hspace="60" />
+  <img src="images/Pinstagram-Scrolling.gif" height="600px" hspace="30" />
+  <img src="images/Pinstagram-Leaving-a-comment.gif" height="600px" hspace="30" />
 </div>
