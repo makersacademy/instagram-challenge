@@ -1,8 +1,7 @@
-Pinstagram
-===================
+<div align="center"><img src="images/Pinstagram Title.png" /></div>
 
-## Setup
-### Database dependencies
+# Setup
+## Database dependencies
 In order to run this application, you would need to have `PostgresQL` installed.
 To install postgresQL via `Homebrew`, you can run the following commands:
 
@@ -12,7 +11,7 @@ $ brew services start postgresql
 $ psql postgres
 ```
 
-### Environment
+## Environment
 Clone this repository, then run:
 ```s
 $ yarn install --check-files
@@ -28,8 +27,8 @@ $ bundle exec rspec
 $ bundle exec rubocop
 ```
 
-## Features
-### Authentication
+# Features
+## Authentication
 
 > Users are given the opportunity to sign up and sign in.<br />
   A user must have a unique email address, and their chosen email address must have a valid format.<br />
@@ -37,7 +36,7 @@ $ bundle exec rubocop
 
 <img src="images/Pinstagram Authentication Pages alt.png" />
 
-### Uploading Images
+## Uploading Images
 
 > Users can upload images to Pinstagram, and are given the opportunity to add a description to provide context.<br />
   If a user wants, they are able to delete their posts, but this privilege is only available to the original poster of the image.<br />
@@ -45,7 +44,7 @@ $ bundle exec rubocop
 
 <img src="images/Pinstagram Uploading an Image.png" />
 
-### Main Feed
+## Main Feed
 
 > Users are able to visit a central feed where they can find all the posts on the site in one place.<br />
   Users are able to like and comment on any of the posts on the main feed, and all comments are timestamped.<br />
@@ -54,7 +53,7 @@ $ bundle exec rubocop
   <img src="images/Pinstagram-Scrolling.gif" height="1100" hspace="60" />
 </div>
 
-### Other users' profiles
+## Other users' profiles
 > Users are able to visit other profiles by clicking on their names.<br />
   Only posts by the targeted user are displayed on any such page.<br />
   Users benefit from the same functionality they would find on the main page.<br />
@@ -63,7 +62,7 @@ $ bundle exec rubocop
   <img src="images/Pinstagram-Leaving-a-comment.gif" height="1100" hspace="60" />
 </div>
 
-## User Stories
+# User Stories
 ```
 As a user
 So I can access my profile
