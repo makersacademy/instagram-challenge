@@ -71,36 +71,38 @@ To ensure a smooth user experience
 I want the site to have smooth navigation
 ```
 
-## How to start
+## Setup
+### Database dependencies
+In order to run this application, you would need to have `PostgresQL` installed.
+To install postgresQL via `Homebrew`, you can run the following commands:
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.48.1"
-gem "rubocop-rails"
+```s
+$ brew install postgresql
+$ brew services start postgresql
+$ psql postgres
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
-
-## steps
-
+### Environment
+Clone this repository, then run:
+```s
+$ yarn install --check-files
+$ bundle install
+$ bundle exec rails db:create
+$ bundle exec rails db:migrate
+$ bundle exec rails db:migrate RAILS_ENV=test
 ```
-yarn install --check-files
-bundle
-rails db:create
-rails db:migrate
 
-bundle exec rspec
-rubocop
+To run tests and linting:
+```s
+$ bundle exec rspec
+$ bundle exec rubocop
 ```
+
+## Features
+### Authentication
+
+> Users are given the opportunity to sign up and sign in<br />
+  A user must have a unique email address, and their chosen email address must have a valid format<br />
+  When signing up, all fields are required<br />
+
+<img src="images/Pinstagram Authentication Pages.png" />
