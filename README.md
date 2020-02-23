@@ -110,6 +110,14 @@ $ bundle exec rubocop
 ### Uploading Images
 
 > Users can upload images to Pinstagram, and are given the opportunity to add a description to provide context<br />
+  If a user wants, they are able to delete their posts, but this privilege is only available to 
   Users are able to edit their captions, and once the images has been uploaded other users are free to like and comment<br />
 
 <img src="images/Pinstagram Uploading an Image.png" />
+
+### Main Feed
+
+<div align="center">
+  <img src="images/Pinstagram-Scrolling.gif" height="1000px" hspace="60" />
+  <img src="images/Pinstagram-Leaving-a-comment.gif" height="1000px" hspace="60" />
+</div>
