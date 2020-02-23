@@ -105,4 +105,11 @@ $ bundle exec rubocop
   A user must have a unique email address, and their chosen email address must have a valid format<br />
   When signing up, all fields are required<br />
 
-<img src="images/Pinstagram Authentication Pages.png" />
+<img src="images/Pinstagram Authentication Pages alt.png" />
+
+### Uploading Images
+
+> Users can upload images to Pinstagram, and are given the opportunity to add a description to provide context<br />
+  Users are able to edit their captions, and once the images has been uploaded other users are free to like and comment<br />
+
+<img src="images/Pinstagram Uploading an Image.png" />
