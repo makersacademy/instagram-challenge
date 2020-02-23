@@ -17,10 +17,10 @@ require 'simplecov'
 require 'rspec/simplecov'
 require 'simplecov-console'
 
-SimpleCov.minimum_coverage 95
-SimpleCov.start 
-RSpec::SimpleCov.start
-SimpleCov.formatter = SimpleCov::Formatter::Console
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::Console,
+])
+SimpleCov.start
 
 require_relative 'features/web_helpers'
 
