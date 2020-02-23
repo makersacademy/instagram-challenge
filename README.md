@@ -1,4 +1,4 @@
-<div align="center"><img src="images/Pinstagram Title.png" /></div>
+<div align="center"><img src="images/Pinstagram-Title.png" /></div>
 
 # Setup
 ## Database dependencies
