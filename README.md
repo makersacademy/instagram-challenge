@@ -100,9 +100,7 @@ I would like it to be stylish yet understated âœ“
 > Users are able to visit a central feed where they can find all the posts on the site in one place.<br />
   Users are able to like and comment on any of the posts on the main feed, and all comments are timestamped.<br />
 
-<div align="center">
-  <img src="images/Pinstagram-Scrolling.gif" height="1100" hspace="60" />
-</div>
+<img src="images/Pinstagram-Scrolling.gif" height="720" />
 
 ## Other users' profiles
 
@@ -131,9 +129,7 @@ I would like to prevents users from deleting others' comments on others' posts â
   Only posts by the targeted user are displayed on any such page.<br />
   Users benefit from the same functionality they would find on the main page.<br />
 
-<div align="center">
-  <img src="images/Pinstagram-Leaving-a-comment.gif" height="1100" hspace="60" />
-</div>
+<img src="images/Pinstagram-Leaving-a-comment.gif" height="720" />
 
 <br />
 
