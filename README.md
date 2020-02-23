@@ -134,3 +134,12 @@ I would like to prevents users from deleting others' comments on others' posts â
 <div align="center">
   <img src="images/Pinstagram-Leaving-a-comment.gif" height="1100" hspace="60" />
 </div>
+
+<br />
+
+## Technologies Used
+
+| Development  | Testing  | Linting |
+|---|---| --- |
+| Rails 6  | rspec 4.0 (beta)  | rubocop |
+| Ruby 2.6.5  | rspec/capybara  |  |
