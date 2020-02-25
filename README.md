@@ -1,5 +1,6 @@
 <div align="center"><img src="images/Pinstagram-Title.png" /></div>
 
+<br /><br />
 <div align="center">
   
 [![Build Status](https://travis-ci.com/samfolo/instagram-challenge.svg?branch=master)](https://travis-ci.com/samfolo/instagram-challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/5356affb2c17a085313e/maintainability)](https://codeclimate.com/github/samfolo/instagram-challenge/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/5356affb2c17a085313e/test_coverage)](https://codeclimate.com/github/samfolo/instagram-challenge/test_coverage)
