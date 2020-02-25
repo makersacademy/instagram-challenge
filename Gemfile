@@ -38,7 +38,7 @@ group :development, :test do
   gem 'rspec-simplecov'
   gem 'rubocop', '0.71.0'
   gem 'rubocop-rails'
-  gem 'simplecov'
+  gem 'simplecov', '0.17.1'
   gem 'simplecov-console'
   gem 'timecop'
 end
