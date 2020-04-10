@@ -3,9 +3,12 @@
 <%= link_to 'Add Picture', new_picture_path %>
 
 <% @pictures.each do |picture|  %>
-  <div>
+  <p><div>
     <%= picture.title %><br>
+    <% if picture.image.attached? %>
+    <image src="<%= (url_for(picture.image)) %>">
+      <% end %>
     <%= picture.caption %>
     <%= link_to 'Show', picture_path(picture) %>
-  </div>
+  </div></p>
 <% end %>

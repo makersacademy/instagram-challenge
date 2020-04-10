@@ -12,7 +12,7 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(picture_params)
-
+    # @picture.image.attach(params[:image])
     @picture.save
     redirect_to @picture
   end
@@ -20,6 +20,6 @@ class PicturesController < ApplicationController
   private
 
   def picture_params
-    params.require(:picture).permit(:title, :caption)
+    params.require(:picture).permit(:title, :image, :caption)
   end
 end
