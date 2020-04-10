@@ -1,13 +1,14 @@
 services:
-- postgresql
+  - postgresql
 before_script:
-- bundle install
-- psql -c 'create database instagram_test;' -U postgres
-- rails db:migrate
+  - gem install bundler -v 2.1.4
+  - bundle install
+  - psql -c 'create database instagram_test;' -U postgres
+  - rails db:migrate
 dist: trusty
 language: ruby
 rvm:
-- 2.6.5
+  - 2.6.5
 script:
   - bundle exec rubocop
   - bundle exec rspec
