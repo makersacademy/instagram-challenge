@@ -1,0 +1,16 @@
+services:
+- postgresql
+before_script:
+- bundle install
+- psql -c 'create database instagram_test;' -U postgres
+- rails db:migrate
+dist: trusty
+language: ruby
+rvm:
+- 2.6.5
+script:
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: 
