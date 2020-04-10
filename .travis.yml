@@ -1,11 +1,11 @@
 services:
   - postgresql
+cache:
+  - bundler
 before_script:
-  - gem update --system
-  - gem install bundler:2.1.4
-  - bundle install
   - psql -c 'create database instagram_test;' -U postgres
-  - rails db:migrate
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
 dist: trusty
 language: ruby
 rvm:
