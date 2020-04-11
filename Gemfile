@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'devise', '~> 4.2'
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem "better_errors"
@@ -44,6 +46,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
+  gem "factory_bot_rails"
   gem 'rspec-rails', '~> 4.0.0'
   gem "rubocop", "0.79.0", require: false
   gem 'rubocop-rails'
