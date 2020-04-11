@@ -31,7 +31,10 @@
             <% end %> <br>
             By: <%= post.user.username %> <br>
             <%= post.caption %> <br>
-            <%= link_to 'comment', comments_path %>
+            <% post.comments.each do |comment|%>
+              <%= User.find(comment.user_id).username %> said: <%= comment.content %> <br> 
+            <% end %>
+            <%= link_to 'comment', new_comment_path(post_id: post.id) %>
         <% end %>
       <% end %>
     </tbody>
