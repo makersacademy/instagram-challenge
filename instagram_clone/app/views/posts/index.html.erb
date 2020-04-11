@@ -45,6 +45,11 @@
           <h1>People you can follow</h1>
           <% @users.each do |user|%>
             <%= user.username %>
+            <form action="/followers/create" method="POST">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+              <input type="hidden" name="followee" value="<%= user.id%>">
+              <input type="submit" name="submit" value="Follow this user">
+            </form>
           <% end %>
         </div>
     </div>
