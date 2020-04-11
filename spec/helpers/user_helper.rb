@@ -8,10 +8,10 @@ module UserHelper
     click_button 'Sign up'
   end
 
-  def login_as(user, scope)
+  def login_as(user)
     visit '/users/sign_in'
-    fill_in 'user_email', with: 'test@example.com'
-    fill_in 'user_password', with: '123456789'
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
     click_button 'Log in'
   end
 
