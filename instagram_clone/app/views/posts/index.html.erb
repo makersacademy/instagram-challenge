@@ -9,34 +9,45 @@
 <body>
   <p id="notice"><%= notice %></p>
   
-  <h1>Posts</h1>
   <body>
-    <%= link_to 'New Post', new_post_path %>
-      <% @posts.reverse.each do |post| %>
-        
-          <% if post.image %>
-          <div class="image">
-            <%= image_tag(post.image, style:'max-width:100%; max-height: 100%; object-fit: contain') %> <br>
-          </div>
-          <% end %>
-          <%= link_to post do %>
-            <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
-          <% end %>
-          <% if current_user && current_user.admin %>
-            <%= link_to edit_post_path(post), class: 'level-item' do %>
-              <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+    <div class="container">
+      <div class="left_container">
+        <h1>Posts</h1>
+
+        <%= link_to 'New Post', new_post_path %>
+          <% @posts.reverse.each do |post| %>
+            
+              <% if post.image %>
+              <div class="image">
+                <%= image_tag(post.image, style:'max-width:100%; max-height: 100%; object-fit: contain') %> <br>
+              </div>
+              <% end %>
+              <%= link_to post do %>
+                <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
+              <% end %>
+              <% if current_user && current_user.admin %>
+                <%= link_to edit_post_path(post), class: 'level-item' do %>
+                  <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                <% end %>
+                <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do%>
+                  <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+                <% end %> <br>
+                By: <%= post.user.username %> <br>
+                <%= post.caption %> <br>
+                <% post.comments.each do |comment|%>
+                  <%= User.find(comment.user_id).username %> said: <%= comment.content %> <br> 
+                <% end %>
+                <%= link_to 'comment', new_comment_path(post_id: post.id) %>
             <% end %>
-            <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do%>
-              <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
-            <% end %> <br>
-            By: <%= post.user.username %> <br>
-            <%= post.caption %> <br>
-            <% post.comments.each do |comment|%>
-              <%= User.find(comment.user_id).username %> said: <%= comment.content %> <br> 
-            <% end %>
-            <%= link_to 'comment', new_comment_path(post_id: post.id) %>
-        <% end %>
-      <% end %>
+          <% end %>
+      </div>
+        <div class="right_container">
+          <h1>People you can follow</h1>
+          <% @users.each do |user|%>
+            <%= user.username %>
+          <% end %>
+        </div>
+    </div>
     </tbody>
   </table>
   
