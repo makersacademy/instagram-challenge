@@ -19,11 +19,16 @@ RSpec.feature 'User Sign Up', type: :feature do
     fill_in 'user_password', with: 'Password'
     fill_in 'user_password_confirmation', with: 'Password'
     click_button 'Sign up'
-    expect(page).to have_content '1 error prohibited this user from being saved:'
+    expect(page).to have_content 'Email is invalid'
   end
 
   scenario 'the user can only enter a password between 6-10 characters' do
-
+    visit '/users/sign_up'
+    fill_in 'user_email', with: 'ruby@rails.com'
+    fill_in 'user_password', with: '123456789123'
+    fill_in 'user_password_confirmation', with: '123456789123'
+    click_button 'Sign up'
+    expect(page).to have_content 'Password is too long (maximum is 10 characters)'
   end
 
   scenario 'once signed in the user is redirected to the welcome page' do

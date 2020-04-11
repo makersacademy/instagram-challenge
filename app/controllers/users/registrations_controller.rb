@@ -5,14 +5,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @maximum_password_length = 10
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @maximum_password_length = 10
+    super
+  end
 
   # GET /resource/edit
   # def edit
