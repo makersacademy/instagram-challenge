@@ -1,11 +1,12 @@
 services:
   - postgresql
+berfor_install:
+  - gem install bundler
 cache:
   - bundler
 before_script:
-  - psql -c 'create database instagram_test;' -U postgres
-  - bundle exec rake db:create
-  - bundle exec rake db:migrate
+  - bundle exec rails db:create
+  - bundle exec rails db:migrate
 dist: trusty
 language: ruby
 rvm:
