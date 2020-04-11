@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <p id="notice"><%= notice %></p>
+  
+  <h1>Posts</h1>
+  <body>
+    <%= link_to 'New Post', new_post_path %>
+      <% @posts.reverse.each do |post| %>
+        
+          <% if post.image %>
+          <div class="image">
+            <%= image_tag(post.image, style:'max-width:100%; max-height: 100%; object-fit: contain') %> <br>
+          </div>
+          <% end %>
+          <%= link_to post do %>
+            <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
+          <% end %>
+          <% if current_user && current_user.admin %>
+            <%= link_to edit_post_path(post), class: 'level-item' do %>
+              <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+            <% end %>
+            <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do%>
+              <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+            <% end %> <br>
+            By: <%= post.user.username %> <br>
+            <%= post.caption %> <br>
+            <%= link_to 'comment', comments_path %>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <br>
+  
+  
+</body>
+</html>
