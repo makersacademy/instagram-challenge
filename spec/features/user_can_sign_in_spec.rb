@@ -21,7 +21,7 @@ RSpec.feature 'User Sign In', type: :feature do
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: '123456'
     click_button 'Log in'
-    expect(page).to have_content 'nvalid Email or password.'
+    expect(page).to have_content 'Invalid Email or password.'
   end
 
   scenario 'once signed in the user is redirected to the welcome page' do
