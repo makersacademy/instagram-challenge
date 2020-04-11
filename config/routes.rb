@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'picture/index'
 
-  resources :pictures
+  resources :pictures do
+    resources :comments
+  end
 
   root 'picture#index'
 end
