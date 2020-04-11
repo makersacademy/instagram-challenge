@@ -4,12 +4,13 @@
 
 <% @pictures.each do |picture|  %>
   <p><div>
-    <%= picture.title %><br>
     <% if picture.image.attached? %>
-    <image src="<%= (url_for(picture.image)) %>">
+      <image width="300" height="300" src="<%= (url_for(picture.image)) %>"><br>
       <% end %>
-    <%= picture.caption %>
-    <%= link_to 'Show', picture_path(picture) %> | 
-    <%= link_to 'Edit', edit_picture_path(picture) %>
+    <%= link_to 'Show', picture_path(picture) %> |
+    <%= link_to 'Edit', edit_picture_path(picture) %> |
+    <%= link_to 'Delete', picture_path(picture),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
   </div></p>
 <% end %>

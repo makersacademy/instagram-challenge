@@ -1,46 +1,9 @@
 <h1>Edit Picture</h1>
-<%= form_with(model: @picture, local: true) do |form| %>
-
-<% if @picture.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@picture.errors.count, "error") %>
-      prevented this image from being saved:
-    </h2>
-    <ul>
-      <% @picture.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<p>
-  <%= form.label :title %><br>
-  <%= form.text_field :title %>
-</p>
-
+<%= render 'picture_form' %>
 <p>
   <% if @picture.image.attached? %>
-    <image src="<%= (url_for(@picture.image)) %>"
-  <% end %>
-</p>
-
-<p>
-  <%= form.label "Replace Image?" %><br>
-  <%= form.file_field :image %>
-</p>
-
-
-<p>
-  <%= form.label :caption %><br>
-  <%= form.text_area :caption %>
-</p>
-
-<p>
-  <%= form.submit %><br>
-</p>
-
-<% end %>
+  <image src="<%= (url_for(@picture.image)) %>"
+    <% end %>
+  </p>
 
 <%= link_to 'Back', pictures_path %>
