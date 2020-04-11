@@ -7,7 +7,10 @@ RSpec.feature 'User Sign Up', type: :feature do
   end
 
   scenario 'the user can see prompts for email and password on sign up page' do
-
+    visit '/users/sign_up'
+    expect(page).to have_content 'Email'
+    expect(page).to have_content 'Password'
+    expect(page).to have_content 'Password confirmation'
   end
 
   scenario 'the user can only enter valid email' do
