@@ -32,6 +32,7 @@ RSpec.feature 'User Sign Up', type: :feature do
   end
 
   scenario 'once signed in the user is redirected to the welcome page' do
-
+    sign_up
+    expect(current_path).to eq '/'
   end
 end
