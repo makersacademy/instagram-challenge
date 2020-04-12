@@ -25,7 +25,11 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'bootstrap', '~> 4.4.1'
+# images
+gem 'carrierwave'
+gem 'fog', '~> 1.37.0'
+gem 'mini_magick'
+
 
 gem 'travis'
 # Use Active Storage variant
@@ -36,11 +40,6 @@ gem 'devise'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
