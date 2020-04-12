@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :pictures
+  resources :pictures, except: [:update, :edit]
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
