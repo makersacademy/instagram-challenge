@@ -9,11 +9,11 @@ class AccountsController < ApplicationController
 
   def profile
     # user profile
-
+    @posts = @account.posts.active
   end
 
   def set_account
-    @account = Account.find_by_username(params[:username])
+    @account = Account.find_by(username: params[:username])
   end
 
 end
