@@ -4,3 +4,15 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+
+<% current_user.pictures.each do |picture|  %>
+  <p><div>
+    <% if picture.image.attached? %>
+      <a href="<%= picture_url(picture) %>"><image width="300" height="300" src="<%= (url_for(picture.image)) %>"></a><br>
+      <% end %>
+    <%= link_to 'Edit', edit_picture_path(picture) %> |
+    <%= link_to 'Delete', picture_path(picture),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+  </div></p>
+<% end %>
