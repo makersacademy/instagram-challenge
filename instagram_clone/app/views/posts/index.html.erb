@@ -8,8 +8,8 @@
 </head>
 <body>
   <body>
+    <% if current_user %>
     <div class="navbar">
-      <% if current_user %>
         <ul class="top_navbar">
           <li class="left"><a href="/posts"><img src="https://www.pngarts.com/files/4/Instagram-PNG-Image.png" alt="" class="instagram_logo_navbar"></a></li>
           <li class="right"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
@@ -30,7 +30,7 @@
     <div class="container">
       <div class="left_container">
           <% @posts.reverse.each do |post| %>
-            
+            <div class="post_card">
               <% if post.image %>
               <div class="image">
                 <%= image_tag(post.image, style:'max-width:100%; max-height: 100%; object-fit: contain') %> <br>
@@ -39,18 +39,20 @@
               <%= link_to post do %>
                 <span class="icon"><i class="fa fa-link" aria-hidden="true"></i></span>
               <% end %>
-              <% if current_user && current_user.admin %>
+              <% if (current_user && current_user.admin) || (current_user.id == post.user.id)%>
                 <%= link_to edit_post_path(post), class: 'level-item' do %>
                   <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
                 <% end %>
                 <%= link_to post, method: :delete, data: { confirm: 'Are you sure?' } do%>
                   <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
-                <% end %> <br>
-                By: <%= post.user.username %> <br>
-                <%= post.caption %> <br>
-                <% post.comments.each do |comment|%>
-                  <%= User.find(comment.user_id).username %> said: <%= comment.content %> <br> 
-                <% end %>
+                  <% end %> <br>
+                  <% end %>
+                  <% if current_user %>
+                  By: <%= post.user.username %> <br>
+                  <%= post.caption %> <br>
+                  <% post.comments.each do |comment|%>
+                    <%= User.find(comment.user_id).username %> said: <%= comment.content %> <br> 
+                  <% end %>
                 <!-- here i had to put @comment as a variable for new comment in the posts controller! -->
                 <%= form_with(model: @comment, local: true) do |form| %>
                 <div class="hidden_field">
@@ -64,12 +66,13 @@
                 <div class="actions">
                   <%= form.submit %>
                 </div>
-              <% end %>
-              
+                <% end %>
             <% end %>
+            </div>
           <% end %>
       </div>
-        <div class="right_container">
+      <div class="right_container">
+        <% if current_user %>
           <h1>People to follow</h1>
           <% @users.each do |user|%>
             <%= user.username %>
@@ -79,6 +82,11 @@
               <input type="submit" name="submit" value="Follow">
             </form>
           <% end %>
+          <% else %>
+
+          <h1>Log in or sign up to follow people</h1>
+          <% end %>
+
         </div>
     </div>
     </tbody>

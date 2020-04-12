@@ -45,7 +45,7 @@ class FollowersController < ApplicationController
   def update
     respond_to do |format|
       if @follower.update(follower_params)
-        format.html { redirect_to @follower, notice: 'Follower was successfully updated.' }
+        format.html { redirect_to '/posts', notice: 'Follower was successfully updated.' }
         format.json { render :show, status: :ok, location: @follower }
       else
         format.html { render :edit }

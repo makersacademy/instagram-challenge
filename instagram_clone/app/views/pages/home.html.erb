@@ -10,14 +10,16 @@
     <img src="https://www.pngarts.com/files/4/Instagram-PNG-Image.png" alt="" class="instagram_logo">
   </div>
   <div class="center">
-    <% if current_user %>
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %> <br>
-    <% else %>
-      <%= link_to 'Sign up', new_user_registration_path %> <br>
-      <%= link_to 'Sign in', new_user_session_path %> <br>
-    <% end %>
-  
-    <%= link_to 'Instagram Posts', posts_path %>
+    <ul>
+      <% if current_user %>
+        <li class="home_page_list"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+        <li class="home_page_list"><%= link_to 'Instagram Posts', posts_path %></li> 
+      <% else %>
+        <li class="home_page_list"><%= link_to 'Sign up', new_user_registration_path %> </li>
+        <li class="home_page_list"><%= link_to 'Sign in', new_user_session_path %></li> 
+        <li class="home_page_list"><%= link_to 'Instagram Posts', posts_path %></li> 
+      <% end %>
+    </ul>
   </div>
 </body>
 </html>
