@@ -1,15 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-8">
-      <% @posts.each do |post| %>
+      <% @posts.reverse.each do |post| %>
         <div class="insta-post">
           <div class="post-meta">
-          <%= image_tag "#{post.account.image.thumb.url}", class: "profile-pic" %>
-            <%= link_to post.account.username, profile_path(post.account.username) %>
+          <%= link_to image_tag("#{post.account.image.thumb.url}", class: "profile-pic"), profile_path(post.account.username) %>
+            <%= link_to post.account.username, profile_path(post.account.username), class: "text-dark" %>
           </div>
 
           <%= image_tag "#{post.image.url}", class: "img img-fluid" %>
-        </div>  
+          <div class="post-details">
+          </div>
+          <%= simple_format post.description %>
+          </div>  
       <% end %>
     </div>
         <div class="col-4">
