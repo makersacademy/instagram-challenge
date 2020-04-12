@@ -24,4 +24,8 @@ Things you may want to cover:
 * ...
 
 
-problems - Yarn issues
+problems - Yarn issues - https://github.com/rails/webpacker/issues/940;
+issues with gems being the wrong versions;
+aws/carrierwave upload problems - solution: 
+https://stackoverflow.com/questions/41663925/missing-required-arguments-aws-access-key-id-aws-secret-access-key-in-server
+https://www.bitesite.ca/blog/fixing-rails-carrierwave-amazon-s3-403-forbidden-error

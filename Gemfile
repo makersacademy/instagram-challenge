@@ -26,8 +26,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 
 # images
-gem 'carrierwave'
-gem 'fog', '~> 1.37.0'
+gem 'carrierwave-aws'
+gem "fog-aws"
+gem "asset_sync"
 gem 'mini_magick'
 
 
@@ -61,6 +62,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'rubocop', require: false
   gem 'simplecov', require: false, group: :test
+  gem 'figaro'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
