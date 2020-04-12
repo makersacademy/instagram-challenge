@@ -1,29 +1,36 @@
-<p id="notice"><%= notice %></p>
+<% if current_user %>
+  <h1>Hello, <%= current_user.name %>!</h1>
 
-<h1>Pictures</h1>
+  <h2>Pictures</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Image url</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pictures.each do |picture| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= picture.image_url %></td>
-        <td><%= picture.user_id %></td>
-        <td><%= link_to 'Show', picture %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Image url</th>
+        <th>User</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @pictures.each do |picture| %>
+        <tr>
+          <td><%= picture.image_url %></td>
+          <td><%= picture.user_id %></td>
+          <td><%= link_to 'Show', picture %></td>
+          <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+          <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Picture', new_picture_path %>
+  <br>
+
+  <%= link_to 'New Picture', new_picture_path %>
+
+  <p><%= link_to destroy_user_session_path, method: :delete do %>
+    Log Out
+  <% end %></p>
+
+<% end %>

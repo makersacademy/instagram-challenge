@@ -24,7 +24,7 @@ RSpec.feature 'User Sign In', type: :feature do
     expect(page).to have_content 'Invalid Email or password.'
   end
 
-  scenario 'once signed in the user is redirected to the welcome page' do
+  scenario 'once signed in the user is redirected to the pictures page' do
     user = FactoryBot.create(:user)
     login_as(user)
     expect(current_path).to eq '/'

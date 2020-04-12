@@ -34,7 +34,7 @@ RSpec.feature 'User Sign Up', type: :feature do
     expect(page).to have_content 'Password is too long (maximum is 10 characters)'
   end
 
-  scenario 'once signed up the user is redirected to the welcome page' do
+  scenario 'once signed up the user is redirected to the pictures page' do
     sign_up
     expect(current_path).to eq '/'
   end
