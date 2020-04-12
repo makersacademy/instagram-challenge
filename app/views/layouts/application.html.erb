@@ -25,20 +25,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
+          <% if account_signed_in? %>
+            <%= render "layouts/account_nav" %>
+          <% else %>
+            <%= render "layouts/public_nav" %>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -47,7 +38,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 text-center">
+      <div class="col-lg-12">
       <%= yield %>
         </div>
       </div>
