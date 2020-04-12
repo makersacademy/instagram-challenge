@@ -28,10 +28,10 @@ class FollowersController < ApplicationController
       follower: current_user.id,
       followee: params[:followee]
     })
-
+    user = User.find(params[:followee])
     respond_to do |format|
       if @follower.save
-        format.html { redirect_to @follower, notice: 'Follower was successfully created.' }
+        format.html { redirect_to '/posts', notice: "You have followed #{user.username}." }
         format.json { render :show, status: :created, location: @follower }
       else
         format.html { render :new }

@@ -7,14 +7,28 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <p id="notice"><%= notice %></p>
-  
   <body>
+    <div class="navbar">
+      <% if current_user %>
+        <ul class="top_navbar">
+          <li class="left"><a href="/posts"><img src="https://www.pngarts.com/files/4/Instagram-PNG-Image.png" alt="" class="instagram_logo_navbar"></a></li>
+          <li class="right"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+          <li class="right"><%= link_to 'New Post', new_post_path %></li>
+        </ul>
+      </div>
+    <% else %>
+      <div class="navbar">
+        <ul class="top_navbar">
+          <li class="left"><a href="/posts"><img src="https://www.pngarts.com/files/4/Instagram-PNG-Image.png" alt="" class="instagram_logo_navbar"></a></li>
+          <li class="right"><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li class="right"><%= link_to 'Sign in', new_user_session_path %></li>
+        </ul>
+      </div>
+    <% end %>
+    <!-- <p class="notice"><%= notice %></p> -->
+    <p class="alert"><%= alert %></p>
     <div class="container">
       <div class="left_container">
-        <h1>Posts</h1>
-
-        <%= link_to 'New Post', new_post_path %>
           <% @posts.reverse.each do |post| %>
             
               <% if post.image %>
@@ -37,18 +51,32 @@
                 <% post.comments.each do |comment|%>
                   <%= User.find(comment.user_id).username %> said: <%= comment.content %> <br> 
                 <% end %>
-                <%= link_to 'comment', new_comment_path(post_id: post.id) %>
+                <!-- here i had to put @comment as a variable for new comment in the posts controller! -->
+                <%= form_with(model: @comment, local: true) do |form| %>
+                <div class="hidden_field">
+                  <%= hidden_field_tag 'post_id', post.id %>
+                </div>
+                <div class="comment_field">
+                  <%= form.label :comment %>
+                  <%= form.text_area :content %>
+                </div>
+              
+                <div class="actions">
+                  <%= form.submit %>
+                </div>
+              <% end %>
+              
             <% end %>
           <% end %>
       </div>
         <div class="right_container">
-          <h1>People you can follow</h1>
+          <h1>People to follow</h1>
           <% @users.each do |user|%>
             <%= user.username %>
             <form action="/followers/create" method="POST">
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
               <input type="hidden" name="followee" value="<%= user.id%>">
-              <input type="submit" name="submit" value="Follow this user">
+              <input type="submit" name="submit" value="Follow">
             </form>
           <% end %>
         </div>
