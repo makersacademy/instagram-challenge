@@ -4,11 +4,14 @@ addons:
   postgresql: '9.4'
 before_install:
   - gem install bundler
+  - bundle install
+install:
   - nvm install 12
+  - npm i -g yarn
+  - yarn
 cache:
   - bundler
 before_script:
-  - bundle install
   - RAILS_ENV=test bundle exec rails webpacker:compile
   - psql -c 'create database instagram_test;' -U postgres
   - bundle exec rails db:create
