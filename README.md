@@ -15,4 +15,8 @@ I need to login to my account
 As a user
 So that I can be sure my account is secure
 I need to be able to logout of my account
+
+As a user
+So that I know that I am logged in and ready to use the app
+I would like to see a welcome message with my name
 ```
