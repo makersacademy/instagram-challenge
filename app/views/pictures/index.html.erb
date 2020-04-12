@@ -1,23 +1,32 @@
 <%= render 'layouts/header' %>
-<h1>Explore</h1>
 
-<% @pictures.each do |picture|  %>
-  <p><div>
-    <% if picture.image.attached? %>
-      <a href="<%= picture_url(picture) %>"><image width="300" height="300" src="<%= (url_for(picture.image)) %>"></a><br>
-    <% end %>
+<div class="body">
+  <div class="wrapper">
+    <div class="heading">
+      <h2>Explore</h2>
+    </div>
+    <div class="gallery">
+      <% @pictures.each do |picture|  %>
+        <div class="gallery__item">
+          <% if picture.image.attached? %>
+            <a href="<%= picture_url(picture) %>"><image class="gallery__img" src="<%= (url_for(picture.image)) %>"></a><br>
+          <% end %>
 
-    Likes: <%= picture.likes.count %>
+          Likes: <%= picture.likes.count %>
 
-    <% if logged_in? %>(
-      <% if likes?(picture) %>
-        <%= link_to "Unlike", [picture, current_user_like(picture)], method: :delete %>
-      <% else %>
-        <%= link_to "Like", picture_likes_path(picture), method: :post %>
+          <% if logged_in? %>(
+            <% if likes?(picture) %>
+              <%= link_to "Unlike", [picture, current_user_like(picture)], method: :delete %>
+            <% else %>
+              <%= link_to "Like", picture_likes_path(picture), method: :post %>
+            <% end %>
+          )<% end %>
+
+          <div>
+            Comments: <%= picture.comments.count %>
+          </div>
+        </div>
       <% end %>
-    )<% end %>
-
-    <div>
-      Comments: <%= picture.comments.count %>
-  </div></p>
-<% end %>
+    </div>
+  </div>
+</div>
