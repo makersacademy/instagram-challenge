@@ -76,6 +76,7 @@ Linting:
 
 ## Challenges
 So many problems!
+* Accessing Devise views. Solution - `rails generate devise:views users`
 * Yarn issues, not the correct version. Then the webpacker gem wouldn't work - https://github.com/rails/webpacker/issues/940;
 * Issues with gems being the wrong versions - when using carrierwave or AWS use these gems: gem 'carrierwave-aws', gem "fog-aws".
 * Aws/carrierwave upload problems. Firstly my carrierwave config couldn't find my ENV keys, then the bucket created in AWS wouldn't accept that I was the one uploading to it - had to change the permissions. Solution - https://stackoverflow.com/questions/41663925/missing-required-arguments-aws-access-key-id-aws-secret-access-key-in-server; https://www.bitesite.ca/blog/fixing-rails-carrierwave-amazon-s3-403-forbidden-error
