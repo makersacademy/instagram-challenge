@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe AccountsController, type: :controller do
+# RSpec.describe AccountsController, type: :controller do
 
-end
+# end

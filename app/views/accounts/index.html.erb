@@ -25,19 +25,27 @@
         </div>  
       <% end %>
     </div>
-    <div class="col-4">
-          <div class="account-summary">
-            <p>
-              <%= link_to image_tag("#{current_account.image.thumb.url}", class: "profile-pic"), profile_path(current_account.username) if current_account.image.present? %>  
-              <strong><%= link_to current_account.username, profile_path(current_account.username), class: "text-dark" %></strong> <br />
-            </p>
-          <p><%= current_account.full_name %></p>
-          </div>
 
-        <div class="follower-suggestions">
-          <%= link_to "View all", "#", class: "float-right" %></p>
-          <p class="text-muted">Suggestions for you</p>
-        </div>
-        </div>
+    <div class="col-4">
+
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+
+      <%= yield %>
+
+      <div class="account-summary">
+        <p>
+          <%= link_to image_tag("#{current_account.image.thumb.url}", class: "profile-pic"), profile_path(current_account.username) if current_account.image.present? %>  
+          <strong><%= link_to current_account.username, profile_path(current_account.username), class: "text-dark" %></strong> <br />
+        </p>
+      <p><%= current_account.full_name %></p>
+      </div>
+
+      <div class="follower-suggestions">
+        <%= link_to "View all", "#", class: "float-right" %></p>
+        <p class="text-muted">Suggestions for you</p>
+      </div>
+    </div>
   </div>
 </div>

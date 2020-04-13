@@ -10,6 +10,6 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:new, :create, :show]
 
-  root to: "public#homepage"
+  root to: "accounts#index"
 
 end

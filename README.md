@@ -78,7 +78,7 @@ Linting:
 So many problems!
 * Accessing Devise views. Solution - `rails generate devise:views users`
 * Yarn issues, not the correct version. Then the webpacker gem wouldn't work - https://github.com/rails/webpacker/issues/940;
-* Issues with gems being the wrong versions - when using carrierwave or AWS use these gems: gem 'carrierwave-aws', gem "fog-aws".
+* Issues with gems being the wrong versions - when using carrierwave or AWS use these gems: gem 'carrierwave-aws', gem "fog-aws". Helpful walkthrough - http://blog.thefirehoseproject.com/posts/switching-carrierwave-to-use-s3-with-heroku-and-localhost/
 * Aws/carrierwave upload problems. Firstly my carrierwave config couldn't find my ENV keys, then the bucket created in AWS wouldn't accept that I was the one uploading to it - had to change the permissions. Solution - https://stackoverflow.com/questions/41663925/missing-required-arguments-aws-access-key-id-aws-secret-access-key-in-server; https://www.bitesite.ca/blog/fixing-rails-carrierwave-amazon-s3-403-forbidden-error
 * Routing problems with the sign out link - the server keeps reading the pathway as a Get request when the code is a delete/destroy method. Eventually found a work around using 'button_to' with 'link_to', although the css is now off. Solution - https://stackoverflow.com/questions/6557311/no-route-matches-users-sign-out-devise-rails-3
 * The image_tag couldn't read the pathway until I used string interpolation. This also took a while to work out as the example given in the tutorial didn't have this.
