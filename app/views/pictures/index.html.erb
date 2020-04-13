@@ -3,7 +3,7 @@
 <div class="wrapper">
   <div class="wrapper-center">
     <div class="heading">
-      <h2>Explore</h2>
+      <h2>EXPLORE</h2>
     </div>
     <div class="gallery">
       <% @pictures.each do |picture|  %>
@@ -12,19 +12,17 @@
             <a href="<%= picture_url(picture) %>"><image class="gallery__img" src="<%= (url_for(picture.image)) %>"></a><br>
           <% end %>
 
-          Likes: <%= picture.likes.count %>
-
-          <% if logged_in? %>(
+          <% if logged_in? %>
             <% if likes?(picture) %>
               <%= link_to "🖤", [picture, current_user_like(picture)], method: :delete %>
             <% else %>
               <%= link_to "♡", picture_likes_path(picture), method: :post %>
             <% end %>
-          )<% end %>
-
-          <div>
-            Comments: <%= picture.comments.count %>
-          </div>
+          <% else %>
+            ♡
+          <% end %>
+          <%= picture.likes.count %>
+            💬 <%= picture.comments.count %>
         </div>
       <% end %>
     </div>
