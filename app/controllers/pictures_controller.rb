@@ -22,6 +22,8 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(picture_params)
 
+    @picture.user = current_user
+
     respond_to do |format|
       if @picture.save
         format.html { redirect_to pictures_url, notice: 'Picture was successfully created.' }
@@ -51,6 +53,6 @@ class PicturesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def picture_params
-    params.require(:picture).permit(:image, :user_id)
+    params.require(:picture).permit(:image)
   end
 end
