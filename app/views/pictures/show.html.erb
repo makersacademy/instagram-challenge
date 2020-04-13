@@ -1,28 +1,48 @@
-<p>
-  <strong>User:</strong>
-  <%= @picture.user.name %>
-</p>
-<p>
-  <strong>Title:</strong>
-  <%= @picture.title %>
-</p>
 
-<p>
-  <% if @picture.image.attached? %>
-    <image width="600" height="600" src="<%= (url_for(@picture.image)) %>"
-  <% end %>
-</p>
+<body class="show-body">
+  <div class="wrapper">
+    <div class="wrapper-center">
+      <div class="wrapper-middle">
 
-<p>
-  <strong>Caption:</strong>
-  <%= @picture.caption %>
-</p>
+        <div class="show-picture">
+          <% if @picture.image.attached? %>
+            <image src="<%= (url_for(@picture.image)) %>">
+          <% end %>
+        </div>
 
-<h2>Comments</h2>
-<%= render @picture.comments %>
+        <div class="show-details">
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
+          <div class="show-details-caption">
+            <strong><%= @picture.user.name %></strong> · <%= @picture.caption %>
+          </div>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+          <div class="show-details-comments">
+            <%= render @picture.comments %>
+          </div>
+
+          <div class="show-details-likes">
+
+            <% if logged_in? %>
+              <% if likes?(@picture) %>
+                <%= link_to "🖤", [@picture, current_user_like(@picture)], method: :delete %>
+              <% else %>
+                <%= link_to "♡", picture_likes_path(@picture), method: :post %>
+              <% end %>
+            <% end %><br>
+            <%= @picture.likes.count %> likes<br><br>
+            <%= @picture.created_at %>
+
+          </div>
+
+          <div class="show-details-add-comment">
+            <%= render 'comments/form' %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="topcorner">
+      <%= link_to '╳', pictures_path %>
+    </div>
+  </div>
+</body>
