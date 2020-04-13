@@ -1,18 +1,25 @@
 class PicturesController < ApplicationController
   def index
     @pictures = Picture.order(created_at: :desc)
+    store_location('/pictures')
+    # store_location(@picture)
   end
 
   def show
     @picture = Picture.find(params[:id])
+    @back = session[:return_to]
+
   end
 
   def new
     @picture = Picture.new
+    @back = session[:return_to]
+    # @back = @picture
   end
 
   def edit
     @picture = Picture.find(params[:id])
+    @back = session[:return_to]
   end
 
   def create

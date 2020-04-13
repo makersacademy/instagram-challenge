@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    store_location("/users/#{@user.id}")
+    # store_location(@user)
   end
 
   def new
