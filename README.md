@@ -83,5 +83,6 @@ So many problems!
 * Routing problems with the sign out link - the server keeps reading the pathway as a Get request when the code is a delete/destroy method. Eventually found a work around using 'button_to' with 'link_to', although the css is now off. Solution - https://stackoverflow.com/questions/6557311/no-route-matches-users-sign-out-devise-rails-3
 * The image_tag couldn't read the pathway until I used string interpolation. This also took a while to work out as the example given in the tutorial didn't have this.
 * Challenges with writing tests as the tutorial hasn't been test driven.
-* Can't seem to access pictures in a folder in my AWS bucket on my dashboard for no specific reason (unresolved for now)
+* Can't seem to access pictures in a folder in my AWS bucket on my dashboard for no specific reason. Resolved.
 * Pictures are also now unable to upload because of mini_magick issues - `Brew Install ImageMagick` I think has solved it (https://stackoverflow.com/questions/10810356/carrierwave-error-msg-failed-to-manipulate-with-minimagick-maybe-it-is-not-an)
+* Unable to view font awesome characters despite downloading fonts and style sheets. eventually linked to external source - https://stackoverflow.com/questions/11052398/rails-using-font-awesome
