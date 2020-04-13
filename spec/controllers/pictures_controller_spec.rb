@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe PicturesController, type: :controller do
-  login_user
+  include ActionDispatch::TestProcess::FixtureFile
 
-  let(:valid_attributes) { { :image => 'http://image.com', :user_id => User.first.id } }
-  let(:valid_session) { {} }
+  login_user
 
   describe 'GET /' do
     it 'responds with 200' do
@@ -21,6 +20,9 @@ RSpec.describe PicturesController, type: :controller do
   end
 
   describe 'POST /' do
+    let(:file) { fixture_file_upload('../fixtures/cat.jpeg') }
+    let(:valid_attributes) { { :image => file, :user_id => User.first.id } }
+
     before do
       post :create, params: { picture: valid_attributes }
     end
@@ -30,7 +32,7 @@ RSpec.describe PicturesController, type: :controller do
     end
 
     it 'creates a post' do
-      expect(Picture.find_by(:image => 'http://image.com')).to be
+      expect(Picture.find_by(:image => 'cat.jpeg')).to be
     end
   end
 

@@ -25,7 +25,6 @@ class PicturesController < ApplicationController
     respond_to do |format|
       if @picture.save
         format.html { redirect_to pictures_url, notice: 'Picture was successfully created.' }
-        format.json { render :show, status: :created, location: pictures_url }
       else
         format.html { render :new }
         format.json { render json: @picture.errors, status: :unprocessable_entity }
@@ -44,7 +43,7 @@ class PicturesController < ApplicationController
   end
 
   private
-  
+
   # Use callbacks to share common setup or constraints between actions.
   def set_picture
     @picture = Picture.find(params[:id])

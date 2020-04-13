@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  has_many :pictures
+  has_many :pictures, dependent: :destroy
 end
