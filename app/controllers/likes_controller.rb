@@ -6,14 +6,16 @@ class LikesController < ApplicationController
     p params
     # params[:like][:picture_id] = params[:picture_id]
     @like = @picture.likes.create(like_params)
-    redirect_to picture_path(@picture)
+    # redirect_to picture_path(@picture)
+    redirect_back(fallback_location:"/")
   end
 
   def destroy
     @picture = Picture.find(params[:picture_id])
     @like = @picture.likes.find(params[:id])
     @like.destroy
-    redirect_to picture_path(@picture)
+    # redirect_to picture_path(@picture)
+    redirect_back(fallback_location:"/")
   end
 
   private

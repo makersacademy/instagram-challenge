@@ -1,37 +1,39 @@
-<%= form_with model: @picture, local: true do |form| %>
-
-<% if @picture.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@picture.errors.count, "error") %>
-      prevented this image from being saved:
-    </h2>
-    <ul>
-      <% @picture.errors.full_messages.each do |msg| %>
+<div class="show-picture">
+  <% if @picture.image.attached? %>
+    <image src="<%= (url_for(@picture.image)) %>">
+  <% else %>
+    <img>
+  <% end %>
+  <% if @picture.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@picture.errors.count, "error") %>
+        prevented this image from being saved:
+      </h2>
+      <ul>
+        <% @picture.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-      <% end %>
-    </ul>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+<%= form_with model: @picture, local: true, :html => {:class => "show-details"} do |form| %>
+<!-- <div class="show-details"> -->
+  <div class="show-details-caption">
+    <!--<%= form.label :caption %>-->
+    <%= form.text_area :caption, placeholder: "Add a caption" %>
   </div>
-<% end %>
+  <div class="show-details-comments">
+  </div>
+  <div class="show-details-likes">
+    <%= form.label "Upload Image" %><br>
+    <%= form.file_field :image %>
+  </div>
+  <div class="show-details-add-comment">
+    <%= form.submit %><br>
+  </div>
+  <% end %>
 
-<p>
-  <%= form.label :title %><br>
-  <%= form.text_field :title %>
-</p>
-
-<p>
-  <%= form.label "Upload Image" %><br>
-  <%= form.file_field :image %>
-</p>
-
-
-<p>
-  <%= form.label :caption %><br>
-  <%= form.text_area :caption %>
-</p>
-
-<p>
-  <%= form.submit %><br>
-</p>
-
-<% end %>
+<!-- </div> -->
