@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PicturesController, type: :controller do
   login_user
 
-  let(:valid_attributes) { { :image_url => 'http://image.com', :user_id => User.first.id } }
+  let(:valid_attributes) { { :image => 'http://image.com', :user_id => User.first.id } }
   let(:valid_session) { {} }
 
   describe 'GET /' do
@@ -21,19 +21,21 @@ RSpec.describe PicturesController, type: :controller do
   end
 
   describe 'POST /' do
-    it 'responds with 200' do
+    before do
       post :create, params: { picture: valid_attributes }
+    end
+
+    it 'responds with 200' do
       expect(response).to redirect_to(pictures_url)
     end
 
     it 'creates a post' do
-      post :create, params: { picture: valid_attributes }
-      expect(Picture.find_by(:image_url => 'http://image.com')).to be
+      expect(Picture.find_by(:image => 'http://image.com')).to be
     end
   end
 
   describe 'DELETE /destroy' do
-    let(:picture) { create(:picture, user:User.first) }
+    let(:picture) { create(:picture, user: User.first) }
 
     it 'responds with 200' do
       delete :destroy, params: { id: picture.id }

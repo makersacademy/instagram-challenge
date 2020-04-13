@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise', '~> 4.2'
 
+gem 'carrierwave', '~> 2.1'
+
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem "better_errors"

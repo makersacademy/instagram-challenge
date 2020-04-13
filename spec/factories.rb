@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :picture do
-    image_url { "http://image.com" }
+    image { 'http://image.com' }
     user { create(:user) }
   end
 

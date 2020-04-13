@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_142836) do
   enable_extension "plpgsql"
 
   create_table "pictures", force: :cascade do |t|
-    t.string "image_url"
+    t.string "image"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
