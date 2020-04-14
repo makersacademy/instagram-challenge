@@ -60,7 +60,7 @@ ___
 
 ## Deployment
 
-The app is deployed via Heroku at ![Heroku Link](https://instagram-challenge-lw.herokuapp.com/pictures)
+The app is deployed via Heroku. [Link to App](https://instagram-challenge-lw.herokuapp.com/)
 
 If all tests pass, commits on the master branch are automatically deployed to Heroku via Travis
 ___
