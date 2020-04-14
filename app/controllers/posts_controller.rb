@@ -24,7 +24,9 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    p post_params
     @post = Post.new(post_params)
+    @post.avatar.attach(params[:avatar])
 
     respond_to do |format|
       if @post.save
@@ -70,5 +72,6 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.fetch(:post, {})
+      params.permit(:avatar)
     end
 end
