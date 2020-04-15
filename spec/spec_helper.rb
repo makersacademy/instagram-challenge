@@ -4,7 +4,16 @@ require 'factory_bot'
 require_relative './helpers/user_helper'
 require_relative './factories'
 
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  add_filter '/bin/'
+  add_filter '/db/'
+  add_filter '/spec/'
+  add_filter '/app/jobs' 
+  add_filter '/app/mailers'
+  add_filter '/app/channels'
+  add_filter '/app/helpers'
+end
+
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
   SimpleCov::Formatter::HTMLFormatter
