@@ -5,6 +5,10 @@ RSpec.describe PicturesController, type: :controller do
 
   login_user
 
+  let(:user) { User.first }
+  let(:file) { fixture_file_upload('../fixtures/cat.jpeg') }
+  let(:picture_attributes) { { image: file } }
+
   describe 'GET /' do
     it 'responds with 200' do
       get :index
@@ -20,28 +24,25 @@ RSpec.describe PicturesController, type: :controller do
   end
 
   describe 'POST /' do
-    let(:file) { fixture_file_upload('../fixtures/cat.jpeg') }
-    let(:valid_attributes) { { :image => file, :user_id => User.first.id } }
-
     before do
-      post :create, params: { picture: valid_attributes }
+      post :create, params: { picture: picture_attributes }
     end
 
     it 'responds with 200' do
-      expect(response).to redirect_to(pictures_url)
+      expect(response).to redirect_to(pictures_path)
     end
 
     it 'creates a post' do
-      expect(Picture.find_by(:image => 'cat.jpeg')).to be
+      expect(Picture.find_by(image: 'cat.jpeg')).to be
     end
   end
 
   describe 'DELETE /destroy' do
-    let(:picture) { create(:picture, user: User.first) }
+    let(:picture) { create(:picture, user: user) }
 
     it 'responds with 200' do
       delete :destroy, params: { id: picture.id }
-      expect(response).to redirect_to(pictures_url)
+      expect(response).to redirect_to(pictures_path)
     end
   end
 end
