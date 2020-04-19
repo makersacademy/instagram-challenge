@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   default_scope { order created_at: :desc}
   mount_uploader :image, ImageUploader
   belongs_to :account
-  
+
   has_many :likes
   
   before_create :set_active
@@ -18,3 +18,4 @@ class Post < ApplicationRecord
     self.active = true
   end
 end
+

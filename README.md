@@ -86,3 +86,4 @@ So many problems!
 * Can't seem to access pictures in a folder in my AWS bucket on my dashboard for no specific reason. Resolved.
 * Pictures are also now unable to upload because of mini_magick issues - `Brew Install ImageMagick` I think has solved it (https://stackoverflow.com/questions/10810356/carrierwave-error-msg-failed-to-manipulate-with-minimagick-maybe-it-is-not-an)
 * Unable to view font awesome characters despite downloading fonts and style sheets. eventually linked to external source - https://stackoverflow.com/questions/11052398/rails-using-font-awesome
+* Bootstrap can't find module 'jquery' - trying to figure this out. I've tried adding in script lines into the html, require and/or import lines into the application.js, installed the jquery-rails gem
