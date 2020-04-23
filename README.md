@@ -1,40 +1,89 @@
-Instagram Challenge
-===================
+# Instagram Clone
 
-## Instructions
+## Makers Academy - Week 8 (weekend project)
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+First attempt at this, I am using David Battersby's 'Build an Instagram Clone' Youtube tutorial. Interested in how he uses Bootstrap, SCSS and cloud based image storage. 
 
-## Task
+[Outline](#outline) | [Specifications](#specifications) | [Planning](#planning) | [Installation Instructions](#installation-instructions) | [Tech stack](#tech-stack) | [Challenges](#challenges)
 
-Build Instagram: Simple huh!
+## Outline
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+To write a clone of Instagram.
 
-Bonus if you can add filters!
+## Specifications
 
-## How to start
+### User stories
+```
+As an unregistered user
+So that I can make a post
+I want to be able to create an account
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+As a registered user
+So that I can use my account
+I want to be able to log in
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+As a registered user
+So I can share my experiences
+I want to be able to upload a picture
 
-## Code Quality
+As a registered user
+So all my information is in one place
+I want a fully functioning profile page
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+As a registered user
+So that I can contribute to the community
+I want to be able to make comments on other people's pictures
 
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
+As a registered user
+So that I can show my appreciation
+I want to like someone else's picture
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## Installation Instructions
+
+First, clone this repository. Then:
+
+```bash
+> bundle install
+> bin/rails db:create
+> bin/rails db:migrate
+
+> bundle exec rspec # Run the tests to ensure it works
+> bin/rails server # Start the server at localhost:3000
+
+```
+
+## Tech stack
+
+Back-end:
+
+* Ruby/Rails
+
+Front-end:
+* CSS/HTML
+* Javascript
+* JQuery
+
+Testing:
+
+* Capybara
+* RSpec
+* SimpleCov
+
+Linting:
+
+* Rubocop
+
+## Challenges
+So many problems!
+* Accessing Devise views. Solution - `rails generate devise:views users`
+* Yarn issues, not the correct version. Then the webpacker gem wouldn't work - https://github.com/rails/webpacker/issues/940;
+* Issues with gems being the wrong versions - when using carrierwave or AWS use these gems: gem 'carrierwave-aws', gem "fog-aws". Helpful walkthrough - http://blog.thefirehoseproject.com/posts/switching-carrierwave-to-use-s3-with-heroku-and-localhost/
+* Aws/carrierwave upload problems. Firstly my carrierwave config couldn't find my ENV keys, then the bucket created in AWS wouldn't accept that I was the one uploading to it - had to change the permissions. Solution - https://stackoverflow.com/questions/41663925/missing-required-arguments-aws-access-key-id-aws-secret-access-key-in-server; https://www.bitesite.ca/blog/fixing-rails-carrierwave-amazon-s3-403-forbidden-error
+* Routing problems with the sign out link - the server keeps reading the pathway as a Get request when the code is a delete/destroy method. Eventually found a work around using 'button_to' with 'link_to', although the css is now off. Solution - https://stackoverflow.com/questions/6557311/no-route-matches-users-sign-out-devise-rails-3
+* The image_tag couldn't read the pathway until I used string interpolation. This also took a while to work out as the example given in the tutorial didn't have this.
+* Challenges with writing tests as the tutorial hasn't been test driven.
+* Can't seem to access pictures in a folder in my AWS bucket on my dashboard for no specific reason. Resolved.
+* Pictures are also now unable to upload because of mini_magick issues - `Brew Install ImageMagick` I think has solved it (https://stackoverflow.com/questions/10810356/carrierwave-error-msg-failed-to-manipulate-with-minimagick-maybe-it-is-not-an)
+* Unable to view font awesome characters despite downloading fonts and style sheets. eventually linked to external source - https://stackoverflow.com/questions/11052398/rails-using-font-awesome
+* Bootstrap can't find module 'jquery' - trying to figure this out. I've tried adding in script lines into the html, require and/or import lines into the application.js, installed the jquery-rails gem
