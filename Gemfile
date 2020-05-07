@@ -10,10 +10,11 @@ ruby '2.7.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 #tests for rails
-gem 'rspec-rails'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
+gem 'sqlite3'
+
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
@@ -56,6 +57,8 @@ group :test do
   gem 'webdrivers'
   gem 'simplecov',  require: false
   gem 'rake'
+  gem 'rspec'
+  gem 'rspec-rails'
 
 end
 
