@@ -44,6 +44,12 @@ I extracted user stories from the short brief above.
 > I can choose from several filters and apply them to my photo  
 > So I can express my artistic side
 
+- [ ] 2.2.1
+
+> As a Signed In User  
+> I can see a preview of my photo, with the filter I select applied  
+> So I can choose the best filter for my photo
+
 - [ ] 2.3
 
 > As a Signed In User  
@@ -293,7 +299,15 @@ Feature test: User can make a post and choose a filter. Red.
 Green.
 
 Added some SCSS to actually do something with the filter classes.
-Also fixed bug for filter being unset and `filter_class` returning just the first part of the BEM class.
+Also fixed bug for filter being unset and `filter_class` returning just the first part of the BEM class using guard clause.
+
+- [ ] 2.2.1
+
+> As a Signed In User  
+> I can see a preview of my photo, with the filter I select applied  
+> So I can choose the best filter for my photo
+
+Feature test: User can preview filter on image. Red.
 
 
 <!--
