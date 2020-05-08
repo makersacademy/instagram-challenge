@@ -18,4 +18,13 @@ RSpec.feature 'Log In', type: :feature do
     click_on 'Submit'
     expect(page).to have_content 'Incorrect username or password'
   end
+
+  scenario 'user logs in through sessions/new form, WRONG username, and sees error' do
+    User.create(username: 'davedude', email: 'davedude@example.com', password: 'password123', name: 'Dave Dude')
+    visit 'sessions/new'
+    fill_in 'user[username]', with: 'wrongusername'
+    fill_in 'user[password]', with: 'password123'
+    click_on 'Submit'
+    expect(page).to have_content 'Incorrect username or password'
+  end
 end
