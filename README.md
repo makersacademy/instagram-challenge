@@ -114,6 +114,24 @@ Next I added rspec-rails to the development and test groups in the gemfile, bund
 rails generate rspec:install
 ```
 
+I also added simplecov, and simplecov-console to check code coverage, and Rubocop for linting.
+
+### Authentication User Stories
+
+> As a Potential User  
+> I can sign up for an account  
+> So that I can post my own photos
+
+> As a User  
+> I can sign in to my account  
+> So that I can post photos and make comments as me
+
+> As a Signed In User  
+> I can sign out of my account
+> So that I can prevent people posting as me
+
+These first three user stories are all related to authentication. This is perhaps a bigger challenge to start with, but it is so linked to ultimate form of many other user stories, that I feel it will be good to get out of the way early.
+
 ## Code Quality
 
 For linting, you can use the `.rubocop.yml` in this repository (or your own!).
