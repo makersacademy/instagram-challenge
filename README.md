@@ -108,7 +108,11 @@ This project may eventually be deployed to Heroku, so I will initialise it with 
 rails new . --database=postgresql
 ```
 
-Next I added rspec 
+Next I added rspec-rails to the development and test groups in the gemfile, bundled, and isntalled with
+
+```shell
+rails generate rspec:install
+```
 
 ## Code Quality
 
