@@ -15,7 +15,7 @@ RSpec.feature 'Making a Post', type: :feature do
     click_on 'New post'
     attach_file 'post[image]', './images/post-image.jpg'
     click_on 'Post'
-    expect(page).to have_css "li.post"
+    expect(page).to have_css 'li.post'
   end
 
   scenario 'User can make a post adding a filter' do
@@ -23,13 +23,15 @@ RSpec.feature 'Making a Post', type: :feature do
     attach_file 'post[image]', './images/post-image.jpg'
     select 'Greyscale', from: 'post[filter]'
     click_on 'Post'
-    expect(page).to have_css "img.filter_greyscale"
+    expect(page).to have_css 'img.filter_greyscale'
   end
 
-  scenario 'User can preview filter on image' do
+  xscenario 'User can preview filter on image' do
     click_on 'New post'
     attach_file 'post[image]', './images/post-image.jpg'
     select 'Greyscale', from: 'post[filter]'
-    expect(page).to have_css "img.filter_greyscale"
+    expect(page).to have_select 'post[filter]', selected: 'Greyscale'
+    image = find(:css, '#previewImage')
+    expect(image).to have_selector '.filter_greyscale'
   end
 end
