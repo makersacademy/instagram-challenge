@@ -18,7 +18,7 @@ I extracted user stories from the short brief above.
 > I can sign up for an account  
 > So that I can post my own photos
 
-- [ ] 1.2
+- [x] 1.2
 
 > As a User with an existing account  
 > I can sign in to my account  
@@ -162,7 +162,7 @@ I also added simplecov, and simplecov-console to check code coverage, and Ruboco
 
 These first three user stories are all related to authentication. This is perhaps a bigger challenge to start with, but it is so linked to ultimate form of many other user stories, that I feel it will be good to get out of the way early.
 
-Wrote a feature test: user signs up through users/new form and sees their username. Red.
+Wrote a feature test: user signs up through users/new form and sees their username. (Happy Path). Red.
 
 - Generated a users controller with new and create routes with `rails g controller users`.
 - Generated a User model according to the schema with `rails g model user username:string{20}:uniq name:string{60} email:string{60}:uniq password_digest:string`.
@@ -183,9 +183,14 @@ Wrote a feature test: user signs up through users/new form and sees their userna
 
 Test green.
 
+Wrote a feature test: user signs up through users/new form, tries existing username, and sees error. (Unhappy Path). Red.
+
+- 
+
+
 ### User Log In
 
-- [ ] 1.2
+- [x] 1.2
 
 > As a User with an existing account  
 > I can sign in to my account  
@@ -211,6 +216,9 @@ Green.
 
 Wrote a feature test: user logs in through sessions/new form, WRONG username, and sees error. (Unhappy Path). Red.
 
+- In sessions create, added `@user` to the if statement, to check if the user was actually found.
+
+Green.
 
 ### User Log Out
 
