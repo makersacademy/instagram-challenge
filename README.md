@@ -24,7 +24,7 @@ I extracted user stories from the short brief above.
 > I can sign in to my account  
 > So that I can post photos and make comments as me
 
-- [ ] 1.3
+- [x] 1.3
 
 > As a Signed In User  
 > I can sign out of my account  
@@ -174,7 +174,7 @@ Feature test: User signs up through users/new form and sees their username. (Hap
 - Added `has_secure_password` helper method to User model. (this causes the `User.create` method to encrypt password with bcrypt).
 - In the user create route, created a user with `User.create`, passing in `user_params`.
 - `user_params` is a method that returns the permitted user parameters.
-- The users id is added to the `session` and the route redirects to `root_path`.
+- The users id is added to the `session` and the route redirects to '/'.
 - Added a sessions controller with `rails g controller sessions` (this controller will provide routes for the existing user log in page, as well as the welcome page).
 - Added index route to sessions, and added this as the root in routes config.
 - Added a couple of helper methods to the application controller: `current_user`, which finds returns a user based on the `session` user id, and `logged_in?`, which returns true if the `current_user` is not nil.
@@ -187,7 +187,7 @@ Feature test: User signs up through users/new form, tries existing username, and
 
 - Added to User model that it validates username as unique.
 - Refactored user create route to use `User.new` instead of `User.create`.
-- Then if `@user.save` is true (i.e. it was able to be written, and no errors with unique username), assign id to `session` and redirect to `root_path`
+- Then if `@user.save` is true (i.e. it was able to be written, and no errors with unique username), assign id to `session` and redirect to '/'
 - else assign `@errors` with `@user.errors` and render 'new'.
 - Added to users new view executive ruby for if `@error` render a h2 element with This username or email already in use.
 
@@ -213,13 +213,13 @@ Feature test: User logs in through sessions/new form, correct password, and sees
 - Added sessions create route.
 - Found the user by username.
 - Added the user id to `session`.
-- redirected to `root_path`.
+- redirected to '/'.
 
 Green.
 
 Feature test: User logs in through sessions/new form, WRONG password, and sees error. (Unhappy Path). Red.
 
-- In sessions create route, added an if authenticating the user with `@user.authenticate(user_params[:password])` returns true, assign user id to `session` and redirect to `root_path`.
+- In sessions create route, added an if authenticating the user with `@user.authenticate(user_params[:password])` returns true, assign user id to `session` and redirect to '/'.
 - else `@error` is true, and render 'new'
 - Added executive ruby, if `@error` render a h2 element with "Incorrect username or password".
 
@@ -233,7 +233,7 @@ Green.
 
 ### User Log Out
 
-- [ ] 1.3
+- [x] 1.3
 
 > As a Signed In User  
 > I can sign out of my account  
@@ -244,6 +244,13 @@ Feature test: User is logged in, then clicks log out button, no longer sees thei
 - Added to the sessions controller a route for destroy.
 - On sessions index view added a button to sessions with method of delete.
 - In routes config, switched sessions to `resources` to `resource` (to allow deletion without specifying an id, there is only ever one session).
-- Added destroy route to sessions controller, clearing the `session` and redirecting to `root_path`.
+- Added destroy route to sessions controller, clearing the `session` and redirecting to '/'.
 
+Green.
+
+Refactoring: 
+
+- Cleaned up excess routes by specifying only sessions index, new, create, destroy.
+- Switched to using `root_path` instead of redirecting to '/'.
+- 
 <!-- <%= button_to "Sign Up", new_user_path, method: :get  -->
