@@ -12,14 +12,9 @@ RSpec.feature 'Log out', type: :feature do
   end
 
   scenario 'User can make a post' do
-    visit 'posts/new'
-    attach_file 'post[image]', '/images/insta-clone-crc-table-schema.png'
-    fill_in 'user[email]', with: 'davedude@example.com'
-    fill_in 'user[username]', with: 'davedude'
-    fill_in 'user[password]', with: 'password123'
+    click_on 'New post'
+    attach_file 'post[image]', '/images/post-image.jpg'
     click_on 'Submit'
-    expect(page).to have_content 'davedude'
-    click_on 'Log out'
-    expect(page).to_not have_content 'davedude'
+    expect(page).to have_css "img[src='post-image.jpg'"
   end
 end
