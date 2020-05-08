@@ -269,7 +269,9 @@ Feature test: User can make a post. Red.
 - Added posts resources nested within user resources in routes config.
 - Added button to root view to make new post, going to the new user post path, passing in the current user.
 - Added route for new posts.
-- Added view for new posts.
+- Added view for new posts, with form to build a post for current user.
+- Added a route to create post, creating a post on the current user with the params from the form, redirecting to root_path.
+- Added executive ruby to the sessions index view if the user is logged in, to loop through their posts and render them.
 
 <!--
 
