@@ -137,4 +137,6 @@ Wrote a feature test: user signs up through users/new form and sees their userna
 - Generated a users controller with new and create routes with `rails g controller users`.
 - Generated a User model according to the schema with `rails g model user username:string{20}:uniq name:string{60} email:string{60}:uniq password_digest:string`.
 - Migrated the database with `db:migrate`.
-- Added a form with scope for the user, posting 
+- Added a form with scope for the user, posting to the users_path (which will go to create by default).
+- Added to the routes config a resource for users, allowing only new and create
+- Added a user create route
