@@ -32,7 +32,7 @@ I extracted user stories from the short brief above.
 
 ### Posting
 
-- [ ] 2.1
+- [x] 2.1
 
 > As a Signed In User  
 > I can post a photo  
@@ -255,7 +255,7 @@ Refactoring:
 
 ### Making a Post
 
-- [ ] 2.1
+- [x] 2.1
 
 > As a Signed In User  
 > I can post a photo  
@@ -273,6 +273,7 @@ Feature test: User can make a post. Red.
 - Added a route to create post, creating a post on the current user with the params from the form, redirecting to root_path.
 - Added executive ruby to the sessions index view if the user is logged in, to loop through their posts and render them.
 
+Green.
 <!--
 
 ### Adding Filters
