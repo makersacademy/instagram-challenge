@@ -102,7 +102,11 @@ Based on the user stories I wrote some CRC cards, and made table schema:
 
 ### Initialising Rails
 
-This project may eventually be deployed to Heroku, so I will initialise it with
+This project may eventually be deployed to Heroku, so I will initialise it with a Postgresql database, in this repo.
+
+```shell
+rails new . --database=postgresql
+```
 
 ## Code Quality
 
