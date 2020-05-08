@@ -309,6 +309,13 @@ Also fixed bug for filter being unset and `filter_class` returning just the firs
 
 Feature test: User can preview filter on image. Red.
 
+- Added an image to the form with an empty src attribute and id of `previewImage`.
+- Added a new JavaScript file in `post/index.js` and required it into the application js.
+- Used JavaScript to add an event listener to the image upload input, and on change pass the file through a `FileReader` to get a DataUrl which is then set to the `previewImage`'s src.
+- Also added an event listener to the filter select and applied the a filter class based on the selection to the preview image.
+
+Test theoretically green. _I can't work out how to actually get capybara to register the change of class based on the filter selection. I guess this is kind of manually tested/spiked. The test exists, but I have pended it._
+
 
 <!--
 
