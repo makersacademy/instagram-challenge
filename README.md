@@ -137,3 +137,4 @@ Wrote a feature test: user signs up through users/new form and sees their userna
 - Generated a users controller with new and create routes with `rails g controller users`.
 - Generated a User model according to the schema with `rails g model user username:string{20}:uniq name:string{60} email:string{60}:uniq password_digest:string`.
 - Migrated the database with `db:migrate`.
+- Added a form with scope for the user, posting 
