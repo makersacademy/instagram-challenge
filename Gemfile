@@ -14,10 +14,12 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 gem 'pg'
 # Use Puma as the app server
 gem 'sqlite3'
-
+#allows quick form building
 gem 'simple_form'
-
+#bulma adds css support 
 gem 'bulma-rails', '~> 0.8.0'
+#picture upload support for simple form
+gem 'simple_form_fancy_uploads'
 
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
