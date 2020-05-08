@@ -108,6 +108,8 @@ This project may eventually be deployed to Heroku, so I will initialise it with 
 rails new . --database=postgresql
 ```
 
+Next I added rspec 
+
 ## Code Quality
 
 For linting, you can use the `.rubocop.yml` in this repository (or your own!).
