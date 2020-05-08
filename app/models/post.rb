@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   has_one_attached :image
 
   def filter_class
-    "filter_#{filter.downcase}"
+    if filter != ""
+      "filter_#{filter.downcase}"
+    end
   end
 end
