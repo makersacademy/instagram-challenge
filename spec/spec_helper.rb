@@ -11,6 +11,14 @@ SimpleCov.start 'rails' do
   add_filter '/spec/' # for rspec
 end
 
+require 'capybara/rspec'
+require 'selenium/webdriver'
+Capybara.javascript_driver = :selenium_chrome_headless
+
 RSpec.configure do |config|
+
+  config.before(:each, type: :system, js: true) do
+		driven_by(:selenium_chrome_headless)
+	end
 
 end
