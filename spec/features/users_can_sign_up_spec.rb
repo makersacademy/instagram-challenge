@@ -34,5 +34,4 @@ RSpec.feature 'Sign Up', type: :feature do
     click_on 'Submit'
     expect(page).to have_content 'This username or email already in use'
   end
-
 end
