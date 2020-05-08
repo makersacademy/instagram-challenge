@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
       @error = true
-      render 'sessions/new'
+      render 'new'
     end
   end
 
