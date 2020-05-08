@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resource :sessions, only: [:index, :new, :create, :destroy]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do
+    resources :posts, shallow: true
+  end
   root 'sessions#index'
 end

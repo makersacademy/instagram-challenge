@@ -1,9 +1,21 @@
-<h1>Instagram</h1>
+<h1>Neogram</h1>
 
 <% if logged_in? %>
 
 <h2>Hello <%= current_user.username %></h2>
 
+<%= button_to "New post", new_user_post_path(current_user), method: :get %>
+
 <%= button_to "Log out", sessions_path, method: :delete %>
 
+<% end %>
+
+<% if logged_in? %>
+<ul>
+  <% @posts.each do |post| %>
+  <li class="post">
+    <%= image_tag post.image %>
+  </li>
+  <% end%>
+</ul>
 <% end %>
