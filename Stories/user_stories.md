@@ -1,4 +1,6 @@
-## User stories
+# User stories
+
+## Complete
 
 ### [1](1_todo.md)
 
@@ -28,6 +30,9 @@ As a user,
 So that I can protect my account,
 I want to be able to log out.
 ```
+
+
+## Incomplete
 
 ### [5](5_todo.md)
 ```

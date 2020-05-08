@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
+## Current status
 
+To see user stories and current status, [click here](Stories/user_stories.md)
 ## Instructions
 
 * Challenge time: one weekend
