@@ -191,7 +191,17 @@ Test green.
 > I can sign in to my account  
 > So that I can post photos and make comments as me
 
-Wrote for a user  
+Wrote a feature test: user logs in through sessions/new form and sees their username. They get their password correct (happy path). Red.
+
+- Added a form to sessions/new view with scope for user, posting to `sessions_path` which will go to sessions create.
+- Added sessions create route.
+- Found the user by username
+- Added the user id to `session`
+- redirected to '/'
+
+Green.
+
+
 
 ### User Log Out
 
