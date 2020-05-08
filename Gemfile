@@ -15,6 +15,10 @@ gem 'pg'
 # Use Puma as the app server
 gem 'sqlite3'
 
+gem 'simple_form'
+
+gem 'bulma-rails', '~> 0.8.0'
+
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
