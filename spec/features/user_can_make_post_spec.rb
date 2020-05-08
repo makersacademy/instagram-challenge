@@ -26,12 +26,13 @@ RSpec.feature 'Making a Post', type: :feature do
     expect(page).to have_css 'img.filter_greyscale'
   end
 
-  xscenario 'User can preview filter on image' do
+  scenario 'User can preview filter on image', js: true do
     click_on 'New post'
     attach_file 'post[image]', './images/post-image.jpg'
     select 'Greyscale', from: 'post[filter]'
     expect(page).to have_select 'post[filter]', selected: 'Greyscale'
-    image = find(:css, '#previewImage')
-    expect(image).to have_selector '.filter_greyscale'
+    # image = find(:css, '.filter_greyscale')
+    # p image
+    expect(page).to have_selector '.filter_greyscale'
   end
 end
