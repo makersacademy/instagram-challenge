@@ -138,13 +138,13 @@ Based on the user stories I wrote some CRC cards, and made table schema:
 
 ### Initialising Rails
 
-This project may eventually be deployed to Heroku, so I will initialise it with a Postgresql database, in this repo.
+This project may eventually be deployed to Heroku, so I will initialise it with a Postgresql database, in this repo:
 
 ```shell
 rails new . --database=postgresql
 ```
 
-Next I added rspec-rails to the development and test groups in the gemfile, bundled, and isntalled with
+Next I added rspec-rails to the development and test groups in the Gemfile, bundled, and installed with:
 
 ```shell
 rails generate rspec:install
@@ -170,7 +170,7 @@ Feature test: User signs up through users/new form and sees their username. (Hap
 - Added a form with scope for the user, posting to the `users_path` (which will go to create by default).
 - Added to the routes config a resource for users, allowing only new and create
 - Added a user create route. It renders the `params` for now.
-- Added bcrypt to the gemfile.
+- Added bcrypt to the Gemfile.
 - Added `has_secure_password` helper method to User model. (this causes the `User.create` method to encrypt password with bcrypt).
 - In the user create route, created a user with `User.create`, passing in `user_params`.
 - `user_params` is a method that returns the permitted user parameters.
@@ -248,9 +248,49 @@ Feature test: User is logged in, then clicks log out button, no longer sees thei
 
 Green.
 
-Refactoring: 
+Refactoring:
 
 - Cleaned up excess routes by specifying only sessions index, new, create, destroy.
 - Switched to using `root_path` instead of redirecting to '/'.
-- 
-<!-- <%= button_to "Sign Up", new_user_path, method: :get  -->
+
+### Making a Post
+
+- [ ] 2.1
+
+> As a Signed In User  
+> I can post a photo  
+> So everyone can see what I'm doing
+
+
+
+### Adding Filters
+
+- [ ] 2.2
+
+> As a Signed In User  
+> I can choose from several filters and apply them to my photo  
+> So I can express my artistic side
+
+### Editing Post Filter
+
+- [ ] 2.3
+
+> As a Signed In User  
+> I can change the filter on my photo  
+> In case I don't like that filter any more
+
+### Deleting Posts
+
+- [ ] 2.4
+
+> As a Signed In User  
+> I can delete my photos  
+> So I can erase embarrassing memories
+
+### Listing Posts
+
+- [ ] 2.5
+
+> As a User  
+> I can see a feed of photos, newest to oldest  
+> So I can see what is going on with everyone recently
