@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Log out', type: :feature do
+RSpec.feature 'Making a Post', type: :feature do
 
   before(:each) do
     visit 'users/new'
