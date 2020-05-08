@@ -23,6 +23,6 @@ RSpec.feature 'Making a Post', type: :feature do
     attach_file 'post[image]', './images/post-image.jpg'
     select 'Greyscale', from: 'post[filter]'
     click_on 'Post'
-    expect(page).to have_css "li.filter_greyscale"
+    expect(page).to have_css "img.filter_greyscale"
   end
 end
