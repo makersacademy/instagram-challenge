@@ -12,13 +12,19 @@ I extracted user stories from the short brief above.
 
 ### Authentication
 
+- [x] 1.1
+
 > As a Potential User  
 > I can sign up for an account  
 > So that I can post my own photos
 
-> As a User  
+- [ ] 1.2
+
+> As a User with an existing account  
 > I can sign in to my account  
 > So that I can post photos and make comments as me
+
+- [ ] 1.3
 
 > As a Signed In User  
 > I can sign out of my account  
@@ -26,21 +32,31 @@ I extracted user stories from the short brief above.
 
 ### Posting
 
+- [ ] 2.1
+
 > As a Signed In User  
 > I can post a photo  
 > So everyone can see what I'm doing
+
+- [ ] 2.2
 
 > As a Signed In User  
 > I can choose from several filters and apply them to my photo  
 > So I can express my artistic side
 
+- [ ] 2.3
+
 > As a Signed In User  
 > I can change the filter on my photo  
 > In case I don't like that filter any more
 
+- [ ] 2.4
+
 > As a Signed In User  
 > I can delete my photos  
 > So I can erase embarrassing memories
+
+- [ ] 2.5
 
 > As a User  
 > I can see a feed of photos, newest to oldest  
@@ -48,25 +64,37 @@ I extracted user stories from the short brief above.
 
 ### Commenting
 
+- [ ] 3.1
+
 > As a Signed In User  
 > I can comment on a photo  
 > So I can that user them what I think of it
+
+- [ ] 3.2
 
 > As a Signed In User  
 > I can edit a comment I have made  
 > So I can correct spelling errors
 
+- [ ] 3.3
+
 > As a Signed In User  
 > I can delete a comment I have made  
 > So I can erase embarrassing things I have said
+
+- [ ] 3.4
 
 > As a User  
 > I can see all comments on a photo from newest to oldest  
 > So I can see the freshest opinions on my photo
 
+- [ ] 3.5
+
 > As a User  
 > I can see the username of who made a comment  
 > So I can tell who is interacting with me
+
+- [ ] 3.6
 
 > As a User  
 > I can see the time a comment was made  
@@ -74,19 +102,27 @@ I extracted user stories from the short brief above.
 
 ### Liking
 
+- [ ] 4.1
+
 > As a Signed In User  
 > I can like a photo  
 > So I can show appreciation without commenting
 
+- [ ] 4.2
+
 > As a Signed In User  
 > I rescind a like  
 > In case I change my mind about liking that photo
+
+- [ ] 4.3
 
 > As a User  
 > I can see how many likes a photo has  
 > So I can estimate my popularity
 
 ### Style
+
+- [ ] 5.1
 
 > As a Potential User  
 > So that I am enticed to join  
@@ -116,19 +152,13 @@ rails generate rspec:install
 
 I also added simplecov, and simplecov-console to check code coverage, and Rubocop for linting.
 
-### Authentication User Stories
+### User Sign Up
+
+- [x] 1.1
 
 > As a Potential User  
 > I can sign up for an account  
 > So that I can post my own photos
-
-> As a User  
-> I can sign in to my account  
-> So that I can post photos and make comments as me
-
-> As a Signed In User  
-> I can sign out of my account  
-> So that I can prevent people posting as me
 
 These first three user stories are all related to authentication. This is perhaps a bigger challenge to start with, but it is so linked to ultimate form of many other user stories, that I feel it will be good to get out of the way early.
 
@@ -153,4 +183,22 @@ Wrote a feature test: user signs up through users/new form and sees their userna
 
 Test green.
 
-<!-- <%= button_to "Sign Up", new_user_path, method: :get %> -->
+### User Log In
+
+- [ ] 1.2
+
+> As a User with an existing account  
+> I can sign in to my account  
+> So that I can post photos and make comments as me
+
+Wrote for a user  
+
+### User Log Out
+
+- [ ] 1.3
+
+> As a Signed In User  
+> I can sign out of my account  
+> So that I can prevent people posting as me
+
+<!-- <%= button_to "Sign Up", new_user_path, method: :get  -->
