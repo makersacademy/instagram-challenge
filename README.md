@@ -261,7 +261,7 @@ Refactoring:
 > I can post a photo  
 > So everyone can see what I'm doing
 
-
+<!-- 
 
 ### Adding Filters
 
