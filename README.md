@@ -292,6 +292,8 @@ Feature test: User can make a post and choose a filter. Red.
 
 Green.
 
+Added some SCSS to actually do something with the filter classes.
+
 
 <!--
 

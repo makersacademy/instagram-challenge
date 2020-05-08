@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  
-
   def index
     @posts = Post.all
   end
