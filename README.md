@@ -274,7 +274,6 @@ Feature test: User can make a post. Red.
 - Added executive ruby to the sessions index view if the user is logged in, to loop through their posts and render them.
 
 Green.
-<!--
 
 ### Adding Filters
 
@@ -283,6 +282,10 @@ Green.
 > As a Signed In User  
 > I can choose from several filters and apply them to my photo  
 > So I can express my artistic side
+
+Feature test: User can make a post and choose a filter. Red.
+
+<!--
 
 ### Editing Post Filter
 
