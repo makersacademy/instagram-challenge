@@ -1,0 +1,31 @@
+<div class="show-picture">
+  <% if @picture.image.attached? %>
+    <image width="600" height="600" src="<%= (url_for(@picture.image)) %>">
+  <% end %>
+</div>
+
+<div class="show-details">
+  <p>
+    <strong>User:</strong>
+    <%= @picture.user.name %>
+  </p>
+  <p>
+    <strong>Title:</strong>
+    <%= @picture.title %>
+  </p>
+
+
+  <p>
+    <strong>Caption:</strong>
+    <%= @picture.caption %>
+  </p>
+
+  <h2>Comments</h2>
+  <%= render @picture.comments %>
+
+  <h2>Add a comment:</h2>
+  <%= render 'comments/form' %>
+
+  <%= link_to 'Edit', edit_picture_path(@picture) %> |
+  <%= link_to 'Back', pictures_path %>
+</div>

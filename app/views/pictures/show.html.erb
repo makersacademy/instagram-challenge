@@ -1,0 +1,48 @@
+
+<body class="show-body">
+  <div class="wrapper">
+    <div class="wrapper-center">
+      <div class="wrapper-middle">
+
+        <div class="show-picture">
+          <% if @picture.image.attached? %>
+            <image src="<%= (url_for(@picture.image)) %>">
+          <% end %>
+        </div>
+
+        <div class="show-details">
+
+          <div class="show-details-caption">
+            <strong><%= @picture.user.name %></strong> · <%= @picture.caption %>
+          </div>
+
+          <div class="show-details-comments">
+            <%= render @picture.comments %>
+          </div>
+
+          <div class="show-details-likes">
+
+            <% if logged_in? %>
+              <% if likes?(@picture) %>
+                <%= link_to "🖤", [@picture, current_user_like(@picture)], method: :delete %>
+              <% else %>
+                <%= link_to "♡", picture_likes_path(@picture), method: :post %>
+              <% end %>
+            <% end %><br>
+            <%= @picture.likes.count %> likes<br><br>
+            <%= @picture.created_at %>
+
+          </div>
+
+          <div class="show-details-add-comment">
+            <%= render 'comments/form' %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="topcorner">
+      <%= link_to '╳', @back %>
+    </div>
+  </div>
+</body>

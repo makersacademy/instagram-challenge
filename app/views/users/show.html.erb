@@ -1,0 +1,42 @@
+<%= render 'layouts/header' %>
+
+<div class="wrapper">
+  <div class="wrapper-center">
+    <div class="heading">
+      <% provide(:title, @user.name) %>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+      <h2>POSTS</h2>
+    </div>
+    <div class="gallery">
+      <% current_user.pictures.each do |picture|  %>
+        <div class="gallery__item">
+          <% if picture.image.attached? %>
+            <a href="<%= picture_url(picture) %>"><image class="gallery__img" src="<%= (url_for(picture.image)) %>"></a><br>
+            <% end %>
+
+            <% if logged_in? %>
+              <% if likes?(picture) %>
+                <%= link_to "🖤", [picture, current_user_like(picture)], method: :delete %>
+              <% else %>
+                <%= link_to "♡", picture_likes_path(picture), method: :post %>
+              <% end %>
+            <% else %>
+              ♡
+            <% end %>
+            <%= picture.likes.count %>
+              💬 <%= picture.comments.count %>
+
+          <div class="topcorner-img">
+            <%= link_to '╳', picture_path(picture),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+            <%= link_to '✎', edit_picture_path(picture) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
