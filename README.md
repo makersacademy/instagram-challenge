@@ -162,7 +162,7 @@ I also added simplecov, and simplecov-console to check code coverage, and Ruboco
 
 These first three user stories are all related to authentication. This is perhaps a bigger challenge to start with, but it is so linked to ultimate form of many other user stories, that I feel it will be good to get out of the way early.
 
-Wrote a feature test: user signs up through users/new form and sees their username. (Happy Path). Red.
+Feature test: User signs up through users/new form and sees their username. (Happy Path). Red.
 
 - Generated a users controller with new and create routes with `rails g controller users`.
 - Generated a User model according to the schema with `rails g model user username:string{20}:uniq name:string{60} email:string{60}:uniq password_digest:string`.
@@ -174,7 +174,7 @@ Wrote a feature test: user signs up through users/new form and sees their userna
 - Added `has_secure_password` helper method to User model. (this causes the `User.create` method to encrypt password with bcrypt).
 - In the user create route, created a user with `User.create`, passing in `user_params`.
 - `user_params` is a method that returns the permitted user parameters.
-- The users id is added to the `session` and the route redirects to '/'.
+- The users id is added to the `session` and the route redirects to `root_path`.
 - Added a sessions controller with `rails g controller sessions` (this controller will provide routes for the existing user log in page, as well as the welcome page).
 - Added index route to sessions, and added this as the root in routes config.
 - Added a couple of helper methods to the application controller: `current_user`, which finds returns a user based on the `session` user id, and `logged_in?`, which returns true if the `current_user` is not nil.
@@ -183,17 +183,17 @@ Wrote a feature test: user signs up through users/new form and sees their userna
 
 Test green.
 
-Wrote a feature test: user signs up through users/new form, tries existing username, and sees error. (Unhappy Path). Red.
+Feature test: User signs up through users/new form, tries existing username, and sees error. (Unhappy Path). Red.
 
 - Added to User model that it validates username as unique.
 - Refactored user create route to use `User.new` instead of `User.create`.
-- Then if `@user.save` is true (i.e. it was able to be written, and no errors with unique username), assign id to `session` and redirect to '/'
+- Then if `@user.save` is true (i.e. it was able to be written, and no errors with unique username), assign id to `session` and redirect to `root_path`
 - else assign `@errors` with `@user.errors` and render 'new'.
 - Added to users new view executive ruby for if `@error` render a h2 element with This username or email already in use.
 
 Green.
 
-Wrote a feature test: user signs up through users/new form, tries existing email, and sees error. (Unhappy Path). Red.
+Feature test: User signs up through users/new form, tries existing email, and sees error. (Unhappy Path). Red.
 
 - Added to User model validation for email uniqueness.
 
@@ -207,25 +207,25 @@ Green.
 > I can sign in to my account  
 > So that I can post photos and make comments as me
 
-Wrote a feature test: user logs in through sessions/new form, correct password, and sees their username. (Happy Path). Red.
+Feature test: User logs in through sessions/new form, correct password, and sees their username. (Happy Path). Red.
 
 - Added a form to sessions/new view with scope for user, posting to `sessions_path` which will go to sessions create.
 - Added sessions create route.
-- Found the user by username
-- Added the user id to `session`
-- redirected to '/'
+- Found the user by username.
+- Added the user id to `session`.
+- redirected to `root_path`.
 
 Green.
 
-Wrote a feature test: user logs in through sessions/new form, WRONG password, and sees error. (Unhappy Path). Red.
+Feature test: User logs in through sessions/new form, WRONG password, and sees error. (Unhappy Path). Red.
 
-- In sessions create route, added an if authenticating the user with `@user.authenticate(user_params[:password])` returns true, assign user id to `session` and redirect to '/'.
+- In sessions create route, added an if authenticating the user with `@user.authenticate(user_params[:password])` returns true, assign user id to `session` and redirect to `root_path`.
 - else `@error` is true, and render 'new'
 - Added executive ruby, if `@error` render a h2 element with "Incorrect username or password".
 
 Green.
 
-Wrote a feature test: user logs in through sessions/new form, WRONG username, and sees error. (Unhappy Path). Red.
+Feature test: User logs in through sessions/new form, WRONG username, and sees error. (Unhappy Path). Red.
 
 - In sessions create, added `@user` to the if statement, to check if the user was actually found.
 
@@ -238,5 +238,12 @@ Green.
 > As a Signed In User  
 > I can sign out of my account  
 > So that I can prevent people posting as me
+
+Feature test: User is logged in, then clicks log out button, no longer sees their username. Red.
+
+- Added to the sessions controller a route for destroy.
+- On sessions index view added a button to sessions with method of delete.
+- In routes config, switched sessions to `resources` to `resource` (to allow deletion without specifying an id, there is only ever one session).
+- Added destroy route to sessions controller, clearing the `session` and redirecting to `root_path`.
 
 <!-- <%= button_to "Sign Up", new_user_path, method: :get  -->
