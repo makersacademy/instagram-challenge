@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
 
+  def new
+  end
+
   private
 
   def post_params
