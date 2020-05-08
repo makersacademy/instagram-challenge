@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new
+    @post = Post.create(post_params)
     if @post.save
       redirect_to @post
     else
@@ -15,9 +15,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+  end
+
   private
 
   def post_params
-    params.require(:post).permit(:location, :description)
+    params.require(:post).permit(:title, :content)
   end
 end
