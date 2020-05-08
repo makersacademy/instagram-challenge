@@ -9,3 +9,13 @@
 <%= button_to "Log out", sessions_path, method: :delete %>
 
 <% end %>
+
+<% if logged_in? && current_user.posts %>
+<ul>
+  <% current_user.posts.each do |post| %>
+  <li class="post">
+    <%= image_tag post.image %>
+  </li>
+  <% end%>
+</ul>
+<% end %>
