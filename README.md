@@ -191,7 +191,7 @@ Test green.
 > I can sign in to my account  
 > So that I can post photos and make comments as me
 
-Wrote a feature test: user logs in through sessions/new form and sees their username. They get their password correct (happy path). Red.
+Wrote a feature test: user logs in through sessions/new form, correct password, and sees their username. (Happy Path). Red.
 
 - Added a form to sessions/new view with scope for user, posting to `sessions_path` which will go to sessions create.
 - Added sessions create route.
@@ -201,6 +201,15 @@ Wrote a feature test: user logs in through sessions/new form and sees their user
 
 Green.
 
+Wrote a feature test: user logs in through sessions/new form, WRONG password, and sees error. (Unhappy Path). Red.
+
+- In sessions create route, added an if authenticating the user with `@user.authenticate(user_params[:password])` returns true, assign user id to `session` and redirect to '/'.
+- else @error is true, and render 'sessions/new'
+- Added executive ruby, if @error render a h2 element with "Incorrect username or password".
+
+Green.
+
+Wrote a feature test: user logs in through sessions/new form, WRONG username, and sees error. (Unhappy Path). Red.
 
 
 ### User Log Out
