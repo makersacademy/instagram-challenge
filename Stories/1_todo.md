@@ -8,5 +8,8 @@ I want to be view the Instagram homepage.
   
    ``` rails new * ```
 
+- [X] Setup rspec
+  
+    ``` rails generate rspec:install ```
 - [ ] Setup Controller
 - [ ] Setup Routes
