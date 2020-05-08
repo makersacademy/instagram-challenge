@@ -185,8 +185,13 @@ Test green.
 
 Wrote a feature test: user signs up through users/new form, tries existing username, and sees error. (Unhappy Path). Red.
 
-- 
+- Added to Users model that it validates username as unique.
+- Refactored user create route to use `User.new` instead of `User.create`.
+- Then if `@user.save` is true (i.e. it was able to be written, and no errors with unique username), assign id to `session` and redirect to '/'
+- else assign `@errors` with `@user.errors` and render 'new'.
+- Added to users new view executive ruby for if `@error` render a h2 element with This username or email already in use.
 
+Green.
 
 ### User Log In
 
@@ -209,8 +214,8 @@ Green.
 Wrote a feature test: user logs in through sessions/new form, WRONG password, and sees error. (Unhappy Path). Red.
 
 - In sessions create route, added an if authenticating the user with `@user.authenticate(user_params[:password])` returns true, assign user id to `session` and redirect to '/'.
-- else @error is true, and render 'sessions/new'
-- Added executive ruby, if @error render a h2 element with "Incorrect username or password".
+- else `@error` is true, and render 'new'
+- Added executive ruby, if `@error` render a h2 element with "Incorrect username or password".
 
 Green.
 
