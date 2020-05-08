@@ -15,6 +15,6 @@ RSpec.feature 'Log out', type: :feature do
     click_on 'New post'
     attach_file 'post[image]', './images/post-image.jpg'
     click_on 'Post'
-    expect(page).to have_css "img[src='post-image.jpg'"
+    expect(page).to have_css "img[src='post-image.jpg']"
   end
 end
