@@ -21,7 +21,7 @@ I extracted user stories from the short brief above.
 > So that I can post photos and make comments as me
 
 > As a Signed In User  
-> I can sign out of my account
+> I can sign out of my account  
 > So that I can prevent people posting as me
 
 ### Posting
@@ -127,21 +127,13 @@ I also added simplecov, and simplecov-console to check code coverage, and Ruboco
 > So that I can post photos and make comments as me
 
 > As a Signed In User  
-> I can sign out of my account
+> I can sign out of my account  
 > So that I can prevent people posting as me
 
 These first three user stories are all related to authentication. This is perhaps a bigger challenge to start with, but it is so linked to ultimate form of many other user stories, that I feel it will be good to get out of the way early.
 
-## Code Quality
+Wrote a feature test: user signs up through users/new form and sees their username. Red.
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+- Generated a users controller with new and create routes with `rails g controller users new create`.
+- Generated a User model according to the schema with `rails g model user username:string{20}:uniq name:string{60} email:string{60}:uniq password_digest:string`.
+- Migrated the database with `db:migrate`.
