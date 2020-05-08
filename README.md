@@ -261,7 +261,15 @@ Refactoring:
 > I can post a photo  
 > So everyone can see what I'm doing
 
+Feature test: User can make a post. Red.
 
+- Generated post model with `rails g model post filter:string user:references`.
+- Generated posts controller with `rails g controller posts`.
+- Added to User model, has many posts.
+- Added posts resources nested within user resources in routes config.
+- Added button to root view to make new post, going to the new user post path, passing in the current user.
+- Added route for new posts.
+- Added view for new posts.
 
 <!--
 
