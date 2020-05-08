@@ -146,4 +146,11 @@ Wrote a feature test: user signs up through users/new form and sees their userna
 - `user_params` is a method that returns the permitted user parameters.
 - The users id is added to the `session` and the route redirects to '/'.
 - Added a sessions controller with `rails g controller sessions` (this controller will provide routes for the existing user log in page, as well as the welcome page).
-- 
+- Added index route to sessions, and added this as the root in routes config.
+- Added a couple of helper methods to the application controller: `current_user`, which finds returns a user based on the `session` user id, and `logged_in?`, which returns true if the `current_user` is not nil.
+- Both of these helper methods are exposed using the `helper_method` method.
+- In the sessions/index view added some executive ruby to render "Hello `username`" if logged in.
+
+Test green.
+
+<!-- <%= button_to "Sign Up", new_user_path, method: :get %> -->
