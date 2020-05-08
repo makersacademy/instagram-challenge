@@ -3,9 +3,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    session[:user_id] = @user.id
-    redirect_to '/'
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to '/'
+    else
+      @errors = @user.errors
+      render 'new'
+    end
   end
 
   private
