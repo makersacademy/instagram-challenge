@@ -285,6 +285,14 @@ Green.
 
 Feature test: User can make a post and choose a filter. Red.
 
+- Added a select to the new post form choosing from several filter options, with blank as true.
+- Added filter to the permitted params for posts.
+- Added to Post model a method `filter_class`, interpolating the Posts filter into a string to create the BEM class for the post.
+- In sessions index posts render loop Added to the image tag a class of post.filter_class.
+
+Green.
+
+
 <!--
 
 ### Editing Post Filter
