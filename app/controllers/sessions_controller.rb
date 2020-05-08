@@ -10,11 +10,16 @@ class SessionsController < ApplicationController
     
     if @user && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
-      redirect_to '/'
+      redirect_to root_path
     else
       @error = true
       render 'new'
     end
+  end
+
+  def destroy
+    session.clear
+    redirect_to root_path
   end
 
   private
