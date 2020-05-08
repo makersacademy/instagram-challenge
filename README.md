@@ -185,11 +185,17 @@ Test green.
 
 Wrote a feature test: user signs up through users/new form, tries existing username, and sees error. (Unhappy Path). Red.
 
-- Added to Users model that it validates username as unique.
+- Added to User model that it validates username as unique.
 - Refactored user create route to use `User.new` instead of `User.create`.
 - Then if `@user.save` is true (i.e. it was able to be written, and no errors with unique username), assign id to `session` and redirect to '/'
 - else assign `@errors` with `@user.errors` and render 'new'.
 - Added to users new view executive ruby for if `@error` render a h2 element with This username or email already in use.
+
+Green.
+
+Wrote a feature test: user signs up through users/new form, tries existing email, and sees error. (Unhappy Path). Red.
+
+- Added to User model validation for email uniqueness.
 
 Green.
 
