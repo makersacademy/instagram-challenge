@@ -38,7 +38,7 @@ I extracted user stories from the short brief above.
 > I can post a photo  
 > So everyone can see what I'm doing
 
-- [ ] 2.2
+- [x] 2.2
 
 > As a Signed In User  
 > I can choose from several filters and apply them to my photo  
@@ -277,7 +277,7 @@ Green.
 
 ### Adding Filters
 
-- [ ] 2.2
+- [x] 2.2
 
 > As a Signed In User  
 > I can choose from several filters and apply them to my photo  
@@ -288,11 +288,12 @@ Feature test: User can make a post and choose a filter. Red.
 - Added a select to the new post form choosing from several filter options, with blank as true.
 - Added filter to the permitted params for posts.
 - Added to Post model a method `filter_class`, interpolating the Posts filter into a string to create the BEM class for the post.
-- In sessions index posts render loop Added to the image tag a class of post.filter_class.
+- In sessions index posts render loop Added to the image tag a class of `post.filter_class`.
 
 Green.
 
 Added some SCSS to actually do something with the filter classes.
+Also fixed bug for filter being unset and `filter_class` returning just the first part of the BEM class.
 
 
 <!--
