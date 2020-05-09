@@ -21,6 +21,7 @@ gem 'bulma-rails', '~> 0.8.0'
 #picture upload support for simple form
 gem 'simple_form_fancy_uploads'
 
+
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
