@@ -55,8 +55,25 @@ I would like to be able to make a post with an image.
 I ran
 ```
 rails new .
+```
+Then I wrote a test using capybara for the welcome page.
+
+Then ran
+```
 rails generate controller Welcome index
 ```
+This passed the first test
+
+Then I wrote another test for making posts.
+
+In order to make this work I had to make various changes including runnning these commands:
+
+```
+rails generate controller Posts
+rails generate model Post title:string text:text
+```
+
+
 
 
 # README
