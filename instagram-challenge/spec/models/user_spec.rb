@@ -4,22 +4,22 @@ RSpec.describe User, type: :model do
   describe 'validating user name ' do 
     # better way to describe this it block? 
     it " user name 'gina' user should be valid" do
-      user = User.new(name: 'gina')
+      user = User.new(name: 'gina', email: 'gina@example.com')
       expect(user).to be_valid
     end 
 
     it 'user should only  be valid if name is entered' do 
-      expect(User.new).to_not be_valid
+      expect(User.new(email: 'gina@example.com')).to_not be_valid
     end 
 
     it 'user should only  be valid if name is entered' do 
-      user = User.new(name: '')
+      user = User.new(name: '', email: 'gina@example.com')
       expect(user).to_not be_valid
     end 
 
     it 'name should not be too long' do
-      name = 'g' * 51
-      user = User.new(name: name)
+      long_name = 'g' * 51
+      user = User.new(name: long_name, email: 'gina@example.com')
       expect(user).to_not be_valid
     end
   end
