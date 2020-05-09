@@ -35,4 +35,12 @@ RSpec.feature 'Posts listings', type: :feature do
     end
     expect(page).to have_content formatted_time
   end
+
+  scenario 'Posts listed with username, in list and show' do
+    expect(first('.post')).to have_content 'davedude'
+    within(first('.post')) do
+      find('a').click
+    end
+    expect(first('.post')).to have_content 'davedude'
+  end
 end
