@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>InstagramChallenge</title>
+    <title>Instagram</title>
     <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-light bg-light d-flex">
+      <div class="container">
+        <div class="logo">
+          <p class="logo" href="#">
+            Instagram
+          </p>
+        </div>
+
+        <div class="user">
+          <% if user_signed_in? %>
+            <%= current_user.username %>
+            <%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %> 
+          <% else %>
+            <%= link_to('Sign up', new_user_registration_path)  %>
+            <%= link_to('Sign in', new_user_session_path)  %>
+          <% end %>
+        </div>
+        
+      </div>
+    </nav>
+    <main class="content">
+      <%= yield %>
+    </main>
   </body>
 </html>

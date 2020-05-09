@@ -1,18 +1,10 @@
-<%= stylesheet_link_tag "style.css" %>
-<h1>Instagram</h1>
 <% if user_signed_in? %>
-  <%= current_user.username %>
-  <%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %> 
-  
-  <%= render 'posts/form' %>
-
+  <div class="upload">
+    <%= render 'posts/form' %>
+  </div>
   <div class="posts">
     <% @posts.each do |post| %>
       <%= render partial: 'posts/post', locals: { post: post } %>
     <% end %>
   </div>
-
-<% else %>
-  <%= link_to('Sign up', new_user_registration_path)  %>
-  <%= link_to('Sign in', new_user_session_path)  %>
 <% end %>
