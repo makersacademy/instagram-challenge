@@ -56,17 +56,23 @@ I extracted user stories from the short brief above.
 > I can change the filter on my photo  
 > In case I don't like that filter any more
 
-- [ ] 2.3.1
+- [x] 2.3.1
 
 > As a Signed In User  
 > I can only see the option to edit on my own photos  
 > So I cannot alter anyone else's photos
 
-- [ ] 2.4
+- [x] 2.4
 
 > As a Signed In User  
 > I can delete my photos  
 > So I can erase embarrassing memories
+
+- [x] 2.4.1
+
+> As a Signed In User  
+> I can only see the option to delete on my own photos  
+> So I cannot delete anyone else's photos
 
 - [ ] 2.5
 
@@ -337,7 +343,7 @@ Feature test: User can click on a post, click to edit it, and change filter on a
 - Added post edit view rendering its image, and allowing select for new filters.
 - Added update route to post controller, saving the new filter, redirecting back to the post show route.
 
-- [ ] 2.3.1
+- [x] 2.3.1
 
 > As a Signed In User  
 > I can only see the option to edit on my own photos  
@@ -350,17 +356,32 @@ Feature test: User clicks on another users post, expects not to see edit option.
 
 Green.
 
-
-
-<!--
-
 ### Deleting Posts
 
-- [ ] 2.4
+- [x] 2.4
 
 > As a Signed In User  
 > I can delete my photos  
 > So I can erase embarrassing memories
+
+Feature test: User clicks on post, clicks delete, and accepts warning, post is deleted.
+
+- In posts show view added link to delete.
+- In posts controller added destroy route, destroying the post and redirecting to root.
+
+Green.
+
+- [x] 2.4.1
+
+> As a Signed In User  
+> I can only see the option to delete on my own photos  
+> So I cannot delete anyone else's photos
+
+Refactored the previous edit test to a new feature test to encompass similar behaviour: User clicks on another users post, expects not to see edit or delete option. Red.
+
+- Moved delete button within owner conditional render.
+
+Green.
 
 ### Listing Posts
 
@@ -369,3 +390,6 @@ Green.
 > As a User  
 > I can see a feed of photos, newest to oldest  
 > So I can see what is going on with everyone recently
+
+Feature test: User should see all posts on index, newest first. Red.
+
