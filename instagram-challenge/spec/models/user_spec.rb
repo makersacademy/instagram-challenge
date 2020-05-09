@@ -22,6 +22,7 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
   end
+
   describe 'validating user email ' do 
     it 'standard email should be valid' do 
       user = User.new(name: 'gina', email: 'gina@example.com')
@@ -45,7 +46,16 @@ RSpec.describe User, type: :model do
         user = User.new(name: 'gina', email: invalid_address)
         expect(user).to_not be_valid
       end 
+    end 
+
+    it 'user will not be valided if they enter the same email as another user' do
+      old_user = User.new(name: 'gina', email: 'email@example.com')
+      new_user = User.new(name: 'peter', email: 'email@example.com')
+      expect(new_user).to_not be_valid
+
     end
+     
+  
 
   end 
 end
