@@ -10,7 +10,7 @@ RSpec.feature 'Posts listings', type: :feature do
     fill_in 'user[password]', with: 'password123'
     click_on 'Submit'
     
-    @time = Time.now()
+    @time = Time.zone.now
 
     click_on 'New post'
     attach_file 'post[image]', './images/post-image.jpg'
