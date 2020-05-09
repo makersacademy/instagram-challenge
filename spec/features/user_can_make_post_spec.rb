@@ -30,9 +30,6 @@ RSpec.feature 'Making a Post', type: :feature do
     click_on 'New post'
     attach_file 'post[image]', './images/post-image.jpg'
     select 'Greyscale', from: 'post[filter]'
-    expect(page).to have_select 'post[filter]', selected: 'Greyscale'
-    # image = find(:css, '.filter_greyscale')
-    # p image
     expect(page).to have_selector '.filter_greyscale'
   end
 end
