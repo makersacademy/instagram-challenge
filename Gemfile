@@ -20,7 +20,8 @@ gem 'simple_form'
 gem 'bulma-rails', '~> 0.8.0'
 #picture upload support for simple form
 gem 'simple_form_fancy_uploads'
-
+#secure hash algorithm for keeping passwords safe
+gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
