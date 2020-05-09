@@ -49,7 +49,8 @@ RSpec.describe User, type: :model do
     end 
 
     it 'user will not be valided if they enter the same email as another user' do
-      old_user = User.new(name: 'gina', email: 'email@example.com')
+      existing_user = User.create(name: 'gina', email: 'email@example.com')
+      
       new_user = User.new(name: 'peter', email: 'email@example.com')
       expect(new_user).to_not be_valid
 
