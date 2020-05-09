@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  had_many :comments
+  has_many :comments
 
   def filter_class
     "filter_#{filter.downcase}" unless filter.empty?
