@@ -454,7 +454,8 @@ Feature test: User can comment on a post. Red.
 
 - Generated Comment model based on table schema using: `rails g model comment user:references post:references content:string{280}`.
 - Generated comments controller using: `rails g controller comments`.
--  
+- Migrated the db.
+- 
 
 <!--
 
