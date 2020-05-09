@@ -9,18 +9,28 @@ RSpec.feature 'Posts listings', type: :feature do
     fill_in 'user[username]', with: 'davedude'
     fill_in 'user[password]', with: 'password123'
     click_on 'Submit'
-  end
-  
-  scenario 'Posts listed newest first' do
+    
+    @time = Time.now()
+
     click_on 'New post'
     attach_file 'post[image]', './images/post-image.jpg'
     click_on 'Post'
-
+  end
+  
+  scenario 'Posts listed newest first' do
+    
     click_on 'New post'
     attach_file 'post[image]', './images/post-image.jpg'
     select 'Greyscale', from: 'post[filter]'
     click_on 'Post'
-
+    
     expect(first('.post')).to have_css '.filter_greyscale'
+  end
+  
+  scenario 'Posts listed with time, in list and show' do
+    formatted_time = @time.strftime("%-dth %b, %l:%M%P")
+    expect(page).to have_content formatted_time
+    click_on first('.post')
+    expect(page).to have_content formatted_time
   end
 end

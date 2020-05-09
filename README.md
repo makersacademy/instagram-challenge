@@ -74,11 +74,23 @@ I extracted user stories from the short brief above.
 > I can only see the option to delete on my own photos  
 > So I cannot delete anyone else's photos
 
-- [ ] 2.5
+- [x] 2.5
 
 > As a User  
 > I can see a feed of photos, newest to oldest  
 > So I can see what is going on with everyone recently
+
+- [ ] 2.5.1
+
+> As a User  
+> I can see the time of a post  
+> So I know how recently it was posted
+
+- [ ] 2.5.2
+
+> As a User  
+> I can see the user who made a post  
+> So I know how who made it
 
 ### Commenting
 
@@ -385,11 +397,38 @@ Green.
 
 ### Listing Posts
 
-- [ ] 2.5
+- [x] 2.5
 
 > As a User  
 > I can see a feed of photos, newest to oldest  
 > So I can see what is going on with everyone recently
 
 Feature test: User should see all posts on index, newest first. Red.
+
+- In sessions controller index route added order to `Post.all` call, ordering by `created_at` descending.
+
+Green.
+
+### Times on Posts
+
+- [ ] 2.5.1
+
+> As a User  
+> I can see the time of a post  
+> So I know how recently it was posted
+
+Feature test: Posts listed with time, in list and show. Red.
+
+- 
+
+
+<!--
+
+### Usernames on Posts
+
+- [ ] 2.5.2
+
+> As a User  
+> I can see the user who made a post  
+> So I know how who made it
 
