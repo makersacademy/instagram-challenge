@@ -1,15 +1,20 @@
 class PostsController < ApplicationController
+  def new
+  end
 
   def show
     @post = Post.find(params[:id])
     @owner = owner?
   end
 
-  def new
-  end
-
   def edit
     @post = Post.find(params[:id])
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to root_path
   end
   
   def create
