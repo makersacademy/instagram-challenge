@@ -52,6 +52,12 @@ I would like to be able to make a post with an image.
 4. Write capybara test
 5. Pass the test
 
+I ran
+```
+rails new .
+rails generate controller Welcome index
+```
+
 
 # README
 
