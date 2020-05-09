@@ -21,7 +21,7 @@ RSpec.feature 'Posts comments', type: :feature do
   
   scenario 'User can add comment' do
     fill_in 'comment[content]', with: 'This is a comment'
-    click_on 'Comment'
+    click_on 'Add comment'
     expect(first('.comment')).to have_content 'This is a comment'
   end
 end
