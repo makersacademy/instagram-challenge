@@ -50,7 +50,7 @@ I extracted user stories from the short brief above.
 > I can see a preview of my photo, with the filter I select applied  
 > So I can choose the best filter for my photo
 
-- [ ] 2.3
+- [x] 2.3
 
 > As a Signed In User  
 > I can change the filter on my photo  
@@ -318,14 +318,18 @@ Green. _I had a lot of trouble working out how to actually get Capybara to regis
 
 ### Editing Post Filter
 
-- [ ] 2.3
+- [x] 2.3
 
 > As a Signed In User  
 > I can change the filter on my photo  
 > In case I don't like that filter any more
 
-Feature test: User can edit filter on a post. Red.
+Feature test: User can click on a post, click to edit it, and change filter on a post. Red.
 
+- Added a link wrapping each post's image on index to view that post.
+- Added route and view for show post, with link to edit that post.
+- Added post edit view rendering its image, and allowing select for new filters.
+- Added update route to post controller.
 - 
 
 <!--
