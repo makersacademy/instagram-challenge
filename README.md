@@ -80,13 +80,13 @@ I extracted user stories from the short brief above.
 > I can see a feed of photos, newest to oldest  
 > So I can see what is going on with everyone recently
 
-- [ ] 2.5.1
+- [x] 2.5.1
 
 > As a User  
 > I can see the time of a post  
 > So I know how recently it was posted
 
-- [ ] 2.5.2
+- [x] 2.5.2
 
 > As a User  
 > I can see the user who made a post  
@@ -118,13 +118,13 @@ I extracted user stories from the short brief above.
 > I can see all comments on a photo from newest to oldest  
 > So I can see the freshest opinions on my photo
 
-- [ ] 3.5
+- [ ] 3.4.1
 
 > As a User  
 > I can see the username of who made a comment  
 > So I can tell who is interacting with me
 
-- [ ] 3.6
+- [ ] 3.4.2
 
 > As a User  
 > I can see the time a comment was made  
@@ -411,7 +411,7 @@ Green.
 
 ### Times on Posts
 
-- [ ] 2.5.1
+- [x] 2.5.1
 
 > As a User  
 > I can see the time of a post  
@@ -426,14 +426,73 @@ Feature test: Posts listed with time, in list and show. Red.
 
 Green.
 
-
-<!--
-
 ### Usernames on Posts
 
-- [ ] 2.5.2
+- [x] 2.5.2
 
 > As a User  
 > I can see the user who made a post  
 > So I know how who made it
+
+Feature test: Posts listed with username, in list and show. Red.
+
+- Added to Post model a method `username` that returns the post's user's username.
+- Added in the sessions index view executive ruby that displays the post's `username`.
+- Added in the post show view the post's `username` also.
+
+Green.
+
+### Adding Comments
+
+- [ ] 3.1
+
+> As a Signed In User  
+> I can comment on a photo  
+> So I can that user them what I think of it
+
+Feature test: User can comment on a post. Red.
+
+
+
+<!--
+
+### Editing Comments
+
+- [ ] 3.2
+
+> As a Signed In User  
+> I can edit a comment I have made  
+> So I can correct spelling errors
+
+### Deleting Comments
+
+- [ ] 3.3
+
+> As a Signed In User  
+> I can delete a comment I have made  
+> So I can erase embarrassing things I have said
+
+### Listing Comments
+
+- [ ] 3.4
+
+> As a User  
+> I can see all comments on a photo from newest to oldest  
+> So I can see the freshest opinions on my photo
+
+### Comments have Username
+
+- [ ] 3.4.1
+
+> As a User  
+> I can see the username of who made a comment  
+> So I can tell who is interacting with me
+
+### Comments have Time
+
+- [ ] 3.4.2
+
+> As a User  
+> I can see the time a comment was made  
+> So I can understand how quickly people commented
 
