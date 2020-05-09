@@ -468,8 +468,6 @@ Feature test: User can comment on a post. Red.
 
 Green.
 
-<!--
-
 ### Editing Comments
 
 - [ ] 3.2
@@ -477,6 +475,10 @@ Green.
 > As a Signed In User  
 > I can edit a comment I have made  
 > So I can correct spelling errors
+
+This has been very difficult to implement for some reason. See [`edit-comments`](https://github.com/hturnbull93/instagram-challenge/tree/edit-comments) branch for the work towards it.
+
+I seem to not be able to render the correct link to the comment on the post show view.
 
 ### Deleting Comments
 
@@ -486,6 +488,8 @@ Green.
 > I can delete a comment I have made  
 > So I can erase embarrassing things I have said
 
+For similar reasons to above, I will return to this user story.
+
 ### Listing Comments
 
 - [ ] 3.4
@@ -494,6 +498,8 @@ Green.
 > I can see all comments on a photo from newest to oldest  
 > So I can see the freshest opinions on my photo
 
+Feature test: Comments appear newest first. Green. I guess the comments are rendered in this order by default.
+
 ### Comments have Username
 
 - [ ] 3.4.1
@@ -501,6 +507,10 @@ Green.
 > As a User  
 > I can see the username of who made a comment  
 > So I can tell who is interacting with me
+
+Feature test: Comments have username
+
+<!--
 
 ### Comments have Time
 

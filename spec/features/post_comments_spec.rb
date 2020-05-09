@@ -24,4 +24,21 @@ RSpec.feature 'Posts comments', type: :feature do
     click_on 'Add comment'
     expect(first('.comment')).to have_content 'This is a comment'
   end
+
+  scenario 'Comments appear newest first' do
+    fill_in 'comment[content]', with: 'This is a comment'
+    click_on 'Add comment'
+
+    fill_in 'comment[content]', with: 'This is a newer comment'
+    click_on 'Add comment'
+
+    expect(first('.comment')).to have_content 'This is a newer comment'
+  end
+  
+  scenario 'Comments have username' do
+    fill_in 'comment[content]', with: 'This is a comment'
+    click_on 'Add comment'
+
+    expect(first('.comment')).to have_content 'davedude'
+  end
 end
