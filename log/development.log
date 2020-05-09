@@ -1823,3 +1823,1424 @@ Processing by ActiveStorage::DiskController#show as
 Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 339)
 
 
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_attachments_uniqueness" ON "aactive_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aactive_storage_attachments_on_blob_id" ON "aactive_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aactive_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "active_storage_attachments"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "active_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "aactive_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_attachments"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200509002750)[0m
+  [1m[35m (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200508204539);
+
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-05-09 01:08:47.798674"], ["updated_at", "2020-05-09 01:08:47.798674"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "6d2704c7849b54349372095903c4c3a1efabbd1a"], ["created_at", "2020-05-09 01:08:47.805558"], ["updated_at", "2020-05-09 01:08:47.805558"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_attachments_uniqueness" ON "aactive_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aactive_storage_attachments_on_blob_id" ON "aactive_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aactive_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "active_storage_attachments"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "active_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "aactive_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_attachments"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200509002750)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200508204539);
+
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-05-09 01:08:47.860095"], ["updated_at", "2020-05-09 01:08:47.860095"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2020-05-09 01:08:47.865093"], ["key", "environment"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "6d2704c7849b54349372095903c4c3a1efabbd1a"], ["created_at", "2020-05-09 01:08:47.871535"], ["updated_at", "2020-05-09 01:08:47.871535"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/posts/15" for ::1 at 2020-05-09 02:09:14 +0100
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+Completed 404 Not Found in 17ms (ActiveRecord: 1.3ms | Allocations: 3523)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=15):
+  
+app/controllers/posts_controller.rb:19:in `show'
+Started GET "/posts/new" for ::1 at 2020-05-09 02:09:18 +0100
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 38.2ms | Allocations: 12286)
+Completed 200 OK in 64ms (Views: 59.2ms | ActiveRecord: 0.0ms | Allocations: 20233)
+
+
+Started POST "/posts" for ::1 at 2020-05-09 02:11:13 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"m/R+WCLy9OATMeMoZTSCnm8xjKFckDNa57oXjey/WFmIRAD/Nt/btUtT/bi2UWE4jOutqzYcg2TXVcTKPDPVJg==", "post"=>{"title"=>"Barbados", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007feec56a3b58 @tempfile=#<Tempfile:/var/folders/vd/8prq0ly10ps9wydz_v1cvkcw0000gn/T/RackMultipart20200509-38602-1rrpxq5.JPG>, @original_filename="selfie.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"selfie.JPG\"\r\nContent-Type: image/jpeg\r\n">, "content"=>"quick selfie before we go out for dinner :)"}, "commit"=>"POST"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:10:in `create'
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Barbados"], ["content", "quick selfie before we go out for dinner :)"], ["created_at", "2020-05-09 01:11:13.677737"], ["updated_at", "2020-05-09 01:11:13.677737"]]
+  ↳ app/controllers/posts_controller.rb:10:in `create'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:10:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:10:in `create'
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["key", "izcq6qurmsjdglzomhka8pqmz6u6"], ["filename", "selfie.JPG"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 439158], ["checksum", "8d3iKgyDOw43b6tViiKuNg=="], ["created_at", "2020-05-09 01:11:13.771985"]]
+  ↳ app/controllers/posts_controller.rb:10:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2020-05-09 01:11:13.775262"]]
+  ↳ app/controllers/posts_controller.rb:10:in `create'
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2020-05-09 01:11:13.777082"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:10:in `create'
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:10:in `create'
+[36m  Disk Storage (3.5ms) [0m[32mUploaded file to key: izcq6qurmsjdglzomhka8pqmz6u6 (checksum: 8d3iKgyDOw43b6tViiKuNg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 83f0477b-d1fa-41df-b2e2-ec62464b62b4) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007feeca082918 @uri=#<URI::GID gid://instagraham/ActiveStorage::Blob/1>>
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 150ms (ActiveRecord: 3.5ms | Allocations: 66257)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [83f0477b-d1fa-41df-b2e2-ec62464b62b4] Performing ActiveStorage::AnalyzeJob (Job ID: 83f0477b-d1fa-41df-b2e2-ec62464b62b4) from Async(active_storage_analysis) enqueued at 2020-05-09T01:11:13Z with arguments: #<GlobalID:0x00007feeca038188 @uri=#<URI::GID gid://instagraham/ActiveStorage::Blob/1>>
+Started GET "/posts/1" for ::1 at 2020-05-09 02:11:13 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [83f0477b-d1fa-41df-b2e2-ec62464b62b4] [36m  Disk Storage (1.4ms) [0m[34mDownloaded file from key: izcq6qurmsjdglzomhka8pqmz6u6[0m
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 14.2ms | Allocations: 3971)
+Completed 200 OK in 24ms (Views: 21.6ms | ActiveRecord: 0.5ms | Allocations: 7561)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877/selfie.JPG" for ::1 at 2020-05-09 02:11:13 +0100
+Processing by ActiveStorage::BlobsController#show as 
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877", "filename"=>"selfie"}
+[ActiveJob] [ActiveStorage::AnalyzeJob] [83f0477b-d1fa-41df-b2e2-ec62464b62b4] Skipping image analysis because ImageMagick doesn't support the file
+[ActiveJob] [ActiveStorage::AnalyzeJob] [83f0477b-d1fa-41df-b2e2-ec62464b62b4]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [83f0477b-d1fa-41df-b2e2-ec62464b62b4]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[36m  Disk Storage (0.9ms) [0m[34mGenerated URL for file at key: izcq6qurmsjdglzomhka8pqmz6u6 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjE2OjEzLjkwM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d61cbf9a36f43027fd59fa9456b375c3f2d1814e/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG)[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [83f0477b-d1fa-41df-b2e2-ec62464b62b4]   [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjE2OjEzLjkwM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d61cbf9a36f43027fd59fa9456b375c3f2d1814e/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG
+[ActiveJob] [ActiveStorage::AnalyzeJob] [83f0477b-d1fa-41df-b2e2-ec62464b62b4] Performed ActiveStorage::AnalyzeJob (Job ID: 83f0477b-d1fa-41df-b2e2-ec62464b62b4) from Async(active_storage_analysis) in 84.46ms
+Completed 302 Found in 19ms (ActiveRecord: 0.2ms | Allocations: 6196)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjE2OjEzLjkwM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d61cbf9a36f43027fd59fa9456b375c3f2d1814e/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:11:13 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjE2OjEzLjkwM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d61cbf9a36f43027fd59fa9456b375c3f2d1814e", "filename"=>"selfie"}
+Completed 200 OK in 4ms (ActiveRecord: 0.0ms | Allocations: 4753)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:14:27 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2235)
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.4ms | Allocations: 5759)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjE2OjEzLjkwM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d61cbf9a36f43027fd59fa9456b375c3f2d1814e/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:14:27 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjE2OjEzLjkwM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d61cbf9a36f43027fd59fa9456b375c3f2d1814e", "filename"=>"selfie"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 347)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:16:15 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2233)
+Completed 200 OK in 14ms (Views: 10.6ms | ActiveRecord: 0.4ms | Allocations: 5718)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877/selfie.JPG" for ::1 at 2020-05-09 02:16:15 +0100
+Processing by ActiveStorage::BlobsController#show as 
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877", "filename"=>"selfie"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (0.7ms) [0m[34mGenerated URL for file at key: izcq6qurmsjdglzomhka8pqmz6u6 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjIxOjE1LjU4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--63b17067c1264fe8376363174b1b29b9e14c2d2f/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjIxOjE1LjU4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--63b17067c1264fe8376363174b1b29b9e14c2d2f/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms | Allocations: 1743)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjIxOjE1LjU4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--63b17067c1264fe8376363174b1b29b9e14c2d2f/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:16:15 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjIxOjE1LjU4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--63b17067c1264fe8376363174b1b29b9e14c2d2f", "filename"=>"selfie"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 350)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:18:07 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1071)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.1ms | Allocations: 2770)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <section class="section">
+<h3> Post Created! </h3>
+  <h3 class= "title"> 
+  <%= @post.title %> 
+  </h3>
+  <h2 class="timelabel">
+   Posted: <%= @post.created_at.strftime("%B %d %Y, %l:%M%P") %>
+  </h2>
+  <div class="picture">
+  <%= image_tag(@post.image, style:'width:50%
+  '),  %>
+  </div>
+
+  <div class= "content">
+    <%= @post.content %>
+  </div>
+</section>
+
+):
+1:    <section class="section">
+2:    <h3> Post Created! </h3>
+3:      <h3 class= "title"> 
+4:      <%= @post.title %> 
+5:      </h3>
+6:      <h2 class="timelabel">
+7:       Posted: <%= @post.created_at.strftime("%B %d %Y, %l:%M%P") %>
+8:      </h2>
+9:      <div class="picture">
+10:      <%= image_tag(@post.image, style:'width:50%
+11:      '),  %>
+12:      </div>
+13:    
+14:      <div class= "content">
+15:        <%= @post.content %>
+16:      </div>
+17:    </section>
+  
+app/views/posts/show.html.erb:11: syntax error, unexpected ',', expecting ')'
+app/views/posts/show.html.erb:20: syntax error, unexpected `end', expecting ')'
+app/views/posts/show.html.erb:11: syntax error, unexpected ',', expecting ')'
+app/views/posts/show.html.erb:20: syntax error, unexpected `end', expecting ')'
+app/views/posts/show.html.erb:11: syntax error, unexpected ',', expecting ')'
+app/views/posts/show.html.erb:20: syntax error, unexpected `end', expecting ')'
+app/views/posts/show.html.erb:11: syntax error, unexpected ',', expecting ')'
+app/views/posts/show.html.erb:20: syntax error, unexpected `end', expecting ')'
+app/views/posts/show.html.erb:11: syntax error, unexpected ',', expecting ')'
+app/views/posts/show.html.erb:20: syntax error, unexpected `end', expecting ')'
+app/views/posts/show.html.erb:11: syntax error, unexpected ',', expecting ')'
+app/views/posts/show.html.erb:20: syntax error, unexpected `end', expecting ')'
+Started GET "/posts/1" for ::1 at 2020-05-09 02:19:34 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2264)
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 0.3ms | Allocations: 5777)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjIxOjE1LjU4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--63b17067c1264fe8376363174b1b29b9e14c2d2f/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:19:34 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjIxOjE1LjU4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--63b17067c1264fe8376363174b1b29b9e14c2d2f", "filename"=>"selfie"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 343)
+
+
+Started GET "/posts" for ::1 at 2020-05-09 02:19:35 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 75)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 2283)
+
+
+Started GET "/posts" for ::1 at 2020-05-09 02:19:39 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 0.0ms | Allocations: 4)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 2081)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:19:53 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2097)
+Completed 200 OK in 11ms (Views: 8.1ms | ActiveRecord: 0.5ms | Allocations: 4711)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjIxOjE1LjU4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--63b17067c1264fe8376363174b1b29b9e14c2d2f/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:19:53 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjIxOjE1LjU4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--63b17067c1264fe8376363174b1b29b9e14c2d2f", "filename"=>"selfie"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 343)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:22:18 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2258)
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.4ms | Allocations: 5746)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877/selfie.JPG" for ::1 at 2020-05-09 02:22:18 +0100
+Processing by ActiveStorage::BlobsController#show as 
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877", "filename"=>"selfie"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: izcq6qurmsjdglzomhka8pqmz6u6 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjI3OjE4LjE0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--5b683e49e39f4bb61d0de805fd8241fae742faeb/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjI3OjE4LjE0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--5b683e49e39f4bb61d0de805fd8241fae742faeb/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 1755)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjI3OjE4LjE0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--5b683e49e39f4bb61d0de805fd8241fae742faeb/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:22:18 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjI3OjE4LjE0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--5b683e49e39f4bb61d0de805fd8241fae742faeb", "filename"=>"selfie"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 360)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:24:08 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2673)
+Completed 200 OK in 13ms (Views: 10.3ms | ActiveRecord: 0.4ms | Allocations: 6154)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjI3OjE4LjE0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--5b683e49e39f4bb61d0de805fd8241fae742faeb/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:24:08 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjI3OjE4LjE0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--5b683e49e39f4bb61d0de805fd8241fae742faeb", "filename"=>"selfie"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 345)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:24:12 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2174)
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.3ms | Allocations: 4790)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjI3OjE4LjE0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--5b683e49e39f4bb61d0de805fd8241fae742faeb/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:24:12 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjI3OjE4LjE0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--5b683e49e39f4bb61d0de805fd8241fae742faeb", "filename"=>"selfie"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 347)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:24:14 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2159)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.3ms | Allocations: 4773)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjI3OjE4LjE0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--5b683e49e39f4bb61d0de805fd8241fae742faeb/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:24:14 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjI3OjE4LjE0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--5b683e49e39f4bb61d0de805fd8241fae742faeb", "filename"=>"selfie"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 339)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:26:54 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2354)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.4ms | Allocations: 5839)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjI3OjE4LjE0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--5b683e49e39f4bb61d0de805fd8241fae742faeb/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:26:54 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjI3OjE4LjE0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--5b683e49e39f4bb61d0de805fd8241fae742faeb", "filename"=>"selfie"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 331)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:28:26 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 2346)
+Completed 200 OK in 21ms (Views: 18.3ms | ActiveRecord: 0.5ms | Allocations: 5860)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877/selfie.JPG" for ::1 at 2020-05-09 02:28:26 +0100
+Processing by ActiveStorage::BlobsController#show as 
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877", "filename"=>"selfie"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (0.4ms) [0m[34mGenerated URL for file at key: izcq6qurmsjdglzomhka8pqmz6u6 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjMzOjI2LjU5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c43b680c621943980ab81049e770f95d67a89db7/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjMzOjI2LjU5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c43b680c621943980ab81049e770f95d67a89db7/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 1740)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjMzOjI2LjU5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c43b680c621943980ab81049e770f95d67a89db7/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:28:26 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjMzOjI2LjU5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c43b680c621943980ab81049e770f95d67a89db7", "filename"=>"selfie"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 360)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:29:11 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 122.9ms | Allocations: 70488)
+Completed 500 Internal Server Error in 127ms (ActiveRecord: 0.4ms | Allocations: 72165)
+
+
+  
+ActionView::Template::Error (undefined method `redirect' for #<#<Class:0x00007feec5712008>:0x00007feec57102d0>):
+    14:     <%= @post.content %>
+    15:   </div>
+    16:   <a type="exitshowpost"> Home
+    17:   <% redirect posts_path %>
+    18:   </a>
+    19: </div>
+  
+app/views/posts/show.html.erb:17
+Started GET "/posts/1" for ::1 at 2020-05-09 02:29:25 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 117.7ms | Allocations: 70462)
+Completed 500 Internal Server Error in 122ms (ActiveRecord: 0.5ms | Allocations: 72141)
+
+
+  
+ActionView::Template::Error (undefined method `redirect_to' for #<#<Class:0x00007feec5ab5d68>:0x00007feec5a9fc20>):
+    14:     <%= @post.content %>
+    15:   </div>
+    16:   <a type="exitshowpost"> Home
+    17:   <% redirect_to posts_path %>
+    18:   </a>
+    19: </div>
+  
+app/views/posts/show.html.erb:17
+Started GET "/posts/1" for ::1 at 2020-05-09 02:30:31 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2271)
+Completed 200 OK in 11ms (Views: 9.0ms | ActiveRecord: 0.3ms | Allocations: 5781)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjMzOjI2LjU5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c43b680c621943980ab81049e770f95d67a89db7/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:30:31 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjMzOjI2LjU5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c43b680c621943980ab81049e770f95d67a89db7", "filename"=>"selfie"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 347)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:31:03 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2269)
+Completed 200 OK in 17ms (Views: 14.3ms | ActiveRecord: 0.4ms | Allocations: 5770)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjMzOjI2LjU5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c43b680c621943980ab81049e770f95d67a89db7/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:31:03 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjMzOjI2LjU5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c43b680c621943980ab81049e770f95d67a89db7", "filename"=>"selfie"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 341)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:31:22 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2266)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.4ms | Allocations: 5762)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjMzOjI2LjU5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c43b680c621943980ab81049e770f95d67a89db7/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:31:22 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjMzOjI2LjU5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c43b680c621943980ab81049e770f95d67a89db7", "filename"=>"selfie"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 349)
+
+
+Started GET "/posts/1" for ::1 at 2020-05-09 02:31:39 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2266)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.4ms | Allocations: 5756)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjMzOjI2LjU5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c43b680c621943980ab81049e770f95d67a89db7/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:31:39 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjMzOjI2LjU5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c43b680c621943980ab81049e770f95d67a89db7", "filename"=>"selfie"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 337)
+
+
+Started GET "/posts" for ::1 at 2020-05-09 02:33:38 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 75)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 3035)
+
+
+Started GET "/posts" for ::1 at 2020-05-09 02:45:50 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 18.3ms | Allocations: 4827)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 0.2ms | Allocations: 6859)
+
+
+  
+ActionView::Template::Error (undefined method `image' for nil:NilClass):
+    2: <% @posts.each do |post| %>
+    3:   <p><%= post.title %></p>
+    4:   <p>Posted: <%= post.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+    5:   <p><%= image_tag(@post.image, style:'width:50%') %></p>
+    6:   <p><%= post.content %></p>
+    7: <% end %>
+  
+app/views/posts/index.html.erb:5
+app/views/posts/index.html.erb:2
+Started GET "/posts" for ::1 at 2020-05-09 02:46:46 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 788)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.1ms | Allocations: 3786)
+
+
+Started GET "/posts" for ::1 at 2020-05-09 02:47:15 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2174)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.1ms | Allocations: 3344)
+
+
+  
+ActionView::Template::Error (undefined method `image' for nil:NilClass):
+    2: <% @posts.each do |post| %>
+    3:   <p><%= post.title %></p>
+    4:   <p>Posted: <%= post.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+    5:   <p><%= image_tag(@post.image, style:'width:50%') %></p>
+    6:   <p><%= post.content %></p>
+    7: <% end %>
+  
+app/views/posts/index.html.erb:5
+app/views/posts/index.html.erb:2
+Started GET "/posts" for ::1 at 2020-05-09 02:48:51 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  Rendered posts/index.html.erb within layouts/application (Duration: 33.9ms | Allocations: 14857)
+Completed 200 OK in 39ms (Views: 37.7ms | ActiveRecord: 0.6ms | Allocations: 17859)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877/selfie.JPG" for ::1 at 2020-05-09 02:48:51 +0100
+Processing by ActiveStorage::BlobsController#show as 
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877", "filename"=>"selfie"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (1.1ms) [0m[34mGenerated URL for file at key: izcq6qurmsjdglzomhka8pqmz6u6 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjUzOjUxLjgyNloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--dbc1c8fa9c3bd264d2018494373c54d81ece8805/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjUzOjUxLjgyNloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--dbc1c8fa9c3bd264d2018494373c54d81ece8805/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG
+Completed 302 Found in 9ms (ActiveRecord: 0.2ms | Allocations: 2076)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjUzOjUxLjgyNloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--dbc1c8fa9c3bd264d2018494373c54d81ece8805/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:48:51 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjUzOjUxLjgyNloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--dbc1c8fa9c3bd264d2018494373c54d81ece8805", "filename"=>"selfie"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 392)
+
+
+Started GET "/posts/new" for ::1 at 2020-05-09 02:49:00 +0100
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 8.6ms | Allocations: 5822)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms | Allocations: 8051)
+
+
+Started POST "/posts" for ::1 at 2020-05-09 02:51:05 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"D+0fSScTCAm/FJ8QmLrELGsE01M7pFgIHpKM/j1ajXQcXWHuMz4nXOd2gYBL3yeKiN7yWVEo6DYufV+57dYACw==", "post"=>{"title"=>"Mallorca", "content"=>"What a great time I had with my friends and family"}, "commit"=>"POST"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Mallorca"], ["content", "What a great time I had with my friends and family"], ["created_at", "2020-05-09 01:51:05.299691"], ["updated_at", "2020-05-09 01:51:05.299691"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+Redirected to http://localhost:3000/posts/2
+Completed 302 Found in 8ms (ActiveRecord: 1.4ms | Allocations: 2980)
+
+
+Started GET "/posts/2" for ::1 at 2020-05-09 02:51:05 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:20:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 2819)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.3ms | Allocations: 4032)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: to_model delegated to attachment, but attachment is nil):
+     7:    Posted: <%= @post.created_at.strftime("%B %d %Y, %l:%M%P") %>
+     8:   </h2>
+     9:   <div class="picture">
+    10:   <%= image_tag(@post.image, style:'width:50%') %>
+    11:   </div>
+    12: 
+    13:   <div class= "content">
+  
+app/views/posts/show.html.erb:10
+Started GET "/posts/" for ::1 at 2020-05-09 02:52:29 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  Rendered posts/index.html.erb within layouts/application (Duration: 12.6ms | Allocations: 5359)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.4ms | Allocations: 5796)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: to_model delegated to attachment, but attachment is nil):
+    2: <% @posts.each do |post| %>
+    3:   <p><%= post.title %></p>
+    4:   <p>Posted: <%= post.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+    5:   <p><%= image_tag(post.image, style:'width:50%') %></p>
+    6:   <p><%= post.content %></p>
+    7: <% end %>
+  
+app/views/posts/index.html.erb:5
+app/views/posts/index.html.erb:2
+Started GET "/posts/" for ::1 at 2020-05-09 02:53:23 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.3ms | Allocations: 5530)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.5ms | Allocations: 6695)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: to_model delegated to attachment, but attachment is nil):
+    2: <% @posts.each do |post| %>
+    3:   <p><%= post.title %></p>
+    4:   <p>Posted: <%= post.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+    5:     <p><%= image_tag(post.image, style:'width:50%') %></p>
+    6:   <p><%= post.content %></p>
+    7: <% end %>
+  
+app/views/posts/index.html.erb:5
+app/views/posts/index.html.erb:2
+Started GET "/posts/" for ::1 at 2020-05-09 02:53:47 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  Rendered posts/index.html.erb within layouts/application (Duration: 9.4ms | Allocations: 5529)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.7ms | Allocations: 6694)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: to_model delegated to attachment, but attachment is nil):
+    2: <% @posts.each do |post| %>
+    3:   <p><%= post.title %></p>
+    4:   <p>Posted: <%= post.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+    5:   <p><%= image_tag(post.image, style:'width:50%') %></p>
+    6:   <p><%= post.content %></p>
+    7: <% end %>
+  
+app/views/posts/index.html.erb:5
+app/views/posts/index.html.erb:2
+Started GET "/posts/1" for ::1 at 2020-05-09 02:54:18 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:20:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2266)
+Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 0.5ms | Allocations: 5176)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877/selfie.JPG" for ::1 at 2020-05-09 02:54:18 +0100
+Processing by ActiveStorage::BlobsController#show as 
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877", "filename"=>"selfie"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: izcq6qurmsjdglzomhka8pqmz6u6 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjU5OjE4Ljc1NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--fc948870a6e0553c266ada319291df39e07dc164/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjU5OjE4Ljc1NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--fc948870a6e0553c266ada319291df39e07dc164/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 1751)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjU5OjE4Ljc1NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--fc948870a6e0553c266ada319291df39e07dc164/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 02:54:18 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhWHBqY1RaeGRYSnRjMnBrWjJ4NmIyMW9hMkU0Y0hGdGVqWjFOZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAxOjU5OjE4Ljc1NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--fc948870a6e0553c266ada319291df39e07dc164", "filename"=>"selfie"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 352)
+
+
+Started GET "/posts/" for ::1 at 2020-05-09 02:54:24 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  Rendered posts/index.html.erb within layouts/application (Duration: 17.7ms | Allocations: 5362)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.6ms | Allocations: 5797)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: to_model delegated to attachment, but attachment is nil):
+    2: <% @posts.each do |post| %>
+    3:   <p><%= post.title %></p>
+    4:   <p>Posted: <%= post.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+    5:   <p><%= image_tag(post.image, style:'width:50%') %></p>
+    6:   <p><%= post.content %></p>
+    7: <% end %>
+  
+app/views/posts/index.html.erb:5
+app/views/posts/index.html.erb:2
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_attachments_uniqueness" ON "aactive_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aactive_storage_attachments_on_blob_id" ON "aactive_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aactive_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "active_storage_attachments"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "active_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "aactive_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_attachments"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200509002750)[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200508204539);
+
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-05-09 01:55:56.813932"], ["updated_at", "2020-05-09 01:55:56.813932"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "6d2704c7849b54349372095903c4c3a1efabbd1a"], ["created_at", "2020-05-09 01:55:56.822636"], ["updated_at", "2020-05-09 01:55:56.822636"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "posts"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "posts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "content" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_attachments_uniqueness" ON "aactive_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aactive_storage_attachments_on_blob_id" ON "aactive_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aactive_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "active_storage_attachments"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "active_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "aactive_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_attachments"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200509002750)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200508204539);
+
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-05-09 01:55:56.879624"], ["updated_at", "2020-05-09 01:55:56.879624"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2020-05-09 01:55:56.884569"], ["key", "environment"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "6d2704c7849b54349372095903c4c3a1efabbd1a"], ["created_at", "2020-05-09 01:55:56.888707"], ["updated_at", "2020-05-09 01:55:56.888707"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-05-09 02:56:34 +0100
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1342)
+Completed 200 OK in 46ms (Views: 30.5ms | ActiveRecord: 0.8ms | Allocations: 8873)
+
+
+Started GET "/posts" for ::1 at 2020-05-09 02:57:11 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  Rendered posts/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 599)
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.1ms | Allocations: 2714)
+
+
+Started GET "/posts/new" for ::1 at 2020-05-09 02:57:18 +0100
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 67.3ms | Allocations: 12227)
+Completed 200 OK in 83ms (Views: 69.8ms | ActiveRecord: 0.4ms | Allocations: 17165)
+
+
+Started POST "/posts" for ::1 at 2020-05-09 02:57:46 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"bVCP8NR5vNr7zHWa2lRZ96kH/G2nZ+kTlyYRR9cJG+J+4PFXwFSTj6OuawoJMbpRSt3dZ83rWS2nycIAB4WWnQ==", "post"=>{"title"=>"Tester", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fe5bec343c0 @tempfile=#<Tempfile:/var/folders/vd/8prq0ly10ps9wydz_v1cvkcw0000gn/T/RackMultipart20200509-39676-tacvew.JPG>, @original_filename="selfie2.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"selfie2.JPG\"\r\nContent-Type: image/jpeg\r\n">, "content"=>"Enjoying a beer"}, "commit"=>"POST"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mPost Create (1.1ms)[0m  [1m[32mINSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Tester"], ["content", "Enjoying a beer"], ["created_at", "2020-05-09 01:57:46.720416"], ["updated_at", "2020-05-09 01:57:46.720416"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["key", "szjykj36tnnlxv72ckr4u4vu7gh3"], ["filename", "selfie2.JPG"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 431325], ["checksum", "CexHPANoLBtSGHZr2IDZGg=="], ["created_at", "2020-05-09 01:57:46.812512"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.8ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 1], ["blob_id", 1], ["created_at", "2020-05-09 01:57:46.815876"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2020-05-09 01:57:46.817981"], ["id", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+[36m  Disk Storage (2.8ms) [0m[32mUploaded file to key: szjykj36tnnlxv72ckr4u4vu7gh3 (checksum: CexHPANoLBtSGHZr2IDZGg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 3646af0b-5cd3-4332-9e97-fa817b28cddc) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007fe5bd371018 @uri=#<URI::GID gid://instagraham/ActiveStorage::Blob/1>>
+Redirected to http://localhost:3000/posts/1
+Completed 302 Found in 138ms (ActiveRecord: 4.7ms | Allocations: 63933)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3646af0b-5cd3-4332-9e97-fa817b28cddc] Performing ActiveStorage::AnalyzeJob (Job ID: 3646af0b-5cd3-4332-9e97-fa817b28cddc) from Async(active_storage_analysis) enqueued at 2020-05-09T01:57:46Z with arguments: #<GlobalID:0x00007fe5bd38ba30 @uri=#<URI::GID gid://instagraham/ActiveStorage::Blob/1>>
+Started GET "/posts/1" for ::1 at 2020-05-09 02:57:46 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3646af0b-5cd3-4332-9e97-fa817b28cddc] [36m  Disk Storage (2.1ms) [0m[34mDownloaded file from key: szjykj36tnnlxv72ckr4u4vu7gh3[0m
+  ↳ app/controllers/posts_controller.rb:20:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 5.5ms | Allocations: 2624)
+Completed 200 OK in 19ms (Views: 16.4ms | ActiveRecord: 0.4ms | Allocations: 7361)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877/selfie2.JPG" for ::1 at 2020-05-09 02:57:46 +0100
+Processing by ActiveStorage::BlobsController#show as 
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877", "filename"=>"selfie2"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3646af0b-5cd3-4332-9e97-fa817b28cddc] Skipping image analysis because ImageMagick doesn't support the file
+[36m  Disk Storage (0.7ms) [0m[34mGenerated URL for file at key: szjykj36tnnlxv72ckr4u4vu7gh3 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjM3BxZVd0cU16WjBibTVzZUhZM01tTnJjalIxTkhaMU4yZG9Nd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVEl1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVeUxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjAyOjQ2LjkzMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2ab89586f4ff54540a8213cf20473489590c5758/selfie2.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie2.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie2.JPG)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjM3BxZVd0cU16WjBibTVzZUhZM01tTnJjalIxTkhaMU4yZG9Nd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVEl1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVeUxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjAyOjQ2LjkzMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2ab89586f4ff54540a8213cf20473489590c5758/selfie2.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie2.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie2.JPG
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3646af0b-5cd3-4332-9e97-fa817b28cddc]   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Completed 302 Found in 5ms (ActiveRecord: 0.1ms | Allocations: 2994)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3646af0b-5cd3-4332-9e97-fa817b28cddc]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3646af0b-5cd3-4332-9e97-fa817b28cddc]   [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [3646af0b-5cd3-4332-9e97-fa817b28cddc] Performed ActiveStorage::AnalyzeJob (Job ID: 3646af0b-5cd3-4332-9e97-fa817b28cddc) from Async(active_storage_analysis) in 71.07ms
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjM3BxZVd0cU16WjBibTVzZUhZM01tTnJjalIxTkhaMU4yZG9Nd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVEl1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVeUxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjAyOjQ2LjkzMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2ab89586f4ff54540a8213cf20473489590c5758/selfie2.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie2.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie2.JPG" for ::1 at 2020-05-09 02:57:46 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie2.JPG\"; filename*=UTF-8''selfie2.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjM3BxZVd0cU16WjBibTVzZUhZM01tTnJjalIxTkhaMU4yZG9Nd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVEl1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVeUxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjAyOjQ2LjkzMFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2ab89586f4ff54540a8213cf20473489590c5758", "filename"=>"selfie2"}
+Completed 200 OK in 4ms (ActiveRecord: 0.0ms | Allocations: 4753)
+
+
+Started GET "/posts/new" for ::1 at 2020-05-09 02:59:18 +0100
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 9.3ms | Allocations: 5397)
+Completed 200 OK in 19ms (Views: 18.5ms | ActiveRecord: 0.0ms | Allocations: 7495)
+
+
+Started GET "/posts/new" for ::1 at 2020-05-09 03:00:12 +0100
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 8.6ms | Allocations: 5597)
+Completed 200 OK in 15ms (Views: 13.8ms | ActiveRecord: 0.0ms | Allocations: 8578)
+
+
+Started POST "/posts" for ::1 at 2020-05-09 03:00:30 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"SRn6gKcVs7ycTxjG/J/GMVD588bF8pnYsepB3KOnaDhaqYQnszic6cQtBlYv+iWXsyPSzK9+KeaBBZKbcyvlRw==", "post"=>{"title"=>"ace", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fe5bcafd378 @tempfile=#<Tempfile:/var/folders/vd/8prq0ly10ps9wydz_v1cvkcw0000gn/T/RackMultipart20200509-39676-u8tt4s.JPG>, @original_filename="selfie.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"selfie.JPG\"\r\nContent-Type: image/jpeg\r\n">, "content"=>"sounds good"}, "commit"=>"POST"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "ace"], ["content", "sounds good"], ["created_at", "2020-05-09 02:00:30.997164"], ["updated_at", "2020-05-09 02:00:30.997164"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["key", "jn31zpi1gin9juin16cb0s4ren72"], ["filename", "selfie.JPG"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 439158], ["checksum", "8d3iKgyDOw43b6tViiKuNg=="], ["created_at", "2020-05-09 02:00:31.013940"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 2], ["blob_id", 2], ["created_at", "2020-05-09 02:00:31.017074"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2020-05-09 02:00:31.018908"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+[36m  Disk Storage (3.0ms) [0m[32mUploaded file to key: jn31zpi1gin9juin16cb0s4ren72 (checksum: 8d3iKgyDOw43b6tViiKuNg==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 1a6c5484-26f7-478f-aed1-91314e2acac9) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007fe5be0aee10 @uri=#<URI::GID gid://instagraham/ActiveStorage::Blob/2>>
+Redirected to http://localhost:3000/posts/2
+Completed 302 Found in 31ms (ActiveRecord: 2.3ms | Allocations: 12701)
+
+
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1a6c5484-26f7-478f-aed1-91314e2acac9] Performing ActiveStorage::AnalyzeJob (Job ID: 1a6c5484-26f7-478f-aed1-91314e2acac9) from Async(active_storage_analysis) enqueued at 2020-05-09T02:00:31Z with arguments: #<GlobalID:0x00007fe5bd373278 @uri=#<URI::GID gid://instagraham/ActiveStorage::Blob/2>>
+Started GET "/posts/2" for ::1 at 2020-05-09 03:00:31 +0100
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1a6c5484-26f7-478f-aed1-91314e2acac9] [36m  Disk Storage (1.3ms) [0m[34mDownloaded file from key: jn31zpi1gin9juin16cb0s4ren72[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:20:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1a6c5484-26f7-478f-aed1-91314e2acac9] Skipping image analysis because ImageMagick doesn't support the file
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1a6c5484-26f7-478f-aed1-91314e2acac9]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1a6c5484-26f7-478f-aed1-91314e2acac9]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1a6c5484-26f7-478f-aed1-91314e2acac9]   [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  Rendered posts/show.html.erb within layouts/application (Duration: 113.5ms | Allocations: 74265)
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1a6c5484-26f7-478f-aed1-91314e2acac9] Performed ActiveStorage::AnalyzeJob (Job ID: 1a6c5484-26f7-478f-aed1-91314e2acac9) from Async(active_storage_analysis) in 126.16ms
+Completed 500 Internal Server Error in 118ms (ActiveRecord: 0.3ms | Allocations: 76220)
+
+
+  
+ActionView::Template::Error (undefined method `redirect_to' for #<#<Class:0x00007fe5bd40a290>:0x00007fe5bec78fc0>):
+    14:     <%= @post.content %>
+    15:   </div>
+    16:   <a type="exitshowpost">
+    17:     <%= redirect_to 'HOME', :posts %>
+    18:   </a>
+    19: </div>
+  
+app/views/posts/show.html.erb:17
+Started GET "/posts/2" for ::1 at 2020-05-09 03:02:48 +0100
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:20:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 90.7ms | Allocations: 21194)
+Completed 200 OK in 138ms (Views: 115.4ms | ActiveRecord: 1.7ms | Allocations: 32852)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04c9fca8b9baa52f3dc1a1eefdbd4d436632ae9f/selfie.JPG" for ::1 at 2020-05-09 03:02:48 +0100
+Processing by ActiveStorage::BlobsController#show as 
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--04c9fca8b9baa52f3dc1a1eefdbd4d436632ae9f", "filename"=>"selfie"}
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[36m  Disk Storage (6.9ms) [0m[34mGenerated URL for file at key: jn31zpi1gin9juin16cb0s4ren72 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhbTR6TVhwd2FURm5hVzQ1YW5WcGJqRTJZMkl3Y3pSeVpXNDNNZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjQ4LjY4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--839d2973c0bfa9abfc20ff9d601787b4ab88a216/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhbTR6TVhwd2FURm5hVzQ1YW5WcGJqRTJZMkl3Y3pSeVpXNDNNZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjQ4LjY4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--839d2973c0bfa9abfc20ff9d601787b4ab88a216/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG
+Completed 302 Found in 12ms (ActiveRecord: 0.2ms | Allocations: 4107)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhbTR6TVhwd2FURm5hVzQ1YW5WcGJqRTJZMkl3Y3pSeVpXNDNNZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjQ4LjY4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--839d2973c0bfa9abfc20ff9d601787b4ab88a216/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 03:02:48 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhbTR6TVhwd2FURm5hVzQ1YW5WcGJqRTJZMkl3Y3pSeVpXNDNNZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjQ4LjY4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--839d2973c0bfa9abfc20ff9d601787b4ab88a216", "filename"=>"selfie"}
+Completed 200 OK in 4ms (ActiveRecord: 0.0ms | Allocations: 4770)
+
+
+Started GET "/posts/" for ::1 at 2020-05-09 03:02:55 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  Rendered posts/index.html.erb within layouts/application (Duration: 19.6ms | Allocations: 4959)
+Completed 200 OK in 25ms (Views: 23.0ms | ActiveRecord: 0.7ms | Allocations: 7194)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877/selfie2.JPG" for ::1 at 2020-05-09 03:02:56 +0100
+Processing by ActiveStorage::BlobsController#show as 
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0183e31fb33d5d83d1f656041527c28acff52877", "filename"=>"selfie2"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: szjykj36tnnlxv72ckr4u4vu7gh3 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjM3BxZVd0cU16WjBibTVzZUhZM01tTnJjalIxTkhaMU4yZG9Nd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVEl1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVeUxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjU2LjAzOFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--92556345f06ece23d1daeda6c86be091f11159c0/selfie2.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie2.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie2.JPG)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjM3BxZVd0cU16WjBibTVzZUhZM01tTnJjalIxTkhaMU4yZG9Nd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVEl1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVeUxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjU2LjAzOFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--92556345f06ece23d1daeda6c86be091f11159c0/selfie2.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie2.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie2.JPG
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms | Allocations: 1783)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhbTR6TVhwd2FURm5hVzQ1YW5WcGJqRTJZMkl3Y3pSeVpXNDNNZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjQ4LjY4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--839d2973c0bfa9abfc20ff9d601787b4ab88a216/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 03:02:56 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhbTR6TVhwd2FURm5hVzQ1YW5WcGJqRTJZMkl3Y3pSeVpXNDNNZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjQ4LjY4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--839d2973c0bfa9abfc20ff9d601787b4ab88a216", "filename"=>"selfie"}
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjM3BxZVd0cU16WjBibTVzZUhZM01tTnJjalIxTkhaMU4yZG9Nd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVEl1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVeUxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjU2LjAzOFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--92556345f06ece23d1daeda6c86be091f11159c0/selfie2.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie2.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie2.JPG" for ::1 at 2020-05-09 03:02:56 +0100
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 591)
+
+
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie2.JPG\"; filename*=UTF-8''selfie2.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjM3BxZVd0cU16WjBibTVzZUhZM01tTnJjalIxTkhaMU4yZG9Nd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVEl1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVeUxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjU2LjAzOFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--92556345f06ece23d1daeda6c86be091f11159c0", "filename"=>"selfie2"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 346)
+
+
+Started GET "/posts/new" for ::1 at 2020-05-09 03:04:23 +0100
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 34.3ms | Allocations: 10225)
+Completed 200 OK in 39ms (Views: 37.5ms | ActiveRecord: 0.0ms | Allocations: 12468)
+
+
+Started POST "/posts" for ::1 at 2020-05-09 03:05:59 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"sZsRVYGzikhKzne5hO7hb7s4EFvVdnyCkMzfD/HPuzWiK2/ylZ6lHRKsaSlXiwLJWOIxUb/6zLygIwxIIUM2Sg==", "post"=>{"title"=>"Las vegas", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fb876a9aa70 @tempfile=#<Tempfile:/var/folders/vd/8prq0ly10ps9wydz_v1cvkcw0000gn/T/RackMultipart20200509-39835-5f6ex7.JPG>, @original_filename="selfie4.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"selfie4.JPG\"\r\nContent-Type: image/jpeg\r\n">, "content"=>"Im all in !"}, "commit"=>"POST"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mPost Create (0.6ms)[0m  [1m[32mINSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Las vegas"], ["content", "Im all in !"], ["created_at", "2020-05-09 02:05:59.261236"], ["updated_at", "2020-05-09 02:05:59.261236"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Create (0.2ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["key", "d5pdjs5t9ji01ijdhcw7h68cyhqd"], ["filename", "selfie4.JPG"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 1354783], ["checksum", "f4q/Dj/a9HFJFmvXZbWN2Q=="], ["created_at", "2020-05-09 02:05:59.313717"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 3], ["blob_id", 3], ["created_at", "2020-05-09 02:05:59.315416"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2020-05-09 02:05:59.318659"], ["id", 3]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+[36m  Disk Storage (5.9ms) [0m[32mUploaded file to key: d5pdjs5t9ji01ijdhcw7h68cyhqd (checksum: f4q/Dj/a9HFJFmvXZbWN2Q==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: e25d2ffe-b03a-4342-94a2-be3b4fae7eea) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007fb875da5720 @uri=#<URI::GID gid://instagraham/ActiveStorage::Blob/3>>
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 96ms (ActiveRecord: 2.1ms | Allocations: 45314)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e25d2ffe-b03a-4342-94a2-be3b4fae7eea] Performing ActiveStorage::AnalyzeJob (Job ID: e25d2ffe-b03a-4342-94a2-be3b4fae7eea) from Async(active_storage_analysis) enqueued at 2020-05-09T02:05:59Z with arguments: #<GlobalID:0x00007fb875d97120 @uri=#<URI::GID gid://instagraham/ActiveStorage::Blob/3>>
+Started GET "/posts/3" for ::1 at 2020-05-09 03:05:59 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e25d2ffe-b03a-4342-94a2-be3b4fae7eea] [36m  Disk Storage (3.6ms) [0m[34mDownloaded file from key: d5pdjs5t9ji01ijdhcw7h68cyhqd[0m
+  ↳ app/controllers/posts_controller.rb:20:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 6.9ms | Allocations: 2099)
+Completed 200 OK in 19ms (Views: 13.7ms | ActiveRecord: 0.4ms | Allocations: 4925)
+
+
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d38ccda1ebf218a9918a5af1a03aca1103769d31/selfie4.JPG" for ::1 at 2020-05-09 03:05:59 +0100
+Processing by ActiveStorage::BlobsController#show as 
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d38ccda1ebf218a9918a5af1a03aca1103769d31", "filename"=>"selfie4"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: d5pdjs5t9ji01ijdhcw7h68cyhqd (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhaRFZ3Wkdwek5YUTVhbWt3TVdscVpHaGpkemRvTmpoamVXaHhaQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVFF1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVMExrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjEwOjU5LjQyN1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e9c1bac224665841608960fd33aaf2277d5ead41/selfie4.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie4.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie4.JPG)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhaRFZ3Wkdwek5YUTVhbWt3TVdscVpHaGpkemRvTmpoamVXaHhaQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVFF1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVMExrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjEwOjU5LjQyN1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e9c1bac224665841608960fd33aaf2277d5ead41/selfie4.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie4.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie4.JPG
+Completed 302 Found in 20ms (ActiveRecord: 0.1ms | Allocations: 5355)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e25d2ffe-b03a-4342-94a2-be3b4fae7eea] Skipping image analysis because ImageMagick doesn't support the file
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhaRFZ3Wkdwek5YUTVhbWt3TVdscVpHaGpkemRvTmpoamVXaHhaQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVFF1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVMExrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjEwOjU5LjQyN1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e9c1bac224665841608960fd33aaf2277d5ead41/selfie4.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie4.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie4.JPG" for ::1 at 2020-05-09 03:05:59 +0100
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e25d2ffe-b03a-4342-94a2-be3b4fae7eea]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e25d2ffe-b03a-4342-94a2-be3b4fae7eea]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e25d2ffe-b03a-4342-94a2-be3b4fae7eea]   [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [e25d2ffe-b03a-4342-94a2-be3b4fae7eea] Performed ActiveStorage::AnalyzeJob (Job ID: e25d2ffe-b03a-4342-94a2-be3b4fae7eea) from Async(active_storage_analysis) in 85.11ms
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie4.JPG\"; filename*=UTF-8''selfie4.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhaRFZ3Wkdwek5YUTVhbWt3TVdscVpHaGpkemRvTmpoamVXaHhaQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVFF1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVMExrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjEwOjU5LjQyN1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e9c1bac224665841608960fd33aaf2277d5ead41", "filename"=>"selfie4"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 352)
+
+
+Started GET "/posts/new" for ::1 at 2020-05-09 03:06:09 +0100
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 7.6ms | Allocations: 5392)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.0ms | Allocations: 7491)
+
+
+Started POST "/posts" for ::1 at 2020-05-09 03:06:59 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"Guz+FATVKvO6smbdQAY+WS8BUiBCrlXjo9sbvk0a2S8JXICzEPgFpuLQeE2TY93/zNtzKigi5d2TNMj5nZZUUA==", "post"=>{"title"=>"Library", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007fb873bdd6b0 @tempfile=#<Tempfile:/var/folders/vd/8prq0ly10ps9wydz_v1cvkcw0000gn/T/RackMultipart20200509-39835-sdnj64.JPG>, @original_filename="selfie3.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"selfie3.JPG\"\r\nContent-Type: image/jpeg\r\n">, "content"=>"Doing some reading!"}, "commit"=>"POST"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("title", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["title", "Library"], ["content", "Doing some reading!"], ["created_at", "2020-05-09 02:06:59.904086"], ["updated_at", "2020-05-09 02:06:59.904086"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "byte_size", "checksum", "created_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["key", "io05utsn9ldcokzu0g6q0pvarkgn"], ["filename", "selfie3.JPG"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["byte_size", 1312269], ["checksum", "lzJAm9yq4MWdRn/bY0DOiw=="], ["created_at", "2020-05-09 02:06:59.927597"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.8ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 4], ["blob_id", 4], ["created_at", "2020-05-09 02:06:59.930970"]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[36mPost Update (0.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = ? WHERE "posts"."id" = ?[0m  [["updated_at", "2020-05-09 02:06:59.933290"], ["id", 4]]
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/posts_controller.rb:11:in `create'
+[36m  Disk Storage (4.4ms) [0m[32mUploaded file to key: io05utsn9ldcokzu0g6q0pvarkgn (checksum: lzJAm9yq4MWdRn/bY0DOiw==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: f0afe7b5-b780-47a5-8444-eee4e67a304b) to Async(active_storage_analysis) with arguments: #<GlobalID:0x00007fb875d39f70 @uri=#<URI::GID gid://instagraham/ActiveStorage::Blob/4>>
+Redirected to http://localhost:3000/posts/4
+Completed 302 Found in 40ms (ActiveRecord: 3.8ms | Allocations: 12872)
+
+
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f0afe7b5-b780-47a5-8444-eee4e67a304b] Performing ActiveStorage::AnalyzeJob (Job ID: f0afe7b5-b780-47a5-8444-eee4e67a304b) from Async(active_storage_analysis) enqueued at 2020-05-09T02:06:59Z with arguments: #<GlobalID:0x00007fb873b82170 @uri=#<URI::GID gid://instagraham/ActiveStorage::Blob/4>>
+Started GET "/posts/4" for ::1 at 2020-05-09 03:06:59 +0100
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f0afe7b5-b780-47a5-8444-eee4e67a304b] [36m  Disk Storage (1.7ms) [0m[34mDownloaded file from key: io05utsn9ldcokzu0g6q0pvarkgn[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:20:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:10
+  Rendered posts/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2094)
+Completed 200 OK in 10ms (Views: 8.3ms | ActiveRecord: 0.3ms | Allocations: 4796)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f0afe7b5-b780-47a5-8444-eee4e67a304b] Skipping image analysis because ImageMagick doesn't support the file
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f0afe7b5-b780-47a5-8444-eee4e67a304b]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f0afe7b5-b780-47a5-8444-eee4e67a304b]   [1m[36mActiveStorage::Blob Update (0.7ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = ? WHERE "active_storage_blobs"."id" = ?[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 4]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f0afe7b5-b780-47a5-8444-eee4e67a304b]   [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f0afe7b5-b780-47a5-8444-eee4e67a304b] Performed ActiveStorage::AnalyzeJob (Job ID: f0afe7b5-b780-47a5-8444-eee4e67a304b) from Async(active_storage_analysis) in 20.7ms
+Started GET "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e660e9454ff59ea6b88fce0df34efe7b7c4120e/selfie3.JPG" for ::1 at 2020-05-09 03:06:59 +0100
+Processing by ActiveStorage::BlobsController#show as 
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e660e9454ff59ea6b88fce0df34efe7b7c4120e", "filename"=>"selfie3"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: io05utsn9ldcokzu0g6q0pvarkgn (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhVzh3TlhWMGMyNDViR1JqYjJ0NmRUQm5ObkV3Y0haaGNtdG5iZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVE11U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVekxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjExOjU5Ljk4M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--a170bebafd91668746b3b4021f61aa180bcb4f42/selfie3.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie3.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie3.JPG)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhVzh3TlhWMGMyNDViR1JqYjJ0NmRUQm5ObkV3Y0haaGNtdG5iZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVE11U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVekxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjExOjU5Ljk4M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--a170bebafd91668746b3b4021f61aa180bcb4f42/selfie3.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie3.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie3.JPG
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 1749)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhVzh3TlhWMGMyNDViR1JqYjJ0NmRUQm5ObkV3Y0haaGNtdG5iZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVE11U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVekxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjExOjU5Ljk4M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--a170bebafd91668746b3b4021f61aa180bcb4f42/selfie3.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie3.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie3.JPG" for ::1 at 2020-05-09 03:06:59 +0100
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie3.JPG\"; filename*=UTF-8''selfie3.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhVzh3TlhWMGMyNDViR1JqYjJ0NmRUQm5ObkV3Y0haaGNtdG5iZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVE11U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVekxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjExOjU5Ljk4M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--a170bebafd91668746b3b4021f61aa180bcb4f42", "filename"=>"selfie3"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 358)
+
+
+Started GET "/posts" for ::1 at 2020-05-09 03:07:04 +0100
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:2
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:5
+  Rendered posts/index.html.erb within layouts/application (Duration: 31.0ms | Allocations: 8919)
+Completed 200 OK in 35ms (Views: 32.9ms | ActiveRecord: 1.4ms | Allocations: 11022)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjM3BxZVd0cU16WjBibTVzZUhZM01tTnJjalIxTkhaMU4yZG9Nd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVEl1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVeUxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjU2LjAzOFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--92556345f06ece23d1daeda6c86be091f11159c0/selfie2.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie2.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie2.JPG" for ::1 at 2020-05-09 03:07:04 +0100
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhbTR6TVhwd2FURm5hVzQ1YW5WcGJqRTJZMkl3Y3pSeVpXNDNNZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjQ4LjY4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--839d2973c0bfa9abfc20ff9d601787b4ab88a216/selfie.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie.JPG" for ::1 at 2020-05-09 03:07:04 +0100
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhaRFZ3Wkdwek5YUTVhbWt3TVdscVpHaGpkemRvTmpoamVXaHhaQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVFF1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVMExrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjEwOjU5LjQyN1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e9c1bac224665841608960fd33aaf2277d5ead41/selfie4.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie4.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie4.JPG" for ::1 at 2020-05-09 03:07:04 +0100
+Processing by ActiveStorage::DiskController#show as 
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhVzh3TlhWMGMyNDViR1JqYjJ0NmRUQm5ObkV3Y0haaGNtdG5iZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVE11U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVekxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjExOjU5Ljk4M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--a170bebafd91668746b3b4021f61aa180bcb4f42/selfie3.JPG?content_type=image%2Fjpeg&disposition=inline%3B+filename%3D%22selfie3.JPG%22%3B+filename%2A%3DUTF-8%27%27selfie3.JPG" for ::1 at 2020-05-09 03:07:04 +0100
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie2.JPG\"; filename*=UTF-8''selfie2.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhjM3BxZVd0cU16WjBibTVzZUhZM01tTnJjalIxTkhaMU4yZG9Nd1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVEl1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVeUxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjU2LjAzOFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--92556345f06ece23d1daeda6c86be091f11159c0", "filename"=>"selfie2"}
+Processing by ActiveStorage::DiskController#show as 
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 348)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie.JPG\"; filename*=UTF-8''selfie.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhbTR6TVhwd2FURm5hVzQ1YW5WcGJqRTJZMkl3Y3pSeVpXNDNNZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaUzVLVUVjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozTmxiR1pwWlM1S1VFY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZBPT0iLCJleHAiOiIyMDIwLTA1LTA5VDAyOjA3OjQ4LjY4NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--839d2973c0bfa9abfc20ff9d601787b4ab88a216", "filename"=>"selfie"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 343)
+
+
+Processing by ActiveStorage::DiskController#show as 
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie4.JPG\"; filename*=UTF-8''selfie4.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhaRFZ3Wkdwek5YUTVhbWt3TVdscVpHaGpkemRvTmpoamVXaHhaQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVFF1U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVMExrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjEwOjU5LjQyN1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e9c1bac224665841608960fd33aaf2277d5ead41", "filename"=>"selfie4"}
+Processing by ActiveStorage::DiskController#show as 
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 346)
+
+
+  Parameters: {"content_type"=>"image/jpeg", "disposition"=>"inline; filename=\"selfie3.JPG\"; filename*=UTF-8''selfie3.JPG", "encoded_key"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWhhVzh3TlhWMGMyNDViR1JqYjJ0NmRUQm5ObkV3Y0haaGNtdG5iZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGJHWnBaVE11U2xCSElqc2dabWxzWlc1aGJXVXFQVlZVUmkwNEp5ZHpaV3htYVdVekxrcFFSd1k3QmxRNkVXTnZiblJsYm5SZmRIbHdaVWtpRDJsdFlXZGxMMnB3WldjR093WlUiLCJleHAiOiIyMDIwLTA1LTA5VDAyOjExOjU5Ljk4M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--a170bebafd91668746b3b4021f61aa180bcb4f42", "filename"=>"selfie3"}
+Completed 304 Not Modified in 1ms (ActiveRecord: 0.0ms | Allocations: 343)
+
+
