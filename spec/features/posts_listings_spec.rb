@@ -28,9 +28,11 @@ RSpec.feature 'Posts listings', type: :feature do
   end
   
   scenario 'Posts listed with time, in list and show' do
-    formatted_time = @time.strftime("%-dth %b, %l:%M%P")
+    formatted_time = @time.strftime("%-dth %b,%l:%M%P")
     expect(page).to have_content formatted_time
-    click_on first('.post')
+    within(first('.post')) do
+      find('a').click
+    end
     expect(page).to have_content formatted_time
   end
 end
