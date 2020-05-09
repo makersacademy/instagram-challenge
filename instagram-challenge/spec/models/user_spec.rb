@@ -34,9 +34,11 @@ RSpec.describe User, type: :model do
     end 
 
     it 'user will not be valid if email format is wrong' do 
-      incorrect_format = 'gina.example.com'
-      user = User.new(name: 'gina', email: incorrect_format)
-      expect(user).to_not be valid
+      invalid_addresses = ['gina.example.com', 'gina@examplecom', 'gina@example_..com']
+      invalid_addresses. each do |invalid_address|
+        user = User.new(name: 'gina', email: invalid_address)
+        expect(user).to_not be_valid
+      end 
     end
 
   end 
