@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Edit a post', type: :feature do
+RSpec.feature 'Delete a post', type: :feature do
 
   before(:each) do
     visit 'users/new'
