@@ -508,7 +508,11 @@ Feature test: Comments appear newest first. Green. I guess the comments are rend
 > I can see the username of who made a comment  
 > So I can tell who is interacting with me
 
-Feature test: Comments have username
+Feature test: Comments have username. Red.
+
+- Comment model delegates username to user, allowing nil (for some reason there is a comment existing on the post. Not sure why, but it has no user, so to avoid error must allow nil).
+- User model has many comments through posts.
+- 
 
 <!--
 
