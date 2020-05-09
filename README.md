@@ -44,7 +44,7 @@ I extracted user stories from the short brief above.
 > I can choose from several filters and apply them to my photo  
 > So I can express my artistic side
 
-- [ ] 2.2.1
+- [x] 2.2.1
 
 > As a Signed In User  
 > I can see a preview of my photo, with the filter I select applied  
@@ -301,7 +301,7 @@ Green.
 Added some SCSS to actually do something with the filter classes.
 Also fixed bug for filter being unset and `filter_class` returning just the first part of the BEM class using guard clause.
 
-- [ ] 2.2.1
+- [x] 2.2.1
 
 > As a Signed In User  
 > I can see a preview of my photo, with the filter I select applied  
@@ -316,8 +316,6 @@ Feature test: User can preview filter on image. Red.
 
 Green. _I had a lot of trouble working out how to actually get Capybara to register the change of class based on the filter selection. It turned out I needed to enable js for the scenario, so I have configured chrome to run in headless mode for these tests._
 
-<!--
-
 ### Editing Post Filter
 
 - [ ] 2.3
@@ -325,6 +323,12 @@ Green. _I had a lot of trouble working out how to actually get Capybara to regis
 > As a Signed In User  
 > I can change the filter on my photo  
 > In case I don't like that filter any more
+
+Feature test: User can edit filter on a post. Red.
+
+- 
+
+<!--
 
 ### Deleting Posts
 
