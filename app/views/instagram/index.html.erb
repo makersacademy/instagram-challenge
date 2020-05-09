@@ -4,35 +4,11 @@
   <%= current_user.username %>
   <%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %> 
   
-  <%= form_for Post.new do |f| %>
-    <div class="form-group">
-      <%= f.text_field :description %>
-    </div>
-    <div class="form-group">
-      <%= f.file_field :image %>
-    </div>
-    <div class="form-group">
-      <%= f.text_field :user_id, value: current_user.id, class:"invisible"%>
-    </div>
-    <br>
-    <div class="text-center">
-      <%= f.submit 'Create Post', class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+  <%= render 'posts/form' %>
 
   <div class="posts">
     <% @posts.each do |post| %>
-      <section class="post">
-        <div class="user">
-          <div class="username">
-            <%= post.user.username %>
-          </div>
-        </div>
-        <%= image_tag post.image, class: 'main-image' %>
-        <div class="description">
-          <%= post.description %>
-        </div>
-      </section>
+      <%= render partial: 'posts/post', locals: { post: post } %>
     <% end %>
   </div>
 
