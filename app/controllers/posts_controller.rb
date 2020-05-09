@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @owner = owner?
+    @comments = @post.comments
   end
 
   def edit
