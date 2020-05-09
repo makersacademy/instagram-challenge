@@ -452,7 +452,7 @@ Green.
 
 Feature test: User can comment on a post. Red.
 
-
+- Generated a new model for comments based on table schema using: `
 
 <!--
 
