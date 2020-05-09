@@ -547,4 +547,8 @@ Green.
 
 Feature Test: User cannot see comment form if signed out. Red.
 
+- Added conditional rendering of comment form based on `logged_in?`.
+
+Green.
+
 
