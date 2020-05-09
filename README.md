@@ -458,7 +458,15 @@ Feature test: User can comment on a post. Red.
 - Generated comments controller using: `rails g controller comments`.
 - Migrated the db.
 - Added to Post model to have many comments, with destroy dependency (comments can't exist if the post they are on is gone).
-- 
+- Added form on the post show view to add a comment.
+- Nested comments resources within posts resources in routes config.
+- Added comment_params to require comment and permit content.
+- Added create route on comments finds the post, and creates a new comment on it.
+- Then set that comment's `user_id` to the current_user's id (comments need to be associated with a user in order to be saved).
+- Then redirect to the post.
+- Added rendering of all post's comments on the post show view.
+
+Green.
 
 <!--
 
