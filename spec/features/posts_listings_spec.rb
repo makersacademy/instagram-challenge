@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Posts listed newest first', type: :feature do
+RSpec.feature 'Posts listings', type: :feature do
 
   before(:each) do
     visit 'users/new'
