@@ -36,8 +36,21 @@ Posts Should not:
 - [X] Create a Posts controller
       
       ``` rails generate controller Posts ```
-- [ ] Setup resource in routes
+- [X] Setup resource in routes
   
       in config/routes.rb
       ``` resources :posts, only: [:new, :create] ```
-- [ ] Create create method
+- [X] Create create method
+
+    ``` 
+    def create
+        Post.create(post_params)
+        redirect_to root_path
+      end
+      
+      private
+      def post_params
+        params.require(:post).permit(:description, :image, :user_id)
+      end
+    ```
+    And add form to indtagram index page
