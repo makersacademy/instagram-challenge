@@ -5,4 +5,8 @@ class Post < ApplicationRecord
   def filter_class
     "filter_#{filter.downcase}" unless filter.empty?
   end
+
+  def formatted_time
+    created_at.strftime("%-dth %b, %l:%M%P")
+  end
 end

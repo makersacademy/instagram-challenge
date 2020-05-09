@@ -419,7 +419,12 @@ Green.
 
 Feature test: Posts listed with time, in list and show. Red.
 
-- 
+- Added to Post model a method `formatted_time` that returns `created_at` as the correct formatted string.
+- Added in the sessions index view executive ruby that displays the post's `formatted_time`.
+- Due to BST, added a time zone configuration to `application.rb` in config.
+- Added in the post show view the post's `formatted_time` also.
+
+Green.
 
 
 <!--
