@@ -28,10 +28,16 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end 
 
+    it 'standard email with capitals should still be valid' do 
+      user = User.new(name: 'gina', email: 'Gina@Example.com')
+      expect(user).to be_valid
+    end 
+
     it 'user will not be valid if no email address is entered' do 
       user = User.new(name: 'gina', email: "")
       expect(user).to_not be_valid
     end 
+
 
     it 'user will not be valid if email format is wrong' do 
       invalid_addresses = ['gina.example.com', 'gina@examplecom', 'gina@example_..com']
