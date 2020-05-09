@@ -4,6 +4,7 @@ RSpec.describe User, type: :model do
   describe 'validating user name ' do 
     it " standard user name should be valid" do
       user = User.new(name: 'gina', email: 'gina@example.com')
+  
       expect(user).to be_valid
     end 
 
@@ -60,10 +61,14 @@ RSpec.describe User, type: :model do
       new_user = User.new(name: 'peter', email: email.upcase)
       expect(new_user).to_not be_valid
     end
-     
-  
-
   end 
+  describe 'validating password' do
+    it 'user needs to enter a password' do
+      user = User.new(name: 'gina', email: 'gina@example.com')
+      expect(user).to_not be_valid
+    end
+  end
+
 end
 
 
