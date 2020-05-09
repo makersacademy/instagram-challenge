@@ -452,7 +452,8 @@ Green.
 
 Feature test: User can comment on a post. Red.
 
-- Generated a new model for comments based on table schema using: `
+- Generated a new model for comments based on table schema using: `rails g model comment user:references post:references content:string{280}`.
+- 
 
 <!--
 
