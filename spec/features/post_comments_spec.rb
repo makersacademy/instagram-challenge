@@ -17,18 +17,18 @@ RSpec.feature 'Posts comments', type: :feature do
     within(first('.post')) do
       find('a').click
     end
+
+    @time = Time.zone.now
+
+    fill_in 'comment[content]', with: 'This is a comment'
+    click_on 'Add comment'
   end
   
   scenario 'User can add comment' do
-    fill_in 'comment[content]', with: 'This is a comment'
-    click_on 'Add comment'
     expect(first('.comment')).to have_content 'This is a comment'
   end
 
   scenario 'Comments appear newest first' do
-    fill_in 'comment[content]', with: 'This is a comment'
-    click_on 'Add comment'
-
     fill_in 'comment[content]', with: 'This is a newer comment'
     click_on 'Add comment'
 
@@ -36,9 +36,12 @@ RSpec.feature 'Posts comments', type: :feature do
   end
   
   scenario 'Comments have username' do
-    fill_in 'comment[content]', with: 'This is a comment'
-    click_on 'Add comment'
-
     expect(first('.comment')).to have_content 'davedude'
+  end
+
+  scenario 'Comments have time' do
+    formatted_time = @time.strftime("%-dth %b,%l:%M%P")
+
+    expect(first('.comment')).to have_content formatted_time
   end
 end
