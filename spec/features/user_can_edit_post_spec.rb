@@ -36,5 +36,4 @@ RSpec.feature 'Edit a post', type: :feature do
     end
     expect(page).to_not have_content 'Edit'
   end
-
 end
