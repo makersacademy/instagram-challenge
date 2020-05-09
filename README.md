@@ -56,6 +56,12 @@ I extracted user stories from the short brief above.
 > I can change the filter on my photo  
 > In case I don't like that filter any more
 
+- [ ] 2.3.1
+
+> As a Signed In User  
+> I can only see the option to edit on my own photos  
+> So I cannot alter anyone else's photos
+
 - [ ] 2.4
 
 > As a Signed In User  
@@ -329,8 +335,17 @@ Feature test: User can click on a post, click to edit it, and change filter on a
 - Added a link wrapping each post's image on index to view that post.
 - Added route and view for show post, with link to edit that post.
 - Added post edit view rendering its image, and allowing select for new filters.
-- Added update route to post controller.
-- 
+- Added update route to post controller, saving the new filter, redirecting back to the post show route.
+
+- [ ] 2.3.1
+
+> As a Signed In User  
+> I can only see the option to edit on my own photos  
+> So I cannot alter anyone else's photos
+
+Feature test: User clicks on another users post, expects not to see edit option. Red.
+
+
 
 <!--
 
