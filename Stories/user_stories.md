@@ -44,21 +44,16 @@ I want to be able to post a photo when logged in.
 ### [6](6_todo.md)
 ```
 As a user,
-So I everyone knows I took a photo,
-I want to see my username next to my picture.
+So I can see photos,
+I want to recently added photos on the homepage.
 ```
 
 ### [7](7_todo.md)
 ```
 As a user,
-So I everyone photos,
-I want to recently added photos on the homepage.
-```
-
-### [8](8_todo.md)
-```
-As a user,
 So that I can appreciate other peoples photos,
 I want to be able to 'like' pictures.
 ```
+
+### [8](8_todo.md)
 

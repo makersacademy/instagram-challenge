@@ -13,4 +13,8 @@ RSpec.feature 'Create Post', type: :feature do
     attach_file('post[image]', 'spec/files/dog1.jpg')
     click_on 'Create Post'
   end
+
+  scenario 'Post cannot be added if no user is logged in' do
+    expect(page).not_to have_button 'Create Post'
+  end
 end
