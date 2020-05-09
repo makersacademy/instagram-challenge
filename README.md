@@ -314,7 +314,7 @@ Feature test: User can preview filter on image. Red.
 - Used JavaScript to add an event listener to the image upload input, and on change pass the file through a `FileReader` to get a DataUrl which is then set to the `previewImage`'s src.
 - Also added an event listener to the filter select and applied the a filter class based on the selection to the preview image.
 
-Green. _I had a lot of trouble working out how to actually get capybara to register the change of class based on the filter selection. It turned out I needed to enable js for the scenario, so I have configured chrome to run in headless mode for these tests._
+Green. _I had a lot of trouble working out how to actually get Capybara to register the change of class based on the filter selection. It turned out I needed to enable js for the scenario, so I have configured chrome to run in headless mode for these tests._
 
 <!--
 
