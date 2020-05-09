@@ -2,6 +2,23 @@
 <% if user_signed_in? %>
   <%= current_user.username %>
   <%= link_to('Sign Out', destroy_user_session_path, :method => :delete) %> 
+  
+  <%= form_for Post.new do |f| %>
+    <div class="form-group">
+      <%= f.text_field :description %>
+    </div>
+    <div class="form-group">
+      <%= f.file_field :image %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :user_id, value: current_user.id, class:'d-none'%>
+    </div>
+    <br>
+    <div class="text-center">
+      <%= f.submit 'Create Post', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
 <% else %>
   <%= link_to('Sign up', new_user_registration_path)  %>
   <%= link_to('Sign in', new_user_session_path)  %>

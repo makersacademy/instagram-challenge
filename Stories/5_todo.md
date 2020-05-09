@@ -24,5 +24,20 @@ Posts Should not:
 
       in models/post.rb
       ``` belongs_to :user ```
-- [ ] Include Active Storage
-- [ ] Create a Posts controller
+- [X] Include Active Storage
+
+      To attach file to Post
+      ``` rails active_storage:install ```
+      ``` rails db:migrate ```
+- [X] Activae active storage on Post model
+
+      ``` has_one_attached :image ```
+      Identifies that post will have one attached image
+- [X] Create a Posts controller
+      
+      ``` rails generate controller Posts ```
+- [ ] Setup resource in routes
+  
+      in config/routes.rb
+      ``` resources :posts, only: [:new, :create] ```
+- [ ] Create create method

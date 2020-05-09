@@ -2,6 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   get 'instagram/index'
   resources :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :posts, only: [:new, :create]
   root 'instagram#index'
 end
