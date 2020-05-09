@@ -94,7 +94,7 @@ I extracted user stories from the short brief above.
 
 ### Commenting
 
-- [ ] 3.1
+- [x] 3.1
 
 > As a Signed In User  
 > I can comment on a photo  
@@ -112,19 +112,19 @@ I extracted user stories from the short brief above.
 > I can delete a comment I have made  
 > So I can erase embarrassing things I have said
 
-- [ ] 3.4
+- [x] 3.4
 
 > As a User  
 > I can see all comments on a photo from newest to oldest  
 > So I can see the freshest opinions on my photo
 
-- [ ] 3.4.1
+- [x] 3.4.1
 
 > As a User  
 > I can see the username of who made a comment  
 > So I can tell who is interacting with me
 
-- [ ] 3.4.2
+- [x] 3.4.2
 
 > As a User  
 > I can see the time a comment was made  
@@ -446,7 +446,7 @@ _Later on, refactored to use Rails' delegate method._
 
 ### Adding Comments
 
-- [ ] 3.1
+- [x] 3.1
 
 > As a Signed In User  
 > I can comment on a photo  
@@ -492,7 +492,7 @@ For similar reasons to above, I will return to this user story.
 
 ### Listing Comments
 
-- [ ] 3.4
+- [x] 3.4
 
 > As a User  
 > I can see all comments on a photo from newest to oldest  
@@ -502,7 +502,7 @@ Feature test: Comments appear newest first. Green. I guess the comments are rend
 
 ### Comments have Username
 
-- [ ] 3.4.1
+- [x] 3.4.1
 
 > As a User  
 > I can see the username of who made a comment  
@@ -512,15 +512,21 @@ Feature test: Comments have username. Red.
 
 - Comment model delegates username to user, allowing nil (for some reason there is a comment existing on the post. Not sure why, but it has no user, so to avoid error must allow nil).
 - User model has many comments through posts.
-- 
+- Added username to comments render in view.
 
-<!--
+Green.
 
 ### Comments have Time
 
-- [ ] 3.4.2
+- [x] 3.4.2
 
 > As a User  
 > I can see the time a comment was made  
 > So I can understand how quickly people commented
 
+Feature test: Comments have time. Red.
+
+- Added `formatted_time` method to Comment model, similar to the one on Post model.
+- Added this to the comments render.
+
+Green.
