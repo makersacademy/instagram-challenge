@@ -44,4 +44,14 @@ RSpec.feature 'Posts comments', type: :feature do
 
     expect(first('.comment')).to have_content formatted_time
   end
+
+  scenario 'User cannot see comment form if signed out' do
+    visit '/'
+    click 'Log out'
+    within(first('.post')) do
+      find('a').click
+    end
+    
+    expect(page).to_not have_button 'Add comment'
+  end
 end

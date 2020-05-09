@@ -130,6 +130,12 @@ I extracted user stories from the short brief above.
 > I can see the time a comment was made  
 > So I can understand how quickly people commented
 
+- [x] 3.5
+
+> As a User  
+> I can only comment when signed in  
+> So my username can be displayed on the comment
+
 ### Liking
 
 - [ ] 4.1
@@ -530,3 +536,15 @@ Feature test: Comments have time. Red.
 - Added this to the comments render.
 
 Green.
+
+### Comment Only When Signed In
+
+- [x] 3.5
+
+> As a User  
+> I can only comment when signed in  
+> So my username can be displayed on the comment
+
+Feature Test: User cannot see comment form if signed out. Red.
+
+
