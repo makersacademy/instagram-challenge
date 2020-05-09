@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
 
   def show
-    @post = Post.find(params[:id]) 
+    @post = Post.find(params[:id])
+    @owner = owner?
   end
 
   def new
@@ -26,5 +27,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:image, :filter)
+  end
+
+  def owner?
+    @post.user == current_user
   end
 end

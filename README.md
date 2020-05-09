@@ -345,6 +345,11 @@ Feature test: User can click on a post, click to edit it, and change filter on a
 
 Feature test: User clicks on another users post, expects not to see edit option. Red.
 
+- Added helper method `owner?` to post controller, checking that the post's user is the `current_user`.
+- Stored the result of `owner?` in a variable, and conditionally rendered the edit link on the show view.
+
+Green.
+
 
 
 <!--
