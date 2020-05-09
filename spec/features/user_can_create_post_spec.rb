@@ -14,7 +14,7 @@ RSpec.feature 'Create Post', type: :feature do
     click_on 'Create Post'
   end
 
-  scenario 'Post cannot be added if no user is logged in' do
+  scenario 'Signed in User can create a post from hompage' do
     expect(page).not_to have_button 'Create Post'
   end
 end

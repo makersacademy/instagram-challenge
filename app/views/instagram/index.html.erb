@@ -20,6 +20,22 @@
     </div>
   <% end %>
 
+  <div class="posts">
+    <% @posts.each do |post| %>
+      <section class="post">
+        <div class="user">
+          <div class="username">
+            <%= post.user.username %>
+          </div>
+        </div>
+        <%= image_tag post.image, class: 'main-image' %>
+        <div class="description">
+          <%= post.description %>
+        </div>
+      </section>
+    <% end %>
+  </div>
+
 <% else %>
   <%= link_to('Sign up', new_user_registration_path)  %>
   <%= link_to('Sign in', new_user_session_path)  %>

@@ -7,4 +7,10 @@ module Helpers
     fill_in 'user[password]', with: 'password'
     click_on 'Log in'
   end
+
+  def create_post
+    fill_in 'post[description]', with: 'password'
+    attach_file('post[image]', 'spec/files/dog1.jpg')
+    click_on 'Create Post'
+  end
 end
