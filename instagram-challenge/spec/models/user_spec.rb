@@ -49,11 +49,16 @@ RSpec.describe User, type: :model do
     end 
 
     it 'user will not be valided if they enter the same email as another user' do
-      existing_user = User.create(name: 'gina', email: 'email@example.com')
-      
+      existing_user = User.create(name: 'gina', email: 'email@example.com') 
       new_user = User.new(name: 'peter', email: 'email@example.com')
       expect(new_user).to_not be_valid
+    end
 
+    it 'user will not be validated if they enter the same email as another user even if they use capital letters' do
+      email = 'example@example.com'
+      existing_user = User.create(name: 'gina', email: email) 
+      new_user = User.new(name: 'peter', email: email.upcase)
+      expect(new_user).to_not be_valid
     end
      
   
