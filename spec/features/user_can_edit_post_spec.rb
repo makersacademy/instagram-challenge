@@ -14,10 +14,13 @@ RSpec.feature 'Edit a post', type: :feature do
     click_on 'Post'
   end
 
-  scenario 'User can edit filter on a post' do
-    first('.post').click_on 'Edit'
+  scenario 'User can click on a post, click to edit it, and change filter on a post' do
+    within(first('.post')) do
+      find('a').click
+    end
+    click_on 'Edit'
     select 'Greyscale', from: 'post[filter]'
-    click_on 'Post'
+    click_on 'Update'
     expect(page).to have_css 'img.filter_greyscale'
   end
 end
