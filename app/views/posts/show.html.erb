@@ -4,8 +4,13 @@
   <p><%= @post.username %></p>
   <p><%= @post.formatted_time %></p>
   <%= image_tag  @post.image, class: @post.filter_class %>
+  
   <p><%= @post.likes.count %> likes</p>
+  <% if @user_liked %>
+  <% else %>
   <%= button_to  "Like", post_likes_path(@post) %>
+  <% end %>
+  
   <% if @owner  %>
   <p>
     <%= link_to  "Edit", edit_post_path(@post) %>
