@@ -1,5 +1,17 @@
 # Instagram Challenge
 
+This is a small project to gain experience with Ruby on Rails.
+
+## Screen Previews
+
+![Home Page](/images/Neogram-home.png)
+![Home Sign Up](/images/Neogram-sign-up.png)
+![Home Log In](/images/Neogram-log-in.png)
+![Home Upload](/images/Neogram-upload.gif)
+![Home Post](/images/Neogram-post.png)
+
+## Breif
+
 Build Instagram: Simple huh!
 
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
