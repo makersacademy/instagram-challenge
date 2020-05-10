@@ -68,10 +68,15 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
 
-  it 'password should have a minimum length' do
-    new_user = User.new(name: 'peter', email:'gina@example.com',  password: "1234", password_confirmation: "1234")
+    it 'password should have a minimum length' do
+      new_user = User.new(name: 'gina', email:'gina@example.com',  password: "1234", password_confirmation: "1234")
       expect(new_user).to_not be_valid
-  end
+    end
+
+    it 'password cannot be blank' do
+      new_user = User.new(name: 'gina', email:'gina@example.com',  password: " " * 6, password_confirmation: " " * 6)
+      expect(new_user).to_not be_valid
+    end
     
   end
 
