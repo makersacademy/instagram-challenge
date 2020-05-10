@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get 'users/welcome'
   get 'users/new'
   post 'users/create'
-  get 'users/welcome'
   root "users#welcome"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
