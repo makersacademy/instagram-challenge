@@ -1,49 +1,49 @@
-<h1>Neogram</h1>
-
 <article class="post">
-  <p><%= @post.username %></p>
-  <p><%= @post.formatted_time %></p>
-  <%= image_tag  @post.image, class: @post.filter_class %>
+  <div class="post-details">
+    <h1>Post by <%= @post.username %></h1>
+    <p><%= @post.formatted_time %></p>
+  </div>
+  <div class="post-image-wrapper">
+    <%= image_tag  @post.image, class: @post.filter_class%>
+  </div>
 
-  <p><%= @post.likes.count %> likes</p>
+  <div class="control-group">
+    <div class="control-group">
+      <div class="counter"><%= @post.likes.count %> likes</div>
+      <% if logged_in?%>
+      <% if @user_liked %>
+      <%= button_to  "Unlike", post_like_path(@post, @like) , method: :delete, class: 'btn' %>
+      <% else %>
+      <%= button_to  "Like", post_likes_path(@post), class: 'btn' %>
+      <% end %>
+      <% end %>
+    </div>
 
-  <% if logged_in?%>
-  <% if @user_liked %>
-  <%= button_to  "Unlike", post_like_path(@post, @like) , method: :delete %>
-  <% else %>
-  <%= button_to  "Like", post_likes_path(@post) %>
-  <% end %>
-  <% end %>
-
-  <% if @owner  %>
-  <p>
-    <%= link_to  "Edit", edit_post_path(@post) %>
-    <%= link_to  "Delete", post_path(@post), 
+    <% if @owner %>
+    <div class="control-group">
+      <%= button_to  "Edit", edit_post_path(@post), method: :get, class: 'btn' %>
+      <%= button_to  "Delete", post_path(@post), 
         method: :delete, 
-        data: { confirm: 'Are you sure? '} %>
-  </p>
+        data: { confirm: 'Are you sure? '}, class: 'btn-danger'  %>
+    </div>
+  </div>
   <% end%>
 </article>
 
-<% if logged_in? %>
-<section class="comments-form">
-  <%= form_with model: [@post, @post.comments.build], local: true do |form| %>
-  <p>
-    <%= form.label :content %><br>
-    <%= form.text_area :content %>
-  </p>
-  <p>
-    <%= form.submit 'Add comment' %>
-  </p>
-  <% end %>
-</section>
-<% end %>
-
 <section class="comments">
+  <% if logged_in? %>
+  <%= form_with model: [@post, @post.comments.build], local: true, class: 'comment-form' do |form| %>
+  <%= form.text_area :content, placeholder: 'Add a comment...' %>
+  <%= form.submit 'Comment', class: 'btn' %>
+  <% end %>
+  <% end %>
+
   <% @comments.each do |comment| %>
   <article class="comment">
-    <p><%= comment.username %></p>
-    <p><%= comment.formatted_time %></p>
+    <div class="comment-details">
+      <h3><%= comment.username %></h3>
+      <p><%= comment.formatted_time %></p>
+    </div>
     <p><%= comment.content %></p>
   </article>
   <% end %>

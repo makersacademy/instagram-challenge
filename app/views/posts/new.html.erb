@@ -1,27 +1,22 @@
 <h1>New Post</h1>
 
-<%= form_with model: [current_user, current_user.posts.build], local: true do |form| %>
+<%= form_with model: [current_user, current_user.posts.build], class: 'post-form', local: true do |form| %>
 
-<p>
-  <%= form.label :image %><br>
-  <%= form.file_field :image %>
-</p>
+<%= form.file_field :image %>
 
 <div id="image-preview-container">
   <img src="" alt="Image Preview" id="previewImage">
 </div>
 
-<p>
+<div class="post-filter-select">
   <%= form.label :filter %>
   <%= form.select(
     :filter,
     options_for_select(['Greyscale', 'Bright', 'Saturate', 'Contrast']),
     { include_blank: true }
   ) %>
-</p>
+</div>
 
-<p>
-  <%= form.submit 'Post' %>
-</p>
+<%= form.submit 'Post', class: 'btn-primary' %>
 
 <% end %>

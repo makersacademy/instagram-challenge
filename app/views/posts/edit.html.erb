@@ -1,20 +1,19 @@
 <h1>Edit Post</h1>
 
-<%= form_with model: @post, local: true do |form| %>
+<%= form_with model: @post, class: 'post-form', local: true do |form| %>
 
-<%= image_tag  @post.image, id: 'previewImage' %>
-
-<p>
+<div class="post-image-wrapper">
+  <%= image_tag  @post.image, id: 'previewImage', class: 'post-image' %>
+</div>
+<div class="control-group">
   <%= form.label :filter %>
   <%= form.select(
     :filter,
     options_for_select(['Greyscale', 'Bright', 'Saturate', 'Contrast']),
     { include_blank: true }
   ) %>
-</p>
+<%= form.submit 'Update', class: 'btn' %>
+</div>
 
-<p>
-  <%= form.submit 'Update' %>
-</p>
 
 <% end %>

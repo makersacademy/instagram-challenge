@@ -14,10 +14,4 @@ class LikesController < ApplicationController
     @like.destroy
     redirect_to @post
   end
-
-  private
-
-  def like_params
-    params.require(:like)
-  end
 end
