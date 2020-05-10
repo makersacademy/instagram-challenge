@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-  post  'sessions/new'
+  get 'sessions/new' 
+  post  'sessions/new', to: 'sessions#create'
   get 'users/new'
   post 'users/new'
   resources :users
