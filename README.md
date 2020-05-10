@@ -567,6 +567,10 @@ Green.
 
 Feature test: Users can add a like to a post. Red.
 
+- Created Likes model according to table schema using: `
+
+<!--
+
 ### Removing a Like
 
 - [ ] 4.2
