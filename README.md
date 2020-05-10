@@ -4,13 +4,27 @@ This is a small project to gain experience with Ruby on Rails.
 
 ## Screen Previews
 
-![Home Page](/images/Neogram-home.png)
-![Home Sign Up](/images/Neogram-sign-up.png)
-![Home Log In](/images/Neogram-log-in.png)
-![Home Upload](/images/Neogram-upload.gif)
-![Home Post](/images/Neogram-post.png)
+Sign up page:
 
-## Breif
+![Sign Up](/images/Neogram-sign-up.png)
+
+Uploading a post:
+
+![Upload](/images/Neogram-upload.gif)
+
+The home page:
+
+![Home Page](/images/Neogram-home.png)
+
+Individual post:
+
+![Post](/images/Neogram-post.png)
+
+Log in page:
+
+![Log In](/images/Neogram-log-in.png)
+
+## Brief
 
 Build Instagram: Simple huh!
 
