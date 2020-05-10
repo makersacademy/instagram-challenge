@@ -31,4 +31,14 @@ RSpec.feature 'Posts likes', type: :feature do
     expect(page).to have_content '1 likes'
     expect(page).to_not have_button 'Like'
   end
+  
+  scenario 'User can remove a like' do
+    expect(page).to have_content '0 likes'
+    click_on 'Like'
+    expect(page).to have_content '1 likes'
+    expect(page).to_not have_button 'Like'
+    click_on 'Unlike'
+    expect(page).to have_content '0 likes'
+    expect(page).to_not have_button 'Unlike'
+  end
 end
