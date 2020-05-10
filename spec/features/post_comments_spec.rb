@@ -40,14 +40,14 @@ RSpec.feature 'Posts comments', type: :feature do
   end
 
   scenario 'Comments have time' do
-    formatted_time = @time.strftime("%-dth %b,%l:%M%P")
+    formatted_time = @time.strftime("%-dth %b, %l:%M%P")
 
     expect(first('.comment')).to have_content formatted_time
   end
 
   scenario 'User cannot see comment form if signed out' do
     visit '/'
-    click 'Log out'
+    click_on 'Log out'
     within(first('.post')) do
       find('a').click
     end
