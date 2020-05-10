@@ -668,4 +668,11 @@ I used [this article](https://medium.muz.li/skeuomorphism-neumorphism-ui-trend-e
 - I would like to reorganise the scss, as it is all in one big file (didn't organise well due to time constraints).
 - I would like to revisit the editing and deleting comments, as that I could not work out before.
 - I would like to work out why there is a phantom comment.
-- I would probably refactor to use partials where possible, use posts all for root, and clean up unused routes.
+
+Refactors to consider:
+
+- Use partials where possible.
+- Use posts all for root.
+- Clean up unused routes.
+- Add AJAX to comment creation and likes.
+- Host on heroku.
