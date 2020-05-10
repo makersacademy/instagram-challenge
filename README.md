@@ -138,25 +138,31 @@ I extracted user stories from the short brief above.
 
 ### Liking
 
-- [ ] 4.1
+- [x] 4.1
 
 > As a Signed In User  
 > I can like a photo  
-> So I can show appreciation without commenting
+> So I can show appreciation without commenting- [ ] 4.1.1
 
-- [ ] 4.2
+- [x] 4.1.1
+
+> As a Signed In User  
+> I can only add one like  
+> So that liking is fair and meaningful
+
+- [x] 4.2
 
 > As a Signed In User  
 > I rescind a like  
 > In case I change my mind about liking that photo
 
-- [ ] 4.3
+- [x] 4.3
 
 > As a User  
 > I can see how many likes a photo has  
 > So I can estimate my popularity
 
-- [ ] 4.4
+- [x] 4.4
 
 > As a User  
 > I should only be able to like when signed in  
@@ -559,7 +565,7 @@ Green.
 
 ### Adding a Like
 
-- [ ] 4.1
+- [x] 4.1
 
 > As a Signed In User  
 > I can like a photo  
@@ -571,31 +577,87 @@ Feature test: Users can add a like to a post. Red.
 - Ran migration.
 - Added to post that it has many likes.
 - Added executive ruby to display post likes count on post show view.
-- Created likes controller using: `rails
+- Created likes controller using: `rails g controller likes`.
+- Added a likes resources nested within posts.
+- Added button to add a like, routing to `post_likes_path`, passing in the current post (posts to post/:id/likes).
+- Added a create route for likes.
+- In the create route the post is found by id, then the like is created on that post.
+- The like's `user_id` is assigned with the `current_user`'s id, and saved, then redirect back to the post.
 
-<!--
+Green.
+
+- [x] 4.1.1
+
+> As a Signed In User  
+> I can only add one like  
+> So that liking is fair and meaningful
+
+Feature test: Users cannot add more than one like per post. Red.
+
+- Added to post show route `@user_like` assigned with ternary.
+- If the user is logged in it is assigned with the result of checking if their like exists for the post (true if they already liked it, else false).
+- Otherwise if they are logged out assign nil.
+- Conditionally rendered the like button if based on `@user_like`.
+
+Green.
 
 ### Removing a Like
 
-- [ ] 4.2
+- [x] 4.2
 
 > As a Signed In User  
 > I rescind a like  
 > In case I change my mind about liking that photo
 
+Feature test: User can remove a like.
+
+- In routes config switched likes to not be shallow, allowing `post_likes_path`.
+- In post show route assigned `@like` with logic similar to `@user_like` to return the actual like object.
+- Added if else logic to conditional render for unlike button, deleting to the post_like_path.
+- Added destroy route finding the post, finding the like and destroying it, then redirecting to the post.
+
+Green.
+
 ### Counting Likes
 
-- [ ] 4.3
+- [x] 4.3
 
 > As a User  
 > I can see how many likes a photo has  
 > So I can estimate my popularity
 
+This has sort of accidentally been implemented as part of the proof that the like can be added.
+
 ### Like Only When Signed In
 
-- [ ] 4.4
+- [x] 4.4
 
 > As a User  
 > I should only be able to like when signed in  
 > So that liking is fair and accurate representation of popularity
 
+Feature test: User cannot see like controls if signed out, but can see likes count. Red.
+
+- Added conditional rendering of like controls based on `logged_in?`.
+
+Green.
+
+### Style and Tweaks
+
+- [ ] 5.1
+
+> As a Potential User  
+> So that I am enticed to join  
+> The site should be well styled
+
+I want to try something new, so I have decided on Neumorphism for my design.
+
+Neumorphism is based on skeuomorphism, in which ui elements mimic real life objects. Think early Apple iPhone ui design, before they moved towards flat UI design:
+
+![Example skeuomorphism](/images/skeuomorphism.jpg)
+
+Neumorphism is a more updated version, compromising between minimalism, but adding shadow to the elements to give the appearance they are extruding from the interface:
+
+![Example neuomorphism](/images/neuomorphism.jpg)
+
+I used [this article](https://medium.muz.li/skeuomorphism-neumorphism-ui-trend-e7b78792bd21) for inspiration.
