@@ -1,21 +1,15 @@
-<h1>Neogram</h1>
-
-<% if logged_in? %>
-
-<h2>Hello <%= current_user.username %></h2>
-
-<%= button_to "New post", new_user_post_path(current_user), method: :get %>
-
-<%= button_to "Log out", sessions_path, method: :delete %>
-
-<% end %>
+<h1>Posts</h1>
 
 <section>
   <% @posts.each do |post| %>
   <article class="post">
-    <p><%= post.username %></p>
-    <p><%= post.formatted_time %></p>
-    <%= link_to  image_tag(post.image, class: post.filter_class), post_path(post) %>
+    <div class="post-details">
+      <h3><%= post.username %></h3>
+      <p><%= post.formatted_time %></p>
+    </div>
+    <div class="post-image-wrapper">
+      <%= link_to  image_tag(post.image, class: post.filter_class), post_path(post) %>
+    </div>
   </article>
   <% end%>
 </section>

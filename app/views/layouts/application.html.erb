@@ -6,12 +6,38 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
-  <%= yield %>
+  <div class="container">
+    <header>
+      <%= button_to "Home", root_path, class: 'btn', method: :get %>
+      
+      <h2 class="greeting">
+        <% if logged_in? %>
+        Hello <%= current_user.username %>
+        <% else %>
+        Neogram
+        <% end %>
+      </h2>
+
+      <nav>
+        <% if logged_in? %>
+        <%= button_to "New post", new_user_post_path(current_user), method: :get, class: 'btn-primary' %>
+        <%= button_to "Log out", sessions_path, method: :delete, class: 'btn' %>
+        <% else %>
+        <%= button_to "Log in", new_sessions_path, method: :get, class: 'btn-primary'  %>
+        <%= button_to "Sign up", new_user_path, method: :get, class: 'btn' %>
+        <% end %>
+      </nav>
+    </header>
+
+    <%= yield %>
+  </div>
 </body>
 
 </html>
