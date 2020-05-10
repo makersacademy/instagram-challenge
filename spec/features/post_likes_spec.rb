@@ -22,6 +22,13 @@ RSpec.feature 'Posts likes', type: :feature do
   scenario 'Users can add a like' do
     expect(page).to have_content '0 likes'
     click_on 'Like'
-    expect(page).to have_content '1 like'
+    expect(page).to have_content '1 likes'
+  end
+  
+  scenario 'Users cannot add more than one like per post' do
+    expect(page).to have_content '0 likes'
+    click_on 'Like'
+    expect(page).to have_content '1 likes'
+    expect(page).to_not have_button 'Like'
   end
 end
