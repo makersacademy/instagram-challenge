@@ -170,7 +170,7 @@ I extracted user stories from the short brief above.
 
 ### Style
 
-- [ ] 5.1
+- [x] 5.1
 
 > As a Potential User  
 > So that I am enticed to join  
@@ -644,7 +644,7 @@ Green.
 
 ### Style and Tweaks
 
-- [ ] 5.1
+- [x] 5.1
 
 > As a Potential User  
 > So that I am enticed to join  
@@ -660,4 +660,12 @@ Neumorphism is a more updated version, compromising between minimalism, but addi
 
 ![Example neuomorphism](/images/neuomorphism.jpg)
 
-I used [this article](https://medium.muz.li/skeuomorphism-neumorphism-ui-trend-e7b78792bd21) for inspiration.
+I used [this article](https://medium.muz.li/skeuomorphism-neumorphism-ui-trend-e7b78792bd21) for inspiration, and [this tool](https://neumorphism.io) helped me out with the styling.
+
+## Retrospective
+
+- I think I have gotten to grips with Ruby on Rails, especially routing.
+- I would like to reorganise the scss, as it is all in one big file (didn't organise well due to time constraints).
+- I would like to revisit the editing and deleting comments, as that I could not work out before.
+- I would like to work out why there is a phantom comment.
+- I would probably refactor to use partials where possible, use posts all for root, and clean up unused routes.
