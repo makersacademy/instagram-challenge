@@ -23,7 +23,7 @@ I would like to be able to access a feed.
 
 As a user,
 So that I can describe or annotate my image,
-I would like to be able to add text to my post.
+I would like to be able to add a message to my post.
 
 As a user,
 So that I can express my appreciation for another persons post,
@@ -42,8 +42,8 @@ I would like to be able to add a comment to their post.
 
 ```
 As a user,
-So that I can share an image,
-I would like to be able to make a post with an image.
+So that I can describe or annotate my image,
+I would like to be able to add a message to my post.
 ```
 
 1. Generate rails template
@@ -70,9 +70,20 @@ In order to make this work I had to make various changes including runnning thes
 
 ```
 rails generate controller Posts
-rails generate model Post title:string text:text
+rails generate model Post message:text
 ```
+I passed this test for just adding a text message.
 
+## User story 2
+
+```
+As a user,
+So that I can share an image,
+I would like to be able to make a post with an image.
+```
+Next I wanted the user to be able to add a picture to their post.
+
+So I wrote a test for this and then added picture upload to the program.
 
 
 
