@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  get 'users/create'
   resources :posts
-  root "posts#index"
+  get 'posts/new'
+  post 'posts/create'
+
+  resources :users
+  get 'users/welcome'
+  get 'users/new'
+  post 'users/create'
+  get 'users/welcome'
+  root "users#welcome"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
