@@ -1,2 +1,10 @@
-<h1>Site#home</h1>
-<p>Find me in app/views/site/home.html.erb</p>
+<% if current_user %>
+  <h1> <%= "Greetings, " + current_user.username %> </h1>
+  <%= link_to "View all posts", posts_path%>
+  <%= link_to 'New Post', new_post_path %>
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <h1> New Session, Hu dis? </h1>
+  <%= link_to "sign up", new_user_registration_path %>
+  <%= link_to "sign in", new_user_session_path %>
+<% end %>

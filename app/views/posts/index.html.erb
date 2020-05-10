@@ -1,25 +1,28 @@
 <p id="notice"><%= notice %></p>
-
+<% if current_user %>
+  <h1> <%= "Greetings, " + current_user.username %> </h1>
+  <%= link_to "View all posts", posts_path%>
+  <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "sign up", new_user_registration_path %>
+  <%= link_to "sign in", new_user_session_path %>
+<% end %>
 <h1>Posts</h1>
-
+<%= link_to 'New Post', new_post_path %>
 <table>
   <thead>
     <tr>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @posts.each do |post| %>
+     <% @posts.each do |post| %>
       <tr>
-        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to post.title, post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Post', new_post_path %>
