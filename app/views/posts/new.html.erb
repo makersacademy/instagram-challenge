@@ -2,12 +2,16 @@
 
 <%= form_with model: [current_user, current_user.posts.build], class: 'post-form', local: true do |form| %>
 
+  <%= form.label :image, 'Upload', class: 'btn-danger' %>
 <%= form.file_field :image %>
 
-<div id="image-preview-container">
-  <img src="" alt="Image Preview" id="previewImage">
+<div class="post-image-wrapper">
+  <div id="image-preview-container">
+    <img src="" alt="Image Preview" id="previewImage">
+  </div>
 </div>
 
+<div class="control-group">
 <div class="post-filter-select">
   <%= form.label :filter %>
   <%= form.select(
@@ -16,7 +20,7 @@
     { include_blank: true }
   ) %>
 </div>
-
 <%= form.submit 'Post', class: 'btn-primary' %>
+</div>
 
 <% end %>
