@@ -567,9 +567,12 @@ Green.
 
 Feature test: Users can add a like to a post. Red.
 
-- Created Likes model according to table schema using: `rails g model like user:references post:references`.
+- Created Like model according to table schema using: `rails g model like user:references post:references`.
+- Ran migration.
 - Added to post that it has many likes.
-- 
+- Added executive ruby to display post likes count on post show view.
+- Created likes controller using: `rails
+
 <!--
 
 ### Removing a Like
