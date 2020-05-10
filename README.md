@@ -665,7 +665,8 @@ I used [this article](https://medium.muz.li/skeuomorphism-neumorphism-ui-trend-e
 ## Retrospective
 
 - I think I have gotten to grips with Ruby on Rails, especially routing.
-- I would like to reorganise the scss, as it is all in one big file (didn't organise well due to time constraints).
+- I have worked well using nested resources.
+- I have given it a good style.
 - I would like to revisit the editing and deleting comments, as that I could not work out before.
 - I would like to work out why there is a phantom comment.
 
@@ -675,4 +676,5 @@ Refactors to consider:
 - Use posts all for root.
 - Clean up unused routes.
 - Add AJAX to comment creation and likes.
-- Host on heroku.
+- Host on Heroku.
+- Split scss into separate files
