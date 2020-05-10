@@ -156,6 +156,12 @@ I extracted user stories from the short brief above.
 > I can see how many likes a photo has  
 > So I can estimate my popularity
 
+- [ ] 4.4
+
+> As a User  
+> I should only be able to like when signed in  
+> So that liking is fair and accurate representation of popularity
+
 ### Style
 
 - [ ] 5.1
@@ -551,4 +557,37 @@ Feature Test: User cannot see comment form if signed out. Red.
 
 Green.
 
+### Adding a Like
+
+- [ ] 4.1
+
+> As a Signed In User  
+> I can like a photo  
+> So I can show appreciation without commenting
+
+Feature test: Users can add a like to a post. Red.
+
+### Removing a Like
+
+- [ ] 4.2
+
+> As a Signed In User  
+> I rescind a like  
+> In case I change my mind about liking that photo
+
+### Counting Likes
+
+- [ ] 4.3
+
+> As a User  
+> I can see how many likes a photo has  
+> So I can estimate my popularity
+
+### Like Only When Signed In
+
+- [ ] 4.4
+
+> As a User  
+> I should only be able to like when signed in  
+> So that liking is fair and accurate representation of popularity
 
