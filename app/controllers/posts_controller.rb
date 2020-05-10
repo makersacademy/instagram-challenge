@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @owner = owner?
     @comments = @post.comments
+    @user_liked = logged_in? ? @post.likes.exists?(user_id: current_user.id) : nil
   end
 
   def edit
