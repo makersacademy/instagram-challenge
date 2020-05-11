@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "log out", type: :feature do 
-  scenario "When users log out they are taken back to the log in page " do 
+  xscenario "When users log out they are taken back to the log in page " do 
     user = User.create(name: "user", email: "user@example.com", password: "12345")
     visit "sessions/new"
     fill_in 'session[email]', with: 'user@example.com'
@@ -10,6 +10,8 @@ RSpec.feature "log out", type: :feature do
     click_on 'Sign out'
     expect(page).to have_no_content("user")
   end 
+
+
  
 end 
 
