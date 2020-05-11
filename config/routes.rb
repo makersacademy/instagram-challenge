@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   post 'posts/create'
 
   resources :users
-  get 'users/welcome'
   get 'users/new'
   post 'users/create'
-  root "users#welcome"
+  root "users#new"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 

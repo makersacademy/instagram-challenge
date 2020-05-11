@@ -13,10 +13,11 @@
 
 <div class="page header" id="logo">
 </div>
-<% @posts.each do |post| %>
-<section>
+<% @posts.order(created_at: :desc).each do |post| %>
+<section id="postsbody">
     <div class="notification container">
         <div class="hero center">
+        <strong id="usernamehandle">@<%= current_user.username %></strong>
         <strong class="locationtext" id="location"><%= post.title %></strong>
         <p class="text">Posted: <%= post.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
         <figure>
