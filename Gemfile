@@ -34,14 +34,15 @@ group :development, :test do
   # Testing with RSpec
   gem 'rspec-rails', '~> 4.0.0'
   # Linting with Rubocop
+  gem 'pry'
   gem "rubocop", require: false
   gem "rubocop-rails"
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
