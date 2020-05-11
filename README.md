@@ -694,7 +694,7 @@ I used [this article](https://medium.muz.li/skeuomorphism-neumorphism-ui-trend-e
 - I have worked well using nested resources.
 - I have given it a good style.
 - I would like to revisit the editing and deleting comments, as that I could not work out before.
-- I would like to work out why there is a phantom comment.
+- I would like to work out why there is a phantom comment. (Solved!)
 
 Refactors to consider:
 
