@@ -24,8 +24,10 @@ class PostsController < ApplicationController
 
   # POST /posts
   # POST /posts.json
+
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
 
     respond_to do |format|
       if @post.save
@@ -70,6 +72,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.fetch(:post, {}).permit(:title, :body, :image)
+      params.fetch(:post, {}).permit(:title, :body, :image, :user_id)
     end
 end

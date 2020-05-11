@@ -6,5 +6,27 @@
 
 <p><%= @post.body %></p>
 
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+    <strong>
+    <%= comment.user.username %> :
+    </strong>
+    <%= comment.body %>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <%= form.hidden_field :post_id %>
+  <%= form.hidden_field :user_id %>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
