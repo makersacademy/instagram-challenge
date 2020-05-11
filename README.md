@@ -85,6 +85,36 @@ Next I wanted the user to be able to add a picture to their post.
 
 So I wrote a test for this and then added picture upload to the program.
 
+# User story 3
+
+```
+As a user,
+So that I can build a profile,
+I would like to be able to sign up.
+```
+
+I wasn't sure how to test for this, so I spiked the answer.
+
+Then I implemented the following solution:
+```
+rails g model user username password_digest
+rails g controller users new create
+rails g controller sessions new create log
+```
+
+# User story 4
+
+```
+As a user,
+So that I can return to my profile,
+I would like to be able to sign in.
+```
+
+```
+rails g controller sessions new create log
+gem install bcrypt
+bundle install
+```
 
 
 # README
