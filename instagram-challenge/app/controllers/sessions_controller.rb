@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
     else 
       puts " "
       flash[:danger] = 'Invalid email/password combination' # Not quite right!
-      puts "user does not match"
       redirect_to sessions_new_path
     end 
   end 
