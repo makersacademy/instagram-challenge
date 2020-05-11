@@ -30,6 +30,15 @@ RSpec.feature "Sign in", type: :feature do
       click_on 'Sign in'
       expect(page).to have_no_content("user")
     end
+
+    scenario "When users sign in with the wrong password they recieve an error message " do 
+      user = User.create(name: "user", email: "user@example.com", password: "12345")
+      visit "sessions/new"
+      fill_in 'session[email]', with: 'user@example.com'
+      fill_in  'session[password]', with: 'wrong_password'
+      click_on 'Sign in'
+      expect(page).to have_content("Invalid email/password combination")
+    end 
    
 end
 
