@@ -20,7 +20,7 @@ RSpec.feature 'Posts comments', type: :feature do
 
     @time = Time.zone.now
 
-    fill_in 'comment[content]', with: 'This is a comment'
+    fill_in 'content', with: 'This is a comment'
     click_on 'Comment'
   end
   
@@ -29,7 +29,7 @@ RSpec.feature 'Posts comments', type: :feature do
   end
 
   scenario 'Comments appear newest first' do
-    fill_in 'comment[content]', with: 'This is a newer comment'
+    fill_in 'content', with: 'This is a newer comment'
     click_on 'Comment'
 
     expect(first('.comment')).to have_content 'This is a newer comment'
