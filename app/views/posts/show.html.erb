@@ -30,9 +30,10 @@
   <% end%>
 </article>
 
+
 <section class="comments">
   <% if logged_in? %>
-  <%= form_with model: [@post, @post.comments.build], local: true, class: 'comment-form' do |form| %>
+  <%= form_with url: post_comments_path(@post), local: true, class: 'comment-form' do |form| %>
   <%= form.text_area :content, placeholder: 'Add a comment...' %>
   <%= form.submit 'Comment', class: 'btn' %>
   <% end %>
