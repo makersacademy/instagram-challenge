@@ -57,6 +57,7 @@ group :development, :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
+  gem 'timecop'
   gem 'travis'
   gem 'webdrivers'
 end

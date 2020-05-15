@@ -98,6 +98,10 @@ So that I know who shared the picture
 I would like to see the name of the person who uploaded the image
 
 As a user
+So that I know when the pictures were shared
+I would like to see the date the image was posted
+
+As a user
 So that I can tell others what I think of their pictures
 I would like to be able to comment on images
 ```
@@ -133,10 +137,6 @@ Images:
 #### User Stories to be Actioned at a Later Date
 
 ```
-As a user
-So that I know when the pictures were shared
-I would like to see the date the image was posted
-
 As a user
 So that I can see the most recent pictures
 I would like to see the images in reverse chronological order
