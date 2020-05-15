@@ -2,13 +2,14 @@ require 'simplecov'
 require 'simplecov-console'
 require 'factory_bot'
 require_relative './helpers/user_helper'
+require_relative './helpers/picture_helper'
 require_relative './factories'
 
 SimpleCov.start 'rails' do
   add_filter '/bin/'
   add_filter '/db/'
   add_filter '/spec/'
-  add_filter '/app/jobs' 
+  add_filter '/app/jobs'
   add_filter '/app/mailers'
   add_filter '/app/channels'
   add_filter '/app/helpers'
@@ -36,6 +37,8 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.include UserHelper, type: :feature
+  config.include PictureHelper, type: :feature
+  
   config.include FactoryBot::Syntax::Methods
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

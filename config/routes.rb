@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :pictures, except: [:update, :edit]
+  resources :comments
+  resources :pictures, except: [:update, :edit] do
+    resources :comments, only: [:create]
+  end
+
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }

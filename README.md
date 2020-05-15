@@ -6,7 +6,6 @@ This repo is an Instagram clone app developed as part of a project whilst attend
 The task we were assigned:
 
 "Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome)."
-___
 
 ## Getting Started
 
@@ -27,9 +26,8 @@ To run the project, start up the rails server
 ```
 $ rails server
 ```
-Then navigate to localhost:3000 in your browser
+Then navigate to `localhost:3000` in your browser
 
-___
 
 ## Dependencies
 
@@ -39,7 +37,6 @@ This project relies on the following Rails Gems:
 - CarrierWave (for image uploading)
 - MiniMagick (for image manipulation)
 
-___
 
 ## Running Tests
 
@@ -56,14 +53,12 @@ To run the tests:
 $ bundle exec rspec
 $ bundle exec rubocop
 ```
-___
 
 ## Deployment
 
 The app is deployed via Heroku. [Link to App](https://instagram-challenge-lw.herokuapp.com/)
 
 If all tests pass, commits on the master branch are automatically deployed to Heroku via Travis
-___
 
 ## Criteria for Building the Project
 
@@ -73,6 +68,7 @@ ___
 | ------------- |:-------------              | :-----|
 | Users         | sign_up, sign_in, sign_out  | name, email, password |
 | Pictures      | create, delete                       | image, user_id   |
+| Comments | create | text, user_id, picture_id |
 
 #### Completed User Stories
 
@@ -100,6 +96,10 @@ I would like to be able to upload images to Instagram
 As a user
 So that I know who shared the picture
 I would like to see the name of the person who uploaded the image
+
+As a user
+So that I can tell others what I think of their pictures
+I would like to be able to comment on images
 ```
 
 #### Acceptence Criteria
@@ -148,10 +148,6 @@ I would like to delete an image I posted
 As a user
 So that I can only delete my own pictures
 I would like to see a helpful error message if I try to delete someone else's images
-
-As a user
-So that I can tell others what I think of their pictures
-I would like to be able to comment on images
 
 As a user
 So that I can remove a comment

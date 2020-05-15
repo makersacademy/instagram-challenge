@@ -1,24 +1,38 @@
 <% if current_user %>
-  <h1>Hello, <%= current_user.name %>!</h1>
-
-  <h2>Pictures</h2>
-
-  <% @pictures.each do |picture| %>
-      Posted by: <%= picture.user.name %>
-      <br>
-      <%= link_to picture_path(picture.id) do %>
-        <%= image_tag picture.image_url %>
-      <% end %>
-      <br>
-      <br>
-  <% end %>
-
-  <br>
 
   <%= link_to 'New Picture', new_picture_path %>
 
   <p><%= link_to destroy_user_session_path, method: :delete do %>
     Log Out
   <% end %></p>
+
+  <h1>Hello, <%= current_user.name %>!</h1>
+
+  <% @pictures.each do |picture| %>
+    Posted by: <%= picture.user.name %>
+    <br>
+    <%= link_to picture_path(picture.id) do %>
+      <%= image_tag picture.image_url %>
+    <% end %>
+    <br>
+    <br>
+
+    <h3>Comment on This Picture</h3>
+    <%= form_for [picture, Comment.new] do |f| %>
+      <%= f.text_area :text %><br>
+      <%= f.hidden_field :picture_id, value: picture.id %>
+      <%= f.submit %>
+    <% end %> 
+
+    <h3>Comments:</h3>
+    <ul>
+      <% picture.comments.each do |comment| %>
+        <li><%= comment.text %></li>
+      <% end %>
+    </ul>
+
+  <% end %>
+
+  <br>
 
 <% end %>
