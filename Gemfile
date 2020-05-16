@@ -35,8 +35,8 @@ gem 'mini_magick'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem "better_errors"
-  gem "binding_of_caller"
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -49,9 +49,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem "factory_bot_rails"
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 4.0.0'
-  gem "rubocop", "0.79.0", require: false
+  gem 'rubocop', '0.79.0', require: false
   gem 'rubocop-rails'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
