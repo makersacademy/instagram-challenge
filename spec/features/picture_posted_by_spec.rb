@@ -6,7 +6,7 @@ RSpec.feature 'Image Owner', type: :feature do
     login_as(user)
   end
 
-  scenario "user can upload an image" do
+  scenario "displays the name of the user who posted the picture" do
     upload_image
     expect(page).to have_content 'Posted by: Ruby Rails'
   end

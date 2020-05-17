@@ -116,6 +116,10 @@ I would like the delete option not to appear on other users' images
 As a user
 So that I can tell others what I think of their pictures
 I would like to be able to comment on images
+
+As a user
+So that I know who shared the comment
+I would like to see the name of the person who posted the comment
 ```
 
 #### Acceptence Criteria

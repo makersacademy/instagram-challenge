@@ -6,7 +6,7 @@ RSpec.feature 'Image Date', type: :feature do
     login_as(user)
   end
 
-  scenario 'user can see date the image was posted' do
+  scenario 'dsiplays the date the image was posted' do
     Timecop.freeze do
       upload_image
       expect(page).to have_content Time.zone.now.strftime('%d/%m/%Y %H:%M')
