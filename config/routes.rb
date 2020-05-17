@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :comments
   resources :pictures, except: [:update, :edit] do
-    resources :comments, only: [:create]
+    resources :comments
   end
 
   devise_for :users, controllers: {

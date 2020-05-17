@@ -1,9 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :set_picture
   before_action :set_comment, only: [:edit, :update, :destroy]
-
-  def new
-    @comment = Comment.new
-  end
 
   def edit
   end
@@ -16,8 +13,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to pictures_path, notice: 'Comment was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.html { redirect_to pictures_path }
       end
     end
   end
@@ -49,6 +45,10 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:text, :picture_id)
+  end
+
+  def set_picture
+    @picture = Picture.find(params[:picture_id])
   end
 
 end

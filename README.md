@@ -128,6 +128,14 @@ I would like to see the date the comment was posted
 As a user
 So that I can remove a comment
 I would like to be able to delete a comment on a image
+
+As a user
+So that I can only remove my own comments
+I would like the delete option not to appear on other users' comments
+
+As a user
+So that I can update a comment
+I would like to be able to edit a comment
 ```
 
 #### Acceptence Criteria
@@ -161,10 +169,6 @@ Images:
 #### User Stories to be Actioned at a Later Date
 
 ```
-As a user
-So that I can remove a comment
-I would like to be able to delete a comment on a image
-
 As a user
 So that I can tell others that I like their pictures
 I would like to be able to 'like' an image

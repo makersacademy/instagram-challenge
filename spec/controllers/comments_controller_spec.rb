@@ -8,12 +8,13 @@ RSpec.describe CommentsController, type: :controller do
   let(:picture) { create(:picture, user: user) }
   let(:comment_attributes) { { text: 'this is a comment', picture_id: picture.id } }
 
-  describe 'POST /' do
+  describe 'POST /:picture_id/comments' do
     before do
-      post :create, params: { comment: comment_attributes }
+      post :create, { params: { comment: comment_attributes, picture_id: picture.id } }
     end
 
-    it 'responds with 200' do
+    it 'responds with 302' do
+      expect(response).to have_http_status(302)
       expect(response).to redirect_to(pictures_path)
     end
 
@@ -25,9 +26,11 @@ RSpec.describe CommentsController, type: :controller do
   describe 'DELETE /destroy' do
     let(:comment) { create(:comment, picture: picture, user: user) }
 
-    it 'responds with 200' do
-      delete :destroy, params: { id: comment.id }
+    it 'responds with 302' do
+      delete :destroy, params: { picture_id: picture.id, id: comment.id }
+      expect(response).to have_http_status(302)
       expect(response).to redirect_to(pictures_path)
     end
   end
+
 end
