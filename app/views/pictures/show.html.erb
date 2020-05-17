@@ -5,6 +5,8 @@
   <%= @picture.user.name %>
 </p>
 
-<p><%= link_to 'Destroy', @picture, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% if @picture.user_id == current_user.id %>
+  <p><%= link_to 'Destroy', @picture, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>
 
 <%= link_to 'Back', pictures_path %>

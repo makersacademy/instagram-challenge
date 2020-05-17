@@ -106,6 +106,14 @@ So that I can see the most recent pictures
 I would like to see the images in reverse chronological order
 
 As a user
+So that I can remove pictures I've shared
+I would like to delete an image I posted
+
+As a user
+So that I can only remove my own pictures
+I would like the delete option not to appear on other users' images
+
+As a user
 So that I can tell others what I think of their pictures
 I would like to be able to comment on images
 ```
@@ -141,14 +149,6 @@ Images:
 #### User Stories to be Actioned at a Later Date
 
 ```
-As a user
-So that I can remove pictures I've shared
-I would like to delete an image I posted
-
-As a user
-So that I can only delete my own pictures
-I would like to see a helpful error message if I try to delete someone else's images
-
 As a user
 So that I can remove a comment
 I would like to be able to delete a comment on a image
