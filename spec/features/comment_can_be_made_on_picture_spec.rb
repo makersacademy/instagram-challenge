@@ -8,8 +8,7 @@ RSpec.feature 'Comment', type: :feature do
   end
 
   scenario "user can comment on an image" do
-    fill_in "comment_text",	with: 'This is a comment on an image'
-    click_button 'Create Comment'
+    comment
     expect(current_path).to eq '/pictures'
     expect(page).to have_content 'This is a comment on an image'
   end

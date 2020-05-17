@@ -124,6 +124,10 @@ I would like to see the name of the person who posted the comment
 As a user
 So that I know when the comments were shared
 I would like to see the date the comment was posted
+
+As a user
+So that I can remove a comment
+I would like to be able to delete a comment on a image
 ```
 
 #### Acceptence Criteria

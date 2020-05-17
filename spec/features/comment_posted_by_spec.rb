@@ -6,8 +6,7 @@ RSpec.feature 'Comment Owner', type: :feature do
     user = FactoryBot.create(:user)
     login_as(user)
     upload_image
-    fill_in "comment_text",	with: 'This is a comment on an image'
-    click_button 'Create Comment'
+    comment
     expect(page).to have_content "Comment by: #{user.name}"
   end
 
