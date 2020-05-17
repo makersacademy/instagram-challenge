@@ -120,6 +120,10 @@ I would like to be able to comment on images
 As a user
 So that I know who shared the comment
 I would like to see the name of the person who posted the comment
+
+As a user
+So that I know when the comments were shared
+I would like to see the date the comment was posted
 ```
 
 #### Acceptence Criteria
