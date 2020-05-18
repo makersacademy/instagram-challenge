@@ -24,35 +24,16 @@
       <%= link_to 'Like', picture_likes_path(picture), method: :post %>
     <% end %>
     <br>
-    <%= picture.likes.count %> <%= (picture.likes.count) == 1 ? 'Like' : 'Likes' %>
-    <br>
-    <%= picture.comments.count %> <%= (picture.comments.count) == 1 ? 'Comment' : 'Comments' %>
-  <% end %>
-    <br>
+
+    <%= link_to 'Add Comment', picture_path(picture) %>
     <br>
 
-    <h3>Comment on This Picture</h3>
-    <%= form_for [picture, Comment.new] do |f| %>
-      <%= f.text_area :text %><br>
-      <%= f.hidden_field :picture_id, value: picture.id %>
-      <%= f.submit %>
+    <%= pluralize(picture.likes.count, 'Like') %>
+    <br>
+
+    <%= link_to pluralize(picture.comments.count, 'Comment'), picture_path(picture) %>
+
     <% end %>
-
-    <h3>Comments:</h3>
-
-      <% picture.comments.each do |comment| %>
-        <div class="comment">
-          <p><%= "#{comment.user.name} commented #{time_ago_in_words(comment.created_at)} ago" %></p>
-          <br>
-          <%= comment.text %>
-          <br>
-          <% if comment.user_id == current_user.id %>
-            <%= link_to 'Destroy', picture_comment_path(picture, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%= link_to 'Edit', edit_picture_comment_path(picture, comment), method: :get %>
-          <% end %>
-        </div>
-        <br>
-      <% end %>
 
   <% end %>
 

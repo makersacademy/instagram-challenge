@@ -10,8 +10,12 @@ RSpec.feature 'Comment', type: :feature do
   scenario "user can comment on an image" do
     expect(page).to have_content '0 Comments'
     comment
-    expect(current_path).to eq '/pictures'
-    expect(page).to have_content 'This is a comment on an image'
+    
+    within('.comment') do
+      expect(page).to have_content 'This is a comment on an image'
+    end
+
+    click_link 'Back'
     expect(page).not_to have_content '0 Comments'
     expect(page).to have_content '1 Comment'
   end

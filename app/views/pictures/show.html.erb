@@ -1,3 +1,7 @@
+<%= link_to 'Back', pictures_path %>
+
+<br>
+
 <%= image_tag @picture.image.url %>
 
 <p>
@@ -9,4 +13,12 @@
   <p><%= link_to 'Destroy', @picture, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% end %>
 
-<%= link_to 'Back', pictures_path %>
+<h3>Comment on This Picture</h3>
+
+<%= render 'comments/new', picture: @picture %>
+
+<h3>Comments:</h3>
+
+<% @picture.comments.each do |comment| %>
+  <%= render comment %>
+<% end %>

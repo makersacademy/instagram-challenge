@@ -15,7 +15,7 @@ RSpec.describe CommentsController, type: :controller do
 
     it 'responds with 302' do
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to(pictures_path)
+      expect(response).to redirect_to(picture)
     end
 
     it 'creates a post' do
@@ -29,7 +29,7 @@ RSpec.describe CommentsController, type: :controller do
     it 'responds with 302' do
       delete :destroy, params: { picture_id: picture.id, id: comment.id }
       expect(response).to have_http_status(302)
-      expect(response).to redirect_to(pictures_path)
+      expect(response).to redirect_to(picture)
     end
   end
 
