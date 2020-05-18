@@ -15,7 +15,11 @@
     <br>
     <%= link_to picture_path(picture.id) do %>
       <%= image_tag picture.image_url, alt: "image" %>
-    <% end %>
+    <br>
+    <%= link_to 'Like', picture_likes_path(picture), method: :post %>
+    <br>
+    <%= picture.likes.count %> <%= (picture.likes.count) == 1 ? 'Like' : 'Likes' %>
+  <% end %>
     <br>
     <br>
 
@@ -41,6 +45,7 @@
             <%= link_to 'Edit', edit_picture_comment_path(picture, comment), method: :get %>
           <% end %>
         </div>
+        <br>
       <% end %>
 
   <% end %>
