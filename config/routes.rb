@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :pictures, except: [:update, :edit] do
     resources :comments
+    resources :likes
   end
 
   devise_for :users, controllers: {
