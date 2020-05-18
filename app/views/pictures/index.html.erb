@@ -16,7 +16,14 @@
     <%= link_to picture_path(picture.id) do %>
       <%= image_tag picture.image_url, alt: "image" %>
     <br>
-    <%= link_to 'Like', picture_likes_path(picture), method: :post %>
+
+    <% liked = picture.likes.find { |like| like.user_id == current_user.id } %>
+
+    <% if liked %>
+      <%= link_to 'Unlike', picture_like_path(picture, liked), method: :delete %>
+    <% else %>
+      <%= link_to 'Like', picture_likes_path(picture), method: :post %>
+    <% end %>
     <br>
     <%= picture.likes.count %> <%= (picture.likes.count) == 1 ? 'Like' : 'Likes' %>
   <% end %>

@@ -22,4 +22,14 @@ RSpec.describe LikesController, type: :controller do
     end
   end
 
+  describe 'DELETE /destroy' do
+    let(:like) { create(:like, picture: picture, user: user) }
+
+    it 'responds with 302' do
+      delete :destroy, params: { picture_id: picture.id, id: like.id }
+      expect(response).to have_http_status(302)
+      expect(response).to redirect_to(pictures_path)
+    end
+  end
+
 end
