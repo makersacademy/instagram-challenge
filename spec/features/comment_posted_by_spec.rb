@@ -7,7 +7,7 @@ RSpec.feature 'Comment Owner', type: :feature do
     login_as(user)
     upload_image
     comment
-    expect(page).to have_content "Comment by: #{user.name}"
+    expect(page).to have_content "#{user.name} commented"
   end
 
 end
