@@ -1,16 +1,12 @@
 require 'rails_helper'
 
 RSpec.feature 'Image Date', type: :feature do
-  before do
-    user = FactoryBot.create(:user)
-    login_as(user)
-  end
 
   scenario 'dsiplays the date the image was posted' do
-    Timecop.freeze do
-      upload_image
-      expect(page).to have_content Time.zone.now.strftime('%d/%m/%Y %H:%M')
-    end
+    user = FactoryBot.create(:user)
+    login_as(user)
+    upload_image
+    expect(page).to have_content "#{time_ago_in_words(Picture.first.created_at)} ago"
   end
 
 end

@@ -9,10 +9,9 @@
   <h1>Hello, <%= current_user.name %>!</h1>
 
   <% @pictures.each do |picture| %>
-    Posted by: <%= picture.user.name %>
-    <br>
-    Posted on: <%= picture.created_at.strftime('%d/%m/%Y %H:%M')%>
-    <br>
+
+    <p><%= "#{picture.user.name} posted #{time_ago_in_words(picture.created_at)} ago" %></p>
+
     <%= link_to picture_path(picture.id) do %>
       <%= image_tag picture.image_url, alt: "image" %>
     <br>
