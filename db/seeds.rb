@@ -1,4 +1,5 @@
 require 'faker'
+require 'timecop'
 
 User.create(
   name: "Lila Walker",

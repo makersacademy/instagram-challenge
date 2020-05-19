@@ -35,6 +35,7 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'fog-aws'
 gem 'foreman'
 gem 'mini_magick'
+gem 'timecop'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
@@ -61,7 +62,6 @@ group :development, :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
-  gem 'timecop'
   gem 'travis'
   gem 'webdrivers'
 end
