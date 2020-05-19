@@ -26,12 +26,16 @@ end
   )
 
   3.times do |x|
-    Timecop.freeze(Time.now - n.days - x.hours)
+    Timecop.return
     picture = Picture.create!(
       user: user,
     )
+
     picture.image.store!(File.open(Rails.root.join(images.pop)))
     picture.save!
+
+    Timecop.freeze(Time.zone.now - n.days - x.hours)
+    picture.touch(:created_at)
 
     rand(0..5).times do |c|
       Timecop.freeze(Time.now - c.hours)

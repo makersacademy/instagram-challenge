@@ -32,6 +32,7 @@ gem 'devise', '~> 4.2'
 
 gem 'carrierwave', '~> 2.1'
 gem 'fog-aws'
+gem 'foreman'
 gem 'mini_magick'
 
 group :development do
