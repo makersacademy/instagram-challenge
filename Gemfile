@@ -51,6 +51,7 @@ group :development, :test do
   gem 'capybara', '>= 2.15'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem 'rspec-rails', '~> 4.0.0'
   gem 'rubocop', '0.79.0', require: false
   gem 'rubocop-rails'
