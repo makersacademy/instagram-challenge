@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'devise', '~> 4.2'
 
 gem 'carrierwave', '~> 2.1'
+gem 'fog-aws'
 gem 'mini_magick'
 
 group :development do
@@ -50,8 +51,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'factory_bot_rails'
-  gem 'rails-controller-testing'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 4.0.0'
   gem 'rubocop', '0.79.0', require: false
   gem 'rubocop-rails'
