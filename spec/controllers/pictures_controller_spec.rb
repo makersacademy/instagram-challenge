@@ -26,7 +26,7 @@ RSpec.describe PicturesController, type: :controller do
       end
     end
 
-    it 'displays peeps in reverse order' do
+    it 'displays images in reverse order' do
       get :index
       expect(assigns(:pictures).map(&:created_at).map(&:to_s)).to eq(times.reverse)
     end
@@ -40,17 +40,29 @@ RSpec.describe PicturesController, type: :controller do
   end
 
   describe 'POST /' do
-    before do
-      post :create, params: { picture: picture_attributes }
+
+    context 'success' do
+      before do
+        post :create, params: { picture: picture_attributes }
+      end
+
+      it 'responds with 200' do
+        expect(response).to redirect_to(pictures_path)
+      end
+
+      it 'creates a picture' do
+        expect(Picture.find_by(image: 'cat.jpeg')).to be
+      end
     end
 
-    it 'responds with 200' do
-      expect(response).to redirect_to(pictures_path)
+    context 'fail' do
+      it 'renders new form if image not saved' do
+        allow_any_instance_of(Picture).to receive(:save).and_return(false)
+        post :create, params: { picture: picture_attributes }
+        expect(response).to render_template(:new)
+      end
     end
 
-    it 'creates a post' do
-      expect(Picture.find_by(image: 'cat.jpeg')).to be
-    end
   end
 
   describe 'DELETE /destroy' do
