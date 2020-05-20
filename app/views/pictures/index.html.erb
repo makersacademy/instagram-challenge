@@ -1,40 +1,5 @@
-<% if current_user %>
+<%= link_to 'New Picture', new_picture_path %>
 
-  <h3 class="profile-name"> <%= current_user.name %></h3>
-
-  <%= link_to 'New Picture', new_picture_path %>
-
-  <p><%= link_to destroy_user_session_path, method: :delete do %>
-    Log Out
-  <% end %></p>
-
-  <% @pictures.each do |picture| %>
-
-    <p><%= "#{picture.user.name} posted #{time_ago_in_words(picture.created_at)} ago" %></p>
-
-    <%= link_to picture_path(picture.id) do %>
-      <%= image_tag picture.image_url, alt: "image" %>
-    <br>
-
-    <% liked = picture.likes.find { |like| like.user_id == current_user.id } %>
-
-    <% if liked %>
-      <%= link_to 'Unlike', picture_like_path(picture, liked), method: :delete %>
-    <% else %>
-      <%= link_to 'Like', picture_likes_path(picture), method: :post %>
-    <% end %>
-    <br>
-
-    <%= link_to 'Add Comment', picture_path(picture) %>
-    <br>
-
-    <%= pluralize(picture.likes.count, 'Like') %>
-    <br>
-
-    <%= link_to pluralize(picture.comments.count, 'Comment'), picture_path(picture) %>
-
-    <% end %>
-
-  <% end %>
-
+<% @pictures.each do |picture| %>
+  <%= render picture %>
 <% end %>

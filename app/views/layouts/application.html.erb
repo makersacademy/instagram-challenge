@@ -11,6 +11,12 @@
 
   <body>
     <%= render 'layouts/alerts' %>
+
+    <% if current_user %>
+      <h3 class="profile-name"> <%= current_user.name %></h3>
+      <%= link_to destroy_user_session_path, method: :delete do %>Log Out<% end %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
