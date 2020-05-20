@@ -1,9 +1,15 @@
 Instagram Challenge
 ===================
 
+[Getting Started](#getting-started) | [Dependencies](#dependencies) | [Running Tests](#running-tests) | [Deployment](#deployment) | [Criteria for Building the Project](#criteria-for-building-the-project)
+
+**Travis build status:**
+
+![Travis Build](https://travis-ci.com/lilawalker/instagram-challenge-lw.svg?branch=master)
+
 This repo is an Instagram clone app developed as part of a project whilst attending Makers Academy.
 
-The task we were assigned:
+The requirements of the task:
 
 "Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome)."
 
@@ -14,19 +20,40 @@ Ensure you have the following setup on your machine:
 - ImageMagick
 - PostgreSQL
 
-Clone this repository. Then install dependencies and migrate the database as follows:
+`git clone` this repository and `cd` into the directory.
+
+Install dependencies:
 
 ```
 $ bundle install
-$ rails db:create
-$ rails db:migrate RAILS_ENV=development
-$ rails db:migrate RAILS_ENV=test
 ```
-To run the project, start up the rails server
+
+Create, migrate and seed the database:
+
 ```
-$ rails server
+$ rails db:setup
 ```
-Then navigate to `localhost:3000` in your browser
+
+Setup image storage:
+
+- Set up an [AWS S3 account](https://aws.amazon.com/s3/)
+- Create a bucket in S3
+- Get your S3 access key id and secret access key
+- Create a `.env` file in your root directory containing the following:
+
+```
+S3_KEY=<your-access-key-id>
+S3_SECRET=<your-secret-access-key>
+S3_BUCKET=<your-bucket-name>
+```
+
+To run the project, start up the server:
+
+```
+$ foreman start
+```
+
+Then navigate to `localhost:5000` in your browser
 
 
 ## Dependencies
@@ -36,6 +63,7 @@ This project relies on the following Rails Gems:
 - Devise (for user authentication)
 - CarrierWave (for image uploading)
 - MiniMagick (for image manipulation)
+- Fog-AWS (for image storage)
 
 
 ## Running Tests
@@ -54,6 +82,8 @@ $ bundle exec rspec
 $ bundle exec rubocop
 ```
 
+All tests are passing with 95% test coverage.
+
 ## Deployment
 
 The app is deployed via Heroku. [Link to App](https://instagram-challenge-lw.herokuapp.com/)
@@ -64,13 +94,14 @@ If all tests pass, commits on the master branch are automatically deployed to He
 
 #### Domain Model
 
-| Models        | Methods                     | State  |
-| ------------- |:-------------              | :-----|
-| Users         | sign_up, sign_in, sign_out  | name, email, password |
-| Pictures      | create, delete                       | image, user_id   |
-| Comments | create | text, user_id, picture_id |
+| Models | Methods | State |
+| :--- |:--- | :--- |
+| Users | sign_up, sign_in, sign_out  | name, email, password |
+| Pictures | create, delete | image, user_id |
+| Comments | create, delete, edit | text, user_id, picture_id |
+| Likes | create, delete | user_id, picture_id |
 
-#### Completed User Stories
+#### User Stories
 
 ```
 As a user
@@ -136,6 +167,14 @@ I would like the delete option not to appear on other users' comments
 As a user
 So that I can update a comment
 I would like to be able to edit a comment
+
+As a user
+So that I can tell others that I like their pictures
+I would like to be able to 'like' an image
+
+As a user
+So that I can can change my mind about liking a picture
+I would like to be able to 'unlike' an image
 ```
 
 #### Acceptence Criteria
@@ -152,7 +191,7 @@ Sign up:
 
 Sign in:
 - [x]  the user can see a link to a sign in page which prompts them to enter in their email address and password
-- [x]  the user can only enter a valid email
+- [x]  the user can only enter in valid email and password
 - [x]  when the user submits their details, they are logged in and redirected to the pictures page
 - [x]  the user is able to logout
 
@@ -162,18 +201,19 @@ Images:
 - [x]  after upload, the user is redirected to the main pictures page and sees all uploaded images
 - [x]  the image is resized upon upload
 - [x]  the image is a clickable link to the image path which includes a link to delete the image
-- [x]  the user can delete the image
+- [x]  the user can only delete their own images and do not see the delete option on images they do not own
 - [x]  the user can see the name of the user who posted the image above the picture
+- [x]  the user can see the time ago in words that the images were posted, and images are in reverse chronological order
+- [x]  images are hosted on AWS
+- [x]  on each picture, the number of comments and likes are listed, as well as a link to add a like or comment
 
+Comments:
+- [x] user can comment on any image
+- [x] comments display the name of the user and the time ago in words when posted
+- [x] comments can be edited and deleted
+- [x] user cannot delete or eidt another user's comments and does not see the options on other user's comments
+- [x] the user can view all the comments on the individual picture page
 
-#### User Stories to be Actioned at a Later Date
-
-```
-As a user
-So that I can tell others that I like their pictures
-I would like to be able to 'like' an image
-```
-
-#### Additional Things to Consider
-- The images need to be hosted by a cloud service. This could be done using the Fog gem and AWS storage
-- The site needs some design, and this could be implemented with CSS or potentially Bootstrap
+Likes:
+- [x] user can like and image
+- [x] after liking and image, the user only sees an option to unlike the image
