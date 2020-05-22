@@ -29,3 +29,7 @@ Future improvements
 - When not logged in, add a link in the navigation bar for sign in (or perhaps the link could say 'new user?') to reduce the number of clicks required to become a new user.
 - As a new user, when taken to the profile page, have a 'getting started' message to allow users to get up and running quickly. Include in this message instructions on how to add photos, and find and comment on other users photos.
 - Comments on photos should be ordered with newest comments at the top so you don't have to scroll down to see new comments.
+- Deploy to Heroku
+- Improve the testing suite
+- Set up Travis
+- Set up Rubocop
