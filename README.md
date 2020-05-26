@@ -1,40 +1,69 @@
-Instagram Challenge
-===================
+# README
+**User stories**
 
-## Instructions
+As a new user,\
+So that my account can have a username I choose,\
+I’d like to be able to sign up with a username.
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+As a  new user,\
+So that my account can be secure,\
+I would like to be able to sign up with a password
 
-## Task
+As a returning user,\
+So that I can login to my account,\
+I want to be able to sign in 
 
-Build Instagram: Simple huh!
+As a user,\
+So I can see all the posts,\
+I would like to be able to view posts on one page.
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+As a user,\
+So that I can add comments to pictures,\
+Id like to be able to comment on posts
 
-Bonus if you can add filters!
+As a user,\
+so that I can have likes on my posts,\
+I would like to be able to like posts.
 
-## How to start
+As a user,\
+So that my posts can have pictures,\
+I would like to be able to upload a picture to my post.
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+As an Instagram cyber security officer,\
+So that I know all the passwords are safe,\
+I would like passwords to be encrypted
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
 
-## Code Quality
+**Tasks**
+-USER CAN CREATE POSTS\
+-USER CAN VIEW POSTS\
+-USER CAN DELETE POSTS\
+-USER CAN ADD PHOTOS TO POSTS\
+-USER CAN COMMENT ON POSTS\
+-POSTS HAVE THE TIME THEY WERE CREATED\
+-CREATE A SIGN UP FORM\
+-USER CAN ENTER USERNAME ON SIGNUP\
+-USER CAN ENTER PASSWORD ON SIGNUP\
+-USER CAN SIGN IN\
+-CREATE A USER DATABASE -CREATE A POSTS DATABASE\
+-POSTS ARE DISPLAYED WITH USERHANDLE, TIME CREATED AND SHOWN IN CHRONOLOGICAL ORDER\
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+~bonus~
 
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
-```
+-ENCRYPT PASSWORDS\
+-CREATE HASHTAGS\
+-ADD FILTERS
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+___________________
+
+Things I may want to cover in this README:
+- steps to make programme run
+* Ruby version
+* System dependencies
+* Configuration
+* Database creation
+* Database initialization
+* How to run the test suite
+* Services (job queues, cache servers, search engines, etc.)
+* Deployment instructions
+* ...

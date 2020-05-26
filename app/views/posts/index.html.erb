@@ -1,0 +1,34 @@
+<section class="hero center has-background-white">
+    <div class="hero-body center">
+        <div class="container">
+            <figure class="image center" id="logoimage">
+                <%= image_tag  "logo.png" %>
+            </figure>
+        <div>
+        <div class="container">
+            <a id="navnewpost" href="/posts/new/">New Post</a>
+        </div>
+    </div>
+<section>
+
+<div class="page header" id="logo">
+</div>
+<% @posts.order(created_at: :desc).each do |post| %>
+<section id="postsbody">
+    <div class="notification container">
+        <div class="hero center">
+        <strong id="usernamehandle">@<%= current_user.username %></strong>
+        <strong class="locationtext" id="location"><%= post.title %></strong>
+        <p class="text">Posted: <%= post.created_at.strftime("%B %d %Y, %l:%M%P") %></p>
+        <figure>
+            <p class="image is-100x100 center" id="postimage"><%= image_tag(post.image, style:'width:50%') %></p>
+        </figure>
+        <p class="descriptiontext"><%= post.content %></p>
+        <hr size="20">
+        </div>
+    </div>
+<section>
+<% end %>
+
+
+
