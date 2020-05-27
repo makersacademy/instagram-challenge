@@ -1,0 +1,25 @@
+<%= link_to 'New Picture', new_picture_path %>
+<%= link_to 'Back', pictures_path %>
+
+<br>
+
+<%= image_tag @picture.image.url %>
+
+<p>
+  <strong>User:</strong>
+  <%= @picture.user.name %>
+</p>
+
+<% if @picture.user_id == current_user.id %>
+  <p><%= link_to 'Destroy', @picture, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>
+
+<h3>Comment on This Picture</h3>
+
+<%= render 'comments/new', picture: @picture %>
+
+<h3>Comments:</h3>
+
+<% @picture.comments.each do |comment| %>
+  <%= render comment %>
+<% end %>
