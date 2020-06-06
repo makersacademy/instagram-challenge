@@ -1,0 +1,52 @@
+#!/bin/bash
+
+USAGE='usage:\ttdd.test [file-name]'
+
+# TODO Logic needs to add case to print USAGE
+
+if [[ "$1" ]] ; then
+  FILE_NAME="./$1"
+  if [[ ! -f $FILE_NAME ]] ; then
+    echo -e "$FILE_NAME not found"
+    exit 1
+  fi
+else
+  FILE_NAME=". --ext .js"
+fi
+
+clear
+
+CMD=rspec $SPEC_FILE
+echo -e "$HOSTNAME\$ $CMD\n"
+$CMD
+
+
+if [[ "$1" ]] ; then
+  LIB_FILE="./lib/$1.rb"
+  if [[ ! -f $LIB_FILE ]] ; then
+    $LIB_FILE=""
+  fi
+fi
+
+
+CMD=rubocop $SPEC_FILE $LIB_FILE
+echo -e "$HOSTNAME\$ $CMD\n"
+$CMD
+
+CMD="npm run test"
+echo -e "$HOSTNAME\$ $CMD\n"
+$CMD
+
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+
+CMD="npm run lint"
+echo -e "$HOSTNAME\$ $CMD\n"
+$CMD
+# echo $?
+if [[ "$?" == 0 ]] ; then
+  echo -e "${GREEN}Woo! No ESLint errors! Beer?${NC}"
+fi
+
+
