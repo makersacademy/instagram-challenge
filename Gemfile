@@ -5,7 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 gem 'bootstrap-sass', '~> 3.4.1'
+gem 'carrierwave', '~> 0.11.2'
 gem 'devise', '~> 4.2'
+gem 'fog', '~> 1.38'
+gem 'mini_magick', '~> 4.10', '>= 4.10.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 
@@ -35,6 +38,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
+  gem 'figaro'
   gem 'rspec-rails', '~> 3.5'
   gem 'rubocop', '0.79.0'
   gem 'simplecov', require: false
