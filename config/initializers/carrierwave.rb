@@ -7,7 +7,7 @@
   }
 
   config.storage = :fog
-  # config.permissions = 0666
+  config.permissions = 0666
   config.cache_dir = "#{Rails.root}/tmp"
   config.fog_directory = ENV['FOG_DIRECTORY']
 end
