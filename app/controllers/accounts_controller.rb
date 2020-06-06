@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
 
-  before_action :authenticte_account!
+  before_action :authenticate_account!
 
   def index
 
