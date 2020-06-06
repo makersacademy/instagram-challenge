@@ -4,10 +4,11 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
-
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'devise', '~> 4.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -34,8 +35,11 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.5'
+  gem 'rubocop', '0.79.0'
+  gem 'simplecov', require: false
+  gem 'simplecov-console', require: false
+  gem 'selenium-webdriver'
 end
 
 group :development do
