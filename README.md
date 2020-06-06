@@ -16,13 +16,33 @@ $ yarn install --check-files
 To run RSpec (with coverage), Rubocop, Jasmine in Karma (with coverage) and ESLint run script:  
 
 ```bash
-$ ./test/tdd.test`
+$ ./test/tdd.test
 ```
-
 To test in browser (uses Chrome), run script:  
+
 ```bash
 $ ./test/web.test
 ```
+## User Stories  
+
+```
+As a user
+So I can upload content to the site
+I want to be able to sign up for an account
+```
+
+```
+As a user
+So I can upload content to the site
+I want to be able to log into the site
+```
+
+```
+As a user
+So I can ensure no one can use my account without my permission
+I want to be able to log out of the site
+```
+
 
 # Original README
 
