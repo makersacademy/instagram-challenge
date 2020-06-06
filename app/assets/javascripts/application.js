@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require_tree .
-//= require javascripts/bootstrap.min
 //= require javascripts/jquery.min
+//= require javascripts/bootstrap.min
+
 
