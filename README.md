@@ -1,5 +1,30 @@
-Instagram Challenge
-===================
+# Instagram Challenge
+
+[![Build Status](https://travis-ci.com/will-head/instagram-challenge.svg?branch=master)](https://travis-ci.com/github/will-head/instagram-challenge/builds/170080957)
+
+## Setup
+
+```bash
+$ bundle install  
+$ npm install  
+$ yarn install --check-files
+
+```
+
+## Testing
+
+To run RSpec (with coverage), Rubocop, Jasmine in Karma (with coverage) and ESLint run script:  
+
+```bash
+$ ./test/tdd.test`
+```
+
+To test in browser (uses Chrome), run script:  
+```bash
+$ ./test/web.test
+```
+
+# Original README
 
 ## Instructions
 
