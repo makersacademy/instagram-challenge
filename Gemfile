@@ -7,7 +7,7 @@ end
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'carrierwave', '~> 0.11.2'
 gem 'devise', '~> 4.2'
-gem 'fog', '~> 1.38'
+gem 'fog'
 gem 'mini_magick', '~> 4.10', '>= 4.10.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
