@@ -4,18 +4,22 @@ class FormComponent extends React.Component {
   constructor() {
     super();
     this.state = {
-      selectedFile: null
+      selectedFile: null,
+      success: ""
     };
   };
 
   clickHandler = () => {
     const data = new FormData()
     data.append('file', this.state.selectedFile);
-    axios.post('http://localhost:3000/upload', data, {
+    axios.post('http://localhost:3000/posts', data, {
 
     })
     .then(res => {
       console.log(res.statusText);
+      this.setState({
+        success: "Upload successful"
+      })
     })
   }
 
@@ -28,10 +32,13 @@ class FormComponent extends React.Component {
 
   render() {
     return (
-      <form id='new-post-form' onSubmit={this.submitHandler}>
-        <input type='file' name='file'  onChange={this.changeHandler}></input>
-        <button type='button' value='submit' onClick={this.clickHandler}>Upload</button>
-      </form>
+      <div>
+        <form id='new-post-form' onSubmit={this.submitHandler}>
+          <input type='file' name='file'  onChange={this.changeHandler}></input>
+          <button type='button' value='submit' onClick={this.clickHandler}>Upload</button>
+        </form>
+        <p>{this.state.success}</p>
+      </div>
     );
   }
 }
