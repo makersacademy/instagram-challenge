@@ -25,6 +25,25 @@ Bonus if you can add filters!
 
 Remember to proceed in small steps! Getting confused? Make the steps even smaller.
 
+## Technologies used (plan)
+* Node.js
+* Express
+* MongoDB, mongoose
+* Cypress, Jest for testing
+* React
+
+## CRC Cards
+
+| Collection | Keys |
+|-----|-----|
+| Users | username |
+| | email |
+| | password |
+| Pictures | user_id|
+| Comments | user_id|
+|| content|
+
+
 ## Code Quality
 
 For linting, you can use the `.rubocop.yml` in this repository (or your own!).
