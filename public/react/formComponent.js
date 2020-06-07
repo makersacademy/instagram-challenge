@@ -33,10 +33,9 @@ class FormComponent extends React.Component {
   render() {
     return (
       <div>
-        <form id='new-post-form' onSubmit={this.submitHandler}>
           <input type='file' name='file'  onChange={this.changeHandler}></input>
-          <button type='button' value='submit' onClick={this.clickHandler}>Upload</button>
-        </form>
+          <button id='submitButton' type='button' value='submit' onClick={this.clickHandler}>Upload</button>
+
         <p>{this.state.success}</p>
       </div>
     );

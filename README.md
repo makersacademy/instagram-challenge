@@ -51,7 +51,8 @@ Remember to proceed in small steps! Getting confused? Make the steps even smalle
 4. Set up main, posts and signup routes, public folder, and passed tests for these. Added nodemon.
 5. Added React (with CDN), and created Form component.
 6. Added controllers
-7. Added fileupload functionality to server
+7. Added file upload functionality to server
+8. Add Jest testing framework
 
 
 
