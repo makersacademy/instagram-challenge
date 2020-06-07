@@ -2,6 +2,9 @@
 
    CarrierWave.configure do |config|
 
+    puts ENV['AWS_ACCESS_KEY_ID']
+    puts ENV['AWS_SECRET_ACCESS_KEY']
+
     config.fog_credentials = {
       :provider               => 'AWS',                             
       :aws_access_key_id      => ENV['AWS_ACCESS_KEY_ID'],            
