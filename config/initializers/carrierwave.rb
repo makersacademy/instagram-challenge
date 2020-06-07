@@ -15,3 +15,4 @@
     config.fog_directory = ENV['FOG_DIRECTORY']
   end
 end
+
