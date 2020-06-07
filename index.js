@@ -10,7 +10,12 @@ app.use(bodyParser.json());
 const post = require('/routes/post');
 app.use('/post', post);
 
-mongoose.connect('mongodb://localhost:27017/mernstack',
+
+if(process.env.NODE_ENV === 'production'){
+
+}
+
+mongoose.connect('mongodb://localhost/instagram',
 {
   useNewUrlParser: true,
   useFindAndModify: false,
