@@ -1,4 +1,4 @@
- if !Rails.env.test?
+ if Rails.env.development? || Rails.env.production?
 
    CarrierWave.configure do |config|
 
