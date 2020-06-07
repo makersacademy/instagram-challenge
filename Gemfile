@@ -8,6 +8,7 @@ gem 'bootstrap-sass', '~> 3.4.1'
 gem 'carrierwave', '~> 0.11.2'
 gem 'devise', '~> 4.2'
 gem 'fog'
+gem "font-awesome-rails"
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'mini_magick', '~> 4.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
