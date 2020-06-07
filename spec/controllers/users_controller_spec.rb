@@ -16,7 +16,7 @@ RSpec.describe UsersController, type: :controller do
     it 'redirects to registration page' do
       post :create, params: {user: invalid_params}, session: valid_session
 
-      expect(response.location).to eq "/users/new"
+      expect(response.location).to eq "http://test.host/users/new"
     end
   end
 end
