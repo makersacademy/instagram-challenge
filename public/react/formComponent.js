@@ -41,5 +41,3 @@ class FormComponent extends React.Component {
     );
   }
 }
-
-ReactDOM.render(<FormComponent />, document.getElementById('app'));

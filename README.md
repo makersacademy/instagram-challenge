@@ -56,7 +56,6 @@ Remember to proceed in small steps! Getting confused? Make the steps even smalle
 9. Connect to MongoDB/mongoose
 
 
-
 ## Code Quality
 
 For linting, you can use the `.rubocop.yml` in this repository (or your own!).

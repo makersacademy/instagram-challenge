@@ -1,6 +1,9 @@
 var Post = require('../../models/post.js');
+var mongoose = require('mongoose');
 
-it('has a message', function() {
-  var post = new Post('some message');
-  expect(post.message).toEqual('some message');
+describe('Post model', function() {
+  it('has a filename', function() {
+    var post = new Post({ filename: 'some message' });
+    expect(post.filename).toEqual('some message');
+  })
 })
