@@ -121,7 +121,7 @@ class AddPost extends React.Component {
                   value={this.state.caption}
                   onChange={this.handleChange}/>
        </div>
-              <button>Add Post!</button>
+              <button>Add Post or Click Here to See Current Posts!</button>
       </form>
 
       <div className="Posts">
