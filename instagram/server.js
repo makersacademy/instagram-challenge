@@ -20,41 +20,8 @@ mongoose.connect('mongodb://localhost/insta_table', {
   useUnifiedTopology:true
 });
 
-// Schema:
-const Schema = mongoose.Schema;
-const InstaPostSchema = new Schema({
-  image: String ,
-  caption: String,
-  date: {
-    type: String,
-    default: Date.now()
-  }
-});
-
-// Model:
-
-const InstaPost = mongoose.model('InstaPost', InstaPostSchema);
-
-// Saving data to our mongo db app:
-const data = {
-  image: "first image",
-  caption: "first insta page",
-  date: Date.now()
-}
-
-const newInstaPost = new InstaPost(data);
-// instance of the model. ^^
-
-// newInstaPost.save((error) => {
-//   if (error) {
-//     console.log("oops there is an error");
-//   } else {
-//     console.log('Data has been saved!');
-//   }
-// });
-
-// lizzieturney - password
-// this connects us to mongodb.
+// now we have made our route files, we can make the routes in our server.
+const routes = require('./routes/api');
 
 mongoose.connection.on('connected', () => {
   console.log("mongoose is connected!");
@@ -69,36 +36,10 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// app.post("/addpost", (req, res) => {
-//  var myData = new User(req.body);
-//  myData.save()
-//  .then(item => {
-//  res.send("item saved to database");
-//  })
-//  .catch(err => {
-//  res.status(400).send("unable to save to database");
-//  });
-// });
-
-
-app.get('/api', (req, res) => {
-
-  // referring back to the model - where we will do our finds and creates etc.
-  InstaPost.find({ })
-  .then((data) => {
-    console.log('Data: ', data);
-    res.json(data);
-    // the THEN returns the data from the database into the json file at the API route.
-    // its a way for us to see the data in json format.
-  })
-  .catch((error) => {
-    console.log('error: ', error);
-    // the error is here to catch any issues in case we cannot return data for the db.
-  })
-
-  res.json(data)
-  // respond by providing the info from the database via a json file - with its own url.
-});
+app.use('/api', routes);
+// starting point of the routes variable we created.
+// this means when we get to the route file we won't need to prefix
+// every request with '/api' because it has already been declared here.
 
 app.listen(port, () => {
     console.log(`server is running on port: ${port}`);
