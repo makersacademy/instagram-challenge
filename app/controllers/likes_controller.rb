@@ -5,7 +5,7 @@ class LikesController < ApplicationController
     @post_id = params[:post_id]
 
     respond_to do |format|
-      format.json {
+      format.js {
         if @like.save
           @success = true
         else
