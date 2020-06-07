@@ -26,10 +26,11 @@ Bonus if you can add filters!
 Remember to proceed in small steps! Getting confused? Make the steps even smaller.
 
 ## Technologies used (plan)
+
 * Node.js
 * Express
 * MongoDB, mongoose
-* Cypress, Jest for testing
+* Cypress for testing
 * React
 
 ## CRC Cards
@@ -42,6 +43,13 @@ Remember to proceed in small steps! Getting confused? Make the steps even smalle
 | Pictures | user_id|
 | Comments | user_id|
 || content|
+
+## My approach
+1. Initialised project with Node, Express, Cypress
+2. Created 1st test
+3. Set up express server
+4. Set up main, posts and signup routes, public folder, and passed tests for these. Added nodemon.
+
 
 
 ## Code Quality
