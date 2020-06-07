@@ -8,6 +8,8 @@
 $ bundle install  
 $ npm install  
 $ yarn install --check-files
+$ rake db:create
+$ rake db:migrate
 
 ```
 
