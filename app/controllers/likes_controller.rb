@@ -6,12 +6,6 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       format.js {
-        if @like.save
-          @success = true
-        else
-          @success = false
-        end
-
         render "posts/like"
       }
     end
