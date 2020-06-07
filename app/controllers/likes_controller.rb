@@ -6,6 +6,7 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       format.js {
+        @like.save
         render "posts/like"
       }
     end
