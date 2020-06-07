@@ -15,16 +15,24 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">Instagram</a>
         </li>
-        <li class="nav-item">
-          <div class="col">
-            <%= link_to "Create account", users_new_path, class: "nav-link" %>
-          </div>
-        </li>
-        <li class="nav-item">
-          <div class="col">
-            <%= link_to "Sign In", sessions_new_path, class: "nav-link" %>
-          </div>
-        </li>
+        <% if session[:user_id] %>
+          <li class="nav-item">
+            <div class="col">
+              <%= link_to 'Sign Out', 'sessions/destroy', class: "nav-link" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <div class="col">
+              <%= link_to "Create account", users_new_path, class: "nav-link" %>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="col">
+              <%= link_to "Sign In", sessions_new_path, class: "nav-link" %>
+            </div>
+          </li>
+        <% end %>
       </ul>
     </nav>
 
