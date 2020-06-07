@@ -49,6 +49,9 @@ Remember to proceed in small steps! Getting confused? Make the steps even smalle
 2. Created 1st test
 3. Set up express server
 4. Set up main, posts and signup routes, public folder, and passed tests for these. Added nodemon.
+5. Added React (with CDN), and created Form component.
+6. Added controllers
+7. Added fileupload functionality to server
 
 
 
