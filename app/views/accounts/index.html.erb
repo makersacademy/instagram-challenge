@@ -12,10 +12,10 @@
 
 					<div class="post-details">
 						<div class="post-actions">
-							<i id="like<%= post.id %>" <%= 'active' if post_liked_by_user?(post.id) %> class="post-like" data-id="<%= post.id %>"><%= fa_icon "heart"%></i>	
+							<span id="like<%= post.id %>" class="post-like<%= '_liked' if post_liked_by_user?(post.id) %> " data-id="<%= post.id %>"><%= fa_icon "heart"%></span>
 						</div>
 
-						<p><strong><%= post.total_likes %> likes</strong></p>
+						<p><strong id="likes<%= post.id %>"><%= post.total_likes_count %> likes</strong></p>
 						<p class="text-muted"><%= time_ago_in_words post.created_at %> ago</p>
 
 						<%= simple_format post.description %>

@@ -6,7 +6,14 @@ class LikesController < ApplicationController
 
     respond_to do |format|
       format.js {
-        @like.save
+        if @like.save
+          @success = true
+        else
+          @success = false
+        end
+
+        @post_likes = Post.find(@post_id).total_likes_count
+
         render "posts/like"
       }
     end
