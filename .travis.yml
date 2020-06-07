@@ -1,0 +1,29 @@
+language: ruby
+services:
+- postgresql
+rvm:
+- 2.5.0
+
+node_js:
+- "node"
+
+install:
+- gem uninstall bundler
+- gem install bundler --version '1.7.4'
+- bundle install
+- rake db:create RAILS_ENV=test
+- rails db:migrate RAILS_ENV=test
+# - rake db:create RAILS_ENV=production
+# - rails db:migrate RAILS_ENV=production
+- nvm install 14.2
+
+before_script:
+- npm install
+
+script: 
+- rake
+# - bundle exec rubocop
+- bundle exec rspec
+# - npm test
+# - npm run lint
+# 

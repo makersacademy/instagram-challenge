@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">
+		<div class="col-8"> 
+			<% @posts.each do |post| %>
+				<div class="insta-post"> 
+					<div class="post-meta">
+
+
+						<%= link_to post.account.username, profile_path(post.account.username), class: "text-dark" %>
+					</div>	
+					<%= image_tag post.image.url, class: "post-image" %>
+
+					<div class="post-details">
+						<div class="post-actions">
+							<span id="like<%= post.id %>" class="post-like<%= '_liked' if post_liked_by_user?(post.id) %> " data-id="<%= post.id %>"><%= fa_icon "heart"%></span>
+						</div>
+
+						<p><strong id="likes<%= post.id %>"><%= post.total_likes_count %> likes</strong></p>
+						<p class="text-muted"><%= time_ago_in_words post.created_at %> ago</p>
+
+						<%= simple_format post.description %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+		<div class="col-4">
+			<div class="account-summary">
+			<p>
+				<strong>
+					<%= current_account.username %>
+				</strong>
+				<br>
+				<%= current_account.full_name %>
+			</p>
+		</div>
+			<div class="follower-suggestions">
+				<p class="text-muted">Hi. How are you. Please upload some pictures to my snazzy website. Remember to upload your own profile picture!</p>
+			</div>
+		</div>
+	</div>
+</div>

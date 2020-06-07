@@ -1,40 +1,22 @@
-Instagram Challenge
-===================
+# Instagram Clone
 
-## Instructions
+This is my clone of Instagram, using Rails. It is deployed on Heroku at:
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+https://patricks-instagram.herokuapp.com
 
-## Task
+It allows users to signup, add posts, add descriptions, view posts, like posts, and edit their profile including uploading a profile picture and a blurb. 
 
-Build Instagram: Simple huh!
+## Approach
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+I was very new to rails when I did this so I followed these videos on YouTube. I almost followed him completely, however there were many occaisions where the code didn't behave as expected so I had to figure bits out myself.
 
-Bonus if you can add filters!
+https://www.youtube.com/watch?v=dqjF3C9A-Yg
+https://www.youtube.com/watch?v=yhg7hd3ogJ8
 
-## How to start
+Photos are saved in an S3 Bucket on Amazon. I used the ruby gems Carrierwave and Fog to deal with this. My AWS credentials are in a file I have put in the .gitignore, and I saved them as Environment Variables on Heroku. I also had to stop the AWS code working when in a test environment for Travis to pass.
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+I spent a long time making sure it passed Travis tests and deployed to Heroku each time I pushed to github. I really wanted a live website at the end of this challenge so it was worth the effort. I had many issues along the way but somehow ironed them out. 
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+I also used Bootstrap for CSS. There is a small amount of JavaScript to update the 'likes' info.
 
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+I considered this project more of an exploration of rails as I am completely new to the framework, so I haven't dont any TDD for this project.
