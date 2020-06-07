@@ -10,6 +10,7 @@ var cookieParser = require('cookie-parser');
 var createError = require('http-errors');
 var path = require('path');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
 // routes
 var mainController = require('./controllers/index');
@@ -28,6 +29,12 @@ app.use(cors());
 app.use('/', mainController);
 app.use('/posts', postsController);
 app.use('/signup', signupController);
+
+// mongoose connect
+mongoose.connect('mongodb+srv://'  + process.env.MONGO_ID + ":" + process.env.MONGO_PASS + '@cluster0-mbatm.mongodb.net/photoDB', {useNewUrlParser: true, useUnifiedTopology: true});
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.listen(port, function() {
   console.log('Example app listening at http://localhost:3000');

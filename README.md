@@ -53,6 +53,7 @@ Remember to proceed in small steps! Getting confused? Make the steps even smalle
 6. Added controllers
 7. Added file upload functionality to server
 8. Add Jest testing framework
+9. Connect to MongoDB/mongoose
 
 
 
