@@ -12,6 +12,7 @@
       :region                 => 'eu-west-2' 
     }
 
+
     config.storage = :fog
     # config.permissions = 0666
     config.cache_dir = "#{Rails.root}/tmp"
