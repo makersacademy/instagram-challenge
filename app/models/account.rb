@@ -12,11 +12,5 @@ class Account < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  def total_followers
-    0
-  end
 
-  def total_following
-    0
-  end
 end

@@ -14,5 +14,6 @@
 //= require_tree .
 //= require javascripts/jquery.min
 //= require javascripts/bootstrap.min
+//= require javascripts/fontawesome.min
 
 
