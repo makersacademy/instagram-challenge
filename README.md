@@ -13,6 +13,14 @@ $ rake db:migrate
 
 ```
 
+## Status
+
+Setup Tests (RSpec, with coverage, RuboCop, Jasmine in Karma, with coverage, and ESLint) and Rails, all passing Travis.
+
+Wrote initial User Stories (below), and added [Devise](https://github.com/heartcombo/devise) for user management. Ran into issues writing feature tests for Devise, so rolled back.
+
+Decided to use [Sorcery](https://github.com/NoamB/sorcery) instead, following [this tutorial](https://www.sitepoint.com/magical-authentication-sorcery/), combined with a [more general rails tutorial](https://www.freecodecamp.org/news/lets-create-an-intermediate-level-ruby-on-rails-application-d7c6e997c63f/), then ran out of time.
+
 ## Testing
 
 To run RSpec (with coverage), Rubocop, Jasmine in Karma (with coverage) and ESLint run script:  
