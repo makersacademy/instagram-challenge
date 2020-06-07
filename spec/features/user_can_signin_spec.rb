@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'User sign in' do
   scenario 'a user can click on a sign in link' do
-    User.create(full_name: 'Marius Brad', username: 'mbrad26', email: 'email@example.com', password: 'password')
+    user = User.create(full_name: 'Marius Brad', username: 'mbrad26', email: 'email@example.com', password: 'password')
 
     visit '/'
 
@@ -18,6 +18,6 @@ feature 'User sign in' do
     click_button 'Sign In'
 
     expect(current_path).to eq '/pictures'
-    expect(page).to have_content 'Welcome Marius Brad'
+    expect(page).to have_content `Welcome #{user.full_name}`
   end
 end
