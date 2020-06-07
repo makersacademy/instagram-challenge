@@ -4,9 +4,16 @@
 			<% @posts.each do |post| %>
 				<div class="insta-post"> 
 					<div class="post-meta">
-						<%= post.account.username %>
+
+
+						<%= link_to post.account.username, profile_path(post.account.username), class: "text-dark" %>
 					</div>	
-					<%= image_tag post.image.url, class: "img img-fluid" %>
+					<%= image_tag post.image.url, class: "img img-fluid", class: "post-image" %>
+
+					<div class="post-details">
+						<p><%= post.total_likes %> likes</p>
+						<%= simple_format post.description %>
+					</div>
 				</div>
 			<% end %>
 		</div>

@@ -9,7 +9,7 @@ gem 'carrierwave', '~> 0.11.2'
 gem 'devise', '~> 4.2'
 gem 'fog'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
-gem 'mini_magick', '~> 4.10', '>= 4.10.1'
+gem 'mini_magick', '~> 4.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 
