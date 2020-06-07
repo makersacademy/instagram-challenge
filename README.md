@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
 
+This was interesting challenge especially as this week was my first time using rails! I opted to use the generate scaffold command as I was interested to see what files it generated etc. However, I quickly discovered various issues with this and as a result I only have a basic app, with not the best test coverage. If I were to do this again I'd use different generate commands as the scaffold stuff proved very confusing. Still, a good learning experience!
+
 ## Instructions
 
 * Challenge time: one weekend
