@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   get 'sessions/destroy', to: 'sessions#destroy'
 
   get '/pictures', to: 'pictures#list'
+  post '/pictures', to: 'pictures#create'
 end
