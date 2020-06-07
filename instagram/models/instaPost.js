@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // Schema:
 const Schema = mongoose.Schema;
 const InstaPostSchema = new Schema({
-  image: String ,
+  image: String,
   caption: String,
   date: {
     type: String,

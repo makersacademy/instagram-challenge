@@ -11,7 +11,6 @@ const InstaPost = require('../models/instaPost');
 // Router essentially replaces app.
 
 router.get('/', (req, res) => {
-
   // referring back to the model - where we will do our finds and creates etc.
   InstaPost.find({ })
   .then((data) => {
@@ -23,9 +22,30 @@ router.get('/', (req, res) => {
   .catch((error) => {
     console.log('error: ', error);
     // the error is here to catch any issues in case we cannot return data for the db.
-  })
+  });
   // respond by providing the info from the database via a json file - with its own url.
 });
+
+// To get the data from front end and save it to the server,
+// we need to create a post request, as well as a get request. This links back
+// to the appPost component.
+
+router.post('/save', (req, res) => {
+  const data = req.body;
+
+  const newInstaPost = new InstaPost(data);
+
+  newInstaPost.save((error) => {
+    if (error){
+      res.status(500).json({msg: 'Internal sever errors'});
+      return;
+    }
+      return; res.json({
+        msg: 'Your data has been saved!'
+      });
+  });
+});
+  // so we can see the information (data) that is coming in from the request
 
 router.get('/name', (req, res) => {
   const data = {
