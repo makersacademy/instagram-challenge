@@ -23,5 +23,14 @@ RSpec.describe SessionsController, type: :controller do
       end
     end
 
+    context 'when the email is wrong' do
+      it 'redirects to "/sessions/new"' do
+        invalid_params = {email: 'wrong_email@gmail.com', password: user.password}
+
+        post :create, params: { user: invalid_params }, session: valid_session
+
+        expect(response.location).to eq 'http://test.host/sessions/new'
+      end
+    end
   end
 end
