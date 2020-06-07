@@ -1,3 +1,29 @@
+
+To run the program: please use
+
+"npm run dev" for the app to run locally
+
+
+Instagram Challenge: User stories
+
+As a user
+So i can share my updates
+I would like to post a picture
+
+As a user 
+So i can see my photos
+I would like a timeline
+
+As a user 
+So i can express my appreciation  
+I would like to like photos
+
+As a user
+So i can express my thoughts
+I would like to comment on photos
+
+
+
 Instagram Challenge
 ===================
 
