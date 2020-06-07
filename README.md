@@ -2,7 +2,7 @@
 
 This is my clone of Instagram, using Rails. It is deployed on Heroku at:
 
-https://patricks-instagram.herokuapp.com/dashboard
+https://patricks-instagram.herokuapp.com
 
 It allows users to signup, add posts, add descriptions, view posts, like posts, and edit their profile including uploading a profile picture and a blurb. 
 
