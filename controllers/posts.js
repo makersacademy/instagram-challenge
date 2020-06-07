@@ -1,14 +1,9 @@
+var express = require('express');
+var router = express.Router();
 var path = require('path');
 
-var PostsController = {
-  Index: function(req, res) {
-    res.sendFile(path.join(__dirname + '/../public/posts.html'));
-    //res.send('hello')
-  },
-  Create: function(req, res) {
-    console.log("yo")
-    res.send('Upload successful');
-  }
-}
+router.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/../public/posts.html'))
+})
 
-module.exports = PostsController;
+module.exports = router;
