@@ -14,13 +14,6 @@ else
   FILE_NAME=". --ext .js"
 fi
 
-clear
-
-CMD=rspec $SPEC_FILE
-echo -e "$HOSTNAME\$ $CMD\n"
-$CMD
-
-
 if [[ "$1" ]] ; then
   LIB_FILE="./lib/$1.rb"
   if [[ ! -f $LIB_FILE ]] ; then
@@ -28,25 +21,40 @@ if [[ "$1" ]] ; then
   fi
 fi
 
-
-CMD=rubocop $SPEC_FILE $LIB_FILE
-echo -e "$HOSTNAME\$ $CMD\n"
-$CMD
-
-CMD="npm run test"
-echo -e "$HOSTNAME\$ $CMD\n"
-$CMD
-
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+clear
+set -x  
+# CMD=rspec $SPEC_FILE
+# echo -e "$HOSTNAME\$ $CMD\n"
+# $CMD
+RUBYOPT="-W0" rspec $SPEC_FILE
 
-CMD="npm run lint"
-echo -e "$HOSTNAME\$ $CMD\n"
-$CMD
-# echo $?
-if [[ "$?" == 0 ]] ; then
+# CMD=rubocop $SPEC_FILE $LIB_FILE
+# echo -e "$HOSTNAME\$ $CMD\n"
+# $CMD
+rubocop $SPEC_FILE $LIB_FILE
+
+# CMD="npm run test"
+# echo -e "$HOSTNAME\$ $CMD\n"
+# $CMD
+npm run test
+
+# CMD="npm run lint"
+# echo -e "$HOSTNAME\$ $CMD\n"
+# $CMD
+# npm run lint
+# if [[ "$?" == 0 ]] ; then
+if (npm run lint) ; then
+  set +x
   echo -e "${GREEN}Woo! No ESLint errors! Beer?${NC}"
 fi
 
+# set +x
 
+
+
+
+
+ 
