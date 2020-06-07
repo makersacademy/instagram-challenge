@@ -1,20 +1,21 @@
 import React from 'react';
-import EmployeeTable from './components/EmployeeTable';
+import PostTable from './components/PostTable';
 import Form from './components/Form';
 import Message from './components/Message';
-import EmployeeAPI from './EmployeeAPI';
+import PostAPI from './PostAPI';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        employees : [],
+        posts : [],
         isEditForm : false,
-        employee : {
+        post: {
             firstName : "",
             lastName : "",
-            salary : "",
-            job : ""
+            image : "",
+            likes : "",
+  
         },
         message : ""
     };
@@ -27,53 +28,53 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    EmployeeAPI.getEmployees().then(data=>{this.setState({employees : data.response})})
+    PostAPI.getPosts().then(data=>{this.setState({posts : data.response})})
   }
 
   resetForm(){
     this.setState({
-      employee: {
+      post: {
         firstName: "",
         lastName: "",
-        salary: "",
-        job: ""
+        image: "",
+        likes: ""
       }
     }) 
   }
 
   handleChange(e){
     this.setState({
-      employee: {
-        ...this.state.employee,
+      post: {
+        ...this.state.post,
         [e.target.name] : e.target.value
       }
     })
   }
 
-  showEditForm(employee) {
-    this.setState({isEditForm: true, employee: employee});
+  showEditForm(post) {
+    this.setState({isEditForm: true, post: post});
   }
 
   async deleteHandler(id){
-    const deleteData = await EmployeeAPI.deleteEmployee(id);
+    const deleteData = await PostAPI.deletePost(id);
     const message = deleteData.message;
     if(message.msgError){
       this.setState({message})
     }else{
-      const data = await EmployeeAPI.getEmployees();
-      this.setState({message,employee : data.response})
+      const data = await PostAPI.getPosts();
+      this.setState({message,post : data.response})
     }
   }
 
   async updateHandler(e){
     e.preventDefault();
-    const updateData = await EmployeeAPI.updateEmployee(this.state.employee);
+    const updateData = await PostAPI.updatePost(this.state.post);
     const message = updateData.message;
     if(message.msgError){
       this.setState({message})
     }else{
-      const data = await EmployeeAPI.getEmployees();
-      this.setState({message,employee : data.response})
+      const data = await PostAPI.getPosts();
+      this.setState({message,post: data.response})
     }
     this.setState({isEditForm: false});
     this.resetForm();
@@ -81,21 +82,20 @@ class App extends React.Component {
 
   async addHandler(e){
     e.preventDefault();
-    const postData = await EmployeeAPI.createEmployee(this.state.employee);
+    const postData = await PostAPI.createPost(this.state.post);
     const message = postData.message;
     if(message.msgError){
       this.setState({message})
     }else{
-      const data = await EmployeeAPI.getEmployees();
-      this.setState({message,employee : data.response})
+      const data = await PostAPI.getPosts();
+      this.setState({message,post : data.response})
     }
     this.resetForm();
   }
-
-  renderEmployeeTable(){
-    if(this.state.employee.length > 0) {
+  renderPostTable(){
+    if(this.state.post.length > 0) {
       return (
-        <EmployeeTable employees={this.state.employees}
+        <PostTable posts={this.state.posts}
                       deleteHandler={this.deleteHandler}
                       showEditForm={this.showEditForm} />
       )
@@ -106,7 +106,7 @@ class App extends React.Component {
   renderForm() {
     return(
       <Form isEditForm={this.state.isEditForm}
-            employee={this.state.employee}
+            post={this.state.post}
             handleChange={this.handleChange}
             handler={!this.state.isEditForm ? this.addHandler : this.updateHandler } />
     )
@@ -125,7 +125,7 @@ class App extends React.Component {
       <div className="row">
         <div ClassName="col"></div>
         <div ClassName="col-10">
-          {this.renderEmployeeTable()}
+          {this.renderPostTable()}
           {this.renderForm()}
           {this.renderMessage()}
         </div>

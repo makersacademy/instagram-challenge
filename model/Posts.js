@@ -14,6 +14,10 @@ const PostSchema = new Schema ({
     type: String,
     required: true
   },
+  likes: {
+    type: String,
+    required: true
+  },
 });
 
 module.exports = mongoose.model('Post', PostSchema);

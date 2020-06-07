@@ -1,28 +1,28 @@
 export default {
-  getEmployees: () => {
-    return fetch('/employee')
+  getPosts: () => {
+    return fetch('/post')
       .then(res => res.json())
       .then(data => data);
   },
-  deleteEmployee : (_id) => {
-    return fetch(`/employee/${_id}`,
+  deletePost : (_id) => {
+    return fetch(`/post/${_id}`,
                 {method : "delete"})
                 .then(res => res.json())
                 .then(data => data);
   },
-  updateEmployee : (employee) => {
-    return fetch(`/employee/${employee_id}`,
+  updatePost : (post) => {
+    return fetch(`/post/${post._id}`,
                 {method : "put",
-                body: JSON.stringify(employee),
+                body: JSON.stringify(post),
                 headers : {
                 "Content-type" : "application/json"
               }}).then(res => res.json())
                 .then(data => data);
   },
-  createEmployee : (employee) => {
-    return fetch(`/employee`,
+  createPost : (post) => {
+    return fetch(`/post`,
                 {method : "post",
-                body: JSON.stringify(employee),
+                body: JSON.stringify(post),
                 headers : {
                 "Content-type" : "application/json"
               }}).then(res => res.json())
