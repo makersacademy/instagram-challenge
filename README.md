@@ -1,4 +1,4 @@
-# Instagram Challenge
+# Neogram
 
 This is a small project to gain experience with Ruby on Rails.
 
