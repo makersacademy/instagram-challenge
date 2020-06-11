@@ -1,5 +1,7 @@
 # Neogram
 
+[![Build Status](https://travis-ci.org/hturnbull93/instagram-challenge.svg?branch=master)](https://travis-ci.org/hturnbull93/instagram-challenge)
+
 This is a small project to gain experience with Ruby on Rails.
 
 ## Screen Previews
