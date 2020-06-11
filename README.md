@@ -1,6 +1,6 @@
 # Neogram
 
-[![Build Status](https://travis-ci.org/hturnbull93/instagram-challenge.svg?branch=master)](https://travis-ci.org/hturnbull93/instagram-challenge)
+[![Build Status](https://travis-ci.org/hturnbull93/instagram-challenge.svg?branch=master)](https://travis-ci.org/hturnbull93/instagram-challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/342088636c93e9f47001/maintainability)](https://codeclimate.com/github/hturnbull93/instagram-challenge/maintainability)
 
 This is a small project to gain experience with Ruby on Rails.
 
