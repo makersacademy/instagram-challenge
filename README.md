@@ -4,6 +4,8 @@
 
 This is a small project to gain experience with Ruby on Rails.
 
+Visit it [here](https://neo-gram.herokuapp.com/).
+
 ## Screen Previews
 
 Sign up page:
