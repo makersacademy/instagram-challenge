@@ -59,7 +59,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   # Coverage with simplecov
-  gem 'simplecov', require: false
+  gem 'simplecov', '~> 0.17.1', require: false
   gem 'simplecov-console', require: false
 end
 
