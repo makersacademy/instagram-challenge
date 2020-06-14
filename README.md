@@ -52,9 +52,10 @@ Remember to proceed in small steps! Getting confused? Make the steps even smalle
 5. Added React (with CDN), and created Form component.
 6. Added controllers
 7. Added file upload functionality to server
-8. Add Jest testing framework
-9. Connect to MongoDB/mongoose
-
+8. Added Jest testing framework
+9. Connected to MongoDB/mongoose
+10. Added image upload to MongoDB
+11. Added image read from MongoDB (in progress)
 
 ## Code Quality
 

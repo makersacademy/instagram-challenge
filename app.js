@@ -12,18 +12,16 @@ var GridFsStorage = require('multer-gridfs-storage');
 var Grid = require('gridfs-stream');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var path = require('path');
 
 // not using the following:
 var createError = require('http-errors');
-var path = require('path');
 var logger = require('morgan');
-
 
 // routes
 var mainController = require('./controllers/index');
 var postsController  = require('./controllers/posts');
 var signupController = require('./controllers/signup');
-
 
 // view setup
 app.use(express.static(path.join(__dirname, 'public')));
@@ -43,37 +41,6 @@ app.use('/signup', signupController);
 const mongoURI = process.env.MONGO_URI;
 const conn = mongoose.createConnection(mongoURI);
 // mongoose.connect(mongoURI, {useNewUrlParser: true, useUnifiedTopology: true});
-
-// init stream
-let gfs;
-conn.once('open', function() {
-  console.log('connection successful')
-  gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection('uploads');
-});
-
-// create storage engine
-const storage = new GridFsStorage({
-  url: mongoURI,
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      const filename = file.originalname;
-      const fileInfo = {
-        filename: filename,
-        bucketName: 'uploads'
-      };
-      resolve(fileInfo);
-    });
-  }
-});
-
-// GridFS file upload to mongodb
-const upload = multer({ storage });
-
-app.post('/posts', upload.single('file'), (req, res, err) => {
-  if (err) console.log(err)
-  res.redirect('/')
-})
 
 app.listen(port, function() {
   console.log('Example app listening at http://localhost:3000');
