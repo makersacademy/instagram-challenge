@@ -9,8 +9,9 @@ class PostListComponent extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchData('/posts');
+    this.fetchData('/posts/feed');
   }
+
   fetchData = (apiToFetch) => {
     fetch(apiToFetch)
       .then(res => res.json())
@@ -18,17 +19,23 @@ class PostListComponent extends React.Component {
         this.setState({
           posts: data
         });
-      });
+
+      })
+  }
+
+  updateState = () => {
+    console.log("updating")
+    this.fetchData('/posts/feed')
   }
 
   render() {
     return (
       <div>
         <h1>Posts</h1>
-        <FormComponent />
+        <FormComponent updatemethod={this.updateState}/>
         {this.state.posts.map((post) => {
           return (
-            <p class='pic'>{post}</p>
+            <PostComponent data={post} updatemethod={this.updateState}/>
             );
           }
         )}

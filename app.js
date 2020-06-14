@@ -39,8 +39,10 @@ app.use('/signup', signupController);
 
 // mongoose connect
 const mongoURI = process.env.MONGO_URI;
-const conn = mongoose.createConnection(mongoURI);
-// mongoose.connect(mongoURI, {useNewUrlParser: true, useUnifiedTopology: true});
+// const conn = mongoose.createConnection(mongoURI);
+mongoose.connect(mongoURI, {useNewUrlParser: true, useUnifiedTopology: true}, err => {
+  console.log('connected')
+});
 
 app.listen(port, function() {
   console.log('Example app listening at http://localhost:3000');
