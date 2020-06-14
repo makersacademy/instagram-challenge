@@ -21,15 +21,19 @@ class PostComponent extends React.Component {
       })
   }
 
+  formatDate(date) {
+    return new Date(date).toLocaleString();
+  }
+
   render() {
-    let data = this.props.data.img.data;
+    let data = this.props.data;
     return(
       <div>
         <div>
-
-          <p>{this.props.data.userName}</p>
+          <p>{data.userName} posted on {this.formatDate(data.datePosted)}</p>
+          <p>{data.caption}</p>
           {this.state.image ? <div class="pictureContainer">
-            <img class='pic' key={this.props.data._id} src={`data:image/png;base64,${ this.state.image.binary }`}></img>
+            <img class='pic' key={data._id} src={`data:image/png;base64,${ this.state.image.binary }`}></img>
           </div>: " "}
 
         </div>

@@ -27,8 +27,11 @@ router.get('/', (req, res) => {
 
 // file upload route:
 router.post('/', upload.single('image'), function(req, res, next) {
+  console.log(req.body)
     var newPost = new Post({
-        userName: "Zsofi",
+        userName: req.body.userName,
+        caption: req.body.caption,
+        datePosted: Date.now(),
         img:
           {
             data: fs.readFileSync(path.join(__dirname +'/../public/uploads/' + req.file.filename)),

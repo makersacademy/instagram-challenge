@@ -6,6 +6,8 @@ var PostSchema = new Schema ({
   // filename: String,
   // originalname: String,
   userName: String,
+  datePosted: Date,
+  caption: String,
   img:
       {
           data: Buffer,

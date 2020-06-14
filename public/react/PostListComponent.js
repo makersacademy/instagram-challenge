@@ -29,11 +29,13 @@ class PostListComponent extends React.Component {
   }
 
   render() {
+
     return (
       <div>
         <h1>Posts</h1>
         <FormComponent updatemethod={this.updateState}/>
         {this.state.posts.map((post) => {
+            console.log(post)
           return (
             <PostComponent data={post} updatemethod={this.updateState}/>
             );
