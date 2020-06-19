@@ -692,6 +692,15 @@ Neumorphism is a more updated version, compromising between minimalism, but addi
 
 I used [this article](https://medium.muz.li/skeuomorphism-neumorphism-ui-trend-e7b78792bd21) for inspiration, and [this tool](https://neumorphism.io) helped me out with the styling.
 
+### GitHub Repo Link
+
+Feature test: User finds a link to the GitHub Repo on when they arrive. Red.
+
+- Added the link in the layout.
+- Added some basic styling (fixed it to the bottom left).
+
+Green.
+
 ## Retrospective
 
 - I think I have gotten to grips with Ruby on Rails, especially routing.
