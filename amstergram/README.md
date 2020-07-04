@@ -2,9 +2,8 @@
 
 ## Testing Options
 
-```ruby -Itest test/controllers/welcome_controller_test.rb```
-or
-change file structure to 'spec' and use bundle exec rspec
+file structure to 'spec' and use bundle exec rspec
+done via ```rails generate rspec:install```
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
