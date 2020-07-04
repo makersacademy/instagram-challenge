@@ -1,5 +1,11 @@
 # README
 
+## Testing Options
+
+```ruby -Itest test/controllers/welcome_controller_test.rb```
+or
+change file structure to 'spec' and use bundle exec rspec
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
