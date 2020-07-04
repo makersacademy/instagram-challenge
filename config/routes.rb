@@ -2,5 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   get 'home/index'
   root to: 'home#index'
-end
 
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+    get 'signup', to: 'devise/registrations#new'
+  end
+
+  resources :users, only: [:show]
+end
