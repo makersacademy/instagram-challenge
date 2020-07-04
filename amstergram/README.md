@@ -5,6 +5,10 @@
 file structure to 'spec' and use bundle exec rspec
 done via ```rails generate rspec:install```
 
+
+How to add image functionality;
+reading... [this](https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rails-app-9f7fc3f3d042)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
