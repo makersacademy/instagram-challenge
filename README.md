@@ -1,4 +1,4 @@
-Instagram Challenge
+Instagram Challenge - Amstergram!
 ===================
 
 ## Instructions
