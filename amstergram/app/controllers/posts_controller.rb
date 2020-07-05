@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
 
   def index
+    if (!current_user)
+      redirect_to sign_in_url
+    end
     @comment = Comment.new
     @posts = Post.all.sort_by{ |post| post[:created_at] }.reverse
   end
