@@ -1,13 +1,11 @@
 Instagram Challenge
 ===================
 
-## Instructions
+## Iitial goals
 
-* Challenge time: one weekend
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+I'm starting this challenge very late. As such, I ahve some very simple goals that I want to achieve, even if I don't to complete any user stories.
+1. Set up a rails project, with databases
+2. Understand a bit more about the flow of control through the app, in particular through the config/routes.rb file
 
 ## Task
 
