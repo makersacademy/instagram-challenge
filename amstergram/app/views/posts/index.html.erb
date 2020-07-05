@@ -6,9 +6,22 @@
   <div id="creator"><%= post.user.email %></div>
   <div id="image"> <%= image_tag(post.image) %> </div>
   <% if (post.user == current_user) %>
-    <div id="delete"><%= link_to "delete", posts_path(post), method: :delete,
+    <div id="delete"><%= link_to "delete this post", posts_path(post), method: :delete,
     data: { confirm: 'Are you sure?' } %>
     </div>
+  <% end %>
+  <% post.comments.each do |comment| %>
+    <li class=each_comment>
+    <div class="container post">
+    <div id="data"><%= post.created_at.to_date%> <%= post.created_at.strftime("%k:%M") %></div>
+    <div id="creator"><%= post.user.email %></div>
+    <div id="comment"> <%= comment.content %> </div>
+  <% end %>
+  <%= form_for @comment do |form| %>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+    <%= form.hidden_field :post_id, :value => post.id %>
+    <%= form.text_area :content, placeholder: "your comment"%>
+    <%= form.submit "Submit" %>
   <% end %>
 <% end %>
 </li>
