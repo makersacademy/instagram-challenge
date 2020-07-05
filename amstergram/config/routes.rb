@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post '/posts' => 'posts#create'
   get '/posts' => 'posts#index'
   delete '/posts' => 'posts#destroy'
-  root to: 'welcome#index'
+  root to: 'posts#index'
   post '/comments' => 'posts#comment_new', as: "comments"
   delete '/comments' => 'posts#comment_destroy'
 
