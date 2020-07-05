@@ -17,6 +17,25 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
+
+### My Initial User Stories
+
+```
+As a user
+So I can join in with all the fun
+I want to be able to sign up to Instagram
+```
+```
+As a user
+To ensure security
+Before I've signed up and signed in every page should redirect me to the sign-in page
+```
+```
+As a user
+So I can keep a record of what I've been up to
+I can post pictures to Instagram
+```
+
 ## How to start
 
 1. Produce some stories, break them down into tasks, and estimate
