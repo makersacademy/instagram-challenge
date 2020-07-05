@@ -18,8 +18,8 @@ Comments are bundled into the posts route and controller atm.
 
 ## How to run.
 
-setup:```bundle install <br>
-bin/rails db:create <br>
+setup:```bundle install \n
+bin/rails db:create \n
 bin/rails db:migrate```
 
 run:```rails server```
