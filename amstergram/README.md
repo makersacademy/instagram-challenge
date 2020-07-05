@@ -5,29 +5,21 @@
 file structure to 'spec' and use bundle exec rspec
 done via ```rails generate rspec:install```
 
-
+## Image File
 How to add image functionality;
 reading... [this](https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rails-app-9f7fc3f3d042)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Added images via ActiveStorage. Spiked
 
-Things you may want to cover:
+## Comments
+Also spiked comments. (checked that owners can delete both comments and posts)
+couldn't get cascade delete working so have coded deleting comments before the post deletes due to the foreign key linking them.
+Comments are bundled into the posts route and controller atm.
 
-* Ruby version
+## How to run.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+setup:```bundle install
+bin/rails db:create
+bin/rails db:migrate```
+run:```rails server```
+app is on ```localhost:3000```
