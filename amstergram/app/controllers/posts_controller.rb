@@ -12,9 +12,8 @@ class PostsController < ApplicationController
 
   def comment_destroy
     pp params[:format]
-    @commnet = Comment.find(params[:format])
-    pp @comment
-    @comment.destroy
+    Comment.find(params[:format]).destroy
+    # @comment.destroy
     redirect_to posts_url
   end
 
