@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/posts/new' => 'posts#new', as: "new_post_path"
   post '/posts' => 'posts#create'
   get '/posts' => 'posts#index'
+  delete '/posts' => 'posts#destroy'
   root to: 'welcome#index'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
