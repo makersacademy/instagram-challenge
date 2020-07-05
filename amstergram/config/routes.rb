@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   delete '/posts' => 'posts#destroy'
   root to: 'welcome#index'
   post '/comments' => 'posts#comment_new', as: "comments"
+  delete '/comments' => 'posts#comment_destroy'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

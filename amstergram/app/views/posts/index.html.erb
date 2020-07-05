@@ -13,9 +13,14 @@
   <% post.comments.each do |comment| %>
     <li class=each_comment>
     <div class="container post">
-    <div id="data"><%= post.created_at.to_date%> <%= post.created_at.strftime("%k:%M") %></div>
-    <div id="creator"><%= post.user.email %></div>
+    <div id="data"><%= comment.created_at.to_date%> <%= comment.created_at.strftime("%k:%M") %></div>
+    <div id="creator"><%= comment.user.email %></div>
     <div id="comment"> <%= comment.content %> </div>
+    <% if (comment.user.id == current_user.id) %>
+      <div id="delete"><%= link_to "delete this comment", comments_path(comment), method: :delete,
+      data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
   <% end %>
   <%= form_for @comment do |form| %>
     <%= form.hidden_field :user_id, :value => current_user.id %>

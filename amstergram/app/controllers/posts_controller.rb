@@ -10,6 +10,14 @@ class PostsController < ApplicationController
     redirect_to posts_url
   end
 
+  def comment_destroy
+    pp params[:format]
+    @commnet = Comment.find(params[:format])
+    pp @comment
+    @comment.destroy
+    redirect_to posts_url
+  end
+
   def new
     @post = Post.new
     @user_id = current_user.id
