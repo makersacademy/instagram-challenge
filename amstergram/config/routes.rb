@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
   get 'welcome/index'
-  get '/posts/new' => 'posts#new'
+  get '/posts/new' => 'posts#new', as: "new_post_path"
   post '/posts' => 'posts#create'
   get '/posts' => 'posts#index'
   root to: 'welcome#index'
