@@ -15,11 +15,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    pp params[:format]
     @post = Post.find(params[:format])
-    pp @post
     @post.destroy
-    # @post.destroy
     redirect_to posts_url
   end
 

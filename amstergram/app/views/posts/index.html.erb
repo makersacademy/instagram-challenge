@@ -5,9 +5,11 @@
   <div id="data"><%= post.created_at.to_date%> <%= post.created_at.strftime("%k:%M") %></div>
   <div id="creator"><%= post.user.email %></div>
   <div id="image"> <%= image_tag(post.image) %> </div>
-  <div id="delete"><%= link_to "delete", posts_path(post), method: :delete,
-  data: { confirm: 'Are you sure?' } %>
-  </div>
+  <% if (post.user == current_user) %>
+    <div id="delete"><%= link_to "delete", posts_path(post), method: :delete,
+    data: { confirm: 'Are you sure?' } %>
+    </div>
+  <% end %>
 <% end %>
 </li>
 </ul>
