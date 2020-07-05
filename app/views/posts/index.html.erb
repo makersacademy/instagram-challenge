@@ -6,6 +6,7 @@
         <z class="nav-link" > <%= link_to "New Post", new_post_path %>
 
       <%- if current_user %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, confirm: "Are you sure?" %>
       <% else %>
       <%= link_to "Login", new_user_session_path %>
       <%= link_to "Register", new_user_registration_path %>
@@ -13,10 +14,10 @@
   </span></a>
   </div>
 </nav>
-
-
-
-<body>
-
+<div class="container">
+  <div class="col-lg-12 text-center">
+    <% flash.each do |a, b| %>
+        <div class="alert alert-success"> <%= b %> </div>
+        <% end %>
 <h3> All your favourite bins in one place </h3>
 <h3>Posts</h3>

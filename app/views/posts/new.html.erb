@@ -2,7 +2,10 @@
   <a class="navbar-brand" <%= link_to "Binstagram", root_url %> </a>
 </nav>
 <h3>Post a new bin image</h3>
-<%= form_for @post do |f| %>
+<%= form_for @post, html: { multipart: true } do |f| %>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <br>
   <%= f.label :description %>
   <%= f.text_area :description %>
   <br>
