@@ -1,7 +1,7 @@
 Instagram Challenge
 ===================
 
-## Iitial goals
+## Initial goals
 
 I'm starting this challenge very late. As such, I ahve some very simple goals that I want to achieve, even if I don't to complete any user stories.
 1. Set up a rails project, with databases
