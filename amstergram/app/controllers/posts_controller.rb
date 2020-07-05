@@ -11,9 +11,7 @@ class PostsController < ApplicationController
   end
 
   def comment_destroy
-    pp params[:format]
     Comment.find(params[:format]).destroy
-    # @comment.destroy
     redirect_to posts_url
   end
 
@@ -28,6 +26,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    Comment.where("post_id = ?", params[:format]).each {|comment| comment.destroy}
     @post = Post.find(params[:format])
     @post.destroy
     redirect_to posts_url
