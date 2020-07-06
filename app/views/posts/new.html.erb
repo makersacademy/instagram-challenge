@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" <%= link_to "Binstagram", root_url %> </a>
+  <span class="navbar-text">
+  <div class="collapse navbar-collapse" id="navbarText">
+    <z class="nav-item active">
+        <z class="nav-link" > <%= link_to "New Post", new_post_path %>
+
+      <%- if current_user %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, confirm: "Are you sure?" %>
+      <% else %>
+      <%= link_to "Login", new_user_session_path %>
+      <%= link_to "Register", new_user_registration_path %>
+      <% end %> 
+  </span></a>
+  </div>
+</nav>
+
+<h3>Post a new bin image</h3>
+<%= form_for @post, html: { multipart: true } do |f| %>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: "form-control" %>
+    <br>
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control" %>
+  <br>
+  </div>
+  <%= f.submit %>
+
+  <% end %>
+ 

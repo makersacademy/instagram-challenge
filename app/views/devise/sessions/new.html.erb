@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" <%= link_to "Binstagram", root_url %> </a>
+  <span class="navbar-text">
+  <div class="collapse navbar-collapse" id="navbarText">
+    <z class="nav-item active">
+        <z class="nav-link" > <%= link_to "New Post", new_post_path %>
+
+      <%- if current_user %>
+      <% else %>
+      <%= link_to "Login", new_user_session_path %>
+      <%= link_to "Register", new_user_registration_path %>
+      <% end %> 
+  </span></a>
+  </div>
+</nav>
+
+<h2>Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
