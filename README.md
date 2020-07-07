@@ -1,5 +1,6 @@
 Instagram Challenge
 ===================
+This is a weekend challenge I did during Week 8 at Makers Academy.
 
 ## Instructions
 
@@ -58,17 +59,21 @@ Remember to proceed in small steps! Getting confused? Make the steps even smalle
 11. Added image read from MongoDB
 12. Added username, caption and date to posts
 
+## How to use
 
-## Code Quality
+* Clone this repo
+* Run the server
+  ```
+  node app.js
+  ```
+* Navigate to `localhost:3000` in your browser
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+## How to run the tests
 
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+* Start the server if it is not running already
+  ```
+  node app.js
+  ```
+* Open a new terminal window
+* Navigate to the folder and run `npx cypress open` in the terminal, this will run the feature tests
+* run `npm run test` in the terminal, this will run the unit tests
