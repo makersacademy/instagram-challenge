@@ -1,0 +1,283 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+$base-background-color: #e9e9e9;
+$base-color: #001f3f;
+$base-shadow: #c6c6c6;
+$base-highlight: #ffffff;
+$base-curve-d: #d2d2d2;
+$base-curve-l: #f9f9f9;
+
+$primary-color: #9eccfa;
+$primary-shadow: #86add5;
+$primary-highlight: #b6ebff;
+$primary-curve-d: #8eb8e1;
+$primary-curve-l: #a9daff;
+
+$danger-color: #ec4f67;
+$danger-shadow: #c94358;
+$danger-highlight: #ff5b76;
+$danger-curve-d: #d4475d;
+$danger-curve-l: #fd556e;
+
+@mixin flat($background: $base-background-color) {
+  background-color: $background;
+}
+@mixin concave($curve-d: $base-curve-d, $curve-l: $base-curve-l) {
+  background: linear-gradient(145deg, $curve-d, $curve-l);
+}
+@mixin convex($curve-d: $base-curve-d, $curve-l: $base-curve-l) {
+  background: linear-gradient(145deg, $curve-l, $curve-d);
+}
+@mixin raised($shadow: $base-shadow, $highlight: $base-highlight) {
+  box-shadow: 8px 8px 16px $shadow, -8px -8px 16px $highlight;
+}
+@mixin pressed($shadow: $base-shadow, $highlight: $base-highlight) {
+  box-shadow: inset 8px 8px 16px $shadow, inset -8px -8px 16px $highlight;
+}
+
+:root {
+  overflow-y: scroll;
+  // overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: $base-background-color;
+  font-family: nunito;
+  font-weight: bold;
+  font-size: clamp(0.8em, 1.5vw, 1em);
+  color: $base-color;
+}
+
+.github-link {
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+}
+
+h1 {
+  text-align: center;
+}
+
+@mixin rounded-box {
+  border-radius: 0.5em;
+  border: 0;
+}
+
+@mixin round-button {
+  outline: none;
+  margin: 0.5em;
+  @include convex;
+  @include raised;
+  padding: 0.5em 1em;
+  border: 0;
+  border-radius: 100px;
+}
+
+@mixin fl-rc {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@mixin fl-cc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  font-weight: bold;
+  @include round-button;
+  @include convex;
+  transition: transform 200ms;
+
+  &:active {
+    @include pressed;
+  }
+
+  &:hover {
+    transform: translateY(-0.15em);
+    cursor: pointer;
+  }
+
+  &-primary {
+    @extend .btn;
+    @include convex($primary-curve-d, $primary-curve-l);
+    &:active {
+      @include pressed($primary-shadow, $primary-highlight);
+    }
+  }
+  &-danger {
+    @extend .btn;
+    color: white;
+    @include convex($danger-curve-d, $danger-curve-l);
+    &:active {
+      @include pressed($danger-shadow, $danger-highlight);
+    }
+  }
+}
+
+.container {
+  padding: 1em;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.greeting {
+  margin-right: auto;
+  padding: 0.5em 1em;
+}
+
+nav {
+  @include fl-rc;
+}
+
+header {
+  @include fl-rc;
+  justify-content: space-between;
+}
+
+.control-group {
+  @include fl-rc;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .counter {
+    margin: 0.5em;
+    padding: 0.5em 1em;
+    @include concave($primary-curve-d, $primary-curve-l);
+    @include raised;
+    @include rounded-box;
+  }
+}
+
+.comment-form {
+  @include fl-rc;
+  margin: 2em 0;
+  flex-wrap: nowrap;
+
+  textarea {
+    @include rounded-box;
+    @include pressed;
+    background: $base-background-color;
+    width: 100%;
+    resize: none;
+    padding: 1em;
+    outline: none;
+    margin-right: 1em;
+  }
+}
+
+.post-form {
+  @include fl-cc;
+
+  select {
+    @include round-button;
+    padding: 0.5em 2em 0.5em 1em;
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    /* note: bg image below uses 2 urls. The first is an svg data uri for the arrow icon, and the second is the gradient. 
+		for the icon, if you want to change the color, be sure to use `%23` instead of `#`, since it's a url. You can also swap in a different svg icon or an external image reference
+		
+	*/
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
+      linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+    background-repeat: no-repeat, repeat;
+    /* arrow icon position (1em from the right, 50% vertical) , then gradient position*/
+    background-position: right 0.7em top 50%, 0 0;
+    /* icon size, then gradient */
+    background-size: 0.65em auto, 100%;
+  }
+}
+
+.post {
+  &-image-wrapper {
+    @include raised;
+    @include rounded-box;
+    margin: 0 0 2em 0;
+    width: 100%;
+    line-height: 0;
+
+    img {
+      width: 100%;
+      @include rounded-box;
+    }
+  }
+
+  &-details {
+    @include fl-rc;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+}
+
+.comment {
+  margin: 2em 0;
+  @include raised;
+  @include rounded-box;
+  padding: 0.5em 1em;
+
+  &-details {
+    @include fl-rc;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+}
+
+.user-form {
+  @include fl-cc;
+
+  .text-field {
+    @include rounded-box;
+    @include pressed;
+    background: $base-background-color;
+    padding: 0.5em 1em;
+    outline: none;
+    margin: 0.5em 0 1.5em 0;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 0.8em;
+}
+body::-webkit-scrollbar-track {
+  @include pressed;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  @include convex($primary-curve-d, $primary-curve-l);
+}
+
+input[type="file"] {
+  width: 1px;
+  height: 1px;
+  position: relative;
+  top: -20px;
+  z-index: -10;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
