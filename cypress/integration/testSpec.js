@@ -1,6 +1,6 @@
 describe('First test', function() {
-  it('has "Pinstagram" on page', function() {
+  it('has "Posts" on page', function() {
     cy.visit('/');
-    cy.contains('Pinstagram');
+    cy.contains('Posts');
   })
 })

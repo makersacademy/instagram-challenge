@@ -4,7 +4,7 @@ describe('signup route', function() {
     cy.contains('Sign up');
   })
   it('says Posts on the page', function() {
-    cy.visit('/posts');
+    cy.visit('/');
     cy.contains('Posts');
   })
 })
