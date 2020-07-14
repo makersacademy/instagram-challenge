@@ -5,6 +5,6 @@ describe('signup route', function() {
   })
   it('says Posts on the page', function() {
     cy.visit('/');
-    cy.contains('Posts');
+    cy.contains('Latest posts');
   })
 })
