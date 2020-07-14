@@ -50,15 +50,16 @@ class FormComponent extends React.Component {
 
   render() {
     return (
-      <div>
-        <label>Your name:</label>
-        <input type="text" name="userName" onChange={this.textChangeHandler}></input>
-        <input type='file' name='image' onChange={this.changeHandler}></input>
-        <label>Caption:</label>
-        <input type="text" name="caption" onChange={this.captionChangeHandler}></input>
-        <button id='submitButton' type='button' value='submit' onClick={this.clickHandler}>Upload</button>
+      <form>
+        <input type="text" name="userName" onChange={this.textChangeHandler} placeholder="Your name..."></input>
+        <label className="button">
+          <input type='file' name='image' onChange={this.changeHandler}></input>
+          Select a file
+        </label>
+        <input type="text" name="caption" onChange={this.captionChangeHandler} placeholder="Your message..."></input>
+        <button className="button" id='submitButton' type='button' value='submit' onClick={this.clickHandler}>Upload</button>
         <p>{this.state.success}</p>
-      </div>
+      </form>
     );
   }
 }

@@ -27,15 +27,16 @@ class PostComponent extends React.Component {
 
   render() {
     let data = this.props.data;
+    let date = moment(data.datePosted).fromNow();
     return(
-      <div>
+      <div className="postContainer" >
         <div>
-          <p>{data.userName} posted on {this.formatDate(data.datePosted)}</p>
-          <p>{data.caption}</p>
+          <p className="caption"><span className="userName">{data.userName}</span></p>
+          <p className="caption">{date}</p>
           {this.state.image ? <div class="pictureContainer">
-            <img class='pic' key={data._id} src={`data:image/png;base64,${ this.state.image.binary }`}></img>
+            <img className='pic' key={data._id} src={`data:image/png;base64,${ this.state.image.binary }`}></img>
           </div>: " "}
-
+          <p className="caption">{data.caption}</p>
         </div>
       </div>
     );

@@ -34,13 +34,14 @@ class PostListComponent extends React.Component {
       <div>
         <h1>Posts</h1>
         <FormComponent updatemethod={this.updateState}/>
+        <div className="feedContainer">
         {this.state.posts.map((post) => {
-            console.log(post)
           return (
             <PostComponent data={post} updatemethod={this.updateState}/>
             );
           }
         )}
+        </div>
       </div>
     )
   }
