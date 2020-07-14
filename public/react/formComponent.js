@@ -13,15 +13,12 @@ class FormComponent extends React.Component {
 
   clickHandler = () => {
     const data = new FormData()
-    console.log(data)
     data.append('image', this.state.selectedFile);
     data.append('userName', this.state.name);
     data.append('caption', this.state.caption);
     axios.post('http://localhost:3000/posts', data, {
-
     })
     .then(res => {
-      console.log(res.statusText);
       this.props.updatemethod();
       this.setState({
         success: "Upload successful"

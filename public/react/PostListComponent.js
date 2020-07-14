@@ -19,25 +19,22 @@ class PostListComponent extends React.Component {
         this.setState({
           posts: data
         });
-
       })
   }
 
   updateState = () => {
-    console.log("updating")
     this.fetchData('/posts/feed')
   }
 
   sortPostsByNewest = () => {
     return this.state.posts.sort(function(postA, postB) {
-      var dateA = new Date(postA.datePosted);
-      var dateB = new Date(postB.datePosted);
+      let dateA = new Date(postA.datePosted);
+      let dateB = new Date(postB.datePosted);
       return dateB - dateA;
     });
   }
 
   render() {
-
     return (
       <div>
         <h1>Latest posts</h1>

@@ -17,12 +17,7 @@ class PostComponent extends React.Component {
         this.setState({
           image: data
         });
-
       })
-  }
-
-  formatDate(date) {
-    return new Date(date).toLocaleString();
   }
 
   render() {
