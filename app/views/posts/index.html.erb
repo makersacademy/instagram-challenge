@@ -1,0 +1,58 @@
+  <% @posts.reverse.each do |post| %>
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-sm-6 above-pic"><strong>@<%= post.user.email.split('@')[0] %>: </strong><%= post.caption %></div>
+        <div class="col-sm-6 text-right above-pic"><strong>Written: </strong><%= post.created_at %></div>
+      </div>
+        <div class="text-center image"><%= image_tag post.image_url(:thumb).to_s, class: "picture" %></div>
+
+        <% if current_user %>
+          <%= link_to like_post_path(post), method: :put do %>
+            <div class="text-right"><i class="likes fa fa-thumbs-up" aria-hidden="true"></i></div>
+          <% end %>
+        <% end %>
+
+        <%= post.get_upvotes.size %> likes
+
+        <!-- <% if current_user %>
+          <%= link_to dislike_post_path(post), method: :put do %>
+            <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+
+        <%= post.get_downvotes.size %> -->
+
+      <div class="comments">
+        <% post.comments.each do |comment| %>
+          <p><strong>@<%= comment.user.email.split('@')[0] %>: </strong><%= comment.body %></p>
+        <% end %>
+      </div>
+        <% if current_user %>
+          <div onmouseenter="toggleCommentForm(this.id)" id='<%= post.id %>'>
+            <p>Leave a comment <i class="fa fa-arrow-down" aria-hidden="true"></i></p>
+            <div class="comment-form"  id='commentForm<%= post.id %>'>
+              <%= form_with(model: [post, post.comments.build], local: true) do |form| %>
+                <p>
+                  <%= form.label :body %>
+                  <%= form.text_field :body %>
+                  <%= form.hidden_field :post_id, value: post.id %>
+                  <%= form.hidden_field :user_id, value: current_user.id %>
+                </p>
+                <%= form.submit %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+      <% if current_user %>
+        <% if post.user_id == current_user.id %>
+          <p><%= link_to 'Update', edit_post_path(post) %></p>
+          <p><%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <% end %>
+      <% end %>
+
+    </div>
+
+  <% end %>
