@@ -48,12 +48,12 @@ class FormComponent extends React.Component {
   render() {
     return (
       <form>
-        <input type="text" name="userName" onChange={this.textChangeHandler} placeholder="Your name..."></input>
+        <input id="nameInput" type="text" name="userName" onChange={this.textChangeHandler} placeholder="Your name..."></input>
         <label className="button">
-          <input type='file' name='image' onChange={this.changeHandler}></input>
+          <input id='fileInput' type='file' name='image' onChange={this.changeHandler}></input>
           Select a file
         </label>
-        <input type="text" name="caption" onChange={this.captionChangeHandler} placeholder="Your message..."></input>
+        <input id="captionInput" type="text" name="caption" onChange={this.captionChangeHandler} placeholder="Your message..."></input>
         <button className="button" id='submitButton' type='button' value='submit' onClick={this.clickHandler}>Upload</button>
         <p>{this.state.success}</p>
       </form>
