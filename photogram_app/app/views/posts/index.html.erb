@@ -1,0 +1,31 @@
+<h1>Photogram</h1>
+
+<h2> Welcome, <%= current_user.email%> </h2>
+<h2>Photo Feed</h2>
+ <%= link_to 'New post', new_post_path %>
+<table>
+  <tr>
+    <th>Photo Caption</th>
+    <th>Created At</th>
+    <th colspan="2"></th>
+  </tr>
+
+  <% @posts.reverse.each do |post| %>
+    <tr>
+      <td><%= post.email %></td>
+      <td><%= simple_format post.text %></td>
+      <td><%= post.created_at %></td>
+      <td><%= link_to 'Show', post_path(post) %></td>
+      <% if post.user_id == session[:user_id] %>
+      <% if Time.now - post.created_at < 10.minutes %>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+      <% end %>
+      <td><%= link_to 'Destroy', post_path(post),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+<%= button_to "Logout", logout_path, method: :delete %>
