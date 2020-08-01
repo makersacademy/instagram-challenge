@@ -2,11 +2,16 @@ Instagram Challenge - Photogram
 ===================
 This Ruby on Rails web app is a clone of Instagram. Currently the user is able to signup and only login if the correct email & password are entered. The user can also logout of the app. 
 
-I am pleased with the project so far and feel like I have gained a better understanding of Rails and the interaction of all the files/routes. I struggled with updating the database once it was initially created and migrated into my local database, therefore I was not able to add and view a new post once submitted (User Story 3). 
+Developer's Notes:
+---
 
-User Stories 1 and 2 have been completed however functionality still needs to be added to complete User Stories 3, 4 & 5. 
+- I am pleased with the project so far and feel like I have gained a better understanding of Rails and the interaction of all the files/routes. I struggled with updating the   database once it was initially created and migrated into my local database, therefore I was not able to add and view a new post once submitted (User Story 3). 
 
-If I had completed all the User Stories I would have also liked to add in CSS styling. 
+- User Stories 1 and 2 have been completed however functionality still needs to be added to complete User Stories 3, 4 & 5. 
+
+- No tests have been written as of yet and this is something that I would like to work on once I have an even better understanding of Rails. 
+
+- If I had completed all the User Stories I would have also liked to add in CSS styling. 
 
 **User Stories**
 ----
