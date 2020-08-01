@@ -1,5 +1,26 @@
-Instagram Challenge
+Instagram Challenge - Photogram
 ===================
+
+**User Stories**
+----
+```
+As a user
+So I can use the Photogram web app
+I would like to be able to signup to create an account
+
+As a user
+So I can use the Photogram web app
+I would like to be able to login to the web app with the email & password I signed up with
+
+As a user
+So I can show other users my photos
+I would like to be able to upload a photo and add a caption to the photo feed
+```
+
+**Wireframe**
+----
+
+![Wireframe](Screen Shot 2020-08-01 at 11.16.02.png) 
 
 ## Instructions
 
