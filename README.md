@@ -20,7 +20,7 @@ I would like to be able to upload a photo and add a caption to the photo feed
 **Wireframe**
 ----
 
-![Wireframe](Screen Shot 2020-08-01 at 11.16.02.png) 
+![Wireframe](/Screen Shot 2020-08-01 at 11.16.02.png)
 
 ## Instructions
 
