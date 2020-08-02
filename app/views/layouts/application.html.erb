@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instagram</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('instagram.png') %>
+
+  </head>
+
+  <body>
+    <div id='nav-bar'>
+      <ul>
+      <% if user_signed_in? %>
+        <li><a href='/posts'><i class="fa fa-instagram fa-lg"></i></a></li>
+        <li><a href='/posts' class='logo'>Instagram</a></li>
+        <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+        <div id='nav-right'>
+          <li><%= link_to new_post_path do %> New Post <% end %></li>        
+          <li><a href='/'><%= current_user.email %></a></li>
+        </div>
+      <% else %>
+        <li><a href='/'><i class="fa fa-instagram fa-lg"></i></a></li>
+        <li><a href='/' class='logo'>Instagram</a></li>
+        <li><%= link_to('Login', new_user_session_path) %></li>   
+        <li><%= link_to "Sign Up", new_user_registration_path %></li> 
+      <% end %>
+      </ul>
+    </div>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>

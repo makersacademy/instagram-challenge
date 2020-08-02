@@ -1,0 +1,53 @@
+<div class="singl-post-page-container">
+  <div class="card">
+  <div id='card-top'>
+    <div id="post-user">
+      <%= User.find(@post.user_id).email %><br>
+    </div>
+  </div>
+  <div id="post-img">
+    <% if @post.image.attached? %>
+      <%= image_tag @post.image.variant(resize_to_fill: [500, 500, { gravity: 'Center' }]), id: 'img'  %>
+    <% end %>
+  </div>
+  <div id="post-caption">
+    <div id='caption-user'>
+      <%= User.find(@post.user_id).email %> 
+    </div>
+    <div id='caption-text'>
+      <%= @post.caption %>
+    </div>
+  </div>
+  <div id='post-date'>
+    <%= @post.created_at.strftime("%m/%d/%Y, %H:%M") %>
+  </div>
+
+  <div id='post-comments'>
+    <% @post.comments.each do |comment| %>
+      <div id='post-comment'>
+          <div id='post-comment-user'>
+            <%= User.find(comment.user_id).email %>
+          </div>
+
+          <div id='post-comment-text'>
+            <%= comment.body %>
+          </div>
+        </div>
+    <% end %>
+  </div> 
+
+  <div id='add-comment-container'>
+    <div id='add-comment-form'>
+      <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+          <%= form.label 'Add Comment' %><br>
+          <%= form.text_area :body %>
+        <p>
+          <%= form.submit 'Save' %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+  
+
+  </div>
+</div>
