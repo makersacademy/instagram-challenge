@@ -1,5 +1,9 @@
 Instagram Challenge
-===================
+===================rails 
+## Joanne Chen - Instagram challenge
+
+As I'll be praciticng building an app via Rails, which is a relatively new concept to me, I will be using a tutorial I found on Medium, written by Luan Nguyen to guide me through it. This are the web addresses: https://medium.com/luanotes/build-instagram-by-ruby-on-rails-part-1-fef7837ee399, https://medium.com/luanotes/build-instagram-by-ruby-on-rails-part-2-d70b44f5c7e6, https://medium.com/luanotes/build-instagram-by-ruby-on-rails-part-3-2cb65dca46d7
+
 
 ## Instructions
 
