@@ -1,0 +1,27 @@
+language: ruby
+services:
+- postgresql
+rvm:
+- 2.7.0
+
+node_js:
+- "node"
+
+install:
+# - gem uninstall bundler
+# - gem install bundler:2.1.4
+- bundle install
+# - bundle exec rake db:create RAILS_ENV=test
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+- nvm install 14.2
+
+before_script:
+- npm install
+
+script: 
+# - rake
+- bundle exec rspec
+- bundle exec rubocop
+- bundle exec npm run test
+- bundle exec npm run lint

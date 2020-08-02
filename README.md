@@ -1,5 +1,61 @@
-Instagram Challenge
-===================
+# Instagram Challenge
+
+[![Build Status](https://travis-ci.com/will-head/instagram-challenge.svg?branch=master)](https://travis-ci.com/github/will-head/instagram-challenge/builds/170080957)
+
+## Setup
+
+```bash
+$ bundle install  
+$ npm install  
+$ yarn install --check-files
+$ rake db:create
+$ rake db:migrate
+
+```
+
+## Status
+
+Setup Tests (RSpec, with coverage, RuboCop, Jasmine in Karma, with coverage, and ESLint) and Rails, all passing Travis.
+
+Wrote initial User Stories (below), and added [Devise](https://github.com/heartcombo/devise) for user management. Ran into issues writing feature tests for Devise, so rolled back.
+
+Decided to use [Sorcery](https://github.com/Sorcery/sorcery) instead, following [this tutorial](https://www.sitepoint.com/magical-authentication-sorcery/), combined with a [more general rails tutorial](https://www.freecodecamp.org/news/lets-create-an-intermediate-level-ruby-on-rails-application-d7c6e997c63f/), then ran out of time.
+
+
+## Testing
+
+To run RSpec (with coverage), Rubocop, Jasmine in Karma (with coverage) and ESLint run script:  
+
+```bash
+$ ./test/tdd.test
+```
+To test in browser (uses Chrome), run script:  
+
+```bash
+$ ./test/web.test
+```
+## User Stories  
+
+```
+As a user
+So I can upload content to the site
+I want to be able to sign up for an account
+```
+
+```
+As a user
+So I can upload content to the site
+I want to be able to log into the site
+```
+
+```
+As a user
+So I can ensure no one can use my account without my permission
+I want to be able to log out of the site
+```
+
+
+# Original README
 
 ## Instructions
 
