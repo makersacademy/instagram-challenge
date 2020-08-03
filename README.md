@@ -1,6 +1,10 @@
 Instagram Challenge - Amstergram!
 ===================
 
+### Things I used this challenge to practice
+
+I felt like this challenge was more about setting up a rails project from scratch, which was sucessful. Also managed to add some of the desired functionality, namely user authentication and the ability to comment on post of images. This was a great example of how Gem and using packages already created can add functionality quickly, with the user authentication being done via clearance, and the images via active-storage.
+
 ## Instructions
 
 * Challenge time: one weekend
