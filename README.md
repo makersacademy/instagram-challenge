@@ -1,7 +1,30 @@
 Instagram Challenge
 ===================
 
-## Instructions
+Trello board: https://trello.com/b/JCj2gyyL/instagram-clone
+
+I have decided that I will be prioritising feature building over infrastructure setup (Travis CI/Heroku) as I want to get a deeper understanding of the concept of using an MVC framework such as rails.
+
+Taking the basic requirements listed by the challenge, I started planning by sticking the requirements onto the trello board. When I take on a feature to do, I then create cards based on what is needed to meet those requirements.
+
+
+### Attempting (and failing) to implement Devise
+
+I first started off seeing whether I can add the `sign up` and `sign in` pages that devise generates onto the homepage. Unfortunately due to my lack of exposure to rails(I've only spent a day and a half on Rails so far), I spent around an hour trying to figure out where and how to link them together.
+
+I decided to leave that, and then work on sorting out the basic controllers and views to make the website.
+
+### Basic website structure
+
+I moved on from trying to do devise to generating the `Grams` controller and adding the `new` view. I found this easier, as it is starting from scratch. However, I'm still having to refer to the Ruby on Rails guide.
+
+I'm becoming more familiar with the structure of what Rails requires, as well as some basic understanding on what the commands to.
+
+
+
+
+---
+## Makers Instructions
 
 * Feel free to use Google, your notes, books, etc., but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
