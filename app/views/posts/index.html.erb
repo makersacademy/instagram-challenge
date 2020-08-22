@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="text-center">AInstagram</h1>
+<br>
+<div class="container page-top">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col">
+        <div class="card" style="width:500px">
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.image.variant(resize: "500x600"), class: 'rounded mx-auto d-block card-img-top'%>
+          <% end %>
+          <div class="card-footer">
+          <% post.hashtags.each do |hashtag| %>
+            <%= '#' + hashtag.name %>
+          <% end %>
+          </div>
+          <%= link_to 'Delete', post, method: :delete, class: 'btn btn-primary btn-sm', id: 'deletepost'%>
+     </div>
+     </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+     
+      
+

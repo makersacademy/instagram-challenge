@@ -1,0 +1,21 @@
+
+rvm: '2.5.1'
+cache: bundler
+addons:
+  code_climate:
+    repo_token: 2325fdb9d171ac8930c4a95030e14e338b5ad0df771a7b464aec32f529ae5596
+
+script:
+  - bundle exec rake db:test:prepare
+  - mkdir -p spec && bundle exec rspec spec
+
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq postgresql-server-dev-9.3
+
+after_success:
+  - bundle exec codeclimate-test-reporter
+
+before_script:
+   - psql -c "create database instagram_challenge_test;" -U postgres

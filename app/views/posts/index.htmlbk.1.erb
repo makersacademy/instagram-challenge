@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lazygram</h1>
+<br>
+<%= link_to 'New Post', new_post_path %>
+<br>
+<% @posts.each do |post| %>
+  <div class="card" style="width:400px">
+    <div class="card-body">
+      <%= image_tag post.image, class: "img-responsive", class: "img-rounded" %>
+      <br>
+      <div class="card-footer">
+        <% post.hashtags.each do |hashtag| %>
+          <%= '#' + hashtag.name %>
+        <% end %>
+        <br>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %>
+     </div>
+    </div>
+  </div>
+<% end %>
+
+
