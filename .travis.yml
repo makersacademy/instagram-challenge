@@ -1,0 +1,23 @@
+language: ruby
+rvm:
+- 2.7.0
+install:
+- gem install bundler --version '1.17.2'
+- bundle install
+services: postgresql
+before_script:
+- rails db:create
+- rails db:migrate
+script:
+- bundle exec rake
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: qBgYnGmivFNefKI0+apaAI15P8BsMVCBWtIZT40aAE64RNohbDFyx+u7reykfppGx+a+fJBVQ55W/Gc8mCbN3u67B228QMfgJFRlOmZn/ijVdpvNacBNWsqk0oZX88wz+gkXD2wweXMtwoAHRzVjCPvQqeV3ojyPm64C8yPC1lNduXyxY7nNmmxcZIYEmPc7Id6+T4Z1rbDagkzU9SxZOkMl/IUA+v2SQIcvwFsIfnPfKqKw6zCs0a4l+RQFCD4BDiYaaX2aK64J18TLFHwpc7V7Dd979K252kLYnQwYGBGNZTmik6OAGbifThtIVkNWEw6n4dzlXai3iXxBvK9ysy9ZXC6SG3gCuV5D8qc7P5abRX2x94KM7Gby0zBghjnCKSGqrxbWJIBR4+g0eWaTKFSErImgzBxUEnMAiKHnppi/23oTxsP9t9+GConTpgScqNRTW0rg1HkoIjuBzb/lAVEe96o81UPMjsNchUFBj20NlEKmz3SfewiEt+VHHp2rs6GI+s/fPgQneQPn6Xdyo0OUHb1FvFZdDs5s/fhpXFi1nRI0juxP1E0gflgchR27b7oShWkh7rB+gzlws7Nzf2V8mTxorays9Rp+KSO6x/owphREJW+bZoy5dmG9N09gIQFqLFd5W25dldHq+gracd8Rw/kGIAivXIRXnE+Ln4o=
+  app: tranquil-reef-21707
+  on: 
+    repo: harrylb14/instagram-challenge
+    branches:    
+      only:      
+        - master
