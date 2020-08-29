@@ -5,7 +5,8 @@ install:
 - gem install bundler --version '1.17.2'
 - bundle install
 services: postgresql
-- rails db:drop:all 
+before_script:
+- rails rake db:drop:all
 - rails db:create
 - rails db:migrate
 script:
