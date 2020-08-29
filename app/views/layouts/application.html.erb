@@ -4,12 +4,41 @@
     <title>InstagramClone</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+   
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="https://startbootstrap.github.io/startbootstrap-grayscale/css/styles.css" rel="stylesheet" /> 
   </head>
 
   <body>
+  <!-- Navigation-->
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+          <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              Menu
+              <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                  <% if user_signed_in? %>
+                  <li class="nav-item" class="nav-link js-scroll-trigger" ><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+                  <% else %>
+                  <li class="nav-item"><a class="nav-link js-scroll-trigger" href="users/sign_in">Log In</a></li>
+                  <% end %>
+    
+              </ul>
+          </div>
+      </div>
+  </nav>
+  
+  
     <%= yield %>
+    <!-- Footer-->
+    <footer class="footer bg-black small text-center text-white-50"><div class="container">Copyright © Your Website 2020</div></footer>
   </body>
 </html>
