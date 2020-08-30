@@ -1,0 +1,17 @@
+<h1>Your Feed</h1>
+<%= link_to 'New post', new_post_path %>
+<table>
+
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= current_user.name %>: </td>
+      <td><%= post.text %></td> </br>
+      <td><%= link_to 'Show', post_path(post.id)%></td>
+      <% if post.user.to_i == current_user.id %>
+        <td><%= link_to 'Delete', [post],
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

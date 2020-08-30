@@ -11,7 +11,6 @@ RSpec.feature 'users can log in and out ' do
     click_link 'Log In' 
     fill_in 'user[email]', with: 'testjohnson@testmail.com'
     fill_in 'user[password]', with: '123456'
-    save_and_open_page
     click_button 'Log in'
     
     expect(page).to have_content 'Hi, Test Johnson!'

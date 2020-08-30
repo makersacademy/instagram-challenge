@@ -1,0 +1,15 @@
+<p>
+
+<h2> <%= @post.title %> </h2>
+<h4> Poster: <%= User.find(@post.user).name %> <h4>
+<%= @post.text %>
+<br>
+<% if @post.user.to_i == current_user.id %>
+<%= link_to 'Update', edit_post_path %>
+<td><%= link_to 'Delete', [@post],
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
+</p>
+<% end %>
+
+<%= link_to 'All posts', posts_path %>
