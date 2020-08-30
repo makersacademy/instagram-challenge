@@ -25,7 +25,7 @@ RSpec.feature 'users can edit their details' do
   scenario 'users can delete their account' do
     sign_up
     click_link 'Edit Profile' 
-    click_link 'Cancel my account'
+    click_button 'Cancel my account'
     click_link 'Log In'
     fill_in 'user[email]', with: 'testjohnson@testmail.com'
     fill_in 'user[password]', with: '123456'
