@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>Instagram Challenge</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-white">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Instagram</a>
+        </li>
+        <% if session[:user_id] %>
+          <li class="nav-item">
+            <div class="col">
+              <%= link_to 'Sign Out', 'sessions/destroy', class: "nav-link" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <div class="col">
+              <%= link_to "Create account", users_new_path, class: "nav-link" %>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="col">
+              <%= link_to "Sign In", sessions_new_path, class: "nav-link" %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-info">
+        <%= msg %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

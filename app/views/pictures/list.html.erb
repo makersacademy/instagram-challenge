@@ -1,0 +1,27 @@
+<div class="container">
+  <h3>Pictures of the moment</h3>
+    <div class="col-md-6">
+      <%= form_for @picture do |p| %>
+        <div class="form-group">
+          <%= p.text_field :title, placeholder: 'Title' %>
+        </div>
+        <div class="form-group">
+          <%= p.text_field :description, placeholder: 'Description' %>
+        </div>
+        <div class="form-group">
+          <%= p.text_field :img_url, placeholder: 'Image URL' %>
+        </div>
+        <div class="form-group">
+          <%= p.submit 'Add picture' %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-6">
+      <% @pictures.each do |picture| %>
+        <%= picture.title %>
+        <%= picture.description %>
+        <img src="<%= picture.url %>" alt="">
+      <% end %>
+    </div>
+</div>
