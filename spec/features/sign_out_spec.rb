@@ -2,6 +2,7 @@ require 'rails_helper'
 RSpec.feature 'users can log in and out ' do
   scenario 'signed up user can log out' do
     sign_up
+    puts page.body
     click_link('Log Out')
     expect(page).to have_content('Log In')
   end
