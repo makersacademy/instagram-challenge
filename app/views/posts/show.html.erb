@@ -3,6 +3,9 @@
 
 <h2 class="post-title"> <%= @post.title %> </h2>
 <h4> Poster: <%= User.find(@post.user).name %> <h4>
+<% if @post.image.attached? %>
+      <div>   <%= image_tag @post.image, style: "width:400px; display:block" %> 
+      <% end %>
 <%= @post.text %>
 <br>
 <% if @post.user.to_i == current_user.id %>

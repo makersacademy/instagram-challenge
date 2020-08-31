@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user.id
+    @post.image.attach(params[:post][:image])
  
     if @post.save
       redirect_to posts_path
@@ -20,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.with_attached_image
   end
 
   def edit
@@ -45,6 +46,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :user)
+    params.require(:post).permit(:title, :text, :user, :image)
   end
 end
