@@ -5,18 +5,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # devise :omniauthable, omniauth_providers: [:twitter]
 
   # You should also create an action method in this controller like this:
-  # def twitter
+  # def railstagram
   # end
 
   # More info at:
   # https://github.com/heartcombo/devise#omniauth
 
-  # GET|POST /resource/auth/twitter
+  # GET|POST /resource/auth/railstagram
   # def passthru
   #   super
   # end
 
-  # GET|POST /users/auth/twitter/callback
+  # GET|POST /users/auth/railstagram/callback
   # def failure
   #   super
   # end
