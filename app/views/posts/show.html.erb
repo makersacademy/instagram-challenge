@@ -1,0 +1,46 @@
+<content class="post-view">
+<p>
+
+<h2 class="post-title"> <%= @post.title %> </h2>
+<h4> Poster: <%= User.find(@post.user).name %> <h4>
+<% if @post.image.attached? %>
+      <div>   <%= image_tag @post.image, style: "width:400px; display:block" %> 
+      <% end %>
+<%= @post.text %>
+<br>
+<% if @post.user.to_i == current_user.id %>
+<%= link_to 'Update', edit_post_path %>
+<td><%= link_to 'Delete', [@post],
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
+</p>
+<% end %>
+
+<div class="comments">
+<% @post.comments.each do |comment| %>
+  <p>
+  <div class="commenter-name"><%= comment.commenter %> - </div>
+  <div class="comment-text"> <%= comment.body %> </div> 
+  <% if comment.commenter == current_user.name %>
+        <%= link_to 'Remove', [comment.post, comment],
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %> </p> 
+  <% end %>
+  </p>
+ 
+<% end %>
+</div>
+
+<%= form_for [@post, @post.comments.build], url: { controller: "comments", action: "create", post_id: @post.id }, method: :create do |form| %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <p>
+    <%= form.label :comment%><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'All posts', posts_path %>
+</content>
