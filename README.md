@@ -1,24 +1,9 @@
-# README
+# Instagram Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Deployed at https://tranquil-reef-21707.herokuapp.com/
 
-Things you may want to cover:
+<img src="public/Screenshot 2020-08-31 at 15.46.38.png">
 
-* Ruby version
+- Sign up, create posts, comment on posts! Socialise without fear of data stealing. 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Created using Rails, Devise, Bootstrap.
