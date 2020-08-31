@@ -1,17 +1,17 @@
 <h1>Your Feed</h1>
-<%= link_to 'New post', new_post_path %>
-<table>
+<h3> <%= link_to 'New post', new_post_path %> </h4>
 
-  <% @posts.each do |post| %>
-    <tr>
-      <td><%= current_user.name %>: </td>
-      <td><%= post.text %></td> </br>
-      <td><%= link_to 'Show', post_path(post.id)%></td>
+<content class = "post-feed">
+
+  <% @posts.reverse_each do |post| %>
+      <div class="poster-name"><%= User.find(post.user).name %> - </div>
+      <div class="post-text"> <%= post.text %> </div> 
+      <p><%= link_to 'Show', post_path(post.id)%>
       <% if post.user.to_i == current_user.id %>
-        <td><%= link_to 'Delete', [post],
+        <%= link_to 'Delete', [post],
                         method: :delete,
-                        data: { confirm: 'Are you sure?' } %></td>
+                        data: { confirm: 'Are you sure?' } %> </p> 
       <% end %>
-    </tr>
+      </br> </br>
+  </content>
   <% end %>
-</table>

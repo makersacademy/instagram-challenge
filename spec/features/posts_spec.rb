@@ -40,4 +40,3 @@ RSpec.feature 'posts', type: :feature do
     expect(page).to_not have_link 'Update'
   end
 end
-
