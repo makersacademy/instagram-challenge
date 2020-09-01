@@ -1,6 +1,13 @@
 Instagram Challenge
 ===================
 
+As a user
+So that I can see what my friends are up to
+I want to be able to see a list of posts
+
+
+
+
 ## Instructions
 
 * Feel free to use Google, your notes, books, etc., but work on your own
