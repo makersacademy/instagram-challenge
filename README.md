@@ -1,39 +1,72 @@
-Instagram Challenge
-===================
+# README
 
-## Instructions
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Things you may want to cover:
 
-## Task
+* Ruby version
 
-Build Instagram: Simple huh!
+* System dependencies
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+* Configuration
 
-Bonus if you can add filters!
+* Database creation
 
-## How to start
+* Database initialization
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+* How to run the test suite
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+* Services (job queues, cache servers, search engines, etc.)
 
-## Code Quality
+* Deployment instructions
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+* ...
+### How to use this project
+- Clone this repo
+- Run `bundle install`
+- Run `rails server` (if on mac OS)
+- Navigate to `localhost:3000`
 
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
+### Running tests
+- Rspec
+
+
+### User Stories
 ```
+As a User
+So that I can show off my pictures
+I would like to be able to make a post
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+As a user
+So that the site remembers me
+I would like to be able to sign up
+
+As a user
+So that I can continue to post photos to my account
+I would like to be able to sign in
+
+As a user
+So that I can claim credit for my pictures
+I would like to have a username display on my posts
+
+As a user
+So that I can stay ahead of the curve
+I would like posts to be displayed in reverse chronological order
+
+As a user
+So that I can humblebrag
+I would like to be able to add context to my posts
+
+As a loser
+So that I can throw shade at people I don't like
+I would like to be able to comment on other people's pictures
+
+As a user
+So that I can show appreciation for my friend's posts
+I would like to be able to 'like' pictures
+
+As a user
+So that I can measure my clout
+I would like to be able to see how many likes a picture has
+```
