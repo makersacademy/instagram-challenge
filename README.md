@@ -26,6 +26,7 @@ Things you may want to cover:
 - Clone this repo
 - Run `bundle install`
 - Run `rails server` (if on mac OS)
+- Navigate to `localhost:3000`
 
 ### Running tests
 - Rspec
@@ -62,7 +63,7 @@ So that I can throw shade at people I don't like
 I would like to be able to comment on other people's pictures
 
 As a user
-So that I can ahow appreciation for my friend's posts
+So that I can show appreciation for my friend's posts
 I would like to be able to 'like' pictures
 
 As a user
