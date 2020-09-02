@@ -1,28 +1,24 @@
 <h1>Railstagram</h1>
-<ul>
+
         <% if @post.image.attached? %>
-        <li>
-            <p><strong><%= @post.user.email %></strong></p>
+        <div>
+            <p><strong><h3><%= @post.user.username %></h3></strong></p>
             <p><%= image_tag @post.image %></p>
             <p><%= @post.caption %></p>
-        </li>
+        </div>
         <% end %>
-        <h2>Comments</h2>
+        <h3>Comments</h3>
             <% @post.comments.each do |comment| %>
-                <%= comment.commenter %>
-                <%= comment.body %>
+                <strong><%= comment.commenter %>: </strong>
+                <%= comment.body %><br><br>
             <% end %>
-        <h2>Add comment:</h2>
+        
             <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
-            
             <p>
-                <%= form.text_area :body %>
+                <%= form.text_field :body, placeholder: "Enter a comment..." %>
             </p>
             <p>
                 <%= form.submit %>
             </p>
             <% end %>
       <%= link_to 'Back', posts_path %>
-</ul>
-  
-    </ul>
