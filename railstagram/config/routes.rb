@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users do
-    resources: :wallposts
-  end
+  devise_for :users
     
   get 'welcome/index'
   root 'welcome#index'
