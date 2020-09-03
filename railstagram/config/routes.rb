@@ -7,5 +7,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+
+  put '/posts/:id/like', to: 'posts#like', as: 'like'
+  
   
 end
