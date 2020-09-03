@@ -11,6 +11,18 @@
     <p class="alert"><%= alert %></p>
   </head>
 
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/posts">Posts</a></li>
+  <% if user_signed_in? %>
+    <li> <a href="/posts/new">New Post</a></li>
+    <li style='float:right'><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></a></li>
+  <% else %>
+    <li style='float:right'><a href="/users/sign_up">Sign up</a></li>
+    <li style='float:right'><a href="/users/sign_in">Sign in</a></li>
+  <% end %>
+</ul>
+
   <body>
     <%= yield %>
   </body>
