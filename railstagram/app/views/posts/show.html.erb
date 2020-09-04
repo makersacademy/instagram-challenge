@@ -1,23 +1,28 @@
-<% if @post.image.attached? %>
+
     <div>
         <p><strong><h3><%= @post.user.username %></h3></strong></p>
         <p><%= image_tag @post.image %></p>
         <p><%= @post.caption %></p>
     </div>
-        <% end %>
-
-        <h3>Comments</h3>
+    <div class="comments">
+    <strong>Comments</strong><br><br>
+        <% if @post.comments.length > 3 %>
+            <strong><%= @post.comments[0].commenter %></strong>: 
+            <%= @post.comments[0].body %>
+            <%= link_to 'see more comments', post_comments_path %>
+        <% else %>
             <% @post.comments.each do |comment| %>
                 <strong><%= comment.commenter %>: </strong>
-                <%= comment.body %><br><br>
+                <%= comment.body %>
+                <br>
             <% end %>
+         <% end %>
         
-            <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
-            <p>
-                <%= form.text_field :body, placeholder: "Enter a comment..." %>
-            </p>
-            <p>
-                <%= form.submit %>
-            </p>
-            <% end %>
-      <%= link_to 'Back', posts_path %>
+    <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+        <p>
+            <%= form.text_field :body, placeholder: "Enter a comment..." %>
+        </p>
+    </div>
+       
+    <% end %>
+    <%= link_to 'Back', posts_path %>
