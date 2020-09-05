@@ -7,9 +7,12 @@
     <div class="comments">
     <strong>Comments</strong><br><br>
         <% if @post.comments.length > 3 %>
-            <strong><%= @post.comments[0].commenter %></strong>: 
-            <%= @post.comments[0].body %>
-            <%= link_to 'see more comments', post_comments_path %>
+          <p>  <strong><%= @post.comments[0].commenter %></strong>: 
+            <%= @post.comments[0].body %><br> </p>
+          <p> <strong><%= @post.comments[1].commenter %></strong>: 
+            <%= @post.comments[1].body %> </p>
+           <p> ...</p>
+            <p><small><%= link_to "View all comments", post_comments_path(@post) %></small></p>
         <% else %>
             <% @post.comments.each do |comment| %>
                 <strong><%= comment.commenter %>: </strong>
@@ -18,10 +21,8 @@
             <% end %>
          <% end %>
         
-    <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
-        <p>
-            <%= form.text_field :body, placeholder: "Enter a comment..." %>
-        </p>
+    <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %> 
+        <%= form.text_field :body, placeholder: "Enter a comment..." %>
     </div>
        
     <% end %>
