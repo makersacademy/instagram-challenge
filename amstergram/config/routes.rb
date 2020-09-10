@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :comments
+      resources :posts
+      resources :users
+
+      root to: "comments#index"
+    end
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
