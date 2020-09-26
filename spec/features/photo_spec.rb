@@ -12,7 +12,7 @@ RSpec.feature "Photo", type: :feature do
     expect(page).to have_content("Hello, world 2 !")
   end
 
-  scenario "Post without image should raise error" do 
+  scenario "Create new post without image" do 
     visit("/")
     click_link "Create Post"
     fill_in "Description", with: "Hello, world 2 !"
@@ -20,7 +20,7 @@ RSpec.feature "Photo", type: :feature do
     expect(page).to have_content("Photo can't be blank")
   end
 
-  scenario "Post without image should raise error" do 
+  scenario "Uploading wrong file format" do 
     visit("/")
     click_link "Create Post"
     fill_in "Description", with: "Hello, world 2 !"

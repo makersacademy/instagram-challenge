@@ -5,4 +5,5 @@ class Photo < ApplicationRecord
     with: %r{\.(gif|jpg|png|jpeg)\Z}i,
     message: 'File must be GIF, JPG or PNG image.'
     }
+  
 end
