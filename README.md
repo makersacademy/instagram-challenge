@@ -9,10 +9,11 @@ Instagram clone using Rails. You'll need **users** who can post **pictures**, wr
 - bundle install
 - rails db:create
 - rails db:migrate
-- rund the tests
+- to run the tests
   - rspec
 - rails server
 - visit http://localhost:3000/
 
-[User Stories](https://github.com/Iliyan-Y/instagram-challenge/wiki/User-Stories)
+[User Stories](https://github.com/Iliyan-Y/instagram-challenge/wiki/User-Stories) |
+
 [The Project](https://github.com/Iliyan-Y/instagram-challenge/projects/1)
