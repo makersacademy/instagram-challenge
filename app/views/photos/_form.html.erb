@@ -1,4 +1,5 @@
-<%= form_with(model: photo, local: true) do |form| %>
+<%= form_with(model: photo, local: true, id:"new_post_from") do |form| %>
+
   <% if photo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
@@ -11,17 +12,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :photo %>
-    <%= form.file_field :photo %>
-  </div>
+ 
+    <%= form.file_field :photo, class: "btn_style" %>
 
-  <div class="field">
+
+
     <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
+    <%= form.text_area :description,  cols: 32, rows: 7, style:"resize: none;" %>
 
-  <div class="actions">
-    <%= form.submit "Post" %>
-  </div>
+
+
+    <%= form.submit "Post", class: "btn_style", style:"width:100px" %>
+
 <% end %>
