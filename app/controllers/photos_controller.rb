@@ -4,7 +4,10 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all.reverse_order
+    unless user_signed_in? 
+      redirect_to new_user_registration_path
+    end
+    @photos = Photo.all.reverse_order 
   end
 
   # GET /photos/1
