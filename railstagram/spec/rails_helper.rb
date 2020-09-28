@@ -1,6 +1,7 @@
 require 'spec_helper'
 require_relative './helpers/sign_up.rb'
 require_relative './helpers/make_post.rb'
+require_relative './helpers/make_4_comments.rb'
 
 if ENV['RAILS_ENV'] ||= 'test'
   require 'simplecov'
