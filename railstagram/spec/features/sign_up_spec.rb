@@ -1,5 +1,5 @@
 require 'rails_helper'
-require_relative '../helpers/sign_up.rb'
+
 
 RSpec.feature('Signing up') do
 	scenario('User vists users/sign_up') do

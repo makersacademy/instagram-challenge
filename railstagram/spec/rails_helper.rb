@@ -1,7 +1,15 @@
 require 'spec_helper'
-require 'simplecov'
-SimpleCov.start 'rails'
-ENV['RAILS_ENV'] ||= 'test'
+require_relative './helpers/sign_up.rb'
+require_relative './helpers/make_post.rb'
+
+if ENV['RAILS_ENV'] ||= 'test'
+  require 'simplecov'
+  SimpleCov.start
+  puts "required simplecov"
+end
+
+
+
 require File.expand_path('../config/environment', __dir__)
 
 abort("The Rails environment is running in production mode!") if Rails.env.production?
