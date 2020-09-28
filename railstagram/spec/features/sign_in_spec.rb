@@ -12,7 +12,7 @@ RSpec.feature('Signing In') do
         expect(page).to have_content "Signed in successfully"
     end
     
-    scenario('User uses an incorrect account') do
+    scenario('User uses an incorrect email') do
         sign_up
         click_link "Sign Out"
         visit('/users/sign_in')
@@ -22,4 +22,16 @@ RSpec.feature('Signing In') do
         click_button "Log in"
         expect(page).to have_content "Invalid Email or password."
     end
+
+    scenario('User uses an incorrect email') do
+        sign_up
+        click_link "Sign Out"
+        visit('/users/sign_in')
+        fill_in :user_username, with: "dill"
+        fill_in :user_email, with: "anemail@email.com"
+        fill_in :user_password, with: "000000"
+        click_button "Log in"
+        expect(page).to have_content "Invalid Email or password."
+    end
+
 end

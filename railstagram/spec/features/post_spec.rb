@@ -8,5 +8,6 @@ RSpec.feature('Posts') do
         make_post
         expect(page).to have_content "dill"
         expect(page).to have_content "A caption for a post"
-	end
+    end
+    
 end
