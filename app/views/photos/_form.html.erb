@@ -1,0 +1,24 @@
+<%= form_with(model: photo, local: true, id:"new_post_from") do |form| %>
+
+  <% if photo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+      <ul>
+        <% photo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+    
+   <div> <%= form.file_field :photo, class: "btn_style" %></div>
+
+    <%= form.label :description %>
+    <%= form.text_area :description,  cols: 32, rows: 7, style:"resize: none;" %>
+
+    <%= form.submit "Post", class: "btn_style", style:"width:100px" %>
+
+<% end %>
+
+<%= javascript_pack_tag 'test', 'data-turbolinks-track': 'reload' %>

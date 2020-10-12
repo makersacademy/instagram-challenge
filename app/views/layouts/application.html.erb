@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstagramChallenge</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="outer_div">
+      <div class="top_bar">
+      <h3><%= link_to 'InstaPok', root_path %><h3>
+
+        <% if user_signed_in? %>
+          <%= link_to 'Create Post', new_photo_path , class: "btn_style"%>
+          <%= link_to "Log Out",  destroy_user_session_path, method: :delete, class: "btn_style"%>
+
+        <% else %>
+          <%= link_to "Sign Up",  new_user_registration_path, class: "btn_style"  %>
+          <%= link_to "Log In",  new_user_session_path, class: "btn_style"  %>
+          
+        <% end %>
+      </div>
+      <%= yield %>
+    </div>
+  </body>
+</html>
