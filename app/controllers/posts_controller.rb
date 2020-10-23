@@ -59,7 +59,7 @@ before_action :authenticate_user!
   end
 
   def owned_post
-    unless current_user == @post.user
+    unless current_user.id == @post.user_id
       flash[:alert] = "You cannot edit this post!"
       redirect_to root_path
     end
