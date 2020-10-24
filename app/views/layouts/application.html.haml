@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Picaddo
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %ul.navbar-nav.mr-auto
+      %li.nav-item.active
+        %a.nav-link{:href => "/ideas"} Ideas
+      \...
+    %p.navbar-text.float-right
+      - if user_signed_in?
+        Logged in as
+        = succeed "." do
+          %strong= current_user.email
+        = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'
+        |
+        \#{link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'}
+      - else
+        = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
+        |
+        \#{link_to "Login", new_user_session_path, :class => 'navbar-link'}
+    %p.notice= notice
+    %p.alert= alert
+    = yield
