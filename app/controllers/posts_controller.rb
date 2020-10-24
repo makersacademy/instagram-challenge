@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy, :like]
   before_action :owned_post, only: [:edit, :update, :destroy]
 
@@ -37,16 +37,13 @@ before_action :authenticate_user!
       flash[:alert] = "Update failed.  Please check the form."
       render "edit"
     end
-  end
-
- 
+  end 
 
   def destroy
     @post.destroy
     flash[:success] = "Your post has been deleted."
     redirect_to root_path
   end
-
 
   private
 
