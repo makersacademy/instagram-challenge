@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'dotenv-rails'
 gem 'devise'
 gem "haml-rails", "~> 2.0"
+gem 'factory_bot_rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -42,6 +43,7 @@ group :development, :test do
   gem 'simplecov-console', require: false
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false  
+  gem 'faker'
 end
 
 group :development do

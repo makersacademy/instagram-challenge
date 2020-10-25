@@ -8,17 +8,20 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   
-  %div.navbar
-    
-    %div.navbar-text.float-right
-      - if user_signed_in?
-        %h1 Picaddo
+  .navbar  
+    - if user_signed_in?
+      %h1 Picaddo
+      .navbar-text.float-right
         Logged in as
         = succeed "." do
-          %strong= current_user.email
+          %strong= current_user.username
+        = link_to 'Home', posts_path, :class => 'navbar-link'
+        |
+        = link_to 'New post', new_post_path, :class => 'navbar-link'
+        |
         = link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link'
         |
-        \#{link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'}
+        = link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'
       -# - else
       -#   = link_to "Sign up", new_user_registration_path, :class => 'navbar-link'
       -#   |

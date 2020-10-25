@@ -60,4 +60,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.factory_bot.definition_file_paths = ["custom/factories"]
+  # Store uploaded files on the local file system
+  config.active_storage.service = :local
+
 end
