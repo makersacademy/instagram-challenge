@@ -1,19 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
-  include Devise::Test::ControllerHelpers
-
-  login_user
-
-  let(:valid_attributes) {
-    { :description => "This is a test description" }
-}
-  let(:valid_session) { {} }
+  
+  user = FactoryBot.build(:user)
   
   describe "GET #index" do
     it "returns http success" do
-      Post.create! valid_attributes
-      get :index, params: {}, session: valid_session
+      sign_in(user)
+      get :index
       expect(response).to have_http_status(:success)
     end
   end

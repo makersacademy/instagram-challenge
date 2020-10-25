@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if:  :devise_controller?
 
   def index
-    redirect_to posts_index_path if current_user
+    redirect_to posts_path if current_user
   end
 
   protected

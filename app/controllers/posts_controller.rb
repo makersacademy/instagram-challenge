@@ -20,7 +20,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post
+      redirect_to root_path
     else
       render 'edit'
     end

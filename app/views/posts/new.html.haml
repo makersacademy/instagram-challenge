@@ -1,13 +1,14 @@
-= form_for @post do |f| 
-  .field
-    = f.label :description
-    %br/
-    = f.text_area :description, autofocus: true, autocomplete: "description"
-  .field
-    = f.label :image
-    %br/
-    = f.file_field :image 
- 
-  %div.text-center
-  = f.submit 'Create Post', class: 'btn btn-primary'
+%div.form-upload
+  = form_for @post do |f| 
+    .field
+      = f.label :description
+      %br/
+      = f.text_area :description, autofocus: true, autocomplete: "description"
+    .field
+      %br/
+      = f.file_field :image
+    .field
+      = f.hidden_field :user_id, value: current_user.id
+    .actions
+    = f.submit 'Create Post', class: 'btn btn-primary'
 

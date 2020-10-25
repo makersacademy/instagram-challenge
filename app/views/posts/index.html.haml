@@ -1,2 +1,12 @@
-%h1 Posts#index
-%p Find me in app/views/posts/index.html.haml
+.posts
+  - @posts.each do |post|
+    = link_to post_path(post) do
+      .post
+        .main-image 
+          = image_tag post.image, :class => "thumbnail"
+        .description
+          = post.description
+        .username 
+          Posted by
+          = post.user.username
+
