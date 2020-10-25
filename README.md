@@ -20,6 +20,9 @@ Weekend challenge for week 8 of Makers Academy - create an Instagram clone using
     bundle install  
     rails db:create   
     rails db:migrate
+    rails server  
+  
+Visit localhost:3000
 
 ## Specifications
 * New users can register for an account with a unique email
