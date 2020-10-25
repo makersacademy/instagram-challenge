@@ -16,7 +16,8 @@ Weekend challenge for week 8 of Makers Academy - create an Instagram clone using
   * Active Storage
 
 ## Installation
-    git clone https://github.com/TheDancingClown/Pablo-Picaddo  
+    git clone https://github.com/TheDancingClown/Pablo-Picaddo
+    cd Pablo-Picaddo 
     bundle install  
     rails db:create   
     rails db:migrate
