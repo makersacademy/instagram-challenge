@@ -28,14 +28,9 @@ RSpec.feature "User Registration", :type => :feature do
     expect(page).to have_content "Username can't be blank"
   end
   
-  scenario 'An error occurs if the username is not present' do
-    visit '/users/sign_up'
-    fill_in "Username", with: "Joe Bloggs"
-    fill_in "Email", with: "joeb@hotmail.com"
-    fill_in "Password", with: "secret"
-    fill_in "Password confirmation", with: "secret"
-    click_button "Sign Up"
-    expect(page).to have_content "Email can't be blank"
+  scenario 'A user can register successfully' do
+    register_user
+    expect(page).to have_content "You have signed up successfully"
   end
 
 end
