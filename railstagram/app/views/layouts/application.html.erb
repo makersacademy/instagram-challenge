@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Railstagram</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+        <script src="https://kit.fontawesome.com/7b7970fe24.js" crossorigin="anonymous"></script>
+  </head>
+
+<ul class="navbar">
+  <a href="/"><i class="fa fa-fw fa-home"></i> Home</a>
+  <% if user_signed_in? %>
+    <a href="/posts"><i class="far fa-images"></i> Posts</a>
+    <a href="/posts/new"><i class="fas fa-camera-retro"></i></a>
+    <a style='float:right' href="/users/sign_out" data-method="delete"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+ <% else %>
+    <a style='float:right' href="/users/sign_up"><i class="fas fa-user-plus"></i> Sign up</a>
+    <a style='float:right' href="/users/sign_in"><i class="fas fa-sign-in-alt"></i> Sign in</a>
+  <% end %>
+</ul>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
