@@ -293,3 +293,102 @@ Processing by Devise::RegistrationsController#new as HTML
 Completed 200 OK in 211ms (Views: 156.4ms | ActiveRecord: 46.0ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(390563967651416160)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(390563967651416160)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-11-20 23:04:21 +0000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/railties-5.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/railties-5.1.7/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 11ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-11-20 23:04:35 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/devise-4.7.3/app/views/devise/shared/_error_messages.html.erb (0.4ms)
+  Rendered /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (0.7ms)
+  Rendered /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 139ms (Views: 126.0ms | ActiveRecord: 3.4ms)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(390563967651416160)[0m
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePosts (20201120232023)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (90.2ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "image" character varying, "caption" text, "user_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_5b5ddfd518"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_posts_on_user_id" ON "posts"  ("user_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20201120232023"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(390563967651416160)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/" for ::1 at 2020-11-20 23:22:25 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/railties-5.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/railties-5.1.7/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 8ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/posts" for ::1 at 2020-11-20 23:22:28 +0000
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  Rendered posts/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 1218ms (Views: 1210.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/posts/new" for ::1 at 2020-11-20 23:22:32 +0000
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/_form.html.erb (23.0ms)
+  Rendered posts/new.html.erb within layouts/application (24.1ms)
+Completed 200 OK in 43ms (Views: 34.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-11-20 23:24:08 +0000
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/devise-4.7.3/app/views/devise/shared/_error_messages.html.erb (0.3ms)
+  Rendered /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/devise-4.7.3/app/views/devise/shared/_links.html.erb (0.9ms)
+  Rendered /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/devise-4.7.3/app/views/devise/registrations/new.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 143ms (Views: 130.3ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/users" for ::1 at 2020-11-20 23:24:16 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oNNp3LYuoNp9fJbC+wdlje2Lka1dSk7jj85UCnZFVB1KP8Q+prEOzixXL4xoDBfhF3fSFaimWhcIFhJomOIHZw==", "user"=>{"email"=>"emily@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "emily@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (40.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "emily@test.com"], ["encrypted_password", "$2a$12$uCe6BdsJgNApU7FhWwKnNexhvBFg1IF.nyDblR5Fw4A.Fzzj3JUom"], ["created_at", "2020-11-20 23:24:17.126046"], ["updated_at", "2020-11-20 23:24:17.126046"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 263ms (ActiveRecord: 41.6ms)
+
+
+Started GET "/" for ::1 at 2020-11-20 23:24:17 +0000
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/railties-5.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/emily-alicemsesto/.rvm/gems/ruby-2.7.0/gems/railties-5.1.7/lib/rails/templates/rails/welcome/index.html.erb (1.5ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@name.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "user@name.com"], ["encrypted_password", "$2a$12$joI4b/gc7jy/VNn2.5qDKeybwLE6uPdqV18yM/A1TvfeNqFoPjEGG"], ["created_at", "2020-11-20 23:28:06.888690"], ["updated_at", "2020-11-20 23:28:06.888690"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 11]]
