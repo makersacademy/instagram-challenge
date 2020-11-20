@@ -28,12 +28,16 @@ RSpec.describe PostsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Post. As you add validations to Post, be sure to
   # adjust the attributes here as well.
+  before(:each) do
+    @u = User.new(:email => "user@name.com", :password => 'password', :password_confirmation => 'password')
+    @u.save
+  end
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {:image => "image_url", :caption => "my image", :user_id =>  @u.id}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {:image => nil, :caption => "my image", :user_id => nil}
   }
 
   # This should return the minimal set of values that should be in the session
