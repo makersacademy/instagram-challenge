@@ -45,6 +45,10 @@ As a user,
 To access 'YEET' securely,
 I would like to be able to sign-up.
 
+As a user,
+So that I can choose how people see me,
+I would like to be able to set my username upon sign-up.
+
 As a developer,
 So that users do not create fake accounts/to mitigate that,
 I would like users to verify their email to complete sign-up.
