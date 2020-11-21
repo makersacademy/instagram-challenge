@@ -3,6 +3,13 @@
 <% if current_user.present? %>
 <a href="/post/new">New post</a>
 <% end %>
+<ul>
 <% @posts.each do |post| %>
-    <%= post.caption %>
+   <li> 
+   <% if post.image.attached? %>
+    <image src="<%=(url_for(post.image))%>"><br>
+   <% end %>
+   <%= post.caption %>
+    </li>
 <% end %>
+</ul>
