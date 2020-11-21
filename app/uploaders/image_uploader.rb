@@ -17,11 +17,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :index_size do
-    process :resize_to_fit => [100, 100]
+    process :resize_to_fit => [200, 200]
   end
 
   version :full_size do
-    process :resize_to_fit => [200, 200]
+    process :resize_to_fit => [400, 400]
   end
 
   def extensions_white_list
