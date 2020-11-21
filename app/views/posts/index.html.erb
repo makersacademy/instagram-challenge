@@ -8,33 +8,27 @@
 <%= link_to "Sign Up", new_user_registration_path%>
 <%= link_to "Log In", new_user_session_path%>
 <% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Caption</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= image_tag(post.image.index_size) %></td>
-        <td><%= post.caption %></td>
-        <td><%= post.user.username %></td>
-        <td><%= link_to 'Show', post %></td>
-        <% if current_user == post.user %>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<%= link_to 'New Post', new_post_path %>
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+
+
+
+    <% @posts.each do |post| %>
+
+        <%= image_tag(post.image.index_size) %>
+        <br>
+        <%= post.caption %>
+        <%= post.user.username %>
+        <br>
+        <%= link_to 'Show', post %>
+        <% if current_user == post.user %>
+        <%= link_to 'Edit', edit_post_path(post) %>
+        <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <br>
+
+    <% end %>
+
+
+<br>
