@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature "Signing up", type: :feature do
   scenario "User can click on link to sign up form" do 
     visit '/'
-    click_link "Sign Up"
+    click_link "Sign up"
     expect(page).to have_content("Sign up")
   end
   scenario "User can sign up with unique and valid email and password" do
@@ -19,7 +19,7 @@ RSpec.feature "Signing up", type: :feature do
   scenario "User cannot sign up with non-unique, valid email and valid password" do
     visit '/'
     sign_up("ara@knomakers.com", "makers4L", "makers4L")
-    click_link "Sign Out"
+    click_link "Sign out"
     sign_up("ara@knomakers.com", "bakers4L", "bakers4L")
     expect(page).to have_content("Email has already been taken")
   end
