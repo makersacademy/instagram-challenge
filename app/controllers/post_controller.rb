@@ -8,7 +8,11 @@ class PostController < ApplicationController
 
   def create
     @post = Post.create!(caption: params[:caption], user_id: current_user.id, image: params[:image])
-    redirect_to root_path
+    if @post.image.attached?
+      redirect_to root_path, notice: "Your image was uploaded successfully!"
+    else
+      redirect_to root_path, alert: "Something went wrong with your image upload"
+    end
   end
 
   private

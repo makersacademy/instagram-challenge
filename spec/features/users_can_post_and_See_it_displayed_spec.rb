@@ -5,8 +5,7 @@ RSpec.feature "Sign in", type: :feature do
     add_new_user
     expect(page).to have_content("test@testing.com")
     click_on('New post')
-    expect(page).to have_content("Caption")
-    fill_in('Caption', with: "Test post")
+    fill_in('caption', with: "Test post")
     click_on('Submit')
     expect(page).to have_content("Test post")
   end
