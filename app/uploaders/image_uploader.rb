@@ -14,7 +14,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   if ENV['RAILS_ENV'] == 'test'
     def store_dir
-      "uploads/public/uploads"
+      "#{Rails.root}/public/uploads"
     end
   else 
     def store_dir

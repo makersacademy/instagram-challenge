@@ -63,8 +63,10 @@ class PostsController < ApplicationController
 
   def like
     @post = Post.find_by(id: params[:post_id])
-    @user = User.find_by(id: current_user.id)
-    @post.like(@user)
+    if current_user 
+      @user = User.find_by(id: current_user.id)
+      @post.like(@user)
+    end
     redirect_to posts_url
   end
 
