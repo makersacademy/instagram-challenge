@@ -25,5 +25,5 @@ I would like to be able to comment on them.
 ## Learning Objectives  
 
 1. ~~To learn how to set up a Ruby project with Devise.~~  
-2. Learn how to implement file upload functionality.  
-3. Implement basic CSS and JS on a Rails project.
+2. ~~Learn how to implement file upload functionality.~~  
+3. ~~Implement basic CSS and JS on a Rails project.~~

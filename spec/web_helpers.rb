@@ -1,4 +1,4 @@
-def add_new_user(email = 'test@testing.com', password = '123456')
+def add_new_user(email: 'test@testing.com', password: '123456')
     visit('/')
     click_on('Register')
     fill_in('user_email', with: email)

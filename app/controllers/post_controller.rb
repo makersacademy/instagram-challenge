@@ -15,6 +15,12 @@ class PostController < ApplicationController
     end
   end
 
+  def like
+    @post = Post.find_by(id: params[:post_id])
+    @post.like(user_id: params[:post_user_id], post_id: params[:post_id])
+    redirect_to root_path
+  end
+
   private
 
   def post_params

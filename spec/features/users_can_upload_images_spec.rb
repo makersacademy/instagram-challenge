@@ -5,7 +5,6 @@ RSpec.feature "Upload images", type: :feature do
     add_new_user
     expect(page).to have_content("test@testing.com")
     click_on('New post')
-    save_and_open_page
     fill_in('caption', with: "Test post")
     attach_file("image", Rails.root + "spec/fixtures/gunnersaurus.jpg")
     click_on('Submit')
