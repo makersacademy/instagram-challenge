@@ -37,3 +37,63 @@ gem "rubocop-rails"
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
+
+## User Stories
+
+```
+As a user, 
+To access 'YEET' securely,
+I would like to be able to sign-up.
+
+As a developer,
+So that users do not create fake accounts/to mitigate that,
+I would like users to verify their email to complete sign-up.
+
+As a user,
+So that I can ensure no one else posts from my account,
+I would like to be able to log out.
+
+As a user,
+So that I can post from my account,
+I would like to be able to sign-in.
+
+As a user,
+In order to show the world my perspective,
+I would like to be able to post a picture with a caption.
+
+As a user,
+So that I can see pictures other than my own,
+I would like to be able to shown a 'timeline' of other user's photos.
+
+As a user,
+So that I can let others know when I like their pictures,
+I would like to be able to 'like'/react to any post.
+
+As a user,
+So that I can compliment others or ask questions,
+I would like to be able to comment on another user's photo.
+
+As a user,
+So that I can answer questions,
+I would like to be able to respond to comments on my own photo.
+
+----
+As a user,
+So that I can see which of my photos are popular,
+I would like to be able to see how many likes each post has.
+
+As a user,
+So that I can see when someone likes my photo,
+I would like to receive a notification.
+
+As a user,
+So that I can get another user's attention,
+I would like to be able to tag them in a comment.
+
+As a user,
+So that I can see when I'm being referred to,
+I would like to be able to receive a notification when I have been tagged.
+
+```
+
+
