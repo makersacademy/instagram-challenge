@@ -101,14 +101,15 @@ RSpec.describe PostsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+          {:image => "new_image_url", :caption => "new image", :user_id =>  @u.id}
       }
 
       it "updates the requested post" do
         post = Post.create! valid_attributes
         put :update, params: {id: post.to_param, post: new_attributes}, session: valid_session
         post.reload
-        skip("Add assertions for updated state")
+        expect(post.image).to eq("new_image_url")
+        expect(post.caption).to eq("new image")
       end
 
       it "redirects to the post" do
