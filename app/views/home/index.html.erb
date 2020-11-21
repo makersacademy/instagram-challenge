@@ -1,3 +1,8 @@
 <% name = current_user.present? ? current_user.email : "stranger" %>
 <h1>Welcome, <%= name %></h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% if current_user.present? %>
+<a href="/post/new">New post</a>
+<% end %>
+<% @posts.each do |post| %>
+    <%= post.caption %>
+<% end %>

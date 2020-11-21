@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'post/index'
+  get 'post/new'
+  get 'post/create'
+  post 'post/create'
   devise_for :users
   get 'home/index'
 
