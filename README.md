@@ -1,24 +1,29 @@
-# README
+# Instagram Challenge  
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##The Task  
 
-Things you may want to cover:
+Create an instagram clone using Ruby on Rails. 
 
-* Ruby version
+## User stories  
+```
+As a user,
+So I can personalise my experience and safeguard my data,  
+I would like to be able to sign in/out.  
 
-* System dependencies
+As a user,  
+So I can share my photos with the world,  
+I would like to be able to post images online.  
 
-* Configuration
+As a user,  
+So I can show my appreciation of others' images,  
+I would like to be able to "like" them.  
 
-* Database creation
+As a user,
+So I can voice my opinions about others' images,  
+I would like to be able to comment on them.
+```
+## Learning Objectives  
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. To learn how to set up a Ruby project with Devise.  
+2. Learn how to implement file upload functionality.  
+3. Implement basic CSS and JS on a Rails project.
