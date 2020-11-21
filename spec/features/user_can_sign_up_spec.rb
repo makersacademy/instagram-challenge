@@ -15,14 +15,14 @@ RSpec.feature "Signing up", type: :feature do
     click_button "Sign up"
     expect(page).to have_content("Welcome to Finstagram")
   end
-  # scenario "User cannot sign up with unique and invalid email and password" do
+  # scenario "User cannot sign up with unique, invalid email and valid password" do
   # end
-  # scenario "User cannot sign up with non-unique and valid email and password" do
+  # scenario "User cannot sign up with non-unique, valid email and valid password" do
   # end
-  # scenario "User cannot sign up with non-unique and invalid email and password" do
+  # scenario "User cannot sign up with non-unique, invalid email and valid password" do
   # end
-  # scenario "User cannot sign up with unique and valid email and invalid password" do
+  # scenario "User cannot sign up with unique, valid email and invalid password" do
   # end
-  # scenario "User cannot sign up with unique and valid email and password confirmation mismatch" do
+  # scenario "User cannot sign up with unique, valid email and password confirmation mismatch" do
   # end
 end
