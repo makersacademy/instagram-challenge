@@ -13,7 +13,7 @@ RSpec.feature "Signing up", type: :feature do
     fill_in "Password", with: "makers4L"
     fill_in "Password confirmation", with: "makers4L"
     click_button "Sign up"
-    expect(page).to have_content("Welcome to Finstagram")
+    expect(page).to have_content("Successfully signed in")
   end
   # scenario "User cannot sign up with unique, invalid email and valid password" do
   # end
