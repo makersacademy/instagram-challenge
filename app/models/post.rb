@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  validates_presence_of :image
+  #validates_presence_of :image
   mount_uploader :image, ImageUploader
   belongs_to :user
   has_many :likes, :dependent => :delete_all

@@ -85,7 +85,7 @@ RSpec.describe PostsController, type: :controller do
         post = Post.create! valid_attributes
         put :update, params: {id: post.to_param, post: new_attributes}, session: valid_session
         post.reload
-        expect(post.image).to eq("new_image_url")
+        expect(post.image).to be_an_instance_of ImageUploader
         expect(post.caption).to eq("new image")
       end
 

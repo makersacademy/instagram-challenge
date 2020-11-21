@@ -7,13 +7,13 @@ RSpec.describe "posts/index", type: :view do
     
     assign(:posts, [
       Post.create!(
-        :image => "Image",
-        :caption => "MyText",
+        :image => "img",
+        :caption => "First",
         :user_id => @u.id
       ),
       Post.create!(
-        :image => "Image",
-        :caption => "MyText",
+        :image => "img",
+        :caption => "Second",
         :user_id => @u.id
       )
     ])
@@ -21,8 +21,8 @@ RSpec.describe "posts/index", type: :view do
 
   it "renders a list of posts" do
     render
-    assert_select "tr>td", :text => "Image".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => @u.to_s, :count => 2
+    expect(rendered).to match(/First/)
+    expect(rendered).to match(/Second/)
+    assert_select "div[id='username']", :text => "#{@u.username}", :count => 2
   end
 end
