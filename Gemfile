@@ -24,7 +24,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+# gem 'bcrypt', '~> 3.1.7'
+gem 'turbolinks', '~> 5'
+gem 'carrierwave', "0.10.0"
+gem 'fog', '~> 1.37.0'
+gem 'mini_magick'
+gem 'bootsnap', '>= 1.1.0', require: false
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -45,6 +50,11 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+
+  #local ENV vars
+  gem "figaro"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
