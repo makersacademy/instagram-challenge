@@ -2,18 +2,18 @@ require 'rails_helper'
 
 RSpec.describe "posts/new", type: :view do
   before(:each) do
-    @u = User.new(:email => "user@name.com", :password => 'password', :password_confirmation => 'password')
-    @u.save
+    @u = create(:user)
+    allow(view).to receive(:current_user).and_return(@u)
     
     assign(:post, Post.new(
       :image => "MyString",
       :caption => "MyText",
-      :user => @u
+      :user_id => @u.id
     ))
   end
 
   it "renders new post form" do
-    skip("Warden missing, needs investigating")
+    ("Warden missing, needs investigating")
     render
 
     assert_select "form[action=?][method=?]", posts_path, "post" do

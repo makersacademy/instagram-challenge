@@ -2,19 +2,20 @@ require 'rails_helper'
 
 RSpec.describe "posts/show", type: :view do
   before(:each) do
-    @u = User.new(:email => "user@name.com", :password => 'password', :password_confirmation => 'password')
-    @u.save
+    @u = create(:user)
+    allow(view).to receive(:current_user).and_return(@u)
+    
     @post = assign(:post, Post.create!(
-      :image => "Image",
+      :image => "file.jpg",
       :caption => "MyText",
-      :user => @u
+      :user_id => @u.id
     ))
   end
 
   it "renders attributes in <p>" do
     render
     expect(rendered).to match(/Image/)
-    expect(rendered).to match(/MyText/)
+    expect(rendered).to match(/testimage/)
     expect(rendered).to match(//)
   end
 end

@@ -15,12 +15,17 @@
 
 
     <% @posts.each do |post| %>
-
+        
         <%= image_tag(post.image.index_size) %>
         <br>
         <%= post.caption %>
         <%= post.user.username %>
         <br>
+        <p>Likes: <%= post.likes.size %></p>
+        <p><%= form_tag like_post_path do %></p>
+        <%= hidden_field_tag :post_id, post.id %>
+        <p><%= submit_tag "Like" %></p>
+        <% end %>
         <%= link_to 'Show', post %>
         <% if current_user == post.user %>
         <%= link_to 'Edit', edit_post_path(post) %>
