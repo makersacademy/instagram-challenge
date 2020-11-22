@@ -66,3 +66,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'pg'
 gem 'font-awesome-rails'
 gem 'devise'
+
+gem "rubocop", "0.79.0", require: false
+gem "rubocop-rails"
