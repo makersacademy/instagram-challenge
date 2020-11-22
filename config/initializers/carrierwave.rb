@@ -11,3 +11,8 @@
 #   config.fog_directory = ENV['FOG_DIRECTORY']
 #   config.fog_attributes = { 'Cache-Control' => "max-age=#{365.days.to_i}" }
 # end
+CarrierWave.configure do |config|
+  config.permissions = 0666
+  config.directory_permissions = 0777
+  config.storage = :file
+end
