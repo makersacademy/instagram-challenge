@@ -14,20 +14,31 @@
       <nav class="navbar navbar-light bg-light d-flex">
         <div class="container">
           <div class="logo">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
             <%= fa_stacked_icon "camera inverse", base: "circle"%>
               Y33T
             </a>
           </div>
           <div class="m-auto">
-            <form class="form-inline search-form">
-              <input class="form-control mr-sm-2" type="search" placeholder="@search" aria-label="Search">
-            </form>
+            <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
+              <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2', placeholder: '#search' %>
+            <% end %>
           </div>
           <div class="user-section">
             <a><i class="fa fa-compass"></i></a>
             <a><i class="fa fa-heart"></i></a>
-            <a><i class="fa fa-user"></i></a>
+            <% if user_signed_in? %>
+              <a href='<%= user_path(current_user)%>'>
+                <i class='fa fa-user'></i>
+              </a>
+            <a href="<%= destroy_user_session_path%>" data-method="delete">
+              <i class="fa fa-sign-out"></i>
+            </a>
+            <% else %>
+              <a href='<%= new_user_session_path %>'>
+                <i class="fa fa-sign-in"></i>
+              </a>
+            <% end %>
           </div>
         </div>
       </nav>

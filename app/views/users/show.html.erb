@@ -1,0 +1,66 @@
+<div class="profile row">
+  <div class="col-md-4 avatar">
+    <!-- LEFT: AVATAR HERE -->
+  </div>
+  <div class="col-md-8 basic-info">
+    <!-- RIGHT: USER INFORMATION HERE -->
+  </div>
+</div>
+
+<div class="user-profile">
+  <div class="profile row">
+    <div class="col-md-4 avatar">
+      <div class="wrapper">
+      <% if current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar %>
+      <%end %>
+      </div>
+    </div>
+    
+    <div class="col-md-8 basic-info">
+      <div class="user-wrapper">
+        <h2 class="username"><%= current_user.username %></h2>
+        <a class="edit-profile" href="<%= edit_user_path(current_user) %>">
+          <button>Edit Profile</button>
+        </a>
+      </div>
+      <ul class="follower-post-info">
+        <li><span><%= @posts.count %></span> posts</li>
+        <li><span>195</span> followers</li>
+        <li><span>345</span> following</li>
+      </ul>
+      <h2 class="name"><%= current_user.name %></h2>
+      <%= current_user.bio %>
+      <p><%=link_to current_user.website, current_user.website, class:  'website' %></p>
+    </div>
+  </div>
+</div>
+
+<div class="user-tabs">
+  <a class="tab active" href="">
+    <i class="fa fa-th"></i>
+    POSTS
+  </a>
+  <a class="tab" href="">
+    <i class="fa fa-tv"></i>
+    IGTV
+  </a>
+  <a class="tab" href="">
+    <i class="fa fa-bookmark"></i>
+    SAVED
+  </a>
+  <a class="tab" href="">
+    <i class="fa fa-tag"></i>
+    TAGGED
+  </a>
+</div>
+
+<div class="user-images">
+  <% @posts.each do |post|%>
+    <div class="wrapper">
+      <%=link_to post_path(post) do %>
+        <%=image_tag post.image if post.image.attached? %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
