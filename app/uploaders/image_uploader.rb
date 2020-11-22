@@ -1,13 +1,13 @@
 # encoding: utf-8
 
 class ImageUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
 
-  process resize_to_fit: [800, 800]
+  # process resize_to_fit: [800, 800]
 
-  version :thumb do
-    process resize_to_fill: [200,200]
-  end
+  # version :thumb do
+  #   process resize_to_fill: [200,200]
+  # end
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -51,9 +51,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Uploader only accepts images and mitigates CVE-2016-3714
-  def content_type_whitelist
-    [/image\//]
-  end
+  # def content_type_whitelist
+  #   [/image\//]
+  # end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

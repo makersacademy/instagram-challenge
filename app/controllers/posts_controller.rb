@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.create(post_params)
     if @post.save
       redirect_to dashboard_path, flash: { success: "Post was created successfully!"}
     else
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:user).permit(:image, :image_cache)
+    params.require(:post).permit(:image)
   end
 
 
