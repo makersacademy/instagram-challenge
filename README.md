@@ -40,8 +40,6 @@ you to mistakes or mishaps!
 
 ## User Stories
 
-**Trello Board with estimates & process:** [https://trello.com/b/3uLolZvl/yeet](YEET Trello Board)
-
 ```
 As a user, 
 To access 'YEET' securely,
@@ -84,10 +82,6 @@ So that I can answer questions,
 I would like to be able to respond to comments on my own photo.
 
 ----
-As a user,
-So that I can view my own posts all in one place,
-I would like a 'profile page'.
-
 As a user,
 So that I can see which of my photos are popular,
 I would like to be able to see how many likes each post has.
