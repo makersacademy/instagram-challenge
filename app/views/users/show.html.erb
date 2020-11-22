@@ -11,7 +11,9 @@
   <div class="profile row">
     <div class="col-md-4 avatar">
       <div class="wrapper">
-        <img src="https://tinyurl.com/y2nn3aha">
+      <% if current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar %>
+      <%end %>
       </div>
     </div>
     
@@ -22,8 +24,8 @@
           <button>Edit Profile</button>
         </a>
       </div>
-      <ul class="posts">
-        <li><span>12</span> posts</li>
+      <ul class="follower-post-info">
+        <li><span><%= @posts.count %></span> posts</li>
         <li><span>195</span> followers</li>
         <li><span>345</span> following</li>
       </ul>
@@ -54,13 +56,11 @@
 </div>
 
 <div class="user-images">
-  <div class="wrapper">
-    <img src="https://www.planetware.com/wpimages/2020/02/greece-in-pictures-beautfiul-places-to-photograph-athens-acropolis.jpg">
-  </div>
-  <div class="wrapper">
-    <img src="https://greece.greekreporter.com/files/QmRvAGgVovbd3KtgQmt8xQ1PggwwZMdquXjXmhwn6kozqW.jpg">
-  </div>
-  <div class="wrapper">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkS5yCoNsXWVFk66LU5Gt19x1t05tXPxFYEg&usqp=CAU">
-  </div>
+  <% @posts.each do |post|%>
+    <div class="wrapper">
+      <%=link_to post_path(post) do %>
+        <%=image_tag post.image if post.image.attached? %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
