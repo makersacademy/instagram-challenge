@@ -1,0 +1,21 @@
+<%= link_to new_post_path do %>Add new post<% end %>
+<%= link_to "Sign out", destroy_account_session_path, class: "btn btn-black" %>
+<br>
+<br>
+
+<% flash[:notice] %>
+<%= flash[:warning] %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <% @posts.each do |post| %>
+          <div><%= post.account.username %><div>
+          <img src=<%="#{post.image}#read"%>, alt="img", class="img img-fluid">
+          <%= post.created_at%>
+          <br>
+          <br>
+      <% end %>
+    </div>
+  </div>
+</div>

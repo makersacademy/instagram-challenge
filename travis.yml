@@ -1,0 +1,12 @@
+language: ruby
+rvm: 2.7.0
+services:
+- postgresql
+before_install:
+- yes | gem update --system --force
+- gem install bundler
+script:
+- bundle install
+- bundle exec rails db:create
+- bundle exec rails db:migrate
+- bundle exec rspec

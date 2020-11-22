@@ -1,0 +1,16 @@
+<h2>New Post</h2>
+
+<%= form_for @post, html: { multipart: true } do |f| %>
+  <p>
+    <label>Upload image</label>
+    <%= image_tag(@post.image_url) if @post.image? %>
+    <%= f.file_field :image %>
+    <%= f.submit "Upload", class: "btn btn-success"%>
+  </p>
+  <%# <p>
+    <label>
+      <%= f.check_box :remove_image %>
+      <%# Remove image
+    </label>
+  </p> %> 
+<% end %>
