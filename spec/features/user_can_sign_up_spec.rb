@@ -33,4 +33,11 @@ RSpec.feature "Signing up", type: :feature do
     sign_up("araknows", "Arabella Nowles", "arakno@makers.com", "makers", "makers2")
     expect(page).to have_content("Password confirmation doesn't match")
   end
+  scenario "user cannot sign up with non-unique username" do
+    visit '/'
+    sign_up("araknows", "Arabella Nowles", "arakno@makers.com", "makers", "makers")
+    click_link "Sign out"
+    sign_up("araknows", "Arabell Nowles", "arano@makers.com", "makeers", "makeers")
+    expect(page).to have_content("Username has already been taken")
+  end
 end
