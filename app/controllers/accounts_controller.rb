@@ -3,7 +3,7 @@ class AccountsController < ApplicationController
 
   def index
     # acts as dashboard - post feed
-    # restrict to logged in users
+    # restrict to logged in accounts
     @posts = Post.all 
   end
 
