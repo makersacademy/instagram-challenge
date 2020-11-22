@@ -16,7 +16,7 @@
       </div>
 
        <ul class="posts">
-        <li><span>12</span> posts</li>
+        <li><span><%=@posts.count%></span> posts</li>
         <li><span>195</span> followers</li>
         <li><span>345</span> following</li>
       </ul>
@@ -45,15 +45,10 @@
       </div>
      </div>
 
-      <div class="user-images">
-       <div class="wrapper">
-         <img <%= image_tag("forest.jpg") %>
-         </div>
-       <div class="wrapper">
-        <img <%= image_tag("beach.jpg") %>
-         </div>
-        <div class="wrapper">
-        <img <%= image_tag("garden.jpg") %>
-    </div>
-  </div>
-</div>
+     <div class="user-images">
+    <% @posts.each do |post|%>
+      <div class="wrapper">
+      <%=image_tag post.image %>
+      </div>
+      <% end %>
+      </div>

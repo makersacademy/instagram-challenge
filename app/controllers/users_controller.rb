@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  
   def show
+    @posts = current_user.posts.order(created_at: :desc)
   end 
 
   def edit
@@ -10,6 +12,10 @@ class UsersController < ApplicationController
     current_user.update(user_params)
     redirect_to current_user
   end
+  
+  def destroy
+
+  end 
 
   private
  def user_params
