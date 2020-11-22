@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to dashboard_path, flash: { success: "Post was created successfully!"}
     else

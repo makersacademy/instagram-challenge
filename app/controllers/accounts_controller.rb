@@ -4,7 +4,7 @@ class AccountsController < ApplicationController
   def index
     # acts as dashboard - post feed
     # restrict to logged in users
-    @posts = Post.active 
+    @posts = Post.all 
   end
 
   def show
