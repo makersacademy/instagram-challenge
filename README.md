@@ -1,39 +1,33 @@
-Instagram Challenge
-===================
+# Instagram Challenge  
 
-## Instructions
+##The Task  
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+Create an instagram clone using Ruby on Rails. 
 
-## Task
-
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
+## User stories  
 ```
+As a user,
+So I can personalise my experience and safeguard my data,  
+I would like to be able to sign in/out.  
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+As a user,  
+So I can share my photos with the world,  
+I would like to be able to post images online.  
+
+As a user,  
+So I can show my appreciation of others' images,  
+I would like to be able to "like" them.  
+
+As a user,
+So I can voice my opinions about others' images,  
+I would like to be able to comment on them.
+```
+## Learning Objectives  
+
+1. ~~To learn how to set up a Ruby project with Devise.~~  
+2. ~~Learn how to implement file upload functionality.~~  
+3. ~~Implement basic CSS and JS on a Rails project.~~
+
+## Self-assessment  
+
+I spent eight hours on this challenge and managed to satisfy all of my learning objectives, although I didn't quite manage to implement all of the user stories I made. My process was by no means perfect; usually, I am fairly fasitidious about test-driving my code, but because of my lack of familiarity with Rails I had to spike quite a few of the features and test retrospectively. This was not ideal. My test-coverage is also not as comprehensive as I would like (I haven't even begun to consider edge cases) and my routing is more RESTless than RESTful. Nevertheless, I have learned a lot about Rails by undertaking this challenge, which was the objective after all. I am confident that I can apply what I have learned to future projects, on which I will be able to take my time and observe best practices.

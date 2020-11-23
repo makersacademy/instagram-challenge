@@ -1,0 +1,21 @@
+<% name = current_user.present? ? current_user.email : "stranger" %>
+<h1>Welcome, <%= name %></h1>
+<% if current_user.present? %>
+<a href="/post/new">New post</a>
+<% end %>
+<ul>
+<% @posts.each do |post| %>
+   <li> 
+   <% if post.image.attached? %>
+    <image src="<%=(url_for(post.image))%>"><br>
+   <% end %>
+   <%= post.caption %>
+   <%= form_tag like_post_path do %>
+   <%= hidden_field_tag :post_id, post.id %>
+   <%= hidden_field_tag :post_user_id, post.user_id %>
+   <%= submit_tag "like" %>
+   <% end %>
+   <p>Likes: <%= post.likes.count %></p>
+    </li>
+<% end %>
+</ul>
