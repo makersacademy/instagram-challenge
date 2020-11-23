@@ -1,5 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { is_expected.to be }
+
+  describe '#caption' do
+    it 'validates presence' do
+      record = Post.new
+      record.caption = ''
+      record.valid?
+      expect(record.errors[:caption]).to include("can't be blank")
+    end
+  end
 end
