@@ -1,39 +1,87 @@
 Instagram Challenge
-===================
 
-## Instructions
+## How to use:
+On Heroku: [Y33T on Heroku](y33t.herokuapp.com)
+- Click the 'Log-In / Out' icon on the top right corner.
+- Sign up using your email
+- Click on the User icon on the top right
+- Click on edit profile
+  - Add a profile picture
+  - Enter a username
+  - Enter a website
+  - Enter a bio
+  - Click submit
+- Navigate back to the homepage to make a post!
+- Search for hashtags and content using the search bar.
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Process:
+This weekend, I made a point to start early. Unfortunately, I ran into an error with webpack early on and was unable to solve it. I spent hours attempting to debug it, with no avail.
 
-## Task
+On Sunday, I decided to start fresh. I also used a walkthrough/tutorial as I wanted to focus primarily on learning Rails. The downside to this is that I did not use TDD for this app. Additionally, I wasn't able to implement some of the features in my user stories, as they were out of the scope of the tutorial, and I ran out of time.
 
-Build Instagram: Simple huh!
+Ultimately, I would love to revisit this project and use true TDD – but am extremely happy with what I have learnt from it.  
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters!
+## User Stories
 
-## How to start
+```
+As a user, 
+To access 'YEET' securely,
+I would like to be able to sign-up.
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+As a user,
+So that I can choose how people see me,
+I would like to be able to set my username upon sign-up.
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+As a developer,
+So that users do not create fake accounts/to mitigate that,
+I would like users to verify their email to complete sign-up.
 
-## Code Quality
+As a user,
+So that I can ensure no one else posts from my account,
+I would like to be able to log out.
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+As a user,
+So that I can post from my account,
+I would like to be able to sign-in.
 
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
+As a user,
+In order to show the world my perspective,
+I would like to be able to post a picture with a caption.
+
+As a user,
+So that I can see pictures other than my own,
+I would like to be able to shown a 'timeline' of other user's photos.
+
+As a user,
+So that I can let others know when I like their pictures,
+I would like to be able to 'like'/react to any post.
+
+As a user,
+So that I can compliment others or ask questions,
+I would like to be able to comment on another user's photo.
+
+As a user,
+So that I can answer questions,
+I would like to be able to respond to comments on my own photo.
+
+----
+As a user,
+So that I can see which of my photos are popular,
+I would like to be able to see how many likes each post has.
+
+As a user,
+So that I can see when someone likes my photo,
+I would like to receive a notification.
+
+As a user,
+So that I can get another user's attention,
+I would like to be able to tag them in a comment.
+
+As a user,
+So that I can see when I'm being referred to,
+I would like to be able to receive a notification when I have been tagged.
+
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+
