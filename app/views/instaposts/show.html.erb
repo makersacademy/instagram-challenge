@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-lg-8">
+    <%= image_tag(@instapost.picture_url, width: '100%') if @instapost.picture.present? %>
+    <h3>Comments</h3>
+    <% @comments.each do |comment| %>
+      <div>
+        <strong><%= comment.user_name %></strong>
+        <br>
+        <p><%= comment.body %></p>
+        <%= link_to like_comment_path(comment), method: :put do %>
+          Upvote
+          <%= comment.get_upvotes.size %>
+        <% end %>
+        
+        <%= link_to dislike_comment_path(comment), method: :put do %>
+          Downvote
+          <%= comment.get_downvotes.size %>
+        <% end %>
+        <p><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'No comment?' } %></p>
+      </div>
+    <% end %>
+    <%= render partial: 'comments/form', locals: { comment: @comment } %>
+  </div>
+
+  <div class="col-md-3">
+    <p><b>Title: </b><%= @instapost.name %></p>
+    <p><b>Tags: </b><%= @instapost.description %></p>
+    <p>
+      <%= link_to 'Edit', edit_instapost_path(@instapost) %> |
+      <%= link_to 'Destroy', @instapost, data: { confirm: 'Trash this spammy pic?' }, method: :delete %> |
+      <%= link_to 'Back', instaposts_path %>
+    </p>
+  </div>
+</div>

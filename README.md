@@ -1,5 +1,30 @@
-Instagram Challenge
+instaspam the 3rd
 ===================
+
+https://instaspam3.herokuapp.com/
+
+## User Stories:
+
+**1) People can sign up** 
+**2) Users can log in** 
+**3) Users can log out** 
+**4) Users can post pics**
+**5) Users can see pics** 
+**6) Users can like pics** 
+**7) Users can comments on pics** 
+**8) App looks nice** 
+**9) Filters!** 
+
+## Setup:
+
+- databases 
+- authentication gems 
+- picture uploaders 
+- AWS for file storage 
+- Travis CI 
+- Heroku deployment 
+
+
 
 ## Instructions
 
