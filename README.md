@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
+## Current status
 
+To see user stories and current status, [click here](Stories/user_stories.md)
 ## Instructions
 
 * Feel free to use Google, your notes, books, etc., but work on your own
