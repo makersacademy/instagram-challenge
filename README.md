@@ -45,3 +45,33 @@ As a user
 So I can post under my name
 I want to sign up to instragram
 ```
+```
+As a user
+So I can post a photo
+I want to Login to instragram
+```
+```
+As a user
+So I can create a post
+I want to upload a post
+```
+```
+As a user
+So I can manage my posts
+I want to edit my post
+```
+```
+As a user
+So I can manage my posts
+I want to delete my post
+```
+```
+As a user
+So I can manage my posts
+I want to delete my post
+```
+```
+As a user
+So I can socialize 
+I want to comment on my post or others
+```
