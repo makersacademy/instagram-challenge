@@ -1,0 +1,25 @@
+<div class="post-show row">
+  <div class="col-md-8">
+    <%=image_tag @post.image, class: 'image' %>
+  </div>
+  <div class="col-md-4">
+    <div class="user">
+      <div class="profile-pic">
+        <% if @post.user.profile_pic.attached? %>
+          <%= link_to user_path(@post.user) do %>
+            <%= image_tag @post.user.profile_pic %>
+          <% end %>
+        <% end %>
+      </div>
+      <%= link_to @post.user.username, user_path(@post.user), class: 'username' %>
+    </div>
+    <div class="description">
+      <%= @post.description %>
+    </div>
+    <div class="delete">
+      <% if current_user.posts.exists?(@post.id) %>
+        <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure you want to delete this picture?' } %>
+      <% end %>
+    </div>
+  </div>
+</div>
