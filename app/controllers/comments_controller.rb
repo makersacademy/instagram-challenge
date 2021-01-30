@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
     @comment = @post.comments.build(comment_params)
 
     if @comment.save
-      redirect_to([@comment.post, @comment], notice: 'Comment was successfully created.')
+      redirect_to(@comment.post)
     else
       render action: 'new'
     end

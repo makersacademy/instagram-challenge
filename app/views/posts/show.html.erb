@@ -18,6 +18,12 @@
 <%= link_to "Edit", edit_post_path(@post) %> |
 <%= link_to "Back", posts_path %>
 <hr>
+<h1>New comment</h1>
+
+<%= render "comments/form" %>
+
+<%= link_to "Back", post_comments_path(@comment.post) %>
+<hr>
 <h1>Listing comments</h1>
 
 <table>
@@ -29,17 +35,18 @@
     <th></th>
     <th></th>
   </tr>
-
-<% @post.comments.each do |comment| %>
-  <tr>
-    <td><%= comment.name %></td>
-    <td><%= comment.description %></td>
-    <td><%= comment.post %></td>
-    <td><%= link_to "Show", [comment.post, comment] %></td>
-    <td><%= link_to "Edit", edit_post_comment_path(comment.post, comment) %></td>
-    <td><%= link_to "Destroy", [comment.post, comment], method: :delete, data: { confirm: "Are you sure?" } %></td>
-  </tr>
-<% end %>
+  <% @post.comments.each do |comment| %>
+    <% if comment.persisted? %>
+      <tr>
+        <td><%= comment.name %></td>
+        <td><%= comment.description %></td>
+        <td><%= comment.post %></td>
+        <td><%= link_to "Show", [comment.post, comment] %></td>
+        <td><%= link_to "Edit", edit_post_comment_path(comment.post, comment) %></td>
+        <td><%= link_to "Destroy", [comment.post, comment], method: :delete, data: { confirm: "Are you sure?" } %></td>
+      </tr>
+    <% end %>
+  <% end %>
 </table>
 
 <br />
