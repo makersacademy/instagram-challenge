@@ -32,6 +32,7 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 ### User Stories
 
+```
 As a user
 So that I can have my own account
 I want to sign-up for Binstagram
@@ -67,11 +68,36 @@ I wouldn't mind a bit of front-end styling
 As a user
 So that I can make my bin look vintage ('bintage')
 I would like to filter my images before posting
+```
 
 ### Initial Mock-up
 
 ![mock-up](https://github.com/Will-Helliwell/instagram-challenge/blob/master/Screenshot%202021-01-30%20at%2009.07.17.png
 )
+
+## Workflow
+
+### Currently working on
+
+User can post a bin photo - have created form and inserts new post into database.
+Need to display on users personal feed. Need to associate posts with users.
+
+###Still to do
+
+Basic admin:
+- Get rubocop working
+- Get simplecov working
+
+Testing:
+- Understand and follow best practice for controller tests
+
+Sign-up:
+- Use BCrypt to encrypt passwords
+- Checks - cannot sign-up with pre-existing username and/or email. Double-layered checks (Database-level - use Active record validations + check in users controller - gives Sinatra flash message if failed).
+- Log-out
+- Log-in
+
+
 
 # Makers Readme
 
