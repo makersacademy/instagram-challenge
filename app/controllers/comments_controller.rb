@@ -43,9 +43,9 @@ class CommentsController < ApplicationController
 
   # DELETE posts/1/comments/1
   def destroy
-    Comment.destroy(params[:id])
-
-    redirect_to @post
+    @destroycomment = Comment.find(comment_params)
+    @destroycomment.destroy
+    redirect_to @post, :notice => "Comment deleted"
   end
 
   private
