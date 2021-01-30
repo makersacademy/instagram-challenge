@@ -4,7 +4,14 @@ class ApplicationController < ActionController::Base
     helper_method :logged_in?
   
     def current_user
-      User.find_by(id: session[:user_id])
+      if !session[:user_id].to_s.strip.empty?
+        existing_user = User.find_by(id: session[:user_id])
+        if existing_user!=nil
+          return existing_user
+        end
+        return
+      end
+      return
     end
   
     def logged_in?
