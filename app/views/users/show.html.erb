@@ -2,8 +2,10 @@
   <div class='profile row'>
     <div class='col-md-4 profile-picture'>
       <div class='wrapper'>
-        <img src='https://pbs.twimg.com/profile_images/1324059599981449218/caR-_pq1.jpg'>
-      </div>
+        <% if current_user.profile_pic.attached? %>
+          <%= image_tag current_user.profile_pic %>
+        <% end %>
+    </div>
   </div>
 
   <div class='col-md-8 basic-info'>
@@ -44,5 +46,11 @@
     <div class='wrapper'>
       <%= image_tag post.image %>
     </div>
+  <% end %>
+</div>
+
+<div class='wrapper'>
+  <% if current_user.profile_pic.attached? %>
+    <%= image_tag current_user.profile_pic %>
   <% end %>
 </div>

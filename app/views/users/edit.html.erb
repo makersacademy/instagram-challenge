@@ -12,12 +12,14 @@
   <div class='details tab-content'>
     <div class='tab-pane fade show active' id='v-pills-home' role='tabpanel' aria-labelledby='v-pills-home-tab'>
       <%= form_with model: current_user, local: true, html: {class: "form-horizontal form-edit-user"} do |f| %>
-  <div class="form-group row">
-    <div class="col-sm-3 col-form-label">
-      <img class="profile-pic" src="https://pbs.twimg.com/profile_images/1324059599981449218/caR-_pq1.jpg">
+  <div class='form-group row'>
+    <div class='col-sm-3 col-form-label'>
+      <% if current_user.profile_pic.attached? %>
+        <%= image_tag current_user.profile_pic, class: 'profile_pic' %>
+      <% end %>
     </div>
     <div class="col-sm-9">
-      <p class="username"><%=current_user.username %></p>
+      <p class="username"><%= current_user.username %></p>
       <a class="change-photo" href="">Change Profile Photo</a>
     </div>
   </div>
@@ -31,6 +33,12 @@
     <%= f.label :username, class: 'col-sm-3 col-form-label' %>
     <div class="col-sm-9">
       <%= f.text_field :username, class: 'form-control' %>
+    </div>
+  </div>
+    <div class="form-group row">
+    <%= f.label :profile_pic, class: 'col-sm-3 col-form-label' %>
+    <div class="col-sm-9">
+      <%= f.file_field :profile_pic, class: 'form-control' %>
     </div>
   </div>
   <div class="form-group row">
