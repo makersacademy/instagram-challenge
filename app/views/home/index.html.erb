@@ -1,0 +1,35 @@
+<h1>Home#index</h1>
+<%= form_for Post.new do |f| %>
+  <div class='form-group'>
+    <%= f.text_field :description %>
+  </div>
+  <div class='form-group'>
+    <%= f.file_field :image %>
+  </div>
+  <div class='form-group'>
+    <%= f.text_field :user_id, value: current_user.id, class:'d-none' %>
+  </div>
+  <br>
+  <div class='text-center'>
+    <%= f.submit 'Create Post', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<div class='posts'> 
+  <% @posts.each do |post| %>
+    <section class='post'>
+      <div class='user'>
+        <div class='profile-pic'>
+          <img src='https://pbs.twimg.com/profile_images/1324059599981449218/caR-_pq1.jpg'>
+        </div>
+        <div class='username'>
+          <%= post.user.username %>
+        </div>
+      </div>
+      <%= image_tag post.image, class: 'main-image' %>
+      <div class='description'>
+        <%= post.description %>
+      </div>
+    </section>
+  <% end %>
+</div>
