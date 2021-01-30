@@ -5,7 +5,7 @@ RSpec.describe 'Pictures', type: :system do
     it 'shows the right content' do
       visit pictures_path
       sleep(2)
-      expect(page).to have_content('Pictures#index')
+      expect(page).to have_content('_nstagram')
     end
   end
 end
