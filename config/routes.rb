@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # create new user form and post details
   get 'users/new'
-  post 'users/new', to: "users#create"
+  post 'users', to: "users#create"
   # individual user homepage (personalised URL)
   get 'users/:username', to: "users#username"
 
