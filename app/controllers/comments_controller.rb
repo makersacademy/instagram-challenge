@@ -28,38 +28,39 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to(@comment.post)
     else
-      render action: 'new'
+      render action: "new"
     end
   end
 
   # PUT posts/1/comments/1
   def update
-    if @comment.update_attributes(comment_params)
-      redirect_to([@comment.post, @comment], notice: 'Comment was successfully updated.')
+    if @comment.update(comment_params)
+      redirect_to(@comment.post)
     else
-      render action: 'edit'
+      render action: "edit"
     end
   end
 
   # DELETE posts/1/comments/1
   def destroy
-    @comment.destroy
+    Comment.destroy(params[:id])
 
-    redirect_to post_comments_url(@post)
+    redirect_to @post
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = current_user.posts.find(params[:post_id])
-    end
 
-    def set_comment
-      @comment = @post.comments.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = current_user.posts.find(params[:post_id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def comment_params
-      params.require(:comment).permit(:name, :description, :post_id)
-    end
+  def set_comment
+    @comment = @post.comments.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def comment_params
+    params.require(:comment).permit(:name, :description, :post_id)
+  end
 end
