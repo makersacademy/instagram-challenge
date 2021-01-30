@@ -82,7 +82,7 @@ I would like to filter my images before posting
 User can post a bin photo - have created form and inserts new post into database.
 Need to display on users personal feed. Need to associate posts with users.
 
-###Still to do
+### Still to do
 
 Basic admin:
 - Get rubocop working
