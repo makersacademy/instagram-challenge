@@ -3,7 +3,9 @@ require "rails_helper"
 RSpec.feature "SignUp", type: :feature do
   scenario "Can sign up and details are saved" do
     visit '/'
-    click_link "Sign Up"
+    within '.header' do
+      click_link "Sign Up"
+    end
     expect(page).to have_button("Sign Up")
     fill_in "Username", with: "Username"
     fill_in "Email", with: "user@example.com"
@@ -21,7 +23,9 @@ RSpec.feature "SignUp", type: :feature do
 
   scenario "password is hidden" do
     visit '/'
-    click_link "Sign Up"
+    within '.header' do
+      click_link "Sign Up"
+    end
     fill_in "Username", with: "Username"
     fill_in "Email", with: "user@example.com"
     fill_in "Password", with: "hidden"
@@ -33,7 +37,9 @@ RSpec.feature "SignUp", type: :feature do
   scenario "cannot sign up if username not unique" do
     user = User.create(username: "username", email: "user1@example.com", password: "password")
     visit '/'
-    click_link "Sign Up"
+    within '.header' do
+      click_link "Sign Up"
+    end
     fill_in "Username", with: "username" #duplicate
     fill_in "Email", with: "user@example.com"
     fill_in "Password", with: "hidden"
@@ -46,7 +52,9 @@ RSpec.feature "SignUp", type: :feature do
   scenario "cannot sign up if username not unique" do
     user = User.create(username: "username", email: "user1@example.com", password: "password")
     visit '/'
-    click_link "Sign Up"
+    within '.header' do
+      click_link "Sign Up"
+    end
     fill_in "Username", with: "username2"
     fill_in "Email", with: "user1@example.com" #duplicate
     fill_in "Password", with: "hidden"

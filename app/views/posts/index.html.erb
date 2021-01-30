@@ -1,3 +1,29 @@
-<%= link_to "Log Out", destroy_user_session_path, method: "delete" %>
+<div class="new-post">
+  <%= form_for @post do |form| %>
+    <%= form.label :image, class: 'upload-image-field' %>
+    <%= form.file_field :image %>
+    <%= form.label :caption, "Share your thoughts..." %>
+    <%= form.text_area :caption, class: 'caption', placeholder: "Enter caption here:" %>
 
-Recent Posts:
+    <%= form.submit "Send" %>
+  <% end %>
+</div>
+
+<div class="posts">
+  <% @posts.each do |post| %>
+    <div class="each-post">
+      <div class="post-details">
+        <h4 class="post-username"><%= post.user.username %></h4>
+        <h5 class="post-timestamp"><%= post.created_at.strftime("%H:%M %-d %B %Y")%></h5>
+      </div>
+      <div class="image">
+        <% if post.image.attached? %>
+          <%= image_tag post.image.variant(resize_to_fit: [180, 216]) %>
+        <% else %>
+          <p>no image attached</p>
+        <% end %>
+      </div>
+      <p class="post-caption"><%= post.caption %></p>
+    </div>
+  <% end %>
+</div>
