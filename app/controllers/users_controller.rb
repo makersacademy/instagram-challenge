@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def username
     @username = session[:username]
+    @posts = Post.all.reverse
   end
 
   private

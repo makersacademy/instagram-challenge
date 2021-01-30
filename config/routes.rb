@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'users/:username', to: "users#username"
 
   # create new post form and post details
-  get 'posts/new'
+  get 'posts/new', to: "posts#new"
   post 'posts', to: "posts#create"
 
 end

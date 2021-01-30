@@ -5,6 +5,8 @@ class PostsTest < ApplicationSystemTestCase
     visit root_path
     sign_up
     click_link "Post your bin"
-    assert_text "Create post:"
+    fill_in "Image url", with: "https://i.imgur.com/C5E1ya6.jpg"
+    click_button "Post"
+    assert_text "Latest Posts"
   end
 end
