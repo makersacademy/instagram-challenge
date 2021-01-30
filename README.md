@@ -5,6 +5,19 @@ Instagram Challenge
 
 ## How to Run
 
+### To Launch
+- Run `rails s` in the terminal
+- Navigate to `http://localhost:3000/` in the browser
+
+### To Run Unit Tests
+`rake test`
+
+### To Run Feature Tests
+`rake test:system`
+Note - you may be prompted to install Chrome Webdiver. If so, visit.
+Mac users with Homebrew installed can simply run `brew install --cask chromedriver`. You may need to give your Mac permission to open the relevant file when prompted.
+If not, then see this post: https://stackoverflow.com/questions/19862276/unable-to-find-the-chromedriver-executable
+
 ## Planning
 
 ### Spec
