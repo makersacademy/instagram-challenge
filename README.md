@@ -5,7 +5,13 @@ Instagram Challenge
 
 ## How to Run
 
-### To Launch
+### Setup
+- Clone the repository locally
+- `cd instagram-challenge`
+- `bundle install`
+- `rake db:setup`
+
+### Launch
 - Run `rails s` in the terminal
 - Navigate to `http://localhost:3000/` in the browser
 
