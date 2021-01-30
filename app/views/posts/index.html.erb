@@ -1,11 +1,10 @@
 <div class="new-post">
   <%= form_for @post do |form| %>
-    <%= form.label :image, class: 'upload-image-field' %>
+    <%= form.label :image, "Upload Your Photo Here!" %>
     <%= form.file_field :image %>
-    <%= form.label :caption, "Share your thoughts..." %>
-    <%= form.text_area :caption, class: 'caption', placeholder: "Enter caption here:" %>
+    <%= form.text_area :caption, class: 'caption', placeholder: "Share your thoughts here" %>
 
-    <%= form.submit "Send" %>
+    <%= form.submit "Send", class: "send" %>
   <% end %>
 </div>
 
@@ -18,12 +17,14 @@
       </div>
       <div class="image">
         <% if post.image.attached? %>
-          <%= image_tag post.image.variant(resize_to_fit: [180, 216]) %>
+          <%= image_tag post.image.variant(resize_to_fit: [180, 150]) %>
         <% else %>
-          <p>no image attached</p>
+          <p>no picture this time!</p>
         <% end %>
       </div>
-      <p class="post-caption"><%= post.caption %></p>
+      <div class="post-caption">
+        <p><%= post.caption %></p>
+      </div>
     </div>
   <% end %>
 </div>
