@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       redirect_to '/users/new'
     end
   end
-
+ 
   private
 
   def user_params
