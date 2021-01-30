@@ -9,7 +9,7 @@ RSpec.feature "Log In", type: :feature do
     visit '/'
     fill_in "Email", with: "Test@example.com"
     fill_in "Password", with: "password"
-    click_button "Log in"
+    click_button "Log In"
     expect(page).to have_content("Recent Posts:")
   end
 
@@ -17,7 +17,7 @@ RSpec.feature "Log In", type: :feature do
     visit '/'
     fill_in "Email", with: "Wrong@example.com"
     fill_in "Password", with: "password"
-    click_button "Log in"
+    click_button "Log In"
     expect(page).to have_content("Invalid Email or password")
   end
 
@@ -25,7 +25,7 @@ RSpec.feature "Log In", type: :feature do
     visit '/'
     fill_in "Email", with: "Test@example.com"
     fill_in "Password", with: "wrongpassword"
-    click_button "Log in"
+    click_button "Log In"
     expect(page).to have_content("Invalid Email or password")
   end
 end

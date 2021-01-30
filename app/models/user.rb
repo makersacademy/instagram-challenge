@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :username, presence: true, uniqueness: { case_sensitive: true }
+  validates :username, presence: true, uniqueness: true
   # has_many_attached :post_images
 end

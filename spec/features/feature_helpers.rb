@@ -3,5 +3,5 @@ def log_in
   visit '/'
   fill_in "Email", with: "Test@example.com"
   fill_in "Password", with: "password"
-  click_button "Log in"
+  click_button "Log In"
 end
