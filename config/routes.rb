@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
-  get 'users/index'
-
-  get 'users/new'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'welcome#index'
 
+  # create new user form and post details
+  get 'users/new'
   post 'users/new', to: "users#create"
+  # individual user homepage (personalised URL)
   get 'users/:username', to: "users#username"
 
 end
