@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   post 'users/new', to: "users#create"
+  get 'users/:username', to: "users#username"
+
 end
