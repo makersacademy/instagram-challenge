@@ -51,6 +51,8 @@ I would like to filter my images before posting
 
 ### Initial Mock-up
 
+![mock-up](https://github.com/Will-Helliwell/instagram-challenge/blob/master/Screenshot%202021-01-30%20at%2009.07.17.png
+)
 
 # Makers Readme
 
