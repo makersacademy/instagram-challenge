@@ -1,18 +1,18 @@
 Instagram Challenge
 ===================
 
-My stories:
-User can sign up
-User can log in
-User can log out
-User can post a picture with a caption attached
-User can see list of posts in reverse chronological order
-User can delete their own posts
-User can edit their own posts - half completed.
+My stories:\
+User can sign up\
+User can log in\
+User can log out\
+User can post a picture with a caption attached\
+User can see list of posts in reverse chronological order\
+User can delete their own posts\
+User can edit their own posts - half completed.\
 User can tag posts and filter posts by tags - not complete.
 
-Next steps:
-Make backend API and frontend Javascript.
+Next steps:\
+Make backend API and frontend Javascript.\
 Use React
 
 ## Instructions
