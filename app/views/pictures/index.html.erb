@@ -18,19 +18,40 @@
                   </div>
                   <div class="menu-bar">
                     <div class="menu">
-                      <i class="far fa-heart"></i>
-                      <i class="far fa-comment"></i>
+                      <%= form_for(:like, url: like_path) do |form| %>
+                        <%= form.hidden_field :user_id, value: session[:user_id] %>
+                        <%= form.hidden_field :picture_id, value: picture.id %>
+
+                        <%= button_tag :submit do %>
+                          <i class="far fa-heart"></i>
+                        <% end %>
+                      <% end %>
                     </div><div class="likes">
-                      <strong>54 likes</strong>
+                      <strong><%= picture.likes.count %> likes</strong>
                     </div>
                   </div>
                   <div class="comments">
-                      <div class="comment">
-                          <p><strong>UserName: </strong>This is my first photo of the feed. This is a multi-line comment for testing process. I need to make this a bit longer.</p>
+                      <div class="comment-bar">
+                        <%= form_for(:comment, url: comment_path) do |form| %>
+                          <%= form.hidden_field :user_id, value: session[:user_id] %>
+                          <%= form.hidden_field :picture_id, value: picture.id %>
+                          <div class="comment-bar-textarea">
+                            <%= form.text_area :text, size: "63x2", placeholder: "Comment here..." %>
+                          </div><div class="comment-bar-button">
+                          <%= button_tag :submit do %>
+                            <i class="far fa-comment"></i>
+                          <% end %>
+                          </div>
+                        <% end %>
                       </div>
-                      <div class="comment">
-                          <p><strong>UserName2: </strong>This is another comment</p>
-                      </div>
+                      <% picture.comments.all.each do |comment| %>
+                        <% @commenter = User.find(comment.user_id) %>
+
+                        <div class="comment">
+                            <p><strong><%= @commenter.name %>: </strong><%= comment.text %></p>
+                        </div>
+                      <% end %>
+
                   </div>
               </div>
           </div>

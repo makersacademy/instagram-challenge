@@ -12,7 +12,7 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.new(article_params)
+    @picture = Picture.new(picture_params)
 
     if @picture.save
       redirect_to '/pictures'
@@ -22,7 +22,7 @@ class PicturesController < ApplicationController
   end
 
   private
-    def article_params
+    def picture_params
       params.require(:picture).permit(:url, :user_id)
     end
 end
