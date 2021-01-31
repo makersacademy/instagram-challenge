@@ -12,9 +12,16 @@
             </div>
           </div>
           <div class="picture">
-            <%= form.text_area :url, size: "71x20", placeholder: "Enter Image URL here..." %>
+            <%= form.text_area :url, size: "71x20", placeholder: "Enter Image URL here... 400x200 pls" %>
           </div>
+
+
           <div class="menu-bar">
+            <% @picture.errors.full_messages_for(:url).each do |message| %>
+            <div class="error-message">
+              <strong>Error: </strong><%= message %>
+            </div>
+            <% end %>
             <div class="menu">
               <i class="far fa-heart"></i>
               <i class="far fa-comment"></i>
@@ -24,6 +31,7 @@
               <% end %>
             </div>
           </div>
+
         </div>
       </div>
 

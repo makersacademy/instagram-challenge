@@ -15,7 +15,7 @@ class PicturesController < ApplicationController
     @picture = Picture.new(article_params)
 
     if @picture.save
-      redirect_to :index
+      redirect_to '/pictures'
     else
       render :new
     end
@@ -23,6 +23,6 @@ class PicturesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :body)
+      params.require(:picture).permit(:url)
     end
 end
