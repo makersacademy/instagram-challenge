@@ -1,5 +1,6 @@
 <body>
   <% @pictures.each do |picture| %>
+    <% @user = User.find(picture.user_id) %>
       <div class="">
           <div class="container">
               <div class="post">
@@ -7,7 +8,7 @@
                     <div class="user-image">
                       <i class="far fa-user-circle fa-2x"></i>
                     </div><div class="user-name">
-                        <h2>UserName</h2>
+                        <h2><%= @user.name %></h2>
                     </div><div class="date">
                       <%= picture.created_at.strftime("%d %b") %>
                     </div>

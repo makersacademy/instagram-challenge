@@ -23,6 +23,6 @@ class PicturesController < ApplicationController
 
   private
     def article_params
-      params.require(:picture).permit(:url)
+      params.require(:picture).permit(:url, :user_id)
     end
 end
