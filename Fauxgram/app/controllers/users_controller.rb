@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def show 
   end
+  def create
+    @user = User.new(user_params)
+  end
 
   def update
     current_user.update(params[:user])
