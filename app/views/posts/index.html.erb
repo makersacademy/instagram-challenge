@@ -1,9 +1,9 @@
 
-<h1>Welcome to Powergram</h1>
+<h1> Powergram Posts Page </h1>
 
 
 <%= form_for @post do |form| %>
-  <%= form.label :message, "Create a powerful post" %>
+  <%= form.label :message, "Create a powerful post:" %>
   <%= form.text_field :message, placeholder: "tell the people" %>
   <%= form.submit "Post" %>
 <% end %>
@@ -11,7 +11,7 @@
 <ul>
   <% @posts.each do |post| %>
     <li>
-      <%= post.message %>
+      <%= post.message %> from <%= post.user.username %> at <%= post.created_at.strftime("%H:%M %A %B %-d")%>
     </li>
   <% end %>
 </ul>
