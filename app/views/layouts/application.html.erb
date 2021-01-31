@@ -15,11 +15,12 @@
     <header>
       <div class="header">
         <div class="title">
-          <h1>_nstagram</h1>
+          <h1><%= link_to "_nstagram", pictures_path, class: "header-title" %></h1>
         </div><div class="header-menu">
-          <%= link_to "Home", pictures_path, class: "header-menu-item" %>
-          <%= link_to "Log In", '#', class: "header-menu-item" %>
-          <%= link_to "Sign Up", signup_path, class: "header-menu-item" %>
+          <% if logged_in? %>
+            <%= link_to "Log out", logout_path, method: :delete, class: "header-menu-item" %>
+            <%= link_to current_user.name, current_user, class: "header-menu-item" %>
+          <% end %>
         </div><div class="button">
           <%= link_to "+", new_picture_path, class: "btn" %>
         </div>

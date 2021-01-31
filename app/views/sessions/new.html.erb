@@ -1,34 +1,27 @@
 
 
-  <%= form_with model: @user do |form| %>
+  <%= form_for(:session, url: login_path) do |form| %>
       <div class="container">
         <div class="post">
           <div class="post-header">
             <div class="user-image">
               <i class="far fa-user-circle fa-2x"></i>
             </div><div class="user-name">
-                <h2>Sign Up</h2>
+                <h2>Login</h2>
             </div><div class="date">
             </div>
           </div>
           <div class="picture">
             <div class="box">
               <div class="user-details">
-                <%= form.label :name %>
-                <%= form.text_field :name, placeholder: "Enter name..." %><br>
                 <%= form.label :email %>
                 <%= form.email_field :email, placeholder: "Enter email..." %><br>
                 <%= form.label :password %>
                 <%= form.password_field :password, placeholder: "Enter password..." %><br>
-                <%= form.label :password_confirmation %>
-                <%= form.password_field :password_confirmation, placeholder: "Enter password again..." %><br>
-                Already registered? <%= link_to "Log In", login_path, class: "header-menu-item" %>
+                Not already registered? <%= link_to "Sign Up", signup_path, class: "header-menu-item" %>
               </div>
-
             </div>
           </div>
-
-
 
 
           <div class="menu-bar">
@@ -43,11 +36,7 @@
               <% end %>
             </div>
           </div>
-          <% @user.errors.full_messages_for(:password).each do |message| %>
-          <div class="error-message">
-            <strong>Error: </strong><%= message %>
-          </div>
-          <% end %>
+
         </div>
       </div>
   <% end %>
