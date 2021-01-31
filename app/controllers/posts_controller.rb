@@ -3,7 +3,11 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = json_response(Post.all)
+    @posts = Post.all
+    respond_to do |format|
+      format.html
+      format.json { json_response(@posts) }
+    end
   end
 
   def create

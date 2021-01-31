@@ -1,6 +1,31 @@
 Instagram Challenge
 ===================
-
+<!-- <div class="posts">
+  <%# @posts.each do |post| %>
+    <div class="each-post">
+      <div class="post-details">
+        <h4 class="post-username"><%#= post.user.username %></h4>
+        <h5 class="post-timestamp"><%#= post.created_at.strftime("%H:%M %-d %B %Y")%></h5>
+      </div>
+      <div class="image">
+        <%# if post.image.attached? %>
+          <%#= image_tag post.image.variant(resize_to_fit: [210, 180]) %>
+        <%# else %>
+          <p>no picture this time!</p>
+        <%# end %>
+      </div>
+      <div class="post-caption">
+        <p><%#= post.caption %></p>
+      </div>
+      <div class="edit-del-links">
+        <%# if post.user == current_user %>
+          <%#= link_to 'Edit', edit_post_path(post.id) %>
+          <%#= link_to 'Delete', post_path(post.id), method: "delete" %>
+        <%# end %>
+      </div>
+    </div>
+  <% end %>
+</div> -->
 Very open but I wrote down user stories and it seemed more doable.
 
 I learned about Devise for user authentication - it took a while to figure out but I like it a lot - ultimately will make life easier!
