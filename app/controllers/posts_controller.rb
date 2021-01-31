@@ -1,4 +1,18 @@
 class PostsController < ApplicationController
+  def create
+    @user = User.create(username: "Sarah", email: "sarah@powergram.com")
+    @post = @user.posts.create(post_params)
+    redirect_to posts_url
+  end
+
   def index
+    @post = Post.new
+    @posts = Post.all.order("created_at DESC")
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:message, :created_at)
   end
 end
