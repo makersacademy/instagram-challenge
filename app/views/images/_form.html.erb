@@ -10,18 +10,39 @@
   </ul>
 </div>
 <% end %>
-<div class="field">
-  <%= form.label :pic %>
-  <%= form.file_field :pic %>
-</div>
-<div class="field">
-  <%= form.label :caption %>
-  <%= form.text_area :caption %>
-</div>
 
+<div class="album mb-5 py-2 bg-light container">
+  <div class="row">
+    <div class="col-8 m-auto">
+      <div class="col text-muted">
 
+        <div class="card shadow-sm m-1 post-img ">
+          <% if @image.pic.attached? %>
+          <%= image_tag(@image.pic) %>
+          <% end %>
+          <div class="item-icons">
+            <p>
+              <%= form.file_field :pic, :required => true %>
+            </p>
+          </div>
+          <div class="comments">
+            <div class="comment">
+              <div class="item">
+                <%= form.text_area :caption, :required => true %>
+              </div>
+              <div class="send">
+                <%= button_tag type: "submit", class: "send-post", id: "send-button" do %>
+                <i class='fas fa-paper-plane'></i>
+                <% end %>
+                <br>
+                <%= link_to 'Cancel', images_path %>
+              </div>
 
-<div class="actions">
-  <%= form.submit %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <% end %>

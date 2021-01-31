@@ -1,13 +1,15 @@
 <div class="album py-5 bg-light">
   <div class="container">
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3  mb-5">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <% @images.each do |image| %>
-      <div class="col text-muted">
-        <a href="images/<%= image.id %>" class="text-muted">
-          <div class="card shadow-sm m-1 col-lg-8 mb-md-0 mb-3">
+      <div class="col card-img">
+        <a href="images/<%= image.id %>">
+          <div class="card shadow-sm">
+            <% if image.pic.attached? %>
             <%= image_tag(image.pic) %>
-            <div class="item-icons">
+            <% end %>
+            <div class="card-body">
               <i class="fas fa-comment"></i> <i class="fas fa-heart"></i> <i
                 class="fas fa-external-link-square-alt"></i>
             </div>
