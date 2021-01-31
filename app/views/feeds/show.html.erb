@@ -1,0 +1,25 @@
+<%= render partial: 'shared/nav' %>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 offset-5 mt-5">
+      <div class="row row-cols-1 g-4 mb-3">
+        <% @posts.each do |post| %>
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <%= post.user.email %>
+              </div>
+
+              <%= image_tag picture_post_path(post), class: 'card-img-top' %>
+
+              <div class="card-body">
+                <p class="card-text"><%= post.message %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
