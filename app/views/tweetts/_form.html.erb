@@ -1,0 +1,25 @@
+<%= form_with(model: [@tweett.image, @tweett]) do |f| %>
+  <% if @tweett.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tweett.errors.count, "error") %> prohibited this tweett from being saved:</h2>
+
+      <ul>
+      <% @tweett.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.text_field :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
