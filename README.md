@@ -1,32 +1,13 @@
 Instagram Challenge
 ===================
 
-
 ## Task
+* Build Instagram Clone
+* In this project, I focused on learning React and Rails
+* I've built an API between front-end (React) and back-end (Rails)
 
-Build Instagram
 
-* Instagram using Rails and React
-* Implemented **users** who can post **pictures**, write **comments** on pictures and **like** a picture. 
-* Style it like Instagram's website (or more awesome).
 
-Bonus: add filters!
-
------------------------------------------
-|       Post        |       User        | 
------------------------------------------
-| belongs_to:user   | username: string  |
-| comment: text     | email: string     |
-| likes: integer    | password: string  |
-                    | profile_url: string|
-| image_url: string | slug: string      |
-----------------------------------------|
-|     Comments      |     Likes         |
------------------------------------------
-| belongs_to:post   | belongs_to:post   |
-| username          | username          |
-| comment: text     | count: integer    |
------------------------------------------
 
 ## User stories
 ```
