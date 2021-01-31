@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-
+  respond_to :js, :html, :json
   # GET /posts or /posts.json
   def index
     @posts = Post.all
@@ -44,6 +44,15 @@ class PostsController < ApplicationController
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def like
+    @post = Post.find(params[:id])
+    if params[:format] == 'like'
+      @post.liked_by current_user
+    elsif patams[:format] == 'unlike'
+      @post.unliked_by current_user
     end
   end
 
