@@ -3,13 +3,13 @@ class PostsController < ApplicationController
 
   def index
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.all.order('created_at DESC')
   end
 
   def create
     @user = current_user
     @post = @user.posts.create(post_params)
-    
+
     redirect_to posts_url
   end
 

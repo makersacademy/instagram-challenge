@@ -10,7 +10,7 @@ RSpec.feature "Log In", type: :feature do
     fill_in "Email", with: "Test@example.com"
     fill_in "Password", with: "password"
     click_button "Log In"
-    expect(page).to have_text("Share your thoughts")
+    expect(page).to have_text("Signed in successfully")
   end
 
   scenario "cannot log in with incorrect email" do
