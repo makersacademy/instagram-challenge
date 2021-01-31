@@ -17,13 +17,19 @@
       </div>
       <div class="image">
         <% if post.image.attached? %>
-          <%= image_tag post.image.variant(resize_to_fit: [180, 150]) %>
+          <%= image_tag post.image.variant(resize_to_fit: [210, 180]) %>
         <% else %>
           <p>no picture this time!</p>
         <% end %>
       </div>
       <div class="post-caption">
         <p><%= post.caption %></p>
+      </div>
+      <div class="edit-del-links">
+        <% if post.user == current_user %>
+          <%= link_to 'Edit', edit_post_path(post.id) %>
+          <%= link_to 'Delete', post_path(post.id), method: "delete" %>
+        <% end %>
       </div>
     </div>
   <% end %>

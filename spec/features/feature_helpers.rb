@@ -5,3 +5,9 @@ def log_in
   fill_in "Password", with: "password"
   click_button "Log In"
 end
+
+def post_picture
+  page.attach_file('post_image', './spec/features/test_image.png')
+  fill_in "post_caption", with: "Test caption"
+  click_button "Send"
+end

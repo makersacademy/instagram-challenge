@@ -9,6 +9,18 @@ class PostsController < ApplicationController
   def create
     @user = current_user
     @post = @user.posts.create(post_params)
+    
+    redirect_to posts_url
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+
     redirect_to posts_url
   end
 
