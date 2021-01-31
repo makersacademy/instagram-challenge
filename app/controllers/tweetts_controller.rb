@@ -26,7 +26,7 @@ class TweettsController < ApplicationController
     @tweett = @image.tweetts.build(tweett_params)
 
     if @tweett.save
-      redirect_to([@tweett.image, @tweett], notice: "Tweett was successfully created.")
+      redirect_to(@tweett.image)
     else
       render action: "new"
     end
@@ -34,7 +34,7 @@ class TweettsController < ApplicationController
 
   # PUT images/1/tweetts/1
   def update
-    if @tweett.update_attributes(tweett_params)
+    if @tweett.update(tweett_params)
       redirect_to([@tweett.image, @tweett], notice: "Tweett was successfully updated.")
     else
       render action: "edit"

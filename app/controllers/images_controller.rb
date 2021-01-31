@@ -9,6 +9,7 @@ class ImagesController < ApplicationController
 
   # GET /images/1 or /images/1.json
   def show
+    @tweett = @image.tweetts.build
   end
 
   # GET /images/new

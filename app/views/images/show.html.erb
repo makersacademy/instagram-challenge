@@ -13,6 +13,11 @@
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>
 <hr>
+<h1>New tweett</h1>
+
+<%= render 'tweetts/form' %>
+
+<hr>
 <h1>Listing tweetts</h1>
 
 <table>
@@ -25,6 +30,7 @@
   </tr>
 
   <% @image.tweetts.each do |tweett| %>
+  <% if tweett.persisted? %>
   <tr>
     <td><%= tweett.content %></td>
     <td><%= tweett.image %></td>
@@ -32,6 +38,7 @@
     <td><%= link_to 'Edit', edit_image_tweett_path(tweett.image, tweett) %></td>
     <td><%= link_to 'Destroy', [tweett.image, tweett], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
+  <% end %>
   <% end %>
 </table>
 
