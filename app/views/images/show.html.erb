@@ -12,3 +12,29 @@
 
 <%= link_to 'Edit', edit_image_path(@image) %> |
 <%= link_to 'Back', images_path %>
+<hr>
+<h1>Listing tweetts</h1>
+
+<table>
+  <tr>
+    <th>Content</th>
+    <th>Image</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @image.tweetts.each do |tweett| %>
+  <tr>
+    <td><%= tweett.content %></td>
+    <td><%= tweett.image %></td>
+    <td><%= link_to 'Show', [tweett.image, tweett] %></td>
+    <td><%= link_to 'Edit', edit_image_tweett_path(tweett.image, tweett) %></td>
+    <td><%= link_to 'Destroy', [tweett.image, tweett], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tweett', new_image_tweett_path(@image.id) %>
