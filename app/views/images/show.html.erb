@@ -1,44 +1,44 @@
-<p id="notice"><%= notice %></p>
-<div>
-  <%= image_tag(@image.pic, style:"width:200px") %>
+<div class="album mb-5 py-2 bg-light container">
+  <div class="row">
+
+    <div class="col-8 m-auto">
+
+      <div class="col text-muted">
+        <%= link_to 'Edit', edit_image_path(@image), class: "edit"%>
+        <div class="card shadow-sm m-1 post-img">
+
+          <%= image_tag(@image.pic) %>
+
+          <div class="item-icons">
+            <p><strong><%= @image.user_id %>:</strong> <%= @image.caption %></p>
+          </div>
+          <div class="new-comment">
+            <%= render 'tweetts/form' %>
+          </div>
+          <div class="item-icons">
+            <i class="fas fa-comment"></i> <i class="fas fa-heart"></i> <i class="fas fa-external-link-square-alt"></i>
+          </div>
+
+          <div class="comments">
+            <% @image.tweetts.each do |tweett| %>
+            <% if tweett.persisted? %>
+            <div class="comment">
+              <div class="item">
+                <%= tweett.content %>
+              </div>
+              <div>
+                <a href="<%= edit_image_tweett_path(tweett.image, tweett) %>" class="edit-text-icon">
+                  <i class="fas fa-pencil-alt"></i></a>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
-<p>
-  <strong>Caption:</strong>
-  <%= @image.caption %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @image.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_image_path(@image) %> |
+|
 <%= link_to 'Back', images_path %>
-<hr>
-<h1>New tweett</h1>
-
-<%= render 'tweetts/form' %>
-
-<hr>
-<h1>Listing tweetts</h1>
-
-<table>
-  <tr>
-    <th>Content</th>
-    <th>Image</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <% @image.tweetts.each do |tweett| %>
-  <% if tweett.persisted? %>
-  <tr>
-    <td><%= tweett.content %></td>
-    <!-- <td><%= link_to 'Show', [tweett.image, tweett] %></td> -->
-    <td><%= link_to 'Edit', edit_image_tweett_path(tweett.image, tweett) %></td>
-    <!-- <td><%= link_to 'Destroy', [tweett.image, tweett], method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-  </tr>
-  <% end %>
-  <% end %>
-</table>
