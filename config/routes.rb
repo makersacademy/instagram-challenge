@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'authorized', to: 'sessions#page_requires_login'
   get 'users/new', to: 'users#new'
   get 'posts', to: 'posts#index'
+  post 'posts', to: 'posts#create'
 
   root 'sessions#welcome'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
