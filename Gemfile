@@ -27,7 +27,7 @@ gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-
+# user authentication tool
 gem 'devise'
 # Encrypt passwords
 gem "bcrypt", "~> 3.1.7"
@@ -35,7 +35,9 @@ gem "bcrypt", "~> 3.1.7"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Test framework
   gem "rspec-rails", "~> 4.0.2"
+  # Code quality
   gem "rubocop", "~> 1.8", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
@@ -59,6 +61,13 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara'
+  # Clean test database after each test
+  gem 'database_cleaner-active_record'
+  # Populate test tables with data before tests
+  gem 'factory_bot_rails'
+  # Generate random data for tests
+  gem 'faker'
+  # Web driver
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'

@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative 'feature_helpers.rb'
 
 RSpec.feature "Post", type: :feature do
   scenario "signed in user can make a post" do

@@ -1,6 +1,17 @@
 Instagram Challenge
 ===================
 
+Very open but I wrote down user stories and it seemed more doable.
+
+I learned about Devise for user authentication - it took a while to figure out but I like it a lot - ultimately will make life easier!
+
+-----------------
+Now trying to set up an API for getting posts & creating posts. Using [this blog](https://www.digitalocean.com/community/tutorials/build-a-restful-json-api-with-rails-5-part-one) to help.
+
+Testing Lessons:
+User module FeatureSpecHelper and include it in rails_helper to use across feature tests
+Use factory bot to populate table data (eg create users and posts. I'm using it to test the api.)
+
 ## Instructions
 
 * Feel free to use Google, your notes, books, etc., but work on your own

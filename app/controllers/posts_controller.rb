@@ -1,20 +1,26 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
     @post = Post.new
-    @posts = Post.all
+    @posts = json_response(Post.all)
   end
 
   def create
     @user = current_user
     @post = @user.posts.create(post_params)
-    
+
+    json_response(@post, :created)
     redirect_to posts_url
   end
 
   def edit
     @post = Post.find(params[:id])
+  end
+
+  def update
+    # @post = Post.find(params[:id])
+    @post.update(post_params)
   end
 
   def destroy

@@ -1,5 +1,4 @@
 require 'rails_helper'
-require_relative './feature_helpers'
 
 RSpec.feature "Log out", type: :feature do
   scenario "user can log out and stay logged out" do
