@@ -36,29 +36,32 @@ I want to be able to comment on pictures
 Database - Users, Posts, Comments
 Controllers - Users, Posts, Comments, Sessions
 
-Models - Users
-
+### Users
 username:string
 email:string
-password:string
-Posts
+password_digest:string
 
+### Posts
 username:string
 caption:string
 image:TBC
 likes:integer
-Comments
 
+### Comments
 postid:integer
 username:string
 comment:string
 
 ### Todo
-- Users
-- Login/Logout
+- password confirmation
+- only allow one username / email
+- once logged in go to sessions/:user_id
+- posts
 
 ### Done
 - init rails
 - rspec
 - rubocop
 - change to postgresql
+- Users
+- Login/Logout
