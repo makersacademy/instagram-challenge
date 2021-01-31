@@ -1,0 +1,17 @@
+<%= form_for @picture do |form| %>
+  <%= form.label :image_text, "Add picture text" %>
+  <%= form.text_field :image_text %>
+  <%= form.submit "Submit" %>
+<% end %>
+
+
+
+<% @pictures.each do |picture| %>
+   
+    <%= picture['image_text'] %><br>
+    Added at<%= picture['created_at'].strftime("%H:%M %A %B %-d") %><br>
+    Picture added by <%= picture['username'] %><br>
+    <%=link_to "Add a comment", pictures_path(picture['id'])%>
+    <hr>
+<% end %>
+

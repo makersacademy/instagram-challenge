@@ -1,0 +1,2 @@
+class Homepage < ApplicationRecord
+end

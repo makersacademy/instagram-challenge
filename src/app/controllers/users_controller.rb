@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @existing_user.nil?
         @user = User.create(user_params)
         session[:user_id] = @user.id
-        redirect_to pictures_url
+        redirect_to '/pictures/new'
     else
       flash[:alert] = "This e-mail is already in use"
       redirect_to '/users/new'
