@@ -11,6 +11,40 @@
   </head>
 
   <body>
-    <%= yield %>
+    
+    <nav class="navbar navbar-light bg-light d-flex">
+      <div class="container">
+        <div class="logo">
+          <a class="navbar-brand" href="#">
+            <%= fa_stacked_icon "camera inverse", base: "circle"%>
+            Fauxgram
+          </a>
+        </div>
+        <div class="m-auto">
+          <form class="form-inline search-form">
+            <input class="form-control mr-sm-2" type="search" placeholder="@search" aria-label="Search">
+          </form>
+        </div>
+        <div class="user-section">
+          <a><i class="fa fa-compass"></i></a>
+          <a><i class="fa fa-heart"></i></a>
+          <% if user_signed_in? %>
+            <a href="<%= user_path(current user)%>">
+              <i class="fa fa-user"></i>
+            </a>
+          <% else %>
+            <a href="<%= new_user_session_path%>">
+              <i class="fa fa-sign-in"></i>
+            </a>
+          <% end %>
+          <a><i class="fa fa-user"></i></a>
+        </div>
+      </div>
+    </nav>
+
+    <!--Main content-->
+    <main class="container" style="min-height: 500px;">
+      <%= yield %>
+    </main>
   </body>
 </html>
