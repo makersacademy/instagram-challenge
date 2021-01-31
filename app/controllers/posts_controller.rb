@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def create
-    @user = User.create(username: "Sarah", email: "sarah@powergram.com")
+    @user = User.create(username: "Sarah", email: "sarah@email.com", password_digest: "bob")
     @post = @user.posts.create(post_params)
     redirect_to posts_url
   end
@@ -13,6 +13,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:message, :created_at)
+    params.require(:post).permit(:message, :created_at, :photo)
   end
 end
+
