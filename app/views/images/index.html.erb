@@ -5,6 +5,8 @@
 <table>
   <thead>
     <tr>
+
+
       <th>Caption</th>
       <th>User</th>
       <th colspan="3"></th>
@@ -13,13 +15,18 @@
 
   <tbody>
     <% @images.each do |image| %>
-      <tr>
-        <td><%= image.caption %></td>
-        <td><%= image.user_id %></td>
-        <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td>
+        <div>
+          <%= image_tag(image.pic, style:"width:200px") %>
+        </div>
+      </td>
+      <td><%= image.caption %></td>
+      <td><%= image.user_id %></td>
+      <td><%= link_to 'Show', image %></td>
+      <td><%= link_to 'Edit', edit_image_path(image) %></td>
+      <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
