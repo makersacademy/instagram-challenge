@@ -45,7 +45,7 @@ class TweettsController < ApplicationController
   def destroy
     @tweett.destroy
 
-    redirect_to image_tweetts_url(@image)
+    redirect_to @image
   end
 
   private
