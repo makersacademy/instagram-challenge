@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  respond_to :js, :html, :json
+  # respond_to :js, :html, :json
   # GET /posts or /posts.json
   def index
     @posts = Post.all
@@ -49,11 +49,9 @@ class PostsController < ApplicationController
 
   def like
     @post = Post.find(params[:id])
-    if params[:format] == 'like'
-      @post.liked_by current_user
-    elsif patams[:format] == 'unlike'
-      @post.unliked_by current_user
-    end
+    @post.liked_by current_user
+    redirect_to :back
+    
   end
 
   # DELETE /posts/1 or /posts/1.json
