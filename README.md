@@ -11,7 +11,8 @@ To consolidate learning of building a Ruby on Rails web application.
 
 
 ## Screenshots
-Include logo/demo screenshot etc.
+Pictures Index:
+![Pictures Index](https://github.com/chriswhitehouse/instagram-challenge/blob/master/screenshots/Screenshot%202021-02-01%20at%2009.27.26.png)
 
 ## Tech/framework used
 Ruby on Rails with Postgresql database and Rspec/Capybara testing suite.
