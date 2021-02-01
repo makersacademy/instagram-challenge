@@ -1,11 +1,17 @@
 Instagram Challenge
 ===================
 
-My stories:\
+**My stories:**\
 User can sign up\
 User can log in\
 User can log out\
+
+For user authentication I used the gem Devise which builds a lot of the routes and authentication methods. It has a nice feature of setting different roots, depending on whether a session is in clear or otherwise, and also allows you to divert any requests to other paths to the sign up /login page with the method   **before_action :authenticate_user!** in the controller. It also automates error messages which I need to adapt.
+
 User can post a picture with a caption attached\
+
+This needed ActiveStorage and **has_one_attached :image** in the Post model.
+
 User can see list of posts in reverse chronological order\
 User can delete their own posts\
 User can edit their own posts - half completed.\
