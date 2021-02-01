@@ -1,24 +1,40 @@
-<h1>Posts</h1>
+<h1>Welcome to Instakilo <%= current_user.username %></h1>
 
 <%= form_for @post do |form| %>
   <div class='field'>
     <%= form.label :picture %>
-    <%= form.text_field :picture %>
+    <%= form.file_field :picture %>
   </div>
   <div class='field'>
     <%= form.label :caption %>
     <%= form.text_field :caption %>
+  </div>
+  <div>
+    <%= form.hidden_field :user_id, :value => 1 %>
+    <%= form.hidden_field :likes, :value => 0 %>
   </div>
   <div class='actions'>
     <%= form.submit "Post Picture" %>
   </div>
 <% end %>
 
-<ul>
+<div>
   <% @posts.each do |post| %>
-    <li>
-      <%= post.picture %>
-      <%= post.caption %>
-    <li>
+    <div>
+      <div>
+        <%= image_tag(post.picture, style:'width: 200px') %>
+      </div>
+      <div>
+        <%= post.caption %>
+      </div>
+      <div>
+        <%= label_tag :likes %>
+        <%= post.likes %>
+      </div>
+      <div>
+        <%= label_tag "Posted by" %>
+        <%= usernameById(post.user_id) %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>

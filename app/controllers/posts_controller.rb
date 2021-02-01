@@ -10,16 +10,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save
-      redirect_to posts_path
-    else
-      redirect_to root_path
-    end
+    redirect_to posts_path
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:picture, :caption)
+    params.require(:post).permit(:picture, :caption, :user_id, :likes)
   end
 end

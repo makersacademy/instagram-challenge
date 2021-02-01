@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     session[:user_id] = @user.id
 
-    redirect_to root_path
+    redirect_to posts_path
   end
 
   private
