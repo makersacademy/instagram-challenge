@@ -107,6 +107,16 @@ Basic admin:
 Testing:
 - Understand and follow best practice for controller tests
 
+## Decisions Made
+
+Back-end:
+- Don’t use devise, just create login/logout manually (too steep a learning curve for the time available)
+- Use /users/:username as each user’s personal url page (instead of one single URL e.g. /feed). Don’t yet have enough knowledge to know which is the better choice, but chose this because it differs from what we have been implementing as a group during the week.
+
+Front-end:
+- plan to use jquery to manipulate the DOM where necessary (mostly /users/:username). Not using React (too steep a learning curve for the time available)
+- Attempt bootstrap for styling
+
 
 # Makers Readme
 
