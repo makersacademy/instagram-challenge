@@ -1,0 +1,23 @@
+
+<h1> Powergram Posts Page </h1>
+
+
+<%= form_for @post do |form| %>
+  <%= form.label :message, "Create a powerful post:" %>
+  <%= form.text_field :message, placeholder: "tell the people" %>
+  <br>
+  <%= form.label :photo, "Add your picture here:" %>
+  <%= form.file_field :photo %>
+  <%= form.submit "Post" %>
+<% end %>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+    <% if @post.photo.attched? %>
+      <%= image_tag(post.photo) %>
+    <% end %>
+      <%= post.message %> from <%= post.user.username %> at <%= post.created_at.strftime("%H:%M %A %B %-d")%>
+    </li>
+  <% end %>
+</ul>
