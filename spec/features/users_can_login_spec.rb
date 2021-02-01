@@ -9,8 +9,8 @@ RSpec.feature "Login", type: :feature do
     fill_in "username", with: "Kiki"
     fill_in "password", with: "password"
     click_button "Click to Login"
-    expect(current_path).to eq root_path
-    expect(page).to have_content "You are logged in as Kiki"
+    expect(current_path).to eq posts_path
+    expect(page).to have_content "Welcome to Instakilo Kiki"
   end
 
   scenario "User cannot login with wrong username" do
