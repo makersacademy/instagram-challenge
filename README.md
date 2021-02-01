@@ -15,20 +15,31 @@ Instagram Challenge
 - Run `rails s` in the terminal
 - Navigate to `http://localhost:3000/` in the browser
 
+### Use
+- Sign-up with a username, email (do not use your real one!) and password.
+- Follow the link to post your bin, entering the image url when prompted (you can host your image on Imgur if needed - https://imgur.com/)
+
 ### To Run Unit Tests
 `rake test`
 
 ### To Run Feature Tests
 `rake test:system`
-Note - you may be prompted to install Chrome Webdiver. If so, visit.
-Mac users with Homebrew installed can simply run `brew install --cask chromedriver`. You may need to give your Mac permission to open the relevant file when prompted.
-If not, then see this post: https://stackoverflow.com/questions/19862276/unable-to-find-the-chromedriver-executable
 
-## Planning
+Note - you may be prompted to install Chrome Webdiver. If so, visit https://chromedriver.chromium.org/downloads.
+
+Mac users with Homebrew installed can simply run `brew install --cask chromedriver`. You may need to give your Mac permission to open the relevant file when prompted.
+If not, then see this post for more details: https://stackoverflow.com/questions/19862276/unable-to-find-the-chromedriver-executable
+
+## Planning and Work So Far
 
 ### Spec
 
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+
+### Initial Mock-up
+
+![mock-up](https://github.com/Will-Helliwell/instagram-challenge/blob/master/Screenshot%202021-01-30%20at%2009.07.17.png
+)
 
 ### User Stories
 
@@ -36,7 +47,16 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 As a user
 So that I can have my own account
 I want to sign-up for Binstagram
+```
+Completed:
+- A single user can sign up with a username, email, password, which automatically signs them in
+- This takes the user to their own personal feed (/users/:username)
 
+Still to do:
+- Use BCrypt to encrypt passwords
+- Checks - cannot sign-up with pre-existing username and/or email. Double-layered checks (Database-level - use Active record validations + check in users controller - gives Sinatra flash message if failed).
+
+```
 As a user
 So that I can browse as myself
 I want to sign-in to Binstagram
@@ -48,7 +68,15 @@ I want to be able to sign-out of Binstagram
 As a user
 So that I can share my favourite bin moments
 I want to post a picture to Binstagram
+```
+Completed:
+- Signed-in user can post images of their bins by entering the image URL. These appear in reverse chronological order on the feed.
 
+Still to do:
+- Ability to add a caption to each post
+- More user-friendly image input - option to upload an image from their local storage
+
+```
 As a user
 So that I can see my own posts and others
 I want to see who posted each picture
@@ -70,19 +98,7 @@ So that I can make my bin look vintage ('bintage')
 I would like to filter my images before posting
 ```
 
-### Initial Mock-up
-
-![mock-up](https://github.com/Will-Helliwell/instagram-challenge/blob/master/Screenshot%202021-01-30%20at%2009.07.17.png
-)
-
-## Workflow
-
-### Currently working on
-
-User can post a bin photo - have created form and inserts new post into database.
-Need to display on users personal feed. Need to associate posts with users.
-
-### Still to do
+## Non-User Story Tasks still to do
 
 Basic admin:
 - Get rubocop working
@@ -90,13 +106,6 @@ Basic admin:
 
 Testing:
 - Understand and follow best practice for controller tests
-
-Sign-up:
-- Use BCrypt to encrypt passwords
-- Checks - cannot sign-up with pre-existing username and/or email. Double-layered checks (Database-level - use Active record validations + check in users controller - gives Sinatra flash message if failed).
-- Log-out
-- Log-in
-
 
 
 # Makers Readme
