@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instakilo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if logged_in? %>
+      <%= button_to "Logout", logout_path, method: :get %>
+    <% else %>
+      <%= button_to "Login", login_path, method: :get %>
+      <%= button_to "Sign Up", users_new_path, method: :get %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
