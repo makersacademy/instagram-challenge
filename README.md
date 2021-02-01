@@ -44,7 +44,6 @@ password_digest:string
 ### Posts
 user_id: reference
 caption:string
-image:TBC
 likes:integer
 
 ### Comments
@@ -56,7 +55,6 @@ comment:string
 - password confirmation
 - only allow one username / email
 - once logged in go to sessions/:user_id
-- posts with pictures (active storage)
 
 ### Done
 - init rails
@@ -65,3 +63,4 @@ comment:string
 - change to postgresql
 - Users
 - Login/Logout
+- posts with pictures (active storage)
