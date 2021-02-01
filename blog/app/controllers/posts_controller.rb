@@ -48,9 +48,9 @@ class PostsController < ApplicationController
   end
 
   def like
-    @post = Post.find(params[:id])
-    @post.liked_by current_user
-    redirect_to :back
+    @post = Post.find(post_params)
+    # @post.liked_by current_user
+    redirect_to @post, notice: "Post was successfully liked."
     
   end
 
