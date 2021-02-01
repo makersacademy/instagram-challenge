@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<img src="<%=(url_for(@post.image))%>">
+
+<p>
+  <strong>Caption:</strong>
+  <%= @post.caption %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user.email %>
+</p>
+
+<div>
+<strong>Comments:</strong><br>
+  <% @post.comments.each do |comment| %>
+    <%= comment.user.email %>: <%= comment.text %> <br>
+  <%end%>
+</div>
+<br>
+<div>
+  <%= link_to "Add Comment", new_comment_path(post_url: @post.id) %>
+</div>
+<br>
+<%= link_to 'Back', posts_path %>
