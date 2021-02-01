@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def create
     @user = User.create(username: "Sarah", email: "sarah@email.com", password_digest: "bob")
     @post = @user.posts.create(post_params)
+    @post.photo.attach
     redirect_to posts_url
   end
 
