@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstagramChallenge</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application'  %>
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+    <script>
+      var pusher = new Pusher(ENV['PUSHER_KEY'], {     
+        cluster: ENV['PUSHER_CLUSTER'],
+        encrypted: true
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="user_header">
+        <% if current_user %>
+        Logged in as <%= current_user.username %>
+        <%= link_to "Log out", session_path("current"), method: "delete" %>
+        <% else %>
+        <%= link_to "Log in", new_session_path %>
+        <% end %>
+      </div>
+
+    <%= yield %>
+
+        <br>
+        <h3>
+        <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, class: name %>
+        <% end %>
+        </h3>
+    </div>
+  </body>
+</html>

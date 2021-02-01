@@ -1,0 +1,56 @@
+
+<h1 style="text-align: center">PhotoGram</h1>
+ <div class="wrapper">
+     <form class="uploads" method="POST" action="/photos/capture" enctype="multipart/form-data">
+         <%= token_tag %>
+         <div class="form-group">
+             <label for="caption">Caption</label>
+             <input type="text" name="caption">
+         </div>
+         <div style="margin-left: 5px;">
+             <input type="file" name="image">
+         </div>
+         <div>
+             <input type="submit" value="Upload">
+         </div>
+     </form>
+     <div class="images" id="post_section">
+       <% @photos.each do |photo| %>
+         <div class="post">
+             <div>
+                 <img class="post-image" src="<%= photo.link %>">
+             </div>
+             <p class="post-caption"><%= photo.caption %></p><br>
+
+            <p><%= photo.likes.count %> <%= (photo.likes.count) == 1 ? 'Like' : 'Likes'%></p><br>
+            <div class="like_unlike_buttons">
+                <% pre_like = photo.likes.find { |like| like.user_id == current_user.id } %>
+                <% if pre_like %>
+                  <%= button_to "Unlike", photo_like_path(photo, pre_like), method: :delete %>
+                <% else %>
+                  <%= button_to "Like", photo_likes_path(photo), method: :post %>
+                <% end %>
+            </div>
+         </div>
+       <% end %>
+     </div>
+
+     <script>
+     var channel = pusher.subscribe('my-channel');
+     channel.bind('my-post', function(data) {
+       let photo_link = data.link;
+       let photo_caption = data.caption;
+
+       let div = document.getElementById('post_section');
+       let new_content = document.createElement("div");
+       new_content.innerHTML = `
+          <div class="post">
+            <div>
+                <img class="post-image" src="${photo_link}">
+            </div>
+            <p class="post-caption"> ${photo_caption}</p>
+          </div>`;
+       div.insertBefore(new_content, div.firstChild);
+     });
+     </script>
+ </div>
