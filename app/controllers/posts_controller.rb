@@ -4,17 +4,12 @@ class PostsController < ApplicationController
   def index
     @post = Post.new
     @posts = Post.all
-    respond_to do |format|
-      format.html
-      format.json { json_response(@posts) }
-    end
   end
 
   def create
     @user = current_user
     @post = @user.posts.create(post_params)
 
-    json_response(@post, :created)
     redirect_to posts_url
   end
 
@@ -32,6 +27,16 @@ class PostsController < ApplicationController
     @post.destroy
 
     redirect_to posts_url
+  end
+
+  def posts_api
+    posts = Post.joins(:user).order('created_at DESC')
+    data = ActiveModel::Serializer::CollectionSerializer.new(posts, each_serializer: PostSerializer)
+    p "data is #{data}"
+    respond_to do |format|
+      format.html
+      format.json { render json: data }
+    end
   end
 
   private
