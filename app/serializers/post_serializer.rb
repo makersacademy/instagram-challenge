@@ -7,13 +7,9 @@ class PostSerializer < ActiveModel::Serializer
   end
 
   def image_url
-    p "in image_url method"
     if object.image.attached?
-      p "object has an image attached"
       variant = object.image.variant(resize_to_fit: [210, 180])
       return rails_representation_url(variant, only_path: true)
-    # else
-    #   return "no image"
     end
   end
 
