@@ -12,3 +12,4 @@ import "posts"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+//= require activestorage

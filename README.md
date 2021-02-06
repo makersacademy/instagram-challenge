@@ -1,5 +1,14 @@
 Instagram Challenge
 ===================
+
+Spent quite a long time researching how to send images via API. I am now wondering if actually it's better if images are *not* sent via API for any reason (a small google search didn't seem to bring up any significant opinions / thoughts on this)...
+
+Current user? Fresh api or returned with current apis? Or taken from username of logged in user printed on top of page? What is the safest way to do this?
+
+When a new post is created, is it best to append this to the div as an individual post as opposed to re-running the getAllPosts API request? I imagine it is best in terms of speed but this means more written code which can lead to a greater possibility of more bugs?
+
+To clear images from test database:
+https://edgeguides.rubyonrails.org/active_storage_overview.html#discarding-files-stored-during-system-tests
 <!-- <div class="posts">
   <%# @posts.each do |post| %>
     <div class="each-post">

@@ -30,14 +30,11 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-
-    redirect_to posts_url
   end
 
   def posts_api
     posts = Post.joins(:user).order('created_at DESC')
     data = ActiveModel::Serializer::CollectionSerializer.new(posts, each_serializer: PostSerializer)
-    p "data is #{data}"
     respond_to do |format|
       format.html
       format.json { render json: data }
@@ -45,14 +42,8 @@ class PostsController < ApplicationController
   end
 
   def new_post_no_image_api
-    p "===============================IN THE NEW_POST_API"
     @user = current_user
-    p "THE USER IS #{@user}"
-    p "THE PARAMS ARE #{params}"
-    p "THE POST_PARAMS ARE #{post_params}"
     @post = @user.posts.create(post_params)
-    p "THE POST IS #{@post}"
-    p "Did the post save? #{@post.save}"
     #
     # if @post.save
     #   render json: @post

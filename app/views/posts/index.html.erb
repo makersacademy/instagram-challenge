@@ -1,22 +1,10 @@
-<h1> This is the html.erb new post form </h1>
-  <div class="new-post">
-  <%= form_for @post do |form| %>
-    <%= form.label :image, "Upload Your Photo Here!" %>
-    <%= form.file_field :image %>
-    <%= form.text_area :caption, class: 'caption', placeholder: "Share your thoughts here" %>
-
-    <%= form.submit "Send", class: "send" %>
-  <% end %>
-</div>
-
-<h1> This is the JS post form </h1>
-
-<div id="new-post">
-  <form id="new-post-form" action="/posts" method="post">
+<div class="new-post" id="new-post">
+  <form id="new-post-form" class="new_post" action="/posts" method="post">
+    <input type="hidden" name="authenticity_token" value="zrPmD5SILoxt9UcIc6LxHpEXLL7_BKxpkCxiSk8QAd8Co65he826VHBIsCE3-6_5LA4HzG6M1yE1mFhT89iz6A">
     <label for="image">Upload Your Photo Here!</label>
-    <input type="file" id="post-image" name="post[image]">
+    <input type="file" data-direct-upload-url="<%= rails_direct_uploads_url %>" id="post_image" name="post[image]">
     <textarea id="caption" name="post[caption]" rows="8" cols="80" class="caption" placeholder="Share your thoughts here"></textarea>
-    <input type="submit" id="Js-Send" value="Send">
+    <input type="submit" class="send" id="Js-Send" value="Send">
   </form>
 </div>
 

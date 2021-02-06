@@ -8,27 +8,26 @@ function getPosts() {
   fetch('http://localhost:3000/posts_api.json')
     .then(function(res) {
       res.json().then(function(json) {
-        let postArray = json
-        console.log(JSON.stringify(postArray))
-        renderPosts(postArray)
+        let postArray = json;
+        renderPosts(postArray);
       });
     });
 }
 
 document.getElementById('Js-Send').addEventListener("click", function(event) {
-  event.preventDefault();
-  if (document.getElementById('post-image').files.length === 0) {
+  let captionField = document.getElementById('caption')
+  if (document.getElementById('post_image').files.length === 0) {
     event.preventDefault();
-    let caption = document.getElementById('caption').value;
-    console.log(`CAPTION IS ${caption}`);
-    console.log(`now trying to create a post`)
-    createPostWithoutImage(caption);
+    if (confirm('Send caption without a picture?')) {
+      let caption = captionField.value;
+      console.log(`now trying to create a post`)
+      createPostWithoutImage(caption);
+    }
   }
+  captionField.value = "";
 });
 
 function createPostWithoutImage(caption) {
-  console.log(`in the createPost function. Caption is ${caption}`)
-  console.log(`stringified json is ${JSON.stringify({ "post": { "caption": `${caption}` }})}`)
   fetch('http://localhost:3000/new_post_api', {
     method: 'POST',
     headers: {
@@ -44,9 +43,14 @@ function createPostWithoutImage(caption) {
 }
 
 function renderPosts(posts_array) {
+  document.getElementById('posts').innerHTML = "";
   posts_array.forEach(function(post, index) {
     createPostDiv(index);
     setPostHTML(post, index);
+    if (isCurrentUser(post.user.username)) {
+      document.getElementById(index).innerHTML += addEditAndDeleteButtons(post);
+      addEditAndDeleteEventListeners(post);
+    }
   });
 }
 
@@ -87,11 +91,38 @@ function postCaption(post) {
   return postCaptionHTML;
 }
 
-    //
-    // <div class="edit-del-links">
-    //   <%# if post.user == current_user %>
-    //     <%#= link_to 'Edit', edit_post_path(post.id) %>
-    //     <%#= link_to 'Delete', post_path(post.id), method: "delete" %>
-    //   <% end %>
-    // </div>`;
-    // document.getElementById(index).innerHTML = `${postHTML}`
+function addEditAndDeleteButtons(post) {
+  let editAndDeleteButtonsHTML =
+    `<div class="edit-del-links">
+      <button class="delete-button" id="delete-post-${post.id}"><i class="far fa-trash-alt"></i></button>
+      <button class="edit-button" id="edit-post-${post.id}"><i class="fas fa-pencil-alt"></i></button>
+    </div>`
+  return editAndDeleteButtonsHTML;
+}
+
+function addEditAndDeleteEventListeners(post) {
+  let deleteButton = document.getElementById(`delete-post-${post.id}`);
+  let editButton = document.getElementById(`edit-post-${post.id}`);
+  deleteButton.addEventListener("click", function() {
+    if (confirm("Are you sure you want to delete this post?")) {
+      deletePost(post.id);
+    }
+  });
+  editButton.addEventListener("click", function() {
+
+  });
+}
+
+function deletePost(id) {
+  console.log(`in the deletePost function`);
+  fetch(`http://localhost:3000/posts/${id}`, {
+    method: 'DELETE'
+  })
+  .then(function() {
+    getPosts();
+  });
+}
+
+function isCurrentUser(username) {
+  return document.getElementById('current-user').innerHTML === username
+}
