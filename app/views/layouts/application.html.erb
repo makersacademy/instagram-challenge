@@ -16,20 +16,22 @@
   </head>
 
   <body>
-    <div class="header">
-      <h2 id="minsta">Minstagram</h2>
-      <% if current_user %>
-        <span id="current-user"><%= current_user.username %></span>
-        <%= link_to "Log Out", destroy_user_session_path, method: "delete" %>
-        <% elsif current_page?(new_user_registration_path)%>
-          <%= link_to "Log In", new_user_session_path %>
-        <% else %>
-          <%= link_to "Sign Up", new_user_registration_path %>
-      <% end %>
+    <div class="grid-container">
+      <div class="header">
+        <h2 id="minsta">Minstagram</h2>
+        <% if current_user %>
+          <p id="current-user"><%= current_user.username %></p>
+          <%= link_to "Log Out", destroy_user_session_path, method: "delete" %>
+          <% elsif current_page?(new_user_registration_path)%>
+            <%= link_to "Log In", new_user_session_path %>
+          <% else %>
+            <%= link_to "Sign Up", new_user_registration_path %>
+        <% end %>
+      </div>
+      <%= yield %>
     </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -4,14 +4,17 @@ window.onload = function() {
   getPosts();
 }
 
+var modal = document.getElementById('edit-modal');
+
+var allPostsDiv = document.getElementById('posts');
+
 function getPosts() {
-  fetch('http://localhost:3000/posts_api.json')
-    .then(function(res) {
-      res.json().then(function(json) {
-        let postArray = json;
-        renderPosts(postArray);
-      });
+  fetch('http://localhost:3000/posts_api.json').then(function(res) {
+    res.json().then(function(json) {
+      let postArray = json;
+      renderPosts(postArray);
     });
+  });
 }
 
 document.getElementById('Js-Send').addEventListener("click", function(event) {
@@ -20,7 +23,6 @@ document.getElementById('Js-Send').addEventListener("click", function(event) {
     event.preventDefault();
     if (confirm('Send caption without a picture?')) {
       let caption = captionField.value;
-      console.log(`now trying to create a post`)
       createPostWithoutImage(caption);
     }
   }
@@ -36,59 +38,58 @@ function createPostWithoutImage(caption) {
     body: JSON.stringify({
       "post": { "caption": `${caption}` }
     })
-  }).then(function() {
-    // would be good if this just inserted new post in front of other posts
-    getPosts();
+  }).then(function(res) {
+    res.json().then(function(post) {
+      renderIndividualPost(post)
+    })
   })
 }
 
 function renderPosts(posts_array) {
-  document.getElementById('posts').innerHTML = "";
-  posts_array.forEach(function(post, index) {
-    createPostDiv(index);
-    setPostHTML(post, index);
-    if (isCurrentUser(post.user.username)) {
-      document.getElementById(index).innerHTML += addEditAndDeleteButtons(post);
-      addEditAndDeleteEventListeners(post);
-    }
+  allPostsDiv.innerHTML = "";
+  posts_array.forEach(function(post) {
+    renderIndividualPost(post);
   });
 }
 
-function createPostDiv(index) {
+function renderIndividualPost(post) {
   let postDiv = document.createElement('div');
-  postDiv.id = index;
+  postDiv.id = post.id;
   postDiv.className = "each-post";
-  document.getElementById('posts').appendChild(postDiv);
+  allPostsDiv.prepend(postDiv);
+  addPostDetails(post, postDiv);
+  addPostImageHTML(post, postDiv);
+  postCaption(post, postDiv);
+  if (isCurrentUser(post.user.username)) {
+    postDiv.innerHTML += addEditAndDeleteButtons(post);
+    addEditAndDeleteEventListeners(post);
+  }
 }
 
-function setPostHTML(post, index) {
-  document.getElementById(index).innerHTML = postDetails(post);
-  document.getElementById(index).innerHTML += postImageHTML(post);
-  document.getElementById(index).innerHTML += postCaption(post);
-}
-
-function postDetails(post) {
-  let postHTML =
-  `<div class="post-details">
-    <h4 class="post-username"> ${post.user.username} </h4>
+function addPostDetails(post, postDiv) {
+  let postDetailsDiv = document.createElement('div');
+  postDetailsDiv.className = "post-details";
+  postDetailsDiv.innerHTML =
+    `<h4 class="post-username"> ${post.user.username} </h4>
     <h5 class="post-timestamp"> ${post.created_at} </h5>`;
-  return postHTML;
+  postDiv.appendChild(postDetailsDiv);
 }
 
-function postImageHTML(post) {
+function addPostImageHTML(post, postDiv) {
   let imageHTML
   if (post.image_url) {
-    imageHTML = `<div class="image" id="js-image"><img src="http://localhost:3000${post.image_url}"></div>`
+    imageHTML = `<div class="image">
+                  <img src="http://localhost:3000${post.image_url}">
+                </div>`
   } else {
     imageHTML = `<div class="image">no picture this time!</div>`
   }
-  return imageHTML;
+  postDiv.innerHTML += imageHTML;
 }
 
-function postCaption(post) {
-  let postCaptionHTML =
-    `<div class="post-caption"><p> ${post.caption} </p></div></div>`
-  return postCaptionHTML;
+function postCaption(post, postDiv) {
+  let postCaptionHTML = `<div class="post-caption" id="caption-${post.id}"><p> ${post.caption} </p></div>`
+  postDiv.innerHTML += postCaptionHTML;
 }
 
 function addEditAndDeleteButtons(post) {
@@ -109,12 +110,13 @@ function addEditAndDeleteEventListeners(post) {
     }
   });
   editButton.addEventListener("click", function() {
-
+    document.getElementById('edit-caption').value = post.caption
+    document.getElementById('edit-post-id').value = post.id
+    modal.style.display = "block";
   });
 }
 
 function deletePost(id) {
-  console.log(`in the deletePost function`);
   fetch(`http://localhost:3000/posts/${id}`, {
     method: 'DELETE'
   })
@@ -122,6 +124,33 @@ function deletePost(id) {
     getPosts();
   });
 }
+
+document.getElementsByClassName('close')[0].addEventListener("click", function() {
+  modal.style.display = "none";
+})
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+document.getElementById('save-edit').addEventListener("click", function(event) {
+  event.preventDefault();
+  let updatedCaption = document.getElementById('edit-caption').value;
+  let postID = document.getElementById('edit-post-id').value;
+  fetch(`http://localhost:3000/posts/${postID}`, {
+    method: 'PATCH',
+    headers: {
+         'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      "post" : { "caption" : `${updatedCaption}`}
+    })
+  }).then(function() {
+    document.getElementById(`caption-${postID}`).innerHTML = `<p>${updatedCaption} <em>(edited)</em>`
+  })
+});
 
 function isCurrentUser(username) {
   return document.getElementById('current-user').innerHTML === username

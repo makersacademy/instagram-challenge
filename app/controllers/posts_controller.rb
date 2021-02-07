@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   protect_from_forgery with: :null_session
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
 
   def index
@@ -11,7 +11,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    p "IN THE CREATE METHOD, PARAMS ARE #{post_params}"
     @user = current_user
     @post = @user.posts.create(post_params)
 
@@ -23,7 +22,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    # @post = Post.find(params[:id])
+    p "IN THE UPDATE METHOD, PARAMS ARE #{params}"
+    @post = Post.find(params[:id])
     @post.update(post_params)
   end
 
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
   end
 
   def posts_api
-    posts = Post.joins(:user).order('created_at DESC')
+    posts = Post.joins(:user).order('created_at')
     data = ActiveModel::Serializer::CollectionSerializer.new(posts, each_serializer: PostSerializer)
     respond_to do |format|
       format.html
@@ -44,22 +44,18 @@ class PostsController < ApplicationController
   def new_post_no_image_api
     @user = current_user
     @post = @user.posts.create(post_params)
-    #
-    # if @post.save
-    #   render json: @post
-    # else
-    #   render error: { error: 'Unable to save post' }, status: 400
-    # end
+
+    if @post.save
+      render json: @post
+    else
+      render error: { error: 'Unable to save post' }, status: 400
+    end
   end
 
   private
 
   def post_params
     params.require(:post).permit(:caption, :image)
-  end
-
-  def new_post_params
-    params.permit(:caption, :image, :post)
   end
 
 end

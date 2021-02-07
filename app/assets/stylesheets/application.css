@@ -23,21 +23,37 @@ body {
   text-align: center;
 }
 
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'left left right right right right';
+  /* grid-column-gap: 10px; - if you want gap between the columns */
+}
+
 .header {
+  grid-area: header;
   background-image: linear-gradient(to right, hotpink, yellow);
   margin: 0;
   position: relative;
   width: 100%;
-  height: 70px;
+  height: 120px;
 }
 
 #minsta {
   padding-left: 5vw;
   padding-top: 6px;
-  font-size: xx-large;
+  font-size: xxx-large;
   font-family: cursive;
   position: absolute;
-  margin: 0;
+  margin: 1%;
+}
+
+#current-user {
+  font-size: xx-large;
+  float: right;
+  margin-right: 1%;
 }
 
 .header a {
@@ -56,19 +72,37 @@ body {
   background-color: #ffecfe;
 }
 
+.login-form {
+  grid-area: left;
+  margin: 10%;
+  margin-left: 20%;
+  border: solid 2px hotpink;
+  border-radius: 10px;
+  padding: 2%;
+  background-color: #ffecfe;
+}
+
 .actions {
   margin-block-start: 5px;
   margin-block-end: 5px;
 }
 
+.new-post-div {
+  grid-area: left;
+  width: 350px;
+  padding: 6%;
+}
+
 .new_post {
-  width: 400px;
+  width: 300px;
   margin: auto;
   border: solid 2px hotpink;
   border-radius: 10px;
   background-color: #ffecfe;
   display: grid;
   padding: 10px;
+  position: sticky;
+  top: 3%;
 }
 
 .new_post label {
@@ -76,7 +110,8 @@ body {
 }
 
 .send {
-  font-size: x-large;
+  margin: 4%;
+  font-size: large;
   background-color: #8ef5ec;
   color: black;
   padding: 4px;
@@ -108,16 +143,20 @@ body {
   outline: none;
   border: solid 2px hotpink;
   resize: none;
-  height: 70px;
 }
 
-#posts {
-  padding: 2%;
+#posts, .example-posts {
+  grid-area: right;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   font-family: sans-serif;
   margin: 0 -10px;
+}
+
+.example-posts {
+  justify-content: flex-end;
+  margin: 10px;
 }
 
 .each-post {
@@ -129,6 +168,10 @@ body {
   height: 200px;
   display: table;
   margin: 20px 10px;
+}
+
+.example {
+  opacity: 0.7;
 }
 
 .details {
@@ -178,4 +221,43 @@ body {
 button {
   border: none;
   background-color: inherit;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.edit-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#edit-caption {
+  width: 80%;
 }

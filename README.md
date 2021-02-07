@@ -7,6 +7,8 @@ Current user? Fresh api or returned with current apis? Or taken from username of
 
 When a new post is created, is it best to append this to the div as an individual post as opposed to re-running the getAllPosts API request? I imagine it is best in terms of speed but this means more written code which can lead to a greater possibility of more bugs?
 
+How to write posts in JS. Is it better just to set HTML as a string (eg my addEditAndDeleteButtons function), or to create elements, add ids and classes and append them (renderIndividualPost, addPostDetails, addPostImageHTML)? The latter seems to create more code. I have refactored a number of times and not settled on a preference!
+
 To clear images from test database:
 https://edgeguides.rubyonrails.org/active_storage_overview.html#discarding-files-stored-during-system-tests
 <!-- <div class="posts">

@@ -1,27 +1,68 @@
-<h2>Log in</h2>
+<div class="login-form">
+  <h2>Log in</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Log In" %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log In" %>
-  </div>
-<% end %>
+  <p style="margin-block-end: 0;">Don't have an account?</p>
+  <%= render "devise/shared/links" %>
+</div>
 
-<p style="margin-block-end: 0;">Don't have an account?</p>
-<%= render "devise/shared/links" %>
+<div class="example-posts">
+  <div class="each-post example">
+    <div class="post-details">
+      <h4 class="post-username">Jenny</h4>
+      <h5 class="post-timestamp">13:52 3 Feb 2021</h5>
+    </div>
+    <div class="image">
+      <img src="/app/assets/images/landscape.png">
+    </div>
+    <div class="post-caption">
+      <p>Check out my view this morning!</p>
+    </div>
+  </div>
+  <div class="each-post example">
+    <div class="post-details">
+      <h4 class="post-username">Dan</h4>
+      <h5 class="post-timestamp">19:03 31 Jan 2021</h5>
+    </div>
+    <div class="image">
+      <img src="/app/assets/images/landscape.png">
+    </div>
+    <div class="post-caption">
+      <p>Is this real?</p>
+    </div>
+  </div>
+  <div class="each-post example">
+    <div class="post-details">
+      <h4 class="post-username">RunElite</h4>
+      <h5 class="post-timestamp">09:32 29 Jan 2021</h5>
+    </div>
+    <div class="image">
+      <img src="/app/assets/images/landscape.png">
+    </div>
+    <div class="post-caption">
+      <p>It's gonna be cold but I'm ready to go! Bring it on!</p>
+    </div>
+  </div>
+</div>

@@ -1,13 +1,24 @@
-<div class="new-post" id="new-post">
+<div class="new-post-div" id="new-post">
   <form id="new-post-form" class="new_post" action="/posts" method="post">
     <input type="hidden" name="authenticity_token" value="zrPmD5SILoxt9UcIc6LxHpEXLL7_BKxpkCxiSk8QAd8Co65he826VHBIsCE3-6_5LA4HzG6M1yE1mFhT89iz6A">
     <label for="image">Upload Your Photo Here!</label>
     <input type="file" data-direct-upload-url="<%= rails_direct_uploads_url %>" id="post_image" name="post[image]">
-    <textarea id="caption" name="post[caption]" rows="8" cols="80" class="caption" placeholder="Share your thoughts here"></textarea>
+    <textarea id="caption" name="post[caption]" rows="6" cols="80" class="caption" placeholder="Share your thoughts here"></textarea>
     <input type="submit" class="send" id="Js-Send" value="Send">
   </form>
 </div>
 
 <div id="posts"></div>
-
+<div id="edit-modal" class="modal">
+  <div class="edit-modal-content">
+    <span class="close">&times;</span>
+    <form class="edit-post-form">
+      <input type="hidden" id="edit-post-id" value="" />
+      <div class="post-caption">
+        <input type="text" id="edit-caption" />
+      </div>
+      <input type="submit" id="save-edit" name="Update" />
+    </form>
+  </div>
+</div>
 <%= javascript_include_tag("posts.js") %>
