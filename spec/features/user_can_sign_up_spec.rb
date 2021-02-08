@@ -43,7 +43,6 @@ RSpec.feature "SignUp", type: :feature do
     fill_in "Username", with: "username" #duplicate
     fill_in "Email", with: "user@example.com"
     fill_in "Password", with: "hidden"
-    expect(page).to_not have_content("hidden")
     fill_in "user_password_confirmation", with: "hidden"
     click_button "Sign Up"
     expect(page).to have_content("Sign up")
@@ -58,7 +57,6 @@ RSpec.feature "SignUp", type: :feature do
     fill_in "Username", with: "username2"
     fill_in "Email", with: "user1@example.com" #duplicate
     fill_in "Password", with: "hidden"
-    expect(page).to_not have_content("hidden")
     fill_in "user_password_confirmation", with: "hidden"
     click_button "Sign Up"
     expect(page).to have_content("Sign up")

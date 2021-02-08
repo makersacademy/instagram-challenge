@@ -41,7 +41,9 @@ This is the part I feel I need most help with. I'd really appreciate it if you c
 -----------------------------------
 Very open but I wrote down user stories and it seemed more doable.
 
-I learned about Devise for user authentication - it took a while to figure out but I like it a lot - ultimately will make life easier!
+For user authentication I used the gem Devise which builds a lot of the routes and authentication methods. It has a nice feature of setting different roots, depending on whether a session is in clear or otherwise, and also allows you to divert any requests to other paths to the sign up /login page with the method   **before_action :authenticate_user!** in the controller. It also automates error messages which I need to adapt.
+
+Posting pics needed ActiveStorage and **has_one_attached :image** in the Post model.
 
 Used [this blog](https://www.digitalocean.com/community/tutorials/build-a-restful-json-api-with-rails-5-part-one) to help set up API.
 
@@ -54,6 +56,12 @@ Use factory bot to populate table data (eg create users and posts. I'm using it 
 To clear images from test database:
 https://edgeguides.rubyonrails.org/active_storage_overview.html#discarding-files-stored-during-system-tests
 (Haven't yet implemented this)
+
+To do / Next Steps:
+Tag posts
+Like posts
+Use JQuery
+Use React
 
 ## Instructions
 

@@ -21,7 +21,7 @@ RSpec.feature "Log In", type: :feature do
     expect(page).to have_content("Invalid Email or password")
   end
 
-  scenario "cannot log in with incorrect email" do
+  scenario "cannot log in with incorrect password" do
     visit '/'
     fill_in "Email", with: "Test@example.com"
     fill_in "Password", with: "wrongpassword"

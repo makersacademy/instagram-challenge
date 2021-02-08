@@ -4,9 +4,6 @@ class PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @post = Post.new
-    @posts = Post.all
-    @user = current_user
   end
 
   def create
@@ -26,8 +23,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
+    post = Post.find(params[:id])
+    post.destroy
   end
 
   def posts_api
@@ -40,11 +37,11 @@ class PostsController < ApplicationController
   end
 
   def new_post_no_image_api
-    @user = current_user
-    @post = @user.posts.create(post_params)
+    user = current_user
+    post = user.posts.create(post_params)
 
-    if @post.save
-      render json: @post
+    if post.save
+      render json: post
     else
       render error: { error: 'Unable to save post' }, status: 400
     end
