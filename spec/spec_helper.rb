@@ -1,7 +1,8 @@
 require "simplecov"
 SimpleCov.start "rails" do
-  puts "SimpleCov Required"
-  # add_filter "/channels/"
+  puts "Starting SimpleCov..."
+  add_filter "/channels/"
+  add_filter "/jobs/"
 end
 
 require 'capybara/rspec'

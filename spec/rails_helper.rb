@@ -1,5 +1,4 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('../config/environment', __dir__)
@@ -8,8 +7,12 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rails'
+require 'database_cleaner/active_record'
+require 'spec_helper'
+require 'support/factory_bot'
+Dir[Rails.root.join('spec/support/*.rb')].each { |f| require f }
 # Add additional requires below this line. Rails is not loaded until this point!
-
+include ActionDispatch::TestProcess
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -33,6 +36,7 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -42,6 +46,9 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  config.include RequestSpecHelper, type: :request
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include FeatureSpecHelper, type: :feature
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
@@ -61,6 +68,33 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Cleaning the database:
+  # Start by truncating all tables, then use faster transaction strategy
+  factory_bot_results = {}
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :transaction
+    ActiveSupport::Notifications.subscribe("factory_bot.run_factory") do |name, start, finish, id, payload|
+      factory_name = payload[:name]
+      strategy_name = payload[:strategy]
+      factory_bot_results[factory_name] ||= {}
+      factory_bot_results[factory_name][strategy_name] ||= 0
+      factory_bot_results[factory_name][strategy_name] += 1
+    end
+  end
+
+  # start the transaction as examples are run
+  # config.around(:each) do |example|
+  #   DatabaseCleaner.cleaning do
+  #     example.run
+  #   end
+  #   Faker::UniqueGenerator.clear
+  # end
+
+  config.after(:suite) do
+    puts factory_bot_results
+  end
 end
 
 Shoulda::Matchers.configure do |config|

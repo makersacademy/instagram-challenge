@@ -14,6 +14,8 @@
  *= require_self
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -21,21 +23,37 @@ body {
   text-align: center;
 }
 
+/* The grid container */
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header header'
+    'left left right right right right';
+  /* grid-column-gap: 10px; - if you want gap between the columns */
+}
+
 .header {
+  grid-area: header;
   background-image: linear-gradient(to right, hotpink, yellow);
   margin: 0;
   position: relative;
   width: 100%;
-  height: 70px;
+  height: 120px;
 }
 
 #minsta {
   padding-left: 5vw;
   padding-top: 6px;
-  font-size: xx-large;
+  font-size: xxx-large;
   font-family: cursive;
   position: absolute;
-  margin: 0;
+  margin: 1%;
+}
+
+#current-user {
+  font-size: xx-large;
+  float: right;
+  margin-right: 1%;
 }
 
 .header a {
@@ -54,19 +72,37 @@ body {
   background-color: #ffecfe;
 }
 
+.login-form {
+  grid-area: left;
+  margin: 10%;
+  margin-left: 20%;
+  border: solid 2px hotpink;
+  border-radius: 10px;
+  padding: 2%;
+  background-color: #ffecfe;
+}
+
 .actions {
   margin-block-start: 5px;
   margin-block-end: 5px;
 }
 
+.new-post-div {
+  grid-area: left;
+  width: 350px;
+  padding: 6%;
+}
+
 .new_post {
-  width: 400px;
+  width: 300px;
   margin: auto;
   border: solid 2px hotpink;
   border-radius: 10px;
   background-color: #ffecfe;
   display: grid;
   padding: 10px;
+  position: sticky;
+  top: 3%;
 }
 
 .new_post label {
@@ -74,7 +110,8 @@ body {
 }
 
 .send {
-  font-size: x-large;
+  margin: 4%;
+  font-size: large;
   background-color: #8ef5ec;
   color: black;
   padding: 4px;
@@ -106,15 +143,20 @@ body {
   outline: none;
   border: solid 2px hotpink;
   resize: none;
-  height: 70px;
 }
 
-.posts {
-  padding: 2%;
+#posts, .example-posts {
+  grid-area: right;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   font-family: sans-serif;
+  margin: 0 -10px;
+}
+
+.example-posts {
+  justify-content: flex-end;
+  margin: 10px;
 }
 
 .each-post {
@@ -125,6 +167,11 @@ body {
   padding: 10px;
   height: 200px;
   display: table;
+  margin: 20px 10px;
+}
+
+.example {
+  opacity: 0.7;
 }
 
 .details {
@@ -142,6 +189,7 @@ body {
   margin-block-start: 5px;
   margin-block-end: 0;
   float: right;
+  font-size: small;
 }
 
 .image {
@@ -153,11 +201,6 @@ body {
   font-family: none;
   font-size: small;
   font-style: italic;
-}
-
-.each-image {
-  width: 210px;
-  height: 180px;
 }
 
 .post-caption {
@@ -173,4 +216,9 @@ body {
   color: black;
   padding-left: 3px;
   padding-right: 3px;
+}
+
+button {
+  border: none;
+  background-color: inherit;
 }
