@@ -1,6 +1,22 @@
 Instagram Challenge
 ===================
 
+## Usage ##
+Clone to the repo, then the console:
+```
+cd instagram-challenge
+rails s
+```
+Open a browser and navigate to localhost:3000
+
+## Testing ##
+From the instagram-challenge directory, run
+```
+rspec
+```
+
+## Summary ##
+
 Quick Summary - I used vanilla JS and APIs to make the /posts page a single page app. Short User Stories (and Developer tools):
 
 - Sign up (CSS needs sorting)
