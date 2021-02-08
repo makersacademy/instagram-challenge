@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# ActiveSupport::MessageVerifier::InvalidSignature error here again.
 RSpec.feature "Edit post", type: :feature do
   scenario "user can edit own post" do
     log_in

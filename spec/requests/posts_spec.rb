@@ -12,16 +12,16 @@ RSpec.describe 'Posts API', type: :request do
 
   before(:each) do
     @post1 = user.posts.create(caption: "My caption")
-    @post1.image.attach(io: File.open('/Users/Student/Projects/weekend-challenges/instagram-challenge/spec/features/test_image.png'), filename: 'test_image.png')
+    @post1.image.attach(io: File.open('/Users/Student/Projects/weekend-challenges/instagram-challenge/spec/fixtures/files/test_image.png'), filename: 'test_image.png')
     @post2 = user.posts.create(caption: "2nd caption")
-    @post2.image.attach(io: File.open('/Users/Student/Projects/weekend-challenges/instagram-challenge/spec/features/test_image.png'), filename: 'test_image.png')
+    @post2.image.attach(io: File.open('/Users/Student/Projects/weekend-challenges/instagram-challenge/spec/fixtures/files/test_image.png'), filename: 'test_image.png')
     @post3 = user2.posts.create(caption: "User2s caption")
-    @post3.image.attach(io: File.open('/Users/Student/Projects/weekend-challenges/instagram-challenge/spec/features/test_image.png'), filename: 'test_image.png')
+    @post3.image.attach(io: File.open('/Users/Student/Projects/weekend-challenges/instagram-challenge/spec/fixtures/files/test_image.png'), filename: 'test_image.png')
     request_test_login(user)
   end
 
-  describe "GET /posts" do
-
+  describe "GET /posts_api" do
+    before { get "/posts_api.json"}
     it 'returns status 200 ok' do
       expect(response).to have_http_status(:ok)
     end
@@ -34,7 +34,7 @@ RSpec.describe 'Posts API', type: :request do
   end
 
   describe "PUT /posts/:id" do
-    let(:valid_attributes) { { caption: "New caption" } }
+    let(:valid_attributes) { { post: { caption: "New caption" } } }
 
     context 'when post exists' do
       before { put "/posts/#{@post1.id}", params: valid_attributes }

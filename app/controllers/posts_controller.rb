@@ -7,24 +7,22 @@ class PostsController < ApplicationController
     @post = Post.new
     @posts = Post.all
     @user = current_user
-    p @user
   end
 
   def create
-    @user = current_user
-    @post = @user.posts.create(post_params)
+    user = current_user
+    post = user.posts.create(post_params)
 
     redirect_to posts_url
   end
 
   def edit
-    @post = Post.find(params[:id])
+    post = Post.find(params[:id])
   end
 
   def update
-    p "IN THE UPDATE METHOD, PARAMS ARE #{params}"
-    @post = Post.find(params[:id])
-    @post.update(post_params)
+    post = Post.find(params[:id])
+    post.update(post_params)
   end
 
   def destroy

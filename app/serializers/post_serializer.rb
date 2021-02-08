@@ -5,6 +5,9 @@ class PostSerializer < ActiveModel::Serializer
   attribute :created_at do
     object.created_at.strftime("%H:%M %-d %B %Y")
   end
+  attribute :updated_at do
+    object.updated_at.strftime("%H:%M %-d %B %Y")
+  end
 
   def image_url
     if object.image.attached?

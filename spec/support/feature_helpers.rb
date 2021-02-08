@@ -8,8 +8,13 @@ module FeatureSpecHelper
   end
 
   def post_picture
-    page.attach_file('post_image', './spec/features/test_image.png')
-    fill_in "post_caption", with: "Test caption"
+    page.attach_file('post_image', './spec/fixtures/files/test_image.png')
+    fill_in "post[caption]", with: "Test caption"
+    click_button "Send"
+  end
+
+  def post_no_picture
+    fill_in "post[caption]", with: "Test caption no pic"
     click_button "Send"
   end
 end

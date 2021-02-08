@@ -1,10 +1,11 @@
 'use strict'
 
+// Allow 10 mins (600000ms) from posting to editing
+const UPDATABLE_TIME = 600000
+
 window.onload = function() {
   getPosts();
 }
-
-var modal = document.getElementById('edit-modal');
 
 var allPostsDiv = document.getElementById('posts');
 
@@ -18,12 +19,13 @@ function getPosts() {
 }
 
 document.getElementById('Js-Send').addEventListener("click", function(event) {
-  let captionField = document.getElementById('caption')
   if (document.getElementById('post_image').files.length === 0) {
     event.preventDefault();
+    let captionField = document.getElementById('postcaption')
     if (confirm('Send caption without a picture?')) {
       let caption = captionField.value;
       createPostWithoutImage(caption);
+      captionField.value = "";
     }
   }
   captionField.value = "";
@@ -61,8 +63,7 @@ function renderIndividualPost(post) {
   addPostImageHTML(post, postDiv);
   postCaption(post, postDiv);
   if (isCurrentUser(post.user.username)) {
-    postDiv.innerHTML += addEditAndDeleteButtons(post);
-    addEditAndDeleteEventListeners(post);
+    addEditAndDeleteButtons(post, postDiv);
   }
 }
 
@@ -88,58 +89,79 @@ function addPostImageHTML(post, postDiv) {
 }
 
 function postCaption(post, postDiv) {
-  let postCaptionHTML = `<div class="post-caption" id="caption-${post.id}"><p> ${post.caption} </p></div>`
+  if (post.created_at === post.updated_at) {
+    var postCaptionHTML = `<div class="post-caption" id="caption-${post.id}"><p>${post.caption}</p></div>`
+  } else {
+    var postCaptionHTML = `<div class="post-caption" id="caption-${post.id}"><p>${post.caption} <em>(edited)</em></p></div>`
+  }
   postDiv.innerHTML += postCaptionHTML;
 }
 
-function addEditAndDeleteButtons(post) {
-  let editAndDeleteButtonsHTML =
-    `<div class="edit-del-links">
-      <button class="delete-button" id="delete-post-${post.id}"><i class="far fa-trash-alt"></i></button>
-      <button class="edit-button" id="edit-post-${post.id}"><i class="fas fa-pencil-alt"></i></button>
-    </div>`
-  return editAndDeleteButtonsHTML;
+function addEditAndDeleteButtons(post, postDiv) {
+  let userButtonsDiv = document.createElement('div');
+  userButtonsDiv.className = "edit-del-links";
+  postDiv.appendChild(userButtonsDiv);
+  addDeleteButton(post, userButtonsDiv);
+  if (isUpdatable(post)) {
+    addEditButton(post, userButtonsDiv);
+  }
 }
 
-function addEditAndDeleteEventListeners(post) {
-  let deleteButton = document.getElementById(`delete-post-${post.id}`);
-  let editButton = document.getElementById(`edit-post-${post.id}`);
+function addDeleteButton(post, div) {
+  let deleteButton = document.createElement('button');
+  deleteButton.className = "delete-button";
+  deleteButton.id = `delete-post-${post.id}`;
+  deleteButton.innerHTML = `<i class="far fa-trash-alt"></i>`;
+  div.appendChild(deleteButton);
   deleteButton.addEventListener("click", function() {
     if (confirm("Are you sure you want to delete this post?")) {
       deletePost(post.id);
     }
   });
+}
+
+function addEditButton(post, div) {
+  let editButton = document.createElement('button');
+  editButton.className = "edit-button"
+  editButton.id = `edit-post-${post.id}`;
+  editButton.innerHTML = `<i class="fas fa-pencil-alt"></i>`
+  div.appendChild(editButton);
   editButton.addEventListener("click", function() {
-    document.getElementById('edit-caption').value = post.caption
-    document.getElementById('edit-post-id').value = post.id
-    modal.style.display = "block";
+    editPost(post, editButton);
   });
+  setTimeout(function() {
+    editButton.remove()
+  }, UPDATABLE_TIME - (Date.now() - Date.parse(post.created_at)))
+}
+
+function editPost(post, editButton) {
+  let captionArea = document.getElementById(`caption-${post.id}`)
+  captionArea.innerHTML = `<textarea type="text" id="test-edit-input" class="caption" />`
+  document.getElementById(`test-edit-input`).value = post.caption
+  let updateButton = document.createElement('INPUT')
+  updateButton.setAttribute("type", "submit")
+  updateButton.setAttribute("value", "Update")
+  editButton.after(updateButton);
+  editButton.remove();
+  updateButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    updatePost(post.id);
+    updateButton.after(editButton);
+    updateButton.remove();
+  })
 }
 
 function deletePost(id) {
   fetch(`http://localhost:3000/posts/${id}`, {
     method: 'DELETE'
-  })
-  .then(function() {
+  }).then(function() {
     getPosts();
   });
 }
 
-document.getElementsByClassName('close')[0].addEventListener("click", function() {
-  modal.style.display = "none";
-})
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-document.getElementById('save-edit').addEventListener("click", function(event) {
-  event.preventDefault();
-  let updatedCaption = document.getElementById('edit-caption').value;
-  let postID = document.getElementById('edit-post-id').value;
-  fetch(`http://localhost:3000/posts/${postID}`, {
+function updatePost(id) {
+  let updatedCaption = document.getElementById('test-edit-input').value;
+  fetch(`http://localhost:3000/posts/${id}`, {
     method: 'PATCH',
     headers: {
          'Content-Type': 'application/json'
@@ -148,10 +170,14 @@ document.getElementById('save-edit').addEventListener("click", function(event) {
       "post" : { "caption" : `${updatedCaption}`}
     })
   }).then(function() {
-    document.getElementById(`caption-${postID}`).innerHTML = `<p>${updatedCaption} <em>(edited)</em>`
+    document.getElementById(`caption-${id}`).innerHTML = `<p>${updatedCaption} <em>(edited)</em>`
   })
-});
+}
 
 function isCurrentUser(username) {
   return document.getElementById('current-user').innerHTML === username
+}
+
+function isUpdatable(post) {
+  return Date.now() - Date.parse(post.created_at) < UPDATABLE_TIME
 }
