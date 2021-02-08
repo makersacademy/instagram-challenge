@@ -1,13 +1,19 @@
 Instagram Challenge
 ===================
 
-## Usage ##
+## Installation ##
 Clone to the repo, then the console:
 ```
 cd instagram-challenge
+bundle
+```
+
+## Usage ##
+In the console:
+```
 rails s
 ```
-Open a browser and navigate to localhost:3000
+Then open a browser and navigate to localhost:3000
 
 ## Testing ##
 From the instagram-challenge directory, run
