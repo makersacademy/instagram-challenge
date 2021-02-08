@@ -6,6 +6,8 @@ Clone to the repo, then the console:
 ```
 cd instagram-challenge
 bundle
+bin/rails db:create
+bin/rails db:migrate
 ```
 
 ## Usage ##
