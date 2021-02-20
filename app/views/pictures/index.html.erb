@@ -1,0 +1,61 @@
+<body>
+  <% @pictures.each do |picture| %>
+    <% @user = User.find(picture.user_id) %>
+      <div class="">
+          <div class="container">
+              <div class="post">
+                  <div class="post-header">
+                    <div class="user-image">
+                      <i class="far fa-user-circle fa-2x"></i>
+                    </div><div class="user-name">
+                        <h2><%= @user.name %></h2>
+                    </div><div class="date">
+                      <%= picture.created_at.strftime("%d %b") %>
+                    </div>
+                  </div>
+                  <div class="picture">
+                
+                      <img src=<%= picture.url %>></img>
+                  </div>
+                  <div class="menu-bar">
+                    <div class="menu">
+                      <%= form_for(:like, url: like_path) do |form| %>
+                        <%= form.hidden_field :user_id, value: session[:user_id] %>
+                        <%= form.hidden_field :picture_id, value: picture.id %>
+
+                        <%= button_tag :submit do %>
+                          <i class="far fa-heart"></i>
+                        <% end %>
+                      <% end %>
+                    </div><div class="likes">
+                      <strong><%= picture.likes.count %> likes</strong>
+                    </div>
+                  </div>
+                  <div class="comments">
+                      <div class="comment-bar">
+                        <%= form_for(:comment, url: comment_path) do |form| %>
+                          <%= form.hidden_field :user_id, value: session[:user_id] %>
+                          <%= form.hidden_field :picture_id, value: picture.id %>
+                          <div class="comment-bar-textarea">
+                            <%= form.text_area :text, size: "63x2", placeholder: "Comment here..." %>
+                          </div><div class="comment-bar-button">
+                          <%= button_tag :submit do %>
+                            <i class="far fa-comment"></i>
+                          <% end %>
+                          </div>
+                        <% end %>
+                      </div>
+                      <% picture.comments.all.each do |comment| %>
+                        <% @commenter = User.find(comment.user_id) %>
+
+                        <div class="comment">
+                            <p><strong><%= @commenter.name %>: </strong><%= comment.text %></p>
+                        </div>
+                      <% end %>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+    <% end %>
+  </body>

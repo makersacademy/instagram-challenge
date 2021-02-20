@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>_nstagram</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/60e56b5ad3.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="header">
+        <div class="title">
+          <h1><%= link_to "_nstagram", pictures_path, class: "header-title" %></h1>
+        </div><div class="header-menu">
+          <% if logged_in? %>
+            <%= link_to "Log out", logout_path, method: :delete, class: "header-menu-item" %>
+            <%= link_to current_user.name, current_user, class: "header-menu-item" %>
+          <% end %>
+        </div><div class="button">
+          <%= link_to "+", new_picture_path, class: "btn" %>
+        </div>
+      </div>
+
+    </header>
+    <%= yield %>
+    
+  </body>
+</html>

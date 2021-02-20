@@ -1,39 +1,75 @@
-Instagram Challenge
-===================
+## _nstagram
+A small instagram clone.
 
-## Instructions
+## Motivation
+To consolidate learning of building a Ruby on Rails web application.
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+## Build status
 
-## Task
 
-Build Instagram: Simple huh!
+## Code style
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters!
+## Screenshots
+Pictures Index:
+![Pictures Index](https://github.com/chriswhitehouse/instagram-challenge/blob/master/screenshots/Screenshot%202021-02-01%20at%2009.27.26.png)
 
-## How to start
+## Tech/framework used
+Ruby on Rails with Postgresql database and Rspec/Capybara testing suite.
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+## Features
+Like photos and add comments!
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+## Code Example
+Pictures controller:
+```Ruby
+class PicturesController < ApplicationController
+  def index
+    @pictures = Picture.all.order("created_at DESC")
+  end
 
-## Code Quality
+  def show
+    @picture = Picture.find(params[:id])
+  end
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+  def new
+    @picture = Picture.new
+  end
 
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
+  def create
+    @picture = Picture.new(picture_params)
+
+    if @picture.save
+      redirect_to '/pictures'
+    else
+      render :new
+    end
+  end
+
+  private
+    def picture_params
+      params.require(:picture).permit(:url, :user_id)
+    end
+end
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+## Installation
+* Fork, and clone repo
+* You may have to type `$ rvm use '2.7.0'` to implement the right version of ruby.
+* Run `$ bundle install`
+* Then run `$ bin/rails db:create`
+* And, `$ bin/rails db:migrate`
+
+
+## Tests
+27 examples, 0 failures, 13 pending.
+
+* Run `$ rspec` for full testing.
+
+## How to use?
+
+* Run `$ bin/rails server` in the command line.
+* Navigate to 'localhost:3000' in your browser.
+* Sign in to create a user account.
+* Add a photo by clicking the '+' icon.
+* Paste an image url into the text area.

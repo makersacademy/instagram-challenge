@@ -1,0 +1,39 @@
+
+
+  <%= form_with model: @picture do |form| %>
+      <div class="container">
+        <div class="post">
+          <div class="post-header">
+            <div class="user-image">
+              <i class="far fa-user-circle fa-2x"></i>
+            </div><div class="user-name">
+                <h2>New Picture</h2>
+            </div><div class="date">
+            </div>
+          </div>
+          <div class="picture">
+            <%= form.text_area :url, size: "71x20", placeholder: "Enter Image URL here... 400x200 pls. e.g: https://picsum.photos/id/539/400/200" %>
+            <%= form.hidden_field :user_id, value: session[:user_id] %>
+          </div>
+
+
+          <div class="menu-bar">
+
+            <div class="menu">
+              <i class="far fa-heart"></i>
+              <i class="far fa-comment"></i>
+            </div><div class="submit-button">
+              <%= button_tag type: 'submit' do %>
+                <span class="far fa-paper-plane fa-2x"></span>
+              <% end %>
+            </div>
+          </div>
+          <% @picture.errors.full_messages_for(:url).each do |message| %>
+          <div class="error-message">
+            <strong>Error: </strong><%= message %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+    <% end %>
