@@ -1,4 +1,4 @@
-![Project Banner](https://github.com/Mornevanzyl/news-summary-challenge/blob/master/images/GitHub_Project_Banner.jpg?raw=true)
+![Project Banner](https://github.com/Mornevanzyl/instagram-challenge/blob/master/images/GitHub_Project_Banner.jpg?raw=true)
 
 # InstaGramParsons - Ruby/Rails
 
