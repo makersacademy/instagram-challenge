@@ -1,7 +1,17 @@
 <h1>Latergram</h1>
 
-<h2>Log in</h2>
 
+<% if user_signed_in? %>
+
+Add a new post:
+<%= button_to "New post", new_post_path, method: :get %>
+
+Congrats, you are signed in. Here are all the posts:
+
+
+
+<% else %>
+<h2>Log in</h2>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -26,3 +36,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+<% end %>

@@ -13,5 +13,4 @@ RSpec.feature "Registrations", type: :feature do
     expect(current_path).to eq('/')
   end
 
-
 end
