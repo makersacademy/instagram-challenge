@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "LoggingIns", type: :feature do
 
-  it "user can sign in" do
+  xit "user can sign in" do
     visit "/"
     click_on "Sign up"
     fill_in "user_email", with: DEFAULT_EMAIL

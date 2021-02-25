@@ -14,7 +14,9 @@ RSpec.describe "PostAPictures", type: :system do
     click_button "Sign up"
 
     find("#new_post").click
-
+    fill_in "title", with: "Writing a post"
+    click_button "Create Post"
+    expect(page).to have_content "Writing a post"
   end
 
 
