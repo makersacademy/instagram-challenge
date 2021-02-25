@@ -1,5 +1,3 @@
-require 'capybara/rails'
-
 ## Default configuration below
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
