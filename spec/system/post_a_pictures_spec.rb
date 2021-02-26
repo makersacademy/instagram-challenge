@@ -5,7 +5,7 @@ RSpec.describe "PostAPictures", type: :system do
     driven_by(:rack_test)
   end
 
-  xit "user can post a picture and see it displayed" do
+  it "user can post a picture and see it displayed" do
     visit "/"
     click_on "Sign up"
     fill_in "user_email", with: DEFAULT_EMAIL
