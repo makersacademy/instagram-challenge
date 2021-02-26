@@ -9,6 +9,17 @@
         <%= link_to "Home", root_path, class: "nav-link" %>
         <%= link_to "About", about_path, class: "nav-link" %>
       </div>
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <% if Current.user %>
+                <%= link_to Current.user.email, edit_password_path, class: 'nav-link' %>
+                <%= button_to 'Logout', logout_path, method: :delete, class: 'btn btn-sm btn-outline-secondary' %>
+            <% else %>
+                <%= link_to 'Sign Up', sign_up_path, class: 'nav-link' %>
+                <%= link_to 'Login', sign_in_path, class: 'nav-link' %>
+            <% end %>
+        </ul>
+
     </div>
   </div>
 </nav>
