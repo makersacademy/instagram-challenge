@@ -27,7 +27,17 @@
         <div class="user-section">
           <a><i class="fa fa-compass"></i></a>
           <a><i class="fa fa-heart"></i></a>
-          <a><i class="fa fa-user"></i></a>
+          <% if user_signed_in? %>
+            <a>
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete,
+                class: 'user-logout' %>
+            </a>
+
+          <% else %>
+            <a class="user-login" href="<%= new_user_session_path%>" title="User login">
+              <i class="fa fa-sign-in"></i>
+            </a>
+          <% end %>
         </div>
       </div>
     </nav>
