@@ -1,16 +1,38 @@
-<!DOCTYPE html>
+
 <html>
   <head>
-    <title>InstagramChallenge</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Instagram Clone</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    </head>
 
   <body>
+  
+        <h1 class="nt-5"> Welcome to Instagram </h1>
+        <p class="lead">Please register or sign in</p>
+       
+      </ul>
+    </div>
+  </div>
+</nav>
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+<p class="navbar-text float-right">
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+<% end %>
+</p>
     <%= yield %>
   </body>
 </html>
