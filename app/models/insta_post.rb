@@ -1,0 +1,2 @@
+class InstaPost < ApplicationRecord
+end
