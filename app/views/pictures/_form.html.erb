@@ -12,6 +12,15 @@
   <% end %>
 
   <div class="field">
+    <% if picture.image.attached?%>
+    <%= image_tag picture.image, style: "width: 200px; display:block" %>
+    <% end %>
+    
+    <%= form.label :image %>
+    <%= form.file_field :image%>
+  </div>
+
+  <div class="field">
     <%= form.label :caption %>
     <%= form.text_field :caption %>
   </div>
@@ -25,6 +34,7 @@
     <%= form.label :comments %>
     <%= form.text_field :comments %>
   </div>
+  
 
   <div class="actions">
     <%= form.submit %>
