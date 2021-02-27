@@ -1,20 +1,28 @@
 <h1>Sign Up</h1>
 
 <%= form_with model: @user, url: sign_up_path do |form| %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      <% @user.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+    </div>
+    <% end %>
+
   <div class="mb-3">
-  <%= form.text_field :first_name, class: "form-control", placeholder: "First name" %>
+    <%= form.text_field :first_name, class: "form-control", placeholder: "First name" %>
   </div>
   <div class="mb-3">
-  <%= form.text_field :last_name, class: "form-control", placeholder: "Last name" %>
+    <%= form.text_field :last_name, class: "form-control", placeholder: "Last name" %>
   </div>
   <div class="mb-3">
-  <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+    <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
   </div>
   <div class="mb-3">
-  <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
+    <%= form.password_field :password, class: "form-control", placeholder: "Password" %>
   </div>
   <div class="mb-3">
-  <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
+    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password" %>
   </div>
 
   <%= form.submit "Sign up", class: "btn btn-primary"%>

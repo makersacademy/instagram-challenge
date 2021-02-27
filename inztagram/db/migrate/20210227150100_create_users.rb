@@ -10,5 +10,3 @@ class CreateUsers < ActiveRecord::Migration[6.1]
     end
   end
 end
-
-# rails db:migrate:redo -> use this when you update the table 
