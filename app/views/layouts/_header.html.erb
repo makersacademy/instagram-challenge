@@ -6,12 +6,33 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <%if user_signed_in?%>
         <li class="nav-item">
         <%= link_to "Pictures", pictures_path, class:"nav-link"%>
         </li>
          <li class="nav-item">
         <%= link_to "New picture", new_picture_path, class:"nav-link"%>
         </li>
+        <li class="nav-item">
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"nav-link"%>
+        </li>
+         <li class="nav-item">
+        <%= link_to "Edit User", edit_user_registration_path, class:"nav-link"%>
+        </li>
+         <li class="nav-item">
+        <%= link_to "Cancel User", cancel_user_registration_path, class:"nav-link"%>
+        </li>
+        <% else %>
+          <li class="nav-item">
+        <%= link_to "Sign up", new_user_registration_path, class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+        <%= link_to "Login", new_user_session_path, class:"nav-link"%>
+        </li>
+        <li class="nav-item">
+        <%= link_to "Pictures", pictures_path, class:"nav-link"%>
+        </li>
+        <% end%>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
