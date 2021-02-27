@@ -34,7 +34,6 @@ group :development, :test do
 
  ## ADDED GEMS
   gem 'capybara'
-  gem 'factory_bot_rails'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'rubocop'
