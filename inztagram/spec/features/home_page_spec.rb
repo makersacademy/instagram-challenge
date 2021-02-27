@@ -2,9 +2,9 @@
 
 require './spec/rails_help'
 
-RSpec.feature 'User login', type: :feature do
-  scenario 'User visits the home page and can see a login option' do
+RSpec.feature 'Homepage', type: :feature do
+  scenario 'User visits the home page and can see Welcome message' do
     visit '/'
-    expect(page).to have_content('Timeline')
+    expect(page).to have_content('Welcome to Inztagram')
   end
 end
