@@ -1,6 +1,6 @@
 Instagram Challenge
 ===================
-
+Dan T weekend 8 challenge. 
 ## Instructions
 
 * Feel free to use Google, your notes, books, etc., but work on your own
