@@ -28,8 +28,10 @@ feature "Sign up" do
       click_on("Back")
       expect(page).to have_content "This is just a test title"
       expect(page).to have_content "And this is a test comment"
-      expect(page).to have_content "And this is a test comment"
-      expect(page.find('img#id:1')['src']).to have_content 'claude.png'
+      expect(page.find('#image_1')['src']).to have_content 'claude.png'
+      expect(page).to have_content "This is just a second test title"
+      expect(page).to have_content "And this is a second test comment"
+      expect(page.find('#image_2')['src']).to have_content 'claude.png'
     end
 
 
