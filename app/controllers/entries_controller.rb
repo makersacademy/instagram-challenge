@@ -1,4 +1,7 @@
 class EntriesController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index 
     @entries = Entry.all.order("created_at DESC")
   end 
