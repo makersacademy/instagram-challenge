@@ -1,0 +1,47 @@
+<%= form_with(model: picture) do |form| %>
+  <% if picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
+
+      <ul>
+        <% picture.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <% if picture.image.attached?%>
+    <%= image_tag picture.image, style: "width: 200px; display:block" %>
+    <% end %>
+    
+    <%= form.label :image %>
+    <%= form.file_field :image%>
+  </div>
+
+  <div class="field">
+    <%= form.label :caption %>
+    <%= form.text_field :caption %>
+  </div>
+
+  <div class="field">
+    <%= form.label :likes %>
+    <%= form.number_field :likes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_field :comments %>
+  </div>
+
+<%# BUG This is what caused the bug initially. When I now try and upload an image it won't work. see index page line 20.  %>
+   <div class="field">
+     <%= form.number_field :user_id, id: :picture_user_id, value: current_user.id, type: :hidden %>
+  </div>
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+
 # Instagram Challenge
 
 ## Instructions
