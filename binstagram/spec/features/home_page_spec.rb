@@ -17,8 +17,8 @@ RSpec.describe 'Welcome page', type: :system do
   describe 'links' do
     it "to new user registration page" do
       visit('/')
-      click_link('Register')
-      expect(page).to have_content('New user sign up')
+      click_link('Sign up')
+      expect(page).to have_content("Sign up for Binstagram here!")
     end
   end
 end
