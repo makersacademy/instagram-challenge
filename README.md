@@ -12,3 +12,8 @@ Instagram Challenge
 4. users can like a picture.
 
 5.  Bonus if you can add filters!
+
+
+- rails active_storage:install
+
+- rails db:migrate 
