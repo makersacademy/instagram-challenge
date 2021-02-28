@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    post_params = params["post"].permit("title", "contents")
+    post_params = params["post"].permit("title", "contents", "picture")
     post = Post.create(post_params)
     redirect_to(post_path(post))
   end
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    post_params = params["post"].permit("title", "contents")
+    post_params = params["post"].permit("title", "contents", "picture")
     post = Post.find(params["id"])
     post.update(post_params)
     redirect_to(post_path(post))
