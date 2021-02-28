@@ -1,3 +1,5 @@
+require 'capybara/rspec'
+
 require 'simplecov'
 require 'simplecov-console'
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
@@ -104,4 +106,7 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  config.after :all do
+    ApplicationRecord.subclasses.each(&:delete_all)
+  end
 end
