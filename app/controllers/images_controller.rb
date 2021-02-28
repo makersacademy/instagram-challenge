@@ -3,7 +3,11 @@ class ImagesController < ApplicationController
 
   # GET /images or /images.json
   def index
-    @images = Image.all
+    if user_singed_in?
+      @images = Image.all
+    else
+      redirect_to root_url
+    end
   end
 
   # GET /images/1 or /images/1.json
