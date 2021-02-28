@@ -65,4 +65,4 @@ plan:
 -create ruby on rails app.
 - create home page
 - create model for posts.
--install devise for sign in and out and reg.
+- install devise gem for sign in and out and reg.
