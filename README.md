@@ -37,3 +37,25 @@ gem "rubocop-rails"
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
+
+User stories
+
+As a user
+So I can use instagram
+I want to be able to create an account
+
+As a user
+SO I can use instagram
+I want to be able to sign in
+
+As a user
+So I can be instagrammy
+I want to be able to post pictures
+
+As a user
+So I can interact with people
+I want to be able to comment on pictures
+
+As a User
+So I can show my appreciation of a strong post
+I want to be able to like a post.
