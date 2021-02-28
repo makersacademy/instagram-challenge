@@ -3,7 +3,7 @@ Instagram Challenge
 
 
 
-1. users
+1. users DONE
 
 2. users can post pictures
 
@@ -14,6 +14,13 @@ Instagram Challenge
 5.  Bonus if you can add filters!
 
 
+
 - rails active_storage:install
 
 - rails db:migrate 
+
+Tables:
+  - users
+  - image => user_id, comments
+  - comments => image_id, user_id, comment
+   
