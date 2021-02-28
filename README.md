@@ -13,6 +13,12 @@ Instagram Challenge
 
 5.  Bonus if you can add filters!
 
+
+
+- rails active_storage:install
+
+- rails db:migrate 
+
 Tables:
   - users
   - image => user_id, comments
