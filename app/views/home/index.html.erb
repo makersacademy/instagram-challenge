@@ -1,2 +1,18 @@
 <h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class='form-upload'>
+	<%= form_for Post.new do |f| %>
+    <div class="form-group">
+      <%= f.text_field :description %>
+    </div>
+    <div class="form-group">
+      <%= f.file_field :image %>
+    </div>
+    <div class="form-group">
+      <%= f.text_field :user_id, value: current_user.id, class: 'd-none' %>
+    </div>
+    <br>
+    <div class="text-center">
+      <%= f.submit 'Create Post', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
