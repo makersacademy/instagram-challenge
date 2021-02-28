@@ -55,3 +55,8 @@ As a user,
 So that I can tell people I like their food pics,
 I would like to be able to comment on a post
 ```
+
+## Development stories
+
+Link to trello board:
+https://trello.com/b/XXbl4Pag/binstagram
