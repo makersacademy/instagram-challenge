@@ -60,6 +60,14 @@ Posts:
 
 A user can make many posts
 
+## Planning
+
+https://www.notion.so/05f28a6d32dc4af281a5fba5c0d6c95f?v=daab373a15a347b18e8e4b8f20e5e6b9
+
+## Wireframe 
+
+https://www.figma.com/file/nuH0AXv9ILkDYT0tXu9JtW/Instapan?node-id=0%3A1
+
 
 
 
