@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Pictures</h1>
+<br>
 
 <table>
   <thead>
@@ -9,6 +10,7 @@
       <th>Caption</th>
       <th>Likes</th>
       <th>Comments</th>
+      <th>User ID</th>
       <th colspan=""></th>
     </tr>
   </thead>
@@ -16,13 +18,17 @@
   <tbody>
     <% @pictures.each do |picture| %>
       <tr>
-        <td> <%= image_tag(picture.image, style: 'width:100px; height:auto')%></td>
+      <%# BUG Currently won't let me upload without an image (gives me an error message and then I have to delete the line below, then delete any images and then start again.) %>
+        <td> <%= image_tag picture.image unless picture.image.nil?%></td>
         <td><%= picture.caption%></td>
         <td><%= picture.likes %></td>
         <td><%= picture.comments %></td>
+        <td><%= picture.user_id %></td>
         <td><%= link_to 'Show', picture %></td>
+        <% if picture.user == current_user%>
         <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
         <td><%= link_to 'Delete', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end%>
       </tr>
     <% end %>
   </tbody>
