@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'submitting a new post', type: :feature do
-  scenario 'share a new pan' do 
+describe 'Users can edot', type: :feature do
+  scenario 'their already posted description' do 
     visit '/'
     click_link '+'
     fill_in 'Image', :with => 'https://tinyurl.com/8kx8xsyj'
