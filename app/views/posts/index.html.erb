@@ -1,15 +1,18 @@
+<% name = current_user.present?  ? current_user.email : "Sign in to post images" %>
+
 <h1>Posts</h1>
 <div>
   <% for post in @posts  %>
-  <h2><%= link_to(post.title, post_path(post)) %></h2>
-  <p><%= post.date %></p>
-  <p><%= post.contents %></p>
-  <% if post.picture.attached? %>
-    <p> This should have an image here</p>
-    <p><%= image_tag post.picture, style: "width: 200px; display: block" %></p>
+    <h2><%= link_to(post.title, post_path(post)) %></h2>
+    <p><%= post.date %></p>
+    <p><%= post.contents %></p>
+    <% if post.picture.attached? %>
+      <p><%= image_tag post.picture, style: "width: 200px; display: block" %></p>
     <% end %>
   <% end %>
 </div>
 <div>
-  <%= button_to("New", new_post_path, method: :get) %>
+  <% if current_user.present? %>
+    <%= button_to("New", new_post_path, method: :get) %>
+  <% end %>
   </div>

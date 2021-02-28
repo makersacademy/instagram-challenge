@@ -1,8 +1,16 @@
+<h2><%= @post.title %></h2>
+  <% if @post.picture.attached? %>
+    <p><%= image_tag @post.picture, style: "width: 200px; display: block" %></p>
+  <% end %>
+  <p><%= @post.date %></p>
+  <p><%= @post.contents %></p>
+
 <%= form_for(@post) do |form| %>
   <p><%= form.label("title") %></p>
   <p><%= form.text_field("title") %></p>
   <p><%= form.label("contents") %></p>
   <p><%= form.text_area("contents") %></p>
+  <p><%= form.file_field :picture %></p>
   <p><%= form.submit %></p>
 <% end %>
 <p><%= link_to("Back to post", post_path(@post)) %></p>
