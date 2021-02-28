@@ -1,5 +1,14 @@
 <h2><%= @post.title %></h2>
-  <p><%= @post.date %></p>
+  <% if @post.picture.attached? %>
+    <p><%= image_tag @post.picture, style: "width: 200px; display: block" %></p>
+  <% end %>
+  <p><%= @post.created_at %></p>
   <p><%= @post.contents %></p>
 
-<p><%= link_to("Back", posts_path) %></p>
+<% if current_user.id == @post.user_id %>
+
+  <p><%= button_to("Edit", edit_post_path(@post), method: :get) %></p>
+  <p><%= button_to "Remove", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %></p>
+  <p><%= button_to("Back", posts_path, method: :get) %></p>
+
+<% end %>
