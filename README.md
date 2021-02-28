@@ -1,4 +1,4 @@
-Instagram Challenge
+Instapan
 ===================
 
 ## Instructions
@@ -16,24 +16,51 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 Bonus if you can add filters!
 
-## How to start
+## User Stories
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
+```
+as a pan lover
+so i can see some nice pans
+i'd like to sign into instapan and see a feed of image
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+```
+as a pan lover
+so i can add my own content
+i'd like to sign up to instapan with a username email and password
+```
+
+```
+as a pan lover
+so i can share my own pans
+i'd like to be able to post a photo to the feed
+```
+
+```
+as a pan lover
+so i can see the latest pans
+i'd like the feed to be shown newest first
+```
+
+```
+as a pan lover
+so i can show off my pans
+i'd like my username to appear next to my own image in the feed
+```
+
+## Databases
+
+Users:
+| id | username | email | password | 
+|----|----------|-------|----------|
+
+Posts:
+| id | user_id | img src | time and date? |
+|----|---------|---------|----------------|
+
+A user can make many posts
+
+
+
+
+
