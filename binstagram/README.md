@@ -1,24 +1,18 @@
-# README
+# Binstagram
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an instagram clone project for the Makers weekend challenge, named 'Binstagram' (I don't like instagram if you can't tell).
 
-Things you may want to cover:
+## User instructions
 
-* Ruby version
+To run this app:
+1. clone this repo
+2. run <cd binstagram/>
+3. run <bundle install>  
+4. run <db:migrate>
+5. run <rails server>
+6. If you visit `localhost: 3000` you will have access to this app
 
-* System dependencies
+To run the test suite:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. clone this repo
+2. 
