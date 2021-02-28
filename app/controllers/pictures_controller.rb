@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   # GET /pictures or /pictures.json
   def index
     @pictures = Picture.all
@@ -12,7 +13,8 @@ class PicturesController < ApplicationController
 
   # GET /pictures/new
   def new
-    @picture = Picture.new
+    # @picture = Picture.new
+    @picture = current_user.pictures.build
   end
 
   # GET /pictures/1/edit
@@ -21,7 +23,8 @@ class PicturesController < ApplicationController
 
   # POST /pictures or /pictures.json
   def create
-    @picture = Picture.new(picture_params)
+    # @picture = Picture.new(picture_params)
+    @picture = current_user.pictures.build(picture_params)
 
     respond_to do |format|
       if @picture.save
@@ -54,6 +57,10 @@ class PicturesController < ApplicationController
       format.html { redirect_to pictures_url, notice: "Picture was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+  def correct_user
+    @picture = current_user.pictures.find_by(id: params[:id])
+    redirect_to pictures_path, notice: "You are not allowed to do this you idiot! Get out of here." if @picture.nil?
   end
 
   private
