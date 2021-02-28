@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 require './spec/rails_help'
+require './spec/spec_helpers/sign_in_helper'
 
 RSpec.feature 'Sign up page', type: :feature do
   scenario 'User can sign up' do
-    visit '/sign_up'
-    fill_in 'user[first_name]', with: 'Joe'
-    fill_in 'user[last_name]', with: 'Bloggs'
-    fill_in 'user[email]', with: 'joebloggs@test.com'
-    fill_in 'user[password]', with: 'password'
-    fill_in 'user[password_confirmation]', with: 'password'
-    click_button 'Sign up'
+    sign_up 
     expect(page).to have_content('Successfully created account')
+  end
+
+  scenario 'User cannot use an email already registered' do 
+    sign_up
+    click_button 'Logout'
+    sign_up
+    expect(page).to have_content('Please enter a new email address')
   end
 end

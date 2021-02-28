@@ -9,6 +9,6 @@ RSpec.describe User, type: :model do
       user = User.create({first_name: "Joe", last_name: "Bloggs", email: "test@anotheremail.com", password: "password",  password_confirmation: "password" })
       expect(User.first.email).to eq("test@anotheremail.com")
     end
-    
+
   end
 end
