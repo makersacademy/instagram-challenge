@@ -15,4 +15,43 @@ To run this app:
 To run the test suite:
 
 1. clone this repo
-2. 
+2.
+
+
+## User stories
+
+```
+As a user
+So I can show everyone my food,
+I would like to upload a picture
+```
+
+```
+As a user,
+So that I can tell everyone what my dish was,
+I would like to be able to give a title to my post
+```
+
+```
+As a user,
+So that I can show my support,
+I would like to be able to give a 'like' to posts I like
+```
+
+```
+As a user,
+So that I can access binstagram and make posts,
+I would like to be able to register to binstagram
+```
+
+```
+As a user,
+So that I can get back into my account when I want,
+I would like to be able to log in to binstagram
+```
+
+```
+As a user,
+So that I can tell people I like their food pics,
+I would like to be able to comment on a post
+```
