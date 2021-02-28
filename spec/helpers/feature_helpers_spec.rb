@@ -10,7 +10,7 @@ def sign_up
 end 
 
 def sign_out
-  click_button 'Log Out'
+  click_link 'Log Out'
 end
 
 def sign_in
