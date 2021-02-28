@@ -31,8 +31,6 @@ RSpec.describe "PostAPictures", type: :system do
     attach_file("post_image", Rails.root + "spec/support/test_image.jpg")
     click_button "Create Post"
     expect(page).to have_css("img[src*='test_image.jpg']")
-
-      # <img src="http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--be9ae6dfb9eadf1c5cd4fff2fa4dbe3c17c488f8/ruby.jpg">
   end
 
 
