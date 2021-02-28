@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
     redirect_to(entries_path)
   end   
   def create 
-    entry_params = params['entry'].permit('image', 'description')
+    entry_params = params['entry'].permit('image', 'description', 'user_id')
     entry = Entry.create(entry_params)
     redirect_to(entries_path)
   end 
@@ -17,7 +17,7 @@ class EntriesController < ApplicationController
   end 
 
   def update 
-    entry_params = params['entry'].permit('image', 'description')
+    entry_params = params['entry'].permit('image', 'description', 'user_id')
     entry = Entry.find(params['id'])
     entry.update(entry_params)
     redirect_to(entries_path)
