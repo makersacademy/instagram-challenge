@@ -1,15 +1,27 @@
 class EntriesController < ApplicationController
   def index 
-    @entries = Entry.all
+    @entries = Entry.all.order("created_at DESC")
+  end 
+
+  def new
+    @entry = current_user.entries.build
   end 
 
   def show 
     redirect_to(entries_path)
-  end   
+  end  
+
   def create 
-    entry_params = params['entry'].permit('image', 'description', 'user_id')
-    entry = Entry.create(entry_params)
-    redirect_to(entries_path)
+    @post = current_user.entries.build(entry_params)
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to root_path, notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: @post }
+      else
+        format.html { render :new }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
   end 
 
   def edit 
@@ -17,9 +29,14 @@ class EntriesController < ApplicationController
   end 
 
   def update 
-    entry_params = params['entry'].permit('image', 'description', 'user_id')
     entry = Entry.find(params['id'])
     entry.update(entry_params)
     redirect_to(entries_path)
   end 
+
+  private 
+
+  def entry_params
+    params.require(:entry).permit(:image, :description, :user_id)
+  end
 end
