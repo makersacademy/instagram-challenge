@@ -16,7 +16,6 @@ class PostsController < ApplicationController
     post_params = params["post"].permit("title", "contents", "picture", "user_id")
     post = Post.create(post_params)
     redirect_to(post_path(post))
-
   end
 
   def edit
