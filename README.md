@@ -3,17 +3,14 @@ Instagram Challenge
 
 
 
-1. users
+WIP instagram clone. So far you can upload images. Only the user that added the image can edit or delete them. If you're not signed in you can see the images but you can't post any.
 
-2. users can post pictures
-
-3. users can write comments on pictures
-
-4. users can like a picture.
-
-5.  Bonus if you can add filters!
-
+Set up:
 
 - rails active_storage:install
 
-- rails db:migrate 
+- rails db:migrate
+
+- rails server
+
+- visit http://127.0.0.1:3000/ in your browser
