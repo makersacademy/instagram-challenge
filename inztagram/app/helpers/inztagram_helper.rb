@@ -1,0 +1,2 @@
+module InztagramHelper
+end
