@@ -22,3 +22,8 @@ def add_second_post
   attach_file('post_picture', File.absolute_path('./spec/claude.png'))
   click_on :commit
 end
+
+def add_comment
+  fill_in :comment_contents, with: "Claude looks so noble in that image"
+  click_on :commit
+end 

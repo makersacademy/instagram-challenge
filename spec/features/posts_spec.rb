@@ -9,7 +9,9 @@ feature "Sign up" do
     expect(current_path).to eq('/')
     end
 
-  feature "Post image"
+end
+
+feature "Post image" do
 
     it "can add a new post" do
       add_post
@@ -34,8 +36,21 @@ feature "Sign up" do
       expect(page.find('#image_2')['src']).to have_content 'claude.png'
     end
 
+  end
+
+  feature "add comment" do
+
+    it "allows anyone to comment on a picture" do
+      add_post
+      click_on("Back")
+      click_on :comment_1
+      add_comment
 
   end
+
+
+
+end
 
 #   feature "request to book" do
 #   scenario "to be able to click book button" do
