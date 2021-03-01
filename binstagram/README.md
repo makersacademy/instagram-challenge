@@ -15,7 +15,9 @@ To run this app:
 To run the test suite:
 
 1. clone this repo
-2.
+2. run <bundle install>
+3. run <db:migrate>
+4. run <bundle exec rspec>
 
 
 ## User stories
@@ -60,3 +62,16 @@ I would like to be able to comment on a post
 
 Link to trello board:
 https://trello.com/b/XXbl4Pag/binstagram
+
+### Completed features:
+* Home page
+* User sign up feature and tests
+
+### Features to do:
+* Test user log in
+* Test user sign out
+* Create posts page
+* Create posts model and table
+* Make everything more aesthetically pleasing
+* Incorporate continuous integration
+* Add app to Heroku 
