@@ -1,9 +1,12 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  root 'posts#index'
+  root 'pages#home'
 
-  resources :posts
+
+  devise_for :users
+
+  get '/upload', to: 'images#new'
+  resources :images, only: [:index, :show, :create]
+
+  get '/:username', to: 'users#show', as: :profile
 end
