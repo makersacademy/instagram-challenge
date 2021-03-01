@@ -16,7 +16,7 @@ class ImagesController < ApplicationController
 
   # GET /images/new
   def new
-    @image = Image.new
+    @image = current_user.images.new
   end
 
   # GET /images/1/edit
@@ -25,7 +25,7 @@ class ImagesController < ApplicationController
 
   # POST /images or /images.json
   def create
-    @image = Image.new(image_params)
+    @image = current_user.images.new(image_params)
 
     respond_to do |format|
       if @image.save
@@ -68,6 +68,6 @@ class ImagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def image_params
-      params.require(:image).permit(:caption, :image)
+      params.require(:image).permit(:caption, :image, :user_id)
     end
 end
