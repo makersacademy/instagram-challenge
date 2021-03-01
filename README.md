@@ -68,6 +68,13 @@ https://www.notion.so/05f28a6d32dc4af281a5fba5c0d6c95f?v=daab373a15a347b18e8e4b8
 
 https://www.figma.com/file/nuH0AXv9ILkDYT0tXu9JtW/Instapan?node-id=0%3A1
 
+## Next Steps
+- deploy to heroku
+- user needs to have their own profile
+- be able to follow other users
+- get travis up and running
+- only see posts from users you follow
+
 
 
 
