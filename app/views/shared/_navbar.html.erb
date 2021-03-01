@@ -1,0 +1,47 @@
+x<nav class="navbar sticky_top navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <!-- <%= link_to "instaGram\nParsons", root_path, class: "logo" %> -->
+    <%= link_to "instaGram\nParsons", posts_path, class: "logo" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <!-- <%= link_to "Posts", posts_path, class: "nav-link" %> -->
+          <!-- <%= link_to "New Post", new_post_path, class: "nav-link" %> -->
+
+          <%= link_to new_post_path do %>
+            <i class="fas fa-plus"></i>
+          <% end %>
+
+        </li>
+        <!-- <li class="nav-item">
+          <%= link_to "About", about_path, class: "nav-link" %>
+        </li> -->
+
+        <% if Current.user %>
+          <li class="nav-item">
+            <%= link_to edit_password_path do %>
+              <i class="fas fa-user-check"></i>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <!-- <%= link_to 'Logout', logout_path, method: :delete, class: 'nav-link' %> -->
+            <%= link_to logout_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to 'Sign Up', sign_up_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Login', sign_in_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+
+      </ul>
+    </div>
+  </div>
+</nav>
