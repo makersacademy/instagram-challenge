@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstagramChallenge</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="navbar navbar-expand-lg bg-dark navbar-dark mb-3">
+      <div class="container">
+        <%= link_to "InstaStrap", root_path, class: 'navbar-brand' %>
+
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to "Home", root_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Recent", images_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Upload", upload_path, class: 'btn btn-primary' %>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <% if user_signed_in? %>
+            <li class="nav-item">
+                <%= link_to current_user.full_name, profile_path(current_user.username), class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Log Out", destroy_user_session_path, class: 'nav-link', method: :delete %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to "Sign In", new_user_session_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Create an Account", new_user_registration_path, class: 'btn btn-primary' %>
+              </li>
+            <% end %>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
