@@ -1,0 +1,39 @@
+<style>
+.content {
+  max-width: 500px;
+  margin: auto;
+}
+</style>
+<p id="notice"><%= notice %></p>
+
+<h1>Here is your feed <%=current_user.email%></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Caption</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+</table>
+  <body>
+    <% @images.each do |image| %>
+
+        <div style='width:400px; height:auto'>
+          <%= image_tag(image.image, style: 'width:100%') %>
+        </div>
+
+        <%= image.caption %>
+        <p class='links'>
+        <%= link_to 'Show', image %>
+        <%= link_to 'Edit', edit_image_path(image) %>
+        <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <br>
+      </p>
+    <% end %>
+  </body>
+
+
+<br>
+
+<%= link_to 'New Image', new_image_path %>
