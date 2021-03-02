@@ -13,8 +13,8 @@ class PicturesController < ApplicationController
 
   # GET /pictures/new
   def new
-    # @picture = Picture.new
-    @picture = current_user.pictures.build
+    @picture = Picture.new
+    # @picture = current_user.pictures.build
   end
 
   # GET /pictures/1/edit
@@ -23,8 +23,8 @@ class PicturesController < ApplicationController
 
   # POST /pictures or /pictures.json
   def create
-    # @picture = Picture.new(picture_params)
-    @picture = current_user.pictures.build(picture_params)
+    @picture = Picture.new(picture_params)
+    # @picture = current_user.pictures.build(picture_params)
 
     respond_to do |format|
       if @picture.save
@@ -71,6 +71,6 @@ class PicturesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def picture_params
-      params.require(:picture).permit(:caption, :likes, :comments, :image, :user_id)
+      params.require(:picture).permit(:caption,:comments, :image, :user_id)
     end
   end
