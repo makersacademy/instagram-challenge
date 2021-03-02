@@ -13,14 +13,13 @@
     <p><%= form.text_field("comment") %></p>
     <%= form.hidden_field :user_id, :value => current_user.id %>
     <%= form.hidden_field :image_id, :value => @post.id %>
+    <%= form.hidden_field :username, :value => current_user.email %>
     <p><%= form.submit %></p>
   <p><%= button_to("Back", posts_path, method: :get) %></p>
   <div>
     <% @comments.reverse.each do |comment|  %>
-      <% if comment.image_id = @post.id %>
-       <% id = comment.user_id %>
-       <% user = User.find(params["id"]) %>
-        <p><%= user.email %></p>
+      <% if comment.image_id == @post.id %>
+        <p><%= comment.username %></p>
         <p><%= comment.comment %></p>
         <p><%= comment.created_at.strftime("%e %B %Y %H:%M") %>
       <% end %>
