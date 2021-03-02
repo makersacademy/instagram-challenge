@@ -6,9 +6,27 @@
   <p><%= @post.contents %></p>
 
 <% if current_user.id == @post.user_id %>
-
   <p><%= button_to("Edit", edit_post_path(@post), method: :get) %></p>
   <p><%= button_to "Remove", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %></p>
+  <% end %>
+  <%= form_for(Comment.new) do |form| %>
+    <p><%= form.text_field("comment") %></p>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+    <%= form.hidden_field :image_id, :value => @post.id %>
+    <p><%= form.submit %></p>
   <p><%= button_to("Back", posts_path, method: :get) %></p>
+  <div>
+    <% @comments.reverse.each do |comment|  %>
+      <% if comment.image_id = @post.id %>
+       <% id = comment.user_id %>
+       <% user = User.find(params["id"]) %>
+        <p><%= user.email %></p>
+        <p><%= comment.comment %></p>
+        <p><%= comment.created_at.strftime("%e %B %Y %H:%M") %>
+      <% end %>
+    <% end %>
+  </div>
+
+
 
 <% end %>

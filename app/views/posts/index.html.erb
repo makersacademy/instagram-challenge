@@ -1,15 +1,14 @@
-<% name = current_user.present?  ? current_user.email : "Sign in to post images" %>
-<% @user_id = current_user.present?  ? current_user.id : nil %>
-
-<h3><%= name %></h3>
 <div>
-  <% for post in @posts  %>
-  <h2><%= link_to(post.title, post_path(post)) %></h2>
+  <% @posts.reverse.each do |post|  %>
+  <% if current_user.present? %>
+    <h3><%= link_to(post.title, post_path(post)) %></h3>
+  <% else %>
+    <h2><%= post.title %>
+  <% end %>
   <p><%= post.created_at %></p>
   <p><%= post.contents %></p>
   <% if post.picture.attached? %>
     <p><%= image_tag post.picture, id: "image_#{post.id}", style: "width: 200px; display: block" %></p>
-    <p><%= button_to("Comment", new_comment_path, method: :get, id: "comment_#{post.id}", value: "#{post.id}") %></p>
     <% end %>
   <% end %>
 </div>

@@ -7,13 +7,38 @@ feature "Sign up" do
     sign_up
     expect(page).to have_content('test@email.com')
     expect(current_path).to eq('/')
-    end
+  end
+
+  scenario "only signed-in users can add a post" do
+    add_post
+  end
+
+  scenario "signed out users do not see 'New post' button" do
+    visit '/posts'
+    expect(page).not_to have_content("New")
+  end
+
+  scenario "signed out users are told to sign in to post" do
+    visit '/posts'
+    expect(page).to have_content("Sign in to make frames")
+  end
+
+  scenario "signed in users see their user.email on the page" do
+    sign_up
+    expect(page).to have_content("test@email.com")
+  end
+
+  scenario "signed_in users can click on post link" do
+    add_post
+    click_on("Back")
+    click_on("This is just a test title")
+  end
 
 end
 
 feature "Post image" do
 
-    it "can add a new post" do
+    scenario "it can add a new post" do
       add_post
       expect(page).to have_content "This is just a test title"
       expect(page).to have_content "And this is a test comment"
@@ -21,7 +46,7 @@ feature "Post image" do
       expect(page.find('img')['src']).to have_content 'claude.png'
     end
 
-    it "displays all posts on the main page" do
+    scenario "it displays all posts on the main page" do
       add_post
       p "Added first post"
       click_on("Back")
@@ -38,19 +63,18 @@ feature "Post image" do
 
   end
 
-  feature "add comment" do
+feature "add comment" do
 
-    it "allows anyone to comment on a picture" do
-      add_post
-      click_on("Back")
-      click_on :comment_1
-      add_comment
 
+  scenario "it allows signed_in users to comment on a picture" do
+    add_post
+    click_on("Back")
+    click_on("This is just a test title")
+    add_comment
   end
 
-
-
 end
+
 
 #   feature "request to book" do
 #   scenario "to be able to click book button" do

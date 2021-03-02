@@ -1,2 +1,4 @@
 class Comment < ApplicationRecord
+
+
 end
