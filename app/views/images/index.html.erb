@@ -4,18 +4,10 @@
   margin: auto;
 }
 </style>
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<h1>Here is your feed <%=current_user.email%></h1>
+<h1>Here is your feed <%=current_user.username%></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Caption</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-</table>
   <body>
     <% @images.each do |image| %>
 
@@ -23,12 +15,14 @@
           <%= image_tag(image.image, style: 'width:100%') %>
         </div>
 
-        <%= image.caption %>
-        created at: <%= image.created_at.strftime('%d-%m-%y') %>
+        <p><%= image.caption %></p>
+        <p>created by: <%= image.user.username %></p>
+        <p>created at: <%= image.created_at.strftime('%d-%m-%y') %></p>
         <p class='links'>
         <%= link_to 'Show', image %>
         <%= link_to 'Edit', edit_image_path(image) %>
         <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <br>
         <br>
       </p>
     <% end %>
