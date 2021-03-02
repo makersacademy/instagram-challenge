@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instagram</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+  </head>
+
+  <body>
+<% if logged_in? %>
+  Logged in as <%= current_user().username %>.
+  <br>
+  <%= link_to "Log-out", sessions_destroy_path %>
+  <% else %>
+    <%= link_to "Sign-up", users_new_path %> or
+    <%= link_to "Log-in", sessions_new_path %>
+  <% end %>
+
+    <%= yield %>
+  </body>
+</html>
