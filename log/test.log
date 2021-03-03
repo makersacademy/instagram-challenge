@@ -4107,3 +4107,449 @@ Processing by EntriesController#index as HTML
   Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 2395)
 Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.2ms | Allocations: 2831)
   [1m[36mTRANSACTION (2.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:27:16 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mEntry Load (0.9ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  Rendered entries/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 290)
+  Rendered layout layouts/application.html.erb (Duration: 144.0ms | Allocations: 20465)
+Completed 200 OK in 156ms (Views: 144.7ms | ActiveRecord: 2.0ms | Allocations: 24123)
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-03-03 17:27:17 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 189)
+  Rendered devise/shared/_links.html.erb (Duration: 2.0ms | Allocations: 515)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 12.7ms | Allocations: 4945)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 86)
+  Rendered layout layouts/application.html.erb (Duration: 18.9ms | Allocations: 7042)
+Completed 200 OK in 39ms (Views: 22.4ms | ActiveRecord: 3.0ms | Allocations: 13051)
+Started POST "/users" for 127.0.0.1 at 2021-03-03 17:27:17 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"peterpan", "email"=>"pans@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+[31mUnpermitted parameter: :password_confirmation[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pans@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "pans@email.com"], ["encrypted_password", "$2a$04$A335o9M1ed2L0aYeA8TjDODBRyL11e/XX0LsYxDgiUIBr7ZFbSt9m"], ["created_at", "2021-03-03 17:27:17.115877"], ["updated_at", "2021-03-03 17:27:17.115877"], ["username", "peterpan"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 11ms (ActiveRecord: 1.4ms | Allocations: 3839)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:27:17 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEntry Load (0.1ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  Rendered entries/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 491)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 64)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 2578)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.6ms | Allocations: 3034)
+Started GET "/entries/new" for 127.0.0.1 at 2021-03-03 17:27:17 +0000
+Processing by EntriesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering entries/new.html.erb within layouts/application
+  Rendered entries/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 52)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 2892)
+Completed 200 OK in 16ms (Views: 5.4ms | ActiveRecord: 1.3ms | Allocations: 8917)
+Started POST "/entries" for 127.0.0.1 at 2021-03-03 17:27:17 +0000
+Processing by EntriesController#create as HTML
+  Parameters: {"entry"=>{"image"=>"https://tinyurl.com/2mshpeur", "description"=>"Wok n Roll"}, "commit"=>"Post"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEntry Create (0.8ms)[0m  [1m[32mINSERT INTO "entries" ("image", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["image", "https://tinyurl.com/2mshpeur"], ["description", "Wok n Roll"], ["created_at", "2021-03-03 17:27:17.176501"], ["updated_at", "2021-03-03 17:27:17.176501"], ["user_id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 7ms (ActiveRecord: 1.6ms | Allocations: 1218)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:27:17 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered entries/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 761)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 49)
+  Rendered layout layouts/application.html.erb (Duration: 11.0ms | Allocations: 2826)
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 1.4ms | Allocations: 3263)
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-03-03 17:27:17 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 8ms (ActiveRecord: 0.5ms | Allocations: 1643)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:27:17 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mEntry Load (0.4ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered entries/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 451)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 65)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 2532)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.7ms | Allocations: 2966)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:27:17 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mEntry Load (0.3ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered entries/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 447)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 63)
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 2526)
+Completed 200 OK in 15ms (Views: 13.4ms | ActiveRecord: 0.5ms | Allocations: 2944)
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-03-03 17:27:17 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 70)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1056)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 86)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 3152)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms | Allocations: 3693)
+Started POST "/users" for 127.0.0.1 at 2021-03-03 17:27:17 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"paneer", "email"=>"paneer@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+[31mUnpermitted parameter: :password_confirmation[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "paneer@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "paneer@email.com"], ["encrypted_password", "$2a$04$oP7DXk8jZztAI7/D7Jo1wOy.G3/45XvhGwNSHTielXOcwTM4w5mem"], ["created_at", "2021-03-03 17:27:17.343686"], ["updated_at", "2021-03-03 17:27:17.343686"], ["username", "paneer"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 6ms (ActiveRecord: 0.8ms | Allocations: 1471)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:27:17 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered entries/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 642)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 49)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 2707)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.7ms | Allocations: 3145)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mEntry Load (0.8ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  Rendered entries/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 290)
+  Rendered layout layouts/application.html.erb (Duration: 88.5ms | Allocations: 16383)
+Completed 200 OK in 100ms (Views: 89.2ms | ActiveRecord: 2.0ms | Allocations: 20041)
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 189)
+  Rendered devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 515)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 30.8ms | Allocations: 4945)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 86)
+  Rendered layout layouts/application.html.erb (Duration: 40.2ms | Allocations: 7040)
+Completed 200 OK in 82ms (Views: 45.1ms | ActiveRecord: 11.6ms | Allocations: 13049)
+Started POST "/users" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"peterpan", "email"=>"pans@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+[31mUnpermitted parameter: :password_confirmation[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pans@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "pans@email.com"], ["encrypted_password", "$2a$04$rCw3q2jkMcv614.RocAB4eBbI80XAk41/Uldn29FWdwY4VlmXlWEm"], ["created_at", "2021-03-03 17:28:15.374614"], ["updated_at", "2021-03-03 17:28:15.374614"], ["username", "peterpan"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 24ms (ActiveRecord: 1.2ms | Allocations: 3839)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  Rendered entries/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 491)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 64)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 2576)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.5ms | Allocations: 3016)
+Started GET "/entries/new" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by EntriesController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering entries/new.html.erb within layouts/application
+  Rendered entries/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 52)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 2890)
+Completed 200 OK in 17ms (Views: 5.3ms | ActiveRecord: 1.4ms | Allocations: 8929)
+Started POST "/entries" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by EntriesController#create as HTML
+  Parameters: {"entry"=>{"image"=>"https://tinyurl.com/2mshpeur", "description"=>"Wok n Roll"}, "commit"=>"Post"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEntry Create (0.5ms)[0m  [1m[32mINSERT INTO "entries" ("image", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["image", "https://tinyurl.com/2mshpeur"], ["description", "Wok n Roll"], ["created_at", "2021-03-03 17:28:15.435829"], ["updated_at", "2021-03-03 17:28:15.435829"], ["user_id", 3]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms | Allocations: 1222)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered entries/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 761)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 49)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 2824)
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.5ms | Allocations: 3259)
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms | Allocations: 1484)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mEntry Load (0.3ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered entries/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 451)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 65)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 2530)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.4ms | Allocations: 2964)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mEntry Load (0.3ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered entries/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 447)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 63)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 2524)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.5ms | Allocations: 2932)
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 70)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1056)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 86)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 3150)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 3699)
+Started POST "/users" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"paneer", "email"=>"paneer@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+[31mUnpermitted parameter: :password_confirmation[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "paneer@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "paneer@email.com"], ["encrypted_password", "$2a$04$tTl5Nl3lg7xD74q6TfjqCeVlITyyTTBqU.Ldq3AFjQdULKaoIky92"], ["created_at", "2021-03-03 17:28:15.526625"], ["updated_at", "2021-03-03 17:28:15.526625"], ["username", "paneer"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms | Allocations: 1467)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered entries/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 642)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 49)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 2705)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.6ms | Allocations: 3159)
+Started GET "/users/3" for 127.0.0.1 at 2021-03-03 17:28:15 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" WHERE "entries"."user_id" = $1 ORDER BY created_at DESC[0m  [["user_id", 3]]
+  Rendered users/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 367)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 60)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2437)
+Completed 200 OK in 9ms (Views: 5.8ms | ActiveRecord: 0.6ms | Allocations: 4121)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mEntry Load (0.7ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  Rendered entries/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 2.6ms | Allocations: 290)
+  Rendered layout layouts/application.html.erb (Duration: 92.1ms | Allocations: 16430)
+Completed 200 OK in 105ms (Views: 93.2ms | ActiveRecord: 1.8ms | Allocations: 20088)
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 189)
+  Rendered devise/shared/_links.html.erb (Duration: 1.4ms | Allocations: 515)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 14.9ms | Allocations: 4945)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 86)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 7040)
+Completed 200 OK in 50ms (Views: 23.2ms | ActiveRecord: 5.4ms | Allocations: 13049)
+Started POST "/users" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"peterpan", "email"=>"pans@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+[31mUnpermitted parameter: :password_confirmation[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pans@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "pans@email.com"], ["encrypted_password", "$2a$04$ZKKD5ImCebeo4o5eIkvjK.65TMbATazLGk4bA5RfBIT0Ubrh/evDm"], ["created_at", "2021-03-03 17:33:37.469298"], ["updated_at", "2021-03-03 17:33:37.469298"], ["username", "peterpan"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 24ms (ActiveRecord: 1.2ms | Allocations: 3839)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  Rendered entries/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 491)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 64)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 2576)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.6ms | Allocations: 3018)
+Started GET "/entries/new" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by EntriesController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering entries/new.html.erb within layouts/application
+  Rendered entries/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 823)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 52)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 2890)
+Completed 200 OK in 16ms (Views: 5.5ms | ActiveRecord: 1.3ms | Allocations: 8903)
+Started POST "/entries" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by EntriesController#create as HTML
+  Parameters: {"entry"=>{"image"=>"https://tinyurl.com/2mshpeur", "description"=>"Wok n Roll"}, "commit"=>"Post"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEntry Create (0.5ms)[0m  [1m[32mINSERT INTO "entries" ("image", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["image", "https://tinyurl.com/2mshpeur"], ["description", "Wok n Roll"], ["created_at", "2021-03-03 17:33:37.527109"], ["updated_at", "2021-03-03 17:33:37.527109"], ["user_id", 5]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms | Allocations: 1218)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered entries/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 761)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 49)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 2824)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.5ms | Allocations: 3253)
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms | Allocations: 1480)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered entries/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 451)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 65)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 2530)
+Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.5ms | Allocations: 2964)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mEntry Load (0.5ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered entries/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 447)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 63)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 2524)
+Completed 200 OK in 12ms (Views: 6.9ms | ActiveRecord: 0.8ms | Allocations: 2936)
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 70)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1056)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 86)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 3150)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms | Allocations: 3697)
+Started POST "/users" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"username"=>"paneer", "email"=>"paneer@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+[31mUnpermitted parameter: :password_confirmation[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "paneer@email.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "username") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "paneer@email.com"], ["encrypted_password", "$2a$04$TDK5NkeO1SUhmNQOr237n.r4.FplQXheWe5Y.MfBmiEk275E1ez2e"], ["created_at", "2021-03-03 17:33:37.647111"], ["updated_at", "2021-03-03 17:33:37.647111"], ["username", "paneer"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 11ms (ActiveRecord: 1.3ms | Allocations: 1461)
+Started GET "/" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by EntriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering entries/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mEntry Load (0.2ms)[0m  [1m[34mSELECT "entries".* FROM "entries" ORDER BY created_at DESC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered entries/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 642)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 49)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 2705)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.6ms | Allocations: 3147)
+Started GET "/users/5" for 127.0.0.1 at 2021-03-03 17:33:37 +0000
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1497)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 1530)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.4ms | Allocations: 3182)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m

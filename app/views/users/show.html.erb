@@ -1,8 +1,23 @@
+<a class='follow-link'>
+<% if !current_user.pending_friends.map{|fr| fr.id}.include?(params[:id].to_i) && !current_user.requested_friends.map{|fr| fr.id}.include?(params[:id].to_i) %>
+  <% if @user.id != current_user.id %>
+    <%= link_to('Follow', method: current_user.friend_request(@user)) %>
+  <% end %>
+<% else %>
+  <p class='requested'>Requested</p>
+<%end%>
+</a>
+
+<section class='profile'>
 <% for entry in @entries %>
-<div class='post'>
-  <img src=<%= entry.image %>>
-  <p class='username'><%= link_to User.find_by(id: entry.user_id).username, user_path(User.find_by(id: entry.user_id)) %></p>
-  <p><%= entry.description %></p>
-  <p class='edit'><%= link_to('Edit', edit_entry_path(entry)) %></p>
-</div>
+  <div class='post'>
+    <img src=<%= entry.image %>>
+    <p><%= entry.description %></p>
+    
+    <% if entry.user_id == current_user.id %>
+      <p class='edit'><%= link_to('Edit', edit_entry_path(entry)) %></p>
+    <% end %>
+    
+  </div>
 <% end %>
+</section>

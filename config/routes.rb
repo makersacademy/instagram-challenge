@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources 'users'
 
+  get 'followers/request/:id' => 'followers#request', :as => :follow_request
+
   root 'entries#index'
 
 end
