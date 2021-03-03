@@ -54,7 +54,7 @@ Users:
 | id | username | email | password | 
 |----|----------|-------|----------|
 
-Posts:
+Entries:
 | id | user_id | img src | time and date? |
 |----|---------|---------|----------------|
 
