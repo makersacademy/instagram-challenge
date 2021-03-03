@@ -139,6 +139,7 @@ with the links related. Then <% else %> other links. Then <%end %>
 
 ### Liking, unliking, adding a button and extra css
 
+```
 48. To add a like feature needed to run rails g model Like picture:references user:references, then db migrate.
 
 49. Then ran rails g controller likes
@@ -148,3 +149,4 @@ with the links related. Then <% else %> other links. Then <%end %>
 51. I then changed the button to be different icon so that it would turn into an icon when liked and then go back to the original when you click it again. This was through css style sheet and adjusting the button on the index page.
 
 52. Added some styling within the controller page so that it looked slightly more user friendly.
+```
