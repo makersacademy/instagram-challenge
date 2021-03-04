@@ -1,12 +1,20 @@
 <a class='follow-link'>
-<% if !current_user.pending_friends.map{|fr| fr.id}.include?(params[:id].to_i) && !current_user.requested_friends.map{|fr| fr.id}.include?(params[:id].to_i) %>
-  <% if @user.id != current_user.id %>
-    <%= link_to('Follow', method: current_user.friend_request(@user)) %>
+<% unless current_user.friends.map{|fr| fr.id}.include?(@user.id) %>
+  <% if !current_user.pending_friends.map{|fr| fr.id}.include?(params[:id].to_i) &&
+  !current_user.requested_friends.map{|fr| fr.id}.include?(params[:id].to_i)
+  %>
+    <% if @user.id != current_user.id %>
+      <%= link_to('Follow', method: current_user.friend_request(@user)) %>
+    <% end %>
+  <% else %>
+    <p class='requested'>Requested</p>
+  <%end%>
+  <% else %>
+  <p class='following'>Following</p>
   <% end %>
-<% else %>
-  <p class='requested'>Requested</p>
-<%end%>
 </a>
+
+
 
 <section class='profile'>
 <% for entry in @entries %>

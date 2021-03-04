@@ -28,6 +28,8 @@ gem "rubocop-rails"
 
 gem 'has_friendship', github: 'sungwoncho/has_friendship'
 
+gem "acts_as_follower"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources 'users'
 
   get 'followers/request/:id' => 'followers#request', :as => :follow_request
+  get 'followers/requests' => 'followers#requests', :as => :follower_requests
+  get 'followers/accept/:id' => 'followers#accept', :as => :accept_request
+  get 'followers/decline/:id'=> 'followers#decline', :as => :decline_request
 
   root 'entries#index'
 
