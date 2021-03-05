@@ -1,0 +1,4 @@
+class Comment < ApplicationRecord
+
+
+end

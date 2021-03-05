@@ -1,0 +1,31 @@
+<h2><%= @post.title %></h2>
+  <% if @post.picture.attached? %>
+    <p><%= image_tag @post.picture, style: "width: 200px; display: block" %></p>
+  <% end %>
+  <p><%= @post.created_at %></p>
+  <p><%= @post.contents %></p>
+
+<% if current_user.id == @post.user_id %>
+  <p><%= button_to("Edit", edit_post_path(@post), method: :get) %></p>
+  <p><%= button_to "Remove", post_path(@post), method: :delete, data: { confirm: "Are you sure?" } %></p>
+  <% end %>
+  <%= form_for(Comment.new) do |form| %>
+    <p><%= form.text_field("comment") %></p>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+    <%= form.hidden_field :image_id, :value => @post.id %>
+    <%= form.hidden_field :username, :value => current_user.email %>
+    <p><%= form.submit %></p>
+  <p><%= button_to("Back", posts_path, method: :get) %></p>
+  <div>
+    <% @comments.reverse.each do |comment|  %>
+      <% if comment.image_id == @post.id %>
+        <p><%= comment.username %></p>
+        <p><%= comment.comment %></p>
+        <p><%= comment.created_at.strftime("%e %B %Y %H:%M") %>
+      <% end %>
+    <% end %>
+  </div>
+
+
+
+<% end %>

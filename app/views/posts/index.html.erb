@@ -1,0 +1,19 @@
+<div>
+  <% @posts.reverse.each do |post|  %>
+  <% if current_user.present? %>
+    <h3><%= link_to(post.title, post_path(post)) %></h3>
+  <% else %>
+    <h2><%= post.title %>
+  <% end %>
+  <p><%= post.created_at %></p>
+  <p><%= post.contents %></p>
+  <% if post.picture.attached? %>
+    <p><%= image_tag post.picture, id: "image_#{post.id}", style: "width: 200px; display: block" %></p>
+    <% end %>
+  <% end %>
+</div>
+<div>
+  <% if current_user.present? %>
+    <%= button_to("New", new_post_path, method: :get, id: "New") %>
+  <% end %>
+  </div>
