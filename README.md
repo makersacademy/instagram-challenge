@@ -10,8 +10,8 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 ## How to run 
 
 ```
- git clone https://github.com/lisabardelli/instagram-challenge.git
- cd instagram-challenge
+ git clone https://github.com/lisabardelli/instagram_challenge.git
+ cd instagram_challenge
  bin/rails server
 ```
 
