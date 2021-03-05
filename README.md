@@ -1,7 +1,11 @@
-Instagram Challenge
+Binstagram
 ===================
 
-# Will's Readme
+A tongue-in-cheek clone of Instagram: part satirical commentary on the content of social media feeds, part tribute to my late Grandparents' obsession with remembering to put out the bins.
+
+## Technologies
+- Backend - Ruby-on-Rails
+- Frontend - vanilla JS
 
 ## How to Run
 
@@ -10,6 +14,8 @@ Instagram Challenge
 - `cd instagram-challenge`
 - `bundle install`
 - `rake db:setup`
+
+(note - this setup assumes you have some necessary dependencies for rails on your machine. If you are having problems with the bundle install, follow the installation guide on [this site](https://guides.rubyonrails.org/getting_started.html). )
 
 ### Launch
 - Run `rails s` in the terminal
