@@ -1,5 +1,5 @@
 
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
 <div style='width:400px; height:auto'>
  <%= image_tag(@image.image, style: 'width:100%')%>
@@ -9,6 +9,7 @@
   <strong>Caption:</strong>
   <%= @image.caption %>
 </p>
-
-<%= link_to 'Edit', edit_image_path(@image) %> |
+<% if current_user.username == @image.user.username %>
+  <%= link_to 'Edit', edit_image_path(@image) %> |
+<% end %>
 <%= link_to 'Back', images_path %>
