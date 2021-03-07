@@ -20,8 +20,10 @@
         <p>created at: <%= image.created_at.strftime('%d-%m-%y') %></p>
         <p class='links'>
         <%= link_to 'Show', image %>
-        <%= link_to 'Edit', edit_image_path(image) %>
-        <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if current_user.username == image.user.username %>
+          <%= link_to 'Edit', edit_image_path(image) %>
+          <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
         <br>
         <br>
       </p>
