@@ -11,6 +11,7 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 ```
  git clone https://github.com/lisabardelli/instagram_challenge.git
  cd instagram_challenge
+ rails db:migrate
  bin/rails server
 ```
 

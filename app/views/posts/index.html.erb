@@ -1,10 +1,11 @@
-<div>
-
+<div class="main">
 
 <h2>Add a post: </h2>
 <%= form_with model: @post do |form| %>
 <p>
-<%= form.label :description %><br>
+  <%= form.text_area :url, size: "20x10", placeholder: "Please enter Image URL here" %>
+  <%= form.hidden_field :user_id, value: session[:user_id] %>
+<br>
 <%= form.text_field :description %>
 </p>
     <%= form.hidden_field :user_id, value: session[:user_id] %>
@@ -15,12 +16,14 @@
 
 <br>
 <% @posts.each do |post|%>
-    <% @user = User.find(post.user_id) %>
-    <p><strong>Description: </strong></p><br>
-        <p> This has been added by <%=  post.user.username %> </p>
+    <% @user = User.find(post.user_id) %><br>
+        <p> <%=  post.user.username %> </p>
     <%= post.description%><br>
 
-    <p> Added at  <%=  post.created_at %> </p>
+<div>
+ <img src="<%= post.url %>" width="300" height="300" />
+</div>
+    <p> Added at  <%=  post.created_at.strftime("%d %b") %> </p>
 <%= link_to "Delete", post_path(post.id),
                   method: :delete,
                   data: { confirm: "Are you sure?" } %>

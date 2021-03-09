@@ -2,12 +2,13 @@ class PostsController < ApplicationController
 
 def index
     @post = Post.new
-    @posts = Post.all
+    @posts = Post.all.with_attached_images
+
 end 
 
     def create 
-        @post = Post.new(posts_params)
 
+        @post = Post.new(posts_params)
         if @post.save
           redirect_to '/posts'
         else
@@ -46,7 +47,8 @@ json_object = {
         "message": post['message'],
         "created_at": post['created_at'],
         "updated_at": post['updated_at'],
-        "username": post['username']
+        "username": post['username'],
+        "images": post['images']
       }
       json_object["posts"]<< json_subnode
       p 'json_object'
@@ -65,6 +67,6 @@ json_object = {
 
     private
     def posts_params
-      params.require(:post).permit(:description, :user_id, :post_id)
+      params.require(:post).permit(:description, :user_id, :post_id, :url, images: [])
     end
 end

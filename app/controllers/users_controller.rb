@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end 
 
   def create
+
     @existing_user = User.find_by_email(params[:user]['email'])
     if @existing_user.nil?
         @user = User.create(user_params)
