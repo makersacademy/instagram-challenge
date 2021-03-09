@@ -1,47 +1,51 @@
-<div class="main">
 
-<h2>Add a post: </h2>
-<%= form_with model: @post do |form| %>
-<p>
-  <%= form.text_area :url, size: "20x10", placeholder: "Please enter Image URL here" %>
-  <%= form.hidden_field :user_id, value: session[:user_id] %>
-<br>
-<%= form.text_field :description %>
-</p>
-    <%= form.hidden_field :user_id, value: session[:user_id] %>
-<p>
-<%= form.submit %>
-</p>
-<% end %>
-
-<br>
-<% @posts.each do |post|%>
-    <% @user = User.find(post.user_id) %><br>
-        <p> <%=  post.user.username %> </p>
-    <%= post.description%><br>
-
-<div>
- <img src="<%= post.url %>" width="300" height="300" />
+<div class="form">
+      <h2>Add your photo here: </h2>
+      <%= form_with model: @post do |form| %>
+      <p>
+        <%= form.text_area :url, size: "16x2", placeholder: "Please enter Image URL here" %>
+        <%= form.hidden_field :user_id, value: session[:user_id] %>
+      <br>
+      <%= form.label "Add a message to you photo" %><br>
+      <%= form.text_field :description %>
+      </p>
+          <%= form.hidden_field :user_id, value: session[:user_id] %>
+      <p>
+      <%= form.submit %>
+      </p>
+      <% end %>
 </div>
-    <p> Added at  <%=  post.created_at.strftime("%d %b") %> </p>
-<%= link_to "Delete", post_path(post.id),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
-        <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-        <%= flash[:notice] %>
-        <%= button_to 'Like', post_likes_path(post.id), method: :post%><br>
-  
-        <%= link_to "Comment", new_post_comment_path(post.id) %>
 
-              <p><% post.comments.each do |comment|%>
-                <%= hidden_field :user_id, value: session[:user_id] %>
-                <%= comment.text%><br>
-                   <%= comment.user.username%><br>
-              <% end %>
-
+<div class="cointainer">
+      <% @posts.each do |post|%>
+            <div class='item'>
+                <% @user = User.find(post.user_id) %><br>
+                <div class ="date">
+                      <p> <%=  post.user.username %> </p>
+                      <p> <%=  post.created_at.strftime("%d %b") %> </p>
+                      </div>
+                <img src="<%= post.url %>" width="300" height="300" /><br>
+                <p class="message"><%= post.description%></p><br>
+          
+      <%# <%= link_to "Delete", post_path(post.id),
+                        method: :delete,
+                        data: { confirm: "Are you sure?" } %> 
+                <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+                <%= flash[:notice] %>
+                <%= button_to 'Like', post_likes_path(post.id), method: :post%><br>
+                <%= link_to "Comment", new_post_comment_path(post.id) %>
+                    <p><% post.comments.each do |comment|%>
+                      <%= hidden_field :user_id, value: session[:user_id] %>
+                      <%= comment.user.username%>: <%= comment.text%><br>
+        
+      
+        <% end %>
+ 
+    </div>
 
 <% end %>
-</div>
+  </div>  
+
  <!-- Load React. -->
   <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
