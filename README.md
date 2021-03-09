@@ -8,17 +8,13 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 ## How to run 
 
-Clone this repo
-
-```
- git clone https://github.com/lisabardelli/instagram_challenge.git
- cd instagram_challenge
- bundle install
- bin/rails db:create
- bin/rails db:migrate
- bin/rails server
-```
-And then navigate to 'localhost:3000' in your browser
+* Clone this repo `git clone https://github.com/lisabardelli/instagram_challenge.git`
+* Move to the folder `cd instagram_challenge`
+* Run `bundle install`
+* Run `bin/rails db:create`
+* Run `bin/rails db:migrate`
+* Run `bin/rails server`
+* Navigate to 'localhost:3000' in your browser
 
 ## **Home**
 ![Home](homeInstagram.png)
