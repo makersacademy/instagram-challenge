@@ -18,3 +18,5 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 
 ## **Home**
 ![Home](homeInstagram.png)
+
+
