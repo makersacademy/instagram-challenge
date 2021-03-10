@@ -1,4 +1,6 @@
 
+
+
 <div class="form">
       <h2>Add your photo here: </h2>
       <%= form_with model: @post do |form| %>
@@ -15,7 +17,7 @@
       </p>
       <% end %>
 </div>
-
+    <p class="not-like"><%= flash[:notice] %></p>
 <div class="cointainer">
       <% @posts.each do |post|%>
             <div class='item'>
@@ -25,15 +27,19 @@
                       <p> <%=  post.created_at.strftime("%d %b") %> </p>
                       </div>
                 <img src="<%= post.url %>" width="300" height="300" /><br>
+                
                 <p class="message"><%= post.description%></p><br>
           
       <%# <%= link_to "Delete", post_path(post.id),
                         method: :delete,
                         data: { confirm: "Are you sure?" } %> 
+
                 <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-                <%= flash[:notice] %>
-                <%= button_to 'Like', post_likes_path(post.id), method: :post%><br>
-                <%= link_to "Comment", new_post_comment_path(post.id) %>
+            
+          <div class="cont-button">
+                <%= button_to 'Like', post_likes_path(post.id), method: :post%>
+                <button class="comment"><%= link_to "Comment", new_post_comment_path(post.id) %></button>
+                  </div>
                     <p><% post.comments.each do |comment|%>
                       <%= hidden_field :user_id, value: session[:user_id] %>
                       <%= comment.user.username%>: <%= comment.text%><br>
