@@ -22,8 +22,8 @@ module Helpers
 
     def make_post
       click_link 'New post'
-      fill_in 'Image', with: 'https://tinyurl.com/2mshpeur'
-      fill_in 'Description', with: 'Wok n Roll'
+      attach_file('image[image]', File.absolute_path('./spec/features/spec_images/wok.jpg'))
+      fill_in 'Caption', :with => 'check out my new pan'
       click_button 'Post'
     end 
   end 

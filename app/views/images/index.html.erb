@@ -7,6 +7,7 @@
       <div class='post'>
         <%= image_tag(image.image) %>
         <p><%= image.caption %></p>
+        <p class='username'><%= link_to User.find_by(id: image.user_id).username, user_path(User.find_by(id: image.user_id)) %></p>
         <%= link_to 'Edit', edit_image_path(image) %>
         <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
         <p><%= image.created_at.strftime('%H:%M %d-%m-%y') %></p>

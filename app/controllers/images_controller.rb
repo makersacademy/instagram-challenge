@@ -4,6 +4,7 @@ class ImagesController < ApplicationController
   # GET /images or /images.json
   def index
     @images = Image.all.order("created_at DESC")
+    @user = current_user
   end
 
   # GET /images/1 or /images/1.json
@@ -13,6 +14,7 @@ class ImagesController < ApplicationController
   # GET /images/new
   def new
     @image = Image.new
+    params[:user_id] = current_user
   end
 
   # GET /images/1/edit
@@ -21,7 +23,7 @@ class ImagesController < ApplicationController
 
   # POST /images or /images.json
   def create
-    @image = Image.new(image_params)
+    @image = current_user.images.build(image_params)
 
     respond_to do |format|
       if @image.save
@@ -64,6 +66,6 @@ class ImagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def image_params
-      params.require(:image).permit(:caption, :image)
+      params.require(:image).permit(:caption, :image, :user_id)
     end
 end

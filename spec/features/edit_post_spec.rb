@@ -5,15 +5,15 @@ describe 'Users can edot', type: :feature do
     visit '/'
     register
     click_link 'New post'
-    fill_in 'Image', :with => 'https://tinyurl.com/8kx8xsyj'
-    fill_in 'Description', :with => 'check out my new pan'
+    attach_file('image[image]', File.absolute_path('./spec/features/spec_images/wok.jpg'))
+    fill_in 'Caption', :with => 'check out my new pan'
     click_button 'Post'
 
 
     click_link 'Edit'
-    fill_in 'Description', :with => 'check out my new edited pan'
-    click_button 'Edit post'
+    fill_in 'Caption', :with => 'check out my new wok*'
+    click_button 'Post'
 
-    expect(page).to have_content('check out my new edited pan')
+    expect(page).to have_content('check out my new wok*')
   end 
 end 
