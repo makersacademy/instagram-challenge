@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :entries
-
-  has_friendship
+  acts_as_follower
+  acts_as_followable
+  # has_friendship
 end
