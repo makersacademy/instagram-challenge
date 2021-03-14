@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'followers/accept/:id' => 'followers#accept', :as => :accept_request
   get 'followers/decline/:id'=> 'followers#decline', :as => :decline_request
 
+  # get 'users/follow/:id' => 'users#follow', :as => :follow
+  # get 'users/unfollow/:id' => 'users#unfollow', :as => :unfollow
+
   root 'images#index'
 
 end

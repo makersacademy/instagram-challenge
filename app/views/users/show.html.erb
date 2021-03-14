@@ -1,7 +1,9 @@
 <a class='follow-link'>
-
-    <p class='requested'>Requested</p>
-    <p class='following'>Following</p>
+  <% if current_user.following?(@user) %>
+  <%= link_to 'Following', {action: 'unfollow', id: @user_id}, method: 'post', remote: true %>
+  <% elsif current_user != @user %>
+  <%= link_to "Follow", {action: 'follow', id: @user.id}, method: 'post', remote: true %>
+  <% end %>  
 </a>
 
 
