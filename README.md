@@ -12,7 +12,7 @@ An Instagram-like Rails app for posting, commenting and 'liking' pics of and abo
 - Enjoy!
 
 ## Features
-- Devise for user control (signup/login/out)
+- UAM (signup/login/out)
 - Active Storage for image upload
 - Commenting on posts
 - Liking posts / like-counts
