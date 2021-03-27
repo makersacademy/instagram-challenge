@@ -7,6 +7,18 @@ Instagram Challenge
 As a User
 So that i can post pictures on my account
 I want to be able to create an account and sign in
+
+As a User
+So that i can share my photos
+I want to be able to upload a picture
+
+As a user 
+So that i can share my thoughts on other people's photos
+I want to be able to comment on anyone's pictures
+
+As a User
+So that i can show i appreciate someone's picture
+I want to be able to like a picture
 ```
 
 ## Instructions
