@@ -75,11 +75,23 @@ bundle exec rspec -fd
 
 ## User stories
 
+### Complete
 ```
 As a user,
 I would like to see posts on the home page,
 So I can easily see my network's posts.
 
+As a user,
+I want to be able to post photos,
+So that I can share my best images
+
+As a user,
+I want to caption my posts,
+So that I can add context to an image.
+```
+
+### Pending
+```
 As a user,
 I want the posts to appear in reverse chronological order,
 So I am always seeing the latest posts first.
@@ -101,6 +113,22 @@ I want users to not see posts and be redirected to the sign up page when not log
 To protect the privacy of our users.
 
 As an admin,
-I want posts to only be images and videos,
+I want all posts to include an image or video,
 So that Instagram is known for photo and video sharing.
+
+As a user,
+I want to be able to add filters to my posts,
+So that I can add effects to my photos.
+
+As a user,
+I want to be able to follow other users,
+So that I can keep up to date with my favourite posters.
+
+As a user,
+I want to be able to like posts,
+So that I can share my appreciation for great photos.
+
+As a user,
+I want to be able to comment on posts,
+So that I can share my thoughts about interesting photos.
 ```
