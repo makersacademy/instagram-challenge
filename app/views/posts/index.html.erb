@@ -1,8 +1,20 @@
-<p id="notice"><%= notice %></p>
+<%# <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
 
-<table>
+    <% @posts.each do |post| %>
+        <%= post.title %><br/>
+        <%= image_tag post.image.variant(resize_to_limit: [400, 400]) %> <br/>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td><br>
+    <% end %>
+
+<br>
+
+<%# <%= link_to 'New Post', new_post_path %>
+
+<%# <table>
   <thead>
     <tr>
       <th>Title</th>
@@ -12,16 +24,13 @@
 
   <tbody>
     <% @posts.each do |post| %>
-      <tr>
+      <%# <tr>
         <td><%= post.title %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+        <%# <%= image_tag post.image.variant(resize_to_limit: [400, 400]) %>
+        <%# <td><%= link_to 'Show', post %></td>
+        <%# <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <%# <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%# </tr> %>
+    <%# <% end %>
+  <%# </tbody> %>
+<%# </table> %>
