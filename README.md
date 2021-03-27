@@ -4,7 +4,6 @@ Instagram Challenge
 ## Ruby version
   * 2.7.2
 
-
 ## System dependencies
 * Gems:
 ```
@@ -73,3 +72,35 @@ bundle exec rspec -fd
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+
+## User stories
+
+```
+As a user,
+I would like to see posts on the home page,
+So I can easily see my network's posts.
+
+As a user,
+I want the posts to appear in reverse chronological order,
+So I am always seeing the latest posts first.
+
+As a user,
+I would like to be able to sign up for Instagram,
+So I can build a portfolio of posts.
+
+As a user,
+I want to be able to sign in,
+So that I can access my account and posts.
+
+As a user,
+I want to be able to sign out,
+So that others can't access my account.
+
+As an admin,
+I want users to not see posts and be redirected to the sign up page when not logged in,
+To protect the privacy of our users.
+
+As an admin,
+I want posts to only be images and videos,
+So that Instagram is known for photo and video sharing.
+```
