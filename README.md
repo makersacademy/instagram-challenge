@@ -30,3 +30,6 @@ I want to be able to visit other users profile page containing their posts
 * PostgreSQL
 * ruby '2.6.5'
 * RSpec
+* Devise
+
+
