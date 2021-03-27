@@ -1,6 +1,14 @@
 Instagram Challenge
 ===================
 
+## User Stories
+
+```
+As a User
+So that i can post pictures on my account
+I want to be able to create an account and sign in
+```
+
 ## Instructions
 
 * Feel free to use Google, your notes, books, etc., but work on your own
