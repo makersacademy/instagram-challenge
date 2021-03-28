@@ -156,7 +156,6 @@ As a user,
 I want to be able to delete posts,
 So that I can remove photos I no longer like
 
-
 As a user,
 I want to see the time and date of each post,
 So I know when it was posted.
