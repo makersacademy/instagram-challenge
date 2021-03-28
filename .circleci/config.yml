@@ -9,38 +9,32 @@ jobs:
       - image: cimg/ruby:2.7.2-node
     executor: ruby/default
     steps:
-      - checkout # pull down our git code.
+      - checkout
       - restore_cache:
           name: Restore bundle cache
           key: instagram-{{ checksum "Gemfile.lock" }}
-
-      - ruby/install-deps # use the ruby orb to install dependencies
+      - ruby/install-deps
       - save_cache:
           name: Store bundle cache
           key: instagram-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-      # use the node orb to install our packages
-      # specifying that we use `yarn` and to cache dependencies with `yarn.lock`
-      # learn more: https://circleci.com/docs/2.0/caching/
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
-  test:  # our next job, called "test"
-    # we run "parallel job containers" to enable speeding up our tests;
-    # this splits our tests across multiple containers.
+
+  test:
     # parallelism: 3
-    # here we set TWO docker images.
     docker:
-      - image: cimg/ruby:2.7-node # this is our primary docker image, where step commands run.
+      - image: cimg/ruby:2.7.2-node
         auth:
           username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+          password: $DOCKERHUB_PASSWORD
       - image: circleci/postgres:9.5-alpine
         auth:
           username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-        environment: # add POSTGRES environment variables.
+          password: $DOCKERHUB_PASSWORD
+        environment:
           POSTGRES_USER: instagram
           POSTGRES_DB: instagram_test
           POSTGRES_PASSWORD: ""
@@ -52,27 +46,24 @@ jobs:
       PGUSER: instagram
       PGPASSWORD: ""
       RAILS_ENV: test
-    # A series of steps to run, some are similar to those in "build".
     steps:
       - checkout
-      # Restore cache
+      # Restore bundle cache
       - restore_cache:
           name: Restore bundle cache
           key: instagram-{{ checksum "Gemfile.lock" }}
-
+      # bundle install
       - ruby/install-deps
-      # Cache Dependencies
+      # save bundle cache
       - save_cache:
           name: Store bundle cache
           key: instagram-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-
+      # install npm dependencies
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
-      # # Here we make sure that the secondary container boots
-      # # up before we run operations on the database.
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
@@ -94,39 +85,13 @@ jobs:
           name: Migrate db
           command: heroku run rake db:migrate --app $HEROKU_APP_NAME
 
-    # environment:
-    #   HEROKU_APP_NAME: $HEROKU_APP_NAME # define env var $HEROKU_APP
-    # steps:
-    #   - checkout
-    #   - run: bash .circleci/setup-heroku.sh
-    #   - add_ssh_keys:
-    #       fingerprints:
-    #         - $HEROKU_SSH_FINGERPRINT
-    #   - deploy:
-    #       name: deploy to Heroku if tests pass and branch is master
-    #       command: |
-    #         if [ "${CIRCLE_BRANCH}" == "master" ]; then
-    #           git push --force https://git.heroku.com/$HEROKU_APP_NAME.git HEAD:refs/heads/master
-    #           heroku run rake db:migrate
-    #           sleep 5
-    #           heroku restart
-    #         fi
-          # command: |
-          #   heroku login
-          #   $HEROKU_EMAIL
-          #   heroku git:remote -a "gentle-beach-18739"
-          #   git push heroku master
-          #   heroku run rake db:migrate
-          #   sleep 5 # sleep for 5 seconds to wait for dynos
-          #   heroku restart
-# We use workflows to orchestrate the jobs that we declared above.
 workflows:
   version: 2
-  build_test_deploy:     # The name of our workflow is "build_and_test"
-    jobs:             # The list of jobs we run as part of this workflow.
+  build_test_deploy:
+    jobs:
       - build
-      - test:         # Then run test,
-          requires:   # Test requires that build passes for it to run.
+      - test:
+          requires:
             - build
       - deploy:
           requires:

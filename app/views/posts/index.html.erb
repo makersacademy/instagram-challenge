@@ -1,12 +1,16 @@
-<%= form_with url: 'posts/new', method: :get do |form| %>
-  <%= form.submit 'New Post' %>
+<%= form_with url: "posts/new", method: :get do |form| %>
+  <%= form.submit "New Post", class: "button" %>
 <% end %>
 
+<main class="feed">
   <% @posts.each do |post| %>
     <% user = User.find_by(id: post.user_id) %>
     <article class="post">
-      <p>@<%= user.username %></p>
-      <%= image_tag(post.image) %>
-      <p><%= post.caption %></p>
+      <p class="username">@<%= user.username %></p>
+      <div class="photo">
+        <%= image_tag(post.image) %>
+      </div>
+      <p class="caption"><%= post.caption %></p>
     </article>
   <% end %>
+</main>
