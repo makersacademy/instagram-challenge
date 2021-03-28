@@ -120,17 +120,6 @@ So that I can add context to an image.
 As a user,
 I want the posts to appear in reverse chronological order,
 So I am always seeing the latest posts first.
-```
-
-### Pending
-```
-As a user,
-I want to be able to edit posts,
-So that I can fix mistakes without having to start again.
-
-As a user,
-I want to be able to delete posts,
-So that I can remove photos I no longer like
 
 As a user,
 I want to be able to edit my account details,
@@ -155,6 +144,18 @@ So that others can't access my account.
 As a user,
 I want to see the user name of each post,
 So I know who posted what.
+```
+
+### Pending
+```
+As a user,
+I want to be able to edit posts,
+So that I can fix mistakes without having to start again.
+
+As a user,
+I want to be able to delete posts,
+So that I can remove photos I no longer like
+
 
 As a user,
 I want to see the time and date of each post,
