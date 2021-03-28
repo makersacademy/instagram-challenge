@@ -2,6 +2,12 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action @user = :current_user
+
+  def index
+    flash.notice = 'No page found at that address'
+    redirect_to root_path
+  end
 
   protected
 
