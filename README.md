@@ -144,14 +144,14 @@ So that others can't access my account.
 As a user,
 I want to see the user name of each post,
 So I know who posted what.
+
+As a user,
+I want to be able to edit my posts,
+So that I can fix mistakes without having to start again.
 ```
 
 ### Pending
 ```
-As a user,
-I want to be able to edit my posts,
-So that I can fix mistakes without having to start again.
-
 As a user,
 I want users to only be able to edit their own posts,
 So that my posts are not edited by anyone but me.

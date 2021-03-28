@@ -9,3 +9,10 @@ def sign_up
   fill_in('Password confirmation', with: 'Password')
   click_button('Sign up')
 end
+
+def create_post
+  click_button('New Post')
+  attach_file('image', 'spec/files/images/llama.jpeg')
+  fill_in('caption', with: 'Llama')
+  click_button('Create Post')
+end
