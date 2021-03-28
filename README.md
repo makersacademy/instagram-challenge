@@ -5,7 +5,8 @@ Instagram Challenge
   * 2.7.2
 
 ## System dependencies
-* Gems:
+
+* **Gems:**
 ```
 bootsnap (>= 1.4.4)
 byebug
@@ -29,7 +30,7 @@ webdrivers
 webpacker (~> 5.0)
 ```
 
-* Node Modules:
+* **Node Modules:**
 ```
 "@rails/actioncable": "^6.0.0",
 "@rails/activestorage": "^6.0.0",
@@ -39,7 +40,23 @@ webpacker (~> 5.0)
 "webpack-dev-server": "^3.11.2"
 ```
 
-* Configuration
+## Getting started
+
+* Install ruby 2.7.2
+* Install node and npm
+* Clone this repository
+
+```shell
+git clone git@github.com:AJ8GH/instagram-challenge.git
+```
+
+* Install dependencies
+
+```shell
+cd instagram-challenge
+bundle install
+npm install
+```
 
 ## Database setup:
 
@@ -52,6 +69,17 @@ rake db:create
 ```shell
 rake db:migrate
 ```
+
+## Usage
+
+* Start Rails server
+
+```shell
+rails s
+```
+
+* Go to [local host 3000](http://localhost:3000/) to use the app
+
 
 ## How to run the test suite
 
@@ -88,13 +116,29 @@ So that I can share my best images
 As a user,
 I want to caption my posts,
 So that I can add context to an image.
+
+As a user,
+I want the posts to appear in reverse chronological order,
+So I am always seeing the latest posts first.
 ```
 
 ### Pending
 ```
 As a user,
-I want the posts to appear in reverse chronological order,
-So I am always seeing the latest posts first.
+I want to be able to edit posts,
+So that I can fix mistakes without having to start again.
+
+As a user,
+I want to be able to delete posts,
+So that I can remove photos I no longer like
+
+As a user,
+I want to be able to edit my account details,
+So that I can fix mistakes or change out of date info.
+
+As a user,
+I want to be able to delete my account,
+So that I can leave instagram and remove all of my posts.
 
 As a user,
 I would like to be able to sign up for Instagram,
@@ -107,6 +151,14 @@ So that I can access my account and posts.
 As a user,
 I want to be able to sign out,
 So that others can't access my account.
+
+As a user,
+I want to see the user name of each post,
+So I know who posted what.
+
+As a user,
+I want to see the time and date of each post,
+So I know when it was posted.
 
 As an admin,
 I want users to not see posts and be redirected to the sign up page when not logged in,
