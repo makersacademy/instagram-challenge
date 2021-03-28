@@ -15,4 +15,15 @@ feature 'viewing posts' do
     expect(first('.post')).to have_content('Second post')
     expect(page).to have_content('First post')
   end
+
+  scenario 'user is visible for each post' do
+    sign_up
+
+    click_button('New Post')
+    attach_file('image', 'spec/files/images/llama.jpeg')
+    fill_in('caption', with: 'Llama')
+    click_button('Create Post')
+
+    expect(page).to have_css('.post', text: '@testy1')
+  end
 end

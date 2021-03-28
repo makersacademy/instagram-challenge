@@ -3,8 +3,10 @@
 <% end %>
 
   <% @posts.each do |post| %>
+    <% user = User.find_by(id: post.user_id) %>
     <article class="post">
+      <p>@<%= user.username %></p>
       <%= image_tag(post.image) %>
-      <%= post.caption %>
+      <p><%= post.caption %></p>
     </article>
   <% end %>
