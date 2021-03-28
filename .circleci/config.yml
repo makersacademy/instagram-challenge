@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: cimg/ruby:2.7-node
+      - image: cimg/ruby:2.7.2-node
     executor: ruby/default
     steps:
       - checkout # pull down our git code.
@@ -46,10 +46,19 @@ jobs:
     # A series of steps to run, some are similar to those in "build".
     steps:
       - checkout
+      # Restore cache
+      - type: cache-restore
+        name: Restore bundle cache
+        key: instagram-{{ checksum "Gemfile.lock" }}
+
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
+      # Cache Dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: instagram-{{ checksum "Gemfile.lock" }}
       # # Here we make sure that the secondary container boots
       # # up before we run operations on the database.
       - run:
