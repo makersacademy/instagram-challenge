@@ -1,21 +1,19 @@
-<%# <p id="notice"><%= notice %></p>
 
 <h1>Feed</h1>
-
     <% @posts.each do |post| %>
-        <%= post.title %><br/>
-        <%= image_tag post.image.variant(resize_to_limit: [800, 800]) %> <br/>
-        @<%= post.user.username %><br/>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <br/><br/>
-
-        <%# <figure class="figure"> %>
-          <%# <img src=".." class="figure-img img-fluid rounded"> %>
-          <%# <figcaption class="figure-caption">TEXT</figcaption> %>
-        <%# </figure> %>
-
+        <div class="card">
+          <div class="card-header">@<%= post.user.username %>
+          </div>
+          <div class="card-body">
+            <%# <h5 class="card-title"></h5> %>
+            <%= image_tag post.image.variant(resize_to_limit: [800, 800]) %>
+            <p class="card-text"><%= post.title %></p>
+              <td><%= link_to 'Show', post %></td>
+              <td><%= link_to 'Edit', edit_post_path(post) %></td>
+              <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </div>
+        </div>
+      <br/>
     <% end %>
 
 <br>
