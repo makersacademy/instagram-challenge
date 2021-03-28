@@ -149,8 +149,24 @@ So I know who posted what.
 ### Pending
 ```
 As a user,
-I want to be able to edit posts,
+I want to be able to edit my posts,
 So that I can fix mistakes without having to start again.
+
+As a user,
+I want users to only be able to edit their own posts,
+So that my posts are not edited by anyone but me.
+
+As a user,
+I want users to only be able to edit their own posts,
+So that my posts are not edited by anyone but me.
+
+As a user,
+I want users to only be able to edit their own posts,
+So that my posts are not edited by anyone but me.
+
+As a user,
+I want users to only be able to delete their own posts,
+So that my posts are not deleted by anyone but me.
 
 As a user,
 I want to be able to delete posts,

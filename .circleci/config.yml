@@ -6,7 +6,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7-node
+      - image: cimg/ruby:2.7-node
     executor: ruby/default
     steps:
       - checkout # pull down our git code.
@@ -58,7 +58,6 @@ jobs:
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
-      # Run rspec in parallel
       - ruby/rspec-test
   deploy:
     executor: heroku/default
