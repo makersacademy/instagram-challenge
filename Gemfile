@@ -58,6 +58,7 @@ group :test do
   gem 'headless' 
   gem 'poltergeist'
   gem 'database_cleaner'  
+  gem 'simplecov'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
