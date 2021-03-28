@@ -7,8 +7,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(post_params)
-    redirect_to posts_url
+    if post_params[:image]
+      Post.create(post_params)
+      redirect_to posts_path
+    else
+      redirect_to new_post_path, notice: 'You forgot to attach an image'
+    end
   end
 
   private
