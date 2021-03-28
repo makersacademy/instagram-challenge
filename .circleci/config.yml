@@ -47,18 +47,20 @@ jobs:
     steps:
       - checkout
       # Restore cache
-      - type: cache-restore
-        name: Restore bundle cache
-        key: instagram-{{ checksum "Gemfile.lock" }}
+      - restore_cache:
+          name: Restore bundle cache
+          key: instagram-{{ checksum "Gemfile.lock" }}
 
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
       # Cache Dependencies
-      - type: cache-save
-        name: Store bundle cache
-        key: instagram-{{ checksum "Gemfile.lock" }}
+      - save_cache:
+          name: Store bundle cache
+          key: instagram-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
       # # Here we make sure that the secondary container boots
       # # up before we run operations on the database.
       - run:
