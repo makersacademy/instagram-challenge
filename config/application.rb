@@ -10,6 +10,7 @@ module Lazygram
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.action_controller.include_all_helpers = false
 
     # Configuration for the application, engines, and railties goes here.
     #
