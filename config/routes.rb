@@ -3,5 +3,8 @@
 Rails.application.routes.draw do
   root 'posts#index'
 
+  devise_for :users
+  get 'users/new'
+
   resources :posts
 end

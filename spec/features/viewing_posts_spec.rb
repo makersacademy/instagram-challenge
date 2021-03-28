@@ -1,6 +1,6 @@
 feature 'viewing posts' do
   scenario 'posts appear in reverse chronological order' do
-    visit('/')
+    sign_up
 
     click_button('New Post')
     attach_file('image', 'spec/files/images/llama.jpeg')

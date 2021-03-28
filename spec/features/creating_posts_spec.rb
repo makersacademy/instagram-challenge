@@ -1,6 +1,6 @@
 feature 'creating posts' do
   scenario 'can create a post with an image and caption' do
-    visit('/')
+    sign_up
     click_button('New Post')
     attach_file('image', 'spec/files/images/llama.jpeg')
     fill_in('caption', with: 'Llama')
@@ -11,7 +11,7 @@ feature 'creating posts' do
   end
 
   scenario 'creating a post without an image gives a helpful message' do
-    visit('/')
+    sign_up
     click_button('New Post')
     fill_in('caption', with: 'Forgot the image')
     click_button('Create Post')

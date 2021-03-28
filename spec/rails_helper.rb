@@ -7,7 +7,10 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'factory_bot'
 require 'rspec/rails'
+
+require_relative 'helpers/web_helpers'
 
 Capybara.server = :puma, { Silent: true }
 
@@ -68,4 +71,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+end
+
+FactoryBot::SyntaxRunner.class_eval do
+  include ActionDispatch::TestProcess
 end
