@@ -14,9 +14,9 @@ jobs:
       # use the node orb to install our packages
       # specifying that we use `yarn` and to cache dependencies with `yarn.lock`
       # learn more: https://circleci.com/docs/2.0/caching/
-      # - node/install-packages:
-      #     pkg-manager: yarn
-      #     cache-key: "yarn.lock"
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
   test:  # our next job, called "test"
     # we run "parallel job containers" to enable speeding up our tests;
     # this splits our tests across multiple containers.
@@ -35,11 +35,11 @@ jobs:
           POSTGRES_USER: instagram
           POSTGRES_DB: instagram_test
           POSTGRES_PASSWORD: ""
-    # environment variables specific to Ruby/Rails, applied to the primary container.
+
     environment:
       # BUNDLE_JOBS: "3"
       # BUNDLE_RETRY: "3"
-      PGHOST: 127.0.0.1
+      PGHOST: localhost
       PGUSER: instagram
       PGPASSWORD: ""
       RAILS_ENV: test
@@ -47,9 +47,9 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
-      # - node/install-packages:
-      #     pkg-manager: yarn
-      #     cache-key: "yarn.lock"
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
       # # Here we make sure that the secondary container boots
       # # up before we run operations on the database.
       - run:
@@ -73,9 +73,7 @@ jobs:
       - run:
           name: Migrate db
           command: heroku run rake db:migrate --app $HEROKU_APP_NAME
-    # machine:
-    #     enabled: true
-    # working_directory: ~/acebook-poke
+
     # environment:
     #   HEROKU_APP_NAME: $HEROKU_APP_NAME # define env var $HEROKU_APP
     # steps:
