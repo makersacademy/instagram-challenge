@@ -97,7 +97,7 @@ rails s
 * Go to [local host 3000](http://localhost:3000/) to use the app
 
 
-## How to run the test suite
+## How to run the test suite
 
 ```shell
 bundle exec rspec

@@ -16,7 +16,7 @@ feature 'viewing posts' do
     expect(page).to have_content('First post')
   end
 
-  xscenario 'user is visible for each post' do
+  scenario 'user is visible for each post' do
     sign_up
 
     click_button('New Post')
@@ -24,6 +24,6 @@ feature 'viewing posts' do
     fill_in('caption', with: 'Llama')
     click_button('Create Post')
 
-    expect(page).to have_css('.post', text: '@testy1')
+    expect(page).to have_selector('.post', text: '@testy1')
   end
 end
