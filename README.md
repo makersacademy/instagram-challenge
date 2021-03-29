@@ -1,18 +1,29 @@
 Instagram Challenge
 ===================
 
-[![AJ8GH](https://circleci.com/gh/AJ8GH/instagram-challenge.svg?style=shield)](https://app.circleci.com/pipelines/github/AJ8GH/instagram-challenge)
+[![AJ8GH](https://circleci.com/gh/AJ8GH/instagram-challenge.svg?style=shield)](https://app.circleci.com/pipelines/github/AJ8GH/instagram-challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/d23f2ca8298800936b52/maintainability)](https://codeclimate.com/github/AJ8GH/instagram-challenge/maintainability) [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
+
+## Beta Version
+
+***You can use the Beta version of the app here, deployed via Heroku:***
+
+[Instagram version 1.0](https://salty-tor-38248.herokuapp.com/)
+---------------------------------------------------
 
 ## Ruby version
-  * 2.7.2
+
+`2.7.2`
 
 ## System dependencies
 
-* **Gems:**
+**Gems:**
+
 ```
+bcrypt (~> 3.1.7)
 bootsnap (>= 1.4.4)
 byebug
 capybara (>= 3.26)
+devise
 factory_bot_rails
 jbuilder (~> 2.7)
 listen (~> 3.3)
@@ -20,7 +31,9 @@ pg (~> 1.1)
 puma (~> 5.0)
 rack-mini-profiler (~> 2.0)
 rails (~> 6.1.3, >= 6.1.3.1)
+rails-controller-testing
 rspec-rails (= 4.0)
+rspec_junit_formatter
 rubocop-rails
 sass-rails (>= 6)
 selenium-webdriver
@@ -32,7 +45,8 @@ webdrivers
 webpacker (~> 5.0)
 ```
 
-* **Node Modules:**
+**Node Modules:**
+
 ```
 "@rails/actioncable": "^6.0.0",
 "@rails/activestorage": "^6.0.0",
@@ -42,7 +56,7 @@ webpacker (~> 5.0)
 "webpack-dev-server": "^3.11.2"
 ```
 
-## Getting started
+## Getting started
 
 * Install ruby 2.7.2
 * Install node and npm
@@ -99,9 +113,28 @@ for documentation format:
 bundle exec rspec -fd
 ```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Skills applied
 
-* Deployment instructions
+* TDD & BDD - using capybara and rspec to test drive features and functionality
+* Factory Bot - set up factories to create dummy data for test environment
+* Rails - setting up project from scratch with rspec and postgres
+* Active storage - use of AR blobs and attachments for image uploads and attaching images to posts
+* RESTful routing
+* CRUD Application
+* User registration and authentication using Devise
+* ORM and RDBMS - Use of one to one and one to many relationships with Active Record and PostgreSQL
+* CI/CD - used circle CI to set up continuous integration and deployment to Heroku. 3 separate jobs to run the build, run tests, then deploy
+
+## Next Steps
+
+Plans for future features:
+
+* Likes
+* Comments
+* Follows
+* Profile pictures
+* Account homepage
+* Improved UI
 
 ## User stories
 
