@@ -1,0 +1,19 @@
+
+<h1>Feed</h1>
+    <% @posts.each do |post| %>
+        <div class="card">
+          <div class="card-header bg-dark text-light">@<%= post.user.username %>
+          <span class="float-end"><%= link_to 'Edit', edit_post_path(post), class:"btn btn-sm btn-outline-secondary" %> 
+          <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-sm btn-outline-secondary" %></span>
+          </div>
+          <div class="card-body">
+            <p><%= image_tag post.image.variant(resize_to_limit: [800, 800]) %></p>
+            <p class="card-text"><%= post.title %></p>
+              <td><%= link_to 'Show', post %></td>
+          </div>
+        </div>
+      <br/>
+    <% end %>
+
+<br>
+
