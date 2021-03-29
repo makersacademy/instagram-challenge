@@ -6,7 +6,8 @@ feature 'liking posts' do
     expect(page).to have_content('Llama')
     expect(page).not_to have_selector('.like-count', text: '1')
 
-    click_link('Like')
+    click_link('🤍')
     expect(page).to have_selector('.like-count', text: '1')
+    expect(page).to have_selector('.like-btn', text: '❤️')
   end
 end
