@@ -1,6 +1,8 @@
 Instagram Challenge
 ===================
 
+[![AJ8GH](https://circleci.com/gh/AJ8GH/instagram-challenge.svg?style=shield)](https://app.circleci.com/pipelines/github/AJ8GH/instagram-challenge)
+
 ## Ruby version
   * 2.7.2
 
