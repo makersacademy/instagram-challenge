@@ -6,10 +6,11 @@ Rails.application.routes.draw do
   devise_for :users
   get 'users/new'
 
-  resources :posts
+  resources :posts do
+    resources :likes
+  end
 
   get '*all', to: 'application#index', constraints: lambda { |req|
     req.path.exclude? 'rails/active_storage'
   }
-
 end
