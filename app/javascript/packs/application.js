@@ -12,6 +12,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-// document.findElementById('delete').addEventListener('click', (event) => {
-//   event.
-// })
+document.querySelector('#like-btn').addEventListener('click', (event) => {
+  event.preventDefault();
+})
