@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instagram</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="icon" type="image/gif" href="../../assets/images/logo.png">
+  </head>
+
+  <body>
+    <div class="page-container">
+      <div class="content-wrap">
+
+        <header>
+          <ul>
+            <li class="nav-link"><%= link_to "Home", "/" %></li>
+              <% if user_signed_in? %>
+                <li class="nav-link"><%= link_to "Account", "/" %></li>
+                <li class="nav-link"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+              <% end %>
+          </ul>
+
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+
+          <h1>Instagram</h1>
+        </header>
+        <%= yield %>
+      </div>
+
+      <footer>
+      </footer>
+    </div>
+  </body>
+</html>

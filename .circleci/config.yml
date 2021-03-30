@@ -1,0 +1,105 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@1.1.2
+  node: circleci/node@2
+  heroku: circleci/heroku@0.0.10
+jobs:
+  build:
+    docker:
+      - image: cimg/ruby:2.7.2-node
+    executor: ruby/default
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore bundle cache
+          key: instagram-{{ checksum "Gemfile.lock" }}
+      - ruby/install-deps
+      - save_cache:
+          name: Store bundle cache
+          key: instagram-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+
+  test:
+    # parallelism: 3
+    docker:
+      - image: cimg/ruby:2.7.2-node
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+      - image: circleci/postgres:9.5-alpine
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD
+        environment:
+          POSTGRES_USER: instagram
+          POSTGRES_DB: instagram_test
+          POSTGRES_PASSWORD: ""
+
+    environment:
+      # BUNDLE_JOBS: "3"
+      # BUNDLE_RETRY: "3"
+      PGHOST: localhost
+      PGUSER: instagram
+      PGPASSWORD: ""
+      RAILS_ENV: test
+    steps:
+      - checkout
+      # Restore bundle cache
+      - restore_cache:
+          name: Restore bundle cache
+          key: instagram-{{ checksum "Gemfile.lock" }}
+      # bundle install
+      - ruby/install-deps
+      # save bundle cache
+      - save_cache:
+          name: Store bundle cache
+          key: instagram-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      # install npm dependencies
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-key: "yarn.lock"
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      - ruby/rspec-test
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - run:
+          command: >
+            echo "The command above installs Heroku, the command below deploys.
+            What you do inbetween is up to you!"
+      - heroku/deploy-via-git
+      - run:
+          name: Migrate db
+          command: heroku run rake db:migrate --app $HEROKU_APP_NAME
+
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - build
+            - test
+      # - deploy:
+      #     requires:
+      #       - test
+      #     filters:
+      #       branches:
+      #         only: master
