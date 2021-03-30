@@ -9,7 +9,7 @@ An Instagram-like Rails app for posting, commenting and 'liking' pics of and abo
 - `rake db:migrate`
 - `rails server`
 - Finally navigate to localhost:3000 in browser
-- Enjoy!
+- Get a beer!
 
 ## Features
 - UAM (signup/login/out)
