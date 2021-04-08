@@ -13,4 +13,5 @@ An Instagram-like Rails app for posting, commenting and 'liking' pics of and abo
 
 ## Features
 - Awesome zombie pics!
+- Lotsa Zombies
 -------
