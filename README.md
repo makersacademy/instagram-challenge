@@ -12,9 +12,5 @@ An Instagram-like Rails app for posting, commenting and 'liking' pics of and abo
 - Get a beer!
 
 ## Features
-- UAM (signup/login/out)
-- Active Storage for image upload
-- Commenting on posts
-- Liking posts / like-counts
 - Awesome zombie pics!
 -------
