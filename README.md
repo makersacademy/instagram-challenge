@@ -1,6 +1,6 @@
 # Instapan
 <br />
-<img src="https://github.com/charliefischer/instagram-challenge/blob/master/docs/instapan.gif" />
+<img src="https://github.com/charliefischer/instagram-challenge/blob/master/docs/instapan.gif" width='600px' />
 
 ## Task
 
