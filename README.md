@@ -1,5 +1,5 @@
 # Instapan
-===================
+<br />
 <img src="https://github.com/charliefischer/instagram-challenge/blob/master/docs/instapan.gif" />
 
 ## Task
