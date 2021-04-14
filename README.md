@@ -1,28 +1,42 @@
-# README
+## LaterGram
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An Instagram clone, built in Rails.
 
-Things you may want to cover:
+[Description](#description)  
+[Installation and Usage](#installation-and-usage)  
+[Known Issues](#known-issues)  
 
-* Ruby version
+### Description
+This was the final weekend challenge for the [Makers Academy](https://makers.tech) coding bootcamp. The goal was to practise Rails, as we were working on our Rails [group project](https://github.com/mscwilson/acebook-poke) at the time.
 
-* System dependencies
+I used [Devise](https://github.com/heartcombo/devise) to manage user authentication. That includes password encryption.  
 
-* Configuration
+Tests are written in Rspec with Capybara for feature testing.  
 
-* Database creation
+The standard Rails database is SQLite, but I chose to use PostgreSQL to allow deployment to Heroku. Try out LaterGram [here](https://latergram-82272.herokuapp.com/).  
 
-* Database initialization
+The app looks like this:  
+<figure style="margin: auto">
+<figcaption>Arriving at the homepage. Can't see any posts.</figcaption>
+<img src="app/assets/images/no-session.png" alt="home screen on loading" width="600">
+</figure><br>
 
-* How to run the test suite
+<figure style="margin: auto">
+<figcaption>The homepage once a user has logged in. Now all posts are visible.</figcaption>
+<img src="app/assets/images/logged-in.png" alt="home screen after login" width="600">
+</figure><br>
 
-* Services (job queues, cache servers, search engines, etc.)
+<figure style="margin: auto">
+<figcaption>Making a new post.</figcaption>
+<img src="app/assets/images/new-post.png" alt="making a post" width="600">
+</figure><br>
 
-* Deployment instructions
-
-* ...
-
+<figure style="margin: auto">
+<figcaption>The new post is displayed on the homepage.</figcaption>
+<img src="app/assets/images/all-posts.png" alt="seeing the new post" width="600">
+</figure><br>
+  
+### Installation and Usage  
 You will need Ruby 3.0.0 installed, and Bundler
 * Clone this repo
 * Navigate into cloned folder
@@ -36,3 +50,5 @@ You will need Ruby 3.0.0 installed, and Bundler
 
 * To run tests: `rspec`
 * If there is an error `Webpacker::Manifest::MissingEntryError`, install Webpacker with `bundle exec rake webpacker:install`
+
+### Known Issues
