@@ -9,7 +9,7 @@ An Instagram clone, built in Rails.
 ### Description
 This was the final weekend challenge for the [Makers Academy](https://makers.tech) coding bootcamp. The goal was to practise Rails, as we were working on our Rails [group project](https://github.com/mscwilson/acebook-poke) at the time.
 
-I used [Devise](https://github.com/heartcombo/devise) to manage user authentication. That includes password encryption.  
+I used [Devise](https://github.com/heartcombo/devise) to manage user authentication. That includes password encryption. I used Bootstrap for the navbar at the top.  
 
 Tests are written in Rspec with Capybara for feature testing.  
 
@@ -52,3 +52,5 @@ You will need Ruby 3.0.0 installed, and Bundler
 * If there is an error `Webpacker::Manifest::MissingEntryError`, install Webpacker with `bundle exec rake webpacker:install`
 
 ### Known Issues
+* The navbar doesn't work on mobile.
+* 
