@@ -7,7 +7,7 @@ RSpec.describe "PostAPictures", type: :system do
 
   it "user can post some text and see it displayed" do
     visit "/"
-    click_on "Sign up"
+    find("#navbar-sign-up").click
     fill_in "user_email", with: DEFAULT_EMAIL
     fill_in "user_password", with: DEFAULT_PASSWORD
     fill_in "user_password_confirmation", with: DEFAULT_PASSWORD
@@ -21,7 +21,7 @@ RSpec.describe "PostAPictures", type: :system do
 
   it "user can post an image and see it displayed" do
     visit "/"
-    click_on "Sign up"
+    find("#navbar-sign-up").click
     fill_in "user_email", with: DEFAULT_EMAIL
     fill_in "user_password", with: DEFAULT_PASSWORD
     fill_in "user_password_confirmation", with: DEFAULT_PASSWORD

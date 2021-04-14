@@ -7,7 +7,7 @@ RSpec.describe "ViewingPosts", type: :system do
 
   it "user can see everyone's posts on the home page after logging in" do
     visit "/"
-    click_on "Sign up"
+    find("#navbar-sign-up").click
     fill_in "user_email", with: DEFAULT_EMAIL
     fill_in "user_password", with: DEFAULT_PASSWORD
     fill_in "user_password_confirmation", with: DEFAULT_PASSWORD
