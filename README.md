@@ -35,3 +35,4 @@ You will need Ruby 3.0.0 installed, and Bundler
 * Go to `localhost:3000` in your browser to try out the app
 
 * To run tests: `rspec`
+* If there is an error `Webpacker::Manifest::MissingEntryError`, install Webpacker with `bundle exec rake webpacker:install`
