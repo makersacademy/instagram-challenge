@@ -1,0 +1,15 @@
+<div class="show-posts">
+<% @posts.reverse.each do |post| %>
+  <div id="single-post">
+    <%= post.user.username %><br/>
+    <% if post.image.attached? %>
+      <%= image_tag post.image, class: "image" %>
+    <% end %><br/>
+    <%= post.title %><br/>
+
+    <%= link_to 'Show', post %>
+    <%= link_to 'Edit', edit_post_path(post) %>
+    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>
+</div>

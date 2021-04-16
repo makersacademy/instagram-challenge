@@ -1,39 +1,56 @@
-Instagram Challenge
-===================
+## LaterGram
 
-## Instructions
+An Instagram clone, built in Rails.
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+[Description](#description)  
+[Installation and Usage](#installation-and-usage)  
+[Known Issues](#known-issues)  
 
-## Task
+### Description
+This was the final weekend challenge for the [Makers Academy](https://makers.tech) coding bootcamp. The goal was to practise Rails, as we were working on our Rails [group project](https://github.com/mscwilson/acebook-poke) at the time.
 
-Build Instagram: Simple huh!
+I used [Devise](https://github.com/heartcombo/devise) to manage user authentication. That includes password encryption. I used Bootstrap for the navbar at the top.  
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Tests are written in Rspec with Capybara for feature testing.  
 
-Bonus if you can add filters!
+The standard Rails database is SQLite, but I chose to use PostgreSQL to allow deployment to Heroku. Try out LaterGram [here](https://latergram-82272.herokuapp.com/).  
 
-## How to start
+The app looks like this:  
+<figure style="margin: auto">
+<figcaption>Arriving at the homepage. Can't see any posts.</figcaption>
+<img src="app/assets/images/no-session.png" alt="home screen on loading" width="600">
+</figure><br>
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+<figure style="margin: auto">
+<figcaption>The homepage once a user has logged in. Now all posts are visible.</figcaption>
+<img src="app/assets/images/logged-in.png" alt="home screen after login" width="600">
+</figure><br>
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+<figure style="margin: auto">
+<figcaption>Making a new post.</figcaption>
+<img src="app/assets/images/new-post.png" alt="making a post" width="600">
+</figure><br>
 
-## Code Quality
+<figure style="margin: auto">
+<figcaption>The new post is displayed on the homepage.</figcaption>
+<img src="app/assets/images/all-posts.png" alt="seeing the new post" width="600">
+</figure><br>
+  
+### Installation and Usage  
+You will need Ruby 3.0.0 installed, and Bundler
+* Clone this repo
+* Navigate into cloned folder
+* Install the dependencies: `bundle`
+  
+* Create the databases: `rails db:create`
+* Create the tables in the databases: `rails db:schema:load`
+  
+* Run the app locally: `rails server`
+* Go to `localhost:3000` in your browser to try out the app
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+* To run tests: `rspec`
+* If there is an error `Webpacker::Manifest::MissingEntryError`, install Webpacker with `bundle exec rake webpacker:install`
 
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+### Known Issues
+* The navbar doesn't work on mobile.
+* 
