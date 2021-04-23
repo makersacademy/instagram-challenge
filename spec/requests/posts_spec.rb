@@ -5,8 +5,8 @@ RSpec.describe "Posts", type: :request do
   let!(:posts) { create_list(:post, 10) }
   let(:post_id) { posts.first.id }
 
-  describe "GET /posts" do
-    before { get "/posts" }
+  describe "GET /api/posts" do
+    before { get "/api/posts" }
 
     it "returns http 200" do
       expect(response).to have_http_status(200)
@@ -18,12 +18,12 @@ RSpec.describe "Posts", type: :request do
     end
   end
 
-  describe "POST /posts" do
+  describe "POST /api/posts" do
     let(:valid_attributes) { {image: 'http://imageawesome.com/image',
                               user_id: '1', 
                               description: 'This is an awesome image'} }
 
-    before { post "/posts", params: valid_attributes}
+    before { post "/api/posts", params: valid_attributes}
       
     context "when the request is valid" do
       it "creates a new post" do
@@ -36,7 +36,7 @@ RSpec.describe "Posts", type: :request do
     end
     
     context "when the request is invalid" do
-      before { post '/posts', params: { image: '' } }
+      before { post '/api/posts', params: { image: '' } }
 
       it "returns http 422" do
         expect(response).to have_http_status(422)
@@ -48,8 +48,8 @@ RSpec.describe "Posts", type: :request do
     end
   end
 
-  describe "GET /posts/:id" do
-    before { get "/posts/#{post_id}" }
+  describe "GET /api/posts/:id" do
+    before { get "/api/posts/#{post_id}" }
 
     context 'when the post exists' do
       it 'returns the post' do
@@ -75,9 +75,9 @@ RSpec.describe "Posts", type: :request do
     end
   end
 
-  describe 'PUT /post/:id' do
+  describe 'PUT /api/post/:id' do
     let(:valid_attributes) { { description: 'Maybe this image is not so good' } }
-    before { put "/posts/#{post_id}", params: valid_attributes }
+    before { put "/api/posts/#{post_id}", params: valid_attributes }
 
     context 'when the record exists' do
 
@@ -91,8 +91,8 @@ RSpec.describe "Posts", type: :request do
     end
   end
 
-  describe 'DELETE /posts/:id' do
-    before { delete "/posts/#{post_id}" }
+  describe 'DELETE /api/posts/:id' do
+    before { delete "/api/posts/#{post_id}" }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

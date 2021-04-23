@@ -4,8 +4,8 @@ RSpec.describe "Users", type: :request do
   let!(:users) { create_list(:user, 10) }
   let(:user_id) { users.first.id }
 
-  describe "GET /users" do
-    before { get "/users" }
+  describe "GET /api/users" do
+    before { get "/api/users" }
 
     it "returns http 200" do
       expect(response).to have_http_status(200)
@@ -17,7 +17,7 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "POST /users" do
+  describe "POST /api/users" do
     let(:valid_attributes) { {forename: 'Sadie', 
                               surname: 'Smith', 
                               username: 'ssmith', 
@@ -25,7 +25,7 @@ RSpec.describe "Users", type: :request do
                               password: 'password1', 
                               profile_picture: 'pic' } }
 
-    before { post "/users", params: valid_attributes}
+    before { post "/api/users", params: valid_attributes}
       
     context "when the request is valid" do
       it "creates a new user" do
@@ -38,7 +38,7 @@ RSpec.describe "Users", type: :request do
     end
     
     context "when the request is invalid" do
-      before { post '/users', params: { forename: '' } }
+      before { post '/api/users', params: { forename: '' } }
 
       it "returns http 422" do
         expect(response).to have_http_status(422)
@@ -50,8 +50,8 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "GET /users/:id" do
-    before { get "/users/#{user_id}" }
+  describe "GET /api/users/:id" do
+    before { get "/api/users/#{user_id}" }
 
     context 'when the user exists' do
       it 'returns the user' do
@@ -77,9 +77,9 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe 'PUT /users/:id' do
+  describe 'PUT /api/users/:id' do
     let(:valid_attributes) { { surname: 'Roberts' } }
-    before { put "/users/#{user_id}", params: valid_attributes }
+    before { put "/api/users/#{user_id}", params: valid_attributes }
 
     context 'when the record exists' do
 
@@ -93,8 +93,8 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe 'DELETE /users/:id' do
-    before { delete "/users/#{user_id}" }
+  describe 'DELETE /api/users/:id' do
+    before { delete "/api/users/#{user_id}" }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
