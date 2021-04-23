@@ -1,32 +1,103 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
-  describe "GET /index" do
-    it "returns http success" do
-      get "/users/index"
-      expect(response).to have_http_status(:success)
+  let!(:users) { create_list(:user, 10) }
+  let(:user_id) { users.first.id }
+
+  describe "GET /users" do
+    before { get "/users" }
+
+    it "returns http 200" do
+      expect(response).to have_http_status(200)
+    end
+
+    it "returns all users" do
+      expect(json).not_to be_empty
+      expect(json.size).to eq(10)
     end
   end
 
-  describe "GET /create" do
-    it "returns http success" do
-      get "/users/create"
-      expect(response).to have_http_status(:success)
+  describe "POST /users" do
+    let(:valid_attributes) { {forename: 'Sadie', 
+                              surname: 'Smith', 
+                              username: 'ssmith', 
+                              email: 'ssmith@notadomain.com', 
+                              password: 'password1', 
+                              profile_picture: 'pic' } }
+
+    before { post "/users", params: valid_attributes}
+      
+    context "when the request is valid" do
+      it "creates a new user" do
+        expect(json['forename']).to eq('Sadie')
+      end
+
+      it "returns http 201" do
+        expect(response).to have_http_status(201)
+      end
+    end
+    
+    context "when the request is invalid" do
+      before { post '/users', params: { forename: '' } }
+
+      it "returns http 422" do
+        expect(response).to have_http_status(422)
+      end
+
+      it "returns a validation failure message" do
+        expect(response.body).to match(/Validation failed: Forename can't be blank/)
+      end
     end
   end
 
-  describe "GET /show" do
-    it "returns http success" do
-      get "/users/show"
-      expect(response).to have_http_status(:success)
+  describe "GET /users/:id" do
+    before { get "/users/#{user_id}" }
+
+    context 'when the user exists' do
+      it 'returns the user' do
+        expect(json).to_not be_empty
+        expect(json['id']).to eq(user_id)
+      end
+
+      it 'returns http 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'when the user does not exist' do
+      let(:user_id) { 100 }
+
+      it 'returns http 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find User with 'id'=100/)
+      end
     end
   end
 
-  describe "GET /destroy" do
-    it "returns http success" do
-      get "/users/destroy"
-      expect(response).to have_http_status(:success)
+  describe 'PUT /users/:id' do
+    let(:valid_attributes) { { surname: 'Roberts' } }
+    before { put "/users/#{user_id}", params: valid_attributes }
+
+    context 'when the record exists' do
+
+      it 'updates the record' do
+        expect(json['surname']).to eq('Roberts')
+      end
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
     end
   end
 
+  describe 'DELETE /users/:id' do
+    before { delete "/users/#{user_id}" }
+
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
+    end
+  end
 end
