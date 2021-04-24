@@ -19,6 +19,7 @@ export default () => (
           to="/log-in"
           className="btn btn-lg custom-button"
           role="button"
+          id="login"
         >
           Log in
         </Link>
