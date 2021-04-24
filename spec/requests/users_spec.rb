@@ -45,7 +45,7 @@ RSpec.describe "Users", type: :request do
       end
 
       it "returns a validation failure message" do
-        expect(response.body).to match(/Validation failed: Forename can't be blank/)
+        expect(response.body).to match(/Forename can't be blank/)
       end
     end
   end
