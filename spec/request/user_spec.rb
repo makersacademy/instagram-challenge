@@ -45,3 +45,5 @@ RSpec.describe 'Users API', type: :request do
     end
   end
 end
+
+# curl -v POST -H "Content-Type: application/json" -d '{"forename":"Sadie", "lastname":"Smith", "username":"ssmith", "password":"password1"}' http://localhost:3000/api/v1/users/create
