@@ -3,12 +3,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const express = require('express');
+const session = require('express-session');
+const MongoDBSession = require('connect-mongodb-session')(session);
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
-const passport = require('passport');
-
-// const initializePassport = require('./passport-config');
-// initializePassport(passport);
 
 const indexRouter = require('./routes/index');
 const signUpRouter = require('./routes/users');
@@ -27,6 +25,20 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to Mongoose'));
+
+const store = new MongoDBSession({
+	uri: process.env.DATABASE_URL,
+	collection: 'mySessions',
+});
+
+app.use(
+	session({
+		secret: 'key that will sign cookie',
+		resave: false,
+		saveUninitialized: false,
+		store: store,
+	})
+);
 
 app.use('/', indexRouter);
 app.use('/users', signUpRouter);
