@@ -73,7 +73,7 @@ class NewUser extends React.Component {
             </h1>
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
-                <label htmlFor="forename">Forname</label>
+                <label htmlFor="forename">Forename</label>
                 <input
                   type="text"
                   name="forename"
@@ -84,7 +84,7 @@ class NewUser extends React.Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="lastname">Lastname</label>
+                <label htmlFor="lastname">Surname</label>
                 <input
                   type="text"
                   name="lastname"
