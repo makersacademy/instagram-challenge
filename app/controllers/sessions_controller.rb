@@ -15,7 +15,8 @@ def new
 
   end
 
-  def login
+  def welcome
+    @posts = Post.all
   end
 
   def destroy

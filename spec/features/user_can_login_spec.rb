@@ -14,6 +14,6 @@ RSpec.feature "Login", type: :feature do
     fill_in "Username", with: "CharmingSnail"
     fill_in "Password", with: "Pa55w0rd"
     click_on "Login"
-    expect(page).to have_content("You are logged in as CharmingSnail!")
+    expect(page).to have_content("You are logged in as CharmingSnail")
   end
 end
