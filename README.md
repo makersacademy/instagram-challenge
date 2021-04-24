@@ -43,12 +43,15 @@ I want to like a photo
     [x] create sessions with user id
     [x] renders same page if no user found
     [x] current_user set by session user id, logged in username on root page
-
-[ ] Logout functionality  
-    [ ] destroy session  
+[x] Logout functionality
+    [x] user clicks logout
+    [x] destroy session  
 
 #### User story 1 tasks
-
+[ ] share a photo button or link
+  [ ] form for uploading a photo
+  [ ] photo shows on the homepage posts feed
+  [ ] 
 
 #### User story 2 tasks
 
