@@ -16,10 +16,16 @@ User.create(
   profile_picture: 'https://loremflickr.com/300/300'
 )
 
-9.times do
+descriptions = ["I'll never be called", 'Super cute, wish they were mine!', 'Ahhh puppies! Be still my heart!',
+                'What a good boy! Makes me want another one!', 'This is the cutest! OMG!', 
+                'Looooks sooooo soft! Gotta have em!', 'This is why I keep treats in my pocket!', 
+                'What a handsome pair! Oh my lord!', 'Love the outdoors with my boy!', 
+                "Guess who's getting a bath when we're home!"]
+
+9.times do |i|
   Post.create(
-    image: "https://loremflickr.com/300/300",
+    image: "https://placedog.net/300/300?id=#{i + 1}",
     user_id: '1',
-    description: 'I love this one!'
+    description: "#{descriptions[i + 1]}"
   )
 end

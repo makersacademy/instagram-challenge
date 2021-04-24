@@ -9,7 +9,7 @@ export default () => (
         <p className="lead">
           Beautiful images, stared at relentlessly, by people with better things to do.
         </p>
-        <hr className="my-4" />
+        <hr/>
         <Link
           to="/posts"
           className="btn btn-lg custom-button"
