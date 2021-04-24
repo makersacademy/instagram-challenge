@@ -32,13 +32,18 @@ I want to like a photo
 [x] bundle  
 
 #### setting up a user account
-[ ] Sign up functionality
-    [ ] Users model (database with username and password)  
-    [ ] Sessions set up:  
-        [ ] new/create: Form to sign in  
-        [ ]
-[ ] Login functionality  
-    [ ] authentication check with database  
+[x] Sign up functionality
+  [x] bcrypt set up
+  [x] Users model (database with username and password)  
+  [x] Form for signing up in new users view
+  [x] User controller creates and saves user
+[x] Log in functionality
+  [x] Sessions set up:
+    [x] Form for logging in in new sessions view
+    [x] create sessions with user id
+    [x] renders same page if no user found
+    [x] current_user set by session user id, logged in username on root page
+
 [ ] Logout functionality  
     [ ] destroy session  
 
