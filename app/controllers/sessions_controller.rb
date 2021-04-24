@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  def new
+
+def new
   end
 
   def create
@@ -17,6 +18,9 @@ class SessionsController < ApplicationController
   def login
   end
 
-  def welcome
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url, notice: "Logged out!"
   end
+
 end
