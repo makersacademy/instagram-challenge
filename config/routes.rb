@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'grams#index'
 
   resources :grams
+  resources :users
+  resources :sessions
   # get 'grams/index'
   # get 'grams/new'
   # get 'grams/create'

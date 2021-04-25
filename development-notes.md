@@ -24,6 +24,9 @@ Bonus if you can add filters!
 
 #### Development Notes
 
-- Will implement basic posting feature with images and comments underneath.
+- Will implement basic posting feature with images
   - implemented basic text posting with error catcher - DONE
-  - implement photo posting 
+  - implement photo posting with the gram, and an error catcher if no photo uploaded - DONE
+
+- will implement a user feature
+  - implemented sign-in and sign-out features 

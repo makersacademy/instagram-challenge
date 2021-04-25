@@ -1,11 +1,9 @@
 require 'rails_helper'
 
-
 RSpec.feature "Post a Gram", type: :feature do
   scenario "User can post a gram" do
     visit "/"
     click_link "Create a post"
-    puts __FILE__
     attach_file "gram_image", "./spec/fixtures/dinosaur1.jpeg"
     fill_in "gram[body]", with: "This is my first gram."
     click_button "Submit"
