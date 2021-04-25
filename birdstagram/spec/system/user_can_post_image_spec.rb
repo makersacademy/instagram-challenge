@@ -9,7 +9,7 @@ RSpec.describe "User can post Images", type: :system do
   it 'allows a user to attach an image to a post' do
     visit '/posts/new'
     fill_in 'post_content', with: 'I love seeds!'
-    click_button 'Attach Image'
+    find('form input[type="file"]').click
     click_button 'Post'
     expect(page).to have_content ('I love seeds!')
     post_instance = Post.order("id").last
