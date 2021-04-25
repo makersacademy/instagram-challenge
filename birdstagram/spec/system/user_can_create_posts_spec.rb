@@ -13,8 +13,7 @@ RSpec.describe "User can create posts", type: :system do
     expect(page).to have_content ('I love seeds!')
     post_instance = Post.order("id").last
 
-    expect(post_instance.username).to eq('rio')
-    expect(post_instance.body).to eq('I love seeds!')
+    expect(post_instance.content).to eq('I love seeds!')
   end
 
 end
