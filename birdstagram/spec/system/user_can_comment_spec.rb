@@ -18,6 +18,7 @@ RSpec.describe "User can add comments", type: :system do
     click_link "I love seeds!"
     fill_in 'comment', with: 'Me too!'
     click_button 'Add comment'
+    click_link "I love seeds!"
     expect(page).to have_text 'Me too!'
   end
 end
