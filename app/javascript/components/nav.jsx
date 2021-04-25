@@ -61,7 +61,7 @@ class Nav extends React.Component {
         }
         { 
         this.props.loggedInStatus ?
-        <Link to="/logout" onClick={ this.logoutClick }>Sign Out</Link>: null 
+        <Link to="/logout" onClick={ this.logoutClick } className='signout'>Sign Out</Link>: null 
         }
         <a href="#" className="icon" onClick={ this.setNav }>
           <i className={ this.state.clicked ? "fa fa-times" : "fa fa-bars" }></i>
