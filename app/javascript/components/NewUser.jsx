@@ -16,14 +16,6 @@ class NewUser extends React.Component {
     this.onChange = this.onChange.bind(this);
     // Form submissions
     this.onSubmit = this.onSubmit.bind(this);
-    // converting special characters into encoded characters - not storing raw html in db
-    this.stripHtmlEntities = this.stripHtmlEntities.bind(this);
-  }
-
-  stripHtmlEntities(str) {
-    return String(str)
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
   }
 
   onChange(event) {

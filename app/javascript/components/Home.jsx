@@ -8,21 +8,43 @@ export default () => (
       <div className="container secondary-color">
         <h1 className="display-4">Instagram</h1>
         <hr className="my-4" />
-        <Link
-          to="/sign-up"
-          className="btn btn-lg custom-button"
-          role="button"
-        >
-          Sign up
-        </Link>
-        <Link
-          to="/log-in"
-          className="btn btn-lg custom-button"
-          role="button"
-          id="login"
-        >
-          Log in
-        </Link>
+
+        {/* Need to define onSubmit and other functions */}
+        {/* <form onSubmit={this.onSubmit}>  */}
+        <form>
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              className="form-control"
+              required
+              // onChange={this.onChange}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input
+              type="text"
+              name="password"
+              id="password"
+              className="form-control"
+              required
+              // onChange={this.onChange}
+            />
+          </div>
+          <Link
+            to="/sign-up"
+            className="btn btn-lg custom-button"
+            role="button"
+          >
+            Sign up
+          </Link>
+          <button type="submit" className="btn btn-lg custom-button" id='login'>
+            Login
+          </button>
+        </form>
       </div>
     </div>
   </div>

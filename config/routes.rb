@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get 'users/index'
       post 'users/create'
       get 'users/show/:id', to: "users#show"
+      get 'users/authenticate/:username/:password', to: "users#authenticate"
       delete 'users/destroy/:id', to: "users#destroy"
     end
   end
