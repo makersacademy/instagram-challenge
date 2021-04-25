@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(params.permit(:description, :user_id))
+    @post = Post.create(params.permit(:description, :user_id, :image))
 
     redirect_to root_url
   end
