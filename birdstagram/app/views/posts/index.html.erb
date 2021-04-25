@@ -6,16 +6,20 @@
 <ul>
   <% @posts.each do |post| %>
     <li>
-      <%= link_to post.content, post %><br>
-      by <%= find_user(post.user_id) %>
+      <b><%= link_to post.content, post %><br></b>
       <% if post.image.attached? %>
-        <image src = "<%=(url_for(post.image))%>">
+        <image src = "<%=(url_for(post.image))%>"><br>
       <% end %>
+      by <%= find_user(post.user_id) %><br>
     </li>
   <% end %>
 </ul>
 
-<%= link_to "New Post", new_post_path %>
-
+<% if !logged_in? %>
 <%= button_to "Login", '/login', method: :get %>
 <%= button_to "Sign Up", '/users/new', method: :get %>
+<% end %>
+<% if logged_in? %>
+<%= button_to "New Post", new_post_path %>
+<%= button_to "Logout", '/logout', method: :delete %>
+<% end %>

@@ -11,4 +11,10 @@ class SessionsController < ApplicationController
       render 'new'
     end
   end
+
+  def destroy
+    session.delete(:user_id)
+    @user = nil
+    redirect_to '/posts'
+  end
 end
