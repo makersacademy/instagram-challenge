@@ -12,3 +12,9 @@ def login
   fill_in 'session_password', with: 'bells'
   click_button 'Sign In'
 end
+
+def create_post
+  visit '/posts/new'
+  fill_in 'post_content', with: 'I love seeds!'
+  click_button 'Post'
+end

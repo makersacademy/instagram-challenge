@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   root :to => 'posts#index'
   resources :users
   resources :posts
+  resources :comments
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  post 'posts/:id' => 'comments#create'
 
 end

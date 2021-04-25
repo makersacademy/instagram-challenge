@@ -15,7 +15,7 @@ RSpec.describe "User can login", type: :system do
   end
   it "doesn't have a login or signup button if user is logged in" do
     login
-    expect(page).not_to have_button 'Sign In'
+    expect(page).not_to have_button 'Login'
     expect(page).not_to have_button 'Sign up'
   end
 end

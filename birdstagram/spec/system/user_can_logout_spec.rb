@@ -14,5 +14,6 @@ RSpec.describe "User can logout", type: :system do
   it "doesn't display a logout button if the user is logged out" do
     click_button 'Logout'
     expect(page).not_to have_button ('Logout')
+    expect(page).not_to have_button ('New Post')
   end
 end
