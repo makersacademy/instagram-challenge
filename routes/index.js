@@ -10,7 +10,7 @@ const isAuth = (req, res, next) => {
 };
 
 router.get('/', isAuth, (req, res) => {
-	res.render('index', { username: 'LastGreedyMosquito' });
+	res.redirect('posts');
 });
 
 module.exports = router;

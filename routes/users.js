@@ -38,7 +38,8 @@ router.post('/', async (req, res) => {
 	});
 	try {
 		const newUser = await user.save();
-		// res.redirect(`users/${newUser.id}`);
+		req.session.isAuth = true;
+		req.session.user = newUser.id;
 		res.redirect('/');
 	} catch {
 		res.render('users/new', {

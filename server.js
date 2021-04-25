@@ -41,6 +41,11 @@ app.use(
 	})
 );
 
+app.use((req, res, next) => {
+	res.locals.isAuth = req.session.isAuth;
+	next();
+});
+
 app.use('/', indexRouter);
 app.use('/users', signUpRouter);
 app.use('/sessions', loginRouter);

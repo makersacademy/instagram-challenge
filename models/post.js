@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const imageBasePath = 'uploads/';
+const imageBasePath = '/uploads/';
 const path = require('path');
 const User = require('./user');
 
@@ -13,9 +13,13 @@ const postSchema = new mongoose.Schema({
 	},
 });
 
-// postSchema.virtual('username').get(function () {
-// 	return User.findById(this.user).username;
-// });
+postSchema.set('toObject', { virtuals: true });
+postSchema.set('toJSON', { virtuals: true });
+
+postSchema.virtual('imageRelPath').get(function () {
+	console.log(imageBasePath + this.imagePath);
+	return imageBasePath + this.imagePath;
+});
 
 module.exports = mongoose.model('posts', postSchema);
 module.exports.imageBasePath = imageBasePath;

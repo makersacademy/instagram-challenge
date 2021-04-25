@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
 		if (await bcrypt.compare(req.body.password, user.password)) {
 			req.session.isAuth = true;
 			req.session.user = user.id;
-			res.send(`login user ${req.body.email}`);
+			res.redirect('/');
 		} else {
 			res.render('sessions/new', { user: user, errorMessage: 'Wrong password' });
 		}
