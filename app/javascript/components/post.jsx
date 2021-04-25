@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 class Post extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { Post: { description: "" } };
+    this.state = { 
+      post: "" 
+    };
   }
 
   componentDidMount() {
@@ -14,7 +16,7 @@ class Post extends React.Component {
       }
     } = this.props;
 
-  // set the url to the 
+  // set the url to the post id
   const url = `/api/posts/${id}`;
   fetch(url)
     .then(response => {
@@ -25,6 +27,25 @@ class Post extends React.Component {
     })
     .then(response => this.setState({ post: response }))
     .catch(() => this.props.history.push("/posts/${id}"));
+  }
+
+  render() {
+    const { post } = this.state;
+
+    return (
+      <div className="">
+        <div className="hero position-relative d-flex align-items-center justify-content-center">
+          <img
+            src={post.image}
+            alt={`${post.description} image`}
+            className="img-fluid"
+          />
+        </div>
+        <div className="card-body single">
+          <h5 className='lead'>{post.description}</h5>
+        </div>
+      </div>
+    );
   }
 
 }

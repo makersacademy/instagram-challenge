@@ -42,9 +42,9 @@ class Login extends React.Component {
       .then(response => {
         if (response.json('logged_in')) {
           this.props.handleLogin(response)
-          this.redirect()
+          return this.redirect()
         } else {
-          this.props.handleLogout()
+          return this.props.handleLogout()
         }
         throw new Error("Network response was not ok.");
       })

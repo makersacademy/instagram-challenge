@@ -40,7 +40,7 @@ class Posts extends React.Component {
           />
           {/* calls the image description which links to the posts own page */}
           <div className="card-body">
-            <Link to={`/post/${post.id}`} className="post-click">
+            <Link to={`/posts/${post.id}`} className="post-click">
             <h5>{post.description}</h5>
             </Link>
           </div>

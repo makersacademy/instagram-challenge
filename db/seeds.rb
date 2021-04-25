@@ -24,7 +24,7 @@ descriptions = ["I'll never be called", 'Super cute, wish they were mine!', 'Ahh
 
 9.times do |i|
   Post.create(
-    image: "https://placedog.net/300/300?id=#{i + 1}",
+    image: "https://placedog.net/600/600?id=#{i + 1}",
     user_id: '1',
     description: "#{descriptions[i + 1]}"
   )
