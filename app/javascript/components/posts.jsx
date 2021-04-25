@@ -50,7 +50,7 @@ class Posts extends React.Component {
     // if there are no posts in the response it shows this element
     const noPost = (
       <div className="vw-100 vh-50 d-flex align-items-center justify-content-center">
-        <h4>
+        <h4 className='lead'>
           No posts yet. Why not <Link to="/new_post">create one</Link>
         </h4>
       </div>
