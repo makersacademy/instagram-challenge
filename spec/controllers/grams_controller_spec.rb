@@ -17,13 +17,16 @@ RSpec.describe GramsController, type: :controller do
 
   describe "Post /grams" do
     it "redirects to the home page" do
-      post :create, params: { gram: { body: "This is my first post." } }
+      post :create, params: { gram: { body: "This is my first post.", image: fixture_file_upload('./spec/fixtures/dinosaur1.jpeg') } }
       expect(response).to redirect_to(root_path)
     end
 
     it "creates a gram" do
-      post :create, params: { gram: { body: "This is my first post." } }
+      post :create, params: { gram: { body: "This is my first post.", image: fixture_file_upload('./spec/fixtures/dinosaur1.jpeg') } }
       expect(Gram.find_by(body: "This is my first post.")).to be
     end
   end
 end
+
+
+# IMAGE_ROUTE =  "#<ActionDispatch::Http::UploadedFile:0x00007fb0e8830e28 @tempfile=#<Tempfile:/var/folders/r4/z4pwqljs2dgcvrqf333cl1q80000gn/T/RackMultipart20210425-12752-pe5tri.jpeg>, @original_filename='dinosaur1.jpeg', @content_type='image/jpeg', @headers='Content-Disposition: form-data; name=\"gram[image]\"; filename=\"dinosaur1.jpeg\"\r\nContent-Type: image/jpeg\r\n'>"

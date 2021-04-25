@@ -9,6 +9,7 @@ class GramsController < ApplicationController
 
   def create
     @gram = Gram.new(gram_params)
+    puts gram_params
     if @gram.save
       redirect_to root_url
     else
@@ -19,6 +20,6 @@ class GramsController < ApplicationController
   private
 
   def gram_params
-    params.require(:gram).permit(:body)
+    params.require(:gram).permit(:body, :image)
   end
 end

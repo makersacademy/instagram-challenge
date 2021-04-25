@@ -25,4 +25,5 @@ Bonus if you can add filters!
 #### Development Notes
 
 - Will implement basic posting feature with images and comments underneath.
-- Look at different testing 
+  - implemented basic text posting with error catcher - DONE
+  - implement photo posting 
