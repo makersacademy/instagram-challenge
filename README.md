@@ -1,12 +1,16 @@
 Instagram Challenge
 ===================
+So, I didn't have much time this weekend. However, I did at least get a bit done! Users can sign up, login and post photos. Posts are displayed on the screen.
+I did some testing, but not enough. You can't edit or delete posts. Users can't logout. A post is not attributed to a user in the view.
+I didn't use strong params appropriately because I couldn't quickly get it to work so I bodged it. A walkthrough of how to fix this would be super helpful!
+I did NOT style this at all. It looks horrific.
+Images are saved to localstorage, but with more time I'd use a cloud-based storage system.
 
-## Instructions
+## Instructions for use:
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+* clone the repo
+* cd birdstagram
+* db:create, db:migrate
 
 ## Task
 
