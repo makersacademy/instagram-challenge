@@ -79,6 +79,7 @@ RSpec.describe 'Users API', type: :request do
   describe 'GET /users/authenticate' do
     
     context "When the request is valid" do
+      # Will sometimes fail if Faker generates a dodgy username or password
       before { get "/api/v1/users/authenticate/#{username}/#{password}" }
       it 'returns the user' do
         expect(json).not_to be_empty
@@ -97,10 +98,6 @@ RSpec.describe 'Users API', type: :request do
 
       it 'returns nil' do
         expect(json).to eq(nil)
-      end
-
-      it 'returns' do
-        expect(response.body).to eq("")
       end
     end
   end

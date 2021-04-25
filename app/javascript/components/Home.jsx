@@ -40,16 +40,19 @@ class Home extends React.Component {
         throw new Error("Network response was not ok.");
       })
       .then(response => {
-        if (response == "" ) {
-          console.log("returned nil")
+        console.log(response)
+        if (response == null ) {
+          console.log("request returned nil")
 
-          this.props.history.push("/");
           window.alert("Incorrect username or password, try again or signup")
+          this.props.history.push("/");
+          document.getElementById("login_form").reset();
           return;
         };
         console.log("request valid")
 
         localStorage.setItem("id", response.id)
+        // CHANGE TO POSTS PAGE
         this.props.history.push("/");
         window.alert(`Welcome back to instagram ${response.forename}`)
       })
@@ -64,7 +67,7 @@ class Home extends React.Component {
             <h1 className="display-4">Instagram</h1>
             <hr className="my-4" />
 
-            <form onSubmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit} id="login_form">
               <div className="form-group">
                 <label htmlFor="username">Username</label>
                 <input
