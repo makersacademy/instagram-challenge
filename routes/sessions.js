@@ -14,6 +14,7 @@ router.post('/', async (req, res) => {
 		const user = await User.findOne({ email: req.body.email });
 		if (await bcrypt.compare(req.body.password, user.password)) {
 			req.session.isAuth = true;
+			req.session.user = user.id;
 			res.send(`login user ${req.body.email}`);
 		} else {
 			res.render('sessions/new', { user: user, errorMessage: 'Wrong password' });
@@ -29,12 +30,5 @@ router.get('/destroy', (req, res) => {
 		res.redirect('/');
 	});
 });
-
-function checkNotAuthenticated(req, res, next) {
-	if (req.isAuthenticated()) {
-		return res.redirect('/');
-	}
-	next();
-}
 
 module.exports = router;

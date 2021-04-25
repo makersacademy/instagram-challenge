@@ -11,6 +11,7 @@ const expressLayouts = require('express-ejs-layouts');
 const indexRouter = require('./routes/index');
 const signUpRouter = require('./routes/users');
 const loginRouter = require('./routes/sessions');
+const postRouter = require('./routes/posts');
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -43,5 +44,6 @@ app.use(
 app.use('/', indexRouter);
 app.use('/users', signUpRouter);
 app.use('/sessions', loginRouter);
+app.use('/posts', postRouter);
 
 app.listen(process.env.PORT || 3000);
