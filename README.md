@@ -3,7 +3,7 @@
 - The plan was to build an instagramish clone using a rails api and react front end. 
 - Currently I haven't got as far as I would like but I tried to get a lot done in a short space of time
 - Implementation:
-  - [ ] Users can register (page almost compelete)
+  - [x] Users can register (needs some more validation and success message/errors etc)
   - [x] Users can login
   - [x] Users can logout
   - [x] Users can view posts
