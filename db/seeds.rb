@@ -12,7 +12,7 @@ User.create(
   surname: 'Smith', 
   username: 'ssmith', 
   email: 'ssmith@notadomain.com', 
-  password: 'password1', 
+  password: 'HarryPotter1', 
   profile_picture: 'https://loremflickr.com/300/300'
 )
 

@@ -14,17 +14,17 @@ class Post extends React.Component {
       }
     } = this.props;
 
-    // set the url to the 
-    const url = `/api/posts/${id}`;
-    fetch(url)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error("Network response was not ok.");
-      })
-      .then(response => this.setState({ post: response }))
-      .catch(() => this.props.history.push("/posts"));
+  // set the url to the 
+  const url = `/api/posts/${id}`;
+  fetch(url)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error("Network response was not ok.");
+    })
+    .then(response => this.setState({ post: response }))
+    .catch(() => this.props.history.push("/posts/${id}"));
   }
 
 }

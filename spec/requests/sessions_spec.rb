@@ -10,6 +10,7 @@ RSpec.describe 'Sessions API', type: :request do
 
   describe 'POST /api/login' do
     before { post '/api/users', params: valid_attributes }
+
                             
     context 'when the user is valid' do
       before { post '/api/login', params: { user:  { username: 'Ssmith', password: 'password1' } } }

@@ -22,7 +22,7 @@ class Posts extends React.Component {
       })
       // save the response in the state
       .then(response => this.setState({ posts: response }))
-      .catch(() => this.props.history.push("/"));
+      .catch(() => this.props.history.push("/posts"));
   }
 
   render() {
@@ -78,10 +78,6 @@ class Posts extends React.Component {
             <div className="row">
               {posts.length > 0 ? allPosts : noPost}
             </div>
-            {/* link to the front page which will be moved to the top bar menu */}
-            <Link to="/" className="btn btn-link">
-              Home
-            </Link>
           </main>
         </div>
       </>
