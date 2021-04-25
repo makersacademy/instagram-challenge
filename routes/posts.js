@@ -23,7 +23,7 @@ const upload = multer({
 // All Posts Route
 router.get('/', async (req, res) => {
 	try {
-		const posts = await Post.find({}).populate('user', 'username -_id'); //.select('imagePath imageRelPath user');
+		const posts = await Post.find({}).populate('user', 'username -_id').sort({ createdAt: -1 }).exec(); //.select('imagePath imageRelPath user');
 		res.render('posts/index', { posts: posts });
 	} catch {
 		res.render('post/index', { errorMessage: 'Error loading posts' });

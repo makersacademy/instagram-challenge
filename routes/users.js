@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
 	if (req.query.username != null && req.query.username !== '') {
 		searchOptions.username = new RegExp(req.query.username, 'i');
 	}
-	console.log(searchOptions);
 	try {
 		const users = await User.find(searchOptions);
 		res.render('users/index', {
@@ -24,7 +23,6 @@ router.get('/', async (req, res) => {
 
 // New User Route
 router.get('/new', (req, res) => {
-	console.log(req.body);
 	res.render('users/new', { user: new User() });
 });
 
