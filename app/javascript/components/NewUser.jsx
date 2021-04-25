@@ -60,7 +60,10 @@ class NewUser extends React.Component {
         }
         throw new Error("Network response was not ok.");
       })
-      .then(response => this.props.history.push(`/user/${response.id}`))
+      .then(response => {
+        this.props.history.push("/");
+        window.alert("Your account has been created, login!")
+      })
       .catch(error => console.log(error.message));
   }
   render() {
