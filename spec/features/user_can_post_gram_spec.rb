@@ -14,6 +14,6 @@ RSpec.feature "Post a Gram", type: :feature do
     visit "/"
     click_link "Create a post"
     click_button "Submit"
-    expect(page).to have_content("Blank box not allowed")
+    expect(page).to have_content("Body can't be blank")
   end
 end

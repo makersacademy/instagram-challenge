@@ -8,8 +8,12 @@ class GramsController < ApplicationController
   end
 
   def create
-    @gram = Gram.create(gram_params)
-    redirect_to root_url
+    @gram = Gram.new(gram_params)
+    if @gram.save
+      redirect_to root_url
+    else
+      render :new
+    end
   end
 
   private
