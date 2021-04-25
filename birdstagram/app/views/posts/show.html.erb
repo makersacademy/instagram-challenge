@@ -1,0 +1,25 @@
+<h1> BIRDSTAGRAM </h1>
+<h2><%= @post.content %></h2>
+<body>
+  <% if @post.image.attached? %>
+    <image src = "<%=(url_for(@post.image))%>">
+  <% end %>
+  by <%= find_user(@post.user_id) %><br><br>
+
+  <% @comments = load_comments(@post.id) %>
+  <% for i in 0..@comments.length-1 %>
+    <%= find_user(@comments[i][1]) %> said:
+    <%= @comments[i][0] %><br><br>
+  <% end %><br><br>
+
+  <%= form_with model: @comment do |form| %>
+    <div>
+      <%= form.label :comment %>
+      <%= form.text_field :comment %><br>
+      <%= form.submit "Add comment" %>
+    </div>
+  <% end %>
+  <ul>
+  <%= button_to "Home", '/', method: :get %>
+
+</body>

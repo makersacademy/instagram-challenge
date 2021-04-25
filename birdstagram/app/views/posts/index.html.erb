@@ -1,0 +1,32 @@
+<h1> BIRDSTAGRAM </h1>
+<body>
+  <p>
+  <% if logged_in? %>
+    Hello, <%= current_user.username %>
+  <% end %>
+
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <div class = "post">
+        <b><%= link_to post.content, post %><br></b>
+        <% if post.image.attached? %>
+          <image src = "<%=(url_for(post.image))%>"><br>
+        <% end %>
+        by <%= find_user(post.user_id) %><br>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <% if !logged_in? %>
+    <%= button_to "Login", '/login', method: :get %>
+    <%= button_to "Sign Up", '/users/new', method: :get %>
+  <% end %>
+  <% if logged_in? %>
+    <%= button_to "New Post", '/posts/new', method: :get %>
+    <%= button_to "Logout", '/logout', method: :delete %>
+  <% end %>
+  <%= button_to "Home", '/', method: :get %>
+
+</body>
