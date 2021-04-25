@@ -2,6 +2,20 @@
 <% if logged_in? %>
   Hello, <%= current_user.username %>
 <% end %>
+<%= debug params %>
+<%= debug session %>
+
+<% if @posts %>
+<ul>
+  <% @posts.each do |post| %>
+    <li>
+      <%= link_to post.content, post %>
+    </li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= link_to "New Post", new_post_path %>
 
 <%= button_to "Login", '/login', method: :get %>
 <%= button_to "Sign Up", '/users/new', method: :get %>
