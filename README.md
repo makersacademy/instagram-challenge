@@ -11,4 +11,5 @@ Images are saved to localstorage, but with more time I'd use a cloud-based stora
 * clone the repo
 * cd birdstagram
 * bundle
-* db:create, db:migrate
+* bin/rails db:create, db:migrate
+* bin/rails server
