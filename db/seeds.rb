@@ -7,7 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(forename: "Tarandeep", lastname: "Nandhra", username: "taran314", password: "password123").save
-10.times do |number|
-  Post.create(username: "taran314", description: "cute dog photo #{number}", image: "https://placedog.net/images?id=#{number}", user_id: "1").save!
-end
+10.times { Post.create(username: "taran314", description: "cute dog photo", image: "https://placedog.net/800/640?id=1", user_id: "1").save }
 

@@ -52,8 +52,7 @@ class Home extends React.Component {
         console.log("request valid")
 
         localStorage.setItem("id", response.id)
-        // CHANGE TO POSTS PAGE
-        this.props.history.push("/");
+        this.props.history.push("/posts");
         window.alert(`Welcome back to instagram ${response.forename}`)
       })
       .catch(error => console.log(error.message));
