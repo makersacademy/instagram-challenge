@@ -8,6 +8,5 @@ RSpec.describe User, type: :model do
     expect(user_instance.username).to eq('Caesar')
     expect(user_instance.email).to eq('caesar@example.com')
     expect(user_instance.password).not_to eq("seeds4evz")
-
   end
 end

@@ -5,5 +5,4 @@ Rails.application.routes.draw do
   resources :posts
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
-  get 'welcome' => 'sessions#welcome'
 end
