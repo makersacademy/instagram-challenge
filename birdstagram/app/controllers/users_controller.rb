@@ -4,10 +4,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-
+    @user = User.create(user_params)
+    session[:user_id] = @user.id
     if @user.save
-      redirect_to @user
+      redirect_to '/posts/index'
     else
       render :new
     end
