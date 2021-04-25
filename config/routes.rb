@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resources :grams
   resources :users
-  resources :sessions
+  resources :sessions, only: [:new, :create, :destroy]
+
+  get 'logout', to: 'sessions#destroy', as: 'logout'
   # get 'grams/index'
   # get 'grams/new'
   # get 'grams/create'

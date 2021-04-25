@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
+      session[:expires_at] = Time.current + 12.hours
       redirect_to root_url
     else
       render :new

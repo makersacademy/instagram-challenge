@@ -1,8 +1,22 @@
 <h1>DINOGRAM<h1>
 
-<%= link_to new_user_path do %>
-  Sign Up
+<% if current_user %>
+  <h3>Welcome <%= current_user.username %> to DINOGRAM!</h3>
+  <br>
+  <h3><%= link_to logout_path do %>
+    Log Out
+  <% end %></h3>
+<% else %>
+  <%= link_to new_user_path do %>
+    Sign Up
+  <% end %>
+  <br>
+  <%= link_to new_session_path do %>
+    Log In
+  <% end %>
 <% end %>
+
+
 
 <%= link_to new_gram_path do %>
   <h3>Create a post</h3>
