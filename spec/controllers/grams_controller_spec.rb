@@ -17,12 +17,14 @@ RSpec.describe GramsController, type: :controller do
 
   describe "Post /grams" do
     it "redirects to the home page" do
-      post :create, params: { gram: { body: "This is my first post.", image: fixture_file_upload('./spec/fixtures/dinosaur1.jpeg') } }
+      user = User.create(username: "test", password: "1234")
+      post :create, params: { gram: { body: "This is my first post.", image: fixture_file_upload('./spec/fixtures/dinosaur1.jpeg'), user_id: user.id } }
       expect(response).to redirect_to(root_path)
     end
 
     it "creates a gram" do
-      post :create, params: { gram: { body: "This is my first post.", image: fixture_file_upload('./spec/fixtures/dinosaur1.jpeg') } }
+      user = User.create(username: "test", password: "1234")
+      post :create, params: { gram: { body: "This is my first post.", image: fixture_file_upload('./spec/fixtures/dinosaur1.jpeg'), user_id: user.id } }
       expect(Gram.find_by(body: "This is my first post.")).to be
     end
   end

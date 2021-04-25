@@ -17,15 +17,19 @@
 <% end %>
 
 
-
-<%= link_to new_gram_path do %>
-  <h3>Create a post</h3>
+<% if current_user %>
+  <%= link_to new_gram_path do %>
+    <h3>Create a post</h3>
+  <% end %>
 <% end %>
 
 <h3>The Posts!</h3>
 
 <% @grams.each do |gram| %>
 <div class="gram">
+  <div class="gram-author-div">
+    @<%= User.find(gram.user_id).username %>
+  </div>
   <div class="gram-image-div">
     <%= image_tag gram.image, class:"gram-image"%>
   </div>

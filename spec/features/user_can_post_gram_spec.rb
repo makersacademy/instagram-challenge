@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Post a Gram", type: :feature do
   scenario "User can post a gram" do
-    visit "/"
+    sign_up
     click_link "Create a post"
     attach_file "gram_image", "./spec/fixtures/dinosaur1.jpeg"
     fill_in "gram[body]", with: "This is my first gram."
@@ -12,7 +12,7 @@ RSpec.feature "Post a Gram", type: :feature do
   end
 
   scenario "User cannot post an empty content box, returns to new page" do
-    visit "/"
+    sign_up
     click_link "Create a post"
     click_button "Submit"
     expect(page).to have_content("Image can't be blank")
