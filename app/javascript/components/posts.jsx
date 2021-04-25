@@ -69,11 +69,6 @@ class Posts extends React.Component {
         </div>
         <div className="py-5">
           <main className="container">
-            <div className="text-right mb-3">
-              <Link to="/post" className="btn custom-button">
-                Create New Post
-              </Link>
-            </div>
             {/* displays the allPosts const if there are any in the state */}
             <div className="row">
               {posts.length > 0 ? allPosts : noPost}

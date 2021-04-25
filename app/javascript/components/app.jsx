@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Home from "../components/home";
 import Posts from "../components/posts";
+// import Post from "../components/post";
 import Login from "../components/login";
 import Nav from "../components/nav";
 
@@ -67,6 +68,10 @@ class App extends React.Component {
             <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
             )}
           />
+          {/* <Route path='/posts/new' render={props => (
+            <Post {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+            )}
+          /> */}
         </Switch>
       </Router>
     );

@@ -17,8 +17,8 @@ class Home extends React.Component {
           <div className="container secondary-color">
             <h1 className="display-4">Procrastagram</h1>
             <p className="lead">
-              Beautiful images, stared at relentlessly, by people with better things to do.
-            </p>
+              Beautiful images, stared at relentlessly, by  with better things to do.
+            </p>people
             <hr/>
             <Link to="/posts" className="btn btn-lg custom-button" role="button" >
               See Beautiful

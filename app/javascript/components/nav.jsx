@@ -48,6 +48,10 @@ class Nav extends React.Component {
         <Link to="/" className="active">Procrastagram</Link>
         <Link to="/posts">Posts</Link>
         { 
+        this.props.loggedInStatus ?
+        <Link to="/posts/new">Create New Post</Link>: null 
+        }
+        { 
         !this.props.loggedInStatus ?
         <Link to="/Login">Sign In</Link>: null 
         }
