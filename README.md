@@ -1,6 +1,13 @@
 Instagram Challenge
 ===================
 
+
+## To use
+
+- Rubocop - type `rubocop` in command line
+- erb-lint - type `erblint --lint-all --enable-all-linters` in command line
+
+
 ## Instructions
 
 * Feel free to use Google, your notes, books, etc., but work on your own
