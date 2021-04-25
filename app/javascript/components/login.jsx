@@ -72,10 +72,10 @@ class Login extends React.Component {
     <>
       <div className="container py-5">
         <h1 className="display-4">Procrastagram</h1>
-        <p className="lead">
-          Sit, relax, you've got important things to do. So why not spend some time
-          aimlessly scrolling through images. It's your life, waste it.
-        </p>
+          <p className="lead">
+            Sit, relax, you've got important things to do. So why not spend some time
+            aimlessly scrolling through images. It's your life, waste it.
+          </p>
         <hr/>
       </div>
       <div className="container py-5">

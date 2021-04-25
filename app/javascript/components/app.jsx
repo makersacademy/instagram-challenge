@@ -5,6 +5,7 @@ import Posts from "../components/posts";
 import Post from "../components/post";
 import Login from "../components/login";
 import Nav from "../components/nav";
+import Signup from "../components/signup";
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class App extends React.Component {
     const url = "/api/logged_in";
     fetch(url, { credentials: 'include' })
     .then(response => {
-      if (response.json('logged_in')) {
+      if (response.json('logged_in') === true) {
         this.handleLogin(response)
       } else {
         this.handleLogout()
@@ -70,6 +71,10 @@ class App extends React.Component {
           />
           <Route path='/login' render={props => (
             <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
+            )}
+          />
+          <Route path='/signup' render={props => (
+            <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
             )}
           />
           {/* <Route path='/posts/new' render={props => (
