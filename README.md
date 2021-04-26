@@ -48,10 +48,10 @@ I want to like a photo
     [x] destroy session  
 
 #### User story 1 tasks
-[ ] share a photo button or link
-  [ ] form for uploading a photo
-  [ ] photo shows on the homepage posts feed
-  [ ] 
+[x] share a photo button or link
+  [x] form for uploading a photo
+  [x] photo shows on the homepage posts feed
+
 
 #### User story 2 tasks
 
