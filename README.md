@@ -23,3 +23,14 @@
 
 - In future I may revisit something similar and make a full stack ruby-on-rails app.a
   
+
+##  How to run it
+
+- Clone the repo
+- Run `bundle install`
+- Run `npm install`
+- Run `rails db:create db:migrate db:seed`
+- Run `rails s`
+- Go to `http://127.0.0.1:3000`
+- Sign up or use the preset user `ssmith` with password `HarryPotter1`
+
