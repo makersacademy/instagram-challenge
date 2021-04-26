@@ -3,7 +3,7 @@ Instagram Challenge
 
 Build Instagram using Rails.
 
-[ ] users can can post pictures
+[x] users can can post pictures
 [ ] users can write comments on pictures
 [ ] users can like a picture
 [ ] app is styled
@@ -59,7 +59,10 @@ TBD
 
 ---
 
-#### Current status and notes of project:
+### Current status and notes of project:
+
+![instagram](insta.png)  
+
 - run bin/rails s and visit http://localhost:3000/ for user testing  
 - few simple feature tests are failing. Will be the first focus when picking up this project again  
 - There is currently no unit testing. Currently not required as no code outside of rails automated functions added  
