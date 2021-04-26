@@ -1,0 +1,22 @@
+<h1>DINOGRAM<h1>
+
+<h1>Get Gramming!</h1>
+
+<%= form_with model: @gram do |form| %>
+  <%= form.label :image %>
+  <%= form.file_field :image %>
+  <% @gram.errors.full_messages_for(:image).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+
+  <%= form.text_field :body, id: "gram-text-box", placeholder: 'What do you want to gram about?' %>
+  <% @gram.errors.full_messages_for(:body).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+
+  <%= form.hidden_field :user_id, :value => current_user.id if current_user %>
+
+  <%= form.hidden_field :likes, :value => 0 %>
+
+  <%= form.submit "Submit" %>
+<% end %>

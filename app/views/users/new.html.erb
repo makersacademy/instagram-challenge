@@ -1,0 +1,18 @@
+<h1>DINOGRAM<h1>
+
+<%= form_with model: @user do |form| %>
+  <%= form.label :username %>
+  <%= form.text_field :username %>
+  <% @user.errors.full_messages_for(:username).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+
+  <%= form.label :password %>
+  <%= form.text_field :password %>
+  <% @user.errors.full_messages_for(:password).each do |message| %>
+    <div><%= message %></div>
+    <% break %>
+  <% end %>
+
+  <%= form.submit "Submit" %>
+<% end %>

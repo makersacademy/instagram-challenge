@@ -1,0 +1,50 @@
+<h1>DINOGRAM<h1>
+
+<% if current_user %>
+  <h3>Welcome <%= current_user.username %> to DINOGRAM!</h3>
+  <br>
+  <h3><%= link_to logout_path do %>
+    Log Out
+  <% end %></h3>
+<% else %>
+  <%= link_to new_user_path do %>
+    Sign Up
+  <% end %>
+  <br>
+  <%= link_to new_session_path do %>
+    Log In
+  <% end %>
+<% end %>
+
+
+<% if current_user %>
+  <%= link_to new_gram_path do %>
+    <h3>Create a post</h3>
+  <% end %>
+<% end %>
+
+<h3>The Posts!</h3>
+
+<% @grams.each do |gram| %>
+<div class="gram">
+  <div class="gram-author-div">
+    @<%= User.find(gram.user_id).username %>
+  </div>
+  <div class="gram-image-div">
+    <%= image_tag gram.image, class:"gram-image"%>
+  </div>
+  <div class="gram-body-div">
+    <%= gram.body %>
+  </div>
+  <div class="gram-likes-comments-div">
+    <div class="gram-likes-div">
+      <%= gram.likes %><%= link_to gram_like_path(gram) do %>
+          Rawwrrs
+      <% end %>
+    </div>
+    <div class="gram-comments-div">
+      Comments
+    </div>
+  </div>
+</div>
+<% end %>
