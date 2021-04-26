@@ -28,6 +28,19 @@ RSpec.describe GramsController, type: :controller do
       expect(Gram.find_by(body: "This is my first post.")).to be
     end
   end
+
+
+  describe "Like - GET /grams/:gram_id/likes" do
+    it "updates a gram with one like" do
+      user = User.create(username: "test", password: "1234")
+      post :create, params: { gram: { body: "This is my first post.", image: fixture_file_upload('./spec/fixtures/dinosaur1.jpeg'), user_id: user.id , likes: 0} }
+      gram = Gram.find_by(body: "This is my first post.")
+      expect(gram.likes).to eq 0
+      get :like, params: { gram_id: gram.id }
+      gram = Gram.find_by(body: "This is my first post.")
+      expect(gram.likes).to eq 1
+    end
+  end
 end
 
 

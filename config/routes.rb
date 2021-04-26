@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   root 'grams#index'
 
-  resources :grams
+  resources :grams do
+    get 'likes', to: 'grams#like', as: 'like'
+  end
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
   get 'logout', to: 'sessions#destroy', as: 'logout'
+
   # get 'grams/index'
   # get 'grams/new'
   # get 'grams/create'

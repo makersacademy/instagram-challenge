@@ -29,4 +29,12 @@ Bonus if you can add filters!
   - implement photo posting with the gram, and an error catcher if no photo uploaded - DONE
 
 - will implement a user feature
-  - implemented sign-in and sign-out features 
+  - implemented sign-in and sign-out features - Done
+  - implemented sign-up feature - done
+  - implemented User_id and username on gram - Done
+
+- Likes feature
+
+- comments feature
+
+- heroku 
