@@ -7,5 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(forename: "Tarandeep", lastname: "Nandhra", username: "taran314", password: "password123").save
-10.times { Post.create(username: "taran314", description: "cute dog photo", image: "https://placedog.net/800/640?id=1", user_id: "1").save }
+for i in 1..10
+  Post.create(username: "taran314", description: "cute dog photo #{i}", image: "https://placedog.net/800/640?id=#{i}", user_id: "1").save
+end
 

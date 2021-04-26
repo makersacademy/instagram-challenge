@@ -10,7 +10,7 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def show
-    @posts = Post.find_by(id: params[:id])
+    @posts = Post.where(user_id: params[:id])
     json_response(@posts)
   end
 

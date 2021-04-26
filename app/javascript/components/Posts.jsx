@@ -21,7 +21,7 @@ class Posts extends React.Component {
       })
       .then(response => {
         console.log(response)
-        this.setState({ posts: [response] })
+        this.setState({ posts: response })
       })
       // If theres an error
       .catch(() => this.props.history.push("/"));
