@@ -34,7 +34,25 @@ Bonus if you can add filters!
   - implemented User_id and username on gram - Done
 
 - Likes feature
+  - implemented a basic likes feature
+
+#### TO DO
+  - Feel I should be using an update route not a get route
+  - need to look into a seperate database feature for likes so can link to users and only allow one like
 
 - comments feature
+  - implement
 
-- heroku 
+- Nav Bar
+
+- css
+  - look at sass
+  - look at bootstrap (mobile styling)
+  - look at react
+
+- heroku
+  - test hosting
+  - test CI
+
+- testing
+  - Need to look into using doubles....

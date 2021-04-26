@@ -1,12 +1,51 @@
 Instagram Challenge
 ===================
 
+## Summary
+
+I had limited time to work on this challenge over the weekend so only managed to get some basic work done, reinforcing the previous weeks work. I had hoped to get onto working on rendered forms and some more advanced front end, but alas it was not to be.
+
+The app is very simple using ruby on rails with a variety of gems to add additional features, the app allows:
+- Post a gram with an image (Active Record) and text
+- sign up and login/logout with hashed pashwords
+- like a gram
+
+It was developed largely through TDD (although to figure out some parts I had to part write the code in advance to figure out what was going on).
+
+On Completion
+- All tests passing
+- rubocop - some errors I did not get a chance to figure out
+-
 
 ## To use
 
-- Rubocop - type `rubocop` in command line
-- erb-lint - type `erblint --lint-all --enable-all-linters` in command line
+1. git clone and run `bundle install`
+2. type `bin/rails db:create`
+3. type `bin/rails db:migrate`
+4. type `rails s` to start server
+5. visit localhost address on your browser - usually http://localhost:3000/
 
+
+- For tests - `rspec` in the command line
+- Rubocop - type `rubocop` in command line
+- erb-lint - tried to implement was not working at time of upload....
+<!-- type `erblint --lint-all --enable-all-linters` in command line -->
+
+## To Do
+
+- comments
+- likes linked to users
+- rendered forms
+- understand routes more
+- advanced css
+- host on Heroku
+- test CI
+
+## Concerns
+
+- Some of the routing I feel could be done in a different way
+- need to look at refactoring controllers a little bit more
+- need to understand if I am testing properly
 
 ## Instructions
 
