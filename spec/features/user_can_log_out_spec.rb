@@ -1,13 +1,14 @@
 require 'rails_helper'
 
-RSpec.feature "SignUp", type: :feature do
-  scenario "User can sign up to shminstagram" do
+RSpec.feature "LogOut", type: :feature do
+  scenario "User can log out when logged in" do
     visit "/"
     click_link "Sign Up"
     fill_in "Username", with: "Nata11"
     fill_in "Password", with: "Password11"
     fill_in "Password confirmation", with: "Password11"
     click_button "Sign Up"
-    expect(page).to have_content("Hello, Nata11!")
+    click_link "Log Out"
+    expect(page).to have_content("Sign Up")
   end
 end
