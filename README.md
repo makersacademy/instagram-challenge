@@ -1,4 +1,16 @@
-# README
+# Instagram (Ruby on Rails)
+
+## How to run
+Requires PG running on your machine -
+```
+$ git clone git@github.com:sandyMax974/instagram-challenge.git
+$ cd instagram-challenge
+$ bundle install
+$ rake db:create
+$ rake db:migrate
+$ rackup
+```
+
 
 ## User Stories
 ```
