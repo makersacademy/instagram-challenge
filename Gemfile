@@ -12,7 +12,6 @@ gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Bootstrap for CSS
-gem 'bootstrap-sass'
 gem 'bootstrap'
 # Simple form template
 gem 'simple_form'
