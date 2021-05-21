@@ -1,0 +1,23 @@
+<a class='follow-link'>
+  <% if current_user.following?(@user) %>
+  <% link_to 'Following', {id: @user_id}, method: 'post', remote: true %>
+  <% elsif current_user != @user %>
+  <% link_to "Follow", {id: @user.id}, method: 'post', remote: true %>
+  <% end %>  
+</a>
+
+
+
+<section class='profile'>
+  <% for image in @images %>
+    <div class='post'>
+      <%= image_tag(image.image) %>
+      <p><%= image.caption %></p>
+      
+      <% if image.user_id == current_user.id %>
+        <p class='edit'><%= link_to('Edit', edit_image_path(image)) %></p>
+      <% end %>
+      
+    </div>
+  <% end %>
+</section>

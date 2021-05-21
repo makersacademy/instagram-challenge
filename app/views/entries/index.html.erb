@@ -1,0 +1,14 @@
+<% name = current_user.present? ? current_user.username : 'Stranger' %>
+<section class="feed">
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<h1> Hello <%= name %> </h1>
+<% for entry in @entries %>
+<div class='post'>
+  <img src=<%= entry.image %>>
+  <p class='username'><%= link_to User.find_by(id: entry.user_id).username, user_path(User.find_by(id: entry.user_id)) %></p>
+  <p><%= entry.description %></p>
+  <p class='edit'><%= link_to('Edit', edit_entry_path(entry)) %></p>
+</div>
+<% end %>
+</section>
