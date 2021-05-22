@@ -3,7 +3,7 @@ require 'rails_helper.rb'
 feature 'Creating posts' do
   scenario 'can make a post' do
     visit '/'
-    click_link 'New Post'
+    click_link('new-post')
     attach_file('Image', "spec/files/images/sunrise.jpg")
     fill_in 'Caption', with: "Amazing sunrise! #sunrise"
     click_button 'Post'
@@ -13,7 +13,7 @@ feature 'Creating posts' do
 
   scenario 'posting without an image' do
     visit '/'
-    click_link 'New Post'
+    click_link('new-post')
     fill_in 'Caption', with: "Amazing sunrise! #sunrise"
     click_button 'Post'
     expect(page).to have_content "Please add an image"
