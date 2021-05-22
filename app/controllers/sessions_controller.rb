@@ -7,6 +7,14 @@ class SessionsController < ApplicationController
   end
 
   def create #for the POST request 'to' the login page
+    @user = User.find_by(email: params[:email].downcase)
+    if @user
+      log_in(@user)
+      redirect_to root_url, notice: "logged in"
+    else
+      flash[:alert] = "noo"
+      render 'new'
+    end
   end
 
   def destroy #for the DELETE request to the logout page
