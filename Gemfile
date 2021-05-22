@@ -17,7 +17,7 @@ gem 'bootstrap'
 gem 'simple_form'
 # Paperclip for inserting images
 # gem "paperclip", "~> 6.0.0"
-
+gem "mini_magick"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -31,7 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rexml'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -41,8 +41,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 5.0.0'
   gem 'factory_bot_rails'
-
-
 end
 
 group :development do
