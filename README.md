@@ -1,8 +1,56 @@
 Instagram Challenge
 ===================
+Overview
+- Demo of app (gif)
+- project description
 
+
+### Tech Stack
+Back-end:
+* Ruby
+* Rails
+* Database: Postgres
+
+Front-end:
+* HTML, CSS, Javascript, jQuery
+* Bootstrap
+
+Testing:
+* Rspec
+* Jasmine
+
+Linting:
+* Rubocop (ruby)
+* ??? (JS)
+## How to use
+Ruby version
+
+System dependencies
+
+Configuration
+
+Database creation
+
+Database initialization
+
+How to run the test suite
+
+Linting
+
+Deployment instructions
+## Process
+Planning
+Sequence Diagrams for user flow
+## Reflections
+* Build without use of gems (e.g. devise) / libraries as although extremely efficient the level of abstraction didn't assist with my learning. 
+
+Concepts covered:
+
+* Installing and implementing Bootstrap
+* Using gems for processes I have learnt manually (User model creation)
 ## Instructions
-
+<details open>
+<br>
 * Feel free to use Google, your notes, books, etc., but work on your own
 * If you refer to the solution of another coach or student, please put a link to that in your README
 * If you have a partial solution, **still check in a partial solution**
@@ -37,3 +85,4 @@ gem "rubocop-rails"
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
+</details>
