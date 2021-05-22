@@ -3,6 +3,8 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
+  # ONCE SESSIONS ARE SET UP, UNCOMMENT THIS FOR GATING PURPOSES
+  # if session[:user_id]
     @posts = Post.all
   end
 
