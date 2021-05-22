@@ -39,7 +39,8 @@ Linting
 
 Deployment instructions
 ## Process
-Planning
+Planning (link to trello)
+User stories
 Sequence Diagrams for user flow
 ## Reflections
 * Build without use of gems (e.g. devise) / libraries as although extremely efficient the level of abstraction didn't assist with my learning. 
