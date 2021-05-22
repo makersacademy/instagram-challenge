@@ -8,11 +8,12 @@ class SessionsController < ApplicationController
 
   def create #for the POST request 'to' the login page
     @user = User.find_by(email: params[:email].downcase)
-    if @user
+    if @user && @user.authenticate(params[:password])
       log_in(@user)
-      redirect_to root_url, notice: "logged in"
+      handle = @user.handle.to_s
+      redirect_to root_url, notice: "Logged in. Welcome back, #{handle}!"
     else
-      flash[:alert] = "noo"
+      flash[:alert] = "wrong email/password combination "
       render 'new'
     end
   end
