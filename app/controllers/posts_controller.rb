@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  require 'mini_magick'
 
   def index
     @posts = Post.all
