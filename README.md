@@ -5,6 +5,10 @@ Instagram Challenge
 As a user
 So I can show people what I am up to
 I can post a picture to a public feed
+
+As a user 
+So Pinstagram is all about pictures
+I cannot make a post unless I have uploaded an image
 ```
 
 ## Instructions
