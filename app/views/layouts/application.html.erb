@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<head>
+  <title>InstagramChallenge</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <nav class="navbar navbar-light bg-light d-flex">
+    <div class="container">
+      <div class="logo">
+        <a class="navbar-brand" href="/">
+          <%= fa_stacked_icon "camera inverse", base: "circle"%>
+          Instagram
+        </a>
+      </div>
+      <div class="user-section">
+        <% if user_signed_in? %>
+          <a href=<%= user_path(current_user)%>>
+            <button class="btn btn-dark">Profile</button>
+          </a> 
+          <a href="<%= destroy_user_session_path%>" data-method="delete">
+            <button class="btn btn-dark">Sign Out</button>
+          </a>
+        <% else %>
+          <a href="<%= new_user_session_path%>">
+            <i class="btn btn-dark">Sign In / Sign Up</i>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+
+
+  <main class="container" style="min-height: 500px;">
+    <%= yield %>
+  </main>
+
+  <footer class="container footer">
+    <nav class="navbar d-flex">
+      <ul>
+        ABOUT US
+      </ul>
+      <p> © 2021 INSTAGRAM </p>
+    </nav>
+  </footer>
+</body>
+
+</html>
