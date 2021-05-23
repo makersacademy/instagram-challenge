@@ -5,7 +5,6 @@ feature 'Posting to the feed more than once' do
     post = create(:post, caption: "My favourite cat")
     
     visit '/'
-    p body
     find(:xpath, "//a[contains(@href,'posts/1')]").click
     expect(page.current_path).to eq('/posts/1')
   end

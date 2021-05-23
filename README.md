@@ -17,6 +17,10 @@ I would like to see all uploaded images on the feed at once
 As a user
 So I can admire a beautiful photo
 I would like to be able to view images on their own 
+
+As a user 
+So I can correct a mistake in my caption/photo upload
+I can edit my post
 ```
 
 ## Instructions
