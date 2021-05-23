@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Creating posts' do
-  scenario 'can make a post' do
+  scenario 'can create a new post' do
     visit '/'
     click_link('new-post')
     attach_file('image', 'spec/files/images/sunrise.jpg')

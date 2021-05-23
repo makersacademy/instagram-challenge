@@ -13,6 +13,6 @@ feature 'Creating users' do
     fill_in 'Password confirmation', with: 'password123'
 
     click_button 'Sign up'
-    expect(page).to(have_content('Welcome! You have signed up successfully.'))
+    expect(page).to(have_content('Signed up successfully'))
   end
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Can view individual posts' do
-  scenario 'Can click and view an individual post' do
+  scenario 'can click image to be shown selected post' do
     post = create(:post)
 
     visit '/'
