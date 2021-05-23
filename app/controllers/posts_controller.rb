@@ -30,11 +30,11 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.update(post_params)
     if @post.save
-      flash[:success] = "Post successfully updated"
+      flash[:success] = 'Post successfully updated'
       redirect_to(post_path(@post))
     else 
-      flash[:alert] = "You must upload a photo with your post!"
-      render :new
+      flash[:alert] = 'Something is wrong with your form!'
+      render :edit
     end 
   end
 
