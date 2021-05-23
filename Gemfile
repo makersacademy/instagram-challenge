@@ -18,6 +18,10 @@ gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+gem 'carrierwave', '~> 2.0'
+gem 'fog', '~> 2.2'
+gem 'fog-aws'
+gem 'mini_magick', '~> 4.11'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -45,6 +49,7 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'figaro'
 end
 
 group :test do
