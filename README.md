@@ -9,6 +9,10 @@ I can post a picture to a public feed
 As a user 
 So Pinstagram is all about pictures
 I cannot make a post unless I have uploaded an image
+
+As a user
+So I can see lots of images on the feed
+I would like to see all uploaded images to the feed at once
 ```
 
 ## Instructions

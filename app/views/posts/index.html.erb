@@ -1,3 +1,10 @@
 <h1>Pinstagram</h1>
 
 <%= link_to 'New post', new_post_path %>
+
+<% @posts.each do |post| %>
+    <%= image_tag(url_for(post.picture)) %>
+    <p>Posted <%= time_ago_in_words(post.created_at) %> ago</p>
+    <p><%= post.caption %></p>
+  <% end %>
+  

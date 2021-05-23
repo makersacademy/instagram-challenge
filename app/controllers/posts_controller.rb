@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   def index
+    @post = Post.new
+    @posts = Post.all.order('created_at DESC')
   end
 
   def show 
@@ -14,7 +16,7 @@ class PostsController < ApplicationController
     @post = Post.create(post_params)
     if @post.save
       flash[:success] = "Your post has been created"
-      redirect_to @post
+      redirect_to root_url
     else 
       flash[:alert] = "You must upload a photo with your post!"
       render :new
