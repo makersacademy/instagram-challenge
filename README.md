@@ -10,7 +10,7 @@ Your challenge is to build Instagram using Rails. You'll need **users** who can 
 Chitter Challenge
 =================
 
-![alt text](https://still-fortress-76749.herokuapp.com/)
+[Heroku](https://still-fortress-76749.herokuapp.com/)
 
 ```
 STRAIGHT UP
