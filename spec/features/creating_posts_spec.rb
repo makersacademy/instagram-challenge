@@ -4,8 +4,8 @@ feature 'Creating posts' do
   scenario 'can make a post' do
     visit '/'
     click_link('new-post')
-    attach_file('Image', "spec/files/images/sunrise.jpg")
-    fill_in 'Caption', with: "Amazing sunrise! #sunrise"
+    attach_file('image', "spec/files/images/sunrise.jpg")
+    fill_in 'caption', with: "Amazing sunrise! #sunrise"
     click_button 'Post'
     expect(page).to have_content "Amazing sunrise! #sunrise"
     expect(page).to have_css("img[src*='sunrise.jpg']")
@@ -14,7 +14,7 @@ feature 'Creating posts' do
   scenario 'posting without an image' do
     visit '/'
     click_link('new-post')
-    fill_in 'Caption', with: "Amazing sunrise! #sunrise"
+    fill_in 'caption', with: "Amazing sunrise! #sunrise"
     click_button 'Post'
     expect(page).to have_content "Please add an image"
   end
@@ -22,9 +22,9 @@ feature 'Creating posts' do
   scenario 'posting an invalid file' do
     visit '/'
     click_link('new-post')
-    attach_file('Image', "spec/files/sunrise.txt")
-    fill_in 'Caption', with: "Amazing sunrise! #sunrise"
+    attach_file('image', "spec/files/sunrise.txt")
+    fill_in 'caption', with: "Amazing sunrise! #sunrise"
     click_button 'Post'
-    expect(page).to have_content "Image has an invalid content type"
+    expect(page).to have_content "Please add an image"
   end
 end
