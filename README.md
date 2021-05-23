@@ -21,7 +21,7 @@ rails db:migrate
 Run the test suite to verify that everything is working correctly.
 
 ```sh
-rails test
+rspec
 ```
 
 If the test suite passes, run the app in a local server:
