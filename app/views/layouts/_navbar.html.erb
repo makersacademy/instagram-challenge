@@ -1,0 +1,50 @@
+  <body>
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+  <% end %>
+  <%# if user_signed_in? %>
+  <nav class="navbar sticky-top navbar-expand-lg">
+    <div class="navbar-brand">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqtEOpkkYsHbI5VCATwmwFFxFe3sOY_IT6eHQbuaQTbgzXTLYEfZQFxwbIwAGQMbQL-6s&usqp=CAU" width="30" height="30" class="d-inline-block align-top" alt="">
+      <%= link_to link_to "Rosstagram", root_path %>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+    <ul class="navbar-nav ms-auto me-auto">
+      <li class="nav-item active">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
+      </li>
+    </ul>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <li class="nav-item">
+          <a id="new-post" href="/posts/new"><i class="fa fa-plus-square-o fa-lg" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="#"><i class="fa fa-paper-plane-o fa-lg" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="#"><i class="fa fa-compass fa-lg" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="#"><i class="fa fa-heart-o fa-lg" aria-hidden="true"></i></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Profile
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <% link_to "Logout", destroy_user_session_path, method: :delete %>
+            <a class="dropdown-item" href="#">Profile</a>
+            <a class="dropdown-item" href="#">Settings</a>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+      </ul>
+      </div>
+    </nav>
+    <%# end %>
+    <%= yield %>
+  </body>
+</html>
