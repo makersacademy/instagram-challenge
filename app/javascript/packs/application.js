@@ -3,11 +3,15 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+//= require jquery_ujs
+
 import Rails from '@rails/ujs';
-import Turbolinks from 'turbolinks';
-import 'bootstrap';
-import '../stylesheets/application';
+import {} from 'jquery-ujs';
 import * as ActiveStorage from '@rails/activestorage';
+import Turbolinks from 'turbolinks';
+import '../stylesheets/application';
+import 'jquery';
+import 'bootstrap';
 import 'channels';
 
 Rails.start();

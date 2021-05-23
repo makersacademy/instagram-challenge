@@ -18,4 +18,13 @@ feature 'Creating posts' do
     click_button 'Post'
     expect(page).to have_content "Please add an image"
   end
+
+  scenario 'posting an invalid file' do
+    visit '/'
+    click_link('new-post')
+    attach_file('Image', "spec/files/sunrise.txt")
+    fill_in 'Caption', with: "Amazing sunrise! #sunrise"
+    click_button 'Post'
+    expect(page).to have_content "Image has an invalid content type"
+  end
 end

@@ -13,8 +13,14 @@ feature 'Editing posts' do
     fill_in 'Caption', with: "An updated caption!"
     click_button 'Update Post'
 
-    expect(page).to have_content "Post updated"
     expect(page).to have_content "An updated caption!"
+  end
+
+  xscenario 'posting an invalid file' do
+    attach_file('Image', "spec/files/sunrise.txt")
+    fill_in 'Caption', with: "Amazing sunrise! #sunrise"
+    click_button 'Update Post'
+    expect(page).to have_content "Image has an invalid content type"
   end
 end
 
