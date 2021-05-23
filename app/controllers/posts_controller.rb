@@ -12,11 +12,11 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(post_params)
     if @post.save
-      flash[:success] = "Posted successfully"
-      redirect_to @post
+      flash[:success] = 'Posted successfully'
+      redirect_to(@post)
     else
-      flash[:alert] = "Please add an image"
-      render :new
+      flash[:alert] = 'Please add an image'
+      render(:new)
     end
   end
 
@@ -28,10 +28,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     if @post.destroy
-      flash[:success] = "Post deleted"
-      redirect_to posts_path
+      flash[:success] = 'Post deleted'
+      redirect_to(posts_path)
     else
-      render :edit
+      render(:edit)
     end
   end
 
@@ -40,5 +40,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:caption, :image)
   end
-
 end
