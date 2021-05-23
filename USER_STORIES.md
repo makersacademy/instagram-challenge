@@ -7,7 +7,7 @@ I want to be able to sign up
 ```
 As a user
 So that I can use instagram
-I want to be able to sign in if I am signed in already
+I want to be able to sign in if I am signed up already
 ```
 
 ```
