@@ -2979,3 +2979,754 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 6249ms (Views: 6246.8ms | ActiveRecord: 1.1ms | Allocations: 156554)
 
 
+  [1m[35m (4.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5105801328412218315)[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePosts (20210523115615)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (73.2ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "caption" character varying, "user_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210523115615"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5105801328412218315)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5105801328412218315)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateActiveStorageTables (20210523120809)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (69.2ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (44.0ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210523120809"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5105801328412218315)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users/1" for ::1 at 2021-05-23 13:17:48 +0100
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:21
+  Rendered users/show.html.erb within layouts/application (Duration: 28.9ms | Allocations: 7736)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 58.8ms | Allocations: 15136)
+Completed 200 OK in 62ms (Views: 57.4ms | ActiveRecord: 3.0ms | Allocations: 15774)
+
+
+Started GET "/users/1" for ::1 at 2021-05-23 13:34:05 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:21
+  Rendered users/show.html.erb within layouts/application (Duration: 85.4ms | Allocations: 11415)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6624.7ms | Allocations: 166686)
+Completed 200 OK in 6634ms (Views: 6629.2ms | ActiveRecord: 27.9ms | Allocations: 168022)
+
+
+Started GET "/users/1" for ::1 at 2021-05-23 13:34:14 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:21
+  Rendered users/show.html.erb within layouts/application (Duration: 23.2ms | Allocations: 1813)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.1ms | Allocations: 9129)
+Completed 200 OK in 43ms (Views: 36.4ms | ActiveRecord: 1.5ms | Allocations: 9580)
+
+
+Started GET "/users/1" for ::1 at 2021-05-23 13:34:20 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:21
+  Rendered users/show.html.erb within layouts/application (Duration: 33.8ms | Allocations: 1177)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 46.4ms | Allocations: 8492)
+Completed 200 OK in 48ms (Views: 45.9ms | ActiveRecord: 1.1ms | Allocations: 8944)
+
+
+Started GET "/" for ::1 at 2021-05-23 13:34:24 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 81.8ms | Allocations: 11893)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 90.0ms | Allocations: 15060)
+Completed 200 OK in 95ms (Views: 73.1ms | ActiveRecord: 18.9ms | Allocations: 16162)
+
+
+Started GET "/" for ::1 at 2021-05-23 13:36:20 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2789.2ms | Allocations: 77230)
+  Rendered layout layouts/application.html.erb (Duration: 2789.5ms | Allocations: 77298)
+Completed 500 Internal Server Error in 2792ms (ActiveRecord: 0.0ms | Allocations: 77718)
+
+
+  
+ActionView::Template::Error (Error: Invalid CSS after "    }": expected "}", was ""
+        on line 16:6 of app/assets/stylesheets/posts.scss
+>>     }
+
+   -----^
+):
+     6:   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     7:   <title>Finnstagram</title>
+     8: 
+     9:    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    10: </head>
+    11: <body>
+    12: 
+  
+app/assets/stylesheets/posts.scss:16
+app/views/home/index.html.erb:9
+Started GET "/" for ::1 at 2021-05-23 13:37:12 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 5885.8ms | Allocations: 152858)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 5897.4ms | Allocations: 155893)
+Completed 200 OK in 5899ms (Views: 5897.0ms | ActiveRecord: 1.0ms | Allocations: 156341)
+
+
+Started POST "/posts" for ::1 at 2021-05-23 13:43:54 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"caption"=>"Just good friends living large in Hyboria ⚔️. #hyboriaforever", "user_id"=>"1"}, "commit"=>"Create Post"}
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mPost Create (11.8ms)[0m  [1m[32mINSERT INTO "posts" ("caption", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["caption", "Just good friends living large in Hyboria ⚔️. #hyboriaforever"], ["user_id", 1], ["created_at", "2021-05-23 12:43:54.554213"], ["updated_at", "2021-05-23 12:43:54.554213"]]
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 180ms (ActiveRecord: 40.0ms | Allocations: 10778)
+
+
+Started GET "/" for ::1 at 2021-05-23 13:43:54 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 26.8ms | Allocations: 6409)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 43.0ms | Allocations: 9545)
+Completed 200 OK in 46ms (Views: 43.5ms | ActiveRecord: 0.9ms | Allocations: 9993)
+
+
+Started POST "/posts" for ::1 at 2021-05-23 13:45:47 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"caption"=>"", "user_id"=>"1"}, "commit"=>"Create Post"}
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 92ms (ActiveRecord: 32.9ms | Allocations: 17694)
+
+
+Started GET "/" for ::1 at 2021-05-23 13:45:47 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 13.0ms | Allocations: 6757)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.1ms | Allocations: 9935)
+Completed 200 OK in 38ms (Views: 36.8ms | ActiveRecord: 0.9ms | Allocations: 10567)
+
+
+Started POST "/posts" for ::1 at 2021-05-23 13:46:22 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"caption"=>"xxx", "user_id"=>"1"}, "commit"=>"Create Post"}
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 37ms (ActiveRecord: 7.8ms | Allocations: 3365)
+
+
+Started GET "/" for ::1 at 2021-05-23 13:46:22 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:21
+  Rendered home/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 6405)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 29.1ms | Allocations: 9541)
+Completed 200 OK in 31ms (Views: 28.8ms | ActiveRecord: 0.9ms | Allocations: 9989)
+
+
+Started GET "/" for ::1 at 2021-05-23 13:54:40 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (9.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (13.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  Rendered home/index.html.erb within layouts/application (Duration: 6179.0ms | Allocations: 171822)
+  Rendered layout layouts/application.html.erb (Duration: 6179.4ms | Allocations: 171891)
+Completed 500 Internal Server Error in 6232ms (ActiveRecord: 46.9ms | Allocations: 177624)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: undefined method `persisted?' for nil:NilClass):
+    41:                 <%= post.user.username %>
+    42:               </div>
+    43:             </div>
+    44:             <%= image_tag post.image, class: 'main-image' %>
+    45:             <div class="caption">
+    46:               <%= post.caption %>
+    47:             </div>
+  
+app/views/home/index.html.erb:44
+app/views/home/index.html.erb:34
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5105801328412218315)[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5105801328412218315)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2021-05-23 13:57:08 +0100
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (1.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  Rendered home/index.html.erb within layouts/application (Duration: 1455.9ms | Allocations: 51857)
+  Rendered layout layouts/application.html.erb (Duration: 1456.1ms | Allocations: 51937)
+Completed 500 Internal Server Error in 1490ms (ActiveRecord: 21.6ms | Allocations: 57601)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: undefined method `persisted?' for nil:NilClass):
+    41:                 <%= post.user.username %>
+    42:               </div>
+    43:             </div>
+    44:             <%= image_tag post.image, class: 'main-image' %>
+    45:             <div class="caption">
+    46:               <%= post.caption %>
+    47:             </div>
+  
+app/views/home/index.html.erb:44
+app/views/home/index.html.erb:34
+Started GET "/" for ::1 at 2021-05-23 14:01:19 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (1.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  Rendered home/index.html.erb within layouts/application (Duration: 65.1ms | Allocations: 11039)
+  Rendered layout layouts/application.html.erb (Duration: 65.4ms | Allocations: 11108)
+Completed 500 Internal Server Error in 77ms (ActiveRecord: 4.9ms | Allocations: 11699)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: undefined method `persisted?' for nil:NilClass):
+    41:                 <%= post.user.username %>
+    42:               </div>
+    43:             </div>
+    44:             <%= image_tag post.image, class: 'main-image' %>
+    45:             <div class="caption">
+    46:               <%= post.caption %>
+    47:             </div>
+  
+app/views/home/index.html.erb:44
+app/views/home/index.html.erb:34
+Started GET "/users/1" for ::1 at 2021-05-23 14:01:21 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:21
+  Rendered users/show.html.erb within layouts/application (Duration: 12.0ms | Allocations: 1502)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.0ms | Allocations: 9376)
+Completed 200 OK in 41ms (Views: 37.6ms | ActiveRecord: 1.3ms | Allocations: 10514)
+
+
+Started GET "/users/1" for ::1 at 2021-05-23 14:01:24 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:21
+  Rendered users/show.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1177)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 8492)
+Completed 200 OK in 19ms (Views: 16.9ms | ActiveRecord: 1.3ms | Allocations: 8941)
+
+
+Started GET "/" for ::1 at 2021-05-23 14:01:28 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (3.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  Rendered home/index.html.erb within layouts/application (Duration: 34.0ms | Allocations: 11022)
+  Rendered layout layouts/application.html.erb (Duration: 35.0ms | Allocations: 11090)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 6.8ms | Allocations: 11670)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: undefined method `persisted?' for nil:NilClass):
+    41:                 <%= post.user.username %>
+    42:               </div>
+    43:             </div>
+    44:             <%= image_tag post.image, class: 'main-image' %>
+    45:             <div class="caption">
+    46:               <%= post.caption %>
+    47:             </div>
+  
+app/views/home/index.html.erb:44
+app/views/home/index.html.erb:34
+Started GET "/" for ::1 at 2021-05-23 14:02:16 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  Rendered home/index.html.erb within layouts/application (Duration: 20.3ms | Allocations: 11511)
+  Rendered layout layouts/application.html.erb (Duration: 20.5ms | Allocations: 11580)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 3.9ms | Allocations: 13018)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: undefined method `persisted?' for nil:NilClass):
+    41:                 <%= post.user.username %>
+    42:               </div>
+    43:             </div>
+    44:             <%= image_tag post.image, class:"main-image" %>
+    45:             <div class="caption">
+    46:               <%= post.caption %>
+    47:             </div>
+  
+app/views/home/index.html.erb:44
+app/views/home/index.html.erb:34
+Started POST "/__web_console/repl_sessions/3e83c06f260f37205a3f77531ee2cf16/trace" for ::1 at 2021-05-23 14:02:26 +0100
+Started GET "/" for ::1 at 2021-05-23 14:06:25 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  Rendered home/index.html.erb within layouts/application (Duration: 73.2ms | Allocations: 23686)
+  Rendered layout layouts/application.html.erb (Duration: 73.4ms | Allocations: 23755)
+Completed 500 Internal Server Error in 93ms (ActiveRecord: 15.2ms | Allocations: 26063)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: undefined method `persisted?' for nil:NilClass):
+    41:                 <%= post.user.username %>
+    42:               </div>
+    43:             </div>
+    44:             <%= image_tag post.image, class:"main-image" %>
+    45:             <div class="caption">
+    46:               <%= post.caption %>
+    47:             </div>
+  
+app/views/home/index.html.erb:44
+app/views/home/index.html.erb:34
+Started GET "/" for ::1 at 2021-05-23 14:07:11 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  Rendered home/index.html.erb within layouts/application (Duration: 21.4ms | Allocations: 11514)
+  Rendered layout layouts/application.html.erb (Duration: 21.7ms | Allocations: 11583)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 3.9ms | Allocations: 13021)
+
+
+  
+ActionView::Template::Error (Can't resolve image into URL: undefined method `persisted?' for nil:NilClass):
+    41:                 <%= post.user.username %>
+    42:               </div>
+    43:             </div>
+    44:             <%= image_tag post.image, class: 'main-image' %>
+    45:             <div class="caption">
+    46:               <%= post.caption %>
+    47:             </div>
+  
+app/views/home/index.html.erb:44
+app/views/home/index.html.erb:34
+Started GET "/users/1" for ::1 at 2021-05-23 14:18:46 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/users/show.html.erb:21
+  Rendered users/show.html.erb within layouts/application (Duration: 117.6ms | Allocations: 5173)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 175.3ms | Allocations: 12912)
+Completed 200 OK in 209ms (Views: 197.0ms | ActiveRecord: 44.4ms | Allocations: 14248)
+
+
+Started GET "/" for ::1 at 2021-05-23 14:19:39 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (26.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  Rendered home/index.html.erb within layouts/application (Duration: 119.0ms | Allocations: 12155)
+  Rendered layout layouts/application.html.erb (Duration: 119.6ms | Allocations: 12225)
+Completed 500 Internal Server Error in 141ms (ActiveRecord: 30.5ms | Allocations: 13673)
+
+
+  
+ActionView::Template::Error (undefined method `image' for nil:NilClass):
+    41:                 <%= post.user.username %>
+    42:               </div>
+    43:             </div>
+    44:             <%= image_tag post.image, class: 'main-image' if @user.image.attached? %>
+    45:             <div class="caption">
+    46:               <%= post.caption %>
+    47:             </div>
+  
+app/views/home/index.html.erb:44
+app/views/home/index.html.erb:34
+Started GET "/" for ::1 at 2021-05-23 14:19:56 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (2.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  Rendered home/index.html.erb within layouts/application (Duration: 24.7ms | Allocations: 9287)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.3ms | Allocations: 12811)
+Completed 200 OK in 44ms (Views: 36.6ms | ActiveRecord: 4.5ms | Allocations: 14284)
+
+
+Started GET "/user_avatar.jpg" for ::1 at 2021-05-23 14:19:56 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/user_avatar.jpg"):
+  
+Started GET "/" for ::1 at 2021-05-23 14:22:58 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (1.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  Rendered home/index.html.erb within layouts/application (Duration: 65.8ms | Allocations: 9276)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 84.6ms | Allocations: 12800)
+Completed 200 OK in 112ms (Views: 83.3ms | ActiveRecord: 10.3ms | Allocations: 14267)
+
+
+Started GET "/" for ::1 at 2021-05-23 14:25:25 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (0.9ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  Rendered home/index.html.erb within layouts/application (Duration: 6222.1ms | Allocations: 168946)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6234.6ms | Allocations: 172009)
+Completed 200 OK in 6254ms (Views: 6219.7ms | ActiveRecord: 26.2ms | Allocations: 174580)
+
+
+Started GET "/" for ::1 at 2021-05-23 14:26:57 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  Rendered home/index.html.erb within layouts/application (Duration: 6026.3ms | Allocations: 157606)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6037.4ms | Allocations: 160632)
+Completed 200 OK in 6058ms (Views: 6037.0ms | ActiveRecord: 5.2ms | Allocations: 161249)
+
+
+Started GET "/" for ::1 at 2021-05-23 14:27:52 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (16.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (2.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  Rendered home/index.html.erb within layouts/application (Duration: 51.0ms | Allocations: 9281)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 107.3ms | Allocations: 12805)
+Completed 200 OK in 134ms (Views: 109.1ms | ActiveRecord: 21.9ms | Allocations: 14282)
+
+
+Started POST "/posts" for ::1 at 2021-05-23 14:29:46 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "post"=>{"caption"=>"Just good friends living large in Hyboria ⚔️. #hyboriaforever", "image"=>#<ActionDispatch::Http::UploadedFile:0x00007f80eac3c748 @tempfile=#<Tempfile:/var/folders/rp/9m62syxs1gn8p1qbp70t6k3r0000gn/T/RackMultipart20210523-22624-l84b9u.jpeg>, @original_filename="arniegrace.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[image]\"; filename=\"arniegrace.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "user_id"=>"1"}, "commit"=>"Create Post"}
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mPost Create (7.9ms)[0m  [1m[32mINSERT INTO "posts" ("caption", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["caption", "Just good friends living large in Hyboria ⚔️. #hyboriaforever"], ["user_id", 1], ["created_at", "2021-05-23 13:29:46.650528"], ["updated_at", "2021-05-23 13:29:46.650528"]]
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mActiveStorage::Attachment Load (1.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mActiveStorage::Blob Create (5.7ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "msjgh2klisgnx19cd2s07how1ah9"], ["filename", "arniegrace.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 53813], ["checksum", "vAx5tF9ZP6KaEyJfXLGCsQ=="], ["created_at", "2021-05-23 13:29:46.670132"]]
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mActiveStorage::Attachment Create (52.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "image"], ["record_type", "Post"], ["record_id", 2], ["blob_id", 1], ["created_at", "2021-05-23 13:29:46.678472"]]
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mPost Update (1.1ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1 WHERE "posts"."id" = $2[0m  [["updated_at", "2021-05-23 13:29:46.742168"], ["id", 2]]
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:3:in `create'
+[36m  Disk Storage (5.6ms) [0m[32mUploaded file to key: msjgh2klisgnx19cd2s07how1ah9 (checksum: vAx5tF9ZP6KaEyJfXLGCsQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 2141cf86-8444-4ed2-b7e0-a2c0bbc90c52) to Async(default) with arguments: #<GlobalID:0x00007f80e57a9f78 @uri=#<URI::GID gid://instagram/ActiveStorage::Blob/1>>
+Redirected to http://localhost:3000/
+Completed 302 Found in 421ms (ActiveRecord: 93.4ms | Allocations: 27534)
+
+
+Started GET "/" for ::1 at 2021-05-23 14:29:46 +0100
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:25
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."created_at" DESC[0m
+  ↳ app/views/home/index.html.erb:34
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  [1m[36mActiveStorage::Blob Load (1.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:41
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/views/home/index.html.erb:44
+  Rendered home/index.html.erb within layouts/application (Duration: 37.9ms | Allocations: 12176)
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2141cf86-8444-4ed2-b7e0-a2c0bbc90c52] Performing ActiveStorage::AnalyzeJob (Job ID: 2141cf86-8444-4ed2-b7e0-a2c0bbc90c52) from Async(default) enqueued at 2021-05-23T13:29:46Z with arguments: #<GlobalID:0x00007f80e5b2e838 @uri=#<URI::GID gid://instagram/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2141cf86-8444-4ed2-b7e0-a2c0bbc90c52] [36m  Disk Storage (0.7ms) [0m[34mDownloaded file from key: msjgh2klisgnx19cd2s07how1ah9[0m
+[Webpacker] Compiling...
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2141cf86-8444-4ed2-b7e0-a2c0bbc90c52] Skipping image analysis because ImageMagick doesn't support the file
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2141cf86-8444-4ed2-b7e0-a2c0bbc90c52]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2141cf86-8444-4ed2-b7e0-a2c0bbc90c52]   [1m[36mActiveStorage::Blob Update (1.1ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2141cf86-8444-4ed2-b7e0-a2c0bbc90c52]   [1m[36mTRANSACTION (30.9ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2141cf86-8444-4ed2-b7e0-a2c0bbc90c52] Performed ActiveStorage::AnalyzeJob (Job ID: 2141cf86-8444-4ed2-b7e0-a2c0bbc90c52) from Async(default) in 195.03ms
+[Webpacker] Compiled all packs in /Users/finnwilliamson/Projects/weekend-challenges/instagram-challenge/public/packs
+[Webpacker] Though the "loose" option was set to "false" in your @babel/preset-env config, it will not be used for @babel/plugin-proposal-private-methods since the "loose" mode option was set to "true" for @babel/plugin-proposal-class-properties.
+The "loose" option must be the same for @babel/plugin-proposal-class-properties, @babel/plugin-proposal-private-methods and @babel/plugin-proposal-private-property-in-object (when they are enabled): you can silence this warning by explicitly adding
+	["@babel/plugin-proposal-private-methods", { "loose": true }]
+to the "plugins" section of your Babel config.
+DEPRECATION WARNING: Using / for division is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($spacer, 4)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+    ╷
+252 │   1: $spacer / 4,
+    │      ^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_variables.scss 252:6  @import
+    node_modules/bootstrap/scss/bootstrap.scss 11:9    @import
+    app/frontend/packs/application.scss 6:9            root stylesheet
+
+DEPRECATION WARNING: Using / for division is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($spacer, 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+    ╷
+253 │   2: $spacer / 2,
+    │      ^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_variables.scss 253:6  @import
+    node_modules/bootstrap/scss/bootstrap.scss 11:9    @import
+    app/frontend/packs/application.scss 6:9            root stylesheet
+
+DEPRECATION WARNING: Using / for division is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($grid-gutter-width, 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+    ╷
+350 │ $container-padding-x: $grid-gutter-width / 2 !default;
+    │                       ^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_variables.scss 350:23  @import
+    node_modules/bootstrap/scss/bootstrap.scss 11:9     @import
+    app/frontend/packs/application.scss 6:9             root stylesheet
+
+DEPRECATION WARNING: Using / for division is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($spacer, 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+    ╷
+449 │ $headings-margin-bottom:      $spacer / 2 !default;
+    │                               ^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_variables.scss 449:31  @import
+    node_modules/bootstrap/scss/bootstrap.scss 11:9     @import
+    app/frontend/packs/application.scss 6:9             root stylesheet
+
+DEPRECATION WARNING: Using / for division is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($input-padding-y, 2)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+    ╷
+690 │ $input-height-inner-quarter:            add($input-line-height * .25em, $input-padding-y / 2) !default;
+    │                                                                         ^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_variables.scss 690:73  @import
+    node_modules/bootstrap/scss/bootstrap.scss 11:9     @import
+    app/frontend/packs/application.scss 6:9             root stylesheet
+
+WARNING: 66 repetitive deprecation warnings omitted.
+
+
+[Webpacker] Hash: bbdd1f65eb3f55f3ab0b
+Version: webpack 4.46.0
+Time: 4784ms
+Built at: 23/05/2021 14:29:54
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-46e7827b2a08814712ea.js    1.1 MiB  application  [emitted] [immutable]  application
+js/application-46e7827b2a08814712ea.js.map   1.15 MiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-46e7827b2a08814712ea.js js/application-46e7827b2a08814712ea.js.map
+[0] multi ./app/frontend/packs/application.js ./app/frontend/packs/application.scss 40 bytes {application} [built]
+[./app/frontend/channels sync recursive _channel\.js$] ./app/frontend/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/frontend/channels/index.js] 211 bytes {application} [built]
+[./app/frontend/js/bootstrap_js_files.js] 409 bytes {application} [built]
+[./app/frontend/packs/application.js] 637 bytes {application} [built]
+[./app/frontend/packs/application.scss] 664 bytes {application} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/frontend/packs/application.scss] ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/sass-loader/dist/cjs.js??ref--6-3!./app/frontend/packs/application.scss 697 KiB {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 43 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 7809.9ms | Allocations: 32286)
+Completed 200 OK in 7814ms (Views: 7804.8ms | ActiveRecord: 6.1ms | Allocations: 32905)
+
+
+Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f49f744a700bb1710677dfae4064f4c86064c8fb/arniegrace.jpeg" for ::1 at 2021-05-23 14:29:54 +0100
+Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+  Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f49f744a700bb1710677dfae4064f4c86064c8fb", "filename"=>"arniegrace"}
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[36m  Disk Storage (3.5ms) [0m[34mGenerated URL for file at key: msjgh2klisgnx19cd2s07how1ah9 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiWE5xWjJneWEyeHBjMmR1ZURFNVkyUXljekEzYUc5M01XRm9PUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpU1dsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GeWJtbGxaM0poWTJVdWFuQmxaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWVhKdWFXVm5jbUZqWlM1cWNHVm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMS0wNS0yM1QxMzozNDo1NC43OTBaIiwicHVyIjoiYmxvYl9rZXkifX0=--a5f7572217cc97b49dbfce814fb4556a6522e7fd/arniegrace.jpeg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiWE5xWjJneWEyeHBjMmR1ZURFNVkyUXljekEzYUc5M01XRm9PUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpU1dsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GeWJtbGxaM0poWTJVdWFuQmxaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWVhKdWFXVm5jbUZqWlM1cWNHVm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMS0wNS0yM1QxMzozNDo1NC43OTBaIiwicHVyIjoiYmxvYl9rZXkifX0=--a5f7572217cc97b49dbfce814fb4556a6522e7fd/arniegrace.jpeg
+Completed 302 Found in 21ms (ActiveRecord: 0.7ms | Allocations: 2168)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiWE5xWjJneWEyeHBjMmR1ZURFNVkyUXljekEzYUc5M01XRm9PUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpU1dsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1GeWJtbGxaM0poWTJVdWFuQmxaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWVhKdWFXVm5jbUZqWlM1cWNHVm5CanNHVkRvUlkyOXVkR1Z1ZEY5MGVYQmxTU0lQYVcxaFoyVXZhbkJsWndZN0JsUTZFWE5sY25acFkyVmZibUZ0WlRvS2JHOWpZV3c9IiwiZXhwIjoiMjAyMS0wNS0yM1QxMzozNDo1NC43OTBaIiwicHVyIjoiYmxvYl9rZXkifX0=--a5f7572217cc97b49dbfce814fb4556a6522e7fd/arniegrace.jpeg" for ::1 at 2021-05-23 14:29:54 +0100
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"arniegrace"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 479)
+
+

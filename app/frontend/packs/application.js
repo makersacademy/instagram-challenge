@@ -6,6 +6,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require activestorage
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
