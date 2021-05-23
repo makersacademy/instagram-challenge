@@ -1,5 +1,11 @@
 Instagram Challenge
 ===================
+## User stories for Pinstagram
+```
+As a user
+So I can show people what I am up to
+I can post a picture to a public feed
+```
 
 ## Instructions
 
