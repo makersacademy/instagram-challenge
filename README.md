@@ -27,9 +27,10 @@ So I can remove all evidence of me in 2013
 I can delete posts on my Pinstagram
 ```
 ## Preview
-![Preview of Pinstagram]()
+![Preview of Pinstagram](https://github.com/kerrimcm/instagram-challenge/blob/master/app/assets/images/Pinstagram%20preview.png)
 
 ## My notes
+
 * So far, the app has been thoroughly feature tested - unit tests still needed
 * I still need to add sign up, log in, log out, liking and commenting - phew!
 * For now, the feed is starting to look attractive with the late addition of Bootstrap
