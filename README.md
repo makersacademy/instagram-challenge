@@ -1,39 +1,70 @@
 Instagram Challenge
 ===================
 
-## Instructions
-
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 ## Task
 
 Build Instagram: Simple huh!
 
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters!
+Chitter Challenge
+=================
 
-## How to start
+[See this app run live at Heroku](https://still-fortress-76749.herokuapp.com/)
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+```
+STRAIGHT UP
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+As a User
+So that I can show others my pictures 
+I want to post a Jam to InstaJam
 
-## Code Quality
+As a User
+So that I can see other's pictures
+I want to see all Jams most recent first
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+As a Maker
+So that I can better appreciate the context of a peep
+I want to see the time at which it was made
 
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
+As a User
+So that I can identify my own pictures
+I want to sign up for InstaJam
+
+HARDER
+
+As a User
+So that only I can post Jams as me
+I want to log in to InstaJam
+
+As a User
+So that I can avoid others posting messages on InstaJam
+I want to log out of Instajam
+
+ADVANCED
+
+As a Maker
+So that people can see a demonstration of my app
+I want to host it on Heroku
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+Setup:
+-------
+
+* Clone this repo, run bundle migrate to install any dependencies, run rails db:migrate to install your tables
+* Use < rails s /server > command in terminal to launch Rails server, and go to http://127.0.0.1:3000/ to interact with the app
+* Alternatively use < rackup > and go to localhost:9292
+* Why not make it even easier for yourself and just click the Heroku link at the top?
+
+
+Successes
+-----
+
+* 
+
+------------------
+
+To improve
+-----
+* 
+
