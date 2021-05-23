@@ -21,6 +21,10 @@ I would like to be able to view images on their own
 As a user 
 So I can correct a mistake in my caption/photo upload
 I can edit my post
+
+As a user
+So I can remove all evidence of me in 2013
+I can delete posts on my Pinstagram
 ```
 
 ## Instructions

@@ -8,7 +8,6 @@ feature 'Ediitng posts' do
     click_link 'Edit post'
   end
   scenario 'will not update post without image' do
-    p body
     attach_file('post[picture]', 'spec/files/coffee.zip')
     click_button 'Update Post'
 
