@@ -1,39 +1,74 @@
 Instagram Challenge
 ===================
 
-## Instructions
-
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
 ## Task
 
 Build Instagram: Simple huh!
 
 Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
 
-Bonus if you can add filters!
+Chitter Challenge
+=================
 
-## How to start
+![alt text](https://still-fortress-76749.herokuapp.com/)
 
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
+```
+STRAIGHT UP
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
+As a Maker
+So that I can let people know what I am doing  
+I want to post a message (peep) to chitter
 
-## Code Quality
+As a maker
+So that I can see what others are saying  
+I want to see all peeps in reverse chronological order
 
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
+As a Maker
+So that I can better appreciate the context of a peep
+I want to see the time at which it was made
 
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
+As a Maker
+So that I can post messages on Chitter as me
+I want to sign up for Chitter
+
+HARDER
+
+As a Maker
+So that only I can post messages on Chitter as me
+I want to log in to Chitter
+
+As a Maker
+So that I can avoid others posting messages on Chitter as me
+I want to log out of Chitter
+
+ADVANCED
+
+As a Maker
+So that I can stay constantly tapped in to the shouty box of Chitter
+I want to receive an email if I am tagged in a Peep
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+Setup:
+-------
+
+* Clone this repo and run bundle migrate to install any dependencies
+* Run migration files 1, 4 and 5. Files 2 and 3 are redundant after an SQL issue prevented database alteration  
+* Use < rackup > command in terminal to launch Sinatra server, and go to localhost:9292 to interact with the app
+
+
+Successes
+-----
+
+* All but advanced challenge feature implemented with full test coverage
+* Successfully implemented authentication and login, as well as time formatting
+* Everything until Bcrypt and styling done without references/ documentation
+
+------------------
+
+To improve
+-----
+* Styling is weak and took far too much effort, would use a front end framework next time
+* More detailed planning, needed to remake a table because I couldnt work out how to add a relationship to an existing table
+* User name attached to messages is done by current user, leading to incorrect display when different users log in, needs refactoring to use user data on message creation. 
+
+
