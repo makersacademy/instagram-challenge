@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   require 'mini_magick'
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order('created_at DESC')
   end
 
   def new
