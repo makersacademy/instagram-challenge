@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Removing posts' do
   background do
-    post = create(:post, caption: 'Amazing sunrise! #sunrise')
+    create(:post, caption: 'Amazing sunrise! #sunrise')
 
     visit '/'
     find(:xpath, './html/body/div[1]/section[1]/a').click

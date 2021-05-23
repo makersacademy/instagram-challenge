@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature 'Index displays all posts' do
   scenario 'can view all posts with correct information' do
-    post_one = create(:post, caption: 'One')
-    post_two = create(:post, caption: 'Two')
+    create(:post, caption: 'One')
+    create(:post, caption: 'Two')
 
     visit '/'
     expect(page).to(have_content('One'))
