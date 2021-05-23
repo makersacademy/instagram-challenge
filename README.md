@@ -4,7 +4,13 @@
 
 The features built in this project are based on a [brief.](brief.md)
 
-## Getting Started
+## 👀 Live demo
+
+**[Check it out here.](https://evening-eyrie-51491.herokuapp.com/)** This app is in production, features will be implemented as the project progresses.
+
+![Feed](./public/images/feed.gif)
+
+## 🏁 Getting Started
 
 To get started with the app, clone the repo then install the required gems:
 
@@ -47,7 +53,7 @@ rails server
 ## Built Using
 
 - HTML
-- CSS (Bootstrap)
+- CSS/SASS (Bootstrap)
 - JavaScript
 - jQuery
 - Ruby
