@@ -6,7 +6,6 @@
 import Rails from '@rails/ujs';
 import * as ActiveStorage from '@rails/activestorage';
 import Turbolinks from 'turbolinks';
-import '../stylesheets/application';
 import 'jquery';
 import 'bootstrap';
 import 'channels';
