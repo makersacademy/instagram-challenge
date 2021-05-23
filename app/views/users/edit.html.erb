@@ -18,25 +18,33 @@
       <a class="nav-link" data-toggle="pill">Email and SMS</a>
       <a class="nav-link" data-toggle="pill">Manage Contacts</a>
       <a class="nav-link" data-toggle="pill">Privacy and Security</a>
+         
+      <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: "nav-link" %>
     </div>
   </div>
   
-<div class="details tab-content">
-  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-    <!-- Right column -->
-
-<%= form_with model: current_user, local: true, html: {class: "form-horizontal form-edit-user"} do |f| %>
-  <div class="form-group row">
-    <div class="col-sm-3 col-form-label">
-      <img class="avatar" src="https://pbs.twimg.com/profile_images/378800000574868989/ddebed969b6e2bcf188addf97932dd45.jpeg">
-    </div>
-    <div class="col-sm-9">
-      <p class="username"><%=current_user.username %></p>
-      <a class="change-photo" href="">Change Profile Photo</a>
-    </div>
-  </div>
-  <div class="form-group row">
-    <%= f.label :name, class: 'col-sm-3 col-form-label' %>
+  <div class="details tab-content">
+    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+      <%= form_with model: current_user, local: true, html: {class: "form-horizontal form-edit-user"} do |f| %>
+        <div class="form-group row">
+          <div class="col-sm-3 col-form-label">
+            <% if current_user.avatar.attached? %>
+              <%= image_tag current_user.avatar, class: 'avatar' %>
+            <%end %>
+          </div>
+          <div class="col-sm-9">
+            <p class="username"><%=current_user.username %></p>
+            <a class="change-photo" href="">Change Profile Photo</a>
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= f.label :avatar, class: 'col-sm-3 col-form-label' %>
+          <div class="col-sm-9">
+            <%= f.file_field :avatar, class: 'form-control' %>
+          </div>
+        </div>
+    <div class="form-group row">
+      <%= f.label :name, class: 'col-sm-3 col-form-label' %>
     <div class="col-sm-9">
       <%= f.text_field :name, class: 'form-control' %>
     </div>

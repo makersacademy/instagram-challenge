@@ -11,8 +11,10 @@
 <div class="user-profile">
   <div class="profile row">
     <div class="col-md-4 avatar">
-      <div class="wrapper"> 
-        <img src="https://pbs.twimg.com/profile_images/378800000574868989/ddebed969b6e2bcf188addf97932dd45.jpeg">
+      <div class="wrapper">
+        <% if current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar %>
+        <%end %>
       </div>
     </div>
 <%# --------- profile info -------- %>
@@ -24,7 +26,7 @@
         </a>
       </div>
       <ul class="posts">
-        <li><span>35</span> posts</li>
+        <li><span><%= @posts.count %></span> posts</li>
         <li><span>69000</span> followers</li>
         <li><span>420</span> following</li>
       </ul>
@@ -53,19 +55,14 @@
     </a>
   </div>
   <%# ------- image posts ------ %>
-  <div class="user-images">
-    <div class="wrapper">
-      <img src="https://www.telegraph.co.uk/multimedia/archive/02380/co_2380813b.jpg">
-    </div>
-    <div class="wrapper">
-      <img src="https://i.imgur.com/zJunM5K.gif">
-    </div>
-    <div class="wrapper">
-      <img src="https://neverdaunted.net/wp-content/uploads/2016/09/predator-handshake.png">
-    </div>
-  </div>
-</div>
 
+  <div class="user-images">
+    <% @posts.each do |post|%>
+      <div class="wrapper">
+        <%=image_tag post.image if post.image.attached? %>
+      </div>
+    <% end %>
+  </div>
   
 </body>
 </html>

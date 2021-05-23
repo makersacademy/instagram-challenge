@@ -5,9 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finnstagram</title>
-
    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
+    
 </head>
 <body>
 <%# ------------- flash messages ----------------- %>
@@ -35,11 +34,14 @@
         <section class="post">
             <div class="user">
               <div class="avatar">
-                <img src=>
-              </div>
-              <div class="username">
-                <%= post.user.username %>
-              </div>
+                <% if post.user.avatar.attached? %>
+                  <%= link_to user_path(post.user) do %>
+                  <%= image_tag post.user.avatar %>
+                <% end %>
+              <% end %>
+             </div>
+              <%= link_to post.user.username, user_path(post.user), class: 'username' %>
+            </div>
             </div>
             <%= image_tag post.image, class: 'main-image' if post.image.attached? %>
             <div class="caption">
@@ -47,6 +49,7 @@
             </div>
         </section>
       <% end %>
+      <%= paginate @posts %>
   </div>
 
 </body>

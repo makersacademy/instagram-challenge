@@ -33,6 +33,9 @@ gem 'jquery-rails'
 gem 'sprockets-rails'
 gem 'font-awesome-rails'
 
+# paginating posts
+gem 'kaminari'
+
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
