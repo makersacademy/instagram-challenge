@@ -12,7 +12,11 @@ I cannot make a post unless I have uploaded an image
 
 As a user
 So I can see lots of images on the feed
-I would like to see all uploaded images to the feed at once
+I would like to see all uploaded images on the feed at once
+
+As a user
+So I can admire a beautiful photo
+I would like to be able to view images on their own 
 ```
 
 ## Instructions
