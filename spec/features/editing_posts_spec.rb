@@ -6,14 +6,15 @@ feature 'Editing posts' do
 
     visit '/'
     find(:xpath, "./html/body/div[1]/div[1]/div[2]/a").click
-    click_link 'Edit'
+    click_link 'Edit Post'
   end
 
   scenario 'can edit a post' do
     fill_in 'Caption', with: "An updated caption!"
-    click_button 'Update'
-    expact(page).to have_content "Post updated"
-    expact(page).to have_content "An updated caption!"
+    click_button 'Update Post'
+
+    expect(page).to have_content "Post updated"
+    expect(page).to have_content "An updated caption!"
   end
 end
 

@@ -31,6 +31,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
+    flash[:success] = "Post updated"
     redirect_to(post_path(@post))
   end
 
