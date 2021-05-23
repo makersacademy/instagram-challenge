@@ -5,7 +5,7 @@ feature 'Can view individual posts' do
     post = create(:post)
 
     visit '/'
-    find(:xpath, "./html/body/div[1]/div[1]/div[2]/a").click
+    find(:xpath, "./html/body/div[1]/section[1]/a").click
     expect(page.current_path).to eq(post_path(post))
   end
 end

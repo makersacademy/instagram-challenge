@@ -1,14 +1,17 @@
 <div class="form-wrapper">
-  <%= simple_form_for @post, html: { class: 'form-horizontal', multipart: true } do |f| %>
-    <div class="image-input text-center">
-      <%= f.input :image %>
-    </div>
-    <div class="d-flex justify-content-center text-center">
-      <%= f.input :caption %>
-    </div>
-    </br>
-    <div class="d-flex justify-content-center text-center">
-      <%= f.button :submit, class: 'btn btn-info' %>
-    </div>
-  <% end %>
+<%= simple_form_for @post, html: { class: 'form-horizontal', multipart: true } do |f| %>
+  <div class="form-group">
+    <%= f.text_field :caption %>
+  </div>
+  <div class="form-group">
+    <%= f.file_field :image %>
+  </div>
+  <div class="form-group">
+    <%# f.text_field :user_id, value: current_user.id, class:'d-none'%>
+  </div>
+  <br>
+  <div class="text-center">
+    <%= f.submit 'Create Post', class: 'btn btn-primary' %>
+  </div>
+<% end %>
 </div>

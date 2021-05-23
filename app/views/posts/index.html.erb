@@ -1,20 +1,22 @@
-<div class="posts-wrapper row">
+<div class="posts">
   <% @posts.each do |post| %>
-    <div class="post">
-      <div class="post-head">
-        <div class="name">
-          User
-        </div>
+  <section class="post">
+    <div class="user">
+      <div class="avatar">
+        <img src="user_avatar.jpg">
       </div>
-      <div class="image">
-        <%= link_to (image_tag post.image.variant(resize_to_limit: [600, 600]), class:'img-responsive'), post_path(post) %>
+      <div class="username">
+        <%# post.user.username %>
+        <p> User </p>
       </div>
-      <p class="caption">
-        <%= post.caption %>
-      </p>
+    </div>
+    <%= link_to (image_tag post.image, class: 'main-image'), post_path(post) %>
+    <div class="caption">
+      <strong> User </strong> <%= post.caption %>
       <p>
         Posted <%= time_ago_in_words(post.created_at) %> ago
       </p>
     </div>
+  </section>
   <% end %>
 </div>
