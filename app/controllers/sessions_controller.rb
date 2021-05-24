@@ -25,4 +25,4 @@ class SessionsController < ApplicationController
 end
 
 # this was made manually, not scaffolded, because sessions are temporary
-# and don't require the entire CRUD setup/
+# and don't require the entire CRUD setup.
