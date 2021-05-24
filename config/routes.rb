@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  root "timeline#index"
+  root "posts#index"
 
   get "/timeline", to: "timeline#index"
+  
+  resources :posts
+  
 
 end
