@@ -1,5 +1,7 @@
 # Instagram Challenge
 
+[![CodeFactor](https://www.codefactor.io/repository/github/jasonrowsell/instagram-challenge/badge)](https://www.codefactor.io/repository/github/jasonrowsell/instagram-challenge)
+
 **Rosstagram:** A full-stack web app inspired by the functionality of Instagram. The web app allows the user to create an account, sign-in, and post a picture, amongst other functionalities.
 
 The features built in this project are based on a [brief.](brief.md)
