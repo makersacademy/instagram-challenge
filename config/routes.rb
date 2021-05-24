@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "home#index"
   put "/post/:id/like", to: "posts#like", as: "like"
-
+  # put "/post/:id/comment", to: "posts#comment", as: "comment"
   resources :posts
   resources :users
   resources :comments

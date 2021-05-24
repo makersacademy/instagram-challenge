@@ -25,26 +25,27 @@
 <%= button_to(like_path(post.id), method: "put") do %>
 <i class="far fa-heart"></i>
 <% end %>
-<%= link_to new_comment_path(post.id) do %>
+<%= link_to new_comment_path(post) do %>
 <i class="far fa-comment"></i>
 <% end %>
 </section>
 
-<section class="caption">
-<p class="Likes_count"><%= post.likes %> <%= post.likes == 1 ? "Like" : "Likes" %> </p>
-<p><b><a href=""><%= User.find(post.user_id).username %>  </a></b><%= post.content %></p>
-<section class="comments">
-<% if post.comments.length > 2 %>
-   View all <%= post.comments.length %> comments
-    <% post.comments.last(2).each do |comment| %>
-    <p><b><a href=""><%= User.find(post.user_id).username %>  </a></b><%= comment.body %></p>
-    <% end %>
-<% else %>
-  <% post.comments.each do |comment| %>
-    <p><b><a href=""><%= User.find(session[:user_id]).username %>  </a></b><%= comment.body %></p>
-  <% end %>
-<% end %>
-</section>
+    <section class="caption">
+    <p class="Likes_count"><%= post.likes %> <%= post.likes == 1 ? "Like" : "Likes" %> </p>
+    <p><b><a href=""><%= User.find(post.user_id).username %>  </a></b><%= post.content %></p>
+    <section class="comments">
+        <% if post.comments.length > 2 %>
+        View all <%= post.comments.length %> comments
+            <% post.comments.last(2).each do |comment| %>
+            <p><%= comment.body %></p>
+            <% end %>
+        <% else %>
+        <% post.comments.each do |comment| %>
+            <p><%= comment.body %></p>
+        <% end %>
+        <% end %>
+    </section>
+
 <p class="time"><%= time_ago_in_words(post.created_at) %> ago</p>
 </section>
 </div>
