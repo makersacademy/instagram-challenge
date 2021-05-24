@@ -22,8 +22,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
+gem 'rubocop', '0.79.0', require: false
+gem 'rubocop-rails'
 gem 'rexml', '~> 3.2.4'
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.4.1'
