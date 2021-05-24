@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstagramChallenge</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
+    <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
+
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+  <header>
+  <nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+   <% if session[:user_id] %>
+    <a class="navbar-brand" href="/posts" style="font-size: 40px;">
+      Minstagram
+    </a>
+     <% else %>
+       <a class="navbar-brand" href="/" style="font-size: 40px;">
+      Minstagram
+    </a>
+    <% end %>
+          <ul class="navbar-nav" style="flex-direction: row;">
+            <li class="nav-item">
+             <% if session[:user_id] %>
+              <a class="nav-link" aria-current="page" href="/posts/new">New Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Profile</a>
+            </li>
+            <li class="nav-item">
+            <%= link_to "Logout", logout_path, method: "delete", class: "nav-link" %>
+            <% end %>
+            </li>
+          </ul>
+      
+  </div>
+</nav>
+  </header>
+      <% flash.keys.each do |type| %>
+    <div data-alert class="flash <%= type %> alert-box radius">
+      <%= flash[type] %>
+      <a href="" class="close">&times;</a>
+    </div>
+  <% end %>
+    <%= yield %>
+    <footer>
+            <div class="credit">
+                <p>&copy; 2021 MJ &nbsp;from&nbsp; Blue March</p>
+            </div>
+        </footer>
+  </body>
+</html>
