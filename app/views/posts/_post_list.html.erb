@@ -14,7 +14,7 @@
 <div class="posts_feed">
 <section class="usernamer">
 <%= image_tag User.find(post.user_id).avatar if User.find(post.user_id).avatar.attached? %>
-<div class="nickname"><%= User.find(post.user_id).username %></div>
+<div class="nickname"><b><%= User.find(post.user_id).username %></b></div>
 </section>
 
 <section class="post_image">
@@ -37,11 +37,11 @@
         <% if post.comments.length > 2 %>
         View all <%= post.comments.length %> comments
             <% post.comments.last(2).each do |comment| %>
-            <p><%= comment.body %></p>
+            <p><b><a href=""><%= User.find(comment.user_id).username %>  </a></b><%= comment.body %></p>
             <% end %>
         <% else %>
         <% post.comments.each do |comment| %>
-            <p><%= comment.body %></p>
+            <p><b><a href=""><%= User.find(comment.user_id).username %>  </a></b><%= comment.body %></p>
         <% end %>
         <% end %>
     </section>
