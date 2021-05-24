@@ -1,0 +1,26 @@
+<h3> this page is Sessions#new</h3>
+<br />
+<h2> log in </h2>
+
+<% # still unsure about some of these args %>
+<%= form_with(url: login_path, scope: :session, local: true) do |form| %>
+  <div class="field">
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+  </div>
+  <div class="field">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <div class="actions">
+    <%= submit_tag :Login %>
+  </div>
+<% end %>
+
+<%# lets you know how login went %>
+<% flash.each do |type, msg| %>
+  <br />
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
