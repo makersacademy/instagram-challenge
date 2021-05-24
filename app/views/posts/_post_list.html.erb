@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/42cdd50c56.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+   
+<% @posts.each do |post| %>
+<div class="posts_feed">
+<section class="usernamer">
+<%= image_tag User.find(post.user_id).avatar if User.find(post.user_id).avatar.attached? %>
+<div class="nickname"><%= User.find(post.user_id).username %></div>
+</section>
+
+<section class="post_image">
+ <div><%= image_tag post.image %></div>
+</section>
+
+<section class="likes_and_comments">
+<%= button_to(like_path(post.id), method: "put") do %>
+<i class="far fa-heart"></i>
+<% end %>
+<%= link_to new_comment_path(post.id) do %>
+<i class="far fa-comment"></i>
+<% end %>
+</section>
+
+<section class="caption">
+<p class="Likes_count"><%= post.likes %> <%= post.likes == 1 ? "Like" : "Likes" %> </p>
+<p><b><a href=""><%= User.find(post.user_id).username %>  </a></b><%= post.content %></p>
+<section class="comments">
+<% if post.comments.length > 2 %>
+   View all <%= post.comments.length %> comments
+    <% post.comments.last(2).each do |comment| %>
+    <p><b><a href=""><%= User.find(post.user_id).username %>  </a></b><%= comment.body %></p>
+    <% end %>
+<% else %>
+  <% post.comments.each do |comment| %>
+    <p><b><a href=""><%= User.find(session[:user_id]).username %>  </a></b><%= comment.body %></p>
+  <% end %>
+<% end %>
+</section>
+<p class="time"><%= time_ago_in_words(post.created_at) %> ago</p>
+</section>
+</div>
+
+
+<% end %>
+
+
+</body>
+</html>
+
+
