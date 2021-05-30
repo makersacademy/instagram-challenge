@@ -3,16 +3,16 @@ require 'rails_helper'
 feature 'Creating users' do
   background do
     visit '/'
-    click_link 'Sign Up'
+    click_link 'Sign up'
   end
-  scenario 'can create a new user' do
+    scenario 'can create a new user' do
     fill_in 'Email', with: 'bobross@mail.com'
-    fill_in 'Full name', with: 'Bob Ross'
-    fill_in 'User name', with: 'bobross'
+    fill_in 'Full Name', with: 'Bob Ross'
+    fill_in 'Username', with: 'bobross'
     fill_in 'Password', with: 'password123', match: :first
-    fill_in 'Password confirmation', with: 'password123'
+    fill_in 'Password Confirmation', with: 'password123'
 
     click_button 'Sign up'
-    expect(page).to(have_content('Signed up successfully'))
+    expect(page).to(have_content('Welcome! You have signed up successfully.'))
   end
 end

@@ -1,11 +1,17 @@
 require 'rails_helper'
 
 feature 'Removing posts' do
-  background do
-    create(:post, caption: 'Amazing sunrise! #sunrise')
+  let!(:user) { create(:user) }
+  let!(:post) { create(:post, caption: 'Amazing sunrise! #sunrise') }
 
+
+  background do
     visit '/'
-    find(:xpath, './html/body/div[1]/section[1]/a').click
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: user.password
+    click_button 'Log in'
+
+    click_link(href: post_path(post.id)) 
   end
 
   scenario 'can remove a post' do
