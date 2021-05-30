@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 feature 'Creating posts' do
   background do
-    user = create :user
+    user = create(:user)
     visit '/'
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user.password

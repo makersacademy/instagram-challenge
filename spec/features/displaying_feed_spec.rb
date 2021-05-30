@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 feature 'Index displays all posts' do
-
   background do
     user = create(:user)
     visit '/'

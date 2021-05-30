@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   require 'mini_magick'
   before_action :authenticate_user!
@@ -27,7 +29,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
+    @post.destroy!
     if @post.destroy
       flash[:success] = 'Post deleted'
       redirect_to(posts_path)

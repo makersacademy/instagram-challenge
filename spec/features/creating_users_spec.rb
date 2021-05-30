@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 feature 'Creating users' do
@@ -5,7 +7,7 @@ feature 'Creating users' do
     visit '/'
     click_link 'Sign up'
   end
-    scenario 'can create a new user' do
+  scenario 'can create a new user' do
     fill_in 'Email', with: 'bobross@mail.com'
     fill_in 'Full Name', with: 'Bob Ross'
     fill_in 'Username', with: 'bobross'

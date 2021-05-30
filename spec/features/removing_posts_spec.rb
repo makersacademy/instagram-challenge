@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 feature 'Removing posts' do
   let!(:user) { create(:user) }
   let!(:post) { create(:post, caption: 'Amazing sunrise! #sunrise') }
-
 
   background do
     visit '/'
@@ -11,7 +12,7 @@ feature 'Removing posts' do
     fill_in 'user_password', with: user.password
     click_button 'Log in'
 
-    click_link(href: post_path(post.id)) 
+    click_link(href: post_path(post.id))
   end
 
   scenario 'can remove a post' do
