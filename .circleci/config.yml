@@ -1,65 +1,44 @@
-version: 2.1
-
-executors:
-  default:
+version: 2
+jobs:
+  build:
     working_directory: ~/instagram-challenge
     docker:
       - image: circleci/ruby:3.0.0
         environment:
-          BUNDLE_JOBS: 3
-          BUNDLE_PATH: vendor/bundle
-          BUNDLE_RETRY: 3
-          BUNDLER_VERSION: 3.0.0
+          PGHOST: localhost
+          PGUSER: instagram-challenge
           RAILS_ENV: test
-          DB_HOST: 127.0.0.1
-          PG_HOST: 127.0.0.1
-          PGUSER: instagram
-      - image: circleci/postgres:12.0
+      - image: postgres:9.5
         environment:
-          POSTGRES_DB: instagram_test
-          POSTGRES_USER: instagram
-
-commands:
-  configure_bundler:
-    description: Configure bundler
-    steps:
-      - run:
-          name: Configure bundler
-          command: |
-            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-            source $BASH_ENV
-            gem install bundler
-
-jobs:
-  build:
-    executor: default
+          POSTGRES_USER: instagram-challenge
+          POSTGRES_DB: instagram-challenge_test
+          POSTGRES_PASSWORD: ''
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - instagram-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - instagram-
-      - configure_bundler
-      - run:
-          name: Install bundle
-          command: bundle install
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 1m
-      - run:
-          name: Setup DB
-          command: bundle exec rails db:create db:schema:load --trace
-      - save_cache:
-          key: instagram-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - ./instagram
 
-workflows:
-  version: 2
-  integration:
-    jobs:
-      - build
+      # Restore Cached Dependencies
+      - type: cache-restore
+        name: Restore bundle cache
+        key: instagram-challenge-{{ checksum "Gemfile.lock" }}
+
+      # Bundle install dependencies
+      - run: bundle install --path vendor/bundle
+
+      # Cache Dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: instagram-challenge-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      # Wait for DB
+      - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      # Setup the environment
+      - run: cp .sample.env .env
+
+      # Setup the database
+      - run: bundle exec rake db:setup
+
+      # Run the tests
+      - run: bundle exec rake
