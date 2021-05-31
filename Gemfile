@@ -51,7 +51,7 @@ group :test do
   gem 'webdrivers'
   gem 'simplecov', require: false
   gem 'codecov', require: false
-  gem 'coveralls', require: false
+  gem 'coveralls_reborn', '~> 0.22.0', require: false
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
