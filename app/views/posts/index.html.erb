@@ -8,6 +8,21 @@
       <div class="username">
         <%= post.user.username %>
       </div>
+      <div class="dropdown">
+        <i class="fa fa-ellipsis-h fa-lg" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/posts/<%= post.id %>">Go to post</a>
+          <a class="dropdown-item" href="#">Share to...</a>
+          <% if current_user == post.user %>
+            <a class="dropdown-item" href="#">Edit</a>
+            <form method="post" action="/posts/1">
+              <input type="hidden" name="_method" value="delete">
+              <input data-confirm="Are you sure?" type="submit" value="Remove" class="dropdown-item remove">
+              <input type="hidden" name="authenticity_token" value="Irpt0F2KtKOMDQo8tfLFJ2eRQs1qSSEK74D12eKmP9_5ahmnXVNH_YGcDzudzd0ErTT2kut4dv2j-hpKtnksUQ">
+            </form>
+          <% end %>
+        </div>
+      </div>
     </div>
     <%= link_to (image_tag post.image, class: 'main-image'), post_path(post) %>
       <div class="caption">
@@ -19,4 +34,5 @@
       </div>
   </section>
   <% end %>
+</div>
 </div>
