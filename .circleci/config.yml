@@ -1,15 +1,65 @@
 version: 2.1
-orbs:
-  ruby: circleci/ruby@0.1.2 
+
+executors:
+  default:
+    working_directory: ~/instagram-challenge
+    docker:
+      - image: circleci/ruby:2.6.5
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_PATH: vendor/bundle
+          BUNDLE_RETRY: 3
+          BUNDLER_VERSION: 2.0.1
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          PG_HOST: 127.0.0.1
+          PGUSER: instagram
+      - image: circleci/postgres:12.0
+        environment:
+          POSTGRES_DB: instagram_test
+          POSTGRES_USER: instagram
+
+commands:
+  configure_bundler:
+    description: Configure bundler
+    steps:
+      - run:
+          name: Configure bundler
+          command: |
+            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler
 
 jobs:
   build:
-    docker:
-      - image: circleci/ruby:2.6.3-stretch-node
-    executor: ruby/default
+    executor: default
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - instagram-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - instagram-
+      - configure_bundler
       - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+          name: Install bundle
+          command: bundle install
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://127.0.0.1:5432 -timeout 1m
+      - run:
+          name: Setup DB
+          command: bundle exec rails db:create db:schema:load --trace
+      - save_cache:
+          key: instagram-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - ./instagram
+
+workflows:
+  version: 2
+  integration:
+    jobs:
+      - build

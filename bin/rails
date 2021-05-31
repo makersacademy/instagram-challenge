@@ -2,4 +2,9 @@
 load File.expand_path("spring", __dir__)
 APP_PATH = File.expand_path('../config/application', __dir__)
 require_relative "../config/boot"
+if ENV['RAILS_ENV'] == 'test'
+  require 'simplecov'
+  SimpleCov.start 'rails'
+  puts "required simplecov"
+end
 require "rails/commands"
