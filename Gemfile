@@ -32,11 +32,11 @@ gem 'will_paginate', '3.3.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 5.0.0'
   gem 'rubocop', require: true
   gem 'rubocop-rails', require: true
-  gem 'dotenv-rails'
 end
 
 group :development do
@@ -48,11 +48,11 @@ end
 
 group :test do
   gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
-  gem 'simplecov', require: false
   gem 'codecov', require: false
   gem 'coveralls_reborn', '~> 0.22.0', require: false
+  gem 'selenium-webdriver'
+  gem 'simplecov', require: false
+  gem 'webdrivers'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

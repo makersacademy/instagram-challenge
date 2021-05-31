@@ -3,7 +3,7 @@
 class PostsController < ApplicationController
   require 'mini_magick'
   before_action :authenticate_user!
-  before_action :owned_post, only: [:edit, :update, :destroy]
+  before_action :owned_post, only: %i[edit update destroy]
 
   def index
     @posts = Post.all.order('created_at DESC')
@@ -49,7 +49,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     unless current_user == @post.user
       flash[:alert] = "Cannot delete another user's post"
-      redirect_to root_path
+      redirect_to(root_path)
     end
   end
 end
