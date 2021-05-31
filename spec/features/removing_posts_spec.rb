@@ -11,11 +11,11 @@ feature 'Removing posts' do
     fill_in 'user_email', with: user.email
     fill_in 'user_password', with: user.password
     click_button 'Log in'
-    click_link(href: post_path(post.id))
   end
 
   scenario 'can remove a post' do
-    click_button 'Remove'
+    find(:xpath, '//*[@id="dropdownMenuButton"]').click
+    find(:xpath, '/html/body/div[2]/section/div[1]/div[3]/div/form/input[2]').click
     expect(page).to(have_content('Post deleted'))
     expect(page).to_not(have_content('Amazing sunrise! #sunrise'))
   end

@@ -14,7 +14,8 @@ feature 'Can view individual posts' do
   end
 
   scenario 'can click image to be shown selected post' do
-    click_link(href: post_path(post.id))
+    find(:xpath, '//*[@id="dropdownMenuButton"]').click
+    find(:xpath, '/html/body/div[2]/section/div[1]/div[3]/div/a[1]').click
     expect(page.current_path).to(eq(post_path(post.id)))
   end
 end

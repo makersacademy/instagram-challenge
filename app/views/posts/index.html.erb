@@ -15,10 +15,10 @@
           <a class="dropdown-item" href="#">Share to...</a>
           <% if current_user == post.user %>
             <a class="dropdown-item" href="#">Edit</a>
-            <form method="post" action="/posts/1">
+            <form method="post" action="/posts/<%= post.id %>">
               <input type="hidden" name="_method" value="delete">
               <input data-confirm="Are you sure?" type="submit" value="Remove" class="dropdown-item remove">
-              <input type="hidden" name="authenticity_token" value="Irpt0F2KtKOMDQo8tfLFJ2eRQs1qSSEK74D12eKmP9_5ahmnXVNH_YGcDzudzd0ErTT2kut4dv2j-hpKtnksUQ">
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
             </form>
           <% end %>
         </div>
