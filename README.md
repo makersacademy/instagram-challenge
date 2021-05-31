@@ -27,7 +27,7 @@ So I can remove all evidence of me in 2013
 I can delete posts on my Pinstagram
 ```
 ## Preview
-![Preview of Pinstagram](https://github.com/kerrimcm/instagram-challenge/blob/master/app/assets/images/Pinstagram%20preview.png)
+![Preview of Pinstagram](./public/images/preview.png)
 
 ## My notes
 
