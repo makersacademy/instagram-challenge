@@ -36,6 +36,32 @@ I can delete posts on my Pinstagram
 * For now, the feed is starting to look attractive with the late addition of Bootstrap
 * A user can upload, view, edit and delete a post - the full CRUD cycle
 
+## How to run locally
+* `git clone` this repo
+* `cd` into it
+* Run `bundle install` to install dependencies
+* Run `rails:db create` and then `rails db:migrate` to set up the databases
+* Run `rails s` to start up the server
+* Naviagte to http://localhost:3000/
+
+## Built using
+* Rails
+* Bootstrap
+* RSpec/Capybara
+
+## Features
+* User can post a photo to a stream
+* View photos on their own
+* Edit uploads
+* Delete uploads
+
+## To-do
+* Sign up
+* Sign in
+* Log in/out
+* Comments
+* Likes
+
 ## Instructions
 
 * Feel free to use Google, your notes, books, etc., but work on your own
