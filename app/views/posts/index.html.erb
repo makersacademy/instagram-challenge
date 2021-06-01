@@ -1,0 +1,38 @@
+<div class="posts">
+  <% @posts.each do |post| %>
+  <section class="post">
+    <div class="user">
+      <div class="avatar">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqtEOpkkYsHbI5VCATwmwFFxFe3sOY_IT6eHQbuaQTbgzXTLYEfZQFxwbIwAGQMbQL-6s&usqp=CAU">
+      </div>
+      <div class="username">
+        <%= post.user.username %>
+      </div>
+      <div class="dropdown">
+        <i class="fa fa-ellipsis-h fa-lg" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/posts/<%= post.id %>">Go to post</a>
+          <a class="dropdown-item" href="#">Share to...</a>
+          <% if current_user == post.user %>
+            <a class="dropdown-item" href="#">Edit</a>
+            <form method="post" action="/posts/<%= post.id %>">
+              <input type="hidden" name="_method" value="delete">
+              <input data-confirm="Are you sure?" type="submit" value="Remove" class="dropdown-item remove">
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            </form>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <%= link_to (image_tag post.image, class: 'main-image'), post_path(post) %>
+      <div class="caption">
+      <span class="username"><%= post.user.username %></span>
+        <span><%= post.caption %></span>
+        <p>
+        <%= time_ago_in_words(post.created_at).capitalize %> ago
+      </p>
+      </div>
+  </section>
+  <% end %>
+</div>
+</div>
