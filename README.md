@@ -2,7 +2,7 @@
 
 [![CodeFactor](https://www.codefactor.io/repository/github/jasonrowsell/instagram-challenge/badge)](https://www.codefactor.io/repository/github/jasonrowsell/instagram-challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/a156462f2fa7d2a3fff7/maintainability)](https://codeclimate.com/github/jasonrowsell/instagram-challenge/maintainability) [![Build Status](https://travis-ci.com/jasonrowsell/instagram-challenge.svg?branch=master)](https://travis-ci.com/jasonrowsell/instagram-challenge) [![Coverage Status](https://coveralls.io/repos/github/jasonrowsell/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/jasonrowsell/instagram-challenge?branch=master) [![Rails Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop-rails)
 
-[Live Demo](#live-demo) | [User Stories](#user-stories) | [Getting Started](#getting-started) | [Features](#features) | [Built Using](#built-using) | [Plan](#plan)
+[Live Demo](#live-demo) | [Getting Started](#getting-started) | [Features](#features) | [Built Using](#built-using) | [Plan](#plan)
 
 **Rosstagram:** A full-stack web app inspired by the functionality of Instagram. The web app allows the user to create an account, sign-in, and post a picture, amongst other functionalities.
 
@@ -15,7 +15,58 @@ The features built in this project are based on a [brief.](brief.md)
 ![Home](./public/images/home.png)
 ![Feed](./public/images/feed.gif)
 
-## Spec
+## 🏁 Getting Started
+
+To get started with the app, clone the repo then install the required gems:
+
+```sh
+bundle install --without production
+```
+
+Next, migrate the database:
+
+```sh
+rails db:migrate
+```
+
+Run the test suite to verify that everything is working correctly.
+
+```sh
+rspec
+```
+
+If the test suite passes, run the app in a local server:
+
+```sh
+rails server
+```
+
+## Features
+
+- Create an account
+- Sign in with created account
+- Post a picture to the feed
+- View all pictures on the main feed
+- View own pictures on the profile feed
+- View pictures of the chosen user's profile
+- View other user profiles
+- Like a user's picture
+- Comment on a user's picture
+- Remain logged in (remember token)
+- Log out
+
+## Built Using
+
+- HTML
+- CSS/SASS (Bootstrap)
+- JavaScript
+- jQuery
+- Ruby
+- Ruby on Rails
+- Capybara / RSpec (TDD)
+- PostgreSQL
+
+## Plan
 
 ### User Stories
 
@@ -96,59 +147,6 @@ As a user
 So I can maximise my engagement with the community
 I want to be able to view the website in different languages
 ```
-
-## 🏁 Getting Started
-
-To get started with the app, clone the repo then install the required gems:
-
-```sh
-bundle install --without production
-```
-
-Next, migrate the database:
-
-```sh
-rails db:migrate
-```
-
-Run the test suite to verify that everything is working correctly.
-
-```sh
-rspec
-```
-
-If the test suite passes, run the app in a local server:
-
-```sh
-rails server
-```
-
-## Features
-
-- Create an account
-- Sign in with created account
-- Post a picture to the feed
-- View all pictures on the main feed
-- View own pictures on the profile feed
-- View pictures of the chosen user's profile
-- View other user profiles
-- Like a user's picture
-- Comment on a user's picture
-- Remain logged in (remember token)
-- Log out
-
-## Built Using
-
-- HTML
-- CSS/SASS (Bootstrap)
-- JavaScript
-- jQuery
-- Ruby
-- Ruby on Rails
-- Capybara / RSpec (TDD)
-- PostgreSQL
-
-## Plan
 
 ### MVC
 
