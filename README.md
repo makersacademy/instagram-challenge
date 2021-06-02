@@ -1,6 +1,8 @@
-# Instagram Challenge
+# Rosstagram
 
 [![CodeFactor](https://www.codefactor.io/repository/github/jasonrowsell/instagram-challenge/badge)](https://www.codefactor.io/repository/github/jasonrowsell/instagram-challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/a156462f2fa7d2a3fff7/maintainability)](https://codeclimate.com/github/jasonrowsell/instagram-challenge/maintainability) [![Build Status](https://travis-ci.com/jasonrowsell/instagram-challenge.svg?branch=master)](https://travis-ci.com/jasonrowsell/instagram-challenge) [![Coverage Status](https://coveralls.io/repos/github/jasonrowsell/instagram-challenge/badge.svg?branch=master)](https://coveralls.io/github/jasonrowsell/instagram-challenge?branch=master) [![Rails Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop-rails)
+
+[Live Demo](#live-demo) | [User Stories](#user-stories) | [Getting Started](#getting-started) | [Features](#features) | [Built Using](#built-using) | [Plan](#plan)
 
 **Rosstagram:** A full-stack web app inspired by the functionality of Instagram. The web app allows the user to create an account, sign-in, and post a picture, amongst other functionalities.
 
@@ -12,6 +14,88 @@ The features built in this project are based on a [brief.](brief.md)
 
 ![Home](./public/images/home.png)
 ![Feed](./public/images/feed.gif)
+
+## Spec
+
+### User Stories
+
+```
+As a newcomer
+So that I can use Rosstagram
+I would like to create an account
+```
+
+```
+As a user
+So that I can use Rosstagram
+I would like to sign in to my account
+```
+
+```
+As a user
+So I can stop my Rosstagram session
+I would like to sign out
+```
+
+```
+As a user
+So others can identify me easily
+I would like to add a profile picture
+```
+
+```
+As a user
+So I can engage with the community
+I would like to make a post to a feed
+```
+
+```
+As a user
+So I keep up to date with the community
+I want to view all posts on the feed
+```
+
+```
+As a user
+So I can connect with others on Rosstagram
+I want to be able to follow users
+```
+
+```
+As a user
+So I can connect with others on Rosstagram
+I want to be able go to a user's pages
+```
+
+```
+As a user
+So I can engage with the community
+I want to view a users posts on their page
+```
+
+```
+As a user
+So I can interact with the community
+I want to comment on posts made by users
+```
+
+```
+As a user
+So I can interact with the community
+I want to react to user's posts with 'likes'
+```
+
+```
+As a user
+So I can filter my engagement with the community
+I want to block a user if necessary
+```
+
+```
+As a user
+So I can maximise my engagement with the community
+I want to be able to view the website in different languages
+```
 
 ## 🏁 Getting Started
 
