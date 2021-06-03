@@ -16,7 +16,7 @@ To improve
 -----
 * An attempt to get bootstrap working for the front end created a major issue, and git rollback had a problem that ended up breaking the project,
         4 hours just to get back to basic working order and I had no time to finish the front end
-**This project is one I will rewrite post makers without bootstrap in order to have both a functional back end and front end**
+* **This project is one I will rewrite post makers without bootstrap in order to have both a functional back end and front end**
 
 [See this app run live at Heroku](https://still-fortress-76749.herokuapp.com/)
 
