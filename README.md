@@ -1,5 +1,66 @@
 Instagram Challenge
 ===================
+## User stories for Pinstagram
+```
+As a user
+So I can show people what I am up to
+I can post a picture to a public feed
+
+As a user 
+So Pinstagram is all about pictures
+I cannot make a post unless I have uploaded an image
+
+As a user
+So I can see lots of images on the feed
+I would like to see all uploaded images on the feed at once
+
+As a user
+So I can admire a beautiful photo
+I would like to be able to view images on their own 
+
+As a user 
+So I can correct a mistake in my caption/photo upload
+I can edit my post
+
+As a user
+So I can remove all evidence of me in 2013
+I can delete posts on my Pinstagram
+```
+## Preview
+![Preview of Pinstagram](./public/images/preview.png)
+
+## My notes
+
+* So far, the app has been thoroughly feature tested - unit tests still needed
+* I still need to add sign up, log in, log out, liking and commenting - phew!
+* For now, the feed is starting to look attractive with the late addition of Bootstrap
+* A user can upload, view, edit and delete a post - the full CRUD cycle
+
+## How to run locally
+* `git clone` this repo
+* `cd` into it
+* Run `bundle install` to install dependencies
+* Run `rails:db create` and then `rails db:migrate` to set up the databases
+* Run `rails s` to start up the server
+* Naviagte to http://localhost:3000/
+
+## Built using
+* Rails
+* Bootstrap
+* RSpec/Capybara
+
+## Features
+* User can post a photo to a stream
+* View photos on their own
+* Edit uploads
+* Delete uploads
+
+## To-do
+* Sign up
+* Sign in
+* Log in/out
+* Comments
+* Likes
 
 ## Instructions
 
