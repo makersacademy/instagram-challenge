@@ -37,6 +37,8 @@ The features built in this project are based on a [brief.](brief.md)
 
 **[Check it out here.](https://evening-eyrie-51491.herokuapp.com/)** This app is in production, features will be implemented as the project progresses.
 
+### Screenshots
+
 ![Home](./public/images/home.png)
 ![Feed](./public/images/feed.gif)
 
