@@ -23,7 +23,7 @@
 - [Plan](#plan)
   - [User Stories](#user-stories)
   - [MVC](#mvc)
-  - [Request Response Cycle](#request-reponse-cylce)
+  - [Request Response Cycle](#request-response-cycle)
 
 <!-- Overview -->
 
