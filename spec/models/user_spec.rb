@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   subject { described_class.new(
-    first_name: "John", last_name: "Doe", email: "john@example.com", password: "example", 
+    first_name: "John", last_name: "Doe", email: "john@example.com", password: "example", password_confirmation: "example",
     created_at: DateTime.now, updated_at: DateTime.now) }
 
   describe("Valdations") do
@@ -33,6 +33,14 @@ RSpec.describe User, type: :model do
     it("is not valid with a password more than 30 character") do
       subject.password = "smallsmallsmallsmallsmallsmallsmall"
       expect(subject).not_to be_valid  
+    end
+
+    it("is not valid with a duplicate email") do
+      subject.save!
+      new_user = User.new(
+        first_name: "John", last_name: "Doe", email: "john@example.com", password: "example", password_confirmation: "example",
+        created_at: DateTime.now, updated_at: DateTime.now)
+      expect(new_user).not_to be_valid  
     end
   end
 end
