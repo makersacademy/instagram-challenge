@@ -4,34 +4,33 @@ Build Instagram using Rails.
 
 ## User stories
 
-As a user,
-So my content is identifiable,
+As a user,  
+So my content is identifiable,  
 I want to be able to **sign-up, login and logout**.
 
-As a user,  
-So I can show off a photo/image,
+As a user,    
+So I can show off a photo/image,  
 I want to be able to **post pictures** from my account.
 
-As a user,
-So I can engage with other users' content,
+As a user,  
+So I can engage with other users' content,  
 I want to be able to **post comments** about pictures.
 
-As a time-pressed user,
-So I can show love for other users' content,
+As a time-pressed user,  
+So I can show love for other users' content,  
 I want to be able to **like** a picture with one click.
 
-Nice-to-haves:
-Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
+Nice-to-haves:  
+- Style it like Instagram's website (or more awesome).
+- Add filters
 
 ## Planned approach
 
-1. Produce some stories, - done
-2. break them down into tasks, 
-3. estimate
-4. Fork this repo, clone, etc - done
-5. Initialize a new rails project
+1. Fork this repo, clone, etc - done
+2. Produce some stories, - done
+3. Break them down into tasks,  - done ([Board is here](https://github.com/BecaLParker/instagram-challenge/projects/1))
+4. Initialize a new rails project
+5. Hit some tickets :)
 
 Remember to proceed in small steps! Getting confused? Make the steps even smaller.
 
