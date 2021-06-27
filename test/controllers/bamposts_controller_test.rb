@@ -17,7 +17,7 @@ class BampostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create bampost" do
     assert_difference('Bampost.count') do
-      post bamposts_url, params: { bampost: { content: @bampost.content, user_id: @bampost.user_id } }
+      post bamposts_url, params: { bampost: { image: @bampost.image, content: @bampost.content, user_id: @bampost.user_id } }
     end
 
     assert_redirected_to bampost_url(Bampost.last)

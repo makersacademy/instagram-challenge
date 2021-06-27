@@ -22,6 +22,7 @@ class BampostsController < ApplicationController
   # POST /bamposts or /bamposts.json
   def create
     @bampost = Bampost.new(bampost_params)
+    @bampost.image.attach(params[:image])
 
     respond_to do |format|
       if @bampost.save
@@ -64,6 +65,6 @@ class BampostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def bampost_params
-      params.require(:bampost).permit(:content, :user_id)
+      params.require(:bampost).permit(:image, :content, :user_id)
     end
 end
