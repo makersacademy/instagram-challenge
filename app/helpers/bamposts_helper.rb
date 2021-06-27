@@ -1,0 +1,2 @@
+module BampostsHelper
+end

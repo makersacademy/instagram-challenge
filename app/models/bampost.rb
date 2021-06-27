@@ -1,0 +1,2 @@
+class Bampost < ApplicationRecord
+end
