@@ -55,6 +55,8 @@ I would like to work on deploying to Heroku as I was unsuccessful with this over
 - [*Ruby on Rails Tutorial: Learn Web Development with Rails*](https://www.railstutorial.org/) (6th Edition) by [Michael Hartl](https://www.michaelhartl.com/).
 
 - I referred to the [review document](https://github.com/makersacademy/instagram-challenge) for this challenge during my build.
+
+- [AnaHarris - How to add image upload functionality to your rails app](https://medium.com/@anaharris/how-to-add-image-upload-functionality-to-your-rails-app-9f7fc3f3d042)
   
 ## Code Quality
 Linted with Rubocop,
