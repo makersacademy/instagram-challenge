@@ -6,11 +6,15 @@ Build Instagram using Rails.
 
 As a user,  
 So my content is identifiable,  
-I want to be able to **sign-up, login and logout**.
+I want to be able to **sign-up**.
 
 As a user,    
 So I can show off a photo/image,  
 I want to be able to **post pictures** from my account.
+
+As a user,
+So I can be confident other users won't post as me,
+I want to be able to **login and logout**.
 
 As a user,  
 So I can engage with other users' content,  
@@ -24,32 +28,33 @@ Nice-to-haves:
 - Style it like Instagram's website (or more awesome).
 - Add filters
 
-## Planned approach
+## Getting started
+To get started with the app, clone the repo and then install the needed gems:
+```
+$ bundle install --without production 
+```
+Next, migrate the databases:
+```
+$ rails db:migrate
+```
+Finally, run the test suite to verify that everything is working correctly:
+```
+$ rails test
+```
+If the test suite passes, you'll be ready to run the app in a local server:
+```
+$ rails server
+```
+Visit localhost:3000/bamposts in your browser
 
-1. Fork this repo, clone, etc - done
-2. Produce some stories, - done
-3. Break them down into tasks,  - done ([Board is here](https://github.com/BecaLParker/instagram-challenge/projects/1))
-4. Initialize a new rails project - done and REdone!
-5. Hit some tickets :)
+## For future releases
+I would like to work on deploying to Heroku as I was unsuccessful with this over the weekend.
 
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-[TODO in this file: update code quality section]
 
 ## Credits
-- LearnEnough.com - The Ruby on Rails Tutorial (Michael Hartl)
+- [*Ruby on Rails Tutorial: Learn Web Development with Rails*](https://www.railstutorial.org/) (6th Edition) by [Michael Hartl](https://www.michaelhartl.com/).
+
 - I referred to the [review document](https://github.com/makersacademy/instagram-challenge) for this challenge during my build.
   
 ## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
-```
-
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+Linted with Rubocop,
