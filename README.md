@@ -29,13 +29,17 @@ Nice-to-haves:
 1. Fork this repo, clone, etc - done
 2. Produce some stories, - done
 3. Break them down into tasks,  - done ([Board is here](https://github.com/BecaLParker/instagram-challenge/projects/1))
-4. Initialize a new rails project
+4. Initialize a new rails project - done and REdone!
 5. Hit some tickets :)
 
 Remember to proceed in small steps! Getting confused? Make the steps even smaller.
 
-[TODO in this file: update code quality section, add credit section]
+[TODO in this file: update code quality section]
 
+## Credits
+- LearnEnough.com - The Ruby on Rails Tutorial (Michael Hartl)
+- I referred to the [review document](https://github.com/makersacademy/instagram-challenge) for this challenge during my build.
+  
 ## Code Quality
 
 For linting, you can use the `.rubocop.yml` in this repository (or your own!).
