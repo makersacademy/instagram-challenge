@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-feature 'Posting to the feed more than once' do
-  scenario 'a user can post a picture to the feed and see multiple posts' do
+feature 'A user can click on a post to display individual post' do
+  scenario 'A user clicks on a post' do
     post = create(:post, caption: "My favourite cat")
     
     visit '/'
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
-    expect(page.current_path).to eq('/posts/1')
+    find(:xpath, "/html/body/main/div/div[1]/a").click
+    expect(page).to have_content("My favourite cat")
   end
 end 

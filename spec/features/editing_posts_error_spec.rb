@@ -4,7 +4,7 @@ feature 'Ediitng posts' do
   background do
     post = create(:post)
     visit '/'
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    find(:xpath, "/html/body/main/div/div[1]/a").click
     click_link 'Edit post'
   end
   scenario 'will not update post without image' do

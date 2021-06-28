@@ -1,8 +1,12 @@
+<%= stylesheet_link_tag "posts" %>
+
 <button><%= link_to 'New post', new_post_path %></button>
 
-<% @posts.each do |post| %>
+<div class="index-page">
+  <% @posts.each do |post| %>
     <div class="picture"><%= link_to(image_tag(url_for(post.picture)), post_path(post)) %></div>
-    <p>Posted <%= time_ago_in_words(post.created_at) %> ago</p>
-    <p>Caption: <%= post.caption %></p>
-<% end %>
+    <p>Posted <%= time_ago_in_words(post.created_at) %> ago by </p>
+    <div class="caption"><%= post.caption %></div>
+  <% end %>
+</div>
   

@@ -5,10 +5,12 @@ feature 'Deleting posts' do
     post = create(:post, caption: 'I am so random lol')
         
     visit '/'
-    find(:xpath, "//a[contains(@href,'posts/1')]").click
+    find(:xpath, "/html/body/main/div/div[1]/a").click
     click_link 'Edit post'
   end
 
+  
+  
   scenario 'Can delete a post' do
     click_link 'Delete post'
     expect(page).to have_content('Post successfully deleted')
