@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :like do
+    post { nil }
+    user { nil }
+  end
+
   factory :user do
     
   end
