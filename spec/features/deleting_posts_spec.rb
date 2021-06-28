@@ -9,8 +9,6 @@ feature 'Deleting posts' do
     click_link 'Edit post'
   end
 
-  
-  
   scenario 'Can delete a post' do
     click_link 'Delete post'
     expect(page).to have_content('Post successfully deleted')
