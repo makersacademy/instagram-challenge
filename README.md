@@ -71,7 +71,7 @@ Setup:
 -------
 
 * Clone this repo, run bundle migrate to install any dependencies, run rails db:migrate to install your tables
-* Use < rails s /server > command in terminal to launch Rails server, and go to http://127.0.0.1:3000/ to interact with the app
+* Use < rails s / rails server > command in terminal to launch Rails server, and go to http://127.0.0.1:3000/ to interact with the app
 * Alternatively use < rackup > and go to localhost:9292
 * Why not make it even easier for yourself and just click the Heroku link at the top?
 
