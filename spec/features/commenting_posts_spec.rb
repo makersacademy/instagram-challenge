@@ -5,7 +5,10 @@ feature 'Commenting on posts' do
   background do
     user = create(:user)
     post = create(:post)
-    visit '/'
+    visit '/users/sign_in'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
   end
 
   scenario 'a user can comment on a post' do
