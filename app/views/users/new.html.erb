@@ -1,0 +1,29 @@
+<h1>Register</h1>
+<%= form_with model: @user, local: true do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %><br>
+  <% @user.errors.full_messages_for(:first_name).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %><br>
+    <% @user.errors.full_messages_for(:last_name).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+  <%= f.label :email %>
+  <%= f.text_field :email %><br>
+  <% @user.errors.full_messages_for(:email).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+  <%= f.label :password %>
+  <%= f.password_field :password %><br>
+    <% @user.errors.full_messages_for(:password).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+  <%= f.label :password_confirmation %>
+<%= f.password_field :password_confirmation %><br>
+    <% @user.errors.full_messages_for(:password_confirmation).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+  <%= f.submit "Submit" %>
+<% end %>
