@@ -13,10 +13,12 @@
     <% else %>
       likes
     <% end %>
+    <% if post.comments.exists? %>
       <strong> Comments </strong>
       <% post.comments.each do |comment| %>
         <p><%= comment.text %></p>
       <% end %>
+    <% end %>
     <%= form_with model: [post, post.comments.new] do |f| %>
     <br />
       <%= f.text_field :text, placeholder: 'Write a comment...' %>
