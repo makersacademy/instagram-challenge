@@ -5,13 +5,22 @@
 <div class="index-page">
   <% @posts.each do |post| %>
     <div class="picture"><%= link_to(image_tag(url_for(post.picture)), post_path(post)) %></div>
-    <p>Posted <%= time_ago_in_words(post.created_at) %> ago by </p>
+    <p>Posted <%= time_ago_in_words(post.created_at) %> ago </p>
     <div class="caption"><%= post.caption %></div>
     <%= post.likes.count %> 
     <% if post.likes.count == 1 %>
       like
     <% else %>
       likes
+    <% end %>
+      <strong> Comments </strong>
+      <% post.comments.each do |comment| %>
+        <p><%= comment.text %></p>
+      <% end %>
+    <%= form_with model: [post, post.comments.new] do |f| %>
+    <br />
+      <%= f.text_field :text, placeholder: 'Write a comment...' %>
+      <%= f.submit "Add comment" %>
     <% end %>
   <% end %>
 </div>
