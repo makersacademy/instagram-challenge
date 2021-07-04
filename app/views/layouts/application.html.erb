@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pandagram</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <h1>Welcome to PANDAGRAM</h1>
+    <% if user_signed_in? %>
+      <h3><%= link_to "Sign out", destroy_user_session_path, method: :delete %></h3>
+    <% else %>
+      <h3><%= link_to "Sign in", new_user_session_path %>
+      <%= link_to "Sign up", new_user_registration_path %></h3>
+    <% end %>
+  </header>
+
+  <div class='main'>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+
+  </div>
+</body>
+</html>

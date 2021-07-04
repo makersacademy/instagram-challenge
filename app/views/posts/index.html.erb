@@ -1,0 +1,17 @@
+<h4><a href='/posts/new'>Add a post</a></h4>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <div class='post'>
+    <p><%= post.created_at.strftime("Posted on %m/%d/%Y") %> | <%= post.description %> <span class='right'><%= link_to "Edit", edit_post_path(post) %></span></p>
+      <%= image_tag post.image.url(:medium) %>
+      <%= link_to "Leave a comment", new_post_comment_path(post) %>
+      <ul>
+        <% post.comments.each do |comment| %>
+        <li><%= comment.user_comment %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% else %>
+  <h2>No posts yet</h2>
+<% end %>
