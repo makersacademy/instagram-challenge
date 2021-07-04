@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instagram</title>
+    <%= csrf_meta_tags %>
+     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+   <body>
+     <%=render 'shared/navbar' if current_user %>
+
+     <div class="container">
+    <%= yield %>
+    </div>
+    <%= render 'shared/footer' %>
+
+    <% if flash.any? %>
+    <script type="text/javascript">
+      <% flash.each do |key, value| %>
+        <% type = key.to_s.gsub('alert', 'error').gsub('notice', 'success') %>
+        toastr.<%= type %>('<%= value %>')
+        <% end %>
+      </script>
+    <% end %>
+  </body>
+</html>
