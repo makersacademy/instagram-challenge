@@ -1,0 +1,12 @@
+<h1>My Pictures</h1>
+
+<% @photos.in_groups_of(3) do |group| %>
+  <div class="row">
+    <% group.compact.each do |photo| %>
+      <div class="col-md-4">
+        <%= image_tag photo.picture_url, width: '100%' if photo.picture.present? %>
+        <h4 style="padding-bottom: 30px"><%= link_to photo.name, photo %></h4>
+      </div>
+    <% end %>
+  </div>
+<% end %>
