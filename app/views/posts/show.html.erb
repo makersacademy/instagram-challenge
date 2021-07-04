@@ -1,0 +1,30 @@
+<div id="post_content">
+  <p><%= @post.user.email %></p>
+  <h1 class="title">
+    <%= @post.title %>
+  </h1>
+
+  <%= image_tag @post.image.url(:medium) %>
+
+  <p class="date">
+    Submitted <%= time_ago_in_words(@post.created_at)%> Ago
+    <% if user_signed_in? %>
+      | <%= link_to 'Edit', edit_post_path(@post) %>
+      | <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </p>
+
+  <p class="body">
+    <%= @post.body %>
+  </p>
+
+
+  <div id="comments">
+  	<h2><%= pluralize(@post.comments.count, "Comment") %></h2>
+  	<%= render @post.comments %>
+
+  	<h3>Add a comment:</h3>
+  	<%= render "comments/form" %>
+  </div>
+
+</div>
