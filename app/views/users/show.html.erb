@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title><%= @user.name %>'s Images</title>
+  </head>
+  <body>
+    <a href='/signout'>Sign Out</a>
+    <br>
+    <center>
+      <%= flash[:notice] %>
+      <a href='/posts/new'>Post</a>
+      <br>
+      <%= Post.where(user_id: @user.id).find_each do |post| %>
+        <br>
+        <p><%= image_tag post.image, class: 'main-image', height: '500px', width: '500px' %></p>
+        <br>
+        <%= post.description %>
+      <% end %>
+    </center>
+  </body>
+</html>
