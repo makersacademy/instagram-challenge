@@ -1,0 +1,18 @@
+before_script:
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+language: ruby
+cache: bundler
+script:
+- bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: WZj0kOTeAQxvlBjNX1Hk5Va5qOGfhQNtllPHzzenTWAltENRzeRYERX3mKBgRsaUS9m8rQptKyXAjjmNBQ+bm+9OB7ajivuAm0qDwTEq+XWp2P5bmHUIqTa/h8GsFg48ECiWrxo3BkJQ2Zt26mA7s0Os9uj5VFY9e/TJkn2kYTUXpmPWdeB8uVNQbb0lI/7Xl2RXYVg/qML2vYATSQVVy6KjkBKRlAltWeVtaeaxYAHnoh8DMakyeZYMJoabxEzc+ZpxvTn5xfQw/YpiMybMP+2sAMMn1A4647GielWV4BDCTVXNYHlozYJy31C4+qIGfzjFtg1HZQp9PT/Ymu9cslxgAI+Cer0/iwrt0xyRjQThcsd4e0V2x4f98TJ8BE4jgdAy+VeTRRAPavIR67YF7y/poPhWb89PvjVBJeemnZz8sjqrPWvQiYmqXwPLgukUNZNhP1+ZhhxBxESFnRIkclAk2N+jbmCvT0mDZVYknbkw0wMumaH+mW6btukIc3nhE4UWz6avQ+gcysz8A/zCLnPIO6X5oIqS7uJBMwWqv8vvgVdgzvMElKSJBUNax7CSjdun7KtKqHze9WD6ZkomeihmmxyQvxhQ4LA0h4DsOrWWFiqji96NXMPGtRKZMN0iE3CahuC+Hz37tYfBvLq9EHhWLF7iEX9ApTKmPkUQu14=
+  app: onstagram
+  run: rake db:migrate
+  on:
+    repo: tomasdoh/instagram-challenge
+    branch: master
+  skip_cleanup: true
