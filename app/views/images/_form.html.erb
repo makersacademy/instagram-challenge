@@ -1,0 +1,48 @@
+<%= form_with(model: image) do |form| %>
+<% if image.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+  <ul>
+    <% image.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="album mb-5 py-2 bg-light container">
+  <div class="row">
+    <div class="col-8 m-auto">
+      <div class="col text-muted">
+
+        <div class="card shadow-sm m-1 post-img ">
+          <% if @image.pic.attached? %>
+          <%= image_tag(@image.pic) %>
+          <% end %>
+          <div class="item-icons">
+            <p>
+              <%= form.file_field :pic, :required => true %>
+            </p>
+          </div>
+          <div class="comments">
+            <div class="comment">
+              <div class="item">
+                <%= form.text_area :caption, :required => true %>
+              </div>
+              <div class="send">
+                <%= button_tag type: "submit", class: "send-post", id: "send-button" do %>
+                <i class='fas fa-paper-plane'></i>
+                <% end %>
+                <br>
+                <%= link_to 'Cancel', images_path %>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

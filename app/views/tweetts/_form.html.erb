@@ -1,0 +1,21 @@
+<%= form_with(model: [@tweett.image, @tweett]) do |f| %>
+<% if @tweett.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@tweett.errors.count, "error") %> prohibited this tweett from being saved:</h2>
+
+  <ul>
+    <% @tweett.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field comment-field">
+  <%= f.text_area :content, placeholder: "Say something", :required => true %>
+  <%= button_tag type: "submit", class: "send-post", id: "send-button" do %>
+  <i class='fas fa-paper-plane'></i>
+  <% end %>
+</div>
+
+<% end %>

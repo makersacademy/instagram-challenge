@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @post.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @post.user_id %>
+</p>
+
+<%= link_to "Edit", edit_post_path(@post) %> |
+<%= link_to "Back", posts_path %>
+<hr>
+<h1>New comment</h1>
+
+<%= render "comments/form" %>
+
+<hr>
+<h1>Listing comments</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Post</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @post.comments.each do |comment| %>
+    <% if comment.persisted? %>
+      <tr>
+        <td><%= comment.name %></td>
+        <td><%= comment.description %></td>
+        <% # <td><%= comment.post </td> %>
+        <% # <td><%= link_to "Show", [comment.post, comment] </td> %>
+        <td><%= link_to "Edit", edit_post_comment_path(comment.post, comment) %></td>
+        <td><%= link_to "Destroy Comment", comment.post, :confirm => "Are you sure?", :method => :delete %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
