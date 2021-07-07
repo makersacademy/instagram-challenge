@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>InstaApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<body>
+
+  <!-- Navigation -->
+  <div class="navbar header">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="sr-only" >Toggle Navigation</span>
+    
+      <%= link_to "InstaApp", root_url, class: "navbar-brand" %>
+  
+        <ul class="nav navbar-nav">
+          <li>
+            <%= link_to "New Post", new_post_path %>
+          </li>
+            <%- if current_user %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, data: {confirm: "Are you sure?"} %>
+            <% else %>
+              <li>
+                <%= link_to "Log in", new_user_session_path %>
+              </li>
+              <li>
+                <%= link_to "Register", new_user_registration_path %>
+              </li>
+            <% end %>
+        </ul>
+    </button>
+  </div>
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+      <% flash.each do |a, b| %>
+        <div class= "alert alert-success"> <%= b %> </div>
+      <% end %>
+          <%= yield %>
+      </div>
+    </div>
+  </div>
+  <!-- Menu Toggle Script -->
+  <style>body { padding-top:100px; }</style>
+</body>
+</html>
