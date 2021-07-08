@@ -1,0 +1,21 @@
+<body>
+	<% if current_user %>
+		<h1>Hey <%= current_user.name %>, check out your profile</h1>
+		<%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %>
+		<p>
+			<%= current_user.name %><br>
+			<%= current_user.username %><br>
+			<%= current_user.email %><br>
+			<%= current_user.bio %><br>
+		</p>
+
+		<%= link_to "Edit your profile information", edit_user_registration_path %>
+	<% end %>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+	<main>
+		<%= yield %>
+	</main>
+
+	<% p current_user %>
+</body>
