@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Outstagram</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'%>
+
+
+  </head>
+
+  <body>
+    <% if user_signed_in? %>
+    Welcome <%= current_user.first_name %>
+    <%= button_to 'Sign Out', '/users/sign_out', method: :delete %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
