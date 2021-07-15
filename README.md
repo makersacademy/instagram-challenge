@@ -32,6 +32,18 @@ I can edit my post
 As a user
 So I can remove all evidence of me in 2013
 I can delete posts on my Pinstagram
+
+As a user
+So I can have an account 
+I can sign up to Pinstagram
+
+As a user
+So I can let my friends know how much I like their posts 
+I can like posts
+
+As a user
+So I can have my say
+I can comment on posts
 ```
 
 ## Getting started
@@ -41,7 +53,7 @@ I can delete posts on my Pinstagram
 * Run `rails:db create` and then `rails db:migrate` to set up the databases
 * Run `rails s` to start up the server
 * Run `rspec` to check if tests are passing
-* Naviagte to http://localhost:3000/
+* Navigate to http://localhost:3000/
 
 ## Built using
 * Ruby on Rails
