@@ -1,0 +1,24 @@
+<%= stylesheet_link_tag "single_posts" %>
+
+<div class="single-page">
+<div class="single-image"><%= image_tag(url_for(@post.picture)) %></div>
+<p>Posted <%= time_ago_in_words(@post.created_at) %> ago</p>
+<div class="single-caption"><%= @post.caption %></div>
+
+<p> <%= link_to 'Edit post', edit_post_path(@post) %> </p>
+
+<%= button_to 'Like', post_likes_path(@post), method: :post %>
+<%= @post.likes.count %> 
+<% if @post.likes.count == 1 %>
+  like
+<% else %>
+  likes
+<% end %>
+
+<% if @post.comments.exists? %>
+  <strong> Comments </strong>
+  <% @post.comments.each do |comment| %>
+    <p><%= comment.text %></p>
+  <% end %>
+<% end %>
+</div>

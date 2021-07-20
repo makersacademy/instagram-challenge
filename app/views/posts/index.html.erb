@@ -1,0 +1,29 @@
+<%= stylesheet_link_tag "posts" %>
+
+<button><%= link_to 'New post', new_post_path %></button>
+
+<div class="index-page">
+  <% @posts.each do |post| %>
+    <div class="picture"><%= link_to(image_tag(url_for(post.picture)), post_path(post)) %></div>
+    <p>Posted <%= time_ago_in_words(post.created_at) %> ago </p>
+    <div class="caption"><%= post.caption %></div>
+    <%= post.likes.count %> 
+    <% if post.likes.count == 1 %>
+      like
+    <% else %>
+      likes
+    <% end %>
+    <% if post.comments.exists? %>
+      <strong> Comments </strong>
+      <% post.comments.each do |comment| %>
+        <p><%= comment.text %></p>
+      <% end %>
+    <% end %>
+    <%= form_with model: [post, post.comments.new] do |f| %>
+    <br />
+      <%= f.text_field :text, placeholder: 'Write a comment...' %>
+      <%= f.submit "Add comment" %>
+    <% end %>
+  <% end %>
+</div>
+  
