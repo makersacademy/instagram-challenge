@@ -96,3 +96,50 @@ So that I can enjoy my time on the site,
 I'd like to be able to see an aesthetically pleasing app.
 ```
 
+## Mock Ups
+
+I imagined what the design would look like (and also imagine that I had the CSS skills to do this...)
+
+Sign Up:
+
+<img src="mockups/sign_up.JPG" alt="Plantagram home page/sign up page" height="500"/>
+
+Sign In:
+
+<img src="mockups/sign_in.JPG" alt="Plantagram sign in page" height="500"/>
+
+Feed:
+
+<img src="mockups/feed.JPG" alt="Plantagram home page/feed" height="500"/>
+
+## Design Palette
+```
+logo font family: Handlee (Google Fonts)
+
+background color: #fafafa
+border color (1px): #dbdbdb
+
+button color: #b2fcc0
+button color (hover): #38cc5d
+button font family: Arial
+button text color: white
+
+text font family: Arial
+text: black
+text (muted): #928e8e
+
+hyperlinks color: #38cc5d
+hyperlinks color (visited): #38cc5d
+
+icons: Tailwind heroicons
+color: black
+home page: HomeOutline
+new post: PlusCircleOutline
+like: HeartOutline
+comment: ChatOutline
+```
+
+## Approach
+* Created user stories to capture, define and communicate the requirements.
+* Created mock ups using <a href="http://www.framer.com">framer</a> to get a basic idea of what I want the site to look like, what colours and fonts I wanted to use. Please see 'Design Palette' above for the draft.
+* 
