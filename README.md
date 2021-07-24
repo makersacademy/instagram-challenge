@@ -156,4 +156,5 @@ comment: ChatOutline
 ## Approach
 * Created user stories to capture, define and communicate the requirements.
 * Created mock ups using <a href="http://www.framer.com">framer</a> to get a basic idea of what I want the site to look like, what colours and fonts I wanted to use. Please see 'Design Palette' above for the draft.
-* 
+* Once I set up my Rails project, I initialised RSpec, Database Cleaner, Rubocop, and then decided to deploy the new Rails application early in order to avoid integration problems later.
+
