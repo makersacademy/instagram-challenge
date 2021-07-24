@@ -40,6 +40,20 @@ you to mistakes or mishaps!
 
 # My Solution
 
+## How to Use
+
+First, clone this repository, then:
+
+```bash
+> bundle update
+> bundle install
+> bin/rails db:create
+> bin/rails db:migrate
+
+> bundle exec rspec # Run the tests
+> bin/rails server # Start the server at localhost:3000
+```
+
 ## User Stories
 
 ```
