@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   root 'static_pages#home'
   get 'about' => 'static_pages#about'
   get 'signup' => 'users#new'
