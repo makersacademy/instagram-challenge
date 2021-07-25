@@ -40,6 +40,8 @@ you to mistakes or mishaps!
 
 # My Solution
 
+🚧 Work in progress 🚧
+
 ## How to Use
 
 First, clone this repository, then:
@@ -163,22 +165,21 @@ comment: ChatOutline
 * Used branches to separate topic branches.
 * Used `rails generate scaffold` to create Post.
 * Posts are in reverse chronological order.
+🚧 Work in progress 🚧
 
 ## Heroku
 
-<a href="https://cynthia-plantagram.herokuapp.com/">Cynthia Plantagram</a>
-🚧 Work in progress 🚧
+🚧 <a href="https://cynthia-plantagram.herokuapp.com/">Cynthia Plantagram</a> 🚧 
 
 ## TODO
 * Routes: 
   * '/' should redirect to sign up if not logged in, otherwise it should redirect to display all posts.
+  * Tidy up - use named routes.
 * Layout: 
   * Heroicons: `gem 'rails_heroicons', '~> 0.6.0'`
   * Posts: each post should look like mock up.
-  * Posts: infinite scroll.
   * Sign in/Sign up: main content should be inside a box centered in  the page. 
   * About: should be boxed.
-  * Sign up: should have a link to sign in. 
   * Lots of other improvements too long to list! 
 * Posts: 
   * New posts form should validate the file extension `%w(jpg jpeg gif png)`. 
@@ -189,4 +190,7 @@ comment: ChatOutline
   * Users should be able to comment/like pictures.
   * Remove edit feature from post - only allow comment to be changed
   * When submitting a new post, the user should not have to fill in their own user id.
+  * Posts: each post should look like mock up.
+  * Posts: infinite scroll.
+  * Sign up: should have a link to sign in. 
 
