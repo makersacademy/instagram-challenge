@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)    # Not the final implementation!
     if @user.save
+      log_in @user
       flash[:success] = "Welcome to the Plantagram!"
       redirect_to @user
     else
