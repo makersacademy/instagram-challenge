@@ -157,4 +157,36 @@ comment: ChatOutline
 * Created user stories to capture, define and communicate the requirements.
 * Created mock ups using <a href="http://www.framer.com">framer</a> to get a basic idea of what I want the site to look like, what colours and fonts I wanted to use. Please see 'Design Palette' above for the draft.
 * Once I set up my Rails project, I initialised RSpec, Database Cleaner, Rubocop, and then decided to deploy the new Rails application early in order to avoid integration problems later.
+* Created User Model with validations
+* Added Sign Up, Sign In, Sign Out features. 
+* Used Bootstrap to aid layout
+* Used branches to separate topic branches.
+* Used `rails generate scaffold` to create Post.
+* Posts are in reverse chronological order.
+
+## Heroku
+
+<a href="https://cynthia-plantagram.herokuapp.com/">Cynthia Plantagram</a>
+🚧 Work in progress 🚧
+
+## TODO
+* Routes: 
+  * '/' should redirect to sign up if not logged in, otherwise it should redirect to display all posts.
+* Layout: 
+  * Heroicons: `gem 'rails_heroicons', '~> 0.6.0'`
+  * Posts: each post should look like mock up.
+  * Posts: infinite scroll.
+  * Sign in/Sign up: main content should be inside a box centered in  the page. 
+  * About: should be boxed.
+  * Sign up: should have a link to sign in. 
+  * Lots of other improvements too long to list! 
+* Posts: 
+  * New posts form should validate the file extension `%w(jpg jpeg gif png)`. 
+  * Image uploads should be resized to be square.
+* Heroku: 
+  * Load some content: plant images from Unsplash.
+* Features:
+  * Users should be able to comment/like pictures.
+  * Remove edit feature from post - only allow comment to be changed
+  * When submitting a new post, the user should not have to fill in their own user id.
 
