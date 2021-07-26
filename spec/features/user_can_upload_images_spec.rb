@@ -5,6 +5,6 @@ RSpec.feature "New Post", type: :feature do
     visit '/posts'
     click_link 'New Post'
     click_on 'Create Post'
-    expect(page).to have_content("Hello photos!")
+    expect(page).to have_content("Hello photo!")
   end
 end

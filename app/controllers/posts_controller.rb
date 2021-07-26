@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   def new
     @post = Post.new
-    "hello"
   end
 
   def index
