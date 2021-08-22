@@ -6,25 +6,28 @@
 </div>
 
 <main>
-  <section class="new-post-form-wrapper">
+  <section class='feed d-flex flex-column align-items-center justify-content-center'>
+  <section class="new-post-form-wrapper form-group" style="width: 20rem">
     <%= form_for @post do |form| %>
     <%= form.label :content %>
-    <%= form.text_field :content %>
+    <%= form.text_field :content, class: "form-control" %>
     <%= form.label "Upload an image" %>
-    <%= form.file_field :image, accept: "image/jpeg, image/png, image/heic" %>
-    <%= form.submit "Submit" %>
+    <%= form.file_field :image, accept: "image/jpeg, image/png, image/heic", class: "form-control" %>
+    <%= form.submit "Submit", class: " form-control btn-primary" %>
     <% end %>
   </section>
-
+  <br>
   <section class="posts d-flex flex-column align-items-center justify-content-center">
     <% @posts.reverse_each do |post| %>
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 20rem;">
         <%= image_tag("not_loaded_sample.jpeg", class: "card-img-top", alt: "Post Image") %>
         <div class="card-body">
           <p class="card-text"><%= post.content %></p>
         </div>
       </div>
+      <br>
     <%end%>
+  </section>
   </section>
 
 </main>
