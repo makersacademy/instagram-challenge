@@ -8,6 +8,6 @@ class PostsController < ApplicationController
     redirect_to posts_url
   end
   def post_params
-    params.require(:post).permit(:content, :image)
+    params.require(:post).permit(:user, :content, :image)
   end
 end
