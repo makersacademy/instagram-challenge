@@ -3,4 +3,5 @@
 Rails.application.routes.draw do
   get "posts", to: "posts#index"
   root to: "main#index"
+  resources :posts
 end

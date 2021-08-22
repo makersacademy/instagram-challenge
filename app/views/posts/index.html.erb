@@ -4,38 +4,27 @@
     <span class="text-muted">Toggleable via the navbar brand.</span>
   </div>
 </div>
-<%
-=begin%>
- <nav class="navbar navbar-dark bg-dark">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-</nav> 
-<%
-=end%>
 
 <main>
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Album example</h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-        <p>
-          <a href="#" class="btn btn-primary my-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-        </p>
-      </div>
-    </div>
+  <section class="new-post-form-wrapper">
+    <%= form_for @post do |form| %>
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+    <%= form.label "Upload an image" %>
+    <%= form.file_field :image, accept: "image/jpeg, image/png, image/heic" %>
+    <%= form.submit "Submit" %>
+    <% end %>
   </section>
 
   <section class="posts d-flex flex-column align-items-center justify-content-center">
-    <div class="card" style="width: 18rem;">
-      <%= image_tag("not_loaded_sample.jpeg", class: "card-img-top", alt: "Post Image") %>
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <% @posts.reverse_each do |post| %>
+      <div class="card" style="width: 18rem;">
+        <%= image_tag("not_loaded_sample.jpeg", class: "card-img-top", alt: "Post Image") %>
+        <div class="card-body">
+          <p class="card-text"><%= post.content %></p>
+        </div>
       </div>
-    </div>
+    <%end%>
   </section>
+
 </main>
