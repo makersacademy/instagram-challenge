@@ -1,0 +1,36 @@
+<div class="collapse" id="navbarToggleExternalContent">
+  <div class="bg-dark p-4">
+    <h5 class="text-white h4">Collapsed content</h5>
+    <span class="text-muted">Toggleable via the navbar brand.</span>
+  </div>
+</div>
+
+<main>
+  <section class='feed d-flex flex-column align-items-center justify-content-center'>
+    <section class="new-post-form-wrapper form-group" style="width: 20rem">
+      <%= form_for @post do |form| %>
+      <% form.label :content %>
+      <%= form.text_field :content, class: "form-control", placeholder: "What's your jam?" %>
+      <% form.label "Image upload" %>
+      <%= form.file_field :image, accept: "image/jpeg, image/png, image/heic", class: "form-control" %>
+      <%= form.submit "Submit", class: "form-control btn-primary" %>
+      <% end %>
+    </section>
+    <br/>
+    <section class="posts d-flex flex-column align-items-center justify-content-center">
+      <% @posts.reverse_each do |post| %>
+        <div class="card" style="width: 20rem;">
+          <% if post.image.attached? %>
+            <%= image_tag((url_for(post.image)),  class: "card-img-top", alt: "Post Image") %>
+           <%else%>
+            <%= image_tag("not_loaded_sample.jpeg", class: "card-img-top", alt: "Post Image") %>
+          <% end %>
+          <div class="card-body">
+            <p class="card-text"><%= post.content %></p>
+          </div>
+        </div>
+        <br/>
+      <%end%>
+    </section>
+  </section>
+</main>
