@@ -30,8 +30,10 @@ For linting, you can use the `.rubocop.yml` in this repository (or your own!).
 You'll need these gems:
 
 ```ruby
-gem "rubocop", "0.79.0", require: false
-gem "rubocop-rails"
+group :development, :test do
+  gem 'rubocop', '1.20', require: false
+  gem 'rubocop-rails'
+end
 ```
 
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
