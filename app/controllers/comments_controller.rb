@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_post, only: %i[ new ]
 
   # GET /comments or /comments.json
   def index
@@ -12,7 +13,6 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @post = Post.find(params[:post_id])
     @comment = @post.comments.build
   end
 
@@ -66,5 +66,9 @@ class CommentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def comment_params
       params.require(:comment).permit(:body, :user_id, :post_id)
+    end
+
+    def set_post
+      @post = Post.find(params[:post_id])
     end
 end
