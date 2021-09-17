@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    # TO DO: load user profile page
+    redirect_to root_path
   end
 
   def new
