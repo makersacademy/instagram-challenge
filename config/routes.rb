@@ -2,7 +2,7 @@ Rails
   .application
   .routes
   .draw do
-    root 'users#index', as: 'home'
+    root 'posts#index', as: 'home'
     resources :posts
     resources :users
 
