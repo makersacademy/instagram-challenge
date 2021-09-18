@@ -17,10 +17,18 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit; end
 
+  def createy
+    # or attch an avatar to an existing user
+    # user.avatar.attach(params[:avatar])
+
+    user = User.create!(user_params)
+    session[:user_id] = user.id
+    redirect_to home_path
+  end
+
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
         format.html do

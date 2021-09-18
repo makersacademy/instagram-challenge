@@ -3,11 +3,9 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    if current_user
-      @posts = Post.all
-    else
-      redirect_to login_path
-    end
+    redirect_to login_path if !session[:user_id]
+
+    @posts = Post.all
   end
 
   # GET /posts/1 or /posts/1.json
@@ -15,6 +13,8 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
+    redirect_to login_path if !session[:user_id]
+
     @post = Post.new
   end
 
@@ -40,6 +40,8 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
+    redirect_to login_path if !session[:user_id]
+
     respond_to do |format|
       if @post.update(post_params)
         format.html do
@@ -55,6 +57,8 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
+    redirect_to login_path if !session[:user_id]
+
     @post.destroy
     respond_to do |format|
       format.html do
@@ -68,6 +72,8 @@ class PostsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
+    redirect_to login_path if !session[:user_id]
+
     @post = Post.find(params[:id])
   end
 
