@@ -2,7 +2,6 @@ const Photo = require("../models").Photo;
 
 module.exports = {
   create(req, res) {
-    console.log("here!");
     return Photo.create({
       image: req.query.image,
       text: req.query.text,
