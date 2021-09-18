@@ -1,10 +1,5 @@
 const request = require("supertest");
 const app = require("../app.js");
-// const db = require("../server/models/index");
-
-// afterAll(() => {
-//   db.sequelize.close();
-// });
 
 describe("user routes", () => {
   it("should create a new user", async () => {

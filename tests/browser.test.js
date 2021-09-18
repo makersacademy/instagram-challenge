@@ -5,10 +5,12 @@ describe("Express Index", () => {
   });
 
   it("has title Express", async () => {
-    await expect(page).toMatchElement("title", { text: "Express" });
+    await expect(page).toMatchElement("title", {
+      text: "Welcome to Insta-sham",
+    });
   });
 
   it("should be titled Express(alternative test)", async () => {
-    await expect(page.title()).resolves.toMatch("Express");
+    await expect(page.title()).resolves.toEqual("Welcome to Insta-sham");
   });
 });

@@ -4,7 +4,7 @@ const usersController = require("../controllers").users;
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
+  res.render("index", { title: "Welcome to Insta-sham" });
 });
 
 /* POST create user */
