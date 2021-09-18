@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :email, presence: true, uniqueness: true, email: true
   validates :username, presence: true, uniqueness: true
-  validates :passowrd,
+  validates :password,
             length: {
               maximum: 32,
               too_long: '%{count} characters is the maximum allowed',
