@@ -13,10 +13,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Photo.init(
     {
-      image: DataTypes.STRING,
-      allowNull: false,
-      text: DataTypes.STRING,
-      allowNull: false,
+      image: { type: DataTypes.STRING, allowNull: false },
+      text: { type: DataTypes.STRING, allowNull: false },
     },
     {
       sequelize,
