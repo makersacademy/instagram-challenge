@@ -10,7 +10,7 @@ Database: Postgres & Sequelize
 
 Views: Handlebars
 
-Tests: Jest, Puppeteer, Postman
+Tests: Jest, , Supertest, Puppeteer, Postman
 
 Linting: Prettier
 
@@ -23,6 +23,10 @@ Final Makers weekend challenge - using node.js instead of rails
 ## User Stories
 
 ```
+As a user
+So I can use Insta-sham
+I would like to be able to create a user account
+
 As a user
 So I can store my photos online
 I would like to upload an image to Insta-sham
