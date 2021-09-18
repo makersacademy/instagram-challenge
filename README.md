@@ -10,7 +10,7 @@ Database: Postgres & Sequelize
 
 Views: Handlebars
 
-Tests: Jest & Puppeteer 
+Tests: Jest, Puppeteer, Postman
 
 Linting: Prettier
 
