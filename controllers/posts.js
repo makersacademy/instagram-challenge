@@ -9,10 +9,14 @@ const PostsController = {
     res.render('posts/show')
   },
   New: async function (req, res) {
-    await Post.addPost("blahdeblah")
-    let posts = await Post.getPosts();
-    console.log(req)
-		res.render("posts/index", { posts: posts });
+    try {
+        await Post.addPost("blahdeblah")
+        let posts = await Post.getPosts(req.body.newPostText);
+        res.render("posts/index", { posts: posts })}
+    catch (error) {
+        return res.status(500).json({ error: error.message })
+    }
+		
   },
   NewComment: async function (req, res) {
     res.json({ info: "hello new comment post router :)"})

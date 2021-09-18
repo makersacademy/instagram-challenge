@@ -3,7 +3,6 @@ process.env.NODE_ENV='development';
 
 const express = require("express");
 const path = require("path");
-const cookiePasser = require("cookie-parser");
 
 const app = express();
 const port = 3000;
