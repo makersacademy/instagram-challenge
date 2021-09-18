@@ -8,4 +8,7 @@ class Post < ApplicationRecord
               minimum: 5,
               too_long: '%{count} characters is the minimum allowed',
             }
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize: '100x100'
+  end
 end
