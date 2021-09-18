@@ -9,7 +9,10 @@ const PostsController = {
     res.render('posts/show')
   },
   New: async function (req, res) {
-    res.json({ info: "Hello new post router :)" });
+    await Post.addPost("blahdeblah")
+    let posts = await Post.getPosts();
+    console.log(req)
+		res.render("posts/index", { posts: posts });
   },
   NewComment: async function (req, res) {
     res.json({ info: "hello new comment post router :)"})
