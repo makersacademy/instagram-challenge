@@ -7,7 +7,8 @@ describe('The Home Page', () => {
 
   it('shows posts', () => {
     cy.visit('http://localhost:3000/posts')
-    cy.contains("Hello posts route") 
+    cy.contains("Hello posts route")
+    cy.contains("this is the first post of instagram_clone")
   })
 
   it('shows individual post', () => {

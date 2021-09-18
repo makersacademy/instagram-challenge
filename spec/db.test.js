@@ -21,7 +21,7 @@ afterAll(() => {
 test('checks test db is accessed', async () => {
   // need to work out a way to deal with created_at
   data = await Post.getPosts();
-  expect(data).toStrictEqual([{ id: 1, message: 'testtesttest', userID: 1 }]);
+  expect(data).toStrictEqual([{ id: 1, text: 'testtesttest', userID: 1 }]);
 });
 
 test('adds Post to the db', async () => {
@@ -33,7 +33,7 @@ test('adds Post to the db', async () => {
 
 test('returns post by id', async () => {
   data = await Post.getPostById(1);
-  expect(data).toStrictEqual({ id: 1, message: 'testtesttest', userID: 1 });
+  expect(data).toStrictEqual({ id: 1, text: 'testtesttest', userID: 1 });
 });
 
 

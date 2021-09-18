@@ -1,7 +1,9 @@
+const Post = require("../model/posts");
 
 const PostsController = {
   Index: async function(req, res) {
-    res.render('posts/index')
+    let posts = await Post.getPosts();
+		res.render("posts/index", { posts: posts });
   },
   Show: async function (req,res) {
     res.render('posts/show')

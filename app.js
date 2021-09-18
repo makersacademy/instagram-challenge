@@ -1,4 +1,5 @@
 require("dotenv").config();
+process.env.NODE_ENV='development';
 
 const express = require("express");
 const path = require("path");
@@ -13,6 +14,8 @@ const postsRouter = require("./routes/posts")
 // views engine setup
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "hbs")
+
+console.log(process.env.NODE_ENV)
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -18,7 +18,7 @@ const db = {
   port: process.env.DB_PORT,
 };
 
-if (process.env['TEST'] = 'test') {
+if (process.env.NODE_ENV === 'test') {
   dbInfo = testDb;
 }
 else {
