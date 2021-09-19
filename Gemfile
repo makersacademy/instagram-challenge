@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.0.1'
+ruby '>= 2.7.3'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'date'
@@ -37,6 +39,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 4.0'
+  gem 'rubocop', '1.20', require: false
+  gem 'rubocop-rails'
 end
 
 group :development do
