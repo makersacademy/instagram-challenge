@@ -7,6 +7,7 @@ Rails
     resources :users
     resources :likes
     resources :comments
+    resources :friends
 
     # root to: 'users#new'
     # get 'users/new' => 'users#new', :as => :new_user
@@ -17,6 +18,12 @@ Rails
 
     # generate route to like post
     post '/unlike' => 'likes#destroy'
+
+    # generate route to follow friend
+    post '/follow' => 'friends#create'
+
+    # generate route to unfollow friend
+    post '/unfollow' => 'friends#destroy'
 
     # ----- add these lines here: -----
 

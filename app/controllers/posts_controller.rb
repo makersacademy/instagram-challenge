@@ -4,6 +4,11 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     redirect_to login_path unless session[:user_id]
+    @friend = Friend.new
+    @friends =
+      Friend
+        .where({ user_id: session[:user_id].to_i })
+        .map { |friend| User.find(friend.follow.to_i) }
     @like = Like.new
     @posts = Post.all
     @users = User.where('id != ' << session[:user_id].to_s)

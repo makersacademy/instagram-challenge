@@ -1,4 +1,17 @@
 <p id="notice"><%= notice %></p>
+
+<% @friends.each do |user_object| %>
+  <div style="display:inline-block"> <%= user_object.username %>  
+    <% if user_object.avatar.attached? %>
+      <%= image_tag user_object.avatar.representation(resize_to_limit: [nil, 50]) %>
+    <% end %>
+    <%= form_for @friend, url: '/unfollow', method:'post' do |form| %>
+      <%= form.hidden_field :follow, :value => "#{user_object.id}"%>
+      <%= form.submit "Unfollow" %>
+    <% end %>
+  </div>
+<% end %>
+
 <%= link_to 'New Post', new_post_path %>
 <h1>Posts</h1>
 
@@ -17,7 +30,7 @@
       if post_user.avatar.attached? %>
         <td><%= image_tag post_user.avatar.representation(resize_to_limit: [nil, 50]) %></td>
       <% end %>
-        <td><%= post_user.id %></td>
+        <td><%= post_user.username %></td>
         <td><%= post.entry %></td>
       <% if post.avatar.attached? %>
         <td><%= image_tag post.avatar.representation(resize_to_limit: [nil, 50]) %></td>
@@ -26,12 +39,10 @@
       <td>
       <%= form_for @like, url: '/unlike', method:'post' do |form| %>
         <%= form.hidden_field :post_id, :value => "#{post.id}"%>
-        <%= form.hidden_field :user_id, :value => "#{current_user.id}"%>
         <%= form.submit "Unlike" %>
       <% end %>
       <%= form_for @like, url: '/like', method:'post' do |form| %>
         <%= form.hidden_field :post_id, :value => "#{post.id}"%>
-        <%= form.hidden_field :user_id, :value => "#{current_user.id}"%>
         <%= form.submit "Like" %>
       <% end %>
       <p>Likes: <%= post.likes_count %></p>
@@ -41,9 +52,10 @@
       @comments = Comment.where({post_id: post.id})
       @comments.each do |comment_object|
       %>
-        comment: <%= comment_object.entry %> 
-        <% comment_user = User.find(comment_object.user_id.to_i)
-        if comment_user.avatar.attached? %>
+        comment: <%= comment_object.entry %> <br />
+        <% comment_user = User.find(comment_object.user_id.to_i) %>
+        user: <%= comment_user.username %> 
+        <% if comment_user.avatar.attached? %>
           <%= image_tag comment_user.avatar.representation(resize_to_limit: [nil, 50]) %>
         <% end %>
       <% end %>
@@ -75,6 +87,10 @@
   <div> <%= user_object.username %>  
     <% if user_object.avatar.attached? %>
       <%= image_tag user_object.avatar.representation(resize_to_limit: [nil, 50]) %>
+    <% end %>
+    <%= form_for @friend, url: '/follow', method:'post' do |form| %>
+      <%= form.hidden_field :follow, :value => "#{user_object.id}"%>
+      <%= form.submit "Follow" %>
     <% end %>
   </div><br />
 <% end %>
