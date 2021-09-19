@@ -13,7 +13,7 @@ Things to learn / focus on in future:
 - working with Express routes
 - connecting the database content to the front end
 
-If you want to run the program (it is _very_ basic), clone this repo, run `npm install`. Look at `config/config.json` for the settings - change the username accordingly (running the app or tests for the first time should build the databases automatically).
+If you want to run the program (it is _very_ basic), clone this repo, run `npm install`. Look at `server/config/config.json` for the settings - change the username accordingly (running the app or tests for the first time should build the databases automatically).
 
 To see the website, type `npm start` in the terminal, hit return, and then visit `http://localhost:3000/`
 
