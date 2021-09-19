@@ -7,6 +7,7 @@ class UsersController < ApplicationController
       @users = User.where(id: session[:user_id].to_i)
     else
       @users = []
+      redirect_to home_path
     end
   end
 
@@ -74,6 +75,7 @@ class UsersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
+    redirect_to home_path
   end
 
   # Only allow a list of trusted parameters through.

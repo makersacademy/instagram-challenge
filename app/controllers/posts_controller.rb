@@ -5,21 +5,24 @@ class PostsController < ApplicationController
   def index
     redirect_to login_path unless session[:user_id]
     @friend = Friend.new
-    @follow_this_list = [session[:user_id].to_i]
-    @friends =
-      Friend
-        .where({ user_id: session[:user_id].to_i })
-        .each { |friend| @follow_this_list.push(friend.follow.to_i) }
-        .map { |friend| User.find(friend.follow.to_i) }
     @like = Like.new
+    @follow_this_list = []
+    @friends = Friend.where({ user_id: session[:user_id].to_i })
+    if params[:username]
+      only_this_user = User.where(username: params[:username]).first
+      @follow_this_list.push(only_this_user.id.to_i) if only_this_user
+    else
+      @friends.each { |friend| @follow_this_list.push(friend.follow.to_i) }
+      @follow_this_list.push(session[:user_id].to_i)
+    end
+    @friends = @friends.map { |friend| User.find(friend.follow.to_i) }
+    @friends_already = @friends.map { |friend| friend.id.to_i }
     @posts = Post.where(user_id: @follow_this_list).reverse
-    @users = User.where('id != ' << session[:user_id].to_s)
+    @users = User.where.not(id: @friends_already.push(session[:user_id].to_i))
   end
 
-  # GET /posts/1 or /posts/1.json
   def show; end
 
-  # GET /posts/new
   def new
     redirect_to login_path unless session[:user_id]
 
