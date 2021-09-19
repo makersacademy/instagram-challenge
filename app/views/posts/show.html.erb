@@ -3,12 +3,14 @@
 <div class="show-post-author-container"><%= @user.handle %></div>
 <div class="show-post-like-count-container"><%= @post.likes.size %> likes</div>
 <div class="show-post-like-button-container">
-  <% unless @post.likes.any? { |like| like.user_id == @user.id } %>
-    <%= button_to "like", like_post_path,
-    method: :post, params: {user_id: @user.id, post_id: @post.id} %>
-  <% else %>
-    <%= button_to "unlike", unlike_post_path,
-    method: :delete, params: {user_id: @user.id, post_id: @post.id} %>
+  <% if session[:user_id] != nil %>
+    <% if @post.likes.none? { |like| like.user_id == @user.id } %>
+      <%= button_to "like", like_post_path,
+      method: :post, params: {user_id: @user.id, post_id: @post.id} %>
+    <% else %>
+      <%= button_to "unlike", unlike_post_path,
+      method: :delete, params: {user_id: @user.id, post_id: @post.id} %>
+    <% end %>
   <% end %>
 </div>
 
