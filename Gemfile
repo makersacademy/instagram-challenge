@@ -26,8 +26,12 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
-
+# for users
+gem 'devise'
+gem 'bootsnap', require: false
+gem 'sqlite3', '~> 1.3', '>= 1.3.11'
+gem 'therubyracer'
+gem 'metro-ui-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
