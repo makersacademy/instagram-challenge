@@ -8,9 +8,13 @@ describe("Express Index", () => {
     await expect(page).toMatchElement("title", {
       text: "Create a new account",
     });
-    await expect(page).toMatchElement("name");
-    await expect(page).toMatchElement("email");
-    await expect(page).toMatchElement("password");
-    await expect(page).toMatchElement("#submit-button", { text: "Sign Up" });
+    await expect(page).toFillForm('form[id="form1"]', {
+      name: "Edward",
+      email: "ed@example.com",
+      password: "123456",
+    });
+    await page.click("#submit");
+    await page.waitForNavigation();
+    expect(page.url()).toEqual("http://localhost:4444/users");
   });
 });
