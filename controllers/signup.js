@@ -10,7 +10,7 @@ const signUpController = {
       const newUserPassword = req.body.newUserPassword
       const newUserEmail = req.body.newUserEmail
       User.addUser(newUserUsername, newUserPassword, newUserEmail);
-      // res.redirect('/posts');
+      res.redirect('/posts');
     }
     catch (error) {
       return res.status(500).json({ error: error.message })

@@ -15,7 +15,7 @@ class Post {
       return { id: element.id, username: element.username, email: element.email };
     });
   }
-  static async authenticate(username, password) {
+  static async authenticate(username, password) { 
     const result = await connection.pool.query(
       "SELECT * FROM users WHERE username = $1", [username]);
     if (result.rows.length === 0) {return false}

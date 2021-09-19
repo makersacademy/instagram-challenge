@@ -1,4 +1,6 @@
 const User = require('../model/user');
+const express = require("express");
+const app = express();
 
 const HomeController = {
   Index: async function (req, res) {
@@ -9,8 +11,6 @@ const HomeController = {
     const loginPassword = req.body.loginUserPassword
     const isUserAuthenticated = await User.authenticate(loginUsername, loginPassword)
     if (isUserAuthenticated === false ) {res.redirect('/');}
-    // let sessionKey = User.provideSessionKey()
-    // sessionStorage.setItem('key', 'value');
     res.redirect('/posts');
   }
 };

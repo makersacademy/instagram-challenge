@@ -18,9 +18,9 @@
 
     it('contains sign up form', () => {
       cy.visit('http://localhost:3000/')
-      cy.get('#existingUserUsername').type('blahdeblah')
-      cy.get('#existingUserPassword').type('blahdeblah')
-      cy.get('#existingUser').submit()
+      cy.get('#loginUserUsername').type('test')
+      cy.get('#loginUserPassword').type('test')
+      cy.get('#loginUser').submit()
       cy.contains("this is the first post of instagram_clone")
     })
   })
