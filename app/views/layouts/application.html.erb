@@ -11,6 +11,17 @@
   </head>
 
   <body>
+    <nav>
+      <% if session[:user_id] %>
+        signed in as
+        <span id="navbar-user-name"><%= session[:user_name] %></span>
+        <%= link_to 'logout', logout_path, method: :delete %>
+      <% else %>
+        <%= link_to 'sign up', sign_up_path %>
+        or
+        <%= link_to 'sign in', sign_in_path %>
+      <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>
