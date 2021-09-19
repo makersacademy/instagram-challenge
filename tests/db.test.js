@@ -43,6 +43,11 @@ test('adds User to the db', async () => {
   expect(data.length).toStrictEqual(2);
 });
 
+test('returns new user', async () => {
+  const newUser = await User.addUser('testuser', 'testpassword', 'test@test.com');
+  expect(newUser.username).toStrictEqual("testuser");
+});
+
 
 
 

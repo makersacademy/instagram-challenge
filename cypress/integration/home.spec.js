@@ -15,4 +15,12 @@
       cy.contains("Hello home route") 
       // change URL to match your dev URL
     })
+
+    it('contains sign up form', () => {
+      cy.visit('http://localhost:3000/')
+      cy.get('#existingUserUsername').type('blahdeblah')
+      cy.get('#existingUserPassword').type('blahdeblah')
+      cy.get('#existingUser').submit()
+      cy.contains("this is the first post of instagram_clone")
+    })
   })
