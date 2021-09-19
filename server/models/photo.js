@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Photo.associate = (models) => {
     Photo.belongsTo(models.User, {
-      foreignKey: "userId",
+      foreignKey: { name: "userId", allowNull: false },
       onDelete: "CASCADE",
     });
   };

@@ -4,6 +4,6 @@ beforeEach(async () => {
   await db.sequelize.truncate({ cascade: true, restartIdentity: true });
 });
 
-afterAll(() => {
-  db.sequelize.close();
+afterAll(async () => {
+  await db.sequelize.close();
 });

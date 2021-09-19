@@ -8,6 +8,11 @@ router.get("/", function (req, res, next) {
 });
 
 /* POST create photo  */
-router.post("/", photosController.create);
+router.post("/", async (req, res) => {
+  let response = await photosController.create(req, res);
+  if (response === true) {
+    res.redirect("/photos");
+  }
+});
 
 module.exports = router;
