@@ -12,7 +12,7 @@ class PostsController < ApplicationController
         .each { |friend| @follow_this_list.push(friend.follow.to_i) }
         .map { |friend| User.find(friend.follow.to_i) }
     @like = Like.new
-    @posts = Post.where(user_id: @follow_this_list)
+    @posts = Post.where(user_id: @follow_this_list).reverse
     @users = User.where('id != ' << session[:user_id].to_s)
   end
 
@@ -31,6 +31,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
+    redirect_to login_path unless session[:user_id]
     message = 'Post was successfully created.'
     @post = Post.new(post_params)
     respond_to do |format|
@@ -59,7 +60,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1 or /posts/1.json
   def destroy
     message = 'Post was successfully destroyed.'
     redirect_to login_path unless session[:user_id]
@@ -81,6 +81,11 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
+    if session[:user_id]
+      params[:post][:user_id] = session[:user_id]
+    else
+      params[:post][:user_id] = nil
+    end
     params.require(:post).permit(:entry, :avatar, :user_id)
   end
 end

@@ -27,15 +27,17 @@
     <% @posts.each do |post| %>
       <tr><td>-------------</td></tr>
       <tr>
-      <% post_user = User.find(post.user_id.to_i)
-      if post_user.avatar.attached? %>
-        <td><%= image_tag post_user.avatar.representation(resize_to_limit: [nil, 50]) %></td>
+      <td> <%= get_time_ago(post.created_at) %> </td>
+      <% post_user = User.find(post.user_id.to_i) %>
+      <td><%= post_user.username %><br />
+      <% if post_user.avatar.attached? %>
+        <%= image_tag post_user.avatar.representation(resize_to_limit: [nil, 50]) %>
       <% end %>
-        <td><%= post_user.username %></td>
-        <td><%= post.entry %></td>
-      <% if post.avatar.attached? %>
-        <td><%= image_tag post.avatar.representation(resize_to_limit: [nil, 50]) %></td>
-      <% end %>
+      </td>
+      <td><% if post.avatar.attached? %>
+          <%= image_tag post.avatar.representation(resize_to_limit: [nil, 50]) %>
+        <% end %><br />
+        <%= post.entry %></td>
       
       <td>
       <%= form_for @like, url: '/unlike', method:'post' do |form| %>

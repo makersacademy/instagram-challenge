@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    if session[:user_id]
+      @users = User.where(id: session[:user_id].to_i)
+    else
+      @users = []
+    end
   end
 
   # GET /users/1 or /users/1.json
