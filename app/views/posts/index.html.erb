@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <% @friends.each do |user_object| %>
-  <div style="display:inline-block"> <%= user_object.username %>  
+  <div class="follow_un">  
     <% if user_object.avatar.attached? %>
-      <%= image_tag user_object.avatar.representation(resize_to_limit: [nil, 50]) %>
+    <div class="profile_image ml-2 profile_large" data-username="<%= user_object.username %>" profile_large" style="background-image:url(<%= url_for(user_object.avatar.representation(resize_to_limit: [nil, 50])) %>"></div>
     <% end %>
     <%= form_for @friend, url: '/unfollow', method:'post' do |form| %>
       <%= form.hidden_field :follow, :value => "#{user_object.id}"%>
-      <%= form.submit "Unfollow" %>
+      <%= form.submit "Forget", class: 'btn btn-info btn-sm mt-0 mb-0 btn-block text-white px-3 rounded-5' %>
     <% end %>
   </div>
 <% end %>
-<br />
-<%= link_to 'New Post', new_post_path %>
+<hr />
+<%= link_to 'New Post', new_post_path, class: "w-100 btn btn-primary btn-sm mt-0 mb-3 btn-block text-white" %>
 <br />
 <form method="get" action="/">
-  <input type="text" placeholder="Look up this usename" value="" name="username" />
-  <input type="submit" value="Lookup" />
+  <input type="text" placeholder="Look up this usename" value="" name="username" class="lookup indent-1 mr-1" required />
+  <input type="submit" value="Lookup" class="lookup btn-secondary mt-0 text-white" />
 </form>
-<br />
+<hr />
 <h1>Posts</h1>
 
 <table>
@@ -91,15 +91,15 @@
 </table>
 
 <br>
-
+<hr />
 <% @users.each do |user_object| %>
-  <div> <%= user_object.username %>  
+  <div class="follow_un">   
     <% if user_object.avatar.attached? %>
-      <%= image_tag user_object.avatar.representation(resize_to_limit: [nil, 50]) %>
+    <div class="profile_image profile_large" data-username="<%= user_object.username %>" style="background-image:url(<%= url_for(user_object.avatar.representation(resize_to_limit: [nil, 50])) %>"></div>
     <% end %>
     <%= form_for @friend, url: '/follow', method:'post' do |form| %>
       <%= form.hidden_field :follow, :value => "#{user_object.id}"%>
-      <%= form.submit "Follow" %>
+      <%= form.submit "Follow", class: 'btn btn-primary btn-sm mt-0 mb-0 btn-block text-white px-3 rounded-5' %>
     <% end %>
-  </div><br />
+  </div>
 <% end %>

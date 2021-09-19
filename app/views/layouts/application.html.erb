@@ -5,21 +5,62 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css' %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+      body{margin-top:0.8rem !important;}
+      .crumbs{float:right;margin-top:0.25rem;}/*
+      .crumbs > a{padding:0.2rem 1rem;color:white !important;
+        border-radius:0.25rem;text-decoration:none;
+      }*/
+      .profiler-results{display:none;}
+      .profile_image{
+        box-shadow: 0 0 0 0.25rem #e1e3e6, 0 0 1rem 0.5rem white;
+        border-radius:1.5rem;
+        height:2rem;display:inline-block;width:2rem;background-clip:border-box;
+        background-repeat:no-repeat;
+        background-position:center center;
+        background-size:auto 100%;
+        position:relative;
+        margin:0.2rem 0.5rem 0rem 0.2rem;
+      }
+      .profile_large{margin-left:0.5rem;height:3rem;width:3rem;background-size:auto 100%;margin-bottom:1rem;}
+      .profile_image[data-username]::after{content:'@' attr(data-username);white-space:nowrap;margin-left:2.4rem;line-height:1rem;font-size:1rem;margin-top:0.166rem !important;position:relative;display:inline-block;background-color:white; border-radius:0.33rem;padding:0.25rem 0.33rem;}
+      .profile_large[data-username]::after{margin-left:3.25rem;display:inline;}
+      .follow_un{display:inline-block; margin-right:0rem;}
+      .follow_un:hover > .profile_image{z-index:10;}
+      .profile_image + form > input[type="submit"]{margin-left:auto;margin-right:auto;}
+      .new_friend{text-align:center;width:8rem;}
+      .hidden, .hidden:hover{visibility:hidden;}
+      .lookup{border-color:transparent !important; border-radius:1rem !important;box-shadow:0 0 0 0.2rem #f0f0f0;}
+      .indent-1{text-indent:0.5rem;}
+      .mr-1{margin-right:0.5rem !important;}
+      .caveat{font-family:"Caveat";}
+      .caveat::after{font-size:2rem !important;}
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
   </head>
 
   <body>
   <%# ----- add these lines here: ----- %>
-	
+	<%# image_tag current_user.avatar.representation(resize_to_limit: [80, 80], format: :jpeg, quality: 100, sampling_factor: "4:3:0") %>
+
   <% if current_user %>
-    <%= image_tag current_user.avatar.representation(resize_to_limit: [100, 100], format: :jpeg, quality: 100, sampling_factor: "4:3:0") %>
     <!-- current_user will return true if a user is logged in -->
-    <%= "Logged in as #{current_user.email}" %> | <%= link_to 'Home', home_path %> | <%= link_to 'Log Out', logout_path, method: :delete %>
+    <div data-username="<%= current_user.username %>" class="profile_image" style="background-image:url(<%= url_for(current_user.avatar.representation(resize_to_limit: [nil, 80], format: :jpeg, quality: 100, sampling_factor: "4:3:0")) %>)"></div>
+    <div class="crumbs">
+      <%= link_to 'Home', home_path, class: 'btn btn-secondary btn-sm mt-0 text-white' %>  <%= link_to 'Log Out', logout_path, method: :delete, class: 'btn btn-success btn-sm mt-0 text-white' %>
+    </div>  
   <% else %>
+    <div data-username="Jamgram" class="profile_image caveat"></div>
     <!-- not logged in -->
-    <%= link_to 'Home', home_path %> | <%= link_to 'Log In', login_path %> or <%= link_to 'Sign Up', new_user_path %>
+    <div class="crumbs">
+      <%= link_to 'Home', home_path, class: 'btn btn-secondary btn-sm mt-0 text-white' %>  <%= link_to 'Log In', login_path, class: 'btn btn-primary btn-sm mt-0 text-white' %>  <%= link_to 'Sign Up', new_user_path, class: 'btn btn-success btn-sm mt-0 text-white' %>
+    </div>  
   <% end %>
   <hr>
 
