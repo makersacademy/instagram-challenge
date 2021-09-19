@@ -1,16 +1,35 @@
-<div class="full-post-image"><%= image_tag @post.image %></div>
-<div class="full-post-text"><%= @post.text %></div>
-<div class="full-post-author"><%= @user.handle %></div>
+<div class="show-post-image-container"><%= image_tag @post.image %></div>
+<div class="show-post-text-container"><%= @post.text %></div>
+<div class="show-post-author-container"><%= @user.handle %></div>
+<div class="show-post-like-count-container"><%= @post.likes.size %> likes</div>
+<div class="show-post-like-button-container">
+  <% unless @post.likes.any? { |like| like.user_id == @user.id } %>
+    <%= button_to "like", like_post_path,
+    method: :post, params: {user_id: @user.id, post_id: @post.id} %>
+  <% else %>
+    <%= button_to "unlike", unlike_post_path,
+    method: :delete, params: {user_id: @user.id, post_id: @post.id} %>
+  <% end %>
+</div>
 
 <% @post.comments.each do |comment| %>
-    <div class="full-post-comment"><%= comment.text %></div>
+  <div class="comment-container">
+    <span class="comment-text">
+      <%= comment.text %>
+    </span>
+    --
+    <span class="comment-author">
+      <%= User.find(comment.user_id).handle %>
+    </span>
+  </div>
 <% end %>
 
-<% if session[:user_id] %>
-    <%= render "comments/form" %>
+<% if session[:user_id] != nil %>
+  <%= render "comments/form" %>
 <% end %>
 
 <% if @post.user_id == session[:user_id]%>
-    <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Edit', edit_post_path(@post) %> |
 <% end %>
+
 <%= link_to 'Back', posts_path %>

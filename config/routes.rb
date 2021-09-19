@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get 'sign_in', to: 'sessions#new'
   post 'sign_in', to: 'sessions#create', as: 'log_in'
   delete 'logout', to: 'sessions#destroy'
+  post 'like_post', to: 'likes#create'
+  delete 'unlike_post', to: 'likes#destroy'
 end
