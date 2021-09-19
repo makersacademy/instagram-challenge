@@ -28,12 +28,11 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
+    message = 'User was successfully created.'
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        format.html do
-          redirect_to @user, notice: 'User was successfully created.'
-        end
+        format.html { redirect_to @user, notice: message }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,11 +43,10 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    message = 'User was successfully updated.'
     respond_to do |format|
       if @user.update(user_params)
-        format.html do
-          redirect_to @user, notice: 'User was successfully updated.'
-        end
+        format.html { redirect_to @user, notice: message }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,11 +57,10 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    message = 'User was successfully destroyed.'
     @user.destroy
     respond_to do |format|
-      format.html do
-        redirect_to users_url, notice: 'User was successfully destroyed.'
-      end
+      format.html { redirect_to users_url, notice: message }
       format.json { head :no_content }
     end
   end

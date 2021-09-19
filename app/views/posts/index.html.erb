@@ -17,6 +17,20 @@
       <% if post.avatar.attached? %>
         <td><%= image_tag post.avatar.representation(resize_to_limit: [nil, 50]) %></td>
       <% end %>
+      
+      <td>
+      <%= form_for @like, url: '/unlike', method:'post' do |form| %>
+        <%= form.hidden_field :post_id, :value => "#{post.id}"%>
+        <%= form.hidden_field :user_id, :value => "#{current_user.id}"%>
+        <%= form.submit "Unlike" %>
+      <% end %>
+      <%= form_for @like, url: '/like', method:'post' do |form| %>
+        <%= form.hidden_field :post_id, :value => "#{post.id}"%>
+        <%= form.hidden_field :user_id, :value => "#{current_user.id}"%>
+        <%= form.submit "Like" %>
+      <% end %>
+      <p>Likes: <%= post.likes_count %></p>
+      </td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

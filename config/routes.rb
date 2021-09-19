@@ -5,11 +5,17 @@ Rails
     root 'posts#index', as: 'home'
     resources :posts
     resources :users
+    resources :likes
 
     # root to: 'users#new'
-
     # get 'users/new' => 'users#new', :as => :new_user
     # post 'users' => 'users#create'
+
+    # generate route to like post
+    post '/like' => 'likes#create'
+
+    # generate route to like post
+    post '/unlike' => 'likes#destroy'
 
     # ----- add these lines here: -----
 

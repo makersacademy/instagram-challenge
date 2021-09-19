@@ -5,6 +5,7 @@ class EmailValidator < ActiveModel::EachValidator
     end
   end
 end
+
 class User < ApplicationRecord
   include ActiveModel::Validations
   has_secure_password
@@ -14,7 +15,8 @@ class User < ApplicationRecord
             length: {
               maximum: 32,
               too_long: '%{count} characters is the maximum allowed',
-            },
+            }
+  validates :password,
             length: {
               minimum: 8,
               too_long: '%{count} characters is the minimum allowed',
