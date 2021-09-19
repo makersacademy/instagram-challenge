@@ -4,10 +4,10 @@ const photosController = require("../controllers").photos;
 
 /* GET photos listing. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "photos route" });
+  res.render("photos/index", { title: "photos route" });
 });
 
-/* GET photos listing. */
+/* GET  create photo form. */
 router.get("/new", function (req, res, next) {
   res.render("photos/new", { title: "Add a photo" });
 });

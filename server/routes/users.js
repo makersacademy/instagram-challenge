@@ -4,7 +4,7 @@ const usersController = require("../controllers").users;
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "users route" });
+  res.render("users/index", { title: "users route" });
 });
 
 /* POST create user */
