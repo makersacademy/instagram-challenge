@@ -7,6 +7,11 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "photos route" });
 });
 
+/* GET photos listing. */
+router.get("/new", function (req, res, next) {
+  res.render("photos/new", { title: "Add a photo" });
+});
+
 /* POST create photo  */
 router.post("/", async (req, res) => {
   let response = await photosController.create(req, res);
