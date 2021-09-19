@@ -2,13 +2,13 @@ class LikesController < ApplicationController
   def new; end
 
   def create
-    unless session[:user_id] &&
-             (session[:user_id].to_i != like_params['user_id'].to_i)
-      redirect_to home_url
-    else
-      @like = Like.create(like_params)
-      redirect_to home_url
+    if session[:user_id]
+      post_object = Post.find(like_params['post_id'].to_i)
+      if post_object&.user_id.to_s != session[:user_id]
+        @like = Like.create(like_params)
+      end
     end
+    redirect_to home_url
   end
 
   def destroy
