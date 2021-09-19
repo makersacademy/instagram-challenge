@@ -5,12 +5,14 @@ class PostsController < ApplicationController
   def index
     redirect_to login_path unless session[:user_id]
     @friend = Friend.new
+    @follow_this_list = [session[:user_id].to_i]
     @friends =
       Friend
         .where({ user_id: session[:user_id].to_i })
+        .each { |friend| @follow_this_list.push(friend.follow.to_i) }
         .map { |friend| User.find(friend.follow.to_i) }
     @like = Like.new
-    @posts = Post.all
+    @posts = Post.where(user_id: @follow_this_list)
     @users = User.where('id != ' << session[:user_id].to_s)
   end
 
