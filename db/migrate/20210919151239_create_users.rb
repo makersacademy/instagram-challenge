@@ -5,8 +5,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
     create_table :users do |t|
       t.string :handle,
                 null: false,
-                unique: true,
-                default: "user-#{SecureRandom.uuid}"
+                unique: true
       t.string :email,
                 null: false,
                 unique: true

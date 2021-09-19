@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2021_09_19_154020) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "handle", default: "user-04d7f258-cdd0-4f99-9b04-e9e4cd6cbfb4", null: false
+    t.string "handle", null: false
     t.string "email", null: false
     t.string "password_digest"
     t.string "settings", default: "", null: false
