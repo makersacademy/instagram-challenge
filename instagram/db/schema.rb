@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_19_104015) do
+ActiveRecord::Schema.define(version: 2021_09_19_133246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,9 +33,7 @@ ActiveRecord::Schema.define(version: 2021_09_19_104015) do
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
     t.datetime "created_at", null: false
-    t.bigint "users_id", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-    t.index ["users_id"], name: "index_active_storage_blobs_on_users_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -50,11 +48,9 @@ ActiveRecord::Schema.define(version: 2021_09_19_104015) do
 
   create_table "posts", force: :cascade do |t|
     t.bigint "users_id", null: false
-    t.bigint "active_storage_blobs_id", null: false
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["active_storage_blobs_id"], name: "index_posts_on_active_storage_blobs_id"
     t.index ["users_id"], name: "index_posts_on_users_id"
   end
 
@@ -67,9 +63,7 @@ ActiveRecord::Schema.define(version: 2021_09_19_104015) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_blobs", "users", column: "users_id"
   add_foreign_key "comments", "posts", column: "posts_id"
   add_foreign_key "comments", "users", column: "users_id"
-  add_foreign_key "posts", "active_storage_blobs", column: "active_storage_blobs_id"
   add_foreign_key "posts", "users", column: "users_id"
 end

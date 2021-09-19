@@ -1,0 +1,17 @@
+<h1>POSTS GO HERE</h1>
+
+<%= form_for @new_post do |form| %>
+  <%= form.label :post_image %>
+  <%= form.file_field :post_image %>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+  <%= form.hidden_field :users_id, value: current_user.id%>
+  <br>
+  <%= form.submit "Submit" %>
+<% end %>
+
+<% @list_posts.each do |post| %>
+  <p><%= User.find(post.users_id).username %></p>
+  <p><%= post.description %></p>
+  <p><image src="<%=(url_for(post.post_image))%>"></p>
+<% end %>
