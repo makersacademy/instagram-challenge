@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     redirect_to login_path unless session[:user_id]
     @like = Like.new
     @posts = Post.all
+    @users = User.all
   end
 
   # GET /posts/1 or /posts/1.json
@@ -73,6 +74,6 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:entry, :avatar)
+    params.require(:post).permit(:entry, :avatar, :user_id)
   end
 end
