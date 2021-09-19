@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     redirect_to login_path unless session[:user_id]
     @like = Like.new
     @posts = Post.all
-    @users = User.all
+    @users = User.where('id != ' << session[:user_id].to_s)
   end
 
   # GET /posts/1 or /posts/1.json

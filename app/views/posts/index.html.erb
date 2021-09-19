@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to 'New Post', new_post_path %>
 <h1>Posts</h1>
 
 <table>
@@ -71,4 +71,10 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<% @users.each do |user_object| %>
+  <div> <%= user_object.username %>  
+    <% if user_object.avatar.attached? %>
+      <%= image_tag user_object.avatar.representation(resize_to_limit: [nil, 50]) %>
+    <% end %>
+  </div><br />
+<% end %>
