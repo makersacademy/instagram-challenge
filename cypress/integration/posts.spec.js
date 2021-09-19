@@ -15,7 +15,7 @@ describe('The Home Page', () => {
     cy.visit('http://localhost:3000/posts')
     cy.get('#newPostText').type('this is a test post')
     cy.get('#newPost').submit()
-    cy.contains("blahdeblah")
+    cy.contains("this is a test post")
   })
 
 

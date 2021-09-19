@@ -1,5 +1,6 @@
 const { pool } = require('../database/connection'); // this is essential if your tests involve database connection
-const Post = require('../model/posts'); // put whatever you are testing here
+const Post = require('../model/posts');
+const User = require('../model/user'); // put whatever you are testing here
 
 // essential to include following before and after functions if your tests involve database connection
 let data;
@@ -34,6 +35,12 @@ test('adds Post to the db', async () => {
 test('returns post by id', async () => {
   data = await Post.getPostById(1);
   expect(data).toStrictEqual({ id: 1, text: 'testtesttest', userID: 1 });
+});
+
+test('adds User to the db', async () => {
+  await User.addUser('testuser', 'testpassword', 'test@test.com');
+  data = await User.getUsers();
+  expect(data.length).toStrictEqual(2);
 });
 
 
