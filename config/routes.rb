@@ -6,6 +6,7 @@ Rails
     resources :posts
     resources :users
     resources :likes
+    resources :comments
 
     # root to: 'users#new'
     # get 'users/new' => 'users#new', :as => :new_user

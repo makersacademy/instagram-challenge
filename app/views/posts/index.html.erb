@@ -31,6 +31,31 @@
       <% end %>
       <p>Likes: <%= post.likes_count %></p>
       </td>
+      <td>
+      <%
+      @comments = Comment.where({post_id: post.id})
+      @comments.each do |comment_object|
+      %>
+        comment: <%= comment_object.entry %> 
+        <% comment_user = User.find(comment_object.user_id.to_i)
+        if comment_user.avatar.attached? %>
+          <%= image_tag comment_user.avatar.representation(resize_to_limit: [nil, 50]) %>
+        <% end %>
+      <% end %>
+      </td>
+      <td>
+        <%= form_for :comment, url: comments_path do |f| %>
+        <p>
+          <%= f.label :comment %> <br>
+          <%= f.text_area :entry, required: true %><br>
+          <%= f.hidden_field :post_id, required: true, value:"#{post.id}" %> 
+          <%= f.hidden_field :user_id, required: true, value:"#{current_user.id}" %> 
+          </p>
+          <p>
+          <%= f.submit %>
+        </p>
+        <% end %>
+      </td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
