@@ -19,44 +19,40 @@
   <input type="submit" value="Lookup" class="lookup btn-secondary mt-0 text-white" />
 </form>
 <hr />
-<h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Entry</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
 
-  <tbody>
     <% @posts.each do |post| %>
-      <tr><td>-------------</td></tr>
-      <tr>
-      <td> <%= get_time_ago(post.created_at) %> </td>
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 time_ago" > <%= get_time_ago(post.created_at) %> ago</div>
       <% post_user = User.find(post.user_id.to_i) %>
-      <td><%= post_user.username %><br />
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3">
       <% if post_user.avatar.attached? %>
-        <%= image_tag post_user.avatar.representation(resize_to_limit: [nil, 50]) %>
+        <div data-username="<%= current_user.username %>" class="profile_image mb-2" style="background-image:url(<%= url_for(post_user.avatar.representation(resize_to_limit: [nil, 50])) %>" ></div>
+      <% else %>
+        <div data-username="<%= current_user.username %>" class="profile_image mb-2" ></div>
       <% end %>
-      </td>
-      <td><% if post.avatar.attached? %>
-          <%= image_tag post.avatar.representation(resize_to_limit: [nil, 50]) %>
-        <% end %><br />
-        <%= post.entry %></td>
+      </div>
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 post_img">
+        <% if post.avatar.attached? %>
+          <%= image_tag post.avatar.representation(resize_to_limit: [nil, 300]) %>
+        <% end %>
+      </div>
+       
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 post_text"><%= post.entry %></div>
       
-      <td>
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 mt-1 post_like">
       <%= form_for @like, url: '/unlike', method:'post' do |form| %>
         <%= form.hidden_field :post_id, :value => "#{post.id}"%>
-        <%= form.submit "Unlike" %>
+        <button type="submit" class="like_un btn text-white btn-light btn-sm">&#128078;</button>
       <% end %>
+        
       <%= form_for @like, url: '/like', method:'post' do |form| %>
         <%= form.hidden_field :post_id, :value => "#{post.id}"%>
-        <%= form.submit "Like" %>
+        <button type="submit" class="like_un btn text-white btn-light btn-sm">&#128077;</button>
       <% end %>
-      <p>Likes: <%= post.likes_count %></p>
-      </td>
-      <td>
+        <div><%= post.likes_count %></div>
+      </div>
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3">
       <%
       @comments = Comment.where({post_id: post.id})
       @comments.each do |comment_object|
@@ -68,8 +64,8 @@
           <%= image_tag comment_user.avatar.representation(resize_to_limit: [nil, 50]) %>
         <% end %>
       <% end %>
-      </td>
-      <td>
+      </div>
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3">
         <%= form_for :comment, url: comments_path do |f| %>
         <p>
           <%= f.label :comment %> <br>
@@ -81,14 +77,14 @@
           <%= f.submit %>
         </p>
         <% end %>
-      </td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      </div>
+        <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3"><%= link_to 'Show', post %></div>
+        <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3"><%= link_to 'Edit', edit_post_path(post) %></div>
+        <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+
     <% end %>
-  </tbody>
-</table>
+  
+</div>
 
 <br>
 <hr />
