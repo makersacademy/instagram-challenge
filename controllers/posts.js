@@ -10,8 +10,9 @@ const PostsController = {
   },
   New: async function (req, res) {
     try {
-        await Post.addPost("blahdeblah")
-        let posts = await Post.getPosts(req.body.newPostText);
+        const newPostText = req.body.newPostText
+        await Post.addPost(newPostText, 1)
+        let posts = await Post.getPosts();
         res.render("posts/index", { posts: posts })}
     catch (error) {
         return res.status(500).json({ error: error.message })

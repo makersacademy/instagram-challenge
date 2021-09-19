@@ -14,8 +14,6 @@ const postsRouter = require("./routes/posts")
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "hbs")
 
-console.log(process.env.NODE_ENV)
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
