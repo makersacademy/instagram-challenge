@@ -6,7 +6,11 @@
     <div class="full-post-comment"><%= comment.text %></div>
 <% end %>
 
-<%= render "comments/form" %>
+<% if session[:user_id] %>
+    <%= render "comments/form" %>
+<% end %>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<% if @post.user_id == session[:user_id]%>
+    <%= link_to 'Edit', edit_post_path(@post) %> |
+<% end %>
 <%= link_to 'Back', posts_path %>
