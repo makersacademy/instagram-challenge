@@ -1,41 +1,54 @@
-Instagram Challenge
-===================
+# instagram-challenge
 
-## Instructions
+Functionality implemented:
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
+- can add users to the database
+- can add "photos" (placeholder text) to the database - this requires the automatically generated user id at the moment, as there is no log in functionality
+
+This was a steep learning curve: most of the technologies used were either very or completely new to me. I enjoyed setting up a node-express-sequelize/psql project, but found it tough going to move beyond basic API functionality. I learned a lot on this challenge, mostly a greater appreciation of what I don't yet know!
+
+Things to learn / focus on in future:
+
+- how to test a project like this properly: there are no unit tests - and my tests at the moment rely on a slow and twitchy test database routine. I need to learn how to mock the database calls and test these in jest.
+- working with Express routes
+- connecting the database content to the front end
+
+If you want to run the program (it is _very_ basic), clone this repo, run `npm install`. Look at `server/config/config.json` for the settings - change the username accordingly (running the app or tests for the first time should build the databases automatically).
+
+To see the website, type `npm start` in the terminal, hit return, and then visit `http://localhost:3000/`
+
+To run the tests type `npm test` - they are quite 'experimental' and fragile and prone to failure.
+
+It is easy to create a user via `http://localhost:3000/users/new` - user IDs are assigned sequentially, but can be checked via the databse using `psql`. You will need a valid ID number to add 'photos' via `http://localhost:3000/photos/new`. This app allows you to create new entries for both users and photos, but currently doesn't do much else!
+
+## Technologies used
+
+Node.js
+
+Server: Express
+
+Database: Postgres & Sequelize
+
+Views: Handlebars - though I didn't get much time to think about front end during the weekend challenge.
+
+Tests: Jest, , Supertest, Puppeteer, Postman
+
+Linting: Prettier
 
 ## Task
 
-Build Instagram: Simple huh!
+Rebuild Instagram
 
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
+Final Makers weekend challenge - using node.js instead of rails
 
-Bonus if you can add filters!
+## User Stories
 
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-group :development, :test do
-  gem 'rubocop', '1.20', require: false
-  gem 'rubocop-rails'
-end
 ```
+As a user
+So I can use Insta-sham
+I would like to be able to create a user account
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+As a user
+So I can store my photos online
+I would like to upload an image to Insta-sham
+```
