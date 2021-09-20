@@ -4,7 +4,7 @@ class Post {
   static async addPost(text, user_id) {
     const newPost = await connection.pool.query(
       'INSERT INTO posts(text, user_id) VALUES($1, $2) RETURNING id, text, user_id;',
-      [text, user_id]
+      [text, user_id],
     );
     return {
       id: newPost.rows[0].id,
@@ -15,7 +15,7 @@ class Post {
 
   static async getPosts() {
     const allPosts = await connection.pool.query(
-      "SELECT * FROM posts ORDER BY id ASC"
+      'SELECT * FROM posts ORDER BY id ASC'
     );
     return allPosts.rows.map((element) => ({
       id: element.id,

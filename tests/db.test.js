@@ -25,7 +25,7 @@ test('checks test db is accessed', async () => {
 });
 
 test('adds Post to the db', async () => {
-  await Post.addPost("blah blah", 1);
+  await Post.addPost('blah blah', 1);
   data = await Post.getPosts();
   expect(data.length).toStrictEqual(2);
 });
@@ -47,5 +47,5 @@ test('returns new user', async () => {
     'testpassword',
     'test@test.com'
   );
-  expect(newUser.username).toStrictEqual("testuser");
+  expect(newUser.username).toStrictEqual('testuser');
 });

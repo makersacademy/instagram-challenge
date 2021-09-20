@@ -1,9 +1,9 @@
-const connection = require("../database/connection.js");
+const connection = require('../database/connection.js');
 
 class Post {
   static async addUser(username, password, email) {
     const newUser = await connection.pool.query(
-      "INSERT INTO users(username, password, email) VALUES($1, $2, $3) RETURNING id, username, email;",
+      'INSERT INTO users(username, password, email) VALUES($1, $2, $3) RETURNING id, username, email;',
       [username, password, email],
     );
     return {
@@ -27,7 +27,7 @@ class Post {
 
   static async authenticate(username, password) {
     const result = await connection.pool.query(
-      "SELECT * FROM users WHERE username = $1",
+      'SELECT * FROM users WHERE username = $1',
       [username]
     );
     if (result.rows.length === 0) {
@@ -44,7 +44,7 @@ class Post {
   }
 
   static provideSessionKey() {
-    return "_" + Math.random().toString(36).substr(2, 9);
+    return '_' + Math.random().toString(36).substr(2, 9);
   }
 }
 
