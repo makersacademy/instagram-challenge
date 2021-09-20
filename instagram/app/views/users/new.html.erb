@@ -1,0 +1,34 @@
+<h1>Helllloooo create new user</h1>
+
+  <%= form_for @user, url: signup_path do |form| %>
+    <h2>Enter User Details</h2>
+    <div >
+      <%= form.label :username %>:
+      <%= form.text_field :username, :size => 40 %>
+    </div>
+    <div>
+      <%= form.label :password, 'Password' %>:
+      <%= form.password_field :password, :size => 40 %>
+    </div>
+    <div>
+      <%= form.label :password_confirmation, 'Confirm Password' %>:
+      <%= form.password_field :password_confirmation, :size => 40 %>
+    </div>
+    <div>
+      <%= form.label :email%>:
+      <%= form.text_field :email, :size => 40 %>
+    </div>
+    <div>
+    <%= form.label "Profile photo" %>
+    <%= form.file_field :avatar %>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+  <% @user.errors.full_messages.each do |msg| %>
+    <li> <%= msg %></li>
+  <% end %>
+
+
