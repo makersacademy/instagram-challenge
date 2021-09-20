@@ -6,16 +6,15 @@ const signUpController = {
   },
   async NewUser(req, res) {
     try {
-      const newUserUsername = req.body.newUserUsername
-      const newUserPassword = req.body.newUserPassword
-      const newUserEmail = req.body.newUserEmail
+      const { newUserUsername } = req.body;
+      const { newUserPassword } = req.body;
+      const { newUserEmail } = req.body;
       User.addUser(newUserUsername, newUserPassword, newUserEmail);
       res.redirect('/posts');
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
     }
-    catch (error) {
-      return res.status(500).json({ error: error.message })
-    }
-  }
-}
+  },
+};
 
 module.exports = signUpController;

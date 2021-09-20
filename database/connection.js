@@ -1,4 +1,4 @@
-const Pool = require('pg').Pool;
+const { Pool } = require('pg');
 
 let dbInfo;
 
@@ -20,8 +20,7 @@ const db = {
 
 if (process.env.NODE_ENV === 'test') {
   dbInfo = testDb;
-}
-else {
+} else {
   dbInfo = db;
 }
 

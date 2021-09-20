@@ -1,30 +1,29 @@
 const Post = require("../model/posts");
 
 const PostsController = {
-  Index: async function(req, res) {
-    let posts = await Post.getPosts();
-		res.render("posts/index", { posts: posts });
+  async Index(req, res) {
+    const posts = await Post.getPosts();
+    res.render('posts/index', { posts });
   },
-  Show: async function (req,res) {
-    res.render('posts/show')
+  async Show(req, res) {
+    res.render("posts/show");
   },
-  New: async function (req, res) {
+  async New(req, res) {
     try {
-        const newPostText = req.body.newPostText
-        await Post.addPost(newPostText, 1)
-        let posts = await Post.getPosts();
-        res.render("posts/index", { posts: posts })}
-    catch (error) {
-        return res.status(500).json({ error: error.message })
+      const { newPostText } = req.body;
+      await Post.addPost(newPostText, 1);
+      const posts = await Post.getPosts();
+      res.render('posts/index', { posts });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
     }
-		
   },
-  NewComment: async function (req, res) {
-    res.json({ info: "hello new comment post router :)"})
+  async NewComment(req, res) {
+    res.json({ info: 'hello new comment post router :)' });
   },
-  NewLike: async function (req, res) {
-    res.json({ info: "hello new like post router :)"})
+  async NewLike(req, res) {
+    res.json({ info: 'hello new like post router :)' });
   },
-}
+};
 
 module.exports = PostsController;
