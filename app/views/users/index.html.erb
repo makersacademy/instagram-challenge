@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login and registration</title>
+  </head>
+
+  <body>
+  <h1> Login </h1>
+    
+    <form action ="/sessions" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+      <input type="email" name="login[email]" placeholder="email">
+      <input type="password" name="login[password]" placeholder="password">
+      <input type="submit" name="submit" class="submit">
+    </form>
+
+   <div class="errors">
+   <% if flash[:login_errors] %>
+    <% flash[:login_errors].each do |error| %>
+      <p> <%=error%> </p>
+      <%end%>
+    <%end%>
+  </div>
+
+  <h1> Registration </h1>
+
+  <form action ="/users" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <input type="name" name="user[name]" placeholder="name">
+    <input type="email" name="user[email]" placeholder="email">
+    <input type="password" name="user[password]" placeholder="password">
+    <input type="password" name="user[password_confirmation]" placeholder="confirm your password">
+    <input type="submit" name="submit" class="submit">
+
+
+   <div class="errors">
+   <% if flash[:register_errors] %>
+    <% flash[:register_errors].each do |error| %>
+      <p> <%=error%> </p>
+      <%end%>
+    <%end%>
+  </div>
+
+
+  </body>
+</html>
