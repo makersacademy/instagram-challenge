@@ -56,6 +56,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # My gems
+gem "aws-sdk-s3", require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'bcrypt-ruby'
 gem 'image_processing', '~> 1.2'
+gem 'rexml', '~> 3.2', '>= 3.2.4'
