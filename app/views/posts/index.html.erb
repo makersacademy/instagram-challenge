@@ -20,14 +20,14 @@
 </form>
 <hr />
 
-<div class="container">
+<div class="container pt-2">
 
     <% @posts.each do |post| %>
       <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 time_ago" > <%= get_time_ago(post.created_at) %> ago</div>
       <% post_user = User.find(post.user_id.to_i) %>
-      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3">
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 post_body">
       <% if post_user.avatar.attached? %>
-        <div data-username="<%= current_user.username %>" class="profile_image mb-2" style="background-image:url(<%= url_for(post_user.avatar.representation(resize_to_limit: [nil, 50])) %>" ></div>
+        <div data-username="<%= post_user.username %>" class="profile_image mb-2" style="background-image:url(<%= url_for(post_user.avatar.representation(resize_to_limit: [nil, 50])) %>" ></div>
       <% else %>
         <div data-username="<%= current_user.username %>" class="profile_image mb-2" ></div>
       <% end %>
@@ -52,35 +52,35 @@
       <% end %>
         <div><%= post.likes_count %></div>
       </div>
-      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3">
+      
       <%
       @comments = Comment.where({post_id: post.id})
       @comments.each do |comment_object|
       %>
-        comment: <%= comment_object.entry %> <br />
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 mt-1 comment_text">
         <% comment_user = User.find(comment_object.user_id.to_i) %>
-        user: <%= comment_user.username %> 
         <% if comment_user.avatar.attached? %>
-          <%= image_tag comment_user.avatar.representation(resize_to_limit: [nil, 50]) %>
+        <div data-username="<%= comment_user.username %>" class="profile_image" style="background-image:url(<%= url_for(comment_user.avatar.representation(resize_to_limit: [nil, 50])) %>" ></div>
+        <% else %>
+        @<%= comment_user.username %>
         <% end %>
-      <% end %>
+        <br />
+        <%= comment_object.entry %>
       </div>
-      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3">
+      <% end %>
+
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 mt-2 create_comment">
         <%= form_for :comment, url: comments_path do |f| %>
-        <p>
-          <%= f.label :comment %> <br>
-          <%= f.text_area :entry, required: true %><br>
+          <%= f.text_area :entry, required: true, placeholder: "Add your comment here.." %><br>
           <%= f.hidden_field :post_id, required: true, value:"#{post.id}" %> 
           <%= f.hidden_field :user_id, required: true, value:"#{current_user.id}" %> 
-          </p>
-          <p>
-          <%= f.submit %>
-        </p>
+          <button type="submit" class="like_un btn btn-light btn-sm text-primary">&#10004;</button>
         <% end %>
       </div>
-        <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3"><%= link_to 'Show', post %></div>
-        <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3"><%= link_to 'Edit', edit_post_path(post) %></div>
-        <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+        <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 d-none"><%= link_to 'Show', post %><%= link_to 'Edit', edit_post_path(post) %></div>
+        <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 mt-4">
+        <%= link_to 'Delete post', post, method: :delete, class: "btn btn-light btn-sm mb-3 d-none" , data: { confirm: 'Are you sure?' } %>
+        </div>
 
     <% end %>
   

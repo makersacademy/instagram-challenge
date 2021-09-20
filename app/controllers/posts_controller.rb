@@ -21,7 +21,9 @@ class PostsController < ApplicationController
     @users = User.where.not(id: @friends_already.push(session[:user_id].to_i))
   end
 
-  def show; end
+  def show
+    redirect_to home_path
+  end
 
   def new
     redirect_to login_path unless session[:user_id]
@@ -50,27 +52,32 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    message = 'Post was successfully updated.'
-    redirect_to login_path unless session[:user_id]
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: message }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to home_path
+    # message = 'Post was successfully updated.'
+    # redirect_to login_path unless session[:user_id]
+    # respond_to do |format|
+    #   if @post.update(post_params)
+    #     format.html { redirect_to @post, notice: message }
+    #     format.json { render :show, status: :ok, location: @post }
+    #   else
+    #     format.html { render :edit, status: :unprocessable_entity }
+    #     format.json { render json: @post.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def destroy
-    message = 'Post was successfully destroyed.'
-    redirect_to login_path unless session[:user_id]
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: message }
-      format.json { head :no_content }
-    end
+    redirect_to home_path
+    # message = 'Post was successfully destroyed.'
+    # if (!session[:user_id] || params[:id].to_s != session[:user_id].to_s)
+    #   redirect_to home_path
+    # else
+    #   @post.destroy
+    #   respond_to do |format|
+    #     format.html { redirect_to posts_url, notice: message }
+    #     format.json { head :no_content }
+    #   end
+    # end
   end
 
   private
