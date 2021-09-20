@@ -1,7 +1,7 @@
 class AccountsController < ApplicationController
   before_action :authenticate_account!
   def index
-    @post = Post.active
+    @posts = Post.all
   end
   def show
   end   
