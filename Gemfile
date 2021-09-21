@@ -30,7 +30,7 @@ gem 'bootstrap'
 # ruby formatter prettier
 gem 'prettier'
 
-gem 'graphicsmagick'
+# gem 'graphicsmagick'
 
 gem 'aws-sdk-s3', require: false
 
@@ -47,11 +47,10 @@ group :development, :test do
   gem 'rubocop-rails'
 end
 
-# group :development, :test do
-#   gem 'sqlite3'
-# end
-# gem 'pg', group: :production
-gem 'pg'
+group :development, :test do
+  gem 'sqlite3'
+end
+gem 'pg', group: :production
 
 group :production do
   gem 'rails_12factor'
