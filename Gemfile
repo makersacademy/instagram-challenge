@@ -46,10 +46,11 @@ group :development, :test do
   gem 'rubocop-rails'
 end
 
-group :development, :test do
-  gem 'sqlite3'
-end
-gem 'pg', group: :production
+# group :development, :test do
+#   gem 'sqlite3'
+# end
+# gem 'pg', group: :production
+gem 'pg'
 
 group :production do
   gem 'rails_12factor'
