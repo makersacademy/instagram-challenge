@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   def index
     if session[:user_id]
       @users = User.where(id: session[:user_id].to_i)
+      redirect_to home_path
     else
       @users = []
       redirect_to home_path
@@ -12,15 +13,20 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1 or /users/1.json
-  def show; end
+  def show
+    redirect_to home_path
+  end
 
   # GET /users/new
   def new
+    redirect_to home_path
     @user = User.new
   end
 
   # GET /users/1/edit
-  def edit; end
+  def edit
+    redirect_to home_path
+  end
 
   def createy
     # or attch an avatar to an existing user
@@ -48,6 +54,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
+    redirect_to home_path
     message = 'User was successfully updated.'
     respond_to do |format|
       if @user.update(user_params)
@@ -62,6 +69,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    redirect_to home_path
     message = 'User was successfully destroyed.'
     @user.destroy
     respond_to do |format|
