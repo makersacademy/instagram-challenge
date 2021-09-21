@@ -3,7 +3,7 @@
 <% @friends.each do |user_object| %>
   <div class="follow_un">  
     <% if user_object.avatar.attached? %>
-    <div class="profile_image ml-2 profile_large" data-username="<%= user_object.username %>" profile_large" style="background-image:url(<%= url_for(user_object.avatar.representation(resize_to_limit: [nil, 100])) %>"></div>
+    <div class="profile_image ml-2 profile_large" data-username="<%= user_object.username %>" profile_large" style="background-image:url('<%= url_for(user_object.avatar.representation(resize_to_limit: [nil, 100])) %>')" ></div>
     <% end %>
     <%= form_for @friend, url: '/unfollow', method:'post' do |form| %>
       <%= form.hidden_field :follow, :value => "#{user_object.id}"%>
@@ -28,7 +28,7 @@
       <% post_user = User.find(post.user_id.to_i) %>
       <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 post_body">
       <% if post_user.avatar.attached? %>
-        <div data-username="<%= post_user.username %>" class="profile_image mb-2" style="background-image:url(<%= url_for(post_user.avatar.representation(resize_to_limit: [nil, 100])) %>" ></div>
+        <div data-username="<%= post_user.username %>" class="profile_image mb-2" style="background-image:url('<%= url_for(post_user.avatar.representation(resize_to_limit: [nil, 100])) %>')" ></div>
       <% else %>
         <div data-username="<%= current_user.username %>" class="profile_image mb-2" ></div>
       <% end %>
@@ -61,7 +61,7 @@
       <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 mt-1 comment_text">
         <% comment_user = User.find(comment_object.user_id.to_i) %>
         <% if comment_user.avatar.attached? %>
-        <div data-username="<%= comment_user.username %>" class="profile_image" style="background-image:url(<%= url_for(comment_user.avatar.representation(resize_to_limit: [nil, 100])) %>" ></div>
+        <div data-username="<%= comment_user.username %>" class="profile_image" style="background-image:url('<%= url_for(comment_user.avatar.representation(resize_to_limit: [nil, 100])) %>')" ></div>
         <% else %>
         @<%= comment_user.username %>
         <% end %>
@@ -93,7 +93,7 @@
 <% @users.each do |user_object| %>
   <div class="follow_un">   
     <% if user_object.avatar.attached? %>
-    <div class="profile_image profile_large" data-username="<%= user_object.username %>" style="background-image:url(<%= url_for(user_object.avatar.representation(resize_to_limit: [nil, 100])) %>"></div>
+    <div class="profile_image profile_large" data-username="<%= user_object.username %>" style="background-image:url('<%= url_for(user_object.avatar.representation(resize_to_limit: [nil, 100])) %>')" ></div>
     <% end %>
     <%= form_for @friend, url: '/follow', method:'post' do |form| %>
       <%= form.hidden_field :follow, :value => "#{user_object.id}"%>
