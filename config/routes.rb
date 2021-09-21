@@ -3,6 +3,7 @@ Rails
   .routes
   .draw do
     root 'posts#index', as: 'home'
+    root 'posts#index', as: 'root'
     resources :posts
     resources :users
     resources :likes
