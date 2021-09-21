@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<div class="container follow_container">
 <% @friends.each do |user_object| %>
   <div class="follow_un">  
     <% if user_object.avatar.attached? %>
-    <div class="profile_image ml-2 profile_large" data-username="<%= user_object.username %>" profile_large" style="background-image:url(<%= url_for(user_object.avatar.representation(resize_to_limit: [nil, 50])) %>"></div>
+    <div class="profile_image ml-2 profile_large" data-username="<%= user_object.username %>" profile_large" style="background-image:url(<%= url_for(user_object.avatar.representation(resize_to_limit: [nil, 100])) %>"></div>
     <% end %>
     <%= form_for @friend, url: '/unfollow', method:'post' do |form| %>
       <%= form.hidden_field :follow, :value => "#{user_object.id}"%>
@@ -11,11 +11,12 @@
     <% end %>
   </div>
 <% end %>
+</div>
 <hr />
 <%= link_to 'New Post', new_post_path, class: "w-100 btn btn-primary btn-sm mt-0 mb-3 btn-block text-white" %>
 <br />
 <form method="get" action="/">
-  <input type="text" placeholder="Look up this usename" value="" name="username" class="lookup indent-1 mr-1" required />
+  <input type="text" tabindex="1000" placeholder="Look up this usename" value="" name="noneusername" autocomplete="off" class="lookup indent-1 mr-1" required />
   <input type="submit" value="Lookup" class="lookup btn-secondary mt-0 text-white" />
 </form>
 <hr />
@@ -27,14 +28,14 @@
       <% post_user = User.find(post.user_id.to_i) %>
       <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 post_body">
       <% if post_user.avatar.attached? %>
-        <div data-username="<%= post_user.username %>" class="profile_image mb-2" style="background-image:url(<%= url_for(post_user.avatar.representation(resize_to_limit: [nil, 50])) %>" ></div>
+        <div data-username="<%= post_user.username %>" class="profile_image mb-2" style="background-image:url(<%= url_for(post_user.avatar.representation(resize_to_limit: [nil, 100])) %>" ></div>
       <% else %>
         <div data-username="<%= current_user.username %>" class="profile_image mb-2" ></div>
       <% end %>
       </div>
       <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 post_img">
         <% if post.avatar.attached? %>
-          <%= image_tag post.avatar.representation(resize_to_limit: [nil, 300]) %>
+          <%= image_tag post.avatar.representation(resize_to_limit: [nil, 500]) %>
         <% end %>
       </div>
        
@@ -60,7 +61,7 @@
       <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 mt-1 comment_text">
         <% comment_user = User.find(comment_object.user_id.to_i) %>
         <% if comment_user.avatar.attached? %>
-        <div data-username="<%= comment_user.username %>" class="profile_image" style="background-image:url(<%= url_for(comment_user.avatar.representation(resize_to_limit: [nil, 50])) %>" ></div>
+        <div data-username="<%= comment_user.username %>" class="profile_image" style="background-image:url(<%= url_for(comment_user.avatar.representation(resize_to_limit: [nil, 100])) %>" ></div>
         <% else %>
         @<%= comment_user.username %>
         <% end %>
@@ -88,10 +89,11 @@
 
 <br>
 <hr />
+<div class="container follow_container">
 <% @users.each do |user_object| %>
   <div class="follow_un">   
     <% if user_object.avatar.attached? %>
-    <div class="profile_image profile_large" data-username="<%= user_object.username %>" style="background-image:url(<%= url_for(user_object.avatar.representation(resize_to_limit: [nil, 50])) %>"></div>
+    <div class="profile_image profile_large" data-username="<%= user_object.username %>" style="background-image:url(<%= url_for(user_object.avatar.representation(resize_to_limit: [nil, 100])) %>"></div>
     <% end %>
     <%= form_for @friend, url: '/follow', method:'post' do |form| %>
       <%= form.hidden_field :follow, :value => "#{user_object.id}"%>
@@ -99,3 +101,4 @@
     <% end %>
   </div>
 <% end %>
+</div>

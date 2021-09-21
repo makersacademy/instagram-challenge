@@ -8,8 +8,8 @@ class PostsController < ApplicationController
     @like = Like.new
     @follow_this_list = []
     @friends = Friend.where({ user_id: session[:user_id].to_i })
-    if params[:username]
-      only_this_user = User.where(username: params[:username]).first
+    if params[:noneusername]
+      only_this_user = User.where(username: params[:noneusername]).first
       @follow_this_list.push(only_this_user.id.to_i) if only_this_user
     else
       @friends.each { |friend| @follow_this_list.push(friend.follow.to_i) }

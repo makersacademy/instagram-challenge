@@ -59,6 +59,7 @@
       .create_comment form button{display:inline;width:2rem;float:right;}
       .form_input form{width:100%; padding:1rem;}
       .form_input input{width:100%;border: rgba(0, 0, 0, 0.25) solid 1px;}
+      .follow_container{overflow-x:auto;white-space: nowrap;}
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,15 +72,20 @@
 
   <% if current_user %>
     <!-- current_user will return true if a user is logged in -->
-    <div data-username="<%= current_user.username %>" class="profile_image" style="background-image:url(<%= url_for(current_user.avatar.representation(resize_to_limit: [nil, 80], format: :jpeg, quality: 100, sampling_factor: "4:3:0")) %>)"></div>
+    <div data-username="<%= current_user.username %>" class="profile_image" style="background-image:url(<%= url_for(current_user.avatar.representation(resize_to_limit: [nil, 80])) %>)"></div>
     <div class="crumbs">
       <%= link_to 'Home', home_path, class: 'btn btn-secondary btn-sm mt-0 text-white' %>  <%= link_to 'Log Out', logout_path, method: :delete, class: 'btn btn-success btn-sm mt-0 text-white' %>
     </div>  
   <% else %>
-    <div data-username="Jamgram" style="margin-left:-6rem;" class="profile_image caveat"></div>
+    <div data-username="Jamgram" style="margin-left:-3.33rem;box-shadow:none;" class="profile_image caveat"></div>
     <!-- not logged in -->
     <div class="crumbs">
-      <%= link_to 'Home', home_path, class: 'btn btn-secondary btn-sm mt-0 text-white' %>  <%= link_to 'Log In', login_path, class: 'btn btn-primary btn-sm mt-0 text-white' %>  <%= link_to 'Sign Up', new_user_path, class: 'btn btn-success btn-sm mt-0 text-white' %>
+      <%= link_to 'Home', home_path, class: 'btn btn-secondary btn-sm mt-0 text-white' %>  
+      <% if current_page?(controller: 'users', action: 'new') %>
+       <%= link_to 'Log In', login_path, class: 'btn btn-primary btn-sm mt-0 text-white' %> 
+      <% else %>
+      <%= link_to 'Sign Up', new_user_path, class: 'btn btn-success btn-sm mt-0 text-white' %>
+      <% end %>
     </div>  
   <% end %>
   <hr>

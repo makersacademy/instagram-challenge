@@ -22,6 +22,6 @@ class User < ApplicationRecord
               too_long: '%{count} characters is the minimum allowed',
             }
   has_one_attached :avatar do |attachable|
-    attachable.variant :thumb, resize: '100x100'
+    # attachable.variant :thumb, resize: '100x100'
   end
 end

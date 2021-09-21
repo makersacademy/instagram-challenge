@@ -19,7 +19,6 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    redirect_to home_path
     @user = User.new
   end
 

@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   #           }
   has_one_attached :avatar do |attachable|
     # attachable.variant :thumb, resize: '100x100'
-    attachable.representation(resize_to_limit: [nil, 50])
+    # attachable.representation(resize_to_limit: [nil, 50])
   end
 
   def likes_count
