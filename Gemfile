@@ -30,7 +30,7 @@ gem 'bootstrap'
 # ruby formatter prettier
 gem 'prettier'
 
-# gem 'graphicsmagick'
+gem 'graphicsmagick'
 
 gem 'aws-sdk-s3', require: false
 
