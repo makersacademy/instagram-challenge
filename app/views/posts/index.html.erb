@@ -1,0 +1,104 @@
+<p id="notice"><%= notice %></p>
+<div class="container follow_container">
+<% @friends.each do |user_object| %>
+  <div class="follow_un">  
+    <% if user_object.avatar.attached? %>
+    <div class="profile_image ml-2 profile_large" data-username="<%= user_object.username %>" profile_large" style="background-image:url('<%= url_for(user_object.avatar) %>')" ></div>
+    <% end %>
+    <%= form_for @friend, url: '/unfollow', method:'post' do |form| %>
+      <%= form.hidden_field :follow, :value => "#{user_object.id}"%>
+      <%= form.submit "Forget", class: 'btn btn-info btn-sm mt-0 mb-0 btn-block text-white px-3 rounded-5' %>
+    <% end %>
+  </div>
+<% end %>
+</div>
+<hr />
+<%= link_to 'New Post', new_post_path, class: "w-100 btn btn-primary btn-sm mt-0 mb-3 btn-block text-white" %>
+<br />
+<form method="get" action="/">
+  <input type="text" tabindex="1000" placeholder="Look up this usename" value="" name="noneusername" autocomplete="off" class="lookup indent-1 mr-1" required />
+  <input type="submit" value="Lookup" class="lookup btn-secondary mt-0 text-white" />
+</form>
+<hr />
+
+<div class="container pt-2">
+
+    <% @posts.each do |post| %>
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 time_ago" > <%= get_time_ago(post.created_at) %> ago</div>
+      <% post_user = User.find(post.user_id.to_i) %>
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 post_body">
+      <% if post_user.avatar.attached? %>
+        <div data-username="<%= post_user.username %>" class="profile_image mb-2" style="background-image:url('<%= url_for(post_user.avatar) %>')" ></div>
+      <% else %>
+        <div data-username="<%= current_user.username %>" class="profile_image mb-2" ></div>
+      <% end %>
+      </div>
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 post_img">
+        <% if post.avatar.attached? %>
+          <%= image_tag post.avatar %>
+        <% end %>
+      </div>
+       
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 post_text"><%= post.entry %></div>
+      
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 mt-1 post_like">
+      <%= form_for @like, url: '/unlike', method:'post' do |form| %>
+        <%= form.hidden_field :post_id, :value => "#{post.id}"%>
+        <button type="submit" class="like_un btn text-white btn-light btn-sm">&#128078;</button>
+      <% end %>
+        
+      <%= form_for @like, url: '/like', method:'post' do |form| %>
+        <%= form.hidden_field :post_id, :value => "#{post.id}"%>
+        <button type="submit" class="like_un btn text-white btn-light btn-sm">&#128077;</button>
+      <% end %>
+        <div><%= post.likes_count %></div>
+      </div>
+      
+      <%
+      @comments = Comment.where({post_id: post.id})
+      @comments.each do |comment_object|
+      %>
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 mt-1 comment_text">
+        <% comment_user = User.find(comment_object.user_id.to_i) %>
+        <% if comment_user.avatar.attached? %>
+        <div data-username="<%= comment_user.username %>" class="profile_image" style="background-image:url('<%= url_for(comment_user.avatar) %>')" ></div>
+        <% else %>
+        @<%= comment_user.username %>
+        <% end %>
+        <br />
+        <%= comment_object.entry %>
+      </div>
+      <% end %>
+
+      <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 mt-2 create_comment">
+        <%= form_for :comment, url: comments_path do |f| %>
+          <%= f.text_area :entry, required: true, placeholder: "Add your comment here.." %><br>
+          <%= f.hidden_field :post_id, required: true, value:"#{post.id}" %> 
+          <%= f.hidden_field :user_id, required: true, value:"#{current_user.id}" %> 
+          <button type="submit" class="like_un btn btn-light btn-sm text-primary">&#10004;</button>
+        <% end %>
+      </div>
+        <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 d-none"><%= link_to 'Show', post %><%= link_to 'Edit', edit_post_path(post) %></div>
+        <div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 mt-4">
+        <%= link_to 'Delete post', post, method: :delete, class: "btn btn-light btn-sm mb-3 d-none" , data: { confirm: 'Are you sure?' } %>
+        </div>
+
+    <% end %>
+  
+</div>
+
+<br>
+<hr />
+<div class="container follow_container">
+<% @users.each do |user_object| %>
+  <div class="follow_un">   
+    <% if user_object.avatar.attached? %>
+    <div class="profile_image profile_large" data-username="<%= user_object.username %>" style="background-image:url('<%= url_for(user_object.avatar) %>')" ></div>
+    <% end %>
+    <%= form_for @friend, url: '/follow', method:'post' do |form| %>
+      <%= form.hidden_field :follow, :value => "#{user_object.id}"%>
+      <%= form.submit "Follow", class: 'btn btn-primary btn-sm mt-0 mb-0 btn-block text-white px-3 rounded-5' %>
+    <% end %>
+  </div>
+<% end %>
+</div>

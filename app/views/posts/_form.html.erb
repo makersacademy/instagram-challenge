@@ -1,0 +1,32 @@
+<div class="row col-12 col-md-8 col-lg-6 offset-0 offset-md-2 offset-lg-3 mt-2 form_input">
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :entry %>
+    <%= form.text_area :entry, required: "true", rows: "2" %>
+  </div>
+
+  <div class="field">
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :avatar %> <%= form.file_field :avatar, required: "true" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "w-100 btn btn-primary btn-sm mt-3 mb-3 btn-block text-white" %>
+  </div>
+<% end %>
+</div>
