@@ -13,14 +13,18 @@ class FriendshipsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @friendship = Friendship.new(friendship_params)
+    if params[:user_id] != params[:friend_id]
+      @friendship = Friendship.new(friendship_params)
 
-    respond_to do |format|
-      if @friendship.save
-        format.html { redirect_to request.referer, notice: "You made a new friend :-)" }
-      else
-        format.html { redirect_to request.referer, notice: "Failed to add friend :-(" }
+      respond_to do |format|
+        if @friendship.save
+          format.html { redirect_to request.referer, notice: "You made a new friend :-)" }
+        else
+          format.html { redirect_to request.referer, notice: "Failed to add friend :-(" }
+        end
       end
+    else
+      format.html { redirect_to request.referer, notice: "You are already your own dearest friend!" }
     end
   end
 
