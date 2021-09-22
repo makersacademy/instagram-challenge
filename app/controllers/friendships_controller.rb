@@ -1,5 +1,5 @@
 class FriendshipsController < ApplicationController
-      before_action :set_friendship, only: %i[ destroy ]
+      # before_action :set_friendship, only: %i[ destroy ]
 
   # GET /comments or /comments.json
   def index
@@ -26,6 +26,11 @@ class FriendshipsController < ApplicationController
 
   # DELETE /comments/1 or /comments/1.json
   def destroy
+    f1 = Friendship.find_by(user_id: params[:user_id], friend_id: params[:friend_id])
+    f2 = Friendship.find_by(user_id: params[:friend_id], friend_id: params[:user_id])
+    
+    @friendship = f1 ? f1 : f2
+
     @friendship.destroy
     respond_to do |format|
       format.html { redirect_to request.referer, notice: "Unfriended." }
@@ -39,6 +44,7 @@ class FriendshipsController < ApplicationController
     def set_friendship
       @friendship = Friendship.find(params[:id])
     end
+
     # Only allow a list of trusted parameters through.
     def friendship_params
       params.permit(:user_id, :friend_id)

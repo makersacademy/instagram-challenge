@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   post 'like_post', to: 'likes#create'
   delete 'unlike_post', to: 'likes#destroy'
   post 'add_friend', to: 'friendships#create'
+  delete 'remove_friend', to: 'friendships#destroy'
 end

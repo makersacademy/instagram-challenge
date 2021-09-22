@@ -2,8 +2,13 @@
 <div class="show-post-text-container"><%= @post.text %></div>
 <div class="show-post-author-container"><%= @user.handle %></div>
 <div class="show-post-add-friend-container">
-  <%= button_to "befriend #{@user.handle}", add_friend_path,
-  method: :post, params: {user_id: session[:user_id], friend_id: @user.id} %>
+  <% if !friends?(session[:user_id], @post.user_id) %>
+    <%= button_to "befriend #{@user.handle}", add_friend_path,
+    method: :post, params: {user_id: session[:user_id], friend_id: @user.id} %>
+  <% else %>
+    <%= button_to "unfriend #{@user.handle}", remove_friend_path,
+    method: :delete, params: {user_id: session[:user_id], friend_id: @user.id} %>
+  <% end %>
 </div>
 <div class="show-post-like-count-container"><%= @post.likes.size %> likes</div>
 <div class="show-post-like-button-container">
