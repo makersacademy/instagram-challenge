@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   resources :comments
+  resources :friendships
   resources :posts
   resources :users do resources :posts end
 
@@ -12,4 +13,5 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   post 'like_post', to: 'likes#create'
   delete 'unlike_post', to: 'likes#destroy'
+  post 'add_friend', to: 'friendships#create'
 end

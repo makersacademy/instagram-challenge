@@ -1,6 +1,10 @@
 <div class="show-post-image-container"><%= image_tag @post.image %></div>
 <div class="show-post-text-container"><%= @post.text %></div>
 <div class="show-post-author-container"><%= @user.handle %></div>
+<div class="show-post-add-friend-container">
+  <%= button_to "befriend #{@user.handle}", add_friend_path,
+  method: :post, params: {user_id: session[:user_id], friend_id: @user.id} %>
+</div>
 <div class="show-post-like-count-container"><%= @post.likes.size %> likes</div>
 <div class="show-post-like-button-container">
   <% if session[:user_id] != nil %>
