@@ -14,11 +14,19 @@
 *= require_self
 */
 
+html {
+  width: 100vw;
+  height: 100vh;
+}
+
 body {
   margin: 0;
   background: black;
   color: white;
   font-size: 1em;
+  min-height: 100vh;
+  max-height: 100vh;
+  padding: 0;
 }
 
 a {
@@ -27,8 +35,8 @@ a {
 
 nav {
   position: sticky; top: 0;
-  width: 100%;
   margin-top: 0;
+  height: 6vh;
   background: magenta;
   display: flex;
   flex-wrap: nowrap;
@@ -68,7 +76,6 @@ a:hover {
 
 #post-grid {
   margin: 2em;
-  /*margin-top: 10%;*/
   display: grid; 
   grid-template-columns: repeat(4, 1fr);
   gap: 1em;
@@ -88,4 +95,63 @@ a:hover {
 .index-post-container img {
   width: 100%;
   height: auto;
+}
+
+.show-post-container {
+  display: grid;
+  grid-template-columns: 60vw 1fr;
+  grid-auto-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 1fr 1fr 1fr;
+  gap: 0px 3em;
+  grid-auto-flow: row;
+  width: 100vw;
+  height: 90vh;
+}
+
+.comment-area {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 66vh 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  padding: 1em;
+}
+
+.all-comments-area { grid-area: 1 / 1 / 3 / 2; }
+
+.new-comments-area { grid-area: 2 / 1 / 3 / 2; }
+
+.image-area {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 75% 15% 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-area: 1 / 1 / 2 / 2;
+  padding: 1em;
+}
+
+.image-description-area { grid-area: 2 / 1 / 4 / 2; }
+
+.image-actions-area { grid-area: 3 / 1 / 4 / 2; }
+
+.image-show-area {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.image-show-area img {
+  height: 100%;
+  max-width: 100%;
+}
+
+.comment {
+  padding: 0.5em;
+}
+
+.comment-author, .post-author {
+  font-style: italic;
+}
+
+.post-text, .post-author {
+  font-size: 1.2em;
 }
