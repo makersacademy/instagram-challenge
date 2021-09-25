@@ -5,21 +5,21 @@
 // please read our getting started guide:
 // https://on.cypress.io/introduction-to-cypress
 
-describe("The Home Page", () => {
+describe('The Home Page', () => {
   // beforeEach(() => {
   // })
 
-  it("shows home page", () => {
-    cy.visit("http://localhost:3000");
-    cy.contains("Hello home route");
+  it('shows home page', () => {
+    cy.visit('http://localhost:3000');
+    cy.contains('Hello home route');
     // change URL to match your dev URL
   });
 
-  it("contains sign up form", () => {
-    cy.visit("http://localhost:3000/");
-    cy.get("#loginUserUsername").type("test");
-    cy.get("#loginUserPassword").type("test");
-    cy.get("#loginUser").submit();
-    cy.contains("this is the first post of instagram_clone");
+  it('contains sign up form', () => {
+    cy.visit('http://localhost:3000/');
+    cy.get('#username').type('test');
+    cy.get('#password').type('test');
+    cy.get('#loginUser').submit();
+    cy.contains('this is the first post');
   });
 });

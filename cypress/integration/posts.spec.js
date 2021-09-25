@@ -1,24 +1,31 @@
 /// <reference types="cypress" />
 
-describe("The Home Page", () => {
+describe('The Home Page', () => {
   // beforeAll(() => {
   // })
 
-  it("shows posts", () => {
-    cy.visit("http://localhost:3000/posts");
-    cy.contains('Hello posts route');
-    cy.contains('this is the first post of instagram_clone');
+  it('shows posts', () => {
+    cy.visit('http://localhost:3000/');
+    cy.get('#username').type('baz');
+    cy.get('#password').type('baz');
+    cy.get('#loginUser').submit();
+    cy.contains('Hello, baz!');
+    cy.contains('this is the first post');
   });
 
-  it("adds post", () => {
-    cy.visit("http://localhost:3000/posts");
-    cy.get("#newPostText").type("this is a test post");
-    cy.get("#newPost").submit();
+  it('adds post', () => {
+    cy.visit('http://localhost:3000/');
+    cy.get('#username').type('baz');
+    cy.get('#password').type('baz');
+    cy.get('#loginUser').submit();
+    cy.get('#newPostText').type('this is a test post');
+    cy.get('#newPost').submit();
     cy.contains('this is a test post');
   });
 
-  it("shows individual post", () => {
-    cy.visit("http://localhost:3000/posts/id");
+  it('shows individual post', () => {
+    // this is only checking route atm and shouldn't be accessible until user is logged in
+    cy.visit('http://localhost:3000/posts/id');
     cy.contains('Hello show posts route');
   });
 });
