@@ -24,9 +24,6 @@ const PostsController = {
       return res.status(500).json({ error: error.message });
     }
   },
-  async NewComment(req, res) {
-    res.json({ info: 'hello new comment post router :)' });
-  },
   async NewLike(req, res) {
     res.json({ info: 'hello new like post router :)' });
   },

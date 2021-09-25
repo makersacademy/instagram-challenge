@@ -42,10 +42,6 @@ class Post {
       email: result.rows[0].email,
     };
   }
-
-  static provideSessionKey() {
-    return '_' + Math.random().toString(36).substr(2, 9);
-  }
 }
 
 module.exports = Post;

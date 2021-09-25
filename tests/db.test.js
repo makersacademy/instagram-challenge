@@ -1,8 +1,9 @@
-const { pool } = require('../database/connection'); // this is essential if your tests involve database connection
+const { pool } = require('../database/connection');
 const Post = require('../model/posts');
-const User = require('../model/user'); // put whatever you are testing here
+const User = require('../model/user');
+const Comment = require('../model/comments');
+const Like = require('../model/likes');
 
-// essential to include following before and after functions if your tests involve database connection
 let data;
 beforeEach(async () => {
   pool.connect();
@@ -48,4 +49,16 @@ test('returns new user', async () => {
     'test@test.com'
   );
   expect(newUser.username).toStrictEqual('testuser');
+});
+
+test('adds new comment', async () => {
+  await Comment.addComment('this a new comment', '1', '1');
+  data = await Comment.getCommentsByPostId(1);
+  expect(data.length).toStrictEqual(1);
+});
+
+test('adds new like', async () => {
+  await Like.addLike('1', '1');
+  likes = await Like.getLikesByPostId(1);
+  expect(likes).toStrictEqual(1);
 });
