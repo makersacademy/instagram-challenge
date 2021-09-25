@@ -4,12 +4,12 @@ class Post {
   static async addUser(username, password, email) {
     const newUser = await connection.pool.query(
       'INSERT INTO users(username, password, email) VALUES($1, $2, $3) RETURNING id, username, email;',
-      [username, password, email],
+      [username, password, email]
     );
     return {
       id: newUser.rows[0].id,
       username: newUser.rows[0].username,
-      password: newUser.rows[0].password,
+      // password: newUser.rows[0].password,
       email: newUser.rows[0].email,
     };
   }

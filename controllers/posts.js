@@ -1,17 +1,23 @@
-const Post = require("../model/posts");
+const Post = require('../model/posts');
 
 const PostsController = {
   async Index(req, res) {
-    const posts = await Post.getPosts();
-    res.render('posts/index', { posts });
+    try {
+      const { username } = req.session.user;
+      const posts = await Post.getPosts();
+      res.render('posts/index', { posts, username });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
   },
   async Show(req, res) {
-    res.render("posts/show");
+    res.render('posts/show');
   },
   async New(req, res) {
     try {
+      const { userId } = req.session.user;
       const { newPostText } = req.body;
-      await Post.addPost(newPostText, 1);
+      await Post.addPost(newPostText, userId);
       const posts = await Post.getPosts();
       res.render('posts/index', { posts });
     } catch (error) {
