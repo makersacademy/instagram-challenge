@@ -1,7 +1,5 @@
 require('dotenv').config();
 
-process.env.NODE_ENV = 'development';
-
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
@@ -33,6 +31,6 @@ app.use('/', homeRouter);
 app.use('/posts', postsRouter);
 app.use('/signup', signUpRouter);
 
-app.listen(port, () => {
-  console.log(`App running on port ${port}`);
+app.listen(process.env.PORT || port, () => {
+  console.log(`App running on port ${process.env.PORT || port}.`);
 });
