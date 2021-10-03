@@ -1,8 +1,12 @@
 const postsDatabase = require('./databaseLogic/postsDatabase');
 
 class Post {
-  static async addPost(text, user_id) {
-    const newPost = await postsDatabase.newPost(text, user_id);
+  constructor(postsDatabaseClass = postsDatabase) {
+    this.postsDatabaseClass = postsDatabaseClass;
+  }
+
+  async addPost(text, user_id) {
+    const newPost = await this.postsDatabaseClass.newPost(text, user_id);
     return {
       id: newPost.rows[0].id,
       text: newPost.rows[0].text,
@@ -10,8 +14,8 @@ class Post {
     };
   }
 
-  static async getPosts() {
-    const allPosts = await postsDatabase.all();
+  async getPosts() {
+    const allPosts = await this.postsDatabaseClass.all();
     return allPosts.rows.map((element) => ({
       id: element.id,
       text: element.text,
@@ -23,8 +27,8 @@ class Post {
     // {postId: 2, postText: "blah again", postComments: [comment1, comment 2], postLikes: 5}]
   }
 
-  static async getPostById(id) {
-    const post = await postsDatabase.findById(id);
+  async getPostById(id) {
+    const post = await this.postsDatabaseClass.findById(id);
     return {
       id: post.rows[0].id,
       text: post.rows[0].text,

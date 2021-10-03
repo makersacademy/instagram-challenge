@@ -4,7 +4,8 @@ const PostsController = {
   async Index(req, res) {
     try {
       const { username } = req.session.user;
-      const posts = await Post.getPosts();
+      const post = new Post();
+      const posts = await post.getPosts();
       res.render('posts/index', { posts, username });
     } catch (error) {
       return res.status(500).json({ error: error.message });
@@ -17,8 +18,9 @@ const PostsController = {
     try {
       const { userId } = req.session.user;
       const { newPostText } = req.body;
-      await Post.addPost(newPostText, userId);
-      const posts = await Post.getPosts();
+      const post = new Post();
+      await post.addPost(newPostText, userId);
+      const posts = await post.getPosts();
       res.render('posts/index', { posts });
     } catch (error) {
       return res.status(500).json({ error: error.message });
