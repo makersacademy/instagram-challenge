@@ -1,11 +1,8 @@
-const connection = require('../database/connection.js');
+const postsDatabase = require('./databaseLogic/postsDatabase');
 
 class Post {
   static async addPost(text, user_id) {
-    const newPost = await connection.pool.query(
-      'INSERT INTO posts(text, user_id) VALUES($1, $2) RETURNING id, text, user_id;',
-      [text, user_id],
-    );
+    const newPost = await postsDatabase.newPost(text, user_id);
     return {
       id: newPost.rows[0].id,
       text: newPost.rows[0].text,
@@ -14,9 +11,7 @@ class Post {
   }
 
   static async getPosts() {
-    const allPosts = await connection.pool.query(
-      'SELECT * FROM posts ORDER BY id ASC'
-    );
+    const allPosts = await postsDatabase.all();
     return allPosts.rows.map((element) => ({
       id: element.id,
       text: element.text,
@@ -25,10 +20,7 @@ class Post {
   }
 
   static async getPostById(id) {
-    const post = await connection.pool.query(
-      'SELECT * FROM posts WHERE id = $1;',
-      [id],
-    );
+    const post = await postsDatabase.findById(id);
     return {
       id: post.rows[0].id,
       text: post.rows[0].text,
