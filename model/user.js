@@ -1,6 +1,6 @@
 const connection = require('../database/connection.js');
 
-class Post {
+class User {
   static async addUser(username, password, email) {
     const newUser = await connection.pool.query(
       'INSERT INTO users(username, password, email) VALUES($1, $2, $3) RETURNING id, username, email;',
@@ -44,4 +44,4 @@ class Post {
   }
 }
 
-module.exports = Post;
+module.exports = User;

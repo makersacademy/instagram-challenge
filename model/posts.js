@@ -5,8 +5,8 @@ class Post {
     this.postsDatabaseClass = postsDatabaseClass;
   }
 
-  async addPost(text, user_id) {
-    const newPost = await this.postsDatabaseClass.newPost(text, user_id);
+  async addPost(text, userId) {
+    const newPost = await this.postsDatabaseClass.newPost(text, userId);
     return {
       id: newPost.rows[0].id,
       text: newPost.rows[0].text,
