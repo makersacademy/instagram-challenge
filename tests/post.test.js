@@ -1,8 +1,5 @@
 const { pool } = require('../database/connection');
 const Post = require('../model/posts');
-const User = require('../model/user');
-const Comment = require('../model/comments');
-const Like = require('../model/likes');
 
 let data;
 beforeEach(async () => {
@@ -34,31 +31,4 @@ test('adds Post to the db', async () => {
 test('returns post by id', async () => {
   data = await Post.getPostById(1);
   expect(data).toStrictEqual({ id: 1, text: 'testtesttest', userID: 1 });
-});
-
-test('adds User to the db', async () => {
-  await User.addUser('testuser', 'testpassword', 'test@test.com');
-  data = await User.getUsers();
-  expect(data.length).toStrictEqual(2);
-});
-
-test('returns new user', async () => {
-  const newUser = await User.addUser(
-    'testuser',
-    'testpassword',
-    'test@test.com'
-  );
-  expect(newUser.username).toStrictEqual('testuser');
-});
-
-test('adds new comment', async () => {
-  await Comment.addComment('this a new comment', '1', '1');
-  data = await Comment.getCommentsByPostId(1);
-  expect(data.length).toStrictEqual(1);
-});
-
-test('adds new like', async () => {
-  await Like.addLike('1', '1');
-  likes = await Like.getLikesByPostId(1);
-  expect(likes).toStrictEqual(1);
 });

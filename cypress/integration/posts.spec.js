@@ -6,17 +6,17 @@ describe('The Home Page', () => {
 
   it('shows posts', () => {
     cy.visit('http://localhost:3000/');
-    cy.get('#username').type('baz');
-    cy.get('#password').type('baz');
+    cy.get('#username').type('test');
+    cy.get('#password').type('test');
     cy.get('#loginUser').submit();
-    cy.contains('Hello, baz!');
+    cy.contains('Hello, test!');
     cy.contains('this is the first post');
   });
 
   it('adds post', () => {
     cy.visit('http://localhost:3000/');
-    cy.get('#username').type('baz');
-    cy.get('#password').type('baz');
+    cy.get('#username').type('test');
+    cy.get('#password').type('test');
     cy.get('#loginUser').submit();
     cy.get('#newPostText').type('this is a test post');
     cy.get('#newPost').submit();
