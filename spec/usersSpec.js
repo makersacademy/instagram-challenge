@@ -28,11 +28,29 @@ fdescribe('User', () => {
     });
     it('should return array with length 1 for authenticated user', async () => {
       const authenticatedUser = await userInstance.authenticate('test', 'test');
+      console.log(authenticatedUser);
       expect(authenticatedUser).toEqual({
         id: 2,
         username: 'test',
-        password: 'test',
+        email: 'test',
       });
+    });
+
+    it('should return false for incorrect username', async () => {
+      usersDatabaseMock.findByUsername.and.callFake(() => []);
+      const authenticatedUser = await userInstance.authenticate(
+        'wrongusername',
+        'test'
+      );
+      expect(authenticatedUser).toEqual(false);
+    });
+
+    it('should return false for incorrect passoword', async () => {
+      const authenticatedUser = await userInstance.authenticate(
+        'test',
+        'wring password'
+      );
+      expect(authenticatedUser).toEqual(false);
     });
   });
 });

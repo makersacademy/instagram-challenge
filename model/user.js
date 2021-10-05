@@ -33,7 +33,7 @@ class User {
 
   async authenticate(username, password) {
     const result = await this.usersDatabaseClass.findByUsername(username);
-    if (result.Userlength === 0) {
+    if (result.length === 0) {
       return false;
     }
     if (result[0].password !== password) {
