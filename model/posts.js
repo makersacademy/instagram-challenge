@@ -16,7 +16,7 @@ class Post {
 
   async getPosts() {
     const allPosts = await this.postsDatabaseClass.all();
-    return allPosts.rows.map((element) => ({
+    return allPosts.map((element) => ({
       id: element.id,
       text: element.text,
       userID: element.user_id,

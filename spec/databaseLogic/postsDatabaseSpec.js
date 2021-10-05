@@ -1,11 +1,9 @@
 describe('postDatabase', () => {
   const postsDatabase = require('../../model/databaseLogic/postsDatabase');
-  const User = require('../../model/user');
-  beforeEach(
-    async () =>
 
-  );
-
+  beforeEach(async () => {
+    await postsDatabase.newPost('hello', 1);
+  });
   describe('test', () => {
     it('test', () => {});
   });

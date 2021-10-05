@@ -8,8 +8,11 @@ class postsDatabase {
     );
   }
 
-  static all() {
-    return connection.pool.query('SELECT * FROM posts ORDER BY id ASC');
+  static async all() {
+    const allPosts = await connection.pool.query(
+      'SELECT * FROM posts ORDER BY id ASC'
+    );
+    return allPosts.rows;
   }
 
   static findById(id) {
