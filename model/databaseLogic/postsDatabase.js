@@ -6,7 +6,6 @@ class postsDatabase {
       'INSERT INTO posts(text, user_id) VALUES($1, $2) RETURNING id, text, user_id;',
       [text, user_id]
     );
-    console.log('hello');
     return newPost.rows;
   }
 

@@ -1,6 +1,11 @@
 const connection = require('../database/connection.js');
+const usersDatabase = require('./databaseLogic/usersDatabase');
 
 class User {
+  constructor(usersDatabaseClass = usersDatabase) {
+    this.usersDatabaseClass = usersDatabaseClass;
+  }
+
   // extract out database logic - same as Post class
   static async addUser(username, password, email) {
     const newUser = await connection.pool.query(
@@ -26,21 +31,18 @@ class User {
     }));
   }
 
-  static async authenticate(username, password) {
-    const result = await connection.pool.query(
-      'SELECT * FROM users WHERE username = $1',
-      [username]
-    );
-    if (result.rows.length === 0) {
+  async authenticate(username, password) {
+    const result = await this.usersDatabaseClass.findByUsername(username);
+    if (result.Userlength === 0) {
       return false;
     }
-    if (result.rows[0].password !== password) {
+    if (result[0].password !== password) {
       return false;
     }
     return {
-      id: result.rows[0].id,
-      username: result.rows[0].username,
-      email: result.rows[0].email,
+      id: result[0].id,
+      username: result[0].username,
+      email: result[0].email,
     };
   }
 }

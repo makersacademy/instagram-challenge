@@ -8,7 +8,8 @@ const HomeController = {
     try {
       const { username } = req.body;
       const { password } = req.body;
-      const isUserAuthenticated = await User.authenticate(username, password);
+      const user = new User();
+      const isUserAuthenticated = await user.authenticate(username, password);
       const userId = isUserAuthenticated.id;
       if (isUserAuthenticated === false) {
         return res.redirect('/');
