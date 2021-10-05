@@ -1,5 +1,4 @@
-// add same tests as Post class
-fdescribe('User', () => {
+describe('User', () => {
   const User = require('../model/user');
   let usersDatabaseMock;
   let userInstance;
@@ -7,6 +6,8 @@ fdescribe('User', () => {
   beforeEach(() => {
     usersDatabaseMock = jasmine.createSpyObj('usersDatabase', [
       'findByUsername',
+      'addUser',
+      ,
     ]);
     mockUsersData = [
       {
@@ -17,6 +18,7 @@ fdescribe('User', () => {
         photo_url: null,
       },
     ];
+    usersDatabaseMock.addUser.and.callFake(() => mockUsersData);
     usersDatabaseMock.findByUsername.and.callFake(() => mockUsersData);
     userInstance = new User(usersDatabaseMock);
   });
@@ -28,7 +30,6 @@ fdescribe('User', () => {
     });
     it('should return array with length 1 for authenticated user', async () => {
       const authenticatedUser = await userInstance.authenticate('test', 'test');
-      console.log(authenticatedUser);
       expect(authenticatedUser).toEqual({
         id: 2,
         username: 'test',
@@ -51,6 +52,18 @@ fdescribe('User', () => {
         'wring password'
       );
       expect(authenticatedUser).toEqual(false);
+    });
+  });
+
+  describe('#addUser', () => {
+    it('should call correct method in usersDb with correct argument', async () => {
+      await userInstance.addUser('test', 'test');
+      // await userInstance.addUser('test', 'test', 'test');
+      expect(usersDatabaseMock.addUser).toHaveBeenCalledWith(
+        'test',
+        'test',
+        'test'
+      );
     });
   });
 });

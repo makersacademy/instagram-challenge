@@ -7,19 +7,17 @@ class User {
   }
 
   // extract out database logic - same as Post class
-  static async addUser(username, password, email) {
-    const newUser = await connection.pool.query(
-      'INSERT INTO users(username, password, email) VALUES($1, $2, $3) RETURNING id, username, email;',
-      [username, password, email]
-    );
+  async addUser(username, password, email) {
+    const newUser = await usersDatabase.addUser(username, password, email);
     return {
-      id: newUser.rows[0].id,
-      username: newUser.rows[0].username,
+      id: newUser[0].id,
+      username: newUser[0].username,
       // password: newUser.rows[0].password,
-      email: newUser.rows[0].email,
+      email: newUser[0].email,
     };
   }
 
+  // Do I need this method?
   static async getUsers() {
     const allUsers = await connection.pool.query(
       'SELECT * FROM users ORDER BY id ASC'
