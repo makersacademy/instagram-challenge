@@ -1,6 +1,7 @@
 const connection = require('../database/connection');
 
 class Comment {
+  // extract out database logic - same as Post class
   static async addComment(text, userId, postId) {
     return connection.pool.query(
       'INSERT INTO comments (text, user_id, post_id) VALUES ($1, $2, $3);',

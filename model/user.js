@@ -1,6 +1,7 @@
 const connection = require('../database/connection.js');
 
 class User {
+  // extract out database logic - same as Post class
   static async addUser(username, password, email) {
     const newUser = await connection.pool.query(
       'INSERT INTO users(username, password, email) VALUES($1, $2, $3) RETURNING id, username, email;',

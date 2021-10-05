@@ -7,7 +7,6 @@ class Post {
 
   async addPost(text, userId) {
     const newPost = await this.postsDatabaseClass.newPost(text, userId);
-    console.log('newPost', newPost);
     return {
       id: newPost[0].id,
       text: newPost[0].text,

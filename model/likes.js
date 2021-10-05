@@ -1,6 +1,7 @@
 const connection = require('../database/connection');
 
 class Like {
+  // extract out database logic - same as Post class
   static async addLike(userId, postId) {
     return connection.pool.query(
       'INSERT INTO likes (user_id, post_id) VALUES ($1, $2);',
