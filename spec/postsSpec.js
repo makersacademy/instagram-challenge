@@ -3,26 +3,57 @@ fdescribe('Post', () => {
   let postsDatabaseMock;
 
   beforeEach(() => {
-    postsDatabaseMock = jasmine.createSpyObj('postsDatabase', ['all']);
-    mockPostsDatabaseCall = [
+    postsDatabaseMock = jasmine.createSpyObj('postsDatabase', [
+      'newPost',
+      'all',
+      'findById',
+    ]);
+    mockPostsData = [
       {
         id: 103,
         text: 'bbc',
         user_id: 2,
       },
     ];
-    postsDatabaseMock.all.and.callFake(() => mockPostsDatabaseCall);
-    postClass = new Post(postsDatabaseMock);
+    postsDatabaseMock.newPost.and.callFake(() => mockPostsData);
+    postsDatabaseMock.all.and.callFake(() => mockPostsData);
+    postsDatabaseMock.findById.and.callFake(() => mockPostsData);
+
+    postInstance = new Post(postsDatabaseMock);
   });
 
-  it('should call updateItem method in Item class', async () => {
-    const test = await postClass.getPosts();
-    expect(test).toEqual([
-      {
+  describe('#addPost', () => {
+    it('should return array with length 1 based on calling newPost methd in postsDatabase', async () => {
+      const newPost = await postInstance.addPost('bbc', 2);
+      expect(newPost).toEqual({
         id: 103,
         text: 'bbc',
         userID: 2,
-      },
-    ]);
+      });
+    });
+  });
+
+  describe('#getPosts', () => {
+    it('should return array based on calling .all methd in postsDatabase', async () => {
+      const allPosts = await postInstance.getPosts();
+      expect(allPosts).toEqual([
+        {
+          id: 103,
+          text: 'bbc',
+          userID: 2,
+        },
+      ]);
+    });
+  });
+
+  describe('#getPostById', () => {
+    it('should return array with length 1 based on calling findById methd in postsDatabase', async () => {
+      const postWithCorrectID = await postInstance.getPostById(2);
+      expect(postWithCorrectID).toEqual({
+        id: 103,
+        text: 'bbc',
+        userID: 2,
+      });
+    });
   });
 });

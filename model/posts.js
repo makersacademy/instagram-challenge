@@ -7,10 +7,11 @@ class Post {
 
   async addPost(text, userId) {
     const newPost = await this.postsDatabaseClass.newPost(text, userId);
+    console.log('newPost', newPost);
     return {
-      id: newPost.rows[0].id,
-      text: newPost.rows[0].text,
-      userID: newPost.rows[0].user_id,
+      id: newPost[0].id,
+      text: newPost[0].text,
+      userID: newPost[0].user_id,
     };
   }
 
@@ -30,9 +31,9 @@ class Post {
   async getPostById(id) {
     const post = await this.postsDatabaseClass.findById(id);
     return {
-      id: post.rows[0].id,
-      text: post.rows[0].text,
-      userID: post.rows[0].user_id,
+      id: post[0].id,
+      text: post[0].text,
+      userID: post[0].user_id,
     };
   }
 }

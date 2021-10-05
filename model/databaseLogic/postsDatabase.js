@@ -1,11 +1,13 @@
 const connection = require('../../database/connection');
 
 class postsDatabase {
-  static newPost(text, user_id) {
-    return connection.pool.query(
+  static async newPost(text, user_id) {
+    const newPost = await connection.pool.query(
       'INSERT INTO posts(text, user_id) VALUES($1, $2) RETURNING id, text, user_id;',
       [text, user_id]
     );
+    console.log('hello');
+    return newPost.rows;
   }
 
   static async all() {
@@ -15,8 +17,12 @@ class postsDatabase {
     return allPosts.rows;
   }
 
-  static findById(id) {
-    return connection.pool.query('SELECT * FROM posts WHERE id = $1;', [id]);
+  static async findById(id) {
+    const matchingPost = await connection.pool.query(
+      'SELECT * FROM posts WHERE id = $1;',
+      [id]
+    );
+    return matchingPost.rows;
   }
 }
 
