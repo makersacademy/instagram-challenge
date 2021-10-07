@@ -1,10 +1,13 @@
 describe('postDatabase', () => {
-  const postsDatabase = require('../../model/databaseLogic/postsDatabase');
+  const connection = require('../../database/connection');
 
-  beforeEach(async () => {
-    await postsDatabase.newPost('hello', 1);
-  });
+  beforeEach(async () => {});
+
   describe('test', () => {
-    it('test', () => {});
+    it('test', async () => {
+      const test = await connection.pool.query('SELECT * FROM posts');
+      console.log(test);
+      expect(true).toEqual(true);
+    });
   });
 });
