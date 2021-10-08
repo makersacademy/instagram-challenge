@@ -1,6 +1,5 @@
 describe('Post', () => {
   const Post = require('../model/posts');
-
   let postsDatabaseMock;
   beforeEach(async () => {
     postsDatabaseMock = jasmine.createSpyObj('postsDatabase', [

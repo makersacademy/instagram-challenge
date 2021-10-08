@@ -6,8 +6,8 @@ describe('postDatabase', () => {
   describe('test', () => {
     it('test', async () => {
       const test = await connection.pool.query('SELECT * FROM posts');
-      console.log(test);
-      expect(true).toEqual(true);
+      console.log(test.rows);
+      // expect(true).toEqual(true);
     });
   });
 });
