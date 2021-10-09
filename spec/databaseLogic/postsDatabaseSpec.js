@@ -1,13 +1,21 @@
 fdescribe('postDatabase', () => {
-  const connection = require('../../database/connection');
+  const postsDatabase = require('../../model/databaseLogic/postsDatabase');
   require('./databasehelpers');
+  let postsData;
+  describe('#all', () => {
+    beforeAll(async () => {
+      postsData = await postsDatabase.all();
+    });
+    it('returns object with correct keys', async () => {
+      expect(postsData.length).toEqual(1);
+    });
 
-  beforeEach(async () => {});
-
-  describe('test', () => {
-    it('test', async () => {
-      const test = await connection.pool.query('SELECT * FROM posts');
-      console.log(test.rows);
+    it('returns object with correct keys', async () => {
+      const postsData = await postsDatabase.all();
+      expect(Object.keys(postsData[0])).toContain('id');
+      expect(Object.keys(postsData[0])).toContain('text');
+      expect(Object.keys(postsData[0])).toContain('created_at');
+      expect(Object.keys(postsData[0])).toContain('user_id');
     });
   });
 });

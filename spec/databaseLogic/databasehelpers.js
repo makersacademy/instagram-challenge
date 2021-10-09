@@ -1,7 +1,7 @@
 const connection = require('../../database/connection');
 
-const databaseTearDown = () => {
-  connection.pool.query(
+const databaseTearDown = async () => {
+  await connection.pool.query(
     'TRUNCATE TABLE users, posts, comments, likes RESTART IDENTITY'
   );
 };
@@ -35,7 +35,7 @@ const seedLikeData = async (userId, postId) => {
 };
 
 beforeEach(async () => {
-  databaseTearDown();
+  await databaseTearDown();
   await seedUserData('test', 'test', 'test@test');
   await seedPostData('test post', 1);
   await seedCommentData('test comment', 1, 1);
