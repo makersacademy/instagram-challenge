@@ -1,19 +1,21 @@
-const connection = require('../database/connection');
+const commentsDatabase = require('./databaseLogic/postsDatabase');
 
 class Comment {
-  // extract out database logic - same as Post class
-  static async addComment(text, userId, postId) {
-    return connection.pool.query(
-      'INSERT INTO comments (text, user_id, post_id) VALUES ($1, $2, $3);',
-      [text, userId, postId]
+  constructor(commentsDatabaseClass = commentsDatabase) {
+    this.commmentsDatabaseClass = commentsDatabaseClass;
+  }
+
+  async addComment(text, userId, postId) {
+    const newComment = await this.commmentsDatabaseClass.addComment(
+      text,
+      userId,
+      postId
     );
+    return newComment;
   }
 
   static async getCommentsByPostId(postId) {
-    const comments = await connection.pool.query(
-      'SELECT * FROM comments WHERE id = $1;',
-      [postId]
-    );
+    const comments = await this.commentsDatabaseClass.getComments(postId);
     return comments.rows.map((element) => ({
       id: element.id,
       text: element.text,
