@@ -1,4 +1,4 @@
-fdescribe('postDatabase', () => {
+describe('postDatabase', () => {
   const postsDatabase = require('../../model/databaseLogic/postsDatabase');
   require('./databasehelpers');
   let postsData;
