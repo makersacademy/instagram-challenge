@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Binstagram</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application',
+    media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-logo">
+        <a href="<%= root_path %>">
+          <%= image_tag "/images/binstagram-logo.svg" %>
+        </a>
+        <span class="nav-title">binstagram</span>
+      </div>
+      <div class="nav-session-links">
+        <% if session[:user_id] %>
+          signed in as
+          <span class="nav-handle"><%= session[:user_handle] %></span>
+          <%= link_to 'new post', new_post_path %>
+          <%= link_to 'logout', logout_path, method: :delete %>
+        <% else %>
+          <%= link_to 'sign up', sign_up_path %>
+          or
+          <%= link_to 'sign in', sign_in_path %>
+        <% end %>
+      </div>
+    </nav>
+    <%= yield %>
+  </body>
+</html>

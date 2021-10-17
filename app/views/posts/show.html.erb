@@ -1,0 +1,66 @@
+<div class="show-post-container">
+  <div class="image-area">
+    <div class="image-show-area">
+      <%= image_tag @post.image %>
+    </div>
+    <div class="image-description-area">
+      <div class="post-text">
+        <%= @post.text %>
+      </div>
+      <div class="post-author">
+        -- <%= @user.handle %>
+      </div>  
+    </div>
+    <div class="image-actions-area">
+      <div class="show-post-add-friend-container">
+        <% if @post.user_id != session[:user_id] %>
+          <% if !friends?(session[:user_id], @post.user_id) %>
+            <%= button_to "befriend #{@user.handle}", add_friend_path,
+            method: :post, params: {user_id: session[:user_id], friend_id: @user.id} %>
+          <% else %>
+            <%= button_to "unfriend #{@user.handle}", remove_friend_path,
+            method: :delete, params: {user_id: session[:user_id], friend_id: @user.id} %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="show-post-like-count-container">
+        <%= @post.likes.size %> likes
+      </div>
+      <div class="show-post-like-button-container">
+        <% if session[:user_id] != nil %>
+          <% unless @post.likes.any? { |like| like.user_id == session[:user_id] } %>
+            <%= button_to "like", like_post_path,
+            method: :post, params: {user_id: session[:user_id], post_id: @post.id} %>
+          <% else %>
+            <%= button_to "unlike", unlike_post_path,
+            method: :delete, params: {user_id: session[:user_id], post_id: @post.id} %>
+          <% end %>
+        <% end %>
+      </div>
+      <% if @post.user_id == session[:user_id]%>
+        <%= link_to 'Edit', edit_post_path(@post), class: "image-info-area" %>
+      <% end %>
+
+      <%= link_to 'Back', posts_path, class: "image-info-area" %>
+    </div>
+  </div>
+  <div class="comment-area">
+    <div class="all-comments-area">
+      <% @post.comments.each do |comment| %>
+        <div class="comment">
+          <div class="comment-text">
+            <%= comment.text %>
+          </div>
+          <div class="comment-author">
+            -- <%= User.find(comment.user_id).handle %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="new-comment-area">
+      <% if session[:user_id] != nil %>
+        <%= render "comments/form" %>
+      <% end %>
+    </div>
+  </div>
+</div>

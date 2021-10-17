@@ -1,41 +1,53 @@
-Instagram Challenge
-===================
+Instasham
+=========
 
-## Instructions
+## User Stories
 
-* Feel free to use Google, your notes, books, etc., but work on your own
-* If you refer to the solution of another coach or student, please put a link to that in your README
-* If you have a partial solution, **still check in a partial solution**
-* You must submit a pull request to this repo with your code by 9am Monday morning
-
-## Task
-
-Build Instagram: Simple huh!
-
-Your challenge is to build Instagram using Rails. You'll need **users** who can post **pictures**, write **comments** on pictures and **like** a picture. Style it like Instagram's website (or more awesome).
-
-Bonus if you can add filters!
-
-## How to start
-
-1. Produce some stories, break them down into tasks, and estimate
-2. Fork this repo, clone, etc
-3. Initialize a new rails project
-
-Remember to proceed in small steps! Getting confused? Make the steps even smaller.
-
-## Code Quality
-
-For linting, you can use the `.rubocop.yml` in this repository (or your own!).
-You'll need these gems:
-
-```ruby
-group :development, :test do
-  gem 'rubocop', '1.20', require: false
-  gem 'rubocop-rails'
-end
+1.
+```
+As a millenial user
+So that I can prove that I exist
+I would like to create an account and log in to instasham
 ```
 
-You can also lint Javascript, CSS, and ERB — feel free to research this. These
-will help you to train yourself to produce cleaner code — and will often alert
-you to mistakes or mishaps!
+2.
+```
+As a millenial user
+So that I can prove that I perform actions / observe things / have thoughts
+I would like to upload square images to the internet
+```
+
+3.
+```
+As a control freak
+So that I can make sure my "personal brand" is relentlessly curated
+I would like to view a grid of all my square images
+```
+
+4.
+```
+As someone afraid of being alone
+So that I can prove other people exist
+I would like to see a grid of everybody's square images
+```
+
+5.
+```
+As someone who finds everything intrinsically worthless
+So that things feel like they have some value
+I would like to be able to give and recieve likes to square images
+```
+
+6.
+```
+As someone who enjoys fighting in the comments
+So that I might fight in the comments
+I would like to be able to comment on square images
+```
+
+7.
+```
+As someone who can't let things lie
+So that I can obsess about my adversary in the comments
+I would like to be able to view another user's square images
+```
