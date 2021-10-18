@@ -1,12 +1,13 @@
-const commentsDatabase = require('./databaseLogic/postsDatabase');
+const commentsDatabase = require('./databaseLogic/commentsDatabase');
 
 class Comment {
   constructor(commentsDatabaseClass = commentsDatabase) {
-    this.commmentsDatabaseClass = commentsDatabaseClass;
+    this.commentsDatabaseClass = commentsDatabaseClass;
   }
 
   async addComment(text, userId, postId) {
-    const newComment = await this.commmentsDatabaseClass.addComment(
+    console.log('hello model');
+    const newComment = await this.commentsDatabaseClass.addComment(
       text,
       userId,
       postId
@@ -15,7 +16,8 @@ class Comment {
   }
 
   static async getCommentsByPostId(postId) {
-    const comments = await this.commentsDatabaseClass.getComments(postId);
+    // console.log(this.commentsDatabaseClass);
+    const comments = await commentsDatabase.getComments(postId);
     return comments.rows.map((element) => ({
       id: element.id,
       text: element.text,

@@ -1,10 +1,12 @@
 const Post = require('../model/posts');
 const Like = require('../model/likes');
+const Comment = require('../model/comments');
+const helpers = require('../public/javascripts/helpers');
 
 const PostsController = {
   async Index(req, res) {
     try {
-      const { username } = req.session.user;
+      const { username } = 'test'; // change back to: req.session.user;
       const post = new Post();
       const posts = await post.getPosts();
       res.render('posts/index', { posts, username });
@@ -14,11 +16,19 @@ const PostsController = {
   },
   async Show(req, res) {
     try {
-      const { username } = req.session.user;
+      const postId = req.params.id;
+      const { username } = 'test'; // change back to: req.session.user;
       const post = new Post();
-      const selectedPost = await post.getPostById(1);
-      const numberOfLikes = await Like.getLikesByPostId(1);
-      res.render('posts/show', { selectedPost, username, numberOfLikes });
+      const selectedPost = await post.getPostById(postId);
+      const numberOfLikes = await Like.getLikesByPostId(postId);
+      const comments = await Comment.getCommentsByPostId(postId);
+      res.render('posts/show', {
+        selectedPost,
+        username,
+        numberOfLikes,
+        helpers,
+        comments,
+      });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
