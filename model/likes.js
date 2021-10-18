@@ -1,20 +1,16 @@
-const connection = require('../database/connection');
+const likesDatabase = require('./databaseLogic/likesDatabase');
 
 class Like {
-  // extract out database logic - same as Post class
-  static async addLike(userId, postId) {
-    return connection.pool.query(
-      'INSERT INTO likes (user_id, post_id) VALUES ($1, $2);',
-      [userId, postId]
-    );
+  constructor(likesDatabaseClass = likesDatabase) {
+    this.likesDatabaseClass = likesDatabaseClass;
   }
 
-  static async getLikesByPostId(postId) {
-    const likes = await connection.pool.query(
-      'SELECT * FROM likes WHERE post_id = $1;',
-      [postId]
-    );
-    return likes.rows.length;
+  async addLike(userId, postId) {
+    return this.likesDatabaseClass.addLike(userId, postId);
+  }
+
+  async getLikesByPostId(postId) {
+    return this.likesDatabaseClass.findLikesbyPostId(postId);
   }
 }
 module.exports = Like;

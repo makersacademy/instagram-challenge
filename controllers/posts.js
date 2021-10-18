@@ -21,8 +21,9 @@ const PostsController = {
       const username = 'test'; // use this when I don't want to keep logging in
       const post = new Post();
       const comment = new Comment();
+      const like = new Like();
       const selectedPost = await post.getPostById(postId);
-      const numberOfLikes = await Like.getLikesByPostId(postId);
+      const numberOfLikes = await like.getLikesByPostId(postId);
       const comments = await comment.getCommentsByPostId(postId);
       res.render('posts/show', {
         selectedPost,

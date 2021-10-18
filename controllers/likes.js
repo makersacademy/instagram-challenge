@@ -4,7 +4,8 @@ const LikesController = {
   async NewLike(req, res) {
     const userId = req.session.user;
     const postId = req.params.id;
-    await Like.addLike(userId, postId);
+    const like = new Like();
+    await like.addLike(userId, postId);
     res.redirect(`/posts/${postId}`);
   },
 };
