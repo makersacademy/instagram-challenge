@@ -6,17 +6,20 @@ class User {
     this.usersDatabaseClass = usersDatabaseClass;
   }
 
-  // extract out database logic - same as Post class
   async addUser(username, password, email) {
-    const newUser = await usersDatabase.addUser(username, password, email);
+    const newUser = await this.usersDatabaseClass.addUser(
+      username,
+      password,
+      email
+    );
     return {
       id: newUser[0].id,
       username: newUser[0].username,
-      // password: newUser.rows[0].password,
       email: newUser[0].email,
     };
   }
 
+  // extract out database logic - same as Post class
   // Do I need this method?
   static async getUsers() {
     const allUsers = await connection.pool.query(

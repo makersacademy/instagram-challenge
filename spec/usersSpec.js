@@ -49,7 +49,7 @@ describe('User', () => {
     it('should return false for incorrect passoword', async () => {
       const authenticatedUser = await userInstance.authenticate(
         'test',
-        'wring password'
+        'wrong password'
       );
       expect(authenticatedUser).toEqual(false);
     });
@@ -57,12 +57,11 @@ describe('User', () => {
 
   describe('#addUser', () => {
     it('should call correct method in usersDb with correct argument', async () => {
-      await userInstance.addUser('test', 'test');
-      // await userInstance.addUser('test', 'test', 'test');
+      await userInstance.addUser('test', 'test', 'test@test');
       expect(usersDatabaseMock.addUser).toHaveBeenCalledWith(
         'test',
         'test',
-        'test'
+        'test@test'
       );
     });
   });
