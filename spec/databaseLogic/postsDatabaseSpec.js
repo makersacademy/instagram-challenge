@@ -1,4 +1,3 @@
-// come up with better solution for the 'setTimeouts' in this file
 describe('postDatabase', () => {
   const postsDatabase = require('../../model/databaseLogic/postsDatabase');
   require('./databasehelpers');
@@ -6,7 +5,7 @@ describe('postDatabase', () => {
   let newPost;
 
   describe('#all', () => {
-    beforeAll(async () => {
+    beforeEach(async () => {
       postsData = await postsDatabase.all();
     });
     it('returns array of correct length', () => {
@@ -26,35 +25,8 @@ describe('postDatabase', () => {
     });
   });
 
-  describe('#newPost', () => {
-    it('returns array of length 1', async () => {
-      setTimeout(() => {
-        newPost = postsDatabase.newPost('second test post', 1);
-        expect(newPost.length).toEqual(1);
-      }, 500);
-    });
-    it('returns object with correct keys', async () => {
-      setTimeout(() => {
-        newPost = postsDatabase.newPost('second test post', 1);
-        expect(Object.keys(postsData[0])).toContain('id');
-        expect(Object.keys(postsData[0])).toContain('text');
-        expect(Object.keys(postsData[0])).toContain('created_at');
-        expect(Object.keys(postsData[0])).toContain('user_id');
-      }, 500);
-    });
-
-    it('returns correct values in object', async () => {
-      setTimeout(() => {
-        newPost = postsDatabase.newPost('second test post', 1);
-        expect(postsData[0].text).toEqual('second test post');
-        expect(postsData[0].id).toEqual(1);
-        expect(postsData[0].user_id).toEqual(1);
-      }, 500);
-    });
-  });
-
   describe('#findById', () => {
-    beforeAll(async () => {
+    beforeEach(async () => {
       postsData = await postsDatabase.findById(1);
     });
     it('returns array of correct length', () => {
@@ -71,6 +43,25 @@ describe('postDatabase', () => {
       expect(postsData[0].text).toEqual('test post');
       expect(postsData[0].id).toEqual(1);
       expect(postsData[0].user_id).toEqual(1);
+    });
+  });
+  describe('#newPost', () => {
+    it('returns array of length 1', async () => {
+      newPost = await postsDatabase.newPost('second test post', 1);
+      expect(newPost.length).toEqual(1);
+    });
+    it('returns object with correct keys', async () => {
+      newPost = await postsDatabase.newPost('second test post', 1);
+      expect(Object.keys(newPost[0])).toContain('id');
+      expect(Object.keys(newPost[0])).toContain('text');
+      expect(Object.keys(newPost[0])).toContain('user_id');
+    });
+
+    it('returns correct values in object', async () => {
+      newPost = await postsDatabase.newPost('second test post', 1);
+      expect(newPost[0].text).toEqual('second test post');
+      expect(newPost[0].id).toEqual(1);
+      expect(newPost[0].user_id).toEqual(1);
     });
   });
 });
