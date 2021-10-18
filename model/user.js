@@ -1,4 +1,3 @@
-const connection = require('../database/connection.js');
 const usersDatabase = require('./databaseLogic/usersDatabase');
 
 class User {
@@ -21,16 +20,16 @@ class User {
 
   // extract out database logic - same as Post class
   // Do I need this method?
-  static async getUsers() {
-    const allUsers = await connection.pool.query(
-      'SELECT * FROM users ORDER BY id ASC'
-    );
-    return allUsers.rows.map((element) => ({
-      id: element.id,
-      username: element.username,
-      email: element.email,
-    }));
-  }
+  // static async getUsers() {
+  //   const allUsers = await connection.pool.query(
+  //     'SELECT * FROM users ORDER BY id ASC'
+  //   );
+  //   return allUsers.rows.map((element) => ({
+  //     id: element.id,
+  //     username: element.username,
+  //     email: element.email,
+  //   }));
+  // }
 
   async authenticate(username, password) {
     const result = await this.usersDatabaseClass.findByUsername(username);
