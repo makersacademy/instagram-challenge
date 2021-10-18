@@ -3,10 +3,10 @@ const connection = require('../../database/connection');
 class likesDatabase {
   static async findLikesbyPostId(postId) {
     const likes = await connection.pool.query(
-      'SELECT * FROM likes WHERE post_id = $1;',
+      'SELECT * FROM likes WHERE post_id = $1 ;',
       [postId]
     );
-    return likes.rows.length;
+    return likes.rows;
   }
 
   static async addLike(userId, postId) {
