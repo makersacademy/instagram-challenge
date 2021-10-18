@@ -20,9 +20,10 @@ const PostsController = {
       // const { username } = req.session.user;
       const username = 'test'; // use this when I don't want to keep logging in
       const post = new Post();
+      const comment = new Comment();
       const selectedPost = await post.getPostById(postId);
       const numberOfLikes = await Like.getLikesByPostId(postId);
-      const comments = await Comment.getCommentsByPostId(postId);
+      const comments = await comment.getCommentsByPostId(postId);
       res.render('posts/show', {
         selectedPost,
         username,

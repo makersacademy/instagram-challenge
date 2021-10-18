@@ -14,9 +14,8 @@ class Comment {
     return newComment;
   }
 
-  static async getCommentsByPostId(postId) {
-    // console.log(this.commentsDatabaseClass);
-    const comments = await commentsDatabase.getComments(postId);
+  async getCommentsByPostId(postId) {
+    const comments = await this.commentsDatabaseClass.getComments(postId);
     return comments.rows.map((element) => ({
       id: element.id,
       text: element.text,
