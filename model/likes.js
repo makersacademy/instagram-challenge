@@ -11,7 +11,7 @@ class Like {
 
   static async getLikesByPostId(postId) {
     const likes = await connection.pool.query(
-      'SELECT * FROM likes WHERE id = $1;',
+      'SELECT * FROM likes WHERE post_id = $1;',
       [postId]
     );
     return likes.rows.length;

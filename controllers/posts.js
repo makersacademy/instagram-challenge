@@ -1,4 +1,5 @@
 const Post = require('../model/posts');
+const Like = require('../model/likes');
 
 const PostsController = {
   async Index(req, res) {
@@ -12,7 +13,15 @@ const PostsController = {
     }
   },
   async Show(req, res) {
-    res.render('posts/show');
+    try {
+      const { username } = req.session.user;
+      const post = new Post();
+      const selectedPost = await post.getPostById(1);
+      const numberOfLikes = await Like.getLikesByPostId(1);
+      res.render('posts/show', { selectedPost, username, numberOfLikes });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
   },
   async New(req, res) {
     try {
