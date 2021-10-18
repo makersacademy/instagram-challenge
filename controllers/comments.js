@@ -3,9 +3,12 @@ const Comment = require('../model/comments');
 const CommentsController = {
   async NewComment(req, res) {
     try {
+      const userId = req.session.user;
+      const postId = req.params.id;
+      const { newCommentText } = req.body;
       const comment = new Comment();
-      await comment.addComment('3t4t43', 1, 1);
-      res.redirect(302, 'back');
+      await comment.addComment(newCommentText, userId, postId);
+      res.redirect(`/posts/${postId}`);
     } catch (error) {
       console.log(error.message);
     }

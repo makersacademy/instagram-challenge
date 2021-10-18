@@ -39,14 +39,10 @@ const PostsController = {
       const { newPostText } = req.body;
       const post = new Post();
       await post.addPost(newPostText, userId);
-      const posts = await post.getPosts();
-      res.render('posts/index', { posts });
+      res.redirect('/posts');
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
-  },
-  async NewLike(req, res) {
-    res.json({ info: 'hello new like post router :)' });
   },
 };
 

@@ -6,7 +6,6 @@ class Comment {
   }
 
   async addComment(text, userId, postId) {
-    console.log('hello model');
     const newComment = await this.commentsDatabaseClass.addComment(
       text,
       userId,

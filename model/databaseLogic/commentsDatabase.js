@@ -3,7 +3,7 @@ const connection = require('../../database/connection');
 class commentsDatabase {
   static async getComments(postId) {
     const comments = await connection.pool.query(
-      'SELECT * FROM comments WHERE id = $1;',
+      'SELECT * FROM comments WHERE post_id = $1;',
       [postId]
     );
     return comments;
