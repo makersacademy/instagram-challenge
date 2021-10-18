@@ -7,13 +7,16 @@
   </head>
   <body>
     <a href="/logout" class="nav-item nav-link">Logout</a>
-    <h1>Hello,</h1>
+    <h1>Hello, <%= username %></h1>
     <h1>Posts</h1>
     <ul class="posts">
       <% posts.forEach((post)=>{ %>
-      <tr>
-        <td><%= post.text %></td>
-      </tr>
+      <ul>
+        <li><%= post.text %></li>
+        <form id="seePost" action="/posts/<%= post.id %>" method="GET">
+          <input type="submit" value="View" />
+        </form>
+      </ul>
       <% }) %>
     </ul>
     <form id="newPost" action="/posts/new" method="POST">
