@@ -9,7 +9,8 @@ const signUpController = {
       const { username } = req.body;
       const { password } = req.body;
       const { email } = req.body;
-      const newUser = await User.addUser(username, password, email);
+      const user = new User();
+      const newUser = await user.addUser(username, password, email);
       const userId = newUser.id;
       // Add your authenticated property below:
       req.session.authenticated = true;

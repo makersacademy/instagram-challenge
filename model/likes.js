@@ -10,7 +10,10 @@ class Like {
   }
 
   async getLikesByPostId(postId) {
-    return this.likesDatabaseClass.findLikesbyPostId(postId);
+    const numberOfLikes = await this.likesDatabaseClass.findLikesbyPostId(
+      postId
+    );
+    return numberOfLikes.length;
   }
 }
 module.exports = Like;

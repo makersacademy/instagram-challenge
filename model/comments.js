@@ -16,7 +16,7 @@ class Comment {
 
   async getCommentsByPostId(postId) {
     const comments = await this.commentsDatabaseClass.getComments(postId);
-    return comments.rows.map((element) => ({
+    return comments.map((element) => ({
       id: element.id,
       text: element.text,
       userID: element.user_id,

@@ -5,8 +5,8 @@ const Comment = require('../model/comments');
 const PostsController = {
   async Index(req, res) {
     try {
-      // const { username } = req.session.user;
-      const username = 'test'; // use this when I don't want to keep logging in
+      const { username } = req.session.user;
+      // const username = 'test'; // use this when I don't want to keep logging in
       const post = new Post();
       const posts = await post.getPosts();
       res.render('posts/index', { posts, username });
@@ -17,8 +17,8 @@ const PostsController = {
   async Show(req, res) {
     try {
       const postId = req.params.id;
-      // const { username } = req.session.user;
-      const username = 'test'; // use this when I don't want to keep logging in
+      const { username } = req.session.user;
+      // const username = 'test'; // use this when I don't want to keep logging in
       const post = new Post();
       const comment = new Comment();
       const like = new Like();
