@@ -1,3 +1,4 @@
+// come up with better solution for the 'setTimeouts' in this file
 describe('postDatabase', () => {
   const postsDatabase = require('../../model/databaseLogic/postsDatabase');
   require('./databasehelpers');

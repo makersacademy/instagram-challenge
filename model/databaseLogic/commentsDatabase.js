@@ -6,15 +6,15 @@ class commentsDatabase {
       'SELECT * FROM comments WHERE post_id = $1;',
       [postId]
     );
-    return comments;
+    return comments.rows;
   }
 
   static async addComment(text, userId, postId) {
-    const newComment = connection.pool.query(
-      'INSERT INTO comments (text, user_id, post_id) VALUES ($1, $2, $3);',
+    const newComment = await connection.pool.query(
+      'INSERT INTO comments (text, user_id, post_id) VALUES ($1, $2, $3) RETURNING id, text, user_id, post_id;',
       [text, userId, postId]
     );
-    return newComment;
+    return newComment.rows;
   }
 }
 
