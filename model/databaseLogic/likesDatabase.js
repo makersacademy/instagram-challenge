@@ -10,14 +10,11 @@ class likesDatabase {
   }
 
   static async addLike(userId, postId) {
-    const existingLikes = await likesDatabase.findLikesbyPostId(postId);
-    if (existingLikes.filter((e) => e.user_id === userId).length === 0) {
-      const newLike = await connection.pool.query(
-        'INSERT INTO likes (user_id, post_id) VALUES ($1, $2) RETURNING id, user_id, post_id;',
-        [userId, postId]
-      );
-      return newLike.rows;
-    }
+    const newLike = await connection.pool.query(
+      'INSERT INTO likes (user_id, post_id) VALUES ($1, $2) RETURNING id, user_id, post_id;',
+      [userId, postId]
+    );
+    return newLike.rows;
   }
 }
 
