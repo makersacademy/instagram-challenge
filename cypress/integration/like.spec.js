@@ -1,4 +1,4 @@
-describe('Comment on post', () => {
+describe('Like post', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/');
     cy.get('#username').type('test');
@@ -7,11 +7,10 @@ describe('Comment on post', () => {
     cy.get('#newPostText').type('this is a feature test post');
     cy.get('#newPost').submit();
     cy.contains('View').click();
-    cy.get('#newCommentText').type('this is a feature test comment');
-    cy.get('#newComment').submit();
+    cy.contains('Like').click();
   });
 
   it('shows comment', () => {
-    cy.contains('this is a feature test comment');
+    cy.contains('1 Likes');
   });
 });
