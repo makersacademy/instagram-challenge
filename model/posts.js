@@ -16,15 +16,13 @@ class Post {
 
   async getPosts() {
     const allPosts = await this.postsDatabaseClass.all();
-    return allPosts.map((element) => ({
-      id: element.id,
-      text: element.text,
-      userID: element.user_id,
-    }));
-
-    // This should return something like the following:
-    // [{postId: 1, postText: "blah", postComments: [comment1, comment 2], postLikes: 10},
-    // {postId: 2, postText: "blah again", postComments: [comment1, comment 2], postLikes: 5}]
+    return allPosts
+      .map((element) => ({
+        id: element.id,
+        text: element.text,
+        userID: element.user_id,
+      }))
+      .reverse();
   }
 
   async getPostById(id) {
