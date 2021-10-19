@@ -44,4 +44,6 @@ describe('Comment', () => {
       ]);
     });
   });
+
+  // Add tests for 'getCommentsByPostId'
 });
