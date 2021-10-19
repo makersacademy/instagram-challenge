@@ -5,6 +5,9 @@ const Comment = require('../model/comments');
 const PostsController = {
   async Index(req, res) {
     try {
+      if (req.session.user == null) {
+        return res.redirect('/');
+      }
       const { username } = req.session.user;
       // const username = 'test'; // use this when I don't want to keep logging in
       const post = new Post();
@@ -16,6 +19,9 @@ const PostsController = {
   },
   async Show(req, res) {
     try {
+      if (req.session.user == null) {
+        return res.redirect('/');
+      }
       const postId = req.params.id;
       const { username } = req.session.user;
       // const username = 'test'; // use this when I don't want to keep logging in
